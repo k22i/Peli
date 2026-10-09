@@ -1,0 +1,155 @@
+/* The page must stay transparent so mpv's video shows through. */
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: transparent;
+  color: #f3f3f5;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+}
+
+.mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e5484d;
+  font-weight: 600;
+}
+
+.panel {
+  position: absolute;
+  background: rgba(12, 12, 16, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+}
+
+.info {
+  top: 12px;
+  left: 12px;
+  width: 360px;
+  padding: 10px 14px;
+}
+
+.info h2 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.info h3 {
+  margin: 10px 0 4px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.info dl {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 2px 8px;
+  margin: 0;
+}
+
+.info dt {
+  opacity: 0.6;
+}
+
+.info dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.info ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 11px;
+}
+
+.ok {
+  color: #46d17c;
+}
+
+.bad {
+  color: #ff8a8a;
+}
+
+.probe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 90px;
+  margin: -45px 0 0 -80px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  border: 2px dashed #f5d90a;
+  border-radius: 10px;
+  background: rgba(245, 217, 10, 0.18);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.probe small {
+  display: block;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.controls {
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+}
+
+.controls .seek {
+  flex: 1;
+}
+
+.controls button,
+.controls select {
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font: inherit;
+}
+
+.controls .play {
+  width: 40px;
+  font-size: 15px;
+}
+
+.time {
+  min-width: 44px;
+  text-align: center;
+}
+
+.status {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(12, 12, 16, 0.8);
+  font-weight: 600;
+}
