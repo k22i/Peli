@@ -1,0 +1,110 @@
+{
+  "arch": "amd64",
+  "env": {
+    "DISPLAY": "",
+    "GDK_BACKEND": "",
+    "WAYLAND_DISPLAY": "",
+    "XDG_SESSION_TYPE": ""
+  },
+  "info": {
+    "os": "windows",
+    "mode": "single",
+    "wid": 458780,
+    "widKind": "HWND",
+    "mpvBin": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\mpv\\mpv.exe",
+    "mpvVersion": "mpv v0.41.0-dev-g41f6a6450",
+    "endpoint": "\\\\.\\pipe\\staysh-mpv-1804",
+    "embed": {
+      "childrenAfter": [
+        "Chrome_WidgetWin_0(0x201f6 vis=0 72,109 0x0)",
+        "mpv(0x30150 vis=0 72,109 944x501)"
+      ],
+      "childrenBefore": [
+        "Chrome_WidgetWin_0(0x201f6 vis=0 72,109 0x0)",
+        "mpv(0x30150 vis=0 72,109 944x501)"
+      ],
+      "embedded": true,
+      "hostHwnd": "0x7001c",
+      "mpvDisabled": false,
+      "mpvHwnd": "0x30150",
+      "mpvParent": "0x7001c",
+      "mpvRect": "72,109 944x501",
+      "verdict": "mpv window is a child of the Wails HWND",
+      "zorder": "none"
+    },
+    "httpUrl": "http://127.0.0.1:51973/media.mp4",
+    "localFile": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\media\\test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @472,239",
+      "window": "overlay",
+      "at": "09:03:20.077"
+    },
+    {
+      "kind": "keydown",
+      "detail": "x",
+      "window": "overlay",
+      "at": "09:03:21.958"
+    }
+  ],
+  "mode": "single",
+  "os": "windows",
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "--wid=458780 (HWND); top-level HWND of the Wails window; ipc \\\\.\\pipe\\staysh-mpv-1804",
+      "ms": 54
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\media\\test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 2678
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "pause=true time-pos 1.067 -\u003e 1.067 over 600ms",
+      "ms": 0
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000",
+      "ms": 0
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.600",
+      "ms": 1056
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:51973/media.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1773
+    }
+  ]
+}

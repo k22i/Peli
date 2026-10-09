@@ -1,0 +1,108 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": ":99",
+    "GDK_BACKEND": "x11",
+    "WAYLAND_DISPLAY": "",
+    "XDG_SESSION_TYPE": "x11"
+  },
+  "info": {
+    "os": "linux",
+    "mode": "overlay",
+    "wid": 10485768,
+    "widKind": "X11 Window",
+    "mpvBin": "/usr/bin/mpv",
+    "mpvVersion": "mpv v0.40.0",
+    "endpoint": "/tmp/staysh-mpv-400.sock",
+    "embed": {
+      "embedded": true,
+      "hostKind": "X11 Window",
+      "hostWid": 10485768,
+      "mpvGeometry": "0,0 1280x720",
+      "mpvMapped": true,
+      "mpvParent": 10485768,
+      "mpvWindowId": 12582914,
+      "verdict": "mpv window is a child of the Wails toplevel"
+    },
+    "httpUrl": "http://127.0.0.1:39899/media.mp4",
+    "localFile": "/spike/media/test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @640,360",
+      "window": "overlay",
+      "at": "09:16:45.624"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "09:16:46.131"
+    },
+    {
+      "kind": "keydown",
+      "detail": "x",
+      "window": "overlay",
+      "at": "09:16:46.647"
+    }
+  ],
+  "mode": "overlay",
+  "os": "linux",
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "--wid=10485768 (X11 Window); GdkX11Surface XID of the GTK4 toplevel; ipc /tmp/staysh-mpv-400.sock",
+      "ms": 168
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1098
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "pause=true time-pos 1.000 -\u003e 1.000 over 600ms",
+      "ms": 26
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000",
+      "ms": 26
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 548
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:39899/media.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1076
+    }
+  ]
+}

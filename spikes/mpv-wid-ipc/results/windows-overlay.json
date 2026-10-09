@@ -1,0 +1,110 @@
+{
+  "arch": "amd64",
+  "env": {
+    "DISPLAY": "",
+    "GDK_BACKEND": "",
+    "WAYLAND_DISPLAY": "",
+    "XDG_SESSION_TYPE": ""
+  },
+  "info": {
+    "os": "windows",
+    "mode": "overlay",
+    "wid": 66090,
+    "widKind": "HWND",
+    "mpvBin": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\mpv\\mpv.exe",
+    "mpvVersion": "mpv v0.41.0-dev-g41f6a6450",
+    "endpoint": "\\\\.\\pipe\\staysh-mpv-5716",
+    "embed": {
+      "childrenAfter": [
+        "Chrome_WidgetWin_0(0x1022c vis=1 8,31 944x501)",
+        "mpv(0x1023c vis=1 8,31 944x501)"
+      ],
+      "childrenBefore": [
+        "Chrome_WidgetWin_0(0x1022c vis=1 8,31 944x501)",
+        "mpv(0x1023c vis=1 8,31 944x501)"
+      ],
+      "embedded": true,
+      "hostHwnd": "0x1022a",
+      "mpvDisabled": false,
+      "mpvHwnd": "0x1023c",
+      "mpvParent": "0x1022a",
+      "mpvRect": "8,31 944x501",
+      "verdict": "mpv window is a child of the Wails HWND",
+      "zorder": "none"
+    },
+    "httpUrl": "http://127.0.0.1:65002/media.mp4",
+    "localFile": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\media\\test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @488,301",
+      "window": "overlay",
+      "at": "09:08:46.271"
+    }
+  ],
+  "mode": "overlay",
+  "os": "windows",
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "--wid=66090 (HWND); top-level HWND of the Wails window; ipc \\\\.\\pipe\\staysh-mpv-5716",
+      "ms": 2915
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\media\\test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1822
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "pause=true time-pos 1.000 -\u003e 1.000 over 600ms",
+      "ms": 0
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000",
+      "ms": 39
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 536
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:65002/media.mp4 time-pos=1.07 duration=60.00 hwdec=no",
+      "ms": 1412
+    },
+    {
+      "step": "play-remote",
+      "ok": true,
+      "detail": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4 time-pos=1.00 duration=10.00 hwdec=no",
+      "ms": 1350
+    }
+  ]
+}

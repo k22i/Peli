@@ -1,0 +1,25 @@
+
+xwininfo: Window id: 0x239 (the root window) (has no name)
+
+  Root window id: 0x239 (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     7 children:
+     0x20003d (has no name): ()  1356x817+0+0  +0+0
+        1 child:
+        0x800008 "Staysh spike: mpv --wid (overlay)": ("spike-linux" "spike-linux")  1280x720+38+59  +38+59
+           2 children:
+           0xa00002 (has no name): ("gl" "mpv")  1280x720+0+0  +38+59
+           0x800009 (has no name): ()  1x1+-1+-1  +37+58
+     0x200028 (has no name): ()  1344x784+0+0  +0+0
+        1 child:
+        0x800004 "spike-linux": ("spike-linux" "spike-linux")  1280x720+32+32  +32+32
+           1 child:
+           0x800005 (has no name): ()  1x1+-1+-1  +31+31
+     0x800002 "spike-linux": ("spike-linux" "spike-linux")  1x1+0+0  +0+0
+        1 child:
+        0x800003 (has no name): ()  1x1+-1+-1  +-1+-1
+     0x400001 (has no name): ()  10x10+-20+-20  +-20+-20
+     0x200027 "Weston WM": ()  10x10+0+0  +0+0
+     0x200002 (has no name): ()  8192x8192+0+0  +0+0
+     0x200001 (has no name): ()  10x10+0+0  +0+0
+

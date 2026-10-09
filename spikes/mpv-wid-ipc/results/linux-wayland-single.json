@@ -1,0 +1,86 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": "",
+    "GDK_BACKEND": "wayland",
+    "WAYLAND_DISPLAY": "wayland-1",
+    "XDG_SESSION_TYPE": "wayland"
+  },
+  "info": {
+    "os": "linux",
+    "mode": "single",
+    "wid": -1,
+    "widKind": "wl_surface",
+    "mpvBin": "/usr/bin/mpv",
+    "mpvVersion": "mpv v0.40.0",
+    "endpoint": "/tmp/staysh-mpv-718.sock",
+    "embed": {
+      "embedded": false,
+      "hostKind": "wl_surface",
+      "hostWid": -1,
+      "mpvWindowId": "unavailable: mpv [get_property window-id]: property unavailable",
+      "verdict": "mpv exposes no X11 window-id (Wayland or no VO window)"
+    },
+    "httpUrl": "http://127.0.0.1:38293/media.mp4",
+    "localFile": "/spike/media/test.mp4"
+  },
+  "inputs": null,
+  "mode": "single",
+  "os": "linux",
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "--wid=-1 (wl_surface); Wayland has no foreign-surface embedding; mpv 0.41 does not read --wid on Wayland, so it is not passed; ipc /tmp/staysh-mpv-718.sock",
+      "ms": 1242
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1473
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "pause=true time-pos 1.000 -\u003e 1.000 over 600ms",
+      "ms": 25
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000",
+      "ms": 26
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 572
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:38293/media.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1171
+    }
+  ]
+}

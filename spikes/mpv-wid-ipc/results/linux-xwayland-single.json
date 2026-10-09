@@ -1,0 +1,89 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": ":0",
+    "GDK_BACKEND": "x11",
+    "WAYLAND_DISPLAY": "wayland-1",
+    "XDG_SESSION_TYPE": "wayland"
+  },
+  "info": {
+    "os": "linux",
+    "mode": "single",
+    "wid": 8388612,
+    "widKind": "X11 Window",
+    "mpvBin": "/usr/bin/mpv",
+    "mpvVersion": "mpv v0.40.0",
+    "endpoint": "/tmp/staysh-mpv-950.sock",
+    "embed": {
+      "embedded": true,
+      "hostKind": "X11 Window",
+      "hostWid": 8388612,
+      "mpvGeometry": "0,0 1280x720",
+      "mpvMapped": true,
+      "mpvParent": 8388612,
+      "mpvWindowId": 10485762,
+      "verdict": "mpv window is a child of the Wails toplevel"
+    },
+    "httpUrl": "http://127.0.0.1:33885/media.mp4",
+    "localFile": "/spike/media/test.mp4"
+  },
+  "inputs": null,
+  "mode": "single",
+  "os": "linux",
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "--wid=8388612 (X11 Window); GdkX11Surface XID of the GTK4 toplevel; ipc /tmp/staysh-mpv-950.sock",
+      "ms": 138
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1101
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "pause=true time-pos 1.000 -\u003e 1.000 over 600ms",
+      "ms": 26
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000",
+      "ms": 25
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 549
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:33885/media.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1080
+    }
+  ]
+}
