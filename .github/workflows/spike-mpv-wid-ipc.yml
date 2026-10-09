@@ -1,0 +1,80 @@
+# Spike #2 (throwaway): runs the mpv --wid + JSON IPC self-test on a hosted
+# Windows runner, which we have no local machine for. Remove with the spike.
+name: spike-mpv-wid-ipc
+
+# Manual only now that the spike has reported; Windows minutes are billed 2x.
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: spikes/mpv-wid-ipc
+
+jobs:
+  media:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - run: ./scripts/make-media.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: media
+          path: spikes/mpv-wid-ipc/media/test.mp4
+
+  windows:
+    needs: media
+    runs-on: windows-2025
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Baseline: mpv child HWND left exactly as mpv creates it.
+          - { mode: single, name: windows-single-raw, zorder: none, disable: "0" }
+          # mpv child pushed to the bottom of the sibling z-order and disabled.
+          - { mode: single, name: windows-single, zorder: bottom, disable: "1" }
+          # WebView2 visual hosting (DirectComposition target is topmost).
+          - { mode: composition, name: windows-composition, zorder: bottom, disable: "1" }
+          # Second, owned, transparent window for the overlay.
+          - { mode: overlay, name: windows-overlay, zorder: none, disable: "0" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache-dependency-path: spikes/mpv-wid-ipc/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: media
+          path: spikes/mpv-wid-ipc/media
+      - name: Fetch mpv
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v0.41.0 --repo mpv-player/mpv -p "mpv-v0.41.0-x86_64-pc-windows-msvc.zip" -D mpvdl
+          Expand-Archive mpvdl\*.zip -DestinationPath mpv
+          $bin = (Get-ChildItem mpv -Recurse -Filter mpv.exe | Select-Object -First 1).FullName
+          "MPV_BIN=$bin" >> $env:GITHUB_ENV
+          & $bin --version | Select-Object -First 1
+      - name: Build
+        shell: pwsh
+        run: |
+          cd frontend; npm install --no-audit --no-fund; npm run build; cd ..
+          go build -o bin\spike.exe .
+      - name: Run self-test
+        shell: pwsh
+        env:
+          SPIKE_WIN_ZORDER: ${{ matrix.zorder }}
+          SPIKE_WIN_DISABLE: ${{ matrix.disable }}
+          SPIKE_MPV_ARGS: --ao=null
+          SPIKE_REMOTE_URL: https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4
+        run: ./scripts/windows/run.ps1 -Mode ${{ matrix.mode }} -Name ${{ matrix.name }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.name }}
+          path: spikes/mpv-wid-ipc/results/
