@@ -1,0 +1,128 @@
+# Spike #3 (throwaway): cross-compiles the libmpv + cgo spike for Windows on
+# Linux with mingw-w64, then runs its self-test on hosted Windows runners.
+# Remove with the spike.
+name: spike-libmpv-cgo
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: spikes/libmpv-cgo
+
+env:
+  # libmpv dev package (libmpv-2.dll, import lib, headers). Official mpv
+  # releases ship no libmpv for Windows; shinchiro's builds are the usual source.
+  LIBMPV_TAG: "20261009"
+  LIBMPV_ASSET: mpv-dev-x86_64-20261009-git-36abaa32d0.7z
+
+jobs:
+  cross-build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache-dependency-path: spikes/libmpv-cgo/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg gcc-mingw-w64-x86-64 p7zip-full
+      - run: ./scripts/make-media.sh
+      - name: Fetch libmpv
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$LIBMPV_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_ASSET" -D lib
+          (cd lib && 7z x -y -owin64 "$LIBMPV_ASSET" >/dev/null)
+      - name: Cross-compile for windows/amd64
+        run: |
+          (cd frontend && npm install --no-audit --no-fund && npm run build)
+          export CGO_ENABLED=1 GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc
+          export CGO_CFLAGS="-I$PWD/lib/win64/include" CGO_LDFLAGS="-L$PWD/lib/win64"
+          time go build -o bin/spike.exe .
+          cp lib/win64/libmpv-2.dll bin/
+          ls -la bin
+          x86_64-w64-mingw32-objdump -p bin/spike.exe | grep "DLL Name"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            spikes/libmpv-cgo/bin/
+            spikes/libmpv-cgo/media/test.mp4
+
+  # Can a stock runner build the cgo code natively? (Informational.)
+  native-build:
+    runs-on: windows-2025
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache-dependency-path: spikes/libmpv-cgo/go.sum
+      - name: Toolchain on the runner
+        shell: pwsh
+        run: |
+          Get-Command gcc, cc, clang, cl -ErrorAction SilentlyContinue | Format-Table Name, Source
+          go env CC CGO_ENABLED
+          Test-Path C:\Windows\System32\vulkan-1.dll
+      - name: Fetch libmpv
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download $env:LIBMPV_TAG --repo shinchiro/mpv-winbuild-cmake -p $env:LIBMPV_ASSET -D lib
+          7z x -y -olib\win64 "lib\$env:LIBMPV_ASSET" | Out-Null
+      - name: Native go build with cgo
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force frontend\dist | Out-Null
+          Set-Content frontend\dist\index.html "<!doctype html>"
+          $env:CGO_ENABLED = "1"
+          $env:CGO_CFLAGS = "-I$PWD\lib\win64\include"
+          $env:CGO_LDFLAGS = "-L$PWD\lib\win64"
+          Measure-Command { go build -o bin\spike.exe . | Out-Host }
+          Get-Item bin\spike.exe
+
+  windows:
+    needs: cross-build
+    runs-on: windows-2025
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # wid = Wails top-level HWND, mpv's child HWND left as mpv creates it.
+          - { mode: single, name: windows-window-raw, host: window, zorder: none, disable: "0" }
+          # wid = Wails HWND, mpv's HWND then pushed to HWND_BOTTOM and disabled (#2's fix).
+          - { mode: single, name: windows-window-bottom, host: window, zorder: bottom, disable: "1" }
+          # wid = our own disabled child HWND, created at HWND_BOTTOM before mpv starts.
+          - { mode: single, name: windows-container, host: container, zorder: none, disable: "0" }
+          # WebView2 visual hosting (DirectComposition target is topmost).
+          - { mode: composition, name: windows-composition, host: window, zorder: none, disable: "0" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: windows-build
+          path: spikes/libmpv-cgo
+      - name: Environment
+        shell: pwsh
+        run: |
+          "vulkan-1.dll in System32: $(Test-Path C:\Windows\System32\vulkan-1.dll)"
+          (Get-Item bin\spike.exe).Length, (Get-Item bin\libmpv-2.dll).Length
+      - name: Run self-test
+        shell: pwsh
+        env:
+          SPIKE_WIN_HOST: ${{ matrix.host }}
+          SPIKE_WIN_ZORDER: ${{ matrix.zorder }}
+          SPIKE_WIN_DISABLE: ${{ matrix.disable }}
+          SPIKE_MPV_ARGS: --ao=null
+          SPIKE_REMOTE_URL: https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4
+        run: ./scripts/windows/run.ps1 -Mode ${{ matrix.mode }} -Name ${{ matrix.name }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.name }}
+          path: spikes/libmpv-cgo/results/
