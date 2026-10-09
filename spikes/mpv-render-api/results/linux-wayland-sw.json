@@ -1,0 +1,437 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": "",
+    "GDK_BACKEND": "wayland",
+    "GSK_RENDERER": "",
+    "LANG": "",
+    "LC_ALL": "",
+    "SPIKE_MPV_ARGS": "--ao=null --gpu-sw ",
+    "WAYLAND_DISPLAY": "wayland-1",
+    "XDG_SESSION_TYPE": "wayland"
+  },
+  "eventsEmitted": {
+    "player:buffering": 178,
+    "player:ended": 5,
+    "player:state": 94,
+    "player:time": 1144,
+    "player:tracks": 22
+  },
+  "eventsReceived": {
+    "buffering:true": 47,
+    "ended:eof": 1,
+    "ended:stop": 3,
+    "player:buffering": 166,
+    "player:ended": 4,
+    "player:state": 74,
+    "player:time": 1100,
+    "player:tracks": 18,
+    "tick-paused": 90,
+    "tick-playing": 90
+  },
+  "info": {
+    "os": "linux",
+    "mode": "sw",
+    "host": "render API",
+    "wid": -1,
+    "widKind": "none",
+    "clientApi": "2.5",
+    "mpvVersion": "mpv v0.40.0",
+    "mpvConfiguration": "-Dpython.bytecompile=-1 -Dlibmpv=true -Dbuild-date=false -Dcdda=enabled -Ddvdnav=enabled -Dsdl2=enabled -Ddvbin=enabled -Dprefix=/usr -Dlibdir=lib/aarch64-linux-gnu -Dlocalstatedir=/var -Dsysconfdir=/etc -Dbuildtype=plain -Dwrap_mode=nodownload",
+    "locale": {
+      "lcNumericAfter": "C",
+      "lcNumericBefore": "C"
+    },
+    "embed": {
+      "csdShadow": "0,0",
+      "embedded": true,
+      "gskRenderer": "GskGLRenderer",
+      "layout": "GtkOverlay { GtkPicture WebKitWebView } (later children draw on top)",
+      "renderer": "GtkPicture under the webview, GdkMemoryTexture per frame from MPV_RENDER_API_TYPE_SW (rgb0) on a render thread",
+      "renders": 39,
+      "target": "1280x720",
+      "verdict": "render API draws below the webview, in the app window",
+      "webviewOrigin": "0,0"
+    },
+    "renderMode": 2,
+    "hdr": 0,
+    "httpUrl": "http://127.0.0.1:39545/media.mp4",
+    "slowUrl": "http://127.0.0.1:39545/slow.mp4",
+    "localFile": "/spike/media/test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @640,360",
+      "window": "overlay",
+      "at": "12:56:08.812"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "12:56:09.683"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "12:56:10.522"
+    },
+    {
+      "kind": "click",
+      "detail": "stage @1000,250",
+      "window": "overlay",
+      "at": "12:56:11.326"
+    },
+    {
+      "kind": "keydown",
+      "detail": "x",
+      "window": "overlay",
+      "at": "12:56:11.957"
+    }
+  ],
+  "latencyMs": {
+    "clockOffsetMs": [
+      1.14,
+      1.41,
+      1.81,
+      0.75,
+      1.09,
+      1.01,
+      0.58,
+      1.39,
+      0.67,
+      1.05,
+      1.15,
+      1.09,
+      1.53,
+      1.16,
+      0.96,
+      1.04,
+      1.47,
+      0.83,
+      1,
+      1.02,
+      0.76,
+      0.87,
+      0.85,
+      0.84,
+      1.14,
+      1.35,
+      1.68
+    ],
+    "go": {
+      "cmd-\u003epause": {
+        "n": 10,
+        "mean": 0.23,
+        "p50": 0.21,
+        "p95": 0.35,
+        "p99": 0.35,
+        "max": 0.35
+      },
+      "cmd-\u003eseek": {
+        "n": 1,
+        "mean": 0.88,
+        "p50": 0.88,
+        "p95": 0.88,
+        "p99": 0.88,
+        "max": 0.88
+      }
+    },
+    "react": {
+      "call-rtt": {
+        "n": 118,
+        "mean": 2.03,
+        "p50": 2,
+        "p95": 6,
+        "p99": 7,
+        "max": 8
+      },
+      "click-\u003epause": {
+        "n": 2,
+        "mean": 7,
+        "p50": 9,
+        "p95": 9,
+        "p99": 9,
+        "max": 9
+      },
+      "player:buffering": {
+        "n": 166,
+        "mean": 1.83,
+        "p50": 1.41,
+        "p95": 4.8,
+        "p99": 8.48,
+        "max": 10.68
+      },
+      "player:ended": {
+        "n": 4,
+        "mean": 1.21,
+        "p50": 1.17,
+        "p95": 1.49,
+        "p99": 1.49,
+        "max": 1.49
+      },
+      "player:state": {
+        "n": 74,
+        "mean": 2.15,
+        "p50": 1.84,
+        "p95": 6.42,
+        "p99": 7.65,
+        "max": 7.65
+      },
+      "player:time": {
+        "n": 1100,
+        "mean": 1.79,
+        "p50": 1.29,
+        "p95": 6.57,
+        "p99": 8.52,
+        "max": 12.29
+      },
+      "player:tracks": {
+        "n": 18,
+        "mean": 2.5,
+        "p50": 1.73,
+        "p95": 9.28,
+        "p99": 9.28,
+        "max": 9.28
+      },
+      "tick-paused": {
+        "n": 90,
+        "mean": 1.78,
+        "p50": 1.63,
+        "p95": 3.13,
+        "p99": 9.67,
+        "max": 9.67
+      },
+      "tick-playing": {
+        "n": 90,
+        "mean": 1.68,
+        "p50": 0.98,
+        "p95": 6.02,
+        "p99": 8.87,
+        "max": 8.87
+      }
+    }
+  },
+  "mode": "sw",
+  "numCPU": 6,
+  "os": "linux",
+  "rssMB": 523.515625,
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "render mode sw (2), hdr=0; render context up in 12ms; GtkPicture under the webview, GdkMemoryTexture per frame from MPV_RENDER_API_TYPE_SW (rgb0) on a render thread; libmpv client API 2.5; create+initialize 28ms",
+      "ms": 168
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 loadfile-\u003eplayback-restart=56ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1018
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "time-pos 1.767 -\u003e 1.767 over 600ms while paused; cmd-\u003epause event ms [0.21 0.18 0.16 0.18 0.21]",
+      "ms": 0
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000; cmd-\u003etime-pos event 0.9ms",
+      "ms": 0
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 541
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "ended",
+      "ok": true,
+      "detail": "end-file reason=eof received=true (player:ended emitted)",
+      "ms": 1147
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:39545/media.mp4 loadfile-\u003eplayback-restart=415ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 995
+    },
+    {
+      "step": "buffering",
+      "ok": true,
+      "detail": "paused-for-cache true after 1609ms, false again after 1691ms more; percent=100",
+      "ms": 1609
+    },
+    {
+      "step": "resize",
+      "ok": true,
+      "detail": "window 1280x720 -\u003e 960x540: osd 1280x720 -\u003e osd 960x540, last render target 960x540 after 35ms",
+      "ms": 35
+    },
+    {
+      "step": "fullscreen",
+      "ok": true,
+      "detail": "osd 1280x720 -\u003e osd 1600x900, last render target 1600x900 after 38ms",
+      "ms": 38
+    },
+    {
+      "step": "bench-play",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 loadfile-\u003eplayback-restart=123ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1091
+    },
+    {
+      "step": "bench",
+      "ok": true,
+      "detail": "test.mp4 for 10.0s: cpu% map[children:50.92 self:95.51 sway:1.69 total:148.12] (paused map[children:0.5 self:2.64 sway:0 total:3.14]); ui thread ms {192 0.87 0.12 5.28 7.05 7.53}; mpv map[current-vo:libmpv decoder-frame-drop-count:0 display-fps: estimated-vf-fps:30.000000 frame-drop-count:0 hwdec-current:no mistimed-frame-count:0 video-sync:audio vo-delayed-frame-count:0]; frames/s 30.0, pacing map[expectedMs:33.33 intervalMs:{300 33.34 33.34 37.42 39.72 41.25} late:0 lateShare:0 stddevMs:2.15], render call ms {301 33.17 33.15 37 39.43 41.16}, gpu ms {0 0 0 0 0 0}",
+      "ms": 10035
+    },
+    {
+      "step": "play-loop",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 loadfile-\u003eplayback-restart=50ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1022
+    },
+    {
+      "step": "react-events",
+      "ok": true,
+      "detail": "received by React: map[buffering:true:47 ended:eof:1 ended:stop:3 player:buffering:164 player:ended:4 player:state:74 player:time:1014 player:tracks:18 tick-paused:90 tick-playing:90]; missing []",
+      "ms": 0
+    }
+  ],
+  "video": {
+    "bench": {
+      "cpuPausedPct": {
+        "children": 0.5,
+        "self": 2.64,
+        "sway": 0,
+        "total": 3.14
+      },
+      "cpuPct": {
+        "children": 50.92,
+        "self": 95.51,
+        "sway": 1.69,
+        "total": 148.12
+      },
+      "gpuUtilPausedPct": {
+        "n": 0,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "gpuUtilPct": {
+        "n": 0,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "media": "test.mp4",
+      "mpv": {
+        "current-vo": "libmpv",
+        "decoder-frame-drop-count": 0,
+        "display-fps": "",
+        "estimated-vf-fps": "30.000000",
+        "frame-drop-count": 0,
+        "hwdec-current": "no",
+        "mistimed-frame-count": 0,
+        "video-sync": "audio",
+        "vo-delayed-frame-count": 0
+      },
+      "render": {
+        "frames": 301,
+        "framesPerSec": 29.99,
+        "gpuMs": {
+          "n": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "pacing": {
+          "expectedMs": 33.33,
+          "intervalMs": {
+            "n": 300,
+            "mean": 33.34,
+            "p50": 33.34,
+            "p95": 37.42,
+            "p99": 39.72,
+            "max": 41.25
+          },
+          "late": 0,
+          "lateShare": 0,
+          "stddevMs": 2.15
+        },
+        "renderCallMs": {
+          "n": 301,
+          "mean": 33.17,
+          "p50": 33.15,
+          "p95": 37,
+          "p99": 39.43,
+          "max": 41.16
+        },
+        "renders": 301,
+        "target": "1280x720"
+      },
+      "secs": 10.04,
+      "uiThreadMs": {
+        "n": 192,
+        "mean": 0.87,
+        "p50": 0.12,
+        "p95": 5.28,
+        "p99": 7.05,
+        "max": 7.53
+      },
+      "uiThreadPausedMs": {
+        "n": 73,
+        "mean": 0.49,
+        "p50": 0.28,
+        "p95": 2.27,
+        "p99": 3.77,
+        "max": 3.77
+      },
+      "videoFps": 30,
+      "windowState": {
+        "end": null,
+        "start": null
+      }
+    },
+    "fullscreen": {
+      "after": "osd 1600x900, last render target 1600x900",
+      "match": true,
+      "ms": 38
+    },
+    "resize": {
+      "after": "osd 960x540, last render target 960x540",
+      "match": true,
+      "ms": 35
+    }
+  }
+}

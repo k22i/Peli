@@ -1,0 +1,477 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": "",
+    "GDK_BACKEND": "",
+    "GSK_RENDERER": "",
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": "",
+    "SPIKE_MPV_ARGS": "--mute=yes ",
+    "WAYLAND_DISPLAY": "",
+    "XDG_SESSION_TYPE": ""
+  },
+  "eventsEmitted": {
+    "player:buffering": 271,
+    "player:ended": 5,
+    "player:state": 93,
+    "player:time": 1735,
+    "player:tracks": 22
+  },
+  "eventsReceived": {
+    "buffering:true": 153,
+    "ended:eof": 1,
+    "ended:stop": 3,
+    "player:buffering": 261,
+    "player:ended": 4,
+    "player:state": 78,
+    "player:time": 1702,
+    "player:tracks": 19,
+    "tick-paused": 90,
+    "tick-playing": 90
+  },
+  "info": {
+    "os": "darwin",
+    "mode": "gl",
+    "host": "render API",
+    "wid": -1,
+    "widKind": "none",
+    "clientApi": "2.5",
+    "mpvVersion": "mpv v0.41.0",
+    "mpvConfiguration": "-Dbuildtype=release -Dsysconfdir=/opt/homebrew/etc -Dbuild-date=false -Dhtml-build=enabled -Djavascript=enabled -Dlibmpv=true -Dlua=luajit -Dlibarchive=enabled -Duchardet=enabled -Dvulkan=enabled -Dprefix=/opt/homebrew/Cellar/mpv/0.41.0_10 -Dlibdir=lib -Dwrap_mode=nofallback",
+    "embed": {
+      "drawThread": "main",
+      "edrCurrent": 1,
+      "edrPotential": 1,
+      "edrReference": 0,
+      "embedded": true,
+      "renderer": "CAOpenGLLayer (drawn on setNeedsDisplay); GL_RENDERER=Apple M1 Pro; GL_VERSION=4.1 Metal - 91.7; RGBA8 back buffer; render blocks for target time: yes",
+      "renders": 34,
+      "target": "1280x720",
+      "verdict": "render API draws into our view below the WKWebView",
+      "videoViewDirectlyBelowWebview": true,
+      "webview": "drawsBackground was 1"
+    },
+    "renderMode": 1,
+    "hdr": 0,
+    "httpUrl": "http://127.0.0.1:57588/media.mp4",
+    "slowUrl": "http://127.0.0.1:57588/slow.mp4",
+    "localFile": "/Users/kevinmallari/Developer/staysh/spikes/mpv-render-api/media/test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @640,344",
+      "window": "overlay",
+      "at": "19:29:11.913"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "19:29:12.552"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "19:29:13.129"
+    },
+    {
+      "kind": "click",
+      "detail": "stage @999,241",
+      "window": "overlay",
+      "at": "19:29:13.739"
+    },
+    {
+      "kind": "keydown",
+      "detail": "x",
+      "window": "overlay",
+      "at": "19:29:14.343"
+    }
+  ],
+  "latencyMs": {
+    "clockOffsetMs": [
+      1.51,
+      1.36,
+      1.23,
+      -28.43,
+      1.85,
+      0.67,
+      0.67,
+      11.51,
+      0.76,
+      0.74,
+      0.81,
+      0.87,
+      0.7,
+      0.47,
+      15.83,
+      1.02,
+      0.49,
+      0.76,
+      0.62,
+      0.99,
+      0.6,
+      8.1,
+      -3.47,
+      0.63,
+      1.45,
+      0.85,
+      3.84,
+      13.62,
+      0.98,
+      1.16,
+      1.07,
+      1.19,
+      1.23
+    ],
+    "go": {
+      "cmd-\u003epause": {
+        "n": 10,
+        "mean": 20.21,
+        "p50": 33.47,
+        "p95": 37.98,
+        "p99": 37.98,
+        "max": 37.98
+      },
+      "cmd-\u003eseek": {
+        "n": 1,
+        "mean": 13.72,
+        "p50": 13.72,
+        "p95": 13.72,
+        "p99": 13.72,
+        "max": 13.72
+      }
+    },
+    "react": {
+      "call-rtt": {
+        "n": 136,
+        "mean": 23.6,
+        "p50": 2,
+        "p95": 100,
+        "p99": 128,
+        "max": 138
+      },
+      "click-\u003epause": {
+        "n": 2,
+        "mean": 21.5,
+        "p50": 41,
+        "p95": 41,
+        "p99": 41,
+        "max": 41
+      },
+      "player:buffering": {
+        "n": 261,
+        "mean": 10.23,
+        "p50": 1.01,
+        "p95": 29.24,
+        "p99": 241.92,
+        "max": 498.44
+      },
+      "player:ended": {
+        "n": 4,
+        "mean": 1.92,
+        "p50": 1.86,
+        "p95": 3.79,
+        "p99": 3.79,
+        "max": 3.79
+      },
+      "player:state": {
+        "n": 78,
+        "mean": 4.28,
+        "p50": 1.75,
+        "p95": 24.99,
+        "p99": 37.81,
+        "max": 37.81
+      },
+      "player:time": {
+        "n": 1702,
+        "mean": 16.38,
+        "p50": 11.22,
+        "p95": 36.89,
+        "p99": 259.82,
+        "max": 591.16
+      },
+      "player:tracks": {
+        "n": 19,
+        "mean": 2.34,
+        "p50": 0.97,
+        "p95": 21.82,
+        "p99": 21.82,
+        "max": 21.82
+      },
+      "tick-paused": {
+        "n": 90,
+        "mean": 0.67,
+        "p50": 0.63,
+        "p95": 1.56,
+        "p99": 1.98,
+        "max": 1.98
+      },
+      "tick-playing": {
+        "n": 90,
+        "mean": -2.69,
+        "p50": -7.05,
+        "p95": 29.53,
+        "p99": 36.78,
+        "max": 36.78
+      }
+    }
+  },
+  "mode": "gl",
+  "numCPU": 8,
+  "os": "darwin",
+  "rssMB": 200.015625,
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "render mode gl (1), hdr=0; render context up in 47ms; CAOpenGLLayer (drawn on setNeedsDisplay); GL_RENDERER=Apple M1 Pro; GL_VERSION=4.1 Metal - 91.7; RGBA8 back buffer; render blocks for target time: yes; libmpv client API 2.5; create+initialize 62ms",
+      "ms": 114
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "/Users/kevinmallari/Developer/staysh/spikes/mpv-render-api/media/test.mp4 loadfile-\u003eplayback-restart=490ms time-pos=1.00 duration=60.00 hwdec=videotoolbox",
+      "ms": 1447
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "time-pos 1.900 -\u003e 1.900 over 600ms while paused; cmd-\u003epause event ms [37.34 37.98 35.09 37.88 33.47]",
+      "ms": 0
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000; cmd-\u003etime-pos event 13.7ms",
+      "ms": 13
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 729
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "ended",
+      "ok": true,
+      "detail": "end-file reason=eof received=true (player:ended emitted)",
+      "ms": 148
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:57588/media.mp4 loadfile-\u003eplayback-restart=51ms time-pos=1.00 duration=60.00 hwdec=videotoolbox",
+      "ms": 1008
+    },
+    {
+      "step": "buffering",
+      "ok": true,
+      "detail": "paused-for-cache true after 4458ms, false again after 4758ms more; percent=100",
+      "ms": 4458
+    },
+    {
+      "step": "resize",
+      "ok": true,
+      "detail": "window 1280x720 -\u003e 960x540: osd 1280x720 -\u003e osd 961x509, last render target 961x509 after 5ms",
+      "ms": 5
+    },
+    {
+      "step": "fullscreen",
+      "ok": true,
+      "detail": "osd 1281x689 -\u003e osd 3841x1571, last render target 3841x1571 after 50ms",
+      "ms": 50
+    },
+    {
+      "step": "hidden",
+      "ok": true,
+      "detail": "minimised 3s: map[framesInFirst2sAfterRestore:62 framesWhileHidden:18 rendersWhileHidden:18 stateWhileHidden:map[active:true key:false visible:false] timePosAdvance:2.9 vo-drops:68]",
+      "ms": 0
+    },
+    {
+      "step": "bench-play",
+      "ok": true,
+      "detail": "/Users/kevinmallari/Developer/staysh/spikes/mpv-render-api/media/bench-1080p60.mp4 loadfile-\u003eplayback-restart=189ms time-pos=1.00 duration=20.00 hwdec=videotoolbox",
+      "ms": 1147
+    },
+    {
+      "step": "bench",
+      "ok": true,
+      "detail": "bench-1080p60.mp4 for 10.0s: cpu% map[WebKit.GPU:3.29 WebKit.Networking:0 WebKit.WebContent:6.69 WindowServer:33.54 self:21.97 total:65.49] (paused map[WebKit.GPU:0 WebKit.Networking:0 WebKit.WebContent:0.25 WindowServer:11.24 self:2.5 total:13.99]); ui thread ms {156 9.62 13.49 17.38 20.63 21.52}; mpv map[current-vo:libmpv decoder-frame-drop-count:0 display-fps: estimated-vf-fps:60.000000 frame-drop-count:0 hwdec-current:videotoolbox mistimed-frame-count:0 video-sync:audio vo-delayed-frame-count:0]; frames/s 60.7, pacing map[expectedMs:16.67 intervalMs:{607 16.67 16.72 20.24 23.64 37.99} late:3 lateShare:0 stddevMs:2.6], render call ms {608 15.66 15.8 18.74 19.77 21.78}, gpu ms {607 0 0 0 0 0}",
+      "ms": 10018
+    },
+    {
+      "step": "play-loop",
+      "ok": true,
+      "detail": "/Users/kevinmallari/Developer/staysh/spikes/mpv-render-api/media/test.mp4 loadfile-\u003eplayback-restart=92ms time-pos=1.00 duration=60.00 hwdec=videotoolbox",
+      "ms": 1048
+    },
+    {
+      "step": "react-events",
+      "ok": true,
+      "detail": "received by React: map[buffering:true:153 ended:eof:1 ended:stop:3 player:buffering:258 player:ended:4 player:state:78 player:time:1610 player:tracks:19 tick-paused:90 tick-playing:90]; missing []",
+      "ms": 0
+    }
+  ],
+  "video": {
+    "bench": {
+      "cpuPausedPct": {
+        "WebKit.GPU": 0,
+        "WebKit.Networking": 0,
+        "WebKit.WebContent": 0.25,
+        "WindowServer": 11.24,
+        "self": 2.5,
+        "total": 13.99
+      },
+      "cpuPct": {
+        "WebKit.GPU": 3.29,
+        "WebKit.Networking": 0,
+        "WebKit.WebContent": 6.69,
+        "WindowServer": 33.54,
+        "self": 21.97,
+        "total": 65.49
+      },
+      "gpuUtilPausedPct": {
+        "n": 8,
+        "mean": 18.75,
+        "p50": 14,
+        "p95": 52,
+        "p99": 52,
+        "max": 52
+      },
+      "gpuUtilPct": {
+        "n": 16,
+        "mean": 47.94,
+        "p50": 47,
+        "p95": 58,
+        "p99": 58,
+        "max": 58
+      },
+      "media": "bench-1080p60.mp4",
+      "mpv": {
+        "current-vo": "libmpv",
+        "decoder-frame-drop-count": 0,
+        "display-fps": "",
+        "estimated-vf-fps": "60.000000",
+        "frame-drop-count": 0,
+        "hwdec-current": "videotoolbox",
+        "mistimed-frame-count": 0,
+        "video-sync": "audio",
+        "vo-delayed-frame-count": 0
+      },
+      "render": {
+        "frames": 608,
+        "framesPerSec": 60.69,
+        "gpuMs": {
+          "n": 607,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "pacing": {
+          "expectedMs": 16.67,
+          "intervalMs": {
+            "n": 607,
+            "mean": 16.67,
+            "p50": 16.72,
+            "p95": 20.24,
+            "p99": 23.64,
+            "max": 37.99
+          },
+          "late": 3,
+          "lateShare": 0,
+          "stddevMs": 2.6
+        },
+        "renderCallMs": {
+          "n": 608,
+          "mean": 15.66,
+          "p50": 15.8,
+          "p95": 18.74,
+          "p99": 19.77,
+          "max": 21.78
+        },
+        "renders": 608,
+        "target": "1281x689"
+      },
+      "secs": 10.02,
+      "uiThreadMs": {
+        "n": 156,
+        "mean": 9.62,
+        "p50": 13.49,
+        "p95": 17.38,
+        "p99": 20.63,
+        "max": 21.52
+      },
+      "uiThreadPausedMs": {
+        "n": 73,
+        "mean": 0.16,
+        "p50": 0.1,
+        "p95": 0.51,
+        "p99": 2.37,
+        "max": 2.37
+      },
+      "videoFps": 60,
+      "windowState": {
+        "end": {
+          "active": true,
+          "key": true,
+          "visible": true
+        },
+        "start": {
+          "active": true,
+          "key": true,
+          "visible": true
+        }
+      }
+    },
+    "fullscreen": {
+      "after": "osd 3841x1571, last render target 3841x1571",
+      "match": true,
+      "ms": 50
+    },
+    "hidden": {
+      "framesInFirst2sAfterRestore": 62,
+      "framesWhileHidden": 18,
+      "rendersWhileHidden": 18,
+      "stateWhileHidden": {
+        "active": true,
+        "key": false,
+        "visible": false
+      },
+      "timePosAdvance": 2.9,
+      "vo-drops": 68
+    },
+    "inputHitTest": [
+      "NSKVONotifying_WKWebView",
+      "NSKVONotifying_WKWebView",
+      "NSKVONotifying_WKWebView",
+      "NSKVONotifying_WKWebView"
+    ],
+    "resize": {
+      "after": "osd 961x509, last render target 961x509",
+      "match": true,
+      "ms": 5
+    }
+  }
+}

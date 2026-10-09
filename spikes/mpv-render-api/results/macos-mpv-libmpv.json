@@ -1,0 +1,31 @@
+{
+  "vo": "libmpv",
+  "currentVo": "libmpv",
+  "hwdec": "videotoolbox",
+  "frameDrops": 0,
+  "voDelayed": 0,
+  "playing": {
+    "secs": 9.4,
+    "cpuPct": {
+      "mpv": 17.98,
+      "WindowServer": 54.26,
+      "total": 72.23
+    },
+    "gpuUtilPct": {
+      "n": 17,
+      "mean": 52.12
+    }
+  },
+  "paused": {
+    "secs": 3.98,
+    "cpuPct": {
+      "mpv": 0.75,
+      "WindowServer": 52.76,
+      "total": 53.52
+    },
+    "gpuUtilPct": {
+      "n": 7,
+      "mean": 49.57
+    }
+  }
+}

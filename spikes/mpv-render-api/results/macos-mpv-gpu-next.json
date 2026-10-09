@@ -1,0 +1,31 @@
+{
+  "vo": "gpu-next",
+  "currentVo": "gpu-next",
+  "hwdec": "videotoolbox",
+  "frameDrops": 2,
+  "voDelayed": 0,
+  "playing": {
+    "secs": 9.9,
+    "cpuPct": {
+      "mpv": 20.71,
+      "WindowServer": 58.59,
+      "total": 79.29
+    },
+    "gpuUtilPct": {
+      "n": 18,
+      "mean": 52.17
+    }
+  },
+  "paused": {
+    "secs": 3.95,
+    "cpuPct": {
+      "mpv": 1.27,
+      "WindowServer": 55.7,
+      "total": 56.96
+    },
+    "gpuUtilPct": {
+      "n": 7,
+      "mean": 47.71
+    }
+  }
+}
