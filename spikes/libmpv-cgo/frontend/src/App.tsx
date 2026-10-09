@@ -40,14 +40,19 @@ const fmt = (t?: number) => {
 // smallest RTT (NTP-style).
 
 const nowMs = () => performance.timeOrigin + performance.now();
+// Events emitted before this module ran were queued by Wails while the page
+// loaded; they're counted separately ("<name>:before-ready").
+const readyAt = nowMs();
 let offsetMs = 0; // Go clock minus JS clock
 let samples: Record<string, number[]> = {};
 let counts: Record<string, number> = {};
 const sample = (name: string, ms: number) => (samples[name] ??= []).push(Math.round(ms * 1000) / 1000);
 const count = (name: string) => (counts[name] = (counts[name] ?? 0) + 1);
 const delivered = (name: string, ev: Stamped) => {
+  const emitted = ev.ts / 1000 - offsetMs;
+  if (emitted < readyAt) name += ":before-ready";
   count(name);
-  sample(name, nowMs() - (ev.ts / 1000 - offsetMs));
+  sample(name, nowMs() - emitted);
 };
 
 async function calibrate(n: number) {
@@ -136,6 +141,7 @@ function Overlay() {
         }
         if (e.data.name === "path") setEnded(null);
       }),
+      Events.On("spike:tick", (e: { data: Stamped & { label: string } }) => delivered(e.data.label, e.data)),
       Events.On("spike:info", (e: { data: Info }) => setInfo(e.data)),
       Events.On("spike:flush", () => flush(true)),
     ];

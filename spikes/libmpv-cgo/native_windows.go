@@ -42,6 +42,7 @@ const (
 	wsVisible      = 0x10000000
 	wsDisabled     = 0x08000000
 	wsClipSiblings = 0x04000000
+	wsClipChildren = 0x02000000
 	ssBlackRect    = 0x00000004
 	mpvWindowClass = "mpv"
 )
@@ -65,11 +66,17 @@ func videoTarget(p *Player) nativeTarget {
 	// A disabled, black STATIC child at the bottom of the z-order. mpv creates
 	// its own window inside it, so mpv can never end up above WebView2's
 	// HWND, even when it recreates its window, and hit-testing skips it.
+	// WS_CLIPCHILDREN stops the STATIC's own (black) paint covering mpv's
+	// window; SPIKE_WIN_CLIPCHILDREN=0 leaves it off to show the difference.
+	style := uintptr(wsChild | wsVisible | wsDisabled | wsClipSiblings | ssBlackRect)
+	if envOr("SPIKE_WIN_CLIPCHILDREN", "1") == "1" {
+		style |= wsClipChildren
+	}
 	application.InvokeSync(func() {
 		w, h := clientSize(host)
 		cls, _ := syscall.UTF16PtrFromString("STATIC")
 		container, _, _ = procCreateWindow.Call(0, uintptr(unsafe.Pointer(cls)), 0,
-			wsChild|wsVisible|wsDisabled|wsClipSiblings|ssBlackRect, 0, 0, uintptr(w), uintptr(h), host, 0, 0, 0)
+			style, 0, 0, uintptr(w), uintptr(h), host, 0, 0, 0)
 		procSetWindowPos.Call(container, hwndBottom, 0, 0, 0, 0, swpNoSize|swpNoMove|swpNoActivate)
 	})
 	if container == 0 {

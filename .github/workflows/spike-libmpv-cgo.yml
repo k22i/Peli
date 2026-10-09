@@ -98,7 +98,9 @@ jobs:
           # wid = Wails HWND, mpv's HWND then pushed to HWND_BOTTOM and disabled (#2's fix).
           - { mode: single, name: windows-window-bottom, host: window, zorder: bottom, disable: "1" }
           # wid = our own disabled child HWND, created at HWND_BOTTOM before mpv starts.
-          - { mode: single, name: windows-container, host: container, zorder: none, disable: "0" }
+          - { mode: single, name: windows-container, host: container, zorder: none, disable: "0", clip: "1" }
+          # Same container without WS_CLIPCHILDREN (its own paint covers mpv's window).
+          - { mode: single, name: windows-container-noclip, host: container, zorder: none, disable: "0", clip: "0" }
           # WebView2 visual hosting (DirectComposition target is topmost).
           - { mode: composition, name: windows-composition, host: window, zorder: none, disable: "0" }
     steps:
@@ -118,6 +120,7 @@ jobs:
           SPIKE_WIN_HOST: ${{ matrix.host }}
           SPIKE_WIN_ZORDER: ${{ matrix.zorder }}
           SPIKE_WIN_DISABLE: ${{ matrix.disable }}
+          SPIKE_WIN_CLIPCHILDREN: ${{ matrix.clip || '1' }}
           SPIKE_MPV_ARGS: --ao=null
           SPIKE_REMOTE_URL: https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4
         run: ./scripts/windows/run.ps1 -Mode ${{ matrix.mode }} -Name ${{ matrix.name }}

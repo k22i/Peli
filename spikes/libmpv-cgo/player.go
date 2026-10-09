@@ -549,7 +549,9 @@ func (p *Player) playStep(step, url string) {
 		p.record(step, false, err.Error(), 0)
 		return
 	}
-	d, ok := waitFor(20*time.Second, func() bool { return p.num("time-pos") >= 1.0 })
+	// loadfile is asynchronous: wait for the new path so a time-pos from the
+	// previous file can't satisfy the check.
+	d, ok := waitFor(20*time.Second, func() bool { return p.prop("path") == url && p.num("time-pos") >= 1.0 })
 	p.mu.Lock()
 	restart := p.lastRestart
 	p.mu.Unlock()
@@ -598,6 +600,10 @@ func (p *Player) selftest(out string) {
 	p.record("pause", ok && math.Abs(after-before) < 0.05,
 		fmt.Sprintf("time-pos %.3f -> %.3f over 600ms while paused; cmd->pause event ms %v", before, after, roundAll(pauseMs)), 0)
 
+	// Bridge cost without mpv in the way: 30 Hz synthetic events while
+	// paused (decoder and VO idle), then again while playing.
+	p.ticks("tick-paused", 90)
+
 	ms, ok := p.timedCommand("cmd->seek", "time-pos",
 		func() bool { t := p.num("time-pos"); return t >= 19.5 && t <= 21.5 }, "seek", "20", "absolute")
 	p.record("seek", ok, fmt.Sprintf("seek 20 absolute -> time-pos=%.3f; cmd->time-pos event %.1fms", p.num("time-pos"), ms), int64(ms))
@@ -605,6 +611,8 @@ func (p *Player) selftest(out string) {
 	_ = p.cmd("set", "pause", "no")
 	d, ok := waitFor(3*time.Second, func() bool { return p.prop("pause") == false && p.num("time-pos") > 20.5 })
 	p.record("resume", ok, fmt.Sprintf("pause=%v time-pos=%.3f", p.prop("pause"), p.num("time-pos")), d.Milliseconds())
+
+	p.ticks("tick-playing", 90)
 
 	_ = p.SetTrack("aid", "2")
 	time.Sleep(300 * time.Millisecond)
@@ -676,6 +684,14 @@ func (p *Player) selftest(out string) {
 	}
 }
 
+// ticks emits n "spike:tick" events at 30 Hz, stamped like player events.
+func (p *Player) ticks(label string, n int) {
+	for i := 0; i < n; i++ {
+		p.app.Event.Emit("spike:tick", map[string]any{"label": label, "ts": time.Now().UnixMicro()})
+		time.Sleep(33 * time.Millisecond)
+	}
+}
+
 // flushFrontend asks React for its remaining latency samples and waits for them.
 func (p *Player) flushFrontend() {
 	ch := make(chan struct{})
@@ -743,6 +759,7 @@ func (p *Player) writeResults(out string) {
 		"eventsEmitted":  p.emitted,
 		"eventsReceived": p.jsCounts,
 		"rssMB":          rssMB(),
+		"numCPU":         runtime.NumCPU(),
 		"env": map[string]string{
 			"XDG_SESSION_TYPE": os.Getenv("XDG_SESSION_TYPE"),
 			"GDK_BACKEND":      os.Getenv("GDK_BACKEND"),
