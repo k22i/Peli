@@ -1,0 +1,333 @@
+{
+  "arch": "amd64",
+  "env": {
+    "DISPLAY": "",
+    "GDK_BACKEND": "",
+    "LANG": "",
+    "LC_ALL": "",
+    "XDG_SESSION_TYPE": ""
+  },
+  "eventsEmitted": {
+    "player:buffering": 162,
+    "player:ended": 4,
+    "player:state": 62,
+    "player:time": 605,
+    "player:tracks": 22
+  },
+  "eventsReceived": {
+    "buffering:true": 23,
+    "ended:eof": 1,
+    "ended:stop": 3,
+    "player:buffering": 138,
+    "player:buffering:before-ready": 20,
+    "player:ended": 4,
+    "player:state": 44,
+    "player:state:before-ready": 18,
+    "player:time": 526,
+    "player:time:before-ready": 45,
+    "player:tracks": 18,
+    "player:tracks:before-ready": 4,
+    "tick-paused": 90,
+    "tick-playing": 90
+  },
+  "info": {
+    "os": "windows",
+    "mode": "composition",
+    "host": "window",
+    "wid": 393572,
+    "widKind": "HWND",
+    "clientApi": "2.5",
+    "mpvVersion": "mpv v0.41.0-1109-g36abaa32d",
+    "mpvConfiguration": "-Dprefix=/__w/mpv-winbuild-cmake/mpv-winbuild-cmake/build_x86_64/x86_64-w64-mingw32 -Dlibdir=/__w/mpv-winbuild-cmake/mpv-winbuild-cmake/build_x86_64/x86_64-w64-mingw32/lib -Ddefault_library=shared -Dprefer_static=true -Ddebug=true -Db_ndebug=true -Doptimization=3 -Db_lto=true -Db_lto_mode=thin -Dlibmpv=true -Dpdf-build=enabled -Dlua=enabled -Djavascript=enabled -Dsdl2-gamepad=enabled -Dlibarchive=enabled -Dlibbluray=enabled -Ddvdnav=enabled -Duchardet=enabled -Drubberband=enabled -Dlcms2=enabled -Dopenal=enabled -Dspirv-cross=enabled -Dvulkan=enabled -Dvapoursynth=enabled -Dsubrandr=enabled -Dsixel=enabled -Dgl=enabled -Degl-angle=enabled -Dlibcurl=enabled -Dc_args=-Wno-error=int-conversion --cross-file=/__w/mpv-winbuild-cmake/mpv-winbuild-cmake/build_x86_64/meson_cross.txt",
+    "embed": {
+      "childrenAfter": [
+        "mpv(0x2016c vis=0 72,109 944x501)",
+        "Chrome_WidgetWin_0(0x30060 vis=0 72,109 0x0)"
+      ],
+      "childrenBefore": [
+        "mpv(0x2016c vis=0 72,109 944x501)",
+        "Chrome_WidgetWin_0(0x30060 vis=0 72,109 0x0)"
+      ],
+      "embedded": true,
+      "hostHwnd": "0x60164",
+      "mpvDisabled": false,
+      "mpvHwnd": "0x2016c",
+      "mpvParent": "0x60164",
+      "mpvRect": "72,109 944x501",
+      "verdict": "mpv window is a child of the wid HWND (window)",
+      "videoHost": "window",
+      "widHwnd": "0x60164",
+      "zorder": "none"
+    },
+    "httpUrl": "http://127.0.0.1:57352/media.mp4",
+    "slowUrl": "http://127.0.0.1:57352/slow.mp4",
+    "localFile": "D:\\a\\Staysh\\Staysh\\spikes\\libmpv-cgo\\media\\test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @472,250",
+      "window": "overlay",
+      "at": "10:42:06.174"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "10:42:06.767"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "10:42:07.307"
+    },
+    {
+      "kind": "click",
+      "detail": "stage @755,200",
+      "window": "overlay",
+      "at": "10:42:08.166"
+    },
+    {
+      "kind": "keydown",
+      "detail": "x",
+      "window": "overlay",
+      "at": "10:42:09.633"
+    }
+  ],
+  "latencyMs": {
+    "clockOffsetMs": [
+      -3.63,
+      0.07,
+      47.83,
+      61.89,
+      30.87,
+      0.35,
+      0.26,
+      0.47,
+      1.26,
+      11.08,
+      0.67,
+      -6.67,
+      19.84,
+      -27.56,
+      -27.56,
+      -3.02,
+      13.13
+    ],
+    "go": {
+      "cmd-\u003epause": {
+        "n": 10,
+        "mean": 40.69,
+        "p50": 37.57,
+        "p95": 93.02,
+        "p99": 93.02,
+        "max": 93.02
+      },
+      "cmd-\u003eseek": {
+        "n": 1,
+        "mean": 0.52,
+        "p50": 0.52,
+        "p95": 0.52,
+        "p99": 0.52,
+        "max": 0.52
+      }
+    },
+    "react": {
+      "call-rtt": {
+        "n": 88,
+        "mean": 86.93,
+        "p50": 68.5,
+        "p95": 215.7,
+        "p99": 652.7,
+        "max": 652.7
+      },
+      "click-\u003epause": {
+        "n": 2,
+        "mean": 103,
+        "p50": 189.7,
+        "p95": 189.7,
+        "p99": 189.7,
+        "max": 189.7
+      },
+      "player:buffering": {
+        "n": 138,
+        "mean": 36.48,
+        "p50": 26.57,
+        "p95": 111.77,
+        "p99": 198.45,
+        "max": 437.27
+      },
+      "player:buffering:before-ready": {
+        "n": 20,
+        "mean": 4614.89,
+        "p50": 4851.61,
+        "p95": 6170.8,
+        "p99": 6170.8,
+        "max": 6170.8
+      },
+      "player:ended": {
+        "n": 4,
+        "mean": 12.27,
+        "p50": 22.56,
+        "p95": 22.92,
+        "p99": 22.92,
+        "max": 22.92
+      },
+      "player:state": {
+        "n": 44,
+        "mean": 45.92,
+        "p50": 31.8,
+        "p95": 108.77,
+        "p99": 510.66,
+        "max": 510.66
+      },
+      "player:state:before-ready": {
+        "n": 18,
+        "mean": 4699.54,
+        "p50": 5683.43,
+        "p95": 6178.74,
+        "p99": 6178.74,
+        "max": 6178.74
+      },
+      "player:time": {
+        "n": 526,
+        "mean": 51.59,
+        "p50": 39.09,
+        "p95": 120.62,
+        "p99": 232.17,
+        "max": 540.53
+      },
+      "player:time:before-ready": {
+        "n": 45,
+        "mean": 3517.38,
+        "p50": 3383.98,
+        "p95": 5674.03,
+        "p99": 5827.4,
+        "max": 5827.4
+      },
+      "player:tracks": {
+        "n": 18,
+        "mean": 27.23,
+        "p50": 16.3,
+        "p95": 100.47,
+        "p99": 100.47,
+        "max": 100.47
+      },
+      "player:tracks:before-ready": {
+        "n": 4,
+        "mean": 5806.89,
+        "p50": 5851.4,
+        "p95": 6208.24,
+        "p99": 6208.24,
+        "max": 6208.24
+      },
+      "tick-paused": {
+        "n": 90,
+        "mean": -0.47,
+        "p50": -2.91,
+        "p95": 4.4,
+        "p99": 38.66,
+        "max": 38.66
+      },
+      "tick-playing": {
+        "n": 90,
+        "mean": 68.79,
+        "p50": 71.4,
+        "p95": 125.72,
+        "p99": 155.48,
+        "max": 155.48
+      }
+    }
+  },
+  "mode": "composition",
+  "numCPU": 2,
+  "os": "windows",
+  "rssMB": 169.890625,
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "wid=393572 (HWND, window); top-level HWND of the Wails window; libmpv client API 2.5; create+initialize 10ms",
+      "ms": 392
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\libmpv-cgo\\media\\test.mp4 loadfile-\u003eplayback-restart=1449ms time-pos=1.03 duration=60.00 hwdec=no",
+      "ms": 3338
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "time-pos 2.233 -\u003e 2.233 over 600ms while paused; cmd-\u003epause event ms [49.92 93.02 2.1 29.57 28.6]",
+      "ms": 0
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000; cmd-\u003etime-pos event 0.5ms",
+      "ms": 0
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 784
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "ended",
+      "ok": true,
+      "detail": "end-file reason=eof received=true (player:ended emitted)",
+      "ms": 1444
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:57352/media.mp4 loadfile-\u003eplayback-restart=377ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1495
+    },
+    {
+      "step": "buffering",
+      "ok": true,
+      "detail": "paused-for-cache true after 1989ms, false again after 1848ms more; percent=100",
+      "ms": 1989
+    },
+    {
+      "step": "play-remote",
+      "ok": true,
+      "detail": "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4 loadfile-\u003eplayback-restart=593ms time-pos=1.00 duration=10.00 hwdec=no",
+      "ms": 1802
+    },
+    {
+      "step": "play-loop",
+      "ok": true,
+      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\libmpv-cgo\\media\\test.mp4 loadfile-\u003eplayback-restart=580ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1645
+    },
+    {
+      "step": "react-events",
+      "ok": true,
+      "detail": "received by React: map[buffering:true:23 ended:eof:1 ended:stop:3 player:buffering:129 player:buffering:before-ready:20 player:ended:4 player:state:44 player:state:before-ready:18 player:time:469 player:time:before-ready:45 player:tracks:18 player:tracks:before-ready:4 tick-paused:90 tick-playing:90]; missing []",
+      "ms": 0
+    }
+  ]
+}

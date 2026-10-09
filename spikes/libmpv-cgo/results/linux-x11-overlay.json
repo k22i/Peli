@@ -1,0 +1,319 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": ":99",
+    "GDK_BACKEND": "x11",
+    "LANG": "",
+    "LC_ALL": "",
+    "XDG_SESSION_TYPE": "x11"
+  },
+  "eventsEmitted": {
+    "player:buffering": 109,
+    "player:ended": 3,
+    "player:state": 52,
+    "player:time": 611,
+    "player:tracks": 18
+  },
+  "eventsReceived": {
+    "buffering:true": 23,
+    "ended:eof": 1,
+    "ended:stop": 2,
+    "player:buffering": 99,
+    "player:buffering:before-ready": 9,
+    "player:ended": 3,
+    "player:state": 43,
+    "player:state:before-ready": 9,
+    "player:time": 579,
+    "player:time:before-ready": 4,
+    "player:tracks": 15,
+    "player:tracks:before-ready": 3,
+    "tick-paused": 90,
+    "tick-playing": 90
+  },
+  "info": {
+    "os": "linux",
+    "mode": "overlay",
+    "host": "window",
+    "wid": 10485768,
+    "widKind": "X11 Window",
+    "clientApi": "2.5",
+    "mpvVersion": "mpv v0.40.0",
+    "mpvConfiguration": "-Dpython.bytecompile=-1 -Dlibmpv=true -Dbuild-date=false -Dcdda=enabled -Ddvdnav=enabled -Dsdl2=enabled -Ddvbin=enabled -Dprefix=/usr -Dlibdir=lib/aarch64-linux-gnu -Dlocalstatedir=/var -Dsysconfdir=/etc -Dbuildtype=plain -Dwrap_mode=nodownload",
+    "locale": {
+      "lcNumericAfter": "C",
+      "lcNumericBefore": "C"
+    },
+    "embed": {
+      "embedded": true,
+      "hostKind": "X11 Window",
+      "hostWid": 10485768,
+      "mpvGeometry": "0,0 1280x720",
+      "mpvMapped": true,
+      "mpvParent": 10485768,
+      "mpvWindowId": 12582914,
+      "verdict": "mpv window is a child of the Wails toplevel"
+    },
+    "httpUrl": "http://127.0.0.1:45825/media.mp4",
+    "slowUrl": "http://127.0.0.1:45825/slow.mp4",
+    "localFile": "/spike/media/test.mp4"
+  },
+  "inputs": [
+    {
+      "kind": "click",
+      "detail": "probe @640,360",
+      "window": "overlay",
+      "at": "10:38:51.531"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "10:38:52.033"
+    },
+    {
+      "kind": "click",
+      "detail": "play/pause",
+      "window": "overlay",
+      "at": "10:38:52.748"
+    },
+    {
+      "kind": "click",
+      "detail": "stage @1000,250",
+      "window": "overlay",
+      "at": "10:38:53.454"
+    },
+    {
+      "kind": "keydown",
+      "detail": "x",
+      "window": "overlay",
+      "at": "10:38:53.972"
+    }
+  ],
+  "latencyMs": {
+    "clockOffsetMs": [
+      0.88,
+      1.26,
+      1.38,
+      1.01,
+      1.06,
+      1.02,
+      1.73,
+      1.18,
+      1.92,
+      1.23,
+      1.41,
+      1.41,
+      0.98,
+      1.38,
+      1.69
+    ],
+    "go": {
+      "cmd-\u003epause": {
+        "n": 10,
+        "mean": 0.26,
+        "p50": 0.28,
+        "p95": 0.34,
+        "p99": 0.34,
+        "max": 0.34
+      },
+      "cmd-\u003eseek": {
+        "n": 1,
+        "mean": 1.64,
+        "p50": 1.64,
+        "p95": 1.64,
+        "p99": 1.64,
+        "max": 1.64
+      }
+    },
+    "react": {
+      "call-rtt": {
+        "n": 82,
+        "mean": 3.32,
+        "p50": 2,
+        "p95": 10,
+        "p99": 50,
+        "max": 50
+      },
+      "click-\u003epause": {
+        "n": 2,
+        "mean": 2.5,
+        "p50": 3,
+        "p95": 3,
+        "p99": 3,
+        "max": 3
+      },
+      "player:buffering": {
+        "n": 99,
+        "mean": 2.06,
+        "p50": 1.37,
+        "p95": 4.56,
+        "p99": 37.61,
+        "max": 37.61
+      },
+      "player:buffering:before-ready": {
+        "n": 9,
+        "mean": 122.3,
+        "p50": 101.4,
+        "p95": 151.09,
+        "p99": 151.09,
+        "max": 151.09
+      },
+      "player:ended": {
+        "n": 3,
+        "mean": 2.11,
+        "p50": 1.1,
+        "p95": 4.35,
+        "p99": 4.35,
+        "max": 4.35
+      },
+      "player:state": {
+        "n": 43,
+        "mean": 2.19,
+        "p50": 1.22,
+        "p95": 6.02,
+        "p99": 6.48,
+        "max": 6.48
+      },
+      "player:state:before-ready": {
+        "n": 9,
+        "mean": 137.55,
+        "p50": 147.44,
+        "p95": 151.08,
+        "p99": 151.08,
+        "max": 151.08
+      },
+      "player:time": {
+        "n": 579,
+        "mean": 1.21,
+        "p50": 0.81,
+        "p95": 2.14,
+        "p99": 8.22,
+        "max": 76.85
+      },
+      "player:time:before-ready": {
+        "n": 4,
+        "mean": 125.04,
+        "p50": 149.19,
+        "p95": 150.1,
+        "p99": 150.1,
+        "max": 150.1
+      },
+      "player:tracks": {
+        "n": 15,
+        "mean": 2.62,
+        "p50": 1.94,
+        "p95": 6.53,
+        "p99": 6.53,
+        "max": 6.53
+      },
+      "player:tracks:before-ready": {
+        "n": 3,
+        "mean": 128.05,
+        "p50": 131.65,
+        "p95": 151.09,
+        "p99": 151.09,
+        "max": 151.09
+      },
+      "tick-paused": {
+        "n": 90,
+        "mean": 1.89,
+        "p50": 1.72,
+        "p95": 3.84,
+        "p99": 4.6,
+        "max": 4.6
+      },
+      "tick-playing": {
+        "n": 90,
+        "mean": 1.11,
+        "p50": 0.83,
+        "p95": 3.69,
+        "p99": 5.23,
+        "max": 5.23
+      }
+    }
+  },
+  "mode": "overlay",
+  "numCPU": 6,
+  "os": "linux",
+  "rssMB": 540.59765625,
+  "steps": [
+    {
+      "step": "launch",
+      "ok": true,
+      "detail": "wid=10485768 (X11 Window, window); GdkX11Surface XID of the GTK4 toplevel; libmpv client API 2.5; create+initialize 6ms",
+      "ms": 71
+    },
+    {
+      "step": "play-local",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 loadfile-\u003eplayback-restart=286ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1247
+    },
+    {
+      "step": "observe",
+      "ok": true,
+      "detail": "duration=60.00 pause=false tracks=map[audio:2 sub:1 video:1]",
+      "ms": 0
+    },
+    {
+      "step": "video-out",
+      "ok": true,
+      "detail": "vo-configured=true video-params=true",
+      "ms": 0
+    },
+    {
+      "step": "pause",
+      "ok": true,
+      "detail": "time-pos 1.767 -\u003e 1.767 over 600ms while paused; cmd-\u003epause event ms [0.21 0.24 0.32 0.2 0.18]",
+      "ms": 0
+    },
+    {
+      "step": "seek",
+      "ok": true,
+      "detail": "seek 20 absolute -\u003e time-pos=20.000; cmd-\u003etime-pos event 1.6ms",
+      "ms": 1
+    },
+    {
+      "step": "resume",
+      "ok": true,
+      "detail": "pause=false time-pos=20.533",
+      "ms": 559
+    },
+    {
+      "step": "track-switch",
+      "ok": true,
+      "detail": "set aid=2 -\u003e aid=2",
+      "ms": 0
+    },
+    {
+      "step": "ended",
+      "ok": true,
+      "detail": "end-file reason=eof received=true (player:ended emitted)",
+      "ms": 1489
+    },
+    {
+      "step": "play-http",
+      "ok": true,
+      "detail": "http://127.0.0.1:45825/media.mp4 loadfile-\u003eplayback-restart=125ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1022
+    },
+    {
+      "step": "buffering",
+      "ok": true,
+      "detail": "paused-for-cache true after 1761ms, false again after 1669ms more; percent=100",
+      "ms": 1761
+    },
+    {
+      "step": "play-loop",
+      "ok": true,
+      "detail": "/spike/media/test.mp4 loadfile-\u003eplayback-restart=152ms time-pos=1.00 duration=60.00 hwdec=no",
+      "ms": 1109
+    },
+    {
+      "step": "react-events",
+      "ok": true,
+      "detail": "received by React: map[buffering:true:23 ended:eof:1 ended:stop:2 player:buffering:87 player:buffering:before-ready:9 player:ended:3 player:state:43 player:state:before-ready:9 player:time:426 player:time:before-ready:4 player:tracks:15 player:tracks:before-ready:3 tick-paused:90 tick-playing:90]; missing []",
+      "ms": 0
+    }
+  ]
+}

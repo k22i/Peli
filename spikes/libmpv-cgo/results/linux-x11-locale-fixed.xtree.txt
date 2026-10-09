@@ -1,0 +1,124 @@
+
+xwininfo: Window id: 0x21f (the root window) (has no name)
+
+  Root window id: 0x21f (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     15 children:
+     0xa00002 "spike-linux": ("spike-linux" "spike-linux")  1x1+0+0  +0+0
+        1 child:
+        0xa00003 (has no name): ()  1x1+-1+-1  +-1+-1
+     0x600001 (has no name): ()  10x10+-20+-20  +-20+-20
+     0x200004 "picom": ("picom" "picom")  1x1+0+0  +0+0
+     0x40011f "Openbox": ("" (none))  1x1+-100+-100  +-100+-100
+     0x400173 (has no name): ()  1x1+0+0  +0+0
+        1 child:
+        0x400174 (has no name): ()  1x1+0+0  +1+1
+     0x400171 (has no name): ()  1x1+0+0  +0+0
+        1 child:
+        0x400172 (has no name): ()  1x1+0+0  +1+1
+     0x40016e (has no name): ()  1x1+0+0  +0+0
+        1 child:
+        0x40016f (has no name): ()  1x1+0+0  +1+1
+     0x40016a (has no name): ("OPENBOX_FOCUS_CYCLE_POPUP" "OPENBOX_FOCUS_CYCLE_POPUP")  1x1+0+0  +0+0
+        3 children:
+        0x40016d (has no name): ()  1x1+0+0  +1+1
+        0x40016c (has no name): ()  1x1+0+0  +1+1
+        0x40016b (has no name): ()  1x1+0+0  +1+1
+     0x400167 (has no name): ()  1x1+0+0  +0+0
+        2 children:
+        0x400169 (has no name): ()  1x1+0+0  +1+1
+        0x400168 (has no name): ()  1x1+0+0  +1+1
+     0x400166 (has no name): ()  1x1+0+0  +0+0
+     0x400165 (has no name): ()  1x1+0+0  +0+0
+     0x400164 (has no name): ()  1x1+0+0  +0+0
+     0x400163 (has no name): ()  1x1+0+0  +0+0
+     0x400170 (has no name): ()  1x1+0+0  +0+0
+     0x400176 (has no name): ()  1282x745+0+0  +0+0
+        56 children:
+        0xa00004 "Staysh spike: libmpv (single)": ("spike-linux" "spike-linux")  1280x720+1+20  +1+20
+           2 children:
+           0xc00002 (has no name): ("gl" "mpv")  1280x720+0+0  +1+20
+           0xa00005 (has no name): ()  1x1+-1+-1  +0+19
+        0x4001c2 (has no name): ()  1x1+0+0  +0+0
+        0x4001c1 (has no name): ()  1x1+0+0  +0+0
+        0x4001c0 (has no name): ()  1x1+0+0  +0+0
+        0x4001bf (has no name): ()  1x1+0+0  +0+0
+        0x4001be (has no name): ()  1x1+0+0  +0+0
+        0x4001bd (has no name): ()  1x1+0+0  +0+0
+        0x4001bc (has no name): ()  1x1+0+0  +0+0
+        0x4001bb (has no name): ()  1x1+0+0  +0+0
+        0x4001ba (has no name): ()  1x1+0+0  +0+0
+        0x4001b9 (has no name): ()  1x1+0+0  +0+0
+        0x4001b8 (has no name): ()  1x1+0+0  +0+0
+        0x4001b7 (has no name): ()  1x1+0+0  +0+0
+        0x4001b6 (has no name): ()  1x1+0+0  +0+0
+        0x4001b5 (has no name): ()  1x1+0+0  +0+0
+        0x4001b4 (has no name): ()  1x1+0+0  +0+0
+        0x4001b3 (has no name): ()  1x1+0+0  +0+0
+        0x4001b2 (has no name): ()  1x1+0+0  +0+0
+        0x4001b1 (has no name): ()  1x1+0+0  +0+0
+        0x4001b0 (has no name): ()  1x1+0+0  +0+0
+        0x4001af (has no name): ()  1x1+0+0  +0+0
+        0x4001ae (has no name): ()  1x1+0+0  +0+0
+        0x4001ad (has no name): ()  1x1+0+0  +0+0
+        0x4001ac (has no name): ()  1x1+0+0  +0+0
+        0x4001ab (has no name): ()  1x1+0+0  +0+0
+        0x4001aa (has no name): ()  1x1+0+0  +0+0
+        0x4001a9 (has no name): ()  1x1+0+0  +0+0
+        0x4001a8 (has no name): ()  1x1+0+0  +0+0
+        0x4001a7 (has no name): ()  1x1+0+0  +0+0
+        0x4001a6 (has no name): ()  1x1+0+0  +0+0
+        0x4001a5 (has no name): ()  1x1+0+0  +0+0
+        0x4001a4 (has no name): ()  1x1+0+0  +0+0
+        0x4001a3 (has no name): ()  1x1+0+0  +0+0
+        0x4001a2 (has no name): ()  26x1+1255+744  +1255+744
+        0x4001a1 (has no name): ()  26x1+1255+740  +1255+740
+        0x4001a0 (has no name): ()  1x25+1281+720  +1281+720
+        0x40019f (has no name): ()  26x1+1+744  +1+744
+        0x40019e (has no name): ()  26x1+1+740  +1+740
+        0x40019d (has no name): ()  1x25+0+720  +0+720
+        0x40019c (has no name): ()  1228x1+27+744  +27+744
+        0x40019b (has no name): ()  1228x1+27+740  +27+740
+        0x400196 (has no name): ()  1280x3+1+741  +1+741
+           4 children:
+           0x40019a (has no name): ()  1x3+1254+0  +1255+741
+           0x400199 (has no name): ()  1x3+25+0  +26+741
+           0x400198 (has no name): ()  25x3+1255+0  +1256+741
+           0x400197 (has no name): ()  25x3+0+0  +1+741
+        0x40018e (has no name): ()  1x695+1281+26  +1281+26
+        0x40018d (has no name): ()  1x695+0+26  +0+26
+        0x400187 (has no name): ()  1280x1+1+19  +1+19
+        0x400186 (has no name): ()  1x25+1281+1  +1281+1
+        0x400185 (has no name): ()  26x1+1256+0  +1256+0
+        0x400184 (has no name): ()  26x1+0+0  +0+0
+        0x400183 (has no name): ()  1230x1+26+0  +26+0
+        0x400182 (has no name): ()  1x25+0+1  +0+1
+        0x400181 (has no name): ()  1280x18+1+1  +1+1
+           12 children:
+           0x400195 (has no name): ()  12x12+1232+3  +1233+4
+           0x400194 (has no name): ()  14x14+4+2  +5+3
+           0x400193 (has no name): ()  12x12+0+0  +1+1
+           0x400192 (has no name): ()  12x12+0+0  +1+1
+           0x400191 (has no name): ()  12x12+1264+3  +1265+4
+           0x400190 (has no name): ()  12x12+1248+3  +1249+4
+           0x40018f (has no name): ()  1176x14+52+2  +53+3
+           0x40018c (has no name): ()  4x18+1276+0  +1277+1
+           0x40018b (has no name): ()  25x3+1255+0  +1256+1
+           0x40018a (has no name): ()  4x18+0+0  +1+1
+           0x400189 (has no name): ()  25x3+0+0  +1+1
+           0x400188 (has no name): ()  1230x3+25+0  +26+1
+        0x40017c (has no name): ()  1x1+0+0  +0+0
+           2 children:
+           0x40017e (has no name): ()  1x1+0+0  +0+0
+           0x40017d (has no name): ()  1x1+0+0  +0+0
+        0x40017b (has no name): ()  1x1+0+0  +0+0
+           1 child:
+           0x400180 (has no name): ()  1x1+0+0  +0+0
+        0x40017a (has no name): ()  1x1+0+0  +0+0
+        0x400179 (has no name): ()  1x1+0+0  +0+0
+           1 child:
+           0x40017f (has no name): ()  1x1+0+0  +0+0
+        0x400177 (has no name): ()  1280x720+1+20  +1+20
+           1 child:
+           0x400178 (has no name): ()  1280x720+0+0  +1+20
+

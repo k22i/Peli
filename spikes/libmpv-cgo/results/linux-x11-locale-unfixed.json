@@ -1,0 +1,48 @@
+{
+  "arch": "arm64",
+  "env": {
+    "DISPLAY": ":99",
+    "GDK_BACKEND": "x11",
+    "LANG": "",
+    "LC_ALL": "de_DE.UTF-8",
+    "XDG_SESSION_TYPE": "x11"
+  },
+  "eventsEmitted": {},
+  "eventsReceived": {},
+  "info": {
+    "os": "linux",
+    "mode": "single",
+    "host": "window",
+    "wid": 10485764,
+    "widKind": "X11 Window",
+    "clientApi": "2.5",
+    "mpvVersion": "",
+    "mpvConfiguration": "",
+    "locale": {
+      "lcNumericAfter": "de_DE.UTF-8",
+      "lcNumericBefore": "de_DE.UTF-8"
+    },
+    "embed": null,
+    "httpUrl": "http://127.0.0.1:43941/media.mp4",
+    "slowUrl": "http://127.0.0.1:43941/slow.mp4",
+    "localFile": "/spike/media/test.mp4"
+  },
+  "inputs": null,
+  "latencyMs": {
+    "clockOffsetMs": [],
+    "go": {},
+    "react": {}
+  },
+  "mode": "single",
+  "numCPU": 6,
+  "os": "linux",
+  "rssMB": 212.76171875,
+  "steps": [
+    {
+      "step": "launch",
+      "ok": false,
+      "detail": "mpv_create returned NULL (LC_NUMERIC is not \"C\"?)",
+      "ms": 0
+    }
+  ]
+}
