@@ -53,6 +53,7 @@ We pass the Wails top-level HWND to `mpv_set_option(…, "wid", MPV_FORMAT_INT64
 | ![Windows raw](libmpv-cgo/windows-window-raw.jpg) | ![Windows container](libmpv-cgo/windows-container.jpg) |
 
 (The runner's console window shows through behind the app; that's the runner, not the app.)
+The container without `WS_CLIPCHILDREN` (run 1) looked the same: [screenshot](libmpv-cgo/windows-container-noclipchildren-run1.jpg).
 
 ### Linux X11: works, with a second window for the overlay
 
