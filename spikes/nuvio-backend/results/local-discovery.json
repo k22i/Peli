@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "service": "nuvio",
+  "self_hosted": true,
+  "backend_url": "http://localhost:8000",
+  "publishable_key": "<redacted: public client key>",
+  "capabilities": {
+    "email_password_auth": true,
+    "tv_login": true
+  }
+}

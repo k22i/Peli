@@ -1,0 +1,35 @@
+{
+  "profile": 1,
+  "steps": [
+    {
+      "label": "first",
+      "status": "ok",
+      "newProgressEvent": true,
+      "watchedItemExists": false
+    },
+    {
+      "label": "+5 s position, +5 s clock",
+      "status": "ok",
+      "newProgressEvent": false,
+      "watchedItemExists": false
+    },
+    {
+      "label": "+20 s position, +6 s clock",
+      "status": "ok",
+      "newProgressEvent": true,
+      "watchedItemExists": false
+    },
+    {
+      "label": "+0 s position, +40 s clock",
+      "status": "ok",
+      "newProgressEvent": true,
+      "watchedItemExists": false
+    },
+    {
+      "label": "to 92 % (crosses the watched line)",
+      "status": "ok",
+      "newProgressEvent": true,
+      "watchedItemExists": true
+    }
+  ]
+}

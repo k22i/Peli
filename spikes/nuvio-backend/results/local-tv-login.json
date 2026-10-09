@@ -1,0 +1,188 @@
+{
+  "redirect": "https://nuvio.tv/tv-login",
+  "approvedAfterSec": 13,
+  "steps": [
+    {
+      "fn": "start_tv_login_session",
+      "args": {
+        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9",
+        "p_redirect_base_url": "https://nuvio.tv/tv-login",
+        "p_device_name": "Staysh (spike)"
+      },
+      "status": "ok",
+      "ms": 21,
+      "rows": 1,
+      "shape": [
+        {
+          "code": "string",
+          "web_url": "string",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ]
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "459d1c71c34262e85cd9e317c70dd95a",
+        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9"
+      },
+      "status": "ok",
+      "ms": 13,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 3
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "459d1c71c34262e85cd9e317c70dd95a",
+        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9"
+      },
+      "status": "ok",
+      "ms": 9,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 6
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "459d1c71c34262e85cd9e317c70dd95a",
+        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9"
+      },
+      "status": "ok",
+      "ms": 13,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"approved\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 9
+    },
+    {
+      "fn": "functions/v1/tv-logins-exchange",
+      "shape": {
+        "access_token": "string",
+        "refresh_token": "string",
+        "token_type": "string",
+        "expires_in": "integer"
+      }
+    }
+  ],
+  "traces": [
+    {
+      "at": "2026-10-09T13:49:51.239Z",
+      "label": "start_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/start_tv_login_session",
+      "status": 200,
+      "ms": 19,
+      "headers": {
+        "content-range": "0-0/*",
+        "server": "postgrest/14.12",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "1",
+        "x-kong-request-id": "6d3fa466a65bbb43f59a2b64ebb7ac22",
+        "x-kong-upstream-latency": "11"
+      }
+    },
+    {
+      "at": "2026-10-09T13:49:54.261Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 12,
+      "headers": {
+        "content-range": "0-0/*",
+        "server": "postgrest/14.12",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "2",
+        "x-kong-request-id": "7a34364066c73a1c8b222d6279caa46f",
+        "x-kong-upstream-latency": "5"
+      }
+    },
+    {
+      "at": "2026-10-09T13:49:57.271Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 8,
+      "headers": {
+        "content-range": "0-0/*",
+        "server": "postgrest/14.12",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "0",
+        "x-kong-request-id": "f36ecf768c77752b48c11363dae7b357",
+        "x-kong-upstream-latency": "4"
+      }
+    },
+    {
+      "at": "2026-10-09T13:50:00.284Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 11,
+      "headers": {
+        "content-range": "0-0/*",
+        "server": "postgrest/14.12",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "2",
+        "x-kong-request-id": "a8cd3d171130bc69f756b87af4fa6d2e",
+        "x-kong-upstream-latency": "4"
+      }
+    },
+    {
+      "at": "2026-10-09T13:50:04.093Z",
+      "label": "tv-logins-exchange",
+      "method": "POST",
+      "path": "/functions/v1/tv-logins-exchange",
+      "status": 200,
+      "ms": 3806,
+      "headers": {
+        "server": "kong/3.9.1",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "1",
+        "x-kong-request-id": "0b49a21db81edd6fdcfde4043e9e2813",
+        "x-kong-upstream-latency": "3798"
+      }
+    },
+    {
+      "at": "2026-10-09T13:50:04.101Z",
+      "label": "tv-logins-exchange",
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "ms": 5,
+      "headers": {
+        "server": "kong/3.9.1",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "1",
+        "x-kong-request-id": "6e448c67cd586447f5eb94361b6e2668",
+        "x-kong-upstream-latency": "2"
+      }
+    }
+  ]
+}

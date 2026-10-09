@@ -1,0 +1,237 @@
+{
+  "cases": [
+    {
+      "label": "no session (anon key only)",
+      "fn": "sync_pull_profiles",
+      "args": {},
+      "status": "error",
+      "ms": 25,
+      "error": {
+        "code": "28000",
+        "message": "Unauthorized: valid session required for sync.",
+        "details": null,
+        "hint": null
+      }
+    },
+    {
+      "label": "unknown function",
+      "fn": "sync_pull_everything",
+      "args": {},
+      "status": "error",
+      "ms": 7,
+      "error": {
+        "code": "PGRST202",
+        "message": "Could not find the function public.sync_pull_everything without parameters in the schema cache",
+        "details": "Searched for the function public.sync_pull_everything without parameters or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.",
+        "hint": null
+      }
+    },
+    {
+      "label": "authenticated-only function as anon",
+      "fn": "sync_pull_library",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "error",
+      "ms": 7,
+      "error": {
+        "code": "28000",
+        "message": "Unauthorized: valid session required for sync.",
+        "details": null,
+        "hint": null
+      }
+    },
+    {
+      "label": "wrong password",
+      "status": 400,
+      "code": "invalid_credentials",
+      "message": "Invalid login credentials"
+    },
+    {
+      "label": "expired / bad-signature JWT",
+      "httpStatus": 401,
+      "body": {
+        "code": "PGRST301",
+        "details": "None of the keys was able to decode the JWT",
+        "hint": null,
+        "message": "No suitable key or wrong key type"
+      }
+    },
+    {
+      "label": "profile id out of range (7)",
+      "fn": "sync_push_library_items",
+      "args": {
+        "p_items": [],
+        "p_profile_id": 7,
+        "p_origin_client_id": "staysh-spike"
+      },
+      "status": "error",
+      "ms": 5,
+      "error": {
+        "code": "P0001",
+        "message": "Invalid profile id",
+        "details": null,
+        "hint": null
+      }
+    },
+    {
+      "label": "wrong argument name",
+      "fn": "sync_pull_library",
+      "args": {
+        "profile_id": 1
+      },
+      "status": "error",
+      "ms": 2,
+      "error": {
+        "code": "PGRST202",
+        "message": "Could not find the function public.sync_pull_library(profile_id) in the schema cache",
+        "details": "Searched for the function public.sync_pull_library with parameter profile_id or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.",
+        "hint": "Perhaps you meant to call the function public.sync_pull_library(p_limit, p_offset, p_profile_id)"
+      }
+    },
+    {
+      "label": "wrong argument type",
+      "fn": "sync_pull_library_delta",
+      "args": {
+        "p_profile_id": "one",
+        "p_since_event_id": 0,
+        "p_limit": 10
+      },
+      "status": "error",
+      "ms": 4,
+      "error": {
+        "code": "22P02",
+        "message": "invalid input syntax for type integer: \"one\"",
+        "details": null,
+        "hint": null
+      }
+    },
+    {
+      "label": "poll unknown TV code",
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "nope",
+        "p_device_nonce": "nope-nope-nope"
+      },
+      "status": "error",
+      "ms": 7,
+      "error": {
+        "code": "P0001",
+        "message": "Invalid TV login session",
+        "details": null,
+        "hint": null
+      }
+    },
+    {
+      "label": "approve unknown TV code",
+      "fn": "approve_tv_login_session",
+      "args": {
+        "p_code": "nope"
+      },
+      "status": "ok",
+      "ms": 4,
+      "rows": 1,
+      "shape": [
+        {
+          "success": "boolean",
+          "message": "string"
+        },
+        "…1 item(s)"
+      ]
+    }
+  ],
+  "traces": {
+    "requests": [
+      {
+        "label": "sync_pull_profiles",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profiles",
+        "status": 403,
+        "ms": 23
+      },
+      {
+        "label": "sync_pull_everything",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_everything",
+        "status": 404,
+        "ms": 6
+      },
+      {
+        "label": "sync_pull_library",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library",
+        "status": 403,
+        "ms": 6
+      },
+      {
+        "label": "signInWithPassword wrong",
+        "method": "POST",
+        "path": "/auth/v1/token",
+        "status": 400,
+        "ms": 74
+      },
+      {
+        "label": "sync_push_library_items",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_push_library_items",
+        "status": 400,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_library",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library",
+        "status": 404,
+        "ms": 2
+      },
+      {
+        "label": "sync_pull_library_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library_delta",
+        "status": 400,
+        "ms": 3
+      },
+      {
+        "label": "poll_tv_login_session",
+        "method": "POST",
+        "path": "/rest/v1/rpc/poll_tv_login_session",
+        "status": 400,
+        "ms": 6
+      },
+      {
+        "label": "approve_tv_login_session",
+        "method": "POST",
+        "path": "/rest/v1/rpc/approve_tv_login_session",
+        "status": 200,
+        "ms": 4
+      }
+    ],
+    "headers": {
+      "server": [
+        "postgrest/14.12",
+        "kong/3.9.1"
+      ],
+      "via": [
+        "1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "0",
+        "1"
+      ],
+      "x-kong-upstream-latency": [
+        "15",
+        "4",
+        "3",
+        "72",
+        "2",
+        "1"
+      ],
+      "x-sb-error-code": [
+        "invalid_credentials"
+      ],
+      "content-range": [
+        "0-0/*"
+      ]
+    }
+  }
+}

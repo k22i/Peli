@@ -1,0 +1,392 @@
+{
+  "profile": 1,
+  "calls": [
+    {
+      "fn": "get_sync_owner",
+      "args": {},
+      "status": "ok",
+      "ms": 16,
+      "shape": "string (uuid)"
+    },
+    {
+      "fn": "get_sync_overview",
+      "args": {},
+      "status": "ok",
+      "ms": 5,
+      "shape": {
+        "addons": {
+          "1": "integer"
+        },
+        "plugins": {},
+        "profiles": {},
+        "library_items": {},
+        "watched_items": {},
+        "watch_progress": {}
+      }
+    },
+    {
+      "fn": "sync_pull_profiles",
+      "args": {},
+      "status": "ok",
+      "ms": 5,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_profile_locks",
+      "args": {},
+      "status": "ok",
+      "ms": 4,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_library",
+      "args": {
+        "p_profile_id": 1,
+        "p_limit": 500,
+        "p_offset": 0
+      },
+      "status": "ok",
+      "ms": 6,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_get_library_delta_cursor",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 5,
+      "shape": "integer"
+    },
+    {
+      "fn": "sync_pull_library_delta",
+      "args": {
+        "p_profile_id": 1,
+        "p_since_event_id": 0,
+        "p_limit": 5
+      },
+      "status": "ok",
+      "ms": 4,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_watch_progress",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 10,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_get_watch_progress_delta_cursor",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 4,
+      "shape": "integer"
+    },
+    {
+      "fn": "sync_pull_watch_progress_delta",
+      "args": {
+        "p_profile_id": 1,
+        "p_since_event_id": 0,
+        "p_limit": 5
+      },
+      "status": "ok",
+      "ms": 24,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_watched_items",
+      "args": {
+        "p_profile_id": 1,
+        "p_page": 1,
+        "p_page_size": 500
+      },
+      "status": "ok",
+      "ms": 6,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_get_watched_items_delta_cursor",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 5,
+      "shape": "integer"
+    },
+    {
+      "fn": "sync_pull_watched_items_delta",
+      "args": {
+        "p_profile_id": 1,
+        "p_since_event_id": 0,
+        "p_limit": 5
+      },
+      "status": "ok",
+      "ms": 5,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_collections",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 5,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_home_catalog_settings",
+      "args": {
+        "p_profile_id": 1,
+        "p_platform": "desktop"
+      },
+      "status": "ok",
+      "ms": 6,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_profile_settings_blob",
+      "args": {
+        "p_profile_id": 1,
+        "p_platform": "desktop"
+      },
+      "status": "ok",
+      "ms": 5,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "get_avatar_catalog",
+      "args": {},
+      "status": "ok",
+      "ms": 5,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "list_my_sessions",
+      "args": {},
+      "status": "ok",
+      "ms": 4,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "GET /rest/v1/addons",
+      "args": {
+        "profile_id": 1
+      },
+      "status": "ok",
+      "ms": 5,
+      "rows": 2,
+      "shape": [
+        {
+          "id": "string (uuid)",
+          "user_id": "string (uuid)",
+          "url": "string",
+          "name": "string",
+          "enabled": "boolean",
+          "sort_order": "integer",
+          "created_at": "string (timestamptz)",
+          "updated_at": "string (timestamptz)",
+          "profile_id": "integer"
+        },
+        "…2 item(s)"
+      ]
+    },
+    {
+      "fn": "GET /rest/v1/plugins",
+      "args": {
+        "profile_id": 1
+      },
+      "status": "ok",
+      "ms": 4,
+      "rows": 0,
+      "shape": []
+    }
+  ],
+  "traces": {
+    "requests": [
+      {
+        "label": "get_sync_owner",
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_sync_owner",
+        "status": 200,
+        "ms": 14
+      },
+      {
+        "label": "get_sync_overview",
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_sync_overview",
+        "status": 200,
+        "ms": 5
+      },
+      {
+        "label": "sync_pull_profiles",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profiles",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_profile_locks",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profile_locks",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_library",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library",
+        "status": 200,
+        "ms": 6
+      },
+      {
+        "label": "sync_get_library_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_library_delta_cursor",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_library_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library_delta",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_watch_progress",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress",
+        "status": 200,
+        "ms": 10
+      },
+      {
+        "label": "sync_get_watch_progress_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_watch_progress_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
+        "status": 200,
+        "ms": 17
+      },
+      {
+        "label": "sync_pull_watched_items",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watched_items",
+        "status": 200,
+        "ms": 5
+      },
+      {
+        "label": "sync_get_watched_items_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watched_items_delta_cursor",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_watched_items_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watched_items_delta",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "sync_pull_collections",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_collections",
+        "status": 200,
+        "ms": 5
+      },
+      {
+        "label": "sync_pull_home_catalog_settings",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_home_catalog_settings",
+        "status": 200,
+        "ms": 6
+      },
+      {
+        "label": "sync_pull_profile_settings_blob",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profile_settings_blob",
+        "status": 200,
+        "ms": 5
+      },
+      {
+        "label": "get_avatar_catalog",
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_avatar_catalog",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "list_my_sessions",
+        "method": "POST",
+        "path": "/rest/v1/rpc/list_my_sessions",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "GET addons",
+        "method": "GET",
+        "path": "/rest/v1/addons",
+        "status": 200,
+        "ms": 4
+      },
+      {
+        "label": "GET plugins",
+        "method": "GET",
+        "path": "/rest/v1/plugins",
+        "status": 200,
+        "ms": 3
+      }
+    ],
+    "headers": {
+      "content-range": [
+        "0-0/*",
+        "*/*",
+        "0-1/*"
+      ],
+      "server": [
+        "postgrest/14.12"
+      ],
+      "via": [
+        "1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "2",
+        "1",
+        "0"
+      ],
+      "x-kong-upstream-latency": [
+        "3",
+        "2",
+        "1",
+        "7",
+        "8",
+        "4"
+      ]
+    }
+  }
+}

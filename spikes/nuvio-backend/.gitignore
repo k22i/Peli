@@ -1,0 +1,7 @@
+node_modules/
+# Credentials, keys and saved sessions. Never commit.
+.env
+.env.*
+.session/
+# Raw responses contain account data (titles, IDs, timestamps). Only redacted shapes are committed.
+results/raw/

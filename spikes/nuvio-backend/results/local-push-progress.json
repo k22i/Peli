@@ -1,0 +1,82 @@
+{
+  "profile": 1,
+  "pushMs": 8,
+  "secondSessionSeenAfterMs": 13,
+  "entryShape": {
+    "content_id": "string",
+    "content_type": "string = \"series\"",
+    "video_id": "string",
+    "position": "integer",
+    "duration": "integer",
+    "last_watched": "integer",
+    "season": "integer",
+    "episode": "integer"
+  },
+  "event": {
+    "event_id": "integer",
+    "operation": "string = \"upsert\"",
+    "progress_key": "string",
+    "content_id": "string",
+    "content_type": "string = \"series\"",
+    "video_id": "string",
+    "season": "integer",
+    "episode": "integer",
+    "position": "integer",
+    "duration": "integer",
+    "last_watched": "integer"
+  },
+  "traces": {
+    "requests": [
+      {
+        "label": "",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200,
+        "ms": 10
+      },
+      {
+        "label": "sync_get_watch_progress_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
+        "status": 200,
+        "ms": 13
+      },
+      {
+        "label": "sync_push_watch_progress",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_push_watch_progress",
+        "status": 204,
+        "ms": 8
+      },
+      {
+        "label": "sync_pull_watch_progress_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
+        "status": 200,
+        "ms": 12
+      }
+    ],
+    "headers": {
+      "server": [
+        "kong/3.9.1",
+        "postgrest/14.12"
+      ],
+      "via": [
+        "1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "1",
+        "4",
+        "2"
+      ],
+      "x-kong-upstream-latency": [
+        "3",
+        "4",
+        "8"
+      ],
+      "content-range": [
+        "0-0/*"
+      ]
+    }
+  }
+}

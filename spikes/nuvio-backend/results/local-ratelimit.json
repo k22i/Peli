@@ -1,0 +1,53 @@
+{
+  "results": {
+    "wrong-password sign-in": {
+      "requests": 170,
+      "statuses": {
+        "400": 30,
+        "429": 140
+      },
+      "first429": 31
+    },
+    "health_ping RPC": {
+      "requests": 170,
+      "statuses": {
+        "200": 170
+      },
+      "first429": -1
+    },
+    "start_tv_login_session RPC": {
+      "requests": 170,
+      "statuses": {
+        "200": 170
+      },
+      "first429": -1
+    }
+  },
+  "headersSeen": {
+    "server": [
+      "kong/3.9.1",
+      "postgrest/14.12"
+    ],
+    "via": [
+      "1.1 kong/3.9.1"
+    ],
+    "x-kong-proxy-latency": [
+      "1",
+      "0"
+    ],
+    "x-kong-upstream-latency": [
+      "1",
+      "0",
+      "3",
+      "2",
+      "7"
+    ],
+    "x-sb-error-code": [
+      "invalid_credentials",
+      "over_request_rate_limit"
+    ],
+    "content-range": [
+      "0-0/*"
+    ]
+  }
+}

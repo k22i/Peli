@@ -1,0 +1,121 @@
+{
+  "ms": 97,
+  "session": {
+    "access_token": "string",
+    "token_type": "string",
+    "expires_in": "integer",
+    "expires_at": "integer",
+    "refresh_token": "string",
+    "user": {
+      "id": "string (uuid)",
+      "aud": "string",
+      "role": "string",
+      "email": "string",
+      "email_confirmed_at": "string (timestamptz)",
+      "phone": "string",
+      "confirmed_at": "string (timestamptz)",
+      "last_sign_in_at": "string (timestamptz)",
+      "app_metadata": {
+        "provider": "string = \"email\"",
+        "providers": [
+          "string",
+          "…1 item(s)"
+        ]
+      },
+      "user_metadata": {
+        "email": "string",
+        "email_verified": "boolean",
+        "phone_verified": "boolean",
+        "sub": "string (uuid)"
+      },
+      "identities": [
+        {
+          "identity_id": "string (uuid)",
+          "id": "string (uuid)",
+          "user_id": "string (uuid)",
+          "identity_data": {
+            "email": "string",
+            "email_verified": "boolean",
+            "phone_verified": "boolean",
+            "sub": "string (uuid)"
+          },
+          "provider": "string = \"email\"",
+          "last_sign_in_at": "string (timestamptz)",
+          "created_at": "string (timestamptz)",
+          "updated_at": "string (timestamptz)",
+          "email": "string"
+        },
+        "…1 item(s)"
+      ],
+      "created_at": "string (timestamptz)",
+      "updated_at": "string (timestamptz)",
+      "is_anonymous": "boolean"
+    },
+    "weak_password": "null"
+  },
+  "user": {
+    "id": "string (uuid)",
+    "aud": "string",
+    "role": "string",
+    "email": "string",
+    "email_confirmed_at": "string (timestamptz)",
+    "phone": "string",
+    "confirmed_at": "string (timestamptz)",
+    "last_sign_in_at": "string (timestamptz)",
+    "app_metadata": {
+      "provider": "string = \"email\"",
+      "providers": [
+        "string",
+        "…1 item(s)"
+      ]
+    },
+    "user_metadata": {
+      "email": "string",
+      "email_verified": "boolean",
+      "phone_verified": "boolean",
+      "sub": "string (uuid)"
+    },
+    "identities": [
+      {
+        "identity_id": "string (uuid)",
+        "id": "string (uuid)",
+        "user_id": "string (uuid)",
+        "identity_data": {
+          "email": "string",
+          "email_verified": "boolean",
+          "phone_verified": "boolean",
+          "sub": "string (uuid)"
+        },
+        "provider": "string = \"email\"",
+        "last_sign_in_at": "string (timestamptz)",
+        "created_at": "string (timestamptz)",
+        "updated_at": "string (timestamptz)",
+        "email": "string"
+      },
+      "…1 item(s)"
+    ],
+    "created_at": "string (timestamptz)",
+    "updated_at": "string (timestamptz)",
+    "is_anonymous": "boolean"
+  },
+  "traces": [
+    {
+      "at": "2026-10-09T13:50:20.731Z",
+      "label": "signInWithPassword",
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200,
+      "ms": 96,
+      "headers": {
+        "sb-auth-refresh-token-prefix": "fqt7v",
+        "sb-auth-session-id": "44382028-fbdb-414e-bf09-0fbd37977ef1",
+        "sb-auth-user-id": "29abd7b9-fb40-41b0-ac30-30a5c3ec4183",
+        "server": "kong/3.9.1",
+        "via": "1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "3",
+        "x-kong-request-id": "1cf2536fa53d4965abee2553ecb6472c",
+        "x-kong-upstream-latency": "83"
+      }
+    }
+  ]
+}

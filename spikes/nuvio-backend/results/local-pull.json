@@ -1,0 +1,106 @@
+{
+  "profile": 1,
+  "surfaces": {
+    "library": {
+      "cursor": 0,
+      "lastEventSeen": 0,
+      "pages": 1,
+      "events": 0,
+      "ops": {},
+      "ms": 9,
+      "cursorMatchesFeed": true
+    },
+    "watch_progress": {
+      "cursor": 6,
+      "lastEventSeen": 6,
+      "pages": 1,
+      "events": 6,
+      "ops": {
+        "upsert": 6
+      },
+      "ms": 12,
+      "cursorMatchesFeed": true
+    },
+    "watched_items": {
+      "cursor": 1,
+      "lastEventSeen": 1,
+      "pages": 1,
+      "events": 1,
+      "ops": {
+        "upsert": 1
+      },
+      "ms": 5,
+      "cursorMatchesFeed": true
+    }
+  },
+  "traces": {
+    "requests": [
+      {
+        "label": "sync_get_library_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_library_delta_cursor",
+        "status": 200,
+        "ms": 11
+      },
+      {
+        "label": "sync_pull_library_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library_delta",
+        "status": 200,
+        "ms": 8
+      },
+      {
+        "label": "sync_get_watch_progress_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
+        "status": 200,
+        "ms": 5
+      },
+      {
+        "label": "sync_pull_watch_progress_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
+        "status": 200,
+        "ms": 11
+      },
+      {
+        "label": "sync_get_watched_items_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watched_items_delta_cursor",
+        "status": 200,
+        "ms": 5
+      },
+      {
+        "label": "sync_pull_watched_items_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watched_items_delta",
+        "status": 200,
+        "ms": 5
+      }
+    ],
+    "headers": {
+      "content-range": [
+        "0-0/*",
+        "*/*",
+        "0-5/*"
+      ],
+      "server": [
+        "postgrest/14.12"
+      ],
+      "via": [
+        "1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "2",
+        "1",
+        "0"
+      ],
+      "x-kong-upstream-latency": [
+        "2",
+        "3",
+        "1",
+        "8"
+      ]
+    }
+  }
+}
