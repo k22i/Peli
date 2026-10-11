@@ -1,0 +1,1549 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "parasite",
+  "request": "https://torrentsdb.com/stream/movie/tt6751668.json",
+  "recordedAt": "2026-10-11T12:04:01.312Z",
+  "status": 200,
+  "ms": 684,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite (2019) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Bandi) [QxR]\n👤 172 💾 15.75 GB ⚙️ knaben",
+      "infoHash": "F5612E57A8FA38D974094B71FBCA90E328D1D544",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Parasite (2019) (2160p BluRay x265 10bit HDR Bandi).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite (2019) 2160p BRRip 10Bit x265 -YTS\n👤 100 💾 6.05 GB ⚙️ knaben",
+      "infoHash": "8593E59E39F0D337CA7E90AFB8317BEB2447CBB1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|brrip|x265",
+        "filename": "Parasite.2019.REPACK.2160p.4K.BluRay.x265.10bit.AAC7.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite 2019 2160p BluRay\n👤 100 💾 6.05 GB ⚙️ YTS",
+      "infoHash": "8593e59e39f0d337ca7e90afb8317beb2447cbb1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Parasite.2019.REPACK.2160p.4K.BluRay.x265.10bit.AAC7.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n4k",
+      "title": "Parasite - Remastered 4K (2019 ITA/KOR) [1080p H265] [HollywoodMovie]\n👤 34 💾 11.08 GB ⚙️ ilcorsaronero",
+      "infoHash": "3f7bf975f45fe4dd6ca097eb7018d35ea1dfa227",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4k|h265",
+        "filename": "Parasite - 2019 - REMASTERED 4K - H265 - HMR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n4k",
+      "title": "Parasite.AKA.Gisaengchung.2019.UHD.BluRay.2160p.HDR10 .DV.HEVC.TrueHD.Atmos.7.1.x265-E\n👤 33 💾 24.00 GB ⚙️ 1337x",
+      "infoHash": "a092e2675c07bee48137bd162ac11539de062f91",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4k|bluray|hevc",
+        "filename": "Parasite 2019 4K.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMe ...\n👤 33 💾 76.16 GB ⚙️ knaben",
+      "infoHash": "BD52C554080845C3DA7582903CF941D2EB131824",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Parasite.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 21 💾 77.51 GB ⚙️ rargb",
+      "infoHash": "4e3a52647617e564608cf29fb327bb61ac2ad66f",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|x265",
+        "filename": "Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://9.rarbg.com:2710/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:udp://9.rarbg.me:2710/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker.nitrix.me:443/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4e3a52647617e564608cf29fb327bb61ac2ad66f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 21 💾 77.51 GB ⚙️ knaben",
+      "infoHash": "4E3A52647617E564608CF29FB327BB61AC2AD66F",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|x265",
+        "filename": "Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.2160p.4K.BluRay.x265.10bit.AAC5.1\n👤 19 💾 5.95 GB ⚙️ knaben",
+      "infoHash": "6493BD1DEC20E6105FC009647B6A2FECB606C6C1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Parasite.2019.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite (2019 )mkv.Rip 2160p HEVC 10bit-HDR AC3 iTA ENG HDR HEVC - DDN.MKV\n👤 17 💾 33.73 GB ⚙️ ilcorsaronero",
+      "infoHash": "84bfd940a39e6366a1cf16348b0d77c1a5a86d64",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|hevc",
+        "filename": "Parasite (2019 )mkv.Rip 2160p HEVC 10bit-HDR AC3  iTA ENG HDR HEVC - DDN.MKV"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite (2019) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Bandi)\n👤 17 💾 15.75 GB ⚙️ knaben",
+      "infoHash": "f5612e57a8fa38d974094b71fbca90e328d1d544",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Parasite (2019) (2160p BluRay x265 10bit HDR Bandi).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.2160p.UHD.BluRay.X265-IAMABLE\n👤 16 💾 35.79 GB ⚙️ knaben",
+      "infoHash": "1288FD53174FED47744DF5E8ED3209521A27B64A",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Parasite.2019.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.4K.HDR.2160p.BDRip Ita Kor x265-NAHOM\n👤 15 💾 15.77 GB ⚙️ ilcorsaronero",
+      "infoHash": "0d1201826c2d658446ac8464c9548e09f132a315",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bdrip|x265",
+        "filename": "Parasite.2019.4K.HDR.2160p.BDRip Ita Kor x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite.2019.bluray.hdr.2160p.av1.7.1.opus.subs-Dust\n👤 14 💾 4.13 GB ⚙️ rargb",
+      "infoHash": "5a2739568284bee3c69565c039d03bef796a5618",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray",
+        "filename": "Parasite.2019.bluray.hdr.2160p.av1.7.1.opus.subs-Dust.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:5a2739568284bee3c69565c039d03bef796a5618"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite 2019.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC.(Kor Fr) ...\n👤 9 💾 20.19 GB ⚙️ knaben",
+      "infoHash": "A483118FE9C1F973456D1BD9FF6CE2F37B30BA6B",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Parasite.2019.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC.(Kor Fr)-DDR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Parasite (2019) 2160p H265 ITA DTS-HD KO DTS-HD Sub ITA ENG KiNG\n👤 5 💾 15.32 GB ⚙️ ilcorsaronero",
+      "infoHash": "1670f034a756f4c7e73e7a0a08efc055cd45fe05",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bdrip|h265",
+        "filename": "Parasite.2019.2160p.HEVC.BDRip.ITA.DTSHD.KO.DTSHD.Sub.ITA.ENG.KiNG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) [BluRay] [1080p] [YTS] [YIFY]\n👤 2235 💾 2.07 GB ⚙️ rargb",
+      "infoHash": "ce6d2a6bbc439a8f6b94b23ba63b04164400fe3b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Parasite.2019.1080p.BluRay.x264-[YTS.LT].mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://9.rarbg.com:2710/announce",
+        "tracker:udp://p4p.arenabg.com:1337",
+        "tracker:udp://tracker.internetwarriors.net:1337",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:ce6d2a6bbc439a8f6b94b23ba63b04164400fe3b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x264.DTS-FGT\n👤 378 💾 11.99 GB ⚙️ rargb",
+      "infoHash": "6d54f137fcfc3ac204a0dbf2998c4aa9acbe5e80",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Parasite.2019.KOREAN.1080p.BluRay.x264.DTS-FGT.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker.trackerfix.com:80/announce",
+        "tracker:udp://9.rarbg.me:2790/announce",
+        "tracker:udp://9.rarbg.to:2740/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:6d54f137fcfc3ac204a0dbf2998c4aa9acbe5e80"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.WEBRip.x264.AAC2.0-NOGRP\n👤 363 💾 5.02 GB ⚙️ knaben",
+      "infoHash": "A39E4232842FD09608162521DF562B34E61BB22A",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|webrip|x264",
+        "filename": "Parasite.2019.KOREAN.1080p.WEBRip.x264.AAC2.0-NOGRP.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "PARASITE.2019.1080p.FHDRip.H264.AAC-NonDRM[EtHD]\n👤 208 💾 5.03 GB ⚙️ rargb",
+      "infoHash": "74f0ec062c14086d4fee65390db64422323956da",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|h264",
+        "filename": "PARASITE.2019.1080p.FHDRip.H264.AAC-NonDRM[EtHD].mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:74f0ec062c14086d4fee65390db64422323956da"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.HDRip.X264.AC3-EVO[TGx] ⭐\n👤 193 💾 2.80 GB ⚙️ rargb",
+      "infoHash": "ca22d8af344fefb24edc6ef861a71ce71c0a50e6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hdrip|x264",
+        "filename": "Parasite.2019.1080p.HDRip.X264.AC3-EVO.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://bt.xxx-tracker.com:2710/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:ca22d8af344fefb24edc6ef861a71ce71c0a50e6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 174 💾 34.84 GB ⚙️ rargb",
+      "infoHash": "f5db70043ec66572aeece6b5355166ffff2e62a5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|avc",
+        "filename": "Parasite.2019.KORAEN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker.trackerfix.com:80/announce",
+        "tracker:udp://9.rarbg.me:2780/announce",
+        "tracker:udp://9.rarbg.to:2790/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:f5db70043ec66572aeece6b5355166ffff2e62a5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.HDRip.X264.AC3-EVO[TGx]\n👤 142 💾 2.80 GB ⚙️ knaben",
+      "infoHash": "CA22D8AF344FEFB24EDC6EF861A71CE71C0A50E6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hdrip|x264",
+        "filename": "Parasite.2019.1080p.HDRip.X264.AC3-EVO.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x264-REGRET[EtHD]\n👤 135 💾 9.83 GB ⚙️ rargb",
+      "infoHash": "d25cdcd0ed9490072e7b70be04690737b6518de6",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "parasite.2019.1080p.bluray.x264-regret[EtHD].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d25cdcd0ed9490072e7b70be04690737b6518de6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) BluRay 1080p.H264 Ita Kor AC3 5.1 Sub Ita Eng MIRCrew\n👤 123 💾 2.88 GB ⚙️ knaben",
+      "infoHash": "BFAD2015666CC6C3BF21F2CFC386AB64D75A84CB",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h264",
+        "filename": "Parasite 2019 BluRay 1080pH264 Ita Kor AC3 5.1 Sub Ita Eng.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) 1080p BRRip x264 -YTS\n👤 100 💾 2.07 GB ⚙️ knaben",
+      "infoHash": "CE6D2A6BBC439A8F6B94B23BA63B04164400FE3B",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|brrip|x264",
+        "filename": "Parasite.2019.1080p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.MULTi.1080p.BluRay.x264-LOST[EtHD]\n👤 92 💾 9.84 GB ⚙️ rargb",
+      "infoHash": "4ee3d5b968aef0542653a9e3d341e9554f326830",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "parasite.2019.multi.1080p.bluray.x264-lost[EtHD].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4ee3d5b968aef0542653a9e3d341e9554f326830"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) KORAEN (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy) [UTR]\n👤 88 💾 1.62 GB ⚙️ rargb",
+      "infoHash": "351f56d8b0acaac1005eba8d8bfdfcd7d0bcb9d6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) KORAEN  [1080p x265 q22 Joy].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://9.rarbg.com:2710/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:351f56d8b0acaac1005eba8d8bfdfcd7d0bcb9d6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) KORAEN (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy) [UTR]\n👤 88 💾 1.62 GB ⚙️ knaben",
+      "infoHash": "351F56D8B0ACAAC1005EBA8D8BFDFCD7D0BCB9D6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) KORAEN  [1080p x265 q22 Joy].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.MULTi.KOR.Bluray.1080p.Atmos.7.1.Kor.Fr.HEVC-DDR[EtHD]\n👤 63 💾 11.51 GB ⚙️ rargb",
+      "infoHash": "86469c883324ee3f1566b10aa4e1d5f03ab398d4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Parasite.2019.MULTi.KOR.Bluray.1080p.Atmos.7.1.Kor.Fr.HEVC-DDR[EtHD].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:86469c883324ee3f1566b10aa4e1d5f03ab398d4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite 2019 REPACK 1080p BluRay x265-YAWNTiC\n👤 46 💾 7.88 GB ⚙️ ThePirateBay",
+      "infoHash": "9a239b0af8c7c498872e4b980c3354e2a37a5f9d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite 2019 REPACK 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean Silence) [QxR]\n👤 42 💾 6.01 GB ⚙️ rargb",
+      "infoHash": "d866765949ab17dbf01cbf098578da95c1b81323",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) (1080p BluRay x265 Silence).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:d866765949ab17dbf01cbf098578da95c1b81323"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Gisaengchung\n👤 41 💾 9.87 GB ⚙️ Torrent9",
+      "infoHash": "618107dfe74e55fdb9819b5cdf4ffaa29091349d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "[ Torrent911.com ] Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://exodus.desync.com:6969/announce/",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce/",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce/",
+        "tracker:udp://9.rarbg.to:2740/announce/",
+        "tracker:udp://9.rarbg.com:2770/announce/",
+        "tracker:http://1337.abcvg.info/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:http://tracker.bt4g.com:2095/announce/",
+        "tracker:udp://opentor.org:2710/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce/",
+        "dht:618107dfe74e55fdb9819b5cdf4ffaa29091349d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) [BluRay Rip 1080p ITA-KOR DTS-AC3 SUBS] [M@HD]\n👤 38 💾 12.20 GB ⚙️ rargb",
+      "infoHash": "72b2cd99e470f83920e356c2b68de8c2b685e2fc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Parasite (2019) [BluRay Rip 1080p ITA-KOR DTS-AC3 SUBS] [M@HD].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://zephir.monocul.us:6969/announce",
+        "tracker:http://tracker.ipv6tracker.ru:80/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.filepit.to:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "dht:72b2cd99e470f83920e356c2b68de8c2b685e2fc"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) Criterion (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean Silence) [QxR]\nParasite (2019) Criterion B&W (1080p BluRay x265 Silence).mkv\n👤 30 💾 4.55 GB ⚙️ rargb",
+      "infoHash": "d2dc2ddaa9c308e2ace9dd79a62b98031d090376",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) Criterion B&W (1080p BluRay x265 Silence).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:d2dc2ddaa9c308e2ace9dd79a62b98031d090376"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) Criterion (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean Silence) [QxR]\nParasite (2019) Criterion (1080p BluRay x265 Silence).mkv\n👤 30 💾 5.29 GB ⚙️ rargb",
+      "infoHash": "d2dc2ddaa9c308e2ace9dd79a62b98031d090376",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) Criterion (1080p BluRay x265 Silence).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:d2dc2ddaa9c308e2ace9dd79a62b98031d090376"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) BluRay 1080p.H264 Ita Kor AC3 5.1 Sub Ita Eng MIRCrew\n👤 29 💾 2.88 GB ⚙️ ilcorsaronero",
+      "infoHash": "bfad2015666cc6c3bf21f2cfc386ab64d75a84cb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h264",
+        "filename": "Parasite 2019 BluRay 1080pH264 Ita Kor AC3 5.1 Sub Ita Eng.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x264-REGRET[TGx] ⭐\n👤 29 💾 9.83 GB ⚙️ rargb",
+      "infoHash": "da6c1228b053af437e036d9ee01542a6d82dd8d6",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "parasite.2019.1080p.bluray.x264-regret.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:da6c1228b053af437e036d9ee01542a6d82dd8d6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parazit / Gisaengchung (2019)(CZ)[1080p] = CSFD 84%\n👤 25 💾 3.87 GB ⚙️ sktorrent",
+      "infoHash": "1c664c1b8b50824c36ce1cdde98f27cd78c2906d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Parazit - Gisaengchung.2019.1080p.BluRay.CZ.dabing.MIKI.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:1c664c1b8b50824c36ce1cdde98f27cd78c2906d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) Koch (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean afm72) [QxR]\n👤 21 💾 7.10 GB ⚙️ rargb",
+      "infoHash": "54432eae44f7fd49a552172a464767a6e7259b26",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) Koch (1080p BluRay x265 afm72).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:54432eae44f7fd49a552172a464767a6e7259b26"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.bluray.sdr.1080p.av1.7.1.opus.subs-Dust\n👤 20 💾 1.51 GB ⚙️ rargb",
+      "infoHash": "0b48bb161df9b209a1db2541959c74e3d322af43",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Parasite.2019.bluray.sdr.1080p.av1.7.1.opus.subs-Dust.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:0b48bb161df9b209a1db2541959c74e3d322af43"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite - Gisaengchung (2019) AC3 5.1 ITA.KOR 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 19 💾 3.21 GB ⚙️ ilcorsaronero",
+      "infoHash": "1e300420c6de9d9b14c8ca3dc27aeaefcdd14333",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|h265",
+        "filename": "Parasite - Gisaengchung (2019) AC3 5.1 ITA.KOR 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Gisaengchung\n👤 15 💾 9.87 GB ⚙️ Torrent9",
+      "infoHash": "92d12580b8289fdd2afac19d01d6e177b002699a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "[ OxTorrent.com ] Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://9.rarbg.me:2710/announce/",
+        "tracker:udp://9.rarbg.to:2740/announce/",
+        "tracker:udp://9.rarbg.com:2770/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce/",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce/",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce/",
+        "tracker:http://servandroidkino.ru/announce/",
+        "tracker:http://1337.abcvg.info/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:http://tracker.bittor.pw:1337/announce/",
+        "tracker:http://tracker3.itzmx.com:8080/announce/",
+        "tracker:http://open.acgnxtracker.com/announce/",
+        "tracker:http://share.camoe.cn:8080/announce/",
+        "tracker:udp://bt.xxx-tracker.com:2710/announce/",
+        "tracker:udp://exodus.desync.com:6969/announce/",
+        "tracker:udp://open.demonii.si:1337/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://tracker.cyberia.is:6969/announce/",
+        "tracker:udp://151.80.120.114:2710/announce/",
+        "tracker:http://91.217.91.21:3218/announce/",
+        "tracker:http://tracker2.itzmx.com:6961/announce/",
+        "tracker:udp://tracker.yoshi210.com:6969/announce/",
+        "tracker:http://tracker.yoshi210.com:6969/announce/",
+        "tracker:http://tracker.tvunderground.org.ru:3218/announce/",
+        "tracker:http://torrentsmd.com:8080/announce/",
+        "tracker:udp://amigacity.xyz:6969/announce/",
+        "tracker:udp://newtoncity.org:6969/announce/",
+        "tracker:udp://zephir.monocul.us:6969/announce/",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce/",
+        "tracker:http://tracker.bt4g.com:2095/announce/",
+        "tracker:http://open.trackerlist.xyz:80/announce/",
+        "tracker:udp://opentor.org:2710/announce/",
+        "dht:92d12580b8289fdd2afac19d01d6e177b002699a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos- ...\n👤 13 💾 34.84 GB ⚙️ knaben",
+      "infoHash": "F5DB70043EC66572AEECE6B5355166FFFF2E62A5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|avc",
+        "filename": "Parasite.2019.KORAEN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.BLACK.N.WHiTE.EDiTiON.1080p.BluRay.x264-MiCiUS[TGx] ⭐\n👤 12 💾 14.46 GB ⚙️ rargb",
+      "infoHash": "6143756f372d420114107f3a0436a7c8daabe952",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "parasite.2019.black.n.white.edition.1080p.bluray.x264-micius.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://tracker.iamhansen.xyz:2000/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:6143756f372d420114107f3a0436a7c8daabe952"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x264.DTS-FGT\n👤 12 💾 11.99 GB ⚙️ knaben",
+      "infoHash": "6D54F137FCFC3AC204A0DBF2998C4AA9ACBE5E80",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Parasite.2019.KOREAN.1080p.BluRay.x264.DTS-FGT.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) B&W (1080p BluRay x265 HEVC 10bit AAC 5.1 Korean Silence) [QxR]\n👤 11 💾 5.53 GB ⚙️ rargb",
+      "infoHash": "13339009e928b09b54857bf3d09eb171ca5ca2d9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) B&W (1080p BluRay x265 Silence).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:13339009e928b09b54857bf3d09eb171ca5ca2d9"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite 1080p-WEBRip-1.36GiB-AAC-x264 [PortalGoods]\n👤 10 💾 1.40 GB ⚙️ rargb",
+      "infoHash": "1290e529dc912df539cc11222cae8f5fecc36a72",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|webrip|x264",
+        "filename": "Parasite 1080p-WEBRip-1.36GiB-AAC-x264 [PortalGoods]"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://d40969.acod.regrucolo.ru:6969/announce",
+        "tracker:udp://odd-hd.fr:6969/announce",
+        "tracker:udp://tracker.edkj.club:6969/announce",
+        "tracker:udp://ttk2.nbaonlineservice.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:1290e529dc912df539cc11222cae8f5fecc36a72"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite 2019 1080p UHD BluRay x264 DD5 1-Pahe in\n👤 8 💾 2.89 GB ⚙️ ThePirateBay",
+      "infoHash": "4055ff5feebbc1b66a3685813b7a02169159a882",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Parasite.2019.1080p.UHD.BluRay.x264.DD5.1-Pahe.in.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite 2019 1080p BluRay x265-YAWNTiC\n👤 8 💾 5.93 GB ⚙️ ThePirateBay",
+      "infoHash": "c4b1825fbf655467abb2a857186bd24d3072b98f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite 2019 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) 1080p HC Eng Subs - fiveofseven\n👤 8 💾 3.79 GB ⚙️ ThePirateBay",
+      "infoHash": "ec21fb1504a9b62896fa6c395d3bed3c04046911",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Parasite (2019) 1080p HC Eng Subs - fiveofseven.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) Koch (1080p BluRay x265 HEVC 10bit AAC 7.1 Korea ...\n👤 7 💾 7.10 GB ⚙️ knaben",
+      "infoHash": "54432EAE44F7FD49A552172A464767A6E7259B26",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite (2019) Koch (1080p BluRay x265 afm72).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.iTA-KOR.Bluray.1080p.x264-CYBER.mkv\n👤 6 💾 9.46 GB ⚙️ ilcorsaronero",
+      "infoHash": "be85275641d31452884c69b6c154ddd4852ae10e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Parasite.2019.iTA-KOR.Bluray.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10x265-SM737\n👤 6 💾 6.45 GB ⚙️ ThePirateBay",
+      "infoHash": "30dcdef8a8177d07c4b5cad0d21d1c987743918c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parazit / Gisaengchung (2019)(CZ/KOR)[1080p] = CSFD 84%\n👤 6 💾 19.88 GB ⚙️ sktorrent",
+      "infoHash": "2ad2df549d838772d9c77179d485c4a7a176d928",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Parasite.2019.INTERNAL.1080p.BluRay.X264 (CZ KO) tit.cz.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:2ad2df549d838772d9c77179d485c4a7a176d928"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019) 1080p BluRay AV1 Opus [AV1D]\n👤 6 💾 2.42 GB ⚙️ rargb",
+      "infoHash": "f8c0fffbe063dfbadc475ace55f212d35d0cd542",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Parasite (Gisaengchung) 2019 1080p BluRay AV1 Opus [AV1D].mkv"
+      },
+      "sources": [
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:f8c0fffbe063dfbadc475ace55f212d35d0cd542"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite (2019 ITA/KOR) [1080p x265] [Paso77]\n👤 5 💾 7.29 GB ⚙️ ilcorsaronero",
+      "infoHash": "224422452551dfbc0db9683afeba3ea662e243d5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdmux|x265",
+        "filename": "Parasite 2019 BDMux ITA KOR 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737\n👤 5 💾 6.45 GB ⚙️ ThePirateBay",
+      "infoHash": "90bbec97c6dc427f0e9fdfe560f94f3023fc1782",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10  x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Parasite.2019.BLACK.N.WHiTE.EDiTiON.1080p.BluRay.x264-MiCiUS[TGx ...\n👤 5 💾 14.46 GB ⚙️ knaben",
+      "infoHash": "6143756F372D420114107F3A0436A7C8DAABE952",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "parasite.2019.black.n.white.edition.1080p.bluray.x264-micius.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite (2019) [BluRay] [720p] [YTS] [YIFY]\n👤 2212 💾 1.15 GB ⚙️ rargb",
+      "infoHash": "a4c5d60f07f5a4e99623fb2c33d0e51f760b49a9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Parasite.2019.720p.BluRay.x264-[YTS.LT].mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://9.rarbg.com:2710/announce",
+        "tracker:udp://p4p.arenabg.com:1337",
+        "tracker:udp://tracker.internetwarriors.net:1337",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:a4c5d60f07f5a4e99623fb2c33d0e51f760b49a9"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite.2019.720p.BluRay.x264.DTS-FGT\n👤 917 💾 6.47 GB ⚙️ rargb",
+      "infoHash": "4de43f99e02cffcfe90abab3a0f214abab05cd20",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Parasite.2019.KOREAN.720p.BluRay.x264.DTS-FGT.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker.trackerfix.com:80/announce",
+        "tracker:udp://9.rarbg.me:2760/announce",
+        "tracker:udp://9.rarbg.to:2750/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4de43f99e02cffcfe90abab3a0f214abab05cd20"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite.2019.720p.BRRip.x264.AAC2.0-MP4\n👤 152 💾 1.15 GB ⚙️ knaben",
+      "infoHash": "A4C5D60F07F5A4E99623FB2C33D0E51F760B49A9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|brrip|x264",
+        "filename": "Parasite.2019.720p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite (2019) 720p 10bit BluRay 6CH x265 HEVC\n👤 75 💾 901.97 MB ⚙️ rargb",
+      "infoHash": "8d52b3b73b62577ab90ba711a54d3b55e38ef33c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x265",
+        "filename": "Parasite.A.K.A.Gisaengchung.2019.KOREAN.720p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.sktorrent.net:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://oscar.reyesleon.xyz:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:8d52b3b73b62577ab90ba711a54d3b55e38ef33c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite (2019) 720p WEB-DL x264 Ganool\n👤 56 💾 950.74 MB ⚙️ rargb",
+      "infoHash": "244f0c9dba62412aa1971da14c7dfa1e2c5b5c06",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|web-dl|x264",
+        "filename": "Parasite (2019) 720p WEB-DL x264 Ganool.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/",
+        "tracker:udp://9.rarbg.com:2710/announce",
+        "tracker:udp://9.rarbg.me:2710/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.piratepublic.com:1337/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:udp://tracker.grepler.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.vanitycore.co:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:244f0c9dba62412aa1971da14c7dfa1e2c5b5c06"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite.2019.720p.BluRay.900MB.x264-GalaxyRG ⭐\n👤 53 💾 896.93 MB ⚙️ rargb",
+      "infoHash": "21575a5fbb2dea433c3830d3447164e35a687d00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Parasite.2019.720p.BluRay.900MB.x264-GalaxyRG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:21575a5fbb2dea433c3830d3447164e35a687d00"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Паразиты / Parasite / Gisaengchung\n👤 16 💾 9.37 GB ⚙️ rutor",
+      "infoHash": "c44de2fbcdb88b2a61e25cef0037b707dd5684de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bdrip",
+        "filename": "Gisaengchung.2019.BDRip.720p.4xRus.Ukr.Kor.-HELLYWODD.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:c44de2fbcdb88b2a61e25cef0037b707dd5684de"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Academy Awards Best Pictures (1927 - 2020)\n2019 - Parasite - 720p.mp4\n👤 13 💾 1.15 GB ⚙️ ThePirateBay",
+      "infoHash": "c9cf60639e51947f0906f8545e6b9bc3d84a37d9",
+      "fileIdx": 91,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "2019 - Parasite - 720p.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Gisaengchung\n👤 13 💾 5.54 GB ⚙️ Torrent9",
+      "infoHash": "be2eb889f546d1164651858f4e4a4c75ca0b0a45",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "[ Torrent911.com ] Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://exodus.desync.com:6969/announce/",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce/",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce/",
+        "tracker:udp://9.rarbg.to:2740/announce/",
+        "tracker:udp://9.rarbg.com:2770/announce/",
+        "tracker:http://1337.abcvg.info/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:http://tracker.bt4g.com:2095/announce/",
+        "tracker:udp://opentor.org:2710/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce/",
+        "dht:be2eb889f546d1164651858f4e4a4c75ca0b0a45"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite (2019) 720p HC Eng Subs - fiveofseven\n👤 9 💾 1.86 GB ⚙️ ThePirateBay",
+      "infoHash": "69d1ff93287d5e9ee6819decc0f2d9df9d01ce52",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Parasite (2019) 720p HC Eng Subs - fiveofseven.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite.2019.720p.BluRay.x264.DTS-FGT\n👤 8 💾 6.47 GB ⚙️ knaben",
+      "infoHash": "4DE43F99E02CFFCFE90ABAB3A0F214ABAB05CD20",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Parasite.2019.KOREAN.720p.BluRay.x264.DTS-FGT.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite (2019) 720p (Korean + Multi Sub) - FiNAL\n👤 7 💾 1.61 GB ⚙️ rargb",
+      "infoHash": "4c8a60832266c0876cac59ac907617e9c9b8e30c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Parasite (2019) 720p - FiNAL.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4c8a60832266c0876cac59ac907617e9c9b8e30c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Parasite (2019) 720p HC Eng Subs - fiveofseven\n👤 7 💾 1.86 GB ⚙️ knaben",
+      "infoHash": "69D1FF93287D5E9EE6819DECC0F2D9DF9D01CE52",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Parasite (2019) 720p HC Eng Subs - fiveofseven.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "PARASITE.2019.720p.HDRip.H264.AAC-Mkvking\n👤 5 💾 1.13 GB ⚙️ ThePirateBay",
+      "infoHash": "c84e53b252f4bd1a27791a2f7196680b8d4b194f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|hdrip|h264",
+        "filename": "PARASITE.2019.720p.HDRip.H264.AAC-Mkvking.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "PARASITE.2019.720p.HDRip.H264.AAC-Mkvking\n👤 5 💾 1.13 GB ⚙️ knaben",
+      "infoHash": "C84E53B252F4BD1A27791A2F7196680B8D4B194F",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|hdrip|h264",
+        "filename": "PARASITE.2019.720p.HDRip.H264.AAC-Mkvking.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nbrrip",
+      "title": "Parasite.2019.BRRip.XviD.AC3-EVO\n👤 114 💾 1.37 GB ⚙️ rargb",
+      "infoHash": "20816c553aeafa80b612ff8a31d9d59bf37b3658",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|brrip|xvid",
+        "filename": "Parasite.2019.BRRip.XviD.AC3-EVO.avi"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.iamhansen.xyz:2000/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:20816c553aeafa80b612ff8a31d9d59bf37b3658"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "Parasite 2019 KOREAN WEBRip x264-ION10\n👤 71 💾 1.26 GB ⚙️ rargb",
+      "infoHash": "3c5a6f1fe1ee3504595d688f3708b56b38edf050",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip|x264",
+        "filename": "Parasite.2019.KOREAN.WEBRip.x264-ION10.mp4"
+      },
+      "sources": [
+        "tracker:http://tracker.trackerfix.com:80/announce",
+        "tracker:udp://9.rarbg.me:2750/announce",
+        "tracker:udp://9.rarbg.to:2780/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:3c5a6f1fe1ee3504595d688f3708b56b38edf050"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Gisaengchung\n👤 66 💾 1.37 GB ⚙️ Torrent9",
+      "infoHash": "af79c30441b8964b9c7ddac112b4c7b385977387",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|xvid",
+        "filename": "[ Torrent911.com ] Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://exodus.desync.com:6969/announce/",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce/",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce/",
+        "tracker:udp://9.rarbg.to:2740/announce/",
+        "tracker:udp://9.rarbg.com:2770/announce/",
+        "tracker:http://1337.abcvg.info/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:http://tracker.bt4g.com:2095/announce/",
+        "tracker:udp://opentor.org:2710/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce/",
+        "dht:af79c30441b8964b9c7ddac112b4c7b385977387"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nhdrip",
+      "title": "Parasite.2019.HDRip.AC3.x264-CMRG[TGx] ⭐\n👤 38 💾 1.35 GB ⚙️ rargb",
+      "infoHash": "80b123ea79bbc8800a929ee37677a0d8daea2ef6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|hdrip|x264",
+        "filename": "Parasite.2019.HDRip.AC3.x264-CMRG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://bt.xxx-tracker.com:2710/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.to:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:80b123ea79bbc8800a929ee37677a0d8daea2ef6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Паразиты / Parasite / Gisaengchung\n👤 27 💾 2.52 GB ⚙️ rutor",
+      "infoHash": "bacb4e541846bc0a6aac6a12ba4567f1c3e7461a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|avc",
+        "filename": "Gisaengchung.2019.BDRip.AVC.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.piratbit.club/000e774edb10a0a7f97f320f8090339b/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:bacb4e541846bc0a6aac6a12ba4567f1c3e7461a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebdl",
+      "title": "Pack 35 (3 film)(2020 ITA)[CaMIk-RLZ][BDRip-WEBDL-MP4-AAC]\nPack 35 MP4 CaMik-RLZ/Parasite.2019.MD.DRAMMATICO.iTALiAN.WEBDL.RLZ.mp4\n👤 22 💾 499.22 MB ⚙️ ilcorsaronero",
+      "infoHash": "5a35f51f372938b699d2ca611263749a15423360",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webdl|bdrip",
+        "filename": "Parasite.2019.MD.DRAMMATICO.iTALiAN.WEBDL.RLZ.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\nwebdl",
+      "title": "Mega Pack News 08 (13 film)(2020 ITA)[CaMIk-RLZ][BDRip-WEBDL-MP4-AAC]\nMega Pack News 08 MP4 (2020 ITA)[CaMIk-RLZ]/Parasite.2019.DRAMMATICO.iTALiAN.WEBDL.RLZ.mp4\n👤 15 💾 422.54 MB ⚙️ ilcorsaronero",
+      "infoHash": "be76d1a05d86febd5a27ef6016a74b0c4430de78",
+      "fileIdx": 7,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webdl|bdrip",
+        "filename": "Parasite.2019.DRAMMATICO.iTALiAN.WEBDL.RLZ.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Gisaengchung\n👤 14 💾 1.37 GB ⚙️ Torrent9",
+      "infoHash": "eb9e33cdabf5dd30c024f222ef0939853530a252",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|xvid",
+        "filename": "[ OxTorrent.com ] Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://9.rarbg.me:2710/announce/",
+        "tracker:udp://9.rarbg.to:2740/announce/",
+        "tracker:udp://9.rarbg.com:2770/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce/",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce/",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce/",
+        "tracker:http://servandroidkino.ru/announce/",
+        "tracker:http://1337.abcvg.info/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:http://tracker.bittor.pw:1337/announce/",
+        "tracker:http://tracker3.itzmx.com:8080/announce/",
+        "tracker:http://open.acgnxtracker.com/announce/",
+        "tracker:http://share.camoe.cn:8080/announce/",
+        "tracker:udp://bt.xxx-tracker.com:2710/announce/",
+        "tracker:udp://exodus.desync.com:6969/announce/",
+        "tracker:udp://open.demonii.si:1337/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://tracker.cyberia.is:6969/announce/",
+        "tracker:udp://151.80.120.114:2710/announce/",
+        "tracker:http://91.217.91.21:3218/announce/",
+        "tracker:http://tracker2.itzmx.com:6961/announce/",
+        "tracker:udp://tracker.yoshi210.com:6969/announce/",
+        "tracker:http://tracker.yoshi210.com:6969/announce/",
+        "tracker:http://tracker.tvunderground.org.ru:3218/announce/",
+        "tracker:http://torrentsmd.com:8080/announce/",
+        "tracker:udp://amigacity.xyz:6969/announce/",
+        "tracker:udp://newtoncity.org:6969/announce/",
+        "tracker:udp://zephir.monocul.us:6969/announce/",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce/",
+        "tracker:http://tracker.bt4g.com:2095/announce/",
+        "tracker:http://open.trackerlist.xyz:80/announce/",
+        "tracker:udp://opentor.org:2710/announce/",
+        "dht:eb9e33cdabf5dd30c024f222ef0939853530a252"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Паразиты / Parasite / Gisaengchung\n👤 7 💾 1.45 GB ⚙️ rutor",
+      "infoHash": "17b6163a500f6db3e020b67612f9e9ca934301a9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Parasite_2019_HDRip_[scarabey.org].avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.new-team.info:2710/00000ddaf4a31bc019721caa5480b05b/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:17b6163a500f6db3e020b67612f9e9ca934301a9"
+      ]
+    }
+  ]
+}

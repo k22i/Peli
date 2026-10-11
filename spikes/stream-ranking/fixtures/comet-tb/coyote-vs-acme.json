@@ -1,0 +1,2311 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "coyote-vs-acme",
+  "request": "https://comet.elfhosted.com/<config>/stream/movie/tt1756855.json",
+  "recordedAt": "2026-10-11T12:06:24.706Z",
+  "status": 200,
+  "ms": 397,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|907eeb1c199e341d659660dbca17a84fda31886e",
+        "filename": "Coyote.VS.Acme.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+        "videoSize": 19927547464
+      },
+      "description": "📄 Coyote.VS.Acme.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BTM\n👤 576 💾 18.6 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fa944aa359e7e1f84daff2c31e1bb41e4ee3cc45",
+        "filename": "Coyote.vs.Acme.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv",
+        "videoSize": 19174970520
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 17.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ae03810f8c9fb39807f01270ee7436a35fbc4c0d",
+        "filename": "Coyote vs Acme 2026 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv",
+        "videoSize": 19174970520
+      },
+      "description": "📄 Coyote vs Acme 2026 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n👤 627 💾 17.9 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|80ab6bf33b67a0ddad42522dd32b6f92965309fa",
+        "filename": "Coyote vs Acme 2026 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv",
+        "videoSize": 19174970520
+      },
+      "description": "📄 Coyote vs Acme 2026 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 17.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8bac27ca4b10f77d95625f102e88f5c682b49158",
+        "filename": "Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv",
+        "videoSize": 20064238543
+      },
+      "description": "📄 Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv\n📹 hevc • DV • HDR • 10bit\n⭐ WEB-DL\n👤 54 💾 18.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6486e11aebb78dd1bff732558c0683667497f292",
+        "filename": "Coyote.vs.Acme.2026.x265.WEB-DL.2160p.HDR-DV.mkv",
+        "videoSize": 19767586979
+      },
+      "description": "📄 Coyote.vs.Acme.2026.x265.WEB-DL.2160p.HDR-DV.mkv\n📹 hevc • DV • HDR • 10bit\n⭐ WEB-DL\n👤 361 💾 18.4 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|48e86ba78b35f3265ee3b83b5dd83cc931dc557f",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+        "videoSize": 19471628332
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BOUBA\n💾 18.1 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|408d2f992d0c7bddbe4e84e90892717e16ad3551",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+        "videoSize": 19471628332
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BOUBA\n💾 18.1 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2d93bc0f85baee5b7ebf9c6b31a76a0d0b29c4af",
+        "filename": "Coyote.vs.Acme.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 2754649890
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • DV • HDR10+\n⭐ WEBRip | 🏷️ PSA\n💾 2.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|70e211914b5b65d057fd2c491b9501c60eccb0b3",
+        "filename": "Coyote.vs.Acme.2026.DCP.x265.WEB-DL.2160p.HDR.mkv",
+        "videoSize": 12219181957
+      },
+      "description": "📄 Coyote.vs.Acme.2026.DCP.x265.WEB-DL.2160p.HDR.mkv\n📹 hevc • HDR • 10bit\n⭐ WEB-DL\n👤 286 💾 11.4 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d667b05755f96195fb96accb172d13da6e8e68d0",
+        "filename": "Coyote.vs.Acme.2026.VOSTFR.2160p.10bits.HDR10.EAC3.5.1.AV1-WHY7726.mkv",
+        "videoSize": 2720382033
+      },
+      "description": "📄 Coyote.vs.Acme.2026.VOSTFR.2160p.10bits.HDR10.EAC3.5.1.AV1-WHY7726.mkv\n📹 av1 • HDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n🏷️ WHY7726\n👤 0 💾 2.5 GB 🔎 Comet|torbox\n🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a372bd0f0af39a01c8cf89f7dc42beaeed03f35",
+        "filename": "Coyote.vs.Acme.2026.VOSTFR.2160p.10bits.HDR10.EAC3.5.1.AV1-WHY7726.mkv",
+        "videoSize": 2720382033
+      },
+      "description": "📄 Coyote.vs.Acme.2026.VOSTFR.2160p.10bits.HDR10.EAC3.5.1.AV1-WHY7726.mkv\n📹 av1 • HDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n🏷️ WHY7726\n💾 2.5 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0e37357ce10ecf904d97751ef54365cbff2c2102",
+        "filename": "Coyote.vs.Acme.2026.DCPRip.2160p.HDR10.H265.UkrEng.mkv",
+        "videoSize": 11483850662
+      },
+      "description": "📄 Coyote.vs.Acme.2026.DCPRip.2160p.HDR10.H265.UkrEng.mkv\n📹 hevc • HDR • 10bit\n💾 10.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fae9198e446969ae7ae834b202d9d33791eb220d",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL.mkv\n📹 hevc • HDR\n🏷️ 3CooL\n👤 369 💾 15.5 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e5eec3b5fbaeaf33eae04a06565fcb2f0ae6cde7",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL.mkv\n📹 hevc • HDR\n🏷️ 3CooL\n💾 15.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c71e101c9c8244283718cd48c22eff6556244f62",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b87373d63b237eae7f5ccd409c1e951cc445f080",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa57e339cff9e0805818193ef4d9a59198d3d106",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663609632
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n👤 4 💾 15.5 GB 🔎 Comet|EXT",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9ebcb3de7ac03c633485fac57dcbad058cc6c28a",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1474121a58d3777c19063988cd1e6c02f6706d96",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a474e3e8a7e9c3468136124ab29561f81ae3a724",
+        "filename": "Coyote.vs.Acme.2026.WEB-DL.2160p.HDR.Master5.mkv",
+        "videoSize": 11631366202
+      },
+      "description": "📄 Coyote.vs.Acme.2026.WEB-DL.2160p.HDR.Master5.mkv\n📹 HDR\n⭐ WEB-DL\n💾 10.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0754a13972457b6faee79d99f57a69a23a909fe4",
+        "filename": "Coyote.vs.Acme.(2026).WEB-DL.2160p.HDR.Ukr.Eng.mkv",
+        "videoSize": 19454783253
+      },
+      "description": "📄 Coyote.vs.Acme.(2026).WEB-DL.2160p.HDR.Ukr.Eng.mkv\n📹 HDR\n⭐ WEB-DL\n💾 18.1 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4310baff4ee7c9127529dec7f477a8d881a9983",
+        "filename": "Coyote.vs.Acme.2026.DCPRIP.DIGITAL.2160P.HDR10.mkv",
+        "videoSize": 11582245823
+      },
+      "description": "📄 Coyote.vs.Acme.2026.DCPRIP.DIGITAL.2160P.HDR10.mkv\n📹 HDR • 10bit\n💾 10.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f4ad2a020eee1de93cf369c8b3bebf6c9739547b",
+        "filename": "Coyote.vs.Acme.2026.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR.mkv",
+        "videoSize": 12055122932
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n👤 20 💾 11.2 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|868c363cad422f1bea7c14041a55134f1fccaa78",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VOSTFR.2160p.DCPRip.HDR10.EAC3.5.1.H265-0verflow.mkv",
+        "videoSize": 11730786758
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VOSTFR.2160p.DCPRip.HDR10.EAC3.5.1.H265-0verflow.mkv\n📹 hevc • HDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ 0verflow\n💾 10.9 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|91dd82f89639cdf7cff9beb6661c3fc96990f2e5",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv",
+        "videoSize": 13810706916
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv\n📹 hevc | 🔊 Dolby Digital Plus • PCM • 5.1\n🏷️ UNiON\n💾 12.9 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3014e112dbb7f983f8eda302d6a20d21e7861f6f",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv",
+        "videoSize": 13810600266
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv\n📹 hevc | 🔊 Dolby Digital Plus • PCM • 5.1\n🏷️ UNiON\n💾 12.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|098d4c8272517f2504e09b462ee591c4e1b82466",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.2160p.WEB.H265-SUPPLY.mkv",
+        "videoSize": 9824168980
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.2160p.WEB.H265-SUPPLY.mkv\n📹 hevc\n⭐ WEB | 🏷️ SUPPLY\n💾 9.1 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fbc3df71e76301195feed09fd00067a9bac1fc22",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 13810600379
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • SDR\n🏷️ AOC\n💾 12.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fba4fdc13ca29ea987501dffb09867e2c8fdc900",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv",
+        "videoSize": 79493050100
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv\n📹 avc • SDR\n🏷️ AOC\n💾 74.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ad95deb05cf879b242388de65b9dae97d3e589e4",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv",
+        "videoSize": 79493050100
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv\n📹 avc • SDR\n🏷️ AOC\n💾 74.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8cd1e624c36ddfd0be55026fec8cba7cf0a063e2",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 13810600379
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • SDR\n🏷️ AOC\n💾 12.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|834c85a90f5ef3c5e52bd5b4ab7f93c13613c851",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv",
+        "videoSize": 79493050100
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv\n📹 avc • SDR\n🏷️ AOC\n💾 74.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|815ef3da9930df797734958930fc662feba59891",
+        "filename": "Coyote.vs.Acme.2026.DCP.4K.2160p.DCI.SDR.H264.Ukr.Eng.mkv",
+        "videoSize": 79641647798
+      },
+      "description": "📄 Coyote.vs.Acme.2026.DCP.4K.2160p.DCI.SDR.H264.Ukr.Eng.mkv\n📹 avc • SDR\n💾 74.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|769d658831730cde6475e8457d91d6c416c1e1d3",
+        "filename": "Coyote Vs Acme 2026 2160P DCP SDR. X265 POOTLED.mkv",
+        "videoSize": 35399663087
+      },
+      "description": "📄 Coyote Vs Acme 2026 2160P DCP SDR. X265 POOTLED.mkv\n📹 hevc • SDR\n👤 84 💾 33.0 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6ad0ca23ce1de264ad92e5aea0c0163d85418f12",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv",
+        "videoSize": 79493050100
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv\n📹 avc • SDR\n🏷️ AOC\n💾 74.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|655f7d2110d20432b34a617a4d90326bacd06c7f",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 13810600379
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • SDR\n🏷️ AOC\n👤 0 💾 12.9 GB 🔎 Comet|realdebrid",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|61f1602289e5068d3441ff7b39d195e5446d4a7a",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv",
+        "videoSize": 79493050100
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv\n📹 avc • SDR\n🏷️ AOC\n💾 74.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|433cecdfb27d84296850e852a014d3548f2c5bdc",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCPRip.SDR.H265.mkv",
+        "videoSize": 8630332971
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCPRip.SDR.H265.mkv\n📹 hevc • SDR\n💾 8.0 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c6adb3d95f9aec01d72b3df2198aeb220e54d1e5",
+        "filename": "Coyote vs. Acme (2026) DCPRip 4K 2160p AAC 5.1 ENG MULTI SUBS ENGLISH-SPANISH.mkv",
+        "videoSize": 8285124453
+      },
+      "description": "📄 Coyote vs. Acme (2026) DCPRip 4K 2160p AAC 5.1 ENG MULTI SUBS ENGLISH-SPANISH.mkv\n🔊 AAC • 5.1\n🏷️ SPANISH\n💾 7.7 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇪🇸",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f85714449089033076ac1b81ce88e21cdab7fd09",
+        "filename": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv",
+        "videoSize": 7840611035
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c90d255f520de670cd021aba7fedcdd654914613",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+        "videoSize": 7840611035
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c3d47d2c7f404841f6472eb63f2184ef94c0bb9f",
+        "filename": "Coyote vs Acme 2026 1080P AMZN WEB-DL DDP5.1 Atmos. X265 POOTLED.mkv",
+        "videoSize": 4159383377
+      },
+      "description": "📄 Coyote vs Acme 2026 1080P AMZN WEB-DL DDP5.1 Atmos. X265 POOTLED.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 5 💾 3.9 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a4f71d97b5f78c1de0b904c542eca2b86297c827",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+        "videoSize": 7840612005
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n👤 2297 💾 7.3 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99de94c2403c60d36b63083f778cbee82926145f",
+        "filename": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264[SUBS]-LatTeam.mkv",
+        "videoSize": 7840726241
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264[SUBS]-LatTeam.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ LatTeam\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bf9a71c7980f71d6ab1b60f616ae565ee2a5b54e",
+        "filename": "KINGDOM  RG.mkv",
+        "videoSize": 2887110
+      },
+      "description": "📄 KINGDOM  RG.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 134 💾 2.8 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bce1ea3be9e0e2572d8156723ed8d44dda5bb1a3",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv",
+        "videoSize": 2515584810
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ GeneMige\n💾 2.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ae4db8af381d0b5fcd3929edcc7b952b89ed0792",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv",
+        "videoSize": 2515584810
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ GeneMige\n💾 2.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|12047d99c087724eee23833b64c180a26d82790f",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv",
+        "videoSize": 2515584810
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ GeneMige\n💾 2.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a1242acf84bb81464a5cc95e087a4aedaabd8ad8",
+        "filename": "Coyote.vs.Acme.2026.(DCPRiP).1080p.10bit.x265.LD-DDP5.1.ITA-ENG.mkv",
+        "videoSize": 1597804724
+      },
+      "description": "📄 Coyote.vs.Acme.2026.(DCPRiP).1080p.10bit.x265.LD-DDP5.1.ITA-ENG.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n🏷️ ENG\n💾 1.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b546864f30640041ae73b8b3be3511835c8698e8",
+        "filename": "Coyote vs Acme (2026) WEB-DL 1080p DCP H265 Audio Latino Digital.mkv",
+        "videoSize": 2200850061
+      },
+      "description": "📄 Coyote vs Acme (2026) WEB-DL 1080p DCP H265 Audio Latino Digital.mkv\n📹 hevc\n⭐ WEB-DL\n👤 0 💾 2.0 GB 🔎 Comet|torbox\n💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2b442dde5cd383119a0e405ef601ca0860c971e9",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv",
+        "videoSize": 1842576433
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv\n📹 hevc | 🔊 5.1\n⭐ WEB-DL\n👤 5 💾 1.7 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ef204d7416ff066928ce1e26340b7192ae0f8cbe",
+        "filename": "Coyote Vs Acme 2026 1080p DCPRip x265 DDP5.1-CSP.mkv",
+        "videoSize": 1761985883
+      },
+      "description": "📄 Coyote Vs Acme 2026 1080p DCPRip x265 DDP5.1-CSP.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n🏷️ CSP\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c07871ac804ad57ce942d419e0a990f263ce1ad6",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n👤 11 💾 2.1 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd9909c81faba20a3c208d27dec35cfb087fb7fd",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n👤 1 💾 2.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|80b867e023bd733b382e082e9bac6c773a1fd7cc",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n👤 1 💾 2.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|801c876273aa16da3d028a084ae16a030c2e7cd0",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.1080p.DCP.HEVC.DDP5.1-AGNOSTON.mkv",
+        "videoSize": 2694397935
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.1080p.DCP.HEVC.DDP5.1-AGNOSTON.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AGNOSTON\n💾 2.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6e615b26ee93ea127b189a524b0d3cb48ed803cf",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5b60dfa52791fe991078d1b68ec61d6ddab7957c",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|243a78ef7c6437d8cd5c943f15d0fb8e42a0ade6",
+        "filename": "Coyote Vs Acme 2026 1080p WEBRio x265 DDP5.1-CSP.mkv",
+        "videoSize": 2491371150
+      },
+      "description": "📄 Coyote Vs Acme 2026 1080p WEBRio x265 DDP5.1-CSP.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n🏷️ CSP\n💾 2.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|85f8638f42d33238ac47662e89ad903f06d635f2",
+        "filename": "Coyote vs. Acme 10bit 4KDS 1080p SVT-AV1-Tritium.mkv",
+        "videoSize": 2862140236
+      },
+      "description": "📄 Coyote vs. Acme 10bit 4KDS 1080p SVT-AV1-Tritium.mkv\n📹 av1 • 10bit\n🏷️ Tritium\n💾 2.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1b5cc5920b4b39efc2c03b9abcf07bdd6e781855",
+        "filename": "Coyote.vs.Acme.2026.VOST.1080p.WEB.PCM.H264-NOTAG.mkv",
+        "videoSize": 7357119567
+      },
+      "description": "📄 Coyote.vs.Acme.2026.VOST.1080p.WEB.PCM.H264-NOTAG.mkv\n📹 avc | 🔊 PCM\n⭐ WEB | 🏷️ NOTAG\n💾 6.9 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec82af0dd039bdc487864fbb9be63b7a10261322",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv",
+        "videoSize": 1639238719
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv\n📹 hevc\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d6932573983f48ce852f35da3b65a3af10094f82",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv",
+        "videoSize": 1639238719
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv\n📹 hevc\n👤 3513 💾 1.5 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d6016207f72e20f6279cdd58793026bc704db5a0",
+        "filename": "Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv",
+        "videoSize": 7603877781
+      },
+      "description": "📄 Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv\n📹 avc\n🏷️ DKS\n👤 49 💾 7.1 GB 🔎 The Pirate Bay\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d5f63ea82a2357b50a2ee9f657da84abdcbc3d6d",
+        "filename": "Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv",
+        "videoSize": 7603877781
+      },
+      "description": "📄 Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv\n📹 avc\n🏷️ DKS\n💾 7.1 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|84c4d7eb60a5b21da55571e7e1cea397b4ee794e",
+        "filename": "Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264-DKS.mkv",
+        "videoSize": 7603878412
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264-DKS.mkv\n📹 avc\n🏷️ DKS\n👤 5 💾 7.1 GB 🔎 The Pirate Bay\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|829b505516f37bce01ef821c09b564ffa816c8c2",
+        "filename": "Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv",
+        "videoSize": 7603877781
+      },
+      "description": "📄 Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv\n📹 avc\n🏷️ DKS\n👤 0 💾 7.1 GB 🔎 Comet| ElfHosted\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7d4571af45f0ee1afb29192f94a202d3669f7c54",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv",
+        "videoSize": 1639238719
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv\n📹 hevc\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a8ecdaedb764e281a632e8558bbce10b34ca112",
+        "filename": "Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv",
+        "videoSize": 7603877781
+      },
+      "description": "📄 Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv\n📹 avc\n🏷️ DKS\n💾 7.1 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3183d8da9708322f0d1c13ec6bb291186bc81d3c",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.mp4",
+        "videoSize": 2619744352
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.HEVC.mp4\n📹 hevc\n💾 2.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1fee34349bf7c5643f04b3282b59bea9d0579b89",
+        "filename": "Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264.mkv",
+        "videoSize": 2574241511
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264.mkv\n📹 avc\n👤 355 💾 2.4 GB 🔎 The Pirate Bay\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d1a1337161184a330c95476940975786c7c9d009",
+        "filename": "Coyote.vs.Acme.2026.WEB.1080p.Dragon.Money.Studio.mkv",
+        "videoSize": 3855471269
+      },
+      "description": "📄 Coyote.vs.Acme.2026.WEB.1080p.Dragon.Money.Studio.mkv\n⭐ WEB\n💾 3.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c1a020b761262c61134b6ec2ed16af9ebd4dd7d6",
+        "filename": "Coyote.vs.Acme.2026.WEB.1080p.MULTi.mkv",
+        "videoSize": 4301318757
+      },
+      "description": "📄 Coyote.vs.Acme.2026.WEB.1080p.MULTi.mkv\n⭐ WEB\n👤 1 💾 4.0 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ab9766ada527b0426f0b629bf308532f3a551869",
+        "filename": "Coyote.vs.Acme.WEB.1080p.2026.MULTi2.mkv",
+        "videoSize": 4449938596
+      },
+      "description": "📄 Coyote.vs.Acme.WEB.1080p.2026.MULTi2.mkv\n⭐ WEB\n💾 4.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|29ab966cffe3f26ae1b6ec6f89345234a168734e",
+        "filename": "Coyote.vs.Acme.2026.1080p.WEB.mp4",
+        "videoSize": 2156211416
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.WEB.mp4\n⭐ WEB\n💾 2.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd0704ff274fa716620efb7b79c4e17ff6854dcc",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng.mkv",
+        "videoSize": 7998456106
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng.mkv\n💾 7.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b0688a19cb7e7e7affe8d2a1fbd4300a7b9a7b11",
+        "filename": "Coyote vs. Acme (2026) DCPRip 1080p.mkv",
+        "videoSize": 8394736828
+      },
+      "description": "📄 Coyote vs. Acme (2026) DCPRip 1080p.mkv\n👤 66 💾 7.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8266a3589405385aa5e1fdc391c2d79be86acab2",
+        "filename": "Coyote vs Acme (2026) DCPRip 1080p.mkv",
+        "videoSize": 2324632369
+      },
+      "description": "📄 Coyote vs Acme (2026) DCPRip 1080p.mkv\n💾 2.2 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1c6f7778f9d31fa5bb2aa45481b471fa5ef539b0",
+        "filename": "Coyote vs Acme (2026) DCPRip 1080p.mkv",
+        "videoSize": 2324632369
+      },
+      "description": "📄 Coyote vs Acme (2026) DCPRip 1080p.mkv\n👤 1 💾 2.2 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|05f609d58b357329f4f9330dab9cae284a0e01a1",
+        "filename": "Coyote vs Acme (2026) DCPRip 1080p.mkv",
+        "videoSize": 2324632369
+      },
+      "description": "📄 Coyote vs Acme (2026) DCPRip 1080p.mkv\n💾 2.2 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e20eb2f498ccb5a8192691fe77e77ebdfa283d3f",
+        "filename": "Coyote.vs.Acme.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+        "videoSize": 1989591609
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ NeoNoir\n💾 1.9 GB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e35692d2a048044f6201a6564b436c7aa9fef454",
+        "filename": "Coyote.Vs..Acme.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+        "videoSize": 2036717843
+      },
+      "description": "📄 Coyote.Vs..Acme.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip\n💾 1.9 GB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a4b11acb68256764831dfb308ba6ab5e1add0fc0",
+        "filename": "Coyote.Vs.Acme.2026.1080p.WEBRip.x264.Dublado-JEM.mkv",
+        "videoSize": 4705177846
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.1080p.WEBRip.x264.Dublado-JEM.mkv\n📹 avc\n⭐ WEBRip | 🏷️ JEM\n💾 4.4 GB 🔎 Comet|StremThru\n🌎/🇵🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|476207717ae301be703cc983c8a37aacec9aa3af",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera.mkv",
+        "videoSize": 2935594003
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera.mkv\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 2.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba3d436dc4eb40c79ccfad7f736e56c3fa93ae72",
+        "filename": "Coyote_Vs_Acme_2026_1080p_WEBRip_Dub.mp4",
+        "videoSize": 4577510973
+      },
+      "description": "📄 Coyote_Vs_Acme_2026_1080p_WEBRip_Dub.mp4\n⭐ WEBRip\n💾 4.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7a0dd144c715df1e83ee16872fac48af7ed63503",
+        "filename": "Coyote.vs.Acme.2026.PLSUBBED.AI.1080p.DCP.XviD.AC3-MAXX.mp4",
+        "videoSize": 2807177001
+      },
+      "description": "📄 Coyote.vs.Acme.2026.PLSUBBED.AI.1080p.DCP.XviD.AC3-MAXX.mp4\n📹 xvid | 🔊 Dolby Digital\n🏷️ MAXX\n💾 2.6 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bf215cace15b3dd07dc6230a9d464d10c9795fd3",
+        "filename": "Coyote.vs.Acme.2026.PLSUBBED.1080p.V2.DCRIP.XviD-MAXX.mp4",
+        "videoSize": 3232988675
+      },
+      "description": "📄 Coyote.vs.Acme.2026.PLSUBBED.1080p.V2.DCRIP.XviD-MAXX.mp4\n📹 xvid\n🏷️ MAXX\n💾 3.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9f4a238978d7fbbc822223138c7566073692bb90",
+        "filename": "Coyote.Vs..Acme.2026.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+        "videoSize": 1844413728
+      },
+      "description": "📄 Coyote.Vs..Acme.2026.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mp4\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEBRip\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e1e7291d32d1ea9e79cffadb583cfd5161ed901",
+        "filename": "Coyote vs Acme 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+        "videoSize": 4299927343
+      },
+      "description": "📄 Coyote vs Acme 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 4.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d4a0beeb13842e597a922d9788e4b94136f1d8ca",
+        "filename": "Coyote vs Acme 2026 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+        "videoSize": 4201223756
+      },
+      "description": "📄 Coyote vs Acme 2026 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 3.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0cf256a65e023073cd7f73044f7ffacd589417f9",
+        "filename": "Coyote.vs.Acme.2026.720p.DCPRip.x264_New-Team_il68k.mkv",
+        "videoSize": 4547820871
+      },
+      "description": "📄 Coyote.vs.Acme.2026.720p.DCPRip.x264_New-Team_il68k.mkv\n📹 avc\n👤 269 💾 4.2 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d0fb79ecd59a2561bcf4a279e9cec1a9951ddaab",
+        "filename": "Coyote.vs.Acme.2026.720p.BluRay.Subtitulado.Esp.CC.mp4",
+        "videoSize": 1102304962
+      },
+      "description": "📄 Coyote.vs.Acme.2026.720p.BluRay.Subtitulado.Esp.CC.mp4\n⭐ BluRay\n💾 1.0 GB 🔎 Comet|StremThru\n🇪🇸",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3dc85547ff9cf0103102c40a311931e3e294c116",
+        "filename": "Coyote vs Acme 2026 720p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+        "videoSize": 750671788
+      },
+      "description": "📄 Coyote vs Acme 2026 720p 10bit WEBRip 6CH x265 HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 715.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b0679b4ee058568058cc3a6e570b14c13f59a004",
+        "filename": "Coyote.Vs.Acme.2026.French.Ca.720P. WEBRIP.mkv",
+        "videoSize": 2758624872
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.French.Ca.720P. WEBRIP.mkv\n⭐ WEBRip | 🏷️ NOTAG\n👤 863 💾 2.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e735ddfebff97c0803e464f756fa15a3302a15d9",
+        "filename": "coyote.vs.acme.2026.web.h264-rbb.mp4",
+        "videoSize": 966872316
+      },
+      "description": "📄 coyote.vs.acme.2026.web.h264-rbb.mp4\n📹 avc\n⭐ WEB | 🏷️ rbb\n💾 922.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aab0014b6b0122266aed238e90a81de77fe6c44f",
+        "filename": "Coyote.vs.Acme.WEB.2026.MULTi2.mkv",
+        "videoSize": 2062955296
+      },
+      "description": "📄 Coyote.vs.Acme.WEB.2026.MULTi2.mkv\n⭐ WEB\n💾 1.9 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|084975b99bab70b1c439fbad0be520e3f4477f6d",
+        "filename": "Coyote.vs.Acme.WEB.2026.MULTi.mkv",
+        "videoSize": 1914341912
+      },
+      "description": "📄 Coyote.vs.Acme.WEB.2026.MULTi.mkv\n⭐ WEB\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec504acb7166a91b957b112a5151674d407abaa1",
+        "filename": "Coyote vs Acme (2026) HdTScr Lat.mp4",
+        "videoSize": 977891906
+      },
+      "description": "📄 Coyote vs Acme (2026) HdTScr Lat.mp4\n💾 932.6 MB 🔎 Comet|StremThru\n💃🏻",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e4f5deb9040bc9416968357113b71915be94403b",
+        "filename": "Coyote vs. Acme (2026) TSScreener Latino.mp4",
+        "videoSize": 2005519117
+      },
+      "description": "📄 Coyote vs. Acme (2026) TSScreener Latino.mp4\n👤 2 💾 1.9 GB 🔎 Comet|BitMagnet\n💃🏻",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d473c047534b73a0067db1ff9252088b7903982d",
+        "filename": "Coyote Vs. Acme (2026).mkv",
+        "videoSize": 1868351071
+      },
+      "description": "📄 Coyote Vs. Acme (2026).mkv\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aaaacfa7403051de81ab62785890e481f482e82f",
+        "filename": "Хитрый койот.mkv",
+        "videoSize": 2324632369
+      },
+      "description": "📄 Хитрый койот.mkv\n💾 2.2 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|90f141e8d05d977cbda35764ec8a45545494b804",
+        "filename": "Coyote vs Acme (2026).mkv",
+        "videoSize": 8987406188
+      },
+      "description": "📄 Coyote vs Acme (2026).mkv\n💾 8.4 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|49fa318dae561fd260d0fe7bf7d822a6cf102e66",
+        "filename": "Coyote vs Acme (2026) DCPRip.avi",
+        "videoSize": 1464799232
+      },
+      "description": "📄 Coyote vs Acme (2026) DCPRip.avi\n💾 1.4 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|86f6070b62ed9c14c86b8610e151ad4178927548",
+        "filename": "Coyote.vs.Acme.2026.D.BDRip.1O8Op.mkv",
+        "videoSize": 8162480597
+      },
+      "description": "📄 Coyote.vs.Acme.2026.D.BDRip.1O8Op.mkv\n⭐ BDRip\n💾 7.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|516c3356036673d2d135fff189345f4bec23268c",
+        "filename": "Coyote.vs.Acme.2026.D.BDRip.avi",
+        "videoSize": 1467641856
+      },
+      "description": "📄 Coyote.vs.Acme.2026.D.BDRip.avi\n⭐ BDRip\n👤 2 💾 1.4 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e2455f9a12713b6c7850133fe9dc428332fd0f4",
+        "filename": "Coyote.vs.Acme.2026.D.BDRip.avi",
+        "videoSize": 1467641856
+      },
+      "description": "📄 Coyote.vs.Acme.2026.D.BDRip.avi\n⭐ BDRip\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|977da7c99128649f3ee927a8f406723d06aaaff0",
+        "filename": "Coyote Vs. Acme (2026) HDRip-AVC.givat.ТоррНадо.mp4",
+        "videoSize": 1822848711
+      },
+      "description": "📄 Coyote Vs. Acme (2026) HDRip-AVC.givat.ТоррНадо.mp4\n📹 avc\n⭐ HDRip\n💾 1.7 GB 🔎 DMM\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b762ecc218b0f4f6d97aca5ac02fb795ab8617dd",
+        "filename": "Coyote vs Acme 2026 2160p iT WEB.DL DDP5 1 Atmos DV HDR H 265-BYNDR {imdb-tt1756855}.mkv",
+        "videoSize": 19174970520
+      },
+      "description": "📄 Coyote vs Acme 2026 2160p iT WEB.DL DDP5 1 Atmos DV HDR H 265-BYNDR {imdb-tt1756855}.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ tt1756855}\n💾 17.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e4714f76018fd248aaf3028c407ff96a3325a68",
+        "filename": "Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv",
+        "videoSize": 22300917774
+      },
+      "description": "📄 Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv\n📹 hevc • DV • HDR • 10bit\n⭐ WEB-DL\n👤 5 💾 20.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a75364faf2de10ca2168b91ebf6d8b34991e3392",
+        "filename": "Coyote vs. Acme (2026) MULTi VFQ 2160p 10bit DV HDR10+ WEBRip x265 DDP 5.1 Atmos-D4RK",
+        "videoSize": 5092974833
+      },
+      "description": "📄 Coyote vs. Acme (2026) MULTi VFQ 2160p 10bit DV HDR10+ WEBRip x265 DDP 5.1 Atmos-D4RK\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ D4RK\n💾 4.7 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|437afe2ef64b1e9c24cd2f107c53985d5542f3fa",
+        "filename": "Coyote.vs.Acme.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.H.265-BYNDR.mkv",
+        "videoSize": 11699850659
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.H.265-BYNDR.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 10.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|33c66e568b5aaa3c2753679f3a1fc00db460421c",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+        "videoSize": 19471628332
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BOUBA\n💾 18.1 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|332b0817fccf0333b6743e736f06741de1c49767",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+        "videoSize": 19471628332
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BOUBA\n💾 18.1 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1cd2e0c795d70d04264a7d932f0069c759713bdd",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+        "videoSize": 19471628332
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BOUBA\n💾 18.1 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0e045237863c60e07e0946bfbc1c330c9136858b",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+        "videoSize": 19471628332
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BOUBA\n💾 18.1 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b6414328cac5a65fcded08c622f16e4c8cc5df0e",
+        "filename": "coyote.vs.acme.2026.dv.2160p.web.h265-naisu",
+        "videoSize": 12693872312
+      },
+      "description": "📄 coyote.vs.acme.2026.dv.2160p.web.h265-naisu\n📹 hevc • DV\n⭐ WEB | 🏷️ naisu\n💾 11.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b8157e95de79c2df2ea32a57a7aa0731bde9f43",
+        "filename": "Coyote.vs.Acme.2026.EN.CA.2160p.HDR.WEB-DL.DDP5.1.H265-dAv.mkv",
+        "videoSize": 19438874184
+      },
+      "description": "📄 Coyote.vs.Acme.2026.EN.CA.2160p.HDR.WEB-DL.DDP5.1.H265-dAv.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ dAv\n💾 18.1 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|11612911eb4fd5f1980f4395651c48ceecc20871",
+        "filename": "Coyote.vs.Acme.2026.EN.CA.2160p.HDR.WEB-DL.DDP5.1.H265-dAv.mkv",
+        "videoSize": 19438874184
+      },
+      "description": "📄 Coyote.vs.Acme.2026.EN.CA.2160p.HDR.WEB-DL.DDP5.1.H265-dAv.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ dAv\n💾 18.1 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3f28a7e03c4eac3b3129835bae0762b080d9321b",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.DD+5.1.HDR.H.265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.DD+5.1.HDR.H.265-AOC.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n💾 15.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4d530f56385147807e797df8002ee9e8c6a83be2",
+        "filename": "coyote.vs.acme.2026.hdr.2160p.web.h265-naisu.mkv",
+        "videoSize": 19142795102
+      },
+      "description": "📄 coyote.vs.acme.2026.hdr.2160p.web.h265-naisu.mkv\n📹 hevc • HDR\n⭐ WEB | 🏷️ naisu\n💾 17.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|189d137f29576678b0e67401946a5246e83ceea1",
+        "filename": "Coyote.vs.Acme.2026.HDR.2160p.WEB.H265-NAISU",
+        "videoSize": 19142800601
+      },
+      "description": "📄 Coyote.vs.Acme.2026.HDR.2160p.WEB.H265-NAISU\n📹 hevc • HDR\n⭐ WEB | 🏷️ NAISU\n💾 17.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0e50a1e2fa23e1a9e6507cdf566fbb2a567fcc09",
+        "filename": "coyote.vs.acme.2026.hdr.2160p.web.h265-naisu.mkv",
+        "videoSize": 19142795102
+      },
+      "description": "📄 coyote.vs.acme.2026.hdr.2160p.web.h265-naisu.mkv\n📹 hevc • HDR\n⭐ WEB | 🏷️ naisu\n💾 17.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bafc5db5ad242d4f4ad270fa38b351d46a734e18",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b8bc469191b9b6da633780c78cf3b991819cc5ad",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL",
+        "videoSize": 16669449108
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL\n📹 hevc • HDR\n🏷️ 3CooL\n💾 15.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8647d668785f4c21a8d43f5cf34d8ccb9eb5ccdb",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|78fba64d2752b0314f0a2a7c109fa85c7514366f",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|180c972a6abb60693ca107525bf245d86f39fa6f",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 16663501354
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • HDR\n🏷️ AOC\n💾 15.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|154471b8129ac9ca6c6ad0ed424c0349b0484a39",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.H265.UKR.mkv",
+        "videoSize": 11484211764
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.HDR.H265.UKR.mkv\n📹 hevc • HDR\n💾 10.7 GB 🔎 DMM\n🇺🇦",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a97bd84edaab81b25eff1d693e64e974015fef6",
+        "filename": "Coyote.vs.Acme.2026.REPACK.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR.mkv",
+        "videoSize": 12055122901
+      },
+      "description": "📄 Coyote.vs.Acme.2026.REPACK.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ BYNDR\n💾 11.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d97a2d450c08c69159ba82ca7554c33665d6c666",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VOSTFR.2160p.DCPRip.HDR10.EAC3.5.1.H265-0verflow.mkv",
+        "videoSize": 11598160720
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTI.VOSTFR.2160p.DCPRip.HDR10.EAC3.5.1.H265-0verflow.mkv\n📹 hevc • HDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n🏷️ 0verflow\n💾 10.8 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|779b87df3c71685a095ca3f524a6eeb8b703c15e",
+        "filename": "Coyote.Vs.Acme.2026.MULTI.VFQ.2160p.WEB.H265.E-AC3.Atmos-AKM.mkv",
+        "videoSize": 12351767585
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.MULTI.VFQ.2160p.WEB.H265.E-AC3.Atmos-AKM.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus\n⭐ WEB | 🏷️ AKM\n💾 11.5 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2db0f9f546fa0db681e93e0aa238c3e604cdb883",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.HEVC.10bit.FLAC5.1.EAC3.5.1-Repacks36.mkv",
+        "videoSize": 17534024571
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.HEVC.10bit.FLAC5.1.EAC3.5.1-Repacks36.mkv\n📹 hevc • SDR • 10bit | 🔊 FLAC • Dolby Digital Plus • 5.1\n⭐ REPACK\n💾 16.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|91fcc2eeb45dd18f7b119844f882162f865853f6",
+        "filename": "Coyote vs. Acme (2026) UHD WEB-DL 2160p | 4K | SDR | D, P | HDRezka Studio",
+        "videoSize": 12648678686
+      },
+      "description": "📄 Coyote vs. Acme (2026) UHD WEB-DL 2160p | 4K | SDR | D, P | HDRezka Studio\n📹 hevc • SDR\n⭐ WEB-DL\n👤 89 💾 11.8 GB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f186328a10d21909c96cdb69025a07e9785d3506",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON {imdb-tt1756855}.mkv",
+        "videoSize": 13810600266
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON {imdb-tt1756855}.mkv\n📹 hevc | 🔊 Dolby Digital Plus • PCM • 5.1\n🏷️ tt1756855}\n💾 12.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|afaffcfda55b839475705ce6c90778abbe409960",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv-.N-Z-B.-xpost.mkv",
+        "videoSize": 13810600266
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv-.N-Z-B.-xpost.mkv\n📹 hevc | 🔊 Dolby Digital Plus • PCM • 5.1\n🏷️ xpost\n💾 12.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|753870d70354d7f7e0263195365ed10615a6adef",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1 DDP5.1-UNiON",
+        "videoSize": 13810600266
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1 DDP5.1-UNiON\n📹 hevc | 🔊 Dolby Digital Plus • PCM • 5.1\n🏷️ UNiON\n💾 12.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|00e1ad570b6c20b7cfe94f9a23f4915aca8d1097",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv",
+        "videoSize": 13810706916
+      },
+      "description": "📄 Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv\n📹 hevc | 🔊 Dolby Digital Plus • PCM • 5.1\n🏷️ UNiON\n💾 12.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fba9de82bad51715cf475b0f2eaadbc4904b5ece",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.2160p.WEB.H265-SUPPLY.mkv",
+        "videoSize": 9824168980
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.2160p.WEB.H265-SUPPLY.mkv\n📹 hevc\n⭐ WEB | 🏷️ SUPPLY\n💾 9.1 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|94713734c5d7809bd92a9c48b1faea12f9e46d8c",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.2160p.WEB.H265-SUPPLY",
+        "videoSize": 9824173344
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.2160p.WEB.H265-SUPPLY\n📹 hevc\n⭐ WEB | 🏷️ SUPPLY\n💾 9.1 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ea11f2d9812fb7b6249d37d0ae0b5cf55af993cc",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv",
+        "videoSize": 79493050100
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC.mkv\n📹 avc • SDR\n🏷️ AOC\n💾 74.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|132829146a5607d9d8b3b6cb98519ec781f71810",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv",
+        "videoSize": 13810600379
+      },
+      "description": "📄 Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H265-AOC.mkv\n📹 hevc • SDR\n🏷️ AOC\n👤 0 💾 12.9 GB 🔎 Comet|torbox",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa0914c4f00328daaede7289e10d366956df34f7",
+        "filename": "Coyote.vs.Acme.(2026).WEB-DL.2160p.DV5.Ukr.Eng.mkv",
+        "videoSize": 11979652533
+      },
+      "description": "📄 Coyote.vs.Acme.(2026).WEB-DL.2160p.DV5.Ukr.Eng.mkv\n⭐ WEB-DL\n👤 1 💾 11.2 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4a17e3e3f90a39829713f2a4e29ab049fc705dbc",
+        "filename": "Coyote.vs.Acme.(2026).WEB-DL.2160p.SDR.Ukr.Eng",
+        "videoSize": 12334922197
+      },
+      "description": "📄 Coyote.vs.Acme.(2026).WEB-DL.2160p.SDR.Ukr.Eng\n📹 SDR\n⭐ WEB-DL\n💾 11.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e23ec5652d7e79f2885110e8b31cbe7821fe8c8",
+        "filename": "Coyote vs Acme 2026 Retail DKsubs 2160p DCP WEBRip x265 DDP5 1-ADDICTION.mkv",
+        "videoSize": 8482516945
+      },
+      "description": "📄 Coyote vs Acme 2026 Retail DKsubs 2160p DCP WEBRip x265 DDP5 1-ADDICTION.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ ADDICTION\n💾 7.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|08c4f3e9e8f1428daa3b0a0969aa1bd63937d92f",
+        "filename": "Coyote vs Acme 2160pHD (2026) ENGSubs EZTV",
+        "videoSize": 1200286575
+      },
+      "description": "📄 Coyote vs Acme 2160pHD (2026) ENGSubs EZTV\n⭐ HDTV\n💾 1.1 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6894ce9bd0f2a2b85492c3e78715694e6be7b85d",
+        "filename": "Coyote vs. Acme (2026) (1080p AMZN WEB-DL x265 10bit EAC3 Atmos 5.1 Ghost) [QxR]",
+        "videoSize": 4111567858
+      },
+      "description": "📄 Coyote vs. Acme (2026) (1080p AMZN WEB-DL x265 10bit EAC3 Atmos 5.1 Ghost) [QxR]\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 8 💾 3.8 GB 🔎 The Pirate Bay",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f3eb77f7863f1bc2c9c39fe92d9f862a6aa44ee5",
+        "filename": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv",
+        "videoSize": 7840611035
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ad1c3a52fea69fdd89b46134b0ba15971b0a41ec",
+        "filename": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv",
+        "videoSize": 7840611035
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7facb073b446a3a854e9abc6d4771a4fe9ef4e0a",
+        "filename": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv",
+        "videoSize": 7840611035
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n👤 0 💾 7.3 GB 🔎 Comet|torbox",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|22f521cb1e8a2c38cbc699162930bd83b9ee4e68",
+        "filename": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR",
+        "videoSize": 7840611035
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BYNDR\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4904e26fa0b8fb40baa5c3c5dc2146b5b865d811",
+        "filename": "Coyote.vs.Acme.2026.MULTi.HLG.HDR.1080p.WEB-DL.H264.DD5.1-AS76.mkv",
+        "videoSize": 5045777395
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTi.HLG.HDR.1080p.WEB-DL.H264.DD5.1-AS76.mkv\n📹 avc • HDR | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ AS76\n👤 17 💾 4.7 GB 🔎 Comet|BestTorrents\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dc6584e4d443aeaa6b395f082e587c5828fb12f8",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos.WEBDL.mkv",
+        "videoSize": 8434014805
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos.WEBDL.mkv\n🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 0 💾 7.9 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ca21fb3b9451ac936010f0ef07dcc5cd038511ca",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos.WEBDL.mkv",
+        "videoSize": 8428873318
+      },
+      "description": "📄 Coyote vs. Acme (2026) WEB-DL 1080p | D, Р\n🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 303 💾 7.8 GB 🔎 TheRARBG\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|debbabaa0c8c7ecf056ae9fa59ba8ab0042c49cd",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+        "videoSize": 7741909220
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 7.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cdd73dc509d55f4afa55bc0b2d5290954ba423ab",
+        "filename": "Coyote.vs.Acme.2026.MULTi.1080p.WEB-DL-tamir.AC3-5.1.x264",
+        "videoSize": 5144643054
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTi.1080p.WEB-DL-tamir.AC3-5.1.x264\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL\n💾 4.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4e7c1bf6a942544f70b28ab49ebed2872bc737d",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv",
+        "videoSize": 1842576433
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv\n📹 hevc | 🔊 5.1\n⭐ WEB-DL | 🏷️ BONE\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|826d7b122ebc8c9bbefdf5738f007d1914c90edc",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL x264 6CH-Pahe in.mkv",
+        "videoSize": 2272240598
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB-DL x264 6CH-Pahe in.mkv\n📹 avc\n⭐ WEB-DL\n💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|69081ad0c111f07cb6224c95705bfde471f2ab7c",
+        "filename": "Coyote.vs.Acme.2026.1080p.VOSTFR.WEB-DL.x264-FS.mp4",
+        "videoSize": 3949607556
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.VOSTFR.WEB-DL.x264-FS.mp4\n📹 avc\n⭐ WEB-DL | 🏷️ FS\n💾 3.7 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|38fcf2b35bef1e474d7d9a50405f3ffe1af3c49a",
+        "filename": "Coyote.vs.Acme.2026.1080p.VOSTFR.WEB-DL.x264-FS.mp4",
+        "videoSize": 3949607556
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.VOSTFR.WEB-DL.x264-FS.mp4\n📹 avc\n⭐ WEB-DL | 🏷️ FS\n💾 3.7 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f6ff7bf3d771b8a9de6b4e2e9a440f6b426906ff",
+        "filename": "Coyote vs Acme 2026 1080p DCP DDP5 1 H264-AOC mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|74a3169913ca46df1ae485f50fb3e6a8386ebb63",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+        "videoSize": 2299514170
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ AOC\n💾 2.1 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|51ed3ae26b655c723390715e57d327708303b437",
+        "filename": "Coyote.Vs.Acme.2026.VO.MULTi.WEB.1080p.H264.AC3.SRT-@l@inbiroute.mkv",
+        "videoSize": 2572498063
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.VO.MULTi.WEB.1080p.H264.AC3.SRT-@l@inbiroute.mkv\n📹 avc | 🔊 Dolby Digital\n⭐ WEB | 🏷️ @l@inbiroute\n💾 2.4 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1fcf9111cbf8d9247dbb537bd253006b15477997",
+        "filename": "coyote.vs.-acme.-2026.1080p.-dcp.-ddp-5.1.-h-264-aoc",
+        "videoSize": 1134686399
+      },
+      "description": "📄 coyote.vs.-acme.-2026.1080p.-dcp.-ddp-5.1.-h-264-aoc\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n🏷️ aoc\n💾 1.1 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|158d24ea3422287a8ef198b10dddbfc0609f71d8",
+        "filename": "Coyote.Vs.Acme.2026.VO.MULTi.WEB.1080p.H264.AC3.SRT-@l@inbiroute.mkv",
+        "videoSize": 2572498063
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.VO.MULTi.WEB.1080p.H264.AC3.SRT-@l@inbiroute.mkv\n📹 avc | 🔊 Dolby Digital\n⭐ WEB | 🏷️ @l@inbiroute\n💾 2.4 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e8a232d0d65843df02e9e28f5f5a353574e345cb",
+        "filename": "Coyote vs. Acme 1080p WEB h264-ETHEL ",
+        "videoSize": 962535936
+      },
+      "description": "📄 Coyote vs. Acme 1080p WEB h264-ETHEL \n📹 avc\n⭐ WEB\n💾 917.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dc8a7549f33eb4cb977bbf84afc033b0074586fb",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H265-SUPPLY",
+        "videoSize": 5995401582
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H265-SUPPLY\n📹 hevc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.6 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d0358a3e8abeff20a6b13a08d5a565fa8fbcc406",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv",
+        "videoSize": 5677676303
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.3 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a1bd63b499e9d07706081a24e98aa7d12abd693c",
+        "filename": "Coyote vs. Acme 1080p WEB h264-ETHEL  ",
+        "videoSize": 962535936
+      },
+      "description": "📄 Coyote vs. Acme 1080p WEB h264-ETHEL\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 917.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|95167c868b5dbf4384641715f5a918338f7b98bf",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY",
+        "videoSize": 5677680586
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.3 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|82a7497c3562435968007d6ce66a09c78efd5554",
+        "filename": "Coyote vs Acme 2026 1080p WEB H264-NERVE - Coyote vs Acme 2026 1080p WEB H264-NERVE",
+        "videoSize": 1739461754
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEB H264-NERVE - Coyote vs Acme 2026 1080p WEB H264-NERVE\n📹 avc\n⭐ WEB | 🏷️ NERVE\n👤 6 💾 1.6 GB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4a1d2e8fa3c8b2f41f0e5890edec0e6ace7926d9",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H265-SUPPLY.mkv",
+        "videoSize": 5995397299
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H265-SUPPLY.mkv\n📹 hevc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.6 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|48dd2ff80bc6b4f468ef269933431c8424e966dc",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv",
+        "videoSize": 5690831667
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n👤 1501 💾 5.3 GB 🔎 TheRARBG\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|333c34555c59af5bc50458e41971fa7f3f59ce01",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY",
+        "videoSize": 5677680586
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.3 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2ece566e61eafc986e8e00cf039bba318098f543",
+        "filename": "Coyote vs Acme 2026 1080p WEB H264-NAISU [ UIndex.org ]",
+        "videoSize": 5668905752
+      },
+      "description": "📄 coyote.vs.acme.2026.1080p.web.h264-naisu.mkv\n📹 avc\n⭐ WEB | 🏷️ naisu\n💾 5.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2e7f86ea7e26ece10a7eb69f1c5c6a4d3be39387",
+        "filename": "Coyote vs Acme 2026 FRENCH CA 1080p WEB H264-SUPPLY",
+        "videoSize": 5680094248
+      },
+      "description": "📄 Coyote vs Acme 2026 FRENCH CA 1080p WEB H264-SUPPLY\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n👤 9 💾 5.3 GB 🔎 Comet|EXT\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|261f4e8840c1fe2a4396f91181933828891caf27",
+        "filename": "Coyote.vs.Acme.2026.MULTi.1080p.WEB.H264-SUPPLY",
+        "videoSize": 5677676303
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTi.1080p.WEB.H264-SUPPLY\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|16848e780b0f3df00345ac3e593795493555a62d",
+        "filename": "Coyote vs. Acme 1080p WEB h264-ETHEL",
+        "videoSize": 1264400896
+      },
+      "description": "📄 Coyote vs. Acme 1080p WEB h264-ETHEL\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|08e8f1cccfe05ed6057311c6c033db60295ed786",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv",
+        "videoSize": 5677676303
+      },
+      "description": "📄 Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n💾 5.3 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a67ce6ed783bed17db7d60df2d4218ae10b0e1d1",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.avi",
+        "videoSize": 1137381390
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.avi\n📹 hevc\n💾 1.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba9f4471641d54ab9b0712b1080e2da82ceaaec8",
+        "filename": "Coyote.vs.Acme.(2026).WEB-DL.1080p.Ukr.Eng.mkv",
+        "videoSize": 8160437862
+      },
+      "description": "📄 Coyote.vs.Acme.(2026).WEB-DL.1080p.Ukr.Eng.mkv\n⭐ WEB-DL\n👤 1 💾 7.6 GB 🔎 Comet|52BT\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d42b5d3c5ff6d3d4e73e874d8a2fbd3ccd1f14b1",
+        "filename": "Coyote vs Acme 2026 1080p AMZN Subs PTBR",
+        "videoSize": -1
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p AMZN Subs PTBR\n💾 None 🔎 DMM\n🇵🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|67b1f3cd17989b8f91cfd13790290378d48c42e6",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng.mkv",
+        "videoSize": 7504891181
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng.mkv\n💾 7.0 GB 🔎 DMM\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0efb9ac2dd64bb175b48f9a6785dc2608def1543",
+        "filename": "Coyote vs Acme 2026 1080p AMZN Subs PTBR",
+        "videoSize": 7844397056
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p AMZN Subs PTBR\n💾 7.3 GB 🔎 DMM\n🇵🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9cc8e3d530d42c1d897ada87b87b60440e237a0",
+        "filename": "Coyote.Vs..Acme.2026.ENG.Sub.ITA.1080p.WEBRip.x264.AAC5.1-BG.mkv",
+        "videoSize": 2034503276
+      },
+      "description": "📄 Coyote.Vs..Acme.2026.ENG.Sub.ITA.1080p.WEBRip.x264.AAC5.1-BG.mkv\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ BG\n👤 11 💾 1.9 GB 🔎 Comet|EXT\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a6c7836f1f1504e5ebbcc467611fe4f3dfedd2ef",
+        "filename": "Coyote.vs.Acme.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 1488725930
+      },
+      "description": "📄 Coyote.vs.Acme.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5c5cc1c86a5f5ef08d05c1fa7ee73384456f03a6",
+        "filename": "Coyote.Vs.Acme.2026.1080p.WEBRip.x264.AAC5.1-LAMA.mp4",
+        "videoSize": 2036717843
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.1080p.WEBRip.x264.AAC5.1-LAMA.mp4\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ LAMA\n💾 1.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|443db6200febd737c3c5c953f713b339d0df614f",
+        "filename": "www.UIndex.org    -    Coyote Vs. Acme (2026) 1080p WEBRip 5.1-LAMA",
+        "videoSize": 2040109465
+      },
+      "description": "📄 www.UIndex.org    -    Coyote Vs. Acme (2026) 1080p WEBRip 5.1-LAMA\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ LAMA\n👤 1 💾 1.9 GB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|387624db6c8e4adc9354d665c39eb0c9789fcf57",
+        "filename": "Coyote vs Acme 2026 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+        "videoSize": 1488725930
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|335c0ed555d1655c90983ee391dc4aae43211dc0",
+        "filename": "Coyote Vs Acme (2026) 1080p WEBRip x265 10bit 5 1-LAMA",
+        "videoSize": 1846835937
+      },
+      "description": "📄 Coyote Vs Acme (2026) 1080p WEBRip x265 10bit 5 1-LAMA\n📹 hevc • 10bit | 🔊 5.1\n⭐ WEBRip | 🏷️ LAMA\n👤 26 💾 1.7 GB 🔎 Comet|EXT",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|07cbe397e63d2c59cbd37c08a1ba235222f562b2",
+        "filename": "Coyote.Vs.Acme.2026.VOSTFR.1080p.WEBRip.AAC.5.1.x265-TweetyZip4All.mkv",
+        "videoSize": 1573328570
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.VOSTFR.1080p.WEBRip.AAC.5.1.x265-TweetyZip4All.mkv\n📹 hevc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ TweetyZip4All\n💾 1.5 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d69ecbbeab08def5949732c23e14084616dfe406",
+        "filename": "Coyote.vs.Acme.2026.VFQ.1080p.WEBRip.AC3.5.1.x265-LUNA.mp4",
+        "videoSize": 2439080566
+      },
+      "description": "📄 Coyote.vs.Acme.2026.VFQ.1080p.WEBRip.AC3.5.1.x265-LUNA.mp4\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ LUNA\n💾 2.3 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d2066b5e66044f7ef54ed18923d20957a2978da2",
+        "filename": "Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P.mkv",
+        "videoSize": 1972498328
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ GL0P\n💾 1.8 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba1c4d29841763e43ab5fae63c0f1ba9e963c26e",
+        "filename": "Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P.mkv",
+        "videoSize": 1972498328
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ GL0P\n💾 1.8 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a3de969202930dcf4aaca587690be885e9cc9811",
+        "filename": "Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P",
+        "videoSize": 1972505279
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ GL0P\n💾 1.8 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|41a3d8ef651164256a57d61db6c52f02586d0090",
+        "filename": "Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P.mkv",
+        "videoSize": 1972498328
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.10.bits.AC3.5.1.x265-GL0P.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ GL0P\n💾 1.8 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e73100830d4e94cc04d2f2d86dc0af9a489ca36",
+        "filename": "Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.AC3.5.1.x264-GL0P.mkv",
+        "videoSize": 4343085910
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.FRENCH.1080p.WEBRip.AC3.5.1.x264-GL0P.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ GL0P\n💾 4.0 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fd8d19da43b9e2557a393b41572984dd140e37e6",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera",
+        "videoSize": 3182942608
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 3.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fce0a3e3445467bf681e8058dd18a052108f4a13",
+        "filename": "www.UIndex.org    -    Coyote vs Acme 2026 1080p WebRip Opus 5 1 x265-Lootera",
+        "videoSize": 2935594003
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WebRip Opus 5 1 x265-Lootera.mkv\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 2.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d60cb88ab08701d2ee4c0cd86052d3ace57869c1",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera",
+        "videoSize": 3202168016
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 3.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d3812f90720abff1672a414ba37de01590214558",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera",
+        "videoSize": 3182426859
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 3.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c6f551477ab5719d3997caa21c4659148e59432b",
+        "filename": "Coyote vs Acme 2026 1080p WEBRip x265-DH",
+        "videoSize": 0
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEBRip x265-DH\n📹 hevc\n⭐ WEBRip | 🏷️ DH\n💾 0.0 B 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9af059abb3b54436758f2eb61527074e7f9d5fc9",
+        "filename": "www.UIndex.org    -    Coyote vs Acme 2026 1080p WEBRip x265-DH",
+        "videoSize": 2469201555
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEBRip x265-DH.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ DH\n💾 2.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99625b535aaf8a1ea29174d21049466a07593bbf",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera",
+        "videoSize": 3202171948
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 3.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|94c1c003fee3a6ea8d7f21e4b4af65f3447c7a41",
+        "filename": "Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera [ UIndex.org ]",
+        "videoSize": 2935594003
+      },
+      "description": "📄 Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera.mkv\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 2.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|90260f027258727c45bb7b34481189934e03bb81",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera",
+        "videoSize": 3182942608
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 3.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|47bf180fdf86cbe32565f0fa954c4cc93a578035",
+        "filename": "Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera.mkv",
+        "videoSize": 2935594003
+      },
+      "description": "📄 Coyote.vs.Acme.2026.V2.1080p.WebRip.Opus.5.1.x265-Lootera.mkv\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 2.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|44a7a675bc9c16d9a45c2efd4d7ad451bdbbee1c",
+        "filename": "Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera",
+        "videoSize": 2694397935
+      },
+      "description": "📄 Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera\n📹 hevc | 🔊 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 2.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|740428448e390c7dafe4f44bb9d2947c9cf851a5",
+        "filename": "Coyote Vs. Acme (2026) [1080p] [WEBRip] [5.1]",
+        "videoSize": 2036827909
+      },
+      "description": "📄 Coyote Vs. Acme (2026) [1080p] [WEBRip] [5.1]\n🔊 5.1\n⭐ WEBRip\n💾 1.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|042628507d242fdb52aba506fc10aa2a4872ffb0",
+        "filename": "Coyote_Vs_Acme_2026_1080p_WEB-Rip_Dub.mp4",
+        "videoSize": 4577510973
+      },
+      "description": "📄 Coyote_Vs_Acme_2026_1080p_WEB-Rip_Dub.mp4\n⭐ WEBRip\n💾 4.3 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9c50094b90567f8a299687bf82a3beba24c8d63c",
+        "filename": "www.UIndex.org    -    Coyote vs Acme 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir",
+        "videoSize": 1989591609
+      },
+      "description": "📄 Coyote vs Acme 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ NeoNoir\n💾 1.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f95c181e169dd253c03c3859351a0b20f791fc2",
+        "filename": "Coyote.vs.Acme.2026.MULTi.720p.WEB-DL.H264.AC3-wasik.mkv",
+        "videoSize": 2959015607
+      },
+      "description": "📄 Coyote.vs.Acme.2026.MULTi.720p.WEB-DL.H264.AC3-wasik.mkv\n📹 avc | 🔊 Dolby Digital\n⭐ WEB-DL | 🏷️ wasik\n👤 160 💾 2.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|782e49943412ee33958ffa1259eb460146c4e93a",
+        "filename": "Coyote.vs.Acme.2026.720p.AMZN.WEB-DL.H264_New-Team_il68k.mkv",
+        "videoSize": 4893347209
+      },
+      "description": "📄 Coyote.vs.Acme.2026.720p.AMZN.WEB-DL.H264_New-Team_il68k.mkv\n📹 avc\n⭐ WEB-DL\n👤 7 💾 4.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5bbedbb24db1833dde749e50dab0371043c6daff",
+        "filename": "Coyote vs. Acme (2026) 720p WEB EZTV",
+        "videoSize": 1258881024
+      },
+      "description": "📄 Coyote vs. Acme (2026) 720p WEB EZTV\n⭐ WEB\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fd5d97ccd131d9ccf2d6e72869e4ef940616b820",
+        "filename": "Coyote.vs.Acme.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 750671788
+      },
+      "description": "📄 Coyote.vs.Acme.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 715.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b897a1bfaa703eb78c3e2e9f02c30479ef131792",
+        "filename": "www.UIndex.org    -    Coyote Vs. Acme (2026) 720p WEBRip-LAMA",
+        "videoSize": 990109219
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.720p.WEBRip.x264.AAC-LAMA.mp4\n📹 avc | 🔊 AAC\n⭐ WEBRip | 🏷️ LAMA\n💾 944.2 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|644d3595ca4f06058d7d733a49dd2ec1246d3c1e",
+        "filename": "Coyote.Vs..Acme.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4",
+        "videoSize": 990109219
+      },
+      "description": "📄 Coyote.Vs..Acme.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4\n📹 avc | 🔊 AAC\n⭐ WEBRip\n👤 1 💾 944.2 MB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4cd48e710ce20296f46d5256600054cb9aba3bc2",
+        "filename": "Coyote vs Acme 2026 2160p iT WEB-DL HDR10+ DV HEVC DDPA 5.1. x265-E",
+        "videoSize": 11703785881
+      },
+      "description": "📄 Coyote vs Acme 2026 2160p iT WEB-DL HDR10+ DV HEVC DDPA 5.1. x265-E\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 306 💾 10.9 GB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|331840177d5627758e357d3f2b3b8dc3ccd0d666",
+        "filename": "Coyote Vs. Acme (2026) DCPRip-AVC.givat.ТоррНадо.mp4",
+        "videoSize": 1822848711
+      },
+      "description": "📄 Coyote Vs. Acme (2026) DCPRip-AVC.givat.ТоррНадо.mp4\n📹 avc\n💾 1.7 GB 🔎 DMM\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f65859b1c2187ba57a17cc9afabbfcbe7c0678cc",
+        "filename": "Coyote vs. Acme (2026)",
+        "videoSize": 990065459
+      },
+      "description": "📄 Coyote vs. Acme (2026)\n👤 1 💾 944.2 MB 🔎 Comet|52BT",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bff8e9eb7730bdd49705beb8314c578beb901044",
+        "filename": "Coyote Vs Acme",
+        "videoSize": 12055224841
+      },
+      "description": "📄 Coyote Vs Acme\n💾 11.2 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b851ed0dce4650fd95482b635a737c5838c71845",
+        "filename": "Coyote Vs Acme (2026).mkv",
+        "videoSize": 1695143672
+      },
+      "description": "📄 Coyote Vs Acme (2026).mkv\n💾 1.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|635a0b869f401f404242d8a8244b4b19c8dda620",
+        "filename": "coyote-vs-acme-2026-digitalia",
+        "videoSize": 2839543808
+      },
+      "description": "📄 coyote-vs-acme-2026-digitalia\n🏷️ digitalia\n💾 2.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|000fe7a1d6371c58917ec554538479d6200f1eef",
+        "filename": "Coyote vs. Acme LAT.mp4",
+        "videoSize": 2005519117
+      },
+      "description": "📄 Coyote vs. Acme LAT.mp4\n💾 1.9 GB 🔎 DMM\n💃🏻",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e2a1fa20481b7b82ba57837797c93128c97a990",
+        "filename": "Coyote.Vs.Acme.2026.French.Ca.WEBRIP-NOTAG",
+        "videoSize": 1073741824
+      },
+      "description": "📄 Coyote.Vs.Acme.2026.French.Ca.WEBRIP-NOTAG\n⭐ WEBRip | 🏷️ NOTAG\n👤 2028 💾 1.0 GB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6277f61fd92b8570b30ba6b9a6056ecb48287e17",
+        "filename": "Coyote.vs.Acme.(2026).WEB-DLRip-AVC.Ukr.Eng.mkv",
+        "videoSize": 2093010019
+      },
+      "description": "📄 Coyote.vs.Acme.(2026).WEB-DLRip-AVC.Ukr.Eng.mkv\n📹 avc\n⭐ WEB-DLRip\n👤 48 💾 1.9 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5b6baf8805c7a5ef0d2e40ce5baf236e375be8e3",
+        "filename": "Coyote vs. Acme (2026) WEB-DLRip-AVC от DoMiNo & селезень | D, P | HDRezka Studio",
+        "videoSize": 1760936591
+      },
+      "description": "📄 Coyote vs. Acme (2026) WEB-DLRip-AVC от DoMiNo & селезень | D, P | HDRezka Studio\n📹 avc\n⭐ WEB-DLRip\n👤 92 💾 1.6 GB 🔎 TheRARBG\n🌎/🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|13bfe322ffb60060b2d657f92be6eea8134ca2ef",
+        "filename": "Хитрый койот_2026_WEB-DLRip-AVC.mkv",
+        "videoSize": 1568341479
+      },
+      "description": "📄 Хитрый койот_2026_WEB-DLRip-AVC.mkv\n📹 avc\n⭐ WEB-DLRip\n👤 55 💾 1.5 GB 🔎 Comet|Rutracker\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e225f4c849599e194dce2a1364f89cf27aabecc9",
+        "filename": "Coyote.vs.Acme.2026.WEB-DLRip.TORRNADO.avi",
+        "videoSize": 1578400481
+      },
+      "description": "📄 Coyote.vs.Acme.2026.WEB-DLRip.TORRNADO\n⭐ WEB-DLRip\n👤 1 💾 1.5 GB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b8ac02eead28139f327a509da88900f66aed2cd",
+        "filename": "Хитрый койот / Coyote vs. Acme [2026 WEB-DLRip] MVO (HDRezka Studio)",
+        "videoSize": 1556925644
+      },
+      "description": "📄 Хитрый койот / Coyote vs. Acme [2026 WEB-DLRip] MVO (HDRezka Studio)\n⭐ WEB-DLRip\n👤 63 💾 1.4 GB 🔎 Comet|Rutracker\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

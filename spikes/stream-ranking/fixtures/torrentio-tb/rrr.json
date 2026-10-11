@@ -1,0 +1,576 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "rrr",
+  "request": "https://torrentio.strem.fun/<config>/stream/movie/tt8178634.json",
+  "recordedAt": "2026-10-11T12:05:23.520Z",
+  "status": 200,
+  "ms": 720,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR TrueHD Atmos 7.1 Telugu r00t) [QxR]\n👤 29 💾 31.89 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9ea2f81188299b8f118e41605e4b39ce3dd528cc/RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv/0/RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "RRR [2022] 2160p IMAX UHD BDRip HDR10 x265 TrueHD Atmos 7.1 Kira [SEV]\n👤 3 💾 40.8 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b8e94e710abe98305aff926686a26cdd2f8d64c/<opaque>/RRR [2022] 2160p UHD BDRip HDR10 x265 TrueHD Atmos 7.1 Kira [SEV].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "RRR [2022] 2160p UHD BDRip HDR10 x265 TrueHD Atmos 7.1 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR 2022 2160p WEBRip\n👤 21 💾 8.26 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0ee35cb736998aac30173a48c53a3b2dde23278c/<opaque>/RRR.2022.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit",
+        "filename": "RRR.2022.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV [Rise Roar Revolt] [SDR] GoodFilms\n👤 15 💾 25.34 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/92ddf47337b7ffea66bb6d585134790fd8862ed8/<opaque>/RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR.2022.2160p.WEB-DL.Dual.Audio.DDP5.1.Atmos.H265-TRF\n👤 10 💾 13.81 GB ⚙️ TorrentGalaxy\nDual Audio / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c4b0c02f9a81ff48eed03f7001691183b69f85c/<opaque>/RRR.2022.2160p.WEB-DL.Dual.Audio.DDP5.1.Atmos.H265-TRF.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "RRR.2022.2160p.WEB-DL.Dual.Audio.DDP5.1.Atmos.H265-TRF.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR (2022) DUAL (Hindi Telugu) (2160p WEBRip Ai x265 HEVC 10bit DDP Atmos 5.1 ESub) - [Musafirboy]\n👤 1 💾 12 GB ⚙️ 1337x\nDual Audio / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/216003916cfafb4352e5bd3e3dcda9ddb2b4c582/RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv/2/RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|10bit",
+        "filename": "RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt (2022) WEB-DL-HEVC 2160p | 4K | SDR | P\n👤 0 💾 15.28 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e4f1fd9c4db9a9f3fa9c23c90c715364b6a8384e/RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv/0/RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR (2022) Multi (TAM TEL MAL) (2160p WEBRip Ai x265 HEVC 10bit DDP Atmos 5.1 ESub) - [Musafirboy]\n👤 0 💾 12.16 GB ⚙️ 1337x\nMulti Audio / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8436136342e716b94010cfd81ecf0ee76498a1df/RRR.(2022).Multi.2160p.WEBRip.Ai.10bit.DolbyAtmos.5.1.HEVC-[Musafirboy].mkv/2/RRR.(2022).Multi.2160p.WEBRip.Ai.10bit.DolbyAtmos.5.1.HEVC-[Musafirboy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|10bit",
+        "filename": "RRR.(2022).Multi.2160p.WEBRip.Ai.10bit.DolbyAtmos.5.1.HEVC-[Musafirboy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR (2022) (2160p BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB]\n👤 0 💾 4.23 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b36f90ef651e6d4796b2751f8fd3d7887a135e5/RRR (2022) (2160p BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB].mkv/1/RRR (2022) (2160p BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|10bit",
+        "filename": "RRR (2022) (2160p BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR.2022.2160p.Telugu.WEB-DL.H.264.SDR.ATMOS-NbT\n👤 0 💾 13.29 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a9f6eb9b60e8be2ca7913ebc7d9b3bf9d4a4ae64/<opaque>/RRR.2022.2160p.Telugu.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "RRR.2022.2160p.Telugu.WEB-DL.H.264.SDR.ATMOS-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR.2022.2160p.Tamil.WEB-DL.H.264.SDR.ATMOS-NbT\n👤 0 💾 13.23 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/61d1d1797a8bd3f409ae941e519081edd87c2a2a/<opaque>/RRR.2022.2160p.Tamil.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "RRR.2022.2160p.Tamil.WEB-DL.H.264.SDR.ATMOS-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "RRR.2022.2160p.Hindi.WEB-DL.H.264.SDR.DDP5.1-NbT.mkv\n👤 0 💾 15.06 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba0ff8ee984f8ac77abbc3c99066a5ea5eefefa2/<opaque>/RRR.2022.2160p.Hindi.WEB-DL.H.264.SDR.DDP5.1-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "RRR.2022.2160p.Hindi.WEB-DL.H.264.SDR.DDP5.1-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "RRR.2022.1080p.10bit.DS4K.IMAX.BluRay.[Org.DDP5.1-Hindi DDP5.1-Telugu].Atmos.ESub.HDR10.HEVC-The.PunisheR\n👤 4 💾 12.53 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fca890520b7908d08712e50fce1efe5ecc270665/<opaque>/RRR.2022.1080p.10bit.DS4K.IMAX.BluRay.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HDR10.HEVC-The.PunisheR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit|HDR",
+        "filename": "RRR.2022.1080p.10bit.DS4K.IMAX.BluRay.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HDR10.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR.A.K.A.Rise.Roar.Revolt.2022.HINDI.1080p.10bit.WEBRip.6CH.x26\n👤 94 💾 3.97 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/99b5f5b0b52b3e22db485179d8c9f59e51c19182/<opaque>/RRR.A.K.A.Rise.Roar.Revolt.2022.HINDI.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "RRR.A.K.A.Rise.Roar.Revolt.2022.HINDI.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR 2022 1080p WEBRip\n👤 40 💾 3.42 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba5b6adeda7c288a48d17501b716fb706ceccd95/<opaque>/RRR.2022.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "RRR.2022.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) (1080p BluRay x265 HEVC 10bit EAC3 5.1 Telegu SAMPA) [QxR]\n👤 26 💾 8.1 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3a968c918cbf7276d114a4b7dd0c20ffcf6c1838/RRR (2022) (1080p BluRay x265 HEVC 10bit EAC3 5.1 Telegu SAMPA) [QxR]/undefined/RRR (2022) (1080p BluRay x265 HEVC 10bit EAC3 5.1 Telegu SAMPA) [QxR]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR 2022 1080p BluRay\n👤 25 💾 3.3 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fa3e5529d46737aeb50dcdb31cf25084988e14c4/<opaque>/RRR.2022.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "RRR.2022.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) DUAL (Hindi Telugu) (1080p HQ WEBRip x265 HEVC 10bit DDP Atmos 5.1 ESub) - [Musafirboy]\n👤 20 💾 5.26 GB ⚙️ 1337x\nDual Audio / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/19e96f6ed81d8b739c2c58a61067d5e24ca0f1a7/RRR.(2022).DUAL.1080p.HQ.WEBRip.10bit.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv/2/RRR.(2022).DUAL.1080p.HQ.WEBRip.10bit.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "RRR.(2022).DUAL.1080p.HQ.WEBRip.10bit.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) (1080p WEB-DL x265 HEVC 10bit EAC3 5.1 Telugu Silence) [QxR]\n👤 11 💾 7.05 GB ⚙️ TorrentGalaxy\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/60ec7b5569423f110ae980f4c454c1e84e2999bf/RRR (2022) (1080p WEB-DL x265 Silence).mkv/0/RRR (2022) (1080p WEB-DL x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "RRR (2022) (1080p WEB-DL x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv\n👤 7 💾 6.59 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d14b9a461b0a2387f54e4dbffbbdd956b1f4df33/<opaque>/RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR.2022.WEB-DL.1080p-Dual-Lat\n👤 5 💾 8.24 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/34f488aba0826750cfbf196930640bb8fb804ab1/<opaque>/RRR.2022.WEB-DL.1080p-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "RRR.2022.WEB-DL.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR: Рядом ревёт революция / RRR: Rise Roar Revolt [2022 BDRemux 1080p] Dub (The Kitchen Russia) + 3x MVO (The Kitchen Russia Jaskier TVShows) + DVO (Кубик в Кубе) + VO (М. Яроцкий) + Sub (Rus Eng) + Original (Tel)\n👤 2 💾 32.33 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/661d6b93bd88b62efaeb3be4cf54b5215de03a46/RRR.Rise Roar Revolt (2022) BDRemux 1080p.mkv/0/RRR.Rise Roar Revolt (2022) BDRemux 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "RRR.Rise Roar Revolt (2022) BDRemux 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR 2022 1080p NF WEB-DL DDPA5.1 Atmos H.264-DesiThor\n👤 2 💾 7.96 GB ⚙️ TorrentGalaxy\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/325e8e048f779d791d8944349e77644a52589aa3/<opaque>/RRR.2022.1080p.NF.WEB-DL.DDPA5.1.Atmos.H.264-DesiThor.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "RRR.2022.1080p.NF.WEB-DL.DDPA5.1.Atmos.H.264-DesiThor.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E01.La.donna.che.scompariva.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.47 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E01.La.donna.che.scompariva.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E01.La.donna.che.scompariva.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E02.La.donna.che.mangiava.le.fotografie.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 3.03 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E02.La.donna.che.mangiava.le.fotografie.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E02.La.donna.che.mangiava.le.fotografie.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E03.La.donna.che.era.tenuta.su.uno.scaffale.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.58 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E03.La.donna.che.era.tenuta.su.uno.scaffale.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E03.La.donna.che.era.tenuta.su.uno.scaffale.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E04.La.donna.coni.i.morsi.sulla.pelle.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.41 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E04.La.donna.coni.i.morsi.sulla.pelle.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E04.La.donna.coni.i.morsi.sulla.pelle.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E05.La.donna.nutrita.da.un.anatra.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.86 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E05.La.donna.nutrita.da.un.anatra.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E05.La.donna.nutrita.da.un.anatra.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E06.La.donna.che.ha.risolto.il.suo.omicidio.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.65 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E06.La.donna.che.ha.risolto.il.suo.omicidio.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E06.La.donna.che.ha.risolto.il.suo.omicidio.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E07.La.donna.che.ha.restituito.suo.marito.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.35 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E07.La.donna.che.ha.restituito.suo.marito.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E07.La.donna.che.ha.restituito.suo.marito.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Roar.2022.S01.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP\nRoar.2022.S01E08.La.ragazza.che.amava.i.cavalli.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv\n👤 2 💾 2.34 GB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b880a139d4f0e419e8c1198ec2b9460bb2e6a4d8/<opaque>/Roar.2022.S01E08.La.ragazza.che.amava.i.cavalli.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Roar.2022.S01E08.La.ragazza.che.amava.i.cavalli.iTALiAN.MULTi.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt (2022) WEB-DL 1080p | P | Кубик в кубе The Kitchen Russia\n👤 1 💾 9.17 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3fa27b3f79390c50629391af399bfb329e8f50ce/RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv/0/RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR: Рядом ревёт революция / RRR (2022) BDRip-HEVC 1080p от RIPS CLUB | D P P2 A L | JPN Transfer\n👤 0 💾 17 GB ⚙️ Rutor\n🇯🇵 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d955b396e1f906d145c8812cd0e6d2a95d34c21a/<opaque>/RRR.Рядом.ревёт.революция.RRR.2022.JPN.Transfer.BDRip-HEVC.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc",
+        "filename": "RRR.Рядом.ревёт.революция.RRR.2022.JPN.Transfer.BDRip-HEVC.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) 1080p AV1 DDP Atmos [UnAV1Chain]\n👤 0 💾 6.98 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0b6c0dc062a262d29dd09fbb6ef36b9309ba7c58/RRR (2022) 1080p AV1 DDP Atmos [UnAV1Chain].mkv/0/RRR (2022) 1080p AV1 DDP Atmos [UnAV1Chain].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "RRR (2022) 1080p AV1 DDP Atmos [UnAV1Chain].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt [2022 BDRip 1080p] Dub (The Kitchen Russia) + 3x MVO (The Kitchen Russia Jaskier TVShows) + DVO (Кубик в Кубе) + VO (М. Яроцкий) + Sub (Rus Eng) + Original (Tel)\n👤 0 💾 26.58 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf1fffbfcd3c0380e0423b2c461ed81a2017acd0/<opaque>/RRR.2022.BDRip.1080p.ExKinoRay.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "RRR.2022.BDRip.1080p.ExKinoRay.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) (1080p WEBRip AV1 Opus 5.1 Multi5 KaNNa)\n👤 0 💾 6.56 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ea659d06c1a995facd3a1901c6e5f3343338a7af/RRR (2022) (1080p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv/0/RRR (2022) (1080p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "RRR (2022) (1080p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR.2022.1080p.10bit.DS4K.DSNP.WEBRip.[Org.DDP5.1-Hindi DDP5.1-Telugu].Atmos.ESub.HEVC-The.PunisheR\n👤 0 💾 9.31 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69c224a311fe3288d5d999b071f7af7d3b8d895b/<opaque>/RRR.2022.1080p.10bit.DS4K.DSNP.WEBRip.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HEVC-The.PunisheR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "RRR.2022.1080p.10bit.DS4K.DSNP.WEBRip.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR - Revolta Rebelião Revolução 2022 WEB-DL 1080p DUAL 5.1\n👤 0 💾 4.54 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9b74c5cad6efa1bbe6b89dac5133e73f29ce6ac7/<opaque>/RRR - Revolta Rebelião Revolução 2022 WEB-DL 1080p DUAL 5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "RRR - Revolta Rebelião Revolução 2022 WEB-DL 1080p DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt (2022) WEB-DL 1080p от ExKinoRay | D\n👤 0 💾 18.68 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/244de0d16934630c20e8e89df3bae3a33b618629/<opaque>/RRR.2022.WEB-DL.1080p.ExKinoRay.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "RRR.2022.WEB-DL.1080p.ExKinoRay.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) 1080p WEB-DL x265 Hindi DDP5.1 ESub - SP3LL\n👤 0 💾 2.93 GB ⚙️ TorrentGalaxy\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1063e297f7355cd783109364151b995761b2a065/RRR (2022) 1080p WEB-DL x265 Hindi DDP5.1 ESub - SP3LL.mkv/0/RRR (2022) 1080p WEB-DL x265 Hindi DDP5.1 ESub - SP3LL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "RRR (2022) 1080p WEB-DL x265 Hindi DDP5.1 ESub - SP3LL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) DUAL (Hindi Telugu) (1080p NF WEBRip x265 HEVC 10bit DDP Atmos 5.1 ESub) - [Musafirboy]\n👤 0 💾 4.36 GB ⚙️ 1337x\nDual Audio / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/99821abe8ccd3f9178b8aa3df1f11e6d6b470e6f/RRR.(2022).DUAL.1080p.WEBRip.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv/2/RRR.(2022).DUAL.1080p.WEBRip.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "RRR.(2022).DUAL.1080p.WEBRip.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (Hindi) (2022) NF Hindi 1080p WEBRip x264 DD 5.1 ESub\n👤 0 💾 3.41 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a53337a31070b39d60c00f1fbbdf384a83c46241/RRR (Hindi) (2022) NF Hindi 1080p WEBRip x264 AAC ESub.mkv/0/RRR (Hindi) (2022) NF Hindi 1080p WEBRip x264 AAC ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "RRR (Hindi) (2022) NF Hindi 1080p WEBRip x264 AAC ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "RRR (2022) - 1080p HDRip - [Hindi (Line Aud) - x264 - AAC - 2\n👤 0 💾 2.27 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/002482863c321f9f44e0f1f364f35875a800d786/RRR (2022) - 1080p HDRip - [Hindi (HQ Line Aud) - x264 - AAC - 2200MB - HC ESubs - QRips.mkv/0/RRR (2022) - 1080p HDRip - [Hindi (HQ Line Aud) - x264 - AAC - 2200MB - HC ESubs - QRips.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "RRR (2022) - 1080p HDRip - [Hindi (HQ Line Aud) - x264 - AAC - 2200MB - HC ESubs - QRips.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "RRR 2022 720p BluRay\n👤 8 💾 1.61 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5a788d0347209c2983cc23706de664cb6afbef4c/<opaque>/RRR.2022.720p.BluRay.x264.AAC-[YTS.MX].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "RRR.2022.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n576p",
+      "title": "RRR 2022 576p WEBRip Tamil Hindi AAC HC x264 - mkvAnime\n👤 0 💾 2.23 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/827131e4205dfeb9a65a61e9a185a0f1523a4c6c/<opaque>/RRR 2022 576p WEBRip Tamil Hindi AAC x264 - mkvAnime.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|576p|WEBRip|x264",
+        "filename": "RRR 2022 576p WEBRip Tamil Hindi AAC x264 - mkvAnime.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "RRR (2022) Hindi 1080p HDCAM [No LOGO] x264 AAC 2.6GB [HDWebMovies]\n👤 0 💾 2.63 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b2083b72b79a4890490dc207aef5fc830b81477/RRR (2022) Hindi 1080p HDCAM [No LOGO] x264 AAC 2.6GB [HDWebMovies].mkv/0/RRR (2022) Hindi 1080p HDCAM [No LOGO] x264 AAC 2.6GB [HDWebMovies].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "RRR (2022) Hindi 1080p HDCAM [No LOGO] x264 AAC 2.6GB [HDWebMovies].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBluRay",
+      "title": "RRR (2022) [Ram Charan] BluRay H264 DolbyD 5.1 + nickarad\n👤 0 💾 3.62 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1237c03930b128526d78ae88bb397df92ddc9b76/RRR (2022) BluRay H264 DolbyD 5.1 + nickarad.mp4/9/RRR (2022) BluRay H264 DolbyD 5.1 + nickarad.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|h264",
+        "filename": "RRR (2022) BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "RRR.(2022).Rise.Roar.Revolt.WEB-DL.H.264-Dual.YG⭐\n👤 0 💾 1.86 GB ⚙️ TorrentGalaxy\nDual Audio / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d68e3678274a47047727bee14bdd4d07553cfb29/RRR.(2022).Rise.Roar.Revolt.WEB-DL.H.264-Dual.YG.mkv/0/RRR.(2022).Rise.Roar.Revolt.WEB-DL.H.264-Dual.YG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|h264",
+        "filename": "RRR.(2022).Rise.Roar.Revolt.WEB-DL.H.264-Dual.YG.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "RRR (2022) (4K WEB UHD AV1 Opus 5.1 Multi5 KaNNa)\n👤 0 💾 10.5 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2f3b9de507cfc494829a85ccb77b84f42b4bb590/RRR (2022) (2160p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv/0/RRR (2022) (2160p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip",
+        "filename": "RRR (2022) (2160p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt (2022) WEB-DL-HEVC 2160p | 4K | SDR | D P\n👤 0 💾 15.85 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b3fa77228a434aae7141963a0905e296fa81a9a/RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv/0/RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "RRR.2022.2160p.Malayalam.WEB-DL.H.264.SDR.ATMOS-NbT\n👤 0 💾 13.24 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/129a1ad66180dd42c91f8e6910c1f55c0558c879/<opaque>/RRR.2022.2160p.Malayalam.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "RRR.2022.2160p.Malayalam.WEB-DL.H.264.SDR.ATMOS-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "RRR.2022.2160p.Kannada.WEB-DL.H.264.SDR.ATMOS-NbT\n👤 0 💾 13.23 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c9b65ea2e4187d36b95cc38c49449ab683cc3541/<opaque>/RRR.2022.2160p.Kannada.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "RRR.2022.2160p.Kannada.WEB-DL.H.264.SDR.ATMOS-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "RRR.2022.2160p.MULTi.WEB-DL.H.264.SDR.ATMOS-NbT\n👤 0 💾 15.03 GB ⚙️ 1337x\nMulti Audio / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de76d05788b9bd6947cf548ccc615f8fe191a473/<opaque>/RRR.2022.2160p.MULTi.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "RRR.2022.2160p.MULTi.WEB-DL.H.264.SDR.ATMOS-NbT.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "RRR (2022) 1080p Telugu HQ WEB-DL x265 10bit (DD.5.1 ATMOS - 448Kbps & AAC 2.0) 4.9GB ESub\n👤 1 💾 4.95 GB ⚙️ EXT\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6af719eb44e8ab735720f8318795117e0116af96/RRR (2022) 1080p Telugu HQ WEB-DL x265 10bit (DD.5.1 ATMOS - 448Kbps & AAC 2.0) 4.9GB ESub/undefined/RRR (2022) 1080p Telugu HQ WEB-DL x265 10bit (DD.5.1 ATMOS - 448Kbps & AAC 2.0) 4.9GB ESub",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "RRR.2022.1080p-Dual-Lat\n👤 1 💾 3.65 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9a147fdd42ee546726476dfcd5a7fd30821721a5/Rrr.2022.1080P-Dual-Lat.mkv/0/Rrr.2022.1080P-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Rrr.2022.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "RRR 2022 720p WEBRip\n👤 13 💾 1.66 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d3013e2444843dd39666a04fb864fe4d60d75c0/<opaque>/RRR.2022.720p.WEBRip.x264.AAC-[YTS.MX].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "RRR.2022.720p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "RRR.2022.720p.BluRay.x264-SNOW\n👤 5 💾 7.79 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b2d33fef0058e512710eef5eeee46f6d639ba033/<opaque>/snow-rrr.2022.720p.bluray.x264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "snow-rrr.2022.720p.bluray.x264.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "RRR (2022) - 720p HDRip - [Hindi (Line Aud) - x264 - AAC - 1.\n👤 4 💾 1.49 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b91428221aa0cf073eee68b1b3b3057842e96ba/RRR (2022) - 720p HDRip - [Hindi (HQ Line Aud) - x264 - AAC - 1.4GB - HC ESubs - QRips.mkv/0/RRR (2022) - 720p HDRip - [Hindi (HQ Line Aud) - x264 - AAC - 1.4GB - HC ESubs - QRips.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264",
+        "filename": "RRR (2022) - 720p HDRip - [Hindi (HQ Line Aud) - x264 - AAC - 1.4GB - HC ESubs - QRips.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt (2022) BDRip 720p от DoMiNo & селезень | D | The Kitchen Russia\n👤 2 💾 7.44 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8e1447e9caaf6b46d12e8a54688a83e14b371f44/RRR.(Rise.Roar.Revolt).2022.DUB.BDRip.720p.x264.seleZen.mkv/0/RRR.(Rise.Roar.Revolt).2022.DUB.BDRip.720p.x264.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|x264",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.DUB.BDRip.720p.x264.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nCAM",
+      "title": "RRR (2022) - HINDI - [NO ADS] - 720p - HDCAM - x264 - 800MB - QRips\n👤 2 💾 807.11 MB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/414ee926ba506dacf8c840cf275aa284f80f6861/RRR (2022) -  HINDI - [NO ADS] - 720p - HDCAM - x264 - 800MB - QRips.mkv/0/RRR (2022) -  HINDI - [NO ADS] - 720p - HDCAM - x264 - 800MB - QRips.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "RRR (2022) -  HINDI - [NO ADS] - 720p - HDCAM - x264 - 800MB - QRips.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "RRR: Рядом ревёт революция / RRR / Rise Roar Revolt (2022) BDRip от DoMiNo & селезень | D | The Kitchen Russia\n👤 1 💾 2.18 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/77ebdd1d6f3f84f50446f6a007e764a4c7574e3d/RRR.(Rise.Roar.Revolt).2022.DUB.seleZen.avi/3/RRR.(Rise.Roar.Revolt).2022.DUB.seleZen.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.DUB.seleZen.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nSCR",
+      "title": "RRR (2022) 1080p PreDVDRip Hindi Dubbed (Audio Cleaned) - QRips\n👤 14 💾 2.68 GB ⚙️ ThePirateBay\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/787c1b1c2eda498c5819ddc16a47f5e95cc1e235/RRR (2022) 1080p PreDVDRip Hindi Dubbed (Audio Cleaned) - QRips.mkv/0/RRR (2022) 1080p PreDVDRip Hindi Dubbed (Audio Cleaned) - QRips.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR",
+        "filename": "RRR (2022) 1080p PreDVDRip Hindi Dubbed (Audio Cleaned) - QRips.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nSCR",
+      "title": "RRR (2022) Hindi 720p HQ PreDVD Rip x265 HEVC AAC - CineVood\n👤 1 💾 922.1 MB ⚙️ TorrentGalaxy\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7e2222526675b996333382d3b1de499d70632829/<opaque>/RRR.Rise.Roar.Revolt.2022.Hindi.Dubbed.720p.HQ.PreDVD.x265.HEVC.AAC-CineVood.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR|hevc",
+        "filename": "RRR.Rise.Roar.Revolt.2022.Hindi.Dubbed.720p.HQ.PreDVD.x265.HEVC.AAC-CineVood.mkv"
+      }
+    }
+  ]
+}

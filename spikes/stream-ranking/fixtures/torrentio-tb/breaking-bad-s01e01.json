@@ -1,0 +1,1278 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "breaking-bad-s01e01",
+  "request": "https://torrentio.strem.fun/<config>/stream/series/tt0903747%3A1%3A1.json",
+  "recordedAt": "2026-10-11T12:05:33.551Z",
+  "status": 200,
+  "ms": 1064,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking Bad. S01. 2008 2160P.Ai Upscaled.BluRay.60FPS.H265.SDR.AC3.5.1_Marjenbo\nBreaking Bad  S01E01  Pilot.mkv\n👤 106 💾 9.53 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a584351126afcf50d32be068f3c9a62550d41ecc/<opaque>/Breaking Bad  S01E01  Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a584351126afcf50d32be068f3c9a62550d41ecc",
+        "filename": "Breaking Bad  S01E01  Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking Bad (2008) S01 (2160p AMZN WEB-DL H265 SDR DDP 5.1 English - HONE)\nBreaking Bad (2008) S01E01 (2160p AMZN WEB-DL H265 SDR DDP 5.1 English - HONE).mkv\n👤 72 💾 6.27 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f0fd1cad0e24b69ff6aaadb9df40c50286327188/Breaking Bad (2008) S01E01 (2160p AMZN WEB-DL H265 SDR DDP 5.1 English - HONE).mkv/0/Breaking Bad (2008) S01E01 (2160p AMZN WEB-DL H265 SDR DDP 5.1 English - HONE).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f0fd1cad0e24b69ff6aaadb9df40c50286327188",
+        "filename": "Breaking Bad (2008) S01E01 (2160p AMZN WEB-DL H265 SDR DDP 5.1 English - HONE).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking Bad COMPLETE S01-S05 2160p WEB-DL Rus Ukr Eng DTS-HD MA5.1 x264-TrollUHD [RiCK]\nBreaking.Bad.S01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD/Breaking.Bad.S01E01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD.mkv\n👤 49 💾 50.81 GB ⚙️ 1337x\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b42b99b9fbc0e0416a379787f250eb73b7434e3/<opaque>/Breaking.Bad.S01E01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1b42b99b9fbc0e0416a379787f250eb73b7434e3",
+        "filename": "Breaking.Bad.S01E01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking Bad S01E01 Pilot 2160p NF WEB-DL DDP5 1 H 265-XEBEC\n👤 17 💾 6.82 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0d9b239b02f5fa8c4cdda71f3ccfde93ae918bd9/<opaque>/Breaking Bad S01E01 Pilot 2160p NF WEB-DL DDP5 1 H 265-XEBEC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|XEBEC",
+        "filename": "Breaking Bad S01E01 Pilot 2160p NF WEB-DL DDP5 1 H 265-XEBEC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии: 1-7 из 7 [2008 WEB-DL 2160p 4k] MVO (LostFilm FoxCrime) + DVO (Кубик в Кубе) + Original + Sub (Rus Eng)\nBreaking.Bad.S01E01.Pilot.2160p.AMZN.WEB-DL.DTS-HD.MA.5.1.SDR.HEVC.mkv\n👤 12 💾 12.42 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e2b01ba1df534cb007869cfb7e121a8e18e573ea/<opaque>/Breaking.Bad.S01E01.Pilot.2160p.AMZN.WEB-DL.DTS-HD.MA.5.1.SDR.HEVC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e2b01ba1df534cb007869cfb7e121a8e18e573ea",
+        "filename": "Breaking.Bad.S01E01.Pilot.2160p.AMZN.WEB-DL.DTS-HD.MA.5.1.SDR.HEVC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking Bad 2008 - 1ª Temporada Completa [4k] WWW.BLUDV.COM\nBreaking.Bad.S01E01.4K.2160p.WEB-DL.5.1.x264.DUAL-WWW.BLUDV.COM.mkv\n👤 5 💾 2.41 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c1f61689123b32edd923fc86d143bc8100769e4e/<opaque>/Breaking.Bad.S01E01.4K.2160p.WEB-DL.5.1.x264.DUAL-WWW.BLUDV.COM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c1f61689123b32edd923fc86d143bc8100769e4e",
+        "filename": "Breaking.Bad.S01E01.4K.2160p.WEB-DL.5.1.x264.DUAL-WWW.BLUDV.COM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking.Bad.S01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD\nBreaking.Bad.S01E01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD.mkv\n👤 4 💾 50.81 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/260ac3b389be23d137bb13724dc6a5b43637fe1e/<opaque>/Breaking.Bad.S01E01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|260ac3b389be23d137bb13724dc6a5b43637fe1e",
+        "filename": "Breaking.Bad.S01E01.2160p.WEBRip.DTS-HD.MA5.1.x264-TrollUHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Breaking Bad (2008) Season 01 S01 (2160p WEBRip x265 HEVC 10bit AAC 5.1 Joy) [UTR]\nBreaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv\n👤 3 💾 1.7 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/51653df273317cfdfdccd5f9e4c367351e61a842/Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv/12/Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|51653df273317cfdfdccd5f9e4c367351e61a842",
+        "filename": "Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии: 1-7 из 7 [2008 WEB-DL 2160p 4k] MVO (LostFilm FoxCrime) + Ukr (Inter) + DVO (Кубик в Кубе) + VO (Foxlight) + AVO (Сербин) + Original\nBreaking.Bad.S01E01.2160p.WEB-DL.5xRus.Ukr.Eng.TrollUHD-ULTRAHDCLUB.mkv\n👤 2 💾 50.81 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b1ef5f14c7a03f7744730adeaec6c767e41fcccd/<opaque>/Breaking.Bad.S01E01.2160p.WEB-DL.5xRus.Ukr.Eng.TrollUHD-ULTRAHDCLUB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b1ef5f14c7a03f7744730adeaec6c767e41fcccd",
+        "filename": "Breaking.Bad.S01E01.2160p.WEB-DL.5xRus.Ukr.Eng.TrollUHD-ULTRAHDCLUB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Во все тяжкие / Breaking bad / Сезон: 1 / Серии: 1-7 из 7 [2008 HEVC WEB-DL 2160p 4k] MVO (LostFilm) + DVO (Кубик в Кубе) + MVO (FoxCrime) + Original + Sub (Eng)\nBreaking Bad (2008) S01E01 (2160p).mkv\n👤 1 💾 8.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e027f8e720069a11d10f9040ad3c8eb12436091f/Breaking Bad (2008) S01E01 (2160p).mkv/0/Breaking Bad (2008) S01E01 (2160p).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e027f8e720069a11d10f9040ad3c8eb12436091f",
+        "filename": "Breaking Bad (2008) S01E01 (2160p).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии: 1-7 из 7 [2008 WEB-DL 2160p 4k] MVO (LostFilm FoxCrime) + DVO (Кубик в Кубе) + Original\nBreaking Bad (2008) S01E01 (2160p).mkv\n👤 0 💾 22.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8ab3f915df256706696f9479eb4d72d094745fac/Breaking Bad (2008) S01E01 (2160p).mkv/0/Breaking Bad (2008) S01E01 (2160p).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8ab3f915df256706696f9479eb4d72d094745fac",
+        "filename": "Breaking Bad (2008) S01E01 (2160p).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01E01-07.1080p.NF.WEB-DL.ITA-ENG.DDP5.1.AV1-G66\nBreaking.Bad.S01E01.Questione.di.chimica.1080p.NF.WEB-DL.DDP5.1.AV1-G66.mkv\n👤 979 💾 2.08 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6a12ce77043c07604314f30fa62f2b17ea8d4ab9/<opaque>/Breaking.Bad.S01E01.Questione.di.chimica.1080p.NF.WEB-DL.DDP5.1.AV1-G66.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6a12ce77043c07604314f30fa62f2b17ea8d4ab9",
+        "filename": "Breaking.Bad.S01E01.Questione.di.chimica.1080p.NF.WEB-DL.DDP5.1.AV1-G66.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.SEASON.01.S01.COMPLETE.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\nBreaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv\n👤 596 💾 928.25 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6bbad06245a0d631b0a5e47c8cd6e5abc9a70211/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6bbad06245a0d631b0a5e47c8cd6e5abc9a70211",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (2008) Season 1-5 S01-S05 (1080p BluRay x265 HEVC 10bit AAC 5 1 Silence) [QxR]\nSeason 1/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv\n👤 391 💾 2.56 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b43df67a93863ea91f2f773f00361072da771dd3/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv/245/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b43df67a93863ea91f2f773f00361072da771dd3",
+        "filename": "Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01-S02-S03-S04-S05.1080p.BluRay.10bit.HEVC-MkvCage\nBreaking.Bad.S01.1080p.BluRay.10bit.HEVC.6CH-MkvCage.ws/Breaking.Bad.S01E01.Pilot.1080p.BluRay.10bit.HEVC.6CH-MkvCage.ws.mkv\n👤 201 💾 1.2 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/33b1396389a7d76f57215ee618f0ce438126ebe4/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.BluRay.10bit.HEVC.6CH-MkvCage.ws.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|33b1396389a7d76f57215ee618f0ce438126ebe4",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.BluRay.10bit.HEVC.6CH-MkvCage.ws.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.1080p.BluRay.x265-RARBG\nBreaking.Bad.S01E01.1080p.BluRay.x265-RARBG.mp4\n👤 110 💾 927.02 MB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a43107ec1e5c2f5d6429c68cc030031cddbcb0ad/<opaque>/Breaking.Bad.S01E01.1080p.BluRay.x265-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a43107ec1e5c2f5d6429c68cc030031cddbcb0ad",
+        "filename": "Breaking.Bad.S01E01.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01 Complete - 1080p ENG-ITA Multisub x264 BluRay\nEp 01 - Pilot - Questione di Chimica.mkv\n👤 72 💾 4.09 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c7a0d35b01b8d3b0abab10bb363cbe0b00ace3a/<opaque>/Ep 01 - Pilot - Questione di Chimica.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3c7a0d35b01b8d3b0abab10bb363cbe0b00ace3a",
+        "filename": "Ep 01 - Pilot - Questione di Chimica.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad Complete S01-S05 1080p 10bit BluRay x265 HEVC 6CH-MRN\nBreaking.Bad.S01.1080p.10bit.BluRay.x265.HEVC.6CH-MRN/Breaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.x265.HEVC.6CH-MRN.mkv\n👤 60 💾 843.37 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2927019dbf67eb165347258c1f6d136d644efa4f/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.x265.HEVC.6CH-MRN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|2927019dbf67eb165347258c1f6d136d644efa4f",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.x265.HEVC.6CH-MRN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01E01.Pilot.1080p.HEVC.x265-MeGusta\n👤 46 💾 1.09 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0c9fa2cb87da2d5fccd4af71fb1e0a7e7638b4e9/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01-S05 Seasons 1-5 Complete 1080p H264 BluRay-MIXE\nBreaking.Bad.S01E01.Pilot.1080p.H264.BluRay.mkv\n👤 37 💾 3.55 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/01d2c1f3091ef56f08f840525264f51fac34ee9d/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.H264.BluRay.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|01d2c1f3091ef56f08f840525264f51fac34ee9d",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.H264.BluRay.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01-S05 1080p NF WEB-DL AV1 EAC3 MultiSub\nBreaking Bad Season 1/Breaking.Bad.S01E01.Pilot.1080p.NF.WEB-DL.AV1.EAC3.mkv\n👤 35 💾 1.93 GB ⚙️ TorrentGalaxy\nMulti Subs / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/71feec966a66cedfba5556f464b9c7c4286f6883/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.NF.WEB-DL.AV1.EAC3.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|71feec966a66cedfba5556f464b9c7c4286f6883",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.NF.WEB-DL.AV1.EAC3.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (2008) Season 1 S01 Extras (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]\nBreaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv\n👤 27 💾 2.19 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/70b10f03d08903a7635c5718837c7ef86bf9f5af/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv/0/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|70b10f03d08903a7635c5718837c7ef86bf9f5af",
+        "filename": "Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01 1080p BluRay AV1 Opus [AV1D]\nBreaking Bad S01 01.mkv\n👤 25 💾 526.98 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/33eb14b23eb5c485872daa8270a585990fb6bdbe/Breaking Bad S01 01.mkv/0/Breaking Bad S01 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|33eb14b23eb5c485872daa8270a585990fb6bdbe",
+        "filename": "Breaking Bad S01 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01e01-07 [1080p Ita Eng Spa h265 10bit SubS][MirCrewRelease] REPACK byMe7alh\nBreaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv\n👤 19 💾 1.14 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3a51229dfc22e6e63430c426c710b16e8b2a0086/<opaque>/Breaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3a51229dfc22e6e63430c426c710b16e8b2a0086",
+        "filename": "Breaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP[rartv]\nBreaking.Bad.S01E01.Pilot.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP.mkv\n👤 19 💾 11.54 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9858187d623771b7d59d842855c1758be50418c5/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9858187d623771b7d59d842855c1758be50418c5",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (S01)(2008)(1080p)(VP9)(WebDL)( EN 5.1+SPA 2.0)(Complete) PHDTeam\nBreaking Bad - S01E01_Pilotní díl.mkv\n👤 15 💾 1.29 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e81e125021b52d5ecd34249a356574eae14b23ed/<opaque>/Breaking Bad - S01E01_Pilotní díl.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e81e125021b52d5ecd34249a356574eae14b23ed",
+        "filename": "Breaking Bad - S01E01_Pilotní díl.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRemux 1080p | D P P2 A\nBreaking Bad (2008) Season 01. Full HD BD-Remux by Wild_Cat/Breaking Bad (2008) Season 01. Episode 01. Full HD BD-Remux by Wild_Cat.mkv\n👤 13 💾 19.55 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6cb44e28b6bf9868e1deacb5a0f431c10c967c52/Breaking Bad (2008) Season 01. Episode 01. Full HD BD-Remux by Wild_Cat.mkv/1/Breaking Bad (2008) Season 01. Episode 01. Full HD BD-Remux by Wild_Cat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6cb44e28b6bf9868e1deacb5a0f431c10c967c52",
+        "filename": "Breaking Bad (2008) Season 01. Episode 01. Full HD BD-Remux by Wild_Cat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (2008) S01 (1080p x265 10bit BD DTS-HD MA 5.1) [Prof]\nS01E01 - Pilot.mkv\n👤 11 💾 7.26 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/29b3f7a8735fc60a0cc0d5e3f8ed82a74a3b8def/S01E01 - Pilot.mkv/0/S01E01 - Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|29b3f7a8735fc60a0cc0d5e3f8ed82a74a3b8def",
+        "filename": "S01E01 - Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.Complete.1080p.BluRay.10bit.x265-HazMatt\nBreaking.Bad.S01E01.1080p.H264.BluRay.10bit.x265-HazMatt.mkv\n👤 11 💾 1.08 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5885283e382f940384a626f98398015f24481562/<opaque>/Breaking.Bad.S01E01.1080p.H264.BluRay.10bit.x265-HazMatt.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5885283e382f940384a626f98398015f24481562",
+        "filename": "Breaking.Bad.S01E01.1080p.H264.BluRay.10bit.x265-HazMatt.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.1080p.BluRay.X264-iNGOT[rartv]\nbreaking.bad.s01e01.1080p.bluray.x264-ingot.mkv\n👤 9 💾 3.97 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/161f493bf2ee8c71beeb57a1b73d66224bc920b8/<opaque>/breaking.bad.s01e01.1080p.bluray.x264-ingot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|161f493bf2ee8c71beeb57a1b73d66224bc920b8",
+        "filename": "breaking.bad.s01e01.1080p.bluray.x264-ingot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01] (2008) BDRip-HEVC 1080p | D P P2\n01. Пилот.mkv\n👤 8 💾 2.59 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d2f0f5b335bbda0d17087d684774865b316058aa/<opaque>/01. Пилот.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d2f0f5b335bbda0d17087d684774865b316058aa",
+        "filename": "01. Пилот.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (2008) S01-S05 1080p BluRay REMUX Dual Audio [Hindi+Eng] ~ RemuxDoc\nSeason 1/Breaking Bad - S01E01 - Pilot 1080p SDR [hin, eng].mkv\n👤 7 💾 2.25 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c6d960000329117d615b3bcf1f8f93e521d891ab/<opaque>/Breaking Bad - S01E01 - Pilot 1080p SDR [hin, eng].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c6d960000329117d615b3bcf1f8f93e521d891ab",
+        "filename": "Breaking Bad - S01E01 - Pilot 1080p SDR [hin, eng].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.1080p.BluRay.AV1.DDP5.1-dAV1nci\nBreaking.Bad.S01E01.Pilot.1080p.BluRay.AV1.DDP5.1-dAV1nci.mkv\n👤 6 💾 1.45 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b24ae5f7628d57dce64fa660234d3f95e2b981f1/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.BluRay.AV1.DDP5.1-dAV1nci.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b24ae5f7628d57dce64fa660234d3f95e2b981f1",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.BluRay.AV1.DDP5.1-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.iNTEGRALE.MULTi.1080p.WEB.DDP5.1.x264-TFA\nBreaking.Bad.S01.MULTi.1080p.WEB.DDP5.1.x264-TFA/Breaking.Bad.S01E01.MULTi.1080p.WEB.DDP5.1.x264-TFA.mkv\n👤 6 💾 2.69 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/681c48656da9c20bb2b72dad9bdb3b55bf1bc3d3/<opaque>/Breaking.Bad.S01E01.MULTi.1080p.WEB.DDP5.1.x264-TFA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|681c48656da9c20bb2b72dad9bdb3b55bf1bc3d3",
+        "filename": "Breaking.Bad.S01E01.MULTi.1080p.WEB.DDP5.1.x264-TFA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01e01-07 [1080p Ita Eng Spa h265 10bit SubS][MirCrewRelease] byMe7alh\nBreaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv\n👤 6 💾 1.14 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/986d231e5869f45d8ba0a4eb06c022f261396842/<opaque>/Breaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|986d231e5869f45d8ba0a4eb06c022f261396842",
+        "filename": "Breaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad - Complete Season + Extras - BluRay 1080p\nBreaking Bad - S01E01 - Pilot.mkv\n👤 6 💾 3.55 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e43dbd8f4990b67f44f647da94d8779e30ff4b3d/<opaque>/Breaking Bad - S01E01 - Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+        "filename": "Breaking Bad - S01E01 - Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии 1-7 (7) [2008 BDRip 1080p] Dub (Selena International) + MVO (FoxCrime / Amedia) + DVO (LostFilm Кубик в Кубе) + AVO (Юрий Сербин Дмитрий «Goblin» Пучков) + Original (Eng) + Sub (Rus Eng)\nBreaking.Bad.S01.E01.BDRip.1080p-SOFCJ.mkv\n👤 5 💾 8.68 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/97a13de6bb8b741a099a446e755a8a09cfd3a493/<opaque>/Breaking.Bad.S01.E01.BDRip.1080p-SOFCJ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|97a13de6bb8b741a099a446e755a8a09cfd3a493",
+        "filename": "Breaking.Bad.S01.E01.BDRip.1080p-SOFCJ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad 2008 - 1ª Temporada Completa [1080p] WWW.BLUDV.COM\nBreaking.Bad.S01E01.1080p.BluRay.5.1.x264.DUAL-WWW.BLUDV.COM.mkv\n👤 5 💾 1.14 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e597915466c4bbec403804f33e947a23bc9b4b98/<opaque>/Breaking.Bad.S01E01.1080p.BluRay.5.1.x264.DUAL-WWW.BLUDV.COM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e597915466c4bbec403804f33e947a23bc9b4b98",
+        "filename": "Breaking.Bad.S01E01.1080p.BluRay.5.1.x264.DUAL-WWW.BLUDV.COM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip 1080p | P P2 A | LostFilm Кубик в Кубе Пучков aka Гоблин\nS01/101 Pilot -- Пилот.mkv\n👤 4 💾 2.97 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6f94a7407500e57b623c2c385be52bb1f228a896/<opaque>/101 Pilot -- Пилот.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6f94a7407500e57b623c2c385be52bb1f228a896",
+        "filename": "101 Pilot -- Пилот.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad: Complete Series + Movie (1080p.H265.AAC 5.1)\nBreaking Bad Season 1/Breaking Bad s01e01-Pilot-1080p.x265.mkv\n👤 4 💾 498.69 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/853a5f77323b8627a6e095c7b103cede280ef55a/<opaque>/Breaking Bad s01e01-Pilot-1080p.x265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|853a5f77323b8627a6e095c7b103cede280ef55a",
+        "filename": "Breaking Bad s01e01-Pilot-1080p.x265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01-S05.(2008).1080p.WEBRIP.HEVC.OPUS2.0\nBreaking.Bad.S01.(2008).1080p.WEBRIP.HEVC.OPUS2.0/Breaking.Bad.S01E01.(2008).1080p.WEBRIP.HEVC.OPUS2.0.mkv\n👤 4 💾 510.66 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a5c1aefb62c9bd67ff49412544915533155a0b99/Breaking.Bad.S01E01.(2008).1080p.WEBRIP.HEVC.OPUS2.0.mkv/0/Breaking.Bad.S01E01.(2008).1080p.WEBRIP.HEVC.OPUS2.0.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a5c1aefb62c9bd67ff49412544915533155a0b99",
+        "filename": "Breaking.Bad.S01E01.(2008).1080p.WEBRIP.HEVC.OPUS2.0.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad Saison 1 FRENCH - VOSTFR HDlight 1080p HDTV\nBreaking Bad - S01E01 - 1080p - PopHD.mkv\n👤 4 💾 1.46 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f6ed72e8ff4ec570210c66abf54acb4342a7bf62/<opaque>/Breaking Bad - S01E01 - 1080p - PopHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f6ed72e8ff4ec570210c66abf54acb4342a7bf62",
+        "filename": "Breaking Bad - S01E01 - 1080p - PopHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.MULTi.1080p.BluRay.DDP5.1.x264-Ralf\nBreaking.Bad.S01E01.Pilot.MULTi.1080p.BluRay.DDP5.1.x264-Ralf.mkv\n👤 3 💾 4.23 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/01bb15bbfc6516c4aa0152f92342445b15dcfdd7/<opaque>/Breaking.Bad.S01E01.Pilot.MULTi.1080p.BluRay.DDP5.1.x264-Ralf.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|01bb15bbfc6516c4aa0152f92342445b15dcfdd7",
+        "filename": "Breaking.Bad.S01E01.Pilot.MULTi.1080p.BluRay.DDP5.1.x264-Ralf.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01E01.2008.1080P-Dual-Lat\n👤 2 💾 1.15 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b1542348e7b5e47c041b3a580bdf34c3612e9220/<opaque>/Breaking.Bad.S01E01.2008.1080P-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Lat",
+        "filename": "Breaking.Bad.S01E01.2008.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01-S05.COMPLETE.1080p.BluRay.10bit.DD5.1.With.Commentary.x265-POIASD\nBreaking.Bad.S01.1080p.BluRay.10bit.DD5.1.With.Commentary.x265-POIASD/Breaking.Bad.S01E01.1080p.BluRay.10bit.DD5.1.x265-POIASD.mkv\n👤 2 💾 1.67 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0c9a83c76176b787acf14b1961c139421a13f2e0/<opaque>/Breaking.Bad.S01E01.1080p.BluRay.10bit.DD5.1.x265-POIASD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0c9a83c76176b787acf14b1961c139421a13f2e0",
+        "filename": "Breaking.Bad.S01E01.1080p.BluRay.10bit.DD5.1.x265-POIASD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip 1080p | Кубик в Кубе\nSeason_01/Breaking.Bad_s01.e01.mkv\n👤 2 💾 4.98 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de485c28da8bc3d4fea24950803c6b3bc03954f3/Breaking.Bad_s01.e01.mkv/0/Breaking.Bad_s01.e01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|de485c28da8bc3d4fea24950803c6b3bc03954f3",
+        "filename": "Breaking.Bad_s01.e01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии 1-7 из 7 [2008 BDRemux 1080p] Dub (Selena International) + MVO (FoxCrime) + DVO (LostFilm Кубик в Кубе) + AVO (Юрий Сербин) + Original + Sub (Rus Eng)\nBreaking.Bad.S01E01.Pilot.1080p.DTS-HD.MA.5.1.AVC.REMUX.mkv\n👤 1 💾 17.87 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d836f3e53f48e76d54541931934ff9693e83f686/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.DTS-HD.MA.5.1.AVC.REMUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d836f3e53f48e76d54541931934ff9693e83f686",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.DTS-HD.MA.5.1.AVC.REMUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p 3D SBS",
+      "title": "Breaking.Bad.S01.1080p.3D.FULL-SBS.HEVC.SBS-SUB.ENG-HUN.iFA-AI3D\nBreaking.Bad.S01E01.Pilot.1080p.3D.FULL-SBS.HEVC.SBS-SUB.ENG-HUN.iFA-AI3D.mkv\n👤 1 💾 22.3 GB ⚙️ 1337x\n🇬🇧 / 🇭🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/167e34bbf6fc3e53382d0c8d2a8fe5852b522e91/<opaque>/Breaking.Bad.S01E01.Pilot.1080p.3D.FULL-SBS.HEVC.SBS-SUB.ENG-HUN.iFA-AI3D.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|167e34bbf6fc3e53382d0c8d2a8fe5852b522e91",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.3D.FULL-SBS.HEVC.SBS-SUB.ENG-HUN.iFA-AI3D.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad - Reazioni collaterali - Stagione 01-05 (2008-2013) [Completa] 1080p H264 Ita Eng AAC-2.0 Sub Ita Eng [binarygrabber] (56 3 GB)\nSeason 1/Breaking Bad (2008).S01.E01.1080p.H264.Ita.Eng.AAC-2.0.sub.Ita.Eng.webrip.binarygrabber.mkv\n👤 1 💾 1.55 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f62648effde9a3d83c819259c5e677871f3c1f0/Breaking Bad (2008).S01.E01.1080p.H264.Ita.Eng.AAC-2.0.sub.Ita.Eng.webrip.binarygrabber.mkv/0/Breaking Bad (2008).S01.E01.1080p.H264.Ita.Eng.AAC-2.0.sub.Ita.Eng.webrip.binarygrabber.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8f62648effde9a3d83c819259c5e677871f3c1f0",
+        "filename": "Breaking Bad (2008).S01.E01.1080p.H264.Ita.Eng.AAC-2.0.sub.Ita.Eng.webrip.binarygrabber.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.Reazioni.collaterali.Stagione.1.2008.1080p.H265.ITA.ENG.SPA.AC3.5.1.SubS.Ita.Eng.Deu.NU.Eng.NFRip-iDN_CreW\nBreaking.Bad.1x01.Questione.di.chimica.1080p.H265.ITA.ENG.SPA.AC3.5.1.SubS.Ita.Eng.Deu.NU.Eng.NFRip-iDN_CreW.mkv\n👤 1 💾 1.34 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇪🇸 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e32bdd6c5ed67674a11a85d91e06dd5ccdb082f7/<opaque>/Breaking.Bad.1x01.Questione.di.chimica.1080p.H265.ITA.ENG.SPA.AC3.5.1.SubS.Ita.Eng.Deu.NU.Eng.NFRip-iDN_CreW.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e32bdd6c5ed67674a11a85d91e06dd5ccdb082f7",
+        "filename": "Breaking.Bad.1x01.Questione.di.chimica.1080p.H265.ITA.ENG.SPA.AC3.5.1.SubS.Ita.Eng.Deu.NU.Eng.NFRip-iDN_CreW.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01-S05.COMPLETE.SERIES.1080p.Bluray.x265-HiQVE\nBreaking.Bad.S01.1080p.Bluray.x265-HiQVE/Breaking.Bad.S01E01.1080p.Bluray.x265-HiQVE.mkv\n👤 1 💾 1.69 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1898f3b63e2ab489391bcc50e3c453ec8420b389/<opaque>/Breaking.Bad.S01E01.1080p.Bluray.x265-HiQVE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1898f3b63e2ab489391bcc50e3c453ec8420b389",
+        "filename": "Breaking.Bad.S01E01.1080p.Bluray.x265-HiQVE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01] (2008) WEB-DL 1080p | Гоблин\n01 - Пилот ''Pilot''.mkv\n👤 1 💾 1.27 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/63abbc2de7250ec35c95ba5c4a20ca394fef61c1/01 - Пилот ''Pilot''.mkv/0/01 - Пилот ''Pilot''.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|63abbc2de7250ec35c95ba5c4a20ca394fef61c1",
+        "filename": "01 - Пилот ''Pilot''.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 1080p | D\n1 Сезон/01. Пилотная серия.mkv\n👤 1 💾 1.28 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3729872afef051d419cd0c575267e23f5d7414bb/<opaque>/01. Пилотная серия.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3729872afef051d419cd0c575267e23f5d7414bb",
+        "filename": "01. Пилотная серия.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 1080p | D\n2 Сезон/01. Семьсот тридцать семь.mkv\n👤 1 💾 1.04 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3729872afef051d419cd0c575267e23f5d7414bb/<opaque>/01. Семьсот тридцать семь.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3729872afef051d419cd0c575267e23f5d7414bb",
+        "filename": "01. Семьсот тридцать семь.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 1080p | D\n3 Сезон/01. Хватит!.mkv\n👤 1 💾 1.05 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3729872afef051d419cd0c575267e23f5d7414bb/01. Хватит!.mkv/20/01. Хватит!.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3729872afef051d419cd0c575267e23f5d7414bb",
+        "filename": "01. Хватит!.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 1080p | D\n5 Сезон/01. Живи свободным или умри.mkv\n👤 1 💾 961.8 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3729872afef051d419cd0c575267e23f5d7414bb/<opaque>/01. Живи свободным или умри.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3729872afef051d419cd0c575267e23f5d7414bb",
+        "filename": "01. Живи свободным или умри.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 1080p | D\n4 Сезон/01. Канцелярский нож.mkv\n👤 1 💾 1.05 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3729872afef051d419cd0c575267e23f5d7414bb/<opaque>/01. Канцелярский нож.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3729872afef051d419cd0c575267e23f5d7414bb",
+        "filename": "01. Канцелярский нож.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad - Temporada 1 Completa [BluRay Rip 1080p][Cap. 101_107][AC3 5.1 Español Castellano-English-Subs]\nBreaking_Bad_1x01_Pilot.mkv\n👤 1 💾 2.14 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/46bbb2af2380642f603daf10c210175b000fe0cb/Breaking_Bad_1x01_Pilot.mkv/0/Breaking_Bad_1x01_Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|46bbb2af2380642f603daf10c210175b000fe0cb",
+        "filename": "Breaking_Bad_1x01_Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad Complete Season 1 2 3 4 5 1080p HEVC \nSeason 1/Breaking Bad - S01E01 - Pilot.m4v\n👤 1 💾 455.29 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d94188c57989c8c2e71c23208b6662a1e2de988/<opaque>/Breaking Bad - S01E01 - Pilot.m4v",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7d94188c57989c8c2e71c23208b6662a1e2de988",
+        "filename": "Breaking Bad - S01E01 - Pilot.m4v"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad Season 1-5 (1080p BluRay AV1) (Opus 5.1 256bit) 33.4GB\nSeason 1/Breaking Bad S01E01 Pilot.mkv\n👤 0 💾 855.53 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/08d53b2bf293af982d8ab46ebbeeedddb8e79455/<opaque>/Breaking Bad S01E01 Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|08d53b2bf293af982d8ab46ebbeeedddb8e79455",
+        "filename": "Breaking Bad S01E01 Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.In.S01.1080p.WEBRip.H264.AAC-DRKHLM\nBreaking.In.S01E01.Pilot.1080p.WEBRip.H264.AAC-DRKHLM.mkv\n👤 0 💾 879.1 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9b2f37817de4b2a5722f622db6d73ba8c774d94c/<opaque>/Breaking.In.S01E01.Pilot.1080p.WEBRip.H264.AAC-DRKHLM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9b2f37817de4b2a5722f622db6d73ba8c774d94c",
+        "filename": "Breaking.In.S01E01.Pilot.1080p.WEBRip.H264.AAC-DRKHLM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad *2008-2013* [Sezon 01-05] [1080p WEB-DL H264-FT] [Napisy ENG-PL] [ENG-Lektor PL] [Alusia]\nS01/Breaking Bad S01E01 [1080p.WEB-DL.H264-FT] [Napisy ENG-PL] [ENG-Lektor PL] [Alusia].mkv\n👤 0 💾 2.25 GB ⚙️ BestTorrents\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5028b657374f25cad36613eb999d1e9016d88063/<opaque>/Breaking Bad S01E01 [1080p.WEB-DL.H264-FT] [Napisy ENG-PL] [ENG-Lektor PL] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5028b657374f25cad36613eb999d1e9016d88063",
+        "filename": "Breaking Bad S01E01 [1080p.WEB-DL.H264-FT] [Napisy ENG-PL] [ENG-Lektor PL] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.1080P.10Bit.Bluray.English.DDP5.1.x265.HEVC ~ IONICBOY\nBreaking.Bad.S01E01.1080p.10Bit.BluRay.English.DDP5.1.x265.HEVC-IONICBOY.mkv\n👤 0 💾 2.4 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7156d736a37bd107abad24648868a1daf0fe5932/<opaque>/Breaking.Bad.S01E01.1080p.10Bit.BluRay.English.DDP5.1.x265.HEVC-IONICBOY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7156d736a37bd107abad24648868a1daf0fe5932",
+        "filename": "Breaking.Bad.S01E01.1080p.10Bit.BluRay.English.DDP5.1.x265.HEVC-IONICBOY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad - Stagione 1 [1080p] HEVC x265\nBreaking Bad - 1x01 - Questione Di Chimica.mkv\n👤 0 💾 2.3 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c7f55bf30934db9e9961bb1b7ba6efea5e648298/<opaque>/Breaking Bad - 1x01 - Questione Di Chimica.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c7f55bf30934db9e9961bb1b7ba6efea5e648298",
+        "filename": "Breaking Bad - 1x01 - Questione Di Chimica.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad Seasons 1 to 5 Complete Box Set [English Subtitles][NetflixRip][NVEnc H265 1080p][AAC 6Ch]\nBreaking Bad Season 1/[S01.E01] Breaking Bad - Pilot.mp4\n👤 0 💾 1.22 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c08b63a5c349c1d84ee820ee6b5ae2bea3f8c073/<opaque>/[S01.E01] Breaking Bad - Pilot.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c08b63a5c349c1d84ee820ee6b5ae2bea3f8c073",
+        "filename": "[S01.E01] Breaking Bad - Pilot.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (2008) S01 (1080p BDRip x265 10bit DTS-HD MA 5.1 - DNU) [TAoE]\nBreaking Bad (2008) S01E01 Pilot (1080p BDRip x265 10bit DTS-HD MA 5.1 - DNU) [TAoE].mkv\n👤 0 💾 7.24 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c53c982731344fb13a1ec854592c184d38850ea3/Breaking Bad (2008) S01E01 Pilot (1080p BDRip x265 10bit DTS-HD MA 5.1 - DNU) [TAoE].mkv/2/Breaking Bad (2008) S01E01 Pilot (1080p BDRip x265 10bit DTS-HD MA 5.1 - DNU) [TAoE].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c53c982731344fb13a1ec854592c184d38850ea3",
+        "filename": "Breaking Bad (2008) S01E01 Pilot (1080p BDRip x265 10bit DTS-HD MA 5.1 - DNU) [TAoE].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad (2008) Season 01 S01 Featurettes (1080p WEBRip x265 HEVC 10bit AAC 5.1 Joy) [UTR]\nBreaking Bad S01E01 Pilot (1080p x265 10bit Joy).mkv\n👤 0 💾 456.43 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0faa5b8e948523e8ae62d51a32c64e90c5f12553/Breaking Bad S01E01 Pilot (1080p x265 10bit Joy).mkv/0/Breaking Bad S01E01 Pilot (1080p x265 10bit Joy).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0faa5b8e948523e8ae62d51a32c64e90c5f12553",
+        "filename": "Breaking Bad S01E01 Pilot (1080p x265 10bit Joy).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad - Season 1 to 5 - Mp4 1080p\nSeason 1/Breaking Bad S01E01 Pilot.mp4\n👤 0 💾 1.69 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6d272bb7d16f8ba16d1a14070f8e09c1c214fbfb/<opaque>/Breaking Bad S01E01 Pilot.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6d272bb7d16f8ba16d1a14070f8e09c1c214fbfb",
+        "filename": "Breaking Bad S01E01 Pilot.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии: 1-7 из 7 [2008 BDRemux 1080p] MVO (LostFilm) + DVO (Кубик в Кубе) + MVO (FoxCrime) + AVO (Сербин) + Original\nBreaking Bad.S01E01.Pilot.1080p.mkv\n👤 0 💾 16.28 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f3f8be8d24da8b6adc30dde4201cd69187e245c2/<opaque>/Breaking Bad.S01E01.Pilot.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f3f8be8d24da8b6adc30dde4201cd69187e245c2",
+        "filename": "Breaking Bad.S01E01.Pilot.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad Season 1\n101 Making of Breaking Bad (1080p HD.m4v\n👤 0 💾 411.25 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a8274b8d85c74c4a8e3ed622aca59be92c31654a/101 Making of Breaking Bad (1080p HD.m4v/0/101 Making of Breaking Bad (1080p HD.m4v",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a8274b8d85c74c4a8e3ed622aca59be92c31654a",
+        "filename": "101 Making of Breaking Bad (1080p HD.m4v"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking.Bad.S01.Season.1.Complete.1080p.BluRay.DTS.x265-MRSK [CTTV]\nBreaking.Bad.S01E01.1080p.BluRay.DTS.X265-MRSK.mkv\n👤 0 💾 1.84 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/329dd54b174566746503b60f528b8522670be753/<opaque>/Breaking.Bad.S01E01.1080p.BluRay.DTS.X265-MRSK.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|329dd54b174566746503b60f528b8522670be753",
+        "filename": "Breaking.Bad.S01E01.1080p.BluRay.DTS.X265-MRSK.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 1080p | Кубик в Кубе\n1x01 - Пилотная серия.mp4\n👤 0 💾 1.27 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b18975874e28dfc050fd70c04d26aa72d917dc3/<opaque>/1x01 - Пилотная серия.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7b18975874e28dfc050fd70c04d26aa72d917dc3",
+        "filename": "1x01 - Пилотная серия.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Breaking Bad S01 Season 1 1080p BluRay ReEnc-DeeJayAhmed [LittleFairyRG]\nBreaking.Bad.S01E01.1080p.BluRay.ReEnc-DeeJayAhmed.mkv\n👤 0 💾 667.33 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5a5e09af2ff39ea906ed5a6a008a03bb0afd2666/<opaque>/Breaking.Bad.S01E01.1080p.BluRay.ReEnc-DeeJayAhmed.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5a5e09af2ff39ea906ed5a6a008a03bb0afd2666",
+        "filename": "Breaking.Bad.S01E01.1080p.BluRay.ReEnc-DeeJayAhmed.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad Season 1 Complete 720p.BRrip.Sujaidr (pimprg)\nBreaking Bad s01e01 720p.BRrip.Sujaidr.mkv\n👤 262 💾 464.62 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/72a391645b5ea76dd6f5ade169ffda943aa81649/<opaque>/Breaking Bad s01e01 720p.BRrip.Sujaidr.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|72a391645b5ea76dd6f5ade169ffda943aa81649",
+        "filename": "Breaking Bad s01e01 720p.BRrip.Sujaidr.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad S01-S05 Complete 720p BluRay x265-BMF\nS01/Breaking.Bad-S01E01-Pilot.Bluray-720p.x265-BMF.mkv\n👤 88 💾 396.08 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9a37f6bd1c81e437ef3ef562ccc86c59064c325d/<opaque>/Breaking.Bad-S01E01-Pilot.Bluray-720p.x265-BMF.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9a37f6bd1c81e437ef3ef562ccc86c59064c325d",
+        "filename": "Breaking.Bad-S01E01-Pilot.Bluray-720p.x265-BMF.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking.Bad.SEASON.01.S01.COMPLETE.720p.10bit.BluRay.2CH.x265.HEVC-PSA\nBreaking.Bad.S01E01.Pilot.720p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv\n👤 35 💾 373.63 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7008d4a01c56d6cac20bb98bef9a3144a22fb56e/<opaque>/Breaking.Bad.S01E01.Pilot.720p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7008d4a01c56d6cac20bb98bef9a3144a22fb56e",
+        "filename": "Breaking.Bad.S01E01.Pilot.720p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking.Bad.S01E01.Pilot.720p.HEVC.x265-MeGusta\n👤 31 💾 633.22 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/60885c299508f9ae39b0085e0c79d4b76704fefd/<opaque>/Breaking.Bad.S01E01.Pilot.720p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Breaking.Bad.S01E01.Pilot.720p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking.Bad.S01.720p.BluRay.x264-REWARD[rartv]\nbreaking.bad.s01e01.720p.bluray.x264-reward.mkv\n👤 13 💾 2.65 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b894ccfa2731cb2e6521d70b0355964f1dad6709/<opaque>/breaking.bad.s01e01.720p.bluray.x264-reward.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b894ccfa2731cb2e6521d70b0355964f1dad6709",
+        "filename": "breaking.bad.s01e01.720p.bluray.x264-reward.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Во все тяжкие / Вразнос / Breaking Bad / Сезон: 1-5 / Серии: 1-62 из 62 [2008-2013 BDRip 720p] AVO (Дмитрий «Goblin» Пучков) + Original + Sub (Eng)\nBreaking.Bad.S01.720p.BluRay.Goblin.Eng.AMC/Breaking.Bad.S01E01.720p.BluRay.Goblin.Eng.AMC.mkv\n👤 5 💾 3.38 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1531d4c9b1034d887f3a0e10dfc86280e2e779aa/<opaque>/Breaking.Bad.S01E01.720p.BluRay.Goblin.Eng.AMC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1531d4c9b1034d887f3a0e10dfc86280e2e779aa",
+        "filename": "Breaking.Bad.S01E01.720p.BluRay.Goblin.Eng.AMC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad (Integrale) VOSTFR + FRENCH 720p HDTV\nBreaking.Bad.S01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST/Breaking.Bad.S01E01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST.mkv\n👤 1 💾 840.49 MB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/88a54ed7baef627dc1ecc2fd2df70f8ce990ab09/<opaque>/Breaking.Bad.S01E01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|88a54ed7baef627dc1ecc2fd2df70f8ce990ab09",
+        "filename": "Breaking.Bad.S01E01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad S01-S05 Complete BluRay 720p English AAC 5.1 x264 ESub - mkvCinemas [Telly]\nBreaking Bad S01 E01-07 BluRay 720p English AAC 5.1 x264 ESub - mkvCinemas [Telly]/Breaking Bad S01 E01 BluRay 720p English AAC 5.1 x264 ESub - mkvCinemas.mkv\n👤 1 💾 516.48 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/73f9e215ed0e137412da191a1d653994fc57fd96/<opaque>/Breaking Bad S01 E01 BluRay 720p English AAC 5.1 x264 ESub - mkvCinemas.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|73f9e215ed0e137412da191a1d653994fc57fd96",
+        "filename": "Breaking Bad S01 E01 BluRay 720p English AAC 5.1 x264 ESub - mkvCinemas.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip 720p | LostFilm Кубик в Кубе\nSeason_01/Breaking.Bad_s01.e01.mkv\n👤 1 💾 2.91 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e25c187e9e58da21bae7f019a1c4fd2bb25bb45f/Breaking.Bad_s01.e01.mkv/0/Breaking.Bad_s01.e01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e25c187e9e58da21bae7f019a1c4fd2bb25bb45f",
+        "filename": "Breaking.Bad_s01.e01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-HEVC 720p | LostFilm\nBreaking.Bad.Season.S01/Breaking.Bad.S01E01.mkv\n👤 1 💾 430.16 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5f265e068307cb42f548eac3aa8dddcc26655fb9/Breaking.Bad.S01E01.mkv/0/Breaking.Bad.S01E01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5f265e068307cb42f548eac3aa8dddcc26655fb9",
+        "filename": "Breaking.Bad.S01E01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking.Bad.S01E01.720p.HDTV.x264-BiA\n👤 1 💾 1.09 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f023c4c883c29e50a56a63cce8e69899f45fc537/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BiA"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking.Bad.S01.720p.BRRip.Hindi-English.ESUB - Cukister\nBreaking.Bad.S01E01.720p.BRRip.Hindi-English.ESUB - Cukister.mkv\n👤 0 💾 370.42 MB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a77271af0ceae766101146f62899999e8a45ca41/<opaque>/Breaking.Bad.S01E01.720p.BRRip.Hindi-English.ESUB - Cukister.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a77271af0ceae766101146f62899999e8a45ca41",
+        "filename": "Breaking.Bad.S01E01.720p.BRRip.Hindi-English.ESUB - Cukister.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad S01 2008 720p 10bit BluRay English AAC 5.1 x265 - mkvAnime [Telly]\nBreaking.Bad.S01E01.720p.10bit.BluRay.6CH.x265-mkvAnime[Telly].mkv\n👤 0 💾 414.64 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/97422f3ce9c911af24b43f47a3bd90f5bf2b419c/<opaque>/Breaking.Bad.S01E01.720p.10bit.BluRay.6CH.x265-mkvAnime[Telly].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|97422f3ce9c911af24b43f47a3bd90f5bf2b419c",
+        "filename": "Breaking.Bad.S01E01.720p.10bit.BluRay.6CH.x265-mkvAnime[Telly].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad 2008 - 1ª Temporada Completa WWW.BLUDV.COM 720P\nBreaking.Bad.S01E01.720p.BluRay.5.1.x264.DUAL-WWW.BLUDV.COM.mkv\n👤 0 💾 751.32 MB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/abde0d9e255eae8ac5758ec9203f91ef612801fa/<opaque>/Breaking.Bad.S01E01.720p.BluRay.5.1.x264.DUAL-WWW.BLUDV.COM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|abde0d9e255eae8ac5758ec9203f91ef612801fa",
+        "filename": "Breaking.Bad.S01E01.720p.BluRay.5.1.x264.DUAL-WWW.BLUDV.COM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad (Integrale) VOSTFR + FRENCH 720p HDTV\nBreaking.Bad.S01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST/Breaking.Bad.S01E01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST.mkv\n👤 0 💾 840.49 MB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/04db08e770e338aec1a81be3e7be628350d0d6d6/<opaque>/Breaking.Bad.S01E01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|04db08e770e338aec1a81be3e7be628350d0d6d6",
+        "filename": "Breaking.Bad.S01E01.MULTi.VOSTFR+FRENCH.720p.BluRay.x264.mHD-GHoST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad Season_1-5 COMPLETE 720p BluRay.x264 Pahe.in [NWA]\nBreaking Bad Season 1 720p BluRay x264 Pahe.in/BrBa.S01E01.720p.BrRip.x264.400MB-Pahe.in.mkv\n👤 0 💾 400.35 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/49e1b7e936910f83120de0330744a0e62f846b93/<opaque>/BrBa.S01E01.720p.BrRip.x264.400MB-Pahe.in.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|49e1b7e936910f83120de0330744a0e62f846b93",
+        "filename": "BrBa.S01E01.720p.BrRip.x264.400MB-Pahe.in.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии: 1-7 (7) [2008 BDRip 720p] MVO (LostFilm) + DVO (Кубик в Кубе) + Original + Sub (Rus Eng)\nSeason 01/Breaking.Bad.s01e01.Pilot.mkv\n👤 0 💾 3.56 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0100cdee95a57c66341ec992475388a2c69e6014/Breaking.Bad.s01e01.Pilot.mkv/0/Breaking.Bad.s01e01.Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0100cdee95a57c66341ec992475388a2c69e6014",
+        "filename": "Breaking.Bad.s01e01.Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad S01 Season 1 720p BluRay x265-HaxxOr\nBreaking.Bad.S01E01.720p.Bluray.x265-HaxxOr.mp4\n👤 0 💾 199.04 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b8d54a6bfdba60cf2ca5bae8e465ece66496dc89/<opaque>/Breaking.Bad.S01E01.720p.Bluray.x265-HaxxOr.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b8d54a6bfdba60cf2ca5bae8e465ece66496dc89",
+        "filename": "Breaking.Bad.S01E01.720p.Bluray.x265-HaxxOr.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad - 1ª Temporada (2008) 720p Dual Áudio - Douglasvip\nS01E01 - Pilot.mp4\n👤 0 💾 415.63 MB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e9876a1688fc774068fecc94a991f300f45cf2b7/S01E01 - Pilot.mp4/0/S01E01 - Pilot.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e9876a1688fc774068fecc94a991f300f45cf2b7",
+        "filename": "S01E01 - Pilot.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad 1ª Temporada (2008) BluRay 720p Dublado\n1 - Piloto.mp4\n👤 0 💾 481.87 MB ⚙️ ThePirateBay\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/12d435140bb63a9f9bd1a0a99537f4e98389b709/1 - Piloto.mp4/9/1 - Piloto.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|12d435140bb63a9f9bd1a0a99537f4e98389b709",
+        "filename": "1 - Piloto.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad s01e01 720p.BRrip.HDTV.RWN\n👤 0 💾 464.62 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5628c6c403068d39d4ba1f93923bb9bc9a441b15/<opaque>/Breaking Bad s01e01 720p.BRrip.HDTV.RWN",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Во все тяжкие / Breaking Bad [S01] (2008) HDRip от Scarabey | LostFilm\nBreaking.Bad.S01E01.720p.BluRay.4xRus.Eng.HDCLUB.avi\n👤 0 💾 410.01 MB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/75a9c38b76b74f79671f543935b5b6a245ac55a2/<opaque>/Breaking.Bad.S01E01.720p.BluRay.4xRus.Eng.HDCLUB.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|75a9c38b76b74f79671f543935b5b6a245ac55a2",
+        "filename": "Breaking.Bad.S01E01.720p.BluRay.4xRus.Eng.HDCLUB.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad Season 1 2 3 4 5+Extras 720p nHD Bluray + 1080p Web\nSeason 1/Breaking Bad-S01E01 720p BluRay nHD_rvarun7777.mkv\n👤 0 💾 1.17 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/90814aa3b13862fc8b160373a66319e20e9eaa6d/<opaque>/Breaking Bad-S01E01 720p BluRay nHD_rvarun7777.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|90814aa3b13862fc8b160373a66319e20e9eaa6d",
+        "filename": "Breaking Bad-S01E01 720p BluRay nHD_rvarun7777.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking Bad 1 Temporada BDRip blruay 720p dublado - derew\n1 - Piloto.mp4\n👤 0 💾 481.87 MB ⚙️ ThePirateBay\n🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bbd4d315a00580f9cafd9c36f35165c83f13043c/1 - Piloto.mp4/0/1 - Piloto.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bbd4d315a00580f9cafd9c36f35165c83f13043c",
+        "filename": "1 - Piloto.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Breaking In Season 1 Complete 720p\nBreaking.In.S01E01.720p.HDTV.x264.mkv\n👤 0 💾 559.06 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/71187d8a5efe7aa12b8c60545df709ec2a4ed298/<opaque>/Breaking.In.S01E01.720p.HDTV.x264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|71187d8a5efe7aa12b8c60545df709ec2a4ed298",
+        "filename": "Breaking.In.S01E01.720p.HDTV.x264.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Breaking.Bad.S01-S05.Complete.480p.BluRay.x264-Sticky83\nBreaking.Bad.S01E01.480p.BluRay.x264-Sticky83.mkv\n👤 0 💾 350.85 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7c9a5066d068412ce15060eb515294cee3cdb380/<opaque>/Breaking.Bad.S01E01.480p.BluRay.x264-Sticky83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7c9a5066d068412ce15060eb515294cee3cdb380",
+        "filename": "Breaking.Bad.S01E01.480p.BluRay.x264-Sticky83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n360p",
+      "title": "Breaking Bad Season 1 2 3 4 5: Threesixtyp\nBreaking Bad S01 (360p re-blurip)/Breaking Bad S01E01 Pilot.mp4\n👤 9 💾 213.16 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/44b8d656eb545ba744e066c2c3b77a5dd8c4301e/<opaque>/Breaking Bad S01E01 Pilot.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|44b8d656eb545ba744e066c2c3b77a5dd8c4301e",
+        "filename": "Breaking Bad S01E01 Pilot.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nDVDRip",
+      "title": "Breaking Bad Saison 1 FRENCH HDTV\nBreaking.Bad.S01E01.FRENCH.DVDRip.XviD-JMT.avi\n👤 95 💾 548.16 MB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0a03aba4f6395f865b40e5c83b27ae4f630897c1/<opaque>/Breaking.Bad.S01E01.FRENCH.DVDRip.XviD-JMT.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0a03aba4f6395f865b40e5c83b27ae4f630897c1",
+        "filename": "Breaking.Bad.S01E01.FRENCH.DVDRip.XviD-JMT.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBRRip",
+      "title": "Breaking Bad (Integrale) FRENCH HDTV\nBreaking.Bad.S01.REPACK.FRENCH.BRRip.x264-DUFF/Breaking.Bad.S01E01.FRENCH.BRRip.x264-DUFF.mp4\n👤 8 💾 620.03 MB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/be661458d6586804ae73adf22679b171b4ead019/<opaque>/Breaking.Bad.S01E01.FRENCH.BRRip.x264-DUFF.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|be661458d6586804ae73adf22679b171b4ead019",
+        "filename": "Breaking.Bad.S01E01.FRENCH.BRRip.x264-DUFF.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip от qqss44 | LostFilm\nSeason 01/Breaking.Bad.s01e01.XviD.BDrip.DD5.1.LostFilm.[qqss44].avi\n👤 6 💾 938.05 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/05eda18c517fa200d72e69476169b04354b1db4e/<opaque>/Breaking.Bad.s01e01.XviD.BDrip.DD5.1.LostFilm.[qqss44].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|05eda18c517fa200d72e69476169b04354b1db4e",
+        "filename": "Breaking.Bad.s01e01.XviD.BDrip.DD5.1.LostFilm.[qqss44].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии 1-7 (7) [2008 BDRip-AVC] MVO (LostFilm) + Original + Sub\nBreaking Bad S01E01 BDRip.mkv\n👤 5 💾 1.74 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3232f602f8c2089a94cdf59d31c670a9693cd00c/<opaque>/Breaking Bad S01E01 BDRip.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3232f602f8c2089a94cdf59d31c670a9693cd00c",
+        "filename": "Breaking Bad S01E01 BDRip.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip от qqss44 | Кубик в Кубе\nSeason 01/Breaking.Bad.s01e01.XviD.BDrip.DD5.1.kvk.[qqss44].avi\n👤 4 💾 938.05 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f165de6ed7f350238e6cabae024605546eb1c32/<opaque>/Breaking.Bad.s01e01.XviD.BDrip.DD5.1.kvk.[qqss44].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8f165de6ed7f350238e6cabae024605546eb1c32",
+        "filename": "Breaking.Bad.s01e01.XviD.BDrip.DD5.1.kvk.[qqss44].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad [S01] (2008) BDRip от HQ-ViDEO\nVo.Vse.Tjazhkie.S01E01.Pilot.2008.RUS.BDRip.XviD.AC3.-HQ-ViDEO.avi\n👤 4 💾 894.54 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/120c018b10c277ad9eba7a062ad6cd57aa0f9e8b/<opaque>/Vo.Vse.Tjazhkie.S01E01.Pilot.2008.RUS.BDRip.XviD.AC3.-HQ-ViDEO.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|120c018b10c277ad9eba7a062ad6cd57aa0f9e8b",
+        "filename": "Vo.Vse.Tjazhkie.S01E01.Pilot.2008.RUS.BDRip.XviD.AC3.-HQ-ViDEO.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Breaking Bad - Stagioni 01-05 (2008-2013) [COMPLETA] SD x264 AAC ITA SUB ITA - mkeagle3\nBreaking.Bad.01x01.Questione.di.chimica.ITA.WEBRIP.x264-mkeagle3.mkv\n👤 3 💾 528.28 MB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/75aa139557710753511b6ade2955645b51d08f27/<opaque>/Breaking.Bad.01x01.Questione.di.chimica.ITA.WEBRIP.x264-mkeagle3.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|75aa139557710753511b6ade2955645b51d08f27",
+        "filename": "Breaking.Bad.01x01.Questione.di.chimica.ITA.WEBRIP.x264-mkeagle3.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) HDRip | КПК | Кубик в Кубе\nVo.Vse.Tyazhkie.S01.2008.AVC.HDRip.KPK.KvK.GF/Vo.Vse.Tyazhkie.s01e01.2008.AVC.HDRip.KPK.KvK.GF.mp4\n👤 3 💾 263.36 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/94f7f17b7d0fc86365cafc0fceaf7be28bf71b95/<opaque>/Vo.Vse.Tyazhkie.s01e01.2008.AVC.HDRip.KPK.KvK.GF.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|94f7f17b7d0fc86365cafc0fceaf7be28bf71b95",
+        "filename": "Vo.Vse.Tyazhkie.s01e01.2008.AVC.HDRip.KPK.KvK.GF.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDMux",
+      "title": "Breaking Bad S01-05e01-62 (Serie Completa Extra) [Mux - H264 - Ita Eng Ac3 5.1 - Sub Ita Eng] BDMux by Fratposa\nEXTRAS - Breaking Bad Orignal Minisodes by Fratposa/Breaking.bad.orignal.minsodes.01.sub.ita.mkv\n👤 3 💾 52.66 MB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e7731a2c33a435fe4f956473314832d43745f3ae/<opaque>/Breaking.bad.orignal.minsodes.01.sub.ita.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e7731a2c33a435fe4f956473314832d43745f3ae",
+        "filename": "Breaking.bad.orignal.minsodes.01.sub.ita.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDMux",
+      "title": "Breaking Bad S01-05e01-62 (Serie Completa Extra) [Mux - H264 - Ita Eng Ac3 5.1 - Sub Ita Eng] BDMux by Fratposa\nBreaking Bad S01 H264 SD by Fratposa/Breaking.Bad.S01e01.BDMux.H264.SD.by.Fratposa.mkv\n👤 3 💾 860.26 MB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e7731a2c33a435fe4f956473314832d43745f3ae/<opaque>/Breaking.Bad.S01e01.BDMux.H264.SD.by.Fratposa.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e7731a2c33a435fe4f956473314832d43745f3ae",
+        "filename": "Breaking.Bad.S01e01.BDMux.H264.SD.by.Fratposa.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nDVDRip",
+      "title": "Breaking Bad Season 1 2 3 4 + Extras DVDRip HDTV TSV\nSeason 1/Breaking Bad Season 1 Episode 01 - Pilot.avi\n👤 3 💾 351.01 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f5cb5169a88812e6803fc8f78c9d4aa728050472/<opaque>/Breaking Bad Season 1 Episode 01 - Pilot.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f5cb5169a88812e6803fc8f78c9d4aa728050472",
+        "filename": "Breaking Bad Season 1 Episode 01 - Pilot.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip | D\nSeason 1/s01e01.avi\n👤 2 💾 816.69 MB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ae190d99f38e5a50aad6a1b20ee5af6d165feebe/s01e01.avi/0/s01e01.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ae190d99f38e5a50aad6a1b20ee5af6d165feebe",
+        "filename": "s01e01.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2008-2013) BDRip-AVC | LostFilm\nSeason 1/Breaking Bad S01E01 BDRip.mkv\n👤 1 💾 1.69 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/70fe593e23045719fabe7582004c452790cb5501/<opaque>/Breaking Bad S01E01 BDRip.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|70fe593e23045719fabe7582004c452790cb5501",
+        "filename": "Breaking Bad S01E01 BDRip.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии 1-7 (7) [2008 BDRip] (Кубик в Кубе) + Original + Sub (Rus Eng)\nBreaking.Bad.s01e01.BDRip.[Kubik.v.Kube].XviD.AC3.-SVM.avi\n👤 1 💾 1.01 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dddd7c638a275c41ef844bfdba4ae787b78b5ebb/<opaque>/Breaking.Bad.s01e01.BDRip.[Kubik.v.Kube].XviD.AC3.-SVM.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dddd7c638a275c41ef844bfdba4ae787b78b5ebb",
+        "filename": "Breaking.Bad.s01e01.BDRip.[Kubik.v.Kube].XviD.AC3.-SVM.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDMux",
+      "title": "Breaking Bad S01-S05e01-62 [Ita-Eng BDMux] by Fratposa [COMPLETE SERIES]\nBreaking Bad S01 H264 SD by Fratposa [ZZZ]/Breaking.Bad.S01e01.BDMux.H264.SD.by.Fratposa-ZZZ.mkv\n👤 0 💾 374.14 MB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/063c8e95dbb0e9cc0678316dab0169294a5dbdb2/<opaque>/Breaking.Bad.S01e01.BDMux.H264.SD.by.Fratposa-ZZZ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|063c8e95dbb0e9cc0678316dab0169294a5dbdb2",
+        "filename": "Breaking.Bad.S01e01.BDMux.H264.SD.by.Fratposa-ZZZ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDMux",
+      "title": "Breaking Bad S01-S05e01-62 [Ita-Eng BDMux] by Fratposa [COMPLETE SERIES]\nEXTRAS - Breaking Bad Orignal Minisodes by Fratposa [ZZZ]/Breaking.bad.orignal.minsodes.01.sub.ita-ZZZ.mkv\n👤 0 💾 19.22 MB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/063c8e95dbb0e9cc0678316dab0169294a5dbdb2/<opaque>/Breaking.bad.orignal.minsodes.01.sub.ita-ZZZ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|063c8e95dbb0e9cc0678316dab0169294a5dbdb2",
+        "filename": "Breaking.bad.orignal.minsodes.01.sub.ita-ZZZ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Во все тяжкие / Breaking Bad [S01-05] (2013) WEB-DLRip | LostFilm\nBreaking Bad 1 - LostFilm.TV/Breaking.Bad.s01e01.rus.LostFilm.TV.avi\n👤 0 💾 456.59 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a05468cc43fc35ae509e5dc4dc34eaee84c9394e/<opaque>/Breaking.Bad.s01e01.rus.LostFilm.TV.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a05468cc43fc35ae509e5dc4dc34eaee84c9394e",
+        "filename": "Breaking.Bad.s01e01.rus.LostFilm.TV.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Breaking Bad Season 1 Complete 2008 BDRip Dublado Pt-BR\nBreaking.Bad.S1.Ep01.mkv\n👤 0 💾 249.9 MB ⚙️ MagnetDL\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f5af5cd4ad3c5b6d046dc1aae86e73a09c6adab/Breaking.Bad.S1.Ep01.mkv/10/Breaking.Bad.S1.Ep01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8f5af5cd4ad3c5b6d046dc1aae86e73a09c6adab",
+        "filename": "Breaking.Bad.S1.Ep01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии 1-7 (7) [2008 BDRip] MVO (FOX Crime) + Original + Sub (Rus Eng)\nBreaking.Bad.s01e01.BDRip.[FOX.Crime].XviD.AC3.-SVM.avi\n👤 0 💾 1.01 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/060b2c6fff7e221bd7af51265bc197d5dfa9fe5b/<opaque>/Breaking.Bad.s01e01.BDRip.[FOX.Crime].XviD.AC3.-SVM.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|060b2c6fff7e221bd7af51265bc197d5dfa9fe5b",
+        "filename": "Breaking.Bad.s01e01.BDRip.[FOX.Crime].XviD.AC3.-SVM.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nDVD",
+      "title": "Breaking Bad Season 1 2 & 3 DVD Boxset + Extras (Minisodes etc\nSeason 1/Breaking Bad Season 1 Episode 01 - Pilot.avi\n👤 0 💾 351.01 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7cb9e67a138218c4418b0b9b5d741173aed923a0/<opaque>/Breaking Bad Season 1 Episode 01 - Pilot.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7cb9e67a138218c4418b0b9b5d741173aed923a0",
+        "filename": "Breaking Bad Season 1 Episode 01 - Pilot.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Во все тяжкие / Breaking Bad / Сезон: 1 / Серии: 1-7 из 7 [2008 BDRip] MVO (LostFilm) + Original + Sub (Rus Eng)\nBreaking.Bad.s01e01.DUAL.BDRip.XviD.AC3.-Rock.avi\n👤 0 💾 896.41 MB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/61347c56c0e4c4422a2ca5501a22c15c794395ed/<opaque>/Breaking.Bad.s01e01.DUAL.BDRip.XviD.AC3.-Rock.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|61347c56c0e4c4422a2ca5501a22c15c794395ed",
+        "filename": "Breaking.Bad.s01e01.DUAL.BDRip.XviD.AC3.-Rock.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDTV",
+      "title": "Breaking.Bad.1x01.HDTV.XviD.[www.DivxTotal.com].avi\n👤 0 💾 347.58 MB ⚙️ MejorTorrent\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8fdbfba9785f8294daf7a57a03e943029cd797c7/<opaque>/Breaking.Bad.1x01.HDTV.XviD.[www.DivxTotal.com].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDTV",
+        "filename": "Breaking.Bad.1x01.HDTV.XviD.[www.DivxTotal.com].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Breaking Bad Season 1\nBreaking Bad S1E1.m4v\n👤 0 💾 2.2 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a8274b8d85c74c4a8e3ed622aca59be92c31654a/Breaking Bad S1E1.m4v/10/Breaking Bad S1E1.m4v",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a8274b8d85c74c4a8e3ed622aca59be92c31654a",
+        "filename": "Breaking Bad S1E1.m4v"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Breaking Bad Complete (All Seasons 1 to 5) -nelly-\nBreaking Bad Season 1/Breaking Bad - [1x01] - Pilot.mkv\n👤 0 💾 154.19 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/65acfe3a113180b5b0fd0f8c328c2d056a887227/<opaque>/Breaking Bad - [1x01] - Pilot.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|65acfe3a113180b5b0fd0f8c328c2d056a887227",
+        "filename": "Breaking Bad - [1x01] - Pilot.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Breaking Bad Seasons 1 2 3 4 5(All Episodes)\nSeason 1/Breaking Bad S1E01-Pilot.mp4\n👤 0 💾 369.23 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6c40b3a7c4fd8f33e4df18e8530a0da9010e660c/<opaque>/Breaking Bad S1E01-Pilot.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6c40b3a7c4fd8f33e4df18e8530a0da9010e660c",
+        "filename": "Breaking Bad S1E01-Pilot.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Breaking Bad S01E01 Pilot (4K 2160p Web x265 HEVC 10bit AAC 5.1\n👤 1 💾 1.72 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/58af91a7ebf18ba7e68aa92e51339c609d3cd663/Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv/0/Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Breaking Bad Season 1 COMPLETE 2160p Web-DL X265-KRAVE\nBreaking Bad S01E01 2160p x265-KRAVE.mkv\n👤 0 💾 2.22 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/89154fa4f183812dd113975c256d398ad1ed0956/<opaque>/Breaking Bad S01E01 2160p x265-KRAVE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|89154fa4f183812dd113975c256d398ad1ed0956",
+        "filename": "Breaking Bad S01E01 2160p x265-KRAVE.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Breaking Bad S01E01 Pilot 2160p NF WEBRip AAC 5 1 X265 HEVC BISHU MP4\n👤 0 💾 1.95 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7c3082531af4b6169c5102219ad65e1d397b7c6f/<opaque>/Breaking.Bad.S01E01.Pilot.2160p.NF.WEBRip.AAC.5.1.x265.HEVC.BISHU.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Breaking.Bad.S01E01.Pilot.2160p.NF.WEBRip.AAC.5.1.x265.HEVC.BISHU.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Breaking Bad S01E01 Pilot (2160p Web X265 HEVC 10bit AAC 5.1 Joy) [UTR]\n👤 0 💾 1.72 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7751fc4b9700a71922c3dddd720c7d820968bcd0/Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv/0/Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Breaking Bad S01E01 Pilot (2160p x265 10bit Joy).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Breaking.Bad.S01E01.Pilot.2160p.NF.WEBRip.DTS.x264-iON\n👤 0 💾 17.73 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/173787c5415303d73885a07f49cd1fd96de0d5f8/<opaque>/Breaking.Bad.S01E01.Pilot.2160p.NF.WEBRip.DTS.x264-iON.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|iON",
+        "filename": "Breaking.Bad.S01E01.Pilot.2160p.NF.WEBRip.DTS.x264-iON.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Breaking Bad Full 1080p PT-BR\nBreaking.Bad.S01.Season.1.1080p/Breaking.Bad.S01E01.1080p.mkv\n👤 25 💾 667.33 MB ⚙️ MagnetDL\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/703ff2ed0c176f5c432ea7e7e16a41aa137c9c87/Breaking.Bad.S01E01.1080p.mkv/1/Breaking.Bad.S01E01.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|703ff2ed0c176f5c432ea7e7e16a41aa137c9c87",
+        "filename": "Breaking.Bad.S01E01.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Breaking Bad S01E01 Pilot 1080p DTS-HD MA 5 1 AVC REMUX-FraMeSToR\n👤 19 💾 11.73 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ca4d04629ea9dc4232a02d08617d287472153277/<opaque>/Breaking Bad S01E01 Pilot 1080p DTS-HD MA 5 1 AVC REMUX-FraMeSToR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FraMeSToR",
+        "filename": "Breaking Bad S01E01 Pilot 1080p DTS-HD MA 5 1 AVC REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Breaking Bad S01 - S05 COMPLETE 1080p BluRay REMUX AVC DTS-HD MA 5.1 - FraMeSToR\nBreaking.Bad.S01.2008.BluRay.1080p.DTS-HD.MA.5.1.AVC.REMUX-FraMeSToR/Breaking.Bad.S01E01.Pilot.REMUX-FraMeSToR.mkv\n👤 5 💾 11.41 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/33ba49b7973275ae2386ea888ce373d23cdbba98/<opaque>/Breaking.Bad.S01E01.Pilot.REMUX-FraMeSToR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|33ba49b7973275ae2386ea888ce373d23cdbba98",
+        "filename": "Breaking.Bad.S01E01.Pilot.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Breaking Bad S01-S05 720p 10bit BluRay 2CH x265 HEVC 30nama\ns01/Breaking_Bad_S01E01_x265_720p_BluRay_30nama_30NAMA.mkv\n👤 15 💾 383.27 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dfa188ecbc2edd7983b60e4532aed4402a9c74a7/<opaque>/Breaking_Bad_S01E01_x265_720p_BluRay_30nama_30NAMA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dfa188ecbc2edd7983b60e4532aed4402a9c74a7",
+        "filename": "Breaking_Bad_S01E01_x265_720p_BluRay_30nama_30NAMA.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Breaking Bad T4 720p Dual Latino-Ingles\n04 - CAPITULO 01.mkv\n👤 7 💾 322.53 MB ⚙️ MagnetDL\nDual Audio / 🇬🇧 / 🇵🇹 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aa1fa3a7209b67db16a8bdcc3f647809e45b3f0a/04 - CAPITULO 01.mkv/5/04 - CAPITULO 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|aa1fa3a7209b67db16a8bdcc3f647809e45b3f0a",
+        "filename": "04 - CAPITULO 01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Breaking Bad T3 720p Dual Latino-Ingles\n03- CAPITULO 01.mkv\n👤 3 💾 283.41 MB ⚙️ MagnetDL\nDual Audio / 🇬🇧 / 🇵🇹 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6875538208f039486fa5fcf549e98f23638042ff/03- CAPITULO 01.mkv/12/03- CAPITULO 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6875538208f039486fa5fcf549e98f23638042ff",
+        "filename": "03- CAPITULO 01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Breaking.Bad.1.2.3.4.5.Temporada.2008a2012.720p.Dublado\nBreaking.Bad.1.Temporada.2008.720p.Dub-FLIXFILMESONLINE.COM/1 - Piloto.mp4\n👤 2 💾 481.87 MB ⚙️ MagnetDL\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1f11d10c65b3fd7e33fec296d4b408f22ecf331f/1 - Piloto.mp4/4/1 - Piloto.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1f11d10c65b3fd7e33fec296d4b408f22ecf331f",
+        "filename": "1 - Piloto.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Breaking Bad S01 720p BluRay x264-REWARD\nBreaking.Bad.S01E01.720p.HDTV.x264-BiA.mkv\n👤 1 💾 1.09 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/67575e9b05fb76c99a052ce5975db7a703108601/<opaque>/Breaking.Bad.S01E01.720p.HDTV.x264-BiA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|67575e9b05fb76c99a052ce5975db7a703108601",
+        "filename": "Breaking.Bad.S01E01.720p.HDTV.x264-BiA.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n480p",
+      "title": "Breaking Bad Season 1-5 Complete 480p x264 MKVTV\nBreaking Bad Season 1 480p (mkvtv.net)/Breaking.Bad.S01E01.480p.MKVTV.mkv\n👤 16 💾 374.89 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4a36cddbe3f716be6f335abd9df1b6d3257e824e/<opaque>/Breaking.Bad.S01E01.480p.MKVTV.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4a36cddbe3f716be6f335abd9df1b6d3257e824e",
+        "filename": "Breaking.Bad.S01E01.480p.MKVTV.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nDVDRip",
+      "title": "Breaking Bad Season 1 2 3 & 4 + Extras\n👤 9 💾 351.01 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6228e4ff1bcb05d224797ccf73c2cd3da7cf4299/<opaque>/Breaking Bad Season 1 Episode 01 - Pilot.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|Pilot",
+        "filename": "Breaking Bad Season 1 Episode 01 - Pilot.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Breaking Bad Season 1 2 3 & 4 + Extras\nSeason 1/Breaking Bad Season 1 Episode 01 - Pilot.avi\n👤 9 💾 351.01 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6228e4ff1bcb05d224797ccf73c2cd3da7cf4299/<opaque>/Breaking Bad Season 1 Episode 01 - Pilot.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6228e4ff1bcb05d224797ccf73c2cd3da7cf4299",
+        "filename": "Breaking Bad Season 1 Episode 01 - Pilot.avi"
+      }
+    }
+  ]
+}

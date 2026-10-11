@@ -1,0 +1,155 @@
+{
+  "engine": "node 26.3.0 (V8)",
+  "cpu": "Apple M1 Pro",
+  "at": "2026-10-11T12:59:54.912Z",
+  "cold200ms": 28.884,
+  "parseUsPerStream": 15,
+  "rank200ms": {
+    "median": 5.183,
+    "p95": 6.881,
+    "max": 8.533
+  },
+  "rankAllAddonsMs": {
+    "dune-part-two": {
+      "streams": 2170,
+      "median": 48.585,
+      "p95": 66.323,
+      "max": 66.323
+    },
+    "oppenheimer": {
+      "streams": 1984,
+      "median": 40.843,
+      "p95": 48.754,
+      "max": 48.754
+    },
+    "shawshank": {
+      "streams": 1733,
+      "median": 42.327,
+      "p95": 84.35,
+      "max": 84.35
+    },
+    "one-piece-e1100": {
+      "streams": 1287,
+      "median": 27.178,
+      "p95": 36.254,
+      "max": 36.254
+    }
+  },
+  "incrementalAddMs": {
+    "median": 2.299,
+    "p95": 23.315,
+    "max": 65.343
+  },
+  "fullRebuildMs": {
+    "median": 6.426,
+    "p95": 35.354,
+    "max": 72.628
+  },
+  "worstAddPerTitle": {
+    "attack-on-titan-e01": {
+      "add": 15.983,
+      "addon": "comet-tb",
+      "streams": 646
+    },
+    "breaking-bad-s01e01": {
+      "add": 9.072,
+      "addon": "comet-tb",
+      "streams": 440
+    },
+    "coyote-vs-acme": {
+      "add": 6.727,
+      "addon": "comet-tb",
+      "streams": 230
+    },
+    "dandadan-e01": {
+      "add": 9.807,
+      "addon": "comet-tb",
+      "streams": 452
+    },
+    "dune-part-two": {
+      "add": 53.602,
+      "addon": "comet-tb",
+      "streams": 1493
+    },
+    "frieren-e01": {
+      "add": 15.277,
+      "addon": "comet-tb",
+      "streams": 672
+    },
+    "lanterns-s01e08": {
+      "add": 5.481,
+      "addon": "torrentio-tb",
+      "streams": 164
+    },
+    "last-of-us-s02e01": {
+      "add": 14.268,
+      "addon": "comet-tb",
+      "streams": 618
+    },
+    "one-piece-e1100": {
+      "add": 25.028,
+      "addon": "comet-tb",
+      "streams": 1222
+    },
+    "oppenheimer": {
+      "add": 65.343,
+      "addon": "comet-tb",
+      "streams": 1443
+    },
+    "parasite": {
+      "add": 30.305,
+      "addon": "comet-tb",
+      "streams": 1246
+    },
+    "project-hail-mary": {
+      "add": 34.996,
+      "addon": "comet-tb",
+      "streams": 1045
+    },
+    "rrr": {
+      "add": 7.731,
+      "addon": "comet-tb",
+      "streams": 306
+    },
+    "severance-s02e01": {
+      "add": 9.043,
+      "addon": "comet-tb",
+      "streams": 395
+    },
+    "shawshank": {
+      "add": 28.18,
+      "addon": "comet-tb",
+      "streams": 1383
+    },
+    "shogun-s01e01": {
+      "add": 7.715,
+      "addon": "comet-tb",
+      "streams": 379
+    },
+    "solo-leveling-s01e01": {
+      "add": 10.089,
+      "addon": "comet-tb",
+      "streams": 254
+    },
+    "spider-man-brand-new-day": {
+      "add": 12.017,
+      "addon": "comet-tb",
+      "streams": 538
+    },
+    "the-office-s03e05": {
+      "add": 3.04,
+      "addon": "comet-tb",
+      "streams": 159
+    },
+    "your-name": {
+      "add": 23.774,
+      "addon": "comet-tb",
+      "streams": 1171
+    }
+  },
+  "chunk150Ms": {
+    "median": 2.89,
+    "p95": 4.322,
+    "max": 8.911
+  }
+}

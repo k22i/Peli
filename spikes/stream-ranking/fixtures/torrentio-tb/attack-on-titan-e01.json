@@ -1,0 +1,1433 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "attack-on-titan-e01",
+  "request": "https://torrentio.strem.fun/<config>/stream/series/kitsu%3A7442%3A1.json",
+  "recordedAt": "2026-10-11T12:05:53.154Z",
+  "status": 200,
+  "ms": 1179,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "[Salieri] Attack on Titan - Shingeki No Kyojin S1 BD (1080p) (HDR) [Dual Audio]\n[Salieri] Attack On Titan S1 - 01 (1080p) (HDR) [Dual Audio].mkv\n👤 213 💾 1.44 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7e29d8d2db9364202c1318b5eafc48729100ef8c/[Salieri] Attack On Titan S1 - 01 (1080p) (HDR) [Dual Audio].mkv/20/[Salieri] Attack On Titan S1 - 01 (1080p) (HDR) [Dual Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7e29d8d2db9364202c1318b5eafc48729100ef8c",
+        "filename": "[Salieri] Attack On Titan S1 - 01 (1080p) (HDR) [Dual Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] Attack On Titan (Complete Collection) (S01-S04+OVA+Movies+Junior High) [BD] [Dual Audio][1080p][HEVC 10bit x265][AAC][Eng Sub] [Batch] (Shingeki no Kyojin)\nAttack On Titan OAD/[Anime Time] Attack on Titan OAD - 01.mkv\n👤 957 💾 524.56 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf173e6d9c99744084888579d8751bd301c03a5d/<opaque>/[Anime Time] Attack on Titan OAD - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bf173e6d9c99744084888579d8751bd301c03a5d",
+        "filename": "[Anime Time] Attack on Titan OAD - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] Attack On Titan (Complete Collection) (S01-S04+OVA+Movies+Junior High) [BD] [Dual Audio][1080p][HEVC 10bit x265][AAC][Eng Sub] [Batch] (Shingeki no Kyojin)\nAttack on Titan Season 1/[Anime Time] Attack on Titan - 01.mkv\n👤 957 💾 544.54 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf173e6d9c99744084888579d8751bd301c03a5d/<opaque>/[Anime Time] Attack on Titan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bf173e6d9c99744084888579d8751bd301c03a5d",
+        "filename": "[Anime Time] Attack on Titan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Trix] Shingeki no Kyojin (S01-04 + OVAs) (COMPLETE) [Dual Audio] (BD 1080p AV1 Opus) | Attack On Titan (AoT) + OADs | L'Attaque des Titans (SnK) VOSTFR (OAV)\nSeason 1/[Trix] Shingeki no Kyojin S01E01 (01) (BD 1080p AV1) [B77D7B1E].mkv\n👤 667 💾 322.93 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a71ed77d230c1d729c8ba2d8581f794f013ac65e/[Trix] Shingeki no Kyojin S01E01 (01) (BD 1080p AV1) [B77D7B1E].mkv/8/[Trix] Shingeki no Kyojin S01E01 (01) (BD 1080p AV1) [B77D7B1E].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a71ed77d230c1d729c8ba2d8581f794f013ac65e",
+        "filename": "[Trix] Shingeki no Kyojin S01E01 (01) (BD 1080p AV1) [B77D7B1E].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan/Shingeki no Kyojin ALL SEASONS 1080p WEBRip 10bits x265-Rapta\nSeason 1/Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv\n👤 422 💾 208.34 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a6856c0c649214f160ec560c7d52e6f1244e8d01/Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv/8/Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a6856c0c649214f160ec560c7d52e6f1244e8d01",
+        "filename": "Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[TatakaeFuniSubs] Attack on Titan S01-04 (BD 1080p) [Dual Audio] | OAD (OVA) | Shingeki no Kyojin (Full Series Batch)\nSeason 1/[TatakaeFuniSubs] Attack on Titan - S01E01 (BD 1080p AV1) [Dual Audio] [9E1B86EB].mkv\n👤 171 💾 492.26 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/459f7eb3d52962b6085f861a58f2afa0b404a0bb/[TatakaeFuniSubs] Attack on Titan - S01E01 (BD 1080p AV1) [Dual Audio] [9E1B86EB].mkv/2/[TatakaeFuniSubs] Attack on Titan - S01E01 (BD 1080p AV1) [Dual Audio] [9E1B86EB].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|459f7eb3d52962b6085f861a58f2afa0b404a0bb",
+        "filename": "[TatakaeFuniSubs] Attack on Titan - S01E01 (BD 1080p AV1) [Dual Audio] [9E1B86EB].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[PHTMini] Attack on Titan - S01 (BD 1080p AV1 Opus 2.0) (Dual-Audio) (German) | Shingeki no Kyojin (Season 1)\nAttack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv\n👤 91 💾 453.84 MB ⚙️ nekoBT\nDubbed / Dual Audio / 🇬🇧 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9877d43af878be44696a03b2089555d8d908caa6/<opaque>/Attack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9877d43af878be44696a03b2089555d8d908caa6",
+        "filename": "Attack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] Shingeki no Kyojin - 01 ~ 25 [1080p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][ARA][FRE][RUS]\n[Erai-raws] Shingeki no Kyojin - 01 [1080p][Multiple Subtitle][C46791CC].mkv\n👤 76 💾 1.38 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/38e5619d12580279703b85c3a54bf2e7461dbeb7/<opaque>/[Erai-raws] Shingeki no Kyojin - 01 [1080p][Multiple Subtitle][C46791CC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|38e5619d12580279703b85c3a54bf2e7461dbeb7",
+        "filename": "[Erai-raws] Shingeki no Kyojin - 01 [1080p][Multiple Subtitle][C46791CC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Judas] Shingeki no Kyojin (Attack on Titan) (Season 1) [BD 1080p][HEVC x265 10bit][Dual-Audio][Eng-Subs]\n[Judas] Shingeki no Kyojin S1 - 01.mkv\n👤 76 💾 359.2 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce938d21e2886146b73600c8fe52bce812ccb83f/<opaque>/[Judas] Shingeki no Kyojin S1 - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ce938d21e2886146b73600c8fe52bce812ccb83f",
+        "filename": "[Judas] Shingeki no Kyojin S1 - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan 2013 Season 1-4 S01-S04 1080p Mixed x265 HEVC 10bit EAC3 2.0-QxR\nSeason 1/Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv\n👤 75 💾 855.19 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/432a3fa29a4c84bfdb706765aff8e022032dc68e/Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv/0/Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|432a3fa29a4c84bfdb706765aff8e022032dc68e",
+        "filename": "Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan (2013) Season 1 S01 (1080p BluRay x265 HEVC 10bit AAC 5.1 English Japanese ImE) REPACK [QxR]\nAttack on Titan (2013) - S01E01 (1) - To You, in 2000 Years The Fall of Shiganshina, Part 1 (1080p BluRay x265 ImE).mkv\n👤 64 💾 679.98 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fd82b77cb11a0ee95da63ff5855e5d2addf0f95a/Attack on Titan (2013) - S01E01 (1) - To You, in 2000 Years The Fall of Shiganshina, Part 1 (1080p BluRay x265 ImE).mkv/0/Attack on Titan (2013) - S01E01 (1) - To You, in 2000 Years The Fall of Shiganshina, Part 1 (1080p BluRay x265 ImE).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fd82b77cb11a0ee95da63ff5855e5d2addf0f95a",
+        "filename": "Attack on Titan (2013) - S01E01 (1) - To You, in 2000 Years The Fall of Shiganshina, Part 1 (1080p BluRay x265 ImE).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[MiniMTBB] Shingeki no Kyojin S1 (BD 1080p) | Attack on Titan S1\n[MiniMTBB] Shingeki no Kyojin - 01 (BD 1080p) [25EBA5CB].mkv\n👤 61 💾 431.82 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bb62f27dc7efb63a2f94b38e6c3d7a78d4107dd0/[MiniMTBB] Shingeki no Kyojin - 01 (BD 1080p) [25EBA5CB].mkv/0/[MiniMTBB] Shingeki no Kyojin - 01 (BD 1080p) [25EBA5CB].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bb62f27dc7efb63a2f94b38e6c3d7a78d4107dd0",
+        "filename": "[MiniMTBB] Shingeki no Kyojin - 01 (BD 1080p) [25EBA5CB].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ZeroBuild] Attack on Titan Season 1 (BD 1080p HEVC 10-bit Opus) [Dual Audio] (Shingeki no Kyojin) (Eotena Onslaught)\nAttack.on.Titan.S01E01.REPACK.1080p.BluRay.x265.Opus.2.0-ZeroBuild.mkv\n👤 59 💾 3.83 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e33fb393037459757c2447d39fd1cd256e557059/<opaque>/Attack.on.Titan.S01E01.REPACK.1080p.BluRay.x265.Opus.2.0-ZeroBuild.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e33fb393037459757c2447d39fd1cd256e557059",
+        "filename": "Attack.on.Titan.S01E01.REPACK.1080p.BluRay.x265.Opus.2.0-ZeroBuild.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan 2013 Seasons 1 to 4 Complete 1080p WEB x264 [i_c]\nSeason 1/Attack on Titan - S01E01 - To You, in 2,000 Years The Fall of Shiganshina (1).mkv\n👤 48 💾 577.88 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d9d71838dbd6c8d2b5249d3936cb0b7f3c814059/Attack on Titan - S01E01 - To You, in 2,000 Years The Fall of Shiganshina (1).mkv/109/Attack on Titan - S01E01 - To You, in 2,000 Years The Fall of Shiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d9d71838dbd6c8d2b5249d3936cb0b7f3c814059",
+        "filename": "Attack on Titan - S01E01 - To You, in 2,000 Years The Fall of Shiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[MTBB] Shingeki no Kyojin S1 (BD 1080p) | Attack on Titan S1\n[MTBB] Shingeki no Kyojin - 01v2 (BD 1080p) [0FE64CCD].mkv\n👤 39 💾 3.67 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fcd7dbc76cfeca08d3888ccc446e8859fc7c90db/[MTBB] Shingeki no Kyojin - 01v2 (BD 1080p) [0FE64CCD].mkv/0/[MTBB] Shingeki no Kyojin - 01v2 (BD 1080p) [0FE64CCD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fcd7dbc76cfeca08d3888ccc446e8859fc7c90db",
+        "filename": "[MTBB] Shingeki no Kyojin - 01v2 (BD 1080p) [0FE64CCD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.S01.Bluray.REMUX.1080p.TRUHD.51.AC351.TRUHD20.AC320.PCM20.Eng+Jap.EngSubs\nShingeki no Kyojin - E01 [BD 1080p Hybrid REMUX].mkv\n👤 33 💾 7.71 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dba9cdfbb662fdc2161071ba0db8ea05794b7212/<opaque>/Shingeki no Kyojin - E01 [BD 1080p Hybrid REMUX].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dba9cdfbb662fdc2161071ba0db8ea05794b7212",
+        "filename": "Shingeki no Kyojin - E01 [BD 1080p Hybrid REMUX].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][剧场版 BanG Dream! It's MyGO!!!!!/BanG Dream! It's MyGO!!!!! The Movie][前篇+后篇][1080P][BDRip][HEVC-10bit][简繁内封][FLAC][MKV](劇場版 BanG Dream! It's MyGO!!!!!)\n[DBD-Raws][MyGO!!!!! The Movie - Part 1 Spring Sunshine, Lost Cat][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 32 💾 2.87 GB ⚙️ NyaaSi\n🇬🇧 / 🇰🇷 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ab022e37fb04a0b2a3801275b88231428ad7f3e3/[DBD-Raws][MyGO!!!!! The Movie - Part 1 Spring Sunshine, Lost Cat][1080P][BDRip][HEVC-10bit][FLAC].mkv/2/[DBD-Raws][MyGO!!!!! The Movie - Part 1 Spring Sunshine, Lost Cat][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ab022e37fb04a0b2a3801275b88231428ad7f3e3",
+        "filename": "[DBD-Raws][MyGO!!!!! The Movie - Part 1 Spring Sunshine, Lost Cat][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[TatakaeSubs] Attack on Titan - S01E01 (BD 1080p HEVC OPUS) [21D9AE40].mkv | (Shingeki no Kyojin)\n👤 23 💾 2.2 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e16b9368ce37fa951d77b3726eb78775fe2508fc/[TatakaeSubs] Attack on Titan - S01E01 (BD 1080p HEVC OPUS) [21D9AE40].mkv/0/[TatakaeSubs] Attack on Titan - S01E01 (BD 1080p HEVC OPUS) [21D9AE40].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|TatakaeSubs",
+        "filename": "[TatakaeSubs] Attack on Titan - S01E01 (BD 1080p HEVC OPUS) [21D9AE40].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.2013.S01.1080p.Hindi.ENG.WEBrip.DDP.2.0.x264.ESubs.Full4Movies\nAttack.on.titan.s01e01.1080p.amzn.web-dl.ddp2.0.h.264-Full4Movies.mkv\n👤 22 💾 473.13 MB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b20a428bcd8035795f92001f26a5b7da2e3a7e8f/<opaque>/Attack.on.titan.s01e01.1080p.amzn.web-dl.ddp2.0.h.264-Full4Movies.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b20a428bcd8035795f92001f26a5b7da2e3a7e8f",
+        "filename": "Attack.on.titan.s01e01.1080p.amzn.web-dl.ddp2.0.h.264-Full4Movies.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] Attack on Titan (Shingeki no Kyojin) S01+02+03+04 (Part 1) +OVA [BD][Dual Audio][1080p][HEVC 10bit x265][AAC][Eng Sub] [Batch]\nAttack on titan/Attack On Titan - 01.mkv\n👤 22 💾 545.1 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b3555a653890e4ddbe2b1f67890f140f1896e3f/<opaque>/Attack On Titan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6b3555a653890e4ddbe2b1f67890f140f1896e3f",
+        "filename": "Attack On Titan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[EMBER] Shingeki no Kyojin (2013-2021) (Season 1+2+3+4 {Part 1}) [BDRip] [1080p Dual Audio HEVC 10 bits] (Attack on Titan)\nShingeki no Kyojin S01 1080p BDRip 10 bits x265-EMBER/S01E01- To You, in 2000 Years [14197707].mkv\n👤 21 💾 637.63 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/89df26e617086244eb0bbfdcb855b32cd4957a50/<opaque>/S01E01- To You, in 2000 Years [14197707].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|89df26e617086244eb0bbfdcb855b32cd4957a50",
+        "filename": "S01E01- To You, in 2000 Years [14197707].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] Attack on Titan (Shingeki no Kyojin) S1 - S3+OVA [BD][Dual Audio][1080p][HEVC 10bit x265][AAC]\nAttack on titan/Attack On Titan - 01.mkv\n👤 20 💾 545.1 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9e5f56f9cdad694398353705dfc58760d997ce1c/<opaque>/Attack On Titan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9e5f56f9cdad694398353705dfc58760d997ce1c",
+        "filename": "Attack On Titan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[SCY] Attack on Titan (BD 1080p Hi10 FLAC) [Dual-Audio] [v2]\n[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv\n👤 20 💾 2.93 GB ⚙️ AniDex\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/37f8137505cc0896999993f73b2a8c878a2c27dc/[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv/20/[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|37f8137505cc0896999993f73b2a8c878a2c27dc",
+        "filename": "[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan Season 1 [DUAL-AUDIO] [1080p] [HEVC]\n[pseudo] Attack on Titan S01E01 To You, Two Thousand Years Later [1080p] [h.265].mkv\n👤 20 💾 248.51 MB ⚙️ ThePirateBay\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a598df91b7e6932177b1bc6c199389e68af15d87/<opaque>/[pseudo] Attack on Titan S01E01 To You, Two Thousand Years Later [1080p] [h.265].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a598df91b7e6932177b1bc6c199389e68af15d87",
+        "filename": "[pseudo] Attack on Titan S01E01 To You, Two Thousand Years Later [1080p] [h.265].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.S01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe\nAttack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe.mkv\n👤 18 💾 626.78 MB ⚙️ EXT\nDubbed / Multi Audio / 🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0cd4a0ee0e1f66f62bd8f5cca0b7ad3feb91fd9d/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0cd4a0ee0e1f66f62bd8f5cca0b7ad3feb91fd9d",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[NewbSubs] Attack on Titan～Shingeki no Kyojin Series S1-S4 01-75 + OVA + Soundtracks + Extras (1080p Blu-ray x265 Dual Audio)\n1. Attack on Titan (2013)/[NewbSubs] Shingeki no Kyojin 01 (1080p Blu-ray x265 Dual Audio)[19D26FFB].mkv\n👤 16 💾 1.05 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/271904f4279627e140b4a4ad7b4c4127cf6ec3fc/[NewbSubs] Shingeki no Kyojin 01 (1080p Blu-ray x265 Dual Audio)[19D26FFB].mkv/285/[NewbSubs] Shingeki no Kyojin 01 (1080p Blu-ray x265 Dual Audio)[19D26FFB].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|271904f4279627e140b4a4ad7b4c4127cf6ec3fc",
+        "filename": "[NewbSubs] Shingeki no Kyojin 01 (1080p Blu-ray x265 Dual Audio)[19D26FFB].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[PHTM] Attack on Titan - S01 (BD 1080p x265 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 1)\nAttack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv\n👤 15 💾 3.69 GB ⚙️ nekoBT\nDubbed / Multi Audio / 🇬🇧 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1685adb6cf865b9d131727e29821b2aeef9cdcbe/<opaque>/Attack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1685adb6cf865b9d131727e29821b2aeef9cdcbe",
+        "filename": "Attack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan/Shingeki no Kyojin ALL SEASONS 1080p WEBRip x264-Rapta\nSeason 1/Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv\n👤 14 💾 429.79 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f2a079321805da69c6a2a54e9daee4ce8f7b5e57/Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv/8/Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f2a079321805da69c6a2a54e9daee4ce8f7b5e57",
+        "filename": "Shingeki no Kyojin - S01E01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[anime4life.] Attack on Titan Complete Series + Specials BD_1080p Dolby TrueHD Dual Audio\nSpecial/Attack On Titan Special 01.mkv\n👤 12 💾 2.86 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/597f078247a67051ad18debf500389f0f500cf48/<opaque>/Attack On Titan Special 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|597f078247a67051ad18debf500389f0f500cf48",
+        "filename": "Attack On Titan Special 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[anime4life.] Attack on Titan Complete Series + Specials BD_1080p Dolby TrueHD Dual Audio\nAttack On Titan 01.mkv\n👤 12 💾 1.44 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/597f078247a67051ad18debf500389f0f500cf48/Attack On Titan 01.mkv/88/Attack On Titan 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|597f078247a67051ad18debf500389f0f500cf48",
+        "filename": "Attack On Titan 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan (2013) S01-S04 (1080p BluRay x265 10bit EAC3 2.0 Japanese Garshasp) [QxR]\nSeason 1/Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv\n👤 12 💾 913.9 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8d85376f9d8115950803f535bcfdec468d520a0c/Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv/96/Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8d85376f9d8115950803f535bcfdec468d520a0c",
+        "filename": "Attack on Titan (2013) - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p BluRay x265 Garshasp).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[JPN-ENG] Attack on Titan : Season 01 S01 [2013] COMPLETE 1080p Hybrid ITA BDRip x265 FLAC 2.0 Kira [SEV]\nAttack on Titan - Episode 01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 1080p Hybrid ITA BDRip x265 FLAC 2.0 Kira [SEV].mkv\n👤 11 💾 3.76 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cd9b19051b12ddd332fc9f8b424b1009a5dc4cae/<opaque>/Attack on Titan - Episode 01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 1080p Hybrid ITA BDRip x265 FLAC 2.0 Kira [SEV].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|cd9b19051b12ddd332fc9f8b424b1009a5dc4cae",
+        "filename": "Attack on Titan - Episode 01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 1080p Hybrid ITA BDRip x265 FLAC 2.0 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[GapMoe] Attack on Titan - S01 (BD 1080p AV1 Opus 2.0) (Multi-A…\nAttack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv\n👤 10 💾 717.74 MB ⚙️ TorrentGalaxy\nDubbed / Multi Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/179a0aab3e3c4f36d422710151a94c3306ccbbca/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|179a0aab3e3c4f36d422710151a94c3306ccbbca",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[BlackRabbit] Attack on Titan (2013) - S01 [Bluray-1080p][Opus 2.0][Dual Audio][AV1]\nAttack on Titan (2013) - S01E01 - To You in 2,000 Years The Fall of Shiganshina 1 [Bluray-1080p][Opus 2.0][AV1]-BlackRabbit.mkv\n👤 10 💾 306.06 MB ⚙️ nekoBT\nDubbed / Dual Audio / 🇬🇧 / 🇵🇹 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8fa8dd1ab1ad80124c8cf3fd1acb90f1e309a90a/Attack on Titan (2013) - S01E01 - To You in 2,000 Years The Fall of Shiganshina 1 [Bluray-1080p][Opus 2.0][AV1]-BlackRabbit.mkv/0/Attack on Titan (2013) - S01E01 - To You in 2,000 Years The Fall of Shiganshina 1 [Bluray-1080p][Opus 2.0][AV1]-BlackRabbit.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8fa8dd1ab1ad80124c8cf3fd1acb90f1e309a90a",
+        "filename": "Attack on Titan (2013) - S01E01 - To You in 2,000 Years The Fall of Shiganshina 1 [Bluray-1080p][Opus 2.0][AV1]-BlackRabbit.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][魔法少女奈叶剧场版 2nd A's/Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][正片+特典映像][1080P][BDRip][HEVC-10bit][简繁外挂][FLAC+DTS][MKV](魔法少女リリカルなのはThe MOVIE 2nd A's)\nSP/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][SP Anime][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 10 💾 102.21 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b89898fd7d2cc32f0affcfeeeaa3165ee75ac5c5/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][SP Anime][01][1080P][BDRip][HEVC-10bit][FLAC].mkv/37/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][SP Anime][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b89898fd7d2cc32f0affcfeeeaa3165ee75ac5c5",
+        "filename": "[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][SP Anime][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][魔法少女奈叶剧场版 2nd A's/Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][正片+特典映像][1080P][BDRip][HEVC-10bit][简繁外挂][FLAC+DTS][MKV](魔法少女リリカルなのはThe MOVIE 2nd A's)\nmenu/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][menu][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 10 💾 473.5 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b89898fd7d2cc32f0affcfeeeaa3165ee75ac5c5/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][menu][01][1080P][BDRip][HEVC-10bit][FLAC].mkv/39/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][menu][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b89898fd7d2cc32f0affcfeeeaa3165ee75ac5c5",
+        "filename": "[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][menu][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][魔法少女奈叶剧场版 2nd A's/Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][正片+特典映像][1080P][BDRip][HEVC-10bit][简繁外挂][FLAC+DTS][MKV](魔法少女リリカルなのはThe MOVIE 2nd A's)\n特典映像/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 10 💾 552.96 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b89898fd7d2cc32f0affcfeeeaa3165ee75ac5c5/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv/42/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b89898fd7d2cc32f0affcfeeeaa3165ee75ac5c5",
+        "filename": "[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 2nd A's][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][你的颜色/Kimi no Iro][正片+特典映像][1080P][BDRip][HEVC-10bit][FLAC+DTS][MKV](きみの色)\n特典映像/[DBD-Raws][Kimi no Iro][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 10 💾 1.64 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1de9385eb595968da6dc9a7732209dbb76c92927/<opaque>/[DBD-Raws][Kimi no Iro][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1de9385eb595968da6dc9a7732209dbb76c92927",
+        "filename": "[DBD-Raws][Kimi no Iro][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] Shingeki no Kyojin - 01 ~ 25 [1080p][Multiple Subtitle]\n[Erai-raws] Shingeki no Kyojin - 01 [1080p][Multiple Subtitle].mkv\n👤 10 💾 1.44 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇵🇹 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fe7e1e32bf4ed0f49d49364e0aa50406303fbc29/<opaque>/[Erai-raws] Shingeki no Kyojin - 01 [1080p][Multiple Subtitle].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fe7e1e32bf4ed0f49d49364e0aa50406303fbc29",
+        "filename": "[Erai-raws] Shingeki no Kyojin - 01 [1080p][Multiple Subtitle].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.S01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe\nAttack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe.mkv\n👤 9 💾 626.78 MB ⚙️ nekoBT\nDubbed / Multi Audio / 🇬🇧 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1999917317924ee41f6b76007a86bf86dd6cc848/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1999917317924ee41f6b76007a86bf86dd6cc848",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.S01.BluRay.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR\nAttack.on.Titan.S01E01.To.You.in.2.000.Years.The.Fall.of.Shiganshina.1.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv\n👤 9 💾 6.51 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b41cc6c96fd5258ae7cfa9cf65c0a8077002255a/<opaque>/Attack.on.Titan.S01E01.To.You.in.2.000.Years.The.Fall.of.Shiganshina.1.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b41cc6c96fd5258ae7cfa9cf65c0a8077002255a",
+        "filename": "Attack.on.Titan.S01E01.To.You.in.2.000.Years.The.Fall.of.Shiganshina.1.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Shingeki No Kyojin S01 BDRIP 1080p X265 10bit Vostfr (L'attaque des Titans)\n[Xspitfire911] Shingeki No Kyojin S01E01 BDRIP 1080p X265 10bit Vostfr.mkv\n👤 8 💾 1.28 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/97fe38c46507cd7347978fb5dfabf4c19e447a6b/<opaque>/[Xspitfire911] Shingeki No Kyojin S01E01 BDRIP 1080p X265 10bit Vostfr.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|97fe38c46507cd7347978fb5dfabf4c19e447a6b",
+        "filename": "[Xspitfire911] Shingeki No Kyojin S01E01 BDRIP 1080p X265 10bit Vostfr.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][魔法少女奈叶剧场版 1st/Mahou Shoujo Lyrical Nanoha The Movie 1st][正片+特典映像][1080P][BDRip][HEVC-10bit][简繁外挂][FLAC+DTS][MKV](魔法少女リリカルなのは The MOVIE 1st)\n特典映像/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 1st][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 8 💾 375.45 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba508568c5f9c704402ed365c645456bca64229e/<opaque>/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 1st][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ba508568c5f9c704402ed365c645456bca64229e",
+        "filename": "[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 1st][Tokuten][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][魔法少女奈叶剧场版 1st/Mahou Shoujo Lyrical Nanoha The Movie 1st][正片+特典映像][1080P][BDRip][HEVC-10bit][简繁外挂][FLAC+DTS][MKV](魔法少女リリカルなのは The MOVIE 1st)\nmenu/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 1st][menu][D1][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 8 💾 21.27 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba508568c5f9c704402ed365c645456bca64229e/<opaque>/[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 1st][menu][D1][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ba508568c5f9c704402ed365c645456bca64229e",
+        "filename": "[DBD-Raws][Mahou Shoujo Lyrical Nanoha The Movie 1st][menu][D1][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[MTBB] Shingeki no Kyojin - 01 (BD 1080p) [5F680D9F].mkv\n👤 7 💾 3.67 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b84577ddf66829f3cdaeafbe53b167b4e91b8b1/[MTBB] Shingeki no Kyojin - 01 (BD 1080p) [5F680D9F].mkv/0/[MTBB] Shingeki no Kyojin - 01 (BD 1080p) [5F680D9F].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MTBB",
+        "filename": "[MTBB] Shingeki no Kyojin - 01 (BD 1080p) [5F680D9F].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] Shingeki no Kyojin OAD - 01 ~ 08 [1080p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] Shingeki no Kyojin OAD - 01 [1080p][Multiple Subtitle][25D23AE2].mkv\n👤 7 💾 1.33 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d50a2e1a7b6b1a86c01ae080483c0353b2fc23c0/<opaque>/[Erai-raws] Shingeki no Kyojin OAD - 01 [1080p][Multiple Subtitle][25D23AE2].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d50a2e1a7b6b1a86c01ae080483c0353b2fc23c0",
+        "filename": "[Erai-raws] Shingeki no Kyojin OAD - 01 [1080p][Multiple Subtitle][25D23AE2].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.(2013).S01-S04.+OVA.COMPLETE.100%.English.Audio.+Subs.jZQ.HEVC.1080p.59GB.PSA\nS01E01 To You, in 2000 Years; The Fall of Shiganshina, Part 1 IMDB 9.1 BR=2.97m.mkv\n👤 6 💾 545.1 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eda016266a2bda4fb126ea04b8ba228c250466e3/<opaque>/S01E01 To You, in 2000 Years; The Fall of Shiganshina, Part 1 IMDB 9.1 BR=2.97m.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|eda016266a2bda4fb126ea04b8ba228c250466e3",
+        "filename": "S01E01 To You, in 2000 Years; The Fall of Shiganshina, Part 1 IMDB 9.1 BR=2.97m.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.on.Titan.S01.1080p.BluRay.x265.Dual.Audio-KONTRAST\nAttack.on.Titan.S01E01.1080p.BluRay.x265.Dual.Audio-KONTRAST.mp4\n👤 5 💾 552.15 MB ⚙️ TorrentGalaxy\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a1779d3b432a54bda1dcbbf0fa1f2d382dd5691c/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.x265.Dual.Audio-KONTRAST.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a1779d3b432a54bda1dcbbf0fa1f2d382dd5691c",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.x265.Dual.Audio-KONTRAST.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan S01 (2013) (1080p x265 HEVC 10bit BluRay Dual Audio TrueHD) [Prof]\nS01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv\n👤 5 💾 1.6 GB ⚙️ 1337x\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c47ab65978a2c24e92b58d863d928422cec605c0/S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv/20/S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c47ab65978a2c24e92b58d863d928422cec605c0",
+        "filename": "S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Netaro] Attack on Titan S1 [BD 1080p Ma10] [Dual-Audio FLAC] | Shingeki no Kyojin Season 1\n[Netaro] Attack on Titan - S01E01 [BD 1080p Ma10] [Dual-Audio FLAC] [7EE9F736].mkv\n👤 5 💾 1.88 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2ccd71e8e82785f876dbea140b53084503b127bd/<opaque>/[Netaro] Attack on Titan - S01E01 [BD 1080p Ma10] [Dual-Audio FLAC] [7EE9F736].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|2ccd71e8e82785f876dbea140b53084503b127bd",
+        "filename": "[Netaro] Attack on Titan - S01E01 [BD 1080p Ma10] [Dual-Audio FLAC] [7EE9F736].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Shingeki No Kyojin (L'attaque des titans) S01.MULTI.1080p.BluRay.x265.NoTag\nShingeki No Kyojin 01 Multi FHD.mkv\n👤 5 💾 285.38 MB ⚙️ EXT\nDubbed / Multi Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1fa1f2f83f80756800d6276abf32d740152ff8ed/<opaque>/Shingeki No Kyojin 01 Multi FHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1fa1f2f83f80756800d6276abf32d740152ff8ed",
+        "filename": "Shingeki No Kyojin 01 Multi FHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack On Titan: Shingeki No Kyojin [1080p] [x265] [10Bit] [Dua\n[Nep_Blanc] Attack On Titan 01.mkv\n👤 5 💾 1.05 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c380b6d610930a2be7a2b156d7f808c60c5aa3f1/<opaque>/[Nep_Blanc] Attack On Titan 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c380b6d610930a2be7a2b156d7f808c60c5aa3f1",
+        "filename": "[Nep_Blanc] Attack On Titan 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] Attack On Titan (Ultimate Collection) (S01-S04+OVA+Movies+Junior High) [BD] [Dual Audio][1080p][HEVC 10bit x265][AAC][Eng Sub] [Batch] (Shingeki no Kyojin)\nAttack on Titan Season 1/[Anime Time] Attack on Titan - 01.mkv\n👤 4 💾 544.54 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d58f937170a63a7fb4604519cdaf1f1372d7c8f2/<opaque>/[Anime Time] Attack on Titan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d58f937170a63a7fb4604519cdaf1f1372d7c8f2",
+        "filename": "[Anime Time] Attack on Titan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] Attack On Titan (Ultimate Collection) (S01-S04+OVA+Movies+Junior High) [BD] [Dual Audio][1080p][HEVC 10bit x265][AAC][Eng Sub] [Batch] (Shingeki no Kyojin)\nAttack on Titan OAD/[Anime Time] Attack on Titan OAD - 01.mkv\n👤 4 💾 524.56 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d58f937170a63a7fb4604519cdaf1f1372d7c8f2/<opaque>/[Anime Time] Attack on Titan OAD - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d58f937170a63a7fb4604519cdaf1f1372d7c8f2",
+        "filename": "[Anime Time] Attack on Titan OAD - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ZeroBuild] Attack on Titan - S01E01 (BD 1080p HEVC 10-bit OPUS) [Dual Audio] (Shingeki no Kyojin) (Eotena Onslaught)\n👤 4 💾 3.73 GB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/43f383565c6bfb26b87adc81f0bda9058cab68eb/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.x265.Opus.2.0-ZeroBuild.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ZeroBuild",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.x265.Opus.2.0-ZeroBuild.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DBD-Raws][长安三万里/Chang An][正片+花絮][1080P][BDRip][HEVC-10bit][简繁英双语外挂][FLAC][MKV]\n花絮/[DBD-Raws][长安三万里][花絮][01][1080P][BDRip][HEVC-10bit][FLAC].mkv\n👤 4 💾 237.81 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/364c5718776beac975939f00d4aa35486147145a/<opaque>/[DBD-Raws][长安三万里][花絮][01][1080P][BDRip][HEVC-10bit][FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|364c5718776beac975939f00d4aa35486147145a",
+        "filename": "[DBD-Raws][长安三万里][花絮][01][1080P][BDRip][HEVC-10bit][FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anipakku] Shingeki no Kyojin (S01+S02+S03+OVA's) V4 [BD 1080p][HEVC x265 10bit][Multi-Dub][Multi-Subs] (Attack on Titan OAD Kuinaki Sentaku Lost Girls PT-BR Dublado Eng Spa Latino\nShingeki no Kyojin/[Anipakku] Shingeki no Kyojin 01.mkv\n👤 3 💾 1.58 GB ⚙️ NyaaSi\nDubbed / Multi Audio / Multi Subs / 🇬🇧 / 🇵🇹 / 🇪🇸 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8300bc439dc318f8c0cae4648087cd958e2e5208/<opaque>/[Anipakku] Shingeki no Kyojin 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8300bc439dc318f8c0cae4648087cd958e2e5208",
+        "filename": "[Anipakku] Shingeki no Kyojin 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anipakku] Shingeki no Kyojin (S01 S02 S03 + OVA\"s) [1080p BDRip][HEVC 10Bits][Multi-Dub][Multi-Subs] Updated Version 3 (Attack on Titan Season 1 2 3 OADs Kuinaki Sentaku Lost Girls. Dublado Latino PT-BR SPA Eng)\nShingeki no Kyojin/[Anipakku] Shingeki no Kyojin 01.mkv\n👤 3 💾 718.63 MB ⚙️ NyaaSi\nDubbed / Multi Audio / Multi Subs / 🇬🇧 / 🇵🇹 / 🇪🇸 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eb4e19451e92f905bc2735a9aa38ef2c817f3b75/<opaque>/[Anipakku] Shingeki no Kyojin 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|eb4e19451e92f905bc2735a9aa38ef2c817f3b75",
+        "filename": "[Anipakku] Shingeki no Kyojin 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Ryuuga] - Attack on Titan S01-S03 Bluray [1080p-AC3-x265]\nAttack on Titan S01 1080p Bluray AC3 x265 - Ryuuga/Attack on Titan S01E01 1080p Bluray AC3 x265 - Ryuuga.mkv\n👤 3 💾 501.9 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5f9867a59c3016dba16d3773a7266f77ac4ee0fb/<opaque>/Attack on Titan S01E01 1080p Bluray AC3 x265 - Ryuuga.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5f9867a59c3016dba16d3773a7266f77ac4ee0fb",
+        "filename": "Attack on Titan S01E01 1080p Bluray AC3 x265 - Ryuuga.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Kawaiika-Raws] (2013) Shingeki no Kyojin S1 [BDRip 1920x1080 HEVC FLAC]\n[Kawaiika-Raws] Shingeki no Kyojin (2013) 01 [BDRip 1920x1080 HEVC FLAC].mkv\n👤 2 💾 1.52 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c89fdd863a8afa638d3787c0684ec8a329179857/[Kawaiika-Raws] Shingeki no Kyojin (2013) 01 [BDRip 1920x1080 HEVC FLAC].mkv/343/[Kawaiika-Raws] Shingeki no Kyojin (2013) 01 [BDRip 1920x1080 HEVC FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c89fdd863a8afa638d3787c0684ec8a329179857",
+        "filename": "[Kawaiika-Raws] Shingeki no Kyojin (2013) 01 [BDRip 1920x1080 HEVC FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan (Season 1) BD.1080p x265.HEVC.Tri-Audio.Ita.Eng.Jap [Rady]\nAttack on Titan (2013) S01BD.1080p x265.HEVC.Tri-Audio.Ita.Eng.Jap [Rady]/S01E01 -To You, 2000 Years in the Future -The Fall of Zhiganshina (1).mkv\n👤 2 💾 1.08 GB ⚙️ NyaaSi\nDubbed / Multi Audio / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9e25b9c67359e228024affaf3ca5fa333d445c94/S01E01 -To You, 2000 Years in the Future -The Fall of Zhiganshina (1).mkv/19/S01E01 -To You, 2000 Years in the Future -The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9e25b9c67359e228024affaf3ca5fa333d445c94",
+        "filename": "S01E01 -To You, 2000 Years in the Future -The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[224] Shingeki no Kyojin (S01-S03) [BDRip 1080p x265 FLAC][sub:eng ara fre ita por spa][VostFr]\nShingeki no Kyojin - S01/[224] Shingeki no Kyojin - S01 - 01 [BDRip.1080p.x265.FLAC].mkv\n👤 2 💾 1.06 GB ⚙️ NyaaSi\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/94a9962ac8c74fd9f2e5c37f6215a754c5fe1147/<opaque>/[224] Shingeki no Kyojin - S01 - 01 [BDRip.1080p.x265.FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|94a9962ac8c74fd9f2e5c37f6215a754c5fe1147",
+        "filename": "[224] Shingeki no Kyojin - S01 - 01 [BDRip.1080p.x265.FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack.On.Titan.S01.1080p.BluRay.x264-MIXED[rartv]\nattack.on.titan.s01e01.1080p.bluray.x264-debtvid.mkv\n👤 2 💾 1.09 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9e8b1f3fc8114db7fafa10a4471668a9c5c6e15f/<opaque>/attack.on.titan.s01e01.1080p.bluray.x264-debtvid.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9e8b1f3fc8114db7fafa10a4471668a9c5c6e15f",
+        "filename": "attack.on.titan.s01e01.1080p.bluray.x264-debtvid.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[GapMoe] Attack on Titan (2013) S01 (1080p BluRay Video MULTi FLAC 2.0)\nAttack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.x265.FLAC.2.0-GapMoe.mkv\n👤 1 💾 4.31 GB ⚙️ nekoBT\nDubbed / Multi Audio / 🇬🇧 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fa7eb022937c62e10ac2ead45ba6d26b80bdfc91/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.x265.FLAC.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fa7eb022937c62e10ac2ead45ba6d26b80bdfc91",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.x265.FLAC.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "L'attaque des Titans (Shingeki No Kyojin) Saison 1 MULTI 1080p HDTV\nShingeki.No.Kyojin.S01E01.MULTi.1080p.BluRay.REMUX.AVC.DTS-HDMA.2.0-Psaro.mkv\n👤 1 💾 4.86 GB ⚙️ Torrent9\nDubbed / Multi Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/005404dd206bc1706d9801824084dd9b47a115ea/<opaque>/Shingeki.No.Kyojin.S01E01.MULTi.1080p.BluRay.REMUX.AVC.DTS-HDMA.2.0-Psaro.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|005404dd206bc1706d9801824084dd9b47a115ea",
+        "filename": "Shingeki.No.Kyojin.S01E01.MULTi.1080p.BluRay.REMUX.AVC.DTS-HDMA.2.0-Psaro.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[memeco] The Eotena Onslaught (BD 1080p AAC)\n[memeco] The Eotena Onslaught - 01 [30BC2835].mkv\n👤 1 💾 2.35 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d7eb2b53267f004571d40318a2c7c32e1a9f4c2/<opaque>/[memeco] The Eotena Onslaught - 01 [30BC2835].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7d7eb2b53267f004571d40318a2c7c32e1a9f4c2",
+        "filename": "[memeco] The Eotena Onslaught - 01 [30BC2835].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[FFF] Shingeki no Kyojin [BD][1080p-FLAC]\n[FFF] Shingeki no Kyojin - 01 [BD][1080p-FLAC][FF000966].mkv\n👤 1 💾 2.26 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/36ab7c282d99385f179706b429d5abbd31c4959a/<opaque>/[FFF] Shingeki no Kyojin - 01 [BD][1080p-FLAC][FF000966].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|36ab7c282d99385f179706b429d5abbd31c4959a",
+        "filename": "[FFF] Shingeki no Kyojin - 01 [BD][1080p-FLAC][FF000966].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan S01 1080P x265 10bit ENG AAC SUBS\nAttack.on.Titan.-.S01E01.-.To.You,.in.2000.Years.-.The.Fall.of.Shiganshina.mkv\n👤 0 💾 553.98 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bdacbcfb0321891ef674b578061fab6fafc29423/<opaque>/Attack.on.Titan.-.S01E01.-.To.You,.in.2000.Years.-.The.Fall.of.Shiganshina.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bdacbcfb0321891ef674b578061fab6fafc29423",
+        "filename": "Attack.on.Titan.-.S01E01.-.To.You,.in.2000.Years.-.The.Fall.of.Shiganshina.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "L'attaque des Titans (Shingeki No Kyojin) Saison 1 VOSTFR 1080p HDTV\n[Xspitfire911] Shingeki No Kyojin S01E01 BDRIP 1080p X265 10bit Vostfr.mkv\n👤 0 💾 1.28 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cf3fff9141d6f10006999611fc4781d86c6a66ce/<opaque>/[Xspitfire911] Shingeki No Kyojin S01E01 BDRIP 1080p X265 10bit Vostfr.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|cf3fff9141d6f10006999611fc4781d86c6a66ce",
+        "filename": "[Xspitfire911] Shingeki No Kyojin S01E01 BDRIP 1080p X265 10bit Vostfr.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[EightySixSneeds] Attack on Titan S01 (1080p BD Hi10 OPUS) [Dual Audio] | Shingeki no Kyojin (Sneed Edition)\nAttack.on.Titan.S01E01.1080p.BluRay.Opus2.0.H.264-EightySixSneeds.mkv\n👤 0 💾 2.45 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/353eac52c1c1e58a17752473e2bd58210c6d1d6a/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.Opus2.0.H.264-EightySixSneeds.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|353eac52c1c1e58a17752473e2bd58210c6d1d6a",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.Opus2.0.H.264-EightySixSneeds.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan (2013) S01 (1080p x265 HEVC 10bit BluRay Dual Audio TrueHD) [Prof]\nS01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv\n👤 0 💾 1.6 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f6e7c91e793b08accddbd8a0ccc0c6a9038715a2/S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv/0/S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f6e7c91e793b08accddbd8a0ccc0c6a9038715a2",
+        "filename": "S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Lia] Attack on Titan (Shingeki no Kyojin) (Season 1-4 (Part 1)) (Batch) [BD 1080p Hi10 AAC]\n[Lia] Attack on Titan (Shingeki no Kyojin) (Season 1) [BD 1080p Hi10 AAC]/[Lia] Attack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p).mkv\n👤 0 💾 1.84 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/26d92aeb8c7b46de62fd49c0410b5ffc7a55c7fb/[Lia] Attack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p).mkv/0/[Lia] Attack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|26d92aeb8c7b46de62fd49c0410b5ffc7a55c7fb",
+        "filename": "[Lia] Attack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina, Part 1 (1080p).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Suki Desu] Shingeki no Kyojin (Attack on Titan) (Season 1 - 3) [BD 1080p][HEVC x265 10bit][Eng-Subs][Judas]\nSeason 1/Shingeki no Kyojin S1 - 01.mkv\n👤 0 💾 339.82 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4b51e23ea0c25c971d08dec6e4fe7336a4885947/<opaque>/Shingeki no Kyojin S1 - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4b51e23ea0c25c971d08dec6e4fe7336a4885947",
+        "filename": "Shingeki no Kyojin S1 - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anipakku] Shingeki no Kyojin (S01 S02 S03 + OVA\"s) [1080p BDRip][HEVC 10Bits][Multi-Dub][Multi-Subs] (Attack on Titan Season 1 2 3 OADs Kuinaki Sentaku Lost Girls Dublado Latino PT-BR SPA Eng)\nShingeki no Kyojin/[Anipakku] Shingeki no Kyojin 01.mkv\n👤 0 💾 718.63 MB ⚙️ NyaaSi\nDubbed / Multi Audio / Multi Subs / 🇬🇧 / 🇵🇹 / 🇪🇸 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b4382817e78ceef2cc34e2ae8cf69e978cc2932/<opaque>/[Anipakku] Shingeki no Kyojin 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7b4382817e78ceef2cc34e2ae8cf69e978cc2932",
+        "filename": "[Anipakku] Shingeki no Kyojin 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Ataque dos Titãs S01E01 [1080p] [WEB-DL] [DUBLADO]\n👤 0 💾 678.43 MB ⚙️ Comando\nDubbed / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e2fc23b572c29a571e07a03e886a620e8724835f/<opaque>/Ataque.dos.Titas.S01E01.1080p.WEB-DL.DUBLADO.WWW.COMANDOTORRENTS.COM.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Ataque.dos.Titas.S01E01.1080p.WEB-DL.DUBLADO.WWW.COMANDOTORRENTS.COM.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Maximus] Attack on Titan S01 (2013) [BluRay 1080p x265 10bit Dual Audio Eng AC3 5.1 + Jap AAC]\nS01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv\n👤 0 💾 1.23 GB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e3e11b505d0fc6feb55fb20c30b1e3997a534f79/S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv/20/S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e3e11b505d0fc6feb55fb20c30b1e3997a534f79",
+        "filename": "S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[HorribleSubs] Shingeki no Kyojin S1 + S2 + S3 [1080p] (Unofficial Batch)\n[HorribleSubs] Shingeki no Kyojin S1 [1080p]/[HorribleSubs] Shingeki no Kyojin - 01 [1080p].mkv\n👤 0 💾 553.19 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/99aba4dcacdd726656ec0e4d7438ab142c98ea81/<opaque>/[HorribleSubs] Shingeki no Kyojin - 01 [1080p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|99aba4dcacdd726656ec0e4d7438ab142c98ea81",
+        "filename": "[HorribleSubs] Shingeki no Kyojin - 01 [1080p].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anipakku] Shingeki no Kyojin - S01 S02 S03 OVAs [1080p BDRip][HEVC 10Bits][Dual Áudio][Dublado][PT-BR][Multi-Subs] Attack on Titan\nShingeki no Kyojin/Shingeki no Kyojin 01 [BD 1080p][HEVC x265 10bit][DUAL][Multi-Subs].mkv\n👤 0 💾 632.26 MB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aec3238d4cc6df059a55725e9d8a69a9e080935c/<opaque>/Shingeki no Kyojin 01 [BD 1080p][HEVC x265 10bit][DUAL][Multi-Subs].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|aec3238d4cc6df059a55725e9d8a69a9e080935c",
+        "filename": "Shingeki no Kyojin 01 [BD 1080p][HEVC x265 10bit][DUAL][Multi-Subs].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack On Titan S 1-3 [10Bit][1080p][BD][5.1][ENG DUB]\nAttack on Titan/Attack on Titan - 01x01 - To You, in 2000 Years The Fall of Shiganshina, Part 1.mkv\n👤 0 💾 350.19 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9ec7b9f41e40b3334c16d54e51d2be9bce10b0f5/<opaque>/Attack on Titan - 01x01 - To You, in 2000 Years The Fall of Shiganshina, Part 1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9ec7b9f41e40b3334c16d54e51d2be9bce10b0f5",
+        "filename": "Attack on Titan - 01x01 - To You, in 2000 Years The Fall of Shiganshina, Part 1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan Season 1 [HAV1T][1080p][AV1][OPUS]\nAttack.on.Titan.S01E01.mkv\n👤 0 💾 316.78 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/895d29c4a8b643257ea05003d8534c626f1ef6f9/Attack.on.Titan.S01E01.mkv/16/Attack.on.Titan.S01E01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|895d29c4a8b643257ea05003d8534c626f1ef6f9",
+        "filename": "Attack.on.Titan.S01E01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Shingeki no Kyojin (Attack on Titan) S1-3 Dual-Audio [BDRip 1920x1080 HEVC x265 10bit Dual-Audio]\nSeason 1/Attack on Titan - 01 - To You, in 2000 Years The Fall of Shiganshina, Part 1 (S01E01).mkv\n👤 0 💾 1.48 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eec099cf79b72342971bcd6daf2875b85dfe6e88/Attack on Titan - 01 - To You, in 2000 Years The Fall of Shiganshina, Part 1 (S01E01).mkv/48/Attack on Titan - 01 - To You, in 2000 Years The Fall of Shiganshina, Part 1 (S01E01).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|eec099cf79b72342971bcd6daf2875b85dfe6e88",
+        "filename": "Attack on Titan - 01 - To You, in 2000 Years The Fall of Shiganshina, Part 1 (S01E01).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lattacco dei giganti - Shingeki no kyojin (2013) [BluRay.1080p.x264.FLAC.ITA.JPN.ENG.Subs.Ita.Eng]\nL'attacco dei giganti - 1x01 - A te, fra 2000 anni - La caduta di Shiganshina (parte 1) - 1080p by stress.mkv\n👤 0 💾 3.06 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/086b210780c572970a84b41d6f2abd1c033ef0bd/L'attacco dei giganti - 1x01 - A te, fra 2000 anni - La caduta di Shiganshina (parte 1) - 1080p by stress.mkv/20/L'attacco dei giganti - 1x01 - A te, fra 2000 anni - La caduta di Shiganshina (parte 1) - 1080p by stress.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|086b210780c572970a84b41d6f2abd1c033ef0bd",
+        "filename": "L'attacco dei giganti - 1x01 - A te, fra 2000 anni - La caduta di Shiganshina (parte 1) - 1080p by stress.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[SCY] Attack on Titan 01-59 (seasons 1-3) (BD 1080p Hi10 FLAC) [Dual-Audio][Unofficial Batch]\n[SCY] Attack on Titan (BD 1080p Hi10 FLAC) [Dual-Audio] [v2]/[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv\n👤 0 💾 2.93 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/633fa9abc29ba0aff30b0464dcbee58091977acd/[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv/12/[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|633fa9abc29ba0aff30b0464dcbee58091977acd",
+        "filename": "[SCY] Attack on Titan - 01v2 (BD 1080p Hi10 FLAC) [CBD993E4].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan (2013) S01 [1080p x265 HEVC 10bit BluRay Dual Audio AAC] [Prof]\n[Prof] S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv\n👤 0 💾 988.14 MB ⚙️ 1337x\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9c0f8b148aa665dd570f21e937d7094fccf7f72f/[Prof] S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv/20/[Prof] S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9c0f8b148aa665dd570f21e937d7094fccf7f72f",
+        "filename": "[Prof] S01E01 - To You, 2000 Years in the Future - The Fall of Zhiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Reaktor] Attack on Titan - Shingeki no Kyojin - S01 [1080p][BD][x265][10-bit][Dual-Audio]\n[Reaktor] Attack on Titan - Shingeki no Kyojin S01 - E01 [1080p][x265][10-bit][Dual-Audio].mkv\n👤 0 💾 618.04 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d00b8a23105e70b0feae79f7d506018ddde9e41f/<opaque>/[Reaktor] Attack on Titan - Shingeki no Kyojin S01 - E01 [1080p][x265][10-bit][Dual-Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d00b8a23105e70b0feae79f7d506018ddde9e41f",
+        "filename": "[Reaktor] Attack on Titan - Shingeki no Kyojin S01 - E01 [1080p][x265][10-bit][Dual-Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01] (2013) BDRip-HEVC 1080p | StudioBand Kansai\nShingeki no Kyojin 01 [x265].mkv\n👤 0 💾 453.22 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c9a33383b7437cf322118b7ca8f9bc19149b943e/<opaque>/Shingeki no Kyojin 01 [x265].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c9a33383b7437cf322118b7ca8f9bc19149b943e",
+        "filename": "Shingeki no Kyojin 01 [x265].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[PuyaSubs!] Shingeki no Kyojin S1 [Batch][1080p]\n[PuyaSubs!] Shingeki no Kyojin S1 - 01 [1080p][FC47C91D].mkv\n👤 0 💾 553.19 MB ⚙️ NyaaSi\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c45c0c9b5e25047364541a10f68f8c9b6062c76/[PuyaSubs!] Shingeki no Kyojin S1 - 01 [1080p][FC47C91D].mkv/25/[PuyaSubs!] Shingeki no Kyojin S1 - 01 [1080p][FC47C91D].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3c45c0c9b5e25047364541a10f68f8c9b6062c76",
+        "filename": "[PuyaSubs!] Shingeki no Kyojin S1 - 01 [1080p][FC47C91D].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "L'Attaque des Titans (Shingeki no kyojin) 1-25 - 1080p VOSTFR HC\nshingeki no kyojin 01.mp4\n👤 0 💾 226.45 MB ⚙️ ThePirateBay\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4453b61cd2569b1f534e6717ff6150ee393277db/shingeki no kyojin 01.mp4/16/shingeki no kyojin 01.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4453b61cd2569b1f534e6717ff6150ee393277db",
+        "filename": "shingeki no kyojin 01.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[HorribleSubs] Shingeki no Kyojin (01-25) [1080p] (Batch)\n[HorribleSubs] Shingeki no Kyojin - 01 [1080p].mkv\n👤 0 💾 553.19 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f36e7a055467e5dad5d9d955c0261b33ae9f4b81/<opaque>/[HorribleSubs] Shingeki no Kyojin - 01 [1080p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f36e7a055467e5dad5d9d955c0261b33ae9f4b81",
+        "filename": "[HorribleSubs] Shingeki no Kyojin - 01 [1080p].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Attack on Titan (Shingeki no Kyojin) Season 1 (1920x1080) [Phr0s\nAttack on Titan (Shingeki no Kyojin) S01E01 To You, Two Thousand Years Later (1920x1080) {Phr0stY].mkv\n👤 0 💾 552.93 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3ab73eb06219b4b18764561b1f5fbd8a20bb7957/Attack on Titan (Shingeki no Kyojin) S01E01 To You, Two Thousand Years Later (1920x1080) {Phr0stY].mkv/3/Attack on Titan (Shingeki no Kyojin) S01E01 To You, Two Thousand Years Later (1920x1080) {Phr0stY].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3ab73eb06219b4b18764561b1f5fbd8a20bb7957",
+        "filename": "Attack on Titan (Shingeki no Kyojin) S01E01 To You, Two Thousand Years Later (1920x1080) {Phr0stY].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[EXIL3]Attack.On.Titan.S01.Season.1.Dubbed.720p.x265.HEVC\n[EXIL3] Attack On Titan S01e01 To You, Two Thousand Years Later [720p] [HEVC] [x265].mkv\n👤 24 💾 114.33 MB ⚙️ ThePirateBay\nDubbed",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/51547b5ec8015ee88963ba96d08be69e70ef1ee6/<opaque>/[EXIL3] Attack On Titan S01e01 To You, Two Thousand Years Later [720p] [HEVC] [x265].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|51547b5ec8015ee88963ba96d08be69e70ef1ee6",
+        "filename": "[EXIL3] Attack On Titan S01e01 To You, Two Thousand Years Later [720p] [HEVC] [x265].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[NoobSubs] Attack on Titan~Shingeki no Kyojin Series (720p Blu-ray Dual Audio 8bit AAC)\n1. Attack on Titan (2013)/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray Dual Audio 8bit AAC)[F0E9BDFF].mkv\n👤 19 💾 654.55 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b6c73a3afd200c94f689de02af5b2cf90b9f444d/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray Dual Audio 8bit AAC)[F0E9BDFF].mkv/285/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray Dual Audio 8bit AAC)[F0E9BDFF].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b6c73a3afd200c94f689de02af5b2cf90b9f444d",
+        "filename": "[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray Dual Audio 8bit AAC)[F0E9BDFF].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[HorribleSubs] Shingeki no Kyojin S1 - S3 Complete [720p] (Unofficial Batch)\nS1/[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv\n👤 13 💾 329.09 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/65772d64175acd227250444fa7fa6133fc4803a7/<opaque>/[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|65772d64175acd227250444fa7fa6133fc4803a7",
+        "filename": "[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Shingeki no Kyojin 1-25 (Attack on Titan Season 1)[720p]\n[Perfection] Shingeki no Kyojin - 01 [720p][AAC].mp4\n👤 13 💾 382.87 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/648fb9175fd4cd885b383237fd61717c1713d7a3/<opaque>/[Perfection] Shingeki no Kyojin - 01 [720p][AAC].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|648fb9175fd4cd885b383237fd61717c1713d7a3",
+        "filename": "[Perfection] Shingeki no Kyojin - 01 [720p][AAC].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[Erai-raws] Shingeki no Kyojin - 01 ~ 25 [720p][Multiple Subtitle]\n[Erai-raws] Shingeki no Kyojin - 01 [720p][Multiple Subtitle].mkv\n👤 11 💾 647.77 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇵🇹 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f8c639b7b43ceea7d02d10be12673f8514057e7a/<opaque>/[Erai-raws] Shingeki no Kyojin - 01 [720p][Multiple Subtitle].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f8c639b7b43ceea7d02d10be12673f8514057e7a",
+        "filename": "[Erai-raws] Shingeki no Kyojin - 01 [720p][Multiple Subtitle].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Attack on Titan - Shingeki no kyojin S01e01-25 [720p Ita Eng Jap SubS][MirCrewRelease] byMe7alh\nL.Attacco.dei.Giganti.S01e01.Ita.Eng.Jap.720p.h264.SubS-Me7alh.mkv\n👤 10 💾 619.2 MB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b70f36d265ff2678343fd64b72e3c1624a772bd/<opaque>/L.Attacco.dei.Giganti.S01e01.Ita.Eng.Jap.720p.h264.SubS-Me7alh.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3b70f36d265ff2678343fd64b72e3c1624a772bd",
+        "filename": "L.Attacco.dei.Giganti.S01e01.Ita.Eng.Jap.720p.h264.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Ataque a los Titanes - Temporada 1 [HDTV 720p][Cap.101_125][AC3 5.1 Castellano][www.descargas2020.org][www.pctnew.org]\nAtaque a los Titanes - Temporada 1 [HDTV 720p][Cap.101][AC3 5.1 Castellano][www.descargas2020.org][www.pctnew.org].mkv\n👤 5 💾 654.26 MB ⚙️ MejorTorrent\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b79cdcf4b4a29eaeaa36218c9ca3fac531e71edc/<opaque>/Ataque a los Titanes - Temporada 1 [HDTV 720p][Cap.101][AC3 5.1 Castellano][www.descargas2020.org][www.pctnew.org].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b79cdcf4b4a29eaeaa36218c9ca3fac531e71edc",
+        "filename": "Ataque a los Titanes - Temporada 1 [HDTV 720p][Cap.101][AC3 5.1 Castellano][www.descargas2020.org][www.pctnew.org].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[TOG] Attack On Titan English Dub/Sub : Complete from Season 1 to Season 3 Part 1 [720p] [Dual Audio]\naot/[AniDL]_AoT_Ep_01_[BD-720p]_[Dual]_[Baal]_[2D91F3B9].mkv\n👤 4 💾 288.87 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b850c4011ce6b06438d718f155f0bbed69d23de/<opaque>/[AniDL]_AoT_Ep_01_[BD-720p]_[Dual]_[Baal]_[2D91F3B9].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5b850c4011ce6b06438d718f155f0bbed69d23de",
+        "filename": "[AniDL]_AoT_Ep_01_[BD-720p]_[Dual]_[Baal]_[2D91F3B9].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[CBM] Attack On Titan 1-25 Complete (Dual Audio) [BDRip-720p-8bi\n[CBM]_Attack_on_Titan_-_01_-_To_You,_in_2000_Years_[v2]_[720p]_[C75C0142].mkv\n👤 4 💾 740.83 MB ⚙️ MagnetDL\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/be6465a6c482357db8feb3c2d6b09a634f39c099/<opaque>/[CBM]_Attack_on_Titan_-_01_-_To_You,_in_2000_Years_[v2]_[720p]_[C75C0142].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|be6465a6c482357db8feb3c2d6b09a634f39c099",
+        "filename": "[CBM]_Attack_on_Titan_-_01_-_To_You,_in_2000_Years_[v2]_[720p]_[C75C0142].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[Erai-raws] Shingeki no Kyojin - 01 ~ 25 [720p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][ARA][FRE][RUS]\n[Erai-raws] Shingeki no Kyojin - 01 [720p][Multiple Subtitle][122394D3].mkv\n👤 3 💾 723.93 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f851e2824ef2288f16737ea647ceedd4c98e708c/<opaque>/[Erai-raws] Shingeki no Kyojin - 01 [720p][Multiple Subtitle][122394D3].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f851e2824ef2288f16737ea647ceedd4c98e708c",
+        "filename": "[Erai-raws] Shingeki no Kyojin - 01 [720p][Multiple Subtitle][122394D3].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-04 + OVA] (2013-2022) HDRip 720p | D | StudioBand\n[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv\n👤 3 💾 474.15 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e3fc1eae66af93a43679d24a32a2bc3841d2303b/[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv/0/[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e3fc1eae66af93a43679d24a32a2bc3841d2303b",
+        "filename": "[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Атака титанов / Shingeki no Kyojin [S01-03 + OVA + Спешлы] (2013-2020) BDRip 720p от Deadmauvlad | StudioBand KANSAI\nS01/[Deadmau- RAWS] Shingeki.no.Kyojin.S01.DTS.BDRip.720p.Deadmauvlad.Ep.01.mkv\n👤 1 💾 783.76 MB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/15621b4ec5f496ee348334813837510b0d13d4b7/<opaque>/[Deadmau- RAWS] Shingeki.no.Kyojin.S01.DTS.BDRip.720p.Deadmauvlad.Ep.01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|15621b4ec5f496ee348334813837510b0d13d4b7",
+        "filename": "[Deadmau- RAWS] Shingeki.no.Kyojin.S01.DTS.BDRip.720p.Deadmauvlad.Ep.01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[HorribleSubs] Attack on Titan | Shingeki no Kyojin S1 + S2 + S3 [720p] (Unofficial Batch)\nAttack on Titan s1e01.mkv\n👤 1 💾 329.09 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/97f743208449b2f7b9c0e409efc424a76ac667e4/Attack on Titan s1e01.mkv/45/Attack on Titan s1e01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|97f743208449b2f7b9c0e409efc424a76ac667e4",
+        "filename": "Attack on Titan s1e01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[NoobSubs] Shingeki no Kyojin~Attack on Titan + OVA (720p Blu-ray MP4)\n[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4\n👤 1 💾 535.48 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce4caa129abe48b1ed42ebab34183b0ccbecaaa9/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4/20/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ce4caa129abe48b1ed42ebab34183b0ccbecaaa9",
+        "filename": "[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[Trix] Shingeki no Kyojin (Complete Series + OVAs) (COMPLETE) [Dual Audio] (BD 720p AV1 Opus) | Attack On Titan (AoT) S01-04 + OADs | L'Attaque des Titans (SnK) VOSTFR (OAV)\nSeason 1/[Trix] Shingeki no Kyojin S01E01 (01) (BD 720p AV1) [795117C2].mkv\n👤 0 💾 220.6 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d1cb569943eb7448d72501d64b55a0e5135afe38/[Trix] Shingeki no Kyojin S01E01 (01) (BD 720p AV1) [795117C2].mkv/8/[Trix] Shingeki no Kyojin S01E01 (01) (BD 720p AV1) [795117C2].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d1cb569943eb7448d72501d64b55a0e5135afe38",
+        "filename": "[Trix] Shingeki no Kyojin S01E01 (01) (BD 720p AV1) [795117C2].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[Erai-raws] Shingeki no Kyojin OAD - 01 ~ 08 [720p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] Shingeki no Kyojin OAD - 01 [720p][Multiple Subtitle][32F52EE9].mkv\n👤 0 💾 696.65 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c97ca1ae853edbff696ccaba0a712676d5213d4e/<opaque>/[Erai-raws] Shingeki no Kyojin OAD - 01 [720p][Multiple Subtitle][32F52EE9].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c97ca1ae853edbff696ccaba0a712676d5213d4e",
+        "filename": "[Erai-raws] Shingeki no Kyojin OAD - 01 [720p][Multiple Subtitle][32F52EE9].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Attack on Titan S01 720P x265 10bit ENG AAC SUBS\nAttack.on.Titan.-.S01E01.-.To.You,.in.2000.Years.-.The.Fall.of.Shiganshina.mkv\n👤 0 💾 323.44 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b8b57e2ff7749c4ab5700cf7797f3fdfd8e8275/<opaque>/Attack.on.Titan.-.S01E01.-.To.You,.in.2000.Years.-.The.Fall.of.Shiganshina.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3b8b57e2ff7749c4ab5700cf7797f3fdfd8e8275",
+        "filename": "Attack.on.Titan.-.S01E01.-.To.You,.in.2000.Years.-.The.Fall.of.Shiganshina.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[NoobSubs] Attack on Titan～Shingeki no Kyojin Series S1-S4 01-75 + OVA + Soundtracks + Extras (720p Blu-ray 8bit AAC MP4).torrent\n1. Attack on Titan (2013)/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4\n👤 0 💾 602.22 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a6dc21e09c4f395233dfcb057980377bc576bec5/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4/285/[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a6dc21e09c4f395233dfcb057980377bc576bec5",
+        "filename": "[NoobSubs] Shingeki no Kyojin 01 (720p Blu-ray 8bit AAC).mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-04] (2013-2021) WEBRip 720p | StudioBand\n[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv\n👤 0 💾 496.82 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b3c151e11d0450c6838f448b0d18e17c0415ac21/[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv/28/[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b3c151e11d0450c6838f448b0d18e17c0415ac21",
+        "filename": "[01] S01E01 Атака титанов - К тебе, спустя две тысячи лет(Падение Сигансины. Часть 1) [720p x264] StudioBand.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-03 + OVA] (2013-2019) BDRip 720p DVDRip-AVC | KANSAI\nShingeki no Kyojin [Season 1]/Shingeki.no.Kyojin.s01e01.mkv\n👤 0 💾 475.15 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/68d038444e1a56c414a6c6233532334abae2c4bf/Shingeki.no.Kyojin.s01e01.mkv/8/Shingeki.no.Kyojin.s01e01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|68d038444e1a56c414a6c6233532334abae2c4bf",
+        "filename": "Shingeki.no.Kyojin.s01e01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[NoobSubs] Attack on Titan~Shingeki no Kyojin + OVA (720p Blu-ray eng dub MP4)\n[NoobSubs] Attack on Titan 01 (720p Blu-ray eng dub 8bit AAC).mp4\n👤 0 💾 577.43 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/572e700cc80db5762ebe4dca04934232a3c54236/[NoobSubs] Attack on Titan 01 (720p Blu-ray eng dub 8bit AAC).mp4/21/[NoobSubs] Attack on Titan 01 (720p Blu-ray eng dub 8bit AAC).mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|572e700cc80db5762ebe4dca04934232a3c54236",
+        "filename": "[NoobSubs] Attack on Titan 01 (720p Blu-ray eng dub 8bit AAC).mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Attack on Titan 01 - 13 [720p] [English Dub] [Thund3r3mp3ror]\n[Thund3r3mp3ror] Attack on Titan - 01.mp4\n👤 0 💾 238.45 MB ⚙️ ThePirateBay\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d4e9374a35298c2fba725b4dbf0844170a75d560/<opaque>/[Thund3r3mp3ror] Attack on Titan - 01.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d4e9374a35298c2fba725b4dbf0844170a75d560",
+        "filename": "[Thund3r3mp3ror] Attack on Titan - 01.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Attack.On.Titan.US.S01E01.720p.HDTV.x264-QCF[rartv]\n👤 0 💾 572.3 MB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ef4e18de9f6486ab5ad8b8804a2cdc56cef59604/<opaque>/attack.on.titan.us.s01e01.720p.hdtv.x264-qcf.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|qcf",
+        "filename": "attack.on.titan.us.s01e01.720p.hdtv.x264-qcf.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Shingeki No Kyojin (Attack On Titan) 1-25 1280×720 Blu-ray\n[Coalgirls]_Shingeki_no_Kyojin_01_(1280x720_Blu-ray_FLAC)_[3CB81308].mkv\n👤 0 💾 766.59 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/230776112f191b5ff2e6b42336c77527d87b8a6c/[Coalgirls]_Shingeki_no_Kyojin_01_(1280x720_Blu-ray_FLAC)_[3CB81308].mkv/0/[Coalgirls]_Shingeki_no_Kyojin_01_(1280x720_Blu-ray_FLAC)_[3CB81308].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|230776112f191b5ff2e6b42336c77527d87b8a6c",
+        "filename": "[Coalgirls]_Shingeki_no_Kyojin_01_(1280x720_Blu-ray_FLAC)_[3CB81308].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "[F-D] Attack on Titan Season 1 Complete [480P][Dual-Audio]\n[F-D] Attack on Titan - S01E01 To You, Two Thousand Years Later [480P][Dual-Audio].mkv\n👤 6 💾 86.66 MB ⚙️ ThePirateBay\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/32f8681c3a90dd5cd002569bc9d98457fef60967/<opaque>/[F-D] Attack on Titan - S01E01 To You, Two Thousand Years Later [480P][Dual-Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|32f8681c3a90dd5cd002569bc9d98457fef60967",
+        "filename": "[F-D] Attack on Titan - S01E01 To You, Two Thousand Years Later [480P][Dual-Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "[Erai-raws] Shingeki no Kyojin OAD - 01 ~ 08 [480p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] Shingeki no Kyojin OAD - 01 [480p][Multiple Subtitle][40B8083D].mkv\n👤 0 💾 364.86 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f94230e5738c8b0d86784c40bb0dd073ab7414c2/<opaque>/[Erai-raws] Shingeki no Kyojin OAD - 01 [480p][Multiple Subtitle][40B8083D].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f94230e5738c8b0d86784c40bb0dd073ab7414c2",
+        "filename": "[Erai-raws] Shingeki no Kyojin OAD - 01 [480p][Multiple Subtitle][40B8083D].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "[Erai-raws] Shingeki no Kyojin - 01 ~ 25 [480p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][ARA][FRE][RUS]\n[Erai-raws] Shingeki no Kyojin - 01 [480p][Multiple Subtitle][C7931603].mkv\n👤 0 💾 379.46 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de7d490f8b05fb48d3074add64e21ee514eab6f9/<opaque>/[Erai-raws] Shingeki no Kyojin - 01 [480p][Multiple Subtitle][C7931603].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|de7d490f8b05fb48d3074add64e21ee514eab6f9",
+        "filename": "[Erai-raws] Shingeki no Kyojin - 01 [480p][Multiple Subtitle][C7931603].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Attack on Titan S01 480P AV1 10bit ENG OPUS\nAttack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina.mkv\n👤 0 💾 91.69 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/815a3afe7a67408d6d71fd09a841df63410f0d72/<opaque>/Attack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|815a3afe7a67408d6d71fd09a841df63410f0d72",
+        "filename": "Attack on Titan - S01E01 - To You, in 2000 Years - The Fall of Shiganshina.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDTV",
+      "title": "L'Attaque des Titans Saison 1 FRENCH HDTV\nUBT-L.Attaque.Des.Titans.VOL01.ep01.avi\n👤 10 💾 186.25 MB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f9637b8f298879aca10a2579adcf9d7099870c91/<opaque>/UBT-L.Attaque.Des.Titans.VOL01.ep01.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f9637b8f298879aca10a2579adcf9d7099870c91",
+        "filename": "UBT-L.Attaque.Des.Titans.VOL01.ep01.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-03 + OVA] (2013-2019) BDRip WEB-DLRip | Kansai\nSeason 1/Shingeki.no.Kyojin.s01e01.avi\n👤 0 💾 312.04 MB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b6d4a8f04d74b516aba80877dadb3bce34567363/Shingeki.no.Kyojin.s01e01.avi/10/Shingeki.no.Kyojin.s01e01.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b6d4a8f04d74b516aba80877dadb3bce34567363",
+        "filename": "Shingeki.no.Kyojin.s01e01.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDTV",
+      "title": "Ataque a los Titanes - Temporada 1 [HDTV][Cap.101_125][Castellano][www.descargas2020.org][www.pctnew.org]\nAtaque a los Titanes - Temporada 1 [HDTV][Cap.101][Castellano][www.descargas2020.org][www.pctnew.org].avi\n👤 0 💾 293.61 MB ⚙️ MejorTorrent\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6cd557d7f8debfb3dfe926fb1360045b5415c01e/<opaque>/Ataque a los Titanes - Temporada 1 [HDTV][Cap.101][Castellano][www.descargas2020.org][www.pctnew.org].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6cd557d7f8debfb3dfe926fb1360045b5415c01e",
+        "filename": "Ataque a los Titanes - Temporada 1 [HDTV][Cap.101][Castellano][www.descargas2020.org][www.pctnew.org].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Attack.On.Titan.S01.BDRip.x264-MIXED[rartv]\nattack.on.titan.s01e01.bdrip.x264-debtvid.mkv\n👤 0 💾 222.51 MB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/308476282dd7ca34133ef3374a97dc7a60f6bba3/<opaque>/attack.on.titan.s01e01.bdrip.x264-debtvid.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|308476282dd7ca34133ef3374a97dc7a60f6bba3",
+        "filename": "attack.on.titan.s01e01.bdrip.x264-debtvid.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBRRip",
+      "title": "Ataque A Los Titanes - Temporada 1 [BluRay Rip][Cap.101][Español Castellano]\n👤 0 💾 282.27 MB ⚙️ MejorTorrent\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/850441fc3dbd9d6d688bc93e30ff341c90344a0b/<opaque>/AALTitanes101 [www.newpct1.com].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "AALTitanes101 [www.newpct1.com].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Kanketsu-hen + OVA + Junior High) (Taiwanese Mandarin + Cantonese Chinese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (The Last Attack) (Final Chapters)\nShingeki no Kyojin S1 [台粤]/Shingeki no Kyojin S1 - 01.mkv\n👤 22 💾 429.73 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3bd03e7b3dc48224611fe6f34f194f25b4cffdc5/<opaque>/Shingeki no Kyojin S1 - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3bd03e7b3dc48224611fe6f34f194f25b4cffdc5",
+        "filename": "Shingeki no Kyojin S1 - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Final Chapters + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (Kanketsu-hen)\nSeason 1 [台粤]/01.mkv\n👤 10 💾 403.58 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b40bbdaf6b131344162895cc5b1d177c6ad4e72/01.mkv/20/01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1b40bbdaf6b131344162895cc5b1d177c6ad4e72",
+        "filename": "01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Final Chapters + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (Kanketsu-hen)\nJunior High [台粤]/01 - Junior High.mkv\n👤 10 💾 481.69 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b40bbdaf6b131344162895cc5b1d177c6ad4e72/01 - Junior High.mkv/108/01 - Junior High.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1b40bbdaf6b131344162895cc5b1d177c6ad4e72",
+        "filename": "01 - Junior High.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Final Chapters + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (Kanketsu-hen)\nOVA [台]/01 OAD 伊爾澤的筆記(第3.5話).mkv\n👤 10 💾 489.37 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b40bbdaf6b131344162895cc5b1d177c6ad4e72/01 OAD 伊爾澤的筆記(第3.5話).mkv/12/01 OAD 伊爾澤的筆記(第3.5話).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1b40bbdaf6b131344162895cc5b1d177c6ad4e72",
+        "filename": "01 OAD 伊爾澤的筆記(第3.5話).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Final Chapters + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (Kanketsu-hen)\nOVA [台]/Lost Girls 01 OAD Lost in the Cruel World.mkv\n👤 10 💾 278.63 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b40bbdaf6b131344162895cc5b1d177c6ad4e72/<opaque>/Lost Girls 01 OAD Lost in the Cruel World.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1b40bbdaf6b131344162895cc5b1d177c6ad4e72",
+        "filename": "Lost Girls 01 OAD Lost in the Cruel World.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Kanketsu-hen + OVA + Junior High) (Taiwanese Mandarin + Cantonese Chinese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (The Last Attack) (Final Chapters)\nShingeki no Kyojin S1 [台粤]/Shingeki no Kyojin S1 - 01.mkv\n👤 5 💾 429.73 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b6fed8e446d2f36db288dbc03432ea0a036a4405/<opaque>/Shingeki no Kyojin S1 - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b6fed8e446d2f36db288dbc03432ea0a036a4405",
+        "filename": "Shingeki no Kyojin S1 - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Kanketsu-hen + OVA + Junior High) (Taiwanese Mandarin + Cantonese Chinese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (The Last Attack) (Final Chapters)\nShingeki no Kyojin S1 [台粤]/Extras [台]/01 OAD 伊爾澤的筆記(第3.5話).mkv\n👤 5 💾 518.94 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b6fed8e446d2f36db288dbc03432ea0a036a4405/01 OAD 伊爾澤的筆記(第3.5話).mkv/37/01 OAD 伊爾澤的筆記(第3.5話).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b6fed8e446d2f36db288dbc03432ea0a036a4405",
+        "filename": "01 OAD 伊爾澤的筆記(第3.5話).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台粤配 - 进击的巨人 (Attack on Titan) (Season 1-4 + Kanketsu-hen + OVA + Junior High) (Taiwanese Mandarin + Cantonese Chinese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (進擊的巨人) (Shingeki no Kyojin) (The Last Attack) (Final Chapters)\nShingeki no Kyojin Junior High [台粤]/01 - Junior High.mkv\n👤 5 💾 481.66 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b6fed8e446d2f36db288dbc03432ea0a036a4405/01 - Junior High.mkv/107/01 - Junior High.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b6fed8e446d2f36db288dbc03432ea0a036a4405",
+        "filename": "01 - Junior High.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[国语] 进击的巨人 (Attack on Titan) (Season 1-4 + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) [國語][粵語][CHT][繁字][中文配音][中配版] (進擊的巨人) (Shingeki no Kyojin)\nSeason 1/01.mkv\n👤 1 💾 427.15 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb/01.mkv/20/01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb",
+        "filename": "01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[国语] 进击的巨人 (Attack on Titan) (Season 1-4 + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) [國語][粵語][CHT][繁字][中文配音][中配版] (進擊的巨人) (Shingeki no Kyojin)\nOVA/Lost Girls 01 OAD Lost in the Cruel World.mkv\n👤 1 💾 322.5 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb/<opaque>/Lost Girls 01 OAD Lost in the Cruel World.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb",
+        "filename": "Lost Girls 01 OAD Lost in the Cruel World.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[国语] 进击的巨人 (Attack on Titan) (Season 1-4 + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) [國語][粵語][CHT][繁字][中文配音][中配版] (進擊的巨人) (Shingeki no Kyojin)\nOVA/01 OAD 伊爾澤的筆記(第3.5話).mkv\n👤 1 💾 532.2 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb/01 OAD 伊爾澤的筆記(第3.5話).mkv/12/01 OAD 伊爾澤的筆記(第3.5話).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb",
+        "filename": "01 OAD 伊爾澤的筆記(第3.5話).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[国语] 进击的巨人 (Attack on Titan) (Season 1-4 + OVA + Junior High) (Mandarin Chinese + Cantonese Dub) [國語][粵語][CHT][繁字][中文配音][中配版] (進擊的巨人) (Shingeki no Kyojin)\nJunior High/01.mkv\n👤 1 💾 606.24 MB ⚙️ NyaaSi\nDubbed / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb/01.mkv/49/01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dc0db78ad6c4cecb4f9390861e71abe5e82f9bbb",
+        "filename": "01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Exiled-Destiny] Attack On Titan [Dual Audio]\n[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv\n👤 0 💾 455.9 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a8dda67aea6f7e43b1635425c8a4d074a07d21ee/[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv/4/[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a8dda67aea6f7e43b1635425c8a4d074a07d21ee",
+        "filename": "[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Attack on Titan (Shingeki no Kyojin) [Ep 01 - Ep59 ( S01 02 03 Complete)] [HEVC x265 10bit][Dual-Audio][Eng-Subs] MasterBeast\nAttack on Titan (Shingeki no Kyojin) Dual Audio [Eng -Sub] MasterBeast (1).mkv\n👤 0 💾 359.2 MB ⚙️ 1337x\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bb6d2a4b3d828f51c6191d6319bc41a3f48de92a/Attack on Titan (Shingeki no Kyojin) Dual Audio [Eng -Sub] MasterBeast (1).mkv/29/Attack on Titan (Shingeki no Kyojin) Dual Audio [Eng -Sub] MasterBeast (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bb6d2a4b3d828f51c6191d6319bc41a3f48de92a",
+        "filename": "Attack on Titan (Shingeki no Kyojin) Dual Audio [Eng -Sub] MasterBeast (1).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[GapMoe] Attack on Titan - S01 (BD 1080p AV1 Opus 2.0) (Multi-A…\nAttack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv\n👤 92 💾 684.28 MB ⚙️ TorrentGalaxy\nDubbed / Multi Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b35e0cd58801b268472e9b069e5a12c98896af83/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b35e0cd58801b268472e9b069e5a12c98896af83",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[GapMoe] Attack on Titan - S01 (BD 1080p x265 FLAC 2.0) (Multi-A…\nAttack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.x265.FLAC.2.0-GapMoe.mkv\n👤 37 💾 4.23 GB ⚙️ TorrentGalaxy\nDubbed / Multi Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b8b49b5296ceebd3371e85245c5daa7f457c6ab1/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.x265.FLAC.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b8b49b5296ceebd3371e85245c5daa7f457c6ab1",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.REPACK.MULTi.x265.FLAC.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Attack On Titan (Shingeki No Kyojin) S01 1080p .MP4\nAoT - 1-13 MP4/Attack on Titan S01E01 To You, Two Thousand Years Later.mp4\n👤 2 💾 744.37 MB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cc7b762354856bdc75aef504d88fb3a4fa411a6b/<opaque>/Attack on Titan S01E01 To You, Two Thousand Years Later.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|cc7b762354856bdc75aef504d88fb3a4fa411a6b",
+        "filename": "Attack on Titan S01E01 To You, Two Thousand Years Later.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Attack.on.Titan.S01.1080p.BluRay.REPACK2.MULTi.x265.FLAC.2.0-GapMoe\nAttack.on.Titan.S01E01.1080p.BluRay.REPACK2.MULTi.x265.FLAC.2.0-GapMoe.mkv\n👤 1 💾 4.19 GB ⚙️ nekoBT\nDubbed / Multi Audio / 🇬🇧 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9a6d40023024bf7f3429974fab885a7bf3773f16/<opaque>/Attack.on.Titan.S01E01.1080p.BluRay.REPACK2.MULTi.x265.FLAC.2.0-GapMoe.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9a6d40023024bf7f3429974fab885a7bf3773f16",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.REPACK2.MULTi.x265.FLAC.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[v2] Attack On Titan 01-13 (BD 1280x720 Hi10P FLAC)\n[v2] Attack on Titan - 01 (BD 1280x720 Hi10P FLAC) [82F9CC35].mkv\n👤 5 💾 1.43 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ebe555e84c37022af424424467f5b3d7c0b8dddd/[v2] Attack on Titan - 01 (BD 1280x720 Hi10P FLAC) [82F9CC35].mkv/6/[v2] Attack on Titan - 01 (BD 1280x720 Hi10P FLAC) [82F9CC35].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ebe555e84c37022af424424467f5b3d7c0b8dddd",
+        "filename": "[v2] Attack on Titan - 01 (BD 1280x720 Hi10P FLAC) [82F9CC35].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[Ryuuga] - Attack on Titan S01-S03 - [720p-AAC LC-x264] - [Multi-Subs]\nAttack on Titan S01 [720p] [Ryuuga]/[Ryuuga] - Attack on Titan - 01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1) [720p].mkv\n👤 2 💾 712.44 MB ⚙️ NyaaSi\nMulti Subs",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bb57fbf1ee6696f22f74c876344d5f1f3c166c18/[Ryuuga] - Attack on Titan - 01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1) [720p].mkv/0/[Ryuuga] - Attack on Titan - 01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1) [720p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bb57fbf1ee6696f22f74c876344d5f1f3c166c18",
+        "filename": "[Ryuuga] - Attack on Titan - 01 - To You, 2,000 Years in the Future -The Fall of Zhiganshina (1) [720p].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[CBM] Attack on Titan 1-13 (Dual Audio) [BDRip-720p-8bit]\n[CBM]_Attack_on_Titan_-_01_-_To_You,_in_2000_Years_[720p]_[35B8E600].mkv\n👤 2 💾 740.83 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/142999861625b86244545a7c6b72b6e7036b3d0b/<opaque>/[CBM]_Attack_on_Titan_-_01_-_To_You,_in_2000_Years_[720p]_[35B8E600].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|142999861625b86244545a7c6b72b6e7036b3d0b",
+        "filename": "[CBM]_Attack_on_Titan_-_01_-_To_You,_in_2000_Years_[720p]_[35B8E600].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Unofficial Shingeki no Kyojin - Attack on Titan - Batch (Bluray 720p Hi10 FLAC)\n[Un-official] Shingeki no Kyojin - 01 (Bluray 720p Hi10 FLAC).mkv\n👤 2 💾 811.57 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b3d3fc5200bff4e9f1b3a25af5896da65893387/[Un-official] Shingeki no Kyojin - 01 (Bluray 720p Hi10 FLAC).mkv/0/[Un-official] Shingeki no Kyojin - 01 (Bluray 720p Hi10 FLAC).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5b3d3fc5200bff4e9f1b3a25af5896da65893387",
+        "filename": "[Un-official] Shingeki no Kyojin - 01 (Bluray 720p Hi10 FLAC).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[HorribleRips] Attack on Titan S1 [720p]\n[HorribleRips] Attack on Titan S1 - 01 [720p].mkv\n👤 1 💾 711.91 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8b42aa0ebd62e9af4e71e344580bfe42637a8f33/<opaque>/[HorribleRips] Attack on Titan S1 - 01 [720p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8b42aa0ebd62e9af4e71e344580bfe42637a8f33",
+        "filename": "[HorribleRips] Attack on Titan S1 - 01 [720p].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[HorribleSubs] Shingeki no Kyojin (01-25) [720p] (Batch)\n[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv\n👤 1 💾 329.09 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/33630a68ef4b85af4f865c54fb88b083ed396c33/<opaque>/[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|33630a68ef4b85af4f865c54fb88b083ed396c33",
+        "filename": "[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[AddisonReleaseGroup] Attack on Titan/Shingeki no Kyojin (Dub) + OVA 1-5 + Drama Specials 1-6 + Movie Recap 1 (720p 480p 576p)\n[AddisonReleaseGroup] Attack on Titan - 01.mp4\n👤 1 💾 238.45 MB ⚙️ NyaaSi\nDubbed",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ff2317186e3eed609a4d971844a2209369c90cc1/<opaque>/[AddisonReleaseGroup] Attack on Titan - 01.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ff2317186e3eed609a4d971844a2209369c90cc1",
+        "filename": "[AddisonReleaseGroup] Attack on Titan - 01.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[denpa] Shingeki no Kyojin (Attack on Titan) - 01 [DUB CNHD 720p 5.1][5A3C068E].mkv\n👤 1 💾 611.72 MB ⚙️ NyaaSi\nDubbed",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/834caf7ad0679f4b6cdf9fbc00fa0d9cbe5e8a9f/[denpa] Shingeki no Kyojin (Attack on Titan) - 01 [DUB CNHD 720p 5.1][5A3C068E].mkv/0/[denpa] Shingeki no Kyojin (Attack on Titan) - 01 [DUB CNHD 720p 5.1][5A3C068E].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|denpa",
+        "filename": "[denpa] Shingeki no Kyojin (Attack on Titan) - 01 [DUB CNHD 720p 5.1][5A3C068E].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Shingeki no Kyojin - 01 [720p]\n👤 1 💾 329.18 MB ⚙️ HorribleSubs",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/906e8e1abfb18cee522064abaf17d7555b4421ed/<opaque>/[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HorribleSubs",
+        "filename": "[HorribleSubs] Shingeki no Kyojin - 01 [720p].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Shingeki no Kyojin) Serie Anime Temp 1 al 4 (Castellano)\nAtaque a los Titanes Película Parte 1 El arco y la flecha escarlatas.avi\n👤 3 💾 1.93 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a46d0c902386d6a4219d1fd88e43ba4f56ba96d/<opaque>/Ataque a los Titanes Película Parte 1 El arco y la flecha escarlatas.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8a46d0c902386d6a4219d1fd88e43ba4f56ba96d",
+        "filename": "Ataque a los Titanes Película Parte 1 El arco y la flecha escarlatas.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Shingeki no Kyojin) Serie Anime Temp 1 al 4 (Castellano)\nAtaque a los Titanes Pelicula de Live action 1 (2015).avi\n👤 3 💾 1.63 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a46d0c902386d6a4219d1fd88e43ba4f56ba96d/Ataque a los Titanes Pelicula de Live action 1 (2015).avi/109/Ataque a los Titanes Pelicula de Live action 1 (2015).avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8a46d0c902386d6a4219d1fd88e43ba4f56ba96d",
+        "filename": "Ataque a los Titanes Pelicula de Live action 1 (2015).avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Shingeki no Kyojin) Serie Anime Temp 1 al 4 (Castellano)\nAtaque a los Titanes Ova 01 El diario de Ilse Lat.mp4\n👤 3 💾 223.81 MB ⚙️ Wolfmax4k\n🇪🇸 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a46d0c902386d6a4219d1fd88e43ba4f56ba96d/<opaque>/Ataque a los Titanes Ova 01 El diario de Ilse Lat.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8a46d0c902386d6a4219d1fd88e43ba4f56ba96d",
+        "filename": "Ataque a los Titanes Ova 01 El diario de Ilse Lat.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Shingeki no Kyojin) Serie Anime Temp 1 al 4 (Castellano)\nAtaque a los Titanes Junior High 01x01.mkv\n👤 3 💾 543.52 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a46d0c902386d6a4219d1fd88e43ba4f56ba96d/<opaque>/Ataque a los Titanes Junior High 01x01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8a46d0c902386d6a4219d1fd88e43ba4f56ba96d",
+        "filename": "Ataque a los Titanes Junior High 01x01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Shingeki no Kyojin) Serie Anime Temp 1 al 4 (Castellano)\nAtaque a los Titanes 01x01_Aquí,_Dentro_De_Dos_Mil_Años_La_Caída_De.mp4\n👤 3 💾 176.89 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a46d0c902386d6a4219d1fd88e43ba4f56ba96d/<opaque>/Ataque a los Titanes 01x01_Aquí,_Dentro_De_Dos_Mil_Años_La_Caída_De.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8a46d0c902386d6a4219d1fd88e43ba4f56ba96d",
+        "filename": "Ataque a los Titanes 01x01_Aquí,_Dentro_De_Dos_Mil_Años_La_Caída_De.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Ultimate Collection)\nAttack on Titan Season 1/Attack on Titan - 01.mkv\n👤 2 💾 544.57 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6bf4624ba3a078b0f3414555fa2acf6d7bf1c70/<opaque>/Attack on Titan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d6bf4624ba3a078b0f3414555fa2acf6d7bf1c70",
+        "filename": "Attack on Titan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Attack On Titan (Ultimate Collection)\nAttack on Titan OAD/Attack on Titan OAD - 01.mkv\n👤 2 💾 524.58 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6bf4624ba3a078b0f3414555fa2acf6d7bf1c70/<opaque>/Attack on Titan OAD - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d6bf4624ba3a078b0f3414555fa2acf6d7bf1c70",
+        "filename": "Attack on Titan OAD - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "[Exiled-Destiny] Attack On Titan Ep1-25 (Dual Audio)\n[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv\n👤 2 💾 455.9 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/88d8ffadb0e0e265f85e4af8ca59311a5ba99eed/[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv/24/[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|88d8ffadb0e0e265f85e4af8ca59311a5ba99eed",
+        "filename": "[Exiled-Destiny]_Attack_On_Titan_Ep01_(8B3C5610).mkv"
+      }
+    }
+  ]
+}

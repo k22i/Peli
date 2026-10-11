@@ -1,0 +1,3801 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "shogun-s01e01",
+  "request": "https://comet.elfhosted.com/<config>/stream/series/tt2788316%3A1%3A1.json",
+  "recordedAt": "2026-10-11T12:06:37.594Z",
+  "status": 200,
+  "ms": 1383,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d408728d78127f48eaaf4ebe649f9517889b86c7",
+        "filename": "Shogun.S01E01.2160p.WEB-DL.DV.HDR10.PLUS.DDP5.1.H265.MKV-BEN.THE.MEN.mkv",
+        "videoSize": 8235926375
+      },
+      "description": "📄 Shogun.S01E01.2160p.WEB-DL.DV.HDR10.PLUS.DDP5.1.H265.MKV-BEN.THE.MEN.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.7 GB 🔎 Comet|TorrentGalaxyClone",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8f86a79df33259a6e7c6fbbbafa909c6a74a76ab",
+        "filename": "Shogun.S01E01.2160p.WEB-DL.DV.HDR10.PLUS.DDP5.1.H265.MKV-BEN.THE.MEN.mkv",
+        "videoSize": 8235926375
+      },
+      "description": "📄 Shogun.S01E01.2160p.WEB-DL.DV.HDR10.PLUS.DDP5.1.H265.MKV-BEN.THE.MEN.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.7 GB 🔎 StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|de945d41dfd9ad0ee7957551dc20dcbe7357012b",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 7583725058
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n👤 0 💾 7.1 GB 🔎 Comet|torbox",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cd52d1cd543c16df9df6527d19e955effc84ad44",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 7583725058
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 7.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ca9ce4ea0a415189209b76d0b199e1d83d2954fd",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.x265-FLUX_EniaHD.mkv",
+        "videoSize": 7985636677
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.x265-FLUX_EniaHD.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK\n💾 7.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9b50ce95dbb2cbdb37674b77650cfde932b47f8",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 7583725058
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 7.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a780c8f2a26744d2de2764993834ae4cc4d751a0",
+        "filename": "Shogun.2024.S01E01.Anjin.ITA.ENG.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv",
+        "videoSize": 7716996727
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.ITA.ENG.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.2 GB 🔎 Comet|TorrentGalaxyClone\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c6b2a7c7944601e03611a0fbfe6609b3a913914",
+        "filename": "Shogun 2024 S01E01 Anjin 2160p DSNP WEB-DL DDP5 1 DV HDR H 265-Kitsune.mkv",
+        "videoSize": 8315027204
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin 2160p DSNP WEB-DL DDP5 1 DV HDR H 265-Kitsune.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n👤 338 💾 7.7 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|35fca22d6e1912376e0452590bebfa9d0cf75b86",
+        "filename": "Shogun.2024.S01E01.WEBDL.2160p.3xUkr.Eng.mkv",
+        "videoSize": 8086797291
+      },
+      "description": "📄 Shogun.2024.S01E01.WEBDL.2160p.3xUkr.Eng.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ KRATOS\n💾 7.5 GB 🔎 Comet|DMM\n🇬🇧",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0c56d68fefaf80d1e2d4807bfefb7f8a5837b24e",
+        "filename": "Shogun.2024.S01E01.2160p.DV.HDR10.PLUS.DDP5.1.x265.MP4-BEN.THE.MEN.mp4",
+        "videoSize": 8238648889
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.DV.HDR10.PLUS.DDP5.1.x265.MP4-BEN.THE.MEN.mp4\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n💾 7.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|48a2eb7940c61beb84f91a567a276c3767bd6d82",
+        "filename": "shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8235841948
+      },
+      "description": "📄 shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ successfulcrab\n💾 7.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3ebedd78697adb21c8fe6f3393747aa6eac92a86",
+        "filename": "shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8235841948
+      },
+      "description": "📄 shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ successfulcrab\n💾 7.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dffabeee1d1ae1727a0881c049628c9cc60b87f4",
+        "filename": "Shōgun - S01E01 - L'Anjin 2160p.DV.HDR.x265-Amen.mkv",
+        "videoSize": 2037891984
+      },
+      "description": "📄 Shōgun - S01E01 - L'Anjin 2160p.DV.HDR.x265-Amen.mkv\n📹 hevc • DV • HDR\n🏷️ Amen\n👤 69 💾 1.9 GB 🔎 Comet|Ygg API",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3b04cf0b528fca738483a7eb54e9463c4360ca5",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 7641172486
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 7.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bc03345b63e8d48621ae415b6c839af9d0ad0fe9",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aea707cf83bae1c0c604fd3f489e51885b1d17d0",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99e89a6e02edfdbf1f766b0bd8526864c565a11d",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8dd63945d11df194916ffd9e1dde5a460ad46046",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6aad6df171eaaa6c01c9ef001795778eddbe5370",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8722063973
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3bc099a9e1e4b33b24a9fc11af1764601f9070a4",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2eb5a8788f7b26772376a56cc4e11955fcf55355",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9c3efea1cf8fab343912cfea908c985b6e8eeee3",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv",
+        "videoSize": 8724660779
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv\n📹 DV • HDR\n💾 8.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8494c1e3270de94035379aa52ef005922be2651a",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv",
+        "videoSize": 8724660779
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv\n📹 DV • HDR\n💾 8.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1cc454e625d72fccf92dd7a24cea60fe50c9b967",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv",
+        "videoSize": 8978988637
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv\n📹 DV • HDR\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ebd2ececc1de757c1c8275ea0f1e012381ec1fcd",
+        "filename": "Shogun.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-ZeroTwo.Dual-SHAKA.mkv",
+        "videoSize": 7718019339
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-ZeroTwo.Dual-SHAKA.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SHAKA\n💾 7.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d272741549ac5fe66ac97f5136a2ad08f264df86",
+        "filename": "Shogun.2024.S01E01.2160p.HDR10+.DV.WEBRip.x265-10bit.Opus_5.1.mkv",
+        "videoSize": 1973079737
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.HDR10+.DV.WEBRip.x265-10bit.Opus_5.1.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 5.1\n⭐ WEBRip\n💾 1.8 GB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d96bd301317e1c72485a09c5beae4d3a3315ab7b",
+        "filename": "Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 7716924738
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 7.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|93b04218995854f2e52d665e80280b2283695955",
+        "filename": "Shogun.2024.S01E01.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 1961269747
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • DV • HDR10+\n⭐ WEBRip | 🏷️ PSA\n💾 1.8 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|09806119efdbfa34be4debe587ca34f38d1b1559",
+        "filename": "Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 7716924738
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 7.2 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|da19d9f61cb39af243651caf3f9648017dc1f234",
+        "filename": "Shogun.S01E01.2160p.WEB-DL.DV.P5.DDP5.1.H265.MKV-BEN.THE.MEN.mkv",
+        "videoSize": 8585025098
+      },
+      "description": "📄 Shogun.S01E01.2160p.WEB-DL.DV.P5.DDP5.1.H265.MKV-BEN.THE.MEN.mkv\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.0 GB 🔎 Comet|TorrentGalaxyClone",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2932aaf56d0f9cbf329a4c9706862c7b1be7a2e9",
+        "filename": "Shogun.S01E01.2160p.WEB-DL.DV.P5.DDP5.1.H265.MP4-BEN.THE.MEN.mp4",
+        "videoSize": 8587261010
+      },
+      "description": "📄 Shogun.S01E01.2160p.WEB-DL.DV.P5.DDP5.1.H265.MP4-BEN.THE.MEN.mp4\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.0 GB 🔎 Comet|TorrentGalaxyClone",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|756bafa9aed002ecb5ee63b2df91584329a42385",
+        "filename": "Shogun.2024.S01E01.2160p.WEB-DL.DV.P5.HEVC-Нечипорук.mp4",
+        "videoSize": 8827714773
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.WEB-DL.DV.P5.HEVC-Нечипорук.mp4\n📹 hevc • DV\n⭐ WEB-DL | 🏷️ Нечипорук\n💾 8.2 GB 🔎 Comet|Knaben\n🇷🇺",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|15b686846a41d14720aceb9f53510a022683c2a7",
+        "filename": "Shogun.2024.S01E01.2160p.WEB-DL.DV.P5.HEVC-Нечипорук.mp4",
+        "videoSize": 8827714773
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.WEB-DL.DV.P5.HEVC-Нечипорук.mp4\n📹 hevc • DV\n⭐ WEB-DL | 🏷️ Нечипорук\n💾 8.2 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|701f6a17e95579d9148cb02d4093dd85245bd927",
+        "filename": "Shogun.2024.S01E01.MULTi.2160p.WEBRiP.DV.HDR.AV1-BTT.mkv",
+        "videoSize": 4421265614
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.2160p.WEBRiP.DV.HDR.AV1-BTT.mkv\n📹 av1 • DV • HDR\n⭐ WEBRip | 🏷️ BTT\n💾 4.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|221461a22c4a402adb1721f56d0a8af50de01056",
+        "filename": "Shogun.2024.S01E01.MULTi.2160p.WEBRiP.DV.HDR.AV1-BTT.mkv",
+        "videoSize": 4421265614
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.2160p.WEBRiP.DV.HDR.AV1-BTT.mkv\n📹 av1 • DV • HDR\n⭐ WEBRip | 🏷️ BTT\n💾 4.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|097bfb15e828e0750585a49a7a87a2ab9b34aa45",
+        "filename": "Shogun.S01E01.Anjin.WebDL.2160p.Hevc.HDR..E-AC3+AC3.ITA.ENG.SUBS.K-Z.mkv",
+        "videoSize": 8096664067
+      },
+      "description": "📄 Shogun.S01E01.Anjin.WebDL.2160p.Hevc.HDR..E-AC3+AC3.ITA.ENG.SUBS.K-Z.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • Dolby Digital\n⭐ WEB-DL\n💾 7.5 GB 🔎 Comet|TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d7d3f1718d205cab2aa7e8cbadfe5e2c2603386a",
+        "filename": "Shogun.S01E01.MULTI.VFI.2160p.DSNP.WEB-DL.DV.DDP.5.1.HEVC-HYPERION.mkv",
+        "videoSize": 8700025074
+      },
+      "description": "📄 Shogun.S01E01.MULTI.VFI.2160p.DSNP.WEB-DL.DV.DDP.5.1.HEVC-HYPERION.mkv\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ HYPERION\n💾 8.1 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d0299c2187edd074e39ad7937ae407bd24b716a6",
+        "filename": "Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|93dbe44f8fa614efb1ca0e83a114518fb5879e82",
+        "filename": "Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e5c06e91cf1f082b5473851c3f7b8f97fcbf63a",
+        "filename": "Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1bde054fa4081256bb619f2ab06ccd25b9c75a77",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9af8691495c8b2a5f9fdea87b8e11bdfdd776d58",
+        "filename": "Shōgun 2024 4K HDR10 S01 EP.01 Anjin..mkv",
+        "videoSize": 9677282827
+      },
+      "description": "📄 Shōgun 2024 4K HDR10 S01 EP.01 Anjin..mkv\n📹 HDR • 10bit\n💾 9.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f5f5bf8bb72ec4e1c081a2e3e4639e507f9e57c7",
+        "filename": "Shogun.2024.S01E01.2160p.HDR.Master5.mkv",
+        "videoSize": 9060460347
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.HDR.Master5.mkv\n📹 HDR\n💾 8.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|86f648fad400e6d7771b6649b204d87ed44cd596",
+        "filename": "Shogun.2024.S01E01.MULTi.2160p.DSNP.WEB-DL.HDR.HEVC.DDP5.1-K83.mkv",
+        "videoSize": 7693488588
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.2160p.DSNP.WEB-DL.HDR.HEVC.DDP5.1-K83.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8982e0c3caf72171b5c54598d1bb09c2d0f541c5",
+        "filename": "Shogun.S01E01.Anjin.2160p.Disney.WEB-DL.DDP.5.1.H.265-BlackTV.mkv",
+        "videoSize": 10020894956
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.Disney.WEB-DL.DDP.5.1.H.265-BlackTV.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BlackTV\n👤 3 💾 9.3 GB 🔎 Comet|blacktv",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|93758897a56b4f917496caceda23452566f32368",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8196194681
+      },
+      "description": "📄 shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 7.6 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6d97f2abb49798b1725a97df0cab20e3ca7b7c8f",
+        "filename": "Shogun.S01E01.WEB-DL.2160p.3xUkr.Eng-MAZEPA.mkv",
+        "videoSize": 8254285728
+      },
+      "description": "📄 Shogun.S01E01.WEB-DL.2160p.3xUkr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n💾 7.7 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e84b24872b878a5ce14d6294792bf1ad5c2ab5a6",
+        "filename": "Shogun.S01E01.Anjin.2160p.SDR.mkv",
+        "videoSize": 11161969147
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.SDR.mkv\n📹 SDR\n💾 10.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b8a3ad7f5584e6ff5a7149b17903c07945a3d8ff",
+        "filename": "fulcrum-shogun.s01e01.2160p.dvhdr.mkv.mkv",
+        "videoSize": 7582639706
+      },
+      "description": "📄 fulcrum-shogun.s01e01.2160p.dvhdr.mkv.mkv\n💾 7.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a0ecd364036a42b4d4088557a155e0c056810e25",
+        "filename": "Shōgun S01E01 4K [ProtonMovies].mkv",
+        "videoSize": 8197086252
+      },
+      "description": "📄 Shōgun S01E01 4K [ProtonMovies].mkv\n👤 12 💾 7.6 GB 🔎 Comet|torrentscsv",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1a60dbcc59e1c1e9e9979e7af62aec76c0c22d44",
+        "filename": "Shogun.2024.S01E01.Eng.Fre.Ger.Ita.Por.Spa.2160p.WEBMux.DV.HDR.HEVC.DDP-SGF.mkv",
+        "videoSize": 8390332490
+      },
+      "description": "📄 Shogun.2024.S01E01.Eng.Fre.Ger.Ita.Por.Spa.2160p.WEBMux.DV.HDR.HEVC.DDP-SGF.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus\n⭐ WEBMux | 🏷️ SGF\n💾 7.8 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇫🇷/🇪🇸/🇵🇹/🇮🇹/🇩🇪",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d2a48411917ce5b921ada602d46a798d1be397ac",
+        "filename": "Shogun 2024 S01E01 Anjin HULU WEBRip SDR 10Bit 1440p DDP5.1 HEVC-3Li.mkv",
+        "videoSize": 4615819226
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin HULU WEBRip SDR 10Bit 1440p DDP5.1 HEVC-3Li.mkv\n📹 hevc • SDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ 3Li\n💾 4.3 GB 🔎 Comet|TorrentGalaxyClone",
+      "name": "[TB⚡] Comet 1440p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4827f7649ea19d53c3d5ba41f98ec4a1617b52f2",
+        "filename": "Shogun.S01E01.Anjin.WEB-DL.1080p.E-AC3+AC3.ITA.ENG.SUBS.mkv",
+        "videoSize": 1863144199
+      },
+      "description": "📄 Shogun.S01E01.Anjin.WEB-DL.1080p.E-AC3+AC3.ITA.ENG.SUBS.mkv\n📹 hevc | 🔊 Dolby Digital Plus • Dolby Digital\n⭐ WEB-DL\n👤 19 💾 1.7 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9fc93a3f8959aba0dba7adaa4622ca23fe7b38b0",
+        "filename": "Shogun 2024 S01E01 Anjin REPACK 1080p DSNP WEB-DL DDP5 1 H 264-FLUX.mkv",
+        "videoSize": 3698772822
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin REPACK 1080p DSNP WEB-DL DDP5 1 H 264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 3.4 GB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af1a40ea309abe8dd5ff5f6d7f164a6bfc0d727c",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.DDP5.1.H264-BEN.THE.MEN.mkv",
+        "videoSize": 4100965051
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.DDP5.1.H264-BEN.THE.MEN.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.8 GB 🔎 Comet|TorrentGalaxyClone\n🌎/🇬🇧/💃🏻/🇪🇸/🇵🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ab7866a73b087a149e225a4d8173c20a2cdffd76",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3698838269
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.4 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a42ef62bc257c29059d046b467d4347af0bfa80c",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.DDP5.1.x.264-KIN.mkv",
+        "videoSize": 2436300442
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.DDP5.1.x.264-KIN.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ KIN\n💾 2.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9c3be7d10e315bb7999600d7b8be04997034464b",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv",
+        "videoSize": 3899133339
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Jaskier\n💾 3.6 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8201f317a8a4f1cb1c16593195de2296da4c3c95",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv",
+        "videoSize": 3899133339
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Jaskier\n💾 3.6 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|78f81d66495010ddd5533e3d42a79f7ff33457db",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 3727405201
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 3.5 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7316adbbec2cac87dff9ac35961650fd6316d53f",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 3727405201
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 3.5 GB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6638fedd088c439dda5e503bef162eedf2ebfd31",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Kitsune.mkv",
+        "videoSize": 3698779991
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 3.4 GB 🔎 Comet|Uindex",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6545d5dc0d0e439cf7350327280a6e4e980a1f26",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3698838269
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|62085ac775ea3841bf3cb8479e666259ffb7d791",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv",
+        "videoSize": 4976499533
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|538a49cd06b91516f548cd863094a43c2a054de8",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv",
+        "videoSize": 3899134634
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Jaskier\n💾 3.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8829c6d591bdc6efe4e7eeefbd28e65ae93894bd",
+        "filename": "Shogun.2024.S01e01.WEBDL.1080p.h265.10bit.Ukr.Eng.mkv",
+        "videoSize": 1596926213
+      },
+      "description": "📄 Shogun.2024.S01e01.WEBDL.1080p.h265.10bit.Ukr.Eng.mkv\n📹 hevc • 10bit\n⭐ WEB-DL\n💾 1.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|752d29e9dca5299deeccdabb8fcc8d1e7253f186",
+        "filename": "Shōgun (2024) - S01E01 - Anjin (1080p DSNP WEB-DL x265 Silence).mkv",
+        "videoSize": 2497413308
+      },
+      "description": "📄 Shōgun (2024) - S01E01 - Anjin (1080p DSNP WEB-DL x265 Silence).mkv\n📹 hevc\n⭐ WEB-DL\n💾 2.3 GB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c6d792cc9832f0b0629f189d448e5ad9d924fdad",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv",
+        "videoSize": 1798310362
+      },
+      "description": "📄 Shogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv\n📹 hevc • 10bit\n🏷️ Me7alh\n💾 1.7 GB 🔎 DMM\n🌎/🇬🇧/🇪🇸/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9f71680a56278c28eefe3800b798200962881539",
+        "filename": "shogun.2024.s01e01.1080p.web.h264-successfulcrab.mkv",
+        "videoSize": 3131899787
+      },
+      "description": "📄 shogun.2024.s01e01.1080p.web.h264-successfulcrab.mkv\n📹 avc\n⭐ WEB | 🏷️ successfulcrab\n💾 2.9 GB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14000de0f4a6832586e7704f9a55f7c58950cfcf",
+        "filename": "Shogun (2024) 1x01 1080p x265 ita eng sub ita eng ac3.mkv",
+        "videoSize": 1077473517
+      },
+      "description": "📄 Shogun (2024) 1x01 1080p x265 ita eng sub ita eng ac3.mkv\n📹 hevc | 🔊 Dolby Digital\n💾 1.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a75472b1d79e29b1d718e17d7df818107ef02872",
+        "filename": "Shogun.2024.S01E01.1080p.x265-AMBER.mkv",
+        "videoSize": 1201752975
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.x265-AMBER.mkv\n📹 hevc\n🏷️ AMBER\n💾 1.1 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0c72f2ec7762d73c446b89327dfb6bca707ead5c",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 649903255
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 619.8 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|30bed5bcf6e6167725001af7d37f2212565fcac4",
+        "filename": "Shogun.S01E01.Anjin.WEB-DL.1080p.E-AC3+AC3.ITA.ENG.SUBS.S-K.mkv",
+        "videoSize": 5915121492
+      },
+      "description": "📄 Shogun.S01E01.Anjin.WEB-DL.1080p.E-AC3+AC3.ITA.ENG.SUBS.S-K.mkv\n🔊 Dolby Digital Plus • Dolby Digital\n⭐ WEB-DL\n👤 2 💾 5.5 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|700f3b33e839e1d1409946fed04077b697fb2c85",
+        "filename": "Shōgun.2024.S01E01.1080p.WEB-DL.ENG.LATINO.DDP5.1.MKV-BEN.THE.MEN.mkv",
+        "videoSize": 4966529938
+      },
+      "description": "📄 Shōgun.2024.S01E01.1080p.WEB-DL.ENG.LATINO.DDP5.1.MKV-BEN.THE.MEN.mkv\n🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.6 GB 🔎 Comet|Knaben\n🌎/🇬🇧/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ea73f1b10d14c8ef7bb332c1c7ec5cc224826e62",
+        "filename": "Shogun.S01.E01.2024.WEB-DL.1080p.ExKinoRay.mkv",
+        "videoSize": 3798539143
+      },
+      "description": "📄 Shogun.S01.E01.2024.WEB-DL.1080p.ExKinoRay.mkv\n⭐ WEB-DL\n💾 3.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|95384ed3400e1d6a14ac30a911eeb577bc1b3e6e",
+        "filename": "Shogun.S01E01.WEB-DL.1080p.3xUkr.Eng-MAZEPA.mkv",
+        "videoSize": 4369393216
+      },
+      "description": "📄 Shogun.S01E01.WEB-DL.1080p.3xUkr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n💾 4.1 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6fa19cca1d557f778f69d9aa4dab1d737668ea7a",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 4571873369
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 4.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a4b60324d24b6699044e0ef6a6507949be7352c",
+        "filename": "Shogun S01E01 (2024) WEB-DL 1080p [Ukr_Eng] [Hurtom].mkv",
+        "videoSize": 3301413424
+      },
+      "description": "📄 Shogun S01E01 (2024) WEB-DL 1080p [Ukr_Eng] [Hurtom].mkv\n⭐ WEB-DL\n💾 3.1 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52cb57c7291a3c165168ee2e6e3483c03aca4c65",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv",
+        "videoSize": 4033416370
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n⭐ WEB-DL\n💾 3.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|40b1914d413a25fcb3d66a19ba1f0dd903d872d3",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv",
+        "videoSize": 4033416370
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n⭐ WEB-DL\n💾 3.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|22c96a17a685ec0a810f67b4c329be7d8de31b36",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 5247790377
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 4.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1e3fc4cd8d7b94ce56c2f12043d4b3ef12fb5069",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 5247790377
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 4.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|04ee39957b4eb55a1f74be5f55a18a9a8c07039e",
+        "filename": "Shogun.S01.E01.2024.WEB-DL.1080p.ExKinoRay.mkv",
+        "videoSize": 3799281250
+      },
+      "description": "📄 Shogun.S01.E01.2024.WEB-DL.1080p.ExKinoRay.mkv\n⭐ WEB-DL\n💾 3.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fb206b4221ba54301bdd6f216bfe2125e47713ef",
+        "filename": "Szogun.S01E01.MULTi.1080p.DSNP.WEB-DL.H264.DDP5.1-K83.mkv",
+        "videoSize": 3831951091
+      },
+      "description": "📄 Szogun.S01E01.MULTi.1080p.DSNP.WEB-DL.H264.DDP5.1-K83.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cc5efe2999be787495f32f8a25e30b17c3b5a72c",
+        "filename": "Shogun - S01E01 (1080p DS4K WEBRip HULU AV1 10bit English DDP5.1 ESub - SiaRa) - [MCX].mkv",
+        "videoSize": 1690902962
+      },
+      "description": "📄 Shogun - S01E01 (1080p DS4K WEBRip HULU AV1 10bit English DDP5.1 ESub - SiaRa) - [MCX].mkv\n📹 av1 • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip\n👤 1 💾 1.6 GB 🔎 Comet|BitMagnet\n🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa9882f595301003b88130487cf50a0f658b9331",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv",
+        "videoSize": 1346193925
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ HODL\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e6d13ca0bbdece69b2e2b28c174a2476b9dcf8d5",
+        "filename": "Shogun.S01E01.MULTi.1080p.SKST.WEB-DL.H.264-OzW.mkv",
+        "videoSize": 5782911999
+      },
+      "description": "📄 Shogun.S01E01.MULTi.1080p.SKST.WEB-DL.H.264-OzW.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ OzW\n👤 1 💾 5.4 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|64696047c9f72c21a2b317ab4ea90a5e7dcae222",
+        "filename": "Shogun.2024.S01E01.1080p.10bit.WEBRip.AAC.6CH.x265.HEVC-PSA (CzTitulky).mkv",
+        "videoSize": 960092682
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.10bit.WEBRip.AAC.6CH.x265.HEVC-PSA (CzTitulky).mkv\n📹 hevc • 10bit | 🔊 AAC\n⭐ WEBRip | 🏷️ CzTitulky\n💾 915.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6044921ac48c7e49938acf88000754f18a97b2b5",
+        "filename": "Xógum - A Gloriosa Saga do Japão S01E01 WEB-DL 1080p x264 DUAL 5.1.mkv",
+        "videoSize": 3834662048
+      },
+      "description": "📄 Xógum - A Gloriosa Saga do Japão S01E01 WEB-DL 1080p x264 DUAL 5.1.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n👤 13 💾 3.6 GB 🔎 CometNet|ElfHosted\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a50ff4b8310127696b5d8a4631d1cb3937f1e57d",
+        "filename": "Shogun.1x01.Anjin.ITA.ENG.1080p.DSNP.WEBRip.AAC.x265-Pir8.mkv",
+        "videoSize": 1043098890
+      },
+      "description": "📄 Shogun.1x01.Anjin.ITA.ENG.1080p.DSNP.WEBRip.AAC.x265-Pir8.mkv\n📹 hevc | 🔊 AAC\n⭐ WEBRip | 🏷️ Pir8\n👤 3 💾 994.8 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|49a2ae01c182217be9b0bd9e5c0aabc903408b6a",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 2225185957
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 2.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0ddae057c91d683ec98f5d44a6c7a015cb5e876c",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 3832043636
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 3.6 GB 🔎 Comet|Uindex\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a2b08011dfac660d503847ce49e0aa1417ecdddf",
+        "filename": "Shogun_Сёгун.S01E01.1080p.WEBRip.H265.HEVC.RUS.ENG.mkv",
+        "videoSize": 1061745416
+      },
+      "description": "📄 Shogun_Сёгун.S01E01.1080p.WEBRip.H265.HEVC.RUS.ENG.mkv\n📹 hevc\n⭐ WEBRip\n💾 1012.6 MB 🔎 StremThru\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4b2b82a7cd1658da6c4f7ac8f8096564063bc994",
+        "filename": "Shogun.2024.S01E01.1080p.WEBRip.x265-KONTRAST.mp4",
+        "videoSize": 1406681633
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEBRip.x265-KONTRAST.mp4\n📹 hevc\n⭐ WEBRip | 🏷️ KONTRAST\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|208ec146b247ea8b04e272a370b5d44464c0b03f",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEBRip.AV1-DiN.mkv",
+        "videoSize": 1597320281
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEBRip.AV1-DiN.mkv\n📹 av1\n⭐ WEBRip | 🏷️ DiN\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0367adcffddc9bb4c6cc8d77e04b34df026cb9a4",
+        "filename": "Shogun.(2024).S01.E01.1080p.WEBRip.H265-JVC.mkv",
+        "videoSize": 2343758167
+      },
+      "description": "📄 Shogun.(2024).S01.E01.1080p.WEBRip.H265-JVC.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ JVC\n💾 2.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e478fe6785747ba664f58bc9b386cab5eb2603b0",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.DUAL.5.1.mkv",
+        "videoSize": 1424622240
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.DUAL.5.1.mkv\n🔊 5.1\n⭐ WEB-DL\n👤 13 💾 1.3 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|45262eb9a2c5d12743facb1696cbbd8b0ec157d3",
+        "filename": "Shōgun.S01E01.2024.WEB-DL.1080p-Dual-Lat.mkv",
+        "videoSize": 3832030352
+      },
+      "description": "📄 Shōgun.S01E01.2024.WEB-DL.1080p-Dual-Lat.mkv\n⭐ WEB-DL | 🏷️ Lat\n💾 3.6 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ea9cc68bc1e4900d55547b9385778d3e0f34c68e",
+        "filename": "Shōgun.S01e01.2024.1080P-Dual-Lat.mp4",
+        "videoSize": 1223787859
+      },
+      "description": "📄 Shōgun.S01e01.2024.1080P-Dual-Lat.mp4\n🏷️ Lat\n💾 1.1 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|87ef21c50f0ec0e715edef866346c7130f93a5b9",
+        "filename": "Shogun.2024.S01E01.MULTI.VFF.1080p.10bit.WEBRip.6CH.x265.HEVC-SERQPH.mkv",
+        "videoSize": 1449337449
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTI.VFF.1080p.10bit.WEBRip.6CH.x265.HEVC-SERQPH.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ SERQPH\n👤 3 💾 1.3 GB 🔎 Comet|unknown\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7622e9159ec8c9fec88a8e49ea36305f2bbdd6a9",
+        "filename": "Shōgun S01E01 [10Bit] [1080p.WEB-DL.H265.EAC3.5.1-FT] [JAP-Lektor PL] [Alusia].mkv",
+        "videoSize": 2630518530
+      },
+      "description": "📄 Shōgun S01E01 [10Bit] [1080p.WEB-DL.H265.EAC3.5.1-FT] [JAP-Lektor PL] [Alusia].mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 2.4 GB 🔎 Comet|StremThru\n🌎/🇯🇵/🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bb83a34da5aa5a93f8c3ebb1f01b0e7680c40807",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb[EZTVx.to].mkv",
+        "videoSize": 3698838269
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb[EZTVx.to].mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 42 💾 3.4 GB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6abbc9854b7cbbc8186576f3ffb878b1b83b262a",
+        "filename": "Shogun.2024.S01E01.Eng.Fre.Ger.Ita.Por.Spa.1080p.WEBMux.AVC.DDP-SGF.mkv",
+        "videoSize": 4505345026
+      },
+      "description": "📄 Shogun.2024.S01E01.Eng.Fre.Ger.Ita.Por.Spa.1080p.WEBMux.AVC.DDP-SGF.mkv\n📹 avc | 🔊 Dolby Digital Plus\n⭐ WEBMux | 🏷️ SGF\n💾 4.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇫🇷/🇪🇸/🇵🇹/🇮🇹/🇩🇪",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6fb34932db9070f49a35c7746bd8d41b213ecf81",
+        "filename": "shogun.2024.s01e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv",
+        "videoSize": 3131899787
+      },
+      "description": "📄 shogun.2024.s01e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ successfulcrab\n👤 26 💾 2.9 GB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|88fb1e41572d2286b7c0e57793dd6465d3d7d29b",
+        "filename": "Shogun.2024.S01E01.1080p.x265-AMBER[EZTVx.to].mkv",
+        "videoSize": 1201752975
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.x265-AMBER[EZTVx.to].mkv\n📹 hevc\n🏷️ AMBER\n💾 1.1 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c977e20294b2b94ecc7909479fa91ae3604cd838",
+        "filename": "Shogun.S01E01.1080p_[scarfilm.org].mkv",
+        "videoSize": 4132920657
+      },
+      "description": "📄 Shogun.S01E01.1080p_[scarfilm.org].mkv\n💾 3.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|843cb5c0cb1d686ae827d4f1c0494a147559b0f6",
+        "filename": "Shogun.2024.S01E01.1080p.DSNP-[y2flix.cc].mp4",
+        "videoSize": 1053987473
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.DSNP-[y2flix.cc].mp4\n💾 1005.2 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0e63d2b16ebce7572740ddf3b9a31a81d3fa41bf",
+        "filename": "Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv",
+        "videoSize": 2590969133
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv\n⭐ WEB-DLRip\n💾 2.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4b5a63648e64347b870e13ae3cada67a9b3c6368",
+        "filename": "shogun.2024.s01e01.multi.1080p.web.h264-higgsboson[EZTVx.to].mkv",
+        "videoSize": 3831982084
+      },
+      "description": "📄 shogun.2024.s01e01.multi.1080p.web.h264-higgsboson[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ higgsboson\n👤 2 💾 3.6 GB 🔎 EZTV\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b5c85b8fd8da00b4a2b53d291acb26916536fc54",
+        "filename": "Shogun 2024 S01E01 Anjin REPACK 720p DSNP WEB-DL DDP5 1 H 264-FLUX.mkv",
+        "videoSize": 1850492506
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin REPACK 720p DSNP WEB-DL DDP5 1 H 264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|64e1146e397d612d99749c3f30c3463b93823837",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB.mkv",
+        "videoSize": 1850563873
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8edf93ad4caca823230348ac5aab829490b2a76b",
+        "filename": "Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv",
+        "videoSize": 404195843
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv\n📹 hevc\n⭐ WEB | 🏷️ MiNX\n💾 385.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6445c2ad0ad08c5fe3ce888f25b8821b4ea63c6a",
+        "filename": "Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv",
+        "videoSize": 404195843
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv\n📹 hevc\n⭐ WEB | 🏷️ MiNX\n💾 385.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|add2cdf550aa3a338acb8e488915e5beddaf24f4",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.720p.h264.SubS-Me7alh.mkv",
+        "videoSize": 2557216492
+      },
+      "description": "📄 Shogun.2024.S01e01.Ita.Eng.Spa.720p.h264.SubS-Me7alh.mkv\n📹 avc\n🏷️ Me7alh\n💾 2.4 GB 🔎 Comet|Knaben\n🌎/🇬🇧/🇪🇸/🇮🇹",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8359deed6b2f1c722780439fd2a8897072e24795",
+        "filename": "Shogun.2024.S01E01.720p.x265-AMBER.mkv",
+        "videoSize": 721825292
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.x265-AMBER.mkv\n📹 hevc\n🏷️ AMBER\n💾 688.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0f97d2c7af8661632db4eb91472899e9bc95e49e",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.720p.h264.SubS-Me7alh.mkv",
+        "videoSize": 2557217174
+      },
+      "description": "📄 Shogun.2024.S01e01.Ita.Eng.Spa.720p.h264.SubS-Me7alh.mkv\n📹 avc\n🏷️ Me7alh\n💾 2.4 GB 🔎 DMM\n🌎/🇬🇧/🇪🇸/🇮🇹",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7ae4d03c661c7b87536c36e7cb37746ac362d0f4",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3357365991
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 3.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|17450155b3b2394a2b4ae4dd4ddb43dd1ce5ed27",
+        "filename": "Shogun.2024.S01E01.MULTI.720p.WEB.H264-TFA.mkv",
+        "videoSize": 1983723474
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTI.720p.WEB.H264-TFA.mkv\n📹 avc\n⭐ WEB | 🏷️ TFA\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9cd69d216b382319e9c7c4abea11dae8fa0766a",
+        "filename": "Shogun.2024.S01E01.720p.WEBRip.x265-PROTON.mp4",
+        "videoSize": 737252859
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEBRip.x265-PROTON.mp4\n📹 hevc\n⭐ WEBRip | 🏷️ PROTON\n💾 703.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4a06e6fc35ddb40902ffb6f60e043db4bbe9acf",
+        "filename": "Shogun.2024.S01E01.720p.DSNP.WEBRip.x264-GalaxyTV.mkv",
+        "videoSize": 513502835
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.DSNP.WEBRip.x264-GalaxyTV.mkv\n📹 avc\n⭐ WEBRip | 🏷️ GalaxyTV\n💾 489.7 MB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|59412ff487128acbca776d4e4c9a0c981b3e9ca7",
+        "filename": "Shogun.2024.S01E01.720p.x265-AMBER[EZTVx.to].mkv",
+        "videoSize": 721825292
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.x265-AMBER[EZTVx.to].mkv\n📹 hevc\n🏷️ AMBER\n💾 688.4 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6b67053a0455b97bf3098ea651be41a0ca37bac7",
+        "filename": "Shogun.2024.S01E01.720p.DSNP-[y2flix.cc].mp4",
+        "videoSize": 632486750
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.DSNP-[y2flix.cc].mp4\n💾 603.2 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|687a2cff5b1c09dbc4196ff605e6f2a05e4f035f",
+        "filename": "Shogun.2024.S01E01.480p.x264-AMBER.mkv",
+        "videoSize": 607605733
+      },
+      "description": "📄 Shogun.2024.S01E01.480p.x264-AMBER.mkv\n📹 avc\n🏷️ AMBER\n💾 579.5 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9c8b3d6baa87e953a5d3adc853f6cd77bb6222e7",
+        "filename": "Shogun.2024.S01E01.480p.x264-AMBER[EZTVx.to].mkv",
+        "videoSize": 607605733
+      },
+      "description": "📄 Shogun.2024.S01E01.480p.x264-AMBER[EZTVx.to].mkv\n📹 avc\n🏷️ AMBER\n💾 579.5 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e02c27561fc8fe01f1267e317149e81afa9c840",
+        "filename": "Shogun.2024.S01E01.WEB.x264-TORRENTGALAXY.mkv",
+        "videoSize": 514143714
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB.x264-TORRENTGALAXY.mkv\n📹 avc\n⭐ WEB | 🏷️ TORRENTGALAXY\n💾 490.3 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e6b1e9c6e56883926d1c19b88f94632071b21bbb",
+        "filename": "Shōgun - S01E01 - Anjin.mkv",
+        "videoSize": 1773289863
+      },
+      "description": "📄 Shōgun - S01E01 - Anjin.mkv\n🏷️ Anjin\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d8da1e5dce5fc432e08db2a79f6c355f1197958a",
+        "filename": "Shōgun_S01E01_Anjin.mp4",
+        "videoSize": 3132198842
+      },
+      "description": "📄 Shōgun_S01E01_Anjin.mp4\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b921ed4359875d80705e580f9a98636c1cc28cb7",
+        "filename": "Shogun.S01E01.mkv",
+        "videoSize": 1045397903
+      },
+      "description": "📄 Shogun.S01E01.mkv\n💾 997.0 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b5cd87c53a2094cb62acce20bd2634b26b874b19",
+        "filename": "Shogun S01E01.mp4",
+        "videoSize": 1976683727
+      },
+      "description": "📄 Shogun S01E01.mp4\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a6afc5ca556b66e9b06199e37eeec4bc3138df2c",
+        "filename": "Shōgun_S01E01_Anjin.mkv",
+        "videoSize": 8859878681
+      },
+      "description": "📄 Shōgun_S01E01_Anjin.mkv\n💾 8.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9f115e35e7909d03db4c49d6cf265a979320f3aa",
+        "filename": "Shōgun - S01E01 - Anjin.mkv",
+        "videoSize": 1071064303
+      },
+      "description": "📄 Shōgun - S01E01 - Anjin.mkv\n🏷️ Anjin\n💾 1021.4 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8c8a6b8dcc686366af63da2ba2780808d6426ab5",
+        "filename": "Shōgun_S01E01_Anjin.mkv",
+        "videoSize": 8859878681
+      },
+      "description": "📄 Shōgun_S01E01_Anjin.mkv\n💾 8.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6bba0020527f581c997300a30834e0a81cafffc8",
+        "filename": "Shogun - S01E01 - Anjin.mkv",
+        "videoSize": 624209748
+      },
+      "description": "📄 Shogun - S01E01 - Anjin.mkv\n🏷️ Anjin\n💾 595.3 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|325b56cd1d425d8a5f1996deaf96f8c0452ad0bb",
+        "filename": "Shōgun - S01E01 - Anjin.mkv",
+        "videoSize": 2321128990
+      },
+      "description": "📄 Shōgun - S01E01 - Anjin.mkv\n🏷️ Anjin\n💾 2.2 GB 🔎 Comet|TheRARBG",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|20233d92b5f384ebb6b48f05e2e919f5c3dd9c98",
+        "filename": "Shogun.2024.S01E01.400p.Newcomers.avi",
+        "videoSize": 875713068
+      },
+      "description": "📄 Shogun.2024.S01E01.400p.Newcomers.avi\n💾 835.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0f722a51db89c4f08da7fecb64d06661f7953d15",
+        "filename": "S01E01.mkv",
+        "videoSize": 3832030161
+      },
+      "description": "📄 S01E01.mkv\n💾 3.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e92a2ac0ecf1731bb0202e9afbaa18907a2bd2ca",
+        "filename": "Shogun.2024.S01E01.FRENCH.WEBRip.x264.mp4",
+        "videoSize": 586709050
+      },
+      "description": "📄 Shogun.2024.S01E01.FRENCH.WEBRip.x264.mp4\n📹 avc\n⭐ WEBRip\n💾 559.5 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2a479bebaf83d2601d3e66f56f932660d323a663",
+        "filename": "Shogun.S01E01.BDRip.RGzsRutracker.Celta88.avi",
+        "videoSize": 2863177728
+      },
+      "description": "📄 Shogun.S01E01.BDRip.RGzsRutracker.Celta88.avi\n⭐ BDRip\n👤 5 💾 2.7 GB 🔎 Comet|NoNaMe Club",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|867a82ac8c15f4d65a810da6fe5ae86eb0f87d14",
+        "filename": "Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 1247113966
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|731cc02d189cd966f18c8bda0cbc8f1719df6950",
+        "filename": "Shogun (2024) S01.E01. WEB-DLRip-AVC.mkv",
+        "videoSize": 1146484202
+      },
+      "description": "📄 Shogun (2024) S01.E01. WEB-DLRip-AVC.mkv\n📹 avc\n⭐ WEB-DLRip\n👤 2 💾 1.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b94b3ff3fa7065f4ee4824452f121b6b1aa864e0",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.ViruseProject.avi",
+        "videoSize": 872089600
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB-DLRip.ViruseProject.avi\n⭐ WEB-DLRip\n💾 831.7 MB 🔎 Comet|TheRARBG",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|66fb792dd542c26a3425e13fb6f6fe600480fec4",
+        "filename": "Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 1047836672
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n💾 999.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|32d0b553a8863793290415ede5608500225348aa",
+        "filename": "Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 1047836672
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n💾 999.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2c32fe2006fc9db40eb0386a50f6466b4624623b",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 912347136
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n💾 870.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0e94765ada176336e56b939d8507748cc35217cf",
+        "filename": "Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 1047836672
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n💾 999.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec6114d0cb7069935596f27f37a746c67166949b",
+        "filename": "Shogun.1x01.Anjin.ITA.ENG.DSNP.WEBRip.XviD-Pir8.avi",
+        "videoSize": 837906432
+      },
+      "description": "📄 Shogun.1x01.Anjin.ITA.ENG.DSNP.WEBRip.XviD-Pir8.avi\n📹 xvid\n⭐ WEBRip | 🏷️ Pir8\n💾 799.1 MB 🔎 Comet|TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b539d8b6308e8c2725e7139646c1024412f5430b",
+        "filename": "Shogun 1x1 HDTV XviD Castellano.avi",
+        "videoSize": 723978240
+      },
+      "description": "📄 Shogun 1x1 HDTV XviD Castellano.avi\n📹 xvid\n⭐ HDTV\n💾 690.4 MB 🔎 Comet|StremThru\n🇪🇸",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fb8359abbae35282cc381e004701f47e55fc7e5a",
+        "filename": "Shogun (2024) S01E01 (2160p HULU WEB-DL H265 DV HDR10+ DDP 5.1 English - HONE).mkv",
+        "videoSize": 8235864355
+      },
+      "description": "📄 Shogun (2024) S01E01 (2160p HULU WEB-DL H265 DV HDR10+ DDP 5.1 English - HONE).mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.7 GB 🔎 CometNet|ElfHosted\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|06074e962e4e28e8d6d51fc650a1571d36c79b43",
+        "filename": "Shogun (2024) S01E01 (2160p HULU WEB-DL H265 DV HDR10+ DDP 5.1 English - HONE).mkv",
+        "videoSize": 8235864355
+      },
+      "description": "📄 Shogun (2024) S01E01 (2160p HULU WEB-DL H265 DV HDR10+ DDP 5.1 English - HONE).mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 14 💾 7.7 GB 🔎 CometNet|ElfHosted\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ceaaa47efbb7fe01deb25911da7bbb8815248055",
+        "filename": "Shogun (2024) S01E01 (2160p DSNP WEB-DL Hybrid H265 DV HDR DDP 5.1 English - HONE) [PROPER].mkv",
+        "videoSize": 7540917665
+      },
+      "description": "📄 Shogun (2024) S01E01 (2160p DSNP WEB-DL Hybrid H265 DV HDR DDP 5.1 English - HONE) [PROPER].mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • PROPER\n💾 7.0 GB 🔎 CometNet|ElfHosted\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|90ff7aefd1607c91d7f23cb5b5b1d4fb0456a72b",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 7583725058
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n👤 47 💾 7.1 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a26321d4f942f5be4ca8ce450aa4c0d7e938b605",
+        "filename": "Shogun.2024.S01E01.2160p.DV.HDR10.PLUS.DDP5.1.x265.-BEN.THE.MEN.mkv",
+        "videoSize": 8267812044
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.DV.HDR10.PLUS.DDP5.1.x265.-BEN.THE.MEN.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n💾 7.7 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8b05e597ea2b9f2186cef62bf9e7025ed6a927e8",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HULU.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 8235863445
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HULU.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 7.7 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8414b7b1d2ee341667eefe89d984b77c46dde8b0",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX",
+        "videoSize": 7539782965
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-FLUX\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 7.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5b7f5444082176cc81c2ec6232a76ab3d4736818",
+        "filename": "Shogun 2024 S01E01 2160p DV HDR10 PLUS DDP5 1 x265 -BEN THE MEN mkv",
+        "videoSize": 8235989334
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.DV.HDR10.PLUS.DDP5.1.x265.-BEN.THE.MEN.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n💾 7.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3163ecc1c6a245ee59ab8cf55e78b9b93253625f",
+        "filename": "Shogun 2024 S01E01 Anjin ITA ENG 2160p DSNP WEB-DL DDP5 1 DV HDR H 265-MeM GP mkv",
+        "videoSize": 7720203714
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin ITA ENG 2160p DSNP WEB-DL DDP5 1 DV HDR H 265-MeM GP mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2a7a746f0cf2888f336701fa7e911cf2dcf15874",
+        "filename": "Shogun.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-KRATOS.mkv",
+        "videoSize": 8246681472
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-KRATOS.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ KRATOS\n💾 7.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|161c0975f9456dabe712543ac5c5265daa183bbf",
+        "filename": "Shogun.2024.S01E01.2160p.DSNP.WEB-DL.DDP5.1.HDR.DV.HEVC-FLUX",
+        "videoSize": 7539822838
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.DSNP.WEB-DL.DDP5.1.HDR.DV.HEVC-FLUX\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 0 💾 7.0 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|31b5d08aea59c97588bedc4a7a9b7cd84b687ffb",
+        "filename": "Shogun (2024) (Season 1) (S01E01-E02) (WEB-DL 2160p DoVi HDR x265 HEVC) (MULTiSub-Lektor PL) (elladajarek)",
+        "videoSize": 14295638108
+      },
+      "description": "📄 Shogun (2024) (Season 1) (S01E01-E02) (WEB-DL 2160p DoVi HDR x265 HEVC) (MULTiSub-Lektor PL) (elladajarek)\n📹 hevc • DV • HDR\n⭐ WEB-DL | 🏷️ elladajarek\n💾 13.3 GB 🔎 Comet|StremThru\n🇵🇱",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eecc9c9c0aadf93a36a127ce29bb0ae05d003c5c",
+        "filename": "shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8235841948
+      },
+      "description": "📄 shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ successfulcrab\n💾 7.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c4852b01f77510c87052d7238f855ecd1a4c5753",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8181625824
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 7.6 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a90540bed0bb865ba50f7edd58386b93065d448e",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8384269976
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 7.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|863a25e548e5b74b7653722a73c5d72d7a54fd7a",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|665884677b8830cfdbe87e69cf7ac70d52fbf0f8",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5ab2622a5afcd73a47d554c77c5eda24ea772ac8",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8384269976
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 7.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|34b9fb5ea9d19166f4e00235a3e903b1ba28b466",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8384269976
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 7.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ebced7d0d293a06c01bfaa8ea148933405252b9",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8384269976
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 7.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1992b12180cf012f1487d2484e1f974f007a79e4",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9060226987
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0217882876850489d5ccb20dd47cb218106237fa",
+        "filename": "Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 8722063973
+      },
+      "description": "📄 Shogun.S01E01.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n💾 8.1 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4ad3380bf17ac5099b6592adb6160868a03c691c",
+        "filename": "Shogun (2024) S01E01 (2160p HULU WEB-DL H265 DV HDR10+ DDP 5.1 English - HONE) [ENGLISH DUB].mkv",
+        "videoSize": 8236117568
+      },
+      "description": "📄 Shogun (2024) S01E01 (2160p HULU WEB-DL H265 DV HDR10+ DDP 5.1 English - HONE) [ENGLISH DUB].mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 7.7 GB 🔎 CometNet|ElfHosted\n🌎/🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f3f03eafa01dea279bf289eaf868f64330195baf",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv",
+        "videoSize": 8235841948
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv\n📹 DV • HDR\n💾 7.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3eaf725f95dee8ed75012785fe5e4d170278c2d",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv",
+        "videoSize": 8724660779
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv\n📹 DV • HDR\n💾 8.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d429f81829ce7b7d80704346ae2bfa544bd6951",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv",
+        "videoSize": 8724660779
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HDR.DV.mkv\n📹 DV • HDR\n💾 8.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6cf712d0c05f1ddf4c61db0908d70db0112edaed",
+        "filename": "Shogun.2024.S01E01.Anjin.GERMAN.5.1.UNTOUCHED.DUBBED.DL.EAC3.2160p.WEB-DL.DV.HDR.HEVC-TvR.mkv",
+        "videoSize": 7989001099
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.GERMAN.5.1.UNTOUCHED.DUBBED.DL.EAC3.2160p.WEB-DL.DV.HDR.HEVC-TvR.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TvR\n💾 7.4 GB 🔎 StremThru\n🌎/🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5bf4f2968671d05c17196b541a16d59b66055f45",
+        "filename": "Shogun.S01E01.Ger.Eng.5.1.UNTOUCHED.DUBBED.DL.EAC3.2160p.WEB-DL.DV.HDR.HEVC-TvR.mkv",
+        "videoSize": 7742558981
+      },
+      "description": "📄 Shogun.S01E01.Ger.Eng.5.1.UNTOUCHED.DUBBED.DL.EAC3.2160p.WEB-DL.DV.HDR.HEVC-TvR.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TvR\n💾 7.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|34a05f150e6a0f1b1a6b67cd1b807720c8251086",
+        "filename": "Shogun.2024.S01E01.Anjin.GERMAN.5.1.UNTOUCHED.DUBBED.DL.EAC3.2160p.WEB-DL.DV.HDR.HEVC-TvR.mkv",
+        "videoSize": 7989001099
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.GERMAN.5.1.UNTOUCHED.DUBBED.DL.EAC3.2160p.WEB-DL.DV.HDR.HEVC-TvR.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TvR\n💾 7.4 GB 🔎 StremThru\n🌎/🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|65cba991760b93507eb4eb962927d54081d509a5",
+        "filename": "Shōgun (2024) S01E01 Anjin (2160p HDR10 DV Hybrid DSNP Webrip x265 10bit EAC3 5.1 - Goki)[TAoE].mkv",
+        "videoSize": 6451924368
+      },
+      "description": "📄 Shōgun (2024) S01E01 Anjin (2160p HDR10 DV Hybrid DSNP Webrip x265 10bit EAC3 5.1 - Goki)[TAoE].mkv\n📹 hevc • DV • HDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip\n👤 3 💾 6.0 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|704d6ac12b6b47ff84d232a53a29b82aa7f2a834",
+        "filename": "Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 7716931881
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 7.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|615ac21d72803eac0e1a7904748413dfff870fb9",
+        "filename": "Shogun.2024.S01E01.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 1961269747
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • DV • HDR10+\n⭐ WEBRip | 🏷️ PSA\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f14be62e31b348052cade304663712fbab13ae9",
+        "filename": "Shogun.2024.S01E01.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 1961269747
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • DV • HDR10+\n⭐ WEBRip | 🏷️ PSA\n💾 1.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e51213d7135bc4c6b1a4fe6f444e1ca82b59d21",
+        "filename": "Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 7716924738
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 7.2 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|091c774174c2e9c4fa0fb34ca707b6c43f03d5b8",
+        "filename": "Stiahni si Seriál Šógun / Shōgun S01E01 [WEBRip][DV/HDR][2160p]",
+        "videoSize": 8267812044
+      },
+      "description": "📄 Stiahni si Seriál Šógun / Shōgun S01E01 [WEBRip][DV/HDR][2160p]\n📹 DV • HDR\n⭐ WEBRip\n👤 6 💾 7.7 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|61da34e1bbb16765a736a4c3c11b94a374aac8ce",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.H.265-FLUX.mkv",
+        "videoSize": 8586213487
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.2160p.DSNP.WEB-DL.DDP5.1.DV.H.265-FLUX.mkv\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 8.0 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|225ffa5569e72e62dd8f60c9d03c41693a4507f2",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DoVi.H.265-NTb.mkv",
+        "videoSize": 8586299420
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DoVi.H.265-NTb.mkv\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 8.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|81b56737b707d984f69221e24c0ae13d1e2d12b6",
+        "filename": "Shogun.2024.S01E01.iTALiAN.DV.2160p.WEB.H265-NTROPiC",
+        "videoSize": 8585016675
+      },
+      "description": "📄 Shogun.2024.S01E01.iTALiAN.DV.2160p.WEB.H265-NTROPiC\n📹 hevc • DV\n⭐ WEB | 🏷️ NTROPiC\n💾 8.0 GB 🔎 Comet|StremThru\n🇮🇹",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ddd36d8474aa94583e97b0d05032833a353568d0",
+        "filename": "Shogun.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP.5.1.HDR10.H.265-BlackTV.mkv",
+        "videoSize": 7560266825
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP.5.1.HDR10.H.265-BlackTV.mkv\n📹 hevc • HDR • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BlackTV\n💾 7.0 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f80139eb501a679c7c7e00783b3573a9eef8e0e2",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.HDR.H.265-NTb",
+        "videoSize": 7560398503
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.HDR.H.265-NTb\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 7.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|78220e936eb4898f7e901d6f149bcf0ed504d83c",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|732a8a2aa49b77332b91155f99124fd574c59f98",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f435622008002ef9b92905ead93d9c2be9e483e",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|10e6c22c3dc4e5900b66702bf10237c1857684e4",
+        "filename": "Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv",
+        "videoSize": 7894953799
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📹 HDR\n⭐ WEB-DL\n💾 7.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98b30ff3f6b38dc3fe988daecab3364a032100af",
+        "filename": "Shogun.2024.S01E01-E05.MULTi.2160p.DSNP.WEB-DL.HDR.HEVC.DDP5.1-K83",
+        "videoSize": 32919113390
+      },
+      "description": "📄 Shogun.2024.S01E01-E05.MULTi.2160p.DSNP.WEB-DL.HDR.HEVC.DDP5.1-K83\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 30.7 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f6b1242520789ef8d11002b15a5e1202de61dc35",
+        "filename": "Shogun.S01E01.Anjin.2160p.Disney.WEB-DL.DDP.5.1.H.265-BlackTV.mkv",
+        "videoSize": 18313673711
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.Disney.WEB-DL.DDP.5.1.H.265-BlackTV.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BlackTV\n💾 17.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3beeed496463d04000d38b1becd89334c7ab56bd",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.H.265-FLUX",
+        "videoSize": 7019766706
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.H.265-FLUX\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 6.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4b5adfd5d16d487b4cb32375c45e436a9c68f48c",
+        "filename": "Shogun.2024.S01E01.Anjin.2160p.HULU.WEB-DL.DD.5.1.H.265-playWEB",
+        "videoSize": 8196224870
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.2160p.HULU.WEB-DL.DD.5.1.H.265-playWEB\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 7.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c23801026e862d8f0d53a58238a3cdef58877ecd",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab",
+        "videoSize": 8208252928
+      },
+      "description": "📄 shogun.2024.s01e01.2160p.web.h265-successfulcrab\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 7.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b8fdf6627bc7f538bbd22951b4db51c0fd2bd439",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab",
+        "videoSize": 8589934592
+      },
+      "description": "📄 shogun.2024.s01e01.2160p.web.h265-successfulcrab\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 8.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e3cd31c0d4cdde279c6174a60c39388a3411295",
+        "filename": "Shogun.2024.S01E01.2160p.WEB.H265.HeBits-SuccessfulCrab",
+        "videoSize": 8804682957
+      },
+      "description": "📄 Shogun.2024.S01E01.2160p.WEB.H265.HeBits-SuccessfulCrab\n📹 hevc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 8.2 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|438a53c700220522cda2d20957ef49f636b32aad",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8196194681
+      },
+      "description": "📄 shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 7.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2809516e14066131aeb2ae7a669e06d7ce1df285",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8160437862
+      },
+      "description": "📄 shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 7.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1d3a865143fc2ee3a1955ff512912168b7ee7f4c",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 8196194681
+      },
+      "description": "📄 shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 7.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0e99622f030e7e68399bf79ba7f7d655c8bbc576",
+        "filename": "Shogun.(2024).S01(E01-2).2160p.4К WEB.H265",
+        "videoSize": 15285891665
+      },
+      "description": "📄 Shogun.(2024).S01(E01-2).2160p.4К WEB.H265\n📹 hevc\n⭐ WEB\n💾 14.2 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2990d1e15aee172c7e0ec2c82bd8423cb4a2594a",
+        "filename": "Shogun.S01E01.WEB-DL.2160p.3xUkr.Eng-MAZEPA.mkv",
+        "videoSize": 8086457956
+      },
+      "description": "📄 Shogun.S01E01.WEB-DL.2160p.3xUkr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n💾 7.5 GB 🔎 StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8bc0a5a5afc36e1b0d12506939feec97ea2968c3",
+        "filename": "Shogun.S01E01.Anjin.2160p.SDR.mkv",
+        "videoSize": 11161969147
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.SDR.mkv\n📹 SDR\n💾 10.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|84903f676494818734e81585fa7bee87261e3140",
+        "filename": "Shogun.S01E01.Anjin.2160p.SDR.mkv",
+        "videoSize": 11161969147
+      },
+      "description": "📄 Shogun.S01E01.Anjin.2160p.SDR.mkv\n📹 SDR\n💾 10.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|29138ad16f8496b70e046b2db35bdd4eb11c9dd5",
+        "filename": "[Bitsearch.to] Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.H.265-FLUX",
+        "videoSize": 8508072661
+      },
+      "description": "📄 [Bitsearch.to] Shogun.2024.S01E01.Anjin.2160p.DSNP.WEB-DL.DDP5.1.DV.H.265-FLUX\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 7.9 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|adadb5cdad9e0ca0ec25b377c12a99a72d3e7c81",
+        "filename": "[BEST-TORRENTS.ORG] Shogun.2024.S01E01-02.MULTi.2160p.DSNP.WEB-DL.HDR.HEVC.DDP5.1-K83",
+        "videoSize": 7722498735
+      },
+      "description": "📄 [BEST-TORRENTS.ORG] Shogun.2024.S01E01-02.MULTi.2160p.DSNP.WEB-DL.HDR.HEVC.DDP5.1-K83\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 1 💾 7.2 GB 🔎 Comet|bt4g\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c036c384e3919540b15358d083513e1161f9fb9f",
+        "filename": "Shogun (2024) S01E01 (1080p DS4K DSNP Webrip DV HDR DDP5.1 x265) - Vialle.mkv",
+        "videoSize": 2501944179
+      },
+      "description": "📄 Shogun (2024) S01E01 (1080p DS4K DSNP Webrip DV HDR DDP5.1 x265) - Vialle.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ Vialle\n👤 4 💾 2.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c2c5e2aacce2c194b3eb4c3008770efc1b38e16d",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 3698772822
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n👤 11 💾 3.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a429f2523a2f50d1d3107938e66c608eab15dfe3",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 3698772822
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 3.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42b616bdbd6d105030f140cb607f8ccdf73b3ca0",
+        "filename": "Shogun.2024.S01E01.Anjin.REPACK.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 3698772822
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.REPACK.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n💾 3.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f91345fef1e4efd77313fce8bda54d613270bcd2",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv",
+        "videoSize": 5209549182
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 0 💾 4.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f5b2a35a8982f023aa12e4bb81dd91251911ea63",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3698838269
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 21 💾 3.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b62e2bd998b973fd22f6fc89d165218755c1c3af",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.DDP5.1.H264-BEN.THE.MEN.mkv",
+        "videoSize": 4100965051
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.DDP5.1.H264-BEN.THE.MEN.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 1 💾 3.8 GB 🔎 CometNet|ElfHosted\n🌎/🇬🇧/💃🏻/🇪🇸/🇵🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a3d2e82574d15f1bcfcaa077908693870f60d07c",
+        "filename": "Shogun.S01E01.2024.1080p.DSNP.WEB-DL.H264.DDP5.1-ZeroTV.mkv",
+        "videoSize": 3833124368
+      },
+      "description": "📄 Shogun.S01E01.2024.1080p.DSNP.WEB-DL.H264.DDP5.1-ZeroTV.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ ZeroTV\n👤 3 💾 3.6 GB 🔎 Comet|zerotv",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a054890124026c165eee98cdccb63b8478d07304",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv",
+        "videoSize": 4202694443
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98702c787eb8c89fa9a83809ae08b04c88aeefce",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3698838269
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8c2bda23890a09c4827eea40e39acf3565709031",
+        "filename": "Shogun.2024.S01E01.Chapter.One.Anjin.1080p.DSNP.WEB-DL.DDP5.1.HEVC-YELLO.mkv",
+        "videoSize": 2895473402
+      },
+      "description": "📄 Shogun.2024.S01E01.Chapter.One.Anjin.1080p.DSNP.WEB-DL.DDP5.1.HEVC-YELLO.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ YELLO\n💾 2.7 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8908579ad92cbc1ccfabac89f673633c506a8f03",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.HEVC-YELLO.mkv",
+        "videoSize": 2895472311
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.HEVC-YELLO.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ YELLO\n💾 2.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|87868f455dfe2ae15fafbc33b80fc55f10ec2d5c",
+        "filename": "Shogun 2024 S01E01 Anjin 1080p DSNP WEB-DL DDP5 1 H 264-FLUX[TGx]",
+        "videoSize": 3727410755
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin 1080p DSNP WEB-DL DDP5 1 H 264-FLUX[TGx]\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 3.5 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|46fdd43b0889d3959c727cf02da24feeb1210dfe",
+        "filename": "Shogun.S01E01.1080p.DSNP.WEB-DL.DDP5.1.H.264-sh4down.mkv",
+        "videoSize": 3834661795
+      },
+      "description": "📄 Shogun.S01E01.1080p.DSNP.WEB-DL.DDP5.1.H.264-sh4down.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ sh4down\n💾 3.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|43ab439e269e8db67fcd3f5481568386b612c4cb",
+        "filename": "Shogun.2024.S01E01.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb",
+        "videoSize": 3698883114
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.4 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|25db561a51d5356c6075ba3f691b10101400570b",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv",
+        "videoSize": 3899133339
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Jaskier\n💾 3.6 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2222dc7eac046075267d2a482cc71f6abac2daef",
+        "filename": "Shogun.S01E01.1080p.DSNP.WEB-DL.DDP5.1.H.264-TURG.mkv",
+        "videoSize": 3832090520
+      },
+      "description": "📄 Shogun.S01E01.1080p.DSNP.WEB-DL.DDP5.1.H.264-TURG.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TURG\n💾 3.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|208ccc7525a1ab28ae2232aa602356e56a2607a1",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 3727405201
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 4 💾 3.5 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|16512b1222bf753bd0c6157587a18050894bac35",
+        "filename": "Shogun S01E01 [DSNP WEB-DL 1080p AVC ES DD+ 5.1][HDO].mkv",
+        "videoSize": 3834698073
+      },
+      "description": "📄 Shogun S01E01 [DSNP WEB-DL 1080p AVC ES DD+ 5.1][HDO].mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.6 GB 🔎 Comet|StremThru\n🇪🇸",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0af61c81773c8d56dd8c0ba415db262bd8411fee",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv",
+        "videoSize": 3899133339
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Jaskier\n💾 3.6 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b8ccc3b5e9084f08b4ce282e3f5ef3a5e147ade",
+        "filename": "Shogun.2024.S01e01.WEBDL.1080p.h265.10bit.Ukr.Eng.mkv",
+        "videoSize": 1596926213
+      },
+      "description": "📄 Shogun.2024.S01e01.WEBDL.1080p.h265.10bit.Ukr.Eng.mkv\n📹 hevc • 10bit\n⭐ WEB-DL\n💾 1.5 GB 🔎 StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b9388da0ef7037256907bf275435218fe53c8e4e",
+        "filename": "Shogun.2024.S01E01.Anjin.ITA.ENG.1080p.DSNP.WEB-DL.H264-MeM.GP.mkv",
+        "videoSize": 3832115110
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.ITA.ENG.1080p.DSNP.WEB-DL.H264-MeM.GP.mkv\n📹 avc\n⭐ WEB-DL\n💾 3.6 GB 🔎 Comet|TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|500f183a6957e0913186d6a3c81ae244ddad0c12",
+        "filename": "Shogun.2024.S01E01.DSNP.WEB-DL.1080p.x264.LT.RU.EN.mkv",
+        "videoSize": 4137092479
+      },
+      "description": "📄 Shogun.2024.S01E01.DSNP.WEB-DL.1080p.x264.LT.RU.EN.mkv\n📹 avc\n⭐ WEB-DL\n💾 3.9 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇷🇺/🇱🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d688fc1b9746146a9d5206c2a800a4d75ecedd25",
+        "filename": "Shogun.2024.S01E01.1080p.WEB.H264-SuccessfulCrab",
+        "videoSize": 3137959673
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEB.H264-SuccessfulCrab\n📹 avc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb832bdcdd7b35262c5b8da051d789c82da0d6c1",
+        "filename": "shogun.2024.s01e01.1080p.web.h264-successfulcrab.mkv",
+        "videoSize": 3131899787
+      },
+      "description": "📄 shogun.2024.s01e01.1080p.web.h264-successfulcrab.mkv\n📹 avc\n⭐ WEB | 🏷️ successfulcrab\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bf3fb402115dcbd05e5b2ce449758b7a0d6d3d05",
+        "filename": "Shogun.S01E01.Anjin.1080p.WEB.AV1.Opus.5.1-onlyfaffs.mkv",
+        "videoSize": 1457606202
+      },
+      "description": "📄 Shogun.S01E01.Anjin.1080p.WEB.AV1.Opus.5.1-onlyfaffs.mkv\n📹 av1 | 🔊 5.1\n⭐ WEB | 🏷️ onlyfaffs\n👤 8 💾 1.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8afa6695bba241345bfe1b2c715f8ff768cf7625",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv",
+        "videoSize": 1798309690
+      },
+      "description": "📄 Shogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv\n📹 hevc • 10bit\n🏷️ Me7alh\n💾 1.7 GB 🔎 DMM\n🌎/🇬🇧/🇪🇸/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5bb1c3277733104a1c47421e7200329aaaeb94a6",
+        "filename": "Shogun.2024.S01E01.1080p.WEB.H264-SuccessfulCrab",
+        "videoSize": 3182332397
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEB.H264-SuccessfulCrab\n📹 avc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 3.0 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2706705e61f834c8fa6dabb80c249eae6d7b1f02",
+        "filename": "shogun.2024.SloSubs.s01e01.1080p.web.h264-infire.mkv",
+        "videoSize": 3131990902
+      },
+      "description": "📄 shogun.2024.SloSubs.s01e01.1080p.web.h264-infire.mkv\n📹 avc\n⭐ WEB | 🏷️ infire\n💾 2.9 GB 🔎 Comet|BitMagnet\n🇸🇰",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1977ed74d099ab504c5037bea1bf83040f473729",
+        "filename": "Shogun.2024.S01E01.1080p.WEB.H264",
+        "videoSize": 3137384114
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEB.H264\n📹 avc\n⭐ WEB\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e084057d666ab6e5f8b82f62636d1d6434b9fcfb",
+        "filename": "Shogun 1x01(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+        "videoSize": 1717986918
+      },
+      "description": "📄 Shogun 1x01(Castellano.1080p.x264.AC3.by.Ercius).mkv\n📹 avc | 🔊 Dolby Digital\n💾 1.6 GB 🔎 DMM\n🇪🇸",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bb4a5f5bb4af729a9a2faddf5afc4886ab199f02",
+        "filename": "Shogun 1x01 Anjin.(Castellano.1080p.x264.AC3.by.Ercius).mkv",
+        "videoSize": 1683023994
+      },
+      "description": "📄 Shogun 1x01 Anjin.(Castellano.1080p.x264.AC3.by.Ercius).mkv\n📹 avc | 🔊 Dolby Digital\n👤 1 💾 1.6 GB 🔎 Comet|BitMagnet\n🇪🇸",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1839afabb08e5d6dd6ddf747c52045b50df4c458",
+        "filename": "Shogun (2024) 1x01 1080p x265 ita eng sub ita eng ac3.mkv",
+        "videoSize": 1073741824
+      },
+      "description": "📄 Shogun (2024) 1x01 1080p x265 ita eng sub ita eng ac3.mkv\n📹 hevc | 🔊 Dolby Digital\n💾 1.0 GB 🔎 DMM\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3476d9b09319e65704c999b2486d1e7098d574f6",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 649903255
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 619.8 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|26df5dd570d90816b81da7e118334e3b03c94de4",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta",
+        "videoSize": 670544428
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n💾 639.5 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e2013d76a2cdfc9d5c3d9862437c0d0ae5221e8",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv",
+        "videoSize": 4033416370
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n⭐ WEB-DL\n💾 3.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|86fff43f0381f30f34c071e39717070eeff2f267",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 4574140170
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 0 💾 4.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|78ecab899404253e8c0d196584311efb82079d76",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv",
+        "videoSize": 4033416370
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n⭐ WEB-DL\n💾 3.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c6dd16c094f4fb77990a396ed16ac705da173a2",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 4574140170
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 0 💾 4.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|545a56a8ce3e649a6b0128235ccbcf5f3462ac20",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 5247790377
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 4.9 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3b605f0bb771d66d544c9eb76ef4fe08e7ed41cb",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv",
+        "videoSize": 4080218880
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n⭐ WEB-DL\n👤 1 💾 3.8 GB 🔎 Comet|MagnetDownload",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1d16f9a98ff1b43e31c15d1c98c7163efbb7de8f",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv",
+        "videoSize": 5247790377
+      },
+      "description": "📄 Shogun.S01E01.1080p.WEB-DL.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 4.9 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1263fbd88cf63c511aba6098dcef59d87bae08ac",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv",
+        "videoSize": 4033416370
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n⭐ WEB-DL\n💾 3.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f134bfd5af6d0b723ab3fae673316369a4c1d8cb",
+        "filename": "Shogun.S01E01.1080p.Ultradox.mkv",
+        "videoSize": 2708572481
+      },
+      "description": "📄 Shogun.S01E01.1080p.Ultradox.mkv\n💾 2.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|db6039422984db69a5822a0685a5dbf0fd6bbd45",
+        "filename": "Shogun.2024.S01E01. CZtit 1080p.mkv",
+        "videoSize": 3131920115
+      },
+      "description": "📄 Shogun.2024.S01E01. CZtit 1080p.mkv\n💾 2.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b912ef8028c60fdf9d3ae8d198d214efd07fbd6f",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.Modified By mxn.mkv",
+        "videoSize": 3758096384
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.Modified By mxn.mkv\n💾 3.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a1f58f7c3be8ec6e889dc616b4e961a62d5cb3fe",
+        "filename": "Shogun.S01E01.1080p.FIX字幕侠",
+        "videoSize": 2147483648
+      },
+      "description": "📄 Shogun.S01E01.1080p.FIX字幕侠\n💾 2.0 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|612b0687070acbcb5cd15455d389d0719bd31e66",
+        "filename": "Shogun S01E01 1080p DSNP - ZeiZ.mkv",
+        "videoSize": 3966556274
+      },
+      "description": "📄 Shogun S01E01 1080p DSNP - ZeiZ.mkv\n🏷️ ZeiZ\n💾 3.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|17158843e67f3a05569af45b40a6e7a13200c772",
+        "filename": "Shōgun.2024.S01E01.1080pViruse Project-Belshaman.mkv",
+        "videoSize": 3831972343
+      },
+      "description": "📄 Shōgun.2024.S01E01.1080pViruse Project-Belshaman.mkv\n🏷️ Belshaman\n💾 3.6 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|05fc8c655921488f59f17af1c52521d4f6f61a17",
+        "filename": "Shogun.S01E01.1080p.ColdFilm.mkv",
+        "videoSize": 3071880640
+      },
+      "description": "📄 Shogun.S01E01.1080p.ColdFilm.mkv\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a76fc404878e20fe3b86428a4585b794fc4039d0",
+        "filename": "Shōgun.S01E01.Anjin.1080p.WEBRip.10bit.EAC3.5.1.x265-iVy.mkv",
+        "videoSize": 2094475210
+      },
+      "description": "📄 Shōgun.S01E01.Anjin.1080p.WEBRip.10bit.EAC3.5.1.x265-iVy.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ iVy\n💾 2.0 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|380acc735fc4918196a54b7037c329b0b1b04862",
+        "filename": "Shogun.2024.S01E01-02.10bit.1080p.WEBRip.H265.MKV.EAC3-5.1 ENG [StarLord]",
+        "videoSize": 1134471561
+      },
+      "description": "📄 Shogun.2024.S01E01-02.10bit.1080p.WEBRip.H265.MKV.EAC3-5.1 ENG [StarLord]\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 1.1 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|339f3fe82fa6899ebf876bf0a2da00d7294726e7",
+        "filename": "Szogun.2024.S01E01.MULTi.1080p.DSNP.WEB-DL.H264-xface1197",
+        "videoSize": 3832012351
+      },
+      "description": "📄 Szogun.2024.S01E01.MULTi.1080p.DSNP.WEB-DL.H264-xface1197\n📹 avc\n⭐ WEB-DL | 🏷️ xface1197\n👤 1 💾 3.6 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0a116b50eb46efabf7a215def22540519777188b",
+        "filename": "Shogun.s01e01e02.1080p.WEB-DL.H.264.Dual.YG⭐",
+        "videoSize": 7015387388
+      },
+      "description": "📄 Shogun.s01e01e02.1080p.WEB-DL.H.264.Dual.YG⭐\n📹 avc\n⭐ WEB-DL\n💾 6.5 GB 🔎 Comet|TheRARBG\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f097e4b77b46a9538518aa9880f95cae9cb5a23f",
+        "filename": "Shōgun (2024) S01E01 (1080p DS4K HULU Webrip DDP5.1 x265) - Vialle.mkv",
+        "videoSize": 2522940898
+      },
+      "description": "📄 Shōgun (2024) S01E01 (1080p DS4K HULU Webrip DDP5.1 x265) - Vialle.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ Vialle\n👤 1 💾 2.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f5ec2cc95a0a5e65b47606c315a0065b52f69c6",
+        "filename": "Shogun.S01E01.Anjin.1080p.WebRip.EAC3.5.1.x265-Groupless.mkv",
+        "videoSize": 1295231652
+      },
+      "description": "📄 Shogun.S01E01.Anjin.1080p.WebRip.EAC3.5.1.x265-Groupless.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ Groupless\n👤 21 💾 1.2 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0fa05fd925faf57458bdf413ab02584667dbfdee",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEBRip.x265.DDP5.1-NESMEURED.mkv",
+        "videoSize": 2454665428
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.WEBRip.x265.DDP5.1-NESMEURED.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ NESMEURED\n💾 2.3 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ee9141230bfbca90ce3a8cf8a807fa2f5cbfe5b0",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 3832050531
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 3.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ccf9cbdf3751d7e30115fb16a9b3fd5b0b43717d",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 3832043636
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 3.6 GB 🔎 StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c096d071251a5e0abff4fc65b6c06810b3b63e87",
+        "filename": "Shogun.2024.S01E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 960085195
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 915.6 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|be3f2ed3be2e6448dbfd4ec6aedf82160fd2d720",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 3832043636
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 3.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af7b08cdea55725d798fe1da8fe8f42be2cc5e51",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW",
+        "videoSize": 3832069178
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 3.6 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9958cf8cb45fdaa4cb5d703d5ac6a15e86bda8af",
+        "filename": "shogun.2024.s01e01.multi.1080p.web.h264-higgsboson.mkv",
+        "videoSize": 3831982084
+      },
+      "description": "📄 shogun.2024.s01e01.multi.1080p.web.h264-higgsboson.mkv\n📹 avc\n⭐ WEB | 🏷️ higgsboson\n👤 0 💾 3.6 GB 🔎 Comet|Milkie\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d3a2a15ef74ec23c5d3f026ee327e38e1ca1dc1",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 2225185957
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 2.1 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6cea5c4ea2971bdb03621c76a4802c7344e091a5",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 2225192852
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 2.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|364c5b6ac380440ea88f32f08c8a6a0cd2cd7cf4",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW",
+        "videoSize": 3832043636
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 3.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|338337ddf5456b11e0358be166e302cd22c75b17",
+        "filename": "Shogun.2024.S01E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 960085195
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 915.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b9d0a455337d88ffa59dbdade7851adbc26c2865",
+        "filename": "Shogun.2024.S01E01-02.1080p.WEBRip.H264.MKV.AC3-5.1 Lektor PL [StarLord]",
+        "videoSize": 3895286924
+      },
+      "description": "📄 Shogun.2024.S01E01-02.1080p.WEBRip.H264.MKV.AC3-5.1 Lektor PL [StarLord]\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip\n💾 3.6 GB 🔎 Comet|StremThru\n🇵🇱",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8ffe3f7294f1b99e444d048bdef1116aa2437e0d",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEBRip.Opus5.1.AV1-NuBz.mkv",
+        "videoSize": 2582883695
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.1080p.DSNP.WEBRip.Opus5.1.AV1-NuBz.mkv\n📹 av1 | 🔊 5.1\n⭐ WEBRip | 🏷️ NuBz\n👤 2 💾 2.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|13f089eb3a5ad1c17a3db19bfabd21192c8d6f9e",
+        "filename": "Shogun.S01E01.2024.1080p.WEBRip.x265.HEVC-kkolev33",
+        "videoSize": 2073828161
+      },
+      "description": "📄 Shogun.S01E01.2024.1080p.WEBRip.x265.HEVC-kkolev33\n📹 hevc\n⭐ WEBRip | 🏷️ kkolev33\n💾 1.9 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a153d7590181a84e9ed8df19226197951051e0a8",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEBRip.x264.EAC3-MULTiViSiON.mkv",
+        "videoSize": 1580483561
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTi.1080p.WEBRip.x264.EAC3-MULTiViSiON.mkv\n📹 avc | 🔊 Dolby Digital Plus\n⭐ WEBRip | 🏷️ MULTiViSiON\n💾 1.5 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|26336784d3d93c9300e2180cfed2cef07316803e",
+        "filename": "Shogun.2024.S01E01.MULTI.VFF.1080p.10bit.WEBRip.6CH.x265.HEVC-SERQPH.mkv",
+        "videoSize": 1449337449
+      },
+      "description": "📄 Shogun.2024.S01E01.MULTI.VFF.1080p.10bit.WEBRip.6CH.x265.HEVC-SERQPH.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ SERQPH\n💾 1.3 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60ed6b7f4e6f1d2cd756c09ad148f6f9263e8b2f",
+        "filename": "Shogun.2024.S01E01.1080p.HDTV.Subtitulado.Esp.mp4",
+        "videoSize": 782237696
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.HDTV.Subtitulado.Esp.mp4\n⭐ HDTV\n💾 746.0 MB 🔎 DMM\n🇪🇸",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|602af120c2c0e346f34a058946163224eab4250b",
+        "filename": "Shogun.2024.S01E01.1080p.HDTV.Subtitulado.Esp.SC.mp4",
+        "videoSize": 745856171
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.HDTV.Subtitulado.Esp.SC.mp4\n⭐ HDTV\n💾 711.3 MB 🔎 Comet|StremThru\n🇪🇸",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5537c8de8ee16f969d4b354ca46273cd7e80adae",
+        "filename": "Shgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb[EZTVx.to].mkv",
+        "videoSize": 3698838269
+      },
+      "description": "📄 Shgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb[EZTVx.to].mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 17 💾 3.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|019638c1659213ca2282674f6d5ca1143d6e7ec8",
+        "filename": "Shogun.2024.s01e01.1080p.DSNP.WEB-DL.DDP5.1.H.264.Ukr.Eng.BaibaKo.tv.mkv",
+        "videoSize": 4011335982
+      },
+      "description": "📄 Shogun.2024.s01e01.1080p.DSNP.WEB-DL.DDP5.1.H.264.Ukr.Eng.BaibaKo.tv.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.7 GB 🔎 StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|178f5dea13e1753390df07ccebcad2dc1c5bea9b",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+        "videoSize": 649903255
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv\n📹 hevc\n🏷️ MeGusta\n👤 32 💾 619.8 MB 🔎 EZTV",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52678f196eeff34e427d13a1af03820db0c37ee8",
+        "filename": "Shogun.2024.S01E01.WEBDL.1080p.NewStudio.TV.mkv",
+        "videoSize": 2974264852
+      },
+      "description": "📄 Shogun.2024.S01E01.WEBDL.1080p.NewStudio.TV.mkv\n⭐ WEB-DL\n💾 2.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fde2afc65dbc872157010c11431faae287107244",
+        "filename": "Shogun.S01E01.1080p.rus.LostFilm.TV.mkv",
+        "videoSize": 3869564017
+      },
+      "description": "📄 Shogun.S01E01.1080p.rus.LostFilm.TV.mkv\n👤 3 💾 3.6 GB 🔎 Comet|BitMagnet\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c886ef0f1997e85481ab1ca0c49f8c63917718b0",
+        "filename": "Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv",
+        "videoSize": 2590969133
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv\n⭐ WEB-DLRip\n💾 2.4 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|451762c63ba8b9e2983974c054c998448ca6983f",
+        "filename": "Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv",
+        "videoSize": 2590969133
+      },
+      "description": "📄 Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv\n⭐ WEB-DLRip\n💾 2.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|128e308e0a06c59e0e4ced313ffd895623672200",
+        "filename": "Сёгун / Shôgun [01x01-03 из 10] (2024) WEB-DLRip 1080p | NewComers",
+        "videoSize": 7218025343
+      },
+      "description": "📄 Сёгун / Shôgun [01x01-03 из 10] (2024) WEB-DLRip 1080p | NewComers\n⭐ WEB-DLRip\n💾 6.7 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|11ae69a27d68a7dadbd01b40a0b6b23fcad24aab",
+        "filename": "Сёгун / Shôgun [01x01-02 из 10] (2024) WEB-DLRip 1080p | NewComers",
+        "videoSize": 5180451958
+      },
+      "description": "📄 Сёгун / Shôgun [01x01-02 из 10] (2024) WEB-DLRip 1080p | NewComers\n⭐ WEB-DLRip\n💾 4.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b59076ada926e043e6fd3fdc03b67adfc7984b82",
+        "filename": "[BEST-TORRENTS.ORG] Szogun.S01E01-02.MULTi.1080p.DSNP.WEB-DL.H264.DDP5.1-K83",
+        "videoSize": 4122161971
+      },
+      "description": "📄 [BEST-TORRENTS.ORG] Szogun.S01E01-02.MULTi.1080p.DSNP.WEB-DL.H264.DDP5.1-K83\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 7 💾 3.8 GB 🔎 Comet|solidtorrents\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1aaef0bf7292c808c22ee5ed8ad097907e60b5d1",
+        "filename": "Shogun S01E01 (2024) [Azerbaijan Dubbed] 1080p WEB-DLRip TeeWee.mkv",
+        "videoSize": 3408623851
+      },
+      "description": "📄 Shogun S01E01 (2024) [Azerbaijan Dubbed] 1080p WEB-DLRip TeeWee.mkv\n⭐ WEB-DLRip\n👤 1 💾 3.2 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fc45368f6e1049417843b86ee4c3ae9a306f3fa2",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-NTb[TGx]",
+        "videoSize": 1850579084
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-NTb[TGx]\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eeaee8f523b9b667d752cb0a64ed65c1416ab986",
+        "filename": "Shogun 2024 S01E01 Anjin 720p DSNP WEB-DL DDP5 1 H 264-NTb[TGx]",
+        "videoSize": 1850579084
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin 720p DSNP WEB-DL DDP5 1 H 264-NTb[TGx]\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e4a1923f2d77407ddafb43de89ccc8bffbc343de",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 1850557963
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 0 💾 1.7 GB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e43bc27791d09d1dfbb5121fd7772f88f79d3463",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX[TGx]",
+        "videoSize": 1837242590
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX[TGx]\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b9a32fd5c2baa5325887bbd159d7401a9c05e422",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB.mkv",
+        "videoSize": 1850563873
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.7 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a173bc72aa5e5af199ecfdb377d2c983e2c247e7",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX",
+        "videoSize": 1837237035
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9bd778cb278bf5669c398eb06f6223b897c17888",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB",
+        "videoSize": 1850563935
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n👤 2 💾 1.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d2966e6aa814d6c00aa3a16f736384aad00792f",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv",
+        "videoSize": 1837237035
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0f0618a39fdba591b3dfb38d2ec1555f1672b1be",
+        "filename": "Shōgun.S01E01.720p.DSNP.WEB-DL.DDP.5.1.H264-SPWEB.mkv",
+        "videoSize": 1984597252
+      },
+      "description": "📄 Shōgun.S01E01.720p.DSNP.WEB-DL.DDP.5.1.H264-SPWEB.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SPWEB\n👤 21 💾 1.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a0fd863d47da12280b034b54beb08ac84b79b085",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD.5.1.H.264-playWEB[TGx]",
+        "videoSize": 1850585137
+      },
+      "description": "📄 Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD.5.1.H.264-playWEB[TGx]\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4bd7f67c745aacc055a63f2f96d1ae43651b9869",
+        "filename": "Shogun 2024 S01E01 Anjin 720p DSNP WEB-DL DD 5 1 H 264-playWEB[TGx]",
+        "videoSize": 1850585137
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin 720p DSNP WEB-DL DD 5 1 H 264-playWEB[TGx]\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d8e3600af31ee979f6172b7be35fb24d03ccf3e",
+        "filename": "Shogun.2024.S01E01.FRENCH.720p.WEB.H264-FW",
+        "videoSize": 1849310672
+      },
+      "description": "📄 Shogun.2024.S01E01.FRENCH.720p.WEB.H264-FW\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 1.7 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3d0227ec728d4be1b5d5b66c5d9ac8563d69a90c",
+        "filename": "Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv",
+        "videoSize": 404194590
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv\n📹 hevc\n⭐ WEB | 🏷️ MiNX\n💾 385.5 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|37a6a7a2aee6360f128ebc7edf578bd0ddc8fa28",
+        "filename": "Shogun.2024.S01E01.720p.WEB.H264-SKYFiRE",
+        "videoSize": 1840063856
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEB.H264-SKYFiRE\n📹 avc\n⭐ WEB | 🏷️ SKYFiRE\n👤 1 💾 1.7 GB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|09a4e5c5021c1b73cfa1973e146bca8f88a7252c",
+        "filename": "Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv",
+        "videoSize": 404195843
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv\n📹 hevc\n⭐ WEB | 🏷️ MiNX\n💾 385.5 MB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f27b359518a79ce45abeb3758d2a87d2b3e43a91",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2916764647
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 3 💾 2.7 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4d160e4bb5a0bddca931abd6642ffba7f41d2b9",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3360811909
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 4 💾 3.1 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9d843cc0f548220a1bd8c18f0dd8e1435a21ecc8",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2918060914
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 3 💾 2.7 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7ca19c6b33a28c0c00184b6f1a57c85a24962ef7",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3357365991
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 3 💾 3.1 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3f1e50ec7a4ae5b8b66f0768cc1fb1e5c1b84e24",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3357365991
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 3 💾 3.1 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|38b9f5003b88f3ac052ad4614bc7d70cf785d784",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3357365991
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 3.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|276235e5ff582856c227819d4d0020bfba44ffab",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3357365991
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 3.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1baa462a493dbfb42fb662272fc357051d5fde7b",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 3357365991
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 3.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|17e31a94f40858d31e6705e58ef79cb70e538eab",
+        "filename": "Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2916764647
+      },
+      "description": "📄 Shogun.S01E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.7 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c82d6f97cb42c67aaf78b635bea53c5f33246e1f",
+        "filename": "Shogun.S01E01.720p.ColdFilm.mkv",
+        "videoSize": 1717986918
+      },
+      "description": "📄 Shogun.S01E01.720p.ColdFilm.mkv\n💾 1.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f7b861784f5c179f6df50bee3686658bf67e8a5f",
+        "filename": "Shogun.2024.S01E01.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 391223627
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 373.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f4751a422127fcc6d93bf0f551b377508570f0e7",
+        "filename": "Shogun.2024.S01E01.TRUEFRENCH.720p.WEBRip.x264.AAC-MULTiViSiON.mkv",
+        "videoSize": 1027268866
+      },
+      "description": "📄 Shogun.2024.S01E01.TRUEFRENCH.720p.WEBRip.x264.AAC-MULTiViSiON.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip | 🏷️ MULTiViSiON\n💾 979.7 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|59729c4e50ff79a39bf715b7d4154c0507849b9f",
+        "filename": "Shogun.S01E01.MULTI.720p.WEB.H264-TFA",
+        "videoSize": 1983745414
+      },
+      "description": "📄 Shogun.S01E01.MULTI.720p.WEB.H264-TFA\n📹 avc\n⭐ WEB | 🏷️ TFA\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1e38d8ea15891dc0143f64de94a5ddb9e0705d28",
+        "filename": "Shogun.S01E01.Anjin.720p.10bit.WEBRip.x265-budgetbits.mkv",
+        "videoSize": 379812793
+      },
+      "description": "📄 Shogun.S01E01.Anjin.720p.10bit.WEBRip.x265-budgetbits.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ budgetbits\n👤 52 💾 362.2 MB 🔎 Comet|torrentdownload",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ee9fdbb42040220e7d3132706f906c77619f5b81",
+        "filename": "Shogun.2024.S01E01.720p.WEBRip.H264-Neo0101",
+        "videoSize": 1851231104
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.WEBRip.H264-Neo0101\n📹 avc\n⭐ WEBRip | 🏷️ Neo0101\n💾 1.7 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|206366617260a0e3928b97996df89b7f379e0330",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB[EZTVx.to].mkv",
+        "videoSize": 1846835937
+      },
+      "description": "📄 Shogun 2024 S01E01 Anjin 720p DSNP WEB-DL DD+5 1 H 264-playWEB\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n👤 5 💾 1.7 GB 🔎 EZTV",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3a6f50bc858a495be06f20baed5a0511e5e6bee4",
+        "filename": "Shogun.2024.S01E01.720p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+        "videoSize": 440401920
+      },
+      "description": "📄 Shogun 2024 S01E01 720p HEVC x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n👤 3 💾 420.0 MB 🔎 EZTV",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14f01ea8ae8094fcbdad00830a8fd61c5d94ec76",
+        "filename": "www.Torrenting.com - Shogun.2024.S01E01.720p.HEVC.x265-MeGusta",
+        "videoSize": 450468351
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.HEVC.x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n👤 13 💾 429.6 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|31fe641c07c7506b4ece892ff66a51ecc01e8be6",
+        "filename": "Shogun.S01E01.720p.rus.LostFilm.TV.mp4",
+        "videoSize": 2209092920
+      },
+      "description": "📄 Shogun.S01E01.720p.rus.LostFilm.TV.mp4\n👤 2 💾 2.1 GB 🔎 Comet|BitMagnet\n🇷🇺",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|df4ebadb105447a11f087c9ad702eb3db0a361c1",
+        "filename": "[BEST-TORRENTS.ORG] Szogun.S01E01-02.MULTi.720p.DSNP.WEB-DL.H264.DDP5.1-K83",
+        "videoSize": 2108057190
+      },
+      "description": "📄 [BEST-TORRENTS.ORG] Szogun.S01E01-02.MULTi.720p.DSNP.WEB-DL.H264.DDP5.1-K83\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 3 💾 2.0 GB 🔎 Comet|solidtorrents\n🌎",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6d7911350d31207f64e76b863217c1f6bd3dd8f8",
+        "filename": "[POLSKIE-TORRENTY.EU] Szōgun Shōgun (2024) (S01E01-08) MULTi.720p.DSNP.WEB-DL.H264.DDP5.1-K83 Lektor i Napisy PL",
+        "videoSize": 2071797388
+      },
+      "description": "📄 [POLSKIE-TORRENTY.EU] Szōgun Shōgun (2024) (S01E01-08) MULTi.720p.DSNP.WEB-DL.H264.DDP5.1-K83 Lektor i Napisy PL\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 50 💾 1.9 GB 🔎 CometNet|ElfHosted\n🌎/🇵🇱",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f713ff0baffff9b868389beeb3b454446371d4f2",
+        "filename": "Shogun.2024.S01E01.720p.DSNP.WEBRip.x264[EZTVx.to].mkv",
+        "videoSize": 513502835
+      },
+      "description": "📄 Shogun.2024.S01E01.720p.DSNP.WEBRip.x264[EZTVx.to].mkv\n📹 avc\n⭐ WEBRip\n💾 489.7 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1c6214a8219e0dbf910b26428b3deea024925e83",
+        "filename": "Shogun.2024.S01E01.480p.x264-RUBiK.mkv",
+        "videoSize": 613913431
+      },
+      "description": "📄 Shogun.2024.S01E01.480p.x264-RUBiK.mkv\n📹 avc\n🏷️ RUBiK\n💾 585.5 MB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fe37796315c9c7f935bca2f8b0374ffa66bf683b",
+        "filename": "[DEVIL-TORRENTS.PL] Szogun.S01E01-E02.PL.480p.DSNP.WEB-DL.H264.DDP5.1-K83",
+        "videoSize": 1931340114
+      },
+      "description": "📄 [DEVIL-TORRENTS.PL] Szogun.S01E01-E02.PL.480p.DSNP.WEB-DL.H264.DDP5.1-K83\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 1.8 GB 🔎 CometNet|ElfHosted\n🇵🇱",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c1bbc089bc5905bf6619a40dbff4217f011ce1fd",
+        "filename": "[BEST-TORRENTS.ORG] Szogun.S01E01-02.PL.480p.DSNP.WEB-DL.H264.DDP5.1-K83",
+        "videoSize": 1133300941
+      },
+      "description": "📄 [BEST-TORRENTS.ORG] Szogun.S01E01-02.PL.480p.DSNP.WEB-DL.H264.DDP5.1-K83\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 7 💾 1.1 GB 🔎 Comet|solidtorrents\n🇵🇱",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a04e3d6aa75acdeb1cdcd28928c22bbdf4855352",
+        "filename": "Shogun.2024.S01E01.480p.x264-mSD[EZTVx.to].mkv",
+        "videoSize": 346030080
+      },
+      "description": "📄 Shogun 2024 S01E01 480p x264-mSD\n📹 avc\n🏷️ mSD\n👤 1 💾 330.0 MB 🔎 EZTV",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|04a3b42551a8ef2ec66c4f13695e3d1246123edc",
+        "filename": "Shōgun_(2024)_S01E01_Capitolo Uno_ Anjin.EAC3.multi.HDR.HEVC.2160.DD-CREW.mp4",
+        "videoSize": 8983661901
+      },
+      "description": "📄 Shōgun_(2024)_S01E01_Capitolo Uno_ Anjin.EAC3.multi.HDR.HEVC.2160.DD-CREW.mp4\n📹 hevc • HDR | 🔊 Dolby Digital Plus • Dolby Digital\n🏷️ CREW\n💾 8.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dd39e4a9eb2646201c36a006a9a7564c78339e48",
+        "filename": "Shōgun.2024.S01E01.Anjin.DSNP.WEB-DL.AAC2.0.H.264-BTW.mkv",
+        "videoSize": 982360474
+      },
+      "description": "📄 Shōgun.2024.S01E01.Anjin.DSNP.WEB-DL.AAC2.0.H.264-BTW.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ BTW\n👤 0 💾 936.9 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f978b369320e1c1e671aa19e11aa98be4c0365b5",
+        "filename": "L\\'invincibile shogun S01e01-46 [H264 - Ita Aac] completa",
+        "videoSize": 4617090048
+      },
+      "description": "📄 L\\'invincibile shogun S01e01-46 [H264 - Ita Aac] completa\n📹 avc | 🔊 AAC\n👤 0 💾 4.3 GB 🔎 CometNet|ElfHosted\n🌎/🇪🇸/🇮🇹",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4bccd2ff187025ab398431732b40aba65fdae7f2",
+        "filename": "Shogun.2024.S01E01.AAC.MP4-Mobile",
+        "videoSize": 289777996
+      },
+      "description": "📄 Shogun.2024.S01E01.AAC.MP4-Mobile\n🔊 AAC\n🏷️ Mobile\n💾 276.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fe6ea02e8079f6fefd8761ba300c88d3f51c4efc",
+        "filename": "Shogun.S01E01.400p.ColdFilm.avi",
+        "videoSize": 854065152
+      },
+      "description": "📄 Shogun.S01E01.400p.ColdFilm.avi\n💾 814.5 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dbda4aaa102daa2cb3d8949a6114aa091d200ff7",
+        "filename": "Shogun.2024.S01E01.4xRus.mkv",
+        "videoSize": 2491081031
+      },
+      "description": "📄 Shogun.2024.S01E01.4xRus.mkv\n👤 1 💾 2.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bc0aad66881e1fb9b12dedbe4feb09272c5e9f5b",
+        "filename": "Shogun.2024.S01E01.400p.Newcomers.avi",
+        "videoSize": 875713068
+      },
+      "description": "📄 Shogun.2024.S01E01.400p.Newcomers.avi\n💾 835.1 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99cc60c4a7f6b87fe85dab03b597688285484372",
+        "filename": "S01 E01 - Anjin.MKV",
+        "videoSize": 2187114796
+      },
+      "description": "📄 S01 E01 - Anjin.MKV\n🏷️ Anjin\n💾 2.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e2b36ba19d9268f6e2d7bcf4a02d15248aec3a8",
+        "filename": "Yo-kai Watch_S01E01_Yo-kai Are Real _ The Spooky Intersection.mp4",
+        "videoSize": 806355077
+      },
+      "description": "📄 Yo-kai Watch_S01E01_Yo-kai Are Real _ The Spooky Intersection.mp4\n👤 8 💾 769.0 MB 🔎 Anime Tosho",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8deecb850f3c860c4ac55e0fb855e0955f901a36",
+        "filename": "Shōgun_S01E01_Anjin.mp4",
+        "videoSize": 1969746519
+      },
+      "description": "📄 Shōgun_S01E01_Anjin.mp4\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7acf6844c9e330bc20bfcd421994ed6d4fe26c45",
+        "filename": "Shogun (2024) S01 Ep.1-2",
+        "videoSize": 5798205849
+      },
+      "description": "📄 Shogun (2024) S01 Ep.1-2\n💾 5.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|611f5a60f5440c601abb6e0ba631cabe66dd3a73",
+        "filename": "Szogun S01E01 Anjin M80.mkv",
+        "videoSize": 3698439476
+      },
+      "description": "📄 Szogun S01E01 Anjin M80.mkv\n👤 0 💾 3.4 GB 🔎 Comet|BitSearch",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|610d9b9607c8a76c6526f1fbea9b27951fa426ae",
+        "filename": "幕府将军.Shogun.2024.S01E01-02",
+        "videoSize": 3743756312
+      },
+      "description": "📄 幕府将军.Shogun.2024.S01E01-02\n💾 3.5 GB 🔎 Comet|StremThru\n🇨🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5fc24c01ffc92781b9aa257947d90ccac4480aca",
+        "filename": "Šógun_S01E01_Andžin.mkv",
+        "videoSize": 1851981724
+      },
+      "description": "📄 Šógun_S01E01_Andžin.mkv\n👤 1 💾 1.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52a129bae3ceefde1528bcef66c4747a2249372d",
+        "filename": "Shōgun.S01E01.mkv",
+        "videoSize": 9060758937
+      },
+      "description": "📄 Shōgun.S01E01.mkv\n💾 8.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|47c86a7bd586e8fef12ae026df237b2ff4759398",
+        "filename": "Shogun.2024.S01E01.mp4",
+        "videoSize": 361076806
+      },
+      "description": "📄 Shogun.2024.S01E01.mp4\n👤 1 💾 344.3 MB 🔎 Comet|Internet Archive",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2ecaf34dcf18784feb38386be5ffc9e0a6a71635",
+        "filename": "Shōgun_S01E01_Anjin.mp4",
+        "videoSize": 3134540956
+      },
+      "description": "📄 Shōgun_S01E01_Anjin.mp4\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2de99bda54712c3d5cbf6f3bfce34da108b7a55b",
+        "filename": "Shogun s01e01 Shogun. Anjin.mp4",
+        "videoSize": 1918687454
+      },
+      "description": "📄 Shogun s01e01 Shogun. Anjin.mp4\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|23a51091e9807a1ac44f82d8de09fef9ba52a4dc",
+        "filename": "Shogun - S01E01 - Anjin.mkv",
+        "videoSize": 624209748
+      },
+      "description": "📄 Shogun - S01E01 - Anjin.mkv\n🏷️ Anjin\n💾 595.3 MB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ac7732e072b6017de48e474011dc7c50d871affb",
+        "filename": "Сёгун / Shôgun / Shogun / S1E1-10 of 10 (Фред Туа, Джонатан ван Тюллекен, Шарлотта Брандстром, Такэси Фукунага, Хироми Камата) [2024, США, драма, приключения, военный, история, боевик, WEB-DL-AVC] Dub (Sound Myrza Team / Freedom Media) + Original + Sub (Rus, Eng)",
+        "videoSize": 11703126016
+      },
+      "description": "📄 Сёгун / Shôgun / Shogun / S1E1-10 of 10 (Фред Туа, Джонатан ван Тюллекен, Шарлотта Брандстром, Такэси Фукунага, Хироми Камата) [2024, США, драма, приключения, военный, история, боевик, WEB-DL-AVC] Dub (Sound Myrza Team / Freedom Media) + Original + Sub (Rus, Eng)\n📹 avc\n⭐ WEB-DL\n👤 21 💾 10.9 GB 🔎 Comet|Knaben\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|64e3fcc2a29aaa311d156dca8ff14229f1fe49f2",
+        "filename": "Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-10 из 10 (Фред Туа, Джонатан ван Тюллекен, Шарлотта Брандстром, Такэси Фукунага, Хироми Камата) [2024, США, драма, приключения, военный, история, боевик, AC3, 24p] Kaz Dub (Sound Myrza Team / Freedom Media)",
+        "videoSize": 842696448
+      },
+      "description": "📄 Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-10 из 10 (Фред Туа, Джонатан ван Тюллекен, Шарлотта Брандстром, Такэси Фукунага, Хироми Камата) [2024, США, драма, приключения, военный, история, боевик, AC3, 24p] Kaz Dub (Sound Myrza Team / Freedom Media)\n🔊 Dolby Digital\n👤 2 💾 803.7 MB 🔎 Comet|Knaben\n🌎/🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cffbe553431b5c0ff6fe3c767fb7d0ee9d9567e6",
+        "filename": "Shogun S01E01 FRENCH HDTV",
+        "videoSize": 586678272
+      },
+      "description": "📄 Shogun S01E01 FRENCH HDTV\n⭐ HDTV\n👤 1504 💾 559.5 MB 🔎 Comet|Torrent9\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c0f2bdbd2adde0611cf715e83b49ef3d5ae76695",
+        "filename": "Shogun.1x01.Anjin.ITA.DLMux.x264-UBi.mkv",
+        "videoSize": 819462144
+      },
+      "description": "📄 Shogun.1x01.Anjin.ITA.DLMux.x264-UBi.mkv\n📹 avc\n⭐ WEBMux | 🏷️ UBi\n💾 781.5 MB 🔎 DMM\n🇮🇹",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bcdb113210a6858810924cd1a9a65be5a8008057",
+        "filename": "Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 1247113966
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 1.2 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|854c2230fb67b381838e6b52bbe1be68458ac8f7",
+        "filename": "Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 1247113966
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 1.2 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a1ee22fc217bc7cde337a0b11eafe48533e6978",
+        "filename": "Shogun.S01E01.WEB-DLRip-AVC",
+        "videoSize": 27164448622
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip-AVC\n📹 avc\n⭐ WEB-DLRip\n💾 25.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|164a5a6740ba8bc2337e4e04097a36d242023ede",
+        "filename": "Shogun.1x01.Anjin.ITA.DLMux.x264-UBi.mkv",
+        "videoSize": 819460809
+      },
+      "description": "📄 Shogun.1x01.Anjin.ITA.DLMux.x264-UBi.mkv\n📹 avc\n⭐ WEBMux | 🏷️ UBi\n💾 781.5 MB 🔎 Comet|StremThru\n🇮🇹",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f7a753826f7ad7b490c28f35b3167b30a2b5e407",
+        "filename": "Сёгун / Shôgun [01x01-08 из 10] (2024) WEB-DLRip | NewComers",
+        "videoSize": 4521262034
+      },
+      "description": "📄 Сёгун / Shôgun [01x01-08 из 10] (2024) WEB-DLRip | NewComers\n⭐ WEB-DLRip\n💾 4.2 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec9e60e26c7d027e5cd54b671c5afc3b748e996d",
+        "filename": "Shogun.2024.S01E01.XviD-AFG.avi",
+        "videoSize": 716535052
+      },
+      "description": "📄 Shogun.2024.S01E01.XviD-AFG.avi\n📹 xvid\n🏷️ AFG\n💾 683.3 MB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3a6018d4ae945c8f934ecdffcce081f74bfd0cc",
+        "filename": "Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-10 из 10 [2024 WEB-DLRip] MVO (TVShows)",
+        "videoSize": 10755271247
+      },
+      "description": "📄 Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-10 из 10 [2024 WEB-DLRip] MVO (TVShows)\n⭐ WEB-DLRip | 🏷️ TVShows\n💾 10.0 GB 🔎 Comet|Knaben\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b15de1d21f43b1ca5fa283561da26d4b42eca753",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 912347136
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n💾 870.1 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a3c7e6ed582e0a91ac69d9a32e1c11f287309059",
+        "filename": "Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-6 из 10 [2024 WEB-DLRip] MVO (TVShows)",
+        "videoSize": 6457016320
+      },
+      "description": "📄 Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-6 из 10 [2024 WEB-DLRip] MVO (TVShows)\n⭐ WEB-DLRip | 🏷️ TVShows\n💾 6.0 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|94d714d277f448a0bb05c9a31cfdb8cfea90e71c",
+        "filename": "Сёгун / Shôgun [01x01-07 из 10] (2024) WEB-DLRip | NewComers",
+        "videoSize": 4071912800
+      },
+      "description": "📄 Сёгун / Shôgun [01x01-07 из 10] (2024) WEB-DLRip | NewComers\n⭐ WEB-DLRip\n💾 3.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|845eb616ceda165f3306b92d2560f8589ff36190",
+        "filename": "Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 1047836672
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n💾 999.3 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|778ec1c2cdde61a89cb9159044b788e42af4ea66",
+        "filename": "Сёгун / Shôgun [01x01-02 из 10] (2024) WEB-DLRip | NewComers",
+        "videoSize": 1459433708
+      },
+      "description": "📄 Сёгун / Shôgun [01x01-02 из 10] (2024) WEB-DLRip | NewComers\n⭐ WEB-DLRip\n💾 1.4 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6781c9ca599d607b2de76344263386b4f949d0dc",
+        "filename": "Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-5 из 10 [2024 WEB-DLRip] MVO (TVShows)",
+        "videoSize": 5415996534
+      },
+      "description": "📄 Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-5 из 10 [2024 WEB-DLRip] MVO (TVShows)\n⭐ WEB-DLRip | 🏷️ TVShows\n💾 5.0 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6678fa736abf5edf100378b4fcefbb4f49750f10",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.ViruseProject.avi",
+        "videoSize": 872089600
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB-DLRip.ViruseProject.avi\n⭐ WEB-DLRip\n👤 2 💾 831.7 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|57db575573abaf4105770734245641a54de455fa",
+        "filename": "Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-9 из 10 [2024 WEB-DLRip] MVO (TVShows)",
+        "videoSize": 9606795855
+      },
+      "description": "📄 Сёгун / Shôgun / Shogun / Сезон: 1 / Серии: 1-9 из 10 [2024 WEB-DLRip] MVO (TVShows)\n⭐ WEB-DLRip | 🏷️ TVShows\n💾 8.9 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5782c1e86335733950ce04904344846058c1561f",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 912347136
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n💾 870.1 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ede331edaced58ee3e95a32874271fc2864fc98",
+        "filename": "Shogun 2024 S01E01 XviD-AFG",
+        "videoSize": -1
+      },
+      "description": "📄 Shogun 2024 S01E01 XviD-AFG\n📹 xvid\n🏷️ AFG\n💾 None 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14ffac4f1d56524796c56e631bd1188db2a68a3d",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 912345006
+      },
+      "description": "📄 Shogun.2024.S01E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n👤 0 💾 870.1 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0fea05d9334a202246a7afbcbb6532d893bcb6f2",
+        "filename": "Shogun.S01E01.rus.LostFilm.TV.avi",
+        "videoSize": 1076623360
+      },
+      "description": "📄 Shogun.S01E01.rus.LostFilm.TV.avi\n💾 1.0 GB 🔎 DMM\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0b23912b1d5225e984afd32a20dbe1da7069e715",
+        "filename": "Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 1047831511
+      },
+      "description": "📄 Shogun.S01E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n👤 1 💾 999.3 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c62b89f4307c5a1bb39265dacebbfdb83f141be6",
+        "filename": "[ Torrent911.bz ] Shogun.2024.S01E01.FRENCH.WEBRip.x264.mp4",
+        "videoSize": 586709050
+      },
+      "description": "📄 [ Torrent911.bz ] Shogun.2024.S01E01.FRENCH.WEBRip.x264.mp4\n📹 avc\n⭐ WEBRip\n💾 559.5 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8709f5f1603cbffbfc6c8e8072afce40b23db9cb",
+        "filename": "[ Torrent911.bz ] Shogun.2024.S01E01.VOSTFR.WEBRip.x264.mp4",
+        "videoSize": 589062283
+      },
+      "description": "📄 [ Torrent911.bz ] Shogun.2024.S01E01.VOSTFR.WEBRip.x264.mp4\n📹 avc\n⭐ WEBRip\n💾 561.8 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b99313dd0494e61610d8ba0dfe562a0c0bbbf301",
+        "filename": "Shogun.2024.S01E01.XviD-AFG[EZTVx.to].avi",
+        "videoSize": 716535052
+      },
+      "description": "📄 Shogun.2024.S01E01.XviD-AFG[EZTVx.to].avi\n📹 xvid\n🏷️ AFG\n👤 3 💾 683.3 MB 🔎 EZTV",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

@@ -1,0 +1,1409 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "parasite",
+  "request": "https://torrentio.strem.fun/<config>/stream/movie/tt6751668.json",
+  "recordedAt": "2026-10-11T12:05:21.296Z",
+  "status": 200,
+  "ms": 3467,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite (2019) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Bandi) [QxR]\n👤 71 💾 15.75 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f5612e57a8fa38d974094b71fbca90e328d1d544/Parasite (2019) (2160p BluRay x265 10bit HDR Bandi).mkv/0/Parasite (2019) (2160p BluRay x265 10bit HDR Bandi).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Parasite (2019) (2160p BluRay x265 10bit HDR Bandi).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite (2019) MULTi VFI 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ\n👤 46 💾 4.59 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/74edcaa91e781c2b2203e9a05695c07efd63e1b6/Parasite (2019) MULTi VFI 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ/undefined/Parasite (2019) MULTi VFI 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 26 💾 77.51 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4e3a52647617e564608cf29fb327bb61ac2ad66f/<opaque>/Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Parasite.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite 2019.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC.(Kor Fr)-DDR\n👤 23 💾 20.19 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧 / 🇰🇷 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a483118fe9c1f973456d1bd9ff6ce2f37b30ba6b/Parasite.2019.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC.(Kor Fr)-DDR.mkv/0/Parasite.2019.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC.(Kor Fr)-DDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Parasite.2019.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC.(Kor Fr)-DDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Parasite.AKA.Gisaengchung.2019.UHD.BluRay.2160p.HDR10 .DV.HEVC.TrueHD.Atmos.7.1.x265-E\n👤 15 💾 23.97 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a092e2675c07bee48137bd162ac11539de062f91/Parasite 2019 4K.mkv/0/Parasite 2019 4K.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Parasite 2019 4K.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite.2019.4K.HDR.2160p.BDRip Ita Kor x265-NAHOM\n👤 15 💾 15.77 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0d1201826c2d658446ac8464c9548e09f132a315/<opaque>/Parasite.2019.4K.HDR.2160p.BDRip Ita Kor x265-NAHOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Parasite.2019.4K.HDR.2160p.BDRip Ita Kor x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite.2019.KOREAN.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-IAMABLE\n👤 13 💾 35.79 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1288fd53174fed47744df5e8ed3209521a27b64a/<opaque>/Parasite.2019.2160p.UHD.BluRay.X265-IAMABLE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Parasite.2019.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite.2019.bluray.hdr.2160p.av1.7.1.opus.subs-Dust\n👤 5 💾 4.13 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5a2739568284bee3c69565c039d03bef796a5618/<opaque>/Parasite.2019.bluray.hdr.2160p.av1.7.1.opus.subs-Dust.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "Parasite.2019.bluray.hdr.2160p.av1.7.1.opus.subs-Dust.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite.2019.KOREAN.2160p.UHD.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-RARBG\n👤 5 💾 11.94 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3cbddca107f866773c433279dcaafba3eaa23df3/<opaque>/Parasite.2019.KOREAN.2160p.UHD.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-RARBG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Parasite.2019.KOREAN.2160p.UHD.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-RARBG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite.A.K.A.Gisaengchung.2019.KOREAN.2160p.10bit.HDR.BluRay.8CH.x265.HEVC-PSA\n👤 5 💾 5.1 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c7f471efe40d5b008fc9f51020d432064ffcad9/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite.2019.KOREAN.2160p.UHD.BluRay.x265.10bit.HDR.DDP5.1-RARBG\n👤 4 💾 7.98 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/04b64ec22bb207ac3883035f10fca3a1fbe88e11/<opaque>/Parasite.2019.KOREAN.2160p.UHD.BluRay.x265.10bit.HDR.DDP5.1-RARBG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Parasite.2019.KOREAN.2160p.UHD.BluRay.x265.10bit.HDR.DDP5.1-RARBG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) BDRip 2160p от VoX | 4K | HDR | D A\n👤 3 💾 36.25 GB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/943ee61bf6e7e35a7c517c3db8828c8166c13514/<opaque>/Parasite.2019.2160p.UHD.BDRip.HDR.x265.DD+7.1-VoX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Parasite.2019.2160p.UHD.BDRip.HDR.x265.DD+7.1-VoX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+ | HDR",
+      "title": "Паразиты / Parasite / Gisaengchung [2019 UHD BDRemux 2160p HDR10 HDR10+ Dolby Vision] [KOR] Dub + AVO + Original (Kor) + Sub (Rus Eng Kor)\n👤 2 💾 89.26 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/981d4e2b5490f6231469465a7904fba05ce28ee5/<opaque>/Паразиты.2019.UHD.Blu-Ray.Remux.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR10+|HDR",
+        "filename": "Паразиты.2019.UHD.Blu-Ray.Remux.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasite (2019 ITA KOR) [4K HDR] [HollywoodMovie]\n👤 1 💾 38.83 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a36f2a6bd303abee16bb1c6aef4f6d56c3f8f1dc/<opaque>/Parasite - 2000 - HMR - MR4K - 10bit - HDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|10bit|HDR",
+        "filename": "Parasite - 2000 - HMR - MR4K - 10bit - HDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Parasites.2019.2160p.BluRay.REMUX.DV.P7.HDR10.PLUS.JAP.LATINO.Atmos.7.1.H265-BTM\n👤 0 💾 84.79 GB ⚙️ ThePirateBay\n🇯🇵 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/20a9a15b7f27bca8d3174193997ac45744a90d08/<opaque>/Parasites.2019.2160p.BluRay.REMUX.DV.P7.HDR10.PLUS.JAP.LATINO.TrueHD.Atmos.7.1.DTS-HD.Master.7.1.H265-BEN.THE.MEN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|h265|10bit|DV|HDR",
+        "filename": "Parasites.2019.2160p.BluRay.REMUX.DV.P7.HDR10.PLUS.JAP.LATINO.TrueHD.Atmos.7.1.DTS-HD.Master.7.1.H265-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Паразиты / Parasite / Gisaengchung [2019 UHD BDRemux 2160p HDR10] [FRA] Dub + 2x MVO + DVO+ AVO + Original (Kor) + Sub (Rus Eng)\n👤 0 💾 84.16 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cc610af394310a73e57b78fd9201ecd10104c135/<opaque>/Паразиты.2019.UHD.Blu-Ray.Remux.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|HDR",
+        "filename": "Паразиты.2019.UHD.Blu-Ray.Remux.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasitos [4K UHDrip][2160p][HDR][AC3 5.1-Castellano-True HD 7.1-Coreano+Subs][ES-EN]\n👤 0 💾 34.39 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d5038016b821bfa8b2173dd4121d6f349327dea0/<opaque>/Parasitos 4Krip2160.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|UHDRip|HDR",
+        "filename": "Parasitos 4Krip2160.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Parasitos [4K UHDremux][2160p][HDR][AC3 5.1 Castellano-True HD 7.1-Coreano+Subs][ES-EN]\n👤 0 💾 76.61 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a6ea4ebe98a58a5716a66ec77e46ea9bee8188d4/<opaque>/Parasitos 4Kremux2160.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "Parasitos 4Kremux2160.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) UHD BDRemux 2160p | HDR | D P L L2 A\n👤 0 💾 91.63 GB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b13b918b70627a15da5787664e2f5c3fcf9e1242/ Gisaengchung (2019) UHD BDRemux 2160p | HDR | D P L L2 A/undefined/ Gisaengchung (2019) UHD BDRemux 2160p | HDR | D P L L2 A",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) UHD BDRemux 2160p от селезень | 4K | HDR | iTunes\n👤 0 💾 76.45 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e703b256d349028db0d44315d04d1e751fb4aa18/<opaque>/Gisaengchung.2019.BDREMUX.2160p.HDR.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "Gisaengchung.2019.BDREMUX.2160p.HDR.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) WEBRip 2160p | HDR | D P L L2 A\n👤 0 💾 27.37 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f978adf990bd29cfca3f7bc9166c5ae0de9ac89b/<opaque>/Gisaengchung.2019.WEBRip.2160p.HDR.by Silverok.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|HDR",
+        "filename": "Gisaengchung.2019.WEBRip.2160p.HDR.by Silverok.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite (2019) [2160p] [4K] [BluRay] [7.1] [YTS] [YIFY]\n👤 100 💾 6.05 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8593e59e39f0d337ca7e90afb8317beb2447cbb1/<opaque>/Parasite.2019.REPACK.2160p.4K.BluRay.x265.10bit.AAC7.1-[YTS.MX].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Parasite.2019.REPACK.2160p.4K.BluRay.x265.10bit.AAC7.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite (2019) [2160p] [4K] [BluRay] [5.1] [YTS] [YIFY]\n👤 18 💾 5.95 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6493bd1dec20e6105fc009647b6a2fecb606c6c1/<opaque>/Parasite.2019.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Parasite.2019.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR\n👤 17 💾 76.16 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd52c554080845c3da7582903cf941d2eb131824/<opaque>/Parasite.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Parasite.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.2160p.MA.WEB-DL.H.265.DDP5.1-PandaQT Gisaengchung SDR 4k UHD\n👤 14 💾 22.78 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/78f5d8845b753e31b9796379694c75dadcfa616b/<opaque>/Parasite.2019.2160p.MA.WEB-DL.H.265.DDP5.1-PandaQT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "Parasite.2019.2160p.MA.WEB-DL.H.265.DDP5.1-PandaQT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.KOREAN.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 11 💾 85.43 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/49b6e2dd8f76fb50d6fea8727abf392a5b5829f7/<opaque>/Parasite.2019.KOREAN.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Parasite.2019.KOREAN.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.KOREAN.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-MMCLX\n👤 11 💾 89.42 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a90d4354a1d1b189f178ee6f5428a4d0fab731d2/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.KOREAN.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ\n👤 7 💾 77.8 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9c24524d2f773a61363b79c291c68a4ba179e1d9/<opaque>/Parasite.2019.KOREAN.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Parasite.2019.KOREAN.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.(2019).[2160p].[4k]\n👤 4 💾 6.05 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/193c5f477038a5ccc3a7685409591b5046605877/<opaque>/Parasite.2019.REPACK.2160p.4K.BluRay.x265.10bit.AAC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Parasite.2019.REPACK.2160p.4K.BluRay.x265.10bit.AAC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.KOREAN.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 2 💾 85.55 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/635100a77687dd3c1a99368c4e7d48a09b3ea518/<opaque>/Parasite.2019.KOREAN.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Parasite.2019.KOREAN.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite (2019) 2160p H265 ITA DTS-HD KO DTS-HD Sub ITA ENG KiNG\n👤 0 💾 15.32 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1670f034a756f4c7e73e7a0a08efc055cd45fe05/<opaque>/Parasite.2019.2160p.HEVC.BDRip.ITA.DTSHD.KO.DTSHD.Sub.ITA.ENG.KiNG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|h265",
+        "filename": "Parasite.2019.2160p.HEVC.BDRip.ITA.DTSHD.KO.DTSHD.Sub.ITA.ENG.KiNG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite (2019) KOREAN (2160p BluRay x265 HEVC 10bit AAC 7.1 Joy) [UTR]\n👤 0 💾 6.05 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f5d93a832ec47b9a568ccf0de89091f8be0499d6/Parasite (2019) KOREAN  [2160p x265 10bit FS58 Joy].mkv/0/Parasite (2019) KOREAN  [2160p x265 10bit FS58 Joy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) KOREAN  [2160p x265 10bit FS58 Joy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Parasite.2019.KOREAN.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ\n👤 0 💾 86.09 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d3eccd1dee5c70dccf9a089df3c6a530364b0f11/<opaque>/Parasite.2019.KOREAN.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x264|8bit",
+        "filename": "Parasite.2019.KOREAN.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) BluRay 1080p.H264 Ita Kor AC3 5.1 Sub Ita Eng MIRCrew\n👤 138 💾 2.88 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bfad2015666cc6c3bf21f2cfc386ab64d75a84cb/<opaque>/Parasite 2019 BluRay 1080pH264 Ita Kor AC3 5.1 Sub Ita Eng.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Parasite 2019 BluRay 1080pH264 Ita Kor AC3 5.1 Sub Ita Eng.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.HDRip.X264.AC3-EVO[TGx]\n👤 105 💾 2.8 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ca22d8af344fefb24edc6ef861a71ce71c0a50e6/<opaque>/Parasite.2019.1080p.HDRip.X264.AC3-EVO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "Parasite.2019.1080p.HDRip.X264.AC3-EVO.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p BluRay\n👤 100 💾 2.07 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce6d2a6bbc439a8f6b94b23ba63b04164400fe3b/<opaque>/Parasite.2019.1080p.BluRay.x264-[YTS.LT].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.1080p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 REPACK 1080p BluRay x265-YAWNTiC\n👤 69 💾 7.88 GB ⚙️ ThePirateBay\n🇬🇧 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9a239b0af8c7c498872e4b980c3354e2a37a5f9d/<opaque>/Parasite 2019 REPACK 1080p BluRay x265-YAWNTiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Parasite 2019 REPACK 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 57 💾 34.84 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f5db70043ec66572aeece6b5355166ffff2e62a5/<opaque>/Parasite.2019.KORAEN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Parasite.2019.KORAEN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) Criterion (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean Silence) [QxR]\nParasite (2019) Criterion B&W (1080p BluRay x265 Silence).mkv\n👤 40 💾 4.55 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d2dc2ddaa9c308e2ace9dd79a62b98031d090376/Parasite (2019) Criterion B&W (1080p BluRay x265 Silence).mkv/1/Parasite (2019) Criterion B&W (1080p BluRay x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) Criterion B&W (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) Criterion (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean Silence) [QxR]\nParasite (2019) Criterion (1080p BluRay x265 Silence).mkv\n👤 40 💾 5.29 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d2dc2ddaa9c308e2ace9dd79a62b98031d090376/Parasite (2019) Criterion (1080p BluRay x265 Silence).mkv/0/Parasite (2019) Criterion (1080p BluRay x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) Criterion (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.BluRay.x264.DTS-FGT\n👤 27 💾 11.99 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6d54f137fcfc3ac204a0dbf2998c4aa9acbe5e80/<opaque>/Parasite.2019.KOREAN.1080p.BluRay.x264.DTS-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.KOREAN.1080p.BluRay.x264.DTS-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p MA WEB-DL H 264 DDP5 1-HHWEB\n👤 13 💾 7.49 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9c8be8779bf53ece790646b6a7566f51e3d59aa9/<opaque>/Parasite 2019 1080p MA WEB-DL H 264 DDP5 1-HHWEB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Parasite 2019 1080p MA WEB-DL H 264 DDP5 1-HHWEB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.(2019).1080p.MULTI.VFF.HEVC.AC3\n👤 12 💾 2 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8d834f8bc805eb1f7c38768532c1e6d2a6e4637d/Parasite.(2019).1080p.MULTI.VFF.HEVC.AC3/undefined/Parasite.(2019).1080p.MULTI.VFF.HEVC.AC3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite - Gisaengchung (2019) AC3 5.1 ITA.KOR 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 12 💾 3.21 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1e300420c6de9d9b14c8ca3dc27aeaefcdd14333/Parasite - Gisaengchung (2019) AC3 5.1 ITA.KOR 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv/0/Parasite - Gisaengchung (2019) AC3 5.1 ITA.KOR 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Parasite - Gisaengchung (2019) AC3 5.1 ITA.KOR 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME (Parasite)\n👤 11 💾 9.87 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/59c8cdf46fc7ce1c89769d899140476b05fa8993/<opaque>/Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.BluRay.H264.AAC-VXT\n👤 11 💾 2.52 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/66b8ac047bb6c15914038673234313612449f5d6/<opaque>/Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME\n👤 9 💾 9.87 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/618107dfe74e55fdb9819b5cdf4ffaa29091349d/<opaque>/[ Torrent911.com ] Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ Torrent911.com ] Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) Koch (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean afm72) [QxR]\n👤 9 💾 7.1 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/54432eae44f7fd49a552172a464767a6e7259b26/Parasite (2019) Koch (1080p BluRay x265 afm72).mkv/0/Parasite (2019) Koch (1080p BluRay x265 afm72).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) Koch (1080p BluRay x265 afm72).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019 ITA/KOR) [1080p x265] [Paso77]\n👤 9 💾 7.29 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/224422452551dfbc0db9683afeba3ea662e243d5/<opaque>/Parasite 2019 BDMux ITA KOR 1080p x265 Paso77.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDMux|x265",
+        "filename": "Parasite 2019 BDMux ITA KOR 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x264-REGRET\n👤 9 💾 9.83 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/264d238e72d938af8cebb74693226507a836e841/<opaque>/parasite.2019.1080p.bluray.x264-regret.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "parasite.2019.1080p.bluray.x264-regret.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.WEBRip.x264.AAC2.0-NOGRP\n👤 8 💾 5.02 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a39e4232842fd09608162521df562b34e61bb22a/<opaque>/Parasite.2019.KOREAN.1080p.WEBRip.x264.AAC2.0-NOGRP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Parasite.2019.KOREAN.1080p.WEBRip.x264.AAC2.0-NOGRP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p UHD BluRay x264 DD5 1-Pahe in\n👤 6 💾 2.89 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4055ff5feebbc1b66a3685813b7a02169159a882/<opaque>/Parasite.2019.1080p.UHD.BluRay.x264.DD5.1-Pahe.in.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.1080p.UHD.BluRay.x264.DD5.1-Pahe.in.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.BluRay.x265-VXT\n👤 6 💾 2.06 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/88d5b3fdb966781762288cd48c72a9a3e6bbb51e/<opaque>/Parasite.2019.KOREAN.1080p.BluRay.x265-VXT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Parasite.2019.KOREAN.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.A.K.A.Gisaengchung.2019.KOREAN.1080p.10bit.BluRay.8CH.x265.HEVC-PSA\n👤 6 💾 1.73 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/811fd609af77ba5775582537e6da76f100507b6d/<opaque>/Parasite.A.K.A.Gisaengchung.2019.KOREAN.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite.A.K.A.Gisaengchung.2019.KOREAN.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME\n👤 6 💾 9.87 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/92d12580b8289fdd2afac19d01d6e177b002699a/<opaque>/[ OxTorrent.com ] Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ OxTorrent.com ] Gisaengchung.2019.MULTi.1080p.BluRay.DTS.x264-EXTREME.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.BLACK.N.WHiTE.EDiTiON.1080p.BluRay.x264-MiCiUS[TGx\n👤 5 💾 14.46 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6143756f372d420114107f3a0436a7c8daabe952/<opaque>/parasite.2019.black.n.white.edition.1080p.bluray.x264-micius.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "parasite.2019.black.n.white.edition.1080p.bluray.x264-micius.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.BluRay.1080p.x264.Atmos.TrueHD.7.1-HDChina\n👤 5 💾 20.01 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/96bd004da694fb558e517ea653b733f0671811b7/<opaque>/Parasite.2019.BluRay.1080p.x264.Atmos.TrueHD.7.1-HDChina.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.BluRay.1080p.x264.Atmos.TrueHD.7.1-HDChina.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p AV1 10bit-DKong\n👤 4 💾 755.2 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e1c85ad2bcee983394b4c4dc46c0f3c47f7f4af5/<opaque>/Parasite 2019 1080p AV1 10bit-DKong.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|10bit",
+        "filename": "Parasite 2019 1080p AV1 10bit-DKong.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) [BluRay Rip 1080p ITA-KOR DTS-AC3 SUBS] [M@HD]\n👤 4 💾 12.2 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/72b2cd99e470f83920e356c2b68de8c2b685e2fc/Parasite (2019) [BluRay Rip 1080p ITA-KOR DTS-AC3 SUBS] [M@HD].mkv/0/Parasite (2019) [BluRay Rip 1080p ITA-KOR DTS-AC3 SUBS] [M@HD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip",
+        "filename": "Parasite (2019) [BluRay Rip 1080p ITA-KOR DTS-AC3 SUBS] [M@HD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.INTERNAL.1080p.BluRay.X264-AMIABLE\n👤 4 💾 19.71 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/479783ea40e9e51e558ad332a8c04b66753710fa/<opaque>/Parasite.2019.INTERNAL.1080p.BluRay.X264-AMIABLE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.INTERNAL.1080p.BluRay.X264-AMIABLE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) BDRip 1080p | D P L2 A\n👤 4 💾 17.59 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇰🇷 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fdf14948c24be274b055424052b11b146e7cd058/<opaque>/Паразиты.2019.Dub.1080p.BluRay.x264-PuTao.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Паразиты.2019.Dub.1080p.BluRay.x264-PuTao.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.1600MB.DD5.1.x264-GalaxyRG ⭐\n👤 4 💾 1.6 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7e500dc4c42e5ff375f15ac9c190e1403938d800/<opaque>/Parasite.2019.1080p.BluRay.1600MB.DD5.1.x264-GalaxyRG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.1080p.BluRay.1600MB.DD5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": " Parasite 기생충 (Gisaengchung) (2019) [BD 1080p HEVC VOSTA VOSTFR] HR-GZ DR\n👤 3 💾 3.69 GB ⚙️ 1337x\n🇰🇷 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/30db3ebe18f5f703d87444fb2b97a0dc112aad68/[Hakata Ramen] Parasite (2019) (Korean) [BD 1080p x265].mkv/2/[Hakata Ramen] Parasite (2019) (Korean) [BD 1080p x265].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc",
+        "filename": "[Hakata Ramen] Parasite (2019) (Korean) [BD 1080p x265].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasitos [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Coreano+Subs][ES-EN]\n👤 3 💾 5.61 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b14b5eaa77f0e5c82569b27aa9220a5438eb2c4d/<opaque>/Parasitos M1080.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip",
+        "filename": "Parasitos M1080.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) WEB-DL 1080p от New-Team | P | HDRezka Studio\n👤 3 💾 5.18 GB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b45022d5f2411080534ef54b2cbec5fafbeb825/<opaque>/Parasite.2019.WEB-DL.1080p.Rus.Kor.stalkerok.New-Team.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Parasite.2019.WEB-DL.1080p.Rus.Kor.stalkerok.New-Team.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p AV1 10Bit DKong\n👤 2 💾 755.2 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/381600e170a611a4bdb7b0af2900a7bb36d156f7/<opaque>/Parasite 2019 1080p AV1 10Bit DKong.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|10bit",
+        "filename": "Parasite 2019 1080p AV1 10Bit DKong.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "ALL Best Picture Nominees 1080p BluRay Part 3 of 3 2015-2023 82 Movies jZQ\n2019/!!! Parasite (2019) IMDB 8.5/Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4\n👤 2 💾 2.52 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2c0c3ae5d663666759fcd10876b951bcfc7ccb8e/<opaque>/Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) BDRip 1080p | D P A | Лицензия\n👤 2 💾 8.78 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b783d0d38afd5902ef6bec13db11769b6b6b8b2c/<opaque>/Parasite.Gisaengchung.2019.BDRip.1080p.3xRus.Kor.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Parasite.Gisaengchung.2019.BDRip.1080p.3xRus.Kor.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.BluRay.x264.TrueHD.7.1.Atmos-FGT\n👤 2 💾 15 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2f600fca6c5b15b0ce3b16897f228da50c44e079/<opaque>/Parasite.2019.KOREAN.1080p.BluRay.x264.TrueHD.7.1.Atmos-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.KOREAN.1080p.BluRay.x264.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.WEBRip.x264.AAC.HORiZON-ArtSubs\n👤 2 💾 3.02 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5dc7bf28f8edad80f3068f250360f5c2a9bafce9/<opaque>/Parasite.2019.1080p.WEBRip.x264.AAC.HORiZON-ArtSubs.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Parasite.2019.1080p.WEBRip.x264.AAC.HORiZON-ArtSubs.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.VOSTFR.FANSUB.1080p.WEBRip.x264.AAC2.0-SSS\n👤 2 💾 2.24 GB ⚙️ EXT\n🇬🇧 / 🇰🇷 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/41050610541c75859162a2d8301a8ef16507db02/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p BluRay x265-YAWNTiC\n👤 1 💾 5.93 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c4b1825fbf655467abb2a857186bd24d3072b98f/<opaque>/Parasite 2019 1080p BluRay x265-YAWNTiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Parasite 2019 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "IMDB Top 250 - 2024 Edition - 1080p BluRay eSubs jZQ\n033 Parasite (2019)/Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4\n👤 1 💾 2.52 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/71fee293dc117c48487029c6dcb5038d974a0295/<opaque>/Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Parasite.2019.KORAEN.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.10bit.UHD.Blu-ray.DDP.7.1.HEVC-NmCT\n👤 1 💾 11.38 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a98914c8675e8e87dfd4c9a2fce593cfe5bc8e85/<opaque>/[寄生虫]Parasite.2019.1080p.10bit.UHD.Blu-ray.DDP.7.1.HEVC-NmCT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "[寄生虫]Parasite.2019.1080p.10bit.UHD.Blu-ray.DDP.7.1.HEVC-NmCT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.x264.ITA.Ac3.5.1.Sub.Forced.QualityCrew.mkv\n👤 1 💾 2.29 GB ⚙️ ilCorSaRoNeRo\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/adeb33e8deea02350864e69aa44385186f82cb2e/<opaque>/Parasite.2019.1080p.x264.ITA.Ac3.5.1.Sub.Forced.QualityCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) BDRip 1080p | D P A | iTunes\n👤 1 💾 8.84 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c9c165e99f60d38632428b9b823cc65028cd76d9/Gisaengchung (Parasite).2019.BDRip.1080p.W.mkv/0/Gisaengchung (Parasite).2019.BDRip.1080p.W.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Gisaengchung (Parasite).2019.BDRip.1080p.W.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parásitos.2019.1080P-Dual-Lat (1).mp4\n👤 0 💾 2.16 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5e6c8f6802119b7c86cf86ddd5dcb58787935e1d/Parásitos.2019.1080P-Dual-Lat (1).mp4/0/Parásitos.2019.1080P-Dual-Lat (1).mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Parásitos.2019.1080P-Dual-Lat (1).mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p BluRay x264-OFT\n👤 0 💾 5.72 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cbf45dfe67126aa49fc33acc72e84756c7a205a8/<opaque>/Parasite 2019 1080p BluRay x264-OFT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite 2019 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.bluray.sdr.1080p.av1.7.1.opus.subs-Dust\n👤 0 💾 1.51 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0b48bb161df9b209a1db2541959c74e3d322af43/<opaque>/Parasite.2019.bluray.sdr.1080p.av1.7.1.opus.subs-Dust.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Parasite.2019.bluray.sdr.1080p.av1.7.1.opus.subs-Dust.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.KOREAN.1080p.BluRay.H264.AAC-VXT\n👤 0 💾 2.52 GB ⚙️ ThePirateBay\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b8dc28e505db499cef5117a07e18bfd736c920e1/<opaque>/Parasite.2019.KOREAN.1080p.BluRay.H264.AAC-VXT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Parasite.2019.KOREAN.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) 1080p AV1 DDP Atmos [UnAV1Chain]\n👤 0 💾 1.72 GB ⚙️ TorrentGalaxy\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0cd66fb8a2438ccbea0f1dce9cdd66a92bb546d2/Parasite (2019) 1080p AV1 DDP Atmos [UnAV1Chain].mkv/0/Parasite (2019) 1080p AV1 DDP Atmos [UnAV1Chain].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Parasite (2019) 1080p AV1 DDP Atmos [UnAV1Chain].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) BDRip 1080p от HELLYWOOD | D P A\n👤 0 💾 16.66 GB ⚙️ Rutor\n🇷🇺 / 🇰🇷 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9e947bea25813ef8de76adfd1d1033288ace6ac7/<opaque>/Gisaengchung.2019.BDRip.1080p.4xRus.Ukr.Kor.-HELLYWODD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Gisaengchung.2019.BDRip.1080p.4xRus.Ukr.Kor.-HELLYWODD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasitos [BluRay 1080p HEVC X265][AC3 5.1 Castellano AC3 5.1-Coreano+Subs][ES-EN]\n👤 0 💾 6.54 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f1c30e1fa20ac1992e231f697f11202f89aaba36/<opaque>/Parasitos X265.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Parasitos X265.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) 1080p BluRay x264 Hindi AC3 5.1 - MeGUiL\n👤 0 💾 2.72 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e76e97274968d55941b62bb9e0670466f2346e9a/Parasite (2019) 1080p BluRay x264 Hindi AC3 5.1 - MeGUiL.mkv/0/Parasite (2019) 1080p BluRay x264 Hindi AC3 5.1 - MeGUiL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite (2019) 1080p BluRay x264 Hindi AC3 5.1 - MeGUiL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) 1080p (Multi Sub) [HEVC AAC] - FiNAL\n👤 0 💾 7.89 GB ⚙️ 1337x\nMulti Subs / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b39cc0edba9df0bf806bfddbbd14d12630d7f62/Parasite (2019) 1080p - FiNAL.mkv/0/Parasite (2019) 1080p - FiNAL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Parasite (2019) 1080p - FiNAL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.BW.PROPER.1080p.BluRay.x264-REGRET\n👤 0 💾 14.31 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/675dd6a629860e9d0adc8d3cff8521880cb08633/<opaque>/parasite.2019.bw.proper.1080p.bluray.x264-regret.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "parasite.2019.bw.proper.1080p.bluray.x264-regret.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) 1080p HC Eng Subs - fiveofseven\n👤 0 💾 3.79 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec21fb1504a9b62896fa6c395d3bed3c04046911/Parasite (2019) 1080p HC Eng Subs - fiveofseven.mp4/0/Parasite (2019) 1080p HC Eng Subs - fiveofseven.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Parasite (2019) 1080p HC Eng Subs - fiveofseven.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasitos [BluRay 1080p][AC3 5.1 Castellano AC3 5.1-Coreano+Subs][ES-EN]\n👤 0 💾 12.6 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/601d595d10ebee700125233e8d594e04cd6ba71e/<opaque>/Parasitos BD1080.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Parasitos BD1080.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) FullHD 1080p ITA KOR AC3 Subs.mkv\n👤 0 💾 10.28 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a2593396b84916427f6235ba24b33860cd422087/Parasite (2019) FullHD 1080p ITA KOR AC3 Subs.mkv/undefined/Parasite (2019) FullHD 1080p ITA KOR AC3 Subs.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) Hindi (BluRay 1080p HEVC 10bit AAC 5.1 Musafirboy) - [Telly]\n👤 0 💾 2.4 GB ⚙️ 1337x\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cf7af7094687157b564325ccd938cb5dcb540510/Parasite (2019) Hindi (BluRay 1080p HEVC 10bit AAC 5.1 Musafirboy) - [Telly]/undefined/Parasite (2019) Hindi (BluRay 1080p HEVC 10bit AAC 5.1 Musafirboy) - [Telly]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) 1080p BluRay 10bit HEVC x265 [Hindi DD 5.1 Korean DD 5.1] EBSub ~ imSamirOFFICIAL\n👤 0 💾 3.18 GB ⚙️ 1337x\n🇰🇷 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4c8ab3d34db62c0860646d9a435db43c5537375d/Parasite (2019) 1080p BluRay 10bit HEVC x265 [Hindi DD 5.1 + Korean DD 5.1] EBSub ~ imSamirOFFICIAL.mkv/0/Parasite (2019) 1080p BluRay 10bit HEVC x265 [Hindi DD 5.1 + Korean DD 5.1] EBSub ~ imSamirOFFICIAL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) 1080p BluRay 10bit HEVC x265 [Hindi DD 5.1 + Korean DD 5.1] EBSub ~ imSamirOFFICIAL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite Bluray 1080p | mkv | 9 gb | dual áudio\n👤 0 💾 9.03 GB ⚙️ MicoLeaoDublado\nDual Audio / 🇵🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fc33008ab9b2fefa78cf264d3124b841875d5c11/<opaque>/Parasita.2020.1080p.BluRay.x264-DUAL.COMANDOTORRENTS.ORG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasita.2020.1080p.BluRay.x264-DUAL.COMANDOTORRENTS.ORG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite Bluray 720p | mkv | 3 gb | dual áudio\n👤 0 💾 3.08 GB ⚙️ MicoLeaoDublado\nDual Audio / 🇵🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1171e608f0d31b7f99a49c365a92eac478fdd217/<opaque>/Parasita.2020.1080p.BluRay.x264-DUAL.COMANDO.TO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasita.2020.1080p.BluRay.x264-DUAL.COMANDO.TO.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) (1080p BluRay x265 HEVC 10bit TrueHD 7.1 Qman) [UTR]\n👤 0 💾 7.8 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5ca32537ab51653ecc50e6572cd857af0482a5e7/Parasite (2019) (1080p BluRay x265 HEVC 10bit TrueHD 7.1 Qman) [UTR]/undefined/Parasite (2019) (1080p BluRay x265 HEVC 10bit TrueHD 7.1 Qman) [UTR]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.INTERNAL.1080p.BluRay.X264-AMIABLE[TGx] ⭐\n👤 0 💾 19.71 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/44bfe786d8546058f9290b29395fbe7a864e9fdc/<opaque>/Parasite.2019.INTERNAL.1080p.BluRay.X264-AMIABLE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.INTERNAL.1080p.BluRay.X264-AMIABLE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.10bit.AAC7.1.x265-EpicHD\n👤 0 💾 2.14 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/79cd40909ab57651980d416a08f38e44eb15df41/<opaque>/Parasite.2019.1080p.BluRay.10bit.AAC7.1.x265-EpicHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Parasite.2019.1080p.BluRay.10bit.AAC7.1.x265-EpicHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) KORAEN (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy) [UTR]\n👤 0 💾 1.6 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/351f56d8b0acaac1005eba8d8bfdfcd7d0bcb9d6/Parasite (2019) KORAEN (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy) [UTR]/undefined/Parasite (2019) KORAEN (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy) [UTR]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x265.MeGaTroN\n👤 0 💾 1.56 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/21481c527bd74113a3225e1f6017a7f0aa29152c/<opaque>/Parasite.2019.1080p.BluRay.x265.MeGaTroN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Parasite.2019.1080p.BluRay.x265.MeGaTroN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.x264-REGRET[EtHD]\n👤 0 💾 9.89 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d25cdcd0ed9490072e7b70be04690737b6518de6/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) KOREAN 1080p BluRay with Subtitles\n👤 0 💾 2 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7156d44f4e7e5257cabfda13570504f70065f879/Parasite (2019) KOREAN 1080p BluRay with Subtitles/undefined/Parasite (2019) KOREAN 1080p BluRay with Subtitles",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Korean Silence) [QxR]\n👤 0 💾 6.01 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d866765949ab17dbf01cbf098578da95c1b81323/Parasite (2019) (1080p BluRay x265 Silence).mkv/0/Parasite (2019) (1080p BluRay x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.MULTi.KOR.Bluray.1080p.Atmos.7.1.Kor.Fr.HEVC-DD...\n👤 0 💾 11.51 GB ⚙️ ThePirateBay\nMulti Audio / 🇰🇷 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/86469c883324ee3f1566b10aa4e1d5f03ab398d4/<opaque>/Parasite.2019.MULTi.KOR.Bluray.1080p.Atmos.7.1.Kor.Fr.HEVC-DDR[EtHD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Parasite.2019.MULTi.KOR.Bluray.1080p.Atmos.7.1.Kor.Fr.HEVC-DDR[EtHD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) BDRemux 1080p | D P A | iTunes\n👤 0 💾 31.92 GB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6f2b9e760beb4d1505114e30a885714dcd7c973c/Gisaengchung (Parasite).2019.BDRemux.W.mkv/0/Gisaengchung (Parasite).2019.BDRemux.W.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Gisaengchung (Parasite).2019.BDRemux.W.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.MULTi.1080p.BluRay.x264-LOST[EtHD]\n👤 0 💾 9.84 GB ⚙️ ThePirateBay\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4ee3d5b968aef0542653a9e3d341e9554f326830/<opaque>/parasite.2019.multi.1080p.bluray.x264-lost[EtHD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "parasite.2019.multi.1080p.bluray.x264-lost[EtHD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "PARASITE.2019.1080p.FHDRip.H264.AAC-NonDRM[EtHD]\n👤 0 💾 5.03 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/74f0ec062c14086d4fee65390db64422323956da/<opaque>/PARASITE.2019.1080p.FHDRip.H264.AAC-NonDRM[EtHD].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "PARASITE.2019.1080p.FHDRip.H264.AAC-NonDRM[EtHD].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite.2019.Korean.1080p.WEB-Rip.AAC.2.0.HEVC-DDR[EtHD]\n👤 0 💾 3.93 GB ⚙️ ThePirateBay\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/53826a027308c17b93f9b4cad15f890f58a3e214/<opaque>/Parasite.2019.Korean.1080p.WEB-Rip.AAC.2.0.HEVC-DDR[EtHD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc",
+        "filename": "Parasite.2019.Korean.1080p.WEB-Rip.AAC.2.0.HEVC-DDR[EtHD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Parasite (2019) 1080p WEB-DL x264 Ganool\n👤 0 💾 1.9 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b2650791c971cbb00062253bff42064f0a8466e/Parasite (2019) 1080p WEB-DL x264 Ganool.mkv/0/Parasite (2019) 1080p WEB-DL x264 Ganool.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Parasite (2019) 1080p WEB-DL x264 Ganool.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite.2019.720p.BRRip.x264.AAC2.0-MP4\n👤 100 💾 1.15 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a4c5d60f07f5a4e99623fb2c33d0e51f760b49a9/<opaque>/Parasite.2019.720p.BluRay.x264-[YTS.LT].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Parasite.2019.720p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite.2019.KOREAN.720p.BluRay.x264.DTS-FGT\n👤 8 💾 6.47 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4de43f99e02cffcfe90abab3a0f214abab05cd20/<opaque>/Parasite.2019.KOREAN.720p.BluRay.x264.DTS-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Parasite.2019.KOREAN.720p.BluRay.x264.DTS-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite (2019) 720p WEB-DL x264 Ganool\n👤 5 💾 950.74 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/244f0c9dba62412aa1971da14c7dfa1e2c5b5c06/Parasite (2019) 720p WEB-DL x264 Ganool.mkv/0/Parasite (2019) 720p WEB-DL x264 Ganool.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|x264",
+        "filename": "Parasite (2019) 720p WEB-DL x264 Ganool.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite (2019) 720p 10bit BluRay 6CH x265 HEVC\n👤 4 💾 906.7 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8d52b3b73b62577ab90ba711a54d3b55e38ef33c/Parasite (2019) 720p 10bit BluRay 6CH x265 HEVC/undefined/Parasite (2019) 720p 10bit BluRay 6CH x265 HEVC",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Academy Awards Best Pictures (1927 - 2020)\n2019 - Parasite - 720p.mp4\n👤 3 💾 1.15 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c9cf60639e51947f0906f8545e6b9bc3d84a37d9/<opaque>/2019 - Parasite - 720p.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "2019 - Parasite - 720p.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME\n👤 1 💾 5.54 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/be2eb889f546d1164651858f4e4a4c75ca0b0a45/<opaque>/[ Torrent911.com ] Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "[ Torrent911.com ] Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasita 2020 (720p) DUAL\n👤 1 💾 1.77 GB ⚙️ Comando\nDual Audio / 🇵🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c5801caebc493aee12fbc2cc8f2126d6f164d58/<opaque>/Parasita.2020.720p.BluRay.x264.DUAL-COMANDO.TO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Parasita.2020.720p.BluRay.x264.DUAL-COMANDO.TO.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME (Parasite)\n👤 0 💾 5.54 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5db1220f4d6af4fb2be60b323bce6084448f0661/<opaque>/Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Gisaengchung.2019.FRENCH.720p.BluRay.DTS.x264-EXTREME.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite (2019) 720p HC Eng Subs - fiveofseven\n👤 0 💾 1.86 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69d1ff93287d5e9ee6819decc0f2d9df9d01ce52/Parasite (2019) 720p HC Eng Subs - fiveofseven.mp4/0/Parasite (2019) 720p HC Eng Subs - fiveofseven.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Parasite (2019) 720p HC Eng Subs - fiveofseven.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasitos [720p][Castellano][wWw.EliteTorrent.BZ]\n👤 0 💾 1.98 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/738ce55152baf6b585392207a12feb99315ad6da/<opaque>/Parasitos [720p][Castellano][wWw.EliteTorrent.BZ].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Parasitos [720p][Castellano][wWw.EliteTorrent.BZ].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite (2019) 720p Original Bluray Dual Audio [Hindi + korean]\n👤 0 💾 1.32 GB ⚙️ ThePirateBay\nDual Audio / 🇰🇷 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b944dc5eaf3f349572590af957dfddd7fd7900f8/Parasite (2019) 720p Original Bluray Dual Audio [Hindi + korean] DD-5.1 ESub x264 - Shadow.mkv/0/Parasite (2019) 720p Original Bluray Dual Audio [Hindi + korean] DD-5.1 ESub x264 - Shadow.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Parasite (2019) 720p Original Bluray Dual Audio [Hindi + korean] DD-5.1 ESub x264 - Shadow.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite (2019) 720p BluRay Hindi DD5.1 Dual-Audio x264 ESub - KatmovieHD\n👤 0 💾 1.31 GB ⚙️ 1337x\nDual Audio / 🇳🇱 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d20f54a2300aaadee158544f7caa93469412c0c0/<opaque>/Parasite.2019.720p.BluRay.Hindi.Dual-Audio.x264.6CH-KatmovieHD.nl.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Parasite.2019.720p.BluRay.Hindi.Dual-Audio.x264.6CH-KatmovieHD.nl.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite (2019) Hindi BluRay 720p Dual Audio [ हिंदी 5.1 DD & Korean] English Subs | [Full Movie] - LatestHdHub\n👤 0 💾 1.31 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇰🇷 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/21b5dda62ec218a1029ffbb0d684a89cf6a493bb/Parasite.2019.720p.BluRay.Hindi.Dual-Audio.x264.6CH-LatestHdHub.xyz1).mkv/0/Parasite.2019.720p.BluRay.Hindi.Dual-Audio.x264.6CH-LatestHdHub.xyz1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Parasite.2019.720p.BluRay.Hindi.Dual-Audio.x264.6CH-LatestHdHub.xyz1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite.2019.720p.BluRay.x264-REGRET\n👤 0 💾 6.56 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/728910f00922f21d298796d4f02fc357f1fad88e/<opaque>/parasite.2019.720p.bluray.x264-regret.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "parasite.2019.720p.bluray.x264-regret.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite.2019.KOREAN.720p.BluRay.H264.AAC-VXT\n👤 0 💾 1.6 GB ⚙️ RARBG\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ffd237d041fe2393a698253bee7887f0ad7f8202/<opaque>/Parasite.2019.KORAEN.720p.BluRay.H264.AAC-VXT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|h264",
+        "filename": "Parasite.2019.KORAEN.720p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Parasite [720p][Subtitulado][wWw.EliteTorrent.IO]\n👤 0 💾 1.21 GB ⚙️ MejorTorrent\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/62a8d757545746e811798694f85ba3a20ebeb7ab/Parasite.2019.720p.VOSE.mkv.mp4/1/Parasite.2019.720p.VOSE.mkv.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Parasite.2019.720p.VOSE.mkv.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "PARASITE.2019.720p.HDRip.H264.AAC-Mkvking\n👤 0 💾 1.13 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c84e53b252f4bd1a27791a2f7196680b8d4b194f/<opaque>/PARASITE.2019.720p.HDRip.H264.AAC-Mkvking.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|h264",
+        "filename": "PARASITE.2019.720p.HDRip.H264.AAC-Mkvking.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME (Parasite)\n👤 9 💾 1.37 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aaf5423ef02bfd5287c64c874243d0803e475687/<opaque>/Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nDVDRip",
+      "title": "Parasitos.2019.DOBLADA.EN.CASTELLANO.DVDRip.x264.DD5.1-URBiN4HD\n👤 5 💾 1.79 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3e693fa97d3d818df274dfe75b192582667ddbde/<opaque>/Parásitos.2019.DOBLADA.EN.CASTELLANO.DVDRip.x264.DD5.1-URBiN4HD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|x264",
+        "filename": "Parásitos.2019.DOBLADA.EN.CASTELLANO.DVDRip.x264.DD5.1-URBiN4HD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) HDRip от Scarabey | Лицензия\n👤 1 💾 1.45 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/17b6163a500f6db3e020b67612f9e9ca934301a9/<opaque>/Parasite_2019_HDRip_[scarabey.org].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Parasite_2019_HDRip_[scarabey.org].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME\n👤 1 💾 1.37 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eb9e33cdabf5dd30c024f222ef0939853530a252/<opaque>/[ OxTorrent.com ] Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "[ OxTorrent.com ] Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBRRip",
+      "title": "Parasite.2019.BRRip.XviD.AC3-EVO[TGx]\n👤 0 💾 1.37 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e84c794fac9fd32f2244cc35490ba035a82eb091/<opaque>/Parasite.2019.BRRip.XviD.AC3-EVO.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|xvid",
+        "filename": "Parasite.2019.BRRip.XviD.AC3-EVO.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBRRip",
+      "title": "Parasite.2019.BRRip.XviD.AC3-EVO\n👤 0 💾 1.37 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/20816c553aeafa80b612ff8a31d9d59bf37b3658/<opaque>/Parasite.2019.BRRip.XviD.AC3-EVO.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|xvid",
+        "filename": "Parasite.2019.BRRip.XviD.AC3-EVO.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) WEB-DLRip-AVC от New-Team | P | HDRezka Studio\n👤 0 💾 1.46 GB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/138ed0e222e4f8e7bde3fd25ff23c01ab99f384c/<opaque>/Parasite.2019.WEB-DLRip.x264.Rus.Kor.stalkerok.New-Team.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Parasite.2019.WEB-DLRip.x264.Rus.Kor.stalkerok.New-Team.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k HDR",
+      "title": "Parasitos [4K Webrip][2160p][HDR][AC3 5.1-Castellano-Ac3 5.1-Coreano+Subs][ES-EN]\n👤 0 💾 27.45 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8fd0af9a8d9ebad6557af73c5af56d678928ee80/<opaque>/Parasitos Webrip2160.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|HDR",
+        "filename": "Parasitos Webrip2160.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k HDR",
+      "title": "Parasite (2019 )mkv.Rip 2160p HEVC 10bit-HDR AC3 iTA ENG HDR HEVC - DDN.MKV\n👤 0 💾 33.73 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/84bfd940a39e6366a1cf16348b0d77c1a5a86d64/Parasite (2019 )mkv.Rip 2160p HEVC 10bit-HDR AC3 iTA ENG HDR HEVC - DDN.MKV/undefined/Parasite (2019 )mkv.Rip 2160p HEVC 10bit-HDR AC3 iTA ENG HDR HEVC - DDN.MKV",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Parasite - Remastered 4K (2019 ITA/KOR) [1080p] [HollywoodMovie]\n👤 0 💾 6.21 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3de79a68bcef7e2a78d9ad8b19bd642d34096f89/KOR) [1080p] [HollywoodMovie]/undefined/KOR) [1080p] [HollywoodMovie]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Parasite - Remastered 4K (2019 ITA/KOR) [1080p H265] [HollywoodMovie]\n👤 0 💾 11.1 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3f7bf975f45fe4dd6ca097eb7018d35ea1dfa227/KOR) [1080p H265] [HollywoodMovie]/undefined/KOR) [1080p H265] [HollywoodMovie]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Parasite - Remastered 4K (2019 ITA/KOR) [1080p] [HollywoodMovie]\n👤 0 💾 22.75 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3899fd357a21431c5a3e2b6b2b298dd955bc7a0e/<opaque>/Parasite - 2019 - REMASTERED 4K - HMR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Parasite - 2019 - REMASTERED 4K - HMR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Parasite.2019.ITA.KOR.4K.2160p.UHD.BluRay.x265-Speranzah.mkv\n👤 0 💾 30.55 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba4692cf5d40648b58e5d0af0314c7585a8bb1a4/<opaque>/Parasite.2019.ITA.KOR.2160p.UHD.BluRay.x265-Speranzah.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265",
+        "filename": "Parasite.2019.ITA.KOR.2160p.UHD.BluRay.x265-Speranzah.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p DV | HDR",
+      "title": "Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737\n👤 8 💾 6.45 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aafb794c4bbdb4ab6fb3ad01e465eac5ff050d25/<opaque>/Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Parasite 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Videos cosas\nParasitos [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Coreano+Subs][ES-EN]/Parasitos M1080.www.pctnew.org.mkv\n👤 52 💾 5.61 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b78480949e8acea0135133ad162116947588c494/<opaque>/Parasitos M1080.www.pctnew.org.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip",
+        "filename": "Parasitos M1080.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Veliki.paket.titlovanih.filmova.2025.11.1080p.x264.[ExYuSubs]\nParasite.2019.1080p.HDTV.x264.[ExYuSubs].mp4\n👤 6 💾 2.01 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0e9b6cc36492165ff77b031aabce7e788b51df80/<opaque>/Parasite.2019.1080p.HDTV.x264.[ExYuSubs].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDTV|x264",
+        "filename": "Parasite.2019.1080p.HDTV.x264.[ExYuSubs].mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Parasite (2019) AKA Gisaengchung 1080p Blu-ray REMUX Hindi ESub …\n👤 3 💾 33.6 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3bd5e91ed123d6dbeda0a9b7e9d9b763292c7573/Parasite (2019) AKA Gisaengchung 1080p Blu-ray REMUX Hindi ESub …/undefined/Parasite (2019) AKA Gisaengchung 1080p Blu-ray REMUX Hindi ESub …",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Parasite.2019.1080p.BluRay.DDP7.1.x264-J4ZzY\n👤 2 💾 19.53 GB ⚙️ TorrentGalaxy\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3694a570660cb37834665f89e0a470e7822ced7b/<opaque>/Parasite.2019.1080p.BluRay.DDP7.1.x264-J4ZzY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Parasite.2019.1080p.BluRay.DDP7.1.x264-J4ZzY.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Parasite.2019.iTA-KOR.Bluray.1080p.x264-CYBER.mkv\n👤 2 💾 9.46 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/be85275641d31452884c69b6c154ddd4852ae10e/<opaque>/Parasite.2019.iTA-KOR.Bluray.1080p.x264-CYBER.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Gisaengchung a.k.a. Parasite (2019) 1080p 10bit Bluray x265 HEVC [Org DD 5.1 Hindi DD 5.1 Korean] ESub ~ TombDoc\n👤 2 💾 4.6 GB ⚙️ 1337x\n🇰🇷 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b361109743b3f046d40c45d73f6e4501d075bc2/Gisaengchung a.k.a. Parasite (2019) 1080p 10bit Bluray x265 HEVC [Org DD 5.1 Hindi DD 5.1 Korean] ESub ~ TombDoc/undefined/Gisaengchung a.k.a. Parasite (2019) 1080p 10bit Bluray x265 HEVC [Org DD 5.1 Hindi DD 5.1 Korean] ESub ~ TombDoc",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Parasite (2019) B&W (1080p BluRay x265 HEVC 10bit AAC 5.1 Korean Silence) [QxR]\n👤 1 💾 5.53 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/13339009e928b09b54857bf3d09eb171ca5ca2d9/Parasite (2019) B&W (1080p BluRay x265 Silence).mkv/0/Parasite (2019) B&W (1080p BluRay x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Parasite (2019) B&W (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Parasite 2019 1080p 10bit BluRay Hindi 6CH - Korean 8CH x265 - MoviePirate - Telly\n👤 1 💾 2.57 GB ⚙️ 1337x\n🇰🇷 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d09630c168f4ebd3b48c0500560c3055733dd224/<opaque>/Parasite 2019 1080p 10bit BluRay Hindi 6CH - Korean 8CH x265 - MoviePirate - Telly.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Parasite 2019 1080p 10bit BluRay Hindi 6CH - Korean 8CH x265 - MoviePirate - Telly.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Parasite (2019) (1080p BluRay x265 10bit AAC 7.1 HEVC SH3LBY)\n👤 1 💾 5.1 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/342f620facadc9833820c8a34e9938bf1b1f9b1c/Parasite (2019) (1080p BluRay x265 10bit AAC 7.1 HEVC SH3LBY)/undefined/Parasite (2019) (1080p BluRay x265 10bit AAC 7.1 HEVC SH3LBY)",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Kiseijuu Parasite 1 2 (2014-2015) 1920x804 H.264 Russian\nparasite_pt2.mkv\n👤 1 💾 8.19 GB ⚙️ MagnetDL\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fe9f420a680aadec6b335bc3c0b736b3a633289f/parasite_pt2.mkv/1/parasite_pt2.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "parasite_pt2.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Kiseijuu Parasite 1 2 (2014-2015) 1920x804 H.264 Russian\nparasite_pt1.mkv\n👤 1 💾 8.43 GB ⚙️ MagnetDL\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fe9f420a680aadec6b335bc3c0b736b3a633289f/parasite_pt1.mkv/0/parasite_pt1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "parasite_pt1.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Parasite.2019.Vostfr.720p.BluRay.HDLight.x264.AAC.Mjcvcd-Dread-Team\n👤 41 💾 1.96 GB ⚙️ EXT\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/223ee0a8847938f0fd04e4b666b57d74c20e9017/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Parasite.3.2025.720p.WEBRip.Legendado.mkv\n👤 1 💾 1.24 GB ⚙️ Comando\n🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/59233ad2b9b6aa44e803fd0c8fa92f7129cca1bb/<opaque>/Parasite.3.2025.720p.WEBRip.Legendado.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip",
+        "filename": "Parasite.3.2025.720p.WEBRip.Legendado.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Parasite.2019.KOREAN.720p.BrRip.2CH.x265.HEVC-PSA\n👤 1 💾 796.55 MB ⚙️ ThePirateBay\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec4c3f8ab9fdb14e690f5b67b034b65c7a43e4e2/<opaque>/Parasite.A.K.A.Gisaengchung.2019.KOREAN.INTERNAL.720p.BrRip.2CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|hevc",
+        "filename": "Parasite.A.K.A.Gisaengchung.2019.KOREAN.INTERNAL.720p.BrRip.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Parasite.A.K.A.Gisaengchung.2019.KOREAN.INTERNAL.720p.WEBRip.2CH.x265.HEVC-PSA\n👤 1 💾 1.3 GB ⚙️ 1337x\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f7028eb3caf8b9d3e664ea317c5f45899cf86b95/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[Korean 18+] My student's mother 2 [720p] [WEBRIp]\n👤 1 💾 1.2 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/234e27c2d27d98e73688d83c79cc6026ecf2695f/[Korean 18+] My student's mother 2 [720p] [WEBRIp]/undefined/[Korean 18+] My student's mother 2 [720p] [WEBRIp]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME\n👤 14 💾 1.37 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/af79c30441b8964b9c7ddac112b4c7b385977387/<opaque>/[ Torrent911.com ] Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "[ Torrent911.com ] Gisaengchung.2019.FRENCH.BDRip.XviD-EXTREME.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "Parasitos BDrip XviD Castellano www.yadixv.com\n👤 1 💾 1.98 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/17479064f69f7e3cfa8a09687c9417b127790eb0/<opaque>/Parasitos BDrip XviD Castellano www.yadixv.com.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Parasitos BDrip XviD Castellano www.yadixv.com.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nHDRip",
+      "title": "Паразиты / Parasite / Gisaengchung (2019) HDRip | Сербин\n👤 1 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2f1bd78aa1b6fe9a26948651e8fd4154824b6edf/<opaque>/Паразиты.2019.HDRip.АП.Сербин.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Паразиты.2019.HDRip.АП.Сербин.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "Parasite.2019.BDRip.x264-REGRET[TGx] ⭐\n👤 1 💾 631.88 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a5d0aebdab4f84c6e41da701eb3c343f22fd7540/<opaque>/parasite.2019.bdrip.x264-regret.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|x264",
+        "filename": "parasite.2019.bdrip.x264-regret.mkv"
+      }
+    }
+  ]
+}

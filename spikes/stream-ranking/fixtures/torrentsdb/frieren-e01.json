@@ -1,0 +1,270 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "frieren-e01",
+  "request": "https://torrentsdb.com/stream/series/kitsu%3A46474%3A1.json",
+  "recordedAt": "2026-10-11T12:04:24.791Z",
+  "status": 200,
+  "ms": 231,
+  "streams": [
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Sousou.No.Frieren.S01.MULTi.1080p.BluRay.x265-KAF\n📅 S01E01 👤 199 💾 11.50 GB ⚙️ nyaa",
+      "infoHash": "a5663877ddfced11f4eba83058cb47a142ff399c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou.No.Frieren.S01E01.MULTi.1080p.BluRay.x265-KAF.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 20,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E019[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 13,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E012[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 14,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E013[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 15,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E014[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 16,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E015[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 17,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E016[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 18,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E017[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 19,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[AF]Frieren.Beyond.Journeys.End.S02E018[BDRemux].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p BD Remux FLAC [JAP/ENG/SPA]- AF\n📅 S01E01 👤 185 💾 74.00 GB ⚙️ nyaa",
+      "infoHash": "a71fac670839fedca6c2a2286d61cd0d31017160",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Frieren.Beyond.Journeys.End.S02E01.Shall.We.Go.Then.1080p.BD.Remu-AF.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Sousou No Frieren S01 + S02 BDRIP 1080p X265 10bit VOSTFR\n📅 S01E01 👤 176 💾 46.50 GB ⚙️ nyaa",
+      "infoHash": "81e8ddc2cff1f077de8f3fbb48b23a932da0dd92",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Xspitfire911] Sousou no Frieren S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Sousou No Frieren S01 + S02 BDRIP 1080p X265 10bit VOSTFR\n📅 S01E01 👤 176 💾 46.50 GB ⚙️ nyaa",
+      "infoHash": "81e8ddc2cff1f077de8f3fbb48b23a932da0dd92",
+      "fileIdx": 28,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Xspitfire911] Sousou no Frieren S02E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Sousou.No.Frieren.S02.MULTi.1080p.BluRay.x265-KAF\n📅 S01E01 👤 108 💾 4.70 GB ⚙️ nyaa",
+      "infoHash": "955f081e9bef23234a172ccb9a1a297f168d12e7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou.No.Frieren.S02E01.MULTi.1080p.BluRay.x265-KAF.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[AUTISM] Sousou no Frieren - S01v2 (BD Remux 1080p AVC FLAC/TrueHD/AAC 2.0/5.1) [Dual-Audio Multi-Audio Multi-Sub] (English 汉语 Filipino Français Deutsch हिंदी Bahasa Indonesia Italiano 한국어 Português Русский Español ภาษาไทย Tiếng Việt Dubs)\n📅 S01E01 👤 82 💾 213.30 GB ⚙️ nyaa",
+      "infoHash": "a3cc9c9d16af2f3c8cfadd51832dee95bf67326b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou.no.Frieren.S01E01.REPACK.1080p.BluRay.Remux.MULTi.FLAC.2.0.AVC-AUTISM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren Beyond Journeys End S02 1080p CR WEB-DL MULTi AAC2.0 H 264-VARYG (Sousou no Frieren Multi-Audio Multi-Subs)\n📅 S01E01 👤 68 💾 16.20 GB ⚙️ nyaa",
+      "infoHash": "c01f1722958a8fc32d5d7afb8ac72666dd172aa9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Frieren.Beyond.Journeys.End.S02E01.Shall.We.Go.Then.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264-VARYG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren.Beyond.Journeys.End.S01.1080p.BluRay.AV1.Opus.2.0-Kyoso\n📅 S01E01 👤 52 💾 33.10 GB ⚙️ nyaa",
+      "infoHash": "7bce372e5d701d8339ba1412b293626414f3759b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Frieren.Beyond.Journeys.End.S01E01.1080p.BluRay.AV1.Opus.2.0-Kyoso.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Sousou.No.Frieren.S02.MULTi.1080p.WEBRiP.x265-KAF\n📅 S01E01 👤 43 💾 4.10 GB ⚙️ nyaa",
+      "infoHash": "e0fb1e7446789d2b15c74dfea88f9228b701985f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou.No.Frieren.S02E01.MULTi.1080p.WEBRiP.x265-KAF.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Sousou no Frieren S01 [\n📅 S01E01 👤 28 💾 5.29 GB ⚙️ TokyoTosho",
+      "infoHash": "d1c312bf1716c19eedcedff93b2aa6e936f074c4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou no Frieren S01E01 [1080p VVC xHE-AAC].mp4"
+      },
+      "sources": [
+        "tracker:udp://zer0day.ch:1337/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.wildkat.net:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.opentorrent.top:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrentclub.online:54123/announce",
+        "tracker:udp://seedpeer.net:6969/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:http://anidex.moe:6969/announce",
+        "tracker:http://tracker.anirena.com:80/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://share.camoe.cn:8080/announce",
+        "tracker:http://t.nyaatracker.com:80/announce",
+        "dht:d1c312bf1716c19eedcedff93b2aa6e936f074c4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[7³ACG & ktnbytes​] Sousou no Frieren 葬送のフリーレン S1 [BDRip 1080p AV1 OPUS] + X265 >\n📅 S01E01 👤 28 💾 25.80 GB ⚙️ nyaa",
+      "infoHash": "9a7b7d3a08d4889b44f0ed6d701468802b766f28",
+      "fileIdx": 11,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou no Frieren 2023 S01E01-[1080p][BDRIP][AV1.OPUS].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[7³ACG & ktnbytes​] Sousou no Frieren 葬送のフリーレン S1 [BDRip 1080p AV1 OPUS] + X265 >\n📅 S01E01 👤 28 💾 25.80 GB ⚙️ nyaa",
+      "infoHash": "9a7b7d3a08d4889b44f0ed6d701468802b766f28",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Sousou no Frieren 2023 S00E01-[1080p][BDRIP][AV1.OPUS].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Frieren: Beyond Journey's End S01 (2023) V2 (1080p x265 10bit BD Dual TrueHD) [Prof]\n📅 S01E01 👤 16 💾 45.80 GB ⚙️ 1337x",
+      "infoHash": "b35d4069e5c9bf4add92ccf4b995e4dac5ebc154",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "S01E01 - The Journey`s End.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[T3KASHi] Frieren Beyond Journeys End S02 MULTi 1080p CR WEBRiP AAC 2.0 x.265 (Sousou no Frieren VF VOSTFR)\n📅 S01E01 👤 1 💾 3.60 GB ⚙️ nyaa",
+      "infoHash": "e64aec14c9ffca4dad2696f482d5f6dd57832e6c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Frieren.Beyond.Journeys.End.S02E01.MULTi.1080p.WEBRiP.x265-T3KASHi.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "中配 - 葬送的芙莉莲 (Sousou no Frieren) (Season 2) (Mainland Mandarin Chinese Dub) [國語][粵語][国语][中配版] (葬送的芙莉蓮) (Beyond Journey's End)\n📅 S01E01 👤 10 💾 5.50 GB ⚙️ nyaa",
+      "infoHash": "76115ebde53d981660469c6fc5ff8cd9d40680f3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Frieren - S02E01.mkv"
+      }
+    }
+  ]
+}

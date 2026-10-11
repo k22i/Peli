@@ -1,0 +1,849 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "your-name",
+  "request": "https://torrentsdb.com/stream/movie/tt5311514.json",
+  "recordedAt": "2026-10-11T12:04:34.679Z",
+  "status": 200,
+  "ms": 482,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Kimi no Na wa.\n👤 125 💾 2.84 GB ⚙️ animetosho",
+      "infoHash": "4b37ff0e0edc511bd96448c0039c0f7a9913ac4e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|hevc",
+        "filename": "[Judas] Kimi no Na Wa. (Your Name.) [BD 2160p 4K UHD][HEVC x265 10bit][Dual-Audio][Multi-Subs].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Your Name. 2016 2160p BluRay\n👤 82 💾 4.85 GB ⚙️ YTS",
+      "infoHash": "9d1452ec0d2b3a30d4a5e9696406795e01e66f7f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Your.Name..2016.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Kimi no Na wa.\n👤 12 💾 11.51 GB ⚙️ animetosho",
+      "infoHash": "e811304a650c3a5a36882b5f870b2cefacfb643c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bdrip|hevc",
+        "filename": "[Anime Land] Kimi no Na wa. (Dual Audio) (BDRip 4K 2160p HEVC HDR10 DTS-HDx2) [2BCD73C2].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Kimi no Na wa.\n👤 11 💾 2.31 GB ⚙️ animetosho",
+      "infoHash": "2a8526bf16fa020b8de19de32c2f49119c2107bb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|hevc",
+        "filename": "Kimi no Na Wa. (Your Name.) [BD 2160p 4K UHD][HEVC x265 10bit][Multi-Subs][Eng Sub].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Kimi no Na wa.\n👤 8 💾 13.87 GB ⚙️ animetosho",
+      "infoHash": "6d232f1149361470ced0d77958df39d4a43ef424",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "[NoobSubs] your name. 2016 (2160p 4k Ultra Blu-ray HDR10 Dual Audio)[0731BD8C].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your.Name.2016.1080p.BluRay.x264-HAiKU[EtHD]\n👤 154 💾 5.47 GB ⚙️ rargb",
+      "infoHash": "1f8c7e243b8d705ec09995ea92d1cccd9dadeaa4",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "your.name.2016.1080p.bluray.x264-haiku[EtHD].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://shadowshq.yi.org:6969",
+        "tracker:udp://tracker.leechers-paradise.org:6969",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://eddie4.nl:6969",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://p4p.arenabg.ch:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969",
+        "tracker:udp://shadowshq.yi.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:1f8c7e243b8d705ec09995ea92d1cccd9dadeaa4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[BlackRose] Your Name. (2016) (BD 1080p H.264 10-bit Opus) [Dual-Audio] | Kimi no Na wa.\n👤 63 💾 6.73 GB ⚙️ nyaa",
+      "infoHash": "d71d2bae8fbc1e37113f81530105ce334a749f6a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your Name.2016.1080p.BluRay.Dual-Audio.Opus5.1.x264-BlackRose.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name (2016) MULTi 1080p DSNP WEB-DL DDP5.1 H.264-Tsundere-Raws (VF FRENCH SUBFRENCH VOSTFR Kimi no Na wa)\n📅 S01E01 👤 36 💾 3.94 GB ⚙️ nyaa",
+      "infoHash": "2d4d9e36280c2cbb895edd5aff02473bccbda2d7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your Name 2016 MULTi 1080p DSNP WEB-DL DDP5.1 H.264-Tsundere-Raws.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[izzybell] Your Name. (2016) [1080p] [Dual-Audio] [DCP + BD] [x265] [FLAC]\n👤 36 💾 18.67 GB ⚙️ nyaa",
+      "infoHash": "1a46bdbce53270586ef385ac65e66b449deff66f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your.Name..2016.DCP+BD.1080p.DUAL.FLAC.5.1.x265-izzybell.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name (2016) 1080p BluRay x264 English AC3 5.1 - MeGUiL\n👤 33 💾 2.19 GB ⚙️ rargb",
+      "infoHash": "bad654d8e76e7ca0cf0aec729decfc941c7ded30",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Your Name (2016) 1080p BluRay x264 English AC3 5.1 - MeGUiL.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.foreverpirates.co:80/announce",
+        "tracker:udp://46.148.18.250:2710",
+        "tracker:udp://opentor.org:2710",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://inferno.demonoid.is:3391/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:udp://tracker.altrosky.nl:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:bad654d8e76e7ca0cf0aec729decfc941c7ded30"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[BlackRose] Your Name. (2016) (BD 1080p HEVC 10-bit Opus) [Dual-Audio] | Kimi no Na wa.\n👤 28 💾 12.53 GB ⚙️ nyaa",
+      "infoHash": "097a34e5d0cf1bb9637945398b4d2189579ea7f3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your Name.2016.1080p.BluRay.Dual-Audio.Opus5.1.x265-BlackRose.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your.Name.2016.1080p.Bluray.Multi-Audio.10bit.DTS-HD.MA.5.1.x265.[HashMiner]\n👤 24 💾 9.52 GB ⚙️ rargb",
+      "infoHash": "ed3b258ee7f1bfea73ad22e309ea81a65051942f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Your.Name.2016.1080p.Bluray.Multi-Audio.10bit.DTS-HD.MA.5.1.x265.[HashMiner].mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:ed3b258ee7f1bfea73ad22e309ea81a65051942f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 20 💾 4.07 GB ⚙️ animetosho",
+      "infoHash": "00ee122b7d446577327a5f3a21a77ef72a55f84b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|x265",
+        "filename": "[DB]Kimi no Na wa._-_(Dual Audio_10bit_BD1080p_x265).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your.Name.2016.ENHANCED.1080p.10bit.DS4K.Blu-ray.[Hindi.DDP.2.0-(Japanese-English).DDP.5.1].HEVC-NmCT\n📅 S01E01 👤 17 💾 6.89 GB ⚙️ rargb",
+      "infoHash": "1f72c07cf797c33b067e3f528b4ecf41b9c29330",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your.Name.2016.ENHANCED.1080p.10bit.UHD.Blu-ray.[Hindi.DDP.2.0-(Japanese-English).DDP.5.1].HEVC-NmCT.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://vm3268418.24ssd.had.wf:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.leech.ie:1337/announce",
+        "tracker:udp://ttk2.nbaonlineservice.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:1f72c07cf797c33b067e3f528b4ecf41b9c29330"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name 2016 English Dubbed 1080p BluRay x264 [1.5GB] [MP4] [Kimi no na wa]\n👤 17 💾 1.51 GB ⚙️ rargb",
+      "infoHash": "d25c019fef45c41cd3f0bef647078cb443d07545",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "[TorrentCounter.to].Your.Name.2016.English.Dubbed.[Kimi.no.Na.wa].1080p.BluRay.x264.[1.5GB].mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://torrent.gresille.org:80/announce",
+        "tracker:udp://9.rarbg.me:2710/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d25c019fef45c41cd3f0bef647078cb443d07545"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Твоё имя / Kimi no Na wa\n📅 S01E01 👤 16 💾 10.26 GB ⚙️ rutor",
+      "infoHash": "7bd01c6f8a7b9e56fbc9e57d6af83dd23c1cd52e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Kimi no na wa (2016) BDRip 1080p H.265 [11xRUS_2UKR_JPN] [RIPS-CLUB].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://rips.club:2710/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:7bd01c6f8a7b9e56fbc9e57d6af83dd23c1cd52e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 16 💾 1.73 GB ⚙️ animetosho",
+      "infoHash": "c66cb8d442e9de788ffda523c733239d08408cc1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Kimi No Na Wa 1080p BD Dual Audio.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name (2016) English Dub 1080p Bluray with Subtitles\n📅 S01E01 👤 16 💾 1.77 GB ⚙️ rargb",
+      "infoHash": "431ce21c850e35c316be019fc1724d4d5ead26ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your.Name.2016.English.Dub.1080p.Bluray.x264-Rapta.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.leechers-paradise.org:6969",
+        "tracker:udp://zer0day.ch:1337",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:udp://tracker.coppersurfer.tk:6969",
+        "tracker:udp://exodus.desync.com:6969",
+        "tracker:udp://tracker.openbittorrent.com:80",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:431ce21c850e35c316be019fc1724d4d5ead26ce"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 15 💾 2.61 GB ⚙️ animetosho",
+      "infoHash": "06d673ed91f24207df225f92d126724188e07279",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip|hevc",
+        "filename": "[Anime Land] Kimi no Na wa. (Dual Audio) (BDRip 1080p HEVC HDR10 QAACx2) [4886EABC].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 15 💾 6.46 GB ⚙️ animetosho",
+      "infoHash": "7141c1398195046b44a2a761a3d2a5a67bcb244e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[MTBB] Kimi no Na Wa (1080p BD).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 14 💾 3.85 GB ⚙️ animetosho",
+      "infoHash": "956bcde2ab5b6ed3b3930063a37916ceee35fee8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Valenciano] Kimi no na wa (Your Name) (君の名は) [1080p][AV1 10bit][Opus 5.1][Multi-Audio][Multi-Sub].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name. (2016) + Special Features [1080p x265 HEVC 10bit BluRay Dual Audio AAC 5.1] [Prof]\nInterview with Makoto Shinkai.mkv\n👤 13 💾 1.23 GB ⚙️ rargb",
+      "infoHash": "26efe2548ee758195791172c43293a230a289a1d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|26efe2548ee758195791172c43293a230a289a1d",
+        "filename": "Interview with Makoto Shinkai.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:26efe2548ee758195791172c43293a230a289a1d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name. (2016) + Special Features [1080p x265 HEVC 10bit BluRay Dual Audio AAC 5.1] [Prof]\nMakoto Shinkai Filmography.mkv\n👤 13 💾 624.40 MB ⚙️ rargb",
+      "infoHash": "26efe2548ee758195791172c43293a230a289a1d",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|26efe2548ee758195791172c43293a230a289a1d",
+        "filename": "Makoto Shinkai Filmography.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:26efe2548ee758195791172c43293a230a289a1d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name. (2016) + Special Features [1080p x265 HEVC 10bit BluRay Dual Audio AAC 5.1] [Prof]\nSpecial TV Program.mkv\n👤 13 💾 2.82 GB ⚙️ rargb",
+      "infoHash": "26efe2548ee758195791172c43293a230a289a1d",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|26efe2548ee758195791172c43293a230a289a1d",
+        "filename": "Special TV Program.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:26efe2548ee758195791172c43293a230a289a1d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name. (2016) + Special Features [1080p x265 HEVC 10bit BluRay Dual Audio AAC 5.1] [Prof]\nYour Name. (2016) [1080p x265 HEVC 10bit BluRay Dual Audio AAC 5.1] [Prof].mkv\n📅 S01E01 👤 13 💾 4.51 GB ⚙️ rargb",
+      "infoHash": "26efe2548ee758195791172c43293a230a289a1d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|26efe2548ee758195791172c43293a230a289a1d",
+        "filename": "Your Name. (2016) [1080p x265 HEVC 10bit BluRay Dual Audio AAC 5.1] [Prof].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "dht:26efe2548ee758195791172c43293a230a289a1d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 13 💾 5.71 GB ⚙️ animetosho",
+      "infoHash": "025d266a42c6e4a0e48ec1d93d0757dd18117cba",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Commie] your name. [BD 1080p AAC] [1D072CF2].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa. 2016 1080p Remux AVC FLAC 5.1-SUCC\n📅 S01E01 👤 13 💾 24.89 GB ⚙️ nyaa",
+      "infoHash": "4307d7641e68df1172efdeb3c4022e16377afd35",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Kimi.no.Na.wa.2016.1080p.Remux.AVC.FLAC.5.1-SUCC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name. (2016) + Extras (1080p BluRay x265 HEVC 10bit AAC 5.1 Japanese RZeroX)/Your Name. (2016) + Extras (1080p BluRay x265 HEVC 10bit AAC 5.1 Japanese RZeroX) [QxR]\nYour Name. (2016) (1080p BluRay x265 RZeroX).mkv\n👤 10 💾 4.06 GB ⚙️ rargb",
+      "infoHash": "962eb46eb6628a8a7f5fd447eb3f57215d7f506a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Your Name. (2016) (1080p BluRay x265 RZeroX).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:962eb46eb6628a8a7f5fd447eb3f57215d7f506a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no na wa. / Your Name. (2016)(EN/JP+CZtit.)[1080p][HEVC] = CSFD 85%\n👤 9 💾 2.39 GB ⚙️ sktorrent",
+      "infoHash": "64fcf439a8321604ef292172413002882fbf8b8f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hevc",
+        "filename": "[bonkai77] Your Name (Kimi no Na wa)  [BD-1080p] [DUAL-AUDIO] [x265] [HEVC] [AAC] [10bit].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:64fcf439a8321604ef292172413002882fbf8b8f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 9 💾 1.59 GB ⚙️ animetosho",
+      "infoHash": "4dcddd6deb6fde94dae41f9991fe4223c30972e8",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Your.Name.2016.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Твоё имя / Kimi no Na wa / Your Name\n📅 S01E01 👤 8 💾 4.33 GB ⚙️ rutor",
+      "infoHash": "a6ebf22f606f3778521eccf43f7849a6076338c6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Kimi no na wa (2016) BDRip-HEVC 1080p.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:udp://tracker.ccc.de:80/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:a6ebf22f606f3778521eccf43f7849a6076338c6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Your Name. - Kimi no Na wa. (2016) [DCPrip.1080p.FLAC.ITA.TRUEHD.AC3.JPN.Subs.Ita.Eng.v3] [11.7GB] [stress]\n👤 7 💾 11.79 GB ⚙️ ilcorsaronero",
+      "infoHash": "e5a89375128d9f28ce7228dfc8fa46167269ea3b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Your Name. (2016) [DCPrip.1080p.FLAC.ITA.TRUEHD.AC3.JPN.Subs.Ita.Eng.v3] by stress.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 7 💾 9.00 GB ⚙️ animetosho",
+      "infoHash": "353927dd74dd97d4b3960bc14e1b95a29563ca49",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[YURI] Your Name (Kimi No Na Wa) [BD 1080p Flac].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 7 💾 6.35 GB ⚙️ animetosho",
+      "infoHash": "16b36f0485715cd39ba6cda2fa18b9a3fd2561b4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[NSDAB] your name. [BD 1080p Opus] [C34C181B].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 6 💾 17.05 GB ⚙️ animetosho",
+      "infoHash": "4f085caae4dd44d09c69dbbda9c17c775592632f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip|x265",
+        "filename": "Your Name. [2016] 1080p ITA BDRip x265 DTS-HD MA 5.1 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi.No.Na.Wa.2016.JAPANESE.BluRay.1080p.x264.AAC.5.1.-.Hon3y\n👤 6 💾 2.50 GB ⚙️ ThePirateBay",
+      "infoHash": "89f142e5a30d32d7a1616cc8db9009070f465adc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "www.HDSector.com - Kimi.No.Na.Wa.2016.JAPANESE.BluRay.1080p.x264.AAC.5.1.-.Hon3y.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 6 💾 10.88 GB ⚙️ animetosho",
+      "infoHash": "7736f4c9f6316071dccf9aaf7d93c0960e9b9433",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[HTT] Kimi no Na wa. [Blu-Ray][Hi10][1080p][FA94B378].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kaze no Na wa Amnesia\n👤 5 💾 3.74 GB ⚙️ animetosho",
+      "infoHash": "fd14c8cf45900d0f8a48c70370706ae20b92fd09",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip|hevc",
+        "filename": "[Pachinko] A Wind Named Amnesia (1990) [Dual Audio][BDrip 1080p HEVC FLAC 2.0]v2.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Kimi no Na wa.\n👤 5 💾 16.29 GB ⚙️ animetosho",
+      "infoHash": "2623c9976fcca5d62a7e3e6f6bab60260d25e55e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip|x265",
+        "filename": "Your Name. [2016] 1080p BDRip x265 DTS-HD MA 5.1 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Kimi no Na wa.\n👤 419 💾 1.07 GB ⚙️ animetosho",
+      "infoHash": "bfb5932c3c11aa319d2a864246c1574b7d0cdb94",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|hdrip|x264",
+        "filename": "kimi-no-na-wa-2016-hdrip-720p-hc-eng-sub-aac-x264.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Your Name (Kimi No Na wa) 2016 Japanese HDRip HC 720p\n👤 28 💾 1.00 GB ⚙️ ThePirateBay",
+      "infoHash": "8706e867c4a23e025e28c15613acf0ef7d1d8a4f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|hdrip",
+        "filename": "Your Name (Kimi No Na wa) 2016 Japanese HDRip HC 720p.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Your Name. 2016 720p BluRay\n👤 21 💾 866.85 MB ⚙️ YTS",
+      "infoHash": "daf91144f7d11ac2acf76c43e2f97716582ec509",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Your.Name.2016.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Kimi no Na wa.\n👤 12 💾 5.10 MB ⚙️ animetosho",
+      "infoHash": "dfb0cd7f5c17e179fe4b506f41f08e3993f3d8da",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "[Matcha] Kimi no Na wa. - Suntory Minami Alps no Tennen Mizu - 01-03 [Web][720p][50CE7A57].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Kimi no Na wa.\n[IceBlue] Your Name + EXTRA [Multi-Dub] [Multi-Sub][x264 8Bits] [720p BD]/[IceBlue] Your Name + EXTRA [Multi-Dub] [Multi-Sub][x264 8Bits] [720p BD].mkv\n👤 6 💾 2.07 GB ⚙️ animetosho",
+      "infoHash": "589173e62e0522b8a633c3b61aef8f2870cfe67a",
+      "fileIdx": 43,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|x264",
+        "filename": "[IceBlue] Your Name + EXTRA [Multi-Dub] [Multi-Sub][x264 8Bits] [720p BD].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n576p",
+      "title": "Your Name (2016) [SD.H265.AC3.ITA.JAP.SUB.ITA][576p][UHDBDRip][HDR.&.SDR][4.39 GB][JumpyPeak54][Tsunami]\n[Tsunami]Your Name (2016) (UHD RIP 1024x576p 23.976 fps HDR & SDR H265 10 Bit AC3 ITA-JAP SUB ITA) by JumpyPeak54/Your Name (2016) HDR.mkv\n👤 5 💾 2.20 GB ⚙️ ilcorsaronero",
+      "infoHash": "e5569b6d6b0a2d400c5ca0ab5a06f64f89e8b100",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e5569b6d6b0a2d400c5ca0ab5a06f64f89e8b100",
+        "filename": "Your Name (2016) HDR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n576p",
+      "title": "Your Name (2016) [SD.H265.AC3.ITA.JAP.SUB.ITA][576p][UHDBDRip][HDR.&.SDR][4.39 GB][JumpyPeak54][Tsunami]\n[Tsunami]Your Name (2016) (UHD RIP 1024x576p 23.976 fps HDR & SDR H265 10 Bit AC3 ITA-JAP SUB ITA) by JumpyPeak54/Your Name (2016) SDR.mkv\n👤 5 💾 2.19 GB ⚙️ ilcorsaronero",
+      "infoHash": "e5569b6d6b0a2d400c5ca0ab5a06f64f89e8b100",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e5569b6d6b0a2d400c5ca0ab5a06f64f89e8b100",
+        "filename": "Your Name (2016) SDR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "Kimi no Na wa.\n👤 189 💾 726.73 MB ⚙️ animetosho",
+      "infoHash": "f5f5220fd4352807ea5ea5daf266a004b0db46c4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "[Nazo Sub][You Name][GB][480P][PSV&PC].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Kimi no Na wa.\n[Beatrice-Raws] Kimi no Na wa [BDRip 3840x2160 HEVC HDR DTSHD].mkv\n👤 80 💾 18.20 GB ⚙️ animetosho",
+      "infoHash": "6c74cf5467264b7ac7b8aa30e031823cd8335361",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|hevc",
+        "filename": "[Beatrice-Raws] Kimi no Na wa [BDRip 3840x2160 HEVC HDR DTSHD].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Hal Leonard - Guitar Play-Along Vol. 27 - Alternative Rock\nName.mkv\n👤 25 💾 99.75 MB ⚙️ kickasstorrents",
+      "infoHash": "20A0B14660F8C6ED15AC29A8774D5C232539A07B",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Name.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Hal Leonard - Guitar Play-Along Vol. 27 - Alternative Rock\nName.avi\n👤 25 💾 20.35 MB ⚙️ kickasstorrents",
+      "infoHash": "20A0B14660F8C6ED15AC29A8774D5C232539A07B",
+      "fileIdx": 8,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Name.avi"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kimi no Na wa.\n👤 20 💾 1.49 GB ⚙️ animetosho",
+      "infoHash": "4314e2cfc8dc2fd5fff646c918ced9ec3dc12afd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "[The-Nut] Kimi no Na wa | Your Name [BD UHD AV1 HDR Opus].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kimi no Na wa.\n👤 16 💾 4.20 GB ⚙️ animetosho",
+      "infoHash": "a5f5c7f8d03da14f8c0b2b1fbcd5328c72cd4772",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "[MTBB] Kimi no Na wa. (2016) v2 [97681524].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kaze no Na wa Amnesia\n[MrManager] A Wind Named Amnesia (1990) BDRemux (Dual Audio, Special Features)/[MrManager] A Wind Named Amnesia (1990) BDRemux (Dual Audio, Special Features).mkv\n👤 12 💾 16.15 GB ⚙️ animetosho",
+      "infoHash": "c9027a895f388e5c2a79bea734014aa8fbd6bdbc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "[MrManager] A Wind Named Amnesia (1990) BDRemux (Dual Audio, Special Features).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\ndvd",
+      "title": "Kaze no Na wa Amnesia\n👤 12 💾 2.21 GB ⚙️ animetosho",
+      "infoHash": "628d60dcb8a83894ae42b4af3b3665b1efc51d8b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|dvd|hevc",
+        "filename": "Kaze no Na wa Amnesia [DVD x265 768x576 AC3] [km].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kimi no Na wa.\n👤 12 💾 50.08 GB ⚙️ animetosho",
+      "infoHash": "5ed39742b615123bd4fd4bbc2f54149189bf192c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Kimi no Nawa.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kaze no Na wa Amnesia\n👤 10 💾 714.39 MB ⚙️ animetosho",
+      "infoHash": "64daf3e4e66c3374694473523b1f88f75e9f6d96",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown|x264",
+        "filename": "A_Wind_Named_Amnesia[x264-AAC][SSP-Corp][D9F47AD3].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kimi no Na wa.\n👤 6 💾 9.88 GB ⚙️ animetosho",
+      "infoHash": "80b32a2ef977b807cd65bd758b9af87c2c73dba1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown|hevc",
+        "filename": "[hchcsen] Your Name. (2016) v2 [BD HEVC 4xFLAC].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Your Name railing the autistic girl's asshole in the back of a packed theater edition\n👤 5 💾 45.77 GB ⚙️ nyaa",
+      "infoHash": "fc81cfb53f1f7d664a3260f8abce19faba2c1506",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Your.Name.2016. {edition-railing.the.autistic.girl's.asshole.in.the.back.of.a.packed.theater).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kimi no Na wa.\n👤 5 💾 45.25 GB ⚙️ animetosho",
+      "infoHash": "f70c8e2095de835321851b16851f6ab32287bd13",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Kimi no Na wa."
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Kimi no Na wa.\n👤 5 💾 5.14 GB ⚙️ animetosho",
+      "infoHash": "8e9b8a13563ca313185cc109bde6cc521e3d863f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Kimi no Na wa..mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Твое имя / Kimi no na wa.\n📅 S01E01 👤 5 💾 1.45 GB ⚙️ rutor",
+      "infoHash": "e7c588d156208f4a5182b0b5a29c0c47f8851b0c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Kimi.no.na.wa.aka.Your.Name_2016_HDRip_[scarabey.org].avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.new-team.info:2710/00000ddae1f86d6887c592a340a61fff/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:e7c588d156208f4a5182b0b5a29c0c47f8851b0c"
+      ]
+    }
+  ]
+}

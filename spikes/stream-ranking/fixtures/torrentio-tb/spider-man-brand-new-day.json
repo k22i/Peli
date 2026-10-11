@@ -1,0 +1,3056 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "spider-man-brand-new-day",
+  "request": "https://torrentio.strem.fun/<config>/stream/movie/tt22084616.json",
+  "recordedAt": "2026-10-11T12:05:28.728Z",
+  "status": 200,
+  "ms": 1062,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.iTA-ENG.Bluray.2160p.HEVC.HDR.x265…\n👤 1251 💾 27.11 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9856693c161673cabce9b3f48679543cd943fcd3/<opaque>/Spider-Man.Brand.New.Day.2026.iTA-ENG.Bluray.2160p.HEVC.HDR.x265-CYBER.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.iTA-ENG.Bluray.2160p.HEVC.HDR.x265-CYBER.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+ | HDR",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) UHD WEB-DL 2160p от селезень | HDR | HDR10+ | Dolby Vision Profile 8 | D | MovieDalen\n👤 1129 💾 26.07 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/96ca925fe6dc3b2c1a96aa0b33aa12c87dba8b0d/<opaque>/Spider-Man.Brand.New.Day.2026.WEB-DL.2160p.HDR.DV.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR10+|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.WEB-DL.2160p.HDR.DV.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man Brand New Day 2026 iT WEB-DL 2160p HDR10p DV HEVC DDPA 5.1 x265-E\n👤 873 💾 15.33 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d3bf098e02969389f7788db9730e3388083d5320/<opaque>/Spider-Man.Brand.New.Day.2026.web.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|DV",
+        "filename": "Spider-Man.Brand.New.Day.2026.web.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.TRUEFRENCH.2160p.4Klight.HDR.DV.WEB-DL.H265-Slay3R\n👤 855 💾 9.26 GB ⚙️ Torrent9\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fe333a3fa056a81e756a535d7afaf9d4dcce4ab9/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.TRUEFRENCH.2160p.4Klight.HDR.DV.WEB-DL.H265-Slay3R.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.TRUEFRENCH.2160p.4Klight.HDR.DV.WEB-DL.H265-Slay3R.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Homem-Aranha - Um Novo Dia 2026 WEB-DL 2160p x265 DV HDR10 DUAL 5.1\n👤 671 💾 25.95 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5c0e393cc4585af21cbf2d1a1a63c1e4906161da/<opaque>/Homem-Aranha - Um Novo Dia 2026 WEB-DL 2160p x265 DV HDR10+ DUAL 5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR",
+        "filename": "Homem-Aranha - Um Novo Dia 2026 WEB-DL 2160p x265 DV HDR10+ DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.WEB-DL.4k.HDR-Dual-Lat\n👤 446 💾 25.77 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b9546d1e3338e1948b6f2009b2d3d2e9301d56c/<opaque>/Spider.Man.Un.Nuevo.Dia.2026.WEB-DL.4k.HDR-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|HDR",
+        "filename": "Spider.Man.Un.Nuevo.Dia.2026.WEB-DL.4k.HDR-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.WEB-DL.4k.HDR-Dual-Lat\n👤 446 💾 25.77 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b9546d1e3338e1948b6f2009b2d3d2e9301d56c/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 2160p HDR10] [IMAX] [Bravia Core] 2x Dub + 2x MVO + Original (Eng) + Sub (Rus Eng Kaz Aze)\n👤 426 💾 82.82 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/138ba0088daa4895414321dbe702bf3914875ed8/<opaque>/Spider-Man.Brand.New.Day.2026.WEB-DL.BraviaCore.IMAX.HDR.2160p-SOFCJ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.WEB-DL.BraviaCore.IMAX.HDR.2160p-SOFCJ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man Brand New Day 2026 2160p iT WEB-DL DDP5.1 Atmos DV HDR H265-BYNDR\n👤 420 💾 25.3 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b5cddf52c341230e1c30631b23702532698285a4/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.10bit.HDR.WEBRip.6CH.x265.HEVC-PSA\n👤 326 💾 5.2 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/25081b9cb7eb8dc028f55c382be7513c887a1af6/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.2160p.10bit.HDR.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|10bit|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.10bit.HDR.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ/EN)[2160p][WEB-DL][DV/HDR]\n👤 300 💾 25.46 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8b87e80634516c84bfc32fdbe81abacb1ec2d2a6/Spider-Man Zbrusu nový den (2026) CZ 4k.mkv/0/Spider-Man Zbrusu nový den (2026) CZ 4k.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV|HDR",
+        "filename": "Spider-Man Zbrusu nový den (2026) CZ 4k.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ/SK/EN)[2160p][HDR10/DV][HEVC]\n👤 288 💾 7.19 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8c9be29107ab945c893e245116a3174799519994/Spider-Man 9 Zbrusu nový den (2026) UHDRDV cz sk en.mkv/0/Spider-Man 9 Zbrusu nový den (2026) UHDRDV cz sk en.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|DV|HDR",
+        "filename": "Spider-Man 9 Zbrusu nový den (2026) UHDRDV cz sk en.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) UHD WEB-DL 2160p | 4K | HDR10 | D | MovieDalen | IMAX\n👤 277 💾 80.73 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e4773fb0efd3bc89f8ee7af40ee9286863557ac6/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.x265.WEB-DL.2160p.HDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.x265.WEB-DL.2160p.HDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 2160p HDR10+ Dolby Vision] [Hybrid] 3 x Dub + 2 x MVO + Ukr Dub Original Eng + Sub (Rus Eng)\n👤 275 💾 28.16 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e70802b10b8ae95fec1761b9018e83a5b543d66e/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.DV.HDR10P.H.265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.DV.HDR10P.H.265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man Brand New Day (2026) 2160p H265 HDR DV iTA EnG DDP-AC…\n👤 265 💾 27.11 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/19b654f13d3f17761b2f9d326b9d662138ccd7d7/Spider-Man Brand New Day (2026) 2160p H265 HDR DV iTA EnG DDP-AC3 iTA EnG Sub iTA EnG-MIRCrew.mkv/0/Spider-Man Brand New Day (2026) 2160p H265 HDR DV iTA EnG DDP-AC3 iTA EnG Sub iTA EnG-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|DV|HDR",
+        "filename": "Spider-Man Brand New Day (2026) 2160p H265 HDR DV iTA EnG DDP-AC3 iTA EnG Sub iTA EnG-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.Multi.DDP5.1.Atmos.HDR.H.265-Sams\n👤 258 💾 81.9 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c4ba93d474cdb3bcc1cbc6fe06681a7f02fadc0/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.Multi.DDP5.1.Atmos.HDR.H.265-Sams.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.Multi.DDP5.1.Atmos.HDR.H.265-Sams.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA\n👤 258 💾 3.95 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/add9b7aca6429cadc549ea10cbd266757d516020/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man Zbrusu nový den (2026)(SK CZ EN)[2160p][HDR10+DV][WEBRip][HEVC]\n👤 251 💾 4.9 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b81970ef2a7afb6ad639c2d2f6189efa3efb07a7/Spider-Man Zbrusu nový den (2026)(SK,CZ,EN)[2160p][HDR10+DV][WEBRip][HEVC].mkv/0/Spider-Man Zbrusu nový den (2026)(SK,CZ,EN)[2160p][HDR10+DV][WEBRip][HEVC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|10bit|DV|HDR10+",
+        "filename": "Spider-Man Zbrusu nový den (2026)(SK,CZ,EN)[2160p][HDR10+DV][WEBRip][HEVC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider Man Brand New Day (2026) TRUE WEB-DL - 4K HDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)]\n👤 248 💾 27.24 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3087c3fad9decc1d6d256dfe92c03e0fb8504be5/www.1TamilMV.capital - Spider Man Brand New Day (2026) TRUE WEB-DL - 4K HDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)].mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) TRUE WEB-DL - 4K HDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|HDR",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) TRUE WEB-DL - 4K HDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man Brand New Day 2026 IMAX CORE WEB-DL 2160p HDR10p DV HEVC DDPA 5.1 x265-E\n👤 216 💾 15.32 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇰🇷 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fd64247408cd22424bb985a1b2529a42161549a5/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.CORE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|DV",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.CORE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Brand New Day (2026) [MULTi] [2160p] [WEB-DL] [DV] [HDR] [H265] [DDP5.1.Atmos-R22] [Dubbing i napisy PL]\n👤 204 💾 25.94 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/089fbc37bb5e4e98b542858f37fdb607d51c3b9d/<opaque>/Spider-Man.Brand.New.Day.2026.Hybrid.MULTi.2160p.WEB-DL.DV.HDR.DDP5.1.Atmos.H265-R22.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.Hybrid.MULTi.2160p.WEB-DL.DV.HDR.DDP5.1.Atmos.H265-R22.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) UHD WEB-DL 2160p | 4K | HDR10+ | Dolby Vision P8 | D | MovieDalen | IMAX\n👤 188 💾 80.78 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/50bfdbd8c60fa8bdeb90519dfb10f98d6b015c9b/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.x265.WEB-DL.2160p.HDR-DV.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.x265.WEB-DL.2160p.HDR-DV.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Brand New Day (2026) 2160p 4K HDR10 DV WEB-DL Dual A…\n👤 149 💾 16.26 GB ⚙️ TorrentGalaxy\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0dc24221ff100ac8ad57e4e33c3d9ae06262d070/Spider-Man- Brand New Day (2026) 2160p 4K HDR10 DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv/0/Spider-Man- Brand New Day (2026) 2160p 4K HDR10 DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR",
+        "filename": "Spider-Man- Brand New Day (2026) 2160p 4K HDR10 DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.HEVC-DSiTE.mkv\n👤 116 💾 25.94 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4cc3c36591f4d27fec84e7aef74d832586719502/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.HEVC-DSiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.HEVC-DSiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-man.brand.new.day.2026.2160p.x265.hdr.5.1-dual-lat-cinecalidad.my.mkv\n👤 102 💾 10.04 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b123d9268fb40bb8d43ab47676607dc1c636d4fa/<opaque>/Spider-man.brand.new.day.2026.2160p.x265.hdr.5.1-dual-lat-cinecalidad.my.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|HDR",
+        "filename": "Spider-man.brand.new.day.2026.2160p.x265.hdr.5.1-dual-lat-cinecalidad.my.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.VF2.HDR.DV.2160p.WEB.H265-SUPPLY\n👤 85 💾 26.98 GB ⚙️ ThePirateBay\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fa21fbb9f2535cf857b0de6a701a86cabe6fb220/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.HDR.DV.2160p.WEB.H265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.HDR.DV.2160p.WEB.H265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider.Man.Brand.New.Day.2026.2160p.MA.DV.HDR\n👤 82 💾 26.19 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d29655cfb0f6de64323def0261022f4e9cc7da04/<opaque>/Spider.Man.Brand.New.Day.2026.2160p.MA.DV.HDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR",
+        "filename": "Spider.Man.Brand.New.Day.2026.2160p.MA.DV.HDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man- Brand New Day (2026) IMAX 2160p 4K HDR10+ DV WEB-DL …\n👤 63 💾 81.63 GB ⚙️ TorrentGalaxy\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0a26f4903a0fd32917e246d5cf6a21b596dde871/Spider-Man- Brand New Day (2026) IMAX 2160p 4K HDR10+ DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv/0/Spider-Man- Brand New Day (2026) IMAX 2160p 4K HDR10+ DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR10+",
+        "filename": "Spider-Man- Brand New Day (2026) IMAX 2160p 4K HDR10+ DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider.Man. Brand.New.Day.2026.ITA.ENG.2160p.HDR.DV.WEB-DL.Walrus54\n👤 63 💾 25.68 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/10b5e212a3590126bcfcf426d95593f1a0d23145/<opaque>/Spider.Man. Brand.New.Day.2026.ITA.ENG.2160p.HDR.DV.WEB-DL.Walrus54.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV|HDR",
+        "filename": "Spider.Man. Brand.New.Day.2026.ITA.ENG.2160p.HDR.DV.WEB-DL.Walrus54.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.WEBRip.HDR.x265-KONTRAST\n👤 60 💾 9.14 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d3fcf1f1168aeaa4155729778af70ced26322ca7/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.2160p.WEBRip.HDR.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.WEBRip.HDR.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)[2160p][HDR/DV][HEVC][WEBL-DL]\n👤 57 💾 26.6 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/78f988fad7ad35ff19e44ff32614187fd88887f7/DV][HEVC][WEBL-DL]/undefined/DV][HEVC][WEBL-DL]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|DV|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.HDR.H.265.Master5\n👤 53 💾 27.57 GB ⚙️ EXT\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fd8ce9f273f13ef12102aedb9326ac4e1eba67cd/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.HDR.H.265.Master5.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.HDR.H.265.Master5.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST\n👤 52 💾 9.15 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1c8f2851433e6488ecc3767993620e3a442c2de9/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man Brand New Day (2026) [IMAX.UHD.2160p.WEB-DL.HEVC.HDR.DDP.5.1]\n👤 45 💾 81.25 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3d27db7ce6bcaceaad0f924fd7ab798af88bea33/Spider-Man Brand New Day (2026) [IMAX.UHD.2160p.WEB-DL.HEVC.HDR.DDP.5.1]/undefined/Spider-Man Brand New Day (2026) [IMAX.UHD.2160p.WEB-DL.HEVC.HDR.DDP.5.1]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.HEVC-DSiTE\n👤 38 💾 25.94 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/45da1ab8fc11bfcdef1e439a778cb94b73e490de/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.HEVC-DSiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.HEVC-DSiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (CZ/SK/EN)(2026)[2160p][HDR/DV][HEVC][WEBL-DL]\n👤 32 💾 81.3 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69bea98674c0f529dcc0300a7773a4b4af5b0809/DV][HEVC][WEBL-DL]/undefined/DV][HEVC][WEBL-DL]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|DV|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man Brand New Day.2026.iT.WEB-DL.2160p.DV\n👤 30 💾 15.8 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de515d6b03d025eaa7511809b0d889593e5501bd/<opaque>/Spider-Man Brand New Day.2026.iT.WEB-DL.2160p.DV.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV",
+        "filename": "Spider-Man Brand New Day.2026.iT.WEB-DL.2160p.DV.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.HDR.H.265.Master5\n👤 28 💾 11.8 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/63bf05909e23a99a3feb98c96a4a97981d24d535/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.HDR.H.265.Master5.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.HDR.H.265.Master5.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.HDR.10bit.x265.DDP5.1.Atmos.ITA-ENG.AllSubs.[DD-CREW]\n👤 24 💾 5.02 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fefc6816276e46a359a4408052958c4f15713edb/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.HDR.10bit.x265.DDP5.1.Atmos.ITA-ENG.AllSubs.[DD-CREW].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.HDR.10bit.x265.DDP5.1.Atmos.ITA-ENG.AllSubs.[DD-CREW].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man Brand New Day 2026 [DV-HDR] [10Bit] [2160p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 21 💾 25.81 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b2750420d0d8ab39d3f4824d1916bb17291f164f/<opaque>/Spider-Man Brand New Day 2026 [DV-HDR] [10Bit] [2160p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR",
+        "filename": "Spider-Man Brand New Day 2026 [DV-HDR] [10Bit] [2160p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC\n👤 15 💾 25.3 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4c087d9e23d4aa6b2690b53a1286f4cb8c0ea0dc/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.WEBRip.DV.HDR10P.H.265\n👤 14 💾 32.91 GB ⚙️ EXT\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bfa2b89fa227d81153c31d783682f931d1339feb/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.2160p.WEBRip.DV.HDR10P.H.265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|h265|DV",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.WEBRip.DV.HDR10P.H.265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR (1)\n👤 9 💾 25.42 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b045074803e4fe5406025bc23c4388fbbe2cb0d1/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR (1).mkv/0/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man Brand New Day 2026 2160p WEBRip DV HDR x265 DDP5.1 At…\n👤 9 💾 7.53 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9ba503e84036e95e8d6635091c7189ad2733ca57/<opaque>/Spider-Man Brand New Day 2026 2160p WEBRip DV HDR x265 DDP5.1 Atmos-CSP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV|HDR",
+        "filename": "Spider-Man Brand New Day 2026 2160p WEBRip DV HDR x265 DDP5.1 Atmos-CSP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Brand New Day (2026) [MULTi] [2160p] [WEB-DL] [DV] [HDR] [H265] [DDP5.1.Atmos-R22] [Dubbing i napisy PL]\n👤 8 💾 25.94 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/652ee258792412d6666403e5610225fea3b454c6/<opaque>/Spider-Man.Brand.New.Day.2026.Hybrid.MULTi.2160p.WEB-DL.DV.HDR.DDP5.1.Atmos.H265-R22.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.Hybrid.MULTi.2160p.WEB-DL.DV.HDR.DDP5.1.Atmos.H265-R22.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEBRip.DDP5.1.Atmos.DV.HD…\n👤 8 💾 6.11 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b6cebbdd88bc385ffc9fc8ddbad7e30203a896e/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEBRip.DDP5.1.Atmos.DV.HDR10P+.x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEBRip.DDP5.1.Atmos.DV.HDR10P+.x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.Hybrid.2160p.MA.WEB-DL.DDP5.1.DV.HDR10Plus.H.265-SPiLNO\n👤 7 💾 26.46 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2b7a27792543d2c7861b04a42ba8ea240d318fb9/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR10+"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC\n👤 7 💾 25.3 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e5aa11942079fe0078464e237b18ab8b4b566691/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.DDP5.1.Atmos.H265.HDR.DV-TGA\n👤 6 💾 25.31 GB ⚙️ EXT\n🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/32b621cae418959f269fb9d1ad18888272ed7f26/<opaque>/蜘蛛侠：崭新之日.Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.DDP5.1.Atmos.H265.HDR.DV-TGA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "蜘蛛侠：崭新之日.Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.DDP5.1.Atmos.H265.HDR.DV-TGA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265.DUAL-C76\n👤 6 💾 25.95 GB ⚙️ EXT\nDual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d23355cacff5b1ae790e0d8f420b03a6428b2162/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265.DUAL-C76.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265.DUAL-C76.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10+.DDP5.1.Atmos.H265.MP4-BTM\n👤 6 💾 26.28 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇸🇦 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fa2e5eb5851963ae6262889147086d74c8c38892/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.iNTERNAL.4K.HEVC.10bit.HDR.Dual.Layer.IMAX.HYBRID.Dolby.TrueHD.7.1~COD3D\n👤 5 💾 19.07 GB ⚙️ EXT\nDual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ff3287ebd6d263836c21e5134bb028fa19ffbaac/Spider-Man.Brand.New.Day.2026.iNTERNAL.4K.HEVC.10bit.HDR.Dual.Layer.IMAX.HYBRID.Dolby.TrueHD.7.1~COD3D.mkv/0/Spider-Man.Brand.New.Day.2026.iNTERNAL.4K.HEVC.10bit.HDR.Dual.Layer.IMAX.HYBRID.Dolby.TrueHD.7.1~COD3D.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.iNTERNAL.4K.HEVC.10bit.HDR.Dual.Layer.IMAX.HYBRID.Dolby.TrueHD.7.1~COD3D.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.IMAX.BCORE.WEB-DL.HDR.MULTi.Atmos.H265-BTM\n👤 5 💾 85.47 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3da905598d91330e2dee1bd87aec90146722226f/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.IMAX.BCORE.WEB-DL.HDR.MULTi[Ben The Men].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.IMAX.BCORE.WEB-DL.HDR.MULTi[Ben The Men].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.P5.DDP5.1.Atmos.H265.MP4-BTM\n👤 5 💾 16.38 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇵🇱 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e9757cc8783446377e9ad367427446a52fb871b9/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.P5[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.P5[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10+.MULTi.Atmos.H265.MP4-BTM\n👤 5 💾 30.18 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇸🇦 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/18babc2f20770d4ba633d673d3bb9a2ff9b87b82/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10+.MULTi[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10+.MULTi[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC\n👤 5 💾 25.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/926572e17bc05717a02f0b03798c39e52890c133/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man Brand New Day (2026) 4K 2160P HDR WEB-DL x265 DD5.1&DDP5.1 MULTI MSub - MAZE\n👤 5 💾 8.7 GB ⚙️ EXT\nMulti Audio / Multi Subs / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f2c380da5e188b743f8aebb6da7b4b45ad5828bd/Spider-Man Brand New Day (2026) [4K 2160P - HDR - WEB-DL - x265 - DD5.1&DDP5.1 - [Tam+Hin+Tel+Eng] - MSub] - MAZE.mkv/1/Spider-Man Brand New Day (2026) [4K 2160P - HDR - WEB-DL - x265 - DD5.1&DDP5.1 - [Tam+Hin+Tel+Eng] - MSub] - MAZE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|HDR",
+        "filename": "Spider-Man Brand New Day (2026) [4K 2160P - HDR - WEB-DL - x265 - DD5.1&DDP5.1 - [Tam+Hin+Tel+Eng] - MSub] - MAZE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC\n👤 5 💾 25.3 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/80d324c0cfb6c6a812ea9f1240681acfeb6e932b/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR10+.H.265-XEBEC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man Brand New Day 2026-HDR-2160p-WEB-DL-h265-Strazer\n👤 5 💾 25.25 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ad72cf912f47fd1b150a4b0e567fa00bedcbfbb9/<opaque>/Spider-Man Brand New Day 2026-HDR-2160p-WEB-DL-h265-Strazer.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR",
+        "filename": "Spider-Man Brand New Day 2026-HDR-2160p-WEB-DL-h265-Strazer.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Spider-Man. Brand New Day (2026) WEB-DL 2160p HDR10+ Dolby Vision\n👤 4 💾 25.94 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ee7ca294de06808b1f78870e48c65b2a50dc535e/Spider-Man. Brand New Day (2026) WEB-DL 2160p HDR10+ Dolby Vision.mkv/0/Spider-Man. Brand New Day (2026) WEB-DL 2160p HDR10+ Dolby Vision.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR10+",
+        "filename": "Spider-Man. Brand New Day (2026) WEB-DL 2160p HDR10+ Dolby Vision.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.DDP5.1.Atmos.HDR.H.265-NotSoNewDayForSony\n👤 3 💾 79.96 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c60f3b96ef57442da9f789ead7907169ef79b2b9/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.DDP5.1.Atmos.HDR.H.265-NotSoNewDayForSony.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.DDP5.1.Atmos.HDR.H.265-NotSoNewDayForSony.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.HDR.DV.x265.10bit.ATMOS.DD5.1.[WMAN-LorD]\n👤 3 💾 6.38 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/58605c4bd3c7bb90af52c52190b5a2e6990edcaf/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.HDR.DV.x265.10bit.ATMOS.DD5.1.[WMAN-LorD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.WEB-DL.HDR.DV.x265.10bit.ATMOS.DD5.1.[WMAN-LorD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man Un nuevo día (2026) [2160p] WEB-DL 4K HDR10 [Latino-Inglés] vip.hdlatino.us\n👤 2 💾 25.94 GB ⚙️ EXT\n🇬🇧 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1dccafb6b3b7aa49efabe8933d19776022a62965/Spider-Man Un nuevo día (2026) [2160p] WEB-DL 4K HDR10 [Latino-Inglés] vip.hdlatino.us.mkv/0/Spider-Man Un nuevo día (2026) [2160p] WEB-DL 4K HDR10 [Latino-Inglés] vip.hdlatino.us.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|HDR",
+        "filename": "Spider-Man Un nuevo día (2026) [2160p] WEB-DL 4K HDR10 [Latino-Inglés] vip.hdlatino.us.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.HDR.2160p.WEB.h265-ETHEL\n👤 2 💾 25.25 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c9e6e33760cf2799e6517752a676b585a27eca54/<opaque>/Spider-Man.Brand.New.Day.2026.HDR.2160p.WEB.h265-ETHEL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.HDR.2160p.WEB.h265-ETHEL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.2160p.CORE.WEB-DL.DDP5.1.HDR.H.265-SPiLNO\n👤 2 💾 80.6 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/884729748de39c7238dd4baf020a9c3cb7a756c4/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Spider-Man.Brand.New.Day.2026.4K.HEVC.10bit.DV.HYBRID.Dolby.Digital.Plus.7.1~COD3D\n👤 2 💾 7.78 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/67241cc65ffd5ca406207c0ca38e14edde413586/Spider-Man.Brand.New.Day.2026.4K.HEVC.10bit.DV.HYBRID.Dolby.Digital.Plus.7.1~COD3D.mkv/0/Spider-Man.Brand.New.Day.2026.4K.HEVC.10bit.DV.HYBRID.Dolby.Digital.Plus.7.1~COD3D.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|DV",
+        "filename": "Spider-Man.Brand.New.Day.2026.4K.HEVC.10bit.DV.HYBRID.Dolby.Digital.Plus.7.1~COD3D.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR10+",
+      "title": "Spider-Man Brand New Day 2026 AI Upscaled 2160p WEB-DL HDR10+ DDP5.1 Atmos H265\n👤 1 💾 23.63 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/84cb03f77d5bb9368a6095dba4c04f97521f9103/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|HDR10+"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man; Brand New Day (2026) .mkv 2160p DV HDR WEB-DL DDP 5.…\n👤 1 💾 27.11 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d515a6ea1103b2420e2337d7273ba24319f908be/Spider-Man; Brand New Day (2026) .mkv 2160p DV HDR WEB-DL DDP 5.1 iTA H264 - FHC.mkv/0/Spider-Man; Brand New Day (2026) .mkv 2160p DV HDR WEB-DL DDP 5.1 iTA H264 - FHC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264|DV|HDR",
+        "filename": "Spider-Man; Brand New Day (2026) .mkv 2160p DV HDR WEB-DL DDP 5.1 iTA H264 - FHC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 2160p HDR10] [IMAX] [Bravia Core] Dub (MovieDalen) + Original (Eng) + Sub (Rus Eng)\n👤 0 💾 80.34 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a5da5914847b61cc396dad02e8dfce18357805d5/<opaque>/Spider-Man.Brand.New.Day.2026.WEB-DL.BraviaCore.IMAX.HDR.2160p-SOFCJ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.WEB-DL.BraviaCore.IMAX.HDR.2160p-SOFCJ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 2160p 4k HDR10 Dolby Vision] [Hybrid] 2 x Dub + MVO + Original Eng + Sub (Rus Eng)\n👤 0 💾 26.85 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2ae8ae166aaed064a38fcf8eb561a46513650d74/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.DV.HDR.H.265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.DV.HDR.H.265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 2160p 4k HDR10+ Dolby Vision] [Hybrid] Dub (MovieDalen) + Original Eng + Sub (Rus Eng)\n👤 0 💾 25.68 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/15f510ebaee99770790b6c7937f7f87cdbdbc77e/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10P.H.265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DV.HDR10P.H.265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider.Man.Brand.New.Day.2026.2160p.WEBRip.AVC.SDR.DDP5.1.Atmos-Asmo\n👤 735 💾 20.84 GB ⚙️ ThePirateBay\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d5b3093615bfe1d4e8bcdb25369ef9a1ccc37852/<opaque>/Spider.Man.Brand.New.Day.2026.2160p.WEBRip.AVC.SDR.DDP5.1.Atmos-Asmo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|avc",
+        "filename": "Spider.Man.Brand.New.Day.2026.2160p.WEBRip.AVC.SDR.DDP5.1.Atmos-Asmo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man Brand New Day [4k 2160p][Esp]\n👤 630 💾 26.59 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/613bcbd5d4c71cf3065a7491da3d2212adc25818/<opaque>/Spider-Man Brand New Day [4k 2160p][Esp].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Spider-Man Brand New Day [4k 2160p][Esp].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 2160p SDR] Dub (MovieDalen) + Original (Eng) + Sub (Rus Eng)\n👤 404 💾 26.25 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e768dd1bae9b684443d0b83717297b0eed899617/<opaque>/Spider.Man.Brand.New.Day.2026.WEB-DL.MA.SDR.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL",
+        "filename": "Spider.Man.Brand.New.Day.2026.WEB-DL.MA.SDR.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.WEB.H265-ETHEL\n👤 369 💾 12.75 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇸🇰 / 🇭🇺 / 🇧🇬 / 🇭🇷 / 🇩🇰 / 🇳🇴 / 🇮🇱 / 🇮🇩",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f9dfb681e19231098b6dcd2f7c6a8374b14ea54/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.WEB.h265-ETHEL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.WEB.h265-ETHEL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DL 2160p | 4К | SDR | D | MovieDalen\n👤 258 💾 13.13 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9a3aef63cb3730ddde70965d2070b56cab022c65/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.SDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.SDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider Man Brand New Day (2026) TRUE WEB-DL - 4K SDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)]\n👤 208 💾 14.69 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7404c73e7c375474600ad37848a24e11517aaaf7/www.1TamilMV.capital - Spider Man Brand New Day (2026) TRUE WEB-DL - 4K SDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)].mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) TRUE WEB-DL - 4K SDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) TRUE WEB-DL - 4K SDR - 2160p HQ - HEVC - [TAM + TEL + HIN + MAL + KAN + ENG (ATMOS)].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man Brand New Day 2026 iMAX WEB-DL 2160p SDR HEVC DDPA 5.…\n👤 171 💾 15.27 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d5685a6cb41aa0ebdecf7a10d81f199a48ed1679/<opaque>/Spider-Man Brand New Day 2026 iMAX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "Spider-Man Brand New Day 2026 iMAX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) UHD WEB-DL 2160p | 4K | SDR | D | MovieDalen\n👤 149 💾 26.63 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/423e519a2f8819a6f3cad2f9bbf51bb01e43cb91/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.MA.x265.WEB-DL.2160p.SDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.MA.x265.WEB-DL.2160p.SDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man: Brand New Day 2026 2160p WEBRip\n👤 100 💾 6.47 GB ⚙️ YTS\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/82e09f75700a323938a64cf998d97eac8dc58dc2/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.2160p.SDR.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL\n👤 74 💾 8.02 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f99c02c398bf4a9140f46c83b3061f8822a8a157/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.2160p.SDR.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.2160p.SDR.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider.Man.Brand.New.Day.(2026).iT.WEB-DL.2160p.DV5.Ukr.Eng\n👤 36 💾 16.04 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a835e15919a9b4c87e7d5d58f89880c94e29948/Spider.Man.Brand.New.Day.(2026).iT.WEB-DL.2160p.DV5.Ukr.Eng/undefined/Spider.Man.Brand.New.Day.(2026).iT.WEB-DL.2160p.DV5.Ukr.Eng",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man.Brand.New.Day.2026.VO.2160p\n👤 32 💾 15.92 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b691e7c1d513f98d86b16c2c00ed0b2ebd16f923/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider.Man.Brand.New.Day.2026.WEB-DL.2160p.NNMClub\n👤 28 💾 26.25 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/999fdfc89604088329708a8b72f64b8308806f6c/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man.Brand.New.Day.2026.WEB-DL.2160p\n👤 27 💾 25.68 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a3c2459e09d54e47a0fc161516423e720ece4d6/<opaque>/Spider-Man.Brand.New.Day.2026.WEB-DL.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.WEB-DL.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man Brand New Day 2026 [10Bit SDR] [2160p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 22 💾 13.91 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6be64c8a483743c4161859daee8a0bae88064041/<opaque>/Spider-Man Brand New Day 2026 [10Bit SDR] [2160p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit",
+        "filename": "Spider-Man Brand New Day 2026 [10Bit SDR] [2160p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider.Man.Brand.New.Day.2026.2160p.AMZN.WEB-DL.SDR.ENG.Atmos.IT…\n👤 9 💾 13.4 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/52c477f292b8abd6995108965809a44273df6498/<opaque>/Spider.Man.Brand.New.Day.2026.2160p.AMZN.WEB-DL.SDR.ENG.Atmos.ITA.DDP5.1.H265-TBK.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "Spider.Man.Brand.New.Day.2026.2160p.AMZN.WEB-DL.SDR.ENG.Atmos.ITA.DDP5.1.H265-TBK.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man Brand New Day (2026) IMAX WebDL 2160p. 4K SDR AV1 AI 12Mbps Rus-Eng @Isma\n👤 4 💾 14.33 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cef17629066a0d1ee63a5360436d8f333faa1bd8/Spider-Man Brand New Day (2026) IMAX WebDL 2160p. 4K SDR AV1 AI 12Mbps Rus-Eng @Isma/undefined/Spider-Man Brand New Day (2026) IMAX WebDL 2160p. 4K SDR AV1 AI 12Mbps Rus-Eng @Isma",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man Brand New Day 2026 iMAX WEB-DL 2160p SDR HEVC DDPA 5.1 x265\n👤 3 💾 15.68 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/babb11a297027d314cb9f76ff9c5f3ea7e7efa88/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.MA.WEB-DL.DDP5.1.H.265-SPiLNO\n👤 2 💾 26.51 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b33f04fc94340bb3b4b21304fb0037f3d81f477/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Spider-Man Brand New Day (2026) 4K - Telegram @infoiptvs\n👤 1 💾 26.59 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9dffc089ef26f4838a0d84d5a6e86b627d8cf41f/Spider-Man Brand New Day (2026) 4K - Telegram @infoiptvs.mkv/0/Spider-Man Brand New Day (2026) 4K - Telegram @infoiptvs.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Spider-Man Brand New Day (2026) 4K - Telegram @infoiptvs.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p DV | HDR10+",
+      "title": "Spider-Man Brand New Day 2026 1080p WEBRip DV HDR10+ DDP Atmos 5 1 x265-WiNHD\n👤 121 💾 11.2 GB ⚙️ ThePirateBay\n🇬🇧 / 🇰🇷 / 🇨🇳 / 🇷🇸   / 🇮🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/78a8982570d66f263610664c46283c7ac034bfda/<opaque>/Spider-Man Brand New Day 2026 1080p WEBRip DV HDR10+ DDP Atmos 5 1 x265-WiNHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit|DV|HDR10+",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEBRip DV HDR10+ DDP Atmos 5 1 x265-WiNHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "Spider-Man Brand New Day 2026 [HLG HDR SDR] [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 36 💾 6.99 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/90d2b9be595b0396aa044f81c4e233b9435fdcb6/<opaque>/Spider-Man Brand New Day 2026 [HLG HDR SDR] [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264|HDR",
+        "filename": "Spider-Man Brand New Day 2026 [HLG HDR SDR] [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "Spider-Man Całkiem nowy dzień - Spider-Man Brand New Day 2026 [HLG HDR SDR] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 2 💾 6.08 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/490d276436aec5dc100bf46072c1acf9c7defff1/<opaque>/Spider-Man Całkiem nowy dzień - Spider-Man Brand New Day 2026 [HLG HDR SDR] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265|HDR",
+        "filename": "Spider-Man Całkiem nowy dzień - Spider-Man Brand New Day 2026 [HLG HDR SDR] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "Spider-Man Brand New Day 2026 [HLG HDR SDR] [10Bit] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 2 💾 7.05 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7ac07fba63f4bc56000050452ece09cac0cf18cf/<opaque>/Spider-Man Brand New Day 2026 [HLG HDR SDR] [10Bit] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265|10bit|HDR",
+        "filename": "Spider-Man Brand New Day 2026 [HLG HDR SDR] [10Bit] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day 2026.1080p.HQ Pre.Multi.AAC 2.0.x264\n👤 6449 💾 3.55 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9d86667f49f42712909c2888d346b37a17c44191/<opaque>/Spider-Man- Brand New Day 2026.1080p.HQ Pre.Multi.AAC 2.0.x264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Spider-Man- Brand New Day 2026.1080p.HQ Pre.Multi.AAC 2.0.x264.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) 1080p HQ HDRip - x264 - (DD+5.1 - 384Kbps) [Tel + Tam + Hin + Eng]\n👤 6120 💾 3.84 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a606e1ab7f7cded057265be08a300702e590d8b0/Spider Man Brand New Day (2026) 1080p HQ HDRip - x264 - (DD+5.1 - 384Kbps) [Tel + Tam + Hin + Eng].mkv/0/Spider Man Brand New Day (2026) 1080p HQ HDRip - x264 - (DD+5.1 - 384Kbps) [Tel + Tam + Hin + Eng].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "Spider Man Brand New Day (2026) 1080p HQ HDRip - x264 - (DD+5.1 - 384Kbps) [Tel + Tam + Hin + Eng].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.10Bit.DDP5.1.x265-Neo…\n👤 6105 💾 2.97 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/26f1ce29e36b0b4b72a1b0974776af082f97fcb0/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-Kyo…\n👤 1697 💾 8.99 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/591e32c5fe7f854157f2b199b85bca29aa0741ba/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub\n👤 1513 💾 3.11 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5bb18d5c93a7aa87f336752e7c936f3e67262bbe/Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub/undefined/Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p AMZN WEB-DL DDP5 1 H 264-KyoGo\n👤 1481 💾 8.99 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dbbbaed4073d64195b727785f32bbd3e0682a478/<opaque>/Spider-Man Brand New Day 2026 1080p AMZN WEB-DL DDP5 1 H 264-KyoGo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man Brand New Day 2026 1080p AMZN WEB-DL DDP5 1 H 264-KyoGo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.AAC5.1.10bits.x265-Ra…\n👤 1379 💾 1.93 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/348eeb59ad41cd65fc88c16ecbe5773246f2b926/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.AAC5.1.10bits.x265-Rapta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.AAC5.1.10bits.x265-Rapta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha - Um Novo Dia 2026 WEB-DL 1080p x264 DUAL 5.1\n👤 1264 💾 2.9 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/00cc9081feed68eef9a8893368f9e198f0204483/<opaque>/Homem-Aranha - Um Novo Dia 2026 WEB-DL 1080p x264 DUAL 5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Homem-Aranha - Um Novo Dia 2026 WEB-DL 1080p x264 DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 1080p] Dub (MovieDalen) + MVO (HDrezka) + Original Eng + Sub (Rus Eng Chi Heb Ron Ukr Multi)\n👤 1134 💾 9.44 GB ⚙️ Rutracker\nMulti Audio / 🇬🇧 / 🇷🇺 / 🇨🇳 / 🇺🇦 / 🇮🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1e8968382b13affde496a8a9df7b65fcc36f104c/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.MA.WEB-DL.H.264-EniaHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.MA.WEB-DL.H.264-EniaHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 384Kbps)\n👤 1028 💾 3.84 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ee12dff5d7892135dfbd17b0c31ec1b026e057e0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 384Kbps).mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 384Kbps).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 384Kbps).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DL 1080p от селезень | D | MovieDalen\n👤 943 💾 9.77 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b947c37d9e20207195125a32009949010edea3b0/<opaque>/Spider-Man.Brand.New.Day.2026.WEB-DL.1080p.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.WEB-DL.1080p.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) (1080p MA WEB-DL x265 EAC3 5.1 Silence) [QxR]\n👤 740 💾 6.84 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba4b7ac761f84672afd958a9497d497e220311c0/Spider-Man꞉ Brand New Day (2026) (1080p MA WEB-DL x265 EAC3 Silence).mkv/0/Spider-Man꞉ Brand New Day (2026) (1080p MA WEB-DL x265 EAC3 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Spider-Man꞉ Brand New Day (2026) (1080p MA WEB-DL x265 EAC3 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 5.1 BONE\n👤 636 💾 2.95 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1565afbb7507bf21af97d03dbbff8c2cd476e1c3/<opaque>/Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider.Man.Brand.New.Day.2026.MULTi.VF2.1080p.WEBRip.EAC3.5.1.x264-GL0P\n👤 632 💾 8.52 GB ⚙️ Torrent9\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d31fbe5bf60fdd599ddd28814d3ca41e90cd0fc6/<opaque>/Spider.Man.Brand.New.Day.2026.MULTi.VF2.1080p.WEBRip.EAC3.5.1.x264-GL0P.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Spider.Man.Brand.New.Day.2026.MULTi.VF2.1080p.WEBRip.EAC3.5.1.x264-GL0P.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.x264.DUAL.5.1\n👤 605 💾 3.52 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d9d861b34ba077a28451c0bd7359b68ca19cec53/<opaque>/Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.x264.DUAL.5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.x264.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.x264.DUAL.5.1\n👤 577 💾 3.52 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/43ae6898e2b814e6526b0f1d6bf0aefa98e68147/<opaque>/Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.x264.DUAL.5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.x264.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ/EN)[1080p\n👤 555 💾 4.25 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7f0cff6fa3af55d11a6906a46625cc23d9a91fa7/Spider-Man Zbrusu nový den (2026).mkv/0/Spider-Man Zbrusu nový den (2026).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider-Man Zbrusu nový den (2026).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub\n👤 496 💾 3.11 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc502795caa54d23e756f61b8994fd0c019767d8/Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub.mkv/0/Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "Spider Man Brand New Day (2026) English HQ HDRip - 1080p - x264 - (DD5.1 - 192Kbps & AAC) - 2.9GB - ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.1080p-Dual-Lat\n👤 495 💾 2.86 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7a3e3743f6465ff363ce2ac318d5a04edc858ade/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p 10bit WEBRip 6CH x265 HEVC-P…\n👤 473 💾 2.19 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/88ebb9672b6dab84f91f94428b4287cbad3a700e/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-man.brand.new.day.2026.1080p-dual-lat-cinecalidad.my.mp4\n👤 455 💾 2.59 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/205e36e30122ede88b18c520b26e41975b5dde10/<opaque>/Spider-man.brand.new.day.2026.1080p-dual-lat-cinecalidad.my.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider-man.brand.new.day.2026.1080p-dual-lat-cinecalidad.my.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEBRip x265 DDP5.1-CSP\n👤 397 💾 3.13 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7ea51df21700946ac63d8128bea37f1937b26e3f/<opaque>/Spider-Man Brand New Day 2026 1080p WEBRip x265 DDP5.1-CSP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEBRip x265 DDP5.1-CSP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) 1080p WEBRip x265 Multi DDP 5.1 …\n👤 389 💾 2.5 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a3bb4d37153909ae642c7ac06a458bac82bddc25/Spider-Man Brand New Day (2026) 1080p WEBRip x265 Multi DDP 5.1 …/undefined/Spider-Man Brand New Day (2026) 1080p WEBRip x265 Multi DDP 5.1 …",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.DDP5.1.H.264.DUAL\n👤 364 💾 9.64 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce51d459b51ea33dd5d563e113010acd7434ecee/<opaque>/Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.DDP5.1.H.264.DUAL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Homem-Aranha Um Novo Dia.2026.1080p.WEB-DL.DDP5.1.H.264.DUAL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) 1080p H265 10Bit iTA EnG MIRCrew\n👤 332 💾 2.76 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/55130131bd1010f0c3c96746dc0e790c721c0de6/Spider-Man Brand New Day (2026) 1080p H265 10Bit iTA EnG AC3 Sub iTA EnG-MIRCrew.mkv/0/Spider-Man Brand New Day (2026) 1080p H265 10Bit iTA EnG AC3 Sub iTA EnG-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265|10bit",
+        "filename": "Spider-Man Brand New Day (2026) 1080p H265 10Bit iTA EnG AC3 Sub iTA EnG-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha.Um.Novo.Dia.2026.WEB-DL.1080p.x264.DUAL.5.1-STARCKFILMES\n👤 315 💾 3.52 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2a6b5b14ef835da8e3d595c4d185ebe43d093e5d/<opaque>/Homem-Aranha.Um.Novo.Dia.2026.WEB-DL.1080p.x264.DUAL.5.1-STARCKFILMES.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Homem-Aranha.Um.Novo.Dia.2026.WEB-DL.1080p.x264.DUAL.5.1-STARCKFILMES.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha - Um Novo Dia 2026 WEB-DL 1080p x264 FULLHD DUAL 5.1\n👤 311 💾 9.64 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/63259546e7ba3c876a6287d4cd849329315a0fa1/<opaque>/Homem-Aranha - Um Novo Dia 2026 WEB-DL 1080p x264 FULLHD DUAL 5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Homem-Aranha - Um Novo Dia 2026 WEB-DL 1080p x264 FULLHD DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha.Um.Novo.Dia.2026.WEB-DL.1080p.x264.FULLHD.DUAL.5.1-STARCKFILMES\n👤 265 💾 9.64 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e7ca9615df5424db2e00a0f8d9f4c617c01a86b8/<opaque>/Homem-Aranha.Um.Novo.Dia.2026.WEB-DL.1080p.x264.FULLHD.DUAL.5.1-STARCKFILMES.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Homem-Aranha.Um.Novo.Dia.2026.WEB-DL.1080p.x264.FULLHD.DUAL.5.1-STARCKFILMES.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.WEB-DL.1080p-Dual-Lat\n👤 237 💾 9.64 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fd55b2535e302687f1aa3ef0e7b4ae77213726aa/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) [MULTi] [1080p] [WEB-DL] [x264] [DDP5.1.Atmos-R22] [Dubbing i napisy PL]\n👤 231 💾 9.08 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/21cb462126a2655fbcaf989c5a4dddc67d603a7b/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.1080p.WEB-DL.DDP5.1.Atmos.x264-R22.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.1080p.WEB-DL.DDP5.1.Atmos.x264-R22.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Brand New Day 2026 1080p HEVC\n👤 223 💾 3.2 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇸🇰 / 🇩🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c65efd87f4ad716d00ae7072dab48273b598e699/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ/EN)[1080p][WEB-DL]\n👤 212 💾 9.28 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a27fed4c87c497feeba734b03479e8fdbf4e74ff/Spider-Man Zbrusu nový den (2026) CZ EN.mkv/0/Spider-Man Zbrusu nový den (2026) CZ EN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man Zbrusu nový den (2026) CZ EN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Homem-Aranha Um Novo Dia.2026.1080p.FULL.HD.WEB-DL.DUAL.5.1\n👤 212 💾 9.64 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b101eb5c537399a77045bd88928483bb673a88f4/<opaque>/Homem-Aranha Um Novo Dia.2026.1080p.FULL.HD.WEB-DL.DUAL.5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Homem-Aranha Um Novo Dia.2026.1080p.FULL.HD.WEB-DL.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.PLDUB.1080p.AMZN.WEB-DL.XviD.AC3-MAXX\n👤 209 💾 4.7 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/046271e8867328203c1b0789c6ba06c335f545a8/<opaque>/Spider-Man.Brand.New.Day.2026.PLDUB.1080p.AMZN.WEB-DL.XviD.AC3-MAXX.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLDUB.1080p.AMZN.WEB-DL.XviD.AC3-MAXX.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.1080p.WEB-DL.x265-P2pRipTeam\n👤 204 💾 5.67 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69d5277639da0bcf16a3ce5ca7533412ee2a9832/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.1080p.WEB-DL.x265-P2pRipTeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.1080p.WEB-DL.x265-P2pRipTeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.iTA-ENG.WEBDL.1080p.x264-CYBER.mkv\n👤 200 💾 10.93 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/06d4aa9b409d7500c33cf220a8fed59178ce02b4/<opaque>/Spider-Man.Brand.New.Day.2026.iTA-ENG.WEBDL.1080p.x264-CYBER.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.iTA-ENG.WEBDL.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p MA WEB-DL DDP5 1 Atmos H 264-BYNDR\n👤 199 💾 8.72 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/295810b3a4ea1841b9e6e907b5939c100583cb91/<opaque>/Spider-Man Brand New Day 2026 1080p MA WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man Brand New Day 2026 1080p MA WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 REPACK 1080p 10bit WEBRip 6CH x265 HEVC-PSA\n👤 168 💾 2.2 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a190b5f2e94cf2131789c92557865bbd5e292523/<opaque>/Spider-Man Brand New Day 2026 REPACK 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man Brand New Day 2026 REPACK 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) [Bluray 1080p][Esp]\n👤 167 💾 10.29 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f51dd77d92cfca5ec5fab99387d916fb25ce2e64/Spider-Man Brand New Day (2026) [Bluray 1080p][Esp].mkv/0/Spider-Man Brand New Day (2026) [Bluray 1080p][Esp].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Spider-Man Brand New Day (2026) [Bluray 1080p][Esp].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New.Day (2026) iTA-ENG.WEBDL.1080p.x264-Dr4gon.mkv\n👤 165 💾 3.7 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f821a4ce47e65f5971cf7b316f567c7093c0a420/Spider-Man Brand New.Day (2026) iTA-ENG.WEBDL.1080p.x264-Dr4gon.mkv/0/Spider-Man Brand New.Day (2026) iTA-ENG.WEBDL.1080p.x264-Dr4gon.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man Brand New.Day (2026) iTA-ENG.WEBDL.1080p.x264-Dr4gon.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.REPACK.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 162 💾 2.2 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6626b7589d0a84cc08f84607fac0ec99251059dd/<opaque>/Spider-Man.Brand.New.Day.2026.REPACK.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.REPACK.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DL 1080p | D Р Р2\n👤 157 💾 11.13 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2eda616f484b46b203797f952e954f078fd0bc04/<opaque>/Spider-Man Brand New Day 2026 1080p AMZN WEB-DL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man Brand New Day 2026 1080p AMZN WEB-DL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ/SK/EN)[1080p]\n👤 142 💾 4.47 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dab3ac2c1347e327903d225c1a8361e17aca8315/Spider-Man Zbrusu nový den (2026) CZ SK EN.mkv/0/Spider-Man Zbrusu nový den (2026) CZ SK EN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider-Man Zbrusu nový den (2026) CZ SK EN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-Rip 1080p от New-Team | D | IMAX\n👤 138 💾 13.21 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce9233e9637bd7d05845f771bf49eeca31497b35/<opaque>/Spider-Man Brand New Day 2026 iMAX-New-Team.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "Spider-Man Brand New Day 2026 iMAX-New-Team.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x265-KONTRAST\n👤 128 💾 3.88 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e116184208b8fe71900286005e253e26b1316059/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEBRip x265-DH\n👤 128 💾 2.72 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc81eda254271d1b89da13aefef8305ceb1aa07e/<opaque>/Spider-Man Brand New Day 2026 1080p WEBRip x265-DH.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEBRip x265-DH.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.10bit.WEBRip.6CH.x265.HEVC\n👤 127 💾 3.01 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1142106276ac733ac4c2ba8ab109811fabe9c1d2/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.10bit.WEBRip.6CH.x265.HEVC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.10bit.WEBRip.6CH.x265.HEVC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 10Bit DDP5.…\nSpider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KINGDOM.mkv\n👤 127 💾 6.86 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d3f6b822ec08ac11be6bd51660e1e2629c1f937a/<opaque>/Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KINGDOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KINGDOM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p_nnm-club\n👤 124 💾 4.66 GB ⚙️ TorrentGalaxy\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7c30776fd2af7a74cd56ded216ddf1e0c9d65775/<opaque>/Spider-Man Brand New Day 2026 1080p_nnm-club.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider-Man Brand New Day 2026 1080p_nnm-club.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.10bit.DS4K.iTunes.WEBRip.[Or…\n👤 119 💾 6.18 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9e68da1a0fad7d2c4c7ebcf508174f419487cf54/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.10bit.DS4K.iTunes.WEBRip.[Org.DDP5.1-Hindi+DDPA5.1-English].ESub.HEVC-The.PunisheR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.10bit.DS4K.iTunes.WEBRip.[Org.DDP5.1-Hindi+DDPA5.1-English].ESub.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DL 1080p | D Р\n👤 109 💾 10.1 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/77335db0dbc1740bffd463f4659c4d5c92eca015/ Spider-Man: Brand New Day (2026) WEB-DL 1080p | D Р/undefined/ Spider-Man: Brand New Day (2026) WEB-DL 1080p | D Р",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DL 1080p | D Р\n👤 109 💾 10.1 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/77335db0dbc1740bffd463f4659c4d5c92eca015/<opaque>/Spider-Man Brand New Day 2026 1080p AMZN WEB-DL..mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man Brand New Day 2026 1080p AMZN WEB-DL..mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.WEB-DL.1080p.x264\n👤 104 💾 4.09 GB ⚙️ EXT\n🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/70eb735e4cc90b6849d9f2e2373f89db465aa94b/<opaque>/蜘蛛侠：崭新之日.Spider-Man.Brand.New.Day.2026.WEB-DL.1080p.x264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "蜘蛛侠：崭新之日.Spider-Man.Brand.New.Day.2026.WEB-DL.1080p.x264.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day 2026 1080p WEBRip\n👤 100 💾 2.42 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e0967ba97154d64a8d274f02bb10d57ca3ada5e6/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) [1080p] [WEBRip] [5.1]\n👤 100 💾 2.67 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2ee672984434179aa8a7c5d2ebd0a94b38eb2960/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider.Man.Brand.New.Day.2026.MULTi.Ai.1080p.AMZN.WEB-DL.H.264-XuploaD\n👤 99 💾 10.29 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/54e3f5442f96be1e0edcf712dc8dfe30fa690b63/<opaque>/Spider.Man.Brand.New.Day.2026.MULTi.Ai.1080p.AMZN.WEB-DL.H.264-XuploaD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider.Man.Brand.New.Day.2026.MULTi.Ai.1080p.AMZN.WEB-DL.H.264-XuploaD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT.mkv\n👤 99 💾 9.63 GB ⚙️ BestTorrents\nMulti Audio / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/144c4b4de5b2308d9375c32079ee4eb5a20f91ba/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.2…\n👤 97 💾 10.93 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/df98b3868604ffa778bad0ab921e43d8895b5850/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FHC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FHC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)[1080p][WEB-DL]\n👤 87 💾 2.67 GB ⚙️ EXT\n🇨🇿 / 🇸🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6f3133c5107a6ec2a12b4691200513ef93e51b41/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.1080p.10bit.DS4K.BCORE.WEBRip…\n👤 86 💾 6.35 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/10049505278a0f486fee9dbd7a24eb117738216f/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.1080p.10bit.DS4K.BCORE.WEBRip.[Org.DDP5.1-Hindi+DDPA5.1-English].ESub.HEVC-The.PunisheR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.1080p.10bit.DS4K.BCORE.WEBRip.[Org.DDP5.1-Hindi+DDPA5.1-English].ESub.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) WEB-DL 1080p (x265-EAC3)\n👤 82 💾 3.61 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/19cec15c2cc68d8b281c45433698fd3d08c2b325/Spider-Man-.Brand.New.Day.(2026).(Spanish.English.Subs).WEB-DL.1080p.x265-EAC3.by.enjoy.(hispashare.org).mkv/0/Spider-Man-.Brand.New.Day.(2026).(Spanish.English.Subs).WEB-DL.1080p.x265-EAC3.by.enjoy.(hispashare.org).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Spider-Man-.Brand.New.Day.(2026).(Spanish.English.Subs).WEB-DL.1080p.x265-EAC3.by.enjoy.(hispashare.org).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man - Brand New Day (2026) IMAX 1080p UHD 10bit BCORE WEB…\n👤 80 💾 10.06 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3610c39a22b5cb5214d58bbbc27513cc3c48ace7/Spider-Man - Brand New Day (2026) IMAX 1080p UHD 10bit BCORE WEBRip SDR HEVC [Org DDP 5.1 Hindi + DDP 5.1 Atmos English] ESubs ~ TombDoc.mkv/0/Spider-Man - Brand New Day (2026) IMAX 1080p UHD 10bit BCORE WEBRip SDR HEVC [Org DDP 5.1 Hindi + DDP 5.1 Atmos English] ESubs ~ TombDoc.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man - Brand New Day (2026) IMAX 1080p UHD 10bit BCORE WEBRip SDR HEVC [Org DDP 5.1 Hindi + DDP 5.1 Atmos English] ESubs ~ TombDoc.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man - Brand New Day (2026) 1080p DS4K 10bit [60FPS] iT WE…\n👤 80 💾 7.52 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cafb826c500cea0147c1b479e3f07d15cced1559/Spider-Man - Brand New Day (2026) 1080p DS4K 10bit [60FPS] iT WEBRip x265 HEVC [AMZ Hindi DDP 5.1 + English AAC 5.1] ESub ~ MrStrange.mkv/0/Spider-Man - Brand New Day (2026) 1080p DS4K 10bit [60FPS] iT WEBRip x265 HEVC [AMZ Hindi DDP 5.1 + English AAC 5.1] ESub ~ MrStrange.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man - Brand New Day (2026) 1080p DS4K 10bit [60FPS] iT WEBRip x265 HEVC [AMZ Hindi DDP 5.1 + English AAC 5.1] ESub ~ MrStrange.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.iT.WEB-DL.MULTi.DDP5.1.Atmos…\n👤 78 💾 14 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇸🇦 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d4c416b6947074e033b4c507eb79c27ea645c497/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.iT.WEB-DL.MULTi[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.iT.WEB-DL.MULTi[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.Ai.1080p.AMZN.WEB-DL.H264.AC3-MAXX\n👤 75 💾 4.2 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4b666d182d0e3c7bd253c85274cdc9b711bf5b45/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.Ai.1080p.AMZN.WEB-DL.H264.AC3-MAXX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.Ai.1080p.AMZN.WEB-DL.H264.AC3-MAXX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Marvel Studios Iron Man 2008 1080p MA WEB-DL DDP5 1 H 264-SARVO\n👤 61 💾 7.16 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/46c4a0289aa3a520d100b28be07a0bf594fa884a/<opaque>/Marvel Studios Iron Man 2008 1080p MA WEB-DL DDP5 1 H 264-SARVO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Marvel Studios Iron Man 2008 1080p MA WEB-DL DDP5 1 H 264-SARVO.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEBRip-HEVC 1080p | D Р\n👤 52 💾 8.39 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7f18dd6807937f76129913cc896b04df964b799d/<opaque>/Spider.Man.Brand.New.Day.2026.1080p.WEBRip.x265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc",
+        "filename": "Spider.Man.Brand.New.Day.2026.1080p.WEBRip.x265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.1080p.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL\n👤 48 💾 3.15 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8512255a11c0ce43406fc79e8de22fd34f4f0c92/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.1080p.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.1080p.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.D.WEBRip.1080p\n👤 48 💾 7.67 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/222ef2f46571c98339421edd0ee173eac720c1ce/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) 1080P WEBRip x265 DD5.1 MULTI ESub - MAZE\n👤 46 💾 2 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/091e179856675378b05509d9d0597e92b0961a6d/Spider-Man Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv/1/Spider-Man Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man - Brand New Day 2026 1080p MA WEB-DL H265 SDR DDP Atmos 5 1 English --HONE\n👤 40 💾 8.76 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/071d6064fb19a422880f1e26e7ce922ba9511982/<opaque>/Spider-Man - Brand New Day 2026 1080p MA WEB-DL H265 SDR DDP Atmos 5 1 English --HONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Spider-Man - Brand New Day 2026 1080p MA WEB-DL H265 SDR DDP Atmos 5 1 English --HONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)1080p][WEBL-DL]\n👤 39 💾 10.4 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ab1c577bf04fa761c0680dd4bd6cc222a972759e/ Spider-Man: Brand New Day (2026)1080p][WEBL-DL]/undefined/ Spider-Man: Brand New Day (2026)1080p][WEBL-DL]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080P WEBRip DDP5.1 Atmos. X265 POOTLED\n👤 39 💾 9.88 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b338da573552cfe7e02dddf9238ebf8d198e3f4f/<opaque>/Spider-Man Brand New Day 2026 1080P WEBRip DDP5.1 Atmos. X265 POOTLED.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day 2026 1080P WEBRip DDP5.1 Atmos. X265 POOTLED.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEB h264-ETHEL\n👤 39 💾 7.41 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6197ecc5015886c18c3587cc63a73d92de708c68/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEB.h264-ETHEL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEB.h264-ETHEL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264.UKR-sub.SviySUB\n👤 38 💾 8.99 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b8d9da605a15c4719a11ab422d56b63d387b8575/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264.UKR-sub.SviySUB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264.UKR-sub.SviySUB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) Eng 1080p WEBRip x265 DDP 5.1 ES…\n👤 38 💾 4.8 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dea192a169f2556155dae9a77c667a11aa2d3851/Spider-Man Brand New Day (2026) Eng 1080p WEBRip x265 DDP 5.1 ESub.mkv/0/Spider-Man Brand New Day (2026) Eng 1080p WEBRip x265 DDP 5.1 ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day (2026) Eng 1080p WEBRip x265 DDP 5.1 ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.PLSUB.1080p.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL\n👤 31 💾 2.63 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5d6ac4cd0b66df82a45b67a1d9fd846b8d483692/<opaque>/Spider-Man.Brand.New.Day.2026.PLSUB.1080p.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLSUB.1080p.10bit.WEB-DL.DDP5.1.x265.HEVC-AdL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WebRip Opus 5 1 x265-Lootera\n👤 30 💾 3.34 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5e34e8975cedf51eba7b89e834a312dbd07ca5fb/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Tetralogy (2017-2026) 1080P Bluray x265 DD5.1 MultiAudio ESub - MAZE\n04.Spider-Man - Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv\n👤 29 💾 2 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/41c3a0f31b0fea854745d28d1906a33554ae1bbc/04.Spider-Man - Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv/4/04.Spider-Man - Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "04.Spider-Man - Brand New Day (2026) [1080p - WEBRip - x265 - DD5.1 - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir\n👤 29 💾 2.97 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e53b07aff213e78281ed4189485cd213fb5d47e5/<opaque>/Spider-Man Brand New Day 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026 WEB-DL Dual AUdio 1080p 2GB\n👤 27 💾 2.06 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b6516848a2b7a156bf3e2a05c092bbd1261c80b0/<opaque>/Spider-Man.Brand.New.Day.2026.[Bolly4u.org] WEB-DL Dual AUdio 1080p 2GB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.[Bolly4u.org] WEB-DL Dual AUdio 1080p 2GB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Całkiem nowy dzień (2026) MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT\n👤 27 💾 9.63 GB ⚙️ EXT\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/666e11a19eea29e60ab9a6c20e7f5c8c7204e7a2/Spider-Man Całkiem nowy dzień (2026) MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT.mkv/0/Spider-Man Całkiem nowy dzień (2026) MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man Całkiem nowy dzień (2026) MULTi.1080p.AMZN.WEB-DL.x264.AC3-KiT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.10bit.x265.DDP5.1.Atmos.ITA-ENG.AllSubs.[DD-CREW]\n👤 27 💾 3.28 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3882586753eee59639cfbf460bfb8e05aaedfe93/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.10bit.x265.DDP5.1.Atmos.ITA-ENG.AllSubs.[DD-CREW].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.10bit.x265.DDP5.1.Atmos.ITA-ENG.AllSubs.[DD-CREW].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 MULTI 1080p WEB H264-LOST\n👤 27 💾 7.8 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/174415c814c50f367759c1227b210995965e9ec9/<opaque>/Spider-Man.Brand.New.Day.2026.MULTI.1080p.WEB.H264-LOST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTI.1080p.WEB.H264-LOST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man_Brand.New.Day.(2026).WEB-DLRip.1080p.(60fps)\n👤 26 💾 4.44 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d7b761999a80663f2309fe97a9b18fa360cdde61/Spider-Man_Brand.New.Day.(2026).WEB-DLRip.1080p.(60fps)/undefined/Spider-Man_Brand.New.Day.(2026).WEB-DLRip.1080p.(60fps)",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo\n👤 25 💾 8.99 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69977fe7ff4758b5f142e3ebf22d5abc2ae8970c/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) [1080p - HQ HD AVC UNTOUCHED [Tam+Tel+Hin+Eng] - x264 - DD2.0 (448Kbps) + AAC - 7.7GB - ESub]\n👤 24 💾 7.75 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/480221802e9a782f068deb360c2fdba2abf8b096/www.1TamilBlasters.land - Spider-Man Brand New Day (2026) [1080p - HQ HD AVC UNTOUCHED  [Tam+Tel+Hin+Eng] - x264 - DD2.0 (448Kbps) + AAC - 7.7GB - ESub].mkv/0/www.1TamilBlasters.land - Spider-Man Brand New Day (2026) [1080p - HQ HD AVC UNTOUCHED  [Tam+Tel+Hin+Eng] - x264 - DD2.0 (448Kbps) + AAC - 7.7GB - ESub].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|avc",
+        "filename": "www.1TamilBlasters.land - Spider-Man Brand New Day (2026) [1080p - HQ HD AVC UNTOUCHED  [Tam+Tel+Hin+Eng] - x264 - DD2.0 (448Kbps) + AAC - 7.7GB - ESub].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.H.264-EniaHD\n👤 20 💾 9.38 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b57a9b8d912fb9dd3ee8b9c712768faa895a8d87/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)[1080p][HEVC]\n👤 20 💾 2.34 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7fa3de51a47ca8b78dfac46156ca5ac29653f9de/<opaque>/Spider-Man Brand New Day.mkv.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Spider-Man Brand New Day.mkv.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Malayalam + Kannada + Eng] - (DD+5.1 - 384Kbps)\n👤 16 💾 3.45 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dfed49203e037e7b86bf7788c08329b0ba3e7398/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Malayalam + Kannada + Eng] - (DD+5.1 - 384Kbps).mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Malayalam + Kannada + Eng] - (DD+5.1 - 384Kbps).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 1080p - x264 - [Malayalam + Kannada + Eng] - (DD+5.1 - 384Kbps).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Un nuevo día (2026) [1080p] WEB-DL [Latino-Castellano-Inglés] 1080p\n👤 14 💾 8.06 GB ⚙️ EXT\n🇬🇧 / 🇪🇸 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2df2457e4334845250c054e624f500578d228c74/Spider-Man Un nuevo día (2026) [1080p] WEB-DL [Latino-Castellano-Inglés] 1080p.mkv/0/Spider-Man Un nuevo día (2026) [1080p] WEB-DL [Latino-Castellano-Inglés] 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man Un nuevo día (2026) [1080p] WEB-DL [Latino-Castellano-Inglés] 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) [MULTi] [1080p] [WEB-DL] [x264] [DDP5.1.Atmos-R22] [Dubbing i napisy PL]\n👤 14 💾 9.08 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/73a47ea03eab26b41374f16a478a91d107cc8bfe/<opaque>/Spider-Man.Brand.New.Day.2026.MULTi.1080p.WEB-DL.DDP5.1.Atmos.x264-R22.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.MULTi.1080p.WEB-DL.DDP5.1.Atmos.x264-R22.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026.1080p.HQ Pre.Multi.AAC 2.0.x264\n👤 14 💾 3.55 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f436c9bac1400813f65a76bd2f4cbc58f09e2ab1/<opaque>/Spider-Man- Brand New Day 2026.1080p.HQ Pre.Multi.AAC 2.0.x264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Spider-Man- Brand New Day 2026.1080p.HQ Pre.Multi.AAC 2.0.x264.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 5 1-BONE\n👤 13 💾 2.95 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5dbb10d3eebddcf6b2e5fe30ec0578fa353a8f64/<opaque>/Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 13 💾 9.05 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1ccdc76bcb979045a4aeabec796d33c7240e9dd6/<opaque>/Spider-Man Całkiem nowy dzień - Spider-Man Brand New Day 2026 [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man Całkiem nowy dzień - Spider-Man Brand New Day 2026 [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 with Audio Description 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune\n👤 13 💾 8.99 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/600182467de17f43c343cdec0e411b002c248c95/<opaque>/Spider-Man Brand New Day 2026 with Audio Description 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man Brand New Day 2026 with Audio Description 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ/SK)[1080p][WEB-DL]\n👤 12 💾 4.6 GB ⚙️ EXT\n🇨🇿 / 🇸🇰",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8829d9270292edb1b1c394407d5ed74b95fb4fd6/Spider-Man Zbrusu nový den (2026) CZ SK.mkv/0/Spider-Man Zbrusu nový den (2026) CZ SK.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man Zbrusu nový den (2026) CZ SK.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.MA.WEB-DL.DDP5.1.H.264-SPiLNO\n👤 12 💾 9.37 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e87b9d158af8f6a028024a070a13f74a77f1641f/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.MA.WEB-DL.DDP5.1.H.264-SPiLNO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.MA.WEB-DL.DDP5.1.H.264-SPiLNO.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) - 1080p - AAC - 12.7GB - HD\n👤 12 💾 12.7 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9d7b66f8f3a6bb8a96250c14d4c81e005fe03fa8/Spider-Man Brand New Day (2026) - 1080p - AAC - 12.7GB - HD.mkv/0/Spider-Man Brand New Day (2026) - 1080p - AAC - 12.7GB - HD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider-Man Brand New Day (2026) - 1080p - AAC - 12.7GB - HD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) 1080p WEBRip 5 1-LAMA\n👤 11 💾 2.67 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ef5dee28f7071e24b1b9214ec0d6712f92b45297/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-LAMA.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-LAMA.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p\n👤 11 💾 7.13 GB ⚙️ EXT\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1def41768fa4b3a2dc430bc7961fa6b630fa2a4b/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 [10Bit] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 10 💾 7.05 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6aea33c6ddb7eaf9f0120f8cdf10c0b925265f58/<opaque>/Spider-Man Brand New Day 2026 [10Bit] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265|10bit",
+        "filename": "Spider-Man Brand New Day 2026 [10Bit] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo\n👤 10 💾 8.99 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/491943629e2dd360ee114bebe0040be7c6834a1b/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) 1080p Prehd Eng Li Ne x264\nSpiderMan-Brand.New.Day.2026.1080p.PREHD ENG-LiNE.x264.AAC-1-Vegamovies.tw.mp4\n👤 9 💾 760.08 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3a1098eef363767e919f458a37aef76abe9492d2/<opaque>/SpiderMan-Brand.New.Day.2026.1080p.PREHD ENG-LiNE.x264.AAC-1-Vegamovies.tw.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "SpiderMan-Brand.New.Day.2026.1080p.PREHD ENG-LiNE.x264.AAC-1-Vegamovies.tw.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) 1080p Prehd Eng Li Ne x264\nSpiderMan-Brand.New.Day.2026.1080p.PREHD ENG-LiNE.x264.AAC-1-Vegamovies.tw.mkv\n👤 9 💾 2.56 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3a1098eef363767e919f458a37aef76abe9492d2/<opaque>/SpiderMan-Brand.New.Day.2026.1080p.PREHD ENG-LiNE.x264.AAC-1-Vegamovies.tw.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "SpiderMan-Brand.New.Day.2026.1080p.PREHD ENG-LiNE.x264.AAC-1-Vegamovies.tw.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.HD1080P.X265.AC3.DDP5.1.English.CHS-ENG.JKYY[5.8G]\n👤 9 💾 5.88 GB ⚙️ EXT\n🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b1f5ed610886c02802f0f8d814e06c7a6934bda/<opaque>/Spider-Man.Brand.New.Day.2026.HD1080P.X265.AC3.DDP5.1.English.CHS-ENG.JKYY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.HD1080P.X265.AC3.DDP5.1.English.CHS-ENG.JKYY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 8 💾 6.96 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c3a2432e1a0de46fc7b54048dcc4515bba87d913/<opaque>/Spider-Man Brand New Day 2026 [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man Brand New Day 2026 [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man - Brand New Day (2026) - WEBDL-1080p 8Bit [IT+EN+FR+DE] EAC3 5.1 h264 - Artik Release\n👤 7 💾 11.06 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇫🇷 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/87f61fc6bc45acf4c4521e8ad4692e2346ac8d9f/Spider-Man - Brand New Day (2026) - WEBDL-1080p 8Bit [IT+EN+FR+DE] EAC3 5.1 h264 - Artik Release.mkv/0/Spider-Man - Brand New Day (2026) - WEBDL-1080p 8Bit [IT+EN+FR+DE] EAC3 5.1 h264 - Artik Release.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264|8bit",
+        "filename": "Spider-Man - Brand New Day (2026) - WEBDL-1080p 8Bit [IT+EN+FR+DE] EAC3 5.1 h264 - Artik Release.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WebRip Opus 5 1 x265-Lootera\n👤 7 💾 3.34 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/761983eb7bb9791a1ddb9a3c73be202daa606764/<opaque>/Spider-Man Brand New Day 2026 1080p WebRip Opus 5 1 x265-Lootera.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day 2026 1080p WebRip Opus 5 1 x265-Lootera.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.1080p-Dual-Lat\n👤 6 💾 2.84 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a92688161722fa5f696d44f36bcf2284a520dd47/<opaque>/Spider.Man.Un.Nuevo.Dia.2026.1080P-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider.Man.Un.Nuevo.Dia.2026.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New Day.2026.1080p.WEB-DL.x265-P2pRipTeam\n👤 6 💾 5.27 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5e80a56c9c4669c05ac95da820048fc61e9d473f/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir\n👤 6 💾 2.97 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/878931796c3d4a4bf03cf6b89f91502396a76c25/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p WEB-DL x264 6CH-Pahe in\n👤 5 💾 2.54 GB ⚙️ EXT\n🇬🇧 / 🇮🇩",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3051dae8c25e3bcfe105a636dcb0dc72dd3e764f/<opaque>/Spider-Man Brand New Day 2026 1080p WEB-DL x264 6CH-Pahe in.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Spider-Man Brand New Day 2026 1080p WEB-DL x264 6CH-Pahe in.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) Rus 1080р WEBRip ViruseProject\n👤 4 💾 4.91 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/25a653d83029205dbf26083ed21f0f3109592331/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.ViruseProject.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.ViruseProject.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.(2026).(Spanish.English.Subs).WEB-DL.1080p.x264-EAC3\n👤 4 💾 5.27 GB ⚙️ EXT\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9f5f00fd900cd705a70c3eb910eb1b31db3e111e/Spider-Man.Brand.New.Day.(2026).(Spanish.English.Subs).WEB-DL.1080p.x264-EAC3/undefined/Spider-Man.Brand.New.Day.(2026).(Spanish.English.Subs).WEB-DL.1080p.x264-EAC3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day (2026) [1080p][Latino]\n👤 3 💾 2.2 GB ⚙️ EXT\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8ab7a195afdd9f376fbdb7a38f3ebc83bdae7766/Spider-Man Brand New Day (2026) [1080p][Latino][VerPeliculasOnline.org].mp4/0/Spider-Man Brand New Day (2026) [1080p][Latino][VerPeliculasOnline.org].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider-Man Brand New Day (2026) [1080p][Latino][VerPeliculasOnline.org].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man Brand New Day 2026 1080p AMZN WEB-DL DDP5 1 H 264-KyoGo\n👤 3 💾 8.99 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2e7b6b45cde13232c4a6d3dbd090b0fba24c9278/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider.Man.Brand.New.Day.2026.1080p.AMZN.WEB.DL.DDP5.1.Atmos.H264.Modified By mxn\n👤 2 💾 9.53 GB ⚙️ EXT\n🇬🇧 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/da30e114b217821bcd6a33e28e644dddb185e607/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026)\n👤 2 💾 2.91 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf0ff3dd1ec96dde3b6eddff8ea75abc6510ec4b/<opaque>/SpiderMan-BrandNewDay-1080p-English.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "SpiderMan-BrandNewDay-1080p-English.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider Man Brand New Day (2026) Imdbid Tt 22084616 Webdl 1080p AAC 5.1x 265 Bone\n👤 1 💾 1.36 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2210eb979a22513fa0a4af64b067c730f23e4bca/Spider-Man Brand New Day (2026) [imdbid-tt22084616] - [WEBDL-1080p][AAC 5.1][x265]-BONE.mkv/0/Spider-Man Brand New Day (2026) [imdbid-tt22084616] - [WEBDL-1080p][AAC 5.1][x265]-BONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Spider-Man Brand New Day (2026) [imdbid-tt22084616] - [WEBDL-1080p][AAC 5.1][x265]-BONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.D.WEB-DL.1080p\n👤 1 💾 9.65 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/352691ef0c627b57f4aa444c851f992e64b23fe5/<opaque>/Spider-Man.Brand.New.Day.2026.D.WEB-DL.1O8Op.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.D.WEB-DL.1O8Op.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.MULTi.TRUEFRENCH.1080p.WEB-DL.H265-Slay3R\n👤 0 💾 3.58 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a4069cf083eff3427d09f9cb55926a1716e8ff5a/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DL 1080p] Dub (MovieDalen) + Original Eng + Sub (Rus Eng)\n👤 0 💾 9.38 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0522dacf20e76b38b494ee2351616f03881ed366/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider Man Brand New Day (2026) 720p HQ HDRip - x264 - (DD+5.1 - 192Kbps) [Tel + Tam + Hin + Eng]\n👤 5001 💾 1.89 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a6acd5d5738e8993edcc4af8257982a693372c72/Spider Man Brand New Day (2026) 720p HQ HDRip - x264 - (DD+5.1 - 192Kbps) [Tel + Tam + Hin + Eng].mkv/0/Spider Man Brand New Day (2026) 720p HQ HDRip - x264 - (DD+5.1 - 192Kbps) [Tel + Tam + Hin + Eng].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264",
+        "filename": "Spider Man Brand New Day (2026) 720p HQ HDRip - x264 - (DD+5.1 - 192Kbps) [Tel + Tam + Hin + Eng].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man Brand New Day (2026) [Bluray 720p][Esp]\n👤 1001 💾 6.25 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ae45ef9a2342d4942b0ba5aa2fbfef4898320dee/Spider-Man Brand New Day (2026) [Bluray 720p][Esp].mkv/0/Spider-Man Brand New Day (2026) [Bluray 720p][Esp].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Spider-Man Brand New Day (2026) [Bluray 720p][Esp].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider.Man.Brand.New.Day.2026.Multi.Vf2.720P.WEBRIP-NOTAG\n👤 664 💾 3.82 GB ⚙️ Torrent9\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d2d89f11409e2e648b174fd3dca9d0b04af7afaf/<opaque>/Spider.Man.Brand.New.Day.2026.Multi.Vf2.720P. WEBRIP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip",
+        "filename": "Spider.Man.Brand.New.Day.2026.Multi.Vf2.720P. WEBRIP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 192Kbps)\n👤 638 💾 1.89 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bfc88c8e5daca8fd70952746c40549ba4935b930/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 192Kbps).mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 192Kbps).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Tamil + Telugu + Hindi + Eng] - (DD+5.1 - 192Kbps).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub\n👤 631 💾 1.56 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4948cc8d91836f1e9edec6522f6a810c49072e3f/Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub/undefined/Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub\n👤 366 💾 1.56 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2bba6d8aec5a57df0ea4c05cd28b9f506417b69c/Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub.mkv/0/Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264",
+        "filename": "Spider Man Brand New Day (2026) English HQ HDRip - 720p - x264 - (DD5.1 - 192Kbps & AAC) - 1.4GB - ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026.PL.720p.WEB-DL.XviD.AC3-OzW\n👤 338 💾 3.58 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3a26c68da8b6f3563961fe71850b231f4c9c6756/<opaque>/Spider-Man.Brand.New.Day.2026.PL.720p.WEB-DL.XviD.AC3-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PL.720p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man - Brand New Day (2026) 720p 10bit DS4K iT WEBRip x265…\n👤 314 💾 1.51 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/307901ce3f88491f942f2df4d9b641699100f605/Spider-Man - Brand New Day (2026) 720p 10bit DS4K iT WEBRip x265 HEVC [Hindi AAC 5.1 + English AAC 5.1] ESub - Immortal.mkv/0/Spider-Man - Brand New Day (2026) 720p 10bit DS4K iT WEBRip x265 HEVC [Hindi AAC 5.1 + English AAC 5.1] ESub - Immortal.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x265|10bit",
+        "filename": "Spider-Man - Brand New Day (2026) 720p 10bit DS4K iT WEBRip x265 HEVC [Hindi AAC 5.1 + English AAC 5.1] ESub - Immortal.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man - Brand New Day (2026) 720p 10bit AMZN WEBRip x265 HE…\n👤 173 💾 1.26 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eb6e91e708bf347f2ea23a72099b7379c8252815/Spider-Man - Brand New Day (2026) 720p 10bit AMZN WEBRip x265 HEVC English DDP 5.1 ESub - Immortal.mkv/0/Spider-Man - Brand New Day (2026) 720p 10bit AMZN WEBRip x265 HEVC English DDP 5.1 ESub - Immortal.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x265|10bit",
+        "filename": "Spider-Man - Brand New Day (2026) 720p 10bit AMZN WEBRip x265 HEVC English DDP 5.1 ESub - Immortal.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man: Brand New Day (2026) [720p] [WEBRip]\n👤 100 💾 1.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3fbde34d85a0711210c1c756360283449c8f5fa9/<opaque>/Spider-Man.Brand.New.Day.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.720p-Dual-Lat\n👤 88 💾 1.54 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b159d21275a453fa1b6fffaeea7abb3ed5ee5b9d/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DLRip 720p] [IMAX] Dub (MovieDalen) + MVO (TVShows HDRezka Studio) + Original Eng + Sub Rus Eng\n👤 72 💾 6.08 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cd5605c483b05c40f278ac6d17f3f4801801dde6/<opaque>/Spider-Man.Brand.New.Day.2026.720p.Open.Matte.WEB-DLRip.x264_New-Team_il68k.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.720p.Open.Matte.WEB-DLRip.x264_New-Team_il68k.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DLRip 720p от New-Team | D P | MovieDalen HDRezka Studio\n👤 69 💾 5.66 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/65b21adc92147547dd6380bef79b8ab7a75837bc/<opaque>/Spider-Man.Brand.New.Day.2026.720p.iT.WEB-DLRip.x264_New-Team_il68k.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.720p.iT.WEB-DLRip.x264_New-Team_il68k.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026.720p.10bit.WEBRip.6CH.x265.HEVC\n👤 66 💾 1.53 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0963c9c9365a001e0aae721883fe5eaaca3566f1/<opaque>/Spider-Man.Brand.New.Day.2026.720p.10bit.WEBRip.6CH.x265.HEVC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.720p.10bit.WEBRip.6CH.x265.HEVC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man Całkiem nowy dzień (2026) PL.720p.WEB-DL.XviD.AC3-OzW\n👤 57 💾 3.58 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/15bf055242220920aca2e015c92d7bb1bb445fbd/Spider-Man Całkiem nowy dzień (2026)  PL.720p.WEB-DL.XviD.AC3-OzW.avi/0/Spider-Man Całkiem nowy dzień (2026)  PL.720p.WEB-DL.XviD.AC3-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|xvid",
+        "filename": "Spider-Man Całkiem nowy dzień (2026)  PL.720p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026.REPACK.720p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 51 💾 1.11 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e1b83e86034e766da4b36483fdc1ce950faf38d1/<opaque>/Spider-Man.Brand.New.Day.2026.REPACK.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.REPACK.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man Brand New Day (2026) WEB-DLRip 720p_grab777\n👤 39 💾 10.15 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0dffa034445585c7c297beae54f44471960b943f/Spider-Man Brand New Day (2026) WEB-DLRip 720p_grab777.mkv/0/Spider-Man Brand New Day (2026) WEB-DLRip 720p_grab777.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL",
+        "filename": "Spider-Man Brand New Day (2026) WEB-DLRip 720p_grab777.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man; Brand New Day (2026) .mkv 720p WEB-DL DDP 5.1 iTA H2…\n👤 39 💾 5.66 GB ⚙️ TorrentGalaxy\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f6780edc533ddd3cf254adece74bca82be9a0d3/Spider-Man; Brand New Day (2026) .mkv 720p WEB-DL DDP 5.1 iTA H264 - FHC.mkv/0/Spider-Man; Brand New Day (2026) .mkv 720p WEB-DL DDP 5.1 iTA H264 - FHC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Spider-Man; Brand New Day (2026) .mkv 720p WEB-DL DDP 5.1 iTA H264 - FHC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026 WEB-DL Dual AUdio 720p 1.1GB\n👤 24 💾 1.13 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b457762607179ce072c297b4dacd8cd3e436ddea/<opaque>/Spider-Man.Brand.New.Day.2026.[Bolly4u.org] WEB-DL Dual AUdio 720p 1.1GB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.[Bolly4u.org] WEB-DL Dual AUdio 720p 1.1GB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 18 💾 1.09 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/95367b03a273a6ed080ccb385efff390bc26d396/<opaque>/Spider-Man.Brand.New.Day.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Malayalam + Kannada] - (DD+5.1 - 192Kbps)\n👤 14 💾 1.56 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d7340f788576a79ba912d325019d2c00d8d65d13/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Malayalam + Kannada] - (DD+5.1 - 192Kbps).mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Malayalam + Kannada] - (DD+5.1 - 192Kbps).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - 720p - x264 - [Malayalam + Kannada] - (DD+5.1 - 192Kbps).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man Brand New Day (2026) 720p WEBRip-LAMA\n👤 11 💾 1.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e34eaa100efb75be0c350c511fc0b849ff8f8fb9/<opaque>/Spider-Man.Brand.New.Day.2026.720p.WEBRip.x264.AAC-LAMA.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.720p.WEBRip.x264.AAC-LAMA.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026.PL.720p.WEB-DL.XviD.AC3-OzW\n👤 4 💾 3.58 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cc81459892525e8c9572a7ba9fcab5b829928a9c/<opaque>/Spider-Man.Brand.New.Day.2026.PL.720p.WEB-DL.XviD.AC3-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PL.720p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man.Brand.New.Day.2026.720p.AMZN.WEB-DL.DDP5.1.H.264.HUN.ENG-PTHD\n👤 2 💾 4.36 GB ⚙️ EXT\n🇬🇧 / 🇭🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2bff95e2f1ff9b410e6e2ccb19a5aa000757e107/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Spider-Man Brand New Day 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune\n👤 2 💾 3.85 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec543bea99318544cb10a6e71f47b35832fbab22/<opaque>/Spider-Man Brand New Day 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Spider-Man Brand New Day 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n576p",
+      "title": "Spider-Man Brand New Day 2026 576p WEBRip x265-SSN\n👤 41 💾 1.75 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cb753059e4ce7f775682bdcee17e550fcd07e6aa/<opaque>/Spider-Man Brand New Day 2026 576p WEBRip x265-SSN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|576p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day 2026 576p WEBRip x265-SSN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Spider-Man.Brand.New.Day.2026.PL.480p.WEB-DL.XviD.AC3-OzW\n👤 105 💾 2.15 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c0d1de77ae99071766a02c4e5b3c2806c89e0656/<opaque>/Spider-Man.Brand.New.Day.2026.PL.480p.WEB-DL.XviD.AC3-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PL.480p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Spider-Man Całkiem nowy dzień (2026) PL.480p.WEB-DL.XviD.AC3-OzW\n👤 27 💾 2.15 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/130ea6af9146a7f51b8cab14e7fc94ed76bccf6f/Spider-Man Całkiem nowy dzień (2026) PL.480p.WEB-DL.XviD.AC3-OzW.avi/0/Spider-Man Całkiem nowy dzień (2026) PL.480p.WEB-DL.XviD.AC3-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|WEB-DL|xvid",
+        "filename": "Spider-Man Całkiem nowy dzień (2026) PL.480p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Spider-Man.Brand.New.Day.2026 WEB-DL Dual AUdio 480p 450MB\n👤 7 💾 482.39 MB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1acaeb2a0a96384fef10595048346ea37cf6142e/<opaque>/Spider-Man.Brand.New.Day.2026.[Bolly4u.org] WEB-DL Dual AUdio 480p 450MB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.[Bolly4u.org] WEB-DL Dual AUdio 480p 450MB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Spider-Man.Brand.New.Day.2026.PL.480p.WEB-DL.XviD.AC3-OzW\n👤 1 💾 2.15 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f2fd0c301c57f1f0a608dbd100b199d8e9039cc1/<opaque>/Spider-Man.Brand.New.Day.2026.PL.480p.WEB-DL.XviD.AC3-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PL.480p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n108p",
+      "title": "Spider-Man Brand New Day 10bit 4KDS 108p SVT-AV1-Tritium.mkv\n👤 16 💾 1.91 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9d3609a2eed8e3b6fd2346ddfc68862505279668/<opaque>/Spider-Man Brand New Day 10bit 4KDS 108p SVT-AV1-Tritium.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|108p|10bit",
+        "filename": "Spider-Man Brand New Day 10bit 4KDS 108p SVT-AV1-Tritium.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day 2026 V3 1080p TELESYNC x264-DKS\n👤 1278 💾 5.88 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/593a9e5577585ad6bcc4e3d4d993288ac5e2567d/<opaque>/Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS\n👤 770 💾 8.91 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5757192928f747fa4d0107325b4a45438c444704/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.CAMRip.Dublado.V.4.mkv\n👤 526 💾 4.13 GB ⚙️ Comando\n🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b97d7e8f0601893f4d5df1893735ce6d76760658/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.CAMRip.Dublado.V.4.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.CAMRip.Dublado.V.4.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS\n👤 390 💾 8.91 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/52430def2ee61a0d1d17848b781384f7400e2d10/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.V3.1080p.HD-TELESYNC.x265-Sunil-KITE-METeam\n👤 200 💾 2.45 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/293a2c9620f31b34808ace5151bc0c6f10f967cc/<opaque>/Spider-Man.Brand.New.Day.2026.HDTS.v3.1080p.x265-Sunil-KITE-METeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.HDTS.v3.1080p.x265-Sunil-KITE-METeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x265-Sunil-KITE-METeam\n👤 198 💾 1.82 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bed7342b40bf3e299359efee4459a04fe9f5604b/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x265-Sunil-KITE-METeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x265-Sunil-KITE-METeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day (2026) 1080P HQ HDTS x265 AAC2.0 MULTI …\n👤 181 💾 1.99 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9df5eb8e3ba53c4c275c8ed71357a6d28512792f/Spider-Man Brand New Day (2026) [1080p - HQ HDTS - x265 - AAC - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv/1/Spider-Man Brand New Day (2026) [1080p - HQ HDTS - x265 - AAC - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man Brand New Day (2026) [1080p - HQ HDTS - x265 - AAC - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Spider.Man.Brand.New.Day.2026.V2.1080p.CAMRip.Legendado.mkv\n👤 178 💾 3.94 GB ⚙️ Comando\n🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5eedf6dbc0e71d925a64dbd50b7456ee22886d0a/<opaque>/Spider.Man.Brand.New.Day.2026.V2.1080p.CAMRip.Legendado.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Spider.Man.Brand.New.Day.2026.V2.1080p.CAMRip.Legendado.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS\n👤 162 💾 5.88 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/78a9a1fafd5229e5b63e2591ae6e3decb6d6dc0f/<opaque>/Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)[1…\nSpider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv\n👤 97 💾 8.91 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ceb7a838da1d4ac27f8696b693a1847fe2b3e9a6/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day 2026 V3 1080P TELESYNC. X265\n👤 95 💾 3.05 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/809625b125dc04d5abf93d181a07bd5b337001d5/<opaque>/Spider-Man Brand New Day 2026 V3 1080P TELESYNC. X265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man Brand New Day 2026 V3 1080P TELESYNC. X265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Zbrusu nový den/Spider-Man: Brand New Day (2026)[1080p][HEVC][TS]\n👤 69 💾 1.7 GB ⚙️ EXT\n🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8ffc982b22f0a1bf4a9583b2539af1b76683831a/Spider-Man: Brand New Day (2026)[1080p][HEVC][TS]/undefined/Spider-Man: Brand New Day (2026)[1080p][HEVC][TS]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Spider-Man Brand New Day 2026 CAM H264-OnlyFlix\n👤 61 💾 2.45 GB ⚙️ ThePirateBay\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b3e623f443bb241ff978cd4f42418b20494cc01/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.CAM.H264-OnlyFlix.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.CAM.H264-OnlyFlix.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.V3.2160p.TELESYNC.x265-DKS.@DaMedi…\n👤 55 💾 15.92 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/19c66a1da8f96d72afe8fe8f10d3a8dc8ce56a63/<opaque>/Spider-Man.Brand.New.Day.2026.V3.2160p.TELESYNC.x265-DKS.@DaMediaPirate.on.X.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.V3.2160p.TELESYNC.x265-DKS.@DaMediaPirate.on.X.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)(CZ)[1080p][CAM]\n👤 46 💾 4.1 GB ⚙️ EXT\n🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c0298e1e13512e7046109db2a2bb7bac8db4a722/ Spider-Man: Brand New Day (2026)(CZ)[1080p][CAM]/undefined/ Spider-Man: Brand New Day (2026)(CZ)[1080p][CAM]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Brand New Day 3840x2160 4K (CAM)\n👤 41 💾 14.71 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a2ecd1365c1f929d52d60b8ae72f352d04facf7c/<opaque>/Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS_rxl1.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|CAM|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.V3.1080p.TELESYNC.x264-DKS_rxl1.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Brand New Day 2026 1080p TELESYNC HEVC [Ukr Dub]\n👤 36 💾 8.43 GB ⚙️ ThePirateBay\n🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/064cc15f044ac3dbc391314c7bcdfdb1600bb0bb/<opaque>/Spider-men brand new day 1080.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|hevc",
+        "filename": "Spider-men brand new day 1080.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "SpiderMan.Brand.New.Day.2026.1080p.CAMRip.LAT.ENG.DUB.1XBET.mp4\n👤 33 💾 3.69 GB ⚙️ Cinecalidad\n🇬🇧 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7f109a47f499fd992d6f016ba67ff3a3dce47e7f/<opaque>/SpiderMan.Brand.New.Day.2026.1080p.CAMRip.LAT.ENG.DUB.1XBET.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "SpiderMan.Brand.New.Day.2026.1080p.CAMRip.LAT.ENG.DUB.1XBET.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "[ONLY POLISH AUDIO] Spider-Man: Calkiem nowy dzien / Spider-Man Brand New Day (2026) PLDUB.MD.HC.2160p.HDTS.SDR.HEVC-MAXX / Dubbing PL [ToAlien]\n👤 33 💾 13.39 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/37a0e47ddc80a0ea9dfd9ce0c6b2167be9fd3956/<opaque>/Spider-Man.Brand.New.Day.2026.PLDUB.MD.HC.2160p.HDTS.HEVC-MAXX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|hevc",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLDUB.MD.HC.2160p.HDTS.HEVC-MAXX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Całkiem nowy dzień / Spider-Man Brand New Day (2026)…\n👤 22 💾 3.96 GB ⚙️ TorrentGalaxy\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f063b589b4e78349b49be5e0918caa40df11ec5/<opaque>/Spider-Man.Brand.New.Day.2026.PLDUB.MD.HC.1080p.HDTS-MAXX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLDUB.MD.HC.1080p.HDTS-MAXX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 Telesync 1080p] MVO + Original Eng\n👤 21 💾 3.24 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d68c5735bd836f734a6146b5f692efafc17278a4/<opaque>/Spider-Man.Brand.New.Day.2026.TS.1080p.UltraWide.x265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.TS.1080p.UltraWide.x265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.HCSubs-.iTA.ENG.MD.1080p.HDTS.ADS.…\n👤 20 💾 2.52 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/17db715e503bad9b1842500f57348e8081e31b48/<opaque>/Spider-Man.Brand.New.Day.2026.iTA.ENG.MD.1080p.HDTS.HCSubs.x264-WRS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.iTA.ENG.MD.1080p.HDTS.HCSubs.x264-WRS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Brand New Day (2026) Rus 1080р TELESYNC ViruseProject\n👤 17 💾 4.89 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1f8121a5463a96b87cd6ffa86074a154d04f8e70/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.ViruseProject.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.TELESYNC.ViruseProject.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.1080P.TELESYNC.x265.10bit.AAC2.0-SLH\n👤 17 💾 2.41 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/12bcd6ae55b4c1f2939f7c13d33c116fc986770b/<opaque>/Spider-Man.Brand.New.Day.2026.1080P.TELESYNC.x265.10bit.AAC2.0-SLH.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265|10bit",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080P.TELESYNC.x265.10bit.AAC2.0-SLH.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-man/Zcela nový den (2026)[HDTS][1080p][CZ]-titulky\n👤 14 💾 5.88 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4d4d7a3206e2a56bca52564f2c6efbb09a49daa4/Spider-Man.Brand.New.Day.2026.V3.1080p.HDTS.x264 (1) (1).mkv/0/Spider-Man.Brand.New.Day.2026.V3.1080p.HDTS.x264 (1) (1).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.V3.1080p.HDTS.x264 (1) (1).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.Cam.MDHUN-BBM\n👤 12 💾 10.96 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3e7c5bc5375f275386a31ad571435b69290b758e/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.Cam.MDHUN-BBM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.Cam.MDHUN-BBM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day 2026 1080p HDTS DD2 0 H 264-LMNTRY\n👤 11 💾 4.3 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f79eb708e53933a2d38c4e115872b05d59ebbdac/<opaque>/Spider-Man Brand New Day 2026 1080p HDTS DD2 0 H 264-LMNTRY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Spider-Man Brand New Day 2026 1080p HDTS DD2 0 H 264-LMNTRY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Brand New Day 2026 TELESYNC HEVC [Ukr Dub]\n👤 8 💾 3.38 GB ⚙️ ThePirateBay\n🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3196cf0c507d11a97011fec0b39df347c152e227/<opaque>/Spider-men brand new day.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|hevc",
+        "filename": "Spider-men brand new day.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day 2026 1080p HDTS DD2 0 H 264\n👤 7 💾 4.3 GB ⚙️ EXT\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/296a745ef00b0c71f1a0d094fd91c4d5be604a97/<opaque>/Spider-Man Brand New Day 2026 1080p HDTS DD2 0 H 264-LMNTRY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Spider-Man Brand New Day 2026 1080p HDTS DD2 0 H 264-LMNTRY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day 2026 1080p HDTS DUAL H264-LMNTRY\n👤 5 💾 4.3 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fa6f4b753d01fb2c7dbeb8c429e8b0060695faeb/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.HDTS.DD2.0.H.264-LMNTRY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.HDTS.DD2.0.H.264-LMNTRY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleCine",
+      "title": "SpiderMan_Brand_New_Day_2026_720p_V4_HDTC_Multi_LiNE_x264_HDHub4u\n👤 4 💾 1.61 GB ⚙️ EXT\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b94e6e02f3d453e7463cba46a5393f5491ad072/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleCine|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.HCSubs-.iTA.ENG.MD.1080p.HDTS.ADS.x264-WRS\n👤 3 💾 8.59 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/731e4a723cc12521aa6ef70f6b090c564a2af52e/<opaque>/Spider-Man.Brand.New.Day.2026.iTA.ENG.MD.1080p.HDTS.HCSubs.x264-WRS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.iTA.ENG.MD.1080p.HDTS.HCSubs.x264-WRS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Brand New Day 2026 720p TELESYNC HEVC [Ukr Dub]\n👤 3 💾 6.4 GB ⚙️ ThePirateBay\n🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cdd7fc74860f52db4863e991fc96a09000b27e30/<opaque>/Spider-men brand new day 720.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|hevc",
+        "filename": "Spider-men brand new day 720.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day (2026) 1080p AVC Enhanced TELESYNC (PCM 2.0 16bit Audio) ~ COD3D\n👤 3 💾 17.42 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e5ab7a7739f0b2d6eb72d6993bada1a10cb75404/Spider-Man Brand New Day (2026) 1080p AVC Enhanced TELESYNC (PCM 2.0 16bit Audio) ~ COD3D.mkv/0/Spider-Man Brand New Day (2026) 1080p AVC Enhanced TELESYNC (PCM 2.0 16bit Audio) ~ COD3D.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|avc",
+        "filename": "Spider-Man Brand New Day (2026) 1080p AVC Enhanced TELESYNC (PCM 2.0 16bit Audio) ~ COD3D.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day 2026 1080p HDTS DD2.0 H264[TorrentHaven]\n👤 2 💾 4.3 GB ⚙️ EXT\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/81904fed7756301a3609ef743538fc4d652000e7/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.iTALiAN.MD.TS.HCSubs.XviD-WRS\n👤 2 💾 1.91 GB ⚙️ EXT\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3ac966b2037f85bc9efab1a6244e56ac3bd706e3/<opaque>/Spider-Man.Brand.New.Day.2026.iTALiAN.MD.TS.HCSubs.XviD-WRS.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.iTALiAN.MD.TS.HCSubs.XviD-WRS.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man.Brand.New.Day.2026.V3.2160p.TELESYNC.x265-DKS.@JohnKBaby\n👤 1 💾 15.92 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/da948ea7dfeace84cfe76ad8c61bf01b156af750/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Spider.Man.Brand.New.Day.2026.V2.1080p.CAMRip.LAT.SUB.1XBET.mkv\n👤 1 💾 3.94 GB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bb5c82631f91947b2dfc353b6290d94f5d7be82e/<opaque>/Spider.Man.Brand.New.Day.2026.V2.1080p.CAMRip.LAT.SUB.1XBET.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Spider.Man.Brand.New.Day.2026.V2.1080p.CAMRip.LAT.SUB.1XBET.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider.Man.Brand.New.Day.2026.V3.1080p.TELESYNC.h264.THR.rezero235789\n👤 1 💾 6.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8ad7035b2e1efe728c9b1bda0121b48a85b6b1b4/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "SPIDERMAN TS-HQ LAT.mp4\n👤 0 💾 3.01 GB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4b5052b2fc6a73bbd5577bc296389609353f39f1/SPIDERMAN TS-HQ LAT.mp4/0/SPIDERMAN TS-HQ LAT.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "SPIDERMAN TS-HQ LAT.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "SpiderMan.Brand.New.Day.2026.1080p.CAMRip.V5.LAT.OFDUB.1XBET.mp4\n👤 0 💾 4.26 GB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/03906b45612afd65189e2ab88a78d5a384c08e2e/<opaque>/SpiderMan.Brand.New.Day.2026.1080p.CAMRip.V5.LAT.OFDUB.1XBET.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "SpiderMan.Brand.New.Day.2026.1080p.CAMRip.V5.LAT.OFDUB.1XBET.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Spider-Man: Całkiem nowy dzień / Spider-Man Brand New Day *2026* [V3] [1080p] [TELESYNC] [DD2.0] [x265-AdL] [Napisy PL (AI)]\n👤 0 💾 2.51 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/98db4d96ab22a4275b6a3bf5286f8ff3058c8230/<opaque>/Spider-Man.Brand.New.Day.2026.PLSUB.AI.V3.1080p.TELESYNC.DD2.0.x265.HEVC-AdL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLSUB.AI.V3.1080p.TELESYNC.DD2.0.x265.HEVC-AdL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - x264 - (AAC) [Tel + Tam + Hin]\n👤 2206 💾 861.47 MB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c8d2a55e560745437195e37d1078de0c0ff26180/Spider Man Brand New Day (2026) HQ HDRip - x264 - (AAC) [Tel + Tam + Hin]/undefined/Spider Man Brand New Day (2026) HQ HDRip - x264 - (AAC) [Tel + Tam + Hin]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Spider.Man.Brand.New.Day.2026.Multi.Vf2.WEBRIP-NOTAG\n👤 1628 💾 1.61 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3d687e59d6dc41d7656e7916eded089eb3771a9e/<opaque>/Spider.Man.Brand.New.Day.2026.Multi.Vf2.WEBRIP.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "Spider.Man.Brand.New.Day.2026.Multi.Vf2.WEBRIP.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tel + Tam + Hin]\n👤 1572 💾 561.72 MB ⚙️ EXT\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/80ddc0f3d5121bf5f95b5c31271aca28a0afb1aa/Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tel + Tam + Hin].mkv/0/Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tel + Tam + Hin].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264",
+        "filename": "Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tel + Tam + Hin].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider.Man.Brand.New.Day.2026.AMZN.WEB-DL.ENG.Atmos.ITA.DDP5.1.H264-TBK\n👤 508 💾 9.77 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/445800297644d0cbdd0326fdb6f7ac025bfff177/<opaque>/Spider.Man.Brand.New.Day.2026.AMZN.WEB-DL.ENG.Atmos.ITA.DDP5.1.H264-TBK.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|h264",
+        "filename": "Spider.Man.Brand.New.Day.2026.AMZN.WEB-DL.ENG.Atmos.ITA.DDP5.1.H264-TBK.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DLRip-AVC] [IMAX] Dub (MovieDalen) + Original Eng + Sub Rus Eng\n👤 410 💾 2.91 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f71b8fa02b5ca47ea3771b9d8cc42e9a8a9f1453/<opaque>/Spider-Man.Brand.New.Day.2026.Open.Matte.WEB-DLRip-AVC_New-Team_il68k.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Spider-Man.Brand.New.Day.2026.Open.Matte.WEB-DLRip-AVC_New-Team_il68k.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub\n👤 358 💾 428.56 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8297926c0bddf0749914395b0efcbbd6903900db/Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub/undefined/Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day [2026 WEB-DLRip] MVO (HDrezka Studio) + Sub (Rus Eng) + Original Eng\n👤 246 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/87e11056d27b3deb1fe81a36300bca59358c0957/Человек_-_паук_Новый_день_(боевик, приключения 2026 год_Leonard_Lew.avi/0/Человек_-_паук_Новый_день_(боевик, приключения 2026 год_Leonard_Lew.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Человек_-_паук_Новый_день_(боевик, приключения 2026 год_Leonard_Lew.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 850MB - ESub\n👤 189 💾 861.47 MB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/061ba843942588778a93f72fa992a7c0a75db68b/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 850MB - ESub.mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 850MB - ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 850MB - ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub\n👤 100 💾 428.56 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ac12d71b503986bbcdfdeb51ca3e74a5fc4bc3cb/Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub.mkv/0/Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264",
+        "filename": "Spider Man Brand New Day (2026) English HQ HDRip - x264 - AAC - 400MB - ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man.Brand.New.Day.2026.PLDUB.WEB-DL.XviD-OzW\n👤 73 💾 1.37 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7e37197a29648b161bb89f8385b8b581900c53e8/<opaque>/Spider-Man.Brand.New.Day.2026.PLDUB.WEB-DL.XviD-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLDUB.WEB-DL.XviD-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBluRay",
+      "title": "Spider-Man Brand New Day [Bluray][Esp]\n👤 58 💾 2 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dde78bae1861f25f577bea24e179b851d741b467/<opaque>/Spider-Man Brand New Day [Bluray][Esp].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay",
+        "filename": "Spider-Man Brand New Day [Bluray][Esp].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Человек-паук: Новый день / Spider-Man: Brand New Day (2026) WEB-DLRip-AVC от ExKinoRay | D | IMAX\n👤 45 💾 1.08 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/65e86e7b64c8d3bf56b0b4d9745c5f6050965bf6/<opaque>/Spider-Man.Brand.New.Day.2026.WEB-DLRip-AVC.ExKinoRay.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Spider-Man.Brand.New.Day.2026.WEB-DLRip-AVC.ExKinoRay.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 550MB - ESub\n👤 41 💾 561.72 MB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f7162ba9a9beb2d7600e0d4eba223347981aac14/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 550MB - ESub.mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 550MB - ESub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Tamil + Telugu + Hindi] - (AAC 2.0) - 550MB - ESub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nDVDRip",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.DVDRip-Lat\n👤 34 💾 856.04 MB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e09036b29b16986296b9a5245cba55ce0240f613/<opaque>/Spider.Man.Un.Nuevo.Dia.2026.DVDRip-Lat.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Spider.Man.Un.Nuevo.Dia.2026.DVDRip-Lat.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man 9 Brand New Day (2026) Web Dl Lat\n👤 28 💾 1.49 GB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/46f02ee0fc9420dcb5f15ae299a6791a0ce72140/Spider-Man 9 Brand New Day (2026) Web Dl Lat.mp4/0/Spider-Man 9 Brand New Day (2026) Web Dl Lat.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Spider-Man 9 Brand New Day (2026) Web Dl Lat.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man.Brand.New.Day.2026.PLDUB.WEB-DL.XviD-OzW\n👤 23 💾 1.37 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7ad7d3f69d274b193416c421e1999f870b1b7a74/<opaque>/Spider-Man.Brand.New.Day.2026.PLDUB.WEB-DL.XviD-OzW.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PLDUB.WEB-DL.XviD-OzW.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Spider-Man.Brand.New.Day.2026.D.WEBRip\n👤 18 💾 2.05 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e9a0ffa71f4adb01757e3691a2161a0f18395597/<opaque>/Spider-Man.Brand.New.Day.2026.D.WEBRip.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "Spider-Man.Brand.New.Day.2026.D.WEBRip.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man Brand New Day (2026) iMAX WEB-DLRip-AVC_grab777\n👤 17 💾 3.42 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0d992671b3ac9691c5934ff57e2c7b36d97ac988/Spider-Man Brand New Day (2026) iMAX WEB-DLRip-AVC_grab777/undefined/Spider-Man Brand New Day (2026) iMAX WEB-DLRip-AVC_grab777",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man.Brand.New.Day.2026.WebDL.E-AC3.ITA.ENG.SUBS.DD-CREW\n👤 10 💾 2.78 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/600c8c44c8893e93ef851a2b611121e09e7b4337/<opaque>/Spider-Man.Brand.New.Day.2026.WebDL.E-AC3.ITA.ENG.SUBS.DD-CREW.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.WebDL.E-AC3.ITA.ENG.SUBS.DD-CREW.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBluRay",
+      "title": "Spider-Man Brand New Day 2026 [10Bit] [2160.BluRay.H265-AS76-FT] [ENG-Dubbing PL-Lektor PL] [Alusia]\n👤 10 💾 12.68 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/34130c576cdcd4f26893ee9440d7acfd1a9697eb/<opaque>/Spider-Man Brand New Day 2026 [10Bit] [2160.BluRay.H265-AS76-FT] [ENG-Dubbing PL-Lektor PL] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|h265|10bit",
+        "filename": "Spider-Man Brand New Day 2026 [10Bit] [2160.BluRay.H265-AS76-FT] [ENG-Dubbing PL-Lektor PL] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Spider-Man.Brand.New.Day.2026.D.WEBRip\n👤 10 💾 2.05 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fbff7e4c48584244a28658d0c744d5c46f59ad04/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man.Brand.New.Day.2026.PLDUB.AMZN.WEB-DL.H264-MAXX\n👤 7 💾 1.13 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/871917a7a51b459f133bea08acc5fa5a2c3d0643/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Spider-Man.Brand.New.Day.2026.iTALiAN.WEBRiP.x264-PRiME\n👤 7 💾 2.22 GB ⚙️ EXT\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/712432ab0c57b4e583735e92ccf31cc19f88673d/<opaque>/Spider-Man.Brand.New.Day.2026.iTALiAN.WEBRiP.x264-PRiME.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.iTALiAN.WEBRiP.x264-PRiME.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Spider Man Brand New Day (2026) HQ HDRip - x264 - [Malayalam + Kannada] - (AAC 2.0) - 450MB - ESu\n👤 6 💾 493.27 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4ac1a75126e6dd3e61f629a70220020d5ac59967/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Malayalam + Kannada] - (AAC 2.0) - 450MB - ESu.mkv/0/www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Malayalam + Kannada] - (AAC 2.0) - 450MB - ESu.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264",
+        "filename": "www.1TamilMV.capital - Spider Man Brand New Day (2026) HQ HDRip - x264 - [Malayalam + Kannada] - (AAC 2.0) - 450MB - ESu.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Spider-Man.Brand.New.Day.2026.D.WEB-DLRip\n👤 3 💾 2.06 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/36bb33b3ea76d39de0ccc8a7188baff871453d9b/<opaque>/Spider-Man.Brand.New.Day.2026.D.WEB-DLRip.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Spider-Man.Brand.New.Day.2026.D.WEB-DLRip.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Spiderman brand new day 2026\n👤 55 💾 2.63 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/49c75d6efc47c2da219e53452a289101d0b43d71/Spider-Man_ Brand New Day (2026) » CinemaCity.mp4/0/Spider-Man_ Brand New Day (2026) » CinemaCity.mp4",
+      "behaviorHints": {
+        "filename": "Spider-Man_ Brand New Day (2026) » CinemaCity.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Spiderman brand new day 2026\n👤 11 💾 4.86 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/79dba9cca5aaa15d6be94476cf797c4bf78eab7f/<opaque>",
+      "behaviorHints": {}
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[email protected]\n👤 1 💾 6.15 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c2e46301e7087175acebbfb6e0335abf9ea77c3a/[email protected]/undefined/[email protected]",
+      "behaviorHints": {}
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Homem-Aranha: Um Novo Dia (2026)\n👤 1 💾 8.67 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/18dc6fafb9fb2ac5c4ee37362a4ba47a74be6e67/Homem-Aranha: Um Novo Dia (2026)/undefined/Homem-Aranha: Um Novo Dia (2026)",
+      "behaviorHints": {}
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Spider man brand new day little blur but good rip\n👤 1 💾 5.81 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aedf039a284aa45791be2e00ecc75578997717fb/<opaque>",
+      "behaviorHints": {}
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR\n👤 58 💾 25.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e2b5df2b95c014828763734494c0fcd38889dcd0/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST\n👤 32 💾 9.15 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b9a0c9e72650b82e50a40d43fd4d2965a67f5c15/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR\n👤 31 💾 25.3 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9b02653df9fd8157a72e9d77d1d8a93c9cf10af1/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man: Zbrusu nový den / Spider-Man: Brand New Day (2026)[2160p][HDR/DV][HEVC][WEBL_DL]\n👤 31 💾 25.3 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f5841788cb51e66438a1394dc2a5559abebef2be/DV][HEVC][WEBL_DL]/undefined/DV][HEVC][WEBL_DL]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|DV|HDR"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB.DL.DV.HDR10 DDP5.1.Atmos.H265.MP4-BTM {imdb-tt22084616}\n👤 20 💾 26.28 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/421249eab8e442b76a8a445afe075c3b4a662d93/<opaque>/Spider-Man.Brand.New.Day.2026.2160p.iT.WEB.DL.DV.HDR10+[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.2160p.iT.WEB.DL.DV.HDR10+[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Spider.Man.Brand.New.Day.2026.2160p.MA.SDR\n👤 68 💾 26.25 GB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f3af2a32cab29b5fdcaea22e7fd0d4b74fcd3f81/<opaque>/Spider.Man.Brand.New.Day.2026.2160p.MA.SDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Spider.Man.Brand.New.Day.2026.2160p.MA.SDR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "[AUDIO: ??? ] [AUDIO: POLISH ] Spider-Man: Brand New Day SpiderM…\n👤 50 💾 2.7 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/15a4e60cdd0cd1f4341e971c171d2dc4220ef65c/SpiderMan 4 - Całkiem nowy Dzień (2026) 4K DUB+Napisy PL.mkv/0/SpiderMan 4 - Całkiem nowy Dzień (2026) 4K DUB+Napisy PL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "SpiderMan 4 - Całkiem nowy Dzień (2026) 4K DUB+Napisy PL.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Spider.Man.Brand.New.Day.2026.2160p.AMZN.WEB-DL.SDR\n👤 35 💾 13.16 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0e0dfa2eee79acc603ab00741cad9c961aa44305/<opaque>/Spider.Man.Brand.New.Day.2026.2160p.AMZN.WEB-DL.SDR",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p HDR",
+      "title": "Spider-Man.Brand.New.Day.2026.IMAX.1080p.WEBRip.DDP5.1.Atmos.HDR.x265-SPiLNO\n👤 3 💾 16.69 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7943b9a214bcf33649769150243fafc4a9b2e0a2/<opaque>/Spider-Man.Brand.New.Day.2026.IMAX.1080p.WEBRip.DDP5.1.Atmos.HDR.x265-SPiLNO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|HDR",
+        "filename": "Spider-Man.Brand.New.Day.2026.IMAX.1080p.WEBRip.DDP5.1.Atmos.HDR.x265-SPiLNO.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p HDR",
+      "title": "Spider-Man Brand New Day 2026 [10Bit HLG HDR SDR] [1080p.WEB-DL.H265.AC3.5.1.AS76-FT] [ENG-Dubbing PL-Lektor PL AI] [Alusia]\n👤 2 💾 5.97 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2e19658b9647ec6e64e7d3f94fa7e9e5e7b5c06f/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) AC3 5.1 ITA.ENG 1080p H265 sub …\n👤 1056 💾 3.23 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9d6d2ac0dd454a2adc6be664fb262d96f2105150/Spider-Man - Brand New Day (2026) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv/0/Spider-Man - Brand New Day (2026) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Spider-Man - Brand New Day (2026) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.PL.Ai.IMAX.1080p.WEB-DL.XviD.AC3-MAXX.mp4\n👤 310 💾 4.71 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8b460e53da43876e32c7a16e50ba44eb767549f7/<opaque>/Spider-Man.Brand.New.Day.2026.PL.Ai.IMAX.1080p.WEB-DL.XviD.AC3-MAXX.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PL.Ai.IMAX.1080p.WEB-DL.XviD.AC3-MAXX.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider.Man.Un.Nuevo.Dia.2026.1080p-Dual-Lat.mkv\n👤 152 💾 9.64 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9b289f91758a577703305f2ff3f348ccd57e2e3b/<opaque>/Spider.Man.Un.Nuevo.Dia.2026.1080p-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Spider.Man.Un.Nuevo.Dia.2026.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip\n👤 22 💾 3.18 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/71158df0a80f97960affb9f7a8705d683d0fa33b/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo\n👤 18 💾 8.99 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c079e946e4bbd7aba9731d8a6669e98f5616116e/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.AMZN.WEB-DL.DDP5.1.H.264-KyoGo.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man: Zbrusu nový den / Brand New Day (2026) [1080p] [AVC]\n👤 9 💾 9 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/81b0cd4f090ec08f944b27762fa833e6ec57e6bf/ Brand New Day (2026) [1080p] [AVC]/undefined/ Brand New Day (2026) [1080p] [AVC]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|avc"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man.Brand.New.Day.2026.PL.Ai.1080p.WEB-DL.XviD.AC3-MAXX\n👤 2 💾 4.72 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a0dc17d96324ee24c729118764d7adffbb3f6979/<opaque>/Spider-Man.Brand.New.Day.2026.PL.Ai.1080p.WEB-DL.XviD.AC3-MAXX.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|xvid",
+        "filename": "Spider-Man.Brand.New.Day.2026.PL.Ai.1080p.WEB-DL.XviD.AC3-MAXX.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Spider-Man: Brand New Day (2026) 1080P subs PTBR\n👤 1 💾 2.67 GB ⚙️ EXT\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/084900bf307c5586c0c44bcf15edd4e40366426b/<opaque>/Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n576p",
+      "title": "Spider-Man Brand New Day 2026 576p WEBRip x265-SSN\n👤 11 💾 1.75 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d8393fdc1001325f7aed42a874424907beb02d73/<opaque>/Spider-Man Brand New Day 2026 576p WEBRip x265-SSN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|576p|WEBRip|x265",
+        "filename": "Spider-Man Brand New Day 2026 576p WEBRip x265-SSN.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nTeleSync",
+      "title": "Spider-Man Brand New Day (2026) 1080P HQ HDTS x265 AAC2.0 MULTI ESub - MAZE\n👤 35 💾 1.99 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ab3ca0547fd186411903509ea1eaebb276d17045/Spider-Man Brand New Day (2026) [1080p - HQ HDTS - x265 - AAC - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv/0/Spider-Man Brand New Day (2026) [1080p - HQ HDTS - x265 - AAC - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Spider-Man Brand New Day (2026) [1080p - HQ HDTS - x265 - AAC - [Tam+Hin+Tel+Eng] - ESub] - MAZE.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nTeleSync",
+      "title": "Spider-Man: Brand New Day 3840x2160 4K (Cam)\n👤 1 💾 50.95 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bfa37d352cddad8e34d07e01144f29a54027404c/<opaque>/Spider-Man.Brand.New.Day.2026.V3.2160P.TELESYNC.x264-DKS 4K.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|CAM|x264",
+        "filename": "Spider-Man.Brand.New.Day.2026.V3.2160P.TELESYNC.x264-DKS 4K.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nWEBRip",
+      "title": "Spider man brand new day kinda like webrip next best thing no ads\n👤 47 💾 3.79 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5279d343033f7619d094675b4cd08848b7fa9ec9/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nWEB-DL",
+      "title": "Spider.Man.Brand.New.Day.(2026).WEB-DLRip-AVC.Ukr.Eng\n👤 23 💾 2.58 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ef71ffa43f3b38b5d1dba79670a97f2753a2a19c/Spider.Man.Brand.New.Day.(2026).WEB-DLRip-AVC.Ukr.Eng/undefined/Spider.Man.Brand.New.Day.(2026).WEB-DLRip-AVC.Ukr.Eng",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nWEBRip",
+      "title": "Spider man brand new day kinda like webrip next best thing no ads\n👤 3 💾 3.79 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/24f435905ff1e79ee646a9441878f6553438e009/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "spider man brand new day 2026\n👤 15 💾 3.79 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/864ca1d9929002386a891d94a00f2a8885487f39/<opaque>"
+    }
+  ]
+}

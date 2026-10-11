@@ -1,0 +1,1652 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "shawshank",
+  "request": "https://torrentio.strem.fun/<config>/stream/movie/tt0111161.json",
+  "recordedAt": "2026-10-11T12:05:08.754Z",
+  "status": 200,
+  "ms": 852,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The Shawshank Redemption 1994 2160p BluRay\n👤 100 💾 6.91 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6/<opaque>/The.Shawshank.Redemption.1994.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1-[YTS.MX].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "The.Shawshank.Redemption.1994.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR\n👤 97 💾 54.33 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/45fa4233ef87c58f5f8b4817e4d50c9f5363caef/<opaque>/The.Shawshank.Redemption.1994.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "The.Shawshank.Redemption.1994.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The Shawshank Redemption (1994) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Tigole) [QxR]\n👤 33 💾 17.1 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ad9462066cdf17273f91c4b4f708f1650394fc00/The Shawshank Redemption (1994) (2160p BluRay x265 10bit HDR Tigole).mkv/0/The Shawshank Redemption (1994) (2160p BluRay x265 10bit HDR Tigole).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "The Shawshank Redemption (1994) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.4K.HDR.2160p.BDRemux Ita Eng x265-NAHOM\n👤 23 💾 54.28 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b34f2891a4e8a72a293464beedf6a49efd8ec614/<opaque>/The.Shawshank.Redemption.1994.4K.HDR.2160p.BDRemux Ita Eng x265-NAHOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|HDR",
+        "filename": "The.Shawshank.Redemption.1994.4K.HDR.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.UHD.Blu-Ray.DV.HEVC.HDR.DTS-HD.MA.5.1.DTS.XLL.5.1x265-E\n👤 23 💾 30.28 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6c411957b6b6aff81473a435bd72c086034e60b8/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.Blu-Ray.DV.HEVC.HDR.DTS-HD.MA.5.1.DTS.XLL.5.1x265-E.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|DV|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.Blu-Ray.DV.HEVC.HDR.DTS-HD.MA.5.1.DTS.XLL.5.1x265-E.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "The.Shawshank.Redemption.1994.UHD.Blu-Ray.2160p.DTS-HD.MA.5.1.DV.HEVC.x265-E\n👤 19 💾 31.8 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f59295cac3294014f6f2c60ffe2606fd1ddc0459/The Shawshank Redemption (1994).mkv/0/The Shawshank Redemption (1994).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|DV",
+        "filename": "The Shawshank Redemption (1994).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.bluray.hdr.2160p.av1.5.1.opus.subs…\n👤 16 💾 7.42 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇰🇷 / 🇫🇷 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e0ff574fb2266d64c01069196b40e8c189d94763/<opaque>/The.Shawshank.Redemption.1994.bluray.hdr.2160p.av1.5.1.opus.subs-Dust.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "The.Shawshank.Redemption.1994.bluray.hdr.2160p.av1.5.1.opus.subs-Dust.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The Shawshank Redemption.1994.2160p.HDR10.BRRip.OPUS5.1.AV1.BluBit\n👤 12 💾 3.54 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b129e169b5a911b38a6c56d1900fe8bc29e94b4/The Shawshank Redemption (1994).mkv/0/The Shawshank Redemption (1994).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|10bit|HDR",
+        "filename": "The Shawshank Redemption (1994).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5.1-RARBG\n👤 8 💾 12.56 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/21c2a0f83db1358f5abe9fc1c6310ffd709540d9/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5.1-RARBG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5.1-RARBG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Le Ali Della Libertà (1994) 2160p H265 HDR10 DV ITA DTS-DH MA 5.1 ITA ENG AC3 5.1 SUB ITA ENG\n👤 5 💾 12.37 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/00443172c8abc7b0790b0c0b0c7f286f5b6b63c9/Le Ali Della Libertà (1994) 2160p H265 HDR10 DV ITA DTS-DH MA 5.1 ITA ENG AC3 5.1 SUB ITA ENG by  »᚛໓คสƙ ₹єคթєส᚜«.mkv/0/Le Ali Della Libertà (1994) 2160p H265 HDR10 DV ITA DTS-DH MA 5.1 ITA ENG AC3 5.1 SUB ITA ENG by  »᚛໓คสƙ ₹єคթєส᚜«.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR",
+        "filename": "Le Ali Della Libertà (1994) 2160p H265 HDR10 DV ITA DTS-DH MA 5.1 ITA ENG AC3 5.1 SUB ITA ENG by  »᚛໓คสƙ ₹єคթєส᚜«.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DDP5.1-RARBG\n👤 4 💾 8.63 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/597549004ea0f44302cb3512fbab1d8fde7c26d7/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DDP5.1-RARBG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DDP5.1-RARBG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 UHD BDRemux 2160p HDR10 Dolby Vision] [Hybrid] 2x Dub + 6x MVO + 4x DVO + 9x AVO + Original (Eng) + Sub (Rus Eng)\n👤 4 💾 78.61 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/23dfd11259dd6435dce2fef48d6721ffa8c08664/<opaque>/Побег из Шоушенка.1994.Hybrid.UHD.Blu-Ray.Remux.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Побег из Шоушенка.1994.Hybrid.UHD.Blu-Ray.Remux.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The Shawshank Redemption (1994) (2160p x265 10bit HDR UHD BD DTS-HD MA 5.1) [Prof]\n👤 3 💾 24.49 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/47e3da48a2c6e3703d2c126aac866f5e2adf8d58/The Shawshank Redemption (1994).mkv/0/The Shawshank Redemption (1994).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|HDR",
+        "filename": "The Shawshank Redemption (1994).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM\n👤 3 💾 23.17 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/04c4fa7cc4b8a1d77f026436d2e98383081c8eaf/<opaque>/The.Shawshank.Redemption.1994.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "The.Shawshank.Redemption.1994.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5.1-REDANDY\n👤 3 💾 26.83 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a3419c8d7b2485890f1f8f7e27e24c2814bc752b/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265-REDANDY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.x265-REDANDY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) UHD BDRemux 2160p | 4K | HDR10 | D P P2 A\n👤 1 💾 109.24 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/70190c97bf49d51a886e02bd4ca9c36b11b3ff4f/ The Shawshank Redemption (1994) UHD BDRemux 2160p | 4K | HDR10 | D P P2 A/undefined/ The Shawshank Redemption (1994) UHD BDRemux 2160p | 4K | HDR10 | D P P2 A",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) UHD BDRemux 2160p | 4K | HDR | D P P2 A\n👤 1 💾 87.5 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a7d6a7f85c5e1e01d3d81c9b5d02ef24375361c4/The Shawshank Redemption (1994) - UHD BD-Remux by Wild_Cat.mkv/0/The Shawshank Redemption (1994) - UHD BD-Remux by Wild_Cat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "The Shawshank Redemption (1994) - UHD BD-Remux by Wild_Cat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) UHD BDRemux 2160p от селезень | 4K | HDR | D P P2 A\n👤 1 💾 84.17 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bfa91eb985bf00f07f286b88c2cac9a4523a6b43/<opaque>/The.Shawshank.Redemption.1994.BDREMUX.2160p.HDR.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "The.Shawshank.Redemption.1994.BDREMUX.2160p.HDR.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.4K.HEVC.10bit.HDR.HYBRID.DTS.5.1.16bit~COD3D\n👤 0 💾 6.54 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f4214734ceafb9738907e3ea9a3d2d0c809f0ca0/The.Shawshank.Redemption.1994.4K.HEVC.10bit.HDR.HYBRID.DTS.5.1.16bit~COD3D/undefined/The.Shawshank.Redemption.1994.4K.HEVC.10bit.HDR.HYBRID.DTS.5.1.16bit~COD3D",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.UHD.Hybrid.Blu-ray.Remux.DV.HDR.HEVC.DTS-HD.MA.5.1-OzONE\n👤 0 💾 53.78 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/58b0e410b2588cfc4c5298f59c12ec93a8a123ce/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.Hybrid.Blu-ray.Remux.DV.HDR.HEVC.DTS-HD.MA.5.1-OzONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.Hybrid.Blu-ray.Remux.DV.HDR.HEVC.DTS-HD.MA.5.1-OzONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Le ali della libertà (1994) AC3 5.1 ITA.ENG 2160p H265 HDR10 sub NUita.eng Sp33dy94 MIRCrew\n👤 0 💾 3.91 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c7a938573b6c4782b403929e7902658a29ca5dc5/Le ali della libertà - The Shawshank Redemption (1994) AC3 5.1 ITA.ENG 2160p H265 HDR10 sub NUita.eng Sp33dy94-MIRCrew.mkv/0/Le ali della libertà - The Shawshank Redemption (1994) AC3 5.1 ITA.ENG 2160p H265 HDR10 sub NUita.eng Sp33dy94-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|HDR",
+        "filename": "Le ali della libertà - The Shawshank Redemption (1994) AC3 5.1 ITA.ENG 2160p H265 HDR10 sub NUita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) UHD BDRip 2160p | 4K | HDR10 | Dolby Vision Profile 8 | D P P2 A\n👤 0 💾 51.71 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/24333d019115f6d5efe84204545d71fb6eb70a4a/<opaque>/The Shawshank Redemption.1994.UHD.BDRip.2160p.HDR.DoVi.x265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|DV|HDR",
+        "filename": "The Shawshank Redemption.1994.UHD.BDRip.2160p.HDR.DoVi.x265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Le Ali della Libertà - The Shawshank Redemption (1994) 2160p H265 BluRay Rip 10 bit DV HDR10 ita eng AC3 5.1 sub ita eng Licdom\n👤 0 💾 6.04 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/230e876a9bdf6aee237eeaa8f88ec8e3d0506a53/Le Ali della Liberta' - The Shawshank Redemption (1994) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv/0/Le Ali della Liberta' - The Shawshank Redemption (1994) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR",
+        "filename": "Le Ali della Liberta' - The Shawshank Redemption (1994) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.Dolby.Vision.HDR10.Multi.Sub.DDP5.1.EAC3.HYBRID.REMUX.DV.x265.MP4-CYPH3R\n👤 0 💾 50.03 GB ⚙️ TorrentGalaxy\nMulti Subs / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2d54c923d55f2561d3229743395b8407f0a5c71c/<opaque>/The.Shawshank.Redemption.1994.2160p.Dolby.Vision.HDR10.Multi.Sub.DDP5.1.EAC3.HYBRID.REMUX.DV.x265.MP4-CYPH3R.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|DV|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.Dolby.Vision.HDR10.Multi.Sub.DDP5.1.EAC3.HYBRID.REMUX.DV.x265.MP4-CYPH3R.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The Shawshank Redemption (1994) 2160p UHD HDR BluRay AV1 Opus 5.1 [Enrav1sh]\n👤 0 💾 9.32 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c6e52e492c8f8bf8abb6eea9b8c70abcaf29ab69/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.HDR.BluRay.AV1.Opus.5.1-Enrav1sh.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.HDR.BluRay.AV1.Opus.5.1-Enrav1sh.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Побег из Шоушенка / The Shawshank redemption [1994 UHD BDRip 2160p HDR10] 2x Dub + 6x MVO + 2x DVO + 9x AVO + Sub (Rus Eng) + Original (Eng)\n👤 0 💾 42.73 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a06c8bf328b577a41c5b5c656dd64f73d0425427/Побег из Шоушенка (1994) UHD BDRip 2160p.mkv/0/Побег из Шоушенка (1994) UHD BDRip 2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|10bit|HDR",
+        "filename": "Побег из Шоушенка (1994) UHD BDRip 2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip 2160p | 4K | HDR | D P P2 A\n👤 0 💾 39.45 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9f0214d33f420f335b238525ec9d440271f948c8/PobegIzShoushenkaBDRip2160p.mkv/0/PobegIzShoushenkaBDRip2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|HDR",
+        "filename": "PobegIzShoushenkaBDRip2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.10bit.HDR.x265-HazMatt.mkv\n👤 0 💾 2.84 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce1731febfa5e2d453551984a48cc4765d4f3c92/<opaque>/The.Shawshank.Redemption.1994.2160p.UHD.BluRay.10bit.HDR.x265-HazMatt.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "The.Shawshank.Redemption.1994.2160p.UHD.BluRay.10bit.HDR.x265-HazMatt.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "The.Shawshank.Redemption.1994.BDRip.2160p.UHD.HDR\n👤 0 💾 27.31 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1f2270c88670f3bd68618d1136bf8eacdacb6657/<opaque>/The Shawshank Redemption.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|HDR",
+        "filename": "The Shawshank Redemption.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Cadena perpetua [4Kreescaldo][2160p][HDR10][AC3 5.1 Castellano-AC3 5.1-Ingles+Subs][ES-EN]\n👤 0 💾 59.61 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/814978f980297cc7cd42be9d60b37b928a5e7cdc/<opaque>/Cadena perpetua 4Kreescalado2160.pctmix1.com.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|10bit|HDR",
+        "filename": "Cadena perpetua 4Kreescalado2160.pctmix1.com.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The.Shawshank.Redemption.1994.2160p.MA.WEB-PandaQT SDR 4k UHD [GoodFilms]\n👤 58 💾 24.88 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ab83c9a2eb32796bfbc3bc294598c6bccd03ac0f/<opaque>/The.Shawshank.Redemption.1994.2160p.MA.WEB-PandaQT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "The.Shawshank.Redemption.1994.2160p.MA.WEB-PandaQT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The Shawshank Redemption (1994) Featurettes (2160p BluRay AI x265 HEVC 10bit DTS 5.1 Joy) [UTR]\nThe Shawshank Redemption (1994)  [2160p x265 10bit FS97 Joy].mkv\n👤 56 💾 7.13 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b111948d6d63659b56d0b372a6b94d0b1e96551/The Shawshank Redemption (1994)  [2160p x265 10bit FS97 Joy].mkv/0/The Shawshank Redemption (1994)  [2160p x265 10bit FS97 Joy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "The Shawshank Redemption (1994)  [2160p x265 10bit FS97 Joy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The.Shawshank.Redemption.1994.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT\n👤 51 💾 57.98 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/32770c6dd35a4dd71deb80d5deff7a4e084eedab/<opaque>/The.Shawshank.Redemption.1994.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "The.Shawshank.Redemption.1994.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The Shawshank Redemption (1994) 4K Remastered 1080p 10bit Bluray…\n👤 10 💾 8.17 GB ⚙️ TorrentGalaxy\nMulti Subs / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2ca1e96c81cad45772d4d260c5e5756c7a04a05a/The Shawshank Redemption (1994) 4K Remastered 1080p 10bit Bluray x265 HEVC [Org DDP 2.0 Hindi + DDP 5.1 English] MSubs ~ TombDoc.mkv/0/The Shawshank Redemption (1994) 4K Remastered 1080p 10bit Bluray x265 HEVC [Org DDP 2.0 Hindi + DDP 5.1 English] MSubs ~ TombDoc.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "The Shawshank Redemption (1994) 4K Remastered 1080p 10bit Bluray x265 HEVC [Org DDP 2.0 Hindi + DDP 5.1 English] MSubs ~ TombDoc.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The Shawshank Redemption (1994) [2160p.BluRay.HEVC.DTS-HD.MA.5.1-REDANDY] [Lektor i Napisy PL]\n👤 10 💾 60.79 GB ⚙️ BestTorrents\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇭🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a795c82e58a5f8f95f60f4911317e7082e19d505/The Shawshank Redemption (1994) [2160p.BluRay.HEVC.DTS-HD.MA.5.1-REDANDY] [Lektor i Napisy PL]/undefined/The Shawshank Redemption (1994) [2160p.BluRay.HEVC.DTS-HD.MA.5.1-REDANDY] [Lektor i Napisy PL]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The.Shawshank.Redemption.1994.UHD.BDRip-HEVC.2160p\n👤 8 💾 25.19 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/752aa9285b00341b267625c8204b32df837717e8/<opaque>/The.Shawshank.Redemption.1994.UHD.BDRip-HEVC.2160p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|hevc",
+        "filename": "The.Shawshank.Redemption.1994.UHD.BDRip-HEVC.2160p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The.Shawshank.Redemption.1994.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.5.1-SWTYBLZ\n👤 1 💾 53.43 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/700f468f6524ef3d6bbf5020afb384e0e65df7f9/<opaque>/The.Shawshank.Redemption.1994.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.5.1-SWTYBLZ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x264|8bit",
+        "filename": "The.Shawshank.Redemption.1994.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.5.1-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "The.Shawshank.Redemption.1994.2160p.4K.BluRay.10bit.HEVC.AC3.DD5.1.x265-PANAM\n👤 0 💾 7.15 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a1ab9e466ab434a3e8adb8bb8913effd09db411/<opaque>/The.Shawshank.Redemption.1994.2160p.4K.BluRay.10bit.HEVC.AC3.DD5.1.x265-PANAM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "The.Shawshank.Redemption.1994.2160p.4K.BluRay.10bit.HEVC.AC3.DD5.1.x265-PANAM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1440p HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) UHD BDRip 1440p | 4K | HDR10 | D P P2 A\n👤 5 💾 29.44 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2342b9f680fb438fa23fd88ccb6d12b71c48030d/<opaque>/The.Shawshank.Redemption.1994.UHD.BDRip.1440p.NNMClub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1440p|BDRip|10bit|HDR",
+        "filename": "The.Shawshank.Redemption.1994.UHD.BDRip.1440p.NNMClub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "The Shawshank Redemption (1994) (1080p DS4K BluRay x265 10-bit HDR AAC 5.1) [WeSLeY]\n👤 16 💾 6.81 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/21a2d54c2526202822647bdbd637c50a7a135fea/The Shawshank Redemption (1994) (1080p DS4K BluRay x265 10-bit HDR AAC 5.1) [WeSLeY].mkv/0/The Shawshank Redemption (1994) (1080p DS4K BluRay x265 10-bit HDR AAC 5.1) [WeSLeY].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "The Shawshank Redemption (1994) (1080p DS4K BluRay x265 10-bit HDR AAC 5.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p DV | HDR",
+      "title": "The Shawshank Redemption 1994 REPACK UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 15 💾 7.93 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/203b171b1277f7315d2d2eb2c3238f7aebe5ccea/<opaque>/The Shawshank Redemption 1994 REPACK UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "The Shawshank Redemption 1994 REPACK UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p DV | HDR",
+      "title": "The Shawshank Redemption 1994 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM73\n👤 2 💾 8.36 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/56fb61f32d5bb1533ac8272d56316437bb76b271/<opaque>/The Shawshank Redemption 1994 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "The Shawshank Redemption 1994 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "The Shawshank Redemption (1994) 1080p HDR - FiNAL\n👤 2 💾 2.61 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1547156479d5ff14910477b3e998cb802122fb82/The Shawshank Redemption (1994) 1080p HDR - FiNAL.mkv/0/The Shawshank Redemption (1994) 1080p HDR - FiNAL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDR",
+        "filename": "The Shawshank Redemption (1994) 1080p HDR - FiNAL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) UHD BDRip-HEVC 1080p от RIPS CLUB | HDR | D P\n👤 0 💾 9.03 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a1bfbc5620dae0b6fedbb5e069018f1fa5201e5/The Shawshank Redemption (1994).mkv/0/The Shawshank Redemption (1994).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|HDR",
+        "filename": "The Shawshank Redemption (1994).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x265.AAC.5.1 -88\n👤 162 💾 2.22 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b111a115d5d68e7ccbe10f1c160e64ffb702f15a/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.x265.AAC.5.1.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.x265.AAC.5.1.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) RM4K (1080p BluRay x265 HEVC 10bit AAC 5.1 afm72) [QxR]\nThe Shawshank Redemption (1994) RM4K (1080p BluRay x265 afm72).mkv\n👤 118 💾 7.96 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9d03cb643f0a22c2aa7cf5479da2b81d19300362/The Shawshank Redemption (1994) RM4K (1080p BluRay x265 afm72).mkv/12/The Shawshank Redemption (1994) RM4K (1080p BluRay x265 afm72).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The Shawshank Redemption (1994) RM4K (1080p BluRay x265 afm72).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) 1080p BrRip - 1.6GB - YIFY\n👤 100 💾 1.6 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e0d00667650aba9ee05aacbbbd8b55ea8a51f534/<opaque>/The.Shawshank.Redemption.1994.1080p.x264.YIFY.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 REPACK 1080p BluRay x265-YAWNTiC\n👤 93 💾 7.95 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de45655f107904526620d21c3856ac29a5fd7e49/<opaque>/The Shawshank Redemption 1994 REPACK 1080p BluRay x265-YAWNTiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The Shawshank Redemption 1994 REPACK 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.H264.AAC-RARBG[TGx]\n👤 76 💾 2.72 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e3f68e41da59bb358ce299180e41335378863180/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.H264.AAC-LAMA.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.H264.AAC-LAMA.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.RESTORED.1080p.BluRay.REMUX-DDB\n👤 74 💾 20.46 GB ⚙️ ThePirateBay\n🇬🇧 / 🇸🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a56bb24da7cfda22948fec4a3a8137e4306cbbdd/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.bluray.sdr.1080p.av1.5.1.opus.subs…\n👤 55 💾 3.87 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cceadd69bc50cf7ca5f82ef2fdd7c2a6ba1de962/<opaque>/The.Shawshank.Redemption.1994.bluray.sdr.1080p.av1.5.1.opus.subs-Dust.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "The.Shawshank.Redemption.1994.bluray.sdr.1080p.av1.5.1.opus.subs-Dust.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x264-D-Z0N3\n👤 35 💾 15.4 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6716f9c12e45114ad349b9642d82c77080d170dc/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Um.Sonho.De.Liberdade.1994.BluRay.1080p.x264.DUAL.5.1-SF\n👤 31 💾 2.91 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5820de7418311440f7668a0219a775b395b77a6d/<opaque>/Um.Sonho.De.Liberdade.1994.BluRay.1080p.x264.DUAL.5.1-SF.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Um.Sonho.De.Liberdade.1994.BluRay.1080p.x264.DUAL.5.1-SF.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Les evades 1994 - 1080p FR EN x264 ac3 mHDgz..mkv\n👤 30 💾 3.53 GB ⚙️ Torrent9\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8c47f58ec8246479c3a56046593426d5b3a30c2b/Les evades (1994) - 1080p FR EN x264 ac3 mHDgz..mkv/0/Les evades (1994) - 1080p FR EN x264 ac3 mHDgz..mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Les evades (1994) - 1080p FR EN x264 ac3 mHDgz..mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 Bluray 1080p AV1 EN/FR/ES/DE/ITA OPUS 5.1-UH [UserHEVC]\n👤 26 💾 5.7 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/024912c56af6d30633869cbbcc368aea0d0a1012/<opaque>/The.Shawshank.Redemption.1994.Bluray.1080p.AV1.OPUS.5.1-UH.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "The.Shawshank.Redemption.1994.Bluray.1080p.AV1.OPUS.5.1-UH.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption - Le ali della libertà (1994) RM4K + EXTRAS (1080p BluRay x265 HEVC 10bit ITA AC3 ENGAAC SUB ITA ENG) - GEGE [9.3 GB]\nThe Shawshank Redemption (1994) RM4K (1080p BluRay x265 HEVC 10bit ITA ENG) - GEGE.mkv\n👤 21 💾 8.62 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2384d600de9c38c0b7ecb55b0a774082204a1f29/The Shawshank Redemption (1994) RM4K (1080p BluRay x265 HEVC 10bit ITA ENG) - GEGE.mkv/0/The Shawshank Redemption (1994) RM4K (1080p BluRay x265 HEVC 10bit ITA ENG) - GEGE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The Shawshank Redemption (1994) RM4K (1080p BluRay x265 HEVC 10bit ITA ENG) - GEGE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG\n👤 12 💾 2.22 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d73b5ea9cc30e880f0b9acccc357b0ac00aaf71/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.Bluray.MULTi.DTS-HD.Master.H264-BEN.THE.MEN\n👤 11 💾 19.56 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇮🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/84729aecfccd94c19d117e91df59bb2edca6dfdb/<opaque>/The.Shawshank.Redemption.1994.1080p.Bluray.ENG.LATINO.CASTELLANO.FRE.GER.ITA.HINDI.DTS-HD.Master.H264-BEN.THE.MEN.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.Bluray.ENG.LATINO.CASTELLANO.FRE.GER.ITA.HINDI.DTS-HD.Master.H264-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.REMASTERED.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 11 💾 2.24 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/715a52f82929451204feedc1812301235d9b3bdc/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.Bluray.1080p.TrueHD.x264-Grym\n👤 10 💾 13.41 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ecc4617ebed81019e903b2f86dc72997fcb597cd/<opaque>/The.Shawshank.Redemption.1994.Bluray.1080p.TrueHD.x264-Grym.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Shawshank.Redemption.1994.Bluray.1080p.TrueHD.x264-Grym.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "500 top all-time movies collection 1080p H.264 480GB (moviesbyrizzo upl)\nThe Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4\n👤 9 💾 1.1 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3facf8e9f4f7c506a2330ac2ba33645aa6f12b81/The Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4/530/The Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "The Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Great Films 3: MP4 X264 AC3 1080p\nThe Shawshank Redemption (1994) 1080p Surround.mp4\n👤 9 💾 4.2 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/40f15e970e6f21466402a1ec4fbd059097ad587a/The Shawshank Redemption (1994) 1080p Surround.mp4/53/The Shawshank Redemption (1994) 1080p Surround.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "The Shawshank Redemption (1994) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS\n001.肖申克的救赎The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS/The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS.mkv\n👤 8 💾 11.03 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9351bcf9e7437f706549f8b60314c39259c420b4/<opaque>/The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Amazing Films 4 - Mp4 x264 AC3 1080p\nThe Shawshank Redemption (1994) 1080p Surround.mp4\n👤 7 💾 4.16 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4e20131a166cee7614ce583330e0c0d2405bbce7/The Shawshank Redemption (1994) 1080p Surround.mp4/68/The Shawshank Redemption (1994) 1080p Surround.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "The Shawshank Redemption (1994) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Les evades (1994) - 1080p FR EN x264 ac3 mHDgz\n👤 7 💾 3.53 GB ⚙️ Torrent9\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/88e8caa12894a74d3f38636c32bf62cd9755cabb/[ OxTorrent.com ] Les evades (1994) - 1080p FR EN x264 ac3 mHDgz..mkv/0/[ OxTorrent.com ] Les evades (1994) - 1080p FR EN x264 ac3 mHDgz..mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "[ OxTorrent.com ] Les evades (1994) - 1080p FR EN x264 ac3 mHDgz..mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.NF.WEB-DL.H264-ETRG[EtHD]\n👤 7 💾 6.79 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/04b81a1f9e222356c0405f44d530253bfdba764e/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p BluRay DDP 5 1 10bit H 265-iVy\n👤 6 💾 3.05 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d81326fbd4dd3cc084d6175fe31c78997c7a4c7/<opaque>/The Shawshank Redemption 1994 1080p BluRay DDP 5 1 10bit H 265-iVy.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265|10bit",
+        "filename": "The Shawshank Redemption 1994 1080p BluRay DDP 5 1 10bit H 265-iVy.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.NF.WEB-DL.DDP5.1.x264-OzONE\n👤 6 💾 8.09 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e25694cc3c1c9409787921277c2bce83f94a8dc0/<opaque>/The.Shawshank.Redemption.1994.1080p.NF.WEB-DL.DDP5.1.x264-OzONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.NF.WEB-DL.DDP5.1.x264-OzONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption - Le ali della libertà AC3 5.1 ITA.ENG 1080p H265 sub ita.eng (1994) Sp33dy94 MIRCrew\n👤 6 💾 3.69 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69aac1a1b7b261cdf04b30fc171c1bced01be44f/Le ali della libertà - The Shawshank Redemption AC3 5.1 ITA.ENG 1080p H265 sub ita.eng (1994) Sp33dy94-MIRCrew.mkv/0/Le ali della libertà - The Shawshank Redemption AC3 5.1 ITA.ENG 1080p H265 sub ita.eng (1994) Sp33dy94-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Le ali della libertà - The Shawshank Redemption AC3 5.1 ITA.ENG 1080p H265 sub ita.eng (1994) Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 REMASTERED 1080p BluRay x265-YAWNTiC\n👤 5 💾 5.22 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4ce1c2b03f60472f3722cf3709713adebee3b444/<opaque>/The Shawshank Redemption 1994 REMASTERED 1080p BluRay x265-YAWNTiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The Shawshank Redemption 1994 REMASTERED 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.H264.AAC-RARBG\n👤 5 💾 2.72 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3c05cfe780d88982165f8109a80688308555ee24/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.H264.AAC-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p BluRay x265 DDP5.1-CSP\n👤 4 💾 3.96 GB ⚙️ EXT\n🇬🇧 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c249993756218e7584e9dea4e7bd6775f4ae769f/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p BluRay X264 10bit-WiKi [MovietaM]\n👤 4 💾 14.91 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0ac771d8fcc1d54a6cfa83bbeec2da65777c8fd0/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.x264.10bit-WiKi.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264|10bit",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.x264.10bit-WiKi.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip 1080p | Р\n👤 4 💾 7.76 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f591bf1cb8e5790d93850322548a35164aa46f73/<opaque>/Побег из Шоушенка.1994.BDRip.1080p.Rus.Eng.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Побег из Шоушенка.1994.BDRip.1080p.Rus.Eng.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The-Shawshank-Redemption_1994_AI_1080p.BluRay.10b.HEVC.DTS-MA.5.1_BLUDUAINE\n👤 3 💾 827.56 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/85509819d8e15ca2586e1515a8a017d791f9c9b3/<opaque>/The-Shawshank-Redemption_1994_AI_1080p.BluRay.10b.HEVC.DTS-MA.5.1_BLUDUAINE.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "The-Shawshank-Redemption_1994_AI_1080p.BluRay.10b.HEVC.DTS-MA.5.1_BLUDUAINE.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The-Shawshank-Redemption_1994_AI_1080p.BluRay.10b.HEVC.DTS-MA.5.1_BLUDUAINE\n👤 3 💾 9.2 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/85509819d8e15ca2586e1515a8a017d791f9c9b3/<opaque>/The-Shawshank-Redemption_1994_AI_1080p.BluRay.10b.HEVC.DTS-MA.5.1_BLUDUAINE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "The-Shawshank-Redemption_1994_AI_1080p.BluRay.10b.HEVC.DTS-MA.5.1_BLUDUAINE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p BluRay DD 5.1 x265-edge2020\n👤 3 💾 3.85 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b7ac0f0c9ff4895113c9863093784a7038554c4/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.DDP.5.1.x265-EDGE2020.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.DDP.5.1.x265-EDGE2020.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRip 1080p] [UK / Warner Bros. Home Entertainment] 2x Dub + 7x MVO + 3x DVO + 9х AVO + VO + MVO Bel + DVO Bel + 2x MVO Ukr +DVO Ukr + Sub Rus Ukr Eng + Original Eng\n👤 3 💾 39.25 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/97f510d68c43be46fd43c32278a3b86210c66fe8/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.23xRus.2xBel.3xUkr.Eng.c0kE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.23xRus.2xBel.3xUkr.Eng.c0kE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip 1080p | D P P2 A | Remastered\n👤 3 💾 16.96 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/981a6197cc8cee1fce5e2adf38f4030708e35741/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.BDRip.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.BDRip.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x265-RARBG\n👤 3 💾 2.22 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3ff779d9723777e4cf092c11437884bb46339e25/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.x265-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994.MULTi.1080p.Blu-ray.DTS-HDMA.5....\n👤 3 💾 10.53 GB ⚙️ ThePirateBay\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/020c0dd8035a765688544e06d269923552a7cd10/<opaque>/The Shawshank Redemption 1994.MULTi.1080p.Blu-ray.DTS-HDMA.5.1.HEVC-DDR[EtHD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "The Shawshank Redemption 1994.MULTi.1080p.Blu-ray.DTS-HDMA.5.1.HEVC-DDR[EtHD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]\n👤 3 💾 5.9 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/688857fb719f493eee8f3d40b84a8cefeb1c4c94/The Shawshank Redemption (1994) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]/undefined/The Shawshank Redemption (1994) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Cadena Perpetua [BDremux 1080p][DTS 5.1 Castellano-DTS 5.1 Ingles+Subs][ES-EN]\n👤 3 💾 27.85 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/37d7e9819ee82030d0e9a0ec475eaea88ab86dda/<opaque>/Cadena Perpetua BDR1080.www.descargas2020.com.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Cadena Perpetua BDR1080.www.descargas2020.com.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "ALL Best Picture Nominees 1080p BluRay Part 1 of 3 1990-2004 75 Movies jZQ\n1994/The Shawshank Redemption (1994) IMDB 9.2/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4\n👤 2 💾 2.22 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f1b926b78ad393e2456a47d8e70dbdf24662573e/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip-HEVC 1080p от RIPS CLUB | D P P2 A | UK Remastered\n👤 2 💾 22.02 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3d6741f8269babe5948ce6b06fe5a3c9e517a408/<opaque>/Побег.из.Шоушенка.The.Shawshank.Redemption.1994.Warner.Bros.Remastered.BDRip-HEVC.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc",
+        "filename": "Побег.из.Шоушенка.The.Shawshank.Redemption.1994.Warner.Bros.Remastered.BDRip-HEVC.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRemux 1080p] 2x Dub + 7x MVO + 3x DVO + 9x AVO + Sub Rus Eng + Original Eng\n👤 2 💾 57.49 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/148b6b545dd413381e4f6baf97f62228fd0793a4/<opaque>/The.Shawshank.Redemption.1994.Warner.Bros.BDRemux.1080p.Remastered.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "The.Shawshank.Redemption.1994.Warner.Bros.BDRemux.1080p.Remastered.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) REMASTERED 10Bit 1080p BluRay Hindi English ESub x265 R∆G∆ [ProtonMovies]\n👤 2 💾 2.37 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7ca045cf08d73d810092a9de2f9ad9791bfe95d1/The Shawshank Redemption (1994) REMASTERED 1080p 10Bit BluRay Hindi 2CH + English 5.1 ESub x265 R∆G∆ [ProtonMovies].mkv/0/The Shawshank Redemption (1994) REMASTERED 1080p 10Bit BluRay Hindi 2CH + English 5.1 ESub x265 R∆G∆ [ProtonMovies].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "The Shawshank Redemption (1994) REMASTERED 1080p 10Bit BluRay Hindi 2CH + English 5.1 ESub x265 R∆G∆ [ProtonMovies].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "moviesbyrizzo 650 top all-time movies collection 1080p 598GB\nThe Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4\n👤 2 💾 1.1 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bfa94a1537928d36623ee307a766a226f09a6822/The Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4/663/The Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "The Shawshank Redemption (1994) 1080p (moviesbyrizzo upl).mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) REMASTERED 1080p BluRay x265 Hindi DDP2.0 English DDP5.1 ESub - SP3LL\n👤 2 💾 3.83 GB ⚙️ TorrentGalaxy\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c084ba2cc699812641a0026e5058b38d7f85c8e2/The Shawshank Redemption (1994) REMASTERED 1080p BluRay x265 DUAL DDP5.1 ESub - SP3LL.mkv/0/The Shawshank Redemption (1994) REMASTERED 1080p BluRay x265 DUAL DDP5.1 ESub - SP3LL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The Shawshank Redemption (1994) REMASTERED 1080p BluRay x265 DUAL DDP5.1 ESub - SP3LL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 GER BluRay 1080p x264 DTS MA 5 1-H\n👤 2 💾 20.74 GB ⚙️ ThePirateBay\n🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/569de8b41dfec91287089f07d67ae1ee8594e727/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Cadena Perpetua [MicroHD][1080 px][AC3 5.1-Castellano-Ingles+Subs]\n👤 2 💾 5.02 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/818a06d899a73ce1694d2760673c3c8f9c9d7208/<opaque>/PerpetuaM1080.www.newpct.com.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip",
+        "filename": "PerpetuaM1080.www.newpct.com.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption.1994.tt0111161.1080p.H264.CHS.ENG.HC-movtor\n👤 1 💾 1.85 GB ⚙️ EXT\n🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2205591bb3988bd0d231e9e42bb493f660ae8530/<opaque>/肖申克的救赎.The Shawshank Redemption.1994.tt0111161.1080p.H264.CHS.ENG.HC-movtor.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "肖申克的救赎.The Shawshank Redemption.1994.tt0111161.1080p.H264.CHS.ENG.HC-movtor.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.(1994).(1080p.BluRay.x265.SDR.DDP.5.1.E…\n👤 1 💾 9.19 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8aaffdc63a8169e0c01ddec38b56c2c98f697aba/The Shawshank Redemption (1994) (1080p BluRay x265 SDR DDP 5.1 English - DarQ HONE).mkv/1/The Shawshank Redemption (1994) (1080p BluRay x265 SDR DDP 5.1 English - DarQ HONE).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The Shawshank Redemption (1994) (1080p BluRay x265 SDR DDP 5.1 English - DarQ HONE).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p MA WEB-DL H264 SDR DDP 5 1 English HONE\n👤 1 💾 8.56 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/12ff3b4ae37f4be8a7a461dd45358b4c1fd797c5/<opaque>/The Shawshank Redemption 1994 1080p MA WEB-DL H264 SDR DDP 5 1 English HONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "The Shawshank Redemption 1994 1080p MA WEB-DL H264 SDR DDP 5 1 English HONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "IMDB Top 250 - 2024 Edition - 1080p BluRay eSubs jZQ\n001 The Shawshank Redemption (1994)/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4\n👤 1 💾 2.22 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/71fee293dc117c48487029c6dcb5038d974a0295/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.H264.AAC-RARBG\n👤 1 💾 2.72 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6f9335a648d3a9c422b3a1999d0ee1472b7fa7aa/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.H264.AAC-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Epic Films 4 - Mp4 x264 AC3 1080p\nThe Shawshank Redemption (1994) 1080p Surround.mp4\n👤 1 💾 4.16 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2a8f6fb4563f22198fdaddec430904c246f231fc/The Shawshank Redemption (1994) 1080p Surround.mp4/55/The Shawshank Redemption (1994) 1080p Surround.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "The Shawshank Redemption (1994) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) 1080p [HEVC AAC] - FiNAL\n👤 1 💾 6.33 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fba5b4fc1505b6bf119dc0c2a2994ba29e211a26/The Shawshank Redemption (1994) - FiNAL.mkv/0/The Shawshank Redemption (1994) - FiNAL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "The Shawshank Redemption (1994) - FiNAL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x264.DTS-FGT\n👤 1 💾 12.4 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e7c736419bd0bbe76f48b51c7cf11d01b015bb20/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.x264.DTS-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.x264.DTS-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x264-CiNEFiLE\n👤 1 💾 7.95 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fc07ce5a079783512bee276ae35d2df85ac5dbb5/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRip 1080p] 5x MVO + DVO + 6x AVO + Sub Rus Eng + Ukr + Original Eng\n👤 1 💾 24.76 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4b29a5643223854f398dbfd43a609745eb42d500/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.12xRus.Eng.x264-EbP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.12xRus.Eng.x264-EbP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRemux 1080p] [USA Transfer Remastered] 2x Dub + 7x MVO + 4x DVO + 9x AVO + Sub Rus Eng + Original Eng\n👤 0 💾 51.08 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/710409ce0755c903b65e4bace570bfdf908d20f1/<opaque>/The.Shawshank.Redemption.1994.Warner.Bros.BDRemux.1080p.Remastered.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "The.Shawshank.Redemption.1994.Warner.Bros.BDRemux.1080p.Remastered.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p ATVP WEB-DL DD 5 1 H 264-PiRaTeS\n👤 0 💾 6.98 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0166d72663ca426c94575494787cc384a6ab0b92/<opaque>/The Shawshank Redemption 1994 1080p ATVP WEB-DL DD 5 1 H 264-PiRaTeS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "The Shawshank Redemption 1994 1080p ATVP WEB-DL DD 5 1 H 264-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Sueños.de.Libertad.2013.1080p-Dual-Lat\n👤 0 💾 1.91 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/381a60948dafa9cc00179e661d79e3d8e1f685dc/<opaque>/Sueños.De.Libertad.2013.1080P-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Sueños.De.Libertad.2013.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Sueños.de.Libertad.2013.1080p-Dual-Lat\n👤 0 💾 2.06 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a07c4cbb89cd5ed9110272c5e6aefcfdceb227e4/<opaque>/Sueños.de.Libertad.2013.1080p-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Sueños.de.Libertad.2013.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Sueños.de.Libertad.2013.WEB-DL.1080p-Dual-Lat\n👤 0 💾 5.98 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f5bf59e9d4ed5c930b9eff6d22342e21b2af58c4/<opaque>/Sueños.de.Libertad.2013.WEB-DL.1080p-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Sueños.de.Libertad.2013.WEB-DL.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Sueños.De.Fuga.1994.1080P-Dual-Lat\n👤 0 💾 2.32 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f24107f8fee4dd7e299c3acc0d1b865def08d3e5/<opaque>/Sueños.De.Fuga.1994.1080P-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Sueños.De.Fuga.1994.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Skazani Na Shawshank (1994) [1080p] [H264] [Lektor] SYRIX [ToAlien]\n👤 0 💾 4.36 GB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e52021782bad191dee2212eb81503c6035b77fe6/Skazani na Shawshank.mkv/1/Skazani na Shawshank.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Skazani na Shawshank.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) 1080p 10bit DS4K BluRay [Hin-Eng] DD 5.1 DD 2.0 [HEVC] - NBStudios\n👤 0 💾 6.82 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6cd5e8752332d22467af8beec0642c1c8477b2e3/The Shawshank Redemption (1994) 1080p 10bit DS4K BluRay [Hin-Eng] DD 5.1 + DD 2.0 x265 HEVC - NBStudios.mkv/0/The Shawshank Redemption (1994) 1080p 10bit DS4K BluRay [Hin-Eng] DD 5.1 + DD 2.0 x265 HEVC - NBStudios.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The Shawshank Redemption (1994) 1080p 10bit DS4K BluRay [Hin-Eng] DD 5.1 + DD 2.0 x265 HEVC - NBStudios.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Le Ali della Libertà - The Shawshank Redemption (1994) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 0 💾 3.08 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a7d15ae4b59470eeca1d0a79b5622657d5a1c6c7/Le Ali della Liberta' - The Shawshank Redemption (1994) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv/0/Le Ali della Liberta' - The Shawshank Redemption (1994) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Le Ali della Liberta' - The Shawshank Redemption (1994) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) BR 1080p H264 DD 5.1 + nickarad\n👤 0 💾 2.6 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd1e7175d31aabf8e6cd995b1b54ef3b9c7fe23d/The Shawshank Redemption (1994) 1080p BluRay H264 DolbyD 5.1 + nickarad.mp4/4/The Shawshank Redemption (1994) 1080p BluRay H264 DolbyD 5.1 + nickarad.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The Shawshank Redemption (1994) 1080p BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.HEVC.x265-RiPRG\n👤 0 💾 2.84 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7708a753df049dd1bd91fe5b7262b043d24d4de0/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.HEVC.x265-RiPRG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.HEVC.x265-RiPRG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) 1080p Bluray AV1 Opus Eng MiNi [dAV1nci]\n👤 0 💾 983.63 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/57ea683969357fbd0d13cb2ff56e2c04c08ca91d/<opaque>/The.Shawshank.Redemption.1994.1080p.Bluray.AV1.Opus.Eng.MiNi-dAV1nci.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "The.Shawshank.Redemption.1994.1080p.Bluray.AV1.Opus.Eng.MiNi-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) 1080p Bluray AV1 Opus Multi4 [dAV1nci]\n👤 0 💾 2.74 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0741e366da44c103be05f1ea919c5ce995013e51/<opaque>/The.Shawshank.Redemption.1994.1080p.Bluray.AV1.Opus.Multi4-dAV1nci.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "The.Shawshank.Redemption.1994.1080p.Bluray.AV1.Opus.Multi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Le.Ali.Della.Liberta.1994.REMASTERED.iTA.ENG.AC3.SUB.iTA.ENG.BluRay.HEVC.1080p.x265.jeddak-MIRCrew\n👤 0 💾 2.8 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9c21df3075e37e9570f8f0a8ebdca76cc89ba9a0/<opaque>/Le.Ali.Della.Liberta.1994.REMASTERED.iTA.ENG.AC3.SUB.iTA.ENG.BluRay.HEVC.1080p.x265.jeddak-MIRCrew.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Le.Ali.Della.Liberta.1994.REMASTERED.iTA.ENG.AC3.SUB.iTA.ENG.BluRay.HEVC.1080p.x265.jeddak-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 REMASTERED 1080p BluRay x264 5.1 \n👤 0 💾 2.1 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/27254469cae0376b6bb3ad373d6fb628977aa79c/<opaque>/The Shawshank Redemption 1994 REMASTERED 1080p BluRay x264 5.1 BONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The Shawshank Redemption 1994 REMASTERED 1080p BluRay x264 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 0 💾 29.23 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f19010c25ea5d01f00a17e39acf7596322c9df2/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) [1080p] [BluRay] [H264-AAC] [Lektor PL]\n👤 0 💾 4.21 GB ⚙️ BestTorrents\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e179e3c1f1494c4d8704cd5e03ff46ccb01ebb1a/The Shawshank Redemption (1994) [1080p] [BluRay] [H264-AAC] [Lektor PL].mkv/3/The Shawshank Redemption (1994) [1080p] [BluRay] [H264-AAC] [Lektor PL].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The Shawshank Redemption (1994) [1080p] [BluRay] [H264-AAC] [Lektor PL].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip 1080p от Deadmauvlad | DEU Transfer | D P P2 A\n👤 0 💾 37.25 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6a0391e82e0c246673f6176d05eab987afe40e30/<opaque>/The.Shawshank.Redemption.1994.2xDub.MVO.DVO.AVO.BDRip.1080p.Deadmauvlad.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "The.Shawshank.Redemption.1994.2xDub.MVO.DVO.AVO.BDRip.1080p.Deadmauvlad.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 Multi-VF2 1080p BluRay x264-PopHD\n👤 0 💾 3.6 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7ea0dc923380d6cf7e237f30096f2034dbdc2f3a/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank redemption [1994 BDRemux 1080p] [DEU Transfer] 2x Dub (Кириллица IVI) + 6x MVO (Киномания LDV Союз Видео ОРТ СТС РТР) + 2x DVO (Videogram Видеофильм) + 9x AVO (Гаврилов Живов) + Sub (Rus Eng) + Original (Eng)\n👤 0 💾 54.05 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/172ed9fccdc873416eaf08b62654c37bc16b11a0/Побег из Шоушенка (1994) BDRemux 1080p.mkv/0/Побег из Шоушенка (1994) BDRemux 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Побег из Шоушенка (1994) BDRemux 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994 ITA/ENG) [1080p x265] [Paso77]\n👤 0 💾 8.24 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/44e4fd36ef0d4c1d9d19bb3c760f436c6d058a0b/<opaque>/The Shawshank Redemption 1994 BDRip ITA ENG 1080p x265 Paso77.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "The Shawshank Redemption 1994 BDRip ITA ENG 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) (1080p BluRay AI x265 HEVC 10bit AAC 5.1 Joy) [UTR]\n👤 0 💾 1.91 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c6dcd7d080633ab9139c870a7162f38095b4f9d3/The Shawshank Redemption (1994)  [1080p x265 10bit FS95 Joy].mkv/0/The Shawshank Redemption (1994)  [1080p x265 10bit FS95 Joy].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The Shawshank Redemption (1994)  [1080p x265 10bit FS95 Joy].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRemux 1080p | D P P2 A\n👤 0 💾 66.42 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2ecbc4c9354d606355b2afa24b3381d485ab48c4/ The Shawshank Redemption (1994) BDRemux 1080p | D P P2 A/undefined/ The Shawshank Redemption (1994) BDRemux 1080p | D P P2 A",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Um Sonho de Liberdade 1080p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo\n👤 0 💾 2.29 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e7edc59ebbd7fb729ab4b0c660467f616279e8a8/Um Sonho de Liberdade 1080p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo.mkv/1/Um Sonho de Liberdade 1080p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Um Sonho de Liberdade 1080p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Le ali della libertà (1994 ITA/ENG) [1080p] [HollywoodMovie]\n👤 0 💾 3.1 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b5679ceb1d5b8ac10381ee1aa4b806d762e770cd/ENG) [1080p] [HollywoodMovie]/undefined/ENG) [1080p] [HollywoodMovie]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip-HEVC 1080p от HEVC-CLUB | P A\n👤 0 💾 10.34 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1d83aba202963ba967131236911708ab22dd2f39/<opaque>/The Shawshank Redemption. 1994. 1080p. HEVC. 10bit.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|10bit",
+        "filename": "The Shawshank Redemption. 1994. 1080p. HEVC. 10bit.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.10bit.HEVC.MkvCage\n👤 0 💾 3.5 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8d2f82ea647581b4902d228b8bf2cc0fc4d47e3d/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.10bit.HEVC.6CH.MkvCage.ws.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.10bit.HEVC.6CH.MkvCage.ws.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.H264.AAC-RARBG\n👤 0 💾 2.72 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2a9c0df4e2ce5546392a2f0d6996402c5d6fa400/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.H264.AAC-RARBG.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x264.AAC.5.1-POOP\n👤 0 💾 2.34 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1cd0418e5a6963913c578944df08ab65ec8e677c/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 (1080p Bluray X265 HEVC AAC 5.1 Joy) [UTR]\n👤 0 💾 1.33 GB ⚙️ MagnetDL",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ddf9457c108fb0adb5b7da38012b712b826f378d/The Shawshank Redemption 1994 (1080p x265 Joy).mkv/0/The Shawshank Redemption 1994 (1080p x265 Joy).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "The Shawshank Redemption 1994 (1080p x265 Joy).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption (1994) 1080p\n👤 0 💾 3.89 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c0dcdbf9c7eda92e783de835600f7ad6a2328daa/The Shawshank Redemption (1994) 1080p/undefined/The Shawshank Redemption (1994) 1080p",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Um Sonho de Liberdade (1994) BluRay 1080p Dual Áudio - du\n👤 0 💾 2.36 GB ⚙️ ThePirateBay\nDual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6a6dfa64f460804c69cd645f6ab8017f7df3cb13/<opaque>/Um.Sonho.de.Liberdade.1994.1080p.Dual-WOLVERDONFILMES.COM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Um.Sonho.de.Liberdade.1994.1080p.Dual-WOLVERDONFILMES.COM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip 1080p от Flash | P P2 A\n👤 0 💾 14.94 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1799ff322ce82ab51dd2265c1ee7584eecabb4d8/<opaque>/The.Shawshank.Redemption.1994.BDRip_1080p.By_Flash.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "The.Shawshank.Redemption.1994.BDRip_1080p.By_Flash.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Um.Sonho.de.Liberdade.(1994).BDRip.DUAL.AUDIO.1080p.[5.1]\n👤 0 💾 1.68 GB ⚙️ ThePirateBay\nDual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/65c6c884bfae3ddc56b04e3f2b29dd4571e0be4c/<opaque>/Um Sonho de Liberdade 1080p 5.1 - Douglasvip.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Um Sonho de Liberdade 1080p 5.1 - Douglasvip.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.1080p.BluRay.x264.anoXmous\n👤 0 💾 2.46 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/70bb07a774474a7532b1f9f60cb19f71a792e6f5/<opaque>/The.Shawshank.Redemption.1994.1080p.BluRay.x264.anoXmous_.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BluRay.x264.anoXmous_.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 Blu-ray disc 1080p]\n👤 0 💾 26.54 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b022fcf5ac91d1d49d67d90b5e7ddf4f57aa9bd7/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 Blu-ray disc (custom) 1080p] 4x MVO (LDV Videogram Союз Видео Киномания) + 2x AVO (Горчаков Живов) + Ukr + Original Eng + Sub Rus Eng\n👤 0 💾 33.76 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0ac833251c2093a8c1338f94fe6c4faf4173efac/ The Shawshank Redemption [1994 Blu-ray disc (custom) 1080p] 4x MVO (LDV Videogram Союз Видео Киномания) + 2x AVO (Горчаков Живов) + Ukr + Original Eng + Sub Rus Eng/undefined/ The Shawshank Redemption [1994 Blu-ray disc (custom) 1080p] 4x MVO (LDV Videogram Союз Видео Киномания) + 2x AVO (Горчаков Живов) + Ukr + Original Eng + Sub Rus Eng",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "The Shawshank Redemption 1994 1080p Bluray DTS x264-PerfectionHD\n👤 0 💾 11.97 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7987df6fcc5b24cba65397301c74444677545ceb/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The Shawshank Redemption (1994) 720p BrRip x264 - YIFY\n👤 100 💾 848.96 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ac418db33fa5cea4fab11bc58008fe08f291c9be/<opaque>/The Shawshank Redemption 1994.720p.BRRip.x264.YIFY.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "The Shawshank Redemption 1994.720p.BRRip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The Shawshank Redemption 1994 720p NF WEB-DL DDP5 1 H 264-ViSTA\n👤 13 💾 3.75 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/85e8ca0b89ebafa419d009b65a46cac4a1d8ca01/<opaque>/The Shawshank Redemption 1994 720p NF WEB-DL DDP5 1 H 264-ViSTA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "The Shawshank Redemption 1994 720p NF WEB-DL DDP5 1 H 264-ViSTA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The Shawshank Redemption 1994 720p NF WEB-DL DDP5 1 AV1-ViSTA\n👤 4 💾 2.66 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aa2de9202a1fc285c270f838c14a0dc2ad079697/<opaque>/The Shawshank Redemption 1994 720p NF WEB-DL DDP5 1 AV1-ViSTA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL",
+        "filename": "The Shawshank Redemption 1994 720p NF WEB-DL DDP5 1 AV1-ViSTA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The.Shawshank.Redemption.1994.REMASTERED.720p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 2 💾 1.01 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de925c361c94d7e19fa69b5199976c43aca8ffa9/<opaque>/The.Shawshank.Redemption.1994.REMASTERED.720p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|hevc|10bit",
+        "filename": "The.Shawshank.Redemption.1994.REMASTERED.720p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The.Shawshank.Redemption.1994.720p.BluRay.999MB.x265.10bit-Ga\n👤 1 💾 978.65 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d81b9f3450d29f8243f49134fec8c9b99a9db191/<opaque>/The.Shawshank.Redemption.1994.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "The.Shawshank.Redemption.1994.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRip 720p]\n👤 1 💾 7.88 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b292a7cbc38b857f6acaf000ad75cdfc753e17f5/<opaque>/Shawshank Redemption.1994.BD.Rip.720p.h264.Rus.Eng.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|h264",
+        "filename": "Shawshank Redemption.1994.BD.Rip.720p.h264.Rus.Eng.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The.Shawshank.Redemption.1994.720p.NF.WEB-DL.DDP5.1.x264-OzONE\n👤 0 💾 3.83 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/424a9ab4b41865b121ec5943e22f6c3bafdb54f3/<opaque>/The.Shawshank.Redemption.1994.720p.NF.WEB-DL.DDP5.1.x264-OzONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|x264",
+        "filename": "The.Shawshank.Redemption.1994.720p.NF.WEB-DL.DDP5.1.x264-OzONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The Shawshank Redemption (1994) REMASTERED 720p10Bit BluRay Hindi English ESub x265 R∆G∆ [ProtonMovies]\n👤 0 💾 1.14 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/475e15a007e4e60e7576b5fdc1c6de1d4c21d8f7/The Shawshank Redemption (1994) REMASTERED 720p BluRayHindi 2.0 + English 5.1 ESub x265 R∆G∆ [ProtonMovies].mkv/0/The Shawshank Redemption (1994) REMASTERED 720p BluRayHindi 2.0 + English 5.1 ESub x265 R∆G∆ [ProtonMovies].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "The Shawshank Redemption (1994) REMASTERED 720p BluRayHindi 2.0 + English 5.1 ESub x265 R∆G∆ [ProtonMovies].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Stephen King Movie Pack 2 Mixed 720p x264 [i_c]\nThe Shawshank Redemption 1994 720p WEBRip x264 [i_c].mkv\n👤 0 💾 1.78 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/04c4eaa4170e99e66802e5447a53a41ec991de07/<opaque>/The Shawshank Redemption 1994 720p WEBRip x264 [i_c].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "The Shawshank Redemption 1994 720p WEBRip x264 [i_c].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The.Shawshank.Redemption.1994.720p.BluRay.x264-NeZu\n👤 0 💾 1.44 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/964d31b86e9ca71100092dfdb377f14a760f0435/<opaque>/the.shawshank.redemption.1994.720p.bluray.x264-nezu.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "the.shawshank.redemption.1994.720p.bluray.x264-nezu.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Um Sonho de Liberdade 720p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo\n👤 0 💾 1.15 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cdea2e3ceba8555f8dade56521e9479fdfe71f3c/Um Sonho de Liberdade 720p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo.mkv/1/Um Sonho de Liberdade 720p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Um Sonho de Liberdade 720p (1994) Dual Áudio BluRay 5.1 -- By- Lucas Firmo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "The Shawshank Redemption 1994 x264 720p Esub BluRay Dual Audio English Hindi GOPISAHI\n👤 0 💾 1.25 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ee0c0c207264bcc18340fdbb7a057f171fce3250/<opaque>/The Shawshank Redemption 1994 x264 720p Esub BluRay Dual Audio English Hindi GOPISAHI.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "The Shawshank Redemption 1994 x264 720p Esub BluRay Dual Audio English Hindi GOPISAHI.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Um sonho de liberdade (1994) BDRip bluray HD 720p dublado - dere\n👤 0 💾 914.84 MB ⚙️ ThePirateBay\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/326803ca5c48ac50361c17e3e3654c99a068bba8/um sonho de liberdade.mp4/0/um sonho de liberdade.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "um sonho de liberdade.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "The Shawshank Redemption 1994 1080p [Timati]\n👤 0 💾 1.96 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1bcf5a5f6f1d17c76b2038e0c2876a12fb41f146/<opaque>/The Shawshank Redemption 1994 1080p.ts",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "The Shawshank Redemption 1994 1080p.ts"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBluRay REMUX",
+      "title": "The Shawshank Redemption (1994) BD REMUX (AVC DTSHD-MA) - FiNAL\n👤 10 💾 29.29 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b142ea6b20950a7beaa7c6749a0cf87d61166768/The Shawshank Redemption (1994) REMUX (AVC DTSHD-MA) - FiNAL.mkv/0/The Shawshank Redemption (1994) REMUX (AVC DTSHD-MA) - FiNAL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay REMUX|avc",
+        "filename": "The Shawshank Redemption (1994) REMUX (AVC DTSHD-MA) - FiNAL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRip-AVC] MVO (Союз Видео) + 3x AVO + Sub Rus Eng + Original Eng\nThe Shawshank Redemption by_IVAN@190282.mkv\n👤 5 💾 4.83 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a9b77a64a11d79d946fe3429fa3f38726c8635fc/<opaque>/The Shawshank Redemption by_IVAN@190282.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "The Shawshank Redemption by_IVAN@190282.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nDVDRip",
+      "title": "Стивен Кинг. Коллекция фильмов [88 фильмов] (1976-2009) DVDRip\n1991-1997/Побег из Шоушенка.avi\n👤 5 💾 1.37 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c6533c3b587c550c68c0ab8785961a60014542ce/<opaque>/Побег из Шоушенка.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Побег из Шоушенка.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Cadena Perpetua[Drama][1994][HDRip-XviD AC3 5.1 Spanish][newpct].avi\n👤 3 💾 1.94 GB ⚙️ MejorTorrent\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e22628a4634dc89d09a3254520b8231ab185b4b6/<opaque>/Cadena Perpetua[Drama][1994][HDRip-XviD AC3 5.1 Spanish][newpct].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|xvid",
+        "filename": "Cadena Perpetua[Drama][1994][HDRip-XviD AC3 5.1 Spanish][newpct].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRip] MVO (FocusX) + AVO (С. Визгунов) + VO (Е. Гаевский) + MVO Ukr (1+1) + Original Eng + Sub Rus Ukr Eng\nPobeg.Iz.Shoushenka.1994.DUAL.BDRip.XviD.AC3.-HRIME.avi\n👤 1 💾 2.9 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/874a72da29239f8bb05743e3db3453c928802e64/<opaque>/Pobeg.Iz.Shoushenka.1994.DUAL.BDRip.XviD.AC3.-HRIME.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Pobeg.Iz.Shoushenka.1994.DUAL.BDRip.XviD.AC3.-HRIME.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBRRip",
+      "title": "Cadena Perpetua [BLuRay Rip][AC3 5.1 Castellano][www.pctnew.com][1994]\n👤 0 💾 1.94 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b3867d07dec268682e5d7bf69bc5776101b0a939/<opaque>/Cadena Perpetua [BLuRay Rip][AC3 5.1 Castellano][www.pctnew.com][1994].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "Cadena Perpetua [BLuRay Rip][AC3 5.1 Castellano][www.pctnew.com][1994].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "The.Shawshank.Redemption.1994.iNTERNAL.BDRip.x264.REGRET.\n👤 0 💾 1.22 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/693b2b67529827a1e1aea3cd914f23845e116ff3/regret-shawshank.mkv/1/regret-shawshank.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|x264",
+        "filename": "regret-shawshank.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nHDRip",
+      "title": "Cadena Perpetua (1994)[HDRip-XviD-AC3-ESP]\n👤 0 💾 2.18 GB ⚙️ ThePirateBay\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/557f905819bce70f52b5cb7693f1a6b5a3b12dc0/Cadena Perpetua (1994)[HDRip-XviD-AC3-ESP]/undefined/Cadena Perpetua (1994)[HDRip-XviD-AC3-ESP]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|xvid"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBluRay REMUX",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BD-Remux\n👤 0 💾 21.59 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9f8c2e171b1d99012336a63468e0c70677cb4790/ The Shawshank Redemption (1994) BD-Remux/undefined/ The Shawshank Redemption (1994) BD-Remux",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay REMUX"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nXviD",
+      "title": "Le ali della liberta - The Shawshank Redemption (1994) [XviD Ac3 Ita Eng Sub Ita] Drama [TnTrippers]\n👤 0 💾 1.56 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/86598deca9b1390f9fd31d9dd1c143afc300aa96/aliberta.avi/0/aliberta.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|XviD|xvid",
+        "filename": "aliberta.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Official IMDb Top 250 Movies Collection 6/17/2011\nThe Shawshank Redemption (1994).avi\n👤 6 💾 702.96 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4986ace2ee7a564508e0d5cfdde2d9018b8af942/The Shawshank Redemption (1994).avi/0/The Shawshank Redemption (1994).avi",
+      "behaviorHints": {
+        "filename": "The Shawshank Redemption (1994).avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "43 Stephen King Movies\nShawshank Redemption.avi\n👤 2 💾 700 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a0e577093bde9e43d4c747f1c213fecf68840abe/Shawshank Redemption.avi/37/Shawshank Redemption.avi",
+      "behaviorHints": {
+        "filename": "Shawshank Redemption.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Paczka filmow nr.15 na Telegram | 1900 - 2026 | Dubbing Lektor\nThe.Shawshank.Redemption.1994.Lektor.mp4\n👤 1 💾 2.38 GB ⚙️ EXT\nDubbed",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aae15494550912dcab436580bd17a3ab8eabede9/<opaque>/The.Shawshank.Redemption.1994.Lektor.mp4",
+      "behaviorHints": {
+        "filename": "The.Shawshank.Redemption.1994.Lektor.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Le.Ali.Della.libertà.H264.Ita.Eng.Ac3.Sub.Ita.by.SnakeSPL79\n👤 0 💾 2.81 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8477142419f7134e13c68ed1b726f3f8c7329192/<opaque>/LE_ALI_DELLA_LIBERTA__SCN.Title1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|h264",
+        "filename": "LE_ALI_DELLA_LIBERTA__SCN.Title1.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k HDR",
+      "title": "Le.ali.della.libertà.1994.UHDRip.2160p.Hevc.HDR.AC3.ITA.ENG.SUBS.LFi.mkv\n👤 6 💾 23.58 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/61d0ec5059e0c05d3957869dcb530b5f035735e9/<opaque>/Le.ali.della.libertà.1994.UHDRip.2160p.Hevc.HDR.AC3.ITA.ENG.SUBS.LFi.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|UHDRip|hevc|HDR",
+        "filename": "Le.ali.della.libertà.1994.UHDRip.2160p.Hevc.HDR.AC3.ITA.ENG.SUBS.LFi.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k HDR",
+      "title": "Cadena perpetua [4K UHDrip 2160p][HDR10][Castellano AC3 5.1-Ingles DTS-HD 5.1+Subs][ES-EN]\n👤 0 💾 27.06 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cb09ec434110679bc8b342f83baae054b14bf055/<opaque>/Cadena perpetua 4Krip2160.pctreload1.com.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|UHDRip|10bit|HDR",
+        "filename": "Cadena perpetua 4Krip2160.pctreload1.com.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k HDR",
+      "title": "Cadena perpetua [4K UHDremux 2160p][HDR10][Castellano AC3 5.1-Ingles DTS-HD 5.1+Subs][ES-EN]\n👤 0 💾 53.9 GB ⚙️ Wolfmax4k\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/253759a557afaedb1fb43014ea6f57be8460c9fc/<opaque>/Cadena perpetua 4Kremux2160.pctreload1.com.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|HDR",
+        "filename": "Cadena perpetua 4Kremux2160.pctreload1.com.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "The.Shawshank.Redemption.1994.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.5.1-SWTYBLZ\n👤 0 💾 47.17 GB ⚙️ RARBG",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8623b78d5184e5daf3f7f69f981e532dd888b127/<opaque>/The.Shawshank.Redemption.1994.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.5.1-SWTYBLZ.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "The.Shawshank.Redemption.1994.2160p.BluRay.x265.10bit.SDR.DTS-HD.MA.5.1-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p HDR",
+      "title": "The.Shawshank.Redemption.1994.1080p.BDRip.HDR.AV1.OPUS.mSubs-HeCviCu\n👤 2 💾 1.55 GB ⚙️ EXT\nMulti Subs / 🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇩🇰 / 🇸🇪 / 🇳🇴",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eada87d6dcb6e884e1b119eb729957905636b302/<opaque>/The.Shawshank.Redemption.1994.1080p.BDRip.HDR.AV1.OPUS.mSubs-HeCviCu.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|HDR",
+        "filename": "The.Shawshank.Redemption.1994.1080p.BDRip.HDR.AV1.OPUS.mSubs-HeCviCu.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Stephen King Pack PACK (1985 - 2003) [ExtremlymTorrents]\nThe.Shawshank.Redemption.1994.1080p.Bluray.DTS.x264-PerfectionHD.mkv\n👤 7 💾 1.09 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/31ff5f4db3944eb3bc7ad380eb4154883fc367b2/<opaque>/The.Shawshank.Redemption.1994.1080p.Bluray.DTS.x264-PerfectionHD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.Bluray.DTS.x264-PerfectionHD.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Imdb top 263 movies hindi english gdrive\nThe.Shawshank.Redemption.1994.1080p.x264.YIFY.mp4\n👤 4 💾 1.6 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/66672b822002b6f19af478fb7c886787afee5f9f/<opaque>/The.Shawshank.Redemption.1994.1080p.x264.YIFY.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "The.Shawshank.Redemption.1994.1080p.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS\n👤 1 💾 11.03 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7a6c611149e2f957e0414439ac49baaf5470d88e/<opaque>/The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "The.Shawshank.Redemption.1994.BluRay.1080p.x265.10bit.5Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Le Ali Della Libert BDrip 720p H264 Ita Eng Aac [BlackBit] Mutu 1980 MP4\n👤 1 💾 3.17 GB ⚙️ MagnetDL\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6c0086e1c6a7ad1af0dce11f7438453ff92d636b/<opaque>/Le.Ali.Della.Libertà.BDrip 720p.H264.Ita Eng Aac[BlackBit]mutu_1980.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|h264",
+        "filename": "Le.Ali.Della.Libertà.BDrip 720p.H264.Ita Eng Aac[BlackBit]mutu_1980.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "The.Shawshank.Redemption.1994.720p.BluRay.x264-SiNNERS.mkv\n👤 1 💾 6.56 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/047e715446c9f73f9e618e1bb83e12d809c261a3/<opaque>/The.Shawshank.Redemption.1994.720p.BluRay.x264-SiNNERS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBRRip",
+      "title": "The Shawshank Redemption 1994 BRRip Sub Eng-Arabic-French-Swedis\nThe Shawshank Redemption,1994,BRRip-ToZoon/The Shawshank Redemption,1994,BRRip-ToZoon.AVI\n👤 4 💾 1.73 GB ⚙️ ThePirateBay\n🇬🇧 / 🇫🇷 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/35eaa50ed89dd86dbb3a5921fb7d29534243fba0/<opaque>/The Shawshank Redemption,1994,BRRip-ToZoon.AVI",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "The Shawshank Redemption,1994,BRRip-ToZoon.AVI"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBRRip",
+      "title": "The Shawshank Redemption 1994 BRRip Sub Eng-Arabic-French-Swedis\nThe Shawshank Redemption,1994,BRRip,Sub Arabic-ToZoon/The Shawshank Redemption,1994,BRRip,Sub Arabic-ToZoon.AVI\n👤 4 💾 1.78 GB ⚙️ ThePirateBay\n🇬🇧 / 🇫🇷 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/35eaa50ed89dd86dbb3a5921fb7d29534243fba0/<opaque>/The Shawshank Redemption,1994,BRRip,Sub Arabic-ToZoon.AVI",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "The Shawshank Redemption,1994,BRRip,Sub Arabic-ToZoon.AVI"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBRRip",
+      "title": "The Shawshank Redemption (1994) BRRip Oldies Dual-Audio\n👤 2 💾 2.38 GB ⚙️ ThePirateBay\nDual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5fdcc28d0fd7c1d801c760e9e3574285e58492c3/The Shawshank Redemption (1994) BRRip Oldies Dual-Audio.mkv/0/The Shawshank Redemption (1994) BRRip Oldies Dual-Audio.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "The Shawshank Redemption (1994) BRRip Oldies Dual-Audio.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip от Dalemake | P\n👤 1 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b90d3f38f4ab38d9a85f0f8c3b160f280badf335/<opaque>/Pobeg_iz_Shoushenka_1994_BDRip_by_Dalemake.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Pobeg_iz_Shoushenka_1994_BDRip_by_Dalemake.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "Побег из Шоушенка / The Shawshank Redemption (1994) BDRip-AVC от New-team | P\n👤 1 💾 1.45 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f72f7c0f866e9f648ce68424922dedf36a369737/<opaque>/Shawshank.Redemption.1994.BDRip-AVC.by_dexter_lex.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Shawshank.Redemption.1994.BDRip-AVC.by_dexter_lex.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nBDRip",
+      "title": "Побег из Шоушенка / The Shawshank Redemption [1994 BDRip-AVC]\n👤 1 💾 2.17 GB ⚙️ Rutracker\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd331ba666b65bff9f0bc416aba2b980b5a27ba9/Shawshank Redemption.mkv/0/Shawshank Redemption.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Shawshank Redemption.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nDVDRip",
+      "title": "The Shawshank Redemption 1994 DVDRiP DivX-WCH\n👤 1 💾 1.38 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2fa82a1d4de164e928a4bbce18932e534705da23/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|divx"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "The Shawshank Redemption - (Spanish Subtitles)\n👤 3 💾 1.6 GB ⚙️ ThePirateBay\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/490dd4d4717319c80dcdf029025ee83addf6b787/The Shawshank Redemption - (Spanish Subtitles)/undefined/The Shawshank Redemption - (Spanish Subtitles)"
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Shawshank Redemption\n👤 1 💾 702.96 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8712cfba0b96526523106f442d68cc3c6308cb57/Shawshank Redemption/undefined/Shawshank Redemption"
+    }
+  ]
+}

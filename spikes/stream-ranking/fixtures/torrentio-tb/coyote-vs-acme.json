@@ -1,0 +1,1181 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "coyote-vs-acme",
+  "request": "https://torrentio.strem.fun/<config>/stream/movie/tt1756855.json",
+  "recordedAt": "2026-10-11T12:05:30.979Z",
+  "status": 200,
+  "ms": 660,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Coyote vs Acme 2026 2160p iT WEB-DL DDP5.1 Atmos DV HDR H265-BYNDR\n👤 753 💾 17.86 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ae03810f8c9fb39807f01270ee7436a35fbc4c0d/<opaque>/Coyote vs Acme 2026 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Coyote vs Acme 2026 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA\n👤 653 💾 18.13 GB ⚙️ Torrent9\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/48e86ba78b35f3265ee3b83b5dd83cc931dc557f/<opaque>/Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|DV|HDR",
+        "filename": "Coyote.vs.Acme.2026.MULTI.VFQ.2160p.WEB.DV.HDR.H265-BOUBA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Coyote.VS.Acme.2026.2160p.iT.WEB-DL.DV.HDR10+.DDP5.1.Atmos.H265.MP4-BTM\n👤 607 💾 18.56 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/907eeb1c199e341d659660dbca17a84fda31886e/<opaque>/Coyote.VS.Acme.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Coyote.VS.Acme.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL\n👤 376 💾 15.52 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fae9198e446969ae7ae834b202d9d33791eb220d/<opaque>/Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-3CooL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+ | HDR",
+      "title": "Хитрый койот / Coyote vs. Acme [2026 WEB-DL 2160p HDR10 HDR10+ Dolby Vision] Dub + MVO + Original Eng + Sub Rus Eng\n👤 205 💾 20.77 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3e4714f76018fd248aaf3028c407ff96a3325a68/<opaque>/Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR10+|HDR",
+        "filename": "Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) UHD WEB-DL 2160p | 4K | HDR10+ | Dolby Vision P8 | D P | HDRezka Studio\n👤 127 💾 18.41 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6486e11aebb78dd1bff732558c0683667497f292/<opaque>/Coyote.vs.Acme.2026.x265.WEB-DL.2160p.HDR-DV.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR10+",
+        "filename": "Coyote.vs.Acme.2026.x265.WEB-DL.2160p.HDR-DV.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Coyote.vs.Acme.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA\n👤 102 💾 2.57 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2d93bc0f85baee5b7ebf9c6b31a76a0d0b29c4af/<opaque>/Coyote.vs.Acme.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|DV|HDR10+",
+        "filename": "Coyote.vs.Acme.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Coyote vs Acme 2026 2160p iT WEB-DL HDR10+ DV HEVC DDPA 5.1. x265-E\n👤 85 💾 10.88 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4cd48e710ce20296f46d5256600054cb9aba3bc2/Coyote vs Acme 2026.mkv/0/Coyote vs Acme 2026.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|10bit|DV|HDR10+",
+        "filename": "Coyote vs Acme 2026.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) UHD DCPRip 2160p | 4K | HDR10 | D P | HDRezka Studio\n👤 39 💾 11.38 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/70e211914b5b65d057fd2c491b9501c60eccb0b3/<opaque>/Coyote.vs.Acme.2026.DCP.x265.WEB-DL.2160p.HDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|HDR",
+        "filename": "Coyote.vs.Acme.2026.DCP.x265.WEB-DL.2160p.HDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC\n👤 37 💾 15.52 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1474121a58d3777c19063988cd1e6c02f6706d96/<opaque>/Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Coyote.vs.Acme.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST\n👤 35 💾 6.47 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/912757260743720d54f6ae2e4132eab162c9f0b3/<opaque>/Coyote.vs.Acme.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV|HDR",
+        "filename": "Coyote.vs.Acme.2026.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.(2026).WEB-DL.2160p.HDR.Ukr.Eng\n👤 34 💾 18.12 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0754a13972457b6faee79d99f57a69a23a909fe4/Coyote.vs.Acme.(2026).WEB-DL.2160p.HDR.Ukr.Eng.mkv/0/Coyote.vs.Acme.(2026).WEB-DL.2160p.HDR.Ukr.Eng.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|HDR",
+        "filename": "Coyote.vs.Acme.(2026).WEB-DL.2160p.HDR.Ukr.Eng.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.WEB-DL.2160p.HDR.Master5\n👤 26 💾 10.83 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a474e3e8a7e9c3468136124ab29561f81ae3a724/<opaque>/Coyote.vs.Acme.2026.WEB-DL.2160p.HDR.Master5.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|HDR",
+        "filename": "Coyote.vs.Acme.2026.WEB-DL.2160p.HDR.Master5.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.DCPRip.2160p.HDR10.H265.UkrEng\n👤 7 💾 10.7 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0e37357ce10ecf904d97751ef54365cbff2c2102/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC\n👤 5 💾 15.52 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c71e101c9c8244283718cd48c22eff6556244f62/<opaque>/Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.HDR.DAUL.AUDIO.H265-AOC\n👤 1 💾 15.52 GB ⚙️ EXT\n🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aa57e339cff9e0805818193ef4d9a59198d3d106/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+ | HDR",
+      "title": "Хитрый койот / Coyote vs. Acme [2026 UHD BDRemux 2160p HDR10 HDR10+ Dolby Vision] 2x Dub + MVO + MVO Ukr + Original Eng + Sub Rus Eng\n👤 0 💾 18.69 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8bac27ca4b10f77d95625f102e88f5c682b49158/<opaque>/Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|10bit|DV|HDR10+|HDR",
+        "filename": "Coyote.VS.Acme.2026.2160p.10bit.HDR.DV.WEB-DL.x265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON\n👤 308 💾 12.86 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3014e112dbb7f983f8eda302d6a20d21e7861f6f/<opaque>/Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.2160p.DCP.HEVC.PCM5.1+DDP5.1-UNiON.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote Vs Acme 2026 2160P DCP SDR. X265 POOTLED\n👤 84 💾 32.97 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/769d658831730cde6475e8457d91d6c416c1e1d3/<opaque>/Coyote Vs Acme 2026 2160P DCP SDR. X265 POOTLED.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265",
+        "filename": "Coyote Vs Acme 2026 2160P DCP SDR. X265 POOTLED.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) UHD WEB-DL 2160p | 4K | SDR | D P | HDRezka Studio\n👤 37 💾 11.78 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/91fcc2eeb45dd18f7b119844f882162f865853f6/<opaque>/Coyote.vs.Acme.2026.x265.WEB-DL.2160p.SDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265",
+        "filename": "Coyote.vs.Acme.2026.x265.WEB-DL.2160p.SDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC\n👤 32 💾 74.08 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ad95deb05cf879b242388de65b9dae97d3e589e4/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote vs. Acme (2026) DCPRip 4K 2160p AAC 5.1 ENG MULTI SUBS ENGLISH-SPANISH\n👤 22 💾 7.72 GB ⚙️ EXT\nMulti Subs / 🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c6adb3d95f9aec01d72b3df2198aeb220e54d1e5/Coyote vs. Acme (2026) DCPRip 4K 2160p AAC 5.1 ENG MULTI SUBS ENGLISH-SPANISH.mkv/0/Coyote vs. Acme (2026) DCPRip 4K 2160p AAC 5.1 ENG MULTI SUBS ENGLISH-SPANISH.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Coyote vs. Acme (2026) DCPRip 4K 2160p AAC 5.1 ENG MULTI SUBS ENGLISH-SPANISH.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.Vs.Acme.2026.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR\n👤 20 💾 11.23 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f4ad2a020eee1de93cf369c8b3bebf6c9739547b/<opaque>/Coyote.vs.Acme.2026.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "Coyote.vs.Acme.2026.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.vs.Acme.(2026).WEB-DL.2160p.SDR.Ukr.Eng\n👤 10 💾 11.49 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4a17e3e3f90a39829713f2a4e29ab049fc705dbc/Coyote.vs.Acme.(2026).WEB-DL.2160p.SDR.Ukr.Eng/undefined/Coyote.vs.Acme.(2026).WEB-DL.2160p.SDR.Ukr.Eng",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.SDR.DAUL.AUDIO.H264-AOC\n👤 8 💾 74.08 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/61f1602289e5068d3441ff7b39d195e5446d4a7a/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.vs.Acme.2026.DCP.4K.2160p.DCI.SDR.H264.Ukr.Eng\n👤 2 💾 74.17 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/815ef3da9930df797734958930fc662feba59891/<opaque>/Coyote.vs.Acme.2026.DCP.4K.2160p.DCI.SDR.H264.Ukr.Eng.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h264",
+        "filename": "Coyote.vs.Acme.2026.DCP.4K.2160p.DCI.SDR.H264.Ukr.Eng.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.Vs.Acme.2026.MULTI.VFQ.2160p.WEB.H265.E-AC3.Atmos-AKM\n👤 1 💾 11.5 GB ⚙️ EXT\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/779b87df3c71685a095ca3f524a6eeb8b703c15e/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.SDR.HEVC.10bit.FLAC5.1.EAC3.5.1-Repacks36\n👤 1 💾 16.33 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2db0f9f546fa0db681e93e0aa238c3e604cdb883/<opaque>/Coyote.vs.Acme.2026.2160p.DCP.SDR.HEVC.10bit.FLAC5.1.EAC3.5.1-Repacks36.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.SDR.HEVC.10bit.FLAC5.1.EAC3.5.1-Repacks36.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "Struś Pędziwiatr i zemsta Kojota - Coyote vs Acme 2026 [HLG HDR SDR] [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL AI] [Alusia]\n👤 16 💾 4.7 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/57099f16a3e1d07097eaf38c0a6e25529b5552be/<opaque>/Struś Pędziwiatr i zemsta Kojota - Coyote vs Acme 2026 [HLG HDR SDR] [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL AI] [Alusia].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264|HDR",
+        "filename": "Struś Pędziwiatr i zemsta Kojota - Coyote vs Acme 2026 [HLG HDR SDR] [1080p.WEB-DL.H264.AC3.5.1.AS76-FT] [ENG-Lektor PL AI] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "Coyote.vs.Acme.2026.MULTi.HLG.HDR.1080p.WEB-DL.H264.DD5.1-AS76\n👤 15 💾 4.7 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4904e26fa0b8fb40baa5c3c5dc2146b5b865d811/<opaque>/Coyote.vs.Acme.2026.MULTi.HLG.HDR.1080p.WEB-DL.H264.DD5.1-AS76.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264|HDR",
+        "filename": "Coyote.vs.Acme.2026.MULTi.HLG.HDR.1080p.WEB-DL.H264.DD5.1-AS76.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.DCPRIP.HEVC.x265.RMTeam\n👤 3771 💾 1.53 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6932573983f48ce852f35da3b65a3af10094f82/<opaque>/Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR\n👤 3280 💾 7.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a4f71d97b5f78c1de0b904c542eca2b86297c827/<opaque>/Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir\n👤 1916 💾 1.85 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e20eb2f498ccb5a8192691fe77e77ebdfa283d3f/<opaque>/Coyote.vs.Acme.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Coyote.vs.Acme.2026.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264-DKS\n👤 1101 💾 7.08 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/84c4d7eb60a5b21da55571e7e1cea397b4ee794e/<opaque>/Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY\n👤 1077 💾 5.29 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/48dd2ff80bc6b4f468ef269933431c8424e966dc/<opaque>/Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) DCPRip 1080p | D\n👤 583 💾 2.16 GB ⚙️ Rutor\n🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/05f609d58b357329f4f9330dab9cae284a0e01a1/Coyote vs Acme (2026) DCPRip 1080p.mkv/0/Coyote vs Acme (2026) DCPRip 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote vs Acme (2026) DCPRip 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264\n👤 434 💾 2.4 GB ⚙️ EXT\nMulti Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1fee34349bf7c5643f04b3282b59bea9d0579b89/<opaque>/Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Coyote.Vs.Acme.2026.1080p.DCPRIP.MULTi.x264.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC\n👤 215 💾 2.14 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c07871ac804ad57ce942d419e0a990f263ce1ad6/<opaque>/Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote Vs Acme 2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KIN…\nCoyote Vs Acme  2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KINGDOM.mkv\n👤 201 💾 5.23 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf9a71c7980f71d6ab1b60f616ae565ee2a5b54e/<opaque>/Coyote Vs Acme  2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KINGDOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Coyote Vs Acme  2026 1080p WEB-DL HEVC x265 10Bit DDP5.1 Subs KINGDOM.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.PLSUBBED.AI.1080p.DCP.XviD.AC3-MAXX.mp4\n👤 152 💾 2.61 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7a0dd144c715df1e83ee16872fac48af7ed63503/<opaque>/Coyote.vs.Acme.2026.PLSUBBED.AI.1080p.DCP.XviD.AC3-MAXX.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|XviD|xvid",
+        "filename": "Coyote.vs.Acme.2026.PLSUBBED.AI.1080p.DCP.XviD.AC3-MAXX.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote_Vs_Acme_2026_1080p_WEBRip_Dub\n👤 134 💾 4.26 GB ⚙️ EXT\nDubbed",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba3d436dc4eb40c79ccfad7f736e56c3fa93ae72/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera\n👤 128 💾 2.73 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/94c1c003fee3a6ea8d7f21e4b4af65f3447c7a41/<opaque>/Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Coyote vs Acme 2026 V2 1080p WebRip Opus 5 1 x265-Lootera.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote Vs Acme (2026) [1080p] [WEBRip] [5.1]\n👤 105 💾 1.9 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/740428448e390c7dafe4f44bb9d2947c9cf851a5/<opaque>/Coyote.Vs..Acme.2026.1080p.WEBRip.x264.AAC5.1.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Coyote.Vs..Acme.2026.1080p.WEBRip.x264.AAC5.1.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs. Acme 2026 1080p WEBRip\n👤 100 💾 1.72 GB ⚙️ YTS",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9f4a238978d7fbbc822223138c7566073692bb90/<opaque>/Coyote.Vs..Acme.2026.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Coyote.Vs..Acme.2026.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs. Acme (2026) [1080p] [WEBRip] [5.1]\n👤 100 💾 1.9 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e35692d2a048044f6201a6564b436c7aa9fef454/<opaque>/Coyote.Vs..Acme.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Coyote.Vs..Acme.2026.1080p.WEBRip.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 77 💾 1.39 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a6c7836f1f1504e5ebbcc467611fe4f3dfedd2ef/<opaque>/Coyote.vs.Acme.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Coyote.vs.Acme.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) DCPRip 1080p | D\n👤 66 💾 7.82 GB ⚙️ Rutor",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b0688a19cb7e7e7affe8d2a1fbd4300a7b9a7b11/Coyote vs. Acme (2026) DCPRip 1080p.mkv/0/Coyote vs. Acme (2026) DCPRip 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote vs. Acme (2026) DCPRip 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme / Kojot vrací uder 2026 [1080p][HEVC]\n👤 54 💾 1.9 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/08a17b6b381153aca2578fa10f96919d2a61dd77/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB H264-NAISU\n👤 43 💾 5.28 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2ece566e61eafc986e8e00cf039bba318098f543/<opaque>/coyote.vs.acme.2026.1080p.web.h264-naisu.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "coyote.vs.acme.2026.1080p.web.h264-naisu.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.WEBRip.x265-KONTRAST\n👤 40 💾 2.75 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/74ef19aeb1c21fca8dd6b04561c072f9a1ebe62d/<opaque>/Coyote.vs.Acme.2026.1080p.WEBRip.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Coyote.vs.Acme.2026.1080p.WEBRip.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WebRip Opus 5 1 x265-Lootera\n👤 29 💾 2.73 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fce0a3e3445467bf681e8058dd18a052108f4a13/<opaque>/Coyote vs Acme 2026 1080p WebRip Opus 5 1 x265-Lootera.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Coyote vs Acme 2026 1080p WebRip Opus 5 1 x265-Lootera.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) DCPRip 1080p | D Р\n👤 27 💾 8.37 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇪🇸 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/90f141e8d05d977cbda35764ec8a45545494b804/Coyote vs Acme (2026).mkv/0/Coyote vs Acme (2026).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote vs Acme (2026).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.D.BDRip.1080p\n👤 27 💾 7.6 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/86f6070b62ed9c14c86b8610e151ad4178927548/<opaque>/Coyote.vs.Acme.2026.D.BDRip.1O8Op.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Coyote.vs.Acme.2026.D.BDRip.1O8Op.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEBRip x265-DH\n👤 23 💾 2.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9af059abb3b54436758f2eb61527074e7f9d5fc9/<opaque>/Coyote vs Acme 2026 1080p WEBRip x265-DH.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Coyote vs Acme 2026 1080p WEBRip x265-DH.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5 1-BONE\n👤 21 💾 1.72 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b4e7c1bf6a942544f70b28ab49ebed2872bc737d/<opaque>/Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p 10bit WEBRip 6CH x265 HEVC-PSA\n👤 13 💾 1.39 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/387624db6c8e4adc9354d665c39eb0c9789fcf57/<opaque>/Coyote vs Acme 2026 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Coyote vs Acme 2026 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige\n👤 12 💾 2.34 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bce1ea3be9e0e2572d8156723ed8d44dda5bb1a3/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.WEB\n👤 12 💾 2.01 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/29ab966cffe3f26ae1b6ec6f89345234a168734e/<opaque>/Coyote.vs.Acme.2026.1080p.WEB.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote.vs.Acme.2026.1080p.WEB.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Struś Pędziwiatr i zemsta Kojota / Coyote vs Acme (2026) PLSUBBED.AI.1080p.V2.DCP.XviD.AC3-MAXX / Napisy PL (Ai) (PEŁNE) [ToAlien]\n👤 12 💾 3.01 GB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf215cace15b3dd07dc6230a9d464d10c9795fd3/ Napisy PL (Ai) (PEŁNE) [ToAlien]/undefined/ Napisy PL (Ai) (PEŁNE) [ToAlien]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|XviD|xvid"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.Vs..Acme.2026.ENG.Sub.ITA.1080p.WEBRip.x264.AAC5.1-BG\n👤 11 💾 1.89 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇧🇬",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c9cc8e3d530d42c1d897ada87b87b60440e237a0/<opaque>/Coyote.Vs..Acme.2026.ENG.Sub.ITA.1080p.WEBRip.x264.AAC5.1-BG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Coyote.Vs..Acme.2026.ENG.Sub.ITA.1080p.WEBRip.x264.AAC5.1-BG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote Vs Acme 2026 1080p WEBRio x265 DDP5.1-CSP\n👤 10 💾 2.32 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/243a78ef7c6437d8cd5c943f15d0fb8e42a0ade6/<opaque>/Coyote Vs Acme 2026 1080p WEBRio x265 DDP5.1-CSP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265",
+        "filename": "Coyote Vs Acme 2026 1080p WEBRio x265 DDP5.1-CSP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.WEB.1080p.Dragon.Money.Studio\n👤 10 💾 3.59 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d1a1337161184a330c95476940975786c7c9d009/<opaque>/Coyote.vs.Acme.2026.WEB.1080p.Dragon.Money.Studio.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote.vs.Acme.2026.WEB.1080p.Dragon.Money.Studio.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige\n👤 9 💾 2.34 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ae4db8af381d0b5fcd3929edcc7b952b89ed0792/<opaque>/Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs. Acme (2026) (1080p AMZN WEB-DL x265 10bit EAC3 Atmos 5.1 Ghost) [QxR]\n👤 8 💾 3.79 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6894ce9bd0f2a2b85492c3e78715694e6be7b85d/Coyote vs. Acme (2026) (1080p AMZN WEB-DL x265 Ghost).mkv/0/Coyote vs. Acme (2026) (1080p AMZN WEB-DL x265 Ghost).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit",
+        "filename": "Coyote vs. Acme (2026) (1080p AMZN WEB-DL x265 Ghost).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR\n👤 8 💾 7.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ad1c3a52fea69fdd89b46134b0ba15971b0a41ec/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige\n👤 8 💾 2.34 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/12047d99c087724eee23833b64c180a26d82790f/<opaque>/Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL DDP 5 1 x265-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.VOST.1080p.WEB.PCM.H264-NOTAG\n👤 8 💾 6.85 GB ⚙️ EXT\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1b5cc5920b4b39efc2c03b9abcf07bdd6e781855/<opaque>/Coyote.vs.Acme.2026.VOST.1080p.WEB.PCM.H264-NOTAG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Coyote.vs.Acme.2026.VOST.1080p.WEB.PCM.H264-NOTAG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir\n👤 7 💾 1.85 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9c50094b90567f8a299687bf82a3beba24c8d63c/<opaque>/Coyote vs Acme 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Coyote vs Acme 2026 1080p WEBRip 10Bit DDP5 1 x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.DCPRIP.HEVC Subs PTBR\n👤 7 💾 1.53 GB ⚙️ EXT\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d4571af45f0ee1afb29192f94a202d3669f7c54/<opaque>/Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Coyote.vs.Acme.2026.1080p.HEVC.x265.RMTeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.WEB.1080p.MULTi\n👤 7 💾 4.01 GB ⚙️ EXT\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c1a020b761262c61134b6ec2ed16af9ebd4dd7d6/<opaque>/Coyote.vs.Acme.2026.WEB.1080p.MULTi.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote.vs.Acme.2026.WEB.1080p.MULTi.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote Vs Acme (2026) [1080p][Latino]\n👤 6 💾 1.55 GB ⚙️ EXT\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b09a26de199dbb65df122b22f8419aecf60da24e/Coyote Vs Acme (2026) [1080p][Latino][VerPeliculasOnline.org].mp4/0/Coyote Vs Acme (2026) [1080p][Latino][VerPeliculasOnline.org].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote Vs Acme (2026) [1080p][Latino][VerPeliculasOnline.org].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote Vs Acme (2026) 1080p WEBRip 5 1-LAMA\n👤 6 💾 1.9 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/443db6200febd737c3c5c953f713b339d0df614f/<opaque>/Coyote.Vs.Acme.2026.1080p.WEBRip.x264.AAC5.1-LAMA.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Coyote.Vs.Acme.2026.1080p.WEBRip.x264.AAC5.1-LAMA.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-BYNDR\n👤 5 💾 7.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f85714449089033076ac1b81ce88e21cdab7fd09/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080P AMZN WEB-DL DDP5.1 Atmos. X265 POOTLED\n👤 5 💾 3.87 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c3d47d2c7f404841f6472eb63f2184ef94c0bb9f/<opaque>/Coyote vs Acme 2026 1080P AMZN WEB-DL DDP5.1 Atmos. X265 POOTLED.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Coyote vs Acme 2026 1080P AMZN WEB-DL DDP5.1 Atmos. X265 POOTLED.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p AMZN WEB-DL DD 5 1 H 264-playWEB\n👤 5 💾 7.21 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/debbabaa0c8c7ecf056ae9fa59ba8ab0042c49cd/<opaque>/Coyote vs Acme 2026 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5.1 BONE\n👤 5 💾 1.72 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2b442dde5cd383119a0e405ef601ca0860c971e9/<opaque>/Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs. Acme 10bit 4KDS 1080p SVT-AV1-Tritium.mkv\n👤 5 💾 2.67 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/85f8638f42d33238ac47662e89ad903f06d635f2/<opaque>/Coyote vs. Acme 10bit 4KDS 1080p SVT-AV1-Tritium.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|10bit",
+        "filename": "Coyote vs. Acme 10bit 4KDS 1080p SVT-AV1-Tritium.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS\n👤 5 💾 7.08 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6016207f72e20f6279cdd58793026bc704db5a0/<opaque>/Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Coyote.vs.Acme.1080p.DCPRIP.Multi.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme (2026) DCPRip 1080p\n👤 4 💾 2.16 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1c6f7778f9d31fa5bb2aa45481b471fa5ef539b0/Coyote vs Acme (2026) DCPRip 1080p/undefined/Coyote vs Acme (2026) DCPRip 1080p",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.WEB.1080p.2026.MULTi2\n👤 3 💾 4.14 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ab9766ada527b0426f0b629bf308532f3a551869/<opaque>/Coyote.vs.Acme.WEB.1080p.2026.MULTi2.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote.vs.Acme.WEB.1080p.2026.MULTi2.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.(2026).WEB-DL.1080p.Ukr.Eng\n👤 2 💾 7.56 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba9f4471641d54ab9b0712b1080e2da82ceaaec8/Coyote.vs.Acme.(2026).WEB-DL.1080p.Ukr.Eng/undefined/Coyote.vs.Acme.(2026).WEB-DL.1080p.Ukr.Eng",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEB-DL x264 6CH-Pahe in\n👤 2 💾 2.12 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/826d7b122ebc8c9bbefdf5738f007d1914c90edc/<opaque>/Coyote vs Acme 2026 1080p WEB-DL x264 6CH-Pahe in.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Coyote vs Acme 2026 1080p WEB-DL x264 6CH-Pahe in.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC\n👤 2 💾 2.15 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/80b867e023bd733b382e082e9bac6c773a1fd7cc/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme (2026) DCPRip 1080p\n👤 2 💾 2.16 GB ⚙️ EXT\n🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8266a3589405385aa5e1fdc391c2d79be86acab2/Coyote vs Acme (2026) DCPRip 1080p.mkv/0/Coyote vs Acme (2026) DCPRip 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote vs Acme (2026) DCPRip 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.DCP.DDP5.1.H264-AOC\n👤 2 💾 2.15 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd9909c81faba20a3c208d27dec35cfb087fb7fd/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote Vs Acme 2026 1080p DCPRip x265 DDP5.1-CSP\n👤 2 💾 1.64 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ef204d7416ff066928ce1e26340b7192ae0f8cbe/<opaque>/Coyote Vs Acme 2026 1080p DCPRip x265 DDP5.1-CSP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265",
+        "filename": "Coyote Vs Acme 2026 1080p DCPRip x265 DDP5.1-CSP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.MULTi.1080p.WEB.H264-SUPPLY\n👤 1 💾 5.29 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/261f4e8840c1fe2a4396f91181933828891caf27/<opaque>/Coyote.vs.Acme.2026.MULTi.1080p.WEB.H264-SUPPLY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Coyote.vs.Acme.2026.MULTi.1080p.WEB.H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme (2026) I Nternal 1080p Dcp HEVC Ddp 5.1 Agnoston\n👤 1 💾 2.51 GB ⚙️ EXT\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/801c876273aa16da3d028a084ae16a030c2e7cd0/<opaque>/Coyote.vs.Acme.2026.iNTERNAL.1080p.DCP.HEVC.DDP5.1-AGNOSTON.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Coyote.vs.Acme.2026.iNTERNAL.1080p.DCP.HEVC.DDP5.1-AGNOSTON.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p DCPRIP PT BR SUBS\n👤 1 💾 1.53 GB ⚙️ EXT\n🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec82af0dd039bdc487864fbb9be63b7a10261322/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng\n👤 1 💾 7.45 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd0704ff274fa716620efb7b79c4e17ff6854dcc/<opaque>/Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coyote.vs.Acme.2026.1080p.DCP.Ukr Eng.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Coyote.vs.Acme.2026.1080p.HEVC.mp4\n👤 1 💾 2.44 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3183d8da9708322f0d1c13ec6bb291186bc81d3c/<opaque>/Coyote.vs.Acme.2026.1080p.HEVC.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote.Vs.Acme.2026.French.Ca.720P.WEBRIP-NOTAG\n👤 786 💾 2.57 GB ⚙️ Torrent9\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b0679b4ee058568058cc3a6e570b14c13f59a004/<opaque>/Coyote.Vs.Acme.2026.French.Ca.720P. WEBRIP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip",
+        "filename": "Coyote.Vs.Acme.2026.French.Ca.720P. WEBRIP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Хитрый койот / Coyote vs. Acme [2026 WEB-DL 720p] MVO (HDRezka Studio) + Dub (HDRezka Studio) + Original Eng + Sub Rus Eng\n👤 251 💾 4.56 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/782e49943412ee33958ffa1259eb460146c4e93a/<opaque>/Coyote.vs.Acme.2026.720p.AMZN.WEB-DL.H264_New-Team_il68k.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Coyote.vs.Acme.2026.720p.AMZN.WEB-DL.H264_New-Team_il68k.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote vs. Acme (2026) [720p] [WEBRip]\n👤 100 💾 944.24 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/644d3595ca4f06058d7d733a49dd2ec1246d3c1e/<opaque>/Coyote.Vs..Acme.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Coyote.Vs..Acme.2026.720p.WEBRip.x264.AAC-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) DCPRip 720p от New-Team | D P | HDRezka Studio\n👤 68 💾 4.24 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0cf256a65e023073cd7f73044f7ffacd589417f9/<opaque>/Coyote.vs.Acme.2026.720p.DCPRip.x264_New-Team_il68k.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|x264",
+        "filename": "Coyote.vs.Acme.2026.720p.DCPRip.x264_New-Team_il68k.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote vs Acme 2026 720p 10bit WEBRip 6CH x265 HEVC-PSA\n👤 44 💾 715.9 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3dc85547ff9cf0103102c40a311931e3e294c116/<opaque>/Coyote vs Acme 2026 720p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Coyote vs Acme 2026 720p 10bit WEBRip 6CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote.vs.Acme.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 23 💾 715.9 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fd5d97ccd131d9ccf2d6e72869e4ef940616b820/<opaque>/Coyote.vs.Acme.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Coyote.vs.Acme.2026.720p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote.vs.Acme.2026.720p.BluRay.Subtitulado\n👤 8 💾 1.03 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d0fb79ecd59a2561bcf4a279e9cec1a9951ddaab/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote.vs.Acme.2026.MULTi.720p.WEB-DL.H264.AC3-wasik\n👤 6 💾 2.76 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4f95c181e169dd253c03c3859351a0b20f791fc2/<opaque>/Coyote.vs.Acme.2026.MULTi.720p.WEB-DL.H264.AC3-wasik.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Coyote.vs.Acme.2026.MULTi.720p.WEB-DL.H264.AC3-wasik.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote vs Acme 2026 720p AMZN WEB-DL DD 5 1 H 264-playWEB\n👤 5 💾 3.91 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d4a0beeb13842e597a922d9788e4b94136f1d8ca/<opaque>/Coyote vs Acme 2026 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Coyote vs Acme 2026 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote Vs Acme (2026) 720p WEBRip-LAMA\n👤 3 💾 944.24 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b897a1bfaa703eb78c3e2e9f02c30479ef131792/<opaque>/Coyote.Vs.Acme.2026.720p.WEBRip.x264.AAC-LAMA.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Coyote.Vs.Acme.2026.720p.WEBRip.x264.AAC-LAMA.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Coyote vs Acme 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR\n👤 2 💾 4 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8e1e7291d32d1ea9e79cffadb583cfd5161ed901/<opaque>/Coyote vs Acme 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Coyote vs Acme 2026 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Coyote.vs.Acme.2026.1080p.CAM.x264-DKS\n👤 95 💾 4.77 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2969d0dfbb90989c3b54cce50dd50844b4a9e915/<opaque>/Coyote.vs.Acme.2026.1080p.CAM.x264-DKS.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "Coyote.vs.Acme.2026.1080p.CAM.x264-DKS.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Coyote.vs.Acme.2026.TS.1080p.Dragon.Money.Studio\n👤 24 💾 3.46 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/97136130bed13f5db37a9a953d0f5a4abadea2ee/<opaque>/Coyote.vs.Acme.2026.TS.1080p.Dragon.Money.Studio.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Coyote.vs.Acme.2026.TS.1080p.Dragon.Money.Studio.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "Coyote.vs.Acme.2026.TS.1080p\n👤 4 💾 3.46 GB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69f6b42911d6aa0490ee910d0c042bdc7b5cce1e/<opaque>/Coyote.vs.Acme.2026.TS.1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Coyote.vs.Acme.2026.TS.1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nCAM",
+      "title": "Coyote Vs. Acme (2026) (1080P) (Cam) X265 HEVC - GozerTheDestructor\n👤 3 💾 1.53 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4de4d591509b03ab97eb3bb1ef000430f47cdc83/<opaque>/Coyote.Vs.Acme.2026.1080P.Cam.X265.HEVC-Gozer.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|hevc",
+        "filename": "Coyote.Vs.Acme.2026.1080P.Cam.X265.HEVC-Gozer.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nTeleSync",
+      "title": "犬夜叉 InuYasha HD Nittele Plus Broadcast (2022) [NTV 1440x1080 MPEG2 AAC][.ts]\n犬夜叉【七人隊編】(デジタルリマスターHD版) #111 激突! 蛮竜VS風の傷!_2022-07-04_JPTVclub.ts\n👤 1 💾 1.62 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b4829fcb58f3afafafa1325e5cd27d4823978722/犬夜叉【七人隊編】(デジタルリマスターHD版) #111 激突! 蛮竜VS風の傷!_2022-07-04_JPTVclub.ts/11/犬夜叉【七人隊編】(デジタルリマスターHD版) #111 激突! 蛮竜VS風の傷!_2022-07-04_JPTVclub.ts",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b4829fcb58f3afafafa1325e5cd27d4823978722",
+        "filename": "犬夜叉【七人隊編】(デジタルリマスターHD版) #111 激突! 蛮竜VS風の傷!_2022-07-04_JPTVclub.ts"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Coyote.Vs.Acme.2026.French.Ca.WEBRIP-NOTAG\n👤 1118 💾 1.02 GB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8e2a1fa20481b7b82ba57837797c93128c97a990/<opaque>/Coyote.Vs.Acme.2026.French.Ca.WEBRIP.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "Coyote.Vs.Acme.2026.French.Ca.WEBRIP.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Хитрый койот / Coyote vs. Acme [2026 WEB-DLRip-AVC] MVO (HDRezka Studio)\n👤 172 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/13bfe322ffb60060b2d657f92be6eea8134ca2ef/<opaque>/Хитрый койот_2026_WEB-DLRip-AVC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Хитрый койот_2026_WEB-DLRip-AVC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) WEB-DLRip-AVC от DoMiNo & селезень | D P | HDRezka Studio\n👤 84 💾 1.64 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5b6baf8805c7a5ef0d2e40ce5baf236e375be8e3/<opaque>/Хитрый койот.2026.DUB.MVO.WEB-DLRip.x264.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Хитрый койот.2026.DUB.MVO.WEB-DLRip.x264.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Хитрый койот / Coyote vs. Acme [2026 WEB-DLRip] MVO (HDRezka Studio)\n👤 71 💾 1.45 GB ⚙️ Rutracker\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b8ac02eead28139f327a509da88900f66aed2cd/<opaque>/Хитрый койот_2026_WEB-DLRip.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Хитрый койот_2026_WEB-DLRip.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) WEB-DLRip | D P | HDRezka Studio\n👤 19 💾 1.47 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e225f4c849599e194dce2a1364f89cf27aabecc9/<opaque>/Coyote.vs.Acme.2026.WEB-DLRip.TORRNADO.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Coyote.vs.Acme.2026.WEB-DLRip.TORRNADO.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Coyote.vs.Acme.2026.D.BDRip\n👤 19 💾 1.37 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4e2455f9a12713b6c7850133fe9dc428332fd0f4/Coyote.vs.Acme.2026.D.BDRip.avi/0/Coyote.vs.Acme.2026.D.BDRip.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Coyote.vs.Acme.2026.D.BDRip.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Coyote.vs.Acme.(2026).WEB-DLRip-AVC.Ukr.Eng\n👤 4 💾 1.95 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6277f61fd92b8570b30ba6b9a6056ecb48287e17/Coyote.vs.Acme.(2026).WEB-DLRip-AVC.Ukr.Eng/undefined/Coyote.vs.Acme.(2026).WEB-DLRip-AVC.Ukr.Eng",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nBDRip",
+      "title": "Coyote.vs.Acme.2026.D.BDRip\n👤 0 💾 1.37 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/516c3356036673d2d135fff189345f4bec23268c/Coyote.vs.Acme.2026.D.BDRip/undefined/Coyote.vs.Acme.2026.D.BDRip",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nSCR",
+      "title": "Coyote vs Acme 2026 1080p Screener H264-OnlyFlix\n👤 170 💾 1.82 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0829289f656c73e24bcb3eb49e116ce85c312846/<opaque>/Coyote.vs.Acme.2026.1080p.Screener.H264-OnlyFlix.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR|h264",
+        "filename": "Coyote.vs.Acme.2026.1080p.Screener.H264-OnlyFlix.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nSCR",
+      "title": "Coyote vs. Acme (2026) Web Screener 720p LATINO [CLYON]\n👤 46 💾 931.81 MB ⚙️ EXT\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c3eaffb2decbf19cc85a17dd22ed54ce016798c4/Coyote vs. Acme (2026) Web Screener 720p LATINO [CLYON].mkv/0/Coyote vs. Acme (2026) Web Screener 720p LATINO [CLYON].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR",
+        "filename": "Coyote vs. Acme (2026) Web Screener 720p LATINO [CLYON].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Хитрый койот / Coyote vs. Acme [2026 DCPRip] Dub (Dragon Studio) + MVO (Украинский)\n👤 502 💾 2.16 GB ⚙️ Rutracker\n🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aaaacfa7403051de81ab62785890e481f482e82f/<opaque>/Хитрый койот.mkv",
+      "behaviorHints": {
+        "filename": "Хитрый койот.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Coyote.vs.Acme.WEB.2026.MULTi2\n👤 20 💾 1.92 GB ⚙️ EXT\n🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aab0014b6b0122266aed238e90a81de77fe6c44f/<opaque>/Coyote.vs.Acme.WEB.2026.MULTi2.mkv",
+      "behaviorHints": {
+        "filename": "Coyote.vs.Acme.WEB.2026.MULTi2.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Coyote.vs.Acme.WEB.2026.MULTi\n👤 5 💾 1.78 GB ⚙️ EXT\nMulti Audio / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/084975b99bab70b1c439fbad0be520e3f4477f6d/<opaque>/Coyote.vs.Acme.WEB.2026.MULTi.mkv",
+      "behaviorHints": {
+        "filename": "Coyote.vs.Acme.WEB.2026.MULTi.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Coyote vs Acme (2026) HdTScr Lat\n👤 0 💾 932.59 MB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec504acb7166a91b957b112a5151674d407abaa1/Coyote vs Acme (2026) HdTScr Lat/undefined/Coyote vs Acme (2026) HdTScr Lat",
+      "behaviorHints": {}
+    },
+    {
+      "name": "[TB download] Torrentio\n4k HDR",
+      "title": "Coyote.vs.Acme.2026.2160p.DCP.HDR.H265.UKR\n👤 38 💾 10.7 GB ⚙️ EXT\n🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/154471b8129ac9ca6c6ad0ed424c0349b0484a39/<opaque>/Coyote.vs.Acme.2026.2160p.DCP.HDR.H265.UKR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR",
+        "filename": "Coyote.vs.Acme.2026.2160p.DCP.HDR.H265.UKR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV",
+      "title": "Coyote vs Acme.2026.iT.WEB-DL.2160p.DV\n👤 12 💾 11.46 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9696d12883b4e17c9fa2fb8be55975c65b0151e1/<opaque>/Coyote vs Acme.2026.iT.WEB-DL.2160p.DV.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV",
+        "filename": "Coyote vs Acme.2026.iT.WEB-DL.2160p.DV.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k",
+      "title": "Coyote vs Acme 2026 Retail DKsubs 2160p DCP WEBRip x265 DDP5 1-ADDICTION\n👤 3 💾 7.9 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7e23ec5652d7e79f2885110e8b31cbe7821fe8c8/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Хитрый койот / Coyote vs. Acme (2026) WEB-DL 1080p | D Р\n👤 54 💾 7.85 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ca21fb3b9451ac936010f0ef07dcc5cd038511ca/<opaque>/Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos.WEBDL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos.WEBDL.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote vs Acme (2026) 1080p Dcp Ddp 5.1 h264 Aoc\n👤 29 💾 1.06 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1fcf9111cbf8d9247dbb537bd253006b15477997/Coyote vs Acme (2026) 1080p Dcp Ddp 5.1 h264 Aoc/undefined/Coyote vs Acme (2026) 1080p Dcp Ddp 5.1 h264 Aoc",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p WEBRip x265-DH\n👤 11 💾 2.3 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c6f551477ab5719d3997caa21c4659148e59432b/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026.1080p.WEB.x265.DDP 5.1-P2pRipTeam\n👤 4 💾 3.65 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ebb01841528a8d5da23e5694161ec768b83b7e8b/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 1080p AMZN Subs PTBR\n👤 4 💾 7.3 GB ⚙️ EXT\n🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d42b5d3c5ff6d3d4e73e874d8a2fbd3ccd1f14b1/<opaque>/Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Coyote vs Acme 2026 1080p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 FRENCH CA 1080p WEB H264-SUPPLY\n👤 2 💾 5.29 GB ⚙️ EXT\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cd5b40414f8541144e48513a58f364a2796ae997/<opaque>/Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Coyote.vs.Acme.2026.FRENCH.CA.1080p.WEB.H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote Vs Acme (2026) 1080p WEBRip x265 10bit 5 1-LAMA\n👤 1 💾 1.72 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/335c0ed555d1655c90983ee391dc4aae43211dc0/<opaque>/Coyote.Vs.Acme.2026.1080p.WEBRip.x265.10bit.AAC5.1-LAMA.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Coyote.Vs.Acme.2026.1080p.WEBRip.x265.10bit.AAC5.1-LAMA.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Coyote vs Acme 2026 FRENCH CA 1080p WEB H264-SUPPLY\n👤 1 💾 5.29 GB ⚙️ EXT\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2e7f86ea7e26ece10a7eb69f1c5c6a4d3be39387/<opaque>/Coyote vs Acme 2026 FRENCH CA 1080p WEB H264-SUPPLY.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Coyote vs Acme 2026 FRENCH CA 1080p WEB H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Coyote vs. Acme LAT.mp4\n👤 116 💾 1.87 GB ⚙️ Cinecalidad\n🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/000fe7a1d6371c58917ec554538479d6200f1eef/Coyote vs. Acme LAT.mp4/0/Coyote vs. Acme LAT.mp4",
+      "behaviorHints": {
+        "filename": "Coyote vs. Acme LAT.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Coyote.Vs.Acme\n👤 22 💾 1.06 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a67ce6ed783bed17db7d60df2d4218ae10b0e1d1/Coyote.Vs.Acme/undefined/Coyote.Vs.Acme"
+    }
+  ]
+}

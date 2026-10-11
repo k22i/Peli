@@ -1,0 +1,368 @@
+{
+  "streams": {
+    "dev": 200,
+    "holdout": 100,
+    "blind": 60,
+    "all": 360
+  },
+  "fields": {
+    "resolution": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "hdr": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "video codec": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "audio codec": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "channels": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "atmos": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "size": {
+      "dev": 100,
+      "holdout": 99,
+      "blind": 100,
+      "all": 99.7,
+      "byAddon": {
+        "comet-tb": 99.1,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "source": {
+      "dev": 100,
+      "holdout": 99,
+      "blind": 95,
+      "all": 98.9,
+      "byAddon": {
+        "comet-tb": 98.1,
+        "torrentio": 100,
+        "torrentio-tb": 98.6,
+        "torrentsdb": 100,
+        "peerflix": 97.6
+      }
+    },
+    "release group": {
+      "dev": 96.5,
+      "holdout": 87,
+      "blind": 86.7,
+      "all": 92.2,
+      "byAddon": {
+        "comet-tb": 89.8,
+        "torrentio": 94.4,
+        "torrentio-tb": 94.4,
+        "torrentsdb": 89.4,
+        "peerflix": 95.2
+      }
+    },
+    "languages": {
+      "dev": 99.5,
+      "holdout": 93,
+      "blind": 85,
+      "all": 95.3,
+      "byAddon": {
+        "comet-tb": 94.4,
+        "torrentio": 95.8,
+        "torrentio-tb": 91.7,
+        "torrentsdb": 100,
+        "peerflix": 95.2
+      }
+    },
+    "season": {
+      "dev": 99.5,
+      "holdout": 99,
+      "blind": 100,
+      "all": 99.4,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 98.6,
+        "torrentsdb": 98.5,
+        "peerflix": 100
+      }
+    },
+    "episode": {
+      "dev": 100,
+      "holdout": 99,
+      "blind": 96.7,
+      "all": 99.2,
+      "byAddon": {
+        "comet-tb": 99.1,
+        "torrentio": 98.6,
+        "torrentio-tb": 98.6,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    },
+    "pack": {
+      "dev": 96,
+      "holdout": 97,
+      "blind": 95,
+      "all": 96.1,
+      "byAddon": {
+        "comet-tb": 98.1,
+        "torrentio": 98.6,
+        "torrentio-tb": 100,
+        "torrentsdb": 83.3,
+        "peerflix": 100
+      }
+    },
+    "cached": {
+      "dev": 100,
+      "holdout": 100,
+      "blind": 100,
+      "all": 100,
+      "byAddon": {
+        "comet-tb": 100,
+        "torrentio": 100,
+        "torrentio-tb": 100,
+        "torrentsdb": 100,
+        "peerflix": 100
+      }
+    }
+  },
+  "languageCodes": {
+    "dev": {
+      "precision": 99.7,
+      "recall": 100
+    },
+    "holdout": {
+      "precision": 93.6,
+      "recall": 95.2
+    },
+    "blind": {
+      "precision": 79.6,
+      "recall": 97.4
+    },
+    "all": {
+      "precision": 94.5,
+      "recall": 98.2
+    }
+  },
+  "fakes": {
+    "hidden (strong signals) vs fake": {
+      "dev": {
+        "tp": 17,
+        "fp": 0,
+        "fn": 6,
+        "tn": 177,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 26.1,
+        "precision": 100
+      },
+      "holdout": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 3,
+        "tn": 92,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 37.5,
+        "precision": 100
+      },
+      "blind": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 5,
+        "tn": 53,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 71.4,
+        "precision": 100
+      },
+      "all": {
+        "tp": 24,
+        "fp": 0,
+        "fn": 14,
+        "tn": 322,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 36.8,
+        "precision": 100
+      }
+    },
+    "hidden or suspicious vs fake": {
+      "dev": {
+        "tp": 17,
+        "fp": 2,
+        "fn": 6,
+        "tn": 175,
+        "falsePositiveRate": 1.1,
+        "falseNegativeRate": 26.1,
+        "precision": 89.5
+      },
+      "holdout": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 3,
+        "tn": 90,
+        "falsePositiveRate": 2.2,
+        "falseNegativeRate": 37.5,
+        "precision": 71.4
+      },
+      "blind": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 4,
+        "tn": 53,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 57.1,
+        "precision": 100
+      },
+      "all": {
+        "tp": 25,
+        "fp": 4,
+        "fn": 13,
+        "tn": 318,
+        "falsePositiveRate": 1.2,
+        "falseNegativeRate": 34.2,
+        "precision": 86.2
+      }
+    },
+    "cam / ts flag vs CAM / TS / TC / SCR source": {
+      "dev": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 195,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 0,
+        "precision": 100
+      },
+      "holdout": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 95,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 0,
+        "precision": 100
+      },
+      "blind": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "tn": 59,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 0,
+        "precision": 100
+      },
+      "all": {
+        "tp": 11,
+        "fp": 0,
+        "fn": 0,
+        "tn": 349,
+        "falsePositiveRate": 0,
+        "falseNegativeRate": 0,
+        "precision": 100
+      }
+    }
+  },
+  "reasons": {
+    "non-video file": {
+      "fired": 1,
+      "onFake": 1
+    },
+    "too small": {
+      "fired": 5,
+      "onFake": 5
+    },
+    "extras": {
+      "fired": 7,
+      "onFake": 7
+    },
+    "title mismatch": {
+      "fired": 26,
+      "onFake": 4
+    },
+    "wrong year": {
+      "fired": 4,
+      "onFake": 4
+    },
+    "wrong episode": {
+      "fired": 3,
+      "onFake": 3
+    },
+    "too large": {
+      "fired": 7,
+      "onFake": 3
+    },
+    "cam / ts": {
+      "fired": 11,
+      "onFake": 11
+    },
+    "episode for a movie": {
+      "fired": 1,
+      "onFake": 1
+    },
+    "wrong season": {
+      "fired": 10,
+      "onFake": 10
+    }
+  }
+}

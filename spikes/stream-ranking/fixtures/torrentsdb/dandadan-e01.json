@@ -1,0 +1,339 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "dandadan-e01",
+  "request": "https://torrentsdb.com/stream/series/kitsu%3A48269%3A1.json",
+  "recordedAt": "2026-10-11T12:04:30.520Z",
+  "status": 200,
+  "ms": 241,
+  "streams": [
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[ToonsHub] Dandadan S02E01 1080p SHAHID WEB-DL AAC2.0 H.264 (DAN DA DAN Dual-Audio Multi-Subs)\n📅 S01E01 👤 2731 💾 423.40 MB ⚙️ nyaa",
+      "infoHash": "89ad66af1fc0fe5c973f80db38c0e2f0c7716b1d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Dandadan.S02E01.1080p.SHAHID.WEB-DL.DUAL.AAC2.0.H.264.MSubs-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN .DA .DAN .\n📅 S01E01 👤 641 💾 910.31 MB ⚙️ TokyoTosho",
+      "infoHash": "1bc71745a0af988fa3b2b100e03ba7d40af7bb2e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN.DA.DAN.S02E01.Like.This.Is.the.Legend.of.the.Giant.Snake.1080p.NF.WEB-DL.AAC2.0.H.264-VARYG.mkv"
+      },
+      "sources": [
+        "tracker:udp://zer0day.ch:1337/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.wildkat.net:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.opentorrent.top:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrentclub.online:54123/announce",
+        "tracker:udp://seedpeer.net:6969/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:http://anidex.moe:6969/announce",
+        "tracker:http://tracker.anirena.com:80/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://share.camoe.cn:8080/announce",
+        "tracker:http://t.nyaatracker.com:80/announce",
+        "dht:1bc71745a0af988fa3b2b100e03ba7d40af7bb2e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN S02E01 Like This Is the Legend of the Giant Snake 1080p CR WEB-DL DUAL AAC2.0 H 264-VARYG (Dandadan Dual-Audio Multi-Subs)\n📅 S01E01 👤 556 💾 1.40 GB ⚙️ nyaa",
+      "infoHash": "18386ee46ba4f6a01d3e6fa43ccebd1dffd435c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN.DA.DAN.S02E01.Like.This.Is.the.Legend.of.the.Giant.Snake.1080p.CR.WEB-DL.DUAL.AAC2.0.H.264-VARYG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Dan.Da.Dan.S02.1080p.WEBRip.Dual-Audio.Opus.2.0.AV1-Pi13\n📅 S01E01 👤 427 💾 10.50 GB ⚙️ nyaa",
+      "infoHash": "b47160cc04b7ab7f44b6456465d4c5a6de86a265",
+      "fileIdx": 11,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN (2024) - S02E01 (WEBRip-1080p AV1 AAC)-Pi13.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Yameii] DAN DA DAN - S02E01 [English Dub] [CR WEB-DL 1080p] [440F6DD8] (Dandadan)\n📅 S01E01 👤 218 💾 1.40 GB ⚙️ nyaa",
+      "infoHash": "557e70daedd27b27d6ecd362925f576e97c655e4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Yameii] DAN DA DAN - S02E01 [English Dub] [CR WEB-DL 1080p] [440F6DD8].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN .DA .DAN .\n📅 S01E01 👤 216 💾 1.05 GB ⚙️ TokyoTosho",
+      "infoHash": "78713e0cdd639d76dba7c0579399118919738100",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN.DA.DAN.S02E01.Like.This.Is.the.Legend.of.the.Giant.Snake.1080p.NF.WEB-DL.MULTi.AAC2.0.H.264-VARYG.mkv"
+      },
+      "sources": [
+        "tracker:udp://zer0day.ch:1337/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.wildkat.net:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.opentorrent.top:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrentclub.online:54123/announce",
+        "tracker:udp://seedpeer.net:6969/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:http://anidex.moe:6969/announce",
+        "tracker:http://tracker.anirena.com:80/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://share.camoe.cn:8080/announce",
+        "tracker:http://t.nyaatracker.com:80/announce",
+        "dht:78713e0cdd639d76dba7c0579399118919738100"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[ToonsHub] DAN DA DAN S02E01 1080p CR WEB-DL AAC2.0 H.264 (Dual-Audio Multi-Subs)\n📅 S01E01 👤 201 💾 1.40 GB ⚙️ nyaa",
+      "infoHash": "24164e7d6f3fe69d2fa60573442c60a97b5e24a5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN.DA.DAN.S02E01.Like.This.Is.the.Legend.of.the.Giant.Snake.1080p.CR.WEB-DL.DUAL.AAC2.0.H.264.MSubs-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN S02E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CUSTOM) (VF FRENCH VOSTFR Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 152 💾 1.50 GB ⚙️ nyaa",
+      "infoHash": "3e0940e18a30809767a7e9ae45da101f76a2a570",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN S02E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CUSTOM).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN S02E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (ADN) (Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 152 💾 579.80 MB ⚙️ nyaa",
+      "infoHash": "72bd3b24fe414b7242e6dbb2052597e446cb4860",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN S02E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (ADN).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Dan.Da.Dan.2024.S01.1080p.BluRay.Dual-Audio.Opus.2.0.AV1-Pi13\n📅 S01E01 👤 143 💾 8.50 GB ⚙️ nyaa",
+      "infoHash": "d636aa65c1484b0ffdb3a88222f1c99950758e8e",
+      "fileIdx": 11,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN (2024) - S01E01 (Bluray-1080p AV1 Opus)-Pi13.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN S02E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (CR) (Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 137 💾 1.40 GB ⚙️ nyaa",
+      "infoHash": "6b37a0d5fe4eba84838f679bdd5b032b73f39205",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN S02E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN S02 Season 2 2025 1080p CR WEBRip Dual Audio 10bits x265-Rapta\n📅 S01E01 👤 133 💾 3.00 GB ⚙️ 1337x",
+      "infoHash": "ef20048d865d9667ae50384537e2f4aba58f90e8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN - S02E01 - Like, This Is the Legend of the Giant Snake.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[ToonsHub] DAN DA DAN S02E01 1080p NF WEB-DL AAC2.0 H.264 (Dual-Audio Multi-Subs)\n📅 S01E01 👤 120 💾 910.30 MB ⚙️ nyaa",
+      "infoHash": "469ce507ed9ae6f1c0f0b706f7a7dc2619946ed5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN.DA.DAN.S02E01.Like.This.Is.the.Legend.of.the.Giant.Snake.1080p.NF.WEB-DL.DUAL.AAC2.0.H.264.MSubs-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Dan Da Dan S01 + S02 BDRIP 1080p X265 10bit VOSTFR\n📅 S01E01 👤 98 💾 32.50 GB ⚙️ nyaa",
+      "infoHash": "b7e4abc38778906dc9f0b11be1257825df527bbf",
+      "fileIdx": 12,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Xspitfire911] Dan Da Dan S02E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Dan Da Dan S01 + S02 BDRIP 1080p X265 10bit VOSTFR\n📅 S01E01 👤 98 💾 32.50 GB ⚙️ nyaa",
+      "infoHash": "b7e4abc38778906dc9f0b11be1257825df527bbf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Xspitfire911] Dan Da Dan S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DANDADAN S02E01 VOSTFR 1080p WEB AV1 AAC -Tsundere-Raws (NF) (Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 47 💾 202.00 MB ⚙️ nyaa",
+      "infoHash": "431f3776f7f02db5fd5ef47594b5620b126c5100",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DANDADAN S02E01 VOSTFR 1080p WEB AV1 AAC -Tsundere-Raws (NF).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Dan Da Dan S01 BDRIP 1080p X265 10bit VOSTFR\n📅 S01E01 👤 42 💾 17.30 GB ⚙️ nyaa",
+      "infoHash": "2167f7eb23d74dfc3d0e2b004b2ca5a87c36c5fc",
+      "fileIdx": 8,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "[Xspitfire911] Dan Da Dan S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DANDADAN S02E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (NF) (Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 36 💾 887.40 MB ⚙️ nyaa",
+      "infoHash": "93fb31728ec14a58744a81617af493e8656a863e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DANDADAN S02E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (NF).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Dan.Da.Dan.S02E01.CUSTOM.MULTi.VF2.1080p.WEBRiP.x265-T3KASHi\n📅 S01E01 👤 28 💾 327.00 MB ⚙️ nyaa",
+      "infoHash": "a8bcc1297500cd23c5bb8710fc5de05744f42b3f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Dan.Da.Dan.S02E01.CUSTOM.MULTi.VF2.1080p.WEBRiP.x265-T3KASHi.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN Season 1 Dual Audio WEB-DL 1080p x265 (Plex Naming)\n📅 S01E01 👤 17 💾 7.20 GB ⚙️ 1337x",
+      "infoHash": "20d4e5e9bb0f3bf3dae72683fbe898696c1e9f95",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Dan.Da.Dan.Season.2.1080p.Dual.Audio.h265.WEB-DL\n📅 S01E01 👤 12 💾 6.90 GB ⚙️ 1337x",
+      "infoHash": "ada46c1a9e22aeaa65dd44dd4317d17389e344b2",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN - S02E01 - Like This Is the Legend of the Giant Snake - [WEBDL-1080p] [h265 AAC].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Dan.Da.Dan.S01-S02.1080p.Dual.Audio.WEB-DL.h265\n📅 S01E01 👤 10 💾 13.10 GB ⚙️ 1337x",
+      "infoHash": "e15d32adacfd3525fb89c5273fa6a5e2ab580742",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN - S02E01 - Like This Is the Legend of the Giant Snake - [WEBDL-1080p] [h265 AAC].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Dan.Da.Dan.S01-S02.1080p.Dual.Audio.WEB-DL.h265\n📅 S01E01 👤 10 💾 13.10 GB ⚙️ 1337x",
+      "infoHash": "e15d32adacfd3525fb89c5273fa6a5e2ab580742",
+      "fileIdx": 22,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "DAN DA DAN S02 Season 2 2025 1080p CR WEBRip 10bits x265-Rapta\n📅 S01E01 👤 9 💾 2.70 GB ⚙️ 1337x",
+      "infoHash": "1b086b8e9d7876fb51e52352a208fb329f91545f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "DAN DA DAN - S02E01 - Like, This Is the Legend of the Giant Snake.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "DAN DA DAN S02E01 VOSTFR 720p WEB x264 AAC -Tsundere-Raws (ADN) (Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 67 💾 296.80 MB ⚙️ nyaa",
+      "infoHash": "6d9357ddeb264d36ea789d34980162a47bc4a165",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "DAN DA DAN S02E01 VOSTFR 720p WEB x264 AAC -Tsundere-Raws (ADN).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "[Yameii] DAN DA DAN - S02E01 [English Dub] [CR WEB-DL 720p] [5F895CDD] (Dandadan)\n📅 S01E01 👤 62 💾 713.00 MB ⚙️ nyaa",
+      "infoHash": "cb2fb835d0cebfde36e20e6ffbe848daedd401d4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "[Yameii] DAN DA DAN - S02E01 [English Dub] [CR WEB-DL 720p] [5F895CDD].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "DAN DA DAN S02E01 VOSTFR 720p WEB x264 AAC -Tsundere-Raws (CR) (Dandadan 2nd Season Dan Da Dan Season 2)\n📅 S01E01 👤 20 💾 713.00 MB ⚙️ nyaa",
+      "infoHash": "e71a8e4de6d8d727a94fb6959883f2fc4cc87201",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "DAN DA DAN S02E01 VOSTFR 720p WEB x264 AAC -Tsundere-Raws (CR).mkv"
+      }
+    }
+  ]
+}

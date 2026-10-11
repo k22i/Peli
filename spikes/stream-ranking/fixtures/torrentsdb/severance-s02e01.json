@@ -1,0 +1,413 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "severance-s02e01",
+  "request": "https://torrentsdb.com/stream/series/tt11280740%3A2%3A1.json",
+  "recordedAt": "2026-10-11T12:04:18.519Z",
+  "status": 200,
+  "ms": 495,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Odlouceni / Severance S02E01 [HEVC HDR10+ Dolby Vision WEB-DL 2160p 4k] = CSFD 86%\n📅 S02E01 👤 6 💾 8.56 GB ⚙️ sktorrent",
+      "infoHash": "8752daf6faa76611ab3786e01df297129ba4fd0a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Severance 02x01 - Release by Wentworth_Miller.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:8752daf6faa76611ab3786e01df297129ba4fd0a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02E01.1080p.WEB.H264-SuccessfulCrab[TGx]\n📅 S02E01 👤 2129 💾 3.69 GB ⚙️ knaben",
+      "infoHash": "A0D2B760C12FD6E63267F935BC1524AE4C22420E",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 1080p WEB H264-SuccessfulCrab\n📅 S02E01 👤 1348 💾 3.69 GB ⚙️ ThePirateBay",
+      "infoHash": "a762217ea6a1d6e64fa297259dc14ab53f75d6c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 1080p WEB H264-SuccessfulCrab\n📅 S02E01 👤 1348 💾 3.69 GB ⚙️ knaben",
+      "infoHash": "A762217EA6A1D6E64FA297259DC14AB53F75D6C7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance - Season 2 - Mp4 x264 AC3 1080p\nSeverance S02E01.mp4\n📅 S02E01 👤 855 💾 1.11 GB ⚙️ knaben",
+      "infoHash": "959ED8BE27CFFCB61603EFF33D393C94DF2BE2D7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|959ED8BE27CFFCB61603EFF33D393C94DF2BE2D7",
+        "filename": "Severance S02E01.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02E01.1080p.x265-ELiTE\n📅 S02E01 👤 562 💾 595.25 MB ⚙️ ThePirateBay",
+      "infoHash": "9133181bfd65d418bd0aefcffbcc7d507c0e02a7",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02.1080p.WEBRip.10bit.DDP5.1.x265-HODL\nSeverance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv\n📅 S02E01 👤 540 💾 701.83 MB ⚙️ ThePirateBay",
+      "infoHash": "228faee0146c2d40d2e136ec54606d92a1866e00",
+      "fileIdx": 7,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|228faee0146c2d40d2e136ec54606d92a1866e00",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02E01.1080p.x265-ELiTE\n📅 S02E01 👤 533 💾 595.25 MB ⚙️ knaben",
+      "infoHash": "9133181BFD65D418BD0AEFCFFBCC7D507C0E02A7",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 1080p HEVC x265-MeGusta\n📅 S02E01 👤 491 💾 456.21 MB ⚙️ ThePirateBay",
+      "infoHash": "a7e0fd95ca0824783f3dfd05f095cf033db3eda4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 1080p HEVC x265-MeGusta\n📅 S02E01 👤 491 💾 456.21 MB ⚙️ knaben",
+      "infoHash": "A7E0FD95CA0824783F3DFD05F095CF033DB3EDA4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02.1080p.x265-ELiTE\nSeverance.S02E01.1080p.x265-ELiTE.mkv\n📅 S02E01 👤 373 💾 595.30 MB ⚙️ 1337x",
+      "infoHash": "64ef2c9f1912f1ce448bb375da2cc823ae444dc4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|64ef2c9f1912f1ce448bb375da2cc823ae444dc4",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance (2021) S02 (1080p ATVP WEB-DL x265 10bit EAC3 5.1 Silence) [QxR]\nSeverance (2021) - S02E01 - Hello, Ms. Cobel (1080p ATVP WEB-DL x265 Silence).mkv\n📅 S02E01 👤 369 💾 1.63 GB ⚙️ knaben",
+      "infoHash": "707E3E6CC8B6ACB7398A2E95774D32891DABCFCF",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|707E3E6CC8B6ACB7398A2E95774D32891DABCFCF",
+        "filename": "Severance (2021) - S02E01 - Hello, Ms. Cobel (1080p ATVP WEB-DL x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 367 💾 3.69 GB ⚙️ knaben",
+      "infoHash": "6C6139E38B356F7C91CCB3E9142A4ABFD3A1E271",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 299 💾 3.69 GB ⚙️ ThePirateBay",
+      "infoHash": "6c6139e38b356f7c91ccb3e9142a4abfd3a1e271",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\nSeverance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\n📅 S02E01 👤 273 💾 1.14 GB ⚙️ knaben",
+      "infoHash": "855AAA02257EA6FADF360B9FDCC036FF0A772C37",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|855AAA02257EA6FADF360B9FDCC036FF0A772C37",
+        "filename": "Severance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsun\n📅 S02E01 👤 237 💾 3.69 GB ⚙️ ThePirateBay",
+      "infoHash": "75810646de60d6c15a0a0208072b45bd179c3e4b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\nSeverance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\n📅 S02E01 👤 223 💾 1.14 GB ⚙️ ThePirateBay",
+      "infoHash": "855aaa02257ea6fadf360b9fdcc036ff0a772c37",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|855aaa02257ea6fadf360b9fdcc036ff0a772c37",
+        "filename": "Severance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci\nSeverance.S02E01.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci.mkv\n📅 S02E01 👤 180 💾 527.80 MB ⚙️ 1337x",
+      "infoHash": "d2e618e5809cf3195f90e90e75612dca8a18759f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d2e618e5809cf3195f90e90e75612dca8a18759f",
+        "filename": "Severance.S02E01.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 1080p AV1 10bit-MeGusta\n📅 S02E01 👤 117 💾 427.24 MB ⚙️ ThePirateBay",
+      "infoHash": "a12fa9fe86d1dce6241ebdc0e1bdfeb84fe364aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance.S02E01.1080p.AV1.10bit-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02.MULTi.1080p.WEB.H264-SUPPLY\nSeverance.S02E01.MULTi.1080p.WEB.H264-SUPPLY.mkv\n📅 S02E01 👤 52 💾 4.21 GB ⚙️ ThePirateBay",
+      "infoHash": "23882a43b189ae01e9bf8ccd614d13b241eab222",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|23882a43b189ae01e9bf8ccd614d13b241eab222",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance S02E01 1080p x265-ELiTE\n📅 S02E01 👤 49 💾 595.25 MB ⚙️ ThePirateBay",
+      "infoHash": "cb75de2ac755b07121231dbaf259be4a9f9942ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance S02E01 1080p x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.mkv\n📅 S02E01 👤 30 💾 3.95 GB ⚙️ ThePirateBay",
+      "infoHash": "d7f4018fab18594fb3af4bb8835970b6131709b4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Odloučení / Severance S02E01 (EN)[WEB-DL][1080p] = CSFD 87%\n📅 S02E01 👤 8 💾 3.69 GB ⚙️ sktorrent",
+      "infoHash": "a0d2b760c12fd6e63267f935bc1524ae4c22420e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "dht:a0d2b760c12fd6e63267f935bc1524ae4c22420e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Severance - Season 2 - Mp4 x264 AC3 1080p\nSeverance S02E01.mp4\n📅 S02E01 👤 5 💾 1.11 GB ⚙️ ThePirateBay",
+      "infoHash": "959ed8be27cffcb61603eff33d393c94df2be2d7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|959ed8be27cffcb61603eff33d393c94df2be2d7",
+        "filename": "Severance S02E01.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDPA5.1.H.264-NTb\n📅 S02E01 👤 262 💾 1.24 GB ⚙️ knaben",
+      "infoHash": "55EB00E97CEE81651F31F241FA8059FAB51D75E4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 163 💾 1.24 GB ⚙️ ThePirateBay",
+      "infoHash": "6e495b96b6b5c1240a86feb3d368201099b0ee6b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance S02E01 720p HEVC x265-MeGusta\n📅 S02E01 👤 107 💾 424.09 MB ⚙️ ThePirateBay",
+      "infoHash": "bc0774080b4dc64e27d9ec2f1163a229ced595ef",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Severance.S02E01.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance S02E01 720p WEB x265-MiNX\n📅 S02E01 👤 99 💾 154.69 MB ⚙️ ThePirateBay",
+      "infoHash": "e0c5dd9e303b013cee3a943b6949a483b3141556",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Severance S02E01 720p WEB x265-MiNX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance.S02.720p.x265-TiPEX\nSeverance.S02E01.720p.x265-TiPEX.mkv\n📅 S02E01 👤 97 💾 348.30 MB ⚙️ 1337x",
+      "infoHash": "06f4eaadf3f333d93c138d501e1e0852f7ae95b4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|06f4eaadf3f333d93c138d501e1e0852f7ae95b4",
+        "filename": "Severance.S02E01.720p.x265-TiPEX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance S02E01 Hello Ms Cobel 720p HEVC x265-MeGusta\n📅 S02E01 👤 47 💾 424.09 MB ⚙️ ThePirateBay",
+      "infoHash": "2f2a58502b52d8ca6eac1281cfd2a33ad1776dc1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Severance.S02E01.720p.x265-TiPEX\n📅 S02E01 👤 7 💾 348.34 MB ⚙️ ThePirateBay",
+      "infoHash": "8250c088969e6fb708dc692f790bf5aafb6c5e12",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Severance.S02E01.720p.x265-TiPEX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "Severance S02E01 Hello Ms Cobel 480p x264-mSD\n📅 S02E01 👤 25 💾 352.81 MB ⚙️ ThePirateBay",
+      "infoHash": "da26d28c5bc812692c88f13f9ca2e315c6b6d6b9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.480p.x264-mSD[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "Severance.S02E01.480p.x264-RUBiK\n📅 S02E01 👤 10 💾 298.33 MB ⚙️ ThePirateBay",
+      "infoHash": "89a0067e0c2fd711e01cfff95e34b647b100eaf9",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "Severance.S02E01.480p.x264-RUBiK.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "Severance\n📅 S02E01 👤 292 💾 209.19 MB ⚙️ Torrent9",
+      "infoHash": "3785b8192719dfe804fd93c9c9c76d99a8fb5405",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "[ Torrent911.im ] Severance.S02E01.FRENCH.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:3785b8192719dfe804fd93c9c9c76d99a8fb5405"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "Severance\n📅 S02E01 👤 123 💾 211.54 MB ⚙️ Torrent9",
+      "infoHash": "2098ae0fa671beb41ca03fdadb23ec81757279ac",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "[ Torrent911.im ] Severance.S02E01.VOSTFR.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:2098ae0fa671beb41ca03fdadb23ec81757279ac"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nxvid",
+      "title": "Severance S02E01 Hello Ms Cobel XviD-AFG\n📅 S02E01 👤 20 💾 352.70 MB ⚙️ ThePirateBay",
+      "infoHash": "a80270523e5234711a34698a6f2ed458534c23c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|xvid",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.XviD-AFG[EZTVx.to].avi"
+      }
+    }
+  ]
+}

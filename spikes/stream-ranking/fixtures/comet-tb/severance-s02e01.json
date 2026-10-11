@@ -1,0 +1,3961 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "severance-s02e01",
+  "request": "https://comet.elfhosted.com/<config>/stream/series/tt11280740%3A2%3A1.json",
+  "recordedAt": "2026-10-11T12:06:34.699Z",
+  "status": 200,
+  "ms": 1028,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c729d7be05e7210c0fd9b4a789fa50e12f4db504",
+        "filename": "Severance (2022) S02E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv",
+        "videoSize": 9190995247
+      },
+      "description": "📄 Severance (2022) S02E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 495 💾 8.6 GB 🔎 TheRARBG\n🇬🇧",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8cacf3a7be7e95f1c66c7ae7fdeb6ef579881f63",
+        "filename": "Severance (2022) S02E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv",
+        "videoSize": 9190995247
+      },
+      "description": "📄 Severance (2022) S02E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.6 GB 🔎 Comet|DMM\n🇬🇧",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5eea9193612487363021b4fee7da590af29efe0b",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA-ENG.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.DV.H.265-gattopollo.mkv",
+        "videoSize": 10431262037
+      },
+      "description": "📄 Scissione.S02E01.Salve.Signora.Cobel.ITA-ENG.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.DV.H.265-gattopollo.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ gattopollo\n💾 9.7 GB 🔎 Comet|TorrentGalaxyClone\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|189e4d5efee27c4a7585efb4e9ef4f8ddad17496",
+        "filename": "Severance 02x01 [HEVC, HDR10+, Dolby Vision, WEB-DL 2160p, 4k].mkv.mkv",
+        "videoSize": 9189555387
+      },
+      "description": "📄 Severance 02x01 [HEVC, HDR10+, Dolby Vision, WEB-DL 2160p, 4k].mkv.mkv\n📹 hevc • DV • HDR10+ • 10bit\n⭐ WEB-DL\n👤 1 💾 8.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7034b51732c43c677acda84ec11d4fdf30f4550e",
+        "filename": "Severance.S02E01.MULTi.VFF.DV.HDR.2160p.WEB.EAC3.5.1.Atmos.H265-TFA.mkv",
+        "videoSize": 10024873090
+      },
+      "description": "📄 Severance.S02E01.MULTi.VFF.DV.HDR.2160p.WEB.EAC3.5.1.Atmos.H265-TFA.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB | 🏷️ TFA\n💾 9.3 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e11a3865d2aa6c8e5c71aa9d38fa81451ec90487",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10387724618
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ce59ed09e4c8c858ac99df1048e8b04679737ae8",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb6ca487a79c8c24941b6fb563d7e987e563c955",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669496546
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a72c817be8f5c26921c72c60b126e982fc47008",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10387724618
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|73327f3e5331e8d045f2d84cf4c2b690d02c2ee6",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669496546
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6541add84dcc09785b39d3069f6df4d7eb25efe1",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6449ac8026a47ee455deb78262441d1f9fd0783c",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9260328610
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 8.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|57a646fd95c892436cfdf64f230c206f978f8b73",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|359b94a62c3d218a511cf7bac307d9fd780ac946",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3390fc1294108f721ab94ff4f9f117620563f10d",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669496546
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|32858c4b6f426e7c8eea8e75e11b2f37aadf1ff7",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2dfabdff411d841dd3b8fa8f2845afa3b45626c4",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 3 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|250435f202e6d833a2c6821a5438f786c80fdc28",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2407eb1c28b80a801ca55953e4ee445f63d8931c",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n👤 1 💾 9.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|03ed88575895fe8d40810dd3afb936887448152d",
+        "filename": "Severance.S02E01.2160p.WEB-DL.DV.HDR[Ben The Men].mp4",
+        "videoSize": 9546868266
+      },
+      "description": "📄 Severance.S02E01.2160p.WEB-DL.DV.HDR[Ben The Men].mp4\n📹 DV • HDR\n⭐ WEB-DL\n👤 3 💾 8.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99a588d0d44cf7448eb15f35a63dd3d0ce139bf3",
+        "filename": "Severance.S02E01.MULTi.4Klight.DV.HDR10+.WEBRip.DDP5.1.Atmos.HEVC-BATGirl.mkv",
+        "videoSize": 1982180593
+      },
+      "description": "📄 Severance.S02E01.MULTi.4Klight.DV.HDR10+.WEBRip.DDP5.1.Atmos.HEVC-BATGirl.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ BATGirl\n👤 0 💾 1.8 GB 🔎 TheRARBG\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5c8ac21aa518ad04e02e25163bb746efe80b377d",
+        "filename": "Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 9753535377
+      },
+      "description": "📄 Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 9.1 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42946274d396080fd90a8bcd4453947c76f99d1d",
+        "filename": "Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 9753535377
+      },
+      "description": "📄 Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 9.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c30b69e0bfd7b8aa2d003c7684e25c092bd402cc",
+        "filename": "Separacion.S02E01.2025.WEB-DL.4k.DV.HDR-Dual-Lat.mkv",
+        "videoSize": 9470997333
+      },
+      "description": "📄 Separacion.S02E01.2025.WEB-DL.4k.DV.HDR-Dual-Lat.mkv\n📹 DV • HDR\n⭐ WEB-DL | 🏷️ Lat\n💾 8.8 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42fc9c6acc5cbd995eed1def284819bab7655e08",
+        "filename": "Severance S02E01 (2025) WEB-DL 2160p H265 HDR [Ukr_Eng] [Toloka].mkv",
+        "videoSize": 9261038949
+      },
+      "description": "📄 Severance S02E01 (2025) WEB-DL 2160p H265 HDR [Ukr_Eng] [Toloka].mkv\n📹 hevc • HDR\n⭐ WEB-DL\n👤 8 💾 8.6 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f44a4d7fc54865b349df1b1ee234abea93552b00",
+        "filename": "Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv",
+        "videoSize": 1967979154
+      },
+      "description": "📄 Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ ESPER\n💾 1.8 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d853eedf77ef1f5e8d7293d420586232b258d5c7",
+        "filename": "Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv",
+        "videoSize": 1967979154
+      },
+      "description": "📄 Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ ESPER\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bcd8c51c2c958453c0b4c7294a01526ae55314a3",
+        "filename": "Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv",
+        "videoSize": 1967979154
+      },
+      "description": "📄 Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ ESPER\n💾 1.8 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|81dd1df767540786a047fd60697d1a8128c60ba6",
+        "filename": "Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv",
+        "videoSize": 1967979154
+      },
+      "description": "📄 Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ ESPER\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e17dcd2d44836cd6a3297d79400482a56cfaa10",
+        "filename": "Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv",
+        "videoSize": 1967979154
+      },
+      "description": "📄 Severance.S02E01.MULTI.2160p.DV.HDR10P.WEBRip.DDP5.1.Atmos.x265-ESPER.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ ESPER\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f96c69e77fe4572d56da718c4afa6613023d3c10",
+        "filename": "Severance.S02E01.MULTi.HDR.2160p.WEB.H265-TenmaLand.mkv",
+        "videoSize": 9737357720
+      },
+      "description": "📄 Severance.S02E01.MULTi.HDR.2160p.WEB.H265-TenmaLand.mkv\n📹 hevc • HDR\n⭐ WEB | 🏷️ TenmaLand\n💾 9.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|74d9b2e2cfb1006b180c602896b03102dfc1f4fd",
+        "filename": "Severance.S02E01.MULTi.HDR.2160p.WEB.H265-TenmaLand.mkv",
+        "videoSize": 9737357720
+      },
+      "description": "📄 Severance.S02E01.MULTi.HDR.2160p.WEB.H265-TenmaLand.mkv\n📹 hevc • HDR\n⭐ WEB | 🏷️ TenmaLand\n👤 29 💾 9.1 GB 🔎 Comet|YGGTorrent\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cf667a7b14f365fb03d5b028f9589dadc36f69f2",
+        "filename": "Severance.S02E01.Hello,.Ms.Cobel.2160p.10bit.ATVP.WEB-DL.DDP5.1.HEVC-Vyndros.mkv",
+        "videoSize": 2153650970
+      },
+      "description": "📄 Severance.S02E01.Hello,.Ms.Cobel.2160p.10bit.ATVP.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Vyndros\n👤 3 💾 2.0 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8769e104b3cd36a65b89c4c05219edc256127661",
+        "filename": "Severance.S02E01.Hello,.Ms.Cobel.2160p.10bit.ATVP.WEB-DL.DDP5.1.HEVC-Vyndros.mkv",
+        "videoSize": 2153650970
+      },
+      "description": "📄 Severance.S02E01.Hello,.Ms.Cobel.2160p.10bit.ATVP.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Vyndros\n👤 2 💾 2.0 GB 🔎 Comet|Torrenting",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eb106152dbc9039c151fe9180fd44d581b6950e7",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv",
+        "videoSize": 9288516102
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv\n📹 hevc\n⭐ WEB-DL\n👤 1 💾 8.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e2fa94eda489f4f7a0f43b17df6bb470c69138f3",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv",
+        "videoSize": 9288516102
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv\n📹 hevc\n⭐ WEB-DL\n👤 1 💾 8.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|db323e3f7dff48c85b36167aabff27055eb49ac9",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10488040521
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n👤 2 💾 9.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9ddd0409aaa5fb122f9e91f127063b7693a750b2",
+        "filename": "Severance.S02E01.WEB-DL.2160p.SDR.HEVC.2xRus.Eng.mkv",
+        "videoSize": 8160989021
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.SDR.HEVC.2xRus.Eng.mkv\n📹 hevc • SDR\n⭐ WEB-DL\n👤 2 💾 7.6 GB 🔎 Comet|BitMagnet\n🇬🇧",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|969a4603ebb58e62c15abb4d871ce538522d2ed3",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv",
+        "videoSize": 9288516102
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv\n📹 hevc\n⭐ WEB-DL\n👤 2 💾 8.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8ecef4451fe13c4c9276b3a0616e917bc774742f",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv",
+        "videoSize": 9265042997
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv\n📹 hevc\n⭐ WEB-DL\n👤 1 💾 8.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3bee3fbccde6e2c87c597c8e9117b40f0d797253",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv",
+        "videoSize": 9288516102
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv\n📹 hevc\n⭐ WEB-DL\n👤 14 💾 8.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|27b05e9355a5be4a2d731c8e41b4c5714672afda",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10488040521
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n👤 1 💾 9.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3dee99bcfd106c4a3446263e1a03df4159bebc82",
+        "filename": "Severance.S02E01.2160p.ENG.ITA.H265-TheBlackKing.mkv",
+        "videoSize": 8068812157
+      },
+      "description": "📄 Severance.S02E01.2160p.ENG.ITA.H265-TheBlackKing.mkv\n📹 hevc\n🏷️ TheBlackKing\n👤 2 💾 7.5 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|abd80c3d2bef97c86366582c28a4f926313bc722",
+        "filename": "Разделение.S02E01.WEB-DL.2160p.mp4",
+        "videoSize": 10347224056
+      },
+      "description": "📄 Разделение.S02E01.WEB-DL.2160p.mp4\n⭐ WEB-DL\n💾 9.6 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f61daa5fa43084cb2954066a332af87d60b82f8",
+        "filename": "Разделение.S02E01.WEB-DL.2160p.mp4",
+        "videoSize": 10347224056
+      },
+      "description": "📄 Разделение.S02E01.WEB-DL.2160p.mp4\n⭐ WEB-DL\n💾 9.6 GB 🔎 Comet|Knaben\n🇷🇺",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ea29d1479a88fcad86e3728563eb8582eb529e9d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H265-G66.mkv",
+        "videoSize": 9471746185
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H265-G66.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 64 💾 8.8 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d9698c9bcb53b1199932885f883f4204ea730fcf",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 9190995837
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 8.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c77e83f85858c6a2ad4b84d93d228c75b666385f",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-LAT-BOGO.mkv",
+        "videoSize": 9471078530
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-LAT-BOGO.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BOGO\n💾 8.8 GB 🔎 Comet|StremThru\n💃🏻",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7904ff59d2a3dff190b79dfa9d1bd5df91a29e2a",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv",
+        "videoSize": 9191027336
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 50 💾 8.6 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|53dfd38722f7eb76899a6cbbdc8c1923d776832b",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H265-G66.mkv",
+        "videoSize": 9471746185
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H265-G66.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3d534b9996681169cf6c5aef0757a2c4c2dae261",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 9190995837
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 8.6 GB 🔎 Comet|DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|302393414e56f4ee6e22b75c16743c8edba9d230",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 9190995837
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 2 💾 8.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5fc6a5efd12d628d7e0e87d689305d750cc19c14",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.DV.HDR.H.265-NTb.mkv",
+        "videoSize": 9191770641
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.DV.HDR.H.265-NTb.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 382 💾 8.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5e97e1f5d124e03cf74e2bfc97528f8fad18c725",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 DV HDR H 265-NTb.mkv",
+        "videoSize": 9191770641
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 DV HDR H 265-NTb.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 46 💾 8.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|24967398dd745ad9a71b81f9782b1e8a71d4651c",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.Dual-DoVi.mkv",
+        "videoSize": 9471205614
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.Dual-DoVi.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ DoVi\n💾 8.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1cf0b551bc6c4ba5ea2cc69afcdd8caa134f2234",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.DV.HDR.H.265-NTb.mkv",
+        "videoSize": 9191770641
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.DV.HDR.H.265-NTb.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 8.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f8f2d0a99c74157b970f837004dbba6b1cc939d",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV H 265-FLUX.mkv",
+        "videoSize": 9207934970
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV H 265-FLUX.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 9 💾 8.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2daecb3bcc5125dd0fe1f75adf16d5d38595dc08",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.MULTi.AD.2160p.ATV.WEB.DV.HDR.H265-BYOR.mkv",
+        "videoSize": 10025003137
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.MULTi.AD.2160p.ATV.WEB.DV.HDR.H265-BYOR.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BYOR\n💾 9.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|66946406c3c676f0854c4c47a0d37c7163cdc80a",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 DV H 265-NTb.mkv",
+        "videoSize": 9207935952
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 DV H 265-NTb.mkv\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 2 💾 8.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d002ceff8c507a55fd218e5e1efd54c9e6fcfb42",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.H.265-NTb.mkv",
+        "videoSize": 7787003557
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.H.265-NTb.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 179 💾 7.3 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3bb422fb8702b81030bc36f3ff27a95811aa0475",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 H 265-NTb.mkv",
+        "videoSize": 7787003557
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 H 265-NTb.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 8 💾 7.3 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a33612396c691b74d761235792601ccde4eb19fc",
+        "filename": "Severance (2022) S02E01 (1080p DS4K ATVP Webrip DV HDR10+ DDP5.1 x265) - Vialle.mkv",
+        "videoSize": 1729380017
+      },
+      "description": "📄 Severance (2022) S02E01 (1080p DS4K ATVP Webrip DV HDR10+ DDP5.1 x265) - Vialle.mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ Vialle\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b6e28dcb9b0fa49b170a9d7a430e5483b68daa9b",
+        "filename": "Severance (2022) S02E01 (1080p ATVP WEB-DL H265 SDR DDP Atmos 5.1 English - HONE).mkv",
+        "videoSize": 2859243299
+      },
+      "description": "📄 Severance (2022) S02E01 (1080p ATVP WEB-DL H265 SDR DDP Atmos 5.1 English - HONE).mkv\n📹 hevc • SDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 2.7 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa754b1201e6ae6adeb16ef8986357bae2966b85",
+        "filename": "Severance.S02E01.PLSUB.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX-PSOTNIK HT.mkv",
+        "videoSize": 3961762127
+      },
+      "description": "📄 Severance.S02E01.PLSUB.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX-PSOTNIK HT.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.7 GB 🔎 Comet|StremThru\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1140f5cd19f88f94ec08d8967115940d6dcdb430",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-MeM.GP.mkv",
+        "videoSize": 4676421105
+      },
+      "description": "📄 Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-MeM.GP.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.4 GB 🔎 Comet|TorrentGalaxyClone\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f18756b20c6ab2235fb4219f47e480e96f9bc4e4",
+        "filename": "Severance.S02E01.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264.DUAL-C76.mkv",
+        "videoSize": 4243480574
+      },
+      "description": "📄 Severance.S02E01.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264.DUAL-C76.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 2 💾 4.0 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|96edb4e8fe8648bb61aa7ebe4ac916f00bdd1e86",
+        "filename": "Severance.2025.S02E01.PLSUB.1080p.ATVP.WEB-DL.H.264.DDP5.1-RX.mkv",
+        "videoSize": 3959941084
+      },
+      "description": "📄 Severance.2025.S02E01.PLSUB.1080p.ATVP.WEB-DL.H.264.DDP5.1-RX.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ RX\n💾 3.7 GB 🔎 Comet|StremThru\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ee68fe7a05a0a2811ab3bfe176f9facb4b52d23",
+        "filename": "Severance.S02E01.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264.DUAL-C76.mkv",
+        "videoSize": 4243480574
+      },
+      "description": "📄 Severance.S02E01.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264.DUAL-C76.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.0 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a352d4aa50ac21839a0c109c65fc3639f3e374af",
+        "filename": "Severance (2022) S02E01 Hello, Ms. Cobel (1080p ATVP Webrip x265 10bit EAC3 5.1 Atmos English - JBENT)[TAoE].mkv",
+        "videoSize": 1446827081
+      },
+      "description": "📄 Severance (2022) S02E01 Hello, Ms. Cobel (1080p ATVP Webrip x265 10bit EAC3 5.1 Atmos English - JBENT)[TAoE].mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 1.3 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a9fc9fff80bb5abcc32aa9feb4f2968a54e47a26",
+        "filename": "Severance.S02E01.PL.Ai.1080p.WEB.10bit.2CH.HEVC.x265.mkv",
+        "videoSize": 431376949
+      },
+      "description": "📄 Severance.S02E01.PL.Ai.1080p.WEB.10bit.2CH.HEVC.x265.mkv\n📹 hevc • 10bit\n⭐ WEB\n👤 1 💾 411.4 MB 🔎 Comet|BitMagnet\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|707e3e6cc8b6acb7398a2e95774d32891dabcfcf",
+        "filename": "Severance (2021) - S02E01 - Hello, Ms. Cobel (1080p ATVP WEB-DL x265 Silence).mkv",
+        "videoSize": 1752575491
+      },
+      "description": "📄 Severance (2021) - S02E01 - Hello, Ms. Cobel (1080p ATVP WEB-DL x265 Silence).mkv\n📹 hevc\n⭐ WEB-DL\n💾 1.6 GB 🔎 Comet|Uindex",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1d92ceebaed6acd32bc43a56700d8fb9f3df0498",
+        "filename": "Severance.S02E01.PL.AI.1080p.ATVP.WEB-DL.DPPA5.1.H.264-XuploaD.mkv",
+        "videoSize": 3914703509
+      },
+      "description": "📄 Severance.S02E01.PL.AI.1080p.ATVP.WEB-DL.DPPA5.1.H.264-XuploaD.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL | 🏷️ XuploaD\n👤 0 💾 3.6 GB 🔎 Comet|BestTorrents\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42e8008ec50c753ed9a9f47172e4c2e8d6064495",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.DDP5.1.Atmos.DD5.1.x265-UBi.mkv",
+        "videoSize": 1923877242
+      },
+      "description": "📄 Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.DDP5.1.Atmos.DD5.1.x265-UBi.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ UBi\n💾 1.8 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0ec284427bb542c893812b9f2ccd87b7a9f18466",
+        "filename": "Severance.S02E01.German.AC3.DL.1080p.Web.x265-FuN.mkv",
+        "videoSize": 837087716
+      },
+      "description": "📄 Severance.S02E01.German.AC3.DL.1080p.Web.x265-FuN.mkv\n📹 hevc | 🔊 Dolby Digital\n⭐ WEB | 🏷️ FuN\n👤 1 💾 798.3 MB 🔎 Comet|BitMagnet\n🇩🇪",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a0d2b760c12fd6e63267f935bc1524ae4c22420e",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab.mkv",
+        "videoSize": 3963487862
+      },
+      "description": "📄 severance.s02e01.1080p.web.h264-successfulcrab.mkv\n📹 avc\n⭐ WEB | 🏷️ successfulcrab\n👤 1982 💾 3.7 GB 🔎 TorrentGalaxyClone",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d7f4018fab18594fb3af4bb8835970b6131709b4",
+        "filename": "Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.mkv",
+        "videoSize": 4245251932
+      },
+      "description": "📄 Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.mkv\n📹 avc\n🏷️ TheBlackKing\n👤 10 💾 4.0 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9133181bfd65d418bd0aefcffbcc7d507c0e02a7",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv",
+        "videoSize": 624166215
+      },
+      "description": "📄 Severance.S02E01.1080p.x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n👤 111 💾 595.3 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|64ef2c9f1912f1ce448bb375da2cc823ae444dc4",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv",
+        "videoSize": 624166215
+      },
+      "description": "📄 Severance.S02E01.1080p.x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n👤 1 💾 595.3 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f86fc48078ae49590bf70401e77b17f2413131cd",
+        "filename": "Severance.S02E01.WEBDL.1080p.Rus.mp4",
+        "videoSize": 4191148491
+      },
+      "description": "📄 Severance.S02E01.WEBDL.1080p.Rus.mp4\n⭐ WEB-DL\n💾 3.9 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec69697e154c3f3601c79510c724192778b4afd7",
+        "filename": "Разделение - Severance S02 E01 (Здравствуйте, мисс Кобель.) WEB-DL 1080p (2025).mkv",
+        "videoSize": 4760646341
+      },
+      "description": "📄 Разделение - Severance S02 E01 (Здравствуйте, мисс Кобель.) WEB-DL 1080p (2025).mkv\n⭐ WEB-DL\n💾 4.4 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ebb65c3cafa35c31ef6428088e155d655bc9b50d",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n💾 3.7 GB 🔎 Comet|DHT\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d024bb872e9bb26ec8b7224824562b89e237206c",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n👤 1 💾 3.7 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a4b9b9f4443e4ba8c1f08d610608de4bcbab8a8c",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n👤 1 💾 3.7 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|845d2f810dc76631c69f5dc1a1501fe129293c2c",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n👤 1 💾 3.7 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|49f27af5ec4318fdef69f6e35291bc89d06dbd48",
+        "filename": "Severance S02E01 (2025) WEB-DL 1080p [Ukr_Eng] [Hurtom].mkv",
+        "videoSize": 4032749737
+      },
+      "description": "📄 Severance S02E01 (2025) WEB-DL 1080p [Ukr_Eng] [Hurtom].mkv\n⭐ WEB-DL\n👤 1 💾 3.8 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d098c839b1d717a59600e56c27d6ad595d0ccf96",
+        "filename": "Severance S02E01 Hello, Ms. Cobel.mkv",
+        "videoSize": 222968489
+      },
+      "description": "📄 Severance S02E01 Hello, Ms. Cobel.mkv\n📹 10bit\n👤 6 💾 212.6 MB 🔎 Comet|1337x",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f8171f63b81fa26cc7dec9bcf1dfef5b0a82dcb0",
+        "filename": "Severance_s02e01_1080p_RHS_[scarfilm].mkv",
+        "videoSize": 4196652001
+      },
+      "description": "📄 Severance_s02e01_1080p_RHS_[scarfilm].mkv\n💾 3.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9e6cec5270abb1fca485b0b0da96d0f87ebc464",
+        "filename": "Severance_s02e01_1080p_RHS_[scarfilm].mkv",
+        "videoSize": 4196652001
+      },
+      "description": "📄 Severance_s02e01_1080p_RHS_[scarfilm].mkv\n💾 3.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|097c3d2e4eeabb2bb713854b6ce930161d87f9e1",
+        "filename": "Severance_s02e01_1080p_RHS_[scarfilm].mkv",
+        "videoSize": 4196652001
+      },
+      "description": "📄 Severance_s02e01_1080p_RHS_[scarfilm].mkv\n💾 3.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|00eeb3e123b696d8a9734ce0ff44c942e6345df9",
+        "filename": "severance.s02e01.1080p_DuetFilm.mkv",
+        "videoSize": 4080976363
+      },
+      "description": "📄 severance.s02e01.1080p_DuetFilm.mkv\n💾 3.8 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b0a27f3d26dae7bbace654469decb965ffd1a7d4",
+        "filename": "Ruptura.S02E01.WEB-DL.1080p.x264.DUAL.5.1-SF.mkv",
+        "videoSize": 1409718133
+      },
+      "description": "📄 Ruptura.S02E01.WEB-DL.1080p.x264.DUAL.5.1-SF.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL | 🏷️ SF\n💾 1.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5551fd5520252986ba3c9d1566e250b2e6331360",
+        "filename": "Ruptura S02E01 WEB-DL 1080p x264 DUAL 5.1.mkv",
+        "videoSize": 1409717595
+      },
+      "description": "📄 Ruptura S02E01 WEB-DL 1080p x264 DUAL 5.1.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n💾 1.3 GB 🔎 Comet|Torrents.csv\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0548cb3ad5773265056d4ed36c5500530d820adf",
+        "filename": "Ruptura S02E01 WEB-DL 1080p x264 DUAL 5.1.mkv",
+        "videoSize": 1409717595
+      },
+      "description": "📄 Ruptura S02E01 WEB-DL 1080p x264 DUAL 5.1.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n💾 1.3 GB 🔎 Comet|Torrents.csv\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d2e618e5809cf3195f90e90e75612dca8a18759f",
+        "filename": "Severance.S02E01.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci.mkv",
+        "videoSize": 553455291
+      },
+      "description": "📄 Severance.S02E01.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci.mkv\n📹 av1 | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ dAV1nci\n💾 527.8 MB 🔎 Comet|Uindex",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|926cacfd4769cae3eab6e3eef09da5515474a99d",
+        "filename": "Severance.S02E01.Hello,.Ms.Cobel.1080p.WebRip.EAC3.5.1.x265-Lootera.mkv",
+        "videoSize": 1091433332
+      },
+      "description": "📄 Severance.S02E01.Hello,.Ms.Cobel.1080p.WebRip.EAC3.5.1.x265-Lootera.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ Lootera\n💾 1.0 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|855aaa02257ea6fadf360b9fdcc036ff0a772c37",
+        "filename": "Severance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv",
+        "videoSize": 1228904179
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ BATGirl\n👤 27 💾 1.1 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cef442138bbaeb0db9ef0b6a7178ab3d4c43d2c6",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 1860187087
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 1.7 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|94e93e866a28302adce3e0a28038c4068734d8d6",
+        "filename": "Severance.Scissione.2x01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.AAC.x265-Pir8.mkv",
+        "videoSize": 808329562
+      },
+      "description": "📄 Severance.Scissione.2x01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.AAC.x265-Pir8.mkv\n📹 hevc | 🔊 AAC\n⭐ WEBRip | 🏷️ Pir8\n👤 9 💾 770.9 MB 🔎 1337x\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|701141c3164fa1196093882b1102d8c4b8b150a2",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 1860187087
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 1.7 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6f8ec63491099640b88a559de0014982508619e0",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-TFA.mkv",
+        "videoSize": 4525286681
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-TFA.mkv\n📹 avc\n⭐ WEB | 🏷️ TFA\n💾 4.2 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5dfe14e0f530ba88909b1ab3d8786c5da66f43a4",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 4525286719
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 4.2 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5cb1fb42c8799e7651077ebb175e945d50f2a24c",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 4525286719
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n👤 0 💾 4.2 GB 🔎 Comet|alldebrid\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2c58fe33e07f79430ee490f07d5c270fed00f72a",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 1860187087
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 1.7 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|23882a43b189ae01e9bf8ccd614d13b241eab222",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-SUPPLY.mkv",
+        "videoSize": 4525286741
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-SUPPLY.mkv\n📹 avc\n⭐ WEB | 🏷️ SUPPLY\n👤 23 💾 4.2 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|799ace02d60844c90ede3d29571cd7426ec723c4",
+        "filename": "Severance.S02E01.1080p.WEBRip.x265-KONTRAST.mkv",
+        "videoSize": 1073436378
+      },
+      "description": "📄 Severance.S02E01.1080p.WEBRip.x265-KONTRAST.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ KONTRAST\n👤 2 💾 1023.7 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fcfa496db675869099746cec8688e2337bf84387",
+        "filename": "Separacion.S02E01.2025.WEB-DL.1080p-Dual-Lat.mkv",
+        "videoSize": 4243480944
+      },
+      "description": "📄 Separacion.S02E01.2025.WEB-DL.1080p-Dual-Lat.mkv\n⭐ WEB-DL | 🏷️ Lat\n💾 4.0 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|880f45e069bd418a520a59885e57e3c58d55454b",
+        "filename": "Severance.S02E01.1080p.WEB-DL.DUAL.5.1.mkv",
+        "videoSize": 4243480574
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB-DL.DUAL.5.1.mkv\n🔊 5.1\n⭐ WEB-DL\n💾 4.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3f97d8027972623c27bc7a879a944148c86907fc",
+        "filename": "Separacion.S02e01.2025.1080P-Dual-Lat.mkv",
+        "videoSize": 841763925
+      },
+      "description": "📄 Separacion.S02e01.2025.1080P-Dual-Lat.mkv\n🏷️ Lat\n💾 802.8 MB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9479ec85b9d0608fed490235d603b34a60ef8896",
+        "filename": "Severance.S02E01.CUSTOM.MULTi.1080p.WEBrip.H265-TyHD.mkv",
+        "videoSize": 706691066
+      },
+      "description": "📄 Severance.S02E01.CUSTOM.MULTi.1080p.WEBrip.H265-TyHD.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ TyHD\n💾 674.0 MB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e0ab66492d48b286bd8ac5d0357a49377370e8e",
+        "filename": "Severance.S02E01.MULTI.1080p.WEBrip.x265-TyHD.mkv",
+        "videoSize": 926119258
+      },
+      "description": "📄 Severance.S02E01.MULTI.1080p.WEBrip.x265-TyHD.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ TyHD\n💾 883.2 MB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|54e0d760ddda60c82a17e626c546db2984a1c7c8",
+        "filename": "Severance.S02E01.MULTI.1080p.WEBrip.x265-TyHD.mkv",
+        "videoSize": 926119258
+      },
+      "description": "📄 Severance.S02E01.MULTI.1080p.WEBrip.x265-TyHD.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ TyHD\n💾 883.2 MB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b1e4147be37fc968ff4ac2f1e18789604b4936f9",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-G66.mkv",
+        "videoSize": 4243523243
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-G66.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 87 💾 4.0 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa2657dcda5512639ff80d1d6f4205a11753d808",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+        "videoSize": 3963489709
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 198 💾 3.7 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8b686f47deb4dabc36fc361c20c0d92c6e5340bf",
+        "filename": "Severance.2025.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX_EniaHD.mkv",
+        "videoSize": 4337510739
+      },
+      "description": "📄 Severance.2025.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX_EniaHD.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|75810646de60d6c15a0a0208072b45bd179c3e4b",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv",
+        "videoSize": 3963490403
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n👤 25 💾 3.7 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c6139e38b356f7c91ccb3e9142a4abfd3a1e271",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX[EZTVx.to].mkv",
+        "videoSize": 3963489709
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX[EZTVx.to].mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 79 💾 3.7 GB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|637a94ea138f00c282e7f9ac476477ef8cd7989d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-G66.mkv",
+        "videoSize": 4243523243
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-G66.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|20df25a5d28b2418b89e05d422739dd2178df468",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H265-G66.mkv",
+        "videoSize": 2379708370
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H265-G66.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 23 💾 2.2 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6750e7051e8b9d81cdc32cb91b338d35ee4676b4",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 H 264-NTb.mkv",
+        "videoSize": 3961710155
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 H 264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 98 💾 3.7 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|51961ce8ede05a2c19520c8840f7d74ceec1e682",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3961710155
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.7 GB 🔎 Comet|Pack Inspection",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3c6c33e2d020be56ede94c76d6e7a6ba742b8263",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3961710155
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 259 💾 3.7 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eda47a646a16a55445e5a1059d272acf319b2bbe",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10Bit.DDP5.1.Atmos.HEVC-d3g.mkv",
+        "videoSize": 1966055967
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10Bit.DDP5.1.Atmos.HEVC-d3g.mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ d3g\n💾 1.8 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c26757a4253f00199f5b3778d956b4b4c20bb9c1",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10Bit.DDP5.1.Atmos.HEVC-d3g.mkv",
+        "videoSize": 1966055967
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10Bit.DDP5.1.Atmos.HEVC-d3g.mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ d3g\n👤 1 💾 1.8 GB 🔎 BTdirectory",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|79e82859e20af3409d3b5b6dca6c81acb11d8676",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10Bit.DDP5.1.Atmos.HEVC-d3g.mkv",
+        "videoSize": 1966055967
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10Bit.DDP5.1.Atmos.HEVC-d3g.mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ d3g\n💾 1.8 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f5df10370fe8b629ac6fcf8da1cf44b997a26981",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 4995364440
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 4 💾 4.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c207b3d38bd07ca3c2fd6edd35ac0307e8cfc591",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bddb2ee15f83330fc78a3454b7101ae6a8db645e",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af8bc2e08332850a352d879601107a634f7fab91",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5159664851
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 2 💾 4.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a32aa3be7857094c6cb6a284555004d890bac72c",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e4a11adb3a22c0340c166d4990af0880e38050d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|837bf7b5b018f7abaf041dc9ebd0bca3eb1c0e80",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|820b2b36a1d3f98a25bb58bfaa4ea955a6d99425",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|57b44f15448921e270f7da386a7deeef41470b04",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4a3f97ac694730c5792a11f8bf60fdb8a6af2d36",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 3 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42f3a173a83eaec3752da7179fb2df7108abd789",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2f26234481e9da7fa3c1f5225f219167beac7506",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|157b943d8e2cb261aa8976b9324675ddb12017fc",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02409249858f466cdb56770f2d7540d4ae4ddb33",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n👤 1 💾 5.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a762217ea6a1d6e64fa297259dc14ab53f75d6c7",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv",
+        "videoSize": 3963487862
+      },
+      "description": "📄 severance.s02e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ successfulcrab\n👤 242 💾 3.7 GB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a12fa9fe86d1dce6241ebdc0e1bdfeb84fe364aa",
+        "filename": "Severance.S02E01.1080p.AV1.10bit-MeGusta[EZTVx.to].mkv",
+        "videoSize": 447991297
+      },
+      "description": "📄 Severance.S02E01.1080p.AV1.10bit-MeGusta[EZTVx.to].mkv\n📹 av1 • 10bit\n🏷️ MeGusta\n👤 14 💾 427.2 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a7e0fd95ca0824783f3dfd05f095cf033db3eda4",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+        "videoSize": 478367682
+      },
+      "description": "📄 Severance.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv\n📹 hevc\n🏷️ MeGusta\n👤 101 💾 456.2 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|57580cf2b63f951dff89973ad6c46b18c2795c5c",
+        "filename": "Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv",
+        "videoSize": 1108959440
+      },
+      "description": "📄 Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv\n📹 hevc\n⭐ WEB-DLRip\n💾 1.0 GB 🔎 DMM\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|326116cefcab49002a8333697a3916fe05e152a6",
+        "filename": "Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv",
+        "videoSize": 1108959440
+      },
+      "description": "📄 Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv\n📹 hevc\n⭐ WEB-DLRip\n💾 1.0 GB 🔎 DMM\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5688a655f2876eb80530d1ef8be855ff3e8b6f0c",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv",
+        "videoSize": 735923280
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ HODL\n👤 524 💾 701.8 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|228faee0146c2d40d2e136ec54606d92a1866e00",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv",
+        "videoSize": 735923280
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ HODL\n👤 555 💾 701.8 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f0ca6355751c6d6338641714a4ff108779a3caca",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.3D.FULL-SBS.HEVC.SBS-SUB.ENG.iFA-AI3D.mkv",
+        "videoSize": 1941687160
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.3D.FULL-SBS.HEVC.SBS-SUB.ENG.iFA-AI3D.mkv\n📹 hevc\n🏷️ AI3D\n👤 1 💾 1.8 GB 🔎 Comet|BitMagnet\n🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d533814192d953bfb70c404cd59dea207a0a2975",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.3D.FULL-SBS.HEVC.ENG.iFA-AI3D.mkv",
+        "videoSize": 1941469509
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.3D.FULL-SBS.HEVC.ENG.iFA-AI3D.mkv\n📹 hevc\n🏷️ AI3D\n💾 1.8 GB 🔎 Comet|Uindex\n🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|75503fd089c4f696fdcdd2a75cc95cd6d63f2f9d",
+        "filename": "Severance.S02E01.720p.HDR.mkv",
+        "videoSize": 1682198856
+      },
+      "description": "📄 Severance.S02E01.720p.HDR.mkv\n📹 HDR\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e492a2eec786b2bb983766f77563f6ac629c30d8",
+        "filename": "Severance.S02E01.720p.ATVP.WEB-DL.x264-MIKE.mkv",
+        "videoSize": 438415941
+      },
+      "description": "📄 Severance.S02E01.720p.ATVP.WEB-DL.x264-MIKE.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ MIKE\n💾 418.1 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7fa9b4a865865f058c1267a5dac33eade274ae20",
+        "filename": "Severance.S02E01.720p.ATVP.WEB-DL.x264-MIKE.mkv",
+        "videoSize": 438456055
+      },
+      "description": "📄 Severance.S02E01.720p.ATVP.WEB-DL.x264-MIKE.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ MIKE\n💾 418.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|06f4eaadf3f333d93c138d501e1e0852f7ae95b4",
+        "filename": "Severance.S02E01.720p.x265-TiPEX.mkv",
+        "videoSize": 365265401
+      },
+      "description": "📄 Severance.S02E01.720p.x265-TiPEX.mkv\n📹 hevc\n🏷️ TiPEX\n👤 1 💾 348.3 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f018e3c769ab477374e5eacaba60bab38c9d1c40",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2832628510
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bb7623ff1c0997f44c2f324e2ed1ff0252b8bc6d",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2832628510
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 1 💾 2.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|93bd075ae0a4f0ec7a6277027fddbf01494d73f8",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2151668717
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n👤 1 💾 2.0 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0b088406d54329fa33b60085918287a1db28e262",
+        "filename": "Severance.S02E01.720p.WEB-DL.AlexFilm.mkv",
+        "videoSize": 1470910757
+      },
+      "description": "📄 Severance.S02E01.720p.WEB-DL.AlexFilm.mkv\n⭐ WEB-DL\n👤 0 💾 1.4 GB 🔎 Comet|unknown",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|71cf475c77d5631e1b86ca1d69d0bad6759cd52f",
+        "filename": "Severance.S02E01.720p.HDTV.Subtitulado.Esp.SC.mp4",
+        "videoSize": 525050095
+      },
+      "description": "📄 Severance.S02E01.720p.HDTV.Subtitulado.Esp.SC.mp4\n⭐ HDTV\n💾 500.7 MB 🔎 DMM\n🇪🇸",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6e495b96b6b5c1240a86feb3d368201099b0ee6b",
+        "filename": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+        "videoSize": 1331328510
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 32 💾 1.2 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2f651ec5f49f702cea213efb6855e9bd09182c63",
+        "filename": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+        "videoSize": 1331328510
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 88 💾 1.2 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8b0c749e5ce43f9a4a5e5e0208f2616776797a6b",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 1329548492
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 1 💾 1.2 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|55eb00e97cee81651f31f241fa8059fab51d75e4",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 1329548492
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 228 💾 1.2 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4468951bf0c4b67e729be2ac7cef088ba74d3915",
+        "filename": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 H 264-NTb.mkv",
+        "videoSize": 1329548492
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 H 264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 10 💾 1.2 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e0c5dd9e303b013cee3a943b6949a483b3141556",
+        "filename": "Severance S02E01 720p WEB x265-MiNX[EZTVx.to].mkv",
+        "videoSize": 162206619
+      },
+      "description": "📄 Severance S02E01 720p WEB x265-MiNX[EZTVx.to].mkv\n📹 hevc\n⭐ WEB | 🏷️ MiNX\n👤 17 💾 154.7 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2f2a58502b52d8ca6eac1281cfd2a33ad1776dc1",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+        "videoSize": 444693016
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.720p.HEVC.x265-MeGusta[EZTVx.to].mkv\n📹 hevc\n🏷️ MeGusta\n👤 3 💾 424.1 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|89a0067e0c2fd711e01cfff95e34b647b100eaf9",
+        "filename": "Severance.S02E01.480p.x264-RUBiK.mkv",
+        "videoSize": 312826271
+      },
+      "description": "📄 Severance.S02E01.480p.x264-RUBiK.mkv\n📹 avc\n🏷️ RUBiK\n👤 48 💾 298.3 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|da26d28c5bc812692c88f13f9ca2e315c6b6d6b9",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.480p.x264-mSD[EZTVx.to].mkv",
+        "videoSize": 369947561
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.480p.x264-mSD[EZTVx.to].mkv\n📹 avc\n🏷️ mSD\n👤 5 💾 352.8 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|29c996bba759c7e6483c134550df04b98c50e76f",
+        "filename": "Severance.S02E01.WEB.x264-TORRENTGALAXY.mkv",
+        "videoSize": 196962922
+      },
+      "description": "📄 Severance.S02E01.WEB.x264-TORRENTGALAXY.mkv\n📹 avc\n⭐ WEB | 🏷️ TORRENTGALAXY\n👤 174 💾 187.8 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f6c680182889bb6f5cf43ea4e4541ccdaa16f4d8",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n👤 1 💾 607.8 MB 🔎 BTdirectory",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f657bbf68400a3124d0180291edd3db36d499641",
+        "filename": "Severance S02E01 Hello, Ms. Cobel.mkv",
+        "videoSize": 2301649883
+      },
+      "description": "📄 Severance S02E01 Hello, Ms. Cobel.mkv\n👤 1 💾 2.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e761b8d73184a30b3fbe997938e70ea8fdd85a28",
+        "filename": "Severance S02E01.mp4",
+        "videoSize": 1189626626
+      },
+      "description": "📄 Severance S02E01.mp4\n👤 73 💾 1.1 GB 🔎 Comet|Demonoid Clone",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d0e5a6d16e3b9f69e68de33ac87469a807f80075",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n💾 607.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cf541a49ab86395125fa705020a61474369e1663",
+        "filename": "Severance_s02e01_4К_RHS_[scarfilm].mkv",
+        "videoSize": 9424941335
+      },
+      "description": "📄 Severance_s02e01_4К_RHS_[scarfilm].mkv\n💾 8.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c891bb46d92497b1ed6c6c9d137dbdf54036ccbb",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98fa7084ba795d5ccca4403dea98127ea771b700",
+        "filename": "Severance - S02E01 - Hello, Ms. Cobel.mkv",
+        "videoSize": 483767744
+      },
+      "description": "📄 Severance - S02E01 - Hello, Ms. Cobel.mkv\n💾 461.4 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|959ed8be27cffcb61603eff33d393c94df2be2d7",
+        "filename": "Severance S02E01.mp4",
+        "videoSize": 1189626626
+      },
+      "description": "📄 Severance S02E01.mp4\n💾 1.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6b96c5ecebcf3b16d71369a6f8aa468fc63e1239",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n💾 607.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6a6892d0ac8cb5698b07babfbdb3b56bbd311f77",
+        "filename": "severance.s02e01..avi",
+        "videoSize": 2205586530
+      },
+      "description": "📄 severance.s02e01..avi\n💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6505d025dbaf4e352816366aa36d828f5ac18882",
+        "filename": "S02E01.mkv",
+        "videoSize": 12572719464
+      },
+      "description": "📄 S02E01.mkv\n👤 1 💾 11.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60fed74f74fbfb27d97540db797c8e6079eb70e2",
+        "filename": "S02E01.mkv",
+        "videoSize": 12572719464
+      },
+      "description": "📄 S02E01.mkv\n👤 0 💾 11.7 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f3f0b3fbba57b7fd6b6b583de80b72ebcc43689",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n💾 607.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|58140d642e1a0a9149bd4db86ad5be93b8206a7c",
+        "filename": "Severance_s02e01_4К_RHS_[scarfilm].mkv",
+        "videoSize": 9424941335
+      },
+      "description": "📄 Severance_s02e01_4К_RHS_[scarfilm].mkv\n💾 8.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|51bcfe7db0bcfe16d9fe085f516a6ed1b7509795",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n💾 607.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4946900812c2a8bbc7a0854f77fdb9cfeb2841f0",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n💾 607.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3efb6882a380079ca3c4bffa2a65f5fa8334446d",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|29eb1ea5d75f5425b0e76ceed9fbea26586e2efe",
+        "filename": "Severance.S02E01.avi",
+        "videoSize": 637325312
+      },
+      "description": "📄 Severance.S02E01.avi\n💾 607.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1c85e8781b9c6ad746a251353e0c455c84b78b80",
+        "filename": "Severance - S02E01 - Hello, Ms. Cobel.mkv",
+        "videoSize": 741687982
+      },
+      "description": "📄 Severance - S02E01 - Hello, Ms. Cobel.mkv\n👤 32 💾 707.3 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|09cfa9650fe06270c86220ac3c8a0dc514180d7e",
+        "filename": "Severance_s02e01_4К_RHS_[scarfilm].mkv",
+        "videoSize": 9424941335
+      },
+      "description": "📄 Severance_s02e01_4К_RHS_[scarfilm].mkv\n💾 8.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|07a82f6ea8ead659354dabebbea5ba1af2820388",
+        "filename": "Severance_s02e01_4К_RHS_[scarfilm].mkv",
+        "videoSize": 9424941335
+      },
+      "description": "📄 Severance_s02e01_4К_RHS_[scarfilm].mkv\n💾 8.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eacc4f73c4e30db4ab98eeedccf0502cb5261a10",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n👤 1 💾 940.7 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa8245c7b74a8728278f392a4c9fba2e16291566",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n👤 1 💾 940.7 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e46822aeb0bd5241e4829f371878440a63a9c2c",
+        "filename": "Severance S02E01 (2025) WEB-DLRip-AVC [Toloka].mkv",
+        "videoSize": 657853775
+      },
+      "description": "📄 Severance S02E01 (2025) WEB-DLRip-AVC [Toloka].mkv\n📹 avc\n⭐ WEB-DLRip\n👤 1 💾 627.4 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1c8ee5c48835c86fd37a4c070813b1adc89e72d5",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 940.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa60a2517a463963e17730d169559e61c560d065",
+        "filename": "Severance.S02E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 654716928
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n👤 1 💾 624.4 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a7f04708d2743c04b258054c83a9d052cf7e28a3",
+        "filename": "Severance.S02E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 654716928
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n👤 1 💾 624.4 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9aa8d75676003473296d25c7eb8769cba8694eef",
+        "filename": "Severance.S02E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 733034496
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n👤 1 💾 699.1 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f22ad886bea2b0ac4838e88883ce2c95211ccc7",
+        "filename": "Severance.S02E01.WEB-DLRip.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 1052607072
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DLRip | 🏷️ MAZEPA\n💾 1003.8 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|00807a27e19d4c9af1e383aeaad3e6d5975ea391",
+        "filename": "Severance.S02E01.Hello Ms Cobel.lektor PL.mkv",
+        "videoSize": 1987383372
+      },
+      "description": "📄 Severance.S02E01.Hello Ms Cobel.lektor PL.mkv\n👤 4 💾 1.9 GB 🔎 Comet|Electro Torrent\n🇵🇱",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3785b8192719dfe804fd93c9c9c76d99a8fb5405",
+        "filename": "[ Torrent911.im ] Severance.S02E01.FRENCH.WEBRip.x264.mp4",
+        "videoSize": 219351581
+      },
+      "description": "📄 [ Torrent911.im ] Severance.S02E01.FRENCH.WEBRip.x264.mp4\n📹 avc\n⭐ WEBRip\n💾 209.2 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ec358d738391c08f0b468285d0591493ae89292",
+        "filename": "Уэнсдэй - Wednesday S02 E01 (Снова вместе в горе) WEB-DLRip.HDRezka Studio (2025).avi",
+        "videoSize": 770324480
+      },
+      "description": "📄 Уэнсдэй - Wednesday S02 E01 (Снова вместе в горе) WEB-DLRip.HDRezka Studio (2025).avi\n📹 xvid • DV • HDR • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DLRip | 🏷️ moviesbyrizzo\n👤 1 💾 734.6 MB 🔎 Comet|BitMagnet\n🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|33ccbfeec7c21dba1320c5d44c632e80c080b917",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.WEB-DLRip.x264.960x(semen_52-TNC).mp4",
+        "videoSize": 621301558
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.WEB-DLRip.x264.960x(semen_52-TNC).mp4\n📹 avc\n⭐ WEB-DLRip\n👤 12 💾 592.5 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a77b31a64bd8d7e7d39feb8211f84ee4918c8bc4",
+        "filename": "Severance.2022.S02E01.2160p.ATVP.WEB-DL.Hybrid.H265.DV.HDR10+.DDP.Atmos.5.1.English-HONE",
+        "videoSize": 9190995247
+      },
+      "description": "📄 Severance.2022.S02E01.2160p.ATVP.WEB-DL.Hybrid.H265.DV.HDR10+.DDP.Atmos.5.1.English-HONE\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ HONE\n💾 8.6 GB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2af4f7ff81f42c72656770e27cd9a55a40be83e1",
+        "filename": "Severance S02E01 2160p ATVP WEB-DL DD+ 5.1 Atmos DV HDR H.265-FLUX",
+        "videoSize": 9191230013
+      },
+      "description": "📄 Severance S02E01 2160p ATVP WEB-DL DD+ 5.1 Atmos DV HDR H.265-FLUX\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 5 💾 8.6 GB 🔎 Comet|YuScene",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|237589d3e90c92c223511b5b85bac10cee8c047a",
+        "filename": "Severance.2022.S02E01.Ger.Eng.DL.Atmos.2160p.DV.HDR.ATVP.WEB.H265-ZeroTwo.mkv",
+        "videoSize": 9473438385
+      },
+      "description": "📄 Severance.2022.S02E01.Ger.Eng.DL.Atmos.2160p.DV.HDR.ATVP.WEB.H265-ZeroTwo.mkv\n📹 hevc • DV • HDR | 🔊 Atmos\n⭐ WEB | 🏷️ ZeroTwo\n👤 1 💾 8.8 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb99e4ee94f9184779a69f5492d5b77b1f335d65",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10669495828
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n💾 9.9 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|818ba9dbc27a2c90455440d0b76be914c4597802",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10011950180
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n💾 9.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f7c606ec7a5fdfc41f72d036084a49606d2075d",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 10387724618
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n💾 9.7 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|570108520a753f71d127a6904d802f114d8b8ec4",
+        "filename": "Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv",
+        "videoSize": 9518840696
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.2160p.DV.HDR10.RGzsRutracker.mkv\n📹 DV • HDR • 10bit\n⭐ WEB-DL\n💾 8.9 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e86b7402eb1e262ea1c00cdaa42ac7331e9c400d",
+        "filename": "Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv",
+        "videoSize": 9753535377
+      },
+      "description": "📄 Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 9.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1a4fcd0646bd4c988098eafa5c0e9527fbba86ff",
+        "filename": "Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW",
+        "videoSize": 9753543846
+      },
+      "description": "📄 Severance.S02E01.MULTi.HDR.DV.2160p.WEB.H265-FW\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ FW\n💾 9.1 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9c685e102b5d3b89c754b2145738f45148de29f",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.H.265.DUAL-C76.mkv",
+        "videoSize": 9455543670
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.H.265.DUAL-C76.mkv\n📹 hevc • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.8 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60a613de83ab60b2bb6e9fdbe36508c68063a2f5",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.H.265.DUAL-C76.mkv",
+        "videoSize": 9455543670
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.H.265.DUAL-C76.mkv\n📹 hevc • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.8 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02baadb8ec7bd0872e5cf582215af1d743710781",
+        "filename": "severance.s02e01.hdr.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 9175553024
+      },
+      "description": "📄 severance.s02e01.hdr.2160p.web.h265-successfulcrab.mkv\n📹 hevc • HDR\n⭐ WEB | 🏷️ successfulcrab\n👤 16 💾 8.5 GB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7333f62f37dc0c6e21ec9d48ea4558927bb24914",
+        "filename": "Severance - 02x01 - Bonjour, Mme Cobel - WEB-DL.2160p.HDR.HEVC.x265.MULTI.EAC3.5.1.FRA.ENG.SUB.FRA.ENG - GINPEL.mkv",
+        "videoSize": 2517936406
+      },
+      "description": "📄 Severance - 02x01 - Bonjour, Mme Cobel - WEB-DL.2160p.HDR.HEVC.x265.MULTI.EAC3.5.1.FRA.ENG.SUB.FRA.ENG - GINPEL.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ GINPEL\n💾 2.3 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|557a48706125a158e55ef2f3f19e414e8d5e2531",
+        "filename": "Severance - 02x01 - Bonjour, Mme Cobel - WEB-DL.2160p.HDR.HEVC.x265.MULTI.EAC3.5.1.FRA.ENG.SUB.FRA.ENG - GINPEL.mkv",
+        "videoSize": 2684354560
+      },
+      "description": "📄 Severance - 02x01 - Bonjour, Mme Cobel - WEB-DL.2160p.HDR.HEVC.x265.MULTI.EAC3.5.1.FRA.ENG.SUB.FRA.ENG - GINPEL.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ GINPEL\n👤 1 💾 2.5 GB 🔎 CometNet|ElfHosted\n🌎/🇬🇧/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f106737da40dbc6cd9dd3b33e681cc85a5093d4e",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10417630217
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n💾 9.7 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec35547977023baa6ebdd684e54e44c7cb020e19",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10488040521
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n💾 9.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99fc77eec086e19ec32ae84e7b576022ba13c36b",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 9756082265
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n💾 9.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|81747071a0ef67561aeb8885d60526905dd09734",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10488040521
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n👤 3 💾 9.8 GB 🔎 Comet|noobdl",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6f1aac3dc7997a7b72c6822b3d78d6e3b7f3184f",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10488040521
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n👤 0 💾 9.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|627e369c0cdd16b4692fa705889b2336fcf4c838",
+        "filename": "[NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4",
+        "videoSize": 10488040521
+      },
+      "description": "📄 [NOOBDL]Severance.S02E01.2160p.WEB-DL.x265.DVp5.mp4\n📹 hevc\n⭐ WEB-DL | 🏷️ NOOBDL\n💾 9.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|574fb6186afdcf2b32c96cba6c31e5b108b8ffb1",
+        "filename": "Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv",
+        "videoSize": 9265042997
+      },
+      "description": "📄 Severance.S02E01.2160p.ATVP.WEB-DL.H.265.RGzsRutracker.mkv\n📹 hevc\n⭐ WEB-DL\n💾 8.6 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f72e7535976f5ccd7e9e99f4ec333ba98706f438",
+        "filename": "Severance.S02E01.2160p.WEB.H265-SuccessfulCrab",
+        "videoSize": 7787068163
+      },
+      "description": "📄 Severance.S02E01.2160p.WEB.H265-SuccessfulCrab\n📹 hevc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 7.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ab0afdeb7478382e740141a5a8b93604c8513525",
+        "filename": "severance.s02e01.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 7787053677
+      },
+      "description": "📄 severance.s02e01.2160p.web.h265-successfulcrab.mkv\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n👤 3 💾 7.3 GB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a1767bc219d6f62db05e95cd7bea48aa73e4e703",
+        "filename": "Severance.S02E01.2160p.WEB.H265-SuccessfulCrab",
+        "videoSize": 8482560512
+      },
+      "description": "📄 Severance.S02E01.2160p.WEB.H265-SuccessfulCrab\n📹 hevc\n⭐ WEB | 🏷️ SuccessfulCrab\n👤 1 💾 7.9 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|973d8ce33e6699bb1366a011484ef269548bf9c9",
+        "filename": "severance.s02e01.2160p.web.h265-successfulcrab.mkv",
+        "videoSize": 7934287230
+      },
+      "description": "📄 Severance.S02E01.2160p.WEB.H265-SuccessfulCrab\n📹 hevc\n⭐ WEB | 🏷️ successfulcrab\n💾 7.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|410ee38126616eadbd4963c0cd3c23deca22292a",
+        "filename": "Severance.S02E01.2160p.WEB.H265-SuccessfulCrab",
+        "videoSize": 7937720320
+      },
+      "description": "📄 Severance.S02E01.2160p.WEB.H265-SuccessfulCrab\n📹 hevc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 7.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fb31308522124a3e71a1b65a4d704b9a73b6225b",
+        "filename": "Severance.S02E01.MULTi.SDR.2160p.WEB.H265-TenmaLand.mkv",
+        "videoSize": 8348854381
+      },
+      "description": "📄 Severance.S02E01.MULTi.SDR.2160p.WEB.H265-TenmaLand.mkv\n📹 hevc • SDR\n⭐ WEB | 🏷️ TenmaLand\n👤 8 💾 7.8 GB 🔎 Comet|YGGTorrent\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8fb3e43b6182d7f62aa907a519859f3f8b13e627",
+        "filename": "Severance.2025.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.x265-FLUX_EniaHD.mkv",
+        "videoSize": 9565035256
+      },
+      "description": "📄 Severance.2025.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.x265-FLUX_EniaHD.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.9 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e7cd8fb5fa73ff1703bdeb88df48df3a52da7cd",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-Kitsune.mkv",
+        "videoSize": 9190958416
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-Kitsune.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 8.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8ce5552d3208b58232b76ad67cf93718db3f800f",
+        "filename": "Severance.2025.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.x265-FLUX_EniaHD.mkv",
+        "videoSize": 9565035256
+      },
+      "description": "📄 Severance.2025.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.x265-FLUX_EniaHD.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 3 💾 8.9 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|623e3db33aa385e86eb94181e5e5f95dda7e4fd0",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX",
+        "videoSize": 9191027250
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 8.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|38ba1b3b1d87a76c4fcf9ebed0aa6466d40a84fd",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB.DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 9190995837
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB.DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 8.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14b24a24d49e7a38a5b6470f6fbe685b30417ec1",
+        "filename": "Severance.2025.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.x265-FLUX_EniaHD.mkv",
+        "videoSize": 9565035256
+      },
+      "description": "📄 Severance.2025.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.x265-FLUX_EniaHD.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 3 💾 8.9 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1eb31028de739d420ac9c00f74e5986e633f4236",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB.DL.DDP5.1.Atmos.DV.H.265-Kitsune {imdb-tt11280740}",
+        "videoSize": 94157602604
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB.DL.DDP5.1.Atmos.DV.H.265-Kitsune {imdb-tt11280740}\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ tt11280740}\n💾 87.7 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2f29d6aaf44e87205643264a34180b02310b9937",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.MULTi.AD.2160p.ATV.WEB.DV.HDR.H265-BYOR.mkv",
+        "videoSize": 10025003137
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.MULTi.AD.2160p.ATV.WEB.DV.HDR.H265-BYOR.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ BYOR\n💾 9.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|949c255c32889077782020c9bda1774c9e86e33e",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 DV H 265-NTb",
+        "videoSize": 9207966743
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 DV H 265-NTb\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 8.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5e348e92404b3aaec76583642255460a0645e1d7",
+        "filename": "www.Torrenting.com - Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos H 265-FLUX",
+        "videoSize": 7787074565
+      },
+      "description": "📄 www.Torrenting.com - Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos H 265-FLUX\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 7.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e085639d0c0c486e26a0ba6051b04b9f5e140b5d",
+        "filename": "Severance.S02E01.PL.AI.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-XuploaD.mkv",
+        "videoSize": 3914703509
+      },
+      "description": "📄 Severance.S02E01.PL.AI.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-XuploaD.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ XuploaD\n💾 3.6 GB 🔎 Comet|DMM\n🇵🇱",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cabb5c4928e92665401b0a4a553b4453e77b0cf2",
+        "filename": "Severance (2022) - S02E01 - Ovaltine [ATVP 1080p.WEB-DL][EAC3 Atmos 5.1][h264]-NTb.mkv",
+        "videoSize": 3961710155
+      },
+      "description": "📄 Severance (2022) - S02E01 - Ovaltine [ATVP 1080p.WEB-DL][EAC3 Atmos 5.1][h264]-NTb.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|96e74da082f81cb31f576f846d83d5e83f293f59",
+        "filename": "Severance (2022) - S02E01 - Ovaltine [ATVP 1080p.WEB-DL][EAC3 Atmos 5.1][h264]-NTb.mkv",
+        "videoSize": 4294967296
+      },
+      "description": "📄 Severance (2022) - S02E01 - Ovaltine [ATVP 1080p.WEB-DL][EAC3 Atmos 5.1][h264]-NTb.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 1 💾 4.0 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|84f34f2b5b0fd913e91e9388a33acefe355e14a7",
+        "filename": "Severance S02E01 1080p ATVP WEB-DL DD+ 5.1 Atmos H.264-FLUX",
+        "videoSize": 3962107330
+      },
+      "description": "📄 Severance S02E01 1080p ATVP WEB-DL DD+ 5.1 Atmos H.264-FLUX\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 4 💾 3.7 GB 🔎 Comet|YuScene",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0a9367d20cb9ef14a5bf22b50aa6a1f9ed7a6f20",
+        "filename": "Severance.S02E01-02.1080p.ATVP.WEB-DL.ITA-ENG.DDP5.1.Atmos.H265-G66",
+        "videoSize": 4618988883
+      },
+      "description": "📄 Severance.S02E01-02.1080p.ATVP.WEB-DL.ITA-ENG.DDP5.1.Atmos.H265-G66\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 4.3 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|291bdb7541fe60462fea88d0aff8c46970f295b3",
+        "filename": "Severance S02E01 VFF 1080p HDR WEBRip DDP 5.1 x265-SACRiLEGE.mkv",
+        "videoSize": 646346494
+      },
+      "description": "📄 Severance S02E01 VFF 1080p HDR WEBRip DDP 5.1 x265-SACRiLEGE.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ SACRiLEGE\n💾 616.4 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d5771ec59bf624852ce2eb1919f7e1fd5ee4e5e4",
+        "filename": "Severance.S02E01.AMZN.WEB-DL.1080p.EAC3.HEVC-ARCADE.mkv",
+        "videoSize": 950358511
+      },
+      "description": "📄 Severance.S02E01.AMZN.WEB-DL.1080p.EAC3.HEVC-ARCADE.mkv\n📹 hevc | 🔊 Dolby Digital Plus\n⭐ WEB-DL | 🏷️ ARCADE\n💾 906.3 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9ebac3111b0c8a1f1e7e32f324fbc92de78056f7",
+        "filename": "Severance - S02E01 - Ovaltine WEBDL 1080p HEVC DDP 5.1-SPANK.mkv",
+        "videoSize": 783066071
+      },
+      "description": "📄 Severance - S02E01 - Ovaltine WEBDL 1080p HEVC DDP 5.1-SPANK.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SPANK\n💾 746.8 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a03d074db1c2748736b58901f5af15daaf98d3b",
+        "filename": "Severance.S02E01.1080p.ATVP.WEB-DL.H.264.Ukr.Eng.mkv",
+        "videoSize": 4104075440
+      },
+      "description": "📄 Severance.S02E01.1080p.ATVP.WEB-DL.H.264.Ukr.Eng.mkv\n📹 avc\n⭐ WEB-DL\n💾 3.8 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|180a7cf87a01fd14571c76acbb101c504a23b199",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.DDP5.1.Atmos.DD5.1.x265-UBi.mkv",
+        "videoSize": 1923877242
+      },
+      "description": "📄 Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.DDP5.1.Atmos.DD5.1.x265-UBi.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ UBi\n💾 1.8 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eb6da50287ad61b67784ea4a98a2ab62d49c2800",
+        "filename": "Severance.S02E01.1080p.WEB.H264-SuccessfulCrab",
+        "videoSize": 3970222342
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB.H264-SuccessfulCrab\n📹 avc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 3.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f54234a9d72f7ff05fa3d40948048ba262458b5",
+        "filename": "Severance S02E01 1080p AV1 10bit-NEW.zipx",
+        "videoSize": 419510983
+      },
+      "description": "📄 Severance S02E01 1080p AV1 10bit-NEW.zipx\n📹 av1 • 10bit\n🏷️ NEW\n💾 400.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c95f665a66eb925fb5dc371ec404af85c5f47ae",
+        "filename": "Severance.S02E01.1080p.WEB.H264-SuccessfulCrab",
+        "videoSize": 4043489293
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB.H264-SuccessfulCrab\n📹 avc\n⭐ WEB | 🏷️ SuccessfulCrab\n👤 4 💾 3.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6bf3a7cdb1cef6edd35e29b30578d7eb27179c4d",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab.mkv",
+        "videoSize": 4043489293
+      },
+      "description": "📄 severance.s02e01.1080p.web.h264-successfulcrab.mkv\n📹 avc\n⭐ WEB | 🏷️ successfulcrab\n💾 3.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52155b60fbe051feef38ea57253f08ccf4002fba",
+        "filename": "Severance.S02E01.1080p.AV1.10bit-MeGusta",
+        "videoSize": 448308183
+      },
+      "description": "📄 Severance.S02E01.1080p.AV1.10bit-MeGusta\n📹 av1 • 10bit\n🏷️ MeGusta\n💾 427.5 MB 🔎 Comet|Bitmagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|29ffd7e11fa780bdfb9c3014939671b2005b523a",
+        "filename": "Severance.S02E01.1080p.WEB.H264-SuccessfulCrab",
+        "videoSize": 4043504338
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB.H264-SuccessfulCrab\n📹 avc\n⭐ WEB | 🏷️ SuccessfulCrab\n💾 3.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1602d96b8a102e579d861c280333129adacaee5e",
+        "filename": "Severance.S02E01.1080p.AV1.10bit-MeGusta[TGx]",
+        "videoSize": 447951667
+      },
+      "description": "📄 Severance S02E01 1080p AV1 10bit MeGusta TGx\n📹 av1 • 10bit\n🏷️ MeGusta\n👤 51 💾 427.2 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|05299d0037b4ec36cdcf30f3aaa870ea4040e731",
+        "filename": "Severance S02E01 1080p AV1 10bit-NEW1.zipx",
+        "videoSize": 419510983
+      },
+      "description": "📄 Severance S02E01 1080p AV1 10bit-NEW1.zipx\n📹 av1 • 10bit\n🏷️ NEW1\n💾 400.1 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb75de2ac755b07121231dbaf259be4a9f9942ad",
+        "filename": "Severance S02E01 1080p x265-ELiTE",
+        "videoSize": 624172721
+      },
+      "description": "📄 Severance S02E01 1080p x265-ELiTE\n📹 hevc\n🏷️ ELiTE\n👤 10 💾 595.3 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c92fd531a00021d13d2f2f7c031d5e4b9ba6c1f5",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 496289400
+      },
+      "description": "📄 Severance.S02E01.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 473.3 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ac55e9a3c60c7df4fa3e455da21dd16ad86ac058",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta[TGx]",
+        "videoSize": 478360371
+      },
+      "description": "📄 Severance S02E01 1080p HEVC x265 MeGusta TGx\n📹 hevc\n🏷️ MeGusta\n👤 190 💾 456.2 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9aabe29f5a25df9cdd7ae909304f3750f81703e0",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv",
+        "videoSize": 624166215
+      },
+      "description": "📄 Severance.S02E01.1080p.x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n👤 1 💾 595.3 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9715f3757ff6ce447a7b3fb7203ea509a4a630ed",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE",
+        "videoSize": 649504739
+      },
+      "description": "📄 Severance.S02E01.1080p.x265-ELiTE\n📹 hevc\n🏷️ ELiTE\n💾 619.4 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|645fcb32cdc2b1ee847e1f6ce47c53c84ecb0e77",
+        "filename": "Severance S02E01 1080p x265-ELiTE",
+        "videoSize": 624172635
+      },
+      "description": "📄 Severance S02E01 1080p x265-ELiTE\n📹 hevc\n🏷️ ELiTE\n👤 1 💾 595.3 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|54586fb12d8587ff2379faf20ad653a8b0e7440f",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv",
+        "videoSize": 624166215
+      },
+      "description": "📄 Severance.S02E01.1080p.x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n💾 595.3 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4361d77425afa2cea6177c470f5de1f44b0dc593",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE",
+        "videoSize": 2254857728
+      },
+      "description": "📄 Severance.S02E01.1080p.x265-ELiTE\n📹 hevc\n🏷️ ELiTE\n👤 1 💾 2.1 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|32638139470f5b09b39ec0f136e389ba14fb8cec",
+        "filename": "Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.TT.mkv",
+        "videoSize": 4245251932
+      },
+      "description": "📄 Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.TT.mkv\n📹 avc\n💾 4.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e62e749b334934fce4976ef7952aaf24265eeed1",
+        "filename": "Severance.S02E01.WEB-DL.1080p.1WinStudio.mkv",
+        "videoSize": 2341994381
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.1080p.1WinStudio.mkv\n⭐ WEB-DL\n💾 2.2 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e1432495bc3f20568d0565d146c4464c88540242",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 9589825125
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n💾 8.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dd8940f33aa23a73b5767cdfb56b8fd7aae55b9c",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 16607848127
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n💾 15.5 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d6dfe3deef7f5dd235dcda773cda3a81878f4f9d",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 4563654655
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n👤 0 💾 4.3 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d5b349e3947bbb0577fb041824e03f8b5d64c07f",
+        "filename": "Severance.S02.1080p.WEB-DL.MVO.ad-1-2",
+        "videoSize": 2265833050
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.MVO.ad-1-2\n⭐ WEB-DL\n💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb438e5c5717dc36d70c159cbb4c26facca82e71",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n💾 3.7 GB 🔎 StremThru\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bbc08a0eefb0a7748418dd181ca2172fe2e5b538",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 18412300099
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n💾 17.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|afe69a14f06b54c1500dfc9ac535ec492518be9d",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 11841920026
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n👤 0 💾 11.0 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b0658b5e5e7575bdb245e316197a9467a6b1275",
+        "filename": "Severance.S02E01.WEB-DL.1080p.1WinExpress.mkv",
+        "videoSize": 2349676568
+      },
+      "description": "📄 Severance.S02E01.WEB-DL.1080p.1WinExpress.mkv\n⭐ WEB-DL\n💾 2.2 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|983624795ce884f04166aadcc4c7e3ed6997da6c",
+        "filename": "Severance.2025.S02E01.1080p.WEB-DL.ukr.ru.eng.0day.mkv",
+        "videoSize": 4267178688
+      },
+      "description": "📄 Severance.2025.S02E01.1080p.WEB-DL.ukr.ru.eng.0day.mkv\n⭐ WEB-DL\n💾 4.0 GB 🔎 StremThru\n🌎/🇬🇧/🇷🇺/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|91924b2418cd1ddf30d2a12b5b31a6f90d8cb031",
+        "filename": "Severance.S02E01.1080p.WEB-DL.LostFilm.mkv",
+        "videoSize": 4103074691
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB-DL.LostFilm.mkv\n⭐ WEB-DL\n👤 1 💾 3.8 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d19e6c2a197798c0c03bfd737fe1058240e49d6",
+        "filename": "Severance.S02E01.1080p.WEB-DL.LostFilm.mkv",
+        "videoSize": 4101693767
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB-DL.LostFilm.mkv\n⭐ WEB-DL\n👤 1 💾 3.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7474c9f3ab1f999c068f533d660eda63b9cba639",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n👤 1 💾 3.7 GB 🔎 Comet|mazepa\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7372d9fb105706bbd503423b341297b51c6e0eb9",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 24197471405
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n💾 22.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|71b5ae30dfc3f5eb674d5b608f99581a202cdcee",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n👤 3 💾 3.7 GB 🔎 Comet|mazepa\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|624f9036368f9e1dd0cdae90eb070d9d1b0c6a03",
+        "filename": "Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv",
+        "videoSize": 4007324563
+      },
+      "description": "📄 Severance.S02E01.WEB-DL1080p.Ukr.Eng-MAZEPA.mkv\n⭐ WEB-DL | 🏷️ MAZEPA\n👤 3 💾 3.7 GB 🔎 Comet|mazepa\n🌎/🇬🇧/🇺🇦",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|321e74b310fdc30e955502981343ffb2d571fa9a",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 14164135067
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n👤 0 💾 13.2 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|04be1f7fb86ee5eb4ebe4fe7c9eeb2f4b1699970",
+        "filename": "Severance.S02E01.1080p.WEB-DL.LostFilm.mkv",
+        "videoSize": 4103074691
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB-DL.LostFilm.mkv\n⭐ WEB-DL\n👤 3 💾 3.8 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|01e54802214bfe68115290a5f05ec9b2bc6b457f",
+        "filename": "Severance.S02.WEB-DL.1080p.1WinStudio",
+        "videoSize": 7145989407
+      },
+      "description": "📄 Severance.S02.WEB-DL.1080p.1WinStudio\n⭐ WEB-DL\n💾 6.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3e8d35fc38aae2e448b9bd01f0f8fb7e104669e",
+        "filename": "Severance.S02E01.1080p.Ultradox.mkv",
+        "videoSize": 1781563590
+      },
+      "description": "📄 Severance.S02E01.1080p.Ultradox.mkv\n👤 3 💾 1.7 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d1649fad1abbbe4c642ed15172adb1b271803991",
+        "filename": "Severance.s02e01.1080p.1xRus.mkv",
+        "videoSize": 4032669172
+      },
+      "description": "📄 Severance.s02e01.1080p.1xRus.mkv\n👤 3 💾 3.8 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c6f25a5b3aa33118ba10b5d4cb46415783eb7268",
+        "filename": "Severance.S02E01.1080p.ColdFilm.mkv",
+        "videoSize": 2147483648
+      },
+      "description": "📄 Severance.S02E01.1080p.ColdFilm.mkv\n💾 2.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c63565760ea19558bb24c8641e2fd91d3a6e90b0",
+        "filename": "Severance.S02E01.1080p.Ultradox.mkv",
+        "videoSize": 1781563590
+      },
+      "description": "📄 Severance.S02E01.1080p.Ultradox.mkv\n💾 1.7 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a72d9eaf92f0187366426ca0128c1a7848472da2",
+        "filename": "Severance.S02E01.1080p.Ultradox.mkv",
+        "videoSize": 1781563590
+      },
+      "description": "📄 Severance.S02E01.1080p.Ultradox.mkv\n👤 3 💾 1.7 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9d93db84310fa469b07d7561415fa941dbdd3354",
+        "filename": "severance.s02e01.1080p中英字幕.mp4",
+        "videoSize": 3372712607
+      },
+      "description": "📄 severance.s02e01.1080p中英字幕.mp4\n💾 3.1 GB 🔎 Comet|StremThru\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|35f86dddc665b8edb56fb59e1acf4f7852f6f9fd",
+        "filename": "Severance.S02E01.1080p.Kerob.mkv",
+        "videoSize": 1967237250
+      },
+      "description": "📄 Severance.S02E01.1080p.Kerob.mkv\n👤 3 💾 1.8 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|31ede6c74583a5674e154d07ce257ea0b014699e",
+        "filename": "Severance.S02E01.1080p.Ultradox.mkv",
+        "videoSize": 1781563590
+      },
+      "description": "📄 Severance.S02E01.1080p.Ultradox.mkv\n💾 1.7 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1e4184809a78146566d67515a7b352825b47a139",
+        "filename": "severance.s02e01.1080p_DuetFilm.mkv",
+        "videoSize": 4081099323
+      },
+      "description": "📄 severance.s02e01.1080p_DuetFilm.mkv\n💾 3.8 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c7dc9ad940d62f97380ad5170c48a31f878113f9",
+        "filename": "Severance.S02E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA",
+        "videoSize": 624166215
+      },
+      "description": "📄 Severance.S02E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 595.3 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|856d9d44e16361b89f69df584903b9e617705361",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-FW",
+        "videoSize": 4525294776
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-FW\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 4.2 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|843c4ae1ced8010ead5a76e97f94ead064ad28a8",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-GL0P.mkv",
+        "videoSize": 949173647
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H265-GL0P.mkv\n📹 hevc\n⭐ WEB | 🏷️ GL0P\n💾 905.2 MB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6acd6e91cd72fa7323a58c3b2857013252ac1f29",
+        "filename": "Severance.S02E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 739582603
+      },
+      "description": "📄 Severance.S02E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 705.3 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5fec734b8c9dafc8e4e4315446a75d0b56aa23a1",
+        "filename": "Severance.S02E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 739582603
+      },
+      "description": "📄 Severance.S02E01.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n👤 2 💾 705.3 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|517f9a0ae6bbb7b835b5b04a0ece1da9fc5e1375",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-TFA.mkv",
+        "videoSize": 4525286681
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-TFA.mkv\n📹 avc\n⭐ WEB | 🏷️ TFA\n👤 45 💾 4.2 GB 🔎 Comet|YGGTorrent\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|45d1e16d882bbe8d2245bec6f429ae37cb0f1694",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 4525286719
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n👤 13 💾 4.2 GB 🔎 CometNet|ElfHosted\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3aa806177631adebdb6cd3de4b432bc767762540",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-TFA.mkv",
+        "videoSize": 1860187051
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H265-TFA.mkv\n📹 hevc\n⭐ WEB | 🏷️ TFA\n👤 352 💾 1.7 GB 🔎 Comet|EXT\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1faad7ced69761b75bd454202a11805880ae2e67",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv",
+        "videoSize": 1860187087
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv\n📹 hevc\n⭐ WEB | 🏷️ FW\n💾 1.7 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|08993d7781602fdc3f73bc581b4fef31fa976deb",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv",
+        "videoSize": 4525294776
+      },
+      "description": "📄 Severance.S02E01.MULTi.1080p.WEB.H264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n💾 4.2 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fa96e2b422f3d75f681feda9d92c1f6d8afa9d03",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 13951804194
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 13.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e9cd683ead804240596fddbc0c4a2b34a52c65d8",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 4440587752
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 4.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd81703b1c2a77cb7c4f741e2ae9826af617281c",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 18021376664
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 16.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7d72bd15dfa7e7e3a5a19a63cf085368a7962231",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 16307635171
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 15.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|58aeceed1ace4c73cfbe852a3d6d5b2b7646aabc",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 7022502469
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 6.5 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3ad3db3177e29033013492fc9576d8cb65e53119",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 9469945280
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 8.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|31ed8cb47fb439352f74dc422c1ef1c83dd7536f",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 25447682048
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n👤 1 💾 23.7 GB 🔎 CometNet|ElfHosted\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1151a63a94d8903a44c465570ee50e00f4c772c7",
+        "filename": "Severance.S02E01.1080p.WEB-DL.DUAL.5.1-SF",
+        "videoSize": 4243481525
+      },
+      "description": "📄 Severance.S02E01.1080p.WEB-DL.DUAL.5.1-SF\n🔊 5.1\n⭐ WEB-DL | 🏷️ SF\n👤 1 💾 4.0 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|03fd529c811715432a79a1334d162751ccbfa171",
+        "filename": "Severance.S02.1080p.WEB-DL.DUB.ad-1-2",
+        "videoSize": 11674529705
+      },
+      "description": "📄 Severance.S02.1080p.WEB-DL.DUB.ad-1-2\n⭐ WEB-DL\n💾 10.9 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d9b3eb6ff807f76776a96e50412f9851189752ed",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv",
+        "videoSize": 3963489709
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 3.7 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|92f6d2da8fceeb0a79ec0a3298e43b30c8b72bc9",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-kovalski.mkv",
+        "videoSize": 4020502589
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H264-kovalski.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ kovalski\n👤 1 💾 3.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|86444201f34bc60fd877f5bf303b1c34e8282c32",
+        "filename": "Severance. S02E01. Hello Ms Cobel. 1080P. ATVP WEB-DL. DDP5.1 Atmos. HEVC-X265. POOTLED.mkv",
+        "videoSize": 1105954078
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080P ATVP WEB DL DDP5 1 Atmos HEVC X265 POOTLED mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 89 💾 1.0 GB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|85af20c8922107f771bb2c7b5c5b40c7991377f5",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv",
+        "videoSize": 3963489709
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 3.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b68836a4a57cee81a4d336e28b6b1f501f522b2",
+        "filename": "Severance.2025.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX_EniaHD.mkv",
+        "videoSize": 4337510739
+      },
+      "description": "📄 Severance.2025.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX_EniaHD.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 3 💾 4.0 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|68821ffe537f8dd95717ca598a8b053638196d0e",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsune[TGx]",
+        "videoSize": 3963521820
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsune[TGx]\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 3.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|658b2973aac8abdd9bf75beff1d4bd88805c2591",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-STC.mkv",
+        "videoSize": 3963550878
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-STC.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ STC\n💾 3.7 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5faf6e5fdeb2668b6cc728f95110e290091bd1fd",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-LatTeam.mkv",
+        "videoSize": 4243523602
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-LatTeam.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ LatTeam\n💾 4.0 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2bde37d178c9b71f23d77575a66c4030d9308e65",
+        "filename": "Severance.2025.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX_EniaHD.mkv",
+        "videoSize": 4337510739
+      },
+      "description": "📄 Severance.2025.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX_EniaHD.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 3 💾 4.0 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|16f0acd74dceaf4c621ed48ca2376113da3d71df",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX",
+        "videoSize": 3963520882
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 3.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0899591c78fc071c557f4f483d13151a0e5ed86c",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX",
+        "videoSize": 3963517780
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 0 💾 3.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a6e0e1cf49cd57b7bfff28f9610629429d413c3c",
+        "filename": "[BEST-TORRENTS.COM] Severance.S02E01-E09.PL.AI.1080p.ATVP.WEB-DL.DDPA5.1.H.264-XuploaD",
+        "videoSize": 34243000337
+      },
+      "description": "📄 [BEST-TORRENTS.COM] Severance.S02E01-E09.PL.AI.1080p.ATVP.WEB-DL.DDPA5.1.H.264-XuploaD\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ XuploaD\n💾 31.9 GB 🔎 Comet|StremThru\n🇵🇱",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|941a6c0693b88869760b0fcc1ab504be3c30d7a4",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb",
+        "videoSize": 3961738164
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 0 💾 3.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|477ba651e146eff6bd2dc13d1c8acd9a3e52b0bd",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv",
+        "videoSize": 3961710155
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 3.7 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fa444c957ced88697dd4d4d07797e85a57f891dd",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 5.1 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ac3778b283628b208ac8c620c74fad0454093d83",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 5.1 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a5103937843044cca40d8b3350a815bfb36f8ff4",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5159664851
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 4.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b7127e377a1e93686509c67b2d7da5d0dfe797d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 4290830749
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 4.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|84d4e3d232fdb0b723749806d650111e1fa929fb",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 5.1 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7a7535b803eca6cb041a2dcac9d83b22f93856cd",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 4032347963
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 3.8 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|602ae899feb73f393eda04d94438be0f263baa95",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5464898876
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 5.1 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e1937ee06e04de97f1faf366320245e2f04702d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv",
+        "videoSize": 5441425781
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.H.264-RGzsRutracker.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ RGzsRutracker\n💾 5.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ffb8aa6f378c95f07fb1fd959c31ae4f38030a05",
+        "filename": "Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv",
+        "videoSize": 1108959440
+      },
+      "description": "📄 Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv\n📹 hevc\n⭐ WEB-DLRip\n💾 1.0 GB 🔎 DMM\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a7814de8faa6e1748a72b76e74ca2faaaedca3bf",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.HEVC.x265-MeGusta",
+        "videoSize": 496286563
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.HEVC.x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n💾 473.3 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5712c78a68046d65f82f2a53ad5dc18f6e2e008d",
+        "filename": "Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv",
+        "videoSize": 1108959440
+      },
+      "description": "📄 Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv\n📹 hevc\n⭐ WEB-DLRip\n💾 1.0 GB 🔎 DMM\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|230d7fb2343791f6df06f24ec7b6693e7719a68d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.HEVC.x265-MeGusta[TGx]",
+        "videoSize": 478360371
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 1080p HEVC x265 MeGusta TGx\n📹 hevc\n🏷️ MeGusta\n👤 28 💾 456.2 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1e4d0f6423762621deae5f328b5bcae33a0c792e",
+        "filename": "Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv",
+        "videoSize": 1108959440
+      },
+      "description": "📄 Severance_Разделение.S02E01.1080p.WEB-DLRip.HEVC.H265.RUS.ENG.MultiSub.mkv\n📹 hevc\n⭐ WEB-DLRip\n💾 1.0 GB 🔎 DMM\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b79cf6024ad16b0bb9f2ca1ae061d6796525d08f",
+        "filename": "Severance.S02E01.1080p.rus.LostFilm.TV.mkv",
+        "videoSize": 2849866039
+      },
+      "description": "📄 Severance.S02E01.1080p.rus.LostFilm.TV.mkv\n👤 4 💾 2.7 GB 🔎 Comet|BitMagnet\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|51baa203911d2790b6a17aad6317c6c56e1ae4da",
+        "filename": "Severance.S02E01.1080p.rus.LostFilm.TV.mkv",
+        "videoSize": 28969554411
+      },
+      "description": "📄 Severance.S02E01.1080p.rus.LostFilm.TV.mkv\n👤 1 💾 27.0 GB 🔎 Comet|BT4G\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|05b5f24e5876247f1eea0c2c9c726986ebf6bb42",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.MULTi.AD.1080p.ATV.WEB.SDR.H265-BYOR.mkv",
+        "videoSize": 3705300202
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.MULTi.AD.1080p.ATV.WEB.SDR.H265-BYOR.mkv\n📹 hevc • SDR\n⭐ WEB | 🏷️ BYOR\n💾 3.5 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f354ea9e8e70321a5358ea12eadd25fc48214b96",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.x265-DH.mkv",
+        "videoSize": 829011687
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.x265-DH.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ DH\n👤 1 💾 790.6 MB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60a9705118216aa61c1a0844e7da0320a33d5da8",
+        "filename": "Severance.s02e01.HD1080p.WEBRip.Rus.RuDub.tv.mkv",
+        "videoSize": 2879692903
+      },
+      "description": "📄 Severance.s02e01.HD1080p.WEBRip.Rus.RuDub.tv.mkv\n⭐ WEBRip\n👤 3 💾 2.7 GB 🔎 Comet|unknown\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4cf7165208de710d27815c873bb5267bbfeba4a",
+        "filename": "Severance.S02E01.720p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX",
+        "videoSize": 1395864320
+      },
+      "description": "📄 Severance.S02E01.720p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 1 💾 1.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a967dc1150f087ba21e7e417ca7331951326b517",
+        "filename": "Severance.S02E01.720p.WEB.x265-MiNX[TGx]",
+        "videoSize": 162204221
+      },
+      "description": "📄 Severance S02E01 720p WEB x265 MiNX TGx\n📹 hevc\n⭐ WEB | 🏷️ MiNX\n👤 51 💾 154.7 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bc0774080b4dc64e27d9ec2f1163a229ced595ef",
+        "filename": "Severance S02E01 720p HEVC x265-MeGusta",
+        "videoSize": 444596224
+      },
+      "description": "📄 Severance S02E01 720p HEVC x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n👤 30 💾 424.0 MB 🔎 EZTV",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8250c088969e6fb708dc692f790bf5aafb6c5e12",
+        "filename": "Severance.S02E01.720p.x265-TiPEX",
+        "videoSize": 376438784
+      },
+      "description": "📄 Severance S02E01 720p x265 TiPEX\n📹 hevc\n🏷️ TiPEX\n👤 45 💾 359.0 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f66fc480be380cd3b1e82923f63c8b9e36d7bb3b",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2832628510
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|afb6c6e82adb7a5c5bc40424c52b059c306b1294",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2809156812
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.6 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|809ca2e3861494f82a3c669d5fdbbf6a6e311edb",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2151668717
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.0 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|808cec4d7798f5d79cd5624b54175a55830a532f",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2809156812
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.6 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|58547472cfab1f6729fa1bc46802fe496e32d28c",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2832628510
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.6 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|54217f7f516ba017e37fd2a97691dd9e8fbb6145",
+        "filename": "Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv",
+        "videoSize": 2832628510
+      },
+      "description": "📄 Severance.S02E01.WEBDL.720p.RGzsRutracker.mkv\n⭐ WEB-DL\n💾 2.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a84899cf3b3095856907bf776d8e532a12cf4872",
+        "filename": "Severance.s02e01.720p.4xRus.mkv",
+        "videoSize": 1664299827
+      },
+      "description": "📄 Severance.s02e01.720p.4xRus.mkv\n👤 1 💾 1.5 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a4b097f4a2a81a75982bf55984df007305d21d04",
+        "filename": "Severance.S02E01.720p.Ultradox.mkv",
+        "videoSize": 1128702863
+      },
+      "description": "📄 Severance.S02E01.720p.Ultradox.mkv\n👤 3 💾 1.1 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7620dbbef922e10bf14f239e63bbbf768c31949c",
+        "filename": "Severance.S02E01.720p.Ultradox.mkv",
+        "videoSize": 1128702863
+      },
+      "description": "📄 Severance.S02E01.720p.Ultradox.mkv\n💾 1.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|722d38e357c1702b8ca4b86ac002324d56032fba",
+        "filename": "Severance.s02e01.720p.8xRus.mkv",
+        "videoSize": 2527784612
+      },
+      "description": "📄 Severance.s02e01.720p.8xRus.mkv\n💾 2.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|520629990a46fa255098864b5af864e858102019",
+        "filename": "Severance.s02e01.720p.8xRus.mkv",
+        "videoSize": 2527784612
+      },
+      "description": "📄 Severance.s02e01.720p.8xRus.mkv\n💾 2.4 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f7a0776cf74ad82431456fc2d30fa7bedf81a57",
+        "filename": "Severance.S02E01.720p.ColdFilm.mkv",
+        "videoSize": 1181116006
+      },
+      "description": "📄 Severance.S02E01.720p.ColdFilm.mkv\n💾 1.1 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f4fe59018fca2f0dc38f605612949db81bfc5dd7",
+        "filename": "Severance.S02E01.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 265006786
+      },
+      "description": "📄 Severance.S02E01.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 252.7 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42e61535d01780201abcc8df4917cddb39329ddf",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv",
+        "videoSize": 1331328510
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.2 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5703bde6e52d66b16c49ea634bad8de49d7df9e0",
+        "filename": "Severance.S02E01.720p.rus.LostFilm.TV.mp4",
+        "videoSize": 1605598441
+      },
+      "description": "📄 Severance.S02E01.720p.rus.LostFilm.TV.mp4\n👤 1 💾 1.5 GB 🔎 Comet|BitMagnet\n🇷🇺",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b8215656d187696058cfd5716c691b8176c3ea86",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.WEBRip.10bit.AAC.x265-HODL.mkv",
+        "videoSize": 318578360
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel 720p WEBRip 10bit AAC x265 HODL\n📹 hevc • 10bit | 🔊 AAC\n⭐ WEBRip | 🏷️ HODL\n👤 12 💾 303.8 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4465519e683d8d212dc17cff5e01cfea9194b861",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.WEBRip.10bit.AAC.x265-HODL.mkv",
+        "videoSize": 318575479
+      },
+      "description": "📄 Severance.S02E01.Hello.Ms.Cobel.720p.WEBRip.10bit.AAC.x265-HODL.mkv\n📹 hevc • 10bit | 🔊 AAC\n⭐ WEBRip | 🏷️ HODL\n💾 303.8 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6bbee73fb13b29d9630139d4a5748bf4e3ad655e",
+        "filename": "Severance.s02e01.HD720p.WEBRip.Rus.RuDub.tv.mkv",
+        "videoSize": 1577544515
+      },
+      "description": "📄 Severance.s02e01.HD720p.WEBRip.Rus.RuDub.tv.mkv\n⭐ WEBRip\n💾 1.5 GB 🔎 StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ed7551f7343e00d429f33f5fb3274e45df7a796f",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ed690384af2e61fe7d82a0a15e1447543c8728f3",
+        "filename": "Severance.S02E01.kyberpunk.mkv",
+        "videoSize": 1327701111
+      },
+      "description": "📄 Severance.S02E01.kyberpunk.mkv\n👤 1 💾 1.2 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bdb58f166997a9d76082cfd6847f89432ffa8400",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ab5e86e5c016ee9b8a1d1acf29463918490ad446",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8752daf6faa76611ab3786e01df297129ba4fd0a",
+        "filename": "Severance 02x01 - Release by Wentworth_Miller.mkv",
+        "videoSize": 9189555387
+      },
+      "description": "📄 Severance 02x01 - Release by Wentworth_Miller.mkv\n👤 1 💾 8.6 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|78fe3fa336c460aea74a89e08ed97482c887f39c",
+        "filename": "S02E01.mkv",
+        "videoSize": 12572719464
+      },
+      "description": "📄 S02E01.mkv\n💾 11.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|57508c02730abda0121231cb64be9021008fc962",
+        "filename": "Severance.S02E01.400p.ColdFilm.avi",
+        "videoSize": 500275609
+      },
+      "description": "📄 Severance.S02E01.400p.ColdFilm.avi\n💾 477.1 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52aef3ad182dfe6c762dfb904e3185b181e27118",
+        "filename": "Severance.S02E01.mkv",
+        "videoSize": 1353628190
+      },
+      "description": "📄 Severance.S02E01.mkv\n👤 1 💾 1.3 GB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|50b77091a21fac2e94098659b45fff0806cdf30b",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e672f0383b6d5c77b8ddb42b02499a6ced17627",
+        "filename": "Severance_s02e01_4К_RHS_[scarfilm].mkv",
+        "videoSize": 9424941335
+      },
+      "description": "📄 Severance_s02e01_4К_RHS_[scarfilm].mkv\n💾 8.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1e61c1ab2b4594a53bd0eeb24235fc7062b22cec",
+        "filename": "Severance.S02E01.kyberpunk.mkv",
+        "videoSize": 1210342601
+      },
+      "description": "📄 Severance.S02E01.kyberpunk.mkv\n💾 1.1 GB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|144b8719e5f63bb4395d61cf8f3b4d6140f71764",
+        "filename": "Severance_s02e01_4К_RHS_[scarfilm].mkv",
+        "videoSize": 9424941335
+      },
+      "description": "📄 Severance_s02e01_4К_RHS_[scarfilm].mkv\n💾 8.8 GB 🔎 CometNet|ElfHosted\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0ae1df96f97a588db7394ab31a4f8e0e1bde34d8",
+        "filename": "Severance.S02E01.ia.mp4",
+        "videoSize": 434844467
+      },
+      "description": "📄 Severance.S02E01.ia.mp4\n💾 414.7 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|08e1dc722e058505e7776dcfd165bb0e471225df",
+        "filename": "Severance.S02E01.400p.Kerob.avi",
+        "videoSize": 386922222
+      },
+      "description": "📄 Severance.S02E01.400p.Kerob.avi\n💾 369.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f3395765c4c0a7c1f128e369b6fed89c2118c729",
+        "filename": "Разделение / Severance [02x01-07 из 10] (2025) WEBRip от Kerob | L2",
+        "videoSize": -1
+      },
+      "description": "📄 Разделение / Severance [02x01-07 из 10] (2025) WEBRip от Kerob | L2\n⭐ WEBRip\n💾 None 🔎 DMM\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f68012a7c579b9256596b681a17a05534b3ec8db",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 940.7 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d3e430518a3b6b203152e96f59fdd9f7eca7803a",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 940.7 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b783b01db8988baad401ed1472180fa66f47415",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 940.7 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|541c534866f377d38ec999f2b13b03a90c23bd81",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 940.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|16923d7aab782553c7448a339363c1495a9cfb71",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 986388712
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 940.7 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e9ec7de13ff7738fb632d206a141c7edb25b1f30",
+        "filename": "Severance.S02E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 733034496
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n💾 699.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b969f1e8d1e58a700f12a3e5a74121205521c422",
+        "filename": "人生切割术 Severance S02E01 6v电影 地址发布页 www 6v123 net 收藏不迷路 ┈➤ 人生切割术 Severance S02E01 Hello Ms Cobel 1080p HD中英双字[最新电影www 5266ys com] mp4",
+        "videoSize": 1224065679
+      },
+      "description": "📄 人生切割术 Severance S02E01 6v电影 地址发布页 www 6v123 net 收藏不迷路 ┈➤ 人生切割术 Severance S02E01 Hello Ms Cobel 1080p HD中英双字[最新电影www 5266ys com] mp4\n👤 1 💾 1.1 GB 🔎 Comet|BT4G\n🇨🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5b5b1eb14fa9708fbfc5da835f3f734a3f394578",
+        "filename": "Severance.S02E01.XviD-AFG[TGx]",
+        "videoSize": 369832755
+      },
+      "description": "📄 Severance S02E01 XviD AFG TGx\n📹 xvid\n🏷️ AFG\n👤 11 💾 352.7 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3506cab56223174e26a6d8b4c520297b96016a77",
+        "filename": "Severance.S02E01.WEB-DLRip.RGzsRutracker.avi",
+        "videoSize": 733034496
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.RGzsRutracker.avi\n⭐ WEB-DLRip\n💾 699.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|28b9c289cfdd4e42e263f59a5d4847e288f3eb9d",
+        "filename": "Severance.S02E01.WEB-DLRip.HDRezka.JuSSiKa.avi",
+        "videoSize": 654716928
+      },
+      "description": "📄 Severance.S02E01.WEB-DLRip.HDRezka.JuSSiKa.avi\n⭐ WEB-DLRip\n💾 624.4 MB 🔎 StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|16972b78dcbff7952fe482396dab00f399ef1fa1",
+        "filename": "Разделение / Severance [01-02x01-13 из 19] (2022-2025) WEB-DLRip | LostFilm",
+        "videoSize": 8596170847
+      },
+      "description": "📄 Разделение / Severance [01-02x01-13 из 19] (2022-2025) WEB-DLRip | LostFilm\n⭐ WEB-DLRip\n💾 8.0 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|102fc0ef877edf22eb0154c5a7137ac00a55f5fd",
+        "filename": "Severance.S02E01.rus.LostFilm.TV.avi",
+        "videoSize": 752667852
+      },
+      "description": "📄 Severance.S02E01.rus.LostFilm.TV.avi\n💾 717.8 MB 🔎 DMM\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e350044a7bd1e92a9b0f25bb350e7a6da912d491",
+        "filename": "Severance.s02e01.WEBRip.x264.Rus.RuDub.tv.mp4",
+        "videoSize": 616095922
+      },
+      "description": "📄 Severance.s02e01.WEBRip.x264.Rus.RuDub.tv.mp4\n📹 avc\n⭐ WEBRip\n💾 587.6 MB 🔎 StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2098ae0fa671beb41ca03fdadb23ec81757279ac",
+        "filename": "[ Torrent911.im ] Severance.S02E01.VOSTFR.WEBRip.x264.mp4",
+        "videoSize": 221812377
+      },
+      "description": "📄 [ Torrent911.im ] Severance.S02E01.VOSTFR.WEBRip.x264.mp4\n📹 avc\n⭐ WEBRip\n💾 211.5 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a80270523e5234711a34698a6f2ed458534c23c7",
+        "filename": "Severance S02E01 Hello Ms Cobel XviD-AFG",
+        "videoSize": 370147328
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel XviD-AFG\n📹 xvid\n🏷️ AFG\n👤 1 💾 353.0 MB 🔎 EZTV",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|591a01e9cdf2400276c5c6b89458fd6023fc098e",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.XviD-AFG[TGx]",
+        "videoSize": 369832755
+      },
+      "description": "📄 Severance S02E01 Hello Ms Cobel XviD AFG TGx\n📹 xvid\n🏷️ AFG\n👤 5 💾 352.7 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

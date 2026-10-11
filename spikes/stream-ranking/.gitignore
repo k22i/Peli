@@ -1,0 +1,4 @@
+node_modules/
+# Debrid API keys. Never commit.
+.env
+.env.*

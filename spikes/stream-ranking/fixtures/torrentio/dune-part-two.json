@@ -1,0 +1,1499 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "dune-part-two",
+  "request": "https://torrentio.strem.fun/stream/movie/tt15239678.json",
+  "recordedAt": "2026-10-11T12:03:17.475Z",
+  "status": 200,
+  "ms": 113,
+  "streams": [
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX[TGx]\n👤 433 💾 29.26 GB ⚙️ TorrentGalaxy",
+      "infoHash": "4950a74e1461e71a356c1919026e8c0bbdc4d2ed",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Dune.Part.Two.2024.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR\n👤 236 💾 64.29 GB ⚙️ ThePirateBay",
+      "infoHash": "eee7f700c17bb89a63d0991ebb5f0b20de1b1d69",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Dune.Part.Two.2024.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Parte.Due.2024.REPACK.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 156 💾 67.81 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "b388cd0e38ce833b14efa2a1773a5f91a8dd87fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.REPACK.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOMkv.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.2160p.10bit.HDR.DV.BluRay.8CH.x265.HEVC-PSA\n👤 147 💾 3.46 GB ⚙️ MagnetDL",
+      "infoHash": "c5d6f5c857ee82f2139e6cb4cafe1d577dee1de7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.10bit.HDR.DV.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Dune.Part.Two.(2024).(2160p.BluRay.x265.HEVC.10bit.HDR.AAC.7.1.Tigole) [QxR]\n👤 71 💾 12.76 GB ⚙️ MagnetDL",
+      "infoHash": "3f82b1b732b41d5b2fc6ae4551855aa3899a99d5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Dune - Part Two (2024) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.2160p.UHD.BRRip.x265.HDR.DV.DD+5.1.Dual.YG⭐\n👤 52 💾 11.57 GB ⚙️ TorrentGalaxy\nDual Audio / 🇪🇸",
+      "infoHash": "da04ded9922d3304005334649ca809ab85d36b83",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|x265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.UHD.BRRip.x265.HDR.DV.DD+5.1.Dual.YG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Dune.Part.Two.2024.MULTI.VFF.2160p.4KLight.DV.HDR10Plus.WEBRip.DDP.5.1.Atmos.x265-ESPER\n👤 42 💾 7.26 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "71e5f9df109886fa7bc220d7362049bcf16998a5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV|HDR10+",
+        "filename": "[ Torrent911.pm ] Dune.Part.Two.2024.MULTI.VFF.2160p.4KLight.DV.HDR10Plus.WEBRip.DDP.5.1.Atmos.x265-ESPER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune Part Two 2024 UHD BluRay 2160p DV HEVC HDR10 TrueHD Atmos 7.1 x265-E\n👤 32 💾 28.17 GB ⚙️ 1337x",
+      "infoHash": "2e48034db7ba764b36aa2bb2e3e29a08a656e344",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Dune Part Two (2024).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Dune.Part.Two.2024.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR\n👤 25 💾 64.29 GB ⚙️ 1337x",
+      "infoHash": "47aa6ec310f691d6a5db6c994229a5a9c79a5dde",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Dune.Part.Two.2024.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Dune.Part.Two.2024.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR\n👤 23 💾 64.29 GB ⚙️ TorrentGalaxy",
+      "infoHash": "a023507553376d812a208f4b7cf90c0798f8a4c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Dune.Part.Two.2024.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune Part Two 2024 2160p 4K WEBRip DoVi HDR DDP5.1 Atmos x265-Asiimov\n👤 21 💾 8.81 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1b2df9f3e971e61949bf07d0c27da2e1764c2b18",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.4K.WEBRip.DoVi.HDR.DDP5.1.Atmos.x265-Asiimov.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.Eng.Fre.Ger.Ita.Spa.Cze.Pol.Jpn.2160p.BluRay.Hybrid.Remux.DV.HDR.HEVC.Atmos-SGF\n👤 20 💾 85.37 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇨🇿",
+      "infoHash": "4b45c0e1348c7297f9b9ac20a220a6dda16926ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR",
+        "filename": "Dune.Part.Two.2024.Eng.Fre.Ger.Ita.Spa.Cze.Pol.Jpn.2160p.BluRay.Hybrid.Remux.DV.HDR.HEVC.Atmos-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Dune: Part Two.2024.2160p.HDR10.BDRip.DDP5.1.x265.BluBit\n👤 19 💾 1.98 GB ⚙️ 1337x",
+      "infoHash": "5ced81d6efd85736c8de84cbf19df886e61a8696",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "Dune - Part Two (2024).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.2160p.BluRay.REMUX.DV.HDR.ENG.LATINO.DDP5.1.H265.MP4-BEN.THE.MEN\n👤 19 💾 61.26 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇲🇽",
+      "infoHash": "dd088a2c10a90e11630c2550e0def047c3a1bee3",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|h265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.BluRay.REMUX.DV.HDR.ENG.LATINO.DDP5.1.H265.MP4-BEN.THE.MEN.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Dune.Part.Two.2024.bluray.hdr.2160p.av1.7.1.opus.vmaf98-Rosy\n👤 15 💾 7.57 GB ⚙️ TorrentGalaxy",
+      "infoHash": "dc10e9c5d4bb5378d379f50f1b3da80dc90f8613",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "Dune.Part.Two.2024.bluray.hdr.2160p.av1.7.1.opus.vmaf98-Rosy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.2160p.WEB-DL.DV.HDR10.PLUS.ENG.LATINO.DDP5.1.Atmos.H265.MKV-BEN.THE.MEN\n👤 15 💾 29.63 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇲🇽",
+      "infoHash": "62c6429f039d61f4a9b1663305d86d0fa649cbb1",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.WEB-DL.DV.HDR10.PLUS.ENG.LATINO.DDP5.1.Atmos.H265.MKV-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune- Part Two (2024) 2160p 4K UHD HDR10 DV Blu-ray REMUX Dual Audio [Hindi English] ESub ~ RemuxDoc.mkv\n👤 11 💾 62.34 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇮🇳",
+      "infoHash": "8eefee4322307077ba3e53619a63a0b55274bd57",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Dune- Part Two (2024) 2160p 4K UHD HDR10 DV Blu-ray REMUX Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Dune: Part Two (2024) (2160p x265 10bit HDR UHD BD Atmos) [Prof]\n👤 11 💾 14.85 GB ⚙️ TorrentGalaxy",
+      "infoHash": "be9dbf15db79542eff971a6cd96cb060b25d006e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|HDR",
+        "filename": "Dune Part Two (2024).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Dune.Part.Two.2024.HDR.BluRay.2160p.x265.7.1.aac.VMAF96-Rosy\n👤 11 💾 2.11 GB ⚙️ 1337x",
+      "infoHash": "2178ade913fd9e63d812b07deaff34c10d154a67",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|HDR",
+        "filename": "Dune.Part.Two.2024.HDR.BluRay.2160p.x265.7.1.aac.VMAF96-Rosy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune - Parte Due (2024) 2160p H265 HDR10 DV ITA TrueHD DA 7.1 ENG ITA AC3 5.1 Sub Ita Eng NUIta NUEng - Raffyone iDN_CreW\n👤 10 💾 11.52 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "b3de25fa441af0401ba429c79aa199065f43aa40",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR",
+        "filename": "Dune - Parte Due (2024) 2160p H265 HDR10 DV ITA TrueHD DA 7.1 ENG ITA AC3 5.1 Sub Ita Eng NUIta NUEng - Raffyone iDN_CreW.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Dune.Part.Two.2024.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA\n👤 10 💾 2.9 GB ⚙️ ThePirateBay",
+      "infoHash": "29c707dc7cdca1f35ebf85ece80d4eaa99ad317e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|DV|HDR10+",
+        "filename": "Dune.Part.Two.2024.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Dune..Part.Two.2024.2160p.UHD.Blu-Ray.DV.HEVC.TrueHD.7.1.x265-E\n👤 9 💾 36.08 GB ⚙️ 1337x",
+      "infoHash": "063429dfda12b89d5f122924df54e0230620df32",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|DV",
+        "filename": "Dune- Part Two (2024) 4K.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Dune.Part.Two.2024.2160p.UHD.BluRay.DV.x265.TrueHD.7.1.ATMOS-Z@X\n👤 9 💾 30.9 GB ⚙️ TorrentGalaxy",
+      "infoHash": "2127562b8622f6db404ce70989a1a8daaa649bf4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|DV",
+        "filename": "Dune.Part.Two.2024.2160p.UHD.BluRay.DV.x265.TrueHD.7.1.ATMOS-Z@X.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.MULTi.FRENCH.HDR.DV.2160p.WEB-DL.H265-Slay3R.mkv\n👤 8 💾 30.15 GB ⚙️ ThePirateBay\nMulti Audio / 🇫🇷",
+      "infoHash": "3d33f9e73ab69402e4d803c9006b323674414c36",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.MULTi.FRENCH.HDR.DV.2160p.WEB-DL.H265-Slay3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.Eng.Fre.Ger.Ita.Spa.Cze.Pol.Jpn.2160p.BluRay.Remux.DV.HDR.HEVC.Atmos-SGF.mkv\n👤 7 💾 85.14 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇨🇿",
+      "infoHash": "e29f53345bf67e101761179f5d479b5d39ca4948",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR",
+        "filename": "Dune.Part.Two.2024.Eng.Fre.Ger.Ita.Spa.Cze.Pol.Jpn.2160p.BluRay.Remux.DV.HDR.HEVC.Atmos-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 7 💾 64 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "a062a179133e3b42b4baaa4652741c1c6dd9d924",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Dune Part Two 2024 Hybrid 2160p UHD BluRay DV HDR10+ DDP Atmos 7.1 x265-BiTOR\n👤 6 💾 23.05 GB ⚙️ TorrentGalaxy",
+      "infoHash": "197c81ca15ced3e1275250125d031d90a9b32760",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|DV|HDR10+",
+        "filename": "Dune Part Two 2024 Hybrid 2160p UHD BluRay DV HDR10+ DDP Atmos 7.1 x265-BiTOR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.4K.HDR.DV.2160p.WEBDL Ita Eng x265-NAHOM\n👤 6 💾 29.86 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "476ceb266f65efff5019204ce8f428a718c3c678",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.4K.HDR.DV.2160p.WEBDL Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune - Parte Due (2024) 2160p H265 HDR10 DV ITA THD DA 7.1 ITA ENG AC3 5.1 SUB ITA ENG\n👤 5 💾 14.71 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "9b9baedd7456619efa9f6ec442f3ce36d1586384",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR",
+        "filename": "Dune - Parte Due (2024) 2160p H265 HDR10 DV ITA THD DA 7.1 ITA ENG AC3 5.1 SUB ITA ENG by »Đαrk ₹єαρєr« MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune - Part Two (2024) AC3 5.1 ITA.ENG 2160p H265 HDR10 Dolby Vision sub ita.eng Sp33dy94 MIRCrew\n👤 5 💾 4.83 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "a308405af37cace4f00af03b1dbf9949a5fe3bda",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR",
+        "filename": "Dune - Part Two (2024) AC3 5.1 ITA.ENG 2160p H265 HDR10 Dolby Vision sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Дюна: Часть вторая / Dune: Part Two [2024 UHD BDRemux 2160p HDR10 Dolby Vision] 4x Dub (Bravo Records Georgia RHS Jaskier HDrezka) + 3x MVO + AVO (Юрий Сербин) + VO + Dub Ukr + Sub Rus Ukr Eng Multi 4 + Original Eng\n👤 5 💾 69.35 GB ⚙️ Rutracker\nMulti Audio / 🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "9c1cf8aa4f0a00fda70d149238e7d0fe0b352a00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|10bit|DV|HDR",
+        "filename": "Dune.Part.Two.2024.2160p.UHD.BDREMUX.HDR.DV.HEVC-Нечипорук.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:9c1cf8aa4f0a00fda70d149238e7d0fe0b352a00",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Dune.Part.Two.2024.MULTI.2160p.WEB-DL.DV.HDR.H265-AOC\n👤 5 💾 19 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧",
+      "infoHash": "10751fde6e8c2ed6ff8530e04f77bc7698bcb232",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Dune.Part.Two.2024.MULTI.2160p.WEB-DL.DV.HDR.H265-AOC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Dune.Part.Two.2024.MULTi.HDR.2160p.WEB.H265-FW (Dune : Deuxième Partie)\n👤 5 💾 30.1 GB ⚙️ EXT\nMulti Audio",
+      "infoHash": "630a520b6f646f2cd71d426bee383c71b76ef9f8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune: Part Two 2024 2160p WEBRip\n👤 100 💾 7.4 GB ⚙️ YTS",
+      "infoHash": "e90fc3200abc11b633c6a15c881011d3a17675a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit",
+        "filename": "Dune.Part.Two.2024.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune.Part.Two.2024.REPACK.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-FLUX[TGx]\n👤 90 💾 18.23 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1b7b7075624a96f75744f06af17019aa24d079e3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "Dune.Part.Two.2024.REPACK.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune Part Two 2024 REPACK 2160p UPSCALE WEB HEVC 10Bit AAC 2 0-R&H\n👤 70 💾 21.67 GB ⚙️ ThePirateBay",
+      "infoHash": "66248ae427e73a48871572cc527541f5958d85c2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit",
+        "filename": "Dune.Part.Two.2024.REPACK.2160p.UPSCALE.WEB.HEVC.10Bit.AAC.2.0-R&H.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "DUNE.PART.TWO.2024.4K.UHD.COMPLETE.BLURAY-MassModz\n👤 33 💾 78.57 GB ⚙️ TorrentGalaxy",
+      "infoHash": "ce4c942226e515e6a5f35da44b7de757a0390ea3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune- Part Two (2024) 2160p.AI Enhanced.WEBRip.60FPS.H265.10BIT.Hybrid.TrueHD7.1_Marjenbo .1.Atmos\n👤 28 💾 57.58 GB ⚙️ EXT",
+      "infoHash": "5e28b6504beb319aba494a3ab540ab434b697b65",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|h265|10bit",
+        "filename": "Dune- Part Two (2024) 2160p.AI Enhanced.WEBRip.60FPS.H265.10BIT.Hybrid.TrueHD7.1_Marjenbo  .1.Atmos.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune Part Two 2024 2160p UPSCALED WEB-DL HEVC AAC 2.0 - Vanga [NucleyaHD\n👤 15 💾 21.67 GB ⚙️ 1337x",
+      "infoHash": "d05286eaeaba8b23f4eb271d13515e6fbc2ece0f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|10bit",
+        "filename": "Dune.Part.Two.2024.REPACK.2160p.UPSCALE.WEB.HEVC.10Bit.AAC.2.0-R&H.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune Part Two (2024 Eng 7.1-Fre 5.1-Spa 5.1 multisubs AND EXTRAS 2160p)\nDune Part Two (2024_2160p).mkv\n👤 6 💾 45.79 GB ⚙️ TorrentGalaxy\nMulti Subs / 🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "bc8395ea7e33006504099604f2bf1e6af1edb743",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Dune Part Two (2024_2160p).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune: Part Two *2024* [2160p] [AMZN] [WEB-DL] [HEVC] [MULTi] [TrueHD.7.1.Atmos] [DDP5.1.Atmos] [Napisy & Lektor & Dubbing PL] [ETeam-vantablack]\n👤 5 💾 23.29 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "infoHash": "b7b0f375f0395cc36a622bb1d341b555c4506653",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "Dune.Part.Two.2024.2160p.AMZN.WEB-DL.HEVC.MULTi.PL.TrueHD.7.1.Atmos-ETeam-vantablack.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Dune Parte Dos (2024) [4k 2160p][Esp]\n👤 5 💾 30.75 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "9cf3225d39f3a46c34cc149101dd8560c574a21b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Dune Parte Dos (2024) [4k 2160p][Esp](wolfmax4k.com).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Dune - Part Two 2024 1080p BluRay DoVi HDR10 TrueHD Atmos 7 1 x265-GeneMige\n👤 46 💾 5.93 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇫🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴",
+      "infoHash": "d3549698151a641ffa23117baee0be1b7358358b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Dune - Part Two 2024 1080p BluRay DoVi HDR10 TrueHD Atmos 7 1 x265-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Dune Part Two 2024 BluRay 1080p HEVC HDR 8ch-CAPTCHA\n👤 13 💾 9.52 GB ⚙️ ThePirateBay",
+      "infoHash": "c68b6b7c3855b616f9bd6f25fc1ecdc9d8d05ad9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|HDR",
+        "filename": "Dune Part Two 2024 BluRay 1080p HEVC HDR 8ch-CAPTCHA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune: Part Two 2024 1080p WEBRip\n👤 1090 💾 2.76 GB ⚙️ YTS",
+      "infoHash": "2770fe270845674966e184be60ed1be0fe494f3a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Dune.Part.Two.2024.1080p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG\n👤 299 💾 1.6 GB ⚙️ TorrentGalaxy",
+      "infoHash": "b1caf2a9c5cabc705b056c06dc5365f1eaf4c098",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Dune.Part.Two.2024.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEB-DL.x264.AAC 2.0 - Shadow- InMemoryOfEVO\n👤 154 💾 6.59 GB ⚙️ 1337x",
+      "infoHash": "e27d6e1c94854e7823e8e848c92d80a9c28baa71",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Dune.Part.Two.2024.1080p.WEB-DL.H264.AAC-InMemoryOfEVO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 NORDiC 1080p REMUX BluRay AVC DTS-HD MA TrueHD 7 1 Atmos\n👤 112 💾 34.26 GB ⚙️ ThePirateBay\n🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴",
+      "infoHash": "468b01356a39b6e5226e1c7ff6edffc55eaa9da4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Dune Part Two 2024 NORDiC 1080p REMUX BluRay AVC DTS-HD MA TrueHD 7 1 Atmos-NorTekst.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two (2024) [1080p] [BluRay]\n👤 100 💾 3.06 GB ⚙️ ThePirateBay",
+      "infoHash": "c2f364ba7f59b22a1845b16fd8a1fc1783568f8b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Dune.Part.Two.2024.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune: Part Two 2024 1080p WEBRip\n👤 94 💾 2.78 GB ⚙️ YTS",
+      "infoHash": "d917bf1d459399ee01b31a9d98a73745a878e4d7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Dune.Part.Two.2024.REPACK.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two (2024) [REPACK] [1080p] [WEBRip] [5.1] \n👤 90 💾 3.07 GB ⚙️ ThePirateBay",
+      "infoHash": "7d1b443c3197be3d714d8d2ed58c03ad60fb8f85",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Dune.Part.Two.2024.REPACK.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 1080p BluRay x265 DD 7 1-Pahe in\n👤 87 💾 2.28 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "infoHash": "98eab2b19aca09c10507a7caa9bc4d51f81ebe73",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Dune Part Two 2024 1080p BluRay x265 DD 7 1-Pahe in.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune: Part Two 2024 1080p WEBRip\n👤 85 💾 2.48 GB ⚙️ YTS",
+      "infoHash": "3bea88f0cc8d2bbd443f190bf3ef59a49b6f142f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Dune.Part.Two.2024.1080p.WEBRip.x265.10bit.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 REPACK 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX\n👤 73 💾 7.97 GB ⚙️ ThePirateBay",
+      "infoHash": "b33f4594185ceb5d72794d3bb925d25f8eb64968",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune.Part.Two.2024.REPACK.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune: Part Two 2024 REPACK 1080p BluRay AV1 Opus 7.1 MULTi4 [dAV1nci]\n👤 69 💾 3.78 GB ⚙️ TorrentGalaxy",
+      "infoHash": "627d080bfbbc65f300b08c90cbf4e7aad32b557e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Dune.Part.Two.2024.REPACK.1080p.BluRay.AV1.Opus.7.1.MULTi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.(2024).(1080p.BluRay.x265.HEVC.10bit.AAC.7.1.Tigole) [QxR]\nDune - Part Two (2024) (1080p BluRay x265 10bit Tigole).mkv\n👤 67 💾 9.57 GB ⚙️ MagnetDL",
+      "infoHash": "d2d8d476d69bfdd262a220add2ae4ed7b77e7d0f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Dune - Part Two (2024) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Duna - Parte Dois 2024 1080p WEB-DL DUAL 5.1\n👤 63 💾 3.5 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "2d5ff0915bd4bc99d4b957ddd86b78c021677089",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Duna - Parte Dois 2024 1080p WEB-DL DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 1080p BluRay x264-ROEN\n👤 60 💾 18.07 GB ⚙️ ThePirateBay",
+      "infoHash": "c21774917cb188692e0d12e65f92d1f3f88f4c96",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Dune.Part.Two.2024.1080p.BluRay.x264-ROEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 Bluray 1080p AV1 EN/FR/ES OPUS 7.1-UH [UserHEVC]\n👤 54 💾 5.59 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "1f8581f9e81a422287459ac6489323dc305590f5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Dune.Part.Two.2024.Bluray.1080p.AV1.OPUS.7.1-UH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 BluRay 1080p DD 5 1 x264-BHDStudio\n👤 47 💾 9.96 GB ⚙️ ThePirateBay",
+      "infoHash": "6d4dc4322ceff41523a75c7b0ee3faf878cc6a03",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Dune Part Two 2024 BluRay 1080p DD 5 1 x264-BHDStudio.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Parte Dos (2024) [Bluray 1080p][Esp]\n👤 33 💾 9.62 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "eca99591be0c9d5961688422a1457671bb20b92f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Dune Parte Dos (2024) [Bluray 1080p][Esp](wolfmax4k.com).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX[TGx]\n👤 30 💾 7.97 GB ⚙️ ThePirateBay",
+      "infoHash": "e649bf9be7060ba251fd362793e8f84d6d887347",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune.Part.Two.2024.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEB-DL.H264.AAC-InMemoryOfEVO\n👤 29 💾 6.59 GB ⚙️ TorrentGalaxy",
+      "infoHash": "8c54ee3a35e24dca18c90edce7fd8cae5aa42e1b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune.Part.Two.2024.1080p.WEB-DL.H264.AAC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downloads\nDune.part.two.2024.1080p-dual-lat-cinecalidad.re.mp4\n👤 27 💾 2.96 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "9006fbf91001e7053c648dfe71836ffd2f2ca0f4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Dune.part.two.2024.1080p-dual-lat-cinecalidad.re.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEBRip.DDP2.0.x265.10bit-GalaxyRG265\n👤 27 💾 2 GB ⚙️ ThePirateBay",
+      "infoHash": "83d484c9e2207c9d784330b9d13f712a3f788dea",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Dune.Part.Two.2024.1080p.WEBRip.DDP2.0.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune : Deuxième Partie MULTI BluRay 1080p 2024\n👤 26 💾 18.81 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "cdefe7ef45615ac9e864f49f77b52de16ee47950",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ Torrent911.wf ] Dune.Part.Two.2024.MULTi.1080p.BluRay.x264-LYPSG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.REPACK.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 26 💾 2.02 GB ⚙️ ThePirateBay",
+      "infoHash": "2220dd2cc28c6ef3a2efc01ada1ddf07d7875061",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Dune.Part.Two.2024.REPACK.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Duna - Parte Dois 2024 1080p FULL HD WEB-DL DUAL 5.1\n👤 25 💾 8.57 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "234b2a22e7ad73f54f9afdc8f417c4cf07a6189b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Comando.LA - Duna - Parte Dois 2024 1080p FULL HD WEB-DL DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.Bluray.REMUX.Multi.Audio.AVC.TrueHD.Atmos.7.1-VARR0A\n👤 24 💾 31.45 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧",
+      "infoHash": "0bcebfedef231ddae5bc949d9572dccf73bd91ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Dune.Part.Two.2024.1080p.Bluray.REMUX.Multi.Audio.AVC.TrueHD.Atmos.7.1-VARR0A.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Duna: Část druhá / Dune: Part Two (2024)(CZ/SK/EN)[1080p][WebRip][HEVC]\n👤 24 💾 3.15 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "infoHash": "4926f177eb869f2e50079abf51a18df2a56631cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc",
+        "filename": "Dune.Part.Two.2024.1080p.WEB-DL.HEVC.x265.DDP5.1-BZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.10bit.BluRay.8CH.x265.HEVC-PSA\n👤 20 💾 2.27 GB ⚙️ MagnetDL",
+      "infoHash": "adfb549bb68604a712455976dbd26a5ac7be6787",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Dune.Part.Two.2024.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.MULTi.TRUEFRENCH.1080p.WEB-DL.H264-Slay3R\n👤 19 💾 9.5 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "a08b4a2137da104b9ed46015d1f31d0b4e79b63e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "[ Torrent911.pm ] Dune.Part.Two.2024.MULTi.TRUEFRENCH.1080p.WEB-DL.H264-Slay3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Дюна: Часть вторая / Dune: Part Two (2024) BDRip 1080p от селезень | D\n👤 18 💾 14.29 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "420a1035496cdab32f06fb5bc175e8a25dd8e857",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Dune.Part.Two.2024.BDRip.1080p.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:420a1035496cdab32f06fb5bc175e8a25dd8e857",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.bluray.sdr.1080p.av1.5.1.opus.subs-Dust\n👤 15 💾 1.55 GB ⚙️ 1337x",
+      "infoHash": "21a875cf49fd3a88d67d9e3ab3c6b7750b4109de",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Dune.Part.Two.2024.bluray.sdr.1080p.av1.5.1.opus.subs-Dust.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune - Part Two (2024) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 15 💾 3.4 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "fe11cf62ee2bcf0c86142766f8eebb7de6a834c9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Dune - Part Two (2024) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune - Parte Due (2024 ITA/ENG) [1080p x265] [Paso77]\n👤 13 💾 9.69 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "5d5a49e3a1f2247df8fc306192191ece19f5d8ee",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "Dune Part Two 2024 BDRip ITA ENG 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune - Part Two - Dune - Parte due (2024) 1080p H264 ITA ENG AC3 5.1 WEBRip Subs - LoZio.mkv\n👤 13 💾 3.44 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "f4780f7cf62c053132888954b2380091a679b9f2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|h264",
+        "filename": "Dune - Part Two - Dune - Parte due (2024) 1080p H264 ITA ENG AC3 5.1 WEBRip Subs - LoZio.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEB-DL.DDP2.0.H264-AOC\n👤 13 💾 6.89 GB ⚙️ ThePirateBay",
+      "infoHash": "d05a9aaf18920e3979caec43bee30f173be5e44d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune.Part.Two.2024.1080p.WEB-DL.DDP2.0.H264-AOC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Parte Due (2024) iTA-ENG.Bluray.1080p.x264-Dr4gon.mkv\n👤 12 💾 6.14 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "3bde59170ce1fcf0210ac7bc076f33725139c79c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Dune Parte Due (2024) iTA-ENG.Bluray.1080p.x264-Dr4gon.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 1080p BluRay 10Bit X265 DDP 7 1-Chivaman\n👤 12 💾 6.74 GB ⚙️ ThePirateBay",
+      "infoHash": "8dfca8e5475d2227c9859b2324707df4f3b0ba75",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Dune Part Two 2024 1080p BluRay 10Bit X265 DDP 7 1-Chivaman.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two (2024) FullHD 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng - realDMDJ DDL_Ita\n👤 12 💾 3.66 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "056797ee6935493f2f2def431be5e1dc6212ca77",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Dune Part Two 2024 FullHD 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng realDMDJ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.(2024).(1080p.AMZN.WEB-DL.x265.HEVC.10bit.EAC3.5.1.Silence) [QxR]\n👤 12 💾 6.67 GB ⚙️ MagnetDL",
+      "infoHash": "e42f9439071da16b92c3a917322bb6c7af0e9654",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Dune - Part Two (2024) (1080p AMZN WEB-DL x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune - Part Two (2024) AV1 1080p 7RIP\n👤 11 💾 599.02 MB ⚙️ 1337x",
+      "infoHash": "e2cb9b37b654486d0e268da898f4286ad7e54cba",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Dune Part Two (2024) AV1 1080p 7RIP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "[moon] Dune: Part Two 2024 1080p WEBRip x264 AC3 MultiSubs\n👤 11 💾 3.01 GB ⚙️ 1337x\nMulti Subs / 🇬🇧",
+      "infoHash": "35acbd76f5262cf877c30ff8580ff8a8d2646e62",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Dune Part Two 2024 1080p WEBRip x264 AC3 MultiSubs.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEBRip.x265-KONTRAST\n👤 11 💾 3.19 GB ⚙️ TorrentGalaxy",
+      "infoHash": "c1b2baa23b5a134ef1a01345ecd1e60d3aee254d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Dune.Part.Two.2024.1080p.WEBRip.x265-KONTRAST.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 13 - Mp4 x264 AC3 1080p\nDune (2024) Part 2 1080p Surround.mp4\n👤 10 💾 3.71 GB ⚙️ 1337x",
+      "infoHash": "1cd4535f03f1035b0e20bd2196a99c62df1d7e45",
+      "fileIdx": 19,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Dune (2024) Part 2 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 1080p Blu-Ray HEVC x265 10Bit DDP5.1 Subs KINGDOM RG\n👤 10 💾 7.8 GB ⚙️ TorrentGalaxy",
+      "infoHash": "56783b2aea7f8b9853bfdaf2ba40804234311ef3",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Dune Part Two 2024 1080p Blu-Ray HEVC x265 10Bit DDP5.1 Subs KINGDOM RG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEBRip.10Bit.AAC.x265-Asiimov\n👤 10 💾 2.54 GB ⚙️ TorrentGalaxy",
+      "infoHash": "396bafed2f1acee7740034c4b9119efaa816327a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Dune.Part.Two.2024.1080p.WEBRip.10Bit.AAC.x265-Asiimov.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.FRENCH.1080p.WEBRip.x264-RZP\n👤 10 💾 3.61 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "5f82d8a52fef3935c299b53052f81fcafd12527d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "[ Torrent911.re ] Dune.Part.Two.2024.FRENCH.1080p.WEBRip.x264-RZP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D SBS",
+      "title": "Dune Part Two 2024 1080p 3D FULL SBS HEVC ENG HUN iFA AI3D\n👤 9 💾 10.76 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇭🇺",
+      "infoHash": "a5c94afb20c017be8f517ee8b919e14e7105b456",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Dune.Part.Two.2024.1080p.3D.FULL-SBS.HEVC.ENG-HUN.iFA-AI3D.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Дюна: Часть вторая / Dune: Part Two (2024) WEB-DLRip 1080p от ExKinoRay | D P A \n👤 8 💾 21.09 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "99dcf64e950e2bf27466b5994d5c2e96d8ded6d1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Dune.Part.Two.2024.WEB-DLRip.1080p.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:99dcf64e950e2bf27466b5994d5c2e96d8ded6d1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune - Part Two (2024) 1080p DS4K AMZN WEBRip AV1 Opus 5.1 [Retr0]\n👤 7 💾 2.22 GB ⚙️ TorrentGalaxy",
+      "infoHash": "28275487f8ba546cc99f28b00994a2853cc07315",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "Dune.Part.Two.2024.1080p.DS4K.AMZN.WEBRip.AV1.Opus.5.1-Retr0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.WEB-DL.H.264.Dual.YG⭐\n👤 7 💾 6.74 GB ⚙️ TorrentGalaxy\nDual Audio / 🇪🇸",
+      "infoHash": "1c9a60ac5b0889e0446951b07d7bd55131361fe2",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune.Part.Two.2024.1080p.WEB-DL.H.264.Dual.YG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D HOU",
+      "title": "Dune Part Two (2024) [3D.1080p.HOU.BDRip.AC3TrueHD.Atmos.x264] [Dubbing & Lektor & Napisy PL] by d666.mkv\n👤 6 💾 45.23 GB ⚙️ BestTorrents\n🇬🇧 / 🇵🇱",
+      "infoHash": "fd93fc5c35f4857039f5128846e9bcf1b9f0ae0b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Diuna 2 - Dune Part Two (2024) [3D.1080p.HOU.BDRip.AC3TrueHD.Atmos.x264] [Dubbing & Lektor & Napisy PL] by d666.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Part Two 2024 1080p HULU WEB-DL DDP 5 1 H 264-PiRaTeS\n👤 6 💾 6.6 GB ⚙️ ThePirateBay",
+      "infoHash": "840c9df41960fd2315adc3e66b35842f2aaeb656",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune Part Two 2024 1080p HULU WEB-DL DDP 5 1 H 264-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune - Part Two (2024) 1080p DS4K MA WEBRip x265 SDR DDP Atmos 5.1 English - AnoZu\n👤 5 💾 15.08 GB ⚙️ TorrentGalaxy",
+      "infoHash": "5e12db1dabf01de062a8f2468a6d35e927e68f42",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Dune - Part Two (2024) 1080p DS4K MA WEBRip x265 SDR DDP Atmos 5.1 English - AnoZu.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Parte.Due.2024.iTA-ENG.Bluray.1080p.x264-CYBER.mkv\n👤 5 💾 13.09 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "7ce41619c3e23702d5982fb434a59cb196fd3172",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Dune.Parte.Due.2024.iTA-ENG.Bluray.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune Parte Due (2024) iTA-ENG.WEBDL.1080p.x264.mkv\n👤 5 💾 10.2 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "7d33eb2cf2c6097f8ae843e75dcac3e51de6db65",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Dune Parte Due (2024) iTA-ENG.WEBDL.1080p.x264.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Dune.Part.Two.2024.1080p.AMZN.WEBRip.DDP5.1.x265.10bit-GalaxyRG265\n👤 5 💾 2.32 GB ⚙️ TorrentGalaxy",
+      "infoHash": "d160d666c8d27ad09b433d4a324e20acca002952",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Dune.Part.Two.2024.1080p.AMZN.WEBRip.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Дюна: Часть вторая / Dune: Part Two (2024) WEB-DL 1080p | D\n👤 5 💾 8.42 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "7cc6f866595149de96dad57f566ad1481f6837e3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Dune.Part.Two.2024.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX-RGB.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:7cc6f866595149de96dad57f566ad1481f6837e3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Дюна: Часть вторая / Dune: Part Two (2024) WEB-DL 1080p от New-Team | P | Jaskier\n👤 5 💾 7.11 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "f386b4a234652f618486b8d4b81b04a74a2ff558",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Dune.Part.Two.2024.WEB-DL.1080p_от New-Team.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:f386b4a234652f618486b8d4b81b04a74a2ff558",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune Part Two (2024) [720p] [BluRay]\n👤 100 💾 1.49 GB ⚙️ ThePirateBay",
+      "infoHash": "82322840619ece8bb1722acfd815828b93f76557",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Dune.Part.Two.2024.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune: Part Two 2024 720p WEBRip\n👤 80 💾 1.49 GB ⚙️ YTS",
+      "infoHash": "2611ce572b51ee458eba685551b3fc0e2775705f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Dune.Part.Two.2024.720p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune Part Two 2024 720p BluRay x264 DuaL-TURKO\n👤 48 💾 1.71 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇹🇷",
+      "infoHash": "5bb559e95fcd13cbf2c026836c6ead8bacd34560",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Dune Part Two 2024 720p BluRay x264 DuaL-TURKO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune Parte dos (2024) [Bluray 720p][Esp]\n👤 34 💾 8.72 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "23797e65de4c6ddce5a95686ea3d478b2b48095b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Dune Parte dos (2024) [Bluray 720p][Esp](wolfmax4k.com).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune.Part.Two.2024.720p.WEBRip.900MB.x264-GalaxyRG\n👤 34 💾 896.28 MB ⚙️ TorrentGalaxy",
+      "infoHash": "1e6d233802d9397a6c5aa9484d3305e501b07ead",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Dune.Part.Two.2024.720p.WEBRip.900MB.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune Part Two (2024) [REPACK] [720p] [WEBRip] \n👤 29 💾 1.5 GB ⚙️ ThePirateBay",
+      "infoHash": "e24d23ecd6047cef0d875f41c0529d2d81180f8c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Dune.Part.Two.2024.REPACK.720p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune.Part.Two.2024.TRUEFRENCH.720p.WEB-DL.H264-Slay3R\n👤 23 💾 4.17 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "22c37b84326841ee65066b12d0a1bdd5899a8a86",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "[ Torrent911.pm ] Dune.Part.Two.2024.TRUEFRENCH.720p.WEB-DL.H264-Slay3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Dune Part Two 2024 720p 10bit BluRay x265 budgetbits\n👤 7 💾 772.97 MB ⚙️ TorrentGalaxy",
+      "infoHash": "2a0ca4a09d2dafec99a37d997aebb4e648f3950d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "Dune Part Two (2024) 720p.10bit.BluRay.x265-budgetbits.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n576p",
+      "title": "Dune Part Two 2024 576p WEBRip x265 AAC-SSN\n👤 5 💾 1.81 GB ⚙️ ThePirateBay",
+      "infoHash": "9eb3612317e9657e1a09739235a7167dbf59a683",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|576p|WEBRip|x265",
+        "filename": "Dune Part Two 2024 576p WEBRip x265 AAC-SSN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Dune.Part.Two.2024.1080p.HD-TS.X264-EMIN3M[TGx]\n👤 65 💾 3.91 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1ebd3dbfbb25c1333f51c99c7ee670fc2a1727c9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Dune.Part.Two.2024.1080p.HD-TS.X264-EMIN3M.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Dune Part Two 2024 1080p HQCAM ESub x264 AAC\n👤 50 💾 2.15 GB ⚙️ ThePirateBay",
+      "infoHash": "84db7f0bc3cc41aea9e33a3b7cd9a9dede094070",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "Dune Part Two 2024 1080p HQCAM ESub x264 AAC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Dune Part Two 2024 V2 1080p X264 HDTS English Hindi AAC 2.5GB Cukister-BonsaiHD\n👤 31 💾 2.52 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "infoHash": "793c7c4adac06b15c39513f5b32a5ce06634b347",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Dune Part Two 2024 V2 1080p X264 HDTS English + Hindi AAC 2.5GB Cukister-BonsaiHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Dune Part Two 2024 1080p CLEAN ENGLISH HDTS H264-CxN-Will1869\n👤 28 💾 4.79 GB ⚙️ ThePirateBay",
+      "infoHash": "f751d19e3ed3d4df5ff7b51e4a9aeac27d3acc54",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Dune.Part.Two.English.HDTS.1080p-CxN-Will1869.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Dune.Part.Two.2024.HDCAM.c1nem4.x264-SUNSCREEN[TGx]\n👤 17 💾 996.33 MB ⚙️ ThePirateBay",
+      "infoHash": "ea7a6479fcca15f04216833529ca605076c1e4b3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "Dune.Part.Two.2024.HDCAM.c1nem4.x264-SUNSCREEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Druhá světová válka s Tomem Hanksem E05-06 [SATRip] [CZ]\nDruhá světová válka s Tomem Hanksem - Válka na moři (E05).ts\n👤 11 💾 2.01 GB ⚙️ TorrentGalaxy\n🇨🇿 / 🇸🇪",
+      "infoHash": "afa0e7230a6bb4fda640fbf52e2e6cdc7006420f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|SATRip",
+        "filename": "Druhá světová válka s Tomem Hanksem - Válka na moři (E05).ts"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Druhá světová válka s Tomem Hanksem E05-06 [SATRip] [CZ]\n👤 11 💾 2.19 GB ⚙️ TorrentGalaxy\n🇨🇿 / 🇸🇪",
+      "infoHash": "afa0e7230a6bb4fda640fbf52e2e6cdc7006420f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|SATRip",
+        "filename": "Druhá světová válka s Tomem Hanksem - Guadalcanal (E06).ts"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Dune.Part.Two.2024.1080p.HDCAM.Dublado.V.2.mkv\n👤 10 💾 3.12 GB ⚙️ BluDV\n🇬🇧 / 🇵🇹",
+      "infoHash": "5b98eedabb780d1ff58c8a8d5afb6c234b10757e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Dune.Part.Two.2024.1080p.HDCAM.Dublado.V.2.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Dune Part Two 2024 1080p HDTS CLEAN X264 COLLECTIVE\n👤 9 💾 5.12 GB ⚙️ ThePirateBay",
+      "infoHash": "55b4f98ac2a684441272974104f3db84ce96f65b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Dune.Part.Two.2024.1080p.HDTS.CLEAN.X264.COLLECTIVE.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Дюна: Часть вторая / Dune: Part Two (2024) TS 1080p | P | Jaskier\n👤 8 💾 4.81 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "bab11bbaf27ebe6e986754b00faa3f8c40af1a3c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Dune.Part.Two.2024.1080p.HDTS.CLEAN.X264.COLLECTIVE.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:bab11bbaf27ebe6e986754b00faa3f8c40af1a3c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Dune.Part.Two.2024.1080p.HDTS.Snoopy.x265.mp4\n👤 7 💾 5.99 GB ⚙️ TorrentGalaxy",
+      "infoHash": "3e4dfeff5a475ff39d63b46204131ac05c1f3dd5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x265",
+        "filename": "Dune.Part.Two.2024.1080p.HDTS.Snoopy.x265.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Dune Part Two 2024 1080p HQCAM x264 AAC - HushRips\n👤 5 💾 2.15 GB ⚙️ ThePirateBay",
+      "infoHash": "51cddb3c68d43d66913ba8d36832d9d65276fadc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "Dune Part Two 2024 1080p HQCAM x264 ESub AAC - HushRips.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Dune.Part.Two.2024.Truefrench.HDRIP\n👤 41 💾 1.07 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "cc9cb67ccf03bd52a749b40616008f23ace988c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "[ Torrent911.pm ] Dune.Part.Two.2024.Truefrench.HDRIP.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Dune : Deuxième Partie FRENCH DVDRIP 2024\n👤 32 💾 764.43 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "98d65990f76dcf246c069308b0d907e89a231961",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|DVDRip|x264",
+        "filename": "[ Torrent911.wf ] dune.part.two.2024.french.bdrip.x264-lypsg.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Dune.Part.Two.2024.Fansub.Vostfr.HDRIP\n👤 12 💾 1 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "79dffcdb9c5d4ad3ad2b4bc767761ada3ab7f449",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "[ Torrent911.pm ] Dune.Part.Two.2024.Fansub.Vostfr.HDRIP.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Dune.Part.Two.2024.FRENCH.WEBRip.XviD-RZP\n👤 11 💾 1.44 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "b797266956157cae4bdbc1ff4b17d581a91486a7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip|xvid",
+        "filename": "[ Torrent911.re ] Dune.Part.Two.2024.FRENCH.WEBRip.XviD-RZP.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Дюна: Часть вторая / Dune: Part Two (2024) BDRip от New-Team | D\n👤 7 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "1ffd1bf0ae25f8309d67601b45e314dc9108bfbe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Dune.Part.Two.2024.BDRip_1.46.gb_от New-Team_by_JNS82.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:1ffd1bf0ae25f8309d67601b45e314dc9108bfbe",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Dune.Part.Two.2024.AMZN.WEBRip.x264.HUN-FULCRUM\n👤 6 💾 2.37 GB ⚙️ EXT\n🇭🇺",
+      "infoHash": "840c57ee3599c7c1966c7264d5292fd8f0e68139",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip|x264",
+        "filename": "fulcrum-dpt.2024.webrip.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Dune Part Two (2024) BR-Rip - x264 - Org Auds [Tel + Tam + Hin + Kan]\n👤 5 💾 932.6 MB ⚙️ EXT\n🇮🇳",
+      "infoHash": "68eedf8b297537075a494649932f55b9a62ed92a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|x264",
+        "filename": "www.5MovieRulz.deals - Dune Part Two (2024) BR-Rip - x264 - Org Auds [Tel + Tam + Hin + Kan].mkv"
+      }
+    }
+  ]
+}

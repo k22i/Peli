@@ -1,0 +1,223 @@
+{
+  "dedup": {
+    "shawshank": {
+      "streams": 1733,
+      "unique": 1344,
+      "sameTorrent": 281,
+      "sameFile": 108
+    },
+    "dune-part-two": {
+      "streams": 2170,
+      "unique": 1313,
+      "sameTorrent": 576,
+      "sameFile": 281
+    },
+    "oppenheimer": {
+      "streams": 1984,
+      "unique": 1314,
+      "sameTorrent": 459,
+      "sameFile": 211
+    },
+    "parasite": {
+      "streams": 1555,
+      "unique": 1212,
+      "sameTorrent": 259,
+      "sameFile": 85
+    },
+    "rrr": {
+      "streams": 456,
+      "unique": 314,
+      "sameTorrent": 117,
+      "sameFile": 25
+    },
+    "project-hail-mary": {
+      "streams": 1552,
+      "unique": 833,
+      "sameTorrent": 417,
+      "sameFile": 302
+    },
+    "spider-man-brand-new-day": {
+      "streams": 1235,
+      "unique": 572,
+      "sameTorrent": 496,
+      "sameFile": 167
+    },
+    "coyote-vs-acme": {
+      "streams": 496,
+      "unique": 221,
+      "sameTorrent": 196,
+      "sameFile": 79
+    },
+    "breaking-bad-s01e01": {
+      "streams": 674,
+      "unique": 369,
+      "sameTorrent": 185,
+      "sameFile": 120
+    },
+    "the-office-s03e05": {
+      "streams": 287,
+      "unique": 141,
+      "sameTorrent": 107,
+      "sameFile": 39
+    },
+    "last-of-us-s02e01": {
+      "streams": 925,
+      "unique": 420,
+      "sameTorrent": 243,
+      "sameFile": 262
+    },
+    "severance-s02e01": {
+      "streams": 650,
+      "unique": 260,
+      "sameTorrent": 174,
+      "sameFile": 216
+    },
+    "shogun-s01e01": {
+      "streams": 659,
+      "unique": 296,
+      "sameTorrent": 208,
+      "sameFile": 155
+    },
+    "lanterns-s01e08": {
+      "streams": 492,
+      "unique": 204,
+      "sameTorrent": 190,
+      "sameFile": 98
+    },
+    "frieren-e01": {
+      "streams": 891,
+      "unique": 710,
+      "sameTorrent": 134,
+      "sameFile": 47
+    },
+    "attack-on-titan-e01": {
+      "streams": 905,
+      "unique": 711,
+      "sameTorrent": 142,
+      "sameFile": 52
+    },
+    "one-piece-e1100": {
+      "streams": 1287,
+      "unique": 1229,
+      "sameTorrent": 47,
+      "sameFile": 11
+    },
+    "dandadan-e01": {
+      "streams": 607,
+      "unique": 468,
+      "sameTorrent": 97,
+      "sameFile": 42
+    },
+    "solo-leveling-s01e01": {
+      "streams": 478,
+      "unique": 264,
+      "sameTorrent": 155,
+      "sameFile": 60
+    },
+    "your-name": {
+      "streams": 1417,
+      "unique": 1183,
+      "sameTorrent": 184,
+      "sameFile": 50
+    }
+  },
+  "total": {
+    "streams": 20453,
+    "unique": 13378
+  },
+  "perAddon": {
+    "comet-tb": {
+      "streams": 14270,
+      "buckets": {
+        "ok": 13021,
+        "hidden": 1099,
+        "suspicious": 149,
+        "low quality": 1
+      },
+      "reasons": {
+        "wrong season": 7,
+        "title mismatch": 1037,
+        "wrong year": 69,
+        "extras": 152,
+        "wrong episode": 163,
+        "non-video file": 106,
+        "too large": 156,
+        "too small": 715,
+        "cam / ts": 1,
+        "episode for a movie": 1
+      }
+    },
+    "peerflix": {
+      "streams": 122,
+      "buckets": {
+        "ok": 119,
+        "low quality": 1,
+        "hidden": 2
+      },
+      "reasons": {
+        "cam / ts": 1,
+        "episode for a movie": 1,
+        "title mismatch": 45,
+        "non-video file": 1
+      }
+    },
+    "torrentio": {
+      "streams": 1659,
+      "buckets": {
+        "ok": 1563,
+        "hidden": 28,
+        "suspicious": 8,
+        "low quality": 60
+      },
+      "reasons": {
+        "wrong year": 5,
+        "extras": 7,
+        "too small": 4,
+        "title mismatch": 60,
+        "too large": 8,
+        "wrong episode": 3,
+        "cam / ts": 60,
+        "episode for a movie": 9
+      }
+    },
+    "torrentio-tb": {
+      "streams": 3173,
+      "buckets": {
+        "ok": 2995,
+        "hidden": 67,
+        "suspicious": 15,
+        "low quality": 96
+      },
+      "reasons": {
+        "wrong year": 26,
+        "extras": 16,
+        "too small": 10,
+        "title mismatch": 143,
+        "wrong episode": 5,
+        "too large": 15,
+        "wrong season": 2,
+        "cam / ts": 97,
+        "episode for a movie": 9
+      }
+    },
+    "torrentsdb": {
+      "streams": 1229,
+      "buckets": {
+        "hidden": 92,
+        "ok": 1059,
+        "suspicious": 19,
+        "low quality": 59
+      },
+      "reasons": {
+        "wrong season": 63,
+        "too large": 33,
+        "wrong year": 9,
+        "extras": 15,
+        "too small": 8,
+        "cam / ts": 59,
+        "title mismatch": 35,
+        "episode for a movie": 3
+      }
+    }
+  }
+}

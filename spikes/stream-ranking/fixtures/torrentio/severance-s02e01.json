@@ -1,0 +1,617 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "severance-s02e01",
+  "request": "https://torrentio.strem.fun/stream/series/tt11280740%3A2%3A1.json",
+  "recordedAt": "2026-10-11T12:03:35.232Z",
+  "status": 200,
+  "ms": 417,
+  "streams": [
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Severance.S02.Hybrid.MULTI.2160p.WEB-DL.DV.HDR.H265-AOC\nS02/S02E01.mkv\n👤 102 💾 11.71 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧",
+      "infoHash": "6505d025dbaf4e352816366aa36d828f5ac18882",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6505d025dbaf4e352816366aa36d828f5ac18882",
+        "filename": "S02E01.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX\n👤 45 💾 8.56 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "7904ff59d2a3dff190b79dfa9d1bd5df91a29e2a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|FLUX",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVP WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Severance.S02.2160p.WEB-DL.DV.HDR.DDP5.1.Atmos.H265.MP4-BEN.THE.MEN\nSeverance.S02E01.2160p.WEB-DL.DV.HDR[Ben The Men].mp4\n👤 35 💾 8.89 GB ⚙️ ThePirateBay",
+      "infoHash": "03ed88575895fe8d40810dd3afb936887448152d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|03ed88575895fe8d40810dd3afb936887448152d",
+        "filename": "Severance.S02E01.2160p.WEB-DL.DV.HDR[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Severance (2022) S02E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE)\n👤 28 💾 8.56 GB ⚙️ TorrentGalaxy",
+      "infoHash": "c729d7be05e7210c0fd9b4a789fa50e12f4db504",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR10+",
+        "filename": "Severance (2022) S02E01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Severance.Scissione.S02E01.Salve.Signora.Cobel.ITA-ENG.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.DV.H.265-gattopollo.mkv\n👤 11 💾 9.71 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "5eea9193612487363021b4fee7da590af29efe0b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|gattopollo",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA-ENG.2160p.ATVP.WEB-DL.DDP5.1.Atmos.HDR.DV.H.265-gattopollo.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Severance.S02E01-02.2160p.ATVP.WEB-DL.ITA-ENG.DDP5.1.Atmos.DV.HDR.H265-G66\nSeverance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H265-G66.mkv\n👤 7 💾 8.82 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "ea29d1479a88fcad86e3728563eb8582eb529e9d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ea29d1479a88fcad86e3728563eb8582eb529e9d",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.2160p.ATVP.WEB-DL.DDP5.1.Atmos.DV.HDR.H265-G66.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Severance (2022) Season 2 S02 (2160p ATVP WEB-DL x265 HEVC 10bit DDP 5.1 Vyndros)\nSeverance.S02E01.Hello,.Ms.Cobel.2160p.10bit.ATVP.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n👤 268 💾 2.01 GB ⚙️ 1337x",
+      "infoHash": "cf667a7b14f365fb03d5b028f9589dadc36f69f2",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|cf667a7b14f365fb03d5b028f9589dadc36f69f2",
+        "filename": "Severance.S02E01.Hello,.Ms.Cobel.2160p.10bit.ATVP.WEB-DL.DDP5.1.HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 H 265-NTb\n👤 10 💾 7.25 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "3bb422fb8702b81030bc36f3ff27a95811aa0475",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|NTb",
+        "filename": "Severance S02E01 Hello Ms Cobel 2160p ATVp WEB-DL DDP5 1 H 265-NTb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance - Season 2 - Mp4 x264 AC3 1080p\nSeverance S02E01.mp4\n👤 645 💾 1.11 GB ⚙️ 1337x",
+      "infoHash": "959ed8be27cffcb61603eff33d393c94df2be2d7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|959ed8be27cffcb61603eff33d393c94df2be2d7",
+        "filename": "Severance S02E01.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02.Complete.1080p.WEBRip.10bit.DDP5.1.x265-HODL\nSeverance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv\n👤 558 💾 701.83 MB ⚙️ 1337x",
+      "infoHash": "228faee0146c2d40d2e136ec54606d92a1866e00",
+      "fileIdx": 7,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|228faee0146c2d40d2e136ec54606d92a1866e00",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.1080p.WEB.H264-SuccessfulCrab[TGx]\n👤 456 💾 3.69 GB ⚙️ TorrentGalaxy",
+      "infoHash": "a0d2b760c12fd6e63267f935bc1524ae4c22420e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|successfulcrab",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance (2021) S02 (1080p ATVP WEB-DL x265 10bit EAC3 5.1 Silence) [QxR]\nSeverance (2021) - S02E01 - Hello, Ms. Cobel (1080p ATVP WEB-DL x265 Silence).mkv\n👤 214 💾 1.63 GB ⚙️ 1337x",
+      "infoHash": "707e3e6cc8b6acb7398a2e95774d32891dabcfcf",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|707e3e6cc8b6acb7398a2e95774d32891dabcfcf",
+        "filename": "Severance (2021) - S02E01 - Hello, Ms. Cobel (1080p ATVP WEB-DL x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 1080p WEB H264-SuccessfulCrab\n👤 210 💾 3.69 GB ⚙️ EZTV",
+      "infoHash": "a762217ea6a1d6e64fa297259dc14ab53f75d6c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|successfulcrab",
+        "filename": "severance.s02e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance (2025) [Sezon 2] [MULTi] [1080p] [WEB-DL] [H264-Mixio] [DD5.1] [Lektor & Napisy PL]\nSe4era4ce.S02E01.Hello.Ms.Cobel.MULTi.1080p.ATVP.WEB-DL.H264-Mixio.mkv\n👤 187 💾 3.82 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "infoHash": "9908f8740a9168ccb7389a6b7ab13fef0f985112",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9908f8740a9168ccb7389a6b7ab13fef0f985112",
+        "filename": "Se4era4ce.S02E01.Hello.Ms.Cobel.MULTi.1080p.ATVP.WEB-DL.H264-Mixio.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.1080p.x265-ELiTE [Saturn5]\n👤 110 💾 595.25 MB ⚙️ 1337x",
+      "infoHash": "9133181bfd65d418bd0aefcffbcc7d507c0e02a7",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci\nSeverance.S02E01.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci.mkv\n👤 106 💾 527.82 MB ⚙️ 1337x",
+      "infoHash": "d2e618e5809cf3195f90e90e75612dca8a18759f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d2e618e5809cf3195f90e90e75612dca8a18759f",
+        "filename": "Severance.S02E01.1080p.WEBRip.DS4K.AV1.DDP.5.1-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02.1080p.x265-ELiTE\nSeverance.S02E01.1080p.x265-ELiTE.mkv\n👤 104 💾 595.25 MB ⚙️ 1337x",
+      "infoHash": "64ef2c9f1912f1ce448bb375da2cc823ae444dc4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|64ef2c9f1912f1ce448bb375da2cc823ae444dc4",
+        "filename": "Severance.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 1080p HEVC x265-MeGusta EZTV\n👤 82 💾 456.21 MB ⚙️ EZTV",
+      "infoHash": "a7e0fd95ca0824783f3dfd05f095cf033db3eda4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX\n👤 66 💾 3.69 GB ⚙️ EZTV",
+      "infoHash": "6c6139e38b356f7c91ccb3e9142a4abfd3a1e271",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FLUX",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\nSeverance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv\n👤 62 💾 1.14 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "855aaa02257ea6fadf360b9fdcc036ff0a772c37",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|855aaa02257ea6fadf360b9fdcc036ff0a772c37",
+        "filename": "Severance.S02E01.MULTi.1080p.WEBRip.DDP5.1.Atmos.HEVC-[PSA]-BATGirl.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02.1080p.WEBRip.x265-KONTRAST\nSeverance.S02E01.1080p.WEBRip.x265-KONTRAST.mkv\n👤 50 💾 1023.71 MB ⚙️ 1337x",
+      "infoHash": "799ace02d60844c90ede3d29571cd7426ec723c4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|799ace02d60844c90ede3d29571cd7426ec723c4",
+        "filename": "Severance.S02E01.1080p.WEBRip.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02.MULTi.1080p.WEB.H264-SUPPLY\nSeverance.S02E01.MULTi.1080p.WEB.H264-SUPPLY.mkv\n👤 35 💾 4.21 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "23882a43b189ae01e9bf8ccd614d13b241eab222",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|23882a43b189ae01e9bf8ccd614d13b241eab222",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance 2022 Seasons 1 and 2 Complete 1080p WEB x264 [i_c]\nSeason 2/Severance - S02E01 - Hello, Ms. Cobel.mkv\n👤 28 💾 707.33 MB ⚙️ ThePirateBay",
+      "infoHash": "1c85e8781b9c6ad746a251353e0c455c84b78b80",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1c85e8781b9c6ad746a251353e0c455c84b78b80",
+        "filename": "Severance - S02E01 - Hello, Ms. Cobel.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-MeM.GP.mkv\n👤 20 💾 4.36 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "1140f5cd19f88f94ec08d8967115940d6dcdb430",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEB-DL.DDP5.1.Atmos.H.264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.1080p.WEBRip.10bit.DDP5.1.x265-HODL\n👤 19 💾 701.83 MB ⚙️ TorrentGalaxy",
+      "infoHash": "5688a655f2876eb80530d1ef8be855ff3e8b6f0c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HODL",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 1080p AV1 10bit-MeGusta\n👤 16 💾 427.24 MB ⚙️ EZTV",
+      "infoHash": "a12fa9fe86d1dce6241ebdc0e1bdfeb84fe364aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Severance.S02E01.1080p.AV1.10bit-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance - Season 2 (2025) - HEVC10bit 1080p 7RIP\nSeverance S02E01 Hello, Ms. Cobel.mkv\n👤 13 💾 212.64 MB ⚙️ 1337x",
+      "infoHash": "d098c839b1d717a59600e56c27d6ad595d0ccf96",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d098c839b1d717a59600e56c27d6ad595d0ccf96",
+        "filename": "Severance S02E01 Hello, Ms. Cobel.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsun\n👤 13 💾 3.69 GB ⚙️ ThePirateBay",
+      "infoHash": "75810646de60d6c15a0a0208072b45bd179c3e4b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Kitsune",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance - Scissione - Stagione 02 (2025 ITA/ENG) [COMPLETA] [Pir8][1080p]\nSeverance.Scissione.2x01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.AAC.x265-Pir8.mkv\n👤 11 💾 770.88 MB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "94e93e866a28302adce3e0a28038c4068734d8d6",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|94e93e866a28302adce3e0a28038c4068734d8d6",
+        "filename": "Severance.Scissione.2x01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.AAC.x265-Pir8.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.1080p.HEVC.x265-MeGusta[TGx]\n👤 11 💾 456.21 MB ⚙️ TorrentGalaxy",
+      "infoHash": "ac55e9a3c60c7df4fa3e455da21dd16ad86ac058",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Severance.S02E01.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDPA5.1.H.264-NTb \n👤 10 💾 3.69 GB ⚙️ TorrentGalaxy",
+      "infoHash": "3c6c33e2d020be56ede94c76d6e7a6ba742b8263",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|NTb",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.1080p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX[TGx]\n👤 9 💾 3.69 GB ⚙️ TorrentGalaxy",
+      "infoHash": "aa2657dcda5512639ff80d1d6f4205a11753d808",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FLUX",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.mkv\n👤 8 💾 3.95 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "infoHash": "d7f4018fab18594fb3af4bb8835970b6131709b4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|TheBlackKing",
+        "filename": "Severance.S02E01.1080p.ENG.ITA.H264-TheBlackKing.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 H 264-NTb[TGx]\n👤 7 💾 3.69 GB ⚙️ TorrentGalaxy",
+      "infoHash": "6750e7051e8b9d81cdc32cb91b338d35ee4676b4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|NTb",
+        "filename": "Severance S02E01 Hello Ms Cobel 1080p ATVP WEB-DL DDP5 1 H 264-NTb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.MULTi.1080p.WEB.H265-FW\n👤 7 💾 1.73 GB ⚙️ EXT\nMulti Audio",
+      "infoHash": "cef442138bbaeb0db9ef0b6a7178ab3d4c43d2c6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FW",
+        "filename": "Severance.S02E01.MULTi.1080p.WEB.H265-FW.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Scissione - Stagione 2 (2025) [COMPLETA] 1080p H265 ITA ENG EAC3 ATMOS AC3 SUB ITA NUITA ENG NUENG WEBRip [18.46 GB] - UBi CreW\nScissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.DDP5.1.Atmos.DD5.1.x265-UBi.mkv\n👤 6 💾 1.79 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "42e8008ec50c753ed9a9f47172e4c2e8d6064495",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|42e8008ec50c753ed9a9f47172e4c2e8d6064495",
+        "filename": "Scissione.S02E01.Salve.Signora.Cobel.ITA.ENG.1080p.ATVP.WEBRip.DDP5.1.Atmos.DD5.1.x265-UBi.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance S02E01 1080p x265-ELiTE\n👤 6 💾 595.25 MB ⚙️ ThePirateBay",
+      "infoHash": "cb75de2ac755b07121231dbaf259be4a9f9942ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "Severance S02E01 1080p x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Severance.S02E01.MULTi.1080p.WEB.H265-TFA\n👤 6 💾 1.73 GB ⚙️ EXT\nMulti Audio / 🇬🇧",
+      "infoHash": "3aa806177631adebdb6cd3de4b432bc767762540",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|TFA"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Ruptura S02 2025 WEB-DL 1080p x264 DUAL 5.1\nRuptura S02E01 WEB-DL 1080p x264 DUAL 5.1.mkv\n👤 5 💾 1.31 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "5551fd5520252986ba3c9d1566e250b2e6331360",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5551fd5520252986ba3c9d1566e250b2e6331360",
+        "filename": "Ruptura S02E01 WEB-DL 1080p x264 DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Separacion [HDTV 1080p][Cap.201]\n👤 5 💾 3.95 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "da6dee9d171c4af1ec82dab17a98f9981097941a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Separacion [HDTV 1080p][Cap.201](wolfmaxc4k.com).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance.Season.2.COMPLETE.720p.ATVP.WEB-DL.x264-MIKE\nSeverance.S02E01.720p.ATVP.WEB-DL.x264-MIKE.mkv\n👤 108 💾 418.11 MB ⚙️ 1337x",
+      "infoHash": "e492a2eec786b2bb983766f77563f6ac629c30d8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e492a2eec786b2bb983766f77563f6ac629c30d8",
+        "filename": "Severance.S02E01.720p.ATVP.WEB-DL.x264-MIKE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance.S02.720p.x265-TiPEX\nSeverance.S02E01.720p.x265-TiPEX.mkv\n👤 29 💾 348.34 MB ⚙️ 1337x",
+      "infoHash": "06f4eaadf3f333d93c138d501e1e0852f7ae95b4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|06f4eaadf3f333d93c138d501e1e0852f7ae95b4",
+        "filename": "Severance.S02E01.720p.x265-TiPEX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance S02E01 720p HEVC x265-MeGusta\n👤 29 💾 424.09 MB ⚙️ EZTV",
+      "infoHash": "bc0774080b4dc64e27d9ec2f1163a229ced595ef",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Severance.S02E01.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX\n👤 28 💾 1.24 GB ⚙️ ThePirateBay",
+      "infoHash": "6e495b96b6b5c1240a86feb3d368201099b0ee6b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|FLUX",
+        "filename": "Severance S02E01 Hello Ms Cobel 720p ATVP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance S02E01 720p WEB x265-MiNX\n👤 18 💾 154.69 MB ⚙️ EZTV",
+      "infoHash": "e0c5dd9e303b013cee3a943b6949a483b3141556",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MiNX",
+        "filename": "Severance S02E01 720p WEB x265-MiNX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDPA5.1.H.264-NTb \n👤 15 💾 1.24 GB ⚙️ TorrentGalaxy",
+      "infoHash": "55eb00e97cee81651f31f241fa8059fab51d75e4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|NTb",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.ATVP.WEB-DL.DDP5.1.H.264-NTb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance 2022 Seasons 1 and 2 Complete 720p WEB x264 [i_c]\nSeason 2/Severance - S02E01 - Hello, Ms. Cobel.mkv\n👤 11 💾 461.36 MB ⚙️ ThePirateBay",
+      "infoHash": "98fa7084ba795d5ccca4403dea98127ea771b700",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|98fa7084ba795d5ccca4403dea98127ea771b700",
+        "filename": "Severance - S02E01 - Hello, Ms. Cobel.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance.S02E01.720p.WEB.x265-MiNX[TGx]\n👤 8 💾 154.69 MB ⚙️ TorrentGalaxy",
+      "infoHash": "a967dc1150f087ba21e7e417ca7331951326b517",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MiNX",
+        "filename": "Severance.S02E01.720p.WEB.x265-MiNX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Severance S02E01 Hello Ms Cobel 720p HEVC x265-MeGusta\n👤 6 💾 424.09 MB ⚙️ EZTV",
+      "infoHash": "2f2a58502b52d8ca6eac1281cfd2a33ad1776dc1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n480p",
+      "title": "Severance S02E01 Hello Ms Cobel 480p x264-mSD\n👤 5 💾 352.81 MB ⚙️ EZTV",
+      "infoHash": "da26d28c5bc812692c88f13f9ca2e315c6b6d6b9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|mSD",
+        "filename": "Severance.S02E01.Hello.Ms.Cobel.480p.x264-mSD[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Разделение / Severance [S01-02] (2022-2025) WEB-DLRip | LostFilm\nS02/Severance.S02E01.avi\n👤 29 💾 607.8 MB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "d0e5a6d16e3b9f69e68de33ac87469a807f80075",
+      "fileIdx": 18,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d0e5a6d16e3b9f69e68de33ac87469a807f80075",
+        "filename": "Severance.S02E01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:d0e5a6d16e3b9f69e68de33ac87469a807f80075",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Severance.S02E01.FRENCH.WEBRip.x264.mp4\n👤 22 💾 209.19 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "3785b8192719dfe804fd93c9c9c76d99a8fb5405",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip| Torrent911.im ",
+        "filename": "[ Torrent911.im ] Severance.S02E01.FRENCH.WEBRip.x264.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Разделение / Severance [S02] (2025) WEB-DLRip-AVC от DoMiNo & селезень | D P | Red Head Sound HDrezka Studio LostFilm\nSeverance.S02E01.WEB-DLRip.x264.seleZen.mkv\n👤 12 💾 940.69 MB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "aa8245c7b74a8728278f392a4c9fba2e16291566",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|aa8245c7b74a8728278f392a4c9fba2e16291566",
+        "filename": "Severance.S02E01.WEB-DLRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:aa8245c7b74a8728278f392a4c9fba2e16291566",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDTV",
+      "title": "Separacion [HDTV][Cap.201]\n👤 11 💾 600.61 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "32ba7ab9193a0d332eb4163ecf53bcc9515e7d43",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDTV",
+        "filename": "Separacion [HDTV][Cap.201](wolfmaxc4k.com).avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Severance.S02E01.WEB.x264-TORRENTGALAXY\n👤 7 💾 187.84 MB ⚙️ TorrentGalaxy",
+      "infoHash": "29c996bba759c7e6483c134550df04b98c50e76f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TORRENTGALAXY",
+        "filename": "Severance.S02E01.WEB.x264-TORRENTGALAXY.mkv"
+      }
+    }
+  ]
+}

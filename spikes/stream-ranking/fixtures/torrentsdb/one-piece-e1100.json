@@ -1,0 +1,10 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "one-piece-e1100",
+  "request": "https://torrentsdb.com/stream/series/kitsu%3A12%3A1100.json",
+  "recordedAt": "2026-10-11T12:04:28.778Z",
+  "status": 200,
+  "ms": 292,
+  "streams": []
+}

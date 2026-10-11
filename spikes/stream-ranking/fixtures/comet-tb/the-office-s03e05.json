@@ -1,0 +1,1601 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "the-office-s03e05",
+  "request": "https://comet.elfhosted.com/<config>/stream/series/tt0386676%3A3%3A5.json",
+  "recordedAt": "2026-10-11T12:06:29.382Z",
+  "status": 200,
+  "ms": 1071,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|87f2f234b7122f3794e4fb6b3680fb692f1d920b",
+        "filename": "The.Office.US.S03E05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP.mkv",
+        "videoSize": 4874574424
+      },
+      "description": "📄 The.Office.US.S03E05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX | 🏷️ NOGRP\n💾 4.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3d81eddc52f74162f73e60f0b41846ed7df1a822",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.BluRay.Remux.DTS-HD.MA5.1.AVC-BTN.mkv",
+        "videoSize": 4880718040
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.BluRay.Remux.DTS-HD.MA5.1.AVC-BTN.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX | 🏷️ BTN\n💾 4.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ae8ba9f8aa5341591be84234658ba808e23aa37f",
+        "filename": "The Office S03E05 (2006) BDRemux 1080p.mkv",
+        "videoSize": 4837928008
+      },
+      "description": "📄 The Office S03E05 (2006) BDRemux 1080p.mkv\n⭐ BluRay REMUX\n👤 1 💾 4.5 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e36c790c03931a35ebbb150985cc5bacb7b4c587",
+        "filename": "The.Office.US.S03E05.EXTENDED.1080p.PCOK.WEB-DL.DDP5.1.H.264-TEPES-SUBITA.mkv",
+        "videoSize": 1599943624
+      },
+      "description": "📄 The.Office.US.S03E05.EXTENDED.1080p.PCOK.WEB-DL.DDP5.1.H.264-TEPES-SUBITA.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SUBITA\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b9860aadd19dd4a7bb33f4fb272e138892696d8b",
+        "filename": "The Office US S03E05 Initiation Extended Cut 1080p PCOK WEB-DL DDP5 1 H 264-Kitsune.mkv",
+        "videoSize": 1659950787
+      },
+      "description": "📄 The Office US S03E05 Initiation Extended Cut 1080p PCOK WEB-DL DDP5 1 H 264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 1.5 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|74038e06d163f7448283134ba4e96f6b679f7fe0",
+        "filename": "The Office US S03E05 Initiation Extended Cut 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune.mkv",
+        "videoSize": 2114771462
+      },
+      "description": "📄 The Office US S03E05 Initiation Extended Cut 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n👤 30 💾 2.0 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|64fac90aa5c3800879801e764e6256a43086dd7a",
+        "filename": "The.Office.US.S03E05.EXTENDED.1080p.PCOK.WEB-DL.DDP5.1.H.264-TEPES.mkv",
+        "videoSize": 1599900032
+      },
+      "description": "📄 The.Office.US.S03E05.EXTENDED.1080p.PCOK.WEB-DL.DDP5.1.H.264-TEPES.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TEPES\n👤 4 💾 1.5 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bcaf37248cc0db83bab95f54b283f4739eb92cca",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv",
+        "videoSize": 93384738454
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEB-DL\n💾 87.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|838df72e305d1b3276612c8259803bf84ca00861",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv",
+        "videoSize": 354340377
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEB-DL\n💾 337.9 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6ae3c37a494a75a79c3c15b9127f3751a682299b",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 Silence).mkv",
+        "videoSize": 668154785
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 Silence).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEB-DL\n💾 637.2 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5e1805ecaf28739507b516cf20e972e4c11bb1e1",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv",
+        "videoSize": 603878626
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEB-DL\n💾 575.9 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|09a1f7781512eac356f54688d79bbb532f5cd07b",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 Silence).mkv",
+        "videoSize": 668154785
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 Silence).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEB-DL\n💾 637.2 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|22ffc8527a1fedbc3771ff919fa4bb9f11b5bd09",
+        "filename": "The Mega-Brands That Built America S03E05 Rise of the Office Machines 1080p AMZN WEB-DL DDP2 0 H 264-NTb.mkv",
+        "videoSize": 2723109049
+      },
+      "description": "📄 The Mega-Brands That Built America S03E05 Rise of the Office Machines 1080p AMZN WEB-DL DDP2 0 H 264-NTb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ NTb\n👤 16 💾 2.5 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|138cb11f4ac470410e161f096332e0b01508b13d",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.AMZN.WEB-DL.DDP2.0.H.264-playWEB.mkv",
+        "videoSize": 1559722800
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.AMZN.WEB-DL.DDP2.0.H.264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d6797f5408e0c073ebae41c5ae2a4b354e47812c",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv",
+        "videoSize": 686879868
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ BluRay\n💾 655.1 MB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b7b6f6540f1a84de3b139a2d0d69f6d1090b0373",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv",
+        "videoSize": 686879868
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ BluRay\n💾 655.1 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7699b7bc75c9f7bb98383191907b89175dd1d0f7",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.BluRay.DDP5.1.x264-BTN.mkv",
+        "videoSize": 2934655086
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.BluRay.DDP5.1.x264-BTN.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ BTN\n💾 2.7 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|039621b56a677fa333d5a9393711c8f43be7e8c6",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.AMZN.WEB-DL.DD5.1.x264-AJP69.mkv",
+        "videoSize": 2284054739
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.AMZN.WEB-DL.DD5.1.x264-AJP69.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ AJP69\n👤 24 💾 2.1 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d7726aa1f5768e55d8c6e38d92f232e430e7eabd",
+        "filename": "The Office PL S03E05[1080p.WEB-DL.H264].mkv",
+        "videoSize": 1107922146
+      },
+      "description": "📄 The Office PL S03E05[1080p.WEB-DL.H264].mkv\n📹 avc\n⭐ WEB-DL\n💾 1.0 GB 🔎 Comet|DMM\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b9b1c625d68108343d616c54b87e6663c71f75d1",
+        "filename": "The.Office.S03E05.Initiation.AAC5.1.1080p.Bluray.x265-SiQ.mkv",
+        "videoSize": 505367547
+      },
+      "description": "📄 The.Office.S03E05.Initiation.AAC5.1.1080p.Bluray.x265-SiQ.mkv\n📹 hevc | 🔊 AAC • 5.1\n⭐ BluRay | 🏷️ SiQ\n💾 482.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c14ee3bd682fd100e69fa427ebabb09c882a86b3",
+        "filename": "The.Office.US.S03E05.Initiation.AMZN.1080p.5.1.HEVC.x265.10bit-Bearfish.mkv",
+        "videoSize": 559544069
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.AMZN.1080p.5.1.HEVC.x265.10bit-Bearfish.mkv\n📹 hevc • 10bit | 🔊 5.1\n🏷️ Bearfish\n💾 533.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|67f96d939071e0ff6e159a8d2430bfb25c95e334",
+        "filename": "The.Office.US.S03E05.1080p.Bluray.x265-HiQVE.mkv",
+        "videoSize": 695030236
+      },
+      "description": "📄 The.Office.US.S03E05.1080p.Bluray.x265-HiQVE.mkv\n📹 hevc\n⭐ BluRay | 🏷️ HiQVE\n💾 662.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|43a651c44f11519364ab09cf7adeee0de91ebb84",
+        "filename": "The.Office.US.S03E05.1080p.AMZN.WEB.x264-MRSK.mkv",
+        "videoSize": 623773660
+      },
+      "description": "📄 The.Office.US.S03E05.1080p.AMZN.WEB.x264-MRSK.mkv\n📹 avc\n⭐ WEB | 🏷️ MRSK\n💾 594.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|371f42245762cddf5a029c497be23463e83c2c12",
+        "filename": "The Office - S03E05 - La iniciación - [1080p][AAC 2.0][AVC] - [eng, spa] - LasCositas.mkv",
+        "videoSize": 682050226
+      },
+      "description": "📄 The Office - S03E05 - La iniciación - [1080p][AAC 2.0][AVC] - [eng, spa] - LasCositas.mkv\n📹 avc | 🔊 AAC • 2.0\n🏷️ LasCositas\n👤 1 💾 650.5 MB 🔎 Comet|btstate\n🌎/🇬🇧/🇪🇸",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0dbacaeae75dc0c559e8ba70f83dd7241612cc31",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv",
+        "videoSize": 686932919
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv\n📹 hevc\n⭐ BluRay\n💾 655.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e63a35ab9d26c1b6efd92ed4dcb225cb7f9905d0",
+        "filename": "The.Office.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv",
+        "videoSize": 1621916433
+      },
+      "description": "📄 The.Office.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv\n⭐ WEB-DL\n👤 3 💾 1.5 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d5551785117ffe917e49e05a4442124234e18ea4",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv",
+        "videoSize": 1621916433
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv\n⭐ WEB-DL\n💾 1.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|094e7929c00400beabbdadf1e26ac67b02363ba5",
+        "filename": "The.Office.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv",
+        "videoSize": 1621916433
+      },
+      "description": "📄 The.Office.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv\n⭐ WEB-DL\n💾 1.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f5c7539869c5f3bbf6c3c5a6bbe5e9d7ef3cc6ec",
+        "filename": "The Office (US)  S03E05  Initiation_60FPS.mp4",
+        "videoSize": 1820306778
+      },
+      "description": "📄 The Office (US)  S03E05  Initiation_60FPS.mp4\n💾 1.7 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9635fcdc228640edd31440df09eb6ee449656916",
+        "filename": "The.Office.3x05.1080p.lat.mkv",
+        "videoSize": 471732233
+      },
+      "description": "📄 The.Office.3x05.1080p.lat.mkv\n💾 449.9 MB 🔎 DMM\n💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|64d92b15612921504fb3cb27d52ddc3433027d6b",
+        "filename": "The.Office.S03E05.Initiation.MULTi.1080p.WEB.DDP.5.1.AV1-BTT.mkv",
+        "videoSize": 809520450
+      },
+      "description": "📄 The.Office.S03E05.Initiation.MULTi.1080p.WEB.DDP.5.1.AV1-BTT.mkv\n📹 av1 | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB | 🏷️ BTT\n💾 772.0 MB 🔎 Comet|C411\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|616d532cb4a53b4d708a87b276dadf9f45ff7ad4",
+        "filename": "The.Office.U.S.S03E05.Initiation.MULTi.1080p.NF.WEB.DDP.AV1-BTT.mkv",
+        "videoSize": 809517016
+      },
+      "description": "📄 The.Office.U.S.S03E05.Initiation.MULTi.1080p.NF.WEB.DDP.AV1-BTT.mkv\n📹 av1 | 🔊 Dolby Digital Plus\n⭐ WEB | 🏷️ BTT\n👤 0 💾 772.0 MB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3c14f5ad85319aea09677592b7097eb1f32377ba",
+        "filename": "The.Office.U.S.S03E05.Initiation.MULTi.1080p.NF.WEB.DDP.AV1-BTT.mkv",
+        "videoSize": 809517016
+      },
+      "description": "📄 The.Office.U.S.S03E05.Initiation.MULTi.1080p.NF.WEB.DDP.AV1-BTT.mkv\n📹 av1 | 🔊 Dolby Digital Plus\n⭐ WEB | 🏷️ BTT\n💾 772.0 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|27b893cf3d2a467b1197a420ff9479dcac1827e6",
+        "filename": "The.Office.S03E05.Initiation.MULTi.1080p.WEB.DDP.5.1.AV1-BTT.mkv",
+        "videoSize": 809520450
+      },
+      "description": "📄 The.Office.S03E05.Initiation.MULTi.1080p.WEB.DDP.5.1.AV1-BTT.mkv\n📹 av1 | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB | 🏷️ BTT\n👤 0 💾 772.0 MB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d0d82c1f2c1bb8a1cf6e71478f386010c4f36939",
+        "filename": "The Office.S03E05.MULTI.1080p.WEB-DL.H265-FTMVHD.mkv",
+        "videoSize": 525059081
+      },
+      "description": "📄 The Office.S03E05.MULTI.1080p.WEB-DL.H265-FTMVHD.mkv\n📹 hevc\n⭐ WEB-DL | 🏷️ FTMVHD\n👤 0 💾 500.7 MB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a08ca964b3f73b451108f9ab264aee0dd2428ae",
+        "filename": "The Office.S03E05.MULTI.1080p.WEB-DL.H265-FTMVHD.mkv",
+        "videoSize": 525059081
+      },
+      "description": "📄 The Office.S03E05.MULTI.1080p.WEB-DL.H265-FTMVHD.mkv\n📹 hevc\n⭐ WEB-DL | 🏷️ FTMVHD\n👤 0 💾 500.7 MB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|746284ecb1127cf4fd905276cff272e0d84d0d41",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265) Multi Papaya.mkv",
+        "videoSize": 453649700
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265) Multi Papaya.mkv\n📹 hevc\n⭐ WEB-DL\n💾 432.6 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cd6dccbef46319631ea3cc1dd5967d127edf3f5f",
+        "filename": "The.Office.US.S03E05.MULTi.1080p.WEB.x264-FW.mkv",
+        "videoSize": 1081560455
+      },
+      "description": "📄 The.Office.US.S03E05.MULTi.1080p.WEB.x264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n👤 0 💾 1.0 GB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2e8b108efe680880354d42ab1a2fd73529b95ab7",
+        "filename": "The.Office.S03E05.MULTi.1080p.WEB.H265-CHiLL.mkv",
+        "videoSize": 360971278
+      },
+      "description": "📄 The.Office.S03E05.MULTi.1080p.WEB.H265-CHiLL.mkv\n📹 hevc\n⭐ WEB | 🏷️ CHiLL\n💾 344.2 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af4e1abbc0453931261c031f5ed496390002cb9e",
+        "filename": "The Office - S03 - 05 - L`imitazione di Cosby.ITA.ENG.1080p.WEBRip.x264-UBi.mkv",
+        "videoSize": 734607015
+      },
+      "description": "📄 The Office - S03 - 05 - L`imitazione di Cosby.ITA.ENG.1080p.WEBRip.x264-UBi.mkv\n📹 avc\n⭐ WEBRip | 🏷️ UBi\n💾 700.6 MB 🔎 Comet|DMM\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7217aca674d72ffd68e318b783162e234134a4c9",
+        "filename": "The.Office.US.3x05.L.Imitazione.Di.Cosby.ITA.ENG.1080p.WEBRip.x264-UBi.mkv",
+        "videoSize": 734607015
+      },
+      "description": "📄 The.Office.US.3x05.L.Imitazione.Di.Cosby.ITA.ENG.1080p.WEBRip.x264-UBi.mkv\n📹 avc\n⭐ WEBRip | 🏷️ UBi\n👤 1 💾 700.6 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|368b18a3df0755252b71a1287752e790c2f67b07",
+        "filename": "The.Office.S03E05.2006.WEB-DL.1080p-Dual-Lat.mkv",
+        "videoSize": 1598783838
+      },
+      "description": "📄 The.Office.S03E05.2006.WEB-DL.1080p-Dual-Lat.mkv\n⭐ WEB-DL | 🏷️ Lat\n💾 1.5 GB 🔎 Comet|DMM\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c0ebe82b611f508b22a2310d285148c920833dab",
+        "filename": "The Office - S03E05 (2006) BDRip 1080p [Ukr.Eng] [Цікава Ідея].mkv",
+        "videoSize": 2983053798
+      },
+      "description": "📄 The Office - S03E05 (2006) BDRip 1080p [Ukr.Eng] [Цікава Ідея].mkv\n⭐ BDRip\n💾 2.8 GB 🔎 DMM\n🌎/🇬🇧/🇺🇦/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|231f2213763b4b21e0b7c7ba5a98e979e9368753",
+        "filename": "The Office S03E05 [1080p.WEB-DL.H265.AC3-FT] [Napisy ENG-PL] [Lektor PL] [Alusia].mkv",
+        "videoSize": 656306298
+      },
+      "description": "📄 The Office S03E05 [1080p.WEB-DL.H265.AC3-FT] [Napisy ENG-PL] [Lektor PL] [Alusia].mkv\n📹 hevc | 🔊 Dolby Digital\n⭐ WEB-DL\n👤 0 💾 625.9 MB 🔎 DebridAccount|realdebrid\n🌎/🇬🇧/🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|908e86e7bc07632fc7bcf03cce4ef567bb4293b9",
+        "filename": "The.Office.US.S03E05 [1080p.NF.WEB-DL.x264-FT] [ENG-Lektor PL][Alusia].mkv",
+        "videoSize": 916253811
+      },
+      "description": "📄 The.Office.US.S03E05 [1080p.NF.WEB-DL.x264-FT] [ENG-Lektor PL][Alusia].mkv\n📹 avc\n⭐ WEB-DL\n💾 873.8 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|36980247dafc2f3e53afd5f838c50cad4050eaa1",
+        "filename": "The.Office.US.S03E05.1080p.BluRay.x265-RARBG.mp4",
+        "videoSize": 356418996
+      },
+      "description": "📄 The.Office.US.S03E05.1080p.BluRay.x265-RARBG.mp4\n📹 hevc\n⭐ BluRay | 🏷️ RARBG\n💾 339.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|503dcae34b345b77c164cfaf1dbdf62d9140d41e",
+        "filename": "The.Office.US.S03E05.EXTENDED.1080p.WEBRip.x265-RARBG.mp4",
+        "videoSize": 463310593
+      },
+      "description": "📄 The.Office.US.S03E05.EXTENDED.1080p.WEBRip.x265-RARBG.mp4\n📹 hevc\n⭐ WEBRip | 🏷️ RARBG\n💾 441.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|137da82576939629678342b8500264afd1ee2366",
+        "filename": "The.Office.US.S03E05.EXTENDED.1080p.WEBRip.x265-RARBG.mp4",
+        "videoSize": 463310593
+      },
+      "description": "📄 The.Office.US.S03E05.EXTENDED.1080p.WEBRip.x265-RARBG.mp4\n📹 hevc\n⭐ WEBRip | 🏷️ RARBG\n💾 441.8 MB 🔎 Comet|The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c59b06ca9161902874b68ea4361fe1a42f8df2f",
+        "filename": "The.Office.S03E05.720p.WEB-DL.DD5.1.H264.HUN.ENG-ForYou.mkv",
+        "videoSize": 638952115
+      },
+      "description": "📄 The.Office.S03E05.720p.WEB-DL.DD5.1.H264.HUN.ENG-ForYou.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ ForYou\n💾 609.4 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇭🇺",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|117e9c4af3a0dec7365db9ccd9dc40fda612b22f",
+        "filename": "The.Office.US.S03E05.Initiation.720p.BluRay.DDP5.1.x264-BTN.mkv",
+        "videoSize": 1040605291
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.720p.BluRay.DDP5.1.x264-BTN.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ BTN\n💾 992.4 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6a97d99ad4975042bdae48599fa75873f0cef6de",
+        "filename": "The.Office.(US).S03E05.Initiation.720p.WEB-DL.X265.mkv",
+        "videoSize": 173883512
+      },
+      "description": "📄 The.Office.(US).S03E05.Initiation.720p.WEB-DL.X265.mkv\n📹 hevc\n⭐ WEB-DL\n💾 165.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ef80de44cb7485d5aa96410aa10f71a02e3cb59f",
+        "filename": "The.Office.US.S03E05.720p.WEB.x264-MRSK.mkv",
+        "videoSize": 459716390
+      },
+      "description": "📄 The.Office.US.S03E05.720p.WEB.x264-MRSK.mkv\n📹 avc\n⭐ WEB | 🏷️ MRSK\n💾 438.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|81b920e848936df23361ece4c37cd1ebd722deea",
+        "filename": "The.Office.S03E05.720p.BluRay.nHD.x264-NhaNc3.mkv",
+        "videoSize": 471512189
+      },
+      "description": "📄 The.Office.S03E05.720p.BluRay.nHD.x264-NhaNc3.mkv\n📹 avc\n⭐ BluRay | 🏷️ NhaNc3\n💾 449.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98adc59f4c4e2cc4199823224060e173372d34b4",
+        "filename": "the_office_us_s03e05_VOST-FR-EN_x265_720p.mkv",
+        "videoSize": 157891519
+      },
+      "description": "📄 the_office_us_s03e05_VOST-FR-EN_x265_720p.mkv\n📹 hevc\n💾 150.6 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇫🇷",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2ee71d2d2edf82bcf013f0eab652e8e4f8dbf2fd",
+        "filename": "The Office S03E05 720p x265.m4v",
+        "videoSize": 197004439
+      },
+      "description": "📄 The Office S03E05 720p x265.m4v\n📹 hevc\n💾 187.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|724bee8158c61dcc9ed5bec0dcef08f88addabe5",
+        "filename": "The.Office.US.S03.E05.Initiation.720p.WEB-DL.mkv",
+        "videoSize": 801229825
+      },
+      "description": "📄 The.Office.US.S03.E05.Initiation.720p.WEB-DL.mkv\n⭐ WEB-DL\n👤 1 💾 764.1 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6fc44f400535124b7f1c26e14b8e809fcfc4112d",
+        "filename": "The Office (US) - S03E05 - Initiation 720p.mkv",
+        "videoSize": 217331348
+      },
+      "description": "📄 The Office (US) - S03E05 - Initiation 720p.mkv\n💾 207.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ed3ca51595e18064d815bf8b7d8d94c78d09abec",
+        "filename": "The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv",
+        "videoSize": 182798288
+      },
+      "description": "📄 The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ budgetbits\n💾 174.3 MB 🔎 Comet|TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eb0fe5a44b32b5f8b0a291e28951dcec642af62b",
+        "filename": "The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv",
+        "videoSize": 182798288
+      },
+      "description": "📄 The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ budgetbits\n👤 53 💾 174.3 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e565448d34c14bab5ab52da211c7f0842bba8979",
+        "filename": "The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv",
+        "videoSize": 182798288
+      },
+      "description": "📄 The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ budgetbits\n👤 16 💾 174.3 MB 🔎 Comet|TorrentGalaxy",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|df60839558774d1ba5b7c3c6e296777eec62c555",
+        "filename": "The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv",
+        "videoSize": 182798288
+      },
+      "description": "📄 The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ budgetbits\n💾 174.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a2e56e61b8bbd496f2e299e5e209218850d41911",
+        "filename": "The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv",
+        "videoSize": 182798288
+      },
+      "description": "📄 The.Office.Extended.Cut.S03E05.Initiation.720p.10bit.WEBRip.x265-budgetbits.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ budgetbits\n💾 174.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c4cac4eb4783fca9b2cd4068b793924d1bea55a9",
+        "filename": "The.Office.US.S03E05.Initiation.720p.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 150331005
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.720p.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ PSA\n💾 143.4 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42477dd0a1aa31cff2ec619362c8e9076a3ad858",
+        "filename": "The.Office.US.S03E05.Initiation.720p.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 150331005
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.720p.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ PSA\n💾 143.4 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3497c35b2737b6d71eeb89c50541ae855011f6d",
+        "filename": "The.Office.US.S03E05.720p.HDTV.X265.mkv",
+        "videoSize": 158118952
+      },
+      "description": "📄 The.Office.US.S03E05.720p.HDTV.X265.mkv\n📹 hevc\n⭐ HDTV\n💾 150.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99a397e0313eefd1c69c01c72340295322129414",
+        "filename": "The.Office.US.S03E05.720p.HDTV.X264-MRSK.mkv",
+        "videoSize": 459716390
+      },
+      "description": "📄 The.Office.US.S03E05.720p.HDTV.X264-MRSK.mkv\n📹 avc\n⭐ HDTV | 🏷️ MRSK\n💾 438.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6550a516282df060433bd9aa784329a4d0fc3340",
+        "filename": "The.Office.US.S03E05.720p.HDTV.X264-MRSK.mkv",
+        "videoSize": 459716390
+      },
+      "description": "📄 The.Office.US.S03E05.720p.HDTV.X264-MRSK.mkv\n📹 avc\n⭐ HDTV | 🏷️ MRSK\n💾 438.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|775b68b2d3f78e4ae411cf8a93ae2a6b3329b166",
+        "filename": "The.Office.S03E05.720p.BluRay.x264-[mkvtv.net].mkv",
+        "videoSize": 471512189
+      },
+      "description": "📄 The.Office.S03E05.720p.BluRay.x264-[mkvtv.net].mkv\n📹 avc\n⭐ BluRay\n💾 449.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0c9bac2af47b62cb6c66a571024c53bec765811d",
+        "filename": "The.Office.S03E05.720p.BluRay.x264.DUAL-WWW.BLUDV.TV.mkv",
+        "videoSize": 605099642
+      },
+      "description": "📄 The.Office.S03E05.720p.BluRay.x264.DUAL-WWW.BLUDV.TV.mkv\n📹 avc\n⭐ BluRay\n💾 577.1 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d2505a4be7f22cc095e9af3b21d208b0d87ef765",
+        "filename": "The.Office.S03E05.Initiation.WEB-DL.x264-[MULVAcoded].mkv",
+        "videoSize": 217331348
+      },
+      "description": "📄 The.Office.S03E05.Initiation.WEB-DL.x264-[MULVAcoded].mkv\n📹 avc\n⭐ WEB-DL\n💾 207.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|91e07cac8f70188c06e993cb6ebd3d5e6cd293c4",
+        "filename": "S03E05 Initiation (Extended Cut).mkv",
+        "videoSize": 1950085886
+      },
+      "description": "📄 S03E05 Initiation (Extended Cut).mkv\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6643f623b8ef54d91bcc9a64a4c930cb9f46ab73",
+        "filename": "S03E05 Initiation (Extended Cut).mkv",
+        "videoSize": 1950151786
+      },
+      "description": "📄 S03E05 Initiation (Extended Cut).mkv\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5bfe414a06a3d742e013f67b347e6a2e075970fa",
+        "filename": "The Office  Superfan Episodes S03e05 Initiation (Extended Cut).mp4",
+        "videoSize": 748699246
+      },
+      "description": "📄 The Office  Superfan Episodes S03e05 Initiation (Extended Cut).mp4\n👤 1 💾 714.0 MB 🔎 Comet|BT4G",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2ccca4b8fdaf48f19ed28531971bf91c9d1f2a5c",
+        "filename": "The Office  Superfan Episodes S03e05 Initiation (Extended Cut).mp4",
+        "videoSize": 748699246
+      },
+      "description": "📄 The Office  Superfan Episodes S03e05 Initiation (Extended Cut).mp4\n💾 714.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fe0b70e36f1dafa1a49a43ac11709facd2ecd5ff",
+        "filename": "The Office_S03E05_Initiation.mkv",
+        "videoSize": 1267590724
+      },
+      "description": "📄 The Office_S03E05_Initiation.mkv\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f8023158b28b78273e41bca605b0f916ff9a06ea",
+        "filename": "The Office_S03E05_Initiation.mkv",
+        "videoSize": 1869777950
+      },
+      "description": "📄 The Office_S03E05_Initiation.mkv\n👤 0 💾 1.7 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f03c13cf31f81e2ce9cbdcb020e6da934da60aa9",
+        "filename": "T03E05 - Iniciação.mkv",
+        "videoSize": 162395918
+      },
+      "description": "📄 T03E05 - Iniciação.mkv\n🏷️ Iniciação\n💾 154.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e66805bb996d70fb250efe44a9d790371553c2d4",
+        "filename": "The Office (US) - S03E05 - Initiation.mp4",
+        "videoSize": 315531607
+      },
+      "description": "📄 The Office (US) - S03E05 - Initiation.mp4\n🏷️ Initiation\n💾 300.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e27ebabf6d5ffdfa738832ba763a995a9fb95e51",
+        "filename": "S03e05.Initiation.mkv",
+        "videoSize": 449495462
+      },
+      "description": "📄 S03e05.Initiation.mkv\n💾 428.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|da3cb9bd402e88c318436cfe0096a733b32adfc1",
+        "filename": "The Office - 3x05 - Initiation.mkv",
+        "videoSize": 740104315
+      },
+      "description": "📄 The Office - 3x05 - Initiation.mkv\n🏷️ Initiation\n👤 1 💾 705.8 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b37a6b1c9ddb019158198a0cd27dd1ea29bcac8d",
+        "filename": "Kancl 03x05 Zasveceni The Office S03E05 Initiation.mp4",
+        "videoSize": 73241619
+      },
+      "description": "📄 Kancl 03x05 Zasveceni The Office S03E05 Initiation.mp4\n💾 69.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5dbdec720cb97532cc87b727b7ec4fa9029a3a02",
+        "filename": "Kancl_S03E05_Zasvěcení.mkv",
+        "videoSize": 1282797097
+      },
+      "description": "📄 Kancl_S03E05_Zasvěcení.mkv\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a9a8f32dfc646e979d29256805b2b5f1704d1a4",
+        "filename": "The.Office.Superfan.Episodes.S03E05.Initiation.mp4",
+        "videoSize": 918942936
+      },
+      "description": "📄 The.Office.Superfan.Episodes.S03E05.Initiation.mp4\n💾 876.4 MB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2d302dd91cefe563a7edd5c5bbf45ff75978027e",
+        "filename": "The Office S03E05 Initiation.mp4",
+        "videoSize": 73241619
+      },
+      "description": "📄 The Office S03E05 Initiation.mp4\n💾 69.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|286f285158bb4ac51412a4e36020f2bfae61c319",
+        "filename": "S03E05 Initiation.mp4",
+        "videoSize": 673147195
+      },
+      "description": "📄 S03E05 Initiation.mp4\n💾 642.0 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1fcbb73f474c496ff13a16bd28e9d4a274adbbbf",
+        "filename": "The Office_S03E05_Initiation.mkv",
+        "videoSize": 1267590724
+      },
+      "description": "📄 The Office_S03E05_Initiation.mkv\n👤 70 💾 1.2 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1603add4481c949bbcfb6b80b9ca39781e2a9882",
+        "filename": "The Office US.S03E05.Initiation (2006).mkv",
+        "videoSize": 929228145
+      },
+      "description": "📄 The Office US.S03E05.Initiation (2006).mkv\n👤 1 💾 886.2 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14b6611aa48c1008b83467f1af6e457c78a607fa",
+        "filename": "The Office_S03E05_Initiation.mkv",
+        "videoSize": 568763664
+      },
+      "description": "📄 The Office_S03E05_Initiation.mkv\n💾 542.4 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0fc91a8040aca35eacb5fd959da96ff993ce61b0",
+        "filename": "The Office US.S03E05.Initiation (2006).mkv",
+        "videoSize": 929228145
+      },
+      "description": "📄 The Office US.S03E05.Initiation (2006).mkv\n👤 0 💾 886.2 MB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02e7a9b403cbbce8451c595a6c55ad468c21aaca",
+        "filename": "The Office US S03E05.mkv",
+        "videoSize": 2549332973
+      },
+      "description": "📄 The Office US S03E05.mkv\n👤 0 💾 2.4 GB 🔎 DebridAccount|alldebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|19fe4a89f95ca3d056aebc23454d9ddc9a4f32fe",
+        "filename": "The.Office.US.S03E05.EXTENDED.WEBRip.x265-ION265.mp4",
+        "videoSize": 194273061
+      },
+      "description": "📄 The.Office.US.S03E05.EXTENDED.WEBRip.x265-ION265.mp4\n📹 hevc\n⭐ WEBRip | 🏷️ ION265\n💾 185.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|df571f671789f840b3b72fe63c5aa18b5988e26e",
+        "filename": "The.Office.US.03x05.L.imitazione.Di.Cosby.ITA.ENG.AMZN.WEBRIP.x264-mkeagle3.mkv",
+        "videoSize": 231295504
+      },
+      "description": "📄 The.Office.US.03x05.L.imitazione.Di.Cosby.ITA.ENG.AMZN.WEBRIP.x264-mkeagle3.mkv\n📹 avc\n⭐ WEBRip | 🏷️ mkeagle3\n👤 2 💾 220.6 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb0d27cb0ed12d82619bdf8dd8685466e4bc5747",
+        "filename": "The.Office.3x05.L.imitazione.di.Cosby.ITA.WEBRIP.x264-NST.mkv",
+        "videoSize": 223288126
+      },
+      "description": "📄 The.Office.3x05.L.imitazione.di.Cosby.ITA.WEBRIP.x264-NST.mkv\n📹 avc\n⭐ WEBRip | 🏷️ NST\n💾 212.9 MB 🔎 Comet|TheRARBG\n🇮🇹",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c4147f5e5e3043d4aa13f798291af090b825600d",
+        "filename": "The.Office.US.03x05.L.imitazione.Di.Cosby.ITA.ENG.AMZN.WEBRIP.x264-mkeagle3.mkv",
+        "videoSize": 231295504
+      },
+      "description": "📄 The.Office.US.03x05.L.imitazione.Di.Cosby.ITA.ENG.AMZN.WEBRIP.x264-mkeagle3.mkv\n📹 avc\n⭐ WEBRip | 🏷️ mkeagle3\n👤 23 💾 220.6 MB 🔎 CometNet|ElfHosted\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|446969ece09bdc4bd4dd6f79bdbab1211ddae589",
+        "filename": "The.Office.US.S03E05.Initiation.WEBRip.x264-FGT.mp4",
+        "videoSize": 190490917
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.WEBRip.x264-FGT.mp4\n📹 avc\n⭐ WEBRip | 🏷️ FGT\n💾 181.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8fa87b4f04a3892effce953c953ea67c1b9dc73e",
+        "filename": "The.Office.US.S03E05.BDRip.x265-ION265.mp4",
+        "videoSize": 149452308
+      },
+      "description": "📄 The.Office.US.S03E05.BDRip.x265-ION265.mp4\n📹 hevc\n⭐ BDRip | 🏷️ ION265\n👤 1 💾 142.5 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6b9bb9d4e90d113b939d9493d5e4654c92aa272b",
+        "filename": "The.Office.US.S03E05.BDRip.x265-ION265.mp4",
+        "videoSize": 149452308
+      },
+      "description": "📄 The.Office.US.S03E05.BDRip.x265-ION265.mp4\n📹 hevc\n⭐ BDRip | 🏷️ ION265\n💾 142.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02675a50ab323055f931e7fb6476ff37ce720962",
+        "filename": "The Office - S03E05 (2006) BDRip-AVC [Ukr.Eng] [Цікава Ідея].mkv",
+        "videoSize": 374822009
+      },
+      "description": "📄 The Office - S03E05 (2006) BDRip-AVC [Ukr.Eng] [Цікава Ідея].mkv\n📹 avc\n⭐ BDRip\n💾 357.5 MB 🔎 DMM\n🌎/🇬🇧/🇺🇦/🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3179b3f622afdf9f698e5e6d838a75bc329dab7",
+        "filename": "The.Office.US.S03E05.BRRip.x264-ION10.mp4",
+        "videoSize": 211588684
+      },
+      "description": "📄 The.Office.US.S03E05.BRRip.x264-ION10.mp4\n📹 avc\n⭐ BRRip | 🏷️ ION10\n💾 201.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fdb2d3b59aa5f6d91a6ea7542e7f75e2e79562eb",
+        "filename": "The Office [3.05] Initiation.avi",
+        "videoSize": 183560192
+      },
+      "description": "📄 The Office [3.05] Initiation.avi\n💾 175.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba612e042ef5e9d4587ea28adb49d47cb579068d",
+        "filename": "[3.05] Initiation.avi",
+        "videoSize": 183560192
+      },
+      "description": "📄 [3.05] Initiation.avi\n💾 175.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a9d4f3312707d7785f93c7bdde43e775dad0a15c",
+        "filename": "The.Office.s03e05.WEB-DLRip.avi",
+        "videoSize": 262125568
+      },
+      "description": "📄 The.Office.s03e05.WEB-DLRip.avi\n⭐ WEB-DLRip\n💾 250.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|38df58422ac448a64284257b7789cb09aa0097cf",
+        "filename": "The Office [3.05] Initiation.avi",
+        "videoSize": 183560192
+      },
+      "description": "📄 The Office [3.05] Initiation.avi\n💾 175.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1a8d6c644e629925e3a7ffee696de9eae00162af",
+        "filename": "The.Office.s03e05.WEB-DLRip.avi",
+        "videoSize": 262125568
+      },
+      "description": "📄 The.Office.s03e05.WEB-DLRip.avi\n⭐ WEB-DLRip\n💾 250.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7a7d218546ed9a341210cffb79686281dfaceb3b",
+        "filename": "The.Office.US.s03e05.WEB-DLRip.Rus.Eng.To4ka.TV.avi",
+        "videoSize": 262125568
+      },
+      "description": "📄 The.Office.US.s03e05.WEB-DLRip.Rus.Eng.To4ka.TV.avi\n⭐ WEB-DLRip\n💾 250.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af6c26778e60a8da34f7258d3692384ba1689b35",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-SiCFoI.mkv",
+        "videoSize": 4633013859
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-SiCFoI.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX | 🏷️ SiCFoI\n💾 4.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7df41dca2de31ffec1b7c87020c99f3082b2f44f",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.BluRay.Remux.DTS-HD.MA5.1.H.264-BTN.mkv",
+        "videoSize": 4880718040
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.BluRay.Remux.DTS-HD.MA5.1.H.264-BTN.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX | 🏷️ BTN\n💾 4.5 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7d92d77c53856afb820cabb7ff726ef325d0e4ac",
+        "filename": "The.Office.US.S03E05.Initiation.Extended.Cut.1080p.AMZN.WEB-DL.DDP5.1.H.264-Kitsune.mkv",
+        "videoSize": 2114771462
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.Extended.Cut.1080p.AMZN.WEB-DL.DDP5.1.H.264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 2.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e2f389c1352faf1cbb04271700c58787cdfdc00b",
+        "filename": "The Office (US) (2005) Season 1-9 S01-S09 (1080p BluRay x265 HEVC 10bit AAC 5 1 Silence) - Downloader.exe",
+        "videoSize": 801740
+      },
+      "description": "📄 The Office (US) (2005) Season 1-9 S01-S09 (1080p BluRay x265 HEVC 10bit AAC 5 1 Silence) - Downloader.exe\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ BluRay | 🏷️ Downloader\n💾 782.9 KB 🔎 Comet|Meteor",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dd0b1e91bf0671372715580f552d96cdf4b87c10",
+        "filename": "The.Office.US.S03E05.EXTENDED.1080p.PCOK.WEB-DL.OPUS.5.1.AV1-KIMJI.mkv",
+        "videoSize": 428125587
+      },
+      "description": "📄 The.Office.US.S03E05.EXTENDED.1080p.PCOK.WEB-DL.OPUS.5.1.AV1-KIMJI.mkv\n📹 av1 | 🔊 OPUS • 5.1\n⭐ WEB-DL | 🏷️ KIMJI\n💾 408.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8377ed13b2be8c1f88db186f812bc51a20051c47",
+        "filename": "The.Office.US.S03E05.Initiation.1080p.BluRay.DDP5.1.x264-BTN",
+        "videoSize": 3333330180
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.1080p.BluRay.DDP5.1.x264-BTN\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ BTN\n💾 3.1 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e879016558f3a7396a8098885d088d4258c44097",
+        "filename": "The.Office.S03E05.Initiation.AAC5.1.1080p.Bluray.x265-SiQ.mkv",
+        "videoSize": 505367547
+      },
+      "description": "📄 The.Office.S03E05.Initiation.AAC5.1.1080p.Bluray.x265-SiQ.mkv\n📹 hevc | 🔊 AAC • 5.1\n⭐ BluRay | 🏷️ SiQ\n💾 482.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|69a5a19b02de3cbf45e9be1602a18e17be8c5dcb",
+        "filename": "The Office (US) (2005) Season 1-9 S01-S09 + Extras (1080p Mixed x265 HEVC 10bit AAC 5.1 LION)",
+        "videoSize": 93384738454
+      },
+      "description": "📄 The Office (US) (2005) Season 1-9 S01-S09 + Extras (1080p Mixed x265 HEVC 10bit AAC 5.1 LION)\n📹 hevc • 10bit | 🔊 AAC • 5.1\n💾 87.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0c6646e71e52da3c3e79d1a6032e0bfabd97acf0",
+        "filename": "The Office (2005) Season 1-9 S01-S09 + Extras (1080p Mixed x265 HEVC 10bit AAC 5.1 LION)",
+        "videoSize": 93677425899
+      },
+      "description": "📄 The Office (2005) Season 1-9 S01-S09 + Extras (1080p Mixed x265 HEVC 10bit AAC 5.1 LION)\n📹 hevc • 10bit | 🔊 AAC • 5.1\n💾 87.2 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|93667788967b774af41d41da4da41225704ea0dd",
+        "filename": "The.Office.US.S03E05.1080P.BluRay.DD.5.1.X265-Ralphy.mkv",
+        "videoSize": 650030536
+      },
+      "description": "📄 The.Office.US.S03E05.1080P.BluRay.DD.5.1.X265-Ralphy.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ BluRay | 🏷️ Ralphy\n💾 619.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8baf6580337f671d5a115ae48032dd66ace52cfc",
+        "filename": "办公室The Office US S03E05 双语字幕 1080p BluRay x264-UnIon字幕组 v2 mp4 ┈➤ 办公室The Office US S03E05 双语字幕 1080p BluRay x264-UnIon字幕组 v2 mp4",
+        "videoSize": 1073741824
+      },
+      "description": "📄 办公室The Office US S03E05 双语字幕 1080p BluRay x264-UnIon字幕组 v2 mp4 ┈➤ 办公室The Office US S03E05 双语字幕 1080p BluRay x264-UnIon字幕组 v2 mp4\n📹 avc\n⭐ BluRay\n💾 1.0 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6d3cec11651852eb2eadff3a3e4eb75ae2984cc3",
+        "filename": "The.Office.US.S03E05.1080p.BluRay.x265-RBG.mp4",
+        "videoSize": 356418996
+      },
+      "description": "📄 The.Office.US.S03E05.1080p.BluRay.x265-RBG.mp4\n📹 hevc\n⭐ BluRay | 🏷️ RBG\n💾 339.9 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0d9723142d6dcdaf71681ceba295aac81ec12cfe",
+        "filename": "The.Office.U.S.S03E05.Initiation.MULTi.1080p.NF.WEB.DDP.AV1-BTT.mkv",
+        "videoSize": 809517016
+      },
+      "description": "📄 The.Office.U.S.S03E05.Initiation.MULTi.1080p.NF.WEB.DDP.AV1-BTT.mkv\n📹 av1 | 🔊 Dolby Digital Plus\n⭐ WEB | 🏷️ BTT\n👤 20 💾 772.0 MB 🔎 Comet|Ygg API\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f062a0226e22c62a4e1927346e8483440ca9b8c6",
+        "filename": "The.Office.US.S03E05.MULTi.1080p.WEB.x264-FW.mkv",
+        "videoSize": 1081560455
+      },
+      "description": "📄 The.Office.US.S03E05.MULTi.1080p.WEB.x264-FW.mkv\n📹 avc\n⭐ WEB | 🏷️ FW\n👤 326 💾 1.0 GB 🔎 CometNet|ElfHosted\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b1905fa52b3a2f413bc8dd554dc0c9d86b76d4f5",
+        "filename": "The Office US S03E05 Brezel-Tag GERMAN DUBBED DL 1080p BluRay x264-TSCC mkv",
+        "videoSize": 2591119128
+      },
+      "description": "📄 The.Office.US.S03E05.Brezel-Tag.GERMAN.DUBBED.DL.1080p.BluRay.x264-TSCC.mkv\n📹 avc\n⭐ BluRay | 🏷️ TSCC\n💾 2.4 GB 🔎 Comet|DMM\n🌎/🇩🇪",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|73129e577347e9e0bbf6e66110c50eb9d5f51f56",
+        "filename": "The Office US S03E05 Brezel-Tag Ger Eng DUBBED DL 1080p BluRay x264-TSCC mkv",
+        "videoSize": 2591119128
+      },
+      "description": "📄 The.Office.US.S03E05.Brezel-Tag.Ger.Eng.DUBBED.DL.1080p.BluRay.x264-TSCC.mkv\n📹 avc\n⭐ BluRay | 🏷️ TSCC\n💾 2.4 GB 🔎 Comet|DMM\n🌎/🇬🇧/🇩🇪",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b87c0ee8d3edcb25d84af7feada5c64cf078b5b5",
+        "filename": "The.Office.US.S03E05.WEBRip.1080p.AC3.H265-d3g.mkv",
+        "videoSize": 449605753
+      },
+      "description": "📄 The.Office.US.S03E05.WEBRip.1080p.AC3.H265-d3g.mkv\n📹 hevc | 🔊 Dolby Digital\n⭐ WEBRip | 🏷️ d3g\n💾 428.8 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|badc12336838a26c18271918dd84d38b1d5bbb0d",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation HDTV-1080p AC3 2.0 x265 [ES+EN] - EMUWAREZ.mkv",
+        "videoSize": 698819573
+      },
+      "description": "📄 The Office (US) (2005) - S03E05 - Initiation HDTV-1080p AC3 2.0 x265 [ES+EN] - EMUWAREZ.mkv\n📹 hevc | 🔊 Dolby Digital • 2.0\n⭐ HDTV | 🏷️ EMUWAREZ\n👤 16 💾 666.4 MB 🔎 CometNet|ElfHosted\n🌎/🇬🇧/🇪🇸",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9bfdb1a5256d4b2cf4c8fb296edaae936ee0eaad",
+        "filename": "www.UIndex.org    -    The.Office.US.S03E05.Initiation.1080p.HEVC.x265-MeGusta",
+        "videoSize": 1102503745
+      },
+      "description": "📄 www.UIndex.org    -    The.Office.US.S03E05.Initiation.1080p.HEVC.x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n💾 1.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|006b1585b984a55ed69ff72fa751715c6ec4136f",
+        "filename": "The.Office.S03E05.720p.AAC.x264.ReEnc-Livada.mkv",
+        "videoSize": 163616016
+      },
+      "description": "📄 The.Office.S03E05.720p.AAC.x264.ReEnc-Livada.mkv\n📹 avc | 🔊 AAC\n🏷️ Livada\n💾 156.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7531fd3c9aa484c0e2008af60f6cacce2f0cb232",
+        "filename": "the_office_us_s03e05_VOST-FR-EN_x265_720p.mkv",
+        "videoSize": 157891519
+      },
+      "description": "📄 the_office_us_s03e05_VOST-FR-EN_x265_720p.mkv\n📹 hevc\n👤 0 💾 150.6 MB 🔎 DebridAccount|realdebrid\n🌎/🇬🇧/🇫🇷",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02576ba7cf2d093e3f0f463a595b316d83c8f00f",
+        "filename": "The.Office S03E05 - Initiation [720p].mkv",
+        "videoSize": 740104315
+      },
+      "description": "📄 The.Office S03E05 - Initiation [720p].mkv\n💾 705.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d78dd4ef1e562c503e42eaaf874ed2337ebc72ff",
+        "filename": "The Office US S01-S09 Season 1-9 Complete 720p HDTV X264-MRSK [C..",
+        "videoSize": 3919157657
+      },
+      "description": "📄 The Office US S01-S09 Season 1-9 Complete 720p HDTV X264-MRSK [C..\n📹 avc\n⭐ HDTV\n👤 1 💾 3.6 GB 🔎 Comet|torrentquest",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|959d27468d58c88c90b00c71f24d4a3aedbc0e6a",
+        "filename": "The.Office.US.S01-S09.Season.1-9.Complete.720p.HDTV.x264-MRSK [CTTV]",
+        "videoSize": 94048850753
+      },
+      "description": "📄 The.Office.US.S01-S09.Season.1-9.Complete.720p.HDTV.x264-MRSK [CTTV]\n📹 avc\n⭐ HDTV\n💾 87.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0013d1bbfacaa4741e81c08dca85f8efd4c7320e",
+        "filename": "办公室.美版.The.Office.US.S03E05.中文字幕.BDrip.720p.mp4",
+        "videoSize": 275433313
+      },
+      "description": "📄 办公室.美版.The.Office.US.S03E05.中文字幕.BDrip.720p.mp4\n⭐ BDRip\n💾 262.7 MB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f8fe159e3bbe011a61b17febdb1bca232ef8426d",
+        "filename": "Офис  The Office Superfan Episodes  Сезон 1-7  Серии 1-147 из 147 [2020-2024 WEB-DL]",
+        "videoSize": 18455538097
+      },
+      "description": "📄 Офис  The Office Superfan Episodes  Сезон 1-7  Серии 1-147 из 147 [2020-2024 WEB-DL]\n⭐ WEB-DL\n👤 0 💾 17.2 GB 🔎 DebridAccount|torbox\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f2fb09f8e5e14311fe26288976ced45d100205af",
+        "filename": "The office s03 e05 mp4",
+        "videoSize": 118489088
+      },
+      "description": "📄 The office s03 e05 mp4\n💾 113.0 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d08169169cdae19ad3153cd96fe5e839cb6aee03",
+        "filename": "The Office US (2005) Season 1-9 S01-S09 [Etcohod]",
+        "videoSize": 90561252384
+      },
+      "description": "📄 The Office US (2005) Season 1-9 S01-S09 [Etcohod]\n💾 84.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cece86cf3e61ddeb309c48f03400fe6f4a33c431",
+        "filename": "The Office PL S03 E4-6",
+        "videoSize": 1122365787
+      },
+      "description": "📄 The Office PL S03 E4-6\n💾 1.0 GB 🔎 DMM\n🇵🇱",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b153b02cef55d098e10f60c912139d7e4ea57024",
+        "filename": "The.Office.Superfan.Episodes.S03E05.Initiation.mp4",
+        "videoSize": 918942936
+      },
+      "description": "📄 The.Office.Superfan.Episodes.S03E05.Initiation.mp4\n💾 876.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a89dac025b2816ec46d38ca34a5ebe0ca0a1ef38",
+        "filename": "The.Office.S03E05.Initiation.avi",
+        "videoSize": 183490314
+      },
+      "description": "📄 The.Office.S03E05.Initiation.avi\n💾 175.0 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9c2eeed8551796f03088604ff09dba9319082629",
+        "filename": "The.Office.US.S03E05.Initiation.ia.mp4",
+        "videoSize": 1125327419
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.mp4\n👤 1 💾 1.0 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|830263d053fc0efc7f125b7c38d482f804f46b8a",
+        "filename": "office_03_05.avi",
+        "videoSize": 203522048
+      },
+      "description": "📄 office_03_05.avi\n💾 194.1 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c9730c4a19e286a105d2888ac344a133dd714af",
+        "filename": "Офис / The Office / Сезон: 3 / Серии: 1-24 из 24 (Ken Kwapis)",
+        "videoSize": 203969003
+      },
+      "description": "📄 Офис / The Office / Сезон: 3 / Серии: 1-24 из 24 (Ken Kwapis)\n👤 1 💾 194.5 MB 🔎 Comet|rutracker\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|51fc54f672a85b4204cf261a49addded28ef4f84",
+        "filename": "The Office S03E05 Initiation avi",
+        "videoSize": 274936640
+      },
+      "description": "📄 The Office S03E05 Initiation avi\n👤 0 💾 262.2 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42a84abddf025fa05c48fc30fc62c1d419d82ec3",
+        "filename": "The Office S03e01-25",
+        "videoSize": 4930670272
+      },
+      "description": "📄 The Office S03e01-25\n💾 4.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2e22b2e1e48b88c85bab39eb17010a9f1aaaefee",
+        "filename": "The.Office.S03.Episodes.1-12",
+        "videoSize": 1614592226
+      },
+      "description": "📄 The.Office.S03.Episodes.1-12\n💾 1.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1a0b3c132a68b168bfc76ea7789a47be4aa844c1",
+        "filename": "The Office Season 3 ep. 1-14",
+        "videoSize": 121379510
+      },
+      "description": "📄 The Office Season 3 ep. 1-14\n💾 115.8 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|17d27f01b4de3b67d90c3f979ad749ce9ec6b99b",
+        "filename": "The Office Season 3 ep. 1-14",
+        "videoSize": 2816551262
+      },
+      "description": "📄 The Office Season 3 ep. 1-14\n💾 2.6 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|68383dfdb2309f9d6033db922bbba2505714c1d8",
+        "filename": "The Office US S03E05 HDTV",
+        "videoSize": 183500800
+      },
+      "description": "📄 The Office US S03E05 HDTV\n⭐ HDTV\n💾 175.0 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b3849d8901f8c15358aec933c455c90a4c7b0097",
+        "filename": "The.Office.US.s03e05.Gravi-TV.com.avi",
+        "videoSize": 203524096
+      },
+      "description": "📄 The.Office.US.s03e05.Gravi-TV.com.avi\n💾 194.1 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|85e7966c5fb101b2649892baa06f6441c0c7ff8e",
+        "filename": "The.Office.US.S03E05.Initiation.WEB-DLRip.avi",
+        "videoSize": 317667328
+      },
+      "description": "📄 The.Office.US.S03E05.Initiation.WEB-DLRip.avi\n⭐ WEB-DLRip\n💾 303.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a44f651d761c258db353cf48b4c5764c661f6b81",
+        "filename": "The Office US S03E05 PROPER HDTV XviD-LOL.avi",
+        "videoSize": 183486429
+      },
+      "description": "📄 The Office US S03E05 PROPER HDTV XviD-LOL.avi\n📹 xvid\n⭐ HDTV • PROPER | 🏷️ LOL\n💾 175.0 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f140ef6491f13889fc1b5ab56947dd7b2983bcb9",
+        "filename": "The.Office.US.S03E01-E12.SWESUB.DVDRip.XviD-aNdY",
+        "videoSize": 2261639168
+      },
+      "description": "📄 The.Office.US.S03E01-E12.SWESUB.DVDRip.XviD-aNdY\n📹 xvid\n⭐ DVDRip | 🏷️ aNdY\n💾 2.1 GB 🔎 DMM\n🇸🇪",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ce2a5cd4194c182f61ca1c381195cb88b823ef55",
+        "filename": "The Office US S03E05 HDTV XviD LOL avi",
+        "videoSize": 192413696
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD LOL avi\n📹 xvid\n⭐ HDTV\n👤 0 💾 183.5 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bdd9d5728fe398efb3bbd97ebde8db385095a157",
+        "filename": "The Office US S03E05 HDTV XviD LOL",
+        "videoSize": 192413696
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD LOL\n📹 xvid\n⭐ HDTV\n👤 0 💾 183.5 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ac1eebb1465c9d023b101cf6d1d3b4bd6a124dc2",
+        "filename": "The.Office.US.S03E05.HDTV.XviD-COFFEE.avi",
+        "videoSize": 181823078
+      },
+      "description": "📄 The.Office.US.S03E05.HDTV.XviD-COFFEE.avi\n📹 xvid\n⭐ HDTV | 🏷️ COFFEE\n💾 173.4 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9bb24c8d4d9caeb4a305072dc8731f7df0eb6691",
+        "filename": "The Office US S03E05 HDTV XviD LOL VTV avi",
+        "videoSize": 192413696
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD LOL VTV avi\n📹 xvid\n⭐ HDTV\n👤 0 💾 183.5 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9183dd70869caaf6740d4c5edf3b5b6f903abff2",
+        "filename": "The Office US S03E05 HDTV XviD LOL rar",
+        "videoSize": 191365120
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD LOL rar\n📹 xvid\n⭐ HDTV\n👤 0 💾 182.5 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8cb286e9df43131482a5aa53cf9bf1853837a097",
+        "filename": "The Office US S03E05 Initiation HDTV XviD avi",
+        "videoSize": 191994272
+      },
+      "description": "📄 The Office US S03E05 Initiation HDTV XviD avi\n📹 xvid\n⭐ HDTV\n👤 0 💾 183.1 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|875bb4acd9ea836d45cc68a5bec2830086f8fd19",
+        "filename": "The Office US S03E05 HDTV XviD XOR jude rar",
+        "videoSize": 356410976
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD XOR jude rar\n📹 xvid\n⭐ HDTV\n👤 0 💾 339.9 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7ef4966c566e29f0690bce130e49a69bc8e3c9d2",
+        "filename": "The Office US S03E05 HDTV XviD LOL avi",
+        "videoSize": 191889408
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD LOL avi\n📹 xvid\n⭐ HDTV\n👤 0 💾 183.0 MB 🔎 Comet|FileMood",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|49786da9b3544f6207daa9c6b08d54e46ebdd062",
+        "filename": "The Office US S03E05 HDTV XviD LOL(Initiation) avi",
+        "videoSize": 183081369
+      },
+      "description": "📄 The Office US S03E05 HDTV XviD LOL(Initiation) avi\n📹 xvid\n⭐ HDTV\n💾 174.6 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2d350886f58cefc0fc4c1029b8fe198c10a26179",
+        "filename": "The Office s03e05 hdtv xvid vostfr avi",
+        "videoSize": 479199232
+      },
+      "description": "📄 The Office s03e05 hdtv xvid vostfr avi\n📹 xvid\n⭐ HDTV\n💾 457.0 MB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

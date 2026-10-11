@@ -1,0 +1,324 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "one-piece-e1100",
+  "request": "https://torrentio.strem.fun/<config>/stream/series/kitsu%3A12%3A1100.json",
+  "recordedAt": "2026-10-11T12:05:55.236Z",
+  "status": 200,
+  "ms": 574,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "[ToonsHub] One Piece - E1100 Powers on a Different Level! Luffy vs. Lucci! 2160p B-Global WEB-DL x264 (Multi-Subs)\n👤 8 💾 1.43 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d1406f28c3c200d8cbc6818379e0f608ef8fe6c3/One Piece - E1100 Powers on a Different Level! Luffy vs. Lucci! 2160p B-Global WEB-DL x264 [Japanese] (AAC 2.0) MSubs_ToonsHub_.mkv/0/One Piece - E1100 Powers on a Different Level! Luffy vs. Lucci! 2160p B-Global WEB-DL x264 [Japanese] (AAC 2.0) MSubs_ToonsHub_.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "One Piece - E1100 Powers on a Different Level! Luffy vs. Lucci! 2160p B-Global WEB-DL x264 [Japanese] (AAC 2.0) MSubs_ToonsHub_.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[SubsPlease] One Piece - 1100 (1080p) [F9FD18AE].mkv\n👤 61 💾 1.35 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4ec2c47ad3062f7df9c3888669f70b1d2a9790bd/[SubsPlease] One Piece - 1100 (1080p) [F9FD18AE].mkv/0/[SubsPlease] One Piece - 1100 (1080p) [F9FD18AE].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|SubsPlease",
+        "filename": "[SubsPlease] One Piece - 1100 (1080p) [F9FD18AE].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece - 1100 - 1080p WEB x264 -NanDesuKa (CR).mkv\n👤 41 💾 1.35 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/59df406445a19c303bad777fcfe709bf7bc0191d/One Piece - 1100 - 1080p WEB x264 -NanDesuKa (CR).mkv/0/One Piece - 1100 - 1080p WEB x264 -NanDesuKa (CR).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|CR",
+        "filename": "One Piece - 1100 - 1080p WEB x264 -NanDesuKa (CR).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece S01E1097-E1108 1080p CR WEB-DL DDP2.0 H 264 DUAL-VARYG (Dual-Audio Multi-Subs)\nOne.Piece.S01E1100.Powers.on.a.Different.Level.Luffy.vs.Lucci.1080p.CR.WEB-DL.DDP2.0.H.264.DUAL-VARYG.mkv\n👤 40 💾 1.4 GB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d9dcfc77c3a19093e99d36d4c3d91166052fe839/<opaque>/One.Piece.S01E1100.Powers.on.a.Different.Level.Luffy.vs.Lucci.1080p.CR.WEB-DL.DDP2.0.H.264.DUAL-VARYG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d9dcfc77c3a19093e99d36d4c3d91166052fe839",
+        "filename": "One.Piece.S01E1100.Powers.on.a.Different.Level.Luffy.vs.Lucci.1080p.CR.WEB-DL.DDP2.0.H.264.DUAL-VARYG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Shaved Egghead + Kuma Cut] One Piece - S22E42-E70 (Egghead) [1080p WEB x264]\n[Kuma & Shaved] 15 - Shaved Egghead (1145-6).mkv\n👤 33 💾 642.57 MB ⚙️ nekoBT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ac1940dabd4657ea19046762349a5b361d439533/[Kuma & Shaved] 15 - Shaved Egghead (1145-6).mkv/14/[Kuma & Shaved] 15 - Shaved Egghead (1145-6).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ac1940dabd4657ea19046762349a5b361d439533",
+        "filename": "[Kuma & Shaved] 15 - Shaved Egghead (1145-6).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[knyf1e] One Piece S22 1080p CR WEBRip DUAL AAC2.0 AV1 (Wan pîsu Multi-Subs)\nOne Piece AKA Wan pîsu S22E015 1080p CR WEBRip DUAL AAC 2.0 AV1-knyf1e.mkv\n👤 26 💾 492.88 MB ⚙️ nekoBT\nDubbed / Multi Subs / Dual Audio / 🇬🇧 / 🇵🇹 / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e5d5a1a0868ac84019b7a7476358c93f656ee62e/<opaque>/One Piece AKA Wan pîsu S22E015 1080p CR WEBRip DUAL AAC 2.0 AV1-knyf1e.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e5d5a1a0868ac84019b7a7476358c93f656ee62e",
+        "filename": "One Piece AKA Wan pîsu S22E015 1080p CR WEBRip DUAL AAC 2.0 AV1-knyf1e.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] One Piece - 1089 ~ 1104 [1080p][HEVC][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] One Piece - 1100 [1080p][HEVC][99301D44].mkv\n👤 22 💾 712.39 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/417e6d3336e3e0259a2ee07f523f8d3f3d3f0e69/<opaque>/[Erai-raws] One Piece - 1100 [1080p][HEVC][99301D44].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|417e6d3336e3e0259a2ee07f523f8d3f3d3f0e69",
+        "filename": "[Erai-raws] One Piece - 1100 [1080p][HEVC][99301D44].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece [1080p]\nOne Piece - 1100.mkv\n👤 21 💾 456.1 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4252abce716828d2c57beb43e82d179cb3715001/One Piece - 1100.mkv/100/One Piece - 1100.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4252abce716828d2c57beb43e82d179cb3715001",
+        "filename": "One Piece - 1100.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece 1999 Seasons 16 to 21 ANIME 1080p WEB-DL x264 [i_c]\nSeason 21/[Erai-raws] One Piece - 1100 [1080p][034A3EAD].mkv\n👤 21 💾 609.33 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7cee20309ff9ff2abf09d552ea19a11d0a8c34ec/<opaque>/[Erai-raws] One Piece - 1100 [1080p][034A3EAD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7cee20309ff9ff2abf09d552ea19a11d0a8c34ec",
+        "filename": "[Erai-raws] One Piece - 1100 [1080p][034A3EAD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece Episode 1097 - 1108 [English Dub][1080p][onepiecedubb]\n1100 - Powers on a Different Level! Luffy vs. Lucci! [1F485C06].mkv\n👤 13 💾 905.62 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8c06ae77084596a4d1baa00f217c582684d489d3/1100 - Powers on a Different Level! Luffy vs. Lucci! [1F485C06].mkv/3/1100 - Powers on a Different Level! Luffy vs. Lucci! [1F485C06].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8c06ae77084596a4d1baa00f217c582684d489d3",
+        "filename": "1100 - Powers on a Different Level! Luffy vs. Lucci! [1F485C06].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece Episode 1097 - 1108 [English Dub][1080p][onepiecedubb]\n1100.5 - The Log of the Rivalry! The Straw Hats vs. Cipher Pol [8C00D3A3].mkv\n👤 13 💾 916.25 MB ⚙️ NyaaSi\nDubbed / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8c06ae77084596a4d1baa00f217c582684d489d3/1100.5 - The Log of the Rivalry! The Straw Hats vs. Cipher Pol [8C00D3A3].mkv/0/1100.5 - The Log of the Rivalry! The Straw Hats vs. Cipher Pol [8C00D3A3].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8c06ae77084596a4d1baa00f217c582684d489d3",
+        "filename": "1100.5 - The Log of the Rivalry! The Straw Hats vs. Cipher Pol [8C00D3A3].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] One Piece - 1100 [1080p] [ENG]\n👤 10 💾 1.36 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6064c3e8a288be16c6319857d370ab0d6e7f68f9/<opaque>/[Erai-raws] One Piece - 1100 [1080p][034A3EAD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] One Piece - 1100 [1080p][034A3EAD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece E0001-E1155 KOREAN 1080p 720p JBOX WEB-DL H264 -R1 (원피스)\nOne.Piece.S01E1100.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv\n👤 8 💾 874.16 MB ⚙️ nekoBT\n🇰🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/35bcac1ac58f5083f8760c952ff3db056f3472ce/<opaque>/One.Piece.S01E1100.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|35bcac1ac58f5083f8760c952ff3db056f3472ce",
+        "filename": "One.Piece.S01E1100.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece S22 1080p CR WEB-DL AAC2.0 AV1-knyf1e (Wan pîsu)\nOne Piece AKA Wan pîsu S22E15 1080p CR AAC 2.0 AV1-knyf1e.mkv\n👤 7 💾 435.99 MB ⚙️ nekoBT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/725183517d8afe410d647886fab1b275e2c34c85/<opaque>/One Piece AKA Wan pîsu S22E15 1080p CR AAC 2.0 AV1-knyf1e.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|725183517d8afe410d647886fab1b275e2c34c85",
+        "filename": "One Piece AKA Wan pîsu S22E15 1080p CR AAC 2.0 AV1-knyf1e.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "ONE PIECE S01E1089-E1122 1080p NF WEB-DL AAC2.0 H 264-VARYG (Multi-Subs)\nONE.PIECE.S01E1100.1080p.NF.WEB-DL.AAC2.0.H.264-VARYG.mkv\n👤 7 💾 856.88 MB ⚙️ NyaaSi\nMulti Subs",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/af52098525dd07ca45ba6962b9cef4df5559515f/<opaque>/ONE.PIECE.S01E1100.1080p.NF.WEB-DL.AAC2.0.H.264-VARYG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|af52098525dd07ca45ba6962b9cef4df5559515f",
+        "filename": "ONE.PIECE.S01E1100.1080p.NF.WEB-DL.AAC2.0.H.264-VARYG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "One Piece S01E1096-1110.CUSTOM.1080p.WEB-DL.x264-NoTag (VF/VOSTF…\nOne.Piece.S01E1100.CUSTOM.1080p.WEB-DL.x264-NoTag.mkv\n👤 6 💾 1.39 GB ⚙️ TorrentGalaxy\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6f970f7ea3f7ee57f96a651dd0710e035ac8ef5f/<opaque>/One.Piece.S01E1100.CUSTOM.1080p.WEB-DL.x264-NoTag.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6f970f7ea3f7ee57f96a651dd0710e035ac8ef5f",
+        "filename": "One.Piece.S01E1100.CUSTOM.1080p.WEB-DL.x264-NoTag.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] One Piece - 1089 ~ 1104 [1080p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] One Piece - 1100 [1080p][Multiple Subtitle][17460F25].mkv\n👤 6 💾 1.36 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bded997310d587a4f29d15bcd829617753d76fcb/<opaque>/[Erai-raws] One Piece - 1100 [1080p][Multiple Subtitle][17460F25].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bded997310d587a4f29d15bcd829617753d76fcb",
+        "filename": "[Erai-raws] One Piece - 1100 [1080p][Multiple Subtitle][17460F25].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[HatSubs] One Piece 1089-1100.5 (WEB 1080p)\n[HatSubs] One Piece 1100 (WEB 1080p) v2 [4146C124].mkv\n👤 3 💾 1.38 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec6d8abd2a9400c56d30db0c18fa33a54829a971/[HatSubs] One Piece 1100 (WEB 1080p) v2 [4146C124].mkv/12/[HatSubs] One Piece 1100 (WEB 1080p) v2 [4146C124].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ec6d8abd2a9400c56d30db0c18fa33a54829a971",
+        "filename": "[HatSubs] One Piece 1100 (WEB 1080p) v2 [4146C124].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[HatSubs] One Piece 1089-1100.5 (WEB 1080p)\n[HatSubs] One Piece 1100.5 (WEB 1080p) [05AC507D].mkv\n👤 3 💾 1.37 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ec6d8abd2a9400c56d30db0c18fa33a54829a971/[HatSubs] One Piece 1100.5 (WEB 1080p) [05AC507D].mkv/13/[HatSubs] One Piece 1100.5 (WEB 1080p) [05AC507D].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ec6d8abd2a9400c56d30db0c18fa33a54829a971",
+        "filename": "[HatSubs] One Piece 1100.5 (WEB 1080p) [05AC507D].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] One Piece - 1100 [1080p][HEVC][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA]\n👤 0 💾 712.36 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0066ed90c545a90325d356b36f8c0308181eb26f/<opaque>/[Erai-raws] One Piece - 1100 [1080p][HEVC][Multiple Subtitle][A6830568].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] One Piece - 1100 [1080p][HEVC][Multiple Subtitle][A6830568].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anime Time] One Piece - 1100 [1080p][HEVC 10bit x265][AAC][Eng Sub] [Weekly]\n👤 0 💾 595.62 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d325eb2efa9ac2e7210f1200da3b344f396bb77e/<opaque>/[Anime Time] One Piece - 1100 [1080p][HEVC 10bit x265][AAC][Eng Sub].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Anime Time",
+        "filename": "[Anime Time] One Piece - 1100 [1080p][HEVC 10bit x265][AAC][Eng Sub].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[Erai-raws] One Piece - 1089 ~ 1104 [720p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] One Piece - 1100 [720p][Multiple Subtitle][622EE056].mkv\n👤 6 💾 714.04 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd44ce3c6168b7a7772f5e7a3b5bbab754091b84/<opaque>/[Erai-raws] One Piece - 1100 [720p][Multiple Subtitle][622EE056].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bd44ce3c6168b7a7772f5e7a3b5bbab754091b84",
+        "filename": "[Erai-raws] One Piece - 1100 [720p][Multiple Subtitle][622EE056].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "One Piece - 1100 (720p)(95CA2C1B)-Erai-raws[TGx]\n👤 0 💾 713.8 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a04f708c0497565c869cadd52ad96b46c80bd6b3/<opaque>/[Erai-raws] One Piece - 1100 [720p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|Erai-raws",
+        "filename": "[Erai-raws] One Piece - 1100 [720p].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Ван-Пис / One Piece [1061-1121] (1999-2024) WEBRip-AVC | Persona99\nOne Piece - 1100 [Persona99.GSG][480p].rus.jpn.mkv\n👤 4 💾 389.59 MB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c36dcf258b0a7ce00bedccf38f37a020eadef8be/<opaque>/One Piece - 1100 [Persona99.GSG][480p].rus.jpn.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c36dcf258b0a7ce00bedccf38f37a020eadef8be",
+        "filename": "One Piece - 1100 [Persona99.GSG][480p].rus.jpn.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "One Piece (0001-1118) SD [480p]\nOne Piece - 1100.mkv\n👤 4 💾 367.69 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c97d7754ebb436c99fc6d2e765d4525618c00e6c/One Piece - 1100.mkv/1099/One Piece - 1100.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c97d7754ebb436c99fc6d2e765d4525618c00e6c",
+        "filename": "One Piece - 1100.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "[Erai-raws] One Piece - 1089 ~ 1104 [480p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] One Piece - 1100 [480p][Multiple Subtitle][4AEEDBDA].mkv\n👤 0 💾 373.6 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b3136238a34721ceac07ecd528ac3d86ba0e4b23/<opaque>/[Erai-raws] One Piece - 1100 [480p][Multiple Subtitle][4AEEDBDA].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b3136238a34721ceac07ecd528ac3d86ba0e4b23",
+        "filename": "[Erai-raws] One Piece - 1100 [480p][Multiple Subtitle][4AEEDBDA].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台配 - 海賊王 (One Piece) (Episode 1089-1100) (Mandarin Chinese Dub) (Matching Soft Subs) [國語][国语][中文配音][中配版] (航海王)\nOne Piece - 1100.mkv\n👤 0 💾 487.93 MB ⚙️ NyaaSi\nDubbed / 🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eb5cd90197ed3cbe39e3e852cc9a05115c253729/One Piece - 1100.mkv/11/One Piece - 1100.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|eb5cd90197ed3cbe39e3e852cc9a05115c253729",
+        "filename": "One Piece - 1100.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "One piece - 1100 [Kaerizaki] vostfr 1080p x265 AAC.mp4\n👤 100 💾 365.22 MB ⚙️ ThePirateBay\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4b7e14a0d966300b60d0651e3a27786613d0e1ae/<opaque>/One piece - 1100 [Kaerizaki] vostfr 1080p x265 AAC.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "One piece - 1100 [Kaerizaki] vostfr 1080p x265 AAC.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "One.Piece.E1100.VOSTFR.1080p.WEBRiP.x265-KAF\n👤 64 💾 334.53 MB ⚙️ EXT\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f2439d27f24f22d4af1349d7d836ba3c4b02df3f/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|KAF"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[Judas] One Piece - 1100 [1080p][HEVC x265 10bit][Multi-Subs] (Weekly)\n👤 20 💾 458.66 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/24486e12ae17abdd2d6dae9012bd7d32c3cbb7fe/<opaque>/[Judas] One Piece - 1100.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Judas",
+        "filename": "[Judas] One Piece - 1100.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[HatSubs] One Piece 1100 (WEB 1080p) [FD597573].mkv\n👤 7 💾 1.38 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3661307b1976936d7b6ea4a721a0d4f8f839fbf3/[HatSubs] One Piece 1100 (WEB 1080p) [FD597573].mkv/0/[HatSubs] One Piece 1100 (WEB 1080p) [FD597573].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HatSubs",
+        "filename": "[HatSubs] One Piece 1100 (WEB 1080p) [FD597573].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[Valenciano] One Piece - 1100 [1080p][AV1 10bit][AAC][Multi-Sub] (Weekly).mkv\n👤 2 💾 455.42 MB ⚙️ NyaaSi\nMulti Subs",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bb379fa35e360d24a6350a6876b6ae32d6eb5d11/[Valenciano] One Piece - 1100 [1080p][AV1 10bit][AAC][Multi-Sub] (Weekly).mkv/0/[Valenciano] One Piece - 1100 [1080p][AV1 10bit][AAC][Multi-Sub] (Weekly).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Valenciano",
+        "filename": "[Valenciano] One Piece - 1100 [1080p][AV1 10bit][AAC][Multi-Sub] (Weekly).mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[Erai-raws] One Piece - 1100 [720p] [ENG]\n👤 4 💾 713.8 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e3fe58e47841bac0597b2c3f14ba06d9ecc0cc5e/<opaque>/[Erai-raws] One Piece - 1100 [720p][95CA2C1B].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|Erai-raws",
+        "filename": "[Erai-raws] One Piece - 1100 [720p][95CA2C1B].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "One Piece\n👤 5 💾 288.71 MB ⚙️ EXT\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/012c63a9d5a89a8930575192feb451edc0e5b242/One Piece - 22x15 - Powers on a Different Level! Luffy Vs Lucci!.mkv/932/One Piece - 22x15 - Powers on a Different Level! Luffy Vs Lucci!.mkv",
+      "behaviorHints": {
+        "filename": "One Piece - 22x15 - Powers on a Different Level! Luffy Vs Lucci!.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "[RedDeadProject] One Piece - 1100 & 1101 - [JPBD] [HEVC] [x265]\n[RedDeadProject] One Piece - 1100.mkv\n👤 5 💾 2.49 GB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/02a9683c9134ef0d0bd45cc48f6dbca338e2ddd4/<opaque>/[RedDeadProject] One Piece - 1100.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|02a9683c9134ef0d0bd45cc48f6dbca338e2ddd4",
+        "filename": "[RedDeadProject] One Piece - 1100.mkv"
+      }
+    }
+  ]
+}

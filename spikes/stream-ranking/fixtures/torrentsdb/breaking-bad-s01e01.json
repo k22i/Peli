@@ -1,0 +1,837 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "breaking-bad-s01e01",
+  "request": "https://torrentsdb.com/stream/series/tt0903747%3A1%3A1.json",
+  "recordedAt": "2026-10-11T12:04:12.378Z",
+  "status": 200,
+  "ms": 466,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Breaking Bad S01E01 Pilot 2160p NF WEB-DL DDP5 1 H 265-XEBEC\n📅 S01E01 👤 1 💾 6.82 GB ⚙️ limetorrent",
+      "infoHash": "0d9b239b02f5fa8c4cdda71f3ccfde93ae918bd9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Breaking Bad S01E01 Pilot 2160p NF WEB-DL DDP5 1 H 265-XEBEC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:0d9b239b02f5fa8c4cdda71f3ccfde93ae918bd9"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1-5 S01-S05 (1080p BluRay x265 HEVC 1\nFeaturettes/Season 4/Podcasts Encoded/Podcast 01.mkv\n📅 S01E01 👤 249 💾 124.11 MB ⚙️ ThePirateBay",
+      "infoHash": "b43df67a93863ea91f2f773f00361072da771dd3",
+      "fileIdx": 176,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b43df67a93863ea91f2f773f00361072da771dd3",
+        "filename": "Podcast 01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1-5 S01-S05 (1080p BluRay x265 HEVC 1\nSeason 1/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv\n📅 S01E01 👤 249 💾 2.56 GB ⚙️ ThePirateBay",
+      "infoHash": "b43df67a93863ea91f2f773f00361072da771dd3",
+      "fileIdx": 245,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b43df67a93863ea91f2f773f00361072da771dd3",
+        "filename": "Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1-5 S01-S05 (1080p BluRay x265 HEVC 1\nFeaturettes/Season 5/Featurettes 5.1/Deleted Scenes/1.mkv\n📅 S01E01 👤 249 💾 11.94 MB ⚙️ ThePirateBay",
+      "infoHash": "b43df67a93863ea91f2f773f00361072da771dd3",
+      "fileIdx": 203,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b43df67a93863ea91f2f773f00361072da771dd3",
+        "filename": "1.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S01 1080p BluRay x265 RARBG [NikaNika]\nBreaking.Bad.S01E01.1080p.BluRay.x265-RARBG.mp4\n📅 S01E01 👤 121 💾 927.02 MB ⚙️ knaben",
+      "infoHash": "A43107EC1E5C2F5D6429C68CC030031CDDBCB0AD",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|A43107EC1E5C2F5D6429C68CC030031CDDBCB0AD",
+        "filename": "Breaking.Bad.S01E01.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1 5 S01 S05 (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]\nFeaturettes/Season 4/Podcasts Encoded/Podcast 01.mkv\n📅 S01E01 👤 51 💾 124.11 MB ⚙️ knaben",
+      "infoHash": "B43DF67A93863EA91F2F773F00361072DA771DD3",
+      "fileIdx": 176,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|B43DF67A93863EA91F2F773F00361072DA771DD3",
+        "filename": "Podcast 01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1 5 S01 S05 (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]\nFeaturettes/Season 5/Featurettes 5.1/Deleted Scenes/1.mkv\n📅 S01E01 👤 51 💾 11.94 MB ⚙️ knaben",
+      "infoHash": "B43DF67A93863EA91F2F773F00361072DA771DD3",
+      "fileIdx": 203,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|B43DF67A93863EA91F2F773F00361072DA771DD3",
+        "filename": "1.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1 5 S01 S05 (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]\nSeason 1/Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv\n📅 S01E01 👤 51 💾 2.56 GB ⚙️ knaben",
+      "infoHash": "B43DF67A93863EA91F2F773F00361072DA771DD3",
+      "fileIdx": 245,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|B43DF67A93863EA91F2F773F00361072DA771DD3",
+        "filename": "Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking.Bad.S01-S05.(2008).1080p.WEBRIP.HEVC.OPUS2.0\nBreaking.Bad.S01E01.(2008).1080p.WEBRIP.HEVC.OPUS2.0.mkv\n📅 S01E01 👤 39 💾 510.70 MB ⚙️ 1337x",
+      "infoHash": "a5c1aefb62c9bd67ff49412544915533155a0b99",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a5c1aefb62c9bd67ff49412544915533155a0b99",
+        "filename": "Breaking.Bad.S01E01.(2008).1080p.WEBRIP.HEVC.OPUS2.0.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking.Bad.SEASON.01.S01.COMPLETE.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\nBreaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv\n📅 S01E01 👤 34 💾 928.25 MB ⚙️ knaben",
+      "infoHash": "6BBAD06245A0D631B0A5E47C8CD6E5ABC9A70211",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|6BBAD06245A0D631B0A5E47C8CD6E5ABC9A70211",
+        "filename": "Breaking.Bad.S01E01.Pilot.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad - Complete Season 1 2 3 4 5 Extras - BluRay 1080p\nBreaking Bad - S01E01 Deleted Scene - Walt Jr  Helps His Dad.mkv\n📅 S01E01 👤 27 💾 61.90 MB ⚙️ 1337x",
+      "infoHash": "e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+      "fileIdx": 69,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+        "filename": "Breaking Bad - S01E01 Deleted Scene - Walt Jr  Helps His Dad.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad - Complete Season 1 2 3 4 5 Extras - BluRay 1080p\nBreaking Bad - S01E01 - Pilot.mkv\n📅 S01E01 👤 27 💾 3.60 GB ⚙️ 1337x",
+      "infoHash": "e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+        "filename": "Breaking Bad - S01E01 - Pilot.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad - Complete Season 1 2 3 4 5 Extras - BluRay 1080p\nBreaking Bad - S01E01 Deleted Scene - Walt Shows Jesse The Goods.mkv\n📅 S01E01 👤 27 💾 139.40 MB ⚙️ 1337x",
+      "infoHash": "e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+      "fileIdx": 70,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+        "filename": "Breaking Bad - S01E01 Deleted Scene - Walt Shows Jesse The Goods.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad - Complete Season 1 2 3 4 5 Extras - BluRay 1080p\nBreaking Bad - S01E01 Deleted Scene - Walt's Birthday Speech.mkv\n📅 S01E01 👤 27 💾 85.40 MB ⚙️ 1337x",
+      "infoHash": "e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+      "fileIdx": 71,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+        "filename": "Breaking Bad - S01E01 Deleted Scene - Walt's Birthday Speech.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad - Complete Season 1 2 3 4 5 Extras - BluRay 1080p\nBreaking Bad - S02 Extra - Original Minisodes-1.mkv\n📅 S01E01 👤 27 💾 206.60 MB ⚙️ 1337x",
+      "infoHash": "e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+      "fileIdx": 91,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e43dbd8f4990b67f44f647da94d8779e30ff4b3d",
+        "filename": "Breaking Bad - S02 Extra - Original Minisodes-1.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S05 1080p BluRay AV1 Opus [AV1D]\nBreaking Bad S05 01.mkv\n📅 S01E01 👤 27 💾 281.90 MB ⚙️ knaben",
+      "infoHash": "95C25AC9D40E6E318EB1D85D9E3A77663121213B",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|95C25AC9D40E6E318EB1D85D9E3A77663121213B",
+        "filename": "Breaking Bad S05 01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S01 1080p BluRay AV1 Opus [AV1D]\nBreaking Bad S01 01.mkv\n📅 S01E01 👤 24 💾 526.98 MB ⚙️ knaben",
+      "infoHash": "33EB14B23EB5C485872DAA8270A585990FB6BDBE",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|33EB14B23EB5C485872DAA8270A585990FB6BDBE",
+        "filename": "Breaking Bad S01 01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S03 1080p BluRay AV1 Opus [AV1D]\nBreaking Bad S03 01.mkv\n📅 S01E01 👤 23 💾 385.14 MB ⚙️ knaben",
+      "infoHash": "22019E51E2ABC99FFC727E5E3241E6F4D04803AC",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|22019E51E2ABC99FFC727E5E3241E6F4D04803AC",
+        "filename": "Breaking Bad S03 01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1 S01 + Extras (1080p BluRay x265 HEV\nBreaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv\n📅 S01E01 👤 23 💾 2.19 GB ⚙️ ThePirateBay",
+      "infoHash": "70b10f03d08903a7635c5718837c7ef86bf9f5af",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|70b10f03d08903a7635c5718837c7ef86bf9f5af",
+        "filename": "Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) Season 1 S01 + Extras (1080p BluRay x265 HEV ...\nBreaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv\n📅 S01E01 👤 21 💾 2.19 GB ⚙️ knaben",
+      "infoHash": "70B10F03D08903A7635C5718837C7EF86BF9F5AF",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|70B10F03D08903A7635C5718837C7EF86BF9F5AF",
+        "filename": "Breaking Bad (2008) - S01E01 - Pilot (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S01e01-07 [1080p Ita Eng Spa h265 10bit SubS][MirCrewRelease] REPACK byMe7alh\nBreaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv\n📅 S01E01 👤 19 💾 1.14 GB ⚙️ ilcorsaronero",
+      "infoHash": "3a51229dfc22e6e63430c426c710b16e8b2a0086",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|3a51229dfc22e6e63430c426c710b16e8b2a0086",
+        "filename": "Breaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking.Bad.S01-S05.COMPLETE.SERIES.1080p.Bluray.x265-HiQVE\nBreaking.Bad.S01.1080p.Bluray.x265-HiQVE/Breaking.Bad.S01E01.1080p.Bluray.x265-HiQVE.mkv\n📅 S01E01 👤 9 💾 1.69 GB ⚙️ ThePirateBay",
+      "infoHash": "1898f3b63e2ab489391bcc50e3c453ec8420b389",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1898f3b63e2ab489391bcc50e3c453ec8420b389",
+        "filename": "Breaking.Bad.S01E01.1080p.Bluray.x265-HiQVE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S01e01-07 [1080p Ita Eng Spa h265 10bit SubS][MirCrewRelease] byMe7alh\nBreaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv\n📅 S01E01 👤 7 💾 1.14 GB ⚙️ ilcorsaronero",
+      "infoHash": "986d231e5869f45d8ba0a4eb06c022f261396842",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|986d231e5869f45d8ba0a4eb06c022f261396842",
+        "filename": "Breaking.Bed.S01e01.Ita.Eng.Spa.1080p.h265.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad Complete 1080p Full HD BD-Remux by Wild_Cat\nBreaking Bad (2008) Season 01. Episode 01. Full HD BD-Remux by Wild_Cat.mkv\n📅 S01E01 👤 4 💾 19.50 GB ⚙️ 1337x",
+      "infoHash": "6cb44e28b6bf9868e1deacb5a0f431c10c967c52",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|6cb44e28b6bf9868e1deacb5a0f431c10c967c52",
+        "filename": "Breaking Bad (2008) Season 01. Episode 01. Full HD BD-Remux by Wild_Cat.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad S01 - S05 COMPLETE 1080p BluRay REMUX AVC DTS-HD MA 5.1 - FraMeSToR\nBreaking.Bad.S01E01.Pilot.REMUX-FraMeSToR.mkv\n📅 S01E01 👤 3 💾 11.40 GB ⚙️ 1337x",
+      "infoHash": "33ba49b7973275ae2386ea888ce373d23cdbba98",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|33ba49b7973275ae2386ea888ce373d23cdbba98",
+        "filename": "Breaking.Bad.S01E01.Pilot.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Breaking Bad (2008) S01-S05 1080p BluRay REMUX Dual Audio [Hindi Eng] ~ RemuxDoc\nBreaking Bad (2008) 1080p Blu-ray Dual Audio [Hindi + English] ESub ~ RemuxDoc/Season 1/Breaking Bad - S01E01 - Pilot 1080p SDR [hin, eng].mkv\n📅 S01E01 👤 1 💾 2.25 GB ⚙️ limetorrent",
+      "infoHash": "c6d960000329117d615b3bcf1f8f93e521d891ab",
+      "fileIdx": 27,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|c6d960000329117d615b3bcf1f8f93e521d891ab",
+        "filename": "Breaking Bad - S01E01 - Pilot 1080p SDR [hin, eng].mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:c6d960000329117d615b3bcf1f8f93e521d891ab"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "绝命毒师 第一季\n📅 S01E01 👤 1 💾 3.26 GB ⚙️ 1lou",
+      "infoHash": "03f3364093ca68c160e6ac960d9ed67ba9ff05f5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Breaking.Bad.S01E01.2008.NF.WEB-DL.1080p.x264.DDP-Xiaomi.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:http://1337.abcvg.info:80/announce",
+        "tracker:http://fxtt.ru:80/announce",
+        "tracker:http://hzzwly.gq:6969/announce",
+        "tracker:http://i-p-v-6.tk:6969/announce",
+        "tracker:http://ipv6.1337.cx:6969/announce",
+        "tracker:http://ipv6.govt.hu:6969/announce",
+        "tracker:http://jp.moeweb.pw:6969/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:http://open-v6.demonoid.ch:6969/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:http://open.tracker.ink:6969/announce",
+        "tracker:http://share.camoe.cn:8080/announce",
+        "tracker:http://t.acg.rip:6699/announce",
+        "tracker:http://t.nyaatracker.com:80/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://torrentsmd.com:8080/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:http://tracker.electro-torrent.pl:80/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:http://tracker.ipv6tracker.ru:80/announce",
+        "tracker:http://tracker.k.vu:6969/announce",
+        "tracker:http://trackme.theom.nz:80/announce",
+        "tracker:http://vps-dd0a0715.vps.ovh.net:6969/announce",
+        "tracker:http://vps02.net.orel.ru:80/announce",
+        "tracker:http://www.all4nothin.net:80/announce.php",
+        "tracker:http://www.wareztorrent.com:80/announce",
+        "tracker:https://1337.abcvg.info:443/announce",
+        "tracker:https://opentracker.i2p.rocks:443/announce",
+        "tracker:https://tr.abiir.top:443/announce",
+        "tracker:https://tr.abir.ga:443/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:https://tr.fuckbitcoin.xyz:443/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:https://tracker.kuroy.me:443/announce",
+        "tracker:https://tracker.lilithraws.cf:443/announce",
+        "tracker:https://tracker.lilithraws.org:443/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:https://tracker.m-team.cc:443/announce.php",
+        "tracker:https://tracker.nanoha.org:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://trackme.theom.nz:443/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://9.rarbg.com:2810/announce",
+        "tracker:udp://94-227-232-84.access.telenet.be:6969/announce",
+        "tracker:udp://960303.xyz:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://app.icon256.com:8000/announce",
+        "tracker:udp://bananas.space:6969/announce",
+        "tracker:udp://ben.kerbertools.xyz:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://buddyfly.top:6969/announce",
+        "tracker:udp://cancela-tu.creditofiscal.mx:3074/announce",
+        "tracker:udp://cutscloud.duckdns.org:6969/announce",
+        "tracker:udp://elementsbrowser.com:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://f1sh.de:6969/announce",
+        "tracker:udp://fe.dealclub.de:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://h85-235-17-132.cust.a3fiber.se:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://laze.cc:6969/announce",
+        "tracker:udp://leefafa.tk:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://mail.zasaonsk.ga:6969/announce",
+        "tracker:udp://mirror.aptus.co.tz:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://open.publictracker.xyz:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.tracker.ink:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://rep-art.ynh.fr:6969/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://static.202.35.76.144.clients.your-server.de:6969/announce",
+        "tracker:udp://static.54.161.216.95.clients.your-server.de:6969/announce",
+        "tracker:udp://thetracker.org:80/announce",
+        "tracker:udp://torrentclub.space:6969/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://tracker.0x.tf:6969/announce",
+        "tracker:udp://tracker.altrosky.nl:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://tracker.beeimg.com:6969/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://tracker.jonaslsa.com:6969/announce",
+        "tracker:udp://tracker.joybomb.tw:6969/announce",
+        "tracker:udp://tracker.leech.ie:1337/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://tracker.pomf.se:80/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.tcp.exchange:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.yangxiaoguozi.cn:6969/announce",
+        "tracker:udp://tracker2.dler.com:80/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://v1046920.hosted-by-vdsina.ru:6969/announce",
+        "tracker:udp://vibe.sleepyinternetfun.xyz:1738/announce",
+        "tracker:udp://www.torrent.eu.org:451/announce",
+        "tracker:udp://yahor.ftp.sh:6969/announce",
+        "tracker:udp://zecircle.xyz:6969/announce",
+        "tracker:ws://hub.bugout.link:80/announce",
+        "dht:03f3364093ca68c160e6ac960d9ed67ba9ff05f5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Breaking Bad S01 720p.BRrip.Sujaidr (pimprg)\nBreaking Bad s01e01 720p.BRrip.Sujaidr.mkv\n📅 S01E01 👤 293 💾 464.62 MB ⚙️ knaben",
+      "infoHash": "72A391645B5EA76DD6F5ADE169FFDA943AA81649",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|72A391645B5EA76DD6F5ADE169FFDA943AA81649",
+        "filename": "Breaking Bad s01e01 720p.BRrip.Sujaidr.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Breaking Bad S01-S05 Complete 720p BlaRay x265-BMF\nS01/Breaking.Bad-S01E01-Pilot.Bluray-720p.x265-BMF.mkv\n📅 S01E01 👤 84 💾 396.08 MB ⚙️ ThePirateBay",
+      "infoHash": "9a37f6bd1c81e437ef3ef562ccc86c59064c325d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|9a37f6bd1c81e437ef3ef562ccc86c59064c325d",
+        "filename": "Breaking.Bad-S01E01-Pilot.Bluray-720p.x265-BMF.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Breaking.Bad.SEASON.01.S01.COMPLETE.720p.10bit.BluRay.2CH.x265\nBreaking.Bad.S01E01.Pilot.720p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv\n📅 S01E01 👤 20 💾 373.63 MB ⚙️ knaben",
+      "infoHash": "7008D4A01C56D6CAC20BB98BEF9A3144A22FB56E",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|7008D4A01C56D6CAC20BB98BEF9A3144A22FB56E",
+        "filename": "Breaking.Bad.S01E01.Pilot.720p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Во все тяжкие / Breaking Bad [S01-05]\nВо Все Тяжкие/S01.HD.720p/Breaking.Bad.S01E01.m4v\n📅 S01E01 👤 5 💾 1.23 GB ⚙️ rutor",
+      "infoHash": "a072dac63f51fb7ed439ee207aa51d25e1e92f77",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a072dac63f51fb7ed439ee207aa51d25e1e92f77",
+        "filename": "Breaking.Bad.S01E01.m4v"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:a072dac63f51fb7ed439ee207aa51d25e1e92f77"
+      ]
+    },
+    {
+      "name": "TorrentsDB\ndvdrip",
+      "title": "Breaking Bad\nBreaking.Bad.S01E01.FRENCH.DVDRip.XviD-JMT.avi\n📅 S01E01 👤 159 💾 548.16 MB ⚙️ Torrent9",
+      "infoHash": "0a03aba4f6395f865b40e5c83b27ae4f630897c1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|0a03aba4f6395f865b40e5c83b27ae4f630897c1",
+        "filename": "Breaking.Bad.S01E01.FRENCH.DVDRip.XviD-JMT.avi"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:http://tracker3.itzmx.com:8080/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://exodus.desync.com:6969/announce/",
+        "tracker:udp://open.demonii.si:1337/announce/",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce/",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce/",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce/",
+        "tracker:udp://9.rarbg.me:2710/announce/",
+        "tracker:udp://9.rarbg.to:2740/announce/",
+        "tracker:udp://9.rarbg.com:2770/announce/",
+        "tracker:http://servandroidkino.ru/announce/",
+        "tracker:http://1337.abcvg.info/announce/",
+        "tracker:http://tracker.bittor.pw:1337/announce/",
+        "tracker:http://open.acgnxtracker.com/announce/",
+        "tracker:http://share.camoe.cn:8080/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://tracker.cyberia.is:6969/announce/",
+        "tracker:udp://151.80.120.114:2710/announce/",
+        "tracker:http://tracker2.itzmx.com:6961/announce/",
+        "tracker:udp://tracker.yoshi210.com:6969/announce/",
+        "tracker:http://tracker.yoshi210.com:6969/announce/",
+        "tracker:http://torrentsmd.com:8080/announce/",
+        "tracker:udp://zephir.monocul.us:6969/announce/",
+        "tracker:udp://denis.stalker.upeer.me:6969/announce/",
+        "tracker:http://tracker.bt4g.com:2095/announce/",
+        "tracker:http://tracker.torrentyorg.pl/announce/",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce/",
+        "tracker:udp://opentor.org:2710/announce/",
+        "dht:0a03aba4f6395f865b40e5c83b27ae4f630897c1"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05]\nBreaking Bad (КвК)/Season 01/Breaking.Bad.s01e01.XviD.BDrip.DD5.1.kvk.[qqss44].avi\n📅 S01E01 👤 63 💾 938.05 MB ⚙️ rutor",
+      "infoHash": "8f165de6ed7f350238e6cabae024605546eb1c32",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|8f165de6ed7f350238e6cabae024605546eb1c32",
+        "filename": "Breaking.Bad.s01e01.XviD.BDrip.DD5.1.kvk.[qqss44].avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://tracker.publicbt.com:80",
+        "tracker:udp://tracker.istole.it:80",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:8f165de6ed7f350238e6cabae024605546eb1c32"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05]\nBreaking Bad (Во все тяжкие) (2008-2013) BDRip AVC/Season 1/Breaking Bad S01E01 BDRip.mkv\n📅 S01E01 👤 21 💾 1.69 GB ⚙️ rutor",
+      "infoHash": "70fe593e23045719fabe7582004c452790cb5501",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|70fe593e23045719fabe7582004c452790cb5501",
+        "filename": "Breaking Bad S01E01 BDRip.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:70fe593e23045719fabe7582004c452790cb5501"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Во все тяжкие / Breaking Bad [S01-05]\nBreaking Bad/Season 01/Breaking.Bad.s01e01.XviD.BDrip.DD5.1.LostFilm.[qqss44].avi\n📅 S01E01 👤 17 💾 938.05 MB ⚙️ rutor",
+      "infoHash": "05eda18c517fa200d72e69476169b04354b1db4e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|05eda18c517fa200d72e69476169b04354b1db4e",
+        "filename": "Breaking.Bad.s01e01.XviD.BDrip.DD5.1.LostFilm.[qqss44].avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:05eda18c517fa200d72e69476169b04354b1db4e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Во все тяжкие / Breaking Bad [S01-05]\nВо все тяжкие/1x01 - Пилотная серия.mp4\n📅 S01E01 👤 4 💾 1.27 GB ⚙️ rutor",
+      "infoHash": "7b18975874e28dfc050fd70c04d26aa72d917dc3",
+      "fileIdx": 21,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|7b18975874e28dfc050fd70c04d26aa72d917dc3",
+        "filename": "1x01 - Пилотная серия.mp4"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://tr3.torrent4me.com/ann?uk=vhx9mg8f6G",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:7b18975874e28dfc050fd70c04d26aa72d917dc3"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Breaking Bad Season 1 2 3 Complete - x264 - MKV by RiddlerA\nBreaking Bad - [1x01] - Pilot.mkv\n📅 S01E01 👤 3 💾 154.20 MB ⚙️ 1337x",
+      "infoHash": "78cbf192fbcaefdba6637eb9b0650e324088b708",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|78cbf192fbcaefdba6637eb9b0650e324088b708",
+        "filename": "Breaking Bad - [1x01] - Pilot.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Во все тяжкие / Breaking Bad [S01-05]\nВо все тяжкие/Season 1/s01e01.avi\n📅 S01E01 👤 2 💾 816.69 MB ⚙️ rutor",
+      "infoHash": "ae190d99f38e5a50aad6a1b20ee5af6d165feebe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|ae190d99f38e5a50aad6a1b20ee5af6d165feebe",
+        "filename": "s01e01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?pk=8ff7d0504655438fa4d7154cb05ff48f",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:ae190d99f38e5a50aad6a1b20ee5af6d165feebe"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Во все тяжкие / Breaking Bad [S01]\nBreaking Bad S01 BDRip Kubik v Kube/Breaking.Bad.s01e01.k3.avi\n📅 S01E01 👤 1 💾 945.14 MB ⚙️ rutor",
+      "infoHash": "be928beff2c6acee013fe9371faef1c3697ff191",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|be928beff2c6acee013fe9371faef1c3697ff191",
+        "filename": "Breaking.Bad.s01e01.k3.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:be928beff2c6acee013fe9371faef1c3697ff191"
+      ]
+    }
+  ]
+}

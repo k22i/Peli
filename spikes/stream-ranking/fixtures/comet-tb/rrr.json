@@ -1,0 +1,3071 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "rrr",
+  "request": "https://comet.elfhosted.com/<config>/stream/movie/tt8178634.json",
+  "recordedAt": "2026-10-11T12:06:18.069Z",
+  "status": 200,
+  "ms": 640,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|632318b0b2bdbab16a6da71373ff215f4a5248be",
+        "filename": "RRR.2022 2160p.UHD.BluRay.REMUX.DV.HDR.HEVC. 9Rus.mkv",
+        "videoSize": 100064570947
+      },
+      "description": "📄 RRR.2022 2160p.UHD.BluRay.REMUX.DV.HDR.HEVC. 9Rus.mkv\n📹 hevc • DV • HDR\n⭐ BluRay REMUX\n💾 93.2 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5517f6b75d4d57f78d01a313ed898c18602c0c04",
+        "filename": "RRR (Rise Roar Revolt) 2022 4K IMAX JPN Blu-Ray REMUX HDR10 [Telugu TrueHD 7.1 Atmos + Tamil Atmos 5.1] - ADAM.mkv",
+        "videoSize": 87657412383
+      },
+      "description": "📄 RRR (Rise Roar Revolt) 2022 4K IMAX JPN Blu-Ray REMUX HDR10 [Telugu TrueHD 7.1 Atmos + Tamil Atmos 5.1] - ADAM.mkv\n📹 HDR • 10bit | 🔊 Atmos • TrueHD • 5.1 • 7.1\n⭐ BluRay REMUX | 🏷️ ADAM\n👤 0 💾 81.6 GB 🔎 DebridAccount|torbox\n🌎/🇯🇵/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|316dcae426258b57eb8c77e6ce2cb27d4fb55919",
+        "filename": "RRR.2022.2160p.UHDRemux.HYBRID.HDR.DV-TheEqualizer.mkv",
+        "videoSize": 97913129488
+      },
+      "description": "📄 RRR.2022.2160p.UHDRemux.HYBRID.HDR.DV-TheEqualizer.mkv\n📹 DV • HDR\n⭐ BluRay REMUX | 🏷️ TheEqualizer\n💾 91.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e05e3f469ba4dfa3803d45eb9240183dbb3ef885",
+        "filename": "RRR.2022.IMAX.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR.mkv",
+        "videoSize": 87134766603
+      },
+      "description": "📄 RRR.2022.IMAX.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR.mkv\n📹 hevc | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX | 🏷️ FraMeSToR\n💾 81.2 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f5d9bae67b19e4320fdca8e6bbaca79c6e417455",
+        "filename": "RRR (2022).2160p.x265.10bit.HDR.TrueHD.Atmos.8CH..EN.NL.FR.DE.HI.ID.JA.ES.Subtitles.mkv",
+        "videoSize": 19099223707
+      },
+      "description": "📄 RRR (2022).2160p.x265.10bit.HDR.TrueHD.Atmos.8CH..EN.NL.FR.DE.HI.ID.JA.ES.Subtitles.mkv\n📹 hevc • HDR • 10bit | 🔊 Atmos • TrueHD\n💾 17.8 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇫🇷/🇪🇸/🇩🇪/🇳🇱",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|26deeba8fd4f6dd5ec6145f3edeaa9455e270635",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil TRUE WEB-DL - 4K UHD - HEVC - (DD+5.1 ATMOS - 448Kbps) - 13GB - ESub.mkv",
+        "videoSize": 14209165177
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil TRUE WEB-DL - 4K UHD - HEVC - (DD+5.1 ATMOS - 448Kbps) - 13GB - ESub.mkv\n📹 hevc | 🔊 Atmos • TrueHD • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ ESub\n💾 13.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9ea2f81188299b8f118e41605e4b39ce3dd528cc",
+        "filename": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv",
+        "videoSize": 34238614475
+      },
+      "description": "📄 RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv\n📹 hevc • HDR • 10bit\n⭐ BluRay\n💾 31.9 GB 🔎 Comet|TheRARBG",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|92ddf47337b7ffea66bb6d585134790fd8862ed8",
+        "filename": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv",
+        "videoSize": 27213756105
+      },
+      "description": "📄 RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SiV\n💾 25.3 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3c4b0c02f9a81ff48eed03f7001691183b69f85c",
+        "filename": "RRR.2022.2160p.WEB-DL.Dual.Audio.DDP5.1.Atmos.H265-TRF.mkv",
+        "videoSize": 14830756969
+      },
+      "description": "📄 RRR.2022.2160p.WEB-DL.Dual.Audio.DDP5.1.Atmos.H265-TRF.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TRF\n💾 13.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a9f6eb9b60e8be2ca7913ebc7d9b3bf9d4a4ae64",
+        "filename": "RRR.2022.2160p.Telugu.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+        "videoSize": 14269733762
+      },
+      "description": "📄 RRR.2022.2160p.Telugu.WEB-DL.H.264.SDR.ATMOS-NbT.mkv\n📹 avc • SDR | 🔊 Atmos\n⭐ WEB-DL | 🏷️ NbT\n💾 13.3 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|61d1d1797a8bd3f409ae941e519081edd87c2a2a",
+        "filename": "RRR.2022.2160p.Tamil.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+        "videoSize": 14209221451
+      },
+      "description": "📄 RRR.2022.2160p.Tamil.WEB-DL.H.264.SDR.ATMOS-NbT.mkv\n📹 avc • SDR | 🔊 Atmos\n⭐ WEB-DL | 🏷️ NbT\n💾 13.2 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba0ff8ee984f8ac77abbc3c99066a5ea5eefefa2",
+        "filename": "RRR.2022.2160p.Hindi.WEB-DL.H.264.SDR.DDP5.1-NbT.mkv",
+        "videoSize": 16173233920
+      },
+      "description": "📄 RRR.2022.2160p.Hindi.WEB-DL.H.264.SDR.DDP5.1-NbT.mkv\n📹 avc • SDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NbT\n💾 15.1 GB 🔎 Comet|Knaben\n🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98d7c7e05f750822fa991fb26209cb76fb0fce10",
+        "filename": "RRR.2022.MULTi.2160p.WEB-DL.H.265.DDP5.1-UrM.mkv",
+        "videoSize": 28106425540
+      },
+      "description": "📄 RRR.2022.MULTi.2160p.WEB-DL.H.265.DDP5.1-UrM.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ UrM\n💾 26.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3b8e94e710abe98305aff926686a26cdd2f8d64c",
+        "filename": "RRR [2022] 2160p UHD BDRip HDR10 x265 TrueHD Atmos 7.1 Kira [SEV].mkv",
+        "videoSize": 43811029805
+      },
+      "description": "📄 RRR [2022] 2160p UHD BDRip HDR10 x265 TrueHD Atmos 7.1 Kira [SEV].mkv\n📹 hevc • HDR • 10bit | 🔊 Atmos • TrueHD • 7.1\n⭐ BDRip\n💾 40.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e4f1fd9c4db9a9f3fa9c23c90c715364b6a8384e",
+        "filename": "RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv",
+        "videoSize": 16401611370
+      },
+      "description": "📄 RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv\n⭐ WEB-DL\n💾 15.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6b36f90ef651e6d4796b2751f8fd3d7887a135e5",
+        "filename": "RRR (2022) (2160p BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB].mkv",
+        "videoSize": 4539927388
+      },
+      "description": "📄 RRR (2022) (2160p BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB].mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 4.2 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b0fd6aae850b543a10b3bf840e5aca8b8374a541",
+        "filename": "RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP-NOTAG.mkv",
+        "videoSize": 12885471372
+      },
+      "description": "📄 RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP-NOTAG.mkv\n⭐ WEBRip | 🏷️ NOTAG\n💾 12.0 GB 🔎 Comet|StremThru\n🌎/🇫🇷/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7223c47ded787a8a0f2a2af13f046774d691a812",
+        "filename": "RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP.mkv",
+        "videoSize": 12885471372
+      },
+      "description": "📄 RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP.mkv\n⭐ WEBRip\n💾 12.0 GB 🔎 Comet|StremThru\n🌎/🇫🇷/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0ee35cb736998aac30173a48c53a3b2dde23278c",
+        "filename": "RRR.2022.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv",
+        "videoSize": 8870472792
+      },
+      "description": "📄 RRR.2022.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv\n📹 hevc • 10bit | 🔊 AAC • 5.1\n⭐ WEB\n💾 8.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|216003916cfafb4352e5bd3e3dcda9ddb2b4c582",
+        "filename": "RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv",
+        "videoSize": 12885364486
+      },
+      "description": "📄 RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip • UPSCALED\n💾 12.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8436136342e716b94010cfd81ecf0ee76498a1df",
+        "filename": "RRR.(2022).Multi.2160p.WEBRip.Ai.10bit.DolbyAtmos.5.1.HEVC-[Musafirboy].mkv",
+        "videoSize": 13060095043
+      },
+      "description": "📄 RRR.(2022).Multi.2160p.WEBRip.Ai.10bit.DolbyAtmos.5.1.HEVC-[Musafirboy].mkv\n📹 hevc • 10bit | 🔊 Atmos • 5.1\n⭐ WEBRip • UPSCALED\n💾 12.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1a9d4e50cb833a9e41482dcae301c78449a7261a",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 4K HDR10+ - 2160p - HEVC - (DD+5.1 ATMOS - 448Kbps) [Tam + Tel(7.1) + Mal + Hin + Kan + Eng] - 42GB - ESub.mkv",
+        "videoSize": 45499684072
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 4K HDR10+ - 2160p - HEVC - (DD+5.1 ATMOS - 448Kbps) [Tam + Tel(7.1) + Mal + Hin + Kan + Eng] - 42GB - ESub.mkv\n📹 hevc • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1 • 7.1\n⭐ BluRay | 🏷️ ESub\n💾 42.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|661d6b93bd88b62efaeb3be4cf54b5215de03a46",
+        "filename": "RRR.Rise Roar Revolt (2022) BDRemux 1080p.mkv",
+        "videoSize": 34713216715
+      },
+      "description": "📄 RRR.Rise Roar Revolt (2022) BDRemux 1080p.mkv\n⭐ BluRay REMUX\n💾 32.3 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fca890520b7908d08712e50fce1efe5ecc270665",
+        "filename": "RRR.2022.1080p.10bit.DS4K.IMAX.BluRay.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HDR10.HEVC-The.PunisheR.mkv",
+        "videoSize": 13450902541
+      },
+      "description": "📄 RRR.2022.1080p.10bit.DS4K.IMAX.BluRay.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HDR10.HEVC-The.PunisheR.mkv\n📹 hevc • HDR • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ BluRay\n💾 12.5 GB 🔎 Comet|Uindex\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|72585d355a4d2a345014f91653a227de72cb4f55",
+        "filename": "RRR.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-EMUWAREZ.mkv",
+        "videoSize": 10958216017
+      },
+      "description": "📄 RRR.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-EMUWAREZ.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ EMUWAREZ\n💾 10.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|50e087c271b6a72856e8acca2b1a26af0a93caff",
+        "filename": "RRR.2022.1080p.WEB-DL.DDP5.1.Atmos.x264-BunnyJMB.mkv",
+        "videoSize": 8105646796
+      },
+      "description": "📄 RRR.2022.1080p.WEB-DL.DDP5.1.Atmos.x264-BunnyJMB.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BunnyJMB\n💾 7.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|325e8e048f779d791d8944349e77644a52589aa3",
+        "filename": "RRR.2022.1080p.NF.WEB-DL.DDPA5.1.Atmos.H.264-DesiThor.mkv",
+        "videoSize": 8551265050
+      },
+      "description": "📄 RRR.2022.1080p.NF.WEB-DL.DDPA5.1.Atmos.H.264-DesiThor.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ DesiThor\n💾 8.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bb15144b115e1da00212c06e8fa15fff3d4dceba",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x264 - [Tam + Tel(7.1) + Hin + Mal + Kan + Eng] - (DD+5.1 ATMOS - 448Kbps) - 20GB - ESub.mkv",
+        "videoSize": 21343823883
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x264 - [Tam + Tel(7.1) + Hin + Mal + Kan + Eng] - (DD+5.1 ATMOS - 448Kbps) - 20GB - ESub.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1 • 7.1\n⭐ BluRay | 🏷️ ESub\n💾 19.9 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0b6c0dc062a262d29dd09fbb6ef36b9309ba7c58",
+        "filename": "RRR (2022) 1080p AV1 DDP Atmos [UnAV1Chain].mkv",
+        "videoSize": 7489969495
+      },
+      "description": "📄 RRR (2022) 1080p AV1 DDP Atmos [UnAV1Chain].mkv\n📹 av1 | 🔊 Atmos • Dolby Digital Plus\n💾 7.0 GB 🔎 Comet|TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d14b9a461b0a2387f54e4dbffbbdd956b1f4df33",
+        "filename": "RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv",
+        "videoSize": 7079634640
+      },
+      "description": "📄 RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NbT\n💾 6.6 GB 🔎 Comet|Knaben\n🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2d4263e6ac6b7e8b85c0780cddcba1a4308def0f",
+        "filename": "RRR.2022.HIN.ENG.Sub.ITA.1080p.NF.WEB-DL.DDP5.1.x264-UBi.mkv",
+        "videoSize": 9902226317
+      },
+      "description": "📄 RRR.2022.HIN.ENG.Sub.ITA.1080p.NF.WEB-DL.DDP5.1.x264-UBi.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ UBi\n💾 9.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1063e297f7355cd783109364151b995761b2a065",
+        "filename": "RRR (2022) 1080p WEB-DL x265 Hindi DDP5.1 ESub - SP3LL.mkv",
+        "videoSize": 3145103834
+      },
+      "description": "📄 RRR (2022) 1080p WEB-DL x265 Hindi DDP5.1 ESub - SP3LL.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SP3LL\n💾 2.9 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|69c224a311fe3288d5d999b071f7af7d3b8d895b",
+        "filename": "RRR.2022.1080p.10bit.DS4K.DSNP.WEBRip.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HEVC-The.PunisheR.mkv",
+        "videoSize": 9998658965
+      },
+      "description": "📄 RRR.2022.1080p.10bit.DS4K.DSNP.WEBRip.[Org.DDP5.1-Hindi+DDP5.1-Telugu].Atmos.ESub.HEVC-The.PunisheR.mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 9.3 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fa3e5529d46737aeb50dcdb31cf25084988e14c4",
+        "filename": "RRR.2022.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4",
+        "videoSize": 3548552252
+      },
+      "description": "📄 RRR.2022.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4\n📹 avc | 🔊 AAC • 5.1\n⭐ BluRay\n💾 3.3 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60ec7b5569423f110ae980f4c454c1e84e2999bf",
+        "filename": "RRR (2022) (1080p WEB-DL x265 Silence).mkv",
+        "videoSize": 7570986513
+      },
+      "description": "📄 RRR (2022) (1080p WEB-DL x265 Silence).mkv\n📹 hevc\n⭐ WEB-DL\n💾 7.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99821abe8ccd3f9178b8aa3df1f11e6d6b470e6f",
+        "filename": "RRR.(2022).DUAL.1080p.WEBRip.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv",
+        "videoSize": 4676659247
+      },
+      "description": "📄 RRR.(2022).DUAL.1080p.WEBRip.DDP.Atmos.5.1.HEVC-[MusafirBoy].mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 4.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3a968c918cbf7276d114a4b7dd0c20ffcf6c1838",
+        "filename": "RRR-Motion Poster.mkv",
+        "videoSize": 33311760
+      },
+      "description": "📄 RRR-Motion Poster.mkv\n📹 hevc\n⭐ BluRay\n💾 31.8 MB 🔎 Comet|TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b74c5cad6efa1bbe6b89dac5133e73f29ce6ac7",
+        "filename": "RRR - Revolta Rebelião Revolução 2022 WEB-DL 1080p DUAL 5.1.mkv",
+        "videoSize": 4875192724
+      },
+      "description": "📄 RRR - Revolta Rebelião Revolução 2022 WEB-DL 1080p DUAL 5.1.mkv\n🔊 5.1\n⭐ WEB-DL\n💾 4.5 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6172ef0cf9123963aacfb5ff7e490a6d2772e9c2",
+        "filename": "Лють війна та кров RRR 2022 WEB-DL 1080p Ukr Hin  Sub Eng.mkv",
+        "videoSize": 8891766378
+      },
+      "description": "📄 Лють війна та кров RRR 2022 WEB-DL 1080p Ukr Hin  Sub Eng.mkv\n⭐ WEB-DL\n💾 8.3 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇺🇦/🇮🇳/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3fa27b3f79390c50629391af399bfb329e8f50ce",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv",
+        "videoSize": 9846963032
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv\n⭐ WEB-DL\n💾 9.2 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|34f488aba0826750cfbf196930640bb8fb804ab1",
+        "filename": "RRR.2022.WEB-DL.1080p-Dual-Lat.mkv",
+        "videoSize": 8851164630
+      },
+      "description": "📄 RRR.2022.WEB-DL.1080p-Dual-Lat.mkv\n⭐ WEB-DL | 🏷️ Lat\n💾 8.2 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|244de0d16934630c20e8e89df3bae3a33b618629",
+        "filename": "RRR.2022.WEB-DL.1080p.ExKinoRay.mkv",
+        "videoSize": 20057688652
+      },
+      "description": "📄 RRR.2022.WEB-DL.1080p.ExKinoRay.mkv\n⭐ WEB-DL\n💾 18.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba5b6adeda7c288a48d17501b716fb706ceccd95",
+        "filename": "RRR.2022.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+        "videoSize": 3668666704
+      },
+      "description": "📄 RRR.2022.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip\n💾 3.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a53337a31070b39d60c00f1fbbdf384a83c46241",
+        "filename": "RRR (Hindi) (2022) NF Hindi 1080p WEBRip x264 AAC ESub.mkv",
+        "videoSize": 3657743959
+      },
+      "description": "📄 RRR (Hindi) (2022) NF Hindi 1080p WEBRip x264 AAC ESub.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip\n💾 3.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99b5f5b0b52b3e22db485179d8c9f59e51c19182",
+        "filename": "RRR.A.K.A.Rise.Roar.Revolt.2022.HINDI.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 4266875433
+      },
+      "description": "📄 RRR.A.K.A.Rise.Roar.Revolt.2022.HINDI.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n👤 77 💾 4.0 GB 🔎 The Pirate Bay\n🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ea659d06c1a995facd3a1901c6e5f3343338a7af",
+        "filename": "RRR (2022) (1080p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv",
+        "videoSize": 7043327060
+      },
+      "description": "📄 RRR (2022) (1080p WEBRip AV1 Opus 5.1 Multi5 KaNNa).mkv\n📹 av1 | 🔊 5.1\n⭐ WEBRip\n💾 6.6 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9d37e1d7bb4543c28fc0b279e7059564ce1fb73",
+        "filename": "RRR (2022) (BDRip IMAX 1080p HEVC HDR10 EAC3 Atmos) Telugu [OEP][2EDED228].mkv",
+        "videoSize": 9178515872
+      },
+      "description": "📄 RRR (2022) (BDRip IMAX 1080p HEVC HDR10 EAC3 Atmos) Telugu [OEP][2EDED228].mkv\n📹 hevc • HDR • 10bit | 🔊 Atmos • Dolby Digital Plus\n⭐ BDRip\n💾 8.5 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d955b396e1f906d145c8812cd0e6d2a95d34c21a",
+        "filename": "RRR.Рядом.ревёт.революция.RRR.2022.JPN.Transfer.BDRip-HEVC.1080p.mkv",
+        "videoSize": 18255847643
+      },
+      "description": "📄 RRR.Рядом.ревёт.революция.RRR.2022.JPN.Transfer.BDRip-HEVC.1080p.mkv\n📹 hevc\n⭐ BDRip\n💾 17.0 GB 🔎 Comet|StremThru\n🌎/🇯🇵/🇷🇺",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bf1fffbfcd3c0380e0423b2c461ed81a2017acd0",
+        "filename": "RRR.2022.BDRip.1080p.ExKinoRay.mkv",
+        "videoSize": 28545202306
+      },
+      "description": "📄 RRR.2022.BDRip.1080p.ExKinoRay.mkv\n⭐ BDRip\n💾 26.6 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fb0636b65b0e12ba7a43fcbbcc539a7088e02493",
+        "filename": "RRR 2022 WEB-DLRip 1080p 6Rus.mkv",
+        "videoSize": 22867187013
+      },
+      "description": "📄 RRR 2022 WEB-DLRip 1080p 6Rus.mkv\n⭐ WEB-DLRip\n💾 21.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a788d0347209c2983cc23706de664cb6afbef4c",
+        "filename": "RRR.2022.720p.BluRay.x264.AAC-[YTS.MX].mp4",
+        "videoSize": 1730514854
+      },
+      "description": "📄 RRR.2022.720p.BluRay.x264.AAC-[YTS.MX].mp4\n📹 avc | 🔊 AAC\n⭐ BluRay\n💾 1.6 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|827131e4205dfeb9a65a61e9a185a0f1523a4c6c",
+        "filename": "RRR 2022 576p WEBRip Tamil Hindi AAC x264 - mkvAnime.mkv",
+        "videoSize": 2396306631
+      },
+      "description": "📄 RRR 2022 576p WEBRip Tamil Hindi AAC x264 - mkvAnime.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip | 🏷️ mkvAnime\n💾 2.2 GB 🔎 Comet|Knaben\n🌎/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 576p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0c8b928fa2cba4fd82d318d8826e7b74d7f2bce9",
+        "filename": "RRR.2022.UHD.BDRemux-DaTmoSX.mkv",
+        "videoSize": 94560034619
+      },
+      "description": "📄 RRR.2022.UHD.BDRemux-DaTmoSX.mkv\n⭐ BluRay REMUX | 🏷️ DaTmoSX\n💾 88.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d68e3678274a47047727bee14bdd4d07553cfb29",
+        "filename": "RRR.(2022).Rise.Roar.Revolt.WEB-DL.H.264-Dual.YG.mkv",
+        "videoSize": 1996810700
+      },
+      "description": "📄 RRR.(2022).Rise.Roar.Revolt.WEB-DL.H.264-Dual.YG.mkv\n📹 avc\n⭐ WEB-DL\n💾 1.9 GB 🔎 Comet|Knaben\n🌎",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1237c03930b128526d78ae88bb397df92ddc9b76",
+        "filename": "RRR (2022) BluRay H264 DolbyD 5.1 + nickarad.mp4",
+        "videoSize": 3888153092
+      },
+      "description": "📄 RRR (2022) BluRay H264 DolbyD 5.1 + nickarad.mp4\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ BluRay\n💾 3.6 GB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d86f1264b773216372236e7bff1b344c1f55e202",
+        "filename": "RRR.2022.2160p.IMAX.UHD.Blu-ray.Hybrid.Remux.DV.HDR.HEVC.TrueHD.Atmos.7.1-UNITED24.mkv",
+        "videoSize": 87964071825
+      },
+      "description": "📄 RRR 2022 2160p IMAX UHD Blu-ray Hybrid Remux DV HDR HEVC TrueHD Atmos 7 1-UNITED24 mkv\n📹 hevc • DV • HDR | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX | 🏷️ UNITED24\n💾 81.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c5a460279575265bc7fd86d94eb134c382000b20",
+        "filename": "RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv",
+        "videoSize": 87392485219
+      },
+      "description": "📄 RRR 2022 2160p REPACK IMAX UHD Blu-ray Remux HDR HEVC TrueHD Atmos 7 1-CiNEPHiLES mkv\n📹 hevc • HDR | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX • REPACK | 🏷️ CiNEPHiLES\n💾 81.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|afb6fa278bc7a6cf1ef080abd26c29748ca42cff",
+        "filename": "RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES",
+        "videoSize": 87392485219
+      },
+      "description": "📄 RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES\n📹 hevc • HDR | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX • REPACK | 🏷️ CiNEPHiLES\n💾 81.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ad8ac5665f4e9d063dbb104843a3ad3341953988",
+        "filename": "RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv",
+        "videoSize": 87392485219
+      },
+      "description": "📄 RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv\n📹 hevc • HDR | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX • REPACK | 🏷️ CiNEPHiLES\n💾 81.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|42c82a709315aeab4fc88aa0115db3112b3e6b00",
+        "filename": "RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv",
+        "videoSize": 87392485219
+      },
+      "description": "📄 RRR.2022.2160p.REPACK.IMAX.UHD.Blu-ray.Remux.HDR.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv\n📹 hevc • HDR | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX • REPACK | 🏷️ CiNEPHiLES\n💾 81.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|95534cb4e4c2a07e5d5fe7206e7135781a9db3d2",
+        "filename": "RRR (2022) BluRay 2160p HDR TrueHD Atmos AC3 HEVC NL-RetailSub REMUX-KaPPa.mkv",
+        "videoSize": 87408581870
+      },
+      "description": "📄 RRR (2022) BluRay 2160p HDR TrueHD Atmos AC3 HEVC NL-RetailSub REMUX-KaPPa.mkv\n📹 hevc • HDR | 🔊 Atmos • TrueHD • Dolby Digital\n⭐ BluRay REMUX | 🏷️ KaPPa\n💾 81.4 GB 🔎 DMM\n🇳🇱",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|795fe1f4391b0b82b59d6de56b6d19ab0078265b",
+        "filename": "RRR.2022.IMAX.Subbed.UHD.BluRay.2160p.DDP.7.1.HDR.x265-BHDStudio.mp4",
+        "videoSize": 22517024267
+      },
+      "description": "📄 RRR.2022.IMAX.Subbed.UHD.BluRay.2160p.DDP.7.1.HDR.x265-BHDStudio.mp4\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 7.1\n⭐ BluRay | 🏷️ BHDStudio\n💾 21.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52d62ecc8eb8700f44a136402a9fbf4a84c1b359",
+        "filename": "RRR.2022.IMAX.UHD.BluRay.2160p.DDP.7.1.HDR.x265-BHDStudio.mp4",
+        "videoSize": 22518370588
+      },
+      "description": "📄 RRR.2022.IMAX.UHD.BluRay.2160p.DDP.7.1.HDR.x265-BHDStudio.mp4\n📹 hevc • HDR | 🔊 Dolby Digital Plus • 7.1\n⭐ BluRay | 🏷️ BHDStudio\n💾 21.0 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eea5d8c338124297521b03eac011621aa9c4f2a8",
+        "filename": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv",
+        "videoSize": 34238614475
+      },
+      "description": "📄 RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv\n📹 hevc • HDR • 10bit\n⭐ BluRay\n💾 31.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d2d5c5ece7ca14fbe3dcc7417fab97a64a744264",
+        "filename": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv",
+        "videoSize": 34238614475
+      },
+      "description": "📄 RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv\n📹 hevc • HDR • 10bit\n⭐ BluRay\n💾 31.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aebc0ee5093fe33ee8cc2cfd10202a0ce540da07",
+        "filename": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv",
+        "videoSize": 34238614475
+      },
+      "description": "📄 RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv\n📹 hevc • HDR • 10bit\n⭐ BluRay\n💾 31.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d29090c718e565c021627403d40971fe8eeb1f7",
+        "filename": "RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv",
+        "videoSize": 34238614475
+      },
+      "description": "📄 RRR (2022) IMAX (2160p BluRay x265 10bit HDR r00t).mkv\n📹 hevc • HDR • 10bit\n⭐ BluRay\n💾 31.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e26762f06a8c7d04a09ef6bc8ddd08f3937f9e94",
+        "filename": "RRR (2022) (2160p NF WEB-DL H265 SDR DDP Atmos 5.1 Hindi - HONE).mkv",
+        "videoSize": 17750893570
+      },
+      "description": "📄 RRR (2022) (2160p NF WEB-DL H265 SDR DDP Atmos 5.1 Hindi - HONE).mkv\n📹 hevc • SDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 1 💾 16.5 GB 🔎 Comet|BitMagnet\n🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e13ebec114124ed380e2cc8cba0cdc9479b1bd50",
+        "filename": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv",
+        "videoSize": 27213756105
+      },
+      "description": "📄 RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SiV\n💾 25.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a7080a737476feb9711efe5cb8caaeba75505c9",
+        "filename": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H265-TRF.DUAL-XOR.mkv",
+        "videoSize": 15547551812
+      },
+      "description": "📄 RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H265-TRF.DUAL-XOR.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ XOR\n💾 14.5 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|21677a3379b27b7f08f3f7237bfda53077a46d47",
+        "filename": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv",
+        "videoSize": 27213756105
+      },
+      "description": "📄 RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-SiV.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SiV\n💾 25.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0b0471b09e0b77ffb1ec5fbc9296e1f586380762",
+        "filename": "RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-ViS.mkv",
+        "videoSize": 27212658427
+      },
+      "description": "📄 RRR.2022.2160p.WEB-DL.DDP5.1.Atmos.H.265-ViS.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ ViS\n💾 25.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c9b65ea2e4187d36b95cc38c49449ab683cc3541",
+        "filename": "RRR.2022.2160p.Kannada.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+        "videoSize": 14207933669
+      },
+      "description": "📄 RRR.2022.2160p.Kannada.WEB-DL.H.264.SDR.ATMOS-NbT.mkv\n📹 avc • SDR | 🔊 Atmos\n⭐ WEB-DL | 🏷️ NbT\n💾 13.2 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|129a1ad66180dd42c91f8e6910c1f55c0558c879",
+        "filename": "RRR.2022.2160p.Malayalam.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+        "videoSize": 14217750885
+      },
+      "description": "📄 RRR.2022.2160p.Malayalam.WEB-DL.H.264.SDR.ATMOS-NbT.mkv\n📹 avc • SDR | 🔊 Atmos\n⭐ WEB-DL | 🏷️ NbT\n💾 13.2 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|457e2c09b70c14b14781f21ef544c7507d46878b",
+        "filename": "RRR.Рядом ревёт революция.RRR.2022.2160P.10bit.HDR.h265.DUB AC3 5.1.mkv",
+        "videoSize": 29741675839
+      },
+      "description": "📄 RRR.Рядом ревёт революция.RRR.2022.2160P.10bit.HDR.h265.DUB AC3 5.1.mkv\n📹 hevc • HDR • 10bit | 🔊 Dolby Digital • 5.1\n💾 27.7 GB 🔎 Comet|StremThru\n🌎/🇷🇺",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|de76d05788b9bd6947cf548ccc615f8fe191a473",
+        "filename": "RRR.2022.2160p.MULTi.WEB-DL.H.264.SDR.ATMOS-NbT.mkv",
+        "videoSize": 16137283949
+      },
+      "description": "📄 RRR.2022.2160p.MULTi.WEB-DL.H.264.SDR.ATMOS-NbT.mkv\n📹 avc • SDR | 🔊 Atmos\n⭐ WEB-DL | 🏷️ NbT\n💾 15.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec112926b495d2886954066e02436ccf5fe739b6",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Tamil - 4K UHD - UNTOUCHED - x265 - DDP5.1 (448 Kbps) - 13.2GB - ESubs].mkv",
+        "videoSize": 14209221539
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Tamil - 4K UHD - UNTOUCHED - x265 - DDP5.1 (448 Kbps) - 13.2GB - ESubs].mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n💾 13.2 GB 🔎 Comet|Torrents.csv\n🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|def9c3ad176d0d8b500fbd46bd7c469f6de933f8",
+        "filename": "RRR.2022.2160p.UHD.BluRay.H265-COCAIN.mkv",
+        "videoSize": 87380029869
+      },
+      "description": "📄 RRR.2022.2160p.UHD.BluRay.H265-COCAIN.mkv\n📹 hevc\n⭐ BluRay | 🏷️ COCAIN\n💾 81.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c1603d68c8d0b6e157c5c5aebd67f69018f8857d",
+        "filename": "RRR.2022.2160p.UHD.BluRay.H265-COCAIN",
+        "videoSize": 87850221329
+      },
+      "description": "📄 RRR.2022.2160p.UHD.BluRay.H265-COCAIN\n📹 hevc\n⭐ BluRay | 🏷️ COCAIN\n💾 81.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2f3b9de507cfc494829a85ccb77b84f42b4bb590",
+        "filename": "RRR (2022) (4K WEB UHD AV1 Opus 5 1 Multi5 KaNNa)",
+        "videoSize": 11270435654
+      },
+      "description": "📄 RRR (2022) (4K WEB UHD AV1 Opus 5 1 Multi5 KaNNa)\n📹 av1 | 🔊 5.1\n⭐ WEB\n💾 10.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6b7de374c5edfe97b933f167215aaaabc60a32a2",
+        "filename": "RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv",
+        "videoSize": 17066414779
+      },
+      "description": "📄 RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv\n⭐ WEB-DL\n💾 15.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5b3fa77228a434aae7141963a0905e296fa81a9a",
+        "filename": "RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv",
+        "videoSize": 17023206666
+      },
+      "description": "📄 RRR.Rise.Roar.Revolt.(2022).WEB-DL.2160p.mkv\n⭐ WEB-DL\n💾 15.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98a9a4720ca31d35ee5fd7cfe9d6e41243bc49a3",
+        "filename": "RRR (2022) - Telugu-English Remaster 4K.mp4",
+        "videoSize": 87379273429
+      },
+      "description": "📄 RRR (2022) - Telugu-English Remaster 4K.mp4\n👤 1 💾 81.4 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b82364873f08ea15e6e848a47d7151f3019640a4",
+        "filename": "[4K][60FPS].RRR.2022.2160p.10bit.NF.WEBRip.Multi.DDP5.1.Atmos.H.265..mkv",
+        "videoSize": 40845439007
+      },
+      "description": "📄 [4K][60FPS].RRR.2022.2160p.10bit.NF.WEBRip.Multi.DDP5.1.Atmos.H.265..mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ 4K\n💾 38.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7d9c5974f050050725b770c0744512a3704bd967",
+        "filename": "RRR  Rise Roar Revolt 2022 VOSTFR TeluguHindi 2160p WEBRIP HEVC-EAC3",
+        "videoSize": 12885471372
+      },
+      "description": "📄 RRR  Rise Roar Revolt 2022 VOSTFR TeluguHindi 2160p WEBRIP HEVC-EAC3\n📹 hevc | 🔊 Dolby Digital Plus\n⭐ WEBRip\n💾 12.0 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|58ba3c37b810824d866ae3880c765eca9e3bab35",
+        "filename": "RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP",
+        "videoSize": 12885471372
+      },
+      "description": "📄 RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP\n⭐ WEBRip\n💾 12.0 GB 🔎 DMM\n🌎/🇫🇷/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|175363b0a8d2e2d538314e5f13df39bddefa7201",
+        "filename": "RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP.mkv",
+        "videoSize": 12885471372
+      },
+      "description": "📄 RRR.2022.VOSTFR.Telugu-Hindi.2160p.WEBRIP.mkv\n⭐ WEBRip\n💾 12.0 GB 🔎 Comet|StremThru\n🌎/🇫🇷/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6f4c68e99c6e16aa076e2a729217f89edda4d866",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Hindi - 4K HD AVC - UNTOUCHED - x264 - DDP5.1 (448 Kbps) - 15GB].mkv",
+        "videoSize": 16106127360
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Hindi - 4K HD AVC - UNTOUCHED - x264 - DDP5.1 (448 Kbps) - 15GB].mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ HDTV\n💾 15.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|690afd39e96f4a4c4aa018f000b14b0982e87065",
+        "filename": "RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv",
+        "videoSize": 12885364486
+      },
+      "description": "📄 RRR.(2022).DUAL.2160p.WEBRip.Ai.10bit.DDP.Atmos.5.1.HEVC-[Musafirboy].mkv\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip • UPSCALED\n💾 12.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|75e55cb3a1dd6ac13e6018067140dbf9b1779d21",
+        "filename": "www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 4K SDR - HEVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 13.4GB - ESub.mkv",
+        "videoSize": 14440273297
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 4K SDR - HEVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 13.4GB - ESub.mkv\n📹 hevc • SDR | 🔊 Atmos • TrueHD • Dolby Digital Plus • AAC • 5.1 • 2.0\n⭐ WEB-DL | 🏷️ ESub\n💾 13.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a36655cebdd0465709a0e0c6815fbb47cffb6fc",
+        "filename": "RRR.2022.REPACK.1080p.Blu-ray.Remux.AVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv",
+        "videoSize": 37438334621
+      },
+      "description": "📄 RRR.2022.REPACK.1080p.Blu-ray.Remux.AVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv\n📹 avc | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX • REPACK | 🏷️ CiNEPHiLES\n💾 34.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1be1594f9a86f9728b571a6bdcf2d78dcf54f15d",
+        "filename": "RRR.2022.REPACK.1080p.Blu-ray.Remux.AVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv",
+        "videoSize": 37438334621
+      },
+      "description": "📄 RRR.2022.REPACK.1080p.Blu-ray.Remux.AVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv\n📹 avc | 🔊 Atmos • TrueHD • 7.1\n⭐ BluRay REMUX • REPACK | 🏷️ CiNEPHiLES\n💾 34.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e8e44ab9d611936109f131647e9d6504bc64b79",
+        "filename": "RRR.2022.REPACK.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-ProTem.mkv",
+        "videoSize": 31455880651
+      },
+      "description": "📄 RRR.2022.REPACK.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-ProTem.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX • REPACK | 🏷️ ProTem\n💾 29.3 GB 🔎 Comet|DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|54715ed3251bcb9ff30fba73cfb4a8a2b43e669b",
+        "filename": "RRR (Rise Roar Revolt).2022.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1.DE3PM.mkv",
+        "videoSize": 32467044465
+      },
+      "description": "📄 RRR (Rise Roar Revolt).2022.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1.DE3PM.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX\n💾 30.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0f6c0d7236a14199faa45f80e9177fe9601b63bd",
+        "filename": "RRR.2022.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-ProTem.mkv",
+        "videoSize": 31455880729
+      },
+      "description": "📄 RRR.2022.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-ProTem.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX | 🏷️ ProTem\n💾 29.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0d6933cbd15a7f9bf5bc7dd71ff057f3d8d60426",
+        "filename": "RRR.2022.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-ProTem.mkv",
+        "videoSize": 31455880729
+      },
+      "description": "📄 RRR.2022.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1-ProTem.mkv\n📹 avc | 🔊 DTS Lossless • 5.1\n⭐ BluRay REMUX | 🏷️ ProTem\n💾 29.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|de8b54fbc815065fc7a6c2b21985b7dc91227f84",
+        "filename": "www.1TamilMV.cz - RRR (2022) Blu-Ray - REMUX - 1080p - AVC - [Telugu & Japanese - DTS-HD 5.1 Master Audio] - 32GB - J-ESub.mkv",
+        "videoSize": 34359738368
+      },
+      "description": "📄 www.1TamilMV.cz - RRR (2022) Blu-Ray - REMUX - 1080p - AVC - [Telugu & Japanese - DTS-HD 5.1 Master Audio] - 32GB - J-ESub.mkv\n📹 avc | 🔊 DTS Lossy • 5.1\n⭐ BluRay REMUX | 🏷️ ESub\n💾 32.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇯🇵/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|95c2eb2af669afbf92ae572ec3789d14608b9bbb",
+        "filename": "RRR 2022 JPN Transfer  BluRay Remux 1080p 8Rus.mkv",
+        "videoSize": 38466481432
+      },
+      "description": "📄 RRR 2022 JPN Transfer  BluRay Remux 1080p 8Rus.mkv\n⭐ BluRay REMUX\n💾 35.8 GB 🔎 Comet|StremThru\n🇯🇵",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f0a125475f5e0521613a4aaf3e0b7a8867e567d4",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil TRUE WEB-DL - 1080p - AVC - (DD+5.1 ATMOS - 448Kbps & AAC) - 6GB - ESub.mkv",
+        "videoSize": 6494295476
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil TRUE WEB-DL - 1080p - AVC - (DD+5.1 ATMOS - 448Kbps & AAC) - 6GB - ESub.mkv\n📹 avc | 🔊 Atmos • TrueHD • Dolby Digital Plus • AAC • 5.1\n⭐ WEB-DL | 🏷️ ESub\n💾 6.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eacbb17d9328d1182064680a328ebbaf73b79df3",
+        "filename": "www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 1080p - HEVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 5GB - ESub.mkv",
+        "videoSize": 5368709120
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 1080p - HEVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 5GB - ESub.mkv\n📹 hevc | 🔊 Atmos • TrueHD • Dolby Digital Plus • AAC • 5.1 • 2.0\n⭐ WEB-DL | 🏷️ ESub\n💾 5.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a0c3697f51aaa2cb7b9bb9ff0df17fd741634284",
+        "filename": "www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 1080p - AVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 6GB - ESub.mkv",
+        "videoSize": 6481222912
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 1080p - AVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 6GB - ESub.mkv\n📹 avc | 🔊 Atmos • TrueHD • Dolby Digital Plus • AAC • 5.1 • 2.0\n⭐ WEB-DL | 🏷️ ESub\n💾 6.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|70d6b28f3b623feb8d0b8ffcfcda18e408c174da",
+        "filename": "www 1TamilMV fans - RRR (2022) Tamil TRUE WEB-DL - 1080p - AVC - (DD+5 1 ATMOS - 448Kbps & AAC) - 3GB - ESub mkv",
+        "videoSize": 3221225472
+      },
+      "description": "📄 www 1TamilMV fans - RRR (2022) Tamil TRUE WEB-DL - 1080p - AVC - (DD+5 1 ATMOS - 448Kbps & AAC) - 3GB - ESub mkv\n📹 avc | 🔊 Atmos • TrueHD • Dolby Digital Plus • AAC • 5.1\n⭐ WEB-DL\n💾 3.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0643f358f60ca4266b135051aa0b78c5d11c00f6",
+        "filename": "www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 1080p - AVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 6GB - ESub.mkv",
+        "videoSize": 6442450944
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Telugu (Org Vers) TRUE WEB-DL - 1080p - AVC - UNTOUCHED - (DD+ 5.1 ATMOS - 448Kbps & AAC 2.0) - 6GB - ESub.mkv\n📹 avc | 🔊 Atmos • TrueHD • Dolby Digital Plus • AAC • 5.1 • 2.0\n⭐ WEB-DL | 🏷️ ESub\n💾 6.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|97d918bf0ab90621dd686c0a0765522d92ac1ba5",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.IMAX.UHD.BluRay.1080p.Multi.DD+Atmos.5.1.HDR10.x265-SM737.mkv",
+        "videoSize": 12750128455
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.IMAX.UHD.BluRay.1080p.Multi.DD+Atmos.5.1.HDR10.x265-SM737.mkv\n📹 hevc • HDR • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ SM737\n💾 11.9 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f8c4b953ec4001f964bdaf93389481666b62e280",
+        "filename": "RRR.2022.1080p.IMAX.UHD.BluRay.HDR.DDP7.1.x265-ZoroSenpai.mkv",
+        "videoSize": 20836703908
+      },
+      "description": "📄 RRR 2022 1080p IMAX UHD BluRay HDR DDP7 1 x265-ZoroSenpai mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus\n⭐ BluRay | 🏷️ ZoroSenpai\n💾 19.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2445dbfd65614d477903e5d3d0d5ee7635c6e038",
+        "filename": "RRR.2022.1080p.IMAX.UHD.BluRay.HDR.DDP7.1.x265-ZoroSenpai.mkv",
+        "videoSize": 20836703908
+      },
+      "description": "📄 RRR.2022.1080p.IMAX.UHD.BluRay.HDR.DDP7.1.x265-ZoroSenpai.mkv\n📹 hevc • HDR | 🔊 Dolby Digital Plus\n⭐ BluRay | 🏷️ ZoroSenpai\n💾 19.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|574ba43082e08f373462887dc614b3ab4c86a2e9",
+        "filename": "RRR (2022) (1080p Hybrid UHD WEB-DL x265 HEVC 10bit EAC3 5.1 Atmos Multi5 mAck)",
+        "videoSize": 8565556905
+      },
+      "description": "📄 RRR (2022) (1080p Hybrid UHD WEB-DL x265 HEVC 10bit EAC3 5.1 Atmos Multi5 mAck)\n📹 hevc • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 8.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8344f856debc57c75e4c371782fc75328d7d9139",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x264 - [Mal + Kan + Eng(640Kbps)] - (DD+5.1 ATMOS - 448Kbps) - 4.5GB - ESub.mkv",
+        "videoSize": 4829573729
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x264 - [Mal + Kan + Eng(640Kbps)] - (DD+5.1 ATMOS - 448Kbps) - 4.5GB - ESub.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ ESub\n💾 4.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5485c6b6a30743a61e5981f501bc7e588b48f840",
+        "filename": "RRR.2022.1080p.Hindi.WEB-DL.H.264.ATMOS-NbT.mkv",
+        "videoSize": 6831217979
+      },
+      "description": "📄 RRR.2022.1080p.Hindi.WEB-DL.H.264.ATMOS-NbT.mkv\n📹 avc | 🔊 Atmos\n⭐ WEB-DL | 🏷️ NbT\n💾 6.4 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|217409ba7008c7e79f2ed46a69cf8da590b8c22b",
+        "filename": "RRR.2022.1080p.DS4K.IMAX.BluRay.[HIN-TEL].DDP5.1.10bit.X265.HEVC-ZiroMB",
+        "videoSize": 8019792159
+      },
+      "description": "📄 RRR.2022.1080p.DS4K.IMAX.BluRay.[HIN-TEL].DDP5.1.10bit.X265.HEVC-ZiroMB\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ ZiroMB\n💾 7.5 GB 🔎 Comet|StremThru\n🌎/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dc3b1101afa64e670a56e238cd101ee7c60892a7",
+        "filename": "RRR.2022.1080p.10bit.Blu-ray.DDP5.1.HEVC-NmCT.mkv",
+        "videoSize": 9605961357
+      },
+      "description": "📄 RRR.2022.1080p.10bit.Blu-ray.DDP5.1.HEVC-NmCT.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ NmCT\n💾 8.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d545cebf567c151dc29cfd0131bf9ae8e2cb274d",
+        "filename": "RRR.2022.MULTI.1080p.WEB-DL.DDP5.1.H264-AOC",
+        "videoSize": 11135947631
+      },
+      "description": "📄 RRR.2022.MULTI.1080p.WEB-DL.DDP5.1.H264-AOC\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ AOC\n💾 10.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b80e379b602c9197da556fcd8c999b3f51021fa0",
+        "filename": "RRR (Rise Roar Revolt).2022.1080p.10bit.BluRay.DDP.5.1.x265-DE3PM.mkv",
+        "videoSize": 9367433048
+      },
+      "description": "📄 RRR (Rise Roar Revolt).2022.1080p.10bit.BluRay.DDP.5.1.x265-DE3PM.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ DE3PM\n💾 8.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|58d5362d037938a2cb2240f441bf3d29ade11a87",
+        "filename": "[2xFree].RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv",
+        "videoSize": 236511
+      },
+      "description": "📄 [2xFree].RRR.2022.1080p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NbT\n💾 231.0 KB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d8eb27630052054b68f9a6b3c47921d8f5c8af55",
+        "filename": "[XTORRENTY.ORG] RRR.2022.PL.AI.1080p.AMZN.1080p.WEB-DL.H264.DD5.1-RX",
+        "videoSize": 8036850913
+      },
+      "description": "📄 [XTORRENTY.ORG] RRR.2022.PL.AI.1080p.AMZN.1080p.WEB-DL.H264.DD5.1-RX\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL • UPSCALED | 🏷️ RX\n💾 7.5 GB 🔎 Comet|StremThru\n🇵🇱",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d4368085bafaa3386f3564a8de26feb87f68a82c",
+        "filename": "RRR.2022.1080p.BMS.HINDI.10bit.DDP.5.1.x265.[HashMiner]",
+        "videoSize": 4382850793
+      },
+      "description": "📄 RRR.2022.1080p.BMS.HINDI.10bit.DDP.5.1.x265.[HashMiner]\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n💾 4.1 GB 🔎 Comet|TheRARBG\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c51c1ffca3fc0b43e0f51eed499fe412b78ffed8",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x264 - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 3.3GB - ESub.mkv",
+        "videoSize": 3221225472
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x264 - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 3.3GB - ESub.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ ESub\n💾 3.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c425ceab766401bca5f1b583b1e27b52e4091da9",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x265 - HEVC - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 2.4GB - ESub.mkv",
+        "videoSize": 2576980377
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 1080p - x265 - HEVC - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 2.4GB - ESub.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ ESub\n💾 2.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8b5bf99a1f27c5267d864d6ebd914d711024cf10",
+        "filename": "Rrr.2022.1080p.WEB-DL.DUAL.DD5.1.H.264-BdC.mkv",
+        "videoSize": 6871947673
+      },
+      "description": "📄 Rrr.2022.1080p.WEB-DL.DUAL.DD5.1.H.264-BdC.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ BdC\n👤 0 💾 6.4 GB 🔎 Comet|bdc\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd96f83bc8a05a5938c9ccc373c9742215aea329",
+        "filename": "RRR.2022.1080p.NF.WEB-DL.Hindi.5.1.ESub.x264-HDHub4u.Tv.mkv",
+        "videoSize": 3881805320
+      },
+      "description": "📄 RRR.2022.1080p.NF.WEB-DL.Hindi.5.1.ESub.x264-HDHub4u.Tv.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n💾 3.6 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|177b7e056301d9ac6d428cc80d24c2323c2e4ef1",
+        "filename": "RRR.2022.1080p.Hindi.BMS.WEB-DL.5.1.x264-HDHub4u.Tv.mkv",
+        "videoSize": 3897682821
+      },
+      "description": "📄 RRR.2022.1080p.Hindi.BMS.WEB-DL.5.1.x264-HDHub4u.Tv.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n👤 6 💾 3.6 GB 🔎 Comet|solidtorrents\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3caec035cf1bb8330bc9bcd1f4d6016eee2890d",
+        "filename": "RRR 2022 1080p NF WEBRip DDPA.5.1 Atmos x265-DesiThor.mkv",
+        "videoSize": 3872519715
+      },
+      "description": "📄 RRR 2022 1080p NF WEBRip DDPA.5.1 Atmos x265-DesiThor.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ DesiThor\n💾 3.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dd502e3da6acd3eba7b20657c456e05f06ffbea1",
+        "filename": "RRR (Rise Roar Revolt).(2022).Hindi.1080p.BluRay.x264.AC3-5.1.-.Hon3yHD.mkv",
+        "videoSize": 10744940064
+      },
+      "description": "📄 RRR (Rise Roar Revolt).(2022).Hindi.1080p.BluRay.x264.AC3-5.1.-.Hon3yHD.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ BluRay\n💾 10.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d2dd45addb4680e5e1023449d0bec2f507283ff5",
+        "filename": "RRR.2022.Tamil.1080p.WEBRip.NF.DDP5.1.Atmos.H.264.Esub_AntDnp",
+        "videoSize": 3335639482
+      },
+      "description": "📄 RRR.2022.Tamil.1080p.WEBRip.NF.DDP5.1.Atmos.H.264.Esub_AntDnp\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 3.1 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c2e1128653d8a8b8e69dbb5ebc5712c69448ce6a",
+        "filename": "www.Torrenting.com - RRR 2022 International Uncut Version DS4K NF WebRip 1080p DUAL DDP 5 1 Atmos x265-SM737",
+        "videoSize": 8901428832
+      },
+      "description": "📄 www.Torrenting.com - RRR 2022 International Uncut Version DS4K NF WebRip 1080p DUAL DDP 5 1 Atmos x265-SM737\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ SM737\n💾 8.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a1828c7333f5f13c35295788400327d85071087c",
+        "filename": "RRR 2022 International Uncut Version DS4K NF WebRip 1080p DUAL DDP 5 1 Atmos x265-SM737",
+        "videoSize": 8900936355
+      },
+      "description": "📄 RRR 2022 International Uncut Version DS4K NF WebRip 1080p DUAL DDP 5 1 Atmos x265-SM737\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ SM737\n💾 8.3 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5dd5ab93be0cf768e7012bd785167799d07e9518",
+        "filename": "RRR.2022.1080p.WEBRip.DDP5.1.Atmos.x264-SMURF.mkv",
+        "videoSize": 18989982761
+      },
+      "description": "📄 RRR.2022.1080p.WEBRip.DDP5.1.Atmos.x264-SMURF.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ SMURF\n💾 17.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f6cfc564f712a52c2c314df7d1d9c0f4425c4362",
+        "filename": "RRR.2022.noHDR.1080p.6CH.3Subs.X265.WEB.印度电影：RRR.中印英字幕",
+        "videoSize": 7478905616
+      },
+      "description": "📄 RRR.2022.noHDR.1080p.6CH.3Subs.X265.WEB.印度电影：RRR.中印英字幕\n📹 hevc\n⭐ WEB\n💾 7.0 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9f18ee4ce2a427ed23f93df6048cbce411bdf694",
+        "filename": "RRR.2022.Hindi.1080p.WEB.x265-Protozoan",
+        "videoSize": 3993132587
+      },
+      "description": "📄 RRR.2022.Hindi.1080p.WEB.x265-Protozoan\n📹 hevc\n⭐ WEB | 🏷️ Protozoan\n💾 3.7 GB 🔎 Comet|TheRARBG\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6560c2e748413607bf94f752155825c5661eaf44",
+        "filename": "RRR.2022.1080p.BluRay.x264-TRB",
+        "videoSize": 17413511203
+      },
+      "description": "📄 RRR.2022.1080p.BluRay.x264-TRB\n📹 avc\n⭐ BluRay | 🏷️ TRB\n💾 16.2 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|582080cf91089070c5a23efbed372768d149025d",
+        "filename": "RRR.2022.1080p.WEB.h264-KOGi",
+        "videoSize": 8592271780
+      },
+      "description": "📄 RRR.2022.1080p.WEB.h264-KOGi\n📹 avc\n⭐ WEB | 🏷️ KOGi\n💾 8.0 GB 🔎 Comet|BitMagnet (Local DHT)",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|06368bd17b397a24364aa53bf8ea501acd8c06d2",
+        "filename": "RRR.2022.HD1080P.AAC.H264.CHS.BTSJ5",
+        "videoSize": 4621129120
+      },
+      "description": "📄 RRR.2022.HD1080P.AAC.H264.CHS.BTSJ5\n📹 avc | 🔊 AAC\n💾 4.3 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|042da20e3b3cb60427061183430437092e28b970",
+        "filename": "RRR.2022.1080p.WEB.h264-KOGi[rarbg]",
+        "videoSize": 8551127744
+      },
+      "description": "📄 RRR.2022.1080p.WEB.h264-KOGi[rarbg]\n📹 avc\n⭐ WEB | 🏷️ KOGi\n💾 8.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|de9e2bea4ac0e4f16771f86131d0dff3a00b1e34",
+        "filename": "RRR - Revolta Rebelião Revolução 2022 1080p WEB-DL DUAL 5.1",
+        "videoSize": 2437393940
+      },
+      "description": "📄 RRR - Revolta Rebelião Revolução 2022 1080p WEB-DL DUAL 5.1\n🔊 5.1\n⭐ WEB-DL\n👤 1 💾 2.3 GB 🔎 Comet|Comando\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|86c16c92e927b4b3824ddf15e2aa7f56148003d5",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv",
+        "videoSize": 9846963032
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.WEB-DL.1080p.mkv\n⭐ WEB-DL\n💾 9.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|39d8c97f9ec297daa6c10dee8cbc1a60c6cd69a8",
+        "filename": "RRR (2022) WEB-DL.1080p.mkv",
+        "videoSize": 9846963032
+      },
+      "description": "📄 RRR (2022) WEB-DL.1080p.mkv\n⭐ WEB-DL\n💾 9.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3687233ce6be55cc423cf6b56d1bb9ee65304695",
+        "filename": "Rrr.2022.Web-Dl.1080P.cinecalidad2.me.mp4",
+        "videoSize": 4294967296
+      },
+      "description": "📄 Rrr.2022.Web-Dl.1080P.cinecalidad2.me.mp4\n⭐ WEB-DL\n👤 3 💾 4.0 GB 🔎 Comet|unknown",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|231755feb2ade51f0d847238a81bc72f378e1918",
+        "filename": "[BD影视分享bd2020.co]RRR.2022.NF.AAC5.1.HD1080P.官方中字.mp4",
+        "videoSize": 6036576751
+      },
+      "description": "📄 [BD影视分享bd2020.co]RRR.2022.NF.AAC5.1.HD1080P.官方中字.mp4\n🔊 AAC • 5.1\n💾 5.6 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e09145a42a0b262a0cd96c4e2e1b241c1ef37295",
+        "filename": "RRR.2022.1080p-dual-lat",
+        "videoSize": 7184665832
+      },
+      "description": "📄 RRR.2022.1080p-dual-lat\n🏷️ lat\n💾 6.7 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dee88236c901454fdf2a2157b6a8dc662b878026",
+        "filename": "RRR. Rise Roar Revolt 2022 Hindi Dubbed Movie 1080p Full HD MWU.COM.mkv",
+        "videoSize": 2356283177
+      },
+      "description": "📄 RRR. Rise Roar Revolt 2022 Hindi Dubbed Movie 1080p Full HD MWU.COM.mkv\n💾 2.2 GB 🔎 Comet|StremThru\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a0106969016002abcf79bafc733d234825d9c3fb",
+        "filename": "RRR.2022.1080p.dual-lat.cinecalidad.run.mp4",
+        "videoSize": 0
+      },
+      "description": "📄 RRR.2022.1080p.dual-lat.cinecalidad.run.mp4\n💾 0.0 B 🔎 DMM\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a147fdd42ee546726476dfcd5a7fd30821721a5",
+        "filename": "RRR.2022.1080p-Dual-Lat",
+        "videoSize": 3922279393
+      },
+      "description": "📄 RRR.2022.1080p-Dual-Lat\n🏷️ Lat\n💾 3.7 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e263e2e8178d859128ce34f53bedd6c4a53f898",
+        "filename": "Rrr.2022.Enhanced.1080p.Conv.FSBS.3d.tective.mkv",
+        "videoSize": 28250248571
+      },
+      "description": "📄 Rrr.2022.Enhanced.1080p.Conv.FSBS.3d.tective.mkv\n⭐ UPSCALED\n💾 26.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|79cbfddfc4fa9ac3cb9b7e25c8d05f001f36e624",
+        "filename": "RRR.2022.1080p_от New-Team_JNS82.mkv",
+        "videoSize": 9440233278
+      },
+      "description": "📄 RRR.2022.1080p_от New-Team_JNS82.mkv\n💾 8.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|664e424f4b44fe325e1533367318b2e8055b9344",
+        "filename": "Rrr (2022) [1080P][Latino][VerPeliculasOnline.org].mp4",
+        "videoSize": 3211797522
+      },
+      "description": "📄 Rrr (2022) [1080P][Latino][VerPeliculasOnline.org].mp4\n💾 3.0 GB 🔎 Comet|StremThru\n💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6557545a1e7ed580d30ac2785977bf92e86dd397",
+        "filename": "Rrr (2022) [1080P][Subtitulada][VerPeliculasOnline.org].mp4",
+        "videoSize": 3218595707
+      },
+      "description": "📄 Rrr (2022) [1080P][Subtitulada][VerPeliculasOnline.org].mp4\n💾 3.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4b928d541cd63262d1fc5da356ef387fffe41669",
+        "filename": "RRR.2022.1080p.dual-lat.cinecalidad.run.mp4",
+        "videoSize": 4554235192
+      },
+      "description": "📄 RRR.2022.1080p.dual-lat.cinecalidad.run.mp4\n💾 4.2 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|47814eeea9b2181e9bc7a96dc3e88e4d3e8fd74b",
+        "filename": "RRR (2022).1080p.dual-lat.cinecalidad.run.mp4",
+        "videoSize": 7199385340
+      },
+      "description": "📄 RRR (2022).1080p.dual-lat.cinecalidad.run.mp4\n💾 6.7 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|437008e8c5c07fb6180796e568e4129b978738ee",
+        "filename": "[www.domp4.cc]RRR.2022.HD1080p.中文字幕.mp4",
+        "videoSize": 5261334937
+      },
+      "description": "📄 [www.domp4.cc]RRR.2022.HD1080p.中文字幕.mp4\n🏷️ www.domp4.cc\n💾 4.9 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|408ad3c5cb4802f68e52308db149f3c475be0fd2",
+        "filename": "RRR.2022.1080p-Dual-Lat",
+        "videoSize": 5305559056
+      },
+      "description": "📄 RRR.2022.1080p-Dual-Lat\n🏷️ Lat\n💾 4.9 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|27e9b2bb549fb300fba537e128ed1f3f32476854",
+        "filename": "RRR.1080p.BD中字[66影视www.66Ys.Co].mp4",
+        "videoSize": 7467282944
+      },
+      "description": "📄 RRR.1080p.BD中字[66影视www.66Ys.Co].mp4\n💾 7.0 GB 🔎 DMM\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|068afd77a01b121b42e7e65f0a8f87c3e9795fee",
+        "filename": "[www.domp4.cc]RRR.2022.HD1080p.中文字幕.mp4",
+        "videoSize": 5129467188
+      },
+      "description": "📄 [www.domp4.cc]RRR.2022.HD1080p.中文字幕.mp4\n🏷️ www.domp4.cc\n💾 4.8 GB 🔎 Comet|StremThru\n🇨🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6070f43961a9cf753f6daf77992c0117a790be88",
+        "filename": "RRR (2022) (1080p DS4K BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB]",
+        "videoSize": 1445722244
+      },
+      "description": "📄 RRR (2022) (1080p DS4K BMS WEBRIP x265 HEVC 10bit DDP5.1 Hindi) [ZiroMB]\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip\n💾 1.3 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e0876ed77a1c2746dad3abe9abb00ff0f68d88e7",
+        "filename": "RRR.2022.WEBRip.1080p.x265.DDP5.1-TmG",
+        "videoSize": 5235034393
+      },
+      "description": "📄 RRR.2022.WEBRip.1080p.x265.DDP5.1-TmG\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ TmG\n👤 1 💾 4.9 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d3c80cd9dbd48b724616296c907d1f2a9b9beee9",
+        "filename": "rrr-2022-nf-south-hindi-dubbed-full-movie-hevc-1080p-10bit",
+        "videoSize": 10
+      },
+      "description": "📄 rrr-2022-nf-south-hindi-dubbed-full-movie-hevc-1080p-10bit\n📹 hevc • 10bit\n🏷️ bit\n💾 10.0 B 🔎 DMM\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ae063dab9293258a17bfc7a7fc5982d65c373f0e",
+        "filename": "RRR.2022.1080p.Nf.WEBRip.x264-[Worldfree4u.Vip].[Hindi].AAC.ESub.mkv",
+        "videoSize": 3328599654
+      },
+      "description": "📄 RRR.2022.1080p.Nf.WEBRip.x264-[Worldfree4u.Vip].[Hindi].AAC.ESub.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip\n💾 3.1 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|70ea00f103a38f03912a8e7277044691d4089ff9",
+        "filename": "RRR 2022 Hindi 1080p WEBRip AAC5.1 x264-DesiThor",
+        "videoSize": 2356283177
+      },
+      "description": "📄 RRR 2022 Hindi 1080p WEBRip AAC5.1 x264-DesiThor\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ DesiThor\n💾 2.2 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f83e0827a6ed286d32ae34dcfb71b19edd4b6f7",
+        "filename": "RRR.Rise.Roar.Revolt.2022.TELUGU.1080p.10bit.CUSTOM.VOSTFR.WEBRip.6CH.x265.HEVC.mkv",
+        "videoSize": 3710866439
+      },
+      "description": "📄 RRR.Rise.Roar.Revolt.2022.TELUGU.1080p.10bit.CUSTOM.VOSTFR.WEBRip.6CH.x265.HEVC.mkv\n📹 hevc • 10bit\n⭐ WEBRip\n💾 3.5 GB 🔎 Comet|StremThru\n🌎/🇫🇷/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|532d891aa4b9e2cfb68ea043c3819db631b880fa",
+        "filename": "RRR 2022 Hindi 1080p WEBRip AAC5.1 x265-DesiThor.mkv",
+        "videoSize": 2585618451
+      },
+      "description": "📄 RRR 2022 Hindi 1080p WEBRip AAC5.1 x265-DesiThor.mkv\n📹 hevc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ DesiThor\n💾 2.4 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ff2fc00068d296c5c5a2223f27610512e586f87",
+        "filename": "RRR.Rise.Roar.Revolt.2022.TELUGU.1080p.10bit.CUSTOM.VOSTFR.WEBRip.6CH.x265.HEVC.mkv",
+        "videoSize": 3710866439
+      },
+      "description": "📄 RRR.Rise.Roar.Revolt.2022.TELUGU.1080p.10bit.CUSTOM.VOSTFR.WEBRip.6CH.x265.HEVC.mkv\n📹 hevc • 10bit\n⭐ WEBRip\n💾 3.5 GB 🔎 Comet|StremThru\n🌎/🇫🇷/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|752f23251028d76f08acc326f77125d48ef5e1b3",
+        "filename": "RRR 2022 Hindi 1080p NF WEBRip DD 5.1 MSubs x264 - mkvAnime.mkv",
+        "videoSize": 6700643012
+      },
+      "description": "📄 RRR 2022 Hindi 1080p NF WEBRip DD 5.1 MSubs x264 - mkvAnime.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEBRip | 🏷️ mkvAnime\n💾 6.2 GB 🔎 Comet|Knaben\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|948faf604505313a4a943182c448ffd48e419af2",
+        "filename": "RRR.(2022).VOSTFR.1080p.NF.WEBRip.x265-Y4Y4.mkv",
+        "videoSize": 8638289649
+      },
+      "description": "📄 RRR.(2022).VOSTFR.1080p.NF.WEBRip.x265-Y4Y4.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ Y4Y4\n💾 8.0 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3d6b3e58126fc5212ac1b0711c40daaa78d7aef4",
+        "filename": "RRR.(2022).VOSTFR.1080p.NF.WEBRip.x265-Y4Y4.mkv",
+        "videoSize": 8638289649
+      },
+      "description": "📄 RRR.(2022).VOSTFR.1080p.NF.WEBRip.x265-Y4Y4.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ Y4Y4\n💾 8.0 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ef4cb064fd5fa0f10183707d2f39c23d492d482",
+        "filename": "RRR (Рядом ревёт революция) 2022 1080p WEBRip@Кубик_в_Кубе.mkv",
+        "videoSize": 3307760353
+      },
+      "description": "📄 RRR (Рядом ревёт революция) 2022 1080p WEBRip@Кубик_в_Кубе.mkv\n⭐ WEBRip\n💾 3.1 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f3bed61da3f9da1ad4a6d11adacd99101d5eaf62",
+        "filename": "RRR (2022) NF 1080p WEBRip x265 HEVC 10bit Multi  DD 5.1 [ Hin,Tel,Tam,Kan,Mal ] ESub.mkv",
+        "videoSize": 6039628318
+      },
+      "description": "📄 RRR (2022) NF 1080p WEBRip x265 HEVC 10bit Multi  DD 5.1 [ Hin,Tel,Tam,Kan,Mal ] ESub.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital • 5.1\n⭐ WEBRip\n💾 5.6 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b2e2455cebfdd92a52e4894b4866f7e5f98cfc11",
+        "filename": "www TamilBlasters click - RRR (2022)[Tamil 1080p HD AVC [DD5 1 (ATMOS) & AAC] - x264 - 5GB - ESubs] mkv",
+        "videoSize": 5368709120
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Tamil 1080p HD AVC [DD5 1 (ATMOS) & AAC] - x264 - 5GB - ESubs] mkv\n📹 avc | 🔊 Atmos • Dolby Digital • AAC • 5.1\n⭐ HDTV\n💾 5.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|955f5e1f57f0a1db7d9d1e35da3c6dfb0ae12cd5",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Kannada 1080p HD AVC - [DDP5.1 & AAC] - x264 - 5GB]..mkv",
+        "videoSize": 5830418104
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022)[Kannada 1080p HD AVC - [DDP5.1 & AAC] - x264 - 5GB]..mkv\n📹 avc | 🔊 Dolby Digital Plus • AAC • 5.1\n⭐ HDTV\n💾 5.4 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|295c5bb136684a2ea36fc850fc8f2c59076a6c25",
+        "filename": "RRR (2022)Malayalam 1080p HD AVC - [DDP5.1 ] - x264 - 5GB]",
+        "videoSize": 5368709120
+      },
+      "description": "📄 RRR (2022)Malayalam 1080p HD AVC - [DDP5.1 ] - x264 - 5GB]\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ HDTV\n💾 5.0 GB 🔎 Comet|Knaben\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60959cc936f6b7b36a9093d9fcb71f70196f6c39",
+        "filename": "RRR 2022 JPN Transfer BDRip 1080p x265-OldGamer.mkv",
+        "videoSize": 14683938871
+      },
+      "description": "📄 RRR 2022 JPN Transfer BDRip 1080p x265-OldGamer.mkv\n📹 hevc\n⭐ BDRip | 🏷️ OldGamer\n💾 13.7 GB 🔎 Comet|StremThru\n🇯🇵",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|046c5aa9c5637b38423eb7612122291ab4e665b0",
+        "filename": "RRR.AKA.Rise.Roar.Revolt.2022.BDRip.1080p.Rip.by.HardwareMining.R.G.Generalfilm.mkv",
+        "videoSize": 20752616545
+      },
+      "description": "📄 RRR.AKA.Rise.Roar.Revolt.2022.BDRip.1080p.Rip.by.HardwareMining.R.G.Generalfilm.mkv\n⭐ BDRip\n💾 19.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d92f4972e608ac8f02854139c76cb6b8fdbe43fd",
+        "filename": "RRR (2022) 1080p Hindi True WEB-HDRip x264 AAC DD 5.1 By Full4Movies.mkv",
+        "videoSize": 3501746760
+      },
+      "description": "📄 RRR (2022) 1080p Hindi True WEB-HDRip x264 AAC DD 5.1 By Full4Movies.mkv\n📹 avc | 🔊 Dolby Digital • AAC • 5.1\n⭐ HDRip\n💾 3.3 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f4f411cee1859fe550bc599007ea0f0ebf32d607",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Hindi - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv",
+        "videoSize": 4294967296
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Hindi - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 4.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f02ad088e9b8a6a591615d4c1a504f6a23151591",
+        "filename": "www.7MovieRulz.lt - RRR (2022) 1080p Tamil HDRip - x264 - AAC - 3GB - HC-ESub.mkv",
+        "videoSize": 3221225472
+      },
+      "description": "📄 www.7MovieRulz.lt - RRR (2022) 1080p Tamil HDRip - x264 - AAC - 3GB - HC-ESub.mkv\n📹 avc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 3.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e448427d83f401aba656e90564c4e1e03cb5539b",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Tamil - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv",
+        "videoSize": 2823940997
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Tamil - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 2.6 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d1f21afe2cae596588c6792bb63dd298fb238b6d",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Tamil - 1080p HDRip - x265 - HEVC - AAC - 1.6GB - HC ESubs].mkv",
+        "videoSize": 6442450944
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Tamil - 1080p HDRip - x265 - HEVC - AAC - 1.6GB - HC ESubs].mkv\n📹 hevc | 🔊 AAC\n⭐ HDRip\n💾 6.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c526d9fa448f796579ebae179200f448aa8516cb",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil HDRip - 1080p - x264 - AAC - 3GB - HC-ESub.mkv",
+        "videoSize": 3219537217
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil HDRip - 1080p - x264 - AAC - 3GB - HC-ESub.mkv\n📹 avc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 3.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bda5d59eb351ec8b298eb88f5901943016856fa7",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Telugu - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv",
+        "videoSize": 2576980377
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Telugu - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 2.4 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|990735570755c7de55e0c159e379f5c6500d1ae7",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil HDRip - 1080p - HEVC - AAC - 1.7GB - HC-ESub.mkv",
+        "videoSize": 1825361100
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil HDRip - 1080p - HEVC - AAC - 1.7GB - HC-ESub.mkv\n📹 hevc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 1.7 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d2a10267ae064014659459d0d3c6c81050836b9",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Malayalam - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv",
+        "videoSize": 2888365507
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Malayalam - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 2.7 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|89962394cb66effd657443f9af4b938d4d8eb3bf",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Tamil - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv",
+        "videoSize": 4294967296
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - 1080p HDRip - x264 - AAC - 2 4GB - HC ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 4.0 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6dc3971b1da4c09213e95f4c8e62dfdfb1cd2a0b",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Kannada - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv",
+        "videoSize": 2645718616
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Kannada - 1080p HDRip - x264 - AAC - 2.4GB - HC ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 2.5 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a4978bf8ffb82c45eee68bf393a7968e882f9618",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - 1080p HDRip - x264 - DD5 1 (384 Kbps) - 3GB - ESubs] mkv",
+        "videoSize": 3221225472
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - 1080p HDRip - x264 - DD5 1 (384 Kbps) - 3GB - ESubs] mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ HDRip\n💾 3.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|330b2ca5e7975842e2cd799c67cb9b6ce18e4e04",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - 1080p HDRip - HEVC - x265 - DD5 1 (192 Kbps) - 1 8GB - ESubs] mkv",
+        "videoSize": 8589934592
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - 1080p HDRip - HEVC - x265 - DD5 1 (192 Kbps) - 1 8GB - ESubs] mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ HDRip\n💾 8.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9fbef3d46c321ccb1e95915e9837409f67735358",
+        "filename": "RRR 2022 HDRip 1080p x264-[Worldfree4u.Tel] [Hindi-(Clean)] HC-ESub.mkv",
+        "videoSize": 3500398346
+      },
+      "description": "📄 RRR 2022 HDRip 1080p x264-[Worldfree4u.Tel] [Hindi-(Clean)] HC-ESub.mkv\n📹 avc\n⭐ HDRip | 🏷️ ESub\n💾 3.3 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|364429eeb094c6edc55ff059483c3e55e1d01df3",
+        "filename": "RRR.2022.1080p.Hindi.HDRip.HC-ESub.x264-HDHub4u.Tv.mkv",
+        "videoSize": 3811783475
+      },
+      "description": "📄 RRR.2022.1080p.Hindi.HDRip.HC-ESub.x264-HDHub4u.Tv.mkv\n📹 avc\n⭐ HDRip\n💾 3.5 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d9002a85901ba667b7be49583a861a1b97e84c80",
+        "filename": "RRR (2022) WEB-DLRip 1080p Rus.mkv",
+        "videoSize": 8862782336
+      },
+      "description": "📄 RRR (2022) WEB-DLRip 1080p Rus.mkv\n⭐ WEB-DLRip\n💾 8.3 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b55df4feb589771a1be1a319067465a3ec74d2c0",
+        "filename": "RRR (2022) [Bengali Dub] 1080p WEB-DLRip Saicord.mp4",
+        "videoSize": 6137639806
+      },
+      "description": "📄 RRR (2022) [Bengali Dub] 1080p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 5.7 GB 🔎 Comet|StremThru\n🌎/🇧🇩",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4ff619a02f292a4dbd29dcf2fd7f0ac236e57522",
+        "filename": "RRR (2022) WEB-DLRip 1080p 2Rus.mkv",
+        "videoSize": 9227933661
+      },
+      "description": "📄 RRR (2022) WEB-DLRip 1080p 2Rus.mkv\n⭐ WEB-DLRip\n💾 8.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3cc1dcfaa9a2fee0b9ff2365396cac0c86826326",
+        "filename": "RRR (2022) [Hindi Dubbed] 1080p WEB-DLRip Saicord.mp4",
+        "videoSize": 5873793004
+      },
+      "description": "📄 RRR (2022) [Hindi Dubbed] 1080p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 5.5 GB 🔎 Comet|StremThru\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|37af7a68f4dc71f951624ee35ed68956f01b0cae",
+        "filename": "RRR (2022) WEB-DLRip 1080p Rus.mkv",
+        "videoSize": 8862782336
+      },
+      "description": "📄 RRR (2022) WEB-DLRip 1080p Rus.mkv\n⭐ WEB-DLRip\n💾 8.3 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2cd04c821509a233842423e4542422c01a521a5c",
+        "filename": "RRR (2022) [Tamil Dubbed] 1080p WEB-DLRip Saicord.mp4",
+        "videoSize": 6043696532
+      },
+      "description": "📄 RRR (2022) [Tamil Dubbed] 1080p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 5.6 GB 🔎 Comet|StremThru\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2855b35cb6d16708bfe985b2e9e06b3b0b068876",
+        "filename": "RRR (2022) [Azerbaijan Dubbed] 1080p WEB-DLRip Saicord.mp4",
+        "videoSize": 5857491901
+      },
+      "description": "📄 RRR (2022) [Azerbaijan Dubbed] 1080p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 5.5 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d3ba48aa62e2a59bfc97eba512d5a534568668bf",
+        "filename": "RRR.2022.720p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv",
+        "videoSize": 2533055603
+      },
+      "description": "📄 RRR.2022.720p.Hindi.WEB-DL.H.264.DDP5.1-NbT.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NbT\n💾 2.4 GB 🔎 Comet|Knaben\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|80888bf41c8f0481968e0e361d11d6574d2e1d4c",
+        "filename": "RRR 2022 720p NF WEB-DL [TR] DDP5.1 H264 TURG.mkv",
+        "videoSize": 3486357739
+      },
+      "description": "📄 RRR 2022 720p NF WEB-DL [TR] DDP5.1 H264 TURG.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3c6820ecbc66574fdb4a03879ff2278576271df8",
+        "filename": "RRR 2022 720p NF WEB-DL [TR] DDP5.1 H264 TURG.mkv",
+        "videoSize": 3486357739
+      },
+      "description": "📄 RRR 2022 720p NF WEB-DL [TR] DDP5.1 H264 TURG.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 3.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|acc21a6d729ae82d5f20b262572767b70712b69a",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 720p - x265 - HEVC - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 1.7GB - ESub.mkv",
+        "videoSize": 1825361100
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 720p - x265 - HEVC - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 1.7GB - ESub.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ ESub\n💾 1.7 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|143328f7db91463ce393a47bc5b26487b85c9825",
+        "filename": "www.1TamilMV.pet - RRR (2022) BluRay - 720p - x264 - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 2GB - ESub.mkv",
+        "videoSize": 2147483648
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BluRay - 720p - x264 - [Mal + Kan + Eng] - (DD+5.1 - 224Kbps) - 2GB - ESub.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ BluRay | 🏷️ ESub\n💾 2.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d9eefb2a328a6958aa4ca1dd7a5197312d1b6ff1",
+        "filename": "RRR(2022)NF.720p.Web-DL.h264+oRiginaL.mkv",
+        "videoSize": 2769803651
+      },
+      "description": "📄 RRR(2022)NF.720p.Web-DL.h264+oRiginaL.mkv\n📹 avc\n⭐ WEB-DL\n💾 2.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d88827285b07ac16872247c685765da809b1b4fd",
+        "filename": "RRR(2022)NF.720p.Web-DL.h264+oRiginaL.mkv",
+        "videoSize": 2769803651
+      },
+      "description": "📄 RRR(2022)NF.720p.Web-DL.h264+oRiginaL.mkv\n📹 avc\n⭐ WEB-DL\n💾 2.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af00f7cd4ee69ac1ecb33efbb19e0e4ba1787d16",
+        "filename": "RRR.2022.VOSTFR.720p.Bluray.x264.AAC-Prem.mkv",
+        "videoSize": 4234108052
+      },
+      "description": "📄 RRR.2022.VOSTFR.720p.Bluray.x264.AAC-Prem.mkv\n📹 avc | 🔊 AAC\n⭐ BluRay | 🏷️ Prem\n💾 3.9 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|77b51469592c36a296fdb43952c8112853e23ddc",
+        "filename": "RRR.2022.720p.Hindi.BMS.WEB-DL.5.1.x264-HDHub4u.Tv.mkv",
+        "videoSize": 1653562409
+      },
+      "description": "📄 RRR.2022.720p.Hindi.BMS.WEB-DL.5.1.x264-HDHub4u.Tv.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n👤 17 💾 1.5 GB 🔎 Comet|solidtorrents\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|75d0d05f05af11ce3c681400ca2f725636735dc5",
+        "filename": "RRR.2022.720p.NF.WEB-DL.Hindi.5.1.ESub.x264-HDHub4u.Tv.mkv",
+        "videoSize": 1760936591
+      },
+      "description": "📄 RRR.2022.720p.NF.WEB-DL.Hindi.5.1.ESub.x264-HDHub4u.Tv.mkv\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n👤 16 💾 1.6 GB 🔎 Comet|solidtorrents\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14c680d155985b7e431910f3bacfc3a2059c6e7a",
+        "filename": "RRR.2022.WEB-DL.720p.x265.kyberpunk.mkv",
+        "videoSize": 5078299046
+      },
+      "description": "📄 RRR.2022.WEB-DL.720p.x265.kyberpunk.mkv\n📹 hevc\n⭐ WEB-DL\n💾 4.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ee5ceb7dd12891b9af5cbb12013cae4171ac8c77",
+        "filename": "RRR 2022 x264 720p BMS Esub AAC Hindi Mr-X.mkv",
+        "videoSize": 1295752344
+      },
+      "description": "📄 RRR 2022 x264 720p BMS Esub AAC Hindi Mr-X.mkv\n📹 avc | 🔊 AAC\n💾 1.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b2d33fef0058e512710eef5eeee46f6d639ba033",
+        "filename": "www.UIndex.org    -    RRR.2022.720p.BluRay.x264-SNOW",
+        "videoSize": 8361862792
+      },
+      "description": "📄 RRR.2022.720p.BluRay.x264-SNOW\n📹 avc\n⭐ BluRay | 🏷️ SNOW\n💾 7.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ee98f494730de49f19cc07011f70a56c740a4821",
+        "filename": "RRR.2022.720p.NF.WEB-DL.ExKinoRay.mkv",
+        "videoSize": 7658011787
+      },
+      "description": "📄 RRR.2022.720p.NF.WEB-DL.ExKinoRay.mkv\n⭐ WEB-DL\n💾 7.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|af9899d813da6639977fa5a47b3de90f215a701f",
+        "filename": "RRR.2022.720p.NF.WEB-DL.ExKinoRay.mkv",
+        "videoSize": 8280651519
+      },
+      "description": "📄 RRR.2022.720p.NF.WEB-DL.ExKinoRay.mkv\n⭐ WEB-DL\n💾 7.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8dc8d909c07826b5b8a7b00487313112920e01a6",
+        "filename": "RRR.2022.720p-Dual-Lat",
+        "videoSize": 2341800960
+      },
+      "description": "📄 RRR.2022.720p-Dual-Lat\n🏷️ Lat\n💾 2.2 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|756a6ba97abf29a7ee775547d5ea37570ea00024",
+        "filename": "rrr.-2022.720p.-hindi",
+        "videoSize": 2078550338
+      },
+      "description": "📄 rrr.-2022.720p.-hindi\n🏷️ hindi\n💾 1.9 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fb1c13d7d804d583cd92a54af464dc48af326d59",
+        "filename": "RRR (2022) NF 720p WEBRip x264 AAC [ Hin,Malyalam ] ESub.mkv",
+        "videoSize": 1988869342
+      },
+      "description": "📄 RRR (2022) NF 720p WEBRip x264 AAC [ Hin,Malyalam ] ESub.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip\n💾 1.9 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d7d4f8e7a5f1638d406b2df530bc4a7951945509",
+        "filename": "RRR.2022.720p.Nf.WEBRip.x264-[Worldfree4u.Vip].[Hindi].AAC.ESub.mkv",
+        "videoSize": 1889785610
+      },
+      "description": "📄 RRR.2022.720p.Nf.WEBRip.x264-[Worldfree4u.Vip].[Hindi].AAC.ESub.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip\n💾 1.8 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b8120e260a52670539d65ccc1e61c2dd7e1cd470",
+        "filename": "RRR 2022 Hindi 720p NF WEBRip AAC 5.1 ESubs x264 - mkvAnime.mkv",
+        "videoSize": 1825361100
+      },
+      "description": "📄 RRR 2022 Hindi 720p NF WEBRip AAC 5.1 ESubs x264 - mkvAnime.mkv\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ mkvAnime\n💾 1.7 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|405aa7dbee24c0b198a54728737989220eecc050",
+        "filename": "RRR 2022 Hindi 720p NF WEBRip AAC 5.1 ESubs x264 - mkvAnime.mkv",
+        "videoSize": 1864633854
+      },
+      "description": "📄 RRR 2022 Hindi 720p NF WEBRip AAC 5.1 ESubs x264 - mkvAnime.mkv\n📹 avc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ mkvAnime\n💾 1.7 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7d3013e2444843dd39666a04fb864fe4d60d75c0",
+        "filename": "RRR (2022) [720p] [WEBRip] [YTS.MX]",
+        "videoSize": 1780958535
+      },
+      "description": "📄 RRR (2022) [720p] [WEBRip] [YTS.MX]\n⭐ WEBRip\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|36484424e8d6c4b0a96d7dc1f4a76a3e2c2bfc4a",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Telugu 720p HD AVC [DD5.1 (ATMOS) & AAC] - x264 - 2.5GB - ESubs].mkv",
+        "videoSize": 2684354560
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022)[Telugu 720p HD AVC [DD5.1 (ATMOS) & AAC] - x264 - 2.5GB - ESubs].mkv\n📹 avc | 🔊 Atmos • Dolby Digital • AAC • 5.1\n⭐ HDTV\n💾 2.5 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|27658bfef08fc3ea83762f34aebbce330c50d95a",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Tamil 720p HD AVC [DD5.1 (ATMOS) & AAC] - x264 - 2.5GB - ESubs].mkv",
+        "videoSize": 5368709120
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022)[Tamil 720p HD AVC [DD5.1 (ATMOS) & AAC] - x264 - 2.5GB - ESubs].mkv\n📹 avc | 🔊 Atmos • Dolby Digital • AAC • 5.1\n⭐ HDTV\n💾 5.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e1447e9caaf6b46d12e8a54688a83e14b371f44",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.DUB.BDRip.720p.x264.seleZen.mkv",
+        "videoSize": 7989968426
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.DUB.BDRip.720p.x264.seleZen.mkv\n📹 avc\n⭐ BDRip\n💾 7.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2ee5bff5280fddc4615eaaa3c34f74aec244039e",
+        "filename": "RRR. Рядом ревёт революция.2022.BDRip 720p msltel.mkv",
+        "videoSize": 11125484393
+      },
+      "description": "📄 RRR. Рядом ревёт революция.2022.BDRip 720p msltel.mkv\n⭐ BDRip\n💾 10.4 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3532220272b4f9bdf885901c9a046526bec77e54",
+        "filename": "RRR.2022.720p.10Bit.HEVC.NF.WEB-DL.Hindi.5.1.ESub.x265-HDHub4u.Tv.mkv",
+        "videoSize": 1417339208
+      },
+      "description": "📄 RRR.2022.720p.10Bit.HEVC.NF.WEB-DL.Hindi.5.1.ESub.x265-HDHub4u.Tv.mkv\n📹 hevc • 10bit | 🔊 5.1\n⭐ WEB-DL\n👤 4 💾 1.3 GB 🔎 Comet|solidtorrents\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f24b09028574767e63010595d3fe91d22a2914e",
+        "filename": "www.7MovieRulz.lt - RRR (2022) 720p Tamil HDRip - x264 - [DD5.1 & AAC] - 1.4GB - ESub.mkv",
+        "videoSize": 1503238553
+      },
+      "description": "📄 www.7MovieRulz.lt - RRR (2022) 720p Tamil HDRip - x264 - [DD5.1 & AAC] - 1.4GB - ESub.mkv\n📹 avc | 🔊 Dolby Digital • AAC • 5.1\n⭐ HDRip | 🏷️ ESub\n💾 1.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f54a622ae14adf685d2f1aa531a94cdfa5a611f",
+        "filename": "RRR (2022) 720p Hindi True WEB-HDRip x264 AAC DD 5.1 By Full4Movies.mkv",
+        "videoSize": 1857573356
+      },
+      "description": "📄 RRR (2022) 720p Hindi True WEB-HDRip x264 AAC DD 5.1 By Full4Movies.mkv\n📹 avc | 🔊 Dolby Digital • AAC • 5.1\n⭐ HDRip\n💾 1.7 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1ec2fa3879623623b8d5c17640ef63b3b2e1e378",
+        "filename": "www TamilBlasters click - RRR (2022)[Tamil 720p HDRip - [DD5 1 & AAC] - x264 - 1 6GB - ESubs] mkv",
+        "videoSize": 6442450944
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Tamil 720p HDRip - [DD5 1 & AAC] - x264 - 1 6GB - ESubs] mkv\n📹 avc | 🔊 Dolby Digital • AAC • 5.1\n⭐ HDRip\n💾 6.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|115514ba923bf6a69ad5809857c1cddae13e2392",
+        "filename": "www CineVez cc - RRR (2022) 720p Tamil HDRip - x264 - [DD5 1 & AAC] - 1 4GB - ESub mkv",
+        "videoSize": 4294967296
+      },
+      "description": "📄 www CineVez cc - RRR (2022) 720p Tamil HDRip - x264 - [DD5 1 & AAC] - 1 4GB - ESub mkv\n📹 avc | 🔊 Dolby Digital • AAC • 5.1\n⭐ HDRip\n💾 4.0 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0cd6d3d7d24e9ae1de2bbcecfbda47f4cbb7b55c",
+        "filename": "www TamilBlasters click - RRR (2022)[Malayalam 720p HDRip - [DD5 1 & AAC] - x264 - 1 6GB] mkv",
+        "videoSize": 6442450944
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Malayalam 720p HDRip - [DD5 1 & AAC] - x264 - 1 6GB] mkv\n📹 avc | 🔊 Dolby Digital • AAC • 5.1\n⭐ HDRip\n💾 6.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f0cf00293b6e6c709d339065ded21cd34e67a085",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - 720p HDRip - x264 - AAC - 1 4GB - HC ESubs] mkv",
+        "videoSize": 4294967296
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - 720p HDRip - x264 - AAC - 1 4GB - HC ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 4.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d54f28006fbdab4f13d17641266a72c98fea0f2d",
+        "filename": "www.TamilBlasters.click - RRR (2022) [Tamil - 720p HDRip - x265 - HEVC - AAC - 850MB - HC ESubs].mkv",
+        "videoSize": 891289600
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022) [Tamil - 720p HDRip - x265 - HEVC - AAC - 850MB - HC ESubs].mkv\n📹 hevc | 🔊 AAC\n⭐ HDRip\n💾 850.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c14da3cc13b759a16c99271149090f4be44f80a8",
+        "filename": "www TamilBlasters click - RRR (2022) [Kannada - 720p HDRip - x264 - AAC - 1 4GB - HC ESubs] mkv",
+        "videoSize": 4294967296
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Kannada - 720p HDRip - x264 - AAC - 1 4GB - HC ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 4.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bb132a22e3429c9731d78740639ad4dfebd14393",
+        "filename": "RRR (2022) Hindi (Line Audio) 720p  HDRip x264 - AAC HC-ESub.mkv",
+        "videoSize": 1627480467
+      },
+      "description": "📄 RRR (2022) Hindi (Line Audio) 720p  HDRip x264 - AAC HC-ESub.mkv\n📹 avc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 1.5 GB 🔎 Comet|Torrents.csv\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|55e0d255caa134cf53d63bb122183f976843156d",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil HDRip - 720p - x264 - AAC - 1.4GB - HC-ESub.mkv",
+        "videoSize": 1503238553
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil HDRip - 720p - x264 - AAC - 1.4GB - HC-ESub.mkv\n📹 avc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 1.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|464a54136a03ad9882d2079ca6f81948b88e87e0",
+        "filename": "www TamilBlasters click - RRR (2022)[Telugu 720p HDRip - HEVC - AAC - x264 - 900MB - ESubs] mkv",
+        "videoSize": 943718400
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Telugu 720p HDRip - HEVC - AAC - x264 - 900MB - ESubs] mkv\n📹 hevc | 🔊 AAC\n⭐ HDRip\n💾 900.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3b91428221aa0cf073eee68b1b3b3057842e96ba",
+        "filename": "RRR (2022) - 720p HDRip - [Hindi (Line Aud) - x264 - AAC - 1.",
+        "videoSize": 1603262299
+      },
+      "description": "📄 RRR (2022) - 720p HDRip - [Hindi (Line Aud) - x264 - AAC - 1.\n📹 avc | 🔊 AAC\n⭐ HDRip\n👤 2 💾 1.5 GB 🔎 The Pirate Bay\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|06fdfef8bc94b0310bd762d80cad98ba763f32c9",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil HDRip - 720p - HEVC - AAC - 850MB - HC-ESub.mkv",
+        "videoSize": 891289600
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil HDRip - 720p - HEVC - AAC - 850MB - HC-ESub.mkv\n📹 hevc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 850.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b0c6d0039006db066cb362e837ac757ad8c3993a",
+        "filename": "www TamilBlasters click - RRR (2022)[Kannada 720p HDRip - AC3 DD5 1 - x264 - 1 5GB - ESubs]  mkv",
+        "videoSize": 5368709120
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Kannada 720p HDRip - AC3 DD5 1 - x264 - 1 5GB - ESubs]  mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ HDRip\n💾 5.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a6382d956c3446441401b48346d5af3fd9ada0da",
+        "filename": "www.CineVez.cc - RRR (2022) 720p Hindi HDRip - DD5.1 - x264 - 1.5GB - ESub.mkv",
+        "videoSize": 1782411428
+      },
+      "description": "📄 www.CineVez.cc - RRR (2022) 720p Hindi HDRip - DD5.1 - x264 - 1.5GB - ESub.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ HDRip | 🏷️ ESub\n💾 1.7 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|877910f1792a6c0afe2ddb6962db59dea733ec64",
+        "filename": "www TamilBlasters click - RRR (2022)[Telugu 720p HDRip - AC3 DD5 1 - x264 - 1 5GB - ESubs] mkv",
+        "videoSize": 5368709120
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Telugu 720p HDRip - AC3 DD5 1 - x264 - 1 5GB - ESubs] mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ HDRip\n💾 5.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|741875586618922f624edbe0c381f694efd50bf5",
+        "filename": "www TamilBlasters click - RRR (2022)[Hindi 720p HDRip - AC3 DD5 1 - x264 - 1 5GB - ESubs] mkv",
+        "videoSize": 5368709120
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Hindi 720p HDRip - AC3 DD5 1 - x264 - 1 5GB - ESubs] mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ HDRip\n💾 5.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|28c33d8936a72e2d3bcec91fd1c30bc090b085cf",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - 720p HDRip - HEVC - x265 - DD5 1 (192 Kbps) - 1GB - ESubs] mkv",
+        "videoSize": 1073741824
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - 720p HDRip - HEVC - x265 - DD5 1 (192 Kbps) - 1GB - ESubs] mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ HDRip\n💾 1.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|00089ff950ab5204d9e5f0d91ada337029fe3706",
+        "filename": "www.7MovieRulz.lt - RRR (2022) 720p Hindi HDRip - DD5.1 - x264 - 1.5GB - ESub.mkv",
+        "videoSize": 1782411428
+      },
+      "description": "📄 www.7MovieRulz.lt - RRR (2022) 720p Hindi HDRip - DD5.1 - x264 - 1.5GB - ESub.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ HDRip | 🏷️ ESub\n💾 1.7 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a095dbbb4903e7d5da9dd0eb7207a87bc8bd41b",
+        "filename": "Rrr 2022 Hdrip 720p X264-[Worldfree4u.Tel] [Hindi-(Clean)] Hc-ESub.mkv",
+        "videoSize": 2581966526
+      },
+      "description": "📄 Rrr 2022 Hdrip 720p X264-[Worldfree4u.Tel] [Hindi-(Clean)] Hc-ESub.mkv\n📹 avc\n⭐ HDRip | 🏷️ ESub\n💾 2.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6a5015e6eceef9630771d651a4e3eb4b72d84d1c",
+        "filename": "RRR.2022.720p.Hindi.HDRip.HC-ESub.x264-HDHub4u.Tv.mkv",
+        "videoSize": 1707249500
+      },
+      "description": "📄 RRR.2022.720p.Hindi.HDRip.HC-ESub.x264-HDHub4u.Tv.mkv\n📹 avc\n⭐ HDRip\n💾 1.6 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c695423ab7498a8a2d06c61d82fa39c57e1673a5",
+        "filename": "RRR (2022) 720p HDRip Hindi-[freedownloadterminal.com].mp4",
+        "videoSize": 1503238553
+      },
+      "description": "📄 RRR (2022) 720p HDRip Hindi-[freedownloadterminal.com].mp4\n⭐ HDRip\n💾 1.4 GB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|526333152b6afbe3869f686d0672193a54ecb306",
+        "filename": "RRR (2022) [Tamil Dubbed] 720p WEB-DLRip Saicord.mp4",
+        "videoSize": 3073387383
+      },
+      "description": "📄 RRR (2022) [Tamil Dubbed] 720p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 2.9 GB 🔎 Comet|StremThru\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4f8c285e9eadf6ac9a6f24eb94668cb26164e87f",
+        "filename": "RRR (2022) [Bengali Dub] 720p WEB-DLRip Saicord.mp4",
+        "videoSize": 3221225472
+      },
+      "description": "📄 RRR (2022) [Bengali Dub] 720p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n👤 3 💾 3.0 GB 🔎 Comet|unknown\n🌎/🇧🇩",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4d1df4bdcf92579e2153f05552cc0051c67c18bf",
+        "filename": "RRR (2022) [Hindi Dubbed] 720p WEB-DLRip Saicord.mp4",
+        "videoSize": 3070222058
+      },
+      "description": "📄 RRR (2022) [Hindi Dubbed] 720p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 2.9 GB 🔎 Comet|StremThru\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1fe3696cfa6b19510c0655f52ff558eb4bc541ae",
+        "filename": "RRR (2022) [Azerbaijan Dubbed] 720p WEB-DLRip Saicord.mp4",
+        "videoSize": 3061387025
+      },
+      "description": "📄 RRR (2022) [Azerbaijan Dubbed] 720p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 2.9 GB 🔎 Comet|BitMagnet (Local DHT)\n🌎",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3cde1a126a1c5ff839e3d22ef2f1b164354bcb4",
+        "filename": "RRR / Rise Roar Revolt (2022) [720p WEBRip] [XviD] [Napisy PL] [avi]  [FIONA9]",
+        "videoSize": 2254857830
+      },
+      "description": "📄 RRR / Rise Roar Revolt (2022) [720p WEBRip] [XviD] [Napisy PL] [avi]  [FIONA9]\n📹 xvid\n⭐ WEBRip\n👤 0 💾 2.1 GB 🔎 Comet|unknown\n🇵🇱",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|468dd8b17ed5dc7b42da9b85d04f8cb5998ebe00",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil WEB-DL - 480p - AVC - AAC - 1.7GB - HC-ESub.mkv",
+        "videoSize": 1825361100
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil WEB-DL - 480p - AVC - AAC - 1.7GB - HC-ESub.mkv\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ESub\n💾 1.7 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|15619dd1fa21ffc81fee164806ac8a2afb55ee4d",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - 480p HD AVC - UNTOUCHED - x264 - AAC - 1 7GB - HC ESubs] mp4",
+        "videoSize": 7516192768
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - 480p HD AVC - UNTOUCHED - x264 - AAC - 1 7GB - HC ESubs] mp4\n📹 avc | 🔊 AAC\n⭐ HDTV\n💾 7.0 GB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b98fc686fe3f27ffa0cdb09f6979e0c902cf71bd",
+        "filename": "RRR (2022) 480p Hindi True WEB-HDRip x264 AAC DD 2.0 By Full4Movies.mkv",
+        "videoSize": 575143936
+      },
+      "description": "📄 RRR (2022) 480p Hindi True WEB-HDRip x264 AAC DD 2.0 By Full4Movies.mkv\n📹 avc | 🔊 Dolby Digital • AAC • 2.0\n⭐ HDRip\n💾 548.5 MB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3dfe016b66d7706ad53df33c0d00c61c1b869b4b",
+        "filename": "RRR Рядом ревёт революция (2022) (TrueHD Atmos).mkv",
+        "videoSize": 36718699903
+      },
+      "description": "📄 RRR Рядом ревёт революция (2022) (TrueHD Atmos).mkv\n🔊 Atmos • TrueHD\n💾 34.2 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8469e49cbb37d3d0d56bde690f11a6c4e11a1420",
+        "filename": "RRR 2022 Hindi Dubbed Web-Dl x264 AAC.mp4",
+        "videoSize": 1503238553
+      },
+      "description": "📄 RRR 2022 Hindi Dubbed Web-Dl x264 AAC.mp4\n📹 avc | 🔊 AAC\n⭐ WEB-DL\n👤 3 💾 1.4 GB 🔎 Comet|unknown\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fdd18e04d4e2e5ec972c3318228bc497cbe1344c",
+        "filename": "RRR.2022.lati.mp4",
+        "videoSize": 4261327792
+      },
+      "description": "📄 RRR.2022.lati.mp4\n💾 4.0 GB 🔎 Comet|StremThru\n💃🏻",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fd1e68b9c2f68b14c391bbc234b0e86616550274",
+        "filename": "rrr",
+        "videoSize": 2083930218
+      },
+      "description": "📄 rrr\n💾 1.9 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eb49420ebed058ed30a5c19cfa17deb265d5bfd8",
+        "filename": "rrr.mp4",
+        "videoSize": 2380267
+      },
+      "description": "📄 rrr.mp4\n👤 1 💾 2.3 MB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e87317ddc9e90439a24b947e96d5dfe3ce4e64e4",
+        "filename": "RRR",
+        "videoSize": 457588080
+      },
+      "description": "📄 RRR\n👤 1 💾 436.4 MB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|db54fedb563e136ae0c942f86c1fdfb44d86454f",
+        "filename": "RRR_2022_JPN_UHD-ANKO",
+        "videoSize": 99572822016
+      },
+      "description": "📄 RRR_2022_JPN_UHD-ANKO\n🏷️ ANKO\n💾 92.7 GB 🔎 DMM\n🇯🇵",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dac43dd73fb796fed403fcb8c6fd09fc211bc089",
+        "filename": "RRR: Russian Roulette Revolver",
+        "videoSize": 8074035
+      },
+      "description": "📄 RRR: Russian Roulette Revolver\n💾 7.7 MB 🔎 DMM\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cf0e17c4c73275588b36675438dd798eefdd7411",
+        "filename": "RRR (2022) - Telugu with clear English scenes (ENG subs).mp4",
+        "videoSize": 20274153503
+      },
+      "description": "📄 RRR (2022) - Telugu with clear English scenes (ENG subs).mp4\n💾 18.9 GB 🔎 DMM\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c59e33086395f0dbed77b77ddcbf667d564d24aa",
+        "filename": "RRR. Рядом ревет революция (RRR).mkv",
+        "videoSize": 13529146982
+      },
+      "description": "📄 RRR. Рядом ревет революция (RRR).mkv\n🏷️ RRR\n👤 1 💾 12.6 GB 🔎 BTdirectory\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c506dc4f1787d08fdea80c647433dcaff4ce264d",
+        "filename": "rrr",
+        "videoSize": 11150182728
+      },
+      "description": "📄 rrr\n💾 10.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b652c958c6d20576ae2b49f145a8b4cf702134e9",
+        "filename": "RRR (2022) - Telugu with clear English scenes (ENG subs).mp4",
+        "videoSize": 6694550646
+      },
+      "description": "📄 RRR (2022) - Telugu with clear English scenes (ENG subs).mp4\n💾 6.2 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a2b8b79de67e90cc35ab0a6aa0d1760b15e4b3d2",
+        "filename": "rrr.avi",
+        "videoSize": 1537337978
+      },
+      "description": "📄 rrr.avi\n💾 1.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9d89ba6eebdb43f65590989bf3699a48d5761666",
+        "filename": "RRR",
+        "videoSize": 0
+      },
+      "description": "📄 RRR\n💾 0.0 B 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|77ebdd1d6f3f84f50446f6a007e764a4c7574e3d",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.DUB.seleZen",
+        "videoSize": 2341590297
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.DUB.seleZen\n💾 2.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|75b1bede3743108d28d2ac137e1fb197ae9d7da7",
+        "filename": "RRR.2022.mkv",
+        "videoSize": 4123154481
+      },
+      "description": "📄 RRR.2022.mkv\n💾 3.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f3d58b03944d9a6c1f7ea2d1588a64fecf31b7b",
+        "filename": "RRR (Rise Roar Revolt) (2022)",
+        "videoSize": 11297903314
+      },
+      "description": "📄 RRR (Rise Roar Revolt) (2022)\n💾 10.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a5d61405f1df0afc0ee9f18402d116a1b0a6024",
+        "filename": "RRR",
+        "videoSize": 1468766208
+      },
+      "description": "📄 RRR\n💾 1.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a2e90cb1a939b0515437ce06394dd44f063ffa5",
+        "filename": "RRR  2022",
+        "videoSize": 7194070220
+      },
+      "description": "📄 RRR  2022\n💾 6.7 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|336345e7fbd1833ca8e53495a547ad09a57103be",
+        "filename": "rrr-subbed",
+        "videoSize": 4745938862
+      },
+      "description": "📄 rrr-subbed\n🏷️ subbed\n👤 1 💾 4.4 GB 🔎 BTdirectory",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|14b6be73fdbbf1b52c968636f19e5315ef00f396",
+        "filename": "rrr.avi",
+        "videoSize": 248103271
+      },
+      "description": "📄 rrr.avi\n💾 236.6 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0aec8027acfdf277d5ab05c5b5564461c835efac",
+        "filename": "rrr-bb211.r00",
+        "videoSize": 15000000
+      },
+      "description": "📄 rrr-bb211.r00\n🏷️ bb211\n💾 14.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9c0eec80080c892df5ce2cd46c4b3499ac1b0293",
+        "filename": "RRR.2022.P.WEBRip.14OOMB.avi",
+        "videoSize": 1475344384
+      },
+      "description": "📄 RRR.2022.P.WEBRip.14OOMB.avi\n⭐ WEBRip\n👤 1 💾 1.4 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|50ee988d2a3b01a6542b28b90da566bbb22e3a62",
+        "filename": "RRR.2022.DVDRip-Lat",
+        "videoSize": 1236245388
+      },
+      "description": "📄 RRR.2022.DVDRip-Lat\n⭐ DVDRip | 🏷️ Lat\n💾 1.2 GB 🔎 Comet|StremThru\n💃🏻",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ffdeb46db8304b452c73855bee263faec9e101c3",
+        "filename": "www TamilBlasters click - RRR (2022)[Tamil HDRip - AAC - x264 - 400MB - ESubs] mkv",
+        "videoSize": 419430400
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Tamil HDRip - AAC - x264 - 400MB - ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 400.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f4ce807ae5ae272f561e7e90abba6b567f414487",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - HDRip - x264 - AAC - 400MB - HC ESubs] mkv",
+        "videoSize": 419430400
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - HDRip - x264 - AAC - 400MB - HC ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 400.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f15b087ab93e57849a828ba372d442d1522ba40c",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Malayalam HDRip - AAC - x264 - 700MB].mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022)[Malayalam HDRip - AAC - x264 - 700MB].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 700.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e7aa9e1a10801509fc5759a512fa9c53750b3796",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Telugu HDRip - AAC - x264 - 700MB - ESubs].mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022)[Telugu HDRip - AAC - x264 - 700MB - ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 700.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8a23e6b9e2181921daccf9c601348b696ca59b59",
+        "filename": "www 1TamilMV fans - RRR (2022) Tamil HDRip - 250MB - x264 - AAC - HC-ESub mkv",
+        "videoSize": 262144000
+      },
+      "description": "📄 www 1TamilMV fans - RRR (2022) Tamil HDRip - 250MB - x264 - AAC - HC-ESub mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 250.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|892b605d7a839f7de659543a4dab42a85741ae86",
+        "filename": "www.1TamilMV.pet - RRR (2022) BR-Rip - x264 - [Mal + Kan + Eng] - (AAC 2.0) - 850MB - ESub.mkv",
+        "videoSize": 891289600
+      },
+      "description": "📄 www.1TamilMV.pet - RRR (2022) BR-Rip - x264 - [Mal + Kan + Eng] - (AAC 2.0) - 850MB - ESub.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ BRRip | 🏷️ ESub\n💾 850.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6a35d1f7f72056295e731bebc90d68bb6be7d6aa",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Tamil HDRip - AAC - x264 - 700MB - ESubs].mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www.TamilBlasters.click - RRR (2022)[Tamil HDRip - AAC - x264 - 700MB - ESubs].mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 700.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|636e1208246d4e34008815c63843926237a7746b",
+        "filename": "www TamilBlasters click - RRR (2022)[Hindi HDRip - AAC - x264 - 700MB - ESubs] mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Hindi HDRip - AAC - x264 - 700MB - ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 700.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4a0ae210cbe2229f7befad7dceb22046835b31e4",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - HDRip - x264 - AAC - 700MB - HC ESubs] mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - HDRip - x264 - AAC - 700MB - HC ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 700.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|46bc1884f66af54819ba15ef83b750a50767d3ac",
+        "filename": "www TamilBlasters click - RRR (2022)[Hindi HDRip - AAC - x264 - 400MB] mkv",
+        "videoSize": 419430400
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Hindi HDRip - AAC - x264 - 400MB] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 400.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3b521186ef494f7ae3c5a12422a04276bd876a83",
+        "filename": "www 1TamilMV fans - RRR (2022) Tamil HDRip - 400MB - x264 - AAC - HC-ESub mkv",
+        "videoSize": 419430400
+      },
+      "description": "📄 www 1TamilMV fans - RRR (2022) Tamil HDRip - 400MB - x264 - AAC - HC-ESub mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 400.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|347da45f82a2f1a85bd6b6c90605feb615ea09bb",
+        "filename": "www TamilBlasters click - RRR (2022) [Tamil - HDRip - x264 - AAC - 250MB - HC ESubs] mkv",
+        "videoSize": 262144000
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022) [Tamil - HDRip - x264 - AAC - 250MB - HC ESubs] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 250.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|25d88f129b265af7bed5db4b288211a5b050cba9",
+        "filename": "www TamilBlasters click - RRR (2022)[Malayalam HDRip - AAC - x264 - 450MB] mkv",
+        "videoSize": 471859200
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Malayalam HDRip - AAC - x264 - 450MB] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 450.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|235b10caa612fb7aa8eff9035758b37f26ce5c0f",
+        "filename": "www.1TamilMV.fans - RRR (2022) Tamil HDRip - 700MB - x264 - AAC - HC-ESub.mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www.1TamilMV.fans - RRR (2022) Tamil HDRip - 700MB - x264 - AAC - HC-ESub.mkv\n📹 avc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 700.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|150ba0e3f7107518b17ca752cf95c45ee0b846ec",
+        "filename": "www TamilBlasters click - RRR (2022)[Kannada HDRip - AAC - x264 - 400MB] mkv",
+        "videoSize": 419430400
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Kannada HDRip - AAC - x264 - 400MB] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 400.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0654327142fbcf0fc238abe797b7f8231cdd2c10",
+        "filename": "www 1TamilMV pet - RRR (2022) BR-Rip - x264 - [Mal + Kan] - (AAC 2 0) - 500MB - ESub mkv",
+        "videoSize": 524288000
+      },
+      "description": "📄 www 1TamilMV pet - RRR (2022) BR-Rip - x264 - [Mal + Kan] - (AAC 2 0) - 500MB - ESub mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ BRRip\n💾 500.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|042d292d4f24fe93893b6cb795f28405027ff165",
+        "filename": "www.TamilBlasters.click - RRR (2022)[Kannada HDRip - AAC - x264 - 700MB].mkv",
+        "videoSize": 734003200
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Kannada HDRip - AAC - x264 - 700MB] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 700.0 MB 🔎 DMM\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02571d3584dbf7bb83df0d3f2d95360b56fc5bf2",
+        "filename": "www TamilBlasters click - RRR (2022)[Hindi HDRip - AAC - x264 - 250MB] mkv",
+        "videoSize": 262144000
+      },
+      "description": "📄 www TamilBlasters click - RRR (2022)[Hindi HDRip - AAC - x264 - 250MB] mkv\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 250.0 MB 🔎 Comet|StremThru\n🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|01fed924e256e0cb0a4353894a4197242a4ddbc1",
+        "filename": "www.7MovieRulz.lt - RRR (2022) Tamil HDRip - AAC - x264 - 700MB - ESub.mkv",
+        "videoSize": 718704638
+      },
+      "description": "📄 www.7MovieRulz.lt - RRR (2022) Tamil HDRip - AAC - x264 - 700MB - ESub.mkv\n📹 avc | 🔊 AAC\n⭐ HDRip | 🏷️ ESub\n💾 685.4 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f948e11c4a75af223fd30ac5b75f9b8c7376552f",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 5026277669
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 4.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f834aed7db72ad4889e4b71451e7eece1d354ab8",
+        "filename": "RRR.Rise Roar Revolt.2022.MVO.X264.WEB-DLRip-AVC.[wolf1245.ExKinoRay].mkv",
+        "videoSize": 4659693884
+      },
+      "description": "📄 RRR.Rise Roar Revolt.2022.MVO.X264.WEB-DLRip-AVC.[wolf1245.ExKinoRay].mkv\n📹 avc\n⭐ WEB-DLRip\n💾 4.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba5df137eb13609631f36758b754c184212533c0",
+        "filename": "Рядом ревёт революция / RRR / Rise Roar Revolt [2022 WEB-DLRip-AVC] DVO (Кубик в Кубе) + Original (Hin) + Sub (Rus Eng Hin)",
+        "videoSize": 4683598670
+      },
+      "description": "📄 Рядом ревёт революция / RRR / Rise Roar Revolt [2022 WEB-DLRip-AVC] DVO (Кубик в Кубе) + Original (Hin) + Sub (Rus Eng Hin)\n📹 avc\n⭐ WEB-DLRip\n💾 4.4 GB 🔎 Comet|Knaben\n🌎/🇬🇧/🇷🇺/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a27e4101da3189850460b8b83bcc63b490702255",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.WEB-DLRip.x264.seleZen.mkv",
+        "videoSize": 5026301397
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.WEB-DLRip.x264.seleZen.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 4.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6487bd6613d02212a901defb8803be9afdef5e32",
+        "filename": "Рядом ревёт революция (Rise Roar Revolt 2022)[WEB-DLRip-AVC от Habanero].mkv",
+        "videoSize": 3003236441
+      },
+      "description": "📄 Рядом ревёт революция (Rise Roar Revolt 2022)[WEB-DLRip-AVC от Habanero].mkv\n📹 avc\n⭐ WEB-DLRip\n💾 2.8 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|31c4809f28b7b38b38411ecaab317e5ffcb746ae",
+        "filename": "RRR.(Rise.Roar.Revolt).2022.WEB-DLRip.x264.mkv",
+        "videoSize": 1573731523
+      },
+      "description": "📄 RRR.(Rise.Roar.Revolt).2022.WEB-DLRip.x264.mkv\n📹 avc\n⭐ WEB-DLRip\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0f55b8262bb8ca9227658b64a8f9ac4cbc73ac0e",
+        "filename": "RRR.Rise Roar Revolt.2022.MVO.Jaskier.TVShows.X264.WEB-DLRip-AVC.[wolf1245.ExKinoRay].mkv",
+        "videoSize": 4833720785
+      },
+      "description": "📄 RRR.Rise Roar Revolt.2022.MVO.Jaskier.TVShows.X264.WEB-DLRip-AVC.[wolf1245.ExKinoRay].mkv\n📹 avc\n⭐ WEB-DLRip\n💾 4.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fd2758e59f99b6b03076f242bb134e26a8900c34",
+        "filename": "RRR (2022) [Arabian Dubbed] 400p WEB-DLRip Saicord.mp4",
+        "videoSize": 2791728742
+      },
+      "description": "📄 RRR (2022) [Arabian Dubbed] 400p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n👤 3 💾 2.6 GB 🔎 Comet|unknown\n🌎",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eab6e1ef9b5cce42a328ecad8d5ea63d2c837ad7",
+        "filename": "RRR (2022) [Hindi Dubbed] 400p WEB-DLRip Saicord.mp4",
+        "videoSize": 1932735283
+      },
+      "description": "📄 RRR (2022) [Hindi Dubbed] 400p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n👤 3 💾 1.8 GB 🔎 Comet|unknown\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|84ab8ab53e1e603c701f58d1641c2a9c8a75d987",
+        "filename": "RRR (2022) [Azerbaijan Dubbed] 400p WEB-DLRip Saicord.mp4",
+        "videoSize": 1943802884
+      },
+      "description": "📄 RRR (2022) [Azerbaijan Dubbed] 400p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6446037d0ce8a1edf0f852c24ecf2a31ea7bd152",
+        "filename": "Rise.Roar.Revolt.WEB-DLRip.Kubik.v.Kube.mkv",
+        "videoSize": 2330376384
+      },
+      "description": "📄 Rise.Roar.Revolt.WEB-DLRip.Kubik.v.Kube.mkv\n⭐ WEB-DLRip\n💾 2.2 GB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e9aa22e1d3df1ee30f982f03acca2a3d4533989",
+        "filename": "RRR.Rise.Roar.Revolt.2022.MVO.WEB-DLRip.2.91Gb.MegaPeer",
+        "videoSize": 3124588707
+      },
+      "description": "📄 RRR.Rise.Roar.Revolt.2022.MVO.WEB-DLRip.2.91Gb.MegaPeer\n⭐ WEB-DLRip\n💾 2.9 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|11bd548a9afbdad1c7bf82d719a2b5bb8ab4c83e",
+        "filename": "RRR (2022) [Tamil Dubbed] 400p WEB-DLRip Saicord.mp4",
+        "videoSize": 1932735283
+      },
+      "description": "📄 RRR (2022) [Tamil Dubbed] 400p WEB-DLRip Saicord.mp4\n⭐ WEB-DLRip\n👤 3 💾 1.8 GB 🔎 Comet|unknown\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b488a06ce299a7b7df4e2f90b094ea9590cabb55",
+        "filename": "www 1TamilMV fans - RRR (2022) Tamil HDRip - XviD - 700MB - MP3 - HC-ESub avi",
+        "videoSize": 734003200
+      },
+      "description": "📄 www 1TamilMV fans - RRR (2022) Tamil HDRip - XviD - 700MB - MP3 - HC-ESub avi\n📹 xvid | 🔊 MP3\n⭐ HDRip\n💾 700.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

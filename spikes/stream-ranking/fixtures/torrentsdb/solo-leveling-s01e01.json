@@ -1,0 +1,1141 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "solo-leveling-s01e01",
+  "request": "https://torrentsdb.com/stream/series/tt21209876%3A1%3A1.json",
+  "recordedAt": "2026-10-11T12:04:32.669Z",
+  "status": 200,
+  "ms": 647,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Solo.Leveling.S01.2160p.WEB-DL.MULTI.AAC2.0.x264.Multi.Subs.AniMeitantei\nSolo.Leveling.S01E01.I'm.Used.to.It.2160p.WEB-DL.MULTI.AAC2.0.x264.Multi.Subs.AniMeitantei.mkv\n📅 S01E01 👤 355 💾 1.33 GB ⚙️ knaben",
+      "infoHash": "b71be6b85254725151b27ba6af5d94e2b45ac887",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b71be6b85254725151b27ba6af5d94e2b45ac887",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.2160p.WEB-DL.MULTI.AAC2.0.x264.Multi.Subs.AniMeitantei.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 549.48 MB ⚙️ 1lou",
+      "infoHash": "cb345dfb44f8b404c2f175ba5a74ce513d087f0d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Solo.Leveling.S01E01.2024.2160p.IQ.WEB-DL.H265.DDP2.0-LelveTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:cb345dfb44f8b404c2f175ba5a74ce513d087f0d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 520.42 MB ⚙️ 1lou",
+      "infoHash": "33d88dc39efe09768855cfc74e4f416cdfbb4e63",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Solo.Leveling.S01E01.2024.2160p.WEB-DL.H265.AAC-LelveTV.mp4"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:https://tracker1.ctix.cn:443/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://bvarf.tracker.sh:2086/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "dht:33d88dc39efe09768855cfc74e4f416cdfbb4e63"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 1.29 GB ⚙️ 1lou",
+      "infoHash": "3f21e54012b3d4d5005b0191423563b75b0790c0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.2160p.WEB-DL.x264.AAC-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "dht:3f21e54012b3d4d5005b0191423563b75b0790c0"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Judas] Solo Leveling (Season 01) [1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)\n[Judas] Solo Leveling - S01E01v2.mkv\n📅 S01E01 👤 397 💾 344.59 MB ⚙️ knaben",
+      "infoHash": "fba7f9c9df37ce12b4e412dab6a60f1e1bc417a3",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|fba7f9c9df37ce12b4e412dab6a60f1e1bc417a3",
+        "filename": "[Judas] Solo Leveling - S01E01v2.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling [Season 1] [WEB 1080p HEVC AAC] [Dual Audio-EngSubs] (Batch)\n[DiabloTripleA] Solo Leveling - S01E01.mkv\n📅 S01E01 👤 296 💾 342.36 MB ⚙️ ThePirateBay",
+      "infoHash": "2ae9a436cdfb4728eac6c3375f9ac156f4c98548",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2ae9a436cdfb4728eac6c3375f9ac156f4c98548",
+        "filename": "[DiabloTripleA] Solo Leveling - S01E01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[EMBER] Solo Leveling (2024) (Season 1) [BDRip] [1080p Dual Audio HEVC 10 bits DDP] (Ore dake Level Up na Ken) (Batch)\nS01E01-I'm Used to It [28559867].mkv\n📅 S01E01 👤 252 💾 467.33 MB ⚙️ knaben",
+      "infoHash": "4df1721564fd661af369bc524885f11fab17ba3f",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4df1721564fd661af369bc524885f11fab17ba3f",
+        "filename": "S01E01-I'm Used to It [28559867].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01 + S02 BDRIP 1080p X265 10bit VOSTFR\nOre dake Level Up na Ken - Solo Leveling/Ore dake Level Up na Ken - Solo Leveling S02/[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S02E01 BDRIP 1080p X265 10bit VOSTFR.mkv\n📅 S01E01 👤 219 💾 840.70 MB ⚙️ nyaa",
+      "infoHash": "f767f950a4c0c50d99b102db934db3dee888bf8c",
+      "fileIdx": 12,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|f767f950a4c0c50d99b102db934db3dee888bf8c",
+        "filename": "[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S02E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01 + S02 BDRIP 1080p X265 10bit VOSTFR\nOre dake Level Up na Ken - Solo Leveling/Ore dake Level Up na Ken - Solo Leveling S01/[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv\n📅 S01E01 👤 219 💾 733.30 MB ⚙️ nyaa",
+      "infoHash": "f767f950a4c0c50d99b102db934db3dee888bf8c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|f767f950a4c0c50d99b102db934db3dee888bf8c",
+        "filename": "[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling [Season 1] [WEB 1080p HEVC AAC] [Dual Audio-EngSubs] (Batch)\n[DiabloTripleA] Solo Leveling - S01E01.mkv\n📅 S01E01 👤 176 💾 342.36 MB ⚙️ knaben",
+      "infoHash": "2AE9A436CDFB4728EAC6C3375F9AC156F4C98548",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2AE9A436CDFB4728EAC6C3375F9AC156F4C98548",
+        "filename": "[DiabloTripleA] Solo Leveling - S01E01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[Yameii] Solo Leveling - S02 [English Dub] [CR WEB-DL 1080p]\n[Yameii] Solo Leveling - S02E01 [English Dub] [CR WEB-DL 1080p] [5586710B].mkv\n📅 S01E01 👤 100 💾 1.34 GB ⚙️ nyaa",
+      "infoHash": "67c020226dd310236c6a0e040a9fed835cab1b10",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|67c020226dd310236c6a0e040a9fed835cab1b10",
+        "filename": "[Yameii] Solo Leveling - S02E01 [English Dub] [CR WEB-DL 1080p] [5586710B].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo .Leveling .S01 .\nSolo.Leveling.S01.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub/Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv\n📅 S01E01 👤 80 💾 1.58 GB ⚙️ TokyoTosho",
+      "infoHash": "7e373909cf12cbad61808d82b669ffd6a3b867f4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|7e373909cf12cbad61808d82b669ffd6a3b867f4",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv"
+      },
+      "sources": [
+        "tracker:udp://zer0day.ch:1337/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.wildkat.net:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.opentorrent.top:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrentclub.online:54123/announce",
+        "tracker:udp://seedpeer.net:6969/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:http://anidex.moe:6969/announce",
+        "tracker:http://tracker.anirena.com:80/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://share.camoe.cn:8080/announce",
+        "tracker:http://t.nyaatracker.com:80/announce",
+        "dht:7e373909cf12cbad61808d82b669ffd6a3b867f4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S02e01-02 [1080p Ita Spa Jap h265 10bit SubS ENG] byMe7alh [MIRCrew]\nSolo.Leveling.S02e01.Ita.Spa.Jap.1080p.h265.10bit.SubS.ENG-Me7alh.mkv\n📅 S01E01 👤 73 💾 294.80 MB ⚙️ 1337x",
+      "infoHash": "23a50a10d366c56ee51533bca37036f015ae7624",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|23a50a10d366c56ee51533bca37036f015ae7624",
+        "filename": "Solo.Leveling.S02e01.Ita.Spa.Jap.1080p.h265.10bit.SubS.ENG-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01E01 DUBBED 1080p WEB H264-SKYANiME\n📅 S01E01 👤 73 💾 1.34 GB ⚙️ ThePirateBay",
+      "infoHash": "146aadeb357266c731fd5c6b13cbc389027a722f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "solo.leveling.s01e01.dubbed.1080p.web.h264-skyanime[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[WAP] Solo Leveling - S01 (BD Remux 1080p AVC AAC FLAC) | Ore dake Level Up na Ken (Season 1)\n[WAP] Solo Leveling - S01E01 (BD Remux 1080p AVC AAC FLAC).mkv\n📅 S01E01 👤 69 💾 6.15 GB ⚙️ nyaa",
+      "infoHash": "6e76b6a5d119ecf89fd20e1df925e7a3a0a598c0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|6e76b6a5d119ecf89fd20e1df925e7a3a0a598c0",
+        "filename": "[WAP] Solo Leveling - S01E01 (BD Remux 1080p AVC AAC FLAC).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01e01-12 [1080p Ita Eng Spa Jap h265 10bit SubS] byMe7alh [MIRCre\nSolo.Leveling.S01e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv\n📅 S01E01 👤 67 💾 367.81 MB ⚙️ ThePirateBay",
+      "infoHash": "cef3a172340906dee28075ffc73db8e85973de96",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|cef3a172340906dee28075ffc73db8e85973de96",
+        "filename": "Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S02e01-04 [1080p Ita Eng Spa Jap h265 10bit SubS] REMAKE byMe7alh [MIRCrew]\nSolo.Leveling.S02e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv\n📅 S01E01 👤 65 💾 338.60 MB ⚙️ 1337x",
+      "infoHash": "01aa575668a594c8dd06e9e07501f838758e4ac5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|01aa575668a594c8dd06e9e07501f838758e4ac5",
+        "filename": "Solo.Leveling.S02e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "solo leveling (2024) S01-S02 1080p h265\nSolo Leveling - S01E01 - I'm Used to It.mkv\n📅 S01E01 👤 56 💾 367.80 MB ⚙️ 1337x",
+      "infoHash": "1be9ae6504b80b4ca180278c2f2f601c0a75154e",
+      "fileIdx": 23,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1be9ae6504b80b4ca180278c2f2f601c0a75154e",
+        "filename": "Solo Leveling - S01E01 - I'm Used to It.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[dtr] Solo Leveling - S01 (BD 1080p HEVC x265 Opus) [Multi-Audio] (Japanese German/Deutsch English Dubs) | Ore dake Level Up na Ken Season 1\nSolo.Leveling.S01.1080p.BluRay.MULTi.Opus.x265-dtr/Solo.Leveling.S01E01.1080p.BluRay.MULTi.Opus.x265-dtr.mkv\n📅 S01E01 👤 54 💾 3.64 GB ⚙️ nyaa",
+      "infoHash": "856a43e6c231e6e2fe89b04936c45d71fb6b9024",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|856a43e6c231e6e2fe89b04936c45d71fb6b9024",
+        "filename": "Solo.Leveling.S01E01.1080p.BluRay.MULTi.Opus.x265-dtr.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling - S01E01 [WEB 1080p x265 HEVC AAC] [Multi Audio-MultiSubs]\n📅 S01E01 👤 38 💾 625.04 MB ⚙️ ThePirateBay",
+      "infoHash": "92a7d0d0c51e7f79541b391cbc4591aaf7f3ed75",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo Leveling - S01E01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01E01 2024 1080p AMZN WEB-DL H 264 DDP2 0-ADWeb\n📅 S01E01 👤 32 💾 1.27 GB ⚙️ limetorrent",
+      "infoHash": "708f446b4da87ddc210b8bf1f0f5464ef460123f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo Leveling S01E01 2024 1080p AMZN WEB-DL H 264 DDP2 0-ADWeb.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:708f446b4da87ddc210b8bf1f0f5464ef460123f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01E01 Im Used to It EAC3 2 0 1080p WEBRip x265-iVy\n📅 S01E01 👤 28 💾 453.99 MB ⚙️ ThePirateBay",
+      "infoHash": "c390bd47634024452286f29c11b19f4cc5923b9a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo Leveling S01E01 Im Used to It EAC3 2 0 1080p WEBRip x265-iVy[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01E01 DUBBED 1080p HEVC x265-MeGusta\n📅 S01E01 👤 12 💾 188.21 MB ⚙️ ThePirateBay",
+      "infoHash": "564d57c9f6c777692e4d1cc7cc945a35c09d62fb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.DUBBED.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo.Leveling.S01E01-12.BDMux.1080p.X265.ACC.ITA.JAP.FLAC.SUB.ITA.By.Kagome\nOre_Dake_Level_Up_Na_Ken_S1_01_Ci_sono_abituato_BD_Mux_1080p_X265_ACC_ITA_JAP_FLAC_SUB_ITA_(By Kagome).mkv\n📅 S01E01 👤 7 💾 1.50 GB ⚙️ 1337x",
+      "infoHash": "326aa53a1036a195378bd4ac0e5c8b8980bd2435",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|326aa53a1036a195378bd4ac0e5c8b8980bd2435",
+        "filename": "Ore_Dake_Level_Up_Na_Ken_S1_01_Ci_sono_abituato_BD_Mux_1080p_X265_ACC_ITA_JAP_FLAC_SUB_ITA_(By Kagome).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01E01 2024 1080p NF WEB-DL x264 AAC-ADWeb\n📅 S01E01 👤 3 💾 866.29 MB ⚙️ limetorrent",
+      "infoHash": "a56460f9cee6d9fc1dd9da0d48453460209121c8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo Leveling S01E01 2024 1080p NF WEB-DL x264 AAC-ADWeb.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:a56460f9cee6d9fc1dd9da0d48453460209121c8"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Solo Leveling S01E01 Im Used to It 1080p CR WEB-DL KOREAN DDP2 0 H 264-Kits\n📅 S01E01 👤 3 💾 1.38 GB ⚙️ ThePirateBay",
+      "infoHash": "76ba22db40a5f228bdb08e929c7292c591809388",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo Leveling S01E01 Im Used to It 1080p CR WEB-DL KOREAN DDP2 0 H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Levels S01E01 1080p WEB H264-13\n📅 S01E01 👤 1 💾 524.80 MB ⚙️ limetorrent",
+      "infoHash": "a06e7dffc00a16055ed75336ca3ae60acf291f9e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "levels.s01e01.1080p.web.h264-13.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:a06e7dffc00a16055ed75336ca3ae60acf291f9e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 277.00 MB ⚙️ 1lou",
+      "infoHash": "31cfa3e33b76d1a42552fdd924eb2839b0f4ad82",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "我独自升级.Solo.Leveling.S01E01.2024.1080p.NF.WEB-DL.AAC.H264-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:31cfa3e33b76d1a42552fdd924eb2839b0f4ad82"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 277.03 MB ⚙️ 1lou",
+      "infoHash": "42e9306dd480471a517501b1d08edfacda48e3ef",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "我独自升级.Solo.Leveling.S01E01.2024.1080p.NF.WEB-DL.AAC.H264-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:42e9306dd480471a517501b1d08edfacda48e3ef"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 319.17 MB ⚙️ 1lou",
+      "infoHash": "5c06e688d4217c2f826e8fe9360427542ec3c7b9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.IQ.WEB-DL.H264.AAC-LelveTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:5c06e688d4217c2f826e8fe9360427542ec3c7b9"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 1.29 GB ⚙️ 1lou",
+      "infoHash": "a7cd1a354a28566f236f710d8bb7403ec292d5b7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.Hami.WEB-DL.H264.AAC-LelveTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:a7cd1a354a28566f236f710d8bb7403ec292d5b7"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 566.28 MB ⚙️ 1lou",
+      "infoHash": "c1db67fbacc97c425ed8383a714fc89304b090db",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "我独自升级.Solo.Leveling.S01E01.2024.1080p.KKTV.WEB-DL.AAC.H264-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:c1db67fbacc97c425ed8383a714fc89304b090db"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 566.28 MB ⚙️ 1lou",
+      "infoHash": "59f4264ee2e592ae274cf8c4413dce41e70fb2d1",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "我独自升级.Solo.Leveling.S01E01.2024.1080p.KKTV.WEB-DL.AAC.H264-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "dht:59f4264ee2e592ae274cf8c4413dce41e70fb2d1"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 1.44 GB ⚙️ 1lou",
+      "infoHash": "8516f8731d149a43a0be24e568768e3e4904fa09",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.BluRay.x265.10bit.FLAC.2.0-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://leet-tracker.moe:1337/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skyts.net:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "dht:8516f8731d149a43a0be24e568768e3e4904fa09"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 1.84 GB ⚙️ 1lou",
+      "infoHash": "3c5908907c50342ab8294a71a2d603166905eab2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.BluRay.x264.FLAC.2.0-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://leet-tracker.moe:1337/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skyts.net:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "dht:3c5908907c50342ab8294a71a2d603166905eab2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 274.37 MB ⚙️ 1lou",
+      "infoHash": "eece099cd9b10cb178c20df23afd0bd4c2f13f8b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.WEB-DL.H264.AAC-LelveTV.mp4"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:https://tracker1.ctix.cn:443/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://bvarf.tracker.sh:2086/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "dht:eece099cd9b10cb178c20df23afd0bd4c2f13f8b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 347.30 MB ⚙️ 1lou",
+      "infoHash": "f5346d340baf75d8a18e6a9519da7372b584f9d7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.WEB-DL.H264.AAC-ZeroTV.mp4"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:https://tracker1.ctix.cn:443/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://bvarf.tracker.sh:2086/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.picotorrent.one:6969/announce",
+        "tracker:udp://tracker.jamesthebard.net:6969/announce",
+        "dht:f5346d340baf75d8a18e6a9519da7372b584f9d7"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 635.99 MB ⚙️ 1lou",
+      "infoHash": "de6d0ea0d1064309b2fa7c5eb17ade75b9b03201",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.WEB-DL.H264.AAC-LelveTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:http://tracker.ipv6tracker.org:80/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:udp://wepzone.net:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "dht:de6d0ea0d1064309b2fa7c5eb17ade75b9b03201"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 622.43 MB ⚙️ 1lou",
+      "infoHash": "8e1e98eea32703538d0328fff5459c57141e03b2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.1080p.Baha.WEB-DL.x264.AAC-ZeroTV.mp4"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://wepzone.net:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "dht:8e1e98eea32703538d0328fff5459c57141e03b2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "我独自升级\n📅 S01E01 👤 1 💾 635.99 MB ⚙️ 1lou",
+      "infoHash": "b72bbc8ab74094ded27f5fd770e5eb0125f491a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.1080p.WEB-DL.H264.AAC-ZeroTV.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:http://tracker2.itzmx.com:6961/announce",
+        "tracker:http://tracker3.itzmx.com:6961/announce",
+        "tracker:http://tracker4.itzmx.com:2710/announce",
+        "tracker:udp://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://tracker2.itzmx.com:6961/announce",
+        "tracker:udp://tracker3.itzmx.com:6961/announce",
+        "tracker:udp://tracker4.itzmx.com:2710/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:wss://tracker.openwebtorrent.com:443/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "dht:b72bbc8ab74094ded27f5fd770e5eb0125f491a4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Solo Leveling / Ore dake Level Up na Ken S01 [720p] CZtit = CSFD 84%\nSolo Leveling/Solo Leveling S01E01.mp4\n📅 S01E01 👤 24 💾 267.96 MB ⚙️ sktorrent",
+      "infoHash": "030bc5590b4b7e8745cfd629ec0ea1ad79adcd92",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|030bc5590b4b7e8745cfd629ec0ea1ad79adcd92",
+        "filename": "Solo Leveling S01E01.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:030bc5590b4b7e8745cfd629ec0ea1ad79adcd92"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Solo Leveling S01e01-12 [720p Ita Eng Spa Jap SubS] byMe7alh [MIRCrew]\nSolo.Leveling.S01e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv\n📅 S01E01 👤 11 💾 433.03 MB ⚙️ ThePirateBay",
+      "infoHash": "1514dc2db8048bcbe2266ea858a5af2637da92f3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1514dc2db8048bcbe2266ea858a5af2637da92f3",
+        "filename": "Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Solo Leveling S02e01-04 [720p Ita Eng Spa Jap SubS] REMAKE byMe7alh [MIRCrew]\nSolo.Leveling.S02e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv\n📅 S01E01 👤 10 💾 503.70 MB ⚙️ 1337x",
+      "infoHash": "d20248fbfffa6d907f06c2aaa0a7f6b652c3cedc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d20248fbfffa6d907f06c2aaa0a7f6b652c3cedc",
+        "filename": "Solo.Leveling.S02e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Solo Leveling S02e01-02 [720p Ita Spa Jap SubS ENG] byMe7alh [MIRCrew]\nSolo.Leveling.S02e01.Ita.Spa.Jap.720p.h264.SubS.ENG-Me7alh.mkv\n📅 S01E01 👤 6 💾 478.40 MB ⚙️ 1337x",
+      "infoHash": "b6d93c2a7bb612abc8e61543b925807ae2f19940",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b6d93c2a7bb612abc8e61543b925807ae2f19940",
+        "filename": "Solo.Leveling.S02e01.Ita.Spa.Jap.720p.h264.SubS.ENG-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Solo Leveling S01E01 DUBBED 720p WEB H264-SKYANiME\n📅 S01E01 👤 4 💾 695.08 MB ⚙️ ThePirateBay",
+      "infoHash": "47307941bd74010639bd41da1ac9de1c61ba66db",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "solo.leveling.s01e01.dubbed.720p.web.h264-skyanime[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "[SubsPlease] Solo Leveling - 01 (480p) [1B123B9D].mkv\n📅 S01E01 👤 15 💾 358.34 MB ⚙️ ThePirateBay",
+      "infoHash": "894ded4a6b4c2ef0631b69c5b4fa100aed7fb677",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "[SubsPlease] Solo Leveling - 01 (480p) [1B123B9D].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "[Furretar] 台配 - 我独自升级 (Solo Leveling) (Season 1) (Mandarin Chinese Dub) (Matching Soft Subs) [國語][国语][中文配音][中配版] (我獨自升級) (Ore dake Level Up na Ken)\nSeason 1/Solo Leveling - S01E01.mkv\n📅 S01E01 👤 11 💾 355.07 MB ⚙️ nyaa",
+      "infoHash": "df3ed6e55676e54ed3e230f9696e03a671252e73",
+      "fileIdx": 12,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|df3ed6e55676e54ed3e230f9696e03a671252e73",
+        "filename": "Solo Leveling - S01E01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "[Furretar] 台配 - 我独自升级 (Solo Leveling) (Season 1) (Mandarin Chinese Dub) (Matching Soft Subs) [國語][国语][中文配音][中配版] (我獨自升級) (Ore dake Level Up na Ken)\nSeason 2/Solo Leveling - S02E01.mkv\n📅 S01E01 👤 11 💾 1.10 GB ⚙️ nyaa",
+      "infoHash": "df3ed6e55676e54ed3e230f9696e03a671252e73",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|df3ed6e55676e54ed3e230f9696e03a671252e73",
+        "filename": "Solo Leveling - S02E01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Ускоренная помощь / Сезон: 1 (Ольга Перуновская Ирина Васильева Игорь Четвериков)\nup.s1e01.avi\n📅 S01E01 👤 1 💾 271.49 MB ⚙️ rutracker",
+      "infoHash": "c6dce7cc51c629baf7684c100112882bce031862",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|c6dce7cc51c629baf7684c100112882bce031862",
+        "filename": "up.s1e01.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:c6dce7cc51c629baf7684c100112882bce031862"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nxvid",
+      "title": "Solo Leveling S01E01 DUBBED XviD-AFG\n📅 S01E01 👤 1 💾 255.76 MB ⚙️ EZTV",
+      "infoHash": "f659277262f1bf266df9a45b5ec0b43014d583ea",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|xvid",
+        "filename": "Solo.Leveling.S01E01.DUBBED.XviD-AFG[EZTVx.to].avi"
+      }
+    }
+  ]
+}

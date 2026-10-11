@@ -1,0 +1,3747 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "oppenheimer",
+  "request": "https://torrentsdb.com/stream/movie/tt15398776.json",
+  "recordedAt": "2026-10-11T12:03:59.066Z",
+  "status": 200,
+  "ms": 865,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.UHD.Bluray.REMUX.HDR10.HEVC.DTS-HD.MA.5.1-GHD[TGx]\n👤 1687 💾 82.21 GB ⚙️ rargb",
+      "infoHash": "edef9b0fc91c9ccdf5b3e43f6cc5278160e81dd5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Oppenheimer.2023.2160p.UHD.Bluray.REMUX.HDR10.HEVC.DTS-HD.MA.5.1-GHD.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:edef9b0fc91c9ccdf5b3e43f6cc5278160e81dd5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer\n👤 704 💾 21.53 GB ⚙️ extremlymtorrents",
+      "infoHash": "eec77ef78463451033f59a28052d4b76b9509efc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer 2023 2160p UHD BluRay DV HDR10+ DDP 5.1 x265-BiTOR.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:https://tracker.torrentleech.org/a/a8374adf0060d58e3011730135de5821/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:wss://tracker.btorrent.xyz",
+        "tracker:http://pow7.com:80/announce",
+        "tracker:udp://extremlymtorrents.ws:9999/annouce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://fasttracker.foreverpirates.co:6969/announce",
+        "tracker:udp://9.rarbg.me:2820/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "dht:eec77ef78463451033f59a28052d4b76b9509efc"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p.BDRip Ita Eng x265-NAHOM\n👤 631 💾 21.96 GB ⚙️ rargb",
+      "infoHash": "83dd9a21c093c8b5293695574810329cd714f7fa",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bdrip|x265",
+        "filename": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p.BDRip Ita Eng x265-NAHOM.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:83dd9a21c093c8b5293695574810329cd714f7fa"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p.BDRip Ita Eng x265-NAHOM\n👤 631 💾 21.96 GB ⚙️ knaben",
+      "infoHash": "83DD9A21C093C8B5293695574810329CD714F7FA",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bdrip|x265",
+        "filename": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p.BDRip Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) [2160p] [HDR] (bluray) [WMAN-LorD]\n👤 526 💾 4.68 GB ⚙️ rargb",
+      "infoHash": "e486ea6d549e2e60cff4f0f1194c0a65694bd123",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.2023.2160p.UHD.HDR.BluRay.x265.10bit.DD5.1.[WMAN-LorD].mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:e486ea6d549e2e60cff4f0f1194c0a65694bd123"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) [2160p] [HDR] (bluray) [WMAN-LorD]\n👤 526 💾 4.68 GB ⚙️ knaben",
+      "infoHash": "E486EA6D549E2E60CFF4F0F1194C0A65694BD123",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.2023.2160p.UHD.HDR.BluRay.x265.10bit.DD5.1.[WMAN-LorD].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Tigole) [QxR]\n👤 520 💾 17.00 GB ⚙️ rargb",
+      "infoHash": "ed624ad789ccae4494fc9bc75f249c1dd54ce764",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer (2023) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:ed624ad789ccae4494fc9bc75f249c1dd54ce764"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Tigole) [QxR]\n👤 520 💾 17.00 GB ⚙️ knaben",
+      "infoHash": "ED624AD789CCAE4494FC9BC75F249C1DD54CE764",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer (2023) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.UHD.Bluray.REMUX.HDR10.HEVC.DTS-HD.MA.5.1 ...\n👤 298 💾 82.21 GB ⚙️ knaben",
+      "infoHash": "EDEF9B0FC91C9CCDF5B3E43F6CC5278160E81DD5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Oppenheimer.2023.2160p.UHD.Bluray.REMUX.HDR10.HEVC.DTS-HD.MA.5.1-GHD.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA\n👤 281 💾 3.82 GB ⚙️ rargb",
+      "infoHash": "0137c5a5aac15689402d2dc32f0d8d7091415a57",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://bt.endpot.com:80/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:0137c5a5aac15689402d2dc32f0d8d7091415a57"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR\n👤 213 💾 82.53 GB ⚙️ rargb",
+      "infoHash": "1043a3df94d856a7c8094e730d4376ef7d03124d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:1043a3df94d856a7c8094e730d4376ef7d03124d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.UHD.BluRay.2160p.DTS HD.MA.5.1.HEVC.REMUX-FraMeSToR\n👤 213 💾 82.53 GB ⚙️ knaben",
+      "infoHash": "1043A3DF94D856A7C8094E730D4376EF7D03124D",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.MA.WEB-DL.DUAL.DTS.HD.MA.5.1+DD+5.1.DV HDR.H.265-TheBiscuitMan\n👤 195 💾 37.68 GB ⚙️ knaben",
+      "infoHash": "57C4D9CD27E879F057462C95FAA42900D038B4BD",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl|h265",
+        "filename": "Oppenheimer.2023.2160p.MA.WEB-DL.DUAL.DTS.HD.MA.5.1+DD+5.1.DV-HDR.H.265-TheBiscuitMan.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) IMAX 2160p UHD HDR BluRay AV1 Opus Multi4 [dAV1nci]\n👤 168 💾 11.19 GB ⚙️ rargb",
+      "infoHash": "a1847f4fb4b0aff19e4335c7c0bd3762a95b6bab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray",
+        "filename": "Oppenheimer.2023.IMAX.2160p.UHD.HDR.BluRay.AV1.Opus.Multi4-dAV1nci.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker2.ctix.cn:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:a1847f4fb4b0aff19e4335c7c0bd3762a95b6bab"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) IMAX 2160p UHD HDR BluRay AV1 Opus Multi4 [dAV1nci]\n👤 168 💾 11.19 GB ⚙️ knaben",
+      "infoHash": "A1847F4FB4B0AFF19E4335C7C0BD3762A95B6BAB",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray",
+        "filename": "Oppenheimer.2023.IMAX.2160p.UHD.HDR.BluRay.AV1.Opus.Multi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) IMAX 2160p UHD HDR BluRay VVenC H.266 VVC AAC 5.1 [RAV1NE]\n👤 123 💾 7.23 GB ⚙️ knaben",
+      "infoHash": "B350CA36DE26F06ADA709C9224FB46979A8BD7C8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray",
+        "filename": "Oppenheimer.2023.IMAX.2160p.UHD.HDR.BluRay.VVenC.H266.VVC.AAC.5.1-RAV1NE.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 114 💾 50.21 GB ⚙️ rutor",
+      "infoHash": "589b71284a5adf34467666f5f85220c84825f72f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Oppenheimer.2023.2160p.UHD_HDR10_RHS_[scarfilm.org].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:589b71284a5adf34467666f5f85220c84825f72f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer IMAX (2023) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 111 💾 6.73 GB ⚙️ rargb",
+      "infoHash": "d6f05afd7b4c42134caf29b6d4099038e4cc3a74",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|h265",
+        "filename": "Oppenheimer (2023) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      },
+      "sources": [
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://fe.dealclub.de:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://glotorrents.pw:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d6f05afd7b4c42134caf29b6d4099038e4cc3a74"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer IMAX (2023) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 111 💾 6.73 GB ⚙️ knaben",
+      "infoHash": "D6F05AFD7B4C42134CAF29B6D4099038E4CC3A74",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|h265",
+        "filename": "Oppenheimer (2023) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer 2023 IMAX UHD BluRay HDR 2160p ITA DTS ITA AAC ENG DTS HD MA ENG AC3 Subs x265 TbZ-mkv\n👤 106 💾 31.39 GB ⚙️ knaben",
+      "infoHash": "745BECE9803C4530DE9581299DF1FB5BA3C52B56",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.(2023).[IMAX].UHD.BluRay.HDR.2160p.ITA.DTS.ITA.AAC.ENG.DTS-HD.MA.ENG.AC3.Subs.x265.[TbZ].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) 2160p BRRip 5.1 10Bit x265 -YTS\n👤 100 💾 8.71 GB ⚙️ knaben",
+      "infoHash": "BC49149F330485E036D69E68A0B0E0887E13965E",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|brrip|x265",
+        "filename": "Oppenheimer.2023.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer 2023 2160p BluRay\n👤 100 💾 8.71 GB ⚙️ YTS",
+      "infoHash": "bc49149f330485e036d69e68a0b0e0887e13965e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.2023.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p BDRemux Ita Eng x265-NAHOM\n👤 95 💾 83.00 GB ⚙️ 1337x",
+      "infoHash": "972572ea1d90a6cf8a488fb38de4e439ef20c38a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|x265",
+        "filename": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA\n👤 91 💾 3.82 GB ⚙️ rargb",
+      "infoHash": "c8287fec8fafc292f3fe895c7118e3689d90b97e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:c8287fec8fafc292f3fe895c7118e3689d90b97e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA\n👤 91 💾 3.82 GB ⚙️ knaben",
+      "infoHash": "C8287FEC8FAFC292F3FE895C7118E3689D90B97E",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer 2023 4K UHD IMAX BluRay 2160p HDR DTS-HD MA 5.1 H.265-MgB\n👤 82 💾 26.41 GB ⚙️ knaben",
+      "infoHash": "0B4A6B132F7703266805DEE3BFEAD843E7037771",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|h265",
+        "filename": "Oppenheimer 2023 4K UHD BluRay 2160p HDR DTS-HD MA 5.1 H.265-MgB.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer 2023 UHD BluRay 2160p DV HEVC HDR10+ DTS-HD Master Audio 5 1 x265-E\n👤 79 💾 41.83 GB ⚙️ limetorrent",
+      "infoHash": "6e7a87da2bf5491b495064630bacd17cd2853568",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Oppenheimer (2023) 4K.mkv"
+      },
+      "sources": [
+        "tracker:udp://aegir.sexy:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://9.rarbg.to:2790/announce",
+        "tracker:udp://9.rarbg.me:2740/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.pirateparty.gr:6969/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:udp://9.rarbg.to:2740/announce",
+        "dht:6e7a87da2bf5491b495064630bacd17cd2853568"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 73 💾 85.01 GB ⚙️ rutor",
+      "infoHash": "3f55918bdd33e6fa47a701f0ef5d37c0997b0b34",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Oppenheimer.2023.BDREMUX.2160p.HDR.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.desol.one:2710/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "dht:3f55918bdd33e6fa47a701f0ef5d37c0997b0b34"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.UHD.BluRay.2160p.DTS HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR\n👤 66 💾 82.98 GB ⚙️ knaben",
+      "infoHash": "3CDDCFAFC904A8A7C6449E2FE1F24877D3EACF1F",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 55 💾 82.73 GB ⚙️ rutor",
+      "infoHash": "bd0093a08710aa195a6ffdc2f4b91e2bb9f73a2d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Oppenheimer.2023.2160p.UHD_HDR10_DV_RHS_[scarfilm.org].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:bd0093a08710aa195a6ffdc2f4b91e2bb9f73a2d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) 2160p H265 HDR10 DV ITA DTS 7.1 E-AC3 ITA ENG AC3 5.1 Sub Ita Eng - Raffyone iDN_CreW\n👤 51 💾 14.80 GB ⚙️ 1337x",
+      "infoHash": "4a251f39e73ced6f745bdf1f343b8b8a5306c95d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|h265",
+        "filename": "Oppenheimer (2023) 2160p H265 HDR10 DV ITA TrueHD DA 7.1 E-AC3 ITA ENG AC3 5.1 Sub Ita Eng - Raffyone iDN_CreW.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer\n👤 47 💾 26.49 GB ⚙️ Torrent9",
+      "infoHash": "a35e17b45848d60e9a6c99b1ae2ccc414eda1949",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.MULTi.VFQ.HDR.DV.2160p.UHD.BluRay.DTS-HD.MA.5.1.x265-Slay3R.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:a35e17b45848d60e9a6c99b1ae2ccc414eda1949"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023)(CZ/EN)[2160p][HDR/DV][HEVC] = CSFD 83%\n👤 44 💾 7.87 GB ⚙️ sktorrent",
+      "infoHash": "1262442351a590b873edcd585a8121c15b0a393a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|hevc",
+        "filename": "Oppenheimer (2023) UHDRDV cz en.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:1262442351a590b873edcd585a8121c15b0a393a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer 2023 Bluray 2160p AV1 HDR10 EN/FR/ES OPUS 5.1-UH\n👤 42 💾 18.99 GB ⚙️ rargb",
+      "infoHash": "bab63e18dca6edef98e463dca4629231312c5c47",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray",
+        "filename": "Oppenheimer.2023.Bluray.2160p.AV1.HDR10.OPUS.5.1-UH.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:bab63e18dca6edef98e463dca4629231312c5c47"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer 2023 Bluray 2160p AV1 HDR10 EN/FR/ES OPUS 5.1-UH\n👤 42 💾 18.99 GB ⚙️ knaben",
+      "infoHash": "BAB63E18DCA6EDEF98E463DCA4629231312C5C47",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray",
+        "filename": "Oppenheimer.2023.Bluray.2160p.AV1.HDR10.OPUS.5.1-UH.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n4k",
+      "title": "Oppenheimer 2023 IMAX UHD BluRay 2160p DV HEVC HDR10 DTS-HD-MA 5.1 x265-E\n👤 40 💾 33.10 GB ⚙️ 1337x",
+      "infoHash": "b6e9826a457c291570a94e95e23c9adbd1c5fd00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4k|bluray|hevc",
+        "filename": "Oppenheimer (2023) 4K IMAX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) AC3 5.1 ITA.ENG 2160p H265 HDR10 IMAX sub ita.eng MIRCrew\n👤 40 💾 5.08 GB ⚙️ rargb",
+      "infoHash": "e729cb5907638ded27821fd7821e05e935075aee",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|h265",
+        "filename": "Oppenheimer (2023) AC3 5.1 ITA.ENG 2160p H265 HDR10 IMAX sub ita.eng Sp33dy94-MIRCrew.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://www.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:e729cb5907638ded27821fd7821e05e935075aee"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer (2023) AC3 5.1 ITA.ENG 2160p H265 HDR10 IMAX sub ita.eng MIRCrew\n👤 40 💾 5.08 GB ⚙️ knaben",
+      "infoHash": "E729CB5907638DED27821FD7821E05E935075AEE",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|h265",
+        "filename": "Oppenheimer (2023) AC3 5.1 ITA.ENG 2160p H265 HDR10 IMAX sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Oppenheimer.2023.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.PLUS.ENG.ITA.LATINO\n👤 34 💾 86.53 GB ⚙️ knaben",
+      "infoHash": "B12E2AD004742AE1348E4E22EEBE8FCAC07C88D7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|x265",
+        "filename": "Oppenheimer.2023.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.PLUS.ENG.ITA.LATINO.DTS-HD.Master.DDP5.1.DV.x265.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n4k",
+      "title": "Oppenheimer 2023 (CZ)[2160p][4K] ⭐ = CSFD 86%\n👤 21 💾 4.51 GB ⚙️ sktorrent",
+      "infoHash": "4b70461d1ca6519223fb310cb6f0b538bfec91cb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4k",
+        "filename": "Oppenheimer 4k (pozri aj na KUKNI.TO).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:4b70461d1ca6519223fb310cb6f0b538bfec91cb"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG\n👤 6115 💾 2.02 GB ⚙️ rargb",
+      "infoHash": "491aa0e19cbdb03b100961db82315c08643a6139",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:491aa0e19cbdb03b100961db82315c08643a6139"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 2215 💾 3.42 GB ⚙️ rargb",
+      "infoHash": "f1fa55bb53256721498592214dc315cc060cb7dd",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:f1fa55bb53256721498592214dc315cc060cb7dd"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM x264 AAC - HushRips\n👤 1903 💾 2.35 GB ⚙️ rargb",
+      "infoHash": "d6e78b95225b76e200a9db223eedb7e1c8ad6e45",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|cam|x264",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM x264 AAC - HushRips.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d6e78b95225b76e200a9db223eedb7e1c8ad6e45"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.LM.HD-TeleSync.DUAL.DD2.0.H.264-xCLuMsYx\n👤 1713 💾 8.12 GB ⚙️ rargb",
+      "infoHash": "d6a8231af75887455e04a51bbfb8a2c4c0061e0d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|h264",
+        "filename": "Oppenheimer.2023.1080p.LM.HD-TeleSync.DUAL.DD2.0.H.264-xCLuMsYx.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:https://opentracker.i2p.rocks:443/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d6a8231af75887455e04a51bbfb8a2c4c0061e0d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.LM.HD TeleSync.DUAL.DD2.0.H.264-xCLuMsYx\n👤 1713 💾 8.12 GB ⚙️ knaben",
+      "infoHash": "D6A8231AF75887455E04A51BBFB8A2C4C0061E0D",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|h264",
+        "filename": "Oppenheimer.2023.1080p.LM.HD-TeleSync.DUAL.DD2.0.H.264-xCLuMsYx.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.Bluray.REMUX.AVC.DTS-HD.MA.5.1-GHD[TGx]\n👤 1253 💾 39.36 GB ⚙️ rargb",
+      "infoHash": "1ab0d640db74e472fe74452861b40a1b5f0c1450",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|avc",
+        "filename": "Oppenheimer.2023.1080p.Bluray.REMUX.AVC.DTS-HD.MA.5.1-GHD.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:1ab0d640db74e472fe74452861b40a1b5f0c1450"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG\n👤 1138 💾 2.02 GB ⚙️ knaben",
+      "infoHash": "491AA0E19CBDB03B100961DB82315C08643A6139",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) [1080p] [BluRay] [5.1]\n👤 1131 💾 3.33 GB ⚙️ ThePirateBay",
+      "infoHash": "ec34c231dde3e92d8d26a17c223152c8541295aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p BluRay 10Bit X265 DD 5 1-Chivaman\n👤 788 💾 7.38 GB ⚙️ rargb",
+      "infoHash": "ea501b85e854db0392d6053f5d5ba88fda92ef03",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.10Bit.X265.DD.5.1-Chivaman.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:ea501b85e854db0392d6053f5d5ba88fda92ef03"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC - HushRips\n👤 762 💾 1.76 GB ⚙️ rargb",
+      "infoHash": "b0a0423cb5477584e09036626397f7e7367458f6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC - HushRips.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:b0a0423cb5477584e09036626397f7e7367458f6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC HushRips\nOppenheimer (2023) 1080p V2 HDTS ENG x264 AAC - HushRips.mkv\n👤 762 💾 1.76 GB ⚙️ knaben",
+      "infoHash": "B0A0423CB5477584E09036626397F7E7367458F6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC - HushRips.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC\n👤 751 💾 1.86 GB ⚙️ rargb",
+      "infoHash": "47b5cace2e351edf0fe1e84af35053aca3399319",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:47b5cace2e351edf0fe1e84af35053aca3399319"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]\nOppenheimer (2023) (1080p BluRay x265 10bit Tigole).mkv\n👤 646 💾 8.70 GB ⚙️ rargb",
+      "infoHash": "600cd17d1535bb1882da6e6256dfe6d2c676e1d2",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer (2023) (1080p BluRay x265 10bit Tigole).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:600cd17d1535bb1882da6e6256dfe6d2c676e1d2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.NEW.V3.TELESYNC.H.264.AAC-HushRips\n👤 501 💾 2.06 GB ⚙️ rargb",
+      "infoHash": "9b7b4f86d3b6762f580a8097c727d47f67770bfa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|h264",
+        "filename": "Oppenheimer.2023.1080p.NEW.V3.TELESYNC.H.264.AAC-HushRips.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:9b7b4f86d3b6762f580a8097c727d47f67770bfa"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 392 💾 17.99 GB ⚙️ rutor",
+      "infoHash": "69d0da31e1ff48108967452faf8bc1feff7e8976",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip",
+        "filename": "Oppenheimer.2023.D.MVO.AVO.BDRip.1080p.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.desol.one:2710/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "dht:69d0da31e1ff48108967452faf8bc1feff7e8976"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) BluRay 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng - realDMDJ DDL_Ita\n👤 351 💾 4.23 GB ⚙️ rargb",
+      "infoHash": "cd3b517dc3ebbe70d4e9590264c401049b79ae77",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h264",
+        "filename": "Oppenheimer 2023 BluRay 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng realDMDJ.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:cd3b517dc3ebbe70d4e9590264c401049b79ae77"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM AAC - QRips\n👤 337 💾 1.76 GB ⚙️ rargb",
+      "infoHash": "a2bc2a2cd3042947f9cf4b181ea577791d6ce45d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|cam",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM AAC - QRips.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:a2bc2a2cd3042947f9cf4b181ea577791d6ce45d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p BluRay x264 DTS-WiKi\n👤 313 💾 15.88 GB ⚙️ rargb",
+      "infoHash": "eef23af625ae8e116da85b78c9800779babd0206",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.x264.DTS-WiKi.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:eef23af625ae8e116da85b78c9800779babd0206"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p BluRay x264 DTS-WiKi\n👤 313 💾 15.88 GB ⚙️ knaben",
+      "infoHash": "EEF23AF625AE8E116DA85B78C9800779BABD0206",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.x264.DTS-WiKi.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 295 💾 8.98 GB ⚙️ rutor",
+      "infoHash": "60d6401f432891017397dba245b2068844195c76",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync",
+        "filename": "Oppenheimer.(2023).TS.1080p.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:60d6401f432891017397dba245b2068844195c76"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 266 💾 1.97 GB ⚙️ rargb",
+      "infoHash": "20a43276dd7c79617b55cec302873616b36055fc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://bt.endpot.com:80/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:20a43276dd7c79617b55cec302873616b36055fc"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 259 💾 3.42 GB ⚙️ knaben",
+      "infoHash": "F1FA55BB53256721498592214DC315CC060CB7DD",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 242 💾 13.85 GB ⚙️ rutor",
+      "infoHash": "eb59953352676853c0e65242d1ff7f34ea5d74f0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip",
+        "filename": "Oppenheimer.2023.BDRip.1080p.Rip.by.HardwareMining.R.G.Generalfilm.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://an.generalfilm.website/bt/announce.php?uk=z5Q90SqTW2",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:eb59953352676853c0e65242d1ff7f34ea5d74f0"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 229 💾 1.97 GB ⚙️ rargb",
+      "infoHash": "0ce36222d1a6efe3fe737d637c454afde101bc0b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:0ce36222d1a6efe3fe737d637c454afde101bc0b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.MA.WEB-DL.DUAL.DD+5.1.H.265-TheBiscuitMan\n👤 225 💾 11.87 GB ⚙️ knaben",
+      "infoHash": "D6B5BCBEC881D3C512FEB3D304D1E72D816A42B5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|web-dl|h265",
+        "filename": "Oppenheimer.2023.1080p.MA.WEB-DL.DUAL.DD+5.1.H.265-TheBiscuitMan.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.NEW.V3.TELESYNC.H.264.AAC\n👤 219 💾 1.96 GB ⚙️ rargb",
+      "infoHash": "21d90849add4e6cf941f69f712f46695cf805e1a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|h264",
+        "filename": "Oppenheimer.2023.1080p.NEW.V3.TELESYNC.H.264.AAC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:21d90849add4e6cf941f69f712f46695cf805e1a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p V2 TELESYNC x264 AAC\n👤 213 💾 1.98 GB ⚙️ rargb",
+      "infoHash": "73cfff853a2de1424d1b79b6272266d8049847c2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) 1080p V2 TELESYNC x264 AAC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:73cfff853a2de1424d1b79b6272266d8049847c2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p V2 TELESYNC x264 AAC\n👤 213 💾 1.98 GB ⚙️ knaben",
+      "infoHash": "73CFFF853A2DE1424D1B79B6272266D8049847C2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) 1080p V2 TELESYNC x264 AAC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 204 💾 7.97 GB ⚙️ rutor",
+      "infoHash": "704933a47da80ec2318fc3b7fec49838db374422",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "ОППЕНГЕЙМЕР.2023.1080p.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:704933a47da80ec2318fc3b7fec49838db374422"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG 1080p TeleSync x264 AAC\n👤 192 💾 1.98 GB ⚙️ rargb",
+      "infoHash": "ad0606921a4bf3876838bbc36ed57f71d6988b4b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p TeleSync x264 AAC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:ad0606921a4bf3876838bbc36ed57f71d6988b4b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.NEW.V3.TELESYNC.H.264.AAC\n👤 180 💾 2.15 GB ⚙️ knaben",
+      "infoHash": "6460071DEDCD453399D7A6C9647A70C37CC585BE",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|h264",
+        "filename": "Oppenheimer.2023.1080p.NEW.V3.TELESYNC.H.264.AAC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.Bluray.REMUX.AVC.DTS-HD.MA.5.1-GHD[TGx]\n👤 179 💾 39.36 GB ⚙️ knaben",
+      "infoHash": "1AB0D640DB74E472FE74452861B40A1B5F0C1450",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|avc",
+        "filename": "Oppenheimer.2023.1080p.Bluray.REMUX.AVC.DTS-HD.MA.5.1-GHD.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p x264 DUAL AlienVolt\n👤 170 💾 5.40 GB ⚙️ knaben",
+      "infoHash": "167BA4EDE9022FA36C32B89D64108E3C1596D669",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.EAC3.AAC.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.HDCam.Sub.Eng.Latino.YG⭐\n👤 167 💾 3.50 GB ⚙️ rargb",
+      "infoHash": "457d4fcca98fdb679c27f9351789d7904c2918ba",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer.2023.1080p.HDCam.Sub.Eng.Latino.YG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:https://inferno.demonoid.is/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:457d4fcca98fdb679c27f9351789d7904c2918ba"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 BluRay 1080p DTS-HD MA 5 1 AVC REMUX-FraMeSToR\n👤 164 💾 39.68 GB ⚙️ rargb",
+      "infoHash": "4718d09f3c5f3c5a578d1ec61416de7a3747ef97",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|avc",
+        "filename": "Oppenheimer.2023.BluRay.1080p.DTS-HD.MA.5.1.AVC.REMUX-FraMeSToR.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4718d09f3c5f3c5a578d1ec61416de7a3747ef97"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.V3.1080p.HDCAM.x264.Dual.YG⭐\n👤 144 💾 3.75 GB ⚙️ rargb",
+      "infoHash": "037eaa64e04b5e326e6d9951a896c2de9d85d739",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hdcam|x264",
+        "filename": "Oppenheimer.2023.1080p.HDCAM.x264.Dual.YG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:https://inferno.demonoid.is/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:037eaa64e04b5e326e6d9951a896c2de9d85d739"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) IMAX 1080p BluRay AV1 Opus [dAV1nci]\n👤 143 💾 3.20 GB ⚙️ rargb",
+      "infoHash": "d141d5118e791b0cda17235712197bc6018b4fda",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.AV1.Opus-dAV1nci.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker2.ctix.cn:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d141d5118e791b0cda17235712197bc6018b4fda"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG HDTS x264 1080p AAC\n👤 133 💾 1.57 GB ⚙️ rargb",
+      "infoHash": "d3a336107f74d052085694f4db942f77a1eef34c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW ENG HDTS x264 1080p AAC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d3a336107f74d052085694f4db942f77a1eef34c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG HDTS x264 1080p AAC\n👤 133 💾 1.57 GB ⚙️ knaben",
+      "infoHash": "D3A336107F74D052085694F4DB942F77A1EEF34C",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW ENG HDTS x264 1080p AAC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)\n👤 131 💾 5.68 GB ⚙️ knaben",
+      "infoHash": "30113D3DF90084B56CCD4BB2FFAA112B86134556",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer [2023] 1080p 10bit BluRay AAC5.1 HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG 1080p.MP4.InfosPack022\n👤 129 💾 1.38 GB ⚙️ knaben",
+      "infoHash": "F2390820A6CD31653B5E447E8492AF176F122A97",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p.MP4.InfosPack022.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW V3 1080p TELESYNC x264 AAC\n👤 127 💾 1.96 GB ⚙️ rargb",
+      "infoHash": "549b784d54fbb5172ffc9ea35420c51817304dad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW  V3 1080p TELESYNC x264 AAC.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:549b784d54fbb5172ffc9ea35420c51817304dad"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW V3 1080p TELESYNC x264 AAC\n👤 127 💾 1.96 GB ⚙️ knaben",
+      "infoHash": "549B784D54FBB5172FFC9EA35420C51817304DAD",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW  V3 1080p TELESYNC x264 AAC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.TS.x264.Zero.AdS.Latino.YG⭐\n👤 125 💾 2.76 GB ⚙️ rargb",
+      "infoHash": "3f37a4afc0b7f701f83b3bd4a0b331c0a69c6c37",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer.2023.1080p.TS.x264.Zero.AdS.Latino.YG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:https://inferno.demonoid.is/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:3f37a4afc0b7f701f83b3bd4a0b331c0a69c6c37"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.HEVC.x265.AAC.5.1-Gypsy\n👤 114 💾 7.06 GB ⚙️ rargb",
+      "infoHash": "a77aef230e84721f365dd5dc342be8d0fb8a3651",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer.2023.1080p.BluRay.HEVC.x265.AAC.5.1-Gypsy.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:a77aef230e84721f365dd5dc342be8d0fb8a3651"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer IMAX (2023) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 112 💾 4.34 GB ⚙️ rargb",
+      "infoHash": "2fc7618d3b346dcb8aa38a6a6c7a201f8ce31035",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h265",
+        "filename": "Oppenheimer (2023) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      },
+      "sources": [
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://fe.dealclub.de:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://glotorrents.pw:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:2fc7618d3b346dcb8aa38a6a6c7a201f8ce31035"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer IMAX (2023) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 112 💾 4.34 GB ⚙️ knaben",
+      "infoHash": "2FC7618D3B346DCB8AA38A6A6C7A201F8CE31035",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h265",
+        "filename": "Oppenheimer (2023) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 111 💾 18.68 GB ⚙️ rutor",
+      "infoHash": "f42e9660e37be1654af733dbaa8fd9909c4aac68",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer.2023.1080p_RHS_[scarfilm.org].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:f42e9660e37be1654af733dbaa8fd9909c4aac68"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p Blu-Ray HEVC x265 DD5.1 -MSubs - KINGDOM_RG\n👤 110 💾 6.53 GB ⚙️ rargb",
+      "infoHash": "4b0ed54a18bcddd2ad66e0c17e66a4eb3e22c00b",
+      "fileIdx": 12,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hevc",
+        "filename": "Oppenheimer 2023 1080p Blu-Ray  HEVC  x265 DD5.1 -MSubs - KINGDOM_RG.mkv"
+      },
+      "sources": [
+        "tracker:udp://inferno.demonoid.is:3391/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4b0ed54a18bcddd2ad66e0c17e66a4eb3e22c00b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023 ITA/ENG) [1080p x265] [IMAX] [Paso77]\n👤 110 💾 10.55 GB ⚙️ knaben",
+      "infoHash": "AA9A148FCD492C09AA3867B710E8D008A22214A2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip|x265",
+        "filename": "Oppenheimer 2023 BDRip ITA ENG IMAX 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p Blu Ray HEVC x265 DD5.1 MSubs KINGDOM_RG\n👤 110 💾 6.53 GB ⚙️ knaben",
+      "infoHash": "4B0ED54A18BCDDD2AD66E0C17E66A4EB3E22C00B",
+      "fileIdx": 12,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hevc",
+        "filename": "Oppenheimer 2023 1080p Blu-Ray  HEVC  x265 DD5.1 -MSubs - KINGDOM_RG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 107 💾 25.44 GB ⚙️ rutor",
+      "infoHash": "84607adae69086d1a39c037231435b292130f68e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip",
+        "filename": "Oppenheimer.2023.BDRip.1080p.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://exkinoray.fun/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:84607adae69086d1a39c037231435b292130f68e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.2.0.opus.1900mb-Rosy\n👤 100 💾 1.86 GB ⚙️ rargb",
+      "infoHash": "1fec196a7d0d87e573651d1f1a49804dd7b7c879",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.2.0.opus.1900mb-Rosy.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.skyts.net:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.edkj.club:6969/announce",
+        "tracker:udp://open.tracker.ink:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:1fec196a7d0d87e573651d1f1a49804dd7b7c879"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.2.0.opus.1900mb-Rosy\n👤 100 💾 1.86 GB ⚙️ knaben",
+      "infoHash": "1FEC196A7D0D87E573651D1F1A49804DD7B7C879",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.2.0.opus.1900mb-Rosy.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p BluRay\n👤 100 💾 3.01 GB ⚙️ YTS",
+      "infoHash": "41fc13d0a99d5b31aa9bdc7b46bc9d98e5bc7138",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x265.10bit.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p BRRip 5.1 10Bit x265 -YTS\n👤 100 💾 3.01 GB ⚙️ knaben",
+      "infoHash": "41FC13D0A99D5B31AA9BDC7B46BC9D98E5BC7138",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|brrip|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x265.10bit.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p BRRip 5.1 x264 -YTS\n👤 100 💾 3.33 GB ⚙️ knaben",
+      "infoHash": "EC34C231DDE3E92D8D26A17C223152C8541295AA",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|brrip|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW V3 1080p TELESYNC x264\n👤 100 💾 1.99 GB ⚙️ knaben",
+      "infoHash": "1762A6A83F52E8B1EF44347DF56F783D2C9BA42C",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW V3 1080p TELESYNC x264.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p BluRay x265 10bit DTS-WiKi\n👤 91 💾 11.53 GB ⚙️ rargb",
+      "infoHash": "8104fe6c12bf2e0bb163def2b6304a0aca8697d5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.x265.10bit.DTS-WiKi.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:8104fe6c12bf2e0bb163def2b6304a0aca8697d5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p BluRay x265 10bit DTS-WiKi\n👤 91 💾 11.53 GB ⚙️ knaben",
+      "infoHash": "8104FE6C12BF2E0BB163DEF2B6304A0ACA8697D5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.x265.10bit.DTS-WiKi.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer\n👤 78 💾 17.83 GB ⚙️ Torrent9",
+      "infoHash": "b4293462c998988129b6f1195bf239d33c10b777",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.MULTi.VFQ.1080p.BluRay..x264-Slay3R.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:b4293462c998988129b6f1195bf239d33c10b777"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p BluRay 5.1 AV1+Opus CD700 [CAV1aR]\n👤 77 💾 699.85 MB ⚙️ rargb",
+      "infoHash": "dec7a55d6b0ee687f0ab6a5bdce1ab8634a7836f",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Oppenheimer.2023.BluRay.1080p.5.1.AV1.Opus.CD700-CAV1aR.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker2.ctix.cn:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:dec7a55d6b0ee687f0ab6a5bdce1ab8634a7836f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) ...\nOppenheimer (2023) (1080p BluRay x265 10bit Tigole).mkv\n👤 77 💾 8.70 GB ⚙️ knaben",
+      "infoHash": "600CD17D1535BB1882DA6E6256DFE6D2C676E1D2",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer (2023) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)(CZ)[1080p] = CSFD 86%\n👤 75 💾 2.34 GB ⚙️ sktorrent",
+      "infoHash": "c81b727f32b151631bda154149a3d0dc6351b09d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x264.CZ.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:c81b727f32b151631bda154149a3d0dc6351b09d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p 10bit DS4K BluRay Org DDP 5.1 Hindi DDP 5.1 English ESub HEVC The-PunisheR\n👤 74 💾 7.75 GB ⚙️ knaben",
+      "infoHash": "8FE8297C87F65E359C100FC7956E3089A9613E6E",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer.2023.IMAX.1080p.10bit.DS4K.BluRay.[Org.DDP5.1-Hindi+DDP5.1-English].ESub.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM x264 AAC -HushRips\n👤 74 💾 2.35 GB ⚙️ knaben",
+      "infoHash": "D6E78B95225B76E200A9DB223EEDB7E1C8AD6E45",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|cam|x264",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM x264 AAC - HushRips.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.HD-TS-C1NEM4\n👤 69 💾 3.88 GB ⚙️ knaben",
+      "infoHash": "7CA1E95B2BA24096FF8B6E9FA4609FE66485539D",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync",
+        "filename": "Oppenheimer.2023.1080p.HD-TS-C1NEM4.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) BluRay 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng ...\n👤 65 💾 4.23 GB ⚙️ knaben",
+      "infoHash": "CD3B517DC3EBBE70D4E9590264C401049B79AE77",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h264",
+        "filename": "Oppenheimer 2023 BluRay 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng realDMDJ.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX BluRay 1080p DTS AC3 x264-MgB\n👤 63 💾 11.87 GB ⚙️ rargb",
+      "infoHash": "c7e63606aa521c12515168ac31ffd546fbbd8bac",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer 2023 IMAX BluRay 1080p DTS AC3 x264-MgB.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:c7e63606aa521c12515168ac31ffd546fbbd8bac"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) iTA ENG.Bluray.1080p.x264 Dr4gon MIRCrew.mkv\n👤 63 💾 6.51 GB ⚙️ knaben",
+      "infoHash": "6AAEC1C4D6A5FB99F73DB7FBCA45EF261498D132",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264-Dr4gon MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX BluRay 1080p DTS AC3 x264-MgB\n👤 63 💾 11.87 GB ⚙️ knaben",
+      "infoHash": "C7E63606AA521C12515168AC31FFD546FBBD8BAC",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer 2023 IMAX BluRay 1080p DTS AC3 x264-MgB.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.iTA ENG.Bluray.1080p.x264 CYBER.mkv\n👤 62 💾 15.57 GB ⚙️ knaben",
+      "infoHash": "2103BDC685A77F766B699CEA1D4637CDD4040199",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.iTA-ENG.Bluray.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p BluRay 10Bit X265 DD 5 1-Chivaman\n👤 61 💾 7.38 GB ⚙️ knaben",
+      "infoHash": "EA501B85E854DB0392D6053F5D5BA88FDA92EF03",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.10Bit.X265.DD.5.1-Chivaman.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer\n👤 52 💾 17.56 GB ⚙️ extremlymtorrents",
+      "infoHash": "9bd6e2aea4aad69fbfcbbbe0f13fde92f9c6a36c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer 2023 1080p BluRay DDP 5.1 x264-BiTOR.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:https://tracker.torrentleech.org/a/a8374adf0060d58e3011730135de5821/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:wss://tracker.btorrent.xyz",
+        "tracker:http://pow7.com:80/announce",
+        "tracker:udp://extremlymtorrents.ws:9999/annouce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://fasttracker.foreverpirates.co:6969/announce",
+        "tracker:udp://9.rarbg.me:2820/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "dht:9bd6e2aea4aad69fbfcbbbe0f13fde92f9c6a36c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p NF WEB-DL [EN-TR] DDP5.1 H.264-TURG\n👤 50 💾 7.84 GB ⚙️ rargb",
+      "infoHash": "fe746290c78721e86dd6f49912d997d9f063f243",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|web-dl|h264",
+        "filename": "Oppenheimer.2023.1080p.NF.WEB-DL.DDP5.1.H.264-TURG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker1.itzmx.com:8080/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:fe746290c78721e86dd6f49912d997d9f063f243"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) 1080p NF WEB-DL [EN TR] DDP5.1 H.264-TURG\n👤 50 💾 7.84 GB ⚙️ knaben",
+      "infoHash": "FE746290C78721E86DD6F49912D997D9F063F243",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|web-dl|h264",
+        "filename": "Oppenheimer.2023.1080p.NF.WEB-DL.DDP5.1.H.264-TURG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p BluRay x265 KONTRAST [NikaNika]\n👤 49 💾 3.06 GB ⚙️ rargb",
+      "infoHash": "8c072edf8d4feac7dcfc9117abfb6eee608267a4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x265-KONTRAST.mp4"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:8c072edf8d4feac7dcfc9117abfb6eee608267a4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) AC3 5.1 ITA.ENG 1080p H265 IMAX sub ita.eng MIRCrew\n👤 46 💾 3.97 GB ⚙️ rargb",
+      "infoHash": "d91c878ce87ab32840c6f254e59182d221718e12",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|h265",
+        "filename": "Oppenheimer (2023) AC3 5.1 ITA.ENG 1080p H265 IMAX sub ita.eng Sp33dy94-MIRCrew.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://www.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:d91c878ce87ab32840c6f254e59182d221718e12"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) AC3 5.1 ITA.ENG 1080p H265 IMAX sub ita.eng MIRCrew\n👤 46 💾 3.97 GB ⚙️ knaben",
+      "infoHash": "D91C878CE87AB32840C6F254E59182D221718E12",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|h265",
+        "filename": "Oppenheimer (2023) AC3 5.1 ITA.ENG 1080p H265 IMAX sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer [2023 BDRemux 1080p] [IMAX] 3x Dub + 2x MVO (LostFilm LineFilm) + DVO (Digi Media) + AVO + Ukr + Original (Eng) + Sub (rus ukr eng)\n👤 45 💾 54.90 GB ⚙️ knaben",
+      "infoHash": "25316F858B910DE3332A7F65254160972B0AA084",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer.2023.BDRemux.1080p.pk.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.IMAX.1080p.10bit.DS4K.BluRay.DDP5.1.ESub.HEVC The.PunisheR\n👤 45 💾 6.95 GB ⚙️ knaben",
+      "infoHash": "8F2C15DF3EA8AD862884CCCCB479916FD98ECA83",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer.2023.IMAX.1080p.10bit.DS4K.BluRay.DDP5.1.ESub.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264.mkv\n👤 41 💾 18.18 GB ⚙️ rargb",
+      "infoHash": "c3735e3f957c5cc92f5885013ad0683bb0621d7c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://torrentclub.space:6969/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:udp://tracker.monitorit4.me:6969/announce",
+        "tracker:udp://tracker.0x.tf:6969/announce",
+        "tracker:http://bt.okmp3.ru:2710/announce",
+        "tracker:https://tr.doogh.club:443/announce",
+        "tracker:https://t.btcland.xyz:443/announce",
+        "tracker:https://tr.fuckbitcoin.xyz:443/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:c3735e3f957c5cc92f5885013ad0683bb0621d7c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) iTA ENG.Bluray.1080p.x264.mkv\n👤 41 💾 18.18 GB ⚙️ knaben",
+      "infoHash": "C3735E3F957C5CC92F5885013AD0683BB0621D7C",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)(CZ)[1080p] = CSFD 86%\n👤 37 💾 3.65 GB ⚙️ sktorrent",
+      "infoHash": "b668e58d72373a35d1fdd14dcbf7e830580acf39",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.CZ.x264.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:b668e58d72373a35d1fdd14dcbf7e830580acf39"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (CZ EN)(2023)[IMAX][HEVC][1080p] = CSFD 86%\n👤 33 💾 8.92 GB ⚙️ sktorrent",
+      "infoHash": "a40487585795c076f938ff983638363d4cfca5a8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.10Bit.X265.DD.5.1-JON1BO7.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:a40487585795c076f938ff983638363d4cfca5a8"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.Blu-Ray.DD5.1.x265-ViGoR\n👤 32 💾 6.17 GB ⚙️ rargb",
+      "infoHash": "dea8bfd4445c7ea09722d0bc4a67c91c973904d3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DD5.1.x265-ViGoR.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:https://opentracker.i2p.rocks:443/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:dea8bfd4445c7ea09722d0bc4a67c91c973904d3"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.Blu Ray.DD5.1.x265-ViGoR\n👤 32 💾 6.17 GB ⚙️ knaben",
+      "infoHash": "DEA8BFD4445C7EA09722D0BC4A67C91C973904D3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DD5.1.x265-ViGoR.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p 2in1 Blu-ray AVC DTS-HD MA 5.1-ESiR\n👤 32 💾 90.21 GB ⚙️ knaben",
+      "infoHash": "92D9F9F86B0F347657335FB96AED5C3C37764910",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|avc",
+        "filename": "Oppenheimer 2023 1080p 2in1 Blu-ray AVC DTS-HD MA 5.1-ESiR"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p 2in1 Blu-ray AVC DTS-HD MA 5.1-ESiR\n👤 32 💾 90.21 GB ⚙️ ThePirateBay",
+      "infoHash": "92d9f9f86b0f347657335fb96aed5c3c37764910",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|avc",
+        "filename": "Oppenheimer 2023 1080p 2in1 Blu-ray AVC DTS-HD MA 5.1-ESiR"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p AV1 10Bit DKong\n👤 31 💾 1.03 GB ⚙️ ThePirateBay",
+      "infoHash": "f6c172d1639cbb062aacee4250d3ac53e0be6e96",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer 2023 IMAX 1080p AV1 10Bit DKong.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 28 💾 21.56 GB ⚙️ rutor",
+      "infoHash": "c57295e20777d01e540f82837494469c28556f2d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x264-MULTi-RGB.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:c57295e20777d01e540f82837494469c28556f2d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX BluRay 1080p DTS-HD MA 5.1 x264-MgB\n👤 27 💾 16.37 GB ⚙️ ThePirateBay",
+      "infoHash": "96bd767989be89a3b11162098fc3f23d8ef99f13",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer 2023 IMAX BluRay 1080p DTS-HD MA 5.1 x264-MgB.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 IMAX BluRay 1080p DTS-HD MA 5.1 x264-MgB\n👤 27 💾 16.37 GB ⚙️ knaben",
+      "infoHash": "96BD767989BE89A3B11162098FC3F23D8EF99F13",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer 2023 IMAX BluRay 1080p DTS-HD MA 5.1 x264-MgB.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 26 💾 39.82 GB ⚙️ rutor",
+      "infoHash": "00e54ecbade5f1c2212a1c66e923487cad4e6a2d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer.2023.remux_1080p_RHS_[scarfilm.org].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:00e54ecbade5f1c2212a1c66e923487cad4e6a2d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 26 💾 42.16 GB ⚙️ rutor",
+      "infoHash": "7cd87b13e9d2e41e2b0ee8d541b54243ad2a572a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer.2023.BDREMUX.1080p.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.desol.one:2710/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "dht:7cd87b13e9d2e41e2b0ee8d541b54243ad2a572a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DD5.1.AV1-POIASD\n👤 20 💾 6.34 GB ⚙️ rargb",
+      "infoHash": "cead92ac6bc987d507a4e50e6d3f5e57a8c3e35d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DD5.1.AV1-POIASD.mkv"
+      },
+      "sources": [
+        "tracker:http://tracker.mywaifu.best:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.files.fm:6969/announcee",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:cead92ac6bc987d507a4e50e6d3f5e57a8c3e35d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.AAC.5.1.H.264-ACEM[TGx]\n👤 20 💾 5.54 GB ⚙️ ThePirateBay",
+      "infoHash": "22a2c82e3b04c3d42185890acb3b2048bdea4906",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.AAC.5.1.H.264-ACEM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.IMAX.ENG.LATINO.CASTELLANO.DD5.1.H265-BEN.THE.MEN\n👤 19 💾 7.56 GB ⚙️ ThePirateBay",
+      "infoHash": "fbee9007c15574ce15e21d89b370550269f0af2e",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.IMAX.ENG.LATINO.CASTELLANO.DD5.1.H265-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.10bit.BluRay.AAC5.1.HEVC.x265-Vyndros\n👤 18 💾 5.68 GB ⚙️ ThePirateBay",
+      "infoHash": "30113d3df90084b56ccd4bb2ffaa112b86134556",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer [2023] 1080p 10bit BluRay AAC5.1 HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023 ITA/ENG) [1080p x265] [IMAX] [Paso77]\n👤 15 💾 10.55 GB ⚙️ ilcorsaronero",
+      "infoHash": "aa9a148fcd492c09aa3867b710e8d008a22214a2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bdrip|x265",
+        "filename": "Oppenheimer 2023 BDRip ITA ENG IMAX 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)(CZ/EN)[1080p] = CSFD 86%\n👤 15 💾 18.62 GB ⚙️ sktorrent",
+      "infoHash": "1e4b78d93c84982565dba7e6752564a3a1cb96d2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x264.CZ.EN.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:1e4b78d93c84982565dba7e6752564a3a1cb96d2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.5.1.opus.4500mb.vmaf-Rosy\n👤 14 💾 3.96 GB ⚙️ rargb",
+      "infoHash": "5fd1c43b66f8b532a946a149b1e57215e8957fa2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray",
+        "filename": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.5.1.opus.4500mb.vmaf-Rosy.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.skyts.net:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.edkj.club:6969/announce",
+        "tracker:udp://open.tracker.ink:6969/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:5fd1c43b66f8b532a946a149b1e57215e8957fa2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p [PortalGoods]\n👤 12 💾 2.32 GB ⚙️ ThePirateBay",
+      "infoHash": "2348441323bdf0cf57d5bb90f458874ae95a290b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Oppenheimer 2023 1080p [PortalGoods]"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264.mkv\n👤 10 💾 6.51 GB ⚙️ ilcorsaronero",
+      "infoHash": "6aaec1c4d6a5fb99f73db7fbca45ef261498d132",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264-Dr4gon MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 (CZ/EN) [Bluray] [HEVC] 1080p = CSFD 86%\n👤 9 💾 13.15 GB ⚙️ sktorrent",
+      "infoHash": "ec9b9cd613d8b5f117248b0bf36a236ad5028f53",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer CZ Dabing (pozri aj na KUKNI.TO).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:ec9b9cd613d8b5f117248b0bf36a236ad5028f53"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.MULTi.FRENCH.1080p.Bluray.X265-NBDY.mkv\n👤 7 💾 4.29 GB ⚙️ ThePirateBay",
+      "infoHash": "e5223c3adb75a9726680975975a08cf37b6411f4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x265",
+        "filename": "Oppenheimer.2023.MULTi.FRENCH.1080p.Bluray.X265-NBDY.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (CZ)(2023)[HEVC][1080p] = CSFD 86%\n👤 7 💾 3.87 GB ⚙️ sktorrent",
+      "infoHash": "8bdf7875c778fdc24653a7c063bccf3f7e354d8f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|hevc",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-TNT.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:8bdf7875c778fdc24653a7c063bccf3f7e354d8f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)(CZ) [HEVC] 1080p = CSFD 86%\n👤 7 💾 2.68 GB ⚙️ sktorrent",
+      "infoHash": "ef5ab4a803352cb0b482f1ba9716008a88161836",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hevc",
+        "filename": "Oppenheimer CZ (pozri aj na KUKNI.TO).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:ef5ab4a803352cb0b482f1ba9716008a88161836"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.h264.10-bit.YG⭐\n👤 7 💾 3.33 GB ⚙️ ThePirateBay",
+      "infoHash": "fb8761d807aa3519d7939800a8f0d480a6b7c5cd",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|h264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.h264.10-bit.YG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 REPACK 1080p BluRay DD 5 1 x264-PTer\n👤 6 💾 17.93 GB ⚙️ ThePirateBay",
+      "infoHash": "cfa2f1b73a52b392e2c778f77466c183987a2dc4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer 2023 REPACK 1080p BluRay DD 5 1 x264-PTer.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)(CZ.EN.ES.PL)[1080p.Blu-Ray.Remux] = CSFD 86%\n👤 6 💾 44.97 GB ⚙️ sktorrent",
+      "infoHash": "ba977cf57b3bae48f73b312e6b715cb48265794d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|avc",
+        "filename": "Oppenheimer.2023.CZ.EN.ES.PL.1080p.Blu-Ray.Remux.AVC.DTS-HD.MA 5.1.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:ba977cf57b3bae48f73b312e6b715cb48265794d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)(CZ/EN/ES/PL) [HEVC] 1080p = CSFD 86%\n👤 6 💾 11.02 GB ⚙️ sktorrent",
+      "infoHash": "f2142cb842f8d45304ede7b57ecb6606609c2635",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hevc",
+        "filename": "Oppenheimer (pozri aj na KUKNI.TO).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:f2142cb842f8d45304ede7b57ecb6606609c2635"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer 2023 1080p AMZN WEB-DL DDP5 1 H 264-GPRS\n👤 5 💾 10.81 GB ⚙️ ThePirateBay",
+      "infoHash": "4db0850d4cbe91d2d5538626bb2dc75fcddd8a5d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|web-dl|h264",
+        "filename": "Oppenheimer 2023 1080p AMZN WEB-DL DDP5 1 H 264-GPRS.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Amazing Films 12 - Mp4 x264 AC3 1080p\nOppenheimer (2023) 1080p Surround.mp4\n👤 5 💾 5.25 GB ⚙️ ThePirateBay",
+      "infoHash": "11eceafe33bdd082a514bf89ec6e33c95fca4f6f",
+      "fileIdx": 50,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|x264",
+        "filename": "Oppenheimer (2023) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer.2023.IMAX.1080p.BluRay.x264.Dual.YG⭐\n👤 5 💾 5.14 GB ⚙️ ThePirateBay",
+      "infoHash": "63fa133621712d99a58137e23315727435569b66",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|bluray|x264",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.x264.Dual.YG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)[TS.HD-RIP] = CSFD 87%\n👤 5 💾 8.92 GB ⚙️ sktorrent",
+      "infoHash": "44f867e61275adda40c6f6b381c73b7b39620a0c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|telesync|x264",
+        "filename": "Oppenheimer 2023 1080p TS HD RIP x264 AVC (English AAC 320Kbps 2 0) Eng Subs ZER0ADS.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:44f867e61275adda40c6f6b381c73b7b39620a0c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Oppenheimer (2023)[HDCAM] = CSFD 87%\n👤 5 💾 3.75 GB ⚙️ sktorrent",
+      "infoHash": "53a89b99ddd3c2a859642a0df5d852930d52edb2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p|hdcam|x264",
+        "filename": "Oppenheimer.2023.1080p.HDCAM.x264.Dual.YG.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:53a89b99ddd3c2a859642a0df5d852930d52edb2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer.2023.720p.BluRay.999MB.x264-GalaxyRG\n👤 1811 💾 974.45 MB ⚙️ rargb",
+      "infoHash": "7371eac8768e61968eb13991278976041d92785a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.999MB.x264-GalaxyRG.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:7371eac8768e61968eb13991278976041d92785a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer.2023.720p.BluRay.999MB.x264-GalaxyRG\n👤 1811 💾 974.45 MB ⚙️ knaben",
+      "infoHash": "7371EAC8768E61968EB13991278976041D92785A",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.999MB.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023) [720p] [BluRay]\n👤 487 💾 1.62 GB ⚙️ ThePirateBay",
+      "infoHash": "7d2e222138aef25ffe38577e4cb9ad04e7d30356",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 113 💾 11.42 GB ⚙️ rutor",
+      "infoHash": "faa7a0f2ab60090f3facbf46caa003123ef99143",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Oppenheimer.2023.720p_[scarfilm].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:faa7a0f2ab60090f3facbf46caa003123ef99143"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 110 💾 10.69 GB ⚙️ rutor",
+      "infoHash": "4107930e9b35d47db8283c80b9613728862da003",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Oppenheimer.2023.720p_RHS_[scarfilm.org].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:4107930e9b35d47db8283c80b9613728862da003"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023) 720p BRRip x264 -YTS\n👤 100 💾 1.62 GB ⚙️ knaben",
+      "infoHash": "7D2E222138AEF25FFE38577E4CB9AD04E7D30356",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|brrip|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 96 💾 11.25 GB ⚙️ rutor",
+      "infoHash": "3e495746e879081fb6b7d8779e48c7274d907139",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bdrip",
+        "filename": "Oppenheimer.2023.BDRip.720p.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.desol.one:2710/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "dht:3e495746e879081fb6b7d8779e48c7274d907139"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer\n👤 89 💾 7.82 GB ⚙️ Torrent9",
+      "infoHash": "f19604e63fe4f880177b0b4463f326e01f8657ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.VFQ.720p.BluRay.x264-Slay3R.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:f19604e63fe4f880177b0b4463f326e01f8657ce"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Оппенгеймер / Oppenheimer\n👤 79 💾 13.35 GB ⚙️ rutor",
+      "infoHash": "9695393d093b819c6d047f6af9b98ea8e258a10b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bdrip",
+        "filename": "Oppenheimer.2023.BDRip.720p.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://exkinoray.fun/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:9695393d093b819c6d047f6af9b98ea8e258a10b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023) IMAX 720p BluRay AV1 Opus [dAV1nci]\n👤 40 💾 1.24 GB ⚙️ rargb",
+      "infoHash": "8388c6b8cfd7321582ebb2d3a8ea87dc52339c4f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray",
+        "filename": "Oppenheimer.2023.IMAX.720p.BluRay.AV1.Opus-dAV1nci.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker2.ctix.cn:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:8388c6b8cfd7321582ebb2d3a8ea87dc52339c4f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023) IMAX 720p BluRay AV1 Opus [dAV1nci]\n👤 40 💾 1.24 GB ⚙️ knaben",
+      "infoHash": "8388C6B8CFD7321582EBB2D3A8EA87DC52339C4F",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray",
+        "filename": "Oppenheimer.2023.IMAX.720p.BluRay.AV1.Opus-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer.2023.720p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 39 💾 1.04 GB ⚙️ rargb",
+      "infoHash": "6c89c1f04fc3fa987d2286c8f38ca33b953bf32a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x265",
+        "filename": "Oppenheimer.2023.720p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://bt.endpot.com:80/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:6c89c1f04fc3fa987d2286c8f38ca33b953bf32a"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023) 720p h264 Ac3 5.1 Ita Eng Sub Ita Eng-MIRCrew\n👤 32 💾 3.68 GB ⚙️ rargb",
+      "infoHash": "5f40224807d0642859246f89510c41921528b61c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|h264",
+        "filename": "Oppenheimer (2023) 720p h264 Ac3 5.1 Ita Eng Sub Ita Emg-MIRCrew.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://inferno.demonoid.is:3391/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:5f40224807d0642859246f89510c41921528b61c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer.2023.720p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 17 💾 1.04 GB ⚙️ rargb",
+      "infoHash": "b7b0179a26199b018e0542c635655d49f8292347",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x265",
+        "filename": "Oppenheimer.2023.720p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:b7b0179a26199b018e0542c635655d49f8292347"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023)(CZ) [720p] = CSFD 86%\n👤 8 💾 1.54 GB ⚙️ sktorrent",
+      "infoHash": "a70941b04b3a298de93523973457b0ea5eb59520",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Oppenheimer 2023 720p cz (pozri aj na KUKNI.TO).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:a70941b04b3a298de93523973457b0ea5eb59520"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Oppenheimer (2023) 720p BluRay-LAMA\n👤 6 💾 1.62 GB ⚙️ ThePirateBay",
+      "infoHash": "a71f97f1c2176f87697590941345d8570bdf4d88",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p|bluray|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.x264.AAC-LAMA.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 666 💾 1.46 GB ⚙️ rutor",
+      "infoHash": "9435c106614f38e2c751082b4a7d47557ecf46f8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip",
+        "filename": "Oppenheimer.2023.D.BDRip.1.46Gb.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:9435c106614f38e2c751082b4a7d47557ecf46f8"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Oppenheimer\n👤 263 💾 928.80 MB ⚙️ Torrent9",
+      "infoHash": "1e7f7020ab9193cbb757ee806070416c9911172f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|x264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.FRENCH.BDRip.x264-Ulysse.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:1e7f7020ab9193cbb757ee806070416c9911172f"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 238 💾 1.46 GB ⚙️ rutor",
+      "infoHash": "0da1963327b4542ef554ccb0590ea30e54ef82d4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|x264",
+        "filename": "Oppenheimer.2023.D.BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker2.ctix.cn:443/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:0da1963327b4542ef554ccb0590ea30e54ef82d4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 231 💾 4.34 GB ⚙️ rutor",
+      "infoHash": "4b9b0cd0970ea37fdd929bcdb0b276ff8aed6d58",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|x264",
+        "filename": "Oppenheimer.2023..BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:4b9b0cd0970ea37fdd929bcdb0b276ff8aed6d58"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Оппенгеймер / Oppenheimer\n👤 221 💾 2.18 GB ⚙️ rutor",
+      "infoHash": "1a8b2dbeb4565ec1d68b6d770acaf1e8639d5fca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Oppenheimer.2023.L.2.18GB.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1a8b2dbeb4565ec1d68b6d770acaf1e8639d5fca"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Оппенгеймер / Oppenheimer\n👤 191 💾 1.46 GB ⚙️ rutor",
+      "infoHash": "945400ed1ca275d14cb835f90a00705c760687ab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Oppenheimer.2023.L.1.46GB.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:945400ed1ca275d14cb835f90a00705c760687ab"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 160 💾 2.70 GB ⚙️ rutor",
+      "infoHash": "de5043401462bfa15fe955027be5d80adfeaf130",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip",
+        "filename": "Oppenheimer.2023.D.BDRip.2.70Gb.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:de5043401462bfa15fe955027be5d80adfeaf130"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 130 💾 3.21 GB ⚙️ rutor",
+      "infoHash": "464853da7db6140fcee9d8d2899622769429e11c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|x264",
+        "filename": "Oppenheimer.2023.D.BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:464853da7db6140fcee9d8d2899622769429e11c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 100 💾 1.46 GB ⚙️ rutor",
+      "infoHash": "6da0bc27b32a65324b177308eb73fb4f4bfbd60b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip",
+        "filename": "Oppenheimer.2023.MVO.BDRip.1.46Gb.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:6da0bc27b32a65324b177308eb73fb4f4bfbd60b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 79 💾 2.70 GB ⚙️ rutor",
+      "infoHash": "5bcf436a4a9dd46e4789ff0fdd8a1edf30d3d97c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip",
+        "filename": "Oppenheimer.2023.MVO.BDRip.2.70Gb.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:5bcf436a4a9dd46e4789ff0fdd8a1edf30d3d97c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Oppenheimer\n👤 66 💾 1.28 GB ⚙️ Torrent9",
+      "infoHash": "38956a099a5def6a12e4e733e61eb186ffd98543",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|h264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.FANSUB.VOSTFR.BDRip.H264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:38956a099a5def6a12e4e733e61eb186ffd98543"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 52 💾 1.46 GB ⚙️ rutor",
+      "infoHash": "9a2ac1e04bde5f34ce86a799a2c36641859389a5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|x264",
+        "filename": "Oppenheimer.2023.DUB.BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:9a2ac1e04bde5f34ce86a799a2c36641859389a5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\ntelesync",
+      "title": "Oppenheimer.2023.HDTS.c1nem4.x264-SUNSCREEN[TGx]\n👤 47 💾 996.97 MB ⚙️ knaben",
+      "infoHash": "7EDB9A050910C6FA542656B6735A24C1844011AB",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|telesync|x264",
+        "filename": "Oppenheimer.2023.HDTS.c1nem4.x264-SUNSCREEN.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nhdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 42 💾 800.18 MB ⚙️ rutor",
+      "infoHash": "b35866899d3674149571a6eee1b042f56272de6c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|hdrip",
+        "filename": "Oppenheimer.2023.D.TVSh.HDRip.mp4"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:b35866899d3674149571a6eee1b042f56272de6c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\ntelesync",
+      "title": "Oppenheimer (2023) NEW V3 TELESYNC x264\n👤 39 💾 1.98 GB ⚙️ rargb",
+      "infoHash": "2add70554f5fbe031010fed2726e5a94261dd070",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|telesync|x264",
+        "filename": "Oppenheimer (2023) NEW V3 TELESYNC x264.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:2add70554f5fbe031010fed2726e5a94261dd070"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 28 💾 1.46 GB ⚙️ rutor",
+      "infoHash": "e87273292733a6a2f1c079ea861845c9f75d83a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|x264",
+        "filename": "Oppenheimer.2023.DUB.BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:e87273292733a6a2f1c079ea861845c9f75d83a4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Оппенгеймер / Oppenheimer\n👤 23 💾 97.51 GB ⚙️ rutor",
+      "infoHash": "53c49f467121b3fccadb95ce098e84f80e052180",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Oppenheimer (2023) - UHD BD-Remux by Wild_Cat.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://tr2.torrent4me.com/ann?uk=Xtp1sIf1x9",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:53c49f467121b3fccadb95ce098e84f80e052180"
+      ]
+    },
+    {
+      "name": "TorrentsDB\ndvdrip",
+      "title": "Oppenheimer (2023) DVDRip.CZ.EN = CSFD 85%\n👤 14 💾 2.80 GB ⚙️ sktorrent",
+      "infoHash": "0e7b92415ee45ea9e1f4e6ce18b544d2f2cb364c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|dvdrip",
+        "filename": "Oppenheimer.2023.DVDRip.CZ.EN.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:0e7b92415ee45ea9e1f4e6ce18b544d2f2cb364c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Оппенгеймер / Oppenheimer\n👤 6 💾 2.70 GB ⚙️ rutor",
+      "infoHash": "4ccf1747255f3cf676a5c5041d195656cd67837d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip",
+        "filename": "Oppenheimer.2023.AVO.BDRip.2.70Gb.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:4ccf1747255f3cf676a5c5041d195656cd67837d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nbdrip",
+      "title": "Oppenheimer.2023.iTALiAN.iMAX.BDRiP.XviD\n👤 5 💾 3.13 GB ⚙️ ilcorsaronero",
+      "infoHash": "396c607a51c64648706b6d034d4c41555ddd0d53",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bdrip|xvid",
+        "filename": "Oppenheimer.2023.iTALiAN.iMAX.BDRiP.XviD.avi"
+      }
+    }
+  ]
+}

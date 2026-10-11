@@ -1,0 +1,409 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "the-office-s03e05",
+  "request": "https://torrentsdb.com/stream/series/tt0386676%3A3%3A5.json",
+  "recordedAt": "2026-10-11T12:04:14.337Z",
+  "status": 200,
+  "ms": 448,
+  "streams": [
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) (2005) Season 1-9 S01-S09 (1080p BluRay x265 HEV\nSeason 3/The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv\n📅 S03E05 👤 330 💾 655.06 MB ⚙️ ThePirateBay",
+      "infoHash": "d6797f5408e0c073ebae41c5ae2a4b354e47812c",
+      "fileIdx": 291,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d6797f5408e0c073ebae41c5ae2a4b354e47812c",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) (2005) Season 1-9 S01-S09 (1080p BluRay x265 HEV\nFeaturettes/Featurettes/Season 3/Deleted Scenes/S03E05 Initiation Deleted Scenes.mkv\n📅 S03E05 👤 330 💾 162.68 MB ⚙️ ThePirateBay",
+      "infoHash": "d6797f5408e0c073ebae41c5ae2a4b354e47812c",
+      "fileIdx": 52,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d6797f5408e0c073ebae41c5ae2a4b354e47812c",
+        "filename": "S03E05 Initiation Deleted Scenes.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office US (2005) Season 1-9 S01-S09 (1080p Mixed x265 HEVC 1\nFeaturettes/Season 3/Deleted Scenes/S03E05 Initiation Deleted Scenes.mkv\n📅 S03E05 👤 74 💾 34.60 MB ⚙️ ThePirateBay",
+      "infoHash": "5e1805ecaf28739507b516cf20e972e4c11bb1e1",
+      "fileIdx": 53,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|5e1805ecaf28739507b516cf20e972e4c11bb1e1",
+        "filename": "S03E05 Initiation Deleted Scenes.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office US (2005) Season 1-9 S01-S09 (1080p Mixed x265 HEVC 1\nSeason 3 (WEB)/The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv\n📅 S03E05 👤 74 💾 575.90 MB ⚙️ ThePirateBay",
+      "infoHash": "5e1805ecaf28739507b516cf20e972e4c11bb1e1",
+      "fileIdx": 305,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|5e1805ecaf28739507b516cf20e972e4c11bb1e1",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office US (2005) Season 1-9 S01-S09 (1080p Mixed x265 HEVC 1 ...\nFeaturettes/Season 3/Deleted Scenes/S03E05 Initiation Deleted Scenes.mkv\n📅 S03E05 👤 66 💾 34.60 MB ⚙️ knaben",
+      "infoHash": "5E1805ECAF28739507B516CF20E972E4C11BB1E1",
+      "fileIdx": 53,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|5E1805ECAF28739507B516CF20E972E4C11BB1E1",
+        "filename": "S03E05 Initiation Deleted Scenes.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office US (2005) Season 1-9 S01-S09 (1080p Mixed x265 HEVC 1 ...\nSeason 3 (WEB)/The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv\n📅 S03E05 👤 66 💾 575.90 MB ⚙️ knaben",
+      "infoHash": "5E1805ECAF28739507B516CF20E972E4C11BB1E1",
+      "fileIdx": 305,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|5E1805ECAF28739507B516CF20E972E4C11BB1E1",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) (2005) Season 1 9 S01 S09 (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]\nSeason 3/The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv\n📅 S03E05 👤 47 💾 655.06 MB ⚙️ knaben",
+      "infoHash": "D6797F5408E0C073EBAE41C5AE2A4B354E47812C",
+      "fileIdx": 291,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|D6797F5408E0C073EBAE41C5AE2A4B354E47812C",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) (2005) Season 1 9 S01 S09 (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence) [QxR]\nFeaturettes/Featurettes/Season 3/Deleted Scenes/S03E05 Initiation Deleted Scenes.mkv\n📅 S03E05 👤 47 💾 162.68 MB ⚙️ knaben",
+      "infoHash": "D6797F5408E0C073EBAE41C5AE2A4B354E47812C",
+      "fileIdx": 52,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|D6797F5408E0C073EBAE41C5AE2A4B354E47812C",
+        "filename": "S03E05 Initiation Deleted Scenes.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office S01-08 1080p Web DL H265 AAC 5.1\nS03/The Office  Superfan Episodes S03e05 Initiation (Extended Cut).mp4\n📅 S03E05 👤 11 💾 714.02 MB ⚙️ ThePirateBay",
+      "infoHash": "2ccca4b8fdaf48f19ed28531971bf91c9d1f2a5c",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2ccca4b8fdaf48f19ed28531971bf91c9d1f2a5c",
+        "filename": "The Office  Superfan Episodes S03e05 Initiation (Extended Cut).mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Офис / The Office [S03]\nThe.Office.US.S03.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD/The.Office.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv\n📅 S03E05 👤 11 💾 1.51 GB ⚙️ rutor",
+      "infoHash": "094e7929c00400beabbdadf1e26ac67b02363ba5",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|094e7929c00400beabbdadf1e26ac67b02363ba5",
+        "filename": "The.Office.S03E05.Initiation.1080p.AMZN.WEB-DL.Rus.Eng_TeamHD.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:094e7929c00400beabbdadf1e26ac67b02363ba5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) (2005) Season 1-9 S01-S09 Extras (1080p Mixed x2\nThe Office (US) (2005) Season 3 S03 + Extras (1080p AMZN WEB-DL x265 HEVC 10bit AAC 2.0 LION)/Featurettes/Deleted Scenes/S03E05 Initiation Deleted Scenes.mkv\n📅 S03E05 👤 4 💾 34.60 MB ⚙️ ThePirateBay",
+      "infoHash": "838df72e305d1b3276612c8259803bf84ca00861",
+      "fileIdx": 405,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|838df72e305d1b3276612c8259803bf84ca00861",
+        "filename": "S03E05 Initiation Deleted Scenes.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) (2005) Season 1-9 S01-S09 Extras (1080p Mixed x2\nThe Office (US) (2005) Season 3 S03 + Extras (1080p AMZN WEB-DL x265 HEVC 10bit AAC 2.0 LION)/The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv\n📅 S03E05 👤 4 💾 337.93 MB ⚙️ ThePirateBay",
+      "infoHash": "838df72e305d1b3276612c8259803bf84ca00861",
+      "fileIdx": 142,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|838df72e305d1b3276612c8259803bf84ca00861",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p AMZN WEB-DL x265 LION).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) Superfan Ext (2005) S01-09 (1080p BluRay x265 EAC3 Silence)[QxR]\nThe Office (US) Superfan Extended (2005) S01-S09 (1080p BluRay x265 10bit EAC3 5.1 Silence)/The Office (US) (2005) S03/The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv\n📅 S03E05 👤 3 💾 987.02 MB ⚙️ limetorrent",
+      "infoHash": "0479dd89bb2f6ae8cf2a84c11ba4f394343a32e6",
+      "fileIdx": 90,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|0479dd89bb2f6ae8cf2a84c11ba4f394343a32e6",
+        "filename": "The Office (US) (2005) - S03E05 - Initiation (1080p BluRay x265 Silence).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:0479dd89bb2f6ae8cf2a84c11ba4f394343a32e6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Office (US) Superfan Ext (2005) S01-09 (1080p BluRay x265 EAC3 Silence)[QxR]\nThe Office (US) Superfan Extended (2005) S01-S09 (1080p BluRay x265 10bit EAC3 5.1 Silence)/The Office (US) (2005) S03/Featurettes/Deleted Scenes/S03E05 Initiation Deleted Scenes.mkv\n📅 S03E05 👤 3 💾 162.68 MB ⚙️ limetorrent",
+      "infoHash": "0479dd89bb2f6ae8cf2a84c11ba4f394343a32e6",
+      "fileIdx": 126,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|0479dd89bb2f6ae8cf2a84c11ba4f394343a32e6",
+        "filename": "S03E05 Initiation Deleted Scenes.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:0479dd89bb2f6ae8cf2a84c11ba4f394343a32e6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Офис / The Office [S01-09]\nОфис - The Office (2005 – 2013) 720p/S03/S03e05.Initiation.mkv\n📅 S03E05 👤 19 💾 428.67 MB ⚙️ rutor",
+      "infoHash": "e27ebabf6d5ffdfa738832ba763a995a9fb95e51",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e27ebabf6d5ffdfa738832ba763a995a9fb95e51",
+        "filename": "S03e05.Initiation.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:e27ebabf6d5ffdfa738832ba763a995a9fb95e51"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Офис / The Office [S01-09]\nThe Office/The Office_S03/The.Office.s03e05.WEB-DLRip.avi\n📅 S03E05 👤 13 💾 249.98 MB ⚙️ rutor",
+      "infoHash": "1a8d6c644e629925e3a7ffee696de9eae00162af",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1a8d6c644e629925e3a7ffee696de9eae00162af",
+        "filename": "The.Office.s03e05.WEB-DLRip.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://tracker.publicbt.com:80",
+        "tracker:udp://tracker.istole.it:80",
+        "tracker:udp://open.demonii.com:1337",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1a8d6c644e629925e3a7ffee696de9eae00162af"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Офис / The Office / Сезон: 3 / Серии: 1-24 из 24 (Ken Kwapis)\nThe Office - 3x05 - Initiation.avi\n📅 S03E05 👤 1 💾 194.09 MB ⚙️ rutracker",
+      "infoHash": "6c9730c4a19e286a105d2888ac344a133dd714af",
+      "fileIdx": 16,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|6c9730c4a19e286a105d2888ac344a133dd714af",
+        "filename": "The Office - 3x05 - Initiation.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:6c9730c4a19e286a105d2888ac344a133dd714af"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "The.Office.S03E01-25.ITA.WEBRIP.x264-NST\n📅 S03E05 👤 1 💾 212.94 MB ⚙️ ilcorsaronero",
+      "infoHash": "cb0d27cb0ed12d82619bdf8dd8685466e4bc5747",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "The.Office.3x05.L.imitazione.di.Cosby.ITA.WEBRIP.x264-NST.mkv"
+      }
+    }
+  ]
+}

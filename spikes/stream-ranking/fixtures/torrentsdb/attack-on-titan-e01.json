@@ -1,0 +1,386 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "attack-on-titan-e01",
+  "request": "https://torrentsdb.com/stream/series/kitsu%3A7442%3A1.json",
+  "recordedAt": "2026-10-11T12:04:26.981Z",
+  "status": 200,
+  "ms": 688,
+  "streams": [
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTMini] Attack on Titan - S03 (BD 1080p AV1 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 3)\n📅 S01E01 👤 259 💾 9.10 GB ⚙️ nyaa",
+      "infoHash": "dd9bca443c9ab0de9685a1f33c4668d6dabef61c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S03E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTMini] Attack on Titan - S02 (BD 1080p AV1 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 2)\n📅 S01E01 👤 250 💾 7.00 GB ⚙️ nyaa",
+      "infoHash": "2e5e0c895ef83647f8bbd6af5f93f7e7585a57bd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S02E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTMini] Attack on Titan - S04 (BD 1080p AV1 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 4)\n📅 S01E01 👤 228 💾 11.50 GB ⚙️ nyaa",
+      "infoHash": "47014baec854e3e5811a4c4afc3a48bc3b15eea3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S04E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTMini] Attack on Titan - S01 (BD 1080p AV1 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 1)\n📅 S01E01 👤 182 💾 9.60 GB ⚙️ nyaa",
+      "infoHash": "9877d43af878be44696a03b2089555d8d908caa6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.AV1-PHTMini.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTM] Attack on Titan - S04 (BD 1080p x265 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 4)\n📅 S01E01 👤 148 💾 96.50 GB ⚙️ nyaa",
+      "infoHash": "2e759eceb3ada502402b816909be5692be858c5a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S04E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTM] Attack on Titan - S02 (BD 1080p x265 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 2)\n📅 S01E01 👤 70 💾 51.80 GB ⚙️ nyaa",
+      "infoHash": "9feee3d69cca7643d06b489bdf8275565d021d93",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S02E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack On Titan S04e01-30 [1080p Ita Eng Jap h265 10bit SubS SPA] byMe7alh [MIRCrew]\n📅 S01E01 👤 64 💾 18.40 GB ⚙️ 1337x",
+      "infoHash": "2bdc85e7fcb41e0a74b69a18a0f45929779a42c9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.On.Titan.S04e01.Ita.Eng.Jap.1080p.h265.10bit.SubS.SPA-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTM] Attack on Titan - S03 (BD 1080p x265 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 3)\n📅 S01E01 👤 61 💾 90.30 GB ⚙️ nyaa",
+      "infoHash": "4e7906e6a82d365b407cea26dc5fc4a937e039df",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S03E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[PHTM] Attack on Titan - S01 (BD 1080p x265 Opus 2.0) (Multi-Audio) (German/Deutsch) | Shingeki no Kyojin (Season 1)\n📅 S01E01 👤 33 💾 98.80 GB ⚙️ nyaa",
+      "infoHash": "1685adb6cf865b9d131727e29821b2aeef9cdcbe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.2013.S01E01.GERMAN.Dubbed.DL.1080p.BD.Opus.2.0.10bit.x265-PHTM.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack.on.Titan.S04.1080p.BluRay.MULTi.x265.FLAC.2.0-GapMoe\n📅 S01E01 👤 31 💾 119.50 GB ⚙️ nyaa",
+      "infoHash": "45b7e8ae5707e3491fb7ab37179b4e4f96e2fe37",
+      "fileIdx": 29,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.S04E01.1080p.BluRay.MULTi.x265.FLAC.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[GapMoe] Attack on Titan - S01 (BD 1080p AV1 Opus 2.0) (Multi-Audio) (ES/LAT) | Shingeki no Kyojin (Season 1)\n📅 S01E01 👤 24 💾 14.70 GB ⚙️ nyaa",
+      "infoHash": "179a0aab3e3c4f36d422710151a94c3306ccbbca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack on Titan 2013 Seasons 1 to 4 Complete 1080p WEB x264 [i_c]\n📅 S01E01 👤 19 💾 53.40 GB ⚙️ 1337x",
+      "infoHash": "d9d71838dbd6c8d2b5249d3936cb0b7f3c814059",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack on Titan - S04E01 - The Other Side of the Sea.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack on Titan 2013 Seasons 1 to 4 Complete 1080p WEB x264 [i_c]\n📅 S01E01 👤 19 💾 53.40 GB ⚙️ 1337x",
+      "infoHash": "d9d71838dbd6c8d2b5249d3936cb0b7f3c814059",
+      "fileIdx": 83,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack on Titan - S03E01 - Smoke Signal.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack on Titan 2013 Seasons 1 to 4 Complete 1080p WEB x264 [i_c]\n📅 S01E01 👤 19 💾 53.40 GB ⚙️ 1337x",
+      "infoHash": "d9d71838dbd6c8d2b5249d3936cb0b7f3c814059",
+      "fileIdx": 68,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack on Titan - S01E01 - To You, in 2,000 Years The Fall of Shiganshina (1).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack on Titan 2013 Seasons 1 to 4 Complete 1080p WEB x264 [i_c]\n📅 S01E01 👤 19 💾 53.40 GB ⚙️ 1337x",
+      "infoHash": "d9d71838dbd6c8d2b5249d3936cb0b7f3c814059",
+      "fileIdx": 69,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack on Titan - S02E01 - Beast Titan.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack on Titan : OAD Archive [2013-2018] 1080p BDRip x265 FLAC 2.0 Kira [SEV]\n📅 S01E01 👤 9 💾 23.20 GB ⚙️ 1337x",
+      "infoHash": "fad2142dc417fa513a0b3e73cbeb61266613060f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack on Titan - OAD 01 (#3.5) - Ilse's Notebook - Memoirs of a Scout Regiment Member (2013.12.09) 1080p BDRip x265 FLAC 2.0 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack.on.Titan.S02.1080p.Blu-Ray.10-Bit.Dual-Audio.TrueHD.x265-iAHD\n📅 S01E01 👤 9 💾 26.10 GB ⚙️ nyaa",
+      "infoHash": "33fdcc68c69b97758ff479cde4e68a68cdb1ce1a",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.S02E01.1080p.Blu-Ray.10-Bit.Dual-Audio.TrueHD.x265-iAHD.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S03]\n📅 S01E01 👤 2 💾 20.53 GB ⚙️ rutor",
+      "infoHash": "14f0ad6f79394dfda8f4d359a403fe5abf2d555e",
+      "fileIdx": 19,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shingeki.no.Kyojin.S03E01.1080p.NewComers.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:14f0ad6f79394dfda8f4d359a403fe5abf2d555e"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Attack.on.Titan.S04.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe\n📅 S01E01 👤 1 💾 19.50 GB ⚙️ nyaa",
+      "infoHash": "f8f2792cc3910ed0a4e97e04c5478e0a1d74db1d",
+      "fileIdx": 29,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.S04E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "[GapMoe] Attack on Titan - S01 (BD 1080p AV1 Opus 2.0) (Multi-Audio) (ES/LAT) | Shingeki no Kyojin (Season 1)\n📅 S01E01 👤 1 💾 14.60 GB ⚙️ nyaa",
+      "infoHash": "b35e0cd58801b268472e9b069e5a12c98896af83",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Attack.on.Titan.S01E01.1080p.BluRay.MULTi.AV1.OPUS.2.0-GapMoe.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "(Inside for fixed 104) [转载] 【修正版】犬夜叉(Inuyasha) - 本篇(167 episodes) + 完结篇(The Final Act 26 episodes) + OVA篇第1季(It's a Rumic World: Black Tessaiga) + 剧场版第1-4季(the Movie 1~4) + 舞台剧1季(Live-action no sub) + 漫画56卷全(comic full 56 volumes jpn->zip ; cht->pdf)\n📅 S01E01 👤 1 💾 122.30 GB ⚙️ nyaa",
+      "infoHash": "dd5a9480e75c792dacd3e31fa20a8237ef50dd58",
+      "fileIdx": 28,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "犬夜叉 - 完结篇 - 第01话：奈落の心臓（奈落的心脏）；1920×1080P.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Attack On Titan S04e01-30 [720p Ita Eng Jap SubS SPA] byMe7alh [MIRCrew]\n📅 S01E01 👤 8 💾 18.00 GB ⚙️ 1337x",
+      "infoHash": "88c0699c7483088404928496d7ebe7d533e721bf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Attack.On.Titan.S04e01.Ita.Eng.Jap.720p.h264.SubS.SPA-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [\n📅 S01E01 👤 2 💾 11.23 GB ⚙️ rutor",
+      "infoHash": "993b5e678d0d0d2ec98604612099c20ff5663b06",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Shingeki.no.Kyojin.S04E01.720p.NewComers.mp4"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:993b5e678d0d0d2ec98604612099c20ff5663b06"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Вторжение титанов / Shingeki no Kyojin [S02]\n📅 S01E01 👤 1 💾 3.43 GB ⚙️ rutor",
+      "infoHash": "826ea8625383cd1b5aee27fb638f86fa25f5c86d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Shingeki.no.Kyojin.S02E01.720p.BDRip.le-production.tv.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.publicbt.com:80/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:826ea8625383cd1b5aee27fb638f86fa25f5c86d"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n400p",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [\n📅 S01E01 👤 2 💾 4.03 GB ⚙️ rutor",
+      "infoHash": "1fe78c3e96f604c9c2365bff4f87778dd302a175",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|400p",
+        "filename": "Shingeki.no.Kyojin.S04E01.400p.NewComers.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:1fe78c3e96f604c9c2365bff4f87778dd302a175"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-03 + OVA]\n📅 S01E01 👤 3 💾 18.88 GB ⚙️ rutor",
+      "infoHash": "b6d4a8f04d74b516aba80877dadb3bce34567363",
+      "fileIdx": 35,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Shingeki.no.Kyojin.s02e01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:b6d4a8f04d74b516aba80877dadb3bce34567363"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-03 + OVA]\n📅 S01E01 👤 3 💾 18.88 GB ⚙️ rutor",
+      "infoHash": "b6d4a8f04d74b516aba80877dadb3bce34567363",
+      "fileIdx": 10,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Shingeki.no.Kyojin.s01e01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:b6d4a8f04d74b516aba80877dadb3bce34567363"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Атака титанов / Вторжение титанов / Shingeki no Kyojin [S01-03 + OVA]\n📅 S01E01 👤 3 💾 18.88 GB ⚙️ rutor",
+      "infoHash": "b6d4a8f04d74b516aba80877dadb3bce34567363",
+      "fileIdx": 59,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Shingeki.no.Kyojin.s03e01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:b6d4a8f04d74b516aba80877dadb3bce34567363"
+      ]
+    },
+    {
+      "name": "TorrentsDB\ndvdrip",
+      "title": "Kaitou Saint Tail [DVDrip] x264 AC3 [CalChi]\n📅 S01E01 👤 1 💾 18.70 GB ⚙️ nyaa",
+      "infoHash": "3dc8cb927da0ac39a9cf5cdeb945636e96ec9a70",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|dvdrip",
+        "filename": "怪盜 セイント☆テ-ル.1995.EP01-02.x264.AC3-CalChi.mkv"
+      }
+    }
+  ]
+}

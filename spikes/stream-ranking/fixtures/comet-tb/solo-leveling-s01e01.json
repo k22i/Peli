@@ -1,0 +1,2551 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "solo-leveling-s01e01",
+  "request": "https://comet.elfhosted.com/<config>/stream/series/tt21209876%3A1%3A1.json",
+  "recordedAt": "2026-10-11T12:07:11.225Z",
+  "status": 200,
+  "ms": 548,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f115d1b70ac81b18b07189dadad70269d5d3ed77",
+        "filename": "Can This Love Be Translated S01E01 2026 2160p NF WEB-DL DDP5 1 Atmos DV H 265-HHWEB.mkv",
+        "videoSize": 9309370011
+      },
+      "description": "📄 Can This Love Be Translated S01E01 2026 2160p NF WEB-DL DDP5 1 Atmos DV H 265-HHWEB.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ HHWEB\n👤 0 💾 8.7 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cb345dfb44f8b404c2f175ba5a74ce513d087f0d",
+        "filename": "Solo.Leveling.S01E01.2024.2160p.IQ.WEB-DL.H265.DDP2.0-LelveTV.mkv",
+        "videoSize": 576167701
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.2160p.IQ.WEB-DL.H265.DDP2.0-LelveTV.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ LelveTV\n💾 549.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e1194e55ed1f37d66efabb8cfdb13f11da730eda",
+        "filename": "Solo.Leveling.S01E01.2160p.B-Global.WEB-DL.AAC2.0.H.264-Anitsu.mkv",
+        "videoSize": 1373039984
+      },
+      "description": "📄 Solo.Leveling.S01E01.2160p.B-Global.WEB-DL.AAC2.0.H.264-Anitsu.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ Anitsu\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3f21e54012b3d4d5005b0191423563b75b0790c0",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.2160p.WEB-DL.x264.AAC-ZeroTV.mkv",
+        "videoSize": 1380316111
+      },
+      "description": "📄 Ore.dake.Level.Up.na.Ken.S01E01.2024.2160p.WEB-DL.x264.AAC-ZeroTV.mkv\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ZeroTV\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c391c579fb30270a108fa0d362b247b50d4ee845",
+        "filename": "Solo Leveling - S01E01 - Im Used to It 2160p -Mesc.mkv",
+        "videoSize": 1370444027
+      },
+      "description": "📄 Solo Leveling - S01E01 - Im Used to It 2160p -Mesc.mkv\n🏷️ Mesc\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0ed2624c95780dc7f80371128ccb3242740a5be8",
+        "filename": "[InariDub] Solo Leveling - S1E01 [2160p] [4K] [UA].mkv",
+        "videoSize": 1425745822
+      },
+      "description": "📄 [InariDub] Solo Leveling - S1E01 [2160p] [4K] [UA].mkv\n🏷️ InariDub\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f700fd478d25c6059b66947c158dbc1e924e0f55",
+        "filename": "Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruelty.2160p.B-Global.WEB-DL.AAC2.0.H.264.DUAL-OLYMPUS.mkv",
+        "videoSize": 1958360380
+      },
+      "description": "📄 Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruelty.2160p.B-Global.WEB-DL.AAC2.0.H.264.DUAL-OLYMPUS.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ OLYMPUS\n👤 0 💾 1.8 GB 🔎 DebridAccount|realdebrid\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b71be6b85254725151b27ba6af5d94e2b45ac887",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.2160p.WEB-DL.MULTI.AAC2.0.x264.Multi.Subs.AniMeitantei.mkv",
+        "videoSize": 1430377282
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.2160p.WEB-DL.MULTI.AAC2.0.x264.Multi.Subs.AniMeitantei.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL\n💾 1.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|96bf6468e8634ce5a4e08b20c8035bbac7419d70",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.2160p.WEB-DL.AAC2.0.x264.Multi-JonataS2011.mkv",
+        "videoSize": 1452766085
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.2160p.WEB-DL.AAC2.0.x264.Multi-JonataS2011.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ JonataS2011\n💾 1.4 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|315027557c70ef8af2f64a4f0b26ae54bf0434e3",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.2160p.CR.WEB-DL.MULTi.AAC.2.0.x264.MSubs-ToonsHub.mkv",
+        "videoSize": 1626376465
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.2160p.CR.WEB-DL.MULTi.AAC.2.0.x264.MSubs-ToonsHub.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ ToonsHub\n💾 1.5 GB 🔎 Comet|Knaben\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|55e67761029e7d0513315c9796c76dd55a287414",
+        "filename": "Solo Leveling - S01E01 (WEB 2160p AV1 AAC Multi).mkv",
+        "videoSize": 671077847
+      },
+      "description": "📄 Solo Leveling - S01E01 (WEB 2160p AV1 AAC Multi).mkv\n📹 av1 | 🔊 AAC\n⭐ WEB\n💾 640.0 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f7c6acb56afcd15b78db8b8dc04a7a12bce86b4",
+        "filename": "[FrixySubs] Solo Leveling - 01 [S01E01] [1080p CR WEB-DL H.264 AAC REMUX] [Napisy PL].mkv",
+        "videoSize": 1435671627
+      },
+      "description": "📄 [FrixySubs] Solo Leveling - 01 [S01E01] [1080p CR WEB-DL H.264 AAC REMUX] [Napisy PL].mkv\n📹 avc | 🔊 AAC\n⭐ REMUX | 🏷️ FrixySubs\n👤 0 💾 1.3 GB 🔎 CometNet|ElfHosted\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6e76b6a5d119ecf89fd20e1df925e7a3a0a598c0",
+        "filename": "[WAP] Solo Leveling - S01E01 (BD Remux 1080p AVC AAC FLAC).mkv",
+        "videoSize": 6604128486
+      },
+      "description": "📄 [WAP] Solo Leveling - S01E01 (BD Remux 1080p AVC AAC FLAC).mkv\n📹 avc | 🔊 FLAC • AAC\n⭐ BluRay REMUX | 🏷️ WAP\n💾 6.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d214a598a36193957c6a3586414f3d383c8a012d",
+        "filename": "Solo Leveling S01E01 Im Used to It PROPER 1080p FLAC 2 0 AVC HYBRID REMUX-FraMeSToR.mkv",
+        "videoSize": 6951815584
+      },
+      "description": "📄 Solo Leveling S01E01 Im Used to It PROPER 1080p FLAC 2 0 AVC HYBRID REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX • PROPER | 🏷️ FraMeSToR\n👤 6 💾 6.5 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|56bc2e3ea2016cfd2ae7a445539a7f73c20cbcc2",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv",
+        "videoSize": 6951815584
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX • PROPER | 🏷️ FraMeSToR\n💾 6.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8d8c8537737d616d361d4fa3c4f5ff02416d7170",
+        "filename": "Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruelty.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv",
+        "videoSize": 6964632278
+      },
+      "description": "📄 Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruelty.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX | 🏷️ FraMeSToR\n👤 0 💾 6.5 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|711d52933a5b9b05fe71b400141d7c1ca0050d05",
+        "filename": "Demon.Slayer.S01E01.1080p.BluRay.REMUX.AVC.FLAC.2.0-TTGA.DUAL-Treecher.mkv",
+        "videoSize": 6498998025
+      },
+      "description": "📄 Demon.Slayer.S01E01.1080p.BluRay.REMUX.AVC.FLAC.2.0-TTGA.DUAL-Treecher.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ BluRay REMUX | 🏷️ Treecher\n👤 0 💾 6.1 GB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f8bcdca4660b8a97881a1a136f53e482453713a2",
+        "filename": "That.Time.I.Got Reincarnated.as.a.Slime.S01E01.1080p.Blu-Ray.10-Bit.Dual-Audio.TrueHD.x265-iAHD.mkv",
+        "videoSize": 2933905179
+      },
+      "description": "📄 That.Time.I.Got Reincarnated.as.a.Slime.S01E01.1080p.Blu-Ray.10-Bit.Dual-Audio.TrueHD.x265-iAHD.mkv\n📹 hevc • 10bit | 🔊 TrueHD\n⭐ BluRay | 🏷️ iAHD\n👤 0 💾 2.7 GB 🔎 DebridAccount|realdebrid\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f54833b8ae022be2d83a693fa4fd25522de54877",
+        "filename": "The Water Magician S01E01 The Slow But Dangerous Life 1080p CR WEB-DL DDP2 0 H 264-Kitsune.mkv",
+        "videoSize": 1517528898
+      },
+      "description": "📄 The Water Magician S01E01 The Slow But Dangerous Life 1080p CR WEB-DL DDP2 0 H 264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ Kitsune\n👤 0 💾 1.4 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a83eed153380d58c4a01f4885d9503ca2cac73ac",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv",
+        "videoSize": 1369066118
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ VARYG\n💾 1.3 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9e31cc555845ef5ba697a707e160294d036ccdb5",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv",
+        "videoSize": 1384331357
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ VARYG\n💾 1.3 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|92deeb6d23c9af5c681bd325b2201e33485cc55b",
+        "filename": "House of the Dragon S01E01 The Heirs of the Dragon with ASL 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune.mkv",
+        "videoSize": 3924129098
+      },
+      "description": "📄 House of the Dragon S01E01 The Heirs of the Dragon with ASL 1080p AMZN WEB-DL DDP5 1 H 264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n👤 0 💾 3.7 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|708f446b4da87ddc210b8bf1f0f5464ef460123f",
+        "filename": "Solo Leveling S01E01 2024 1080p AMZN WEB-DL H 264 DDP2 0-ADWeb.mkv",
+        "videoSize": 1368904452
+      },
+      "description": "📄 Solo Leveling S01E01 2024 1080p AMZN WEB-DL H 264 DDP2 0-ADWeb.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ ADWeb\n👤 27 💾 1.3 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|41f5c00c36678cc76aed37b07d7d5a69752c5e55",
+        "filename": "Can.This.Love.Be.Translated.S01E01.MULTi.1080p.NF.WEB-DL.H264.DDP5.1.Atmos-K83.mkv",
+        "videoSize": 2893174031
+      },
+      "description": "📄 Can.This.Love.Be.Translated.S01E01.MULTi.1080p.NF.WEB-DL.H264.DDP5.1.Atmos-K83.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 0 💾 2.7 GB 🔎 DebridAccount|realdebrid\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e9c82ca6784ab6e83c87eb2183d4e996aaf3f09",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.1080p.BluRay.10bit.EAC3.2.0.x265-iVy.mkv",
+        "videoSize": 475451064
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.1080p.BluRay.10bit.EAC3.2.0.x265-iVy.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 2.0\n⭐ BluRay | 🏷️ iVy\n💾 453.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2f32831d696640da30ea4bb2789c559cca0ecbe3",
+        "filename": "Naked.Attraction.S01E01.1080p.AMZN.WEB-DL.DDP2.0.H.264-SLAG.mkv",
+        "videoSize": 4677224994
+      },
+      "description": "📄 Naked.Attraction.S01E01.1080p.AMZN.WEB-DL.DDP2.0.H.264-SLAG.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ SLAG\n👤 0 💾 4.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f81885853782468d7b0b9faad608cddfc8846d2c",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.NF.WEB-DL.AAC2.0.H.264-VARYG.mkv",
+        "videoSize": 908056914
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.NF.WEB-DL.AAC2.0.H.264-VARYG.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ VARYG\n💾 866.0 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|96581bb461743d73e3c1a384e09c9ce57c01890f",
+        "filename": "Solo Leveling S01E01 I'm Used to It 1080p CR WEB-DL x264 [English - Japanese - Hindi - Portuguese - Spanish - German - French - Italian - Spanish - Tamil - Telugu] (AAC 2.0 - 128kbps) MSubs_ToonsHub_.mkv",
+        "videoSize": 1668493750
+      },
+      "description": "📄 Solo Leveling S01E01 I'm Used to It 1080p CR WEB-DL x264 [English - Japanese - Hindi - Portuguese - Spanish - German - French - Italian - Spanish - Tamil - Telugu] (AAC 2.0 - 128kbps) MSubs_ToonsHub_.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL\n💾 1.6 GB 🔎 Comet|Knaben\n🌎/🇬🇧/🇯🇵/🇪🇸/🇵🇹/🇮🇹/🇩🇪/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|94178875afe75462a3cc686cf4396a28f0a47d30",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.AAC2.0.H.264-LatTeam.mkv",
+        "videoSize": 1480913239
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.AAC2.0.H.264-LatTeam.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ LatTeam\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|801c38ff96f6451512be595c0949e733f1613833",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.NF.WEB-DL.AAC2.0.H264-ColorTV.mkv",
+        "videoSize": 908255594
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.1080p.NF.WEB-DL.AAC2.0.H264-ColorTV.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ ColorTV\n💾 866.2 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b9f745e696e3e147096f7e30849bfa3763c18da",
+        "filename": "THE.LEVELING.OF.SOLO.LEVELING.S01E01.A.Hunter.Rises.1080p.CR.WEB-DL.AAC2.0.H.264-VARYG.mkv",
+        "videoSize": 1289520999
+      },
+      "description": "📄 THE.LEVELING.OF.SOLO.LEVELING.S01E01.A.Hunter.Rises.1080p.CR.WEB-DL.AAC2.0.H.264-VARYG.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ VARYG\n👤 1 💾 1.2 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|429a34c686bfe6e89f7c7b63c1e5585c477e2018",
+        "filename": "[PacMan] Solo.Leveling.S01E1.1080p.WEB-DL.AAC2.0.H.264[MultiSub].mkv",
+        "videoSize": 683090754
+      },
+      "description": "📄 [PacMan] Solo.Leveling.S01E1.1080p.WEB-DL.AAC2.0.H.264[MultiSub].mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ PacMan\n💾 651.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|31cfa3e33b76d1a42552fdd924eb2839b0f4ad82",
+        "filename": "我独自升级.Solo.Leveling.S01E01.2024.1080p.NF.WEB-DL.AAC.H264-ZeroTV.mkv",
+        "videoSize": 290457975
+      },
+      "description": "📄 我独自升级.Solo.Leveling.S01E01.2024.1080p.NF.WEB-DL.AAC.H264-ZeroTV.mkv\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ZeroTV\n💾 277.0 MB 🔎 Comet|StremThru\n🇨🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2bab8a65fdb284af38363150790f187b9a23c634",
+        "filename": "Slugterra.S01E01.The.World.Beneath.Our.Feet.Part.1.1080p.Netflix.WEB-DL.DD+2.0.x264-QOQ.mkv",
+        "videoSize": 748702088
+      },
+      "description": "📄 Slugterra.S01E01.The.World.Beneath.Our.Feet.Part.1.1080p.Netflix.WEB-DL.DD+2.0.x264-QOQ.mkv\n📹 avc | 🔊 Dolby Digital • 2.0\n⭐ WEB-DL | 🏷️ QOQ\n👤 0 💾 714.0 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c643260a1426dea6ec15f0e59d8c7cdcb3e0dd18",
+        "filename": "Cougar.Island.S01E01.VFF.1080p.WEB.AAC.2.0.H264-BOUBA.mkv",
+        "videoSize": 1354115766
+      },
+      "description": "📄 Cougar.Island.S01E01.VFF.1080p.WEB.AAC.2.0.H264-BOUBA.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB | 🏷️ BOUBA\n👤 0 💾 1.3 GB 🔎 CometNet|ElfHosted\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a8194f681edef47534cf2bbdc3782169b6d56de7",
+        "filename": "Solo.Leveling.S01E01.I.M.Used.To.It.ITA.JPN.1080p.WEB-DL.x264-UBi.mkv",
+        "videoSize": 1464583246
+      },
+      "description": "📄 Solo.Leveling.S01E01.I.M.Used.To.It.ITA.JPN.1080p.WEB-DL.x264-UBi.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ UBi\n👤 3 💾 1.4 GB 🔎 Comet|BitMagnet\n🌎/🇯🇵/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8573f98d8c85ab1474f2881c46f099dce413bd33",
+        "filename": "Solo.Leveling.S01E01.I.M.Used.To.It.ITA.JPN.1080p.WEB-DL.x264-UBi.mkv",
+        "videoSize": 1464583246
+      },
+      "description": "📄 Solo.Leveling.S01E01.I.M.Used.To.It.ITA.JPN.1080p.WEB-DL.x264-UBi.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ UBi\n👤 6 💾 1.4 GB 🔎 TheRARBG\n🌎/🇯🇵/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|716f3cc24bdb69d526c88b251bb7c1d91b0589a6",
+        "filename": "DEMON SLAYER KIMETSU NO YAIBA S01E01 TRUEFRENCH WEBDL 1080P X264 - [HMY-RIPPER].mkv",
+        "videoSize": 1438313801
+      },
+      "description": "📄 DEMON SLAYER KIMETSU NO YAIBA S01E01 TRUEFRENCH WEBDL 1080P X264 - [HMY-RIPPER].mkv\n📹 avc\n⭐ WEB-DL\n👤 0 💾 1.3 GB 🔎 DebridAccount|realdebrid\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5bda2d30e39bcd551a9b18c5731bc9e9a9b9c4cc",
+        "filename": "Solo Leveling S01E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 1435268298
+      },
+      "description": "📄 Solo Leveling S01E01 VOSTFR 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n💾 1.3 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2eb213ee6033f064730ee33f73488235e0107c6e",
+        "filename": "[LostYears] Solo Leveling - S01E01 (WEB 1080p x264 AAC) [4C0E0CD6].mkv",
+        "videoSize": 1514573455
+      },
+      "description": "📄 [LostYears] Solo Leveling - S01E01 (WEB 1080p x264 AAC) [4C0E0CD6].mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ LostYears\n💾 1.4 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3fc20f3c4e1c22034793763e715160a6a85b9dbf",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.1080p.BluRay.DD+2.0.x264-G0AT3D.mkv",
+        "videoSize": 2126202021
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.1080p.BluRay.DD+2.0.x264-G0AT3D.mkv\n📹 avc | 🔊 Dolby Digital • 2.0\n⭐ BluRay | 🏷️ G0AT3D\n💾 2.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec8e6c66f24588779c231ef8d5003ab7e6d64920",
+        "filename": "Solo.Leveling.S01E01.1080p.BluRay.X264-iNSPiRE.mkv",
+        "videoSize": 1561318176
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.BluRay.X264-iNSPiRE.mkv\n📹 avc\n⭐ BluRay | 🏷️ iNSPiRE\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e4e61f1f55233de8545785b7fcb87e1fe4fac125",
+        "filename": "[DKB] Solo Leveling - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv",
+        "videoSize": 511476083
+      },
+      "description": "📄 [DKB] Solo Leveling - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv\n📹 hevc • 10bit\n🏷️ DKB\n💾 487.8 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e1672a1c47b65a880e47debaa5e461099525bf43",
+        "filename": "Ore dake Level Up na Ken - S01E01 - KOREAN 1080p WEB x264 -NanDesuKa (CR).mkv",
+        "videoSize": 1436085114
+      },
+      "description": "📄 Ore dake Level Up na Ken - S01E01 - KOREAN 1080p WEB x264 -NanDesuKa (CR).mkv\n📹 avc\n⭐ WEB | 🏷️ CR\n💾 1.3 GB 🔎 Comet|StremThru\n🇰🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cef3a172340906dee28075ffc73db8e85973de96",
+        "filename": "Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv",
+        "videoSize": 385673485
+      },
+      "description": "📄 Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv\n📹 hevc • 10bit\n🏷️ Me7alh\n👤 27 💾 367.8 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇯🇵/🇪🇸/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a4a08d17b8cfa377f9c3a2eb6cf857442ad56941",
+        "filename": "Malcolm.In.The.Middle.S01E01.Je.Ne.Suis.Pas.Un.Monstre.FRENCH.1080p.WEB.x265-SLM.mkv",
+        "videoSize": 800295547
+      },
+      "description": "📄 Malcolm.In.The.Middle.S01E01.Je.Ne.Suis.Pas.Un.Monstre.FRENCH.1080p.WEB.x265-SLM.mkv\n📹 hevc\n⭐ WEB | 🏷️ SLM\n👤 0 💾 763.2 MB 🔎 DebridAccount|realdebrid\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9d77b5153181b6728527fa3cb2f6f06913ddc5ba",
+        "filename": "Summer.Camp.Island.S01E01.1080p.WEB.h264-WALT.mkv",
+        "videoSize": 637175137
+      },
+      "description": "📄 Summer.Camp.Island.S01E01.1080p.WEB.h264-WALT.mkv\n📹 avc\n⭐ WEB | 🏷️ WALT\n👤 0 💾 607.7 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|82e15f662c296b3598c2e7e55659d1f569a6f571",
+        "filename": "Solo Leveling (2024) - S01E01 - Im Used to It [Bluray-1080p][Opus 2.0][AV1]-BlackRabbit.mkv",
+        "videoSize": 294349386
+      },
+      "description": "📄 Solo Leveling (2024) - S01E01 - Im Used to It [Bluray-1080p][Opus 2.0][AV1]-BlackRabbit.mkv\n📹 av1 | 🔊 2.0\n⭐ BluRay | 🏷️ BlackRabbit\n💾 280.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6290c4795954f4d94b5d3835b0fa9ed608948f56",
+        "filename": "Solo Leveling - S01E01 - I'm Used to It [1080p H264] [AAC MultiLang MultiSub] [tt21209876] [WIKIRIP].mkv",
+        "videoSize": 1693891259
+      },
+      "description": "📄 Solo Leveling - S01E01 - I'm Used to It [1080p H264] [AAC MultiLang MultiSub] [tt21209876] [WIKIRIP].mkv\n📹 avc | 🔊 AAC\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3c5908907c50342ab8294a71a2d603166905eab2",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.BluRay.x264.FLAC.2.0-ZeroTV.mkv",
+        "videoSize": 1971869554
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.1080p.BluRay.x264.FLAC.2.0-ZeroTV.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ BluRay | 🏷️ ZeroTV\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|00d759f1dc6c617c0d8d4ea6f792ccbe5e865ff6",
+        "filename": "Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv",
+        "videoSize": 385673485
+      },
+      "description": "📄 Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.1080p.h265.10bit.SubS-Me7alh.mkv\n📹 hevc • 10bit\n🏷️ Me7alh\n💾 367.8 MB 🔎 Comet|Knaben\n🌎/🇬🇧/🇯🇵/🇪🇸/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|326aa53a1036a195378bd4ac0e5c8b8980bd2435",
+        "filename": "Ore_Dake_Level_Up_Na_Ken_S1_01_Ci_sono_abituato_BD_Mux_1080p_X265_ACC_ITA_JAP_FLAC_SUB_ITA_(By Kagome).mkv",
+        "videoSize": 1657484417
+      },
+      "description": "📄 Ore_Dake_Level_Up_Na_Ken_S1_01_Ci_sono_abituato_BD_Mux_1080p_X265_ACC_ITA_JAP_FLAC_SUB_ITA_(By Kagome).mkv\n📹 hevc | 🔊 FLAC\n👤 23 💾 1.5 GB 🔎 TheRARBG\n🌎/🇯🇵/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d809977c8cc6d743aaafd2281efa93e1c8fd44ab",
+        "filename": "[naiyas] Solo Leveling - S01E01 (WEB 1080p E-AC3).mkv",
+        "videoSize": 1455588271
+      },
+      "description": "📄 [naiyas] Solo Leveling - S01E01 (WEB 1080p E-AC3).mkv\n🔊 Dolby Digital Plus\n⭐ WEB | 🏷️ naiyas\n💾 1.4 GB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ffe73aff0efd23f4f83925b5526806e620dc126b",
+        "filename": "[InariDub] Solo Leveling - S01E01 - I'm Used To It [1080p] [UA].mkv",
+        "videoSize": 528403791
+      },
+      "description": "📄 [InariDub] Solo Leveling - S01E01 - I'm Used To It [1080p] [UA].mkv\n🏷️ InariDub\n👤 3 💾 503.9 MB 🔎 Comet|inaridub",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e7a5280e6b8ddcb895b0f371dbfe5df7d46204c2",
+        "filename": "Solo.Leveling.S01.EP(1).1080p.ro.anl.mp4",
+        "videoSize": 465002124
+      },
+      "description": "📄 Solo.Leveling.S01.EP(1).1080p.ro.anl.mp4\n💾 443.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3820b64b0e3e625d1cef61463e5fa75d716d0f5f",
+        "filename": "[InariDub] Solo Leveling - S01E01 [1080p] [UA].mkv",
+        "videoSize": 504952905
+      },
+      "description": "📄 [InariDub] Solo Leveling - S01E01 [1080p] [UA].mkv\n🏷️ InariDub\n👤 3 💾 481.6 MB 🔎 Comet|inaridub",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|12389f2633f8700212d37fd451a9edb35ff7d88c",
+        "filename": "[Mo7tas] سولو ليفيلنغ - S01E01 [1080p] [Crunchyroll].mkv",
+        "videoSize": 315818735
+      },
+      "description": "📄 [Mo7tas] سولو ليفيلنغ - S01E01 [1080p] [Crunchyroll].mkv\n🏷️ Mo7tas\n👤 17 💾 301.2 MB 🔎 TheRARBG\n🇸🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cc7c6eb46a54bf28c053259976659b4d2aa0d769",
+        "filename": "Solo.Leveling.S01E01.1080p.CR.WEB-DL.AVC.8bit.AAC.2.0.MultiAudios.Arabic.Dub.MultiSubs-Nomal1406.mkv",
+        "videoSize": 1481660958
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.CR.WEB-DL.AVC.8bit.AAC.2.0.MultiAudios.Arabic.Dub.MultiSubs-Nomal1406.mkv\n📹 avc • 8bit | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ Nomal1406\n💾 1.4 GB 🔎 Comet|StremThru\n🌎/🇸🇦",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ae46920c596a2a9d783134d79867cf4325cfccc3",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.REPACK.1080p.CR.WEB-DL.DUAL.DDP2.0.H.264-Kitsune.mkv",
+        "videoSize": 1520061548
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.REPACK.1080p.CR.WEB-DL.DUAL.DDP2.0.H.264-Kitsune.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL • REPACK | 🏷️ Kitsune\n💾 1.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ab6fac52c0bf1cb3083e0a7a9f1cde8905672b28",
+        "filename": "Solo.Leveling.English.Dub.S01E01.Im.Used.to.It.MULTi.1080p.CR.WEB-DL.AAC2.0.H.264.mkv",
+        "videoSize": 1532236439
+      },
+      "description": "📄 Solo.Leveling.English.Dub.S01E01.Im.Used.to.It.MULTi.1080p.CR.WEB-DL.AAC2.0.H.264.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL\n💾 1.4 GB 🔎 Comet|TorrentGalaxyClone\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f2bef76924240fe4351b269db0ee3382d59f7c8",
+        "filename": "Solo.Leveling.S01E01.1080p.CR.WEB-DL.Dual-Audio.AAC2.0.H.264-Arg0.mkv",
+        "videoSize": 1533892542
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.CR.WEB-DL.Dual-Audio.AAC2.0.H.264-Arg0.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ Arg0\n💾 1.4 GB 🔎 Comet|Knaben\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e373909cf12cbad61808d82b669ffd6a3b867f4",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv",
+        "videoSize": 1693891259
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ ToonsHub\n💾 1.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4847d75d63fc8a8fd3f4d383764ccc01e12aec4f",
+        "filename": "Hero.Without.a.Class.Who.Even.Needs.Skills.S01E01.Judged.Classless.1080p.HIDIVE.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv",
+        "videoSize": 989657077
+      },
+      "description": "📄 Hero.Without.a.Class.Who.Even.Needs.Skills.S01E01.Judged.Classless.1080p.HIDIVE.WEB-DL.DUAL.AAC2.0.H.264.ESub-ToonsHub.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ ToonsHub\n👤 0 💾 943.8 MB 🔎 CometNet|ElfHosted\n🌎/🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4742ae045841e8b9b5c327734b0e05c43a9c110b",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.AAC2.0.H.264.MULTi-VARYG.mkv",
+        "videoSize": 1508579657
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.AAC2.0.H.264.MULTi-VARYG.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ VARYG\n💾 1.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|08321bb2ff976a3b20f0453dd2243e1b3cccbdae",
+        "filename": "The.Water.Magician.S01E01.The.Slow.But.Dangerous.Life.1080p.CR.WEB-DL.DUAL.AAC2.0.H.264-VARYG.mkv",
+        "videoSize": 1510771246
+      },
+      "description": "📄 The.Water.Magician.S01E01.The.Slow.But.Dangerous.Life.1080p.CR.WEB-DL.DUAL.AAC2.0.H.264-VARYG.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ VARYG\n👤 0 💾 1.4 GB 🔎 DebridAccount|realdebrid\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e7cde575e4c0e82328e98d571c9380a3b9d7c31b",
+        "filename": "Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruelty.DUAL-AUDIO.JPN-ENG.1080p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 229504326
+      },
+      "description": "📄 Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruelty.DUAL-AUDIO.JPN-ENG.1080p.10bit.BluRay.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ BluRay | 🏷️ PSA\n👤 0 💾 218.9 MB 🔎 DebridAccount|realdebrid\n🌎/🇬🇧/🇯🇵",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e0d46703d68a2827b06894c0fa00df00fbf251cf",
+        "filename": "Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 1483307059
+      },
+      "description": "📄 Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n👤 3 💾 1.4 GB 🔎 Comet|BitMagnet\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ce047cbe2bd6650ce265f8f6677c12c5b824a325",
+        "filename": "Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 1483307059
+      },
+      "description": "📄 Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n👤 0 💾 1.4 GB 🔎 Comet|unknown\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b14acb0610fcccc6321922ad9a52f48c79984290",
+        "filename": "Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 1483307059
+      },
+      "description": "📄 Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n👤 9 💾 1.4 GB 🔎 Comet|tsundereraws\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|766d60ef737b85849d2daca2ef1dad95eed8e303",
+        "filename": "Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruaute.MULTi.1080p.WEB.AAC.AV1-BTT.mkv",
+        "videoSize": 259717140
+      },
+      "description": "📄 Demon.Slayer.Kimetsu.no.Yaiba.S01E01.Cruaute.MULTi.1080p.WEB.AAC.AV1-BTT.mkv\n📹 av1 | 🔊 AAC\n⭐ WEB | 🏷️ BTT\n👤 0 💾 247.7 MB 🔎 DebridAccount|alldebrid\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|25e935ecd06d20820e8d5e27c35bd8f9eef29c3b",
+        "filename": "Solo Leveling S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv",
+        "videoSize": 1461847385
+      },
+      "description": "📄 Solo Leveling S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv\n📹 avc | 🔊 2.0\n⭐ WEB-DL\n💾 1.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|05feb9be65e803988a88ee0f78382d3f5ad2167e",
+        "filename": "Solo Leveling S01E01 1080p 10bit WEBRip HEVC x265 [Hindi CR AAC 2.0 128kbps + Japanese AAC 2.0] ESub ~ R∆G∆ ~ PSA.mkv",
+        "videoSize": 179688288
+      },
+      "description": "📄 Solo Leveling S01E01 1080p 10bit WEBRip HEVC x265 [Hindi CR AAC 2.0 128kbps + Japanese AAC 2.0] ESub ~ R∆G∆ ~ PSA.mkv\n📹 hevc • 10bit | 🔊 AAC • 2.0\n⭐ WEBRip\n💾 171.4 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇯🇵/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a7bf943fd7232072780c5ba570b3aba6b70e01ca",
+        "filename": "Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv",
+        "videoSize": 351301638
+      },
+      "description": "📄 Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv\n📹 hevc\n⭐ BluRay | 🏷️ T3KASHi\n💾 335.0 MB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98fc70c929c0edf3ed005e1f662c1d9d32e599a8",
+        "filename": "Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv",
+        "videoSize": 351301638
+      },
+      "description": "📄 Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv\n📹 hevc\n⭐ BluRay | 🏷️ T3KASHi\n💾 335.0 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|856a43e6c231e6e2fe89b04936c45d71fb6b9024",
+        "filename": "Solo.Leveling.S01E01.1080p.BluRay.MULTi.Opus.x265-dtr.mkv",
+        "videoSize": 3912542994
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.BluRay.MULTi.Opus.x265-dtr.mkv\n📹 hevc\n⭐ BluRay | 🏷️ dtr\n💾 3.6 GB 🔎 Comet|nekoBT\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|527f320d0be8e350b4cee6dd820e4f94a4cb9226",
+        "filename": "That.Time.I.Got.Reincarnated.as.a.Slime.S01E01.MULTi.1080p.BluRay.x264-SHiNiGAMi.mkv",
+        "videoSize": 1561845011
+      },
+      "description": "📄 That.Time.I.Got.Reincarnated.as.a.Slime.S01E01.MULTi.1080p.BluRay.x264-SHiNiGAMi.mkv\n📹 avc\n⭐ BluRay | 🏷️ SHiNiGAMi\n👤 0 💾 1.5 GB 🔎 DebridAccount|realdebrid\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3389e5b726dd9e393afaa967c4630048089a821e",
+        "filename": "Solo.Leveling.A.K.A.Ore.dake.Level.Up.na.Ken.S01E01.JAPANESE.1080p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 157525145
+      },
+      "description": "📄 Solo.Leveling.A.K.A.Ore.dake.Level.Up.na.Ken.S01E01.JAPANESE.1080p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n👤 1 💾 150.2 MB 🔎 MagnetDownload\n🇯🇵",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|037f50aa7f5ad428e5f09e6179e6c1a786993de1",
+        "filename": "Solo.Leveling.S01E01.MULTi.VFi.1080p.HDLight.AAC.2.0.H265-TARDiS.mkv",
+        "videoSize": 459360089
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.VFi.1080p.HDLight.AAC.2.0.H265-TARDiS.mkv\n📹 hevc | 🔊 AAC • 2.0\n🏷️ TARDiS\n💾 438.1 MB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d5853b08d67bc0e523848deb811bff29c7668960",
+        "filename": "[Breeze] Solo Leveling - S01E01 [1080p BD AV1][Multi Audio].mkv",
+        "videoSize": 731252439
+      },
+      "description": "📄 [Breeze] Solo Leveling - S01E01 [1080p BD AV1][Multi Audio].mkv\n📹 av1\n🏷️ Breeze\n💾 697.4 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|be06f449b02a437897b83221bb2831459391415b",
+        "filename": "Solo.Leveling.S01E01.VOSTFR.1080p.WEBRiP.x265-KAF.mkv",
+        "videoSize": 277191435
+      },
+      "description": "📄 Solo.Leveling.S01E01.VOSTFR.1080p.WEBRiP.x265-KAF.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ KAF\n👤 1 💾 264.4 MB 🔎 Comet|kaf\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8838671fd70e462a1973347d2ffaa0c260fc1be8",
+        "filename": "[Breeze] Solo Leveling - S01E01 [1080p BD AV1][Multi Audio].mkv",
+        "videoSize": 731252439
+      },
+      "description": "📄 [Breeze] Solo Leveling - S01E01 [1080p BD AV1][Multi Audio].mkv\n📹 av1\n🏷️ Breeze\n💾 697.4 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|76a09ff77b6fab9c50bf58d0a391076e70c60c90",
+        "filename": "Solo.Leveling.S01E01.VOSTFR.1080p.WEBRiP.x265-KAF.mkv",
+        "videoSize": 277191435
+      },
+      "description": "📄 Solo.Leveling.S01E01.VOSTFR.1080p.WEBRiP.x265-KAF.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ KAF\n👤 3 💾 264.4 MB 🔎 Comet|kaf\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e4fc9eefeb3c004a441db9867b6a671f9081d3f5",
+        "filename": "[Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 1080p] [5A1D9152].mkv",
+        "videoSize": 1436113825
+      },
+      "description": "📄 [Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 1080p] [5A1D9152].mkv\n⭐ WEB-DL | 🏷️ Yameii\n💾 1.3 GB 🔎 Comet|StremThru\n🌎/🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d88aabb2d87ee8f443c2e543d6ead43b059dec68",
+        "filename": "Solo.Leveling.S01E01.2024.WEB-DL.1080p-Dual-Lat.mkv",
+        "videoSize": 1459638054
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.WEB-DL.1080p-Dual-Lat.mkv\n⭐ WEB-DL | 🏷️ Lat\n💾 1.4 GB 🔎 Comet|StremThru\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4ef6ef5f91718e66b92a9eae7406896edcc7e7ae",
+        "filename": "[Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 1080p] [5A1D9152].mkv",
+        "videoSize": 1436113825
+      },
+      "description": "📄 [Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 1080p] [5A1D9152].mkv\n⭐ WEB-DL | 🏷️ Yameii\n💾 1.3 GB 🔎 Comet|Knaben\n🌎/🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|702354d58b78db5fa1e65681dba453969132b48a",
+        "filename": "[TRC] Solo Leveling - S01E01 [English Dub] [CR WEB-RIP 1080p HEVC-10 AAC] [29AB89ED].mkv",
+        "videoSize": 465321910
+      },
+      "description": "📄 [TRC] Solo Leveling - S01E01 [English Dub] [CR WEB-RIP 1080p HEVC-10 AAC] [29AB89ED].mkv\n📹 hevc | 🔊 AAC\n⭐ WEBRip | 🏷️ TRC\n💾 443.8 MB 🔎 Comet|StremThru\n🌎/🇬🇧",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e3b965c4ab59af5559c03def364dd313a813522f",
+        "filename": "Solo.Leveling.S01E01.MULTi.1080p.WEBRiP.x264-T3KASHi.mkv",
+        "videoSize": 418602717
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.1080p.WEBRiP.x264-T3KASHi.mkv\n📹 avc\n⭐ WEBRip | 🏷️ T3KASHi\n💾 399.2 MB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7717ff4995174a82a2715633b87792f05d389d40",
+        "filename": "Solo.Leveling.S01E01.MULTi.1080p.WEBRiP.x264-T3KASHi.mkv",
+        "videoSize": 418602717
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.1080p.WEBRiP.x264-T3KASHi.mkv\n📹 avc\n⭐ WEBRip | 🏷️ T3KASHi\n💾 399.2 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c23cc66c9b5bdcd10db45a12884d4283ca1dd317",
+        "filename": "[NH] That Time I Got Reincarnated as a Slime - S01E01 (BD 1080p x265 10-bit FLAC) [49680688].mkv",
+        "videoSize": 2622378594
+      },
+      "description": "📄 [NH] That Time I Got Reincarnated as a Slime - S01E01 (BD 1080p x265 10-bit FLAC) [49680688].mkv\n📹 hevc • 10bit | 🔊 FLAC\n⭐ BDRip | 🏷️ NH\n👤 0 💾 2.4 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b4b3dc8622d87c2d0ec191ec17afe6fff34a2d3",
+        "filename": "[jaaj] Solo Leveling S01E01 (2024) (BD 1080p AV1 AAC).mkv",
+        "videoSize": 326751368
+      },
+      "description": "📄 [jaaj] Solo Leveling S01E01 (2024) (BD 1080p AV1 AAC).mkv\n📹 av1 | 🔊 AAC\n⭐ BDRip | 🏷️ jaaj\n💾 311.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|35aa1a29ba05241c6c87e05d06d7ffa1e8f8e1b6",
+        "filename": "[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv",
+        "videoSize": 972408513
+      },
+      "description": "📄 [Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv\n📹 hevc • 10bit\n⭐ BDRip | 🏷️ Xspitfire911\n👤 46 💾 927.4 MB 🔎 Comet|ExtraTorrent.st\n🇫🇷",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f674651eb02a02cbd31e73c6e283244f46b650c0",
+        "filename": "Solo Leveling S01E01-[1080p][BDRIP][AV1.OPUS].mkv",
+        "videoSize": 368298713
+      },
+      "description": "📄 Solo Leveling S01E01-[1080p][BDRIP][AV1.OPUS].mkv\n📹 av1 | 🔊 OPUS\n⭐ BDRip\n👤 5 💾 351.2 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d9215e817f67b547dfbdebd41f71324127680065",
+        "filename": "Tensei shitara Slime Datta Ken - S01E01 (BD 1080p HEVC) [Vodes].mkv",
+        "videoSize": 5059747402
+      },
+      "description": "📄 Tensei shitara Slime Datta Ken - S01E01 (BD 1080p HEVC) [Vodes].mkv\n📹 hevc\n⭐ BDRip\n👤 0 💾 4.7 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|21ff74256476e035de1de7e04fa368a0abbe9886",
+        "filename": "[Trix] Tensura Nikki Tensei Shitara Slime Datta Ken - S01E01 (BD 1080p AV1).mkv",
+        "videoSize": 245435363
+      },
+      "description": "📄 [Trix] Tensura Nikki Tensei Shitara Slime Datta Ken - S01E01 (BD 1080p AV1).mkv\n📹 av1\n⭐ BDRip | 🏷️ Trix\n👤 0 💾 234.1 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1c5db6a03f17f19dab8c2059705fbe7d3fecf8c7",
+        "filename": "Solo Leveling S01E01-[1080p][BDRIP][x265.FLAC].mkv",
+        "videoSize": 945498330
+      },
+      "description": "📄 Solo Leveling S01E01-[1080p][BDRIP][x265.FLAC].mkv\n📹 hevc | 🔊 FLAC\n⭐ BDRip\n💾 901.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|32c45d8b1bb269329ce62f83b6ca23fe4827ee83",
+        "filename": "[LostYears] Demon Slayer - S01E01 (BD 1080p Hi10P AAC) [62144D67].mkv",
+        "videoSize": 2984008704
+      },
+      "description": "📄 [LostYears] Demon Slayer - S01E01 (BD 1080p Hi10P AAC) [62144D67].mkv\n🔊 AAC\n⭐ BDRip | 🏷️ LostYears\n👤 0 💾 2.8 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ca4708d53cd24d59eedcefa5bbd9197cde08afb6",
+        "filename": "[Mo7tas] Ore dake Level Up na Ken - S01E01 [BD 1080p] [Mugi - Crunchyroll - ReineR].mkv",
+        "videoSize": 193238840
+      },
+      "description": "📄 [Mo7tas] Ore dake Level Up na Ken - S01E01 [BD 1080p] [Mugi - Crunchyroll - ReineR].mkv\n⭐ BDRip | 🏷️ Mo7tas\n💾 184.3 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|011e0b9f4634c742770ba2a2279df9472d9b8ced",
+        "filename": "[Mo7tas] Ore dake Level Up na Ken - S01E01 [BD 1080p] [Mugi - Crunchyroll - ReineR].mkv",
+        "videoSize": 193238840
+      },
+      "description": "📄 [Mo7tas] Ore dake Level Up na Ken - S01E01 [BD 1080p] [Mugi - Crunchyroll - ReineR].mkv\n⭐ BDRip | 🏷️ Mo7tas\n💾 184.3 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3af50e31f25e82b6a221e550c74025ec946c2c8b",
+        "filename": "[Anitsu] Ore Dake Level Up na Ken (Solo Leveling) - S01E01 [BD 1080p x265 E-AC-3 AAC] [DUAL][269D897C].mkv",
+        "videoSize": 494490874
+      },
+      "description": "📄 [Anitsu] Ore Dake Level Up na Ken (Solo Leveling) - S01E01 [BD 1080p x265 E-AC-3 AAC] [DUAL][269D897C].mkv\n📹 hevc | 🔊 Dolby Digital Plus • AAC\n⭐ BDRip | 🏷️ Anitsu\n👤 1 💾 471.6 MB 🔎 MagnetDownload\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|94bb0f7bf26530857f215785cf6a85bc7e1636fd",
+        "filename": "[P30 Jill] Solo Leveling S01E01 (BD WEB AV1 10bit 1080p) (Dual Audio).mkv",
+        "videoSize": 607293788
+      },
+      "description": "📄 [P30 Jill] Solo Leveling S01E01 (BD WEB AV1 10bit 1080p) (Dual Audio).mkv\n📹 av1 • 10bit\n⭐ BDRip | 🏷️ P30 Jill\n💾 579.2 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a6b2af77fb2876b6d197d4e6b86fcb6da6f15664",
+        "filename": "[Ramiel] Solo Leveling - S01E01 (1080p x264) [BD] [Dual-Audio].mkv",
+        "videoSize": 271927561
+      },
+      "description": "📄 [Ramiel] Solo Leveling - S01E01 (1080p x264) [BD] [Dual-Audio].mkv\n📹 avc\n⭐ BDRip | 🏷️ Ramiel\n💾 259.3 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|846480294f9a1545acc3d3ee376e6a9f05a6c4e9",
+        "filename": "[FLE] Solo Leveling - S01E01 (BD 1080p HEVC x265 Opus) [Dual Audio] [0751F96E].mkv",
+        "videoSize": 3899509384
+      },
+      "description": "📄 [FLE] Solo Leveling - S01E01 (BD 1080p HEVC x265 Opus) [Dual Audio] [0751F96E].mkv\n📹 hevc\n⭐ BDRip | 🏷️ FLE\n💾 3.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|823240e6259d627c8278cbd56947fd87c98d4cf6",
+        "filename": "[FLE] Solo Leveling - S01E01 (BD 1080p HEVC x265 Opus) [Dual Audio] [0751F96E].mkv",
+        "videoSize": 3899509384
+      },
+      "description": "📄 [FLE] Solo Leveling - S01E01 (BD 1080p HEVC x265 Opus) [Dual Audio] [0751F96E].mkv\n📹 hevc\n⭐ BDRip | 🏷️ FLE\n💾 3.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1f47e24aca5523b9ea8209ebc96d3b8eaf9730e5",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.To.It.1080p.BDRip.MULTi.FLAC2.0.x265.Multi.Subs.AniMeitantei.mkv",
+        "videoSize": 1127693927
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.To.It.1080p.BDRip.MULTi.FLAC2.0.x265.Multi.Subs.AniMeitantei.mkv\n📹 hevc | 🔊 FLAC • 2.0\n⭐ BDRip\n💾 1.1 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02851f32d0939c1352ee9306c0dedbb951840a5f",
+        "filename": "Can.This.Love.Be.Translated.S01E01.1080p.WEB.h264-EDITH[EZTVx.to].mkv",
+        "videoSize": 2895571699
+      },
+      "description": "📄 Can.This.Love.Be.Translated.S01E01.1080p.WEB.h264-EDITH[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ EDITH\n👤 0 💾 2.7 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c390bd47634024452286f29c11b19f4cc5923b9a",
+        "filename": "Solo Leveling S01E01 Im Used to It EAC3 2 0 1080p WEBRip x265-iVy[EZTVx.to].mkv",
+        "videoSize": 476048191
+      },
+      "description": "📄 Solo Leveling S01E01 Im Used to It EAC3 2 0 1080p WEBRip x265-iVy[EZTVx.to].mkv\n📹 hevc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEBRip | 🏷️ iVy\n👤 96 💾 454.0 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|146aadeb357266c731fd5c6b13cbc389027a722f",
+        "filename": "solo.leveling.s01e01.dubbed.1080p.web.h264-skyanime[EZTVx.to].mkv",
+        "videoSize": 1436112998
+      },
+      "description": "📄 solo.leveling.s01e01.dubbed.1080p.web.h264-skyanime[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ skyanime\n👤 12 💾 1.3 GB 🔎 The Pirate Bay\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|564d57c9f6c777692e4d1cc7cc945a35c09d62fb",
+        "filename": "Solo.Leveling.S01E01.DUBBED.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+        "videoSize": 197350829
+      },
+      "description": "📄 Solo.Leveling.S01E01.DUBBED.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv\n📹 hevc\n🏷️ MeGusta\n💾 188.2 MB 🔎 Comet|Knaben\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|babc6237d4d3dc7db0978092128131d49920cf81",
+        "filename": "Solo.Leveling.S01E01.ENG.720p.CR.WEB-DL.x264-MIKE.mkv",
+        "videoSize": 212495856
+      },
+      "description": "📄 Solo.Leveling.S01E01.ENG.720p.CR.WEB-DL.x264-MIKE.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ MIKE\n💾 202.7 MB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|76923a173c011c37b6ae94287e900d697d129ff6",
+        "filename": "love.island.us.s01e01.720p.web.x264-tbs[eztv].mkv",
+        "videoSize": 1535822635
+      },
+      "description": "📄 love.island.us.s01e01.720p.web.x264-tbs[eztv].mkv\n📹 avc\n⭐ WEB | 🏷️ tbs\n👤 0 💾 1.4 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3d24fb8b138a3697cc5724df9babe84d669dbbbd",
+        "filename": "Solo_Leveling.S01.E01.French.720p.H264-TFA.mkv",
+        "videoSize": 728606327
+      },
+      "description": "📄 Solo_Leveling.S01.E01.French.720p.H264-TFA.mkv\n📹 avc\n🏷️ TFA\n💾 694.9 MB 🔎 Comet|DMM",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1514dc2db8048bcbe2266ea858a5af2637da92f3",
+        "filename": "Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv",
+        "videoSize": 454062060
+      },
+      "description": "📄 Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv\n📹 avc\n🏷️ Me7alh\n👤 3 💾 433.0 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇯🇵/🇪🇸/🇮🇹",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a8a996965fc8bf9a674a9468b00885498501231",
+        "filename": "Solo Leveling - S01E01 (720p WEBRip CR AV1 10bit Japanese AAC 2.0 ESub  - M3GAN) - [MCX].mkv",
+        "videoSize": 159014955
+      },
+      "description": "📄 Solo Leveling - S01E01 (720p WEBRip CR AV1 10bit Japanese AAC 2.0 ESub  - M3GAN) - [MCX].mkv\n📹 av1 • 10bit | 🔊 AAC • 2.0\n⭐ WEBRip\n💾 151.6 MB 🔎 Comet|TorrentGalaxyClone\n🌎/🇬🇧/🇯🇵",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|478663fca3b7b616ca79c320457df8d460fa4f53",
+        "filename": "Solo Leveling S01E01 720p 10bit WEBRip HEVC x265 [Hindi CR AAC 2.0 128kbps + Japanese AAC 2.0] ESub ~ R∆G∆ ~ PSA.mkv",
+        "videoSize": 104863777
+      },
+      "description": "📄 Solo Leveling S01E01 720p 10bit WEBRip HEVC x265 [Hindi CR AAC 2.0 128kbps + Japanese AAC 2.0] ESub ~ R∆G∆ ~ PSA.mkv\n📹 hevc • 10bit | 🔊 AAC • 2.0\n⭐ WEBRip\n💾 100.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇯🇵/🇮🇳",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e3a889fe286d0f2e08c6c3f7d313def93faea1b",
+        "filename": "Solo.Leveling.2024.S01.E01.WebRip.720p.x264.[Hindi.Tamil.Telugu.English].AAC.ESub.mkv",
+        "videoSize": 235147092
+      },
+      "description": "📄 Solo.Leveling.2024.S01.E01.WebRip.720p.x264.[Hindi.Tamil.Telugu.English].AAC.ESub.mkv\n📹 avc | 🔊 AAC\n⭐ WEBRip\n💾 224.3 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a988d76a2a0240eb73ff6896cf0e8f06239648fd",
+        "filename": "[Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 720p] [8FE41E79].mkv",
+        "videoSize": 728847233
+      },
+      "description": "📄 [Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 720p] [8FE41E79].mkv\n⭐ WEB-DL | 🏷️ Yameii\n💾 695.1 MB 🔎 Comet|Knaben\n🌎/🇬🇧",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|96f1237528c7a25bf6622299f520cfd1ba61eb8a",
+        "filename": "[Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 720p] [8FE41E79].mkv",
+        "videoSize": 728847233
+      },
+      "description": "📄 [Yameii] Solo Leveling - S01E01 [English Dub] [CR WEB-DL 720p] [8FE41E79].mkv\n⭐ WEB-DL | 🏷️ Yameii\n💾 695.1 MB 🔎 Comet|StremThru\n🌎/🇬🇧",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ff1938e03e9e29c58bd40b8f1bfe33e7807a2245",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 372313983
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 355.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fea570ba7d8ff6ce8d098455ea7a934d9315bea8",
+        "filename": "S01E01-I'm Used to it.mkv",
+        "videoSize": 6614756476
+      },
+      "description": "📄 S01E01-I'm Used to it.mkv\n💾 6.2 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fba7f9c9df37ce12b4e412dab6a60f1e1bc417a3",
+        "filename": "[Judas] Solo Leveling - S01E01v2.mkv",
+        "videoSize": 361328218
+      },
+      "description": "📄 [Judas] Solo Leveling - S01E01v2.mkv\n🏷️ Judas\n💾 344.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|da3fe81bd3481f900f40f8f515385c2981a07e36",
+        "filename": "Solo Leveling_S01E01_I'm Used to It.mp4",
+        "videoSize": 1436731311
+      },
+      "description": "📄 Solo Leveling_S01E01_I'm Used to It.mp4\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ca1c092cd4e49ccc64e9e4434143125e95d6f332",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 1436182634
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|be3ad9e46d011e29cf9c11f0d71ae7942a755d5a",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 401860492
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 383.2 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd7041c02bb1779cfd7cf22a1edc4dd798a82f00",
+        "filename": "S01E01-Cruelty.mkv",
+        "videoSize": 6737956347
+      },
+      "description": "📄 S01E01-Cruelty.mkv\n🏷️ Cruelty\n👤 0 💾 6.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b3d54fe4ce97f1d207f97eaf535606d4ca9a7f6e",
+        "filename": "S01E01-I'm Used to It [1614CC97].mkv",
+        "videoSize": 418123088
+      },
+      "description": "📄 S01E01-I'm Used to It [1614CC97].mkv\n💾 398.8 MB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b031c25c1ea1c60308490666fb5c87d6b566a93a",
+        "filename": "[DiabloTripleA] That Time I Got Reincarnated as a Slime - The Slime Diaries - S01E01 [3D1F76A4].mkv",
+        "videoSize": 514369515
+      },
+      "description": "📄 [DiabloTripleA] That Time I Got Reincarnated as a Slime - The Slime Diaries - S01E01 [3D1F76A4].mkv\n🏷️ DiabloTripleA\n👤 0 💾 490.5 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ac6c1a7fc59506e59cb9a2b16f17ca3620528a05",
+        "filename": "Family Guy - S01e01 - Death Has A Shadow.mp4",
+        "videoSize": 80335437
+      },
+      "description": "📄 Family Guy - S01e01 - Death Has A Shadow.mp4\n👤 0 💾 76.6 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aafc7494232ccccd2fa331a8e6320c38f8d7abf1",
+        "filename": "Demon Slayer - S01E01 - Cruelty.mkv",
+        "videoSize": 745306744
+      },
+      "description": "📄 Demon Slayer - S01E01 - Cruelty.mkv\n🏷️ Cruelty\n👤 0 💾 710.8 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|aa3d7f95745c1564da5dc335a6865a2cb1765ab2",
+        "filename": "S01E01-The Residents of the City of Monsters [50AFF954].mkv",
+        "videoSize": 458228710
+      },
+      "description": "📄 S01E01-The Residents of the City of Monsters [50AFF954].mkv\n👤 0 💾 437.0 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9fc9990a5de2389b1ce26d56d6e5c6ff3b2978d0",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 403249143
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 384.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9d37be67d5944238306845b3dcc0ef16e4811440",
+        "filename": "[Judas] Ore dake Level Up na Ken - S01E01.mkv",
+        "videoSize": 338478728
+      },
+      "description": "📄 [Judas] Ore dake Level Up na Ken - S01E01.mkv\n🏷️ Judas\n💾 322.8 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|92a7d0d0c51e7f79541b391cbc4591aaf7f3ed75",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 655397353
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 625.0 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|828bafc6bf5f3586ffd37c3a8311c7984da9e35f",
+        "filename": "Fantasy Island - S01E01 - Escape, Cinderella Girls.mp4",
+        "videoSize": 415161977
+      },
+      "description": "📄 Fantasy Island - S01E01 - Escape, Cinderella Girls.mp4\n👤 0 💾 395.9 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f2cd039af51be5a4d6ccb32daf800636ab16276",
+        "filename": "Solo Leveling - S01E01 (01) - I'm Used to It.mkv",
+        "videoSize": 6925600013
+      },
+      "description": "📄 Solo Leveling - S01E01 (01) - I'm Used to It.mkv\n💾 6.4 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7c8b9eb38693b00ed3ddadc6dd03bbc09c98e6a0",
+        "filename": "Slow Horses - s01e01 - Failure's Contagious.mkv",
+        "videoSize": 1323664466
+      },
+      "description": "📄 Slow Horses - s01e01 - Failure's Contagious.mkv\n👤 0 💾 1.2 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6f4d5f497d034b4d47d44e2fa1112ab997dab120",
+        "filename": "[T4L4E].Solo.Leveling.S01.E01.mkv",
+        "videoSize": 596879579
+      },
+      "description": "📄 [T4L4E].Solo.Leveling.S01.E01.mkv\n🏷️ T4L4E\n👤 1 💾 569.2 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c36cb838daba8511f1404058ad2c4a9a2d51719",
+        "filename": "Solo Leveling (2024) S01 EP01.mkv",
+        "videoSize": 188034643
+      },
+      "description": "📄 Solo Leveling (2024) S01 EP01.mkv\n💾 179.3 MB 🔎 Comet|Torrents.csv",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|618c2828a15eca2b05db13c490cda01ed90531a8",
+        "filename": "S01E01 - I`m Used to It.mkv",
+        "videoSize": 1370804885
+      },
+      "description": "📄 S01E01 - I`m Used to It.mkv\n💾 1.3 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e62e91d3bf35656fdf538ae5f95835e2de42d07",
+        "filename": "S01E01.mkv",
+        "videoSize": 553085377
+      },
+      "description": "📄 S01E01.mkv\n💾 527.5 MB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4df1721564fd661af369bc524885f11fab17ba3f",
+        "filename": "S01E01-I'm Used to It [28559867].mkv",
+        "videoSize": 490034952
+      },
+      "description": "📄 S01E01-I'm Used to It [28559867].mkv\n💾 467.3 MB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4752e6adc2f2528d3f9df6c8eae7e23b42c99c08",
+        "filename": "Solo Leveling - S01E01 - I'm Used To It.mkv",
+        "videoSize": 484002624
+      },
+      "description": "📄 Solo Leveling - S01E01 - I'm Used To It.mkv\n💾 461.6 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3f083be39962a3d27cf97b1148ce55d1b5eb3a7a",
+        "filename": "Demon Slayer - Kimetsu no Yaiba - S01E01 - Cruelty.mkv",
+        "videoSize": 454681986
+      },
+      "description": "📄 Demon Slayer - Kimetsu no Yaiba - S01E01 - Cruelty.mkv\n🏷️ Cruelty\n👤 0 💾 433.6 MB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|36caf652a83d5636cefcd4f6438041cb341d393f",
+        "filename": "Solo Leveling - 1x01 - Ya estoy acostumbrado.mkv",
+        "videoSize": 405256045
+      },
+      "description": "📄 Solo Leveling - 1x01 - Ya estoy acostumbrado.mkv\n💾 386.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|30c30a420f8fb1755ffba090b0fb5f3515de807c",
+        "filename": "S01E01.mkv",
+        "videoSize": 422405288
+      },
+      "description": "📄 S01E01.mkv\n💾 402.8 MB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2ae9a436cdfb4728eac6c3375f9ac156f4c98548",
+        "filename": "[DiabloTripleA] Solo Leveling - S01E01.mkv",
+        "videoSize": 358987254
+      },
+      "description": "📄 [DiabloTripleA] Solo Leveling - S01E01.mkv\n🏷️ DiabloTripleA\n💾 342.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2009c571c91feeee2998d6b1ce136f2c1d3f639c",
+        "filename": "[DiabloTripleA] Demon Slayer - S01E01 [26F6674F].mkv",
+        "videoSize": 622918981
+      },
+      "description": "📄 [DiabloTripleA] Demon Slayer - S01E01 [26F6674F].mkv\n🏷️ DiabloTripleA\n👤 0 💾 594.1 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1be9ae6504b80b4ca180278c2f2f601c0a75154e",
+        "filename": "Solo Leveling - S01E01 - I'm Used to It.mkv",
+        "videoSize": 385673485
+      },
+      "description": "📄 Solo Leveling - S01E01 - I'm Used to It.mkv\n💾 367.8 MB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0d8a167cd76c3793ec07c3426d72a0ead157e6f6",
+        "filename": "Solo Leveling - S01E01 - I'm Used To It.mkv",
+        "videoSize": 457345535
+      },
+      "description": "📄 Solo Leveling - S01E01 - I'm Used To It.mkv\n💾 436.2 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|09760b4724856e9d8eba76bfdfd00b079a2b3585",
+        "filename": "S01E01-I'm Used to It [28559867].mkv",
+        "videoSize": 490034952
+      },
+      "description": "📄 S01E01-I'm Used to It [28559867].mkv\n💾 467.3 MB 🔎 Comet|Knaben",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|030bc5590b4b7e8745cfd629ec0ea1ad79adcd92",
+        "filename": "Solo Leveling S01E01.mp4",
+        "videoSize": 280976215
+      },
+      "description": "📄 Solo Leveling S01E01.mp4\n👤 24 💾 268.0 MB 🔎 Comet|unknown",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f9502b3075ff33168afe43c8564d4a863f60675c",
+        "filename": "[MiniDual]S01E01-I'm Used to It (Dual).mkv",
+        "videoSize": 390546713
+      },
+      "description": "📄 [MiniDual]S01E01-I'm Used to It (Dual).mkv\n🏷️ Dual\n👤 2 💾 372.5 MB 🔎 Nyaa\n🌎",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9f64d239c2f7b203c0f64a5eb3066148713b93ec",
+        "filename": "Solo.Leveling.S01E01.2160p.B-Global.WEB-DL.AAC2.0.H.264-Anitsu.mkv",
+        "videoSize": 1380175110
+      },
+      "description": "📄 Solo.Leveling.S01E01.2160p.B-Global.WEB-DL.AAC2.0.H.264-Anitsu.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ Anitsu\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2136f9c7c49ce30ae3b28de310a318af766bd9df",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.2160p.WEB-DL.x264.AAC-ZeroTV.mkv",
+        "videoSize": 1385126952
+      },
+      "description": "📄 Ore.dake.Level.Up.na.Ken.S01E01.2024.2160p.WEB-DL.x264.AAC-ZeroTV.mkv\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ZeroTV\n👤 0 💾 1.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|01a38212fbd9419975fba1fc8128f1e9672494ee",
+        "filename": "[ToonsHub] Solo Leveling - S01E01 (Japanese 2160p x264 AAC) [Multi-Subs] (Ore dake Level Up na Ken)",
+        "videoSize": 1380815121
+      },
+      "description": "📄 [ToonsHub] Solo Leveling - S01E01 (Japanese 2160p x264 AAC) [Multi-Subs] (Ore dake Level Up na Ken)\n📹 avc | 🔊 AAC\n🏷️ ToonsHub\n💾 1.3 GB 🔎 Comet|Knaben\n🇯🇵",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d11d5caa11e0525be3c930620e4ec323ca0f7918",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv",
+        "videoSize": 6951815584
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX • PROPER | 🏷️ FraMeSToR\n💾 6.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a29e084f9b756b5ba1cddab3638e44306bf20cc9",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv",
+        "videoSize": 7170760679
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX • PROPER | 🏷️ FraMeSToR\n💾 6.7 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|157e13ead8a534bb09394c3de1b18ec4d31ffff7",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv",
+        "videoSize": 6951815584
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.PROPER.1080p.FLAC.2.0.AVC.HYBRID.REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX • PROPER | 🏷️ FraMeSToR\n💾 6.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6bb32b0aa8dec9adb36c170ec251a24e0a97967f",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv",
+        "videoSize": 6598330979
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.1080p.FLAC.2.0.AVC.REMUX-FraMeSToR.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ REMUX | 🏷️ FraMeSToR\n💾 6.1 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|091b530fcad0489d1ad63af2ad4ce29ec88ccd97",
+        "filename": "Solo.Leveling.S01E01.VOSTFR.1080p.Bluray.Remux.AVC.FLAC.2.0-NoTag.mkv",
+        "videoSize": 6588673474
+      },
+      "description": "📄 Solo.Leveling.S01E01.VOSTFR.1080p.Bluray.Remux.AVC.FLAC.2.0-NoTag.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ BluRay REMUX | 🏷️ NoTag\n💾 6.1 GB 🔎 Comet|DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d3d0a81bc794968596cd3d1eaadfd7de1cad535a",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.Bluray.REMUX.AVC.AAC.2.0.Dual.Audio.-ZR-.mkv",
+        "videoSize": 6745847672
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.1080p.Bluray.REMUX.AVC.AAC.2.0.Dual.Audio.-ZR-.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ BluRay REMUX\n💾 6.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|59b8fc848c44c93087f1847cceef980de030a2eb",
+        "filename": "[SanKyuu] Ore dake Level Up na Ken S01E01 [WEB 1080p][AV1 10bit][E-AC3][Multi-Sub] (Solo Leveling)",
+        "videoSize": 386170237
+      },
+      "description": "📄 [SanKyuu] Ore dake Level Up na Ken S01E01 [WEB 1080p][AV1 10bit][E-AC3][Multi-Sub] (Solo Leveling)\n📹 av1 • 10bit | 🔊 Dolby Digital Plus\n⭐ WEB | 🏷️ SanKyuu\n💾 368.3 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2a598b6c71fe31b2bf21d6315c3e4c891eb15740",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.NF.WEB-DL.DDP2.0.H.264-MESSI.mkv",
+        "videoSize": 907914551
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.NF.WEB-DL.DDP2.0.H.264-MESSI.mkv\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ MESSI\n💾 865.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f95f85ac01314b5330e529a850ac433f71bc623a",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.AAC2.0.H.264-FLUX.mkv",
+        "videoSize": 1435296462
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.CR.WEB-DL.AAC2.0.H.264-FLUX.mkv\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ FLUX\n👤 2 💾 1.3 GB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d65eafe166c77d0879305f90854f3aae4bee5ffe",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.1080p.Baha.WEB-DL.x264.AAC-ZeroTV.mp4",
+        "videoSize": 652665159
+      },
+      "description": "📄 Ore.dake.Level.Up.na.Ken.S01E01.2024.1080p.Baha.WEB-DL.x264.AAC-ZeroTV.mp4\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ZeroTV\n👤 0 💾 622.4 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d343b6056aebb28403e128828c0f2abec7d23822",
+        "filename": "[PacMan] Solo.Leveling.S01E01.1080p.WEB-DL.AAC2.0.H.264[MultiSub].mkv {Tags:L0;V9;C1;A=ja,en,frfr,de,hi,it,ko,es419,ta,te,eses;S=en,ar,frfr,de,hi,id,it,ms,ru,es419,th,vi;}",
+        "videoSize": 683090754
+      },
+      "description": "📄 [PacMan] Solo.Leveling.S01E01.1080p.WEB-DL.AAC2.0.H.264[MultiSub].mkv {Tags:L0;V9;C1;A=ja,en,frfr,de,hi,it,ko,es419,ta,te,eses;S=en,ar,frfr,de,hi,id,it,ms,ru,es419,th,vi;}\n📹 avc | 🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ PacMan\n💾 651.4 MB 🔎 Comet|nekoBT\n🌎/🇬🇧/🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ae02428a39907d254ae2c81a9be0b0ed5ae0647a",
+        "filename": "Ore.dake.Level.Up.na.Ken.S01E01.2024.1080p.CR.WEB-DL.x264.AAC-ZeroTV.mkv",
+        "videoSize": 1438814044
+      },
+      "description": "📄 Ore.dake.Level.Up.na.Ken.S01E01.2024.1080p.CR.WEB-DL.x264.AAC-ZeroTV.mkv\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ZeroTV\n👤 0 💾 1.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a94f2de4fd371f242db36caeab6d7b3e1dac97a4",
+        "filename": "Solo Leveling V2 S01E01 2024 1080p Viu WEB-DL H 264 AAC-ADWeb",
+        "videoSize": 431681280
+      },
+      "description": "📄 Solo Leveling V2 S01E01 2024 1080p Viu WEB-DL H 264 AAC-ADWeb\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ADWeb\n👤 5 💾 411.7 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e7e40fc4b5c30e458d7e22228a61043f0e88612e",
+        "filename": "Solo.Leveling.S01E01.FRENCH.1080p.WEB.x264.AAC-Tsundere-Raws.mkv",
+        "videoSize": 1437577432
+      },
+      "description": "📄 Solo.Leveling.S01E01.FRENCH.1080p.WEB.x264.AAC-Tsundere-Raws.mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ Raws\n💾 1.3 GB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|be7ddac7290e27bb9b273db0e944d7cc401d7444",
+        "filename": "Solo Leveling S01E01 FRENCH 1080p WEB x264 AAC -Tsundere-Raws (CR) mkv",
+        "videoSize": 1437577432
+      },
+      "description": "📄 Solo Leveling S01E01 FRENCH 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n💾 1.3 GB 🔎 Comet|Knaben\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|871458ba53022a5ceb9686aa47707163215ea879",
+        "filename": "Solo_Leveling_S01E01_WebDL_1080p_H264_JAP_ENG_xFanexx.mp4",
+        "videoSize": 458793699
+      },
+      "description": "📄 Solo_Leveling_S01E01_WebDL_1080p_H264_JAP_ENG_xFanexx.mp4\n📹 avc\n⭐ WEB-DL\n💾 437.5 MB 🔎 Comet|Torrents.csv\n🌎/🇬🇧/🇯🇵",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8516f8731d149a43a0be24e568768e3e4904fa09",
+        "filename": "Solo.Leveling.S01E01.2024.1080p.BluRay.x265.10bit.FLAC.2.0-ZeroTV.mkv",
+        "videoSize": 1549954719
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.1080p.BluRay.x265.10bit.FLAC.2.0-ZeroTV.mkv\n📹 hevc • 10bit | 🔊 FLAC • 2.0\n⭐ BluRay | 🏷️ ZeroTV\n💾 1.4 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|11750dca58fe624d1f0e885c62666efaf4d9a342",
+        "filename": "Solo Leveling S01E01 SUBFRENCH 1080p WEB x264 AAC-Tsundere-Raws mkv",
+        "videoSize": 1435268298
+      },
+      "description": "📄 Solo Leveling S01E01 SUBFRENCH 1080p WEB x264 AAC-Tsundere-Raws mkv\n📹 avc | 🔊 AAC\n⭐ WEB\n💾 1.3 GB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dcc0bbfc095699841ceef9a880d76c96f29ba6a2",
+        "filename": "Solo Leveling - S01E01 - 1080p WEB H.264 -WeebGakuin (NF).mkv",
+        "videoSize": 952107008
+      },
+      "description": "📄 Solo Leveling - S01E01 - 1080p WEB H.264 -WeebGakuin (NF).mkv\n📹 avc\n⭐ WEB\n💾 908.0 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4d14e1e622bfe51bb78cbb9a73938d14f9423d5",
+        "filename": "Love.Island.Beyond.the.Villa.S01E01.1080p.WEB.h264-EDITH.mkv",
+        "videoSize": 3442947925
+      },
+      "description": "📄 Love.Island.Beyond.the.Villa.S01E01.1080p.WEB.h264-EDITH.mkv\n📹 avc\n⭐ WEB | 🏷️ EDITH\n👤 0 💾 3.2 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|88c4b3e9a744dcd8aecac5d22700fa2fc1396f43",
+        "filename": "[NeoLX] Solo Leveling (Ore dake Level Up na Ken) - S01E01 [1080p x264 10bits AAC][Multiple Subtitles].mkv",
+        "videoSize": 2191860148
+      },
+      "description": "📄 [NeoLX] Solo Leveling (Ore dake Level Up na Ken) - S01E01 [1080p x264 10bits AAC][Multiple Subtitles].mkv\n📹 avc | 🔊 AAC\n🏷️ NeoLX\n💾 2.0 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|85cd50bd50cf93570765b43b04d212953bc1accf",
+        "filename": "[ToonsHub] Solo Leveling - S01E01 (Japanese 1080p x264 AAC) [Multi-Subs] (Ore dake Level Up na Ken)",
+        "videoSize": -1
+      },
+      "description": "📄 [ToonsHub] Solo Leveling - S01E01 (Japanese 1080p x264 AAC) [Multi-Subs] (Ore dake Level Up na Ken)\n📹 avc | 🔊 AAC\n🏷️ ToonsHub\n💾 None 🔎 DMM\n🇯🇵",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4239fedebaf969546f27b05b70ddbc03de668f8c",
+        "filename": "[NeoLX] Solo Leveling - S01E01 [1080p x264 10bits AAC][Multiple Subtitles].mkv",
+        "videoSize": 2117213034
+      },
+      "description": "📄 [NeoLX] Solo Leveling - S01E01 [1080p x264 10bits AAC][Multiple Subtitles].mkv\n📹 avc | 🔊 AAC\n🏷️ NeoLX\n💾 2.0 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2fa4a16914805d55e5e9601f95b37f7e6e0e00f6",
+        "filename": "Ore dake Level Up na Ken - S01E01 - 1080p WEB H.264 -NanDesuKa (AMZN).mkv",
+        "videoSize": 1368913598
+      },
+      "description": "📄 Ore dake Level Up na Ken - S01E01 - 1080p WEB H.264 -NanDesuKa (AMZN).mkv\n📹 avc\n⭐ WEB\n💾 1.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|23a50a10d366c56ee51533bca37036f015ae7624",
+        "filename": "Solo Leveling S01e01-02 (1080p Ita Spa Jap h265 10bit SubS ENG) byMe7alh",
+        "videoSize": 667917149
+      },
+      "description": "📄 Solo Leveling S01e01-02 (1080p Ita Spa Jap h265 10bit SubS ENG) byMe7alh\n📹 hevc • 10bit\n👤 4 💾 637.0 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇯🇵/🇪🇸/🇮🇹",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1542c805c87b0ad6f20c17105193a969a720f35a",
+        "filename": "solo.leveling.s01e01.1080p.web.h264-skyanime.mkv",
+        "videoSize": 1435263668
+      },
+      "description": "📄 solo.leveling.s01e01.1080p.web.h264-skyanime.mkv\n📹 avc\n⭐ WEB | 🏷️ skyanime\n👤 0 💾 1.3 GB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0731e78613a07b6b819c5aeb2e59c211f67c2d22",
+        "filename": "Solo Leveling S01E01 1080p WEB-DL AAC2.0 RoSub-AnimeKage.mp4",
+        "videoSize": 421227152
+      },
+      "description": "📄 Solo Leveling S01E01 1080p WEB-DL AAC2.0 RoSub-AnimeKage.mp4\n🔊 AAC • 2.0\n⭐ WEB-DL | 🏷️ AnimeKage\n👤 12 💾 401.7 MB 🔎 CometNet|ElfHosted\n🇷🇴",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|386abd42fd0d322e9378c6e77f2c1566bc79ff10",
+        "filename": "Solo.Leveling.S01E01.2024.WEB-DL.1080p-Jap",
+        "videoSize": 1434847851
+      },
+      "description": "📄 Solo.Leveling.S01E01.2024.WEB-DL.1080p-Jap\n⭐ WEB-DL | 🏷️ Jap\n💾 1.3 GB 🔎 Comet|StremThru\n🇯🇵",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|05f04eb7931608f5fbcff63d5da031e8bd12e6cb",
+        "filename": "Поднятие уровня в одиночку / Ore dake Level Up na Ken / Solo Leveling [01x01-03 из 12] (2024) WEB-DL1080p | D P L",
+        "videoSize": 4897009601
+      },
+      "description": "📄 Поднятие уровня в одиночку / Ore dake Level Up na Ken / Solo Leveling [01x01-03 из 12] (2024) WEB-DL1080p | D P L\n⭐ WEB-DL\n💾 4.6 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|56e4a3c69873e8023b88be1bf67a1404634ba78b",
+        "filename": "Solo.Leveling.S01E01.Im.Used.to.It.1080p.10Bit.Hindi.Japanese.mp4",
+        "videoSize": 139483313
+      },
+      "description": "📄 Solo.Leveling.S01E01.Im.Used.to.It.1080p.10Bit.Hindi.Japanese.mp4\n📹 10bit\n👤 1 💾 133.0 MB 🔎 Comet|Internet Archive\n🌎/🇯🇵/🇮🇳",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b7bbcc0e97918587aecc3624e04f81d008a1e6e2",
+        "filename": "Solo Leveling S01E01 1080p JPN - ZeiZ.mkv",
+        "videoSize": 484395947
+      },
+      "description": "📄 Solo Leveling S01E01 1080p JPN - ZeiZ.mkv\n🏷️ ZeiZ\n👤 1 💾 462.0 MB 🔎 Comet|BitMagnet\n🇯🇵",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8a75beca33685ef29fc3d68002af6914597e42d0",
+        "filename": "[Hurtom] Ore dake Level Up na Ken S01E01 [1080p] 11xUKR.mkv",
+        "videoSize": 1401822841
+      },
+      "description": "📄 [Hurtom] Ore dake Level Up na Ken S01E01 [1080p] 11xUKR.mkv\n🏷️ Hurtom\n💾 1.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|547851b07fb9a0fa69e063aff7bd11f12e60f4d3",
+        "filename": "Solo Leveling E01 S01(1080p English Sub).mp4",
+        "videoSize": 283850040
+      },
+      "description": "📄 Solo Leveling E01 S01(1080p English Sub).mp4\n💾 270.7 MB 🔎 Comet|StremThru\n🇬🇧",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|36b74255de6a6ab834a6d22204082f41482e35ea",
+        "filename": "[Hurtom] Ore dake Level Up na Ken S01E01 [1080p] 12xUKR.mkv",
+        "videoSize": 1475069669
+      },
+      "description": "📄 [Hurtom] Ore dake Level Up na Ken S01E01 [1080p] 12xUKR.mkv\n🏷️ Hurtom\n💾 1.4 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd8e8dd516095c30f2a371d83a938097ddb74f23",
+        "filename": "Solo.Leveling.S01E01.1080p.BluRay.Dual-Audio.DDP2.0.x265-8RM.mkv",
+        "videoSize": 1613673597
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.BluRay.Dual-Audio.DDP2.0.x265-8RM.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 2.0\n⭐ BluRay | 🏷️ 8RM\n💾 1.5 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|edcf8b7b75c48b32b96cc338660d21dd13380d94",
+        "filename": "Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 1483307059
+      },
+      "description": "📄 Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n👤 0 💾 1.4 GB 🔎 Comet|raws\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ad27c7271bf74c9ec1c25493a82dfdac7c0b012b",
+        "filename": "Solo.Leveling.S01E01.MULTi.1080p.WEB-DL.x264-T3KASHi.mkv",
+        "videoSize": 1459978374
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.1080p.WEB-DL.x264-T3KASHi.mkv\n📹 avc\n⭐ WEB-DL | 🏷️ T3KASHi\n💾 1.4 GB 🔎 Comet|DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8b66a3fda8948fff2c42d4bf73a5631a1f0adbde",
+        "filename": "Solo.Leveling.S01E01.MULTi.1080p.WEB-DL.x264-T3KASHi",
+        "videoSize": 1503238553
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.1080p.WEB-DL.x264-T3KASHi\n📹 avc\n⭐ WEB-DL | 🏷️ T3KASHi\n👤 3 💾 1.4 GB 🔎 Comet|Nyaa\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2c3bd75ac4299b5e186b696e23c21efb1ad2d876",
+        "filename": "Solo Leveling S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv",
+        "videoSize": 1461847385
+      },
+      "description": "📄 Solo Leveling S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv\n📹 avc | 🔊 2.0\n⭐ WEB-DL\n👤 1 💾 1.4 GB 🔎 Comet|Internet Archive\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|055114bbdad34757a3e3ec9faad363b9f934925d",
+        "filename": "Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 1483307059
+      },
+      "description": "📄 Solo Leveling S01E01 MULTi 1080p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n💾 1.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b167ec8a5546a4cc685dc94a663584a26c0f7b6e",
+        "filename": "Buffy the Vampire Slayer S01E01 1080p Amazon WEBRip DD+ 5.1 x264-NOGROUP.mkv",
+        "videoSize": 4959021360
+      },
+      "description": "📄 Buffy the Vampire Slayer S01E01 1080p Amazon WEBRip DD+ 5.1 x264-NOGROUP.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ NOGROUP\n👤 0 💾 4.6 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9e2f153f4b3edba76ef394dd8de513dedc1093f1",
+        "filename": "[EMBER] Ore dake Level Up na Ken S01E01 [1080p] [HEVC WEBRip DDP] (Solo Leveling)",
+        "videoSize": 384710430
+      },
+      "description": "📄 [EMBER] Ore dake Level Up na Ken S01E01 [1080p] [HEVC WEBRip DDP] (Solo Leveling)\n📹 hevc | 🔊 Dolby Digital Plus\n⭐ WEBRip | 🏷️ EMBER\n💾 366.9 MB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|eb235137e33465d99f6a814fca8ff94b04eb336e",
+        "filename": "Solo.Leveling.S01E01.1080p.BluRay.FLAC2.0.x264.DUAL-Anitsu",
+        "videoSize": 1935513064
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.BluRay.FLAC2.0.x264.DUAL-Anitsu\n📹 avc | 🔊 FLAC • 2.0\n⭐ BluRay | 🏷️ Anitsu\n💾 1.8 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d97c64c2d2d7ed9b4162d901f7658c870cf2c716",
+        "filename": "Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv",
+        "videoSize": 351301638
+      },
+      "description": "📄 Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv\n📹 hevc\n⭐ BluRay | 🏷️ T3KASHi\n💾 335.0 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c2c565635fcb0d1ffe69d9d18cdd49746432e2d7",
+        "filename": "Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv",
+        "videoSize": 351301638
+      },
+      "description": "📄 Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv\n📹 hevc\n⭐ BluRay | 🏷️ T3KASHi\n💾 335.0 MB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b0f5b7cf45ab00517698e7ed17945a9f0603ba7a",
+        "filename": "Solo.Leveling.S01E01.MULTi.VFi.1080p.HDLight.AAC.2.0.H265-TARDiS.mkv",
+        "videoSize": 459360089
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.VFi.1080p.HDLight.AAC.2.0.H265-TARDiS.mkv\n📹 hevc | 🔊 AAC • 2.0\n🏷️ TARDiS\n👤 0 💾 438.1 MB 🔎 CometNet|ElfHosted\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|97028c47c3428bf238971cfe4f3e6bc1531585d3",
+        "filename": "Solo.Leveling.S01E01.1080p.BluRay.FLAC2.0.x264.DUAL-Anitsu.mkv",
+        "videoSize": 1935513064
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.BluRay.FLAC2.0.x264.DUAL-Anitsu.mkv\n📹 avc | 🔊 FLAC • 2.0\n⭐ BluRay | 🏷️ Anitsu\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|910440e6ac8fb6f2c4a3192a4b1b732b453acab4",
+        "filename": "Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv",
+        "videoSize": 351301638
+      },
+      "description": "📄 Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv\n📹 hevc\n⭐ BluRay | 🏷️ T3KASHi\n👤 37 💾 335.0 MB 🔎 Comet|t3kashi\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7f29a12401ab3ab50aa071738cf3a0b3d2755470",
+        "filename": "Solo.Leveling.S01E01.1080p.WEBRip.AAC2.0.x265-Anitsu.mkv",
+        "videoSize": 346554368
+      },
+      "description": "📄 Solo.Leveling.S01E01.1080p.WEBRip.AAC2.0.x265-Anitsu.mkv\n📹 hevc | 🔊 AAC • 2.0\n⭐ WEBRip | 🏷️ Anitsu\n👤 1 💾 330.5 MB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5e9c89e84da544635f9cbe362fbdb13f98a80807",
+        "filename": "Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv",
+        "videoSize": 351301638
+      },
+      "description": "📄 Solo.Leveling.S01E01.CUSTOM.MULTi.1080p.BluRay.x265-T3KASHi.mkv\n📹 hevc\n⭐ BluRay | 🏷️ T3KASHi\n💾 335.0 MB 🔎 StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|24694c95a9666c23ec61de29e0b345a348588eca",
+        "filename": "Solo.Leveling.S01.E01.MULTI.1080p.WEB.X264-NOTAG.mkv",
+        "videoSize": 1686059697
+      },
+      "description": "📄 Solo.Leveling.S01.E01.MULTI.1080p.WEB.X264-NOTAG.mkv\n📹 avc\n⭐ WEB | 🏷️ NOTAG\n👤 1 💾 1.6 GB 🔎 CometNet|ElfHosted\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f2d6b8af47b3b95cadc66da26e65b24754385f9d",
+        "filename": "Solo.Leveling.S01E01.DUBBED.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 197350829
+      },
+      "description": "📄 Solo.Leveling.S01E01.DUBBED.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 188.2 MB 🔎 Comet|The Pirate Bay\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5f612924a1dfcf814c7cdeea96d6b260f928753b",
+        "filename": "[Xspitfire911] Ore Dake Level Up Na Ken S01E01 WEBRIP 1080p X265 VOSTFR.mkv",
+        "videoSize": 818603547
+      },
+      "description": "📄 [Xspitfire911] Ore Dake Level Up Na Ken S01E01 WEBRIP 1080p X265 VOSTFR.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ Xspitfire911\n💾 780.7 MB 🔎 StremThru\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|114cf6e48e3acee813366c34764b088931085b09",
+        "filename": "Solo.Leveling.S01E01.VOSTFR.1080p.WEBRiP.x265-KAF.mkv",
+        "videoSize": 277191435
+      },
+      "description": "📄 Solo.Leveling.S01E01.VOSTFR.1080p.WEBRiP.x265-KAF.mkv\n📹 hevc\n⭐ WEBRip | 🏷️ KAF\n💾 264.4 MB 🔎 Comet|DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f2b8c1eb633eba6ce975f71e181ec70e6f09cca8",
+        "filename": "[KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.StudioBand.mkv",
+        "videoSize": 1441554872
+      },
+      "description": "📄 [KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.StudioBand.mkv\n⭐ WEBRip | 🏷️ KORSARS\n💾 1.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b41ffa100b5b83e792e784f4a15d7e440b5f400d",
+        "filename": "[KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.StudioBand.mkv",
+        "videoSize": 1441554872
+      },
+      "description": "📄 [KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.StudioBand.mkv\n⭐ WEBRip | 🏷️ KORSARS\n💾 1.3 GB 🔎 CometNet|ElfHosted",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|85988af850bf2959d926e0a93ac31068ba7201bd",
+        "filename": "[KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.FlarrowFilms.mkv",
+        "videoSize": 1386267790
+      },
+      "description": "📄 [KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.FlarrowFilms.mkv\n⭐ WEBRip | 🏷️ KORSARS\n💾 1.3 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5de12d02c4eaa460e6f365dbb4b5c46572d89cb2",
+        "filename": "[KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.StudioBand.mkv",
+        "videoSize": 1441554872
+      },
+      "description": "📄 [KORSARS]_Ore.dake.Level.Up.na.Ken.S01E01.WEBRip.1080p.StudioBand.mkv\n⭐ WEBRip | 🏷️ KORSARS\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2db7400d53930b9829d78493b31671ce9e663e51",
+        "filename": "Поднятие уровня в одиночку / Ore dake Level Up na Ken / Solo Leveling [01x01-08 из 12] (2024) WEBRip 1080p | AniLibria",
+        "videoSize": 12156991592
+      },
+      "description": "📄 Поднятие уровня в одиночку / Ore dake Level Up na Ken / Solo Leveling [01x01-08 из 12] (2024) WEBRip 1080p | AniLibria\n⭐ WEBRip\n💾 11.3 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|89e09a725bb99e92e9eb4a310c7bce47f7f44baf",
+        "filename": "Solo.Leveling.S01E01.MULTi.1080p.WEBRiP.x264-T3KASHi.mkv",
+        "videoSize": 418602717
+      },
+      "description": "📄 Solo.Leveling.S01E01.MULTi.1080p.WEBRiP.x264-T3KASHi.mkv\n📹 avc\n⭐ WEBRip | 🏷️ T3KASHi\n💾 399.2 MB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b668e94b83887dc239034c83711bafbf52fc820",
+        "filename": "[Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv",
+        "videoSize": 972408513
+      },
+      "description": "📄 [Xspitfire911] Ore dake Level Up na Ken - Solo Leveling S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv\n📹 hevc • 10bit\n⭐ BDRip | 🏷️ Xspitfire911\n💾 927.4 MB 🔎 CometNet|ElfHosted\n🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ef16c472fc1a854b78f59204aad9dfdfd7ef4b49",
+        "filename": "[MVX] Mato Seihei no Slave S01E01 [BDRip 1080p HEVC FLAC].mkv",
+        "videoSize": 1537945139
+      },
+      "description": "📄 [MVX] Mato Seihei no Slave S01E01 [BDRip 1080p HEVC FLAC].mkv\n📹 hevc | 🔊 FLAC\n⭐ BDRip | 🏷️ MVX\n👤 0 💾 1.4 GB 🔎 DebridAccount|realdebrid",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|07f3a8823e96919fa739e4d108e22f0be61b80c1",
+        "filename": "[Anitsu] Ore Dake Level Up na Ken (Solo Leveling) - S01E01 [BD 1080p x265 E-AC-3 AAC] [DUAL][269D897C].mkv",
+        "videoSize": 494490874
+      },
+      "description": "📄 [Anitsu] Ore Dake Level Up na Ken (Solo Leveling) - S01E01 [BD 1080p x265 E-AC-3 AAC] [DUAL][269D897C].mkv\n📹 hevc | 🔊 Dolby Digital Plus • AAC\n⭐ BDRip | 🏷️ Anitsu\n💾 471.6 MB 🔎 CometNet|ElfHosted\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|76ba22db40a5f228bdb08e929c7292c591809388",
+        "filename": "www.Torrenting.com - Solo Leveling S01E01 Im Used to It 1080p CR WEB-DL KOREAN DDP2 0 H 264-Kitsune",
+        "videoSize": 1478062289
+      },
+      "description": "📄 Solo Leveling S01E01 Im Used to It 1080p CR WEB-DL KOREAN DDP2 0 H 264-Kits\n📹 avc | 🔊 Dolby Digital Plus • 2.0\n⭐ WEB-DL | 🏷️ Kitsune\n👤 25 💾 1.4 GB 🔎 TheRARBG\n🇰🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a56460f9cee6d9fc1dd9da0d48453460209121c8",
+        "filename": "www.UIndex.org    -    Solo Leveling S01E01 2024 1080p NF WEB-DL x264 AAC-ADWeb",
+        "videoSize": 908375974
+      },
+      "description": "📄 Solo Leveling S01E01 2024 1080p NF WEB-DL x264 AAC-ADWeb\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ ADWeb\n👤 17 💾 866.3 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|118d5ea944d1bde0d02daf6bfe4c9732a65661af",
+        "filename": "www.koreanmv.com-Solo Leveling(2024)S01-EP01-1080P-HD-x264-English-Esub.mkv",
+        "videoSize": 1256137210
+      },
+      "description": "📄 www.koreanmv.com-Solo Leveling(2024)S01-EP01-1080P-HD-x264-English-Esub.mkv\n📹 avc\n⭐ HDTV | 🏷️ Esub\n💾 1.2 GB 🔎 CometNet|ElfHosted\n🇬🇧",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e389b22c7eb331f1c1aab2b275922432c0f0d4f",
+        "filename": "Solo Leveling S01E01 FRENCH 720p WEB x264 AAC -Tsundere-Raws (CR) (Ore dake Level Up na Ken)",
+        "videoSize": 729074892
+      },
+      "description": "📄 Solo Leveling S01E01 FRENCH 720p WEB x264 AAC -Tsundere-Raws (CR) (Ore dake Level Up na Ken)\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n👤 0 💾 695.3 MB 🔎 Comet|Nyaa\n🇫🇷",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|46071702f3439a4d4431b40dd3a7e52acbd7c9b0",
+        "filename": "Solo Leveling S01E01 VOSTFR 720p WEB x264 AAC -Tsundere-Raws (CR).mkv",
+        "videoSize": 729247204
+      },
+      "description": "📄 Solo Leveling S01E01 VOSTFR 720p WEB x264 AAC -Tsundere-Raws (CR).mkv\n📹 avc | 🔊 AAC\n⭐ WEB | 🏷️ CR\n💾 695.5 MB 🔎 DMM\n🇫🇷",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bd33d61456f8597065fb15ea750c0119575c4053",
+        "filename": "Solo Leveling - S01E01 - 720p WEB H.264 -WeebGakuin (NF).mkv",
+        "videoSize": 243877806
+      },
+      "description": "📄 Solo Leveling - S01E01 - 720p WEB H.264 -WeebGakuin (NF).mkv\n📹 avc\n⭐ WEB\n💾 232.6 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|499726a8dd1155cbfa4618dfe851ce0d707e731d",
+        "filename": "solo.leveling.s01e01.720p.web.h264-skyanime.mkv",
+        "videoSize": 729242630
+      },
+      "description": "📄 solo.leveling.s01e01.720p.web.h264-skyanime.mkv\n📹 avc\n⭐ WEB | 🏷️ skyanime\n👤 0 💾 695.5 MB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9387147c08fdb3be3515a2ba1b4903005bc6d4ed",
+        "filename": "Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv",
+        "videoSize": 454062060
+      },
+      "description": "📄 Solo.Leveling.S01e01.Ita.Eng.Spa.Jap.720p.h264.SubS-Me7alh.mkv\n📹 avc\n🏷️ Me7alh\n💾 433.0 MB 🔎 Comet|Knaben\n🌎/🇬🇧/🇯🇵/🇪🇸/🇮🇹",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b6d93c2a7bb612abc8e61543b925807ae2f19940",
+        "filename": "Solo Leveling S01e01-02 (720p Ita Spa Jap SubS ENG) byMe7alh",
+        "videoSize": 1053355967
+      },
+      "description": "📄 Solo Leveling S01e01-02 (720p Ita Spa Jap SubS ENG) byMe7alh\n👤 1 💾 1004.6 MB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇯🇵/🇪🇸/🇮🇹",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|87036135d542ca3589ef51cf07140e9495ce0512",
+        "filename": "Solo.Leveling.A.K.A.Ore.dake.Level.Up.na.Ken.S01E01.JAPANESE.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 82698815
+      },
+      "description": "📄 Solo.Leveling.A.K.A.Ore.dake.Level.Up.na.Ken.S01E01.JAPANESE.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n👤 1 💾 78.9 MB 🔎 MagnetDownload\n🇯🇵",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1d9f39e2c9cb75d8519104dad156ad4ff44b82ae",
+        "filename": "Solo.Leveling.A.K.A.Ore.dake.Level.Up.na.Ken.S01E01.JAPANESE.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 536872
+      },
+      "description": "📄 Solo.Leveling.A.K.A.Ore.dake.Level.Up.na.Ken.S01E01.JAPANESE.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n👤 1 💾 524.3 KB 🔎 CometNet|ElfHosted\n🇯🇵",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e88867acc66ad82757a3726c5ca5d679bcc99aaa",
+        "filename": "Solo Leveling (2024) S01E01 720p BluRay Hindi English Japanese AAC2.0 x264 Esub-HDHub4u.Tv.mp4",
+        "videoSize": 140565920
+      },
+      "description": "📄 Solo Leveling (2024) S01E01 720p BluRay Hindi English Japanese AAC2.0 x264 Esub-HDHub4u.Tv.mp4\n📹 avc | 🔊 AAC • 2.0\n⭐ BluRay\n👤 1 💾 134.1 MB 🔎 Comet|Internet Archive\n🌎/🇬🇧/🇯🇵/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|47307941bd74010639bd41da1ac9de1c61ba66db",
+        "filename": "solo.leveling.s01e01.dubbed.720p.web.h264-skyanime[EZTVx.to].mkv",
+        "videoSize": 728846407
+      },
+      "description": "📄 solo.leveling.s01e01.dubbed.720p.web.h264-skyanime[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ skyanime\n👤 17 💾 695.1 MB 🔎 TheRARBG\n🌎",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8e4b4d947b179dbb80efe4ae1dbd03315039e3c1",
+        "filename": "www.2TamilRockers.com - Solo Leveling S01E01-06 [720p HDRip AVC - Tamil Dubbed - x264 - AAC - 750MB]",
+        "videoSize": 786432000
+      },
+      "description": "📄 www.2TamilRockers.com - Solo Leveling S01E01-06 [720p HDRip AVC - Tamil Dubbed - x264 - AAC - 750MB]\n📹 avc | 🔊 AAC\n⭐ HDRip\n💾 750.0 MB 🔎 Comet|StremThru\n🌎/🇮🇳",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fe6c45faf40ab8cd6734feb02003b7e1ddec9b7f",
+        "filename": "Solo Leveling-S1E1-480P.mp4",
+        "videoSize": 71602654
+      },
+      "description": "📄 Solo Leveling-S1E1-480P.mp4\n👤 1 💾 68.3 MB 🔎 Comet|Internet Archive",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e712784f5dee80551bc77b43978a845690d727b",
+        "filename": "Solo_Leveling_[Hindi]_480P_S01_E01.mp4",
+        "videoSize": 111854353
+      },
+      "description": "📄 Solo_Leveling_[Hindi]_480P_S01_E01.mp4\n👤 1 💾 106.7 MB 🔎 Comet|Internet Archive\n🇮🇳",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b9a3172439c7da86dbf75973918ed633b42d70a0",
+        "filename": "Solo Leveling (2024) S01E01 480p BluRay Hindi English Japanese AAC2.0 x264 Esub-HDHub4u.Tv.mp4",
+        "videoSize": 139279312
+      },
+      "description": "📄 Solo Leveling (2024) S01E01 480p BluRay Hindi English Japanese AAC2.0 x264 Esub-HDHub4u.Tv.mp4\n📹 avc | 🔊 AAC • 2.0\n⭐ BluRay\n👤 1 💾 132.8 MB 🔎 Comet|Internet Archive\n🌎/🇬🇧/🇯🇵/🇮🇳",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6efe0d38664986488c2760aa2d0b594fed5cf4cd",
+        "filename": "Solo Leveling S01E01 [x265 10bit].mkv",
+        "videoSize": 1891886113
+      },
+      "description": "📄 Solo Leveling S01E01 [x265 10bit].mkv\n📹 hevc • 10bit\n💾 1.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ef89c6c6a648ac8e7c48bb7e1da94753581d044c",
+        "filename": "Solo.Leveling.S01E01.I'm.Used.to.It.avi",
+        "videoSize": 337639426
+      },
+      "description": "📄 Solo.Leveling.S01E01.I'm.Used.to.It.avi\n💾 322.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ef5118dcfed7495319d93cc720b677e704274919",
+        "filename": "[HR] Solo Leveling S01E01 [55447F24]",
+        "videoSize": 310063923
+      },
+      "description": "📄 [HR] Solo Leveling S01E01 [55447F24]\n🏷️ HR\n💾 295.7 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e52a782c3ff8937b63ca1b81a0ce00652664dc89",
+        "filename": "Solo Leveling Hensh? saison 1 & 2",
+        "videoSize": 13292923904
+      },
+      "description": "📄 Solo Leveling Hensh? saison 1 & 2\n👤 1 💾 12.4 GB 🔎 CometNet|ElfHosted\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|df3ed6e55676e54ed3e230f9696e03a671252e73",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 372313983
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 355.1 MB 🔎 Comet|TorrentGalaxyClone",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d769808b51739ae605cf328d5755926f5dcd5c8a",
+        "filename": "Solo Leveling_2024_S01E01_Ukr_[Lifecycle&Kachur].mkv",
+        "videoSize": 825947947
+      },
+      "description": "📄 Solo Leveling_2024_S01E01_Ukr_[Lifecycle&Kachur].mkv\n💾 787.7 MB 🔎 DMM\n🇺🇦",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bfac77a560ea0ae3bb164563922f69d41fd0be2e",
+        "filename": "Solo Leveling_2024_S01E01_Ukr_[Lifecycle&Kachur].mkv",
+        "videoSize": 825947947
+      },
+      "description": "📄 Solo Leveling_2024_S01E01_Ukr_[Lifecycle&Kachur].mkv\n💾 787.7 MB 🔎 DMM\n🇺🇦",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a85233ec7c5eeb63fe958620e99b62c1972997f7",
+        "filename": "[HR] Solo Leveling S01E01 [55447F24].mkv",
+        "videoSize": 310088599
+      },
+      "description": "📄 [HR] Solo Leveling S01E01 [55447F24].mkv\n🏷️ HR\n💾 295.7 MB 🔎 Comet|Knaben",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|97d75a3cfe4359125ab5b6104683f90823e68078",
+        "filename": "solo-leveling-ep1-s01",
+        "videoSize": 159329488
+      },
+      "description": "📄 solo-leveling-ep1-s01\n💾 151.9 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5c6cf743046a8c14b1becd84668542971788aa36",
+        "filename": "S01E01.mkv",
+        "videoSize": 553085377
+      },
+      "description": "📄 S01E01.mkv\n👤 0 💾 527.5 MB 🔎 Comet|kickasstorrents.to",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5182cffa2a21a061c6fd0da330e08d64a9107820",
+        "filename": "Solo Leveling (2024) S01 EP01.mkv",
+        "videoSize": 105564209
+      },
+      "description": "📄 Solo Leveling (2024) S01 EP01.mkv\n💾 100.7 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|41350ee07d251f6de22d7a1b27d5bc525c645a8e",
+        "filename": "Solo Leveling - S01E01.mkv",
+        "videoSize": 403249143
+      },
+      "description": "📄 Solo Leveling - S01E01.mkv\n💾 384.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e1c603c279f757d5ae00585fa0198f76e38e257",
+        "filename": "Solo Leveling_2024_S01E01_Ukr_[Lifecycle&Kachur].mkv",
+        "videoSize": 825947947
+      },
+      "description": "📄 Solo Leveling_2024_S01E01_Ukr_[Lifecycle&Kachur].mkv\n💾 787.7 MB 🔎 Comet|StremThru\n🇺🇦",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3cf2ef254dd5cf213cd4b1f55884a9cd637f5946",
+        "filename": "S01E01.mkv",
+        "videoSize": 553085377
+      },
+      "description": "📄 S01E01.mkv\n👤 8 💾 527.5 MB 🔎 Comet|firesoul64",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2fb0e9f9cbdeafce2cf6df7f08e4f68d09c37c41",
+        "filename": "[MECHAPOULPE] Solo Leveling Henshū saison 1 & 2",
+        "videoSize": 13314398208
+      },
+      "description": "📄 [MECHAPOULPE] Solo Leveling Henshū saison 1 & 2\n🏷️ MECHAPOULPE\n👤 19 💾 12.4 GB 🔎 CometNet|ElfHosted\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2d25f49bb3c04999842cb48384a095384d4e8da6",
+        "filename": "S01E01-I'm Used to it.mkv",
+        "videoSize": 6614756476
+      },
+      "description": "📄 S01E01-I'm Used to it.mkv\n💾 6.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|13cedb42efa1755ba1485203f1bd1d8ad127c99d",
+        "filename": "S01E01-I'm Used to it.mkv",
+        "videoSize": 6614756476
+      },
+      "description": "📄 S01E01-I'm Used to it.mkv\n💾 6.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|927004e8603485bfe7284907818ba74c939803d4",
+        "filename": "www.1TamilBlasters.day - Solo Leveling (2024) S01EP01.mkv",
+        "videoSize": 381461551
+      },
+      "description": "📄 www.1TamilBlasters.day - Solo Leveling (2024) S01EP01.mkv\n💾 363.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|156a6f7918fe2cd143576db6d1fa2814feb01884",
+        "filename": "Solo Leveling S01E01 DUBBED XviD-AFG",
+        "videoSize": 269007680
+      },
+      "description": "📄 Solo Leveling S01E01 DUBBED XviD-AFG\n📹 xvid\n🏷️ AFG\n💾 256.5 MB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f659277262f1bf266df9a45b5ec0b43014d583ea",
+        "filename": "Solo.Leveling.S01E01.DUBBED.XviD-AFG[EZTVx.to].avi",
+        "videoSize": 268180560
+      },
+      "description": "📄 Solo.Leveling.S01E01.DUBBED.XviD-AFG[EZTVx.to].avi\n📹 xvid\n🏷️ AFG\n👤 5 💾 255.8 MB 🔎 TheRARBG\n🌎",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

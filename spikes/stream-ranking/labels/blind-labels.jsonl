@@ -1,0 +1,60 @@
+{"id":"comet-tb/attack-on-titan-e01#53","res":"1080p","vcodec":"avc","sizeGB":1.8,"source":"bluray","group":"T3KASHi","langs":["multi"],"season":1,"episode":1,"cached":true}
+{"id":"comet-tb/breaking-bad-s01e01#421","vcodec":"xvid","sizeGB":0.343,"source":"dvd","group":"ORPHEUS","season":1,"episode":1,"cached":false}
+{"id":"comet-tb/coyote-vs-acme#99","sizeGB":1.9,"source":["ts","scr"],"langs":["es"],"cached":true}
+{"id":"comet-tb/dandadan-e01#228","res":"1080p","sizeGB":15.1,"pack":true,"source":"webrip","langs":["ru"],"season":1,"cached":false}
+{"id":"comet-tb/dune-part-two#323","res":"576p","vcodec":"hevc","audio":"aac","sizeGB":1.8,"source":"webrip","group":"SSN","cached":true}
+{"id":"comet-tb/frieren-e01#487","sizeGB":1.7,"langs":["zh"],"cached":false,"note":"Chinese title only"}
+{"id":"comet-tb/lanterns-s01e08#121","res":"2160p","hdr":["DV"],"vcodec":"hevc","audio":"eac3","ch":"5.1","sizeGB":8.2,"source":"web-dl","group":"NTb","season":1,"episode":8,"cached":false}
+{"id":"comet-tb/last-of-us-s02e01#285","res":"1080p","vcodec":"avc","audio":"eac3","ch":"5.1","atmos":true,"sizeGB":1.8,"source":"web-dl","group":"FLUX","season":2,"episode":1,"cached":false}
+{"id":"comet-tb/one-piece-e1100#524","res":"1080p","vcodec":"av1","audio":"opus","ch":"2.0","sizeGB":11.6,"pack":true,"source":"bluray","group":"BlackRabbit","langs":["multi","ja","en"],"season":1,"cached":false,"fake":true,"note":"Hunter x Hunter"}
+{"id":"comet-tb/oppenheimer#449","res":"2160p","hdr":["HDR10"],"vcodec":"hevc","audio":"truehd","ch":"7.1","sizeGB":15.3,"source":"bluray","group":["47BT",null],"langs":["zh","en"],"cached":false}
+{"id":"comet-tb/parasite#504","res":"1080p","vcodec":"hevc","audio":"ac3","ch":"5.1","sizeGB":2.4,"source":"bluray","langs":["multi","hi"],"cached":false,"note":"katmovie-hd.nl is a site tag"}
+{"id":"comet-tb/project-hail-mary#799","res":"1080p","vcodec":"avc","audio":"eac3","ch":"5.1","atmos":true,"sizeGB":12.2,"source":"web-dl","group":"BiOMA","langs":["multi"],"cached":false}
+{"id":"comet-tb/rrr#238","res":"720p","vcodec":"avc","sizeGB":2.4,"source":"other","langs":["hi"],"cached":false,"note":"HDRip; Worldfree4u is a site"}
+{"id":"comet-tb/severance-s02e01#63","res":"1080p","vcodec":"avc","audio":"eac3","ch":"5.1","atmos":true,"sizeGB":3.7,"source":"web-dl","group":["FLUX","PSOTNIK HT"],"season":2,"episode":1,"cached":true,"note":"PLSUB = Polish subtitles"}
+{"id":"comet-tb/shawshank#26","res":"2160p","hdr":["HDR10"],"vcodec":"hevc","audio":"dts-hd","ch":"5.1","sizeGB":13.4,"source":"bluray","group":"QTZ","langs":["multi","fr"],"cached":true}
+{"id":"comet-tb/shogun-s01e01#200","res":"2160p","vcodec":"hevc","sizeGB":7.6,"source":"web-dl","group":"successfulcrab","season":1,"episode":1,"cached":false}
+{"id":"comet-tb/solo-leveling-s01e01#126","sizeGB":0.075,"season":1,"episode":1,"cached":true,"fake":true,"note":"Family Guy"}
+{"id":"comet-tb/spider-man-brand-new-day#380","res":"2160p","sizeGB":52.0,"source":"remux","cached":false,"fake":true,"note":"Spider-Man 2 (2004)"}
+{"id":"torrentio/attack-on-titan-e01#47","res":"1080p","sizeGB":1.33,"group":"Erai-raws","episode":1,"fake":true,"note":"OAD episode 1, not the series' episode 1"}
+{"id":"torrentio/breaking-bad-s01e01#43","res":"720p","sizeGB":3.38,"source":"bluray","langs":["ru","en"],"season":1,"episode":1}
+{"id":"torrentio/coyote-vs-acme#20","res":"2160p","vcodec":"avc","sizeGB":74.08,"source":"other","group":"AOC","langs":["multi"],"note":"DCP"}
+{"id":"torrentio/dandadan-e01#3","res":"1080p","hdr":["HDR10"],"sizeGB":3.75,"source":"bluray","group":"Salieri","langs":["multi","ja","en"],"season":1,"episode":1}
+{"id":"torrentio/dune-part-two#54","res":"1080p","vcodec":"av1","audio":"opus","ch":"7.1","sizeGB":3.78,"source":"bluray","group":"dAV1nci","langs":["multi"]}
+{"id":"torrentio/frieren-e01#27","res":"1080p","vcodec":"hevc","audio":["opus","aac"],"sizeGB":3.27,"source":["web-dl","webrip"],"group":"LostYears","langs":["multi","ja","en"],"season":1,"episode":1}
+{"id":"torrentio/lanterns-s01e08#69","res":"1080p","vcodec":"hevc","audio":"eac3","ch":"5.1","sizeGB":1.42,"source":"web-dl","group":"XuploaD","langs":["multi","en","pl"],"season":1,"episode":8}
+{"id":"torrentio/last-of-us-s02e01#46","res":"1080p","vcodec":"hevc","audio":"ac3","ch":"5.1","sizeGB":1.27,"group":"iDN_CreW","langs":["it","en"],"season":2,"episode":1}
+{"id":"torrentio/one-piece-e1100#20","res":"1080p","sizeGB":1.36,"group":"Erai-raws","episode":1100}
+{"id":"torrentio/oppenheimer#12","res":"2160p","hdr":["DV","HDR10"],"vcodec":"hevc","sizeGB":82.96,"source":"remux","group":"NAHOM","langs":["it","en"]}
+{"id":"torrentio/parasite#45","res":"720p","vcodec":"avc","audio":"aac","sizeGB":1.96,"source":"bluray","group":["Dread-Team","Mjcvcd-Dread-Team"],"note":"VOSTFR"}
+{"id":"torrentio/project-hail-mary#94","res":"1080p","vcodec":"hevc","sizeGB":9.18,"source":"bluray","group":"Paso77","langs":["it","en"]}
+{"id":"torrentio-tb/attack-on-titan-e01#6","res":"1080p","vcodec":"av1","audio":"opus","ch":"2.0","sizeGB":0.443,"source":"bluray","group":"PHTMini","langs":["multi","de","ja","en"],"season":1,"episode":1,"cached":true}
+{"id":"torrentio-tb/breaking-bad-s01e01#122","sizeGB":2.2,"season":1,"episode":1,"cached":true}
+{"id":"torrentio-tb/coyote-vs-acme#110","sizeGB":1.45,"source":"webrip","langs":["ru"],"cached":true}
+{"id":"torrentio-tb/dandadan-e01#41","res":"1080p","vcodec":"avc","audio":"aac","ch":"2.0","sizeGB":0.439,"source":"web-dl","group":"TURG","langs":["ja"],"season":1,"episode":1,"cached":true,"note":"TRSub = Turkish subtitles"}
+{"id":"torrentio-tb/dune-part-two#135","res":"1080p","vcodec":"avc","audio":"ac3","ch":"5.1","sizeGB":3.66,"group":"realDMDJ","langs":["it","en"],"cached":true}
+{"id":"torrentio-tb/frieren-e01#18","res":"1080p","vcodec":"hevc","sizeGB":0.744,"source":"bluray","group":"DB","langs":["multi","ja","en"],"episode":1,"cached":true}
+{"id":"torrentio-tb/lanterns-s01e08#103","res":"1080p","sizeGB":1.96,"source":"web-dl","group":"MAZEPA","langs":["en","uk"],"season":1,"episode":8,"cached":true}
+{"id":"torrentio-tb/last-of-us-s02e01#63","res":"1080p","vcodec":"avc","sizeGB":1.88,"source":"web-dl","group":"YG","langs":["multi"],"season":2,"episode":1,"cached":true}
+{"id":"torrentio-tb/one-piece-e1100#19","res":"1080p","vcodec":"hevc","sizeGB":0.696,"group":"Erai-raws","episode":1100,"cached":true}
+{"id":"torrentio-tb/oppenheimer#156","res":"1080p","vcodec":"hevc","audio":"eac3","ch":"5.1","sizeGB":12.21,"source":"bluray","group":"jmux","cached":true}
+{"id":"torrentio-tb/parasite#1","res":"2160p","hdr":["HDR10"],"vcodec":"hevc","audio":"ac3","ch":"5.1","sizeGB":4.59,"source":"bluray","group":"QTZ","langs":["multi","fr"],"cached":true}
+{"id":"torrentio-tb/project-hail-mary#214","res":"1080p","vcodec":"avc","sizeGB":6.99,"source":"ts","group":"EaZy","langs":["en","hi","ta","te"],"cached":true}
+{"id":"torrentsdb/attack-on-titan-e01#11","res":"1080p","vcodec":"avc","sizeGB":53.4,"pack":true,"source":"web-dl","group":"i_c","season":4,"episode":1,"fake":true,"note":"season 4 episode 1, tagged S01E01 by the addon"}
+{"id":"torrentsdb/breaking-bad-s01e01#21","res":"1080p","vcodec":"hevc","sizeGB":1.69,"source":"bluray","group":"HiQVE","season":1,"episode":1}
+{"id":"torrentsdb/coyote-vs-acme#9","res":"1080p","vcodec":"hevc","audio":"eac3","ch":"5.1","sizeGB":5.23,"source":"web-dl","group":"KINGDOM"}
+{"id":"torrentsdb/dandadan-e01#12","res":"1080p","vcodec":"avc","audio":"aac","ch":"2.0","sizeGB":0.889,"source":"web-dl","group":"ToonsHub","langs":["multi","ja","en"],"season":2,"episode":1,"fake":true,"note":"season 2 episode 1, tagged S01E01 by the addon"}
+{"id":"torrentsdb/dune-part-two#68","res":"1080p","sizeGB":20.71,"source":"bluray","group":["pk",null],"langs":["ru","uk","en"]}
+{"id":"torrentsdb/frieren-e01#4","res":"1080p","audio":"flac","sizeGB":74.0,"pack":true,"source":"remux","group":"AF","langs":["ja","en","es"],"season":2,"episode":14,"fake":true,"note":"season 2 episode 14, tagged S01E01 by the addon"}
+{"id":"torrentsdb/lanterns-s01e08#0","res":"2160p","hdr":["DV","HDR10"],"vcodec":"hevc","audio":"eac3","ch":"5.1","atmos":true,"sizeGB":1.46,"source":"web-dl","group":"FLUX","season":1,"episode":8,"note":"1.5 GB is small for a FLUX 2160p DV episode: suspicious, kept as not fake"}
+{"id":"torrentsdb/last-of-us-s02e01#25","res":"1080p","vcodec":"hevc","sizeGB":1.0,"group":"Me7alh","langs":["it","en","es"],"season":2,"episode":1}
+{"id":"torrentsdb/oppenheimer#85","res":"1080p","vcodec":"hevc","audio":"ac3","ch":"5.1","sizeGB":4.34,"source":"bluray","group":"Licdom","langs":["it","en"]}
+{"id":"torrentsdb/parasite#25","res":"1080p","vcodec":"avc","sizeGB":2.07,"source":"bluray","group":["YTS.LT","YTS"]}
+{"id":"torrentsdb/project-hail-mary#29","res":"1080p","vcodec":"avc","audio":"eac3","ch":"5.1","atmos":true,"sizeGB":11.83,"source":"web-dl","group":"RDNYB"}
+{"id":"peerflix/dune-part-two#4","res":"1080p","sizeGB":1.79,"source":"bluray","langs":["es"]}
+{"id":"peerflix/last-of-us-s02e01#8","sizeGB":0.567,"langs":["es"],"season":2,"episode":1}
+{"id":"peerflix/oppenheimer#0","res":"1080p","sizeGB":12.33,"source":"bluray","langs":["es"]}
+{"id":"peerflix/parasite#2","res":"1080p","vcodec":"hevc","audio":"ac3","ch":"5.1","sizeGB":6.54,"source":"bluray","langs":["es","ko"]}
+{"id":"peerflix/project-hail-mary#8","res":"720p","sizeGB":7.02,"source":"bluray","langs":["es"]}
+{"id":"peerflix/severance-s02e01#2","res":"720p","sizeGB":1.45,"source":"hdtv","langs":["es"],"season":2,"episode":1}
+{"id":"peerflix/shawshank#8","res":"1080p","source":"bluray","langs":["es"],"note":"FullBluray, no size"}

@@ -1,0 +1,711 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "dandadan-e01",
+  "request": "https://torrentio.strem.fun/<config>/stream/series/kitsu%3A48269%3A1.json",
+  "recordedAt": "2026-10-11T12:05:57.453Z",
+  "status": 200,
+  "ms": 712,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Dan Da Dan - S01 Complete - 2160p HDR Ai Upscale 2.0 Eng/Jap+MultiSub MKV -Mesc\nDandadan - S01E01 - That's How Love Starts, Ya Know! - 2160p HDR Ai Upscale -Mesc.mkv\n👤 19 💾 2.84 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇵🇹 / 🇪🇸 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aa10f7aff248fa3eec6ecd15f2bdf404eb238da4/Dandadan - S01E01 - That's How Love Starts, Ya Know! - 2160p HDR Ai Upscale -Mesc.mkv/1/Dandadan - S01E01 - That's How Love Starts, Ya Know! - 2160p HDR Ai Upscale -Mesc.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|aa10f7aff248fa3eec6ecd15f2bdf404eb238da4",
+        "filename": "Dandadan - S01E01 - That's How Love Starts, Ya Know! - 2160p HDR Ai Upscale -Mesc.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "[ToonsHub] DAN DA DAN S01E01 2160p B-Global WEB-DL AAC2.0 H.264 (Multi-Subs)\n👤 14 💾 2.01 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇨🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e283cbc2b9800d2d8a8b912ab0920f52f960904b/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.2160p.B-Global.WEB-DL.JPN.AAC2.0.H.264.MSubs-ToonsHub.mkv/0/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.2160p.B-Global.WEB-DL.JPN.AAC2.0.H.264.MSubs-ToonsHub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|ToonsHub",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.2160p.B-Global.WEB-DL.JPN.AAC2.0.H.264.MSubs-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "DAN.DA.DAN.S01.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei(v2)\nDAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv\n👤 9 💾 1.19 GB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7096760f289dfe03ad3104afdab89df5871f6539/DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv/8/DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7096760f289dfe03ad3104afdab89df5871f6539",
+        "filename": "DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "DAN.DA.DAN.S01.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs-AniMeitantei\nDAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv\n👤 0 💾 1.19 GB ⚙️ nekoBT\nDubbed / Multi Subs / Dual Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/19794f881edab39a4c61ef7993bf69b6a602f3d2/DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv/1/DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|19794f881edab39a4c61ef7993bf69b6a602f3d2",
+        "filename": "DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.2160p.WEB-DL.DUAL.AUDIO.x265.Multi.Subs.AniMeitantei.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p HDR",
+      "title": "[Salieri] DAN DA DAN S1 - BD (1080p) (HDR) [Dual Audio]\n[Salieri] DAN DA DAN S1 - 01 (1080p) (HDR) [Dual Audio].mkv\n👤 8 💾 3.75 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a06a2b17660261dc830f64100a920d9a3943787f/[Salieri] DAN DA DAN S1 - 01 (1080p) (HDR) [Dual Audio].mkv/7/[Salieri] DAN DA DAN S1 - 01 (1080p) (HDR) [Dual Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a06a2b17660261dc830f64100a920d9a3943787f",
+        "filename": "[Salieri] DAN DA DAN S1 - 01 (1080p) (HDR) [Dual Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[EMBER] Dandadan (2024) (Season 1) [1080p] [Dual Audio HEVC WEBRip DDP] (Batch)\n[EMBER] Dandadan - 01.mkv\n👤 273 💾 449.79 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9ecb741e58e0da0641b93c2aa3f725936e8b5183/<opaque>/[EMBER] Dandadan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9ecb741e58e0da0641b93c2aa3f725936e8b5183",
+        "filename": "[EMBER] Dandadan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv\n👤 161 💾 1.36 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ef37d68042b743bc678d5e9766e87fbe548235a6/[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv/0/[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|SubsPlease",
+        "filename": "[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN DA DAN S01 (Season 1) REPACK2 1080p WEB-DL Dual-Audio AAC DDP 2.0 H.264-MALD\nDAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv\n👤 120 💾 1.44 GB ⚙️ 1337x\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/95a0069bb0184a34c4208eca23a54f6da642a8f6/DAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv/0/DAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|95a0069bb0184a34c4208eca23a54f6da642a8f6",
+        "filename": "DAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Okay-Subs] Dan Da Dan S1 (BD 1080p Dual-Audio)\n[Okay-Subs] Dan Da Dan - 01 (BD 1080p) [3F475D62].mkv\n👤 111 💾 4.78 GB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/551d254951545609236617066627b25cba78155b/[Okay-Subs] Dan Da Dan - 01 (BD 1080p) [3F475D62].mkv/0/[Okay-Subs] Dan Da Dan - 01 (BD 1080p) [3F475D62].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|551d254951545609236617066627b25cba78155b",
+        "filename": "[Okay-Subs] Dan Da Dan - 01 (BD 1080p) [3F475D62].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[CRUCiBLE] DAN DA DAN Season 1 (S01) (BD Remux 1080p FLAC H.264) [Dual Audio] | Dandadan\nDAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.1080p.BluRay.Remux.Dual-Audio.FLAC2.0.H.264-CRUCiBLE.mkv\n👤 90 💾 6.62 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f46abf5722dcf3548029a89f579d0ddbda6d4042/DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.1080p.BluRay.Remux.Dual-Audio.FLAC2.0.H.264-CRUCiBLE.mkv/0/DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.1080p.BluRay.Remux.Dual-Audio.FLAC2.0.H.264-CRUCiBLE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f46abf5722dcf3548029a89f579d0ddbda6d4042",
+        "filename": "DAN.DA.DAN.S01E01.That's.How.Love.Starts.Ya.Know.1080p.BluRay.Remux.Dual-Audio.FLAC2.0.H.264-CRUCiBLE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Dandadan (Season 01) [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub]-Anime Time\n[Anime Time] Dandadan - 01 [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub].mkv\n👤 69 💾 698.36 MB ⚙️ 1337x\nDubbed / Multi Subs / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8c77299ca890e52cbba1139f46c725353479c6b7/<opaque>/[Anime Time] Dandadan - 01 [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8c77299ca890e52cbba1139f46c725353479c6b7",
+        "filename": "[Anime Time] Dandadan - 01 [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN DA DAN/Dandadan S01 Season 1 1080p WEBRip 10bits x265-Rapta\nDAN DA DAN - S01E01 - That's How Love Starts, Ya Know!.mkv\n👤 60 💾 233.16 MB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/63197f99a23ca94f22d3bb8a194cfb09ad062bb5/DAN DA DAN - S01E01 - That's How Love Starts, Ya Know!.mkv/0/DAN DA DAN - S01E01 - That's How Love Starts, Ya Know!.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|63197f99a23ca94f22d3bb8a194cfb09ad062bb5",
+        "filename": "DAN DA DAN - S01E01 - That's How Love Starts, Ya Know!.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN DA DAN S01E01 Thats How Love Starts Ya Know 1080p CR WEB-DL AAC2.0 H 264-VARYG (Dandadan Dual-Audio Multi-Subs)\n👤 45 💾 1.38 GB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d2f41e240a4e6b99bf7c7872f15779fb3dc13b16/<opaque>/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.CR.WEB-DL.AAC2.0.H.264-VARYG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|VARYG",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.CR.WEB-DL.AAC2.0.H.264-VARYG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[neoDESU] Dandadan [Season 1] [BD 1080p x265 HEVC OPUS AAC] [Dual Audio]\nDandadan - S01E01.mkv\n👤 42 💾 527.27 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/89c728012fbfc34611156c27f2697f4f15279822/Dandadan - S01E01.mkv/1/Dandadan - S01E01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|89c728012fbfc34611156c27f2697f4f15279822",
+        "filename": "Dandadan - S01E01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DB] Dandadan | Dan Da Dan [Dual Audio 10bit BD1080p][HEVC-x265]\n[DB]Dandadan_-_01_(Dual Audio_10bit_BD1080p_x265).mkv\n👤 41 💾 698.58 MB ⚙️ 1337x\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/85a9eb07c1ad0f37f01858b503754c62f83da39b/[DB]Dandadan_-_01_(Dual Audio_10bit_BD1080p_x265).mkv/2/[DB]Dandadan_-_01_(Dual Audio_10bit_BD1080p_x265).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|85a9eb07c1ad0f37f01858b503754c62f83da39b",
+        "filename": "[DB]Dandadan_-_01_(Dual Audio_10bit_BD1080p_x265).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Judas] Dan Da Dan (Season 1) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Weekly)\n[Judas] Dan Da Dan - S01E01.mkv\n👤 35 💾 567.76 MB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio / 🇬🇧 / 🇵🇹 / 🇪🇸 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/270db653e47993d427403037547c3e98b6a5ed38/<opaque>/[Judas] Dan Da Dan - S01E01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|270db653e47993d427403037547c3e98b6a5ed38",
+        "filename": "[Judas] Dan Da Dan - S01E01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[RUBaDUB] DAN DA DAN (S1 Complete) (1080p) (Dual Audio)\n[RUBaDUB][1080p] DAN DA DAN - S01 Interview 1 [BD x265 10bit SUB AC3][7238D107].mkv\n👤 32 💾 401.48 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c57becbc68ae1aeaa9d678e4dbdc1db34f3f4cee/<opaque>/[RUBaDUB][1080p] DAN DA DAN - S01 Interview 1 [BD x265 10bit SUB AC3][7238D107].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c57becbc68ae1aeaa9d678e4dbdc1db34f3f4cee",
+        "filename": "[RUBaDUB][1080p] DAN DA DAN - S01 Interview 1 [BD x265 10bit SUB AC3][7238D107].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[RUBaDUB] DAN DA DAN (S1 Complete) (1080p) (Dual Audio)\n[RUBaDUB][1080p] DAN DA DAN - S01 Extra 1 [BD x265 10bit AC3][D7E2A482].mkv\n👤 32 💾 420.92 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c57becbc68ae1aeaa9d678e4dbdc1db34f3f4cee/<opaque>/[RUBaDUB][1080p] DAN DA DAN - S01 Extra 1 [BD x265 10bit AC3][D7E2A482].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c57becbc68ae1aeaa9d678e4dbdc1db34f3f4cee",
+        "filename": "[RUBaDUB][1080p] DAN DA DAN - S01 Extra 1 [BD x265 10bit AC3][D7E2A482].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[RUBaDUB] DAN DA DAN (S1 Complete) (1080p) (Dual Audio)\n[RUBaDUB][1080p] DAN DA DAN - S01 E01 [BD x265 10bit Dual Audio AC3][7B4B752D].mkv\n👤 32 💾 1.25 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c57becbc68ae1aeaa9d678e4dbdc1db34f3f4cee/<opaque>/[RUBaDUB][1080p] DAN DA DAN - S01 E01 [BD x265 10bit Dual Audio AC3][7B4B752D].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c57becbc68ae1aeaa9d678e4dbdc1db34f3f4cee",
+        "filename": "[RUBaDUB][1080p] DAN DA DAN - S01 E01 [BD x265 10bit Dual Audio AC3][7B4B752D].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Sokudo] DAN DA DAN | Dandadan - S01 [1080p AV1][Dual Audio]\n[Sokudo] DAN DA DAN - S01E01 v2 [1080p AV1][Dual Audio].mkv\n👤 32 💾 311.38 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8bce0e0d1e429b22aca0b8167b291be89cf8bd4e/<opaque>/[Sokudo] DAN DA DAN - S01E01 v2 [1080p AV1][Dual Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8bce0e0d1e429b22aca0b8167b291be89cf8bd4e",
+        "filename": "[Sokudo] DAN DA DAN - S01E01 v2 [1080p AV1][Dual Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN DA DAN - S01 E01-12 (2024) WEBRip 1080p x264 EAC3 ITA JPN SUB ITA - Lullozzo\nS01E01 DAN DA DAN È Proprio Così Che Ci Si Innamora (2024) WEBRip 1080p x264 EAC3 ITA JPN SUB ITA - Lullozzo.mkv\n👤 30 💾 754.55 MB ⚙️ ThePirateBay\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cca47be26adb48798ca9e343743c4a5ea1577ac5/S01E01 DAN DA DAN È Proprio Così Che Ci Si Innamora (2024) WEBRip 1080p x264 EAC3 ITA JPN SUB ITA - Lullozzo.mkv/0/S01E01 DAN DA DAN È Proprio Così Che Ci Si Innamora (2024) WEBRip 1080p x264 EAC3 ITA JPN SUB ITA - Lullozzo.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|cca47be26adb48798ca9e343743c4a5ea1577ac5",
+        "filename": "S01E01 DAN DA DAN È Proprio Così Che Ci Si Innamora (2024) WEBRip 1080p x264 EAC3 ITA JPN SUB ITA - Lullozzo.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.NF.WEB-DL.AAC2.0.H.264.MULTi-VARYG.mkv\n👤 30 💾 1.04 GB ⚙️ NyaaSi\nDubbed / Multi Audio / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/255d4d46164d4fd0e52af566c3a4e301103e4b00/<opaque>/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.NF.WEB-DL.AAC2.0.H.264.MULTi-VARYG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|VARYG",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.NF.WEB-DL.AAC2.0.H.264.MULTi-VARYG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DANDADAN : Season 01 S01 [2024] COMPLETE 1080p BDRip x265 FLAC 2.0 Kira [SEV]\nDANDADAN - Episode 01 - That's How Love Starts, Ya Know! 1080p BDRip x265 FLAC 2.0 Kira [SEV].mkv\n👤 28 💾 3.7 GB ⚙️ 1337x",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/73e54bbc706b7932897590f913f2cde550c50dc1/DANDADAN - Episode 01 - That's How Love Starts, Ya Know! 1080p BDRip x265 FLAC 2.0 Kira [SEV].mkv/0/DANDADAN - Episode 01 - That's How Love Starts, Ya Know! 1080p BDRip x265 FLAC 2.0 Kira [SEV].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|73e54bbc706b7932897590f913f2cde550c50dc1",
+        "filename": "DANDADAN - Episode 01 - That's How Love Starts, Ya Know! 1080p BDRip x265 FLAC 2.0 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Judas] Dan Da Dan (Season 1) [1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)\n[Judas] Dan Da Dan - S01E01v3.mkv\n👤 25 💾 443.46 MB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/29609ab55eb92a0d2b57cb2311b860e9b4419729/<opaque>/[Judas] Dan Da Dan - S01E01v3.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|29609ab55eb92a0d2b57cb2311b860e9b4419729",
+        "filename": "[Judas] Dan Da Dan - S01E01v3.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Xspitfire911] Dan Da Dan S01+S02 BDRIP 1080p X265 10bit VOSTFR\nDan Da Dan S01/[Xspitfire911] Dan Da Dan S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv\n👤 24 💾 1.2 GB ⚙️ TorrentGalaxy\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b7e4abc38778906dc9f0b11be1257825df527bbf/<opaque>/[Xspitfire911] Dan Da Dan S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b7e4abc38778906dc9f0b11be1257825df527bbf",
+        "filename": "[Xspitfire911] Dan Da Dan S01E01 BDRIP 1080p X265 10bit VOSTFR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DB] Dandadan [Dual Audio 10bit 1080p][HEVC-x265]\n[DB]Dandadan_-_01_(Dual Audio_10bit_1080p_x265).mkv\n👤 23 💾 561.38 MB ⚙️ 1337x\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6ff3beebf68602db848c1a6a5679fc5987904ee8/[DB]Dandadan_-_01_(Dual Audio_10bit_1080p_x265).mkv/0/[DB]Dandadan_-_01_(Dual Audio_10bit_1080p_x265).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6ff3beebf68602db848c1a6a5679fc5987904ee8",
+        "filename": "[DB]Dandadan_-_01_(Dual Audio_10bit_1080p_x265).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Breeze] DAN DA DAN | Dandadan - S01 [1080p AV1][Dual Audio]\n[Breeze] DAN DA DAN - S01E01 v2 [1080p AV1][Dual Audio].mkv\n👤 22 💾 1.03 GB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f09f19cb69f5457d0e0bdd11530c474bca0fad2b/<opaque>/[Breeze] DAN DA DAN - S01E01 v2 [1080p AV1][Dual Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f09f19cb69f5457d0e0bdd11530c474bca0fad2b",
+        "filename": "[Breeze] DAN DA DAN - S01E01 v2 [1080p AV1][Dual Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Dan Da Dan S01 (2024) (1080p x265 10bit BD Dual DTS-HD MA 2.0) [Prof]\nS01E01 - That`s How Love Starts, Ya Know!.mkv\n👤 20 💾 2.15 GB ⚙️ 1337x\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/569b7549850fe31aa4712185c37b0ca4966cd3c1/S01E01 - That`s How Love Starts, Ya Know!.mkv/1/S01E01 - That`s How Love Starts, Ya Know!.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|569b7549850fe31aa4712185c37b0ca4966cd3c1",
+        "filename": "S01E01 - That`s How Love Starts, Ya Know!.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DemiHuman] DAN DA DAN - S01E01 (CR WEB-DL 1080p x264 E-AC-3) (Japanese English Dubs) [Dual-Audio] | ダンダダン\n👤 15 💾 1.41 GB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/81e7b0197defcb5d5be5bbebaa0cf7fe330f5a07/<opaque>/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.CR.WEB-DL.DUAL.DDP2.0.H.264-DemiHuman.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|DemiHuman",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.CR.WEB-DL.DUAL.DDP2.0.H.264-DemiHuman.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ShinStarSubs] Dandadan S01v2 1080p (Dan Da Dan)\n[ShinStarSubs] Dandadan - 01v2 (1080p) [6F8275A7].mkv\n👤 12 💾 1.37 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a58c1e18905d6a4d19d6912a6c355f69ea3e1991/[ShinStarSubs] Dandadan - 01v2 (1080p) [6F8275A7].mkv/0/[ShinStarSubs] Dandadan - 01v2 (1080p) [6F8275A7].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a58c1e18905d6a4d19d6912a6c355f69ea3e1991",
+        "filename": "[ShinStarSubs] Dandadan - 01v2 (1080p) [6F8275A7].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ToonsHub] DAN DA DAN S01E01 1080p CR WEB-DL AAC2.0 H.264 (Multi-Audio Multi-Subs) (English French German Spanish Tamil Telugu Italian Portuguese Spanish Hindi Thai Indonesian Dubs)\n👤 12 💾 1.62 GB ⚙️ NyaaSi\nDubbed / Multi Audio / Multi Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇮🇳 / 🇸🇦 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/16b1b88666e8d494a202e2594fde4b04fe68510d/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv/0/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ToonsHub",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.1080p.CR.WEB-DL.MULTi.AAC2.0.H.264.MSubs-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[DKB] Dandadan - (Season 01) [1080p][HEVC x265 10bit][Multi-Subs][batch]\n[DKB] Dandadan - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv\n👤 10 💾 757.02 MB ⚙️ NyaaSi\nMulti Subs",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/295b352f0202e4db56f7f3d4cad0ae28257a35f7/<opaque>/[DKB] Dandadan - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|295b352f0202e4db56f7f3d4cad0ae28257a35f7",
+        "filename": "[DKB] Dandadan - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ToonsHub] DAN DA DAN S01E01 1080p AMZN WEB-DL DDP2.0 H.264 (English-Sub)\n👤 10 💾 1.09 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6dfa48a4c512a02ae3158d9e264a8b44896c8a8/<opaque>/DAN.DA.DAN.S01E01.Episode.1.1080p.AMZN.WEB-DL.JPN.DDP2.0.H.264.ESub-ToonsHub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ToonsHub",
+        "filename": "DAN.DA.DAN.S01E01.Episode.1.1080p.AMZN.WEB-DL.JPN.DDP2.0.H.264.ESub-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[jaaj] DAN DA DAN S01 (2024) (BD 1080p AV1 AAC)\nSeason 01/[jaaj] DAN DA DAN S01E01 (2024) (BD 1080p AV1 AAC).mkv\n👤 9 💾 393.44 MB ⚙️ nekoBT\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/92d06b3c739b933d020ca62b9470dfc7528a8095/[jaaj] DAN DA DAN S01E01 (2024) (BD 1080p AV1 AAC).mkv/0/[jaaj] DAN DA DAN S01E01 (2024) (BD 1080p AV1 AAC).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|92d06b3c739b933d020ca62b9470dfc7528a8095",
+        "filename": "[jaaj] DAN DA DAN S01E01 (2024) (BD 1080p AV1 AAC).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Dan Da Dan S01 S02 1080p Dual Audio WEB DL h265\nSeason 01/DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv\n👤 9 💾 481.54 MB ⚙️ TorrentGalaxy\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e15d32adacfd3525fb89c5273fa6a5e2ab580742/DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv/11/DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e15d32adacfd3525fb89c5273fa6a5e2ab580742",
+        "filename": "DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[MALD] DAN DA DAN S01 (Season 1) (1080p WEB-DL H264 Dual Audio AAC EAC3 2.0) (Dandadan)\nDAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv\n👤 9 💾 1.44 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4a60d63d1e9fb44b93950ebdb98e5cf0388b5c57/DAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv/0/DAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4a60d63d1e9fb44b93950ebdb98e5cf0388b5c57",
+        "filename": "DAN DA DAN (2024) S01E01v2 (1080p WEB-DL H264 AAC DDP 2.0 Dual-Audio) [MALD].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DanDaDan.S01E01-12.BDMUX.1080p.DUB.CR.NF.ITA-JPN-ENG.SUB.ITA.by.Maleno8.T7ST\nDanDaDan - 1x01 - È così che nasce l'amore (BDMUX 1080p DUB CR+NF ITA-JPN-ENG, SUB ITA)[by Maleno85 T7ST].mkv\n👤 8 💾 970.63 MB ⚙️ 1337x\nDubbed / 🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1afacf7a7b821872365457ce493de25f46e34b1a/DanDaDan - 1x01 - È così che nasce l'amore (BDMUX 1080p DUB CR+NF ITA-JPN-ENG, SUB ITA)[by Maleno85 T7ST].mkv/0/DanDaDan - 1x01 - È così che nasce l'amore (BDMUX 1080p DUB CR+NF ITA-JPN-ENG, SUB ITA)[by Maleno85 T7ST].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1afacf7a7b821872365457ce493de25f46e34b1a",
+        "filename": "DanDaDan - 1x01 - È così che nasce l'amore (BDMUX 1080p DUB CR+NF ITA-JPN-ENG, SUB ITA)[by Maleno85 T7ST].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 1080p] [86E73829] (Dandadan)\n👤 6 💾 1.35 GB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/80fbd664926adf1d29df5525415e88e088ff7310/<opaque>/[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 1080p] [86E73829].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Yameii",
+        "filename": "[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 1080p] [86E73829].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Дандадан / Dandadan / Dan Da Dan [S01-02] (2024-2025) BDRip-HEVC 1080p | D P L | Студийная Банда Flarrow Films AniBaza Amber TVShows AniLibria Dream Cast\n[Xspitfire911] Dan Da Dan [S01 2024]/[Xspitfire911] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv\n👤 5 💾 1.5 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7496e402a9bde1d042505f297979b11830e4b19b/<opaque>/[Xspitfire911] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7496e402a9bde1d042505f297979b11830e4b19b",
+        "filename": "[Xspitfire911] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Anipakku] Dandadan (01-12) [WEB-DL AMZN 1080p H.264 DDP][Multi-Áudio][PT-BR] (DAN DA DAN | S01 | Dublado)\nDandadan - 01 [WEB-DL AMZN 1080p H.264 DDP][Multi-Áudio][Anipakku].mkv\n👤 4 💾 1.15 GB ⚙️ NyaaSi\nDubbed / Multi Audio / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/38d9764f529f686c318120b7c90f922534fcb993/<opaque>/Dandadan - 01 [WEB-DL AMZN 1080p H.264 DDP][Multi-Áudio][Anipakku].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|38d9764f529f686c318120b7c90f922534fcb993",
+        "filename": "Dandadan - 01 [WEB-DL AMZN 1080p H.264 DDP][Multi-Áudio][Anipakku].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] Dan Da Dan - 01 [1080p][HEVC][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n👤 4 💾 763.55 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/16ad5c0735ae8202c8a161451453eade461b266b/<opaque>/[Erai-raws] Dan Da Dan - 01 [1080p][HEVC][Multiple Subtitle][934805AC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] Dan Da Dan - 01 [1080p][HEVC][Multiple Subtitle][934805AC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Dan Da Dan (2024) S01 1080p NF Web-DL [JA-TRSub] AAC.2.0 H.264-TURG\nDan.Da.Dan.(2024).S01E01.1080p.NF.Web-DL.[JA-TRSub].AAC.2.0.H.264.-TURG.mkv\n👤 3 💾 449.09 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d2c8233e03b3d516465833a586c3cafe61238988/Dan.Da.Dan.(2024).S01E01.1080p.NF.Web-DL.[JA-TRSub].AAC.2.0.H.264.-TURG.mkv/0/Dan.Da.Dan.(2024).S01E01.1080p.NF.Web-DL.[JA-TRSub].AAC.2.0.H.264.-TURG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d2c8233e03b3d516465833a586c3cafe61238988",
+        "filename": "Dan.Da.Dan.(2024).S01E01.1080p.NF.Web-DL.[JA-TRSub].AAC.2.0.H.264.-TURG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN DA DAN (2024) [tmdbid-240411]\nSeason 01/DAN DA DAN - S01E01 - Así empieza el amor - [BluRay-1080p][E-AC-3 2.0][AVC] - [spa, eng, jpn] - LasCositas.mkv\n👤 1 💾 2.26 GB ⚙️ EXT\n🇬🇧 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e98274c7ba03d8ea9fb5299f970d46e7599f9d63/<opaque>/DAN DA DAN - S01E01 - Así empieza el amor - [BluRay-1080p][E-AC-3 2.0][AVC] - [spa, eng, jpn] - LasCositas.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e98274c7ba03d8ea9fb5299f970d46e7599f9d63",
+        "filename": "DAN DA DAN - S01E01 - Así empieza el amor - [BluRay-1080p][E-AC-3 2.0][AVC] - [spa, eng, jpn] - LasCositas.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DanDaDan S01 (2024) 1080p WEBDL x264 iTALiAN AC3 - iDN_CreW\nDandadan S01E01 1080p WEBDL x264 iTALiAN AC3 - iDN_CreW.mkv\n👤 1 💾 312.95 MB ⚙️ ilCorSaRoNeRo\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4543630b13cd4c840e0bc6a5c7079936870810b2/<opaque>/Dandadan S01E01 1080p WEBDL x264 iTALiAN AC3 - iDN_CreW.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4543630b13cd4c840e0bc6a5c7079936870810b2",
+        "filename": "Dandadan S01E01 1080p WEBDL x264 iTALiAN AC3 - iDN_CreW.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ED3N] DAN DA DAN (Season 1) (BD 1080p AV1) [Dual Audio]\n[ED3N] DAN DA DAN - S01E01 (BD 1080p AV1) [Dual Audio].mkv\n👤 0 💾 1.83 GB ⚙️ nekoBT\nDubbed / Dual Audio / 🇬🇧 / 🇷🇺 / 🇵🇹 / 🇲🇽 / 🇨🇳 / 🇹🇼 / 🇫🇷 / 🇩🇪 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5f32a4ef1e889482acb910b4ce80b939fc29049e/[ED3N] DAN DA DAN - S01E01 (BD 1080p AV1) [Dual Audio].mkv/0/[ED3N] DAN DA DAN - S01E01 (BD 1080p AV1) [Dual Audio].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5f32a4ef1e889482acb910b4ce80b939fc29049e",
+        "filename": "[ED3N] DAN DA DAN - S01E01 (BD 1080p AV1) [Dual Audio].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[REENC AV1] [HE-AAC] DAN DA DAN S01 NF (v2) [1080p] [Multi-Audio] [Multi-Subs]\n[LbE3L] DAN DA DAN - S01E01 (v2) - That’s How Love Starts, Ya Know! (NF) [Src - VARYG].mkv\n👤 0 💾 489.33 MB ⚙️ TokyoTosho\nDubbed / Multi Audio / Multi Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f4dbc2f48d7f1f3e96fa1acd93dd6488a82a0d09/[LbE3L] DAN DA DAN - S01E01 (v2) - That’s How Love Starts, Ya Know! (NF) [Src - VARYG].mkv/8/[LbE3L] DAN DA DAN - S01E01 (v2) - That’s How Love Starts, Ya Know! (NF) [Src - VARYG].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f4dbc2f48d7f1f3e96fa1acd93dd6488a82a0d09",
+        "filename": "[LbE3L] DAN DA DAN - S01E01 (v2) - That’s How Love Starts, Ya Know! (NF) [Src - VARYG].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Dan.Da.Dan.S01.MULTi.1080p.WEBRiP.x265-KAF\nDan.Da.Dan.S01E01.MULTi.1080p.WEBRiP.x265-KAF.mkv\n👤 0 💾 305.22 MB ⚙️ Torrent9\nDubbed / Multi Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2087dff7e6d24041233893f46411e1be1c2218fb/<opaque>/Dan.Da.Dan.S01E01.MULTi.1080p.WEBRiP.x265-KAF.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|2087dff7e6d24041233893f46411e1be1c2218fb",
+        "filename": "Dan.Da.Dan.S01E01.MULTi.1080p.WEBRiP.x265-KAF.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Дандадан / Dandadan / Dan Da Dan [S01] (2024) BDRip-HEVC 1080p | D P L | Студийная Банда Flarrow Films AniBaza Amber TVShows AniLibria\n[H-Enc] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv\n👤 0 💾 2.29 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/24440c75edf2abcb1914981b4542b6932f6201b4/<opaque>/[H-Enc] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|24440c75edf2abcb1914981b4542b6932f6201b4",
+        "filename": "[H-Enc] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[TRC] DAN DA DAN - S01 [English Dub] [CR WEB-RIP 1080p HEVC-10 AAC]\n[TRC] DAN DA DAN - S01E01 [English Dub] [CR WEB-RIP 1080p HEVC-10 AAC] [4417B25D].mkv\n👤 0 💾 649.68 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3de1b30c6c1bdc8c7c1e7f1a6388172bf7793cc7/<opaque>/[TRC] DAN DA DAN - S01E01 [English Dub] [CR WEB-RIP 1080p HEVC-10 AAC] [4417B25D].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3de1b30c6c1bdc8c7c1e7f1a6388172bf7793cc7",
+        "filename": "[TRC] DAN DA DAN - S01E01 [English Dub] [CR WEB-RIP 1080p HEVC-10 AAC] [4417B25D].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Yameii] DAN DA DAN - S01 [English Dub] [CR WEB-DL 1080p]\n[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 1080p] [86E73829].mkv\n👤 0 💾 1.35 GB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ad13a5818f43d2cea02f4a78ad642c62920cf9db/<opaque>/[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 1080p] [86E73829].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ad13a5818f43d2cea02f4a78ad642c62920cf9db",
+        "filename": "[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 1080p] [86E73829].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Dan Da Dan (2024) [STAGIONE 1] [COMPLETA] [1080p H265 ITA AC3 2.0 JAP AAC SUB ITA] By Seregorn\nDan Da Dan S01E01 - E' così che nasce un amore [1080p H265 10bit ITA AC3 2.0 JAP AAC SUB ITA] By Seregorn.mkv\n👤 0 💾 572.76 MB ⚙️ ilCorSaRoNeRo\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1f2f9c1163d908cf8ef0c8cee3ae8a17db669245/Dan Da Dan S01E01 - E' così che nasce un amore [1080p H265 10bit ITA AC3 2.0 JAP AAC SUB ITA] By Seregorn.mkv/0/Dan Da Dan S01E01 - E' così che nasce un amore [1080p H265 10bit ITA AC3 2.0 JAP AAC SUB ITA] By Seregorn.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1f2f9c1163d908cf8ef0c8cee3ae8a17db669245",
+        "filename": "Dan Da Dan S01E01 - E' così che nasce un amore [1080p H265 10bit ITA AC3 2.0 JAP AAC SUB ITA] By Seregorn.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN DA DAN S01 2024 WEB-DL 1080p x264 DUAL 2.0\nDAN DA DAN S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv\n👤 0 💾 906.33 MB ⚙️ Comando\nDubbed / Dual Audio / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2f345aceabe322c9fea6435793b1d9b6001509e8/<opaque>/DAN DA DAN S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|2f345aceabe322c9fea6435793b1d9b6001509e8",
+        "filename": "DAN DA DAN S01E01 WEB-DL 1080p x264 DUAL 2.0.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n👤 0 💾 1.38 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/06f19d7bb18bc6de55bbf892a797aa7cf8e0fd14/[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][Multiple Subtitle][FCC80F99].mkv/0/[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][Multiple Subtitle][FCC80F99].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][Multiple Subtitle][FCC80F99].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv\n👤 0 💾 1.17 GB ⚙️ NyaaSi\n🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1fcb01f7841a4e04548eee686208cbe73faaae52/<opaque>/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|VARYG",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know.1080p.AMZN.WEB-DL.DDP2.0.H.264-VARYG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[Erai-raws] Dan Da Dan - 01 [1080p][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n👤 0 💾 1.37 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2965abd95f9f538e62c48f7389fdf211b934fb67/<opaque>/[Erai-raws] Dan Da Dan - 01 [1080p][Multiple Subtitle][F5A0A3BF].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] Dan Da Dan - 01 [1080p][Multiple Subtitle][F5A0A3BF].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "[ToonsHub] DAN DA DAN S01E01 1080p B-Global WEB-DL AAC2.0 H.265 (Multi-Subs)\n👤 0 💾 398.81 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/27144cf75e19c4120ad132e613f11dc7e31a228c/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.1080p.B-Global.WEB-DL.JPN.AAC2.0.H.265.MSubs-ToonsHub.mkv/0/DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.1080p.B-Global.WEB-DL.JPN.AAC2.0.H.265.MSubs-ToonsHub.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ToonsHub",
+        "filename": "DAN.DA.DAN.S01E01.Thats.How.Love.Starts.Ya.Know!.1080p.B-Global.WEB-DL.JPN.AAC2.0.H.265.MSubs-ToonsHub.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 720p] [B525D26C] (Dandadan)\n👤 3 💾 705.48 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/49e5c0c3e7710924160cf459419dea829fc060b7/<opaque>/[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 720p] [B525D26C].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|Yameii",
+        "filename": "[Yameii] DAN DA DAN - S01E01 [English Dub] [CR WEB-DL 720p] [B525D26C].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Dan Da Dan [HDTV 720p][Cap.101]\n👤 0 💾 253.89 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/15d5be85c2e60161a46048e3acb8bbf00f2cfa77/Dan Da Dan [HDTV 720p][Cap.101](wolfmax4k.com).mkv/0/Dan Da Dan [HDTV 720p][Cap.101](wolfmax4k.com).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Dan Da Dan [HDTV 720p][Cap.101](wolfmax4k.com).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n360p",
+      "title": "[sekkusu&ok] DANDADAN SEASON 1 Episode 1 to 6 - English Subtitles Leaks Leaked Leak [360p AVC]\n[sekkusu&ok] DANDADAN S01 - E01 [360p].mkv\n👤 9 💾 173.53 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/06909d7bab666e209abed1df35996086834213b9/<opaque>/[sekkusu&ok] DANDADAN S01 - E01 [360p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|06909d7bab666e209abed1df35996086834213b9",
+        "filename": "[sekkusu&ok] DANDADAN S01 - E01 [360p].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Furretar] 台中粤配 - 胆大党 (Dandadan) (Season 1-2) (Mainland + Taiwanese Mandarin + Cantonese Chinese Dub) (Matching Soft Subs) [國語][粵語][国语][中配版] (膽大黨)\nDandadan Season 1 [中台粤]/Dandadan - 01.mkv\n👤 7 💾 524.29 MB ⚙️ NyaaSi\nDubbed / 🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/de32bbe05f12e25522965552872c3bfad2a7d3ab/Dandadan - 01.mkv/10/Dandadan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|de32bbe05f12e25522965552872c3bfad2a7d3ab",
+        "filename": "Dandadan - 01.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "[Shiniori-Raws] Dan Da Dan S01E01-S02E12\n👤 0 💾 51.69 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e65e43b0b23a6ca2fd05316387de183932c02300/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|Shiniori-Raws"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][HEVC][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n👤 21 💾 779.91 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6532a72c23df79602abce0f466a230d3b471faed/[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][HEVC][Multiple Subtitle][24270F64].mkv/0/[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][HEVC][Multiple Subtitle][24270F64].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] Dan Da Dan - 01 (EAC3 2.0) [1080p][HEVC][Multiple Subtitle][24270F64].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Dandadan - 01 [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub]-Anime Time\n👤 19 💾 698.36 MB ⚙️ 1337x\nDubbed / Multi Subs / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/96edd62f622dda94511b29848807e12c93d1bbc5/<opaque>/[Anime Time] Dandadan - 01 [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Anime Time",
+        "filename": "[Anime Time] Dandadan - 01 [Dual Audio][1080p][HEVC 10bit x265][AAC][Multi Sub].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[SubsPlease] Dandadan - 01 ~ 12 (1080p)\n[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv\n👤 15 💾 1.36 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/694babc3ef45438d84a7bf85268a7a2629b7182c/[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv/5/[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|694babc3ef45438d84a7bf85268a7a2629b7182c",
+        "filename": "[SubsPlease] Dandadan - 01 (1080p) [2AB10B14].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[DKB] Dandadan - S01E01 [1080p][HEVC x265 10bit][Multi-Subs][weekly]\n👤 6 💾 757.02 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5ece9dd95076248b90b4ee76c68993fd52a62dce/<opaque>/[DKB] Dandadan - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|DKB",
+        "filename": "[DKB] Dandadan - S01E01 [1080p][HEVC x265 10bit][Multi-Subs].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[Erai-raws] Dan Da Dan - 01 (NF) [1080p][HEVC][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][JPN][POL][TUR][IND][THA][KOR][CHI][VIE][MAY][FIL]\n👤 4 💾 744.14 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/04b26c58b1631b04df026f97addbdbe30f4b5e77/[Erai-raws] Dan Da Dan - 01 (NF) [1080p][HEVC][Multiple Subtitle][9AA6B701].mkv/0/[Erai-raws] Dan Da Dan - 01 (NF) [1080p][HEVC][Multiple Subtitle][9AA6B701].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Erai-raws",
+        "filename": "[Erai-raws] Dan Da Dan - 01 (NF) [1080p][HEVC][Multiple Subtitle][9AA6B701].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "DAN DA DAN S01 Dual Audio WEB-DL 1080p x265 (Plex Naming)\nSeason 1/DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv\n👤 3 💾 580.57 MB ⚙️ 1337x\nDubbed / Dual Audio / 🇬🇧",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/20d4e5e9bb0f3bf3dae72683fbe898696c1e9f95/DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv/11/DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|20d4e5e9bb0f3bf3dae72683fbe898696c1e9f95",
+        "filename": "DAN DA DAN - S01E01 - Thats How Love Starts Ya Know! - [WEBDL-1080p] [h265 AAC].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "DAN DA DAN S01E01 [1080p][AV1][10 bit][Opus][Crunchyroll] [Multi Audio][English][Japanese][Italian]\n👤 3 💾 241.65 MB ⚙️ NyaaSi\nDubbed / Multi Audio / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c53b0b1ef107ae5dd931dd88597ef75a8fdf9832/<opaque>/DAN DA DAN S01E01 [1080p][AV1][10 bit][Opus][Crunchyroll].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "DAN DA DAN S01E01 [1080p][AV1][10 bit][Opus][Crunchyroll].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Dan.Da.Dan.S01E01.MULTi.1080p.WEBRiP.x265-KAF\n👤 3 💾 305.22 MB ⚙️ EXT\nDubbed / Multi Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8628b27d3670d41a82ad4affb9835df6ccb7ccab/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|KAF"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Dan Da Dan - S1 E1 (2024 ITA -JAP) [IN CORSO][1080p]\n👤 2 💾 1.39 GB ⚙️ TorrentGalaxy\n🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dbe33c83deecbcdbbbb37ef803010d8383613ac5/Dan Da Dan 1x01.mkv/1/Dan Da Dan 1x01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Dan Da Dan 1x01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Дандадан / Dandadan / Dan Da Dan [S01] (2024) BDRip-HEVC 1080p | D P L | Студийная Банда Flarrow Films AniBaza Amber TVShows AniLibria Dream Cast\n[Xspitfire911] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv\n👤 1 💾 1.51 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/41c3bd144783ee6b05324dfbf67d4abb4123d66f/<opaque>/[Xspitfire911] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|41c3bd144783ee6b05324dfbf67d4abb4123d66f",
+        "filename": "[Xspitfire911] Dan Da Dan 01 [BDRip 1080p x265 FLAC].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Дьявол может плакать / Devil May Cry [S01] (2025) WEB-DLRip 1080p | D | Локализованная версия | Flarrow Films\nDevil.May.Cry.2025.S01E01.mkv\n👤 1 💾 1.1 GB ⚙️ Rutor\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fb4f552448e50c3e53438e97dc262f4324174ad2/Devil.May.Cry.2025.S01E01.mkv/3/Devil.May.Cry.2025.S01E01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fb4f552448e50c3e53438e97dc262f4324174ad2",
+        "filename": "Devil.May.Cry.2025.S01E01.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[Yaichi_JK] DAN DA DAN E01-02 [V2] [1080p] [Multi Sub]\n[Yaichi_JK] [CR] DAN DA DAN.S01E01 [1080p].mkv\n👤 1 💾 1.35 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c93b12c98674cd00338f1a64a008741727805a4d/<opaque>/[Yaichi_JK] [CR] DAN DA DAN.S01E01 [1080p].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c93b12c98674cd00338f1a64a008741727805a4d",
+        "filename": "[Yaichi_JK] [CR] DAN DA DAN.S01E01 [1080p].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "[Raze] Dandadan - 01 x265 10bit 1080p 143.8561fps.mkv\n👤 1 💾 1.22 GB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c88d167bcaf9473baa1b49b23efc2c5883c3e6d6/<opaque>/[Raze] Dandadan - 01 x265 10bit 1080p 143.8561fps.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Raze",
+        "filename": "[Raze] Dandadan - 01 x265 10bit 1080p 143.8561fps.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[SubsPlease] Dandadan - 01 (720p) [2ECB2F39].mkv\n👤 27 💾 710.89 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/16ab8f106ab3dd2c17a3cbcdead057578386b95a/[SubsPlease] Dandadan - 01 (720p) [2ECB2F39].mkv/0/[SubsPlease] Dandadan - 01 (720p) [2ECB2F39].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|SubsPlease",
+        "filename": "[SubsPlease] Dandadan - 01 (720p) [2ECB2F39].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "[Erai-raws] Dan Da Dan - 01 (NF) [720p][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][JPN][POL][TUR][IND][THA][KOR][CHI][VIE][MAY][FIL]\n👤 2 💾 218.3 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/711ecac3a3d0e647f2bff73ed4398583cc682674/[Erai-raws] Dan Da Dan - 01 (NF) [720p][Multiple Subtitle][6CE9AB4B].mkv/0/[Erai-raws] Dan Da Dan - 01 (NF) [720p][Multiple Subtitle][6CE9AB4B].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|Erai-raws",
+        "filename": "[Erai-raws] Dan Da Dan - 01 (NF) [720p][Multiple Subtitle][6CE9AB4B].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n480p",
+      "title": "[SubsPlease] Dandadan - 01 (480p) [6A4E67F6].mkv\n👤 10 💾 369.99 MB ⚙️ NyaaSi",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b4e252ee098475aed53f58b1b7016a7a4b59f8fe/[SubsPlease] Dandadan - 01 (480p) [6A4E67F6].mkv/0/[SubsPlease] Dandadan - 01 (480p) [6A4E67F6].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|SubsPlease",
+        "filename": "[SubsPlease] Dandadan - 01 (480p) [6A4E67F6].mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "[Furretar] 台中粤配 - 胆大党 (Dandadan) (Season 1) (Taiwanese + Mainland Mandarin + Cantonese Chinese Dub) (Matching Soft Subs) [國語][国语][中文配音][中配版] (膽大黨)\nDandadan - 01.mkv\n👤 5 💾 551.16 MB ⚙️ NyaaSi\nDubbed / 🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f10e8288f19c91c8df4fdfe69343df7cb9612af1/Dandadan - 01.mkv/0/Dandadan - 01.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f10e8288f19c91c8df4fdfe69343df7cb9612af1",
+        "filename": "Dandadan - 01.mkv"
+      }
+    }
+  ]
+}

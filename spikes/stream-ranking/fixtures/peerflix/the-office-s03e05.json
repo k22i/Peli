@@ -1,0 +1,30 @@
+{
+  "addon": "peerflix",
+  "config": "p2p",
+  "title": "the-office-s03e05",
+  "request": "https://peerflix.mov/stream/series/tt0386676%3A3%3A5.json",
+  "recordedAt": "2026-10-11T12:04:54.363Z",
+  "status": 200,
+  "ms": 709,
+  "streams": [
+    {
+      "name": "Peerflix 🇪🇸 720p",
+      "description": "[Bitsearch.to] The Office - Temporada 3 [HDTV 720p][Cap.305_308][AC3 5.1 Castellano][www.maxitorrent.com]\n  👤 0 💾 8.2 GB 🌐 BitSearch",
+      "infoHash": "9909d26600da8c72285ce3e2d9b22128f698cc2e",
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:9909d26600da8c72285ce3e2d9b22128f698cc2e"
+      ],
+      "fileIdx": null,
+      "language": "es",
+      "quality": "720p",
+      "seed": 0,
+      "sizebytes": 8804682957
+    }
+  ]
+}

@@ -1,0 +1,1791 @@
+{
+  "addon": "comet-tb",
+  "config": "torbox",
+  "title": "lanterns-s01e08",
+  "request": "https://comet.elfhosted.com/<config>/stream/series/tt26545992%3A1%3A8.json",
+  "recordedAt": "2026-10-11T12:06:39.455Z",
+  "status": 200,
+  "ms": 350,
+  "streams": [
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f56df75335ee7d00c1eea36e9574be5294e37ea3",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+        "videoSize": 6965991009
+      },
+      "description": "📄 Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BTM\n👤 968 💾 6.5 GB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e944bd608e4d8b4fe94b4cc861b8d3ee49096752",
+        "filename": "Lanterns.2026.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR10Plus.H.265-KRATOS.mkv",
+        "videoSize": 6550497288
+      },
+      "description": "📄 Lanterns.2026.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR10Plus.H.265-KRATOS.mkv\n📹 hevc • DV • HDR10+ | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ KRATOS\n💾 6.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|28557727f692acd7092fcf8ee79e23d4eb75bcf7",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR10Plus H 265-Kitsune.mkv",
+        "videoSize": 6550635667
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR10Plus H 265-Kitsune.mkv\n📹 hevc • DV • HDR10+ | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 6.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e4fceaa5d185abf87e788b7f463815ea10cbde1d",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p HMAX WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv",
+        "videoSize": 1562861562
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p HMAX WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|35181c95a84e7ba8d86f16d9d3602673de856bac",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 6767562575
+      },
+      "description": "📄 Lanterns.S01E08.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 0 💾 6.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0ebb87c3d45a200598de00da015cd97ee5a68106",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv",
+        "videoSize": 6550605678
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 0 💾 6.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d68f86f6d3e782cbe2c23777d10d51a5226ce58a",
+        "filename": "Lanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265.DUAL-SiGLA.mkv",
+        "videoSize": 1617494104
+      },
+      "description": "📄 Lanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265.DUAL-SiGLA.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ SiGLA\n💾 1.5 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b2a1dbd273f24da4ac7069bbd5cc5f7aa8651190",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.ITA.ENG.DDP5.1.DV.HDR.H.265-G66.mkv",
+        "videoSize": 6821837907
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.ITA.ENG.DDP5.1.DV.HDR.H.265-G66.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 207 💾 6.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|781b523a3f7371c0ae97ee8f337fd16358025dcc",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.2160p.AMZN.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv",
+        "videoSize": 6823597615
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.2160p.AMZN.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 6.4 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|34125f6af574421654e730a430b3d57d42e64514",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HDR HEVC-NTb.mkv",
+        "videoSize": 6550525004
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HDR HEVC-NTb.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 6.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9dd815bd65ee8f12e6facceca9954861f3dc530f",
+        "filename": "lanterns.2026.s01e08.dv.hdr.2160p.web.h265-cakes.mkv",
+        "videoSize": 1508142394
+      },
+      "description": "📄 lanterns.2026.s01e08.dv.hdr.2160p.web.h265-cakes.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ cakes\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0abb57576f6add94cb62658c0c70c1d6ddfc7358",
+        "filename": "lanterns.2026.s01e08.dv.hdr.2160p.web.h265-cakes.mkv",
+        "videoSize": 1508142394
+      },
+      "description": "📄 lanterns.2026.s01e08.dv.hdr.2160p.web.h265-cakes.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ cakes\n💾 1.4 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|791520c2aa2ed20dd17a82af80d94199fc2c120d",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+        "videoSize": 6965991009
+      },
+      "description": "📄 Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4\n📹 DV • HDR10+ • 10bit\n⭐ WEB-DL\n💾 6.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f277be1ed2067439c66c87b927fa195bc865e32e",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-Kitsune.mkv",
+        "videoSize": 8792146706
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-Kitsune.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 8.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7362e530809f999002c8d0e69d9d5669302ed788",
+        "filename": "Lanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.H.265-EiNSTEiNSiR.mkv",
+        "videoSize": 1508125697
+      },
+      "description": "📄 Lanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.H.265-EiNSTEiNSiR.mkv\n📹 hevc • DV | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ EiNSTEiNSiR\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|584f8703e4b6631f355ca38e9c316d2ba4445a4e",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.2160p.AMZN.WEB.DV.HDR10Plus.H265-BYOR.mkv",
+        "videoSize": 7013267613
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.2160p.AMZN.WEB.DV.HDR10Plus.H265-BYOR.mkv\n📹 hevc • DV • HDR10+\n⭐ WEB | 🏷️ BYOR\n💾 6.5 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|40221a589f453810b41830aed15b29da6253ab21",
+        "filename": "Lanterns.S01E08.FiNAL.PROPER.MULTi.HDR.DV.2160p.WEB.H265-SUPPLY.mkv",
+        "videoSize": 6767105133
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.PROPER.MULTi.HDR.DV.2160p.WEB.H265-SUPPLY.mkv\n📹 hevc • DV • HDR\n⭐ WEB • PROPER | 🏷️ SUPPLY\n💾 6.3 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c944f5b3c3564766f8160e2b3764bea59fc0327d",
+        "filename": "Lanterns S01E08 2160p HDR10Plus DV WEBRip 6CH x265 HEVC-PSA.mkv",
+        "videoSize": 942464948
+      },
+      "description": "📄 Lanterns S01E08 2160p HDR10Plus DV WEBRip 6CH x265 HEVC-PSA.mkv\n📹 hevc • DV • HDR10+\n⭐ WEBRip | 🏷️ PSA\n💾 898.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c8443560609912b024c7f6b0c20228fe38861f36",
+        "filename": "Lanterns.S01E08.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 942464369
+      },
+      "description": "📄 Lanterns.S01E08.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • DV • HDR10+\n⭐ WEBRip | 🏷️ PSA\n💾 898.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|95d0e9370bcc3e8dde5c454714dcee2cdc381405",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ GL0P\n💾 1.5 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8898bc0af3aea8a8d875bba9a017de5fd2d4f5c5",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ GL0P\n👤 19 💾 1.5 GB 🔎 TheRARBG\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|15a018f351980ea9e66d3d662f545a71cfb04cda",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ GL0P\n💾 1.5 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|015c9dab88bb4911ef93ba2781e5ed9d1758744f",
+        "filename": "Lanterns.S01E08.FINAL.MULTi.VFF.HDR.DV.2160p.WEB.H265.mkv",
+        "videoSize": 6658366274
+      },
+      "description": "📄 Lanterns.S01E08.FINAL.MULTi.VFF.HDR.DV.2160p.WEB.H265.mkv\n📹 hevc • DV • HDR\n⭐ WEB\n💾 6.2 GB 🔎 Comet|StremThru\n🌎/🇫🇷",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d6cc55343ce299350183b2f20b5dc776378d3175",
+        "filename": "Lanterns - S01E08 - Dirt and Stars 2160p HDR [hin, eng].mkv",
+        "videoSize": 6898900873
+      },
+      "description": "📄 Lanterns - S01E08 - Dirt and Stars 2160p HDR [hin, eng].mkv\n📹 HDR\n👤 0 💾 6.4 GB 🔎 DebridAccount|torbox\n🌎/🇬🇧/🇮🇳",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8aa4334e2a90f1d903e38321e54652e5610253ab",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-Kitsune.mkv",
+        "videoSize": 6647328283
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-Kitsune.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 6.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6c7f749732b0b1af677eaa73ee1d741d12e546a4",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-FLUX.mkv",
+        "videoSize": 6647298483
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-FLUX.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 0 💾 6.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8f7823c4975765a1974729b85a20ea58d3bc3265",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv",
+        "videoSize": 2541154041
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Vyndros\n👤 0 💾 2.4 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|dd6068ca9bc64cabcca9b98603b891e3260697ec",
+        "filename": "Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG[EZTVx.to].mkv",
+        "videoSize": 2259476090
+      },
+      "description": "📄 Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG[EZTVx.to].mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TURG\n👤 172 💾 2.1 GB 🔎 EZTV",
+      "name": "[TB⚡] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c3a0649d5bcfe57f4ab76c6df489188f4c1ffb23",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.HMAX.WEB-DL.ENG.Atmos.ITA.DDP5.1.H265-TBK.mkv",
+        "videoSize": 1745346934
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.1080p.HMAX.WEB-DL.ENG.Atmos.ITA.DDP5.1.H265-TBK.mkv\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TBK\n👤 17 💾 1.6 GB 🔎 The Pirate Bay\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bf30dc43c7f55c7849a6d9708ac80f06bee084d9",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+        "videoSize": 1708468154
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8ef724a56acc9c6769751eb68551851d56e83f90",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p DSNP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+        "videoSize": 1924406245
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 1080p DSNP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|39fb2d86f544c0dcfb4b5939a784862e8ffc389f",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv",
+        "videoSize": 1708497864
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ Kitsune\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fbb553a40d0b95972a390f2016996b64d7235d0e",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.264-G66.mkv",
+        "videoSize": 1925262529
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.264-G66.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 823 💾 1.8 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|335bfc8864d924dc999aa7d8b4c657dd922bf817",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.1080p.AMZN.WEB-DL.DDP5.1.H.264-MeM.GP.mkv",
+        "videoSize": 1926879214
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.1080p.AMZN.WEB-DL.DDP5.1.H.264-MeM.GP.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 1 💾 1.8 GB 🔎 Comet|BitMagnet\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2dfe30190ca1061e02cea859e0fb814aaa745496",
+        "filename": "Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+        "videoSize": 1761432993
+      },
+      "description": "📄 Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 0 💾 1.6 GB 🔎 Comet|torbox\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|291dbf5ab7411329fc2ee188d1e1d493b7a6aa9c",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.265-G66.mkv",
+        "videoSize": 1480439023
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.265-G66.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL\n👤 179 💾 1.4 GB 🔎 TheRARBG\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e2881424b8baba1eda15292216649248be9c178",
+        "filename": "Lanterns S01E08 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+        "videoSize": 1653902213
+      },
+      "description": "📄 Lanterns S01E08 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|644708a4ee9258459bfa111b5170d5f0edccdfa4",
+        "filename": "Lanterns.S01E08.PL.1080p.WEB.10bit.6CH.HEVC-Mascipula.mkv",
+        "videoSize": 572651242
+      },
+      "description": "📄 Lanterns.S01E08.PL.1080p.WEB.10bit.6CH.HEVC-Mascipula.mkv\n📹 hevc • 10bit\n⭐ WEB | 🏷️ Mascipula\n💾 546.1 MB 🔎 DMM\n🇵🇱",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d86dcdf33c213162b0c993b8522d9b4a8a966fe5",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n👤 1699 💾 1.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|98fd464ad62fc8f58d10c6241813c16147881a24",
+        "filename": "Lanterns.1x08.Stalla.E.Stelle.ITA.ENG.1080p.HMax.AAC.x265-Pir8.mkv",
+        "videoSize": 629342749
+      },
+      "description": "📄 Lanterns.1x08.Stalla.E.Stelle.ITA.ENG.1080p.HMax.AAC.x265-Pir8.mkv\n📹 hevc | 🔊 AAC\n🏷️ Pir8\n👤 0 💾 600.2 MB 🔎 DebridAccount|realdebrid\n🌎/🇬🇧/🇮🇹",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7ecb2ebb7d966a400b4a7b401bb2eb2240c70389",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|77c6a3c89a4d22ae1c8a4917d625a691a578ff53",
+        "filename": "Lanterns 2026 S01E08 1080p WEB HEVC x265-RMTeam.mkv",
+        "videoSize": 451623361
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p WEB HEVC x265-RMTeam.mkv\n📹 hevc\n⭐ WEB | 🏷️ RMTeam\n💾 430.7 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|708cb13fb6faea18bf8c766ad736869596c63fe1",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-TRB.mkv",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-TRB.mkv\n📹 avc\n⭐ WEB | 🏷️ TRB\n👤 252 💾 1.6 GB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5dd00bed994843b89200b0829b55e08220a94b72",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|26f5db90fbedff1e0705a994bb9a0f474e8333a3",
+        "filename": "Lanterns.2026.S01E08.1080p.AV1.10bit-MeGusta.mkv",
+        "videoSize": 387217875
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.AV1.10bit-MeGusta.mkv\n📹 av1 • 10bit\n🏷️ MeGusta\n💾 369.3 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ee1ae4f4d44b53e79e95b48faa4f4461586df01b",
+        "filename": "Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv",
+        "videoSize": 498070431
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n👤 4000 💾 475.0 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e6d457c9a33be593a62e804181c5b3e411d5feac",
+        "filename": "Lanterns.S01E08.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 459719516
+      },
+      "description": "📄 Lanterns.S01E08.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 438.4 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ce7debf40834fa32879288a2f42468b6cf54d137",
+        "filename": "Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 403818448
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 385.1 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8177f33339852dd54800c83bae51e949ee37a362",
+        "filename": "Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv",
+        "videoSize": 498069840
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n👤 18 💾 475.0 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4d0637b09a8820ca39ab9bf6db7979981b351d16",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 514284783
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 490.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|48b7bb3e5e9737353ea47243b4fe70a25f51002d",
+        "filename": "Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 403818448
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 385.1 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1288a03fe399ec09a32b1e41159399fd26fc32dd",
+        "filename": "Lanterns 2026 S01E08 1080p x265-ELiTE.mkv",
+        "videoSize": 498069840
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p x265-ELiTE.mkv\n📹 hevc\n🏷️ ELiTE\n👤 0 💾 475.0 MB 🔎 Comet|realdebrid",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3274e2ec0377eb8c5b4cb473daa526ac425485c5",
+        "filename": "Lanterns.S01E08.1080p.ColdFilm.mkv",
+        "videoSize": 2210432050
+      },
+      "description": "📄 Lanterns.S01E08.1080p.ColdFilm.mkv\n💾 2.1 GB 🔎 DMM",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|041cf87e56b36aa194f7b9fee6836ee06ab8c93c",
+        "filename": "Lanterns_S01E08 Špína a hvězdy.avi",
+        "videoSize": 913764826
+      },
+      "description": "📄 Lanterns_S01E08 Špína a hvězdy.avi\n💾 871.4 MB 🔎 DMM\n🇨🇿",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3b02d1fe8600c8f8c2275932077af989d601b44c",
+        "filename": "Lanterns.S01E08.1080p.AMZN.WEB-DL.DDP5.1.H.264.DUAL-BiOMA.mkv",
+        "videoSize": 1925413256
+      },
+      "description": "📄 Lanterns.S01E08.1080p.AMZN.WEB-DL.DDP5.1.H.264.DUAL-BiOMA.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BiOMA\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|38e13993049a75a7cb5e884d30e2419368a9c9e2",
+        "filename": "Lanterns.S01E08.1080p.WEB-DL.DDP5.1.H.265-Dual-LatR.mkv",
+        "videoSize": 1525223375
+      },
+      "description": "📄 Lanterns.S01E08.1080p.WEB-DL.DDP5.1.H.265-Dual-LatR.mkv\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ LatR\n💾 1.4 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|d21af857fe3ea1529cdd5266878ca3f3f444dd10",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+        "videoSize": 403176282
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ NeoNoir\n💾 384.5 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6790122eed127fae3d659d06dd060e51b1018d9c",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+        "videoSize": 403176282
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv\n📹 hevc • 10bit | 🔊 Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ NeoNoir\n👤 33 💾 384.5 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5358fa1ad630c45c6defa4ceaf83bacd5879432c",
+        "filename": "Lanterns.S01E08.MULTi.AD.1080p.WEB.AC3.5.1.H264-BIFROST.mkv",
+        "videoSize": 1643771935
+      },
+      "description": "📄 Lanterns.S01E08.MULTi.AD.1080p.WEB.AC3.5.1.H264-BIFROST.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ BIFROST\n💾 1.5 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c37b20ff048ddd236ff8d16e54e271bf3f229654",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv",
+        "videoSize": 1925264244
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv\n📹 avc\n⭐ WEB | 🏷️ GL0P\n👤 999 💾 1.8 GB 🔎 TheRARBG\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9e7e0297ea8c37a0427bd2aad4025e489fa55c46",
+        "filename": "Lanterns.S01E08.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+        "videoSize": 549049944
+      },
+      "description": "📄 Lanterns.S01E08.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n👤 9 💾 523.6 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|93a71e24dc774f6b55705c6a68d83f5541af66c5",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H265-GL0P.mkv",
+        "videoSize": 1361487975
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H265-GL0P.mkv\n📹 hevc\n⭐ WEB | 🏷️ GL0P\n💾 1.3 GB 🔎 DMM\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5a699b0249881ccb364e387f1efeee01605888b8",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv",
+        "videoSize": 1925264244
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv\n📹 avc\n⭐ WEB | 🏷️ GL0P\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3ccb83b34a83e01ff82d732678981625f751a6c8",
+        "filename": "Lanterns S01E08 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+        "videoSize": 549050629
+      },
+      "description": "📄 Lanterns S01E08 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 523.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2793dcf82f6ea5274cb82c0ecf80cb5878c869d8",
+        "filename": "lanterns.2026.s01e08.final.multi.1080p.web.h264-higgsboson.mkv",
+        "videoSize": 1925163931
+      },
+      "description": "📄 lanterns.2026.s01e08.final.multi.1080p.web.h264-higgsboson.mkv\n📹 avc\n⭐ WEB | 🏷️ higgsboson\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|f7a0cc00acb3a85a62b291f75d0718188c70c6a7",
+        "filename": "Lanterns.S01E08.1080p.WEB-DL.DUAL.5.1.mkv",
+        "videoSize": 1925413256
+      },
+      "description": "📄 Lanterns.S01E08.1080p.WEB-DL.DUAL.5.1.mkv\n🔊 5.1\n⭐ WEB-DL\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e798dcbd68dd1555a8476756ed407b430e50ec80",
+        "filename": "Linternas.S01e08.2026.1080P-Dual-Lat.mkv",
+        "videoSize": 1211117829
+      },
+      "description": "📄 Linternas.S01e08.2026.1080P-Dual-Lat.mkv\n🏷️ Lat\n👤 17 💾 1.1 GB 🔎 Comet|Cinecalidad\n🌎/💃🏻",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|75a00dccf10665eb25b296dc616d288dbff40275",
+        "filename": "www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 1080p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv",
+        "videoSize": 1598960128
+      },
+      "description": "📄 www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 1080p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv\n📹 avc | 🔊 TrueHD\n⭐ WEB-DL\n💾 1.5 GB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|44f42ad9317adf72ec3564a85e4165a1d8836a8e",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL[EZTVx.to].mkv",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL[EZTVx.to].mkv\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n👤 6553 💾 1.6 GB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1da50931b7e94263b981c55694b23f1f03fdd8f6",
+        "filename": "Lanterns 2026 S01E08 1080p x265-ELiTE[EZTVx.to].mkv",
+        "videoSize": 498069840
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p x265-ELiTE[EZTVx.to].mkv\n📹 hevc\n🏷️ ELiTE\n👤 3252 💾 475.0 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|abcb652ed234fdb2ec4f20d8b60bd29a7491ea19",
+        "filename": "Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+        "videoSize": 1296671054
+      },
+      "description": "📄 Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 1.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3e7ee94d251be589c3af9ca3062aa6274827c10a",
+        "filename": "Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+        "videoSize": 1296671054
+      },
+      "description": "📄 Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 1.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ccd38c5a7057b56b25e7fcc2a7b18a44c3cffdec",
+        "filename": "Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+        "videoSize": 858317790
+      },
+      "description": "📄 Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 818.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|60c3c35b7716af9ab668d74ae7c1443e739f979e",
+        "filename": "Lanterns 2026 S01E08 720p WEB H264-JFF.mkv",
+        "videoSize": 1023369396
+      },
+      "description": "📄 Lanterns 2026 S01E08 720p WEB H264-JFF.mkv\n📹 avc\n⭐ WEB | 🏷️ JFF\n💾 976.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ed4e87f6f0dd435c22cf681dcbe74489612530ec",
+        "filename": "Lanterns.S01E08.720p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 382434402
+      },
+      "description": "📄 Lanterns.S01E08.720p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 364.7 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e64e9e228682e3a948447ec8cab6eaf4b4b27ccb",
+        "filename": "Lanterns.2026.S01E08.720p.x264-FENiX.mkv",
+        "videoSize": 491718250
+      },
+      "description": "📄 Lanterns.2026.S01E08.720p.x264-FENiX.mkv\n📹 avc\n🏷️ FENiX\n👤 841 💾 468.9 MB 🔎 TheRARBG",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|cde01f8d6d9eeb2736c7cbe8f9723b55e3c9289b",
+        "filename": "Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 338727788
+      },
+      "description": "📄 Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 323.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3b92deaf7559032f8d7ca9bd876c16565706dd4b",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.720p.HEVC.x265-MeGusta.mkv",
+        "videoSize": 436999789
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.720p.HEVC.x265-MeGusta.mkv\n📹 hevc\n🏷️ MeGusta\n💾 416.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3725bc2c0c7f0496dbc297a3361cd2219046dfd7",
+        "filename": "Lanterns.2026.S01E08.720p.x264-FENiX.mkv",
+        "videoSize": 491718250
+      },
+      "description": "📄 Lanterns.2026.S01E08.720p.x264-FENiX.mkv\n📹 avc\n🏷️ FENiX\n👤 5 💾 468.9 MB 🔎 The Pirate Bay",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0f314a810a10fca1240043084425cf427699ba8b",
+        "filename": "Lanterns S01E08 720p 10bit WEBRip 2CH x265 HEVC-PSA.mkv",
+        "videoSize": 242201068
+      },
+      "description": "📄 Lanterns S01E08 720p 10bit WEBRip 2CH x265 HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 231.0 MB 🔎 DMM",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|836af15b646c7ed6047ea2950c9f703a17a61228",
+        "filename": "www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 720p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv",
+        "videoSize": 695214044
+      },
+      "description": "📄 www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 720p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv\n📹 avc | 🔊 TrueHD\n⭐ WEB-DL\n💾 663.0 MB 🔎 Comet|StremThru\n🌎/🇬🇧/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3978140fc0a9c988bfd539dfb3e0e579bccf5eb3",
+        "filename": "Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB[EZTVx.to].mkv",
+        "videoSize": 858317790
+      },
+      "description": "📄 Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB[EZTVx.to].mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n👤 737 💾 818.6 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|240ce507b7d78b18604a3ea737d260c935d51539",
+        "filename": "Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+        "videoSize": 338727788
+      },
+      "description": "📄 Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta[EZTVx.to].mkv\n📹 hevc\n🏷️ MeGusta\n👤 1023 💾 323.0 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|17b6538c6df157c099f165806e8dbfa167f2f76b",
+        "filename": "Lanterns.S01E08.FRENCH.VFQ.720p.TVrip.H264.mkv",
+        "videoSize": 593352514
+      },
+      "description": "📄 Lanterns.S01E08.FRENCH.VFQ.720p.TVrip.H264.mkv\n📹 avc\n⭐ TVRip\n💾 565.9 MB 🔎 Comet|StremThru\n🇫🇷",
+      "name": "[TB⚡] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7d3c3dc8792d195e29c279a3f2a41a5c5003da1d",
+        "filename": "Lanterns.2026.S01E08.480p.x264-mSD[EZTVx.to].mkv",
+        "videoSize": 314950162
+      },
+      "description": "📄 Lanterns.2026.S01E08.480p.x264-mSD[EZTVx.to].mkv\n📹 avc\n🏷️ mSD\n👤 242 💾 300.4 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|980ed8de34ec0ade87cddb6e91c5281c653e3ae2",
+        "filename": "Lanterns.S01e08.Final.Web.H264.mp4",
+        "videoSize": 266662786
+      },
+      "description": "📄 Lanterns.S01e08.Final.Web.H264.mp4\n📹 avc\n⭐ WEB\n👤 957 💾 254.3 MB 🔎 Comet|TorrentGalaxy",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6ccaac66c24cbb7b7e6e0f4d21c43210dd29de3b",
+        "filename": "Lanterns - S01E08 - Dirt and Stars.mkv",
+        "videoSize": 361086691
+      },
+      "description": "📄 Lanterns - S01E08 - Dirt and Stars.mkv\n👤 1 💾 344.4 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|69b1e3ad9f2e40fc72f513cb59582f517d1f23d2",
+        "filename": "Lanterns_S01E08_Dirt and Stars.mkv",
+        "videoSize": 1729528613
+      },
+      "description": "📄 Lanterns_S01E08_Dirt and Stars.mkv\n💾 1.6 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|69397648edf9d5261c440fef2f752184edd95ece",
+        "filename": "Lanterns S01E08.mkv",
+        "videoSize": 1961815261
+      },
+      "description": "📄 Lanterns S01E08.mkv\n💾 1.8 GB 🔎 DMM",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6754f051166ac8d2b4a9829afcfdf65353614d33",
+        "filename": "Lanterns_S01E08_Dirt and Stars.mkv",
+        "videoSize": 1638933182
+      },
+      "description": "📄 Lanterns_S01E08_Dirt and Stars.mkv\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4461bbfd33a8b70e304080262ce3198d03ff8329",
+        "filename": "Lanterns - S01E08 - Dirt and Stars.mkv",
+        "videoSize": 361086691
+      },
+      "description": "📄 Lanterns - S01E08 - Dirt and Stars.mkv\n💾 344.4 MB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02eeadcd3a5a2baa4931d6d568560c932d5181e6",
+        "filename": "Lanterns S01E08.mp4",
+        "videoSize": 1597671360
+      },
+      "description": "📄 Lanterns S01E08.mp4\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8812cd45bf405e013106ca49195d420f5a287ba3",
+        "filename": "Lanterns.2026.S01E08.XviD-AFG[EZTVx.to].avi",
+        "videoSize": 269645996
+      },
+      "description": "📄 Lanterns.2026.S01E08.XviD-AFG[EZTVx.to].avi\n📹 xvid\n🏷️ AFG\n👤 210 💾 257.2 MB 🔎 EZTV",
+      "name": "[TB⚡] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c7a7a6580eb59aac7ddd80e034a718dfc25d1410",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+        "videoSize": 6550605678
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 0 💾 6.1 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|84f90f29afa4caa8dbb3c717a1ef2c6b6c46eb57",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX",
+        "videoSize": 6550607145
+      },
+      "description": "📄 Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 6.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7c61aab255b57925835bdc86b34ae31607f2caea",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB.DL.DDP5.1.Atmos.DoVi.HDR.H.265.HeBits-FLUX",
+        "videoSize": 6550657325
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB.DL.DDP5.1.Atmos.DoVi.HDR.H.265.HeBits-FLUX\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n👤 1 💾 6.1 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|00ac328db8829a08044f21faffc40c075cd192a5",
+        "filename": "Lanterns.S01E08.Episode.8.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BLOOM",
+        "videoSize": 1508136056
+      },
+      "description": "📄 Lanterns.S01E08.Episode.8.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BLOOM\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ BLOOM\n💾 1.4 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|03ffcc0af08931149406528f37973c491f37c77b",
+        "filename": "Lanterns.S01E08.FINAL.MULTi.VFF.2160p.HMAX.DV.HDR10+.DDP5.1.Atmos.H265-[BATGirl].mkv",
+        "videoSize": 1834121225
+      },
+      "description": "📄 Lanterns.S01E08.FINAL.MULTi.VFF.2160p.HMAX.DV.HDR10+.DDP5.1.Atmos.H265-[BATGirl].mkv\n📹 hevc • DV • HDR10+ • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n💾 1.7 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|da6337d52ab43186acbdf94807d4478a9dec5909",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR.H.265.mkv",
+        "videoSize": 9097102446
+      },
+      "description": "📄 Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR.H.265.mkv\n📹 hevc • DV • HDR\n⭐ WEB-DL\n👤 0 💾 8.5 GB 🔎 DebridAccount|torbox",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ef571ce79c8e108157a4bbb42d7a46c9532a7821",
+        "filename": "Lanterns.S01E08.GERMAN.DL.DV.HDR.2160P.WEB.H265-RiLE",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.GERMAN.DL.DV.HDR.2160P.WEB.H265-RiLE\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ RiLE\n💾 1.5 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e7be4050ad1faa54a1467e2bb4e07c42332de40f",
+        "filename": "Lanterns.S01E08.GERMAN.DL.DV.HDR.2160P.WEB.H265-RiLE",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.GERMAN.DL.DV.HDR.2160P.WEB.H265-RiLE\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ RiLE\n💾 1.5 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|813eba325cc23404500693772c2a4ba5ef64a055",
+        "filename": "Lanterns.S01E08.GERMAN.DL.DV.HDR.2160P.WEB.H265-RiLE",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.GERMAN.DL.DV.HDR.2160P.WEB.H265-RiLE\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ RiLE\n💾 1.5 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|20d0f6bdff790ed2a3c8f68c0b452680eec7b61b",
+        "filename": "lanterns.2026.s01e08.dv.hdr.2160p.web.h265-cakes",
+        "videoSize": 1587864011
+      },
+      "description": "📄 lanterns.2026.s01e08.dv.hdr.2160p.web.h265-cakes\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ cakes\n💾 1.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|86104b0bbb9c9f18a0e181a31e00e468256eb806",
+        "filename": "Lanterns - S01E08 - Poussière et étoiles 2160p.DV.HDR.x265-Amen",
+        "videoSize": 1882778339
+      },
+      "description": "📄 Lanterns - S01E08 - Poussière et étoiles 2160p.DV.HDR.x265-Amen\n📹 hevc • DV • HDR\n🏷️ Amen\n💾 1.8 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9b25f5f4f150e4f7a872048e187ed5e0bc18231e",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB.DL.DV.HDR10+[Ben The Men].mp4",
+        "videoSize": 6965991009
+      },
+      "description": "📄 Lanterns.S01E08.2160p.AMZN.WEB.DL.DV.HDR10+[Ben The Men].mp4\n📹 DV • HDR10+ • 10bit\n⭐ WEB-DL\n💾 6.5 GB 🔎 DMM",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|38edbabf5860ef8551c687822968911c3ddc08ee",
+        "filename": "Lanterns.S01E08.FINAL.MULTi.VFF.2160p.HDR.DV.WEB.EAC3.5.1.H265-FRQC.mkv",
+        "videoSize": 9015403951
+      },
+      "description": "📄 Lanterns.S01E08.FINAL.MULTi.VFF.2160p.HDR.DV.WEB.EAC3.5.1.H265-FRQC.mkv\n📹 hevc • DV • HDR | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB | 🏷️ FRQC\n💾 8.4 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4c2c7d084c6e5bbad4bcfec041574c145b2bdfc2",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv",
+        "videoSize": 1615807644
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv\n📹 hevc • DV • HDR\n⭐ WEB | 🏷️ GL0P\n💾 1.5 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ec8912be47ebfa474c9de17659ad8a2435c3b73e",
+        "filename": "Lanterns.S01.2026.2160p.8K Video.Ultra HD.WEB-DL.HDR.H265.Master5",
+        "videoSize": 12719177056
+      },
+      "description": "📄 Lanterns.S01.2026.2160p.8K Video.Ultra HD.WEB-DL.HDR.H265.Master5\n📹 hevc • HDR\n⭐ WEB-DL\n💾 11.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fe6401a3595b74813e8f01cd1ea0ca28bcc97d33",
+        "filename": "Lanterns.S01E08.German.DL.HDR.2160p.WEB.h265.INTERNAL-W4K",
+        "videoSize": 6658366274
+      },
+      "description": "📄 Lanterns.S01E08.German.DL.HDR.2160p.WEB.h265.INTERNAL-W4K\n📹 hevc • HDR\n⭐ WEB | 🏷️ W4K\n💾 6.2 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e7f9ef709c8dc9df8df5dbececb232af93952489",
+        "filename": "Lanterns.S01E08.German.DL.HDR.2160p.WEB.h265.INTERNAL-W4K",
+        "videoSize": 7013267613
+      },
+      "description": "📄 Lanterns.S01E08.German.DL.HDR.2160p.WEB.h265.INTERNAL-W4K\n📹 hevc • HDR\n⭐ WEB | 🏷️ W4K\n💾 6.5 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|65312a2443553f20cc1d9632f3b251f262090f97",
+        "filename": "Lanterns.S01E08.German.DL.HDR.2160p.WEB.h265.INTERNAL-W4K",
+        "videoSize": 6658366274
+      },
+      "description": "📄 Lanterns.S01E08.German.DL.HDR.2160p.WEB.h265.INTERNAL-W4K\n📹 hevc • HDR\n⭐ WEB | 🏷️ W4K\n💾 6.2 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e6d82eeb4f3cf2fbad836ed77791ff3603114102",
+        "filename": "Lanterns.2026.S01E08.NORDiC.2160p.SDR.WEB-DL.DDP5.1.Atmos.H.265-NorTekst",
+        "videoSize": 6645901516
+      },
+      "description": "📄 Lanterns.2026.S01E08.NORDiC.2160p.SDR.WEB-DL.DDP5.1.Atmos.H.265-NorTekst\n📹 hevc • SDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NorTekst\n💾 6.2 GB 🔎 Comet|StremThru\n🌎/🇩🇰/🇫🇮/🇸🇪/🇳🇴",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c8035271622e5acdbd9fd05c0ac2828defe30a7c",
+        "filename": "Lanterns.S01E08.GERMAN.DL.2160P.WEB.H265-RiLE",
+        "videoSize": 2761083965
+      },
+      "description": "📄 Lanterns.S01E08.GERMAN.DL.2160P.WEB.H265-RiLE\n📹 hevc\n⭐ WEB | 🏷️ RiLE\n💾 2.6 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9900cacf6456407faf42e2b094bbdcbe598e5ec2",
+        "filename": "Lanterns.S01E08.GERMAN.DL.2160P.WEB.H265-RiLE",
+        "videoSize": 7013267613
+      },
+      "description": "📄 Lanterns.S01E08.GERMAN.DL.2160P.WEB.H265-RiLE\n📹 hevc\n⭐ WEB | 🏷️ RiLE\n💾 6.5 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|312cb5789451f8c595df30636b996acea8f60916",
+        "filename": "Lanterns.2026.S01E08.2160p.WEB.h265-ETHEL.mkv",
+        "videoSize": 6592728221
+      },
+      "description": "📄 Lanterns.2026.S01E08.2160p.WEB.h265-ETHEL.mkv\n📹 hevc\n⭐ WEB | 🏷️ ETHEL\n👤 17 💾 6.1 GB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|274f75ab570b6c8be2c777e92cee38284e8de624",
+        "filename": "Lanterns.S01E08.GERMAN.DL.2160P.WEB.H265-RiLE",
+        "videoSize": 2761083965
+      },
+      "description": "📄 Lanterns.S01E08.GERMAN.DL.2160P.WEB.H265-RiLE\n📹 hevc\n⭐ WEB | 🏷️ RiLE\n💾 2.6 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e2925aacbe446364bda65e87b95946040677cbf9",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.VFF.AD.2160p.WEB.AC3.5.1.H265-MTLQC.mkv",
+        "videoSize": 2761083428
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.VFF.AD.2160p.WEB.AC3.5.1.H265-MTLQC.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ MTLQC\n💾 2.6 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a720671a4d7b11a69db1cd6f5b7d65d4a2c6c120",
+        "filename": "Lanterns S01E08 FiNAL MULTi 2160p SDR WEB DD5 1 H265-SiC.mkv",
+        "videoSize": 2761083965
+      },
+      "description": "📄 Lanterns S01E08 FiNAL MULTi 2160p SDR WEB DD5 1 H265-SiC.mkv\n📹 hevc • SDR | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ SiC\n💾 2.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|943f78127633ff53e8b54c2dba3b8546e8e27de8",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.2160p.SDR.WEB.DD5.1.H265-SiC.mkv",
+        "videoSize": 2761083965
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.2160p.SDR.WEB.DD5.1.H265-SiC.mkv\n📹 hevc • SDR | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ SiC\n💾 2.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|abde308e5428bbc936568b89411e8a7d33007824",
+        "filename": "[BEST-TORRENTS.COM] Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83",
+        "videoSize": 6603578947
+      },
+      "description": "📄 [BEST-TORRENTS.COM] Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 6.2 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a6e39d4949915a54c3cb18d256d80dfcf392be6f",
+        "filename": "[DEVIL-TORRENTS.PL] Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83",
+        "videoSize": 6603579874
+      },
+      "description": "📄 [DEVIL-TORRENTS.PL] Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 6.2 GB 🔎 Comet|StremThru\n🌎/🇵🇱",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8390b985d505f884247c684b799fe26df53ec34e",
+        "filename": "www.UIndex.org    -    Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HEVC-NTb",
+        "videoSize": 8792119619
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HEVC-NTb\n📹 hevc • DV | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 9 💾 8.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0135bf909839fa8763c405b6c5ccc1d59148bb79",
+        "filename": "www.UIndex.org    -    Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG",
+        "videoSize": 2259477548
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG\n📹 hevc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TURG\n👤 13 💾 2.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 2160p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|554531552677776ac80d0addccbb1b5840fbc057",
+        "filename": "Lanterns.S01E08.German.DL.EAC3.1080p.DV.HDR10Plus.WEB.H265-ViDEOTHEK",
+        "videoSize": 1561060652
+      },
+      "description": "📄 Lanterns.S01E08.German.DL.EAC3.1080p.DV.HDR10Plus.WEB.H265-ViDEOTHEK\n📹 hevc • DV • HDR10+ | 🔊 Dolby Digital Plus\n⭐ WEB | 🏷️ ViDEOTHEK\n💾 1.5 GB 🔎 DMM\n🇩🇪",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ba071ca5084ce7c6ca6577b27ca36c328dffaed6",
+        "filename": "Lanterns.S01E08.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv",
+        "videoSize": 1925400674
+      },
+      "description": "📄 Lanterns.S01E08.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ FLUX\n💾 1.8 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a138ca8022bde0ec933680093312fc4174a706db",
+        "filename": "Lanterns.S01E08.1080p.HMAX.WEB-DL.DDP5.1.Atmos.H.265-EiNSTEiNSiR",
+        "videoSize": 1417530942
+      },
+      "description": "📄 Lanterns.S01E08.1080p.HMAX.WEB-DL.DDP5.1.Atmos.H.265-EiNSTEiNSiR\n📹 hevc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ EiNSTEiNSiR\n💾 1.3 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e0235aae1de7b1aeca29ac55fdf19ae124e537da",
+        "filename": "Lanterns.S01E08.1080p.AMZN.WEB-DL.DD+5.1.H.264-playWEB",
+        "videoSize": 1653902213
+      },
+      "description": "📄 Lanterns.S01E08.1080p.AMZN.WEB-DL.DD+5.1.H.264-playWEB\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9273335a4eeb55ec20f38ef910e3b07c23b30444",
+        "filename": "Lanterns.S01E08.1080p.AMZN.WEB-DL.DD+5.1.H.264-playWEB.mkv",
+        "videoSize": 1653902213
+      },
+      "description": "📄 Lanterns.S01E08.1080p.AMZN.WEB-DL.DD+5.1.H.264-playWEB.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n💾 1.5 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e20670c9c6a5cb05ea4c94efc13b40ec2104cb1b",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-MeGusta",
+        "videoSize": 941692039
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-MeGusta\n📹 avc\n⭐ WEB | 🏷️ MeGusta\n💾 898.1 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ce54afc9b56a5f5f229bbb1bececa51fe0051957",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-QUILL - Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-QUILL",
+        "videoSize": 1040722165
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-QUILL - Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-QUILL\n📹 avc\n⭐ WEB | 🏷️ QUILL\n👤 2445 💾 992.5 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b15b519f4e285916b545ec682eefc067abc65047",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-MeGusta.exe",
+        "videoSize": 831381847
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-MeGusta.exe\n📹 avc\n⭐ WEB | 🏷️ MeGusta\n👤 0 💾 792.9 MB 🔎 DebridAccount|alldebrid",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|9a272a85b0fb2b046cc5866fcdbfd31b8094b8e3",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-CASK - Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-CASK",
+        "videoSize": 1040722165
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-CASK - Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-CASK\n📹 avc\n⭐ WEB | 🏷️ CASK\n💾 992.5 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|92d5ef0f39a383c05b7741e7a3e6d2db463cbe01",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|87ef35db5dce37abe3d55fa0c2044b08b22dc216",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-RAWR",
+        "videoSize": 1052975121
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-RAWR\n📹 avc\n⭐ WEB | 🏷️ RAWR\n💾 1004.2 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|8097b9f7a79a1d8355d824dd64e5be52e407b0a6",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264 LOOM",
+        "videoSize": 1040711680
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-LOOM\n📹 avc\n⭐ WEB | 🏷️ LOOM\n👤 5437 💾 992.5 MB 🔎 TheRARBG",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b5492eb4023cd6c9e44705f25500945f72ea29a",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-RAWR",
+        "videoSize": 972026266
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-RAWR\n📹 avc\n⭐ WEB | 🏷️ RAWR\n💾 927.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|6b4e163a984f7a4cb00d8ed5ee5325512590ec83",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL",
+        "videoSize": 1775401617
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n👤 0 💾 1.7 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|5c51b90355e4a90b7f1e696e3ccbd945dcb21964",
+        "filename": "Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-MeGusta",
+        "videoSize": 869211326
+      },
+      "description": "📄 Lanterns 2026 S01E08 Dirt and Stars 1080p WEB H264-MeGusta\n📹 avc\n⭐ WEB | 🏷️ MeGusta\n💾 828.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|49090fc61aebe89e63d470d6dee66f2bc3a88f2e",
+        "filename": "Lanterns 2026 S01E08 1080p WEB x265-RMTeam.mkv",
+        "videoSize": 451622810
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p WEB x265-RMTeam.mkv\n📹 hevc\n⭐ WEB | 🏷️ RMTeam\n💾 430.7 MB 🔎 DMM",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|34ec6469002b1ab30b3f04338b040ac640c6e121",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL",
+        "videoSize": 1746790341
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2d104292942ffa29b21e40a5ce028d23eba45e63",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL",
+        "videoSize": 1775406888
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.7 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|27859950f78dc5034b21c308475af0484dd1961d",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL",
+        "videoSize": 1746352252
+      },
+      "description": "📄 Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n📹 avc\n⭐ WEB | 🏷️ ETHEL\n💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0b1dd687002059417aa5de113fbbb87740c1240f",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.VFF.1080p.WEB.EAC3.5.1.H264-FRQC.mkv",
+        "videoSize": 2198139419
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.VFF.1080p.WEB.EAC3.5.1.H264-FRQC.mkv\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB | 🏷️ FRQC\n💾 2.0 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|15614fe9c292bf7902af3ab3ce4ff9faacd27dea",
+        "filename": "Lanternas S01E08 WEB-DL 1080p x264 DUAL 5.1",
+        "videoSize": 1925415981
+      },
+      "description": "📄 Lanternas S01E08 WEB-DL 1080p x264 DUAL 5.1\n📹 avc | 🔊 5.1\n⭐ WEB-DL\n👤 0 💾 1.8 GB 🔎 DebridAccount|torbox\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|ce6e688c3ab86edf405ffff9f8eb11d8a78b72e6",
+        "filename": "Lanterns S01E08 FiNAL MULTi 1080p WEB DD5 1 H265-SiC.mkv",
+        "videoSize": 1117043099
+      },
+      "description": "📄 Lanterns S01E08 FiNAL MULTi 1080p WEB DD5 1 H265-SiC.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ SiC\n💾 1.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|baeb557078964353511e05e455f35369e5677d90",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.VFF.AD.1080p.WEB.AC3.5.1.H264-MTLQC.mkv",
+        "videoSize": 1643778656
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.VFF.AD.1080p.WEB.AC3.5.1.H264-MTLQC.mkv\n📹 avc | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ MTLQC\n💾 1.5 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a7da2c204666db3d4f722d6ec1bb40605bffc82b",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.VFF.AD.1080p.WEB.AC3.5.1.H265-MTLQC",
+        "videoSize": 1117042472
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.VFF.AD.1080p.WEB.AC3.5.1.H265-MTLQC\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ MTLQC\n💾 1.0 GB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|1d65d25c532cf66406a99d6db3a61de5e8058b76",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.DD5.1.H265-SiC.mkv",
+        "videoSize": 1117043099
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.DD5.1.H265-SiC.mkv\n📹 hevc | 🔊 Dolby Digital • 5.1\n⭐ WEB | 🏷️ SiC\n💾 1.0 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e14b5d61e59688e6a31bcbac80e3b6e9cb9a8614",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.AV1-SUPPLY",
+        "videoSize": 784011625
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.AV1-SUPPLY\n📹 av1\n⭐ WEB | 🏷️ SUPPLY\n💾 747.7 MB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|bfad3e2cf201f97b424465f6048e76fec63797af",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H265-SUPPLY",
+        "videoSize": 1688881865
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H265-SUPPLY\n📹 hevc\n⭐ WEB | 🏷️ SUPPLY\n💾 1.6 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|acc85da836225b970a70fd1716650a70d0cf75e0",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.AMZN.WEB.x265-BYOR.mkv",
+        "videoSize": 1447777856
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.AMZN.WEB.x265-BYOR.mkv\n📹 hevc\n⭐ WEB | 🏷️ BYOR\n💾 1.3 GB 🔎 DMM\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7b00a0db5f6dffd055f1e66386bacdf6976018ba",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv",
+        "videoSize": 1925264244
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv\n📹 avc\n⭐ WEB | 🏷️ GL0P\n💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|68ce5713fde0a69569ad88159166fb4d4ed09327",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.AMZN.WEB.H264-BYOR.mkv",
+        "videoSize": 2170954813
+      },
+      "description": "📄 Lanterns.S01E08.FiNAL.MULTi.1080p.AMZN.WEB.H264-BYOR.mkv\n📹 avc\n⭐ WEB | 🏷️ BYOR\n💾 2.0 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|e1611761ec6670b1c388d0b6dc720bb3fc141378",
+        "filename": "Linternas.S01E08.2026.WEB-DL.1080p-Dual-Lat",
+        "videoSize": 1929632210
+      },
+      "description": "📄 Linternas.S01E08.2026.WEB-DL.1080p-Dual-Lat\n⭐ WEB-DL | 🏷️ Lat\n👤 0 💾 1.8 GB 🔎 DebridAccount|torbox\n🌎/💃🏻",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|678b4aff5ae37b72ed625bad6dab8596380b2e3d",
+        "filename": "Lanterns.S01E08.MULTi.VFF.1080p.10bit.WEBRip.6CH.x265-FVX.mkv",
+        "videoSize": 406972116
+      },
+      "description": "📄 Lanterns.S01E08.MULTi.VFF.1080p.10bit.WEBRip.6CH.x265-FVX.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ FVX\n💾 388.1 MB 🔎 DMM\n🌎/🇫🇷",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|c5a670b7e318508e59b6e8d4233e8e338a822d25",
+        "filename": "Lanterns 2026 S01E08 1080p HD H264- CAKES",
+        "videoSize": 1154297856
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p HD H264- CAKES\n📹 avc\n⭐ HDTV | 🏷️ CAKES\n💾 1.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|78ad186267f50d1cf4bee33fe2f3d9b35a2ef45b",
+        "filename": "Lanterns 2026 S01E08 1080p HD H264- CAKES",
+        "videoSize": 1259083264
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p HD H264- CAKES\n📹 avc\n⭐ HDTV | 🏷️ CAKES\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4ff736502b60930d8e1385ef8c18b23beef19d4e",
+        "filename": "Lanterns 2026 S01E08 1080p HD H264- CAKES",
+        "videoSize": 1206722560
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p HD H264- CAKES\n📹 avc\n⭐ HDTV | 🏷️ CAKES\n💾 1.1 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4e533bfb737811339f5cdde3180c535adbac95c4",
+        "filename": "Lanterns 2026 S01E08 1080p HD H264- CAKES",
+        "videoSize": 1259164160
+      },
+      "description": "📄 Lanterns 2026 S01E08 1080p HD H264- CAKES\n📹 avc\n⭐ HDTV | 🏷️ CAKES\n💾 1.2 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|7e6d56619dd749937eb21b41f3bce517d756f28e",
+        "filename": "www.UIndex.org    -    Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 H 264-NTb",
+        "videoSize": 1708470490
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 H 264-NTb\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n👤 12 💾 1.6 GB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|3cbdc7bebbf484524c2baad6ceee3a7c63d3009f",
+        "filename": "[BEST-TORRENTS.COM] Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83",
+        "videoSize": 1761433108
+      },
+      "description": "📄 [BEST-TORRENTS.COM] Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL\n💾 1.6 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|52f62ba43084acae7bfd9a029a3a1960128e32a0",
+        "filename": "Lanterns.S01E08.1080p.rus.LostFilm.TV.mkv",
+        "videoSize": 3294793264
+      },
+      "description": "📄 Lanterns.S01E08.1080p.rus.LostFilm.TV.mkv\n👤 6 💾 3.1 GB 🔎 Comet|StremThru\n🇷🇺",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|4dbb5be21c00c7a0d450a45fce650232cd01ea64",
+        "filename": "www.UIndex.org    -    Lanterns S01E08 1080p AMZN WEB-DL DUAL DDP5 1 H 264-TURG",
+        "videoSize": 1926886835
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns S01E08 1080p AMZN WEB-DL DUAL DDP5 1 H 264-TURG\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ TURG\n👤 5 💾 1.8 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|02aa41d1704b97361e8c74251621c8508bf194f1",
+        "filename": "www.UIndex.org    -    Lanterns S01E08 1080p DUAL TV WEB-DL x264 AAC-MiRA",
+        "videoSize": 2505682619
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns S01E08 1080p DUAL TV WEB-DL x264 AAC-MiRA\n📹 avc | 🔊 AAC\n⭐ WEB-DL | 🏷️ MiRA\n💾 2.3 GB 🔎 Comet|StremThru\n🌎",
+      "name": "[TB⬇️] Comet 1080p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|87d3558f943b26da807d2b7f8dde3cb612b5e672",
+        "filename": "Lanterns.S01E08.720p.AMZN.WEB-DL.DD+5.1.H.264-playWEB",
+        "videoSize": 0
+      },
+      "description": "📄 Lanterns.S01E08.720p.AMZN.WEB-DL.DD+5.1.H.264-playWEB\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ playWEB\n👤 0 💾 0.0 B 🔎 DebridAccount|realdebrid",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|068d129c6f1f37261a8aaa9d4321c4ff2591b104",
+        "filename": "lanterns.2026.s01e08.720p.web.h264-sylix.mkv",
+        "videoSize": 858317315
+      },
+      "description": "📄 lanterns.2026.s01e08.720p.web.h264-sylix.mkv\n📹 avc\n⭐ WEB | 🏷️ sylix\n👤 16 💾 818.6 MB 🔎 Comet|Milkie",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|99d295e4cb567bede4ce002f16307ca95a1179a5",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.720p.HEVC.x265-MeGusta",
+        "videoSize": 437072453
+      },
+      "description": "📄 Lanterns.S01E08.Dirt.and.Stars.720p.HEVC.x265-MeGusta\n📹 hevc\n🏷️ MeGusta\n👤 1 💾 416.8 MB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|2b0c3f3ae4ecb23b5ae72a606536d74ffb5ef64d",
+        "filename": "Lanterns 2026 S01E08 720p x264-FENiX.mkv",
+        "videoSize": 491718250
+      },
+      "description": "📄 Lanterns 2026 S01E08 720p x264-FENiX.mkv\n📹 avc\n🏷️ FENiX\n💾 468.9 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|0338d1c2ccc623e23993243ef580028ad729d606",
+        "filename": "Lanterns.S01E08.720p.ColdFilm.mkv",
+        "videoSize": 1394558433
+      },
+      "description": "📄 Lanterns.S01E08.720p.ColdFilm.mkv\n👤 10 💾 1.3 GB 🔎 Comet|BitMagnet",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|16c1e1972b52084ae00f72d1edb3fb738b1c59b9",
+        "filename": "Lanterns.S01E08.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+        "videoSize": 242201068
+      },
+      "description": "📄 Lanterns.S01E08.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n📹 hevc • 10bit\n⭐ WEBRip | 🏷️ PSA\n💾 231.0 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|34ec93b6618472c10eda8f2ec532aa16a422d99b",
+        "filename": "www.UIndex.org    -    Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 H 264-NTb",
+        "videoSize": 912886075
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 H 264-NTb\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ NTb\n💾 870.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a5513e5cb2c705dcb753dd91ff0e5ee2e25e70b9",
+        "filename": "www.UIndex.org    -    Lanterns.2026.S01E08.720p.WEB.H264-SYLiX",
+        "videoSize": 858539095
+      },
+      "description": "📄 www.UIndex.org    -    Lanterns.2026.S01E08.720p.WEB.H264-SYLiX\n📹 avc\n⭐ WEB | 🏷️ SYLiX\n💾 818.8 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 720p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|439ad1b5d181cd6cb7d96033361c41667cc5a08f",
+        "filename": "Lanterns (2026) S01 EP 08 TRUE WEB-DL - 480p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi]",
+        "videoSize": 277643912
+      },
+      "description": "📄 Lanterns (2026) S01 EP 08 TRUE WEB-DL - 480p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi]\n📹 avc | 🔊 TrueHD\n⭐ WEB-DL\n💾 264.8 MB 🔎 Comet|StremThru\n🌎/🇮🇳/🇮🇳/🇮🇳",
+      "name": "[TB⬇️] Comet 480p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|72def053d7211e308c7429dbd630e78c0ccf506c",
+        "filename": "Lanterns.S01e08.Final.Vostfr.Web.H264",
+        "videoSize": 267533680
+      },
+      "description": "📄 Lanterns.S01e08.Final.Vostfr.Web.H264\n📹 avc\n⭐ WEB\n👤 153 💾 255.1 MB 🔎 Comet|EXT\n🇫🇷",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|a1dddb3d9c6ac392836ceb215a54ae48c48c8cc8",
+        "filename": "Lanterns.S01E08.400p.ColdFilm.avi",
+        "videoSize": 386528772
+      },
+      "description": "📄 Lanterns.S01E08.400p.ColdFilm.avi\n💾 368.6 MB 🔎 Comet|StremThru",
+      "name": "[TB⬇️] Comet 400p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|51e6c058d9fcb9cb6873eabc9d2cf33782b1d2e3",
+        "filename": "Lanterns.S01E08.rus",
+        "videoSize": 812328960
+      },
+      "description": "📄 Lanterns.S01E08.rus\n💾 774.7 MB 🔎 DMM\n🇷🇺",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|b4bd478886b26106470754dbe1e884c043c68747",
+        "filename": "Lanterns - S01E08 - Dirt and Stars - 4320p HDR Ai Upscale -Mesc.mkv",
+        "videoSize": 11580126431
+      },
+      "description": "📄 Lanterns - S01E08 - Dirt and Stars - 4320p HDR Ai Upscale -Mesc.mkv\n📹 HDR\n⭐ UPSCALED | 🏷️ Mesc\n👤 9 💾 10.8 GB 🔎 The Pirate Bay",
+      "name": "[TB⬇️] Comet 4320p",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    },
+    {
+      "behaviorHints": {
+        "bingeGroup": "comet|torbox|fb7cba3f7cac134a94de2d7a925ea0c96859008e",
+        "filename": "绿灯军团.Lanterns.S01E08.1080p.HD中英双字[最新电影www.dyg7.com].mp4",
+        "videoSize": 964322918
+      },
+      "description": "📄 Lanterns.S01E08\n👤 33 💾 919.6 MB 🔎 Comet|EXT\n🇨🇳",
+      "name": "[TB⬇️] Comet unknown",
+      "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+    }
+  ]
+}

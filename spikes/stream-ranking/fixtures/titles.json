@@ -1,0 +1,231 @@
+[
+  {
+    "slug": "shawshank",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0111161",
+    "name": "The Shawshank Redemption",
+    "year": 1994,
+    "runtimeMin": 142
+  },
+  {
+    "slug": "dune-part-two",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt15239678",
+    "name": "Dune: Part Two",
+    "year": 2024,
+    "runtimeMin": 167
+  },
+  {
+    "slug": "oppenheimer",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt15398776",
+    "name": "Oppenheimer",
+    "year": 2023,
+    "runtimeMin": 181
+  },
+  {
+    "slug": "parasite",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt6751668",
+    "name": "Parasite",
+    "year": 2019,
+    "runtimeMin": 133
+  },
+  {
+    "slug": "rrr",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt8178634",
+    "name": "RRR",
+    "year": 2022,
+    "runtimeMin": 187
+  },
+  {
+    "slug": "project-hail-mary",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt12042730",
+    "name": "Project Hail Mary",
+    "year": 2026,
+    "runtimeMin": 157
+  },
+  {
+    "slug": "spider-man-brand-new-day",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt22084616",
+    "name": "Spider-Man: Brand New Day",
+    "year": 2026,
+    "runtimeMin": 145
+  },
+  {
+    "slug": "coyote-vs-acme",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt1756855",
+    "name": "Coyote vs. Acme",
+    "year": 2026,
+    "runtimeMin": 103
+  },
+  {
+    "slug": "breaking-bad-s01e01",
+    "kind": "series",
+    "type": "series",
+    "id": "tt0903747:1:1",
+    "name": "Breaking Bad",
+    "year": 2008,
+    "runtimeMin": 49,
+    "season": 1,
+    "episode": 1
+  },
+  {
+    "slug": "the-office-s03e05",
+    "kind": "series",
+    "type": "series",
+    "id": "tt0386676:3:5",
+    "name": "The Office",
+    "year": 2005,
+    "runtimeMin": 22,
+    "season": 3,
+    "episode": 5
+  },
+  {
+    "slug": "last-of-us-s02e01",
+    "kind": "series",
+    "type": "series",
+    "id": "tt3581920:2:1",
+    "name": "The Last of Us",
+    "year": 2023,
+    "runtimeMin": 56,
+    "season": 2,
+    "episode": 1
+  },
+  {
+    "slug": "severance-s02e01",
+    "kind": "series",
+    "type": "series",
+    "id": "tt11280740:2:1",
+    "name": "Severance",
+    "year": 2022,
+    "runtimeMin": 49,
+    "season": 2,
+    "episode": 1
+  },
+  {
+    "slug": "shogun-s01e01",
+    "kind": "series",
+    "type": "series",
+    "id": "tt2788316:1:1",
+    "name": "Shogun",
+    "year": 2024,
+    "runtimeMin": 59,
+    "season": 1,
+    "episode": 1
+  },
+  {
+    "slug": "lanterns-s01e08",
+    "kind": "series",
+    "type": "series",
+    "id": "tt26545992:1:8",
+    "name": "Lanterns",
+    "year": 2026,
+    "runtimeMin": 53,
+    "season": 1,
+    "episode": 8
+  },
+  {
+    "slug": "frieren-e01",
+    "kind": "anime",
+    "type": "series",
+    "id": "kitsu:46474:1",
+    "name": "Sousou no Frieren",
+    "aliases": [
+      "Frieren: Beyond Journey’s End",
+      "Frieren: Oltre la Fine del Viaggio",
+      "葬送のフリーレン",
+      "장송의 프리렌",
+      "Frieren e a Jornada para o Além",
+      "คำอธิษฐานในวันที่จากลา Frieren",
+      "葬送的芙莉蓮",
+      "Frieren at the Funeral"
+    ],
+    "year": 2023,
+    "runtimeMin": 24,
+    "episode": 1,
+    "absoluteEpisode": 1
+  },
+  {
+    "slug": "attack-on-titan-e01",
+    "kind": "anime",
+    "type": "series",
+    "id": "kitsu:7442:1",
+    "name": "Attack on Titan",
+    "aliases": [
+      "Shingeki no Kyojin",
+      "進撃の巨人",
+      "AoT"
+    ],
+    "year": 2013,
+    "runtimeMin": 24,
+    "episode": 1,
+    "absoluteEpisode": 1
+  },
+  {
+    "slug": "one-piece-e1100",
+    "kind": "anime",
+    "type": "series",
+    "id": "kitsu:12:1100",
+    "name": "One Piece",
+    "aliases": [
+      "ONE PIECE",
+      "ワンピース"
+    ],
+    "year": 1999,
+    "runtimeMin": 24,
+    "episode": 1100,
+    "absoluteEpisode": 1100
+  },
+  {
+    "slug": "dandadan-e01",
+    "kind": "anime",
+    "type": "series",
+    "id": "kitsu:48269:1",
+    "name": "Dandadan",
+    "aliases": [
+      "DAN DA DAN",
+      "ダンダダン",
+      "ดันดาดัน",
+      "膽大黨",
+      "DAN DA DAN: FIRST ENCOUNTER",
+      "Dan Da Dan"
+    ],
+    "year": 2024,
+    "runtimeMin": 23,
+    "episode": 1,
+    "absoluteEpisode": 1
+  },
+  {
+    "slug": "solo-leveling-s01e01",
+    "kind": "anime",
+    "type": "series",
+    "id": "tt21209876:1:1",
+    "name": "Solo Leveling",
+    "year": 2024,
+    "runtimeMin": 24,
+    "season": 1,
+    "episode": 1
+  },
+  {
+    "slug": "your-name",
+    "kind": "anime",
+    "type": "movie",
+    "id": "tt5311514",
+    "name": "Your Name.",
+    "year": 2016,
+    "runtimeMin": 106
+  }
+]

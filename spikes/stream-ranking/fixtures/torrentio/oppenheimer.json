@@ -1,0 +1,1148 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "oppenheimer",
+  "request": "https://torrentio.strem.fun/stream/movie/tt15398776.json",
+  "recordedAt": "2026-10-11T12:03:19.128Z",
+  "status": 200,
+  "ms": 149,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer.2023.2160p.UHD.Bluray.REMUX.HDR10.HEVC.DTS-HD.MA.5.1\n👤 355 💾 82.21 GB ⚙️ ThePirateBay",
+      "infoHash": "edef9b0fc91c9ccdf5b3e43f6cc5278160e81dd5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|10bit|HDR",
+        "filename": "Oppenheimer.2023.2160p.UHD.Bluray.REMUX.HDR10.HEVC.DTS-HD.MA.5.1-GHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p.BDRip Ita Eng x265-NAHOM\n👤 193 💾 21.96 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "83dd9a21c093c8b5293695574810329cd714f7fa",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|DV|HDR",
+        "filename": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p.BDRip Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer (2023) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Tigole) [QxR]\n👤 70 💾 17 GB ⚙️ 1337x",
+      "infoHash": "ed624ad789ccae4494fc9bc75f249c1dd54ce764",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Oppenheimer (2023) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer 2023 4K UHD IMAX BluRay 2160p HDR DTS-HD MA 5.1 H.265-MgB\n👤 66 💾 26.41 GB ⚙️ TorrentGalaxy",
+      "infoHash": "0b4a6b132f7703266805dee3bfead843e7037771",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|h265|HDR",
+        "filename": "Oppenheimer 2023 4K UHD BluRay 2160p HDR DTS-HD MA 5.1 H.265-MgB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer 2023 Bluray 2160p AV1 HDR10 EN/FR/ES OPUS 5.1-UH [UserHEVC]\n👤 61 💾 18.99 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "bab63e18dca6edef98e463dca4629231312c5c47",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|10bit|HDR",
+        "filename": "Oppenheimer.2023.Bluray.2160p.AV1.HDR10.OPUS.5.1-UH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA\n👤 57 💾 3.82 GB ⚙️ 1337x",
+      "infoHash": "0137c5a5aac15689402d2dc32f0d8d7091415a57",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Oppenheimer.2023.2160p.10bit.HDR.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer.2023.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.PLUS.ENG.ITA.LATINO\n👤 51 💾 86.53 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇲🇽",
+      "infoHash": "b12e2ad004742ae1348e4e22eebe8fcac07c88d7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|DV|HDR",
+        "filename": "Oppenheimer.2023.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.PLUS.ENG.ITA.LATINO.DTS-HD.Master.DDP5.1.DV.x265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer 2023 2160p EUR UHD Blu-ray HDR10 HEVC DTS-HD MA 5.1-ESiR\n👤 51 💾 92.02 GB ⚙️ TorrentGalaxy",
+      "infoHash": "5fcd00aff249c895a59083e9169856a6e1032084",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR\n👤 45 💾 82.98 GB ⚙️ 1337x",
+      "infoHash": "3cddcfafc904a8a7c6449e2fe1f24877d3eacf1f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer 2023 IMAX UHD BluRay 2160p DV HEVC HDR10 DTS-HD-MA 5.1 x265-E\n👤 30 💾 33.14 GB ⚙️ 1337x",
+      "infoHash": "b6e9826a457c291570a94e95e23c9adbd1c5fd00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Oppenheimer (2023) 4K IMAX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Оппенгеймер / Oppenheimer (2023) UHD BDRemux 2160p | 4K | HDR | D P A L | IMAX\n👤 26 💾 97.51 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "53c49f467121b3fccadb95ce098e84f80e052180",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "Oppenheimer (2023) - UHD BD-Remux by Wild_Cat.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:53c49f467121b3fccadb95ce098e84f80e052180",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer (2023) IMAX 2160p UHD HDR BluRay AV1 Opus Multi4 [dAV1nci]\n👤 26 💾 11.19 GB ⚙️ 1337x",
+      "infoHash": "a1847f4fb4b0aff19e4335c7c0bd3762a95b6bab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "Oppenheimer.2023.IMAX.2160p.UHD.HDR.BluRay.AV1.Opus.Multi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p BDRemux Ita Eng x265-NAHOM\n👤 24 💾 82.96 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "972572ea1d90a6cf8a488fb38de4e439ef20c38a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Oppenheimer.2023.IMAX.4K.HDR.DV.2160p BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Oppenheimer (2023) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv\n👤 18 💾 6.73 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "d6f05afd7b4c42134caf29b6d4099038e4cc3a74",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR10+",
+        "filename": "Oppenheimer (2023) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer.2023.2160p.MA.WEB-DL.DUAL.DTS.HD.MA.5.1 DD 5.1.DV-HDR.H.265-TheBiscuitMan\n👤 14 💾 37.7 GB ⚙️ 1337x\nDual Audio / 🇮🇳",
+      "infoHash": "57c4d9cd27e879f057462c95faa42900d038b4bd",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer.2023.Eng.Fre.Ger.Ita.Spa.Cze.Pol.2160p.BluRay.Remux.HDR.HEVC.DTS-HD.MA-SGF\n👤 13 💾 90.16 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇨🇿",
+      "infoHash": "fb6e38e35eaf1b391ef89fbcb68eeb2285a1d3bd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|HDR",
+        "filename": "Oppenheimer.2023.Eng.Fre.Ger.Ita.Spa.Cze.Pol.2160p.BluRay.Remux.HDR.HEVC.DTS-HD.MA-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer (2023) AC3 5.1 ITA.ENG 2160p H265 HDR10 IMAX sub ita.eng Sp33dy94 MIRCrew\n👤 13 💾 5.08 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "e729cb5907638ded27821fd7821e05e935075aee",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|HDR",
+        "filename": "Oppenheimer (2023) AC3 5.1 ITA.ENG 2160p H265 HDR10 IMAX sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer (2023) [2160p] [HDR] (bluray) [WMAN-LorD]\n👤 13 💾 4.68 GB ⚙️ TorrentGalaxy",
+      "infoHash": "e486ea6d549e2e60cff4f0f1194c0a65694bd123",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Oppenheimer.2023.2160p.UHD.HDR.BluRay.x265.10bit.DD5.1.[WMAN-LorD].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer.2023.2160p.x265.hdr.5.1-dual-lat-cinecalidad.my.mkv\n👤 12 💾 12.47 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "2bbbb1d79f7ceb7b8681d12efac13ef481333922",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|HDR",
+        "filename": "Oppenheimer.2023.2160p.x265.hdr.5.1-dual-lat-cinecalidad.my.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer.2023.Eng.Fre.Ger.Ita.Spa.Cze.Pol.2160p.BluRay.Hybrid.Remux.DV.HDR.HEVC.DTS-HD.MA-SGF.mkv\n👤 12 💾 90.21 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇨🇿",
+      "infoHash": "ce1bdd5cf0fa18def9264ecfae3815ed5eba61bc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR",
+        "filename": "Oppenheimer.2023.Eng.Fre.Ger.Ita.Spa.Cze.Pol.2160p.BluRay.Hybrid.Remux.DV.HDR.HEVC.DTS-HD.MA-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Оппенгеймер / Oppenheimer (2023) Hybrid 2160p | 4K | HDR | Dolby Vision Profile 8 | D | IMAX\n👤 11 💾 95.62 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "f81a22449431963302bb72a9bc1a438aea30ba42",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "Oppenheimer.2023.2160p.IMAX.UHDRemux.HYBRID.HDR.DV-TheEqualizer.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:f81a22449431963302bb72a9bc1a438aea30ba42",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Oppenheimer (CZ/EN)(2023)[2160p][HDR10+/DoVi][IMAX][REMUX][HEVC]\n👤 10 💾 107.8 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇨🇿",
+      "infoHash": "4f1158a21868e6f9ddd931f5929115b964ba159d",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|DV|HDR10+"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer.(2023).[IMAX].UHD.BluRay.HDR.2160p.ITA.DTS.ITA.AAC.ENG.DTS-HD.MA.ENG.AC3.Subs.x265.[TbZ].mkv\n👤 10 💾 31.4 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "745bece9803c4530de9581299df1fb5ba3c52b56",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer (2023) 2160p H265 HDR10 DV ITA TrueHD DA 7.1 E-AC3 ITA ENG AC3 5.1 Sub Ita Eng - Raffyone iDN_CreW\n👤 8 💾 14.76 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "4a251f39e73ced6f745bdf1f343b8b8a5306c95d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR",
+        "filename": "Oppenheimer (2023) 2160p H265 HDR10 DV ITA TrueHD DA 7.1 E-AC3 ITA ENG AC3 5.1 Sub Ita Eng - Raffyone iDN_CreW.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer (2023) IMAX 2160p UHD HDR BluRay VVenC H.266 VVC AAC 5.1 [RAV1NE]\n👤 8 💾 7.23 GB ⚙️ TorrentGalaxy",
+      "infoHash": "b350ca36de26f06ada709c9224fb46979a8bd7c8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "Oppenheimer.2023.IMAX.2160p.UHD.HDR.BluRay.VVenC.H266.VVC.AAC.5.1-RAV1NE.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Оппенгеймер / Oppenheimer (2023) BDRip-HEVC 2160p от Scarabey | 4K | HDR | IMAX | D | Red Head Sound\n👤 6 💾 50.21 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "589b71284a5adf34467666f5f85220c84825f72f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|hevc|10bit|HDR",
+        "filename": "Oppenheimer.2023.2160p.UHD_HDR10_RHS_[scarfilm.org].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:589b71284a5adf34467666f5f85220c84825f72f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oppenheimer.2023.2160p.UHDRemux.Hybrid.HDR.DV-TheEqualizer\n👤 5 💾 86.4 GB ⚙️ ThePirateBay",
+      "infoHash": "25732c16fe51d1fa3b747f058dccdc73eae20c5e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "Oppenheimer.2023.2160p.UHDRemux.Hybrid.HDR.DV-TheEqualizer.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer (2023) IMAX (2160p x265 10bit HDR UHD BD DTS-HD MA 5.1) [Prof]\n👤 5 💾 19.62 GB ⚙️ TorrentGalaxy",
+      "infoHash": "740a81107f37694337baa26559b15964d2c4afe3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|HDR",
+        "filename": "Oppenheimer (2023) IMAX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oppenheimer.2023.iTA-ENG.Bluray.2160p.HDR.x265-CYBER.mkv\n👤 5 💾 23.73 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "8c257c5bac41d493d89468e2afa90290ccf8e963",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|HDR",
+        "filename": "Oppenheimer.2023.iTA-ENG.Bluray.2160p.HDR.x265-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Oppenheimer 2023 2160p BluRay\n👤 100 💾 8.71 GB ⚙️ YTS",
+      "infoHash": "bc49149f330485e036d69e68a0b0e0887e13965e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Oppenheimer.2023.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR\n👤 22 💾 82.53 GB ⚙️ 1337x",
+      "infoHash": "1043a3df94d856a7c8094e730d4376ef7d03124d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR\n👤 6 💾 82.53 GB ⚙️ 1337x",
+      "infoHash": "c2e9c4629c0e790afab7821fd551faa414085746",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Oppenheimer.2023.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "OPPENHEIMER.2023.4K.UHD.COMPLETE.BLURAY-MassModz\n👤 5 💾 92.02 GB ⚙️ TorrentGalaxy",
+      "infoHash": "93cc3922606822750ce1c6fde263d64d7a959bf4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Oppenheimer 2023 1080p DS4K BluRay x265 10 bit HDR AAC 7 1 W\n👤 14 💾 10.46 GB ⚙️ TorrentGalaxy",
+      "infoHash": "3f4d1549a06bbdf9ada09d68fe592b0f1951385e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Oppenheimer (2023) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Oppenheimer 2023 1080p BluRay DV HDR10 x265-GeneMige\n👤 11 💾 6.26 GB ⚙️ ThePirateBay",
+      "infoHash": "5219536bbd697269aac19fb439af67b3f1e09550",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Oppenheimer 2023 1080p BluRay DV HDR10 x265-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG\n👤 897 💾 2.02 GB ⚙️ ThePirateBay",
+      "infoHash": "491aa0e19cbdb03b100961db82315c08643a6139",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DD5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 184 💾 3.42 GB ⚙️ ThePirateBay",
+      "infoHash": "f1fa55bb53256721498592214dc315cc060cb7dd",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Oppenheimer.2023.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 V3 BluRay Remux AVC 1080p DTS-HDMA5.1-DreamHD\n👤 127 💾 40.25 GB ⚙️ ThePirateBay\n🇬🇧 / 🇨🇳",
+      "infoHash": "cb0ccf8b35ff39555eb5c6a062d2ccf7f5505bec",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Oppenheimer 2023 V3 BluRay Remux AVC 1080p DTS-HDMA5.1-DreamHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.Bluray.REMUX.AVC.DTS-HD.MA.5.1-GHD[TGx]\n👤 125 💾 39.36 GB ⚙️ ThePirateBay",
+      "infoHash": "1ab0d640db74e472fe74452861b40a1b5f0c1450",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Oppenheimer.2023.1080p.Bluray.REMUX.AVC.DTS-HD.MA.5.1-GHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 1080p BluRay x265 YTS [NikaNika]\n👤 100 💾 3.01 GB ⚙️ YTS",
+      "infoHash": "41fc13d0a99d5b31aa9bdc7b46bc9d98e5bc7138",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x265.10bit.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 1080p BluRay\n👤 100 💾 3.33 GB ⚙️ YTS",
+      "infoHash": "ec34c231dde3e92d8d26a17c223152c8541295aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 REPACK 1080p BluRay DD 5 1 x264-PTer\n👤 85 💾 17.93 GB ⚙️ ThePirateBay",
+      "infoHash": "cfa2f1b73a52b392e2c778f77466c183987a2dc4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer 2023 REPACK 1080p BluRay DD 5 1 x264-PTer.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) [Bluray 1080p][Esp]\n👤 85 💾 12.33 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "6ca54f1a562fd6fddcad99abcc3e762b5bbc2018",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Oppenheimer (2023) [Bluray 1080p][Esp](wolfmax4k.com).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]\nOppenheimer (2023) (1080p BluRay x265 10bit Tigole).mkv\n👤 55 💾 8.7 GB ⚙️ 1337x",
+      "infoHash": "600cd17d1535bb1882da6e6256dfe6d2c676e1d2",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Oppenheimer (2023) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p BluRay 10Bit X265 DD 5 1-Chivaman\n👤 55 💾 7.38 GB ⚙️ 1337x",
+      "infoHash": "ea501b85e854db0392d6053f5d5ba88fda92ef03",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.10Bit.X265.DD.5.1-Chivaman.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) BluRay 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng - realDMDJ DDL_Ita\n👤 51 💾 4.23 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "cd3b517dc3ebbe70d4e9590264c401049b79ae77",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Oppenheimer 2023 BluRay 1080p.H264 Ita Eng AC3 5.1 Sub Ita Eng realDMDJ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) NEW ENG 1080p.MP4.InfosPack022\n👤 39 💾 1.38 GB ⚙️ ThePirateBay",
+      "infoHash": "f2390820a6cd31653b5e447e8492af176f122a97",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p.MP4.InfosPack022.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p AV1 10Bit DKong\n👤 35 💾 1.03 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇱",
+      "infoHash": "f6c172d1639cbb062aacee4250d3ac53e0be6e96",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|10bit",
+        "filename": "Oppenheimer 2023 IMAX 1080p AV1 10Bit DKong.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.MULTi.VFQ.1080p.BluRay..x264-Slay3R\n👤 31 💾 17.83 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "b4293462c998988129b6f1195bf239d33c10b777",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.MULTi.VFQ.1080p.BluRay..x264-Slay3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 1080p AMZN WEB-DL DDP5 1 H 264-GPRS\n👤 29 💾 10.81 GB ⚙️ ThePirateBay",
+      "infoHash": "4db0850d4cbe91d2d5538626bb2dc75fcddd8a5d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Oppenheimer 2023 1080p AMZN WEB-DL DDP5 1 H 264-GPRS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.EAC3.AAC.DUAL.5.1\n👤 22 💾 5.4 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "167ba4ede9022fa36c32b89d64108e3c1596d669",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Oppenheimer.2023.1080p.BluRay.EAC3.AAC.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.IMAX.BluRay.x265.AAC5.1-GYPSY\n👤 20 💾 2.3 GB ⚙️ TorrentGalaxy",
+      "infoHash": "2a990fc5e74def6939e3981f436a8c2ad6c274cd",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 BluRay 1080p x264 DUAL 5.1\n👤 20 💾 4.13 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "5fe29883af17567a6e92d927875c0e9fd7fe2887",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer 2023 BluRay 1080p x264 DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.Eng.Fre.Ger.Ita.Spa.Cze.Pol.1080p.BluRay.Remux.AVC.DTS-HD.MA-SGF\n👤 17 💾 47.55 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇨🇿",
+      "infoHash": "9a71fed91185ee611995c2a8ce374928cf64b575",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Oppenheimer.2023.Eng.Fre.Ger.Ita.Spa.Cze.Pol.1080p.BluRay.Remux.AVC.DTS-HD.MA-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.IMAX.ENG.LATINO.CASTELLANO.DD5.1.H265-BEN.THE.MEN\n👤 16 💾 7.56 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸 / 🇲🇽",
+      "infoHash": "fbee9007c15574ce15e21d89b370550269f0af2e",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.IMAX.ENG.LATINO.CASTELLANO.DD5.1.H265-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) AC3 5.1 ITA.ENG 1080p H265 IMAX sub ita.eng Sp33dy94 MIRCrew\n👤 15 💾 3.97 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "d91c878ce87ab32840c6f254e59182d221718e12",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Oppenheimer (2023) AC3 5.1 ITA.ENG 1080p H265 IMAX sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.HEVC.x265.AAC.5.1-Gypsy\n👤 14 💾 7.06 GB ⚙️ 1337x",
+      "infoHash": "a77aef230e84721f365dd5dc342be8d0fb8a3651",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Oppenheimer.2023.1080p.BluRay.HEVC.x265.AAC.5.1-Gypsy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.BluRay.1080p.x265.10bit.DDP5.1-SSDSSE\n👤 13 💾 11.98 GB ⚙️ ThePirateBay",
+      "infoHash": "1fd8ff74a6d22d266047db473a207ef9a3d1d382",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Oppenheimer.2023.BluRay.1080p.x265.10bit.DDP5.1.-SSDSSE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 IMAX BluRay 1080p DTS-HD MA 5.1 x264-MgB\n👤 13 💾 16.37 GB ⚙️ ThePirateBay",
+      "infoHash": "96bd767989be89a3b11162098fc3f23d8ef99f13",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer 2023 IMAX BluRay 1080p DTS-HD MA 5.1 x264-MgB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 IMAX 1080p BluRay x264 DTS-WiKi\n👤 12 💾 15.88 GB ⚙️ ThePirateBay",
+      "infoHash": "eef23af625ae8e116da85b78c9800779babd0206",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.x264.DTS-WiKi.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 1080p NF WEB-DL DDP5 1 HEVC-Saon\n👤 11 💾 4.15 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇳",
+      "infoHash": "634d3482971995b49627bf261a45b2353fc08d21",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Oppenheimer 2023 1080p NF WEB-DL DDP5 1 HEVC-Saon.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 12 - Mp4 x264 AC3 1080p\nOppenheimer (2023) 1080p Surround.mp4\n👤 11 💾 5.25 GB ⚙️ ThePirateBay",
+      "infoHash": "11eceafe33bdd082a514bf89ec6e33c95fca4f6f",
+      "fileIdx": 50,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Oppenheimer (2023) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)\n👤 10 💾 5.68 GB ⚙️ TorrentGalaxy",
+      "infoHash": "30113d3df90084b56ccd4bb2ffaa112b86134556",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Oppenheimer [2023] 1080p 10bit BluRay AAC5.1 HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.FULL.HD.DUAL.5.1\n👤 10 💾 6 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "2e48ca0b9c9b45324af18d62081b43ef267dde0d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Oppenheimer.2023.1080p.BluRay.FULL.HD.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) IMAX 1080p BluRay AV1 Opus [dAV1nci]\n👤 10 💾 3.2 GB ⚙️ 1337x",
+      "infoHash": "d141d5118e791b0cda17235712197bc6018b4fda",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Oppenheimer.2023.IMAX.1080p.BluRay.AV1.Opus-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.2.0.opus.1900mb-Rosy\n👤 9 💾 1.86 GB ⚙️ 1337x",
+      "infoHash": "1fec196a7d0d87e573651d1f1a49804dd7b7c879",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Oppenheimer.2023.bluray.sdr.movie.1080p.av1.2.0.opus.1900mb-Rosy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023 ITA/ENG) [1080p x265] [IMAX] [Paso77]\n👤 9 💾 10.55 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "aa9a148fcd492c09aa3867b710e8d008a22214a2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "Oppenheimer 2023 BDRip ITA ENG IMAX 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 1080p 2in1 Blu-ray AVC DTS-HD MA 5.1-ESiR\n👤 9 💾 90.21 GB ⚙️ TorrentGalaxy",
+      "infoHash": "92d9f9f86b0f347657335fb96aed5c3c37764910",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 9 💾 1.97 GB ⚙️ 1337x",
+      "infoHash": "20a43276dd7c79617b55cec302873616b36055fc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 9 💾 1.97 GB ⚙️ ThePirateBay",
+      "infoHash": "0ce36222d1a6efe3fe737d637c454afde101bc0b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Oppenheimer.2023.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Christopher Nolan Collection (2000-2023) BDRip 1080p\n2023.Oppenheimer.1920x1080.BDRip.x264.DTS-HD.MA.mkv\n👤 8 💾 23.33 GB ⚙️ ThePirateBay",
+      "infoHash": "96913f3281621ef4748c1136bcfb96d12e8a4f0c",
+      "fileIdx": 11,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2023.Oppenheimer.1920x1080.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.MA.WEB-DL.DUAL.DD 5.1.H.265-TheBiscuitMan\n👤 8 💾 11.9 GB ⚙️ 1337x\nDual Audio / 🇮🇳",
+      "infoHash": "d6b5bcbec881d3c512feb3d304d1e72d816a42b5",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264.mkv\n👤 8 💾 6.51 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "6aaec1c4d6a5fb99f73db7fbca45ef261498d132",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer (2023) iTA-ENG.Bluray.1080p.x264-Dr4gon MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 REPACK 1080p BluRay DDP 5.1 x264-BiTOR\n👤 8 💾 17.56 GB ⚙️ TorrentGalaxy",
+      "infoHash": "9bd6e2aea4aad69fbfcbbbe0f13fde92f9c6a36c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer 2023 1080p BluRay DDP 5.1 x264-BiTOR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.MULTi.FRENCH.1080p.Bluray.X265-NBDY.mkv\n👤 6 💾 4.29 GB ⚙️ ThePirateBay\nMulti Audio / 🇫🇷",
+      "infoHash": "e5223c3adb75a9726680975975a08cf37b6411f4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Oppenheimer.2023.MULTi.FRENCH.1080p.Bluray.X265-NBDY.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.iTA-ENG.Bluray.1080p.x264-CYBER.mkv\n👤 5 💾 15.57 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "2103bdc685a77f766b699cea1d4637cdd4040199",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer.2023.iTA-ENG.Bluray.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer 2023 IMAX BluRay 1080p DTS AC3 x264-MgB\n👤 5 💾 11.87 GB ⚙️ TorrentGalaxy",
+      "infoHash": "c7e63606aa521c12515168ac31ffd546fbbd8bac",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oppenheimer 2023 IMAX BluRay 1080p DTS AC3 x264-MgB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oppenheimer.2023.1080p.BluRay.x265-KONTRAST\n👤 5 💾 3.06 GB ⚙️ TorrentGalaxy",
+      "infoHash": "8c072edf8d4feac7dcfc9117abfb6eee608267a4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Oppenheimer.2023.1080p.BluRay.x265-KONTRAST.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oppenheimer 2023 720p BluRay\n👤 100 💾 1.62 GB ⚙️ YTS",
+      "infoHash": "7d2e222138aef25ffe38577e4cb9ad04e7d30356",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oppenheimer.2023.720p.BluRay.999MB.x264-GalaxyRG\n👤 64 💾 974.45 MB ⚙️ ThePirateBay",
+      "infoHash": "7371eac8768e61968eb13991278976041d92785a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Oppenheimer.2023.720p.BluRay.999MB.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oppenheimer (2023) [Bluray 720p][Esp]\n👤 37 💾 6.66 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "a653d192b7865798367ec6f38be14d22557fef1b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Oppenheimer (2023) [Bluray 720p][Esp](wolfmax4k.com).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oppenheimer.2023.VFQ.720p.BluRay.x264-Slay3R\n👤 17 💾 7.82 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "f19604e63fe4f880177b0b4463f326e01f8657ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.VFQ.720p.BluRay.x264-Slay3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oppenheimer.2023.720p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 10 💾 1.04 GB ⚙️ 1337x",
+      "infoHash": "b7b0179a26199b018e0542c635655d49f8292347",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|hevc|10bit",
+        "filename": "Oppenheimer.2023.720p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oppenheimer (2023) 720p h264 Ac3 5.1 Ita Eng Sub Ita Eng-MIRCrew\n👤 8 💾 3.68 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "5f40224807d0642859246f89510c41921528b61c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "Oppenheimer (2023) 720p h264 Ac3 5.1 Ita Eng Sub Ita Emg-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Oppenheimer.2023.1080p.HD-TS-C1NEM4\n👤 54 💾 3.88 GB ⚙️ ThePirateBay",
+      "infoHash": "7ca1e95b2ba24096ff8b6e9fa4609fe66485539d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Oppenheimer.2023.1080p.HD-TS-C1NEM4.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Oppenheimer.2023.1080p.LM.HD-TeleSync.DUAL.DD2.0.H.264-xCLuMsYx\n👤 45 💾 8.12 GB ⚙️ 1337x\nDual Audio / 🇬🇧",
+      "infoHash": "d6a8231af75887455e04a51bbfb8a2c4c0061e0d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Oppenheimer.2023.1080p.LM.HD-TeleSync.DUAL.DD2.0.H.264-xCLuMsYx.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM x264 AAC - HushRips\n👤 29 💾 2.35 GB ⚙️ ThePirateBay",
+      "infoHash": "d6e78b95225b76e200a9db223eedb7e1c8ad6e45",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM|x264",
+        "filename": "Oppenheimer (2023) NEW ENG 1080p HQ-CAM x264 AAC - HushRips.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Оппенгеймер / Oppenheimer (2023) BDRip-AVC от DoMiNo | D | TS | IMAX\n👤 11 💾 2.4 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "5484c3dfd1ffc4cbc732408f07f516f4f0eb7f8c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|avc",
+        "filename": "Oppenheimer.2023.DUB.BDRip.x264.[-=DoMiNo=-].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:5484c3dfd1ffc4cbc732408f07f516f4f0eb7f8c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Оппенгеймер / Oppenheimer (2023) BDRip 1080p | D L | TS | IMAX\n👤 8 💾 16.37 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "c530b80cbe2ef111e79b33434821c2d6431d13cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Oppenheimer.2023.D.MVO.BDRip.1080p...mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:c530b80cbe2ef111e79b33434821c2d6431d13cd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC\n👤 8 💾 1.86 GB ⚙️ 1337x",
+      "infoHash": "47b5cace2e351edf0fe1e84af35053aca3399319",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Oppenheimer (2023) 1080p V2 HDTS ENG x264 AAC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Oppenheimer.2023.720p.HDCAM-C1NEM4\n👤 6 💾 2.61 GB ⚙️ ThePirateBay",
+      "infoHash": "e5fea6b2226229cd3a061e3b0b99ef59a6348825",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Oppenheimer.2023.720p.HDCAM-C1NEM4.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Oppenheimer.2023.FRENCH.BDRip.x264-Ulysse\n👤 49 💾 928.8 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "1e7f7020ab9193cbb757ee806070416c9911172f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|x264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.FRENCH.BDRip.x264-Ulysse.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Oppenheimer.2023.FANSUB.VOSTFR.BDRip.H264\n👤 6 💾 1.28 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "38956a099a5def6a12e4e733e61eb186ffd98543",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|h264",
+        "filename": "[ Torrent911.io ] Oppenheimer.2023.FANSUB.VOSTFR.BDRip.H264.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Оппенгеймер / Oppenheimer (2023) BDRip-AVC от DoMiNo & селезень | D | Bravo Records Georgia | IMAX\n👤 5 💾 3.21 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "464853da7db6140fcee9d8d2899622769429e11c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Oppenheimer.2023.D.BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:464853da7db6140fcee9d8d2899622769429e11c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Оппенгеймер / Oppenheimer (2023) HDRip от MegaPeer | LineFilm | IMAX\n👤 5 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "945400ed1ca275d14cb835f90a00705c760687ab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Oppenheimer.2023.L.1.46GB.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:945400ed1ca275d14cb835f90a00705c760687ab",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    }
+  ]
+}

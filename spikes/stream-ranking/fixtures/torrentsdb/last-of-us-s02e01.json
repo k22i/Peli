@@ -1,0 +1,1165 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "last-of-us-s02e01",
+  "request": "https://torrentsdb.com/stream/series/tt3581920%3A2%3A1.json",
+  "recordedAt": "2026-10-11T12:04:16.495Z",
+  "status": 200,
+  "ms": 653,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The.Last.of.Us.S02E01.2160p.MAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX\n📅 S02E01 👤 1010 💾 9.02 GB ⚙️ knaben",
+      "infoHash": "A3BDEC6CD71A2A849EDB99DEE85586AF8FE0395D",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.2160p.MAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The Last Of Us S02 COMPLETE 2160p UHD BluRay REMUX DV P7 HDR MULTi TrueHD Atmos H265-BTM\nThe.Last.Of.Us.S02E01.2160p.UHD.BluRay.REMUX.DV.P7.HDR.MULTi[Ben The Men].mkv\n📅 S02E01 👤 248 💾 26.70 GB ⚙️ 1337x",
+      "infoHash": "91dc60350a7dacdbb666417c13f90b4505e8bccb",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|91dc60350a7dacdbb666417c13f90b4505e8bccb",
+        "filename": "The.Last.Of.Us.S02E01.2160p.UHD.BluRay.REMUX.DV.P7.HDR.MULTi[Ben The Men].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n4k",
+      "title": "Одни из нас / The Last of Us [\nОдни из нас_2_сезон_RHS_4К_[scarfilm]/The.Last.of.Us.S02E01_RHS_4K_[scarfilm].mkv\n📅 S02E01 👤 98 💾 9.28 GB ⚙️ rutor",
+      "infoHash": "2e6ade3eb67bb0f112c7ffa169c8a413e65df9d0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2e6ade3eb67bb0f112c7ffa169c8a413e65df9d0",
+        "filename": "The.Last.of.Us.S02E01_RHS_4K_[scarfilm].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:2e6ade3eb67bb0f112c7ffa169c8a413e65df9d0"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The.Last.of.Us.S02.Complete.4K.WEB-DL.DV.HDR10.AC3.5.1-widows\nThe Last of Us - S02E01 - Future Days - [WEBDL-2160p]h265 EAC3 AtmosDV HDR10.mkv\n📅 S02E01 👤 74 💾 8.90 GB ⚙️ 1337x",
+      "infoHash": "bba7d30f63c5089f5a4f0905ea103dce82224408",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|bba7d30f63c5089f5a4f0905ea103dce82224408",
+        "filename": "The Last of Us - S02E01 - Future Days - [WEBDL-2160p]h265 EAC3 AtmosDV HDR10.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The Last of Us S02E01 - Dny budoucí (CZ/EN)[WEB-DL][DV/HDR][2160p] = CSFD 79%\n📅 S02E01 👤 62 💾 9.13 GB ⚙️ sktorrent",
+      "infoHash": "7d76dea25204fd7b67c2e6d72da969346a8b7e35",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "The Last of Us S02E01 Future Days 2160p MAX WEB-DL DDP5 1 Atmos DV HDR H 265-b1POLAR.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:7d76dea25204fd7b67c2e6d72da969346a8b7e35"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The Last of Us 1-2. serie (2023–2025)(CZ/EN)[2160p][HDR10/DV][HEVC] = CSFD 78%\nThe Last of Us (seriál) 2023–2027 UHDRDV cz en/The Last of Us - Série 2 (2025) UHDRDV cz en/The Last of Us S02E01 Dny budoucí.mkv\n📅 S02E01 👤 41 💾 2.67 GB ⚙️ sktorrent",
+      "infoHash": "b49ff0ab7b8a718b54e0b9e3552b091b908b5267",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b49ff0ab7b8a718b54e0b9e3552b091b908b5267",
+        "filename": "The Last of Us S02E01 Dny budoucí.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:b49ff0ab7b8a718b54e0b9e3552b091b908b5267"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The.Last.of.Us.S02.2160p.CRAV.WEB-DL.DD5.1.H.265-PrimeFix\nThe.Last.of.Us.S02E01.2160p.CRAV.WEB-DL.DD5.1.H.265-PrimeFix.mkv\n📅 S02E01 👤 33 💾 6.00 GB ⚙️ 1337x",
+      "infoHash": "960944ef9c0e46eebf897126b6799fc542ba6b76",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|960944ef9c0e46eebf897126b6799fc542ba6b76",
+        "filename": "The.Last.of.Us.S02E01.2160p.CRAV.WEB-DL.DD5.1.H.265-PrimeFix.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The.Last.of.Us.S01-S02.2023-2025.2160p.WEB-DL.DV.HDR10.AC3.5.1-widows\nThe Last of Us - S02E01 - Future Days - [WEBDL-2160p]h265 EAC3 AtmosDV HDR10.mkv\n📅 S02E01 👤 32 💾 8.90 GB ⚙️ 1337x",
+      "infoHash": "a95650cfca1de6fa90a49f220ff470b20c645778",
+      "fileIdx": 23,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a95650cfca1de6fa90a49f220ff470b20c645778",
+        "filename": "The Last of Us - S02E01 - Future Days - [WEBDL-2160p]h265 EAC3 AtmosDV HDR10.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "The.Last.Of.Us.S02.2160p.NOW.WEB-DL.H.265.DDP5.1.Atmos-Tyrell\nThe.Last.Of.Us.S02E01.2160p.NOW.WEB-DL.H.265.DDP5.1.Atmos-Tyrell.mkv\n📅 S02E01 👤 18 💾 6.10 GB ⚙️ 1337x",
+      "infoHash": "a3a4df1661c9c7d8d1e5161b737256eae26690ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a3a4df1661c9c7d8d1e5161b737256eae26690ca",
+        "filename": "The.Last.Of.Us.S02E01.2160p.NOW.WEB-DL.H.265.DDP5.1.Atmos-Tyrell.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 1080p HEVC x265-MeGusta\n📅 S02E01 👤 1943 💾 752.21 MB ⚙️ ThePirateBay",
+      "infoHash": "f4b7a5309542056dfcf79ef9563ecb334ec702d0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 1080p HEVC x265-MeGusta\n📅 S02E01 👤 1943 💾 752.21 MB ⚙️ knaben",
+      "infoHash": "F4B7A5309542056DFCF79EF9563ECB334EC702D0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Episode 1 1080p MAX WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 925 💾 1.78 GB ⚙️ ThePirateBay",
+      "infoHash": "23eeab776aff88e3f0223cd667b4f1eb93403ef6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Episode 1 1080p MAX WEB-DL DDP5 1 Atmos H 264-FLUX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.WEB.H264-SuccessfulCrab\n📅 S02E01 👤 845 💾 4.01 GB ⚙️ ThePirateBay",
+      "infoHash": "7be549f38fae577b39bcdc9a89a8579e92e23aed",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "the.last.of.us.s02e01.1080p.web.h264-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.WEB.H264-SuccessfulCrab\n📅 S02E01 👤 722 💾 4.01 GB ⚙️ knaben",
+      "infoHash": "7BE549F38FAE577B39BCDC9A89A8579E92E23AED",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "the.last.of.us.s02e01.1080p.web.h264-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02.1080p.x265-ELiTE\nThe.Last.of.Us.S02E01.1080p.x265-ELiTE.mkv\n📅 S02E01 👤 614 💾 1.10 GB ⚙️ 1337x",
+      "infoHash": "0c5ba8200b9f15d01002b10bcfe43a5b85bd2902",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|0c5ba8200b9f15d01002b10bcfe43a5b85bd2902",
+        "filename": "The.Last.of.Us.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.AV1.10bit-MeGusta\n📅 S02E01 👤 613 💾 668.28 MB ⚙️ knaben",
+      "infoHash": "8D40E51FF99CB52269D2677C28B87A1ABCDA23DA",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.AV1.10bit-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.AV1.10bit-MeGusta\n📅 S02E01 👤 613 💾 668.28 MB ⚙️ ThePirateBay",
+      "infoHash": "8d40e51ff99cb52269d2677c28b87a1abcda23da",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.AV1.10bit-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us (2023) S02 (1080p BluRay x265 10bit EAC3 Atmos 7.1 Ghost)\nThe Last of Us (2023) - S02E01 - Future Days (1080p BluRay x265 Ghost).mkv\n📅 S02E01 👤 582 💾 2.79 GB ⚙️ ThePirateBay",
+      "infoHash": "2e336f13b9a8cc2ce299b39a4cc82ffa99f64b9a",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2e336f13b9a8cc2ce299b39a4cc82ffa99f64b9a",
+        "filename": "The Last of Us (2023) - S02E01 - Future Days (1080p BluRay x265 Ghost).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.WEB.H264-SuccessfulCrab\n📅 S02E01 👤 458 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "8b5038260cadadc94b15bc02636b6ba63de7dcee",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "the.last.of.us.s02e01.1080p.web.h264-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.WEBRip.10bit.DDP5.1.x265-HODL\n📅 S02E01 👤 395 💾 828.25 MB ⚙️ knaben",
+      "infoHash": "A7F503F0D4A7A3EA64A5C616FA042922F8FF4871",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last Of Us (2023) Season 2 S02 (1080p AMZN WEB-DL x265 HEVC 10bit DDP 5.1 Vyndros)\nThe.Last.of.Us.S02E01.Future.Days.1080p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n📅 S02E01 👤 276 💾 1.60 GB ⚙️ 1337x",
+      "infoHash": "d7380804df491d03e2f2fc64a874887704db449a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d7380804df491d03e2f2fc64a874887704db449a",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us 2023 Season 2 Complete 1080p WEB x264 [i_c]\nThe Last of Us - S02E01 - Future Days.mkv\n📅 S02E01 👤 265 💾 1.50 GB ⚙️ 1337x",
+      "infoHash": "f57d45a5d81d5d3e41d106880a65d37d8bccefc5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|f57d45a5d81d5d3e41d106880a65d37d8bccefc5",
+        "filename": "The Last of Us - S02E01 - Future Days.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last Of Us - Season 2 - Mp4 x264 AC3 1080p\nThe Last Of Us S02E01.mp4\n📅 S02E01 👤 236 💾 1.70 GB ⚙️ 1337x",
+      "infoHash": "81bc36f179db92b1905d77e761d9ea7ab85cac9b",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|81bc36f179db92b1905d77e761d9ea7ab85cac9b",
+        "filename": "The Last Of Us S02E01.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Одни из нас / The Last of Us [\nThe.Last.of.Us.S02.1080p.AMZN.WEB-DL.DDP5.1.H.264-RGzsRutracker/The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.H.264-RGzsRutracker.mkv\n📅 S02E01 👤 222 💾 6.25 GB ⚙️ rutor",
+      "infoHash": "a5378f4830b1b84b25b1393f1c0b21f8afdaf1dc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a5378f4830b1b84b25b1393f1c0b21f8afdaf1dc",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.H.264-RGzsRutracker.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:a5378f4830b1b84b25b1393f1c0b21f8afdaf1dc"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.CRAV.WEB-DL.DD5.1.H.264-PrimeFix\n📅 S02E01 👤 189 💾 3.03 GB ⚙️ 1337x",
+      "infoHash": "f92b95e3ecfe72c501efba232b97b85e5a79d490",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.CRAV.WEB-DL.DD5.1.H.264-PrimeFix.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02e01-07 [1080p Ita Eng Spa h265 10bit SubS] byMe7alh [MIRCrew]\nThe.Last.of.Us.S02e01.Ita.Eng.Spa.h265.10bit.SubS-Me7alh.mkv\n📅 S02E01 👤 169 💾 1.00 GB ⚙️ 1337x",
+      "infoHash": "1dfde018548183655d65d4a67610137141e0df21",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1dfde018548183655d65d4a67610137141e0df21",
+        "filename": "The.Last.of.Us.S02e01.Ita.Eng.Spa.h265.10bit.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 - Dny budoucí (CZ/EN)[WEB][1080p] = CSFD 79%\n📅 S02E01 👤 153 💾 1.88 GB ⚙️ sktorrent",
+      "infoHash": "a359ec38997f40e9abc23ee464d756bdb8c4627b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us_S02E01.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:a359ec38997f40e9abc23ee464d756bdb8c4627b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us (2023) S02 (1080p HULU WEB-DL x265 10bit EAC3 Atmos 5.1 Ghost) [QxR]\nThe Last of Us (2023) - S02E01 - Future Days (1080p HULU WEB-DL x265 Ghost).mkv\n📅 S02E01 👤 148 💾 1.90 GB ⚙️ 1337x",
+      "infoHash": "eced9ee8baa46d365bdb8acc1adcce77bc1931bd",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|eced9ee8baa46d365bdb8acc1adcce77bc1931bd",
+        "filename": "The Last of Us (2023) - S02E01 - Future Days (1080p HULU WEB-DL x265 Ghost).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02 Season 2 2025 1080p HMAX WEBRip AAC5.1 10bits x265-Rapta\nThe Last of Us - S02E01 - Future Days.mkv\n📅 S02E01 👤 132 💾 813.30 MB ⚙️ 1337x",
+      "infoHash": "e2b77a0a9fbc4dc054078943fa8c0362e13c5e8f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e2b77a0a9fbc4dc054078943fa8c0362e13c5e8f",
+        "filename": "The Last of Us - S02E01 - Future Days.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02.1080p.ITA-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R\nThe.Last.of.Us.S02E01.Future.Days.1080p.ITA-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R.mkv\n📅 S02E01 👤 126 💾 861.10 MB ⚙️ 1337x",
+      "infoHash": "1b3a35d8364d62d8cb0e61cd943cf1510400f2f4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1b3a35d8364d62d8cb0e61cd943cf1510400f2f4",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.ITA-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Episode 1 1080p MAX WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 113 💾 1.78 GB ⚙️ ThePirateBay",
+      "infoHash": "46afcf3ec1d39e40547f1ebe192b1a7468f3c227",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Episode 1 1080p MAX WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Future Days 1080p WEBRip 10bit DDP5 1 x265-HODL\n📅 S02E01 👤 108 💾 828.25 MB ⚙️ ThePirateBay",
+      "infoHash": "bb1c051e14eaff764db0ca35ff5f5510b7013d92",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Future Days 1080p WEBRip 10bit DDP5 1 x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 - Dny budoucí (CZ/SK/EN)[WEB-DL][1080p] = CSFD 79%\n📅 S02E01 👤 108 💾 2.00 GB ⚙️ sktorrent",
+      "infoHash": "57c78f6cf83a27ba061ef7eba5fbdb199e052092",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us_S02E01_Budúce dni.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:57c78f6cf83a27ba061ef7eba5fbdb199e052092"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DDP5 1 H 264-playWEB\n📅 S02E01 👤 102 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "4bd14b439ecf6e7f9d67dfdd86480d72c5f17d5b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DDP5 1 H 264-playWEB.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Одни из нас / The Last of Us [\nОдни из нас_2_сезон_RHS_1080p_[scarfilm]/The.Last.of.Us.S02E01_RHS_[scarfilm].mkv\n📅 S02E01 👤 100 💾 4.28 GB ⚙️ rutor",
+      "infoHash": "f6952df5dc30ed5ec40fda638dc376710582fc21",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|f6952df5dc30ed5ec40fda638dc376710582fc21",
+        "filename": "The.Last.of.Us.S02E01_RHS_[scarfilm].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:f6952df5dc30ed5ec40fda638dc376710582fc21"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02e01 [1080p Ita Eng Spa h265 10bit SubS] byMe7alh [MIRCrew]\n📅 S02E01 👤 97 💾 1.01 GB ⚙️ ThePirateBay",
+      "infoHash": "e5c767c1ac1fd0187cf3b1915912e57b963e822f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02e01.Ita.Eng.Spa.h265.10bit.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 1080p x265-ELiTE\n📅 S02E01 👤 93 💾 1.12 GB ⚙️ ThePirateBay",
+      "infoHash": "5d1993cfe298d03cf30ce73db324d078bd91cd48",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 1080p x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 1080p MAX WEB-DL DDP5 1 x264-NTb\n📅 S02E01 👤 84 💾 1.78 GB ⚙️ ThePirateBay",
+      "infoHash": "9afbde8361c23924568270c8ef66f67b7f427146",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 1080p MAX WEB-DL DDP5 1 x264-NTb.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DD 5 1 H 264-playWEB\n📅 S02E01 👤 82 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "099544fe8748def0968d58088456a32461e6299a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02 1080p WEBRip x265-KONTRAST\nThe.Last.of.Us.S02.1080p.WEBRip.x265-KONTRAST/The.Last.of.Us.S02E01.1080p.WEBRip.x265-KONTRAST.mkv\n📅 S02E01 👤 79 💾 1.24 GB ⚙️ limetorrent",
+      "infoHash": "a9cd101e13b38c53ebacf6eadbd9248f168a41c4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a9cd101e13b38c53ebacf6eadbd9248f168a41c4",
+        "filename": "The.Last.of.Us.S02E01.1080p.WEBRip.x265-KONTRAST.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:a9cd101e13b38c53ebacf6eadbd9248f168a41c4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Одни из нас / The Last of Us [\nThe.Last.of.Us.S02.1080p.AMZN.WEB-DL.H.264-EniaHD/The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv\n📅 S02E01 👤 67 💾 4.38 GB ⚙️ rutor",
+      "infoHash": "2287c1e17659d1a0cf37911345ac920654ed514b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2287c1e17659d1a0cf37911345ac920654ed514b",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:2287c1e17659d1a0cf37911345ac920654ed514b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02 4k to 1080p WEBrip x265 DDP5.1 D0ct0rLew[SEV]\nThe Last of Us S02E01 Future Days  4k to 1080p WEBrip x265 DDP5.1 D0ct0rLew[SEV].mkv\n📅 S02E01 👤 38 💾 2.30 GB ⚙️ 1337x",
+      "infoHash": "5c8573436e3c2eecdb2b68deb9d866baedbd9f05",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|5c8573436e3c2eecdb2b68deb9d866baedbd9f05",
+        "filename": "The Last of Us S02E01 Future Days  4k to 1080p WEBrip x265 DDP5.1 D0ct0rLew[SEV].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Одни из нас / The Last of Us [\nThe.Last.of.Us.S02.1080p.WEB-DL.NewComers/The.Last.of.Us.S02E01.1080p.WEB-DL.NewComers.mkv\n📅 S02E01 👤 29 💾 4.28 GB ⚙️ rutor",
+      "infoHash": "b726aa5e63b28a6962d0fe213ffc296dee554efe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b726aa5e63b28a6962d0fe213ffc296dee554efe",
+        "filename": "The.Last.of.Us.S02E01.1080p.WEB-DL.NewComers.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:b726aa5e63b28a6962d0fe213ffc296dee554efe"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Одни из нас / The Last of Us [\nThe.Last.of.Us.S02.1080p.AMZN.WEB-DL.H.264-EniaHD/The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv\n📅 S02E01 👤 26 💾 4.38 GB ⚙️ rutor",
+      "infoHash": "f913471532f111fb34f9d78c17a80b8fe5f530cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|f913471532f111fb34f9d78c17a80b8fe5f530cd",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.H.264-EniaHD.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://bt02.nnm-club.cc:2710/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:f913471532f111fb34f9d78c17a80b8fe5f530cd"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last Of Us S02E01 1080p 10bit WEBRip 6CH X265 HEVC-PSA\n📅 S02E01 👤 25 💾 861.99 MB ⚙️ ThePirateBay",
+      "infoHash": "3fbe8be722fe7357b6578696911b761cbb8e1df0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last Of Us S02E01 1080p 10bit WEBRip 6CH X265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01-07.1080p.AMZN.WEB-DL.ITA-ENG.DDP5.1.Atmos.H.265-G66\nThe.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-G66.mkv\n📅 S02E01 👤 24 💾 3.30 GB ⚙️ 1337x",
+      "infoHash": "0a276a59b1bfc9c1e5e3a158e10eae206ec53806",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|0a276a59b1bfc9c1e5e3a158e10eae206ec53806",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-G66.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01-07 1080p AMZN WEB-DL ITA-ENG DDP5 1 Atmos H 264-G66\nThe.Last.of.Us.S02E01-07.1080p.AMZN.WEB-DL.ITA-ENG.DDP5.1.Atmos.H.264-G66/The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-G66.mkv\n📅 S02E01 👤 21 💾 4.54 GB ⚙️ limetorrent",
+      "infoHash": "41daabd7d56f31d9fa3e019f56139b2ddb67d6f5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|41daabd7d56f31d9fa3e019f56139b2ddb67d6f5",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-G66.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://ipv6.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker1.bt.moack.co.kr:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://eddie4.nl:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://tracker.swateam.org.uk:2710/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:https://tracker.imgoingto.icu:443/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker.dump.cl:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.4.babico.name.tr:3131/announce",
+        "tracker:udp://sanincode.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://private.anonseed.com:6969/announce",
+        "tracker:udp://open.free-tracker.ga:6969/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://htz3.noho.st:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://acxx.de:6969/announce",
+        "tracker:udp://aarsen.me:6969/announce",
+        "tracker:udp://6ahddutb1ucc3cp.ru:6969/announce",
+        "tracker:udp://yahor.of.by:6969/announce",
+        "tracker:udp://v2.iperson.xyz:6969/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.publictracker.xyz:6969/announce",
+        "tracker:udp://tracker.netmap.top:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:udp://tracker.cubonegro.lol:6969/announce",
+        "tracker:udp://tracker.ccp.ovh:6969/announce",
+        "tracker:udp://tracker.0x7c0.com:6969/announce",
+        "tracker:udp://thouvenin.cloud:6969/announce",
+        "tracker:udp://thinking.duckdns.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:udp://run.publictracker.xyz:6969/announce",
+        "tracker:udp://run-2.publictracker.xyz:6969/announce",
+        "tracker:udp://public.tracker.vraphim.com:6969/announce",
+        "tracker:udp://public.publictracker.xyz:6969/announce",
+        "tracker:udp://public-tracker.cf:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://mail.segso.net:6969/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:udp://carr.codes:6969/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:udp://tracker.artixlinux.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://torrents.artixlinux.org:6969/announce",
+        "tracker:udp://psyco.fr:6969/announce",
+        "tracker:udp://mail.artixlinux.org:6969/announce",
+        "tracker:udp://lloria.fr:6969/announce",
+        "tracker:udp://fh2.cmp-gaming.com:6969/announce",
+        "tracker:udp://concen.org:6969/announce",
+        "tracker:udp://boysbitte.be:6969/announce",
+        "tracker:udp://aegir.sexy:6969/announce",
+        "dht:41daabd7d56f31d9fa3e019f56139b2ddb67d6f5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us s02 1080p DV/HDR10\nThe Last of Us - S02E01 - Future Days.mkv\n📅 S02E01 👤 20 💾 3.10 GB ⚙️ 1337x",
+      "infoHash": "c6bd063ad4532f146d9527c8e1ba34f8970e240b",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|c6bd063ad4532f146d9527c8e1ba34f8970e240b",
+        "filename": "The Last of Us - S02E01 - Future Days.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.HEVC.x265-MeGusta\n📅 S02E01 👤 20 💾 752.21 MB ⚙️ ThePirateBay",
+      "infoHash": "03baeb6c2cc8e6b2aaa9ffa9e8d59c524a865399",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01-07.1080p.AMZN.WEB-DL.ITA-ENG.DDP5.1.Atmos.DV.HDR.H.265-G66\nThe.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-G66.mkv\n📅 S02E01 👤 19 💾 3.60 GB ⚙️ 1337x",
+      "infoHash": "3aff33fef43677971a5835f58020d1a3d31b91ee",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|3aff33fef43677971a5835f58020d1a3d31b91ee",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-G66.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Future Days 1080p MAX WEB-DL DDP5 1 Atmos H 264-STC\n📅 S02E01 👤 16 💾 1.78 GB ⚙️ ThePirateBay",
+      "infoHash": "04c4d0557ba5b468b5e7a3e5d1b71977412ba431",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Future Days 1080p MAX WEB-DL DDP5 1 Atmos H 264-STC.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 1080p AMZN WEB-DL DDP5 1 H 264-NTb\n📅 S02E01 👤 15 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "e0953f500e8fd6c92967f346ca37f5448d4d1d7a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 1080p AMZN WEB-DL DDP5 1 H 264-NTb.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kits\n📅 S02E01 👤 11 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "25230d1cc30419139900e3445aecfdfa0755b07e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 1080p WEB-DL HEVC x265-RMTeam\n📅 S02E01 👤 8 💾 865.66 MB ⚙️ ThePirateBay",
+      "infoHash": "ebef81c2e372d8467cd18152b6a0cdcdc33fd265",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 1080p WEB-DL HEVC x265-RMTeam.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.Episode.1.1080p.HEVC.x265-MeGusta\n📅 S02E01 👤 6 💾 764.12 MB ⚙️ ThePirateBay",
+      "infoHash": "d92e620798576fb4fb1a3c2f75b1b0b9d15d1a52",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.Episode.1.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.Future.Days.1080p.WEBRip.10bit.DDP5.1.x265-HODL\n📅 S02E01 👤 6 💾 828.25 MB ⚙️ ThePirateBay",
+      "infoHash": "a7f503f0d4a7a3ea64a5c616fa042922f8ff4871",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.Of.Us.S02.COMPLETE.1080p.MAX.WEB-DL.DDP5.1.Atmos.H264.MP4-BEN.THE.MEN\nThe.Last.Of.Us.S02E01.1080p.MAX.WEB-DL[Ben The Men].mp4\n📅 S02E01 👤 5 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "a9b745f056967b784d9cc099f689c9ff5159ec17",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a9b745f056967b784d9cc099f689c9ff5159ec17",
+        "filename": "The.Last.Of.Us.S02E01.1080p.MAX.WEB-DL[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 5 💾 4.02 GB ⚙️ ThePirateBay",
+      "infoHash": "8aae9326cb032f992a403a41c62986260c124c1d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The Last of Us S02E01 Future Days 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "The.Last.of.Us.S02E01.1080p.x265-ELiTE\n📅 S02E01 👤 5 💾 1.12 GB ⚙️ ThePirateBay",
+      "infoHash": "eb93eca1c69f3810eb93386ed64374928aed5727",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "The.Last.of.Us.S02E01.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 720p MAX WEB-DL DDP5 1 x264-NTb\n📅 S02E01 👤 790 💾 960.77 MB ⚙️ ThePirateBay",
+      "infoHash": "c6f2dbc921d2819fcfdba1d6681d773de0af0177",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The Last of Us S02E01 720p MAX WEB-DL DDP5 1 x264-NTb[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The.Last.of.Us.S02E01.720p.WEB.x265-MiNX\n📅 S02E01 👤 409 💾 386.61 MB ⚙️ knaben",
+      "infoHash": "EADF7573EEFA8056F5CEA3B632DD9C5C3E113A55",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.720p.WEB.x265-MiNX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 720p HEVC x265-MeGusta\n📅 S02E01 👤 297 💾 541.47 MB ⚙️ ThePirateBay",
+      "infoHash": "a7d90ea9b3efe44c5fcd93e3ac96fdaff1406913",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The.Last.of.Us.S02.720p.x264-FENiX\nThe.Last.of.Us.S02E01.720p.x264-FENiX.mkv\n📅 S02E01 👤 258 💾 830.60 MB ⚙️ 1337x",
+      "infoHash": "654ffd91393b061974e59676aa261e835a0943db",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|654ffd91393b061974e59676aa261e835a0943db",
+        "filename": "The.Last.of.Us.S02E01.720p.x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 720p MAX WEB-DL DDP5 1 x264-NTb\n📅 S02E01 👤 63 💾 960.77 MB ⚙️ ThePirateBay",
+      "infoHash": "61d20d5d948924b1c8c15e682c164313afb5fec9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The Last of Us S02E01 720p MAX WEB-DL DDP5 1 x264-NTb.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02e01 [720p Ita Eng Spa SubS] byMe7alh [MIRCrew]\n📅 S02E01 👤 54 💾 1.57 GB ⚙️ ThePirateBay",
+      "infoHash": "01e88329c0124a3389b18b68b9a478953bf74aa1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02e01.Ita.Eng.Spa.h264.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us 2023 Season 2 Complete 720p WEB x264 [i_c]\nThe Last of Us - S02E01 - Future Days.mkv\n📅 S02E01 👤 51 💾 786.80 MB ⚙️ 1337x",
+      "infoHash": "acf52b49562834747bfb0cd6e018c8a0cf2d5bf1",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|acf52b49562834747bfb0cd6e018c8a0cf2d5bf1",
+        "filename": "The Last of Us - S02E01 - Future Days.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The.Last.of.Us.S02E01.720p.HEVC.x265-MeGusta\n📅 S02E01 👤 36 💾 541.47 MB ⚙️ ThePirateBay",
+      "infoHash": "10e019073fea5463a3029fa2d591cb1ffb54f0c4",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.720p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02e01-07 [720p Ita Eng Spa SubS] byMe7alh [MIRCrew]\nThe.Last.of.Us.S02e01.Ita.Eng.Spa.h264.SubS-Me7alh.mkv\n📅 S02E01 👤 22 💾 1.60 GB ⚙️ 1337x",
+      "infoHash": "30603b0a40c8d9cb4b7bdf7e0c99ee6b1594e7e8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|30603b0a40c8d9cb4b7bdf7e0c99ee6b1594e7e8",
+        "filename": "The.Last.of.Us.S02e01.Ita.Eng.Spa.h264.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The.Last.of.Us.S02E01.720p.x264-FENiX\n📅 S02E01 👤 20 💾 830.57 MB ⚙️ ThePirateBay",
+      "infoHash": "0b743f40d363f85441df06d0dd92fe12cfd6e081",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.720p.x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 Future Days 720p MAX WEB-DL DDP5 1 Atmos H 264-FLUX\n📅 S02E01 👤 16 💾 960.73 MB ⚙️ ThePirateBay",
+      "infoHash": "900e001111658d6e3037dced86cbcfdc1ed236bb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The Last of Us S02E01 Future Days 720p MAX WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The.Last.of.Us.S02E01.Future.Days.720p.HEVC.x265-MeGusta\n📅 S02E01 👤 15 💾 541.47 MB ⚙️ ThePirateBay",
+      "infoHash": "819e0f9fcfbf26e73d9ff46b211887a3a1330941",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.Future.Days.720p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 720p 10bit WEBRip 2CH x265 HEVC-PSA\n📅 S02E01 👤 13 💾 364.71 MB ⚙️ ThePirateBay",
+      "infoHash": "24fa60570ab932c40197a344b4fb4c5ab93f8ae3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The Last of Us S02E01 720p 10bit WEBRip 2CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 720p x264-FENiX\n📅 S02E01 👤 11 💾 830.57 MB ⚙️ ThePirateBay",
+      "infoHash": "427108a3d00994d8c915934faf424c4a55b85762",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.720p.x264-FENiX[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The.Last.of.Us.S02E01.720p.x264-FENiX\n📅 S02E01 👤 5 💾 830.57 MB ⚙️ ThePirateBay",
+      "infoHash": "bc504c171124059ce8a029351974909f49acae0c",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The.Last.of.Us.S02E01.720p.x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "The Last of Us S02E01 720p AMZN WEB-DL DDP5 1 H 264-NTb\n📅 S02E01 👤 5 💾 2.07 GB ⚙️ ThePirateBay",
+      "infoHash": "8001aec1b9d54a385d07d377c477c383edd32c72",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "The Last of Us S02E01 720p AMZN WEB-DL DDP5 1 H 264-NTb.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "The Last of Us S02E01 Episode 1 480p x264-mSD\n📅 S02E01 👤 19 💾 442.86 MB ⚙️ ThePirateBay",
+      "infoHash": "c7239ca34a07a29a92d89dde3c4a6feeeeaea639",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "The.Last.of.Us.S02E01.Episode.1.480p.x264-mSD[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "The Last of Us S02E01 480p x264-mSD\n📅 S02E01 👤 5 💾 441.39 MB ⚙️ ThePirateBay",
+      "infoHash": "f077d355e47d404f00c1808e3a624089b4873694",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "The.Last.of.Us.S02E01.480p.x264-mSD[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "The Last of Us\n📅 S02E01 👤 1107 💾 476.42 MB ⚙️ Torrent9",
+      "infoHash": "4128218277aab216551f335bdad418ef33ea8420",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "The.Last.of.Us.S02E01.FRENCH.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:4128218277aab216551f335bdad418ef33ea8420"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Одни из нас / The Last of Us [\nОдни из нас - 2 сезон _ [scarfilm]/The.Last.of.Us.S02E01__[scarfilm].mkv\n📅 S02E01 👤 521 💾 4.28 GB ⚙️ rutor",
+      "infoHash": "add49c0b397910af3d19123f7d684c51d0cd3f29",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|add49c0b397910af3d19123f7d684c51d0cd3f29",
+        "filename": "The.Last.of.Us.S02E01__[scarfilm].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:add49c0b397910af3d19123f7d684c51d0cd3f29"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "The Last of Us\n📅 S02E01 👤 327 💾 479.49 MB ⚙️ Torrent9",
+      "infoHash": "8d32552326bf5b516c116319ab3cf8b2f1f50916",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "The.Last.of.Us.S02E01.VOSTFR.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:8d32552326bf5b516c116319ab3cf8b2f1f50916"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Одни из нас / The Last of Us [\nThe.Last.of.Us.2025.S02.WEB-DLRip.x264.seleZen/The.Last.of.Us.S02E01.WEB-DLRip.x264.seleZen.mkv\n📅 S02E01 👤 135 💾 945.53 MB ⚙️ rutor",
+      "infoHash": "4a53a8ff51977a58cfc6f8badd39259440276ec5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4a53a8ff51977a58cfc6f8badd39259440276ec5",
+        "filename": "The.Last.of.Us.S02E01.WEB-DLRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.desol.one:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:https://tracker.lilithraws.org:443/announce",
+        "tracker:https://tracker.yemekyedim.com:443/announce",
+        "tracker:https://trackers.mlsub.net:443/announce",
+        "tracker:http://bt.okmp3.ru:2710/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:4a53a8ff51977a58cfc6f8badd39259440276ec5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nxvid",
+      "title": "The Last of Us S02E01 Episode 1 XviD-AFG\n📅 S02E01 👤 57 💾 662.67 MB ⚙️ ThePirateBay",
+      "infoHash": "925188e02c1b8a6c85d8c9728cff2fc9a756f777",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|xvid",
+        "filename": "The.Last.of.Us.S02E01.Episode.1.XviD-AFG[EZTVx.to].avi"
+      }
+    },
+    {
+      "name": "TorrentsDB\nxvid",
+      "title": "The Last of Us S02E01 XviD-AFG\n📅 S02E01 👤 52 💾 664.71 MB ⚙️ ThePirateBay",
+      "infoHash": "277f4f2987dd23d7982a80265d782252c31ec053",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|xvid",
+        "filename": "The.Last.of.Us.S02E01.XviD-AFG[EZTVx.to].avi"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1470 @@
+{
+  "addon": "torrentio-tb",
+  "config": "torbox",
+  "title": "lanterns-s01e08",
+  "request": "https://torrentio.strem.fun/<config>/stream/series/tt26545992%3A1%3A8.json",
+  "recordedAt": "2026-10-11T12:05:45.910Z",
+  "status": 200,
+  "ms": 558,
+  "streams": [
+    {
+      "name": "[TB+] Torrentio\n4320p HDR",
+      "title": "Lanterns - S01E08 - 4320p HDR Ai Upscale 5.1 Atmos MultiDub/Sub MKV -Mesc\n👤 9 💾 10.78 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b4bd478886b26106470754dbe1e884c043c68747/<opaque>/Lanterns - S01E08 - Dirt and Stars - 4320p HDR Ai Upscale -Mesc.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4320p|HDR|Mesc",
+        "filename": "Lanterns - S01E08 - Dirt and Stars - 4320p HDR Ai Upscale -Mesc.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX\n👤 748 💾 6.1 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0ebb87c3d45a200598de00da015cd97ee5a68106/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+.DDP5.1.Atmos..H265.MP4-BTM\n👤 714 💾 6.49 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇵🇱 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f56df75335ee7d00c1eea36e9574be5294e37ea3/<opaque>/Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR10+",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.2160p.AMZN.WEB-DL.DDP5.1.…\n👤 363 💾 6.35 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/781b523a3f7371c0ae97ee8f337fd16358025dcc/<opaque>/Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.2160p.AMZN.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.2160p.AMZN.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+ | HDR",
+      "title": "Фонари / Lanterns / Сезон: 1 / Серии: 1-8 из 8 [2026 HDR10 HDR10+ Dolby Vision WEB-DL 2160p 4k] [Hybrid] 5 x MVO + DVO + 3 x Dub + Ukr MVO + Original + Sub (Rus Eng)\nLanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR.H.265.mkv\n👤 206 💾 8.47 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/da6337d52ab43186acbdf94807d4478a9dec5909/<opaque>/Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR.H.265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|da6337d52ab43186acbdf94807d4478a9dec5909",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR.H.265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Lanterns.S01E08.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA\n👤 108 💾 898.8 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c8443560609912b024c7f6b0c20228fe38861f36/<opaque>/Lanterns.S01E08.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR10+|PSA",
+        "filename": "Lanterns.S01E08.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p HMAX WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX\n👤 93 💾 1.46 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e4fceaa5d185abf87e788b7f463815ea10cbde1d/<opaque>/Lanterns S01E08 Dirt and Stars 2160p HMAX WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p HMAX WEB-DL DDP5 1 Atmos DV HDR H 265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns S01E08 (2026)(CZ/SK/EN)[2160p][WEB-DL][DV/HDR][HEVC]\n👤 64 💾 1.61 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69b1e3ad9f2e40fc72f513cb59582f517d1f23d2/<opaque>/Lanterns_S01E08_Dirt and Stars.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Lanterns_S01E08_Dirt and Stars.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.ITA.ENG.DDP5.1.…\n👤 58 💾 6.35 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b2a1dbd273f24da4ac7069bbd5cc5f7aa8651190/<opaque>/Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.ITA.ENG.DDP5.1.DV.HDR.H.265-G66.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.ITA.ENG.DDP5.1.DV.HDR.H.265-G66.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns S01E08 (2026)(CZ/SK/EN)[2160p][WEB-DL][DV/HDR][HEVC]\n👤 41 💾 6.3 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/35181c95a84e7ba8d86f16d9d3602673de856bac/<opaque>/Lanterns.S01E08.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|FLUX",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01.2160p.WEBRip.DV.HDR.x265-KONTRAST\nLanterns.S01E08.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv\n👤 30 💾 3.48 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0eda921cbaca673ceefd1919f3bd454311da7e24/<opaque>/Lanterns.S01E08.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0eda921cbaca673ceefd1919f3bd454311da7e24",
+        "filename": "Lanterns.S01E08.2160p.WEBRip.DV.HDR.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Lanterns.S01.2026.2160p.WEB-DL.HDR.H265.Master5\nLanterns.S01E08.2160p.HDR.Master5.mkv\n👤 24 💾 6.73 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9beab9cc4b8006928746a69b19b09bb033afd55e/<opaque>/Lanterns.S01E08.2160p.HDR.Master5.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9beab9cc4b8006928746a69b19b09bb033afd55e",
+        "filename": "Lanterns.S01E08.2160p.HDR.Master5.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns 2026 S01 2160p AMZN WEB-DL DDP5.1 Atmos DV HDR H265-FLUX\nLanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv\n👤 24 💾 6.1 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c7a7a6580eb59aac7ddd80e034a718dfc25d1410/<opaque>/Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|c7a7a6580eb59aac7ddd80e034a718dfc25d1410",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns (2026) Season 1 2160p 4K HDR10 DV WEB-DL Dual Audio [Hi…\nSeason 1/Lanterns - S01E08 - Dirt and Stars 2160p HDR [hin, eng].mkv\n👤 24 💾 6.43 GB ⚙️ TorrentGalaxy\nDual Audio / 🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6cc55343ce299350183b2f20b5dc776378d3175/<opaque>/Lanterns - S01E08 - Dirt and Stars 2160p HDR [hin, eng].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d6cc55343ce299350183b2f20b5dc776378d3175",
+        "filename": "Lanterns - S01E08 - Dirt and Stars 2160p HDR [hin, eng].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k HDR",
+      "title": "Lanterns.S01.2026.2160p.WEB-DL.HDR.H265.Master5\nLanterns.S01E08.2160p.HDR.Master5.mkv\n👤 20 💾 6.56 GB ⚙️ EXT\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e6c300205a9583b614c8184c421d524a365e6df4/<opaque>/Lanterns.S01E08.2160p.HDR.Master5.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e6c300205a9583b614c8184c421d524a365e6df4",
+        "filename": "Lanterns.S01E08.2160p.HDR.Master5.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns [Sezon01] [MULTi] [2160p] [AMZN] [WEB-DL] [DV] [HDR] [H.265] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\nLanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv\n👤 19 💾 6.15 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5ec90fddf8d21ddbbd5f1dc18a65893f9f877177/<opaque>/Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|5ec90fddf8d21ddbbd5f1dc18a65893f9f877177",
+        "filename": "Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01E08.FiNAL.MULTi.VFF.HDR.DV.2160p.WEB.H265-GL0P\n👤 19 💾 1.5 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8898bc0af3aea8a8d875bba9a017de5fd2d4f5c5/<opaque>/Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|GL0P",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.HDR.DV.2160p.WEB.H265-GL0P.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR10Plus H 265-Kitsune\n👤 17 💾 6.1 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/28557727f692acd7092fcf8ee79e23d4eb75bcf7/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR10Plus H 265-Kitsune.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR10+|Kitsune",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV HDR10Plus H 265-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Lanterns S01E08 2160p HDR10Plus DV WEBRip 6CH x265 HEVC-PSA\n👤 16 💾 898.8 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c944f5b3c3564766f8160e2b3764bea59fc0327d/<opaque>/Lanterns S01E08 2160p HDR10Plus DV WEBRip 6CH x265 HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR10+|PSA",
+        "filename": "Lanterns S01E08 2160p HDR10Plus DV WEBRip 6CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns (2026) (S01 Complete) MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83 [Lektor & Napisy PL]\nLanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv\n👤 10 💾 6.15 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b2efea06adc60a2135f5a3c738dbc249dd6fe32f/<opaque>/Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b2efea06adc60a2135f5a3c738dbc249dd6fe32f",
+        "filename": "Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns [S01E08] [Finał] [MULTi] [2160p] [AMZN] [WEB-DL] [DV] [HDR] [H.265] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\n👤 10 💾 6.15 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/abde308e5428bbc936568b89411e8a7d33007824/<opaque>/Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR",
+        "filename": "Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-EiNSTEi…\nLanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.H.265-EiNSTEiNSiR.mkv\n👤 6 💾 1.4 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7362e530809f999002c8d0e69d9d5669302ed788/<opaque>/Lanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.H.265-EiNSTEiNSiR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7362e530809f999002c8d0e69d9d5669302ed788",
+        "filename": "Lanterns.S01E08.2160p.HMAX.WEB-DL.DDP5.1.Atmos.DV.H.265-EiNSTEiNSiR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-FLUX\n👤 5 💾 8.19 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/36b0e440f7f2b5bcaca2fd3d7cf4feefc13f0482/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83\n👤 5 💾 6.15 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a6e39d4949915a54c3cb18d256d80dfcf392be6f/<opaque>/Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR",
+        "filename": "Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Lanterns.S01.2160p.AMZN.WEB-DL.DV.HDR10+.DDP5.1.Atmos.H265.MP4-BTM\nLanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4\n👤 5 💾 6.49 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇵🇱 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇻🇳 / 🇮🇩 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/791520c2aa2ed20dd17a82af80d94199fc2c120d/<opaque>/Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|791520c2aa2ed20dd17a82af80d94199fc2c120d",
+        "filename": "Lanterns.S01E08.2160p.AMZN.WEB-DL.DV.HDR10+[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR10+",
+      "title": "Lanterns.2026.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.DDP5.1.Atmos.DV.HDR10Plus.H.265-KRATOS\n👤 4 💾 6.1 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e944bd608e4d8b4fe94b4cc861b8d3ee49096752/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR10+|KRATOS"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HEVC-NTb\n👤 4 💾 8.19 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8390b985d505f884247c684b799fe26df53ec34e/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HEVC-NTb.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|NTb",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HEVC-NTb.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-Kitsune\n👤 3 💾 8.19 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f277be1ed2067439c66c87b927fa195bc865e32e/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-Kitsune.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|Kitsune",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos DV H 265-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HDR HEVC-NTb\n👤 2 💾 6.1 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/34125f6af574421654e730a430b3d57d42e64514/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HDR HEVC-NTb.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|NTb",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 DV HDR HEVC-NTb.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01E08.FINAL.MULTi.VFF.HDR.DV.2160p.WEB.H265.mkv\n👤 1 💾 6.2 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/015c9dab88bb4911ef93ba2781e5ed9d1758744f/<opaque>/Lanterns.S01E08.FINAL.MULTi.VFF.HDR.DV.2160p.WEB.H265.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR",
+        "filename": "Lanterns.S01E08.FINAL.MULTi.VFF.HDR.DV.2160p.WEB.H265.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB.DL.DDP5.1.Atmos.DoVi.HDR.H.265.HeBits-FLUX\n👤 0 💾 6.1 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7c61aab255b57925835bdc86b34ae31607f2caea/<opaque>/Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB.DL.DDP5.1.Atmos.DoVi.HDR.H.265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|DV|HDR|FLUX",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.AMZN.WEB.DL.DDP5.1.Atmos.DoVi.HDR.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns (2026) Season 1 S01 (2160p AMZN WEB-DL x265 HEVC 10bit …\nLanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n👤 330 💾 2.36 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/01226f960aa7e9f4664467ae02b269678515243d/<opaque>/Lanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|01226f960aa7e9f4664467ae02b269678515243d",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG\n👤 153 💾 2.1 GB ⚙️ EZTV\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dd6068ca9bc64cabcca9b98603b891e3260697ec/<opaque>/Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG[EZTVx.to].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|TURG",
+        "filename": "Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-FLUX\n👤 62 💾 6.19 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6c7f749732b0b1af677eaa73ee1d741d12e546a4/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns (2026) Season 1 S01 (2160p AMZN WEB-DL x265 HEVC 10bit …\nLanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv\n👤 36 💾 2.37 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f7823c4975765a1974729b85a20ea58d3bc3265/<opaque>/Lanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8f7823c4975765a1974729b85a20ea58d3bc3265",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.2160p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG\n👤 25 💾 2.1 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0135bf909839fa8763c405b6c5ccc1d59148bb79/<opaque>/Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|TURG",
+        "filename": "Lanterns S01E08 2026 4K HMAX WEB-DL DDP5 1 H 265-TURG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns S01E08 FiNAL MULTi 2160p SDR WEB DD5 1 H265-SiC\n👤 15 💾 2.57 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a720671a4d7b11a69db1cd6f5b7d65d4a2c6c120/<opaque>/Lanterns S01E08 FiNAL MULTi 2160p SDR WEB DD5 1 H265-SiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|SiC",
+        "filename": "Lanterns S01E08 FiNAL MULTi 2160p SDR WEB DD5 1 H265-SiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns S01E08 FiNAL MULTi 2160p SDR WEB DD5 1 H265-SiC\n👤 9 💾 2.57 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/943f78127633ff53e8b54c2dba3b8546e8e27de8/<opaque>/Lanterns.S01E08.FiNAL.MULTi.2160p.SDR.WEB.DD5.1.H265-SiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|SiC",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.2160p.SDR.WEB.DD5.1.H265-SiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Фонари / Lanterns / Сезон: 1 / Серии: 1-8 из 8 [2026 SDR WEB-DL 2160p 4k] 5 x MVO + DVO + 3 x Dub + Ukr + Original + Sub (Rus Eng Ukr)\nLanterns.S01E08.Dirt.and.Stars.AMZN.SDR.WEB-DL.2160p.by.AKTEP.mkv\n👤 8 💾 6.7 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8f5998b372c9d64c3a915077fac70d5e9a8cb1c9/<opaque>/Lanterns.S01E08.Dirt.and.Stars.AMZN.SDR.WEB-DL.2160p.by.AKTEP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8f5998b372c9d64c3a915077fac70d5e9a8cb1c9",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.AMZN.SDR.WEB-DL.2160p.by.AKTEP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-Kitsune\n👤 3 💾 6.19 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8aa4334e2a90f1d903e38321e54652e5610253ab/<opaque>/Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-Kitsune.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|Kitsune",
+        "filename": "Lanterns S01E08 Dirt and Stars 2160p AMZN WEB-DL DDP5 1 Atmos H 265-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n4k",
+      "title": "Lanterns.2026 S01E01-E08\nLanterns.2026.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.mkv\n👤 1 💾 6.35 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/eb01840064e82ffdb111e08b2c64920e0ab46211/<opaque>/Lanterns.2026.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|eb01840064e82ffdb111e08b2c64920e0ab46211",
+        "filename": "Lanterns.2026.S01E08.Dirt.and.Stars.2160p.AMZN.WEB-DL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p WEB h264-ETHEL\n👤 5912 💾 1.63 GB ⚙️ EZTV\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/44f42ad9317adf72ec3564a85e4165a1d8836a8e/<opaque>/Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL[EZTVx.to].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ETHEL",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p x265-ELiTE\n👤 2819 💾 475 MB ⚙️ EZTV",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1da50931b7e94263b981c55694b23f1f03fdd8f6/<opaque>/Lanterns 2026 S01E08 1080p x265-ELiTE[EZTVx.to].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "Lanterns 2026 S01E08 1080p x265-ELiTE[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir\n👤 1542 💾 384.5 MB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6790122eed127fae3d659d06dd060e51b1018d9c/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|NeoNoir",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01.Complete.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir\nLanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv\n👤 955 💾 384.5 MB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d21af857fe3ea1529cdd5266878ca3f3f444dd10/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d21af857fe3ea1529cdd5266878ca3f3f444dd10",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.1080p.HMAX.WEB-DL.ENG.Atmos.ITA.DDP5.1.H265-TBK\n👤 809 💾 1.63 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c3a0649d5bcfe57f4ab76c6df489188f4c1ffb23/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.HMAX.WEB-DL.ENG.Atmos.ITA.DDP5.1.H265-TBK.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|TBK",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.HMAX.WEB-DL.ENG.Atmos.ITA.DDP5.1.H265-TBK.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD.mkv\n👤 638 💾 1.42 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0bfdcf570ae651546d40c467659a05d50ae97395/<opaque>/Lanterns.S01E08.MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|XuploaD",
+        "filename": "Lanterns.S01E08.MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.x265-ELiTE\n👤 628 💾 475 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ee1ae4f4d44b53e79e95b48faa4f4461586df01b/<opaque>/Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanternas.S01E08.WEB-DL.1080p.x264.DUAL.5.1-STARCKFILMES\n👤 511 💾 1.7 GB ⚙️ EXT\nDual Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dff93e5c6cc768a5f05553db56c3ea22a9aed914/<opaque>/Lanternas.S01E08.WEB-DL.1080p.x264.DUAL.5.1-STARCKFILMES.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|STARCKFILMES",
+        "filename": "Lanternas.S01E08.WEB-DL.1080p.x264.DUAL.5.1-STARCKFILMES.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns (2026) S01 (1080p AMZN WEB-DL x265 10bit EAC3 Atmos 5.1…\nLanterns (2026) - S01E08 - Dirt and Stars (1080p AMZN WEB-DL x265 Silence).mkv\n👤 489 💾 1.34 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bd87515292e49ee7da65403e6308a5e2ff9b50e0/Lanterns (2026) - S01E08 - Dirt and Stars (1080p AMZN WEB-DL x265 Silence).mkv/7/Lanterns (2026) - S01E08 - Dirt and Stars (1080p AMZN WEB-DL x265 Silence).mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bd87515292e49ee7da65403e6308a5e2ff9b50e0",
+        "filename": "Lanterns (2026) - S01E08 - Dirt and Stars (1080p AMZN WEB-DL x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanternas S01E08 WEB-DL 1080p x264 DUAL 5.1\n👤 429 💾 1.79 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/15614fe9c292bf7902af3ab3ce4ff9faacd27dea/<opaque>/Lanternas S01E08 WEB-DL 1080p x264 DUAL 5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanternas S01E08 WEB-DL 1080p x264 DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P\n👤 414 💾 1.79 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c37b20ff048ddd236ff8d16e54e271bf3f229654/<opaque>/Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|GL0P",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.H264-GL0P.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p WEB h264-ETHEL\n👤 413 💾 1.63 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/5dd00bed994843b89200b0829b55e08220a94b72/<opaque>/Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ETHEL",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.WEB-DL.DUAL.5.1\n👤 299 💾 1.79 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇵🇹 / 🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f7a0cc00acb3a85a62b291f75d0718188c70c6a7/<opaque>/Lanterns.S01E08.1080p.WEB-DL.DUAL.5.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.1080p.WEB-DL.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns - Season 01 (2026)[COMPLETE] 1080p HMax Rip x265 ita en…\nLanterns.1x08.Stalla.E.Stelle.ITA.ENG.1080p.HMax.AAC.x265-Pir8.mkv\n👤 268 💾 600.19 MB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/98fd464ad62fc8f58d10c6241813c16147881a24/<opaque>/Lanterns.1x08.Stalla.E.Stelle.ITA.ENG.1080p.HMax.AAC.x265-Pir8.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|98fd464ad62fc8f58d10c6241813c16147881a24",
+        "filename": "Lanterns.1x08.Stalla.E.Stelle.ITA.ENG.1080p.HMax.AAC.x265-Pir8.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Linternas [HDTV 1080p][Cap.108]\n👤 230 💾 1.79 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/85c902fda26026f31d3252303a7ed147bda2b0a9/<opaque>/Linternas [HDTV 1080p][Cap.108].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Linternas [HDTV 1080p][Cap.108].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01 Season 1 1080p HMAX WEBRip AAC5.1 10bits x265-Rapta\nLanterns - S01E08 - Dirt and Stars.mkv\n👤 227 💾 344.36 MB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4461bbfd33a8b70e304080262ce3198d03ff8329/<opaque>/Lanterns - S01E08 - Dirt and Stars.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4461bbfd33a8b70e304080262ce3198d03ff8329",
+        "filename": "Lanterns - S01E08 - Dirt and Stars.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.1080p.AMZN.WEB-DL.DDP5.1.…\n👤 213 💾 1.79 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/335bfc8864d924dc999aa7d8b4c657dd922bf817/<opaque>/Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.1080p.AMZN.WEB-DL.DDP5.1.H.264-MeM.GP.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.ITA.ENG.1080p.AMZN.WEB-DL.DDP5.1.H.264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Фонари / Lanterns / Сезон: 1 / Серии: 1-8 из 8 [2026 WEB-DL 1080p] MVO + Dub + Ukr MVO + Original + Sub (Rus Eng Heb)\nLanterns.S01E08.1080p.WEB-DL.RGzsRutracker.mkv\n👤 207 💾 2.1 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦 / 🇮🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a2de5c53c86afcd103123809c232c49eec36ebc4/<opaque>/Lanterns.S01E08.1080p.WEB-DL.RGzsRutracker.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a2de5c53c86afcd103123809c232c49eec36ebc4",
+        "filename": "Lanterns.S01E08.1080p.WEB-DL.RGzsRutracker.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n👤 191 💾 1.63 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d86dcdf33c213162b0c993b8522d9b4a8a966fe5/<opaque>/Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ETHEL",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns Saison 1 MULTI TRUEFRENCH HDTV 1080p 2026\nLanterns.S01E08.FiNAL.MULTi.VFF.1080p.WEB.EAC3.5.1.H264-FRQC.mkv\n👤 181 💾 2.05 GB ⚙️ Torrent9\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0d23b136a74e1e1f8e2095f9b98bbd5c47a2d035/<opaque>/Lanterns.S01E08.FiNAL.MULTi.VFF.1080p.WEB.EAC3.5.1.H264-FRQC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0d23b136a74e1e1f8e2095f9b98bbd5c47a2d035",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.VFF.1080p.WEB.EAC3.5.1.H264-FRQC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta\n👤 181 💾 385.11 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce7debf40834fa32879288a2f42468b6cf54d137/<opaque>/Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX\n👤 151 💾 1.59 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/bf30dc43c7f55c7849a6d9708ac80f06bee084d9/<opaque>/Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 140 💾 523.61 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9e7e0297ea8c37a0427bd2aad4025e489fa55c46/<opaque>/Lanterns.S01E08.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|PSA",
+        "filename": "Lanterns.S01E08.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.…\n👤 139 💾 1.79 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fbb553a40d0b95972a390f2016996b64d7235d0e/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.264-G66.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.264-G66.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.x265-ELiTE\n👤 138 💾 475 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8177f33339852dd54800c83bae51e949ee37a362/<opaque>/Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns_S01-komplet_CZ_dab [1080p]\nLanterns_S01E08 Špína a hvězdy.avi\n👤 131 💾 871.43 MB ⚙️ EXT\n🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/041cf87e56b36aa194f7b9fee6836ee06ab8c93c/<opaque>/Lanterns_S01E08 Špína a hvězdy.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|041cf87e56b36aa194f7b9fee6836ee06ab8c93c",
+        "filename": "Lanterns_S01E08 Špína a hvězdy.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.HMAX.WEBRip.AAC5.1.10bits.x265-Rapta\n👤 130 💾 344.36 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6ccaac66c24cbb7b7e6e0f4d21c43210dd29de3b/<opaque>/Lanterns - S01E08 - Dirt and Stars.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns - S01E08 - Dirt and Stars.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01 [1080p]\nLanterns S01E08.mkv\n👤 105 💾 1.83 GB ⚙️ EXT\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/69397648edf9d5261c440fef2f752184edd95ece/Lanterns S01E08.mkv/7/Lanterns S01E08.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|69397648edf9d5261c440fef2f752184edd95ece",
+        "filename": "Lanterns S01E08.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 (2026)(CZ/SK/EN)[1080p][WEB-DL]\n👤 101 💾 1.79 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ba071ca5084ce7c6ca6577b27ca36c328dffaed6/<opaque>/Lanterns.S01E08.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FLUX",
+        "filename": "Lanterns.S01E08.1080p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p HEVC x265-MeGusta\n👤 90 💾 385.11 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/48b7bb3e5e9737353ea47243b4fe70a25f51002d/<opaque>/Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Lanterns.2026.S01E08.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 1080p AMZN WEB-DL DD 5 1 H 264-playWEB\n👤 82 💾 1.54 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4e2881424b8baba1eda15292216649248be9c178/<opaque>/Lanterns S01E08 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|playWEB",
+        "filename": "Lanterns S01E08 1080p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 Dirt and Stars 1080p DSNP WEB-DL DDP5 1 Atmos H 264-FLUX\n👤 81 💾 1.79 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8ef724a56acc9c6769751eb68551851d56e83f90/<opaque>/Lanterns S01E08 Dirt and Stars 1080p DSNP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p DSNP WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns - Season 1 - Mp4 x264 AC3 1080p\nLanterns S01E08.mp4\n👤 80 💾 1.49 GB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/02eeadcd3a5a2baa4931d6d568560c932d5181e6/Lanterns S01E08.mp4/7/Lanterns S01E08.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|02eeadcd3a5a2baa4931d6d568560c932d5181e6",
+        "filename": "Lanterns S01E08.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01.1080p.WEBRip.x265-KONTRAST\nLanterns.S01E08.1080p.WEBRip.x265-KONTRAST.mkv\n👤 73 💾 1.5 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dde7c44ff54935d73ac9ed01bf1798bb862cd3fe/<opaque>/Lanterns.S01E08.1080p.WEBRip.x265-KONTRAST.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dde7c44ff54935d73ac9ed01bf1798bb862cd3fe",
+        "filename": "Lanterns.S01E08.1080p.WEBRip.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns (2026) (S01 Complete) MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD [Lektor & Napisy PL]\nLanterns.S01E08.MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD.mkv\n👤 70 💾 1.42 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a74a07d094c5c24eb75dbf158644ce8c95216012/<opaque>/Lanterns.S01E08.MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a74a07d094c5c24eb75dbf158644ce8c95216012",
+        "filename": "Lanterns.S01E08.MULTi.1080p.MAX.WEB-DL.DDP5.1.H265-XuploaD.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Linternas.S01E08.2026.WEB-DL.1080p-Dual-Lat\n👤 67 💾 1.8 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e1611761ec6670b1c388d0b6dc720bb3fc141378/<opaque>/Linternas.S01E08.2026.WEB-DL.1080p-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Lat",
+        "filename": "Linternas.S01E08.2026.WEB-DL.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns (2026) S01 EP 08 TRUE WEB-DL - 1080p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng]\n👤 66 💾 1.49 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/75a00dccf10665eb25b296dc616d288dbff40275/www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 1080p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv/0/www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 1080p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 1080p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 (2026)(CZ/SK/EN)[1080p][WEB-DL][HEVC]\n👤 62 💾 1.53 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6754f051166ac8d2b4a9829afcfdf65353614d33/<opaque>/Lanterns_S01E08_Dirt and Stars.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns_S01E08_Dirt and Stars.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 FINAL MULTI 1080p WEB H264-HiggsBoson\n👤 58 💾 1.79 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2793dcf82f6ea5274cb82c0ecf80cb5878c869d8/<opaque>/lanterns.2026.s01e08.final.multi.1080p.web.h264-higgsboson.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|higgsboson",
+        "filename": "lanterns.2026.s01e08.final.multi.1080p.web.h264-higgsboson.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 1080p 10bit WEBRip 6CH x265 HEVC-PSA\n👤 48 💾 523.62 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3ccb83b34a83e01ff82d732678981625f751a6c8/<opaque>/Lanterns S01E08 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|PSA",
+        "filename": "Lanterns S01E08 1080p 10bit WEBRip 6CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p x265-ELiTE\n👤 43 💾 475 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1288a03fe399ec09a32b1e41159399fd26fc32dd/<opaque>/Lanterns 2026 S01E08 1080p x265-ELiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "Lanterns 2026 S01E08 1080p x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns [S01E08] [Finał] [MULTi] [1080p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\n👤 41 💾 1.64 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2dfe30190ca1061e02cea859e0fb814aaa745496/<opaque>/Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01.1080p.x265-ELiTE\nLanterns.2026.S01E08.1080p.x265-ELiTE.mkv\n👤 39 💾 475 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7b12773809a771cc2959ed7badc7606fd1969db7/<opaque>/Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7b12773809a771cc2959ed7badc7606fd1969db7",
+        "filename": "Lanterns.2026.S01E08.1080p.x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.…\n👤 29 💾 1.38 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/291dbf5ab7411329fc2ee188d1e1d493b7a6aa9c/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.265-G66.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.ITA.ENG.DDP5.1.H.265-G66.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01.1080p.NewComers\nLanterns.S01E08.1080p.NewComers.mkv\n👤 15 💾 2.39 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/98e9a4e87f475affcb8ce3c89a911f5120ce80c1/<opaque>/Lanterns.S01E08.1080p.NewComers.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|98e9a4e87f475affcb8ce3c89a911f5120ce80c1",
+        "filename": "Lanterns.S01E08.1080p.NewComers.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01.1080p.Ru.Ultradox\nLanterns.S01E08.1080p.Ru.Ultradox.mkv\n👤 13 💾 2.13 GB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f43a9ec34d0416164fbf59298805a9df1bf588bc/<opaque>/Lanterns.S01E08.1080p.Ru.Ultradox.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f43a9ec34d0416164fbf59298805a9df1bf588bc",
+        "filename": "Lanterns.S01E08.1080p.Ru.Ultradox.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.WEB.h264-TRB\n👤 12 💾 1.63 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/708cb13fb6faea18bf8c766ad736869596c63fe1/<opaque>/Lanterns.2026.S01E08.1080p.WEB.h264-TRB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|TRB",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-TRB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.WEB-DL.H.265-Dual-Lat\n👤 11 💾 1.42 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/38e13993049a75a7cb5e884d30e2419368a9c9e2/<opaque>/Lanterns.S01E08.1080p.WEB-DL.DDP5.1.H.265-Dual-LatR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|LatR",
+        "filename": "Lanterns.S01E08.1080p.WEB-DL.DDP5.1.H.265-Dual-LatR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p AV1 10bit-MeGusta\n👤 10 💾 369.28 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/26f5db90fbedff1e0705a994bb9a0f474e8333a3/<opaque>/Lanterns.2026.S01E08.1080p.AV1.10bit-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Lanterns.2026.S01E08.1080p.AV1.10bit-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 Dirt and Stars 1080p HEVC x265-MeGusta\n👤 9 💾 490.46 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4d0637b09a8820ca39ab9bf6db7979981b351d16/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 FiNAL MULTi 1080p WEB DD5 1 H265-SiC\n👤 8 💾 1.04 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/1d65d25c532cf66406a99d6db3a61de5e8058b76/<opaque>/Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.DD5.1.H265-SiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|SiC",
+        "filename": "Lanterns.S01E08.FiNAL.MULTi.1080p.WEB.DD5.1.H265-SiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 FiNAL MULTi 1080p WEB DD5 1 H265-SiC\n👤 6 💾 1.04 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ce6e688c3ab86edf405ffff9f8eb11d8a78b72e6/<opaque>/Lanterns S01E08 FiNAL MULTi 1080p WEB DD5 1 H265-SiC.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|SiC",
+        "filename": "Lanterns S01E08 FiNAL MULTi 1080p WEB DD5 1 H265-SiC.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 H 264-NTb\n👤 6 💾 1.59 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7e6d56619dd749937eb21b41f3bce517d756f28e/<opaque>/Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 H 264-NTb.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|NTb",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 H 264-NTb.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns [S01E08] [Finał] [MULTi] [1080p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\n👤 5 💾 1.64 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3cbdc7bebbf484524c2baad6ceee3a7c63d3009f/<opaque>/Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.PL.1080p.WEB.10bit.6CH.HEVC-Mascipula\n👤 5 💾 546.12 MB ⚙️ EXT\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/644708a4ee9258459bfa111b5170d5f0edccdfa4/<opaque>/Lanterns.S01E08.PL.1080p.WEB.10bit.6CH.HEVC-Mascipula.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Mascipula",
+        "filename": "Lanterns.S01E08.PL.1080p.WEB.10bit.6CH.HEVC-Mascipula.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 1080p HEVC x265-MeGusta\n👤 5 💾 438.42 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e6d457c9a33be593a62e804181c5b3e411d5feac/<opaque>/Lanterns.S01E08.1080p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MeGusta",
+        "filename": "Lanterns.S01E08.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.rus\n👤 4 💾 3.07 GB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/52f62ba43084acae7bfd9a029a3a1960128e32a0/<opaque>/Lanterns.S01E08.1080p.rus.LostFilm.TV.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Lanterns.S01E08.1080p.rus.LostFilm.TV.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune\n👤 4 💾 1.59 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/39fb2d86f544c0dcfb4b5939a784862e8ffc389f/<opaque>/Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Kitsune",
+        "filename": "Lanterns S01E08 Dirt and Stars 1080p AMZN WEB-DL DDP5 1 Atmos H 264-Kitsune.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Linternas 1x08 1080p\n👤 4 💾 1.2 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/9bf3ae291cc5654e4cda4e46d9bea31ecb7bcccb/Linternas 1x08 1080p.mkv/0/Linternas 1x08 1080p.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Linternas 1x08 1080p.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n👤 4 💾 1.63 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/92d5ef0f39a383c05b7741e7a3e6d2db463cbe01/<opaque>/Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ETHEL",
+        "filename": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 1080p DUAL TV WEB-DL x264 AAC-MiRA\n👤 3 💾 2.33 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇹🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/02aa41d1704b97361e8c74251621c8508bf194f1/<opaque>/Lanterns S01E08 1080p DUAL TV WEB-DL x264 AAC-MiRA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|MiRA",
+        "filename": "Lanterns S01E08 1080p DUAL TV WEB-DL x264 AAC-MiRA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns S01E08 1080p AMZN WEB-DL DUAL DDP5 1 H 264-TURG\n👤 3 💾 1.79 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4dbb5be21c00c7a0d450a45fce650232cd01ea64/<opaque>/Lanterns S01E08 1080p AMZN WEB-DL DUAL DDP5 1 H 264-TURG.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|TURG",
+        "filename": "Lanterns S01E08 1080p AMZN WEB-DL DUAL DDP5 1 H 264-TURG.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01.WEB-DL.1080p-MAZEPA\nLanterns.S01E08.WEB-DL.1080p-MAZEPA.mkv\n👤 2 💾 1.96 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8a06abe41559b11bf2eda3e5ff01a0b9c916b607/<opaque>/Lanterns.S01E08.WEB-DL.1080p-MAZEPA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8a06abe41559b11bf2eda3e5ff01a0b9c916b607",
+        "filename": "Lanterns.S01E08.WEB-DL.1080p-MAZEPA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns (Season 1) (2026) AMZN WEB-DL 1080p Ukr_MVO\nLanterns S01E08 (2026) AMZN WEB-DL 1080p Ukr_MVO.mkv\n👤 2 💾 2.1 GB ⚙️ EXT\n🇬🇧 / 🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/dc96b0d91829682859aa442d16943393cb27098b/Lanterns S01E08 (2026) AMZN WEB-DL 1080p Ukr_MVO.mkv/2/Lanterns S01E08 (2026) AMZN WEB-DL 1080p Ukr_MVO.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dc96b0d91829682859aa442d16943393cb27098b",
+        "filename": "Lanterns S01E08 (2026) AMZN WEB-DL 1080p Ukr_MVO.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p WEB HEVC x265-RMTeam\n👤 2 💾 430.7 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/77c6a3c89a4d22ae1c8a4917d625a691a578ff53/<opaque>/Lanterns 2026 S01E08 1080p WEB HEVC x265-RMTeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|RMTeam",
+        "filename": "Lanterns 2026 S01E08 1080p WEB HEVC x265-RMTeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01E08 1080p WEB x265-RMTeam\n👤 2 💾 430.7 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/49090fc61aebe89e63d470d6dee66f2bc3a88f2e/<opaque>/Lanterns 2026 S01E08 1080p WEB x265-RMTeam.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|RMTeam",
+        "filename": "Lanterns 2026 S01E08 1080p WEB x265-RMTeam.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Linternas.S01E08.2026.1080p-Dual-Lat\n👤 1 💾 1.13 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e798dcbd68dd1555a8476756ed407b430e50ec80/<opaque>/Linternas.S01e08.2026.1080P-Dual-Lat.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|Lat",
+        "filename": "Linternas.S01e08.2026.1080P-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.WEB.h264-ETHEL\n👤 1 💾 1.65 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6b4e163a984f7a4cb00d8ed5ee5325512590ec83/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ETHEL"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.Rus.ColdFilm\n👤 1 💾 2.06 GB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3274e2ec0377eb8c5b4cb473daa526ac425485c5/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns 2026 S01 WEB-DL 1080p Ukr-sub SviySUB\nLanterns.2026.S01E08.1080p.web-dl.h264.Ukr-sub.SviySUB.mkv\n👤 1 💾 1.63 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d1c7db88969e9b7d43b42634d10d331b51a26f8e/<opaque>/Lanterns.2026.S01E08.1080p.web-dl.h264.Ukr-sub.SviySUB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d1c7db88969e9b7d43b42634d10d331b51a26f8e",
+        "filename": "Lanterns.2026.S01E08.1080p.web-dl.h264.Ukr-sub.SviySUB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "Lanterns.S01.1080p.AMZN.WEB-DL.DDP5.1.H.265.Ukr-Hurtom\nLanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.DDP5.1.H.265.Ukr-Hurtom.mkv\n👤 1 💾 728.65 MB ⚙️ EXT\n🇺🇦",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d35b32187fdccd1653f471fab2f2aba224d61dbe/<opaque>/Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.DDP5.1.H.265.Ukr-Hurtom.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d35b32187fdccd1653f471fab2f2aba224d61dbe",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.1080p.AMZN.WEB-DL.DDP5.1.H.265.Ukr-Hurtom.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n1080p",
+      "title": "L 2026 S01E08 1080p x265-ELiTE\n👤 0 💾 475 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7c3acb6eb6ed6caf23127dbbaad4330d461b2233/<opaque>/L 2026 S01E08 1080p x265-ELiTE.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|ELiTE",
+        "filename": "L 2026 S01E08 1080p x265-ELiTE.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns 2026 S01E08 720p HEVC x265-MeGusta\n👤 911 💾 323.04 MB ⚙️ EZTV",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/240ce507b7d78b18604a3ea737d260c935d51539/<opaque>/Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta[EZTVx.to].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.2026.S01E08.720p.x264-FENiX\n👤 746 💾 468.94 MB ⚙️ TorrentGalaxy",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/e64e9e228682e3a948447ec8cab6eaf4b4b27ccb/<opaque>/Lanterns.2026.S01E08.720p.x264-FENiX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|FENiX",
+        "filename": "Lanterns.2026.S01E08.720p.x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB\n👤 651 💾 818.56 MB ⚙️ EZTV\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3978140fc0a9c988bfd539dfb3e0e579bccf5eb3/<opaque>/Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB[EZTVx.to].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|playWEB",
+        "filename": "Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.2026.S01E08.720p.x264-FENiX\n👤 163 💾 468.94 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3725bc2c0c7f0496dbc297a3361cd2219046dfd7/<opaque>/Lanterns.2026.S01E08.720p.x264-FENiX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|FENiX",
+        "filename": "Lanterns.2026.S01E08.720p.x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01 720p 10bit DS4K AMZN WEBRip x265 HEVC [Org JHS Hind…\nLanterns S01E08 720p 10bit DS4K AMZN WEBRip x265 HEVC [Org JHS Hindi AAC 2.0 ~128Kbps + English AAC 2.0] ESub - Immortal.mkv\n👤 59 💾 260.64 MB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a62af167ffddf0bf096a53773b57e9783142bde0/Lanterns S01E08 720p 10bit DS4K AMZN WEBRip x265 HEVC [Org JHS Hindi AAC 2.0 ~128Kbps + English AAC 2.0] ESub - Immortal.mkv/7/Lanterns S01E08 720p 10bit DS4K AMZN WEBRip x265 HEVC [Org JHS Hindi AAC 2.0 ~128Kbps + English AAC 2.0] ESub - Immortal.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a62af167ffddf0bf096a53773b57e9783142bde0",
+        "filename": "Lanterns S01E08 720p 10bit DS4K AMZN WEBRip x265 HEVC [Org JHS Hindi AAC 2.0 ~128Kbps + English AAC 2.0] ESub - Immortal.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.2026.S01.720p.x264-FENiX\nLanterns.2026.S01E08.720p.x264-FENiX.mkv\n👤 47 💾 468.94 MB ⚙️ ThePirateBay",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/742d6573670a030bdcbd9e028c0a9f049e3ab61f/<opaque>/Lanterns.2026.S01E08.720p.x264-FENiX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|742d6573670a030bdcbd9e028c0a9f049e3ab61f",
+        "filename": "Lanterns.2026.S01E08.720p.x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.S01E08.720p.10bit.WEBRip.2CH.x265.HEVC-PSA\n👤 47 💾 230.98 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/16c1e1972b52084ae00f72d1edb3fb738b1c59b9/<opaque>/Lanterns.S01E08.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|PSA",
+        "filename": "Lanterns.S01E08.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Linternas [HDTV 720p][Cap.108]\n👤 43 💾 1.65 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7cdef90957b9a4e6b523c468f01ad1c10e9e81de/<opaque>/Linternas [HDTV 720p][Cap.108].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Linternas [HDTV 720p][Cap.108].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.S01.MULTi.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-KPFR\nLanterns.S01E08.MULTi.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-KPFR.mkv\n👤 42 💾 973.24 MB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8c08d975de6e3bae66b0cd4ce67b21b21a8b7345/<opaque>/Lanterns.S01E08.MULTi.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-KPFR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8c08d975de6e3bae66b0cd4ce67b21b21a8b7345",
+        "filename": "Lanterns.S01E08.MULTi.720p.AMZN.WEB-DL.DDP5.1.Atmos.H.264-KPFR.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns (2026) S01 EP 08 TRUE WEB-DL - 720p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng]\n👤 34 💾 663.01 MB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/836af15b646c7ed6047ea2950c9f703a17a61228/www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 720p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv/0/www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 720p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "www.1TamilMV.capital - Lanterns (2026) S01 EP 08 TRUE WEB-DL - 720p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Eng].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns [Sezon01] [MULTi] [720p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\nLanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n👤 24 💾 1.21 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d6e84bed3fad058ef4d3773e1bb574f291481771/<opaque>/Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d6e84bed3fad058ef4d3773e1bb574f291481771",
+        "filename": "Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 720p HEVC x265-MeGusta\n👤 19 💾 364.72 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ed4e87f6f0dd435c22cf681dcbe74489612530ec/<opaque>/Lanterns.S01E08.720p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Lanterns.S01E08.720p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns 2026 S01E08 720p WEB H264-JFF\n👤 15 💾 975.96 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/60c3c35b7716af9ab668d74ae7c1443e739f979e/<opaque>/Lanterns 2026 S01E08 720p WEB H264-JFF.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|JFF",
+        "filename": "Lanterns 2026 S01E08 720p WEB H264-JFF.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX\n👤 10 💾 870.59 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/39d2fe7b9ffec61925910f97a85c6af4a607cbec/<opaque>/Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|FLUX",
+        "filename": "Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 Atmos H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns [S01E08] [Finał] [MULTi] [720p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\n👤 10 💾 1.21 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3e7ee94d251be589c3af9ca3062aa6274827c10a/<opaque>/Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.S01E08.720p.Rus.ColdFilm\n👤 10 💾 1.3 GB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0338d1c2ccc623e23993243ef580028ad729d606/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB\n👤 7 💾 818.56 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ccd38c5a7057b56b25e7fcc2a7b18a44c3cffdec/<opaque>/Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|playWEB",
+        "filename": "Lanterns S01E08 720p AMZN WEB-DL DD 5 1 H 264-playWEB.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 H 264-NTb\n👤 5 💾 870.59 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/34ec93b6618472c10eda8f2ec532aa16a422d99b/<opaque>/Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 H 264-NTb.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|NTb",
+        "filename": "Lanterns S01E08 Dirt and Stars 720p AMZN WEB-DL DDP5 1 H 264-NTb.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 720p 10bit WEBRip 2CH x265 HEVC-PSA\n👤 4 💾 230.98 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0f314a810a10fca1240043084425cf427699ba8b/<opaque>/Lanterns S01E08 720p 10bit WEBRip 2CH x265 HEVC-PSA.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|PSA",
+        "filename": "Lanterns S01E08 720p 10bit WEBRip 2CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns.S01E08.FRENCH.VFQ.720p.TVrip.H264.mkv\n👤 4 💾 565.87 MB ⚙️ EXT\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/17b6538c6df157c099f165806e8dbfa167f2f76b/<opaque>/Lanterns.S01E08.FRENCH.VFQ.720p.TVrip.H264.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Lanterns.S01E08.FRENCH.VFQ.720p.TVrip.H264.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns 2026 S01E08 720p WEB H264-SYLiX\n👤 3 💾 818.56 MB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a5513e5cb2c705dcb753dd91ff0e5ee2e25e70b9/<opaque>/lanterns.2026.s01e08.720p.web.h264-sylix.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|sylix",
+        "filename": "lanterns.2026.s01e08.720p.web.h264-sylix.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns 2026 S01E08 720p HEVC x265-MeGusta\n👤 3 💾 323.04 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/cde01f8d6d9eeb2736c7cbe8f9723b55e3c9289b/<opaque>/Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Lanterns.2026.S01E08.720p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns [S01E08] [Finał] [MULTi] [720p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\n👤 1 💾 1.21 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/abcb652ed234fdb2ec4f20d8b60bd29a7491ea19/<opaque>/Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns S01E08 Dirt and Stars 720p HEVC x265-MeGusta\n👤 1 💾 416.76 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b92deaf7559032f8d7ca9bd876c16565706dd4b/<opaque>/Lanterns.S01E08.Dirt.and.Stars.720p.HEVC.x265-MeGusta.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|MeGusta",
+        "filename": "Lanterns.S01E08.Dirt.and.Stars.720p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n720p",
+      "title": "Lanterns 2026 S01E08 720p x264-FENiX\n👤 1 💾 468.94 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/2b0c3f3ae4ecb23b5ae72a606536d74ffb5ef64d/<opaque>/Lanterns 2026 S01E08 720p x264-FENiX.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|FENiX",
+        "filename": "Lanterns 2026 S01E08 720p x264-FENiX.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Lanterns 2026 S01E08 480p x264-mSD\n👤 226 💾 300.36 MB ⚙️ EZTV",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/7d3c3dc8792d195e29c279a3f2a41a5c5003da1d/<opaque>/Lanterns.2026.S01E08.480p.x264-mSD[EZTVx.to].mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|mSD",
+        "filename": "Lanterns.2026.S01E08.480p.x264-mSD[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n480p",
+      "title": "Lanterns (2026) S01 EP 08 TRUE WEB-DL - 480p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi]\n👤 4 💾 264.78 MB ⚙️ EXT\n🇮🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/439ad1b5d181cd6cb7d96033361c41667cc5a08f/Lanterns (2026) S01 EP 08 TRUE WEB-DL - 480p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi]/undefined/Lanterns (2026) S01 EP 08 TRUE WEB-DL - 480p - AVC - UNTOUCHED - [Tamil + Telugu + Hindi]",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\n400p",
+      "title": "Lanterns.S01E08.400p.Rus.ColdFilm\n👤 1 💾 368.62 MB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a1dddb3d9c6ac392836ceb215a54ae48c48c8cc8/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|400p"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Фонари / Lanterns / Сезон: 1 / Серии: 1-8 из 8 [2026 WEB-DLRip] MVO (LostFilm) + Original + Sub (Rus Eng)\nLanterns.S01E08.WEB-DLRip.RGzsRutracker.avi\n👤 370 💾 812.46 MB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b1fba7df85a51788b6f2115696de98d64d6138a0/<opaque>/Lanterns.S01E08.WEB-DLRip.RGzsRutracker.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b1fba7df85a51788b6f2115696de98d64d6138a0",
+        "filename": "Lanterns.S01E08.WEB-DLRip.RGzsRutracker.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Фонари / Lanterns [S01] (2026) WEB-DLRip-AVC от DoMiNo & селезень | HBO\nLanterns.S01E08.WEB-DLRip.x264.seleZen.mkv\n👤 304 💾 833.63 MB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fb0ddc5c6a55a92d718a869f360b46bd9e5278ce/<opaque>/Lanterns.S01E08.WEB-DLRip.x264.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fb0ddc5c6a55a92d718a869f360b46bd9e5278ce",
+        "filename": "Lanterns.S01E08.WEB-DLRip.x264.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nXviD",
+      "title": "Lanterns 2026 S01E08 XviD-AFG\n👤 158 💾 257.15 MB ⚙️ EZTV",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8812cd45bf405e013106ca49195d420f5a287ba3/<opaque>/Lanterns.2026.S01E08.XviD-AFG[EZTVx.to].avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|XviD|AFG",
+        "filename": "Lanterns.2026.S01E08.XviD-AFG[EZTVx.to].avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Lanterns [S01E08] [Finał] [HMAX] [WEB-DL] [H.264] [DDP5.1-K83] [Lektor PL]\n👤 6 💾 448.44 MB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/4597bda105bcbe56352939a60d76112243dd7d9c/<opaque>/Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Lanterns.S01.2026.WEB-DLRip.x264.seleZen\nLanterns.S01E08.WEB-DLRip.x264.seleZen.mkv\n👤 4 💾 833.63 MB ⚙️ EXT\n🇬🇧 / 🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0b8b582ef0af94563b501cf4c1a538d36c9ec758/<opaque>/Lanterns.S01E08.WEB-DLRip.x264.seleZen.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0b8b582ef0af94563b501cf4c1a538d36c9ec758",
+        "filename": "Lanterns.S01E08.WEB-DLRip.x264.seleZen.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEBRip",
+      "title": "Lanterns.s01.WEBRip.XviD.Rus\nLanterns.s01e08.WEBRip.XviD.Rus.RuDub.tv.avi\n👤 2 💾 477.09 MB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/b62f1a57208ef677471f37b8076d239519420abc/<opaque>/Lanterns.s01e08.WEBRip.XviD.Rus.RuDub.tv.avi",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b62f1a57208ef677471f37b8076d239519420abc",
+        "filename": "Lanterns.s01e08.WEBRip.XviD.Rus.RuDub.tv.avi"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio\nWEB-DL",
+      "title": "Lanterns [S01E08] [Finał] [HMAX] [WEB-DL] [H.264] [DDP5.1-K83] [Lektor PL]\n👤 1 💾 448.44 MB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/f1e09efaa88cf3116d0e770cf929de43103b5733/<opaque>/Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Lanterns.S01e08.Final.Web.H264\n👤 390 💾 254.31 MB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/980ed8de34ec0ade87cddb6e91c5281c653e3ae2/<opaque>/Lanterns.S01e08.Final.Web.H264.mp4",
+      "behaviorHints": {
+        "filename": "Lanterns.S01e08.Final.Web.H264.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Lanterns.S01e08.Final.Vostfr.Web.H264\n👤 77 💾 255.14 MB ⚙️ Torrent9\n🇫🇷",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/72def053d7211e308c7429dbd630e78c0ccf506c/<opaque>/Lanterns.S01e08.Final.Vostfr.Web.H264.mp4",
+      "behaviorHints": {
+        "filename": "Lanterns.S01e08.Final.Vostfr.Web.H264.mp4"
+      }
+    },
+    {
+      "name": "[TB+] Torrentio",
+      "title": "Lanterns.S01E08.rus\n👤 3 💾 774.7 MB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/51e6c058d9fcb9cb6873eabc9d2cf33782b1d2e3/<opaque>/Lanterns.S01E08.rus.LostFilm.TV.avi",
+      "behaviorHints": {
+        "filename": "Lanterns.S01E08.rus.LostFilm.TV.avi"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Lanterns.S01.2160p.HMAX.WEB.DL.DDP5.1.Atmos.DV.HDR.H.265-BLOOM {imdb-tt26545992}\nLanterns.S01E08.Episode.8.2160p.HMAX.WEB.DL.DDP5.1.Atmos.DV.HDR.H.265-BLOOM.mkv\n👤 95 💾 1.4 GB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/791edc6502723ac35d8c5e9e35d24aa22b3e4f05/<opaque>/Lanterns.S01E08.Episode.8.2160p.HMAX.WEB.DL.DDP5.1.Atmos.DV.HDR.H.265-BLOOM.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|791edc6502723ac35d8c5e9e35d24aa22b3e4f05",
+        "filename": "Lanterns.S01E08.Episode.8.2160p.HMAX.WEB.DL.DDP5.1.Atmos.DV.HDR.H.265-BLOOM.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n4k DV | HDR",
+      "title": "Lanterns [Sezon01] [MULTi] [2160p] [AMZN] [WEB-DL] [DV] [HDR] [H.265] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\nLanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv\n👤 23 💾 6.15 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/839d14b1977764981bc73df3a785b72688e959fb/<opaque>/Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|839d14b1977764981bc73df3a785b72688e959fb",
+        "filename": "Lanterns.S01E08.MULTi.2160p.AMZN.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Lanterns [Sezon01] [MULTi] [1080p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\nLanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n👤 22 💾 1.64 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d8518032b09501aea397362fb1b2ed55c7056379/<opaque>/Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d8518032b09501aea397362fb1b2ed55c7056379",
+        "filename": "Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Lanterns [Sezon01] [MULTi] [1080p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\nLanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n👤 20 💾 1.64 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/abfdf010f15e7f48ee25f893dc9b6d3009582257/<opaque>/Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|abfdf010f15e7f48ee25f893dc9b6d3009582257",
+        "filename": "Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Lanterns.2026.S01E08.1080p.HDTV.Subtitulado.Esp.SC\n👤 12 💾 592.69 MB ⚙️ EXT\n🇪🇸",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/8fe458b630a4e8d0e1677b12bbc8a441b336ab58/<opaque>/Lanterns.2026.S01E08.1080p.HDTV.Subtitulado.Esp.SC",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.1080p.CHS&ENG\n👤 5 💾 813.69 MB ⚙️ EXT\n🇬🇧 / 🇨🇳",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fbce247fc73b45069a60ab2f8c32b16bd46aa0d3/<opaque>/绿灯军团.Lanterns.S01E08.1080p.CHS&ENG.www.xingfan.cc.mp4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "绿灯军团.Lanterns.S01E08.1080p.CHS&ENG.www.xingfan.cc.mp4"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n1080p",
+      "title": "Lanterns.S01E08.MULTi.1080p.AMZN.WEB-DL.E-AC3-5.1.H264-CZRG\n👤 2 💾 1.64 GB ⚙️ EXT\nMulti Audio",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/ca5c5d2522f4249611dd6edc0d09cf723b5b697a/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|CZRG"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Lanterns [Sezon01] [MULTi] [720p] [HMAX] [WEB-DL] [H.264] [DDP5.1.Atmos-K83] [Lektor i Napisy PL]\nLanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv\n👤 24 💾 1.21 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/0ad9743ffde4ad674773211eda0d3ccbdd21ddc1/<opaque>/Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0ad9743ffde4ad674773211eda0d3ccbdd21ddc1",
+        "filename": "Lanterns.S01E08.MULTi.720p.HMAX.WEB-DL.H.264.DDP5.1.Atmos-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Lanterns.S01E08.720p.AMZN.WEB-DL.DD+5.1.H.264-playWEB\n👤 14 💾 818.58 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/87d3558f943b26da807d2b7f8dde3cb612b5e672/<opaque>",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|playWEB"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\n720p",
+      "title": "Lanterns.S01E08.720p.rus\n👤 2 💾 1.72 GB ⚙️ EXT\n🇷🇺",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/d700ffb59464f0b69f026e063a6b0197638873e8/Lanterns.S01E08.720p.rus/undefined/Lanterns.S01E08.720p.rus",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nWEB-DL",
+      "title": "Lanterns [Sezon01] [HMAX] [WEB-DL] [H.264] [DDP5.1-K83] [Lektor PL]\nLanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv\n👤 71 💾 448.44 MB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/aa82e50a437162821e88520fd838372a3d121223/<opaque>/Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|aa82e50a437162821e88520fd838372a3d121223",
+        "filename": "Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio\nWEB-DL",
+      "title": "Lanterns [Sezon01] [HMAX] [WEB-DL] [H.264] [DDP5.1-K83] [Lektor PL]\nLanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv\n👤 23 💾 448.44 MB ⚙️ BestTorrents\n🇵🇱",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/a07f82d312d6a2c252795b9b8e248fabea3da7b7/<opaque>/Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a07f82d312d6a2c252795b9b8e248fabea3da7b7",
+        "filename": "Lanterns.S01E08.PL.HMAX.WEB-DL.H.264.DDP5.1-K83.mkv"
+      }
+    },
+    {
+      "name": "[TB download] Torrentio",
+      "title": "Lanterns.S01E08\n👤 1 💾 919.65 MB ⚙️ EXT",
+      "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fb7cba3f7cac134a94de2d7a925ea0c96859008e/Lanterns.S01E08/undefined/Lanterns.S01E08"
+    }
+  ]
+}

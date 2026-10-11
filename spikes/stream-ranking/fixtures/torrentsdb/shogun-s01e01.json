@@ -1,0 +1,1285 @@
+{
+  "addon": "torrentsdb",
+  "config": "p2p",
+  "title": "shogun-s01e01",
+  "request": "https://torrentsdb.com/stream/series/tt2788316%3A1%3A1.json",
+  "recordedAt": "2026-10-11T12:04:20.653Z",
+  "status": 200,
+  "ms": 631,
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Shogun.2024.S01E01.Anjin.ITA.ENG.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265 MeM.GP.mkv\n📅 S01E01 👤 167 💾 7.19 GB ⚙️ knaben",
+      "infoHash": "A780C8F2A26744D2DE2764993834AE4CC4D751A0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Shogun.2024.S01E01.Anjin.ITA.ENG.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Shogun.2024.S01.MULTI.2160p.WEB-DL.DV.HDR.H265-AOC\nS01/Shōgun_S01E01_Anjin.mkv\n📅 S01E01 👤 122 💾 8.25 GB ⚙️ knaben",
+      "infoHash": "A6AFC5CA556B66E9B06199E37EEEC4BC3138DF2C",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|A6AFC5CA556B66E9B06199E37EEEC4BC3138DF2C",
+        "filename": "Shōgun_S01E01_Anjin.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Shogun.2024.S01E01.2160p.WEB.H265-SuccessfulCrab[TGx]\n📅 S01E01 👤 72 💾 7.63 GB ⚙️ knaben",
+      "infoHash": "93758897A56B4F917496CACEDA23452566F32368",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "shogun.2024.s01e01.2160p.web.h265-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Shogun.2024.S01E01.DV.HDR.2160p.WEB.H265-SuccessfulCrab[TGx]\n📅 S01E01 👤 71 💾 7.67 GB ⚙️ knaben",
+      "infoHash": "3EBEDD78697ADB21C8FE6F3393747AA6EAC92A86",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "shogun.2024.s01e01.dv.hdr.2160p.web.h265-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Shogun\n📅 S01E01 👤 40 💾 7.19 GB ⚙️ Torrent9",
+      "infoHash": "d96bd301317e1c72485a09c5beae4d3a3315ab7b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Shogun.2024.S01E01.MULTi.HDR.DV.2160p.WEB.H265-FW.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:d96bd301317e1c72485a09c5beae4d3a3315ab7b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Сёгун / Shôgun [S01]\nShogun.2024.S01.2160p.HDR.WEB-DL.NC/Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv\n📅 S01E01 👤 40 💾 7.35 GB ⚙️ rutor",
+      "infoHash": "d0299c2187edd074e39ad7937ae407bd24b716a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d0299c2187edd074e39ad7937ae407bd24b716a6",
+        "filename": "Shōgun.2024.S01E01.Anjin.2160p.WEB-DL.HDR.NEWCOMERS.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://www.peckservers.com:9000/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tk1.trackerservers.com:8080/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://www.peckservers.com:9443/announce",
+        "tracker:https://tracker.lilithraws.org:443/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.edkj.club:6969/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:https://t1.hloli.org:443/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:https://tracker.cloudit.top:443/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://su-data.com:6969/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:http://tracker2.dler.org:80/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:http://tracker.mywaifu.best:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:d0299c2187edd074e39ad7937ae407bd24b716a6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Shogun.2024.S01E01.Anjin.ITA.ENG.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv\n📅 S01E01 👤 22 💾 7.19 GB ⚙️ ilcorsaronero",
+      "infoHash": "a780c8f2a26744d2de2764993834ae4cc4d751a0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p",
+        "filename": "Shogun.2024.S01E01.Anjin.ITA.ENG.2160p.DSNP.WEB-DL.DDP5.1.DV.HDR.H.265-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01.COMPLETE.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX[TGx ...\nShogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv\n📅 S01E01 👤 553 💾 3.47 GB ⚙️ knaben",
+      "infoHash": "7316ADBBEC2CAC87DFF9AC35961650FD6316D53F",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|7316ADBBEC2CAC87DFF9AC35961650FD6316D53F",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01E01.1080p.WEB.H264-SuccessfulCrab[TGx]\n📅 S01E01 👤 385 💾 2.92 GB ⚙️ ThePirateBay",
+      "infoHash": "9f71680a56278c28eefe3800b798200962881539",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "shogun.2024.s01e01.1080p.web.h264-successfulcrab.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.ViruseProject/Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv\n📅 S01E01 👤 207 💾 2.41 GB ⚙️ rutor",
+      "infoHash": "e9d33a416cc0ec3ade4f2ed1c916915940a92980",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e9d33a416cc0ec3ade4f2ed1c916915940a92980",
+        "filename": "Shogun.2024.S01E01.1080p.WEB-DLRip.ViruseProject.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.iamhansen.xyz:2000/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:e9d33a416cc0ec3ade4f2ed1c916915940a92980"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 Anjin REPACK 1080p DSNP WEB-DL DDP5 1 H 264-F\n📅 S01E01 👤 138 💾 3.44 GB ⚙️ ThePirateBay",
+      "infoHash": "9fc93a3f8959aba0dba7adaa4622ca23fe7b38b0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun 2024 S01E01 Anjin REPACK 1080p DSNP WEB-DL DDP5 1 H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 Anjin REPACK 1080p DSNP WEB-DL DDP5 1 H 264-F ...\n📅 S01E01 👤 138 💾 3.44 GB ⚙️ knaben",
+      "infoHash": "9FC93A3F8959ABA0DBA7ADAA4622CA23FE7B38B0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun 2024 S01E01 Anjin REPACK 1080p DSNP WEB-DL DDP5 1 H 264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01.1080p.WEBRip.x265-KONTRAST\nShogun.2024.S01E01.1080p.WEBRip.x265-KONTRAST.mp4\n📅 S01E01 👤 135 💾 1.31 GB ⚙️ knaben",
+      "infoHash": "4B2B82A7CD1658DA6C4F7AC8F8096564063BC994",
+      "fileIdx": 251,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|4B2B82A7CD1658DA6C4F7AC8F8096564063BC994",
+        "filename": "Shogun.2024.S01E01.1080p.WEBRip.x265-KONTRAST.mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 Season 1 Complete 1080p WEB x264 [i_c]\nShōgun - S01E01 - Anjin.mkv\n📅 S01E01 👤 123 💾 1.65 GB ⚙️ ThePirateBay",
+      "infoHash": "e6b1e9c6e56883926d1c19b88f94632071b21bbb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e6b1e9c6e56883926d1c19b88f94632071b21bbb",
+        "filename": "Shōgun - S01E01 - Anjin.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 1080p WEB H264-SuccessfulCrab\n📅 S01E01 👤 110 💾 2.92 GB ⚙️ knaben",
+      "infoHash": "6FB34932DB9070F49A35C7746BD8D41B213ECF81",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "shogun.2024.s01e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 1080p WEB H264-SuccessfulCrab\n📅 S01E01 👤 110 💾 2.92 GB ⚙️ ThePirateBay",
+      "infoHash": "6fb34932db9070f49a35c7746bd8d41b213ecf81",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "shogun.2024.s01e01.1080p.web.h264-successfulcrab[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 Season 1 Complete 1080p WEB x264 [i_c]\nShōgun - S01E01 - Anjin.mkv\n📅 S01E01 👤 106 💾 1.65 GB ⚙️ knaben",
+      "infoHash": "E6B1E9C6E56883926D1C19B88F94632071B21BBB",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|E6B1E9C6E56883926D1C19B88F94632071B21BBB",
+        "filename": "Shōgun - S01E01 - Anjin.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 1080p HEVC x265-MeGusta\n📅 S01E01 👤 102 💾 619.80 MB ⚙️ knaben",
+      "infoHash": "178F5DEA13E1753390DF07CCEBCAD2DC1C5BEA9B",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 1080p HEVC x265-MeGusta\n📅 S01E01 👤 102 💾 619.80 MB ⚙️ ThePirateBay",
+      "infoHash": "178f5dea13e1753390df07ccebcad2dc1c5bea9b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01 1080p x265-AMBER\nShogun.2024.S01E01.1080p.x265-AMBER[EZTVx.to].mkv\n📅 S01E01 👤 91 💾 1.12 GB ⚙️ ThePirateBay",
+      "infoHash": "88fb1e41572d2286b7c0e57793dd6465d3d7d29b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|88fb1e41572d2286b7c0e57793dd6465d3d7d29b",
+        "filename": "Shogun.2024.S01E01.1080p.x265-AMBER[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier/Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📅 S01E01 👤 88 💾 3.63 GB ⚙️ rutor",
+      "infoHash": "25db561a51d5356c6075ba3f691b10101400570b",
+      "fileIdx": 7,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|25db561a51d5356c6075ba3f691b10101400570b",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:25db561a51d5356c6075ba3f691b10101400570b"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01 1080p x265-AMBER\nShogun.2024.S01E01.1080p.x265-AMBER[EZTVx.to].mkv\n📅 S01E01 👤 85 💾 1.12 GB ⚙️ knaben",
+      "infoHash": "88FB1E41572D2286B7C0E57793DD6465D3D7D29B",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|88FB1E41572D2286B7C0E57793DD6465D3D7D29B",
+        "filename": "Shogun.2024.S01E01.1080p.x265-AMBER[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 Anjin 1080p DSNP WEB-DL DDP5 1 H 264-NTb\n📅 S01E01 👤 83 💾 3.44 GB ⚙️ knaben",
+      "infoHash": "BB83A34DA5AA5A93F8C3EBB1F01B0E7680C40807",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun S01 Season 1 2024 1080p WEBRip 10bits x265-Rapta\nShogun - S01E01 - Anjin.mkv\n📅 S01E01 👤 80 💾 595.29 MB ⚙️ ThePirateBay",
+      "infoHash": "6bba0020527f581c997300a30834e0a81cafffc8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|6bba0020527f581c997300a30834e0a81cafffc8",
+        "filename": "Shogun - S01E01 - Anjin.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier/Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📅 S01E01 👤 78 💾 3.63 GB ⚙️ rutor",
+      "infoHash": "54284eee52c6c8acf3026435057d527b388e30a9",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|54284eee52c6c8acf3026435057d527b388e30a9",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:54284eee52c6c8acf3026435057d527b388e30a9"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 Anjin 1080p DSNP WEB-DL DDP5 1 H 264-NTb\n📅 S01E01 👤 76 💾 3.44 GB ⚙️ ThePirateBay",
+      "infoHash": "bb83a34da5aa5a93f8c3ebb1f01b0e7680c40807",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier/Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📅 S01E01 👤 73 💾 3.63 GB ⚙️ rutor",
+      "infoHash": "538a49cd06b91516f548cd863094a43c2a054de8",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|538a49cd06b91516f548cd863094a43c2a054de8",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:538a49cd06b91516f548cd863094a43c2a054de8"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [S01]\nShogun.2024.S01.1080p.WEB-DL.NC/Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv\n📅 S01E01 👤 69 💾 3.76 GB ⚙️ rutor",
+      "infoHash": "52cb57c7291a3c165168ee2e6e3483c03aca4c65",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|52cb57c7291a3c165168ee2e6e3483c03aca4c65",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.WEB-DL.NEWCOMERS.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://www.peckservers.com:9000/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tk1.trackerservers.com:8080/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://www.peckservers.com:9443/announce",
+        "tracker:https://tracker.lilithraws.org:443/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.edkj.club:6969/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:https://t1.hloli.org:443/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:https://tracker.cloudit.top:443/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://su-data.com:6969/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:http://tracker2.dler.org:80/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:http://tracker.mywaifu.best:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:52cb57c7291a3c165168ee2e6e3483c03aca4c65"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun / Shogun [\nShōgun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle/Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📅 S01E01 👤 53 💾 4.63 GB ⚙️ rutor",
+      "infoHash": "62085ac775ea3841bf3cb8479e666259ffb7d791",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|62085ac775ea3841bf3cb8479e666259ffb7d791",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://bt02.nnm-club.cc:2710/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:62085ac775ea3841bf3cb8479e666259ffb7d791"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier/Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📅 S01E01 👤 50 💾 3.63 GB ⚙️ rutor",
+      "infoHash": "d5c2aeb77ff14d8dbb0302dc41305cdfa8ad8ba3",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|d5c2aeb77ff14d8dbb0302dc41305cdfa8ad8ba3",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:d5c2aeb77ff14d8dbb0302dc41305cdfa8ad8ba3"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun\n📅 S01E01 👤 48 💾 3.57 GB ⚙️ Torrent9",
+      "infoHash": "0ddae057c91d683ec98f5d44a6c7a015cb5e876c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.MULTi.1080p.WEB.H264-FW.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:0ddae057c91d683ec98f5d44a6c7a015cb5e876c"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier/Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📅 S01E01 👤 46 💾 3.63 GB ⚙️ rutor",
+      "infoHash": "20ed74d5047900fb13c8db3529c47b8f9cc40868",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|20ed74d5047900fb13c8db3529c47b8f9cc40868",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:20ed74d5047900fb13c8db3529c47b8f9cc40868"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01.1080p.x265-AMBER\nShogun.2024.S01E01.1080p.x265-AMBER.mkv\n📅 S01E01 👤 43 💾 1.12 GB ⚙️ ThePirateBay",
+      "infoHash": "a75472b1d79e29b1d718e17d7df818107ef02872",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|a75472b1d79e29b1d718e17d7df818107ef02872",
+        "filename": "Shogun.2024.S01E01.1080p.x265-AMBER.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta[TGx]\n📅 S01E01 👤 32 💾 619.80 MB ⚙️ ThePirateBay",
+      "infoHash": "0c72f2ec7762d73c446b89327dfb6bca707ead5c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.1080p.HEVC.x265-MeGusta.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun / Shogun [\nShōgun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle/Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📅 S01E01 👤 29 💾 4.32 GB ⚙️ rutor",
+      "infoHash": "df89186feb1bbead8afa0df4654a4d1020456d95",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|df89186feb1bbead8afa0df4654a4d1020456d95",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://bt02.nnm-club.cc:2710/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:df89186feb1bbead8afa0df4654a4d1020456d95"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.1080p.NewComers/Shogun.2024.S01E01.1080p.Newcomers.mkv\n📅 S01E01 👤 29 💾 2.59 GB ⚙️ rutor",
+      "infoHash": "e3fbe529c88226a448411bd79e8098153b59c9a1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|e3fbe529c88226a448411bd79e8098153b59c9a1",
+        "filename": "Shogun.2024.S01E01.1080p.Newcomers.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://www.peckservers.com:9000/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tk1.trackerservers.com:8080/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://www.peckservers.com:9443/announce",
+        "tracker:https://tracker.lilithraws.org:443/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.edkj.club:6969/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:https://t1.hloli.org:443/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:https://tracker.cloudit.top:443/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://su-data.com:6969/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:http://tracker2.dler.org:80/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:http://tracker.mywaifu.best:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:e3fbe529c88226a448411bd79e8098153b59c9a1"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun / Shogun [\nShōgun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle/Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📅 S01E01 👤 24 💾 4.60 GB ⚙️ rutor",
+      "infoHash": "34a05f150e6a0f1b1a6b67cd1b807720c8251086",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|34a05f150e6a0f1b1a6b67cd1b807720c8251086",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://bt02.nnm-club.cc:2710/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:34a05f150e6a0f1b1a6b67cd1b807720c8251086"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Šógun / Shōgun S01 (EN)[WEBrip][1080p][HEVC] = CSFD 88%\nShogun.2024.S01.1080p.10bit.WEBRip.AAC.6CH.x265.HEVC-PSA (CzTitulky)/Shogun.2024.S01E01.1080p.10bit.WEBRip.AAC.6CH.x265.HEVC-PSA (CzTitulky).mkv\n📅 S01E01 👤 19 💾 915.62 MB ⚙️ sktorrent",
+      "infoHash": "64696047c9f72c21a2b317ab4ea90a5e7dcae222",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|64696047c9f72c21a2b317ab4ea90a5e7dcae222",
+        "filename": "Shogun.2024.S01E01.1080p.10bit.WEBRip.AAC.6CH.x265.HEVC-PSA (CzTitulky).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337",
+        "tracker:udp://ipv4announce.sktorrent.eu:6969/announce",
+        "dht:64696047c9f72c21a2b317ab4ea90a5e7dcae222"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01e01-10 [1080p Ita Eng Spa h265 10bit SubS] byMe7alh [MIRCrew]\nShogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv\n📅 S01E01 👤 18 💾 1.67 GB ⚙️ ThePirateBay",
+      "infoHash": "c6d792cc9832f0b0629f189d448e5ad9d924fdad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|c6d792cc9832f0b0629f189d448e5ad9d924fdad",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.S01.COMPLETE.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.H264-BTM\nShogun.S01E01.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.DDP5.1.H264-BEN.THE.MEN.mkv\n📅 S01E01 👤 16 💾 3.82 GB ⚙️ ThePirateBay",
+      "infoHash": "af1a40ea309abe8dd5ff5f6d7f164a6bfc0d727c",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|af1a40ea309abe8dd5ff5f6d7f164a6bfc0d727c",
+        "filename": "Shogun.S01E01.1080p.WEB-DL.ENG.LATINO.CASTELLANO.PORTUGUESE.DDP5.1.H264-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun [S01]\nShogun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier/Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv\n📅 S01E01 👤 14 💾 3.63 GB ⚙️ rutor",
+      "infoHash": "8201f317a8a4f1cb1c16593195de2296da4c3c95",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|8201f317a8a4f1cb1c16593195de2296da4c3c95",
+        "filename": "Shogun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-Jaskier.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:8201f317a8a4f1cb1c16593195de2296da4c3c95"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.Season.1.COMPLETE.1080p.DSNP.WEB-DL.x264.ESubs.[8GB].[MP4].[S01.Full\nShogun.2024.S01E01.1080p.DSNP-[y2flix.cc].mp4\n📅 S01E01 👤 11 💾 1005.16 MB ⚙️ ThePirateBay",
+      "infoHash": "843cb5c0cb1d686ae827d4f1c0494a147559b0f6",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|843cb5c0cb1d686ae827d4f1c0494a147559b0f6",
+        "filename": "Shogun.2024.S01E01.1080p.DSNP-[y2flix.cc].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01e01-03 [1080p Ita Eng Spa h265 10bit SubS] byMe7alh [MIRCrew]\nShogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv\n📅 S01E01 👤 11 💾 1.67 GB ⚙️ ThePirateBay",
+      "infoHash": "8afa6695bba241345bfe1b2c715f8ff768cf7625",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|8afa6695bba241345bfe1b2c715f8ff768cf7625",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.1080p.h265.10bit.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shôgun / Shogun [\nShōgun.2024.S01.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle/Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv\n📅 S01E01 👤 10 💾 4.79 GB ⚙️ rutor",
+      "infoHash": "ed63babb57ea5d71ac2bb564476e8237a7f691c0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|ed63babb57ea5d71ac2bb564476e8237a7f691c0",
+        "filename": "Shōgun.2024.S01E01.Anjin.1080p.DSNP.WEB-DL.DDP5.1.H.264-NTb_Kyle.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://bt02.nnm-club.cc:2710/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:ed63babb57ea5d71ac2bb564476e8237a7f691c0"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shōgun.2024.S01E01.1080p.WEB-DL.ENG.LATINO.DDP5.1.MKV-BEN.THE.MEN\n📅 S01E01 👤 9 💾 4.63 GB ⚙️ ThePirateBay",
+      "infoHash": "700f3b33e839e1d1409946fed04077b697fb2c85",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shōgun.2024.S01E01.1080p.WEB-DL.ENG.LATINO.DDP5.1.MKV-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01E01.Anjin.ITA.ENG.1080p.DSNP.WEB-DL.H264-MeM.GP.mkv\n📅 S01E01 👤 8 💾 3.57 GB ⚙️ ilcorsaronero",
+      "infoHash": "b9388da0ef7037256907bf275435218fe53c8e4e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun.2024.S01E01.Anjin.ITA.ENG.1080p.DSNP.WEB-DL.H264-MeM.GP.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.2024.S01.COMPLETE.1080p.WEB-DL.H.264.Dual.YG⭐\nS01E01.mkv\n📅 S01E01 👤 8 💾 3.57 GB ⚙️ ThePirateBay",
+      "infoHash": "0f722a51db89c4f08da7fecb64d06661f7953d15",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|0f722a51db89c4f08da7fecb64d06661f7953d15",
+        "filename": "S01E01.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun 2024 S01E01 MULTI 1080p WEB H264-HiggsBoson\n📅 S01E01 👤 8 💾 3.57 GB ⚙️ ThePirateBay",
+      "infoHash": "4b5a63648e64347b870e13ae3cada67a9b3c6368",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "shogun.2024.s01e01.multi.1080p.web.h264-higgsboson[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Shogun.S01E01.2024.1080p.WEBRip.10bits.x265-Rapta\n📅 S01E01 👤 6 💾 595.29 MB ⚙️ ThePirateBay",
+      "infoHash": "23a51091e9807a1ac44f82d8de09fef9ba52a4dc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1080p",
+        "filename": "Shogun - S01E01 - Anjin.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n1080p",
+      "title": "Сёгун / Shogun [S01]\nShogun.1980.1080p.BluRay.AC3.DTS.x264/Shogun.1980.Part1.1080p.BluRay.x264.AC3.DTS.mkv\n📅 S01E01 👤 6 💾 12.25 GB ⚙️ rutor",
+      "infoHash": "35890426040d685d2d0454ee071d1fed4d36a546",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|35890426040d685d2d0454ee071d1fed4d36a546",
+        "filename": "Shogun.1980.Part1.1080p.BluRay.x264.AC3.DTS.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:35890426040d685d2d0454ee071d1fed4d36a546"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun.2024.S01.COMPLETE.720p.DSNP.WEBRip.x264-GalaxyTV\nShogun.2024.S01E01.720p.DSNP.WEBRip.x264-GalaxyTV.mkv\n📅 S01E01 👤 315 💾 489.71 MB ⚙️ knaben",
+      "infoHash": "B4A06E6FC35DDB40902FFB6F60E043DB4BBE9ACF",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|B4A06E6FC35DDB40902FFB6F60E043DB4BBE9ACF",
+        "filename": "Shogun.2024.S01E01.720p.DSNP.WEBRip.x264-GalaxyTV.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun.2024.S01.COMPLETE.720p.DSNP.WEBRip.x264-GalaxyTV\nShogun.2024.S01E01.720p.DSNP.WEBRip.x264-GalaxyTV.mkv\n📅 S01E01 👤 274 💾 489.71 MB ⚙️ ThePirateBay",
+      "infoHash": "b4a06e6fc35ddb40902ffb6f60e043db4bbe9acf",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|b4a06e6fc35ddb40902ffb6f60e043db4bbe9acf",
+        "filename": "Shogun.2024.S01E01.720p.DSNP.WEBRip.x264-GalaxyTV.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun AKA Shōgun 2024 S01 (EN subs) 720p.10bit.WEBRip.x265-budgetbits\nShogun.S01E01.Anjin.720p.10bit.WEBRip.x265-budgetbits.mkv\n📅 S01E01 👤 58 💾 362.20 MB ⚙️ 1337x",
+      "infoHash": "1e38d8ea15891dc0143f64de94a5ddb9e0705d28",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|1e38d8ea15891dc0143f64de94a5ddb9e0705d28",
+        "filename": "Shogun.S01E01.Anjin.720p.10bit.WEBRip.x265-budgetbits.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun.2024.S01E01.720p.WEB.x265-MiNX[TGx]\n📅 S01E01 👤 37 💾 385.47 MB ⚙️ ThePirateBay",
+      "infoHash": "09a4e5c5021c1b73cfa1973e146bca8f88a7252c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Shogun.2024.S01E01.720p.WEB.x265-MiNX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun 2024 S01 720p x265-AMBER\nShogun.2024.S01E01.720p.x265-AMBER[EZTVx.to].mkv\n📅 S01E01 👤 28 💾 688.39 MB ⚙️ EZTV",
+      "infoHash": "59412ff487128acbca776d4e4c9a0c981b3e9ca7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|59412ff487128acbca776d4e4c9a0c981b3e9ca7",
+        "filename": "Shogun.2024.S01E01.720p.x265-AMBER[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun 2024 Season 1 Complete 720p WEB x264 [i_c]\nShōgun - S01E01 - Anjin.mkv\n📅 S01E01 👤 27 💾 1021.45 MB ⚙️ ThePirateBay",
+      "infoHash": "9f115e35e7909d03db4c49d6cf265a979320f3aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|9f115e35e7909d03db4c49d6cf265a979320f3aa",
+        "filename": "Shōgun - S01E01 - Anjin.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun 2024 S01E01 Anjin 720p DSNP WEB-DL DD+5 1 H 264-playWEB\n📅 S01E01 👤 13 💾 1.72 GB ⚙️ ThePirateBay",
+      "infoHash": "206366617260a0e3928b97996df89b7f379e0330",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DD+5.1.H.264-playWEB[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun.2024.Season.1.COMPLETE.720p.DSNP.WEB-DL.x264.ESubs.[5GB].[MP4].[S01.Full]\nShogun.2024.S01E01.720p.DSNP-[y2flix.cc].mp4\n📅 S01E01 👤 11 💾 603.19 MB ⚙️ ThePirateBay",
+      "infoHash": "6b67053a0455b97bf3098ea651be41a0ca37bac7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|6b67053a0455b97bf3098ea651be41a0ca37bac7",
+        "filename": "Shogun.2024.S01E01.720p.DSNP-[y2flix.cc].mp4"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun 2024 S01E01 720p HEVC x265-MeGusta\n📅 S01E01 👤 7 💾 420.30 MB ⚙️ EZTV",
+      "infoHash": "3a6f50bc858a495be06f20baed5a0511e5e6bee4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Shogun.2024.S01E01.720p.HEVC.x265-MeGusta[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun.2024.S01.720p.x265-AMBER\nShogun.2024.S01E01.720p.x265-AMBER.mkv\n📅 S01E01 👤 7 💾 688.39 MB ⚙️ ThePirateBay",
+      "infoHash": "8359deed6b2f1c722780439fd2a8897072e24795",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|8359deed6b2f1c722780439fd2a8897072e24795",
+        "filename": "Shogun.2024.S01E01.720p.x265-AMBER.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX[TGx]\n📅 S01E01 👤 7 💾 1.71 GB ⚙️ ThePirateBay",
+      "infoHash": "e43bc27791d09d1dfbb5121fd7772f88f79d3463",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|720p",
+        "filename": "Shogun.2024.S01E01.Anjin.720p.DSNP.WEB-DL.DDP5.1.H.264-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n720p",
+      "title": "Shogun 2024 S01e01-02 [720p Ita Eng Spa SubS] byMe7alh [MIRCrew]\nShogun S01e01-02 (720p Ita Eng Spa SubS) byMe7alh/Shogun.2024.S01e01.Ita.Eng.Spa.720p.h264.SubS-Me7alh.mkv\n📅 S01E01 👤 5 💾 2.38 GB ⚙️ ilcorsaronero",
+      "infoHash": "add2cdf550aa3a338acb8e488915e5beddaf24f4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|add2cdf550aa3a338acb8e488915e5beddaf24f4",
+        "filename": "Shogun.2024.S01e01.Ita.Eng.Spa.720p.h264.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "Shogun 2024 S01 480p x264-AMBER\nShogun.2024.S01E01.480p.x264-AMBER[EZTVx.to].mkv\n📅 S01E01 👤 14 💾 579.46 MB ⚙️ ThePirateBay",
+      "infoHash": "9c8b3d6baa87e953a5d3adc853f6cd77bb6222e7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|9c8b3d6baa87e953a5d3adc853f6cd77bb6222e7",
+        "filename": "Shogun.2024.S01E01.480p.x264-AMBER[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "Shogun 2024 S01E01 480p x264-mSD\n📅 S01E01 👤 11 💾 329.96 MB ⚙️ ThePirateBay",
+      "infoHash": "a04e3d6aa75acdeb1cdcd28928c22bbdf4855352",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "Shogun.2024.S01E01.480p.x264-mSD[EZTVx.to].mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n480p",
+      "title": "Shogun.2024.S01E01.480p.x264-RUBiK\n📅 S01E01 👤 6 💾 585.47 MB ⚙️ ThePirateBay",
+      "infoHash": "1c6214a8219e0dbf910b26428b3deea024925e83",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|480p",
+        "filename": "Shogun.2024.S01E01.480p.x264-RUBiK.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n400p",
+      "title": "Сёгун / Shôgun [\nShogun.2024.S01.400p.ViruseProject/Shogun.2024.S01E01.WEB-DLRip.ViruseProject.avi\n📅 S01E01 👤 566 💾 831.69 MB ⚙️ rutor",
+      "infoHash": "7d354e442f6d6b818798e645705bf9b7cf0318ba",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|7d354e442f6d6b818798e645705bf9b7cf0318ba",
+        "filename": "Shogun.2024.S01E01.WEB-DLRip.ViruseProject.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.iamhansen.xyz:2000/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://open.demonii.si:1337/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://tracker.coppersurfer.tk:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:7d354e442f6d6b818798e645705bf9b7cf0318ba"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n400p",
+      "title": "Сёгун / Shôgun [S01]\nShogun.2024.S01.400p.NewComers/Shogun.2024.S01E01.400p.Newcomers.avi\n📅 S01E01 👤 146 💾 835.15 MB ⚙️ rutor",
+      "infoHash": "20233d92b5f384ebb6b48f05e2e919f5c3dd9c98",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|20233d92b5f384ebb6b48f05e2e919f5c3dd9c98",
+        "filename": "Shogun.2024.S01E01.400p.Newcomers.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://www.peckservers.com:9000/announce",
+        "tracker:udp://bt.ktrackers.com:6666/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tk1.trackerservers.com:8080/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:http://tracker.opentrackr.org:1337/announce",
+        "tracker:https://www.peckservers.com:9443/announce",
+        "tracker:https://tracker.lilithraws.org:443/announce",
+        "tracker:udp://moonburrow.club:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:udp://ryjer.com:6969/announce",
+        "tracker:http://tracker.bt4g.com:2095/announce",
+        "tracker:udp://free.publictracker.xyz:6969/announce",
+        "tracker:http://tracker.edkj.club:6969/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:https://t1.hloli.org:443/announce",
+        "tracker:https://tracker.renfei.net:443/announce",
+        "tracker:udp://open.dstud.io:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tamas3.ynh.fr:6969/announce",
+        "tracker:udp://opentracker.io:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:udp://6.pocketnet.app:6969/announce",
+        "tracker:http://open.acgnxtracker.com:80/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:udp://tracker.srv00.com:6969/announce",
+        "tracker:http://tracker.files.fm:6969/announce",
+        "tracker:https://tracker.cloudit.top:443/announce",
+        "tracker:https://tr.burnabyhighstar.com:443/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://isk.richardsw.club:6969/announce",
+        "tracker:udp://epider.me:6969/announce",
+        "tracker:udp://oh.fuuuuuck.com:6969/announce",
+        "tracker:udp://su-data.com:6969/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.therarbg.com:6969/announce",
+        "tracker:udp://bt1.archive.org:6969/announce",
+        "tracker:udp://new-line.net:6969/announce",
+        "tracker:udp://open.u-p.pw:6969/announce",
+        "tracker:http://tracker2.dler.org:80/announce",
+        "tracker:udp://1c.premierzal.ru:6969/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:https://tracker.loligirl.cn:443/announce",
+        "tracker:udp://bt2.archive.org:6969/announce",
+        "tracker:http://tracker.mywaifu.best:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "dht:20233d92b5f384ebb6b48f05e2e919f5c3dd9c98"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "Shogun\n📅 S01E01 👤 504 💾 559.53 MB ⚙️ Torrent9",
+      "infoHash": "e92a2ac0ecf1731bb0202e9afbaa18907a2bd2ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "Shogun.2024.S01E01.FRENCH.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://p4p.arenabg.com:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.dler.org:6969/announce/",
+        "tracker:udp://opentracker.io:6969/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "dht:e92a2ac0ecf1731bb0202e9afbaa18907a2bd2ca"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "Shogun\n📅 S01E01 👤 155 💾 559.53 MB ⚙️ Torrent9",
+      "infoHash": "c62b89f4307c5a1bb39265dacebbfdb83f141be6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "[ Torrent911.bz ] Shogun.2024.S01E01.FRENCH.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:c62b89f4307c5a1bb39265dacebbfdb83f141be6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Сёгун / Shôgun / Shogun [S01]\nShogun.2024.S01.DSNP.WEB-DLRip.x264.seleZen/Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv\n📅 S01E01 👤 150 💾 1.16 GB ⚙️ rutor",
+      "infoHash": "867a82ac8c15f4d65a810da6fe5ae86eb0f87d14",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|867a82ac8c15f4d65a810da6fe5ae86eb0f87d14",
+        "filename": "Shogun.S01E01.WEB-DLRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.auctor.tv:6969/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:https://opentracker.i2p.rocks:443/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:https://tracker.gbitt.info:443/announce",
+        "tracker:http://tracker.gbitt.info:80/announce",
+        "tracker:udp://movies.zsw.ca:6969/announce",
+        "tracker:https://tracker.tamersunion.org:443/announce",
+        "tracker:udp://tracker1.myporn.club:9337/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.therarbg.to:6969/announce",
+        "tracker:udp://tracker.t-rb.org:6969/announce",
+        "tracker:http://retracker.local/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "dht:867a82ac8c15f4d65a810da6fe5ae86eb0f87d14"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Shogun.2024.S01E01.WEB.x264-TORRENTGALAXY\n📅 S01E01 👤 111 💾 490.33 MB ⚙️ ThePirateBay",
+      "infoHash": "7e02c27561fc8fe01f1267e317149e81afa9c840",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Shogun.2024.S01E01.WEB.x264-TORRENTGALAXY.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nUnknown",
+      "title": "Shogun.2024.S01E01.WEB.x264-TORRENTGALAXY\n📅 S01E01 👤 107 💾 490.33 MB ⚙️ knaben",
+      "infoHash": "7E02C27561FC8FE01F1267E317149E81AFA9C840",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|Unknown",
+        "filename": "Shogun.2024.S01E01.WEB.x264-TORRENTGALAXY.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\nwebrip",
+      "title": "Shogun\n📅 S01E01 👤 59 💾 561.77 MB ⚙️ Torrent9",
+      "infoHash": "8709f5f1603cbffbfc6c8e8072afce40b23db9cb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|webrip",
+        "filename": "[ Torrent911.bz ] Shogun.2024.S01E01.VOSTFR.WEBRip.x264.mp4"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce/",
+        "tracker:udp://open.stealth.si:80/announce/",
+        "tracker:udp://explodie.org:6969/announce/",
+        "tracker:udp://tracker.torrent.eu.org:451/announce/",
+        "tracker:udp://www.torrent.eu.org:451/announce/",
+        "tracker:udp://bt1.archive.org:6969/announce/",
+        "tracker:udp://movies.zsw.ca:6969/announce/",
+        "dht:8709f5f1603cbffbfc6c8e8072afce40b23db9cb"
+      ]
+    },
+    {
+      "name": "TorrentsDB\nxvid",
+      "title": "Shogun 2024 S01E01 XviD-AFG\n📅 S01E01 👤 8 💾 683.34 MB ⚙️ ThePirateBay",
+      "infoHash": "b99313dd0494e61610d8ba0dfe562a0c0bbbf301",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|xvid",
+        "filename": "Shogun.2024.S01E01.XviD-AFG[EZTVx.to].avi"
+      }
+    }
+  ]
+}

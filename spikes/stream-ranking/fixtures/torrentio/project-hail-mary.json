@@ -1,0 +1,2476 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "project-hail-mary",
+  "request": "https://torrentio.strem.fun/stream/movie/tt12042730.json",
+  "recordedAt": "2026-10-11T12:03:24.370Z",
+  "status": 200,
+  "ms": 503,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Project.Hail.Mary.2026.PROPER.HDR.2160p.WEB.h265-GRACE\n👤 990 💾 27.59 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇩🇪 / 🇨🇿 / 🇩🇰 / 🇸🇦",
+      "infoHash": "bea4e2218c9a596be84f3208b980d863a821f116",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|HDR",
+        "filename": "Project.Hail.Mary.2026.PROPER.HDR.2160p.WEB.h265-GRACE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project.Hail.Mary.2026.2160p.UHD.BluRay.Remux.DV.P7.HDR.MULTi.TrueHD.Atmos-BTM\n👤 384 💾 80.43 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "eeb54fe43f20e027edc9578bbb972af7ab9cf037",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.2160p.UHD.BluRay.Remux.DV.P7.HDR.MULTi[Ben The Men].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Spasitel / Project Hail Mary (2026)(CZ/EN)[2160p][HDR10/DV][HEVC]\n👤 265 💾 6.95 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "infoHash": "6f3b2153e70cc7b1246145b4372ed7a64c12a2ae",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|DV|HDR",
+        "filename": "Spasitel (2026) UHDRDV cz en.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary (2026) 2160p H265 iMAX HDR DV iTA EnG MIRCrew\n👤 230 💾 6.29 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "infoHash": "3de6e2c988b629d63597a8bde22cdc711f926fb1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|DV|HDR",
+        "filename": "Project Hail Mary (2026) 2160p H265 iMAX HDR DV iTA EnG AC3 Sub iTA EnG-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary (2026) IMAX (2160p UHD BluRay x265 10bit DV HDR10 TrueHD Atmos 7.1 English French Spanish r00t) [QxR]\nProject Hail Mary (2026) IMAX (2160p UHD BluRay x265 10bit DV HDR10+ r00t).mkv\n👤 162 💾 35.53 GB ⚙️ 1337x\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "f6501e873f320cb38cf436188e8151f9fbd284a6",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|DV|HDR",
+        "filename": "Project Hail Mary (2026) IMAX (2160p UHD BluRay x265 10bit DV HDR10+ r00t).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary 2026 UHD BluRay IMAX 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 149 💾 39.79 GB ⚙️ 1337x",
+      "infoHash": "f8c3476c248626455d8b958069988c88eb4761e1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Project Hail Mary 2026.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Devoradores de Estrelas 2026 WEB-DL 2160p x265 IMAX DV HDR10 DUAL 5.1\n👤 149 💾 28.05 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "1883751f2f1cd150363902abafb74974917b89d0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR",
+        "filename": "Devoradores de Estrelas 2026 WEB-DL 2160p x265 IMAX DV HDR10+ DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR\n👤 142 💾 27.63 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "85a6d9a0bb400bb3d068637d1a831548a52514de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary 2026 IMAX 2160p BDRip HEVC 10bit DV HDR TrueHD 7.1 MUSHR00M\n👤 89 💾 27 GB ⚙️ ThePirateBay",
+      "infoHash": "0b6ba6c031e01272ac2dbb0eb1940dd3e881bd26",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|hevc|10bit|DV|HDR",
+        "filename": "Project Hail Mary 2026 IMAX 2160p UHD BDRip HEVC 10bit DV HDR TrueHD.7.1 Atmos MUSHR00M.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Project.Hail.Mary.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA\n👤 85 💾 5.4 GB ⚙️ 1337x",
+      "infoHash": "6300f022521fd6611c7506731dc122687428d375",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.2160p.HDR10Plus.DV.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Project Hail Mary 2026 IMAX WEB-DL 2160P HDR10p DV HEVC DDPA 5.1 x265-E\n👤 80 💾 17.08 GB ⚙️ 1337x",
+      "infoHash": "3675e5d6373884d5fcfabcab381cdb3b62281d20",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|DV",
+        "filename": "Project Hail Mary 2026.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DV.HDR10+.MULTi.DDP5.1.Atmos.H265.MP4-BTM\n👤 75 💾 36.07 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "6d586b4534782952644758b6641aea0bdbc373f2",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DV.HDR10+.MULTi[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DV.P5.MULTi.DDP5.1.Atmos.H265.MP4-BTM\n👤 69 💾 36.15 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "4778d2cd274ff754e43ed4ba9a4676d252780f53",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV",
+        "filename": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DV.P5.MULTi.DDP5.1.Atmos.H265.MP4-BEN.THE.MEN.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project.Hail.Mary.2026.MULTi.2160p.DV.HDR.WEB-DL.AAC.2.0.H265-BOUC (Projet dernière chance)\n👤 66 💾 27.84 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "499318cbf36dc1cec1972080a642236dc3fae000",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.MULTi.2160p.DV.HDR.WEB-DL.AAC.2.0.H265-BOUC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Project.Hail.Mary.2026.iTA-ENG.WEBDL.2160p.HEVC.HDR.x265-CYBER.mkv\n👤 55 💾 29.17 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "62fa27840419160eb305374fa5223e88c237bed9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|HDR",
+        "filename": "Project.Hail.Mary.2026.iTA-ENG.WEBDL.2160p.HEVC.HDR.x265-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) UHD BDRemux | 2160p | 4K | HDR10+ | Dolby Vision P7 | D | MovieDalen | IMAX\n👤 48 💾 75.71 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "f6fc56eba8c39b0909a1bc425a09cbdcf39c33a7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.BDRemux.2160p.HDR-DV.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:f6fc56eba8c39b0909a1bc425a09cbdcf39c33a7",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Spasitel / Project Hail Mary (2026)(CZ/EN)[2160p][WEB-DL][AIUpscale][HDR10/DV][HEVC]\n👤 40 💾 64.9 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇮🇩 / 🇲🇾",
+      "infoHash": "9c10f6f1825d348ad8746e016e42dadc4a668feb",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|10bit|DV|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project.Hail.Mary.2026.V3.USA.UHD.Blu-ray.REMUX.2160p.DV.HDR.HEVC.TrueHD.7.1.Atmos-sh\n👤 33 💾 77.45 GB ⚙️ EXT",
+      "infoHash": "55373d59c9e64fa8f38246e4620ad903f854dce5",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project.Hail.Mary 2026.IMAX.4K.HDR.DV.2160p.WEBDL Ita Eng x265-NAHOM\n👤 31 💾 17.5 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "5e66fd44ecd0d7dfaf2157b9a7d9f79e17714365",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|DV|HDR",
+        "filename": "Project.Hail.Mary 2026.IMAX.4K.HDR.DV.2160p.WEBDL Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Project Hail Mary (2026) IMAX 2160p HDR WEBRip AV1 EAC3\n👤 29 💾 9.83 GB ⚙️ 1337x",
+      "infoHash": "7988c2c8c5a2073200182ee400e69f4f5f456333",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|HDR",
+        "filename": "Project.Hail.Mary.2026.IMAX.2160.HDR.WEBRip.AV1.EAC3.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Project.Hail.Mary.2026.Hybrid.2160p.UHD.Bluray.Remux.DV.HDR10P.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES\n👤 26 💾 75.71 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "2bf6614f2ccce52fc21f6115075cdf78fafa6bc1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Project.Hail.Mary.2026.Hybrid.2160p.UHD.Blu-ray.Remux.DV.HDR10P.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Project.Hail.Mary.2026.iTA-ENG.Bluray.2160p.HEVC.HDR.x265-CYBER.mkv\n👤 26 💾 30 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "3fb52d8e8ba00a31f9fff6513500d0f051f80e96",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Project.Hail.Mary.2026.iTA-ENG.Bluray.2160p.HEVC.HDR.x265-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) UHD BDRemux 2160p от селезень | 4K | HDR | Dolby Vision | D | MovieDalen | IMAX\n👤 25 💾 80.34 GB ⚙️ Rutor\n🇳🇴",
+      "infoHash": "738632d0a9c8ff131a726ab30db2fe0bd5f92f23",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:738632d0a9c8ff131a726ab30db2fe0bd5f92f23"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Proyecto.Fin.del.Mundo.2026.WEB-DL.4k.HDR-Dual-Lat\n👤 21 💾 28.05 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "844dbb6729151e8bcb3aca2a653030117a247553",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|HDR",
+        "filename": "Proyecto.Fin.del.Mundo.2026.WEB-DL.4k.HDR-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary 2026 USA BluRay REMUX UHD DoVi HDR10 2160p Atmos TrueHD7.1-Dre\n👤 20 💾 76.45 GB ⚙️ ThePirateBay\n🇬🇧 / 🇨🇳",
+      "infoHash": "f76b3669391ea53df7bc8d659e85b66e0a30a5d0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Project Hail Mary 2026 USA BluRay REMUX UHD DoVi HDR10 2160p Atmos TrueHD7.1-DreamHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project.Hail.Mary.2026.MULTi.VF2.iMAX.HDR.DV.2160p.WEB.H265-SUPPLY\n👤 19 💾 28.47 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "3f6144c74c2495b07405a8d3744141a10dd99524",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.MULTi.VF2.iMAX.HDR.DV.2160p.WEB.H265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Project.hail.mary.2026.2160p.x265.hdr.5.1-dual-lat-cinecalidad.ro.mkv\n👤 14 💾 10.88 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇪🇸 / 🇲🇽",
+      "infoHash": "484a06b89a183b256e072301faea7034f7cef0a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|HDR",
+        "filename": "Project.hail.mary.2026.2160p.x265.hdr.5.1-dual-lat-cinecalidad.ro.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Project.Hail.Mary.2026.IMAX.2160p.iT.WEB-DL.HEVC.DV.HDR10Plus.DDP5.1.Atmos.DD5.1.MULTi.PL.ETeam-vantablack\n👤 13 💾 28.05 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "infoHash": "de21ff5ad60798b57f26284e049a43384624ce64",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.IMAX.2160p.iT.WEB-DL.HEVC.DV.HDR10Plus.DDP5.1.Atmos.DD5.1.MULTi.PL.ETeam-vantablack.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DL-HEVC 2160p | 4K | HDR10+ | Dolby Vision Profile 8 | D P L A | IMAX\n👤 12 💾 32.18 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "c1b92c772dad3a3e8b5f19a045abc8a7e8f7c772",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|10bit|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.2160p.WEB-DL.DDP5.1.Atmos.DV.HDRP-DVT.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:c1b92c772dad3a3e8b5f19a045abc8a7e8f7c772",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Spasitel / Project Hail Mary (2026)[2160p][WEB-DL][DV/HDR]\n👤 12 💾 27.63 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "32dd13791bc99ba0f656590db0aa42fd591e9972",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-BYNDR.CZsub.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary (2026) IMAX 2160p 4K HDR10 DV WEB-DL Dual Audio [Hindi English] ESub ~ RemuxDoc\n👤 11 💾 28.05 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇮🇳",
+      "infoHash": "2e77a70c3e637d6523f27ce826ca65ded084384a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR",
+        "filename": "Project Hail Mary (2026) IMAX 2160p 4K HDR10 DV WEB-DL Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "L'ultima missione Project Hail Mary (2026) iMAX .mkv 2160p DV HDR WEB-DL AC3 5.1 iTA ENG H265 - FHC_CREW.mkv\n👤 10 💾 28.75 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "d1c86f5cb3a8f34d585a491e0656a27e2a7af93c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "L'ultima missione; Project Hail Mary (2026) iMAX .mkv 2160p DV HDR WEB-DL AC3 5.1 iTA ENG H265 - FHC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DL-HEVC 2160p | 4K | HDR10+ | Dolby Vision Profile 8 | D P L A | IMAX\n👤 8 💾 31.34 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "60488ba6edc251fec9e345e06f29e16793320325",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc|10bit|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.2160p.WEB-DL.DDP5.1.Atmos.DV.HDRP-DVT.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:60488ba6edc251fec9e345e06f29e16793320325",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Project Hail Mary 2026 IMAX 2160p iT WEB-DL DDP5 1 Atmos DV HDR …\n👤 7 💾 27.63 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "8712d7d5b71d7ab9a63d4e01bebfb1b0e2fd5fdf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Project Hail Mary 2026 IMAX 2160p iT WEB-DL DDP5 1 Atmos DV HDR H 265-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Project.Hail.Mary.2026.Hybrid.2160p.UHD.Bluray.Remux.DV.HDR10+.H…\n👤 7 💾 77.13 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇨🇿",
+      "infoHash": "eae995945168b99506585ae83ded2b39e40bf6dc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|10bit|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.Hybrid.2160p.UHD.Blu-ray.Remux.DV.HDR10+.HEVC.DDP.5.1.CZ.TrueHD.Atmos.7.1.EN-JOsHUA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Project Hail Mary.2026.IMAX.WEB-DL.2160p.DV\n👤 6 💾 28.21 GB ⚙️ EXT",
+      "infoHash": "05587467f5a71e797d5b5aead8c363622971d361",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV",
+        "filename": "Project Hail Mary.2026.IMAX.WEB-DL.2160p.DV.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Project Hail Mary 2026 iMAX UHD BluRay 2160p DV HDR10+ DDP Atmos…\n👤 5 💾 21.26 GB ⚙️ TorrentGalaxy",
+      "infoHash": "603e94ce931cac3ba753b3eb48a121769b678124",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|DV|HDR10+",
+        "filename": "Project Hail Mary 2026 iMAX UHD BluRay 2160p DV HDR10+ DDP Atmos 7.1 x265-BiTOR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Проект «Конец света» / Project Hail Mary [2026 WEB-DL 2160p HDR10 Dolby Vision] [IMAX] Dub (MovieDalen) + Original (Eng) + Sub (Eng)\n👤 5 💾 28.12 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "12c532cbf388cde203fcab69aa3452448a871ae2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.IMAX.2160p.iT.WEB-DL.DV.HDR H.265.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:12c532cbf388cde203fcab69aa3452448a871ae2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DV.HDR10+.DDP5.1.Atmos.H265.MP4-BTM\n👤 5 💾 28.69 GB ⚙️ ThePirateBay",
+      "infoHash": "6e62f4db4e3f26aec3b481052f2bcc5d5f311dc9",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|10bit|DV|HDR10+",
+        "filename": "Project.Hail.Mary.2026.2160p.iT.WEB-DL.DV.HDR10+[Ben The Men].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Project.Hail.Mary.2026.2160p.WEB-DL.DDP5.1.Atmos.H.265-RDNYB\n👤 856 💾 23.33 GB ⚙️ TorrentGalaxy",
+      "infoHash": "792b3577fed6dd95dbb03f5f0972e821230b834f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "Project.Hail.Mary.2026.2160p.WEB-DL.DDP5.1.Atmos.H.265-RDNYB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Project.Hail.Mary.2026.2160p.WEBrip.h265.Dual.YG⭐\n👤 582 💾 10.69 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "1e2879d1917ed68b00b4b2842c5de11f5b0a17fe",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|h265",
+        "filename": "Project.Hail.Mary.2026.2160p.WEBrip.h265.Dual YG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Project Hail Mary 2026 2160p WEBRip\n👤 100 💾 6.98 GB ⚙️ YTS",
+      "infoHash": "88a7b7b7a4d9c506beae52ad45ff5430d4468b9b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit",
+        "filename": "Project.Hail.Mary.2026.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.BZ].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Proyecto Salvacion (2026) [4k 2160p][Esp]\n👤 56 💾 29.17 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "c1dce48f316ce25f1a6f7d5afaa86198b4698b1f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Proyecto Salvacion (2026) [4k 2160p][Esp].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Spasitel / Project Hail Mary (2026)[2160p][WebRip][HEVC]\n👤 39 💾 27.7 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "infoHash": "7d6e5f0a5293378caa201f65a863524cad9f8692",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Project.Hail.Mary.(2026)[DUAL ESP-ENG][HDR10 HEVC][Bluray 1080p]-Mang0z4\n👤 876 💾 8.48 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇪🇸",
+      "infoHash": "4c02d61d6182df4bf8bbcdd1d5096ad518507211",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit|HDR",
+        "filename": "Project.Hail.Mary.(2026)[DUAL ESP-ENG][HDR10 HEVC][Bluray 1080p]-Mang0z4.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV",
+      "title": "Project Hail Mary 2026 1080p BluRay DoVi HDR10P TrueHD Atmos 7 1 x265-GeneM\n👤 44 💾 6.27 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "70e4a1bb0114bc6371a80b62ae06625ee9be646e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|DV",
+        "filename": "Project Hail Mary 2026 1080p BluRay DoVi HDR10P TrueHD Atmos 7 1 x265-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Project Hail Mary (2026) (UHD BDRip IMAX 1080p AV1 HDR10 EAC3 At…\n👤 41 💾 8.02 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇰🇷 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇸🇦",
+      "infoHash": "713a2909289b50062eedee7e40e10a841379ea00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|10bit|HDR",
+        "filename": "Project Hail Mary (2026) (UHD BDRip IMAX 1080p AV1 HDR10 EAC3 Atmos) [OEP][81E3E3A2].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Project Hail Mary (2026) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY]\n👤 23 💾 8.58 GB ⚙️ 1337x",
+      "infoHash": "49b3dfea6f7c40892a072ec700f9a7d8d6cdcb70",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Project Hail Mary (2026) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Lultima.missione.Project.Hail.Mary.2026.iTA.ENG.Bluray.1080p.H.265.HDR.x265.CYBER\n👤 20 💾 13.73 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "c1bec2aa34b947fd88248a2cae12f26e4465c754",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Project Hail Mary (2026) (1080p DS4K WEB-DL x265 10-bit HDR E-AC-3 5.1) [WeSLeY]\n👤 16 💾 6.41 GB ⚙️ 1337x",
+      "infoHash": "651b5a11183b347fb28f445796206c99e167d784",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit|HDR",
+        "filename": "Project Hail Mary (2026) (1080p DS4K WEB-DL x265 10-bit HDR E-AC-3 5.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Project Hail Mary (2026) (1080p DS4K WEB-DL x265 10-bit HDR AAC 5.1) [WeSLeY]\n👤 13 💾 8.96 GB ⚙️ 1337x",
+      "infoHash": "96a80774e70438f32292e391953b7338aa65a377",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit|HDR",
+        "filename": "Project Hail Mary (2026) (1080p DS4K WEB-DL x265 10-bit HDR AAC 5.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Project Hail Mary (2026) (1080p DS4K Web-DL x265 10bit HDR E-AC-3 5.1) [Kris]\n👤 6 💾 9.25 GB ⚙️ 1337x",
+      "infoHash": "bd37403f5d98a29661a000aa27b86b8dde6c6224",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit|HDR",
+        "filename": "Project Hail Mary (2026) (1080p DS4K Web-DL x265 10bit HDR E-AC-3 5.1) [Kris].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB Line AC3 H264-DJT\n👤 1839 💾 9.1 GB ⚙️ ThePirateBay",
+      "infoHash": "1f50ce3716207c24e61a174d1468fb240b860f93",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project Hail Mary 2026 1080p WEB AC3 H264-DJT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.iNTERNAL.1080p.10bit.WEBRip.2CH.x265.HEVC-PSA\n👤 1227 💾 2.72 GB ⚙️ 1337x",
+      "infoHash": "d6ecf1ac0937e505330aed486f4980be1df9bbb8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Project.Hail.Mary.2026.iNTERNAL.1080p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5.1 BONE\n👤 1011 💾 2.98 GB ⚙️ ThePirateBay",
+      "infoHash": "e9b05de28f91baa6bac63278f9e42ed1828da3af",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Devoradores de Estrelas 2026 WEB-DL 1080p x264 IMAX DUAL 5.1\n👤 444 💾 3.13 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "2a9c944880ed0656ac550c9de49745f9fd1d38da",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Devoradores de Estrelas 2026 WEB-DL 1080p x264 IMAX DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) IMAX (1080p AMZN WEB-DL x265 10bit EAC3 Atmos 5.1 Silence) [QxR]\n👤 436 💾 7.02 GB ⚙️ 1337x",
+      "infoHash": "b2282ca046deefb6e59fa46be5c4909c4223e5fc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit",
+        "filename": "Project Hail Mary (2026) IMAX (1080p AMZN WEB-DL x265 EAC3 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Devoradores de Estrelas 2026 WEB-DL 1080p x264 IMAX DUAL 5.1\n👤 409 💾 3.13 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "f824bfdf04e68b6a4eb8793e0a3b15af9ee27e07",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Devoradores de Estrelas 2026 WEB-DL 1080p x264 IMAX DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.PROPER.1080p.WEB.h264-GRACE\n👤 343 💾 11.82 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇩🇪 / 🇨🇿 / 🇩🇰 / 🇸🇦",
+      "infoHash": "2d85ea82ac910ccb7b4cc38f8f5394df21c79cf5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project.Hail.Mary.2026.PROPER.1080p.WEB.h264-GRACE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) (1080p BluRay x265 10bit EAC3 Atmos 7.1…\n👤 308 💾 9.26 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "421d9dd6b27de95be118643e915f321c183d6850",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Project Hail Mary (2026) (1080p BluRay x265 EAC3 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p BluRay x265-DH\n👤 190 💾 8.01 GB ⚙️ ThePirateBay",
+      "infoHash": "70c67474edb7866d7c20c71089d311bd2a514189",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Project Hail Mary 2026 1080p BluRay x265-DH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.MULTi.VF2.1080p.iMAX.WEBrip.10.bits.EAC3.5.1.x265-TyHD (Projet dernière chanc\n👤 185 💾 3.38 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "4cd2c96658e1fa6f837ec482d2dd4a8b679467de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Project.Hail.Mary.2026.MULTi.VF2.1080p.iMAX.WEBrip.10.bits.EAC3.5.1.x265-TyHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) BDRip 1080p от EniaHD | D P L A | IMAX\n👤 183 💾 29.15 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "b9ca20e7966d8ac52a35c71dc5800fa795f1d069",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Project.Hail.Mary.2026.1080p.BluRay.x264-ZoroSenpai_EniaHD.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:b9ca20e7966d8ac52a35c71dc5800fa795f1d069",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 NORDiC 1080p AMZN WEB-DL AV1-NORViNE\n👤 175 💾 5.76 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "a2772420c46cd19d00ff59fca5e930cbca0b933b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Project Hail Mary 2026 NORDiC 1080p AMZN WEB-DL AV1-NORViNE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEB-DL.DDP5.1.Atmos.H.264-RDNYB\n👤 161 💾 11.83 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "94cee575c30d6725dad15f6563334536908f72b7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Project.Hail.Mary.2026.1080p.WEB-DL.DDP5.1.Atmos.H.264-RDNYB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEB.x264.AC3.5.1-PoNg\n👤 160 💾 2.35 GB ⚙️ ThePirateBay",
+      "infoHash": "f72a9cf2b79020a2fa1c8fb6f646fd384905efe9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Project.Hail.Mary.2026.1080p.WEB.x264.AC3.5.1-PoNg.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.IMAX.WEBRip.x265.HEVC.10Bit.Eng.DD.2.0.ViTOENCODE$\n👤 160 💾 4.81 GB ⚙️ 1337x",
+      "infoHash": "354baf89633c9a6cd00c30a1c18aa39d1b70be2a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Project.Hail.Mary.2026.1080p.IMAX.WEBRip.x265.HEVC.10Bit.Eng.DD.2.0.ViTOENCODE$.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.AMZN.WEBRip.AAC5.1.10bits.x265-Rapta\n👤 151 💾 2.22 GB ⚙️ ThePirateBay",
+      "infoHash": "0c8bd676061ad037d90b9f6098014d7fd899f891",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Project.Hail.Mary.2026.1080p.AMZN.WEBRip.AAC5.1.10bits.x265-Rapta.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p AMZN WEB-DL DDP5 1 SDR H 265-OnlyWeb\n👤 147 💾 7.33 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾",
+      "infoHash": "a5dca14cf6c60b0a396243042138149c1fa3a0fb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Project Hail Mary 2026 1080p AMZN WEB-DL DDP5 1 SDR H 265-OnlyWeb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEBRip DDP 5 1 Atmos 10bit H 265-iVy\n👤 147 💾 3.13 GB ⚙️ ThePirateBay",
+      "infoHash": "c5280169786ccdb9e07d818a3ea2d3c8aca5017a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|h265|10bit",
+        "filename": "Project Hail Mary 2026 1080p WEBRip DDP 5 1 Atmos 10bit H 265-iVy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 10Bit DDP5 1 Subs KINGDOM\n👤 119 💾 7.39 GB ⚙️ ThePirateBay",
+      "infoHash": "28a01c43d87a34cce2039d06f77e2fd2179c4119",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Project Hail Mary 2026 1080p  WEB-DL HEVC x265 10Bit DDP5 1 Subs KINGDOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.BluRay.Remux.MULTi.TrueHD.Atmos.H264-BTM\n👤 116 💾 40.19 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "c517e6369ddb5f8d098b7537b85ea3a047566900",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|h264",
+        "filename": "Project.Hail.Mary.2026.1080p.BluRay.Remux.MULTi[Ben The Men].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Devoradores de Estrelas 2026 WEB-DL 1080p x264 IMAX FULLHD DUAL 5.1\n👤 108 💾 12.24 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "2e37b607e10ef4800009f0f3ef402eed09f72557",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Devoradores de Estrelas 2026 WEB-DL 1080p x264 IMAX FULLHD DUAL 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Proyecto Salvacion (2026) [Bluray 1080p][Esp]\n👤 105 💾 13.22 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "d8faff8abff14cb7508d6e1fa0a926185942d829",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Proyecto Salvacion (2026) [Bluray 1080p][Esp].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEBRip.Dublado.mkv\n👤 104 💾 4.71 GB ⚙️ Comando\n🇬🇧 / 🇵🇹",
+      "infoHash": "28cefc553288e692fcf6d41537ad6a584ee34305",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "Project.Hail.Mary.2026.1080p.WEBRip.Dublado.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p BluRay\n👤 100 💾 2.89 GB ⚙️ YTS",
+      "infoHash": "36837de1db31b6292be7eefd15a5dbc25b8ae010",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Project.Hail.Mary.2026.IMAX.HYBRID.1080p.BluRay.x264.AAC5.1-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEBRip\n👤 100 💾 2.61 GB ⚙️ YTS",
+      "infoHash": "e67f6476d2f8d62bf08b05ef228d3aee3a13810b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Project.Hail.Mary.2026.IMAX.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEBRip\n👤 100 💾 2.88 GB ⚙️ YTS",
+      "infoHash": "3f2f600c7a5637de5adf972b053996e57f2b8b0d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Project.Hail.Mary.2026.IMAX.1080p.WEBRip.x264.AAC5.1-[YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Spasitel / Project Hail Mary (2026)(CZkino/EN)[1080p][WebRip]\n👤 96 💾 3.55 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "infoHash": "8f83a35d35152e53850dab151d658969b0353a4a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "Spasitel (2026) CZ dabing.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p 10bit WEBRip 6CH x265 HEVC-PSA\n👤 91 💾 2.68 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "1f248bd5aadfe61a73aab4cf6e2f7f688274c9df",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Project.Hail.Mary.2026.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.ITA-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R.mkv\n👤 83 💾 2.2 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇮🇹",
+      "infoHash": "b35c0ada09b7cbd6b423004c6721b5677452c189",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Project.Hail.Mary.2026.1080p.ITA-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.MULTi.1080p.WEB.H264-SUPERFLU (Projet dernière chance)\n👤 80 💾 12.03 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "7d8bb05a2b97698941361393d9ab436ce9ca408c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project.Hail.Mary.2026.MULTi.1080p.WEB.H264-SUPERFLU.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary / Spasitel EN (1080p) (x265) (HEVC)\n👤 73 💾 2.7 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "infoHash": "ff258d56e74cd5f9fa0d42a109b0dd7b741af187",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Proyecto.Fin.del.Mundo.2026.1080p-Dual-Lat\n👤 69 💾 3.61 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "0f7aa51c4fbea7e5392ee9e689849af6dd663b37",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Proyecto.Fin.del.Mundo.2026.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEBRip 1080p | D | MovieDalen\n👤 65 💾 18.53 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "2fb93f16ce6fb284a7846d4e3b207b0ef660382f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|h264",
+        "filename": "Project.Hail.Mary.2026.WEBRip.1080p.H264.DD51.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:2fb93f16ce6fb284a7846d4e3b207b0ef660382f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.hail.mary.2026.1080p-dual-lat-cinecalidad.rs.mp4\n👤 58 💾 2.79 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "ffd0888d79ee2a493bd37e8ab6844acc42c30124",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Project.hail.mary.2026.1080p-dual-lat-cinecalidad.rs.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.iTA-ENG.Bluray.1080p.x264-CYBER.mkv\n👤 56 💾 12.27 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "4630a2743881dce71e2cfb9181730a9b354a9fb7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Project.Hail.Mary.2026.iTA-ENG.Bluray.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "L'ultima missione Project Hail Mary (2026) WEBRip 1080p AV1 EAC3 ITA ENG SUB ITA ENG - Lullozzo\n👤 55 💾 5.44 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "9360221af611b7516664c28d7909c9f616913ebb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "L'ultima missione Project Hail Mary (2026) WEBRip 1080p AV1 EAC3 ITA ENG SUB ITA ENG - Lullozzo.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.IMAX.1080p.WEBRip.DS4K.AV1.DDP5.1-dAV1nci\n👤 55 💾 1.56 GB ⚙️ 1337x",
+      "infoHash": "e45e87db09a9769607bc6b68c7153d34414431aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip",
+        "filename": "Project.Hail.Mary.2026.IMAX.1080p.WEBRip.DS4K.AV1.DDP5.1-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) 1080p H264 IMAX iTA EnG AC3 MIRCrew\n👤 52 💾 3.3 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "infoHash": "9d517c4cb2fe3dd91d43f5b82adcf9d797ee67a0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project Hail Mary (2026) 1080p H264 IMAX iTA EnG AC3 Sub iTA EnG-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Projet.Derniere.Chance.2026.VOSTFR.1080p.WEB.AC3.2.0.H264-LiNEAUDIO (Projet dernière chance)\n👤 52 💾 18.39 GB ⚙️ Torrent9\n🇬🇧 / 🇫🇷",
+      "infoHash": "8aef2984cad40f5326bd2e4e636610aad1d3bea1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project.Hail.Mary.2026.1080p.WEB.AC3.H264-LiNEAUDIO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEBRip.x265-KONTRAST\n👤 45 💾 4.22 GB ⚙️ 1337x",
+      "infoHash": "a987eb182dc1ce638fef046050b942a60ffe9025",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Project.Hail.Mary.2026.1080p.WEBRip.x265-KONTRAST.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.bluray.sdr.1080p.av1.5.1.opus.subs-Dust\n👤 44 💾 6.73 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "1db585676ef617d06d81f1b4842c0948db4edc73",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Project.Hail.Mary.2026.bluray.sdr.1080p.av1.5.1.opus.subs-Dust.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.iT.WEB-DL.DDP5.1.Atmos.h264.Dual.YG⭐\n👤 43 💾 12.24 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇪🇸",
+      "infoHash": "00792a4d3ce28200354e3ed2a1e7f29b5ad2cc35",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Project.Hail.Mary.2026.1080p.iT.WEB-DL.DDP5.1.Atmos.h264.Dual YG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026 ITA/ENG) [1080p x265] [Paso77]\n👤 42 💾 9.18 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "a3c400c5de0e96276e62ff1495c1138dfb6ac455",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "Project Hail Mary 2026 BDRip ITA ENG 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) L' Ultima Missione - FullHD 1080p.H264 IMAX Ita Eng AC3 5.1 Sub Ita Eng realDMDJ\n👤 41 💾 3.63 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "8aaf80333fbb46ca1696f1164a0154a6c2942574",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project Hail Mary 2026 FullHD 1080p.H264 IMAX Ita Eng AC3 5.1 Sub Ita Eng realDMDJ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DL 1080p от Scarabey | D P | MovieDalen Jaskier LostFilm Яроцкий | IMAX\n👤 30 💾 14.41 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "b87e7b545e638902b4dc35e281c1ce4bd25b3925",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Project Hail Mary_2026_1080p_[scarfilm].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:b87e7b545e638902b4dc35e281c1ce4bd25b3925",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Spasitel / Project Hail Mary (2026)[1080p]\n👤 30 💾 9.1 GB ⚙️ EXT\n🇬🇧 / 🇨🇿",
+      "infoHash": "5526f6ebf558c7c85825a3a13210e3a6e3da80ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Project Hail Mary 2026 1080p WEB AC3 H264-DJT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) AV1 1080p 7RIP\n👤 27 💾 925.05 MB ⚙️ 1337x",
+      "infoHash": "748117a0a7320c171aa7593ba1163561aeba6c88",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Project Hail Mary (2026) AV1 1080p 7RIP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB DL AAC.2.0 H264 EaZy\n👤 26 💾 18.68 GB ⚙️ 1337x",
+      "infoHash": "bafc1aaee92ddb1156d4ecb74ab434c209379711",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Project.Hail.Mary.2026.1080p.WEB-DL.AAC.2.0.H264-EaZy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary - L'Ultima Missione (2026) 1080p H265 IMAX AC3 5.1 ITA.ENG sub ita.eng MIRCrew\n👤 25 💾 3.72 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "7c5e9e8e107cffd55dcf507e5e1d81fcae24bd59",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "L'Ultima Missione - Project Hail Mary (2026) 1080p H265 IMAX AC3 5.1 ITA.ENG sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEB-DL.AAC2.0.x264\n👤 25 💾 18.18 GB ⚙️ 1337x",
+      "infoHash": "b10d7665ca77a605beca6ebb44a137f42e9ae88d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Project Hail Mary (2026).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) BDRip-HEVC 1080p от Spartanec | D | IMAX\n👤 24 💾 13.7 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "e2ea02d31869c3f5f50cd3e6777104181b9192b5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|10bit",
+        "filename": "Проект «Конец света» (2026) BDRip 1080p [HEVC] 10 bit by Spartanec.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:e2ea02d31869c3f5f50cd3e6777104181b9192b5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p BluRay x265 DDPA5 1-R1GY3B\n👤 24 💾 5.56 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "8659739a9ca4e7337ee16d70e5eaf200847963ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Project Hail Mary 2026 1080p BluRay x265 DDPA5 1-R1GY3B.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) (1080p BluRay x265 10-bit AAC 7.1) [WeSLeY]\n👤 23 💾 9.17 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "91d880b546f3a1001f51ad4f74b37bdcb1e8c41b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Project Hail Mary (2026) (1080p BluRay x265 10-bit AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5.1\n👤 23 💾 2.98 GB ⚙️ ThePirateBay",
+      "infoHash": "56d4731f83e6d461b5da30c4182aa3598444d985",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5 1 BONE\n👤 22 💾 2.98 GB ⚙️ ThePirateBay",
+      "infoHash": "295e21bb14adfbc79807a86e2c574e8eda09aca9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5 1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEB-DL.DDP5.1.H265.2Audio-ParkHD\n👤 21 💾 1.33 GB ⚙️ EXT",
+      "infoHash": "c23cc0ac790924b36af50575a44941a306d375b0",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5 1-BONE\n👤 21 💾 2.98 GB ⚙️ ThePirateBay",
+      "infoHash": "73126ebb3be76d139c5c5b55854d8584ab2273a2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc",
+        "filename": "Project Hail Mary 2026 1080p WEB-DL HEVC x265 5 1-BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Proyecto.Fin.del.Mundo.2026.WEB-DL.1080p-Dual-Lat\n👤 20 💾 12.24 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "2749fbfda20623104591dbedd8c19a927e7ba846",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Proyecto.Fin.del.Mundo.2026.WEB-DL.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "L'ultima missione Project Hail Mary (2026) WEBRip 1080p x264 EAC3 ITA ENG SUB ITA ENG - Lullozzo\n👤 18 💾 11.06 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "5143dd04ecc6acfda7f15dfe40373e9badd5e068",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "L'ultima missione Project Hail Mary (2026) WEBRip 1080p x264 EAC3 ITA ENG SUB ITA ENG - Lullozzo.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.MULTi.1080p.IMAX.WEB-DL.x264.AC3-KiT\n👤 17 💾 12.1 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "infoHash": "2827a012207965fa566403d62ee8a9ba65d77eab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Project.Hail.Mary.2026.MULTi.1080p.IMAX.WEB-DL.x264.AC3-KiT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) IMAX 1080p WEBRip 5.1-LAMA\n👤 16 💾 2.88 GB ⚙️ ThePirateBay",
+      "infoHash": "f9a6d6e7ae97b15a097cf840f35a074f7e8c76ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Project.Hail.Mary.2026.IMAX.1080p.WEBRip.x264.AAC5.1-LAMA.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DL 1080p от New-Team | D | MovieDalen | IMAX\n👤 16 💾 12.24 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "48635d50b0e57102612011148e5196dc384d7c9f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Project.Hail.Mary.2026.1080p-New-Team.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:48635d50b0e57102612011148e5196dc384d7c9f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) IMAX 1080p WEBRip x265 10bit 5.1-LAMA\n👤 13 💾 2.61 GB ⚙️ ThePirateBay",
+      "infoHash": "247c7019887f79c306ae4fa8cb07bf906cdab08e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265|10bit",
+        "filename": "Project.Hail.Mary.2026.IMAX.1080p.WEBRip.x265.10bit.AAC5.1-LAMA.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.iTA-ENG.WEBDL.1080p.x264-CYBER.mkv\n👤 12 💾 13.4 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "939d075fc59e4823c59909f56d8bdaaaec6763e2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Project.Hail.Mary.2026.iTA-ENG.WEBDL.1080p.x264-CYBER.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project-Hail.Mary.2026.IMAX.1080p.10bit.DS4K.iTunes.WEBRip.[Org.DDP5.1-Hindi DDPA5.1-English].MSubs.HEVC-The.PunisheR\n👤 11 💾 6.26 GB ⚙️ 1337x\nMulti Subs / 🇬🇧 / 🇮🇳",
+      "infoHash": "26b199ac5a6414ba0a7623f22320342d22dfffaf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Project-Hail.Mary.2026.IMAX.1080p.10bit.DS4K.iTunes.WEBRip.[Org.DDP5.1-Hindi+DDPA5.1-English].MSubs.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary [2026 WEB-DL 1080p] [IMAX] Dub (MovieDalen) + Original (Eng) + Sub (Rus Eng Deu Heb)\n👤 10 💾 12.31 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪 / 🇮🇱",
+      "infoHash": "d6d59c448ad4e278d31ccba6dff7b89d7617d1a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Project.Hail.Mary.2026.1080p.WEB-DL.H.264-RDNYB_EniaHD.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:d6d59c448ad4e278d31ccba6dff7b89d7617d1a6",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p 3D HOU",
+      "title": "Project Hail Mary (2026) [3D.1080p.HOU.BDRip.DDP.x264] [Lektor & Napisy PL] by d666.mkv\n👤 9 💾 41.1 GB ⚙️ BestTorrents\n🇬🇧 / 🇵🇱",
+      "infoHash": "4f0b5136db46253ca264f3c9d15ebf2e413e2786",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Projekt Hail Mary - Project Hail Mary (2026) [3D.1080p.HOU.BDRip.DDP.x264] [Lektor & Napisy PL] by d666.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) BDRip 1080p от селезень | D | MovieDalen | IMAX\n👤 8 💾 25.31 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "ca5c11f42fdbe30a9295ae6a93d0f309e1e92b49",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Project.Hail.Mary.2026.BDRip.1080p.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:ca5c11f42fdbe30a9295ae6a93d0f309e1e92b49",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) IMAX 1080p x264 [Tam.Tel.Hindi.Mal.Kan.Eng] (DD+5.1 192Kbps) ESub\n👤 8 💾 3.93 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "infoHash": "3753ea4fcb5793df9a5b0d50691c4567ff4869aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "www.1TamilMV.gratis - Project Hail Mary (2026) IMAX HQ HDRip - 1080p - x264 - [Tam + Tel + Hin + Mal + Kan + Eng] - (DD5.1 - 192Kbps) - 3.9GB - ESub.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p BluRay REMUX AVC Atmos-TRiToN\n👤 7 💾 34.74 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "b5062d9321731d0888a2d654dc382beaccb7fa84",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Projekt Hail Mary/ Project Hail Mary (2026) [ 1080p] [ WEB-DL] [ H264 ] [AC3-d11] [ Lektor PL] [ToAlien]\n👤 7 💾 2.73 GB ⚙️ EXT\n🇵🇱",
+      "infoHash": "d07f595d34d402e955886e3ae02ba75222b1ce25",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "[ ELECTRO-TORRENT.D11] Projekt Hail Mary 2026 r.d11.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p BluRay TrueHD 7 1 Atmos 10bit H 265-iVy\n👤 7 💾 7.01 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "f440bc8f7bd444ce33322006e13988163e383480",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265|10bit",
+        "filename": "Project Hail Mary 2026 1080p BluRay TrueHD 7 1 Atmos 10bit H 265-iVy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "[ONLY POLISH AUDIO] Projekt Hail Mary / Project Hail Mary (2026…\n👤 7 💾 3.7 GB ⚙️ TorrentGalaxy\n🇵🇱",
+      "infoHash": "f635602ba7466bf553d68672808995cfaa1b5b1e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Project.Hail.Mary.2026.PL.1080p.BluRay.H264.DD5.1-MAXX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p BluRay DDP 5 1 10bit H 265-iVy\n👤 6 💾 4.6 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "681b41ee1e1d6041d97c152dbb56c2dbfc55640d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265|10bit",
+        "filename": "Project Hail Mary 2026 1080p BluRay DDP 5 1 10bit H 265-iVy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) WEB-DL Dual Audio ORG 1080p 2.2GB\n👤 6 💾 2.25 GB ⚙️ TorrentGalaxy\nDual Audio",
+      "infoHash": "42588eacae8091cfdafa541ce8b5a2f5cbf21dfa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Project Hail Mary (2026) [1Bolly4u.com] WEB-DL Dual Audio ORG 1080p 2.2GB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEB-DL x264 AAC2 0-Pahe in\n👤 6 💾 3.51 GB ⚙️ ThePirateBay",
+      "infoHash": "a4cbed382513ef287d9d017c1b0e926dd461cf68",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Project Hail Mary 2026 1080p WEB-DL x264 AAC2 0-Pahe in.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026 ITA/ENG) [1080p x265] [Paso77]\n👤 6 💾 8.86 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "b86adf5e80024c6fba15b4c999d6160079d1e486",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265",
+        "filename": "Project Hail Mary 2026 WEBdl ITA ENG 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WEBRip x265-DH\n👤 6 💾 6.67 GB ⚙️ ThePirateBay",
+      "infoHash": "8cfc1da98690810f9f05cab598f5884ba38bbf9e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Project Hail Mary 2026 1080p WEBRip x265-DH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary L'Ultima Missione (2026) iTA-ENG.WEBDL.1080p.x264-Dr4gon.mkv\n👤 6 💾 3.85 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "75aa9e32c9f444007f20bca4ab6968385e13e18c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "L'Ultima Missione Project Hail Mary (2026) iTA-ENG.WEBDL.1080p.x264-Dr4gon.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 m1080p BluRay x264-GeneMige\n👤 5 💾 3.61 GB ⚙️ EXT",
+      "infoHash": "aa69e20c35ccfce1305a4f6a177c3c07411a98cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Project Hail Mary 2026 m1080p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.Bluray.1080p.AAC2.0.x264-DreamHD\n👤 5 💾 4.82 GB ⚙️ EXT",
+      "infoHash": "a6ddf410542c83f18c9d4917145db455c03dbdb3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.1080p.WEB-DL.H.264.AAC-PandaQT\n👤 5 💾 2.14 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1e055afe226037faf5bdc3591818a4f3198ae1b3",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "挽救计划.Project.Hail.Mary.2026.1080p.WEB-DL.H.264.AAC-PandaQT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Y 2026 1080p VIKI WEB-DL AAC2 0 H 264-DUSKLiGHT\n👤 5 💾 994.04 MB ⚙️ ThePirateBay\n🇬🇧 / 🇰🇷",
+      "infoHash": "bff2bcefbc7f6261ea6457853d61fa6ebd9ef887",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Project Y 2026 1080p VIKI WEB-DL AAC2 0 H 264-DUSKLiGHT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D SBS",
+      "title": "Project.Hail.Mary.2026.1080p.3D.FULL-SBS.HEVC.ENG-HUN.iFA-AI3D\n👤 5 💾 18.07 GB ⚙️ 1337x\n🇬🇧 / 🇭🇺",
+      "infoHash": "5f8410d00ad801ac236ba92d043ca765ddb16c76",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|hevc",
+        "filename": "Project.Hail.Mary.2026.1080p.3D.FULL-SBS.HEVC.ENG-HUN.iFA-AI3D.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary (2026) IMAX 1080p DS4K 10bit [60FPS] iT WEBRip x265 HEVC [AMZ Hindi DDP 5.1 English DDP 5.1 Atmos] MSubs ~ MrStrange\n👤 5 💾 8.7 GB ⚙️ 1337x\nMulti Subs / 🇬🇧 / 🇮🇳",
+      "infoHash": "da58dc10e2a69b9ba8612ee785cf59005e479c01",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Project Hail Mary (2026) IMAX 1080p DS4K 10bit [60FPS] iT WEBRip x265 HEVC [AMZ Hindi DDP 5.1 + English DDP 5.1 Atmos] MSubs ~ MrStrange.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project Hail Mary 2026 1080p WebRip EAC3 5 1 x265-Lootera\n👤 5 💾 3.87 GB ⚙️ ThePirateBay",
+      "infoHash": "ba2fa941455904f7949f93d712dd1feef85f55b0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Project Hail Mary 2026 1080p WebRip EAC3 5 1 x265-Lootera.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Project.Hail.Mary.2026.MULTi.1080p.IMAX.10bit.WEB-DL.DD5.1.x265.HEVC-AdL\n👤 5 💾 3.29 GB ⚙️ BestTorrents\nMulti Audio / 🇬🇧 / 🇵🇱",
+      "infoHash": "5d5bb9b6dbe70f578ecbd43d8b3a516837f90be4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|hevc|10bit",
+        "filename": "Project.Hail.Mary.2026.MULTi.1080p.IMAX.10bit.WEB-DL.DD5.1.x265.HEVC-AdL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DLRip 720p от New-Team | D | MovieDalen | IMAX\n👤 495 💾 7.56 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "0c1fc2207d030f8f682fe07eb7871f1a5c3c3b1c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|x264",
+        "filename": "Project.Hail.Mary.2026.720p.WEB-DLRip.x264_New-Team_il68k.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:0c1fc2207d030f8f682fe07eb7871f1a5c3c3b1c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project Hail Mary 2026 720p BluRay\n👤 100 💾 1.41 GB ⚙️ YTS",
+      "infoHash": "7876c7bb5a96440ea86de0e12aba3045e3621541",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Project.Hail.Mary.2026.IMAX.HYBRID.720p.BluRay.x264.AAC-[YTS.GG - YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project Hail Mary 2026 720p WEBRip\n👤 100 💾 1.4 GB ⚙️ YTS",
+      "infoHash": "69b5fd8ce73106c60caf5a5fc70b18ce9536e70a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Project.Hail.Mary.2026.IMAX.720p.WEBRip.x264.AAC-[YTS.BZ].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project.Hail.Mary.2026.iNTERNAL.720p.10bit.WEBRip.2CH.x265.HEVC-PSA\n👤 89 💾 1.02 GB ⚙️ 1337x",
+      "infoHash": "a75fa6a9d7c0f9e9a1a1ad0d0d5629e25d6fba86",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Project.Hail.Mary.2026.iNTERNAL.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Proyecto Salvacion (2026) [Bluray 720p][Esp]\n👤 74 💾 7.02 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "98b04925ad1bc0fbcfdb5bd7aae4c7888dbc7347",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Proyecto Salvacion (2026) [Bluray 720p][Esp].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project.Hail.Mary.2026.PL.720p.WEBRip.XViD.AC3-LLA\n👤 72 💾 4.18 GB ⚙️ BestTorrents\n🇵🇱",
+      "infoHash": "accdad92642807d66638e5be276f7586f5092516",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|xvid",
+        "filename": "Project.Hail.Mary.2026.PL.720p.WEBRip.XViD.AC3-LLA.avi"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project Hail Mary (2026) IMAX 720p WEBRip-LAMA\n👤 71 💾 1.4 GB ⚙️ ThePirateBay",
+      "infoHash": "a07033ede58effec257dc6a0e707a5a69f155d33",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Project.Hail.Mary.2026.IMAX.720p.WEBRip.x264.AAC-LAMA.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project.Hail.Mary.2026.Multi.720P. WEBRIP-NOTAG (Projet dernière chance)\n👤 58 💾 3.96 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "a596ffcdf8d46950ef7b049fac9f0967fb727ee5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip",
+        "filename": "Project.Hail.Mary.2026.Multi.720P. WEBRIP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DL 720p от селезень | D | MovieDalen | IMAX\n👤 45 💾 5.51 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "3abf43952158d224e0e10999860ddf91521c0473",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Project.Hail.Mary.2026.720p.IMAX.WEB-DL.DDP5.1.Atmos.H.264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:3abf43952158d224e0e10999860ddf91521c0473",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project Hail Mary (2026) IMAX 720p 10bit DS4K iT WEBRip x265 HEVC [YTM Hindi DDP 5.1 ~192Kbps English DDP 5.1] ESub - Immortal\n👤 35 💾 1.49 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "infoHash": "66cf86a1871a8fc87c5df383988c5b8beceeb81f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|hevc|10bit",
+        "filename": "Project Hail Mary (2026) IMAX 720p 10bit DS4K iT WEBRip x265 HEVC [YTM Hindi DDP 5.1 ~192Kbps + English DDP 5.1] ESub - Immortal.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) BDRip 720p от DoMiNo & селезень | D | MovieDalen | IMAX\n👤 21 💾 10.16 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "74664a6d79af465f7350eebfe5adcba0d5a689fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|x264",
+        "filename": "Project.Hail.Mary.2026.DUB.IMAX.BDRip.720p.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:74664a6d79af465f7350eebfe5adcba0d5a689fd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project Hail Mary 2026 720p BluRay x264-GeneMige\n👤 18 💾 6.35 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "43f0d0d31e56283dc31399386cc479982db182c5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Project Hail Mary 2026 720p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEBRip 720p от New-Team | D | MovieDalen\n👤 15 💾 6.84 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "5906a86a6657df890ebe1d117127f57f0d447579",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip",
+        "filename": "Project.Hail.Mary.2026.WEBRip.720p-New-Team.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:5906a86a6657df890ebe1d117127f57f0d447579",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Proyecto.Fin.del.Mundo.2026.720p-Dual-Lat\n👤 11 💾 1.45 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "e740b70bde8dc2d93072ddf7de0480b299cc5397",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Proyecto.Fin.del.Mundo.2026.720p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Project Hail Mary 2026 IMAX 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR\n👤 8 💾 6.71 GB ⚙️ ThePirateBay",
+      "infoHash": "59f8884a59aba33936fe71c6ee6a6cbaf12b5baf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Project Hail Mary 2026 IMAX 720p AMZN WEB-DL DDP5 1 Atmos H 264-BYNDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "L'ultima missione Project Hail Mary (2026) iMAX .mkv 720p WEB-DL AC3 5.1 iTA ENG H264 - FHC_CREW.mkv\n👤 8 💾 6.21 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "5716f401b7ec98bf95bccc501555bcd76f4af1e5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "L'ultima missione Project Hail Mary (2026) iMAX .mkv 720p WEB-DL AC3 5.1 iTA ENG H264 - FHC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n576p",
+      "title": "Project Hail Mary 2026 576p WEBRip x265 AAC-SSN\n👤 47 💾 2.14 GB ⚙️ ThePirateBay",
+      "infoHash": "65d4204dd1ac45b495d8e0a843884e4507c1f5a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|576p|WEBRip|x265",
+        "filename": "Project Hail Mary 2026 576p WEBRip x265 AAC-SSN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n576p",
+      "title": "Project Hail Mary 2026 576p WEBRip x265 AAC-SSN\n👤 5 💾 2.14 GB ⚙️ ThePirateBay",
+      "infoHash": "8b0b62421cfabb15893d3012728f0389f78b3d94",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|576p|WEBRip|x265",
+        "filename": "Project Hail Mary 2026 576p WEBRip x265 AAC-SSN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n480p",
+      "title": "Project.Hail.Mary.2026.PL.AI.480p.WEB-DL.XviD.AC3-OzW\n👤 19 💾 2.49 GB ⚙️ BestTorrents\n🇵🇱",
+      "infoHash": "65f8c380d187ff64b214388b46da9e1750e4363c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|WEB-DL|xvid",
+        "filename": "Project.Hail.Mary.2026.PL.AI.480p.WEB-DL.XviD.AC3-OzW.avi"
+      }
+    },
+    {
+      "name": "Torrentio\n480p",
+      "title": "Project.Hail.Mary.2026.PL.480p.AC3.WEB-DL.XviD-GR4PE\n👤 14 💾 1.36 GB ⚙️ BestTorrents\n🇵🇱",
+      "infoHash": "26f20ad9c7a52050d6ffba61fcd9ba4e19f30060",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|WEB-DL|xvid",
+        "filename": "Project.Hail.Mary.2026.PL.480p.AC3.WEB-DL.XviD-GR4PE.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Project.Hail.Mary.2026.1080p.TELESYNC.HC.x264-SyncUP\n👤 271 💾 8.26 GB ⚙️ ThePirateBay",
+      "infoHash": "52e38334b1a124ca0f2052ced0b46d2bc151bc52",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Project.Hail.Mary.2026.1080p.TELESYNC.HC.x264-SyncUP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Project.Hail.Mary.2025.1080p.hdts.h264.Dual.YG⭐\n👤 106 💾 6.63 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "c3250578339dd7f6d2b5865388e612c24baf9d4b",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Project.Hail.Mary.2025.1080p.hdts.h264.Dual YG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Project.Hail.Mary.2026.1080p.TELESYNC.V2.x264-SyncUP\n👤 103 💾 8.69 GB ⚙️ ThePirateBay",
+      "infoHash": "d035f48e423d3dc6fa0bd7902be18ccd7320f50a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Project.Hail.Mary.2026.1080p.TELESYNC.V2.x264-SyncUP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Project.Hail.Mary.2025.1080p.HDTS-v2.h264.Dual.YG⭐\n👤 44 💾 7.85 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "13f153c04bde87b8e7c5320098efbe2d0842095b",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|h264",
+        "filename": "Project.Hail.Mary.2025.1080p.HDTS-v2.h264.Dual YG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Project.Hail.Mary.2026.1080p.TELESYNC.x264.ENG HIN TAM TEL-EaZy\n👤 33 💾 6.99 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇳",
+      "infoHash": "514b46155a6328bb8197e90decf39473fde494f9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Project.Hail.Mary.2026.1080p.TELESYNC.x264.ENG HIN TAM TEL-EaZy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Project.Hail.Mary.2026.1080p.CAMRip.Dublado.Official.mkv\n👤 16 💾 4.53 GB ⚙️ Comando\n🇬🇧 / 🇵🇹",
+      "infoHash": "a76458790115f4ce9f3288af3808799c2ed483eb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Project.Hail.Mary.2026.1080p.CAMRip.Dublado.Official.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nCAM",
+      "title": "Project.Hail.Mary.2026.1080p.CAMRip.LAT.ENG.DUB.1XBET.mp4\n👤 5 💾 4.45 GB ⚙️ Cinecalidad\n🇬🇧 / 🇲🇽",
+      "infoHash": "f7dfacac4a0c27764b9f189e9db5ce045c22f15d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|CAM",
+        "filename": "Project.Hail.Mary.2026.1080p.CAMRip.LAT.ENG.DUB.1XBET.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEBRip-AVC от DoMiNo & селезень | D | MovieDalen\n👤 221 💾 3.45 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "595b8ab434c8ff66a05649b5a581f3e79b0225da",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|WEBRip|avc",
+        "filename": "Project.Hail.Mary.2026.DUB.WEB-DLRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:595b8ab434c8ff66a05649b5a581f3e79b0225da",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Project.Hail.Mary.2026.Multi.WEBRIP-NOTAG (Projet dernière chance)\n👤 154 💾 1.39 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "0b5f3b37c35bcc437a3aa92af7e4ad1ebb580699",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "Project.Hail.Mary.2026.Multi.WEBRIP.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DLRip от MegaPeer | IMAX | D | MovieDalen\n👤 91 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "a5df2d389b35f2d673aa60f5abd2ba9cf0832ca0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Project.Hail.Mary.2026.1.46GB.IMAX.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:a5df2d389b35f2d673aa60f5abd2ba9cf0832ca0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) BDRip-AVC от DoMiNo & селезень | D | MovieDalen | IMAX\n👤 71 💾 3.27 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "3bc293894a952bc35de817673b1d773d1ad34e64",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Project.Hail.Mary.2026.DUB.IMAX.BDRip.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:3bc293894a952bc35de817673b1d773d1ad34e64",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEB-DLRip от MegaPeer | IMAX | D | MovieDalen\n👤 61 💾 2.19 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "3dea6eacbeafc2c7dc100ccc4001485d9f00a41c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Project.Hail.Mary.2026.2.18GB.IMAX.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:3dea6eacbeafc2c7dc100ccc4001485d9f00a41c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Project Hail Mary (2026) [Ryan Gosling] BluRay H264 DolbyD 5.1 + nickarad\n👤 55 💾 3.17 GB ⚙️ ThePirateBay",
+      "infoHash": "5c26a7c7fc99d596f2645179aa7fb8a26933a082",
+      "fileIdx": 19,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|h264",
+        "filename": "Project Hail Mary (2026) BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Project Hail Mary (2026) [IMAX.WEB-DL.XviD-OzW] [Lektor PL]\n👤 53 💾 1.38 GB ⚙️ BestTorrents\n🇵🇱",
+      "infoHash": "0cadd3566bb9f943f19460332cc581240f631421",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|xvid",
+        "filename": "Projekt Hail Mary - Project Hail Mary (2026) [IMAX.WEB-DL.XviD-OzW] [Lektor PL].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) HDRip-AVC от ExKinoRay | D | MovieDalen | IMAX\n👤 31 💾 1.08 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "a7f1ae039689ad9a06dd831a3fabc55e6941779f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Project.Hail.Mary.2026.HDRip-AVC.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:a7f1ae039689ad9a06dd831a3fabc55e6941779f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "LUltima.Missione.Project.Hail.Mary.2026.BDRiP.iMAX.x264.AC3.iTA\n👤 19 💾 2.41 GB ⚙️ EXT\n🇮🇹",
+      "infoHash": "84d8994c89d3092555e380231edda9de2f79d691",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Проект «Конец света» / Project Hail Mary (2025) WEBRip | D | MovieDalen\n👤 19 💾 2.18 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "5583cb9b7b718a46d7f46da553eec43298fa06e5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip|xvid",
+        "filename": "Project.Hail.Mary.2026.WEBRip.XviD.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:5583cb9b7b718a46d7f46da553eec43298fa06e5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Proyecto Salvacion (2026) [Bluray][Esp]\n👤 11 💾 1.9 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "65d16269902744626c17c89283554d3d4ae5d9b0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay",
+        "filename": "Proyecto Salvacion (2026) [Bluray][Esp].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Project Hail Mary (2026) IMAX HQ HDRip - x264 - [Tam + Tel + Hin] - AAC - 500MB - ESub\n👤 9 💾 544.45 MB ⚙️ EXT\n🇮🇳",
+      "infoHash": "c6b9eb29c7859666ef1b3b2282809f00f16bc621",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Proyecto.Fin.del.Mundo.2026.DVDRip-Lat\n👤 9 💾 821 MB ⚙️ Cinecalidad\n🇲🇽",
+      "infoHash": "2456a9d2451c6899e90b4c65e98dd9a14f3f8aff",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip"
+      }
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Проект «Конец света» / Project Hail Mary (2026) WEBRip-AVC от ExKinoRay | D | MovieDalen\n👤 7 💾 1.08 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "d3b970135cb600cb48103ad39a87b46292951a77",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip|avc",
+        "filename": "Project.Hail.Mary.2026.DUB.WEBRip-AVC.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:d3b970135cb600cb48103ad39a87b46292951a77",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.bittor.pw:1337/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.corpscorp.online:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDV | HDR",
+      "title": "Project.Hail.Mary.2026.60fps.REMASTER.60fps.AI.RIFE.DV.HDR10.TrueHD.Atmos.7.1.HEVC-WoodrowsPoo69\n👤 6 💾 46.56 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "559ec2987425ea5a481ff72bc1d7fed9596072bb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|hevc|10bit|DV|HDR",
+        "filename": "Project.Hail.Mary.2026.60fps.REMASTER.60fps.AI.RIFE.DV.HDR10.TrueHD.Atmos.7.1.HEVC-WoodrowsPoo69.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "[nicollubin] Projekt Hail Mary Project Hail Mary (2026) [WEBRip.XviD-OzW] [Lektor AI PL]\n👤 5 💾 1.38 GB ⚙️ BestTorrents\n🇵🇱",
+      "infoHash": "f30823d3ed843594415e0843d6e185c0fa9a5caf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip|xvid",
+        "filename": "Projekt Hail Mary  Project Hail Mary (2026) [WEBRip.XviD-OzW]  [Lektor AI PL].avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Project Hail Mary/Spasitel (2026)(EN)[1080]\n👤 16 💾 2.6 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "infoHash": "44e242b1014eb8a5d5d4cada4ef4be6ffcd606a1"
+    }
+  ]
+}
