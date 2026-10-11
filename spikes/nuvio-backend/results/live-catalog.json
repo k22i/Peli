@@ -1,0 +1,618 @@
+{
+  "profile": 1,
+  "calls": [
+    {
+      "fn": "get_sync_owner",
+      "args": {},
+      "status": "ok",
+      "ms": 383,
+      "shape": "string (uuid)"
+    },
+    {
+      "fn": "get_sync_overview",
+      "args": {},
+      "status": "ok",
+      "ms": 363,
+      "shape": {
+        "addons": {
+          "1": "integer"
+        },
+        "plugins": {},
+        "profiles": {
+          "1": {
+            "name": "string",
+            "color": "string"
+          }
+        },
+        "library_items": {},
+        "watched_items": {},
+        "watch_progress": {}
+      }
+    },
+    {
+      "fn": "sync_pull_profiles",
+      "args": {},
+      "status": "ok",
+      "ms": 377,
+      "rows": 1,
+      "shape": [
+        {
+          "id": "string (uuid)",
+          "user_id": "string (uuid)",
+          "profile_index": "integer",
+          "name": "string",
+          "avatar_color_hex": "string",
+          "uses_primary_addons": "boolean",
+          "uses_primary_plugins": "boolean",
+          "avatar_id": "string",
+          "avatar_url": "null",
+          "profile_background_id": "null",
+          "profile_background_url": "null",
+          "pin_enabled": "boolean",
+          "pin_locked_until": "null",
+          "created_at": "string (timestamptz)",
+          "updated_at": "string (timestamptz)"
+        },
+        "…1 item(s)"
+      ]
+    },
+    {
+      "fn": "sync_pull_profile_locks",
+      "args": {},
+      "status": "ok",
+      "ms": 337,
+      "rows": 1,
+      "shape": [
+        {
+          "profile_index": "integer",
+          "pin_enabled": "boolean",
+          "pin_locked_until": "null"
+        },
+        "…1 item(s)"
+      ]
+    },
+    {
+      "fn": "sync_pull_library",
+      "args": {
+        "p_profile_id": 1,
+        "p_limit": 500,
+        "p_offset": 0
+      },
+      "status": "ok",
+      "ms": 348,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_get_library_delta_cursor",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 352,
+      "shape": "integer"
+    },
+    {
+      "fn": "sync_pull_library_delta",
+      "args": {
+        "p_profile_id": 1,
+        "p_since_event_id": 0,
+        "p_limit": 5
+      },
+      "status": "ok",
+      "ms": 354,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_watch_progress",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 356,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_get_watch_progress_delta_cursor",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 344,
+      "shape": "integer"
+    },
+    {
+      "fn": "sync_pull_watch_progress_delta",
+      "args": {
+        "p_profile_id": 1,
+        "p_since_event_id": 0,
+        "p_limit": 5
+      },
+      "status": "ok",
+      "ms": 352,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_watched_items",
+      "args": {
+        "p_profile_id": 1,
+        "p_page": 1,
+        "p_page_size": 500
+      },
+      "status": "ok",
+      "ms": 351,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_get_watched_items_delta_cursor",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 354,
+      "shape": "integer"
+    },
+    {
+      "fn": "sync_pull_watched_items_delta",
+      "args": {
+        "p_profile_id": 1,
+        "p_since_event_id": 0,
+        "p_limit": 5
+      },
+      "status": "ok",
+      "ms": 348,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_collections",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 707,
+      "rows": 1,
+      "shape": [
+        {
+          "profile_id": "integer",
+          "collections_json": [
+            {
+              "id": "string (uuid)",
+              "title": "string",
+              "folders": [
+                {
+                  "id": "string (uuid)",
+                  "title": "string",
+                  "sources": [
+                    {
+                      "type": "string",
+                      "genre": "string",
+                      "addonId": "string",
+                      "provider": "string = \"addon\"",
+                      "catalogId": "string"
+                    },
+                    "…2 item(s)"
+                  ],
+                  "hideTitle": "boolean",
+                  "tileShape": "string",
+                  "coverImageUrl": "string",
+                  "catalogSources": [
+                    {
+                      "type": "string",
+                      "addonId": "string",
+                      "catalogId": "string"
+                    },
+                    "…2 item(s)"
+                  ],
+                  "focusGifEnabled": "boolean",
+                  "heroBackdropUrl": "string"
+                },
+                "…9 item(s)"
+              ],
+              "pinToTop": "boolean",
+              "viewMode": "string",
+              "community": {
+                "id": "string",
+                "version": "integer",
+                "updatedAt": "integer",
+                "installMode": "string",
+                "installedAt": "integer",
+                "packCollectionId": "string (uuid)",
+                "originalCollectionId": "string (uuid)"
+              },
+              "showAllTab": "boolean",
+              "focusGlowEnabled": "boolean"
+            },
+            "…7 item(s)"
+          ],
+          "updated_at": "string (timestamptz)"
+        },
+        "…1 item(s)"
+      ]
+    },
+    {
+      "fn": "sync_pull_home_catalog_settings",
+      "args": {
+        "p_profile_id": 1,
+        "p_platform": "desktop"
+      },
+      "status": "ok",
+      "ms": 356,
+      "rows": 0,
+      "shape": []
+    },
+    {
+      "fn": "sync_pull_profile_settings_blob",
+      "args": {
+        "p_profile_id": 1,
+        "p_platform": "desktop"
+      },
+      "status": "ok",
+      "ms": 346,
+      "rows": 1,
+      "shape": [
+        {
+          "profile_id": "integer",
+          "settings_json": {
+            "version": "integer",
+            "features": {
+              "tmdb_settings": {},
+              "theme_settings": {
+                "nav_bar_style": {
+                  "type": "string",
+                  "value": "string"
+                }
+              },
+              "debrid_settings": {
+                "debrid_enabled": {
+                  "type": "string",
+                  "value": "boolean"
+                },
+                "debrid_preferred_resolver_provider_id": {
+                  "type": "string",
+                  "value": "string"
+                }
+              },
+              "player_settings": {
+                "animeskip_enabled": {
+                  "type": "string",
+                  "value": "boolean"
+                },
+                "pause_overlay_enabled": {
+                  "type": "string",
+                  "value": "boolean"
+                }
+              },
+              "mdblist_settings": {
+                "mdblist_enabled": {
+                  "type": "string",
+                  "value": "boolean"
+                }
+              },
+              "stream_badge_settings": {},
+              "notifications_settings": {
+                "episode_release_alerts_enabled": "boolean"
+              },
+              "trakt_settings_payload": "string",
+              "trakt_comments_settings": {},
+              "custom_poster_url_pattern": "string",
+              "meta_screen_settings_payload": "string",
+              "custom_poster_enabled_screens": "string",
+              "card_depth_style_settings_payload": "string",
+              "collection_mobile_settings_payload": "string",
+              "continue_watching_settings_payload": "string",
+              "poster_card_style_settings_payload": "string"
+            }
+          },
+          "updated_at": "string (timestamptz)"
+        },
+        "…1 item(s)"
+      ]
+    },
+    {
+      "fn": "get_avatar_catalog",
+      "args": {},
+      "status": "ok",
+      "ms": 357,
+      "rows": 42,
+      "shape": [
+        {
+          "id": "string",
+          "display_name": "string",
+          "storage_path": "string",
+          "category": "string",
+          "sort_order": "integer",
+          "is_active": "boolean",
+          "created_at": "string (timestamptz)",
+          "bg_color": "string"
+        },
+        "…42 item(s)"
+      ]
+    },
+    {
+      "fn": "list_my_sessions",
+      "args": {},
+      "status": "ok",
+      "ms": 352,
+      "rows": 2,
+      "shape": [
+        {
+          "session_id": "string (uuid)",
+          "created_at": "string (timestamptz)",
+          "last_active_at": "string (timestamptz)",
+          "client_name": "string",
+          "client_version": "string",
+          "platform": "string = \"Mac\"",
+          "device_name": "string",
+          "user_agent": "string",
+          "is_current": "boolean"
+        },
+        "…2 item(s)"
+      ]
+    },
+    {
+      "fn": "GET /rest/v1/addons",
+      "args": {
+        "profile_id": 1
+      },
+      "status": "ok",
+      "ms": 346,
+      "rows": 5,
+      "shape": [
+        {
+          "id": "string (uuid)",
+          "user_id": "string (uuid)",
+          "url": "string",
+          "name": "string",
+          "enabled": "boolean",
+          "sort_order": "integer",
+          "created_at": "string (timestamptz)",
+          "updated_at": "string (timestamptz)",
+          "profile_id": "integer"
+        },
+        "…5 item(s)"
+      ]
+    },
+    {
+      "fn": "GET /rest/v1/plugins",
+      "args": {
+        "profile_id": 1
+      },
+      "status": "ok",
+      "ms": 356,
+      "rows": 0,
+      "shape": []
+    }
+  ],
+  "traces": {
+    "requests": [
+      {
+        "label": "get_sync_owner",
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_sync_owner",
+        "status": 200,
+        "ms": 380
+      },
+      {
+        "label": "get_sync_overview",
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_sync_overview",
+        "status": 200,
+        "ms": 361
+      },
+      {
+        "label": "sync_pull_profiles",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profiles",
+        "status": 200,
+        "ms": 375
+      },
+      {
+        "label": "sync_pull_profile_locks",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profile_locks",
+        "status": 200,
+        "ms": 336
+      },
+      {
+        "label": "sync_pull_library",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library",
+        "status": 200,
+        "ms": 346
+      },
+      {
+        "label": "sync_get_library_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_library_delta_cursor",
+        "status": 200,
+        "ms": 349
+      },
+      {
+        "label": "sync_pull_library_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library_delta",
+        "status": 200,
+        "ms": 353
+      },
+      {
+        "label": "sync_pull_watch_progress",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress",
+        "status": 200,
+        "ms": 356
+      },
+      {
+        "label": "sync_get_watch_progress_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
+        "status": 200,
+        "ms": 343
+      },
+      {
+        "label": "sync_pull_watch_progress_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
+        "status": 200,
+        "ms": 351
+      },
+      {
+        "label": "sync_pull_watched_items",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watched_items",
+        "status": 200,
+        "ms": 351
+      },
+      {
+        "label": "sync_get_watched_items_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watched_items_delta_cursor",
+        "status": 200,
+        "ms": 353
+      },
+      {
+        "label": "sync_pull_watched_items_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watched_items_delta",
+        "status": 200,
+        "ms": 345
+      },
+      {
+        "label": "sync_pull_collections",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_collections",
+        "status": 200,
+        "ms": 348
+      },
+      {
+        "label": "sync_pull_home_catalog_settings",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_home_catalog_settings",
+        "status": 200,
+        "ms": 354
+      },
+      {
+        "label": "sync_pull_profile_settings_blob",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_profile_settings_blob",
+        "status": 200,
+        "ms": 343
+      },
+      {
+        "label": "get_avatar_catalog",
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_avatar_catalog",
+        "status": 200,
+        "ms": 355
+      },
+      {
+        "label": "list_my_sessions",
+        "method": "POST",
+        "path": "/rest/v1/rpc/list_my_sessions",
+        "status": 200,
+        "ms": 351
+      },
+      {
+        "label": "GET addons",
+        "method": "GET",
+        "path": "/rest/v1/addons",
+        "status": 200,
+        "ms": 344
+      },
+      {
+        "label": "GET plugins",
+        "method": "GET",
+        "path": "/rest/v1/plugins",
+        "status": 200,
+        "ms": 355
+      }
+    ],
+    "headers": {
+      "cf-cache-status": [
+        "DYNAMIC"
+      ],
+      "content-range": [
+        "0-0/*",
+        "*/*",
+        "0-41/*",
+        "0-1/*",
+        "0-4/*"
+      ],
+      "ratelimit-limit": [
+        "900"
+      ],
+      "ratelimit-remaining": [
+        "496",
+        "815",
+        "628",
+        "427",
+        "773",
+        "607",
+        "467",
+        "768",
+        "645",
+        "895",
+        "741",
+        "587",
+        "874",
+        "742",
+        "839",
+        "686",
+        "510",
+        "819"
+      ],
+      "ratelimit-reset": [
+        "1"
+      ],
+      "server": [
+        "cloudflare"
+      ],
+      "via": [
+        "1.1 Caddy, 1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "x-kong-upstream-latency": [
+        "34",
+        "4",
+        "5",
+        "1",
+        "3",
+        "7",
+        "2",
+        "6"
+      ],
+      "x-ratelimit-limit-second": [
+        "900"
+      ],
+      "x-ratelimit-remaining-second": [
+        "496",
+        "815",
+        "628",
+        "427",
+        "773",
+        "607",
+        "467",
+        "768",
+        "645",
+        "895",
+        "741",
+        "587",
+        "874",
+        "742",
+        "839",
+        "686",
+        "510",
+        "819"
+      ]
+    }
+  }
+}

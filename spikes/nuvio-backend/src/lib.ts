@@ -63,7 +63,8 @@ export const tracingFetch: typeof fetch = async (input, init) => {
   const res = await fetch(req);
   const headers: Record<string, string> = {};
   res.headers.forEach((v, k) => {
-    if (interestingHeaders.test(k)) headers[k] = v;
+    // sb-auth-user-id carries the account's UUID.
+    if (interestingHeaders.test(k)) headers[k] = /^[0-9a-f]{8}-[0-9a-f]{4}-/.test(v) ? '<uuid>' : v;
   });
   const u = new URL(req.url);
   const t: Trace = {
@@ -129,10 +130,12 @@ export function shapeOf(v: unknown, key = ''): unknown {
   return typeof v;
 }
 
+// One-time TV login secrets are redacted too, even though they are spent after the run.
+const secretArgs = new Set(['p_code', 'p_device_nonce']);
 export function writeResult(name: string, data: unknown) {
   const file = join(root, 'results', name);
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+  writeFileSync(file, JSON.stringify(data, (k, v) => (secretArgs.has(k) && typeof v === 'string' ? '<redacted>' : v), 2) + '\n');
   console.error(`wrote ${file.slice(root.length + 1)}`);
 }
 

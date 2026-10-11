@@ -5,10 +5,10 @@
       "fn": "sync_pull_profiles",
       "args": {},
       "status": "error",
-      "ms": 25,
+      "ms": 13,
       "error": {
-        "code": "28000",
-        "message": "Unauthorized: valid session required for sync.",
+        "code": "42501",
+        "message": "permission denied for function sync_pull_profiles",
         "details": null,
         "hint": null
       }
@@ -18,7 +18,7 @@
       "fn": "sync_pull_everything",
       "args": {},
       "status": "error",
-      "ms": 7,
+      "ms": 17,
       "error": {
         "code": "PGRST202",
         "message": "Could not find the function public.sync_pull_everything without parameters in the schema cache",
@@ -33,10 +33,10 @@
         "p_profile_id": 1
       },
       "status": "error",
-      "ms": 7,
+      "ms": 5,
       "error": {
-        "code": "28000",
-        "message": "Unauthorized: valid session required for sync.",
+        "code": "42501",
+        "message": "permission denied for function sync_pull_library",
         "details": null,
         "hint": null
       }
@@ -66,7 +66,7 @@
         "p_origin_client_id": "staysh-spike"
       },
       "status": "error",
-      "ms": 5,
+      "ms": 4,
       "error": {
         "code": "P0001",
         "message": "Invalid profile id",
@@ -81,7 +81,7 @@
         "profile_id": 1
       },
       "status": "error",
-      "ms": 2,
+      "ms": 3,
       "error": {
         "code": "PGRST202",
         "message": "Could not find the function public.sync_pull_library(profile_id) in the schema cache",
@@ -114,7 +114,7 @@
         "p_device_nonce": "nope-nope-nope"
       },
       "status": "error",
-      "ms": 7,
+      "ms": 11,
       "error": {
         "code": "P0001",
         "message": "Invalid TV login session",
@@ -129,7 +129,7 @@
         "p_code": "nope"
       },
       "status": "ok",
-      "ms": 4,
+      "ms": 8,
       "rows": 1,
       "shape": [
         {
@@ -146,22 +146,22 @@
         "label": "sync_pull_profiles",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_profiles",
-        "status": 403,
-        "ms": 23
+        "status": 401,
+        "ms": 12
       },
       {
         "label": "sync_pull_everything",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_everything",
         "status": 404,
-        "ms": 6
+        "ms": 16
       },
       {
         "label": "sync_pull_library",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_library",
-        "status": 403,
-        "ms": 6
+        "status": 401,
+        "ms": 4
       },
       {
         "label": "signInWithPassword wrong",
@@ -196,14 +196,14 @@
         "method": "POST",
         "path": "/rest/v1/rpc/poll_tv_login_session",
         "status": 400,
-        "ms": 6
+        "ms": 11
       },
       {
         "label": "approve_tv_login_session",
         "method": "POST",
         "path": "/rest/v1/rpc/approve_tv_login_session",
         "status": 200,
-        "ms": 4
+        "ms": 8
       }
     ],
     "headers": {
@@ -215,16 +215,17 @@
         "1.1 kong/3.9.1"
       ],
       "x-kong-proxy-latency": [
-        "0",
-        "1"
+        "1",
+        "0"
       ],
       "x-kong-upstream-latency": [
-        "15",
-        "4",
         "3",
-        "72",
+        "8",
         "2",
-        "1"
+        "71",
+        "1",
+        "9",
+        "6"
       ],
       "x-sb-error-code": [
         "invalid_credentials"

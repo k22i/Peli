@@ -1,0 +1,430 @@
+{
+  "redirect": "https://nuvio.tv/tv-login",
+  "approvedAfterSec": 28,
+  "steps": [
+    {
+      "fn": "start_tv_login_session",
+      "args": {
+        "p_device_nonce": "<redacted>",
+        "p_redirect_base_url": "https://nuvio.tv/tv-login",
+        "p_device_name": "Staysh (spike)"
+      },
+      "status": "ok",
+      "ms": 414,
+      "rows": 1,
+      "shape": [
+        {
+          "code": "string",
+          "web_url": "string",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ]
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 392,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 3
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 406,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 7
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 382,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 10
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 380,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 14
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 398,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 17
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 371,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 20
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 387,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"pending\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 24
+    },
+    {
+      "fn": "poll_tv_login_session",
+      "args": {
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
+      },
+      "status": "ok",
+      "ms": 400,
+      "rows": 1,
+      "shape": [
+        {
+          "status": "string = \"approved\"",
+          "expires_at": "string (timestamptz)",
+          "poll_interval_seconds": "integer"
+        },
+        "…1 item(s)"
+      ],
+      "atSec": 27
+    },
+    {
+      "fn": "functions/v1/tv-logins-exchange",
+      "shape": {
+        "access_token": "string",
+        "refresh_token": "string",
+        "token_type": "string",
+        "expires_in": "integer"
+      }
+    }
+  ],
+  "traces": [
+    {
+      "at": "2026-10-11T14:25:04.252Z",
+      "label": "start_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/start_tv_login_session",
+      "status": 200,
+      "ms": 411,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e882fbffe5c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "874",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "2",
+        "x-kong-request-id": "d22597382a3af47955a71c2e46355c4b",
+        "x-kong-upstream-latency": "6",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "874"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:07.655Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 386,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e88451d8d5c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "723",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "2",
+        "x-kong-request-id": "4678f040c37a522a8383ed67cbda844d",
+        "x-kong-upstream-latency": "2",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "723"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:11.064Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 403,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e885a3aa55c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "433",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "3",
+        "x-kong-request-id": "60732c020d47026885e16856e3f2024a",
+        "x-kong-upstream-latency": "7",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "433"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:14.448Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 380,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e886f88d75c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "793",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "1",
+        "x-kong-request-id": "e697c0574499ee2638ea49079def362d",
+        "x-kong-upstream-latency": "4",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "793"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:17.830Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 377,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e8884aef05c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "581",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "1",
+        "x-kong-request-id": "253c787c1c45fd36f8f8b853ffa84333",
+        "x-kong-upstream-latency": "1",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "581"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:21.230Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 395,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e8899db325c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "868",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "1",
+        "x-kong-request-id": "4429ff07d1d7de69ba34815cd70bcb0c",
+        "x-kong-upstream-latency": "1",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "868"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:24.603Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 369,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e88af0e825c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "693",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "3",
+        "x-kong-request-id": "efeb8d44d0daef5f7d666133846adf23",
+        "x-kong-upstream-latency": "1",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "693"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:27.996Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 380,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e88c43a9f5c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "496",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "3",
+        "x-kong-request-id": "1a8e5338e4e1775b1a117b72097ae17c",
+        "x-kong-upstream-latency": "3",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "496"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:31.396Z",
+      "label": "poll_tv_login_session",
+      "method": "POST",
+      "path": "/rest/v1/rpc/poll_tv_login_session",
+      "status": 200,
+      "ms": 396,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e88d95f255c1b-SJC",
+        "content-range": "0-0/*",
+        "ratelimit-limit": "900",
+        "ratelimit-remaining": "782",
+        "ratelimit-reset": "1",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "2",
+        "x-kong-request-id": "775b241f410b332c2adca645512b3760",
+        "x-kong-upstream-latency": "3",
+        "x-ratelimit-limit-second": "900",
+        "x-ratelimit-remaining-second": "782"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:31.793Z",
+      "label": "tv-logins-exchange",
+      "method": "POST",
+      "path": "/functions/v1/tv-logins-exchange",
+      "status": 200,
+      "ms": 393,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e88dbd8925c1b-SJC",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "0",
+        "x-kong-request-id": "a29701408ec85542f9e0ba01bc255578",
+        "x-kong-upstream-latency": "19"
+      }
+    },
+    {
+      "at": "2026-10-11T14:25:32.172Z",
+      "label": "tv-logins-exchange",
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200,
+      "ms": 373,
+      "headers": {
+        "cf-cache-status": "DYNAMIC",
+        "cf-ray": "a48e88de5aa25c1b-SJC",
+        "server": "cloudflare",
+        "via": "1.1 Caddy, 1.1 kong/3.9.1",
+        "x-kong-proxy-latency": "0",
+        "x-kong-request-id": "be6055220979005d70dfab688b5e9277",
+        "x-kong-upstream-latency": "2"
+      }
+    }
+  ]
+}

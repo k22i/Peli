@@ -5,14 +5,14 @@
       "fn": "get_sync_owner",
       "args": {},
       "status": "ok",
-      "ms": 16,
+      "ms": 11,
       "shape": "string (uuid)"
     },
     {
       "fn": "get_sync_overview",
       "args": {},
       "status": "ok",
-      "ms": 5,
+      "ms": 17,
       "shape": {
         "addons": {
           "1": "integer"
@@ -20,15 +20,19 @@
         "plugins": {},
         "profiles": {},
         "library_items": {},
-        "watched_items": {},
-        "watch_progress": {}
+        "watched_items": {
+          "1": "integer"
+        },
+        "watch_progress": {
+          "1": "integer"
+        }
       }
     },
     {
       "fn": "sync_pull_profiles",
       "args": {},
       "status": "ok",
-      "ms": 5,
+      "ms": 6,
       "rows": 0,
       "shape": []
     },
@@ -48,7 +52,7 @@
         "p_offset": 0
       },
       "status": "ok",
-      "ms": 6,
+      "ms": 5,
       "rows": 0,
       "shape": []
     },
@@ -69,7 +73,7 @@
         "p_limit": 5
       },
       "status": "ok",
-      "ms": 4,
+      "ms": 5,
       "rows": 0,
       "shape": []
     },
@@ -79,9 +83,25 @@
         "p_profile_id": 1
       },
       "status": "ok",
-      "ms": 10,
-      "rows": 0,
-      "shape": []
+      "ms": 14,
+      "rows": 3,
+      "shape": [
+        {
+          "id": "string (uuid)",
+          "user_id": "string (uuid)",
+          "content_id": "string",
+          "content_type": "string = \"movie\"",
+          "video_id": "string",
+          "season": "null",
+          "episode": "null",
+          "position": "integer",
+          "duration": "integer",
+          "last_watched": "integer",
+          "progress_key": "string",
+          "profile_id": "integer"
+        },
+        "…3 item(s)"
+      ]
     },
     {
       "fn": "sync_get_watch_progress_delta_cursor",
@@ -89,7 +109,7 @@
         "p_profile_id": 1
       },
       "status": "ok",
-      "ms": 4,
+      "ms": 7,
       "shape": "integer"
     },
     {
@@ -100,9 +120,24 @@
         "p_limit": 5
       },
       "status": "ok",
-      "ms": 24,
-      "rows": 0,
-      "shape": []
+      "ms": 10,
+      "rows": 5,
+      "shape": [
+        {
+          "event_id": "integer",
+          "operation": "string = \"upsert\"",
+          "progress_key": "string",
+          "content_id": "string",
+          "content_type": "string = \"movie\"",
+          "video_id": "string",
+          "season": "null",
+          "episode": "null",
+          "position": "integer",
+          "duration": "integer",
+          "last_watched": "integer"
+        },
+        "…5 item(s)"
+      ]
     },
     {
       "fn": "sync_pull_watched_items",
@@ -112,9 +147,23 @@
         "p_page_size": 500
       },
       "status": "ok",
-      "ms": 6,
-      "rows": 0,
-      "shape": []
+      "ms": 4,
+      "rows": 1,
+      "shape": [
+        {
+          "id": "string (uuid)",
+          "user_id": "string (uuid)",
+          "content_id": "string",
+          "content_type": "string = \"movie\"",
+          "title": "string",
+          "season": "null",
+          "episode": "null",
+          "watched_at": "integer",
+          "created_at": "string (timestamptz)",
+          "profile_id": "integer"
+        },
+        "…1 item(s)"
+      ]
     },
     {
       "fn": "sync_get_watched_items_delta_cursor",
@@ -133,9 +182,21 @@
         "p_limit": 5
       },
       "status": "ok",
-      "ms": 5,
-      "rows": 0,
-      "shape": []
+      "ms": 4,
+      "rows": 1,
+      "shape": [
+        {
+          "event_id": "integer",
+          "operation": "string = \"upsert\"",
+          "content_id": "string",
+          "content_type": "string = \"movie\"",
+          "title": "string",
+          "season": "null",
+          "episode": "null",
+          "watched_at": "integer"
+        },
+        "…1 item(s)"
+      ]
     },
     {
       "fn": "sync_pull_collections",
@@ -143,7 +204,7 @@
         "p_profile_id": 1
       },
       "status": "ok",
-      "ms": 5,
+      "ms": 4,
       "rows": 0,
       "shape": []
     },
@@ -154,7 +215,7 @@
         "p_platform": "desktop"
       },
       "status": "ok",
-      "ms": 6,
+      "ms": 5,
       "rows": 0,
       "shape": []
     },
@@ -174,14 +235,26 @@
       "args": {},
       "status": "ok",
       "ms": 5,
-      "rows": 0,
-      "shape": []
+      "rows": 41,
+      "shape": [
+        {
+          "id": "string",
+          "display_name": "string",
+          "storage_path": "string",
+          "category": "string",
+          "sort_order": "integer",
+          "is_active": "boolean",
+          "created_at": "string (timestamptz)",
+          "bg_color": "string"
+        },
+        "…41 item(s)"
+      ]
     },
     {
       "fn": "list_my_sessions",
       "args": {},
       "status": "ok",
-      "ms": 4,
+      "ms": 6,
       "rows": 0,
       "shape": []
     },
@@ -191,7 +264,7 @@
         "profile_id": 1
       },
       "status": "ok",
-      "ms": 5,
+      "ms": 4,
       "rows": 2,
       "shape": [
         {
@@ -226,21 +299,21 @@
         "method": "POST",
         "path": "/rest/v1/rpc/get_sync_owner",
         "status": 200,
-        "ms": 14
+        "ms": 10
       },
       {
         "label": "get_sync_overview",
         "method": "POST",
         "path": "/rest/v1/rpc/get_sync_overview",
         "status": 200,
-        "ms": 5
+        "ms": 16
       },
       {
         "label": "sync_pull_profiles",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_profiles",
         "status": 200,
-        "ms": 4
+        "ms": 5
       },
       {
         "label": "sync_pull_profile_locks",
@@ -254,14 +327,14 @@
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_library",
         "status": 200,
-        "ms": 6
+        "ms": 4
       },
       {
         "label": "sync_get_library_delta_cursor",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_get_library_delta_cursor",
         "status": 200,
-        "ms": 4
+        "ms": 5
       },
       {
         "label": "sync_pull_library_delta",
@@ -275,28 +348,28 @@
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_watch_progress",
         "status": 200,
-        "ms": 10
+        "ms": 14
       },
       {
         "label": "sync_get_watch_progress_delta_cursor",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
         "status": 200,
-        "ms": 4
+        "ms": 6
       },
       {
         "label": "sync_pull_watch_progress_delta",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
         "status": 200,
-        "ms": 17
+        "ms": 10
       },
       {
         "label": "sync_pull_watched_items",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_watched_items",
         "status": 200,
-        "ms": 5
+        "ms": 4
       },
       {
         "label": "sync_get_watched_items_delta_cursor",
@@ -310,21 +383,21 @@
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_watched_items_delta",
         "status": 200,
-        "ms": 4
+        "ms": 3
       },
       {
         "label": "sync_pull_collections",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_collections",
         "status": 200,
-        "ms": 5
+        "ms": 4
       },
       {
         "label": "sync_pull_home_catalog_settings",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_home_catalog_settings",
         "status": 200,
-        "ms": 6
+        "ms": 5
       },
       {
         "label": "sync_pull_profile_settings_blob",
@@ -345,7 +418,7 @@
         "method": "POST",
         "path": "/rest/v1/rpc/list_my_sessions",
         "status": 200,
-        "ms": 4
+        "ms": 6
       },
       {
         "label": "GET addons",
@@ -366,6 +439,9 @@
       "content-range": [
         "0-0/*",
         "*/*",
+        "0-2/*",
+        "0-4/*",
+        "0-40/*",
         "0-1/*"
       ],
       "server": [
@@ -375,17 +451,17 @@
         "1.1 kong/3.9.1"
       ],
       "x-kong-proxy-latency": [
-        "2",
         "1",
         "0"
       ],
       "x-kong-upstream-latency": [
         "3",
+        "13",
         "2",
-        "1",
-        "7",
+        "12",
         "8",
-        "4"
+        "4",
+        "1"
       ]
     }
   }

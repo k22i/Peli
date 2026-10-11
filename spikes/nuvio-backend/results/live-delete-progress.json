@@ -1,0 +1,22 @@
+{
+  "profile": 1,
+  "deleted": 1,
+  "deleteMs": 497,
+  "deleteEvent": [
+    {
+      "event_id": "integer",
+      "operation": "string = \"delete\"",
+      "progress_key": "string",
+      "content_id": "string",
+      "content_type": "string = \"movie\"",
+      "video_id": "string",
+      "season": "null",
+      "episode": "null",
+      "position": "integer",
+      "duration": "integer",
+      "last_watched": "integer"
+    },
+    "…1 item(s)"
+  ],
+  "rowsLeft": 0
+}

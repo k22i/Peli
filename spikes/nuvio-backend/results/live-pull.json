@@ -1,0 +1,133 @@
+{
+  "profile": 1,
+  "surfaces": {
+    "library": {
+      "cursor": 0,
+      "lastEventSeen": 0,
+      "pages": 1,
+      "events": 0,
+      "ops": {},
+      "ms": 360,
+      "cursorMatchesFeed": true
+    },
+    "watch_progress": {
+      "cursor": 242369021,
+      "lastEventSeen": 242369021,
+      "pages": 1,
+      "events": 2,
+      "ops": {
+        "upsert": 1,
+        "delete": 1
+      },
+      "ms": 367,
+      "cursorMatchesFeed": true
+    },
+    "watched_items": {
+      "cursor": 0,
+      "lastEventSeen": 0,
+      "pages": 1,
+      "events": 0,
+      "ops": {},
+      "ms": 372,
+      "cursorMatchesFeed": true
+    }
+  },
+  "traces": {
+    "requests": [
+      {
+        "label": "sync_get_library_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_library_delta_cursor",
+        "status": 200,
+        "ms": 355
+      },
+      {
+        "label": "sync_pull_library_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_library_delta",
+        "status": 200,
+        "ms": 358
+      },
+      {
+        "label": "sync_get_watch_progress_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
+        "status": 200,
+        "ms": 356
+      },
+      {
+        "label": "sync_pull_watch_progress_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
+        "status": 200,
+        "ms": 363
+      },
+      {
+        "label": "sync_get_watched_items_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watched_items_delta_cursor",
+        "status": 200,
+        "ms": 350
+      },
+      {
+        "label": "sync_pull_watched_items_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watched_items_delta",
+        "status": 200,
+        "ms": 370
+      }
+    ],
+    "headers": {
+      "cf-cache-status": [
+        "DYNAMIC"
+      ],
+      "content-range": [
+        "0-0/*",
+        "*/*",
+        "0-1/*"
+      ],
+      "ratelimit-limit": [
+        "900"
+      ],
+      "ratelimit-remaining": [
+        "662",
+        "544",
+        "777",
+        "624",
+        "892",
+        "761"
+      ],
+      "ratelimit-reset": [
+        "1"
+      ],
+      "server": [
+        "cloudflare"
+      ],
+      "via": [
+        "1.1 Caddy, 1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "1",
+        "0",
+        "2",
+        "11"
+      ],
+      "x-kong-upstream-latency": [
+        "3",
+        "2",
+        "4"
+      ],
+      "x-ratelimit-limit-second": [
+        "900"
+      ],
+      "x-ratelimit-remaining-second": [
+        "662",
+        "544",
+        "777",
+        "624",
+        "892",
+        "761"
+      ]
+    }
+  }
+}

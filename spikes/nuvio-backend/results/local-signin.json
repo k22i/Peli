@@ -1,5 +1,5 @@
 {
-  "ms": 97,
+  "ms": 131,
   "session": {
     "access_token": "string",
     "token_type": "string",
@@ -100,21 +100,21 @@
   },
   "traces": [
     {
-      "at": "2026-10-09T13:50:20.731Z",
+      "at": "2026-10-09T13:58:53.956Z",
       "label": "signInWithPassword",
       "method": "POST",
       "path": "/auth/v1/token",
       "status": 200,
-      "ms": 96,
+      "ms": 129,
       "headers": {
-        "sb-auth-refresh-token-prefix": "fqt7v",
-        "sb-auth-session-id": "44382028-fbdb-414e-bf09-0fbd37977ef1",
-        "sb-auth-user-id": "29abd7b9-fb40-41b0-ac30-30a5c3ec4183",
+        "sb-auth-refresh-token-prefix": "3cqy2",
+        "sb-auth-session-id": "<uuid>",
+        "sb-auth-user-id": "<uuid>",
         "server": "kong/3.9.1",
         "via": "1.1 kong/3.9.1",
-        "x-kong-proxy-latency": "3",
-        "x-kong-request-id": "1cf2536fa53d4965abee2553ecb6472c",
-        "x-kong-upstream-latency": "83"
+        "x-kong-proxy-latency": "2",
+        "x-kong-request-id": "c06cb22847ce6770d54d922d98646f11",
+        "x-kong-upstream-latency": "110"
       }
     }
   ]

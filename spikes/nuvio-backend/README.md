@@ -18,7 +18,7 @@ Nothing secret is committed. Put these in `spikes/nuvio-backend/.env` (git-ignor
 |---|---|
 | `NUVIO_URL` | Backend. Default `https://api.nuvio.tv`; `http://localhost:8000` for a local self-host stack. |
 | `NUVIO_KEY` | Optional. By default the public key is read from `<NUVIO_URL>/.well-known/nuvio`. |
-| `NUVIO_EMAIL`, `NUVIO_PASSWORD` | For `signin` (and `signup`, local only). |
+| `NUVIO_EMAIL`, `NUVIO_PASSWORD` | For `signin` (and `signup`, local only). Quote values that contain `#`, or the rest is read as a comment. |
 | `NUVIO_PROFILE` | Profile index (1–6). Default 1. |
 | `NUVIO_TV_LOGIN_URL` | Base URL encoded in the QR. Default `https://nuvio.tv/tv-login`. |
 
@@ -32,7 +32,8 @@ node src/probe.ts tv-login                 # QR / device-code: prints a QR, poll
 node src/probe.ts catalog                  # every read function: shape, rows, ms
 node src/probe.ts pull                     # full delta pull of library / progress / watched from cursor 0
 node src/probe.ts push-progress <id> [movie|series] [season episode]   # push one entry, time a 2nd session seeing it
-node src/probe.ts push-throttle <id>       # shows which pushes the server silently drops
+node src/probe.ts delete-progress <id>     # undo push-progress; shows the delete event
+node src/probe.ts push-throttle <id>       # local backend only: shows which pushes the server silently drops
 node src/probe.ts errors                   # error cases and their codes
 node src/probe.ts ratelimit [n]            # local backend only: floods until 429
 ```

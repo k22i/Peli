@@ -1,26 +1,24 @@
 {
   "profile": 1,
-  "pushMs": 8,
-  "secondSessionSeenAfterMs": 13,
+  "pushMs": 12,
+  "secondSessionSeenAfterMs": 11,
   "entryShape": {
     "content_id": "string",
-    "content_type": "string = \"series\"",
+    "content_type": "string = \"movie\"",
     "video_id": "string",
     "position": "integer",
     "duration": "integer",
-    "last_watched": "integer",
-    "season": "integer",
-    "episode": "integer"
+    "last_watched": "integer"
   },
   "event": {
     "event_id": "integer",
     "operation": "string = \"upsert\"",
     "progress_key": "string",
     "content_id": "string",
-    "content_type": "string = \"series\"",
+    "content_type": "string = \"movie\"",
     "video_id": "string",
-    "season": "integer",
-    "episode": "integer",
+    "season": "null",
+    "episode": "null",
     "position": "integer",
     "duration": "integer",
     "last_watched": "integer"
@@ -32,28 +30,28 @@
         "method": "GET",
         "path": "/auth/v1/user",
         "status": 200,
-        "ms": 10
+        "ms": 8
       },
       {
         "label": "sync_get_watch_progress_delta_cursor",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
         "status": 200,
-        "ms": 13
+        "ms": 6
       },
       {
         "label": "sync_push_watch_progress",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_push_watch_progress",
         "status": 204,
-        "ms": 8
+        "ms": 11
       },
       {
         "label": "sync_pull_watch_progress_delta",
         "method": "POST",
         "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
         "status": 200,
-        "ms": 12
+        "ms": 10
       }
     ],
     "headers": {
@@ -65,13 +63,13 @@
         "1.1 kong/3.9.1"
       ],
       "x-kong-proxy-latency": [
-        "1",
-        "4",
-        "2"
+        "0",
+        "1"
       ],
       "x-kong-upstream-latency": [
-        "3",
         "4",
+        "2",
+        "9",
         "8"
       ],
       "content-range": [

@@ -1,0 +1,101 @@
+{
+  "profile": 1,
+  "pushMs": 359,
+  "secondSessionSeenAfterMs": 374,
+  "entryShape": {
+    "content_id": "string",
+    "content_type": "string = \"movie\"",
+    "video_id": "string",
+    "position": "integer",
+    "duration": "integer",
+    "last_watched": "integer"
+  },
+  "event": {
+    "event_id": "integer",
+    "operation": "string = \"upsert\"",
+    "progress_key": "string",
+    "content_id": "string",
+    "content_type": "string = \"movie\"",
+    "video_id": "string",
+    "season": "null",
+    "episode": "null",
+    "position": "integer",
+    "duration": "integer",
+    "last_watched": "integer"
+  },
+  "traces": {
+    "requests": [
+      {
+        "label": "",
+        "method": "GET",
+        "path": "/auth/v1/user",
+        "status": 200,
+        "ms": 374
+      },
+      {
+        "label": "sync_get_watch_progress_delta_cursor",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_get_watch_progress_delta_cursor",
+        "status": 200,
+        "ms": 360
+      },
+      {
+        "label": "sync_push_watch_progress",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_push_watch_progress",
+        "status": 204,
+        "ms": 356
+      },
+      {
+        "label": "sync_pull_watch_progress_delta",
+        "method": "POST",
+        "path": "/rest/v1/rpc/sync_pull_watch_progress_delta",
+        "status": 200,
+        "ms": 366
+      }
+    ],
+    "headers": {
+      "cf-cache-status": [
+        "DYNAMIC"
+      ],
+      "server": [
+        "cloudflare"
+      ],
+      "via": [
+        "1.1 Caddy, 1.1 kong/3.9.1"
+      ],
+      "x-kong-proxy-latency": [
+        "1",
+        "2"
+      ],
+      "x-kong-upstream-latency": [
+        "5",
+        "10",
+        "8",
+        "2"
+      ],
+      "content-range": [
+        "0-0/*"
+      ],
+      "ratelimit-limit": [
+        "900"
+      ],
+      "ratelimit-remaining": [
+        "679",
+        "530",
+        "791"
+      ],
+      "ratelimit-reset": [
+        "1"
+      ],
+      "x-ratelimit-limit-second": [
+        "900"
+      ],
+      "x-ratelimit-remaining-second": [
+        "679",
+        "530",
+        "791"
+      ]
+    }
+  }
+}

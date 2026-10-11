@@ -5,7 +5,7 @@
     {
       "fn": "start_tv_login_session",
       "args": {
-        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9",
+        "p_device_nonce": "<redacted>",
         "p_redirect_base_url": "https://nuvio.tv/tv-login",
         "p_device_name": "Staysh (spike)"
       },
@@ -25,8 +25,8 @@
     {
       "fn": "poll_tv_login_session",
       "args": {
-        "p_code": "459d1c71c34262e85cd9e317c70dd95a",
-        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9"
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
       },
       "status": "ok",
       "ms": 13,
@@ -44,8 +44,8 @@
     {
       "fn": "poll_tv_login_session",
       "args": {
-        "p_code": "459d1c71c34262e85cd9e317c70dd95a",
-        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9"
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
       },
       "status": "ok",
       "ms": 9,
@@ -63,8 +63,8 @@
     {
       "fn": "poll_tv_login_session",
       "args": {
-        "p_code": "459d1c71c34262e85cd9e317c70dd95a",
-        "p_device_nonce": "c869ddc22c78b6428862d7e5cc21c338d1c7a625c9957fe9"
+        "p_code": "<redacted>",
+        "p_device_nonce": "<redacted>"
       },
       "status": "ok",
       "ms": 13,

@@ -219,9 +219,27 @@ const commands: Record<string, (t: Target, args: string[]) => Promise<void>> = {
     writeResult(`${t.name}-push-progress.json`, { profile, pushMs: push.ms, secondSessionSeenAfterMs: seenMs, entryShape: shapeOf(entry), event, traces: summarize(takeTraces()) });
   },
 
+  // Undo push-progress: delete the content's progress rows and show the delete in the delta feed.
+  async 'delete-progress'(t, [contentId]) {
+    if (!contentId) throw new Error('usage: delete-progress <content_id>');
+    const sb = await signedIn(t);
+    const before = await rpc(sb, 'sync_get_watch_progress_delta_cursor', { p_profile_id: profile });
+    const all = await rpc(sb, 'sync_pull_watch_progress', { p_profile_id: profile });
+    const keys = ((all.data ?? []) as { content_id: string; progress_key: string }[]).filter((r) => r.content_id === contentId).map((r) => r.progress_key);
+    if (keys.length === 0) throw new Error(`no progress for ${contentId}`);
+    const del = await rpc(sb, 'sync_delete_watch_progress', { p_keys: keys, p_profile_id: profile, p_origin_client_id: originClientId });
+    if (del.status === 'error') throw new Error(JSON.stringify(del.error));
+    const feed = await rpc(sb, 'sync_pull_watch_progress_delta', { p_profile_id: profile, p_since_event_id: before.data, p_limit: 1000 });
+    const left = await rpc(sb, 'sync_pull_watch_progress', { p_profile_id: profile });
+    console.log(`deleted ${keys.length} row(s) in ${del.ms} ms; ${left.rows} progress row(s) left`);
+    writeResult(`${t.name}-delete-progress.json`, { profile, deleted: keys.length, deleteMs: del.ms, deleteEvent: shapeOf(feed.data), rowsLeft: left.rows });
+  },
+
   // Repeat a push that differs by less than the server's thresholds and check it is dropped.
   async 'push-throttle'(t, [contentId]) {
     if (!contentId) throw new Error('usage: push-throttle <content_id>');
+    // It ends at 92 %, which creates a watched item: keep it off real accounts.
+    if (t.name !== 'local') throw new Error('push-throttle only runs against a local backend');
     const sb = await signedIn(t);
     const base = { content_id: contentId, content_type: 'movie', video_id: contentId, duration: 100 * 60_000 };
     const steps: unknown[] = [];
