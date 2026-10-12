@@ -5,6 +5,10 @@ name: spike-baselines
 
 on:
   workflow_dispatch:
+    inputs:
+      only:
+        description: "all, windows or linux"
+        default: all
 
 defaults:
   run:
@@ -15,6 +19,7 @@ env:
 
 jobs:
   linux:
+    if: inputs.only != 'windows'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -40,6 +45,7 @@ jobs:
           path: spikes/baselines/results/
 
   windows-package:
+    if: inputs.only != 'linux'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -50,7 +56,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gcc-mingw-w64-x86-64 nsis p7zip-full zip
+      # GTK/WebKitGTK headers only because the wails3 CLI needs them to build.
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gcc-mingw-w64-x86-64 nsis p7zip-full zip libgtk-4-dev libwebkitgtk-6.0-dev
       - run: go install "$WAILS3"
       - run: cd frontend && npm install --no-audit --no-fund && npm run build
       - run: ./scripts/windows/package.sh
