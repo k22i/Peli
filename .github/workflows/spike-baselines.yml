@@ -37,6 +37,10 @@ jobs:
       - run: go install "$WAILS3"
       - run: cd frontend && npm install --no-audit --no-fund && npm run build
       - run: ./scripts/linux/package.sh
+      # Ubuntu 24.04 blocks unprivileged user namespaces through AppArmor, so
+      # WebKitGTK's bubblewrap sandbox can't start and the app aborts. Allow
+      # them, as a desktop with an AppArmor profile for the app would.
+      - run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
       - run: ./scripts/linux/bench.sh
       - uses: actions/upload-artifact@v4
         if: always()

@@ -32,8 +32,8 @@ for v in shell mpv; do
 done
 
 flatpak_info() { # ref -> "download installed" in bytes, from Flathub's metadata
-  flatpak remote-info --user flathub "$1" 2>/dev/null | awk -F': *' '
-    function bytes(s,  n, u) { n = s + 0; u = s; gsub(/[0-9. ]/, "", u)
+  LC_ALL=C flatpak remote-info --user flathub "$1" 2>/dev/null | LC_ALL=C sed 's/[^ -~]/ /g' | awk -F': *' '
+    function bytes(s,  n, u) { n = s + 0; u = s; gsub(/[0-9., ]/, "", u)
       return n * (u ~ /^k/ ? 1e3 : u ~ /^M/ ? 1e6 : u ~ /^G/ ? 1e9 : 1) }
     /^ *Download:/ { d = bytes($2) } /^ *Installed:/ { i = bytes($2) } /^ *Runtime:/ { r = $2 }
     END { printf "%d %d %s", d, i, r }'
