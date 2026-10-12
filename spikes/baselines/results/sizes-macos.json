@@ -1,0 +1,74 @@
+{
+  "mpv-brew-arm64": {
+    "archs": "arm64",
+    "exeBytes": 9013536,
+    "frameworksBytes": 63883280,
+    "frameworksFiles": 50,
+    "appBytes": 72964207,
+    "dmgBytes": {
+      "UDZO": 33483655,
+      "ULFO": 31497097,
+      "ULMO": 23976563
+    }
+  },
+  "mpv-mediakit-arm64": {
+    "archs": "arm64",
+    "exeBytes": 9013536,
+    "frameworksBytes": 21098096,
+    "frameworksFiles": 18,
+    "appBytes": 30171541,
+    "dmgBytes": {
+      "UDZO": 12887360,
+      "ULFO": 11811241,
+      "ULMO": 8429930
+    }
+  },
+  "mpv-mediakit-full-arm64": {
+    "archs": "arm64",
+    "exeBytes": 9013536,
+    "frameworksBytes": 24918880,
+    "frameworksFiles": 18,
+    "appBytes": 33992325,
+    "dmgBytes": {
+      "UDZO": 15152445,
+      "ULFO": 14037340,
+      "ULMO": 10737880
+    }
+  },
+  "mpv-mediakit-universal": {
+    "archs": "x86_64 arm64",
+    "exeBytes": 18794784,
+    "frameworksBytes": 42426768,
+    "frameworksFiles": 18,
+    "appBytes": 61284377,
+    "dmgBytes": {
+      "UDZO": 27280351,
+      "ULFO": 25020890,
+      "ULMO": 18636440
+    }
+  },
+  "shell-arm64": {
+    "archs": "arm64",
+    "exeBytes": 9012144,
+    "frameworksBytes": 0,
+    "frameworksFiles": 0,
+    "appBytes": 9067899,
+    "dmgBytes": {
+      "UDZO": 4185395,
+      "ULFO": 3908310,
+      "ULMO": 2963623
+    }
+  },
+  "shell-universal": {
+    "archs": "x86_64 arm64",
+    "exeBytes": 18777008,
+    "frameworksBytes": 0,
+    "frameworksFiles": 0,
+    "appBytes": 18832763,
+    "dmgBytes": {
+      "UDZO": 8587855,
+      "ULFO": 7998834,
+      "ULMO": 6234670
+    }
+  }
+}

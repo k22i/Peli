@@ -1,0 +1,1086 @@
+{
+  "label": "linux-mpv-home",
+  "app": "/home/runner/work/Staysh/Staysh/spikes/baselines/bin/linux/bin/mpv",
+  "launch": "exec",
+  "page": "home",
+  "env": {},
+  "host": {
+    "cpus": 2,
+    "goarch": "amd64",
+    "goos": "linux",
+    "os": "Ubuntu 24.04.5 LTS / 8128876 kB RAM"
+  },
+  "runs": [
+    {
+      "n": 1,
+      "spawnUs": 1791786125235178,
+      "report": {
+        "go": {
+          "appStarted": 1791786125391253,
+          "goInit": 1791786125305933,
+          "main": 1791786125305934,
+          "mpvReady": 1791786125402285,
+          "reportReceived": 1791786126191172,
+          "runtimeReady": 1791786125742485,
+          "windowShow": 1791786125730895
+        },
+        "goarch": "amd64",
+        "goos": "linux",
+        "late": {
+          "at": 1791786129244,
+          "homeGenMs": 3442,
+          "homeImages": 201
+        },
+        "mpv": {
+          "clientAPI": 131074,
+          "ffmpeg-version": "6.1.1-3ubuntu5",
+          "initMs": 10.972,
+          "mpv-version": "mpv 0.37.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791786125745,
+          "fcp": 1791786126161,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791786125791,
+          "painted": 1791786126186,
+          "raf": 1791786126161,
+          "responseEnd": 1791786125717,
+          "scriptStart": 1791786125742,
+          "timeOrigin": 1791786125706,
+          "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+          "visibility": "visible"
+        },
+        "pid": 22715
+      },
+      "msFromSpawn": {
+        "appStarted": 156.075,
+        "domContentLoaded": 509.822021484375,
+        "fcp": 925.822021484375,
+        "goInit": 70.755,
+        "homeDecoded": 4008.822021484375,
+        "main": 70.756,
+        "mounted": 555.822021484375,
+        "mpvReady": 167.107,
+        "painted": 950.822021484375,
+        "raf": 925.822021484375,
+        "reportReceived": 955.994,
+        "responseEnd": 481.822021484375,
+        "runtimeReady": 507.307,
+        "scriptStart": 506.822021484375,
+        "timeOrigin": 470.822021484375,
+        "windowShow": 495.717
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5051,
+          "procs": [
+            {
+              "pid": 22761,
+              "ppid": 22760,
+              "name": "WebKitWebProces",
+              "rss": 611815424,
+              "pss": 531848192,
+              "private": 483487744
+            },
+            {
+              "pid": 22756,
+              "ppid": 22750,
+              "name": "xdg-dbus-proxy",
+              "rss": 5865472,
+              "pss": 956416,
+              "private": 503808
+            },
+            {
+              "pid": 22715,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 331067392,
+              "pss": 249264128,
+              "private": 200273920
+            },
+            {
+              "pid": 22759,
+              "ppid": 22715,
+              "name": "bwrap",
+              "rss": 2117632,
+              "pss": 171008,
+              "private": 49152
+            },
+            {
+              "pid": 22760,
+              "ppid": 22759,
+              "name": "bwrap",
+              "rss": 1634304,
+              "pss": 189440,
+              "private": 86016
+            },
+            {
+              "pid": 22742,
+              "ppid": 22715,
+              "name": "WebKitNetworkPr",
+              "rss": 66809856,
+              "pss": 36551680,
+              "private": 24883200
+            },
+            {
+              "pid": 22749,
+              "ppid": 22715,
+              "name": "bwrap",
+              "rss": 2105344,
+              "pss": 166912,
+              "private": 49152
+            },
+            {
+              "pid": 22750,
+              "ppid": 22749,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 177152,
+              "private": 77824
+            }
+          ],
+          "totalMB": {
+            "private": 676.5,
+            "procs": 8,
+            "pss": 781.4,
+            "rss": 975.6
+          }
+        },
+        {
+          "afterPaintMs": 15027,
+          "procs": [
+            {
+              "pid": 22750,
+              "ppid": 22749,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 177152,
+              "private": 77824
+            },
+            {
+              "pid": 22759,
+              "ppid": 22715,
+              "name": "bwrap",
+              "rss": 2117632,
+              "pss": 171008,
+              "private": 49152
+            },
+            {
+              "pid": 22760,
+              "ppid": 22759,
+              "name": "bwrap",
+              "rss": 1634304,
+              "pss": 189440,
+              "private": 86016
+            },
+            {
+              "pid": 22756,
+              "ppid": 22750,
+              "name": "xdg-dbus-proxy",
+              "rss": 5865472,
+              "pss": 956416,
+              "private": 503808
+            },
+            {
+              "pid": 22761,
+              "ppid": 22760,
+              "name": "WebKitWebProces",
+              "rss": 610680832,
+              "pss": 530615296,
+              "private": 482156544
+            },
+            {
+              "pid": 22715,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 326254592,
+              "pss": 244352000,
+              "private": 195264512
+            },
+            {
+              "pid": 22742,
+              "ppid": 22715,
+              "name": "WebKitNetworkPr",
+              "rss": 66875392,
+              "pss": 36554752,
+              "private": 24883200
+            },
+            {
+              "pid": 22749,
+              "ppid": 22715,
+              "name": "bwrap",
+              "rss": 2105344,
+              "pss": 166912,
+              "private": 49152
+            }
+          ],
+          "totalMB": {
+            "private": 670.5,
+            "procs": 8,
+            "pss": 775.5,
+            "rss": 970
+          }
+        },
+        {
+          "afterPaintMs": 30034,
+          "procs": [
+            {
+              "pid": 22760,
+              "ppid": 22759,
+              "name": "bwrap",
+              "rss": 1634304,
+              "pss": 189440,
+              "private": 86016
+            },
+            {
+              "pid": 22756,
+              "ppid": 22750,
+              "name": "xdg-dbus-proxy",
+              "rss": 5996544,
+              "pss": 962560,
+              "private": 503808
+            },
+            {
+              "pid": 22761,
+              "ppid": 22760,
+              "name": "WebKitWebProces",
+              "rss": 610656256,
+              "pss": 530590720,
+              "private": 482131968
+            },
+            {
+              "pid": 22715,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 326258688,
+              "pss": 244356096,
+              "private": 195268608
+            },
+            {
+              "pid": 22749,
+              "ppid": 22715,
+              "name": "bwrap",
+              "rss": 2105344,
+              "pss": 166912,
+              "private": 49152
+            },
+            {
+              "pid": 22742,
+              "ppid": 22715,
+              "name": "WebKitNetworkPr",
+              "rss": 66875392,
+              "pss": 36554752,
+              "private": 24883200
+            },
+            {
+              "pid": 22750,
+              "ppid": 22749,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 177152,
+              "private": 77824
+            },
+            {
+              "pid": 22759,
+              "ppid": 22715,
+              "name": "bwrap",
+              "rss": 2117632,
+              "pss": 171008,
+              "private": 49152
+            }
+          ],
+          "totalMB": {
+            "private": 670.5,
+            "procs": 8,
+            "pss": 775.5,
+            "rss": 970.1
+          }
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "spawnUs": 1791786159343307,
+      "report": {
+        "go": {
+          "appStarted": 1791786159500929,
+          "goInit": 1791786159416359,
+          "main": 1791786159416360,
+          "mpvReady": 1791786159512407,
+          "reportReceived": 1791786160112355,
+          "runtimeReady": 1791786159879645,
+          "windowShow": 1791786159834989
+        },
+        "goarch": "amd64",
+        "goos": "linux",
+        "late": {
+          "at": 1791786163099,
+          "homeGenMs": 3169.0000000000005,
+          "homeImages": 201
+        },
+        "mpv": {
+          "clientAPI": 131074,
+          "ffmpeg-version": "6.1.1-3ubuntu5",
+          "initMs": 11.417,
+          "mpv-version": "mpv 0.37.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791786159859,
+          "fcp": 1791786159914,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791786159916,
+          "painted": 1791786160095,
+          "raf": 1791786160073,
+          "responseEnd": 1791786159826,
+          "scriptStart": 1791786159856,
+          "timeOrigin": 1791786159815,
+          "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+          "visibility": "visible"
+        },
+        "pid": 23006
+      },
+      "msFromSpawn": {
+        "appStarted": 157.622,
+        "domContentLoaded": 515.693115234375,
+        "fcp": 570.693115234375,
+        "goInit": 73.052,
+        "homeDecoded": 3755.693115234375,
+        "main": 73.053,
+        "mounted": 572.693115234375,
+        "mpvReady": 169.1,
+        "painted": 751.693115234375,
+        "raf": 729.693115234375,
+        "reportReceived": 769.048,
+        "responseEnd": 482.693115234375,
+        "runtimeReady": 536.338,
+        "scriptStart": 512.693115234375,
+        "timeOrigin": 471.693115234375,
+        "windowShow": 491.682
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5051,
+          "procs": [
+            {
+              "pid": 23050,
+              "ppid": 23006,
+              "name": "bwrap",
+              "rss": 2113536,
+              "pss": 168960,
+              "private": 49152
+            },
+            {
+              "pid": 23040,
+              "ppid": 23006,
+              "name": "bwrap",
+              "rss": 2101248,
+              "pss": 164864,
+              "private": 49152
+            },
+            {
+              "pid": 23051,
+              "ppid": 23050,
+              "name": "bwrap",
+              "rss": 1630208,
+              "pss": 187392,
+              "private": 86016
+            },
+            {
+              "pid": 23041,
+              "ppid": 23040,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 179200,
+              "private": 81920
+            },
+            {
+              "pid": 23052,
+              "ppid": 23051,
+              "name": "WebKitWebProces",
+              "rss": 596844544,
+              "pss": 516869120,
+              "private": 468496384
+            },
+            {
+              "pid": 23045,
+              "ppid": 23041,
+              "name": "xdg-dbus-proxy",
+              "rss": 5935104,
+              "pss": 951296,
+              "private": 495616
+            },
+            {
+              "pid": 23006,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 331374592,
+              "pss": 249689088,
+              "private": 200769536
+            },
+            {
+              "pid": 23033,
+              "ppid": 23006,
+              "name": "WebKitNetworkPr",
+              "rss": 66949120,
+              "pss": 36593664,
+              "private": 24895488
+            }
+          ],
+          "totalMB": {
+            "private": 662.7,
+            "procs": 8,
+            "pss": 767.5,
+            "rss": 961.8
+          }
+        },
+        {
+          "afterPaintMs": 15020,
+          "procs": [
+            {
+              "pid": 23041,
+              "ppid": 23040,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 179200,
+              "private": 81920
+            },
+            {
+              "pid": 23045,
+              "ppid": 23041,
+              "name": "xdg-dbus-proxy",
+              "rss": 5935104,
+              "pss": 951296,
+              "private": 495616
+            },
+            {
+              "pid": 23006,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 322457600,
+              "pss": 240673792,
+              "private": 191655936
+            },
+            {
+              "pid": 23033,
+              "ppid": 23006,
+              "name": "WebKitNetworkPr",
+              "rss": 67014656,
+              "pss": 36596736,
+              "private": 24895488
+            },
+            {
+              "pid": 23050,
+              "ppid": 23006,
+              "name": "bwrap",
+              "rss": 2113536,
+              "pss": 168960,
+              "private": 49152
+            },
+            {
+              "pid": 23040,
+              "ppid": 23006,
+              "name": "bwrap",
+              "rss": 2101248,
+              "pss": 164864,
+              "private": 49152
+            },
+            {
+              "pid": 23051,
+              "ppid": 23050,
+              "name": "bwrap",
+              "rss": 1630208,
+              "pss": 187392,
+              "private": 86016
+            },
+            {
+              "pid": 23052,
+              "ppid": 23051,
+              "name": "WebKitWebProces",
+              "rss": 595542016,
+              "pss": 515468288,
+              "private": 466997248
+            }
+          ],
+          "totalMB": {
+            "private": 652.6,
+            "procs": 8,
+            "pss": 757.6,
+            "rss": 952.2
+          }
+        },
+        {
+          "afterPaintMs": 30033,
+          "procs": [
+            {
+              "pid": 23033,
+              "ppid": 23006,
+              "name": "WebKitNetworkPr",
+              "rss": 67014656,
+              "pss": 36595712,
+              "private": 24895488
+            },
+            {
+              "pid": 23050,
+              "ppid": 23006,
+              "name": "bwrap",
+              "rss": 2113536,
+              "pss": 168960,
+              "private": 49152
+            },
+            {
+              "pid": 23040,
+              "ppid": 23006,
+              "name": "bwrap",
+              "rss": 2101248,
+              "pss": 164864,
+              "private": 49152
+            },
+            {
+              "pid": 23051,
+              "ppid": 23050,
+              "name": "bwrap",
+              "rss": 1630208,
+              "pss": 187392,
+              "private": 86016
+            },
+            {
+              "pid": 23041,
+              "ppid": 23040,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 179200,
+              "private": 81920
+            },
+            {
+              "pid": 23045,
+              "ppid": 23041,
+              "name": "xdg-dbus-proxy",
+              "rss": 6066176,
+              "pss": 957440,
+              "private": 495616
+            },
+            {
+              "pid": 23052,
+              "ppid": 23051,
+              "name": "WebKitWebProces",
+              "rss": 595505152,
+              "pss": 515430400,
+              "private": 466960384
+            },
+            {
+              "pid": 23006,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 333979648,
+              "pss": 252194816,
+              "private": 203177984
+            }
+          ],
+          "totalMB": {
+            "private": 663.6,
+            "procs": 8,
+            "pss": 768.5,
+            "rss": 963.2
+          }
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "spawnUs": 1791786193248734,
+      "report": {
+        "go": {
+          "appStarted": 1791786193408349,
+          "goInit": 1791786193322902,
+          "main": 1791786193322903,
+          "mpvReady": 1791786193420548,
+          "reportReceived": 1791786193992881,
+          "runtimeReady": 1791786193777370,
+          "windowShow": 1791786193738966
+        },
+        "goarch": "amd64",
+        "goos": "linux",
+        "late": {
+          "at": 1791786197010,
+          "homeGenMs": 3187,
+          "homeImages": 201
+        },
+        "mpv": {
+          "clientAPI": 131074,
+          "ffmpeg-version": "6.1.1-3ubuntu5",
+          "initMs": 12.141,
+          "mpv-version": "mpv 0.37.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791786193765,
+          "fcp": 1791786193960,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791786193813,
+          "painted": 1791786193986,
+          "raf": 1791786193960,
+          "responseEnd": 1791786193729,
+          "scriptStart": 1791786193763,
+          "timeOrigin": 1791786193720,
+          "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/60.5 Safari/605.1.15",
+          "visibility": "visible"
+        },
+        "pid": 23302
+      },
+      "msFromSpawn": {
+        "appStarted": 159.615,
+        "domContentLoaded": 516.26611328125,
+        "fcp": 711.26611328125,
+        "goInit": 74.168,
+        "homeDecoded": 3761.26611328125,
+        "main": 74.169,
+        "mounted": 564.26611328125,
+        "mpvReady": 171.814,
+        "painted": 737.26611328125,
+        "raf": 711.26611328125,
+        "reportReceived": 744.147,
+        "responseEnd": 480.26611328125,
+        "runtimeReady": 528.636,
+        "scriptStart": 514.26611328125,
+        "timeOrigin": 471.26611328125,
+        "windowShow": 490.232
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5047,
+          "procs": [
+            {
+              "pid": 23302,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 328876032,
+              "pss": 247189504,
+              "private": 198205440
+            },
+            {
+              "pid": 23336,
+              "ppid": 23302,
+              "name": "bwrap",
+              "rss": 2105344,
+              "pss": 164864,
+              "private": 49152
+            },
+            {
+              "pid": 23337,
+              "ppid": 23336,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 179200,
+              "private": 81920
+            },
+            {
+              "pid": 23329,
+              "ppid": 23302,
+              "name": "WebKitNetworkPr",
+              "rss": 64094208,
+              "pss": 33719296,
+              "private": 21999616
+            },
+            {
+              "pid": 23346,
+              "ppid": 23302,
+              "name": "bwrap",
+              "rss": 2117632,
+              "pss": 173056,
+              "private": 53248
+            },
+            {
+              "pid": 23342,
+              "ppid": 23337,
+              "name": "xdg-dbus-proxy",
+              "rss": 5980160,
+              "pss": 960512,
+              "private": 503808
+            },
+            {
+              "pid": 23347,
+              "ppid": 23346,
+              "name": "bwrap",
+              "rss": 1630208,
+              "pss": 188416,
+              "private": 86016
+            },
+            {
+              "pid": 23348,
+              "ppid": 23347,
+              "name": "WebKitWebProces",
+              "rss": 608403456,
+              "pss": 528526336,
+              "private": 480161792
+            }
+          ],
+          "totalMB": {
+            "private": 668.7,
+            "procs": 8,
+            "pss": 773.5,
+            "rss": 967.8
+          }
+        },
+        {
+          "afterPaintMs": 15025,
+          "procs": [
+            {
+              "pid": 23348,
+              "ppid": 23347,
+              "name": "WebKitWebProces",
+              "rss": 607744000,
+              "pss": 527768576,
+              "private": 479305728
+            },
+            {
+              "pid": 23302,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 324071424,
+              "pss": 242286592,
+              "private": 193204224
+            },
+            {
+              "pid": 23346,
+              "ppid": 23302,
+              "name": "bwrap",
+              "rss": 2117632,
+              "pss": 173056,
+              "private": 53248
+            },
+            {
+              "pid": 23336,
+              "ppid": 23302,
+              "name": "bwrap",
+              "rss": 2105344,
+              "pss": 164864,
+              "private": 49152
+            },
+            {
+              "pid": 23329,
+              "ppid": 23302,
+              "name": "WebKitNetworkPr",
+              "rss": 64159744,
+              "pss": 33722368,
+              "private": 21999616
+            },
+            {
+              "pid": 23347,
+              "ppid": 23346,
+              "name": "bwrap",
+              "rss": 1630208,
+              "pss": 188416,
+              "private": 86016
+            },
+            {
+              "pid": 23337,
+              "ppid": 23336,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 179200,
+              "private": 81920
+            },
+            {
+              "pid": 23342,
+              "ppid": 23337,
+              "name": "xdg-dbus-proxy",
+              "rss": 5980160,
+              "pss": 960512,
+              "private": 503808
+            }
+          ],
+          "totalMB": {
+            "private": 663.1,
+            "procs": 8,
+            "pss": 768.1,
+            "rss": 962.7
+          }
+        },
+        {
+          "afterPaintMs": 30032,
+          "procs": [
+            {
+              "pid": 23302,
+              "ppid": 22709,
+              "name": "mpv",
+              "rss": 324083712,
+              "pss": 242298880,
+              "private": 193216512
+            },
+            {
+              "pid": 23329,
+              "ppid": 23302,
+              "name": "WebKitNetworkPr",
+              "rss": 64159744,
+              "pss": 33721344,
+              "private": 21999616
+            },
+            {
+              "pid": 23336,
+              "ppid": 23302,
+              "name": "bwrap",
+              "rss": 2105344,
+              "pss": 164864,
+              "private": 49152
+            },
+            {
+              "pid": 23346,
+              "ppid": 23302,
+              "name": "bwrap",
+              "rss": 2117632,
+              "pss": 173056,
+              "private": 53248
+            },
+            {
+              "pid": 23337,
+              "ppid": 23336,
+              "name": "bwrap",
+              "rss": 1617920,
+              "pss": 179200,
+              "private": 81920
+            },
+            {
+              "pid": 23347,
+              "ppid": 23346,
+              "name": "bwrap",
+              "rss": 1630208,
+              "pss": 188416,
+              "private": 86016
+            },
+            {
+              "pid": 23348,
+              "ppid": 23347,
+              "name": "WebKitWebProces",
+              "rss": 607694848,
+              "pss": 527719424,
+              "private": 479256576
+            },
+            {
+              "pid": 23342,
+              "ppid": 23337,
+              "name": "xdg-dbus-proxy",
+              "rss": 6111232,
+              "pss": 966656,
+              "private": 503808
+            }
+          ],
+          "totalMB": {
+            "private": 663,
+            "procs": 8,
+            "pss": 768.1,
+            "rss": 962.8
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "first": {
+      "appStarted": 156.075,
+      "domContentLoaded": 509.822021484375,
+      "fcp": 925.822021484375,
+      "goInit": 70.755,
+      "homeDecoded": 4008.822021484375,
+      "main": 70.756,
+      "mounted": 555.822021484375,
+      "mpvReady": 167.107,
+      "painted": 950.822021484375,
+      "raf": 925.822021484375,
+      "reportReceived": 955.994,
+      "responseEnd": 481.822021484375,
+      "runtimeReady": 507.307,
+      "scriptStart": 506.822021484375,
+      "timeOrigin": 470.822021484375,
+      "windowShow": 495.717
+    },
+    "memoryMB": {
+      "+15s": {
+        "private": {
+          "max": 670.5,
+          "min": 652.6,
+          "n": 3,
+          "p50": 663.1
+        },
+        "procs": {
+          "max": 8,
+          "min": 8,
+          "n": 3,
+          "p50": 8
+        },
+        "pss": {
+          "max": 775.5,
+          "min": 757.6,
+          "n": 3,
+          "p50": 768.1
+        },
+        "rss": {
+          "max": 970,
+          "min": 952.2,
+          "n": 3,
+          "p50": 962.7
+        }
+      },
+      "+30s": {
+        "private": {
+          "max": 670.5,
+          "min": 663,
+          "n": 3,
+          "p50": 663.6
+        },
+        "procs": {
+          "max": 8,
+          "min": 8,
+          "n": 3,
+          "p50": 8
+        },
+        "pss": {
+          "max": 775.5,
+          "min": 768.1,
+          "n": 3,
+          "p50": 768.5
+        },
+        "rss": {
+          "max": 970.1,
+          "min": 962.8,
+          "n": 3,
+          "p50": 963.2
+        }
+      },
+      "+5s": {
+        "private": {
+          "max": 676.5,
+          "min": 662.7,
+          "n": 3,
+          "p50": 668.7
+        },
+        "procs": {
+          "max": 8,
+          "min": 8,
+          "n": 3,
+          "p50": 8
+        },
+        "pss": {
+          "max": 781.4,
+          "min": 767.5,
+          "n": 3,
+          "p50": 773.5
+        },
+        "rss": {
+          "max": 975.6,
+          "min": 961.8,
+          "n": 3,
+          "p50": 967.8
+        }
+      }
+    },
+    "warm": {
+      "appStarted": {
+        "max": 159.6,
+        "min": 157.6,
+        "n": 2,
+        "p50": 159.6
+      },
+      "domContentLoaded": {
+        "max": 516.3,
+        "min": 515.7,
+        "n": 2,
+        "p50": 516.3
+      },
+      "fcp": {
+        "max": 711.3,
+        "min": 570.7,
+        "n": 2,
+        "p50": 711.3
+      },
+      "goInit": {
+        "max": 74.2,
+        "min": 73.1,
+        "n": 2,
+        "p50": 74.2
+      },
+      "homeDecoded": {
+        "max": 3761.3,
+        "min": 3755.7,
+        "n": 2,
+        "p50": 3761.3
+      },
+      "main": {
+        "max": 74.2,
+        "min": 73.1,
+        "n": 2,
+        "p50": 74.2
+      },
+      "mounted": {
+        "max": 572.7,
+        "min": 564.3,
+        "n": 2,
+        "p50": 572.7
+      },
+      "mpvReady": {
+        "max": 171.8,
+        "min": 169.1,
+        "n": 2,
+        "p50": 171.8
+      },
+      "painted": {
+        "max": 751.7,
+        "min": 737.3,
+        "n": 2,
+        "p50": 751.7
+      },
+      "raf": {
+        "max": 729.7,
+        "min": 711.3,
+        "n": 2,
+        "p50": 729.7
+      },
+      "reportReceived": {
+        "max": 769,
+        "min": 744.1,
+        "n": 2,
+        "p50": 769
+      },
+      "responseEnd": {
+        "max": 482.7,
+        "min": 480.3,
+        "n": 2,
+        "p50": 482.7
+      },
+      "runtimeReady": {
+        "max": 536.3,
+        "min": 528.6,
+        "n": 2,
+        "p50": 536.3
+      },
+      "scriptStart": {
+        "max": 514.3,
+        "min": 512.7,
+        "n": 2,
+        "p50": 514.3
+      },
+      "timeOrigin": {
+        "max": 471.7,
+        "min": 471.3,
+        "n": 2,
+        "p50": 471.7
+      },
+      "windowShow": {
+        "max": 491.7,
+        "min": 490.2,
+        "n": 2,
+        "p50": 491.7
+      }
+    }
+  }
+}

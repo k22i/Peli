@@ -1,0 +1,2280 @@
+{
+  "label": "macos-mpv-mediakit",
+  "app": "<repo>/spikes/baselines/bin/macos/mpv-mediakit-arm64/Staysh.app",
+  "launch": "open",
+  "page": "shell",
+  "env": {},
+  "host": {
+    "cpus": 8,
+    "goarch": "arm64",
+    "goos": "darwin",
+    "os": "macOS 27.0.1 / Apple M1 Pro / 17179869184"
+  },
+  "runs": [
+    {
+      "n": 1,
+      "spawnUs": 1791782475375275,
+      "report": {
+        "go": {
+          "appStarted": 1791782475963240,
+          "goInit": 1791782475567837,
+          "main": 1791782475567838,
+          "mpvReady": 1791782475979186,
+          "reportReceived": 1791782476182563,
+          "runtimeReady": 1791782476020764,
+          "windowShow": 1791782476035320
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 15.572,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782476016,
+          "fcp": 1791782476179,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782476146,
+          "painted": 1791782476180,
+          "raf": 1791782476179,
+          "responseEnd": 1791782476006,
+          "scriptStart": 1791782476015,
+          "timeOrigin": 1791782476004,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 83659
+      },
+      "msFromSpawn": {
+        "appStarted": 587.965,
+        "domContentLoaded": 640.72509765625,
+        "fcp": 803.72509765625,
+        "goInit": 192.562,
+        "main": 192.563,
+        "mounted": 770.72509765625,
+        "mpvReady": 603.911,
+        "painted": 804.72509765625,
+        "raf": 803.72509765625,
+        "reportReceived": 807.288,
+        "responseEnd": 630.72509765625,
+        "runtimeReady": 645.489,
+        "scriptStart": 639.72509765625,
+        "timeOrigin": 628.72509765625,
+        "windowShow": 660.045
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5007,
+          "procs": [
+            {
+              "pid": 83676,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3211624,
+              "rss": 6471680,
+              "responsible": 83659
+            },
+            {
+              "pid": 83673,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 10355120,
+              "rss": 24674304,
+              "responsible": 83659
+            },
+            {
+              "pid": 83670,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2949480,
+              "rss": 5980160,
+              "responsible": 83659
+            },
+            {
+              "pid": 83671,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24478536,
+              "rss": 38912000,
+              "responsible": 83659
+            },
+            {
+              "pid": 83659,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 36472128,
+              "rss": 108085248,
+              "responsible": 83659
+            },
+            {
+              "pid": 83669,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15123080,
+              "rss": 22839296,
+              "responsible": 83659
+            },
+            {
+              "pid": 83674,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3375632,
+              "rss": 8044544,
+              "responsible": 83659
+            },
+            {
+              "pid": 83672,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7225800,
+              "rss": 11485184,
+              "responsible": 83659
+            }
+          ],
+          "totalMB": {
+            "footprint": 98.4,
+            "footprintCore": 79.4,
+            "procs": 8,
+            "rss": 216
+          }
+        },
+        {
+          "afterPaintMs": 15005,
+          "procs": [
+            {
+              "pid": 83676,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3162472,
+              "rss": 6471680,
+              "responsible": 83659
+            },
+            {
+              "pid": 83674,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3310096,
+              "rss": 7995392,
+              "responsible": 83659
+            },
+            {
+              "pid": 83673,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9945520,
+              "rss": 22577152,
+              "responsible": 83659
+            },
+            {
+              "pid": 83669,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14860936,
+              "rss": 22200320,
+              "responsible": 83659
+            },
+            {
+              "pid": 83671,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22905672,
+              "rss": 38502400,
+              "responsible": 83659
+            },
+            {
+              "pid": 83670,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2883944,
+              "rss": 5931008,
+              "responsible": 83659
+            },
+            {
+              "pid": 83659,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35685696,
+              "rss": 102547456,
+              "responsible": 83659
+            },
+            {
+              "pid": 83672,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6881736,
+              "rss": 11091968,
+              "responsible": 83659
+            }
+          ],
+          "totalMB": {
+            "footprint": 95,
+            "footprintCore": 76.6,
+            "procs": 8,
+            "rss": 207.3
+          }
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "spawnUs": 1791782494302385,
+      "report": {
+        "go": {
+          "appStarted": 1791782494835075,
+          "goInit": 1791782494458762,
+          "main": 1791782494458762,
+          "mpvReady": 1791782494843076,
+          "reportReceived": 1791782495039011,
+          "runtimeReady": 1791782494889221,
+          "windowShow": 1791782494915167
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 7.945,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782494888,
+          "fcp": 1791782495031,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782495008,
+          "painted": 1791782495033,
+          "raf": 1791782495031,
+          "responseEnd": 1791782494878,
+          "scriptStart": 1791782494887,
+          "timeOrigin": 1791782494876,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 83708
+      },
+      "msFromSpawn": {
+        "appStarted": 532.69,
+        "domContentLoaded": 585.614990234375,
+        "fcp": 728.614990234375,
+        "goInit": 156.377,
+        "main": 156.377,
+        "mounted": 705.614990234375,
+        "mpvReady": 540.691,
+        "painted": 730.614990234375,
+        "raf": 728.614990234375,
+        "reportReceived": 736.626,
+        "responseEnd": 575.614990234375,
+        "runtimeReady": 586.836,
+        "scriptStart": 584.614990234375,
+        "timeOrigin": 573.614990234375,
+        "windowShow": 612.782
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5002,
+          "procs": [
+            {
+              "pid": 83708,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35390784,
+              "rss": 109363200,
+              "responsible": 83708
+            },
+            {
+              "pid": 83717,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3310096,
+              "rss": 10207232,
+              "responsible": 83708
+            },
+            {
+              "pid": 83719,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3129704,
+              "rss": 5996544,
+              "responsible": 83708
+            },
+            {
+              "pid": 83716,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9896368,
+              "rss": 25264128,
+              "responsible": 83708
+            },
+            {
+              "pid": 83714,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7127496,
+              "rss": 11730944,
+              "responsible": 83708
+            },
+            {
+              "pid": 83713,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2965840,
+              "rss": 5750784,
+              "responsible": 83708
+            },
+            {
+              "pid": 83712,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24986464,
+              "rss": 40452096,
+              "responsible": 83708
+            },
+            {
+              "pid": 83711,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14942832,
+              "rss": 22937600,
+              "responsible": 83708
+            }
+          ],
+          "totalMB": {
+            "footprint": 97,
+            "footprintCore": 78.6,
+            "procs": 8,
+            "rss": 221
+          }
+        },
+        {
+          "afterPaintMs": 15005,
+          "procs": [
+            {
+              "pid": 83714,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6865352,
+              "rss": 11436032,
+              "responsible": 83708
+            },
+            {
+              "pid": 83708,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35194200,
+              "rss": 109199360,
+              "responsible": 83708
+            },
+            {
+              "pid": 83712,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 23561056,
+              "rss": 39387136,
+              "responsible": 83708
+            },
+            {
+              "pid": 83719,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3015016,
+              "rss": 5996544,
+              "responsible": 83708
+            },
+            {
+              "pid": 83711,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14959216,
+              "rss": 22724608,
+              "responsible": 83708
+            },
+            {
+              "pid": 83713,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2900304,
+              "rss": 5750784,
+              "responsible": 83708
+            },
+            {
+              "pid": 83717,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3244560,
+              "rss": 10174464,
+              "responsible": 83708
+            },
+            {
+              "pid": 83716,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9814448,
+              "rss": 25247744,
+              "responsible": 83708
+            }
+          ],
+          "totalMB": {
+            "footprint": 94.9,
+            "footprintCore": 76.8,
+            "procs": 8,
+            "rss": 219.3
+          }
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "spawnUs": 1791782513164674,
+      "report": {
+        "go": {
+          "appStarted": 1791782513678621,
+          "goInit": 1791782513292468,
+          "main": 1791782513292468,
+          "mpvReady": 1791782513683120,
+          "reportReceived": 1791782513890963,
+          "runtimeReady": 1791782513737598,
+          "windowShow": 1791782513757365
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 4.458,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782513730,
+          "fcp": 1791782513888,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782513854,
+          "painted": 1791782513889,
+          "raf": 1791782513888,
+          "responseEnd": 1791782513721,
+          "scriptStart": 1791782513729,
+          "timeOrigin": 1791782513719,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84105
+      },
+      "msFromSpawn": {
+        "appStarted": 513.947,
+        "domContentLoaded": 565.325927734375,
+        "fcp": 723.325927734375,
+        "goInit": 127.794,
+        "main": 127.794,
+        "mounted": 689.325927734375,
+        "mpvReady": 518.446,
+        "painted": 724.325927734375,
+        "raf": 723.325927734375,
+        "reportReceived": 726.289,
+        "responseEnd": 556.325927734375,
+        "runtimeReady": 572.924,
+        "scriptStart": 564.325927734375,
+        "timeOrigin": 554.325927734375,
+        "windowShow": 592.691
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5009,
+          "procs": [
+            {
+              "pid": 84110,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2982248,
+              "rss": 5750784,
+              "responsible": 84105
+            },
+            {
+              "pid": 84115,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3342840,
+              "rss": 7602176,
+              "responsible": 84105
+            },
+            {
+              "pid": 84114,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9896368,
+              "rss": 24297472,
+              "responsible": 84105
+            },
+            {
+              "pid": 84116,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3178856,
+              "rss": 6160384,
+              "responsible": 84105
+            },
+            {
+              "pid": 84111,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24576864,
+              "rss": 39305216,
+              "responsible": 84105
+            },
+            {
+              "pid": 84105,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35521832,
+              "rss": 108756992,
+              "responsible": 84105
+            },
+            {
+              "pid": 84112,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7324104,
+              "rss": 12582912,
+              "responsible": 84105
+            },
+            {
+              "pid": 84109,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15041160,
+              "rss": 22855680,
+              "responsible": 84105
+            }
+          ],
+          "totalMB": {
+            "footprint": 97.1,
+            "footprintCore": 78.6,
+            "procs": 8,
+            "rss": 216.8
+          }
+        },
+        {
+          "afterPaintMs": 15007,
+          "procs": [
+            {
+              "pid": 84109,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14926472,
+              "rss": 22446080,
+              "responsible": 84105
+            },
+            {
+              "pid": 84116,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3080552,
+              "rss": 6160384,
+              "responsible": 84105
+            },
+            {
+              "pid": 84105,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35046696,
+              "rss": 108363776,
+              "responsible": 84105
+            },
+            {
+              "pid": 84111,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 23036768,
+              "rss": 38895616,
+              "responsible": 84105
+            },
+            {
+              "pid": 84115,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3277304,
+              "rss": 7602176,
+              "responsible": 84105
+            },
+            {
+              "pid": 84110,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2949480,
+              "rss": 5734400,
+              "responsible": 84105
+            },
+            {
+              "pid": 84114,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9716144,
+              "rss": 24313856,
+              "responsible": 84105
+            },
+            {
+              "pid": 84112,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6963656,
+              "rss": 12140544,
+              "responsible": 84105
+            }
+          ],
+          "totalMB": {
+            "footprint": 94.4,
+            "footprintCore": 76.3,
+            "procs": 8,
+            "rss": 215.2
+          }
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "spawnUs": 1791782532023409,
+      "report": {
+        "go": {
+          "appStarted": 1791782532523806,
+          "goInit": 1791782532148226,
+          "main": 1791782532148227,
+          "mpvReady": 1791782532536903,
+          "reportReceived": 1791782532805686,
+          "runtimeReady": 1791782532649136,
+          "windowShow": 1791782532670315
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 13.064,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782532644,
+          "fcp": 1791782532802,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782532776,
+          "painted": 1791782532804,
+          "raf": 1791782532802,
+          "responseEnd": 1791782532632,
+          "scriptStart": 1791782532643,
+          "timeOrigin": 1791782532630,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84241
+      },
+      "msFromSpawn": {
+        "appStarted": 500.397,
+        "domContentLoaded": 620.591064453125,
+        "fcp": 778.591064453125,
+        "goInit": 124.817,
+        "main": 124.818,
+        "mounted": 752.591064453125,
+        "mpvReady": 513.494,
+        "painted": 780.591064453125,
+        "raf": 778.591064453125,
+        "reportReceived": 782.277,
+        "responseEnd": 608.591064453125,
+        "runtimeReady": 625.727,
+        "scriptStart": 619.591064453125,
+        "timeOrigin": 606.591064453125,
+        "windowShow": 646.906
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5004,
+          "procs": [
+            {
+              "pid": 84247,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15057640,
+              "rss": 23068672,
+              "responsible": 84241
+            },
+            {
+              "pid": 84254,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2589032,
+              "rss": 10944512,
+              "responsible": 84241
+            },
+            {
+              "pid": 84241,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 36881704,
+              "rss": 111034368,
+              "responsible": 84241
+            },
+            {
+              "pid": 84250,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7193056,
+              "rss": 12566528,
+              "responsible": 84241
+            },
+            {
+              "pid": 84252,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9896368,
+              "rss": 25493504,
+              "responsible": 84241
+            },
+            {
+              "pid": 84253,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3424784,
+              "rss": 8126464,
+              "responsible": 84241
+            },
+            {
+              "pid": 84248,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3031400,
+              "rss": 6209536,
+              "responsible": 84241
+            },
+            {
+              "pid": 84249,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24019760,
+              "rss": 38928384,
+              "responsible": 84241
+            }
+          ],
+          "totalMB": {
+            "footprint": 97.4,
+            "footprintCore": 79.3,
+            "procs": 8,
+            "rss": 225.4
+          }
+        },
+        {
+          "afterPaintMs": 15009,
+          "procs": [
+            {
+              "pid": 84253,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3359248,
+              "rss": 8060928,
+              "responsible": 84241
+            },
+            {
+              "pid": 84241,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35702056,
+              "rss": 110379008,
+              "responsible": 84241
+            },
+            {
+              "pid": 84252,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9666992,
+              "rss": 25051136,
+              "responsible": 84241
+            },
+            {
+              "pid": 84250,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6996448,
+              "rss": 12140544,
+              "responsible": 84241
+            },
+            {
+              "pid": 84248,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2982248,
+              "rss": 6094848,
+              "responsible": 84241
+            },
+            {
+              "pid": 84254,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3031400,
+              "rss": 6144000,
+              "responsible": 84241
+            },
+            {
+              "pid": 84249,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22741808,
+              "rss": 38453248,
+              "responsible": 84241
+            },
+            {
+              "pid": 84247,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15024872,
+              "rss": 22495232,
+              "responsible": 84241
+            }
+          ],
+          "totalMB": {
+            "footprint": 94.9,
+            "footprintCore": 76.7,
+            "procs": 8,
+            "rss": 218.2
+          }
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "spawnUs": 1791782550927398,
+      "report": {
+        "go": {
+          "appStarted": 1791782551488373,
+          "goInit": 1791782551068225,
+          "main": 1791782551068226,
+          "mpvReady": 1791782551491762,
+          "reportReceived": 1791782551689123,
+          "runtimeReady": 1791782551539738,
+          "windowShow": 1791782551562387
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 3.348,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782551538,
+          "fcp": 1791782551685,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782551656,
+          "painted": 1791782551686,
+          "raf": 1791782551685,
+          "responseEnd": 1791782551530,
+          "scriptStart": 1791782551538,
+          "timeOrigin": 1791782551528,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84287
+      },
+      "msFromSpawn": {
+        "appStarted": 560.975,
+        "domContentLoaded": 610.60205078125,
+        "fcp": 757.60205078125,
+        "goInit": 140.827,
+        "main": 140.828,
+        "mounted": 728.60205078125,
+        "mpvReady": 564.364,
+        "painted": 758.60205078125,
+        "raf": 757.60205078125,
+        "reportReceived": 761.725,
+        "responseEnd": 602.60205078125,
+        "runtimeReady": 612.34,
+        "scriptStart": 610.60205078125,
+        "timeOrigin": 600.60205078125,
+        "windowShow": 634.989
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5007,
+          "procs": [
+            {
+              "pid": 84291,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2982248,
+              "rss": 5799936,
+              "responsible": 84287
+            },
+            {
+              "pid": 84287,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35800384,
+              "rss": 107282432,
+              "responsible": 84287
+            },
+            {
+              "pid": 84294,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9798064,
+              "rss": 24576000,
+              "responsible": 84287
+            },
+            {
+              "pid": 84292,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24347488,
+              "rss": 38240256,
+              "responsible": 84287
+            },
+            {
+              "pid": 84290,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14975672,
+              "rss": 23085056,
+              "responsible": 84287
+            },
+            {
+              "pid": 84296,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3277328,
+              "rss": 7733248,
+              "responsible": 84287
+            },
+            {
+              "pid": 84293,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7143904,
+              "rss": 11304960,
+              "responsible": 84287
+            },
+            {
+              "pid": 84297,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3129704,
+              "rss": 6455296,
+              "responsible": 84287
+            }
+          ],
+          "totalMB": {
+            "footprint": 96.8,
+            "footprintCore": 78.5,
+            "procs": 8,
+            "rss": 214.1
+          }
+        },
+        {
+          "afterPaintMs": 15011,
+          "procs": [
+            {
+              "pid": 84287,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35259712,
+              "rss": 107085824,
+              "responsible": 84287
+            },
+            {
+              "pid": 84291,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2916712,
+              "rss": 5767168,
+              "responsible": 84287
+            },
+            {
+              "pid": 84293,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6832608,
+              "rss": 10944512,
+              "responsible": 84287
+            },
+            {
+              "pid": 84290,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14811832,
+              "rss": 22118400,
+              "responsible": 84287
+            },
+            {
+              "pid": 84297,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3113320,
+              "rss": 6438912,
+              "responsible": 84287
+            },
+            {
+              "pid": 84294,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9732528,
+              "rss": 24559616,
+              "responsible": 84287
+            },
+            {
+              "pid": 84292,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22872928,
+              "rss": 37765120,
+              "responsible": 84287
+            },
+            {
+              "pid": 84296,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3228176,
+              "rss": 7667712,
+              "responsible": 84287
+            }
+          ],
+          "totalMB": {
+            "footprint": 94.2,
+            "footprintCore": 76.1,
+            "procs": 8,
+            "rss": 212
+          }
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "spawnUs": 1791782569808957,
+      "report": {
+        "go": {
+          "appStarted": 1791782570332799,
+          "goInit": 1791782569959808,
+          "main": 1791782569959809,
+          "mpvReady": 1791782570335571,
+          "reportReceived": 1791782570528650,
+          "runtimeReady": 1791782570392956,
+          "windowShow": 1791782570416741
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 2.721,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782570389,
+          "fcp": 1791782570526,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782570500,
+          "painted": 1791782570527,
+          "raf": 1791782570525,
+          "responseEnd": 1791782570380,
+          "scriptStart": 1791782570388,
+          "timeOrigin": 1791782570378,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84340
+      },
+      "msFromSpawn": {
+        "appStarted": 523.842,
+        "domContentLoaded": 580.04296875,
+        "fcp": 717.04296875,
+        "goInit": 150.851,
+        "main": 150.852,
+        "mounted": 691.04296875,
+        "mpvReady": 526.614,
+        "painted": 718.04296875,
+        "raf": 716.04296875,
+        "reportReceived": 719.693,
+        "responseEnd": 571.04296875,
+        "runtimeReady": 583.999,
+        "scriptStart": 579.04296875,
+        "timeOrigin": 569.04296875,
+        "windowShow": 607.784
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5008,
+          "procs": [
+            {
+              "pid": 84343,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15172304,
+              "rss": 22577152,
+              "responsible": 84340
+            },
+            {
+              "pid": 84348,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3375632,
+              "rss": 7995392,
+              "responsible": 84340
+            },
+            {
+              "pid": 84352,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3178856,
+              "rss": 6340608,
+              "responsible": 84340
+            },
+            {
+              "pid": 84340,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35439864,
+              "rss": 109625344,
+              "responsible": 84340
+            },
+            {
+              "pid": 84346,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7045600,
+              "rss": 11583488,
+              "responsible": 84340
+            },
+            {
+              "pid": 84347,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9863600,
+              "rss": 25182208,
+              "responsible": 84340
+            },
+            {
+              "pid": 84344,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3047784,
+              "rss": 5652480,
+              "responsible": 84340
+            },
+            {
+              "pid": 84345,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24101728,
+              "rss": 38813696,
+              "responsible": 84340
+            }
+          ],
+          "totalMB": {
+            "footprint": 96.5,
+            "footprintCore": 78,
+            "procs": 8,
+            "rss": 217.2
+          }
+        },
+        {
+          "afterPaintMs": 15006,
+          "procs": [
+            {
+              "pid": 84352,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3047784,
+              "rss": 6340608,
+              "responsible": 84340
+            },
+            {
+              "pid": 84346,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6816224,
+              "rss": 11075584,
+              "responsible": 84340
+            },
+            {
+              "pid": 84343,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14942928,
+              "rss": 22167552,
+              "responsible": 84340
+            },
+            {
+              "pid": 84344,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2982248,
+              "rss": 5636096,
+              "responsible": 84340
+            },
+            {
+              "pid": 84345,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22692680,
+              "rss": 38404096,
+              "responsible": 84340
+            },
+            {
+              "pid": 84348,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3310096,
+              "rss": 7946240,
+              "responsible": 84340
+            },
+            {
+              "pid": 84340,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 34997496,
+              "rss": 109346816,
+              "responsible": 84340
+            },
+            {
+              "pid": 84347,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9798064,
+              "rss": 25133056,
+              "responsible": 84340
+            }
+          ],
+          "totalMB": {
+            "footprint": 94,
+            "footprintCore": 75.8,
+            "procs": 8,
+            "rss": 215.6
+          }
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "spawnUs": 1791782588647392,
+      "report": {
+        "go": {
+          "appStarted": 1791782589175571,
+          "goInit": 1791782588774083,
+          "main": 1791782588774084,
+          "mpvReady": 1791782589193022,
+          "reportReceived": 1791782589343647,
+          "runtimeReady": 1791782589322585,
+          "windowShow": 1791782589341047
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 17.398,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782589316,
+          "fcp": 1791782589341,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782589320,
+          "painted": 1791782589342,
+          "raf": 1791782589341,
+          "responseEnd": 1791782589306,
+          "scriptStart": 1791782589315,
+          "timeOrigin": 1791782589304,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84386
+      },
+      "msFromSpawn": {
+        "appStarted": 528.179,
+        "domContentLoaded": 668.60791015625,
+        "fcp": 693.60791015625,
+        "goInit": 126.691,
+        "main": 126.692,
+        "mounted": 672.60791015625,
+        "mpvReady": 545.63,
+        "painted": 694.60791015625,
+        "raf": 693.60791015625,
+        "reportReceived": 696.255,
+        "responseEnd": 658.60791015625,
+        "runtimeReady": 675.193,
+        "scriptStart": 667.60791015625,
+        "timeOrigin": 656.60791015625,
+        "windowShow": 693.655
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5005,
+          "procs": [
+            {
+              "pid": 84390,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3015016,
+              "rss": 5685248,
+              "responsible": 84386
+            },
+            {
+              "pid": 84386,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35652952,
+              "rss": 108199936,
+              "responsible": 84386
+            },
+            {
+              "pid": 84391,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24167264,
+              "rss": 37699584,
+              "responsible": 84386
+            },
+            {
+              "pid": 84393,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3260920,
+              "rss": 7372800,
+              "responsible": 84386
+            },
+            {
+              "pid": 84389,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14729840,
+              "rss": 20856832,
+              "responsible": 84386
+            },
+            {
+              "pid": 84395,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3162472,
+              "rss": 6717440,
+              "responsible": 84386
+            },
+            {
+              "pid": 84394,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9798064,
+              "rss": 23674880,
+              "responsible": 84386
+            },
+            {
+              "pid": 84392,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7389688,
+              "rss": 11436032,
+              "responsible": 84386
+            }
+          ],
+          "totalMB": {
+            "footprint": 96.5,
+            "footprintCore": 78.1,
+            "procs": 8,
+            "rss": 211.4
+          }
+        },
+        {
+          "afterPaintMs": 15007,
+          "procs": [
+            {
+              "pid": 84391,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22446920,
+              "rss": 37486592,
+              "responsible": 84386
+            },
+            {
+              "pid": 84394,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9683376,
+              "rss": 23740416,
+              "responsible": 84386
+            },
+            {
+              "pid": 84390,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2965864,
+              "rss": 5668864,
+              "responsible": 84386
+            },
+            {
+              "pid": 84389,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14615152,
+              "rss": 20774912,
+              "responsible": 84386
+            },
+            {
+              "pid": 84392,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6963704,
+              "rss": 11010048,
+              "responsible": 84386
+            },
+            {
+              "pid": 84393,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3195384,
+              "rss": 7372800,
+              "responsible": 84386
+            },
+            {
+              "pid": 84395,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3113320,
+              "rss": 6717440,
+              "responsible": 84386
+            },
+            {
+              "pid": 84386,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35194200,
+              "rss": 107954176,
+              "responsible": 84386
+            }
+          ],
+          "totalMB": {
+            "footprint": 93.6,
+            "footprintCore": 75.6,
+            "procs": 8,
+            "rss": 210.5
+          }
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "spawnUs": 1791782607479489,
+      "report": {
+        "go": {
+          "appStarted": 1791782607952139,
+          "goInit": 1791782607604324,
+          "main": 1791782607604325,
+          "mpvReady": 1791782607956161,
+          "reportReceived": 1791782608183045,
+          "runtimeReady": 1791782608138971,
+          "windowShow": 1791782608160554
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 3.981,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782608136,
+          "fcp": 1791782608157,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782608141,
+          "painted": 1791782608181,
+          "raf": 1791782608181,
+          "responseEnd": 1791782608126,
+          "scriptStart": 1791782608136,
+          "timeOrigin": 1791782608124,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84443
+      },
+      "msFromSpawn": {
+        "appStarted": 472.65,
+        "domContentLoaded": 656.510986328125,
+        "fcp": 677.510986328125,
+        "goInit": 124.835,
+        "main": 124.836,
+        "mounted": 661.510986328125,
+        "mpvReady": 476.672,
+        "painted": 701.510986328125,
+        "raf": 701.510986328125,
+        "reportReceived": 703.556,
+        "responseEnd": 646.510986328125,
+        "runtimeReady": 659.482,
+        "scriptStart": 656.510986328125,
+        "timeOrigin": 644.510986328125,
+        "windowShow": 681.065
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5006,
+          "procs": [
+            {
+              "pid": 84453,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3178832,
+              "rss": 5996544,
+              "responsible": 84443
+            },
+            {
+              "pid": 84448,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3015016,
+              "rss": 6045696,
+              "responsible": 84443
+            },
+            {
+              "pid": 84443,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35996968,
+              "rss": 108134400,
+              "responsible": 84443
+            },
+            {
+              "pid": 84447,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14762632,
+              "rss": 20463616,
+              "responsible": 84443
+            },
+            {
+              "pid": 84452,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9879984,
+              "rss": 24395776,
+              "responsible": 84443
+            },
+            {
+              "pid": 84449,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24167264,
+              "rss": 37601280,
+              "responsible": 84443
+            },
+            {
+              "pid": 84451,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3277328,
+              "rss": 7716864,
+              "responsible": 84443
+            },
+            {
+              "pid": 84450,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7438792,
+              "rss": 11419648,
+              "responsible": 84443
+            }
+          ],
+          "totalMB": {
+            "footprint": 97,
+            "footprintCore": 78.6,
+            "procs": 8,
+            "rss": 211.5
+          }
+        },
+        {
+          "afterPaintMs": 15006,
+          "procs": [
+            {
+              "pid": 84447,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14664328,
+              "rss": 20283392,
+              "responsible": 84443
+            },
+            {
+              "pid": 84448,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2982248,
+              "rss": 6029312,
+              "responsible": 84443
+            },
+            {
+              "pid": 84443,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35439912,
+              "rss": 107806720,
+              "responsible": 84443
+            },
+            {
+              "pid": 84449,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22430536,
+              "rss": 37257216,
+              "responsible": 84443
+            },
+            {
+              "pid": 84452,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9650608,
+              "rss": 24379392,
+              "responsible": 84443
+            },
+            {
+              "pid": 84453,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3064144,
+              "rss": 5996544,
+              "responsible": 84443
+            },
+            {
+              "pid": 84451,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3228176,
+              "rss": 7716864,
+              "responsible": 84443
+            },
+            {
+              "pid": 84450,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7045576,
+              "rss": 10878976,
+              "responsible": 84443
+            }
+          ],
+          "totalMB": {
+            "footprint": 93.9,
+            "footprintCore": 75.9,
+            "procs": 8,
+            "rss": 210.1
+          }
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "spawnUs": 1791782626316217,
+      "report": {
+        "go": {
+          "appStarted": 1791782626841976,
+          "goInit": 1791782626452444,
+          "main": 1791782626452445,
+          "mpvReady": 1791782626846633,
+          "reportReceived": 1791782627016417,
+          "runtimeReady": 1791782626886566,
+          "windowShow": 1791782626910526
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 4.113,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782626882,
+          "fcp": 1791782627013,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782626989,
+          "painted": 1791782627014,
+          "raf": 1791782627013,
+          "responseEnd": 1791782626873,
+          "scriptStart": 1791782626881,
+          "timeOrigin": 1791782626871,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84486
+      },
+      "msFromSpawn": {
+        "appStarted": 525.759,
+        "domContentLoaded": 565.782958984375,
+        "fcp": 696.782958984375,
+        "goInit": 136.227,
+        "main": 136.228,
+        "mounted": 672.782958984375,
+        "mpvReady": 530.416,
+        "painted": 697.782958984375,
+        "raf": 696.782958984375,
+        "reportReceived": 700.2,
+        "responseEnd": 556.782958984375,
+        "runtimeReady": 570.349,
+        "scriptStart": 564.782958984375,
+        "timeOrigin": 554.782958984375,
+        "windowShow": 594.309
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5003,
+          "procs": [
+            {
+              "pid": 84494,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 24216416,
+              "rss": 37928960,
+              "responsible": 84486
+            },
+            {
+              "pid": 84492,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15090312,
+              "rss": 22544384,
+              "responsible": 84486
+            },
+            {
+              "pid": 84496,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9781680,
+              "rss": 24330240,
+              "responsible": 84486
+            },
+            {
+              "pid": 84495,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7225848,
+              "rss": 11288576,
+              "responsible": 84486
+            },
+            {
+              "pid": 84486,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 36537640,
+              "rss": 107626496,
+              "responsible": 84486
+            },
+            {
+              "pid": 84499,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3129704,
+              "rss": 6111232,
+              "responsible": 84486
+            },
+            {
+              "pid": 84493,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2998632,
+              "rss": 5914624,
+              "responsible": 84486
+            },
+            {
+              "pid": 84497,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3359248,
+              "rss": 7618560,
+              "responsible": 84486
+            }
+          ],
+          "totalMB": {
+            "footprint": 97.6,
+            "footprintCore": 79.2,
+            "procs": 8,
+            "rss": 213
+          }
+        },
+        {
+          "afterPaintMs": 15004,
+          "procs": [
+            {
+              "pid": 84486,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35341608,
+              "rss": 107364352,
+              "responsible": 84486
+            },
+            {
+              "pid": 84495,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6914552,
+              "rss": 10878976,
+              "responsible": 84486
+            },
+            {
+              "pid": 84499,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3031400,
+              "rss": 6094848,
+              "responsible": 84486
+            },
+            {
+              "pid": 84493,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2916712,
+              "rss": 5849088,
+              "responsible": 84486
+            },
+            {
+              "pid": 84497,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3326480,
+              "rss": 7602176,
+              "responsible": 84486
+            },
+            {
+              "pid": 84494,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22872904,
+              "rss": 37470208,
+              "responsible": 84486
+            },
+            {
+              "pid": 84492,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14992008,
+              "rss": 21774336,
+              "responsible": 84486
+            },
+            {
+              "pid": 84496,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9732528,
+              "rss": 24346624,
+              "responsible": 84486
+            }
+          ],
+          "totalMB": {
+            "footprint": 94.5,
+            "footprintCore": 76.4,
+            "procs": 8,
+            "rss": 211.1
+          }
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "spawnUs": 1791782645130918,
+      "report": {
+        "go": {
+          "appStarted": 1791782645556631,
+          "goInit": 1791782645267183,
+          "main": 1791782645267184,
+          "mpvReady": 1791782645564558,
+          "reportReceived": 1791782645836348,
+          "runtimeReady": 1791782645686999,
+          "windowShow": 1791782645711048
+        },
+        "goarch": "arm64",
+        "goos": "darwin",
+        "mpv": {
+          "clientAPI": 131073,
+          "ffmpeg-version": "6.0",
+          "initMs": 7.791,
+          "mpv-version": "mpv 0.36.0"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791782645682,
+          "fcp": 1791782645830,
+          "fcpSupported": true,
+          "focused": true,
+          "jsHeap": null,
+          "mounted": 1791782645801,
+          "painted": 1791782645831,
+          "raf": 1791782645830,
+          "responseEnd": 1791782645674,
+          "scriptStart": 1791782645681,
+          "timeOrigin": 1791782645672,
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) wails.io",
+          "visibility": "visible"
+        },
+        "pid": 84534
+      },
+      "msFromSpawn": {
+        "appStarted": 425.713,
+        "domContentLoaded": 551.08203125,
+        "fcp": 699.08203125,
+        "goInit": 136.265,
+        "main": 136.266,
+        "mounted": 670.08203125,
+        "mpvReady": 433.64,
+        "painted": 700.08203125,
+        "raf": 699.08203125,
+        "reportReceived": 705.43,
+        "responseEnd": 543.08203125,
+        "runtimeReady": 556.081,
+        "scriptStart": 550.08203125,
+        "timeOrigin": 541.08203125,
+        "windowShow": 580.13
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5007,
+          "procs": [
+            {
+              "pid": 84537,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 15024776,
+              "rss": 22364160,
+              "responsible": 84534
+            },
+            {
+              "pid": 84534,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 35243328,
+              "rss": 108544000,
+              "responsible": 84534
+            },
+            {
+              "pid": 84540,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 7160288,
+              "rss": 12075008,
+              "responsible": 84534
+            },
+            {
+              "pid": 84538,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3047784,
+              "rss": 5849088,
+              "responsible": 84534
+            },
+            {
+              "pid": 84542,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9765296,
+              "rss": 24379392,
+              "responsible": 84534
+            },
+            {
+              "pid": 84543,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3359248,
+              "rss": 7766016,
+              "responsible": 84534
+            },
+            {
+              "pid": 84539,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 23905072,
+              "rss": 38731776,
+              "responsible": 84534
+            },
+            {
+              "pid": 84545,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3146088,
+              "rss": 6406144,
+              "responsible": 84534
+            }
+          ],
+          "totalMB": {
+            "footprint": 96,
+            "footprintCore": 77.6,
+            "procs": 8,
+            "rss": 215.6
+          }
+        },
+        {
+          "afterPaintMs": 15010,
+          "procs": [
+            {
+              "pid": 84539,
+              "ppid": 1,
+              "name": "com.apple.WebKit.WebContent",
+              "footprint": 22692632,
+              "rss": 38338560,
+              "responsible": 84534
+            },
+            {
+              "pid": 84543,
+              "ppid": 1,
+              "name": "com.apple.audio.SandboxHelper",
+              "footprint": 3293712,
+              "rss": 7766016,
+              "responsible": 84534
+            },
+            {
+              "pid": 84537,
+              "ppid": 1,
+              "name": "com.apple.WebKit.GPU",
+              "footprint": 14811784,
+              "rss": 22134784,
+              "responsible": 84534
+            },
+            {
+              "pid": 84545,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 3129704,
+              "rss": 6406144,
+              "responsible": 84534
+            },
+            {
+              "pid": 84534,
+              "ppid": 1,
+              "name": "staysh-baseline",
+              "footprint": 34866496,
+              "rss": 108281856,
+              "responsible": 84534
+            },
+            {
+              "pid": 84540,
+              "ppid": 1,
+              "name": "com.apple.WebKit.Networking",
+              "footprint": 6865376,
+              "rss": 11747328,
+              "responsible": 84534
+            },
+            {
+              "pid": 84538,
+              "ppid": 1,
+              "name": "SetStoreUpdateService",
+              "footprint": 2965864,
+              "rss": 5832704,
+              "responsible": 84534
+            },
+            {
+              "pid": 84542,
+              "ppid": 1,
+              "name": "ThemeWidgetControlViewService",
+              "footprint": 9748912,
+              "rss": 24428544,
+              "responsible": 84534
+            }
+          ],
+          "totalMB": {
+            "footprint": 93.8,
+            "footprintCore": 75.6,
+            "procs": 8,
+            "rss": 214.5
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "first": {
+      "appStarted": 587.965,
+      "domContentLoaded": 640.72509765625,
+      "fcp": 803.72509765625,
+      "goInit": 192.562,
+      "main": 192.563,
+      "mounted": 770.72509765625,
+      "mpvReady": 603.911,
+      "painted": 804.72509765625,
+      "raf": 803.72509765625,
+      "reportReceived": 807.288,
+      "responseEnd": 630.72509765625,
+      "runtimeReady": 645.489,
+      "scriptStart": 639.72509765625,
+      "timeOrigin": 628.72509765625,
+      "windowShow": 660.045
+    },
+    "memoryMB": {
+      "+15s": {
+        "footprint": {
+          "max": 95,
+          "min": 93.6,
+          "n": 10,
+          "p50": 94.4
+        },
+        "footprintCore": {
+          "max": 76.8,
+          "min": 75.6,
+          "n": 10,
+          "p50": 76.3
+        },
+        "procs": {
+          "max": 8,
+          "min": 8,
+          "n": 10,
+          "p50": 8
+        },
+        "rss": {
+          "max": 219.3,
+          "min": 207.3,
+          "n": 10,
+          "p50": 214.5
+        }
+      },
+      "+5s": {
+        "footprint": {
+          "max": 98.4,
+          "min": 96,
+          "n": 10,
+          "p50": 97
+        },
+        "footprintCore": {
+          "max": 79.4,
+          "min": 77.6,
+          "n": 10,
+          "p50": 78.6
+        },
+        "procs": {
+          "max": 8,
+          "min": 8,
+          "n": 10,
+          "p50": 8
+        },
+        "rss": {
+          "max": 225.4,
+          "min": 211.4,
+          "n": 10,
+          "p50": 216
+        }
+      }
+    },
+    "warm": {
+      "appStarted": {
+        "max": 561,
+        "min": 425.7,
+        "n": 9,
+        "p50": 523.8
+      },
+      "domContentLoaded": {
+        "max": 668.6,
+        "min": 551.1,
+        "n": 9,
+        "p50": 585.6
+      },
+      "fcp": {
+        "max": 778.6,
+        "min": 677.5,
+        "n": 9,
+        "p50": 717
+      },
+      "goInit": {
+        "max": 156.4,
+        "min": 124.8,
+        "n": 9,
+        "p50": 136.2
+      },
+      "main": {
+        "max": 156.4,
+        "min": 124.8,
+        "n": 9,
+        "p50": 136.2
+      },
+      "mounted": {
+        "max": 752.6,
+        "min": 661.5,
+        "n": 9,
+        "p50": 689.3
+      },
+      "mpvReady": {
+        "max": 564.4,
+        "min": 433.6,
+        "n": 9,
+        "p50": 526.6
+      },
+      "painted": {
+        "max": 780.6,
+        "min": 694.6,
+        "n": 9,
+        "p50": 718
+      },
+      "raf": {
+        "max": 778.6,
+        "min": 693.6,
+        "n": 9,
+        "p50": 716
+      },
+      "reportReceived": {
+        "max": 782.3,
+        "min": 696.3,
+        "n": 9,
+        "p50": 719.7
+      },
+      "responseEnd": {
+        "max": 658.6,
+        "min": 543.1,
+        "n": 9,
+        "p50": 575.6
+      },
+      "runtimeReady": {
+        "max": 675.2,
+        "min": 556.1,
+        "n": 9,
+        "p50": 586.8
+      },
+      "scriptStart": {
+        "max": 667.6,
+        "min": 550.1,
+        "n": 9,
+        "p50": 584.6
+      },
+      "timeOrigin": {
+        "max": 656.6,
+        "min": 541.1,
+        "n": 9,
+        "p50": 573.6
+      },
+      "windowShow": {
+        "max": 693.7,
+        "min": 580.1,
+        "n": 9,
+        "p50": 612.8
+      }
+    }
+  }
+}

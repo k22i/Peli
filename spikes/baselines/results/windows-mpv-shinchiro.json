@@ -1,0 +1,2147 @@
+{
+  "label": "windows-mpv-shinchiro",
+  "app": "C:\\Program Files\\k22i\\Staysh\\staysh.exe",
+  "launch": "exec",
+  "page": "shell",
+  "env": {},
+  "host": {
+    "cpus": 2,
+    "goarch": "amd64",
+    "goos": "windows",
+    "os": "Windows 10.0.26100 / 8186 MB RAM"
+  },
+  "runs": [
+    {
+      "n": 1,
+      "spawnUs": 1791783066732833,
+      "report": {
+        "go": {
+          "appStarted": 1791783067005296,
+          "goInit": 1791783066973651,
+          "main": 1791783066973651,
+          "mpvReady": 1791783067362626,
+          "reportReceived": 1791783071481603,
+          "runtimeReady": 1791783070880766,
+          "windowShow": 1791783070898894
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 357.331,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783070872.5,
+          "fcp": 1791783070984.5,
+          "fcpSupported": true,
+          "firstPaint": 1791783070984.5,
+          "focused": true,
+          "jsHeap": 2128441,
+          "mounted": 1791783070956.3,
+          "painted": 1791783070972.7,
+          "raf": 1791783070970.9,
+          "responseEnd": 1791783070760.9,
+          "scriptStart": 1791783070870.5,
+          "timeOrigin": 1791783070572.5,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 8728
+      },
+      "msFromSpawn": {
+        "appStarted": 272.463,
+        "domContentLoaded": 4139.6669921875,
+        "fcp": 4251.6669921875,
+        "firstPaint": 4251.6669921875,
+        "goInit": 240.818,
+        "main": 240.818,
+        "mounted": 4223.467041015625,
+        "mpvReady": 629.793,
+        "painted": 4239.866943359375,
+        "raf": 4238.06689453125,
+        "reportReceived": 4748.77,
+        "responseEnd": 4028.06689453125,
+        "runtimeReady": 4147.933,
+        "scriptStart": 4137.6669921875,
+        "timeOrigin": 3839.6669921875,
+        "windowShow": 4166.061
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5017,
+          "procs": [
+            {
+              "pid": 8728,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 42180608,
+              "private": 37367808,
+              "privateWS": 10928128
+            },
+            {
+              "pid": 3560,
+              "ppid": 8728,
+              "name": "msedgewebview2.exe",
+              "rss": 123195392,
+              "private": 40976384,
+              "privateWS": 31764480
+            },
+            {
+              "pid": 5280,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 47972352,
+              "private": 16142336,
+              "privateWS": 8728576
+            },
+            {
+              "pid": 8016,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 9555968,
+              "private": 2514944,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 2784,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 38416384,
+              "private": 12161024,
+              "privateWS": 6193152
+            },
+            {
+              "pid": 6948,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 18284544,
+              "private": 8257536,
+              "privateWS": 2654208
+            },
+            {
+              "pid": 8960,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 64774144,
+              "private": 26386432,
+              "privateWS": 15757312
+            }
+          ],
+          "totalMB": {
+            "private": 137.1,
+            "privateWS": 74,
+            "procs": 7,
+            "rss": 328.4
+          }
+        },
+        {
+          "afterPaintMs": 15015,
+          "procs": [
+            {
+              "pid": 6948,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 18214912,
+              "private": 8257536,
+              "privateWS": 2654208
+            },
+            {
+              "pid": 5280,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 44105728,
+              "private": 16138240,
+              "privateWS": 8728576
+            },
+            {
+              "pid": 8728,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 42188800,
+              "private": 37376000,
+              "privateWS": 10940416
+            },
+            {
+              "pid": 3560,
+              "ppid": 8728,
+              "name": "msedgewebview2.exe",
+              "rss": 123236352,
+              "private": 41000960,
+              "privateWS": 31776768
+            },
+            {
+              "pid": 8016,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 9551872,
+              "private": 2514944,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 8960,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 63295488,
+              "private": 24973312,
+              "privateWS": 14278656
+            },
+            {
+              "pid": 2784,
+              "ppid": 3560,
+              "name": "msedgewebview2.exe",
+              "rss": 38428672,
+              "private": 12161024,
+              "privateWS": 6193152
+            }
+          ],
+          "totalMB": {
+            "private": 135.8,
+            "privateWS": 72.6,
+            "procs": 7,
+            "rss": 323.3
+          }
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "spawnUs": 1791783089272086,
+      "report": {
+        "go": {
+          "appStarted": 1791783089356355,
+          "goInit": 1791783089318045,
+          "main": 1791783089318045,
+          "mpvReady": 1791783089365715,
+          "reportReceived": 1791783091584870,
+          "runtimeReady": 1791783091047128,
+          "windowShow": 1791783091104823
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 9.359,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783090984.8,
+          "fcp": 1791783091086.7,
+          "fcpSupported": true,
+          "firstPaint": 1791783091086.7,
+          "focused": true,
+          "jsHeap": 2137339,
+          "mounted": 1791783091028.9,
+          "painted": 1791783091079.7,
+          "raf": 1791783091078.0999,
+          "responseEnd": 1791783090913.3,
+          "scriptStart": 1791783090982.8,
+          "timeOrigin": 1791783090898.7,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 1436
+      },
+      "msFromSpawn": {
+        "appStarted": 84.269,
+        "domContentLoaded": 1712.714111328125,
+        "fcp": 1814.614013671875,
+        "firstPaint": 1814.614013671875,
+        "goInit": 45.959,
+        "main": 45.959,
+        "mounted": 1756.81396484375,
+        "mpvReady": 93.629,
+        "painted": 1807.614013671875,
+        "raf": 1806.013916015625,
+        "reportReceived": 2312.784,
+        "responseEnd": 1641.214111328125,
+        "runtimeReady": 1775.042,
+        "scriptStart": 1710.714111328125,
+        "timeOrigin": 1626.614013671875,
+        "windowShow": 1832.737
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5016,
+          "procs": [
+            {
+              "pid": 5232,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 18255872,
+              "private": 8253440,
+              "privateWS": 2641920
+            },
+            {
+              "pid": 5408,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 43216896,
+              "private": 16035840,
+              "privateWS": 8572928
+            },
+            {
+              "pid": 7372,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 9592832,
+              "private": 2527232,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 7920,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 38371328,
+              "private": 12128256,
+              "privateWS": 6197248
+            },
+            {
+              "pid": 7116,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 64643072,
+              "private": 26755072,
+              "privateWS": 15941632
+            },
+            {
+              "pid": 1436,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41951232,
+              "private": 37298176,
+              "privateWS": 10780672
+            },
+            {
+              "pid": 8796,
+              "ppid": 1436,
+              "name": "msedgewebview2.exe",
+              "rss": 117559296,
+              "private": 40009728,
+              "privateWS": 30912512
+            }
+          ],
+          "totalMB": {
+            "private": 136.4,
+            "privateWS": 73,
+            "procs": 7,
+            "rss": 318.1
+          }
+        },
+        {
+          "afterPaintMs": 15015,
+          "procs": [
+            {
+              "pid": 7920,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 38432768,
+              "private": 12169216,
+              "privateWS": 6238208
+            },
+            {
+              "pid": 7116,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 63488000,
+              "private": 25387008,
+              "privateWS": 14778368
+            },
+            {
+              "pid": 5408,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 43216896,
+              "private": 16035840,
+              "privateWS": 8572928
+            },
+            {
+              "pid": 1436,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41979904,
+              "private": 37322752,
+              "privateWS": 10809344
+            },
+            {
+              "pid": 8796,
+              "ppid": 1436,
+              "name": "msedgewebview2.exe",
+              "rss": 118800384,
+              "private": 40296448,
+              "privateWS": 31137792
+            },
+            {
+              "pid": 7372,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 9592832,
+              "private": 2527232,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 5232,
+              "ppid": 8796,
+              "name": "msedgewebview2.exe",
+              "rss": 18255872,
+              "private": 8253440,
+              "privateWS": 2641920
+            }
+          ],
+          "totalMB": {
+            "private": 135.4,
+            "privateWS": 72.2,
+            "procs": 7,
+            "rss": 318.3
+          }
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "spawnUs": 1791783109325028,
+      "report": {
+        "go": {
+          "appStarted": 1791783109386655,
+          "goInit": 1791783109361186,
+          "main": 1791783109361186,
+          "mpvReady": 1791783109397033,
+          "reportReceived": 1791783110696809,
+          "runtimeReady": 1791783110133836,
+          "windowShow": 1791783110171920
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 10.377,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783110142.2,
+          "fcp": 1791783110197.5,
+          "fcpSupported": true,
+          "firstPaint": 1791783110197.5,
+          "focused": true,
+          "jsHeap": 2127511,
+          "mounted": 1791783110173.8,
+          "painted": 1791783110181,
+          "raf": 1791783110179.4,
+          "responseEnd": 1791783110086.9,
+          "scriptStart": 1791783110140.1,
+          "timeOrigin": 1791783110073.5,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 1324
+      },
+      "msFromSpawn": {
+        "appStarted": 61.627,
+        "domContentLoaded": 817.171875,
+        "fcp": 872.471923828125,
+        "firstPaint": 872.471923828125,
+        "goInit": 36.158,
+        "main": 36.158,
+        "mounted": 848.77197265625,
+        "mpvReady": 72.005,
+        "painted": 855.971923828125,
+        "raf": 854.371826171875,
+        "reportReceived": 1371.781,
+        "responseEnd": 761.871826171875,
+        "runtimeReady": 808.808,
+        "scriptStart": 815.072021484375,
+        "timeOrigin": 748.471923828125,
+        "windowShow": 846.892
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5015,
+          "procs": [
+            {
+              "pid": 7580,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 43442176,
+              "private": 16007168,
+              "privateWS": 8564736
+            },
+            {
+              "pid": 1324,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41922560,
+              "private": 37240832,
+              "privateWS": 10833920
+            },
+            {
+              "pid": 2992,
+              "ppid": 1324,
+              "name": "msedgewebview2.exe",
+              "rss": 117673984,
+              "private": 40288256,
+              "privateWS": 31100928
+            },
+            {
+              "pid": 1156,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 33214464,
+              "private": 11739136,
+              "privateWS": 5791744
+            },
+            {
+              "pid": 3720,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 9543680,
+              "private": 2514944,
+              "privateWS": 1531904
+            },
+            {
+              "pid": 5100,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 18374656,
+              "private": 8278016,
+              "privateWS": 2674688
+            },
+            {
+              "pid": 2664,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 67194880,
+              "private": 29966336,
+              "privateWS": 15564800
+            }
+          ],
+          "totalMB": {
+            "private": 139.3,
+            "privateWS": 72.5,
+            "procs": 7,
+            "rss": 316
+          }
+        },
+        {
+          "afterPaintMs": 15014,
+          "procs": [
+            {
+              "pid": 1324,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41943040,
+              "private": 37257216,
+              "privateWS": 10854400
+            },
+            {
+              "pid": 2992,
+              "ppid": 1324,
+              "name": "msedgewebview2.exe",
+              "rss": 117829632,
+              "private": 40411136,
+              "privateWS": 31219712
+            },
+            {
+              "pid": 2664,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 66174976,
+              "private": 28946432,
+              "privateWS": 14544896
+            },
+            {
+              "pid": 7580,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 43442176,
+              "private": 16007168,
+              "privateWS": 8564736
+            },
+            {
+              "pid": 1156,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 33251328,
+              "private": 11743232,
+              "privateWS": 5795840
+            },
+            {
+              "pid": 5100,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 18374656,
+              "private": 8278016,
+              "privateWS": 2674688
+            },
+            {
+              "pid": 3720,
+              "ppid": 2992,
+              "name": "msedgewebview2.exe",
+              "rss": 9543680,
+              "private": 2514944,
+              "privateWS": 1531904
+            }
+          ],
+          "totalMB": {
+            "private": 138.4,
+            "privateWS": 71.7,
+            "procs": 7,
+            "rss": 315.2
+          }
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "spawnUs": 1791783128451629,
+      "report": {
+        "go": {
+          "appStarted": 1791783128513090,
+          "goInit": 1791783128486179,
+          "main": 1791783128486179,
+          "mpvReady": 1791783128519050,
+          "reportReceived": 1791783129805732,
+          "runtimeReady": 1791783129256575,
+          "windowShow": 1791783129307838
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 5.959,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783129264.7,
+          "fcp": 1791783129306.2,
+          "fcpSupported": true,
+          "firstPaint": 1791783129306.2,
+          "focused": false,
+          "jsHeap": 2134766,
+          "mounted": 1791783129293.5999,
+          "painted": 1791783129298.5999,
+          "raf": 1791783129297.0999,
+          "responseEnd": 1791783129208.5999,
+          "scriptStart": 1791783129262.7,
+          "timeOrigin": 1791783129194.2,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 2052
+      },
+      "msFromSpawn": {
+        "appStarted": 61.461,
+        "domContentLoaded": 813.071044921875,
+        "fcp": 854.571044921875,
+        "firstPaint": 854.571044921875,
+        "goInit": 34.55,
+        "main": 34.55,
+        "mounted": 841.970947265625,
+        "mpvReady": 67.421,
+        "painted": 846.970947265625,
+        "raf": 845.470947265625,
+        "reportReceived": 1354.103,
+        "responseEnd": 756.970947265625,
+        "runtimeReady": 804.946,
+        "scriptStart": 811.071044921875,
+        "timeOrigin": 742.571044921875,
+        "windowShow": 856.209
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5014,
+          "procs": [
+            {
+              "pid": 676,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 43491328,
+              "private": 16048128,
+              "privateWS": 8568832
+            },
+            {
+              "pid": 8188,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 64425984,
+              "private": 26079232,
+              "privateWS": 15626240
+            },
+            {
+              "pid": 732,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 33251328,
+              "private": 11763712,
+              "privateWS": 5799936
+            },
+            {
+              "pid": 7876,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 18325504,
+              "private": 8245248,
+              "privateWS": 2633728
+            },
+            {
+              "pid": 2052,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41996288,
+              "private": 37261312,
+              "privateWS": 10821632
+            },
+            {
+              "pid": 6472,
+              "ppid": 2052,
+              "name": "msedgewebview2.exe",
+              "rss": 117243904,
+              "private": 39886848,
+              "privateWS": 30756864
+            },
+            {
+              "pid": 8948,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 9547776,
+              "private": 2514944,
+              "privateWS": 1544192
+            }
+          ],
+          "totalMB": {
+            "private": 135.2,
+            "privateWS": 72.2,
+            "procs": 7,
+            "rss": 313.1
+          }
+        },
+        {
+          "afterPaintMs": 15018,
+          "procs": [
+            {
+              "pid": 6472,
+              "ppid": 2052,
+              "name": "msedgewebview2.exe",
+              "rss": 117395456,
+              "private": 40005632,
+              "privateWS": 30871552
+            },
+            {
+              "pid": 8188,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 63324160,
+              "private": 25030656,
+              "privateWS": 14524416
+            },
+            {
+              "pid": 8948,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 9547776,
+              "private": 2514944,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 676,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 43491328,
+              "private": 16048128,
+              "privateWS": 8568832
+            },
+            {
+              "pid": 732,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 33288192,
+              "private": 11767808,
+              "privateWS": 5804032
+            },
+            {
+              "pid": 7876,
+              "ppid": 6472,
+              "name": "msedgewebview2.exe",
+              "rss": 18325504,
+              "private": 8245248,
+              "privateWS": 2633728
+            },
+            {
+              "pid": 2052,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 42024960,
+              "private": 37277696,
+              "privateWS": 10850304
+            }
+          ],
+          "totalMB": {
+            "private": 134.4,
+            "privateWS": 71.3,
+            "procs": 7,
+            "rss": 312.2
+          }
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "spawnUs": 1791783147650247,
+      "report": {
+        "go": {
+          "appStarted": 1791783147719608,
+          "goInit": 1791783147687264,
+          "main": 1791783147687264,
+          "mpvReady": 1791783147734973,
+          "reportReceived": 1791783149197164,
+          "runtimeReady": 1791783148620128,
+          "windowShow": 1791783148666417
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 15.364,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783148628.0999,
+          "fcp": 1791783148687.9,
+          "fcpSupported": true,
+          "firstPaint": 1791783148687.9,
+          "focused": true,
+          "jsHeap": 2127678,
+          "mounted": 1791783148669.7,
+          "painted": 1791783148680.4,
+          "raf": 1791783148677.2,
+          "responseEnd": 1791783148569.7,
+          "scriptStart": 1791783148625.9,
+          "timeOrigin": 1791783148559.9,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 800
+      },
+      "msFromSpawn": {
+        "appStarted": 69.361,
+        "domContentLoaded": 977.852783203125,
+        "fcp": 1037.65283203125,
+        "firstPaint": 1037.65283203125,
+        "goInit": 37.017,
+        "main": 37.017,
+        "mounted": 1019.452880859375,
+        "mpvReady": 84.726,
+        "painted": 1030.15283203125,
+        "raf": 1026.952880859375,
+        "reportReceived": 1546.917,
+        "responseEnd": 919.452880859375,
+        "runtimeReady": 969.881,
+        "scriptStart": 975.65283203125,
+        "timeOrigin": 909.65283203125,
+        "windowShow": 1016.17
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5015,
+          "procs": [
+            {
+              "pid": 8040,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 43569152,
+              "private": 16011264,
+              "privateWS": 8564736
+            },
+            {
+              "pid": 9036,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 64794624,
+              "private": 26521600,
+              "privateWS": 15888384
+            },
+            {
+              "pid": 800,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41922560,
+              "private": 37048320,
+              "privateWS": 10727424
+            },
+            {
+              "pid": 8860,
+              "ppid": 800,
+              "name": "msedgewebview2.exe",
+              "rss": 117522432,
+              "private": 39809024,
+              "privateWS": 30740480
+            },
+            {
+              "pid": 8588,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 33480704,
+              "private": 11771904,
+              "privateWS": 5812224
+            },
+            {
+              "pid": 5428,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 9891840,
+              "private": 2531328,
+              "privateWS": 1536000
+            },
+            {
+              "pid": 8660,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 18419712,
+              "private": 8253440,
+              "privateWS": 2637824
+            }
+          ],
+          "totalMB": {
+            "private": 135.4,
+            "privateWS": 72.4,
+            "procs": 7,
+            "rss": 314.3
+          }
+        },
+        {
+          "afterPaintMs": 15018,
+          "procs": [
+            {
+              "pid": 8860,
+              "ppid": 800,
+              "name": "msedgewebview2.exe",
+              "rss": 117686272,
+              "private": 39940096,
+              "privateWS": 30867456
+            },
+            {
+              "pid": 5428,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 9891840,
+              "private": 2531328,
+              "privateWS": 1536000
+            },
+            {
+              "pid": 8588,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 33513472,
+              "private": 11771904,
+              "privateWS": 5812224
+            },
+            {
+              "pid": 8040,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 43569152,
+              "private": 16011264,
+              "privateWS": 8564736
+            },
+            {
+              "pid": 9036,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 63447040,
+              "private": 25059328,
+              "privateWS": 14540800
+            },
+            {
+              "pid": 8660,
+              "ppid": 8860,
+              "name": "msedgewebview2.exe",
+              "rss": 18419712,
+              "private": 8253440,
+              "privateWS": 2637824
+            },
+            {
+              "pid": 800,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41955328,
+              "private": 37089280,
+              "privateWS": 10764288
+            }
+          ],
+          "totalMB": {
+            "private": 134.1,
+            "privateWS": 71.3,
+            "procs": 7,
+            "rss": 313.3
+          }
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "spawnUs": 1791783166859647,
+      "report": {
+        "go": {
+          "appStarted": 1791783166920321,
+          "goInit": 1791783166894710,
+          "main": 1791783166894710,
+          "mpvReady": 1791783166929635,
+          "reportReceived": 1791783168229073,
+          "runtimeReady": 1791783167669009,
+          "windowShow": 1791783167721293
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 9.313,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783167675.1,
+          "fcp": 1791783167734.8,
+          "fcpSupported": true,
+          "firstPaint": 1791783167734.8,
+          "focused": true,
+          "jsHeap": 2138202,
+          "mounted": 1791783167706.6,
+          "painted": 1791783167712.2,
+          "raf": 1791783167710.3,
+          "responseEnd": 1791783167621.1,
+          "scriptStart": 1791783167673.2,
+          "timeOrigin": 1791783167610.8,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 8892
+      },
+      "msFromSpawn": {
+        "appStarted": 60.674,
+        "domContentLoaded": 815.453125,
+        "fcp": 875.153076171875,
+        "firstPaint": 875.153076171875,
+        "goInit": 35.063,
+        "main": 35.063,
+        "mounted": 846.953125,
+        "mpvReady": 69.988,
+        "painted": 852.552978515625,
+        "raf": 850.653076171875,
+        "reportReceived": 1369.426,
+        "responseEnd": 761.453125,
+        "runtimeReady": 809.362,
+        "scriptStart": 813.552978515625,
+        "timeOrigin": 751.153076171875,
+        "windowShow": 861.646
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5015,
+          "procs": [
+            {
+              "pid": 9032,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 33144832,
+              "private": 11620352,
+              "privateWS": 5681152
+            },
+            {
+              "pid": 7796,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 47087616,
+              "private": 16035840,
+              "privateWS": 8609792
+            },
+            {
+              "pid": 2872,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 9551872,
+              "private": 2527232,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 8892,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41963520,
+              "private": 37142528,
+              "privateWS": 10739712
+            },
+            {
+              "pid": 1300,
+              "ppid": 8892,
+              "name": "msedgewebview2.exe",
+              "rss": 121667584,
+              "private": 40165376,
+              "privateWS": 30941184
+            },
+            {
+              "pid": 4464,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 18313216,
+              "private": 8269824,
+              "privateWS": 2654208
+            },
+            {
+              "pid": 8368,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 63893504,
+              "private": 26140672,
+              "privateWS": 15310848
+            }
+          ],
+          "totalMB": {
+            "private": 135.3,
+            "privateWS": 72,
+            "procs": 7,
+            "rss": 320.1
+          }
+        },
+        {
+          "afterPaintMs": 15015,
+          "procs": [
+            {
+              "pid": 8892,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41975808,
+              "private": 37150720,
+              "privateWS": 10752000
+            },
+            {
+              "pid": 1300,
+              "ppid": 8892,
+              "name": "msedgewebview2.exe",
+              "rss": 117952512,
+              "private": 40280064,
+              "privateWS": 31051776
+            },
+            {
+              "pid": 7796,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 43225088,
+              "private": 16035840,
+              "privateWS": 8613888
+            },
+            {
+              "pid": 4464,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 18313216,
+              "private": 8269824,
+              "privateWS": 2654208
+            },
+            {
+              "pid": 2872,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 9551872,
+              "private": 2527232,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 8368,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 62955520,
+              "private": 25341952,
+              "privateWS": 14372864
+            },
+            {
+              "pid": 9032,
+              "ppid": 1300,
+              "name": "msedgewebview2.exe",
+              "rss": 33202176,
+              "private": 11644928,
+              "privateWS": 5705728
+            }
+          ],
+          "totalMB": {
+            "private": 134.7,
+            "privateWS": 71.2,
+            "procs": 7,
+            "rss": 312
+          }
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "spawnUs": 1791783185913399,
+      "report": {
+        "go": {
+          "appStarted": 1791783185973131,
+          "goInit": 1791783185948388,
+          "main": 1791783185948388,
+          "mpvReady": 1791783185982344,
+          "reportReceived": 1791783187276691,
+          "runtimeReady": 1791783186727471,
+          "windowShow": 1791783186780772
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 9.212,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783186735.3,
+          "fcp": 1791783186780,
+          "fcpSupported": true,
+          "firstPaint": 1791783186780,
+          "focused": false,
+          "jsHeap": 2127675,
+          "mounted": 1791783186766.2,
+          "painted": 1791783186771.4,
+          "raf": 1791783186769.8,
+          "responseEnd": 1791783186678.1,
+          "scriptStart": 1791783186733.4,
+          "timeOrigin": 1791783186664,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 7656
+      },
+      "msFromSpawn": {
+        "appStarted": 59.732,
+        "domContentLoaded": 821.901123046875,
+        "fcp": 866.60107421875,
+        "firstPaint": 866.60107421875,
+        "goInit": 34.989,
+        "main": 34.989,
+        "mounted": 852.801025390625,
+        "mpvReady": 68.945,
+        "painted": 858.0009765625,
+        "raf": 856.401123046875,
+        "reportReceived": 1363.292,
+        "responseEnd": 764.701171875,
+        "runtimeReady": 814.072,
+        "scriptStart": 820.0009765625,
+        "timeOrigin": 750.60107421875,
+        "windowShow": 867.373
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5015,
+          "procs": [
+            {
+              "pid": 5964,
+              "ppid": 7656,
+              "name": "msedgewebview2.exe",
+              "rss": 117530624,
+              "private": 40091648,
+              "privateWS": 30937088
+            },
+            {
+              "pid": 7432,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 9551872,
+              "private": 2527232,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 1672,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 33177600,
+              "private": 11706368,
+              "privateWS": 5763072
+            },
+            {
+              "pid": 8044,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 43458560,
+              "private": 16007168,
+              "privateWS": 8560640
+            },
+            {
+              "pid": 3872,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 18288640,
+              "private": 8257536,
+              "privateWS": 2637824
+            },
+            {
+              "pid": 7056,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 64733184,
+              "private": 26923008,
+              "privateWS": 15986688
+            },
+            {
+              "pid": 7656,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41881600,
+              "private": 37171200,
+              "privateWS": 10792960
+            }
+          ],
+          "totalMB": {
+            "private": 136.1,
+            "privateWS": 72.7,
+            "procs": 7,
+            "rss": 313.4
+          }
+        },
+        {
+          "afterPaintMs": 15015,
+          "procs": [
+            {
+              "pid": 3872,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 18288640,
+              "private": 8257536,
+              "privateWS": 2637824
+            },
+            {
+              "pid": 1672,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 33230848,
+              "private": 11726848,
+              "privateWS": 5783552
+            },
+            {
+              "pid": 7432,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 9551872,
+              "private": 2527232,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 7056,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 63193088,
+              "private": 25427968,
+              "privateWS": 14446592
+            },
+            {
+              "pid": 8044,
+              "ppid": 5964,
+              "name": "msedgewebview2.exe",
+              "rss": 43458560,
+              "private": 16007168,
+              "privateWS": 8560640
+            },
+            {
+              "pid": 7656,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41910272,
+              "private": 37187584,
+              "privateWS": 10821632
+            },
+            {
+              "pid": 5964,
+              "ppid": 7656,
+              "name": "msedgewebview2.exe",
+              "rss": 117665792,
+              "private": 40198144,
+              "privateWS": 31035392
+            }
+          ],
+          "totalMB": {
+            "private": 134.8,
+            "privateWS": 71.4,
+            "procs": 7,
+            "rss": 312.1
+          }
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "spawnUs": 1791783205001725,
+      "report": {
+        "go": {
+          "appStarted": 1791783205069275,
+          "goInit": 1791783205038827,
+          "main": 1791783205038827,
+          "mpvReady": 1791783205080226,
+          "reportReceived": 1791783206432127,
+          "runtimeReady": 1791783205876364,
+          "windowShow": 1791783205913023
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 10.951,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783205884.1,
+          "fcp": 1791783205938.3,
+          "fcpSupported": true,
+          "firstPaint": 1791783205938.3,
+          "focused": true,
+          "jsHeap": 2138287,
+          "mounted": 1791783205915.8,
+          "painted": 1791783205920.8,
+          "raf": 1791783205919.3,
+          "responseEnd": 1791783205823.8,
+          "scriptStart": 1791783205882.2,
+          "timeOrigin": 1791783205810.3,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 9140
+      },
+      "msFromSpawn": {
+        "appStarted": 67.55,
+        "domContentLoaded": 882.375,
+        "fcp": 936.574951171875,
+        "firstPaint": 936.574951171875,
+        "goInit": 37.102,
+        "main": 37.102,
+        "mounted": 914.074951171875,
+        "mpvReady": 78.501,
+        "painted": 919.074951171875,
+        "raf": 917.574951171875,
+        "reportReceived": 1430.402,
+        "responseEnd": 822.074951171875,
+        "runtimeReady": 874.639,
+        "scriptStart": 880.474853515625,
+        "timeOrigin": 808.574951171875,
+        "windowShow": 911.298
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5020,
+          "procs": [
+            {
+              "pid": 9140,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 42000384,
+              "private": 37273600,
+              "privateWS": 10788864
+            },
+            {
+              "pid": 7884,
+              "ppid": 9140,
+              "name": "msedgewebview2.exe",
+              "rss": 116981760,
+              "private": 39899136,
+              "privateWS": 30732288
+            },
+            {
+              "pid": 1620,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 9560064,
+              "private": 2539520,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 5788,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 43724800,
+              "private": 16035840,
+              "privateWS": 8597504
+            },
+            {
+              "pid": 1516,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 64618496,
+              "private": 26574848,
+              "privateWS": 15659008
+            },
+            {
+              "pid": 8740,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 18309120,
+              "private": 8261632,
+              "privateWS": 2650112
+            },
+            {
+              "pid": 6120,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 33325056,
+              "private": 11874304,
+              "privateWS": 5890048
+            }
+          ],
+          "totalMB": {
+            "private": 135.9,
+            "privateWS": 72.3,
+            "procs": 7,
+            "rss": 313.3
+          }
+        },
+        {
+          "afterPaintMs": 15021,
+          "procs": [
+            {
+              "pid": 1620,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 9560064,
+              "private": 2539520,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 8740,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 18280448,
+              "private": 8261632,
+              "privateWS": 2650112
+            },
+            {
+              "pid": 1516,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 63623168,
+              "private": 25530368,
+              "privateWS": 14663680
+            },
+            {
+              "pid": 5788,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 43724800,
+              "private": 16035840,
+              "privateWS": 8597504
+            },
+            {
+              "pid": 6120,
+              "ppid": 7884,
+              "name": "msedgewebview2.exe",
+              "rss": 33386496,
+              "private": 11894784,
+              "privateWS": 5910528
+            },
+            {
+              "pid": 9140,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 42020864,
+              "private": 37289984,
+              "privateWS": 10809344
+            },
+            {
+              "pid": 7884,
+              "ppid": 9140,
+              "name": "msedgewebview2.exe",
+              "rss": 117415936,
+              "private": 40112128,
+              "privateWS": 30904320
+            }
+          ],
+          "totalMB": {
+            "private": 135.1,
+            "privateWS": 71.6,
+            "procs": 7,
+            "rss": 312.8
+          }
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "spawnUs": 1791783224175465,
+      "report": {
+        "go": {
+          "appStarted": 1791783224258138,
+          "goInit": 1791783224223613,
+          "main": 1791783224223613,
+          "mpvReady": 1791783224266732,
+          "reportReceived": 1791783226356662,
+          "runtimeReady": 1791783225827229,
+          "windowShow": 1791783225870406
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 8.594,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783225790.5,
+          "fcp": 1791783225851.8,
+          "fcpSupported": true,
+          "firstPaint": 1791783225851.8,
+          "focused": true,
+          "jsHeap": 2138563,
+          "mounted": 1791783225822,
+          "painted": 1791783225844.8,
+          "raf": 1791783225843.3,
+          "responseEnd": 1791783225708,
+          "scriptStart": 1791783225788.6,
+          "timeOrigin": 1791783225691.8,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 7752
+      },
+      "msFromSpawn": {
+        "appStarted": 82.673,
+        "domContentLoaded": 1615.034912109375,
+        "fcp": 1676.3349609375,
+        "firstPaint": 1676.3349609375,
+        "goInit": 48.148,
+        "main": 48.148,
+        "mounted": 1646.534912109375,
+        "mpvReady": 91.267,
+        "painted": 1669.3349609375,
+        "raf": 1667.8349609375,
+        "reportReceived": 2181.197,
+        "responseEnd": 1532.534912109375,
+        "runtimeReady": 1651.764,
+        "scriptStart": 1613.135009765625,
+        "timeOrigin": 1516.3349609375,
+        "windowShow": 1694.941
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5026,
+          "procs": [
+            {
+              "pid": 7148,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 18325504,
+              "private": 8278016,
+              "privateWS": 2646016
+            },
+            {
+              "pid": 8276,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 43397120,
+              "private": 16015360,
+              "privateWS": 8560640
+            },
+            {
+              "pid": 7752,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41807872,
+              "private": 37171200,
+              "privateWS": 10657792
+            },
+            {
+              "pid": 2628,
+              "ppid": 7752,
+              "name": "msedgewebview2.exe",
+              "rss": 117297152,
+              "private": 39743488,
+              "privateWS": 30580736
+            },
+            {
+              "pid": 3692,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 33325056,
+              "private": 11755520,
+              "privateWS": 5808128
+            },
+            {
+              "pid": 2284,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 9588736,
+              "private": 2523136,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 2696,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 64704512,
+              "private": 27041792,
+              "privateWS": 16060416
+            }
+          ],
+          "totalMB": {
+            "private": 135.9,
+            "privateWS": 72.3,
+            "procs": 7,
+            "rss": 313.2
+          }
+        },
+        {
+          "afterPaintMs": 15027,
+          "procs": [
+            {
+              "pid": 2284,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 9588736,
+              "private": 2523136,
+              "privateWS": 1544192
+            },
+            {
+              "pid": 3692,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 33374208,
+              "private": 11771904,
+              "privateWS": 5824512
+            },
+            {
+              "pid": 7752,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41848832,
+              "private": 37203968,
+              "privateWS": 10698752
+            },
+            {
+              "pid": 2628,
+              "ppid": 7752,
+              "name": "msedgewebview2.exe",
+              "rss": 117460992,
+              "private": 39882752,
+              "privateWS": 30699520
+            },
+            {
+              "pid": 8276,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 43397120,
+              "private": 16015360,
+              "privateWS": 8560640
+            },
+            {
+              "pid": 7148,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 18325504,
+              "private": 8278016,
+              "privateWS": 2646016
+            },
+            {
+              "pid": 2696,
+              "ppid": 2628,
+              "name": "msedgewebview2.exe",
+              "rss": 63418368,
+              "private": 25616384,
+              "privateWS": 14766080
+            }
+          ],
+          "totalMB": {
+            "private": 134.7,
+            "privateWS": 71.3,
+            "procs": 7,
+            "rss": 312.2
+          }
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "spawnUs": 1791783244113668,
+      "report": {
+        "go": {
+          "appStarted": 1791783244228163,
+          "goInit": 1791783244177063,
+          "main": 1791783244177063,
+          "mpvReady": 1791783244238584,
+          "reportReceived": 1791783246558866,
+          "runtimeReady": 1791783246024592,
+          "windowShow": 1791783246063175
+        },
+        "goarch": "amd64",
+        "goos": "windows",
+        "mpv": {
+          "clientAPI": 131077,
+          "ffmpeg-version": "N-127375-gf4012774b",
+          "initMs": 10.42,
+          "mpv-version": "mpv v0.41.0-1150-g88eb9f2e7"
+        },
+        "mpvLink": true,
+        "page": {
+          "devicePixelRatio": 1,
+          "domContentLoaded": 1791783245980.5,
+          "fcp": 1791783246052,
+          "fcpSupported": true,
+          "firstPaint": 1791783246052,
+          "focused": true,
+          "jsHeap": 2127855,
+          "mounted": 1791783246011.8,
+          "painted": 1791783246041.1,
+          "raf": 1791783246039.6,
+          "responseEnd": 1791783245897.3,
+          "scriptStart": 1791783245978.5,
+          "timeOrigin": 1791783245880,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+          "visibility": "visible"
+        },
+        "pid": 8608
+      },
+      "msFromSpawn": {
+        "appStarted": 114.495,
+        "domContentLoaded": 1866.83203125,
+        "fcp": 1938.33203125,
+        "firstPaint": 1938.33203125,
+        "goInit": 63.395,
+        "main": 63.395,
+        "mounted": 1898.132080078125,
+        "mpvReady": 124.916,
+        "painted": 1927.43212890625,
+        "raf": 1925.93212890625,
+        "reportReceived": 2445.198,
+        "responseEnd": 1783.632080078125,
+        "runtimeReady": 1910.924,
+        "scriptStart": 1864.83203125,
+        "timeOrigin": 1766.33203125,
+        "windowShow": 1949.507
+      },
+      "samples": [
+        {
+          "afterPaintMs": 5022,
+          "procs": [
+            {
+              "pid": 7776,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 9596928,
+              "private": 2514944,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 5008,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 65003520,
+              "private": 27033600,
+              "privateWS": 16064512
+            },
+            {
+              "pid": 6540,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 33222656,
+              "private": 11624448,
+              "privateWS": 5689344
+            },
+            {
+              "pid": 6620,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 18321408,
+              "private": 8257536,
+              "privateWS": 2646016
+            },
+            {
+              "pid": 2072,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 43966464,
+              "private": 15970304,
+              "privateWS": 8581120
+            },
+            {
+              "pid": 8608,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41832448,
+              "private": 37273600,
+              "privateWS": 10764288
+            },
+            {
+              "pid": 6256,
+              "ppid": 8608,
+              "name": "msedgewebview2.exe",
+              "rss": 117288960,
+              "private": 39800832,
+              "privateWS": 30633984
+            }
+          ],
+          "totalMB": {
+            "private": 135.9,
+            "privateWS": 72.4,
+            "procs": 7,
+            "rss": 314
+          }
+        },
+        {
+          "afterPaintMs": 15014,
+          "procs": [
+            {
+              "pid": 2072,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 43966464,
+              "private": 15970304,
+              "privateWS": 8581120
+            },
+            {
+              "pid": 5008,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 63586304,
+              "private": 25632768,
+              "privateWS": 14639104
+            },
+            {
+              "pid": 6540,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 33263616,
+              "private": 11636736,
+              "privateWS": 5701632
+            },
+            {
+              "pid": 7776,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 9596928,
+              "private": 2514944,
+              "privateWS": 1540096
+            },
+            {
+              "pid": 6620,
+              "ppid": 6256,
+              "name": "msedgewebview2.exe",
+              "rss": 18292736,
+              "private": 8257536,
+              "privateWS": 2646016
+            },
+            {
+              "pid": 8608,
+              "ppid": 8732,
+              "name": "staysh.exe",
+              "rss": 41857024,
+              "private": 37289984,
+              "privateWS": 10788864
+            },
+            {
+              "pid": 6256,
+              "ppid": 8608,
+              "name": "msedgewebview2.exe",
+              "rss": 117436416,
+              "private": 39923712,
+              "privateWS": 30748672
+            }
+          ],
+          "totalMB": {
+            "private": 134.7,
+            "privateWS": 71.2,
+            "procs": 7,
+            "rss": 312.8
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "first": {
+      "appStarted": 272.463,
+      "domContentLoaded": 4139.6669921875,
+      "fcp": 4251.6669921875,
+      "firstPaint": 4251.6669921875,
+      "goInit": 240.818,
+      "main": 240.818,
+      "mounted": 4223.467041015625,
+      "mpvReady": 629.793,
+      "painted": 4239.866943359375,
+      "raf": 4238.06689453125,
+      "reportReceived": 4748.77,
+      "responseEnd": 4028.06689453125,
+      "runtimeReady": 4147.933,
+      "scriptStart": 4137.6669921875,
+      "timeOrigin": 3839.6669921875,
+      "windowShow": 4166.061
+    },
+    "memoryMB": {
+      "+15s": {
+        "private": {
+          "max": 138.4,
+          "min": 134.1,
+          "n": 10,
+          "p50": 134.8
+        },
+        "privateWS": {
+          "max": 72.6,
+          "min": 71.2,
+          "n": 10,
+          "p50": 71.4
+        },
+        "procs": {
+          "max": 7,
+          "min": 7,
+          "n": 10,
+          "p50": 7
+        },
+        "rss": {
+          "max": 323.3,
+          "min": 312,
+          "n": 10,
+          "p50": 312.8
+        }
+      },
+      "+5s": {
+        "private": {
+          "max": 139.3,
+          "min": 135.2,
+          "n": 10,
+          "p50": 135.9
+        },
+        "privateWS": {
+          "max": 74,
+          "min": 72,
+          "n": 10,
+          "p50": 72.4
+        },
+        "procs": {
+          "max": 7,
+          "min": 7,
+          "n": 10,
+          "p50": 7
+        },
+        "rss": {
+          "max": 328.4,
+          "min": 313.1,
+          "n": 10,
+          "p50": 314.3
+        }
+      }
+    },
+    "warm": {
+      "appStarted": {
+        "max": 114.5,
+        "min": 59.7,
+        "n": 9,
+        "p50": 67.6
+      },
+      "domContentLoaded": {
+        "max": 1866.8,
+        "min": 813.1,
+        "n": 9,
+        "p50": 882.4
+      },
+      "fcp": {
+        "max": 1938.3,
+        "min": 854.6,
+        "n": 9,
+        "p50": 936.6
+      },
+      "firstPaint": {
+        "max": 1938.3,
+        "min": 854.6,
+        "n": 9,
+        "p50": 936.6
+      },
+      "goInit": {
+        "max": 63.4,
+        "min": 34.6,
+        "n": 9,
+        "p50": 37
+      },
+      "main": {
+        "max": 63.4,
+        "min": 34.6,
+        "n": 9,
+        "p50": 37
+      },
+      "mounted": {
+        "max": 1898.1,
+        "min": 842,
+        "n": 9,
+        "p50": 914.1
+      },
+      "mpvReady": {
+        "max": 124.9,
+        "min": 67.4,
+        "n": 9,
+        "p50": 78.5
+      },
+      "painted": {
+        "max": 1927.4,
+        "min": 847,
+        "n": 9,
+        "p50": 919.1
+      },
+      "raf": {
+        "max": 1925.9,
+        "min": 845.5,
+        "n": 9,
+        "p50": 917.6
+      },
+      "reportReceived": {
+        "max": 2445.2,
+        "min": 1354.1,
+        "n": 9,
+        "p50": 1430.4
+      },
+      "responseEnd": {
+        "max": 1783.6,
+        "min": 757,
+        "n": 9,
+        "p50": 822.1
+      },
+      "runtimeReady": {
+        "max": 1910.9,
+        "min": 804.9,
+        "n": 9,
+        "p50": 874.6
+      },
+      "scriptStart": {
+        "max": 1864.8,
+        "min": 811.1,
+        "n": 9,
+        "p50": 880.5
+      },
+      "timeOrigin": {
+        "max": 1766.3,
+        "min": 742.6,
+        "n": 9,
+        "p50": 808.6
+      },
+      "windowShow": {
+        "max": 1949.5,
+        "min": 846.9,
+        "n": 9,
+        "p50": 911.3
+      }
+    }
+  }
+}

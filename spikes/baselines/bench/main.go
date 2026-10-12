@@ -90,7 +90,7 @@ func main() {
 		offsets = append(offsets, d)
 	}
 	abs, _ := filepath.Abs(*app)
-	o := Output{Label: *label, App: abs, Launch: *launch, Page: *page, Env: map[string]string{}, Host: hostInfo()}
+	o := Output{Label: *label, App: *app, Launch: *launch, Page: *page, Env: map[string]string{}, Host: hostInfo()}
 	for _, kv := range env {
 		k, v, _ := strings.Cut(kv, "=")
 		o.Env[k] = v
