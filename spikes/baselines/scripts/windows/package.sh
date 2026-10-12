@@ -7,7 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 root=$PWD
 out=bin/windows
-rm -rf "$out" && mkdir -p "$out/bin" lib/dl
+rm -rf "$out" && mkdir -p "$out/bin" lib/dl results
 
 # name|repo|tag|asset. All three ship libmpv as one self-contained libmpv-2.dll.
 LIBS=(

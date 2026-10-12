@@ -73,7 +73,7 @@ func main() {
 	launch := flag.String("launch", "exec", "exec (spawn the binary) or open (macOS LaunchServices)")
 	samples := flag.String("samples", "5s,15s", "memory sample times after first paint")
 	gap := flag.Duration("gap", 3*time.Second, "pause between runs")
-	timeout := flag.Duration("timeout", 90*time.Second, "max wait for the first-paint report")
+	timeout := flag.Duration("timeout", 45*time.Second, "max wait for the first-paint report")
 	var env envList
 	flag.Var(&env, "env", "extra K=V for the app (repeatable)")
 	flag.Parse()

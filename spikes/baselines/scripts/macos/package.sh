@@ -8,7 +8,7 @@ cd "$(dirname "$0")/../.."
 root=$PWD
 MK=v0.7.3 # media-kit/libmpv-darwin-build release
 out=bin/macos
-rm -rf "$out" && mkdir -p "$out/bin" lib
+rm -rf "$out" && mkdir -p "$out/bin" lib results
 
 # media-kit's LGPL libmpv builds: mpv 0.36, trimmed FFmpeg 6.0.
 for v in macos-arm64-video-default macos-arm64-video-full macos-universal-video-default; do
@@ -60,8 +60,16 @@ bundle mpv-mediakit-full-arm64 "$out/bin/mpv-arm64" lib/mediakit-macos-arm64-vid
 bundle mpv-mediakit-universal "$out/bin/mpv-universal" lib/mediakit-macos-universal-video-default
 BREW=1 bundle mpv-brew-arm64 "$out/bin/mpv-arm64"
 
+# Control: plain Cocoa + WKWebView, no Wails/Go/React (bench only, not packaged).
+c="$out/control/Staysh.app/Contents"
+mkdir -p "$c/MacOS"
+clang -fobjc-arc -O2 -mmacosx-version-min=12.0 -framework Cocoa -framework WebKit scripts/macos/control/main.m -o "$c/MacOS/staysh-control"
+sed -e 's#<string>staysh</string>#<string>staysh-control</string>#' -e 's#<string>My Product</string>#<string>Staysh control</string>#' \
+    -e 's#k22i.net.staysh#k22i.net.staysh.control#' ../../build/darwin/Info.plist > "$c/Info.plist"
+codesign --force --deep --sign - "$out/control/Staysh.app"
+
 for d in "$out"/*/; do
-  [ "$(basename "$d")" = bin ] && continue
+  case "$(basename "$d")" in bin | control) continue ;; esac
   v=$(basename "$d")
   stage=$(mktemp -d)
   cp -R "$d/Staysh.app" "$stage/"
@@ -80,7 +88,7 @@ def tree_bytes(p):
 res = {}
 for v in sorted(os.listdir(out)):
     d = os.path.join(out, v)
-    if not os.path.isdir(d) or v == "bin":
+    if not os.path.isdir(d) or v in ("bin", "control"):
         continue
     app = os.path.join(d, "Staysh.app")
     fw = os.path.join(app, "Contents", "Frameworks")

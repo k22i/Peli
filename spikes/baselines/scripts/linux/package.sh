@@ -7,7 +7,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 out=bin/linux
-rm -rf "$out" && mkdir -p "$out/bin"
+rm -rf "$out" && mkdir -p "$out/bin" results
 arch=$(go env GOARCH)
 
 [ -f frontend/dist/index.html ] || (cd frontend && npm install --no-audit --no-fund && npm run build)

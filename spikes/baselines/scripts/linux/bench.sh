@@ -8,6 +8,7 @@ if [ -z "${DISPLAY:-}" ]; then
 fi
 runs=${RUNS:-10}
 b=bin/linux
+mkdir -p results
 go build -o bin/bench ./bench
 run() { # app label [extra flags]
   local app=$1 label=$2
