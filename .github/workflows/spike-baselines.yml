@@ -1,0 +1,98 @@
+# Spike #7 (throwaway): builds the baseline app with libmpv for Windows and
+# Linux, records installer sizes, and measures launch -> first paint and idle
+# memory on hosted runners (no GPU). macOS runs locally. Remove with the spike.
+name: spike-baselines
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: spikes/baselines
+
+env:
+  WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.28
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache-dependency-path: spikes/baselines/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev \
+            libmpv-dev xvfb xauth dbus-x11 libfuse2t64 flatpak file desktop-file-utils
+      - run: go install "$WAILS3"
+      - run: cd frontend && npm install --no-audit --no-fund && npm run build
+      - run: ./scripts/linux/package.sh
+      - run: ./scripts/linux/bench.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-results
+          path: spikes/baselines/results/
+
+  windows-package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+          cache-dependency-path: spikes/baselines/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gcc-mingw-w64-x86-64 nsis p7zip-full zip
+      - run: go install "$WAILS3"
+      - run: cd frontend && npm install --no-audit --no-fund && npm run build
+      - run: ./scripts/windows/package.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - run: GOOS=windows go build -o bin/windows/bench.exe ./bench
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            spikes/baselines/bin/windows/*/staysh-lzma-installer.exe
+            spikes/baselines/bin/windows/bench.exe
+            spikes/baselines/results/sizes-windows.json
+
+  windows:
+    needs: windows-package
+    runs-on: windows-2025
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [shell, mpv-shinchiro, mpv-zhongfly-lgpl, mpv-mediakit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: windows-build
+          path: spikes/baselines
+      - name: Install silently (the LZMA installer)
+        shell: pwsh
+        run: |
+          $t = Measure-Command { Start-Process "bin\windows\${{ matrix.variant }}\staysh-lzma-installer.exe" -ArgumentList '/S' -Wait }
+          "install took $([math]::Round($t.TotalSeconds, 1)) s"
+          Get-ChildItem "C:\Program Files\k22i\Staysh" | Format-Table Name, Length
+          (Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}' -ErrorAction SilentlyContinue).pv
+      - name: Bench
+        shell: pwsh
+        run: |
+          $exe = "C:\Program Files\k22i\Staysh\staysh.exe"
+          bin\windows\bench.exe -app $exe -runs 10 -label "windows-${{ matrix.variant }}" -out "results\windows-${{ matrix.variant }}.json"
+          bin\windows\bench.exe -app $exe -runs 3 -page home -samples 5s,15s,30s -label "windows-${{ matrix.variant }}-home" -out "results\windows-${{ matrix.variant }}-home.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-results-${{ matrix.variant }}
+          path: spikes/baselines/results/windows-*.json

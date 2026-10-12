@@ -1,0 +1,24 @@
+# The app's build/linux/nfpm/nfpm.yaml, plus libmpv2 for the mpv build.
+# ${STAYSH_*} are filled in by package.sh (nfpm doesn't expand them in contents).
+name: "staysh"
+arch: ${GOARCH}
+platform: "linux"
+version: "0.1.0"
+section: "default"
+priority: "extra"
+maintainer: "k22i <noreply@example.com>"
+description: "Staysh baseline spike"
+vendor: "k22i"
+license: "MIT"
+release: "1"
+contents:
+  - src: "${STAYSH_BIN}"
+    dst: "/usr/local/bin/staysh"
+  - src: "../../build/appicon.png"
+    dst: "/usr/share/icons/hicolor/128x128/apps/staysh.png"
+  - src: "scripts/linux/staysh.desktop"
+    dst: "/usr/share/applications/staysh.desktop"
+depends:
+  - libgtk-4-1
+  - libwebkitgtk-6.0-4
+  - ${STAYSH_MPV_DEP}

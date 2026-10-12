@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Staysh
+Comment=Staysh baseline spike
+Exec=staysh %u
+Terminal=false
+Type=Application
+Icon=staysh
+Categories=AudioVideo;
+StartupWMClass=staysh
