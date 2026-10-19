@@ -13,5 +13,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0007](0007-secrets-in-os-keychain.md) | Secrets live in the OS keychain through go-keyring, with no file fallback | 2026-10-19 |
 | [0008](0008-nuvio-client-in-go.md) | The Nuvio client is Go over plain HTTP, not supabase-js | 2026-10-19 |
 | [0009](0009-session-lifecycle.md) | The Nuvio session: restored offline, refreshed at launch and halfway, and signing out removes the account's profiles | 2026-10-19 |
+| [0010](0010-guest-data-stays-apart.md) | The Guest profile stays apart: signing in never merges guest data into the account | 2026-10-20 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

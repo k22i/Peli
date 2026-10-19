@@ -62,3 +62,13 @@ These are from Chrome at 1000×618 (2×), with the Go services stubbed. Before t
 | …and so does Settings, which still offers Sign out to remove the account's data | ![](settings-session-ended-light.jpg) |
 
 Chrome at 1000×618 (2×), with the Go services stubbed.
+
+### Guest mode (#23)
+
+| | |
+|---|---|
+| First run: the welcome screen says what a guest keeps and that the Guest stays as it is | ![](welcome-guest-light.jpg) |
+| A guest's profile menu offers Sign in to Nuvio instead of Sign out | ![](menu-guest-dark.jpg) |
+| Signing in from the Guest: its profile stays apart from the account's ([ADR-0010](../adr/0010-guest-data-stays-apart.md)) | ![](sign-in-guest-dark.jpg) |
+
+Chrome at 1000×618 (2×), with the Go services stubbed.
