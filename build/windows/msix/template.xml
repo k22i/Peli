@@ -10,15 +10,15 @@
     <Installer
         Path="cove"
         Arguments=""
-        InstallLocation="C:\Program Files\k22i\My Product">
+        InstallLocation="C:\Program Files\k22i\Cove">
     </Installer>
     <PackageInformation
-        PackageName="My Product"
-        PackageDisplayName="My Product"
+        PackageName="Cove"
+        PackageDisplayName="Cove"
         PublisherName="CN=k22i"
         PublisherDisplayName="k22i"
         Version="0.1.0.0"
-        PackageDescription="A cove application">
+        PackageDescription="A desktop client for Stremio-compatible addons, with Nuvio sync">
         <Capabilities>
             <Capability Name="runFullTrust" />
             
@@ -26,8 +26,8 @@
         <Applications>
             <Application
                 Id="k22i.net.cove"
-                Description="A cove application"
-                DisplayName="My Product"
+                Description="A desktop client for Stremio-compatible addons, with Nuvio sync"
+                DisplayName="Cove"
                 ExecutableName="cove"
                 EntryPoint="Windows.FullTrustApplication">
                 
@@ -41,9 +41,9 @@
         </Dependencies>
         <Properties>
             <Framework>false</Framework>
-            <DisplayName>My Product</DisplayName>
+            <DisplayName>Cove</DisplayName>
             <PublisherDisplayName>k22i</PublisherDisplayName>
-            <Description>A cove application</Description>
+            <Description>A desktop client for Stremio-compatible addons, with Nuvio sync</Description>
             <Logo>Assets\AppIcon.png</Logo>
         </Properties>
     </PackageInformation>

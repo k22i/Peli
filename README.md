@@ -1,60 +1,55 @@
-# Welcome to Your New Wails3 Project!
-
-Congratulations on generating your Wails3 application! This README will guide you through the next steps to get your project up and running.
-
-## Getting Started
-
-1. Navigate to your project directory in the terminal.
-
-2. To run your application in development mode, use the following command:
-
-   ```
-   wails3 dev
-   ```
-
-   This will start your application and enable hot-reloading for both frontend and backend changes.
-
-3. To build your application for production, use:
-
-   ```
-   wails3 build
-   ```
-
-   This will create a production-ready executable in the `build` directory.
-
-## Exploring Wails3 Features
-
-Now that you have your project set up, it's time to explore the features that Wails3 offers:
-
-1. **Check out the examples**: The best way to learn is by example. Visit the `examples` directory in the `v3/examples` directory to see various sample applications.
-
-2. **Run an example**: To run any of the examples, navigate to the example's directory and use:
-
-   ```
-   go run .
-   ```
-
-   Note: Some examples may be under development during the alpha phase.
-
-3. **Explore the documentation**: Visit the [Wails3 documentation](https://v3.wails.io/) for in-depth guides and API references.
-
-4. **Join the community**: Have questions or want to share your progress? Join the [Wails Discord](https://discord.gg/JDdSxwjhGf) or visit the [Wails discussions on GitHub](https://github.com/wailsapp/wails/discussions).
-
-## Project Structure
-
-Take a moment to familiarize yourself with your project structure:
-
-- `frontend/`: Contains your frontend code (HTML, CSS, JavaScript/TypeScript)
-- `main.go`: The entry point of your Go backend
-- `app.go`: Define your application structure and methods here
-- `wails.json`: Configuration file for your Wails project
-
-## Next Steps
-
-1. Modify the frontend in the `frontend/` directory to create your desired UI.
-2. Add backend functionality in `main.go`.
-3. Use `wails3 dev` to see your changes in real-time.
-4. When ready, build your application with `wails3 build`.
-
-Happy coding with Wails3! If you encounter any issues or have questions, don't hesitate to consult the documentation or reach out to the Wails community.
 # Cove
+
+A desktop app for Windows, macOS and Linux that plays streams from Stremio-compatible addons, with library and watch progress synced through Nuvio. Built with [Wails v3](https://v3.wails.io/) (Go) and React, and plays video in-window with libmpv.
+
+Cove is early in development and not usable yet. The plan and decisions so far are in [`docs/m0-gate-review.md`](docs/m0-gate-review.md) and [`docs/adr/`](docs/adr/).
+
+## Disclaimer
+
+Cove is a player. It bundles no addons and hosts, indexes or links to no content. Everything it plays comes from addons that you choose to install, and you are responsible for making sure you have the right to access that content where you live.
+
+Cove is not affiliated with Stremio or Nuvio.
+
+## Building
+
+You need:
+
+- Go 1.25 or later
+- Node.js 22 or later, with npm
+- The Wails CLI, pinned to the version in `go.mod`:
+
+  ```sh
+  go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.28
+  ```
+
+- Platform dependencies:
+  - **macOS:** Xcode Command Line Tools (`xcode-select --install`)
+  - **Windows:** WebView2 (built into Windows 11)
+  - **Linux:** GTK 4 and WebKitGTK 6, for example `libgtk-4-dev libwebkitgtk-6.0-dev` on Debian or Ubuntu
+
+  `wails3 doctor` checks what's missing.
+
+Then, from the repo root:
+
+```sh
+wails3 dev     # run with hot reload
+wails3 build   # production build into bin/
+```
+
+`wails3 package` builds the platform installer.
+
+Keep the Wails CLI, the Go module (`go.mod`) and `@wailsio/runtime` (`frontend/package.json`) on the same version, and upgrade them together.
+
+## Layout
+
+| Path | What |
+|---|---|
+| `main.go` | App entry point |
+| `frontend/` | React + TypeScript UI, built with Vite |
+| `build/` | Per-platform build and packaging config; app metadata is in `build/config.yml` |
+| `docs/` | Gate review, ADRs and spike findings |
+| `spikes/` | Throwaway M0 spike code, not part of the app |
+
+## Licence
+
+MIT. See [ADR-0003](docs/adr/0003-mit-app-with-our-own-lgpl-libmpv.md) for how that holds with libmpv.

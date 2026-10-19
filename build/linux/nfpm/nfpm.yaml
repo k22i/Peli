@@ -10,9 +10,9 @@ version: "0.1.0"
 section: "default"
 priority: "extra"
 maintainer: ${GIT_COMMITTER_NAME} <${GIT_COMMITTER_EMAIL}>
-description: "A cove application"
+description: "A desktop client for Stremio-compatible addons, with Nuvio sync"
 vendor: "k22i"
-homepage: "https://wails.io"
+homepage: "https://github.com/k22i/Cove"
 license: "MIT"
 release: "1"
 

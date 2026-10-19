@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=My Product
-Comment=A cove application
+Name=Cove
+Comment=A desktop client for Stremio-compatible addons, with Nuvio sync
 # The Exec line includes %u to pass the URL to the application
 Exec=/usr/local/bin/cove %u
 Terminal=false

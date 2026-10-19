@@ -1,0 +1,21 @@
+/* Matches the window's BackgroundColour in main.go so there is no flash on load. */
+:root {
+  color-scheme: dark;
+  background-color: rgb(6, 7, 15);
+  color: rgba(255, 255, 255, 0.87);
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  user-select: none;
+  /* The macOS title bar is hidden, so the window drags by its background.
+     Interactive controls opt out with --wails-draggable: no-drag. */
+  --wails-draggable: drag;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}

@@ -1,4 +1,4 @@
-module changeme
+module github.com/k22i/Cove
 
 go 1.25.0
 
