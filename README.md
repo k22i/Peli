@@ -58,6 +58,10 @@ pnpm test        # Vitest + React Testing Library
 
 UI components come from the coss ui registry and live in `frontend/src/components/ui/`. Add one with `pnpm dlx shadcn@4.21.4 add @coss/<name>` (for example `@coss/dialog`), and add only what you use. The theme tokens are the coss CSS variables in `frontend/src/index.css`.
 
+### Local data
+
+Profiles, library, progress, watched items, addons, sync state and the persisted query cache live in one [bbolt](https://github.com/etcd-io/bbolt) file, `Cove/cove.db` in the OS app-data directory: `~/Library/Application Support` on macOS, `%LOCALAPPDATA%` on Windows and `$XDG_DATA_HOME` (usually `~/.local/share`) on Linux. Set `COVE_DATA_DIR` to use another directory, for example a throwaway one while developing. The store is `internal/store` ([ADR-0006](docs/adr/0006-local-store-bbolt.md)); run its tests with `go test ./internal/...`.
+
 pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge` in `frontend/pnpm-workspace.yaml`), so pin dependencies to versions at least a week old.
 
 ## Layout
