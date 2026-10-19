@@ -55,7 +55,7 @@ export function ProfileMenu() {
           </MenuLinkItem>
         </MenuGroup>
         <MenuSeparator />
-        {/* Guests (#23) have no account to sign out of; Nuvio sign-in is #20. */}
+        {/* Guests (#23) have no account to sign out of; signing out is #22. */}
         <MenuItem disabled={!profile.signedIn}>
           <LogOut />
           Sign out

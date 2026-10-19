@@ -12,8 +12,8 @@ import { sections } from "@/sections";
 // so the shell never shifts. All backgrounds live here rather than on <body>,
 // so a route with `staticData.chrome: "none"` gets a bare, transparent page.
 export function AppShell({ children }: { children: ReactNode }) {
-  const bare = useMatches({
-    select: (matches) => matches.some((match) => match.staticData.chrome === "none"),
+  const chrome = useMatches({
+    select: (matches) => matches.findLast((match) => match.staticData.chrome)?.staticData.chrome,
   });
   const content = useRef<HTMLDivElement>(null);
   const focusPending = useRef(false);
@@ -51,9 +51,18 @@ export function AppShell({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [navigate, focusContentAfterNavigate]);
 
-  if (bare) return children;
+  if (chrome === "none") return children;
 
   const platform = currentPlatform();
+
+  if (chrome === "focus") {
+    return (
+      <div className="grid h-svh grid-rows-[auto_1fr] bg-background text-foreground">
+        <TitleBar platform={platform} />
+        <main className="row-start-2 min-h-0 overflow-y-auto">{children}</main>
+      </div>
+    );
+  }
 
   return (
     <div className="grid h-svh grid-cols-[auto_1fr] grid-rows-[auto_1fr] bg-sidebar text-foreground">

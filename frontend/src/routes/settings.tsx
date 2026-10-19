@@ -96,15 +96,21 @@ function AccountSection() {
           </span>
         </div>
       </div>
-      {/* Nuvio sign-in is #20; switching and managing profiles, #24. */}
+      {/* Signing out is #22; switching and managing profiles, #24. */}
       <SettingRow
         id="nuvio"
         label="Nuvio account"
-        description="Sign in to sync your library, progress and addons across devices."
+        description={
+          profile.signedIn
+            ? "Signed in. Your library, progress and addons sync across devices."
+            : "Sign in to sync your library, progress and addons across devices."
+        }
       >
-        <Button variant="outline" size="sm" disabled>
-          Sign in
-        </Button>
+        {!profile.signedIn && (
+          <Link to="/sign-in" className={buttonVariants({ variant: "outline", size: "sm" })}>
+            Sign in
+          </Link>
+        )}
       </SettingRow>
       <SettingRow id="profiles" label="Profiles" description="Add, rename and switch profiles.">
         <Button variant="outline" size="sm" disabled>

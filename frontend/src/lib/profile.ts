@@ -12,9 +12,8 @@ export type Profile = {
 
 const guest: Profile = { name: "Guest", signedIn: false };
 
-// The store's oldest profile, or a local Guest profile it creates on first
-// launch. A stand-in until guest mode (#23), the picker (#24) and Nuvio
-// sign-in (#20) decide which profile is current.
+// The profile in use: the first Nuvio profile after signing in (#20), or the
+// local Guest profile. The picker (#24) will switch it.
 export const currentProfileQuery = queryOptions({
   queryKey: ["profiles", "current"],
   queryFn: () => Store.CurrentProfile(),
@@ -24,7 +23,7 @@ export const currentProfileQuery = queryOptions({
 export function useCurrentProfile(): Profile {
   const { data } = useQuery(currentProfileQuery);
   if (!data) return guest;
-  // A profile linked to a Nuvio profile only exists after signing in (#20).
+  // A profile linked to a Nuvio profile only exists after signing in.
   return { id: data.id, name: data.name, signedIn: data.nuvioIndex != null };
 }
 

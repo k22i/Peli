@@ -33,7 +33,8 @@ declare module "@tanstack/react-router" {
   interface StaticDataRouteOption {
     // "none" renders the route without the shell's sidebar, title bar and
     // backgrounds, so the player can show video under a transparent window
-    // (ADR-0002).
-    chrome?: "none";
+    // (ADR-0002). "focus" keeps only the title bar, for screens that come
+    // before the app, such as welcome and sign-in.
+    chrome?: "none" | "focus";
   }
 }
