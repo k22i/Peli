@@ -1,0 +1,120 @@
+import { screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vite-plus/test";
+
+import { themeStorageKey } from "@/lib/theme";
+import { renderApp } from "@/test/render-app";
+
+vi.mock("@bindings/appinfo", () => ({
+  Service: { Version: vi.fn<() => Promise<string>>(() => Promise.resolve("1.2.3")) },
+}));
+
+async function renderGallery() {
+  const app = await renderApp("/gallery");
+  await screen.findByRole("heading", { level: 1, name: "Design system" });
+  return app;
+}
+
+// Everything a keyboard user can land on: Tab stops, plus the cards a row's
+// arrow keys reach.
+function keyboardReachable(): HTMLElement[] {
+  return [
+    ...document.querySelectorAll<HTMLElement>(
+      "a[href], button, input, select, textarea, [tabindex], [data-row-item]",
+    ),
+  ].filter((element) => element.tabIndex >= 0 || element.hasAttribute("data-row-item"));
+}
+
+// Tailwind classes can't be computed in jsdom, so check each element's own
+// recipe: a focus-visible style of its own, one drawn by a child for it
+// (cards ring their artwork), or no outline-none, so index.css's global
+// :focus-visible ring applies.
+function hasFocusRing(element: HTMLElement): boolean {
+  const own = element.getAttribute("class") ?? "";
+  if (/(^|\s)focus-visible:/.test(own) || /(^|:)focus:/.test(own)) return true;
+  if (element.querySelector("[class*='group-focus-visible']")) return true;
+  return !/(^|\s)outline-none(\s|$)/.test(own);
+}
+
+describe("gallery", () => {
+  it("is reachable from Settings, outside the main nav", async () => {
+    const user = userEvent.setup();
+    const { router } = await renderApp("/settings");
+
+    await user.click(await screen.findByRole("link", { name: "Design system" }));
+
+    expect(await screen.findByRole("heading", { level: 1, name: "Design system" })).toBeVisible();
+    expect(router.state.location.pathname).toBe("/gallery");
+    const nav = screen.getByRole("navigation", { name: "Main" });
+    expect(within(nav).queryByRole("link", { name: /design system/i })).toBeNull();
+  });
+
+  it("shows every core component", async () => {
+    await renderGallery();
+
+    for (const name of [
+      "Hero",
+      "Rows",
+      "Cards",
+      "Buttons",
+      "Chips and badges",
+      "Overlays",
+      "Skeletons",
+    ]) {
+      expect(screen.getByRole("heading", { level: 2, name })).toBeInTheDocument();
+    }
+    expect(screen.getByRole("region", { name: "The Lighthouse Keeper" })).toBeInTheDocument();
+    expect(screen.getAllByText("84% watched").length).toBeGreaterThan(0);
+  });
+
+  it("gives every keyboard-reachable element a visible focus ring", async () => {
+    await renderGallery();
+
+    const elements = keyboardReachable();
+    expect(elements.length).toBeGreaterThan(40);
+    const missing = elements.filter((element) => !hasFocusRing(element));
+    expect(missing.map((element) => element.outerHTML.slice(0, 120))).toEqual([]);
+  });
+
+  it("makes a row one Tab stop, walked with the arrow keys", async () => {
+    const user = userEvent.setup();
+    await renderGallery();
+
+    const row = screen.getByRole("region", { name: "Popular movies" });
+    const cards = within(row).getAllByRole("button");
+    expect(cards.filter((card) => card.tabIndex === 0)).toEqual([cards[0]]);
+
+    cards[0]!.focus();
+    await user.keyboard("{ArrowRight}");
+    expect(cards[1]).toHaveFocus();
+    expect(cards[1]!.tabIndex).toBe(0);
+    expect(cards[0]!.tabIndex).toBe(-1);
+
+    await user.keyboard("{End}");
+    expect(cards.at(-1)).toHaveFocus();
+    await user.keyboard("{ArrowRight}");
+    expect(cards.at(-1)).toHaveFocus();
+    await user.keyboard("{Home}");
+    expect(cards[0]).toHaveFocus();
+  });
+
+  it("switches and remembers the appearance", async () => {
+    const user = userEvent.setup();
+    await renderGallery();
+
+    const appearance = screen.getByRole("group", { name: "Appearance" });
+    await user.click(within(appearance).getByRole("button", { name: "Dark" }));
+    expect(localStorage.getItem(themeStorageKey)).toBe("dark");
+    expect(within(appearance).getByRole("button", { name: "Dark" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+
+    // Pressing the current option again keeps it rather than clearing it.
+    await user.click(within(appearance).getByRole("button", { name: "Dark" }));
+    expect(localStorage.getItem(themeStorageKey)).toBe("dark");
+
+    await user.click(within(appearance).getByRole("button", { name: "System" }));
+    expect(localStorage.getItem(themeStorageKey)).toBeNull();
+  });
+});
