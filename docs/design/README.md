@@ -72,3 +72,16 @@ Chrome at 1000×618 (2×), with the Go services stubbed.
 | Signing in from the Guest: its profile stays apart from the account's ([ADR-0010](../adr/0010-guest-data-stays-apart.md)) | ![](sign-in-guest-dark.jpg) |
 
 Chrome at 1000×618 (2×), with the Go services stubbed.
+
+### Profile picker (#24)
+
+| | |
+|---|---|
+| At launch with more than one profile: the last one used is focused, and Nuvio's avatars show on their colours | ![](profiles-dark.jpg) |
+| Offline, or before an image loads: initials on the profile's colour, the Guest on the lagoon brand ([ADR-0011](../adr/0011-profile-avatars-and-picker.md)) | ![](profiles-offline-light.jpg) |
+| The profile menu switches in place | ![](menu-switch-profile-dark.jpg) |
+| Settings › Profiles opens the picker | ![](settings-profiles-light.jpg) |
+| The picker removes the Guest after asking | ![](profiles-remove-guest-dark.jpg) |
+| A guest on their own: the picker offers to sign in | ![](profiles-guest-only-light.jpg) |
+
+Chrome at 1000×618 (2×), with the Go services stubbed. Avatar images are Nuvio's, from its public catalog.
