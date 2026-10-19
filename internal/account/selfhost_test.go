@@ -71,14 +71,19 @@ func TestLongSession(t *testing.T) {
 			t.Fatalf("after %v and %d refreshes: %v", time.Since(start).Round(time.Second), rotations, err)
 		}
 	}
-	keychainRefresh := keychain.items[KeyRefreshToken]
-	t.Logf("%v: %d refreshes, %d network drops; keychain has the newest token: %v",
-		length, rotations, drops, keychainRefresh == last)
+	// The refresher may have rotated again since the last call, so compare
+	// the keychain with the session, not with what the calls saw.
+	service.session.mu.Lock()
+	current := service.session.current.RefreshToken
+	service.session.mu.Unlock()
+	keychainRefresh, _ := keychain.Get(KeyRefreshToken)
+	t.Logf("%v: calls saw %d refreshes, %d network drops; keychain has the session's token: %v",
+		length, rotations, drops, keychainRefresh == current)
 	if want := int(length / time.Minute); rotations < want-1 {
 		t.Errorf("%d refreshes in %v, want about one a minute", rotations, length)
 	}
-	if keychainRefresh != last || ended.Load() != 0 {
-		t.Fatalf("keychain refresh token is the newest: %v; ended %d times", keychainRefresh == last, ended.Load())
+	if keychainRefresh != current || ended.Load() != 0 {
+		t.Fatalf("keychain has the session's refresh token: %v; ended %d times", keychainRefresh == current, ended.Load())
 	}
 
 	// Another device signs out everywhere.
@@ -98,9 +103,12 @@ func TestLongSession(t *testing.T) {
 	if !errors.Is(err, nuvio.ErrSignedOut) || ended.Load() != 1 {
 		t.Fatalf("refresh = %v, ended %d times; want ErrSignedOut, once", err, ended.Load())
 	}
+	// A self-host signup has no Nuvio profiles, and with none linked an
+	// ended session is just signed out.
+	linked, _ := store.Opened(db).HasNuvioProfiles()
 	st, err := service.Status()
-	if err != nil || !st.SessionEnded || len(keychain.items) != 0 {
-		t.Fatalf("status = %+v, %v; keychain has %d items", st, err, len(keychain.items))
+	if _, kerr := keychain.Get(KeyRefreshToken); err != nil || st.SignedIn || st.SessionEnded != linked || kerr == nil {
+		t.Fatalf("status = %+v, %v (profiles linked: %v); refresh token still in the keychain: %v", st, err, linked, kerr == nil)
 	}
 }
 
