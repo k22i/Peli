@@ -17,6 +17,7 @@
 //	  cursors/         <surface> → int64
 //	  outbox/          <surface> 0x00 <key> → Push
 //	settings           device → DeviceSettings
+//	                   current → uint64 (profile id)
 //	cache              <key> → bytes
 package store
 
@@ -50,6 +51,7 @@ var (
 	keyAddons   = []byte("addons")
 	keySettings = []byte("settings")
 	keyDevice   = []byte("device")
+	keyCurrent  = []byte("current")
 )
 
 var (

@@ -88,3 +88,67 @@ func TestCurrentProfile(t *testing.T) {
 		t.Fatalf("profiles = %+v", profiles)
 	}
 }
+
+func TestSetCurrentProfile(t *testing.T) {
+	s, path := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+	other := must[Profile](t)(s.CreateProfile(Profile{Name: "Other"}))
+
+	check(t, s.SetCurrentProfile(other.ID))
+	check(t, s.Close())
+	s, err := Open(path)
+	check(t, err)
+	defer s.Close()
+	equal(t, must[Profile](t)(s.CurrentProfile()), other)
+
+	if err := s.SetCurrentProfile(99); !errors.Is(err, ErrProfileNotFound) {
+		t.Fatalf("SetCurrentProfile(99) = %v, want ErrProfileNotFound", err)
+	}
+	// Deleting the current profile falls back to the oldest.
+	check(t, s.DeleteProfile(other.ID))
+	equal(t, must[Profile](t)(s.CurrentProfile()), guest)
+}
+
+func TestLinkNuvioProfiles(t *testing.T) {
+	s, _ := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+
+	// Signing in: Nuvio's profiles join the guest's, and the lowest index
+	// becomes current whatever order they come in.
+	linked := must[[]Profile](t)(s.LinkNuvioProfiles([]Profile{
+		{Name: "Kids", NuvioIndex: ptr(3)},
+		{Name: "Kevin", NuvioIndex: ptr(1)},
+	}))
+	if len(linked) != 2 || linked[0].Name != "Kevin" || linked[1].Name != "Kids" || linked[0].ID == 0 {
+		t.Fatalf("linked = %+v", linked)
+	}
+	equal(t, must[Profile](t)(s.CurrentProfile()), linked[0])
+	if profiles := must[[]Profile](t)(s.Profiles()); len(profiles) != 3 || profiles[0] != guest {
+		t.Fatalf("profiles = %+v", profiles)
+	}
+
+	// Signing in again updates the same local profiles, keeping their data.
+	check(t, s.SaveLibraryItem(linked[1].ID, dune))
+	check(t, s.SetCurrentProfile(guest.ID))
+	again := must[[]Profile](t)(s.LinkNuvioProfiles([]Profile{
+		{Name: "Kevin M", NuvioIndex: ptr(1)},
+		{Name: "Kids", NuvioIndex: ptr(3)},
+	}))
+	if again[0].ID != linked[0].ID || again[0].Name != "Kevin M" || again[1].ID != linked[1].ID {
+		t.Fatalf("again = %+v, first time = %+v", again, linked)
+	}
+	if library := must[[]LibraryItem](t)(s.Library(linked[1].ID)); len(library) != 1 {
+		t.Fatalf("library = %+v", library)
+	}
+	equal(t, must[Profile](t)(s.CurrentProfile()), again[0])
+	if profiles := must[[]Profile](t)(s.Profiles()); len(profiles) != 3 {
+		t.Fatalf("profiles = %+v", profiles)
+	}
+
+	if _, err := s.LinkNuvioProfiles([]Profile{{Name: "Local"}}); !errors.Is(err, ErrInvalidProfile) {
+		t.Fatalf("linking a profile with no index = %v, want ErrInvalidProfile", err)
+	}
+	if _, err := s.LinkNuvioProfiles([]Profile{{Name: "Seven", NuvioIndex: ptr(7)}}); !errors.Is(err, ErrInvalidProfile) {
+		t.Fatalf("linking index 7 = %v, want ErrInvalidProfile", err)
+	}
+}

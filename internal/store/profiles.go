@@ -1,9 +1,11 @@
 package store
 
 import (
+	"cmp"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"slices"
 	"strings"
 
 	bolt "go.etcd.io/bbolt"
@@ -58,12 +60,17 @@ func (s *Store) CreateProfile(profile Profile) (Profile, error) {
 	return profile, nil
 }
 
-// CurrentProfile returns the profile in use: the oldest one, after creating a
-// local Guest profile if there are none. A stand-in until guest mode (#23) and
-// the profile picker (#24) decide which profile is current.
+// CurrentProfile returns the profile in use: the one last set with
+// SetCurrentProfile, or else the oldest one, after creating a local Guest
+// profile if there are none. The profile picker (#24) sets it on a switch.
 func (s *Store) CurrentProfile() (Profile, error) {
 	var current Profile
 	err := s.db.Update(func(tx *bolt.Tx) error {
+		if id := tx.Bucket(bucketSettings).Get(keyCurrent); id != nil {
+			if p := tx.Bucket(bucketProfiles).Bucket(id); p != nil {
+				return json.Unmarshal(p.Get(keyProfile), &current)
+			}
+		}
 		profiles, err := allProfiles(tx)
 		if err != nil {
 			return err
@@ -79,6 +86,64 @@ func (s *Store) CurrentProfile() (Profile, error) {
 		return Profile{}, err
 	}
 	return current, nil
+}
+
+// SetCurrentProfile makes profile id the one in use.
+func (s *Store) SetCurrentProfile(id uint64) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
+		if _, err := profileBucket(tx, id); err != nil {
+			return err
+		}
+		return tx.Bucket(bucketSettings).Put(keyCurrent, u64(id))
+	})
+}
+
+// LinkNuvioProfiles saves an account's Nuvio profiles after signing in: each
+// updates the local profile linked to its index, or becomes a new one.
+// Local-only profiles, such as a guest's, are left as they are (#23). The
+// profile with the lowest index becomes current, until the picker (#24) asks.
+// It returns the linked profiles in index order.
+func (s *Store) LinkNuvioProfiles(nuvio []Profile) ([]Profile, error) {
+	for _, profile := range nuvio {
+		if profile.NuvioIndex == nil {
+			return nil, fmt.Errorf("%w: %q has no Nuvio index", ErrInvalidProfile, profile.Name)
+		}
+	}
+	nuvio = slices.Clone(nuvio)
+	slices.SortFunc(nuvio, func(a, b Profile) int { return cmp.Compare(*a.NuvioIndex, *b.NuvioIndex) })
+	err := s.db.Update(func(tx *bolt.Tx) error {
+		existing, err := allProfiles(tx)
+		if err != nil {
+			return err
+		}
+		for i, profile := range nuvio {
+			linked := slices.IndexFunc(existing, func(p Profile) bool {
+				return p.NuvioIndex != nil && *p.NuvioIndex == *profile.NuvioIndex
+			})
+			if linked < 0 {
+				if nuvio[i], err = createProfile(tx, profile); err != nil {
+					return err
+				}
+				continue
+			}
+			profile.ID = existing[linked].ID
+			if err := validateProfile(tx, profile, profile.ID); err != nil {
+				return err
+			}
+			if err := put(tx.Bucket(bucketProfiles).Bucket(u64(profile.ID)), keyProfile, profile); err != nil {
+				return err
+			}
+			nuvio[i] = profile
+		}
+		if len(nuvio) == 0 {
+			return nil
+		}
+		return tx.Bucket(bucketSettings).Put(keyCurrent, u64(nuvio[0].ID))
+	})
+	if err != nil {
+		return nil, err
+	}
+	return nuvio, nil
 }
 
 func createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {

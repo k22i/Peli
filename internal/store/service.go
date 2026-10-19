@@ -33,6 +33,11 @@ func NewService(path string) *Service {
 	return &Service{path: path}
 }
 
+// Opened returns service's database, for other Go services, once it has
+// started. A function rather than a method, so Wails doesn't bind it for the
+// frontend.
+func Opened(service *Service) *Store { return service.store }
+
 func (s *Service) ServiceStartup(context.Context, application.ServiceOptions) error {
 	store, err := Open(s.path)
 	if err != nil {
