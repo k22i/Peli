@@ -42,7 +42,7 @@ Keep the Wails CLI, the Go module (`go.mod`) and `@wailsio/runtime` (`frontend/p
 
 ### Frontend
 
-The frontend uses [Vite+](https://viteplus.dev/) (Vite, Vitest, Oxlint and Oxfmt), React 19, TypeScript 7, TanStack Router and Query, and Tailwind CSS. From `frontend/`:
+The frontend uses [Vite+](https://viteplus.dev/) (Vite, Vitest, Oxlint and Oxfmt), React 19, TypeScript 7, TanStack Router and Query, Tailwind CSS, and [coss ui](https://coss.com/ui/docs/get-started) components (on Base UI). From `frontend/`:
 
 ```sh
 pnpm install
@@ -55,6 +55,8 @@ pnpm test        # Vitest + React Testing Library
 ```
 
 `frontend/bindings/` is generated (by `pnpm bindings`, `wails3 dev` or `wails3 build`) and not committed; generate it before the first `typecheck` or `test`. Frontend code imports them as `@bindings/<package>`, for example `@bindings/appinfo`. Routes are files in `frontend/src/routes/`; the router plugin regenerates `src/routeTree.gen.ts` on `dev` and `build`.
+
+UI components come from the coss ui registry and live in `frontend/src/components/ui/`. Add one with `pnpm dlx shadcn@4.21.4 add @coss/<name>` (for example `@coss/dialog`), and add only what you use. The theme tokens are the coss CSS variables in `frontend/src/index.css`.
 
 pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge` in `frontend/pnpm-workspace.yaml`), so pin dependencies to versions at least a week old.
 

@@ -1,4 +1,11 @@
 {
   "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  // Mirrors tsconfig.app.json; the shadcn CLI reads aliases from here.
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@bindings/*": ["./bindings/github.com/k22i/Cove/internal/*"]
+    }
+  }
 }

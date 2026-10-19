@@ -39,7 +39,8 @@ func main() {
 			Backdrop:                application.MacBackdropTranslucent,
 			TitleBar:                application.MacTitleBarHiddenInset,
 		},
-		BackgroundColour: application.NewRGB(6, 7, 15),
+		// The coss ui dark --background, so there is no flash on load.
+		BackgroundColour: application.NewRGB(23, 23, 23),
 		URL:              "/",
 	})
 

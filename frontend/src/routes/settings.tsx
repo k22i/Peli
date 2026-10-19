@@ -14,7 +14,7 @@ function Settings() {
 
   return (
     <Placeholder title="Settings">
-      <p className="text-ink-muted">Version {version.data ?? "…"}</p>
+      <p className="text-muted-foreground">Version {version.data ?? "…"}</p>
     </Placeholder>
   );
 }

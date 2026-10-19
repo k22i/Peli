@@ -1,6 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { Link, Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 
+import { Button } from "@/components/ui/button";
 import { sections } from "@/sections";
 
 export type RouterContext = {
@@ -11,24 +12,27 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootLayout,
 });
 
+const navLink =
+  "text-muted-foreground data-[status=active]:bg-accent data-[status=active]:text-foreground";
+
 // Bare layout until the app shell (#12) lands.
 function RootLayout() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <nav aria-label="Main" className="flex gap-4 px-6 pt-12 pb-4">
+    <div className="relative isolate flex min-h-svh flex-col">
+      <nav aria-label="Main" className="flex gap-1 px-4 pt-11 pb-4">
         {sections.map((section) => (
-          <Link
+          <Button
             key={section.to}
-            to={section.to}
-            className="text-ink-muted [&.active]:text-ink"
-            activeOptions={{ exact: true }}
+            variant="ghost"
+            className={navLink}
+            render={<Link to={section.to} activeOptions={{ exact: true }} />}
           >
             {section.label}
-          </Link>
+          </Button>
         ))}
-        <Link to="/settings" className="ml-auto text-ink-muted [&.active]:text-ink">
+        <Button variant="ghost" className={`ml-auto ${navLink}`} render={<Link to="/settings" />}>
           Settings
-        </Link>
+        </Button>
       </nav>
       <main className="flex-1">
         <Outlet />

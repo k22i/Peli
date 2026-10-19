@@ -55,6 +55,14 @@ export default defineConfig({
       "typescript/no-explicit-any": "error",
       "typescript/consistent-type-imports": "error",
     },
+    overrides: [
+      {
+        // coss ui components, kept as published so `shadcn add` can update
+        // them. role="status" on the spinner's <svg> has no tag equivalent.
+        files: ["src/components/ui/**"],
+        rules: { "jsx-a11y/prefer-tag-over-role": "off" },
+      },
+    ],
     options: { typeAware: true, typeCheck: true },
   },
 });
