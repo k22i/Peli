@@ -19,6 +19,7 @@ import (
 	"io"
 	"math/rand/v2"
 	"net/http"
+	"net/url"
 	"strings"
 	"sync"
 	"time"
@@ -190,6 +191,32 @@ func (c *Client) Profiles(ctx context.Context, s Session) ([]Profile, error) {
 	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_profiles", s.AccessToken,
 		map[string]any{}, &profiles)
 	return profiles, err
+}
+
+// Avatar is one of the backend's stock profile avatars: a profile's
+// avatar_id names one.
+type Avatar struct {
+	ID    string `json:"id"`
+	Name  string `json:"display_name"`
+	Path  string `json:"storage_path"`
+	Color string `json:"bg_color"`
+}
+
+// AvatarCatalog returns the stock avatars. It is public: it needs no session.
+func (c *Client) AvatarCatalog(ctx context.Context) ([]Avatar, error) {
+	avatars := []Avatar{}
+	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/get_avatar_catalog", "", map[string]any{}, &avatars)
+	return avatars, err
+}
+
+// AvatarImageURL returns where a stock avatar's image is: its storage path
+// in the backend's public "avatars" bucket, as seen on live (#24).
+func (c *Client) AvatarImageURL(a Avatar) string {
+	segments := strings.Split(a.Path, "/")
+	for i, segment := range segments {
+		segments[i] = url.PathEscape(segment)
+	}
+	return c.baseURL + "/storage/v1/object/public/avatars/" + strings.Join(segments, "/")
 }
 
 // publishableKey returns the backend's public key, reading the discovery

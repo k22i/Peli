@@ -118,8 +118,60 @@ func TestSignIn(t *testing.T) {
 	if email := f.backend.Body("/auth/v1/token")["email"]; email != "me@example.com" {
 		t.Fatalf("email sent = %q, want it trimmed", email)
 	}
-	if calls := f.backend.Calls(); len(calls) != 2 {
-		t.Fatalf("calls = %q, want a sign-in and a profile pull", calls)
+	if calls := f.backend.Calls(); len(calls) != 3 {
+		t.Fatalf("calls = %q, want a sign-in, a profile pull and the avatar catalog", calls)
+	}
+
+	// Avatars: a stock one from the catalog, or the profile's own image.
+	kevin, kids := profiles[1], profiles[2]
+	if want := f.backend.URL + "/storage/v1/object/public/avatars/animals/otto-v1.png"; kevin.Avatar != want || kevin.AvatarColor != "#33B5E0" {
+		t.Fatalf("Kevin's avatar = %q on %q", kevin.Avatar, kevin.AvatarColor)
+	}
+	if kids.Avatar != "https://img/a7.png" || kids.AvatarColor != "#F5A623" {
+		t.Fatalf("Kids' avatar = %q on %q", kids.Avatar, kids.AvatarColor)
+	}
+}
+
+func TestSignInWithoutAvatarCatalog(t *testing.T) {
+	f := newFixture(t)
+	f.backend.FailAvatars.Store(true)
+
+	current, err := f.service.SignIn(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Initials on the profile's colour instead; an image of its own still
+	// shows.
+	if current.Avatar != "" || current.AvatarColor != "#33B5E0" {
+		t.Fatalf("current = %+v", current)
+	}
+	if profiles, _ := f.store.Profiles(); profiles[1].Avatar != "https://img/a7.png" {
+		t.Fatalf("profiles = %+v", profiles)
+	}
+}
+
+func TestAvatarImage(t *testing.T) {
+	images := map[string]string{"a1": "https://api/a1.png"}
+	for _, tc := range []struct {
+		own, id, want string
+	}{
+		{"", "a1", "https://api/a1.png"},
+		{"https://cdn/me.png", "a1", "https://cdn/me.png"},
+		{"javascript:alert(1)", "a1", "https://api/a1.png"},
+		{"", "gone", ""},
+	} {
+		p := nuvio.Profile{AvatarID: tc.id}
+		if tc.own != "" {
+			p.AvatarURL = &tc.own
+		}
+		if got := avatarImage(p, images); got != tc.want {
+			t.Errorf("avatarImage(%q, %q) = %q, want %q", tc.own, tc.id, got, tc.want)
+		}
+	}
+	for color, want := range map[string]string{"#33b5e0": "#33B5E0", "33B5E0": "", "#33B5E": "", "red": "", "#GGGGGG": ""} {
+		if got := hexColor(color); got != want {
+			t.Errorf("hexColor(%q) = %q, want %q", color, got, want)
+		}
 	}
 }
 

@@ -168,6 +168,27 @@ func TestProfilesAndSignOut(t *testing.T) {
 	}
 }
 
+func TestAvatarCatalog(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL + "/")
+
+	// No session needed.
+	avatars, err := c.AvatarCatalog(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(avatars) != 2 || avatars[0] != (Avatar{ID: "a1", Name: "Otto", Path: "animals/otto-v1.png", Color: "#0BB5AE"}) {
+		t.Fatalf("avatars = %+v", avatars)
+	}
+	want := b.URL + "/storage/v1/object/public/avatars/animals/otto-v1.png"
+	if got := c.AvatarImageURL(avatars[0]); got != want {
+		t.Fatalf("image = %q, want %q", got, want)
+	}
+	if got := c.AvatarImageURL(Avatar{Path: "new/a b?.png"}); !strings.HasSuffix(got, "/avatars/new/a%20b%3F.png") {
+		t.Fatalf("image = %q, want its segments escaped", got)
+	}
+}
+
 func TestSignedOut(t *testing.T) {
 	b := nuviotest.NewServer(t)
 	_, err := newTestClient(b.URL).Profiles(t.Context(), Session{AccessToken: "revoked"})

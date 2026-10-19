@@ -6,8 +6,10 @@ package account
 
 import (
 	"context"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"net/url"
 	"strings"
 	"sync"
 
@@ -119,6 +121,10 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 	if err := s.session.keychain.Available(); err != nil {
 		return store.Profile{}, err
 	}
+	// The avatar catalog is public, so it loads while signing in.
+	avatars := make(chan map[string]string, 1)
+	go func() { avatars <- s.avatarImages(ctx) }()
+
 	session, err := s.nuvio.SignInWithPassword(ctx, strings.TrimSpace(email), password)
 	if err != nil {
 		return store.Profile{}, err
@@ -131,9 +137,15 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 		return store.Profile{}, err
 	}
 
+	images := <-avatars
 	profiles := make([]store.Profile, len(remote))
 	for i, p := range remote {
-		profiles[i] = store.Profile{Name: p.Name, NuvioIndex: &p.Index}
+		profiles[i] = store.Profile{
+			Name:        p.Name,
+			NuvioIndex:  &p.Index,
+			Avatar:      avatarImage(p, images),
+			AvatarColor: hexColor(p.AvatarColor),
+		}
 	}
 	var linked []store.Profile
 	err = s.session.start(session, func() error {
@@ -150,6 +162,42 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 		return s.store.CurrentProfile()
 	}
 	return linked[0], nil
+}
+
+// avatarImages returns the image of each stock avatar by its ID, or nil if
+// the catalog can't be read: the picker then shows initials (#24).
+func (s *Service) avatarImages(ctx context.Context) map[string]string {
+	catalog, err := s.nuvio.AvatarCatalog(ctx)
+	if err != nil {
+		return nil
+	}
+	images := make(map[string]string, len(catalog))
+	for _, a := range catalog {
+		images[a.ID] = s.nuvio.AvatarImageURL(a)
+	}
+	return images
+}
+
+// avatarImage returns a Nuvio profile's avatar image: its own URL if it has
+// one, or else its stock avatar's.
+func avatarImage(p nuvio.Profile, images map[string]string) string {
+	if p.AvatarURL != nil {
+		if u, err := url.Parse(*p.AvatarURL); err == nil && (u.Scheme == "https" || u.Scheme == "http") {
+			return u.String()
+		}
+	}
+	return images[p.AvatarID]
+}
+
+// hexColor returns color if it is "#rrggbb", or else "".
+func hexColor(color string) string {
+	if len(color) != 7 || color[0] != '#' {
+		return ""
+	}
+	if _, err := hex.DecodeString(color[1:]); err != nil {
+		return ""
+	}
+	return strings.ToUpper(color)
 }
 
 // SignOut ends the session on the backend (other devices stay signed in),

@@ -4,7 +4,9 @@ import (
 	"cmp"
 	"context"
 	"errors"
+	"net/http"
 	"os"
+	"strings"
 	"testing"
 	"time"
 )
@@ -60,6 +62,34 @@ func TestLive(t *testing.T) {
 	for _, p := range profiles {
 		if p.Index < 1 || p.Index > 6 || p.Name == "" {
 			t.Errorf("profile with index %d and a name of %d bytes", p.Index, len(p.Name))
+		}
+	}
+
+	// Every profile's stock avatar is in the catalog, and its image is
+	// public (#24).
+	start = time.Now()
+	avatars, err := c.AvatarCatalog(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("avatar catalog: %v, %d avatar(s)", time.Since(start).Round(time.Millisecond), len(avatars))
+	images := map[string]string{}
+	for _, a := range avatars {
+		images[a.ID] = c.AvatarImageURL(a)
+	}
+	for _, p := range profiles {
+		if p.AvatarURL == nil && p.AvatarID != "" && images[p.AvatarID] == "" {
+			t.Errorf("profile %d's avatar isn't in the catalog", p.Index)
+		}
+	}
+	if len(avatars) > 0 {
+		resp, err := http.Get(images[avatars[0].ID])
+		if err != nil {
+			t.Fatal(err)
+		}
+		resp.Body.Close()
+		if resp.StatusCode != http.StatusOK || !strings.HasPrefix(resp.Header.Get("Content-Type"), "image/") {
+			t.Errorf("avatar image: HTTP %d, %s", resp.StatusCode, resp.Header.Get("Content-Type"))
 		}
 	}
 

@@ -36,6 +36,8 @@ type Server struct {
 	Limited atomic.Int32
 	// Answers 500 to sync_pull_profiles while set.
 	FailProfiles atomic.Bool
+	// Answers 500 to get_avatar_catalog while set.
+	FailAvatars atomic.Bool
 	// How long access tokens last; 7 days, as on live, if unset.
 	Lifetime atomic.Int64
 
@@ -211,6 +213,17 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`[
 			{"id":"8f8b0000-0000-0000-0000-000000000001","profile_index":1,"name":"Kevin","avatar_color_hex":"#33B5E0","avatar_id":"a1","avatar_url":null,"pin_enabled":false,"pin_locked_until":null},
 			{"id":"8f8b0000-0000-0000-0000-000000000003","profile_index":3,"name":"Kids","avatar_color_hex":"#F5A623","avatar_id":"a7","avatar_url":"https://img/a7.png","pin_enabled":true,"pin_locked_until":null}
+		]`))
+	case "/rest/v1/rpc/get_avatar_catalog":
+		// Public, as on live: the publishable key is enough.
+		if s.FailAvatars.Load() {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(`{"code":"XX000","message":"internal error"}`))
+			return
+		}
+		w.Write([]byte(`[
+			{"id":"a1","display_name":"Otto","storage_path":"animals/otto-v1.png","category":"animals","sort_order":1,"is_active":true,"bg_color":"#0BB5AE"},
+			{"id":"a7","display_name":"Pip","storage_path":"animals/pip-v1.png","category":"animals","sort_order":2,"is_active":true,"bg_color":"#45B5EE"}
 		]`))
 	default:
 		w.WriteHeader(http.StatusNotFound)
