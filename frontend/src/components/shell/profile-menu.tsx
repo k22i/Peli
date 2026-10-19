@@ -1,9 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { LogIn, LogOut, Puzzle, Settings, Users } from "lucide-react";
+import { LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
 import { useState } from "react";
 
+import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Menu,
   MenuGroup,
@@ -11,12 +12,19 @@ import {
   MenuItem,
   MenuLinkItem,
   MenuPopup,
+  MenuRadioGroup,
+  MenuRadioItem,
   MenuSeparator,
   MenuShortcut,
+  MenuSub,
+  MenuSubPopup,
+  MenuSubTrigger,
   MenuTrigger,
 } from "@/components/ui/menu";
+import { toastManager } from "@/components/ui/toast";
+import { profilesQuery, useSwitchProfile } from "@/lib/account";
 import { currentPlatform } from "@/lib/platform";
-import { initials, useCurrentProfile } from "@/lib/profile";
+import { useCurrentProfile } from "@/lib/profile";
 
 // Everything that isn't a top-level section: profiles, addons, settings.
 export function ProfileMenu() {
@@ -31,19 +39,13 @@ export function ProfileMenu() {
           aria-label={`Profile: ${profile.name}`}
           className="flex w-full items-center gap-2.5 rounded-lg p-1.5 text-start text-sm outline-none hover:bg-sidebar-accent focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-sidebar-accent"
         >
-          <Avatar className="size-7 bg-sidebar-primary text-sidebar-primary-foreground">
-            <AvatarFallback className="bg-transparent">{initials(profile.name)}</AvatarFallback>
-          </Avatar>
+          <ProfileAvatar profile={profile} className="size-7" />
           <span className="sr-only truncate font-medium md:not-sr-only">{profile.name}</span>
         </MenuTrigger>
         <MenuPopup side="top" align="start" className="w-56">
           <MenuGroup>
             <MenuGroupLabel>{profile.name}</MenuGroupLabel>
-            {/* Enabled by the profile picker (#24). */}
-            <MenuItem disabled>
-              <Users />
-              Switch profile
-            </MenuItem>
+            <SwitchProfileMenu currentId={profile.id} />
             <MenuLinkItem render={<Link to="/addons" />}>
               <Puzzle />
               Addons
@@ -84,5 +86,48 @@ export function ProfileMenu() {
       </Menu>
       <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
     </>
+  );
+}
+
+// Every profile on this device, the current one checked (#24). Picking one
+// switches to it in place: what's on screen follows the new profile.
+function SwitchProfileMenu({ currentId }: { currentId: number | undefined }) {
+  const profiles = useQuery(profilesQuery);
+  const switchProfile = useSwitchProfile();
+
+  const pick = (id: unknown) => {
+    const profile = profiles.data?.find((p) => p.id === id);
+    if (!profile || profile.id === currentId) return;
+    switchProfile.mutate(profile, {
+      onError: () => {
+        toastManager.add({ type: "error", title: `Couldn’t switch to ${profile.name}` });
+      },
+    });
+  };
+
+  return (
+    <MenuSub>
+      <MenuSubTrigger>
+        <Users />
+        Switch profile
+      </MenuSubTrigger>
+      <MenuSubPopup className="w-56">
+        <MenuRadioGroup value={currentId ?? null} onValueChange={pick}>
+          {profiles.data?.map((p) => (
+            <MenuRadioItem key={p.id} value={p.id}>
+              <span className="flex min-w-0 items-center gap-2">
+                <ProfileAvatar profile={p} className="size-5 text-[0.5625rem]" />
+                <span className="truncate">{p.name}</span>
+              </span>
+            </MenuRadioItem>
+          ))}
+        </MenuRadioGroup>
+        <MenuSeparator />
+        <MenuLinkItem render={<Link to="/profiles" />}>
+          <UserCog />
+          Manage profiles
+        </MenuLinkItem>
+      </MenuSubPopup>
+    </MenuSub>
   );
 }

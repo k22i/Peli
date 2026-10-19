@@ -7,14 +7,20 @@ export type Profile = {
   // Unset until the store has answered.
   id?: number;
   name: string;
-  // Signed in to Nuvio; guests (#23) have nothing to sign out of.
+  // The avatar's image and the colour behind it, from Nuvio (#24).
+  avatar?: string | undefined;
+  avatarColor?: string | undefined;
+  // The local Guest profile (#23), kept apart from any Nuvio account.
+  guest: boolean;
+  // This device's Nuvio account is signed in, or its session ended (#22)
+  // with its data still here. Read from the account rather than the
+  // profile, so the Guest offers Sign out while an account is signed in
+  // beside it.
   signedIn: boolean;
-  // A Nuvio profile whose session ended (#22): its data is still here, and
-  // signing in again carries on syncing it.
   sessionEnded: boolean;
 };
 
-const guest: Profile = { name: "Guest", signedIn: false, sessionEnded: false };
+const guest: Profile = { name: "Guest", guest: true, signedIn: false, sessionEnded: false };
 
 // Whether this device has a Nuvio session, and whether one ended without
 // signing out. Go answers from the keychain and the store, so this works
@@ -25,8 +31,8 @@ export const accountQuery = queryOptions({
   staleTime: Number.POSITIVE_INFINITY,
 });
 
-// The profile in use: the first Nuvio profile after signing in (#20), or the
-// local Guest profile. The picker (#24) will switch it.
+// The profile in use: the one last picked (#24), remembered across
+// launches, or else the oldest. On first launch Go makes a Guest profile.
 export const currentProfileQuery = queryOptions({
   queryKey: ["profiles", "current"],
   queryFn: () => Store.CurrentProfile(),
@@ -37,13 +43,14 @@ export function useCurrentProfile(): Profile {
   const { data } = useQuery(currentProfileQuery);
   const account = useQuery(accountQuery);
   if (!data) return guest;
-  // Only a profile linked to a Nuvio profile has a session to speak of.
-  const linked = data.nuvioIndex != null;
   return {
     id: data.id,
     name: data.name,
-    signedIn: linked && account.data?.signedIn === true,
-    sessionEnded: linked && account.data?.sessionEnded === true,
+    avatar: data.avatar,
+    avatarColor: data.avatarColor,
+    guest: data.guest === true,
+    signedIn: account.data?.signedIn === true,
+    sessionEnded: account.data?.sessionEnded === true,
   };
 }
 

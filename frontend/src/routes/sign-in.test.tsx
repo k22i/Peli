@@ -251,6 +251,11 @@ describe("sign in", () => {
     expect(screen.getByText(/Your Guest profile stays on this computer/)).toBeVisible();
     await fillIn(user);
 
+    // Two profiles now, so the picker asks which, with Kevin first in line.
+    await screen.findByRole("heading", { level: 1, name: "Who’s watching?" });
+    expect(await screen.findByText("Signed in to Nuvio")).toBeInTheDocument();
+    expect(await screen.findByRole("button", { name: "Kevin" })).toHaveFocus();
+    await user.keyboard("{Enter}");
     expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
     // Nothing merged: the Guest is still there, as it was.
     expect(backend.profiles).toEqual([

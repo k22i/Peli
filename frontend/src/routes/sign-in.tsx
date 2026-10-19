@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { toastManager } from "@/components/ui/toast";
 import {
   keychainQuery,
+  needsPicker,
   profilesQuery,
   signInErrorCode,
   useSignIn,
@@ -83,6 +84,7 @@ function problemFor(error: Error): Problem {
 function SignIn() {
   const navigate = useNavigate();
   const router = useRouter();
+  const queryClient = useQueryClient();
   const sessionEnded = Route.useSearch().reason === "session-ended";
   const profiles = useQuery(profilesQuery);
   // Read from the list: asking for the current profile would make a Guest.
@@ -112,6 +114,13 @@ function SignIn() {
       { email, password },
       {
         onSuccess: (profile) => {
+          // With more than one profile, the picker asks which (#24).
+          if (needsPicker(queryClient.getQueryData(profilesQuery.queryKey))) {
+            toastManager.add({ type: "success", title: "Signed in to Nuvio" });
+            // Replaced, so Back doesn't return to the form.
+            void navigate({ to: "/profiles", replace: true });
+            return;
+          }
           toastManager.add({ type: "success", title: `Signed in as ${profile.name}` });
           void navigate({ to: "/" });
         },

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import {
@@ -11,7 +12,6 @@ import {
   type SettingsSectionInfo,
 } from "@/components/settings/settings-section";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -25,7 +25,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { appVersionQuery } from "@/lib/app-info";
-import { initials, useCurrentProfile } from "@/lib/profile";
+import { useCurrentProfile } from "@/lib/profile";
 import {
   captionsModes,
   deviceSettingsQuery,
@@ -86,13 +86,16 @@ function AccountSection() {
   const profile = useCurrentProfile();
   const [signingOut, setSigningOut] = useState(false);
 
-  const status = profile.signedIn
-    ? "Synced with Nuvio"
-    : profile.sessionEnded
-      ? "Nuvio session ended, kept on this device"
-      : "Local profile, kept on this device";
+  // The Guest never syncs, even beside a signed-in account (ADR-0010).
+  const status = profile.guest
+    ? "Local profile, kept on this device"
+    : profile.signedIn
+      ? "Synced with Nuvio"
+      : "Nuvio session ended, kept on this device";
   const nuvio = profile.signedIn
-    ? "Signed in. Your library, progress and addons sync across devices."
+    ? profile.guest
+      ? "Signed in. Your Nuvio profiles sync across devices; the Guest profile stays on this one."
+      : "Signed in. Your library, progress and addons sync across devices."
     : profile.sessionEnded
       ? "Your session ended. Sign in again to keep syncing; your library and progress here are kept."
       : "Sign in to sync your library, progress and addons across devices.";
@@ -100,15 +103,12 @@ function AccountSection() {
   return (
     <SettingsSection section={section("account")}>
       <div className="flex items-center gap-3 px-4 py-3.5">
-        <Avatar className="size-9 bg-primary text-primary-foreground">
-          <AvatarFallback className="bg-transparent">{initials(profile.name)}</AvatarFallback>
-        </Avatar>
+        <ProfileAvatar profile={profile} className="size-9" />
         <div className="flex flex-col">
           <span className="text-sm font-medium">{profile.name}</span>
           <span className="text-sm text-muted-foreground">{status}</span>
         </div>
       </div>
-      {/* Switching and managing profiles is #24. */}
       <SettingRow id="nuvio" label="Nuvio account" description={nuvio}>
         {!profile.signedIn && (
           <Link
@@ -126,10 +126,14 @@ function AccountSection() {
         )}
       </SettingRow>
       <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
-      <SettingRow id="profiles" label="Profiles" description="Add, rename and switch profiles.">
-        <Button variant="outline" size="sm" disabled>
+      <SettingRow
+        id="profiles"
+        label="Profiles"
+        description="Switch between the profiles on this computer."
+      >
+        <Link to="/profiles" className={buttonVariants({ variant: "outline", size: "sm" })}>
           Manage
-        </Button>
+        </Link>
       </SettingRow>
     </SettingsSection>
   );

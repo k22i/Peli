@@ -2,8 +2,10 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach } from "vite-plus/test";
 
-// jsdom does not implement scrolling; the router's scroll restoration calls it.
+// jsdom does not implement scrolling; the router's scroll restoration and
+// Base UI's menus call it.
 window.scrollTo = () => {};
+Object.defineProperty(Element.prototype, "scrollTo", { value: () => {}, configurable: true });
 
 // Globals are off, so Testing Library cannot register its own cleanup.
 afterEach(() => {

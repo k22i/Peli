@@ -41,6 +41,9 @@ vi.mock("@bindings/store", () => ({
   Service: {
     Profiles: async () => backend.profiles,
     CurrentProfile: async () => backend.current ?? backend.profiles[0],
+    SetCurrentProfile: async (id: number) => {
+      backend.current = backend.profiles.find((p) => p.id === id);
+    },
     ProfileSettings: async () => ({
       audioLanguage: "",
       subtitleLanguage: "",
@@ -121,7 +124,9 @@ describe("sign out", () => {
   it("lands on the guest's profile when there is one", async () => {
     signedIn(guest, kevin);
     const user = userEvent.setup();
-    const { router } = await renderApp("/");
+    // Two profiles: the picker asks first (#24).
+    const { router } = await renderApp("/", { shell: false });
+    await user.click(await screen.findByRole("button", { name: "Kevin" }));
 
     const dialog = await openSignOut(user);
     await user.click(within(dialog).getByRole("button", { name: "Sign out" }));

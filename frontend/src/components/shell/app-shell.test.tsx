@@ -123,9 +123,10 @@ describe("app shell", () => {
     await user.click(screen.getByRole("button", { name: "Profile: Guest" }));
     const menu = await screen.findByRole("menu");
 
+    // The picker (#24): profiles.test.tsx switches with it.
     expect(within(menu).getByRole("menuitem", { name: "Switch profile" })).toHaveAttribute(
-      "aria-disabled",
-      "true",
+      "aria-haspopup",
+      "menu",
     );
     // A guest has nothing to sign out of, and can sign in instead (#23).
     expect(within(menu).queryByRole("menuitem", { name: "Sign out" })).toBeNull();

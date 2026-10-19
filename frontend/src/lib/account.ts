@@ -14,6 +14,9 @@ export const profilesQuery = queryOptions({
   queryKey: ["profiles", "all"],
   queryFn: () => Store.Profiles(),
   staleTime: Number.POSITIVE_INFINITY,
+  // A local read: retrying won't help, and the first-run check awaits it on
+  // every navigation while the profile menu holds it.
+  retry: false,
 });
 
 // Sent by internal/account when a refresh finds the session revoked or
@@ -82,6 +85,46 @@ export function useContinueAsGuest() {
       await profileChanged(queryClient, profile);
     },
   });
+}
+
+// Makes another profile current, from the picker or the profile menu (#24).
+// Go remembers it across launches. Everything a profile owns is queried by
+// its ID, so Home, Library and settings follow without a restart.
+export function useSwitchProfile() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (profile: Profile) => {
+      await Store.SetCurrentProfile(profile.id);
+      return profile;
+    },
+    onSuccess: async (profile) => {
+      await profileChanged(queryClient, profile);
+    },
+  });
+}
+
+// Deletes a local profile and everything in it: the picker offers it for the
+// Guest (#24). If it was current, Go makes the oldest profile left current.
+export function useRemoveProfile() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (profile: Profile) => Store.DeleteProfile(profile.id),
+    onSuccess: async (_, profile) => {
+      for (const queryKey of [
+        ["settings", "profile", profile.id],
+        ["addons", profile.id],
+      ]) {
+        queryClient.removeQueries({ queryKey });
+      }
+      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+    },
+  });
+}
+
+// More than one profile on this device: the picker asks who's watching at
+// launch and after signing in (#24).
+export function needsPicker(profiles: readonly Profile[] | null | undefined): boolean {
+  return (profiles?.length ?? 0) > 1;
 }
 
 // Signs out of Nuvio. Go deletes the session, the account's profiles with

@@ -15,6 +15,7 @@ import { Route as AnimeRouteImport } from './routes/anime'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MoviesRouteImport } from './routes/movies'
+import { Route as ProfilesRouteImport } from './routes/profiles'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ShowsRouteImport } from './routes/shows'
@@ -51,6 +52,11 @@ const MoviesRoute = MoviesRouteImport.update({
   path: '/movies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfilesRoute = ProfilesRouteImport.update({
+  id: '/profiles',
+  path: '/profiles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
+  '/profiles': typeof ProfilesRoute
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/shows': typeof ShowsRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
+  '/profiles': typeof ProfilesRoute
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/shows': typeof ShowsRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
+  '/profiles': typeof ProfilesRoute
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/shows': typeof ShowsRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/library'
     | '/movies'
+    | '/profiles'
     | '/search'
     | '/settings'
     | '/shows'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/library'
     | '/movies'
+    | '/profiles'
     | '/search'
     | '/settings'
     | '/shows'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/library'
     | '/movies'
+    | '/profiles'
     | '/search'
     | '/settings'
     | '/shows'
@@ -166,6 +178,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   LibraryRoute: typeof LibraryRoute
   MoviesRoute: typeof MoviesRoute
+  ProfilesRoute: typeof ProfilesRoute
   SearchRoute: typeof SearchRoute
   SettingsRoute: typeof SettingsRoute
   ShowsRoute: typeof ShowsRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MoviesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profiles': {
+      id: '/profiles'
+      path: '/profiles'
+      fullPath: '/profiles'
+      preLoaderRoute: typeof ProfilesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -262,6 +282,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   LibraryRoute: LibraryRoute,
   MoviesRoute: MoviesRoute,
+  ProfilesRoute: ProfilesRoute,
   SearchRoute: SearchRoute,
   SettingsRoute: SettingsRoute,
   ShowsRoute: ShowsRoute,
