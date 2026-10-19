@@ -5,11 +5,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { createPersistOptions, createQueryClient } from "@/lib/query";
-import { followSystemTheme } from "@/lib/theme";
+import { startTheme } from "@/lib/theme";
 import { createAppRouter } from "@/router";
 import "./index.css";
 
-followSystemTheme();
+startTheme();
 
 const queryClient = createQueryClient();
 const router = createAppRouter(queryClient);

@@ -58,9 +58,13 @@ export default defineConfig({
     overrides: [
       {
         // coss ui components, kept as published so `shadcn add` can update
-        // them. role="status" on the spinner's <svg> has no tag equivalent.
+        // them. role="status" on the spinner's <svg> has no tag equivalent;
+        // toggle-group builds its context value inline.
         files: ["src/components/ui/**"],
-        rules: { "jsx-a11y/prefer-tag-over-role": "off" },
+        rules: {
+          "jsx-a11y/prefer-tag-over-role": "off",
+          "react/jsx-no-constructed-context-values": "off",
+        },
       },
     ],
     options: { typeAware: true, typeCheck: true },

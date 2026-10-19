@@ -6,6 +6,7 @@ import (
 	"runtime"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
+	"github.com/wailsapp/wails/v3/pkg/events"
 
 	"github.com/k22i/Cove/internal/appinfo"
 	"github.com/k22i/Cove/internal/firstmouse"
@@ -15,6 +16,13 @@ import (
 //
 //go:embed all:frontend/dist
 var assets embed.FS
+
+// The --sidebar token in each mode (frontend/src/index.css); keep in step
+// with windowColours in frontend/src/lib/theme.ts.
+var (
+	windowColourLight = application.NewRGB(247, 247, 248)
+	windowColourDark  = application.NewRGB(17, 17, 17)
+)
 
 func main() {
 	firstmouse.Enable()
@@ -33,7 +41,7 @@ func main() {
 		},
 	})
 
-	app.Window.NewWithOptions(application.WebviewWindowOptions{
+	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Title: "Cove",
 		// Window sized to the golden ratio (1000 / 618 ≈ 1.618).
 		Width:  1000,
@@ -48,10 +56,17 @@ func main() {
 			TitleBar:                application.MacTitleBarHiddenInset,
 		},
 		Frameless: runtime.GOOS == "windows",
-		// The coss ui dark --sidebar, the shell's outer colour, so there is
-		// no flash on load.
-		BackgroundColour: application.NewRGB(17, 17, 17),
+		// The shell's outer colour (--sidebar), so there is no flash on load.
+		// Dark until the OS appearance is known below; the frontend then
+		// follows the user's theme (frontend/src/lib/theme.ts).
+		BackgroundColour: windowColourDark,
 		URL:              "/",
+	})
+
+	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
+		if !app.Env.IsDarkMode() {
+			window.SetBackgroundColour(windowColourLight)
+		}
 	})
 
 	if err := app.Run(); err != nil {

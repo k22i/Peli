@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cove</title>
+    <script>
+      // Light or dark before first paint, so the page never flashes the wrong
+      // mode: the same choice src/lib/theme.ts makes (keep them in step).
+      try {
+        const preference = localStorage.getItem("cove.theme");
+        const dark =
+          preference === "dark" ||
+          (preference !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", dark);
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
