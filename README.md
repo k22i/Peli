@@ -62,6 +62,8 @@ UI components come from the coss ui registry and live in `frontend/src/component
 
 Profiles, library, progress, watched items, addons, sync state and the persisted query cache live in one [bbolt](https://github.com/etcd-io/bbolt) file, `Cove/cove.db` in the OS app-data directory: `~/Library/Application Support` on macOS, `%LOCALAPPDATA%` on Windows and `$XDG_DATA_HOME` (usually `~/.local/share`) on Linux. Set `COVE_DATA_DIR` to use another directory, for example a throwaway one while developing. The store is `internal/store` ([ADR-0006](docs/adr/0006-local-store-bbolt.md)); run its tests with `go test ./internal/...`.
 
+Tokens and keys (Nuvio session, Trakt, debrid) are never in that file. They live in the OS keychain under the service `Cove`: the macOS Keychain, Windows Credential Manager, or the Secret Service on Linux (gnome-keyring or KWallet must be running to sign in). The code is `internal/secrets` ([ADR-0007](docs/adr/0007-secrets-in-os-keychain.md)), and the frontend uses `frontend/src/lib/secrets.ts`. `go test` uses a mock keychain; `COVE_KEYCHAIN_TEST=1 go test ./internal/secrets` runs the tests against your real one, under a separate service name, and removes what they write.
+
 pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge` in `frontend/pnpm-workspace.yaml`), so pin dependencies to versions at least a week old.
 
 ## Layout

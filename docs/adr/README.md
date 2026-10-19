@@ -10,5 +10,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0004](0004-nuvio-hosted-backend-go.md) | Use Nuvio's hosted backend; ask Nuvio early | 2026-10-12 |
 | [0005](0005-nfr-targets-after-m0.md) | Non-functional targets after M0 | 2026-10-12 |
 | [0006](0006-local-store-bbolt.md) | Local storage is a bbolt key-value file, not SQLite | 2026-10-19 |
+| [0007](0007-secrets-in-os-keychain.md) | Secrets live in the OS keychain through go-keyring, with no file fallback | 2026-10-19 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).
