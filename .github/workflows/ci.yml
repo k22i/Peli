@@ -229,3 +229,4 @@ jobs:
           echo "app running under wails3 dev"
       - if: always()
         run: cat dev.log || true
+# throwaway
