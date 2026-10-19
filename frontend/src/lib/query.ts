@@ -1,6 +1,8 @@
-import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { QueryClient, type Query } from "@tanstack/react-query";
-import type { PersistQueryClientOptions } from "@tanstack/react-query-persist-client";
+import type { AsyncStorage, PersistQueryClientOptions } from "@tanstack/react-query-persist-client";
+
+import { Service as Store } from "@bindings/store";
 
 declare module "@tanstack/react-query" {
   interface Register {
@@ -34,13 +36,19 @@ export function shouldPersistQuery(query: Query) {
   return query.meta?.persist === true && query.state.status === "success";
 }
 
-// Where the persisted cache lives. localStorage for now; this can move to the
-// SQLite service (#14) without changing callers.
+// The persisted cache lives in the Go store's cache bucket (#14), not
+// localStorage, so it isn't capped at the webview's ~5 MB.
+const storeCache: AsyncStorage = {
+  getItem: (key) => Store.CacheGet(key),
+  setItem: (key, value) => Store.CacheSet(key, value),
+  removeItem: (key) => Store.CacheDelete(key),
+};
+
 export function createPersistOptions(
-  storage: Storage = window.localStorage,
+  storage: AsyncStorage = storeCache,
 ): Omit<PersistQueryClientOptions, "queryClient"> {
   return {
-    persister: createSyncStoragePersister({ storage, key: "cove-query-cache" }),
+    persister: createAsyncStoragePersister({ storage, key: "cove-query-cache" }),
     maxAge: 7 * day,
     buster: cacheBuster,
     dehydrateOptions: { shouldDehydrateQuery: shouldPersistQuery },

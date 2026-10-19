@@ -3,13 +3,18 @@ import { describe, expect, it } from "vite-plus/test";
 
 import { cacheBuster, createPersistOptions, createQueryClient } from "@/lib/query";
 
-// The sync storage persister throttles writes; wait for the flush.
+// The storage persister throttles writes; wait for the flush.
 const flush = () => new Promise((resolve) => setTimeout(resolve, 1100));
 
 describe("persisted query cache", () => {
   it("saves only successful queries marked meta.persist", async () => {
+    const saved = new Map<string, string>();
     const queryClient = createQueryClient();
-    const options = createPersistOptions(window.localStorage);
+    const options = createPersistOptions({
+      getItem: async (key) => saved.get(key) ?? null,
+      setItem: async (key, value) => void saved.set(key, value),
+      removeItem: async (key) => void saved.delete(key),
+    });
 
     await queryClient.fetchQuery({
       queryKey: ["addons"],
@@ -29,11 +34,11 @@ describe("persisted query cache", () => {
     await persistQueryClientSave({ queryClient, ...options });
     await flush();
 
-    const saved: unknown = JSON.parse(window.localStorage.getItem("cove-query-cache") ?? "null");
-    expect(saved).toMatchObject({
+    const cache: unknown = JSON.parse(saved.get("cove-query-cache") ?? "null");
+    expect(cache).toMatchObject({
       buster: cacheBuster,
       clientState: { queries: [{ queryKey: ["addons"], state: { data: ["cinemeta"] } }] },
     });
-    expect(saved).toHaveProperty("clientState.queries.length", 1);
+    expect(cache).toHaveProperty("clientState.queries.length", 1);
   });
 });
