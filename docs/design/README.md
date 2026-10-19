@@ -50,3 +50,15 @@ First run, in the macOS app: ![](native-welcome-dark.jpg)
 | Nuvio returns a server error | ![](sign-in-nuvio-down-light.jpg) |
 
 These are from Chrome at 1000×618 (2×), with the Go services stubbed. Before there's a profile, the screens use the `focus` chrome: the title bar only, no sidebar.
+
+### Signing out and ended sessions (#22)
+
+| | |
+|---|---|
+| Signed in: Settings offers Sign out | ![](settings-signed-in-light.jpg) |
+| Sign out asks first | ![](sign-out-dialog-dark.jpg) |
+| The session ended (revoked or expired): at launch, or as soon as Go notices | ![](sign-in-session-ended-dark.jpg) |
+| After "Not now": the profile menu offers Sign in again | ![](menu-session-ended-dark.jpg) |
+| …and so does Settings, which still offers Sign out to remove the account's data | ![](settings-session-ended-light.jpg) |
+
+Chrome at 1000×618 (2×), with the Go services stubbed.
