@@ -22,6 +22,11 @@ describe("persisted query cache", () => {
       meta: { persist: true },
     });
     await queryClient.fetchQuery({ queryKey: ["search", "dune"], queryFn: () => [] });
+    await queryClient.fetchQuery({
+      queryKey: ["secrets", "nuvio.access-token"],
+      queryFn: () => "eyJ.token.sig",
+      meta: { persist: true },
+    });
     await queryClient
       .fetchQuery({
         queryKey: ["sync"],
@@ -40,5 +45,6 @@ describe("persisted query cache", () => {
       clientState: { queries: [{ queryKey: ["addons"], state: { data: ["cinemeta"] } }] },
     });
     expect(cache).toHaveProperty("clientState.queries.length", 1);
+    expect(saved.get("cove-query-cache")).not.toContain("eyJ.token.sig");
   });
 });

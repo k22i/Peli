@@ -32,8 +32,14 @@ export function createQueryClient() {
   });
 }
 
+// Queries keyed "secrets" hold tokens from the keychain (lib/secrets.ts) and
+// are never written to disk, even if marked meta.persist.
 export function shouldPersistQuery(query: Query) {
-  return query.meta?.persist === true && query.state.status === "success";
+  return (
+    query.meta?.persist === true &&
+    query.state.status === "success" &&
+    query.queryKey[0] !== "secrets"
+  );
 }
 
 // The persisted cache lives in the Go store's cache bucket (#14), not
