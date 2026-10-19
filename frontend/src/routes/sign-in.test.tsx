@@ -51,6 +51,7 @@ vi.mock("@bindings/secrets", () => ({
 
 vi.mock("@bindings/account", () => ({
   Service: {
+    Status: async () => ({ signedIn: backend.current?.nuvioIndex != null, sessionEnded: false }),
     SignIn: async (email: string, password: string) => {
       backend.signIns.push({ email, password });
       const failure = backend.failWith;

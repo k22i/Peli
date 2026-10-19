@@ -1,8 +1,11 @@
 import { queryOptions, useMutation, useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
+import { Events } from "@wailsio/runtime";
+import { useEffect } from "react";
 
 import { Service as Account } from "@bindings/account";
 import { Service as Store, type Profile } from "@bindings/store";
-import { currentProfileQuery } from "@/lib/profile";
+import { accountQuery, currentProfileQuery } from "@/lib/profile";
 import { secrets } from "@/lib/secrets";
 
 // Every profile on this device. None means first run: the welcome screen
@@ -12,6 +15,10 @@ export const profilesQuery = queryOptions({
   queryFn: () => Store.Profiles(),
   staleTime: Number.POSITIVE_INFINITY,
 });
+
+// Sent by internal/account when a refresh finds the session revoked or
+// expired. The account's profiles and data stay on this device.
+export const sessionEndedEvent = "account:session-ended";
 
 // Resolves to null when there's a keychain to keep a session in, or to what
 // to install when there isn't (Linux with no Secret Service). Guest mode
@@ -49,6 +56,7 @@ async function profileChanged(queryClient: QueryClient, profile: Profile) {
   queryClient.setQueryData(currentProfileQuery.queryKey, profile);
   await queryClient.fetchQuery({ ...profilesQuery, staleTime: 0 });
   await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+  await queryClient.invalidateQueries({ queryKey: accountQuery.queryKey });
 }
 
 // Signs in to Nuvio. Go keeps the tokens (ADR-0008); what comes back is the
@@ -73,4 +81,31 @@ export function useContinueAsGuest() {
       await profileChanged(queryClient, profile);
     },
   });
+}
+
+// Signs out of Nuvio. Go deletes the session, the account's profiles with
+// their data and the persisted cache (#22); the in-memory cache goes too, so
+// nothing of the account is left on screen.
+export function useSignOut() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => Account.SignOut(),
+    onSuccess: () => {
+      queryClient.clear();
+    },
+  });
+}
+
+// Sends the user to sign in again when Go finds the session has ended.
+export function useSessionEndedRedirect() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  useEffect(
+    () =>
+      Events.On(sessionEndedEvent, () => {
+        void queryClient.invalidateQueries({ queryKey: accountQuery.queryKey });
+        void navigate({ to: "/sign-in", search: { reason: "session-ended" } });
+      }),
+    [queryClient, navigate],
+  );
 }

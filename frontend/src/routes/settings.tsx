@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
+import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import {
   SettingRow,
@@ -82,6 +84,18 @@ function Settings() {
 
 function AccountSection() {
   const profile = useCurrentProfile();
+  const [signingOut, setSigningOut] = useState(false);
+
+  const status = profile.signedIn
+    ? "Synced with Nuvio"
+    : profile.sessionEnded
+      ? "Nuvio session ended, kept on this device"
+      : "Local profile, kept on this device";
+  const nuvio = profile.signedIn
+    ? "Signed in. Your library, progress and addons sync across devices."
+    : profile.sessionEnded
+      ? "Your session ended. Sign in again to keep syncing; your library and progress here are kept."
+      : "Sign in to sync your library, progress and addons across devices.";
 
   return (
     <SettingsSection section={section("account")}>
@@ -91,27 +105,27 @@ function AccountSection() {
         </Avatar>
         <div className="flex flex-col">
           <span className="text-sm font-medium">{profile.name}</span>
-          <span className="text-sm text-muted-foreground">
-            {profile.signedIn ? "Synced with Nuvio" : "Local profile, kept on this device"}
-          </span>
+          <span className="text-sm text-muted-foreground">{status}</span>
         </div>
       </div>
-      {/* Signing out is #22; switching and managing profiles, #24. */}
-      <SettingRow
-        id="nuvio"
-        label="Nuvio account"
-        description={
-          profile.signedIn
-            ? "Signed in. Your library, progress and addons sync across devices."
-            : "Sign in to sync your library, progress and addons across devices."
-        }
-      >
+      {/* Switching and managing profiles is #24. */}
+      <SettingRow id="nuvio" label="Nuvio account" description={nuvio}>
         {!profile.signedIn && (
-          <Link to="/sign-in" className={buttonVariants({ variant: "outline", size: "sm" })}>
+          <Link
+            to="/sign-in"
+            search={profile.sessionEnded ? { reason: "session-ended" } : {}}
+            className={buttonVariants({ variant: "outline", size: "sm" })}
+          >
             Sign in
           </Link>
         )}
+        {(profile.signedIn || profile.sessionEnded) && (
+          <Button variant="outline" size="sm" onClick={() => setSigningOut(true)}>
+            Sign out
+          </Button>
+        )}
       </SettingRow>
+      <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
       <SettingRow id="profiles" label="Profiles" description="Add, rename and switch profiles.">
         <Button variant="outline" size="sm" disabled>
           Manage

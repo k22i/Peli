@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router"
 import {
   ArrowLeft,
   CloudOff,
+  LogIn,
   LockKeyhole,
   ServerCrash,
   Timer,
@@ -25,8 +26,15 @@ import {
   type SignInErrorCode,
 } from "@/lib/account";
 
+type SignInSearch = {
+  // Why the app sent the user here: their session ended (#22).
+  reason?: "session-ended";
+};
+
 export const Route = createFileRoute("/sign-in")({
   staticData: { chrome: "focus" },
+  validateSearch: (search: Record<string, unknown>): SignInSearch =>
+    search["reason"] === "session-ended" ? { reason: "session-ended" } : {},
   component: SignIn,
 });
 
@@ -75,6 +83,7 @@ function problemFor(error: Error): Problem {
 function SignIn() {
   const navigate = useNavigate();
   const router = useRouter();
+  const sessionEnded = Route.useSearch().reason === "session-ended";
   const profiles = useQuery(profilesQuery);
   const keychain = useQuery(keychainQuery);
   const signIn = useSignIn();
@@ -86,7 +95,9 @@ function SignIn() {
   // first run.
   const firstRun = profiles.data?.length === 0;
   const back = () => {
-    if (router.history.canGoBack()) router.history.back();
+    // The app sent the user here, so "Not now" carries on into it.
+    if (sessionEnded) void navigate({ to: "/" });
+    else if (router.history.canGoBack()) router.history.back();
     else void navigate({ to: firstRun ? "/welcome" : "/settings" });
   };
 
@@ -119,7 +130,7 @@ function SignIn() {
     <div className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center gap-8 px-6 py-12">
       <Button variant="ghost" size="sm" className="-ms-2.5 self-start" onClick={back}>
         <ArrowLeft />
-        Back
+        {sessionEnded ? "Not now" : "Back"}
       </Button>
 
       <header className="flex flex-col gap-2">
@@ -128,6 +139,17 @@ function SignIn() {
           Use the email and password of your Nuvio account.
         </p>
       </header>
+
+      {sessionEnded && (
+        <Alert variant="info">
+          <LogIn />
+          <AlertTitle>Your Nuvio session ended</AlertTitle>
+          <AlertDescription>
+            You were signed out on another device, or the session expired. Sign in again to keep
+            syncing. Your library and progress on this computer are kept.
+          </AlertDescription>
+        </Alert>
+      )}
 
       <Form className="flex flex-col gap-5" errors={errors} onFormSubmit={submit}>
         <Field name="email" className="items-stretch">

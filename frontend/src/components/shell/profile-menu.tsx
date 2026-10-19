@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { LogOut, Puzzle, Settings, Users } from "lucide-react";
+import { LogIn, LogOut, Puzzle, Settings, Users } from "lucide-react";
+import { useState } from "react";
 
+import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Menu,
@@ -20,47 +22,61 @@ import { initials, useCurrentProfile } from "@/lib/profile";
 export function ProfileMenu() {
   const profile = useCurrentProfile();
   const mac = currentPlatform() === "mac";
+  const [signingOut, setSigningOut] = useState(false);
 
   return (
-    <Menu>
-      <MenuTrigger
-        aria-label={`Profile: ${profile.name}`}
-        className="flex w-full items-center gap-2.5 rounded-lg p-1.5 text-start text-sm outline-none hover:bg-sidebar-accent focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-sidebar-accent"
-      >
-        <Avatar className="size-7 bg-sidebar-primary text-sidebar-primary-foreground">
-          <AvatarFallback className="bg-transparent">{initials(profile.name)}</AvatarFallback>
-        </Avatar>
-        <span className="sr-only truncate font-medium md:not-sr-only">{profile.name}</span>
-      </MenuTrigger>
-      <MenuPopup side="top" align="start" className="w-56">
-        <MenuGroup>
-          <MenuGroupLabel>{profile.name}</MenuGroupLabel>
-          {/* Enabled by the profile picker (#24). */}
-          <MenuItem disabled>
-            <Users />
-            Switch profile
-          </MenuItem>
-          <MenuLinkItem render={<Link to="/addons" />}>
-            <Puzzle />
-            Addons
-          </MenuLinkItem>
-          {/* The app shell's shortcut. */}
-          <MenuLinkItem
-            render={<Link to="/settings" />}
-            aria-keyshortcuts={mac ? "Meta+Comma" : "Control+Comma"}
+    <>
+      <Menu>
+        <MenuTrigger
+          aria-label={`Profile: ${profile.name}`}
+          className="flex w-full items-center gap-2.5 rounded-lg p-1.5 text-start text-sm outline-none hover:bg-sidebar-accent focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-sidebar-accent"
+        >
+          <Avatar className="size-7 bg-sidebar-primary text-sidebar-primary-foreground">
+            <AvatarFallback className="bg-transparent">{initials(profile.name)}</AvatarFallback>
+          </Avatar>
+          <span className="sr-only truncate font-medium md:not-sr-only">{profile.name}</span>
+        </MenuTrigger>
+        <MenuPopup side="top" align="start" className="w-56">
+          <MenuGroup>
+            <MenuGroupLabel>{profile.name}</MenuGroupLabel>
+            {/* Enabled by the profile picker (#24). */}
+            <MenuItem disabled>
+              <Users />
+              Switch profile
+            </MenuItem>
+            <MenuLinkItem render={<Link to="/addons" />}>
+              <Puzzle />
+              Addons
+            </MenuLinkItem>
+            {/* The app shell's shortcut. */}
+            <MenuLinkItem
+              render={<Link to="/settings" />}
+              aria-keyshortcuts={mac ? "Meta+Comma" : "Control+Comma"}
+            >
+              <Settings />
+              Settings
+              <MenuShortcut aria-hidden>{mac ? "⌘," : "Ctrl+,"}</MenuShortcut>
+            </MenuLinkItem>
+          </MenuGroup>
+          <MenuSeparator />
+          {profile.sessionEnded && (
+            <MenuLinkItem render={<Link to="/sign-in" search={{ reason: "session-ended" }} />}>
+              <LogIn />
+              Sign in again
+            </MenuLinkItem>
+          )}
+          {/* Guests (#23) have no account to sign out of. After a session
+            ended, signing out still removes the account's data. */}
+          <MenuItem
+            disabled={!profile.signedIn && !profile.sessionEnded}
+            onClick={() => setSigningOut(true)}
           >
-            <Settings />
-            Settings
-            <MenuShortcut aria-hidden>{mac ? "⌘," : "Ctrl+,"}</MenuShortcut>
-          </MenuLinkItem>
-        </MenuGroup>
-        <MenuSeparator />
-        {/* Guests (#23) have no account to sign out of; signing out is #22. */}
-        <MenuItem disabled={!profile.signedIn}>
-          <LogOut />
-          Sign out
-        </MenuItem>
-      </MenuPopup>
-    </Menu>
+            <LogOut />
+            Sign out
+          </MenuItem>
+        </MenuPopup>
+      </Menu>
+      <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
+    </>
   );
 }
