@@ -1,6 +1,6 @@
 {
   "label": "macos-mpv-brew",
-  "app": "<repo>/spikes/baselines/bin/macos/mpv-brew-arm64/Staysh.app",
+  "app": "<repo>/spikes/baselines/bin/macos/mpv-brew-arm64/Cove.app",
   "launch": "open",
   "page": "shell",
   "env": {},
@@ -91,7 +91,7 @@
             {
               "pid": 84684,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40355160,
               "rss": 117276672,
               "responsible": 84684
@@ -182,7 +182,7 @@
             {
               "pid": 84684,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40109400,
               "rss": 117047296,
               "responsible": 84684
@@ -317,7 +317,7 @@
             {
               "pid": 85224,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 42353960,
               "rss": 116441088,
               "responsible": 85224
@@ -416,7 +416,7 @@
             {
               "pid": 85224,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40256808,
               "rss": 116162560,
               "responsible": 85224
@@ -503,7 +503,7 @@
             {
               "pid": 85528,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40174864,
               "rss": 114458624,
               "responsible": 85528
@@ -626,7 +626,7 @@
             {
               "pid": 85528,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 39765264,
               "rss": 114262016,
               "responsible": 85528
@@ -753,7 +753,7 @@
             {
               "pid": 85860,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40453440,
               "rss": 116015104,
               "responsible": 85860
@@ -804,7 +804,7 @@
             {
               "pid": 85860,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40043840,
               "rss": 115736576,
               "responsible": 85860
@@ -971,7 +971,7 @@
             {
               "pid": 86004,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40961392,
               "rss": 115654656,
               "responsible": 86004
@@ -990,7 +990,7 @@
             {
               "pid": 86004,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40519024,
               "rss": 115294208,
               "responsible": 86004
@@ -1157,7 +1157,7 @@
             {
               "pid": 86059,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40699224,
               "rss": 114737152,
               "responsible": 86059
@@ -1248,7 +1248,7 @@
             {
               "pid": 86059,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40158552,
               "rss": 114147328,
               "responsible": 86059
@@ -1391,7 +1391,7 @@
             {
               "pid": 86109,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 41207080,
               "rss": 116801536,
               "responsible": 86109
@@ -1426,7 +1426,7 @@
             {
               "pid": 86109,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40338728,
               "rss": 116506624,
               "responsible": 86109
@@ -1601,7 +1601,7 @@
             {
               "pid": 86166,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40830296,
               "rss": 115736576,
               "responsible": 86166
@@ -1628,7 +1628,7 @@
             {
               "pid": 86166,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40322392,
               "rss": 115376128,
               "responsible": 86166
@@ -1771,7 +1771,7 @@
             {
               "pid": 86225,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40519000,
               "rss": 114343936,
               "responsible": 86225
@@ -1886,7 +1886,7 @@
             {
               "pid": 86225,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 40158552,
               "rss": 114081792,
               "responsible": 86225
@@ -1965,7 +1965,7 @@
             {
               "pid": 86275,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 41714984,
               "rss": 122306560,
               "responsible": 86275
@@ -2096,7 +2096,7 @@
             {
               "pid": 86275,
               "ppid": 1,
-              "name": "staysh-baseline",
+              "name": "cove-baseline",
               "footprint": 41207080,
               "rss": 122109952,
               "responsible": 86275

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleExecutable</key>
-    <string>staysh</string>
+    <string>cove</string>
     <key>CFBundleIdentifier</key>
-    <string>k22i.net.staysh</string>
+    <string>k22i.net.cove</string>
     <key>CFBundleName</key>
     <string>My Product</string>
     <key>CFBundleDisplayName</key>

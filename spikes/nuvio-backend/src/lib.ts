@@ -12,7 +12,7 @@ try {
 }
 
 // Honest user agent: who we are and where to find us. supabase-js adds its own X-Client-Info.
-export const userAgent = 'Staysh/0.0.0-spike (+https://github.com/k22i/Staysh; nuvio-backend spike)';
+export const userAgent = 'Cove/0.0.0-spike (+https://github.com/k22i/Cove; nuvio-backend spike)';
 
 export type Target = { name: 'live' | 'local'; url: string; key: string; discovery: unknown };
 

@@ -10,7 +10,7 @@ import (
 )
 
 func ipcEndpoint() string {
-	return filepath.Join(os.TempDir(), fmt.Sprintf("staysh-mpv-%d.sock", os.Getpid()))
+	return filepath.Join(os.TempDir(), fmt.Sprintf("cove-mpv-%d.sock", os.Getpid()))
 }
 
 func dialEndpoint(path string) (net.Conn, error) { return net.Dial("unix", path) }

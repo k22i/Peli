@@ -13,7 +13,7 @@
     "widKind": "X11 Window",
     "mpvBin": "/usr/bin/mpv",
     "mpvVersion": "mpv v0.40.0",
-    "endpoint": "/tmp/staysh-mpv-1175.sock",
+    "endpoint": "/tmp/cove-mpv-1175.sock",
     "embed": {
       "embedded": true,
       "hostKind": "X11 Window",
@@ -34,7 +34,7 @@
     {
       "step": "launch",
       "ok": true,
-      "detail": "--wid=8388616 (X11 Window); GdkX11Surface XID of the GTK4 toplevel; ipc /tmp/staysh-mpv-1175.sock",
+      "detail": "--wid=8388616 (X11 Window); GdkX11Surface XID of the GTK4 toplevel; ipc /tmp/cove-mpv-1175.sock",
       "ms": 160
     },
     {

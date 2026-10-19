@@ -1,6 +1,6 @@
 {
   "label": "windows-shell-home",
-  "app": "C:\\Program Files\\k22i\\Staysh\\staysh.exe",
+  "app": "C:\\Program Files\\k22i\\Cove\\cove.exe",
   "launch": "exec",
   "page": "home",
   "env": {},
@@ -116,7 +116,7 @@
             {
               "pid": 8156,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 30355456,
               "private": 17768448,
               "privateWS": 5152768
@@ -159,7 +159,7 @@
             {
               "pid": 8156,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31186944,
               "private": 18497536,
               "privateWS": 5943296
@@ -218,7 +218,7 @@
             {
               "pid": 8156,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31219712,
               "private": 18530304,
               "privateWS": 5980160
@@ -338,7 +338,7 @@
             {
               "pid": 5452,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 30511104,
               "private": 18153472,
               "privateWS": 5201920
@@ -453,7 +453,7 @@
             {
               "pid": 5452,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31379456,
               "private": 18976768,
               "privateWS": 6033408
@@ -480,7 +480,7 @@
             {
               "pid": 5452,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31416320,
               "private": 19009536,
               "privateWS": 6070272
@@ -624,7 +624,7 @@
             {
               "pid": 5968,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31244288,
               "private": 18640896,
               "privateWS": 5992448
@@ -675,7 +675,7 @@
             {
               "pid": 5968,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31272960,
               "private": 18673664,
               "privateWS": 6021120
@@ -742,7 +742,7 @@
             {
               "pid": 5968,
               "ppid": 5484,
-              "name": "staysh.exe",
+              "name": "cove.exe",
               "rss": 31297536,
               "private": 18698240,
               "privateWS": 6049792

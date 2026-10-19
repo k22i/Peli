@@ -1,6 +1,6 @@
 {
   "label": "linux-mpv-appimage",
-  "app": "/home/runner/work/Staysh/Staysh/spikes/baselines/bin/linux/mpv/staysh-x86_64.AppImage",
+  "app": "/home/runner/work/Staysh/Staysh/spikes/baselines/bin/linux/mpv/cove-x86_64.AppImage",
   "launch": "exec",
   "page": "shell",
   "env": {},
@@ -131,7 +131,7 @@
             {
               "pid": 21747,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325640192,
               "pss": 249763840,
               "private": 201887744
@@ -150,7 +150,7 @@
             {
               "pid": 21747,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320839680,
               "pss": 244861952,
               "private": 196886528
@@ -317,7 +317,7 @@
             {
               "pid": 21844,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325767168,
               "pss": 249773056,
               "private": 201891840
@@ -368,7 +368,7 @@
             {
               "pid": 21844,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320950272,
               "pss": 244855808,
               "private": 196874240
@@ -543,7 +543,7 @@
             {
               "pid": 21937,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325754880,
               "pss": 249953280,
               "private": 202108928
@@ -594,7 +594,7 @@
             {
               "pid": 21937,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320987136,
               "pss": 245085184,
               "private": 197140480
@@ -745,7 +745,7 @@
             {
               "pid": 22032,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325935104,
               "pss": 250104832,
               "private": 202203136
@@ -796,7 +796,7 @@
             {
               "pid": 22032,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 321134592,
               "pss": 245202944,
               "private": 197201920
@@ -915,7 +915,7 @@
             {
               "pid": 22128,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325959680,
               "pss": 250096640,
               "private": 202235904
@@ -1022,7 +1022,7 @@
             {
               "pid": 22128,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 321122304,
               "pss": 245158912,
               "private": 197197824
@@ -1149,7 +1149,7 @@
             {
               "pid": 22229,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325353472,
               "pss": 249456640,
               "private": 201572352
@@ -1256,7 +1256,7 @@
             {
               "pid": 22229,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320569344,
               "pss": 244571136,
               "private": 196587520
@@ -1375,7 +1375,7 @@
             {
               "pid": 22326,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325369856,
               "pss": 249496576,
               "private": 201584640
@@ -1450,7 +1450,7 @@
             {
               "pid": 22326,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320552960,
               "pss": 244578304,
               "private": 196567040
@@ -1577,7 +1577,7 @@
             {
               "pid": 22422,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325791744,
               "pss": 249810944,
               "private": 201912320
@@ -1636,7 +1636,7 @@
             {
               "pid": 22422,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320974848,
               "pss": 244892672,
               "private": 196894720
@@ -1771,7 +1771,7 @@
             {
               "pid": 22517,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 325464064,
               "pss": 249604096,
               "private": 201687040
@@ -1830,7 +1830,7 @@
             {
               "pid": 22517,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 320667648,
               "pss": 244706304,
               "private": 196689920
@@ -2021,7 +2021,7 @@
             {
               "pid": 22612,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 326135808,
               "pss": 250175488,
               "private": 202285056
@@ -2072,7 +2072,7 @@
             {
               "pid": 22612,
               "ppid": 21741,
-              "name": "staysh",
+              "name": "cove",
               "rss": 321335296,
               "pss": 245274624,
               "private": 197283840

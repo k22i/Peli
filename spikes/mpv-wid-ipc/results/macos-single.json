@@ -11,9 +11,9 @@
     "mode": "single",
     "wid": 517754348288,
     "widKind": "NSView*",
-    "mpvBin": "/private/tmp/claude-501/-Users-kevinmallari-Developer-staysh/4793e572-93db-4f4d-8e27-7e6ab90acfdb/scratchpad/mpv/mpv.app/Contents/MacOS/mpv",
+    "mpvBin": "/private/tmp/claude-501/-Users-kevinmallari-Developer-cove/4793e572-93db-4f4d-8e27-7e6ab90acfdb/scratchpad/mpv/mpv.app/Contents/MacOS/mpv",
     "mpvVersion": "mpv v0.41.0-dev-g41f6a6450",
-    "endpoint": "/var/folders/14/c563rnjd50g_nplx0535lx0r0000gn/T/staysh-mpv-96468.sock",
+    "endpoint": "/var/folders/14/c563rnjd50g_nplx0535lx0r0000gn/T/cove-mpv-96468.sock",
     "embed": {
       "embedded": false,
       "hostBounds": "100,100 1279x751",
@@ -32,7 +32,7 @@
     {
       "step": "launch",
       "ok": true,
-      "detail": "--wid=517754348288 (NSView*); in-process pointer; mpv 0.41 has no Cocoa --wid support (only x11/win32/android read it); ipc /var/folders/14/c563rnjd50g_nplx0535lx0r0000gn/T/staysh-mpv-96468.sock",
+      "detail": "--wid=517754348288 (NSView*); in-process pointer; mpv 0.41 has no Cocoa --wid support (only x11/win32/android read it); ipc /var/folders/14/c563rnjd50g_nplx0535lx0r0000gn/T/cove-mpv-96468.sock",
       "ms": 558
     },
     {

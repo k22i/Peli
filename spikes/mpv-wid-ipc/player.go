@@ -162,7 +162,7 @@ func mpvLogPath() string {
 	if l := os.Getenv("SPIKE_MPV_LOG"); l != "" {
 		return l
 	}
-	return filepath.Join(os.TempDir(), "staysh-spike-mpv.log")
+	return filepath.Join(os.TempDir(), "cove-spike-mpv.log")
 }
 
 func (p *Player) start() error {

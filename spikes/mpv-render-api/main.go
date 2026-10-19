@@ -45,7 +45,7 @@ func main() {
 	player := newPlayer(mode)
 
 	app := application.New(application.Options{
-		Name:        "staysh-spike-mpv-render-api",
+		Name:        "cove-spike-mpv-render-api",
 		Description: "Spike: mpv render API under a Wails v3 webview",
 		Services:    []application.Service{application.NewService(player)},
 		Assets:      application.AssetOptions{Handler: application.AssetFileServerFS(assets)},
@@ -56,7 +56,7 @@ func main() {
 
 	mainOpts := application.WebviewWindowOptions{
 		Name:             "main",
-		Title:            "Staysh spike: mpv render API (" + mode + ")",
+		Title:            "Cove spike: mpv render API (" + mode + ")",
 		Width:            1280,
 		Height:           720,
 		BackgroundType:   application.BackgroundTypeTransparent,
@@ -79,7 +79,7 @@ func main() {
 	if mode == "overlay" {
 		ov := app.Window.NewWithOptions(application.WebviewWindowOptions{
 			Name:             "overlay",
-			Title:            "Staysh spike overlay",
+			Title:            "Cove spike overlay",
 			Width:            mainOpts.Width,
 			Height:           mainOpts.Height,
 			Frameless:        true,

@@ -1,6 +1,6 @@
 # Spike: Nuvio backend access
 
-Throwaway code for [#5](https://github.com/k22i/Staysh/issues/5). The findings are in
+Throwaway code for [#5](https://github.com/k22i/Cove/issues/5). The findings are in
 [`docs/spikes/nuvio-backend.md`](../../docs/spikes/nuvio-backend.md). Don't build on this code.
 
 A small CLI over `@supabase/supabase-js` that signs in to a Nuvio backend and exercises the sync functions a desktop client needs. It records shapes, timings, errors and rate-limit headers. It runs on Node ≥ 24 with no build step: Node strips the TypeScript types itself.

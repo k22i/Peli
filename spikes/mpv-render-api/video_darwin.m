@@ -108,7 +108,7 @@ static void on_update(void *ctx) {
 	block = getenv("SPIKE_NO_BLOCK") == NULL;
 	g_async = getenv("SPIKE_GL_ASYNC") != NULL;
 	g_thread = getenv("SPIKE_GL_THREAD") != NULL;
-	if (g_thread) g_queue = dispatch_queue_create("staysh.mpv.render", DISPATCH_QUEUE_SERIAL);
+	if (g_thread) g_queue = dispatch_queue_create("cove.mpv.render", DISPATCH_QUEUE_SERIAL);
 	self.asynchronous = g_async;
 	self.needsDisplayOnBoundsChange = YES;
 	self.backgroundColor = CGColorGetConstantColor(kCGColorBlack);

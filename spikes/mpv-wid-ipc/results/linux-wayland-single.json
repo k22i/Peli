@@ -13,7 +13,7 @@
     "widKind": "wl_surface",
     "mpvBin": "/usr/bin/mpv",
     "mpvVersion": "mpv v0.40.0",
-    "endpoint": "/tmp/staysh-mpv-718.sock",
+    "endpoint": "/tmp/cove-mpv-718.sock",
     "embed": {
       "embedded": false,
       "hostKind": "wl_surface",
@@ -31,7 +31,7 @@
     {
       "step": "launch",
       "ok": true,
-      "detail": "--wid=-1 (wl_surface); Wayland has no foreign-surface embedding; mpv 0.41 does not read --wid on Wayland, so it is not passed; ipc /tmp/staysh-mpv-718.sock",
+      "detail": "--wid=-1 (wl_surface); Wayland has no foreign-surface embedding; mpv 0.41 does not read --wid on Wayland, so it is not passed; ipc /tmp/cove-mpv-718.sock",
       "ms": 1242
     },
     {

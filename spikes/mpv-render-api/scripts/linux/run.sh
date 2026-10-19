@@ -85,7 +85,7 @@ if wait_for SPIKE_READY_FOR_INPUT 150; then
   probes=("640 360" "34 690" "34 690" "1000 250")
   case "$session" in
   x11)
-    win=$(xdotool search --name "Staysh spike: mpv render API" | head -1)
+    win=$(xdotool search --name "Cove spike: mpv render API" | head -1)
     # xdotool is relative to the X window, which includes any CSD shadow.
     for pt in "${probes[@]}"; do
       set -- $pt

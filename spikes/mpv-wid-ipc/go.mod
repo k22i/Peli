@@ -1,4 +1,4 @@
-module staysh/spikes/mpvwid
+module cove/spikes/mpvwid
 
 go 1.25.0
 

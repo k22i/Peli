@@ -2,7 +2,7 @@
 // it got to each startup milestone (relative to the spawn) and how much memory
 // the whole process tree uses once idle (app + webview helper processes).
 //
-//	bench -app bin/Staysh.app -runs 10 -label macos-shell -out results/macos-shell.json
+//	bench -app bin/Cove.app -runs 10 -label macos-shell -out results/macos-shell.json
 package main
 
 import (

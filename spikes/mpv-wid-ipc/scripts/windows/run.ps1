@@ -66,7 +66,7 @@ function Wait-Log([string]$pattern, [int]$seconds) {
 $probe = @{}
 if (Wait-Log "SPIKE_READY_FOR_INPUT" 90) {
   # [NullString] so the class argument is NULL, not "" (which matches nothing).
-  $hwnd = [W]::FindWindowW([NullString]::Value, "Staysh spike: mpv --wid ($Mode)")
+  $hwnd = [W]::FindWindowW([NullString]::Value, "Cove spike: mpv --wid ($Mode)")
   [W]::SetForegroundWindow($hwnd) | Out-Null
   $pt = New-Object W+POINT; $pt.X = 0; $pt.Y = 0
   [W]::ClientToScreen($hwnd, [ref]$pt) | Out-Null

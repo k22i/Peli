@@ -61,7 +61,7 @@
     },
     "httpUrl": "http://127.0.0.1:50714/media.mp4",
     "slowUrl": "http://127.0.0.1:50714/slow.mp4",
-    "localFile": "D:\\a\\Staysh\\Staysh\\spikes\\libmpv-cgo\\media\\test.mp4"
+    "localFile": "D:\\a\\Cove\\Cove\\spikes\\libmpv-cgo\\media\\test.mp4"
   },
   "inputs": [
     {
@@ -254,7 +254,7 @@
     {
       "step": "play-local",
       "ok": true,
-      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\libmpv-cgo\\media\\test.mp4 loadfile-\u003eplayback-restart=1747ms time-pos=1.00 duration=60.00 hwdec=no",
+      "detail": "D:\\a\\Cove\\Cove\\spikes\\libmpv-cgo\\media\\test.mp4 loadfile-\u003eplayback-restart=1747ms time-pos=1.00 duration=60.00 hwdec=no",
       "ms": 3192
     },
     {
@@ -320,7 +320,7 @@
     {
       "step": "play-loop",
       "ok": true,
-      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\libmpv-cgo\\media\\test.mp4 loadfile-\u003eplayback-restart=423ms time-pos=1.00 duration=60.00 hwdec=no",
+      "detail": "D:\\a\\Cove\\Cove\\spikes\\libmpv-cgo\\media\\test.mp4 loadfile-\u003eplayback-restart=423ms time-pos=1.00 duration=60.00 hwdec=no",
       "ms": 1453
     },
     {

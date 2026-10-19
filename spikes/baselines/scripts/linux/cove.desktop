@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Cove
+Comment=Cove baseline spike
+Exec=cove %u
+Terminal=false
+Type=Application
+Icon=cove
+Categories=AudioVideo;
+StartupWMClass=cove

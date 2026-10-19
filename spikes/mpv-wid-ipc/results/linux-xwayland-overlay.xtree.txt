@@ -6,7 +6,7 @@ xwininfo: Window id: 0x239 (the root window) (has no name)
      7 children:
      0x20003d (has no name): ()  1356x817+0+0  +0+0
         1 child:
-        0x800008 "Staysh spike: mpv --wid (overlay)": ("spike-linux" "spike-linux")  1280x720+38+59  +38+59
+        0x800008 "Cove spike: mpv --wid (overlay)": ("spike-linux" "spike-linux")  1280x720+38+59  +38+59
            2 children:
            0xa00002 (has no name): ("gl" "mpv")  1280x720+0+0  +38+59
            0x800009 (has no name): ()  1x1+-1+-1  +37+58

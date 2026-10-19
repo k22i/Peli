@@ -1,4 +1,4 @@
-module staysh/spikes/mpvrenderapi
+module cove/spikes/mpvrenderapi
 
 go 1.25.0
 

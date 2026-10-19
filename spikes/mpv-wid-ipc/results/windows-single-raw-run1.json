@@ -11,9 +11,9 @@
     "mode": "single",
     "wid": 458780,
     "widKind": "HWND",
-    "mpvBin": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\mpv\\mpv.exe",
+    "mpvBin": "D:\\a\\Cove\\Cove\\spikes\\mpv-wid-ipc\\mpv\\mpv.exe",
     "mpvVersion": "mpv v0.41.0-dev-g41f6a6450",
-    "endpoint": "\\\\.\\pipe\\staysh-mpv-1804",
+    "endpoint": "\\\\.\\pipe\\cove-mpv-1804",
     "embed": {
       "childrenAfter": [
         "Chrome_WidgetWin_0(0x201f6 vis=0 72,109 0x0)",
@@ -33,7 +33,7 @@
       "zorder": "none"
     },
     "httpUrl": "http://127.0.0.1:51973/media.mp4",
-    "localFile": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\media\\test.mp4"
+    "localFile": "D:\\a\\Cove\\Cove\\spikes\\mpv-wid-ipc\\media\\test.mp4"
   },
   "inputs": [
     {
@@ -55,13 +55,13 @@
     {
       "step": "launch",
       "ok": true,
-      "detail": "--wid=458780 (HWND); top-level HWND of the Wails window; ipc \\\\.\\pipe\\staysh-mpv-1804",
+      "detail": "--wid=458780 (HWND); top-level HWND of the Wails window; ipc \\\\.\\pipe\\cove-mpv-1804",
       "ms": 54
     },
     {
       "step": "play-local",
       "ok": true,
-      "detail": "D:\\a\\Staysh\\Staysh\\spikes\\mpv-wid-ipc\\media\\test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
+      "detail": "D:\\a\\Cove\\Cove\\spikes\\mpv-wid-ipc\\media\\test.mp4 time-pos=1.00 duration=60.00 hwdec=no",
       "ms": 2678
     },
     {

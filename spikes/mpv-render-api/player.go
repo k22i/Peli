@@ -220,7 +220,7 @@ func mpvLogPath() string {
 	if l := os.Getenv("SPIKE_MPV_LOG"); l != "" {
 		return l
 	}
-	return filepath.Join(os.TempDir(), "staysh-spike-mpv-render.log")
+	return filepath.Join(os.TempDir(), "cove-spike-mpv-render.log")
 }
 
 // mpvOptions are the options set before mpv_initialize, as name/value pairs.

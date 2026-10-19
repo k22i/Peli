@@ -1,6 +1,6 @@
 # Spike: mpv child process via `--wid` + JSON IPC in a Wails v3 window
 
-Issue: [#2](https://github.com/k22i/Staysh/issues/2) · Epic: [#1](https://github.com/k22i/Staysh/issues/1) · Date: 2026-10-09
+Issue: [#2](https://github.com/k22i/Cove/issues/2) · Epic: [#1](https://github.com/k22i/Cove/issues/1) · Date: 2026-10-09
 Spike code: [`spikes/mpv-wid-ipc/`](../../spikes/mpv-wid-ipc/) (throwaway). Raw results: [`spikes/mpv-wid-ipc/results/`](../../spikes/mpv-wid-ipc/results/).
 
 ## Verdict
@@ -135,6 +135,6 @@ Process memory on macOS while playing 720p: the spike app was ~105 MB RSS and mp
 
 See [`spikes/mpv-wid-ipc/README.md`](../../spikes/mpv-wid-ipc/README.md). In short: `scripts/make-media.sh`, build the frontend, then:
 
-- Linux: `docker build -t staysh-spike-linux scripts/linux && docker run --rm -v "$PWD":/spike staysh-spike-linux scripts/linux/run.sh x11 overlay`
+- Linux: `docker build -t cove-spike-linux scripts/linux && docker run --rm -v "$PWD":/spike cove-spike-linux scripts/linux/run.sh x11 overlay`
 - Windows: run the `spike-mpv-wid-ipc` workflow
 - macOS: `SPIKE_SELFTEST=$PWD/results/macos-single.json ./bin/spike`

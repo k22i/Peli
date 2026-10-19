@@ -6,10 +6,10 @@ Unicode true
 #
 #   makensis -DSRC=<folder> -DOUT=<installer.exe> [-DSOLID_LZMA] installer.nsi
 
-!define INFO_PROJECTNAME    "staysh"
-!define INFO_PRODUCTNAME    "Staysh"
+!define INFO_PROJECTNAME    "cove"
+!define INFO_PRODUCTNAME    "Cove"
 !define INFO_COPYRIGHT      "(c) 2026, k22i"
-!define ARG_WAILS_AMD64_BINARY "${SRC}/staysh.exe"
+!define ARG_WAILS_AMD64_BINARY "${SRC}/cove.exe"
 !include "wails_tools.nsh"
 
 !ifdef SOLID_LZMA

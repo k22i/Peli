@@ -1,6 +1,6 @@
 # Spike: mpv render API under the webview (macOS, Wayland, X11)
 
-Issue: [#4](https://github.com/k22i/Staysh/issues/4) · Epic: [#1](https://github.com/k22i/Staysh/issues/1) · Previous spikes: [mpv `--wid` + JSON IPC](mpv-wid-ipc.md) (#2), [libmpv via cgo](libmpv-cgo.md) (#3) · Date: 2026-10-09
+Issue: [#4](https://github.com/k22i/Cove/issues/4) · Epic: [#1](https://github.com/k22i/Cove/issues/1) · Previous spikes: [mpv `--wid` + JSON IPC](mpv-wid-ipc.md) (#2), [libmpv via cgo](libmpv-cgo.md) (#3) · Date: 2026-10-09
 Spike code: [`spikes/mpv-render-api/`](../../spikes/mpv-render-api/) (throwaway). Raw results: [`spikes/mpv-render-api/results/`](../../spikes/mpv-render-api/results/).
 
 ## Verdict
@@ -187,4 +187,4 @@ The binding ([`mpv.go`](../../spikes/mpv-render-api/mpv.go)) is #3's, plus one a
 See [`spikes/mpv-render-api/README.md`](../../spikes/mpv-render-api/README.md). In short: `scripts/make-media.sh`, build the frontend, then:
 
 - macOS: `go build -o bin/spike .`, then `SPIKE_GL_THREAD=1 scripts/macos/run.sh gl gl-thread` (also `gl`, `sw`, `SPIKE_NO_BLOCK=1`, `SPIKE_GL_ASYNC=1`, `SPIKE_HDR=pq|linear`), and `scripts/macos/bench-mpv.sh gpu-next|libmpv` for the standalone-mpv baseline.
-- Linux: `docker build -t staysh-spike-render scripts/linux`, then `docker run --rm -v "$PWD":/spike staysh-spike-render scripts/linux/run-all.sh` (or `scripts/linux/run.sh {wayland|x11} <mode>`).
+- Linux: `docker build -t cove-spike-render scripts/linux`, then `docker run --rm -v "$PWD":/spike cove-spike-render scripts/linux/run-all.sh` (or `scripts/linux/run.sh {wayland|x11} <mode>`).

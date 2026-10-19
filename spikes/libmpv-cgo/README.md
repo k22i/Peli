@@ -1,6 +1,6 @@
 # Spike: libmpv via cgo in a Wails v3 window
 
-Throwaway code for [#3](https://github.com/k22i/Staysh/issues/3). The findings are
+Throwaway code for [#3](https://github.com/k22i/Cove/issues/3). The findings are
 in [`docs/spikes/libmpv-cgo.md`](../../docs/spikes/libmpv-cgo.md). Don't build on this code.
 
 The #2 harness ([`spikes/mpv-wid-ipc`](../mpv-wid-ipc/)) with the mpv child process swapped for libmpv, linked in-process through cgo. It's its own Go module, so the app's `go.mod` is untouched. It:
@@ -47,8 +47,8 @@ Set `SPIKE_SELFTEST=results/<name>.json` to run the scripted checks: play local,
 
 - **Linux X11** (Xvfb + openbox + picom), in Docker:
   ```sh
-  docker build -t staysh-spike-libmpv scripts/linux
-  docker run --rm -v "$PWD":/spike staysh-spike-libmpv scripts/linux/run.sh single    # or overlay
+  docker build -t cove-spike-libmpv scripts/linux
+  docker run --rm -v "$PWD":/spike cove-spike-libmpv scripts/linux/run.sh single    # or overlay
   ```
 - **Windows**: `.github/workflows/spike-libmpv-cgo.yml` cross-compiles on Linux, runs `scripts/windows/run.ps1` on hosted runners, and uploads `results/` as artifacts.
 

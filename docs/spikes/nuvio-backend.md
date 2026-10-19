@@ -1,6 +1,6 @@
 # Spike: Nuvio backend access
 
-Issue: [#5](https://github.com/k22i/Staysh/issues/5) · Epic: [#1](https://github.com/k22i/Staysh/issues/1) · Feeds: [#28](https://github.com/k22i/Staysh/issues/28) (sync module), [#33](https://github.com/k22i/Staysh/issues/33) (sync contract tests), [#8](https://github.com/k22i/Staysh/issues/8) (M0 gate) · Date: 2026-10-11
+Issue: [#5](https://github.com/k22i/Cove/issues/5) · Epic: [#1](https://github.com/k22i/Cove/issues/1) · Feeds: [#28](https://github.com/k22i/Cove/issues/28) (sync module), [#33](https://github.com/k22i/Cove/issues/33) (sync contract tests), [#8](https://github.com/k22i/Cove/issues/8) (M0 gate) · Date: 2026-10-11
 Spike code: [`spikes/nuvio-backend/`](../../spikes/nuvio-backend/) (throwaway). Raw results: [`spikes/nuvio-backend/results/`](../../spikes/nuvio-backend/results/) (`live-*` = `api.nuvio.tv`, `local-*` = self-host stack; values replaced by their types).
 
 ## Verdict
@@ -28,7 +28,7 @@ Spike code: [`spikes/nuvio-backend/`](../../spikes/nuvio-backend/) (throwaway). 
 | Base URL | `https://api.nuvio.tv` (Cloudflare → Caddy → Kong 3.9.1 → PostgREST / GoTrue / edge functions) |
 | Key | `GET /.well-known/nuvio` → `{version, service, self_hosted, backend_url, publishable_key, capabilities: {email_password_auth, tv_login}}`. Send it as `apikey` on every request. `self_hosted: true` on live too. |
 | Custom backends | Same discovery doc on any self-host, so "custom backend" in #28 can be just a URL. |
-| User agent | Ours (`Staysh/<version> (+https://github.com/k22i/Staysh)`). Sessions show up in the user's `list_my_sessions` with platform parsed from it. `register_current_session(p_client_name, p_client_version, p_platform, p_device_name)` names the client properly. |
+| User agent | Ours (`Cove/<version> (+https://github.com/k22i/Cove)`). Sessions show up in the user's `list_my_sessions` with platform parsed from it. `register_current_session(p_client_name, p_client_version, p_platform, p_device_name)` names the client properly. |
 
 **Email/password:** `auth.signInWithPassword`. Live access tokens last **604,800 s (7 days)**, with a refresh token. Wrong credentials: HTTP 400, `invalid_credentials` (also in `x-sb-error-code`).
 
@@ -136,7 +136,7 @@ Same codes on live and local unless noted.
 4. **Profiles are addressed by index (1–6), not UUID.** Profiles with `uses_primary_addons` / `uses_primary_plugins` = true presumably share profile 1's lists. Only one profile existed here, so that's unverified. New profiles with it false get Cinemeta + OpenSubtitles server-side.
 5. **Overloaded functions.** Most pushes exist with and without `p_origin_client_id`, and PostgREST picks by argument names. Always send every argument, including the origin client ID, or the wrong overload is matched (or `PGRST202`).
 6. **Access tokens last 7 days on live.** Supabase Auth rotates refresh tokens on use. Store the session in the OS keychain and refresh from one place only: two parallel refreshes with the same refresh token risk signing the user out. Refresh wasn't exercised in this spike.
-7. **We show up in the user's session list.** Call `register_current_session` with a clear name ("Staysh on macOS"), so users can recognise and revoke us.
+7. **We show up in the user's session list.** Call `register_current_session` with a clear name ("Cove on macOS"), so users can recognise and revoke us.
 
 ## Inputs for #33 (contract tests)
 

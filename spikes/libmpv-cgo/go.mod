@@ -1,4 +1,4 @@
-module staysh/spikes/libmpvcgo
+module cove/spikes/libmpvcgo
 
 go 1.25.0
 

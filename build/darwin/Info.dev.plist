@@ -6,9 +6,9 @@
         <key>CFBundleName</key>
             <string>My Product</string>
         <key>CFBundleExecutable</key>
-            <string>staysh</string>
+            <string>cove</string>
         <key>CFBundleIdentifier</key>
-            <string>k22i.net.staysh</string>
+            <string>k22i.net.cove</string>
         <key>CFBundleVersion</key>
             <string>0.1.0</string>
         <key>CFBundleGetInfoString</key>
