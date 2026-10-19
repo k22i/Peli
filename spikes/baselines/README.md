@@ -1,6 +1,6 @@
 # Spike: baseline measurements (installer size, cold start, idle memory)
 
-Throwaway code for [#7](https://github.com/k22i/Cove/issues/7). The findings are
+Throwaway code for [#7](https://github.com/k22i/Sinag/issues/7). The findings are
 in [`docs/spikes/baselines.md`](../../docs/spikes/baselines.md). Don't build on this code.
 
 An empty Wails v3 shell (React sidebar, header and empty page; Wails beta.28, the app's version), built with and without libmpv, packaged the way #77–#79 would ship it, and measured. It's its own Go module, so the app's `go.mod` is untouched.
@@ -24,7 +24,7 @@ Build the frontend first: `(cd frontend && npm install && npm run build)`.
   ```
   `scripts/macos/bundle-brew.py` copies Homebrew's libmpv and every Homebrew dylib it needs into `Contents/Frameworks` with `@rpath` install names.
 - **Windows**: the [`spike-baselines`](../../.github/workflows/spike-baselines.yml) workflow cross-builds on Ubuntu with mingw-w64, packs NSIS installers with `makensis` ([`scripts/windows/package.sh`](scripts/windows/package.sh), [`installer.nsi`](scripts/windows/installer.nsi)), then installs each silently on a `windows-2025` runner and runs the launcher.
-- **Linux**: the same workflow on `ubuntu-24.04` ([`scripts/linux/package.sh`](scripts/linux/package.sh): `.deb` via nfpm, AppImage via `wails3 generate appimage`; [`scripts/linux/bench.sh`](scripts/linux/bench.sh) under Xvfb). Locally: `docker build -t cove-spike-baselines scripts/linux`, then from the repo root `docker run --rm --privileged -v "$PWD":/repo -w /repo/spikes/baselines cove-spike-baselines scripts/linux/package.sh` (the same image runs `scripts/windows/package.sh`).
+- **Linux**: the same workflow on `ubuntu-24.04` ([`scripts/linux/package.sh`](scripts/linux/package.sh): `.deb` via nfpm, AppImage via `wails3 generate appimage`; [`scripts/linux/bench.sh`](scripts/linux/bench.sh) under Xvfb). Locally: `docker build -t sinag-spike-baselines scripts/linux`, then from the repo root `docker run --rm --privileged -v "$PWD":/repo -w /repo/spikes/baselines sinag-spike-baselines scripts/linux/package.sh` (the same image runs `scripts/windows/package.sh`).
 
 libmpv builds compared:
 

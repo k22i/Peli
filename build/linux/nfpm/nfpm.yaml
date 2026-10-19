@@ -3,7 +3,7 @@
 #
 # The lines below are called `modelines`. See `:help modeline`
 
-name: "cove"
+name: "sinag"
 arch: ${GOARCH}
 platform: "linux"
 version: "0.1.0"
@@ -12,17 +12,17 @@ priority: "extra"
 maintainer: ${GIT_COMMITTER_NAME} <${GIT_COMMITTER_EMAIL}>
 description: "A desktop client for Stremio-compatible addons, with Nuvio sync"
 vendor: "k22i"
-homepage: "https://github.com/k22i/Cove"
+homepage: "https://github.com/k22i/Sinag"
 license: "MIT"
 release: "1"
 
 contents:
-  - src: "./bin/cove"
-    dst: "/usr/local/bin/cove"
+  - src: "./bin/sinag"
+    dst: "/usr/local/bin/sinag"
   - src: "./build/appicon.png"
-    dst: "/usr/share/icons/hicolor/128x128/apps/cove.png"
-  - src: "./build/linux/cove.desktop"
-    dst: "/usr/share/applications/cove.desktop"
+    dst: "/usr/share/icons/hicolor/128x128/apps/sinag.png"
+  - src: "./build/linux/sinag.desktop"
+    dst: "/usr/share/applications/sinag.desktop"
 
 # Default dependencies for the GTK4 + WebKitGTK 6.0 stack (Ubuntu 24.04+ / Debian 13+)
 depends:

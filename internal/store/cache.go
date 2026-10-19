@@ -2,7 +2,7 @@ package store
 
 import bolt "go.etcd.io/bbolt"
 
-// The cache holds data Cove can fetch again, such as the frontend's persisted
+// The cache holds data Sinag can fetch again, such as the frontend's persisted
 // query cache. Keys are shared by all profiles; put the profile in the key
 // when an entry belongs to one.
 

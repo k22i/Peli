@@ -9,7 +9,7 @@ runs=${RUNS:-10}
 b=bin/macos
 go build -o bin/bench ./bench
 run() { # variant label [extra flags]
-  local app=$b/$1/Cove.app label=$2
+  local app=$b/$1/Sinag.app label=$2
   shift 2
   ./bin/bench -app "$app" -launch open -label "$label" -out "results/$label.json" -runs "$runs" "$@" 2>&1 | grep -E "run [0-9]+:"
 }

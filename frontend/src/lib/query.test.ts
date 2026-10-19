@@ -39,12 +39,12 @@ describe("persisted query cache", () => {
     await persistQueryClientSave({ queryClient, ...options });
     await flush();
 
-    const cache: unknown = JSON.parse(saved.get("cove-query-cache") ?? "null");
+    const cache: unknown = JSON.parse(saved.get("sinag-query-cache") ?? "null");
     expect(cache).toMatchObject({
       buster: cacheBuster,
       clientState: { queries: [{ queryKey: ["addons"], state: { data: ["cinemeta"] } }] },
     });
     expect(cache).toHaveProperty("clientState.queries.length", 1);
-    expect(saved.get("cove-query-cache")).not.toContain("eyJ.token.sig");
+    expect(saved.get("sinag-query-cache")).not.toContain("eyJ.token.sig");
   });
 });

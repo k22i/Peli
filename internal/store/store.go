@@ -1,4 +1,4 @@
-// Package store is Cove's local database: profiles, their library, watch
+// Package store is Sinag's local database: profiles, their library, watch
 // progress, watched items and addons, the sync bookkeeping (#28) and a cache.
 // It is one bbolt file in the OS app-data directory (ADR-0006).
 //
@@ -49,8 +49,8 @@ var (
 var (
 	ErrProfileNotFound = errors.New("store: profile not found")
 	ErrInvalidItem     = errors.New("store: invalid item")
-	ErrNewerSchema     = errors.New("store: database was written by a newer version of Cove")
-	ErrLocked          = errors.New("store: database is in use by another Cove process")
+	ErrNewerSchema     = errors.New("store: database was written by a newer version of Sinag")
+	ErrLocked          = errors.New("store: database is in use by another Sinag process")
 )
 
 // Store is an open database. It is safe for concurrent use.

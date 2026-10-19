@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
-Name=Cove
+Name=Sinag
 Comment=A desktop client for Stremio-compatible addons, with Nuvio sync
 # The Exec line includes %u to pass the URL to the application
-Exec=/usr/local/bin/cove %u
+Exec=/usr/local/bin/sinag %u
 Terminal=false
 Type=Application
-Icon=cove
+Icon=sinag
 Categories=Utility;
-StartupWMClass=cove
+StartupWMClass=sinag
 
  

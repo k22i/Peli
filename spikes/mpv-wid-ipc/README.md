@@ -1,6 +1,6 @@
 # Spike: mpv `--wid` + JSON IPC in a Wails v3 window
 
-Throwaway code for [#2](https://github.com/k22i/Cove/issues/2). The findings are
+Throwaway code for [#2](https://github.com/k22i/Sinag/issues/2). The findings are
 in [`docs/spikes/mpv-wid-ipc.md`](../../docs/spikes/mpv-wid-ipc.md). Don't build on this code.
 
 A standalone Wails v3 app (its own Go module, so the main app's `go.mod` is untouched) that:
@@ -31,8 +31,8 @@ Self-test: set `SPIKE_SELFTEST=results/<name>.json` to run the scripted IPC chec
 
 - **Linux** (X11 via Xvfb + openbox + picom, Wayland and XWayland via headless Weston), in Docker:
   ```sh
-  docker build -t cove-spike-linux scripts/linux
-  docker run --rm -v "$PWD":/spike cove-spike-linux scripts/linux/run.sh x11 overlay
+  docker build -t sinag-spike-linux scripts/linux
+  docker run --rm -v "$PWD":/spike sinag-spike-linux scripts/linux/run.sh x11 overlay
   ```
 - **Windows**: `.github/workflows/spike-mpv-wid-ipc.yml` runs `scripts/windows/run.ps1` on a hosted runner and uploads `results/` as artifacts.
 - **macOS**: `SPIKE_SELFTEST=$PWD/results/macos-single.json ./bin/spike`.

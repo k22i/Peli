@@ -5,13 +5,13 @@
 !include "FileFunc.nsh"
 
 !ifndef INFO_PROJECTNAME
-    !define INFO_PROJECTNAME "cove"
+    !define INFO_PROJECTNAME "sinag"
 !endif
 !ifndef INFO_COMPANYNAME
     !define INFO_COMPANYNAME "k22i"
 !endif
 !ifndef INFO_PRODUCTNAME
-    !define INFO_PRODUCTNAME "Cove"
+    !define INFO_PRODUCTNAME "Sinag"
 !endif
 !ifndef INFO_PRODUCTVERSION
     !define INFO_PRODUCTVERSION "0.1.0"

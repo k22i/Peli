@@ -4,8 +4,8 @@
 @import "@fontsource-variable/geist-mono";
 
 /*
- * Cove's design tokens (#13). The colour variables keep coss ui's names
- * (https://coss.com/ui/docs/styling) so its components pick them up; Cove adds
+ * Sinag's design tokens (#13). The colour variables keep coss ui's names
+ * (https://coss.com/ui/docs/styling) so its components pick them up; Sinag adds
  * --brand (the lagoon accent; coss's --accent is its hover tint) and the type,
  * spacing, elevation and motion tokens in the second @theme block. Colours are
  * plain hex so src/lib/contrast.test.ts can check every text pair against

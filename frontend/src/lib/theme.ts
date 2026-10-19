@@ -9,7 +9,7 @@ export const themePreferences = ["system", "light", "dark"] as const;
 export type ThemePreference = (typeof themePreferences)[number];
 export type Theme = "light" | "dark";
 
-export const themeStorageKey = "cove.theme";
+export const themeStorageKey = "sinag.theme";
 
 // The shell's outer colour (--sidebar in index.css) for each mode. The native
 // window paints it under the webview, so resizing or a slow load never shows

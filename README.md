@@ -1,14 +1,14 @@
-# Cove
+# Sinag
 
 A desktop app for Windows, macOS and Linux that plays streams from Stremio-compatible addons, with library and watch progress synced through Nuvio. Built with [Wails v3](https://v3.wails.io/) (Go) and React, and plays video in-window with libmpv.
 
-Cove is early in development and not usable yet. The plan and decisions so far are in [`docs/m0-gate-review.md`](docs/m0-gate-review.md) and [`docs/adr/`](docs/adr/).
+Sinag is early in development and not usable yet. The plan and decisions so far are in [`docs/m0-gate-review.md`](docs/m0-gate-review.md) and [`docs/adr/`](docs/adr/).
 
 ## Disclaimer
 
-Cove is a player. It bundles no addons and hosts, indexes or links to no content. Everything it plays comes from addons that you choose to install, and you are responsible for making sure you have the right to access that content where you live.
+Sinag is a player. It bundles no addons and hosts, indexes or links to no content. Everything it plays comes from addons that you choose to install, and you are responsible for making sure you have the right to access that content where you live.
 
-Cove is not affiliated with Stremio or Nuvio.
+Sinag is not affiliated with Stremio or Nuvio.
 
 ## Building
 
@@ -60,15 +60,15 @@ UI components come from the coss ui registry and live in `frontend/src/component
 
 ### Local data
 
-Profiles, library, progress, watched items, addons, sync state and the persisted query cache live in one [bbolt](https://github.com/etcd-io/bbolt) file, `Cove/cove.db` in the OS app-data directory: `~/Library/Application Support` on macOS, `%LOCALAPPDATA%` on Windows and `$XDG_DATA_HOME` (usually `~/.local/share`) on Linux. Set `COVE_DATA_DIR` to use another directory, for example a throwaway one while developing. The store is `internal/store` ([ADR-0006](docs/adr/0006-local-store-bbolt.md)); run its tests with `go test ./internal/...`.
+Profiles, library, progress, watched items, addons, sync state and the persisted query cache live in one [bbolt](https://github.com/etcd-io/bbolt) file, `Sinag/sinag.db` in the OS app-data directory: `~/Library/Application Support` on macOS, `%LOCALAPPDATA%` on Windows and `$XDG_DATA_HOME` (usually `~/.local/share`) on Linux. Set `SINAG_DATA_DIR` to use another directory, for example a throwaway one while developing. The store is `internal/store` ([ADR-0006](docs/adr/0006-local-store-bbolt.md)); run its tests with `go test ./internal/...`.
 
-Tokens and keys (Nuvio session, Trakt, debrid) are never in that file. They live in the OS keychain under the service `Cove`: the macOS Keychain, Windows Credential Manager, or the Secret Service on Linux (gnome-keyring or KWallet must be running to sign in). The code is `internal/secrets` ([ADR-0007](docs/adr/0007-secrets-in-os-keychain.md)), and the frontend uses `frontend/src/lib/secrets.ts`. `go test` uses a mock keychain; `COVE_KEYCHAIN_TEST=1 go test ./internal/secrets` runs the tests against your real one, under a separate service name, and removes what they write.
+Tokens and keys (Nuvio session, Trakt, debrid) are never in that file. They live in the OS keychain under the service `Sinag`: the macOS Keychain, Windows Credential Manager, or the Secret Service on Linux (gnome-keyring or KWallet must be running to sign in). The code is `internal/secrets` ([ADR-0007](docs/adr/0007-secrets-in-os-keychain.md)), and the frontend uses `frontend/src/lib/secrets.ts`. `go test` uses a mock keychain; `SINAG_KEYCHAIN_TEST=1 go test ./internal/secrets` runs the tests against your real one, under a separate service name, and removes what they write.
 
 pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge` in `frontend/pnpm-workspace.yaml`), so pin dependencies to versions at least a week old.
 
 ### CI
 
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every PR and push to `main`: frontend format, lint, type check, tests and build; Go `gofmt`, vet and tests (with the real-keychain tests) on Windows, macOS arm64, macOS Intel and Linux; and a production build per OS, uploaded as `cove-<os>-<arch>` artifacts (kept 14 days). PRs skip the Intel Mac build to save macOS minutes. Run it by hand with `dev-smoke` ticked to also check that `wails3 dev` starts the app on Windows and Linux.
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every PR and push to `main`: frontend format, lint, type check, tests and build; Go `gofmt`, vet and tests (with the real-keychain tests) on Windows, macOS arm64, macOS Intel and Linux; and a production build per OS, uploaded as `sinag-<os>-<arch>` artifacts (kept 14 days). PRs skip the Intel Mac build to save macOS minutes. Run it by hand with `dev-smoke` ticked to also check that `wails3 dev` starts the app on Windows and Linux.
 
 ## Layout
 

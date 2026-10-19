@@ -23,7 +23,7 @@ import {
 
 const profile = Number(process.env.NUVIO_PROFILE ?? 1);
 // Identifies this client's writes. Nuvio's push functions accept it (p_origin_client_id).
-const originClientId = 'cove-spike';
+const originClientId = 'sinag-spike';
 
 type Call = { fn: string; args: Record<string, unknown>; status: 'ok' | 'error'; ms: number; rows?: number; shape?: unknown; error?: unknown };
 
@@ -78,7 +78,7 @@ const commands: Record<string, (t: Target, args: string[]) => Promise<void>> = {
   async 'tv-login'(t, [redirect = process.env.NUVIO_TV_LOGIN_URL ?? 'https://nuvio.tv/tv-login']) {
     const sb = makeClient(t);
     const nonce = randomBytes(24).toString('hex');
-    const started = await rpc(sb, 'start_tv_login_session', { p_device_nonce: nonce, p_redirect_base_url: redirect, p_device_name: 'Cove (spike)' });
+    const started = await rpc(sb, 'start_tv_login_session', { p_device_nonce: nonce, p_redirect_base_url: redirect, p_device_name: 'Sinag (spike)' });
     if (started.status === 'error') throw new Error(JSON.stringify(started.error));
     const s = (started.data as { code: string; web_url: string; expires_at: string; poll_interval_seconds: number }[])[0];
     console.log(`\nScan with the Nuvio app, or open ${s.web_url}\ncode ${s.code}, expires ${s.expires_at}\n`);

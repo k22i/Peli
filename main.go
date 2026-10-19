@@ -8,10 +8,10 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
-	"github.com/k22i/Cove/internal/appinfo"
-	"github.com/k22i/Cove/internal/firstmouse"
-	"github.com/k22i/Cove/internal/secrets"
-	"github.com/k22i/Cove/internal/store"
+	"github.com/k22i/Sinag/internal/appinfo"
+	"github.com/k22i/Sinag/internal/firstmouse"
+	"github.com/k22i/Sinag/internal/secrets"
+	"github.com/k22i/Sinag/internal/store"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -30,7 +30,7 @@ func main() {
 	firstmouse.Enable()
 
 	app := application.New(application.Options{
-		Name:        "Cove",
+		Name:        "Sinag",
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
@@ -46,7 +46,7 @@ func main() {
 	})
 
 	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Title: "Cove",
+		Title: "Sinag",
 		// Window sized to the golden ratio (1000 / 618 ≈ 1.618).
 		Width:  1000,
 		Height: 618,

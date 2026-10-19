@@ -9,15 +9,15 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 )
 
-// DefaultPath is where the database lives: Cove/cove.db in the OS app-data
+// DefaultPath is where the database lives: Sinag/sinag.db in the OS app-data
 // directory (~/Library/Application Support, %LOCALAPPDATA% or
-// $XDG_DATA_HOME), or in $COVE_DATA_DIR when set.
+// $XDG_DATA_HOME), or in $SINAG_DATA_DIR when set.
 func DefaultPath() string {
-	dir := os.Getenv("COVE_DATA_DIR")
+	dir := os.Getenv("SINAG_DATA_DIR")
 	if dir == "" {
-		dir = filepath.Join(xdg.DataHome, "Cove")
+		dir = filepath.Join(xdg.DataHome, "Sinag")
 	}
-	return filepath.Join(dir, "cove.db")
+	return filepath.Join(dir, "sinag.db")
 }
 
 // Service is the Wails service the frontend calls for local data. It opens the

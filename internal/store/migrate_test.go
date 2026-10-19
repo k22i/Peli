@@ -51,7 +51,7 @@ func TestFixtures(t *testing.T) {
 		t.Run(filepath.Base(fixture), func(t *testing.T) {
 			data, err := os.ReadFile(fixture)
 			check(t, err)
-			path := filepath.Join(t.TempDir(), "cove.db")
+			path := filepath.Join(t.TempDir(), "sinag.db")
 			check(t, os.WriteFile(path, data, 0o600))
 
 			s, err := Open(path)
@@ -82,7 +82,7 @@ func TestFixtures(t *testing.T) {
 // Migrations run forward from an older file, keep its data and record the
 // new version; a later build can rewrite records.
 func TestMigrateForward(t *testing.T) {
-	path := filepath.Join(t.TempDir(), "cove.db")
+	path := filepath.Join(t.TempDir(), "sinag.db")
 	s, err := Open(path)
 	check(t, err)
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
@@ -134,7 +134,7 @@ func TestMigrateForward(t *testing.T) {
 
 // A failed migration leaves the file at the version before it.
 func TestFailedMigrationRollsBack(t *testing.T) {
-	path := filepath.Join(t.TempDir(), "cove.db")
+	path := filepath.Join(t.TempDir(), "sinag.db")
 	db, err := bolt.Open(path, 0o600, nil)
 	check(t, err)
 	defer db.Close()

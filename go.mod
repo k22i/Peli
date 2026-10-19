@@ -1,4 +1,4 @@
-module github.com/k22i/Cove
+module github.com/k22i/Sinag
 
 go 1.25.0
 

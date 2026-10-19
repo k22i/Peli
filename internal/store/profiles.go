@@ -9,7 +9,7 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-// Profile is one person's space in Cove: their library, progress, watched
+// Profile is one person's space in Sinag: their library, progress, watched
 // items and addons.
 type Profile struct {
 	ID     uint64 `json:"id"`

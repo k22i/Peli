@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Sinag
+Comment=Sinag baseline spike
+Exec=sinag %u
+Terminal=false
+Type=Application
+Icon=sinag
+Categories=AudioVideo;
+StartupWMClass=sinag

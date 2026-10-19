@@ -1,6 +1,6 @@
 # Spike: our own stream parser and ranker
 
-Issue: [#6](https://github.com/k22i/Cove/issues/6) · Epic: [#1](https://github.com/k22i/Cove/issues/1) · Feeds: [#51](https://github.com/k22i/Cove/issues/51) (ranking engine), [#49](https://github.com/k22i/Cove/issues/49) (Streams epic) · Date: 2026-10-11
+Issue: [#6](https://github.com/k22i/Sinag/issues/6) · Epic: [#1](https://github.com/k22i/Sinag/issues/1) · Feeds: [#51](https://github.com/k22i/Sinag/issues/51) (ranking engine), [#49](https://github.com/k22i/Sinag/issues/49) (Streams epic) · Date: 2026-10-11
 Spike code: [`spikes/stream-ranking/`](../../spikes/stream-ranking/) (throwaway). Raw results: [`spikes/stream-ranking/results/`](../../spikes/stream-ranking/results/). Labels: [`spikes/stream-ranking/labels/`](../../spikes/stream-ranking/labels/).
 
 ## Verdict

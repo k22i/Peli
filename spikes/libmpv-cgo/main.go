@@ -41,7 +41,7 @@ func main() {
 	player := newPlayer(mode)
 
 	app := application.New(application.Options{
-		Name:        "cove-spike-libmpv-cgo",
+		Name:        "sinag-spike-libmpv-cgo",
 		Description: "Spike: libmpv via cgo inside a Wails v3 window",
 		Services:    []application.Service{application.NewService(player)},
 		Assets:      application.AssetOptions{Handler: application.AssetFileServerFS(assets)},
@@ -52,7 +52,7 @@ func main() {
 
 	mainOpts := application.WebviewWindowOptions{
 		Name:             "main",
-		Title:            "Cove spike: libmpv (" + mode + ")",
+		Title:            "Sinag spike: libmpv (" + mode + ")",
 		Width:            1280,
 		Height:           720,
 		BackgroundType:   application.BackgroundTypeTransparent,
@@ -74,7 +74,7 @@ func main() {
 	if mode == "overlay" {
 		ov := app.Window.NewWithOptions(application.WebviewWindowOptions{
 			Name:             "overlay",
-			Title:            "Cove spike overlay",
+			Title:            "Sinag spike overlay",
 			Width:            mainOpts.Width,
 			Height:           mainOpts.Height,
 			Frameless:        true,

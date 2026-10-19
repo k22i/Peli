@@ -5,7 +5,7 @@ date: 2026-10-12
 
 # The app stays MIT; we build and bundle our own LGPL libmpv
 
-Linking libmpv in-process (ADR-0001) means the libmpv we ship decides our licence. Both builds the spikes used are GPL: shinchiro's on Windows and Debian's / Homebrew's. Bundling one would make every release a GPL combined work. Instead, Cove stays **MIT**. Every package that contains libmpv ships **our own build, configured LGPL** (`-Dgpl=false`, FFmpeg without `--enable-gpl` / `--enable-nonfree`), dynamically linked so users can swap it. Distro packages (`.deb`) depend on the distro's `libmpv2` and bundle nothing.
+Linking libmpv in-process (ADR-0001) means the libmpv we ship decides our licence. Both builds the spikes used are GPL: shinchiro's on Windows and Debian's / Homebrew's. Bundling one would make every release a GPL combined work. Instead, Sinag stays **MIT**. Every package that contains libmpv ships **our own build, configured LGPL** (`-Dgpl=false`, FFmpeg without `--enable-gpl` / `--enable-nonfree`), dynamically linked so users can swap it. Distro packages (`.deb`) depend on the distro's `libmpv2` and bundle nothing.
 
 We control that build, so we also trim it to what playback needs: no encoders, Lua, JavaScript or VapourSynth. That fixes the size and dependency problems the spikes found:
 

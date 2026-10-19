@@ -1,4 +1,4 @@
-module cove/spikes/baselines
+module sinag/spikes/baselines
 
 go 1.25.0
 

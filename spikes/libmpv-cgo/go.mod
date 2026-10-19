@@ -1,4 +1,4 @@
-module cove/spikes/libmpvcgo
+module sinag/spikes/libmpvcgo
 
 go 1.25.0
 

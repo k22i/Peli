@@ -8,13 +8,13 @@
         AllowPromptForPassword="false">
     </Settings>
     <Installer
-        Path="cove"
+        Path="sinag"
         Arguments=""
-        InstallLocation="C:\Program Files\k22i\Cove">
+        InstallLocation="C:\Program Files\k22i\Sinag">
     </Installer>
     <PackageInformation
-        PackageName="Cove"
-        PackageDisplayName="Cove"
+        PackageName="Sinag"
+        PackageDisplayName="Sinag"
         PublisherName="CN=k22i"
         PublisherDisplayName="k22i"
         Version="0.1.0.0"
@@ -25,10 +25,10 @@
         </Capabilities>
         <Applications>
             <Application
-                Id="k22i.net.cove"
+                Id="k22i.net.sinag"
                 Description="A desktop client for Stremio-compatible addons, with Nuvio sync"
-                DisplayName="Cove"
-                ExecutableName="cove"
+                DisplayName="Sinag"
+                ExecutableName="sinag"
                 EntryPoint="Windows.FullTrustApplication">
                 
             </Application>
@@ -41,13 +41,13 @@
         </Dependencies>
         <Properties>
             <Framework>false</Framework>
-            <DisplayName>Cove</DisplayName>
+            <DisplayName>Sinag</DisplayName>
             <PublisherDisplayName>k22i</PublisherDisplayName>
             <Description>A desktop client for Stremio-compatible addons, with Nuvio sync</Description>
             <Logo>Assets\AppIcon.png</Logo>
         </Properties>
     </PackageInformation>
-    <SaveLocation PackagePath="cove.msix" />
+    <SaveLocation PackagePath="sinag.msix" />
     <PackageIntegrity>
         <CertificatePath></CertificatePath>
     </PackageIntegrity>

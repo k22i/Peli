@@ -1,6 +1,6 @@
 # M0 gate review: go, and the plan for M1–M3
 
-Issue: [#8](https://github.com/k22i/Cove/issues/8) · Epic: [#1](https://github.com/k22i/Cove/issues/1) · Date: 2026-10-12
+Issue: [#8](https://github.com/k22i/Sinag/issues/8) · Epic: [#1](https://github.com/k22i/Sinag/issues/1) · Date: 2026-10-12
 
 ## Verdict
 
@@ -43,9 +43,9 @@ Estimates are **ideal dev-days** for one developer, also in the board's *Estimat
 
 | Milestone | Exit criterion | Tickets | Estimate | With buffer |
 |---|---|---:|---:|---:|
-| **[M1 — Foundation and first play](https://github.com/k22i/Cove/milestone/5)** | A guest installs an addon by URL, searches, picks a ranked stream and plays it in-window with React controls on Windows, macOS and Linux, from CI-built artifacts with our LGPL libmpv | 23 | 74.5 d | +30 % ≈ 97 d |
-| **[M2 — Nuvio account and sync](https://github.com/k22i/Cove/milestone/6)** | Sign in (email or QR), pick a profile, Home with Continue Watching, browse, Library. Desktop progress shows in Nuvio mobile within 30 s. Works offline and as a guest | 17 | 48 d | +20 % ≈ 58 d |
-| **[M3 — Complete player and v1.0 release](https://github.com/k22i/Cove/milestone/7)** | Tracks, subtitles, next episode, HDR, media keys, settings, accessibility, diagnostics, signed installers within ADR-0005's limits, tagged v1.0 | 16 | 43 d | +20 % ≈ 52 d |
+| **[M1 — Foundation and first play](https://github.com/k22i/Sinag/milestone/5)** | A guest installs an addon by URL, searches, picks a ranked stream and plays it in-window with React controls on Windows, macOS and Linux, from CI-built artifacts with our LGPL libmpv | 23 | 74.5 d | +30 % ≈ 97 d |
+| **[M2 — Nuvio account and sync](https://github.com/k22i/Sinag/milestone/6)** | Sign in (email or QR), pick a profile, Home with Continue Watching, browse, Library. Desktop progress shows in Nuvio mobile within 30 s. Works offline and as a guest | 17 | 48 d | +20 % ≈ 58 d |
+| **[M3 — Complete player and v1.0 release](https://github.com/k22i/Sinag/milestone/7)** | Tracks, subtitles, next episode, HDR, media keys, settings, accessibility, diagnostics, signed installers within ADR-0005's limits, tagged v1.0 | 16 | 43 d | +20 % ≈ 52 d |
 | **Total** | | **56** | **165.5 d** | **≈ 207 d** |
 
 ### M1 — Foundation and first play

@@ -142,7 +142,7 @@ export function Components() {
 
       <GallerySection
         title="Buttons"
-        description="coss ui's Button on Cove's tokens. The primary is solid white on black (black on white in light mode), like a Play button should be."
+        description="coss ui's Button on Sinag's tokens. The primary is solid white on black (black on white in light mode), like a Play button should be."
       >
         <Specimen label="variant">
           <Button>Primary</Button>

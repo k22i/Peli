@@ -1,6 +1,6 @@
 # Design system
 
-Cove has one theme, in light and dark (#13; theme studio is cut). The direction: **Apple's** glass and spring motion, **Vercel's** monochrome precision, **Nuvio's** poster-first, near-black cinema.
+Sinag has one theme, in light and dark (#13; theme studio is cut). The direction: **Apple's** glass and spring motion, **Vercel's** monochrome precision, **Nuvio's** poster-first, near-black cinema.
 
 The living reference is the in-app gallery: **Settings › Design system** (`/gallery`). It shows every token and component in its states and measures contrast live.
 
@@ -12,7 +12,7 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 | Light/dark: OS by default, System/Light/Dark override | `frontend/src/lib/theme.ts`, the inline script in `frontend/index.html`, the window colour in `main.go` |
 | WCAG AA checks for every colour pairing | `frontend/src/lib/contrast.ts` (`contrastPairs`), `contrast.test.ts` |
 | Base components (button, dialog, sheet, toast, skeleton, toggle, badge, menu, tooltip…) | coss ui, `frontend/src/components/ui` (add more with `pnpm dlx shadcn@4.21.4 add @coss/<name>`) |
-| Cove's own: poster and landscape cards, row, hero, chip, skeletons | `frontend/src/components/media` |
+| Sinag's own: poster and landscape cards, row, hero, chip, skeletons | `frontend/src/components/media` |
 
 ## Rules of thumb
 

@@ -1,4 +1,4 @@
-# #16: lint, test and build Cove on Windows, macOS (arm64 + Intel) and Linux.
+# #16: lint, test and build Sinag on Windows, macOS (arm64 + Intel) and Linux.
 name: ci
 
 on:
@@ -90,13 +90,13 @@ jobs:
       # #15: secrets against the real OS keychain. On Linux that means a
       # Secret Service: gnome-keyring on a throwaway session bus.
       - if: runner.os != 'Linux'
-        run: COVE_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets
+        run: SINAG_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets
       - if: runner.os == 'Linux'
         run: |
           sudo apt-get install -y --no-install-recommends gnome-keyring dbus
-          dbus-run-session -- bash -c "echo -n ci | gnome-keyring-daemon --unlock --components=secrets > /dev/null && COVE_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets"
+          dbus-run-session -- bash -c "echo -n ci | gnome-keyring-daemon --unlock --components=secrets > /dev/null && SINAG_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets"
       # A session bus with no service directories: nothing can provide
-      # org.freedesktop.secrets, so Cove must give the clear error.
+      # org.freedesktop.secrets, so Sinag must give the clear error.
       - if: runner.os == 'Linux'
         run: |
           cat > "$RUNNER_TEMP/bare-bus.conf" <<'EOF'
@@ -110,7 +110,7 @@ jobs:
             </policy>
           </busconfig>
           EOF
-          dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env COVE_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
+          dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env SINAG_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
 
   build:
     strategy:
@@ -151,31 +151,31 @@ jobs:
       # and point cgo at it, once the player links libmpv (#60).
       - if: runner.os != 'macOS'
         run: wails3 build
-      # `package` builds the binary and wraps it in Cove.app.
+      # `package` builds the binary and wraps it in Sinag.app.
       - if: runner.os == 'macOS'
         run: wails3 package
       # The build runs `go mod tidy`: a change means go.mod or go.sum is stale.
       - run: git diff --exit-code go.mod go.sum
       - name: Check the binary's target
         run: |
-          bin=bin/cove
-          [ "$RUNNER_OS" = Windows ] && bin=bin/cove.exe
-          [ "$RUNNER_OS" = macOS ] && bin=bin/cove.app/Contents/MacOS/cove
+          bin=bin/sinag
+          [ "$RUNNER_OS" = Windows ] && bin=bin/sinag.exe
+          [ "$RUNNER_OS" = macOS ] && bin=bin/sinag.app/Contents/MacOS/sinag
           go version -m "$bin" | tee buildinfo.txt
           grep -Eq "GOARCH=${{ matrix.arch }}$" buildinfo.txt
           grep -Eq -- "-tags=production" buildinfo.txt
           ls -l bin
       - if: runner.os == 'macOS'
-        run: cd bin && ditto -c -k --keepParent cove.app cove.app.zip
+        run: cd bin && ditto -c -k --keepParent sinag.app sinag.app.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: cove-${{ matrix.name }}
+          name: sinag-${{ matrix.name }}
           retention-days: 14
           if-no-files-found: error
           path: |
-            bin/cove.exe
-            bin/cove.app.zip
-            ${{ runner.os == 'Linux' && 'bin/cove' || '' }}
+            bin/sinag.exe
+            bin/sinag.app.zip
+            ${{ runner.os == 'Linux' && 'bin/sinag' || '' }}
 
   # Manual only: checks that `wails3 dev` starts the app (was #10's
   # scaffold-check; macOS is checked locally).
@@ -214,16 +214,16 @@ jobs:
         run: |
           if [ "$RUNNER_OS" = Linux ]; then
             xvfb-run -a wails3 dev > dev.log 2>&1 &
-            running() { pgrep -f 'bin/cove' > /dev/null; }
+            running() { pgrep -f 'bin/sinag' > /dev/null; }
           else
             wails3 dev > dev.log 2>&1 &
-            running() { tasklist //FI "IMAGENAME eq cove.exe" | grep -q cove.exe; }
+            running() { tasklist //FI "IMAGENAME eq sinag.exe" | grep -q sinag.exe; }
           fi
           for i in $(seq 1 90); do
             if running && curl -sf -o /dev/null http://127.0.0.1:9245/; then break; fi
             sleep 2
           done
-          running && curl -sf http://127.0.0.1:9245/ | grep '<title>Cove</title>'
+          running && curl -sf http://127.0.0.1:9245/ | grep '<title>Sinag</title>'
           sleep 15
           running
           echo "app running under wails3 dev"

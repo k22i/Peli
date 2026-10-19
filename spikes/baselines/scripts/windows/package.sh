@@ -44,11 +44,11 @@ wails3 generate webview2bootstrapper -dir "$nsis"
 stage() { # variant exe [dll dir]
   local d="$out/$1"
   mkdir -p "$d/app"
-  cp "$2" "$d/app/cove.exe"
+  cp "$2" "$d/app/sinag.exe"
   [ -n "${3:-}" ] && cp "$3/libmpv-2.dll" "$d/app/"
-  makensis -V2 -DSRC="$root/$d/app" -DOUT="$root/$d/cove-zlib-installer.exe" "$nsis/installer.nsi"
-  makensis -V2 -DSRC="$root/$d/app" -DOUT="$root/$d/cove-lzma-installer.exe" -DSOLID_LZMA "$nsis/installer.nsi"
-  (cd "$d/app" && zip -q -9 -r ../cove-portable.zip .)
+  makensis -V2 -DSRC="$root/$d/app" -DOUT="$root/$d/sinag-zlib-installer.exe" "$nsis/installer.nsi"
+  makensis -V2 -DSRC="$root/$d/app" -DOUT="$root/$d/sinag-lzma-installer.exe" -DSOLID_LZMA "$nsis/installer.nsi"
+  (cd "$d/app" && zip -q -9 -r ../sinag-portable.zip .)
 }
 stage shell "$out/bin/shell.exe"
 stage mpv-shinchiro "$out/bin/mpv.exe" lib/win-shinchiro
@@ -66,11 +66,11 @@ for v in sorted(os.listdir(out)):
     app = os.path.join(d, "app")
     dll = os.path.join(app, "libmpv-2.dll")
     r = {
-        "exeBytes": os.path.getsize(os.path.join(app, "cove.exe")),
+        "exeBytes": os.path.getsize(os.path.join(app, "sinag.exe")),
         "dllBytes": os.path.getsize(dll) if os.path.exists(dll) else 0,
-        "zlibInstallerBytes": os.path.getsize(os.path.join(d, "cove-zlib-installer.exe")),
-        "lzmaInstallerBytes": os.path.getsize(os.path.join(d, "cove-lzma-installer.exe")),
-        "portableZipBytes": os.path.getsize(os.path.join(d, "cove-portable.zip")),
+        "zlibInstallerBytes": os.path.getsize(os.path.join(d, "sinag-zlib-installer.exe")),
+        "lzmaInstallerBytes": os.path.getsize(os.path.join(d, "sinag-lzma-installer.exe")),
+        "portableZipBytes": os.path.getsize(os.path.join(d, "sinag-portable.zip")),
     }
     if os.path.exists(dll):
         imp = subprocess.run(["x86_64-w64-mingw32-objdump", "-p", dll], capture_output=True, text=True).stdout

@@ -112,7 +112,7 @@ func main() {
 	probe.mark("main")
 
 	app := application.New(application.Options{
-		Name:        "Cove baseline",
+		Name:        "Sinag baseline",
 		Description: "Spike #7: baseline measurements",
 		Services:    []application.Service{application.NewService(probe)},
 		Assets:      application.AssetOptions{Handler: application.AssetFileServerFS(assets)},
@@ -124,7 +124,7 @@ func main() {
 	// (#3, #4); the page paints its own opaque background.
 	win := app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Name:             "main",
-		Title:            "Cove baseline",
+		Title:            "Sinag baseline",
 		Width:            1280,
 		Height:           800,
 		BackgroundType:   application.BackgroundTypeTransparent,

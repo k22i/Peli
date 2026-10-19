@@ -13,7 +13,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
-// Typed by string so a toast's free-form `type` can index it (Cove: strict
+// Typed by string so a toast's free-form `type` can index it (Sinag: strict
 // lint has no unsafe assertions).
 const TOAST_ICONS: Partial<Record<string, LucideIcon>> = {
   error: CircleAlertIcon,

@@ -22,7 +22,7 @@ try {
   // No .env: P2P addons only.
 }
 
-const userAgent = 'Cove/0.0.0-spike (+https://github.com/k22i/Cove; stream-ranking spike)';
+const userAgent = 'Sinag/0.0.0-spike (+https://github.com/k22i/Sinag; stream-ranking spike)';
 const torbox = process.env.TORBOX_API_KEY ?? '';
 const delayMs = 1500;
 

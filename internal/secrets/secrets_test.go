@@ -9,25 +9,25 @@ import (
 	"github.com/zalando/go-keyring"
 )
 
-// realKeychain is set by COVE_KEYCHAIN_TEST: "1" runs the tests in
+// realKeychain is set by SINAG_KEYCHAIN_TEST: "1" runs the tests in
 // keychain_test.go against the OS keychain, "unavailable" checks the error on
 // a Linux machine with no Secret Service. Either way the mock tests here are
 // skipped, since go-keyring's mock replaces its provider for the whole binary.
-var realKeychain = os.Getenv("COVE_KEYCHAIN_TEST")
+var realKeychain = os.Getenv("SINAG_KEYCHAIN_TEST")
 
 // mock switches go-keyring to an in-memory keychain, failing every call with
 // err when it is set.
 func mock(t *testing.T, err error) *Keychain {
 	t.Helper()
 	if realKeychain != "" {
-		t.Skip("COVE_KEYCHAIN_TEST is set: testing the OS keychain")
+		t.Skip("SINAG_KEYCHAIN_TEST is set: testing the OS keychain")
 	}
 	if err != nil {
 		keyring.MockInitWithError(err)
 	} else {
 		keyring.MockInit()
 	}
-	return New("Cove-test")
+	return New("Sinag-test")
 }
 
 func check(t *testing.T, err error) {
@@ -64,7 +64,7 @@ func TestRoundTrip(t *testing.T) {
 
 func TestServicesAreSeparate(t *testing.T) {
 	mock(t, nil)
-	app, other := New(ServiceName), New("Cove-other")
+	app, other := New(ServiceName), New("Sinag-other")
 
 	check(t, app.Set("debrid.torbox", token))
 	if _, err := other.Get("debrid.torbox"); !errors.Is(err, ErrNotFound) {

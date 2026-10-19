@@ -2,7 +2,7 @@
 package appinfo
 
 // Version is the app version. Release builds set it with
-// -ldflags "-X github.com/k22i/Cove/internal/appinfo.Version=<version>".
+// -ldflags "-X github.com/k22i/Sinag/internal/appinfo.Version=<version>".
 var Version = "0.0.0-dev"
 
 // Service is the Wails service the frontend calls for app information.

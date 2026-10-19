@@ -13,7 +13,7 @@ func ptr[T any](v T) *T { return &v }
 
 func openTemp(t testing.TB) (*Store, string) {
 	t.Helper()
-	path := filepath.Join(t.TempDir(), "Cove", "cove.db")
+	path := filepath.Join(t.TempDir(), "Sinag", "sinag.db")
 	s, err := Open(path)
 	if err != nil {
 		t.Fatal(err)

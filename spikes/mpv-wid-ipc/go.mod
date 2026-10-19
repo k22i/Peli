@@ -1,4 +1,4 @@
-module cove/spikes/mpvwid
+module sinag/spikes/mpvwid
 
 go 1.25.0
 

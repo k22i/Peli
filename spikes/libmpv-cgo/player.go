@@ -210,7 +210,7 @@ func mpvLogPath() string {
 	if l := os.Getenv("SPIKE_MPV_LOG"); l != "" {
 		return l
 	}
-	return filepath.Join(os.TempDir(), "cove-spike-libmpv.log")
+	return filepath.Join(os.TempDir(), "sinag-spike-libmpv.log")
 }
 
 // mpvOptions are the options set before mpv_initialize, as name/value pairs.

@@ -1,5 +1,5 @@
 {
-  "name": "cove-spike-nuvio-backend",
+  "name": "sinag-spike-nuvio-backend",
   "private": true,
   "type": "module",
   "description": "Throwaway probe of Nuvio's Supabase backend for #5",

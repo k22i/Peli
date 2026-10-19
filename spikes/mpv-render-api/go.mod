@@ -1,4 +1,4 @@
-module cove/spikes/mpvrenderapi
+module sinag/spikes/mpvrenderapi
 
 go 1.25.0
 

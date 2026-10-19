@@ -74,7 +74,7 @@ jobs:
         with:
           name: windows-build
           path: |
-            spikes/baselines/bin/windows/*/cove-lzma-installer.exe
+            spikes/baselines/bin/windows/*/sinag-lzma-installer.exe
             spikes/baselines/bin/windows/bench.exe
             spikes/baselines/results/sizes-windows.json
 
@@ -94,14 +94,14 @@ jobs:
       - name: Install silently (the LZMA installer)
         shell: pwsh
         run: |
-          $t = Measure-Command { Start-Process "bin\windows\${{ matrix.variant }}\cove-lzma-installer.exe" -ArgumentList '/S' -Wait }
+          $t = Measure-Command { Start-Process "bin\windows\${{ matrix.variant }}\sinag-lzma-installer.exe" -ArgumentList '/S' -Wait }
           "install took $([math]::Round($t.TotalSeconds, 1)) s"
-          Get-ChildItem "C:\Program Files\k22i\Cove" | Format-Table Name, Length
+          Get-ChildItem "C:\Program Files\k22i\Sinag" | Format-Table Name, Length
           (Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}' -ErrorAction SilentlyContinue).pv
       - name: Bench
         shell: pwsh
         run: |
-          $exe = "C:\Program Files\k22i\Cove\cove.exe"
+          $exe = "C:\Program Files\k22i\Sinag\sinag.exe"
           bin\windows\bench.exe -app $exe -runs 10 -label "windows-${{ matrix.variant }}" -out "results\windows-${{ matrix.variant }}.json"
           bin\windows\bench.exe -app $exe -runs 3 -page home -samples 5s,15s,30s -label "windows-${{ matrix.variant }}-home" -out "results\windows-${{ matrix.variant }}-home.json"
       - uses: actions/upload-artifact@v4

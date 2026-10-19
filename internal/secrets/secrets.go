@@ -14,8 +14,8 @@ import (
 	"github.com/zalando/go-keyring"
 )
 
-// ServiceName is the keychain service name Cove's items are filed under.
-const ServiceName = "Cove"
+// ServiceName is the keychain service name Sinag's items are filed under.
+const ServiceName = "Sinag"
 
 // MaxSize is the largest value Set accepts, in bytes. Windows Credential
 // Manager caps a credential at 2,560 bytes; the same cap on every OS keeps a

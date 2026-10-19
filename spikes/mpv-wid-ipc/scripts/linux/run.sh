@@ -77,7 +77,7 @@ if [ "$session" = x11 ]; then
   # Pointer probe sits in the centre of the 1280x720 client area; the
   # play/pause button is bottom-left. Coordinates are relative to the main
   # window, so in overlay mode they land on whatever is stacked on top.
-  win=$(xdotool search --name "Cove spike: mpv" | head -1)
+  win=$(xdotool search --name "Sinag spike: mpv" | head -1)
   xdotool mousemove --window "$win" 640 360 click 1; sleep 0.4
   xdotool mousemove --window "$win" 34 690 click 1; sleep 0.4
   xdotool key x; sleep 0.4
