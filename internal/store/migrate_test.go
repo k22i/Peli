@@ -141,6 +141,39 @@ func TestMigrateForward(t *testing.T) {
 	}))
 }
 
+// Schema 3 flags the Guest: the oldest local-only profile, which only
+// CurrentProfile made before.
+func TestMigrateFlagsGuest(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "sinag.db")
+	db, err := bolt.Open(path, 0o600, nil)
+	check(t, err)
+	check(t, migrate(db, migrations[:2]))
+	var ids []uint64
+	check(t, db.Update(func(tx *bolt.Tx) error {
+		for _, profile := range []Profile{{Name: "Kevin", NuvioIndex: ptr(1)}, {Name: "Guest"}, {Name: "Local"}} {
+			created, err := createProfile(tx, profile)
+			if err != nil {
+				return err
+			}
+			ids = append(ids, created.ID)
+		}
+		return nil
+	}))
+	check(t, db.Close())
+
+	s, err := Open(path)
+	check(t, err)
+	defer s.Close()
+	var guests []string
+	for _, profile := range must[[]Profile](t)(s.Profiles()) {
+		if profile.Guest {
+			guests = append(guests, profile.Name)
+		}
+	}
+	equal(t, guests, []string{"Guest"})
+	equal(t, must[Profile](t)(s.CurrentProfile()).ID, ids[0])
+}
+
 // A failed migration leaves the file at the version before it.
 func TestFailedMigrationRollsBack(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "sinag.db")

@@ -61,6 +61,10 @@ func (s *Service) Profiles() ([]Profile, error) { return s.store.Profiles() }
 // on first launch.
 func (s *Service) CurrentProfile() (Profile, error) { return s.store.CurrentProfile() }
 
+// SwitchToGuest makes the Guest profile the one in use, creating it if there
+// is none, and returns it.
+func (s *Service) SwitchToGuest() (Profile, error) { return s.store.SwitchToGuest() }
+
 // CreateProfile adds a profile and returns it with its new ID.
 func (s *Service) CreateProfile(profile Profile) (Profile, error) {
 	return s.store.CreateProfile(profile)

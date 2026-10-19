@@ -2,6 +2,7 @@ package store
 
 import (
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
 
 	bolt "go.etcd.io/bbolt"
@@ -28,6 +29,27 @@ var migrations = []migration{
 	func(tx *bolt.Tx) error {
 		_, err := tx.CreateBucketIfNotExists(bucketSettings)
 		return err
+	},
+	// 3: the Guest flag (#23). Until now the only local-only profile was the
+	// Guest that CurrentProfile made, so the oldest one becomes the Guest.
+	func(tx *bolt.Tx) error {
+		profiles := tx.Bucket(bucketProfiles)
+		c := profiles.Cursor()
+		for id, v := c.First(); id != nil; id, v = c.Next() {
+			if v != nil {
+				continue
+			}
+			p := profiles.Bucket(id)
+			var profile Profile
+			if err := json.Unmarshal(p.Get(keyProfile), &profile); err != nil {
+				return err
+			}
+			if profile.NuvioIndex == nil {
+				profile.Guest = true
+				return put(p, keyProfile, profile)
+			}
+		}
+		return nil
 	},
 }
 

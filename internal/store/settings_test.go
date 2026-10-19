@@ -73,7 +73,7 @@ func TestCurrentProfile(t *testing.T) {
 
 	// First launch: a local Guest profile.
 	guest := must[Profile](t)(s.CurrentProfile())
-	if guest.Name != "Guest" || guest.NuvioIndex != nil || guest.ID == 0 {
+	if guest.Name != "Guest" || !guest.Guest || guest.NuvioIndex != nil || guest.ID == 0 {
 		t.Fatalf("first current profile = %+v", guest)
 	}
 	must[Profile](t)(s.CreateProfile(Profile{Name: "Later"}))
@@ -86,6 +86,64 @@ func TestCurrentProfile(t *testing.T) {
 	equal(t, must[Profile](t)(s.CurrentProfile()), guest)
 	if profiles := must[[]Profile](t)(s.Profiles()); len(profiles) != 2 {
 		t.Fatalf("profiles = %+v", profiles)
+	}
+}
+
+func TestSwitchToGuest(t *testing.T) {
+	s, _ := openTemp(t)
+	linked := must[[]Profile](t)(s.LinkNuvioProfiles("me", []Profile{{Name: "Kevin", NuvioIndex: ptr(1)}}))
+
+	// No Guest yet: switching makes one and makes it current.
+	guest := must[Profile](t)(s.SwitchToGuest())
+	if !guest.Guest || guest.Name != "Guest" || guest.ID == linked[0].ID {
+		t.Fatalf("guest = %+v", guest)
+	}
+	equal(t, must[Profile](t)(s.CurrentProfile()), guest)
+
+	// Switching again reuses it.
+	check(t, s.SetCurrentProfile(linked[0].ID))
+	equal(t, must[Profile](t)(s.SwitchToGuest()), guest)
+	equal(t, must[Profile](t)(s.CurrentProfile()), guest)
+	if profiles := must[[]Profile](t)(s.Profiles()); len(profiles) != 2 {
+		t.Fatalf("profiles = %+v", profiles)
+	}
+}
+
+func TestOneGuest(t *testing.T) {
+	s, _ := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+
+	if _, err := s.CreateProfile(Profile{Name: "Another guest", Guest: true}); !errors.Is(err, ErrGuestExists) {
+		t.Fatalf("creating a second Guest = %v, want ErrGuestExists", err)
+	}
+	other := must[Profile](t)(s.CreateProfile(Profile{Name: "Other"}))
+	other.Guest = true
+	if err := s.UpdateProfile(other); !errors.Is(err, ErrGuestExists) {
+		t.Fatalf("making a second Guest = %v, want ErrGuestExists", err)
+	}
+	guest.Name = "Visitor"
+	check(t, s.UpdateProfile(guest))
+
+	guest.NuvioIndex = ptr(1)
+	if err := s.UpdateProfile(guest); !errors.Is(err, ErrInvalidProfile) {
+		t.Fatalf("linking the Guest = %v, want ErrInvalidProfile", err)
+	}
+	if _, err := s.LinkNuvioProfiles("me", []Profile{{Name: "Kevin", NuvioIndex: ptr(1), Guest: true}}); !errors.Is(err, ErrInvalidProfile) {
+		t.Fatalf("linking a Guest = %v, want ErrInvalidProfile", err)
+	}
+}
+
+// The Guest's writes are never queued for Nuvio: there is nothing to push.
+func TestGuestQueuesNoPushes(t *testing.T) {
+	s, _ := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+	check(t, s.SaveLibraryItem(guest.ID, dune))
+	must[Progress](t)(s.SaveProgress(guest.ID, episode))
+	check(t, s.MarkWatched(guest.ID, WatchedItem{ContentID: "tt1160419", ContentType: "movie", WatchedAt: 4000}))
+	check(t, s.SetAddons(guest.ID, []Addon{cinemeta}))
+	check(t, s.RemoveLibraryItem(guest.ID, dune.ContentID, dune.ContentType))
+	if pending := must[[]Push](t)(s.Pending(guest.ID)); len(pending) != 0 {
+		t.Fatalf("pending = %+v", pending)
 	}
 }
 

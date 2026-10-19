@@ -19,13 +19,18 @@ type Profile struct {
 	Name   string `json:"name"`
 	Avatar string `json:"avatar,omitempty"`
 	// The Nuvio profile this one syncs with (Nuvio addresses profiles by index
-	// 1–6), or nil for a local-only profile such as a guest's (#23).
+	// 1–6), or nil for a local-only profile such as the Guest.
 	NuvioIndex *int `json:"nuvioIndex,omitempty"`
+	// The Guest profile, for using Sinag without an account (#23). There is
+	// at most one, it is local-only, and signing in or out leaves it as it
+	// is: its data never merges into an account's (ADR-0010).
+	Guest bool `json:"guest,omitempty"`
 }
 
 var (
 	ErrInvalidProfile = errors.New("store: invalid profile")
 	ErrNuvioIndexUsed = errors.New("store: Nuvio profile is already linked")
+	ErrGuestExists    = errors.New("store: there is already a Guest profile")
 )
 
 // Profiles returns every profile, oldest first.
@@ -80,13 +85,42 @@ func (s *Store) CurrentProfile() (Profile, error) {
 			current = profiles[0]
 			return nil
 		}
-		current, err = createProfile(tx, Profile{Name: "Guest"})
+		current, err = guestProfile(tx)
 		return err
 	})
 	if err != nil {
 		return Profile{}, err
 	}
 	return current, nil
+}
+
+// SwitchToGuest makes the Guest profile the one in use, creating it if there
+// is none, and returns it.
+func (s *Store) SwitchToGuest() (Profile, error) {
+	var guest Profile
+	err := s.db.Update(func(tx *bolt.Tx) error {
+		var err error
+		if guest, err = guestProfile(tx); err != nil {
+			return err
+		}
+		return tx.Bucket(bucketSettings).Put(keyCurrent, u64(guest.ID))
+	})
+	if err != nil {
+		return Profile{}, err
+	}
+	return guest, nil
+}
+
+// guestProfile returns the Guest profile, creating it if there is none.
+func guestProfile(tx *bolt.Tx) (Profile, error) {
+	profiles, err := allProfiles(tx)
+	if err != nil {
+		return Profile{}, err
+	}
+	if i := slices.IndexFunc(profiles, func(p Profile) bool { return p.Guest }); i >= 0 {
+		return profiles[i], nil
+	}
+	return createProfile(tx, Profile{Name: "Guest", Guest: true})
 }
 
 // SetCurrentProfile makes profile id the one in use.
@@ -262,10 +296,13 @@ func validateProfile(tx *bolt.Tx, profile Profile, self uint64) error {
 	if strings.TrimSpace(profile.Name) == "" {
 		return fmt.Errorf("%w: name is empty", ErrInvalidProfile)
 	}
-	if profile.NuvioIndex == nil {
+	if profile.Guest && profile.NuvioIndex != nil {
+		return fmt.Errorf("%w: the Guest profile can't be linked to Nuvio", ErrInvalidProfile)
+	}
+	if !profile.Guest && profile.NuvioIndex == nil {
 		return nil
 	}
-	if *profile.NuvioIndex < 1 || *profile.NuvioIndex > 6 {
+	if profile.NuvioIndex != nil && (*profile.NuvioIndex < 1 || *profile.NuvioIndex > 6) {
 		return fmt.Errorf("%w: Nuvio index %d is outside 1–6", ErrInvalidProfile, *profile.NuvioIndex)
 	}
 	profiles, err := allProfiles(tx)
@@ -273,7 +310,13 @@ func validateProfile(tx *bolt.Tx, profile Profile, self uint64) error {
 		return err
 	}
 	for _, other := range profiles {
-		if other.ID != self && other.NuvioIndex != nil && *other.NuvioIndex == *profile.NuvioIndex {
+		if other.ID == self {
+			continue
+		}
+		if profile.Guest && other.Guest {
+			return fmt.Errorf("%w: profile %d", ErrGuestExists, other.ID)
+		}
+		if profile.NuvioIndex != nil && other.NuvioIndex != nil && *other.NuvioIndex == *profile.NuvioIndex {
 			return fmt.Errorf("%w: index %d is linked to profile %d", ErrNuvioIndexUsed, *profile.NuvioIndex, other.ID)
 		}
 	}
