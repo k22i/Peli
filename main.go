@@ -1,16 +1,20 @@
 package main
 
 import (
+	"cmp"
 	"embed"
 	"log"
+	"os"
 	"runtime"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
+	"github.com/k22i/Sinag/internal/account"
 	"github.com/k22i/Sinag/internal/appinfo"
 	"github.com/k22i/Sinag/internal/firstmouse"
 	"github.com/k22i/Sinag/internal/licences"
+	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/store"
 )
@@ -30,14 +34,22 @@ var (
 func main() {
 	firstmouse.Enable()
 
+	db := store.NewService(store.DefaultPath())
+	keychain := secrets.New(secrets.ServiceName)
+	// $SINAG_NUVIO_URL points Sinag at a self-hosted Nuvio backend, such as
+	// the contract tests' (#33).
+	backend := nuvio.New(cmp.Or(os.Getenv("SINAG_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
+
 	app := application.New(application.Options{
 		Name:        "Sinag",
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
 			application.NewService(&licences.Service{}),
-			application.NewService(store.NewService(store.DefaultPath())),
-			application.NewService(secrets.NewService(secrets.New(secrets.ServiceName))),
+			application.NewService(db),
+			application.NewService(secrets.NewService(keychain)),
+			application.NewServiceWithOptions(account.NewService(backend, keychain, db),
+				application.ServiceOptions{MarshalError: account.MarshalError}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
