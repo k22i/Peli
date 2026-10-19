@@ -10,6 +10,7 @@ import (
 
 	"github.com/k22i/Cove/internal/appinfo"
 	"github.com/k22i/Cove/internal/firstmouse"
+	"github.com/k22i/Cove/internal/store"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -32,6 +33,7 @@ func main() {
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
+			application.NewService(store.NewService(store.DefaultPath())),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),

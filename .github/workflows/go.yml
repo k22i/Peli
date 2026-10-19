@@ -1,0 +1,47 @@
+# #14: Go tests on every OS (the store's bbolt file locking and mmap differ per
+# OS). The CI workflow in #16 folds these steps into its OS matrix; remove this
+# file then.
+name: go
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.go"
+      - "internal/**/testdata/**"
+      - go.mod
+      - go.sum
+      - .github/workflows/go.yml
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "internal/**/testdata/**"
+      - go.mod
+      - go.sum
+      - .github/workflows/go.yml
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2025, macos-15, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
+      # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers.
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev
+      - run: go vet ./internal/...
+      # The race detector needs cgo, which the Windows runner lacks by default.
+      - run: go test ${{ runner.os != 'Windows' && '-race' || '' }} ./internal/...
+      - run: go test -run '^$' -bench . -benchtime 20x ./internal/store
