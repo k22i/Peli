@@ -1,0 +1,224 @@
+# #16: lint, test and build Cove on Windows, macOS (arm64 + Intel) and Linux.
+name: ci
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "spikes/**"
+      - "**/*.md"
+      - ".github/workflows/spike-*.yml"
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "spikes/**"
+      - "**/*.md"
+      - ".github/workflows/spike-*.yml"
+  workflow_dispatch:
+    inputs:
+      dev-smoke:
+        description: Also check that `wails3 dev` starts the app (Windows, Linux)
+        type: boolean
+        default: false
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GO_VERSION: "1.25.x"
+  NODE_VERSION: "24"
+  WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.28
+  # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers.
+  LINUX_DEPS: build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev
+
+jobs:
+  frontend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $LINUX_DEPS
+      - run: go install "$WAILS3"
+      - uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          working-directory: frontend
+          node-version: ${{ env.NODE_VERSION }}
+          cache: true
+      - run: vp run bindings
+      - run: vp fmt --check
+      - run: vp run lint
+      - run: vp run typecheck
+      - run: vp run test
+      - run: vp run build
+
+  go:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2025, macos-15, macos-15-intel, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $LINUX_DEPS
+      - run: test -z "$(gofmt -l main.go internal)" || { gofmt -l main.go internal; exit 1; }
+      - run: go vet ./internal/...
+      # The race detector needs cgo, which the Windows runner lacks by default.
+      - run: go test ${{ runner.os != 'Windows' && '-race' || '' }} ./internal/...
+      # The store's bbolt file locking and mmap differ per OS: keep its
+      # benchmark (Home's data load) running everywhere.
+      - run: go test -run '^$' -bench . -benchtime 20x ./internal/store
+      # #15: secrets against the real OS keychain. On Linux that means a
+      # Secret Service: gnome-keyring on a throwaway session bus.
+      - if: runner.os != 'Linux'
+        run: COVE_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y --no-install-recommends gnome-keyring dbus
+          dbus-run-session -- bash -c "echo -n ci | gnome-keyring-daemon --unlock --components=secrets > /dev/null && COVE_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets"
+      # A session bus with no service directories: nothing can provide
+      # org.freedesktop.secrets, so Cove must give the clear error.
+      - if: runner.os == 'Linux'
+        run: |
+          cat > "$RUNNER_TEMP/bare-bus.conf" <<'EOF'
+          <busconfig>
+            <type>session</type>
+            <listen>unix:tmpdir=/tmp</listen>
+            <policy context="default">
+              <allow send_destination="*" eavesdrop="true"/>
+              <allow eavesdrop="true"/>
+              <allow own="*"/>
+            </policy>
+          </busconfig>
+          EOF
+          dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env COVE_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
+
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        # The Intel Mac build costs the most minutes for the least signal, so
+        # PRs skip it; pushes to main build all four.
+        include: ${{ fromJSON(github.event_name == 'pull_request' && '[{"os":"windows-2025","name":"windows-amd64","arch":"amd64"},{"os":"macos-15","name":"macos-arm64","arch":"arm64"},{"os":"ubuntu-24.04","name":"linux-amd64","arch":"amd64"}]' || '[{"os":"windows-2025","name":"windows-amd64","arch":"amd64"},{"os":"macos-15","name":"macos-arm64","arch":"arm64"},{"os":"macos-15-intel","name":"macos-amd64","arch":"amd64"},{"os":"ubuntu-24.04","name":"linux-amd64","arch":"amd64"}]') }}
+    name: build (${{ matrix.name }})
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: pnpm/action-setup@v6.1.0
+        with:
+          package_json_file: frontend/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $LINUX_DEPS
+      - run: go install "$WAILS3"
+      # TODO(#92): fetch our pinned LGPL libmpv build for this OS/arch here
+      # and point cgo at it, once the player links libmpv (#60).
+      - if: runner.os != 'macOS'
+        run: wails3 build
+      # `package` builds the binary and wraps it in Cove.app.
+      - if: runner.os == 'macOS'
+        run: wails3 package
+      # The build runs `go mod tidy`: a change means go.mod or go.sum is stale.
+      - run: git diff --exit-code go.mod go.sum
+      - name: Check the binary's target
+        run: |
+          bin=bin/cove
+          [ "$RUNNER_OS" = Windows ] && bin=bin/cove.exe
+          [ "$RUNNER_OS" = macOS ] && bin=bin/cove.app/Contents/MacOS/cove
+          go version -m "$bin" | tee buildinfo.txt
+          grep -Eq "GOARCH=${{ matrix.arch }}$" buildinfo.txt
+          grep -Eq -- "-tags=production" buildinfo.txt
+          ls -l bin
+      - if: runner.os == 'macOS'
+        run: cd bin && ditto -c -k --keepParent cove.app cove.app.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cove-${{ matrix.name }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            bin/cove.exe
+            bin/cove.app.zip
+            ${{ runner.os == 'Linux' && 'bin/cove' || '' }}
+
+  # Manual only: checks that `wails3 dev` starts the app (was #10's
+  # scaffold-check; macOS is checked locally).
+  dev-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.dev-smoke
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2025, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: pnpm/action-setup@v6.1.0
+        with:
+          package_json_file: frontend/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $LINUX_DEPS xvfb xauth dbus-x11
+          # Ubuntu 24.04 blocks unprivileged user namespaces through AppArmor,
+          # which WebKitGTK's sandbox needs.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - run: go install "$WAILS3"
+      # Start `wails3 dev`, wait for the Vite server and the app, and check the
+      # app is still running 15 s later.
+      - name: wails3 dev
+        run: |
+          if [ "$RUNNER_OS" = Linux ]; then
+            xvfb-run -a wails3 dev > dev.log 2>&1 &
+            running() { pgrep -f 'bin/cove' > /dev/null; }
+          else
+            wails3 dev > dev.log 2>&1 &
+            running() { tasklist //FI "IMAGENAME eq cove.exe" | grep -q cove.exe; }
+          fi
+          for i in $(seq 1 90); do
+            if running && curl -sf -o /dev/null http://127.0.0.1:9245/; then break; fi
+            sleep 2
+          done
+          running && curl -sf http://127.0.0.1:9245/ | grep '<title>Cove</title>'
+          sleep 15
+          running
+          echo "app running under wails3 dev"
+      - if: always()
+        run: cat dev.log || true

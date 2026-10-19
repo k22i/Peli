@@ -66,6 +66,10 @@ Tokens and keys (Nuvio session, Trakt, debrid) are never in that file. They live
 
 pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge` in `frontend/pnpm-workspace.yaml`), so pin dependencies to versions at least a week old.
 
+### CI
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every PR and push to `main`: frontend format, lint, type check, tests and build; Go `gofmt`, vet and tests (with the real-keychain tests) on Windows, macOS arm64, macOS Intel and Linux; and a production build per OS, uploaded as `cove-<os>-<arch>` artifacts (kept 14 days). PRs skip the Intel Mac build to save macOS minutes. Run it by hand with `dev-smoke` ticked to also check that `wails3 dev` starts the app on Windows and Linux.
+
 ## Layout
 
 | Path | What |
