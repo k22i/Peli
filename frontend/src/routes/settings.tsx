@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
+import { LicencesDialog } from "@/components/settings/licences-dialog";
 import {
   SettingRow,
   SettingsNav,
@@ -285,9 +286,8 @@ function AboutSection() {
         label="Content"
         description="Sinag doesn’t host or provide any content. It plays what the addons you install return; you are responsible for what you install and watch."
       />
-      {/* The licence and third-party notices are #18. */}
       <SettingRow id="licences" label="Licences" description="Open-source licences and notices.">
-        <Badge variant="secondary">Coming soon</Badge>
+        <LicencesDialog labelledBy="licences-label" />
       </SettingRow>
       <SettingRow id="design-system" label="Design system" description="Every token and component.">
         <Link

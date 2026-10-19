@@ -10,6 +10,7 @@ import (
 
 	"github.com/k22i/Sinag/internal/appinfo"
 	"github.com/k22i/Sinag/internal/firstmouse"
+	"github.com/k22i/Sinag/internal/licences"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/store"
 )
@@ -34,6 +35,7 @@ func main() {
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
+			application.NewService(&licences.Service{}),
 			application.NewService(store.NewService(store.DefaultPath())),
 			application.NewService(secrets.NewService(secrets.New(secrets.ServiceName))),
 		},

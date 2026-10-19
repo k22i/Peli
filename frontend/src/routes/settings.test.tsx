@@ -10,6 +10,36 @@ vi.mock("@bindings/appinfo", () => ({
   Service: { Version: vi.fn<() => Promise<string>>(() => Promise.resolve("1.2.3")) },
 }));
 
+vi.mock("@bindings/licences", () => ({
+  Service: {
+    Notices: async () => ({
+      app: {
+        kind: "app",
+        name: "Sinag",
+        version: "",
+        licence: "MIT",
+        text: "Permission is hereby granted",
+      },
+      components: [
+        {
+          kind: "native",
+          name: "libmpv and FFmpeg",
+          version: "",
+          licence: "LGPL-2.1-or-later",
+          text: "GNU LESSER GENERAL PUBLIC LICENSE",
+        },
+        {
+          kind: "npm",
+          name: "react",
+          version: "19.3.0",
+          licence: "MIT",
+          text: "React licence text",
+        },
+      ],
+    }),
+  },
+}));
+
 // An in-memory stand-in for the Go store, with its defaults
 // (internal/store/settings.go).
 const store = vi.hoisted(() => ({
@@ -95,6 +125,22 @@ describe("settings", () => {
     );
     expect(await screen.findByText("1 addon installed")).toBeInTheDocument();
     expect(await screen.findByText("1.2.3")).toBeInTheDocument();
+  });
+
+  it("shows Sinag's licence and the third-party notices", async () => {
+    const user = userEvent.setup();
+    await renderSettings();
+
+    await user.click(screen.getByRole("button", { name: "Licences" }));
+
+    const dialog = await screen.findByRole("dialog", { name: "Licences" });
+    expect(await within(dialog).findByText("Permission is hereby granted")).toBeVisible();
+    expect(within(dialog).getByText("libmpv and FFmpeg")).toBeInTheDocument();
+    expect(within(dialog).getByText("LGPL-2.1-or-later · Playback engine")).toBeInTheDocument();
+    expect(within(dialog).getByText("react 19.3.0")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
   });
 
   it("is fully keyboard-operable", async () => {

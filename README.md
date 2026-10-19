@@ -78,9 +78,12 @@ pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge
 | `internal/` | Go packages, including the Wails services the frontend calls |
 | `frontend/` | React + TypeScript UI, built with Vite+ |
 | `build/` | Per-platform build and packaging config; app metadata is in `build/config.yml` |
+| `tools/notices/` | Generates the third-party notices and audits releases for GPL-only parts |
 | `docs/` | Gate review, ADRs and spike findings |
 | `spikes/` | Throwaway M0 spike code, not part of the app |
 
 ## Licence
 
-MIT. See [ADR-0003](docs/adr/0003-mit-app-with-our-own-lgpl-libmpv.md) for how that holds with libmpv.
+MIT: see [`LICENSE`](LICENSE). The software Sinag includes is listed in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) (also in Settings › About › Licences). [ADR-0003](docs/adr/0003-mit-app-with-our-own-lgpl-libmpv.md) explains how MIT holds with libmpv, and [CONTRIBUTING.md](CONTRIBUTING.md) has the rules for dependencies and for Nuvio.
+
+`go run ./tools/notices` regenerates the notices; `go run ./tools/notices -audit [-bundle <dir>]` fails on GPL-only dependencies or a GPL or non-free libmpv/FFmpeg in a release bundle. CI runs both.

@@ -60,6 +60,29 @@ jobs:
       - run: vp run test
       - run: vp run build
 
+  # #18: the notices match the dependencies, and nothing in them is GPL-only.
+  licences:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: |
+          npm install -g "$(node -p "require('./frontend/package.json').packageManager")"
+          pnpm install --frozen-lockfile
+        working-directory: frontend
+      # The root package embeds frontend/dist, which `go list` needs to exist.
+      - run: mkdir -p frontend/dist && touch frontend/dist/.keep
+      - run: go test ./tools/...
+      - run: go run ./tools/notices
+      - name: Notices are up to date
+        run: git diff --exit-code THIRD_PARTY_NOTICES.md internal/licences/notices.json
+      - run: go run ./tools/notices -audit
+
   go:
     strategy:
       fail-fast: false
@@ -81,7 +104,7 @@ jobs:
       # Windows checks out with CRLF line endings, which gofmt flags.
       - if: runner.os != 'Windows'
         run: test -z "$(gofmt -l main.go internal)" || { gofmt -l main.go internal; exit 1; }
-      - run: go vet ./internal/...
+      - run: go vet ./internal/... ./tools/...
       # The race detector needs cgo, which the Windows runner lacks by default.
       - run: go test ${{ runner.os != 'Windows' && '-race' || '' }} ./internal/...
       # The store's bbolt file locking and mmap differ per OS: keep its
@@ -156,6 +179,8 @@ jobs:
         run: wails3 package
       # The build runs `go mod tidy`: a change means go.mod or go.sum is stale.
       - run: git diff --exit-code go.mod go.sum
+      # #18: no GPL-only or non-free libmpv/FFmpeg in what we ship.
+      - run: go run ./tools/notices -audit -bundle bin
       - name: Check the binary's target
         run: |
           bin=bin/sinag
