@@ -10,6 +10,7 @@ import (
 
 	"github.com/k22i/Cove/internal/appinfo"
 	"github.com/k22i/Cove/internal/firstmouse"
+	"github.com/k22i/Cove/internal/secrets"
 	"github.com/k22i/Cove/internal/store"
 )
 
@@ -34,6 +35,7 @@ func main() {
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
 			application.NewService(store.NewService(store.DefaultPath())),
+			application.NewService(secrets.NewService(secrets.New(secrets.ServiceName))),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),

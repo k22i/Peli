@@ -45,3 +45,27 @@ jobs:
       # The race detector needs cgo, which the Windows runner lacks by default.
       - run: go test ${{ runner.os != 'Windows' && '-race' || '' }} ./internal/...
       - run: go test -run '^$' -bench . -benchtime 20x ./internal/store
+      # #15: secrets against the real OS keychain. On Linux that means a
+      # Secret Service: gnome-keyring on a throwaway session bus.
+      - if: runner.os != 'Linux'
+        run: COVE_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets
+      - if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y --no-install-recommends gnome-keyring dbus
+          dbus-run-session -- bash -c "echo -n ci | gnome-keyring-daemon --unlock --components=secrets > /dev/null && COVE_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets"
+      # A session bus with no service directories: nothing can provide
+      # org.freedesktop.secrets, so Cove must give the clear error.
+      - if: runner.os == 'Linux'
+        run: |
+          cat > "$RUNNER_TEMP/bare-bus.conf" <<'EOF'
+          <busconfig>
+            <type>session</type>
+            <listen>unix:tmpdir=/tmp</listen>
+            <policy context="default">
+              <allow send_destination="*" eavesdrop="true"/>
+              <allow eavesdrop="true"/>
+              <allow own="*"/>
+            </policy>
+          </busconfig>
+          EOF
+          dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env COVE_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
