@@ -167,6 +167,26 @@ func TestSetCurrentProfile(t *testing.T) {
 	equal(t, must[Profile](t)(s.CurrentProfile()), guest)
 }
 
+func TestDeleteProfileKeepsCurrent(t *testing.T) {
+	s, _ := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+	kevin := must[Profile](t)(s.CreateProfile(Profile{Name: "Kevin", NuvioIndex: ptr(1)}))
+	kids := must[Profile](t)(s.CreateProfile(Profile{Name: "Kids", NuvioIndex: ptr(3)}))
+	check(t, s.SetCurrentProfile(kids.ID))
+
+	// Removing the Guest from the picker leaves the current profile as it is.
+	check(t, s.DeleteProfile(guest.ID))
+	equal(t, must[Profile](t)(s.CurrentProfile()), kids)
+
+	// Removing the current one forgets it, so a profile with its ID can't
+	// become current by accident.
+	check(t, s.DeleteProfile(kids.ID))
+	equal(t, must[Profile](t)(s.CurrentProfile()), kevin)
+	if err := s.DeleteProfile(kids.ID); !errors.Is(err, ErrProfileNotFound) {
+		t.Fatalf("deleting it again = %v, want ErrProfileNotFound", err)
+	}
+}
+
 func TestLinkNuvioProfiles(t *testing.T) {
 	s, _ := openTemp(t)
 	guest := must[Profile](t)(s.CurrentProfile())

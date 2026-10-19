@@ -65,6 +65,12 @@ func (s *Service) CurrentProfile() (Profile, error) { return s.store.CurrentProf
 // is none, and returns it.
 func (s *Service) SwitchToGuest() (Profile, error) { return s.store.SwitchToGuest() }
 
+// SetCurrentProfile makes a profile the one in use, from the picker (#24).
+// It is remembered across launches.
+func (s *Service) SetCurrentProfile(profileID uint64) error {
+	return s.store.SetCurrentProfile(profileID)
+}
+
 // CreateProfile adds a profile and returns it with its new ID.
 func (s *Service) CreateProfile(profile Profile) (Profile, error) {
 	return s.store.CreateProfile(profile)
@@ -73,7 +79,8 @@ func (s *Service) CreateProfile(profile Profile) (Profile, error) {
 // UpdateProfile saves a profile's name, avatar and Nuvio link.
 func (s *Service) UpdateProfile(profile Profile) error { return s.store.UpdateProfile(profile) }
 
-// DeleteProfile deletes a profile and everything in it.
+// DeleteProfile deletes a profile and everything in it. If it was current,
+// the oldest profile left becomes current.
 func (s *Service) DeleteProfile(profileID uint64) error { return s.store.DeleteProfile(profileID) }
 
 // Library returns a profile's library, most recently added first.

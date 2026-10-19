@@ -15,9 +15,12 @@ import (
 // Profile is one person's space in Sinag: their library, progress, watched
 // items and addons.
 type Profile struct {
-	ID     uint64 `json:"id"`
-	Name   string `json:"name"`
+	ID   uint64 `json:"id"`
+	Name string `json:"name"`
+	// The URL of the profile's avatar image, or "" for none (#24).
 	Avatar string `json:"avatar,omitempty"`
+	// The colour behind the avatar, "#rrggbb", or "" for the default.
+	AvatarColor string `json:"avatarColor,omitempty"`
 	// The Nuvio profile this one syncs with (Nuvio addresses profiles by index
 	// 1–6), or nil for a local-only profile such as the Guest.
 	NuvioIndex *int `json:"nuvioIndex,omitempty"`
@@ -68,7 +71,8 @@ func (s *Store) CreateProfile(profile Profile) (Profile, error) {
 
 // CurrentProfile returns the profile in use: the one last set with
 // SetCurrentProfile, or else the oldest one, after creating a local Guest
-// profile if there are none. The profile picker (#24) sets it on a switch.
+// profile if there are none. The profile picker (#24) sets it on a switch,
+// and it is remembered across launches.
 func (s *Store) CurrentProfile() (Profile, error) {
 	var current Profile
 	err := s.db.Update(func(tx *bolt.Tx) error {
@@ -138,8 +142,9 @@ func (s *Store) SetCurrentProfile(id uint64) error {
 // a new one. If another account's profiles are linked, they are removed
 // first, so one account's data never merges into another's; an account of ""
 // is unknown and removes nothing. Local-only profiles, such as a guest's, are
-// left as they are (#23). The profile with the lowest index becomes current,
-// until the picker (#24) asks. It returns the linked profiles in index order.
+// left as they are (#23). The profile with the lowest index becomes current;
+// the picker (#24) then asks if there are others. It returns the linked
+// profiles in index order.
 func (s *Store) LinkNuvioProfiles(account string, nuvio []Profile) ([]Profile, error) {
 	for _, profile := range nuvio {
 		if profile.NuvioIndex == nil {
@@ -266,14 +271,22 @@ func (s *Store) UpdateProfile(profile Profile) error {
 	})
 }
 
-// DeleteProfile deletes a profile and everything in it.
+// DeleteProfile deletes a profile and everything in it. If it was current,
+// the oldest profile left becomes current.
 func (s *Store) DeleteProfile(id uint64) error {
 	return s.db.Update(func(tx *bolt.Tx) error {
 		err := tx.Bucket(bucketProfiles).DeleteBucket(u64(id))
 		if errors.Is(err, bolt.ErrBucketNotFound) {
 			return fmt.Errorf("%w: %d", ErrProfileNotFound, id)
 		}
-		return err
+		if err != nil {
+			return err
+		}
+		settings := tx.Bucket(bucketSettings)
+		if bytes.Equal(settings.Get(keyCurrent), u64(id)) {
+			return settings.Delete(keyCurrent)
+		}
+		return nil
 	})
 }
 
