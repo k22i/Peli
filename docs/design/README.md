@@ -36,3 +36,17 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 The macOS app at launch in dark mode: ![](native-home-dark.jpg)
 
 The gallery shots are from Chrome at 1280×800 (2×); the macOS one is the app window.
+
+### Welcome and sign-in (#20)
+
+First run, in the macOS app: ![](native-welcome-dark.jpg)
+
+| | |
+|---|---|
+| No keychain (Linux without a Secret Service) | ![](welcome-no-keychain-light.jpg) |
+| Wrong password | ![](sign-in-wrong-password-dark.jpg) |
+| Network down | ![](sign-in-network-down-light.jpg) |
+| Rate limited | ![](sign-in-rate-limited-dark.jpg) |
+| Nuvio returns a server error | ![](sign-in-nuvio-down-light.jpg) |
+
+These are from Chrome at 1000×618 (2×), with the Go services stubbed. Before there's a profile, the screens use the `focus` chrome: the title bar only, no sidebar.

@@ -12,7 +12,7 @@ Spike code: [`spikes/nuvio-backend/`](../../spikes/nuvio-backend/) (throwaway). 
 - **All 20 read calls work on live**, and the delta cursors line up with their feeds. A pushed progress entry was visible to a second session **374 ms** later and **showed up in Nuvio mobile right away**. Deleting it produced a `delete` event in the delta feed.
 - **The contract is open source.** Nuvio's backend is [`NuvioMedia/self-host`](https://github.com/NuvioMedia/self-host) (Apache-2.0: Supabase, SQL schema, edge functions), and live answers the same way. We can write against its schema and run it locally for contract tests (#33), without reading NuvioMobile (GPL-3) or nuvio-web (no licence).
 
-**Recommendation:** build #28's Nuvio backend as a thin supabase-js layer over the RPCs below, with a local `NuvioMedia/self-host` stack as #33's test target. Five server behaviours shape the design and must be in #28's spec: [silently dropped progress pushes](#gotchas-for-28), replace-all addon pushes, global event IDs, a rate-limit budget that seems to be shared, and 429s without `Retry-After`.
+**Recommendation:** build #28's Nuvio backend as a thin layer over the RPCs below (in the end Go over plain HTTP, not supabase-js: [ADR-0008](../adr/0008-nuvio-client-in-go.md)), with a local `NuvioMedia/self-host` stack as #33's test target. Five server behaviours shape the design and must be in #28's spec: [silently dropped progress pushes](#gotchas-for-28), replace-all addon pushes, global event IDs, a rate-limit budget that seems to be shared, and 429s without `Retry-After`.
 
 ## How this was tested (read before trusting the numbers)
 
@@ -28,7 +28,7 @@ Spike code: [`spikes/nuvio-backend/`](../../spikes/nuvio-backend/) (throwaway). 
 | Base URL | `https://api.nuvio.tv` (Cloudflare → Caddy → Kong 3.9.1 → PostgREST / GoTrue / edge functions) |
 | Key | `GET /.well-known/nuvio` → `{version, service, self_hosted, backend_url, publishable_key, capabilities: {email_password_auth, tv_login}}`. Send it as `apikey` on every request. `self_hosted: true` on live too. |
 | Custom backends | Same discovery doc on any self-host, so "custom backend" in #28 can be just a URL. |
-| User agent | Ours (`Sinag/<version> (+https://github.com/k22i/Sinag)`). Sessions show up in the user's `list_my_sessions` with platform parsed from it. `register_current_session(p_client_name, p_client_version, p_platform, p_device_name)` names the client properly. |
+| User agent | Ours (`Sinag/<version> (+https://github.com/k22i/Sinag)`). Sessions show up in the user's `list_my_sessions` with platform parsed from it. `register_current_session(p_client_name, p_client_version, p_platform, p_device_name)` names the client properly. **Since changed (#20):** it now accepts only Nuvio's own app names, and `list_my_sessions` lists only those ([ADR-0008](../adr/0008-nuvio-client-in-go.md)). |
 
 **Email/password:** `auth.signInWithPassword`. Live access tokens last **604,800 s (7 days)**, with a refresh token. Wrong credentials: HTTP 400, `invalid_credentials` (also in `x-sb-error-code`).
 
@@ -136,7 +136,7 @@ Same codes on live and local unless noted.
 4. **Profiles are addressed by index (1–6), not UUID.** Profiles with `uses_primary_addons` / `uses_primary_plugins` = true presumably share profile 1's lists. Only one profile existed here, so that's unverified. New profiles with it false get Cinemeta + OpenSubtitles server-side.
 5. **Overloaded functions.** Most pushes exist with and without `p_origin_client_id`, and PostgREST picks by argument names. Always send every argument, including the origin client ID, or the wrong overload is matched (or `PGRST202`).
 6. **Access tokens last 7 days on live.** Supabase Auth rotates refresh tokens on use. Store the session in the OS keychain and refresh from one place only: two parallel refreshes with the same refresh token risk signing the user out. Refresh wasn't exercised in this spike.
-7. **We show up in the user's session list.** Call `register_current_session` with a clear name ("Sinag on macOS"), so users can recognise and revoke us.
+7. **We show up in the user's session list.** Call `register_current_session` with a clear name ("Sinag on macOS"), so users can recognise and revoke us. **No longer possible (#20):** Nuvio now rejects client names other than its own apps' (`22023 Unsupported Nuvio client`), so Sinag doesn't register ([ADR-0008](../adr/0008-nuvio-client-in-go.md)).
 
 ## Inputs for #33 (contract tests)
 
