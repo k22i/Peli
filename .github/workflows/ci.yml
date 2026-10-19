@@ -78,7 +78,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends $LINUX_DEPS
-      - run: test -z "$(gofmt -l main.go internal)" || { gofmt -l main.go internal; exit 1; }
+      # Windows checks out with CRLF line endings, which gofmt flags.
+      - if: runner.os != 'Windows'
+        run: test -z "$(gofmt -l main.go internal)" || { gofmt -l main.go internal; exit 1; }
       - run: go vet ./internal/...
       # The race detector needs cgo, which the Windows runner lacks by default.
       - run: go test ${{ runner.os != 'Windows' && '-race' || '' }} ./internal/...
@@ -127,14 +129,19 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: ${{ env.GO_VERSION }}
-      - uses: pnpm/action-setup@v6.1.0
-        with:
-          package_json_file: frontend/package.json
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: pnpm
-          cache-dependency-path: frontend/pnpm-lock.yaml
+      # Install the pinned pnpm directly: pnpm/action-setup installs the latest
+      # and switches, which fails its binary identity check on Intel Macs.
+      - run: |
+          npm install -g "$(node -p "require('./frontend/package.json').packageManager")"
+          echo "PNPM_STORE=$(pnpm store path --silent)" >> "$GITHUB_ENV"
+      - uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_STORE }}
+          key: pnpm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('frontend/pnpm-lock.yaml') }}
+          restore-keys: pnpm-${{ runner.os }}-${{ runner.arch }}-
       - if: runner.os == 'Linux'
         run: |
           sudo apt-get update
