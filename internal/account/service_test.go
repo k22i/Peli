@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"path/filepath"
+	"sync"
 	"testing"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
@@ -17,12 +18,28 @@ import (
 
 // memKeychain is an in-memory keychain, so tests never touch the user's.
 type memKeychain struct {
+	mu          sync.Mutex
 	items       map[string]string
 	unavailable bool
 	failSet     string
 }
 
+func (k *memKeychain) Get(key string) (string, error) {
+	k.mu.Lock()
+	defer k.mu.Unlock()
+	if k.unavailable {
+		return "", secrets.ErrUnavailable
+	}
+	value, ok := k.items[key]
+	if !ok {
+		return "", fmt.Errorf("%w (get %q)", secrets.ErrNotFound, key)
+	}
+	return value, nil
+}
+
 func (k *memKeychain) Set(key, value string) error {
+	k.mu.Lock()
+	defer k.mu.Unlock()
 	if k.unavailable {
 		return secrets.ErrUnavailable
 	}
@@ -34,6 +51,8 @@ func (k *memKeychain) Set(key, value string) error {
 }
 
 func (k *memKeychain) Delete(key string) error {
+	k.mu.Lock()
+	defer k.mu.Unlock()
 	delete(k.items, key)
 	return nil
 }
@@ -90,7 +109,8 @@ func TestSignIn(t *testing.T) {
 	}
 
 	// The session is in the keychain, as two items.
-	want := map[string]string{KeyAccessToken: nuviotest.AccessToken, KeyRefreshToken: nuviotest.RefreshToken}
+	access, refresh := f.backend.Tokens()
+	want := map[string]string{KeyAccessToken: access, KeyRefreshToken: refresh}
 	if fmt.Sprint(f.keychain.items) != fmt.Sprint(want) {
 		t.Fatalf("keychain = %v", f.keychain.items)
 	}

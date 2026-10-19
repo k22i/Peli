@@ -90,6 +90,19 @@ func TestReopenKeepsData(t *testing.T) {
 	}
 }
 
+func TestClearCache(t *testing.T) {
+	s, _ := openTemp(t)
+	check(t, s.CacheSet("a", []byte("1")))
+	check(t, s.CacheSet("b", []byte("2")))
+	check(t, s.ClearCache())
+	for _, key := range []string{"a", "b"} {
+		if _, ok, err := s.CacheGet(key); ok || err != nil {
+			t.Fatalf("CacheGet(%q) = %v, %v after clearing", key, ok, err)
+		}
+	}
+	check(t, s.CacheSet("a", []byte("3")))
+}
+
 func TestProfilesAreIsolated(t *testing.T) {
 	s, _ := openTemp(t)
 	a := must[Profile](t)(s.CreateProfile(Profile{Name: "A"}))

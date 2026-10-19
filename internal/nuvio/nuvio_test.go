@@ -28,10 +28,14 @@ func TestSignInWithPassword(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if s.AccessToken != nuviotest.AccessToken || s.RefreshToken != nuviotest.RefreshToken {
+	if access, refresh := b.Tokens(); s.AccessToken != access || s.RefreshToken != refresh {
 		t.Fatalf("session = %+v", s)
 	}
-	if got := s.ExpiresAt.Sub(before); got < 7*24*time.Hour || got > 7*24*time.Hour+time.Minute {
+	if s.UserID != nuviotest.UserID("me@example.com") {
+		t.Fatalf("user = %q", s.UserID)
+	}
+	// The JWT's exp is in whole seconds.
+	if got := s.ExpiresAt.Sub(before); got < 7*24*time.Hour-time.Second || got > 7*24*time.Hour+time.Minute {
 		t.Fatalf("expires in %v, want 7 days", got)
 	}
 	if calls := b.Calls(); len(calls) != 1 || calls[0] != "POST /auth/v1/token?grant_type=password" {
@@ -188,5 +192,101 @@ func TestDiscoveryIsReadOnce(t *testing.T) {
 	}
 	if n := discoveries.Load(); n != 1 {
 		t.Fatalf("read the discovery document %d times, want 1", n)
+	}
+}
+
+func TestRefreshRotates(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	first, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	second, err := c.Refresh(t.Context(), first.RefreshToken)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if second.RefreshToken == first.RefreshToken || second.AccessToken == first.AccessToken {
+		t.Fatalf("refresh kept the old tokens: %+v", second)
+	}
+	if second.UserID != first.UserID || second.ExpiresAt.Before(first.ExpiresAt) {
+		t.Fatalf("refreshed session = %+v, first %+v", second, first)
+	}
+	if body := b.Body("/auth/v1/token"); body["refresh_token"] != first.RefreshToken {
+		t.Fatalf("body = %v", body)
+	}
+
+	// A second refresher with the same token gets the same new session, as
+	// on live.
+	again, err := c.Refresh(t.Context(), first.RefreshToken)
+	if err != nil || again.RefreshToken != second.RefreshToken {
+		t.Fatalf("reusing the last token: %v, same session %v", err, again.RefreshToken == second.RefreshToken)
+	}
+
+	// Once the newest has been used, the first is two behind and refused;
+	// the newest still works.
+	third, err := c.Refresh(t.Context(), second.RefreshToken)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := c.Refresh(t.Context(), first.RefreshToken); !errors.Is(err, ErrSignedOut) {
+		t.Fatalf("reusing an old token: err = %v, want ErrSignedOut", err)
+	}
+	if _, err := c.Refresh(t.Context(), third.RefreshToken); err != nil {
+		t.Fatalf("the newest token after a reuse: %v", err)
+	}
+}
+
+func TestRefreshAfterSignOut(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := c.SignOut(t.Context(), s); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := c.Refresh(t.Context(), s.RefreshToken); !errors.Is(err, ErrSignedOut) {
+		t.Fatalf("err = %v, want ErrSignedOut", err)
+	}
+}
+
+func TestRefreshWithOldGoTrue(t *testing.T) {
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/.well-known/nuvio" {
+			w.Write([]byte(`{"service":"nuvio","publishable_key":"k"}`))
+			return
+		}
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(`{"error":"invalid_grant","error_description":"Invalid Refresh Token"}`))
+	}))
+	defer s.Close()
+	if _, err := newTestClient(s.URL).Refresh(t.Context(), "spent"); !errors.Is(err, ErrSignedOut) {
+		t.Fatalf("err = %v, want ErrSignedOut", err)
+	}
+}
+
+func TestSessionFromTokens(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	b.Lifetime.Store(3600)
+	if _, err := newTestClient(b.URL).SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password); err != nil {
+		t.Fatal(err)
+	}
+	access, refresh := b.Tokens()
+
+	s := SessionFromTokens(access, refresh)
+	if s.UserID != nuviotest.UserID("me@example.com") || s.RefreshToken != refresh {
+		t.Fatalf("session = %+v", s)
+	}
+	if left := time.Until(s.ExpiresAt); left < 59*time.Minute || left > time.Hour {
+		t.Fatalf("expires in %v, want an hour", left)
+	}
+
+	for _, token := range []string{"", "opaque", "a.!!!.c", "a.bm90IGpzb24.c"} {
+		if s := SessionFromTokens(token, refresh); !s.ExpiresAt.IsZero() || s.UserID != "" {
+			t.Errorf("SessionFromTokens(%q) = %+v, want no claims", token, s)
+		}
 	}
 }

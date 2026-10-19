@@ -12,6 +12,7 @@ import (
 	"bytes"
 	"cmp"
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -95,29 +96,77 @@ func sleep(ctx context.Context, d time.Duration) error {
 type Session struct {
 	AccessToken  string
 	RefreshToken string
-	ExpiresAt    time.Time
+	// When the access token expires, and the account it belongs to, from
+	// its claims. Zero if the token can't be read.
+	ExpiresAt time.Time
+	UserID    string
+}
+
+// SessionFromTokens rebuilds a session kept as its two tokens, reading the
+// expiry and account from the access token's claims. The token isn't
+// verified: the backend does that, and Sinag only needs to know when to
+// refresh and whose session it is.
+func SessionFromTokens(accessToken, refreshToken string) Session {
+	s := Session{AccessToken: accessToken, RefreshToken: refreshToken}
+	parts := strings.Split(accessToken, ".")
+	if len(parts) != 3 {
+		return s
+	}
+	payload, err := base64.RawURLEncoding.DecodeString(parts[1])
+	if err != nil {
+		return s
+	}
+	var claims struct {
+		Sub string `json:"sub"`
+		Exp int64  `json:"exp"`
+	}
+	if json.Unmarshal(payload, &claims) != nil {
+		return s
+	}
+	if claims.Exp > 0 {
+		s.ExpiresAt = time.Unix(claims.Exp, 0)
+	}
+	s.UserID = claims.Sub
+	return s
 }
 
 // SignInWithPassword signs in with an email and password.
 func (c *Client) SignInWithPassword(ctx context.Context, email, password string) (Session, error) {
+	return c.grant(ctx, "password", map[string]string{"email": email, "password": password})
+}
+
+// Refresh swaps a refresh token for a new session. Refresh tokens rotate:
+// the old one stops working, so keep the new session before anything else.
+// A refresh token that no longer works (signed out, revoked or already used)
+// gives ErrSignedOut.
+func (c *Client) Refresh(ctx context.Context, refreshToken string) (Session, error) {
+	s, err := c.grant(ctx, "refresh_token", map[string]string{"refresh_token": refreshToken})
+	if errors.Is(err, ErrInvalidCredentials) {
+		// Older GoTrue answers a bad refresh token with invalid_grant.
+		return Session{}, fmt.Errorf("%w: %v", ErrSignedOut, err)
+	}
+	return s, err
+}
+
+// grant asks GoTrue's token endpoint for a session.
+func (c *Client) grant(ctx context.Context, grantType string, in map[string]string) (Session, error) {
 	var body struct {
 		AccessToken  string `json:"access_token"`
 		RefreshToken string `json:"refresh_token"`
 		ExpiresIn    int64  `json:"expires_in"`
 	}
-	err := c.call(ctx, http.MethodPost, "/auth/v1/token?grant_type=password", "",
-		map[string]string{"email": email, "password": password}, &body)
+	err := c.call(ctx, http.MethodPost, "/auth/v1/token?grant_type="+grantType, "", in, &body)
 	if err != nil {
 		return Session{}, err
 	}
 	if body.AccessToken == "" || body.RefreshToken == "" {
-		return Session{}, errors.New("nuvio: sign-in answer has no session")
+		return Session{}, errors.New("nuvio: token answer has no session")
 	}
-	return Session{
-		AccessToken:  body.AccessToken,
-		RefreshToken: body.RefreshToken,
-		ExpiresAt:    time.Now().Add(time.Duration(body.ExpiresIn) * time.Second),
-	}, nil
+	s := SessionFromTokens(body.AccessToken, body.RefreshToken)
+	if s.ExpiresAt.IsZero() {
+		s.ExpiresAt = time.Now().Add(time.Duration(body.ExpiresIn) * time.Second)
+	}
+	return s, nil
 }
 
 // SignOut ends the session on the backend. Other devices stay signed in.
@@ -267,8 +316,11 @@ func answerError(res *http.Response, data []byte) error {
 	case code == "invalid_credentials" || code == "invalid_grant":
 		return ErrInvalidCredentials
 	// No session, an expired or forged token, or a revoked session. Live and
-	// self-host disagree on the code, so take any of them.
-	case code == "42501" || code == "28000" || code == "PGRST301" || res.StatusCode == http.StatusUnauthorized:
+	// self-host disagree on the code, so take any of them. GoTrue's codes
+	// are for a refresh token that stopped working.
+	case code == "42501" || code == "28000" || code == "PGRST301" || res.StatusCode == http.StatusUnauthorized,
+		code == "refresh_token_not_found" || code == "refresh_token_already_used",
+		code == "session_not_found" || code == "session_expired":
 		return fmt.Errorf("%w: %s", ErrSignedOut, message)
 	case res.StatusCode >= 500:
 		return fmt.Errorf("%w: HTTP %d", ErrUnavailable, res.StatusCode)

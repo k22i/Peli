@@ -18,6 +18,7 @@
 //	  outbox/          <surface> 0x00 <key> → Push
 //	settings           device → DeviceSettings
 //	                   current → uint64 (profile id)
+//	                   account → string (the linked Nuvio account's user id)
 //	cache              <key> → bytes
 package store
 
@@ -52,6 +53,7 @@ var (
 	keySettings = []byte("settings")
 	keyDevice   = []byte("device")
 	keyCurrent  = []byte("current")
+	keyAccount  = []byte("account")
 )
 
 var (

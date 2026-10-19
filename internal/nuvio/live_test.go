@@ -1,15 +1,17 @@
 package nuvio
 
 import (
+	"cmp"
 	"context"
+	"errors"
 	"os"
 	"testing"
 	"time"
 )
 
-// TestLive signs in to a real backend, reads the profiles and signs out
-// again, leaving nothing behind: the per-release live
-// check of ADR-0004. It runs only with SINAG_NUVIO_LIVE=1 and an account in
+// TestLive signs in to a real backend, reads the profiles, refreshes and
+// signs out again, leaving nothing behind: the per-release live check of
+// ADR-0004. It runs only with SINAG_NUVIO_LIVE=1 and an account in
 // NUVIO_EMAIL and NUVIO_PASSWORD (NUVIO_URL defaults to api.nuvio.tv). It
 // logs timings and counts, never the account's data.
 func TestLive(t *testing.T) {
@@ -38,9 +40,11 @@ func TestLive(t *testing.T) {
 		t.Fatal(err)
 	}
 	signIn := time.Since(start)
-	// Not t.Context(): it is cancelled before cleanups run.
+	// Not t.Context(): it is cancelled before cleanups run. The session may
+	// have ended already.
+	latest := s
 	t.Cleanup(func() {
-		if err := c.SignOut(context.Background(), s); err != nil {
+		if err := c.SignOut(context.Background(), latest); err != nil && !errors.Is(err, ErrSignedOut) {
 			t.Errorf("sign out: %v", err)
 		}
 	})
@@ -57,5 +61,68 @@ func TestLive(t *testing.T) {
 		if p.Index < 1 || p.Index > 6 || p.Name == "" {
 			t.Errorf("profile with index %d and a name of %d bytes", p.Index, len(p.Name))
 		}
+	}
+
+	// Refresh rotates both tokens, and the new session works (#22).
+	start = time.Now()
+	refreshed, err := c.Refresh(t.Context(), s.RefreshToken)
+	if err != nil {
+		t.Fatal(err)
+	}
+	latest = refreshed
+	t.Logf("refresh: %v, session lasts %v", time.Since(start).Round(time.Millisecond), time.Until(refreshed.ExpiresAt).Round(time.Hour))
+	if refreshed.AccessToken == s.AccessToken || refreshed.RefreshToken == s.RefreshToken {
+		t.Error("refresh kept a token")
+	}
+	if refreshed.UserID == "" || refreshed.UserID != s.UserID || refreshed.ExpiresAt.Before(s.ExpiresAt) {
+		t.Error("refreshed session's claims don't match the first")
+	}
+	if _, err := c.Profiles(t.Context(), refreshed); err != nil {
+		t.Fatalf("profiles after refresh: %v", err)
+	}
+
+	// Signing out ends the session on the backend: its refresh token stops
+	// working.
+	if err := c.SignOut(t.Context(), refreshed); err != nil {
+		t.Fatal(err)
+	}
+	_, err = c.Refresh(t.Context(), refreshed.RefreshToken)
+	t.Logf("refresh after sign-out: %v", err)
+	if !errors.Is(err, ErrSignedOut) {
+		t.Fatalf("refresh after sign-out: err = %v, want ErrSignedOut", err)
+	}
+}
+
+// TestLiveRefreshTokenReuse checks what a second refresher with the same
+// refresh token gets on live: the same new session, not a sign-out. (A probe
+// in #22 still got it 8 minutes later.) Gotcha 6 feared the opposite.
+func TestLiveRefreshTokenReuse(t *testing.T) {
+	if os.Getenv("SINAG_NUVIO_LIVE") != "1" {
+		t.Skip("set SINAG_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
+	}
+	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")
+	s, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	next, err := c.Refresh(t.Context(), s.RefreshToken)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := c.SignOut(context.Background(), next); err != nil && !errors.Is(err, ErrSignedOut) {
+			t.Errorf("sign out: %v", err)
+		}
+	})
+
+	again, err := c.Refresh(t.Context(), s.RefreshToken)
+	if err != nil {
+		t.Fatalf("second refresh with the same token: %v", err)
+	}
+	if again.RefreshToken != next.RefreshToken {
+		t.Error("second refresh with the same token got a different session")
+	}
+	if _, err := c.Refresh(t.Context(), next.RefreshToken); err != nil {
+		t.Fatalf("refreshing the newest token after that: %v", err)
 	}
 }

@@ -115,7 +115,7 @@ func TestLinkNuvioProfiles(t *testing.T) {
 
 	// Signing in: Nuvio's profiles join the guest's, and the lowest index
 	// becomes current whatever order they come in.
-	linked := must[[]Profile](t)(s.LinkNuvioProfiles([]Profile{
+	linked := must[[]Profile](t)(s.LinkNuvioProfiles("me", []Profile{
 		{Name: "Kids", NuvioIndex: ptr(3)},
 		{Name: "Kevin", NuvioIndex: ptr(1)},
 	}))
@@ -130,7 +130,7 @@ func TestLinkNuvioProfiles(t *testing.T) {
 	// Signing in again updates the same local profiles, keeping their data.
 	check(t, s.SaveLibraryItem(linked[1].ID, dune))
 	check(t, s.SetCurrentProfile(guest.ID))
-	again := must[[]Profile](t)(s.LinkNuvioProfiles([]Profile{
+	again := must[[]Profile](t)(s.LinkNuvioProfiles("me", []Profile{
 		{Name: "Kevin M", NuvioIndex: ptr(1)},
 		{Name: "Kids", NuvioIndex: ptr(3)},
 	}))
@@ -145,10 +145,71 @@ func TestLinkNuvioProfiles(t *testing.T) {
 		t.Fatalf("profiles = %+v", profiles)
 	}
 
-	if _, err := s.LinkNuvioProfiles([]Profile{{Name: "Local"}}); !errors.Is(err, ErrInvalidProfile) {
+	if _, err := s.LinkNuvioProfiles("me", []Profile{{Name: "Local"}}); !errors.Is(err, ErrInvalidProfile) {
 		t.Fatalf("linking a profile with no index = %v, want ErrInvalidProfile", err)
 	}
-	if _, err := s.LinkNuvioProfiles([]Profile{{Name: "Seven", NuvioIndex: ptr(7)}}); !errors.Is(err, ErrInvalidProfile) {
+	if _, err := s.LinkNuvioProfiles("me", []Profile{{Name: "Seven", NuvioIndex: ptr(7)}}); !errors.Is(err, ErrInvalidProfile) {
 		t.Fatalf("linking index 7 = %v, want ErrInvalidProfile", err)
+	}
+}
+
+func TestLinkAnotherAccount(t *testing.T) {
+	s, _ := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+	mine := must[[]Profile](t)(s.LinkNuvioProfiles("me", []Profile{{Name: "Kevin", NuvioIndex: ptr(1)}}))
+	check(t, s.SaveLibraryItem(mine[0].ID, dune))
+
+	// An account that isn't known keeps what is linked.
+	unknown := must[[]Profile](t)(s.LinkNuvioProfiles("", []Profile{{Name: "Kevin", NuvioIndex: ptr(1)}}))
+	equal(t, unknown[0].ID, mine[0].ID)
+
+	// Another account's profile 1 is a new profile, with none of my data.
+	theirs := must[[]Profile](t)(s.LinkNuvioProfiles("them", []Profile{{Name: "Sam", NuvioIndex: ptr(1)}}))
+	if theirs[0].ID == mine[0].ID {
+		t.Fatalf("their profile reused mine: %+v", theirs)
+	}
+	if library := must[[]LibraryItem](t)(s.Library(theirs[0].ID)); len(library) != 0 {
+		t.Fatalf("library = %+v", library)
+	}
+	equal(t, must[[]Profile](t)(s.Profiles()), []Profile{guest, theirs[0]})
+}
+
+func TestRemoveNuvioProfiles(t *testing.T) {
+	s, _ := openTemp(t)
+	guest := must[Profile](t)(s.CurrentProfile())
+	if must[bool](t)(s.HasNuvioProfiles()) {
+		t.Fatal("HasNuvioProfiles with only a guest")
+	}
+	linked := must[[]Profile](t)(s.LinkNuvioProfiles("me", []Profile{
+		{Name: "Kevin", NuvioIndex: ptr(1)},
+		{Name: "Kids", NuvioIndex: ptr(3)},
+	}))
+	check(t, s.SaveLibraryItem(linked[0].ID, dune))
+	if !must[bool](t)(s.HasNuvioProfiles()) {
+		t.Fatal("HasNuvioProfiles after linking = false")
+	}
+
+	check(t, s.RemoveNuvioProfiles())
+	if profiles := must[[]Profile](t)(s.Profiles()); len(profiles) != 1 || profiles[0] != guest {
+		t.Fatalf("profiles = %+v", profiles)
+	}
+	if must[bool](t)(s.HasNuvioProfiles()) {
+		t.Fatal("HasNuvioProfiles after removing = true")
+	}
+	if _, err := s.Library(linked[0].ID); !errors.Is(err, ErrProfileNotFound) {
+		t.Fatalf("library of a removed profile: %v", err)
+	}
+	// The current profile was removed, so the guest's is current.
+	equal(t, must[Profile](t)(s.CurrentProfile()), guest)
+}
+
+func TestRemoveNuvioProfilesLeavesNone(t *testing.T) {
+	s, _ := openTemp(t)
+	must[[]Profile](t)(s.LinkNuvioProfiles("me", []Profile{{Name: "Kevin", NuvioIndex: ptr(1)}}))
+	check(t, s.RemoveNuvioProfiles())
+	// No guest is made until something asks for the current profile, so
+	// the app can tell this is a first run again.
+	if profiles := must[[]Profile](t)(s.Profiles()); len(profiles) != 0 {
+		t.Fatalf("profiles = %+v", profiles)
 	}
 }

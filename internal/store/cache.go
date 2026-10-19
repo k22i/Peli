@@ -30,3 +30,15 @@ func (s *Store) CacheDelete(key string) error {
 		return tx.Bucket(bucketCache).Delete([]byte(key))
 	})
 }
+
+// ClearCache removes every entry, after signing out: some belong to the
+// account.
+func (s *Store) ClearCache() error {
+	return s.db.Update(func(tx *bolt.Tx) error {
+		if err := tx.DeleteBucket(bucketCache); err != nil {
+			return err
+		}
+		_, err := tx.CreateBucket(bucketCache)
+		return err
+	})
+}

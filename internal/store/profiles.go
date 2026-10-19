@@ -1,6 +1,7 @@
 package store
 
 import (
+	"bytes"
 	"cmp"
 	"encoding/json"
 	"errors"
@@ -98,12 +99,14 @@ func (s *Store) SetCurrentProfile(id uint64) error {
 	})
 }
 
-// LinkNuvioProfiles saves an account's Nuvio profiles after signing in: each
-// updates the local profile linked to its index, or becomes a new one.
-// Local-only profiles, such as a guest's, are left as they are (#23). The
-// profile with the lowest index becomes current, until the picker (#24) asks.
-// It returns the linked profiles in index order.
-func (s *Store) LinkNuvioProfiles(nuvio []Profile) ([]Profile, error) {
+// LinkNuvioProfiles saves the Nuvio profiles of account (its user id) after
+// signing in: each updates the local profile linked to its index, or becomes
+// a new one. If another account's profiles are linked, they are removed
+// first, so one account's data never merges into another's; an account of ""
+// is unknown and removes nothing. Local-only profiles, such as a guest's, are
+// left as they are (#23). The profile with the lowest index becomes current,
+// until the picker (#24) asks. It returns the linked profiles in index order.
+func (s *Store) LinkNuvioProfiles(account string, nuvio []Profile) ([]Profile, error) {
 	for _, profile := range nuvio {
 		if profile.NuvioIndex == nil {
 			return nil, fmt.Errorf("%w: %q has no Nuvio index", ErrInvalidProfile, profile.Name)
@@ -112,6 +115,17 @@ func (s *Store) LinkNuvioProfiles(nuvio []Profile) ([]Profile, error) {
 	nuvio = slices.Clone(nuvio)
 	slices.SortFunc(nuvio, func(a, b Profile) int { return cmp.Compare(*a.NuvioIndex, *b.NuvioIndex) })
 	err := s.db.Update(func(tx *bolt.Tx) error {
+		settings := tx.Bucket(bucketSettings)
+		if account != "" {
+			if linked := settings.Get(keyAccount); linked != nil && string(linked) != account {
+				if err := removeNuvioProfiles(tx); err != nil {
+					return err
+				}
+			}
+			if err := settings.Put(keyAccount, []byte(account)); err != nil {
+				return err
+			}
+		}
 		existing, err := allProfiles(tx)
 		if err != nil {
 			return err
@@ -138,12 +152,48 @@ func (s *Store) LinkNuvioProfiles(nuvio []Profile) ([]Profile, error) {
 		if len(nuvio) == 0 {
 			return nil
 		}
-		return tx.Bucket(bucketSettings).Put(keyCurrent, u64(nuvio[0].ID))
+		return settings.Put(keyCurrent, u64(nuvio[0].ID))
 	})
 	if err != nil {
 		return nil, err
 	}
 	return nuvio, nil
+}
+
+// RemoveNuvioProfiles deletes every profile linked to Nuvio and everything
+// in it, after signing out: Nuvio has the account's data, and signing in
+// again pulls it back. Local-only profiles stay.
+func (s *Store) RemoveNuvioProfiles() error {
+	return s.db.Update(removeNuvioProfiles)
+}
+
+// HasNuvioProfiles reports whether any profile is linked to Nuvio.
+func (s *Store) HasNuvioProfiles() (bool, error) {
+	profiles, err := s.Profiles()
+	return slices.ContainsFunc(profiles, func(p Profile) bool { return p.NuvioIndex != nil }), err
+}
+
+func removeNuvioProfiles(tx *bolt.Tx) error {
+	profiles, err := allProfiles(tx)
+	if err != nil {
+		return err
+	}
+	settings := tx.Bucket(bucketSettings)
+	current := settings.Get(keyCurrent)
+	for _, profile := range profiles {
+		if profile.NuvioIndex == nil {
+			continue
+		}
+		if err := tx.Bucket(bucketProfiles).DeleteBucket(u64(profile.ID)); err != nil {
+			return err
+		}
+		if bytes.Equal(current, u64(profile.ID)) {
+			if err := settings.Delete(keyCurrent); err != nil {
+				return err
+			}
+		}
+	}
+	return settings.Delete(keyAccount)
 }
 
 func createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
