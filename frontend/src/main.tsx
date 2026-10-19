@@ -4,6 +4,7 @@ import { RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
+import { ToastProvider } from "@/components/ui/toast";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
 import { startTheme } from "@/lib/theme";
 import { createAppRouter } from "@/router";
@@ -20,7 +21,9 @@ if (!root) throw new Error("missing #root element");
 createRoot(root).render(
   <StrictMode>
     <PersistQueryClientProvider client={queryClient} persistOptions={createPersistOptions()}>
-      <RouterProvider router={router} />
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
     </PersistQueryClientProvider>
   </StrictMode>,
 );
