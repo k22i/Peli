@@ -52,6 +52,10 @@ func (s *Service) ServiceShutdown() error {
 // Profiles returns every profile, oldest first.
 func (s *Service) Profiles() ([]Profile, error) { return s.store.Profiles() }
 
+// CurrentProfile returns the profile in use, creating a local Guest profile
+// on first launch.
+func (s *Service) CurrentProfile() (Profile, error) { return s.store.CurrentProfile() }
+
 // CreateProfile adds a profile and returns it with its new ID.
 func (s *Service) CreateProfile(profile Profile) (Profile, error) {
 	return s.store.CreateProfile(profile)
@@ -125,6 +129,24 @@ func (s *Service) Addons(profileID uint64) ([]Addon, error) { return s.store.Add
 // SetAddons replaces a profile's addons, in order.
 func (s *Service) SetAddons(profileID uint64, addons []Addon) error {
 	return s.store.SetAddons(profileID, addons)
+}
+
+// ProfileSettings returns a profile's settings.
+func (s *Service) ProfileSettings(profileID uint64) (ProfileSettings, error) {
+	return s.store.ProfileSettings(profileID)
+}
+
+// SaveProfileSettings replaces a profile's settings.
+func (s *Service) SaveProfileSettings(profileID uint64, settings ProfileSettings) error {
+	return s.store.SaveProfileSettings(profileID, settings)
+}
+
+// DeviceSettings returns this device's settings.
+func (s *Service) DeviceSettings() (DeviceSettings, error) { return s.store.DeviceSettings() }
+
+// SaveDeviceSettings replaces this device's settings.
+func (s *Service) SaveDeviceSettings(settings DeviceSettings) error {
+	return s.store.SaveDeviceSettings(settings)
 }
 
 // CacheGet returns the cached string at key, or nil.

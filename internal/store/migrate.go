@@ -23,6 +23,12 @@ var migrations = []migration{
 		}
 		return nil
 	},
+	// 2: the device's settings (#17). A profile's settings are a key in its
+	// bucket, so they need no migration.
+	func(tx *bolt.Tx) error {
+		_, err := tx.CreateBucketIfNotExists(bucketSettings)
+		return err
+	},
 }
 
 func migrate(db *bolt.DB, migrations []migration) error {

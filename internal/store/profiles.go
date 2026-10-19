@@ -48,30 +48,59 @@ func (s *Store) Profile(id uint64) (Profile, error) {
 // CreateProfile adds a profile and returns it with its new ID.
 func (s *Store) CreateProfile(profile Profile) (Profile, error) {
 	err := s.db.Update(func(tx *bolt.Tx) error {
-		if err := validateProfile(tx, profile, 0); err != nil {
-			return err
-		}
-		profiles := tx.Bucket(bucketProfiles)
-		id, err := profiles.NextSequence()
-		if err != nil {
-			return err
-		}
-		profile.ID = id
-		p, err := profiles.CreateBucket(u64(id))
-		if err != nil {
-			return err
-		}
-		for _, name := range [][]byte{bucketLibrary, bucketProgress, bucketWatched, bucketCursors, bucketOutbox} {
-			if _, err := p.CreateBucket(name); err != nil {
-				return err
-			}
-		}
-		return put(p, keyProfile, profile)
+		var err error
+		profile, err = createProfile(tx, profile)
+		return err
 	})
 	if err != nil {
 		return Profile{}, err
 	}
 	return profile, nil
+}
+
+// CurrentProfile returns the profile in use: the oldest one, after creating a
+// local Guest profile if there are none. A stand-in until guest mode (#23) and
+// the profile picker (#24) decide which profile is current.
+func (s *Store) CurrentProfile() (Profile, error) {
+	var current Profile
+	err := s.db.Update(func(tx *bolt.Tx) error {
+		profiles, err := allProfiles(tx)
+		if err != nil {
+			return err
+		}
+		if len(profiles) > 0 {
+			current = profiles[0]
+			return nil
+		}
+		current, err = createProfile(tx, Profile{Name: "Guest"})
+		return err
+	})
+	if err != nil {
+		return Profile{}, err
+	}
+	return current, nil
+}
+
+func createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
+	if err := validateProfile(tx, profile, 0); err != nil {
+		return Profile{}, err
+	}
+	profiles := tx.Bucket(bucketProfiles)
+	id, err := profiles.NextSequence()
+	if err != nil {
+		return Profile{}, err
+	}
+	profile.ID = id
+	p, err := profiles.CreateBucket(u64(id))
+	if err != nil {
+		return Profile{}, err
+	}
+	for _, name := range [][]byte{bucketLibrary, bucketProgress, bucketWatched, bucketCursors, bucketOutbox} {
+		if _, err := p.CreateBucket(name); err != nil {
+			return Profile{}, err
+		}
+	}
+	return profile, put(p, keyProfile, profile)
 }
 
 // UpdateProfile saves a profile's name, avatar and Nuvio link.

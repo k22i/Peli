@@ -25,6 +25,8 @@ func fixtureData(t *testing.T, s *Store) {
 	check(t, s.MarkWatched(p.ID, WatchedItem{ContentID: "tt1160419", ContentType: "movie", WatchedAt: 4000}))
 	check(t, s.SetAddons(p.ID, []Addon{cinemeta}))
 	check(t, s.SetCursor(p.ID, SurfaceLibrary, 242_369_012))
+	check(t, s.SaveProfileSettings(p.ID, japanese))
+	check(t, s.SaveDeviceSettings(DeviceSettings{Diagnostics: true}))
 }
 
 // Every shipped schema has a fixture written by the build that introduced it.
@@ -75,6 +77,13 @@ func TestFixtures(t *testing.T) {
 			if pending := must[[]Push](t)(s.Pending(id)); len(pending) != 4 {
 				t.Fatalf("pending = %d pushes, want 4", len(pending))
 			}
+			// Settings arrived in schema 2; older files read as the defaults.
+			profileSettings, deviceSettings := japanese, DeviceSettings{Diagnostics: true}
+			if filepath.Base(fixture) == "schema-1.db" {
+				profileSettings, deviceSettings = DefaultProfileSettings(), DefaultDeviceSettings()
+			}
+			equal(t, must[ProfileSettings](t)(s.ProfileSettings(id)), profileSettings)
+			equal(t, must[DeviceSettings](t)(s.DeviceSettings()), deviceSettings)
 		})
 	}
 }

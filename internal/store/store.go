@@ -1,5 +1,6 @@
 // Package store is Sinag's local database: profiles, their library, watch
-// progress, watched items and addons, the sync bookkeeping (#28) and a cache.
+// progress, watched items, addons and settings, the device's settings, the
+// sync bookkeeping (#28) and a cache.
 // It is one bbolt file in the OS app-data directory (ADR-0006).
 //
 // Layout: every profile has its own bucket under "profiles", and everything
@@ -9,11 +10,13 @@
 //	meta               schema → uint64
 //	profiles/<id>      profile → Profile
 //	                   addons → []Addon
+//	                   settings → ProfileSettings
 //	  library/         <content id> 0x00 <content type> → LibraryItem
 //	  progress/        <progress key> → Progress
 //	  watched/         <content id> 0x00 <season+1> <episode+1> → WatchedItem
 //	  cursors/         <surface> → int64
 //	  outbox/          <surface> 0x00 <key> → Push
+//	settings           device → DeviceSettings
 //	cache              <key> → bytes
 package store
 
@@ -34,6 +37,7 @@ var (
 	bucketMeta     = []byte("meta")
 	bucketProfiles = []byte("profiles")
 	bucketCache    = []byte("cache")
+	bucketSettings = []byte("settings")
 
 	bucketLibrary  = []byte("library")
 	bucketProgress = []byte("progress")
@@ -41,9 +45,11 @@ var (
 	bucketCursors  = []byte("cursors")
 	bucketOutbox   = []byte("outbox")
 
-	keySchema  = []byte("schema")
-	keyProfile = []byte("profile")
-	keyAddons  = []byte("addons")
+	keySchema   = []byte("schema")
+	keyProfile  = []byte("profile")
+	keyAddons   = []byte("addons")
+	keySettings = []byte("settings")
+	keyDevice   = []byte("device")
 )
 
 var (
