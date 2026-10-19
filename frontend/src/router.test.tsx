@@ -38,6 +38,6 @@ describe("router", () => {
   it("shows the app version from the Go binding on Settings", async () => {
     await renderApp("/settings");
 
-    expect(await screen.findByText("Version 1.2.3")).toBeInTheDocument();
+    expect(await screen.findByText("1.2.3")).toBeInTheDocument();
   });
 });

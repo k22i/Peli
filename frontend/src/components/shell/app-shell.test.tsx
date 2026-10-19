@@ -79,6 +79,20 @@ describe("app shell", () => {
     expect(document.getElementById("content")).toHaveFocus();
   });
 
+  it.each([
+    ["Control", "{Control>},{/Control}"],
+    ["Meta", "{Meta>},{/Meta}"],
+  ])("opens Settings with %s+comma", async (_, keys) => {
+    const user = userEvent.setup();
+    const { router } = await renderApp("/");
+
+    await user.keyboard(keys);
+
+    expect(await heading("Settings")).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe("/settings");
+    expect(document.getElementById("content")).toHaveFocus();
+  });
+
   it("skips to the content pane", async () => {
     const user = userEvent.setup();
     await renderApp("/");

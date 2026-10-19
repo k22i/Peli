@@ -36,15 +36,16 @@ export function AppShell({ children }: { children: ReactNode }) {
     [router],
   );
 
-  // Ctrl/⌘+1–6 jump to a section.
+  // Ctrl/⌘+1–6 jump to a section, and Ctrl/⌘+, opens Settings, as it does
+  // in other apps.
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (!(event.ctrlKey || event.metaKey) || event.altKey || event.shiftKey) return;
-      const section = sections[Number(event.key) - 1];
-      if (!section) return;
+      const to = event.key === "," ? "/settings" : sections[Number(event.key) - 1]?.to;
+      if (!to) return;
       event.preventDefault();
       focusContentAfterNavigate();
-      void navigate({ to: section.to });
+      void navigate({ to });
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);

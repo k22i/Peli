@@ -10,13 +10,16 @@ import {
   MenuLinkItem,
   MenuPopup,
   MenuSeparator,
+  MenuShortcut,
   MenuTrigger,
 } from "@/components/ui/menu";
+import { currentPlatform } from "@/lib/platform";
 import { initials, useCurrentProfile } from "@/lib/profile";
 
 // Everything that isn't a top-level section: profiles, addons, settings.
 export function ProfileMenu() {
   const profile = useCurrentProfile();
+  const mac = currentPlatform() === "mac";
 
   return (
     <Menu>
@@ -41,9 +44,14 @@ export function ProfileMenu() {
             <Puzzle />
             Addons
           </MenuLinkItem>
-          <MenuLinkItem render={<Link to="/settings" />}>
+          {/* The app shell's shortcut. */}
+          <MenuLinkItem
+            render={<Link to="/settings" />}
+            aria-keyshortcuts={mac ? "Meta+Comma" : "Control+Comma"}
+          >
             <Settings />
             Settings
+            <MenuShortcut aria-hidden>{mac ? "⌘," : "Ctrl+,"}</MenuShortcut>
           </MenuLinkItem>
         </MenuGroup>
         <MenuSeparator />
