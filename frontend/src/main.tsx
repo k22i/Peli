@@ -1,11 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import '@wailsio/runtime'
-import App from './App'
-import './index.css'
+import "@wailsio/runtime";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { RouterProvider } from "@tanstack/react-router";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+import { createPersistOptions, createQueryClient } from "@/lib/query";
+import { createAppRouter } from "@/router";
+import "./index.css";
+
+const queryClient = createQueryClient();
+const router = createAppRouter(queryClient);
+
+const root = document.getElementById("root");
+if (!root) throw new Error("missing #root element");
+
+createRoot(root).render(
+  <StrictMode>
+    <PersistQueryClientProvider client={queryClient} persistOptions={createPersistOptions()}>
+      <RouterProvider router={router} />
+    </PersistQueryClientProvider>
+  </StrictMode>,
+);

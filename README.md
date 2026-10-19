@@ -15,7 +15,7 @@ Cove is not affiliated with Stremio or Nuvio.
 You need:
 
 - Go 1.25 or later
-- Node.js 22 or later, with npm
+- Node.js 22.18 or later (or 24.11+, or 26+), and [pnpm](https://pnpm.io/installation) 11 (`corepack enable` picks up the version pinned in `frontend/package.json`)
 - The Wails CLI, pinned to the version in `go.mod`:
 
   ```sh
@@ -40,12 +40,31 @@ wails3 build   # production build into bin/
 
 Keep the Wails CLI, the Go module (`go.mod`) and `@wailsio/runtime` (`frontend/package.json`) on the same version, and upgrade them together.
 
+### Frontend
+
+The frontend uses [Vite+](https://viteplus.dev/) (Vite, Vitest, Oxlint and Oxfmt), React 19, TypeScript 7, TanStack Router and Query, and Tailwind CSS. From `frontend/`:
+
+```sh
+pnpm install
+pnpm bindings    # generate TypeScript bindings for the Go services (needs wails3)
+pnpm check       # format check, lint and type check in one pass
+pnpm lint        # Oxlint, type-aware
+pnpm typecheck   # type check only
+pnpm fmt         # format with Oxfmt
+pnpm test        # Vitest + React Testing Library
+```
+
+`frontend/bindings/` is generated (by `pnpm bindings`, `wails3 dev` or `wails3 build`) and not committed; generate it before the first `typecheck` or `test`. Frontend code imports them as `@bindings/<package>`, for example `@bindings/appinfo`. Routes are files in `frontend/src/routes/`; the router plugin regenerates `src/routeTree.gen.ts` on `dev` and `build`.
+
+pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge` in `frontend/pnpm-workspace.yaml`), so pin dependencies to versions at least a week old.
+
 ## Layout
 
 | Path | What |
 |---|---|
 | `main.go` | App entry point |
-| `frontend/` | React + TypeScript UI, built with Vite |
+| `internal/` | Go packages, including the Wails services the frontend calls |
+| `frontend/` | React + TypeScript UI, built with Vite+ |
 | `build/` | Per-platform build and packaging config; app metadata is in `build/config.yml` |
 | `docs/` | Gate review, ADRs and spike findings |
 | `spikes/` | Throwaway M0 spike code, not part of the app |

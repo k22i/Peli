@@ -5,6 +5,8 @@ import (
 	"log"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
+
+	"github.com/k22i/Cove/internal/appinfo"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -16,6 +18,9 @@ func main() {
 	app := application.New(application.Options{
 		Name:        "Cove",
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
+		Services: []application.Service{
+			application.NewService(&appinfo.Service{}),
+		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
 		},

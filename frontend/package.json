@@ -1,24 +1,49 @@
 {
   "name": "cove",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build:dev": "tsc && vite build --minify false --mode development",
-    "build": "tsc && vite build --mode production",
-    "preview": "vite preview"
+    "dev": "vp dev",
+    "build": "vp build --mode production",
+    "build:dev": "vp build --minify false --mode development",
+    "preview": "vp preview",
+    "check": "vp check",
+    "lint": "vp lint",
+    "fmt": "vp fmt",
+    "typecheck": "vp check --no-fmt --no-lint",
+    "test": "vp test run",
+    "test:watch": "vp test watch",
+    "bindings": "cd .. && wails3 generate bindings -clean=true -ts -i"
   },
   "dependencies": {
+    "@tanstack/query-sync-storage-persister": "5.104.2",
+    "@tanstack/react-query": "5.104.2",
+    "@tanstack/react-query-persist-client": "5.104.2",
+    "@tanstack/react-router": "1.170.42",
     "@wailsio/runtime": "3.0.0-beta.28",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^6.0.0",
-    "typescript": "^5.2.2",
-    "vite": "^8.0.5"
-  }
+    "@tailwindcss/vite": "4.3.3",
+    "@tanstack/router-plugin": "1.168.43",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.7",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "jsdom": "30.1.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": "^22.18.0 || ^24.11.0 || >=26.0.0"
+  },
+  "packageManager": "pnpm@11.20.0"
 }

@@ -1,21 +1,84 @@
-/* Matches the window's BackgroundColour in main.go so there is no flash on load. */
-:root {
-  color-scheme: dark;
-  background-color: rgb(6, 7, 15);
-  color: rgba(255, 255, 255, 0.87);
-  font-family: system-ui, sans-serif;
+@import "tailwindcss";
+
+/* Theme follows the OS; `data-theme` on <html> is the manual override (#13). */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
 }
 
-body {
-  margin: 0;
-  user-select: none;
-  /* The macOS title bar is hidden, so the window drags by its background.
-     Interactive controls opt out with --wails-draggable: no-drag. */
-  --wails-draggable: drag;
+/*
+ * Design tokens. Placeholder values until the design system (#13) sets the
+ * real palette, type scale and motion; components use these names, never raw
+ * values. Dark `--color-surface` matches the window's BackgroundColour in
+ * main.go so there is no flash on load.
+ */
+@theme {
+  --color-*: initial;
+  --color-surface: rgb(250 250 252);
+  --color-surface-raised: rgb(255 255 255);
+  --color-ink: rgb(17 18 28);
+  --color-ink-muted: rgb(17 18 28 / 0.6);
+  --color-accent: rgb(79 70 229);
+  --color-focus: rgb(79 70 229);
+
+  --font-sans: system-ui, sans-serif;
+
+  --radius-card: 0.75rem;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
 }
 
-.placeholder {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-surface: rgb(6 7 15);
+    --color-surface-raised: rgb(20 21 32);
+    --color-ink: rgb(255 255 255 / 0.87);
+    --color-ink-muted: rgb(255 255 255 / 0.6);
+    --color-accent: rgb(129 140 248);
+    --color-focus: rgb(129 140 248);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --color-surface: rgb(6 7 15);
+      --color-surface-raised: rgb(20 21 32);
+      --color-ink: rgb(255 255 255 / 0.87);
+      --color-ink-muted: rgb(255 255 255 / 0.6);
+      --color-accent: rgb(129 140 248);
+      --color-focus: rgb(129 140 248);
+    }
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink select-none;
+    /* The macOS title bar is hidden, so the window drags by its background.
+       Interactive controls opt out with --wails-draggable: no-drag. */
+    --wails-draggable: drag;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    --wails-draggable: no-drag;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-focus;
+  }
 }
