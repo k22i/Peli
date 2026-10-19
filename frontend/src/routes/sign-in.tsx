@@ -85,6 +85,8 @@ function SignIn() {
   const router = useRouter();
   const sessionEnded = Route.useSearch().reason === "session-ended";
   const profiles = useQuery(profilesQuery);
+  // Read from the list: asking for the current profile would make a Guest.
+  const hasGuest = profiles.data?.some((profile) => profile.guest) === true;
   const keychain = useQuery(keychainQuery);
   const signIn = useSignIn();
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -137,6 +139,8 @@ function SignIn() {
         <h1 className="font-heading text-title font-stretch-semi-expanded">Sign in to Nuvio</h1>
         <p className="text-pretty text-muted-foreground">
           Use the email and password of your Nuvio account.
+          {hasGuest &&
+            " Your Guest profile stays on this computer as it is, apart from your Nuvio profiles."}
         </p>
       </header>
 

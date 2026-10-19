@@ -72,11 +72,12 @@ export function useSignIn() {
   });
 }
 
-// Carries on without an account: the store creates the local Guest profile.
+// Carries on without an account, on the local Guest profile: the store
+// creates it if there's none. Nothing it does reaches Nuvio (#23).
 export function useContinueAsGuest() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => Store.CurrentProfile(),
+    mutationFn: () => Store.SwitchToGuest(),
     onSuccess: async (profile) => {
       await profileChanged(queryClient, profile);
     },

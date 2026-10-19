@@ -75,8 +75,8 @@ function Welcome() {
 
       <p className="flex gap-2 text-sm text-muted-foreground">
         <KeyRound className="mt-0.5 size-4 shrink-0" aria-hidden />
-        As a guest, your library and progress stay on this device. You can sign in later from
-        Settings.
+        As a guest, your addons, library and progress stay on this device. You can sign in later
+        from the profile menu or Settings, and the Guest profile stays as it is.
       </p>
     </div>
   );

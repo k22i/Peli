@@ -68,7 +68,7 @@ vi.mock("@bindings/account", () => ({
   },
 }));
 
-const guest: Profile = { id: 1, name: "Guest" };
+const guest: Profile = { id: 1, name: "Guest", guest: true };
 const kevin: Profile = { id: 2, name: "Kevin", nuvioIndex: 1 };
 
 function signedIn(...profiles: Profile[]) {
@@ -163,10 +163,8 @@ describe("sign out", () => {
     await renderApp("/");
 
     await user.click(await screen.findByRole("button", { name: "Profile: Guest" }));
-    expect(await screen.findByRole("menuitem", { name: "Sign out" })).toHaveAttribute(
-      "aria-disabled",
-      "true",
-    );
+    expect(await screen.findByRole("menuitem", { name: "Sign in to Nuvio" })).toBeVisible();
+    expect(screen.queryByRole("menuitem", { name: "Sign out" })).toBeNull();
   });
 });
 

@@ -127,10 +127,9 @@ describe("app shell", () => {
       "aria-disabled",
       "true",
     );
-    expect(within(menu).getByRole("menuitem", { name: "Sign out" })).toHaveAttribute(
-      "aria-disabled",
-      "true",
-    );
+    // A guest has nothing to sign out of, and can sign in instead (#23).
+    expect(within(menu).queryByRole("menuitem", { name: "Sign out" })).toBeNull();
+    expect(within(menu).getByRole("menuitem", { name: "Sign in to Nuvio" })).toBeVisible();
 
     await user.click(within(menu).getByRole("menuitem", { name: "Settings" }));
     expect(await heading("Settings")).toBeInTheDocument();

@@ -25,8 +25,16 @@ vi.mock("@bindings/store", () => ({
     Profiles: async () => backend.profiles,
     CurrentProfile: async () => {
       if (!backend.current) {
-        backend.current = { id: 1, name: "Guest" };
+        backend.current = { id: 1, name: "Guest", guest: true };
         backend.profiles = [backend.current];
+      }
+      return backend.current;
+    },
+    SwitchToGuest: async () => {
+      backend.current = backend.profiles.find((p) => p.guest);
+      if (!backend.current) {
+        backend.current = { id: backend.profiles.length + 1, name: "Guest", guest: true };
+        backend.profiles = [...backend.profiles, backend.current];
       }
       return backend.current;
     },
@@ -105,7 +113,7 @@ describe("first run", () => {
 
     expect(await screen.findByRole("navigation", { name: "Main" })).toBeVisible();
     expect(router.state.location.pathname).toBe("/");
-    expect(backend.profiles).toEqual([{ id: 1, name: "Guest" }]);
+    expect(backend.profiles).toEqual([{ id: 1, name: "Guest", guest: true }]);
     expect(screen.getByRole("button", { name: "Profile: Guest" })).toBeVisible();
   });
 
@@ -123,7 +131,7 @@ describe("first run", () => {
   });
 
   it("doesn't come back once there is a profile", async () => {
-    backend.profiles = [{ id: 1, name: "Guest" }];
+    backend.profiles = [{ id: 1, name: "Guest", guest: true }];
     const { router } = await renderApp("/");
     expect(router.state.location.pathname).toBe("/");
   });
@@ -216,7 +224,7 @@ describe("sign in", () => {
   });
 
   it("is reached from Settings by a guest, and Back returns there", async () => {
-    backend.profiles = [{ id: 1, name: "Guest" }];
+    backend.profiles = [{ id: 1, name: "Guest", guest: true }];
     backend.current = backend.profiles[0];
     const user = userEvent.setup();
     const { router } = await renderApp("/settings");
@@ -226,5 +234,28 @@ describe("sign in", () => {
     await user.click(screen.getByRole("button", { name: "Back" }));
 
     await waitFor(() => expect(router.state.location.pathname).toBe("/settings"));
+  });
+
+  it("is offered to a guest in the profile menu, keeping the Guest apart", async () => {
+    backend.profiles = [{ id: 1, name: "Guest", guest: true }];
+    backend.current = backend.profiles[0];
+    const user = userEvent.setup();
+    await renderApp("/");
+
+    await user.click(screen.getByRole("button", { name: "Profile: Guest" }));
+    const menu = await screen.findByRole("menu");
+    expect(within(menu).queryByRole("menuitem", { name: "Sign out" })).toBeNull();
+    await user.click(within(menu).getByRole("menuitem", { name: "Sign in to Nuvio" }));
+
+    await screen.findByRole("heading", { level: 1, name: "Sign in to Nuvio" });
+    expect(screen.getByText(/Your Guest profile stays on this computer/)).toBeVisible();
+    await fillIn(user);
+
+    expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
+    // Nothing merged: the Guest is still there, as it was.
+    expect(backend.profiles).toEqual([
+      { id: 1, name: "Guest", guest: true },
+      { id: 2, name: "Kevin", nuvioIndex: 1 },
+    ]);
   });
 });

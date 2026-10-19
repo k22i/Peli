@@ -65,15 +65,21 @@ export function ProfileMenu() {
               Sign in again
             </MenuLinkItem>
           )}
-          {/* Guests (#23) have no account to sign out of. After a session
-            ended, signing out still removes the account's data. */}
-          <MenuItem
-            disabled={!profile.signedIn && !profile.sessionEnded}
-            onClick={() => setSigningOut(true)}
-          >
-            <LogOut />
-            Sign out
-          </MenuItem>
+          {/* Guests (#23) can sign in later; their profile stays as it is. */}
+          {!profile.signedIn && !profile.sessionEnded && (
+            <MenuLinkItem render={<Link to="/sign-in" />}>
+              <LogIn />
+              Sign in to Nuvio
+            </MenuLinkItem>
+          )}
+          {/* After a session ended, signing out still removes the account's
+            data. */}
+          {(profile.signedIn || profile.sessionEnded) && (
+            <MenuItem onClick={() => setSigningOut(true)}>
+              <LogOut />
+              Sign out
+            </MenuItem>
+          )}
         </MenuPopup>
       </Menu>
       <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
