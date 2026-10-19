@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AddonsRouteImport } from './routes/addons'
 import { Route as AnimeRouteImport } from './routes/anime'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MoviesRouteImport } from './routes/movies'
@@ -20,6 +21,11 @@ import { Route as ShowsRouteImport } from './routes/shows'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddonsRoute = AddonsRouteImport.update({
+  id: '/addons',
+  path: '/addons',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnimeRoute = AnimeRouteImport.update({
@@ -55,6 +61,7 @@ const ShowsRoute = ShowsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/addons': typeof AddonsRoute
   '/anime': typeof AnimeRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/addons': typeof AddonsRoute
   '/anime': typeof AnimeRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/addons': typeof AddonsRoute
   '/anime': typeof AnimeRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
@@ -84,13 +93,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/anime' | '/library' | '/movies' | '/search' | '/settings' | '/shows'
+    | '/'
+    | '/addons'
+    | '/anime'
+    | '/library'
+    | '/movies'
+    | '/search'
+    | '/settings'
+    | '/shows'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/anime' | '/library' | '/movies' | '/search' | '/settings' | '/shows'
+    | '/'
+    | '/addons'
+    | '/anime'
+    | '/library'
+    | '/movies'
+    | '/search'
+    | '/settings'
+    | '/shows'
   id:
     | '__root__'
     | '/'
+    | '/addons'
     | '/anime'
     | '/library'
     | '/movies'
@@ -101,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AddonsRoute: typeof AddonsRoute
   AnimeRoute: typeof AnimeRoute
   LibraryRoute: typeof LibraryRoute
   MoviesRoute: typeof MoviesRoute
@@ -116,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/addons': {
+      id: '/addons'
+      path: '/addons'
+      fullPath: '/addons'
+      preLoaderRoute: typeof AddonsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/anime': {
@@ -165,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AddonsRoute: AddonsRoute,
   AnimeRoute: AnimeRoute,
   LibraryRoute: LibraryRoute,
   MoviesRoute: MoviesRoute,

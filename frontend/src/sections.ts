@@ -1,17 +1,20 @@
 import type { LinkProps } from "@tanstack/react-router";
+import { Clapperboard, House, Library, type LucideIcon, Search, Sparkles, Tv } from "lucide-react";
 
 export type Section = {
   label: string;
   to: NonNullable<LinkProps["to"]>;
+  icon: LucideIcon;
 };
 
-// The top-level navigation. Capped at 6 items (epic #9); Settings, the
-// profile switcher and addons live in the profile menu instead (#12).
+// The top-level navigation, in order: Ctrl/⌘+1–6 jump to them. Capped at 6
+// items (epic #9); any new item needs a written case. Settings, the profile
+// switcher and addons live in the profile menu instead.
 export const sections = [
-  { label: "Home", to: "/" },
-  { label: "Movies", to: "/movies" },
-  { label: "Shows", to: "/shows" },
-  { label: "Anime", to: "/anime" },
-  { label: "Search", to: "/search" },
-  { label: "Library", to: "/library" },
+  { label: "Home", to: "/", icon: House },
+  { label: "Movies", to: "/movies", icon: Clapperboard },
+  { label: "Shows", to: "/shows", icon: Tv },
+  { label: "Anime", to: "/anime", icon: Sparkles },
+  { label: "Search", to: "/search", icon: Search },
+  { label: "Library", to: "/library", icon: Library },
 ] as const satisfies readonly Section[];

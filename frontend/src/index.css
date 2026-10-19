@@ -29,10 +29,15 @@
   }
 
   body {
-    /* coss ui: popups stack above the app without z-index wars. */
-    @apply relative isolate bg-background text-foreground select-none;
-    /* The macOS title bar is hidden, so the window drags by its background.
-       Interactive controls opt out with --wails-draggable: no-drag. */
+    /* coss ui: popups stack above the app without z-index wars. No
+       background here: the app shell paints its own, so a route without the
+       shell (the player) can be transparent. */
+    @apply relative isolate text-foreground select-none;
+  }
+
+  /* The title bar and the sidebar's empty space drag the window (macOS
+     hidden-inset, frameless Windows). Controls opt out below. */
+  .drag-region {
     --wails-draggable: drag;
   }
 
@@ -277,4 +282,37 @@
   --sidebar-primary: var(--color-neutral-100);
   --sidebar-primary-foreground: var(--color-neutral-800);
   --sidebar-ring: var(--color-neutral-400);
+}
+
+/*
+ * Route transitions (the router's defaultViewTransition): only the content
+ * pane cross-fades; the rest of the shell is left out of the transition so it
+ * stays perfectly still.
+ */
+.content-pane {
+  view-transition-name: content;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(content),
+::view-transition-new(content) {
+  animation-duration: 120ms;
+  animation-timing-function: ease-out;
+}
+
+/* The pane's size never changes between pages, so skip the group's resize. */
+::view-transition-group(content) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

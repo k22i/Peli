@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vite-plus/test";
 
@@ -10,8 +10,12 @@ vi.mock("@bindings/appinfo", () => ({
 }));
 
 describe("router", () => {
-  it("caps the top-level navigation at 6 items", () => {
+  it("caps the top-level navigation at 6 items", async () => {
     expect(sections.length).toBeLessThanOrEqual(6);
+
+    await renderApp("/");
+    const nav = screen.getByRole("navigation", { name: "Main" });
+    expect(within(nav).getAllByRole("link")).toHaveLength(sections.length);
   });
 
   it.each(sections)("renders the $label section at $to", async ({ label, to }) => {
