@@ -129,9 +129,13 @@ function AccountSection() {
       <SettingRow
         id="profiles"
         label="Profiles"
-        description="Switch between the profiles on this computer."
+        description="Add, rename and delete profiles, and change their avatars."
       >
-        <Link to="/profiles" className={buttonVariants({ variant: "outline", size: "sm" })}>
+        <Link
+          to="/profiles"
+          search={{ manage: true }}
+          className={buttonVariants({ variant: "outline", size: "sm" })}
+        >
           Manage
         </Link>
       </SettingRow>

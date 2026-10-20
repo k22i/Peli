@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
 import { useEffect } from "react";
 
-import { Service as Account } from "@bindings/account";
+import { Service as Account, type ProfileEdit } from "@bindings/account";
 import { Service as Store, type Profile } from "@bindings/store";
 import { accountQuery, currentProfileQuery } from "@/lib/profile";
 import { secrets } from "@/lib/secrets";
@@ -103,12 +103,13 @@ export function useSwitchProfile() {
   });
 }
 
-// Deletes a local profile and everything in it: the picker offers it for the
-// Guest (#24). If it was current, Go makes the oldest profile left current.
+// Deletes a profile and everything in it (#95): a Nuvio profile from Nuvio,
+// on every device, and the Guest from this one. If it was current, Go makes
+// the oldest profile left current.
 export function useRemoveProfile() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (profile: Profile) => Store.DeleteProfile(profile.id),
+    mutationFn: (profile: Profile) => Account.DeleteProfile(profile.id),
     onSuccess: async (_, profile) => {
       for (const queryKey of [
         ["settings", "profile", profile.id],
@@ -119,6 +120,105 @@ export function useRemoveProfile() {
       await queryClient.invalidateQueries({ queryKey: ["profiles"] });
     },
   });
+}
+
+// Nuvio's stock avatars, for the profile editor. The catalog is public but
+// online only; the editor carries on without it.
+export const avatarsQuery = queryOptions({
+  queryKey: ["avatars"],
+  queryFn: async () => (await Account.Avatars()) ?? [],
+  staleTime: 60 * 60 * 1000,
+  retry: false,
+});
+
+// Renames a profile and changes its avatar and colour (#95): a Nuvio profile
+// in Nuvio, on every device, and the Guest on this one.
+export function useEditProfile() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profile, edit }: { profile: Profile; edit: ProfileEdit }) =>
+      Account.EditProfile(profile.id, edit),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+    },
+  });
+}
+
+// Adds a Nuvio profile at the account's lowest free index (#95).
+export function useAddProfile() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (edit: ProfileEdit) => Account.AddProfile(edit),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+    },
+  });
+}
+
+// How many profiles a Nuvio account can have.
+export const maxNuvioProfiles = 6;
+
+// The codes internal/account gives a failed profile change (#95). Nothing is
+// queued: offline or signed out, the change is refused until the sync module
+// (#28) can push it later.
+const profileErrorCodes = [
+  "unreachable",
+  "unavailable",
+  "rate_limited",
+  "signed_out",
+  "profile_not_found",
+  "profiles_full",
+  "primary_profile",
+  "last_profile",
+  "invalid_profile",
+] as const;
+
+// What to tell the user when changing a profile fails.
+export function profileProblem(error: Error): { title: string; description: string } {
+  const cause: unknown = error.cause;
+  const code =
+    typeof cause === "object" && cause !== null && "code" in cause
+      ? profileErrorCodes.find((c) => c === cause.code)
+      : undefined;
+  switch (code) {
+    case "unreachable":
+      return {
+        title: "Couldn’t reach Nuvio",
+        description:
+          "Nuvio profiles change on every device, so this needs a connection. Try again when you’re online.",
+      };
+    case "unavailable":
+    case "rate_limited":
+      return { title: "Nuvio isn’t answering", description: "Try again in a moment." };
+    case "signed_out":
+      return {
+        title: "Sign in again to change Nuvio profiles",
+        description:
+          "Your Nuvio session ended. Nuvio profiles change on every device, so Sinag needs to be signed in.",
+      };
+    case "profile_not_found":
+      return {
+        title: "This profile is gone from Nuvio",
+        description: "It was deleted on another device.",
+      };
+    case "profiles_full":
+      return {
+        title: `All ${maxNuvioProfiles} Nuvio profiles are in use`,
+        description: "Delete one to add another.",
+      };
+    case "primary_profile":
+      return {
+        title: "The first profile can’t be deleted",
+        description: "Other profiles can share its addons, so Nuvio keeps it.",
+      };
+    case "last_profile":
+      return {
+        title: "The last profile can’t be deleted",
+        description: "A Nuvio account always has a profile.",
+      };
+    default:
+      return { title: "Couldn’t save the profile", description: error.message };
+  }
 }
 
 // More than one profile on this device: the picker asks who's watching at

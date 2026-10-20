@@ -54,6 +54,21 @@ export function useCurrentProfile(): Profile {
   };
 }
 
+// The colours the profile editor offers (#95), lagoon first. Nuvio takes any
+// "#rrggbb"; initials on each are black or white, whichever reads better.
+export const avatarColors = [
+  "#33B5E0",
+  "#1E88E5",
+  "#7957BD",
+  "#D81B60",
+  "#E53935",
+  "#FB8C00",
+  "#FDD835",
+  "#43A047",
+  "#00897B",
+  "#546E7A",
+] as const;
+
 export function initials(name: string): string {
   return name
     .split(/\s+/)

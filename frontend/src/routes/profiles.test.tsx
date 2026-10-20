@@ -2,7 +2,7 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { Status } from "@bindings/account";
+import type { Avatar, ProfileEdit, Status } from "@bindings/account";
 import type { Addon, Profile, ProfileSettings } from "@bindings/store";
 import { initialsColor } from "@/components/account/profile-avatar";
 import { renderApp } from "@/test/render-app";
@@ -21,6 +21,9 @@ const backend = vi.hoisted(() => ({
   addons: new Map<number, Addon[]>(),
   switches: [] as number[],
   failSwitch: false,
+  // The code internal/account fails the next profile change with, if any.
+  failChange: "",
+  edits: [] as [number | "add", ProfileEdit][],
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -32,11 +35,6 @@ vi.mock("@bindings/store", () => ({
       if (backend.failSwitch) throw new Error("disk full");
       backend.switches.push(id);
       backend.current = id;
-    },
-    // As Go does: if it was current, the oldest one left takes over.
-    DeleteProfile: async (id: number) => {
-      backend.profiles = backend.profiles.filter((p) => p.id !== id);
-      if (backend.current === id) backend.current = backend.profiles[0]?.id ?? 0;
     },
     ProfileSettings: async (id: number) => ({
       audioLanguage: "",
@@ -52,8 +50,53 @@ vi.mock("@bindings/store", () => ({
 
 vi.mock("@bindings/secrets", () => ({ Service: { Available: async () => {} } }));
 
+// A stand-in for internal/account's profile changes (#95), failing with a
+// code in the cause as Wails passes it on.
+const avatarImage = (id: string) =>
+  `https://api.nuvio.tv/storage/v1/object/public/avatars/animals/${id}.png`;
+function failed() {
+  if (!backend.failChange) return;
+  throw new Error("nuvio: failed", { cause: { code: backend.failChange } });
+}
 vi.mock("@bindings/account", () => ({
-  Service: { Status: async () => backend.status },
+  Service: {
+    Status: async () => backend.status,
+    Avatars: async (): Promise<Avatar[]> => [
+      { id: "otto", name: "Otto", image: avatarImage("otto"), color: "#0BB5AE" },
+      { id: "pip", name: "Pip", image: avatarImage("pip"), color: "#45B5EE" },
+    ],
+    EditProfile: async (id: number, edit: ProfileEdit) => {
+      failed();
+      backend.edits.push([id, edit]);
+      const profile = backend.profiles.find((p) => p.id === id)!;
+      Object.assign(profile, {
+        name: edit.name.trim(),
+        ...(edit.avatarId && { avatar: avatarImage(edit.avatarId) }),
+        ...(edit.avatarColor && { avatarColor: edit.avatarColor }),
+      });
+      return profile;
+    },
+    AddProfile: async (edit: ProfileEdit) => {
+      failed();
+      backend.edits.push(["add", edit]);
+      const used = new Set(backend.profiles.map((p) => p.nuvioIndex));
+      const added: Profile = {
+        id: Math.max(...backend.profiles.map((p) => p.id)) + 1,
+        name: edit.name.trim(),
+        nuvioIndex: [1, 2, 3, 4, 5, 6].find((i) => !used.has(i))!,
+        avatarColor: edit.avatarColor,
+        ...(edit.avatarId && { avatar: avatarImage(edit.avatarId) }),
+      };
+      backend.profiles = [...backend.profiles, added];
+      return added;
+    },
+    // As Go does: if it was current, the oldest one left takes over.
+    DeleteProfile: async (id: number) => {
+      failed();
+      backend.profiles = backend.profiles.filter((p) => p.id !== id);
+      if (backend.current === id) backend.current = backend.profiles[0]?.id ?? 0;
+    },
+  },
 }));
 
 const guest: Profile = { id: 1, name: "Guest", guest: true };
@@ -61,7 +104,7 @@ const kevin: Profile = {
   id: 2,
   name: "Kevin",
   nuvioIndex: 1,
-  avatar: "https://api.nuvio.tv/storage/v1/object/public/avatars/animals/otto-v1.png",
+  avatar: avatarImage("otto"),
   avatarColor: "#0BB5AE",
 };
 const kids: Profile = { id: 3, name: "Kids Room", nuvioIndex: 3, avatarColor: "#7957BD" };
@@ -69,7 +112,8 @@ const cinemeta: Addon = { url: "https://cinemeta/manifest.json", enabled: true }
 const anime: Addon = { url: "https://anime/manifest.json", enabled: true };
 
 function signedIn(current: Profile, ...profiles: Profile[]) {
-  backend.profiles = profiles;
+  // Copies: the account stand-in edits them in place.
+  backend.profiles = structuredClone(profiles);
   backend.current = current.id;
   backend.status = { signedIn: true, sessionEnded: false };
 }
@@ -82,6 +126,8 @@ beforeEach(() => {
   backend.addons.clear();
   backend.switches = [];
   backend.failSwitch = false;
+  backend.failChange = "";
+  backend.edits = [];
 });
 
 const picker = () => screen.findByRole("heading", { level: 1, name: "Who’s watching?" });
@@ -195,6 +241,15 @@ describe("profile picker", () => {
     expect(screen.getByRole("menuitem", { name: "Manage profiles" })).toHaveFocus();
     await user.keyboard("{Enter}");
 
+    // Straight into Manage mode, where the Guest can be renamed but not
+    // removed.
+    await screen.findByRole("heading", { level: 1, name: "Manage profiles" });
+    expect(screen.queryByRole("button", { name: "Add profile" })).toBeNull();
+    await user.click(screen.getByRole("button", { name: "Edit Guest" }));
+    const dialog = await screen.findByRole("dialog", { name: "Rename the Guest" });
+    expect(within(dialog).queryByRole("button", { name: "Remove" })).toBeNull();
+    await user.click(within(dialog).getByRole("button", { name: "Cancel" }));
+    await user.click(screen.getByRole("button", { name: "Done" }));
     await picker();
     expect(screen.queryByRole("button", { name: "Remove the Guest profile" })).toBeNull();
     expect(
@@ -203,6 +258,165 @@ describe("profile picker", () => {
     // Opened from the app, so there's a way back.
     await user.click(screen.getByRole("button", { name: "Back" }));
     expect(await screen.findByRole("button", { name: "Profile: Guest" })).toBeVisible();
+  });
+});
+
+// Opens the picker's Manage mode.
+async function manage() {
+  await renderApp("/profiles", { shell: false });
+  await userEvent.click(await screen.findByRole("button", { name: "Manage profiles" }));
+  await screen.findByRole("heading", { level: 1, name: "Manage profiles" });
+}
+
+describe("managing profiles", () => {
+  it("renames a Nuvio profile and changes its avatar and colour", async () => {
+    signedIn(kevin, kevin, kids);
+    const user = userEvent.setup();
+    // Past the launch picker: Settings › Profiles › Manage opens it ready to
+    // edit.
+    const { router } = await renderApp("/profiles", { shell: false });
+    await user.click(await tile("Kevin"));
+    await screen.findByRole("button", { name: "Profile: Kevin" });
+    await router.navigate({ to: "/settings" });
+    await user.click(await screen.findByRole("link", { name: "Manage" }));
+    await screen.findByRole("heading", { level: 1, name: "Manage profiles" });
+
+    await user.click(await tile("Edit Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    expect(dialog).toHaveTextContent("Changes show on every device");
+    const name = within(dialog).getByRole("textbox", { name: "Name" });
+    await user.clear(name);
+    await user.type(name, "Little ones");
+    // A stock avatar brings the colour it was drawn for…
+    await user.click(await within(dialog).findByRole("radio", { name: "Pip" }));
+    expect(within(dialog).getByRole("radio", { name: "#45B5EE" })).toBeChecked();
+    // …which can still change.
+    await user.click(within(dialog).getByRole("radio", { name: "#E53935" }));
+    await user.click(within(dialog).getByRole("button", { name: "Save" }));
+
+    expect(await screen.findByText("Saved Little ones")).toBeInTheDocument();
+    expect(backend.edits).toEqual([
+      [kids.id, { name: "Little ones", avatarId: "pip", avatarColor: "#E53935" }],
+    ]);
+    expect(await tile("Edit Little ones")).toBeVisible();
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog", { name: "Edit Kids Room" })).toBeNull(),
+    );
+  });
+
+  it("keeps the avatar when only the name changes", async () => {
+    signedIn(kevin, kevin, kids);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kevin"));
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kevin" });
+    // Kevin's avatar is Otto, matched by its image.
+    expect(await within(dialog).findByRole("radio", { name: "Otto" })).toBeChecked();
+    await user.type(within(dialog).getByRole("textbox", { name: "Name" }), " M");
+    await user.click(within(dialog).getByRole("button", { name: "Save" }));
+
+    expect(await screen.findByText("Saved Kevin M")).toBeInTheDocument();
+    expect(backend.edits).toEqual([
+      [kevin.id, { name: "Kevin M", avatarId: "", avatarColor: "#0BB5AE" }],
+    ]);
+  });
+
+  it("adds a Nuvio profile", async () => {
+    signedIn(kevin, guest, kevin, kids);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await screen.findByRole("button", { name: "Add profile" }));
+    const dialog = await screen.findByRole("dialog", { name: "Add a profile" });
+    expect(dialog).toHaveTextContent("starts empty");
+    // Nothing to delete yet.
+    expect(within(dialog).queryByRole("button", { name: "Delete" })).toBeNull();
+    await user.type(within(dialog).getByRole("textbox", { name: "Name" }), "Guests");
+    await user.click(within(dialog).getByRole("button", { name: "Add profile" }));
+
+    expect(await screen.findByText("Added Guests")).toBeInTheDocument();
+    expect(backend.edits).toEqual([
+      ["add", { name: "Guests", avatarId: "", avatarColor: "#33B5E0" }],
+    ]);
+    expect(await tile("Edit Guests")).toBeVisible();
+  });
+
+  it("says when all six Nuvio profiles are in use", async () => {
+    const six = [1, 2, 3, 4, 5, 6].map((i) => ({ id: 10 + i, name: `P${i}`, nuvioIndex: i }));
+    signedIn(six[0]!, ...six);
+    await manage();
+
+    expect(
+      await screen.findByText("All 6 Nuvio profiles are in use. Delete one to add another."),
+    ).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Add profile" })).toBeNull();
+  });
+
+  it("deletes a Nuvio profile after saying it goes from every device", async () => {
+    signedIn(kids, kevin, kids);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    let dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    await user.click(within(dialog).getByRole("button", { name: "Delete" }));
+    const confirm = await screen.findByRole("alertdialog", { name: "Delete Kids Room?" });
+    expect(confirm).toHaveTextContent("deleted from Nuvio, on every device");
+    await user.click(within(confirm).getByRole("button", { name: "Delete" }));
+
+    expect(await screen.findByText("Deleted Kids Room")).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByRole("button", { name: "Edit Kids Room" })).toBeNull(),
+    );
+    expect(backend.profiles.map((p) => p.name)).toEqual(["Kevin"]);
+
+    // Kevin is the primary profile, and now the last: Nuvio keeps it.
+    await user.click(await tile("Edit Kevin"));
+    dialog = await screen.findByRole("dialog", { name: "Edit Kevin" });
+    expect(within(dialog).queryByRole("button", { name: "Delete" })).toBeNull();
+  });
+
+  it("explains a change that can't reach Nuvio, and keeps the edit open", async () => {
+    signedIn(kevin, kevin, kids);
+    backend.failChange = "unreachable";
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    await user.type(within(dialog).getByRole("textbox", { name: "Name" }), "!");
+    await user.click(within(dialog).getByRole("button", { name: "Save" }));
+
+    expect(await within(dialog).findByText("Couldn’t reach Nuvio")).toBeVisible();
+    expect(dialog).toHaveTextContent("needs a connection");
+    expect(within(dialog).getByRole("textbox", { name: "Name" })).toHaveValue("Kids Room!");
+    expect(backend.profiles.find((p) => p.id === kids.id)?.name).toBe("Kids Room");
+  });
+
+  it("blocks Nuvio profiles while the session has ended, but renames the Guest", async () => {
+    signedIn(guest, guest, kevin);
+    backend.status = { signedIn: false, sessionEnded: true };
+    const user = userEvent.setup();
+    await manage();
+
+    expect(await tile("Edit Kevin")).toBeDisabled();
+    expect(screen.getByText(/Sign in again to change your Nuvio profiles/)).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Add profile" })).toBeNull();
+
+    await user.click(await tile("Edit Guest"));
+    const dialog = await screen.findByRole("dialog", { name: "Rename the Guest" });
+    // Local only: no avatars or colours from Nuvio.
+    expect(within(dialog).queryByRole("radiogroup")).toBeNull();
+    const name = within(dialog).getByRole("textbox", { name: "Name" });
+    await user.clear(name);
+    await user.type(name, "Visitors");
+    await user.click(within(dialog).getByRole("button", { name: "Save" }));
+
+    expect(await screen.findByText("Saved Visitors")).toBeInTheDocument();
+    expect(backend.edits).toEqual([
+      [guest.id, { name: "Visitors", avatarId: "", avatarColor: "" }],
+    ]);
   });
 });
 

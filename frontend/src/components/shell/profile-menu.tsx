@@ -123,7 +123,7 @@ function SwitchProfileMenu({ currentId }: { currentId: number | undefined }) {
           ))}
         </MenuRadioGroup>
         <MenuSeparator />
-        <MenuLinkItem render={<Link to="/profiles" />}>
+        <MenuLinkItem render={<Link to="/profiles" search={{ manage: true }} />}>
           <UserCog />
           Manage profiles
         </MenuLinkItem>
