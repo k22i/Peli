@@ -1,0 +1,7 @@
+- [Spike ticket workflow](spike-ticket-workflow.md) — work on main, no PR; progress/verdict comments, tick tasks, move Roadmap board status, comment on epic
+- [Nuvio live account](nuvio-live-account.md) — user's real creds in spikes/nuvio-backend/.env; quote the '#', undo every write, scan results for the UUID
+- [Frontend stack preferences](frontend-stack-preferences.md) — pnpm, Vite+ (oxc/vitest), TanStack, coss ui added per component, React 19, TS 7; release-age + wails3 PATH gotchas
+- [Sinag design direction](sinag-design-direction.md) — Apple × Vercel × Nuvio; lagoon --brand #33B5E0/#0B6E94, Mona Sans; give hex + contrast numbers
+- [Debrid test key](debrid-test-key.md) — TorBox key in spikes/stream-ranking/.env (git-ignored); reuse it, never print it, redact URLs
+- [Nuvio self-host stack](nuvio-self-host-stack.md) — clone to scratchpad, own COMPOSE_PROJECT_NAME, skip 5432 clash, caffeinate long runs
+- [Product name: Sinag](product-name-sinag.md) — chosen over Cove/Marquee; repo, ids and what is still open in #82
