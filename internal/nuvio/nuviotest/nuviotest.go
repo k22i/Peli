@@ -41,6 +41,8 @@ type Server struct {
 	FailAvatars atomic.Bool
 	// How long access tokens last; 7 days, as on live, if unset.
 	Lifetime atomic.Int64
+	// Answers 503 to this many device login polls before answering.
+	FailPolls atomic.Int32
 
 	mu       sync.Mutex
 	profiles map[string][]map[string]any // by user, sorted by index
@@ -51,6 +53,16 @@ type Server struct {
 	sessions map[string]*session // by refresh token, used ones included
 	access   map[string]*session
 	last     [2]string
+	logins   map[string]*deviceLogin // by device code
+}
+
+// deviceLogin is a device login (#21), as tv_login_sessions keeps it.
+type deviceLogin struct {
+	nonce    string
+	userCode string
+	status   string // pending, approved, exchanged or expired
+	user     string
+	expires  time.Time
 }
 
 type session struct {
@@ -69,6 +81,7 @@ func NewServer(t testing.TB) *Server {
 		sessions: map[string]*session{},
 		access:   map[string]*session{},
 		profiles: map[string][]map[string]any{},
+		logins:   map[string]*deviceLogin{},
 	}
 	s.Server = httptest.NewServer(http.HandlerFunc(s.serve))
 	t.Cleanup(s.Close)
@@ -158,6 +171,47 @@ func (s *Server) ExpireAccessTokens() {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	clear(s.access)
+}
+
+// Approve approves the device login with userCode as the account email signs
+// in to, as the phone or nuvio.tv/link does. It reports whether there was a
+// pending login with that code.
+func (s *Server) Approve(userCode, email string) bool {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	for _, l := range s.logins {
+		if l.userCode == userCode && l.status == "pending" && time.Now().Before(l.expires) {
+			l.status, l.user = "approved", UserID(email)
+			return true
+		}
+	}
+	return false
+}
+
+// UserCodes returns the user code of every pending device login.
+func (s *Server) UserCodes() []string {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	var codes []string
+	for _, l := range s.logins {
+		if l.status == "pending" {
+			codes = append(codes, l.userCode)
+		}
+	}
+	slices.Sort(codes)
+	return codes
+}
+
+// ExpireDeviceLogins makes every device login not yet exchanged expire, as
+// five minutes do.
+func (s *Server) ExpireDeviceLogins() {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	for _, l := range s.logins {
+		if l.status != "exchanged" {
+			l.status = "expired"
+		}
+	}
 }
 
 // issue hands out a new access and refresh token for session. s.mu is held.
@@ -258,6 +312,8 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		s.editProfiles(w, r.URL.Path, bearer.user, body)
+	case "/rest/v1/rpc/start_device_login_session", "/rest/v1/rpc/poll_tv_login_session", "/functions/v1/tv-logins-exchange":
+		s.deviceLogin(w, r.URL.Path, body)
 	case "/rest/v1/rpc/get_avatar_catalog":
 		// Public, as on live: the publishable key is enough.
 		if s.FailAvatars.Load() {
@@ -290,6 +346,56 @@ func (s *Server) refresh(w http.ResponseWriter, body map[string]any) {
 		json.NewEncoder(w).Encode(session.issued)
 	default:
 		authError(w, http.StatusBadRequest, "refresh_token_already_used", "Invalid Refresh Token: Already Used")
+	}
+}
+
+// deviceLogin answers the device login calls as NuvioMedia/self-host's
+// migration 11 and its tv-logins-exchange function do, and as live did on
+// 2026-10-20. s.mu is held.
+func (s *Server) deviceLogin(w http.ResponseWriter, path string, body map[string]any) {
+	str := func(k string) string { v, _ := body[k].(string); return v }
+	switch path {
+	case "/rest/v1/rpc/start_device_login_session":
+		base := str("p_redirect_base_url")
+		if len(strings.TrimSpace(str("p_device_nonce"))) < 12 {
+			postgrestError(w, http.StatusBadRequest, "P0001", "Invalid device nonce")
+			return
+		}
+		if !strings.Contains(base, "/link") || !strings.HasPrefix(base, "http") {
+			postgrestError(w, http.StatusBadRequest, "P0001", "Invalid device login redirect base URL")
+			return
+		}
+		n := len(s.logins) + 1
+		code, user := fmt.Sprintf("device-%d", n), fmt.Sprintf("ABC%03d", n)
+		l := &deviceLogin{nonce: str("p_device_nonce"), userCode: user, status: "pending", expires: time.Now().Add(5 * time.Minute)}
+		s.logins[code] = l
+		json.NewEncoder(w).Encode([]map[string]any{{
+			"device_code": code, "user_code": user,
+			"verification_uri": base, "verification_uri_complete": base + "?code=" + user,
+			"expires_at": l.expires.Format(time.RFC3339Nano), "poll_interval_seconds": 3,
+		}})
+	case "/rest/v1/rpc/poll_tv_login_session":
+		l := s.logins[str("p_code")]
+		if l == nil || l.nonce != str("p_device_nonce") {
+			postgrestError(w, http.StatusBadRequest, "P0001", "Invalid TV login session")
+			return
+		}
+		if s.FailPolls.Add(-1) >= 0 {
+			w.WriteHeader(http.StatusServiceUnavailable)
+			return
+		}
+		json.NewEncoder(w).Encode([]map[string]any{{
+			"status": l.status, "expires_at": l.expires.Format(time.RFC3339Nano), "poll_interval_seconds": 3,
+		}})
+	case "/functions/v1/tv-logins-exchange":
+		l := s.logins[str("code")]
+		if l == nil || l.nonce != str("device_nonce") || l.status != "approved" {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte(`{"error":"TV login not approved or expired"}`))
+			return
+		}
+		l.status = "exchanged"
+		json.NewEncoder(w).Encode(s.issue(&session{user: l.user}))
 	}
 }
 

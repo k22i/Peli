@@ -159,6 +159,84 @@ func TestLiveRefreshTokenReuse(t *testing.T) {
 	}
 }
 
+// TestLiveDeviceLogin signs in by device login (#21) on a real backend,
+// with a password session standing in for the phone: it approves the code
+// with approve_device_login_session, as nuvio.tv/link does. Both sessions
+// sign out at the end. It runs only with SINAG_NUVIO_LIVE=1 and an account in
+// NUVIO_EMAIL and NUVIO_PASSWORD, and never logs the codes.
+func TestLiveDeviceLogin(t *testing.T) {
+	if os.Getenv("SINAG_NUVIO_LIVE") != "1" {
+		t.Skip("set SINAG_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
+	}
+	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")
+	phone, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := c.SignOut(context.Background(), phone); err != nil && !errors.Is(err, ErrSignedOut) {
+			t.Errorf("sign out the approving session: %v", err)
+		}
+	})
+
+	start := time.Now()
+	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag live test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("start: %v; user code of %d characters, expires in %v, poll every %v",
+		time.Since(start).Round(time.Millisecond), len(login.UserCode),
+		time.Until(login.ExpiresAt).Round(time.Second), login.PollInterval)
+	if !strings.HasPrefix(login.URL, DefaultLinkURL+"?code=") || login.LinkURL != DefaultLinkURL {
+		t.Errorf("URL isn't %s?code=…, or the link URL isn't %s", DefaultLinkURL, DefaultLinkURL)
+	}
+	if status, _, err := c.PollDeviceLogin(t.Context(), login); err != nil || status != DeviceLoginPending {
+		t.Fatalf("poll before approval = %q, %v; want pending", status, err)
+	}
+
+	var approved []struct {
+		Success    bool   `json:"success"`
+		Message    string `json:"message"`
+		DeviceName string `json:"device_name"`
+		DeviceType string `json:"device_type"`
+	}
+	if err := c.call(t.Context(), http.MethodPost, "/rest/v1/rpc/approve_device_login_session", phone.AccessToken,
+		map[string]any{"p_user_code": login.UserCode}, &approved); err != nil {
+		t.Fatal(err)
+	}
+	if len(approved) != 1 || !approved[0].Success {
+		t.Fatalf("approve = %+v", approved)
+	}
+	t.Logf("approved; the approving device saw %q (%s)", approved[0].DeviceName, approved[0].DeviceType)
+
+	time.Sleep(login.PollInterval)
+	if status, _, err := c.PollDeviceLogin(t.Context(), login); err != nil || status != DeviceLoginApproved {
+		t.Fatalf("poll after approval = %q, %v; want approved", status, err)
+	}
+	start = time.Now()
+	s, err := c.ExchangeDeviceLogin(t.Context(), login)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := c.SignOut(context.Background(), s); err != nil && !errors.Is(err, ErrSignedOut) {
+			t.Errorf("sign out: %v", err)
+		}
+	})
+	t.Logf("exchange: %v, session lasts %v", time.Since(start).Round(time.Millisecond), time.Until(s.ExpiresAt).Round(time.Hour))
+	if s.UserID == "" || s.UserID != phone.UserID {
+		t.Error("the exchanged session isn't the approving account's")
+	}
+	if _, err := c.Profiles(t.Context(), s); err != nil {
+		t.Fatalf("profiles with the exchanged session: %v", err)
+	}
+	if _, err := c.ExchangeDeviceLogin(t.Context(), login); !errors.Is(err, ErrDeviceLoginExpired) {
+		t.Errorf("second exchange: err = %v, want ErrDeviceLoginExpired", err)
+	}
+	status, _, err := c.PollDeviceLogin(t.Context(), login)
+	t.Logf("poll after the exchange: %q, %v", status, err)
+}
+
 // TestLiveProfiles checks the profile writes of #95 on a real account, with
 // every change undone: a patch that changes nothing, a rename of profile 1
 // and back, and a profile added at a free index and deleted. Then every

@@ -12,7 +12,9 @@ import (
 	"bytes"
 	"cmp"
 	"context"
+	crand "crypto/rand"
 	"encoding/base64"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -163,12 +165,17 @@ func (c *Client) grant(ctx context.Context, grantType string, in map[string]stri
 	if err != nil {
 		return Session{}, err
 	}
-	if body.AccessToken == "" || body.RefreshToken == "" {
+	return newSession(body.AccessToken, body.RefreshToken, body.ExpiresIn)
+}
+
+// newSession builds a session from a token answer.
+func newSession(accessToken, refreshToken string, expiresIn int64) (Session, error) {
+	if accessToken == "" || refreshToken == "" {
 		return Session{}, errors.New("nuvio: token answer has no session")
 	}
-	s := SessionFromTokens(body.AccessToken, body.RefreshToken)
+	s := SessionFromTokens(accessToken, refreshToken)
 	if s.ExpiresAt.IsZero() {
-		s.ExpiresAt = time.Now().Add(time.Duration(body.ExpiresIn) * time.Second)
+		s.ExpiresAt = time.Now().Add(time.Duration(expiresIn) * time.Second)
 	}
 	return s, nil
 }
@@ -176,6 +183,125 @@ func (c *Client) grant(ctx context.Context, grantType string, in map[string]stri
 // SignOut ends the session on the backend. Other devices stay signed in.
 func (c *Client) SignOut(ctx context.Context, s Session) error {
 	return c.call(ctx, http.MethodPost, "/auth/v1/logout?scope=local", s.AccessToken, nil, nil)
+}
+
+// DefaultLinkURL is Nuvio's "Link a device" page, where a signed-in phone or
+// browser approves a device login.
+const DefaultLinkURL = "https://nuvio.tv/link"
+
+// ErrDeviceLoginExpired means a device login's code expired, was used, or
+// is unknown to the backend: start a new one.
+var ErrDeviceLoginExpired = errors.New("nuvio: device login expired")
+
+// DeviceLogin is a sign-in that another device approves, where the account
+// is already signed in: it opens URL (from a QR code) or types UserCode at
+// LinkURL (#21). The device code and nonce stay on this device; the nonce
+// proves the session is the one this device started.
+type DeviceLogin struct {
+	UserCode  string
+	URL       string
+	LinkURL   string
+	ExpiresAt time.Time
+	// How often to poll; never faster, the backend counts polls.
+	PollInterval time.Duration
+
+	deviceCode string
+	nonce      string
+}
+
+// Device login statuses from PollDeviceLogin.
+const (
+	DeviceLoginPending  = "pending"
+	DeviceLoginApproved = "approved"
+	DeviceLoginExpired  = "expired"
+)
+
+// StartDeviceLogin starts a device login. linkURL is the web page that
+// approves it (DefaultLinkURL for api.nuvio.tv), and deviceName is what the
+// approving device shows.
+func (c *Client) StartDeviceLogin(ctx context.Context, linkURL, deviceName string) (DeviceLogin, error) {
+	nonce := make([]byte, 24)
+	crand.Read(nonce)
+	login := DeviceLogin{nonce: hex.EncodeToString(nonce)}
+	var rows []struct {
+		DeviceCode   string    `json:"device_code"`
+		UserCode     string    `json:"user_code"`
+		URI          string    `json:"verification_uri"`
+		URIComplete  string    `json:"verification_uri_complete"`
+		ExpiresAt    time.Time `json:"expires_at"`
+		PollInterval int       `json:"poll_interval_seconds"`
+	}
+	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/start_device_login_session", "", map[string]any{
+		"p_device_nonce":      login.nonce,
+		"p_redirect_base_url": linkURL,
+		"p_device_name":       deviceName,
+		"p_device_type":       "desktop",
+	}, &rows)
+	if err != nil {
+		return DeviceLogin{}, err
+	}
+	if len(rows) == 0 || rows[0].DeviceCode == "" || rows[0].URIComplete == "" {
+		return DeviceLogin{}, errors.New("nuvio: device login answer has no code")
+	}
+	r := rows[0]
+	login.deviceCode, login.UserCode = r.DeviceCode, r.UserCode
+	login.URL, login.LinkURL, login.ExpiresAt = r.URIComplete, r.URI, r.ExpiresAt
+	login.PollInterval = pollInterval(r.PollInterval)
+	return login, nil
+}
+
+// pollInterval is the backend's interval, or 3 s, as on live, if it gave none.
+func pollInterval(seconds int) time.Duration {
+	if seconds <= 0 {
+		seconds = 3
+	}
+	return time.Duration(seconds) * time.Second
+}
+
+// PollDeviceLogin returns the login's status, DeviceLoginPending until the
+// other device approves it, and the interval to poll at next. An unknown
+// login gives ErrDeviceLoginExpired.
+func (c *Client) PollDeviceLogin(ctx context.Context, login DeviceLogin) (status string, interval time.Duration, err error) {
+	var rows []struct {
+		Status       string `json:"status"`
+		PollInterval int    `json:"poll_interval_seconds"`
+	}
+	err = c.call(ctx, http.MethodPost, "/rest/v1/rpc/poll_tv_login_session", "", map[string]any{
+		"p_code": login.deviceCode, "p_device_nonce": login.nonce,
+	}, &rows)
+	if apiErr := (*APIError)(nil); errors.As(err, &apiErr) && apiErr.Code == "P0001" {
+		// "Invalid TV login session".
+		return "", 0, fmt.Errorf("%w: %s", ErrDeviceLoginExpired, apiErr.Message)
+	}
+	if err != nil {
+		return "", 0, err
+	}
+	if len(rows) == 0 {
+		return "", 0, errors.New("nuvio: device login poll answer has no status")
+	}
+	return rows[0].Status, pollInterval(rows[0].PollInterval), nil
+}
+
+// ExchangeDeviceLogin swaps an approved login for a session of the account
+// that approved it. It works once: a login that isn't approved, has expired
+// or was exchanged already gives ErrDeviceLoginExpired.
+func (c *Client) ExchangeDeviceLogin(ctx context.Context, login DeviceLogin) (Session, error) {
+	var body struct {
+		AccessToken  string `json:"access_token"`
+		RefreshToken string `json:"refresh_token"`
+		ExpiresIn    int64  `json:"expires_in"`
+	}
+	err := c.call(ctx, http.MethodPost, "/functions/v1/tv-logins-exchange", "", map[string]string{
+		"code": login.deviceCode, "device_nonce": login.nonce,
+	}, &body)
+	if apiErr := (*APIError)(nil); errors.As(err, &apiErr) && apiErr.Status == http.StatusBadRequest {
+		// The edge function answers 400 for every login it won't exchange.
+		return Session{}, fmt.Errorf("%w: %s", ErrDeviceLoginExpired, apiErr.Code)
+	}
+	if err != nil {
+		return Session{}, err
+	}
+	return newSession(body.AccessToken, body.RefreshToken, body.ExpiresIn)
 }
 
 // Profile is a Nuvio profile. Nuvio addresses profiles by index, 1–6.

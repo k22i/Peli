@@ -400,3 +400,87 @@ func TestSessionFromTokens(t *testing.T) {
 		}
 	}
 }
+
+func TestDeviceLogin(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+
+	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag on test-mac")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if login.UserCode == "" || login.URL != DefaultLinkURL+"?code="+login.UserCode || login.LinkURL != DefaultLinkURL {
+		t.Fatalf("login = %+v", login)
+	}
+	if left := time.Until(login.ExpiresAt); left < 4*time.Minute || left > 5*time.Minute {
+		t.Fatalf("expires in %v, want 5 min", left)
+	}
+	if login.PollInterval != 3*time.Second {
+		t.Fatalf("poll interval = %v", login.PollInterval)
+	}
+	body := b.Body("/rest/v1/rpc/start_device_login_session")
+	if nonce, _ := body["p_device_nonce"].(string); len(nonce) != 48 || body["p_device_name"] != "Sinag on test-mac" || body["p_device_type"] != "desktop" {
+		t.Fatalf("start body = %v", body)
+	}
+
+	if status, _, err := c.PollDeviceLogin(t.Context(), login); err != nil || status != DeviceLoginPending {
+		t.Fatalf("poll = %q, %v; want pending", status, err)
+	}
+	if _, err := c.ExchangeDeviceLogin(t.Context(), login); !errors.Is(err, ErrDeviceLoginExpired) {
+		t.Fatalf("exchange before approval: err = %v, want ErrDeviceLoginExpired", err)
+	}
+	if !b.Approve(login.UserCode, "me@example.com") {
+		t.Fatal("no login to approve")
+	}
+	status, interval, err := c.PollDeviceLogin(t.Context(), login)
+	if err != nil || status != DeviceLoginApproved || interval != 3*time.Second {
+		t.Fatalf("poll = %q, %v, %v; want approved", status, interval, err)
+	}
+
+	s, err := c.ExchangeDeviceLogin(t.Context(), login)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if access, refresh := b.Tokens(); s.AccessToken != access || s.RefreshToken != refresh || s.UserID != nuviotest.UserID("me@example.com") {
+		t.Fatalf("session = %+v", s)
+	}
+	if _, err := c.Profiles(t.Context(), s); err != nil {
+		t.Fatalf("profiles with the exchanged session: %v", err)
+	}
+	// An exchange works once.
+	if _, err := c.ExchangeDeviceLogin(t.Context(), login); !errors.Is(err, ErrDeviceLoginExpired) {
+		t.Fatalf("second exchange: err = %v, want ErrDeviceLoginExpired", err)
+	}
+}
+
+func TestDeviceLoginExpires(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag")
+	if err != nil {
+		t.Fatal(err)
+	}
+	b.ExpireDeviceLogins()
+
+	if status, _, err := c.PollDeviceLogin(t.Context(), login); err != nil || status != DeviceLoginExpired {
+		t.Fatalf("poll = %q, %v; want expired", status, err)
+	}
+	if b.Approve(login.UserCode, "me@example.com") {
+		t.Fatal("approved an expired login")
+	}
+	if _, err := c.ExchangeDeviceLogin(t.Context(), login); !errors.Is(err, ErrDeviceLoginExpired) {
+		t.Fatalf("exchange: err = %v, want ErrDeviceLoginExpired", err)
+	}
+}
+
+func TestDeviceLoginUnknown(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	login := DeviceLogin{deviceCode: "nope", nonce: "nope-nope-nope"}
+	if _, _, err := c.PollDeviceLogin(t.Context(), login); !errors.Is(err, ErrDeviceLoginExpired) {
+		t.Fatalf("poll: err = %v, want ErrDeviceLoginExpired", err)
+	}
+	if _, err := c.StartDeviceLogin(t.Context(), "https://nuvio.tv/tv-login", "Sinag"); err == nil {
+		t.Fatal("started a login with a redirect that isn't /link")
+	}
+}
