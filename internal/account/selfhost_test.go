@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"sync/atomic"
 	"testing"
 	"time"
@@ -133,6 +134,109 @@ func logoutEverywhere(ctx context.Context, url string, s nuvio.Session) error {
 	res.Body.Close()
 	if res.StatusCode != http.StatusNoContent {
 		return errors.New("global logout: " + res.Status)
+	}
+	return nil
+}
+
+// TestSelfHostProfiles adds, edits and deletes profiles (#95) against a
+// self-hosted Nuvio backend at NUVIO_URL, on a throwaway account it signs up
+// itself, and checks the other profiles are untouched. Never live: it
+// writes profiles.
+func TestSelfHostProfiles(t *testing.T) {
+	url := os.Getenv("NUVIO_URL")
+	if url == "" || url == nuvio.DefaultURL {
+		t.Skip("set NUVIO_URL to a self-hosted backend, not live")
+	}
+	email, password := "sinag-profiles-"+strconv.FormatInt(time.Now().UnixNano(), 36)+"@example.com", "throwaway-"+strconv.Itoa(os.Getpid())
+	if err := signUp(t.Context(), url, email, password); err != nil {
+		t.Fatal(err)
+	}
+	client := nuvio.New(url, "0.0.0-selfhost")
+	// A new account has no profiles: Nuvio's apps make profile 1, as here.
+	s, err := client.SignInWithPassword(t.Context(), email, password)
+	if err != nil {
+		t.Fatal(err)
+	}
+	avatars, err := client.AvatarCatalog(t.Context())
+	if err != nil || len(avatars) < 2 {
+		t.Fatalf("catalog: %d avatars, %v", len(avatars), err)
+	}
+	if err := client.PushProfiles(t.Context(), s, []nuvio.Profile{{Index: 1, Name: "Main", AvatarColor: "#33B5E0", AvatarID: &avatars[0].ID}}); err != nil {
+		t.Fatal(err)
+	}
+	pull := func() []nuvio.Profile {
+		t.Helper()
+		profiles, err := client.Profiles(t.Context(), s)
+		if err != nil {
+			t.Fatal(err)
+		}
+		return profiles
+	}
+	before := pull()[0]
+
+	db := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	if err := db.ServiceStartup(t.Context(), application.ServiceOptions{}); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { db.ServiceShutdown() })
+	service := NewService(client, &memKeychain{items: map[string]string{}}, db)
+	main, err := service.SignIn(t.Context(), email, password)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	added, err := service.AddProfile(t.Context(), ProfileEdit{Name: "Second", AvatarID: avatars[1].ID, AvatarColor: "#43A047"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	edited, err := service.EditProfile(t.Context(), added.ID, ProfileEdit{Name: "Renamed", AvatarID: avatars[0].ID, AvatarColor: "#E53935"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	remote := pull()
+	t.Logf("after add and edit: %+v", remote)
+	if len(remote) != 2 || remote[1].Index != 2 || remote[1].Name != "Renamed" || *remote[1].AvatarID != avatars[0].ID ||
+		remote[1].AvatarColor != "#E53935" || edited.Name != "Renamed" {
+		t.Fatalf("remote = %+v, edited = %+v", remote, edited)
+	}
+	if got := remote[0]; got.Name != before.Name || got.AvatarColor != before.AvatarColor || *got.AvatarID != *before.AvatarID ||
+		got.UsesPrimaryAddons != before.UsesPrimaryAddons || got.PinEnabled != before.PinEnabled {
+		t.Fatalf("profile 1 changed: %+v, was %+v", got, before)
+	}
+
+	if err := service.DeleteProfile(t.Context(), added.ID); err != nil {
+		t.Fatal(err)
+	}
+	if err := service.DeleteProfile(t.Context(), main.ID); !errors.Is(err, ErrPrimaryProfile) {
+		t.Fatalf("deleting the primary: %v", err)
+	}
+	if remote := pull(); len(remote) != 1 || remote[0].Name != "Main" {
+		t.Fatalf("after delete: %+v", remote)
+	}
+}
+
+// signUp makes a throwaway account; self-hosted Nuvio confirms it at once.
+func signUp(ctx context.Context, url, email, password string) error {
+	res, err := http.Get(url + "/.well-known/nuvio")
+	if err != nil {
+		return err
+	}
+	var doc struct {
+		PublishableKey string `json:"publishable_key"`
+	}
+	json.NewDecoder(res.Body).Decode(&doc)
+	res.Body.Close()
+	body, _ := json.Marshal(map[string]string{"email": email, "password": password})
+	req, _ := http.NewRequestWithContext(ctx, http.MethodPost, url+"/auth/v1/signup", bytes.NewReader(body))
+	req.Header.Set("Apikey", doc.PublishableKey)
+	req.Header.Set("Content-Type", "application/json")
+	res, err = http.DefaultClient.Do(req)
+	if err != nil {
+		return err
+	}
+	res.Body.Close()
+	if res.StatusCode != http.StatusOK {
+		return errors.New("signup: " + res.Status)
 	}
 	return nil
 }

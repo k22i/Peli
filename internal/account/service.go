@@ -140,12 +140,7 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 	images := <-avatars
 	profiles := make([]store.Profile, len(remote))
 	for i, p := range remote {
-		profiles[i] = store.Profile{
-			Name:        p.Name,
-			NuvioIndex:  &p.Index,
-			Avatar:      avatarImage(p, images),
-			AvatarColor: hexColor(p.AvatarColor),
-		}
+		profiles[i] = fromNuvio(p, images)
 	}
 	var linked []store.Profile
 	err = s.session.start(session, func() error {
@@ -186,7 +181,10 @@ func avatarImage(p nuvio.Profile, images map[string]string) string {
 			return u.String()
 		}
 	}
-	return images[p.AvatarID]
+	if p.AvatarID == nil {
+		return ""
+	}
+	return images[*p.AvatarID]
 }
 
 // hexColor returns color if it is "#rrggbb", or else "".
@@ -221,6 +219,13 @@ const (
 	CodeUnreachable         = "unreachable"
 	CodeUnavailable         = "unavailable"
 	CodeKeychainUnavailable = "keychain_unavailable"
+	// Managing profiles (#95).
+	CodeSignedOut       = "signed_out"
+	CodeProfileNotFound = "profile_not_found"
+	CodeProfilesFull    = "profiles_full"
+	CodePrimaryProfile  = "primary_profile"
+	CodeLastProfile     = "last_profile"
+	CodeInvalidProfile  = "invalid_profile"
 )
 
 // MarshalError gives the frontend a code for the errors it explains; Wails
@@ -238,6 +243,18 @@ func MarshalError(err error) []byte {
 		code = CodeUnavailable
 	case errors.Is(err, secrets.ErrUnavailable):
 		code = CodeKeychainUnavailable
+	case errors.Is(err, nuvio.ErrSignedOut):
+		code = CodeSignedOut
+	case errors.Is(err, nuvio.ErrProfileNotFound):
+		code = CodeProfileNotFound
+	case errors.Is(err, ErrProfilesFull):
+		code = CodeProfilesFull
+	case errors.Is(err, ErrPrimaryProfile):
+		code = CodePrimaryProfile
+	case errors.Is(err, ErrLastProfile):
+		code = CodeLastProfile
+	case errors.Is(err, store.ErrInvalidProfile):
+		code = CodeInvalidProfile
 	default:
 		return nil
 	}

@@ -160,7 +160,7 @@ func TestAvatarImage(t *testing.T) {
 		{"javascript:alert(1)", "a1", "https://api/a1.png"},
 		{"", "gone", ""},
 	} {
-		p := nuvio.Profile{AvatarID: tc.id}
+		p := nuvio.Profile{AvatarID: &tc.id}
 		if tc.own != "" {
 			p.AvatarURL = &tc.own
 		}
