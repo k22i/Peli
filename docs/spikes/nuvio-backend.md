@@ -84,7 +84,25 @@ Everything a desktop client needs, ~30 functions. Every `sync_*` takes `p_profil
 
 **Addons and plugins:** there is no pull RPC. Read the tables through PostgREST, protected by row-level security: `GET /rest/v1/addons?profile_id=eq.N&order=sort_order` (`url, name, enabled, sort_order, …`, ✅ live, 5 rows), same for `plugins`. Write with `sync_push_addons` / `sync_push_plugins` (`p_addons` / `p_plugins`, `p_profile_id, p_origin_client_id`).
 
-Not needed by a v1 desktop client, so not catalogued: provider and tracker credentials, account backup / restore, `sync_push_profiles` / `sync_patch_profile` (profile editing), PIN set / clear, `delete-account`.
+Not needed by a v1 desktop client, so not catalogued: provider and tracker credentials, account backup / restore, PIN set / clear, `delete-account`.
+
+**Profile editing (added in #95).** Run on the local stack with a throwaway account ([`local-profiles.json`](../../spikes/nuvio-backend/results/local-profiles.json)), then checked on live with edits that were undone (see below). Nuvio's account dashboard uses the same three calls: the patch for edits, the full list for adding, the delete for deleting.
+
+| Function | Args | Returns | |
+|---|---|---|---|
+| `sync_patch_profile` | `p_profile_id`, then any of `p_name`, `p_avatar_color_hex`, `p_uses_primary_addons`, `p_uses_primary_plugins`; `p_avatar_id` / `p_avatar_url` each with a `…_provided` flag | the profile row after the change | local, live |
+| `sync_push_profiles` | `p_profiles` (`profile_index, name, avatar_color_hex, uses_primary_addons, uses_primary_plugins, avatar_id, avatar_url`), `p_client_max_profiles` | `void` | local, live |
+| `sync_delete_profile_data` | `p_profile_id` (+ `p_origin_client_id`) | `void` | local, live |
+
+- **The patch is sparse.** A null argument keeps the field: a name-only patch leaves the colour, avatar and addon sharing as they were, and a patch with nothing in it returns the row unchanged. Setting an avatar ID clears `avatar_url` and the other way round. It trims the name. It only edits a profile that exists: `P0002 Profile not found` otherwise, so it can't add one.
+- **The patch's errors:** an empty name or an index outside 1–6 is `22023`. An avatar ID that isn't in the catalog is **`42501`**, the same code as a missing session. A client that reads `42501` as "signed out" would refresh and then send the user to sign in, so only send IDs from `get_avatar_catalog`.
+- **`sync_push_profiles` differs between self-host and live, on paper.** On self-host (migration `00000000000011_hosted_sync_updates.sql`) it only upserts: a partial or empty list deletes nothing, and `p_client_max_profiles` can be left out. Nuvio's public API doc (`/docs/nuvio-public-api.md`, served by the account dashboard in self-host commit `30f1568`) still says it "fully replaces profiles" and **deletes the ones missing** from slots `1..p_client_max_profiles`, which defaults to 4. The migration says the upsert shipped on hosted first, but live wasn't tested with a partial list, because of what it would delete.
+- **The push resets what it isn't sent.** Pushing an existing profile with its name alone set its colour back to `#1E88E5` and both `uses_primary_*` to false. It kept the avatar ID and the PIN (pushes never touch PIN fields). So a push needs every profile, freshly pulled, with every field: that's safe under either behaviour.
+- **A new profile** gets Cinemeta and OpenSubtitles server-side (2 addons), with `uses_primary_*` false.
+- **Deleting** removes the profile row and everything scoped to it: library, progress, watched, addons, settings. A profile added later in the same index starts empty. Deleting an index that's already gone is not an error.
+- **`P0002 Profile not found` comes back as HTTP 500**, so a client that reads 5xx as "backend down" has to check the code first.
+- **On live** (2026-10-20, the user's account with one profile, `SINAG_NUVIO_LIVE_WRITES=1 go test -run TestLiveProfiles ./internal/nuvio/`): an empty patch answered in 358 ms, so the call exists there. A rename and back, then a push of the full list plus a new profile 2 (369 ms) and deleting it, left profile 1 exactly as before, every field. Live's rows have two more fields, `profile_background_id` and `profile_background_url` (hosted only, null here). A push doesn't send them, and neither does Nuvio's dashboard, so the test refuses to write when either is set.
+- **The server doesn't protect any profile.** It deleted the primary (index 1), and then the last profile left. Nuvio's dashboard refuses to delete the primary, since secondary profiles can share its addons and plugins, and Sinag does the same.
 
 **Payload shapes we pushed** (all times in ms since epoch, positions and durations in ms):
 
@@ -166,4 +184,5 @@ node src/probe.ts errors
 # local stack only:
 node src/probe.ts push-throttle <id>
 node src/probe.ts ratelimit 170
+node src/probe.ts profiles          # #95: adds, edits and deletes profiles on a throwaway account
 ```

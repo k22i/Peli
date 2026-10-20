@@ -292,6 +292,64 @@ const commands: Record<string, (t: Target, args: string[]) => Promise<void>> = {
     console.log(JSON.stringify(cases, null, 2));
   },
 
+  // Profile editing (#95): sync_patch_profile, sync_push_profiles and sync_delete_profile_data. It
+  // adds, edits and deletes profiles, so it runs on a fresh throwaway account on a local backend.
+  async profiles(t) {
+    if (t.name !== 'local') throw new Error('profiles only runs against a local backend');
+    const sb = makeClient(t, `${t.name}-profiles`);
+    await sb.auth.signOut({ scope: 'local' });
+    const { error: signupError } = await sb.auth.signUp({ email: `profiles-${Date.now()}@example.com`, password: randomBytes(12).toString('hex') });
+    if (signupError) throw signupError;
+
+    // The fields a client sees, with the UUIDs and timestamps left out.
+    type Row = Record<string, unknown>;
+    const fields = ['profile_index', 'name', 'avatar_color_hex', 'avatar_id', 'avatar_url', 'uses_primary_addons', 'uses_primary_plugins', 'pin_enabled'];
+    const pick = (r: Row) => Object.fromEntries(fields.filter((f) => f in r).map((f) => [f, r[f]]));
+    const pull = async () => ((await rpc(sb, 'sync_pull_profiles')).data as Row[]).map(pick);
+    const cases: unknown[] = [];
+    const add = async (label: string, fn: string, args: Record<string, unknown>) => {
+      const { data, ...call } = await rpc(sb, fn, args);
+      const returned = Array.isArray(data) ? data.map(pick) : data;
+      cases.push({ label, ...call, shape: undefined, returned, profilesAfter: await pull() });
+    };
+
+    const avatars = (await rpc(sb, 'get_avatar_catalog')).data as { id: string }[];
+    cases.push({ label: 'a new account', profiles: await pull(), avatarCatalog: avatars.length });
+    await add('push: profile 1 on a new account', 'sync_push_profiles', { p_profiles: [{ profile_index: 1, name: 'Profile 1' }], p_client_max_profiles: 6 });
+
+    await add('patch: name only', 'sync_patch_profile', { p_profile_id: 1, p_name: '  Main  ' });
+    await add('patch: nothing to change', 'sync_patch_profile', { p_profile_id: 1 });
+    await add('patch: colour and a stock avatar', 'sync_patch_profile', { p_profile_id: 1, p_avatar_color_hex: '#E53935', p_avatar_id: avatars[0].id, p_avatar_id_provided: true });
+    await add('patch: an avatar not in the catalog', 'sync_patch_profile', { p_profile_id: 1, p_avatar_id: 'no-such-avatar', p_avatar_id_provided: true });
+    await add('patch: empty name', 'sync_patch_profile', { p_profile_id: 1, p_name: ' ' });
+    await add('patch: a profile that does not exist (4)', 'sync_patch_profile', { p_profile_id: 4, p_name: 'Nobody' });
+    await add('patch: index out of range (7)', 'sync_patch_profile', { p_profile_id: 7, p_name: 'Seven' });
+
+    await add('push: only a new profile 2 (a partial list)', 'sync_push_profiles', { p_profiles: [{ profile_index: 2, name: 'Second', avatar_color_hex: '#43A047' }], p_client_max_profiles: 6 });
+    await add('push: without p_client_max_profiles', 'sync_push_profiles', { p_profiles: [{ profile_index: 3, name: 'Third' }] });
+    await add('push: profile 1 with its name only', 'sync_push_profiles', { p_profiles: [{ profile_index: 1, name: 'Main' }], p_client_max_profiles: 6 });
+    await add('push: an empty list', 'sync_push_profiles', { p_profiles: [], p_client_max_profiles: 6 });
+
+    const pin = await rpc(sb, 'set_profile_pin', { p_profile_id: 2, p_pin: '1234' });
+    await add(`push: the full list after a PIN on profile 2 (set_profile_pin ${pin.status})`, 'sync_push_profiles', { p_profiles: await pull(), p_client_max_profiles: 6 });
+
+    const addons = async (p: number) => ((await sb.from('addons').select('url').eq('profile_id', p)).data ?? []).length;
+    cases.push({ label: 'addons on the new profile 2', addons: await addons(2) });
+    await rpc(sb, 'sync_push_library_items', { p_items: [{ content_id: 'tt1254207', content_type: 'movie', name: 'Big Buck Bunny' }], p_profile_id: 2, p_origin_client_id: originClientId });
+    const library = async (p: number) => ((await rpc(sb, 'sync_pull_library', { p_profile_id: p })).data as unknown[]).length;
+    cases.push({ label: 'library item pushed to profile 2', library: await library(2) });
+    await add('delete: profile 2', 'sync_delete_profile_data', { p_profile_id: 2 });
+    await add('delete: profile 2 again (already gone)', 'sync_delete_profile_data', { p_profile_id: 2 });
+    await add('push: a new profile 2 in the freed index', 'sync_push_profiles', { p_profiles: [...(await pull()), { profile_index: 2, name: 'Again' }], p_client_max_profiles: 6 });
+    cases.push({ label: 'library and addons of the new profile 2', library: await library(2), addons: await addons(2) });
+    await add('delete: profile 1 (the primary)', 'sync_delete_profile_data', { p_profile_id: 1 });
+    await add('delete: the last profile', 'sync_delete_profile_data', { p_profile_id: 2 });
+
+    await sb.auth.signOut();
+    writeResult(`${t.name}-profiles.json`, { cases });
+    console.log(JSON.stringify(cases, null, 2));
+  },
+
   // Rate limits. On the live backend this only reports what normal traffic shows; it never floods.
   // On a local backend it hammers sign-in and an RPC until a 429 (or the cap) to see the behaviour.
   async ratelimit(t, [n = '60']) {

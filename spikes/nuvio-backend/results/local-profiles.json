@@ -1,0 +1,703 @@
+{
+  "cases": [
+    {
+      "label": "a new account",
+      "profiles": [],
+      "avatarCatalog": 41
+    },
+    {
+      "label": "push: profile 1 on a new account",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [
+          {
+            "profile_index": 1,
+            "name": "Profile 1"
+          }
+        ],
+        "p_client_max_profiles": 6
+      },
+      "status": "ok",
+      "ms": 5,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Profile 1",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: name only",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 1,
+        "p_name": "  Main  "
+      },
+      "status": "ok",
+      "ms": 4,
+      "rows": 1,
+      "returned": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false
+        }
+      ],
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: nothing to change",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 3,
+      "rows": 1,
+      "returned": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false
+        }
+      ],
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: colour and a stock avatar",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 1,
+        "p_avatar_color_hex": "#E53935",
+        "p_avatar_id": "avatar_aang",
+        "p_avatar_id_provided": true
+      },
+      "status": "ok",
+      "ms": 6,
+      "rows": 1,
+      "returned": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false
+        }
+      ],
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: an avatar not in the catalog",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 1,
+        "p_avatar_id": "no-such-avatar",
+        "p_avatar_id_provided": true
+      },
+      "status": "error",
+      "ms": 4,
+      "error": {
+        "code": "42501",
+        "message": "This profile avatar is not available on this server",
+        "details": null,
+        "hint": null
+      },
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: empty name",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 1,
+        "p_name": " "
+      },
+      "status": "error",
+      "ms": 4,
+      "error": {
+        "code": "22023",
+        "message": "Profile name cannot be empty",
+        "details": null,
+        "hint": null
+      },
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: a profile that does not exist (4)",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 4,
+        "p_name": "Nobody"
+      },
+      "status": "error",
+      "ms": 5,
+      "error": {
+        "code": "P0002",
+        "message": "Profile not found",
+        "details": null,
+        "hint": null
+      },
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "patch: index out of range (7)",
+      "fn": "sync_patch_profile",
+      "args": {
+        "p_profile_id": 7,
+        "p_name": "Seven"
+      },
+      "status": "error",
+      "ms": 3,
+      "error": {
+        "code": "22023",
+        "message": "Invalid profile id",
+        "details": null,
+        "hint": null
+      },
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "push: only a new profile 2 (a partial list)",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [
+          {
+            "profile_index": 2,
+            "name": "Second",
+            "avatar_color_hex": "#43A047"
+          }
+        ],
+        "p_client_max_profiles": 6
+      },
+      "status": "ok",
+      "ms": 6,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 2,
+          "name": "Second",
+          "avatar_color_hex": "#43A047",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "push: without p_client_max_profiles",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [
+          {
+            "profile_index": 3,
+            "name": "Third"
+          }
+        ]
+      },
+      "status": "ok",
+      "ms": 4,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#E53935",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 2,
+          "name": "Second",
+          "avatar_color_hex": "#43A047",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "push: profile 1 with its name only",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [
+          {
+            "profile_index": 1,
+            "name": "Main"
+          }
+        ],
+        "p_client_max_profiles": 6
+      },
+      "status": "ok",
+      "ms": 3,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 2,
+          "name": "Second",
+          "avatar_color_hex": "#43A047",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "push: an empty list",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [],
+        "p_client_max_profiles": 6
+      },
+      "status": "ok",
+      "ms": 4,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 2,
+          "name": "Second",
+          "avatar_color_hex": "#43A047",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "push: the full list after a PIN on profile 2 (set_profile_pin ok)",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [
+          {
+            "profile_index": 1,
+            "name": "Main",
+            "avatar_color_hex": "#1E88E5",
+            "avatar_id": "avatar_aang",
+            "avatar_url": null,
+            "uses_primary_addons": false,
+            "uses_primary_plugins": false,
+            "pin_enabled": false
+          },
+          {
+            "profile_index": 2,
+            "name": "Second",
+            "avatar_color_hex": "#43A047",
+            "avatar_id": null,
+            "avatar_url": null,
+            "uses_primary_addons": false,
+            "uses_primary_plugins": false,
+            "pin_enabled": true
+          },
+          {
+            "profile_index": 3,
+            "name": "Third",
+            "avatar_color_hex": "#1E88E5",
+            "avatar_id": null,
+            "avatar_url": null,
+            "uses_primary_addons": false,
+            "uses_primary_plugins": false,
+            "pin_enabled": false
+          }
+        ],
+        "p_client_max_profiles": 6
+      },
+      "status": "ok",
+      "ms": 6,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 2,
+          "name": "Second",
+          "avatar_color_hex": "#43A047",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": true
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "addons on the new profile 2",
+      "addons": 2
+    },
+    {
+      "label": "library item pushed to profile 2",
+      "library": 1
+    },
+    {
+      "label": "delete: profile 2",
+      "fn": "sync_delete_profile_data",
+      "args": {
+        "p_profile_id": 2
+      },
+      "status": "ok",
+      "ms": 6,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "delete: profile 2 again (already gone)",
+      "fn": "sync_delete_profile_data",
+      "args": {
+        "p_profile_id": 2
+      },
+      "status": "ok",
+      "ms": 3,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "push: a new profile 2 in the freed index",
+      "fn": "sync_push_profiles",
+      "args": {
+        "p_profiles": [
+          {
+            "profile_index": 1,
+            "name": "Main",
+            "avatar_color_hex": "#1E88E5",
+            "avatar_id": "avatar_aang",
+            "avatar_url": null,
+            "uses_primary_addons": false,
+            "uses_primary_plugins": false,
+            "pin_enabled": false
+          },
+          {
+            "profile_index": 3,
+            "name": "Third",
+            "avatar_color_hex": "#1E88E5",
+            "avatar_id": null,
+            "avatar_url": null,
+            "uses_primary_addons": false,
+            "uses_primary_plugins": false,
+            "pin_enabled": false
+          },
+          {
+            "profile_index": 2,
+            "name": "Again"
+          }
+        ],
+        "p_client_max_profiles": 6
+      },
+      "status": "ok",
+      "ms": 5,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 1,
+          "name": "Main",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": "avatar_aang",
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 2,
+          "name": "Again",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "library and addons of the new profile 2",
+      "library": 0,
+      "addons": 2
+    },
+    {
+      "label": "delete: profile 1 (the primary)",
+      "fn": "sync_delete_profile_data",
+      "args": {
+        "p_profile_id": 1
+      },
+      "status": "ok",
+      "ms": 5,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 2,
+          "name": "Again",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        },
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    },
+    {
+      "label": "delete: the last profile",
+      "fn": "sync_delete_profile_data",
+      "args": {
+        "p_profile_id": 2
+      },
+      "status": "ok",
+      "ms": 3,
+      "returned": null,
+      "profilesAfter": [
+        {
+          "profile_index": 3,
+          "name": "Third",
+          "avatar_color_hex": "#1E88E5",
+          "avatar_id": null,
+          "avatar_url": null,
+          "uses_primary_addons": false,
+          "uses_primary_plugins": false,
+          "pin_enabled": false
+        }
+      ]
+    }
+  ]
+}
