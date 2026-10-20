@@ -3,7 +3,6 @@ import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { keychainQuery, useContinueAsGuest } from "@/lib/account";
@@ -60,14 +59,18 @@ function Welcome() {
             Sign in with email
           </Link>
         )}
-        {/* QR sign-in from the Nuvio phone app is #21. */}
-        <Button size="lg" variant="outline" disabled>
-          <QrCode />
-          Scan a QR code with Nuvio
-          <Badge variant="outline" className="absolute end-2.5">
-            Soon
-          </Badge>
-        </Button>
+        {/* QR sign-in (#21): approve on the phone, no password typed here. */}
+        {noKeychain ? (
+          <Button size="lg" variant="outline" disabled>
+            <QrCode />
+            Sign in with your phone
+          </Button>
+        ) : (
+          <Link to="/qr-sign-in" className={buttonVariants({ size: "lg", variant: "outline" })}>
+            <QrCode />
+            Sign in with your phone
+          </Link>
+        )}
         <Button size="lg" variant="ghost" loading={guest.isPending} onClick={continueAsGuest}>
           Continue as guest
         </Button>

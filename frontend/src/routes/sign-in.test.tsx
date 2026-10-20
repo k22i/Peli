@@ -95,13 +95,13 @@ async function fillIn(user: ReturnType<typeof userEvent.setup>, password = "corr
 }
 
 describe("first run", () => {
-  it("starts at the welcome screen with sign in, QR (later) and guest", async () => {
+  it("starts at the welcome screen with sign in, QR and guest", async () => {
     const { router } = await renderFirstRun();
 
     expect(router.state.location.pathname).toBe("/welcome");
     expect(screen.queryByRole("navigation", { name: "Main" })).toBeNull();
     expect(screen.getByRole("link", { name: "Sign in with email" })).toBeVisible();
-    expect(screen.getByRole("button", { name: /Scan a QR code/ })).toBeDisabled();
+    expect(screen.getByRole("link", { name: "Sign in with your phone" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Continue as guest" })).toBeEnabled();
   });
 
@@ -127,6 +127,7 @@ describe("first run", () => {
     expect(alert).toHaveTextContent("gnome-keyring");
     expect(screen.queryByRole("link", { name: "Sign in with email" })).toBeNull();
     expect(screen.getByRole("button", { name: "Sign in with email" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Sign in with your phone" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Continue as guest" })).toBeEnabled();
   });
 

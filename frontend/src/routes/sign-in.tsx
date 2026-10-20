@@ -1,19 +1,11 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  CloudOff,
-  LogIn,
-  LockKeyhole,
-  ServerCrash,
-  Timer,
-  TriangleAlert,
-  type LucideIcon,
-} from "lucide-react";
+import { Link, createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
+import { ArrowLeft, LogIn, LockKeyhole, QrCode } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { SignInProblem, problemFor, type Problem } from "@/components/account/sign-in-problem";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -24,7 +16,6 @@ import {
   profilesQuery,
   signInErrorCode,
   useSignIn,
-  type SignInErrorCode,
 } from "@/lib/account";
 
 type SignInSearch = {
@@ -42,42 +33,6 @@ export const Route = createFileRoute("/sign-in")({
 // Nuvio allows 10 sign-in attempts a second and says nothing about when to
 // retry (no Retry-After), so after a 429 the form waits this long.
 const rateLimitCooldown = 10;
-
-type Problem = { icon: LucideIcon; title: string; description: string };
-
-// What a failed sign-in tells the user. A wrong password goes under the
-// password field instead.
-const problems: Record<Exclude<SignInErrorCode, "invalid_credentials">, Problem> = {
-  rate_limited: {
-    icon: Timer,
-    title: "Too many attempts",
-    description: "Nuvio is limiting sign-ins for a moment. Wait a few seconds, then try again.",
-  },
-  unreachable: {
-    icon: CloudOff,
-    title: "Can’t reach Nuvio",
-    description: "Check your internet connection, then try again.",
-  },
-  unavailable: {
-    icon: ServerCrash,
-    title: "Nuvio isn’t responding",
-    description: "Its servers returned an error. Try again in a minute.",
-  },
-  keychain_unavailable: {
-    icon: TriangleAlert,
-    title: "Signing in needs a keychain",
-    description: "",
-  },
-};
-
-function problemFor(error: Error): Problem {
-  const code = signInErrorCode(error);
-  const problem = code && code !== "invalid_credentials" ? problems[code] : undefined;
-  if (!problem)
-    return { icon: TriangleAlert, title: "Couldn’t sign in", description: error.message };
-  // The keychain error says what to install.
-  return problem.description ? problem : { ...problem, description: error.message };
-}
 
 // Email and password sign-in (#20). Go keeps the session in the keychain;
 // this page never sees a token.
@@ -182,13 +137,7 @@ function SignIn() {
           <FieldError />
         </Field>
 
-        {problem && (
-          <Alert variant="error">
-            <problem.icon />
-            <AlertTitle>{problem.title}</AlertTitle>
-            <AlertDescription>{problem.description}</AlertDescription>
-          </Alert>
-        )}
+        {problem && <SignInProblem problem={problem} />}
 
         <Button
           type="submit"
@@ -199,6 +148,17 @@ function SignIn() {
           {cooldown.seconds > 0 ? `Try again in ${cooldown.seconds} s` : "Sign in"}
         </Button>
       </Form>
+
+      {keychain.data == null && (
+        <Link
+          to="/qr-sign-in"
+          replace
+          className={buttonVariants({ variant: "outline", size: "lg" })}
+        >
+          <QrCode />
+          Sign in with your phone instead
+        </Link>
+      )}
 
       <p className="flex gap-2 text-sm text-muted-foreground">
         <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />

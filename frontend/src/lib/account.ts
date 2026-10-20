@@ -1,7 +1,7 @@
 import { queryOptions, useMutation, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
-import { useEffect } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 
 import { Service as Account, type ProfileEdit } from "@bindings/account";
 import { Service as Store, type Profile } from "@bindings/store";
@@ -43,6 +43,7 @@ const signInErrorCodes = [
   "unreachable",
   "unavailable",
   "keychain_unavailable",
+  "qr_expired",
 ] as const;
 export type SignInErrorCode = (typeof signInErrorCodes)[number];
 
@@ -73,6 +74,49 @@ export function useSignIn() {
       await profileChanged(queryClient, profile);
     },
   });
+}
+
+// A QR sign-in's code (#21): Go starts a device login and keeps its secret
+// parts; this is what the screen shows. Never cached past the screen, and
+// refetched for a new code.
+export const qrCodeQuery = queryOptions({
+  queryKey: ["qr-sign-in"],
+  queryFn: () => Account.StartQRSignIn(),
+  staleTime: Number.POSITIVE_INFINITY,
+  gcTime: 0,
+  retry: false,
+  refetchOnWindowFocus: false,
+  refetchOnReconnect: false,
+});
+
+// Waits in Go for the phone to approve code, then signs in as useSignIn
+// does. Leaving the screen, or a new code, cancels the wait; the code itself
+// stays valid until it expires.
+export function useQRSignIn(code: string | undefined, onSignedIn: (profile: Profile) => void) {
+  const queryClient = useQueryClient();
+  const [failure, setFailure] = useState<{ code: string; error: Error }>();
+  const signedIn = useEffectEvent(onSignedIn);
+  useEffect(() => {
+    if (!code) return undefined;
+    let live = true;
+    const wait = Account.WaitQRSignIn(code);
+    void wait.then(
+      async (profile) => {
+        await profileChanged(queryClient, profile);
+        if (live) signedIn(profile);
+      },
+      (error: unknown) => {
+        if (live)
+          setFailure({ code, error: error instanceof Error ? error : new Error(String(error)) });
+      },
+    );
+    return () => {
+      live = false;
+      void wait.cancel();
+    };
+  }, [code, queryClient]);
+  // Only the current code's failure counts.
+  return failure && failure.code === code ? failure.error : undefined;
 }
 
 // Carries on without an account, on the local Guest profile: the store

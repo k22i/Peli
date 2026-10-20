@@ -16,6 +16,7 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MoviesRouteImport } from './routes/movies'
 import { Route as ProfilesRouteImport } from './routes/profiles'
+import { Route as QrSignInRouteImport } from './routes/qr-sign-in'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ShowsRouteImport } from './routes/shows'
@@ -57,6 +58,11 @@ const ProfilesRoute = ProfilesRouteImport.update({
   path: '/profiles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QrSignInRoute = QrSignInRouteImport.update({
+  id: '/qr-sign-in',
+  path: '/qr-sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
   '/profiles': typeof ProfilesRoute
+  '/qr-sign-in': typeof QrSignInRoute
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/shows': typeof ShowsRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
   '/profiles': typeof ProfilesRoute
+  '/qr-sign-in': typeof QrSignInRoute
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/shows': typeof ShowsRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
   '/profiles': typeof ProfilesRoute
+  '/qr-sign-in': typeof QrSignInRoute
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/shows': typeof ShowsRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/library'
     | '/movies'
     | '/profiles'
+    | '/qr-sign-in'
     | '/search'
     | '/settings'
     | '/shows'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/library'
     | '/movies'
     | '/profiles'
+    | '/qr-sign-in'
     | '/search'
     | '/settings'
     | '/shows'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/library'
     | '/movies'
     | '/profiles'
+    | '/qr-sign-in'
     | '/search'
     | '/settings'
     | '/shows'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   LibraryRoute: typeof LibraryRoute
   MoviesRoute: typeof MoviesRoute
   ProfilesRoute: typeof ProfilesRoute
+  QrSignInRoute: typeof QrSignInRoute
   SearchRoute: typeof SearchRoute
   SettingsRoute: typeof SettingsRoute
   ShowsRoute: typeof ShowsRoute
@@ -237,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfilesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/qr-sign-in': {
+      id: '/qr-sign-in'
+      path: '/qr-sign-in'
+      fullPath: '/qr-sign-in'
+      preLoaderRoute: typeof QrSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   LibraryRoute: LibraryRoute,
   MoviesRoute: MoviesRoute,
   ProfilesRoute: ProfilesRoute,
+  QrSignInRoute: QrSignInRoute,
   SearchRoute: SearchRoute,
   SettingsRoute: SettingsRoute,
   ShowsRoute: ShowsRoute,

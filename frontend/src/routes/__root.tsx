@@ -10,7 +10,7 @@ export type RouterContext = {
 };
 
 // Screens that come before there is a profile in use.
-const beforeProfile = new Set(["/welcome", "/sign-in", "/profiles"]);
+const beforeProfile = new Set(["/welcome", "/sign-in", "/qr-sign-in", "/profiles"]);
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   // First run: no profiles yet, so start at the welcome screen (#20). If the
