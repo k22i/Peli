@@ -40,6 +40,9 @@ var (
 	ErrUnavailable = errors.New("nuvio: backend unavailable")
 	// ErrSignedOut means the session is missing, expired or revoked.
 	ErrSignedOut = errors.New("nuvio: signed out")
+	// ErrProfileNotFound means the account has no profile at that index:
+	// another device deleted it.
+	ErrProfileNotFound = errors.New("nuvio: profile not found")
 )
 
 // APIError is an error answer the client has no sentinel for.
@@ -180,10 +183,16 @@ type Profile struct {
 	Index       int     `json:"profile_index"`
 	Name        string  `json:"name"`
 	AvatarColor string  `json:"avatar_color_hex"`
-	AvatarID    string  `json:"avatar_id"`
+	AvatarID    *string `json:"avatar_id"`
 	AvatarURL   *string `json:"avatar_url"`
-	PinEnabled  bool    `json:"pin_enabled"`
+	// Secondary profiles can use the primary profile's addons and plugins.
+	UsesPrimaryAddons  bool `json:"uses_primary_addons"`
+	UsesPrimaryPlugins bool `json:"uses_primary_plugins"`
+	PinEnabled         bool `json:"pin_enabled"`
 }
+
+// MaxProfiles is how many profiles a Nuvio account can have.
+const MaxProfiles = 6
 
 // Profiles returns the account's profiles.
 func (c *Client) Profiles(ctx context.Context, s Session) ([]Profile, error) {
@@ -191,6 +200,76 @@ func (c *Client) Profiles(ctx context.Context, s Session) ([]Profile, error) {
 	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_profiles", s.AccessToken,
 		map[string]any{}, &profiles)
 	return profiles, err
+}
+
+// ProfilePatch is a change to one profile: nil fields are kept.
+type ProfilePatch struct {
+	Name        *string
+	AvatarColor *string
+	// A stock avatar from AvatarCatalog. Setting it clears a custom avatar
+	// URL. An ID that isn't in the catalog is refused with 42501, which reads
+	// as ErrSignedOut, so only send IDs from the catalog.
+	AvatarID *string
+}
+
+// PatchProfile changes one profile and leaves the rest of it, and the other
+// profiles, as they are. It returns the profile after the change, or
+// ErrProfileNotFound if there's none at index.
+func (c *Client) PatchProfile(ctx context.Context, s Session, index int, patch ProfilePatch) (Profile, error) {
+	in := map[string]any{"p_profile_id": index}
+	if patch.Name != nil {
+		in["p_name"] = *patch.Name
+	}
+	if patch.AvatarColor != nil {
+		in["p_avatar_color_hex"] = *patch.AvatarColor
+	}
+	if patch.AvatarID != nil {
+		in["p_avatar_id"] = *patch.AvatarID
+		in["p_avatar_id_provided"] = true
+	}
+	var rows []Profile
+	if err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_patch_profile", s.AccessToken, in, &rows); err != nil {
+		return Profile{}, err
+	}
+	if len(rows) == 0 {
+		return Profile{}, ErrProfileNotFound
+	}
+	return rows[0], nil
+}
+
+// PushProfiles saves profiles, adding those at a new index. Pass every
+// profile, freshly pulled, with every field: live is documented to delete
+// the profiles a push leaves out, and a push resets the fields it isn't sent
+// (docs/spikes/nuvio-backend.md). PIN fields are never touched.
+func (c *Client) PushProfiles(ctx context.Context, s Session, profiles []Profile) error {
+	rows := make([]map[string]any, len(profiles))
+	for i, p := range profiles {
+		avatarID := p.AvatarID
+		if p.AvatarURL != nil {
+			// A custom URL wins over a stock avatar, as Nuvio's dashboard sends it.
+			avatarID = nil
+		}
+		rows[i] = map[string]any{
+			"profile_index":        p.Index,
+			"name":                 p.Name,
+			"avatar_color_hex":     p.AvatarColor,
+			"uses_primary_addons":  p.UsesPrimaryAddons,
+			"uses_primary_plugins": p.UsesPrimaryPlugins,
+			"avatar_id":            avatarID,
+			"avatar_url":           p.AvatarURL,
+		}
+	}
+	return c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_push_profiles", s.AccessToken,
+		map[string]any{"p_profiles": rows, "p_client_max_profiles": MaxProfiles}, nil)
+}
+
+// DeleteProfile deletes the profile at index and everything in it on every
+// device: library, progress, watched items, addons and settings. The backend
+// lets any profile go, the primary and the last one too, so callers decide
+// which may.
+func (c *Client) DeleteProfile(ctx context.Context, s Session, index int) error {
+	return c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_delete_profile_data", s.AccessToken,
+		map[string]any{"p_profile_id": index}, nil)
 }
 
 // Avatar is one of the backend's stock profile avatars: a profile's
@@ -342,6 +421,9 @@ func answerError(res *http.Response, data []byte) error {
 		return ErrRateLimited
 	case code == "invalid_credentials" || code == "invalid_grant":
 		return ErrInvalidCredentials
+	// sync_patch_profile raises it with HTTP 500.
+	case code == "P0002":
+		return fmt.Errorf("%w: %s", ErrProfileNotFound, message)
 	// No session, an expired or forged token, or a revoked session. Live and
 	// self-host disagree on the code, so take any of them. GoTrue's codes
 	// are for a refresh token that stopped working.

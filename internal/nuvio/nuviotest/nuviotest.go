@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"slices"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -42,6 +43,7 @@ type Server struct {
 	Lifetime atomic.Int64
 
 	mu       sync.Mutex
+	profiles map[string][]map[string]any // by user, sorted by index
 	calls    []string
 	bodies   map[string]map[string]any
 	agents   []string
@@ -66,6 +68,7 @@ func NewServer(t testing.TB) *Server {
 		bodies:   map[string]map[string]any{},
 		sessions: map[string]*session{},
 		access:   map[string]*session{},
+		profiles: map[string][]map[string]any{},
 	}
 	s.Server = httptest.NewServer(http.HandlerFunc(s.serve))
 	t.Cleanup(s.Close)
@@ -99,6 +102,43 @@ func (s *Server) Tokens() (access, refresh string) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	return s.last[0], s.last[1]
+}
+
+// StartProfiles is what an account's profiles are until it changes them.
+const StartProfiles = `[
+	{"profile_index":1,"name":"Kevin","avatar_color_hex":"#33B5E0","avatar_id":"a1","avatar_url":null,"uses_primary_addons":false,"uses_primary_plugins":false,"pin_enabled":false,"pin_locked_until":null},
+	{"profile_index":3,"name":"Kids","avatar_color_hex":"#F5A623","avatar_id":"a7","avatar_url":"https://img/a7.png","uses_primary_addons":true,"uses_primary_plugins":true,"pin_enabled":true,"pin_locked_until":null}
+]`
+
+// Profiles returns the profiles of the account email signs in to, by index.
+func (s *Server) Profiles(email string) []map[string]any {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.profilesOf(UserID(email))
+}
+
+// SetProfiles replaces the profiles of the account email signs in to, from a
+// JSON array like StartProfiles.
+func (s *Server) SetProfiles(t testing.TB, email, profiles string) {
+	t.Helper()
+	var list []map[string]any
+	if err := json.Unmarshal([]byte(profiles), &list); err != nil {
+		t.Fatal(err)
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.profiles[UserID(email)] = list
+}
+
+// profilesOf returns user's profiles, starting them if it has none yet.
+// s.mu is held.
+func (s *Server) profilesOf(user string) []map[string]any {
+	list, ok := s.profiles[user]
+	if !ok {
+		json.Unmarshal([]byte(StartProfiles), &list)
+		s.profiles[user] = list
+	}
+	return list
 }
 
 // Revoke ends every session, as signing out everywhere from another device
@@ -210,10 +250,14 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte(`{"code":"XX000","message":"internal error"}`))
 			return
 		}
-		w.Write([]byte(`[
-			{"id":"8f8b0000-0000-0000-0000-000000000001","profile_index":1,"name":"Kevin","avatar_color_hex":"#33B5E0","avatar_id":"a1","avatar_url":null,"pin_enabled":false,"pin_locked_until":null},
-			{"id":"8f8b0000-0000-0000-0000-000000000003","profile_index":3,"name":"Kids","avatar_color_hex":"#F5A623","avatar_id":"a7","avatar_url":"https://img/a7.png","pin_enabled":true,"pin_locked_until":null}
-		]`))
+		json.NewEncoder(w).Encode(s.profilesOf(bearer.user))
+	case "/rest/v1/rpc/sync_patch_profile", "/rest/v1/rpc/sync_push_profiles", "/rest/v1/rpc/sync_delete_profile_data":
+		if bearer == nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			w.Write([]byte(`{"code":"42501","message":"permission denied for function"}`))
+			return
+		}
+		s.editProfiles(w, r.URL.Path, bearer.user, body)
 	case "/rest/v1/rpc/get_avatar_catalog":
 		// Public, as on live: the publishable key is enough.
 		if s.FailAvatars.Load() {
@@ -246,5 +290,98 @@ func (s *Server) refresh(w http.ResponseWriter, body map[string]any) {
 		json.NewEncoder(w).Encode(session.issued)
 	default:
 		authError(w, http.StatusBadRequest, "refresh_token_already_used", "Invalid Refresh Token: Already Used")
+	}
+}
+
+func postgrestError(w http.ResponseWriter, status int, code, msg string) {
+	w.WriteHeader(status)
+	fmt.Fprintf(w, `{"code":%q,"details":null,"hint":null,"message":%q}`, code, msg)
+}
+
+// editProfiles answers the profile writes as the self-host stack did in #95
+// (spikes/nuvio-backend/results/local-profiles.json), except that a push
+// replaces the list, deleting the profiles it leaves out of slots
+// 1..p_client_max_profiles (default 4), as Nuvio documents for live. s.mu is
+// held.
+func (s *Server) editProfiles(w http.ResponseWriter, path, user string, body map[string]any) {
+	list := s.profilesOf(user)
+	index := func(v any) int { f, _ := v.(float64); return int(f) }
+	find := func(i int) map[string]any {
+		for _, p := range list {
+			if index(p["profile_index"]) == i {
+				return p
+			}
+		}
+		return nil
+	}
+	switch path {
+	case "/rest/v1/rpc/sync_patch_profile":
+		i := index(body["p_profile_id"])
+		if i < 1 || i > 6 {
+			postgrestError(w, http.StatusBadRequest, "22023", "Invalid profile id")
+			return
+		}
+		if name, ok := body["p_name"].(string); ok && strings.TrimSpace(name) == "" {
+			postgrestError(w, http.StatusBadRequest, "22023", "Profile name cannot be empty")
+			return
+		}
+		if body["p_avatar_id_provided"] == true && body["p_avatar_id"] != "a1" && body["p_avatar_id"] != "a7" {
+			postgrestError(w, http.StatusForbidden, "42501", "This profile avatar is not available on this server")
+			return
+		}
+		p := find(i)
+		if p == nil {
+			postgrestError(w, http.StatusInternalServerError, "P0002", "Profile not found")
+			return
+		}
+		if name, ok := body["p_name"].(string); ok {
+			p["name"] = strings.TrimSpace(name)
+		}
+		if color, ok := body["p_avatar_color_hex"].(string); ok {
+			p["avatar_color_hex"] = color
+		}
+		if body["p_avatar_id_provided"] == true {
+			p["avatar_id"], p["avatar_url"] = body["p_avatar_id"], nil
+		}
+		json.NewEncoder(w).Encode([]map[string]any{p})
+	case "/rest/v1/rpc/sync_push_profiles":
+		limit := 4
+		if v, ok := body["p_client_max_profiles"]; ok {
+			limit = index(v)
+		}
+		pushed, _ := body["p_profiles"].([]any)
+		var next []map[string]any
+		for _, p := range list {
+			if index(p["profile_index"]) > limit {
+				next = append(next, p)
+			}
+		}
+		for _, v := range pushed {
+			in, _ := v.(map[string]any)
+			i := index(in["profile_index"])
+			if i < 1 || i > limit {
+				continue
+			}
+			p := map[string]any{
+				"profile_index": in["profile_index"], "name": in["name"], "avatar_color_hex": "#1E88E5",
+				"avatar_id": in["avatar_id"], "avatar_url": in["avatar_url"],
+				"uses_primary_addons": in["uses_primary_addons"] == true, "uses_primary_plugins": in["uses_primary_plugins"] == true,
+				"pin_enabled": false, "pin_locked_until": nil,
+			}
+			if color, ok := in["avatar_color_hex"].(string); ok {
+				p["avatar_color_hex"] = color
+			}
+			if old := find(i); old != nil {
+				p["pin_enabled"] = old["pin_enabled"]
+			}
+			next = append(next, p)
+		}
+		slices.SortFunc(next, func(a, b map[string]any) int { return index(a["profile_index"]) - index(b["profile_index"]) })
+		s.profiles[user] = next
+		w.WriteHeader(http.StatusNoContent)
+	case "/rest/v1/rpc/sync_delete_profile_data":
+		i := index(body["p_profile_id"])
+		s.profiles[user] = slices.DeleteFunc(list, func(p map[string]any) bool { return index(p["profile_index"]) == i })
+		w.WriteHeader(http.StatusNoContent)
 	}
 }

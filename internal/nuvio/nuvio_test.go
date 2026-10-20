@@ -168,6 +168,95 @@ func TestProfilesAndSignOut(t *testing.T) {
 	}
 }
 
+func TestPatchProfile(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// Only what's set is sent: the rest of the profile is kept.
+	name := "Kev"
+	p, err := c.PatchProfile(t.Context(), s, 1, ProfilePatch{Name: &name})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if body := b.Body("/rest/v1/rpc/sync_patch_profile"); len(body) != 2 || body["p_name"] != "Kev" {
+		t.Fatalf("body = %v", body)
+	}
+	if p.Index != 1 || p.Name != "Kev" || p.AvatarColor != "#33B5E0" || *p.AvatarID != "a1" {
+		t.Fatalf("profile = %+v", p)
+	}
+
+	// A stock avatar replaces a custom image.
+	avatar, color := "a1", "#E53935"
+	p, err = c.PatchProfile(t.Context(), s, 3, ProfilePatch{AvatarID: &avatar, AvatarColor: &color})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if body := b.Body("/rest/v1/rpc/sync_patch_profile"); body["p_avatar_id_provided"] != true {
+		t.Fatalf("body = %v", body)
+	}
+	if p.AvatarURL != nil || *p.AvatarID != "a1" || p.AvatarColor != "#E53935" || p.Name != "Kids" {
+		t.Fatalf("profile = %+v", p)
+	}
+
+	// Deleted on another device.
+	if _, err := c.PatchProfile(t.Context(), s, 2, ProfilePatch{Name: &name}); !errors.Is(err, ErrProfileNotFound) {
+		t.Fatalf("err = %v, want ErrProfileNotFound", err)
+	}
+	empty := " "
+	var apiErr *APIError
+	if _, err := c.PatchProfile(t.Context(), s, 1, ProfilePatch{Name: &empty}); !errors.As(err, &apiErr) || apiErr.Code != "22023" {
+		t.Fatalf("err = %v, want 22023", err)
+	}
+}
+
+func TestPushAndDeleteProfiles(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+	profiles, err := c.Profiles(t.Context(), s)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// The full list round-trips, with a new profile at index 2.
+	avatar := "a7"
+	profiles = append(profiles, Profile{Index: 2, Name: "Guests", AvatarColor: "#43A047", AvatarID: &avatar})
+	if err := c.PushProfiles(t.Context(), s, profiles); err != nil {
+		t.Fatal(err)
+	}
+	body := b.Body("/rest/v1/rpc/sync_push_profiles")
+	if body["p_client_max_profiles"] != float64(MaxProfiles) {
+		t.Fatalf("body = %v", body)
+	}
+	// Profile 3's custom image wins over its stock avatar, as Nuvio's
+	// dashboard sends it.
+	if kids := body["p_profiles"].([]any)[1].(map[string]any); kids["avatar_id"] != nil || kids["avatar_url"] != "https://img/a7.png" || kids["uses_primary_addons"] != true {
+		t.Fatalf("pushed %v", kids)
+	}
+	after, err := c.Profiles(t.Context(), s)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(after) != 3 || after[1].Name != "Guests" || *after[1].AvatarID != "a7" ||
+		after[2].Name != "Kids" || after[2].AvatarColor != "#F5A623" || !after[2].UsesPrimaryAddons || !after[2].PinEnabled {
+		t.Fatalf("profiles = %+v", after)
+	}
+
+	if err := c.DeleteProfile(t.Context(), s, 2); err != nil {
+		t.Fatal(err)
+	}
+	if after, _ := c.Profiles(t.Context(), s); len(after) != 2 || after[1].Index != 3 {
+		t.Fatalf("profiles = %+v", after)
+	}
+}
+
 func TestAvatarCatalog(t *testing.T) {
 	b := nuviotest.NewServer(t)
 	c := newTestClient(b.URL + "/")
