@@ -85,3 +85,18 @@ Chrome at 1000×618 (2×), with the Go services stubbed.
 | A guest on their own: the picker offers to sign in | ![](profiles-guest-only-light.jpg) |
 
 Chrome at 1000×618 (2×), with the Go services stubbed. Avatar images are Nuvio's, from its public catalog.
+
+### Managing profiles (#95)
+
+| | |
+|---|---|
+| **Manage profiles** in the picker, the profile menu or Settings › Profiles: a pencil badge on each tile, and **Add profile** while the account has a free slot | ![](profiles-manage-dark.jpg) |
+| Editing a Nuvio profile: name, one of Nuvio's stock avatars (picking one takes the colour it was drawn for) and a colour. **Delete** isn't offered for the primary or the last profile ([ADR-0012](../adr/0012-profile-changes-go-to-nuvio-first.md)) | ![](profile-edit-light.jpg) |
+| Adding a profile | ![](profile-add-dark.jpg) |
+| Deleting says the profile goes from every device | ![](profile-delete-dark.jpg) |
+| Offline: the change is refused, not queued, and the editor stays open with the error up top | ![](profile-offline-light.jpg) |
+| All six Nuvio profiles in use | ![](profiles-full-light.jpg) |
+
+Colours, with the initials colour picked for contrast: `#33B5E0` (black, 8.3:1), `#1E88E5` (black, 5.4), `#7957BD` (white, 5.4), `#D81B60` (white, 4.9), `#E53935` (black, 4.7), `#FB8C00` (black, 8.3), `#FDD835` (black, 14.2), `#43A047` (black, 6.0), `#00897B` (black, 4.6), `#546E7A` (white, 5.4). A colour set elsewhere (Nuvio takes any) is offered first. The Guest is renamed only, and stays on the lagoon brand.
+
+Chrome at 1280×800 (2×), with the Go services stubbed. Avatar images are Nuvio's stock avatars, from a local self-host stack's catalog.
