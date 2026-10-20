@@ -51,6 +51,16 @@ First run, in the macOS app: ![](native-welcome-dark.jpg)
 
 These are from Chrome at 1000×618 (2×), with the Go services stubbed. Before there's a profile, the screens use the `focus` chrome: the title bar only, no sidebar.
 
+### QR sign-in (#21)
+
+| | |
+|---|---|
+| Waiting: the QR code opens nuvio.tv/link with the code filled in; the short code is for typing there on any device, and the countdown runs to the 5-minute expiry ([ADR-0013](../adr/0013-qr-sign-in-via-nuvio-link.md)) | ![](qr-waiting-dark.jpg) |
+| Expired: one click for a new code | ![](qr-expired-light.jpg) |
+| Couldn't start (offline): the sign-in errors, with Try again | ![](qr-error-light.jpg) |
+
+The QR is black modules on a white tile in both themes (21:1), because phone cameras read dark on light best. Chrome at 1000×680 (2×), with the Go services stubbed.
+
 ### Signing out and ended sessions (#22)
 
 | | |

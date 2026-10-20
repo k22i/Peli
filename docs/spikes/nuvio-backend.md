@@ -39,6 +39,8 @@ Spike code: [`spikes/nuvio-backend/`](../../spikes/nuvio-backend/) (throwaway). 
 3. Desktop polls `poll_tv_login_session(p_code, p_device_nonce)` every `poll_interval_seconds` (~3 s on live) → `status`: `pending` → `approved`, or `expired`. **Codes last 5 minutes** (live: started 14:25:04, `expires_at` 14:30:04). Our first live attempt expired before anyone scanned it, so the UI needs a visible countdown and a one-click "new code".
 4. `POST /functions/v1/tv-logins-exchange {code, device_nonce}` → `{access_token, refresh_token, token_type, expires_in}` → `auth.setSession`.
 
+**Since changed (#21):** Nuvio added `start_device_login_session(p_device_nonce, p_redirect_base_url, p_device_name, p_device_type)` on 2026-10-16 ([self-host migration 11](https://github.com/NuvioMedia/self-host/blob/main/database/migrations/00000000000011_hosted_sync_updates.sql)), live by 2026-10-20. It returns a `device_code` for polling and exchanging as above, plus a six-character `user_code` and `verification_uri_complete` (`https://nuvio.tv/link?code=…`). A signed-in account approves at Nuvio's "Link a device" page with `approve_device_login_session(p_user_code)`, so any phone browser works, not only the Nuvio app. The redirect base must contain `/link`. Sinag uses it ([ADR-0013](../adr/0013-qr-sign-in-via-nuvio-link.md)). After the exchange, a poll answers `exchanged`.
+
 ## Function catalog
 
 Everything a desktop client needs, ~30 functions. Every `sync_*` takes `p_profile_id` (profile **index** 1–6, not the profile UUID). Writes also accept `p_origin_client_id` (a client ID, recorded with the change). "✅ live" means called on `api.nuvio.tv` in this spike; the rest are from the schema and ran on the local stack.
