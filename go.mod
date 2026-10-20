@@ -8,6 +8,7 @@ require (
 	github.com/wailsapp/wails/v3 v3.0.0-beta.28
 	github.com/zalando/go-keyring v0.2.8
 	go.etcd.io/bbolt v1.5.0
+	rsc.io/qr v0.2.0
 )
 
 require (

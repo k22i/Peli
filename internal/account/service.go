@@ -12,6 +12,7 @@ import (
 	"net/url"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
@@ -54,12 +55,23 @@ type Service struct {
 	mu sync.Mutex
 	// Stops the refresh loop.
 	stop context.CancelFunc
+
+	// QR sign-in (qr.go): where the phone approves it, the name it shows,
+	// and the sign-in pending.
+	linkURL    string
+	deviceName string
+	sleep      func(context.Context, time.Duration) error
+	qrMu       sync.Mutex
+	qr         *qrSignIn
 }
 
 // NewService returns a service that signs in with client, keeps the session
 // in keychain and the profiles in store.
 func NewService(client *nuvio.Client, keychain Keychain, store *store.Service) *Service {
-	return &Service{nuvio: client, session: newSession(client, keychain), store: store}
+	return &Service{
+		nuvio: client, session: newSession(client, keychain), store: store,
+		linkURL: nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
+	}
 }
 
 // SessionOf returns service's session, for calling the backend from Go. It
@@ -113,6 +125,16 @@ func (s *Service) Status() (Status, error) {
 // the keychain and links the account's profiles. It returns the profile that
 // is now current. Errors carry a code for the frontend (see MarshalError).
 func (s *Service) SignIn(ctx context.Context, email, password string) (store.Profile, error) {
+	return s.signIn(ctx, func(ctx context.Context) (nuvio.Session, error) {
+		return s.nuvio.SignInWithPassword(ctx, strings.TrimSpace(email), password)
+	})
+}
+
+// signIn gets a session from newSession, keeps it in the keychain and links
+// the account's profiles: the part of signing in that email and QR share. It
+// returns the profile that is now current. If a step after newSession fails,
+// nothing is kept and the session is ended on the backend.
+func (s *Service) signIn(ctx context.Context, newSession func(context.Context) (nuvio.Session, error)) (store.Profile, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -125,16 +147,31 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 	avatars := make(chan map[string]string, 1)
 	go func() { avatars <- s.avatarImages(ctx) }()
 
-	session, err := s.nuvio.SignInWithPassword(ctx, strings.TrimSpace(email), password)
+	session, err := newSession(ctx)
 	if err != nil {
 		return store.Profile{}, err
 	}
+	linked, err := s.link(ctx, session, avatars)
+	if err != nil {
+		ctx, cancel := context.WithTimeout(context.WithoutCancel(ctx), logoutWithin)
+		defer cancel()
+		s.nuvio.SignOut(ctx, session)
+		return store.Profile{}, err
+	}
+	if len(linked) == 0 {
+		// Every Nuvio account has a profile; fall back rather than fail.
+		return s.store.CurrentProfile()
+	}
+	return linked[0], nil
+}
 
+// link pulls the account's profiles, then keeps the session and links them.
+func (s *Service) link(ctx context.Context, session nuvio.Session, avatars <-chan map[string]string) ([]store.Profile, error) {
 	// No register_current_session: Nuvio accepts only its own apps' names
 	// there, and Sinag doesn't pass itself off as one (ADR-0008).
 	remote, err := s.nuvio.Profiles(ctx, session)
 	if err != nil {
-		return store.Profile{}, err
+		return nil, err
 	}
 
 	images := <-avatars
@@ -149,14 +186,7 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 		linked, err = store.Opened(s.store).LinkNuvioProfiles(session.UserID, profiles)
 		return err
 	})
-	if err != nil {
-		return store.Profile{}, err
-	}
-	if len(linked) == 0 {
-		// Every Nuvio account has a profile; fall back rather than fail.
-		return s.store.CurrentProfile()
-	}
-	return linked[0], nil
+	return linked, err
 }
 
 // avatarImages returns the image of each stock avatar by its ID, or nil if
@@ -219,6 +249,8 @@ const (
 	CodeUnreachable         = "unreachable"
 	CodeUnavailable         = "unavailable"
 	CodeKeychainUnavailable = "keychain_unavailable"
+	// The QR sign-in's code expired (#21).
+	CodeQRExpired = "qr_expired"
 	// Managing profiles (#95).
 	CodeSignedOut       = "signed_out"
 	CodeProfileNotFound = "profile_not_found"
@@ -243,6 +275,8 @@ func MarshalError(err error) []byte {
 		code = CodeUnavailable
 	case errors.Is(err, secrets.ErrUnavailable):
 		code = CodeKeychainUnavailable
+	case errors.Is(err, nuvio.ErrDeviceLoginExpired):
+		code = CodeQRExpired
 	case errors.Is(err, nuvio.ErrSignedOut):
 		code = CodeSignedOut
 	case errors.Is(err, nuvio.ErrProfileNotFound):
