@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type { ProfileEdit } from "@bindings/account";
 import type { Profile } from "@bindings/store";
+import { KidsSection } from "@/components/account/kids-section";
 import { PinManagerDialog } from "@/components/account/pin-manager";
 import { initialsColor, ProfileAvatar } from "@/components/account/profile-avatar";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -35,6 +36,7 @@ import { toastManager } from "@/components/ui/toast";
 import {
   avatarsQuery,
   profileProblem,
+  profilesQuery,
   useAddProfile,
   useEditProfile,
   useRemoveProfile,
@@ -118,7 +120,11 @@ function EditorForm({
   onDelete: (profile: Profile) => void;
   onPinAction: (action: { profile: Profile; mode: "set" | "change" | "clear" }) => void;
 }) {
-  const profile = "profile" in target ? target.profile : undefined;
+  const shownProfile = "profile" in target ? target.profile : undefined;
+  // Kids mode and the PIN change from inside the editor, so follow the
+  // stored profile rather than the one the editor opened on.
+  const profiles = useQuery(profilesQuery);
+  const profile = profiles.data?.find((p) => p.id === shownProfile?.id) ?? shownProfile;
   const local = profile?.guest === true;
   const avatars = useQuery({ ...avatarsQuery, enabled: !local });
   const edit = useEditProfile();
@@ -288,13 +294,16 @@ function EditorForm({
                       >
                         Change PIN
                       </Button>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={() => onPinAction({ profile, mode: "clear" })}
-                      >
-                        Clear PIN
-                      </Button>
+                      {/* A kids profile is left with its PIN, so it keeps it. */}
+                      {profile.kids !== true && (
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() => onPinAction({ profile, mode: "clear" })}
+                        >
+                          Clear PIN
+                        </Button>
+                      )}
                     </div>
                   </>
                 ) : (
@@ -313,6 +322,8 @@ function EditorForm({
                 )}
               </section>
             )}
+
+            {profile && <KidsSection profile={profile} />}
 
             <p className="text-sm text-muted-foreground">
               {profile

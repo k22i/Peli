@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
 import { useState } from "react";
 
-import { PinDialog } from "@/components/account/pin-dialog";
+import { parentSteps, pinSteps, usePinSteps } from "@/components/account/pin-dialog";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import {
@@ -26,13 +26,16 @@ import { toastManager } from "@/components/ui/toast";
 import { profilesQuery, useSwitchProfile } from "@/lib/account";
 import { currentPlatform } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
-import type { Profile } from "@bindings/store";
 
 // Everything that isn't a top-level section: profiles, addons, settings.
 export function ProfileMenu() {
   const profile = useCurrentProfile();
   const mac = currentPlatform() === "mac";
+  const navigate = useNavigate();
   const [signingOut, setSigningOut] = useState(false);
+  // A kids profile asks for its parent PIN before anything that leaves or
+  // changes it (#26).
+  const { ask, dialog: parentDialog } = usePinSteps();
 
   return (
     <>
@@ -48,10 +51,19 @@ export function ProfileMenu() {
           <MenuGroup>
             <MenuGroupLabel>{profile.name}</MenuGroupLabel>
             <SwitchProfileMenu currentId={profile.id} />
-            <MenuLinkItem render={<Link to="/addons" />}>
-              <Puzzle />
-              Addons
-            </MenuLinkItem>
+            {profile.kids ? (
+              <MenuItem
+                onClick={() => ask(parentSteps(profile), () => void navigate({ to: "/addons" }))}
+              >
+                <Puzzle />
+                Addons
+              </MenuItem>
+            ) : (
+              <MenuLinkItem render={<Link to="/addons" />}>
+                <Puzzle />
+                Addons
+              </MenuLinkItem>
+            )}
             {/* The app shell's shortcut. */}
             <MenuLinkItem
               render={<Link to="/settings" />}
@@ -87,6 +99,7 @@ export function ProfileMenu() {
         </MenuPopup>
       </Menu>
       <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
+      {parentDialog}
     </>
   );
 }
@@ -96,21 +109,21 @@ export function ProfileMenu() {
 function SwitchProfileMenu({ currentId }: { currentId: number | undefined }) {
   const profiles = useQuery(profilesQuery);
   const switchProfile = useSwitchProfile();
-  const [unlocking, setUnlocking] = useState<Profile>();
+  const current = useCurrentProfile();
+  const { ask, dialog } = usePinSteps();
 
   const pick = (id: unknown) => {
     const profile = profiles.data?.find((p) => p.id === id);
     if (!profile || profile.id === currentId) return;
-    // A locked profile asks for its PIN before switching (#25).
-    if (profile.pinEnabled) {
-      setUnlocking(profile);
-      return;
-    }
-    switchProfile.mutate(profile, {
-      onError: () => {
-        toastManager.add({ type: "error", title: `Couldn’t switch to ${profile.name}` });
-      },
-    });
+    // A locked profile asks for its PIN before switching (#25), and a kids
+    // profile for its parent PIN to be left (#26).
+    ask(pinSteps(current, profile, "switch"), () =>
+      switchProfile.mutate(profile, {
+        onError: () => {
+          toastManager.add({ type: "error", title: `Couldn’t switch to ${profile.name}` });
+        },
+      }),
+    );
   };
 
   return (
@@ -138,21 +151,7 @@ function SwitchProfileMenu({ currentId }: { currentId: number | undefined }) {
           </MenuLinkItem>
         </MenuSubPopup>
       </MenuSub>
-      <PinDialog
-        profile={unlocking}
-        open={unlocking !== undefined}
-        onClose={() => setUnlocking(undefined)}
-        onUnlocked={() => {
-          const p = unlocking;
-          if (!p) return;
-          setUnlocking(undefined);
-          switchProfile.mutate(p, {
-            onError: () => {
-              toastManager.add({ type: "error", title: "Couldn’t switch to " + p.name });
-            },
-          });
-        }}
-      />
+      {dialog}
     </>
   );
 }

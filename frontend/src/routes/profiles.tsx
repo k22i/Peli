@@ -9,7 +9,7 @@ import {
   ProfileEditor,
   type EditorTarget,
 } from "@/components/account/profile-editor";
-import { PinDialog } from "@/components/account/pin-dialog";
+import { parentSteps, pinSteps, usePinSteps } from "@/components/account/pin-dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toastManager } from "@/components/ui/toast";
@@ -42,16 +42,16 @@ function Profiles() {
   const [managing, setManaging] = useState(search.manage === true);
   const [editing, setEditing] = useState<EditorTarget>();
   const [removing, setRemoving] = useState<Profile>();
-  const [unlocking, setUnlocking] = useState<Profile>();
+  // Runs an action once the PINs are in: a locked profile's own (#25), and
+  // the parent PIN to leave or change a kids profile (#26).
+  const { ask, dialog: pinDialog } = usePinSteps();
+  // Changes that aren't about one profile, such as adding one, can't be made
+  // from a kids profile without its parent PIN.
+  const askParent = (run: () => void) => ask(parentSteps(current), run);
 
-  const pick = (profile: Profile) => {
-    if (profile.id === current.id) {
+  const enter = (profile: Profile) => {
+    if (profile.id === current.id && !profile.pinEnabled) {
       void navigate({ to: "/" });
-      return;
-    }
-    // A locked profile asks for its PIN before switching (#25).
-    if (profile.pinEnabled) {
-      setUnlocking(profile);
       return;
     }
     switchProfile.mutate(profile, {
@@ -60,6 +60,10 @@ function Profiles() {
         toastManager.add({ type: "error", title: `Couldn’t switch to ${profile.name}` });
       },
     });
+  };
+  const pick = (profile: Profile) => {
+    if (managing) ask(pinSteps(current, profile, "edit"), () => setEditing({ profile }));
+    else ask(pinSteps(current, profile, "switch"), () => enter(profile));
   };
 
   const list = profiles.data ?? [];
@@ -113,13 +117,7 @@ function Profiles() {
                 current={profile.id === current.id}
                 managing={managing}
                 disabled={switchProfile.isPending || (managing && !editable(profile))}
-                onPick={() =>
-                  profile.pinEnabled
-                    ? setUnlocking(profile)
-                    : managing
-                      ? setEditing({ profile })
-                      : pick(profile)
-                }
+                onPick={() => pick(profile)}
               />
             </li>
           ))}
@@ -127,7 +125,7 @@ function Profiles() {
           <li>
             <button
               type="button"
-              onClick={() => setEditing({ add: true })}
+              onClick={() => askParent(() => setEditing({ add: true }))}
               className="group flex w-28 flex-col items-center gap-3 rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-ring md:w-32"
             >
               <span className="flex size-24 items-center justify-center rounded-full border-2 border-dashed border-foreground/24 text-muted-foreground transition-[border-color,scale] group-hover:border-foreground/48 group-active:scale-96 md:size-28">
@@ -169,7 +167,11 @@ function Profiles() {
               </Button>
             )}
             {removableGuest && (
-              <Button variant="ghost" size="sm" onClick={() => setRemoving(removableGuest)}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => askParent(() => setRemoving(removableGuest))}
+              >
                 Remove the Guest profile
               </Button>
             )}
@@ -183,18 +185,7 @@ function Profiles() {
         onClose={() => setEditing(undefined)}
       />
       <DeleteProfileDialog profile={removing} onClose={() => setRemoving(undefined)} />
-      <PinDialog
-        profile={unlocking}
-        open={unlocking !== undefined}
-        onClose={() => setUnlocking(undefined)}
-        onUnlocked={() => {
-          const p = unlocking;
-          if (!p) return;
-          setUnlocking(undefined);
-          if (managing) setEditing({ profile: p });
-          else switchProfile.mutate(p, { onSuccess: () => void navigate({ to: "/" }) });
-        }}
-      />
+      {pinDialog}
     </div>
   );
 }
@@ -216,7 +207,12 @@ function ProfileTile({
 }) {
   const noteId = useId();
   const note =
-    profile.pinEnabled && !current ? (
+    profile.kids && !current ? (
+      <span className="inline-flex items-center gap-1">
+        <Lock className="size-3" aria-hidden />
+        Kids
+      </span>
+    ) : profile.pinEnabled && !current ? (
       <span className="inline-flex items-center gap-1">
         <Lock className="size-3" aria-hidden />
         PIN

@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Avatar, ProfileEdit, Status } from "@bindings/account";
-import type { Addon, Profile, ProfileSettings } from "@bindings/store";
+import type { Addon, KidsScope, Profile, ProfileSettings } from "@bindings/store";
 import { initialsColor } from "@/components/account/profile-avatar";
 import { renderApp } from "@/test/render-app";
 
@@ -31,6 +31,13 @@ const backend = vi.hoisted(() => ({
   // The code internal/account fails the next profile change with, if any.
   failChange: "",
   edits: [] as [number | "add", ProfileEdit][],
+  // Kids profiles (#26): the parent PINs entered, the profiles made kids or
+  // not, what each may see, and the times the user signed out.
+  approvals: [] as [number, string][],
+  kidsSets: [] as [number, boolean][],
+  scopes: new Map<number, KidsScope>(),
+  scopeSaves: [] as KidsScope[],
+  signOuts: 0,
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -52,6 +59,8 @@ vi.mock("@bindings/store", () => ({
     }),
     DeviceSettings: async () => ({ hardwareDecoding: true, diagnostics: false }),
     Addons: async (id: number) => backend.addons.get(id) ?? [],
+    KidsScope: async (id: number): Promise<KidsScope> =>
+      backend.scopes.get(id) ?? { addons: [], catalogs: [] },
   },
 }));
 
@@ -73,6 +82,28 @@ vi.mock("@bindings/account", () => ({
       backend.switches.push(id);
       backend.current = id;
       return backend.profiles.find((p) => p.id === id);
+    },
+    ApproveParent: async (id: number, pin: string) => {
+      backend.approvals.push([id, pin]);
+      if (backend.wrongPin)
+        throw new Error("wrong PIN", {
+          cause: { code: "wrong_pin", retryAfterSeconds: backend.pinRetry ?? 0 },
+        });
+    },
+    SetKids: async (id: number, kids: boolean) => {
+      failed();
+      backend.kidsSets.push([id, kids]);
+      const profile = backend.profiles.find((p) => p.id === id)!;
+      profile.kids = kids;
+      return profile;
+    },
+    SetKidsScope: async (id: number, scope: KidsScope) => {
+      failed();
+      backend.scopeSaves.push(scope);
+      backend.scopes.set(id, scope);
+    },
+    SignOut: async () => {
+      backend.signOuts += 1;
     },
     UnlockProfile: async (id: number, pin: string) => {
       backend.unlocks.push([id, pin]);
@@ -147,6 +178,8 @@ const kevin: Profile = {
 };
 const kids: Profile = { id: 3, name: "Kids Room", nuvioIndex: 3, avatarColor: "#7957BD" };
 const kidsPin: Profile = { id: 4, name: "Kids Room", nuvioIndex: 3, pinEnabled: true };
+// A kids profile (#26): PIN-locked, with the PIN as the parent PIN.
+const kidsOn: Profile = { id: 5, name: "Kids Room", nuvioIndex: 3, pinEnabled: true, kids: true };
 const cinemeta: Addon = { url: "https://cinemeta/manifest.json", enabled: true };
 const anime: Addon = { url: "https://anime/manifest.json", enabled: true };
 
@@ -173,6 +206,11 @@ beforeEach(() => {
   backend.wrongCurrentPin = false;
   backend.failChange = "";
   backend.edits = [];
+  backend.approvals = [];
+  backend.kidsSets = [];
+  backend.scopes.clear();
+  backend.scopeSaves = [];
+  backend.signOuts = 0;
 });
 
 const picker = () => screen.findByRole("heading", { level: 1, name: "Who’s watching?" });
@@ -776,6 +814,173 @@ describe("setting, changing and clearing a PIN", () => {
     // The PIN section flips back to offering a set.
     expect(within(dialog).getByRole("button", { name: "Set a PIN" })).toBeVisible();
     expect(within(dialog).queryByRole("button", { name: "Change PIN" })).toBeNull();
+  });
+});
+
+async function enterPin(user: ReturnType<typeof userEvent.setup>, digits = "1234") {
+  // One press after another, as a person types.
+  for (const digit of digits) {
+    // oxlint-disable-next-line eslint/no-await-in-loop
+    await user.click(screen.getByRole("button", { name: digit }));
+  }
+}
+
+describe("kids profiles", () => {
+  it("marks a PIN-locked profile as kids and chooses the addons it shows", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    backend.addons.set(kidsPin.id, [
+      { ...cinemeta, name: "Cinemeta" },
+      { ...anime, name: "Anime" },
+    ]);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    // Locked, so its PIN first.
+    await enterPin(user);
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    expect(within(dialog).queryByRole("switch", { name: "Cinemeta" })).toBeNull();
+
+    await user.click(within(dialog).getByRole("switch", { name: "Only show what I choose" }));
+    expect(backend.kidsSets).toEqual([[kidsPin.id, true]]);
+
+    // Nothing is shown until the parent picks.
+    expect(await within(dialog).findByText(/None is chosen yet/)).toBeVisible();
+    await user.click(await within(dialog).findByRole("switch", { name: "Cinemeta" }));
+    await waitFor(() =>
+      expect(backend.scopeSaves).toEqual([{ addons: [cinemeta.url], catalogs: [] }]),
+    );
+    expect(within(dialog).getByRole("switch", { name: "Cinemeta" })).toBeChecked();
+    expect(within(dialog).getByRole("switch", { name: "Anime" })).not.toBeChecked();
+
+    await user.click(within(dialog).getByRole("switch", { name: "Cinemeta" }));
+    await waitFor(() => expect(backend.scopeSaves.at(-1)).toEqual({ addons: [], catalogs: [] }));
+  });
+
+  it("needs a PIN before a profile can be a kids profile", async () => {
+    signedIn(kevin, kevin, kids);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+
+    expect(within(dialog).getByText(/Set a PIN first/)).toBeVisible();
+    expect(within(dialog).getByRole("switch", { name: "Only show what I choose" })).toHaveAttribute(
+      "aria-disabled",
+      "true",
+    );
+  });
+
+  it("keeps a kids profile's PIN: it can't be cleared while kids is on", async () => {
+    signedIn(kevin, kevin, kidsOn);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    // Its parent PIN to open the editor.
+    expect(await screen.findByRole("dialog", { name: "Enter parent PIN" })).toBeVisible();
+    await enterPin(user);
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+
+    expect(backend.approvals).toEqual([[kidsOn.id, "1234"]]);
+    expect(within(dialog).getByRole("button", { name: "Change PIN" })).toBeVisible();
+    expect(within(dialog).queryByRole("button", { name: "Clear PIN" })).toBeNull();
+    expect(within(dialog).getByRole("switch", { name: "Only show what I choose" })).toBeChecked();
+  });
+
+  it("marks a kids profile in the picker", async () => {
+    signedIn(kevin, kevin, kidsOn);
+    await renderApp("/profiles", { shell: false });
+
+    expect(await tile("Kids Room")).toHaveAccessibleDescription("Kids");
+  });
+
+  it("leaving a kids profile asks for the parent PIN", async () => {
+    signedIn(kidsOn, kevin, kidsOn);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kevin"));
+
+    expect(await screen.findByRole("dialog", { name: "Enter parent PIN" })).toBeVisible();
+    expect(backend.switches).toEqual([]);
+    await enterPin(user);
+
+    expect(backend.approvals).toEqual([[kidsOn.id, "1234"]]);
+    expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
+    expect(backend.switches).toEqual([kevin.id]);
+    expect(router.state.location.pathname).toBe("/");
+  });
+
+  it("stays in the kids profile when the parent PIN is cancelled or wrong", async () => {
+    signedIn(kidsOn, kevin, kidsOn);
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kevin"));
+    await screen.findByRole("dialog", { name: "Enter parent PIN" });
+    backend.wrongPin = true;
+    await enterPin(user, "0000");
+    expect(await screen.findByText("Wrong PIN. Try again.")).toBeVisible();
+    expect(backend.switches).toEqual([]);
+
+    await user.click(screen.getByRole("button", { name: "Cancel" }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+    expect(backend.switches).toEqual([]);
+  });
+
+  it("asks for the parent PIN, then Kevin's own, to go from kids to a locked profile", async () => {
+    const lockedKevin: Profile = { ...kevin, pinEnabled: true };
+    signedIn(kidsOn, lockedKevin, kidsOn);
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kevin"));
+    await screen.findByRole("dialog", { name: "Enter parent PIN" });
+    await enterPin(user, "1111");
+    await waitFor(() => expect(screen.getByRole("dialog", { name: "Enter PIN" })).toBeVisible());
+    await enterPin(user, "2222");
+
+    expect(backend.approvals).toEqual([[kidsOn.id, "1111"]]);
+    expect(backend.unlocks).toEqual([[lockedKevin.id, "2222"]]);
+    expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
+  });
+
+  it("adding a profile from a kids profile asks for the parent PIN", async () => {
+    signedIn(kidsOn, kevin, kidsOn);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await screen.findByRole("button", { name: "Add profile" }));
+    expect(await screen.findByRole("dialog", { name: "Enter parent PIN" })).toBeVisible();
+    expect(screen.queryByRole("dialog", { name: "Add a profile" })).toBeNull();
+    await enterPin(user);
+
+    expect(await screen.findByRole("dialog", { name: "Add a profile" })).toBeVisible();
+  });
+
+  it("signing out of a kids profile asks for the parent PIN first", async () => {
+    signedIn(kidsOn, kevin, kidsOn);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/profiles", { shell: false });
+    // Unlocked, as the parent did to hand it over.
+    await user.click(await tile("Kids Room"));
+    await enterPin(user);
+    await screen.findByRole("button", { name: "Profile: Kids Room" });
+    backend.approvals = [];
+    await router.navigate({ to: "/settings" });
+
+    await user.click(await screen.findByRole("button", { name: "Sign out" }));
+    const confirm = await screen.findByRole("alertdialog", { name: "Sign out of Nuvio?" });
+    await user.click(within(confirm).getByRole("button", { name: "Sign out" }));
+
+    expect(await screen.findByRole("dialog", { name: "Enter parent PIN" })).toBeVisible();
+    expect(backend.signOuts).toBe(0);
+    await enterPin(user);
+
+    await waitFor(() => expect(backend.signOuts).toBe(1));
+    expect(backend.approvals).toEqual([[kidsOn.id, "1234"]]);
   });
 });
 

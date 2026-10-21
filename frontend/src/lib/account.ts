@@ -10,7 +10,7 @@ import { Events } from "@wailsio/runtime";
 import { useEffect, useEffectEvent, useState } from "react";
 
 import { Service as Account, type ProfileEdit } from "@bindings/account";
-import { Service as Store, type Profile } from "@bindings/store";
+import { Service as Store, type KidsScope, type Profile } from "@bindings/store";
 import { accountQuery, currentProfileQuery } from "@/lib/profile";
 import { secrets } from "@/lib/secrets";
 
@@ -50,6 +50,7 @@ const signInErrorCodes = [
   "unavailable",
   "keychain_unavailable",
   "qr_expired",
+  "parent_pin_required",
 ] as const;
 export type SignInErrorCode = (typeof signInErrorCodes)[number];
 
@@ -165,6 +166,60 @@ export function useUnlockProfile() {
       queryClient.setQueryData<number[]>(unlockedProfilesKey, (ids) =>
         ids?.includes(profileId) ? ids : [...(ids ?? []), profileId],
       );
+    },
+  });
+}
+
+// Checks a kids profile's PIN, the parent PIN (#26). Go then lets the parent
+// leave the profile or change things for a couple of minutes. It unlocks the
+// profile too, like useUnlockProfile.
+export function useApproveParent() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profileId, pin }: { profileId: number; pin: string }) =>
+      Account.ApproveParent(profileId, pin),
+    onSuccess: (_, { profileId }) => {
+      queryClient.setQueryData<number[]>(unlockedProfilesKey, (ids) =>
+        ids?.includes(profileId) ? ids : [...(ids ?? []), profileId],
+      );
+    },
+  });
+}
+
+// What a kids profile may see (#26): the addons its parent allowed. Nothing
+// until they choose.
+export const kidsScopeQuery = (profileId: number) =>
+  queryOptions({
+    queryKey: ["profiles", "kids-scope", profileId],
+    queryFn: () => Store.KidsScope(profileId),
+  });
+
+// A profile's addons, for choosing what a kids profile sees.
+export const profileAddonsQuery = (profileId: number) =>
+  queryOptions({
+    queryKey: ["addons", profileId],
+    queryFn: () => Store.Addons(profileId),
+  });
+
+// Makes a profile a kids profile, or an ordinary one again (#26).
+export function useSetKids() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profileId, kids }: { profileId: number; kids: boolean }) =>
+      Account.SetKids(profileId, kids),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+    },
+  });
+}
+
+// Chooses the addons a kids profile may see (#26).
+export function useSetKidsScope(profileId: number) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (scope: KidsScope) => Account.SetKidsScope(profileId, scope),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: kidsScopeQuery(profileId).queryKey });
     },
   });
 }
@@ -295,6 +350,9 @@ const profileErrorCodes = [
   "profile_locked",
   "wrong_pin",
   "invalid_pin",
+  "parent_pin_required",
+  "kids_need_pin",
+  "kids_keep_pin",
 ] as const;
 
 // What to tell the user when changing a profile fails.
@@ -354,6 +412,21 @@ export function profileProblem(error: Error): { title: string; description: stri
       return {
         title: "PIN must be 4 digits",
         description: "Use exactly four digits (0–9).",
+      };
+    case "parent_pin_required":
+      return {
+        title: "Ask a parent",
+        description: "The parent PIN is needed to leave or change a kids profile.",
+      };
+    case "kids_need_pin":
+      return {
+        title: "Set a PIN first",
+        description: "A kids profile is left with its PIN, so it needs one.",
+      };
+    case "kids_keep_pin":
+      return {
+        title: "A kids profile keeps its PIN",
+        description: "Turn kids mode off first to clear it.",
       };
     default:
       return { title: "Couldn’t save the profile", description: error.message };

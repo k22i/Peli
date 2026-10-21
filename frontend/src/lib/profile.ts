@@ -23,6 +23,9 @@ export type Profile = {
   // informational only; the live retry delay comes back from UnlockProfile.
   pinEnabled: boolean;
   pinLockedUntil?: string | null;
+  // A kids profile (#26): it sees only the addons its parent allowed, and
+  // leaving it asks for its PIN again, the parent PIN.
+  kids: boolean;
 };
 
 const guest: Profile = {
@@ -31,6 +34,7 @@ const guest: Profile = {
   signedIn: false,
   sessionEnded: false,
   pinEnabled: false,
+  kids: false,
 };
 
 // Whether this device has a Nuvio session, and whether one ended without
@@ -63,6 +67,7 @@ export function useCurrentProfile(): Profile {
     signedIn: account.data?.signedIn === true,
     sessionEnded: account.data?.sessionEnded === true,
     pinEnabled: data.pinEnabled === true,
+    kids: data.kids === true,
     // Null and absent both mean "not locked out"; keep the field off then.
     ...(typeof data.pinLockedUntil === "string" ? { pinLockedUntil: data.pinLockedUntil } : {}),
   };

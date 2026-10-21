@@ -1,5 +1,6 @@
 import {
   CloudOff,
+  Lock,
   ServerCrash,
   Timer,
   TimerOff,
@@ -35,6 +36,11 @@ const problems: Record<Exclude<SignInErrorCode, "invalid_credentials">, Problem>
     icon: TriangleAlert,
     title: "Signing in needs a keychain",
     description: "",
+  },
+  parent_pin_required: {
+    icon: Lock,
+    title: "A kids profile is in use",
+    description: "Switch to a parent profile first, with the parent PIN, then sign in.",
   },
   qr_expired: {
     icon: TimerOff,

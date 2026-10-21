@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 
 import { PinField } from "@/components/account/pin-field";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
-import { pinRetryAfterSeconds, profileProblem, useUnlockProfile } from "@/lib/account";
+import {
+  pinRetryAfterSeconds,
+  profileProblem,
+  useApproveParent,
+  useUnlockProfile,
+} from "@/lib/account";
 import type { Profile } from "@/lib/profile";
 
 const pinLength = 4;
@@ -11,12 +16,26 @@ const pinLength = 4;
 // them. Both the store's Profile and the local Profile fit this shape.
 export type PinProfile = Pick<Profile, "id" | "name" | "avatar" | "avatarColor">;
 
+// What the PIN is for: "unlock" lets a locked profile be entered (#25);
+// "parent" is a kids profile's PIN, asked to leave it or change things (#26).
+export type PinMode = "unlock" | "parent";
+
 // Enter a profile's 4-digit PIN: a numeric field plus an on-screen keypad, so
 // it works with a mouse and a keyboard. Submits as soon as four digits are
 // in; a wrong PIN clears the field and, after too many attempts, counts down
 // Go's cooldown.
-export function PinEntry({ profile, onUnlocked }: { profile: PinProfile; onUnlocked: () => void }) {
-  const unlock = useUnlockProfile();
+export function PinEntry({
+  profile,
+  mode = "unlock",
+  onUnlocked,
+}: {
+  profile: PinProfile;
+  mode?: PinMode;
+  onUnlocked: () => void;
+}) {
+  const unlockProfile = useUnlockProfile();
+  const approveParent = useApproveParent();
+  const unlock = mode === "parent" ? approveParent : unlockProfile;
   const [pin, setPin] = useState("");
   const [retryIn, setRetryIn] = useState(0);
   const [problem, setProblem] = useState<{ title: string; description?: string }>();
@@ -63,6 +82,11 @@ export function PinEntry({ profile, onUnlocked }: { profile: PinProfile; onUnloc
     <div className="flex flex-col items-center gap-4">
       <ProfileAvatar profile={profile} className="size-16 text-xl" />
       <p className="text-sm font-medium">{profile.name}</p>
+      {mode === "parent" && (
+        <p className="max-w-56 text-center text-sm text-muted-foreground">
+          Ask a parent to enter the PIN.
+        </p>
+      )}
 
       <PinField value={pin} disabled={waiting} onValueChange={enter} />
 
