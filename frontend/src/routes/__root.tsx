@@ -1,9 +1,15 @@
 import type { QueryClient } from "@tanstack/react-query";
-import { Outlet, createRootRouteWithContext, redirect } from "@tanstack/react-router";
+import { Outlet, createRootRouteWithContext, redirect, useLocation } from "@tanstack/react-router";
 
+import { PinGate } from "@/components/account/pin-dialog";
 import { AppShell } from "@/components/shell/app-shell";
-import { needsPicker, profilesQuery, useSessionEndedRedirect } from "@/lib/account";
-import { accountQuery } from "@/lib/profile";
+import {
+  needsPicker,
+  profilesQuery,
+  useSessionEndedRedirect,
+  useUnlockedProfiles,
+} from "@/lib/account";
+import { accountQuery, useCurrentProfile } from "@/lib/profile";
 
 export type RouterContext = {
   queryClient: QueryClient;
@@ -35,6 +41,33 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootLayout() {
   useSessionEndedRedirect();
+  const location = useLocation();
+  // The launch gate only applies once a profile is in use, so it skips the
+  // screens that come before one — and doesn't ask the store for the current
+  // profile (which makes a Guest on first run) while they're showing.
+  if (beforeProfile.has(location.pathname)) {
+    return (
+      <AppShell>
+        <Outlet />
+      </AppShell>
+    );
+  }
+  return <ProfileGate />;
+}
+
+// A PIN-locked profile can't be used until it's unlocked this run (#25).
+function ProfileGate() {
+  const current = useCurrentProfile();
+  const unlocked = useUnlockedProfiles();
+
+  if (current.pinEnabled && current.id !== undefined && !unlocked.includes(current.id)) {
+    return (
+      <AppShell>
+        <PinGate profile={current} />
+      </AppShell>
+    );
+  }
+
   return (
     <AppShell>
       <Outlet />

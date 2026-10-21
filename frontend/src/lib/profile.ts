@@ -18,9 +18,20 @@ export type Profile = {
   // beside it.
   signedIn: boolean;
   sessionEnded: boolean;
+  // A PIN-locked profile (#25): pinEnabled means entering it asks for its
+  // 4-digit PIN. pinLockedUntil is the cooldown after failed attempts,
+  // informational only; the live retry delay comes back from UnlockProfile.
+  pinEnabled: boolean;
+  pinLockedUntil?: string | null;
 };
 
-const guest: Profile = { name: "Guest", guest: true, signedIn: false, sessionEnded: false };
+const guest: Profile = {
+  name: "Guest",
+  guest: true,
+  signedIn: false,
+  sessionEnded: false,
+  pinEnabled: false,
+};
 
 // Whether this device has a Nuvio session, and whether one ended without
 // signing out. Go answers from the keychain and the store, so this works
@@ -51,7 +62,16 @@ export function useCurrentProfile(): Profile {
     guest: data.guest === true,
     signedIn: account.data?.signedIn === true,
     sessionEnded: account.data?.sessionEnded === true,
+    pinEnabled: data.pinEnabled === true,
+    // Null and absent both mean "not locked out"; keep the field off then.
+    ...(typeof data.pinLockedUntil === "string" ? { pinLockedUntil: data.pinLockedUntil } : {}),
   };
+}
+
+// Whether a profile needs its PIN before it can be used (#25). Go owns the
+// enforcement; this is the frontend's mirror of it.
+export function isLocked(profile: Profile): boolean {
+  return profile.pinEnabled;
 }
 
 // The colours the profile editor offers (#95), lagoon first. Nuvio takes any

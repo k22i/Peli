@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
-import { ArrowLeft, Pencil, Plus } from "lucide-react";
+import { ArrowLeft, Lock, Pencil, Plus } from "lucide-react";
 import { useId, useState } from "react";
 
 import { ProfileAvatar } from "@/components/account/profile-avatar";
@@ -9,6 +9,7 @@ import {
   ProfileEditor,
   type EditorTarget,
 } from "@/components/account/profile-editor";
+import { PinDialog } from "@/components/account/pin-dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toastManager } from "@/components/ui/toast";
@@ -41,10 +42,16 @@ function Profiles() {
   const [managing, setManaging] = useState(search.manage === true);
   const [editing, setEditing] = useState<EditorTarget>();
   const [removing, setRemoving] = useState<Profile>();
+  const [unlocking, setUnlocking] = useState<Profile>();
 
   const pick = (profile: Profile) => {
     if (profile.id === current.id) {
       void navigate({ to: "/" });
+      return;
+    }
+    // A locked profile asks for its PIN before switching (#25).
+    if (profile.pinEnabled) {
+      setUnlocking(profile);
       return;
     }
     switchProfile.mutate(profile, {
@@ -106,7 +113,13 @@ function Profiles() {
                 current={profile.id === current.id}
                 managing={managing}
                 disabled={switchProfile.isPending || (managing && !editable(profile))}
-                onPick={() => (managing ? setEditing({ profile }) : pick(profile))}
+                onPick={() =>
+                  profile.pinEnabled
+                    ? setUnlocking(profile)
+                    : managing
+                      ? setEditing({ profile })
+                      : pick(profile)
+                }
               />
             </li>
           ))}
@@ -170,6 +183,18 @@ function Profiles() {
         onClose={() => setEditing(undefined)}
       />
       <DeleteProfileDialog profile={removing} onClose={() => setRemoving(undefined)} />
+      <PinDialog
+        profile={unlocking}
+        open={unlocking !== undefined}
+        onClose={() => setUnlocking(undefined)}
+        onUnlocked={() => {
+          const p = unlocking;
+          if (!p) return;
+          setUnlocking(undefined);
+          if (managing) setEditing({ profile: p });
+          else switchProfile.mutate(p, { onSuccess: () => void navigate({ to: "/" }) });
+        }}
+      />
     </div>
   );
 }
@@ -190,7 +215,17 @@ function ProfileTile({
   onPick: () => void;
 }) {
   const noteId = useId();
-  const note = profile.guest ? "On this computer" : current ? "Last used" : undefined;
+  const note =
+    profile.pinEnabled && !current ? (
+      <span className="inline-flex items-center gap-1">
+        <Lock className="size-3" aria-hidden />
+        PIN
+      </span>
+    ) : profile.guest ? (
+      "On this computer"
+    ) : current ? (
+      "Last used"
+    ) : undefined;
   return (
     <button
       type="button"

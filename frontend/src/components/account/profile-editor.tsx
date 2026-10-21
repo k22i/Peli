@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Check, TriangleAlert } from "lucide-react";
+import { Check, Lock, TriangleAlert } from "lucide-react";
 import { useState } from "react";
 
 import type { ProfileEdit } from "@bindings/account";
 import type { Profile } from "@bindings/store";
+import { PinManagerDialog } from "@/components/account/pin-manager";
 import { initialsColor, ProfileAvatar } from "@/components/account/profile-avatar";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -63,6 +64,10 @@ export function ProfileEditor({
   const [shown, setShown] = useState(target);
   if (target && target !== shown) setShown(target);
   const [deleting, setDeleting] = useState<Profile>();
+  const [pinAction, setPinAction] = useState<{
+    profile: Profile;
+    mode: "set" | "change" | "clear";
+  }>();
 
   return (
     <>
@@ -76,6 +81,7 @@ export function ProfileEditor({
               deletable={deletable}
               onDone={onClose}
               onDelete={setDeleting}
+              onPinAction={setPinAction}
             />
           )}
         </DialogPopup>
@@ -88,6 +94,13 @@ export function ProfileEditor({
           onClose();
         }}
       />
+      <PinManagerDialog
+        profile={pinAction?.profile}
+        mode={pinAction?.mode ?? "set"}
+        open={pinAction !== undefined}
+        onClose={() => setPinAction(undefined)}
+        onDone={() => setPinAction(undefined)}
+      />
     </>
   );
 }
@@ -97,11 +110,13 @@ function EditorForm({
   deletable,
   onDone,
   onDelete,
+  onPinAction,
 }: {
   target: EditorTarget;
   deletable: boolean;
   onDone: () => void;
   onDelete: (profile: Profile) => void;
+  onPinAction: (action: { profile: Profile; mode: "set" | "change" | "clear" }) => void;
 }) {
   const profile = "profile" in target ? target.profile : undefined;
   const local = profile?.guest === true;
@@ -253,6 +268,51 @@ function EditorForm({
                 ))}
               </RadioGroup>
             </section>
+
+            {profile && (
+              <section className="flex flex-col gap-3" aria-labelledby="pin-heading">
+                <h3 id="pin-heading" className="flex items-center gap-2 text-sm font-medium">
+                  <Lock className="size-4" aria-hidden />
+                  PIN
+                </h3>
+                {profile.pinEnabled ? (
+                  <>
+                    <p className="text-sm text-muted-foreground">
+                      This profile needs its PIN to open.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => onPinAction({ profile, mode: "change" })}
+                      >
+                        Change PIN
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => onPinAction({ profile, mode: "clear" })}
+                      >
+                        Clear PIN
+                      </Button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm text-muted-foreground">No PIN set.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => onPinAction({ profile, mode: "set" })}
+                      >
+                        Set a PIN
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </section>
+            )}
 
             <p className="text-sm text-muted-foreground">
               {profile

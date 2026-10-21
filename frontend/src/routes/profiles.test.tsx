@@ -21,6 +21,13 @@ const backend = vi.hoisted(() => ({
   addons: new Map<number, Addon[]>(),
   switches: [] as number[],
   failSwitch: false,
+  unlocks: [] as [number, string][],
+  wrongPin: false,
+  pinRetry: 0,
+  // The profile's PIN changes (#25), as internal/account would push them.
+  pinSets: [] as [number, string, string][],
+  pinClears: [] as [number, string][],
+  wrongCurrentPin: false,
   // The code internal/account fails the next profile change with, if any.
   failChange: "",
   edits: [] as [number | "add", ProfileEdit][],
@@ -61,6 +68,37 @@ function failed() {
 vi.mock("@bindings/account", () => ({
   Service: {
     Status: async () => backend.status,
+    SwitchProfile: async (id: number) => {
+      if (backend.failSwitch) throw new Error("disk full");
+      backend.switches.push(id);
+      backend.current = id;
+      return backend.profiles.find((p) => p.id === id);
+    },
+    UnlockProfile: async (id: number, pin: string) => {
+      backend.unlocks.push([id, pin]);
+      if (backend.wrongPin)
+        throw new Error("wrong PIN", {
+          cause: { code: "wrong_pin", retryAfterSeconds: backend.pinRetry ?? 0 },
+        });
+    },
+    SetProfilePIN: async (id: number, pin: string, currentPin: string) => {
+      backend.pinSets.push([id, pin, currentPin]);
+      if (backend.wrongCurrentPin)
+        throw new Error("wrong current PIN", {
+          cause: { code: "wrong_pin", retryAfterSeconds: 0 },
+        });
+      const p = backend.profiles.find((x) => x.id === id);
+      if (p) p.pinEnabled = true;
+    },
+    ClearProfilePIN: async (id: number, currentPin: string) => {
+      backend.pinClears.push([id, currentPin]);
+      if (backend.wrongCurrentPin)
+        throw new Error("wrong current PIN", {
+          cause: { code: "wrong_pin", retryAfterSeconds: 0 },
+        });
+      const p = backend.profiles.find((x) => x.id === id);
+      if (p) p.pinEnabled = false;
+    },
     Avatars: async (): Promise<Avatar[]> => [
       { id: "otto", name: "Otto", image: avatarImage("otto"), color: "#0BB5AE" },
       { id: "pip", name: "Pip", image: avatarImage("pip"), color: "#45B5EE" },
@@ -108,6 +146,7 @@ const kevin: Profile = {
   avatarColor: "#0BB5AE",
 };
 const kids: Profile = { id: 3, name: "Kids Room", nuvioIndex: 3, avatarColor: "#7957BD" };
+const kidsPin: Profile = { id: 4, name: "Kids Room", nuvioIndex: 3, pinEnabled: true };
 const cinemeta: Addon = { url: "https://cinemeta/manifest.json", enabled: true };
 const anime: Addon = { url: "https://anime/manifest.json", enabled: true };
 
@@ -126,6 +165,12 @@ beforeEach(() => {
   backend.addons.clear();
   backend.switches = [];
   backend.failSwitch = false;
+  backend.unlocks = [];
+  backend.wrongPin = false;
+  backend.pinRetry = 0;
+  backend.pinSets = [];
+  backend.pinClears = [];
+  backend.wrongCurrentPin = false;
   backend.failChange = "";
   backend.edits = [];
 });
@@ -477,6 +522,260 @@ describe("switching from the profile menu", () => {
     await user.click(screen.getByRole("button", { name: "Profile: Guest" }));
     expect(await screen.findByRole("menuitem", { name: "Sign out" })).toBeVisible();
     expect(screen.queryByRole("menuitem", { name: "Sign in to Nuvio" })).toBeNull();
+  });
+});
+
+describe("PIN-locked profiles", () => {
+  it("picking a locked profile asks for the PIN, then unlocks and enters", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kids Room"));
+
+    expect(await screen.findByRole("dialog", { name: "Enter PIN" })).toBeVisible();
+
+    await user.click(screen.getByRole("button", { name: "1" }));
+    await user.click(screen.getByRole("button", { name: "2" }));
+    await user.click(screen.getByRole("button", { name: "3" }));
+    await user.click(screen.getByRole("button", { name: "4" }));
+
+    expect(backend.unlocks).toEqual([[kidsPin.id, "1234"]]);
+    expect(await screen.findByRole("button", { name: "Profile: Kids Room" })).toBeVisible();
+    expect(router.state.location.pathname).toBe("/");
+    // The gate must not come back after switching into the unlocked profile.
+    expect(await screen.findByRole("heading", { name: "Home" })).toBeVisible();
+    expect(screen.queryByText("This profile is locked")).toBeNull();
+  });
+
+  it("types the PIN with the keyboard", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Enter PIN" });
+
+    // A physical keyboard types into the field rather than the keypad.
+    await user.click(within(dialog).getByRole("textbox", { name: "PIN" }));
+    await user.keyboard("1234");
+
+    expect(backend.unlocks).toEqual([[kidsPin.id, "1234"]]);
+    expect(await screen.findByRole("button", { name: "Profile: Kids Room" })).toBeVisible();
+  });
+
+  it("a wrong PIN shows the retry message and stays", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    backend.wrongPin = true;
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Enter PIN" });
+
+    await user.click(within(dialog).getByRole("button", { name: "1" }));
+    await user.click(within(dialog).getByRole("button", { name: "2" }));
+    await user.click(within(dialog).getByRole("button", { name: "3" }));
+    await user.click(within(dialog).getByRole("button", { name: "4" }));
+
+    expect(await within(dialog).findByText(/Wrong PIN/)).toBeVisible();
+    expect(screen.getByRole("dialog", { name: "Enter PIN" })).toBeVisible();
+
+    backend.wrongPin = false;
+    await user.click(within(dialog).getByRole("button", { name: "1" }));
+    await user.click(within(dialog).getByRole("button", { name: "2" }));
+    await user.click(within(dialog).getByRole("button", { name: "3" }));
+    await user.click(within(dialog).getByRole("button", { name: "4" }));
+
+    expect(await screen.findByRole("button", { name: "Profile: Kids Room" })).toBeVisible();
+  });
+
+  it("shows a lock note for a locked profile", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    await renderApp("/profiles", { shell: false });
+    await picker();
+
+    expect(await tile("Kids Room")).toHaveAccessibleDescription("PIN");
+  });
+
+  it("editing a locked profile asks for the PIN first", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+    await user.click(await screen.findByRole("button", { name: "Manage profiles" }));
+    await screen.findByRole("heading", { level: 1, name: "Manage profiles" });
+
+    await user.click(await tile("Edit Kids Room"));
+
+    expect(await screen.findByRole("dialog", { name: "Enter PIN" })).toBeVisible();
+    expect(screen.queryByRole("dialog", { name: "Edit Kids Room" })).toBeNull();
+
+    await user.click(screen.getByRole("button", { name: "1" }));
+    await user.click(screen.getByRole("button", { name: "2" }));
+    await user.click(screen.getByRole("button", { name: "3" }));
+    await user.click(screen.getByRole("button", { name: "4" }));
+
+    expect(await screen.findByRole("dialog", { name: "Edit Kids Room" })).toBeVisible();
+  });
+
+  it("gates a locked current profile at launch", async () => {
+    signedIn(kidsPin, kidsPin);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/");
+
+    expect(await screen.findByText("This profile is locked")).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "Home" })).toBeNull();
+
+    await user.click(screen.getByRole("button", { name: "1" }));
+    await user.click(screen.getByRole("button", { name: "2" }));
+    await user.click(screen.getByRole("button", { name: "3" }));
+    await user.click(screen.getByRole("button", { name: "4" }));
+
+    expect(await screen.findByRole("heading", { name: "Home" })).toBeVisible();
+    expect(router.state.location.pathname).toBe("/");
+  });
+});
+
+describe("setting, changing and clearing a PIN", () => {
+  it("sets a PIN on an unlocked profile", async () => {
+    signedIn(kevin, kevin, kids);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    expect(within(dialog).getByText("No PIN set.")).toBeVisible();
+    await user.click(within(dialog).getByRole("button", { name: "Set a PIN" }));
+
+    const pinDialog = await screen.findByRole("dialog", { name: "Set a PIN" });
+    expect(within(pinDialog).getByText("Choose a PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "3" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "4" }));
+    expect(await within(pinDialog).findByText("Confirm the PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "3" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "4" }));
+
+    expect(await screen.findByText("PIN set")).toBeInTheDocument();
+    expect(backend.pinSets).toContainEqual([kids.id, "1234", ""]);
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "Set a PIN" })).toBeNull());
+    // The editor's PIN section now offers change and clear.
+    expect(within(dialog).getByRole("button", { name: "Change PIN" })).toBeVisible();
+    expect(within(dialog).getByRole("button", { name: "Clear PIN" })).toBeVisible();
+  });
+
+  it("sets a PIN typed with the keyboard", async () => {
+    signedIn(kevin, kevin, kids);
+    const user = userEvent.setup();
+    await manage();
+
+    await user.click(await tile("Edit Kids Room"));
+    const editor = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    await user.click(within(editor).getByRole("button", { name: "Set a PIN" }));
+
+    const pinDialog = await screen.findByRole("dialog", { name: "Set a PIN" });
+    await user.click(within(pinDialog).getByRole("textbox", { name: "PIN" }));
+    await user.keyboard("1234");
+    expect(await within(pinDialog).findByText("Confirm the PIN")).toBeVisible();
+    await user.keyboard("1234");
+
+    expect(await screen.findByText("PIN set")).toBeInTheDocument();
+    expect(backend.pinSets).toContainEqual([kids.id, "1234", ""]);
+  });
+
+  it("retries a change when the current PIN is wrong, then applies it", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+    await user.click(await screen.findByRole("button", { name: "Manage profiles" }));
+    await screen.findByRole("heading", { level: 1, name: "Manage profiles" });
+
+    // Locked: unlock first, then edit.
+    await user.click(await tile("Edit Kids Room"));
+    await screen.findByRole("dialog", { name: "Enter PIN" });
+    await user.click(screen.getByRole("button", { name: "1" }));
+    await user.click(screen.getByRole("button", { name: "2" }));
+    await user.click(screen.getByRole("button", { name: "3" }));
+    await user.click(screen.getByRole("button", { name: "4" }));
+
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    await user.click(within(dialog).getByRole("button", { name: "Change PIN" }));
+
+    const pinDialog = await screen.findByRole("dialog", { name: "Change PIN" });
+    backend.wrongCurrentPin = true;
+    // Wrong current PIN: collected now, refused only at the final submit.
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    expect(await within(pinDialog).findByText("Choose a PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    expect(await within(pinDialog).findByText("Confirm the PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    expect(await within(pinDialog).findByText("Wrong PIN. Try again.")).toBeVisible();
+    expect(screen.getByRole("dialog", { name: "Change PIN" })).toBeVisible();
+
+    // Back to the current step, cleared, for the right PIN.
+    backend.wrongCurrentPin = false;
+    expect(within(pinDialog).getByText("Enter the current PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "3" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "4" }));
+    expect(await within(pinDialog).findByText("Choose a PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "5" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "6" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "7" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "8" }));
+    expect(await within(pinDialog).findByText("Confirm the PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "5" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "6" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "7" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "8" }));
+
+    expect(await screen.findByText("PIN changed")).toBeInTheDocument();
+    expect(backend.pinSets).toContainEqual([kidsPin.id, "5678", "1234"]);
+  });
+
+  it("clears a PIN after asking for the current one", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+    await user.click(await screen.findByRole("button", { name: "Manage profiles" }));
+    await screen.findByRole("heading", { level: 1, name: "Manage profiles" });
+
+    await user.click(await tile("Edit Kids Room"));
+    await screen.findByRole("dialog", { name: "Enter PIN" });
+    await user.click(screen.getByRole("button", { name: "1" }));
+    await user.click(screen.getByRole("button", { name: "2" }));
+    await user.click(screen.getByRole("button", { name: "3" }));
+    await user.click(screen.getByRole("button", { name: "4" }));
+
+    const dialog = await screen.findByRole("dialog", { name: "Edit Kids Room" });
+    await user.click(within(dialog).getByRole("button", { name: "Clear PIN" }));
+
+    const pinDialog = await screen.findByRole("dialog", { name: "Clear PIN" });
+    expect(within(pinDialog).getByText("Enter the current PIN")).toBeVisible();
+    await user.click(within(pinDialog).getByRole("button", { name: "1" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "2" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "3" }));
+    await user.click(within(pinDialog).getByRole("button", { name: "4" }));
+
+    expect(await screen.findByText("PIN cleared")).toBeInTheDocument();
+    expect(backend.pinClears).toEqual([[kidsPin.id, "1234"]]);
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "Clear PIN" })).toBeNull());
+    // The PIN section flips back to offering a set.
+    expect(within(dialog).getByRole("button", { name: "Set a PIN" })).toBeVisible();
+    expect(within(dialog).queryByRole("button", { name: "Change PIN" })).toBeNull();
   });
 });
 

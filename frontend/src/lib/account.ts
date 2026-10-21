@@ -1,4 +1,10 @@
-import { queryOptions, useMutation, useQueryClient, type QueryClient } from "@tanstack/react-query";
+import {
+  queryOptions,
+  useMutation,
+  useQuery,
+  useQueryClient,
+  type QueryClient,
+} from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
 import { useEffect, useEffectEvent, useState } from "react";
@@ -131,14 +137,85 @@ export function useContinueAsGuest() {
   });
 }
 
+// Profiles unlocked with their PIN this run (#25). Go owns enforcement; the
+// frontend asks for the PIN, unlocks in memory, and a restart asks again.
+// Not persisted: lib/query.ts only saves queries with meta.persist. Keyed
+// outside the ["profiles"] prefix so profileChanged's invalidateQueries
+// ({ queryKey: ["profiles"] }) doesn't reset it on switch.
+const unlockedProfilesKey = ["profiles-unlocked"];
+
+export function useUnlockedProfiles(): number[] {
+  return useQuery({
+    queryKey: unlockedProfilesKey,
+    queryFn: () => [] as number[],
+    initialData: [] as number[],
+    staleTime: Number.POSITIVE_INFINITY,
+    gcTime: Number.POSITIVE_INFINITY,
+  }).data;
+}
+
+// Sends a profile's PIN to Go, which answers with the retry cooldown on a
+// wrong PIN. On success the profile stays unlocked for the rest of the run.
+export function useUnlockProfile() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profileId, pin }: { profileId: number; pin: string }) =>
+      Account.UnlockProfile(profileId, pin),
+    onSuccess: (_, { profileId }) => {
+      queryClient.setQueryData<number[]>(unlockedProfilesKey, (ids) =>
+        ids?.includes(profileId) ? ids : [...(ids ?? []), profileId],
+      );
+    },
+  });
+}
+
+// Sets or changes a profile's PIN (#25). Go owns the format and enforcement;
+// the frontend asks for the new PIN (and the current one when there is one).
+// On success the profile is unlocked for the rest of the run, and the profile
+// list refreshes so lock badges and the launch gate update.
+export function useSetProfilePIN() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      profileId,
+      pin,
+      currentPin,
+    }: {
+      profileId: number;
+      pin: string;
+      currentPin: string;
+    }) => Account.SetProfilePIN(profileId, pin, currentPin),
+    onSuccess: async (_, { profileId }) => {
+      queryClient.setQueryData<number[]>(unlockedProfilesKey, (ids) =>
+        ids?.includes(profileId) ? ids : [...(ids ?? []), profileId],
+      );
+      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+    },
+  });
+}
+
+// Clears a profile's PIN (#25), after the current one. The profile list
+// refreshes so the lock badge and the launch gate update.
+export function useClearProfilePIN() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profileId, currentPin }: { profileId: number; currentPin: string }) =>
+      Account.ClearProfilePIN(profileId, currentPin),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+    },
+  });
+}
+
 // Makes another profile current, from the picker or the profile menu (#24).
-// Go remembers it across launches. Everything a profile owns is queried by
-// its ID, so Home, Library and settings follow without a restart.
+// Go remembers it across launches and enforces the profile's PIN lock (#25).
+// Everything a profile owns is queried by its ID, so Home, Library and
+// settings follow without a restart.
 export function useSwitchProfile() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (profile: Profile) => {
-      await Store.SetCurrentProfile(profile.id);
+      await Account.SwitchProfile(profile.id);
       return profile;
     },
     onSuccess: async (profile) => {
@@ -215,6 +292,9 @@ const profileErrorCodes = [
   "primary_profile",
   "last_profile",
   "invalid_profile",
+  "profile_locked",
+  "wrong_pin",
+  "invalid_pin",
 ] as const;
 
 // What to tell the user when changing a profile fails.
@@ -260,9 +340,35 @@ export function profileProblem(error: Error): { title: string; description: stri
         title: "The last profile can’t be deleted",
         description: "A Nuvio account always has a profile.",
       };
+    case "profile_locked":
+      return {
+        title: "This profile is locked",
+        description: "Enter the PIN to use it.",
+      };
+    case "wrong_pin":
+      return {
+        title: "Wrong PIN",
+        description: "That PIN doesn’t match. Try again.",
+      };
+    case "invalid_pin":
+      return {
+        title: "PIN must be 4 digits",
+        description: "Use exactly four digits (0–9).",
+      };
     default:
       return { title: "Couldn’t save the profile", description: error.message };
   }
+}
+
+// The cooldown, in seconds, Go asks for after too many wrong PINs (#25).
+// Zero otherwise, and zero when the error isn't a wrong PIN.
+export function pinRetryAfterSeconds(error: unknown): number {
+  if (!(error instanceof Error)) return 0;
+  const cause: unknown = error.cause;
+  if (typeof cause !== "object" || cause === null || !("code" in cause)) return 0;
+  if (cause.code !== "wrong_pin") return 0;
+  if (!("retryAfterSeconds" in cause)) return 0;
+  return typeof cause.retryAfterSeconds === "number" ? cause.retryAfterSeconds : 0;
 }
 
 // More than one profile on this device: the picker asks who's watching at

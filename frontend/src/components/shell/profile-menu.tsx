@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
 import { useState } from "react";
 
+import { PinDialog } from "@/components/account/pin-dialog";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import {
@@ -25,6 +26,7 @@ import { toastManager } from "@/components/ui/toast";
 import { profilesQuery, useSwitchProfile } from "@/lib/account";
 import { currentPlatform } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
+import type { Profile } from "@bindings/store";
 
 // Everything that isn't a top-level section: profiles, addons, settings.
 export function ProfileMenu() {
@@ -94,10 +96,16 @@ export function ProfileMenu() {
 function SwitchProfileMenu({ currentId }: { currentId: number | undefined }) {
   const profiles = useQuery(profilesQuery);
   const switchProfile = useSwitchProfile();
+  const [unlocking, setUnlocking] = useState<Profile>();
 
   const pick = (id: unknown) => {
     const profile = profiles.data?.find((p) => p.id === id);
     if (!profile || profile.id === currentId) return;
+    // A locked profile asks for its PIN before switching (#25).
+    if (profile.pinEnabled) {
+      setUnlocking(profile);
+      return;
+    }
     switchProfile.mutate(profile, {
       onError: () => {
         toastManager.add({ type: "error", title: `Couldn’t switch to ${profile.name}` });
@@ -106,28 +114,45 @@ function SwitchProfileMenu({ currentId }: { currentId: number | undefined }) {
   };
 
   return (
-    <MenuSub>
-      <MenuSubTrigger>
-        <Users />
-        Switch profile
-      </MenuSubTrigger>
-      <MenuSubPopup className="w-56">
-        <MenuRadioGroup value={currentId ?? null} onValueChange={pick}>
-          {profiles.data?.map((p) => (
-            <MenuRadioItem key={p.id} value={p.id}>
-              <span className="flex min-w-0 items-center gap-2">
-                <ProfileAvatar profile={p} className="size-5 text-[0.5625rem]" />
-                <span className="truncate">{p.name}</span>
-              </span>
-            </MenuRadioItem>
-          ))}
-        </MenuRadioGroup>
-        <MenuSeparator />
-        <MenuLinkItem render={<Link to="/profiles" search={{ manage: true }} />}>
-          <UserCog />
-          Manage profiles
-        </MenuLinkItem>
-      </MenuSubPopup>
-    </MenuSub>
+    <>
+      <MenuSub>
+        <MenuSubTrigger>
+          <Users />
+          Switch profile
+        </MenuSubTrigger>
+        <MenuSubPopup className="w-56">
+          <MenuRadioGroup value={currentId ?? null} onValueChange={pick}>
+            {profiles.data?.map((p) => (
+              <MenuRadioItem key={p.id} value={p.id}>
+                <span className="flex min-w-0 items-center gap-2">
+                  <ProfileAvatar profile={p} className="size-5 text-[0.5625rem]" />
+                  <span className="truncate">{p.name}</span>
+                </span>
+              </MenuRadioItem>
+            ))}
+          </MenuRadioGroup>
+          <MenuSeparator />
+          <MenuLinkItem render={<Link to="/profiles" search={{ manage: true }} />}>
+            <UserCog />
+            Manage profiles
+          </MenuLinkItem>
+        </MenuSubPopup>
+      </MenuSub>
+      <PinDialog
+        profile={unlocking}
+        open={unlocking !== undefined}
+        onClose={() => setUnlocking(undefined)}
+        onUnlocked={() => {
+          const p = unlocking;
+          if (!p) return;
+          setUnlocking(undefined);
+          switchProfile.mutate(p, {
+            onError: () => {
+              toastManager.add({ type: "error", title: "Couldn’t switch to " + p.name });
+            },
+          });
+        }}
+      />
+    </>
   );
 }
