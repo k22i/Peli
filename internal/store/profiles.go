@@ -33,6 +33,11 @@ type Profile struct {
 	PinEnabled bool `json:"pinEnabled,omitempty"`
 	// When the PIN is locked out until after too many wrong tries, or nil.
 	PinLockedUntil *time.Time `json:"pinLockedUntil,omitempty"`
+	// A kids profile sees only the addons and catalogs its KidsScope allows,
+	// and leaving it asks for its PIN (#26). Nuvio has no such flag, so it is
+	// kept on this device, and syncing a profile from Nuvio leaves it as it
+	// is.
+	Kids bool `json:"kids,omitempty"`
 }
 
 var (
@@ -101,6 +106,26 @@ func (s *Store) CurrentProfile() (Profile, error) {
 		return Profile{}, err
 	}
 	return current, nil
+}
+
+// ProfileInUse is CurrentProfile without creating a Guest profile: ok is
+// false when there are no profiles at all.
+func (s *Store) ProfileInUse() (current Profile, ok bool, err error) {
+	err = s.db.View(func(tx *bolt.Tx) error {
+		if id := tx.Bucket(bucketSettings).Get(keyCurrent); id != nil {
+			if p := tx.Bucket(bucketProfiles).Bucket(id); p != nil {
+				ok = true
+				return json.Unmarshal(p.Get(keyProfile), &current)
+			}
+		}
+		profiles, err := allProfiles(tx)
+		if err != nil || len(profiles) == 0 {
+			return err
+		}
+		current, ok = profiles[0], true
+		return nil
+	})
+	return current, ok, err
 }
 
 // SwitchToGuest makes the Guest profile the one in use, creating it if there
@@ -185,6 +210,7 @@ func (s *Store) LinkNuvioProfiles(account string, nuvio []Profile) ([]Profile, e
 				continue
 			}
 			profile.ID = existing[linked].ID
+			profile.Kids = existing[linked].Kids
 			if err := validateProfile(tx, profile, profile.ID); err != nil {
 				return err
 			}
@@ -262,7 +288,8 @@ func createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
 	return profile, put(p, keyProfile, profile)
 }
 
-// UpdateProfile saves a profile's name, avatar and Nuvio link.
+// UpdateProfile saves a profile's name, avatar, PIN lock and Nuvio link. It
+// leaves Kids as it is: SetKids changes that.
 func (s *Store) UpdateProfile(profile Profile) error {
 	return s.db.Update(func(tx *bolt.Tx) error {
 		p, err := profileBucket(tx, profile.ID)
@@ -272,6 +299,29 @@ func (s *Store) UpdateProfile(profile Profile) error {
 		if err := validateProfile(tx, profile, profile.ID); err != nil {
 			return err
 		}
+		var stored Profile
+		if err := json.Unmarshal(p.Get(keyProfile), &stored); err != nil {
+			return err
+		}
+		profile.Kids = stored.Kids
+		return put(p, keyProfile, profile)
+	})
+}
+
+// SetKids marks profile id as a kids profile, or not (#26). Marking a profile
+// starts it with no addons allowed, until SetKidsScope names some. Only a
+// profile linked to Nuvio can be one: it has a PIN to leave it with, and the
+// Guest has none.
+func (s *Store) SetKids(id uint64, kids bool) error {
+	return s.update(id, func(p *bolt.Bucket) error {
+		var profile Profile
+		if err := json.Unmarshal(p.Get(keyProfile), &profile); err != nil {
+			return err
+		}
+		if kids && (profile.NuvioIndex == nil || !profile.PinEnabled) {
+			return fmt.Errorf("%w: %s needs a Nuvio profile with a PIN to be a kids profile", ErrInvalidProfile, profile.Name)
+		}
+		profile.Kids = kids
 		return put(p, keyProfile, profile)
 	})
 }

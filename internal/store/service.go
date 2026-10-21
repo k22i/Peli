@@ -63,12 +63,35 @@ func (s *Service) CurrentProfile() (Profile, error) { return s.store.CurrentProf
 
 // SwitchToGuest makes the Guest profile the one in use, creating it if there
 // is none, and returns it.
-func (s *Service) SwitchToGuest() (Profile, error) { return s.store.SwitchToGuest() }
+// It refuses while a kids profile is in use (#26): leaving one goes through
+// the account service, which asks for the parent PIN.
+func (s *Service) SwitchToGuest() (Profile, error) {
+	if err := s.notKids(); err != nil {
+		return Profile{}, err
+	}
+	return s.store.SwitchToGuest()
+}
 
 // SetCurrentProfile makes a profile the one in use, from the picker (#24).
-// It is remembered across launches.
+// It is remembered across launches. Like SwitchToGuest, it refuses while a
+// kids profile is in use.
 func (s *Service) SetCurrentProfile(profileID uint64) error {
+	if err := s.notKids(); err != nil {
+		return err
+	}
 	return s.store.SetCurrentProfile(profileID)
+}
+
+// notKids returns ErrKidsProfile if the profile in use is a kids profile.
+func (s *Service) notKids() error {
+	kids, err := s.store.currentIsKids()
+	if err != nil {
+		return err
+	}
+	if kids {
+		return ErrKidsProfile
+	}
+	return nil
 }
 
 // CreateProfile adds a profile and returns it with its new ID.
@@ -141,6 +164,23 @@ func (s *Service) UnmarkWatched(profileID uint64, contentID string, season, epis
 
 // Addons returns a profile's addons in order.
 func (s *Service) Addons(profileID uint64) ([]Addon, error) { return s.store.Addons(profileID) }
+
+// VisibleAddons returns the enabled addons a profile may browse and search:
+// all of them, or a kids profile's allowed ones (#26).
+func (s *Service) VisibleAddons(profileID uint64) ([]Addon, error) {
+	return s.store.VisibleAddons(profileID)
+}
+
+// CatalogVisible reports whether a profile may browse an addon's catalog
+// (#26).
+func (s *Service) CatalogVisible(profileID uint64, addon, contentType, catalog string) (bool, error) {
+	return s.store.CatalogVisible(profileID, addon, contentType, catalog)
+}
+
+// KidsScope returns what a kids profile may see (#26).
+func (s *Service) KidsScope(profileID uint64) (KidsScope, error) {
+	return s.store.KidsScope(profileID)
+}
 
 // SetAddons replaces a profile's addons, in order.
 func (s *Service) SetAddons(profileID uint64, addons []Addon) error {
