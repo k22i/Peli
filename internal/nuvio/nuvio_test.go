@@ -168,6 +168,165 @@ func TestProfilesAndSignOut(t *testing.T) {
 	}
 }
 
+func TestProfileLocks(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	locks, err := c.ProfileLocks(t.Context(), s)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(locks) != 2 {
+		t.Fatalf("locks = %+v", locks)
+	}
+	if locks[0].Index != 1 || locks[0].PinEnabled || locks[0].PinLockedUntil != nil {
+		t.Fatalf("locks[0] = %+v", locks[0])
+	}
+	if locks[1].Index != 3 || !locks[1].PinEnabled || locks[1].PinLockedUntil != nil {
+		t.Fatalf("locks[1] = %+v", locks[1])
+	}
+}
+
+func TestVerifyProfilePIN(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+	b.SetProfilePIN(t, "me@example.com", 3, "1234")
+
+	got, err := c.VerifyProfilePIN(t.Context(), s, 3, "1234")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !got.Unlocked || got.RetryAfterSeconds != 0 {
+		t.Fatalf("correct PIN = %+v", got)
+	}
+	got, err = c.VerifyProfilePIN(t.Context(), s, 3, "wrong")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.Unlocked || got.RetryAfterSeconds != 0 {
+		t.Fatalf("wrong PIN = %+v", got)
+	}
+	b.PinRetryAfter.Store(30)
+	got, err = c.VerifyProfilePIN(t.Context(), s, 3, "wrong")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.Unlocked || got.RetryAfterSeconds != 30 {
+		t.Fatalf("wrong PIN with retry = %+v", got)
+	}
+}
+
+// verify_profile_pin returns a table, so PostgREST answers with an array of
+// rows. The client reads the first one rather than failing to unmarshal it.
+func TestVerifyProfilePINReadsARow(t *testing.T) {
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/.well-known/nuvio" {
+			w.Write([]byte(`{"service":"nuvio","publishable_key":"k"}`))
+			return
+		}
+		w.Write([]byte(`[{"unlocked":true,"retry_after_seconds":7}]`))
+	}))
+	defer s.Close()
+
+	got, err := newTestClient(s.URL).VerifyProfilePIN(t.Context(), Session{AccessToken: "token"}, 2, "1234")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !got.Unlocked || got.RetryAfterSeconds != 7 {
+		t.Fatalf("verify = %+v", got)
+	}
+}
+
+func TestSetProfilePIN(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// A first PIN, on a profile that has none.
+	if err := c.SetProfilePIN(t.Context(), s, 1, "1234", ""); err != nil {
+		t.Fatal(err)
+	}
+	body := b.Body("/rest/v1/rpc/set_profile_pin")
+	if body["p_profile_id"] != float64(1) || body["p_pin"] != "1234" {
+		t.Fatalf("body = %v", body)
+	}
+	if _, ok := body["p_current_pin"]; ok {
+		t.Fatalf("body carries a current PIN on a first set: %v", body)
+	}
+	if got, err := c.VerifyProfilePIN(t.Context(), s, 1, "1234"); err != nil || !got.Unlocked {
+		t.Fatalf("verify after set = %+v, %v", got, err)
+	}
+
+	// Change it with the correct current PIN.
+	if err := c.SetProfilePIN(t.Context(), s, 1, "5678", "1234"); err != nil {
+		t.Fatal(err)
+	}
+	if body := b.Body("/rest/v1/rpc/set_profile_pin"); body["p_current_pin"] != "1234" || body["p_pin"] != "5678" {
+		t.Fatalf("change body = %v", body)
+	}
+	if got, err := c.VerifyProfilePIN(t.Context(), s, 1, "5678"); err != nil || !got.Unlocked {
+		t.Fatalf("verify after change = %+v, %v", got, err)
+	}
+
+	// A wrong current PIN is refused.
+	var apiErr *APIError
+	err = c.SetProfilePIN(t.Context(), s, 1, "0000", "wrong")
+	if !errors.As(err, &apiErr) || !strings.Contains(apiErr.Message, "Current PIN is required to change PIN") {
+		t.Fatalf("err = %v, want the current-PIN error", err)
+	}
+
+	// A non-4-digit PIN is refused.
+	err = c.SetProfilePIN(t.Context(), s, 1, "12", "5678")
+	if !errors.As(err, &apiErr) || !strings.Contains(apiErr.Message, "PIN must be exactly 4 digits") {
+		t.Fatalf("err = %v, want the PIN-format error", err)
+	}
+}
+
+func TestClearProfilePIN(t *testing.T) {
+	b := nuviotest.NewServer(t)
+	c := newTestClient(b.URL)
+	s, err := c.SignInWithPassword(t.Context(), "me@example.com", nuviotest.Password)
+	if err != nil {
+		t.Fatal(err)
+	}
+	b.SetProfilePIN(t, "me@example.com", 3, "1234")
+
+	// A wrong current PIN is refused.
+	var apiErr *APIError
+	err = c.ClearProfilePIN(t.Context(), s, 3, "wrong")
+	if !errors.As(err, &apiErr) || !strings.Contains(apiErr.Message, "Current PIN is required to remove PIN") {
+		t.Fatalf("err = %v, want the current-PIN error", err)
+	}
+
+	// The right current PIN clears it.
+	if err := c.ClearProfilePIN(t.Context(), s, 3, "1234"); err != nil {
+		t.Fatal(err)
+	}
+	if body := b.Body("/rest/v1/rpc/clear_profile_pin"); body["p_profile_id"] != float64(3) || body["p_current_pin"] != "1234" {
+		t.Fatalf("body = %v", body)
+	}
+	locks, err := c.ProfileLocks(t.Context(), s)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, lock := range locks {
+		if lock.Index == 3 && lock.PinEnabled {
+			t.Fatalf("profile 3 still PIN-enabled: %+v", locks)
+		}
+	}
+}
+
 func TestPatchProfile(t *testing.T) {
 	b := nuviotest.NewServer(t)
 	c := newTestClient(b.URL)

@@ -312,9 +312,10 @@ type Profile struct {
 	AvatarID    *string `json:"avatar_id"`
 	AvatarURL   *string `json:"avatar_url"`
 	// Secondary profiles can use the primary profile's addons and plugins.
-	UsesPrimaryAddons  bool `json:"uses_primary_addons"`
-	UsesPrimaryPlugins bool `json:"uses_primary_plugins"`
-	PinEnabled         bool `json:"pin_enabled"`
+	UsesPrimaryAddons  bool       `json:"uses_primary_addons"`
+	UsesPrimaryPlugins bool       `json:"uses_primary_plugins"`
+	PinEnabled         bool       `json:"pin_enabled"`
+	PinLockedUntil     *time.Time `json:"pin_locked_until"`
 }
 
 // MaxProfiles is how many profiles a Nuvio account can have.
@@ -326,6 +327,63 @@ func (c *Client) Profiles(ctx context.Context, s Session) ([]Profile, error) {
 	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_profiles", s.AccessToken,
 		map[string]any{}, &profiles)
 	return profiles, err
+}
+
+// ProfileLock is one profile's PIN lock, as the sync module pulls it (#25).
+type ProfileLock struct {
+	Index          int        `json:"profile_index"`
+	PinEnabled     bool       `json:"pin_enabled"`
+	PinLockedUntil *time.Time `json:"pin_locked_until"`
+}
+
+// ProfileLocks returns the account's profile PIN locks.
+func (c *Client) ProfileLocks(ctx context.Context, s Session) ([]ProfileLock, error) {
+	locks := []ProfileLock{}
+	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_profile_locks", s.AccessToken,
+		map[string]any{}, &locks)
+	return locks, err
+}
+
+// VerifyProfilePINResult is the answer to a profile PIN check (#25).
+type VerifyProfilePINResult struct {
+	Unlocked          bool `json:"unlocked"`
+	RetryAfterSeconds int  `json:"retry_after_seconds"`
+}
+
+// VerifyProfilePIN checks a profile's PIN. verify_profile_pin returns a table,
+// so PostgREST answers with an array of rows: empty means "no PIN", otherwise
+// the first row is the answer.
+func (c *Client) VerifyProfilePIN(ctx context.Context, s Session, index int, pin string) (VerifyProfilePINResult, error) {
+	var rows []VerifyProfilePINResult
+	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/verify_profile_pin", s.AccessToken,
+		map[string]any{"p_profile_id": index, "p_pin": pin}, &rows)
+	if err != nil {
+		return VerifyProfilePINResult{}, err
+	}
+	if len(rows) == 0 {
+		return VerifyProfilePINResult{}, nil
+	}
+	return rows[0], nil
+}
+
+// SetProfilePIN sets or changes a profile's PIN (#25). currentPin is the
+// profile's existing PIN when it has one; it is sent only when non-empty.
+func (c *Client) SetProfilePIN(ctx context.Context, s Session, index int, pin, currentPin string) error {
+	in := map[string]any{"p_profile_id": index, "p_pin": pin}
+	if currentPin != "" {
+		in["p_current_pin"] = currentPin
+	}
+	return c.call(ctx, http.MethodPost, "/rest/v1/rpc/set_profile_pin", s.AccessToken, in, nil)
+}
+
+// ClearProfilePIN removes a profile's PIN (#25). currentPin is the profile's
+// existing PIN, required to remove it; it is sent only when non-empty.
+func (c *Client) ClearProfilePIN(ctx context.Context, s Session, index int, currentPin string) error {
+	in := map[string]any{"p_profile_id": index}
+	if currentPin != "" {
+		in["p_current_pin"] = currentPin
+	}
+	return c.call(ctx, http.MethodPost, "/rest/v1/rpc/clear_profile_pin", s.AccessToken, in, nil)
 }
 
 // ProfilePatch is a change to one profile: nil fields are kept.

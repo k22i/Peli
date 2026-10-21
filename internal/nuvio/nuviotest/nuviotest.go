@@ -43,9 +43,12 @@ type Server struct {
 	Lifetime atomic.Int64
 	// Answers 503 to this many device login polls before answering.
 	FailPolls atomic.Int32
+	// retry_after_seconds returned for a wrong profile PIN (#25).
+	PinRetryAfter atomic.Int64
 
 	mu       sync.Mutex
 	profiles map[string][]map[string]any // by user, sorted by index
+	pins     map[string]map[int]string   // by user id, then profile index
 	calls    []string
 	bodies   map[string]map[string]any
 	agents   []string
@@ -81,6 +84,7 @@ func NewServer(t testing.TB) *Server {
 		sessions: map[string]*session{},
 		access:   map[string]*session{},
 		profiles: map[string][]map[string]any{},
+		pins:     map[string]map[int]string{},
 		logins:   map[string]*deviceLogin{},
 	}
 	s.Server = httptest.NewServer(http.HandlerFunc(s.serve))
@@ -141,6 +145,18 @@ func (s *Server) SetProfiles(t testing.TB, email, profiles string) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.profiles[UserID(email)] = list
+}
+
+// SetProfilePIN sets the PIN for the account's profile at index (#25).
+func (s *Server) SetProfilePIN(t testing.TB, email string, index int, pin string) {
+	t.Helper()
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	user := UserID(email)
+	if s.pins[user] == nil {
+		s.pins[user] = map[int]string{}
+	}
+	s.pins[user][index] = pin
 }
 
 // profilesOf returns user's profiles, starting them if it has none yet.
@@ -305,6 +321,42 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		json.NewEncoder(w).Encode(s.profilesOf(bearer.user))
+	case "/rest/v1/rpc/sync_pull_profile_locks":
+		if bearer == nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			w.Write([]byte(`{"code":"42501","message":"permission denied for function sync_pull_profile_locks"}`))
+			return
+		}
+		locks := make([]map[string]any, 0, len(s.profilesOf(bearer.user)))
+		for _, p := range s.profilesOf(bearer.user) {
+			locks = append(locks, map[string]any{
+				"profile_index":    p["profile_index"],
+				"pin_enabled":      p["pin_enabled"],
+				"pin_locked_until": p["pin_locked_until"],
+			})
+		}
+		json.NewEncoder(w).Encode(locks)
+	case "/rest/v1/rpc/verify_profile_pin":
+		if bearer == nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			w.Write([]byte(`{"code":"42501","message":"permission denied for function verify_profile_pin"}`))
+			return
+		}
+		i, _ := body["p_profile_id"].(float64)
+		pin, _ := body["p_pin"].(string)
+		// verify_profile_pin returns a table, so PostgREST answers with rows.
+		if s.pins[bearer.user][int(i)] == pin {
+			json.NewEncoder(w).Encode([]map[string]any{{"unlocked": true, "retry_after_seconds": 0}})
+			return
+		}
+		json.NewEncoder(w).Encode([]map[string]any{{"unlocked": false, "retry_after_seconds": s.PinRetryAfter.Load()}})
+	case "/rest/v1/rpc/set_profile_pin", "/rest/v1/rpc/clear_profile_pin":
+		if bearer == nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			w.Write([]byte(`{"code":"42501","message":"permission denied for function"}`))
+			return
+		}
+		s.pinWrite(w, r.URL.Path, bearer.user, body)
 	case "/rest/v1/rpc/sync_patch_profile", "/rest/v1/rpc/sync_push_profiles", "/rest/v1/rpc/sync_delete_profile_data":
 		if bearer == nil {
 			w.WriteHeader(http.StatusUnauthorized)
@@ -488,6 +540,82 @@ func (s *Server) editProfiles(w http.ResponseWriter, path, user string, body map
 	case "/rest/v1/rpc/sync_delete_profile_data":
 		i := index(body["p_profile_id"])
 		s.profiles[user] = slices.DeleteFunc(list, func(p map[string]any) bool { return index(p["profile_index"]) == i })
+		w.WriteHeader(http.StatusNoContent)
+	}
+}
+
+// fourDigits reports whether pin is exactly four digits (0–9), the format
+// Nuvio enforces (#25).
+func fourDigits(pin string) bool {
+	if len(pin) != 4 {
+		return false
+	}
+	for _, r := range pin {
+		if r < '0' || r > '9' {
+			return false
+		}
+	}
+	return true
+}
+
+// pinWrite answers set_profile_pin and clear_profile_pin as the self-host
+// stack does (#25): p_current_pin is required to change or remove a PIN the
+// profile already has. s.mu is held.
+func (s *Server) pinWrite(w http.ResponseWriter, path, user string, body map[string]any) {
+	index := func(v any) int { f, _ := v.(float64); return int(f) }
+	i := index(body["p_profile_id"])
+	if i < 1 || i > 6 {
+		postgrestError(w, http.StatusBadRequest, "P0001", "Invalid profile id")
+		return
+	}
+	str := func(k string) string { v, _ := body[k].(string); return v }
+	pin, current := str("p_pin"), str("p_current_pin")
+
+	// The profile has a PIN when one is stored or its map says it is enabled.
+	stored := s.pins[user][i]
+	hasPIN := stored != ""
+	if !hasPIN {
+		for _, p := range s.profilesOf(user) {
+			if index(p["profile_index"]) == i && p["pin_enabled"] == true {
+				hasPIN = true
+				break
+			}
+		}
+	}
+
+	switch path {
+	case "/rest/v1/rpc/set_profile_pin":
+		if !fourDigits(pin) {
+			postgrestError(w, http.StatusBadRequest, "P0001", "PIN must be exactly 4 digits")
+			return
+		}
+		if hasPIN && current != stored {
+			postgrestError(w, http.StatusBadRequest, "P0001", "Current PIN is required to change PIN")
+			return
+		}
+		if s.pins[user] == nil {
+			s.pins[user] = map[int]string{}
+		}
+		s.pins[user][i] = pin
+		for _, p := range s.profilesOf(user) {
+			if index(p["profile_index"]) == i {
+				p["pin_enabled"] = true
+				p["pin_locked_until"] = nil
+			}
+		}
+		w.WriteHeader(http.StatusNoContent)
+	case "/rest/v1/rpc/clear_profile_pin":
+		if hasPIN && current != stored {
+			postgrestError(w, http.StatusBadRequest, "P0001", "Current PIN is required to remove PIN")
+			return
+		}
+		delete(s.pins[user], i)
+		for _, p := range s.profilesOf(user) {
+			if index(p["profile_index"]) == i {
+				p["pin_enabled"] = false
+				p["pin_locked_until"] = nil
+			}
+		}
 		w.WriteHeader(http.StatusNoContent)
 	}
 }
