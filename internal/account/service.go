@@ -9,6 +9,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/url"
 	"strings"
 	"sync"
@@ -53,6 +54,9 @@ type Service struct {
 
 	// One sign-in or sign-out at a time.
 	mu sync.Mutex
+	// Profiles unlocked this session (their PIN was entered correctly), by
+	// profile ID (#25).
+	unlocked map[uint64]bool
 	// Stops the refresh loop.
 	stop context.CancelFunc
 
@@ -70,7 +74,8 @@ type Service struct {
 func NewService(client *nuvio.Client, keychain Keychain, store *store.Service) *Service {
 	return &Service{
 		nuvio: client, session: newSession(client, keychain), store: store,
-		linkURL: nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
+		unlocked: map[uint64]bool{},
+		linkURL:  nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
 	}
 }
 
@@ -179,6 +184,18 @@ func (s *Service) link(ctx context.Context, session nuvio.Session, avatars <-cha
 	for i, p := range remote {
 		profiles[i] = fromNuvio(p, images)
 	}
+	// The locks are the authoritative PIN state; the profiles pull carries
+	// the same fields, so an error here is ignored.
+	if locks, err := s.nuvio.ProfileLocks(ctx, session); err == nil {
+		for i := range profiles {
+			for _, lock := range locks {
+				if profiles[i].NuvioIndex != nil && *profiles[i].NuvioIndex == lock.Index {
+					profiles[i].PinEnabled = lock.PinEnabled
+					profiles[i].PinLockedUntil = lock.PinLockedUntil
+				}
+			}
+		}
+	}
 	var linked []store.Profile
 	err = s.session.start(session, func() error {
 		// Another account's profiles, left after its session ended, are
@@ -242,6 +259,22 @@ func (s *Service) SignOut(ctx context.Context) error {
 	})
 }
 
+// ErrProfileLocked means the profile needs its PIN before it can be used
+// (#25).
+var ErrProfileLocked = errors.New("account: profile is PIN-locked")
+
+// ErrWrongPIN means the PIN entered for a profile was wrong. RetryAfter is
+// how many seconds to wait before trying again.
+type ErrWrongPIN struct{ RetryAfter int }
+
+func (e *ErrWrongPIN) Error() string {
+	return fmt.Sprintf("account: wrong PIN, retry in %d seconds", e.RetryAfter)
+}
+
+// ErrPINFormat means the PIN isn't exactly four digits (0–9), the format
+// Nuvio enforces (#25).
+var ErrPINFormat = errors.New("account: PIN must be exactly 4 digits")
+
 // Error codes the frontend reads from a failed call's cause.code.
 const (
 	CodeInvalidCredentials  = "invalid_credentials"
@@ -258,11 +291,20 @@ const (
 	CodePrimaryProfile  = "primary_profile"
 	CodeLastProfile     = "last_profile"
 	CodeInvalidProfile  = "invalid_profile"
+	// PIN-locked profiles (#25).
+	CodeProfileLocked = "profile_locked"
+	CodeWrongPIN      = "wrong_pin"
+	CodeInvalidPIN    = "invalid_pin"
 )
 
 // MarshalError gives the frontend a code for the errors it explains; Wails
 // puts it in the rejected call's cause. Other errors keep Wails' default.
 func MarshalError(err error) []byte {
+	var wrongPIN *ErrWrongPIN
+	if errors.As(err, &wrongPIN) {
+		data, _ := json.Marshal(map[string]any{"code": CodeWrongPIN, "retryAfterSeconds": wrongPIN.RetryAfter})
+		return data
+	}
 	var code string
 	switch {
 	case errors.Is(err, nuvio.ErrInvalidCredentials):
@@ -289,9 +331,43 @@ func MarshalError(err error) []byte {
 		code = CodeLastProfile
 	case errors.Is(err, store.ErrInvalidProfile):
 		code = CodeInvalidProfile
+	case errors.Is(err, ErrProfileLocked):
+		code = CodeProfileLocked
+	case errors.Is(err, ErrPINFormat):
+		code = CodeInvalidPIN
 	default:
 		return nil
 	}
 	data, _ := json.Marshal(map[string]string{"code": code})
 	return data
+}
+
+// fourDigits reports whether pin is exactly four digits (0–9), the format
+// Nuvio enforces (#25).
+func fourDigits(pin string) bool {
+	if len(pin) != 4 {
+		return false
+	}
+	for _, r := range pin {
+		if r < '0' || r > '9' {
+			return false
+		}
+	}
+	return true
+}
+
+// currentPINRequired reports whether err is Nuvio refusing a PIN change or
+// removal because the current PIN is missing or wrong (#25).
+func currentPINRequired(err error) bool {
+	var apiErr *nuvio.APIError
+	return errors.As(err, &apiErr) && apiErr.Code == "P0001" &&
+		strings.HasPrefix(apiErr.Message, "Current PIN is required")
+}
+
+// pinFormatErr reports whether err is Nuvio refusing a PIN that isn't four
+// digits (#25).
+func pinFormatErr(err error) bool {
+	var apiErr *nuvio.APIError
+	return errors.As(err, &apiErr) && apiErr.Code == "P0001" &&
+		strings.Contains(apiErr.Message, "PIN must be exactly 4 digits")
 }

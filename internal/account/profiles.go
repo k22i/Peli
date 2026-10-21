@@ -75,6 +75,9 @@ func (s *Service) EditProfile(ctx context.Context, profileID uint64, edit Profil
 	if err != nil {
 		return store.Profile{}, err
 	}
+	if local.PinEnabled && !s.unlocked[local.ID] {
+		return store.Profile{}, ErrProfileLocked
+	}
 	name, err := profileName(edit.Name)
 	if err != nil {
 		return store.Profile{}, err
@@ -197,6 +200,9 @@ func (s *Service) DeleteProfile(ctx context.Context, profileID uint64) error {
 	if err != nil {
 		return err
 	}
+	if local.PinEnabled && !s.unlocked[local.ID] {
+		return ErrProfileLocked
+	}
 	if local.NuvioIndex != nil {
 		if *local.NuvioIndex == 1 {
 			return ErrPrimaryProfile
@@ -216,6 +222,122 @@ func (s *Service) DeleteProfile(ctx context.Context, profileID uint64) error {
 		}
 	}
 	return db.DeleteProfile(profileID)
+}
+
+// UnlockProfile checks a profile's PIN and marks it unlocked for this
+// session, so it can be switched to and edited. A profile without a PIN, or
+// not linked to Nuvio, unlocks without a check.
+func (s *Service) UnlockProfile(ctx context.Context, profileID uint64, pin string) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	db := store.Opened(s.store)
+	p, err := db.Profile(profileID)
+	if err != nil {
+		return err
+	}
+	if !p.PinEnabled || p.NuvioIndex == nil {
+		s.unlocked[profileID] = true
+		return nil
+	}
+	var res nuvio.VerifyProfilePINResult
+	err = s.session.Do(ctx, func(session nuvio.Session) error {
+		res, err = s.nuvio.VerifyProfilePIN(ctx, session, *p.NuvioIndex, pin)
+		return err
+	})
+	if err != nil {
+		return err
+	}
+	if !res.Unlocked {
+		return &ErrWrongPIN{RetryAfter: res.RetryAfterSeconds}
+	}
+	s.unlocked[profileID] = true
+	return nil
+}
+
+// SetProfilePIN sets or changes a profile's PIN (#25). currentPin is the
+// profile's existing PIN when it has one, and must match to change it.
+func (s *Service) SetProfilePIN(ctx context.Context, profileID uint64, pin, currentPin string) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	db := store.Opened(s.store)
+	local, err := db.Profile(profileID)
+	if err != nil {
+		return err
+	}
+	if local.NuvioIndex == nil {
+		return fmt.Errorf("%w: %s has no Nuvio profile", store.ErrInvalidProfile, local.Name)
+	}
+	if local.PinEnabled && !s.unlocked[profileID] {
+		return ErrProfileLocked
+	}
+	if !fourDigits(pin) {
+		return ErrPINFormat
+	}
+	err = s.session.Do(ctx, func(session nuvio.Session) error {
+		return s.nuvio.SetProfilePIN(ctx, session, *local.NuvioIndex, pin, currentPin)
+	})
+	if err != nil {
+		if currentPINRequired(err) {
+			return &ErrWrongPIN{RetryAfter: 0}
+		}
+		if pinFormatErr(err) {
+			return ErrPINFormat
+		}
+		return err
+	}
+	local.PinEnabled = true
+	local.PinLockedUntil = nil
+	s.unlocked[profileID] = true
+	return db.UpdateProfile(local)
+}
+
+// ClearProfilePIN removes a profile's PIN (#25). currentPin is the profile's
+// existing PIN and must match to remove it.
+func (s *Service) ClearProfilePIN(ctx context.Context, profileID uint64, currentPin string) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	db := store.Opened(s.store)
+	local, err := db.Profile(profileID)
+	if err != nil {
+		return err
+	}
+	if local.NuvioIndex == nil {
+		return fmt.Errorf("%w: %s has no Nuvio profile", store.ErrInvalidProfile, local.Name)
+	}
+	if local.PinEnabled && !s.unlocked[profileID] {
+		return ErrProfileLocked
+	}
+	err = s.session.Do(ctx, func(session nuvio.Session) error {
+		return s.nuvio.ClearProfilePIN(ctx, session, *local.NuvioIndex, currentPin)
+	})
+	if err != nil {
+		if currentPINRequired(err) {
+			return &ErrWrongPIN{RetryAfter: 0}
+		}
+		return err
+	}
+	local.PinEnabled = false
+	local.PinLockedUntil = nil
+	return db.UpdateProfile(local)
+}
+
+// SwitchProfile makes a profile current. A profile with a PIN needs
+// UnlockProfile first.
+func (s *Service) SwitchProfile(ctx context.Context, profileID uint64) (store.Profile, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	db := store.Opened(s.store)
+	p, err := db.Profile(profileID)
+	if err != nil {
+		return store.Profile{}, err
+	}
+	if p.PinEnabled && !s.unlocked[profileID] {
+		return store.Profile{}, ErrProfileLocked
+	}
+	if err := db.SetCurrentProfile(profileID); err != nil {
+		return store.Profile{}, err
+	}
+	return p, nil
 }
 
 // stockAvatar checks that id is in the catalog, since Nuvio refuses an
@@ -255,9 +377,11 @@ func profileName(name string) (string, error) {
 // avatar from images, a stock avatar's image by ID.
 func fromNuvio(p nuvio.Profile, images map[string]string) store.Profile {
 	return store.Profile{
-		Name:        p.Name,
-		NuvioIndex:  &p.Index,
-		Avatar:      avatarImage(p, images),
-		AvatarColor: hexColor(p.AvatarColor),
+		Name:           p.Name,
+		NuvioIndex:     &p.Index,
+		Avatar:         avatarImage(p, images),
+		AvatarColor:    hexColor(p.AvatarColor),
+		PinEnabled:     p.PinEnabled,
+		PinLockedUntil: p.PinLockedUntil,
 	}
 }

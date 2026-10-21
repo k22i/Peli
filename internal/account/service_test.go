@@ -118,8 +118,8 @@ func TestSignIn(t *testing.T) {
 	if email := f.backend.Body("/auth/v1/token")["email"]; email != "me@example.com" {
 		t.Fatalf("email sent = %q, want it trimmed", email)
 	}
-	if calls := f.backend.Calls(); len(calls) != 3 {
-		t.Fatalf("calls = %q, want a sign-in, a profile pull and the avatar catalog", calls)
+	if calls := f.backend.Calls(); len(calls) != 4 {
+		t.Fatalf("calls = %q, want a sign-in, a profile pull, the profile locks and the avatar catalog", calls)
 	}
 
 	// Avatars: a stock one from the catalog, or the profile's own image.

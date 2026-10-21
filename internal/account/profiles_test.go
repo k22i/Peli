@@ -52,6 +52,10 @@ func TestAvatars(t *testing.T) {
 func TestEditProfile(t *testing.T) {
 	f, _, _ := signedIn(t)
 	kids := profileAt(t, f, 3)
+	f.backend.SetProfilePIN(t, "me@example.com", 3, "1234")
+	if err := f.service.UnlockProfile(t.Context(), kids.ID, "1234"); err != nil {
+		t.Fatal(err)
+	}
 
 	saved, err := f.service.EditProfile(t.Context(), kids.ID, ProfileEdit{Name: "  Little ones ", AvatarID: "a1", AvatarColor: "#e53935"})
 	if err != nil {
@@ -127,6 +131,10 @@ func TestEditProfileRefusals(t *testing.T) {
 func TestEditProfileDeletedElsewhere(t *testing.T) {
 	f, _, _ := signedIn(t)
 	kids := profileAt(t, f, 3)
+	f.backend.SetProfilePIN(t, "me@example.com", 3, "1234")
+	if err := f.service.UnlockProfile(t.Context(), kids.ID, "1234"); err != nil {
+		t.Fatal(err)
+	}
 	f.backend.SetProfiles(t, "me@example.com", `[{"profile_index":1,"name":"Kevin","avatar_color_hex":"#33B5E0"}]`)
 	_, err := f.service.EditProfile(t.Context(), kids.ID, ProfileEdit{Name: "Kids 2"})
 	if got := code(t, err); got != CodeProfileNotFound {
@@ -151,6 +159,10 @@ func TestProfileChangesNeedNuvio(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			f, _, _ := signedIn(t)
 			kids := profileAt(t, f, 3)
+			f.backend.SetProfilePIN(t, "me@example.com", 3, "1234")
+			if err := f.service.UnlockProfile(t.Context(), kids.ID, "1234"); err != nil {
+				t.Fatal(err)
+			}
 			tc.setup(f)
 
 			_, err := f.service.EditProfile(t.Context(), kids.ID, ProfileEdit{Name: "Kids 2"})
@@ -246,6 +258,10 @@ func TestDeleteProfile(t *testing.T) {
 	kids := profileAt(t, f, 3)
 	db := store.Opened(f.store)
 	if err := db.SetCurrentProfile(kids.ID); err != nil {
+		t.Fatal(err)
+	}
+	f.backend.SetProfilePIN(t, "me@example.com", 3, "1234")
+	if err := f.service.UnlockProfile(t.Context(), kids.ID, "1234"); err != nil {
 		t.Fatal(err)
 	}
 
