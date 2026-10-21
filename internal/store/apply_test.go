@@ -97,3 +97,35 @@ func TestApplyChangesInvalid(t *testing.T) {
 	}
 	equal(t, must[[]LibraryItem](t)(s.Library(p.ID)), []LibraryItem{})
 }
+
+// Progress is the one surface with a conflict rule: the latest lastWatched
+// wins, in either direction (#29).
+func TestApplyChangesProgressLatestWins(t *testing.T) {
+	s, _ := openTemp(t)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P", NuvioIndex: ptr(1)}))
+	at := func(position, lastWatched int64) Progress {
+		e := episode
+		e.Position, e.LastWatched = position, lastWatched
+		return e
+	}
+	position := func() Progress {
+		return must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID))[0]
+	}
+
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpUpsert, at(100, 1000))})), 1)
+	// Older than ours (a throttled push the backend dropped, say): skipped.
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpUpsert, at(50, 500))})), 0)
+	equal(t, position().Position, int64(100))
+	// Newer, from another device: applied.
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpUpsert, at(300, 2000))})), 1)
+	equal(t, position().Position, int64(300))
+	// The same time, a different position: the backend's copy.
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpUpsert, at(310, 2000))})), 1)
+	equal(t, position().Position, int64(310))
+
+	// A delete of a row older than ours is not about ours: watched again since.
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpDelete, at(100, 1000))})), 0)
+	equal(t, len(must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID))), 1)
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpDelete, at(310, 2000))})), 1)
+	equal(t, len(must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID))), 0)
+}

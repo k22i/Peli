@@ -217,22 +217,30 @@ func (n Nuvio) Push(ctx context.Context, profile store.Profile, pushes []store.P
 			continue
 		}
 		failed = append(failed, err)
-		if backendDown(err) || ctx.Err() != nil {
+		if Down(err) || ctx.Err() != nil {
 			break
 		}
 	}
 	return acked, errors.Join(failed...)
 }
 
-// backendDown is whether err is about the backend or the session as a whole,
-// not about the batch that met it.
-func backendDown(err error) bool {
+// Down is whether err is about the backend or the session as a whole (signed
+// out, unreachable, rate limited, down), not about the batch or feed that met
+// it.
+func Down(err error) bool {
 	for _, target := range []error{nuvio.ErrSignedOut, nuvio.ErrUnreachable, nuvio.ErrRateLimited, nuvio.ErrUnavailable} {
 		if errors.Is(err, target) {
 			return true
 		}
 	}
 	return false
+}
+
+// Offline is whether err is the user being offline or signed out, which is
+// expected and not worth a log line: the account service already tells them
+// when the session has ended.
+func Offline(err error) bool {
+	return errors.Is(err, nuvio.ErrSignedOut) || errors.Is(err, nuvio.ErrUnreachable)
 }
 
 // batches groups pushes, which are in the order they were made, into RPCs.

@@ -30,6 +30,15 @@ type Change struct {
 // is stored does nothing. A change to an item with a push still queued is
 // skipped: the user changed it here since, and the push will overwrite the
 // backend's copy. (An echo of an earlier write must not undo that newer one.)
+//
+// Conflicts. Library and watched items have no timestamp worth comparing, so
+// the backend's copy wins, unless a push is queued as above. Progress is the
+// one that is edited from several devices at once, and the backend drops
+// pushes that come too soon after the last (a 200 all the same), so a pull
+// can bring back an older position than ours that we thought was saved. Its
+// rule is latest lastWatched wins: a change older than the stored entry is
+// skipped, a delete too (a delete carries the row as it was, and an entry
+// watched again since is not that row). Equal times take the backend's copy.
 func (s *Store) ApplyChanges(id uint64, changes []Change) (applied int, err error) {
 	err = s.update(id, func(p *bolt.Bucket) error {
 		applied = 0
@@ -55,6 +64,9 @@ type target struct {
 	pushKey string
 	// The value to store; nil for a delete.
 	value any
+	// For progress, when the item was last watched: the later of two copies
+	// wins, whatever order they arrive in.
+	watchedAt *int64
 }
 
 func applyChange(p *bolt.Bucket, c Change) (bool, error) {
@@ -73,6 +85,15 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 		dest = p.Bucket(t.bucket)
 	}
 	have := dest.Get(t.key)
+	if t.watchedAt != nil && have != nil {
+		var stored Progress
+		if err := json.Unmarshal(have, &stored); err != nil {
+			return false, err
+		}
+		if stored.LastWatched > *t.watchedAt {
+			return false, nil
+		}
+	}
 	if c.Op == OpDelete {
 		if have == nil {
 			return false, nil
@@ -101,7 +122,7 @@ func targetOf(c Change) (target, error) {
 			return target{}, fmt.Errorf("library item needs a content ID and type")
 		}
 		key := libraryKey(item.ContentID, item.ContentType)
-		return target{bucketLibrary, []byte(key), key, item}, nil
+		return target{bucketLibrary, []byte(key), key, item, nil}, nil
 	case SurfaceProgress:
 		var entry Progress
 		if err := json.Unmarshal(c.Item, &entry); err != nil {
@@ -116,7 +137,7 @@ func targetOf(c Change) (target, error) {
 		if entry.Key == "" {
 			entry.Key = ProgressKey(entry.ContentID, entry.Season, entry.Episode)
 		}
-		return target{bucketProgress, []byte(entry.Key), entry.Key, entry}, nil
+		return target{bucketProgress, []byte(entry.Key), entry.Key, entry, &entry.LastWatched}, nil
 	case SurfaceWatched:
 		var item WatchedItem
 		if err := json.Unmarshal(c.Item, &item); err != nil {
@@ -126,7 +147,7 @@ func targetOf(c Change) (target, error) {
 			return target{}, fmt.Errorf("watched item needs a content ID and type")
 		}
 		return target{bucketWatched, watchedKey(item.ContentID, item.Season, item.Episode),
-			watchedPushKey(item.ContentID, item.Season, item.Episode), item}, nil
+			watchedPushKey(item.ContentID, item.Season, item.Episode), item, nil}, nil
 	case SurfaceAddons:
 		addons := []Addon{}
 		if err := json.Unmarshal(c.Item, &addons); err != nil {
@@ -135,7 +156,7 @@ func targetOf(c Change) (target, error) {
 		if addons == nil {
 			addons = []Addon{}
 		}
-		return target{nil, keyAddons, "", addons}, nil
+		return target{nil, keyAddons, "", addons, nil}, nil
 	}
 	return target{}, fmt.Errorf("unknown surface")
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"cmp"
+	"context"
 	"embed"
 	"log"
 	"os"
@@ -12,11 +13,13 @@ import (
 
 	"github.com/k22i/Sinag/internal/account"
 	"github.com/k22i/Sinag/internal/appinfo"
+	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/firstmouse"
 	"github.com/k22i/Sinag/internal/licences"
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Sinag/internal/syncer"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -38,7 +41,9 @@ func main() {
 	keychain := secrets.New(secrets.ServiceName)
 	// $SINAG_NUVIO_URL points Sinag at a self-hosted Nuvio backend, such as
 	// the contract tests' (#33).
-	backend := nuvio.New(cmp.Or(os.Getenv("SINAG_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
+	client := nuvio.New(cmp.Or(os.Getenv("SINAG_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
+	accounts := account.NewService(client, keychain, db)
+	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})
 
 	app := application.New(application.Options{
 		Name:        "Sinag",
@@ -48,8 +53,9 @@ func main() {
 			application.NewService(&licences.Service{}),
 			application.NewService(db),
 			application.NewService(secrets.NewService(keychain)),
-			application.NewServiceWithOptions(account.NewService(backend, keychain, db),
+			application.NewServiceWithOptions(accounts,
 				application.ServiceOptions{MarshalError: account.MarshalError}),
+			application.NewService(sync),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
@@ -81,10 +87,17 @@ func main() {
 		URL:              "/",
 	})
 
+	// Pull from Nuvio once the window is up, so the cached UI never waits for
+	// it, and again each time the window gets focus (#29).
+	puller := syncer.PullerOf(sync)
 	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
 		if !app.Env.IsDarkMode() {
 			window.SetBackgroundColour(windowColourLight)
 		}
+		puller.Background(context.Background())
+	})
+	window.OnWindowEvent(events.Common.WindowFocus, func(*application.WindowEvent) {
+		puller.Background(context.Background())
 	})
 
 	if err := app.Run(); err != nil {
