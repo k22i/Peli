@@ -3,6 +3,7 @@ package store
 import (
 	"encoding/binary"
 	"fmt"
+	"strconv"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -30,6 +31,19 @@ func watchedKey(contentID string, season, episode *int) []byte {
 		key = binary.BigEndian.AppendUint32(key, v)
 	}
 	return key
+}
+
+// watchedPushKey names a watched item in the outbox as text. The bucket key
+// is binary, which JSON turns into U+FFFD from episode 127 on, and then the
+// push could never be acked.
+func watchedPushKey(contentID string, season, episode *int) string {
+	number := func(n *int) string {
+		if n == nil {
+			return ""
+		}
+		return strconv.Itoa(*n)
+	}
+	return string(joinKey(contentID, number(season), number(episode)))
 }
 
 // Watched returns everything profile id has watched, grouped by title.
@@ -63,7 +77,7 @@ func (s *Store) MarkWatched(id uint64, item WatchedItem) error {
 		if err := put(p.Bucket(bucketWatched), key, item); err != nil {
 			return err
 		}
-		return enqueue(p, SurfaceWatched, OpUpsert, string(key), item)
+		return enqueue(p, SurfaceWatched, OpUpsert, watchedPushKey(item.ContentID, item.Season, item.Episode), item)
 	})
 }
 
@@ -71,6 +85,6 @@ func (s *Store) MarkWatched(id uint64, item WatchedItem) error {
 func (s *Store) UnmarkWatched(id uint64, contentID string, season, episode *int) error {
 	key := watchedKey(contentID, season, episode)
 	return s.update(id, func(p *bolt.Bucket) error {
-		return remove(p, bucketWatched, SurfaceWatched, key)
+		return remove(p, bucketWatched, SurfaceWatched, key, watchedPushKey(contentID, season, episode))
 	})
 }

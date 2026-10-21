@@ -346,3 +346,16 @@ func TestOpenTwice(t *testing.T) {
 		t.Fatalf("second Open err = %v, want ErrLocked", err)
 	}
 }
+
+// A push's key survives the outbox's JSON for any season and episode: daily
+// shows and anime go past episode 127, where a binary key stops being UTF-8.
+func TestOutboxWatchedLongSeries(t *testing.T) {
+	s, _ := openTemp(t)
+	linked := must[Profile](t)(s.CreateProfile(Profile{Name: "Linked", NuvioIndex: ptr(1)}))
+	item := WatchedItem{ContentID: "tt0388629", ContentType: "series", Season: ptr(2), Episode: ptr(200), WatchedAt: 1}
+	check(t, s.MarkWatched(linked.ID, item))
+	pending := must[[]Push](t)(s.Pending(linked.ID))
+	equal(t, len(pending), 1)
+	check(t, s.AckPush(linked.ID, pending[0]))
+	equal(t, must[[]Push](t)(s.Pending(linked.ID)), []Push{})
+}

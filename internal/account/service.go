@@ -17,6 +17,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
+	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/store"
@@ -48,7 +49,7 @@ type Keychain interface {
 
 // Service is the Wails service the frontend calls to sign in and out.
 type Service struct {
-	nuvio   *nuvio.Client
+	nuvio   backend.Remote
 	session *Session
 	store   *store.Service
 
@@ -74,7 +75,7 @@ type Service struct {
 
 // NewService returns a service that signs in with client, keeps the session
 // in keychain and the profiles in store.
-func NewService(client *nuvio.Client, keychain Keychain, store *store.Service) *Service {
+func NewService(client backend.Remote, keychain Keychain, store *store.Service) *Service {
 	return &Service{
 		nuvio: client, session: newSession(client, keychain), store: store,
 		unlocked: map[uint64]bool{}, parent: map[uint64]time.Time{}, now: time.Now,

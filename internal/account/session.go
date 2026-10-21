@@ -7,6 +7,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/secrets"
 )
@@ -31,7 +32,7 @@ const (
 // It isn't a Wails service, so no token can be bound to the webview
 // (ADR-0008). The sync module (#28) calls the backend through Do.
 type Session struct {
-	nuvio    *nuvio.Client
+	nuvio    backend.Remote
 	keychain Keychain
 	now      func() time.Time
 	// Called, outside the lock, when a refresh finds the session has ended.
@@ -46,7 +47,7 @@ type Session struct {
 	failures  int
 }
 
-func newSession(client *nuvio.Client, keychain Keychain) *Session {
+func newSession(client backend.Remote, keychain Keychain) *Session {
 	return &Session{nuvio: client, keychain: keychain, now: time.Now, onEnded: func() {}}
 }
 
@@ -275,3 +276,6 @@ func (s *Session) saveTokens(session nuvio.Session) error {
 func (s *Session) deleteTokens() error {
 	return errors.Join(s.keychain.Delete(KeyAccessToken), s.keychain.Delete(KeyRefreshToken))
 }
+
+// The sync module calls the backend through the session (#28).
+var _ backend.Sessions = (*Session)(nil)

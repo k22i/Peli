@@ -18,5 +18,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0012](0012-profile-changes-go-to-nuvio-first.md) | Profile changes go to Nuvio first, one profile at a time, and are refused offline rather than queued | 2026-10-20 |
 | [0013](0013-qr-sign-in-via-nuvio-link.md) | QR sign-in uses Nuvio's device login: a QR code to nuvio.tv/link and a short code, polled in Go | 2026-10-20 |
 | [0014](0014-kids-profiles.md) | Kids profiles: a local flag and an allow-list of addons, left with the profile's own PIN | 2026-10-21 |
+| [0015](0015-sync-module-backend-interface.md) | The sync module: a data interface and an account interface over one Nuvio client, with an import boundary | 2026-10-21 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

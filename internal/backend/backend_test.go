@@ -8,25 +8,25 @@ import (
 	"github.com/k22i/Sinag/internal/store"
 )
 
-// nuvio stands in for the Nuvio backend: it fails every call.
-type nuvio struct{}
+// linked stands in for the Nuvio backend: it fails every call.
+type linked struct{}
 
 var errCalled = errors.New("called Nuvio")
 
-func (nuvio) Pull(context.Context, store.Profile, store.Surface, int64, bool) ([]Change, int64, error) {
+func (linked) Pull(context.Context, store.Profile, store.Surface, int64, bool) ([]Change, int64, error) {
 	return nil, 0, errCalled
 }
 
-func (nuvio) Push(context.Context, store.Profile, []store.Push) ([]store.Push, error) {
+func (linked) Push(context.Context, store.Profile, []store.Push) ([]store.Push, error) {
 	return nil, errCalled
 }
 
 func TestFor(t *testing.T) {
 	index := 1
-	if _, ok := For(store.Profile{Name: "Kevin", NuvioIndex: &index}, nuvio{}).(nuvio); !ok {
+	if _, ok := For(store.Profile{Name: "Kevin", NuvioIndex: &index}, linked{}).(linked); !ok {
 		t.Fatal("a linked profile doesn't sync with Nuvio")
 	}
-	if _, ok := For(store.Profile{Name: "Guest", Guest: true}, nuvio{}).(Local); !ok {
+	if _, ok := For(store.Profile{Name: "Guest", Guest: true}, linked{}).(Local); !ok {
 		t.Fatal("the Guest doesn't sync locally")
 	}
 }

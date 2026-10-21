@@ -108,15 +108,16 @@ func (s *Store) updatePush(id uint64, push Push, fn func(outbox *bolt.Bucket, ke
 	})
 }
 
-// remove deletes key from profile bucket p's bucket and queues the delete,
-// carrying the item as it was. Removing a missing item does nothing.
-func remove(p *bolt.Bucket, bucket []byte, surface Surface, key []byte) error {
+// remove deletes key from profile bucket p's bucket and queues the delete
+// under pushKey, carrying the item as it was. Removing a missing item does
+// nothing.
+func remove(p *bolt.Bucket, bucket []byte, surface Surface, key []byte, pushKey string) error {
 	b := p.Bucket(bucket)
 	item := b.Get(key)
 	if item == nil {
 		return nil
 	}
-	if err := enqueue(p, surface, OpDelete, string(key), json.RawMessage(item)); err != nil {
+	if err := enqueue(p, surface, OpDelete, pushKey, json.RawMessage(item)); err != nil {
 		return err
 	}
 	return b.Delete(key)

@@ -1,32 +1,42 @@
-// Package backend is where a profile's data syncs to: Nuvio for a profile
-// linked to it, or nowhere for a local-only one such as the Guest (#23).
-// The sync module (#28) puts every Nuvio call behind Backend and adds auth
-// and profiles to it; pulling (#29) and pushing (#30) go through For.
+// Package backend is the sync module (#28): where a profile's data syncs to.
+// Every call to a Nuvio backend, and so every Supabase call, goes through
+// it or through internal/nuvio, which it builds on (boundary_test.go in that
+// package enforces this).
+//
+// Two interfaces split the work:
+//   - Backend is the data a profile syncs: library, progress, watched items
+//     and addons. Nuvio implements it for a profile linked to a Nuvio
+//     profile, Local for one that isn't, such as the Guest (#23). For picks
+//     one. Pulling (#29) and pushing (#30) go through it.
+//   - Remote is the account side a linked profile needs: sign-in, sessions,
+//     profiles, PINs and avatars. Only Nuvio has accounts, so only
+//     *nuvio.Client implements it. A custom server (#34) speaks the same
+//     protocol and is another *nuvio.Client at another URL.
 package backend
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/k22i/Sinag/internal/store"
 )
 
 // Change is one item from a backend's delta feed, to apply to the local
-// store without queuing a push.
-type Change struct {
-	Surface store.Surface   `json:"surface"`
-	Op      store.Op        `json:"op"`
-	Key     string          `json:"key"`
-	Item    json.RawMessage `json:"item"`
-}
+// store without queuing a push (store.ApplyChanges).
+type Change = store.Change
 
 // Backend is what a profile syncs with.
 type Backend interface {
 	// Pull returns profile's changes to surface since cursor (ok false: never
-	// pulled), and the cursor to pass next time.
+	// pulled), and the cursor to pass next time. It returns every change
+	// since cursor, across as many pages as that takes. Changes are
+	// idempotent, so a pull that fails can be repeated from the same cursor.
+	// The echo of the caller's own pushes comes back too.
 	Pull(ctx context.Context, profile store.Profile, surface store.Surface, cursor int64, ok bool) (changes []Change, next int64, err error)
 	// Push sends profile's queued pushes and returns the ones the backend now
-	// has, for store.AckPush.
+	// has, for store.AckPush. Pushes that failed are left out of acked, and
+	// err says why. A backend-wide failure (signed out, unreachable, rate
+	// limited, down) stops the push at once; a failure of one batch doesn't
+	// stop the other batches.
 	Push(ctx context.Context, profile store.Profile, pushes []store.Push) (acked []store.Push, err error)
 }
 

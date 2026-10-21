@@ -57,6 +57,7 @@ type Server struct {
 	access   map[string]*session
 	last     [2]string
 	logins   map[string]*deviceLogin // by device code
+	sync     *syncState
 }
 
 // deviceLogin is a device login (#21), as tv_login_sessions keeps it.
@@ -86,6 +87,7 @@ func NewServer(t testing.TB) *Server {
 		profiles: map[string][]map[string]any{},
 		pins:     map[string]map[int]string{},
 		logins:   map[string]*deviceLogin{},
+		sync:     newSyncState(),
 	}
 	s.Server = httptest.NewServer(http.HandlerFunc(s.serve))
 	t.Cleanup(s.Close)
@@ -285,6 +287,13 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	bearer := s.access[strings.TrimPrefix(r.Header.Get("Authorization"), "Bearer ")]
+	user := ""
+	if bearer != nil {
+		user = bearer.user
+	}
+	if s.syncRoutes(w, r, user, body) {
+		return
+	}
 
 	switch r.URL.Path {
 	case "/auth/v1/token":

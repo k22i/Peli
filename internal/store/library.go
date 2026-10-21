@@ -56,6 +56,6 @@ func (s *Store) SaveLibraryItem(id uint64, item LibraryItem) error {
 func (s *Store) RemoveLibraryItem(id uint64, contentID, contentType string) error {
 	key := libraryKey(contentID, contentType)
 	return s.update(id, func(p *bolt.Bucket) error {
-		return remove(p, bucketLibrary, SurfaceLibrary, []byte(key))
+		return remove(p, bucketLibrary, SurfaceLibrary, []byte(key), key)
 	})
 }

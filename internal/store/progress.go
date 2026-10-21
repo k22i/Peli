@@ -101,6 +101,6 @@ func (s *Store) SaveProgress(id uint64, entry Progress) (Progress, error) {
 // RemoveProgress removes the progress entry with key from profile id.
 func (s *Store) RemoveProgress(id uint64, key string) error {
 	return s.update(id, func(p *bolt.Bucket) error {
-		return remove(p, bucketProgress, SurfaceProgress, []byte(key))
+		return remove(p, bucketProgress, SurfaceProgress, []byte(key), key)
 	})
 }

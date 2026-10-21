@@ -84,6 +84,17 @@ Everything a desktop client needs, ~30 functions. Every `sync_*` takes `p_profil
 | `sync_push_watched_items` / `sync_delete_watched_items` | `p_items` / `p_keys`, `p_profile_id, p_origin_client_id` | `void` | local |
 | `sync_get_{library,watch_progress,watched_items}_delta_cursor` | `p_profile_id` | `bigint`: latest event ID | ✅ live |
 
+**Push shapes (#28).** Read from the self-host schema at commit `30f1568` and implemented in `internal/nuvio/sync.go`, so they are checked against the fake, not live (progress is the one that was). Items use the table's column names; PostgREST matches overloads by argument names, so every call also sends `p_profile_id` and `p_origin_client_id`.
+
+| Call | Argument | Shape |
+|---|---|---|
+| `sync_push_library_items` | `p_items` | `{content_id, content_type, name, poster?, poster_shape?, background?, description?, release_info?, imdb_rating?, genres?, addon_base_url?, added_at}`; rows without a content ID and type are skipped, `poster_shape` defaults to `POSTER` |
+| `sync_delete_library_items` | `p_keys` | `{content_id, content_type}` |
+| `sync_delete_watch_progress` | `p_keys` | the progress keys as strings |
+| `sync_push_watched_items` | `p_items` | `{content_id, content_type, title?, season?, episode?, watched_at}`; `content_type` defaults to `movie` |
+| `sync_delete_watched_items` | `p_keys` | `{content_id, season?, episode?}` (null season and episode match the title itself) |
+| `sync_push_addons` | `p_addons` | `{url, name, enabled, sort_order}`, the whole list |
+
 **Addons and plugins:** there is no pull RPC. Read the tables through PostgREST, protected by row-level security: `GET /rest/v1/addons?profile_id=eq.N&order=sort_order` (`url, name, enabled, sort_order, …`, ✅ live, 5 rows), same for `plugins`. Write with `sync_push_addons` / `sync_push_plugins` (`p_addons` / `p_plugins`, `p_profile_id, p_origin_client_id`).
 
 Not needed by a v1 desktop client, so not catalogued: provider and tracker credentials, account backup / restore, PIN set / clear, `delete-account`.

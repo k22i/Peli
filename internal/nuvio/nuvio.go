@@ -70,8 +70,50 @@ type Client struct {
 	backoff time.Duration
 	sleep   func(context.Context, time.Duration) error
 
+	// Spaces requests out, since the backend's rate limit is shared with
+	// every other client. Nil: no limit.
+	limiter *limiter
+	// Sent as p_origin_client_id with every write: this install's client ID.
+	originID string
+
 	mu  sync.Mutex
 	key string
+}
+
+// requestsPerSecond is the most requests a client sends. The backend allows
+// 900 a second across all its clients (docs/spikes/nuvio-backend.md), so
+// Sinag keeps well under it; a sync needs a few calls per surface.
+const requestsPerSecond = 20
+
+// limiter is a token bucket: up to burst requests at once, then rate a
+// second.
+type limiter struct {
+	mu     sync.Mutex
+	rate   float64
+	burst  float64
+	tokens float64
+	last   time.Time
+	now    func() time.Time
+}
+
+func newLimiter(rate, burst float64) *limiter {
+	return &limiter{rate: rate, burst: burst, tokens: burst, now: time.Now}
+}
+
+// reserve takes a token and returns how long to wait before using it.
+func (l *limiter) reserve() time.Duration {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	now := l.now()
+	if !l.last.IsZero() {
+		l.tokens = min(l.burst, l.tokens+now.Sub(l.last).Seconds()*l.rate)
+	}
+	l.last = now
+	l.tokens--
+	if l.tokens >= 0 {
+		return 0
+	}
+	return time.Duration(-l.tokens / l.rate * float64(time.Second))
 }
 
 // New returns a client for the backend at baseURL. version is Sinag's, for
@@ -84,7 +126,19 @@ func New(baseURL, version string) *Client {
 		retries:   2,
 		backoff:   time.Second,
 		sleep:     sleep,
+		limiter:   newLimiter(requestsPerSecond, requestsPerSecond),
+		originID:  "sinag-" + randomHex(8),
 	}
+}
+
+// OriginClientID is the ID this client sends as p_origin_client_id, which
+// the backend records with each change.
+func (c *Client) OriginClientID() string { return c.originID }
+
+func randomHex(n int) string {
+	b := make([]byte, n)
+	crand.Read(b)
+	return hex.EncodeToString(b)
 }
 
 func sleep(ctx context.Context, d time.Duration) error {
@@ -541,6 +595,13 @@ func (c *Client) do(ctx context.Context, method, path string, header http.Header
 }
 
 func (c *Client) once(ctx context.Context, method, path string, header http.Header, body []byte, out any) error {
+	if c.limiter != nil {
+		if wait := c.limiter.reserve(); wait > 0 {
+			if err := c.sleep(ctx, wait); err != nil {
+				return err
+			}
+		}
+	}
 	req, err := http.NewRequestWithContext(ctx, method, c.baseURL+path, bytes.NewReader(body))
 	if err != nil {
 		return err
