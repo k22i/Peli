@@ -57,6 +57,9 @@ type Service struct {
 	// Profiles unlocked this session (their PIN was entered correctly), by
 	// profile ID (#25).
 	unlocked map[uint64]bool
+	// Until when each kids profile's parent PIN is approved (#26).
+	parent map[uint64]time.Time
+	now    func() time.Time
 	// Stops the refresh loop.
 	stop context.CancelFunc
 
@@ -74,8 +77,8 @@ type Service struct {
 func NewService(client *nuvio.Client, keychain Keychain, store *store.Service) *Service {
 	return &Service{
 		nuvio: client, session: newSession(client, keychain), store: store,
-		unlocked: map[uint64]bool{},
-		linkURL:  nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
+		unlocked: map[uint64]bool{}, parent: map[uint64]time.Time{}, now: time.Now,
+		linkURL: nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
 	}
 }
 
@@ -142,6 +145,10 @@ func (s *Service) SignIn(ctx context.Context, email, password string) (store.Pro
 func (s *Service) signIn(ctx context.Context, newSession func(context.Context) (nuvio.Session, error)) (store.Profile, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
+	// Signing in makes another profile current, which leaves a kids profile.
+	if err := s.guardKids(store.Opened(s.store), nil); err != nil {
+		return store.Profile{}, err
+	}
 
 	// Check first, so a Linux user with no Secret Service isn't signed in to
 	// Nuvio for nothing.
@@ -253,6 +260,9 @@ func hexColor(color string) string {
 func (s *Service) SignOut(ctx context.Context) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
+	if err := s.guardKids(store.Opened(s.store), nil); err != nil {
+		return err
+	}
 	return s.session.end(ctx, func() error {
 		db := store.Opened(s.store)
 		return errors.Join(db.RemoveNuvioProfiles(), db.ClearCache())
@@ -295,6 +305,10 @@ const (
 	CodeProfileLocked = "profile_locked"
 	CodeWrongPIN      = "wrong_pin"
 	CodeInvalidPIN    = "invalid_pin"
+	// Kids profiles (#26).
+	CodeParentPINRequired = "parent_pin_required"
+	CodeKidsNeedsPIN      = "kids_need_pin"
+	CodeKidsKeepsPIN      = "kids_keep_pin"
 )
 
 // MarshalError gives the frontend a code for the errors it explains; Wails
@@ -335,6 +349,12 @@ func MarshalError(err error) []byte {
 		code = CodeProfileLocked
 	case errors.Is(err, ErrPINFormat):
 		code = CodeInvalidPIN
+	case errors.Is(err, ErrParentPINRequired), errors.Is(err, store.ErrKidsProfile):
+		code = CodeParentPINRequired
+	case errors.Is(err, ErrKidsNeedsPIN):
+		code = CodeKidsNeedsPIN
+	case errors.Is(err, ErrKidsKeepsPIN):
+		code = CodeKidsKeepsPIN
 	default:
 		return nil
 	}

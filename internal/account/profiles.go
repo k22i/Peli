@@ -78,6 +78,9 @@ func (s *Service) EditProfile(ctx context.Context, profileID uint64, edit Profil
 	if local.PinEnabled && !s.unlocked[local.ID] {
 		return store.Profile{}, ErrProfileLocked
 	}
+	if err := s.guardKids(db, &local); err != nil {
+		return store.Profile{}, err
+	}
 	name, err := profileName(edit.Name)
 	if err != nil {
 		return store.Profile{}, err
@@ -116,6 +119,7 @@ func (s *Service) EditProfile(ctx context.Context, profileID uint64, edit Profil
 	}
 	saved := fromNuvio(remote, images)
 	saved.ID = local.ID
+	saved.Kids = local.Kids
 	if saved.Avatar == "" && edit.AvatarID == "" {
 		// The catalog wasn't needed for this edit, so keep the image.
 		saved.Avatar = local.Avatar
@@ -129,6 +133,9 @@ func (s *Service) AddProfile(ctx context.Context, edit ProfileEdit) (store.Profi
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	db := store.Opened(s.store)
+	if err := s.guardKids(db, nil); err != nil {
+		return store.Profile{}, err
+	}
 	name, err := profileName(edit.Name)
 	if err != nil {
 		return store.Profile{}, err
@@ -203,6 +210,9 @@ func (s *Service) DeleteProfile(ctx context.Context, profileID uint64) error {
 	if local.PinEnabled && !s.unlocked[local.ID] {
 		return ErrProfileLocked
 	}
+	if err := s.guardKids(db, &local); err != nil {
+		return err
+	}
 	if local.NuvioIndex != nil {
 		if *local.NuvioIndex == 1 {
 			return ErrPrimaryProfile
@@ -230,17 +240,26 @@ func (s *Service) DeleteProfile(ctx context.Context, profileID uint64) error {
 func (s *Service) UnlockProfile(ctx context.Context, profileID uint64, pin string) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	db := store.Opened(s.store)
-	p, err := db.Profile(profileID)
+	p, err := store.Opened(s.store).Profile(profileID)
 	if err != nil {
 		return err
 	}
+	if err := s.verifyPIN(ctx, p, pin); err != nil {
+		return err
+	}
+	s.unlocked[profileID] = true
+	return nil
+}
+
+// verifyPIN checks pin against profile p's PIN, with Nuvio. A profile without
+// a PIN, or not linked to Nuvio, passes without a check.
+func (s *Service) verifyPIN(ctx context.Context, p store.Profile, pin string) error {
 	if !p.PinEnabled || p.NuvioIndex == nil {
-		s.unlocked[profileID] = true
 		return nil
 	}
 	var res nuvio.VerifyProfilePINResult
-	err = s.session.Do(ctx, func(session nuvio.Session) error {
+	err := s.session.Do(ctx, func(session nuvio.Session) error {
+		var err error
 		res, err = s.nuvio.VerifyProfilePIN(ctx, session, *p.NuvioIndex, pin)
 		return err
 	})
@@ -250,7 +269,6 @@ func (s *Service) UnlockProfile(ctx context.Context, profileID uint64, pin strin
 	if !res.Unlocked {
 		return &ErrWrongPIN{RetryAfter: res.RetryAfterSeconds}
 	}
-	s.unlocked[profileID] = true
 	return nil
 }
 
@@ -269,6 +287,9 @@ func (s *Service) SetProfilePIN(ctx context.Context, profileID uint64, pin, curr
 	}
 	if local.PinEnabled && !s.unlocked[profileID] {
 		return ErrProfileLocked
+	}
+	if err := s.guardKids(db, &local); err != nil {
+		return err
 	}
 	if !fourDigits(pin) {
 		return ErrPINFormat
@@ -307,6 +328,12 @@ func (s *Service) ClearProfilePIN(ctx context.Context, profileID uint64, current
 	if local.PinEnabled && !s.unlocked[profileID] {
 		return ErrProfileLocked
 	}
+	if err := s.guardKids(db, &local); err != nil {
+		return err
+	}
+	if local.Kids {
+		return ErrKidsKeepsPIN
+	}
 	err = s.session.Do(ctx, func(session nuvio.Session) error {
 		return s.nuvio.ClearProfilePIN(ctx, session, *local.NuvioIndex, currentPin)
 	})
@@ -322,7 +349,9 @@ func (s *Service) ClearProfilePIN(ctx context.Context, profileID uint64, current
 }
 
 // SwitchProfile makes a profile current. A profile with a PIN needs
-// UnlockProfile first.
+// UnlockProfile first, and leaving a kids profile needs ApproveParent (#26).
+// Switching to a kids profile locks it again: its parent PIN is needed anew
+// to leave.
 func (s *Service) SwitchProfile(ctx context.Context, profileID uint64) (store.Profile, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -334,9 +363,20 @@ func (s *Service) SwitchProfile(ctx context.Context, profileID uint64) (store.Pr
 	if p.PinEnabled && !s.unlocked[profileID] {
 		return store.Profile{}, ErrProfileLocked
 	}
+	current, _, err := db.ProfileInUse()
+	if err != nil {
+		return store.Profile{}, err
+	}
+	if current.ID == profileID {
+		return p, nil
+	}
+	if current.Kids && !s.parentApproved(current.ID) {
+		return store.Profile{}, ErrParentPINRequired
+	}
 	if err := db.SetCurrentProfile(profileID); err != nil {
 		return store.Profile{}, err
 	}
+	clear(s.parent)
 	return p, nil
 }
 
