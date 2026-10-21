@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+	"time"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -28,6 +29,10 @@ type Profile struct {
 	// at most one, it is local-only, and signing in or out leaves it as it
 	// is: its data never merges into an account's (ADR-0010).
 	Guest bool `json:"guest,omitempty"`
+	// Whether the profile needs its PIN to switch to it (#25).
+	PinEnabled bool `json:"pinEnabled,omitempty"`
+	// When the PIN is locked out until after too many wrong tries, or nil.
+	PinLockedUntil *time.Time `json:"pinLockedUntil,omitempty"`
 }
 
 var (
