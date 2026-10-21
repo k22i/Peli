@@ -7,4 +7,4 @@
 - [Product name: Sinag](product-name-sinag.md) — chosen over Cove/Marquee; repo, ids and what is still open in #82
 - [Nuvio profile PINs](nuvio-profile-pins.md) — set/clear/verify RPCs, four digits, table rows, unlocked-key gotcha
 - [Kids profiles](kids-profiles.md) — local flag + addon allow-list; parent PIN = own PIN; call VisibleAddons, guardKids in new Go methods
-- [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; what #29/#30/#32 own
+- [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29) and push loop (#30); what #32 owns

@@ -30,6 +30,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sync/atomic"
 	"time"
 
 	bolt "go.etcd.io/bbolt"
@@ -67,6 +68,8 @@ var (
 // Store is an open database. It is safe for concurrent use.
 type Store struct {
 	db *bolt.DB
+	// Called, outside any transaction, after a write that queued a push.
+	queued atomic.Pointer[func(profileID uint64)]
 }
 
 // Open opens the database at path, creating it and its directory if needed,
@@ -114,15 +117,44 @@ func (s *Store) view(id uint64, fn func(p *bolt.Bucket) error) error {
 	})
 }
 
+// OnQueued sets fn to be called with the profile's ID after each write that
+// queued a push, once it has committed, so the push loop (#30) wakes without
+// polling. fn runs in the writer's goroutine and must not block or write to
+// the store. Pass nil to stop.
+func (s *Store) OnQueued(fn func(profileID uint64)) {
+	if fn == nil {
+		s.queued.Store(nil)
+		return
+	}
+	s.queued.Store(&fn)
+}
+
 // update runs fn on profile id's bucket in a write transaction.
 func (s *Store) update(id uint64, fn func(p *bolt.Bucket) error) error {
-	return s.db.Update(func(tx *bolt.Tx) error {
+	queued := false
+	err := s.db.Update(func(tx *bolt.Tx) error {
 		p, err := profileBucket(tx, id)
 		if err != nil {
 			return err
 		}
-		return fn(p)
+		outbox := p.Bucket(bucketOutbox)
+		var before uint64
+		if outbox != nil {
+			before = outbox.Sequence()
+		}
+		if err := fn(p); err != nil {
+			return err
+		}
+		// Every push takes the outbox's next sequence number.
+		queued = outbox != nil && outbox.Sequence() != before
+		return nil
 	})
+	if err == nil && queued {
+		if fn := s.queued.Load(); fn != nil {
+			(*fn)(id)
+		}
+	}
+	return err
 }
 
 func put(b *bolt.Bucket, key []byte, v any) error {

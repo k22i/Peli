@@ -113,7 +113,9 @@ describe("sign out", () => {
     const { router } = await renderApp("/");
 
     const dialog = await openSignOut(user);
-    expect(dialog).toHaveTextContent("Anything not yet synced to Nuvio is lost");
+    expect(dialog).toHaveTextContent(
+      "anything that can't be sent, such as when you are offline, is lost",
+    );
     await user.click(within(dialog).getByRole("button", { name: "Sign out" }));
 
     await waitFor(() => expect(router.state.location.pathname).toBe("/welcome"));

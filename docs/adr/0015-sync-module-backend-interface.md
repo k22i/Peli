@@ -29,7 +29,7 @@ All backend calls live in `internal/nuvio` (the wire) and `internal/backend` (th
 - **Addons have no delta feed**, so `Pull` returns the whole list as one change each time, from `GET /rest/v1/addons`, and the cursor doesn't move. Whether a secondary profile with `uses_primary_addons` should read profile 1's list is #32's to settle; Sinag doesn't store that flag yet.
 - **Profile settings stay local.** `ProfileSettings` (#17) are not synced; Nuvio's `sync_*_profile_settings_blob` has no `desktop` platform, and the blob is a versioned feature blob whose shape isn't ours. Revisit with the "later" surfaces (settings, plugins, collections).
 - **Profiles are still pulled by the account service**, at sign-in. Pulling them at launch needs `LinkNuvioProfiles` split so it doesn't reset the current profile (#24's note); no ticket owns it yet (ADR-0016).
-- **The sign-out flush** (#22's hand-off) needs the push loop, so it comes with #30.
+- **The sign-out flush** (#22's hand-off) needs the push loop, so it came with #30 (ADR-0017).
 
 ## What we give up
 

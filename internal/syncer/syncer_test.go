@@ -44,6 +44,7 @@ func (s *sessions) Do(_ context.Context, fn func(nuvio.Session) error) error {
 
 // device is one Sinag install with a profile linked to Nuvio profile 1.
 type device struct {
+	path     string
 	store    *store.Store
 	profile  store.Profile
 	backend  backend.Nuvio
@@ -52,7 +53,8 @@ type device struct {
 
 func newDevice(t *testing.T, server *nuviotest.Server) *device {
 	t.Helper()
-	s, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
+	path := filepath.Join(t.TempDir(), "sinag.db")
+	s, err := store.Open(path)
 	check(t, err)
 	t.Cleanup(func() { s.Close() })
 	profile, err := s.CreateProfile(store.Profile{Name: "Kevin", NuvioIndex: ptr(1)})
@@ -63,7 +65,7 @@ func newDevice(t *testing.T, server *nuviotest.Server) *device {
 	session, err := client.SignInWithPassword(t.Context(), email, nuviotest.Password)
 	check(t, err)
 	sess := &sessions{session: session}
-	return &device{s, profile, backend.Nuvio{Client: client, Sessions: sess}, sess}
+	return &device{path, s, profile, backend.Nuvio{Client: client, Sessions: sess}, sess}
 }
 
 // push sends what the device has queued, as the push loop (#30) will.

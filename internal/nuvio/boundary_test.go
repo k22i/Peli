@@ -144,3 +144,31 @@ func forbidden(s string) string {
 	}
 	return ""
 }
+
+// Home layout and collections are never pushed to the official backend
+// (#30, #35): this package has no call that names either.
+func TestNoLayoutOrCollectionCalls(t *testing.T) {
+	files, err := filepath.Glob("*.go")
+	if err != nil {
+		t.Fatal(err)
+	}
+	fset := token.NewFileSet()
+	for _, name := range files {
+		if strings.HasSuffix(name, "_test.go") {
+			continue
+		}
+		file, err := parser.ParseFile(fset, name, nil, parser.SkipObjectResolution)
+		if err != nil {
+			t.Fatal(err)
+		}
+		ast.Inspect(file, func(n ast.Node) bool {
+			if lit, ok := n.(*ast.BasicLit); ok && lit.Kind == token.STRING {
+				s := strings.ToLower(lit.Value)
+				if strings.Contains(s, "collection") || strings.Contains(s, "layout") {
+					t.Errorf("%s: %s names home layout or collections", fset.Position(lit.Pos()), lit.Value)
+				}
+			}
+			return true
+		})
+	}
+}

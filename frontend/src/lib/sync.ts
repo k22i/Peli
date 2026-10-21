@@ -52,3 +52,12 @@ export function useSyncProfile(profileId: number | undefined) {
     Sync.Pull().catch(() => {});
   }, [profileId]);
 }
+
+// Asks Go to push everything queued now. The player calls it when playback
+// pauses, stops or seeks (#30): Go pushes progress at most every 30 s while it
+// plays, so this sends the position where it stopped. Pushes also follow every
+// change by themselves, so nothing else needs to ask.
+export function flushPushes(): Promise<void> {
+  // Offline or signed out: Go keeps what failed and retries it.
+  return Sync.Flush().catch(() => {});
+}

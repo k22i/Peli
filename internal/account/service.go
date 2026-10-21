@@ -10,6 +10,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/url"
 	"strings"
 	"sync"
@@ -64,6 +65,9 @@ type Service struct {
 	// Stops the refresh loop.
 	stop context.CancelFunc
 
+	// Sends what is queued before a sign-out removes it (#30).
+	flusher Flusher
+
 	// QR sign-in (qr.go): where the phone approves it, the name it shows,
 	// and the sign-in pending.
 	linkURL    string
@@ -82,6 +86,19 @@ func NewService(client backend.Remote, keychain Keychain, store *store.Service) 
 		linkURL: nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
 	}
 }
+
+// Flusher pushes everything queued to Nuvio: *syncer.Pusher in the app.
+type Flusher interface {
+	Flush(ctx context.Context) error
+}
+
+// flushWithin is how long a sign-out waits to send what is queued. Offline,
+// the push fails at once and the sign-out goes ahead.
+const flushWithin = 10 * time.Second
+
+// FlushOnSignOut has service send what is queued before it signs out. It
+// isn't a method, so Wails doesn't bind it.
+func FlushOnSignOut(service *Service, flusher Flusher) { service.flusher = flusher }
 
 // SessionOf returns service's session, for calling the backend from Go. It
 // isn't a method, so Wails doesn't bind it.
@@ -256,13 +273,21 @@ func hexColor(color string) string {
 // SignOut ends the session on the backend (other devices stay signed in),
 // deletes the tokens, and removes the account's profiles and everything in
 // them, and the cache: Nuvio has the account's data, and signing in again
-// pulls it back. Local-only profiles such as a guest's stay. Changes not yet
-// pushed are lost until the sync module (#28) flushes them first.
+// pulls it back. Local-only profiles such as a guest's stay. Queued changes
+// are pushed first, while the session still works; those that can't be sent
+// (offline, say) are lost.
 func (s *Service) SignOut(ctx context.Context) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	if err := s.guardKids(store.Opened(s.store), nil); err != nil {
 		return err
+	}
+	if s.flusher != nil {
+		flushCtx, cancel := context.WithTimeout(ctx, flushWithin)
+		if err := s.flusher.Flush(flushCtx); err != nil && !backend.Offline(err) {
+			slog.Warn("account: signing out with changes not pushed", "error", err)
+		}
+		cancel()
 	}
 	return s.session.end(ctx, func() error {
 		db := store.Opened(s.store)

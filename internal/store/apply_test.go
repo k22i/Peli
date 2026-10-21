@@ -129,3 +129,60 @@ func TestApplyChangesProgressLatestWins(t *testing.T) {
 	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpDelete, at(310, 2000))})), 1)
 	equal(t, len(must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID))), 0)
 }
+
+// The backend makes a watched item itself when progress passes 90 %, so a
+// pulled one settles a queued upsert of it: the push would only repeat it.
+// A queued delete is the user's later decision and stays.
+func TestApplyChangesWatchedUpsertSettlesQueuedUpsert(t *testing.T) {
+	s, _ := openTemp(t)
+	linked := must[Profile](t)(s.CreateProfile(Profile{Name: "Linked", NuvioIndex: ptr(1)}))
+	item := WatchedItem{ContentID: "tt0388629", ContentType: "series", Season: ptr(2), Episode: ptr(200), WatchedAt: 9}
+	pulled := change(t, SurfaceWatched, OpUpsert, WatchedItem{ContentID: item.ContentID, ContentType: "series", Season: item.Season, Episode: item.Episode, WatchedAt: 7})
+
+	check(t, s.MarkWatched(linked.ID, item))
+	equal(t, must[int](t)(s.ApplyChanges(linked.ID, []Change{pulled})), 1)
+	equal(t, must[[]Push](t)(s.Pending(linked.ID)), []Push{})
+	equal(t, must[[]WatchedItem](t)(s.Watched(linked.ID))[0].WatchedAt, int64(7))
+
+	check(t, s.UnmarkWatched(linked.ID, item.ContentID, item.Season, item.Episode))
+	check(t, s.MarkWatched(linked.ID, item))
+	check(t, s.UnmarkWatched(linked.ID, item.ContentID, item.Season, item.Episode))
+	equal(t, must[int](t)(s.ApplyChanges(linked.ID, []Change{pulled})), 0)
+	equal(t, len(must[[]Push](t)(s.Pending(linked.ID))), 1)
+	equal(t, must[[]WatchedItem](t)(s.Watched(linked.ID)), []WatchedItem{})
+}
+
+// The push loop (#30) wakes after a write that queued a push, once it has
+// committed, and not for one that didn't.
+func TestOnQueued(t *testing.T) {
+	s, _ := openTemp(t)
+	linked := must[Profile](t)(s.CreateProfile(Profile{Name: "Linked", NuvioIndex: ptr(1)}))
+	guest := must[Profile](t)(s.CreateProfile(Profile{Name: "Guest"}))
+	var woken []uint64
+	s.OnQueued(func(id uint64) {
+		// The change is readable by now.
+		if len(must[[]Push](t)(s.Pending(id))) == 0 {
+			t.Error("woken before the push was committed")
+		}
+		woken = append(woken, id)
+	})
+
+	check(t, s.SaveLibraryItem(linked.ID, dune))
+	_, err := s.SaveProgress(linked.ID, episode)
+	check(t, err)
+	check(t, s.SaveLibraryItem(guest.ID, dune))                                                  // local-only: queues nothing
+	_, err = s.ApplyChanges(linked.ID, []Change{change(t, SurfaceLibrary, OpUpsert, severance)}) // from the backend
+	check(t, err)
+	check(t, s.SetCursor(linked.ID, SurfaceLibrary, 5))
+	equal(t, woken, []uint64{linked.ID, linked.ID})
+
+	// Acking a push isn't a new one.
+	for _, push := range must[[]Push](t)(s.Pending(linked.ID)) {
+		check(t, s.AckPush(linked.ID, push))
+	}
+	equal(t, len(woken), 2)
+
+	s.OnQueued(nil)
+	check(t, s.RemoveLibraryItem(linked.ID, dune.ContentID, dune.ContentType))
+	equal(t, len(woken), 2)
+}

@@ -2,7 +2,8 @@
 // pulls the library, progress and watched feeds by delta cursor when the app
 // launches, when its window gets focus, when the profile changes and every
 // few minutes, merges them into the local store and tells the frontend what
-// changed so it can refresh its caches. Pushing is #30's, addons are #32's.
+// changed so it can refresh its caches. Pushing is pusher.go (#30), addons
+// are #32's.
 //
 // The wire is the sync module's (internal/backend, ADR-0015); this package
 // decides when to pull and what to do with the answer. There is no realtime
@@ -174,23 +175,37 @@ func (p *Puller) Background(ctx context.Context) {
 	}()
 }
 
+// ShutdownFlush is how long the app waits at exit to send what is queued.
+const ShutdownFlush = 5 * time.Second
+
 // Service is the Wails service for syncing. It polls while the app is open;
-// the launch and window focus are main's, through PullerOf, and the
-// frontend asks for a pull when the profile in use changes.
+// the launch and window focus are main's, through PullerOf and PusherOf, and
+// the frontend asks for a pull when the profile in use changes and for a
+// flush when playback pauses or stops. Pushes follow every change by
+// themselves, through the store's OnQueued.
 type Service struct {
 	db     *store.Service
 	puller *Puller
+	pusher *Pusher
 	stop   context.CancelFunc
 }
 
 // NewService returns a service that syncs db's profile in use with linked.
 func NewService(db *store.Service, linked backend.Backend) *Service {
-	return &Service{db: db, puller: NewPuller(func() *store.Store { return store.Opened(db) }, linked)}
+	open := func() *store.Store { return store.Opened(db) }
+	s := &Service{db: db, puller: NewPuller(open, linked), pusher: NewPusher(open, linked)}
+	s.pusher.refresh = func(ctx context.Context) { s.puller.Pull(ctx) }
+	store.NotifyQueued(db, s.pusher.Notify)
+	return s
 }
 
 // PullerOf returns service's puller, for the launch and window events. It
 // isn't a method, so Wails doesn't bind it.
 func PullerOf(service *Service) *Puller { return service.puller }
+
+// PusherOf returns service's pusher, for the launch and window events and the
+// sign-out flush. It isn't a method, so Wails doesn't bind it.
+func PusherOf(service *Service) *Pusher { return service.pusher }
 
 // ServiceStartup starts polling and has the puller tell the frontend what it
 // pulled.
@@ -199,6 +214,7 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 		s.puller.emit = func(pulled Pulled) { app.Event.Emit(EventPulled, pulled) }
 	}
 	ctx, s.stop = context.WithCancel(context.WithoutCancel(ctx))
+	s.pusher.Start(ctx)
 	go func() {
 		ticker := time.NewTicker(PollEvery)
 		defer ticker.Stop()
@@ -214,12 +230,27 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 	return nil
 }
 
+// ServiceShutdown sends what is queued before the app exits, for up to
+// ShutdownFlush. Services shut down in reverse order, so the store is still
+// open.
 func (s *Service) ServiceShutdown() error {
+	s.pusher.Stop()
+	ctx, cancel := context.WithTimeout(context.Background(), ShutdownFlush)
+	defer cancel()
+	if err := s.pusher.Flush(ctx); err != nil {
+		logPushError(err)
+	}
 	if s.stop != nil {
 		s.stop()
 	}
 	return nil
 }
+
+// Flush pushes everything queued now, for when playback pauses or stops: the
+// loop pushes progress at most every 30 s while it plays, so the position
+// where it stopped goes out at once. It returns the error that stopped the
+// push, such as being offline; what failed stays queued and is retried.
+func (s *Service) Flush(ctx context.Context) error { return s.pusher.Flush(ctx) }
 
 // Pull pulls the profile in use now, for when the frontend has just switched
 // to it or signed in. It does nothing if the profile was pulled in the last

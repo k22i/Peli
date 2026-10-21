@@ -54,7 +54,8 @@ export function SignOutDialog({
             <AlertDialogTitle>Sign out of Nuvio?</AlertDialogTitle>
             <AlertDialogDescription>
               Your Nuvio profiles are removed from this computer, with their library and progress.
-              They come back when you sign in again. Anything not yet synced to Nuvio is lost.
+              They come back when you sign in again. Changes still waiting to sync are sent first;
+              anything that can't be sent, such as when you are offline, is lost.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

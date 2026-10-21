@@ -24,8 +24,9 @@ func DefaultPath() string {
 // database at startup and closes it at shutdown. Sync bookkeeping (cursors and
 // pushes) stays on Store, for the sync module (#28).
 type Service struct {
-	path  string
-	store *Store
+	path   string
+	store  *Store
+	queued func(profileID uint64)
 }
 
 // NewService returns a service for the database at path.
@@ -38,11 +39,17 @@ func NewService(path string) *Service {
 // frontend.
 func Opened(service *Service) *Store { return service.store }
 
+// NotifyQueued has service call fn after each write that queued a push to
+// Nuvio, for the push loop (#30); see Store.OnQueued. Call it before the
+// service starts. A function rather than a method, so Wails doesn't bind it.
+func NotifyQueued(service *Service, fn func(profileID uint64)) { service.queued = fn }
+
 func (s *Service) ServiceStartup(context.Context, application.ServiceOptions) error {
 	store, err := Open(s.path)
 	if err != nil {
 		return err
 	}
+	store.OnQueued(s.queued)
 	s.store = store
 	return nil
 }

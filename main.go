@@ -44,6 +44,8 @@ func main() {
 	client := nuvio.New(cmp.Or(os.Getenv("SINAG_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
 	accounts := account.NewService(client, keychain, db)
 	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})
+	// Sending what is queued is the first step of signing out (#30).
+	account.FlushOnSignOut(accounts, syncer.PusherOf(sync))
 
 	app := application.New(application.Options{
 		Name:        "Sinag",
@@ -89,15 +91,17 @@ func main() {
 
 	// Pull from Nuvio once the window is up, so the cached UI never waits for
 	// it, and again each time the window gets focus (#29).
-	puller := syncer.PullerOf(sync)
+	puller, pusher := syncer.PullerOf(sync), syncer.PusherOf(sync)
 	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
 		if !app.Env.IsDarkMode() {
 			window.SetBackgroundColour(windowColourLight)
 		}
 		puller.Background(context.Background())
 	})
+	// Focus also retries pushes that failed, such as after being offline (#30).
 	window.OnWindowEvent(events.Common.WindowFocus, func(*application.WindowEvent) {
 		puller.Background(context.Background())
+		pusher.Background(context.Background())
 	})
 
 	if err := app.Run(); err != nil {

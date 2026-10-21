@@ -20,5 +20,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0014](0014-kids-profiles.md) | Kids profiles: a local flag and an allow-list of addons, left with the profile's own PIN | 2026-10-21 |
 | [0015](0015-sync-module-backend-interface.md) | The sync module: a data interface and an account interface over one Nuvio client, with an import boundary | 2026-10-21 |
 | [0016](0016-delta-pull.md) | The delta pull: Go decides when (launch, focus, interval, profile change), the store decides who wins (latest progress timestamp) | 2026-10-21 |
+| [0017](0017-push-loop.md) | The push loop: the store wakes it, progress goes every 30 s, a flush on pause/exit/sign-out, backoff on failure, watched items left to the server | 2026-10-21 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

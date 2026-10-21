@@ -30,6 +30,8 @@ type Change struct {
 // is stored does nothing. A change to an item with a push still queued is
 // skipped: the user changed it here since, and the push will overwrite the
 // backend's copy. (An echo of an earlier write must not undo that newer one.)
+// The exception is a watched upsert meeting a queued watched upsert, which
+// drops the push: the backend already has the item.
 //
 // Conflicts. Library and watched items have no timestamp worth comparing, so
 // the backend's copy wins, unless a push is queued as above. Progress is the
@@ -77,8 +79,19 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	if p.Bucket(bucketOutbox).Get(joinKey(string(c.Surface), t.pushKey)) != nil {
-		return false, nil
+	outbox := p.Bucket(bucketOutbox)
+	if queued := outbox.Get(joinKey(string(c.Surface), t.pushKey)); queued != nil {
+		// A watched upsert says only that the item is watched, so one from
+		// the backend settles a queued upsert of the same item: the backend
+		// has it, whoever put it there (it makes one itself when progress
+		// passes 90 %, and the push would only repeat it).
+		var push Push
+		if c.Surface != SurfaceWatched || c.Op != OpUpsert || json.Unmarshal(queued, &push) != nil || push.Op != OpUpsert {
+			return false, nil
+		}
+		if err := outbox.Delete(joinKey(string(c.Surface), t.pushKey)); err != nil {
+			return false, err
+		}
 	}
 	dest := p
 	if t.bucket != nil {

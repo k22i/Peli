@@ -40,7 +40,7 @@ Progress needs a rule of its own because it is the one edited from several devic
 
 - **Addons** have no delta feed and belong to #32.
 - **Profiles** are still pulled by the account service at sign-in (ADR-0015). Pulling them at launch needs `LinkNuvioProfiles` split so it doesn't reset the current profile; no ticket owns it yet.
-- **The push loop and the sign-out flush** are #30. Watched items can appear after #30's pushes (the server's 90 % rule); the pull picks them up like any other.
+- **The push loop and the sign-out flush** are #30 (ADR-0017). One rule crosses over: a pulled watched upsert drops a queued watched upsert of the same item. Watched items can appear after #30's pushes (the server's 90 % rule); the pull picks them up like any other.
 
 ## What we give up
 

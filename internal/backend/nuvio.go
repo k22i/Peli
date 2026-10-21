@@ -210,6 +210,11 @@ func (n Nuvio) Push(ctx context.Context, profile store.Profile, pushes []store.P
 	}
 	var acked []store.Push
 	var failed []error
+	for _, p := range pushes {
+		if !Syncs(p.Surface) {
+			return nil, fmt.Errorf("backend: %s isn't pushed to Nuvio", p.Surface)
+		}
+	}
 	for _, b := range batches(pushes) {
 		err := n.Sessions.Do(ctx, func(s nuvio.Session) error { return n.send(ctx, s, index, b) })
 		if err == nil {

@@ -40,6 +40,18 @@ type Backend interface {
 	Push(ctx context.Context, profile store.Profile, pushes []store.Push) (acked []store.Push, err error)
 }
 
+// Syncs is whether the sync module has a call to push surface to Nuvio.
+// Home layout and collections have none, and must never be pushed to the
+// official backend (#35); nothing queues them today, and Push refuses them
+// should that change.
+func Syncs(surface store.Surface) bool {
+	switch surface {
+	case store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons:
+		return true
+	}
+	return false
+}
+
 // For returns the backend profile syncs with: linked if it is linked to a
 // Nuvio profile, or Local.
 func For(profile store.Profile, linked Backend) Backend {

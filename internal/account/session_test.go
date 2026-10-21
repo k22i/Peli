@@ -10,9 +10,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
 	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Sinag/internal/syncer"
 )
 
 // clock is a test clock that only moves when told to.
@@ -358,5 +360,53 @@ func TestRunRefreshesAtLaunch(t *testing.T) {
 	<-done
 	if n := refreshes(f); n != 1 {
 		t.Fatalf("%d refreshes, want 1", n)
+	}
+}
+
+// Signing out sends what is queued first, while the session still works, so
+// nothing the user did on this device is lost to it (#30).
+func TestSignOutPushesWhatIsQueued(t *testing.T) {
+	f, _, _ := signedIn(t)
+	db := store.Opened(f.store)
+	profile, err := f.store.CurrentProfile()
+	if err != nil {
+		t.Fatal(err)
+	}
+	pusher := syncer.NewPusher(func() *store.Store { return db },
+		backend.Nuvio{Client: nuvio.New(f.backend.URL, "1.2.3"), Sessions: SessionOf(f.service)})
+	FlushOnSignOut(f.service, pusher)
+
+	item := store.LibraryItem{ContentID: "tt1160419", ContentType: "movie", Name: "Dune", AddedAt: 1}
+	if err := db.SaveLibraryItem(profile.ID, item); err != nil {
+		t.Fatal(err)
+	}
+	if err := f.service.SignOut(t.Context()); err != nil {
+		t.Fatal(err)
+	}
+	if rows := f.backend.Rows("me@example.com", *profile.NuvioIndex, nuviotest.Library); len(rows) != 1 || rows[0]["content_id"] != item.ContentID {
+		t.Fatalf("the server has %v after the sign-out", rows)
+	}
+	calls := f.backend.Calls()
+	if calls[len(calls)-1] != "POST /auth/v1/logout?scope=local" {
+		t.Fatalf("calls = %q, want the logout after the push", calls)
+	}
+}
+
+// Offline, the push fails at once and the sign-out still goes ahead.
+func TestSignOutOfflineStillSignsOutWithAFlusher(t *testing.T) {
+	f, _, _ := signedIn(t)
+	db := store.Opened(f.store)
+	profile, _ := f.store.CurrentProfile()
+	FlushOnSignOut(f.service, syncer.NewPusher(func() *store.Store { return db },
+		backend.Nuvio{Client: nuvio.New(f.backend.URL, "1.2.3"), Sessions: SessionOf(f.service)}))
+	if err := db.SaveLibraryItem(profile.ID, store.LibraryItem{ContentID: "tt1", ContentType: "movie", Name: "X"}); err != nil {
+		t.Fatal(err)
+	}
+	f.backend.Close()
+	if err := f.service.SignOut(t.Context()); err != nil {
+		t.Fatal(err)
+	}
+	if len(f.keychain.items) != 0 {
+		t.Fatalf("keychain = %v", f.keychain.items)
 	}
 }
