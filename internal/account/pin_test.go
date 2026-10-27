@@ -77,8 +77,13 @@ func TestEditLockedProfile(t *testing.T) {
 	if err := f.service.UnlockProfile(t.Context(), kids.ID, "1234"); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := f.service.EditProfile(t.Context(), kids.ID, ProfileEdit{Name: "X"}); err != nil {
+	edited, err := f.service.EditProfile(t.Context(), kids.ID, ProfileEdit{Name: "X"})
+	if err != nil {
 		t.Fatal(err)
+	}
+	// The patch answer has no PIN state; the edit mustn't unlock the profile.
+	if !edited.PinEnabled || !profileAt(t, f, 3).PinEnabled {
+		t.Fatalf("after the edit: returned PIN-locked %v, stored %v; want both", edited.PinEnabled, profileAt(t, f, 3).PinEnabled)
 	}
 }
 

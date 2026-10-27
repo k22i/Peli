@@ -120,6 +120,8 @@ func (s *Service) EditProfile(ctx context.Context, profileID uint64, edit Profil
 	saved := fromNuvio(remote, images)
 	saved.ID = local.ID
 	saved.Kids = local.Kids
+	// A patch answers without the PIN state (#33).
+	saved.PinEnabled, saved.PinLockedUntil = local.PinEnabled, local.PinLockedUntil
 	if saved.Avatar == "" && edit.AvatarID == "" {
 		// The catalog wasn't needed for this edit, so keep the image.
 		saved.Avatar = local.Avatar
@@ -417,7 +419,7 @@ func profileName(name string) (string, error) {
 // avatar from images, a stock avatar's image by ID.
 func fromNuvio(p nuvio.Profile, images map[string]string) store.Profile {
 	return store.Profile{
-		Name:           p.Name,
+		Name:              p.Name,
 		NuvioIndex:        &p.Index,
 		UsesPrimaryAddons: p.UsesPrimaryAddons && p.Index != 1,
 		Avatar:            avatarImage(p, images),
