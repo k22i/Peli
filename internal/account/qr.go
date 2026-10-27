@@ -48,6 +48,11 @@ type qrSignIn struct {
 // StartQRSignIn starts a QR sign-in, replacing any before it. WaitQRSignIn
 // then waits for the user to approve it.
 func (s *Service) StartQRSignIn(ctx context.Context) (QRCode, error) {
+	// The link page and the Nuvio app approve sign-ins to Nuvio's backend
+	// only.
+	if s.customServer() {
+		return QRCode{}, ErrQRUnavailable
+	}
 	// Check first, so the user isn't asked to approve a sign-in Sinag can't
 	// keep.
 	if err := s.session.keychain.Available(); err != nil {

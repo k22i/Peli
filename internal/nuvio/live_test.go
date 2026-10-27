@@ -29,7 +29,7 @@ func TestLive(t *testing.T) {
 	c := New(url, "0.0.0-live-test")
 
 	start := time.Now()
-	if _, err := c.publishableKey(t.Context()); err != nil {
+	if _, _, err := c.publishableKey(t.Context()); err != nil {
 		t.Fatal(err)
 	}
 	t.Logf("discovery: %v", time.Since(start).Round(time.Millisecond))

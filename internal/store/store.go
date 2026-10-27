@@ -56,6 +56,7 @@ var (
 	keyCurrent  = []byte("current")
 	keyAccount  = []byte("account")
 	keyKids     = []byte("kids")
+	keyServer   = []byte("server")
 )
 
 var (

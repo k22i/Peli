@@ -50,6 +50,7 @@ const signInErrorCodes = [
   "unavailable",
   "keychain_unavailable",
   "qr_expired",
+  "qr_unavailable",
   "parent_pin_required",
 ] as const;
 export type SignInErrorCode = (typeof signInErrorCodes)[number];

@@ -18,6 +18,8 @@ const backend = vi.hoisted(() => ({
   // message.
   failWith: undefined as { code?: string | undefined; message: string } | undefined,
   signIns: [] as { email: string; password: string }[],
+  // The user's own server (#34), or Nuvio's.
+  server: { url: "https://api.nuvio.tv", custom: false, hasKey: false },
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -60,6 +62,7 @@ vi.mock("@bindings/secrets", () => ({
 vi.mock("@bindings/account", () => ({
   Service: {
     Status: async () => ({ signedIn: backend.current?.nuvioIndex != null, sessionEnded: false }),
+    Server: async () => backend.server,
     SignIn: async (email: string, password: string) => {
       backend.signIns.push({ email, password });
       const failure = backend.failWith;
@@ -80,6 +83,7 @@ beforeEach(() => {
   backend.keychain = null;
   backend.failWith = undefined;
   backend.signIns = [];
+  backend.server = { url: "https://api.nuvio.tv", custom: false, hasKey: false };
 });
 
 async function renderFirstRun() {
@@ -152,6 +156,23 @@ describe("sign in", () => {
     expect(backend.signIns).toEqual([{ email: "me@example.com", password: "correct horse" }]);
     expect(await screen.findByText("Signed in as Kevin")).toBeInTheDocument();
     expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
+  });
+
+  it("signs in to the user's own server, without the phone", async () => {
+    backend.server = { url: "https://nuvio.example.com", custom: true, hasKey: false };
+    backend.failWith = { code: "invalid_credentials", message: "nuvio: wrong email or password" };
+    const user = userEvent.setup();
+    await renderApp("/sign-in", { shell: false });
+
+    await screen.findByRole("heading", { level: 1, name: "Sign in to your server" });
+    expect(screen.getByText(/account on nuvio\.example\.com/)).toBeVisible();
+    expect(screen.queryByRole("link", { name: "Sign in with your phone instead" })).toBeNull();
+    await fillIn(user, "wrong");
+    expect(
+      await screen.findByText(
+        "That email and password don’t match an account on nuvio.example.com.",
+      ),
+    ).toBeVisible();
   });
 
   it("asks for both fields before calling Nuvio", async () => {

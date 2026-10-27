@@ -291,3 +291,18 @@ func TestRemoveNuvioProfilesLeavesNone(t *testing.T) {
 		t.Fatalf("profiles = %+v", profiles)
 	}
 }
+
+func TestServerPersists(t *testing.T) {
+	s, path := openTemp(t)
+	equal(t, must[string](t)(s.Server()), "")
+
+	check(t, s.SetServer("https://nuvio.example.com"))
+	check(t, s.Close())
+	s, err := Open(path)
+	check(t, err)
+	defer s.Close()
+	equal(t, must[string](t)(s.Server()), "https://nuvio.example.com")
+
+	check(t, s.SetServer(""))
+	equal(t, must[string](t)(s.Server()), "")
+}

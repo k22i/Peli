@@ -12,8 +12,8 @@ import (
 // on the client, so the backend can be swapped for a test's.
 //
 // The types are Nuvio's. Only Nuvio has accounts: a local-only profile has
-// none of this, and a custom server (#34) speaks Nuvio's protocol, so it is
-// another *nuvio.Client at its own URL.
+// none of this, and a custom server (#34) speaks Nuvio's protocol, so the
+// same *nuvio.Client is pointed at it (UseServer).
 type Remote interface {
 	// Auth.
 	SignInWithPassword(ctx context.Context, email, password string) (nuvio.Session, error)
@@ -34,6 +34,11 @@ type Remote interface {
 	ClearProfilePIN(ctx context.Context, s nuvio.Session, index int, currentPin string) error
 	AvatarCatalog(ctx context.Context) ([]nuvio.Avatar, error)
 	AvatarImageURL(a nuvio.Avatar) string
+
+	// Which backend: Nuvio's or the user's own (#34).
+	ServerURL() string
+	UseServer(baseURL, key string)
+	CheckServer(ctx context.Context, baseURL, key string) error
 }
 
 var _ Remote = (*nuvio.Client)(nil)

@@ -68,6 +68,10 @@ type Service struct {
 	// Sends what is queued before a sign-out removes it (#30).
 	flusher Flusher
 
+	// Nuvio's backend: the one the client was made for, used unless the
+	// user picks their own (#34, server.go).
+	defaultServer string
+
 	// QR sign-in (qr.go): where the phone approves it, the name it shows,
 	// and the sign-in pending.
 	linkURL    string
@@ -81,7 +85,7 @@ type Service struct {
 // in keychain and the profiles in store.
 func NewService(client backend.Remote, keychain Keychain, store *store.Service) *Service {
 	return &Service{
-		nuvio: client, session: newSession(client, keychain), store: store,
+		nuvio: client, session: newSession(client, keychain), store: store, defaultServer: client.ServerURL(),
 		unlocked: map[uint64]bool{}, parent: map[uint64]time.Time{}, now: time.Now,
 		linkURL: nuvio.DefaultLinkURL, deviceName: deviceName(), sleep: sleep,
 	}
@@ -111,6 +115,8 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 	if app := application.Get(); app != nil {
 		s.session.onEnded = func() { app.Event.Emit(EventSessionEnded) }
 	}
+	// Before the first refresh, which goes to the server the session is from.
+	s.restoreServer()
 	ctx, s.stop = context.WithCancel(context.WithoutCancel(ctx))
 	go s.session.run(ctx, checkEvery)
 	return nil
@@ -282,6 +288,11 @@ func (s *Service) SignOut(ctx context.Context) error {
 	if err := s.guardKids(store.Opened(s.store), nil); err != nil {
 		return err
 	}
+	return s.signOut(ctx)
+}
+
+// signOut is SignOut once the kids guard has passed. s.mu is held.
+func (s *Service) signOut(ctx context.Context) error {
 	if s.flusher != nil {
 		flushCtx, cancel := context.WithTimeout(ctx, flushWithin)
 		if err := s.flusher.Flush(flushCtx); err != nil && !backend.Offline(err) {
@@ -338,6 +349,12 @@ const (
 	// Editing the addon list (#32).
 	CodeAddonInstalled = "addon_installed"
 	CodeAddonNotFound  = "addon_not_found"
+	// Picking the server (#34).
+	CodeInvalidServerURL = "invalid_server_url"
+	CodeInvalidServerKey = "invalid_server_key"
+	CodeNotNuvioServer   = "not_nuvio_server"
+	CodeServerKeyRefused = "server_key_refused"
+	CodeQRUnavailable    = "qr_unavailable"
 )
 
 // MarshalError gives the frontend a code for the errors it explains; Wails
@@ -388,6 +405,16 @@ func MarshalError(err error) []byte {
 		code = CodeAddonInstalled
 	case errors.Is(err, store.ErrAddonNotFound):
 		code = CodeAddonNotFound
+	case errors.Is(err, ErrInvalidServerURL):
+		code = CodeInvalidServerURL
+	case errors.Is(err, ErrInvalidServerKey):
+		code = CodeInvalidServerKey
+	case errors.Is(err, nuvio.ErrNotNuvio):
+		code = CodeNotNuvioServer
+	case errors.Is(err, nuvio.ErrKeyRefused):
+		code = CodeServerKeyRefused
+	case errors.Is(err, ErrQRUnavailable):
+		code = CodeQRUnavailable
 	default:
 		return nil
 	}

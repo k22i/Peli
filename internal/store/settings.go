@@ -106,3 +106,25 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	return nil
 }
+
+// Server returns the URL of the user's own Nuvio backend (#34), or "" for
+// Nuvio's. Its key, if it needs one, is in the keychain (ADR-0007).
+func (s *Store) Server() (string, error) {
+	var server string
+	err := s.db.View(func(tx *bolt.Tx) error {
+		server = string(tx.Bucket(bucketSettings).Get(keyServer))
+		return nil
+	})
+	return server, err
+}
+
+// SetServer keeps the URL of the user's own Nuvio backend, or "" for Nuvio's.
+// It isn't on Service: switching signs out first (account.Service.SetServer).
+func (s *Store) SetServer(url string) error {
+	return s.db.Update(func(tx *bolt.Tx) error {
+		if url == "" {
+			return tx.Bucket(bucketSettings).Delete(keyServer)
+		}
+		return tx.Bucket(bucketSettings).Put(keyServer, []byte(url))
+	})
+}

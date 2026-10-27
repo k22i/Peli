@@ -17,6 +17,7 @@ import {
   signInErrorCode,
   useSignIn,
 } from "@/lib/account";
+import { serverName, serverQuery } from "@/lib/server";
 
 type SignInSearch = {
   // Why the app sent the user here: their session ended (#22).
@@ -45,6 +46,9 @@ function SignIn() {
   // Read from the list: asking for the current profile would make a Guest.
   const hasGuest = profiles.data?.some((profile) => profile.guest) === true;
   const keychain = useQuery(keychainQuery);
+  // The user's own server (#34): its accounts, and no phone sign-in.
+  const server = useQuery(serverQuery);
+  const own = server.data?.custom === true ? serverName(server.data.url) : undefined;
   const signIn = useSignIn();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [problem, setProblem] = useState<Problem>();
@@ -82,7 +86,11 @@ function SignIn() {
         onError: (error) => {
           const code = signInErrorCode(error);
           if (code === "invalid_credentials") {
-            setErrors({ password: "That email and password don’t match a Nuvio account." });
+            setErrors({
+              password: own
+                ? `That email and password don’t match an account on ${own}.`
+                : "That email and password don’t match a Nuvio account.",
+            });
             return;
           }
           if (code === "rate_limited") cooldown.start(rateLimitCooldown);
@@ -100,9 +108,13 @@ function SignIn() {
       </Button>
 
       <header className="flex flex-col gap-2">
-        <h1 className="font-heading text-title font-stretch-semi-expanded">Sign in to Nuvio</h1>
+        <h1 className="font-heading text-title font-stretch-semi-expanded">
+          {own ? "Sign in to your server" : "Sign in to Nuvio"}
+        </h1>
         <p className="text-pretty text-muted-foreground">
-          Use the email and password of your Nuvio account.
+          {own
+            ? `Use the email and password of your account on ${own}.`
+            : "Use the email and password of your Nuvio account."}
           {hasGuest &&
             " Your Guest profile stays on this computer as it is, apart from your Nuvio profiles."}
         </p>
@@ -149,7 +161,7 @@ function SignIn() {
         </Button>
       </Form>
 
-      {keychain.data == null && (
+      {keychain.data == null && !own && (
         <Link
           to="/qr-sign-in"
           replace

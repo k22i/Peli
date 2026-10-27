@@ -5,7 +5,8 @@
 // sync module (#28) builds on it.
 //
 // The backend's key is not a secret: it is read at runtime from
-// GET /.well-known/nuvio, never built in.
+// GET /.well-known/nuvio, never built in, unless the user gives one for their
+// own server (#34, server.go).
 package nuvio
 
 import (
@@ -45,6 +46,12 @@ var (
 	// ErrProfileNotFound means the account has no profile at that index:
 	// another device deleted it.
 	ErrProfileNotFound = errors.New("nuvio: profile not found")
+	// ErrNotNuvio means the server answered, but not as a Nuvio backend: no
+	// discovery document, or none of Nuvio's functions (#34).
+	ErrNotNuvio = errors.New("nuvio: not a Nuvio backend")
+	// ErrKeyRefused means the server refused the publishable key it was
+	// given (#34).
+	ErrKeyRefused = errors.New("nuvio: key refused")
 )
 
 // APIError is an error answer the client has no sentinel for.
@@ -58,9 +65,9 @@ func (e *APIError) Error() string {
 	return fmt.Sprintf("nuvio: HTTP %d %s: %s", e.Status, e.Code, e.Message)
 }
 
-// Client calls one Nuvio backend. It is safe for concurrent use.
+// Client calls one Nuvio backend at a time: Nuvio's, or the user's own
+// (UseServer). It is safe for concurrent use.
 type Client struct {
-	baseURL   string
 	userAgent string
 	http      *http.Client
 
@@ -76,8 +83,14 @@ type Client struct {
 	// Sent as p_origin_client_id with every write: this install's client ID.
 	originID string
 
-	mu  sync.Mutex
-	key string
+	// The backend and its publishable key: given with UseServer, or else
+	// read from its discovery document, once. Every request reads both
+	// together, so a switch never sends one server's key to another.
+	mu      sync.Mutex
+	baseURL string
+	key     string
+	// One discovery at a time.
+	discover sync.Mutex
 }
 
 // requestsPerSecond is the most requests a client sends. The backend allows
@@ -139,7 +152,15 @@ func (c *Client) OriginClientID() string { return c.originID }
 // no session, no key, and nothing written. It returns ErrUnreachable or
 // ErrUnavailable as any other call would.
 func (c *Client) Ping(ctx context.Context) error {
-	return c.do(ctx, http.MethodGet, "/.well-known/nuvio", nil, nil, nil)
+	base, _ := c.server()
+	return c.do(ctx, base, http.MethodGet, "/.well-known/nuvio", nil, nil, nil)
+}
+
+// server returns the backend's URL and its key, "" until it is known.
+func (c *Client) server() (baseURL, key string) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return c.baseURL, c.key
 }
 
 func randomHex(n int) string {
@@ -548,7 +569,8 @@ func (c *Client) AvatarImageURL(a Avatar) string {
 	for i, segment := range segments {
 		segments[i] = url.PathEscape(segment)
 	}
-	return c.baseURL + "/storage/v1/object/public/avatars/" + strings.Join(segments, "/")
+	base, _ := c.server()
+	return base + "/storage/v1/object/public/avatars/" + strings.Join(segments, "/")
 }
 
 // discovery is the backend's discovery document, GET /.well-known/nuvio.
@@ -557,29 +579,47 @@ type discovery struct {
 	PublishableKey string `json:"publishable_key"`
 }
 
-// publishableKey returns the backend's public key, reading the discovery
-// document once.
-func (c *Client) publishableKey(ctx context.Context) (string, error) {
+// publishableKey returns the backend and its public key, reading the
+// discovery document the first time it's needed.
+func (c *Client) publishableKey(ctx context.Context) (baseURL, key string, err error) {
+	if base, key := c.server(); key != "" {
+		return base, key, nil
+	}
+	c.discover.Lock()
+	defer c.discover.Unlock()
+	base, key := c.server()
+	if key != "" {
+		return base, key, nil
+	}
+	if key, err = discoverKey(ctx, c, base); err != nil {
+		return "", "", err
+	}
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	if c.key != "" {
-		return c.key, nil
+	// Keep it only if the client still points there.
+	if c.baseURL == base && c.key == "" {
+		c.key = key
 	}
+	return base, key, nil
+}
+
+// discoverKey reads the publishable key from the discovery document of the
+// backend at base.
+func discoverKey(ctx context.Context, c *Client, base string) (string, error) {
 	var doc discovery
-	if err := c.do(ctx, http.MethodGet, "/.well-known/nuvio", nil, nil, &doc); err != nil {
+	if err := c.do(ctx, base, http.MethodGet, "/.well-known/nuvio", nil, nil, &doc); err != nil {
 		return "", err
 	}
 	if doc.Service != "nuvio" || doc.PublishableKey == "" {
-		return "", fmt.Errorf("nuvio: %s is not a Nuvio backend", c.baseURL)
+		return "", fmt.Errorf("%w: %s", ErrNotNuvio, base)
 	}
-	c.key = doc.PublishableKey
-	return c.key, nil
+	return doc.PublishableKey, nil
 }
 
 // call makes an authenticated request: the publishable key as apikey, and
 // the session's access token, if any, as the bearer.
 func (c *Client) call(ctx context.Context, method, path, accessToken string, in, out any) error {
-	key, err := c.publishableKey(ctx)
+	base, key, err := c.publishableKey(ctx)
 	if err != nil {
 		return err
 	}
@@ -588,11 +628,12 @@ func (c *Client) call(ctx context.Context, method, path, accessToken string, in,
 		accessToken = key
 	}
 	header.Set("Authorization", "Bearer "+accessToken)
-	return c.do(ctx, method, path, header, in, out)
+	return c.do(ctx, base, method, path, header, in, out)
 }
 
-// do sends a request, retrying on 429, and decodes a 2xx JSON answer into out.
-func (c *Client) do(ctx context.Context, method, path string, header http.Header, in, out any) error {
+// do sends a request to the backend at base, retrying on 429, and decodes a
+// 2xx JSON answer into out.
+func (c *Client) do(ctx context.Context, base, method, path string, header http.Header, in, out any) error {
 	var body []byte
 	if in != nil {
 		var err error
@@ -601,7 +642,7 @@ func (c *Client) do(ctx context.Context, method, path string, header http.Header
 		}
 	}
 	for attempt := 0; ; attempt++ {
-		err := c.once(ctx, method, path, header, body, out)
+		err := c.once(ctx, base, method, path, header, body, out)
 		if !errors.Is(err, ErrRateLimited) || attempt == c.retries {
 			return err
 		}
@@ -612,7 +653,7 @@ func (c *Client) do(ctx context.Context, method, path string, header http.Header
 	}
 }
 
-func (c *Client) once(ctx context.Context, method, path string, header http.Header, body []byte, out any) error {
+func (c *Client) once(ctx context.Context, base, method, path string, header http.Header, body []byte, out any) error {
 	if c.limiter != nil {
 		if wait := c.limiter.reserve(); wait > 0 {
 			if err := c.sleep(ctx, wait); err != nil {
@@ -620,7 +661,7 @@ func (c *Client) once(ctx context.Context, method, path string, header http.Head
 			}
 		}
 	}
-	req, err := http.NewRequestWithContext(ctx, method, c.baseURL+path, bytes.NewReader(body))
+	req, err := http.NewRequestWithContext(ctx, method, base+path, bytes.NewReader(body))
 	if err != nil {
 		return err
 	}

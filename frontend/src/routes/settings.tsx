@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
+import { ServerDialog } from "@/components/settings/server-dialog";
 import {
   SettingRow,
   SettingsNav,
@@ -27,6 +28,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { addonsQuery } from "@/lib/addons";
 import { appVersionQuery } from "@/lib/app-info";
 import { useCurrentProfile } from "@/lib/profile";
+import { serverName, serverQuery } from "@/lib/server";
 import {
   captionsModes,
   deviceSettingsQuery,
@@ -84,7 +86,9 @@ function Settings() {
 
 function AccountSection() {
   const profile = useCurrentProfile();
+  const server = useQuery(serverQuery);
   const [signingOut, setSigningOut] = useState(false);
+  const [pickingServer, setPickingServer] = useState(false);
 
   // The Guest never syncs, even beside a signed-in account (ADR-0010).
   const status = profile.guest
@@ -126,6 +130,30 @@ function AccountSection() {
         )}
       </SettingRow>
       <SignOutDialog open={signingOut} onOpenChange={setSigningOut} />
+      <SettingRow
+        id="server"
+        label="Server"
+        description={
+          !server.data
+            ? "…"
+            : server.data.custom
+              ? `Your own server, ${serverName(server.data.url)}.`
+              : "Nuvio’s server. You can use your own Nuvio-compatible server instead."
+        }
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          aria-label="Change server"
+          disabled={!server.data}
+          onClick={() => setPickingServer(true)}
+        >
+          Change
+        </Button>
+      </SettingRow>
+      {server.data && (
+        <ServerDialog server={server.data} open={pickingServer} onOpenChange={setPickingServer} />
+      )}
       <SettingRow
         id="profiles"
         label="Profiles"

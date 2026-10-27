@@ -16,6 +16,7 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 
 	"github.com/k22i/Sinag/internal/nuvio"
+	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
 	"github.com/k22i/Sinag/internal/store"
 )
 
@@ -239,4 +240,67 @@ func signUp(ctx context.Context, url, email, password string) error {
 		return errors.New("signup: " + res.Status)
 	}
 	return nil
+}
+
+// TestSelfHostServer switches to a self-hosted Nuvio backend at NUVIO_URL as
+// a custom server (#34), from a fake standing in for Nuvio's: a wrong key is
+// refused, the right one is kept, and an account there signs in. Never live.
+func TestSelfHostServer(t *testing.T) {
+	url := os.Getenv("NUVIO_URL")
+	if url == "" || url == nuvio.DefaultURL {
+		t.Skip("set NUVIO_URL to a self-hosted backend, not live")
+	}
+	email, password := "sinag-server-"+strconv.FormatInt(time.Now().UnixNano(), 36)+"@example.com", "throwaway-"+strconv.Itoa(os.Getpid())
+	if err := signUp(t.Context(), url, email, password); err != nil {
+		t.Fatal(err)
+	}
+	f := newFixture(t)
+	if _, err := f.service.SignIn(t.Context(), "me@example.com", nuviotest.Password); err != nil {
+		t.Fatal(err)
+	}
+
+	err := f.service.TestServer(t.Context(), url, "sb_publishable_wrong")
+	wantCode(t, "wrong key", err, CodeServerKeyRefused)
+	t.Logf("wrong key: %v", err)
+	err = f.service.TestServer(t.Context(), url+"/storage/v1", "")
+	wantCode(t, "not Nuvio", err, CodeNotNuvioServer)
+	t.Logf("not Nuvio: %v", err)
+
+	res, err := http.Get(url + "/.well-known/nuvio")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		PublishableKey string `json:"publishable_key"`
+	}
+	json.NewDecoder(res.Body).Decode(&doc)
+	res.Body.Close()
+	server, err := f.service.SetServer(t.Context(), url, doc.PublishableKey)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !server.Custom || !server.HasKey {
+		t.Fatalf("server = %+v", server)
+	}
+	if status, _ := f.service.Status(); status.SignedIn || status.SessionEnded {
+		t.Fatalf("status = %+v after switching", status)
+	}
+
+	if _, err := f.service.SignIn(t.Context(), email, password); err != nil {
+		t.Fatal(err)
+	}
+	// The key it publishes works as well, and keeps the session.
+	if _, err := f.service.SetServer(t.Context(), url, ""); err != nil {
+		t.Fatal(err)
+	}
+	err = f.service.session.Do(t.Context(), func(s nuvio.Session) error {
+		_, err := f.service.nuvio.Profiles(t.Context(), s)
+		return err
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := f.service.SignOut(t.Context()); err != nil {
+		t.Fatal(err)
+	}
 }

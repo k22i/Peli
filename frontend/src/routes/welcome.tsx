@@ -6,6 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { keychainQuery, useContinueAsGuest } from "@/lib/account";
+import { serverName, serverQuery } from "@/lib/server";
 
 export const Route = createFileRoute("/welcome")({
   staticData: { chrome: "focus" },
@@ -17,6 +18,8 @@ export const Route = createFileRoute("/welcome")({
 function Welcome() {
   const navigate = useNavigate();
   const keychain = useQuery(keychainQuery);
+  // The user's own server (#34) has no phone sign-in.
+  const server = useQuery(serverQuery);
   const guest = useContinueAsGuest();
   // Signing in needs somewhere safe to keep the session (ADR-0007).
   const noKeychain = keychain.data ?? null;
@@ -34,8 +37,9 @@ function Welcome() {
       <header className="flex flex-col gap-3">
         <h1 className="font-heading text-display font-stretch-semi-expanded">Sinag</h1>
         <p className="text-pretty text-muted-foreground">
-          Sign in with your Nuvio account to bring your profiles, library and Continue Watching with
-          you.
+          {server.data?.custom
+            ? `Sign in with your account on ${serverName(server.data.url)} to bring your profiles, library and Continue Watching with you.`
+            : "Sign in with your Nuvio account to bring your profiles, library and Continue Watching with you."}
         </p>
       </header>
 
@@ -59,8 +63,9 @@ function Welcome() {
             Sign in with email
           </Link>
         )}
-        {/* QR sign-in (#21): approve on the phone, no password typed here. */}
-        {noKeychain ? (
+        {/* QR sign-in (#21): approve on the phone, no password typed here.
+            Nuvio's server only. */}
+        {server.data?.custom ? null : noKeychain ? (
           <Button size="lg" variant="outline" disabled>
             <QrCode />
             Sign in with your phone

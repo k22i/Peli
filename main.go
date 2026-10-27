@@ -39,8 +39,9 @@ func main() {
 
 	db := store.NewService(store.DefaultPath())
 	keychain := secrets.New(secrets.ServiceName)
-	// $SINAG_NUVIO_URL points Sinag at a self-hosted Nuvio backend, such as
-	// the contract tests' (#33).
+	// $SINAG_NUVIO_URL stands in for Nuvio's backend, such as the contract
+	// tests' self-host (#33). A server the user picks in Settings (#34) is
+	// restored over it when the account service starts.
 	client := nuvio.New(cmp.Or(os.Getenv("SINAG_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
 	accounts := account.NewService(client, keychain, db)
 	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})

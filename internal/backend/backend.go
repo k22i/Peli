@@ -11,7 +11,7 @@
 //   - Remote is the account side a linked profile needs: sign-in, sessions,
 //     profiles, PINs and avatars. Only Nuvio has accounts, so only
 //     *nuvio.Client implements it. A custom server (#34) speaks the same
-//     protocol and is another *nuvio.Client at another URL.
+//     protocol: the client is pointed at its URL.
 package backend
 
 import (

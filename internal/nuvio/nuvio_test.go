@@ -100,7 +100,7 @@ func TestRateLimitBackoffStopsWithContext(t *testing.T) {
 	b := nuviotest.NewServer(t)
 	b.Limited.Store(100)
 	c := New(b.URL, "1.2.3")
-	if _, err := c.publishableKey(t.Context()); err != nil {
+	if _, _, err := c.publishableKey(t.Context()); err != nil {
 		t.Fatal(err)
 	}
 	ctx, cancel := context.WithCancel(t.Context())

@@ -47,6 +47,11 @@ const problems: Record<Exclude<SignInErrorCode, "invalid_credentials">, Problem>
     title: "The code expired",
     description: "Codes last five minutes. Get a new one and scan it again.",
   },
+  qr_unavailable: {
+    icon: TriangleAlert,
+    title: "Phone sign-in needs Nuvio’s server",
+    description: "Your own server can’t approve it. Sign in with email and password instead.",
+  },
 };
 
 export function problemFor(error: Error): Problem {
