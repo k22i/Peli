@@ -189,11 +189,6 @@ func (s *Service) KidsScope(profileID uint64) (KidsScope, error) {
 	return s.store.KidsScope(profileID)
 }
 
-// SetAddons replaces a profile's addons, in order.
-func (s *Service) SetAddons(profileID uint64, addons []Addon) error {
-	return s.store.SetAddons(profileID, addons)
-}
-
 // ProfileSettings returns a profile's settings.
 func (s *Service) ProfileSettings(profileID uint64) (ProfileSettings, error) {
 	return s.store.ProfileSettings(profileID)

@@ -25,6 +25,10 @@ type Profile struct {
 	// The Nuvio profile this one syncs with (Nuvio addresses profiles by index
 	// 1–6), or nil for a local-only profile such as the Guest.
 	NuvioIndex *int `json:"nuvioIndex,omitempty"`
+	// Whether the Nuvio profile uses the primary profile's addons
+	// (uses_primary_addons): its addons are then profile 1's list, read and
+	// written there, and the profile's own copy here is that list (#32).
+	UsesPrimaryAddons bool `json:"usesPrimaryAddons,omitempty"`
 	// The Guest profile, for using Sinag without an account (#23). There is
 	// at most one, it is local-only, and signing in or out leaves it as it
 	// is: its data never merges into an account's (ADR-0010).

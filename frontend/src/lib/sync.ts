@@ -10,14 +10,15 @@ import type { Surface } from "@bindings/store";
 export const pulledEvent = "sync:pulled";
 
 // The query keys under which each synced surface is read. A screen that shows
-// library, progress or watched data keys its query under one of these, so a
+// library, progress, watched or addon data keys its query under one of these, so a
 // pull refreshes it. Progress feeds "continue watching", and a progress push
 // can mark an item watched on the server (the 90 % rule), so watched is
-// refreshed with it.
+// refreshed with it. The addon list comes whole with every pull (#32).
 export const surfaceQueryKeys: Partial<Record<Surface, readonly (readonly string[])[]>> = {
   library: [["library"]],
   progress: [["progress"], ["continue-watching"]],
   watched: [["watched"]],
+  addons: [["addons"]],
 };
 
 export function invalidateSurfaces(queryClient: QueryClient, surfaces: readonly Surface[]) {

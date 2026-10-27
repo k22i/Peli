@@ -418,10 +418,11 @@ func profileName(name string) (string, error) {
 func fromNuvio(p nuvio.Profile, images map[string]string) store.Profile {
 	return store.Profile{
 		Name:           p.Name,
-		NuvioIndex:     &p.Index,
-		Avatar:         avatarImage(p, images),
-		AvatarColor:    hexColor(p.AvatarColor),
-		PinEnabled:     p.PinEnabled,
-		PinLockedUntil: p.PinLockedUntil,
+		NuvioIndex:        &p.Index,
+		UsesPrimaryAddons: p.UsesPrimaryAddons && p.Index != 1,
+		Avatar:            avatarImage(p, images),
+		AvatarColor:       hexColor(p.AvatarColor),
+		PinEnabled:        p.PinEnabled,
+		PinLockedUntil:    p.PinLockedUntil,
 	}
 }

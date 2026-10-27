@@ -1,6 +1,6 @@
 ---
 name: sync-module
-description: "How Sinag's sync module (#28) is laid out: Backend/Remote interfaces, ApplyChanges, fake Nuvio sync server, boundary test, what #32 still owns"
+description: "How Sinag's sync module (#28) is laid out: Backend/Remote interfaces, ApplyChanges, fake Nuvio sync server, boundary test, pull, push, offline and addon sync"
 metadata:
   type: project
 ---
@@ -20,3 +20,4 @@ The sync module (#28, ADR-0015) is `internal/nuvio` (wire: `sync.go` has the lib
 - `apt-get update` first, then the `LINUX_DEPS` install; `frontend/dist` needs a file (`touch frontend/dist/.keep`) for `go vet .`.
 - Offline and reconnect (#31, ADR-0018) is `internal/syncer/connection.go`: `Monitor.observe` is fed by every linked pull/push, probes `nuvio.Client.Ping` only while offline (5 s→1 min), and on turning online runs `Service.reconnect` (`Pusher.Resume`, then `Puller.PullNow`). `nuviotest.Server.Offline` drops connections for real offline tests. Frontend: `useConnection`/`useConnectionEvents` in `lib/sync.ts`, `ConnectionStatus` in the sidebar, Home rows from `lib/library.ts` (#42 builds on them).
 - `TestPushFollowsChanges` raced `Start`'s launch flush under `-cpu 1`; stress syncer tests with `-count=15 -race -cpu 1,2,8`.
+- Addon sync (#32, ADR-0019) is `internal/backend/addons.go`: the pull reads the whole list each time (syncer `surfaces` includes addons), a push re-reads the server's list and three-way merges with `Push.Base` (set by `store.editAddons`), and `Profile.UsesPrimaryAddons` sends a profile's addons to index 1 (the server doesn't redirect). Frontend edits go through `Account.InstallAddon/RemoveAddon/MoveAddon/EnableAddon` (`useEditAddons` in `lib/addons.ts`, kids-guarded), never a whole list; `Store.SetAddons` is unbound. The `/addons` page is a read-only list with manifest errors, waiting for #37's client and #38's controls.

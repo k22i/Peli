@@ -319,3 +319,33 @@ func TestApplySkipsInvalidChanges(t *testing.T) {
 		t.Fatalf("applied %d, library %+v", n, lib)
 	}
 }
+
+// The addon list comes in with every pull, though it has no feed, and the
+// frontend hears of it only when it changed (#32).
+func TestPullBringsInAddons(t *testing.T) {
+	server := nuviotest.NewServer(t)
+	phone, desktop := newDevice(t, server), newDevice(t, server)
+	puller, clock, emitted := desktop.puller()
+	cinemeta := store.Addon{URL: "https://v3-cinemeta.strem.io/manifest.json", Name: "Cinemeta", Enabled: true}
+
+	check(t, phone.store.InstallAddon(phone.profile.ID, cinemeta))
+	phone.push(t)
+	pulled, err := puller.Pull(t.Context())
+	check(t, err)
+	want := Pulled{ProfileID: desktop.profile.ID, Surfaces: []store.Surface{store.SurfaceAddons}}
+	if !reflect.DeepEqual(pulled, want) || !reflect.DeepEqual(*emitted, []Pulled{want}) {
+		t.Fatalf("pulled %+v, emitted %+v, want %+v", pulled, *emitted, want)
+	}
+	if got, _ := desktop.store.Addons(desktop.profile.ID); !reflect.DeepEqual(got, []store.Addon{cinemeta}) {
+		t.Fatalf("addons = %+v", got)
+	}
+
+	// The same list again: read, but nothing to tell.
+	*clock = clock.Add(MinGap)
+	if pulled, err = puller.Pull(t.Context()); err != nil || len(pulled.Surfaces) != 0 || len(*emitted) != 1 {
+		t.Fatalf("pulled %+v, err %v, emitted %d", pulled, err, len(*emitted))
+	}
+	if got := server.Calls(); !slices.ContainsFunc(got, func(c string) bool { return strings.Contains(c, "/rest/v1/addons") }) {
+		t.Fatalf("no addons read in %v", got)
+	}
+}

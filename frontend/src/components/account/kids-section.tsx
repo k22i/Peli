@@ -6,13 +6,8 @@ import type { Profile } from "@bindings/store";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { toastManager } from "@/components/ui/toast";
-import {
-  kidsScopeQuery,
-  profileAddonsQuery,
-  profileProblem,
-  useSetKids,
-  useSetKidsScope,
-} from "@/lib/account";
+import { addonsQuery } from "@/lib/addons";
+import { kidsScopeQuery, profileProblem, useSetKids, useSetKidsScope } from "@/lib/account";
 
 // Makes a Nuvio profile a kids profile and chooses what it sees (#26): the
 // addons its catalogs and search results come from. It sits in the profile
@@ -63,7 +58,7 @@ export function KidsSection({ profile }: { profile: Profile }) {
 // The profile's addons, each on or off for a kids profile. What isn't on is
 // hidden, including addons installed later.
 function AllowedAddons({ profileId }: { profileId: number }) {
-  const addons = useQuery(profileAddonsQuery(profileId));
+  const addons = useQuery(addonsQuery(profileId));
   const scope = useQuery(kidsScopeQuery(profileId));
   const save = useSetKidsScope(profileId);
   const labelId = useId();

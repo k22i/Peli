@@ -335,6 +335,9 @@ const (
 	CodeParentPINRequired = "parent_pin_required"
 	CodeKidsNeedsPIN      = "kids_need_pin"
 	CodeKidsKeepsPIN      = "kids_keep_pin"
+	// Editing the addon list (#32).
+	CodeAddonInstalled = "addon_installed"
+	CodeAddonNotFound  = "addon_not_found"
 )
 
 // MarshalError gives the frontend a code for the errors it explains; Wails
@@ -381,6 +384,10 @@ func MarshalError(err error) []byte {
 		code = CodeKidsNeedsPIN
 	case errors.Is(err, ErrKidsKeepsPIN):
 		code = CodeKidsKeepsPIN
+	case errors.Is(err, store.ErrAddonInstalled):
+		code = CodeAddonInstalled
+	case errors.Is(err, store.ErrAddonNotFound):
+		code = CodeAddonNotFound
 	default:
 		return nil
 	}

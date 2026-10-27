@@ -98,6 +98,9 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 		dest = p.Bucket(t.bucket)
 	}
 	have := dest.Get(t.key)
+	if have == nil && c.Surface == SurfaceAddons {
+		have = []byte("[]") // a profile never given a list has none
+	}
 	if t.watchedAt != nil && have != nil {
 		var stored Progress
 		if err := json.Unmarshal(have, &stored); err != nil {

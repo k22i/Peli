@@ -39,7 +39,8 @@ func TestPushFollowsChanges(t *testing.T) {
 	server := nuviotest.NewServer(t)
 	desktop := newDevice(t, server)
 	p := NewPusher(func() *store.Store { return desktop.store }, desktop.backend)
-	p.debounce, p.maxWait = 100*time.Millisecond, time.Second
+	// Wide enough that a loaded machine under -race can't split the burst.
+	p.debounce, p.maxWait = 500*time.Millisecond, 2*time.Second
 	desktop.store.OnQueued(p.Notify)
 	// Not Start: its launch flush would race the saves and send the first.
 	p.ctx = t.Context()

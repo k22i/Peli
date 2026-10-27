@@ -194,13 +194,6 @@ export const kidsScopeQuery = (profileId: number) =>
     queryFn: () => Store.KidsScope(profileId),
   });
 
-// A profile's addons, for choosing what a kids profile sees.
-export const profileAddonsQuery = (profileId: number) =>
-  queryOptions({
-    queryKey: ["addons", profileId],
-    queryFn: () => Store.Addons(profileId),
-  });
-
 // Makes a profile a kids profile, or an ordinary one again (#26).
 export function useSetKids() {
   const queryClient = useQueryClient();
@@ -353,6 +346,8 @@ const profileErrorCodes = [
   "parent_pin_required",
   "kids_need_pin",
   "kids_keep_pin",
+  "addon_installed",
+  "addon_not_found",
 ] as const;
 
 // What to tell the user when changing a profile fails.
@@ -427,6 +422,16 @@ export function profileProblem(error: Error): { title: string; description: stri
       return {
         title: "A kids profile keeps its PIN",
         description: "Turn kids mode off first to clear it.",
+      };
+    case "addon_installed":
+      return {
+        title: "Already installed",
+        description: "This profile already has an addon at that address.",
+      };
+    case "addon_not_found":
+      return {
+        title: "This addon is gone",
+        description: "It was removed, maybe on another device.",
       };
     default:
       return { title: "Couldn’t save the profile", description: error.message };

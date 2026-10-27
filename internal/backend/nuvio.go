@@ -54,7 +54,7 @@ func (n Nuvio) Pull(ctx context.Context, profile store.Profile, surface store.Su
 	err = n.Sessions.Do(ctx, func(s nuvio.Session) error {
 		changes, next = nil, cursor
 		if surface == store.SurfaceAddons {
-			change, err := n.pullAddons(ctx, s, index)
+			change, err := n.pullAddons(ctx, s, addonsIndex(profile, index))
 			changes = []Change{change}
 			return err
 		}
@@ -127,18 +127,6 @@ func (n Nuvio) page(ctx context.Context, s nuvio.Session, index int, surface sto
 	return nil, 0, fmt.Errorf("backend: no delta feed for %q", surface)
 }
 
-func (n Nuvio) pullAddons(ctx context.Context, s nuvio.Session, index int) (Change, error) {
-	rows, err := n.Client.Addons(ctx, s, index)
-	if err != nil {
-		return Change{}, err
-	}
-	addons := make([]store.Addon, len(rows))
-	for i, r := range rows {
-		addons[i] = store.Addon{URL: r.URL, Name: r.Name, Enabled: r.Enabled}
-	}
-	return newChange(store.SurfaceAddons, store.OpUpsert, addons)
-}
-
 // newChange wraps item, which store.PushKey names.
 func newChange(surface store.Surface, op store.Op, item any) (Change, error) {
 	data, err := json.Marshal(item)
@@ -202,7 +190,9 @@ type batch struct {
 // hasn't moved 15 s or isn't 30 s newer than its own: the next push carries
 // newer data, and a dropped one means the server is almost as far along.
 // Addons replace the whole list, so only the newest addons push is sent, and
-// it is always the whole list; all of them are acked with it.
+// it is always the whole list, merged with the server's (addons.go); all of
+// them are acked with it. A profile that uses the primary's addons pulls and
+// pushes the primary's list.
 func (n Nuvio) Push(ctx context.Context, profile store.Profile, pushes []store.Push) ([]store.Push, error) {
 	index, err := indexOf(profile)
 	if err != nil {
@@ -216,7 +206,11 @@ func (n Nuvio) Push(ctx context.Context, profile store.Profile, pushes []store.P
 		}
 	}
 	for _, b := range batches(pushes) {
-		err := n.Sessions.Do(ctx, func(s nuvio.Session) error { return n.send(ctx, s, index, b) })
+		target := index
+		if b.surface == store.SurfaceAddons {
+			target = addonsIndex(profile, index)
+		}
+		err := n.Sessions.Do(ctx, func(s nuvio.Session) error { return n.send(ctx, s, target, b) })
 		if err == nil {
 			acked = append(acked, b.pushes...)
 			continue
@@ -348,16 +342,7 @@ func (n Nuvio) send(ctx context.Context, s nuvio.Session, index int, b batch) er
 		}
 		return c.DeleteWatched(ctx, s, index, keys)
 	case store.SurfaceAddons:
-		var list []store.Addon
-		newest := b.pushes[len(b.pushes)-1]
-		if err := json.Unmarshal(newest.Item, &list); err != nil {
-			return fmt.Errorf("backend: addons push: %w", err)
-		}
-		rows := make([]nuvio.AddonRow, len(list))
-		for i, a := range list {
-			rows[i] = nuvio.AddonRow{URL: a.URL, Name: a.Name, Enabled: a.Enabled}
-		}
-		return c.PushAddons(ctx, s, index, rows)
+		return n.pushAddons(ctx, s, index, b.pushes)
 	}
 	return fmt.Errorf("backend: no call to push %s", b.surface)
 }

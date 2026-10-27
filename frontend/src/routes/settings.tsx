@@ -24,6 +24,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { addonsQuery } from "@/lib/addons";
 import { appVersionQuery } from "@/lib/app-info";
 import { useCurrentProfile } from "@/lib/profile";
 import {
@@ -38,7 +39,6 @@ import {
   type DeviceSettings,
   type ProfileSettings,
 } from "@/lib/settings";
-import { Service as Store } from "@bindings/store";
 
 export const Route = createFileRoute("/settings")({
   component: Settings,
@@ -273,10 +273,7 @@ function ProfileSections({ profileId }: { profileId: number }) {
 }
 
 function AddonsSection({ profileId }: { profileId: number }) {
-  const addons = useQuery({
-    queryKey: ["addons", profileId],
-    queryFn: () => Store.Addons(profileId),
-  });
+  const addons = useQuery(addonsQuery(profileId));
   const count = addons.data?.length;
 
   return (

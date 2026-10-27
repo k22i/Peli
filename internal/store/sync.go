@@ -35,6 +35,11 @@ type Push struct {
 	Key     string  `json:"key"`
 	// The item as it should be on the server, or as it was before a delete.
 	Item json.RawMessage `json:"item"`
+	// For an addons push, the list it was edited from: what the backend had
+	// before the first edit that hasn't been sent, so the push can be merged
+	// with what other devices changed since (ADR-0019). Nil for any other
+	// push, and for an addons push queued before #32.
+	Base json.RawMessage `json:"base,omitempty"`
 	// Order of the latest change; Pending returns pushes in this order.
 	Seq       uint64 `json:"seq"`
 	QueuedAt  int64  `json:"queuedAt"` // ms since epoch
@@ -126,19 +131,24 @@ func remove(p *bolt.Bucket, bucket []byte, surface Surface, key []byte, pushKey 
 // enqueue queues a push for a local change, if profile bucket p syncs. It runs
 // in the change's transaction, so the change and its push commit together.
 func enqueue(p *bolt.Bucket, surface Surface, op Op, key string, item any) error {
-	if ok, err := syncs(p); err != nil || !ok {
-		return err
-	}
 	data, err := json.Marshal(item)
 	if err != nil {
 		return err
 	}
-	push := Push{Surface: surface, Op: op, Key: key, Item: data, QueuedAt: time.Now().UnixMilli()}
+	return queue(p, Push{Surface: surface, Op: op, Key: key, Item: data})
+}
+
+// queue is enqueue for a push that is already built.
+func queue(p *bolt.Bucket, push Push) error {
+	if ok, err := syncs(p); err != nil || !ok {
+		return err
+	}
+	push.QueuedAt = time.Now().UnixMilli()
 	outbox := p.Bucket(bucketOutbox)
 	seq, err := outbox.NextSequence()
 	if err != nil {
 		return err
 	}
 	push.Seq = seq
-	return put(outbox, joinKey(string(surface), key), push)
+	return put(outbox, joinKey(string(push.Surface), push.Key), push)
 }
