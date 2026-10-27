@@ -25,5 +25,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0019](0019-addon-list-sync.md) | Addon list sync: the whole list on every pull, pushes merged three ways with the server's list, sharing profiles use the primary's | 2026-10-27 |
 | [0020](0020-nuvio-contract-tests.md) | Nuvio contract tests: one table of endpoints and answer types, run against the fake on every push and against pinned self-host daily | 2026-10-27 |
 | [0021](0021-custom-server.md) | A custom server: one client pointed at it, the URL in the store, the key in the keychain, and switching signs out | 2026-10-27 |
+| [0022](0022-home-layout-and-collections.md) | Home layout and collections: pulled from Nuvio's apps, kept as their blobs, pushed only to a custom server | 2026-10-27 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

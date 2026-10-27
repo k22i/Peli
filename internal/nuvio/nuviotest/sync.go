@@ -10,7 +10,8 @@ import (
 	"strings"
 )
 
-// The fake's library, watch progress, watched items and addons (#28). They
+// The fake's library, watch progress, watched items and addons (#28), and
+// home layouts and collections (#35, home.go). They
 // behave as docs/spikes/nuvio-backend.md saw them:
 //   - Event IDs are one sequence for the whole backend, starting high and
 //     skipping numbers, and every write is in the feed, our own too, with no
@@ -57,8 +58,10 @@ type syncState struct {
 	rows    map[string]map[rowKey]map[string]any // by surface
 	events  map[string][]event
 	addons  map[profileKey][]map[string]any
-	pushes  map[string]int // pushes received, by RPC name
-	dropped int            // progress entries dropped by the throttle
+	home    map[homeKey]map[string]any // home layouts (home.go)
+	colls   map[profileKey][]any       // collections (home.go)
+	pushes  map[string]int             // pushes received, by RPC name
+	dropped int                        // progress entries dropped by the throttle
 }
 
 func newSyncState() *syncState {
@@ -67,6 +70,8 @@ func newSyncState() *syncState {
 		rows:   map[string]map[rowKey]map[string]any{Library: {}, Progress: {}, Watched: {}},
 		events: map[string][]event{},
 		addons: map[profileKey][]map[string]any{},
+		home:   map[homeKey]map[string]any{},
+		colls:  map[profileKey][]any{},
 		pushes: map[string]int{},
 	}
 }
@@ -157,6 +162,9 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 		s.deltaFeed(w, profile, feed, body)
 		return true
 	}
+	if s.pullHome(w, rpc, profile, body) {
+		return true
+	}
 	if index < 1 || index > 6 {
 		postgrestError(w, http.StatusBadRequest, "P0001", "Invalid profile id")
 		return true
@@ -196,6 +204,8 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 			})
 		}
 		st.addons[profile] = addons
+	case "sync_push_home_catalog_settings", "sync_push_collections":
+		s.pushHome(rpc, profile, body)
 	}
 	w.WriteHeader(http.StatusNoContent)
 	return true
@@ -220,6 +230,11 @@ var syncArgs = map[string][]string{
 	"sync_push_watched_items":        {"p_items", "p_profile_id", "p_origin_client_id"},
 	"sync_delete_watched_items":      {"p_keys", "p_profile_id", "p_origin_client_id"},
 	"sync_push_addons":               {"p_addons", "p_profile_id", "p_origin_client_id"},
+
+	"sync_pull_home_catalog_settings": {"p_profile_id", "p_platform"},
+	"sync_push_home_catalog_settings": {"p_profile_id", "p_settings_json", "p_platform", "p_origin_client_id"},
+	"sync_pull_collections":           {"p_profile_id"},
+	"sync_push_collections":           {"p_profile_id", "p_collections_json", "p_origin_client_id"},
 }
 
 func isSyncRPC(rpc string) bool {

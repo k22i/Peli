@@ -3,6 +3,7 @@ package syncer
 import (
 	"context"
 	"errors"
+	"slices"
 	"testing"
 	"time"
 
@@ -345,29 +346,79 @@ func TestFlushSendsHeldWatchedPushes(t *testing.T) {
 	}
 }
 
-// Home layout and collections never go to the official backend: the sync
-// module has no call for them, and a push for one is dropped, not sent.
-func TestOnlySyncedSurfacesArePushed(t *testing.T) {
-	for _, surface := range []store.Surface{"collections", "home-layout", "settings"} {
-		if backend.Syncs(surface) {
-			t.Errorf("Syncs(%q) = true", surface)
-		}
+// onOwnServer is newDevice with the fake as a custom server (#34), the only
+// kind the home layout and collections are pushed to.
+func onOwnServer(t *testing.T, server *nuviotest.Server) *device {
+	t.Helper()
+	d := newDevice(t, server)
+	client := nuvio.New("https://nuvio.invalid", "1.2.3")
+	client.UseServer(server.URL, "")
+	d.backend.Client = client
+	return d
+}
+
+// Home layout and collections never go to the official backend (#35): on
+// Nuvio's server a queued push is dropped unsent, with the rest still sent;
+// on a custom server it goes out like any other.
+func TestHomeIsPushedToOwnServerOnly(t *testing.T) {
+	if backend.Syncs("settings") {
+		t.Error("Syncs(settings) = true")
 	}
-	for _, surface := range []store.Surface{store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons} {
-		if !backend.Syncs(surface) {
-			t.Errorf("Syncs(%q) = false", surface)
-		}
-	}
+	layout := store.HomeLayout{Rows: []store.HomeRow{{AddonID: "org.cinemeta", Type: "movie", CatalogID: "top", Enabled: true}}}
+	collections := []byte(`[{"id":"c1","title":"Streaming","folders":[]}]`)
 
 	server := nuviotest.NewServer(t)
 	desktop := newDevice(t, server)
-	calls := len(server.Calls())
-	_, err := desktop.backend.Push(t.Context(), desktop.profile, []store.Push{{Surface: "collections", Op: store.OpUpsert, Key: "x", Item: []byte(`{}`)}})
-	if err == nil {
-		t.Fatal("pushed a collection")
+	check(t, desktop.store.SetHomeLayout(desktop.profile.ID, layout))
+	check(t, desktop.store.SetCollections(desktop.profile.ID, collections))
+	check(t, desktop.store.SaveLibraryItem(desktop.profile.ID, dune))
+	p, _ := desktop.pusher()
+	check(t, p.Flush(t.Context()))
+	if len(pending(t, desktop)) != 0 {
+		t.Fatalf("still queued: %+v", pending(t, desktop))
 	}
-	if len(server.Calls()) != calls {
-		t.Fatalf("the push made requests: %v", server.Calls()[calls:])
+	for _, rpc := range []string{"sync_push_home_catalog_settings", "sync_push_collections"} {
+		if n := server.Pushes(rpc); n != 0 {
+			t.Errorf("%s reached Nuvio's server %d times", rpc, n)
+		}
+	}
+	if server.HomeLayout(email, 1, "home_catalog_shared") != nil || server.SyncedCollections(email, 1) != nil {
+		t.Error("the layout or collections reached Nuvio's server")
+	}
+	if rows(server, nuviotest.Library) != 1 {
+		t.Error("the library push beside them wasn't sent")
+	}
+
+	own := nuviotest.NewServer(t)
+	selfHosted := onOwnServer(t, own)
+	check(t, selfHosted.store.SetHomeLayout(selfHosted.profile.ID, layout))
+	check(t, selfHosted.store.SetCollections(selfHosted.profile.ID, collections))
+	p, _ = selfHosted.pusher()
+	check(t, p.Flush(t.Context()))
+	if len(pending(t, selfHosted)) != 0 {
+		t.Fatalf("still queued: %+v", pending(t, selfHosted))
+	}
+	items, _ := own.HomeLayout(email, 1, "home_catalog_shared")["items"].([]any)
+	if len(items) != 1 || len(own.SyncedCollections(email, 1)) != 1 {
+		t.Fatalf("own server has layout %v, collections %v", own.HomeLayout(email, 1, "home_catalog_shared"), own.SyncedCollections(email, 1))
+	}
+
+	// Another device on the same server pulls them in.
+	phone := onOwnServer(t, own)
+	puller, _, emitted := phone.puller()
+	if _, err := puller.Pull(t.Context()); err != nil {
+		t.Fatal(err)
+	}
+	got, err := phone.store.HomeLayout(phone.profile.ID)
+	check(t, err)
+	if got == nil || len(got.Rows) != 1 || got.Rows[0].CatalogID != "top" {
+		t.Fatalf("the phone's layout = %+v", got)
+	}
+	if c, _ := phone.store.Collections(phone.profile.ID); len(c) != 1 || c[0].Title != "Streaming" {
+		t.Fatalf("the phone's collections = %+v", c)
+	}
+	if len(*emitted) != 1 || !slices.Contains((*emitted)[0].Surfaces, store.SurfaceHomeLayout) || !slices.Contains((*emitted)[0].Surfaces, store.SurfaceCollections) {
+		t.Fatalf("emitted %+v", *emitted)
 	}
 }
 

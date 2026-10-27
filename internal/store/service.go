@@ -184,6 +184,19 @@ func (s *Service) CatalogVisible(profileID uint64, addon, contentType, catalog s
 	return s.store.CatalogVisible(profileID, addon, contentType, catalog)
 }
 
+// HomeLayout returns a profile's home layout, or null if it has none: the
+// order of Home's catalog and collection rows, pulled from Nuvio's apps
+// (#35). Editing it goes through the account service.
+func (s *Service) HomeLayout(profileID uint64) (*HomeLayout, error) {
+	return s.store.HomeLayout(profileID)
+}
+
+// Collections returns the collections a profile may see on Home (#35): none
+// for a kids profile.
+func (s *Service) Collections(profileID uint64) ([]Collection, error) {
+	return s.store.VisibleCollections(profileID)
+}
+
 // KidsScope returns what a kids profile may see (#26).
 func (s *Service) KidsScope(profileID uint64) (KidsScope, error) {
 	return s.store.KidsScope(profileID)

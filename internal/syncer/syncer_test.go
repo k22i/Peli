@@ -106,10 +106,11 @@ var (
 	}
 )
 
+// calls counts the delta feed calls.
 func calls(server *nuviotest.Server) int {
 	n := 0
 	for _, c := range server.Calls() {
-		if strings.Contains(c, "sync_pull_") {
+		if strings.Contains(c, "sync_pull_") && strings.HasSuffix(c, "_delta") {
 			n++
 		}
 	}

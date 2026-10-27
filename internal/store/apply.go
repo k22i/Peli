@@ -17,7 +17,9 @@ type Change struct {
 	// Item again, so it only has to be right for a reader.
 	Key string `json:"key"`
 	// The item as the backend has it, or as it was before a delete. For the
-	// addons surface, the whole list: addons have no delta feed.
+	// addons surface, the whole list: addons have no delta feed. For the
+	// home layout and collections, Nuvio's whole blob, and a delete means
+	// the backend has none.
 	Item json.RawMessage `json:"item"`
 }
 
@@ -173,6 +175,23 @@ func targetOf(c Change) (target, error) {
 			addons = []Addon{}
 		}
 		return target{nil, keyAddons, "", addons, nil}, nil
+	case SurfaceHomeLayout, SurfaceCollections:
+		// Whole blobs, like addons; a delete is the backend having none.
+		key, want := keyHomeLayout, byte('{')
+		if c.Surface == SurfaceCollections {
+			key, want = keyCollections, '['
+		}
+		if c.Op == OpDelete {
+			return target{nil, key, "", nil, nil}, nil
+		}
+		blob, err := canonicalJSON(c.Item)
+		if err != nil {
+			return target{}, err
+		}
+		if blob[0] != want {
+			return target{}, fmt.Errorf("%s isn't a JSON %s", c.Surface, map[byte]string{'{': "object", '[': "array"}[want])
+		}
+		return target{nil, key, "", json.RawMessage(blob), nil}, nil
 	}
 	return target{}, fmt.Errorf("unknown surface")
 }

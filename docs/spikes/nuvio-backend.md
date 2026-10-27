@@ -68,6 +68,8 @@ Everything a desktop client needs, ~30 functions. Every `sync_*` takes `p_profil
 
 `p_platform` defaults to `'tv'`. We sent `'desktop'` and got an empty row set for home catalog settings, so #28 has to decide whether desktop gets its own settings or shares another platform's.
 
+**Since found (#35):** Nuvio's TV and mobile apps share one layout under `p_platform = 'home_catalog_shared'`. On live (2026-10-27) that platform had the account's layout, and `tv`, `mobile`, `web` and `desktop` had nothing. The blob's shape and Sinag's use of it are in [ADR-0022](../adr/0022-home-layout-and-collections.md).
+
 **Library, progress, watched**: the core of story-level sync. Each has a full pull, a delta feed and its cursor.
 
 | Function | Args | Returns | |

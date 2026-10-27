@@ -25,7 +25,7 @@ The server creates a watched item itself when progress reaches 90 % of an item o
 
 ## Never home layout or collections
 
-`store.Surface` has four values, all with a call in the sync module; `backend.Syncs` says which, `Nuvio.Push` refuses anything else before it contacts the backend, and the pusher drops such a push with a warning rather than retry it forever. `TestNoLayoutOrCollectionCalls` fails if `internal/nuvio` names either in a string. #35 may sync them to a non-official backend; it needs its own surface and its own `Backend`.
+`store.Surface` has four values, all with a call in the sync module; `backend.Syncs` says which, `Nuvio.Push` refuses anything else before it contacts the backend, and the pusher drops such a push with a warning rather than retry it forever. `TestNoLayoutOrCollectionCalls` fails if `internal/nuvio` names either in a string. #35 may sync them to a non-official backend; it needs its own surface and its own `Backend`. (Since #35: they have their own surfaces and are pushed through `backend.Nuvio` to a custom server only, see [ADR-0022](0022-home-layout-and-collections.md).)
 
 ## What we give up
 

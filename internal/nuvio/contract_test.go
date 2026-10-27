@@ -89,6 +89,11 @@ var contract = map[string]answer{
 	"/rest/v1/rpc/sync_delete_watched_items":      {},
 	"/rest/v1/addons":                             rows[AddonRow](),
 	"/rest/v1/rpc/sync_push_addons":               {},
+
+	"/rest/v1/rpc/sync_pull_home_catalog_settings": rows[HomeLayoutRow](),
+	"/rest/v1/rpc/sync_push_home_catalog_settings": {},
+	"/rest/v1/rpc/sync_pull_collections":           rows[CollectionsRow](),
+	"/rest/v1/rpc/sync_push_collections":           {},
 }
 
 // shapeErrors checks a JSON answer against the type the client reads it
@@ -673,6 +678,35 @@ func TestContract(t *testing.T) {
 		b.SortOrder = 0
 		if err != nil || !slices.Equal(got, []AddonRow{b}) {
 			t.Fatalf("after pushing one addon: %+v, %v; want only %+v", got, err, b)
+		}
+	})
+
+	// Pushed only to a custom server (#35): a second client that takes the
+	// backend for one.
+	run("home layout and collections", func(t *testing.T) {
+		own := New("https://nuvio.invalid", "0.0.0-contract")
+		own.http.Transport = rec
+		own.UseServer(c.ServerURL(), "")
+		if got, err := own.HomeLayout(t.Context(), s, index); err != nil || got != nil {
+			t.Fatalf("a new account's layout = %v, %v", got, err)
+		}
+		settings := json.RawMessage(`{"items":[{"key":"org.cinemeta:movie:top","addon_id":"org.cinemeta","type":"movie","catalog_id":"top","enabled":true,"order":0,"custom_title":"","is_collection":false,"collection_id":""}],"hide_unreleased_content":false}`)
+		if err := own.PushHomeLayout(t.Context(), s, index, settings); err != nil {
+			t.Fatal(err)
+		}
+		got, err := own.HomeLayout(t.Context(), s, index)
+		if err != nil || string(got["items"]) == "" || string(got["hide_unreleased_content"]) != "false" {
+			t.Fatalf("layout after a push = %v, %v", got, err)
+		}
+		if err := own.PushCollections(t.Context(), s, index, json.RawMessage(`[{"id":"c1","title":"Streaming","folders":[]}]`)); err != nil {
+			t.Fatal(err)
+		}
+		collections, err := own.Collections(t.Context(), s, index)
+		if err != nil || len(collections) != 1 || collections[0]["title"] != "Streaming" {
+			t.Fatalf("collections after a push = %v, %v", collections, err)
+		}
+		if err := c.PushCollections(t.Context(), s, index, json.RawMessage(`[]`)); !errors.Is(err, ErrNuviosServer) {
+			t.Errorf("push from the client made for this backend: err = %v, want ErrNuviosServer", err)
 		}
 	})
 

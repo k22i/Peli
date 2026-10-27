@@ -10,7 +10,7 @@ Allow 15 minutes. If anything fails, open an issue labelled `area:sync` with the
 ## 1. Read what changed
 
 - [ ] Read the release notes, and self-host's commits since the pinned ref (`NUVIO_SELF_HOST_REF` in `.github/workflows/ci.yml`): `git log --oneline <ref>..origin/main -- database volumes/functions`.
-- [ ] Look for anything about sync, profiles, PINs, addons, device login (QR / TV login) or watch progress. Note any function that was renamed, gained or lost an argument, or changed what it returns.
+- [ ] Look for anything about sync, profiles, PINs, addons, home layout or collections, device login (QR / TV login) or watch progress. Note any function that was renamed, gained or lost an argument, or changed what it returns.
 
 ## 2. Run the contract against the new self-host
 
@@ -35,6 +35,7 @@ Use a real account: the user's is in `spikes/nuvio-backend/.env` (git-ignored). 
 - [ ] Mark an episode watched on the phone. It shows as watched in Sinag after focusing the window.
 - [ ] Install an addon on the phone. It shows in Sinag's addon list after the next pull. Remove it again.
 - [ ] Rename a profile in Sinag. The phone shows the new name. Rename it back.
+- [ ] Reorder Home's rows or turn a collection off on the phone or TV. Sinag's Home follows after the next pull. Put it back. If it doesn't, check the app still saves under the `home_catalog_shared` platform and the blob's keys (ADR-0022).
 
 ## 5. Record it
 

@@ -1,8 +1,8 @@
 import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vite-plus/test";
+import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { LibraryItem, Profile, Progress } from "@bindings/store";
+import type { Collection, HomeLayout, LibraryItem, Profile, Progress } from "@bindings/store";
 import type * as Runtime from "@wailsio/runtime";
 import { renderApp } from "@/test/render-app";
 
@@ -10,6 +10,8 @@ const mocks = vi.hoisted(() => ({
   handlers: new Map<string, (event: { data: unknown }) => void>(),
   library: vi.fn<() => Promise<LibraryItem[]>>(),
   continueWatching: vi.fn<() => Promise<Progress[]>>(),
+  homeLayout: vi.fn<() => Promise<HomeLayout | null>>(() => Promise.resolve(null)),
+  collections: vi.fn<() => Promise<Collection[]>>(() => Promise.resolve([])),
   connection: vi.fn<() => Promise<string>>(),
   checkConnection: vi.fn<() => Promise<string>>(),
 }));
@@ -36,6 +38,8 @@ vi.mock("@bindings/store", () => ({
     CurrentProfile: () => Promise.resolve(kevin),
     Library: mocks.library,
     ContinueWatching: mocks.continueWatching,
+    HomeLayout: mocks.homeLayout,
+    Collections: mocks.collections,
   },
 }));
 
@@ -79,6 +83,11 @@ const episode: Progress = {
 
 const row = (name: string) => screen.findByRole("region", { name });
 
+beforeEach(() => {
+  mocks.homeLayout.mockResolvedValue(null);
+  mocks.collections.mockResolvedValue([]);
+});
+
 describe("Home", () => {
   // The acceptance criterion: with no network, Home opens with the library
   // and Continue Watching, and says it's offline without getting in the way.
@@ -116,6 +125,57 @@ describe("Home", () => {
     mocks.handlers.get("sync:pulled")?.({ data: { profileId: 1, surfaces: ["progress"] } });
 
     expect(await row("Continue watching")).toBeInTheDocument();
+  });
+
+  // F7 (#35): collections made in Nuvio's apps show as rows of their
+  // folders, in the order of the layout, and a pull brings changes in.
+  it("shows collections in the layout's order", async () => {
+    mocks.library.mockResolvedValue([dune]);
+    mocks.continueWatching.mockResolvedValue([episode]);
+    mocks.connection.mockResolvedValue("online");
+    const streaming: Collection = {
+      id: "c1",
+      title: "Streaming",
+      pinToTop: false,
+      folders: [
+        { id: "f1", title: "Netflix", hideTitle: false, shape: "LANDSCAPE", sources: [] },
+        { id: "f2", title: "Max", hideTitle: false, shape: "POSTER", sources: [] },
+      ],
+    };
+    const anime: Collection = {
+      id: "c2",
+      title: "Anime",
+      pinToTop: false,
+      folders: [{ id: "f3", title: "Seasonal", hideTitle: false, sources: [] }],
+    };
+    mocks.collections.mockResolvedValue([streaming, anime]);
+    mocks.homeLayout.mockResolvedValue({
+      rows: [
+        { key: "collection_c2", collectionId: "c2", enabled: true },
+        { key: "collection_c1", collectionId: "c1", enabled: true },
+      ],
+      hideUnreleased: false,
+    });
+
+    await renderApp("/");
+
+    const netflix = within(await row("Streaming")).getByRole("button", { name: /Netflix/ });
+    expect(netflix).toHaveAttribute("data-slot", "landscape-card");
+    expect(within(await row("Streaming")).getByRole("button", { name: /Max/ })).toHaveAttribute(
+      "data-slot",
+      "poster-card",
+    );
+    const names = screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent);
+    expect(names).toEqual(["Continue watching", "Anime", "Streaming", "Your library"]);
+
+    // Turned off in another app: gone after the next pull.
+    mocks.homeLayout.mockResolvedValue({
+      rows: [{ key: "collection_c2", collectionId: "c2", enabled: false }],
+      hideUnreleased: false,
+    });
+    mocks.handlers.get("sync:pulled")?.({ data: { profileId: 1, surfaces: ["homeLayout"] } });
+    await waitFor(() => expect(screen.queryByRole("region", { name: "Anime" })).toBeNull());
+    expect(await row("Streaming")).toBeInTheDocument();
   });
 
   it("says what will show up when there's nothing yet", async () => {

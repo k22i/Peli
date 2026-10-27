@@ -355,6 +355,8 @@ const (
 	CodeNotNuvioServer   = "not_nuvio_server"
 	CodeServerKeyRefused = "server_key_refused"
 	CodeQRUnavailable    = "qr_unavailable"
+	// Editing the home layout (#35).
+	CodeHomeFromNuvio = "home_from_nuvio"
 )
 
 // MarshalError gives the frontend a code for the errors it explains; Wails
@@ -415,6 +417,8 @@ func MarshalError(err error) []byte {
 		code = CodeServerKeyRefused
 	case errors.Is(err, ErrQRUnavailable):
 		code = CodeQRUnavailable
+	case errors.Is(err, ErrHomeFromNuvio):
+		code = CodeHomeFromNuvio
 	default:
 		return nil
 	}

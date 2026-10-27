@@ -2,7 +2,8 @@
 // pulls the library, progress and watched feeds by delta cursor when the app
 // launches, when its window gets focus, when the profile changes and every
 // few minutes, merges them into the local store and tells the frontend what
-// changed so it can refresh its caches. It pulls the addon list too (#32).
+// changed so it can refresh its caches. It pulls the addon list too (#32),
+// and the home layout and collections (#35).
 // Pushing is pusher.go (#30), noticing the network go and come back is
 // connection.go (#31).
 //
@@ -43,9 +44,13 @@ const (
 	MinGap = 30 * time.Second
 )
 
-// surfaces are what the pull reads. Addons have no delta feed: each pull
-// reads the whole list (one small request) and the cursor never moves (#32).
-var surfaces = []store.Surface{store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons}
+// surfaces are what the pull reads. Addons, the home layout and collections
+// have no delta feed: each pull reads the whole of each (one small request)
+// and the cursor never moves (#32, #35).
+var surfaces = []store.Surface{
+	store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons,
+	store.SurfaceHomeLayout, store.SurfaceCollections,
+}
 
 // Pulled is what a pull changed in one profile: the surfaces where something
 // was written, none if the local store was already up to date.

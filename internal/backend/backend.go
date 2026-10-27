@@ -4,8 +4,8 @@
 // package enforces this).
 //
 // Two interfaces split the work:
-//   - Backend is the data a profile syncs: library, progress, watched items
-//     and addons. Nuvio implements it for a profile linked to a Nuvio
+//   - Backend is the data a profile syncs: library, progress, watched items,
+//     addons, and the home layout and collections (#35). Nuvio implements it for a profile linked to a Nuvio
 //     profile, Local for one that isn't, such as the Guest (#23). For picks
 //     one. Pulling (#29) and pushing (#30) go through it.
 //   - Remote is the account side a linked profile needs: sign-in, sessions,
@@ -40,13 +40,13 @@ type Backend interface {
 	Push(ctx context.Context, profile store.Profile, pushes []store.Push) (acked []store.Push, err error)
 }
 
-// Syncs is whether the sync module has a call to push surface to Nuvio.
-// Home layout and collections have none, and must never be pushed to the
-// official backend (#35); nothing queues them today, and Push refuses them
-// should that change.
+// Syncs is whether the sync module has a call to push surface. The home
+// layout and collections have one, but they are never pushed to Nuvio's own
+// backend (#35): Nuvio.Push drops them there unsent.
 func Syncs(surface store.Surface) bool {
 	switch surface {
-	case store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons:
+	case store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons,
+		store.SurfaceHomeLayout, store.SurfaceCollections:
 		return true
 	}
 	return false

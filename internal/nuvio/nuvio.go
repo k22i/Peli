@@ -83,6 +83,8 @@ type Client struct {
 	// Sent as p_origin_client_id with every write: this install's client ID.
 	originID string
 
+	// The URL the client was made with: Nuvio's server (OwnServer).
+	home string
 	// The backend and its publishable key: given with UseServer, or else
 	// read from its discovery document, once. Every request reads both
 	// together, so a switch never sends one server's key to another.
@@ -133,6 +135,7 @@ func (l *limiter) reserve() time.Duration {
 // the user agent.
 func New(baseURL, version string) *Client {
 	return &Client{
+		home:      strings.TrimRight(baseURL, "/"),
 		baseURL:   strings.TrimRight(baseURL, "/"),
 		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
 		http:      &http.Client{Timeout: 15 * time.Second},

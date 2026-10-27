@@ -35,7 +35,8 @@ func (s *Service) EnableAddon(ctx context.Context, profileID uint64, url string,
 }
 
 // editAddons runs edit if the profile may be changed: unlocked, and with the
-// parent PIN approved if it, or the profile in use, is a kids profile.
+// parent PIN approved if it, or the profile in use, is a kids profile. The
+// home layout's edits use it too (home.go).
 func (s *Service) editAddons(profileID uint64, edit func(db *store.Store) error) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()

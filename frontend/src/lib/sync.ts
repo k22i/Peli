@@ -13,12 +13,15 @@ export const pulledEvent = "sync:pulled";
 // library, progress, watched or addon data keys its query under one of these, so a
 // pull refreshes it. Progress feeds "continue watching", and a progress push
 // can mark an item watched on the server (the 90 % rule), so watched is
-// refreshed with it. The addon list comes whole with every pull (#32).
+// refreshed with it. The addon list comes whole with every pull (#32), and so
+// do Home's layout and collections (#35).
 export const surfaceQueryKeys: Partial<Record<Surface, readonly (readonly string[])[]>> = {
   library: [["library"]],
   progress: [["progress"], ["continue-watching"]],
   watched: [["watched"]],
   addons: [["addons"]],
+  homeLayout: [["home-layout"]],
+  collections: [["collections"]],
 };
 
 export function invalidateSurfaces(queryClient: QueryClient, surfaces: readonly Surface[]) {

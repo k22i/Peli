@@ -41,7 +41,7 @@ func (c *Client) UseServer(baseURL, key string) {
 func (c *Client) CheckServer(ctx context.Context, baseURL, key string) error {
 	probe := &Client{
 		userAgent: c.userAgent, http: c.http, retries: c.retries, backoff: c.backoff,
-		sleep: c.sleep, limiter: c.limiter, originID: c.originID,
+		sleep: c.sleep, limiter: c.limiter, originID: c.originID, home: c.home,
 		baseURL: strings.TrimRight(baseURL, "/"), key: key,
 	}
 	_, err := probe.AvatarCatalog(ctx)

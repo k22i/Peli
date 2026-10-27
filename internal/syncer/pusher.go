@@ -347,8 +347,8 @@ func (p *Pusher) ready(profile store.Profile, pending []store.Push, m mode) (rea
 	for _, push := range pending {
 		switch {
 		case !backend.Syncs(push.Surface):
-			// Home layout and collections are never pushed to the official
-			// backend (#35); the store can't queue them, and this keeps it so.
+			// Nothing the store queues today; a push of a new surface
+			// waits for its call rather than being retried forever.
 			slog.Warn("syncer: dropping a push Nuvio doesn't take", "surface", push.Surface, "key", push.Key)
 			drop = append(drop, push)
 		case push.Surface == store.SurfaceWatched && push.Op == store.OpUpsert:

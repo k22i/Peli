@@ -4,6 +4,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Row, RowSkeleton } from "@/components/media/row";
 import { buttonVariants } from "@/components/ui/button";
+import { collectionsQuery, homeLayoutQuery, homeSections, type HomeSection } from "@/lib/home";
 import {
   continueWatchingItems,
   continueWatchingQuery,
@@ -17,8 +18,9 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-// Continue Watching and the library, from the local store, so Home opens
-// with them offline (#31). The hero and the catalog rows are #42's.
+// Continue Watching, the collections and the library, from the local store,
+// so Home opens with them offline (#31). Rows follow the layout made in
+// Nuvio's apps (#35). The hero and the catalog rows are #42's.
 function Home() {
   const { id } = useCurrentProfile();
   return (
@@ -32,11 +34,17 @@ function Home() {
 function HomeRows({ profileId }: { profileId: number }) {
   const library = useQuery(libraryQuery(profileId));
   const watching = useQuery(continueWatchingQuery(profileId));
+  const layout = useQuery(homeLayoutQuery(profileId));
+  const collections = useQuery(collectionsQuery(profileId));
 
   if (!library.data || !watching.data) {
     return library.isError || watching.isError ? null : <HomeSkeleton />;
   }
-  if (library.data.length === 0 && watching.data.length === 0) {
+  // Catalog rows wait for the addon client (#37, #42).
+  const sections = homeSections(layout.data, collections.data ?? []).filter(
+    (section) => section.kind === "collection",
+  );
+  if (library.data.length === 0 && watching.data.length === 0 && sections.length === 0) {
     return (
       <p className="p-8 text-center text-sm text-muted-foreground">
         Titles you save and watch show up here.
@@ -60,6 +68,9 @@ function HomeRows({ profileId }: { profileId: number }) {
           ))}
         </Row>
       )}
+      {sections.map((section) => (
+        <SectionRow key={section.key} section={section} />
+      ))}
       {library.data.length > 0 && (
         <Row
           title="Your library"
@@ -80,6 +91,28 @@ function HomeRows({ profileId }: { profileId: number }) {
         </Row>
       )}
     </div>
+  );
+}
+
+// A collection's folders, as tiles. Opening one is the browse page's (#43).
+function SectionRow({ section }: { section: HomeSection }) {
+  if (section.kind !== "collection") return null;
+  const { collection } = section;
+  const folders = collection.folders ?? [];
+  if (folders.length === 0) return null;
+  return (
+    <Row title={collection.title}>
+      {folders.map((folder) => {
+        const Card = folder.shape === "POSTER" ? PosterCard : LandscapeCard;
+        return (
+          <Card
+            key={folder.id}
+            title={folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title}
+            src={folder.cover || folder.backdrop}
+          />
+        );
+      })}
+    </Row>
   );
 }
 

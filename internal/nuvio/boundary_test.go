@@ -146,7 +146,8 @@ func forbidden(s string) string {
 }
 
 // Home layout and collections are never pushed to the official backend
-// (#30, #35): this package has no call that names either.
+// (#30, #35): only home.go names their calls, and its pushes check
+// OwnServer first (TestHomePushesRefuseNuviosServer).
 func TestNoLayoutOrCollectionCalls(t *testing.T) {
 	files, err := filepath.Glob("*.go")
 	if err != nil {
@@ -154,7 +155,7 @@ func TestNoLayoutOrCollectionCalls(t *testing.T) {
 	}
 	fset := token.NewFileSet()
 	for _, name := range files {
-		if strings.HasSuffix(name, "_test.go") {
+		if strings.HasSuffix(name, "_test.go") || name == "home.go" {
 			continue
 		}
 		file, err := parser.ParseFile(fset, name, nil, parser.SkipObjectResolution)
@@ -164,8 +165,8 @@ func TestNoLayoutOrCollectionCalls(t *testing.T) {
 		ast.Inspect(file, func(n ast.Node) bool {
 			if lit, ok := n.(*ast.BasicLit); ok && lit.Kind == token.STRING {
 				s := strings.ToLower(lit.Value)
-				if strings.Contains(s, "collection") || strings.Contains(s, "layout") {
-					t.Errorf("%s: %s names home layout or collections", fset.Position(lit.Pos()), lit.Value)
+				if strings.Contains(s, "collection") || strings.Contains(s, "layout") || strings.Contains(s, "home_catalog") {
+					t.Errorf("%s: %s names home layout or collections outside home.go", fset.Position(lit.Pos()), lit.Value)
 				}
 			}
 			return true
