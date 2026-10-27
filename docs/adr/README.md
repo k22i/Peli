@@ -23,5 +23,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0017](0017-push-loop.md) | The push loop: the store wakes it, progress goes every 30 s, a flush on pause/exit/sign-out, backoff on failure, watched items left to the server | 2026-10-21 |
 | [0018](0018-offline-and-reconnect.md) | Offline and reconnect: the connection is learnt from sync traffic, probed only while offline; on reconnect the outbox goes first, then a pull | 2026-10-27 |
 | [0019](0019-addon-list-sync.md) | Addon list sync: the whole list on every pull, pushes merged three ways with the server's list, sharing profiles use the primary's | 2026-10-27 |
+| [0020](0020-nuvio-contract-tests.md) | Nuvio contract tests: one table of endpoints and answer types, run against the fake on every push and against pinned self-host daily | 2026-10-27 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

@@ -3,8 +3,8 @@
 - [Frontend stack preferences](frontend-stack-preferences.md) — pnpm, Vite+ (oxc/vitest), TanStack, coss ui added per component, React 19, TS 7; release-age + wails3 PATH gotchas
 - [Sinag design direction](sinag-design-direction.md) — Apple × Vercel × Nuvio; lagoon --brand #33B5E0/#0B6E94, Mona Sans; give hex + contrast numbers
 - [Debrid test key](debrid-test-key.md) — TorBox key in spikes/stream-ranking/.env (git-ignored); reuse it, never print it, redact URLs
-- [Nuvio self-host stack](nuvio-self-host-stack.md) — clone to scratchpad, own COMPOSE_PROJECT_NAME, skip 5432 clash, caffeinate long runs
+- [Nuvio self-host stack](nuvio-self-host-stack.md) — clone to scratchpad, own COMPOSE_PROJECT_NAME, POSTGRES_PORT=54333, caffeinate long runs
 - [Product name: Sinag](product-name-sinag.md) — chosen over Cove/Marquee; repo, ids and what is still open in #82
 - [Nuvio profile PINs](nuvio-profile-pins.md) — set/clear/verify RPCs, four digits, table rows, unlocked-key gotcha
 - [Kids profiles](kids-profiles.md) — local flag + addon allow-list; parent PIN = own PIN; call VisibleAddons, guardKids in new Go methods
-- [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29), push loop (#30), offline/reconnect (#31), addons merge + shared primary (#32)
+- [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29), push loop (#30), offline/reconnect (#31), addons merge + shared primary (#32), contract tests (#33)

@@ -11,7 +11,7 @@ metadata:
 Running a local Nuvio backend (as in #22, 2026-10-19):
 - Clone `NuvioMedia/self-host` into the session scratchpad (earlier clones get deleted with old scratchpads; stale `nuvio-*` containers from them may remain, leave them).
 - `./nuvio setup --no-import-account`, then edit `.env`: `COMPOSE_PROJECT_NAME=nuvio22` (or any new name) and e.g. `JWT_EXPIRY=120` for short tokens; `./nuvio up`.
-- `supavisor` fails to bind 5432 because the user's `masdan-postgres` container uses it. Leave theirs alone; auth/REST on :8000 work without supavisor.
+- Port 5432 is taken on the user's Mac (since 2026-10-27 not by `masdan-postgres`, which moved to 4400). Leave it alone and set `POSTGRES_PORT=54333` in `.env` before `./nuvio up`; then supavisor, storage and migrations all come up (#33). Auth/REST are on :8000.
 - Throwaway accounts: `POST /auth/v1/signup` with the publishable key from `/.well-known/nuvio` (autoconfirm is on).
 - Nuvio's config has `AUTH_REFRESH_TOKEN_REUSE_INTERVAL=120`.
 - The Mac goes into maintenance sleep during long unattended runs, which stalls Docker and breaks timing. Wrap long tests in `caffeinate -i`.

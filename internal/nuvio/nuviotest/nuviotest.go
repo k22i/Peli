@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"maps"
 	"net/http"
 	"net/http/httptest"
 	"slices"
@@ -67,6 +68,7 @@ type Server struct {
 type deviceLogin struct {
 	nonce    string
 	userCode string
+	name     string
 	status   string // pending, approved, exchanged or expired
 	user     string
 	expires  time.Time
@@ -260,6 +262,9 @@ func (s *Server) issue(session *session) map[string]any {
 	return session.issued
 }
 
+// onePixelPNG is a transparent 1×1 PNG.
+var onePixelPNG, _ = base64.StdEncoding.DecodeString("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==")
+
 func authError(w http.ResponseWriter, status int, code, msg string) {
 	w.Header().Set("X-Sb-Error-Code", code)
 	w.WriteHeader(status)
@@ -280,6 +285,12 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 			"backend_url": "http://" + r.Host, "publishable_key": Key,
 			"capabilities": map[string]bool{"email_password_auth": true, "tv_login": true},
 		})
+		return
+	}
+	if strings.HasPrefix(r.URL.Path, "/storage/v1/object/public/avatars/") {
+		// Public, as on live: a 1×1 PNG for every stock avatar.
+		w.Header().Set("Content-Type", "image/png")
+		w.Write(onePixelPNG)
 		return
 	}
 	var body map[string]any
@@ -384,6 +395,22 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 		s.editProfiles(w, r.URL.Path, bearer.user, body)
 	case "/rest/v1/rpc/start_device_login_session", "/rest/v1/rpc/poll_tv_login_session", "/functions/v1/tv-logins-exchange":
 		s.deviceLogin(w, r.URL.Path, body)
+	case "/rest/v1/rpc/approve_device_login_session":
+		// What nuvio.tv/link calls; Sinag doesn't, but the contract tests do.
+		if bearer == nil {
+			w.WriteHeader(http.StatusUnauthorized)
+			w.Write([]byte(`{"code":"42501","message":"permission denied for function approve_device_login_session"}`))
+			return
+		}
+		code, _ := body["p_user_code"].(string)
+		answer := map[string]any{"success": false, "message": "Invalid or expired code", "device_name": nil, "device_type": nil}
+		for _, l := range s.logins {
+			if l.userCode == code && l.status == "pending" && time.Now().Before(l.expires) {
+				l.status, l.user = "approved", bearer.user
+				answer = map[string]any{"success": true, "message": "Approved", "device_name": l.name, "device_type": "desktop"}
+			}
+		}
+		json.NewEncoder(w).Encode([]map[string]any{answer})
 	case "/rest/v1/rpc/get_avatar_catalog":
 		// Public, as on live: the publishable key is enough.
 		if s.FailAvatars.Load() {
@@ -437,7 +464,7 @@ func (s *Server) deviceLogin(w http.ResponseWriter, path string, body map[string
 		}
 		n := len(s.logins) + 1
 		code, user := fmt.Sprintf("device-%d", n), fmt.Sprintf("ABC%03d", n)
-		l := &deviceLogin{nonce: str("p_device_nonce"), userCode: user, status: "pending", expires: time.Now().Add(5 * time.Minute)}
+		l := &deviceLogin{nonce: str("p_device_nonce"), userCode: user, name: str("p_device_name"), status: "pending", expires: time.Now().Add(5 * time.Minute)}
 		s.logins[code] = l
 		json.NewEncoder(w).Encode([]map[string]any{{
 			"device_code": code, "user_code": user,
@@ -519,7 +546,11 @@ func (s *Server) editProfiles(w http.ResponseWriter, path, user string, body map
 		if body["p_avatar_id_provided"] == true {
 			p["avatar_id"], p["avatar_url"] = body["p_avatar_id"], nil
 		}
-		json.NewEncoder(w).Encode([]map[string]any{p})
+		// The answer is the profiles row, which has no PIN state (#33).
+		answer := maps.Clone(p)
+		delete(answer, "pin_enabled")
+		delete(answer, "pin_locked_until")
+		json.NewEncoder(w).Encode([]map[string]any{answer})
 	case "/rest/v1/rpc/sync_push_profiles":
 		limit := 4
 		if v, ok := body["p_client_max_profiles"]; ok {

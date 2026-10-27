@@ -132,23 +132,33 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 		fmt.Fprintf(w, `{"code":"42501","message":"permission denied for function %s"}`, rpc)
 		return true
 	}
-	index := int(number(body["p_profile_id"]))
-	if index < 1 || index > 6 {
-		postgrestError(w, http.StatusBadRequest, "P0001", "Invalid profile id")
+	// PostgREST picks a function by its argument names: one it doesn't
+	// take, or a push or delete without the origin client, matches none.
+	args := syncArgs[rpc]
+	_, origin := body["p_origin_client_id"]
+	matches := origin || !slices.Contains(args, "p_origin_client_id")
+	for k := range body {
+		matches = matches && slices.Contains(args, k)
+	}
+	if !matches {
+		postgrestError(w, http.StatusNotFound, "PGRST202", "Could not find the function public."+rpc+" in the schema cache")
 		return true
 	}
+	if _, ok := body["p_profile_id"].(float64); !ok {
+		postgrestError(w, http.StatusBadRequest, "22P02", fmt.Sprintf("invalid input syntax for type integer: %q", fmt.Sprint(body["p_profile_id"])))
+		return true
+	}
+	index := int(number(body["p_profile_id"]))
 	profile := profileKey{user, index}
 	st := s.sync
 
 	if feed, ok := feeds[rpc]; ok {
+		// A pull reads rows, so a profile that can't exist has none.
 		s.deltaFeed(w, profile, feed, body)
 		return true
 	}
-
-	// Every push and delete takes the origin client; one without it matches
-	// no function.
-	if _, ok := body["p_origin_client_id"]; !ok {
-		postgrestError(w, http.StatusNotFound, "PGRST202", "Could not find the function public."+rpc+" in the schema cache")
+	if index < 1 || index > 6 {
+		postgrestError(w, http.StatusBadRequest, "P0001", "Invalid profile id")
 		return true
 	}
 	st.pushes[rpc]++
@@ -198,15 +208,23 @@ var feeds = map[string]string{
 	"sync_pull_watched_items_delta":  Watched,
 }
 
+// syncArgs is the arguments each sync RPC takes, as self-host defines them.
+var syncArgs = map[string][]string{
+	"sync_pull_library_delta":        {"p_since_event_id", "p_profile_id", "p_limit"},
+	"sync_pull_watch_progress_delta": {"p_since_event_id", "p_profile_id", "p_limit"},
+	"sync_pull_watched_items_delta":  {"p_since_event_id", "p_profile_id", "p_limit"},
+	"sync_push_library_items":        {"p_items", "p_profile_id", "p_origin_client_id"},
+	"sync_delete_library_items":      {"p_keys", "p_profile_id", "p_origin_client_id"},
+	"sync_push_watch_progress":       {"p_entries", "p_profile_id", "p_origin_client_id"},
+	"sync_delete_watch_progress":     {"p_keys", "p_profile_id", "p_origin_client_id"},
+	"sync_push_watched_items":        {"p_items", "p_profile_id", "p_origin_client_id"},
+	"sync_delete_watched_items":      {"p_keys", "p_profile_id", "p_origin_client_id"},
+	"sync_push_addons":               {"p_addons", "p_profile_id", "p_origin_client_id"},
+}
+
 func isSyncRPC(rpc string) bool {
-	if _, ok := feeds[rpc]; ok {
-		return true
-	}
-	return slices.Contains([]string{
-		"sync_push_library_items", "sync_delete_library_items",
-		"sync_push_watch_progress", "sync_delete_watch_progress",
-		"sync_push_watched_items", "sync_delete_watched_items", "sync_push_addons",
-	}, rpc)
+	_, ok := syncArgs[rpc]
+	return ok
 }
 
 func (s *Server) record(surface string, profile profileKey, op string, row map[string]any) {

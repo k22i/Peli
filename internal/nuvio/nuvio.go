@@ -217,16 +217,20 @@ func (c *Client) Refresh(ctx context.Context, refreshToken string) (Session, err
 
 // grant asks GoTrue's token endpoint for a session.
 func (c *Client) grant(ctx context.Context, grantType string, in map[string]string) (Session, error) {
-	var body struct {
-		AccessToken  string `json:"access_token"`
-		RefreshToken string `json:"refresh_token"`
-		ExpiresIn    int64  `json:"expires_in"`
-	}
+	var body tokenAnswer
 	err := c.call(ctx, http.MethodPost, "/auth/v1/token?grant_type="+grantType, "", in, &body)
 	if err != nil {
 		return Session{}, err
 	}
 	return newSession(body.AccessToken, body.RefreshToken, body.ExpiresIn)
+}
+
+// tokenAnswer is a new session, from GoTrue's token endpoint or the device
+// login exchange.
+type tokenAnswer struct {
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+	ExpiresIn    int64  `json:"expires_in"`
 }
 
 // newSession builds a session from a token answer.
@@ -277,6 +281,16 @@ const (
 	DeviceLoginExpired  = "expired"
 )
 
+// deviceLoginRow is start_device_login_session's answer.
+type deviceLoginRow struct {
+	DeviceCode   string    `json:"device_code"`
+	UserCode     string    `json:"user_code"`
+	URI          string    `json:"verification_uri"`
+	URIComplete  string    `json:"verification_uri_complete"`
+	ExpiresAt    time.Time `json:"expires_at"`
+	PollInterval int       `json:"poll_interval_seconds"`
+}
+
 // StartDeviceLogin starts a device login. linkURL is the web page that
 // approves it (DefaultLinkURL for api.nuvio.tv), and deviceName is what the
 // approving device shows.
@@ -284,14 +298,7 @@ func (c *Client) StartDeviceLogin(ctx context.Context, linkURL, deviceName strin
 	nonce := make([]byte, 24)
 	crand.Read(nonce)
 	login := DeviceLogin{nonce: hex.EncodeToString(nonce)}
-	var rows []struct {
-		DeviceCode   string    `json:"device_code"`
-		UserCode     string    `json:"user_code"`
-		URI          string    `json:"verification_uri"`
-		URIComplete  string    `json:"verification_uri_complete"`
-		ExpiresAt    time.Time `json:"expires_at"`
-		PollInterval int       `json:"poll_interval_seconds"`
-	}
+	var rows []deviceLoginRow
 	err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/start_device_login_session", "", map[string]any{
 		"p_device_nonce":      login.nonce,
 		"p_redirect_base_url": linkURL,
@@ -319,14 +326,17 @@ func pollInterval(seconds int) time.Duration {
 	return time.Duration(seconds) * time.Second
 }
 
+// devicePollRow is poll_tv_login_session's answer.
+type devicePollRow struct {
+	Status       string `json:"status"`
+	PollInterval int    `json:"poll_interval_seconds"`
+}
+
 // PollDeviceLogin returns the login's status, DeviceLoginPending until the
 // other device approves it, and the interval to poll at next. An unknown
 // login gives ErrDeviceLoginExpired.
 func (c *Client) PollDeviceLogin(ctx context.Context, login DeviceLogin) (status string, interval time.Duration, err error) {
-	var rows []struct {
-		Status       string `json:"status"`
-		PollInterval int    `json:"poll_interval_seconds"`
-	}
+	var rows []devicePollRow
 	err = c.call(ctx, http.MethodPost, "/rest/v1/rpc/poll_tv_login_session", "", map[string]any{
 		"p_code": login.deviceCode, "p_device_nonce": login.nonce,
 	}, &rows)
@@ -347,11 +357,7 @@ func (c *Client) PollDeviceLogin(ctx context.Context, login DeviceLogin) (status
 // that approved it. It works once: a login that isn't approved, has expired
 // or was exchanged already gives ErrDeviceLoginExpired.
 func (c *Client) ExchangeDeviceLogin(ctx context.Context, login DeviceLogin) (Session, error) {
-	var body struct {
-		AccessToken  string `json:"access_token"`
-		RefreshToken string `json:"refresh_token"`
-		ExpiresIn    int64  `json:"expires_in"`
-	}
+	var body tokenAnswer
 	err := c.call(ctx, http.MethodPost, "/functions/v1/tv-logins-exchange", "", map[string]string{
 		"code": login.deviceCode, "device_nonce": login.nonce,
 	}, &body)
@@ -459,7 +465,9 @@ type ProfilePatch struct {
 
 // PatchProfile changes one profile and leaves the rest of it, and the other
 // profiles, as they are. It returns the profile after the change, or
-// ErrProfileNotFound if there's none at index.
+// ErrProfileNotFound if there's none at index. The answer has no PIN state
+// (self-host leaves it out, #33): PinEnabled and PinLockedUntil are zero, so
+// keep the profile's own.
 func (c *Client) PatchProfile(ctx context.Context, s Session, index int, patch ProfilePatch) (Profile, error) {
 	in := map[string]any{"p_profile_id": index}
 	if patch.Name != nil {
@@ -543,6 +551,12 @@ func (c *Client) AvatarImageURL(a Avatar) string {
 	return c.baseURL + "/storage/v1/object/public/avatars/" + strings.Join(segments, "/")
 }
 
+// discovery is the backend's discovery document, GET /.well-known/nuvio.
+type discovery struct {
+	Service        string `json:"service"`
+	PublishableKey string `json:"publishable_key"`
+}
+
 // publishableKey returns the backend's public key, reading the discovery
 // document once.
 func (c *Client) publishableKey(ctx context.Context) (string, error) {
@@ -551,10 +565,7 @@ func (c *Client) publishableKey(ctx context.Context) (string, error) {
 	if c.key != "" {
 		return c.key, nil
 	}
-	var doc struct {
-		Service        string `json:"service"`
-		PublishableKey string `json:"publishable_key"`
-	}
+	var doc discovery
 	if err := c.do(ctx, http.MethodGet, "/.well-known/nuvio", nil, nil, &doc); err != nil {
 		return "", err
 	}

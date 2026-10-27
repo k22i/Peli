@@ -370,3 +370,94 @@ func TestLiveProfiles(t *testing.T) {
 		t.Errorf("after the push: %d profile(s), want %d with the new one", len(after), len(profiles)+1)
 	}
 }
+
+// TestLiveSync is the write half of the per-release live check
+// (docs/nuvio-release-checklist.md): one progress push to a real account and
+// its delete, with every answer checked against the contract (#33). It
+// catches drift between live and the self-host stack CI tests against. The
+// entry is far from 90 %, so no watched item is added. It runs only with
+// SINAG_NUVIO_LIVE_WRITES=1 and an account in NUVIO_EMAIL and
+// NUVIO_PASSWORD, and logs counts, never the account's data.
+func TestLiveSync(t *testing.T) {
+	if os.Getenv("SINAG_NUVIO_LIVE_WRITES") != "1" {
+		t.Skip("set SINAG_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to push to and delete from a live account")
+	}
+	rec := newRecorder(t)
+	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")
+	c.http.Transport = rec
+	s, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := c.SignOut(context.Background(), s); err != nil && !errors.Is(err, ErrSignedOut) {
+			t.Errorf("sign out: %v", err)
+		}
+	})
+	profiles, err := c.Profiles(t.Context(), s)
+	if err != nil || len(profiles) == 0 {
+		t.Fatalf("profiles = %d, %v", len(profiles), err)
+	}
+	index := profiles[0].Index
+
+	// Read the feed to its end for a cursor.
+	var cursor int64
+	events := 0
+	for {
+		page, err := c.ProgressDelta(t.Context(), s, index, cursor)
+		if err != nil {
+			t.Fatal(err)
+		}
+		events += len(page)
+		if len(page) > 0 {
+			cursor = page[len(page)-1].EventID
+		}
+		if len(page) < DeltaLimit {
+			break
+		}
+	}
+	t.Logf("progress feed: %d event(s)", events)
+
+	// Carmencita (1894): 5 s into 10 min, last watched now.
+	entry := ProgressRow{ContentID: "tt0000001", ContentType: "movie", VideoID: "tt0000001",
+		Position: 5_000, Duration: 600_000, LastWatched: time.Now().UnixMilli()}
+	start := time.Now()
+	if err := c.PushProgress(t.Context(), s, index, []ProgressRow{entry}); err != nil {
+		t.Fatal(err)
+	}
+	pushed, err := c.ProgressDelta(t.Context(), s, index, cursor)
+	key := ""
+	if i := slices.IndexFunc(pushed, func(e ProgressEvent) bool { return e.ContentID == entry.ContentID }); i >= 0 {
+		key = pushed[i].ProgressKey
+		cursor = pushed[len(pushed)-1].EventID
+	}
+	undone := false
+	t.Cleanup(func() {
+		if undone {
+			return
+		}
+		// A film's progress key is its content ID.
+		if err := c.DeleteProgress(context.Background(), s, index, []string{cmp.Or(key, entry.ContentID)}); err != nil {
+			t.Errorf("deleting the test progress: %v", err)
+		}
+	})
+	if err != nil || key == "" {
+		t.Fatalf("the push isn't in the feed: %d event(s), %v", len(pushed), err)
+	}
+	t.Logf("push to pull: %v", time.Since(start).Round(time.Millisecond))
+
+	if err := c.DeleteProgress(t.Context(), s, index, []string{key}); err != nil {
+		t.Fatal(err)
+	}
+	undone = true
+	deleted, err := c.ProgressDelta(t.Context(), s, index, cursor)
+	if err != nil || !slices.ContainsFunc(deleted, func(e ProgressEvent) bool { return e.ProgressKey == key && e.Operation == OpDelete }) {
+		t.Fatalf("the delete isn't in the feed: %d event(s), %v", len(deleted), err)
+	}
+	rec.mu.Lock()
+	defer rec.mu.Unlock()
+	for path, fields := range rec.unread {
+		slices.Sort(fields)
+		t.Logf("%s also sends %s", path, strings.Join(fields, ", "))
+	}
+}

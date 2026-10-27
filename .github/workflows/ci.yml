@@ -21,9 +21,16 @@ on:
         description: Also check that `wails3 dev` starts the app (Windows, Linux)
         type: boolean
         default: false
+      contract:
+        description: Also run the Nuvio contract tests against self-host (#33)
+        type: boolean
+        default: false
+  # #33: the Nuvio contract tests, daily. Only the contract job runs.
+  schedule:
+    - cron: "23 5 * * *"
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.ref }}-${{ github.event_name }}
   cancel-in-progress: true
 
 env:
@@ -35,6 +42,7 @@ env:
 
 jobs:
   frontend:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-24.04
     defaults:
       run:
@@ -62,6 +70,7 @@ jobs:
 
   # #18: the notices match the dependencies, and nothing in them is GPL-only.
   licences:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -84,6 +93,7 @@ jobs:
       - run: go run ./tools/notices -audit
 
   go:
+    if: github.event_name != 'schedule'
     strategy:
       fail-fast: false
       matrix:
@@ -136,6 +146,7 @@ jobs:
           dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env SINAG_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
 
   build:
+    if: github.event_name != 'schedule'
     strategy:
       fail-fast: false
       matrix:
@@ -254,3 +265,44 @@ jobs:
           echo "app running under wails3 dev"
       - if: always()
         run: cat dev.log || true
+
+  # #33: the contract and integration tests against a self-hosted Nuvio at a
+  # pinned commit (ADR-0020), daily and on demand. A failure means the
+  # backend changed shape or behavior: docs/nuvio-release-checklist.md says
+  # what to do. The same tests run against nuviotest's fake in the go job.
+  contract:
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.contract)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      # Bump with docs/nuvio-release-checklist.md.
+      NUVIO_SELF_HOST_REF: 30f156807ae77b2aec80b091b0d513841a25ab91
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: NuvioMedia/self-host
+          ref: ${{ env.NUVIO_SELF_HOST_REF }}
+          path: self-host
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends $LINUX_DEPS
+      - name: Start self-host
+        working-directory: self-host
+        run: |
+          ./nuvio setup --no-import-account
+          ./nuvio up
+      - run: mkdir -p frontend/dist && touch frontend/dist/.keep
+      - name: Contract and integration tests
+        env:
+          SINAG_CONTRACT_URL: http://localhost:8000
+        run: go test -v -count=1 -run 'TestContract|TestProgressReachesAnotherDevice' ./internal/nuvio ./internal/syncer
+      - if: failure()
+        working-directory: self-host
+        run: docker compose logs --tail 200
+      - if: always()
+        working-directory: self-host
+        run: docker compose down --volumes || true

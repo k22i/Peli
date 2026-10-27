@@ -53,6 +53,12 @@ type device struct {
 
 func newDevice(t *testing.T, server *nuviotest.Server) *device {
 	t.Helper()
+	return newDeviceAt(t, server.URL, email, nuviotest.Password)
+}
+
+// newDeviceAt is newDevice for any backend and account.
+func newDeviceAt(t *testing.T, url, email, password string) *device {
+	t.Helper()
 	path := filepath.Join(t.TempDir(), "sinag.db")
 	s, err := store.Open(path)
 	check(t, err)
@@ -61,8 +67,8 @@ func newDevice(t *testing.T, server *nuviotest.Server) *device {
 	check(t, err)
 	check(t, s.SetCurrentProfile(profile.ID))
 
-	client := nuvio.New(server.URL, "1.2.3")
-	session, err := client.SignInWithPassword(t.Context(), email, nuviotest.Password)
+	client := nuvio.New(url, "1.2.3")
+	session, err := client.SignInWithPassword(t.Context(), email, password)
 	check(t, err)
 	sess := &sessions{session: session}
 	return &device{path, s, profile, backend.Nuvio{Client: client, Sessions: sess}, sess}

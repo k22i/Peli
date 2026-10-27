@@ -147,7 +147,7 @@ Same codes on live and local unless noted.
 | Wrong password | HTTP 400, `invalid_credentials` |
 | Unknown function, or wrong argument name | `PGRST202 Could not find the function …` (PostgREST matches on argument *names*) |
 | Wrong argument type | `22P02 invalid input syntax for type integer` |
-| Profile index outside 1–6 | `P0001 Invalid profile id` |
+| Profile index outside 1–6 | `P0001 Invalid profile id` on writes; a pull answers `[]` (self-host, #33) |
 | Poll an unknown TV code | `P0001 Invalid TV login session` |
 | Approve an unknown TV code | No error: an `ok` row `{success, message}`. Check `success`, not the HTTP status. |
 | Too many requests | HTTP 429, `x-sb-error-code: over_request_rate_limit` (sign-in), **no `Retry-After`** |
