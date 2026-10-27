@@ -39,9 +39,10 @@ func TestPushFollowsChanges(t *testing.T) {
 	server := nuviotest.NewServer(t)
 	desktop := newDevice(t, server)
 	p := NewPusher(func() *store.Store { return desktop.store }, desktop.backend)
-	p.debounce, p.maxWait = 30*time.Millisecond, 200*time.Millisecond
+	p.debounce, p.maxWait = 100*time.Millisecond, time.Second
 	desktop.store.OnQueued(p.Notify)
-	p.Start(t.Context())
+	// Not Start: its launch flush would race the saves and send the first.
+	p.ctx = t.Context()
 	t.Cleanup(p.Stop)
 
 	for i, name := range []string{"Dune", "Arrival", "Sicario"} {

@@ -248,6 +248,20 @@ func Offline(err error) bool {
 	return errors.Is(err, nuvio.ErrSignedOut) || errors.Is(err, nuvio.ErrUnreachable)
 }
 
+// Unreachable is whether err means the backend couldn't be reached at all:
+// no network, DNS or a timeout (#31).
+func Unreachable(err error) bool { return errors.Is(err, nuvio.ErrUnreachable) }
+
+// Unavailable is whether err is the backend answering with server errors.
+func Unavailable(err error) bool { return errors.Is(err, nuvio.ErrUnavailable) }
+
+// SignedOut is whether err is the session having ended. It says nothing
+// about the network: the session may have ended before any request was made.
+func SignedOut(err error) bool { return errors.Is(err, nuvio.ErrSignedOut) }
+
+// Ping checks that the backend can be reached, without a session.
+func (n Nuvio) Ping(ctx context.Context) error { return n.Client.Ping(ctx) }
+
 // batches groups pushes, which are in the order they were made, into RPCs.
 // One of a kind Nuvio has no call for gets a batch too, which send fails, so
 // the failure is recorded on the push rather than silent.

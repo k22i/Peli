@@ -1,6 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import type { KeyboardEvent, MouseEvent } from "react";
 
+import { ConnectionStatus } from "@/components/shell/connection-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import { sections } from "@/sections";
@@ -23,7 +24,7 @@ function moveFocus(event: KeyboardEvent<HTMLAnchorElement>) {
   links[move(index, links.length)]?.focus();
 }
 
-// The six sections and the profile menu. An icon rail below the md
+// The six sections, the offline indicator and the profile menu. An icon rail below the md
 // breakpoint, with labels kept for screen readers and shown as tooltips.
 export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void }) {
   const pathname = useLocation({ select: (location) => location.pathname });
@@ -70,6 +71,7 @@ export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void
           ))}
         </ul>
       </nav>
+      <ConnectionStatus />
       <ProfileMenu />
     </aside>
   );

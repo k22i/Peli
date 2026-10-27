@@ -2,8 +2,8 @@
 // pulls the library, progress and watched feeds by delta cursor when the app
 // launches, when its window gets focus, when the profile changes and every
 // few minutes, merges them into the local store and tells the frontend what
-// changed so it can refresh its caches. Pushing is pusher.go (#30), addons
-// are #32's.
+// changed so it can refresh its caches. Pushing is pusher.go (#30), noticing
+// the network go and come back is connection.go (#31), addons are #32's.
 //
 // The wire is the sync module's (internal/backend, ADR-0015); this package
 // decides when to pull and what to do with the answer. There is no realtime
@@ -60,7 +60,9 @@ type Puller struct {
 	linked backend.Backend
 	// Called after a pull that wrote something.
 	emit func(Pulled)
-	now  func() time.Time
+	// Called with the result of every pull that asked Nuvio (Monitor.observe).
+	observe func(error)
+	now     func() time.Time
 
 	// One pull at a time, and when each profile was last pulled.
 	mu   sync.Mutex
@@ -70,7 +72,7 @@ type Puller struct {
 // NewPuller returns a puller that reads from open's store and, for a profile
 // linked to Nuvio, from linked.
 func NewPuller(open func() *store.Store, linked backend.Backend) *Puller {
-	return &Puller{open: open, linked: linked, emit: func(Pulled) {}, now: time.Now, last: map[uint64]time.Time{}}
+	return &Puller{open: open, linked: linked, emit: func(Pulled) {}, observe: func(error) {}, now: time.Now, last: map[uint64]time.Time{}}
 }
 
 // Pull pulls the profile in use, unless it was pulled less than MinGap ago
@@ -78,7 +80,14 @@ func NewPuller(open func() *store.Store, linked backend.Backend) *Puller {
 // makes no request at all (#23). It returns what changed. If one feed fails
 // the others are still pulled, and the first error comes back; an error that
 // would hit every feed (signed out, unreachable) stops the pull at once.
-func (p *Puller) Pull(ctx context.Context) (Pulled, error) {
+func (p *Puller) Pull(ctx context.Context) (Pulled, error) { return p.pullInUse(ctx, true) }
+
+// PullNow pulls the profile in use even if it was pulled less than MinGap
+// ago, for when the network has just come back (#31): what was pulled before
+// it went may be the last thing that got through.
+func (p *Puller) PullNow(ctx context.Context) (Pulled, error) { return p.pullInUse(ctx, false) }
+
+func (p *Puller) pullInUse(ctx context.Context, throttle bool) (Pulled, error) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 
@@ -90,12 +99,13 @@ func (p *Puller) Pull(ctx context.Context) (Pulled, error) {
 	if err != nil || !ok || profile.NuvioIndex == nil {
 		return Pulled{}, err
 	}
-	if at, ok := p.last[profile.ID]; ok && p.now().Sub(at) < MinGap {
+	if at, ok := p.last[profile.ID]; ok && throttle && p.now().Sub(at) < MinGap {
 		return Pulled{ProfileID: profile.ID}, nil
 	}
 	p.last[profile.ID] = p.now()
 
 	pulled, err := p.pull(ctx, db, profile)
+	p.observe(err)
 	if len(pulled.Surfaces) > 0 {
 		p.emit(pulled)
 	}
@@ -184,19 +194,48 @@ const ShutdownFlush = 5 * time.Second
 // flush when playback pauses or stops. Pushes follow every change by
 // themselves, through the store's OnQueued.
 type Service struct {
-	db     *store.Service
-	puller *Puller
-	pusher *Pusher
-	stop   context.CancelFunc
+	db      *store.Service
+	puller  *Puller
+	pusher  *Pusher
+	monitor *Monitor
+	stop    context.CancelFunc
+}
+
+// pinger is a backend that can check it is reachable without a session:
+// backend.Nuvio.
+type pinger interface {
+	Ping(context.Context) error
 }
 
 // NewService returns a service that syncs db's profile in use with linked.
 func NewService(db *store.Service, linked backend.Backend) *Service {
 	open := func() *store.Store { return store.Opened(db) }
 	s := &Service{db: db, puller: NewPuller(open, linked), pusher: NewPusher(open, linked)}
+	ping := func(context.Context) error { return nil }
+	if p, ok := linked.(pinger); ok {
+		ping = p.Ping
+	}
+	s.monitor = NewMonitor(ping, s.reconnect)
+	s.puller.observe, s.pusher.observe = s.monitor.observe, s.monitor.observe
 	s.pusher.refresh = func(ctx context.Context) { s.puller.Pull(ctx) }
 	store.NotifyQueued(db, s.pusher.Notify)
 	return s
+}
+
+// reconnect is what happens when Nuvio can be reached again (#31): what was
+// changed while offline goes out first, then the pull brings in what other
+// devices changed, without waiting out the pull's throttle or the push's
+// backoff.
+func (s *Service) reconnect(ctx context.Context) {
+	if ctx.Err() != nil {
+		return
+	}
+	if err := s.pusher.Resume(ctx); err != nil {
+		logPushError(err)
+	}
+	if _, err := s.puller.PullNow(ctx); err != nil && !backend.Offline(err) && !isCancelled(err) {
+		slog.Warn("syncer: pull after reconnecting failed", "error", err)
+	}
 }
 
 // PullerOf returns service's puller, for the launch and window events. It
@@ -212,8 +251,10 @@ func PusherOf(service *Service) *Pusher { return service.pusher }
 func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptions) error {
 	if app := application.Get(); app != nil {
 		s.puller.emit = func(pulled Pulled) { app.Event.Emit(EventPulled, pulled) }
+		s.monitor.emit = func(c Connection) { app.Event.Emit(EventConnection, c) }
 	}
 	ctx, s.stop = context.WithCancel(context.WithoutCancel(ctx))
+	s.monitor.Start(ctx)
 	s.pusher.Start(ctx)
 	go func() {
 		ticker := time.NewTicker(PollEvery)
@@ -234,6 +275,7 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 // ShutdownFlush. Services shut down in reverse order, so the store is still
 // open.
 func (s *Service) ServiceShutdown() error {
+	s.monitor.Stop()
 	s.pusher.Stop()
 	ctx, cancel := context.WithTimeout(context.Background(), ShutdownFlush)
 	defer cancel()
@@ -243,6 +285,7 @@ func (s *Service) ServiceShutdown() error {
 	if s.stop != nil {
 		s.stop()
 	}
+	s.monitor.Wait()
 	return nil
 }
 
@@ -256,3 +299,13 @@ func (s *Service) Flush(ctx context.Context) error { return s.pusher.Flush(ctx) 
 // to it or signed in. It does nothing if the profile was pulled in the last
 // half minute.
 func (s *Service) Pull(ctx context.Context) (Pulled, error) { return s.puller.Pull(ctx) }
+
+// Connection is whether Nuvio can be reached, as far as the app knows: from
+// the last pull or push, or the last check while offline. The frontend shows
+// an indicator when it isn't, and EventConnection tells it of a change.
+func (s *Service) Connection() Connection { return s.monitor.Connection() }
+
+// CheckConnection asks Nuvio now, if it wasn't reachable, and returns the
+// connection; if it is back, what is queued is sent and the profile pulled.
+// For the indicator's "Try again" and the webview's online event.
+func (s *Service) CheckConnection(ctx context.Context) Connection { return s.monitor.Check(ctx) }

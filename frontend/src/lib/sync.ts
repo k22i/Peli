@@ -1,8 +1,8 @@
-import { useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { queryOptions, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { Events } from "@wailsio/runtime";
 import { useEffect } from "react";
 
-import { Service as Sync } from "@bindings/syncer";
+import { Connection, Service as Sync } from "@bindings/syncer";
 import type { Surface } from "@bindings/store";
 
 // Sent by internal/syncer after a pull wrote to the local store (#29), with
@@ -60,4 +60,55 @@ export function useSyncProfile(profileId: number | undefined) {
 export function flushPushes(): Promise<void> {
   // Offline or signed out: Go keeps what failed and retries it.
   return Sync.Flush().catch(() => {});
+}
+
+// Sent by internal/syncer when Nuvio becomes reachable or stops being (#31),
+// with the new Connection.
+export const connectionEvent = "sync:connection";
+
+// Whether Nuvio can be reached, as Go last found out from a pull, a push or
+// its own check while offline. Go starts out online, so a launch with the
+// network up shows nothing while the first pull is on its way, and it stays
+// online for the Guest, which never needs the network.
+export const connectionQuery = queryOptions({
+  queryKey: ["sync", "connection"],
+  queryFn: () => Sync.Connection(),
+  staleTime: Number.POSITIVE_INFINITY,
+});
+
+// Keeps connectionQuery up to date: Go tells us of a change, and when the
+// webview sees the network come back Go checks at once rather than at its
+// next probe (it then sends what is queued and pulls). Mounted once, at the
+// root.
+export function useConnectionEvents() {
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    const set = (connection: Connection) =>
+      queryClient.setQueryData(connectionQuery.queryKey, connection);
+    const off = Events.On(connectionEvent, (event) => set(event.data));
+    const onOnline = () => {
+      Sync.CheckConnection()
+        .then(set)
+        .catch(() => {});
+    };
+    window.addEventListener("online", onOnline);
+    return () => {
+      off();
+      window.removeEventListener("online", onOnline);
+    };
+  }, [queryClient]);
+}
+
+// The connection, online until Go has answered.
+export function useConnection(): Connection {
+  return useQuery(connectionQuery).data ?? Connection.Online;
+}
+
+// Asks Go to check the connection now, for the indicator's "Try again".
+export function useCheckConnection() {
+  const queryClient = useQueryClient();
+  return () =>
+    Sync.CheckConnection()
+      .then((connection) => queryClient.setQueryData(connectionQuery.queryKey, connection))
+      .catch(() => {});
 }

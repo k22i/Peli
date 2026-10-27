@@ -135,6 +135,13 @@ func New(baseURL, version string) *Client {
 // the backend records with each change.
 func (c *Client) OriginClientID() string { return c.originID }
 
+// Ping checks that the backend can be reached, with the discovery document:
+// no session, no key, and nothing written. It returns ErrUnreachable or
+// ErrUnavailable as any other call would.
+func (c *Client) Ping(ctx context.Context) error {
+	return c.do(ctx, http.MethodGet, "/.well-known/nuvio", nil, nil, nil)
+}
+
 func randomHex(n int) string {
 	b := make([]byte, n)
 	crand.Read(b)

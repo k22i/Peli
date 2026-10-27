@@ -52,6 +52,9 @@ const (
 	// force: a pause, a stop, the app exiting, a sign-out. Sends everything
 	// now.
 	force
+	// resume: the network came back (#31). Forgets the backoff, otherwise
+	// auto.
+	resume
 )
 
 // Pusher sends the profiles' outboxes to their backends: after a short
@@ -66,6 +69,8 @@ type Pusher struct {
 	// Called before a deferred watched push is sent, so the pull can bring the
 	// server's own copy (which settles the push); Puller.Pull in the app.
 	refresh func(context.Context)
+	// Called with the result of every push to Nuvio (Monitor.observe).
+	observe func(error)
 
 	debounce, maxWait, progressEvery, grace, backoffMin, backoffMax, kickGap time.Duration
 
@@ -107,7 +112,7 @@ type sentKey struct {
 // linked.
 func NewPusher(open func() *store.Store, linked backend.Backend) *Pusher {
 	return &Pusher{
-		open: open, linked: linked, now: time.Now, ctx: context.Background(),
+		open: open, linked: linked, now: time.Now, ctx: context.Background(), observe: func(error) {},
 		debounce: Debounce, maxWait: MaxWait, progressEvery: ProgressEvery, grace: WatchedGrace,
 		backoffMin: BackoffMin, backoffMax: BackoffMax, kickGap: KickGap,
 		sentProgress: map[sentKey]time.Time{}, sentFinished: map[sentKey]time.Time{},
@@ -188,6 +193,10 @@ func (p *Pusher) Background(ctx context.Context) {
 	}()
 }
 
+// Resume is for the network coming back (#31): it forgets the backoff and
+// sends what is ready, keeping the progress interval and the watched grace.
+func (p *Pusher) Resume(ctx context.Context) error { return p.flush(ctx, resume) }
+
 // Flush sends everything queued now, for a pause, a stop, the app exiting
 // or a sign-out. It returns what stopped it, if anything: the pushes that
 // failed stay queued.
@@ -209,6 +218,11 @@ func (p *Pusher) flush(ctx context.Context, m mode) error {
 
 	p.mu.Lock()
 	now := p.now()
+	if m == resume {
+		// Under flushMu, so a flush that failed while offline and finished
+		// just now can't put the backoff back.
+		p.failures, p.retryAt = 0, time.Time{}
+	}
 	switch {
 	case m == auto && now.Before(p.retryAt):
 		p.reschedule()
@@ -296,6 +310,9 @@ func (p *Pusher) flushProfile(ctx context.Context, db *store.Store, profile stor
 
 	source := backend.For(profile, p.linked)
 	acked, pushErr := source.Push(ctx, profile, ready)
+	if profile.NuvioIndex != nil {
+		p.observe(pushErr)
+	}
 	now := p.now()
 	var errs []error
 	isAcked := map[pushID]bool{}

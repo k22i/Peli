@@ -10,7 +10,7 @@ import {
   useUnlockedProfiles,
 } from "@/lib/account";
 import { accountQuery, useCurrentProfile } from "@/lib/profile";
-import { useSyncEvents, useSyncProfile } from "@/lib/sync";
+import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 
 export type RouterContext = {
   queryClient: QueryClient;
@@ -43,6 +43,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 function RootLayout() {
   useSessionEndedRedirect();
   useSyncEvents();
+  useConnectionEvents();
   const location = useLocation();
   // The launch gate only applies once a profile is in use, so it skips the
   // screens that come before one — and doesn't ask the store for the current

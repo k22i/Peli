@@ -45,6 +45,9 @@ type Server struct {
 	FailPolls atomic.Int32
 	// retry_after_seconds returned for a wrong profile PIN (#25).
 	PinRetryAfter atomic.Int64
+	// Drops every connection without an answer while set, as if the
+	// network were down (#31).
+	Offline atomic.Bool
 
 	mu       sync.Mutex
 	profiles map[string][]map[string]any // by user, sorted by index
@@ -264,6 +267,12 @@ func authError(w http.ResponseWriter, status int, code, msg string) {
 }
 
 func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
+	if s.Offline.Load() {
+		if conn, _, err := http.NewResponseController(w).Hijack(); err == nil {
+			conn.Close()
+		}
+		return
+	}
 	w.Header().Set("Content-Type", "application/json")
 	if r.URL.Path == "/.well-known/nuvio" {
 		json.NewEncoder(w).Encode(map[string]any{
