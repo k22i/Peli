@@ -50,6 +50,12 @@ vi.mock("@bindings/store", () => ({
   },
 }));
 
+// The keychain, holding a TMDB key when a test saves one.
+const keychain = vi.hoisted(() => ({ tmdb: null as string | null }));
+vi.mock("@bindings/secrets", () => ({
+  Service: { Get: (key: string) => Promise.resolve(key === "tmdb.api-key" ? keychain.tmdb : null) },
+}));
+
 vi.mock("@bindings/account", () => ({
   Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
 }));
@@ -144,7 +150,14 @@ const writes = () =>
       .join(" "),
   );
 
+// The images under a page's artwork, backdrops and cast photos.
+const backdrops = () =>
+  [...document.querySelectorAll<HTMLImageElement>("[data-slot=artwork] img")].map(
+    (image) => image.src,
+  );
+
 beforeEach(() => {
+  keychain.tmdb = null;
   db.watched = [];
   db.progress = [];
   db.library = [];
@@ -361,5 +374,92 @@ describe("title page", () => {
     expect(asked().filter((url) => url.includes("/meta/"))).toEqual([
       "https://anime-kitsu.strem.fun/meta/series/kitsu%3A46474.json",
     ]);
+  });
+  describe("with a TMDB key", () => {
+    const tmdb = "https://api.themoviedb.org/3";
+    const img = "https://image.tmdb.org/t/p";
+    const movie = `${tmdb}/movie/278?append_to_response=images%2Ccredits&include_image_language=en%2Cnull&api_key=key`;
+    const findFrieren = `${tmdb}/find/tt22248376?external_source=imdb_id&api_key=key`;
+    const frieren = `${tmdb}/tv/209867?append_to_response=images%2Caggregate_credits&include_image_language=en%2Cnull&api_key=key`;
+    const shawshank = {
+      backdrop_path: "/shawshank.jpg",
+      images: { logos: [{ iso_639_1: "en", file_path: "/shawshank-logo.png" }] },
+      credits: {
+        cast: [
+          { id: 504, name: "Tim Robbins", character: "Andy Dufresne", profile_path: "/tim.jpg" },
+          { id: 192, name: "Morgan Freeman", character: "Ellis Boyd 'Red' Redding" },
+        ],
+      },
+    };
+
+    beforeEach(() => {
+      keychain.tmdb = "key";
+    });
+
+    it("shows TMDB's logo, backdrop and cast photos over the addon's", async () => {
+      const asked = serve({ [movie]: shawshank });
+      await renderApp(moviePath);
+
+      expect(await screen.findByRole("heading", { name: "Cast" })).toBeInTheDocument();
+      const cast = screen.getByRole("list", { name: "Cast" });
+      expect(within(cast).getByText("Tim Robbins")).toBeInTheDocument();
+      expect(within(cast).getByText("Andy Dufresne")).toBeInTheDocument();
+      expect(cast.querySelector(`img[src="${img}/w185/tim.jpg"]`)).not.toBeNull();
+      expect(screen.getByRole("img", { name: "The Shawshank Redemption" })).toHaveAttribute(
+        "src",
+        `${img}/w500/shawshank-logo.png`,
+      );
+      // The addon's backdrop stays under TMDB's until it loads.
+      expect(backdrops()).toEqual(
+        expect.arrayContaining([`${img}/original/shawshank.jpg`, cinemetaMovie.meta.background]),
+      );
+      // The IMDb id is looked up beside the addon; Cinemeta's moviedb_id
+      // names the same title, so its details are asked once.
+      expect(asked().filter((url) => url.startsWith(tmdb))).toEqual([
+        `${tmdb}/find/tt0111161?external_source=imdb_id&api_key=key`,
+        movie,
+      ]);
+      // The cast isn't listed twice; the crew still comes from the addon.
+      expect(screen.queryByText("Cast", { selector: "dt" })).toBeNull();
+      expect(screen.getByText("Frank Darabont")).toBeInTheDocument();
+    });
+
+    it("finds a Kitsu anime by its IMDb id", async () => {
+      const asked = serve({
+        [findFrieren]: { movie_results: [], tv_results: [{ id: 209867 }] },
+        [frieren]: {
+          aggregate_credits: {
+            cast: [{ id: 1, name: "Atsumi Tanezaki", roles: [{ character: "Frieren" }] }],
+          },
+        },
+      });
+      await renderApp(`/title/series/${encodeURIComponent("kitsu:46474")}`);
+
+      expect(await screen.findByText("Atsumi Tanezaki")).toBeInTheDocument();
+      expect(screen.getByText("Frieren")).toBeInTheDocument();
+      expect(asked().filter((url) => url.startsWith(tmdb))).toEqual([findFrieren, frieren]);
+    });
+
+    it("keeps the addon's details when TMDB fails", async () => {
+      serve();
+      await renderApp(moviePath);
+
+      expect(await screen.findByRole("button", { name: "Play" })).toBeInTheDocument();
+      await waitFor(() => expect(screen.getByText("Cast", { selector: "dt" })).toBeInTheDocument());
+      expect(screen.getByRole("img", { name: "The Shawshank Redemption" })).toHaveAttribute(
+        "src",
+        cinemetaMovie.meta.logo,
+      );
+      expect(screen.queryByRole("heading", { name: "Cast" })).toBeNull();
+    });
+  });
+
+  it("never asks TMDB without a key", async () => {
+    const asked = serve();
+    await renderApp(moviePath);
+
+    expect(await screen.findByRole("button", { name: "Play" })).toBeInTheDocument();
+    expect(screen.getByText("Cast", { selector: "dt" })).toBeInTheDocument();
+    expect(asked().some((url) => url.includes("themoviedb"))).toBe(false);
   });
 });

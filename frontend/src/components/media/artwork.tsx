@@ -41,15 +41,20 @@ export function forgetArtwork() {
 
 // A poster, still or backdrop. Fades in once loaded; until then, or with no
 // `src` (addons often lack art), it shows a generated gradient and, for
-// cards, the title set in the display face.
+// cards, the title set in the display face. A `fallback` image shows under
+// it while it loads and if it fails: the art it replaces, such as the
+// addon's backdrop under TMDB's (#47), so swapping art never flashes the
+// gradient.
 export function Artwork({
   src,
+  fallback,
   title,
   showTitle = false,
   titleClassName,
   className,
 }: {
   src?: string | undefined;
+  fallback?: string | undefined;
   title: string;
   showTitle?: boolean;
   titleClassName?: string | undefined;
@@ -82,6 +87,17 @@ export function Artwork({
         >
           {title}
         </span>
+      )}
+      {fallback && fallback !== src && status !== "loaded" && seen.get(fallback) !== "failed" && (
+        <img
+          src={fallback}
+          alt=""
+          decoding="async"
+          draggable={false}
+          onLoad={() => remember(fallback, "loaded")}
+          onError={() => remember(fallback, "failed")}
+          className="absolute inset-0 size-full object-cover"
+        />
       )}
       {src && status !== "failed" && (
         <img

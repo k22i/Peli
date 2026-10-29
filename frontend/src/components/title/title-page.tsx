@@ -14,6 +14,7 @@ import { Service as Store } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
 import { Chip, ChipGroup } from "@/components/media/chip";
 import { Hero, HeroSkeleton } from "@/components/media/hero";
+import { CastList } from "@/components/title/cast-list";
 import { EpisodeList } from "@/components/title/episode-list";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,11 +50,13 @@ import {
   type TitlePreview,
   type TitleSearch,
 } from "@/lib/title";
+import { tmdbRef, useTmdbArt, type TmdbArt } from "@/lib/tmdb";
 
 // A title's page (#45): its art, details and cast, Play or Resume, the
 // library and watched toggles, and for a series its seasons and episodes.
 // It paints from the card it was opened from, then from the details' cache,
-// then fills in. Watched state follows Nuvio's apps (ADR-0029).
+// then fills in. Watched state follows Nuvio's apps (ADR-0029). With a TMDB
+// key, TMDB's logo, backdrop and cast photos replace the addon's (ADR-0031).
 export function TitlePage() {
   const { type, id } = useParams({ from: "/title/$type/$id" });
   const profile = useQuery(currentProfileQuery).data;
@@ -119,6 +122,9 @@ function Title({
   });
 
   const meta = details.data?.meta;
+  // An IMDb or TMDB id is looked up at once, beside the addon; a Kitsu id
+  // waits for the details' imdb_id.
+  const art = useTmdbArt(tmdbRef(type, id, meta));
   const shown = meta ?? preview;
   if (!shown) {
     if (details.isError || visible.data?.length === 0) {
@@ -129,14 +135,15 @@ function Title({
   return (
     <>
       {meta && details.data ? (
-        <LoadedTitle profile={profile} meta={meta} addonUrl={details.data.addonUrl} />
+        <LoadedTitle profile={profile} meta={meta} addonUrl={details.data.addonUrl} art={art} />
       ) : (
         <Hero
           className={heroOffset}
           title={shown.name}
+          logo={art?.logo}
           meta={shown.releaseInfo ? [shown.releaseInfo] : []}
           synopsis={shown.description}
-          backdrop={shown.background ?? shown.poster}
+          {...backdrops(shown, art)}
         />
       )}
       {!meta && details.isError && <LoadFailed onRetry={() => void details.refetch()} />}
@@ -161,10 +168,12 @@ function LoadedTitle({
   profile,
   meta,
   addonUrl,
+  art,
 }: {
   profile: Profile;
   meta: Meta;
   addonUrl: string;
+  art: TmdbArt | undefined;
 }) {
   const client = useQueryClient();
   const play = usePlay();
@@ -222,10 +231,10 @@ function LoadedTitle({
       <Hero
         className={heroOffset}
         title={meta.name}
-        logo={meta.logo}
+        logo={art?.logo ?? meta.logo}
         meta={metaLine(meta)}
         synopsis={meta.description}
-        backdrop={meta.background ?? meta.poster}
+        {...backdrops(meta, art)}
         actions={
           <>
             {choice && (
@@ -275,9 +284,22 @@ function LoadedTitle({
           }}
         />
       )}
-      <About meta={meta} />
+      {art && art.cast.length > 0 && <CastList cast={art.cast} />}
+      <About meta={meta} withCast={!art || art.cast.length === 0} />
     </>
   );
+}
+
+// TMDB's backdrop over the addon's, which shows while it loads or if it
+// fails.
+function backdrops(
+  shown: { background?: string | undefined; poster?: string | undefined },
+  art: TmdbArt | undefined,
+) {
+  const own = shown.background ?? shown.poster;
+  return art?.backdrop
+    ? { backdrop: art.backdrop, fallbackBackdrop: own }
+    : { backdrop: own, fallbackBackdrop: undefined };
 }
 
 // "2008–2013 · 49 min · Crime, Drama, Thriller · IMDb 9.5"
@@ -410,10 +432,11 @@ function SeasonSelect({
   );
 }
 
-// Cast and crew, as the addon names them. Photos come with TMDB (#47).
-function About({ meta }: { meta: Meta }) {
+// Cast and crew, as the addon names them. The cast has its own strip, with
+// photos, when TMDB lists it (#47).
+function About({ meta, withCast }: { meta: Meta; withCast: boolean }) {
   const rows = [
-    ["Cast", meta.cast],
+    ["Cast", withCast ? meta.cast : undefined],
     ["Directed by", meta.director],
     ["Written by", meta.writer],
     ["Genres", meta.genres],

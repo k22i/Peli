@@ -49,7 +49,7 @@ Everything goes through `usePlay()` (ADR-0026). The stream picker (#52) and the 
 
 - **Hero:** the shared `Hero`, which now takes a `logo` and falls back to the name if the logo fails to load. Below it, a meta line (year · runtime · up to three genres · IMDb rating), the synopsis, then Play/Resume, Add to library / In library, and Mark watched / Watched.
 - **Episodes:** season chips, or a select past eight seasons, with Specials last. The page opens on the season Play would play from. Each row shows the episode's still, ✓ when watched, a progress bar, its number, air date and runtime, title and synopsis. The list is virtualized and scrolls with the page, since Kitsu can list a thousand episodes in one season. ↑ and ↓ move between rows.
-- **About:** the full synopsis, then cast, directors, writers, genres, country and awards, as the addon names them. Cast photos and other ratings need TMDB (#47).
+- **About:** the full synopsis, then cast, directors, writers, genres, country and awards, as the addon names them. With a TMDB key, cast photos, logos and backdrops come from TMDB (#47, ADR-0031).
 
 ## Library
 

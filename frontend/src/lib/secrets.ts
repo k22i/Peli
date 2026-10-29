@@ -9,6 +9,7 @@ export type SecretKey =
   | "nuvio.refresh-token"
   | "trakt.access-token"
   | "trakt.refresh-token"
+  | "tmdb.api-key"
   | `debrid.${string}`;
 
 export const secrets = {

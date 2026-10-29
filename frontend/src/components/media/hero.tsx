@@ -18,6 +18,7 @@ export function Hero({
   meta,
   synopsis,
   backdrop,
+  fallbackBackdrop,
   actions,
   className,
 }: {
@@ -31,6 +32,8 @@ export function Hero({
   meta?: ReactNode[];
   synopsis?: ReactNode;
   backdrop?: string | undefined;
+  // Shown under the backdrop while it loads or if it fails.
+  fallbackBackdrop?: string | undefined;
   actions?: ReactNode;
   className?: string;
 }) {
@@ -43,7 +46,12 @@ export function Hero({
           (a `dark:` utility on the scope itself would always match). */}
       <div className="overflow-hidden rounded-2xl shadow-lift dark:rounded-none dark:shadow-none">
         <div className="dark relative isolate flex min-h-[min(68vh,36rem)] items-end text-foreground">
-          <Artwork src={backdrop} title={title} className="absolute inset-0 -z-10" />
+          <Artwork
+            src={backdrop}
+            fallback={fallbackBackdrop}
+            title={title}
+            className="absolute inset-0 -z-10"
+          />
           {/* Scrims: from the bottom and from the start, where the text sits. */}
           <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/35 to-black/0" />
           <div className="absolute inset-0 -z-10 bg-linear-to-r from-black/70 via-black/20 to-transparent" />

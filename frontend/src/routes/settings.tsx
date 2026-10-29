@@ -6,6 +6,7 @@ import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import { ServerDialog } from "@/components/settings/server-dialog";
+import { TmdbDialog } from "@/components/settings/tmdb-dialog";
 import {
   SettingRow,
   SettingsNav,
@@ -42,6 +43,7 @@ import {
   type DeviceSettings,
   type ProfileSettings,
 } from "@/lib/settings";
+import { useTmdbKey } from "@/lib/tmdb";
 
 export const Route = createFileRoute("/settings")({
   component: Settings,
@@ -279,6 +281,7 @@ function ProfileSections({ profileId }: { profileId: number }) {
         <SettingRow id="trakt" label="Trakt" description="Scrobble what you watch to Trakt.">
           <Badge variant="secondary">Coming soon</Badge>
         </SettingRow>
+        <TmdbRow />
       </SettingsSection>
 
       {/* The setting is the consent only: diagnostics themselves are #90, and
@@ -297,6 +300,39 @@ function ProfileSections({ profileId }: { profileId: number }) {
           />
         </SettingRow>
       </SettingsSection>
+    </>
+  );
+}
+
+// The optional TMDB key (#47). It's kept in this computer's keychain, so it
+// applies to every profile here.
+function TmdbRow() {
+  const key = useTmdbKey();
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <SettingRow
+        id="tmdb"
+        label="TMDB"
+        description={
+          key === undefined
+            ? "…"
+            : key
+              ? "Title pages show TMDB’s logos, backdrops and cast photos. Applies to this device."
+              : "Add your own TMDB key for richer artwork, logos and cast photos. Optional."
+        }
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          aria-label={key ? "Change TMDB key" : "Add TMDB key"}
+          disabled={key === undefined}
+          onClick={() => setOpen(true)}
+        >
+          {key ? "Change" : "Add key"}
+        </Button>
+      </SettingRow>
+      <TmdbDialog hasKey={Boolean(key)} open={open} onOpenChange={setOpen} />
     </>
   );
 }

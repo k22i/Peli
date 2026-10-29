@@ -16,3 +16,4 @@
 - [Search page](search-page.md) — #44 searchCatalogs/searchQuery/searchGroups, addon-order merge, ⌘F and /, Row focus by key, fail-closed kids visibility
 - [Title page](title-page.md) — #45 /title/$type/$id, titleMetaQuery fallback, Nuvio watched rules (90 %, clears progress, series mark), Store.SetWatched, useOpenTitle
 - [Library page](library-page.md) — #46 lib/library.ts rules, Store.LastWatched + ["last-watched"] key, context menu/Delete + Undo, All chip value, test gotchas
+- [TMDB key](tmdb-key.md) — #47 tmdb.api-key in keychain, lib/tmdb.ts mapping + useTmdbArt, Artwork fallback, mock @bindings/secrets in route tests
