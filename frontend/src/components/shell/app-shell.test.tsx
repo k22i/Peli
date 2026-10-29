@@ -7,7 +7,7 @@ import {
   createRoute,
   createRouter,
 } from "@tanstack/react-router";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vite-plus/test";
 
@@ -65,18 +65,24 @@ describe("app shell", () => {
     expect(screen.getByRole("link", { name: "Movies" })).toHaveFocus();
   });
 
-  it.each([
-    ["Control", "{Control>}3{/Control}"],
-    ["Meta", "{Meta>}5{/Meta}"],
-  ])("jumps to a section with %s+digit", async (_, keys) => {
+  it("jumps to a section with Control+digit", async () => {
     const user = userEvent.setup();
     await renderApp("/");
 
-    await user.keyboard(keys);
+    await user.keyboard("{Control>}3{/Control}");
 
-    const label = keys.includes("3") ? "Shows" : "Search";
-    expect(await heading(label)).toBeInTheDocument();
+    expect(await heading("Shows")).toBeInTheDocument();
     expect(document.getElementById("content")).toHaveFocus();
+  });
+
+  it("jumps to Search with Meta+digit, and leaves focus in its field", async () => {
+    const user = userEvent.setup();
+    await renderApp("/");
+
+    await user.keyboard("{Meta>}5{/Meta}");
+
+    expect(await heading("Search")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByRole("searchbox", { name: "Search" })).toHaveFocus());
   });
 
   it.each([

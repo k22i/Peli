@@ -96,6 +96,20 @@ export function Row<T>({
   const count = items.length;
   const { active, setActive, focusIndex } = useRovingFocus(scroller, count);
 
+  // Items can arrive ahead of the active card (search results, #44): it
+  // follows its key, so focus and the Tab stop stay on the same card and
+  // it stays mounted.
+  const [shown, setShown] = useState(items);
+  if (shown !== items) {
+    setShown(items);
+    const previous = shown[active];
+    if (previous !== undefined) {
+      const key = getKey(previous, active);
+      const index = items.findIndex((item, i) => getKey(item, i) === key);
+      if (index >= 0 && index !== active) setActive(index);
+    }
+  }
+
   const shapeOf = (index: number) => (typeof card === "function" ? card(items[index]!) : card);
 
   // No React Compiler in this app: nothing here is memoized behind its back.

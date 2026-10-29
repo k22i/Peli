@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/shell/sidebar";
 import { TitleBar } from "@/components/shell/title-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
 import { currentPlatform } from "@/lib/platform";
+import { searchFieldId } from "@/lib/search";
 import { sections } from "@/sections";
 
 // The window frame every route renders in: title bar, sidebar and a content
@@ -31,15 +32,30 @@ export function AppShell({ children }: { children: ReactNode }) {
       router.subscribe("onRendered", () => {
         if (!focusPending.current) return;
         focusPending.current = false;
+        // Unless the page took it itself, as Search's field does.
+        if (content.current?.contains(document.activeElement)) return;
         content.current?.focus({ preventScroll: true });
       }),
     [router],
   );
 
   // Ctrl/⌘+1–6 jump to a section, and Ctrl/⌘+, opens Settings, as it does
-  // in other apps.
+  // in other apps. Ctrl/⌘+F, or / outside a text field, goes to Search's
+  // field (#44).
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      if (isSearchShortcut(event)) {
+        event.preventDefault();
+        const field = document.getElementById(searchFieldId);
+        if (field instanceof HTMLInputElement) {
+          field.focus();
+          field.select();
+        } else {
+          // Its field takes focus when the page opens.
+          void navigate({ to: "/search" });
+        }
+        return;
+      }
       if (!(event.ctrlKey || event.metaKey) || event.altKey || event.shiftKey) return;
       const to = event.key === "," ? "/settings" : sections[Number(event.key) - 1]?.to;
       if (!to) return;
@@ -100,5 +116,16 @@ export function AppShell({ children }: { children: ReactNode }) {
         </ScrollAreaPrimitive.Root>
       </main>
     </div>
+  );
+}
+
+function isSearchShortcut(event: KeyboardEvent): boolean {
+  if (event.altKey || event.shiftKey) return false;
+  if (event.ctrlKey || event.metaKey) return event.key.toLowerCase() === "f";
+  if (event.key !== "/") return false;
+  const target = event.target;
+  return !(
+    target instanceof HTMLElement &&
+    (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
   );
 }

@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { LayoutGrid } from "lucide-react";
+import { LayoutGrid, type LucideIcon } from "lucide-react";
 import { useCallback } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
@@ -241,20 +241,23 @@ function NoCatalogs({ kind }: { kind: BrowseKind }) {
   );
 }
 
-function Notice({
+// A page's empty or error state; Search shares it.
+export function Notice({
   title,
   description,
   action,
+  icon: Icon = LayoutGrid,
 }: {
   title: string;
   description: string;
   action?: React.ReactNode;
+  icon?: LucideIcon;
 }) {
   return (
     <Empty>
       <EmptyHeader>
         <EmptyMedia variant="icon">
-          <LayoutGrid aria-hidden />
+          <Icon aria-hidden />
         </EmptyMedia>
         <EmptyTitle>
           <h2>{title}</h2>

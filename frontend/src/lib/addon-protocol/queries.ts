@@ -78,6 +78,24 @@ export const catalogPagesQuery = (
     retry: 1,
   });
 
+// One search catalog's results for `query` (#44). Each catalog is its own
+// query, so its results show as soon as its addon answers. Kept in memory
+// only, since a search isn't worth a slot on disk; not retried, so a slow
+// addon's error shows rather than doubling its wait.
+export const searchQuery = (
+  addonUrl: string,
+  type: ContentType,
+  id: string,
+  query: string,
+  client: AddonClient = addonClient,
+) =>
+  queryOptions({
+    queryKey: ["addon-search", addonUrl, type, id, query],
+    queryFn: ({ signal }) => client.catalog(addonUrl, type, id, { search: query }, { signal }),
+    staleTime: 5 * minute,
+    retry: false,
+  });
+
 // A title's meta from one addon. Kept across restarts for the title page.
 export const metaQuery = (
   addonUrl: string,

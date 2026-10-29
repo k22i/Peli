@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-Home (#42, ADR-0026) is `routes/index.tsx`. Row order comes from `homeRows(layout, collections, loadedAddons, visible)` in `lib/home.ts`: layout sections first, then catalogs the layout doesn't name, in addon order, with no-extras catalogs only. Kids filtering goes through `hiddenCatalogsQuery` (one batched `CatalogVisible` query under `["addons", id, "visible", …]`), wrapped with the manifests in `useBrowsableAddons` (shared with browse, #43). The hero is the first catalog row's first item with a backdrop: Resume if it's in Continue Watching, else Play, falling back to the last watched title.
+Home (#42, ADR-0026) is `routes/index.tsx`. Row order comes from `homeRows(layout, collections, loadedAddons, visible)` in `lib/home.ts`: layout sections first, then catalogs the layout doesn't name, in addon order, with no-extras catalogs only. Kids filtering goes through `catalogVisibilityQuery` (one batched `CatalogVisible` query under `["addons", id, "visible", …]`), wrapped with the manifests in `useBrowsableAddons` (shared with browse #43 and search #44). Its `shown` fails closed: a catalog not yet checked is hidden. The hero is the first catalog row's first item with a backdrop: Resume if it's in Continue Watching, else Play, falling back to the last watched title.
 
 **Why:** the user's layout or addon order decides what's first, and Home must paint from cache (measured 250–290 ms warm and offline in WebKit).
 

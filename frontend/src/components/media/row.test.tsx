@@ -66,6 +66,22 @@ describe("Row", () => {
     expect(screen.getByRole("button", { name: "Title 1" })).toHaveFocus();
   });
 
+  it("keeps focus on its card when items arrive ahead of it", async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(<PosterRow title="Results" items={titles(20)} />);
+
+    await user.tab();
+    await user.keyboard("{ArrowRight}{ArrowRight}");
+    const focused = screen.getByRole("button", { name: "Title 3" });
+    expect(focused).toHaveFocus();
+
+    rerender(<PosterRow title="Results" items={[...titles(30, "Early"), ...titles(20)]} />);
+    expect(focused).toHaveFocus();
+    expect(tabStops("Results")).toEqual([focused]);
+    await user.keyboard("{ArrowRight}");
+    expect(screen.getByRole("button", { name: "Title 4" })).toHaveFocus();
+  });
+
   it("moves between rows with ↑ and ↓ inside a RowGroup", async () => {
     const user = userEvent.setup();
     render(

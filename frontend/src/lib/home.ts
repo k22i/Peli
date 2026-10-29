@@ -88,11 +88,11 @@ export function homeSections(
 export const catalogRef = ({ addon, catalog }: CatalogSource) =>
   `${addon.url}|${catalog.type}|${catalog.id}`;
 
-// Which of these catalogs the profile may not see: a kids profile sees only
-// the ones its parent allowed (ADR-0014), anyone else all of them. Under the
-// visible addons' key, so an edit, a pull or a change of allow-list
-// refreshes it; the last answer stays up while a new one loads.
-export const hiddenCatalogsQuery = (profileId: number, sources: readonly CatalogSource[]) =>
+// Which of these catalogs the profile may see, by catalogRef: a kids
+// profile only the ones its parent allowed (ADR-0014), anyone else all of
+// them. Under the visible addons' key, so an edit, a pull or a change of
+// allow-list refreshes it; the last answer stays up while a new one loads.
+export const catalogVisibilityQuery = (profileId: number, sources: readonly CatalogSource[]) =>
   queryOptions({
     queryKey: ["addons", profileId, "visible", "catalogs", sources.map(catalogRef)],
     queryFn: async () => {
@@ -101,16 +101,18 @@ export const hiddenCatalogsQuery = (profileId: number, sources: readonly Catalog
           Store.CatalogVisible(profileId, addon.url, catalog.type, catalog.id),
         ),
       );
-      return new Set(sources.filter((_, i) => !shown[i]).map(catalogRef));
+      return new Map(sources.map((source, i) => [catalogRef(source), shown[i] === true]));
     },
     placeholderData: keepPreviousData,
   });
 
-// The addons a profile browses with, for Home and the browse pages: the
-// visible ones whose manifests loaded, in the user's order (one that fails
-// to load drops out and stays installed), and `shown`, which tells whether
-// a kids profile may see a catalog. `hidden` is undefined until that's
-// known, and `loading` is true until all of it is.
+// The addons a profile browses with, for Home, the browse pages and Search:
+// the visible ones whose manifests loaded, in the user's order (one that
+// fails to load drops out and stays installed), and `shown`, which tells
+// whether a kids profile may see a catalog. `shown` fails closed: a catalog
+// CatalogVisible hasn't answered for yet, such as one whose manifest just
+// loaded while the last answer is still up, isn't shown, and isn't asked.
+// `loading` is true until every catalog has its answer.
 export function useBrowsableAddons(profileId: number) {
   const visible = useQuery(visibleAddonsQuery(profileId));
   const manifests = useQueries({
@@ -120,18 +122,19 @@ export function useBrowsableAddons(profileId: number) {
     const manifest = manifests[index]?.data;
     return manifest ? [{ url: addon.url, manifest }] : [];
   });
-  const hidden = useQuery(
-    hiddenCatalogsQuery(
-      profileId,
-      addons.flatMap((addon) => addon.manifest.catalogs.map((catalog) => ({ addon, catalog }))),
-    ),
-  ).data;
+  const sources = addons.flatMap((addon) =>
+    addon.manifest.catalogs.map((catalog) => ({ addon, catalog })),
+  );
+  const visibility = useQuery(catalogVisibilityQuery(profileId, sources)).data;
   return {
     visible,
     addons,
-    hidden,
-    shown: (source: CatalogSource) => !hidden?.has(catalogRef(source)),
-    loading: visible.isPending || manifests.some((query) => query.isPending) || !hidden,
+    shown: (source: CatalogSource) => visibility?.get(catalogRef(source)) === true,
+    loading:
+      visible.isPending ||
+      manifests.some((query) => query.isPending) ||
+      !visibility ||
+      sources.some((source) => !visibility.has(catalogRef(source))),
   };
 }
 

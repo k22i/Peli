@@ -58,10 +58,10 @@ function HomeRows({ profile }: { profile: Profile }) {
   const watching = useQuery(continueWatchingQuery(profileId));
   const layout = useQuery(homeLayoutQuery(profileId));
   const collections = useQuery(collectionsQuery(profileId));
-  const { visible, addons, hidden, shown, loading: addonsLoading } = useBrowsableAddons(profileId);
-  // Catalog rows wait for the manifests and for what a kids profile may
-  // see; until then the collections show alone.
-  const rows = homeRows(layout.data, collections.data ?? [], hidden ? addons : [], shown);
+  const { visible, addons, shown, loading: addonsLoading } = useBrowsableAddons(profileId);
+  // A catalog row waits for its manifest and for what a kids profile may
+  // see (`shown`); until then the collections show alone.
+  const rows = homeRows(layout.data, collections.data ?? [], addons, shown);
 
   const noAddons = visible.data?.length === 0 && <NoAddons profile={profile} />;
   if (!library.data || !watching.data) {
