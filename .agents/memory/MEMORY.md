@@ -10,3 +10,4 @@
 - [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29), push loop (#30), offline/reconnect (#31), addons merge + shared primary (#32), contract tests (#33), home layout + collections (#35)
 - [Addon protocol client](addon-protocol-client.md) — #37 layout: lib/addon-protocol (parse, routing, client, queries), internal/addons Go fallback; Kitsu item types, fixtures, live test
 - [Addon manager](addon-manager.md) — #38/#39 layout: useAddonEdits, visibleAddonsQuery, NoAddons, shared disclaimer, optimistic applyAddonEdit, test gotchas
+- [Virtualized rows](virtualized-rows.md) — #41 Row/PosterGrid/RowGroup API, jsdom sizing in setup.ts, img src release, Playwright WebKit memory harness

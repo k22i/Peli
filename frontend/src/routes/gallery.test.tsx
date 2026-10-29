@@ -40,6 +40,7 @@ describe("gallery", () => {
       "Chips and badges",
       "Overlays",
       "Skeletons",
+      "Long rows",
     ]) {
       expect(screen.getByRole("heading", { level: 2, name })).toBeInTheDocument();
     }
@@ -61,21 +62,31 @@ describe("gallery", () => {
     await renderGallery();
 
     const row = screen.getByRole("region", { name: "Popular movies" });
+    // Cards mount and unmount as the row scrolls: look them up afresh.
+    const card = (name: string) => within(row).getByRole("button", { name: new RegExp(name) });
     const cards = within(row).getAllByRole("button");
-    expect(cards.filter((card) => card.tabIndex === 0)).toEqual([cards[0]]);
+    expect(cards.filter((each) => each.tabIndex === 0)).toEqual([card("Low Tide")]);
 
-    cards[0]!.focus();
+    card("Low Tide").focus();
     await user.keyboard("{ArrowRight}");
-    expect(cards[1]).toHaveFocus();
-    expect(cards[1]!.tabIndex).toBe(0);
-    expect(cards[0]!.tabIndex).toBe(-1);
+    expect(card("The Lighthouse Keeper")).toHaveFocus();
+    expect(card("The Lighthouse Keeper").tabIndex).toBe(0);
+    expect(card("Low Tide").tabIndex).toBe(-1);
 
     await user.keyboard("{End}");
-    expect(cards.at(-1)).toHaveFocus();
+    expect(card("Coral City")).toHaveFocus();
     await user.keyboard("{ArrowRight}");
-    expect(cards.at(-1)).toHaveFocus();
+    expect(card("Coral City")).toHaveFocus();
     await user.keyboard("{Home}");
-    expect(cards[0]).toHaveFocus();
+    expect(card("Low Tide")).toHaveFocus();
+
+    // ↑ goes to the row above.
+    await user.keyboard("{ArrowUp}");
+    expect(
+      within(screen.getByRole("region", { name: "Continue watching" })).getByRole("button", {
+        name: /Northern Current/,
+      }),
+    ).toHaveFocus();
   });
 
   it("switches and remembers the appearance", async () => {

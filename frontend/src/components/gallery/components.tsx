@@ -2,6 +2,7 @@ import { Info, Play, Plus, SlidersHorizontal, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 import { GallerySection, Specimen } from "@/components/gallery/gallery-section";
+import { StressSection } from "@/components/gallery/stress";
 import { continueWatching, genres, sampleTitles } from "@/components/gallery/samples";
 import {
   LandscapeCard,
@@ -11,7 +12,7 @@ import {
 } from "@/components/media/cards";
 import { Chip, ChipGroup } from "@/components/media/chip";
 import { Hero, HeroSkeleton } from "@/components/media/hero";
-import { Row, RowSkeleton } from "@/components/media/row";
+import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -90,36 +91,41 @@ export function Components() {
 
       <GallerySection
         title="Rows"
-        description="Shelves of cards that snap as they scroll. A row is one Tab stop: ←/→, Home and End move between cards, and the paging arrows appear on hover."
+        description="Shelves of cards that snap as they scroll. A row is one Tab stop: ←/→, Home and End move between cards, ↑/↓ move to the row above or below, and the paging arrows appear on hover. Only the cards near the viewport are mounted."
         bleed
       >
-        <Row
-          title="Continue watching"
-          action={
-            <Button variant="link" size="sm">
-              See all
-            </Button>
-          }
-        >
-          {continueWatching.map((item) => (
-            <LandscapeCard
-              key={item.title}
-              title={item.title}
-              meta={[item.episode, item.runtime].filter(Boolean).join(" · ")}
-              progress={item.progress}
-            />
-          ))}
-        </Row>
-        <Row title="Popular movies">
-          {sampleTitles.map((item) => (
-            <PosterCard
-              key={item.title}
-              title={item.title}
-              meta={`${item.year} · ${item.runtime}`}
-              badge={item.badge && <Badge size="sm">{item.badge}</Badge>}
-            />
-          ))}
-        </Row>
+        <RowGroup>
+          <Row
+            title="Continue watching"
+            action={
+              <Button variant="link" size="sm">
+                See all
+              </Button>
+            }
+            card="landscape"
+            items={continueWatching}
+            getKey={(item) => item.title}
+            renderItem={(item) => (
+              <LandscapeCard
+                title={item.title}
+                meta={[item.episode, item.runtime].filter(Boolean).join(" · ")}
+                progress={item.progress}
+              />
+            )}
+          />
+          <Row
+            title="Popular movies"
+            items={sampleTitles}
+            getKey={(item) => item.title}
+            renderItem={(item) => (
+              <PosterCard
+                title={item.title}
+                meta={`${item.year} · ${item.runtime}`}
+                badge={item.badge && <Badge size="sm">{item.badge}</Badge>}
+              />
+            )}
+          />
+        </RowGroup>
       </GallerySection>
 
       <GallerySection
@@ -286,6 +292,8 @@ export function Components() {
           </div>
         </div>
       </GallerySection>
+
+      <StressSection />
     </>
   );
 }

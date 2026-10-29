@@ -21,6 +21,34 @@ export function placeholderStyle(title: string): CSSProperties {
   };
 }
 
+// What each image URL did this session. Virtualized rows unmount cards that
+// scroll away and mount fresh <img>s when they come back: a URL known to
+// load (WebKit's cache has the bytes) shows at once rather than fading in
+// from the placeholder again, and a known-broken one isn't fetched again.
+const seen = new Map<string, "loaded" | "failed">();
+const seenLimit = 2000;
+
+function remember(src: string, status: "loaded" | "failed") {
+  seen.delete(src);
+  seen.set(src, status);
+  if (seen.size > seenLimit) seen.delete(seen.keys().next().value!);
+}
+
+// WebKit keeps an <img>'s decoded pixels until the detached element is
+// garbage-collected, seconds after a card scrolls away. Dropping the src
+// once it's out of the document frees them at once. (Checked after the
+// commit: Strict Mode's rehearsal unmount leaves the element in place.)
+const releaseWhenRemoved = (img: HTMLImageElement | null) => () => {
+  queueMicrotask(() => {
+    if (img && !img.isConnected) img.removeAttribute("src");
+  });
+};
+
+// For tests.
+export function forgetArtwork() {
+  seen.clear();
+}
+
 // A poster, still or backdrop. Fades in once loaded; until then, or with no
 // `src` (addons often lack art), it shows a generated gradient and, for
 // cards, the title set in the display face.
@@ -37,17 +65,24 @@ export function Artwork({
   titleClassName?: string | undefined;
   className?: string;
 }) {
-  const [loaded, setLoaded] = useState(false);
-  const [failed, setFailed] = useState(false);
-  const placeholder = !src || failed || !loaded;
+  // What this <img> did; until it does anything, what the URL did before.
+  const [own, setOwn] = useState<{ src: string; status: "loaded" | "failed" }>();
+  const known = src ? seen.get(src) : undefined;
+  const status = own && own.src === src ? own.status : known;
+  const settle = (next: "loaded" | "failed") => {
+    if (!src) return;
+    remember(src, next);
+    setOwn({ src, status: next });
+  };
 
   return (
     <div
       className={cn("relative size-full overflow-hidden bg-muted", className)}
-      style={placeholder ? placeholderStyle(title) : undefined}
+      // Under the art too, while a cached image decodes.
+      style={placeholderStyle(title)}
       data-slot="artwork"
     >
-      {placeholder && showTitle && (
+      {status !== "loaded" && showTitle && (
         <span
           aria-hidden
           className={cn(
@@ -58,18 +93,22 @@ export function Artwork({
           {title}
         </span>
       )}
-      {src && !failed && (
+      {src && status !== "failed" && (
         <img
+          ref={releaseWhenRemoved}
           src={src}
           alt=""
           loading="lazy"
           decoding="async"
           draggable={false}
-          onLoad={() => setLoaded(true)}
-          onError={() => setFailed(true)}
+          onLoad={() => settle("loaded")}
+          onError={() => settle("failed")}
           className={cn(
-            "absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-(--duration-slow) ease-smooth",
-            loaded && "opacity-100",
+            "absolute inset-0 size-full object-cover",
+            status !== "loaded" && "opacity-0",
+            // A cached image shows at once; only a first load fades.
+            (status !== "loaded" || own?.src === src) &&
+              "transition-opacity duration-(--duration-slow) ease-smooth",
           )}
         />
       )}

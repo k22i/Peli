@@ -25,3 +25,22 @@ window.matchMedia ??= (query: string): MediaQueryList => ({
   removeEventListener: () => {},
   dispatchEvent: () => false,
 });
+
+// jsdom has no layout, so every element is 0 px and a virtualizer mounts
+// nothing. Give rows and the page's scroll container a laptop's viewport.
+const viewport = { width: 1280, height: 800 };
+const sized = (element: Element) =>
+  ["row-scroller", "poster-grid"].includes(element.getAttribute("data-slot") ?? "") ||
+  element.id === "content";
+for (const [property, size] of [
+  ["clientWidth", viewport.width],
+  ["clientHeight", viewport.height],
+] as const) {
+  const original = Object.getOwnPropertyDescriptor(Element.prototype, property)!;
+  Object.defineProperty(Element.prototype, property, {
+    configurable: true,
+    get(this: Element): unknown {
+      return sized(this) ? size : original.get?.call(this);
+    },
+  });
+}

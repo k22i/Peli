@@ -3,7 +3,7 @@ import { useRender } from "@base-ui/react/use-render";
 import type { ReactNode } from "react";
 
 import { Artwork } from "@/components/media/artwork";
-import { useRowItem } from "@/components/media/row";
+import { useRovingItem } from "@/components/media/roving";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +34,7 @@ function Card({
   className,
   ...props
 }: CardProps & { shape: "poster" | "landscape" }) {
-  const rowItem = useRowItem();
+  const rowItem = useRovingItem();
 
   const defaultProps = {
     type: render ? undefined : ("button" as const),

@@ -3,7 +3,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
-import { Row, RowSkeleton } from "@/components/media/row";
+import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
 import { buttonVariants } from "@/components/ui/button";
 import { visibleAddonsQuery } from "@/lib/addons";
 import { collectionsQuery, homeLayoutQuery, homeSections, type HomeSection } from "@/lib/home";
@@ -66,41 +66,42 @@ function HomeRows({ profile }: { profile: Profile }) {
   return (
     <div className="flex flex-col gap-6 py-6">
       {noAddons}
-      {items.length > 0 && (
-        <Row title="Continue watching">
-          {items.map(({ entry, title, art }) => (
-            <LandscapeCard
-              key={entry.key}
-              title={title}
-              meta={episodeLabel(entry)}
-              src={art}
-              progress={watchedFraction(entry)}
-            />
-          ))}
-        </Row>
-      )}
-      {sections.map((section) => (
-        <SectionRow key={section.key} section={section} />
-      ))}
-      {library.data.length > 0 && (
-        <Row
-          title="Your library"
-          action={
-            <Link to="/library" className={buttonVariants({ variant: "link", size: "sm" })}>
-              See all
-            </Link>
-          }
-        >
-          {library.data.map((item) => (
-            <PosterCard
-              key={`${item.contentId}:${item.contentType}`}
-              title={item.name}
-              meta={item.releaseInfo}
-              src={item.poster}
-            />
-          ))}
-        </Row>
-      )}
+      <RowGroup>
+        {items.length > 0 && (
+          <Row
+            title="Continue watching"
+            card="landscape"
+            items={items}
+            getKey={({ entry }) => entry.key}
+            renderItem={({ entry, title, art }) => (
+              <LandscapeCard
+                title={title}
+                meta={episodeLabel(entry)}
+                src={art}
+                progress={watchedFraction(entry)}
+              />
+            )}
+          />
+        )}
+        {sections.map((section) => (
+          <SectionRow key={section.key} section={section} />
+        ))}
+        {library.data.length > 0 && (
+          <Row
+            title="Your library"
+            action={
+              <Link to="/library" className={buttonVariants({ variant: "link", size: "sm" })}>
+                See all
+              </Link>
+            }
+            items={library.data}
+            getKey={(item) => `${item.contentId}:${item.contentType}`}
+            renderItem={(item) => (
+              <PosterCard title={item.name} meta={item.releaseInfo} src={item.poster} />
+            )}
+          />
+        )}
+      </RowGroup>
     </div>
   );
 }
@@ -112,18 +113,21 @@ function SectionRow({ section }: { section: HomeSection }) {
   const folders = collection.folders ?? [];
   if (folders.length === 0) return null;
   return (
-    <Row title={collection.title}>
-      {folders.map((folder) => {
+    <Row
+      title={collection.title}
+      items={folders}
+      getKey={(folder) => folder.id}
+      card={(folder) => (folder.shape === "POSTER" ? "poster" : "landscape")}
+      renderItem={(folder) => {
         const Card = folder.shape === "POSTER" ? PosterCard : LandscapeCard;
         return (
           <Card
-            key={folder.id}
             title={folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title}
             src={folder.cover || folder.backdrop}
           />
         );
-      })}
-    </Row>
+      }}
+    />
   );
 }
 
