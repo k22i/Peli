@@ -16,4 +16,4 @@ The Library page (#46, ADR-0030) is `components/library/library-page.tsx` on `/l
 - Don't swap the toolbar for a skeleton while a secondary query loads: it unmounts an open Select. Tests then can't find options.
 - Tests: a card without art prints its name twice (once on the artwork), so read the caption with `card.lastElementChild.firstElementChild`.
 - Stubbed WebKit: the router uses hash history in the dev build, so links are `/#/library`. The stub's `LastWatched` must take the max per title.
-- Related: [[title-page]], [[browse-pages]], [[home-page]], [[virtualized-rows]], [[sync-module]].
+- Related: [[title-page]], [[browse-pages]], [[home-page]], [[virtualized-rows]], [[sync-module]], [[upcoming-episodes]].

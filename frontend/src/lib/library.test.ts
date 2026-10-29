@@ -68,4 +68,12 @@ describe("librarySearch", () => {
     expect(librarySearch({ type: "movie", sort: "name" })).toEqual({ type: "movie", sort: "name" });
     expect(librarySearch({ type: "", sort: "rating", page: 2 })).toEqual({});
   });
+
+  it("keeps the Upcoming view (#48), and leaves the titles view out", () => {
+    expect(librarySearch({ view: "upcoming", sort: "name" })).toEqual({
+      sort: "name",
+      view: "upcoming",
+    });
+    expect(librarySearch({ view: "titles" })).toEqual({});
+  });
 });

@@ -1,4 +1,4 @@
-import { queryOptions } from "@tanstack/react-query";
+import { queryOptions, type QueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
 import type { LibraryItem, Progress, WatchedItem } from "@bindings/store";
@@ -66,6 +66,27 @@ export const titleMetaQuery = (addons: readonly LoadedAddon[], type: ContentType
     },
     retry: false,
   });
+
+// A title's details from the cache, for titleMetaQuery's initialData: the
+// first addon in its order whose answer is kept, with when that answer
+// came, so a stale one still refreshes.
+export function cachedTitleMeta(
+  client: QueryClient,
+  addons: readonly LoadedAddon[],
+  type: ContentType,
+  id: string,
+) {
+  for (const addon of addonsFor(addons, "meta", type, id)) {
+    const state = client.getQueryState(metaQuery(addon.url, type, id).queryKey);
+    if (state?.data) {
+      return {
+        initialData: { addonUrl: addon.url, meta: state.data.meta },
+        initialDataUpdatedAt: state.dataUpdatedAt,
+      };
+    }
+  }
+  return {};
+}
 
 // What a profile has watched of a title, and its progress in it, under the
 // surfaces' prefixes (lib/sync.ts), so a pull or an edit refreshes them.
@@ -286,13 +307,15 @@ export type TitlePreview = {
   description?: string | undefined;
 };
 
-// Opens a title's page from a card, handing it the card's details.
+// Opens a title's page from a card, handing it the card's details, and on
+// a season when one is given (the calendar's episodes, #48).
 export function useOpenTitle() {
   const navigate = useNavigate();
-  return (meta: TitlePreview) =>
+  return (meta: TitlePreview, search: TitleSearch = {}) =>
     void navigate({
       to: titlePath,
       params: titleParams(meta),
+      search,
       state: (state) => ({ ...state, title: previewOf(meta) }),
     });
 }

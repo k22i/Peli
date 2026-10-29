@@ -73,9 +73,10 @@ export const libraryPreview = (item: LibraryItem): TitlePreview => ({
 });
 
 // The Library page's choices (#46), kept in the address so Back from a title
-// returns to them. No type means all of them.
+// returns to them. No type means all of them; no view means the titles, not
+// the Upcoming calendar (#48).
 export type LibrarySort = "added" | "watched" | "name";
-export type LibrarySearch = { type?: string; sort?: LibrarySort };
+export type LibrarySearch = { type?: string; sort?: LibrarySort; view?: "upcoming" | undefined };
 
 export const librarySorts: readonly { value: LibrarySort; label: string }[] = [
   { value: "added", label: "Recently added" },
@@ -89,6 +90,7 @@ export function librarySearch(search: Record<string, unknown>): LibrarySearch {
   return {
     ...(typeof type === "string" && type ? { type } : {}),
     ...(sort ? { sort } : {}),
+    ...(search["view"] === "upcoming" ? { view: "upcoming" as const } : {}),
   };
 }
 

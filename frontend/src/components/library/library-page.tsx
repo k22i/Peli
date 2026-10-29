@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { Library as LibraryIcon, Trash2 } from "lucide-react";
 
 import { GridSkeleton, Notice } from "@/components/browse/browse-page";
+import { Upcoming } from "@/components/library/upcoming";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipGroup } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
@@ -20,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
 import { toastManager } from "@/components/ui/toast";
 import {
   lastWatchedQuery,
@@ -39,13 +41,45 @@ import { Service as Store } from "@bindings/store";
 // The profile's library (#46): every saved title in one grid, filtered by
 // type and sorted. It reads the local store, which pulls keep in step with
 // Nuvio, so it shows offline too. A card's context menu, or Delete on a
-// focused card, removes it, with Undo in the toast.
+// focused card, removes it, with Undo in the toast. The Upcoming tab is the calendar of
+// the library's new episodes (#48).
 export function LibraryPage() {
   const profile = useQuery(currentProfileQuery).data;
+  const search: LibrarySearch = useSearch({ strict: false });
+  const navigate = useNavigate();
+  const view = search.view ?? "titles";
   return (
     <div className="flex flex-col gap-5 py-6">
-      <h1 className="px-gutter font-heading text-title font-stretch-semi-expanded">Library</h1>
-      {profile ? <Library profile={profile} /> : <GridSkeleton />}
+      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 px-gutter">
+        <h1 className="font-heading text-title font-stretch-semi-expanded">Library</h1>
+        {/* Replaced, as the filters are; the titles' filters stay in the
+            address for coming back. */}
+        <Tabs
+          value={view}
+          onValueChange={(next: string) =>
+            void navigate({
+              to: ".",
+              search: (previous: LibrarySearch): LibrarySearch => ({
+                ...previous,
+                view: next === "upcoming" ? "upcoming" : undefined,
+              }),
+              replace: true,
+            })
+          }
+        >
+          <TabsList aria-label="View">
+            <TabsTab value="titles">Titles</TabsTab>
+            <TabsTab value="upcoming">Upcoming</TabsTab>
+          </TabsList>
+        </Tabs>
+      </div>
+      {!profile ? (
+        <GridSkeleton />
+      ) : view === "upcoming" ? (
+        <Upcoming profile={profile} />
+      ) : (
+        <Library profile={profile} />
+      )}
     </div>
   );
 }

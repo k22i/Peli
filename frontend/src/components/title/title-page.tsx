@@ -25,12 +25,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toastManager } from "@/components/ui/toast";
-import { addonsFor, metaQuery, type ContentType, type Meta } from "@/lib/addon-protocol";
+import type { ContentType, Meta } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
 import { usePlay } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import {
+  cachedTitleMeta,
   episodeMarks,
   episodes as episodesOf,
   isAired,
@@ -112,13 +113,7 @@ function Title({
     ...titleMetaQuery(addons, type, id),
     enabled: !loading,
     // A title seen before: its details from the cache at once.
-    initialData: () => {
-      for (const addon of addonsFor(addons, "meta", type, id)) {
-        const cached = client.getQueryData(metaQuery(addon.url, type, id).queryKey);
-        if (cached) return { addonUrl: addon.url, meta: cached.meta };
-      }
-      return undefined;
-    },
+    ...cachedTitleMeta(client, addons, type, id),
   });
 
   const meta = details.data?.meta;
