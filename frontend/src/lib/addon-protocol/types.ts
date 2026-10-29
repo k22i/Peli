@@ -93,6 +93,8 @@ export type MetaPreview = {
   logo?: string;
   description?: string;
   releaseInfo?: string;
+  // When it came out or comes out, as an ISO date.
+  released?: string;
   imdbRating?: string;
   genres?: string[];
   links?: MetaLink[];
@@ -127,7 +129,6 @@ export type MetaBehaviorHints = {
 export type Meta = MetaPreview & {
   videos?: Video[];
   runtime?: string;
-  released?: string;
   language?: string;
   country?: string;
   awards?: string;

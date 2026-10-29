@@ -1,7 +1,15 @@
-import { queryOptions } from "@tanstack/react-query";
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
 
 import type { Collection, HomeLayout } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
+import {
+  catalogsAccepting,
+  findCatalog,
+  type Catalog,
+  type CatalogSource,
+  type LoadedAddon,
+  type MetaPreview,
+} from "@/lib/addon-protocol";
 
 // Home's layout and collections, pulled from Nuvio's apps (#35) and read
 // from the local store, so they show offline. Keyed under the surfaces'
@@ -34,9 +42,8 @@ export type HomeSection =
 
 // The order of Home's rows, as Nuvio's apps set it: collections pinned to
 // the top, then the layout's rows that are turned on, then collections the
-// layout doesn't name. Catalogs the layout doesn't name are the catalog
-// rows' to add after these, in addon order (#42); a layout row for a
-// collection that no longer exists is skipped.
+// layout doesn't name. A layout row for a collection that no longer exists
+// is skipped; homeRows resolves the catalogs.
 export function homeSections(
   layout: HomeLayout | null | undefined,
   collections: readonly Collection[],
@@ -73,4 +80,104 @@ export function homeSections(
   }
   for (const collection of collections) addCollection(collection);
   return sections;
+}
+
+// A catalog, as CatalogVisible and the layout name it.
+export const catalogRef = ({ addon, catalog }: CatalogSource) =>
+  `${addon.url}|${catalog.type}|${catalog.id}`;
+
+// Which of these catalogs the profile may not see: a kids profile sees only
+// the ones its parent allowed (ADR-0014), anyone else all of them. Under the
+// visible addons' key, so an edit, a pull or a change of allow-list
+// refreshes it; the last answer stays up while a new one loads.
+export const hiddenCatalogsQuery = (profileId: number, sources: readonly CatalogSource[]) =>
+  queryOptions({
+    queryKey: ["addons", profileId, "visible", "catalogs", sources.map(catalogRef)],
+    queryFn: async () => {
+      const shown = await Promise.all(
+        sources.map(({ addon, catalog }) =>
+          Store.CatalogVisible(profileId, addon.url, catalog.type, catalog.id),
+        ),
+      );
+      return new Set(sources.filter((_, i) => !shown[i]).map(catalogRef));
+    },
+    placeholderData: keepPreviousData,
+  });
+
+const layoutKey = (addonId: string, type: string, catalogId: string) =>
+  `${addonId}:${type}:${catalogId}`;
+
+// A row of Home below Continue Watching once the addons have loaded: a
+// collection, or a catalog resolved to the addon that serves it.
+export type HomeRowOf<A extends LoadedAddon> =
+  | Extract<HomeSection, { kind: "collection" }>
+  | {
+      kind: "catalog";
+      key: string;
+      // The user's title for the row, or the catalog's name and type.
+      title: string;
+      source: CatalogSource<A>;
+    };
+
+// Home's rows in the user's order (#42): the sections of the layout, with
+// each catalog matched to an addon by manifest id, then the catalogs the
+// layout doesn't name, in addon order. `addons` are the profile's visible
+// addons whose manifests loaded, in order; `visible` is CatalogVisible, so a
+// kids profile sees only the catalogs its parent allowed. Catalogs turned off
+// in the layout stay off, and ones that need extras (search, calendars) are
+// browse's and search's.
+export function homeRows<A extends LoadedAddon>(
+  layout: HomeLayout | null | undefined,
+  collections: readonly Collection[],
+  addons: readonly A[],
+  visible: (source: CatalogSource<A>) => boolean,
+): HomeRowOf<A>[] {
+  const placed = new Set(
+    (layout?.rows ?? [])
+      .filter((row) => !row.enabled && row.addonId && row.type && row.catalogId)
+      .map((row) => layoutKey(row.addonId!, row.type!, row.catalogId!)),
+  );
+  const rows: HomeRowOf<A>[] = [];
+  const add = (source: CatalogSource<A>, key: string, title?: string) => {
+    const catalogKey = layoutKey(source.addon.manifest.id, source.catalog.type, source.catalog.id);
+    if (placed.has(catalogKey) || !visible(source)) return;
+    placed.add(catalogKey);
+    rows.push({ kind: "catalog", key, title: title || catalogTitle(source.catalog), source });
+  };
+
+  for (const section of homeSections(layout, collections)) {
+    if (section.kind === "collection") {
+      rows.push(section);
+      continue;
+    }
+    const source = findCatalog(addons, section.addonId, section.type, section.catalogId);
+    if (source) add(source, section.key, section.title);
+  }
+  for (const source of catalogsAccepting(addons, [])) {
+    add(source, layoutKey(source.addon.manifest.id, source.catalog.type, source.catalog.id));
+  }
+  return rows;
+}
+
+const typeNames: Record<string, string> = {
+  movie: "Movies",
+  series: "Shows",
+  anime: "Anime",
+  channel: "Channels",
+  tv: "TV",
+};
+
+// "Popular · Movies": Cinemeta names its movie and series catalogs alike.
+export function catalogTitle(catalog: Catalog): string {
+  const type =
+    typeNames[catalog.type] ?? catalog.type.charAt(0).toUpperCase() + catalog.type.slice(1);
+  return catalog.name ? `${catalog.name} · ${type}` : type;
+}
+
+// Whether a catalog item is out, for the layout's "hide unreleased content".
+// One with no release date counts as out.
+export function isReleased(meta: MetaPreview, now = Date.now()): boolean {
+  if (meta.released === undefined) return true;
+  const released = Date.parse(meta.released);
+  return Number.isNaN(released) || released <= now;
 }

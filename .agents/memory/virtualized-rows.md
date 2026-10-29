@@ -12,7 +12,7 @@ metadata:
 **How to apply:**
 - Never map cards into a plain flex row for long lists; use Row/PosterGrid.
 - Tests: jsdom has no layout, so `src/test/setup.ts` gives `[data-slot=row-scroller]`, `[data-slot=poster-grid]` and `#content` a 1280×800 client size. Cards come and go, so query them afresh instead of holding an array. A grid test needs a `#content` ancestor with `overflowY: auto`.
-- `Artwork` drops `src` when its <img> leaves the document. Without that, WebKit kept decoded pixels until GC (one run stayed at 250 MiB).
+- `Artwork` no longer drops `src` when its <img> leaves the document: the user removed that in 940e74c (2026-10-29), though ADR-0025 still describes it. Ask before reinstating it.
 - Measuring without driving the user's Mac: Playwright WebKit in the scratchpad (`pnpm add playwright@1.64.1`, `playwright install webkit`). Load a throwaway `frontend/stress.html` that renders `StressSection` (delete it afterwards). Its XPC processes are parented to launchd: find them by `ms-playwright/webkit` in `ps` and read `footprint -f bytes --noCategories <pid>`. Run engines one at a time.
 - A smooth `scrollIntoView` across a virtualized list with measured rows stops short. Use `virtualizer.scrollToIndex`.
 - Related: [[addon-protocol-client]], [[spike-ticket-workflow]], [[frontend-stack-preferences]].

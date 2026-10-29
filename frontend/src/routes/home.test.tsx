@@ -11,6 +11,11 @@ import type {
   Progress,
 } from "@bindings/store";
 import type * as Runtime from "@wailsio/runtime";
+import { catalogQuery, manifestQuery } from "@/lib/addon-protocol";
+import { parseCatalogResponse, parseManifest } from "@/lib/addon-protocol/parse";
+import cinemetaMovies from "@/lib/addon-protocol/fixtures/cinemeta/catalog-movie-top.json";
+import cinemetaShows from "@/lib/addon-protocol/fixtures/cinemeta/catalog-series-top-skip.json";
+import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -22,6 +27,9 @@ const mocks = vi.hoisted(() => ({
   current: vi.fn<() => Promise<Profile>>(),
   addons: vi.fn<() => Promise<Addon[]>>(),
   visibleAddons: vi.fn<() => Promise<Addon[] | null>>(),
+  catalogVisible: vi.fn<
+    (id: number, addon: string, type: string, catalog: string) => Promise<boolean>
+  >(() => Promise.resolve(true)),
   installAddon: vi.fn<(id: number, addon: Addon) => Promise<void>>(() => Promise.resolve()),
   connection: vi.fn<() => Promise<string>>(),
   checkConnection: vi.fn<() => Promise<string>>(),
@@ -49,6 +57,7 @@ vi.mock("@bindings/store", () => ({
     CurrentProfile: mocks.current,
     Addons: mocks.addons,
     VisibleAddons: mocks.visibleAddons,
+    CatalogVisible: mocks.catalogVisible,
     Library: mocks.library,
     ContinueWatching: mocks.continueWatching,
     HomeLayout: mocks.homeLayout,
@@ -106,7 +115,23 @@ const cinemeta: Addon = {
   enabled: true,
 };
 
+// Answers addon requests from these fixtures, by path under Cinemeta's
+// address; anything else answers 503, as an addon that's down.
+function serve(answers: Record<string, unknown>) {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn((url: string) => {
+      const path = url.replace("https://v3-cinemeta.strem.io/", "");
+      return Promise.resolve(
+        path in answers ? Response.json(answers[path]) : new Response("", { status: 503 }),
+      );
+    }),
+  );
+}
+
 beforeEach(() => {
+  serve({ "manifest.json": cinemetaManifest });
+  mocks.catalogVisible.mockResolvedValue(true);
   mocks.current.mockResolvedValue(kevin);
   mocks.addons.mockResolvedValue([cinemeta]);
   mocks.visibleAddons.mockResolvedValue([cinemeta]);
@@ -205,6 +230,7 @@ describe("Home", () => {
   });
 
   it("says what will show up when there's nothing yet", async () => {
+    serve({ "manifest.json": { ...cinemetaManifest, catalogs: [] } });
     mocks.library.mockResolvedValue([]);
     mocks.continueWatching.mockResolvedValue([]);
     mocks.connection.mockResolvedValue("online");
@@ -213,6 +239,170 @@ describe("Home", () => {
 
     expect(await screen.findByText("Titles you save and watch show up here.")).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 1, name: "Home" })).toBeInTheDocument();
+  });
+});
+
+// A film in progress.
+function progressOn(contentId: string): Progress {
+  const { season: _season, episode: _episode, ...entry } = episode;
+  return { ...entry, key: contentId, contentId, contentType: "movie", videoId: contentId };
+}
+
+const headings = () => screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent);
+
+// #42: the hero, catalog rows in the user's order, and resuming in a click.
+describe("catalogs", () => {
+  const theInvite = cinemetaMovies.metas[0]!;
+
+  beforeEach(() => {
+    mocks.library.mockResolvedValue([dune]);
+    mocks.continueWatching.mockResolvedValue([episode]);
+    mocks.connection.mockResolvedValue("online");
+    serve({
+      "manifest.json": cinemetaManifest,
+      "catalog/movie/top.json": cinemetaMovies,
+      "catalog/series/top.json": cinemetaShows,
+    });
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("features the first catalog's first title and plays it", async () => {
+    const user = userEvent.setup();
+    await renderApp("/");
+
+    const hero = await screen.findByRole("region", { name: theInvite.name });
+    expect(hero).toHaveTextContent("Popular · Movies");
+    expect(hero).toHaveTextContent("IMDb 7.5");
+    await user.click(within(hero).getByRole("button", { name: "Play" }));
+    expect(await screen.findByText(`Can’t play ${theInvite.name} yet`)).toBeInTheDocument();
+  });
+
+  it("offers Resume when the featured title is in Continue Watching", async () => {
+    mocks.continueWatching.mockResolvedValue([progressOn(theInvite.id)]);
+    await renderApp("/");
+
+    const hero = await screen.findByRole("region", { name: theInvite.name });
+    expect(within(hero).getByRole("button", { name: "Resume" })).toBeInTheDocument();
+  });
+
+  // The acceptance criterion: from launch, resuming takes one click here,
+  // then the stream picker's one (#52), within the three allowed.
+  it("resumes a Continue Watching entry in one click", async () => {
+    mocks.library.mockResolvedValue([dune, severance]);
+    const user = userEvent.setup();
+    await renderApp("/");
+
+    await user.click(
+      within(await row("Continue watching")).getByRole("button", { name: /Severance/ }),
+    );
+    expect(await screen.findByText("Can’t play Severance yet")).toBeInTheDocument();
+  });
+
+  it("names a Continue Watching entry from its meta when it isn't saved", async () => {
+    mocks.library.mockResolvedValue([]);
+    mocks.continueWatching.mockResolvedValue([progressOn("tt0903747")]);
+    serve({
+      "manifest.json": cinemetaManifest,
+      "meta/movie/tt0903747.json": {
+        meta: { id: "tt0903747", type: "movie", name: "Breaking Bad" },
+      },
+    });
+    await renderApp("/");
+
+    expect(
+      await within(await row("Continue watching")).findByRole("button", { name: /Breaking Bad/ }),
+    ).toBeInTheDocument();
+  });
+
+  it("orders rows by the layout, then the rest in addon order", async () => {
+    mocks.homeLayout.mockResolvedValue({
+      rows: [
+        {
+          key: "s",
+          addonId: cinemetaManifest.id,
+          type: "series",
+          catalogId: "top",
+          enabled: true,
+          title: "Top shows",
+        },
+        { key: "m", addonId: cinemetaManifest.id, type: "movie", catalogId: "top", enabled: false },
+      ],
+      hideUnreleased: false,
+    });
+    serve({
+      "manifest.json": cinemetaManifest,
+      "catalog/movie/top.json": cinemetaMovies,
+      "catalog/series/top.json": cinemetaShows,
+      "catalog/movie/imdbRating.json": cinemetaMovies,
+      "catalog/series/imdbRating.json": cinemetaShows,
+    });
+    await renderApp("/");
+
+    await row("Featured · Shows");
+    expect(headings()).toEqual([
+      "Continue watching",
+      "Top shows",
+      "Featured · Movies",
+      "Featured · Shows",
+      "Your library",
+    ]);
+    // The featured row is the layout's first.
+    expect(await screen.findByRole("region", { name: "One Piece" })).toBeInTheDocument();
+  });
+
+  it("leaves out the catalogs a kids profile wasn't allowed", async () => {
+    mocks.current.mockResolvedValue({ ...kevin, kids: true });
+    mocks.catalogVisible.mockImplementation((_, __, type) => Promise.resolve(type === "series"));
+    await renderApp("/");
+
+    await row("Popular · Shows");
+    expect(screen.queryByRole("region", { name: "Popular · Movies" })).toBeNull();
+    expect(mocks.catalogVisible).toHaveBeenCalledWith(1, cinemeta.url, "movie", "top");
+  });
+
+  // The budget (#8): Home is interactive from cache, not from the network.
+  it("renders catalog rows from the persisted cache with no network", async () => {
+    serve({});
+    await renderApp("/", {
+      seed: (client) => {
+        // As restored from disk: stale, so refetched behind the cached page.
+        const restored = { updatedAt: 1 };
+        client.setQueryData(
+          manifestQuery(cinemeta.url).queryKey,
+          parseManifest(cinemetaManifest),
+          restored,
+        );
+        client.setQueryData(
+          catalogQuery(cinemeta.url, "movie", "top").queryKey,
+          parseCatalogResponse(cinemetaMovies),
+          restored,
+        );
+      },
+    });
+
+    expect(
+      within(await row("Popular · Movies")).getByRole("button", { name: /Tenzing/ }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: theInvite.name })).toBeInTheDocument();
+  });
+
+  it("hides unreleased titles when the layout says to", async () => {
+    mocks.homeLayout.mockResolvedValue({ rows: [], hideUnreleased: true });
+    const [first, ...rest] = cinemetaMovies.metas;
+    serve({
+      "manifest.json": cinemetaManifest,
+      "catalog/movie/top.json": {
+        metas: [{ ...first, released: "2999-01-01T00:00:00.000Z" }, ...rest],
+      },
+    });
+    await renderApp("/");
+
+    const movies = await row("Popular · Movies");
+    expect(within(movies).queryByRole("button", { name: /The Invite/ })).toBeNull();
+    expect(await screen.findByRole("region", { name: "Tenzing" })).toBeInTheDocument();
   });
 });
 

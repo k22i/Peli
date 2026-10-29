@@ -76,9 +76,9 @@ export function Hero({
   );
 }
 
-export function HeroSkeleton() {
+export function HeroSkeleton({ className }: { className?: string }) {
   return (
-    <div aria-hidden className="px-gutter pt-4 dark:px-0 dark:pt-0">
+    <div aria-hidden className={cn("px-gutter pt-4 dark:px-0 dark:pt-0", className)}>
       <div className="flex min-h-[min(68vh,36rem)] items-end rounded-2xl bg-muted dark:rounded-none">
         <div className="flex w-full max-w-2xl flex-col gap-4 px-gutter pt-24 pb-12">
           <Skeleton className="h-3 w-28 rounded-sm" />
