@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"math"
 	"slices"
 
 	bolt "go.etcd.io/bbolt"
@@ -49,11 +50,58 @@ func (s *Store) SetAddons(id uint64, addons []Addon) error {
 
 // InstallAddon adds addon at the end of profile id's list.
 func (s *Store) InstallAddon(id uint64, addon Addon) error {
+	return s.InsertAddon(id, addon, math.MaxInt)
+}
+
+// InsertAddon adds addon at position at (from 0) in profile id's list,
+// clamped to the list: the addon manager's undo puts a removed addon back
+// where it was (#38).
+func (s *Store) InsertAddon(id uint64, addon Addon, at int) error {
 	return s.editAddons(id, func(addons []Addon) ([]Addon, error) {
 		if indexOfAddon(addons, addon.URL) >= 0 {
 			return nil, fmt.Errorf("%w: %s", ErrAddonInstalled, addon.URL)
 		}
-		return append(addons, addon), nil
+		return slices.Insert(addons, min(max(at, 0), len(addons)), addon), nil
+	})
+}
+
+// ReplaceAddon puts addon in the place of the addon at manifest URL url,
+// keeping whether it is on: a reconfigured addon has a new manifest URL, with
+// the new config in its path (#38). A kids profile's allow-list follows the
+// new URL, so the addon stays allowed.
+func (s *Store) ReplaceAddon(id uint64, url string, addon Addon) error {
+	return s.update(id, func(p *bolt.Bucket) error {
+		err := editAddonList(p, func(addons []Addon) ([]Addon, error) {
+			i := indexOfAddon(addons, url)
+			if i < 0 {
+				return nil, fmt.Errorf("%w: %s", ErrAddonNotFound, url)
+			}
+			if addon.URL != url && indexOfAddon(addons, addon.URL) >= 0 {
+				return nil, fmt.Errorf("%w: %s", ErrAddonInstalled, addon.URL)
+			}
+			addon.Enabled = addons[i].Enabled
+			addons[i] = addon
+			return addons, nil
+		})
+		if err != nil || addon.URL == url || p.Get(keyKids) == nil {
+			return err
+		}
+		var scope KidsScope
+		if err := decodeOnto(p.Get(keyKids), &scope); err != nil {
+			return err
+		}
+		// A stale entry for the new URL, left by a removal, would allow it
+		// even if the old one wasn't.
+		scope.Addons = slices.DeleteFunc(scope.Addons, func(a string) bool { return a == addon.URL })
+		if i := slices.Index(scope.Addons, url); i >= 0 {
+			scope.Addons[i] = addon.URL
+		}
+		for i := range scope.Catalogs {
+			if scope.Catalogs[i].Addon == url {
+				scope.Catalogs[i].Addon = addon.URL
+			}
+		}
+		return put(p, keyKids, scope)
 	})
 }
 
@@ -104,46 +152,49 @@ func indexOfAddon(addons []Addon, url string) int {
 // list before this edit, or the base of a push still queued, whose edits this
 // list includes.
 func (s *Store) editAddons(id uint64, edit func([]Addon) ([]Addon, error)) error {
-	return s.update(id, func(p *bolt.Bucket) error {
-		before := p.Get(keyAddons)
-		addons := []Addon{}
-		if before != nil {
-			if err := json.Unmarshal(before, &addons); err != nil {
-				return err
-			}
-		} else {
-			before = []byte("[]")
-		}
-		addons, err := edit(addons)
-		if err != nil {
+	return s.update(id, func(p *bolt.Bucket) error { return editAddonList(p, edit) })
+}
+
+// editAddonList is editAddons within a transaction, on profile bucket p.
+func editAddonList(p *bolt.Bucket, edit func([]Addon) ([]Addon, error)) error {
+	before := p.Get(keyAddons)
+	addons := []Addon{}
+	if before != nil {
+		if err := json.Unmarshal(before, &addons); err != nil {
 			return err
 		}
-		if addons == nil {
-			addons = []Addon{}
-		}
-		if err := validateAddons(addons); err != nil {
+	} else {
+		before = []byte("[]")
+	}
+	addons, err := edit(addons)
+	if err != nil {
+		return err
+	}
+	if addons == nil {
+		addons = []Addon{}
+	}
+	if err := validateAddons(addons); err != nil {
+		return err
+	}
+	data, err := json.Marshal(addons)
+	if err != nil {
+		return err
+	}
+	if bytes.Equal(data, before) {
+		return nil
+	}
+	base := json.RawMessage(bytes.Clone(before))
+	if queued := p.Bucket(bucketOutbox).Get(joinKey(string(SurfaceAddons), "")); queued != nil {
+		var push Push
+		if err := json.Unmarshal(queued, &push); err != nil {
 			return err
 		}
-		data, err := json.Marshal(addons)
-		if err != nil {
-			return err
-		}
-		if bytes.Equal(data, before) {
-			return nil
-		}
-		base := json.RawMessage(bytes.Clone(before))
-		if queued := p.Bucket(bucketOutbox).Get(joinKey(string(SurfaceAddons), "")); queued != nil {
-			var push Push
-			if err := json.Unmarshal(queued, &push); err != nil {
-				return err
-			}
-			base = push.Base
-		}
-		if err := p.Put(keyAddons, data); err != nil {
-			return err
-		}
-		return queue(p, Push{Surface: SurfaceAddons, Op: OpUpsert, Item: data, Base: base})
-	})
+		base = push.Base
+	}
+	if err := p.Put(keyAddons, data); err != nil {
+		return err
+	}
+	return queue(p, Push{Surface: SurfaceAddons, Op: OpUpsert, Item: data, Base: base})
 }
 
 func validateAddons(addons []Addon) error {

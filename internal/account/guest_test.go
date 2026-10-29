@@ -44,8 +44,23 @@ func TestGuestMakesNoNuvioRequests(t *testing.T) {
 		t.Fatalf("Status = %+v, %v", status, err)
 	}
 	s := store.Opened(db)
-	if err := s.SetAddons(guest.ID, []store.Addon{{URL: "https://v3-cinemeta.strem.io/manifest.json", Enabled: true}}); err != nil {
-		t.Fatal(err)
+	// The addon manager's edits (#38).
+	ctx := t.Context()
+	cinemeta := store.Addon{URL: "https://v3-cinemeta.strem.io/manifest.json", Enabled: true}
+	subtitles := store.Addon{URL: "https://opensubtitles-v3.strem.io/manifest.json", Enabled: true}
+	english := store.Addon{URL: "https://opensubtitles-v3.strem.io/lang=eng/manifest.json", Enabled: true}
+	for _, err := range []error{
+		service.InstallAddon(ctx, guest.ID, cinemeta),
+		service.InstallAddon(ctx, guest.ID, subtitles),
+		service.MoveAddon(ctx, guest.ID, subtitles.URL, 0),
+		service.ReconfigureAddon(ctx, guest.ID, subtitles.URL, english),
+		service.EnableAddon(ctx, guest.ID, english.URL, false),
+		service.RemoveAddon(ctx, guest.ID, english.URL),
+		service.InsertAddon(ctx, guest.ID, english, 0),
+	} {
+		if err != nil {
+			t.Fatal(err)
+		}
 	}
 	if err := s.SaveLibraryItem(guest.ID, store.LibraryItem{ContentID: "tt1160419", ContentType: "movie", Name: "Dune"}); err != nil {
 		t.Fatal(err)

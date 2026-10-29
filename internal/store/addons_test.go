@@ -73,6 +73,48 @@ func TestAddonEdits(t *testing.T) {
 	equal(t, base, []Addon{})
 }
 
+// Undo puts a removed addon back in its place; reconfiguring swaps the URL
+// in place, keeping it on or off and allowed for a kids profile (#38).
+func TestInsertAndReplaceAddon(t *testing.T) {
+	s, _ := openTemp(t)
+	kid := must[Profile](t)(s.CreateProfile(Profile{Name: "Kid", NuvioIndex: ptr(2), Kids: true}))
+	id := kid.ID
+	check(t, s.SetAddons(id, []Addon{cinemeta, subtitles, disney}))
+	check(t, s.SetKidsScope(id, KidsScope{
+		Addons:   []string{subtitles.URL, "https://opensubtitles-v3.strem.io/lang=eng/manifest.json"},
+		Catalogs: []CatalogRef{{Addon: subtitles.URL, Type: "movie", ID: "top"}},
+	}))
+
+	check(t, s.RemoveAddon(id, subtitles.URL))
+	check(t, s.InsertAddon(id, subtitles, 1))
+	equal(t, must[[]Addon](t)(s.Addons(id)), []Addon{cinemeta, subtitles, disney})
+	check(t, s.InsertAddon(id, Addon{URL: "https://last/manifest.json"}, 99))
+	if err := s.InsertAddon(id, cinemeta, 0); !errors.Is(err, ErrAddonInstalled) {
+		t.Fatalf("inserting twice: err = %v", err)
+	}
+	check(t, s.RemoveAddon(id, "https://last/manifest.json"))
+
+	check(t, s.EnableAddon(id, subtitles.URL, false))
+	english := Addon{URL: "https://opensubtitles-v3.strem.io/lang=eng/manifest.json", Name: "OpenSubtitles (English)", Enabled: true}
+	check(t, s.ReplaceAddon(id, subtitles.URL, english))
+	english.Enabled = false
+	equal(t, must[[]Addon](t)(s.Addons(id)), []Addon{cinemeta, english, disney})
+	equal(t, must[KidsScope](t)(s.KidsScope(id)), KidsScope{
+		Addons:   []string{english.URL},
+		Catalogs: []CatalogRef{{Addon: english.URL, Type: "movie", ID: "top"}},
+	})
+
+	if err := s.ReplaceAddon(id, english.URL, cinemeta); !errors.Is(err, ErrAddonInstalled) {
+		t.Fatalf("replacing with an installed URL: err = %v", err)
+	}
+	if err := s.ReplaceAddon(id, "https://nope/manifest.json", cinemeta); !errors.Is(err, ErrAddonNotFound) {
+		t.Fatalf("replacing a missing addon: err = %v", err)
+	}
+	// Same URL, new name: the scope is untouched.
+	check(t, s.ReplaceAddon(id, cinemeta.URL, Addon{URL: cinemeta.URL, Name: "Cinemeta 3"}))
+	equal(t, must[[]Addon](t)(s.Addons(id))[0], Addon{URL: cinemeta.URL, Name: "Cinemeta 3", Enabled: true})
+}
+
 // The push's base is the list before the first edit that hasn't been sent,
 // so the backend can merge it (ADR-0019); an edit that changes nothing queues
 // nothing.

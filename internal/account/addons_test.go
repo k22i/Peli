@@ -13,8 +13,11 @@ func TestAddonEditsNeedTheParentPIN(t *testing.T) {
 	ctx := t.Context()
 	cinemeta := store.Addon{URL: "https://cinemeta.example/manifest.json", Enabled: true}
 
+	configured := store.Addon{URL: "https://cinemeta.example/lang=fr/manifest.json", Enabled: true}
 	for _, id := range []uint64{kids.ID, kevin.ID} {
 		wantCode(t, "install", f.service.InstallAddon(ctx, id, cinemeta), CodeParentPINRequired)
+		wantCode(t, "insert", f.service.InsertAddon(ctx, id, cinemeta, 0), CodeParentPINRequired)
+		wantCode(t, "reconfigure", f.service.ReconfigureAddon(ctx, id, cinemeta.URL, configured), CodeParentPINRequired)
 	}
 	if err := f.service.ApproveParent(ctx, kids.ID, "1234"); err != nil {
 		t.Fatal(err)
@@ -29,10 +32,17 @@ func TestAddonEditsNeedTheParentPIN(t *testing.T) {
 	if err := f.service.MoveAddon(ctx, kids.ID, cinemeta.URL, 0); err != nil {
 		t.Fatal(err)
 	}
-	if err := f.service.RemoveAddon(ctx, kids.ID, cinemeta.URL); err != nil {
+	if err := f.service.ReconfigureAddon(ctx, kids.ID, cinemeta.URL, configured); err != nil {
 		t.Fatal(err)
 	}
-	wantCode(t, "remove twice", f.service.RemoveAddon(ctx, kids.ID, cinemeta.URL), CodeAddonNotFound)
+	if err := f.service.RemoveAddon(ctx, kids.ID, configured.URL); err != nil {
+		t.Fatal(err)
+	}
+	wantCode(t, "remove twice", f.service.RemoveAddon(ctx, kids.ID, configured.URL), CodeAddonNotFound)
+	wantCode(t, "reconfigure a removed addon", f.service.ReconfigureAddon(ctx, kids.ID, configured.URL, cinemeta), CodeAddonNotFound)
+	if err := f.service.InsertAddon(ctx, kids.ID, configured, 0); err != nil {
+		t.Fatal(err)
+	}
 }
 
 // A Nuvio profile that uses the primary's addons is marked so here, which

@@ -351,6 +351,12 @@ const profileErrorCodes = [
   "addon_not_found",
 ] as const;
 
+// Whether a change was refused for want of the parent PIN (#26): the
+// approval lasts two minutes, so a screen opened with it can outlive it.
+export function needsParentPin(error: unknown): boolean {
+  return signInErrorCode(error) === "parent_pin_required";
+}
+
 // What to tell the user when changing a profile fails.
 export function profileProblem(error: Error): { title: string; description: string } {
   const cause: unknown = error.cause;

@@ -6,7 +6,7 @@ import (
 	"github.com/k22i/Sinag/internal/store"
 )
 
-// Installing, removing, reordering and turning addons on or off, for the addon
+// Installing, reconfiguring, removing, reordering and turning addons on or off, for the addon
 // manager (#38). Each is one edit of the stored list, so the manager never
 // writes back a list it read earlier; the push loop sends the new list to
 // Nuvio, merged with what other devices changed (#32, ADR-0019). They are
@@ -16,6 +16,18 @@ import (
 // InstallAddon adds an addon at the end of a profile's list.
 func (s *Service) InstallAddon(ctx context.Context, profileID uint64, addon store.Addon) error {
 	return s.editAddons(profileID, func(db *store.Store) error { return db.InstallAddon(profileID, addon) })
+}
+
+// InsertAddon adds an addon at position at (from 0) in a profile's list: the
+// manager's undo of a removal.
+func (s *Service) InsertAddon(ctx context.Context, profileID uint64, addon store.Addon, at int) error {
+	return s.editAddons(profileID, func(db *store.Store) error { return db.InsertAddon(profileID, addon, at) })
+}
+
+// ReconfigureAddon puts addon, with its new manifest URL from the addon's
+// configure page, in the place of the addon at manifest URL url.
+func (s *Service) ReconfigureAddon(ctx context.Context, profileID uint64, url string, addon store.Addon) error {
+	return s.editAddons(profileID, func(db *store.Store) error { return db.ReplaceAddon(profileID, url, addon) })
 }
 
 // RemoveAddon removes the addon at manifest URL url from a profile's list.
