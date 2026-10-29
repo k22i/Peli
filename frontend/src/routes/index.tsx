@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
+import { NoAddons } from "@/components/addons/no-addons";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Row, RowSkeleton } from "@/components/media/row";
 import { buttonVariants } from "@/components/ui/button";
+import { visibleAddonsQuery } from "@/lib/addons";
 import { collectionsQuery, homeLayoutQuery, homeSections, type HomeSection } from "@/lib/home";
 import {
   continueWatchingItems,
@@ -12,7 +14,8 @@ import {
   libraryQuery,
   watchedFraction,
 } from "@/lib/library";
-import { useCurrentProfile } from "@/lib/profile";
+import { currentProfileQuery } from "@/lib/profile";
+import type { Profile } from "@bindings/store";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -20,25 +23,30 @@ export const Route = createFileRoute("/")({
 
 // Continue Watching, the collections and the library, from the local store,
 // so Home opens with them offline (#31). Rows follow the layout made in
-// Nuvio's apps (#35). The hero and the catalog rows are #42's.
+// Nuvio's apps (#35). The hero and the catalog rows are #42's. With no addon
+// to browse, it says how to add one first (#39), so a fresh install never
+// opens on an empty page.
 function Home() {
-  const { id } = useCurrentProfile();
+  const profile = useQuery(currentProfileQuery).data;
   return (
     <>
       <h1 className="sr-only">Home</h1>
-      {id === undefined ? <HomeSkeleton /> : <HomeRows profileId={id} />}
+      {profile ? <HomeRows profile={profile} /> : <HomeSkeleton />}
     </>
   );
 }
 
-function HomeRows({ profileId }: { profileId: number }) {
+function HomeRows({ profile }: { profile: Profile }) {
+  const profileId = profile.id;
+  const visible = useQuery(visibleAddonsQuery(profileId));
   const library = useQuery(libraryQuery(profileId));
   const watching = useQuery(continueWatchingQuery(profileId));
   const layout = useQuery(homeLayoutQuery(profileId));
   const collections = useQuery(collectionsQuery(profileId));
 
+  const noAddons = visible.data?.length === 0 && <NoAddons profile={profile} />;
   if (!library.data || !watching.data) {
-    return library.isError || watching.isError ? null : <HomeSkeleton />;
+    return library.isError || watching.isError ? noAddons || null : <HomeSkeleton />;
   }
   // Catalog rows wait for the addon client (#37, #42).
   const sections = homeSections(layout.data, collections.data ?? []).filter(
@@ -46,15 +54,18 @@ function HomeRows({ profileId }: { profileId: number }) {
   );
   if (library.data.length === 0 && watching.data.length === 0 && sections.length === 0) {
     return (
-      <p className="p-8 text-center text-sm text-muted-foreground">
-        Titles you save and watch show up here.
-      </p>
+      noAddons || (
+        <p className="p-8 text-center text-sm text-muted-foreground">
+          Titles you save and watch show up here.
+        </p>
+      )
     );
   }
 
   const items = continueWatchingItems(watching.data, library.data);
   return (
     <div className="flex flex-col gap-6 py-6">
+      {noAddons}
       {items.length > 0 && (
         <Row title="Continue watching">
           {items.map(({ entry, title, art }) => (

@@ -125,6 +125,8 @@ describe("settings", () => {
     );
     expect(await screen.findByText("1 addon installed")).toBeInTheDocument();
     expect(await screen.findByText("1.2.3")).toBeInTheDocument();
+    // The welcome screen's words (#39).
+    expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeInTheDocument();
   });
 
   it("shows Sinag's licence and the third-party notices", async () => {

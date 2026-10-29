@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
-import { KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
+import { Info, KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { keychainQuery, useContinueAsGuest } from "@/lib/account";
+import { contentDisclaimer } from "@/lib/disclaimer";
 import { serverName, serverQuery } from "@/lib/server";
 
 export const Route = createFileRoute("/welcome")({
@@ -81,11 +82,18 @@ function Welcome() {
         </Button>
       </div>
 
-      <p className="flex gap-2 text-sm text-muted-foreground">
-        <KeyRound className="mt-0.5 size-4 shrink-0" aria-hidden />
-        As a guest, your addons, library and progress stay on this device. You can sign in later
-        from the profile menu or Settings, and the Guest profile stays as it is.
-      </p>
+      <div className="flex flex-col gap-3 text-sm text-muted-foreground">
+        <p className="flex gap-2">
+          <KeyRound className="mt-0.5 size-4 shrink-0" aria-hidden />
+          As a guest, your addons, library and progress stay on this device. You can sign in later
+          from the profile menu or Settings, and the Guest profile stays as it is.
+        </p>
+        {/* Before anything else, what Sinag is (#39). Settings › About repeats it. */}
+        <p className="flex gap-2">
+          <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
+          {contentDisclaimer}
+        </p>
+      </div>
     </div>
   );
 }

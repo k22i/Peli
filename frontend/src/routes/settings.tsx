@@ -27,6 +27,7 @@ import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { addonsQuery } from "@/lib/addons";
 import { appVersionQuery } from "@/lib/app-info";
+import { contentDisclaimer } from "@/lib/disclaimer";
 import { useCurrentProfile } from "@/lib/profile";
 import { serverName, serverQuery } from "@/lib/server";
 import {
@@ -333,12 +334,8 @@ function AboutSection() {
       <SettingRow id="version" label="Version">
         <span className="font-mono text-meta text-muted-foreground">{version.data ?? "…"}</span>
       </SettingRow>
-      {/* Wording to be settled by the first-run disclaimer (#39). */}
-      <SettingRow
-        id="disclaimer"
-        label="Content"
-        description="Sinag doesn’t host or provide any content. It plays what the addons you install return; you are responsible for what you install and watch."
-      />
+      {/* The welcome screen says the same (#39). */}
+      <SettingRow id="disclaimer" label="Content" description={contentDisclaimer} />
       <SettingRow id="licences" label="Licences" description="Open-source licences and notices.">
         <LicencesDialog labelledBy="licences-label" />
       </SettingRow>

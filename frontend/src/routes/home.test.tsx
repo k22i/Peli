@@ -1,8 +1,15 @@
 import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { Collection, HomeLayout, LibraryItem, Profile, Progress } from "@bindings/store";
+import type {
+  Addon,
+  Collection,
+  HomeLayout,
+  LibraryItem,
+  Profile,
+  Progress,
+} from "@bindings/store";
 import type * as Runtime from "@wailsio/runtime";
 import { renderApp } from "@/test/render-app";
 
@@ -12,6 +19,10 @@ const mocks = vi.hoisted(() => ({
   continueWatching: vi.fn<() => Promise<Progress[]>>(),
   homeLayout: vi.fn<() => Promise<HomeLayout | null>>(() => Promise.resolve(null)),
   collections: vi.fn<() => Promise<Collection[]>>(() => Promise.resolve([])),
+  current: vi.fn<() => Promise<Profile>>(),
+  addons: vi.fn<() => Promise<Addon[]>>(),
+  visibleAddons: vi.fn<() => Promise<Addon[] | null>>(),
+  installAddon: vi.fn<(id: number, addon: Addon) => Promise<void>>(() => Promise.resolve()),
   connection: vi.fn<() => Promise<string>>(),
   checkConnection: vi.fn<() => Promise<string>>(),
 }));
@@ -34,8 +45,10 @@ const kevin = { id: 1, name: "Kevin", nuvioIndex: 1 } as Profile;
 
 vi.mock("@bindings/store", () => ({
   Service: {
-    Profiles: () => Promise.resolve([kevin]),
-    CurrentProfile: () => Promise.resolve(kevin),
+    Profiles: () => mocks.current().then((p) => [p]),
+    CurrentProfile: mocks.current,
+    Addons: mocks.addons,
+    VisibleAddons: mocks.visibleAddons,
     Library: mocks.library,
     ContinueWatching: mocks.continueWatching,
     HomeLayout: mocks.homeLayout,
@@ -44,7 +57,10 @@ vi.mock("@bindings/store", () => ({
 }));
 
 vi.mock("@bindings/account", () => ({
-  Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
+  Service: {
+    Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }),
+    InstallAddon: mocks.installAddon,
+  },
 }));
 
 vi.mock("@bindings/syncer", async (importOriginal) => ({
@@ -82,8 +98,18 @@ const episode: Progress = {
 };
 
 const row = (name: string) => screen.findByRole("region", { name });
+const empty = () => screen.findByRole("region", { name: "Add an addon to start watching" });
+
+const cinemeta: Addon = {
+  url: "https://v3-cinemeta.strem.io/manifest.json",
+  name: "Cinemeta",
+  enabled: true,
+};
 
 beforeEach(() => {
+  mocks.current.mockResolvedValue(kevin);
+  mocks.addons.mockResolvedValue([cinemeta]);
+  mocks.visibleAddons.mockResolvedValue([cinemeta]);
   mocks.homeLayout.mockResolvedValue(null);
   mocks.collections.mockResolvedValue([]);
 });
@@ -187,6 +213,98 @@ describe("Home", () => {
 
     expect(await screen.findByText("Titles you save and watch show up here.")).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 1, name: "Home" })).toBeInTheDocument();
+  });
+});
+
+// #39: Sinag bundles no addons, so a fresh install has none. Home explains
+// what they are and installs one, rather than opening on nothing.
+describe("with no addons", () => {
+  const guest = { id: 1, name: "Guest", guest: true } as Profile;
+
+  beforeEach(() => {
+    mocks.library.mockResolvedValue([]);
+    mocks.continueWatching.mockResolvedValue([]);
+    mocks.connection.mockResolvedValue("online");
+    mocks.current.mockResolvedValue(guest);
+    mocks.addons.mockResolvedValue([]);
+    mocks.visibleAddons.mockResolvedValue(null);
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("explains addons on a fresh install, with the manager a click away", async () => {
+    await renderApp("/");
+
+    const region = await empty();
+    expect(region).toHaveTextContent("Sinag comes with no addons");
+    expect(screen.queryByText("Titles you save and watch show up here.")).toBeNull();
+    // No content links: the only way out is to the addon manager.
+    expect(
+      within(region)
+        .getAllByRole("link")
+        .map((link) => link.getAttribute("href")),
+    ).toEqual(["/addons"]);
+  });
+
+  it("installs an addon from Home", async () => {
+    const torrentio = {
+      id: "com.example.torrentio",
+      name: "Torrentio",
+      version: "0.0.15",
+      types: ["movie"],
+      resources: ["stream"],
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => Promise.resolve(Response.json(torrentio))),
+    );
+    const user = userEvent.setup();
+    await renderApp("/");
+
+    await user.click(within(await empty()).getByRole("button", { name: "Install addon" }));
+    const dialog = await screen.findByRole("dialog", { name: "Install an addon" });
+    await user.type(within(dialog).getByLabelText("Address"), "https://torrentio.example");
+    await user.keyboard("{Enter}");
+    await user.click(await within(dialog).findByRole("button", { name: "Install" }));
+
+    expect(mocks.installAddon).toHaveBeenCalledWith(1, {
+      url: "https://torrentio.example/manifest.json",
+      name: "Torrentio",
+      enabled: true,
+    });
+    expect(await screen.findByText("Installed Torrentio")).toBeInTheDocument();
+  });
+
+  it("stays above the library and Continue Watching", async () => {
+    mocks.library.mockResolvedValue([dune]);
+    await renderApp("/");
+
+    expect(await empty()).toBeInTheDocument();
+    expect(await row("Your library")).toBeInTheDocument();
+  });
+
+  it("says when every addon is turned off", async () => {
+    mocks.addons.mockResolvedValue([{ ...cinemeta, enabled: false }]);
+    await renderApp("/");
+
+    const region = await screen.findByRole("region", { name: "Your addons are turned off" });
+    expect(within(region).getByRole("link", { name: "Manage addons" })).toBeInTheDocument();
+    expect(within(region).queryByRole("button", { name: "Install addon" })).toBeNull();
+  });
+
+  it("sends a kids profile to its parent", async () => {
+    // Its PIN gate is the launch gate's (#25); here it is already past it.
+    mocks.current.mockResolvedValue({ ...kevin, kids: true });
+    mocks.addons.mockResolvedValue([cinemeta]);
+    await renderApp("/");
+
+    const region = await screen.findByRole("region", {
+      name: "Nothing chosen for this profile yet",
+    });
+    expect(region).toHaveTextContent("A parent chooses");
+    expect(within(region).queryByRole("button", { name: "Install addon" })).toBeNull();
   });
 });
 

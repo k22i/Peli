@@ -16,6 +16,15 @@ export const addonsQuery = (profileId: number) =>
     queryFn: () => Store.Addons(profileId),
   });
 
+// The enabled addons a profile may browse: all of them, or for a kids profile
+// the ones its parent allowed (ADR-0014). Under the same key as the list, so
+// an edit or a pull refreshes it too.
+export const visibleAddonsQuery = (profileId: number) =>
+  queryOptions({
+    queryKey: ["addons", profileId, "visible"],
+    queryFn: async () => (await Store.VisibleAddons(profileId)) ?? [],
+  });
+
 // The manifest URL in what the user pasted to install an addon (#38): a
 // manifest URL, an addon's base URL, a stremio:// link, or a link that names
 // the addon in an `addon` parameter, as Stremio's web app's install links do.

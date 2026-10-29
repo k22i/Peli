@@ -3,15 +3,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 
-import { parentSteps, usePinSteps } from "@/components/account/pin-dialog";
 import { ConfigureDialog, InstallDialog } from "@/components/addons/addon-dialogs";
-import { AddonRow, host, type DropEdge } from "@/components/addons/addon-row";
+import { addonLabel as label, useAddonEdits } from "@/components/addons/addon-edits";
+import { AddonRow, type DropEdge } from "@/components/addons/addon-row";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toastManager } from "@/components/ui/toast";
 import type { Manifest } from "@/lib/addon-protocol";
-import { needsParentPin, profileProblem } from "@/lib/account";
-import { addonsQuery, type AddonEdit, useEditAddons } from "@/lib/addons";
+import { addonsQuery } from "@/lib/addons";
 import { currentProfileQuery } from "@/lib/profile";
 import type { Addon, Profile } from "@bindings/store";
 
@@ -50,32 +49,14 @@ function syncNote(profile: Profile): string {
     : "The same on every device signed in to Nuvio.";
 }
 
-const label = (addon: Addon) => addon.name || host(addon.url);
-
 function Manager({ profile }: { profile: Profile }) {
   const addons = useQuery(addonsQuery(profile.id));
-  const edit = useEditAddons(profile.id);
-  const { ask, dialog } = usePinSteps();
+  const edits = useAddonEdits(profile);
+  const { run, dialog } = edits;
   const [installing, setInstalling] = useState(false);
   const [configuring, setConfiguring] = useState<{ addon: Addon; manifest?: Manifest }>();
   const [announcement, setAnnouncement] = useState("");
   const list = addons.data ?? [];
-
-  // Runs an edit. The parent PIN a kids profile was opened with lasts two
-  // minutes, so a refusal for it asks again and retries.
-  const run = (change: AddonEdit): Promise<boolean> =>
-    edit.mutateAsync(change).then(
-      () => true,
-      (error: Error) => {
-        if (needsParentPin(error)) {
-          return new Promise<boolean>((resolve) => {
-            ask(parentSteps(profile), () => void run(change).then(resolve));
-          });
-        }
-        toastManager.add({ type: "error", ...profileProblem(error) });
-        return false;
-      },
-    );
 
   const move = (addon: Addon, to: number) => {
     setAnnouncement(`${label(addon)} moved to position ${to + 1} of ${list.length}.`);
@@ -98,9 +79,7 @@ function Manager({ profile }: { profile: Profile }) {
 
   const install = (addon: Addon) => {
     setInstalling(false);
-    void run({ kind: "install", addon }).then(
-      (done) => done && toastManager.add({ type: "success", title: `Installed ${label(addon)}` }),
-    );
+    edits.install(addon);
   };
 
   const reconfigure = (url: string, addon: Addon) => {

@@ -48,6 +48,11 @@ vi.mock("@bindings/store", () => ({
     }),
     DeviceSettings: async () => ({ hardwareDecoding: true, diagnostics: false }),
     Addons: async () => [],
+    VisibleAddons: async () => [],
+    Library: async () => [],
+    ContinueWatching: async () => [],
+    HomeLayout: async () => null,
+    Collections: async () => [],
   },
 }));
 
@@ -107,6 +112,8 @@ describe("first run", () => {
     expect(screen.getByRole("link", { name: "Sign in with email" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Sign in with your phone" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Continue as guest" })).toBeEnabled();
+    // #39: what Sinag is, before anything is installed.
+    expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeVisible();
   });
 
   it("continues as a guest into the app", async () => {
@@ -119,6 +126,12 @@ describe("first run", () => {
     expect(router.state.location.pathname).toBe("/");
     expect(backend.profiles).toEqual([{ id: 1, name: "Guest", guest: true }]);
     expect(screen.getByRole("button", { name: "Profile: Guest" })).toBeVisible();
+    // #39: a fresh guest has no addons, and Home says how to add one rather
+    // than opening on nothing.
+    const empty = await screen.findByRole("region", { name: "Add an addon to start watching" });
+    await waitFor(() =>
+      expect(within(empty).getByRole("button", { name: "Install addon" })).toBeEnabled(),
+    );
   });
 
   it("explains a missing keychain and still allows guests", async () => {

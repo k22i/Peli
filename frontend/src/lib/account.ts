@@ -11,6 +11,7 @@ import { useEffect, useEffectEvent, useState } from "react";
 
 import { Service as Account, type ProfileEdit } from "@bindings/account";
 import { Service as Store, type KidsScope, type Profile } from "@bindings/store";
+import { visibleAddonsQuery } from "@/lib/addons";
 import { accountQuery, currentProfileQuery } from "@/lib/profile";
 import { secrets } from "@/lib/secrets";
 
@@ -202,7 +203,11 @@ export function useSetKids() {
     mutationFn: ({ profileId, kids }: { profileId: number; kids: boolean }) =>
       Account.SetKids(profileId, kids),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["profiles"] });
+      // What it may see changes with it.
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ["profiles"] }),
+        queryClient.invalidateQueries({ queryKey: ["addons"] }),
+      ]);
     },
   });
 }
@@ -213,7 +218,10 @@ export function useSetKidsScope(profileId: number) {
   return useMutation({
     mutationFn: (scope: KidsScope) => Account.SetKidsScope(profileId, scope),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: kidsScopeQuery(profileId).queryKey });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: kidsScopeQuery(profileId).queryKey }),
+        queryClient.invalidateQueries({ queryKey: visibleAddonsQuery(profileId).queryKey }),
+      ]);
     },
   });
 }
