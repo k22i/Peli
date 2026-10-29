@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { Placeholder } from "@/components/placeholder";
+import { BrowsePage } from "@/components/browse/browse-page";
+import { browseSearch } from "@/lib/browse";
 
 export const Route = createFileRoute("/shows")({
-  component: () => <Placeholder title="Shows" />,
+  validateSearch: browseSearch,
+  component: () => <BrowsePage kind="series" />,
 });

@@ -10,6 +10,7 @@ metadata:
 **Why:** WKWebView keeps every <img> in the DOM decoded; 200 posters cost 128 MB (#7).
 
 **How to apply:**
+- `PosterGrid` has `onEndReached` for infinite scroll (#43). Inside the real shell in tests, setup.ts makes `#content` scroll ([[browse-pages]]).
 - Never map cards into a plain flex row for long lists; use Row/PosterGrid.
 - Tests: jsdom has no layout, so `src/test/setup.ts` gives `[data-slot=row-scroller]`, `[data-slot=poster-grid]` and `#content` a 1280×800 client size. Cards come and go, so query them afresh instead of holding an array. A grid test needs a `#content` ancestor with `overflowY: auto`.
 - Don't drop an `<img>`'s `src` on unmount: it kept every removed card alive (~18,000 extra DOM nodes per scroll test), so 940e74c removed it. ADR-0025 has the numbers.

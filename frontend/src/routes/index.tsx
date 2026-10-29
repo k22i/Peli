@@ -1,4 +1,4 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Play, RotateCcw } from "lucide-react";
 
@@ -10,19 +10,16 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import {
   addonsFor,
   catalogQuery,
-  manifestQuery,
   metaQuery,
   type LoadedAddon,
   type MetaPreview,
 } from "@/lib/addon-protocol";
-import { visibleAddonsQuery } from "@/lib/addons";
 import {
-  catalogRef,
   collectionsQuery,
-  hiddenCatalogsQuery,
   homeLayoutQuery,
   homeRows,
   isReleased,
+  useBrowsableAddons,
   type HomeRowOf,
 } from "@/lib/home";
 import { continueWatchingQuery, episodeLabel, libraryQuery, watchedFraction } from "@/lib/library";
@@ -57,37 +54,14 @@ function Home() {
 
 function HomeRows({ profile }: { profile: Profile }) {
   const profileId = profile.id;
-  const visible = useQuery(visibleAddonsQuery(profileId));
   const library = useQuery(libraryQuery(profileId));
   const watching = useQuery(continueWatchingQuery(profileId));
   const layout = useQuery(homeLayoutQuery(profileId));
   const collections = useQuery(collectionsQuery(profileId));
-
-  // The visible addons whose manifests loaded, in the user's order. One that
-  // fails to load drops out of the rows and stays installed.
-  const manifests = useQueries({
-    queries: (visible.data ?? []).map((addon) => manifestQuery(addon.url)),
-  });
-  const addons: LoadedAddon[] = (visible.data ?? []).flatMap((addon, index) => {
-    const manifest = manifests[index]?.data;
-    return manifest ? [{ url: addon.url, manifest }] : [];
-  });
-  const hidden = useQuery(
-    hiddenCatalogsQuery(
-      profileId,
-      addons.flatMap((addon) => addon.manifest.catalogs.map((catalog) => ({ addon, catalog }))),
-    ),
-  );
+  const { visible, addons, hidden, shown, loading: addonsLoading } = useBrowsableAddons(profileId);
   // Catalog rows wait for the manifests and for what a kids profile may
   // see; until then the collections show alone.
-  const addonsLoading =
-    visible.isPending || manifests.some((query) => query.isPending) || hidden.isPending;
-  const rows = homeRows(
-    layout.data,
-    collections.data ?? [],
-    hidden.data ? addons : [],
-    (source) => !hidden.data?.has(catalogRef(source)),
-  );
+  const rows = homeRows(layout.data, collections.data ?? [], hidden ? addons : [], shown);
 
   const noAddons = visible.data?.length === 0 && <NoAddons profile={profile} />;
   if (!library.data || !watching.data) {
@@ -314,7 +288,7 @@ function CatalogRowView({ row, hideUnreleased }: { row: CatalogRow; hideUnreleas
   );
 }
 
-// A collection's folders, as tiles. Opening one is the browse page's (#43).
+// A collection's folders, as tiles. Opening one is #96's.
 function CollectionRow({ row }: { row: Extract<HomeRow, { kind: "collection" }> }) {
   const { collection } = row;
   const folders = collection.folders ?? [];

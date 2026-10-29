@@ -12,3 +12,4 @@
 - [Addon manager](addon-manager.md) — #38/#39 layout: useAddonEdits, visibleAddonsQuery, NoAddons, shared disclaimer, optimistic applyAddonEdit, test gotchas
 - [Virtualized rows](virtualized-rows.md) — #41 Row/PosterGrid/RowGroup API, jsdom sizing in setup.ts, no src drop (leaked), WebKit cache vs leak (lowMemory), in-app memory harness
 - [Home page](home-page.md) — #42 homeRows order, fixed hero, usePlay seam, batched CatalogVisible, test serve/seed, WebKit cache-timing harness
+- [Browse pages](browse-pages.md) — #43 BrowsePage, catalog chips + genre/year filter, catalogPagesQuery + onEndReached, anime rule, #content overflow shim

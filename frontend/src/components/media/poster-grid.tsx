@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-virtual";
 import {
   useCallback,
+  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -28,6 +29,8 @@ import { cn } from "@/lib/utils";
 
 const columnGapPx = 16;
 const rowGapPx = 28;
+// How many rows from the end onEndReached fires: about a screen ahead.
+const endRows = 3;
 // A card's title and meta lines under the art, until rows are measured.
 const captionPx = 48;
 
@@ -63,16 +66,20 @@ function measureRow(
 // the page. Virtualized by row: only the rows near the viewport are mounted.
 // Columns are as many --container-poster widths as fit, then stretched to
 // fill. One Tab stop; the arrow keys, Home and End move between cards.
+// `onEndReached` asks for more when the last rows come near (infinite
+// scroll, #43), and again whenever items arrive and the end is still near.
 export function PosterGrid<T>({
   items,
   getKey,
   renderItem,
+  onEndReached,
   label,
   className,
 }: {
   items: readonly T[];
   getKey: (item: T, index: number) => Key;
   renderItem: (item: T, index: number) => ReactNode;
+  onEndReached?: () => void;
   label?: string;
   className?: string;
 }) {
@@ -141,6 +148,12 @@ export function PosterGrid<T>({
       [activeRow],
     ),
   });
+
+  const lastMounted = virtualizer.getVirtualItems().at(-1)?.index;
+  const nearEnd = lastMounted !== undefined && lastMounted >= rows - 1 - endRows;
+  useEffect(() => {
+    if (nearEnd) onEndReached?.();
+  }, [nearEnd, count, onEndReached]);
 
   const roving = useMemo(() => {
     const last = count - 1;

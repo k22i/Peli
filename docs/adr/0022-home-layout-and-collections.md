@@ -33,7 +33,7 @@ A local edit on Nuvio's server would never reach the phone or TV, and the next p
 
 ## Home
 
-`homeSections` in `lib/home.ts` gives the order: collections with `pinToTop` first, then the layout's rows that are turned on, then collections the layout doesn't name. A row for a collection that no longer exists is skipped. A collection shows as a row of its folders (poster or landscape tiles, from `tileShape`, with the cover image). Catalog rows are in the list but aren't drawn yet: they need the addon client (#37) and the catalog rows (#42), which should append catalogs the layout doesn't name in addon order, and match addons to layout rows by manifest id. Opening a folder is the browse page's (#43).
+`homeSections` in `lib/home.ts` gives the order: collections with `pinToTop` first, then the layout's rows that are turned on, then collections the layout doesn't name. A row for a collection that no longer exists is skipped. A collection shows as a row of its folders (poster or landscape tiles, from `tileShape`, with the cover image). Catalog rows are in the list but aren't drawn yet: they need the addon client (#37) and the catalog rows (#42), which should append catalogs the layout doesn't name in addon order, and match addons to layout rows by manifest id. Opening a folder was left to the browse page (#43), then split out to #96 (ADR-0027).
 
 ## Kids profiles see no collections
 

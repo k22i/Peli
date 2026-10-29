@@ -1,15 +1,17 @@
-import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { keepPreviousData, queryOptions, useQueries, useQuery } from "@tanstack/react-query";
 
 import type { Collection, HomeLayout } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import {
   catalogsAccepting,
   findCatalog,
+  manifestQuery,
   type Catalog,
   type CatalogSource,
   type LoadedAddon,
   type MetaPreview,
 } from "@/lib/addon-protocol";
+import { visibleAddonsQuery } from "@/lib/addons";
 
 // Home's layout and collections, pulled from Nuvio's apps (#35) and read
 // from the local store, so they show offline. Keyed under the surfaces'
@@ -104,6 +106,35 @@ export const hiddenCatalogsQuery = (profileId: number, sources: readonly Catalog
     placeholderData: keepPreviousData,
   });
 
+// The addons a profile browses with, for Home and the browse pages: the
+// visible ones whose manifests loaded, in the user's order (one that fails
+// to load drops out and stays installed), and `shown`, which tells whether
+// a kids profile may see a catalog. `hidden` is undefined until that's
+// known, and `loading` is true until all of it is.
+export function useBrowsableAddons(profileId: number) {
+  const visible = useQuery(visibleAddonsQuery(profileId));
+  const manifests = useQueries({
+    queries: (visible.data ?? []).map((addon) => manifestQuery(addon.url)),
+  });
+  const addons: LoadedAddon[] = (visible.data ?? []).flatMap((addon, index) => {
+    const manifest = manifests[index]?.data;
+    return manifest ? [{ url: addon.url, manifest }] : [];
+  });
+  const hidden = useQuery(
+    hiddenCatalogsQuery(
+      profileId,
+      addons.flatMap((addon) => addon.manifest.catalogs.map((catalog) => ({ addon, catalog }))),
+    ),
+  ).data;
+  return {
+    visible,
+    addons,
+    hidden,
+    shown: (source: CatalogSource) => !hidden?.has(catalogRef(source)),
+    loading: visible.isPending || manifests.some((query) => query.isPending) || !hidden,
+  };
+}
+
 const layoutKey = (addonId: string, type: string, catalogId: string) =>
   `${addonId}:${type}:${catalogId}`;
 
@@ -167,10 +198,13 @@ const typeNames: Record<string, string> = {
   tv: "TV",
 };
 
+// A content type as the app names it: "series" is Shows.
+export const typeName = (type: string) =>
+  typeNames[type] ?? type.charAt(0).toUpperCase() + type.slice(1);
+
 // "Popular · Movies": Cinemeta names its movie and series catalogs alike.
 export function catalogTitle(catalog: Catalog): string {
-  const type =
-    typeNames[catalog.type] ?? catalog.type.charAt(0).toUpperCase() + catalog.type.slice(1);
+  const type = typeName(catalog.type);
   return catalog.name ? `${catalog.name} · ${type}` : type;
 }
 

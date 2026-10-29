@@ -30,5 +30,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0024](0024-addon-manager.md) | The addon manager: one Go edit per action, shown at once, reconfigure in place keeping a kids allow-list | 2026-10-29 |
 | [0025](0025-virtualized-rows-and-grids.md) | Virtualized rows and grids: TanStack Virtual, roving focus by index, WebKit's image cache | 2026-10-29 |
 | [0026](0026-home.md) | Home: a fixed hero from the first catalog, rows in the layout's order, and one seam for playback | 2026-10-29 |
+| [0027](0027-browse-pages.md) | Browse pages: one catalog at a time, filters from its own extras, anime by type and addon | 2026-10-29 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

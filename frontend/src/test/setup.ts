@@ -44,3 +44,13 @@ for (const [property, size] of [
     },
   });
 }
+// The shell's #content scrolls (Base UI sets `overflow: scroll`, which jsdom
+// doesn't compute into overflowY), so a PosterGrid in a page finds it.
+const computedStyle = window.getComputedStyle.bind(window);
+window.getComputedStyle = (element, pseudo) => {
+  const style = computedStyle(element, pseudo);
+  if (element.id === "content") {
+    Object.defineProperty(style, "overflowY", { value: "auto" });
+  }
+  return style;
+};

@@ -1,7 +1,7 @@
-import { queryOptions } from "@tanstack/react-query";
+import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
 
 import { addonClient, type AddonClient } from "./client";
-import type { CacheHints, ContentType, Extra } from "./types";
+import type { CacheHints, CatalogResponse, ContentType, Extra } from "./types";
 
 // TanStack Query options for every addon request, so each feature shares one
 // cache: Home, browse, search and the title page (#40) read catalogs and
@@ -48,6 +48,34 @@ export const catalogQuery = (
     staleTime: (query) => freshFor(query.state.data, hour),
     retry: 1,
     meta: { persist: true },
+  });
+
+// A catalog page by page, for browse's infinite scroll (#43). The first page
+// is catalogQuery's, so it comes from the persisted cache and lands back in
+// it; the rest are asked with `skip` set to the items so far, as Stremio's
+// apps do, and aren't kept on disk. Paging stops at an empty page or
+// `hasMore: false`, and never starts for a catalog that doesn't take
+// `skip`.
+export const catalogPagesQuery = (
+  addonUrl: string,
+  type: ContentType,
+  id: string,
+  { extra = {}, paged }: { extra?: Extra; paged: boolean },
+  client: AddonClient = addonClient,
+) =>
+  infiniteQueryOptions({
+    queryKey: ["addon-catalog-pages", addonUrl, type, id, extra],
+    queryFn: ({ pageParam, signal, client: queryClient }) =>
+      pageParam === 0
+        ? queryClient.fetchQuery(catalogQuery(addonUrl, type, id, extra, client))
+        : client.catalog(addonUrl, type, id, { ...extra, skip: pageParam }, { signal }),
+    initialPageParam: 0,
+    getNextPageParam: (last: CatalogResponse, all: CatalogResponse[]) =>
+      paged && last.metas.length > 0 && last.hasMore !== false
+        ? all.reduce((count, page) => count + page.metas.length, 0)
+        : undefined,
+    staleTime: (query) => freshFor(query.state.data?.pages[0], hour),
+    retry: 1,
   });
 
 // A title's meta from one addon. Kept across restarts for the title page.
