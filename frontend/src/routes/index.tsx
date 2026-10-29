@@ -22,7 +22,13 @@ import {
   useBrowsableAddons,
   type HomeRowOf,
 } from "@/lib/home";
-import { continueWatchingQuery, episodeLabel, libraryQuery, watchedFraction } from "@/lib/library";
+import {
+  continueWatchingQuery,
+  episodeLabel,
+  libraryPreview,
+  libraryQuery,
+  watchedFraction,
+} from "@/lib/library";
 import { usePlay, type PlayTarget } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle, type TitlePreview } from "@/lib/title";
@@ -357,13 +363,3 @@ function HomeSkeleton() {
     </div>
   );
 }
-
-const libraryPreview = (item: LibraryItem): TitlePreview => ({
-  id: item.contentId,
-  type: item.contentType,
-  name: item.name,
-  poster: item.poster,
-  background: item.background,
-  releaseInfo: item.releaseInfo,
-  description: item.description,
-});

@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 
 import type { LibraryItem, Progress } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
+import type { TitlePreview } from "@/lib/title";
 
 // The profile's library and Continue Watching, read from the local store
 // (#14), so they show with no network (#31). Their keys sit under the
@@ -12,6 +13,15 @@ export const libraryQuery = (profileId: number) =>
   queryOptions({
     queryKey: ["library", profileId],
     queryFn: () => Store.Library(profileId),
+  });
+
+// When the profile last watched each title, by content ID, for the library's
+// "Recently watched" sort (#46). A pull of progress or watched refreshes it
+// (lib/sync.ts).
+export const lastWatchedQuery = (profileId: number) =>
+  queryOptions({
+    queryKey: ["last-watched", profileId],
+    queryFn: async () => (await Store.LastWatched(profileId)) ?? {},
   });
 
 export const continueWatchingQuery = (profileId: number) =>
@@ -48,4 +58,70 @@ export function episodeLabel(entry: Progress): string | undefined {
 // How much of an entry has been watched, 0 to 1.
 export function watchedFraction(entry: Progress): number {
   return entry.duration > 0 ? entry.position / entry.duration : 0;
+}
+
+// What opening a library title passes the title page, so its hero paints at
+// once (#45).
+export const libraryPreview = (item: LibraryItem): TitlePreview => ({
+  id: item.contentId,
+  type: item.contentType,
+  name: item.name,
+  poster: item.poster,
+  background: item.background,
+  releaseInfo: item.releaseInfo,
+  description: item.description,
+});
+
+// The Library page's choices (#46), kept in the address so Back from a title
+// returns to them. No type means all of them.
+export type LibrarySort = "added" | "watched" | "name";
+export type LibrarySearch = { type?: string; sort?: LibrarySort };
+
+export const librarySorts: readonly { value: LibrarySort; label: string }[] = [
+  { value: "added", label: "Recently added" },
+  { value: "watched", label: "Recently watched" },
+  { value: "name", label: "A–Z" },
+];
+
+export function librarySearch(search: Record<string, unknown>): LibrarySearch {
+  const { type } = search;
+  const sort = librarySorts.find((option) => option.value === search["sort"])?.value;
+  return {
+    ...(typeof type === "string" && type ? { type } : {}),
+    ...(sort ? { sort } : {}),
+  };
+}
+
+const typeLabels: Record<string, string> = { movie: "Movies", series: "Shows", anime: "Anime" };
+
+// The library's content types, in the order Movies, Shows, Anime, then any
+// other an addon uses ("tv", "channel"), by name.
+export function libraryTypes(items: readonly LibraryItem[]): { type: string; label: string }[] {
+  const known = Object.keys(typeLabels);
+  const rank = (type: string) => (known.includes(type) ? known.indexOf(type) : known.length);
+  return [...new Set(items.map((item) => item.contentType))]
+    .toSorted((a, b) => rank(a) - rank(b) || a.localeCompare(b))
+    .map((type) => ({
+      type,
+      label: typeLabels[type] ?? type.charAt(0).toUpperCase() + type.slice(1),
+    }));
+}
+
+const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+
+// The library filtered to one type and sorted. Recently watched puts titles
+// never watched last, most recently added first, as the store gives them.
+export function libraryItems(
+  items: readonly LibraryItem[],
+  { type, sort = "added" }: { type?: string | undefined; sort?: LibrarySort | undefined },
+  lastWatched: Readonly<Record<string, number | undefined>> = {},
+): LibraryItem[] {
+  const shown = type ? items.filter((item) => item.contentType === type) : items;
+  const order: Record<LibrarySort, (a: LibraryItem, b: LibraryItem) => number> = {
+    added: (a, b) => b.addedAt - a.addedAt,
+    watched: (a, b) =>
+      (lastWatched[b.contentId] ?? 0) - (lastWatched[a.contentId] ?? 0) || b.addedAt - a.addedAt,
+    name: (a, b) => collator.compare(a.name, b.name),
+  };
+  return shown.toSorted(order[sort]);
 }

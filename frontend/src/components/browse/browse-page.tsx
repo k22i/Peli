@@ -276,7 +276,7 @@ export function Notice({
   );
 }
 
-function GridSkeleton() {
+export function GridSkeleton() {
   return (
     <div
       aria-hidden

@@ -59,3 +59,22 @@ func (s *Store) RemoveLibraryItem(id uint64, contentID, contentType string) erro
 		return remove(p, bucketLibrary, SurfaceLibrary, []byte(key), key)
 	})
 }
+
+// LastWatched returns when profile id last watched each title, by content
+// ID: its latest progress or watched mark, whichever is later, for sorting
+// the library by recently watched (#46). Titles never watched are left out.
+func (s *Store) LastWatched(id uint64) (map[string]int64, error) {
+	last := map[string]int64{}
+	seen := func(contentID string, at int64) {
+		if at > last[contentID] {
+			last[contentID] = at
+		}
+	}
+	err := s.view(id, func(p *bolt.Bucket) error {
+		if err := each(p.Bucket(bucketProgress), func(entry Progress) { seen(entry.ContentID, entry.LastWatched) }); err != nil {
+			return err
+		}
+		return each(p.Bucket(bucketWatched), func(item WatchedItem) { seen(item.ContentID, item.WatchedAt) })
+	})
+	return last, err
+}

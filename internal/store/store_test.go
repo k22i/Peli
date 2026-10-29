@@ -184,6 +184,29 @@ func TestContinueWatching(t *testing.T) {
 	equal(t, got, []string{"tt4_s1e2", "tt1"})
 }
 
+func TestLastWatched(t *testing.T) {
+	s, _ := openTemp(t)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
+	other := must[Profile](t)(s.CreateProfile(Profile{Name: "Q"}))
+	save := func(entry Progress) { must[Progress](t)(s.SaveProgress(p.ID, entry)) }
+
+	// A series' latest episode counts, finished or not.
+	save(Progress{ContentID: "tt1", ContentType: "series", Season: ptr(1), Episode: ptr(1), Position: 95, Duration: 100, LastWatched: 3})
+	save(Progress{ContentID: "tt1", ContentType: "series", Season: ptr(1), Episode: ptr(2), Position: 10, Duration: 100, LastWatched: 2})
+	// A watched mark later than the progress wins, and an earlier one doesn't.
+	save(Progress{ContentID: "tt2", ContentType: "movie", Position: 10, Duration: 100, LastWatched: 4})
+	if err := s.MarkWatched(p.ID, WatchedItem{ContentID: "tt2", ContentType: "movie", WatchedAt: 1}); err != nil {
+		t.Fatal(err)
+	}
+	if err := s.MarkWatched(p.ID, WatchedItem{ContentID: "tt3", ContentType: "series", Season: ptr(1), Episode: ptr(1), WatchedAt: 7}); err != nil {
+		t.Fatal(err)
+	}
+	// Another profile's history stays its own.
+	must[Progress](t)(s.SaveProgress(other.ID, Progress{ContentID: "tt4", ContentType: "movie", Position: 1, LastWatched: 9}))
+
+	equal(t, must[map[string]int64](t)(s.LastWatched(p.ID)), map[string]int64{"tt1": 3, "tt2": 4, "tt3": 7})
+}
+
 func TestProgressKeys(t *testing.T) {
 	s, _ := openTemp(t)
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))

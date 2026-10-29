@@ -128,6 +128,11 @@ func (s *Service) RemoveLibraryItem(profileID uint64, contentID, contentType str
 	return s.store.RemoveLibraryItem(profileID, contentID, contentType)
 }
 
+// LastWatched returns when a profile last watched each title, by content ID.
+func (s *Service) LastWatched(profileID uint64) (map[string]int64, error) {
+	return s.store.LastWatched(profileID)
+}
+
 // ContinueWatching returns a profile's unfinished progress, most recently
 // watched first, one entry per title.
 func (s *Service) ContinueWatching(profileID uint64) ([]Progress, error) {

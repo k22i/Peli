@@ -195,7 +195,7 @@ function LoadedTitle({
     onError: () => toastManager.add({ type: "error", title: "Couldn’t save that" }),
     onSettled: () =>
       Promise.all(
-        ["watched", "progress", "continue-watching"].map((prefix) =>
+        ["watched", "progress", "continue-watching", "last-watched"].map((prefix) =>
           client.invalidateQueries({ queryKey: [prefix, profile.id] }),
         ),
       ),
