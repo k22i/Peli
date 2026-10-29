@@ -88,7 +88,16 @@ export function Hero({
   );
 }
 
-function Logo({ src, title }: { src: string; title: string }) {
+// A title's logo; its name if the logo fails to load. Folder pages share it.
+export function Logo({
+  src,
+  title,
+  className,
+}: {
+  src: string;
+  title: string;
+  className?: string;
+}) {
   const [failed, setFailed] = useState<string>();
   if (failed === src) return title;
   return (
@@ -96,7 +105,10 @@ function Logo({ src, title }: { src: string; title: string }) {
       src={src}
       alt={title}
       onError={() => setFailed(src)}
-      className="max-h-32 max-w-[min(28rem,100%)] object-contain object-left drop-shadow-lg"
+      className={cn(
+        "max-h-32 max-w-[min(28rem,100%)] object-contain object-left drop-shadow-lg",
+        className,
+      )}
     />
   );
 }

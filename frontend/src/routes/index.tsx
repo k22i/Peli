@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Info, Play, RotateCcw } from "lucide-react";
 
 import { NoAddons } from "@/components/addons/no-addons";
@@ -14,6 +14,7 @@ import {
   type LoadedAddon,
   type MetaPreview,
 } from "@/lib/addon-protocol";
+import { folderParams, folderPath } from "@/lib/folder";
 import {
   collectionsQuery,
   homeLayoutQuery,
@@ -330,8 +331,9 @@ function CatalogRowView({ row, hideUnreleased }: { row: CatalogRow; hideUnreleas
   );
 }
 
-// A collection's folders, as tiles. Opening one is #96's.
+// A collection's folders, as tiles. One opens as a merged grid (#96).
 function CollectionRow({ row }: { row: Extract<HomeRow, { kind: "collection" }> }) {
+  const navigate = useNavigate();
   const { collection } = row;
   const folders = collection.folders ?? [];
   if (folders.length === 0) return null;
@@ -347,6 +349,9 @@ function CollectionRow({ row }: { row: Extract<HomeRow, { kind: "collection" }> 
           <Card
             title={folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title}
             src={folder.cover || folder.backdrop}
+            onClick={() =>
+              void navigate({ to: folderPath, params: folderParams(collection, folder) })
+            }
           />
         );
       }}
