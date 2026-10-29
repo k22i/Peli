@@ -1,0 +1,1473 @@
+{
+  "metas": [
+    {
+      "awards": "8 wins & 20 nominations total",
+      "cast": [
+        "Mayumi Tanaka",
+        "Akemi Okamura",
+        "Kazuya Nakai"
+      ],
+      "country": "Japan",
+      "description": "A spirited young pirate sets sail with a growing crew in search of the legendary One Piece, facing dangerous seas and powerful rivals on his quest to become King of the Pirates.",
+      "director": null,
+      "dvdRelease": null,
+      "genre": [
+        "Animation",
+        "Action",
+        "Adventure"
+      ],
+      "imdbRating": "9.0",
+      "imdb_id": "tt0388629",
+      "name": "One Piece",
+      "popularity": 2.6431633333333333,
+      "poster": "https://images.metahub.space/poster/small/tt0388629/img",
+      "released": "1999-10-20T00:00:00.000Z",
+      "runtime": "25 min",
+      "status": "Continuing",
+      "tvdb_id": 81797,
+      "type": "series",
+      "writer": [
+        "Eiichirô Oda"
+      ],
+      "year": "1999–",
+      "background": "https://images.metahub.space/background/medium/tt0388629/img",
+      "logo": "https://images.metahub.space/logo/medium/tt0388629/img",
+      "popularities": {
+        "SCM": 1,
+        "PXS_TEST": 0,
+        "EXMD": 0,
+        "ALLIANCE": 0,
+        "EJD": 0,
+        "moviedb": 79.2949,
+        "trakt": 884,
+        "stremio": 2.6431633333333333,
+        "stremio_lib": 0
+      },
+      "moviedb_id": 37854,
+      "slug": "series/one-piece-0388629",
+      "trailers": [
+        {
+          "source": "1KMcoJBMWE4",
+          "type": "Trailer"
+        }
+      ],
+      "id": "tt0388629",
+      "videos": [
+        {
+          "name": "A Dangerous Deal! Loki of the Underworld and Luffy",
+          "season": 23,
+          "number": 6,
+          "firstAired": "2026-05-10T14:15:00.000Z",
+          "tvdb_id": 11700047,
+          "rating": 0,
+          "overview": "Luffy encounters Loki, the Accursed Prince, who offers him a deal. He hints at a connection to Shanks, all while savage beasts crowd around, staring Luffy down. Meanwhile, Zoro and the others on the suspension bridge realize someone is following them.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/6/w780.jpg",
+          "id": "tt0388629:23:6",
+          "released": "2026-05-10T14:15:00.000Z",
+          "episode": 6,
+          "description": "Luffy encounters Loki, the Accursed Prince, who offers him a deal. He hints at a connection to Shanks, all while savage beasts crowd around, staring Luffy down. Meanwhile, Zoro and the others on the suspension bridge realize someone is following them."
+        },
+        {
+          "name": "A Gargantuan Wave of Emotion - The Dreamlike Scenery of Elbaph",
+          "season": 23,
+          "number": 7,
+          "firstAired": "2026-05-17T14:15:00.000Z",
+          "tvdb_id": 11700059,
+          "rating": 0,
+          "overview": "Luffy meets up with Gerd and Goldberg. They arrive just after Zoro and Sanji had managed to trap Road. As they explore, Luffy's group reunites with Hajrudin, Dorry, Brogy and the other Straw Hats.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/7/w780.jpg",
+          "id": "tt0388629:23:7",
+          "released": "2026-05-17T14:15:00.000Z",
+          "episode": 7,
+          "description": "Luffy meets up with Gerd and Goldberg. They arrive just after Zoro and Sanji had managed to trap Road. As they explore, Luffy's group reunites with Hajrudin, Dorry, Brogy and the other Straw Hats."
+        },
+        {
+          "name": "I Want You to Praise Me - The Reunion of Robin and Saul",
+          "season": 23,
+          "number": 8,
+          "firstAired": "2026-05-24T14:15:00.000Z",
+          "tvdb_id": 11700060,
+          "rating": 0,
+          "overview": "Robin and the others finally arrive at the port of the Western Village in Elbaph.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/8/w780.jpg",
+          "id": "tt0388629:23:8",
+          "released": "2026-05-24T14:15:00.000Z",
+          "episode": 8,
+          "description": "Robin and the others finally arrive at the port of the Western Village in Elbaph."
+        },
+        {
+          "name": "Saul's Resolve - The Inherited Will of Ohara",
+          "season": 23,
+          "number": 9,
+          "firstAired": "2026-05-31T14:15:00.000Z",
+          "tvdb_id": 11700061,
+          "rating": 0,
+          "overview": "Robin formally introduces Luffy and the others to Saul. Then his assistant, Ange, shows them around the school, where Usopp is shocked by the education being provided there. Meanwhile, Robin is taken to the library by Saul, where she is met with an incredible sight.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/9/w780.jpg",
+          "id": "tt0388629:23:9",
+          "released": "2026-05-31T14:15:00.000Z",
+          "episode": 9,
+          "description": "Robin formally introduces Luffy and the others to Saul. Then his assistant, Ange, shows them around the school, where Usopp is shocked by the education being provided there. Meanwhile, Robin is taken to the library by Saul, where she is met with an incredible sight."
+        },
+        {
+          "name": "A Welcome with Friends' Cups and Intruders Seeking Loki",
+          "season": 23,
+          "number": 10,
+          "firstAired": "2026-06-07T14:15:00.000Z",
+          "tvdb_id": 11700062,
+          "rating": 0,
+          "overview": "Robin, Chopper, Bonney, and Lilith enjoy the Owl Library.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/10/w780.jpg",
+          "id": "tt0388629:23:10",
+          "released": "2026-06-07T14:15:00.000Z",
+          "episode": 10,
+          "description": "Robin, Chopper, Bonney, and Lilith enjoy the Owl Library."
+        },
+        {
+          "name": "Encountering Loki - Gunko of the Knights of God",
+          "season": 23,
+          "number": 11,
+          "firstAired": "2026-06-14T14:15:00.000Z",
+          "tvdb_id": 11700063,
+          "rating": 0,
+          "overview": "As the Straw Hats converse with the Giants, they learn about Nika and Loki. Luffy, Zoro and Nami have Road assist them in the search for Loki's key. Meanwhile, two cryptic individuals approach Loki, seeking an offer.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/11/w780.jpg",
+          "id": "tt0388629:23:11",
+          "released": "2026-06-14T14:15:00.000Z",
+          "episode": 11,
+          "description": "As the Straw Hats converse with the Giants, they learn about Nika and Loki. Luffy, Zoro and Nami have Road assist them in the search for Loki's key. Meanwhile, two cryptic individuals approach Loki, seeking an offer."
+        },
+        {
+          "name": "Shamrock Appears - Commander of the Knights of God",
+          "season": 23,
+          "number": 12,
+          "firstAired": "2026-06-21T14:15:00.000Z",
+          "tvdb_id": 11700064,
+          "rating": 0,
+          "overview": "The Straw Hats, Luffy, Nami, and Zoro arrive at the massive Aurust Castle in Elbaf. Meanwhile, Prince Loki is brutally beaten by Gunko for refusing to join the God's Knights, and Figarland Shamrock finally reveals his face.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/12/w780.jpg",
+          "id": "tt0388629:23:12",
+          "released": "2026-06-21T14:15:00.000Z",
+          "episode": 12,
+          "description": "The Straw Hats, Luffy, Nami, and Zoro arrive at the massive Aurust Castle in Elbaf. Meanwhile, Prince Loki is brutally beaten by Gunko for refusing to join the God's Knights, and Figarland Shamrock finally reveals his face."
+        },
+        {
+          "name": "Ancient History - The Harley Passed Down by Elbaph",
+          "season": 23,
+          "number": 13,
+          "firstAired": "2026-06-28T14:15:00.000Z",
+          "tvdb_id": 11716386,
+          "rating": 0,
+          "overview": "Leaving behind a brutal parting gift, Shamrock and Gunko of the Knights of God abandon Loki and move on to their next strategy. Meanwhile, Franky is shown old wall paintings, and Robin reads an important religious text passed down since ancient times in Elbaph.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/13/w780.jpg",
+          "id": "tt0388629:23:13",
+          "released": "2026-06-28T14:15:00.000Z",
+          "episode": 13,
+          "description": "Leaving behind a brutal parting gift, Shamrock and Gunko of the Knights of God abandon Loki and move on to their next strategy. Meanwhile, Franky is shown old wall paintings, and Robin reads an important religious text passed down since ancient times in Elbaph."
+        },
+        {
+          "name": "The Legend Lurking in Elbaph - The Identity of the Mountain-Eater",
+          "season": 23,
+          "number": 14,
+          "firstAired": "2026-07-12T14:15:00.000Z",
+          "tvdb_id": 11859547,
+          "rating": 0,
+          "overview": "While exploring the abandoned castle, Luffy and the others find a strange mark on the floor of the throne room and hear a mysterious voice out of nowhere. At the banquet, Oimo tells Usopp the tale of a legendary man linked to the Pirate King.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/14/w780.jpg",
+          "id": "tt0388629:23:14",
+          "released": "2026-07-12T14:15:00.000Z",
+          "episode": 14,
+          "description": "While exploring the abandoned castle, Luffy and the others find a strange mark on the floor of the throne room and hear a mysterious voice out of nowhere. At the banquet, Oimo tells Usopp the tale of a legendary man linked to the Pirate King."
+        },
+        {
+          "name": "Get the Key! Luffy vs. Scopper Gaban",
+          "season": 23,
+          "number": 15,
+          "firstAired": "2026-07-19T14:15:00.000Z",
+          "tvdb_id": 11882088,
+          "rating": 0,
+          "overview": "Gaban challenges Luffy to try to take the key from him. Luffy goes for it, only to be overpowered by Gaban's sheer force. Meanwhile, Shamrock and Gunko summon reinforcements and plot a detailed strategy to disorient the Giants.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/15/w780.jpg",
+          "id": "tt0388629:23:15",
+          "released": "2026-07-19T14:15:00.000Z",
+          "episode": 15,
+          "description": "Gaban challenges Luffy to try to take the key from him. Luffy goes for it, only to be overpowered by Gaban's sheer force. Meanwhile, Shamrock and Gunko summon reinforcements and plot a detailed strategy to disorient the Giants."
+        },
+        {
+          "name": "The Heinous Sinner - Loki of the Underworld Freed?!",
+          "season": 23,
+          "number": 16,
+          "firstAired": "2026-07-26T14:15:00.000Z",
+          "tvdb_id": 11890009,
+          "rating": 0,
+          "overview": "While observing the Jewel Tree Adam along with Ripley, Franky learns of Elbaph’s weak points. Meanwhile, in the Underworld, Luffy and Zoro find a heavily injured Loki. As they argue over whether to unchain him, an unexpected turn of events blindsides them.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/16/w780.jpg",
+          "id": "tt0388629:23:16",
+          "released": "2026-07-26T14:15:00.000Z",
+          "episode": 16,
+          "description": "While observing the Jewel Tree Adam along with Ripley, Franky learns of Elbaph’s weak points. Meanwhile, in the Underworld, Luffy and Zoro find a heavily injured Loki. As they argue over whether to unchain him, an unexpected turn of events blindsides them."
+        },
+        {
+          "name": "Monsters Appear in Elbaph - 'What I Fear Most'",
+          "season": 23,
+          "number": 17,
+          "firstAired": "2026-08-02T14:15:00.000Z",
+          "tvdb_id": 11898626,
+          "rating": 0,
+          "overview": "A massive snake suddenly attacks the Walrus School. Saul and the other teachers stand their ground to protect the children, but just then, another mystery strikes, plunging the school into pure panic.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/17/w780.jpg",
+          "id": "tt0388629:23:17",
+          "released": "2026-08-02T14:15:00.000Z",
+          "episode": 17,
+          "description": "A massive snake suddenly attacks the Walrus School. Saul and the other teachers stand their ground to protect the children, but just then, another mystery strikes, plunging the school into pure panic."
+        },
+        {
+          "name": "A Nightmarish Game - The Dark Plot of the Knights of God",
+          "season": 23,
+          "number": 18,
+          "firstAired": "2026-08-09T14:15:00.000Z",
+          "tvdb_id": 11908333,
+          "rating": 0,
+          "overview": "Saul tries to stop the marching children, but as he reaches out to them, some unknown force gets in his way. Meanwhile, hearing the school’s emergency call throws Dorry and the others at the Western Village into disarray, just as a monster appears before them as well.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/18/w780.jpg",
+          "id": "tt0388629:23:18",
+          "released": "2026-08-09T14:15:00.000Z",
+          "episode": 18,
+          "description": "Saul tries to stop the marching children, but as he reaches out to them, some unknown force gets in his way. Meanwhile, hearing the school’s emergency call throws Dorry and the others at the Western Village into disarray, just as a monster appears before them as well."
+        },
+        {
+          "name": "Save the Children! The Elbaph Warriors Rise Up",
+          "season": 23,
+          "number": 19,
+          "firstAired": "2026-08-16T14:15:00.000Z",
+          "tvdb_id": 11917040,
+          "rating": 0,
+          "overview": "Join Luffy and his crew on thrilling high seas adventures, battling foes and forming unbreakable bonds.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/19/w780.jpg",
+          "id": "tt0388629:23:19",
+          "released": "2026-08-16T14:15:00.000Z",
+          "episode": 19,
+          "description": "Join Luffy and his crew on thrilling high seas adventures, battling foes and forming unbreakable bonds."
+        },
+        {
+          "name": "Elbaph in Flames! Jinbe's Shoulder Throw Explodes!",
+          "season": 23,
+          "number": 20,
+          "firstAired": "2026-08-23T14:15:00.000Z",
+          "tvdb_id": 11927053,
+          "rating": 0,
+          "overview": "In the Underworld, Loki talks about a pirate he idolized when he was young. Meanwhile, in the Sun World, the marching children get closer to the fire. The Elbaph Fire Brigade tries to extinguish the flames, while others beg the children to stop. When all hope seems lost, a lone savior arrives to turn the tide.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/20/w780.jpg",
+          "id": "tt0388629:23:20",
+          "released": "2026-08-23T14:15:00.000Z",
+          "episode": 20,
+          "description": "In the Underworld, Loki talks about a pirate he idolized when he was young. Meanwhile, in the Sun World, the marching children get closer to the fire. The Elbaph Fire Brigade tries to extinguish the flames, while others beg the children to stop. When all hope seems lost, a lone savior arrives to turn the tide."
+        },
+        {
+          "name": "The Threat of the Arrow-Arrow Fruit - Gunko vs. the Straw Hats",
+          "season": 23,
+          "number": 21,
+          "firstAired": "2026-08-30T14:15:00.000Z",
+          "tvdb_id": 11937112,
+          "rating": 0,
+          "overview": "Gunko from the Knights of God shows up right in front of Nami and the others and reveals to them that their plan is to take the children to Mary Geoise. Enraged, the Straw Hats launch an attack, only to be completely overwhelmed by Gunko's extraordinary power.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/21/w780.jpg",
+          "id": "tt0388629:23:21",
+          "released": "2026-08-30T14:15:00.000Z",
+          "episode": 21,
+          "description": "Gunko from the Knights of God shows up right in front of Nami and the others and reveals to them that their plan is to take the children to Mary Geoise. Enraged, the Straw Hats launch an attack, only to be completely overwhelmed by Gunko's extraordinary power."
+        },
+        {
+          "name": "A Despicable Hostage Game - Sommers's Brazen Demands",
+          "season": 23,
+          "number": 22,
+          "firstAired": "2026-09-06T14:15:00.000Z",
+          "tvdb_id": 11955168,
+          "rating": 0,
+          "overview": "Nami and the others are now captured by Gunko, and Brook receives a demand he never saw coming. Meanwhile, Sommers from the Knights of God begins speaking to all of Elbaph and reveals their true objective.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/22/w780.jpg",
+          "id": "tt0388629:23:22",
+          "released": "2026-09-06T14:15:00.000Z",
+          "episode": 22,
+          "description": "Nami and the others are now captured by Gunko, and Brook receives a demand he never saw coming. Meanwhile, Sommers from the Knights of God begins speaking to all of Elbaph and reveals their true objective."
+        },
+        {
+          "name": "Protect History and the Future - Robin and Gaban Go on the Attack",
+          "season": 23,
+          "number": 23,
+          "firstAired": "2026-09-13T14:15:00.000Z",
+          "tvdb_id": 11965739,
+          "rating": 0,
+          "overview": "One of the marching children, Ronja, is suddenly separated from the group, and Sommers presses Jarul to make an impossible choice. As the Giants bicker over what to do, Robin launches into a reckless move.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/23/w780.jpg",
+          "id": "tt0388629:23:23",
+          "released": "2026-09-13T14:15:00.000Z",
+          "episode": 23,
+          "description": "One of the marching children, Ronja, is suddenly separated from the group, and Sommers presses Jarul to make an impossible choice. As the Giants bicker over what to do, Robin launches into a reckless move."
+        },
+        {
+          "name": "One Do-or-Die Second - Gaban vs. the Knights of God",
+          "season": 23,
+          "number": 24,
+          "firstAired": "2026-09-20T14:15:00.000Z",
+          "tvdb_id": 11977089,
+          "rating": 0,
+          "overview": "Scopper Gaban, the Pirate King's Left Arm, appears before the captured and immobilized Straw Hats, launching a counteroffensive against the Knights of God. Gunko, however, uncovers his weakness.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/24/w780.jpg",
+          "id": "tt0388629:23:24",
+          "released": "2026-09-20T14:15:00.000Z",
+          "episode": 24,
+          "description": "Scopper Gaban, the Pirate King's Left Arm, appears before the captured and immobilized Straw Hats, launching a counteroffensive against the Knights of God. Gunko, however, uncovers his weakness."
+        },
+        {
+          "name": "Elbaph in Despair - Diabolical Covenant, Domi Reversi",
+          "season": 23,
+          "number": 25,
+          "firstAired": "2026-09-27T14:15:00.000Z",
+          "tvdb_id": 11994171,
+          "rating": 0,
+          "overview": "Filled with rage, Dorry, Brogy, and their fellow Giants charge at the Knights of God. However, blocked by their dark powers, the Giants are unable to go rescue the children. Nami and the others remain captive, while Luffy and his group are completely unaware in the Underworld. Elbaph is plunged into an absolute crisis.",
+          "thumbnail": "https://episodes.metahub.space/tt0388629/23/25/w780.jpg",
+          "id": "tt0388629:23:25",
+          "released": "2026-09-27T14:15:00.000Z",
+          "episode": 25,
+          "description": "Filled with rage, Dorry, Brogy, and their fellow Giants charge at the Knights of God. However, blocked by their dark powers, the Giants are unable to go rescue the children. Nami and the others remain captive, while Luffy and his group are completely unaware in the Underworld. Elbaph is plunged into an absolute crisis."
+        }
+      ],
+      "genres": [
+        "Animation",
+        "Action",
+        "Adventure"
+      ],
+      "releaseInfo": "1999–",
+      "trailerStreams": [
+        {
+          "title": "One Piece",
+          "ytId": "1KMcoJBMWE4"
+        }
+      ],
+      "links": [
+        {
+          "name": "9.0",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt0388629"
+        },
+        {
+          "name": "One Piece",
+          "category": "share",
+          "url": "https://www.strem.io/s/series/one-piece-0388629"
+        },
+        {
+          "name": "Animation",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Animation"
+        },
+        {
+          "name": "Action",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Action"
+        },
+        {
+          "name": "Adventure",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Adventure"
+        },
+        {
+          "name": "Mayumi Tanaka",
+          "category": "Cast",
+          "url": "stremio:///search?search=Mayumi%20Tanaka"
+        },
+        {
+          "name": "Akemi Okamura",
+          "category": "Cast",
+          "url": "stremio:///search?search=Akemi%20Okamura"
+        },
+        {
+          "name": "Kazuya Nakai",
+          "category": "Cast",
+          "url": "stremio:///search?search=Kazuya%20Nakai"
+        },
+        {
+          "name": "Eiichirô Oda",
+          "category": "Writers",
+          "url": "stremio:///search?search=Eiichir%C3%B4%20Oda"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": null,
+        "hasScheduledVideos": true
+      }
+    },
+    {
+      "imdb_id": "tt40197357",
+      "name": "Scrubs",
+      "popularities": {
+        "trakt": 594,
+        "moviedb": 32.6124,
+        "stremio": 1.08708,
+        "stremio_lib": 0
+      },
+      "type": "series",
+      "moviedb_id": 295778,
+      "tvdb_id": 465690,
+      "imdbRating": "8.2",
+      "cast": [
+        "Sarah Chalke",
+        "Donald Faison",
+        "Ava Bunn"
+      ],
+      "country": "United States",
+      "description": "JD and Turk scrub in together after a long break. Medicine and interns have evolved, but their friendship remains strong. New and familiar faces at Sacred Heart bring laughs, emotion, and unexpected moments.",
+      "genre": [
+        "Comedy",
+        "Drama"
+      ],
+      "released": "2026-02-25T00:00:00.000Z",
+      "slug": "series/scrubs-40197357",
+      "writer": [
+        "Aseem Batra",
+        "Tim Hobert",
+        "Bill Lawrence"
+      ],
+      "year": "2026–",
+      "poster": "https://images.metahub.space/poster/small/tt40197357/img",
+      "trailers": [
+        {
+          "source": "dJq8WJ5lMec",
+          "type": "Trailer"
+        }
+      ],
+      "runtime": "22 min",
+      "status": "Continuing",
+      "director": [],
+      "background": "https://images.metahub.space/background/medium/tt40197357/img",
+      "logo": "https://images.metahub.space/logo/medium/tt40197357/img",
+      "awards": "1 win & 2 nominations total",
+      "popularity": 1.08708,
+      "id": "tt40197357",
+      "videos": [
+        {
+          "name": "My Return",
+          "season": 1,
+          "number": 1,
+          "firstAired": "2026-02-26T04:00:00.000Z",
+          "tvdb_id": 11238020,
+          "rating": 0,
+          "overview": "John “J.D.” Dorian unexpectedly finds himself back at Sacred Heart, reuniting him with new and old faces.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/1/w780.jpg",
+          "id": "tt40197357:1:1",
+          "released": "2026-02-26T04:00:00.000Z",
+          "episode": 1,
+          "description": "John “J.D.” Dorian unexpectedly finds himself back at Sacred Heart, reuniting him with new and old faces."
+        },
+        {
+          "name": "My 2nd First Day",
+          "season": 1,
+          "number": 2,
+          "firstAired": "2026-02-26T04:00:00.000Z",
+          "tvdb_id": 11426443,
+          "rating": 0,
+          "overview": "J.D. navigates a new normal, while Elliot and Turk clash over the budget.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/2/w780.jpg",
+          "id": "tt40197357:1:2",
+          "released": "2026-02-26T04:00:00.000Z",
+          "episode": 2,
+          "description": "J.D. navigates a new normal, while Elliot and Turk clash over the budget."
+        },
+        {
+          "name": "My Rom-Com",
+          "season": 1,
+          "number": 3,
+          "firstAired": "2026-03-05T04:00:00.000Z",
+          "tvdb_id": 11426444,
+          "rating": 0,
+          "overview": "Elliot faces a dilemma with a stubborn patient, while J.D. discovers online doctor reviews. Meanwhile, Turk teaches his interns about new surgical technology and unexpected life lessons.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/3/w780.jpg",
+          "id": "tt40197357:1:3",
+          "released": "2026-03-05T04:00:00.000Z",
+          "episode": 3,
+          "description": "Elliot faces a dilemma with a stubborn patient, while J.D. discovers online doctor reviews. Meanwhile, Turk teaches his interns about new surgical technology and unexpected life lessons."
+        },
+        {
+          "name": "My Poker Face",
+          "season": 1,
+          "number": 4,
+          "firstAired": "2026-03-12T04:00:00.000Z",
+          "tvdb_id": 11507095,
+          "rating": 0,
+          "overview": "To relive their glory days, J.D. plans a poker night with Turk. Elsewhere, competition brews between the medical and surgical interns, while Elliot decides how to handle a social media-obsessed patient.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/4/w780.jpg",
+          "id": "tt40197357:1:4",
+          "released": "2026-03-12T04:00:00.000Z",
+          "episode": 4,
+          "description": "To relive their glory days, J.D. plans a poker night with Turk. Elsewhere, competition brews between the medical and surgical interns, while Elliot decides how to handle a social media-obsessed patient."
+        },
+        {
+          "name": "My Angel",
+          "season": 1,
+          "number": 5,
+          "firstAired": "2026-03-19T04:00:00.000Z",
+          "tvdb_id": 11530713,
+          "rating": 0,
+          "overview": "J.D. ventures into the world of post-divorce dating with Turk’s guidance. Elliot gets creative when sourcing an organ for a beloved elderly patient, while the interns learn about the unspoken rules of the hospital.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/5/w780.jpg",
+          "id": "tt40197357:1:5",
+          "released": "2026-03-19T04:00:00.000Z",
+          "episode": 5,
+          "description": "J.D. ventures into the world of post-divorce dating with Turk’s guidance. Elliot gets creative when sourcing an organ for a beloved elderly patient, while the interns learn about the unspoken rules of the hospital."
+        },
+        {
+          "name": "My V.I.P.",
+          "season": 1,
+          "number": 6,
+          "firstAired": "2026-03-26T04:00:00.000Z",
+          "tvdb_id": 11537526,
+          "rating": 0,
+          "overview": "J.D. and Dr. Park are forced to work together when a member of the hospital board experiences a mysterious health crisis. Turk helps Elliot navigate a newfound romance, while the interns practice vulnerability with patients.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/6/w780.jpg",
+          "id": "tt40197357:1:6",
+          "released": "2026-03-26T04:00:00.000Z",
+          "episode": 6,
+          "description": "J.D. and Dr. Park are forced to work together when a member of the hospital board experiences a mysterious health crisis. Turk helps Elliot navigate a newfound romance, while the interns practice vulnerability with patients."
+        },
+        {
+          "name": "My Best Friend's Barbecue",
+          "season": 1,
+          "number": 7,
+          "firstAired": "2026-04-02T04:00:00.000Z",
+          "tvdb_id": 11601279,
+          "rating": 0,
+          "overview": "While J.D. is upset to not be invited to Turk and Carla’s annual barbecue, he takes the opportunity to nurture his friendship with Carla at work. Turk teaches the surgical interns how to deliver bad news.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/7/w780.jpg",
+          "id": "tt40197357:1:7",
+          "released": "2026-04-02T04:00:00.000Z",
+          "episode": 7,
+          "description": "While J.D. is upset to not be invited to Turk and Carla’s annual barbecue, he takes the opportunity to nurture his friendship with Carla at work. Turk teaches the surgical interns how to deliver bad news."
+        },
+        {
+          "name": "My Odds",
+          "season": 1,
+          "number": 8,
+          "firstAired": "2026-04-09T04:00:00.000Z",
+          "tvdb_id": 11601280,
+          "rating": 0,
+          "overview": "J.D. has finally hit his stride as the new chief of medicine, only to be shaken by an unexpected visit. Meanwhile, Elliot grapples with being a good mentor for the interns while still holding them accountable.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/8/w780.jpg",
+          "id": "tt40197357:1:8",
+          "released": "2026-04-09T04:00:00.000Z",
+          "episode": 8,
+          "description": "J.D. has finally hit his stride as the new chief of medicine, only to be shaken by an unexpected visit. Meanwhile, Elliot grapples with being a good mentor for the interns while still holding them accountable."
+        },
+        {
+          "name": "My Celebration",
+          "season": 1,
+          "number": 9,
+          "firstAired": "2026-04-16T04:00:00.000Z",
+          "tvdb_id": 11699904,
+          "rating": 0,
+          "overview": "A chaotic day at Sacred Heart forces the doctors and interns to face burnout, life-changing decisions, and their relationships with one another.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/1/9/w780.jpg",
+          "id": "tt40197357:1:9",
+          "released": "2026-04-16T04:00:00.000Z",
+          "episode": 9,
+          "description": "A chaotic day at Sacred Heart forces the doctors and interns to face burnout, life-changing decisions, and their relationships with one another."
+        },
+        {
+          "name": "My First Time in a While",
+          "season": 2,
+          "number": 1,
+          "firstAired": "2026-10-01T04:00:00.000Z",
+          "tvdb_id": 11900636,
+          "rating": 0,
+          "overview": "J.D. enlists Turk and Elliot to help with Dr. Cox’s care. Meanwhile, Elliot finds an unexpected burst of confidence years in the making.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/2/1/w780.jpg",
+          "id": "tt40197357:2:1",
+          "released": "2026-10-01T04:00:00.000Z",
+          "episode": 1,
+          "description": "J.D. enlists Turk and Elliot to help with Dr. Cox’s care. Meanwhile, Elliot finds an unexpected burst of confidence years in the making."
+        },
+        {
+          "name": "My Mentee",
+          "season": 2,
+          "number": 2,
+          "firstAired": "2026-10-01T04:00:00.000Z",
+          "tvdb_id": 11900637,
+          "rating": 0,
+          "overview": "J.D. attempts an insurance workaround, creating tension with his new mentee. Meanwhile, Elliot tries to guide Tosh’s specialty choices, and Turk flexes his own skills as a mentor.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/2/2/w780.jpg",
+          "id": "tt40197357:2:2",
+          "released": "2026-10-01T04:00:00.000Z",
+          "episode": 2,
+          "description": "J.D. attempts an insurance workaround, creating tension with his new mentee. Meanwhile, Elliot tries to guide Tosh’s specialty choices, and Turk flexes his own skills as a mentor."
+        },
+        {
+          "name": "My Ex's Ex",
+          "season": 2,
+          "number": 3,
+          "firstAired": "2026-10-08T04:00:00.000Z",
+          "tvdb_id": 11900638,
+          "rating": 0,
+          "overview": "J.D. reintroduces an old flame into Elliot’s life, as his new relationship continues to blossom. Meanwhile, Turk tries a new approach to keeping the spark alive at home.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/2/3/w780.jpg",
+          "id": "tt40197357:2:3",
+          "released": "2026-10-08T04:00:00.000Z",
+          "episode": 3,
+          "description": "J.D. reintroduces an old flame into Elliot’s life, as his new relationship continues to blossom. Meanwhile, Turk tries a new approach to keeping the spark alive at home."
+        },
+        {
+          "name": "My Chief",
+          "season": 2,
+          "number": 4,
+          "firstAired": "2026-10-15T04:00:00.000Z",
+          "tvdb_id": 12009332,
+          "rating": 0,
+          "overview": "After uncovering a costly mistake made by Turk, J.D. must decide whether to report him or let it slide. Meanwhile, Elliot grows her responsibilities at Sacred Heart by leading a new initiative.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/2/4/w780.jpg",
+          "id": "tt40197357:2:4",
+          "released": "2026-10-15T04:00:00.000Z",
+          "episode": 4,
+          "description": "After uncovering a costly mistake made by Turk, J.D. must decide whether to report him or let it slide. Meanwhile, Elliot grows her responsibilities at Sacred Heart by leading a new initiative."
+        },
+        {
+          "name": "My Best Friend's Birthday",
+          "season": 2,
+          "number": 5,
+          "firstAired": "2026-10-22T04:00:00.000Z",
+          "tvdb_id": 12014592,
+          "rating": 0,
+          "overview": "Turk is determined to have a fun birthday with J.D. and Elliot. Meanwhile, the interns are challenged during the night shift.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/2/5/w780.jpg",
+          "id": "tt40197357:2:5",
+          "released": "2026-10-22T04:00:00.000Z",
+          "episode": 5,
+          "description": "Turk is determined to have a fun birthday with J.D. and Elliot. Meanwhile, the interns are challenged during the night shift."
+        },
+        {
+          "name": "My Halloween",
+          "season": 2,
+          "number": 6,
+          "firstAired": "2026-10-29T04:00:00.000Z",
+          "tvdb_id": 12017601,
+          "rating": 0,
+          "overview": "This Halloween, J.D. helps a former colleague with a difficult patient, Elliot seeks support for her new clinic and Turk faces his family’s growing pains.",
+          "thumbnail": "https://episodes.metahub.space/tt40197357/2/6/w780.jpg",
+          "id": "tt40197357:2:6",
+          "released": "2026-10-29T04:00:00.000Z",
+          "episode": 6,
+          "description": "This Halloween, J.D. helps a former colleague with a difficult patient, Elliot seeks support for her new clinic and Turk faces his family’s growing pains."
+        }
+      ],
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "releaseInfo": "2026–",
+      "trailerStreams": [
+        {
+          "title": "Scrubs",
+          "ytId": "dJq8WJ5lMec"
+        }
+      ],
+      "links": [
+        {
+          "name": "8.2",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt40197357"
+        },
+        {
+          "name": "Scrubs",
+          "category": "share",
+          "url": "https://www.strem.io/s/series/scrubs-40197357"
+        },
+        {
+          "name": "Comedy",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Comedy"
+        },
+        {
+          "name": "Drama",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Drama"
+        },
+        {
+          "name": "Sarah Chalke",
+          "category": "Cast",
+          "url": "stremio:///search?search=Sarah%20Chalke"
+        },
+        {
+          "name": "Donald Faison",
+          "category": "Cast",
+          "url": "stremio:///search?search=Donald%20Faison"
+        },
+        {
+          "name": "Ava Bunn",
+          "category": "Cast",
+          "url": "stremio:///search?search=Ava%20Bunn"
+        },
+        {
+          "name": "Aseem Batra",
+          "category": "Writers",
+          "url": "stremio:///search?search=Aseem%20Batra"
+        },
+        {
+          "name": "Tim Hobert",
+          "category": "Writers",
+          "url": "stremio:///search?search=Tim%20Hobert"
+        },
+        {
+          "name": "Bill Lawrence",
+          "category": "Writers",
+          "url": "stremio:///search?search=Bill%20Lawrence"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": null,
+        "hasScheduledVideos": true
+      }
+    },
+    {
+      "imdb_id": "tt37063558",
+      "name": "R.J. Decker",
+      "popularities": {
+        "trakt": 2439,
+        "moviedb": 36.7188,
+        "stremio": 1.2239600000000002,
+        "stremio_lib": 0
+      },
+      "type": "series",
+      "cast": [
+        "Scott Speedman",
+        "Jaina Lee Ortiz",
+        "Kevin Rankin"
+      ],
+      "description": "Ex-con photographer RJ Decker becomes a PI in South Florida, solving strange cases with help from his journalist ex, her cop wife, and an enigmatic woman from his past who may help or destroy him.",
+      "genre": [
+        "Action",
+        "Comedy",
+        "Crime"
+      ],
+      "imdbRating": "7.1",
+      "released": "2026-03-03T00:00:00.000Z",
+      "slug": "series/rj-decker-37063558",
+      "year": "2026–",
+      "runtime": "43 min",
+      "status": "Continuing",
+      "tvdb_id": 466025,
+      "moviedb_id": 302074,
+      "poster": "https://images.metahub.space/poster/small/tt37063558/img",
+      "trailers": [
+        {
+          "source": "5DPPEugey20",
+          "type": "Trailer"
+        }
+      ],
+      "director": [],
+      "writer": [
+        "Robert Doherty"
+      ],
+      "background": "https://images.metahub.space/background/medium/tt37063558/img",
+      "logo": "https://images.metahub.space/logo/medium/tt37063558/img",
+      "awards": "1 nomination total",
+      "country": "United States",
+      "popularity": 1.2239600000000002,
+      "id": "tt37063558",
+      "videos": [
+        {
+          "name": "Pilot",
+          "season": 1,
+          "number": 1,
+          "firstAired": "2026-03-04T06:00:00.000Z",
+          "tvdb_id": 11252266,
+          "rating": 0,
+          "overview": "Ex-con photographer RJ Decker becomes a PI in South Florida, solving strange cases with help from his journalist ex, her cop wife, and an enigmatic woman from his past who may help or destroy him.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/1/w780.jpg",
+          "id": "tt37063558:1:1",
+          "released": "2026-03-04T06:00:00.000Z",
+          "episode": 1,
+          "description": "Ex-con photographer RJ Decker becomes a PI in South Florida, solving strange cases with help from his journalist ex, her cop wife, and an enigmatic woman from his past who may help or destroy him."
+        },
+        {
+          "name": "Twenty Pounds of Clem in a Ten-Pound Bag",
+          "season": 1,
+          "number": 2,
+          "firstAired": "2026-03-11T06:00:00.000Z",
+          "tvdb_id": 11559852,
+          "rating": 0,
+          "overview": "Wish enlists RJ’s help on a bizarre case when his late cellmate’s son is wrongly accused of murder.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/2/w780.jpg",
+          "id": "tt37063558:1:2",
+          "released": "2026-03-11T06:00:00.000Z",
+          "episode": 2,
+          "description": "Wish enlists RJ’s help on a bizarre case when his late cellmate’s son is wrongly accused of murder."
+        },
+        {
+          "name": "The Needle and the Damage Done",
+          "season": 1,
+          "number": 3,
+          "firstAired": "2026-03-18T06:00:00.000Z",
+          "tvdb_id": 11644318,
+          "rating": 0,
+          "overview": "RJ is recruited by Emi to investigate the disappearance of a wealthy rehab tycoon’s son. Mel and Catherine discover they have different views on parenting and finances.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/3/w780.jpg",
+          "id": "tt37063558:1:3",
+          "released": "2026-03-18T06:00:00.000Z",
+          "episode": 3,
+          "description": "RJ is recruited by Emi to investigate the disappearance of a wealthy rehab tycoon’s son. Mel and Catherine discover they have different views on parenting and finances."
+        },
+        {
+          "name": "In Vanity Veritas",
+          "season": 1,
+          "number": 4,
+          "firstAired": "2026-03-25T06:00:00.000Z",
+          "tvdb_id": 11644319,
+          "rating": 0,
+          "overview": "R.J. finds himself at the center of a suburban housewife murder mystery. Catherine worries that R.J. is getting too close to Emi.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/4/w780.jpg",
+          "id": "tt37063558:1:4",
+          "released": "2026-03-25T06:00:00.000Z",
+          "episode": 4,
+          "description": "R.J. finds himself at the center of a suburban housewife murder mystery. Catherine worries that R.J. is getting too close to Emi."
+        },
+        {
+          "name": "Burn Notice",
+          "season": 1,
+          "number": 5,
+          "firstAired": "2026-04-01T06:00:00.000Z",
+          "tvdb_id": 11660750,
+          "rating": 0,
+          "overview": "R.J. unravels the truth about a Little League coach whose family is being mysteriously targeted. Meanwhile, R.J.’s parole officer worries that he is pushing the boundaries of his conditional release.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/5/w780.jpg",
+          "id": "tt37063558:1:5",
+          "released": "2026-04-01T06:00:00.000Z",
+          "episode": 5,
+          "description": "R.J. unravels the truth about a Little League coach whose family is being mysteriously targeted. Meanwhile, R.J.’s parole officer worries that he is pushing the boundaries of his conditional release."
+        },
+        {
+          "name": "Brenner's Back",
+          "season": 1,
+          "number": 6,
+          "firstAired": "2026-04-08T06:00:00.000Z",
+          "tvdb_id": 11667639,
+          "rating": 0,
+          "overview": "R.J. helps a young woman uncover the truth behind her boyfriend’s sudden death. Meanwhile, a dangerous figure from R.J.’s past resurfaces, bent on revenge.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/6/w780.jpg",
+          "id": "tt37063558:1:6",
+          "released": "2026-04-08T06:00:00.000Z",
+          "episode": 6,
+          "description": "R.J. helps a young woman uncover the truth behind her boyfriend’s sudden death. Meanwhile, a dangerous figure from R.J.’s past resurfaces, bent on revenge."
+        },
+        {
+          "name": "You've Got Bale",
+          "season": 1,
+          "number": 7,
+          "firstAired": "2026-04-15T06:00:00.000Z",
+          "tvdb_id": 11696791,
+          "rating": 0,
+          "overview": "R.J. takes on a strange case following a grocery store robbery gone wrong. Meanwhile, Emi’s loyalty is tested when her father’s misdeeds come to light.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/7/w780.jpg",
+          "id": "tt37063558:1:7",
+          "released": "2026-04-15T06:00:00.000Z",
+          "episode": 7,
+          "description": "R.J. takes on a strange case following a grocery store robbery gone wrong. Meanwhile, Emi’s loyalty is tested when her father’s misdeeds come to light."
+        },
+        {
+          "name": "Burn the Boats",
+          "season": 1,
+          "number": 8,
+          "firstAired": "2026-04-22T06:00:00.000Z",
+          "tvdb_id": 11696792,
+          "rating": 0,
+          "overview": "R.J. struggles with a difficult decision, while Emi must contend with her family’s secrets.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/8/w780.jpg",
+          "id": "tt37063558:1:8",
+          "released": "2026-04-22T06:00:00.000Z",
+          "episode": 8,
+          "description": "R.J. struggles with a difficult decision, while Emi must contend with her family’s secrets."
+        },
+        {
+          "name": "Even Walls Fall Down",
+          "season": 1,
+          "number": 9,
+          "firstAired": "2026-04-29T06:00:00.000Z",
+          "tvdb_id": 11696793,
+          "rating": 0,
+          "overview": "After R.J. learns the truth about what happened on the fateful day Lucas stole his camera, he enlists his inner circle to help him take down Victor Ochoa.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/1/9/w780.jpg",
+          "id": "tt37063558:1:9",
+          "released": "2026-04-29T06:00:00.000Z",
+          "episode": 9,
+          "description": "After R.J. learns the truth about what happened on the fateful day Lucas stole his camera, he enlists his inner circle to help him take down Victor Ochoa."
+        },
+        {
+          "name": "The Point of Us Breaking",
+          "season": 2,
+          "number": 1,
+          "firstAired": "2026-09-16T06:00:00.000Z",
+          "tvdb_id": 11900511,
+          "rating": 0,
+          "overview": "A reunion with an old prison acquaintance pulls R.J. into a string of daring bank heists as the fallout from Victor Ochoa's death deepens.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/1/w780.jpg",
+          "id": "tt37063558:2:1",
+          "released": "2026-09-16T06:00:00.000Z",
+          "episode": 1,
+          "description": "A reunion with an old prison acquaintance pulls R.J. into a string of daring bank heists as the fallout from Victor Ochoa's death deepens."
+        },
+        {
+          "name": "Manos: Hands of Fate",
+          "season": 2,
+          "number": 2,
+          "firstAired": "2026-09-23T06:00:00.000Z",
+          "tvdb_id": 11963198,
+          "rating": 0,
+          "overview": "A missing man, a mysterious item and a dangerous stranger in a pickup truck pull R.J. into one of his strangest cases yet. Meanwhile, someone close to him is caught up in a mystery all their own.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/2/w780.jpg",
+          "id": "tt37063558:2:2",
+          "released": "2026-09-23T06:00:00.000Z",
+          "episode": 2,
+          "description": "A missing man, a mysterious item and a dangerous stranger in a pickup truck pull R.J. into one of his strangest cases yet. Meanwhile, someone close to him is caught up in a mystery all their own."
+        },
+        {
+          "name": "Arms and Armadillos",
+          "season": 2,
+          "number": 3,
+          "firstAired": "2026-09-30T06:00:00.000Z",
+          "tvdb_id": 11964650,
+          "rating": 0,
+          "overview": "As Emi faces murder charges over her father’s death, R.J. and Mel are convinced there’s more to the story. While they dig for answers, a mysterious stranger with his own agenda offers to help … for a price.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/3/w780.jpg",
+          "id": "tt37063558:2:3",
+          "released": "2026-09-30T06:00:00.000Z",
+          "episode": 3,
+          "description": "As Emi faces murder charges over her father’s death, R.J. and Mel are convinced there’s more to the story. While they dig for answers, a mysterious stranger with his own agenda offers to help … for a price."
+        },
+        {
+          "name": "The Angler",
+          "season": 2,
+          "number": 4,
+          "firstAired": "2026-10-07T06:00:00.000Z",
+          "tvdb_id": 11966131,
+          "rating": 0,
+          "overview": "A murder at a fishing tournament reels R.J. into a case that becomes deeply personal when a figure from his past resurfaces.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/4/w780.jpg",
+          "id": "tt37063558:2:4",
+          "released": "2026-10-07T06:00:00.000Z",
+          "episode": 4,
+          "description": "A murder at a fishing tournament reels R.J. into a case that becomes deeply personal when a figure from his past resurfaces."
+        },
+        {
+          "name": "Better Luck Tomorrow",
+          "season": 2,
+          "number": 5,
+          "firstAired": "2026-10-14T06:00:00.000Z",
+          "tvdb_id": 11978801,
+          "rating": 0,
+          "overview": "R.J. and his dad must discover who has been gaslighting the caretaker at a senior living community. They’ll have to unwind a murderous scheme that has R.J.’s client convinced he’s living the same day in a loop.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/5/w780.jpg",
+          "id": "tt37063558:2:5",
+          "released": "2026-10-14T06:00:00.000Z",
+          "episode": 5,
+          "description": "R.J. and his dad must discover who has been gaslighting the caretaker at a senior living community. They’ll have to unwind a murderous scheme that has R.J.’s client convinced he’s living the same day in a loop."
+        },
+        {
+          "name": "Blame It on the Rain",
+          "season": 2,
+          "number": 6,
+          "firstAired": "2026-10-21T06:00:00.000Z",
+          "tvdb_id": 12009333,
+          "rating": 0,
+          "overview": "R.J. faces long odds and stormy tides when he investigates the violent death of a woman who appears to have died in a hurricane … that never made landfall.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/6/w780.jpg",
+          "id": "tt37063558:2:6",
+          "released": "2026-10-21T06:00:00.000Z",
+          "episode": 6,
+          "description": "R.J. faces long odds and stormy tides when he investigates the violent death of a woman who appears to have died in a hurricane … that never made landfall."
+        },
+        {
+          "name": "Before You Accuse Me",
+          "season": 2,
+          "number": 7,
+          "firstAired": "2026-10-28T06:00:00.000Z",
+          "tvdb_id": 12009334,
+          "rating": 0,
+          "overview": "Emi hires R.J. to re-investigate the murder of a police officer in hopes of exonerating a possibly wrongly convicted man who took the fall. The sensitive investigation puts him at odds with Mel.",
+          "thumbnail": "https://episodes.metahub.space/tt37063558/2/7/w780.jpg",
+          "id": "tt37063558:2:7",
+          "released": "2026-10-28T06:00:00.000Z",
+          "episode": 7,
+          "description": "Emi hires R.J. to re-investigate the murder of a police officer in hopes of exonerating a possibly wrongly convicted man who took the fall. The sensitive investigation puts him at odds with Mel."
+        }
+      ],
+      "genres": [
+        "Action",
+        "Comedy",
+        "Crime"
+      ],
+      "releaseInfo": "2026–",
+      "trailerStreams": [
+        {
+          "title": "R.J. Decker",
+          "ytId": "5DPPEugey20"
+        }
+      ],
+      "links": [
+        {
+          "name": "7.1",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt37063558"
+        },
+        {
+          "name": "R.J. Decker",
+          "category": "share",
+          "url": "https://www.strem.io/s/series/rj-decker-37063558"
+        },
+        {
+          "name": "Action",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Action"
+        },
+        {
+          "name": "Comedy",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Comedy"
+        },
+        {
+          "name": "Crime",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Crime"
+        },
+        {
+          "name": "Scott Speedman",
+          "category": "Cast",
+          "url": "stremio:///search?search=Scott%20Speedman"
+        },
+        {
+          "name": "Jaina Lee Ortiz",
+          "category": "Cast",
+          "url": "stremio:///search?search=Jaina%20Lee%20Ortiz"
+        },
+        {
+          "name": "Kevin Rankin",
+          "category": "Cast",
+          "url": "stremio:///search?search=Kevin%20Rankin"
+        },
+        {
+          "name": "Robert Doherty",
+          "category": "Writers",
+          "url": "stremio:///search?search=Robert%20Doherty"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": null,
+        "hasScheduledVideos": true
+      }
+    },
+    {
+      "imdb_id": "tt7235466",
+      "name": "9-1-1",
+      "year": "2018–",
+      "genre": [
+        "Action",
+        "Drama",
+        "Thriller"
+      ],
+      "released": "2018-01-03T00:00:00.000Z",
+      "cast": [
+        "Angela Bassett",
+        "Oliver Stark",
+        "Aisha Hinds"
+      ],
+      "imdbRating": "7.8",
+      "description": "Explores the personal &amp; professional lives of Los Angeles first responders who are thrust into the most shocking and heart-stopping situations, day after day.",
+      "country": "United States",
+      "type": "series",
+      "popularities": {
+        "moviedb": 138.1773,
+        "stremio": 4.60591,
+        "trakt": 735,
+        "stremio_lib": 0
+      },
+      "director": [],
+      "writer": [
+        "Brad Falchuk",
+        "Tim Minear",
+        "Ryan Murphy"
+      ],
+      "tvdb_id": 337907,
+      "status": "Continuing",
+      "runtime": "43 min",
+      "poster": "https://images.metahub.space/poster/small/tt7235466/img",
+      "moviedb_id": 75219,
+      "background": "https://images.metahub.space/background/medium/tt7235466/img",
+      "logo": "https://images.metahub.space/logo/medium/tt7235466/img",
+      "slug": "series/9-1-1-7235466",
+      "awards": "25 wins & 46 nominations total",
+      "trailers": [
+        {
+          "source": "_8MHJfUMqPA",
+          "type": "Trailer"
+        }
+      ],
+      "popularity": 4.60591,
+      "id": "tt7235466",
+      "videos": [
+        {
+          "name": "Spiraling",
+          "season": 9,
+          "number": 2,
+          "firstAired": "2025-10-17T04:00:00.000Z",
+          "tvdb_id": 11340463,
+          "rating": 0,
+          "overview": "As a geostorm ravages Earth, Athena and Hen's space mission teeters on the edge. On the ground, the 118 battles chaos when technology goes rogue.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/2/w780.jpg",
+          "id": "tt7235466:9:2",
+          "released": "2025-10-17T04:00:00.000Z",
+          "episode": 2,
+          "description": "As a geostorm ravages Earth, Athena and Hen's space mission teeters on the edge. On the ground, the 118 battles chaos when technology goes rogue."
+        },
+        {
+          "name": "The Sky Is Falling",
+          "season": 9,
+          "number": 3,
+          "firstAired": "2025-10-24T04:00:00.000Z",
+          "tvdb_id": 11356750,
+          "rating": 0,
+          "overview": "Athena and Hen face increasing dangers in space as friends both near and far try to get them home safely. Meanwhile, the 118 continues to help victims of the geostorm and falling debris.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/3/w780.jpg",
+          "id": "tt7235466:9:3",
+          "released": "2025-10-24T04:00:00.000Z",
+          "episode": 3,
+          "description": "Athena and Hen face increasing dangers in space as friends both near and far try to get them home safely. Meanwhile, the 118 continues to help victims of the geostorm and falling debris."
+        },
+        {
+          "name": "Reentry",
+          "season": 9,
+          "number": 4,
+          "firstAired": "2025-10-31T04:00:00.000Z",
+          "tvdb_id": 11363967,
+          "rating": 0,
+          "overview": "As Athena and Hen navigate their way back home, Athena will be forced to confront what it means to live without Bobby.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/4/w780.jpg",
+          "id": "tt7235466:9:4",
+          "released": "2025-10-31T04:00:00.000Z",
+          "episode": 4,
+          "description": "As Athena and Hen navigate their way back home, Athena will be forced to confront what it means to live without Bobby."
+        },
+        {
+          "name": "Día de los Muertos",
+          "season": 9,
+          "number": 5,
+          "firstAired": "2025-11-07T04:00:00.000Z",
+          "tvdb_id": 11370850,
+          "rating": 0,
+          "overview": "The 118's beliefs are put to the test as they respond to emergency calls involving a Jack-o'-lantern and a few more jump scares than they were expecting on Halloween.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/5/w780.jpg",
+          "id": "tt7235466:9:5",
+          "released": "2025-11-07T04:00:00.000Z",
+          "episode": 5,
+          "description": "The 118's beliefs are put to the test as they respond to emergency calls involving a Jack-o'-lantern and a few more jump scares than they were expecting on Halloween."
+        },
+        {
+          "name": "Family History",
+          "season": 9,
+          "number": 6,
+          "firstAired": "2025-11-14T04:00:00.000Z",
+          "tvdb_id": 11389223,
+          "rating": 0,
+          "overview": "Athena must revisit a painful part of her past when answering a call for help. Meanwhile, the 118 takes a big step forward.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/6/w780.jpg",
+          "id": "tt7235466:9:6",
+          "released": "2025-11-14T04:00:00.000Z",
+          "episode": 6,
+          "description": "Athena must revisit a painful part of her past when answering a call for help. Meanwhile, the 118 takes a big step forward."
+        },
+        {
+          "name": "Secrets",
+          "season": 9,
+          "number": 7,
+          "firstAired": "2026-01-09T04:00:00.000Z",
+          "tvdb_id": 11389224,
+          "rating": 0,
+          "overview": "Hen's attempts at keeping her mysterious health issues private are starting to impact more than just her physical well-being. Meanwhile, Buck and Ravi decide Eddie needs a night out on the town.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/7/w780.jpg",
+          "id": "tt7235466:9:7",
+          "released": "2026-01-09T04:00:00.000Z",
+          "episode": 7,
+          "description": "Hen's attempts at keeping her mysterious health issues private are starting to impact more than just her physical well-being. Meanwhile, Buck and Ravi decide Eddie needs a night out on the town."
+        },
+        {
+          "name": "War",
+          "season": 9,
+          "number": 8,
+          "firstAired": "2026-01-16T04:00:00.000Z",
+          "tvdb_id": 11450701,
+          "rating": 0,
+          "overview": "Following Hen's firing, Chimney grapples with his decision and how it has affected the team. Meanwhile, a new AI call center assistant, meant to help, has begun to create more complications, and the 118 must intervene.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/8/w780.jpg",
+          "id": "tt7235466:9:8",
+          "released": "2026-01-16T04:00:00.000Z",
+          "episode": 8,
+          "description": "Following Hen's firing, Chimney grapples with his decision and how it has affected the team. Meanwhile, a new AI call center assistant, meant to help, has begun to create more complications, and the 118 must intervene."
+        },
+        {
+          "name": "Fighting Back",
+          "season": 9,
+          "number": 9,
+          "firstAired": "2026-01-23T04:00:00.000Z",
+          "tvdb_id": 11450702,
+          "rating": 0,
+          "overview": "As Hen continues to seek out a diagnosis for her mysterious symptoms, her friends and family rally behind her. Meanwhile, Harry hits a wall in his attempts to complete the academy firefighting exam and looks for some much-needed motivation.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/9/w780.jpg",
+          "id": "tt7235466:9:9",
+          "released": "2026-01-23T04:00:00.000Z",
+          "episode": 9,
+          "description": "As Hen continues to seek out a diagnosis for her mysterious symptoms, her friends and family rally behind her. Meanwhile, Harry hits a wall in his attempts to complete the academy firefighting exam and looks for some much-needed motivation."
+        },
+        {
+          "name": "Handle with Care",
+          "season": 9,
+          "number": 10,
+          "firstAired": "2026-01-30T04:00:00.000Z",
+          "tvdb_id": 11450704,
+          "rating": 0,
+          "overview": "Harry's first day as a probie proves to be more challenging than Chimney expects. Meanwhile, Eddie and Hen are called into court over a former patient that brings back some old demons.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/10/w780.jpg",
+          "id": "tt7235466:9:10",
+          "released": "2026-01-30T04:00:00.000Z",
+          "episode": 10,
+          "description": "Harry's first day as a probie proves to be more challenging than Chimney expects. Meanwhile, Eddie and Hen are called into court over a former patient that brings back some old demons."
+        },
+        {
+          "name": "Going Once, Going Twice",
+          "season": 9,
+          "number": 11,
+          "firstAired": "2026-02-27T04:00:00.000Z",
+          "tvdb_id": 11479603,
+          "rating": 0,
+          "overview": "Eddie faces an unthinkable personal crisis. Hen and Karen spring into action when thrown into a terrifying situation. The 118 hosts a LAFD charity bachelor auction that brings up a few concerns from Buck.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/11/w780.jpg",
+          "id": "tt7235466:9:11",
+          "released": "2026-02-27T04:00:00.000Z",
+          "episode": 11,
+          "description": "Eddie faces an unthinkable personal crisis. Hen and Karen spring into action when thrown into a terrifying situation. The 118 hosts a LAFD charity bachelor auction that brings up a few concerns from Buck."
+        },
+        {
+          "name": "Dads and Cads (1)",
+          "season": 9,
+          "number": 12,
+          "firstAired": "2026-03-06T04:00:00.000Z",
+          "tvdb_id": 11479604,
+          "rating": 0,
+          "overview": "Maddie and Buck are blindsided by some unexpected news that turns their world upside down. Meanwhile, Buck and Eddie head to Nashville when they are selected to participate in the national firefighting games.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/12/w780.jpg",
+          "id": "tt7235466:9:12",
+          "released": "2026-03-06T04:00:00.000Z",
+          "episode": 12,
+          "description": "Maddie and Buck are blindsided by some unexpected news that turns their world upside down. Meanwhile, Buck and Eddie head to Nashville when they are selected to participate in the national firefighting games."
+        },
+        {
+          "name": "Mother's Boy",
+          "season": 9,
+          "number": 13,
+          "firstAired": "2026-03-13T04:00:00.000Z",
+          "tvdb_id": 11577015,
+          "rating": 0,
+          "overview": "Eddie and Buck’s flight back to Los Angeles is cancelled following the National Firefighter Games. Hoping to be home for Hen’s birthday, they decide a cross-country road trip is the fastest way, until they get offtrack and Buck goes missing.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/13/w780.jpg",
+          "id": "tt7235466:9:13",
+          "released": "2026-03-13T04:00:00.000Z",
+          "episode": 13,
+          "description": "Eddie and Buck’s flight back to Los Angeles is cancelled following the National Firefighter Games. Hoping to be home for Hen’s birthday, they decide a cross-country road trip is the fastest way, until they get offtrack and Buck goes missing."
+        },
+        {
+          "name": "D.I.Y.",
+          "season": 9,
+          "number": 14,
+          "firstAired": "2026-03-20T04:00:00.000Z",
+          "tvdb_id": 11577016,
+          "rating": 0,
+          "overview": "As Buck tries to manage the trauma following his kidnapping on his own, May tries to secure her first law internship without the help of her mother. Then, Maddie handles a personal crisis at the call center.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/14/w780.jpg",
+          "id": "tt7235466:9:14",
+          "released": "2026-03-20T04:00:00.000Z",
+          "episode": 14,
+          "description": "As Buck tries to manage the trauma following his kidnapping on his own, May tries to secure her first law internship without the help of her mother. Then, Maddie handles a personal crisis at the call center."
+        },
+        {
+          "name": "Pick Your Poison",
+          "season": 9,
+          "number": 15,
+          "firstAired": "2026-03-27T04:00:00.000Z",
+          "tvdb_id": 11577017,
+          "rating": 0,
+          "overview": "Athena is pulled into a mysterious murder investigation when a man arrives at the station to report his own death. Meanwhile, the 118 races to the site of a car crash involving a mother and son.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/15/w780.jpg",
+          "id": "tt7235466:9:15",
+          "released": "2026-03-27T04:00:00.000Z",
+          "episode": 15,
+          "description": "Athena is pulled into a mysterious murder investigation when a man arrives at the station to report his own death. Meanwhile, the 118 races to the site of a car crash involving a mother and son."
+        },
+        {
+          "name": "Where There's Smoke",
+          "season": 9,
+          "number": 16,
+          "firstAired": "2026-04-03T04:00:00.000Z",
+          "tvdb_id": 11577018,
+          "rating": 0,
+          "overview": "The 118 must account for every decision made during a recent fire call when the team's actions are investigated for possible mistakes. Meanwhile, Buck works behind the scenes to support his team as he waits to learn if he can return to the station.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/16/w780.jpg",
+          "id": "tt7235466:9:16",
+          "released": "2026-04-03T04:00:00.000Z",
+          "episode": 16,
+          "description": "The 118 must account for every decision made during a recent fire call when the team's actions are investigated for possible mistakes. Meanwhile, Buck works behind the scenes to support his team as he waits to learn if he can return to the station."
+        },
+        {
+          "name": "I Got You Babe",
+          "season": 9,
+          "number": 17,
+          "firstAired": "2026-05-01T04:00:00.000Z",
+          "tvdb_id": 11577019,
+          "rating": 0,
+          "overview": "Buck is faced with his past after an electrical emergency call. Meanwhile, Maddie learns to navigate her working relationships now that she has become a supervisor.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/17/w780.jpg",
+          "id": "tt7235466:9:17",
+          "released": "2026-05-01T04:00:00.000Z",
+          "episode": 17,
+          "description": "Buck is faced with his past after an electrical emergency call. Meanwhile, Maddie learns to navigate her working relationships now that she has become a supervisor."
+        },
+        {
+          "name": "Hearts and Flowers",
+          "season": 9,
+          "number": 18,
+          "firstAired": "2026-05-08T04:00:00.000Z",
+          "tvdb_id": 11577020,
+          "rating": 0,
+          "overview": "Following Athena's shooting, the 118 gathers at the hospital awaiting news. Meanwhile, the mastermind behind the trafficking ring is determined to silence Athena and anyone who gets in his way for good.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/9/18/w780.jpg",
+          "id": "tt7235466:9:18",
+          "released": "2026-05-08T04:00:00.000Z",
+          "episode": 18,
+          "description": "Following Athena's shooting, the 118 gathers at the hospital awaiting news. Meanwhile, the mastermind behind the trafficking ring is determined to silence Athena and anyone who gets in his way for good."
+        },
+        {
+          "name": "That Sinking Feeling",
+          "season": 10,
+          "number": 1,
+          "firstAired": "2026-10-16T04:00:00.000Z",
+          "tvdb_id": 11900393,
+          "rating": 0,
+          "overview": "The 118 faces an earth-shattering emergency that shakes the city of Los Angeles to its core. Still finding her footing as a detective, Athena leans on instinct to crack a mysterious new case, while May finds her own confidence in a new job.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/10/1/w780.jpg",
+          "id": "tt7235466:10:1",
+          "released": "2026-10-16T04:00:00.000Z",
+          "episode": 1,
+          "description": "The 118 faces an earth-shattering emergency that shakes the city of Los Angeles to its core. Still finding her footing as a detective, Athena leans on instinct to crack a mysterious new case, while May finds her own confidence in a new job."
+        },
+        {
+          "name": "Fire in the Hole",
+          "season": 10,
+          "number": 2,
+          "firstAired": "2026-10-23T04:00:00.000Z",
+          "tvdb_id": 12002569,
+          "rating": 0,
+          "overview": "As lava takes over Los Angeles, the 118 works to evacuate scared and trapped citizens. Meanwhile, Athena runs into a familiar face as she searches for a way out of a collapsed tunnel, and Maddie is forced to make an impossible decision.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/10/2/w780.jpg",
+          "id": "tt7235466:10:2",
+          "released": "2026-10-23T04:00:00.000Z",
+          "episode": 2,
+          "description": "As lava takes over Los Angeles, the 118 works to evacuate scared and trapped citizens. Meanwhile, Athena runs into a familiar face as she searches for a way out of a collapsed tunnel, and Maddie is forced to make an impossible decision."
+        },
+        {
+          "name": "Streets of Fire",
+          "season": 10,
+          "number": 3,
+          "firstAired": "2026-10-30T04:00:00.000Z",
+          "tvdb_id": 12013712,
+          "rating": 0,
+          "overview": "In the wake of the volcanic eruption, Maddie and the 118 race to divert a river of lava before it consumes a packed hospital. Athena, still trapped underground, faces a massive obstacle that cuts her off from any chance of calling for help.",
+          "thumbnail": "https://episodes.metahub.space/tt7235466/10/3/w780.jpg",
+          "id": "tt7235466:10:3",
+          "released": "2026-10-30T04:00:00.000Z",
+          "episode": 3,
+          "description": "In the wake of the volcanic eruption, Maddie and the 118 race to divert a river of lava before it consumes a packed hospital. Athena, still trapped underground, faces a massive obstacle that cuts her off from any chance of calling for help."
+        }
+      ],
+      "genres": [
+        "Action",
+        "Drama",
+        "Thriller"
+      ],
+      "releaseInfo": "2018–",
+      "trailerStreams": [
+        {
+          "title": "9-1-1",
+          "ytId": "_8MHJfUMqPA"
+        }
+      ],
+      "links": [
+        {
+          "name": "7.8",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt7235466"
+        },
+        {
+          "name": "9-1-1",
+          "category": "share",
+          "url": "https://www.strem.io/s/series/9-1-1-7235466"
+        },
+        {
+          "name": "Action",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Action"
+        },
+        {
+          "name": "Drama",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Drama"
+        },
+        {
+          "name": "Thriller",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/series/top?genre=Thriller"
+        },
+        {
+          "name": "Angela Bassett",
+          "category": "Cast",
+          "url": "stremio:///search?search=Angela%20Bassett"
+        },
+        {
+          "name": "Oliver Stark",
+          "category": "Cast",
+          "url": "stremio:///search?search=Oliver%20Stark"
+        },
+        {
+          "name": "Aisha Hinds",
+          "category": "Cast",
+          "url": "stremio:///search?search=Aisha%20Hinds"
+        },
+        {
+          "name": "Brad Falchuk",
+          "category": "Writers",
+          "url": "stremio:///search?search=Brad%20Falchuk"
+        },
+        {
+          "name": "Tim Minear",
+          "category": "Writers",
+          "url": "stremio:///search?search=Tim%20Minear"
+        },
+        {
+          "name": "Ryan Murphy",
+          "category": "Writers",
+          "url": "stremio:///search?search=Ryan%20Murphy"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": null,
+        "hasScheduledVideos": true
+      }
+    }
+  ],
+  "hasMore": true,
+  "cacheMaxAge": 14400,
+  "staleRevalidate": 3600,
+  "staleError": 3600
+}

@@ -1,0 +1,264 @@
+{
+  "streams": [
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune.Part.Two.2024.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX[TGx]\n👤 2063 💾 29.26 GB ⚙️ rargb",
+      "infoHash": "4950a74e1461e71a356c1919026e8c0bbdc4d2ed",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl|h265",
+        "filename": "Dune.Part.Two.2024.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:4950a74e1461e71a356c1919026e8c0bbdc4d2ed"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune.Part.Two.2024.REPACK.2160p.UPSCALE.WEB.HEVC.10Bit.AAC.2.0-R&H.mkv\n👤 1552 💾 21.67 GB ⚙️ rargb",
+      "infoHash": "66248ae427e73a48871572cc527541f5958d85c2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|hevc",
+        "filename": "Dune.Part.Two.2024.REPACK.2160p.UPSCALE.WEB.HEVC.10Bit.AAC.2.0-R&H.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://9.rarbg.me:2970/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://9.rarbg.me:2980/announce",
+        "tracker:udp://9.rarbg.to:2940/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:66248ae427e73a48871572cc527541f5958d85c2"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune.Part.Two.2024.REPACK.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-FLUX[TGx]\n👤 658 💾 18.23 GB ⚙️ rargb",
+      "infoHash": "1b7b7075624a96f75744f06af17019aa24d079e3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl|h265",
+        "filename": "Dune.Part.Two.2024.REPACK.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-FLUX.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:1b7b7075624a96f75744f06af17019aa24d079e3"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune: Part Two [2024 WEB-DL 2160p HDR10+ Dolby Vision] Dub (Bravo Records Georgia RHS Jaskier HDrezka) + MVO (LostFilm TVShows Jaskier) + AVO + (Ukr) + Original (Eng) + Sub (Rus Eng Ukr)\n👤 506 💾 34.82 GB ⚙️ knaben",
+      "infoHash": "541ADCFF3B6DD5DBA7088EA83317D9D6FAC331D6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl|h265",
+        "filename": "Dune.Part.Two.2024.2160p.WEB-DL.DV.HDR.H.265.DDP5.1.Atmos.Rus.Dub.5.1.Gavrilla.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune.Part.Two.2024.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX[T ...\n👤 469 💾 29.26 GB ⚙️ knaben",
+      "infoHash": "4950A74E1461E71A356C1919026E8C0BBDC4D2ED",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl|h265",
+        "filename": "Dune.Part.Two.2024.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Дюна: Часть вторая / Dune: Part Two\n👤 460 💾 30.82 GB ⚙️ rutor",
+      "infoHash": "5ef1461522b909f825ce478dd7eccfdcfddd52d6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl",
+        "filename": "Dune.Part.Two.2024.D.MVO.AVO.WEB-DL.2160p.HDR.DVP8.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.desol.one:2710/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://retracker.lanta-net.ru:2710/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:http://tracker.grepler.com:6969/announce",
+        "tracker:udp://tracker.dler.com:6969/announce",
+        "tracker:http://h4.trakx.nibba.trade:80/announce",
+        "tracker:udp://tracker.bitsearch.to:1337/announce",
+        "tracker:http://retracker.local/announce",
+        "dht:5ef1461522b909f825ce478dd7eccfdcfddd52d6"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune: Part Two [2024 UHD BDRemux 2160p HDR10 Dolby Vision] 4x Dub (Bravo Records Georgia RHS Jaskier HDrezka) + 3x MVO + AVO + VO + Dub Ukr + Sub Rus Ukr Eng Multi 4 + Original Eng\n👤 338 💾 69.35 GB ⚙️ knaben",
+      "infoHash": "9C1CF8AA4F0A00FDA70D149238E7D0FE0B352A00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|hevc",
+        "filename": "Dune.Part.Two.2024.2160p.UHD.BDREMUX.HDR.DV.HEVC-Нечипорук.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune.Part.Two.2024.2160p.10bit.HDR.DV.BluRay.8CH.x265.HEVC-PSA\n👤 326 💾 3.46 GB ⚙️ knaben",
+      "infoHash": "C5D6F5C857EE82F2139E6CB4CAFE1D577DEE1DE7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Dune.Part.Two.2024.2160p.10bit.HDR.DV.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune.Part.Two.2024.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-FLUX[TGx]\n👤 258 💾 18.23 GB ⚙️ rargb",
+      "infoHash": "2ebe842cc087eb7c131429b594ac3588a8e502b4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|web-dl|h265",
+        "filename": "Dune.Part.Two.2024.2160p.AMZN.WEB-DL.DDP5.1.Atmos.H.265-FLUX.mkv"
+      },
+      "sources": [
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.tiny-vps.com:6969/announce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.cyberia.is:6969/announce",
+        "tracker:udp://ipv4.tracker.harry.lu:80/announce",
+        "tracker:udp://p4p.arenabg.com:1337/announce",
+        "tracker:udp://tracker.birkenwald.de:6969/announce",
+        "tracker:udp://tracker.moeking.me:6969/announce",
+        "tracker:udp://opentor.org:2710/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://uploads.gamecoast.net:6969/announce",
+        "tracker:https://tracker.foreverpirates.co:443/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:2ebe842cc087eb7c131429b594ac3588a8e502b4"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune - Part Two (2024) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 235 💾 12.76 GB ⚙️ rargb",
+      "infoHash": "3f82b1b732b41d5b2fc6ae4551855aa3899a99d5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Dune - Part Two (2024) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://tracker.openbittorrent.com:6969/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:3f82b1b732b41d5b2fc6ae4551855aa3899a99d5"
+      ]
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune Part Two (2024) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 235 💾 12.76 GB ⚙️ knaben",
+      "infoHash": "3F82B1B732B41D5B2FC6AE4551855AA3899A99D5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|x265",
+        "filename": "Dune - Part Two (2024) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "TorrentsDB\n2160p",
+      "title": "Dune Part Two 2024 UHD BluRay 2160p DV HEVC HDR10+ TrueHD Atmos 7.1 x265-E\n👤 194 💾 28.17 GB ⚙️ rargb",
+      "infoHash": "2e48034db7ba764b36aa2bb2e3e29a08a656e344",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentsdb|2160p|bluray|hevc",
+        "filename": "Dune Part Two (2024).mkv"
+      },
+      "sources": [
+        "tracker:udp://opentracker.io:6969/announ​ce",
+        "tracker:udp://evan.im:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/​announce",
+        "tracker:udp://open.demonii.com:1337/anno​unce",
+        "tracker:udp://tracker.fnix.net:6969/anno​unce",
+        "tracker:udp://tracker.0x7c0.com:6969/ann​ounce",
+        "tracker:udp://open.stealth.si:80/announc​e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://retracker.lanta.me:2710/announce",
+        "tracker:https://tracker1.520.jp:443/announce",
+        "tracker:udp://www.torrent.eu.org:451/announce",
+        "tracker:http://tracker.openbittorrent.com:80/announce",
+        "tracker:udp://opentracker.i2p.rocks:6969/announce",
+        "tracker:udp://tracker.internetwarriors.net:1337/announce",
+        "tracker:udp://tracker.leechers-paradise.org:6969/announce",
+        "tracker:udp://coppersurfer.tk:6969/announce",
+        "tracker:udp://tracker.zer0day.to:1337/announce",
+        "dht:2e48034db7ba764b36aa2bb2e3e29a08a656e344"
+      ]
+    }
+  ]
+}

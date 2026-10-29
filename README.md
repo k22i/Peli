@@ -56,6 +56,8 @@ pnpm test        # Vitest + React Testing Library
 
 `frontend/bindings/` is generated (by `pnpm bindings`, `wails3 dev` or `wails3 build`) and not committed; generate it before the first `typecheck` or `test`. Frontend code imports them as `@bindings/<package>`, for example `@bindings/appinfo`. Routes are files in `frontend/src/routes/`; the router plugin regenerates `src/routeTree.gen.ts` on `dev` and `build`.
 
+Addon requests (manifests, catalogs, metas, streams, subtitles) all go through the typed client in `frontend/src/lib/addon-protocol/` ([ADR-0023](docs/adr/0023-addon-protocol-client.md)); `internal/addons` fetches for addons that send no CORS headers. Its tests use recorded answers from public addons. `pnpm record:addons` re-records them, and `SINAG_LIVE_ADDONS=1 pnpm exec vp test run src/lib/addon-protocol/live.test.ts` runs one test against the live addons.
+
 UI components come from the coss ui registry and live in `frontend/src/components/ui/`. Add one with `pnpm dlx shadcn@4.21.4 add @coss/<name>` (for example `@coss/dialog`), and add only what you use. The theme tokens are the coss CSS variables in `frontend/src/index.css`.
 
 ### Local data

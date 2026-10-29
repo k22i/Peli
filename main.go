@@ -12,6 +12,7 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/events"
 
 	"github.com/k22i/Sinag/internal/account"
+	"github.com/k22i/Sinag/internal/addons"
 	"github.com/k22i/Sinag/internal/appinfo"
 	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/firstmouse"
@@ -59,6 +60,9 @@ func main() {
 			application.NewServiceWithOptions(accounts,
 				application.ServiceOptions{MarshalError: account.MarshalError}),
 			application.NewService(sync),
+			// Addon requests the webview's fetch can't make (#37).
+			application.NewServiceWithOptions(addons.NewService(appinfo.Version),
+				application.ServiceOptions{MarshalError: addons.MarshalError}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),

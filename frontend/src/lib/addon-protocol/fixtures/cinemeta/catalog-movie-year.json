@@ -1,0 +1,519 @@
+{
+  "metas": [
+    {
+      "imdb_id": "tt22507374",
+      "name": "Bogota: City of the Lost",
+      "popularities": {
+        "trakt": 2,
+        "moviedb": 3.5385,
+        "stremio": 0.11795,
+        "stremio_lib": 0
+      },
+      "type": "movie",
+      "cast": [
+        "Song Joong-ki",
+        "Lee Hee-joon",
+        "Kwon Hae-hyo"
+      ],
+      "country": "South Korea",
+      "description": "Young man moving to Colombia with his family for a better life, but he ends up living from hand to mouth. He later goes against all odds to dominate Bogota's black market.",
+      "director": [
+        "Kim Seong-je"
+      ],
+      "genre": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "imdbRating": "5.4",
+      "released": "2025-02-03T00:00:00.000Z",
+      "slug": "movie/bogota-city-of-the-lost-22507374",
+      "writer": [
+        "Hwang Seong-gu",
+        "Kim Seong-je"
+      ],
+      "year": "2025",
+      "moviedb_id": 636279,
+      "poster": "https://images.metahub.space/poster/small/tt22507374/img",
+      "runtime": "109 min",
+      "trailers": [
+        {
+          "source": "KP_aRbYjaPo",
+          "type": "Trailer"
+        },
+        {
+          "source": "7UP25X3xRA0",
+          "type": "Trailer"
+        }
+      ],
+      "background": "https://images.metahub.space/background/medium/tt22507374/img",
+      "logo": "https://images.metahub.space/logo/medium/tt22507374/img",
+      "popularity": 0.11795,
+      "id": "tt22507374",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "releaseInfo": "2025",
+      "trailerStreams": [
+        {
+          "title": "Bogota: City of the Lost",
+          "ytId": "KP_aRbYjaPo"
+        },
+        {
+          "title": "Bogota: City of the Lost",
+          "ytId": "7UP25X3xRA0"
+        }
+      ],
+      "links": [
+        {
+          "name": "5.4",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt22507374"
+        },
+        {
+          "name": "Bogota: City of the Lost",
+          "category": "share",
+          "url": "https://www.strem.io/s/movie/bogota-city-of-the-lost-22507374"
+        },
+        {
+          "name": "Crime",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Crime"
+        },
+        {
+          "name": "Drama",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Drama"
+        },
+        {
+          "name": "Thriller",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Thriller"
+        },
+        {
+          "name": "Song Joong-ki",
+          "category": "Cast",
+          "url": "stremio:///search?search=Song%20Joong-ki"
+        },
+        {
+          "name": "Lee Hee-joon",
+          "category": "Cast",
+          "url": "stremio:///search?search=Lee%20Hee-joon"
+        },
+        {
+          "name": "Kwon Hae-hyo",
+          "category": "Cast",
+          "url": "stremio:///search?search=Kwon%20Hae-hyo"
+        },
+        {
+          "name": "Hwang Seong-gu",
+          "category": "Writers",
+          "url": "stremio:///search?search=Hwang%20Seong-gu"
+        },
+        {
+          "name": "Kim Seong-je",
+          "category": "Writers",
+          "url": "stremio:///search?search=Kim%20Seong-je"
+        },
+        {
+          "name": "Kim Seong-je",
+          "category": "Directors",
+          "url": "stremio:///search?search=Kim%20Seong-je"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": "tt22507374",
+        "hasScheduledVideos": false
+      }
+    },
+    {
+      "id": "tt14828040",
+      "imdb_id": "tt14828040",
+      "type": "movie",
+      "poster": "https://live.metahub.space/poster/small/tt14828040/img",
+      "logo": "https://live.metahub.space/logo/medium/tt14828040/img",
+      "background": "https://live.metahub.space/background/medium/tt14828040/img",
+      "moviedb_id": 1064307,
+      "name": "Spermageddon",
+      "description": "Inside the body of a teenager on the verge of losing his virginity, sperm embark on a mad race toward the egg.",
+      "genres": [
+        "Animation",
+        "Adventure",
+        "Fantasy",
+        "Comedy"
+      ],
+      "releaseInfo": "2024",
+      "runtime": "80 min",
+      "trailers": [
+        {
+          "source": "q5PUJLN141A",
+          "type": "Trailer"
+        },
+        {
+          "source": "a9qxc6AWdPg",
+          "type": "Trailer"
+        }
+      ],
+      "cast": [
+        "Christian Mikkelsen",
+        "Nasrin Khusrawi",
+        "Aksel Hennie"
+      ],
+      "credits_cast": [
+        {
+          "character": "Jens / Alf-Tore / Hjernekjell (voice)",
+          "name": "Christian Mikkelsen",
+          "profile_path": "/fxE4TkpAgmxxE38plZsloNM6yfd.jpg",
+          "id": 1911397
+        },
+        {
+          "character": "Lisa (voice)",
+          "name": "Nasrin Khusrawi",
+          "profile_path": "/kD6wHXQnYYiyfc8ksZdtRgmwQNB.jpg",
+          "id": 1816217
+        },
+        {
+          "character": "Simen Sprut (voice)",
+          "name": "Aksel Hennie",
+          "profile_path": "/sceuNjVXtsHOS3cn0MsLfZRkAQx.jpg",
+          "id": 76547
+        },
+        {
+          "character": "Cumilla (voice)",
+          "name": "Mathilde Storm",
+          "profile_path": "/zn3R4uRFvck7cZKPfMrfPpIWFKB.jpg",
+          "id": 1816870
+        },
+        {
+          "character": "Jizzmo (voice)",
+          "name": "Christian Rubeck",
+          "profile_path": "/gZ7f4zkmX8hluHkP6OCLpiofQNC.jpg",
+          "id": 47647
+        },
+        {
+          "character": "Prof. Saltsmak (voice)",
+          "name": "Bjørn Sundquist",
+          "profile_path": "/c4BQFatz6Tm84iGAEwibm53b3Gk.jpg",
+          "id": 71186
+        },
+        {
+          "character": "Egon Olsæd (voice)",
+          "name": "John Brungot",
+          "profile_path": "/etJW3FIzFKHIjXkTdFhXrICIYDB.jpg",
+          "id": 1146077
+        },
+        {
+          "character": "Benner'n / Bjell (voice)",
+          "name": "Gustav Nilsen",
+          "profile_path": "/7GLyvwtlk5sUNjQ2nFMaHkr3GmY.jpg",
+          "id": 1840978
+        },
+        {
+          "character": "Gynekologen (voice)",
+          "name": "Silya Nymoen",
+          "profile_path": "/t4sTCBJkf6CyIWbomZq9yOkMEtO.jpg",
+          "id": 1840963
+        },
+        {
+          "character": "Hjernekjell (voice)",
+          "name": "Jakob Schøyen Andersen",
+          "profile_path": "/crNzDh3rtP7OmoXPLOlTe755t0N.jpg",
+          "id": 1061500
+        }
+      ],
+      "credits_crew": [
+        {
+          "department": "Directing",
+          "job": "Director",
+          "name": "Tommy Wirkola",
+          "profile_path": "/lhvD0FltdzJqrI5xr5IN90nyh6f.jpg",
+          "id": 76927
+        },
+        {
+          "department": "Directing",
+          "job": "Director",
+          "name": "Rasmus A. Sivertsen",
+          "profile_path": "/ysJ9u7SRW2U8CjajMCxX4QYux0k.jpg",
+          "id": 81397
+        },
+        {
+          "department": "Production",
+          "job": "Producer",
+          "name": "Kjetil Omberg",
+          "profile_path": null,
+          "id": 569856
+        },
+        {
+          "department": "Production",
+          "job": "Producer",
+          "name": "Jørgen Storm Rosenberg",
+          "profile_path": "/rPtUN8AeIPeqiFA8T2MnEF9XfuF.jpg",
+          "id": 74742
+        }
+      ],
+      "director": [
+        "Tommy Wirkola",
+        "Rasmus A. Sivertsen"
+      ],
+      "imdbRating": "5.4",
+      "language": "Norwegian, English",
+      "country": "Norway",
+      "awards": "2 nominations total",
+      "slug": "movie/spermageddon-14828040",
+      "behaviorHints": {
+        "defaultVideoId": "tt14828040",
+        "hasScheduledVideos": false
+      }
+    },
+    {
+      "imdb_id": "tt22042346",
+      "name": "2073",
+      "popularities": {
+        "trakt": 2,
+        "moviedb": 3.4978,
+        "stremio": 0.11659333333333333,
+        "stremio_lib": 0
+      },
+      "type": "movie",
+      "awards": "1 win & 2 nominations total",
+      "cast": [
+        "Samantha Morton",
+        "Naomi Ackie",
+        "Mohammad Bin Salman"
+      ],
+      "country": "United Kingdom, United States",
+      "description": "A woman living in a ruined Earth tries to comprehend how the world was destroyed.",
+      "director": [
+        "Asif Kapadia"
+      ],
+      "genre": [
+        "Documentary",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "imdbRating": "5.1",
+      "released": "2024-12-27T00:00:00.000Z",
+      "slug": "movie/2073-22042346",
+      "writer": [
+        "Asif Kapadia",
+        "Tony Grisoni"
+      ],
+      "year": "2024",
+      "moviedb_id": 1023915,
+      "poster": "https://images.metahub.space/poster/small/tt22042346/img",
+      "runtime": "83 min",
+      "trailers": [
+        {
+          "source": "fgyFo0Q5qAc",
+          "type": "Trailer"
+        },
+        {
+          "source": "YDE97KrYDuU",
+          "type": "Trailer"
+        }
+      ],
+      "background": "https://images.metahub.space/background/medium/tt22042346/img",
+      "logo": "https://images.metahub.space/logo/medium/tt22042346/img",
+      "popularity": 0.11659333333333333,
+      "id": "tt22042346",
+      "genres": [
+        "Documentary",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "releaseInfo": "2024",
+      "trailerStreams": [
+        {
+          "title": "2073",
+          "ytId": "fgyFo0Q5qAc"
+        },
+        {
+          "title": "2073",
+          "ytId": "YDE97KrYDuU"
+        }
+      ],
+      "links": [
+        {
+          "name": "5.1",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt22042346"
+        },
+        {
+          "name": "2073",
+          "category": "share",
+          "url": "https://www.strem.io/s/movie/2073-22042346"
+        },
+        {
+          "name": "Documentary",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Documentary"
+        },
+        {
+          "name": "Sci-Fi",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Sci-Fi"
+        },
+        {
+          "name": "Thriller",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Thriller"
+        },
+        {
+          "name": "Samantha Morton",
+          "category": "Cast",
+          "url": "stremio:///search?search=Samantha%20Morton"
+        },
+        {
+          "name": "Naomi Ackie",
+          "category": "Cast",
+          "url": "stremio:///search?search=Naomi%20Ackie"
+        },
+        {
+          "name": "Mohammad Bin Salman",
+          "category": "Cast",
+          "url": "stremio:///search?search=Mohammad%20Bin%20Salman"
+        },
+        {
+          "name": "Asif Kapadia",
+          "category": "Writers",
+          "url": "stremio:///search?search=Asif%20Kapadia"
+        },
+        {
+          "name": "Tony Grisoni",
+          "category": "Writers",
+          "url": "stremio:///search?search=Tony%20Grisoni"
+        },
+        {
+          "name": "Asif Kapadia",
+          "category": "Directors",
+          "url": "stremio:///search?search=Asif%20Kapadia"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": "tt22042346",
+        "hasScheduledVideos": false
+      }
+    },
+    {
+      "imdb_id": "tt24515124",
+      "name": "Winter Spring Summer or Fall",
+      "popularities": {
+        "trakt": 35,
+        "moviedb": 6.0426,
+        "stremio": 0.20142000000000002,
+        "stremio_lib": 0
+      },
+      "type": "movie",
+      "cast": [
+        "Jenna Ortega",
+        "Percy Hynes White",
+        "Adam Rodriguez"
+      ],
+      "country": "United States",
+      "description": "Remi and Barnes, two very different teenagers, meet by chance in the winter of their senior year, then spend four days together over the course of a year that will change their lives forever.",
+      "director": [
+        "Tiffany Paulsen"
+      ],
+      "genre": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "imdbRating": "6.1",
+      "released": "2025-04-25T00:00:00.000Z",
+      "slug": "movie/winter-spring-summer-or-fall-24515124",
+      "writer": [
+        "Dan Schoffer"
+      ],
+      "year": "2025",
+      "moviedb_id": 1059073,
+      "poster": "https://images.metahub.space/poster/small/tt24515124/img",
+      "runtime": "97 min",
+      "trailers": [
+        {
+          "source": "84-KAOf4OPM",
+          "type": "Trailer"
+        }
+      ],
+      "background": "https://images.metahub.space/background/medium/tt24515124/img",
+      "logo": "https://images.metahub.space/logo/medium/tt24515124/img",
+      "awards": "1 nomination total",
+      "popularity": 0.20142000000000002,
+      "id": "tt24515124",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance"
+      ],
+      "releaseInfo": "2025",
+      "trailerStreams": [
+        {
+          "title": "Winter Spring Summer or Fall",
+          "ytId": "84-KAOf4OPM"
+        }
+      ],
+      "links": [
+        {
+          "name": "6.1",
+          "category": "imdb",
+          "url": "https://imdb.com/title/tt24515124"
+        },
+        {
+          "name": "Winter Spring Summer or Fall",
+          "category": "share",
+          "url": "https://www.strem.io/s/movie/winter-spring-summer-or-fall-24515124"
+        },
+        {
+          "name": "Comedy",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Comedy"
+        },
+        {
+          "name": "Drama",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Drama"
+        },
+        {
+          "name": "Romance",
+          "category": "Genres",
+          "url": "stremio:///discover/https%3A%2F%2Fv3-cinemeta.strem.io%2Fmanifest.json/movie/top?genre=Romance"
+        },
+        {
+          "name": "Jenna Ortega",
+          "category": "Cast",
+          "url": "stremio:///search?search=Jenna%20Ortega"
+        },
+        {
+          "name": "Percy Hynes White",
+          "category": "Cast",
+          "url": "stremio:///search?search=Percy%20Hynes%20White"
+        },
+        {
+          "name": "Adam Rodriguez",
+          "category": "Cast",
+          "url": "stremio:///search?search=Adam%20Rodriguez"
+        },
+        {
+          "name": "Dan Schoffer",
+          "category": "Writers",
+          "url": "stremio:///search?search=Dan%20Schoffer"
+        },
+        {
+          "name": "Tiffany Paulsen",
+          "category": "Directors",
+          "url": "stremio:///search?search=Tiffany%20Paulsen"
+        }
+      ],
+      "behaviorHints": {
+        "defaultVideoId": "tt24515124",
+        "hasScheduledVideos": false
+      }
+    }
+  ],
+  "hasMore": true,
+  "cacheMaxAge": 14400,
+  "staleRevalidate": 3600,
+  "staleError": 3600
+}

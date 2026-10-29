@@ -14,6 +14,7 @@
     "typecheck": "vp check --no-fmt --no-lint",
     "test": "vp test run",
     "test:watch": "vp test watch",
+    "record:addons": "node scripts/record-addon-fixtures.ts",
     "bindings": "cd .. && wails3 generate bindings -clean=true -ts -i"
   },
   "dependencies": {

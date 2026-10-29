@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vite-plus/test";
 
 import { createQueryClient } from "@/lib/query";
-import { addonsQuery, manifestUrl, useEditAddons } from "@/lib/addons";
+import { addonsQuery, useEditAddons } from "@/lib/addons";
 
 const account = vi.hoisted(() => ({
   InstallAddon: vi.fn<() => Promise<void>>(() => Promise.resolve()),
@@ -15,23 +15,6 @@ const account = vi.hoisted(() => ({
 
 vi.mock("@bindings/account", () => ({ Service: account }));
 vi.mock("@bindings/store", () => ({ Service: { Addons: () => Promise.resolve([]) } }));
-
-describe("manifestUrl", () => {
-  it("finds the manifest from what Nuvio and Stremio store", () => {
-    expect(manifestUrl("https://v3-cinemeta.strem.io/manifest.json")).toBe(
-      "https://v3-cinemeta.strem.io/manifest.json",
-    );
-    expect(manifestUrl("https://opensubtitles-v3.strem.io")).toBe(
-      "https://opensubtitles-v3.strem.io/manifest.json",
-    );
-    expect(manifestUrl("https://addon.example/config/")).toBe(
-      "https://addon.example/config/manifest.json",
-    );
-    expect(manifestUrl("stremio://addon.example/manifest.json")).toBe(
-      "https://addon.example/manifest.json",
-    );
-  });
-});
 
 describe("useEditAddons", () => {
   it("makes each edit in Go and rereads the list", async () => {

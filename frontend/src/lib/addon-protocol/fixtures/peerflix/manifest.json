@@ -1,0 +1,29 @@
+{
+  "id": "com.keopps.peerflix",
+  "version": "2.7.4",
+  "name": "Peerflix",
+  "description": "Peerflix proporciona los mejores enlaces en español e inglés de películas y series de TV en Stremio. Para configurar proveedores de chache, RealDebrid/Premiumize/AllDebrid/DebridLink/Offcloud/Put.io/Torbox visita https://config.peerflix.mov",
+  "catalogs": [],
+  "resources": [
+    {
+      "name": "stream",
+      "types": [
+        "movie",
+        "series"
+      ],
+      "idPrefixes": [
+        "tt"
+      ]
+    }
+  ],
+  "types": [
+    "movie",
+    "series"
+  ],
+  "background": "https://i.ibb.co/vL3SKgX/peerflix-background-2.jpg",
+  "logo": "https://peerflix.mov/static/logo.png",
+  "behaviorHints": {
+    "configurable": true,
+    "configurationRequired": false
+  }
+}

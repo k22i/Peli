@@ -8,3 +8,4 @@
 - [Nuvio profile PINs](nuvio-profile-pins.md) — set/clear/verify RPCs, four digits, table rows, unlocked-key gotcha
 - [Kids profiles](kids-profiles.md) — local flag + addon allow-list; parent PIN = own PIN; call VisibleAddons, guardKids in new Go methods
 - [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29), push loop (#30), offline/reconnect (#31), addons merge + shared primary (#32), contract tests (#33), home layout + collections (#35)
+- [Addon protocol client](addon-protocol-client.md) — #37 layout: lib/addon-protocol (parse, routing, client, queries), internal/addons Go fallback; Kitsu item types, fixtures, live test

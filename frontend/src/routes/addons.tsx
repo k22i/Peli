@@ -5,7 +5,8 @@ import { CircleAlert } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
-import { addonsQuery, manifestQuery } from "@/lib/addons";
+import { manifestQuery } from "@/lib/addon-protocol";
+import { addonsQuery } from "@/lib/addons";
 import { currentProfileQuery } from "@/lib/profile";
 import type { Addon, Profile } from "@bindings/store";
 
