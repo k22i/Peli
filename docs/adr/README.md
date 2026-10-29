@@ -32,5 +32,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0026](0026-home.md) | Home: a fixed hero from the first catalog, rows in the layout's order, and one seam for playback | 2026-10-29 |
 | [0027](0027-browse-pages.md) | Browse pages: one catalog at a time, filters from its own extras, anime by type and addon | 2026-10-29 |
 | [0028](0028-search.md) | Search: every search catalog at once, merged in addon order as each answers | 2026-10-29 |
+| [0029](0029-title-page.md) | Title page: details from the first addon that has them, watched state as Nuvio's apps keep it | 2026-10-29 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

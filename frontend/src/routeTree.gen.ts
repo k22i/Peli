@@ -22,6 +22,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ShowsRouteImport } from './routes/shows'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as WelcomeRouteImport } from './routes/welcome'
+import { Route as TitleTypeIdRouteImport } from './routes/title.$type.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,6 +89,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
   path: '/welcome',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TitleTypeIdRoute = TitleTypeIdRouteImport.update({
+  id: '/title/$type/$id',
+  path: '/title/$type/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/shows': typeof ShowsRoute
   '/sign-in': typeof SignInRoute
   '/welcome': typeof WelcomeRoute
+  '/title/$type/$id': typeof TitleTypeIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/shows': typeof ShowsRoute
   '/sign-in': typeof SignInRoute
   '/welcome': typeof WelcomeRoute
+  '/title/$type/$id': typeof TitleTypeIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/shows': typeof ShowsRoute
   '/sign-in': typeof SignInRoute
   '/welcome': typeof WelcomeRoute
+  '/title/$type/$id': typeof TitleTypeIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/shows'
     | '/sign-in'
     | '/welcome'
+    | '/title/$type/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/shows'
     | '/sign-in'
     | '/welcome'
+    | '/title/$type/$id'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/shows'
     | '/sign-in'
     | '/welcome'
+    | '/title/$type/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,6 +209,7 @@ export interface RootRouteChildren {
   ShowsRoute: typeof ShowsRoute
   SignInRoute: typeof SignInRoute
   WelcomeRoute: typeof WelcomeRoute
+  TitleTypeIdRoute: typeof TitleTypeIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WelcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/title/$type/$id': {
+      id: '/title/$type/$id'
+      path: '/title/$type/$id'
+      fullPath: '/title/$type/$id'
+      preLoaderRoute: typeof TitleTypeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -309,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShowsRoute: ShowsRoute,
   SignInRoute: SignInRoute,
   WelcomeRoute: WelcomeRoute,
+  TitleTypeIdRoute: TitleTypeIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

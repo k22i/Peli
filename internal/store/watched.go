@@ -88,3 +88,41 @@ func (s *Store) UnmarkWatched(id uint64, contentID string, season, episode *int)
 		return remove(p, bucketWatched, SurfaceWatched, key, watchedPushKey(contentID, season, episode))
 	})
 }
+
+// SetWatched marks items watched for profile id, or unmarks them, in one
+// transaction, and clears each one's progress either way, as Nuvio's apps do
+// when a film, an episode, a season or a whole series is marked by hand
+// (#45). An item already marked keeps its mark and time, so marking a season
+// pushes only the episodes that weren't.
+func (s *Store) SetWatched(id uint64, items []WatchedItem, watched bool) error {
+	for _, item := range items {
+		if item.ContentID == "" || (watched && item.ContentType == "") {
+			return fmt.Errorf("%w: watched item needs a content ID and type", ErrInvalidItem)
+		}
+	}
+	return s.update(id, func(p *bolt.Bucket) error {
+		marks := p.Bucket(bucketWatched)
+		for _, item := range items {
+			key := watchedKey(item.ContentID, item.Season, item.Episode)
+			pushKey := watchedPushKey(item.ContentID, item.Season, item.Episode)
+			switch {
+			case !watched:
+				if err := remove(p, bucketWatched, SurfaceWatched, key, pushKey); err != nil {
+					return err
+				}
+			case marks.Get(key) == nil:
+				if err := put(marks, key, item); err != nil {
+					return err
+				}
+				if err := enqueue(p, SurfaceWatched, OpUpsert, pushKey, item); err != nil {
+					return err
+				}
+			}
+			progress := ProgressKey(item.ContentID, item.Season, item.Episode)
+			if err := remove(p, bucketProgress, SurfaceProgress, []byte(progress), progress); err != nil {
+				return err
+			}
+		}
+		return nil
+	})
+}

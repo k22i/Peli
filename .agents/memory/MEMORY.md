@@ -14,3 +14,4 @@
 - [Home page](home-page.md) — #42 homeRows order, fixed hero, usePlay seam, batched CatalogVisible, test serve/seed, WebKit cache-timing harness
 - [Browse pages](browse-pages.md) — #43 BrowsePage, catalog chips + genre/year filter, catalogPagesQuery + onEndReached, anime rule, #content overflow shim
 - [Search page](search-page.md) — #44 searchCatalogs/searchQuery/searchGroups, addon-order merge, ⌘F and /, Row focus by key, fail-closed kids visibility
+- [Title page](title-page.md) — #45 /title/$type/$id, titleMetaQuery fallback, Nuvio watched rules (90 %, clears progress, series mark), Store.SetWatched, useOpenTitle

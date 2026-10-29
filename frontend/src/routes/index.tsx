@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { Play, RotateCcw } from "lucide-react";
+import { Info, Play, RotateCcw } from "lucide-react";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
@@ -25,6 +25,7 @@ import {
 import { continueWatchingQuery, episodeLabel, libraryQuery, watchedFraction } from "@/lib/library";
 import { usePlay, type PlayTarget } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
+import { useOpenTitle, type TitlePreview } from "@/lib/title";
 import type { LibraryItem, Profile, Progress } from "@bindings/store";
 
 export const Route = createFileRoute("/")({
@@ -54,6 +55,7 @@ function Home() {
 
 function HomeRows({ profile }: { profile: Profile }) {
   const profileId = profile.id;
+  const open = useOpenTitle();
   const library = useQuery(libraryQuery(profileId));
   const watching = useQuery(continueWatchingQuery(profileId));
   const layout = useQuery(homeLayoutQuery(profileId));
@@ -124,7 +126,12 @@ function HomeRows({ profile }: { profile: Profile }) {
             items={library.data}
             getKey={(item) => `${item.contentId}:${item.contentType}`}
             renderItem={(item) => (
-              <PosterCard title={item.name} meta={item.releaseInfo} src={item.poster} />
+              <PosterCard
+                title={item.name}
+                meta={item.releaseInfo}
+                src={item.poster}
+                onClick={() => open(libraryPreview(item))}
+              />
             )}
           />
         )}
@@ -212,16 +219,19 @@ function CatalogHero({
       synopsis={meta.description}
       backdrop={meta.background}
       actions={
-        <PlayButton
-          resume={entry !== undefined}
-          onClick={() =>
-            play(
-              entry
-                ? resumeTarget(entry, meta.name)
-                : { type: meta.type, id: meta.id, title: meta.name },
-            )
-          }
-        />
+        <>
+          <PlayButton
+            resume={entry !== undefined}
+            onClick={() =>
+              play(
+                entry
+                  ? resumeTarget(entry, meta.name)
+                  : { type: meta.type, id: meta.id, title: meta.name },
+              )
+            }
+          />
+          <DetailsButton title={meta} />
+        </>
       }
     />
   );
@@ -241,8 +251,26 @@ function WatchingHero({ entry, ...context }: { entry: Progress } & WatchingConte
       meta={episode ? [episode] : []}
       synopsis={synopsis}
       backdrop={art}
-      actions={<PlayButton resume onClick={() => play(resumeTarget(entry, title))} />}
+      actions={
+        <>
+          <PlayButton resume onClick={() => play(resumeTarget(entry, title))} />
+          <DetailsButton
+            title={{ id: entry.contentId, type: entry.contentType, name: title, background: art }}
+          />
+        </>
+      }
     />
+  );
+}
+
+// The hero's title page.
+function DetailsButton({ title }: { title: TitlePreview }) {
+  const open = useOpenTitle();
+  return (
+    <Button size="lg" variant="secondary" onClick={() => open(title)}>
+      <Info />
+      Details
+    </Button>
   );
 }
 
@@ -265,8 +293,9 @@ function metaLine(meta: MetaPreview): string[] {
 }
 
 // A catalog's first page, from cache first. One that fails or comes back
-// empty isn't shown. Opening a title is the title page's (#45).
+// empty isn't shown. A card opens its title page (#45).
 function CatalogRowView({ row, hideUnreleased }: { row: CatalogRow; hideUnreleased: boolean }) {
+  const open = useOpenTitle();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
   if (catalogData.isPending) return <RowSkeleton />;
@@ -282,7 +311,14 @@ function CatalogRowView({ row, hideUnreleased }: { row: CatalogRow; hideUnreleas
       card={(meta) => (meta.posterShape === "landscape" ? "landscape" : "poster")}
       renderItem={(meta) => {
         const Card = meta.posterShape === "landscape" ? LandscapeCard : PosterCard;
-        return <Card title={meta.name} meta={meta.releaseInfo} src={meta.poster} />;
+        return (
+          <Card
+            title={meta.name}
+            meta={meta.releaseInfo}
+            src={meta.poster}
+            onClick={() => open(meta)}
+          />
+        );
       }}
     />
   );
@@ -321,3 +357,13 @@ function HomeSkeleton() {
     </div>
   );
 }
+
+const libraryPreview = (item: LibraryItem): TitlePreview => ({
+  id: item.contentId,
+  type: item.contentType,
+  name: item.name,
+  poster: item.poster,
+  background: item.background,
+  releaseInfo: item.releaseInfo,
+  description: item.description,
+});

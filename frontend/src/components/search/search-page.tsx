@@ -22,6 +22,7 @@ import {
   searchTerm,
   type SearchSearch,
 } from "@/lib/search";
+import { useOpenTitle } from "@/lib/title";
 import type { Profile } from "@bindings/store";
 
 // Search (#44): every catalog of the profile's addons that takes `search`
@@ -132,6 +133,7 @@ function SearchField({
 }
 
 function Results({ profile, term }: { profile: Profile; term: string | undefined }) {
+  const open = useOpenTitle();
   const { visible, addons, shown, loading } = useBrowsableAddons(profile.id);
   // Not until a kids profile's allowed catalogs are known, so the rest are
   // never asked, not merely hidden, and "none can search" doesn't flash.
@@ -238,7 +240,12 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
               items={group.metas}
               getKey={(meta) => meta.id}
               renderItem={(meta) => (
-                <PosterCard title={meta.name} meta={meta.releaseInfo} src={meta.poster} />
+                <PosterCard
+                  title={meta.name}
+                  meta={meta.releaseInfo}
+                  src={meta.poster}
+                  onClick={() => open(meta)}
+                />
               )}
             />
           ))}

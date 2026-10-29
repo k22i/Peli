@@ -1,4 +1,4 @@
-import { Children, type ReactNode } from "react";
+import { Children, useState, type ReactNode } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 // rounded billboard, since a dark-to-white fade turns muddy.
 export function Hero({
   title,
+  logo,
   eyebrow,
   meta,
   synopsis,
@@ -21,6 +22,9 @@ export function Hero({
   className,
 }: {
   title: string;
+  // The title's logo, drawn in place of its name (title pages); the name
+  // shows if it fails to load.
+  logo?: string | undefined;
   // A short line above the title: "New season", "Continue watching".
   eyebrow?: ReactNode;
   // Year, runtime, rating…, joined with middots; coss Badges also fit here.
@@ -51,7 +55,7 @@ export function Hero({
               </p>
             )}
             <h1 className="font-heading text-display text-balance font-stretch-expanded">
-              {title}
+              {logo ? <Logo src={logo} title={title} /> : title}
             </h1>
             {meta && meta.length > 0 && (
               <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-meta text-foreground/80">
@@ -73,6 +77,19 @@ export function Hero({
       {/* Dark mode: melt the hero's bottom edge into the page. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-12 bg-linear-to-t from-background to-transparent dark:block" />
     </section>
+  );
+}
+
+function Logo({ src, title }: { src: string; title: string }) {
+  const [failed, setFailed] = useState<string>();
+  if (failed === src) return title;
+  return (
+    <img
+      src={src}
+      alt={title}
+      onError={() => setFailed(src)}
+      className="max-h-32 max-w-[min(28rem,100%)] object-contain object-left drop-shadow-lg"
+    />
   );
 }
 

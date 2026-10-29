@@ -1,6 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/react-router";
 
+import type { TitlePreview } from "@/lib/title";
 import { routeTree } from "@/routeTree.gen";
 
 // Hash history: Wails' asset server has no index.html fallback, so a reload
@@ -26,6 +27,12 @@ export function createAppRouter(
 }
 
 declare module "@tanstack/react-router" {
+  interface HistoryState {
+    // The card a title page was opened from, so it paints before its
+    // details load (#45).
+    title?: TitlePreview;
+  }
+
   interface Register {
     router: ReturnType<typeof createAppRouter>;
   }

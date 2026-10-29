@@ -38,13 +38,14 @@ import {
 } from "@/lib/browse";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
+import { useOpenTitle } from "@/lib/title";
 import type { Profile } from "@bindings/store";
 
 // Movies, Shows and Anime (#43): the profile's catalogs of one kind as chips,
 // in addon order, and the chosen one as a grid that loads more as it
 // scrolls. A catalog that takes a genre gets a Genre or Year filter from its
 // own options. The choice lives in the address (BrowseSearch), so Back from
-// a title page returns to it. Opening a title is the title page's (#45).
+// a title page (#45) returns to it.
 export function BrowsePage({ kind }: { kind: BrowseKind }) {
   const profile = useQuery(currentProfileQuery).data;
   return (
@@ -157,6 +158,7 @@ function CatalogGrid({
   hideUnreleased: boolean;
 }) {
   const client = useQueryClient();
+  const open = useOpenTitle();
   const extra = genre === undefined ? {} : { genre };
   const firstPage = catalogQuery(addon.url, catalog.type, catalog.id, extra).queryKey;
   const pages = useInfiniteQuery({
@@ -207,7 +209,12 @@ function CatalogGrid({
         items={metas}
         getKey={(meta) => meta.id}
         renderItem={(meta) => (
-          <PosterCard title={meta.name} meta={meta.releaseInfo} src={meta.poster} />
+          <PosterCard
+            title={meta.name}
+            meta={meta.releaseInfo}
+            src={meta.poster}
+            onClick={() => open(meta)}
+          />
         )}
         onEndReached={loadMore}
       />

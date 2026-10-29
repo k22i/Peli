@@ -169,6 +169,12 @@ func (s *Service) UnmarkWatched(profileID uint64, contentID string, season, epis
 	return s.store.UnmarkWatched(profileID, contentID, season, episode)
 }
 
+// SetWatched marks or unmarks several films, episodes or series at once,
+// clearing their progress, for a title page's season and series actions.
+func (s *Service) SetWatched(profileID uint64, items []WatchedItem, watched bool) error {
+	return s.store.SetWatched(profileID, items, watched)
+}
+
 // Addons returns a profile's addons in order.
 func (s *Service) Addons(profileID uint64) ([]Addon, error) { return s.store.Addons(profileID) }
 

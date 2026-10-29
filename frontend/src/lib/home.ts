@@ -106,14 +106,10 @@ export const catalogVisibilityQuery = (profileId: number, sources: readonly Cata
     placeholderData: keepPreviousData,
   });
 
-// The addons a profile browses with, for Home, the browse pages and Search:
-// the visible ones whose manifests loaded, in the user's order (one that
-// fails to load drops out and stays installed), and `shown`, which tells
-// whether a kids profile may see a catalog. `shown` fails closed: a catalog
-// CatalogVisible hasn't answered for yet, such as one whose manifest just
-// loaded while the last answer is still up, isn't shown, and isn't asked.
-// `loading` is true until every catalog has its answer.
-export function useBrowsableAddons(profileId: number) {
+// A profile's visible addons whose manifests loaded, in the user's order;
+// one that fails to load drops out and stays installed. `loading` is true
+// until every manifest has answered. The title page (#45) needs only these.
+export function useLoadedAddons(profileId: number) {
   const visible = useQuery(visibleAddonsQuery(profileId));
   const manifests = useQueries({
     queries: (visible.data ?? []).map((addon) => manifestQuery(addon.url)),
@@ -122,6 +118,22 @@ export function useBrowsableAddons(profileId: number) {
     const manifest = manifests[index]?.data;
     return manifest ? [{ url: addon.url, manifest }] : [];
   });
+  return {
+    visible,
+    addons,
+    loading: visible.isPending || manifests.some((query) => query.isPending),
+  };
+}
+
+// The addons a profile browses with, for Home, the browse pages and Search:
+// the visible ones whose manifests loaded, in the user's order (one that
+// fails to load drops out and stays installed), and `shown`, which tells
+// whether a kids profile may see a catalog. `shown` fails closed: a catalog
+// CatalogVisible hasn't answered for yet, such as one whose manifest just
+// loaded while the last answer is still up, isn't shown, and isn't asked.
+// `loading` is true until every catalog has its answer.
+export function useBrowsableAddons(profileId: number) {
+  const { visible, addons, loading: manifestsLoading } = useLoadedAddons(profileId);
   const sources = addons.flatMap((addon) =>
     addon.manifest.catalogs.map((catalog) => ({ addon, catalog })),
   );
@@ -131,8 +143,7 @@ export function useBrowsableAddons(profileId: number) {
     addons,
     shown: (source: CatalogSource) => visibility?.get(catalogRef(source)) === true,
     loading:
-      visible.isPending ||
-      manifests.some((query) => query.isPending) ||
+      manifestsLoading ||
       !visibility ||
       sources.some((source) => !visibility.has(catalogRef(source))),
   };

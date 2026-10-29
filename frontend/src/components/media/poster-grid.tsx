@@ -37,8 +37,8 @@ const captionPx = 48;
 const px = (value: string) => Number.parseFloat(value) || 0;
 
 // The page's scroll container: #content in the app shell, <main> on narrow
-// windows.
-function scrollParent(element: HTMLElement): HTMLElement {
+// windows. The title page's episode list scrolls with it too.
+export function scrollParent(element: HTMLElement): HTMLElement {
   for (let node = element.parentElement; node; node = node.parentElement) {
     if (/auto|scroll|overlay/.test(getComputedStyle(node).overflowY)) return node;
   }
