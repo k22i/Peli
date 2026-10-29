@@ -34,16 +34,6 @@ function remember(src: string, status: "loaded" | "failed") {
   if (seen.size > seenLimit) seen.delete(seen.keys().next().value!);
 }
 
-// WebKit keeps an <img>'s decoded pixels until the detached element is
-// garbage-collected, seconds after a card scrolls away. Dropping the src
-// once it's out of the document frees them at once. (Checked after the
-// commit: Strict Mode's rehearsal unmount leaves the element in place.)
-const releaseWhenRemoved = (img: HTMLImageElement | null) => () => {
-  queueMicrotask(() => {
-    if (img && !img.isConnected) img.removeAttribute("src");
-  });
-};
-
 // For tests.
 export function forgetArtwork() {
   seen.clear();
@@ -95,7 +85,6 @@ export function Artwork({
       )}
       {src && status !== "failed" && (
         <img
-          ref={releaseWhenRemoved}
           src={src}
           alt=""
           loading="lazy"

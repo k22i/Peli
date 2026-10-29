@@ -46,14 +46,4 @@ describe("Artwork", () => {
     expect(image(container)).toBeNull();
     expect(screen.getByText("Undertow")).toBeInTheDocument();
   });
-
-  it("drops the image's src once the card is gone, so WebKit frees its pixels", async () => {
-    const { container, unmount } = render(
-      <Artwork src="https://art.test/a.jpg" title="Low Tide" />,
-    );
-    const img = image(container)!;
-    unmount();
-    await Promise.resolve();
-    expect(img).not.toHaveAttribute("src");
-  });
 });
