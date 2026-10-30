@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type * as Runtime from "@wailsio/runtime";
-import type { Ended, State, Track } from "@bindings/player";
+import type { Ended, State, Track, Watching } from "@bindings/player";
 import type { Addon, Profile, ProfileSettings } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Status } from "@bindings/torrent";
@@ -137,14 +137,25 @@ const torrent: Source = {
   size: 1,
 };
 
-async function openPlayer(episode?: string, played = source, subtitles?: SubtitleTarget) {
+async function openPlayer(
+  episode?: string,
+  played = source,
+  subtitles?: SubtitleTarget,
+  progress: { watching?: Watching; resumedAt?: number } = {},
+) {
   const app = await renderApp("/library", { shell: false });
   await act(() =>
     app.router.navigate({
       to: "/player",
       state: (state) => ({
         ...state,
-        player: { title: "The Film", episode, source: played, ...(subtitles && { subtitles }) },
+        player: {
+          title: "The Film",
+          episode,
+          source: played,
+          ...(subtitles && { subtitles }),
+          ...progress,
+        },
       }),
     }),
   );
@@ -434,6 +445,55 @@ describe("player", () => {
 
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, profileOptions);
     await waitFor(() => expect(screen.queryByRole("alert")).not.toBeInTheDocument());
+  });
+
+  it("keeps the progress of what it plays across a retry, and refreshes it on leaving", async () => {
+    const watching: Watching = {
+      profileId: 1,
+      contentId: "tt0111161",
+      contentType: "movie",
+      videoId: "tt0111161",
+      title: "The Film",
+    };
+    const { queryClient, router } = await openPlayer(undefined, source, undefined, { watching });
+    emit("player:state", playing);
+    emit("player:ended", { reason: "error", code: "failed" } satisfies Ended);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Try again" }));
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, { ...profileOptions, watching });
+
+    // Go kept where it stopped by the time Stop returns: the screens behind
+    // show it.
+    const invalidate = vi.spyOn(queryClient, "invalidateQueries");
+    await user.click(screen.getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
+    await waitFor(() =>
+      expect(invalidate).toHaveBeenCalledWith({ queryKey: ["continue-watching"] }),
+    );
+    expect(invalidate).toHaveBeenCalledWith({ queryKey: ["watched"] });
+  });
+
+  it("offers to start over a file that resumed", async () => {
+    await openPlayer(undefined, source, undefined, { resumedAt: 600 });
+    // Not before it plays.
+    expect(screen.queryByRole("button", { name: "Start over" })).not.toBeInTheDocument();
+    emit("player:state", playing);
+    expect(screen.getByText(/^Resumed at/)).toHaveTextContent("Resumed at 10:00");
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Start over" }));
+    expect(mocks.seek).toHaveBeenCalledExactlyOnceWith(0);
+    expect(screen.queryByRole("button", { name: "Start over" })).not.toBeInTheDocument();
+  });
+
+  it("stops offering to start over after a few seconds of playing", async () => {
+    await openPlayer(undefined, source, undefined, { resumedAt: 600 });
+    vi.useFakeTimers();
+    emit("player:state", playing);
+    expect(screen.getByRole("button", { name: "Start over" })).toBeInTheDocument();
+    act(() => void vi.advanceTimersByTime(9000));
+    expect(screen.getByRole("button", { name: "Start over" })).toBeInTheDocument();
+    act(() => void vi.advanceTimersByTime(1000));
+    expect(screen.queryByRole("button", { name: "Start over" })).not.toBeInTheDocument();
   });
 
   it("asks for an expired link again when told to, even within the minute", async () => {

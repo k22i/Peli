@@ -7,6 +7,7 @@ import {
   type LoadOptions,
   type State,
   type Track,
+  type Watching,
 } from "@bindings/player";
 import type { ProfileSettings } from "@bindings/store";
 import { Service as Streams, type Source } from "@bindings/streams";
@@ -24,7 +25,7 @@ export const timeEvent = "player:time";
 export const endedEvent = "player:ended";
 
 export { Player };
-export type { Ended, LoadOptions, Track };
+export type { Ended, LoadOptions, Track, Watching };
 export type PlayerState = State;
 
 export const idleState: PlayerState = {
@@ -93,11 +94,14 @@ export async function reloadExpired(source: Source, options: LoadOptions): Promi
 // Load's options from start (#62): the profile's languages, captions and
 // subtitle size. For the same file again (a retry, a fresh link), the
 // tracks it was playing, as the user may have picked others: their
-// languages, and subtitles on if a full track was showing.
+// languages, and subtitles on if a full track was showing. With watching,
+// Go keeps the profile's progress in it as it plays (#64); every Load of it,
+// retries too, has to pass it.
 export function loadOptions(
   start: number,
   settings: ProfileSettings | undefined,
   playing: Track[] = [],
+  watching?: Watching,
 ): LoadOptions {
   const options = {
     start,
@@ -105,6 +109,7 @@ export function loadOptions(
     subtitleLanguage: settings?.subtitleLanguage ?? "",
     captions: settings?.captions ?? "system",
     subtitleSize: settings?.subtitleSize ?? "",
+    ...(watching && { watching }),
   };
   const audio = playing.find((track) => track.type === "audio" && track.selected);
   if (!audio) return options;

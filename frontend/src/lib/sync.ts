@@ -33,6 +33,15 @@ export function invalidateSurfaces(queryClient: QueryClient, surfaces: readonly 
   }
 }
 
+// Refreshes what shows progress and watched marks, for after the player has
+// kept them (#64).
+export function invalidateWatching(queryClient: QueryClient) {
+  const { progress = [], watched = [] } = surfaceQueryKeys;
+  for (const queryKey of [...progress, ...watched]) {
+    void queryClient.invalidateQueries({ queryKey });
+  }
+}
+
 // Refreshes what's on screen when Go pulls something new from Nuvio. Mounted
 // once, at the root.
 export function useSyncEvents() {
@@ -56,15 +65,6 @@ export function useSyncProfile(profileId: number | undefined) {
     // Offline or signed out: nothing to show for it, the next pull tries again.
     Sync.Pull().catch(() => {});
   }, [profileId]);
-}
-
-// Asks Go to push everything queued now. The player calls it when playback
-// pauses, stops or seeks (#30): Go pushes progress at most every 30 s while it
-// plays, so this sends the position where it stopped. Pushes also follow every
-// change by themselves, so nothing else needs to ask.
-export function flushPushes(): Promise<void> {
-  // Offline or signed out: Go keeps what failed and retries it.
-  return Sync.Flush().catch(() => {});
 }
 
 // Sent by internal/syncer when Nuvio becomes reachable or stops being (#31),

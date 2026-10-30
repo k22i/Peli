@@ -7,6 +7,7 @@ import (
 	"net/http/httptest"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -503,3 +504,129 @@ func TestTrackControls(t *testing.T) {
 		}
 	}
 }
+
+// reports collects a Service's progress reports (#64).
+type reports struct {
+	mu   sync.Mutex
+	list []Report
+}
+
+func (r *reports) add(rep Report) {
+	r.mu.Lock()
+	r.list = append(r.list, rep)
+	r.mu.Unlock()
+}
+
+func (r *reports) whys() []string {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	var whys []string
+	for _, rep := range r.list {
+		whys = append(whys, rep.Why)
+	}
+	return whys
+}
+
+func (r *reports) last() Report {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	if len(r.list) == 0 {
+		return Report{}
+	}
+	return r.list[len(r.list)-1]
+}
+
+// A Watching file reports while it plays, when it pauses, lands after a seek,
+// and is stopped; a file without one reports nothing.
+func TestReportsProgress(t *testing.T) {
+	t.Parallel()
+	s, r := newTestService(t)
+	got := &reports{}
+	ReportTo(s, got.add)
+	s.reportEvery = 500 * time.Millisecond
+	path, _ := filepath.Abs("testdata/clip.mp4")
+
+	if err := s.Load(streams.Source{URL: path}, LoadOptions{}); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the first frame", func(*recorder) bool { st := s.Snapshot(); return !st.Loading && st.Duration > 0 })
+	if err := s.SetPaused(true); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the pause", func(*recorder) bool { return s.Snapshot().Paused })
+	time.Sleep(200 * time.Millisecond)
+	if whys := got.whys(); len(whys) != 0 {
+		t.Fatalf("a file with no Watching reported %v", whys)
+	}
+
+	w := Watching{ProfileID: 1, ContentID: "tt0903747", ContentType: "series", VideoID: "tt0903747:2:4", Season: intp(2), Episode: intp(4)}
+	if err := s.Load(streams.Source{URL: path}, LoadOptions{Start: 0.5, Watching: &w}); err != nil {
+		t.Fatal(err)
+	}
+	wait := func(what string, ok func([]string) bool) {
+		t.Helper()
+		deadline := time.Now().Add(10 * time.Second)
+		for !ok(got.whys()) {
+			if time.Now().After(deadline) {
+				t.Fatalf("timed out waiting for %s: %v", what, got.whys())
+			}
+			time.Sleep(10 * time.Millisecond)
+		}
+	}
+	has := func(why string) func([]string) bool {
+		return func(whys []string) bool { return slices.Contains(whys, why) }
+	}
+	wait("a report while playing", has(ReportPlaying))
+	if rep := got.last(); rep.Watching.VideoID != w.VideoID || *rep.Watching.Season != 2 ||
+		rep.Duration < clipSeconds-0.1 || rep.Position < 0.5 || rep.Position > rep.Duration {
+		t.Fatalf("report %+v", rep)
+	}
+	if err := s.Seek(0.2); err != nil {
+		t.Fatal(err)
+	}
+	wait("the seek", has(ReportSeeked))
+	if err := s.SetPaused(true); err != nil {
+		t.Fatal(err)
+	}
+	wait("the pause", has(ReportPaused))
+	if err := s.Stop(); err != nil {
+		t.Fatal(err)
+	}
+	if rep := got.last(); rep.Why != ReportStopped || rep.Position < 0.2 || rep.Position > 1.5 {
+		t.Fatalf("last report %+v, want stopped where it paused", rep)
+	}
+	// A pause before the file played is nothing: only the one asked for.
+	if whys := got.whys(); slices.Index(whys, ReportPaused) != len(whys)-2 {
+		t.Fatalf("reports %v", whys)
+	}
+}
+
+// Played to the end, a Watching file reports the whole of it, so it's
+// marked watched.
+func TestReportsTheEnd(t *testing.T) {
+	t.Parallel()
+	s, r := newTestService(t)
+	got := &reports{}
+	ReportTo(s, got.add)
+	path, _ := filepath.Abs("testdata/clip.mp4")
+	w := Watching{ProfileID: 1, ContentID: "tt1160419", ContentType: "movie", VideoID: "tt1160419"}
+	if err := s.Load(streams.Source{URL: path}, LoadOptions{Start: 2, Watching: &w}); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the end", func(r *recorder) bool { return len(r.ends) > 0 })
+	deadline := time.Now().Add(5 * time.Second)
+	for got.last().Why != ReportEnded {
+		if time.Now().After(deadline) {
+			t.Fatalf("reports %v, want one at the end", got.whys())
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	if rep := got.last(); rep.Position != rep.Duration || rep.Duration < clipSeconds-0.1 {
+		t.Fatalf("report at the end %+v, want the whole duration", rep)
+	}
+	if whys := got.whys(); slices.Contains(whys, ReportSeeked) {
+		t.Fatalf("reports %v: starting at a position isn't a seek", whys)
+	}
+}
+
+func intp(n int) *int { return &n }

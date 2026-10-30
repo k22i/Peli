@@ -2,7 +2,7 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { Addon, Profile } from "@bindings/store";
+import type { Addon, Profile, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
@@ -21,6 +21,8 @@ const mocks = vi.hoisted(() => ({
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   cancel: vi.fn<() => void>(),
   load: vi.fn<(source: Source, opts: { start: number }) => Promise<void>>(),
+  titleProgress: vi.fn<(profileId: number, contentId: string) => Promise<Progress[]>>(),
+  pull: vi.fn<() => Promise<unknown>>(),
   openTorrent: vi.fn<(request: TorrentRequest) => Promise<Source>>(),
   torrentStatus: vi.fn<() => Promise<Status>>(),
 }));
@@ -37,7 +39,7 @@ vi.mock("@bindings/store", () => ({
     ContinueWatching: () => Promise.resolve([]),
     Library: () => Promise.resolve([]),
     TitleWatched: () => Promise.resolve([]),
-    TitleProgress: () => Promise.resolve([]),
+    TitleProgress: mocks.titleProgress,
     ProfileSettings: () =>
       Promise.resolve({
         audioLanguage: "",
@@ -87,7 +89,7 @@ vi.mock("@bindings/account", () => ({
 vi.mock("@bindings/syncer", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   Service: {
-    Pull: () => Promise.reject(new Error("offline")),
+    Pull: mocks.pull,
     Connection: () => Promise.resolve("online"),
     CheckConnection: () => Promise.resolve("online"),
   },
@@ -212,6 +214,8 @@ beforeEach(() => {
     size: 0,
   });
   mocks.load.mockResolvedValue(undefined);
+  mocks.titleProgress.mockReset().mockResolvedValue([]);
+  mocks.pull.mockReset().mockRejectedValue(new Error("offline"));
   mocks.current.mockResolvedValue(kevin);
   mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
   mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio, peerflix]);
@@ -421,16 +425,115 @@ describe("stream picker", () => {
       url: "https://debrid.example/KEY/0",
       headers: { Referer: "https://addon.example/" },
     });
-    // In the profile's languages and subtitle size (#62).
+    // In the profile's languages and subtitle size (#62), keeping the
+    // film's progress (#64).
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(await mocks.resolve.mock.results[0]!.value, {
       start: 0,
       audioLanguage: "",
       subtitleLanguage: "",
       captions: "system",
       subtitleSize: "medium",
+      watching: {
+        profileId: 1,
+        contentId: "tt0111161",
+        contentType: "movie",
+        videoId: "tt0111161",
+        title: "The Shawshank Redemption",
+      },
     });
     // Named from the title's details, not the picker's fallback heading.
     expect(screen.getByRole("heading", { name: "The Shawshank Redemption" })).toBeInTheDocument();
+  });
+
+  it("plays from where the store says it was left, pulling while the user picks", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([torrentio]);
+    // Another device got further than the card that opened the picker knew.
+    const left: Progress = {
+      key: "tt0111161",
+      contentId: "tt0111161",
+      contentType: "movie",
+      videoId: "tt0111161",
+      position: 1_234_000,
+      duration: 8_520_000,
+      lastWatched: 2,
+    };
+    mocks.titleProgress.mockResolvedValue([left]);
+    const user = userEvent.setup();
+    await renderApp(`${pickerPath}?at=600000`);
+
+    await waitFor(() => expect(mocks.pull).toHaveBeenCalled());
+    const [first] = await within(
+      await screen.findByRole("list", { name: "Streams" }),
+    ).findAllByRole("button");
+    await user.click(first!);
+    await opensThePlayer();
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+      expect.anything(),
+      expect.objectContaining({ start: 1234 }),
+    );
+  });
+
+  it("starts from the beginning when the store has it watched to 90 %", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([torrentio]);
+    mocks.titleProgress.mockResolvedValue([
+      {
+        key: "tt0111161",
+        contentId: "tt0111161",
+        contentType: "movie",
+        videoId: "tt0111161",
+        position: 8_000_000,
+        duration: 8_520_000,
+        lastWatched: 2,
+      },
+    ]);
+    const user = userEvent.setup();
+    await renderApp(`${pickerPath}?at=8000000`);
+
+    const [first] = await within(
+      await screen.findByRole("list", { name: "Streams" }),
+    ).findAllByRole("button");
+    await user.click(first!);
+    await opensThePlayer();
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+      expect.anything(),
+      expect.objectContaining({ start: 0 }),
+    );
+    expect(screen.queryByRole("button", { name: "Start over" })).not.toBeInTheDocument();
+  });
+
+  it("keeps an episode's progress under its season and number", async () => {
+    serve({
+      "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json": torrentioSeries,
+    });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    // Torrentio without a debrid service: the pick streams peer to peer.
+    mocks.openTorrent.mockImplementation(async ({ infoHash }) =>
+      resolved({ url: infoHash, headers: {} }),
+    );
+    const user = userEvent.setup();
+    await renderApp("/title/series/tt0903747");
+
+    await user.click(await screen.findByRole("button", { name: /^S1 · E1/ }));
+    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("12 streams"));
+    await user.click(topPick());
+    await opensThePlayer();
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+      expect.anything(),
+      expect.objectContaining({
+        start: 0,
+        watching: {
+          profileId: 1,
+          contentId: "tt0903747",
+          contentType: "series",
+          videoId: "tt0903747:1:1",
+          season: 1,
+          episode: 1,
+          title: "Pilot",
+        },
+      }),
+    );
   });
 
   it("says so when the player can't start", async () => {

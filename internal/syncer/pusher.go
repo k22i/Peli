@@ -49,9 +49,13 @@ const (
 	auto mode = iota
 	// kick: the launch or a window focus. Ignores the backoff.
 	kick
-	// force: a pause, a stop, the app exiting, a sign-out. Sends everything
-	// now.
+	// force: a sign-out. Sends everything now.
 	force
+	// prompt: the player pausing, seeking or stopping (#64), the app
+	// exiting. Sends everything now, except that a watched item still waits
+	// behind the finished progress the server turns into the same item: the
+	// outbox outlives both, so it can wait.
+	prompt
 	// resume: the network came back (#31). Forgets the backoff, otherwise
 	// auto.
 	resume
@@ -197,10 +201,15 @@ func (p *Pusher) Background(ctx context.Context) {
 // sends what is ready, keeping the progress interval and the watched grace.
 func (p *Pusher) Resume(ctx context.Context) error { return p.flush(ctx, resume) }
 
-// Flush sends everything queued now, for a pause, a stop, the app exiting
-// or a sign-out. It returns what stopped it, if anything: the pushes that
-// failed stay queued.
+// Flush sends everything queued now, for a sign-out. It returns what
+// stopped it, if anything: the pushes that failed stay queued.
 func (p *Pusher) Flush(ctx context.Context) error { return p.flush(ctx, force) }
+
+// FlushProgress sends what is queued now, for the player pausing, seeking or
+// stopping and for the app exiting, as Flush does, but leaves a watched item
+// waiting out WatchedGrace behind its finished progress, so the server's own
+// copy settles it rather than a second push (#64).
+func (p *Pusher) FlushProgress(ctx context.Context) error { return p.flush(ctx, prompt) }
 
 func logPushError(err error) {
 	if !backend.Offline(err) && !errors.Is(err, context.Canceled) {
@@ -354,7 +363,7 @@ func (p *Pusher) ready(profile store.Profile, pending []store.Push, m mode) (rea
 		case push.Surface == store.SurfaceWatched && push.Op == store.OpUpsert:
 			watched = append(watched, push)
 		default:
-			if push.Surface == store.SurfaceProgress && push.Op == store.OpUpsert && m != force {
+			if push.Surface == store.SurfaceProgress && push.Op == store.OpUpsert && m != force && m != prompt {
 				if sent, ok := p.sentProgress[sentKey{profile.ID, push.Key}]; ok && now.Sub(sent) < p.progressEvery {
 					wake = earliest(wake, sent.Add(p.progressEvery))
 					continue

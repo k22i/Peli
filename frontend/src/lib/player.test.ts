@@ -132,6 +132,11 @@ describe("loadOptions", () => {
     });
   });
 
+  it("names what it plays, for its progress (#64)", () => {
+    const watching = { profileId: 1, contentId: "tt1", contentType: "movie", videoId: "tt1" };
+    expect(loadOptions(5, settings, [], watching)).toEqual({ start: 5, ...settings, watching });
+  });
+
   it("keeps the tracks the file was playing", () => {
     const playing = [
       track({ id: 1, type: "audio", lang: "eng", selected: true }),

@@ -1,5 +1,5 @@
 import { Slider } from "@base-ui/react/slider";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCanGoBack, useLocation, useNavigate, useRouter } from "@tanstack/react-router";
 import {
   AlertCircle,
@@ -68,6 +68,7 @@ import {
   useAddonSubtitles,
   type AddonSubtitle,
 } from "@/lib/subtitles";
+import { invalidateWatching } from "@/lib/sync";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -98,6 +99,8 @@ const idleAfter = 3000;
 const skip = 10;
 // One press of Z or X moves subtitles this many seconds, as in mpv.
 const delayStep = 0.1;
+// How long "Start over" is offered once a resumed file plays.
+const startOverFor = 10_000;
 const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", large: "Large" };
 
 // The player screen: the video under a transparent page, with no app shell,
@@ -112,12 +115,16 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // as do Z (earlier) and X (later). Subtitles from addons (#63) are listed by
 // language under the file's own; one in the profile's language is added by
 // itself when captions are on and the file has none in it. The language of
-// subtitles picked here becomes the profile's.
+// subtitles picked here becomes the profile's. Go keeps the profile's
+// progress as it plays (#64); a file that resumed offers "Start over" for its
+// first few seconds, and leaving refreshes Continue Watching and the marks.
 export function PlayerPage() {
   const router = useRouter();
   const navigate = useNavigate();
   const canGoBack = useCanGoBack();
   const playing = useLocation({ select: (location) => location.state.player });
+  const watching = playing?.watching;
+  const queryClient = useQueryClient();
   const state = usePlayerState();
   const [error, setError] = useState<Ended>();
   const [retrying, setRetrying] = useState(false);
@@ -192,7 +199,8 @@ export function PlayerPage() {
   const reloaded = () => setAdded(({ load }) => ({ load: load + 1, ids: new Map() }));
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
   // Leaving the screen, however it happens, ends the session, and lets the
-  // torrent go once mpv no longer reads it.
+  // torrent go once mpv no longer reads it. Go has kept where it stopped by
+  // the time Stop returns, so the screens behind show it.
   useEffect(
     () => () => {
       const streamed = isTorrentSource(source.current);
@@ -200,10 +208,11 @@ export function PlayerPage() {
         .catch(() => {})
         .finally(() => {
           repaintWindow();
+          invalidateWatching(queryClient);
           if (streamed) Torrents.Release().catch(() => {});
         });
     },
-    [],
+    [queryClient],
   );
   usePlayerEnded((ended) => {
     if (ended.reason === "eof") return leave();
@@ -219,7 +228,10 @@ export function PlayerPage() {
       Date.now() - reloadedAt.current > 60_000
     ) {
       reloadedAt.current = Date.now();
-      reloadExpired(expired, loadOptions(state.position, settings, lastTracks.current)).then(
+      reloadExpired(
+        expired,
+        loadOptions(state.position, settings, lastTracks.current, watching),
+      ).then(
         (fresh) => {
           source.current = fresh;
           reloaded();
@@ -235,7 +247,7 @@ export function PlayerPage() {
     if (!current) return;
     setRetrying(true);
     try {
-      const options = loadOptions(stoppedAt.current, settings, lastTracks.current);
+      const options = loadOptions(stoppedAt.current, settings, lastTracks.current, watching);
       if (ended.code === "expired" && !isTorrentSource(current))
         source.current = await reloadExpired(current, options);
       else await Player.Load(current, options);
@@ -250,6 +262,16 @@ export function PlayerPage() {
 
   const ready = state.active && !error;
   const known = state.duration > 0;
+  // "Start over", while a resumed file has played less than startOverFor.
+  const resumedAt = playing?.resumedAt ?? 0;
+  const [startOverDone, setStartOverDone] = useState(false);
+  const started = ready && !state.loading && known;
+  useEffect(() => {
+    if (!started || startOverDone) return undefined;
+    const timer = setTimeout(() => setStartOverDone(true), startOverFor);
+    return () => clearTimeout(timer);
+  }, [started, startOverDone]);
+  const offerStartOver = resumedAt > 0 && started && !startOverDone;
   const togglePause = () => {
     if (!ready) return;
     setPaused(!paused);
@@ -260,6 +282,10 @@ export function PlayerPage() {
     const at = Math.min(Math.max(0, to), state.duration);
     setPosition(at);
     seeker({ to: at, exact: true });
+  };
+  const startOver = () => {
+    setStartOverDone(true);
+    seek(0);
   };
   const changeVolume = (to: number) => {
     setVolume(to);
@@ -638,6 +664,20 @@ export function PlayerPage() {
           </div>
         </div>
       </div>
+      {offerStartOver && !failure && (
+        <div
+          {...hold}
+          className="absolute bottom-28 left-6 flex items-center gap-3 rounded-full bg-black/70 py-1.5 ps-4 pe-1.5 text-sm"
+        >
+          <p className="font-medium">
+            Resumed at <span className="tabular-nums">{formatTime(resumedAt)}</span>
+          </p>
+          <Button size="sm" variant="secondary" className="rounded-full" onClick={startOver}>
+            <RotateCcw />
+            Start over
+          </Button>
+        </div>
+      )}
       {notice && !failure && (
         <div
           aria-live="polite"

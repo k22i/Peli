@@ -1,6 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/react-router";
 
+import type { Watching } from "@bindings/player";
 import type { Source } from "@bindings/streams";
 import type { PlayTarget } from "@/lib/playback";
 import type { SubtitleTarget } from "@/lib/subtitles";
@@ -37,13 +38,16 @@ declare module "@tanstack/react-router" {
     // What the stream picker was opened to play, for its heading (#50).
     play?: PlayTarget;
     // What the player is playing (#60): its heading, the episode under it
-    // (#61), the source, to ask for again if its link expires, and what to
-    // ask subtitle addons (#63).
+    // (#61), the source, to ask for again if its link expires, what to ask
+    // subtitle addons (#63), and the film or episode its progress is kept
+    // for, with where it resumed, in seconds (#64).
     player?: {
       title: string;
       episode?: string | undefined;
       source?: Source;
       subtitles?: SubtitleTarget;
+      watching?: Watching;
+      resumedAt?: number;
     };
   }
 

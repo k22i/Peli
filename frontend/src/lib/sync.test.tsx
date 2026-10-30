@@ -5,12 +5,11 @@ import { describe, expect, it, vi } from "vite-plus/test";
 
 import type * as Runtime from "@wailsio/runtime";
 
-import { flushPushes, useSyncEvents, useSyncProfile } from "@/lib/sync";
+import { useSyncEvents, useSyncProfile } from "@/lib/sync";
 
 const mocks = vi.hoisted(() => ({
   handlers: new Map<string, (event: { data: unknown }) => void>(),
   pull: vi.fn<() => Promise<unknown>>(),
-  flush: vi.fn<() => Promise<unknown>>(),
 }));
 
 vi.mock("@wailsio/runtime", async (importOriginal) => {
@@ -27,7 +26,7 @@ vi.mock("@wailsio/runtime", async (importOriginal) => {
   };
 });
 
-vi.mock("@bindings/syncer", () => ({ Service: { Pull: mocks.pull, Flush: mocks.flush } }));
+vi.mock("@bindings/syncer", () => ({ Service: { Pull: mocks.pull } }));
 
 function wrapper(queryClient: QueryClient) {
   return ({ children }: { children: ReactNode }) => (
@@ -111,17 +110,5 @@ describe("useSyncProfile", () => {
     mocks.pull.mockRejectedValue(new Error("offline"));
     renderHook(() => useSyncProfile(1));
     await waitFor(() => expect(mocks.pull).toHaveBeenCalled());
-  });
-});
-
-describe("flushPushes", () => {
-  it("asks Go to push now, and shrugs off a failed push", async () => {
-    mocks.flush.mockResolvedValueOnce(undefined);
-    await flushPushes();
-    expect(mocks.flush).toHaveBeenCalledTimes(1);
-
-    mocks.flush.mockRejectedValueOnce(new Error("offline"));
-    await expect(flushPushes()).resolves.toBeUndefined();
-    expect(mocks.flush).toHaveBeenCalledTimes(2);
   });
 });

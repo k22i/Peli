@@ -24,6 +24,7 @@ import (
 	"github.com/k22i/Sinag/internal/streams"
 	"github.com/k22i/Sinag/internal/syncer"
 	"github.com/k22i/Sinag/internal/torrent"
+	"github.com/k22i/Sinag/internal/watching"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -52,6 +53,10 @@ func main() {
 	// Sending what is queued is the first step of signing out (#30).
 	account.FlushOnSignOut(accounts, syncer.PusherOf(sync))
 	players := player.NewService(appinfo.Version)
+	// How far each film or episode plays becomes the profile's progress, and
+	// watched at 90 % (#64). The player shuts down before the syncer, which
+	// sends the last of it on the way out.
+	player.ReportTo(players, watching.New(func() *store.Store { return store.Opened(db) }, syncer.PusherOf(sync).FlushProgress).Report)
 
 	app := application.New(application.Options{
 		Name:        "Sinag",

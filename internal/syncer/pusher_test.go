@@ -323,7 +323,41 @@ func TestWatchedItemIsPushedAfterTheGrace(t *testing.T) {
 	}
 }
 
-// A forced flush (exit, sign-out) doesn't wait for the grace.
+// The player's flush (a pause, seek or stop past 90 %, #64) and the exit's
+// send the finished progress at once, past the progress interval, but the
+// watched item still waits for the server's own copy.
+func TestFlushProgressHoldsWatchedPushes(t *testing.T) {
+	server := nuviotest.NewServer(t)
+	desktop := newDevice(t, server)
+	p, clock := desktop.pusher()
+
+	playing := episode
+	playing.Position, playing.Duration = 2_600_000, 3_000_000
+	_, err := desktop.store.SaveProgress(desktop.profile.ID, playing)
+	check(t, err)
+	check(t, p.flush(t.Context(), auto))
+
+	*clock = clock.Add(5 * time.Second)
+	done := playing
+	done.Position, done.LastWatched = 2_900_000, playing.LastWatched+5_000
+	_, err = desktop.store.SaveProgress(desktop.profile.ID, done)
+	check(t, err)
+	check(t, desktop.store.MarkWatched(desktop.profile.ID, store.WatchedItem{
+		ContentID: done.ContentID, ContentType: "series", Season: done.Season, Episode: done.Episode, WatchedAt: 2,
+	}))
+	check(t, p.FlushProgress(t.Context()))
+	if n := server.Pushes("sync_push_watch_progress"); n != 2 {
+		t.Fatalf("%d progress pushes, want the finished position sent inside the interval", n)
+	}
+	if n := server.Pushes("sync_push_watched_items"); n != 0 || rows(server, nuviotest.Watched) != 1 {
+		t.Fatalf("%d watched pushes, %d server rows: want the server's own item only", n, rows(server, nuviotest.Watched))
+	}
+	if got := pending(t, desktop); len(got) != 1 || got[0].Surface != store.SurfaceWatched {
+		t.Fatalf("queued = %+v, want the watched push held back", got)
+	}
+}
+
+// A forced flush (sign-out) doesn't wait for the grace.
 func TestFlushSendsHeldWatchedPushes(t *testing.T) {
 	server := nuviotest.NewServer(t)
 	desktop := newDevice(t, server)

@@ -11,10 +11,12 @@ import {
   mainEpisodes,
   playChoice,
   playerHeading,
+  resumePoint,
   seasons,
   seriesMarkChange,
   titleSearch,
   titleState,
+  watchingFor,
 } from "@/lib/title";
 
 const now = Date.parse("2026-10-29T00:00:00Z");
@@ -191,5 +193,79 @@ describe("playerHeading", () => {
 
   it("falls back to the picker's heading without the details", () => {
     expect(playerHeading(undefined, "tt9:1:2", "Show S1 · E2")).toEqual({ title: "Show S1 · E2" });
+  });
+});
+
+describe("watchingFor", () => {
+  const episode = { type: "series", id: "tt9", title: "Show S1 · E2", videoId: "tt9:1:2" } as const;
+
+  it("names a film by its id, and an episode by its season and number", () => {
+    expect(
+      watchingFor(
+        1,
+        { type: "movie", id: movie.id, title: "Fallback", videoId: movie.id },
+        movie,
+        [],
+      ),
+    ).toEqual({
+      profileId: 1,
+      contentId: movie.id,
+      contentType: "movie",
+      videoId: movie.id,
+      title: movie.name,
+    });
+    expect(watchingFor(2, episode, show, [])).toEqual({
+      profileId: 2,
+      contentId: "tt9",
+      contentType: "series",
+      videoId: "tt9:1:2",
+      season: 1,
+      episode: 2,
+      title: "One two",
+    });
+  });
+
+  it("finds the episode without the details: from its progress, else its id", () => {
+    const kept = { ...progress(1, 2, 400), videoId: "kitsu:9:2" };
+    expect(watchingFor(1, { ...episode, videoId: "kitsu:9:2" }, undefined, [kept])).toMatchObject({
+      season: 1,
+      episode: 2,
+      title: "Show S1 · E2",
+    });
+    expect(watchingFor(1, episode, undefined, [])).toMatchObject({ season: 1, episode: 2 });
+    // An id that isn't the title's with a season and number says nothing.
+    expect(watchingFor(1, { ...episode, videoId: "other:1:2" }, undefined, [])).not.toHaveProperty(
+      "season",
+    );
+  });
+});
+
+describe("resumePoint", () => {
+  const second = {
+    profileId: 1,
+    contentId: "tt9",
+    contentType: "series",
+    videoId: "tt9:1:2",
+    season: 1,
+    episode: 2,
+  };
+
+  it("resumes the episode's unfinished progress, in seconds", () => {
+    const kept = [
+      progress(1, 1, 300),
+      { ...progress(1, 2, 0), position: 450_500, duration: 1_000_000 },
+    ];
+    expect(resumePoint(kept, second)).toBe(450.5);
+    expect(resumePoint(kept, { ...second, episode: 3 })).toBe(0);
+  });
+
+  it("starts over what was watched to 90 %", () => {
+    expect(resumePoint([progress(1, 2, 900)], second)).toBe(0);
+    expect(resumePoint([progress(1, 2, 899)], second)).toBe(0.899);
+  });
+
+  it("matches a film by having no episode", () => {
+    const film = { profileId: 1, contentId: "tt9", contentType: "movie", videoId: "tt9" };
+    expect(resumePoint([progress(1, 2, 500), progress(undefined, undefined, 200)], film)).toBe(0.2);
   });
 });

@@ -173,7 +173,50 @@ type LoadOptions struct {
 	Captions string `json:"captions"`
 	// SubtitleSize is "small", "medium" or "large"; "" keeps the current.
 	SubtitleSize string `json:"subtitleSize"`
+	// Watching names what the file is, so how far it plays is reported
+	// (#64); nil for a file nobody keeps progress of.
+	Watching *Watching `json:"watching,omitempty"`
 }
+
+// Watching is the film or episode a file plays, as the profile's progress
+// and watched items name it.
+type Watching struct {
+	ProfileID   uint64 `json:"profileId"`
+	ContentID   string `json:"contentId"`
+	ContentType string `json:"contentType"`
+	VideoID     string `json:"videoId"`
+	Season      *int   `json:"season,omitempty"`
+	Episode     *int   `json:"episode,omitempty"`
+	// Title names the watched item: the episode's name, or the title's.
+	Title string `json:"title,omitempty"`
+}
+
+// Report says how far a Watching file got, and why it's said now. Times are
+// in seconds.
+type Report struct {
+	Watching Watching
+	Position float64
+	Duration float64
+	Why      string
+}
+
+// Why a Report is sent.
+const (
+	// ReportPlaying comes every ReportEvery while the file plays.
+	ReportPlaying = "playing"
+	// ReportPaused, ReportSeeked, ReportEnded and ReportStopped come when
+	// the file pauses, lands after a seek, ends by itself (played to the
+	// end, or failed), or is stopped or replaced (leaving the screen,
+	// another Load, the app quitting).
+	ReportPaused  = "paused"
+	ReportSeeked  = "seeked"
+	ReportEnded   = "ended"
+	ReportStopped = "stopped"
+)
+
+// ReportEvery is how often a file that plays is reported. The store keeps
+// each report; the push loop sends progress at most every 30 s.
+const ReportEvery = 10 * time.Second
 
 // subtitleScales are mpv's sub-scale for each SubtitleSize.
 var subtitleScales = map[string]float64{"small": 0.75, "medium": 1, "large": 1.35}
@@ -193,7 +236,8 @@ func (o LoadOptions) valid() bool {
 		// Codes only: mpv's alang and slang are lists, split on commas.
 		languageCode.MatchString(o.AudioLanguage) && languageCode.MatchString(o.SubtitleLanguage) &&
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
-		(o.SubtitleSize == "" || sized)
+		(o.SubtitleSize == "" || sized) &&
+		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
 }
 
 // tracks are the properties that pick a new file's tracks from o, found by
@@ -270,6 +314,9 @@ type Service struct {
 	newHost func() (host, error)
 	window  *application.WebviewWindow
 	emit    func(name string, data any)
+	// report gets how far a Watching file got (#64); nil until ReportTo.
+	report      func(Report)
+	reportEvery time.Duration
 
 	// ops serialises opening and closing sessions.
 	ops sync.Mutex
@@ -281,6 +328,11 @@ type Service struct {
 	stateDirty, timeDirty, forceTime bool
 	ended                            *Ended
 	lastTime                         time.Time
+	// What the file playing is, why it's due a report and when it last had
+	// one.
+	watching   *Watching
+	reportWhy  string
+	lastReport time.Time
 }
 
 // session is one mpv handle and its video host.
@@ -292,6 +344,7 @@ type session struct {
 
 	// Only the event loop uses these.
 	loaded  bool   // a file is loaded (file-loaded until end-file)
+	started bool   // the file showed its first frame (playback-restart)
 	playing bool   // what host.playing was last told
 	lastErr string // the file's last error-level log message
 	httpErr string // the file's last refused HTTP request, from FFmpeg
@@ -305,10 +358,11 @@ type session struct {
 // stream doesn't name one. It can't show video until UseWindow.
 func NewService(version string) *Service {
 	return &Service{
-		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
-		http:      &http.Client{},
-		emit:      func(string, any) {},
-		state:     idle(false),
+		userAgent:   fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		http:        &http.Client{},
+		emit:        func(string, any) {},
+		state:       idle(false),
+		reportEvery: ReportEvery,
 	}
 }
 
@@ -328,6 +382,17 @@ func UseWindow(s *Service, window *application.WebviewWindow) {
 	}
 	window.OnWindowEvent(events.Common.WindowFullscreen, fullscreen(true))
 	window.OnWindowEvent(events.Common.WindowUnFullscreen, fullscreen(false))
+}
+
+// ReportTo sends how far each Watching file plays to report: every
+// ReportEvery while playing, and when it pauses, seeks, ends or is stopped.
+// It's called on the player's own goroutine, or in Stop and Load, so it
+// shouldn't wait on the network. It isn't a method, so Wails doesn't bind
+// it.
+func ReportTo(s *Service, report func(Report)) {
+	s.mu.Lock()
+	s.report = report
+	s.mu.Unlock()
 }
 
 // ServiceStartup has the service send its events to the frontend.
@@ -356,6 +421,13 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	if err != nil {
 		return err
 	}
+	// The file this one replaces got as far as it got.
+	s.sendReport(s.stopReport())
+	var watching *Watching
+	if opts.Watching != nil {
+		w := *opts.Watching
+		watching = &w
+	}
 	userAgent := source.UserAgent
 	if userAgent == "" {
 		userAgent = s.userAgent
@@ -381,6 +453,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
 		st.Time = Time{Position: opts.Start}
 		st.Tracks = []Track{}
+		s.watching, s.reportWhy, s.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
 	if opts.Start > 0 {
@@ -481,12 +554,15 @@ func (s *Service) Stop() error {
 	if ses == nil {
 		return nil
 	}
+	// Before the stop, so the position is the one the user left at.
+	s.sendReport(s.stopReport())
 	_ = ses.m.command("stop")
 	s.closeSession(ses)
 	s.mu.Lock()
 	s.s = nil
 	s.state = idle(s.state.Fullscreen)
 	s.stateDirty, s.timeDirty, s.forceTime, s.ended = false, false, false, nil
+	s.watching, s.reportWhy = nil, ""
 	state := s.copyState()
 	s.mu.Unlock()
 	s.emit(EventState, state)
@@ -704,6 +780,7 @@ func (s *Service) handle(ses *session, ev mpvEvent) {
 		s.property(ses, ev.Prop, ev.Value)
 	case eventStartFile:
 		ses.lastErr, ses.httpErr = "", ""
+		ses.started = false
 	case eventFileLoaded:
 		ses.loaded = true
 	case eventPlaybackRestart:
@@ -711,6 +788,10 @@ func (s *Service) handle(ses *session, ev mpvEvent) {
 		s.mu.Lock()
 		s.state.Loading = false
 		s.stateDirty, s.timeDirty, s.forceTime = true, true, true
+		if ses.started {
+			s.due(ReportSeeked)
+		}
+		ses.started = true
 		s.mu.Unlock()
 	case eventEndFile:
 		// "stop" and "redirect" come from Stop or another Load.
@@ -726,6 +807,11 @@ func (s *Service) handle(ses *session, ev mpvEvent) {
 		s.mu.Lock()
 		s.state.Loading, s.state.Buffering, s.state.Seeking = false, false, false
 		s.stateDirty, s.ended = true, ended
+		if ev.Reason == "eof" && s.state.Duration > 0 {
+			// time-pos stops a frame or so short of the end.
+			s.state.Position = s.state.Duration
+		}
+		s.due(ReportEnded)
 		s.mu.Unlock()
 	case eventLogMessage:
 		text := redact(strings.TrimSpace(ev.Text))
@@ -765,7 +851,11 @@ func (s *Service) property(ses *session, name string, v any) {
 		s.timeDirty = true
 		return
 	case "pause":
-		st.Paused, _ = v.(bool)
+		paused, _ := v.(bool)
+		if paused && !st.Paused && ses.loaded {
+			s.due(ReportPaused)
+		}
+		st.Paused = paused
 	case "paused-for-cache":
 		st.Buffering, _ = v.(bool)
 	case "cache-buffering-state":
@@ -818,6 +908,14 @@ func (s *Service) flush(ses *session) float64 {
 	ended := s.ended
 	s.ended = nil
 	playing := ses != nil && ses.loaded && !s.state.Paused
+	if s.reportWhy == "" && playing && !s.state.Loading && now.Sub(s.lastReport) >= s.reportEvery {
+		s.reportWhy = ReportPlaying
+	}
+	var report *Report
+	if s.reportWhy != "" {
+		report = s.reportNow(s.reportWhy)
+		s.reportWhy, s.lastReport = "", now
+	}
 	s.mu.Unlock()
 
 	if ses != nil && playing != ses.playing {
@@ -833,7 +931,55 @@ func (s *Service) flush(ses *session) float64 {
 	if ended != nil {
 		s.emit(EventEnded, *ended)
 	}
+	s.sendReport(report)
 	return wait
+}
+
+// --- progress reports (#64) -------------------------------------------------
+
+// due asks the event loop for a report, keeping a pause, seek or end over a
+// periodic one. Call with s.mu held.
+func (s *Service) due(why string) {
+	if s.reportWhy == "" || s.reportWhy == ReportPlaying {
+		s.reportWhy = why
+	}
+}
+
+// reportNow is a report of where the Watching file is, or nil when nothing
+// is to be reported: no Watching, or a file whose length isn't known yet
+// (still loading, or live). Call with s.mu held.
+func (s *Service) reportNow(why string) *Report {
+	if s.watching == nil || s.report == nil || s.state.Duration <= 0 {
+		return nil
+	}
+	return &Report{
+		Watching: *s.watching,
+		Position: min(max(s.state.Position, 0), s.state.Duration),
+		Duration: s.state.Duration,
+		Why:      why,
+	}
+}
+
+// stopReport is the report for a file being stopped or replaced. A file
+// still loading after a Load reports nothing: its position is the start it
+// was asked for, not one it played to.
+func (s *Service) stopReport() *Report {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.state.Loading {
+		return nil
+	}
+	return s.reportNow(ReportStopped)
+}
+
+func (s *Service) sendReport(report *Report) {
+	if report == nil {
+		return
+	}
+	s.mu.Lock()
+	send := s.report
+	s.mu.Unlock()
+	send(*report)
 }
 
 // --- helpers ------------------------------------------------------------------

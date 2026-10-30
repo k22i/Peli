@@ -1,6 +1,7 @@
 import { queryOptions, type QueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
+import type { Watching } from "@bindings/player";
 import type { LibraryItem, Progress, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import {
@@ -251,6 +252,53 @@ export function playerHeading(
   if (!meta || !video || !isEpisode(video)) return { title: meta?.name ?? fallback };
   const code = episodeCode(video);
   return { title: meta.name, episode: video.title ? `${code} · ${video.title}` : code };
+}
+
+// What the player reports progress for (#64): the film or episode, named
+// as Nuvio names progress and watched items. An episode's season and number
+// come from the title's details, else from progress kept for it, else from
+// its id ("tt0903747:2:4"); the watched item takes the episode's name.
+export function watchingFor(
+  profileId: number,
+  target: PlayTarget,
+  meta: Meta | undefined,
+  progress: readonly Progress[],
+): Watching {
+  const videoId = target.videoId ?? target.id;
+  const name = meta?.name || target.title;
+  const watching: Watching = {
+    profileId,
+    contentId: target.id,
+    contentType: target.type,
+    videoId,
+    title: name,
+  };
+  if (!isSeriesType(target.type)) return watching;
+  const video = meta?.videos?.find((candidate) => candidate.id === videoId);
+  if (video && isEpisode(video)) {
+    return {
+      ...watching,
+      season: video.season,
+      episode: video.episode,
+      title: video.title || name,
+    };
+  }
+  const entry = progress.find(
+    (candidate) => candidate.videoId === videoId && candidate.season != null,
+  );
+  if (entry) return { ...watching, season: entry.season ?? null, episode: entry.episode ?? null };
+  const numbers = /:(\d+):(\d+)$/.exec(videoId);
+  if (!numbers || !videoId.startsWith(`${target.id}:`)) return watching;
+  return { ...watching, season: Number(numbers[1]), episode: Number(numbers[2]) };
+}
+
+// Where the player starts (#64), in seconds: where the film or episode was
+// left, by its progress as the store has it now (pulled from Nuvio, so
+// from another device too), or the beginning if it has none or got to 90 %.
+export function resumePoint(progress: readonly Progress[], watching: Watching): number {
+  const key = stateKey(watching.season, watching.episode);
+  const entry = progress.find((candidate) => stateKey(candidate.season, candidate.episode) === key);
+  return entry && entry.position > 0 && !finished(entry) ? entry.position / 1000 : 0;
 }
 
 export function episodeTarget(meta: Meta, episode: Episode, resumeAt?: number): PlayTarget {

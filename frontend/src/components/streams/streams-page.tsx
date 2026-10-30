@@ -12,6 +12,7 @@ import { AlertCircle, Check, ChevronLeft, Puzzle } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import type { Profile } from "@bindings/store";
+import { Service as Sync } from "@bindings/syncer";
 import { Notice } from "@/components/browse/browse-page";
 import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -35,14 +36,22 @@ import {
 import { resolutionLabel } from "@/lib/stream-labels";
 import { subtitleTarget } from "@/lib/subtitles";
 import { Torrents, torrentStatusText } from "@/lib/torrent";
-import { cachedTitleMeta, playerHeading, titleMetaQuery } from "@/lib/title";
+import {
+  cachedTitleMeta,
+  playerHeading,
+  resumePoint,
+  titleMetaQuery,
+  titleProgressQuery,
+  watchingFor,
+} from "@/lib/title";
 
 // The stream picker: every stream addon asked at once, each with its own
 // state (#50), and their streams ranked as they arrive (#51) and shown by
 // quality (#52): the top pick first, one key (P) to play it, and likely
 // fakes and CAM / TS collapsed. Leaving it aborts the requests still out.
 // Picking a stream resolves its link, or another copy's (#53), or streams
-// its torrent (#55), and plays it (#60).
+// its torrent (#55), and plays it (#60) from where the profile left it, as
+// synced (#64).
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -131,6 +140,11 @@ function Picker({
   const { view, pin } = useRankedStreams(sources, ctx, prefs);
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const navigate = useNavigate();
+  // Where it was left may have moved on another device: pull while the
+  // user picks (Go skips it if it pulled in the last half minute).
+  useEffect(() => {
+    Sync.Pull().catch(() => {});
+  }, []);
 
   // Resolving the pick (#53): one at a time, so a second pick replaces the
   // first, and none once the picker is left.
@@ -160,7 +174,7 @@ function Picker({
     opening.current = current;
     // A torrent takes a while to find peers: say how it's going.
     let settled = false;
-    const watching = attempts(candidate).some(({ stream }) => !stream.url && stream.infoHash)
+    const statusTimer = attempts(candidate).some(({ stream }) => !stream.url && stream.infoHash)
       ? setInterval(() => {
           Torrents.Status()
             .then((status) => {
@@ -177,14 +191,22 @@ function Picker({
     })
       .finally(() => {
         settled = true;
-        clearInterval(watching);
+        clearInterval(statusTimer);
       })
       .then(
-        ({ source, attempt }) => {
+        async ({ source, attempt }) => {
           if (controller.signal.aborted) return;
+          // Where it was left, as the store has it now (#64); if the store
+          // can't say, where the card said (resumeAt is in ms).
+          const progress = await client
+            .fetchQuery({ ...titleProgressQuery(profile.id, target.id), staleTime: 0 })
+            .catch(() => undefined);
+          if (controller.signal.aborted) return;
+          const watching = watchingFor(profile.id, target, details.data?.meta, progress ?? []);
+          const start = progress ? resumePoint(progress, watching) : (target.resumeAt ?? 0) / 1000;
           // The player (#60) takes it from here, in the profile's languages
-          // (#62); resumeAt is in ms.
-          void Player.Load(source, loadOptions((target.resumeAt ?? 0) / 1000, settings.data)).then(
+          // (#62), keeping its progress as it plays (#64).
+          void Player.Load(source, loadOptions(start, settings.data, [], watching)).then(
             () => {
               toastManager.close(toast);
               void navigate({
@@ -194,6 +216,8 @@ function Picker({
                   player: {
                     ...playerHeading(details.data?.meta, video, target.title),
                     source,
+                    watching,
+                    resumedAt: start,
                     subtitles: subtitleTarget(
                       type,
                       video,

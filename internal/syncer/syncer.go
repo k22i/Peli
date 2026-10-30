@@ -285,7 +285,7 @@ func (s *Service) ServiceShutdown() error {
 	s.pusher.Stop()
 	ctx, cancel := context.WithTimeout(context.Background(), ShutdownFlush)
 	defer cancel()
-	if err := s.pusher.Flush(ctx); err != nil {
+	if err := s.pusher.FlushProgress(ctx); err != nil {
 		logPushError(err)
 	}
 	if s.stop != nil {
@@ -295,11 +295,13 @@ func (s *Service) ServiceShutdown() error {
 	return nil
 }
 
-// Flush pushes everything queued now, for when playback pauses or stops: the
-// loop pushes progress at most every 30 s while it plays, so the position
-// where it stopped goes out at once. It returns the error that stopped the
-// push, such as being offline; what failed stays queued and is retried.
-func (s *Service) Flush(ctx context.Context) error { return s.pusher.Flush(ctx) }
+// Flush pushes what is queued now, as the player does itself when playback
+// pauses, seeks or stops (#64): the loop pushes progress at most every 30 s
+// while it plays, so the position where it stopped goes out at once. A
+// watched item still waits for the server's own (Pusher.FlushProgress). It
+// returns the error that stopped the push, such as being offline; what
+// failed stays queued and is retried.
+func (s *Service) Flush(ctx context.Context) error { return s.pusher.FlushProgress(ctx) }
 
 // Pull pulls the profile in use now, for when the frontend has just switched
 // to it or signed in. It does nothing if the profile was pulled in the last
