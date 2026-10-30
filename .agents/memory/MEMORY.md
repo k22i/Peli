@@ -19,3 +19,4 @@
 - [TMDB key](tmdb-key.md) — #47 tmdb.api-key in keychain, lib/tmdb.ts mapping + useTmdbArt, Artwork fallback, mock @bindings/secrets in route tests
 - [Upcoming episodes](upcoming-episodes.md) — #48 Library ?view=upcoming, lib/calendar.ts (28 days + Later, same-day rows), cachedTitleMeta, useOpenTitle season
 - [Collection folders](collection-folders.md) — #96 /folder route, folderSources, round-robin mergeSources (append-only depth), useFolderPages observers, stub harness config
+- [Stream requests](stream-requests.md) — #50 useStreamAddons (enabled, not visible), useStreams per-addon state, StreamFeed 150-slices, /streams picker that usePlay opens

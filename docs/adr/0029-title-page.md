@@ -39,7 +39,7 @@ Marking a season, or a series of a thousand episodes, through `MarkWatched` woul
 
 ## Play
 
-Everything goes through `usePlay()` (ADR-0026). The stream picker (#52) and the player (#60, #64) will fill it in; until then it shows a toast.
+Everything goes through `usePlay()` (ADR-0026). The stream picker (#52) and the player (#60, #64) will fill it in; until then it shows a toast. Since #50 it opens the stream picker (ADR-0034).
 
 - **Film:** Resume from its progress, or Play.
 - **Series:** Resume the most recently watched episode still under 90 %. Otherwise play the episode after the furthest one watched ("Play S2 · E4"), and after the last episode start again from S1 · E1. Specials only play when picked.

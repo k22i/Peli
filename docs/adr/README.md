@@ -37,5 +37,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0031](0031-optional-tmdb-key.md) | An optional TMDB key: the user's own, in the keychain, adding art over the addon's | 2026-10-30 |
 | [0032](0032-upcoming-episodes.md) | Upcoming episodes: a Library tab built from each show's details | 2026-10-30 |
 | [0033](0033-collection-folders.md) | Collection folders: a folder's catalogs taken in turn, in one grid that only grows | 2026-10-30 |
+| [0034](0034-parallel-stream-requests.md) | Streams: every stream addon at once, each with its own state, fed on in slices | 2026-10-30 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

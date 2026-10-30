@@ -288,7 +288,7 @@ describe("title page", () => {
     ];
     serve();
     const user = userEvent.setup();
-    await renderApp(seriesPath);
+    const { router } = await renderApp(seriesPath);
 
     expect(await screen.findByRole("img", { name: "Breaking Bad" })).toBeInTheDocument();
     expect(await episodeNames()).toEqual([
@@ -298,7 +298,10 @@ describe("title page", () => {
       "S1 · E4: Cancer Man",
     ]);
     await user.click(screen.getByRole("button", { name: "Resume S1 · E2" }));
-    expect(await screen.findByText("Can’t play Breaking Bad S1 · E2 yet")).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "Breaking Bad S1 · E2" }),
+    ).toBeInTheDocument();
+    expect(router.state.location.search).toMatchObject({ video: "tt0903747:1:2" });
   });
 
   it("marks a season, keeping the series mark in step", async () => {

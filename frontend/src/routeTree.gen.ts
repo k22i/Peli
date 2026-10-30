@@ -23,6 +23,7 @@ import { Route as ShowsRouteImport } from './routes/shows'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as FolderCollectionIdFolderIdRouteImport } from './routes/folder.$collectionId.$folderId'
+import { Route as StreamsTypeIdRouteImport } from './routes/streams.$type.$id'
 import { Route as TitleTypeIdRouteImport } from './routes/title.$type.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -96,6 +97,11 @@ const FolderCollectionIdFolderIdRoute =
     path: '/folder/$collectionId/$folderId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const StreamsTypeIdRoute = StreamsTypeIdRouteImport.update({
+  id: '/streams/$type/$id',
+  path: '/streams/$type/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TitleTypeIdRoute = TitleTypeIdRouteImport.update({
   id: '/title/$type/$id',
   path: '/title/$type/$id',
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/welcome': typeof WelcomeRoute
   '/folder/$collectionId/$folderId': typeof FolderCollectionIdFolderIdRoute
+  '/streams/$type/$id': typeof StreamsTypeIdRoute
   '/title/$type/$id': typeof TitleTypeIdRoute
 }
 export interface FileRoutesByTo {
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute
   '/welcome': typeof WelcomeRoute
   '/folder/$collectionId/$folderId': typeof FolderCollectionIdFolderIdRoute
+  '/streams/$type/$id': typeof StreamsTypeIdRoute
   '/title/$type/$id': typeof TitleTypeIdRoute
 }
 export interface FileRoutesById {
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/welcome': typeof WelcomeRoute
   '/folder/$collectionId/$folderId': typeof FolderCollectionIdFolderIdRoute
+  '/streams/$type/$id': typeof StreamsTypeIdRoute
   '/title/$type/$id': typeof TitleTypeIdRoute
 }
 export interface FileRouteTypes {
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/welcome'
     | '/folder/$collectionId/$folderId'
+    | '/streams/$type/$id'
     | '/title/$type/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -188,6 +198,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/welcome'
     | '/folder/$collectionId/$folderId'
+    | '/streams/$type/$id'
     | '/title/$type/$id'
   id:
     | '__root__'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/welcome'
     | '/folder/$collectionId/$folderId'
+    | '/streams/$type/$id'
     | '/title/$type/$id'
   fileRoutesById: FileRoutesById
 }
@@ -223,6 +235,7 @@ export interface RootRouteChildren {
   SignInRoute: typeof SignInRoute
   WelcomeRoute: typeof WelcomeRoute
   FolderCollectionIdFolderIdRoute: typeof FolderCollectionIdFolderIdRoute
+  StreamsTypeIdRoute: typeof StreamsTypeIdRoute
   TitleTypeIdRoute: typeof TitleTypeIdRoute
 }
 
@@ -326,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FolderCollectionIdFolderIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/streams/$type/$id': {
+      id: '/streams/$type/$id'
+      path: '/streams/$type/$id'
+      fullPath: '/streams/$type/$id'
+      preLoaderRoute: typeof StreamsTypeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/title/$type/$id': {
       id: '/title/$type/$id'
       path: '/title/$type/$id'
@@ -351,6 +371,7 @@ const rootRouteChildren: RootRouteChildren = {
   SignInRoute: SignInRoute,
   WelcomeRoute: WelcomeRoute,
   FolderCollectionIdFolderIdRoute: FolderCollectionIdFolderIdRoute,
+  StreamsTypeIdRoute: StreamsTypeIdRoute,
   TitleTypeIdRoute: TitleTypeIdRoute,
 }
 export const routeTree = rootRouteImport

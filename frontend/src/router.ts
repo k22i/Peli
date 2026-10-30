@@ -1,6 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/react-router";
 
+import type { PlayTarget } from "@/lib/playback";
 import type { TitlePreview } from "@/lib/title";
 import { routeTree } from "@/routeTree.gen";
 
@@ -31,6 +32,8 @@ declare module "@tanstack/react-router" {
     // The card a title page was opened from, so it paints before its
     // details load (#45).
     title?: TitlePreview;
+    // What the stream picker was opened to play, for its heading (#50).
+    play?: PlayTarget;
   }
 
   interface Register {

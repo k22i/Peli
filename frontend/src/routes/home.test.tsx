@@ -271,13 +271,16 @@ describe("catalogs", () => {
 
   it("features the first catalog's first title and plays it", async () => {
     const user = userEvent.setup();
-    await renderApp("/");
+    const { router } = await renderApp("/");
 
     const hero = await screen.findByRole("region", { name: theInvite.name });
     expect(hero).toHaveTextContent("Popular · Movies");
     expect(hero).toHaveTextContent("IMDb 7.5");
     await user.click(within(hero).getByRole("button", { name: "Play" }));
-    expect(await screen.findByText(`Can’t play ${theInvite.name} yet`)).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { level: 1, name: theInvite.name }),
+    ).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe(`/streams/movie/${theInvite.id}`);
   });
 
   it("offers Resume when the featured title is in Continue Watching", async () => {
@@ -293,12 +296,13 @@ describe("catalogs", () => {
   it("resumes a Continue Watching entry in one click", async () => {
     mocks.library.mockResolvedValue([dune, severance]);
     const user = userEvent.setup();
-    await renderApp("/");
+    const { router } = await renderApp("/");
 
     await user.click(
       within(await row("Continue watching")).getByRole("button", { name: /Severance/ }),
     );
-    expect(await screen.findByText("Can’t play Severance yet")).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: "Severance" })).toBeInTheDocument();
+    expect(router.state.location.pathname).toMatch(/^\/streams\//);
   });
 
   it("names a Continue Watching entry from its meta when it isn't saved", async () => {
