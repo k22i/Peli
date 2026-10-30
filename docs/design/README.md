@@ -111,3 +111,13 @@ Chrome at 1000×618 (2×), with the Go services stubbed. Avatar images are Nuvio
 Colours, with the initials colour picked for contrast: `#33B5E0` (black, 8.3:1), `#1E88E5` (black, 5.4), `#7957BD` (white, 5.4), `#D81B60` (white, 4.9), `#E53935` (black, 4.7), `#FB8C00` (black, 8.3), `#FDD835` (black, 14.2), `#43A047` (black, 6.0), `#00897B` (black, 4.6), `#546E7A` (white, 5.4). A colour set elsewhere (Nuvio takes any) is offered first. The Guest is renamed only, and stays on the lagoon brand.
 
 Chrome at 1280×800 (2×), with the Go services stubbed. Avatar images are Nuvio's stock avatars, from a local self-host stack's catalog.
+
+### Stream picker (#52)
+
+| | |
+|---|---|
+| The top pick, played with **P**, then groups by quality; each stream told by its badges ([ADR-0036](../adr/0036-stream-picker.md)). Live answers from Torrentio and Peerflix, no debrid | ![](stream-picker-dark.jpg) |
+| A file name, shown only on request (the File name button, or **I**) | ![](stream-picker-file-name-light.jpg) |
+| Gallery › Stream picker: cached on debrid (brand, with a bolt), not cached, and P2P | ![](stream-picker-gallery-light.jpg) |
+
+Chrome at 1280×800 (2×), with the Go services stubbed. The top pick's border and "Top pick" are `--brand` on `--card` (checked in `contrastPairs`).

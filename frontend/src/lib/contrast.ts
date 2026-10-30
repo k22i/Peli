@@ -72,6 +72,7 @@ export const contrastPairs: ContrastPair[] = [
     min: AA_TEXT,
   },
   { label: "Brand text", foreground: "brand", background: ["background"], min: AA_TEXT },
+  { label: "Brand text on card", foreground: "brand", background: ["card"], min: AA_TEXT },
   {
     label: "Selected chip",
     foreground: "brand",

@@ -40,6 +40,7 @@ describe("gallery", () => {
       "Chips and badges",
       "Overlays",
       "Skeletons",
+      "Stream picker",
       "Long rows",
     ]) {
       expect(screen.getByRole("heading", { level: 2, name })).toBeInTheDocument();

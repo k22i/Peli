@@ -89,7 +89,7 @@ So the ≤ 16 ms target for ~200 streams holds at p95 on both. In **headless Chr
 
 ## The picker until #52
 
-The provisional picker (ADR-0034) now lists the ranked view: the top pick first, labelled "Top pick", then each stream with its tier, and a button for the collapsed groups ("Show 23 CAM / TS and 70 likely fake"). The summary counts unique streams. Picking one still says the player isn't built. #52 replaces the list with the real design: badges, a one-key play, the raw file name on demand only.
+The provisional picker (ADR-0034) now lists the ranked view: the top pick first, labelled "Top pick", then each stream with its tier, and a button for the collapsed groups ("Show 23 CAM / TS and 70 likely fake"). The summary counts unique streams. Picking one still says the player isn't built. #52 has since replaced the list with the real design: badges, a one-key play, the raw file name on demand only ([ADR-0036](0036-stream-picker.md)).
 
 ## Never logged
 

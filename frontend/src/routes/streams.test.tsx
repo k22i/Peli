@@ -129,8 +129,12 @@ const debrid = (file: string, marker: string) => ({
 
 const addonStatus = (name: string) =>
   within(screen.getByRole("list", { name: "Addons" })).getByRole("listitem", { name });
+// The streams' own buttons: not group headings, not "File name".
 const shownStreams = () =>
-  within(screen.getByRole("list", { name: "Streams" })).queryAllByRole("button");
+  within(screen.getByRole("list", { name: "Streams" }))
+    .queryAllByRole("button")
+    .filter((button) => !button.hasAttribute("aria-expanded"));
+const topPick = () => shownStreams()[0]!;
 
 beforeEach(() => {
   mocks.current.mockResolvedValue(kevin);
@@ -179,8 +183,8 @@ describe("stream picker", () => {
     expect(await screen.findByText("14 streams from 2 addons")).toBeInTheDocument();
     // Torrentio's say nothing of their quality, so they rank last, in the
     // order they came.
-    const names = shownStreams().map((button) => button.textContent);
-    expect(names.at(-1)).toMatch(/^UnknownSource · 2Torrentio/);
+    expect(screen.getByRole("heading", { name: "Unknown 3" })).toBeInTheDocument();
+    expect(shownStreams().at(-1)).toHaveTextContent(/^Unknown qualityTorrentio$/);
   });
 
   it("isn't done while an addon's manifest is still loading", async () => {
@@ -278,14 +282,20 @@ describe("stream picker", () => {
     const user = userEvent.setup();
     await renderApp(pickerPath);
 
-    const toggle = await screen.findByRole("button", { name: "Show 8 likely fake" });
-    // Cached on debrid first, as the top pick.
-    expect(shownStreams()[0]).toHaveTextContent(/^Top pick\[TB\+\] Torrentio · 1080p/);
+    const fakes = await screen.findByRole("button", { name: /^Likely fake 8/ });
+    expect(fakes).toHaveAttribute("aria-expanded", "false");
+    // Cached on debrid first, as the top pick, though it's not the best
+    // picture.
+    expect(topPick()).toHaveTextContent(/^Top pick1080pBlu-ray/);
+    expect(topPick()).toHaveTextContent("Cached · TorBox");
     expect(shownStreams()).toHaveLength(5);
 
-    await user.click(toggle);
+    await user.click(fakes);
+    expect(fakes).toHaveAttribute("aria-expanded", "true");
     expect(shownStreams()).toHaveLength(13);
-    expect(screen.getByRole("button", { name: "Hide 8 likely fake" })).toBeInTheDocument();
+    expect(screen.getAllByText("Another year’s release")).toHaveLength(8);
+    await user.click(fakes);
+    expect(shownStreams()).toHaveLength(5);
     expect(document.body.innerHTML).not.toContain("KEY");
   });
 
@@ -323,5 +333,109 @@ describe("stream picker", () => {
     ).findAllByRole("button");
     await user.click(first!);
     expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+  });
+
+  it("plays the top pick with P, from anywhere on the picker", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [debrid("The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv", "+")],
+      },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await user.keyboard("p");
+    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+    expect(screen.getByText(/You picked 1080p from Torrentio/)).toBeInTheDocument();
+  });
+
+  it("shows a stream's file name only when asked", async () => {
+    const file = "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv";
+    serve({ [movieStreams("torrentio.strem.fun")]: { streams: [debrid(file, "+")] } });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    expect(screen.queryByText(file)).toBeNull();
+    const button = within(screen.getByRole("list", { name: "Streams" })).getByRole("button", {
+      name: "File name",
+    });
+    await user.click(button);
+    expect(button).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByText(file)).toBeInTheDocument();
+    expect(document.body.innerHTML).not.toContain("KEY");
+
+    // I, on the row, hides it again.
+    topPick().focus();
+    await user.keyboard("i");
+    expect(screen.queryByText(file)).toBeNull();
+  });
+
+  it("moves through the list with the arrow keys, Home and End, and plays with Enter", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [debrid("The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv", "+")],
+      },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    // The list is one Tab stop, at the top pick.
+    const list = screen.getByRole("list", { name: "Streams" });
+    const stop = within(list)
+      .getAllByRole("button")
+      .find((button) => button.tabIndex === 0);
+    expect(stop).toBe(topPick());
+
+    topPick().focus();
+    await user.keyboard("{ArrowDown}");
+    expect(document.activeElement).toBe(shownStreams()[1]);
+    await user.keyboard("{ArrowUp}");
+    expect(document.activeElement).toBe(topPick());
+    // End reaches the collapsed group's heading; Enter opens it.
+    await user.keyboard("{End}");
+    const fakes = screen.getByRole("button", { name: /^Likely fake 8/ });
+    expect(document.activeElement).toBe(fakes);
+    await user.keyboard("{Enter}");
+    expect(fakes).toHaveAttribute("aria-expanded", "true");
+    await user.keyboard("{Home}");
+    expect(document.activeElement).toBe(topPick());
+    await user.keyboard("{Enter}");
+    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+  });
+
+  it("keeps the top pick once the user moves into the list", async () => {
+    const slow = later<unknown>();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: slow.promise,
+      [movieStreams("peerflix.example")]: {
+        streams: [
+          {
+            name: "Peerflix 1080p",
+            description: "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv\n👤 40 💾 9.6 GB",
+            infoHash: "a".repeat(40),
+          },
+        ],
+      },
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("P2P · 40 seeders"));
+    await user.click(topPick().nextElementSibling!.querySelector("button")!);
+
+    // A better one arrives: cached on debrid. It's listed, but below.
+    slow.resolve({
+      streams: [debrid("The.Shawshank.Redemption.1994.2160p.BluRay.x265-GRP.mkv", "+")],
+    });
+    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("1 stream"));
+    await waitFor(() => expect(shownStreams()).toHaveLength(2));
+    expect(topPick()).toHaveTextContent("P2P · 40 seeders");
+    expect(shownStreams()[1]).toHaveTextContent("Cached · TorBox");
   });
 });

@@ -2,6 +2,7 @@ import { Info, Play, Plus, SlidersHorizontal, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 import { GallerySection, Specimen } from "@/components/gallery/gallery-section";
+import { StreamSample } from "@/components/gallery/stream-sample";
 import { StressSection } from "@/components/gallery/stress";
 import { continueWatching, genres, sampleTitles } from "@/components/gallery/samples";
 import {
@@ -292,6 +293,8 @@ export function Components() {
           </div>
         </div>
       </GallerySection>
+
+      <StreamSample />
 
       <StressSection />
     </>

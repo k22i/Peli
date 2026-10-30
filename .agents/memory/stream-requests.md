@@ -10,7 +10,7 @@ Streams (#50, ADR-0034) are `frontend/src/lib/streams.ts`: `useStreamAddons(prof
 **Why:** the ticket asks for progressive per-addon results, timeouts and cancel-on-leave; ranking (#51) and the real picker UI (#52) are separate tickets, so the picker lists streams unranked in arrival order.
 
 **How to apply:**
-- #51 is done: the picker ranks through `useRankedStreams` (see [[stream-ranking]]). #52: replace `StreamList`; keep the per-addon pills and the summary (it says "still loading addons" while a manifest is pending).
+- #51 is done: the picker ranks through `useRankedStreams` (see [[stream-ranking]]). #52 is done: the list is [[stream-picker]]; the per-addon pills and the summary stayed.
 - `usePlay()` now navigates to the picker; a series without `videoId` goes to its title page. Picking a stream still toasts "Can’t play … yet" until #60.
 - Cancellation relies on unmount: the picker must not keep a stream query observed elsewhere.
 - Tests: `routes/streams.test.tsx` `serve()` races each answer against the request's abort signal and returns `{url, signal}` per call, so tests can assert aborts.

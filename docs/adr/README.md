@@ -39,5 +39,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0033](0033-collection-folders.md) | Collection folders: a folder's catalogs taken in turn, in one grid that only grows | 2026-10-30 |
 | [0034](0034-parallel-stream-requests.md) | Streams: every stream addon at once, each with its own state, fed on in slices | 2026-10-30 |
 | [0035](0035-stream-ranking-engine.md) | Stream ranking: our own parser and ranker, in a Web Worker, fed slice by slice | 2026-10-30 |
+| [0036](0036-stream-picker.md) | The stream picker: one highlighted top pick played with P, groups by quality, badges instead of file names | 2026-10-30 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

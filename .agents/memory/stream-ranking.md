@@ -10,7 +10,7 @@ The ranking engine (#51, ADR-0035) is `frontend/src/lib/ranking/`: `parseStream`
 **Why:** #6 measured ~1,400 streams per Comet answer; the worker + 150-slices keep the page under a frame. The user wants our own code, no ranking library.
 
 **How to apply:**
-- #52: read `view.top`/`view.groups` (Candidate has `parsed`, `verdict`, `tier`, `alternates`), call `pin()` on first navigation, collapsed tiers are `collapsedTiers`. Keep the summary's "unique streams" count.
+- #52 is done (see [[stream-picker]]): it reads `view.top`/`view.groups` and pins on first focus/pointer-down or play.
 - #56/#58/#68: add plugin streams as another source; use `rankStreams` when all answers are in.
 - Parser changes: `vp test run -u` rewrites `src/lib/ranking/corpus/accuracy.md` (a file snapshot); the accuracy test fails CI below #6's targets. The blind split was seen while fixing #51, so new labels must be drawn before the change they test.
 - Timing: `RANKING_TIMING=1 vp test run src/lib/ranking/timing.test.ts --silent=false` (V8). Vitest won't run under Bun; for JSC, copy that loop into a scratchpad Bun script (Bun resolves `@/` via frontend/tsconfig.json). Scripts in `frontend/scripts/` can't import `src/` (tsconfig.node TS6307).

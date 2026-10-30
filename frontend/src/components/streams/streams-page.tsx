@@ -8,13 +8,12 @@ import {
   useRouterState,
   useSearch,
 } from "@tanstack/react-router";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import { AlertCircle, Check, ChevronLeft, Puzzle } from "lucide-react";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import type { Profile } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
-import { scrollParent } from "@/components/media/poster-grid";
+import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
@@ -22,13 +21,7 @@ import type { ContentType } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
-import {
-  collapsedTiers,
-  titleContext,
-  type Candidate,
-  type RankedView,
-  type Tier,
-} from "@/lib/ranking";
+import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
 import { profileSettingsQuery } from "@/lib/settings";
 import {
   rankingPrefs,
@@ -37,13 +30,14 @@ import {
   useStreams,
   type StreamSource,
 } from "@/lib/streams";
+import { resolutionLabel } from "@/lib/stream-labels";
 import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
 
-// The stream picker (#50): every stream addon asked at once, each with its
-// own state, and their streams ranked as they arrive (#51), the top pick
-// first and likely fakes and CAM / TS collapsed. Leaving it aborts the
-// requests still out. Until the ranked picker (#52) lands, the list is
-// plain; picking a stream says the player (#60) isn't built yet.
+// The stream picker: every stream addon asked at once, each with its own
+// state (#50), and their streams ranked as they arrive (#51) and shown by
+// quality (#52): the top pick first, one key (P) to play it, and likely
+// fakes and CAM / TS collapsed. Leaving it aborts the requests still out.
+// Picking a stream says the player (#60) isn't built yet.
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -130,7 +124,19 @@ function Picker({
   const ctx = titleContext(type, video, details.data?.meta, target.title);
   const prefs = rankingPrefs(settings.data);
   const { view, pin } = useRankedStreams(sources, ctx, prefs);
-  const [showCollapsed, setShowCollapsed] = useState(false);
+  const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
+
+  const pick = (candidate: Candidate) => {
+    pin();
+    // #53 resolves `candidate.stream`, then its `alternates` in turn if it
+    // fails to.
+    const quality = resolutionLabel(candidate.parsed) ?? "Unknown quality";
+    toastManager.add({
+      title: `Can’t play ${target.title} yet`,
+      description: `You picked ${quality} from ${names.get(candidate.source) ?? "an addon"}. Sinag’s player isn’t built yet.`,
+    });
+  };
+  usePlayKey(view.top, pick);
 
   if (sources.length === 0) {
     if (loading) return <Asking />;
@@ -170,20 +176,47 @@ function Picker({
         </ul>
       </div>
       <StreamList
-        rows={rows(view, showCollapsed)}
+        rows={listRows(view, open)}
         names={names}
         onNavigate={pin}
-        onPick={() =>
-          toastManager.add({
-            title: `Can’t play ${target.title} yet`,
-            description: "Sinag’s player isn’t built yet.",
+        onPick={pick}
+        onToggleGroup={(tier) =>
+          setOpen((current) => {
+            const next = new Set(current);
+            if (!next.delete(tier)) next.add(tier);
+            return next;
           })
         }
       />
-      <CollapsedToggle view={view} shown={showCollapsed} onToggle={setShowCollapsed} />
     </>
   );
 }
+
+// P plays the top pick from anywhere on the picker, unless the user is
+// typing.
+function usePlayKey(top: Candidate | null, play: (candidate: Candidate) => void) {
+  const latest = useRef({ top, play });
+  useLayoutEffect(() => {
+    latest.current = { top, play };
+  });
+  useEffect(() => {
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key.toLowerCase() !== "p" || event.defaultPrevented || event.repeat) return;
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+      if (typing(event.target)) return;
+      const { top: best, play: start } = latest.current;
+      if (!best) return;
+      event.preventDefault();
+      start(best);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+}
+
+const typing = (target: EventTarget | null) =>
+  target instanceof HTMLElement &&
+  (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
 
 function SourceStatus({ source }: { source: StreamSource }) {
   const { name } = source.addon.manifest;
@@ -216,147 +249,3 @@ function SourceStatus({ source }: { source: StreamSource }) {
     </li>
   );
 }
-
-// A listed stream: the top pick, then the rest by rank, then (when shown)
-// the collapsed groups.
-type Row = { candidate: Candidate; tier: Tier; top: boolean };
-
-function rows(view: RankedView, showCollapsed: boolean): Row[] {
-  const out: Row[] = view.top ? [{ candidate: view.top, tier: view.top.tier, top: true }] : [];
-  for (const { tier, items } of view.groups) {
-    if (collapsedTiers.has(tier) && !showCollapsed) continue;
-    for (const candidate of items) {
-      if (candidate !== view.top) out.push({ candidate, tier, top: false });
-    }
-  }
-  return out;
-}
-
-function CollapsedToggle({
-  view,
-  shown,
-  onToggle,
-}: {
-  view: RankedView;
-  shown: boolean;
-  onToggle: (shown: boolean) => void;
-}) {
-  const counts = view.groups.filter(({ tier }) => collapsedTiers.has(tier));
-  if (counts.length === 0) return null;
-  const label = counts
-    .map(
-      ({ tier, items }) => `${items.length} ${tier === "Low quality" ? "CAM / TS" : "likely fake"}`,
-    )
-    .join(" and ");
-  return (
-    <div className="px-gutter">
-      <Button variant="ghost" onClick={() => onToggle(!shown)}>
-        {shown ? `Hide ${label}` : `Show ${label}`}
-      </Button>
-    </div>
-  );
-}
-
-// A row's height before it's measured: two lines of name and two of detail.
-const rowPx = 88;
-
-// The streams, scrolled with the page and virtualized: one addon can send
-// over a thousand. Moving into the list pins the top pick.
-function StreamList({
-  rows: items,
-  names,
-  onNavigate,
-  onPick,
-}: {
-  rows: readonly Row[];
-  names: ReadonlyMap<string, string>;
-  onNavigate: () => void;
-  onPick: () => void;
-}) {
-  const list = useRef<HTMLOListElement>(null);
-  const [scroller, setScroller] = useState<HTMLElement | null>(null);
-  const [top, setTop] = useState(0);
-
-  useLayoutEffect(() => {
-    const element = list.current;
-    if (!element) return undefined;
-    const parent = scrollParent(element);
-    setScroller(parent);
-    const update = () =>
-      setTop(
-        element.getBoundingClientRect().top - parent.getBoundingClientRect().top + parent.scrollTop,
-      );
-    update();
-    // jsdom has no ResizeObserver.
-    if (typeof ResizeObserver === "undefined") return undefined;
-    const observer = new ResizeObserver(update);
-    if (parent.firstElementChild) observer.observe(parent.firstElementChild);
-    return () => observer.disconnect();
-  }, []);
-
-  // No React Compiler in this app: nothing here is memoized behind its back.
-  // oxlint-disable-next-line react/incompatible-library
-  const virtualizer = useVirtualizer({
-    count: items.length,
-    getScrollElement: () => scroller,
-    estimateSize: () => rowPx,
-    // Nothing laid out (jsdom, a hidden page): keep the estimate.
-    measureElement: (element) => element.getBoundingClientRect().height || rowPx,
-    getItemKey: (index) => items[index]!.candidate.key,
-    scrollMargin: top,
-    overscan: 6,
-    initialRect: { width: 0, height: window.innerHeight },
-  });
-
-  return (
-    <ol
-      ref={list}
-      aria-label="Streams"
-      className="relative px-gutter"
-      style={{ height: virtualizer.getTotalSize() }}
-    >
-      {virtualizer.getVirtualItems().map((item) => {
-        const { candidate, tier, top: best } = items[item.index]!;
-        const { stream } = candidate;
-        const addon = names.get(candidate.source) ?? "";
-        const name = lines(stream.name).join(" · ");
-        // Torrentio's names start with its own.
-        const from = name.startsWith(addon) ? undefined : addon;
-        return (
-          <li
-            key={item.key}
-            ref={virtualizer.measureElement}
-            data-index={item.index}
-            className="absolute inset-x-gutter top-0 py-1"
-            style={{ transform: `translateY(${item.start - top}px)` }}
-          >
-            <button
-              type="button"
-              onClick={onPick}
-              onFocus={onNavigate}
-              onPointerDown={onNavigate}
-              className="flex w-full cursor-pointer flex-col gap-1 rounded-lg px-3 py-2 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <span className="flex gap-2 text-sm">
-                <span className="font-medium text-brand">{best ? "Top pick" : tier}</span>
-                <span className="font-medium">{name || addon}</span>
-                {name && from && <span className="text-muted-foreground">{from}</span>}
-              </span>
-              {stream.description && (
-                <span className="line-clamp-2 font-mono text-meta whitespace-pre-line text-muted-foreground">
-                  {stream.description}
-                </span>
-              )}
-            </button>
-          </li>
-        );
-      })}
-    </ol>
-  );
-}
-
-const lines = (text: string | undefined) =>
-  (text ?? "")
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean);
