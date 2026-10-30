@@ -10,6 +10,7 @@ import {
   libraryItem,
   mainEpisodes,
   playChoice,
+  playerHeading,
   seasons,
   seriesMarkChange,
   titleSearch,
@@ -176,5 +177,19 @@ describe("titleSearch", () => {
     expect(titleSearch({ season: "x" })).toEqual({});
     expect(titleSearch({ season: "" })).toEqual({});
     expect(titleSearch({})).toEqual({});
+  });
+});
+
+describe("playerHeading", () => {
+  it("names the title, and the episode under it", () => {
+    expect(playerHeading(show, "tt9:1:2", "Show S1 · E2")).toEqual({
+      title: "Show",
+      episode: "S1 · E2 · One two",
+    });
+    expect(playerHeading(movie, movie.id, "Fallback")).toEqual({ title: movie.name });
+  });
+
+  it("falls back to the picker's heading without the details", () => {
+    expect(playerHeading(undefined, "tt9:1:2", "Show S1 · E2")).toEqual({ title: "Show S1 · E2" });
   });
 });

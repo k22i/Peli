@@ -391,7 +391,8 @@ describe("stream picker", () => {
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(await mocks.resolve.mock.results[0]!.value, {
       start: 0,
     });
-    expect(screen.getByRole("heading", { name: "Streams" })).toBeInTheDocument();
+    // Named from the title's details, not the picker's fallback heading.
+    expect(screen.getByRole("heading", { name: "The Shawshank Redemption" })).toBeInTheDocument();
   });
 
   it("says so when the player can't start", async () => {

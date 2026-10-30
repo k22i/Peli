@@ -438,6 +438,17 @@ func (s *Service) Seek(position float64) error {
 	return s.command("seek", seconds(position), "absolute")
 }
 
+// Scrub goes to the keyframe nearest position, in seconds from the start:
+// quick enough to follow a seek bar being dragged, where Seek would decode
+// from the keyframe to the exact frame every time. A Seek when the drag
+// ends lands exactly.
+func (s *Service) Scrub(position float64) error {
+	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
+		return ErrInvalid
+	}
+	return s.command("seek", seconds(position), "absolute+keyframes")
+}
+
 // SeekBy moves by delta seconds, back when it's negative.
 func (s *Service) SeekBy(delta float64) error {
 	if math.IsNaN(delta) || math.IsInf(delta, 0) {

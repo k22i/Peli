@@ -33,14 +33,14 @@ import {
   type StreamSource,
 } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
-import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
+import { cachedTitleMeta, playerHeading, titleMetaQuery } from "@/lib/title";
 
 // The stream picker: every stream addon asked at once, each with its own
 // state (#50), and their streams ranked as they arrive (#51) and shown by
 // quality (#52): the top pick first, one key (P) to play it, and likely
 // fakes and CAM / TS collapsed. Leaving it aborts the requests still out.
-// Picking a stream resolves its link, or another copy's (#53); the player
-// (#60) isn't built yet, so it then says so.
+// Picking a stream resolves its link, or another copy's (#53), and plays it
+// (#60).
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -170,7 +170,10 @@ function Picker({
               toastManager.close(toast);
               void navigate({
                 to: "/player",
-                state: (state) => ({ ...state, player: { title: target.title, source } }),
+                state: (state) => ({
+                  ...state,
+                  player: { ...playerHeading(details.data?.meta, video, target.title), source },
+                }),
               });
             },
             () => {

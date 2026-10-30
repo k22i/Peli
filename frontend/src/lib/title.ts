@@ -240,6 +240,19 @@ const asEpisode = (entry: Progress): Episode | undefined =>
 // "S2 · E4"
 export const episodeCode = (episode: Episode) => `S${episode.season} · E${episode.episode}`;
 
+// The player's heading (#61): the title's name, and for an episode
+// "S2 · E4 · Its name" under it. Without the details, the picker's heading.
+export function playerHeading(
+  meta: Meta | undefined,
+  videoId: string,
+  fallback: string,
+): { title: string; episode?: string } {
+  const video = meta?.videos?.find((candidate) => candidate.id === videoId);
+  if (!meta || !video || !isEpisode(video)) return { title: meta?.name ?? fallback };
+  const code = episodeCode(video);
+  return { title: meta.name, episode: video.title ? `${code} · ${video.title}` : code };
+}
+
 export function episodeTarget(meta: Meta, episode: Episode, resumeAt?: number): PlayTarget {
   return {
     type: meta.type,

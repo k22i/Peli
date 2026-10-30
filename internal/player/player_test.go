@@ -2,6 +2,7 @@ package player
 
 import (
 	"errors"
+	"math"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
@@ -255,6 +256,8 @@ func TestControls(t *testing.T) {
 		{"pause", func() error { return s.SetPaused(true) }, func(st State) bool { return st.Paused }},
 		{"seek", func() error { return s.Seek(2.5) }, func(st State) bool { return st.Position > 2.4 && st.Position < 2.6 }},
 		{"seek back", func() error { return s.SeekBy(-2) }, func(st State) bool { return st.Position > 0.4 && st.Position < 0.6 }},
+		// The clip's keyframes are 1 s apart: a scrub lands on one.
+		{"scrub", func() error { return s.Scrub(1.8) }, func(st State) bool { return math.Abs(st.Position-math.Round(st.Position)) < 0.05 }},
 		{"volume", func() error { return s.SetVolume(40) }, func(st State) bool { return st.Volume == 40 }},
 		{"mute", func() error { return s.SetMuted(true) }, func(st State) bool { return st.Muted }},
 		{"speed", func() error { return s.SetSpeed(1.5) }, func(st State) bool { return st.Speed == 1.5 }},
@@ -276,6 +279,7 @@ func TestControls(t *testing.T) {
 		func() error { return s.SetVolume(101) },
 		func() error { return s.SetSpeed(0) },
 		func() error { return s.Seek(-1) },
+		func() error { return s.Scrub(math.NaN()) },
 		func() error { return s.Load(streams.Source{}, LoadOptions{}) },
 	} {
 		if err := bad(); !errors.Is(err, ErrInvalid) {

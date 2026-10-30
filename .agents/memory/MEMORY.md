@@ -25,3 +25,4 @@
 - [Stream resolve](stream-resolve.md) — #53 internal/streams Resolve → Source, notice/expired codes, resolvePick (pick → alternates, refresh on expired), tools/ttff; resolving adds to TorBox
 - [Debrid keys](debrid-keys.md) — #54/ADR-0038: Sinag holds no debrid keys, addons do; Settings row links /addons; revisit triggers; #97 needs AD/PM accounts
 - [Player service](player-service.md) — #60 internal/player Service + per-OS hosts, player:state/time/ended, /player route; one FFmpeg log instance, dev-play hook, find your window by PID, Docker Linux runs
+- [Player controls](player-controls.md) — #61 seek-bar.tsx, Scrub while dragging, useAhead/latestOnly/useIdle, playerHeading, slider jsdom + Space keyup gotchas

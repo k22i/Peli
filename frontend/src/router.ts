@@ -35,9 +35,9 @@ declare module "@tanstack/react-router" {
     title?: TitlePreview;
     // What the stream picker was opened to play, for its heading (#50).
     play?: PlayTarget;
-    // What the player is playing (#60): its heading, and the source, to ask
-    // for again if its link expires.
-    player?: { title: string; source?: Source };
+    // What the player is playing (#60): its heading, the episode under it
+    // (#61), and the source, to ask for again if its link expires.
+    player?: { title: string; episode?: string | undefined; source?: Source };
   }
 
   interface Register {

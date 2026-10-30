@@ -12,13 +12,13 @@ date: 2026-10-30
 | File | |
 |---|---|
 | `internal/player/mpv.go` | The cgo binding to `mpv/client.h`, from the spikes. A live-handle count for tests |
-| `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetFullscreen`, `Stop`, `Snapshot`; the event loop |
+| `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `Scrub` (keyframe seek, for dragging; #61), `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetFullscreen`, `Stop`, `Snapshot`; the event loop |
 | `internal/player/host.go` | The `host` interface each OS implements, and `nullHost` (no video or audio output) for tests |
 | `host_darwin.go`, `video_darwin.m` | macOS: a `CAOpenGLLayer` view below the `WKWebView`, drawn on our own serial queue |
 | `host_linux.go`, `video_linux.c` | Linux (X11 and Wayland): `gltex`, textures rendered on our own thread, shown by a `GtkPicture` below the webview |
 | `host_windows.go` | Windows: `wid`, mpv's child window at `HWND_BOTTOM`, disabled |
 | `frontend/src/lib/player.ts` | `usePlayerState` (snapshot, then events), `usePlayerEnded`, `reloadExpired` |
-| `frontend/src/components/player/player-page.tsx` | The `/player` screen: the bare minimum until #61 |
+| `frontend/src/components/player/player-page.tsx`, `seek-bar.tsx` | The `/player` screen and its controls (#61) |
 
 ## A session is one mpv handle
 
@@ -58,4 +58,4 @@ This merges the spikes' `player:tracks`, `player:buffering` and name/value `play
 
 - Every build links libmpv. Until #92's pinned LGPL builds exist, CI links the distro's (Linux), Homebrew's (macOS) and shinchiro's (Windows, the spikes' build), and nothing bundles it. Windows builds with cgo now (`CGO_ENABLED` defaults to 1 in its Taskfile).
 - Keeping the screen awake on Linux and Windows isn't done: their `playing` hooks are empty.
-- The controls are #61's. `/player` only pauses (click or Space), goes fullscreen (double click), and leaves (Back, Esc or the end).
+- The controls are #61's: seek bar (buffered range, hover time, scrub while dragging, exact seek on release), play/pause, ±10 s, volume, fullscreen, title and episode, auto-hide with the cursor, buffering and error overlays. What the user sets shows at once and waits for the state to catch up (`useAhead`, 3 s at most); seeks and volume changes go one at a time, newest next (`latestOnly`).
