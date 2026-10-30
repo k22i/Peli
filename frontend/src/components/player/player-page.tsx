@@ -31,6 +31,7 @@ import {
   usePlayerState,
   type Ended,
 } from "@/lib/player";
+import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
 // What a failed file says, by internal/player's end codes, and whether
@@ -64,7 +65,9 @@ const skip = 10;
 // after a few still seconds while playing, with the cursor. Everything the
 // user does shows at once and catches up with mpv after (useAhead): round
 // trips reach 100 ms and more on slow machines. A click or Space pauses, a
-// double click goes fullscreen, Esc leaves fullscreen or the screen.
+// double click goes fullscreen, Esc leaves fullscreen or the screen. A
+// torrent (#55) shows its peers, speed and buffer at the top, and under the
+// spinner while it waits for pieces.
 export function PlayerPage() {
   const router = useRouter();
   const navigate = useNavigate();
@@ -78,6 +81,8 @@ export function PlayerPage() {
   const source = useRef(playing?.source);
   const reloadedAt = useRef(0);
   const stoppedAt = useRef(0);
+  const torrent = isTorrentSource(playing?.source);
+  const torrentStatus = useTorrentStatus(torrent);
 
   const [paused, setPaused] = useAhead(state.paused, same);
   const [position, setPosition] = useAhead(state.position, near);
@@ -96,12 +101,17 @@ export function PlayerPage() {
   const [idle, wake] = useIdle(idleAfter);
 
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
-  // Leaving the screen, however it happens, ends the session.
+  // Leaving the screen, however it happens, ends the session, and lets the
+  // torrent go once mpv no longer reads it.
   useEffect(
     () => () => {
+      const streamed = isTorrentSource(source.current);
       Player.Stop()
         .catch(() => {})
-        .finally(repaintWindow);
+        .finally(() => {
+          repaintWindow();
+          if (streamed) Torrents.Release().catch(() => {});
+        });
     },
     [],
   );
@@ -109,9 +119,15 @@ export function PlayerPage() {
     if (ended.reason === "eof") return leave();
     stoppedAt.current = state.position;
     // A link that expired mid-play is asked for again, at most once a
-    // minute, and plays on from where it stopped.
+    // minute, and plays on from where it stopped. A torrent's loopback link
+    // doesn't expire.
     const expired = source.current;
-    if (ended.code === "expired" && expired && Date.now() - reloadedAt.current > 60_000) {
+    if (
+      ended.code === "expired" &&
+      expired &&
+      !isTorrentSource(expired) &&
+      Date.now() - reloadedAt.current > 60_000
+    ) {
       reloadedAt.current = Date.now();
       reloadExpired(expired, state.position).then(
         (fresh) => {
@@ -128,7 +144,7 @@ export function PlayerPage() {
     if (!current) return;
     setRetrying(true);
     try {
-      if (ended.code === "expired")
+      if (ended.code === "expired" && !isTorrentSource(current))
         source.current = await reloadExpired(current, stoppedAt.current);
       else await Player.Load(current, { start: stoppedAt.current });
       setError(undefined);
@@ -188,7 +204,7 @@ export function PlayerPage() {
     };
   });
 
-  const failure = error && (failures[error.code ?? ""] ?? failed);
+  const failure = error && ((!torrent && failures[error.code ?? ""]) || failed);
   const seekingLate = useLate(state.seeking, 300);
   const waiting = !failure && (state.loading || state.buffering || seekingLate);
   const shown = !idle || paused || !ready || state.loading || dragging || over;
@@ -231,6 +247,14 @@ export function PlayerPage() {
               <p className="truncate text-xs text-white/70">{playing.episode}</p>
             )}
           </div>
+          {torrentStatus?.active && (
+            <p
+              aria-label="Torrent status"
+              className="ms-auto shrink-0 pt-1.5 font-mono text-xs text-white/70 tabular-nums"
+            >
+              {torrentStatusText(torrentStatus)}
+            </p>
+          )}
         </div>
         <div
           {...hold}
@@ -333,6 +357,11 @@ export function PlayerPage() {
               {state.buffering && state.bufferPercent > 0 && (
                 <p className="font-mono text-xs text-white/70 tabular-nums">
                   Buffering {state.bufferPercent} %
+                </p>
+              )}
+              {torrentStatus?.active && (
+                <p className="font-mono text-xs text-white/70 tabular-nums">
+                  {torrentStatusText(torrentStatus)}
                 </p>
               )}
             </div>

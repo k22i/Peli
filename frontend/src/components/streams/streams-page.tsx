@@ -23,7 +23,7 @@ import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
 import { Player } from "@/lib/player";
-import { PlayError, resolvePick } from "@/lib/resolve";
+import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { profileSettingsQuery } from "@/lib/settings";
 import {
   rankingPrefs,
@@ -33,14 +33,15 @@ import {
   type StreamSource,
 } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
+import { Torrents, torrentStatusText } from "@/lib/torrent";
 import { cachedTitleMeta, playerHeading, titleMetaQuery } from "@/lib/title";
 
 // The stream picker: every stream addon asked at once, each with its own
 // state (#50), and their streams ranked as they arrive (#51) and shown by
 // quality (#52): the top pick first, one key (P) to play it, and likely
 // fakes and CAM / TS collapsed. Leaving it aborts the requests still out.
-// Picking a stream resolves its link, or another copy's (#53), and plays it
-// (#60).
+// Picking a stream resolves its link, or another copy's (#53), or streams
+// its torrent (#55), and plays it (#60).
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -156,11 +157,27 @@ function Picker({
     });
     const current = { controller, toast };
     opening.current = current;
+    // A torrent takes a while to find peers: say how it's going.
+    let settled = false;
+    const watching = attempts(candidate).some(({ stream }) => !stream.url && stream.infoHash)
+      ? setInterval(() => {
+          Torrents.Status()
+            .then((status) => {
+              if (settled || !status.active) return;
+              toastManager.update(toast, { description: torrentStatusText(status) });
+            })
+            .catch(() => {});
+        }, 1000)
+      : undefined;
     resolvePick(candidate, {
       refresh: async (source) =>
         (await client.fetchQuery({ ...streamsQuery(source, type, video), staleTime: 0 })).streams,
       signal: controller.signal,
     })
+      .finally(() => {
+        settled = true;
+        clearInterval(watching);
+      })
       .then(
         ({ source }) => {
           if (controller.signal.aborted) return;
@@ -197,6 +214,12 @@ function Picker({
             title: failed.message,
             description: failed.description,
             timeout: 8000,
+            ...(failed.kind === "torrent" && {
+              actionProps: {
+                children: "Open Settings",
+                onClick: () => void navigate({ to: "/settings" }),
+              },
+            }),
           });
         },
       )

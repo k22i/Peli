@@ -6,6 +6,7 @@ import type * as Runtime from "@wailsio/runtime";
 import type { Ended, State } from "@bindings/player";
 import type { Profile } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
+import type { Status } from "@bindings/torrent";
 import { idleState } from "@/lib/player";
 import { renderApp } from "@/test/render-app";
 
@@ -21,6 +22,8 @@ const mocks = vi.hoisted(() => ({
   setMuted: vi.fn<(muted: boolean) => Promise<void>>(),
   setFullscreen: vi.fn<(on: boolean) => Promise<void>>(),
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
+  torrentStatus: vi.fn<() => Promise<Status>>(),
+  release: vi.fn<() => Promise<void>>(),
 }));
 
 vi.mock("@wailsio/runtime", async (importOriginal) => {
@@ -52,6 +55,9 @@ vi.mock("@bindings/player", () => ({
 }));
 
 vi.mock("@bindings/streams", () => ({ Service: { Resolve: mocks.resolve } }));
+vi.mock("@bindings/torrent", () => ({
+  Service: { Status: mocks.torrentStatus, Release: mocks.release },
+}));
 
 const kevin = { id: 1, name: "Kevin", nuvioIndex: 1 } as Profile;
 
@@ -91,12 +97,22 @@ const emit = (name: string, data: unknown) =>
 
 const playing: State = { ...idleState, active: true, position: 600, duration: 7200 };
 
-async function openPlayer(episode?: string) {
+// A torrent streamed through internal/torrent's loopback server (#55).
+const torrent: Source = {
+  url: "http://127.0.0.1:50123/secret/abc/0/film.mkv",
+  origin: "magnet:?xt=urn:btih:abc",
+  headers: {},
+  userAgent: "",
+  contentType: "video/x-matroska",
+  size: 1,
+};
+
+async function openPlayer(episode?: string, played = source) {
   const app = await renderApp("/library", { shell: false });
   await act(() =>
     app.router.navigate({
       to: "/player",
-      state: (state) => ({ ...state, player: { title: "The Film", episode, source } }),
+      state: (state) => ({ ...state, player: { title: "The Film", episode, source: played } }),
     }),
   );
   await screen.findByRole("heading", { name: "The Film" });
@@ -123,6 +139,18 @@ beforeEach(() => {
     call.mockReset().mockResolvedValue(undefined);
   }
   mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
+  mocks.release.mockReset().mockResolvedValue(undefined);
+  mocks.torrentStatus.mockReset().mockResolvedValue({
+    active: true,
+    ready: true,
+    peers: 12,
+    seeders: 4,
+    downloadRate: 3_400_000,
+    uploadRate: 200_000,
+    ahead: 48_000_000,
+    done: 120_000_000,
+    size: 2_100_000_000,
+  });
 });
 
 describe("player", () => {
@@ -183,6 +211,43 @@ describe("player", () => {
     emit("player:ended", { reason: "error", code: "expired" } satisfies Ended);
     expect(await screen.findByRole("alert")).toHaveTextContent("The link expired");
     expect(mocks.resolve).toHaveBeenCalledOnce();
+  });
+
+  it("shows a torrent's peers, speed and buffer, and lets it go on leaving", async () => {
+    const { router } = await openPlayer(undefined, torrent);
+    expect(await screen.findByLabelText("Torrent status")).toHaveTextContent(
+      "12 peers · 3.4 MB/s · 48 MB ready",
+    );
+    // Under the spinner too, while it waits for pieces.
+    expect(screen.getAllByText("12 peers · 3.4 MB/s · 48 MB ready")).toHaveLength(2);
+
+    await userEvent.setup().click(screen.getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
+    await waitFor(() => expect(mocks.release).toHaveBeenCalledOnce());
+    expect(mocks.stop.mock.invocationCallOrder[0]).toBeLessThan(
+      mocks.release.mock.invocationCallOrder[0]!,
+    );
+  });
+
+  it("doesn't ask an addon again for a torrent's link", async () => {
+    await openPlayer(undefined, torrent);
+    emit("player:state", playing);
+    emit("player:ended", { reason: "error", code: "expired" } satisfies Ended);
+    expect(await screen.findByRole("alert")).toHaveTextContent("The stream stopped");
+    expect(mocks.resolve).not.toHaveBeenCalled();
+
+    await userEvent.setup().click(screen.getByRole("button", { name: "Try again" }));
+    await waitFor(() => expect(mocks.load).toHaveBeenCalledWith(torrent, { start: 600 }));
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("doesn't ask about torrents for other streams", async () => {
+    const { router } = await openPlayer();
+    await userEvent.setup().click(screen.getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
+    await waitFor(() => expect(mocks.stop).toHaveBeenCalledOnce());
+    expect(mocks.torrentStatus).not.toHaveBeenCalled();
+    expect(mocks.release).not.toHaveBeenCalled();
   });
 
   it("says why a stream stopped", async () => {

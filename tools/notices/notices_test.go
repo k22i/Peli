@@ -17,6 +17,11 @@ func TestIdentify(t *testing.T) {
 		"GNU AFFERO GENERAL PUBLIC LICENSE":                                                           "AGPL",
 		"SIL OPEN FONT LICENSE Version 1.1":                                                           "OFL-1.1",
 		"something nobody has seen":                                                                   "unknown",
+		// Wrapped across lines (cespare/xxhash, davecgh/go-spew).
+		"MIT License\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy":     "MIT",
+		"ISC License\n\nPermission to use, copy, modify, and/or distribute this software for any\npurpose": "ISC",
+		// MPL 2.0 names the GNU licences as Secondary Licenses (anacrolix/torrent).
+		"Mozilla Public License Version 2.0\n…\"Secondary License\" means either the GNU General Public License, Version 2.0, the GNU Lesser General Public License": "MPL-2.0",
 	}
 	for text, want := range cases {
 		if got := identify(text); got != want {

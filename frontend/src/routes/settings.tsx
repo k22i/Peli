@@ -44,6 +44,13 @@ import {
   type ProfileSettings,
 } from "@/lib/settings";
 import { useTmdbKey } from "@/lib/tmdb";
+import {
+  formatBytes,
+  torrentCacheQuery,
+  torrentCacheSizes,
+  Torrents,
+  useClearTorrentCache,
+} from "@/lib/torrent";
 
 export const Route = createFileRoute("/settings")({
   component: Settings,
@@ -232,6 +239,29 @@ function ProfileSections({ profileId }: { profileId: number }) {
             onChange={(subtitleLanguage) => setProfile({ subtitleLanguage })}
           />
         </SettingRow>
+        {/* Off unless the user turns it on (#55, ADR-0040): peers see their
+            IP address. */}
+        <SettingRow
+          id="torrent-streaming"
+          label="Stream torrents"
+          description="Plays torrents without a debrid or direct link by fetching them from other people as you watch (peer to peer). They can see your IP address, and get pieces of the file from you too. Off unless you turn it on. Applies to this device."
+        >
+          <Switch
+            aria-labelledby="torrent-streaming-label"
+            aria-describedby="torrent-streaming-description"
+            checked={device.torrentStreaming}
+            onCheckedChange={(torrentStreaming) => setDevice({ torrentStreaming })}
+          />
+        </SettingRow>
+        {device.torrentStreaming && (
+          <TorrentCacheRow
+            size={device.torrentCacheGB}
+            onChange={(torrentCacheGB) => {
+              setDevice({ torrentCacheGB });
+              Torrents.SetCacheSize(torrentCacheGB).catch(() => {});
+            }}
+          />
+        )}
       </SettingsSection>
 
       <SettingsSection section={section("subtitles")}>
@@ -304,6 +334,54 @@ function ProfileSections({ profileId }: { profileId: number }) {
         </SettingRow>
       </SettingsSection>
     </>
+  );
+}
+
+// Where streamed torrents' pieces go (#55): a cap, oldest out first, and a
+// way to empty it.
+function TorrentCacheRow({ size, onChange }: { size: number; onChange: (gb: number) => void }) {
+  const used = useQuery(torrentCacheQuery).data;
+  const clear = useClearTorrentCache();
+  const items = torrentCacheSizes.map((gb) => ({ value: String(gb), label: `${gb} GB` }));
+  return (
+    <SettingRow
+      id="torrent-cache"
+      label="Torrent cache"
+      description={`Keeps what you stream on this device, up to this size, deleting the oldest first. ${
+        used === undefined ? "" : `${formatBytes(used)} used.`
+      }`}
+    >
+      <div className="flex items-center gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={!used || clear.isPending}
+          onClick={() => clear.mutate()}
+        >
+          Clear
+        </Button>
+        <Select
+          items={items}
+          value={String(size)}
+          onValueChange={(next) => next && onChange(Number(next))}
+        >
+          <SelectTrigger
+            aria-labelledby="torrent-cache-label"
+            aria-describedby="torrent-cache-description"
+            className="w-28"
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectPopup>
+            {items.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectPopup>
+        </Select>
+      </div>
+    </SettingRow>
   );
 }
 

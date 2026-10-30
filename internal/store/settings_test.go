@@ -9,6 +9,8 @@ import (
 
 var japanese = ProfileSettings{AudioLanguage: "jpn", SubtitleLanguage: "en", SubtitleSize: "large", Captions: "on"}
 
+var laptop = DeviceSettings{HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20}
+
 // The acceptance criterion: settings persist, per profile where they follow a
 // person and per device where they follow the machine.
 func TestSettingsPersistPerProfile(t *testing.T) {
@@ -17,10 +19,11 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 	ben := must[Profile](t)(s.CreateProfile(Profile{Name: "Ben"}))
 
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(anna.ID)), DefaultProfileSettings())
-	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DeviceSettings{HardwareDecoding: true, Diagnostics: false})
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
+	equal(t, DefaultDeviceSettings(), DeviceSettings{HardwareDecoding: true, TorrentCacheGB: 5})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))
-	check(t, s.SaveDeviceSettings(DeviceSettings{HardwareDecoding: false, Diagnostics: true}))
+	check(t, s.SaveDeviceSettings(laptop))
 	check(t, s.Close())
 
 	s, err := Open(path)
@@ -28,12 +31,24 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 	defer s.Close()
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(anna.ID)), japanese)
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(ben.ID)), DefaultProfileSettings())
-	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DeviceSettings{HardwareDecoding: false, Diagnostics: true})
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), laptop)
 
 	check(t, s.DeleteProfile(anna.ID))
 	if _, err := s.ProfileSettings(anna.ID); !errors.Is(err, ErrProfileNotFound) {
 		t.Fatalf("deleted profile's settings err = %v", err)
 	}
+}
+
+// The torrent cache is one of the sizes Settings offers (#55).
+func TestDeviceSettingsValidation(t *testing.T) {
+	s, _ := openTemp(t)
+	for _, gb := range []int{0, -5, 3, 1000} {
+		err := s.SaveDeviceSettings(DeviceSettings{TorrentCacheGB: gb})
+		if !errors.Is(err, ErrInvalidSettings) {
+			t.Errorf("cache of %d GB: err = %v", gb, err)
+		}
+	}
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
 }
 
 func TestProfileSettingsValidation(t *testing.T) {

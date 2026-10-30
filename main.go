@@ -23,6 +23,7 @@ import (
 	"github.com/k22i/Sinag/internal/store"
 	"github.com/k22i/Sinag/internal/streams"
 	"github.com/k22i/Sinag/internal/syncer"
+	"github.com/k22i/Sinag/internal/torrent"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -69,6 +70,9 @@ func main() {
 			// Resolving a picked stream to the file the player loads (#53).
 			application.NewServiceWithOptions(streams.NewService(appinfo.Version),
 				application.ServiceOptions{MarshalError: streams.MarshalError}),
+			// Torrents streamed peer to peer, if the user turns it on (#55).
+			application.NewServiceWithOptions(torrent.NewService(db, torrent.DefaultDir(), appinfo.Version),
+				application.ServiceOptions{MarshalError: torrent.MarshalError}),
 			// libmpv under the webview (#60).
 			application.NewServiceWithOptions(players,
 				application.ServiceOptions{MarshalError: player.MarshalError}),

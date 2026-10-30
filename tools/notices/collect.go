@@ -50,7 +50,7 @@ func goModules(root string) ([]dep, error) {
 
 	// Dependencies differ per OS (wincred, dbus, ...): take the union.
 	for _, goos := range []string{"darwin", "linux", "windows"} {
-		cmd := exec.Command("go", "list", "-deps", "-tags", "production",
+		cmd := exec.Command("go", "list", "-deps", "-tags", "production,nosqlite",
 			"-f", "{{with .Module}}{{if not .Main}}{{.Path}}|{{.Version}}|{{.Dir}}{{end}}{{end}}", ".")
 		cmd.Dir = root
 		cmd.Env = append(os.Environ(), "GOOS="+goos, "CGO_ENABLED=1")

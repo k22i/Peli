@@ -17,18 +17,21 @@ var allowed = map[string]bool{
 // about the permissive licences; anything else is "unknown" and fails the
 // audit until someone looks at it.
 func identify(text string) string {
-	t := strings.ToLower(text)
+	// One space between words: a phrase may be wrapped across lines.
+	t := strings.Join(strings.Fields(strings.ToLower(text)), " ")
 	has := func(s string) bool { return strings.Contains(t, s) }
 
 	switch {
+	// Before the GNU licences: MPL 2.0 names them as its "Secondary
+	// Licenses" (#55, anacrolix/torrent).
+	case has("mozilla public license") && has("version 2.0"):
+		return "MPL-2.0"
 	case has("gnu affero general public license"):
 		return "AGPL"
 	case has("gnu lesser general public license"):
 		return "LGPL"
 	case has("gnu general public license"):
 		return "GPL"
-	case has("mozilla public license") && has("version 2.0"):
-		return "MPL-2.0"
 	case has("apache license") && has("version 2.0"):
 		return "Apache-2.0"
 	case has("sil open font license") && has("version 1.1"):

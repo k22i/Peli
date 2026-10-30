@@ -231,6 +231,9 @@ jobs:
           go version -m "$bin" | tee buildinfo.txt
           grep -Eq "GOARCH=${{ matrix.arch }}$" buildinfo.txt
           grep -Eq -- "-tags=production" buildinfo.txt
+          # No SQLite from anacrolix/torrent (#55, ADR-0040).
+          grep -Eq -- "-tags=production,nosqlite" buildinfo.txt
+          ! grep -q go-llsqlite buildinfo.txt
           ls -l bin
       - if: runner.os == 'macOS'
         run: cd bin && ditto -c -k --keepParent sinag.app sinag.app.zip

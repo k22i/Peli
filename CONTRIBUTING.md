@@ -25,6 +25,8 @@ go run ./tools/notices
 
 This rewrites `THIRD_PARTY_NOTICES.md` and `internal/licences/notices.json` (shown in Settings › About › Licences). CI fails if they are stale.
 
+Release builds use `-tags production,nosqlite`: `nosqlite` keeps anacrolix/torrent's SQLite store, whose adapter module has no licence, out of the binary ([ADR-0040](docs/adr/0040-torrent-streaming.md)). The Taskfiles pass it, and a production build without it doesn't compile.
+
 ## libmpv
 
 libmpv is the one LGPL component, and it is how the app stays MIT ([ADR-0003](docs/adr/0003-mit-app-with-our-own-lgpl-libmpv.md)):

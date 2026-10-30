@@ -11,8 +11,10 @@ import {
   type Resolver,
   type Source,
 } from "@/lib/resolve";
+import type { TorrentOpener } from "@/lib/torrent";
 
 vi.mock("@bindings/streams", () => ({ Service: { Resolve: vi.fn<() => void>() } }));
+vi.mock("@bindings/torrent", () => ({ Service: { Open: vi.fn<() => void>() } }));
 
 const torrentio = "https://torrentio.strem.fun/manifest.json";
 const comet = "https://comet.example/manifest.json";
@@ -33,6 +35,7 @@ const p2p: Stream = {
   infoHash: hash,
   fileIdx: 0,
 };
+const torrent = (infoHash: string): Stream => ({ ...p2p, infoHash });
 
 function pick(stream: Stream, ...alternates: { source: string; stream: Stream }[]): Candidate {
   return {
@@ -68,9 +71,31 @@ function resolver(answers: Record<string, string | null>) {
 
 type Refresh = (source: string) => Promise<readonly Stream[]>;
 
-const options = (resolve: Resolver, refresh = vi.fn<Refresh>(async () => [])) => ({
+// A torrent engine answering by info hash: a Source, or a failure code.
+function opener(answers: Record<string, string | null>) {
+  return vi.fn<TorrentOpener>(async (request) => {
+    const code = answers[request.infoHash];
+    if (code === undefined) throw goError("disabled");
+    if (code !== null) throw goError(code);
+    return {
+      url: `http://127.0.0.1:1234/secret/${request.infoHash}/0/film.mkv`,
+      origin: `magnet:?xt=urn:btih:${request.infoHash}`,
+      headers: {},
+      userAgent: "",
+      contentType: "video/x-matroska",
+      size: 2_100_000_000,
+    };
+  });
+}
+
+const options = (
+  resolve: Resolver,
+  refresh = vi.fn<Refresh>(async () => []),
+  openTorrent = opener({}),
+) => ({
   resolve,
   refresh,
+  openTorrent,
   signal: new AbortController().signal,
 });
 
@@ -129,23 +154,98 @@ describe("resolvePick", () => {
     });
   });
 
-  it("skips torrents, which Sinag can't stream yet", async () => {
+  it("streams a torrent through the engine, with its file and trackers", async () => {
+    const stream: Stream = {
+      ...p2p,
+      fileIdx: 3,
+      sources: ["tracker:udp://tracker.example:1337/announce", `dht:${hash}`],
+      behaviorHints: { filename: file },
+    };
+    const open = opener({ [hash]: null });
+
+    const got = await resolvePick(pick(stream), options(resolver({}), undefined, open));
+
+    expect(open).toHaveBeenCalledExactlyOnceWith(
+      {
+        infoHash: hash,
+        fileIdx: 3,
+        fileName: file,
+        sources: ["tracker:udp://tracker.example:1337/announce", `dht:${hash}`],
+      },
+      expect.any(AbortSignal),
+    );
+    expect(got.source.origin).toBe(`magnet:?xt=urn:btih:${hash}`);
+    expect(got.attempt.stream).toBe(stream);
+  });
+
+  it("plays a copy with a link before any torrent, even the pick", async () => {
     const other = { source: torrentio, stream: debrid("+") };
     const resolve = resolver({ [other.stream.url!]: null });
+    const open = opener({ [hash]: null });
 
-    const got = await resolvePick({ ...pick(p2p, other), source: peerflix }, options(resolve));
+    const got = await resolvePick(
+      { ...pick(p2p, other), source: peerflix },
+      options(resolve, undefined, open),
+    );
+
     expect(got.attempt).toEqual(other);
+    expect(open).not.toHaveBeenCalled();
+  });
 
+  it("falls back to the torrent when every link fails", async () => {
+    const uncached = { source: comet, stream: debrid(" download", "X") };
+    const resolve = resolver({ [uncached.stream.url!]: "caching" });
+    const open = opener({ [hash]: null });
+
+    const got = await resolvePick(pick(p2p, uncached), options(resolve, undefined, open));
+
+    expect(resolve).toHaveBeenCalledOnce();
+    expect(got.attempt.stream).toBe(p2p);
+  });
+
+  it("says torrent streaming is off, unless a copy with a link failed", async () => {
+    const resolve = resolver({});
     await expect(resolvePick(pick(p2p), options(resolve))).rejects.toMatchObject({
       kind: "torrent",
+      message: "Torrent streaming is off",
     });
-    // A copy with a link that failed says more than "torrent".
+    // A copy with a link that failed says more.
     await expect(
       resolvePick(pick(p2p, { source: comet, stream: debrid(" download", "X") }), options(resolve)),
     ).rejects.toMatchObject({ kind: "unreachable" });
     await expect(resolvePick(pick({ ytId: "abc" }), options(resolve))).rejects.toMatchObject({
       kind: "unsupported",
     });
+  });
+
+  it("tries two torrents at most, and gives the pick's own failure", async () => {
+    const [a, b, c] = ["a".repeat(40), "b".repeat(40), "c".repeat(40)];
+    const open = opener({ [a]: "no_peers", [b]: "no_file", [c]: null });
+
+    const tried = pick(
+      torrent(a),
+      { source: peerflix, stream: torrent(b) },
+      { source: peerflix, stream: torrent(c) },
+    );
+    await expect(resolvePick(tried, options(resolver({}), undefined, open))).rejects.toMatchObject({
+      kind: "no_peers",
+      message: "No one is sharing this torrent",
+    });
+    expect(open.mock.calls.map(([request]) => request.infoHash)).toEqual([a, b]);
+
+    // Off for one is off for all.
+    const off = opener({});
+    await expect(
+      resolvePick(
+        pick(torrent(a), { source: peerflix, stream: torrent(b) }),
+        options(resolver({}), undefined, off),
+      ),
+    ).rejects.toMatchObject({ kind: "torrent" });
+    expect(off).toHaveBeenCalledOnce();
+
+    await expect(
+      resolvePick(pick(torrent(a)), options(resolver({}), undefined, opener({ [a]: "boom" }))),
+    ).rejects.toMatchObject({ kind: "torrent_failed" });
   });
 
   it("asks the addon again when the link has expired, and plays the new link", async () => {

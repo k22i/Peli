@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 
 import type { Addon, Profile } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
+import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import cinemetaMovie from "@/lib/addon-protocol/fixtures/cinemeta/meta-movie.json";
 import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.json";
@@ -20,6 +21,8 @@ const mocks = vi.hoisted(() => ({
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   cancel: vi.fn<() => void>(),
   load: vi.fn<(source: Source, opts: { start: number }) => Promise<void>>(),
+  openTorrent: vi.fn<(request: TorrentRequest) => Promise<Source>>(),
+  torrentStatus: vi.fn<() => Promise<Status>>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -49,6 +52,15 @@ vi.mock("@bindings/store", () => ({
 vi.mock("@bindings/streams", () => ({
   Service: {
     Resolve: (request: Request) => Object.assign(mocks.resolve(request), { cancel: mocks.cancel }),
+  },
+}));
+
+vi.mock("@bindings/torrent", () => ({
+  Service: {
+    Open: (request: TorrentRequest) =>
+      Object.assign(mocks.openTorrent(request), { cancel: mocks.cancel }),
+    Status: mocks.torrentStatus,
+    Release: () => Promise.resolve(),
   },
 }));
 
@@ -176,8 +188,29 @@ const resolved = ({ url }: Request): Source => ({
   size: 2_100_000_000,
 });
 
+// A torrent stream with no link, as Peerflix sends without a debrid service.
+const p2p = {
+  name: "Peerflix\n1080p",
+  description: "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv\n👤 59 💾 2.1 GB",
+  infoHash: "9cf3225d39f3a46c34cc149101dd8560c574a21b",
+  fileIdx: 2,
+  sources: ["tracker:udp://open.stealth.si:80/announce"],
+};
+
 beforeEach(() => {
   mocks.resolve.mockImplementation(async (request) => resolved(request));
+  mocks.openTorrent.mockReset();
+  mocks.torrentStatus.mockReset().mockResolvedValue({
+    active: true,
+    ready: false,
+    peers: 3,
+    seeders: 1,
+    downloadRate: 0,
+    uploadRate: 0,
+    ahead: 0,
+    done: 0,
+    size: 0,
+  });
   mocks.load.mockResolvedValue(undefined);
   mocks.current.mockResolvedValue(kevin);
   mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
@@ -426,6 +459,54 @@ describe("stream picker", () => {
     expect(await screen.findByText("TorBox is still downloading this")).toBeInTheDocument();
     expect(screen.getByText(/Pick a cached stream to watch now/)).toBeInTheDocument();
     expect(document.body.innerHTML).not.toContain("KEY");
+  });
+
+  it("streams a torrent peer to peer, saying how it's going", async () => {
+    serve({ [movieStreams("peerflix.example")]: { streams: [p2p] } });
+    mocks.addons.mockResolvedValue([peerflix]);
+    const opened = later<Source>();
+    mocks.openTorrent.mockReturnValue(opened.promise);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("P2P"));
+    await user.click(topPick());
+    expect(
+      await screen.findByText("Getting the file list from 3 peers…", {}, { timeout: 3000 }),
+    ).toBeInTheDocument();
+    expect(mocks.openTorrent).toHaveBeenCalledExactlyOnceWith({
+      infoHash: p2p.infoHash,
+      fileIdx: 2,
+      fileName: "",
+      sources: p2p.sources,
+    });
+
+    const source: Source = {
+      url: "http://127.0.0.1:50123/secret/hash/2/film.mkv",
+      origin: `magnet:?xt=urn:btih:${p2p.infoHash}`,
+      headers: {},
+      userAgent: "",
+      contentType: "video/x-matroska",
+      size: 2_100_000_000,
+    };
+    opened.resolve(source);
+    await opensThePlayer();
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, { start: 0 });
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("says torrent streaming is off, with a way to Settings", async () => {
+    serve({ [movieStreams("peerflix.example")]: { streams: [p2p] } });
+    mocks.addons.mockResolvedValue([peerflix]);
+    mocks.openTorrent.mockRejectedValue(new Error("call failed", { cause: { code: "disabled" } }));
+    const user = userEvent.setup();
+    const { router } = await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("P2P"));
+    await user.click(topPick());
+    expect(await screen.findByText("Torrent streaming is off")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Open Settings" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/settings"));
   });
 
   it("asks the addon again for a link that has expired", async () => {

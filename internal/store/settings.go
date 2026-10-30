@@ -28,11 +28,16 @@ type DeviceSettings struct {
 	// Opt-in crash reports and play outcomes (#90). Off unless the user turns
 	// it on.
 	Diagnostics bool `json:"diagnostics"`
+	// Streaming torrents peer to peer (#55): off unless the user turns it
+	// on, since peers see their IP address. The piece cache's cap, in GB.
+	TorrentStreaming bool `json:"torrentStreaming"`
+	TorrentCacheGB   int  `json:"torrentCacheGB"`
 }
 
 var (
 	SubtitleSizes      = []string{"small", "medium", "large"}
 	CaptionsModes      = []string{"system", "on", "off"}
+	TorrentCacheSizes  = []int{2, 5, 10, 20, 50}
 	ErrInvalidSettings = errors.New("store: invalid settings")
 
 	languageCode = regexp.MustCompile(`^[a-z]{2,3}$`)
@@ -45,7 +50,7 @@ func DefaultProfileSettings() ProfileSettings {
 
 // DefaultDeviceSettings are the device's settings until they are changed.
 func DefaultDeviceSettings() DeviceSettings {
-	return DeviceSettings{HardwareDecoding: true}
+	return DeviceSettings{HardwareDecoding: true, TorrentCacheGB: 5}
 }
 
 // ProfileSettings returns profile id's settings.
@@ -78,6 +83,9 @@ func (s *Store) DeviceSettings() (DeviceSettings, error) {
 
 // SaveDeviceSettings replaces this device's settings.
 func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
+	if !slices.Contains(TorrentCacheSizes, settings.TorrentCacheGB) {
+		return fmt.Errorf("%w: torrent cache of %d GB", ErrInvalidSettings, settings.TorrentCacheGB)
+	}
 	return s.db.Update(func(tx *bolt.Tx) error {
 		return put(tx.Bucket(bucketSettings), keyDevice, settings)
 	})

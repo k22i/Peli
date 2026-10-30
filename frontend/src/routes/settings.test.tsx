@@ -40,6 +40,21 @@ vi.mock("@bindings/licences", () => ({
   },
 }));
 
+const torrents = vi.hoisted(() => ({
+  cache: 3_200_000_000,
+  setCacheSize: vi.fn<(gb: number) => Promise<void>>(async () => {}),
+}));
+
+vi.mock("@bindings/torrent", () => ({
+  Service: {
+    CacheSize: async () => torrents.cache,
+    ClearCache: async () => {
+      torrents.cache = 0;
+    },
+    SetCacheSize: torrents.setCacheSize,
+  },
+}));
+
 // An in-memory stand-in for the Go store, with its defaults
 // (internal/store/settings.go).
 const store = vi.hoisted(() => ({
@@ -68,7 +83,13 @@ vi.mock("@bindings/store", () => {
       ProfileSettings: async (id: number) => store.profileSettings.get(id) ?? defaults,
       SaveProfileSettings: (id: number, settings: ProfileSettings) =>
         store.save(() => store.profileSettings.set(id, settings)),
-      DeviceSettings: async () => store.device ?? { hardwareDecoding: true, diagnostics: false },
+      DeviceSettings: async () =>
+        store.device ?? {
+          hardwareDecoding: true,
+          diagnostics: false,
+          torrentStreaming: false,
+          torrentCacheGB: 5,
+        },
       SaveDeviceSettings: (settings: DeviceSettings) =>
         store.save(() => {
           store.device = settings;
@@ -86,6 +107,8 @@ beforeEach(() => {
   store.profileSettings.clear();
   store.device = undefined;
   store.failSaves = false;
+  torrents.cache = 3_200_000_000;
+  torrents.setCacheSize.mockClear();
 });
 
 const sectionTitles = [
@@ -231,6 +254,30 @@ describe("settings", () => {
       "true",
     );
     expect(store.profileSettings.has(2)).toBe(false);
+  });
+
+  it("streams torrents only once turned on, with a cache to size and clear", async () => {
+    const user = userEvent.setup();
+    await renderSettings();
+    const streaming = screen.getByRole("switch", { name: "Stream torrents" });
+    expect(streaming).not.toBeChecked();
+    expect(streaming).toHaveAccessibleDescription(/can see your IP address/);
+    expect(screen.queryByRole("combobox", { name: "Torrent cache" })).not.toBeInTheDocument();
+
+    await user.click(streaming);
+    await waitFor(() => expect(store.device?.torrentStreaming).toBe(true));
+    const cache = await screen.findByRole("combobox", { name: "Torrent cache" });
+    expect(cache).toHaveTextContent("5 GB");
+    expect(cache).toHaveAccessibleDescription(/3\.2 GB used/);
+
+    await user.click(cache);
+    await user.click(await screen.findByRole("option", { name: "20 GB" }));
+    await waitFor(() => expect(store.device?.torrentCacheGB).toBe(20));
+    expect(torrents.setCacheSize).toHaveBeenCalledExactlyOnceWith(20);
+
+    await user.click(screen.getByRole("button", { name: "Clear" }));
+    await waitFor(() => expect(cache).toHaveAccessibleDescription(/0 B used/));
+    expect(screen.getByRole("button", { name: "Clear" })).toBeDisabled();
   });
 
   it("puts a setting back if saving it fails", async () => {
