@@ -19,6 +19,10 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 )
 
+// hwdecAPIs: VA-API (Intel, AMD), then NVDEC or whatever else mpv deems
+// safe.
+const hwdecAPIs = "vaapi,auto-safe"
+
 // linuxHost renders with the render API on its own thread, into textures a
 // GtkPicture below the webview shows (video_linux.c), on X11 and Wayland.
 type linuxHost struct {
@@ -69,6 +73,10 @@ func (h *linuxHost) videoConfigured(bool) {}
 // playing: desktop Linux has no App Nap. Keeping the screen awake while
 // playing (the Inhibit portal or org.freedesktop.ScreenSaver) isn't done yet.
 func (h *linuxHost) playing(bool) {}
+
+// canShowHDR: GTK shows our textures as SDR, so mpv tone-maps HDR.
+func (h *linuxHost) canShowHDR() bool { return false }
+func (h *linuxHost) showHDR(bool)     {}
 
 func (h *linuxHost) detach() {
 	if !h.attached {

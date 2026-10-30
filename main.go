@@ -53,6 +53,8 @@ func main() {
 	// Sending what is queued is the first step of signing out (#30).
 	account.FlushOnSignOut(accounts, syncer.PusherOf(sync))
 	players := player.NewService(appinfo.Version)
+	// Hardware decoding, as Settings › Playback has it (#66).
+	player.UseSettings(players, db)
 	// How far each film or episode plays becomes the profile's progress, and
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.

@@ -23,6 +23,10 @@ const (
 	swpNoActivate = 0x0010
 )
 
+// hwdecAPIs: D3D11VA, which every Windows GPU driver has, then whatever
+// else mpv deems safe.
+const hwdecAPIs = "d3d11va,auto-safe"
+
 // mpvClass is the class of the child window mpv makes for wid.
 var mpvClass, _ = syscall.UTF16PtrFromString("mpv")
 
@@ -50,9 +54,14 @@ func (h *windowsHost) prepare() error {
 }
 
 // configure pins the VO: mpv silently falls back to one that ignores wid.
+// With target-colorspace-hint=auto, mpv's own window switches its swap chain
+// to HDR10 for an HDR video when Windows' HDR is on for the display, and
+// tone-maps otherwise.
 func (h *windowsHost) configure(m *mpv) error {
-	if err := m.setOptionString("vo", "gpu-next"); err != nil {
-		return err
+	for _, o := range [][2]string{{"vo", "gpu-next"}, {"target-colorspace-hint", "auto"}} {
+		if err := m.setOptionString(o[0], o[1]); err != nil {
+			return err
+		}
 	}
 	return m.setOptionInt64("wid", int64(h.hwnd))
 }
@@ -83,6 +92,10 @@ func (h *windowsHost) videoConfigured(on bool) {
 // playing: keeping the screen awake while playing (SetThreadExecutionState)
 // isn't done yet.
 func (h *windowsHost) playing(bool) {}
+
+// canShowHDR: mpv's window does it by itself (configure).
+func (h *windowsHost) canShowHDR() bool { return false }
+func (h *windowsHost) showHDR(bool)     {}
 
 // detach leaves the window colour to the frontend, which owns it (the theme
 // repaints it when the player closes); mpv_terminate_destroy takes mpv's

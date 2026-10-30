@@ -25,6 +25,12 @@ static BOOL g_web_drew_background;
 static mpv_render_context *g_rctx; // used on g_queue, under the CGL context lock
 static atomic_int g_redraw_queued;
 static id<NSObject> g_activity;
+// g_edr: the next layer gets a half-float back buffer, for HDR (#66).
+static BOOL g_edr;
+// g_sdr: the colourspace a half-float layer has for SDR, the screen's.
+// Untagged, Core Animation reads half-float as linear, and SDR looks washed
+// out; tagged with the screen's, it shows as the 8-bit layer does.
+static CGColorSpaceRef g_sdr;
 
 static void gl_dummy_flush(void) {}
 
@@ -60,6 +66,8 @@ static void on_update(void *ctx) { redraw(); }
 @public
 	CGLContextObj ctx;
 	CGLPixelFormatObj pf;
+	// floatFB: a half-float back buffer, so values above 1.0 (EDR) survive.
+	BOOL floatFB;
 }
 @end
 
@@ -68,11 +76,20 @@ static void on_update(void *ctx) { redraw(); }
 	if (!(self = [super init])) return nil;
 	CGLPixelFormatAttribute attrs[] = {
 		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_3_2_Core,
-		kCGLPFAAccelerated, kCGLPFADoubleBuffer, kCGLPFAAllowOfflineRenderers, 0,
+		kCGLPFAAccelerated, kCGLPFADoubleBuffer, kCGLPFAAllowOfflineRenderers,
+		kCGLPFAColorSize, (CGLPixelFormatAttribute)64, kCGLPFAColorFloat, 0,
 	};
 	GLint npix = 0;
-	if (CGLChoosePixelFormat(attrs, &pf, &npix) != kCGLNoError || !pf) return self;
+	// Like mpv's cocoa-cb. Without EDR, or if the GPU has no such format,
+	// the default 8-bit one.
+	if (g_edr && CGLChoosePixelFormat(attrs, &pf, &npix) == kCGLNoError && pf) {
+		floatFB = YES;
+	} else {
+		attrs[5] = 0;
+		if (CGLChoosePixelFormat(attrs, &pf, &npix) != kCGLNoError || !pf) return self;
+	}
 	CGLCreateContext(pf, NULL, &ctx);
+	if (floatFB) self.contentsFormat = kCAContentsFormatRGBA16Float;
 	// Only our queue draws: a resize asks it to (setBounds), rather than
 	// having Core Animation draw on the main thread.
 	self.asynchronous = NO;
@@ -116,11 +133,12 @@ static void on_update(void *ctx) { redraw(); }
 	GLint vp[4], fbo = 0;
 	glGetIntegerv(GL_VIEWPORT, vp);
 	glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &fbo);
-	mpv_opengl_fbo target = {.fbo = fbo, .w = vp[2], .h = vp[3]};
-	int flip = 1;
+	mpv_opengl_fbo target = {.fbo = fbo, .w = vp[2], .h = vp[3], .internal_format = floatFB ? GL_RGBA16F : 0};
+	int flip = 1, depth = floatFB ? 16 : 8;
 	mpv_render_param params[] = {
 		{MPV_RENDER_PARAM_OPENGL_FBO, &target},
 		{MPV_RENDER_PARAM_FLIP_Y, &flip},
+		{MPV_RENDER_PARAM_DEPTH, &depth},
 		{0},
 	};
 	mpv_render_context_render(g_rctx, params);
@@ -168,6 +186,10 @@ int sinag_video_attach(void *win, char *err, int errlen) {
 		return -1;
 	}
 	if (!g_queue) g_queue = dispatch_queue_create("sinag.player.render", DISPATCH_QUEUE_SERIAL);
+	// The screen can show more than SDR white: an XDR display, or HDR on
+	// for it in System Settings. Decided per session, as the layer is made.
+	NSScreen *screen = window.screen ?: NSScreen.mainScreen;
+	g_edr = screen.maximumPotentialExtendedDynamicRangeColorComponentValue > 1.0;
 	SinagVideoView *view = [[SinagVideoView alloc] initWithFrame:web.frame];
 	view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	view.layerContentsRedrawPolicy = NSViewLayerContentsRedrawNever;
@@ -179,6 +201,9 @@ int sinag_video_attach(void *win, char *err, int errlen) {
 		return -1;
 	}
 	layer.contentsScale = window.backingScaleFactor;
+	CGColorSpaceRelease(g_sdr);
+	g_sdr = layer->floatFB ? CGColorSpaceRetain(screen.colorSpace.CGColorSpace) : NULL;
+	layer.colorspace = g_sdr;
 	[web.superview addSubview:view positioned:NSWindowBelow relativeTo:web];
 	g_view = view;
 	// The webview must not paint its own background over the video. Wails
@@ -237,6 +262,24 @@ void sinag_video_detach(void) {
 	// Draws already queued hold their own reference.
 	[g_view release];
 	g_view = nil;
+}
+
+int sinag_video_can_show_hdr(void) {
+	return g_view && ((SinagVideoLayer *)g_view.layer)->floatFB;
+}
+
+// sinag_video_show_hdr tags the layer BT.2100 PQ, which mpv then renders,
+// and has Core Animation show it as EDR: macOS maps it to the headroom the
+// display has. Off, it's SDR in the screen's colourspace again. On the UI
+// thread.
+void sinag_video_show_hdr(int on) {
+	if (!g_view) return;
+	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
+	CGColorSpaceRef cs = on ? CGColorSpaceCreateWithName(kCGColorSpaceITUR_2100_PQ) : CGColorSpaceRetain(g_sdr);
+	layer.wantsExtendedDynamicRangeContent = on != 0;
+	layer.colorspace = cs;
+	CGColorSpaceRelease(cs);
+	redraw();
 }
 
 // sinag_video_playing holds an activity while video plays, so App Nap

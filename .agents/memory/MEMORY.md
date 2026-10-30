@@ -31,3 +31,4 @@
 - [Addon subtitles](addon-subtitles.md) — #63 lib/subtitles.ts, Player.AddSubtitle (Go downloads), by-language submenus, auto-add in profile language, re-add after reload, language saved on pick
 - [Progress and resume](progress-resume.md) — #64 player.ReportTo → watching.Reporter, FlushProgress keeps watched grace, resume from store at pick, watchingFor/resumePoint, Start over
 - [Next episode](next-episode.md) — #65 card from 90 % to the end, usePreparedNext resolves in advance (not torrents), PlayerPage/PlayerFile split, same-pack torrent file switch
+- [Hardware decoding and HDR](hardware-decoding-hdr.md) — #66 hwdec from Settings per session, per-OS hwdecAPIs, video-params/gamma → host.showHDR, macOS half-float EDR layer; real db has hwdec OFF

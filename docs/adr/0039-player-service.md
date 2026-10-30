@@ -16,7 +16,7 @@ date: 2026-10-30
 | `internal/watching/watching.go` | `Reporter` (#64): the player's progress reports become the profile's progress and watched marks, and ask the push loop to send them |
 | `internal/player/captions_{darwin,other}.go` | The OS's captions preference (#62): MediaAccessibility on macOS, none elsewhere |
 | `internal/player/host.go` | The `host` interface each OS implements, and `nullHost` (no video or audio output) for tests |
-| `host_darwin.go`, `video_darwin.m` | macOS: a `CAOpenGLLayer` view below the `WKWebView`, drawn on our own serial queue |
+| `host_darwin.go`, `video_darwin.m` | macOS: a `CAOpenGLLayer` view below the `WKWebView`, drawn on our own serial queue; half-float and EDR for HDR (#66) |
 | `host_linux.go`, `video_linux.c` | Linux (X11 and Wayland): `gltex`, textures rendered on our own thread, shown by a `GtkPicture` below the webview |
 | `host_windows.go` | Windows: `wid`, mpv's child window at `HWND_BOTTOM`, disabled |
 | `frontend/src/lib/player.ts` | `usePlayerState` (snapshot, then events), `usePlayerEnded`, `reloadExpired`, `loadOptions` and `trackLabel` (#62) |
@@ -34,13 +34,13 @@ No libmpv call runs on the UI thread. Bound methods run on Wails' goroutines, th
 
 `Load(source, {start})` takes the `Source` that resolving returns (ADR-0037). It sets `user-agent` (the addon's or Sinag's) and `http-header-fields` **as a list** (`mpv_node` array), since a header value may hold a comma. `start` is a per-file `loadfile` option. HLS segments get the same headers: a test serves a playlist and its segments only to requests that carry them.
 
-Every session sets: `idle`, `force-window=no` (with `vo=libmpv`, a forced window would start a VO before the render context exists), `keep-open=no`, no OSC, OSD, scripts or `ytdl` (no youtube-dl subprocess for an HTTP link), no mpv input handling (the webview gets every click and key), `hwdec=auto-safe`, black background. `$SINAG_MPV_OPTIONS` (`"gpu-sw hwdec=no"`) overrides them, for debugging and for GPU-less CI and containers.
+Every session sets: `idle`, `force-window=no` (with `vo=libmpv`, a forced window would start a VO before the render context exists), `keep-open=no`, no OSC, OSD, scripts or `ytdl` (no youtube-dl subprocess for an HTTP link), no mpv input handling (the webview gets every click and key), black background, and `hwdec` from Settings (#66, below). `$SINAG_MPV_OPTIONS` (`"gpu-sw hwdec=no"`) overrides them, for debugging and for GPU-less CI and containers.
 
 ## The event contract
 
 | Event | Payload | When |
 |---|---|---|
-| `player:state` | `State`: `active`, `loading`, `paused`, `buffering`, `bufferPercent`, `seeking`, `position`, `duration`, `buffered`, `volume`, `muted`, `speed`, `fullscreen`, `tracks`, `hwdec`, `subtitleDelay`, `subtitleSize` (#62) | Whenever anything but the time changes |
+| `player:state` | `State`: `active`, `loading`, `paused`, `buffering`, `bufferPercent`, `seeking`, `position`, `duration`, `buffered`, `volume`, `muted`, `speed`, `fullscreen`, `tracks`, `hwdec`, `subtitleDelay`, `subtitleSize` (#62), `hdr` (#66) | Whenever anything but the time changes |
 | `player:time` | `Time`: `position`, `duration`, `buffered` (seconds of cache ahead) | At most every 250 ms while playing, and at once after the first frame or a seek |
 | `player:ended` | `Ended`: `reason` `eof` or `error`; for errors `code` `expired`, `unsupported` or `failed`, and mpv's `message` | The file ended by itself. `Stop` and loading another file send nothing |
 
@@ -93,6 +93,24 @@ A guest's reports and marks stay local: the store queues no push for an unlinked
 **Its stream is ready in advance.** While the card shows, `usePreparedNext` asks every stream addon for the next episode, ranks the answers as the picker does, takes the top pick once the ranking has been still for half a second, and resolves its link (`resolvePick`), so playing it means a `Load` and nothing else. Torrents are not opened in advance. internal/torrent plays one torrent at a time, so opening the next one would stop the one playing, and it would start peer traffic for an episode the user may cancel. A torrent pick (or a pick whose linked copies didn't resolve but which has torrent copies) is opened when it plays. If no stream is found, or the pick won't open, the stream picker for the next episode replaces the player. Resolving a debrid link in advance can add the torrent to the user's debrid list even if they cancel (ADR-0037). Once #58 remembers a show's source, the remembered one should go first here as in the picker.
 
 **One session, a new file.** The next episode loads into the open session. Go reports the finished file as stopped when the new `Load` replaces it, so its 90 % mark stays. It gets its own `watchingFor(...)` and `resumePoint` read from the store, and the languages playing now (`loadOptions` with the tracks playing). The screen then replaces its history entry with the new heading, source, `watching`, `resumedAt` and subtitle target. `PlayerPage` owns the session (Stop on leaving, releasing a torrent) and renders the file's screen keyed by its source URL, so everything per file starts afresh: the error, Start over, the addon subtitles added, and the card. Ended events are ignored while the next file opens: opening a torrent can make the playing file fail first. A torrent playing is released once a linked next episode has loaded. Another torrent's `Open` drops it, and the next file of the same torrent (a season pack) now replaces the file the session serves (`session.file` is an atomic pointer) instead of returning the first one again.
+
+## Hardware decoding and HDR (#66)
+
+**Hardware decoding follows Settings › Playback, per session.** `player.UseSettings` gives the service the store, and each session reads `DeviceSettings.hardwareDecoding` as it opens (on by default, and on if the store can't be read). On, `hwdec` is the OS's own decoder API first, then whatever else mpv deems safe: `videotoolbox,auto-safe` on macOS, `d3d11va,auto-safe` on Windows (every GPU driver has D3D11VA), `vaapi,auto-safe` on Linux (Intel and AMD; NVIDIA gets NVDEC through `auto-safe`). Off, it's `no`. mpv decodes in software what the GPU can't, and falls back to software when a hardware decoder fails on a file (`hwdec-software-fallback`, 3 frames), so a failure never stops playback. The setting takes effect from the next video: leaving the player closes the session. `$SINAG_MPV_OPTIONS` still overrides it. `State.hwdec` says what is decoding (`""` for software).
+
+**HDR goes to the display as HDR where the OS and the display can show it, and is tone-mapped by mpv everywhere else.** What mpv does by default (`target-trc=auto`, `tone-mapping=auto`, `hdr-compute-peak=auto`) is the tone-mapping: an HDR video on an SDR target is mapped to it. Passthrough differs per OS:
+
+| OS | Passthrough | How |
+|---|---|---|
+| macOS | When the window's screen can show EDR as the session opens (an XDR display, or HDR on for it in System Settings: `maximumPotentialExtendedDynamicRangeColorComponentValue > 1`) | The layer gets a half-float back buffer (`kCGLPFAColorFloat`, `RGBA16Float`, `internal_format=GL_RGBA16F`, depth 16), like mpv's `cocoa-cb`. When `video-params/gamma` is `pq` or `hlg`, Go sets `target-trc=pq`, `target-prim=bt.2020`, and the host tags the layer BT.2100 PQ with `wantsExtendedDynamicRangeContent`: macOS maps it to the headroom the display has. An SDR video goes back to `auto` and the screen's colourspace. `State.hdr` is true while it's on |
+| Windows | When Windows' HDR is on for the display | mpv's own window (`vo=gpu-next`) with `target-colorspace-hint=auto` switches its swap chain to HDR10 for an HDR video |
+| Linux | Never | GTK shows our GL textures as SDR. GTK 4.16+ has colour states for dmabuf textures, which a later host could use |
+
+An SDR video on the half-float layer is tagged with the screen's colourspace: untagged, Core Animation reads half-float as linear and SDR looks washed out. Tagged, the colour bars of a test clip matched the 8-bit layer's within 1/255.
+
+The screen is checked when the session opens, because the pixel format can't change afterwards. Moving the window from an SDR to an EDR screen mid-video gives tone-mapped SDR until the next video. The other way round, macOS maps the PQ layer down itself.
+
+**Checked:** Go tests (`decoding_test.go`, with `testdata/hdr10.mp4`, 1 s of HEVC Main10 BT.2020/PQ with HDR10 metadata) cover the setting (on, off, unreadable), the PQ target and the host's switch on a host that can show HDR, and plain `auto` on one that can't. In the app on macOS, with the setting on, 8-bit H.264 and 10-bit HEVC HDR10 decode with `videotoolbox` (zero-copy), and with it off in software. The test display has no EDR headroom, so the EDR path was forced for one run: the HDR10 clip switched the layer to PQ and `State.hdr` to true, and macOS mapped it to SDR. **Not checked:** HDR on an EDR screen by eye (needs an XDR or HDR display, as M0 found), D3D11VA and Windows HDR10 (no Windows GPU), VA-API (no Linux GPU; #91). The render API is OpenGL only, so mpv's `gpu-next` HDR path (libplacebo, Dolby Vision profile 5 reshaping, `CAEDRMetadata`) isn't available on macOS or Linux; Dolby Vision without an HDR10 base layer may show wrong colours there. Our own libmpv (#92) must keep VideoToolbox, D3D11VA, VA-API and NVDEC.
 
 ## The hosts, as run
 

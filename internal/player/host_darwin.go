@@ -6,6 +6,8 @@ package player
 #include "video.h"
 
 void sinag_video_playing(int on);
+int sinag_video_can_show_hdr(void);
+void sinag_video_show_hdr(int on);
 */
 import "C"
 
@@ -15,6 +17,9 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 )
+
+// hwdecAPIs: VideoToolbox, the only decoder API on macOS.
+const hwdecAPIs = "videotoolbox,auto-safe"
 
 // darwinHost renders with the render API into a CAOpenGLLayer view below
 // the WKWebView (video_darwin.m).
@@ -62,6 +67,17 @@ func (h *darwinHost) videoConfigured(bool) {}
 
 func (h *darwinHost) playing(on bool) {
 	C.sinag_video_playing(cbool(on))
+}
+
+// canShowHDR is true when the window's screen could show EDR as the
+// session opened (an XDR or HDR-enabled display): the layer then has a
+// half-float back buffer.
+func (h *darwinHost) canShowHDR() bool {
+	return h.attached && C.sinag_video_can_show_hdr() != 0
+}
+
+func (h *darwinHost) showHDR(on bool) {
+	application.InvokeSync(func() { C.sinag_video_show_hdr(cbool(on)) })
 }
 
 func (h *darwinHost) detach() {

@@ -44,6 +44,7 @@ export const idleState: PlayerState = {
   fullscreen: false,
   tracks: [],
   hwdec: "",
+  hdr: false,
   subtitleDelay: 0,
   subtitleSize: "medium",
 };

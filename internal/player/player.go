@@ -31,6 +31,7 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
+	"github.com/k22i/Sinag/internal/store"
 	"github.com/k22i/Sinag/internal/streams"
 )
 
@@ -118,6 +119,9 @@ type State struct {
 	SubtitleSize string `json:"subtitleSize"`
 	// HWDec is the hardware decoder in use, "" for software.
 	HWDec string `json:"hwdec"`
+	// HDR is true while an HDR video goes to the display as HDR, rather
+	// than tone-mapped to SDR (#66).
+	HDR bool `json:"hdr"`
 }
 
 // Time is where playback is, in seconds.
@@ -283,6 +287,7 @@ var observed = []struct {
 	{"vo-configured", fmtFlag},
 	{"sub-delay", fmtDouble},
 	{"sub-scale", fmtDouble},
+	{"video-params/gamma", fmtString},
 }
 
 // options are set on every session before mpv_initialize; the host adds its
@@ -299,15 +304,22 @@ var options = [][2]string{
 	// Pointer and keyboard go to the webview above (M0, #2).
 	{"input-default-bindings", "no"}, {"input-vo-keyboard", "no"}, {"input-cursor", "no"},
 	{"input-cursor-passthrough", "yes"}, {"cursor-autohide", "no"},
-	{"hwdec", "auto-safe"},
 	{"background-color", "#000000"},
 	// A language left "" means the file's default, not the OS's (#62).
 	{"subs-match-os-language", "no"},
 }
 
+// Settings is where a session reads whether to decode on the GPU: the
+// store's device settings.
+type Settings interface {
+	DeviceSettings() (store.DeviceSettings, error)
+}
+
 // Service is the Wails service the frontend calls to play a stream.
 type Service struct {
 	userAgent string
+	// settings are nil until UseSettings: hardware decoding stays on.
+	settings Settings
 	// http downloads addon subtitles.
 	http *http.Client
 	// newHost makes the video host for a session; nil until UseWindow.
@@ -352,6 +364,9 @@ type session struct {
 	// subDir holds the addon subtitles AddSubtitle added (#63); ops guards
 	// it.
 	subDir string
+
+	// hdr is whether the host is showing HDR; only the event loop uses it.
+	hdr bool
 }
 
 // NewService returns a Service that sends version in its User-Agent when a
@@ -382,6 +397,36 @@ func UseWindow(s *Service, window *application.WebviewWindow) {
 	}
 	window.OnWindowEvent(events.Common.WindowFullscreen, fullscreen(true))
 	window.OnWindowEvent(events.Common.WindowUnFullscreen, fullscreen(false))
+}
+
+// UseSettings has each session read whether to decode on the GPU from
+// settings, when it opens. It isn't a method, so Wails doesn't bind it.
+func UseSettings(s *Service, settings Settings) {
+	s.mu.Lock()
+	s.settings = settings
+	s.mu.Unlock()
+}
+
+// hwdec is mpv's hwdec for a new session: the OS's own decoder API first,
+// then any other mpv deems safe, or none when the user turned it off. mpv
+// decodes in software whatever the GPU can't, and falls back to software
+// when a hardware decoder fails on a file.
+func (s *Service) hwdec() string {
+	s.mu.Lock()
+	settings := s.settings
+	s.mu.Unlock()
+	on := true
+	if settings != nil {
+		if d, err := settings.DeviceSettings(); err != nil {
+			slog.Warn("player: device settings unread", "error", err)
+		} else {
+			on = d.HardwareDecoding
+		}
+	}
+	if !on {
+		return "no"
+	}
+	return hwdecAPIs
 }
 
 // ReportTo sends how far each Watching file plays to report: every
@@ -474,6 +519,7 @@ func (s *Service) open() (*session, error) {
 	if ses != nil {
 		return ses, nil
 	}
+	hwdec := s.hwdec()
 	if newHost == nil {
 		return nil, fmt.Errorf("%w: no window for the video", ErrUnavailable)
 	}
@@ -499,6 +545,9 @@ func (s *Service) open() (*session, error) {
 		if err := m.setOptionString(o[0], o[1]); err != nil {
 			slog.Warn("player: option not set", "error", err)
 		}
+	}
+	if err := m.setOptionString("hwdec", hwdec); err != nil {
+		slog.Warn("player: option not set", "error", err)
 	}
 	if err := h.configure(m); err != nil {
 		return fail(err)
@@ -829,9 +878,14 @@ func (s *Service) handle(ses *session, ev mpvEvent) {
 }
 
 func (s *Service) property(ses *session, name string, v any) {
-	if name == "vo-configured" {
+	switch name {
+	case "vo-configured":
 		on, _ := v.(bool)
 		ses.host.videoConfigured(on)
+		return
+	case "video-params/gamma":
+		trc, _ := v.(string)
+		s.showHDR(ses, trc == "pq" || trc == "hlg")
 		return
 	}
 	s.mu.Lock()
@@ -882,6 +936,30 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.SubtitleSize = subtitleSize(number(v))
 	}
 	s.stateDirty = true
+}
+
+// showHDR has an HDR video (PQ or HLG) go to the display as HDR when the
+// host can show it, and every other video as before. mpv renders to BT.2100
+// PQ for it, untouched, and the OS maps it to what the display can show.
+// Otherwise mpv tone-maps HDR to SDR itself, as it does by default.
+func (s *Service) showHDR(ses *session, hdr bool) {
+	hdr = hdr && ses.host.canShowHDR()
+	if hdr == ses.hdr {
+		return
+	}
+	trc, prim := "auto", "auto"
+	if hdr {
+		trc, prim = "pq", "bt.2020"
+	}
+	for _, p := range [][2]string{{"target-trc", trc}, {"target-prim", prim}} {
+		if err := ses.m.setProperty(p[0], p[1]); err != nil {
+			slog.Warn("player: HDR not set", "error", err)
+			return
+		}
+	}
+	ses.host.showHDR(hdr)
+	ses.hdr = hdr
+	s.update(func(st *State) { st.HDR = hdr })
 }
 
 // flush sends what changed: the state, the time (throttled) and an end. It

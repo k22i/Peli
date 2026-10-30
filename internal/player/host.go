@@ -19,6 +19,13 @@ type host interface {
 	// playing reports whether video is playing, for the OS's power
 	// management (App Nap on macOS).
 	playing(on bool)
+	// canShowHDR reports whether the surface can take HDR (BT.2100 PQ) from
+	// mpv, after attach. False where mpv shows HDR by itself (Windows), or
+	// can't (Linux).
+	canShowHDR() bool
+	// showHDR switches the surface to HDR, or back to SDR, while mpv
+	// switches what it renders to.
+	showHDR(on bool)
 	// detach frees the render context and removes the video surface, after
 	// the event loop has stopped and before mpv_terminate_destroy.
 	detach()
@@ -42,4 +49,6 @@ func (nullHost) configure(m *mpv) error {
 func (nullHost) attach(*mpv) error    { return nil }
 func (nullHost) videoConfigured(bool) {}
 func (nullHost) playing(bool)         {}
+func (nullHost) canShowHDR() bool     { return false }
+func (nullHost) showHDR(bool)         {}
 func (nullHost) detach()              {}

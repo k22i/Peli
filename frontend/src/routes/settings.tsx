@@ -206,7 +206,7 @@ function ProfileSections({ profileId }: { profileId: number }) {
         <SettingRow
           id="hardware-decoding"
           label="Hardware decoding"
-          description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device."
+          description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device, from the next video you play."
         >
           <Switch
             aria-labelledby="hardware-decoding-label"
