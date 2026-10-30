@@ -14,6 +14,7 @@ date: 2026-10-30
 | `internal/player/mpv.go` | The cgo binding to `mpv/client.h`, from the spikes. A live-handle count for tests |
 | `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `Scrub` (keyframe seek, for dragging; #61), `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetAudioTrack`, `SetSubtitleTrack`, `SetSubtitleDelay`, `SetSubtitleSize` (#62), `SetFullscreen`, `Stop`, `Snapshot`; the event loop |
 | `internal/watching/watching.go` | `Reporter` (#64): the player's progress reports become the profile's progress and watched marks, and ask the push loop to send them |
+| `internal/player/media.go`, `media_{darwin.go,darwin.m,linux.go,windows.go}` | The OS's media controls (#67): Now Playing and the remote commands on macOS, MPRIS on Linux, libmpv's own SMTC on Windows |
 | `internal/player/captions_{darwin,other}.go` | The OS's captions preference (#62): MediaAccessibility on macOS, none elsewhere |
 | `internal/player/host.go` | The `host` interface each OS implements, and `nullHost` (no video or audio output) for tests |
 | `host_darwin.go`, `video_darwin.m` | macOS: a `CAOpenGLLayer` view below the `WKWebView`, drawn on our own serial queue; half-float and EDR for HDR (#66) |
@@ -21,6 +22,7 @@ date: 2026-10-30
 | `host_windows.go` | Windows: `wid`, mpv's child window at `HWND_BOTTOM`, disabled |
 | `frontend/src/lib/player.ts` | `usePlayerState` (snapshot, then events), `usePlayerEnded`, `reloadExpired`, `loadOptions` and `trackLabel` (#62) |
 | `frontend/src/components/player/player-page.tsx`, `seek-bar.tsx` | The `/player` screen and its controls (#61) |
+| `frontend/src/components/player/shortcuts.tsx` | The keys and their help overlay (#67) |
 
 ## A session is one mpv handle
 
@@ -111,6 +113,36 @@ An SDR video on the half-float layer is tagged with the screen's colourspace: un
 The screen is checked when the session opens, because the pixel format can't change afterwards. Moving the window from an SDR to an EDR screen mid-video gives tone-mapped SDR until the next video. The other way round, macOS maps the PQ layer down itself.
 
 **Checked:** Go tests (`decoding_test.go`, with `testdata/hdr10.mp4`, 1 s of HEVC Main10 BT.2020/PQ with HDR10 metadata) cover the setting (on, off, unreadable), the PQ target and the host's switch on a host that can show HDR, and plain `auto` on one that can't. In the app on macOS, with the setting on, 8-bit H.264 and 10-bit HEVC HDR10 decode with `videotoolbox` (zero-copy), and with it off in software. The test display has no EDR headroom, so the EDR path was forced for one run: the HDR10 clip switched the layer to PQ and `State.hdr` to true, and macOS mapped it to SDR. **Not checked:** HDR on an EDR screen by eye (needs an XDR or HDR display, as M0 found), D3D11VA and Windows HDR10 (no Windows GPU), VA-API (no Linux GPU; #91). The render API is OpenGL only, so mpv's `gpu-next` HDR path (libplacebo, Dolby Vision profile 5 reshaping, `CAEDRMetadata`) isn't available on macOS or Linux; Dolby Vision without an HDR10 base layer may show wrong colours there. Our own libmpv (#92) must keep VideoToolbox, D3D11VA, VA-API and NVDEC.
+
+## Keys and media controls (#67)
+
+**The keys are the screen's, in React.** The webview gets every key (mpv has no input, ADR-0002), and one window listener in `player-page.tsx` maps them:
+
+| Key | Does |
+|---|---|
+| Space, K | Play or pause |
+| ← → | Back or forward 10 s, as the buttons |
+| ↑ ↓ | Volume ±5; ↑ unmutes, at the volume it had |
+| M, F | Mute, full screen |
+| Esc | Closes the shortcuts, then leaves full screen, then the screen |
+| A | Next audio track (two or more) |
+| C | Next subtitle track, then off (the file's and the addon ones added) |
+| Z, X | Subtitles 0.1 s earlier or later (#62, kept where they were) |
+| ? | The shortcuts over the video, also from a keyboard button in the controls |
+
+Space, F, M, Z and X are mpv's keys, K and C YouTube's, so the keys most people try first work. Arrows, volume and Z/X repeat when held; the rest act once a press. A focused slider keeps its own arrows (Base UI prevents the default, and the listener skips those). While a menu or the error overlay is open the keys are theirs, and keys with ⌘, Ctrl or Alt are left to the app (⌘F, ⌘1–4). The changes a key makes show for a moment over the video ("Volume 45 %", "Subtitles: English · SDH", "Audio: Japanese · AC3 · 5.1"). Track switching by key goes through the same pick as the menus, so a picked subtitle's language becomes the profile's (#63). The buttons carry `aria-keyshortcuts`. The overlay doesn't take focus or the keys.
+
+**The OS's media controls are Go's, so they work with the window hidden.** `Service.SetNowPlaying({title, subtitle})` names what plays (the screen sends its heading); Stop forgets it. The event loop hands the media controls the title, paused, position, duration, speed and a count of jumps, whenever the state changes (not on time events: each OS moves the position on by the speed itself), on a goroutine of their own that skips states it was too slow for. Their commands run like the screen's own (`SetPaused`, `cycle pause`, `SeekBy`, `Seek`), and the screen follows through `player:state`. An episode is named as the OS names a song: the episode as the title, the series as the artist.
+
+| OS | How | Commands |
+|---|---|---|
+| macOS | `MPNowPlayingInfoCenter` (`playbackState` set by hand, as macOS needs) and `MPRemoteCommandCenter`, from the first state to Stop; Stop removes the targets and clears Now Playing, so the media keys go back to other apps | Play, pause, toggle (the play/pause key, AirPods), skip ±10 s, the Control Center scrubber |
+| Linux | MPRIS on the session bus (godbus, our own `Properties` so `Position` is read live), `org.mpris.MediaPlayer2.sinag` (`.instance<pid>` when taken) from the first state to Stop | Play, Pause, PlayPause, Stop (pauses: leaving is the screen's), Seek, SetPosition for the track playing; `Seeked` on jumps |
+| Windows | libmpv's own System Media Transport Controls (`media-controls=yes`, off by default for libmpv; mpv ≥ 0.39 built with `win32-smtc`) on a hidden window of mpv's. It names what plays by `media-title`, so `SetNowPlaying` also sets `force-media-title` | Play, pause, the timeline, and chapters for next/previous. Its Stop button stops mpv's file, which the screen sees as an idle session; Esc or Back still leaves |
+
+Next and previous track are off on macOS and Linux: a film has no tracks, and the next episode is the card's to offer (#65). No artwork yet. Windows may show "Unknown app" until Sinag is installed with an AppUserModelID.
+
+**Checked:** Go tests drive the service's media state and commands with a fake (title, pause, toggle, jumps, Stop), and on Linux a test of its own bus checks MPRIS: properties, every method, the signals and the instance name (Docker, `dbus-daemon`). Route tests cover every key. In the app on macOS, the play/pause media key paused and resumed a playing clip with the window in the background, and the Music app stayed closed. **Not checked:** Windows (cross-compiled and vetted, no Windows machine), a real Linux desktop widget (#91).
 
 ## The hosts, as run
 

@@ -6,6 +6,7 @@ import {
   formatTime,
   latestOnly,
   loadOptions,
+  nextTrackId,
   subtitleDelayText,
   trackLabel,
   useAhead,
@@ -187,5 +188,17 @@ describe("subtitleDelayText", () => {
     expect(subtitleDelayText(0)).toBe("On time");
     expect(subtitleDelayText(0.30000001)).toBe("0.3 s later");
     expect(subtitleDelayText(-1.2)).toBe("1.2 s earlier");
+  });
+});
+
+describe("nextTrackId", () => {
+  it("goes round the tracks, through off for subtitles", () => {
+    expect(nextTrackId([0, 3, 4], 0)).toBe(3);
+    expect(nextTrackId([0, 3, 4], 3)).toBe(4);
+    expect(nextTrackId([0, 3, 4], 4)).toBe(0);
+    expect(nextTrackId([1, 2], 2)).toBe(1);
+    // A track that went: the first.
+    expect(nextTrackId([1, 2], 7)).toBe(1);
+    expect(nextTrackId([], 5)).toBe(5);
   });
 });

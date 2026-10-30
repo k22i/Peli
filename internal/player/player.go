@@ -329,6 +329,8 @@ type Service struct {
 	// report gets how far a Watching file got (#64); nil until ReportTo.
 	report      func(Report)
 	reportEvery time.Duration
+	// media are the OS's media controls (#67); nil until UseMediaControls.
+	media mediaControls
 
 	// ops serialises opening and closing sessions.
 	ops sync.Mutex
@@ -345,6 +347,11 @@ type Service struct {
 	watching   *Watching
 	reportWhy  string
 	lastReport time.Time
+	// What the media controls name, whether they're due the state, and how
+	// many times the position jumped.
+	nowPlaying NowPlaying
+	mediaDirty bool
+	seeks      int
 }
 
 // session is one mpv handle and its video host.
@@ -612,9 +619,13 @@ func (s *Service) Stop() error {
 	s.state = idle(s.state.Fullscreen)
 	s.stateDirty, s.timeDirty, s.forceTime, s.ended = false, false, false, nil
 	s.watching, s.reportWhy = nil, ""
-	state := s.copyState()
+	s.nowPlaying, s.mediaDirty, s.seeks = NowPlaying{}, false, 0
+	state, media := s.copyState(), s.media
 	s.mu.Unlock()
 	s.emit(EventState, state)
+	if media != nil {
+		media.show(nil)
+	}
 	return nil
 }
 
@@ -839,6 +850,7 @@ func (s *Service) handle(ses *session, ev mpvEvent) {
 		s.stateDirty, s.timeDirty, s.forceTime = true, true, true
 		if ses.started {
 			s.due(ReportSeeked)
+			s.seeks++
 		}
 		ses.started = true
 		s.mu.Unlock()
@@ -994,6 +1006,13 @@ func (s *Service) flush(ses *session) float64 {
 		report = s.reportNow(s.reportWhy)
 		s.reportWhy, s.lastReport = "", now
 	}
+	// Not on time events: the controls extrapolate the position.
+	media := s.media
+	showMedia := media != nil && (state != nil || s.mediaDirty)
+	var mediaNow *mediaState
+	if showMedia {
+		mediaNow, s.mediaDirty = s.mediaNow(), false
+	}
 	s.mu.Unlock()
 
 	if ses != nil && playing != ses.playing {
@@ -1008,6 +1027,9 @@ func (s *Service) flush(ses *session) float64 {
 	}
 	if ended != nil {
 		s.emit(EventEnded, *ended)
+	}
+	if showMedia {
+		media.show(mediaNow)
 	}
 	s.sendReport(report)
 	return wait

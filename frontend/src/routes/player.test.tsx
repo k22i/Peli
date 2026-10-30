@@ -27,6 +27,7 @@ const mocks = vi.hoisted(() => ({
   setVolume: vi.fn<(volume: number) => Promise<void>>(),
   setMuted: vi.fn<(muted: boolean) => Promise<void>>(),
   setFullscreen: vi.fn<(on: boolean) => Promise<void>>(),
+  setNowPlaying: vi.fn<(np: { title: string; subtitle: string }) => Promise<void>>(),
   setAudioTrack: vi.fn<(id: number) => Promise<void>>(),
   setSubtitleTrack: vi.fn<(id: number) => Promise<void>>(),
   setSubtitleDelay: vi.fn<(delay: number) => Promise<void>>(),
@@ -69,6 +70,7 @@ vi.mock("@bindings/player", () => ({
     SetVolume: mocks.setVolume,
     SetMuted: mocks.setMuted,
     SetFullscreen: mocks.setFullscreen,
+    SetNowPlaying: mocks.setNowPlaying,
     SetAudioTrack: mocks.setAudioTrack,
     SetSubtitleTrack: mocks.setSubtitleTrack,
     SetSubtitleDelay: mocks.setSubtitleDelay,
@@ -197,6 +199,7 @@ beforeEach(() => {
     mocks.setVolume,
     mocks.setMuted,
     mocks.setFullscreen,
+    mocks.setNowPlaying,
     mocks.setAudioTrack,
     mocks.setSubtitleTrack,
     mocks.setSubtitleDelay,
@@ -410,6 +413,8 @@ describe("player", () => {
     act(() => screen.getByRole("slider", { name: "Volume" }).focus());
     await user.keyboard("{ArrowLeft}");
     await waitFor(() => expect(mocks.setVolume).toHaveBeenLastCalledWith(49));
+    // The slider's arrow, not the player's.
+    expect(mocks.seek).not.toHaveBeenCalled();
 
     await user.click(screen.getByRole("button", { name: "Full screen" }));
     expect(mocks.setFullscreen).toHaveBeenLastCalledWith(true);
@@ -635,6 +640,108 @@ describe("player", () => {
       "aria-disabled",
       "true",
     );
+  });
+
+  it("names what plays for the OS's media controls", async () => {
+    await openPlayer("S1E2 · Cat’s in the Bag…");
+    await waitFor(() =>
+      expect(mocks.setNowPlaying).toHaveBeenLastCalledWith({
+        title: "The Film",
+        subtitle: "S1E2 · Cat’s in the Bag…",
+      }),
+    );
+  });
+
+  it("plays, seeks, sets the volume, mutes and goes fullscreen from the keys", async () => {
+    await openPlayer();
+    emit("player:state", { ...playing, volume: 50 });
+    await screen.findByRole("button", { name: "Pause" });
+    const user = userEvent.setup();
+
+    await user.keyboard("k");
+    expect(mocks.setPaused).toHaveBeenLastCalledWith(true);
+    await user.keyboard("{ArrowRight}{ArrowRight}");
+    await waitFor(() => expect(mocks.seek).toHaveBeenLastCalledWith(620));
+    await user.keyboard("{ArrowLeft}");
+    await waitFor(() => expect(mocks.seek).toHaveBeenLastCalledWith(610));
+
+    await user.keyboard("{ArrowDown}");
+    await waitFor(() => expect(mocks.setVolume).toHaveBeenLastCalledWith(45));
+    expect(screen.getByText("Volume 45 %")).toBeInTheDocument();
+    await user.keyboard("{ArrowUp}{ArrowUp}");
+    await waitFor(() => expect(mocks.setVolume).toHaveBeenLastCalledWith(55));
+
+    await user.keyboard("m");
+    expect(mocks.setMuted).toHaveBeenLastCalledWith(true);
+    // Muted, up unmutes at the volume it had.
+    emit("player:state", { ...playing, volume: 55, muted: true });
+    await user.keyboard("{ArrowUp}");
+    expect(mocks.setMuted).toHaveBeenLastCalledWith(false);
+    expect(mocks.setVolume).toHaveBeenLastCalledWith(55);
+
+    await user.keyboard("f");
+    expect(mocks.setFullscreen).toHaveBeenLastCalledWith(true);
+    // ⌘F and the like are someone else's.
+    await user.keyboard("{Meta>}f{/Meta}");
+    expect(mocks.setFullscreen).toHaveBeenCalledOnce();
+  });
+
+  it("goes round the subtitles with C and the audio with A", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    await screen.findByRole("button", { name: "Subtitles" });
+    const user = userEvent.setup();
+
+    await user.keyboard("c");
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(3);
+    expect(screen.getByText("Subtitles: English · Signs · Forced")).toBeInTheDocument();
+    await user.keyboard("c");
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(4);
+    expect(screen.getByText("Subtitles: English · SDH")).toBeInTheDocument();
+    await user.keyboard("c");
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(0);
+    expect(screen.getByText("Subtitles off")).toBeInTheDocument();
+
+    await user.keyboard("a");
+    expect(mocks.setAudioTrack).toHaveBeenLastCalledWith(2);
+    expect(screen.getByText("Audio: Japanese · Commentary · AC3 · 5.1")).toBeInTheDocument();
+    await user.keyboard("a");
+    expect(mocks.setAudioTrack).toHaveBeenLastCalledWith(1);
+  });
+
+  it("does nothing with C and A for a file without tracks to pick", async () => {
+    await openPlayer();
+    emit("player:state", { ...playing, tracks: [english] });
+    await screen.findByRole("button", { name: "Pause" });
+    await userEvent.setup().keyboard("ca");
+    expect(mocks.setSubtitleTrack).not.toHaveBeenCalled();
+    expect(mocks.setAudioTrack).not.toHaveBeenCalled();
+  });
+
+  it("lists the shortcuts on ? and from its button", async () => {
+    await openPlayer();
+    emit("player:state", playing);
+    await screen.findByRole("button", { name: "Pause" });
+    const user = userEvent.setup();
+
+    await user.keyboard("?");
+    const help = screen.getByRole("region", { name: "Keyboard shortcuts" });
+    expect(within(help).getByText("Next subtitles, then off")).toBeInTheDocument();
+    // The keys still work under it.
+    await user.keyboard("k");
+    expect(mocks.setPaused).toHaveBeenLastCalledWith(true);
+    // Esc closes it, and stays.
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("region", { name: "Keyboard shortcuts" })).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "The Film" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Keyboard shortcuts" }));
+    await user.click(
+      within(screen.getByRole("region", { name: "Keyboard shortcuts" })).getByRole("button", {
+        name: "Close",
+      }),
+    );
+    expect(screen.queryByRole("region", { name: "Keyboard shortcuts" })).not.toBeInTheDocument();
   });
 
   it("tries a stopped stream again with the tracks it was playing", async () => {

@@ -2,6 +2,7 @@ package player
 
 import (
 	"errors"
+	"log/slog"
 	"syscall"
 	"unsafe"
 
@@ -56,12 +57,17 @@ func (h *windowsHost) prepare() error {
 // configure pins the VO: mpv silently falls back to one that ignores wid.
 // With target-colorspace-hint=auto, mpv's own window switches its swap chain
 // to HDR10 for an HDR video when Windows' HDR is on for the display, and
-// tone-maps otherwise.
+// tone-maps otherwise. media-controls has libmpv run the System Media
+// Transport Controls (#67), off by default for libmpv; a build without them
+// lacks the option, which isn't worth failing playback over.
 func (h *windowsHost) configure(m *mpv) error {
 	for _, o := range [][2]string{{"vo", "gpu-next"}, {"target-colorspace-hint", "auto"}} {
 		if err := m.setOptionString(o[0], o[1]); err != nil {
 			return err
 		}
+	}
+	if err := m.setOptionString("media-controls", "yes"); err != nil {
+		slog.Warn("player: no media controls", "error", err)
 	}
 	return m.setOptionInt64("wid", int64(h.hwnd))
 }

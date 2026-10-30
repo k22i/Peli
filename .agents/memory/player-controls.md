@@ -14,4 +14,4 @@ metadata:
 - Base UI slider: `thumbAlignment="edge"` hides the thumb input in jsdom (no layout), so role queries fail; the player uses the default (center). Keyboard changes commit via `onValueCommitted`; a drag ending where it began commits nothing, so seek-bar.tsx ends drags on window pointerup.
 - Space is prevented on keydown **and** keyup, or a focused button also clicks. Esc leaves fullscreen first.
 - In-app check: the dev-play hook from [[player-service]] works; set `Start` within the clip (a start past the end just ends it). Drive hover/wake with `window.ExecJS` dispatching a `PointerEvent` on `[data-testid=seek-bar]`. A test build window may get used by the user: if captures show content you didn't play, stop and ask.
-- Space/Esc only so far; #67 adds the rest of the shortcuts.
+- The rest of the keys and the OS media controls came with #67: [[player-keys-media]].

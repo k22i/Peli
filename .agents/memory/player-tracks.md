@@ -12,7 +12,7 @@ metadata:
 **How to apply:**
 - Subtitles menu only shows when the file has subtitle tracks; Audio only for 2+. #63's `sub-add` tracks come through `track-list` with `external: true`, so they appear in the menu automatically.
 - Size picked in the player saves to the profile's `subtitleSize`; delay is per session on purpose (not a profile default); since #63 a picked subtitle's language saves as `subtitleLanguage` too ([[addon-subtitles]]).
-- Z/X (±0.1 s) are taken; #67 should keep them or move them knowingly. Window key handler ignores keys while a player menu is open (`menuOpen`).
+- Z/X (±0.1 s) stayed in #67; C and A cycle subtitles and audio ([[player-keys-media]]). Window key handler ignores keys while a player menu is open (`menuOpen`).
 - `osCaptions` (MediaAccessibility) can't be tested by flipping prefs from a CLI: `MACaptionAppearanceSetDisplayType` from an unsigned tool writes a per-app value and the read ignores it. Needs a manual toggle in System Settings > Accessibility > Captions.
 - `testdata/tracks.mkv` is the multi-track fixture. For in-app checks, a 60 s multi-track clip from ffmpeg `testsrc2` plus the dev-play hook from [[player-service]] works; drive menus with `window.ExecJS` clicks on `[aria-label="Subtitles"]`.
 - Related: [[player-controls]], [[player-service]].

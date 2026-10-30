@@ -147,6 +147,14 @@ function channelsLabel(channels: number): string {
   return layouts[channels] ?? (channels > 0 ? `${channels} ch` : "");
 }
 
+// The track after current in ids, back to the first after the last: 0, for
+// subtitles off, leads the list when ids includes it. ids without current
+// starts from the first.
+export function nextTrackId(ids: number[], current: number): number {
+  if (ids.length === 0) return current;
+  return ids[(ids.indexOf(current) + 1) % ids.length]!;
+}
+
 // How far subtitles can move either way, in seconds: Go's MaxSubtitleDelay.
 export const maxSubtitleDelay = 600;
 

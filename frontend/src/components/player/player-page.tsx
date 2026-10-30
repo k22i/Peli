@@ -6,6 +6,7 @@ import {
   AudioLines,
   Captions,
   ChevronLeft,
+  Keyboard,
   Maximize,
   Minimize,
   Pause,
@@ -21,6 +22,7 @@ import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from
 
 import { NextEpisode } from "@/components/player/next-episode";
 import { SeekBar } from "@/components/player/seek-bar";
+import { ShortcutsOverlay } from "@/components/player/shortcuts";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -48,6 +50,7 @@ import {
   latestOnly,
   loadOptions,
   maxSubtitleDelay,
+  nextTrackId,
   Player,
   reloadExpired,
   subtitleDelayText,
@@ -117,6 +120,8 @@ const idleAfter = 3000;
 const skip = 10;
 // One press of Z or X moves subtitles this many seconds, as in mpv.
 const delayStep = 0.1;
+// One press of ↑ or ↓ moves the volume this much, of 100.
+const volumeStep = 5;
 // How long "Start over" is offered once a resumed file plays.
 const startOverFor = 10_000;
 const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", large: "Large" };
@@ -137,7 +142,9 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // progress as it plays (#64); a file that resumed offers "Start over" for its
 // first few seconds, and leaving refreshes Continue Watching and the marks.
 // Once an episode counts as watched, a card offers the next (#65), which
-// plays in the same session at the end, as a new file of the screen.
+// plays in the same session at the end, as a new file of the screen. The
+// keys (#67) are in shortcuts.tsx, listed by ? over the video; the OS's
+// media controls (Go, media.go) name what plays from the heading.
 export function PlayerPage() {
   const queryClient = useQueryClient();
   const playing = useLocation({ select: (location) => location.state.player });
@@ -236,6 +243,7 @@ function PlayerFile() {
   const [dragging, setDragging] = useState(false);
   const [over, setOver] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
   const [idle, wake] = useIdle(idleAfter);
   // What a key just changed, shown over the video for a moment.
   const [notice, setNotice] = useState<{ text: string }>();
@@ -244,6 +252,12 @@ function PlayerFile() {
     const timer = setTimeout(() => setNotice(undefined), 1500);
     return () => clearTimeout(timer);
   }, [notice]);
+
+  // What the OS's media controls name: the heading.
+  const heading = { title: playing?.title ?? "", subtitle: playing?.episode ?? "" };
+  useEffect(() => {
+    Player.SetNowPlaying({ title: heading.title, subtitle: heading.subtitle }).catch(() => {});
+  }, [heading.title, heading.subtitle]);
 
   const reloaded = () => setAdded(({ load }) => ({ load: load + 1, ids: new Map() }));
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
@@ -512,6 +526,36 @@ function PlayerFile() {
     delayer(delay);
     return delay;
   };
+  const timeSubtitlesBy = (by: number) => {
+    const delay = timeSubtitles(subtitleDelay + by);
+    setNotice({ text: `Subtitles ${subtitleDelayText(delay).toLowerCase()}` });
+  };
+  const cycleSubtitles = () => {
+    const id = nextTrackId([0, ...subtitleTracks.map((track) => track.id)], subtitleId);
+    pickSubtitles(id);
+    const track = subtitleTracks.find((each) => each.id === id);
+    setNotice({ text: track ? `Subtitles: ${trackText(track)}` : "Subtitles off" });
+  };
+  const cycleAudio = () => {
+    const id = nextTrackId(
+      audioTracks.map((track) => track.id),
+      audioId,
+    );
+    pickAudio(id);
+    const track = audioTracks.find((each) => each.id === id);
+    if (track) setNotice({ text: `Audio: ${trackText(track)}` });
+  };
+  // Muted, up unmutes at the volume it had.
+  const stepVolume = (by: number) => {
+    if (muted) {
+      if (by < 0) return;
+      toggleMute();
+      return setNotice({ text: `Volume ${Math.round(volume)} %` });
+    }
+    const to = Math.max(0, Math.min(100, Math.round(volume + by)));
+    changeVolume(to);
+    setNotice({ text: `Volume ${to} %` });
+  };
   const sizeSubtitles = (size: string) => {
     setSubtitleSize(size);
     Player.SetSubtitleSize(size).catch(() => {});
@@ -525,20 +569,40 @@ function PlayerFile() {
       wake();
       // An open menu has the keys: Esc closes it, Space picks.
       if (error || menuOpen) return;
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      // Not a click on the focused button too, as its key comes up.
+      if (event.key === " ") event.preventDefault();
+      if (event.type !== "keydown") return;
+      // Keys held down repeat these; the rest act once a press.
+      const repeating: Record<string, () => void> = {
+        arrowleft: () => seek(position - skip),
+        arrowright: () => seek(position + skip),
+        arrowup: () => stepVolume(volumeStep),
+        arrowdown: () => stepVolume(-volumeStep),
+        z: () => ready && subtitleTracks.length > 0 && timeSubtitlesBy(-delayStep),
+        x: () => ready && subtitleTracks.length > 0 && timeSubtitlesBy(delayStep),
+      };
+      const once: Record<string, () => void> = {
+        " ": togglePause,
+        k: togglePause,
+        m: toggleMute,
+        f: toggleFullscreen,
+        c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
+        a: () => ready && audioTracks.length > 1 && cycleAudio(),
+        "?": () => setHelpOpen(!helpOpen),
+        escape: () => {
+          if (helpOpen) setHelpOpen(false);
+          else if (fullscreen) toggleFullscreen();
+          else leave();
+        },
+      };
       const key = event.key.toLowerCase();
-      if ((key === "z" || key === "x") && !event.metaKey && !event.ctrlKey && !event.altKey) {
-        if (event.type !== "keydown" || !ready || subtitleTracks.length === 0) return;
-        const delay = timeSubtitles(subtitleDelay + (key === "x" ? delayStep : -delayStep));
-        setNotice({ text: `Subtitles ${subtitleDelayText(delay).toLowerCase()}` });
-      } else if (event.key === "Escape") {
-        if (event.type !== "keydown") return;
-        if (fullscreen) toggleFullscreen();
-        else leave();
-      } else if (event.key === " ") {
-        // Not a click on the focused button too, as its key comes up.
-        event.preventDefault();
-        if (event.type === "keydown" && !event.repeat) togglePause();
-      }
+      // A focused slider moves itself with the arrows.
+      if (key.startsWith("arrow") && event.defaultPrevented) return;
+      const action = repeating[key] ?? (event.repeat ? undefined : once[key]);
+      if (!action) return;
+      event.preventDefault();
+      action();
     };
     window.addEventListener("keydown", onKey);
     window.addEventListener("keyup", onKey);
@@ -551,7 +615,8 @@ function PlayerFile() {
   const failure = error && ((!torrent && failures[error.code ?? ""]) || failed);
   const seekingLate = useLate(state.seeking, 300);
   const waiting = starting || (!failure && (state.loading || state.buffering || seekingLate));
-  const shown = !idle || paused || !ready || state.loading || dragging || over || menuOpen;
+  const shown =
+    !idle || paused || !ready || state.loading || dragging || over || menuOpen || helpOpen;
   const hold = { onPointerEnter: () => setOver(true), onPointerLeave: () => setOver(false) };
   const VolumeIcon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
 
@@ -618,12 +683,14 @@ function PlayerFile() {
               label={paused ? "Play" : "Pause"}
               icon={paused ? Play : Pause}
               onClick={togglePause}
+              aria-keyshortcuts="Space K"
               disabled={!ready}
               fill
             />
             <ControlButton
               label="Back 10 seconds"
               icon={RotateCcw}
+              aria-keyshortcuts="ArrowLeft"
               onClick={() => seek(position - skip)}
               disabled={!ready || !known}
               badge={skip}
@@ -631,6 +698,7 @@ function PlayerFile() {
             <ControlButton
               label="Forward 10 seconds"
               icon={RotateCw}
+              aria-keyshortcuts="ArrowRight"
               onClick={() => seek(position + skip)}
               disabled={!ready || !known}
               badge={skip}
@@ -640,6 +708,7 @@ function PlayerFile() {
                 label={muted ? "Unmute" : "Mute"}
                 icon={VolumeIcon}
                 onClick={toggleMute}
+                aria-keyshortcuts="M"
               />
               <Slider.Root
                 value={muted ? 0 : volume}
@@ -782,9 +851,17 @@ function PlayerFile() {
                 </Menu>
               )}
               <ControlButton
+                label="Keyboard shortcuts"
+                icon={Keyboard}
+                onClick={() => setHelpOpen(!helpOpen)}
+                aria-keyshortcuts="Shift+?"
+                aria-expanded={helpOpen}
+              />
+              <ControlButton
                 label={fullscreen ? "Exit full screen" : "Full screen"}
                 icon={fullscreen ? Minimize : Maximize}
                 onClick={toggleFullscreen}
+                aria-keyshortcuts="F"
               />
             </div>
           </div>
@@ -818,6 +895,7 @@ function PlayerFile() {
           onStart={(prepared) => void playNext(prepared)}
         />
       )}
+      {helpOpen && !failure && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
       {notice && !failure && (
         <div
           aria-live="polite"
@@ -884,6 +962,12 @@ function useLate(on: boolean, ms: number) {
     return () => clearTimeout(timer);
   }, [on, ms]);
   return on && late;
+}
+
+// "English · SDH": a track, in a line.
+function trackText(track: Track): string {
+  const { name, detail } = trackLabel(track);
+  return detail ? `${name} · ${detail}` : name;
 }
 
 // The id of the track that's selected, 0 for none.

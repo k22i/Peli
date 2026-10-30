@@ -115,6 +115,7 @@ func main() {
 	})
 
 	player.UseWindow(players, window)
+	player.UseMediaControls(players)
 
 	// Pull from Nuvio once the window is up, so the cached UI never waits for
 	// it, and again each time the window gets focus (#29).

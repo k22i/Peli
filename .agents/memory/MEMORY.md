@@ -32,3 +32,4 @@
 - [Progress and resume](progress-resume.md) — #64 player.ReportTo → watching.Reporter, FlushProgress keeps watched grace, resume from store at pick, watchingFor/resumePoint, Start over
 - [Next episode](next-episode.md) — #65 card from 90 % to the end, usePreparedNext resolves in advance (not torrents), PlayerPage/PlayerFile split, same-pack torrent file switch
 - [Hardware decoding and HDR](hardware-decoding-hdr.md) — #66 hwdec from Settings per session, per-OS hwdecAPIs, video-params/gamma → host.showHDR, macOS half-float EDR layer; real db has hwdec OFF
+- [Player keys and media controls](player-keys-media.md) — #67 onKey maps + shortcuts.tsx overlay, SetNowPlaying, media.go → Now Playing/MPRIS/libmpv SMTC, mock SetNowPlaying, live media-key check
