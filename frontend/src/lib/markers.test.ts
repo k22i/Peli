@@ -98,11 +98,40 @@ describe("skipTitle", () => {
     ).toEqual({ imdbId: "tt0371746", season: 0, episode: 0 });
   });
 
+  it("takes the IMDb id from the video id when the catalog's is TMDB's", () => {
+    expect(
+      skipTitle({
+        ...watching,
+        contentId: "tmdb:1396",
+        videoId: "tt0903747:2:3",
+        season: 2,
+        episode: 3,
+      }),
+    ).toEqual({ imdbId: "tt0903747", season: 2, episode: 3 });
+    expect(
+      skipTitle({
+        profileId: 1,
+        contentType: "movie",
+        contentId: "tmdb:284054",
+        videoId: "tt1825683",
+      }),
+    ).toEqual({ imdbId: "tt1825683", season: 0, episode: 0 });
+  });
+
   it("names nothing IntroDB can't know", () => {
     expect(
       skipTitle({ ...watching, contentId: "kitsu:7442", videoId: "kitsu:7442:1", episode: 1 }),
     ).toBeUndefined();
     expect(skipTitle({ ...watching, videoId: "tt0903747" })).toBeUndefined();
+    expect(
+      skipTitle({
+        ...watching,
+        contentId: "tmdb:1396",
+        videoId: "tmdb:1396:2:3",
+        season: 2,
+        episode: 3,
+      }),
+    ).toBeUndefined();
     expect(skipTitle(undefined)).toBeUndefined();
   });
 });

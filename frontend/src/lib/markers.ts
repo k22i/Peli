@@ -92,14 +92,23 @@ export const skipLabels: Record<string, string> = {
   credits: "Skip credits",
 };
 
-// What IntroDB knows a film or episode by, or none for ids that aren't
-// IMDb's (Kitsu's anime).
+// What IntroDB knows a film or episode by: an IMDb id, and an episode's
+// season and number. Catalogs may name a title otherwise (TMDB addons say
+// "tmdb:1396"), while its stream requests still use the IMDb id, so an
+// episode's video id ("tt0903747:2:3") goes first. None for ids that are no
+// IMDb ones anywhere (Kitsu's anime).
 export function skipTitle(watching: Watching | undefined): Title | undefined {
-  if (!watching || !/^tt\d+$/.test(watching.contentId)) return undefined;
-  if (watching.contentType === "movie")
-    return { imdbId: watching.contentId, season: 0, episode: 0 };
+  if (!watching) return undefined;
+  const imdb = /^tt\d+$/;
+  if (watching.contentType === "movie") {
+    const id = [watching.contentId, watching.videoId].find((each) => imdb.test(each));
+    return id ? { imdbId: id, season: 0, episode: 0 } : undefined;
+  }
+  const video = /^(tt\d+):(\d+):(\d+)$/.exec(watching.videoId);
+  if (video) return { imdbId: video[1]!, season: Number(video[2]), episode: Number(video[3]) };
   const { season, episode } = watching;
-  if (typeof season !== "number" || typeof episode !== "number") return undefined;
+  if (!imdb.test(watching.contentId) || typeof season !== "number" || typeof episode !== "number")
+    return undefined;
   return { imdbId: watching.contentId, season, episode };
 }
 
