@@ -22,7 +22,7 @@ import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
-import { Player } from "@/lib/player";
+import { loadOptions, Player } from "@/lib/player";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { profileSettingsQuery } from "@/lib/settings";
 import {
@@ -181,8 +181,9 @@ function Picker({
       .then(
         ({ source }) => {
           if (controller.signal.aborted) return;
-          // The player (#60) takes it from here; resumeAt is in ms.
-          void Player.Load(source, { start: (target.resumeAt ?? 0) / 1000 }).then(
+          // The player (#60) takes it from here, in the profile's languages
+          // (#62); resumeAt is in ms.
+          void Player.Load(source, loadOptions((target.resumeAt ?? 0) / 1000, settings.data)).then(
             () => {
               toastManager.close(toast);
               void navigate({

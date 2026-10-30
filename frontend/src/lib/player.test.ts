@@ -1,7 +1,16 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vite-plus/test";
 
-import { formatTime, latestOnly, useAhead, useIdle } from "@/lib/player";
+import type { Track } from "@bindings/player";
+import {
+  formatTime,
+  latestOnly,
+  loadOptions,
+  subtitleDelayText,
+  trackLabel,
+  useAhead,
+  useIdle,
+} from "@/lib/player";
 
 afterEach(() => {
   vi.useRealTimers();
@@ -89,5 +98,89 @@ describe("useIdle", () => {
     expect(result.current[0]).toBe(false);
     act(() => void vi.advanceTimersByTime(1000));
     expect(result.current[0]).toBe(true);
+  });
+});
+
+const track = (fields: Partial<Track> & Pick<Track, "id" | "type">): Track => ({
+  title: "",
+  lang: "",
+  codec: "",
+  default: false,
+  selected: false,
+  external: false,
+  forced: false,
+  hearingImpaired: false,
+  ...fields,
+});
+
+describe("loadOptions", () => {
+  const settings = {
+    audioLanguage: "ja",
+    subtitleLanguage: "en",
+    subtitleSize: "large",
+    captions: "system",
+  };
+
+  it("takes the profile's languages, captions and size", () => {
+    expect(loadOptions(5, settings)).toEqual({ start: 5, ...settings });
+    expect(loadOptions(0, undefined)).toEqual({
+      start: 0,
+      audioLanguage: "",
+      subtitleLanguage: "",
+      captions: "system",
+      subtitleSize: "",
+    });
+  });
+
+  it("keeps the tracks the file was playing", () => {
+    const playing = [
+      track({ id: 1, type: "audio", lang: "eng", selected: true }),
+      track({ id: 2, type: "sub", lang: "spa", selected: true }),
+    ];
+    expect(loadOptions(5, settings, playing)).toMatchObject({
+      audioLanguage: "eng",
+      subtitleLanguage: "spa",
+      captions: "on",
+      subtitleSize: "large",
+    });
+    // Forced subtitles only, or none: captions were off.
+    playing[1] = { ...playing[1]!, forced: true };
+    expect(loadOptions(5, settings, playing)).toMatchObject({ captions: "off" });
+    expect(loadOptions(5, settings, playing.slice(0, 1))).toMatchObject({
+      subtitleLanguage: "",
+      captions: "off",
+    });
+    // A tag Go wouldn't take is the file's default.
+    expect(
+      loadOptions(5, settings, [track({ id: 1, type: "audio", lang: "en-US", selected: true })]),
+    ).toMatchObject({ audioLanguage: "" });
+  });
+});
+
+describe("trackLabel", () => {
+  it("names a track by its language, and tells it apart by the rest", () => {
+    expect(
+      trackLabel(track({ id: 1, type: "audio", lang: "jpn", codec: "eac3", channels: 6 })),
+    ).toEqual({ name: "Japanese", detail: "EAC3 · 5.1" });
+    expect(
+      trackLabel(track({ id: 2, type: "sub", lang: "en", title: "Signs", forced: true })),
+    ).toEqual({ name: "English", detail: "Signs · Forced" });
+    expect(
+      trackLabel(
+        track({ id: 3, type: "sub", title: "Director", external: true, hearingImpaired: true }),
+      ),
+    ).toEqual({ name: "Director", detail: "SDH · External" });
+    expect(trackLabel(track({ id: 4, type: "audio", lang: "und", channels: 3 }))).toEqual({
+      name: "Track 4",
+      detail: "3 ch",
+    });
+  });
+});
+
+describe("subtitleDelayText", () => {
+  it("says which way subtitles moved", () => {
+    expect(subtitleDelayText(0)).toBe("On time");
+    expect(subtitleDelayText(0.30000001)).toBe("0.3 s later");
+    expect(subtitleDelayText(-1.2)).toBe("1.2 s earlier");
   });
 });

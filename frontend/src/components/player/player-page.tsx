@@ -1,7 +1,10 @@
 import { Slider } from "@base-ui/react/slider";
+import { useQuery } from "@tanstack/react-query";
 import { useCanGoBack, useLocation, useNavigate, useRouter } from "@tanstack/react-router";
 import {
   AlertCircle,
+  AudioLines,
+  Captions,
   ChevronLeft,
   Maximize,
   Minimize,
@@ -14,23 +17,47 @@ import {
   VolumeX,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 
 import { SeekBar } from "@/components/player/seek-bar";
 import { Button } from "@/components/ui/button";
+import {
+  Menu,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuItem,
+  MenuPopup,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuSeparator,
+  MenuShortcut,
+  MenuTrigger,
+} from "@/components/ui/menu";
 import { Spinner } from "@/components/ui/spinner";
 import { repaintWindow } from "@/lib/theme";
 import {
   formatTime,
   latestOnly,
+  loadOptions,
+  maxSubtitleDelay,
   Player,
   reloadExpired,
+  subtitleDelayText,
+  trackLabel,
   useAhead,
   useIdle,
   usePlayerEnded,
   usePlayerState,
   type Ended,
+  type Track,
 } from "@/lib/player";
+import { useCurrentProfile } from "@/lib/profile";
+import {
+  profileSettingsQuery,
+  subtitleSizes,
+  useSaveProfileSettings,
+  type ProfileSettings,
+} from "@/lib/settings";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -59,6 +86,9 @@ const failed = {
 const idleAfter = 3000;
 // ±10 s.
 const skip = 10;
+// One press of Z or X moves subtitles this many seconds, as in mpv.
+const delayStep = 0.1;
+const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", large: "Large" };
 
 // The player screen: the video under a transparent page, with no app shell,
 // and the controls over it (#61). They show on any move or key and hide
@@ -67,7 +97,9 @@ const skip = 10;
 // trips reach 100 ms and more on slow machines. A click or Space pauses, a
 // double click goes fullscreen, Esc leaves fullscreen or the screen. A
 // torrent (#55) shows its peers, speed and buffer at the top, and under the
-// spinner while it waits for pieces.
+// spinner while it waits for pieces. The Audio and Subtitles menus (#62)
+// switch tracks, size subtitles (saved as the profile's size) and time them,
+// as do Z (earlier) and X (later).
 export function PlayerPage() {
   const router = useRouter();
   const navigate = useNavigate();
@@ -83,12 +115,31 @@ export function PlayerPage() {
   const stoppedAt = useRef(0);
   const torrent = isTorrentSource(playing?.source);
   const torrentStatus = useTorrentStatus(torrent);
+  const profileId = useCurrentProfile().id ?? 0;
+  const settings = useQuery({ ...profileSettingsQuery(profileId), enabled: profileId > 0 }).data;
+  const saveSettings = useSaveProfileSettings(profileId);
+  // The tracks last playing: mpv empties the list when a file fails, and
+  // trying it again should keep what the user picked.
+  const lastTracks = useRef<Track[]>([]);
+  useEffect(() => {
+    if (state.tracks?.length) lastTracks.current = state.tracks;
+  }, [state.tracks]);
+  const tracks = state.tracks ?? [];
 
   const [paused, setPaused] = useAhead(state.paused, same);
   const [position, setPosition] = useAhead(state.position, near);
   const [volume, setVolume] = useAhead(state.volume, near);
   const [muted, setMuted] = useAhead(state.muted, same);
   const [fullscreen, setFullscreen] = useAhead(state.fullscreen, same);
+  const audioTracks = tracks.filter((track) => track.type === "audio");
+  const subtitleTracks = tracks.filter((track) => track.type === "sub");
+  const [audioId, setAudioId] = useAhead(selectedId(audioTracks), same);
+  const [subtitleId, setSubtitleId] = useAhead(selectedId(subtitleTracks), same);
+  const [subtitleDelay, setSubtitleDelay] = useAhead(
+    state.subtitleDelay,
+    (a, b) => Math.abs(a - b) < 0.001,
+  );
+  const [subtitleSize, setSubtitleSize] = useAhead(state.subtitleSize, same);
   // One seek and one volume change at a time, the newest next.
   const [seeker] = useState(() =>
     latestOnly(({ to, exact }: { to: number; exact: boolean }) =>
@@ -96,9 +147,18 @@ export function PlayerPage() {
     ),
   );
   const [volumer] = useState(() => latestOnly(Player.SetVolume));
+  const [delayer] = useState(() => latestOnly(Player.SetSubtitleDelay));
   const [dragging, setDragging] = useState(false);
   const [over, setOver] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [idle, wake] = useIdle(idleAfter);
+  // What a key just changed, shown over the video for a moment.
+  const [notice, setNotice] = useState<{ text: string }>();
+  useEffect(() => {
+    if (!notice) return undefined;
+    const timer = setTimeout(() => setNotice(undefined), 1500);
+    return () => clearTimeout(timer);
+  }, [notice]);
 
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
   // Leaving the screen, however it happens, ends the session, and lets the
@@ -129,7 +189,7 @@ export function PlayerPage() {
       Date.now() - reloadedAt.current > 60_000
     ) {
       reloadedAt.current = Date.now();
-      reloadExpired(expired, state.position).then(
+      reloadExpired(expired, loadOptions(state.position, settings, lastTracks.current)).then(
         (fresh) => {
           source.current = fresh;
         },
@@ -144,9 +204,10 @@ export function PlayerPage() {
     if (!current) return;
     setRetrying(true);
     try {
+      const options = loadOptions(stoppedAt.current, settings, lastTracks.current);
       if (ended.code === "expired" && !isTorrentSource(current))
-        source.current = await reloadExpired(current, stoppedAt.current);
-      else await Player.Load(current, { start: stoppedAt.current });
+        source.current = await reloadExpired(current, options);
+      else await Player.Load(current, options);
       setError(undefined);
     } catch {
       // Still failed: the overlay stays.
@@ -181,12 +242,40 @@ export function PlayerPage() {
     setFullscreen(!fullscreen);
     Player.SetFullscreen(!fullscreen).catch(() => {});
   };
+  const pickAudio = (id: number) => {
+    setAudioId(id);
+    Player.SetAudioTrack(id).catch(() => {});
+  };
+  const pickSubtitles = (id: number) => {
+    setSubtitleId(id);
+    Player.SetSubtitleTrack(id).catch(() => {});
+  };
+  const timeSubtitles = (to: number) => {
+    // In whole steps, so presses add up without float drift.
+    const delay = Math.max(-maxSubtitleDelay, Math.min(maxSubtitleDelay, Math.round(to * 10) / 10));
+    setSubtitleDelay(delay);
+    delayer(delay);
+    return delay;
+  };
+  const sizeSubtitles = (size: string) => {
+    setSubtitleSize(size);
+    Player.SetSubtitleSize(size).catch(() => {});
+    // The profile's size from now on, as in Settings.
+    if (settings && settings.subtitleSize !== size)
+      saveSettings.mutate({ ...settings, subtitleSize: size } satisfies ProfileSettings);
+  };
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       wake();
-      if (error) return;
-      if (event.key === "Escape") {
+      // An open menu has the keys: Esc closes it, Space picks.
+      if (error || menuOpen) return;
+      const key = event.key.toLowerCase();
+      if ((key === "z" || key === "x") && !event.metaKey && !event.ctrlKey && !event.altKey) {
+        if (event.type !== "keydown" || !ready || subtitleTracks.length === 0) return;
+        const delay = timeSubtitles(subtitleDelay + (key === "x" ? delayStep : -delayStep));
+        setNotice({ text: `Subtitles ${subtitleDelayText(delay).toLowerCase()}` });
+      } else if (event.key === "Escape") {
         if (event.type !== "keydown") return;
         if (fullscreen) toggleFullscreen();
         else leave();
@@ -207,7 +296,7 @@ export function PlayerPage() {
   const failure = error && ((!torrent && failures[error.code ?? ""]) || failed);
   const seekingLate = useLate(state.seeking, 300);
   const waiting = !failure && (state.loading || state.buffering || seekingLate);
-  const shown = !idle || paused || !ready || state.loading || dragging || over;
+  const shown = !idle || paused || !ready || state.loading || dragging || over || menuOpen;
   const hold = { onPointerEnter: () => setOver(true), onPointerLeave: () => setOver(false) };
   const VolumeIcon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
 
@@ -320,7 +409,80 @@ export function PlayerPage() {
                 {formatTime(position)} / {formatTime(state.duration)}
               </p>
             )}
-            <div className="ms-auto">
+            <div className="ms-auto flex items-center gap-1">
+              {ready && audioTracks.length > 1 && (
+                <Menu onOpenChange={setMenuOpen}>
+                  <MenuTrigger render={<ControlButton label="Audio" icon={AudioLines} />} />
+                  <PlayerMenuPopup>
+                    <MenuGroup>
+                      <MenuGroupLabel>Audio</MenuGroupLabel>
+                      <MenuRadioGroup value={audioId} onValueChange={(id: number) => pickAudio(id)}>
+                        {audioTracks.map((track) => (
+                          <TrackItem key={track.id} track={track} />
+                        ))}
+                      </MenuRadioGroup>
+                    </MenuGroup>
+                  </PlayerMenuPopup>
+                </Menu>
+              )}
+              {ready && subtitleTracks.length > 0 && (
+                <Menu onOpenChange={setMenuOpen}>
+                  <MenuTrigger render={<ControlButton label="Subtitles" icon={Captions} />} />
+                  <PlayerMenuPopup>
+                    <MenuGroup>
+                      <MenuGroupLabel>Subtitles</MenuGroupLabel>
+                      <MenuRadioGroup
+                        value={subtitleId}
+                        onValueChange={(id: number) => pickSubtitles(id)}
+                      >
+                        <MenuRadioItem value={0}>Off</MenuRadioItem>
+                        {subtitleTracks.map((track) => (
+                          <TrackItem key={track.id} track={track} />
+                        ))}
+                      </MenuRadioGroup>
+                    </MenuGroup>
+                    <MenuSeparator />
+                    <MenuGroup>
+                      <MenuGroupLabel>Size</MenuGroupLabel>
+                      <MenuRadioGroup
+                        value={subtitleSize}
+                        onValueChange={(size: string) => sizeSubtitles(size)}
+                      >
+                        {subtitleSizes.map((size) => (
+                          <MenuRadioItem key={size} value={size}>
+                            {sizeLabels[size]}
+                          </MenuRadioItem>
+                        ))}
+                      </MenuRadioGroup>
+                    </MenuGroup>
+                    <MenuSeparator />
+                    <MenuGroup>
+                      <MenuGroupLabel>Timing: {subtitleDelayText(subtitleDelay)}</MenuGroupLabel>
+                      <MenuItem
+                        closeOnClick={false}
+                        onClick={() => timeSubtitles(subtitleDelay - delayStep)}
+                      >
+                        Earlier
+                        <MenuShortcut aria-hidden>Z</MenuShortcut>
+                      </MenuItem>
+                      <MenuItem
+                        closeOnClick={false}
+                        onClick={() => timeSubtitles(subtitleDelay + delayStep)}
+                      >
+                        Later
+                        <MenuShortcut aria-hidden>X</MenuShortcut>
+                      </MenuItem>
+                      <MenuItem
+                        closeOnClick={false}
+                        disabled={subtitleDelay === 0}
+                        onClick={() => timeSubtitles(0)}
+                      >
+                        Reset timing
+                      </MenuItem>
+                    </MenuGroup>
+                  </PlayerMenuPopup>
+                </Menu>
+              )}
               <ControlButton
                 label={fullscreen ? "Exit full screen" : "Full screen"}
                 icon={fullscreen ? Minimize : Maximize}
@@ -330,6 +492,14 @@ export function PlayerPage() {
           </div>
         </div>
       </div>
+      {notice && !failure && (
+        <div
+          aria-live="polite"
+          className="pointer-events-none absolute inset-x-0 top-20 flex justify-center"
+        >
+          <p className="rounded-full bg-black/70 px-4 py-1.5 text-sm font-medium">{notice.text}</p>
+        </div>
+      )}
       {failure ? (
         <div role="alert" className="absolute inset-0 grid place-items-center bg-black/75">
           <div className="flex max-w-sm flex-col items-center gap-3 text-center">
@@ -372,7 +542,7 @@ export function PlayerPage() {
   );
 }
 
-const same = (a: boolean, b: boolean) => a === b;
+const same = <T,>(a: T, b: T) => a === b;
 const near = (a: number, b: number) => Math.abs(a - b) < 1.5;
 
 // on, once it has been on for ms: a seek that lands at once shows nothing.
@@ -387,29 +557,52 @@ function useLate(on: boolean, ms: number) {
   return on && late;
 }
 
+// The id of the track that's selected, 0 for none.
+function selectedId(tracks: Track[]): number {
+  return tracks.find((track) => track.selected)?.id ?? 0;
+}
+
+// The player's menus are dark over any theme, like the rest of its chrome,
+// and open above the controls.
+function PlayerMenuPopup({ children }: { children: ReactNode }) {
+  return (
+    <MenuPopup side="top" align="end" sideOffset={8} className="dark max-w-80 text-foreground">
+      {children}
+    </MenuPopup>
+  );
+}
+
+function TrackItem({ track }: { track: Track }) {
+  const { name, detail } = trackLabel(track);
+  return (
+    <MenuRadioItem value={track.id}>
+      <span className="flex flex-col">
+        <span className="truncate">{name}</span>{" "}
+        {detail && <span className="truncate text-xs text-muted-foreground">{detail}</span>}
+      </span>
+    </MenuRadioItem>
+  );
+}
+
 function ControlButton({
   label,
   icon: Icon,
-  onClick,
-  disabled,
   fill,
   badge,
+  ...props
 }: {
   label: string;
   icon: LucideIcon;
-  onClick: () => void;
-  disabled?: boolean;
   fill?: boolean;
   badge?: ReactNode;
-}) {
+} & Omit<ComponentProps<typeof Button>, "children">) {
   return (
     <Button
       variant="ghost"
       size="icon-lg"
       aria-label={label}
-      onClick={onClick}
-      disabled={disabled}
-      className="relative rounded-full text-white hover:bg-white/15 hover:text-white"
+      className="relative rounded-full text-white hover:bg-white/15 hover:text-white data-popup-open:bg-white/15"
+      {...props}
     >
       <Icon className={cn("size-5", fill && "fill-current")} />
       {badge !== undefined && (

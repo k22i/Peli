@@ -109,6 +109,12 @@ type State struct {
 	Speed      float64 `json:"speed"`
 	Fullscreen bool    `json:"fullscreen"`
 	Tracks     []Track `json:"tracks"`
+	// SubtitleDelay is how much later than the file says subtitles show, in
+	// seconds; negative is earlier.
+	SubtitleDelay float64 `json:"subtitleDelay"`
+	// SubtitleSize is "small", "medium" or "large", or "" for a scale mpv
+	// was given some other way.
+	SubtitleSize string `json:"subtitleSize"`
 	// HWDec is the hardware decoder in use, "" for software.
 	HWDec string `json:"hwdec"`
 }
@@ -131,6 +137,10 @@ type Track struct {
 	Default  bool   `json:"default"`
 	Selected bool   `json:"selected"`
 	External bool   `json:"external"`
+	// Forced subtitles only translate signs and foreign dialogue;
+	// HearingImpaired ones (SDH) also describe sounds.
+	Forced          bool `json:"forced"`
+	HearingImpaired bool `json:"hearingImpaired"`
 	// Channels is an audio track's channel count.
 	Channels int `json:"channels,omitempty"`
 	// Width and Height are a video track's size.
@@ -151,6 +161,60 @@ type Ended struct {
 type LoadOptions struct {
 	// Start is where to start, in seconds.
 	Start float64 `json:"start"`
+	// AudioLanguage and SubtitleLanguage pick the tracks, as ISO 639 codes
+	// ("en", "jpn"), or "" for the file's own default (#62).
+	AudioLanguage    string `json:"audioLanguage"`
+	SubtitleLanguage string `json:"subtitleLanguage"`
+	// Captions is "on", "off", or "system" (or "") for the OS's captions
+	// preference. On shows full subtitles: in SubtitleLanguage if the file
+	// has them, or else its default or first. Off still shows forced ones
+	// (signs, foreign dialogue) in the audio's language.
+	Captions string `json:"captions"`
+	// SubtitleSize is "small", "medium" or "large"; "" keeps the current.
+	SubtitleSize string `json:"subtitleSize"`
+}
+
+// subtitleScales are mpv's sub-scale for each SubtitleSize.
+var subtitleScales = map[string]float64{"small": 0.75, "medium": 1, "large": 1.35}
+
+// MaxSubtitleDelay bounds SetSubtitleDelay, in seconds either way.
+const MaxSubtitleDelay = 600
+
+var languageCode = regexp.MustCompile(`^([a-z]{2,3})?$`)
+
+// systemCaptions reports whether the OS asks for captions; a variable so
+// tests can set it.
+var systemCaptions = osCaptions
+
+func (o LoadOptions) valid() bool {
+	_, sized := subtitleScales[o.SubtitleSize]
+	return o.Start >= 0 && !math.IsNaN(o.Start) &&
+		// Codes only: mpv's alang and slang are lists, split on commas.
+		languageCode.MatchString(o.AudioLanguage) && languageCode.MatchString(o.SubtitleLanguage) &&
+		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
+		(o.SubtitleSize == "" || sized)
+}
+
+// tracks are the properties that pick a new file's tracks from o, found by
+// trying mpv 0.41 on files with forced and default-flagged subtitles.
+func (o LoadOptions) tracks() [][2]string {
+	captions := o.Captions == "on" || (o.Captions != "off" && systemCaptions())
+	props := [][2]string{
+		{"aid", "auto"}, {"sid", "auto"},
+		{"alang", o.AudioLanguage},
+		// Off: no language and no fallback leaves forced subtitles only.
+		{"slang", ""}, {"subs-fallback", "no"}, {"subs-fallback-forced", "yes"},
+	}
+	if captions {
+		// On: the language's full subtitles over its forced ones, and
+		// any subtitles over none.
+		props[3][1] = o.SubtitleLanguage
+		props[4][1], props[5][1] = "yes", "no"
+	}
+	if scale, ok := subtitleScales[o.SubtitleSize]; ok {
+		props = append(props, [2]string{"sub-scale", seconds(scale)})
+	}
+	return props
 }
 
 // observed are the properties a session observes, with the format libmpv
@@ -172,6 +236,8 @@ var observed = []struct {
 	{"track-list", fmtNode},
 	{"hwdec-current", fmtString},
 	{"vo-configured", fmtFlag},
+	{"sub-delay", fmtDouble},
+	{"sub-scale", fmtDouble},
 }
 
 // options are set on every session before mpv_initialize; the host adds its
@@ -190,6 +256,8 @@ var options = [][2]string{
 	{"input-cursor-passthrough", "yes"}, {"cursor-autohide", "no"},
 	{"hwdec", "auto-safe"},
 	{"background-color", "#000000"},
+	// A language left "" means the file's default, not the OS's (#62).
+	{"subs-match-os-language", "no"},
 }
 
 // Service is the Wails service the frontend calls to play a stream.
@@ -237,7 +305,7 @@ func NewService(version string) *Service {
 }
 
 func idle(fullscreen bool) State {
-	return State{Volume: 100, Speed: 1, Fullscreen: fullscreen, Tracks: []Track{}}
+	return State{Volume: 100, Speed: 1, Fullscreen: fullscreen, Tracks: []Track{}, SubtitleSize: "medium"}
 }
 
 // UseWindow puts the service's video in window, and follows its fullscreen
@@ -271,7 +339,7 @@ func (s *Service) ServiceShutdown() error {
 // the open one plays. It returns once mpv has the file; EventState says when
 // it plays, EventEnded if it fails.
 func (s *Service) Load(source streams.Source, opts LoadOptions) error {
-	if source.URL == "" || opts.Start < 0 || math.IsNaN(opts.Start) {
+	if source.URL == "" || !opts.valid() {
 		return ErrInvalid
 	}
 	s.ops.Lock()
@@ -294,6 +362,11 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	}
 	if err := ses.m.setProperty("pause", "no"); err != nil {
 		return notPlaying(err)
+	}
+	for _, p := range opts.tracks() {
+		if err := ses.m.setProperty(p[0], p[1]); err != nil {
+			return notPlaying(err)
+		}
 	}
 	// Before loadfile, so the new file's first frame can't come first.
 	s.update(func(st *State) {
@@ -476,6 +549,44 @@ func (s *Service) SetSpeed(speed float64) error {
 		return ErrInvalid
 	}
 	return s.set("speed", seconds(speed))
+}
+
+// SetAudioTrack plays the audio track with id, from State.Tracks.
+func (s *Service) SetAudioTrack(id int) error {
+	if id < 1 {
+		return ErrInvalid
+	}
+	return s.set("aid", strconv.Itoa(id))
+}
+
+// SetSubtitleTrack shows the subtitle track with id, from State.Tracks, or
+// none for 0.
+func (s *Service) SetSubtitleTrack(id int) error {
+	switch {
+	case id < 0:
+		return ErrInvalid
+	case id == 0:
+		return s.set("sid", "no")
+	}
+	return s.set("sid", strconv.Itoa(id))
+}
+
+// SetSubtitleDelay shows subtitles delay seconds later than the file says,
+// or earlier when it's negative, up to MaxSubtitleDelay either way.
+func (s *Service) SetSubtitleDelay(delay float64) error {
+	if math.IsNaN(delay) || math.Abs(delay) > MaxSubtitleDelay {
+		return ErrInvalid
+	}
+	return s.set("sub-delay", seconds(delay))
+}
+
+// SetSubtitleSize sizes subtitles: "small", "medium" or "large".
+func (s *Service) SetSubtitleSize(size string) error {
+	scale, ok := subtitleScales[size]
+	if !ok {
+		return ErrInvalid
+	}
+	return s.set("sub-scale", seconds(scale))
 }
 
 // SetFullscreen puts the window in or out of fullscreen.
@@ -663,6 +774,11 @@ func (s *Service) property(ses *session, name string, v any) {
 		if st.HWDec == "no" {
 			st.HWDec = ""
 		}
+	case "sub-delay":
+		// mpv keeps it as a float32: -0.3 comes back as -0.30000001.
+		st.SubtitleDelay = math.Round(number(v)*1000) / 1000
+	case "sub-scale":
+		st.SubtitleSize = subtitleSize(number(v))
 	}
 	s.stateDirty = true
 }
@@ -742,11 +858,22 @@ func tracks(v any) []Track {
 		out = append(out, Track{
 			ID: int(number(m["id"])), Type: str("type"), Title: str("title"), Lang: str("lang"),
 			Codec: str("codec"), Default: b("default"), Selected: b("selected"), External: b("external"),
+			Forced: b("forced"), HearingImpaired: b("hearing-impaired"),
 			Channels: int(number(m["demux-channel-count"])),
 			Width:    int(number(m["demux-w"])), Height: int(number(m["demux-h"])),
 		})
 	}
 	return out
+}
+
+// subtitleSize names a sub-scale, or "" for one no size has.
+func subtitleSize(scale float64) string {
+	for size, s := range subtitleScales {
+		if math.Abs(scale-s) < 0.001 {
+			return size
+		}
+	}
+	return ""
 }
 
 func number(v any) float64 {

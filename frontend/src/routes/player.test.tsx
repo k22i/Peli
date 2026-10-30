@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type * as Runtime from "@wailsio/runtime";
-import type { Ended, State } from "@bindings/player";
-import type { Profile } from "@bindings/store";
+import type { Ended, State, Track } from "@bindings/player";
+import type { Profile, ProfileSettings } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Status } from "@bindings/torrent";
 import { idleState } from "@/lib/player";
@@ -21,6 +21,11 @@ const mocks = vi.hoisted(() => ({
   setVolume: vi.fn<(volume: number) => Promise<void>>(),
   setMuted: vi.fn<(muted: boolean) => Promise<void>>(),
   setFullscreen: vi.fn<(on: boolean) => Promise<void>>(),
+  setAudioTrack: vi.fn<(id: number) => Promise<void>>(),
+  setSubtitleTrack: vi.fn<(id: number) => Promise<void>>(),
+  setSubtitleDelay: vi.fn<(delay: number) => Promise<void>>(),
+  setSubtitleSize: vi.fn<(size: string) => Promise<void>>(),
+  saveSettings: vi.fn<(id: number, settings: ProfileSettings) => Promise<void>>(),
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   torrentStatus: vi.fn<() => Promise<Status>>(),
   release: vi.fn<() => Promise<void>>(),
@@ -51,6 +56,10 @@ vi.mock("@bindings/player", () => ({
     SetVolume: mocks.setVolume,
     SetMuted: mocks.setMuted,
     SetFullscreen: mocks.setFullscreen,
+    SetAudioTrack: mocks.setAudioTrack,
+    SetSubtitleTrack: mocks.setSubtitleTrack,
+    SetSubtitleDelay: mocks.setSubtitleDelay,
+    SetSubtitleSize: mocks.setSubtitleSize,
   },
 }));
 
@@ -65,8 +74,19 @@ vi.mock("@bindings/store", () => ({
   Service: {
     Profiles: () => Promise.resolve([kevin]),
     CurrentProfile: () => Promise.resolve(kevin),
+    ProfileSettings: () => Promise.resolve(japanese),
+    SaveProfileSettings: mocks.saveSettings,
   },
 }));
+
+// Japanese audio with English captions, large.
+const japanese: ProfileSettings = {
+  audioLanguage: "ja",
+  subtitleLanguage: "en",
+  subtitleSize: "large",
+  captions: "on",
+};
+const profileOptions = { ...japanese, start: 600 };
 
 vi.mock("@bindings/account", () => ({
   Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
@@ -135,6 +155,11 @@ beforeEach(() => {
     mocks.setVolume,
     mocks.setMuted,
     mocks.setFullscreen,
+    mocks.setAudioTrack,
+    mocks.setSubtitleTrack,
+    mocks.setSubtitleDelay,
+    mocks.setSubtitleSize,
+    mocks.saveSettings,
   ]) {
     call.mockReset().mockResolvedValue(undefined);
   }
@@ -198,7 +223,7 @@ describe("player", () => {
     await waitFor(() =>
       expect(mocks.load).toHaveBeenCalledWith(
         expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
-        { start: 600 },
+        profileOptions,
       ),
     );
     expect(mocks.resolve).toHaveBeenCalledExactlyOnceWith({
@@ -237,7 +262,7 @@ describe("player", () => {
     expect(mocks.resolve).not.toHaveBeenCalled();
 
     await userEvent.setup().click(screen.getByRole("button", { name: "Try again" }));
-    await waitFor(() => expect(mocks.load).toHaveBeenCalledWith(torrent, { start: 600 }));
+    await waitFor(() => expect(mocks.load).toHaveBeenCalledWith(torrent, profileOptions));
     expect(mocks.resolve).not.toHaveBeenCalled();
   });
 
@@ -390,7 +415,7 @@ describe("player", () => {
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Try again" }));
 
-    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, { start: 600 });
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, profileOptions);
     await waitFor(() => expect(screen.queryByRole("alert")).not.toBeInTheDocument());
   });
 
@@ -416,4 +441,148 @@ describe("player", () => {
     await user.click(within(alert).getByRole("button", { name: "Choose another stream" }));
     await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
   });
+
+  it("picks audio and subtitles from their menus", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+
+    await user.click(await screen.findByRole("button", { name: "Audio" }));
+    const audio = await screen.findByRole("menu");
+    expect(
+      within(audio).getByRole("menuitemradio", { name: "English AAC · Stereo" }),
+    ).toHaveAttribute("aria-checked", "true");
+    await user.click(
+      within(audio).getByRole("menuitemradio", { name: "Japanese Commentary · AC3 · 5.1" }),
+    );
+    expect(mocks.setAudioTrack).toHaveBeenLastCalledWith(2);
+    // Shown at once, before the player says so.
+    expect(within(audio).getByRole("menuitemradio", { name: /^Japanese/ })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
+    // Esc closed the menu, not the player.
+    expect(screen.getByRole("heading", { name: "The Film" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Subtitles" }));
+    const subtitles = await screen.findByRole("menu");
+    expect(within(subtitles).getByRole("menuitemradio", { name: "Off" })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+    expect(
+      within(subtitles).getByRole("menuitemradio", { name: "English Signs · Forced" }),
+    ).toBeInTheDocument();
+    await user.click(within(subtitles).getByRole("menuitemradio", { name: "English SDH" }));
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(4);
+    await user.click(within(subtitles).getByRole("menuitemradio", { name: "Off" }));
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(0);
+  });
+
+  it("has no audio menu for one track, nor a subtitles menu for none", async () => {
+    await openPlayer();
+    emit("player:state", { ...playing, tracks: [english] });
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByRole("button", { name: "Audio" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Subtitles" })).not.toBeInTheDocument();
+  });
+
+  it("sizes subtitles and keeps the size as the profile's", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Subtitles" }));
+    const menu = await screen.findByRole("menu");
+    expect(within(menu).getByRole("menuitemradio", { name: "Medium" })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+    await user.click(within(menu).getByRole("menuitemradio", { name: "Small" }));
+    expect(mocks.setSubtitleSize).toHaveBeenLastCalledWith("small");
+    await waitFor(() =>
+      expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
+        ...japanese,
+        subtitleSize: "small",
+      }),
+    );
+  });
+
+  it("times subtitles with Z and X, and from the menu", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    await screen.findByRole("button", { name: "Subtitles" });
+    const user = userEvent.setup();
+
+    await user.keyboard("xxx");
+    await waitFor(() => expect(mocks.setSubtitleDelay).toHaveBeenLastCalledWith(0.3));
+    expect(screen.getByText("Subtitles 0.3 s later")).toBeInTheDocument();
+    await user.keyboard("zzzz");
+    await waitFor(() => expect(mocks.setSubtitleDelay).toHaveBeenLastCalledWith(-0.1));
+    expect(screen.getByText("Subtitles 0.1 s earlier")).toBeInTheDocument();
+    // ⌘Z is someone else's.
+    await user.keyboard("{Meta>}z{/Meta}");
+    expect(mocks.setSubtitleDelay).toHaveBeenLastCalledWith(-0.1);
+
+    emit("player:state", { ...withTracks, subtitleDelay: -0.1 });
+    await user.click(screen.getByRole("button", { name: "Subtitles" }));
+    const menu = await screen.findByRole("menu");
+    expect(within(menu).getByText("Timing: 0.1 s earlier")).toBeInTheDocument();
+    await user.click(within(menu).getByRole("menuitem", { name: "Later" }));
+    await waitFor(() => expect(mocks.setSubtitleDelay).toHaveBeenLastCalledWith(0));
+    // The menu stays open for more steps.
+    expect(within(menu).getByText("Timing: On time")).toBeInTheDocument();
+    expect(within(menu).getByRole("menuitem", { name: "Reset timing" })).toHaveAttribute(
+      "aria-disabled",
+      "true",
+    );
+  });
+
+  it("tries a stopped stream again with the tracks it was playing", async () => {
+    await openPlayer();
+    emit("player:state", { ...playing, tracks: tracksSelecting(1, 4) });
+    // mpv empties the list when the file fails.
+    emit("player:state", playing);
+    emit("player:ended", { reason: "error", code: "failed" } satisfies Ended);
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Try again" }));
+
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, {
+      ...profileOptions,
+      audioLanguage: "eng",
+      subtitleLanguage: "eng",
+      captions: "on",
+    });
+  });
 });
+
+const track = (fields: Partial<Track> & Pick<Track, "id" | "type">): Track => ({
+  title: "",
+  lang: "",
+  codec: "",
+  default: false,
+  selected: false,
+  external: false,
+  forced: false,
+  hearingImpaired: false,
+  ...fields,
+});
+// Video, English and Japanese audio, and English forced and SDH subtitles,
+// with the given audio and subtitle tracks selected (0 for none).
+const tracksSelecting = (audio: number, sub: number): Track[] => [
+  track({ id: 1, type: "video", codec: "h264", selected: true }),
+  track({ id: 1, type: "audio", lang: "eng", codec: "aac", channels: 2, selected: audio === 1 }),
+  track({
+    id: 2,
+    type: "audio",
+    lang: "jpn",
+    title: "Commentary",
+    codec: "ac3",
+    channels: 6,
+    selected: audio === 2,
+  }),
+  track({ id: 3, type: "sub", lang: "eng", title: "Signs", forced: true, selected: sub === 3 }),
+  track({ id: 4, type: "sub", lang: "eng", hearingImpaired: true, selected: sub === 4 }),
+];
+const withTracks: State = { ...playing, tracks: tracksSelecting(1, 0) };
+const english = tracksSelecting(1, 0)[1]!;

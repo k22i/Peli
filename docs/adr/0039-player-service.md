@@ -12,12 +12,13 @@ date: 2026-10-30
 | File | |
 |---|---|
 | `internal/player/mpv.go` | The cgo binding to `mpv/client.h`, from the spikes. A live-handle count for tests |
-| `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `Scrub` (keyframe seek, for dragging; #61), `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetFullscreen`, `Stop`, `Snapshot`; the event loop |
+| `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `Scrub` (keyframe seek, for dragging; #61), `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetAudioTrack`, `SetSubtitleTrack`, `SetSubtitleDelay`, `SetSubtitleSize` (#62), `SetFullscreen`, `Stop`, `Snapshot`; the event loop |
+| `internal/player/captions_{darwin,other}.go` | The OS's captions preference (#62): MediaAccessibility on macOS, none elsewhere |
 | `internal/player/host.go` | The `host` interface each OS implements, and `nullHost` (no video or audio output) for tests |
 | `host_darwin.go`, `video_darwin.m` | macOS: a `CAOpenGLLayer` view below the `WKWebView`, drawn on our own serial queue |
 | `host_linux.go`, `video_linux.c` | Linux (X11 and Wayland): `gltex`, textures rendered on our own thread, shown by a `GtkPicture` below the webview |
 | `host_windows.go` | Windows: `wid`, mpv's child window at `HWND_BOTTOM`, disabled |
-| `frontend/src/lib/player.ts` | `usePlayerState` (snapshot, then events), `usePlayerEnded`, `reloadExpired` |
+| `frontend/src/lib/player.ts` | `usePlayerState` (snapshot, then events), `usePlayerEnded`, `reloadExpired`, `loadOptions` and `trackLabel` (#62) |
 | `frontend/src/components/player/player-page.tsx`, `seek-bar.tsx` | The `/player` screen and its controls (#61) |
 
 ## A session is one mpv handle
@@ -38,7 +39,7 @@ Every session sets: `idle`, `force-window=no` (with `vo=libmpv`, a forced window
 
 | Event | Payload | When |
 |---|---|---|
-| `player:state` | `State`: `active`, `loading`, `paused`, `buffering`, `bufferPercent`, `seeking`, `position`, `duration`, `buffered`, `volume`, `muted`, `speed`, `fullscreen`, `tracks`, `hwdec` | Whenever anything but the time changes |
+| `player:state` | `State`: `active`, `loading`, `paused`, `buffering`, `bufferPercent`, `seeking`, `position`, `duration`, `buffered`, `volume`, `muted`, `speed`, `fullscreen`, `tracks`, `hwdec`, `subtitleDelay`, `subtitleSize` (#62) | Whenever anything but the time changes |
 | `player:time` | `Time`: `position`, `duration`, `buffered` (seconds of cache ahead) | At most every 250 ms while playing, and at once after the first frame or a seek |
 | `player:ended` | `Ended`: `reason` `eof` or `error`; for errors `code` `expired`, `unsupported` or `failed`, and mpv's `message` | The file ended by itself. `Stop` and loading another file send nothing |
 
@@ -47,6 +48,22 @@ Times are in seconds. All three are registered with `application.RegisterEvent`,
 This merges the spikes' `player:tracks`, `player:buffering` and name/value `player:state` into one `State`. One shape is simpler for React than five, and a burst of property changes (a load sets a dozen) becomes **one** event: the loop handles every event waiting, then sends what changed. `player:time` stays separate and throttled, because a re-render per frame cost ~10 % CPU in WebKit (M0, #4).
 
 **`expired`** comes from FFmpeg's "HTTP error 401/403/404/410" log line. The client has to ask for log messages at `v`: at `warn`, libmpv drops that line. libmpv also sends FFmpeg's log to only one mpv instance per process. The app has one at a time, but the test for it can't run in parallel with the others. On `expired`, the player screen asks the addon's link again (`Resolve(origin)`, ADR-0037) and loads the new one from the position it stopped at, at most once a minute.
+
+## Tracks and subtitles (#62)
+
+`Load` also takes the profile's `audioLanguage` and `subtitleLanguage` (ISO 639 codes, "" for the file's default), `captions` and `subtitleSize`. It sets them as properties before `loadfile`, and mpv picks the tracks. We tried mpv 0.41 on a file with a default-flagged, a second-language and a forced subtitle track (`testdata/tracks.mkv`). These settings give the behaviour we want:
+
+| Captions | mpv | Shows |
+|---|---|---|
+| on | `sid=auto`, `slang=<language>`, `subs-fallback=yes`, `subs-fallback-forced=no` | Full subtitles in the language, or else the default or first track. Never the forced track when a full one exists |
+| off | `sid=auto`, `slang=`, `subs-fallback=no`, `subs-fallback-forced=yes` | Forced subtitles (signs, foreign dialogue) in the audio's language only. `sid=auto` alone shows a default-flagged track when the audio is in another language |
+| system | on or off, as the OS asks | |
+
+Every session also sets `subs-match-os-language=no`, so a language left "" means the file's default, not the OS language. Two-letter codes match three-letter tags (`ja` picks `jpn`).
+
+**System** reads MediaAccessibility on macOS: captions are on when the display type is "always on", or when the preferred captioning characteristics include transcribed dialogue ("Prefer closed captions and SDH"). Windows' captions settings only style captions, and Linux desktops have no such setting, so System means off there and the profile's On turns captions on.
+
+The player screen has an Audio menu (two or more tracks: language, codec, channels) and a Subtitles menu (Off and each track, marked Forced, SDH or External; Small/Medium/Large; timing in 0.1 s steps, also on Z and X). The size the user picks is saved as the profile's `subtitleSize`, as Settings saves it. Timing isn't saved: a delay fixes one release's subtitles, and as a profile default it would put every other file out of sync. It lasts for the session, so a retry or a fresh link keeps it. A retry or a fresh link also loads with the languages of the tracks that were playing, so tracks picked by hand stay picked. mpv keeps `sub-delay` as a float32, so the state rounds it to milliseconds.
 
 ## The hosts, as run
 

@@ -421,8 +421,13 @@ describe("stream picker", () => {
       url: "https://debrid.example/KEY/0",
       headers: { Referer: "https://addon.example/" },
     });
+    // In the profile's languages and subtitle size (#62).
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(await mocks.resolve.mock.results[0]!.value, {
       start: 0,
+      audioLanguage: "",
+      subtitleLanguage: "",
+      captions: "system",
+      subtitleSize: "medium",
     });
     // Named from the title's details, not the picker's fallback heading.
     expect(screen.getByRole("heading", { name: "The Shawshank Redemption" })).toBeInTheDocument();
@@ -491,7 +496,10 @@ describe("stream picker", () => {
     };
     opened.resolve(source);
     await opensThePlayer();
-    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, { start: 0 });
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+      source,
+      expect.objectContaining({ start: 0 }),
+    );
     expect(mocks.resolve).not.toHaveBeenCalled();
   });
 

@@ -1,8 +1,16 @@
 import { Events } from "@wailsio/runtime";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
-import { Service as Player, type Ended, type State } from "@bindings/player";
+import {
+  Service as Player,
+  type Ended,
+  type LoadOptions,
+  type State,
+  type Track,
+} from "@bindings/player";
+import type { ProfileSettings } from "@bindings/store";
 import { Service as Streams, type Source } from "@bindings/streams";
+import { languageName } from "@/lib/settings";
 
 // The player (#60, ADR-0039): libmpv in Go, under the webview, driven
 // through internal/player's Service. Its state comes back as events:
@@ -16,7 +24,7 @@ export const timeEvent = "player:time";
 export const endedEvent = "player:ended";
 
 export { Player };
-export type { Ended };
+export type { Ended, LoadOptions, Track };
 export type PlayerState = State;
 
 export const idleState: PlayerState = {
@@ -35,6 +43,8 @@ export const idleState: PlayerState = {
   fullscreen: false,
   tracks: [],
   hwdec: "",
+  subtitleDelay: 0,
+  subtitleSize: "medium",
 };
 
 // The player's state: a snapshot on mount, then every event after it.
@@ -72,12 +82,72 @@ export function usePlayerEnded(onEnded: (ended: Ended) => void) {
 }
 
 // Asks for an expired link again from its addon, through the redirects
-// (ADR-0037), and plays the new one from position. Debrid links expire,
+// (ADR-0037), and plays the new one with options. Debrid links expire,
 // sometimes mid-film. Returns the new source.
-export async function reloadExpired(source: Source, position: number): Promise<Source> {
+export async function reloadExpired(source: Source, options: LoadOptions): Promise<Source> {
   const fresh = await Streams.Resolve({ url: source.origin, headers: source.headers });
-  await Player.Load(fresh, { start: position });
+  await Player.Load(fresh, options);
   return fresh;
+}
+
+// Load's options from start (#62): the profile's languages, captions and
+// subtitle size. For the same file again (a retry, a fresh link), the
+// tracks it was playing, as the user may have picked others: their
+// languages, and subtitles on if a full track was showing.
+export function loadOptions(
+  start: number,
+  settings: ProfileSettings | undefined,
+  playing: Track[] = [],
+): LoadOptions {
+  const options = {
+    start,
+    audioLanguage: settings?.audioLanguage ?? "",
+    subtitleLanguage: settings?.subtitleLanguage ?? "",
+    captions: settings?.captions ?? "system",
+    subtitleSize: settings?.subtitleSize ?? "",
+  };
+  const audio = playing.find((track) => track.type === "audio" && track.selected);
+  if (!audio) return options;
+  const sub = playing.find((track) => track.type === "sub" && track.selected);
+  return {
+    ...options,
+    audioLanguage: languageCode(audio.lang),
+    subtitleLanguage: languageCode(sub?.lang),
+    captions: sub && !sub.forced ? "on" : "off",
+  };
+}
+
+// Go takes ISO 639 codes only; mpv's tags may be anything.
+const languageCode = (lang = "") => (/^[a-z]{2,3}$/.test(lang) ? lang : "");
+
+// A track as the pickers show it: its language (or title) as the name, and
+// what tells it apart: "English", "Commentary · AC3 · 5.1".
+export function trackLabel(track: Track): { name: string; detail: string } {
+  const language = track.lang && track.lang !== "und" ? languageName(track.lang) : "";
+  const name = language || track.title || `Track ${track.id}`;
+  const detail = [
+    language && track.title !== language ? track.title : "",
+    track.type === "audio" ? track.codec.toUpperCase() : "",
+    track.type === "audio" ? channelsLabel(track.channels ?? 0) : "",
+    track.forced ? "Forced" : "",
+    track.hearingImpaired ? "SDH" : "",
+    track.external ? "External" : "",
+  ];
+  return { name, detail: detail.filter(Boolean).join(" · ") };
+}
+
+function channelsLabel(channels: number): string {
+  const layouts: Record<number, string> = { 1: "Mono", 2: "Stereo", 6: "5.1", 8: "7.1" };
+  return layouts[channels] ?? (channels > 0 ? `${channels} ch` : "");
+}
+
+// How far subtitles can move either way, in seconds: Go's MaxSubtitleDelay.
+export const maxSubtitleDelay = 600;
+
+// "0.3 s later", "1.2 s earlier", "On time".
+export function subtitleDelayText(delay: number): string {
+  if (Math.abs(delay) < 0.05) return "On time";
+  return `${Math.abs(delay).toFixed(1)} s ${delay > 0 ? "later" : "earlier"}`;
 }
 
 // "4:05", or "1:02:03" from an hour on.

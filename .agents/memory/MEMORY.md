@@ -27,3 +27,4 @@
 - [Player service](player-service.md) — #60 internal/player Service + per-OS hosts, player:state/time/ended, /player route; one FFmpeg log instance, dev-play hook, find your window by PID, Docker Linux runs
 - [Player controls](player-controls.md) — #61 seek-bar.tsx, Scrub while dragging, useAhead/latestOnly/useIdle, playerHeading, slider jsdom + Space keyup gotchas
 - [Torrent streaming](torrent-streaming.md) — #55/ADR-0040 internal/torrent loopback link, FIFO capped cache, nosqlite tag on production builds, anacrolix stall fixes, CC-film live test
+- [Player tracks](player-tracks.md) — #62 LoadOptions languages/captions/size via loadOptions(), mpv captions on/off settings, Audio/Subtitles menus, Z/X timing, size saves to profile, delay per session

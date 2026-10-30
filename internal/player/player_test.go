@@ -17,7 +17,8 @@ import (
 )
 
 // The fixtures are 3 s of 320x180 H.264 at 24 fps with AAC audio (English):
-// clip.mp4, and the same cut into 1 s HLS segments in hls/.
+// clip.mp4, and the same cut into 1 s HLS segments in hls/. tracks.mkv
+// adds tracks to it (#62).
 const clipSeconds = 3.0
 
 // recorder is a Service's event sink.
@@ -381,6 +382,123 @@ func TestMarshalError(t *testing.T) {
 	} {
 		if got := string(MarshalError(err)); got != `{"code":"`+want+`"}` {
 			t.Errorf("MarshalError(%v) = %s", err, got)
+		}
+	}
+}
+
+// tracks.mkv is the clip with English (default) and Japanese audio, and
+// English (default), Japanese and forced English ("Signs") subtitles.
+func TestPicksTracksByLanguageAndCaptions(t *testing.T) {
+	t.Parallel()
+	path, _ := filepath.Abs("testdata/tracks.mkv")
+	for name, c := range map[string]struct {
+		opts       LoadOptions
+		audio, sub int // track ids; sub 0 is none
+	}{
+		"defaults, captions off":   {LoadOptions{Captions: "off"}, 1, 3},
+		"captions on":              {LoadOptions{Captions: "on"}, 1, 1},
+		"Japanese, captions off":   {LoadOptions{AudioLanguage: "ja", Captions: "off"}, 2, 0},
+		"Japanese, English on":     {LoadOptions{AudioLanguage: "ja", SubtitleLanguage: "en", Captions: "on"}, 2, 1},
+		"Japanese subtitles on":    {LoadOptions{SubtitleLanguage: "jpn", Captions: "on"}, 1, 2},
+		"a language it hasn't":     {LoadOptions{AudioLanguage: "fr", SubtitleLanguage: "fr", Captions: "on"}, 1, 1},
+		"off ignores the language": {LoadOptions{SubtitleLanguage: "ja", Captions: "off"}, 1, 3},
+	} {
+		t.Run(name, func(t *testing.T) {
+			t.Parallel()
+			s, r := newTestService(t)
+			if err := s.Load(streams.Source{URL: path}, c.opts); err != nil {
+				t.Fatal(err)
+			}
+			r.waitFor(t, "the first frame", func(*recorder) bool {
+				st := s.Snapshot()
+				return !st.Loading && len(st.Tracks) > 0
+			})
+			audio, sub := 0, 0
+			for _, tr := range s.Snapshot().Tracks {
+				switch {
+				case tr.Selected && tr.Type == "audio":
+					audio = tr.ID
+				case tr.Selected && tr.Type == "sub":
+					sub = tr.ID
+				}
+			}
+			if audio != c.audio || sub != c.sub {
+				t.Errorf("audio %d and subtitles %d, want %d and %d", audio, sub, c.audio, c.sub)
+			}
+		})
+	}
+}
+
+func TestSystemCaptions(t *testing.T) {
+	defer func(f func() bool) { systemCaptions = f }(systemCaptions)
+	for _, on := range []bool{false, true} {
+		systemCaptions = func() bool { return on }
+		for mode, want := range map[string]bool{"": on, "system": on, "on": true, "off": false} {
+			props := LoadOptions{Captions: mode}.tracks()
+			if got := props[4][1] == "yes"; got != want {
+				t.Errorf("system %v, captions %q: subtitles on %v, want %v (%v)", on, mode, got, want, props)
+			}
+		}
+	}
+}
+
+func TestTrackControls(t *testing.T) {
+	t.Parallel()
+	s, r := newTestService(t)
+	path, _ := filepath.Abs("testdata/tracks.mkv")
+	if err := s.Load(streams.Source{URL: path}, LoadOptions{Captions: "on", SubtitleSize: "small"}); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the first frame", func(*recorder) bool { st := s.Snapshot(); return !st.Loading && len(st.Tracks) > 0 })
+	if err := s.SetPaused(true); err != nil {
+		t.Fatal(err)
+	}
+	if size := s.Snapshot().SubtitleSize; size != "small" {
+		t.Errorf("subtitle size %q, want small", size)
+	}
+	selected := func(kind string) int {
+		for _, tr := range s.Snapshot().Tracks {
+			if tr.Type == kind && tr.Selected {
+				return tr.ID
+			}
+		}
+		return 0
+	}
+	for _, step := range []struct {
+		name string
+		call func() error
+		ok   func(State) bool
+	}{
+		{"audio", func() error { return s.SetAudioTrack(2) }, func(State) bool { return selected("audio") == 2 }},
+		{"subtitles", func() error { return s.SetSubtitleTrack(2) }, func(State) bool { return selected("sub") == 2 }},
+		{"subtitles off", func() error { return s.SetSubtitleTrack(0) }, func(State) bool { return selected("sub") == 0 }},
+		{"delay", func() error { return s.SetSubtitleDelay(-0.3) }, func(st State) bool { return math.Abs(st.SubtitleDelay+0.3) < 1e-9 }},
+		{"size", func() error { return s.SetSubtitleSize("large") }, func(st State) bool { return st.SubtitleSize == "large" }},
+	} {
+		if err := step.call(); err != nil {
+			t.Fatalf("%s: %v", step.name, err)
+		}
+		r.waitFor(t, step.name, func(*recorder) bool { return step.ok(s.Snapshot()) })
+	}
+	var forced bool
+	for _, tr := range s.Snapshot().Tracks {
+		forced = forced || tr.Forced && tr.Title == "Signs"
+	}
+	if !forced {
+		t.Errorf("tracks %+v, want the forced Signs track", s.Snapshot().Tracks)
+	}
+	for _, bad := range []func() error{
+		func() error { return s.SetAudioTrack(0) },
+		func() error { return s.SetSubtitleTrack(-1) },
+		func() error { return s.SetSubtitleDelay(math.NaN()) },
+		func() error { return s.SetSubtitleDelay(MaxSubtitleDelay + 1) },
+		func() error { return s.SetSubtitleSize("huge") },
+		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{AudioLanguage: "en,ja"}) },
+		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{Captions: "sometimes"}) },
+		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{SubtitleSize: "huge"}) },
+	} {
+		if err := bad(); !errors.Is(err, ErrInvalid) {
+			t.Errorf("got %v, want ErrInvalid", err)
 		}
 	}
 }
