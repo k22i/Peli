@@ -4,11 +4,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 
 import type * as Runtime from "@wailsio/runtime";
 import type { Ended, State, Track, Watching } from "@bindings/player";
-import type { Addon, Profile, ProfileSettings } from "@bindings/store";
+import type { Addon, Profile, ProfileSettings, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
-import type { Status } from "@bindings/torrent";
+import type { Request as TorrentRequest, Status } from "@bindings/torrent";
+import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
+import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.json";
 import opensubtitlesManifest from "@/lib/addon-protocol/fixtures/opensubtitles/manifest.json";
 import opensubtitlesMovie from "@/lib/addon-protocol/fixtures/opensubtitles/subtitles-movie.json";
+import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.json";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import { renderApp } from "@/test/render-app";
@@ -31,11 +34,14 @@ const mocks = vi.hoisted(() => ({
   addSubtitle: vi.fn<(sub: { url: string; lang: string; title: string }) => Promise<number>>(),
   systemCaptions: vi.fn<() => Promise<boolean>>(),
   addons: vi.fn<() => Promise<Addon[]>>(),
+  visibleAddons: vi.fn<() => Promise<Addon[]>>(),
+  titleProgress: vi.fn<(profileId: number, contentId: string) => Promise<Progress[]>>(),
   settings: vi.fn<() => Promise<ProfileSettings>>(),
   saveSettings: vi.fn<(id: number, settings: ProfileSettings) => Promise<void>>(),
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   torrentStatus: vi.fn<() => Promise<Status>>(),
   release: vi.fn<() => Promise<void>>(),
+  openTorrent: vi.fn<(request: TorrentRequest) => Promise<Source>>(),
 }));
 
 vi.mock("@wailsio/runtime", async (importOriginal) => {
@@ -72,9 +78,19 @@ vi.mock("@bindings/player", () => ({
   },
 }));
 
-vi.mock("@bindings/streams", () => ({ Service: { Resolve: mocks.resolve } }));
+// Wails calls: promises with cancel.
+vi.mock("@bindings/streams", () => ({
+  Service: {
+    Resolve: (request: Request) => Object.assign(mocks.resolve(request), { cancel: () => {} }),
+  },
+}));
 vi.mock("@bindings/torrent", () => ({
-  Service: { Status: mocks.torrentStatus, Release: mocks.release },
+  Service: {
+    Status: mocks.torrentStatus,
+    Release: mocks.release,
+    Open: (request: TorrentRequest) =>
+      Object.assign(mocks.openTorrent(request), { cancel: () => {} }),
+  },
 }));
 
 const kevin = { id: 1, name: "Kevin", nuvioIndex: 1 } as Profile;
@@ -86,6 +102,8 @@ vi.mock("@bindings/store", () => ({
     ProfileSettings: mocks.settings,
     SaveProfileSettings: mocks.saveSettings,
     Addons: mocks.addons,
+    VisibleAddons: mocks.visibleAddons,
+    TitleProgress: mocks.titleProgress,
   },
 }));
 
@@ -190,6 +208,9 @@ beforeEach(() => {
   mocks.addSubtitle.mockReset().mockResolvedValue(10);
   mocks.systemCaptions.mockReset().mockResolvedValue(false);
   mocks.addons.mockReset().mockResolvedValue([]);
+  mocks.visibleAddons.mockReset().mockResolvedValue([]);
+  mocks.titleProgress.mockReset().mockResolvedValue([]);
+  mocks.openTorrent.mockReset();
   mocks.settings.mockReset().mockResolvedValue(japanese);
   mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
   mocks.release.mockReset().mockResolvedValue(undefined);
@@ -810,6 +831,216 @@ describe("addon subtitles", () => {
     const list = await screen.findByRole("menu", { name: "English3" });
     await user.click(within(list).getAllByRole("menuitemradio")[0]!);
     expect(await screen.findByText("Couldn’t load those subtitles")).toBeInTheDocument();
+  });
+});
+
+const card = () => screen.findByRole("region", { name: "Next episode" });
+
+describe("next episode", () => {
+  const cinemeta: Addon = {
+    url: "https://v3-cinemeta.strem.io/manifest.json",
+    name: "Cinemeta",
+    enabled: true,
+  };
+  const torrentio: Addon = {
+    url: "https://torrentio.strem.fun/manifest.json",
+    name: "Torrentio",
+    enabled: true,
+  };
+  const nextStreams = "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A2.json";
+  // A cached Torrentio+TorBox stream of the next episode, and a torrent.
+  const debrid = {
+    name: "[TB+] Torrentio\n1080p",
+    title: "Breaking.Bad.S01E02.1080p.BluRay.x264-GRP.mkv\n👤 20 💾 2.1 GB ⚙️ Tracker",
+    url: "https://torrentio.strem.fun/resolve/torbox/KEY/a/null/1/Breaking.Bad.S01E02.mkv",
+  };
+  const p2p = {
+    name: "Torrentio\n1080p",
+    title: "Breaking.Bad.S01E02.1080p.BluRay.x264-GRP.mkv\n👤 59 💾 2.1 GB ⚙️ Tracker",
+    infoHash: "9cf3225d39f3a46c34cc149101dd8560c574a21b",
+    fileIdx: 1,
+    behaviorHints: { filename: "Breaking.Bad.S01E02.1080p.BluRay.x264-GRP.mkv" },
+  };
+  const pilot: Watching = {
+    profileId: 1,
+    contentId: "tt0903747",
+    contentType: "series",
+    videoId: "tt0903747:1:1",
+    season: 1,
+    episode: 1,
+    title: "Pilot",
+  };
+  // 58 minutes: it counts as watched from 52:12.
+  const before: State = { ...playing, position: 3000, duration: 3480 };
+  const watched: State = { ...playing, position: 3200, duration: 3480 };
+
+  // Serves Cinemeta's details of Breaking Bad and Torrentio's streams for
+  // its second episode.
+  function serve(streams: unknown[]) {
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio]);
+    const answers: Record<string, unknown> = {
+      [cinemeta.url]: cinemetaManifest,
+      [torrentio.url]: torrentioManifest,
+      "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
+      [nextStreams]: { streams },
+    };
+    const fetch = vi.fn<(url: string) => Promise<Response>>(async (url) =>
+      url in answers ? Response.json(answers[url]) : new Response("", { status: 503 }),
+    );
+    vi.stubGlobal("fetch", fetch);
+    return fetch;
+  }
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  const openPilot = (played = source) =>
+    openPlayer("S1 · E1 · Pilot", played, undefined, { watching: pilot });
+
+  it("offers it once this one counts as watched, ready in advance, and plays it at the end", async () => {
+    serve([debrid]);
+    const { router } = await openPilot();
+    emit("player:state", before);
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
+
+    emit("player:state", watched);
+    const next = await card();
+    expect(next).toHaveTextContent("S1 · E2 · Cat's in the Bag...");
+    expect(next).toHaveTextContent("Next episode in 4:40");
+    expect(await within(next).findByText("1080p from Torrentio")).toBeInTheDocument();
+    // Resolved before it's due.
+    expect(mocks.resolve).toHaveBeenCalledWith({ url: debrid.url, headers: {} });
+    expect(mocks.load).not.toHaveBeenCalled();
+
+    emit("player:ended", { reason: "eof" } satisfies Ended);
+    await waitFor(() =>
+      expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+        expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
+        expect.objectContaining({
+          start: 0,
+          audioLanguage: "ja",
+          watching: {
+            profileId: 1,
+            contentId: "tt0903747",
+            contentType: "series",
+            videoId: "tt0903747:1:2",
+            season: 1,
+            episode: 2,
+            title: "Cat's in the Bag...",
+          },
+        }),
+      ),
+    );
+    expect(await screen.findByText("S1 · E2 · Cat's in the Bag...")).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe("/player");
+    expect(router.state.location.state.player?.watching?.videoId).toBe("tt0903747:1:2");
+    expect(mocks.resolve).toHaveBeenCalledOnce();
+    expect(mocks.stop).not.toHaveBeenCalled();
+  });
+
+  it("plays it at once on Play now, from where it was left", async () => {
+    serve([debrid]);
+    mocks.titleProgress.mockResolvedValue([
+      {
+        key: "tt0903747_s1e2",
+        contentId: "tt0903747",
+        contentType: "series",
+        videoId: "tt0903747:1:2",
+        season: 1,
+        episode: 2,
+        position: 600_000,
+        duration: 2_880_000,
+        lastWatched: 1,
+      } satisfies Progress,
+    ]);
+    await openPilot();
+    emit("player:state", watched);
+    const next = await card();
+    await within(next).findByText("1080p from Torrentio");
+    await userEvent.setup().click(within(next).getByRole("button", { name: "Play now" }));
+    await waitFor(() =>
+      expect(mocks.load).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ start: 600 }),
+      ),
+    );
+    emit("player:state", { ...playing, position: 600, duration: 2880 });
+    expect(await screen.findByText("Resumed at")).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
+  });
+
+  it("leaves at the end once cancelled", async () => {
+    serve([debrid]);
+    const { router } = await openPilot();
+    emit("player:state", watched);
+    await userEvent.setup().click(within(await card()).getByRole("button", { name: "Cancel" }));
+    expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
+
+    emit("player:ended", { reason: "eof" } satisfies Ended);
+    await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
+    expect(mocks.load).not.toHaveBeenCalled();
+  });
+
+  it("opens the picker for it when there's no stream", async () => {
+    serve([]);
+    const { router } = await openPilot();
+    emit("player:state", watched);
+    const next = await card();
+    expect(await within(next).findByText("No stream found yet")).toBeInTheDocument();
+    await userEvent.setup().click(within(next).getByRole("button", { name: "Choose a stream" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
+    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
+    expect(mocks.load).not.toHaveBeenCalled();
+  });
+
+  it("opens a torrent only when it plays, in place of the one playing", async () => {
+    serve([p2p]);
+    const nextTorrent: Source = { ...torrent, url: "http://127.0.0.1:50123/secret/9cf3/1/e2.mkv" };
+    mocks.openTorrent.mockResolvedValue(nextTorrent);
+    await openPilot(torrent);
+    emit("player:state", watched);
+    const next = await card();
+    expect(await within(next).findByText("1080p from Torrentio")).toBeInTheDocument();
+    // Opening it now would stop the torrent playing.
+    expect(mocks.openTorrent).not.toHaveBeenCalled();
+
+    emit("player:ended", { reason: "eof" } satisfies Ended);
+    await waitFor(() => expect(mocks.load).toHaveBeenCalledWith(nextTorrent, expect.anything()));
+    expect(mocks.openTorrent).toHaveBeenCalledWith(
+      expect.objectContaining({ infoHash: p2p.infoHash, fileIdx: 1 }),
+    );
+    // Opening the next one replaced it.
+    expect(mocks.release).not.toHaveBeenCalled();
+  });
+
+  it("lets the torrent playing go when the next comes from a link", async () => {
+    serve([debrid]);
+    await openPilot(torrent);
+    emit("player:state", watched);
+    const next = await card();
+    await within(next).findByText("1080p from Torrentio");
+    await userEvent.setup().click(within(next).getByRole("button", { name: "Play now" }));
+    await waitFor(() => expect(mocks.release).toHaveBeenCalledOnce());
+    expect(mocks.load.mock.invocationCallOrder[0]).toBeLessThan(
+      mocks.release.mock.invocationCallOrder[0]!,
+    );
+  });
+
+  it("isn't offered for a film", async () => {
+    serve([debrid]);
+    await openPlayer(undefined, source, undefined, {
+      watching: {
+        profileId: 1,
+        contentId: "tt0111161",
+        contentType: "movie",
+        videoId: "tt0111161",
+      },
+    });
+    emit("player:state", watched);
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
   });
 });
 

@@ -291,6 +291,45 @@ func TestOpenReplaces(t *testing.T) {
 	}
 }
 
+// The next episode in a pack: another file of the torrent playing plays in
+// its place, without fetching the file list again.
+func TestOpenSwitchesFilesInATorrent(t *testing.T) {
+	sw := seed(t, 64<<10, map[string]int{
+		"Show.S01E01.mkv": 256 << 10,
+		"Show.S01E02.mkv": 320 << 10,
+	})
+	svc := engine(t, &sw, on)
+	first, err := svc.Open(t.Context(), Request{InfoHash: sw.hash.HexString(), FileName: "Show.S01E01.mkv"})
+	check(t, err)
+	if _, body := get(t, first.URL, nil); !bytes.Equal(body, sw.files["Show.S01E01.mkv"]) {
+		t.Fatal("the first episode doesn't serve")
+	}
+	svc.mu.Lock()
+	before := svc.current
+	svc.mu.Unlock()
+
+	second, err := svc.Open(t.Context(), Request{InfoHash: sw.hash.HexString(), FileName: "Show.S01E02.mkv"})
+	check(t, err)
+	svc.mu.Lock()
+	after := svc.current
+	svc.mu.Unlock()
+	if after != before {
+		t.Error("the torrent was opened again")
+	}
+	if second.URL == first.URL || second.Size != 320<<10 {
+		t.Fatalf("got %d bytes at the same link: still the first file", second.Size)
+	}
+	if _, body := get(t, second.URL, nil); !bytes.Equal(body, sw.files["Show.S01E02.mkv"]) {
+		t.Error("the second episode doesn't serve")
+	}
+	if resp, _ := get(t, first.URL, nil); resp.StatusCode != http.StatusNotFound {
+		t.Errorf("the first episode still serves: %d", resp.StatusCode)
+	}
+	if status := svc.Status(); status.Size != 320<<10 {
+		t.Errorf("Status is about a %d-byte file, not the second", status.Size)
+	}
+}
+
 func TestPick(t *testing.T) {
 	files := []fileInfo{
 		{"Show/Sample/sample.mkv", 10},

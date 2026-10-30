@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 
+import { NextEpisode } from "@/components/player/next-episode";
 import { SeekBar } from "@/components/player/seek-bar";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,6 +38,10 @@ import {
   MenuTrigger,
 } from "@/components/ui/menu";
 import { Spinner } from "@/components/ui/spinner";
+import { streamsQuery } from "@/lib/addon-protocol";
+import { useLoadedAddons } from "@/lib/home";
+import { countdownFrom, nextEpisode, type PreparedNext } from "@/lib/next-episode";
+import { streamsPath, streamsSearch } from "@/lib/playback";
 import { repaintWindow } from "@/lib/theme";
 import {
   formatTime,
@@ -55,6 +60,7 @@ import {
   type Track,
 } from "@/lib/player";
 import { useCurrentProfile } from "@/lib/profile";
+import { resolvePick } from "@/lib/resolve";
 import {
   profileSettingsQuery,
   subtitleSizes,
@@ -65,10 +71,22 @@ import {
   autoSubtitle,
   byLanguage,
   subtitleLanguage,
+  subtitleTarget,
   useAddonSubtitles,
   type AddonSubtitle,
 } from "@/lib/subtitles";
 import { invalidateWatching } from "@/lib/sync";
+import {
+  cachedTitleMeta,
+  episodeCode,
+  episodeTarget,
+  isSeriesType,
+  playerHeading,
+  resumePoint,
+  titleMetaQuery,
+  titleProgressQuery,
+  watchingFor,
+} from "@/lib/title";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -118,7 +136,38 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // subtitles picked here becomes the profile's. Go keeps the profile's
 // progress as it plays (#64); a file that resumed offers "Start over" for its
 // first few seconds, and leaving refreshes Continue Watching and the marks.
+// Once an episode counts as watched, a card offers the next (#65), which
+// plays in the same session at the end, as a new file of the screen.
 export function PlayerPage() {
+  const queryClient = useQueryClient();
+  const playing = useLocation({ select: (location) => location.state.player });
+  // The source playing now: the next episode replaces it in history state.
+  // Leaving renders this once more with the next screen's state, without it.
+  const playingSource = useRef(playing?.source);
+  useEffect(() => {
+    if (playing?.source) playingSource.current = playing.source;
+  });
+  // Leaving the screen, however it happens, ends the session, and lets the
+  // torrent go once mpv no longer reads it. Go has kept where it stopped by
+  // the time Stop returns, so the screens behind show it.
+  useEffect(
+    () => () => {
+      const streamed = isTorrentSource(playingSource.current);
+      Player.Stop()
+        .catch(() => {})
+        .finally(() => {
+          repaintWindow();
+          invalidateWatching(queryClient);
+          if (streamed) Torrents.Release().catch(() => {});
+        });
+    },
+    [queryClient],
+  );
+  // One file at a time: the next episode starts afresh.
+  return <PlayerFile key={playing?.source?.url ?? ""} />;
+}
+
+function PlayerFile() {
   const router = useRouter();
   const navigate = useNavigate();
   const canGoBack = useCanGoBack();
@@ -198,24 +247,34 @@ export function PlayerPage() {
 
   const reloaded = () => setAdded(({ load }) => ({ load: load + 1, ids: new Map() }));
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
-  // Leaving the screen, however it happens, ends the session, and lets the
-  // torrent go once mpv no longer reads it. Go has kept where it stopped by
-  // the time Stop returns, so the screens behind show it.
-  useEffect(
-    () => () => {
-      const streamed = isTorrentSource(source.current);
-      Player.Stop()
-        .catch(() => {})
-        .finally(() => {
-          repaintWindow();
-          invalidateWatching(queryClient);
-          if (streamed) Torrents.Release().catch(() => {});
-        });
-    },
-    [queryClient],
-  );
+
+  // The series' details, as its page asked for them, for the next episode.
+  const browsing = useLoadedAddons(profileId);
+  const series = watching && isSeriesType(watching.contentType) ? watching : undefined;
+  const meta = useQuery({
+    ...titleMetaQuery(browsing.addons, series?.contentType ?? "", series?.contentId ?? ""),
+    enabled: series !== undefined && !browsing.loading,
+    ...(series &&
+      cachedTitleMeta(queryClient, browsing.addons, series.contentType, series.contentId)),
+  }).data?.meta;
+  const next = meta && series ? nextEpisode(meta, series.videoId) : undefined;
+  const [cancelled, setCancelled] = useState(false);
+  const from = countdownFrom(state.duration);
+  const counting =
+    next !== undefined && from !== undefined && state.position >= from && !cancelled && !error;
+  // Play now, or the end: the card hands over what it found.
+  const [starting, setStarting] = useState(false);
+  // While the next episode opens, the file ending or failing is expected.
+  const switching = useRef(false);
+  const switchAbort = useRef<AbortController>(null);
+  useEffect(() => () => switchAbort.current?.abort(), []);
+
   usePlayerEnded((ended) => {
-    if (ended.reason === "eof") return leave();
+    if (switching.current) return;
+    if (ended.reason === "eof") {
+      if (counting) return setStarting(true);
+      return leave();
+    }
     stoppedAt.current = state.position;
     // A link that expired mid-play is asked for again, at most once a
     // minute, and plays on from where it stopped. A torrent's loopback link
@@ -262,6 +321,73 @@ export function PlayerPage() {
 
   const ready = state.active && !error;
   const known = state.duration > 0;
+  // The picker for the next episode, in place of this screen: no stream
+  // was found or would open.
+  const chooseNext = () => {
+    if (!meta || !next) return leave();
+    const nextTarget = episodeTarget(meta, next);
+    void navigate({
+      to: streamsPath,
+      params: { type: nextTarget.type, id: nextTarget.id },
+      search: streamsSearch({ video: nextTarget.videoId }),
+      state: (current) => ({ ...current, play: nextTarget }),
+      replace: true,
+    });
+  };
+  // Plays the next episode in this session: its progress kept as its own,
+  // from where it was left, in the languages playing now.
+  const playNext = async (prepared: PreparedNext) => {
+    if (!meta || !next || prepared.status !== "ready") return chooseNext();
+    const controller = new AbortController();
+    switchAbort.current = controller;
+    switching.current = true;
+    const nextTarget = episodeTarget(meta, next);
+    try {
+      const { source: nextSource, attempt } =
+        prepared.resolved ??
+        (await resolvePick(prepared.candidate, {
+          refresh: async (addon) =>
+            (
+              await queryClient.fetchQuery({
+                ...streamsQuery(addon, meta.type, next.id),
+                staleTime: 0,
+              })
+            ).streams,
+          signal: controller.signal,
+        }));
+      const progress = await queryClient
+        .fetchQuery({ ...titleProgressQuery(profileId, meta.id), staleTime: 0 })
+        .catch(() => undefined);
+      controller.signal.throwIfAborted();
+      const nextWatching = watchingFor(profileId, nextTarget, meta, progress ?? []);
+      const start = progress ? resumePoint(progress, nextWatching) : 0;
+      await Player.Load(nextSource, loadOptions(start, settings, lastTracks.current, nextWatching));
+      // A torrent playing that the next episode doesn't come from.
+      if (isTorrentSource(source.current) && !isTorrentSource(nextSource))
+        Torrents.Release().catch(() => {});
+      void navigate({
+        to: "/player",
+        replace: true,
+        state: (current) => ({
+          ...current,
+          player: {
+            ...playerHeading(meta, next.id, nextTarget.title),
+            source: nextSource,
+            watching: nextWatching,
+            resumedAt: start,
+            subtitles: subtitleTarget(
+              meta.type,
+              next.id,
+              attempt.stream,
+              prepared.names.get(attempt.source) ?? "",
+            ),
+          },
+        }),
+      });
+    } catch {
+      if (!controller.signal.aborted) chooseNext();
+    }
+  };
   // "Start over", while a resumed file has played less than startOverFor.
   const resumedAt = playing?.resumedAt ?? 0;
   const [startOverDone, setStartOverDone] = useState(false);
@@ -424,7 +550,7 @@ export function PlayerPage() {
 
   const failure = error && ((!torrent && failures[error.code ?? ""]) || failed);
   const seekingLate = useLate(state.seeking, 300);
-  const waiting = !failure && (state.loading || state.buffering || seekingLate);
+  const waiting = starting || (!failure && (state.loading || state.buffering || seekingLate));
   const shown = !idle || paused || !ready || state.loading || dragging || over || menuOpen;
   const hold = { onPointerEnter: () => setOver(true), onPointerLeave: () => setOver(false) };
   const VolumeIcon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
@@ -678,6 +804,20 @@ export function PlayerPage() {
           </Button>
         </div>
       )}
+      {meta && next && (counting || starting) && (
+        <NextEpisode
+          profileId={profileId}
+          meta={meta}
+          next={next}
+          settings={settings}
+          remaining={Math.max(0, state.duration - state.position)}
+          share={from === undefined ? 0 : (state.position - from) / (state.duration - from)}
+          starting={starting}
+          onPlay={() => setStarting(true)}
+          onCancel={() => setCancelled(true)}
+          onStart={(prepared) => void playNext(prepared)}
+        />
+      )}
       {notice && !failure && (
         <div
           aria-live="polite"
@@ -710,12 +850,15 @@ export function PlayerPage() {
           <div className="pointer-events-none absolute inset-0 grid place-items-center">
             <div className="flex flex-col items-center gap-2">
               <Spinner className="size-10 text-white/80" />
-              {state.buffering && state.bufferPercent > 0 && (
+              {starting && next && (
+                <p className="text-sm font-medium text-white/80">Opening {episodeCode(next)}…</p>
+              )}
+              {!starting && state.buffering && state.bufferPercent > 0 && (
                 <p className="font-mono text-xs text-white/70 tabular-nums">
                   Buffering {state.bufferPercent} %
                 </p>
               )}
-              {torrentStatus?.active && (
+              {!starting && torrentStatus?.active && (
                 <p className="font-mono text-xs text-white/70 tabular-nums">
                   {torrentStatusText(torrentStatus)}
                 </p>

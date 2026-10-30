@@ -165,9 +165,11 @@ type Service struct {
 
 // session is the torrent playing.
 type session struct {
-	t    *torrent.Torrent
-	file *torrent.File
-	// Closed once the file is chosen, file set before.
+	t *torrent.Torrent
+	// The file playing, set before ready closes. Another file of the same
+	// torrent (the next episode in a season pack) replaces it.
+	file atomic.Pointer[torrent.File]
+	// Closed once the first file is chosen.
 	ready chan struct{}
 	stop  chan struct{}
 
@@ -212,8 +214,9 @@ func (s *Service) ServiceShutdown() error {
 
 // Open starts streaming req's torrent and returns the Source the player
 // loads: a loopback link to the file. It waits for the torrent's file list
-// from peers. Opening another torrent stops the one before; cancelling the
-// call lets this one go.
+// from peers. Opening another torrent stops the one before, and another
+// file of the same torrent (the next episode in a pack) replaces the file
+// playing; cancelling the call lets this one go.
 func (s *Service) Open(ctx context.Context, req Request) (streams.Source, error) {
 	settings, err := s.settings.DeviceSettings()
 	if err != nil {
@@ -293,8 +296,9 @@ func (s *Service) Status() Status {
 		return status
 	}
 	status.Ready = true
-	status.Size = ses.file.Length()
-	status.Done = ses.file.BytesCompleted()
+	file := ses.file.Load()
+	status.Size = file.Length()
+	status.Done = file.BytesCompleted()
 	status.Ahead = ses.ahead()
 	return status
 }
@@ -438,34 +442,57 @@ func (s *Service) closeLocked() {
 	}
 }
 
-// choose waits for the torrent's file list and picks req's file.
+// choose waits for the torrent's file list and picks req's file. Once one
+// is chosen, another request picks again: the file it names plays from
+// then on, and the one before stops serving.
 func (ses *session) choose(ctx context.Context, req Request, wait time.Duration) (*torrent.File, error) {
 	select {
 	case <-ses.ready:
+		file, err := pickFile(ses.t, req)
+		if err != nil {
+			return nil, err
+		}
+		if file != ses.file.Load() {
+			fetchEnds(ses.t, file)
+			ses.file.Store(file)
+		}
+		return file, nil
 	case <-ses.t.GotInfo():
-		files := ses.t.Files()
-		names := make([]fileInfo, len(files))
-		for i, f := range files {
-			names[i] = fileInfo{f.DisplayPath(), f.Length()}
+		file, err := pickFile(ses.t, req)
+		if err != nil {
+			return nil, err
 		}
-		i := pick(names, req)
-		if i < 0 {
-			return nil, ErrNoFile
-		}
-		file := files[i]
-		// The ends first: MP4s often keep their index at the end, and MKVs
-		// their cues.
-		first, last := file.BeginPieceIndex(), file.EndPieceIndex()
-		ses.t.DownloadPieces(first, min(first+2, last))
-		ses.t.DownloadPieces(max(last-2, first), last)
-		ses.file = file
+		fetchEnds(ses.t, file)
+		ses.file.Store(file)
 		close(ses.ready)
+		return file, nil
 	case <-ctx.Done():
 		return nil, ctx.Err()
 	case <-time.After(wait):
 		return nil, ErrNoPeers
 	}
-	return ses.file, nil
+}
+
+// pickFile finds req's file in t, which has its info.
+func pickFile(t *torrent.Torrent, req Request) (*torrent.File, error) {
+	files := t.Files()
+	names := make([]fileInfo, len(files))
+	for i, f := range files {
+		names[i] = fileInfo{f.DisplayPath(), f.Length()}
+	}
+	i := pick(names, req)
+	if i < 0 {
+		return nil, ErrNoFile
+	}
+	return files[i], nil
+}
+
+// fetchEnds asks for file's ends first: MP4s often keep their index at the
+// end, and MKVs their cues.
+func fetchEnds(t *torrent.Torrent, file *torrent.File) {
+	first, last := file.BeginPieceIndex(), file.EndPieceIndex()
+	t.DownloadPieces(first, min(first+2, last))
+	t.DownloadPieces(max(last-2, first), last)
 }
 
 // A file in a torrent: its path and size.
@@ -597,7 +624,7 @@ func (ses *session) ahead() int64 {
 	if main == nil {
 		return 0
 	}
-	t, f := ses.t, ses.file
+	t, f := ses.t, ses.file.Load()
 	info := t.Info()
 	if info == nil {
 		return 0
@@ -632,18 +659,19 @@ func (s *Service) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	if parts[2] != strconv.Itoa(fileIndex(ses.t, ses.file)) {
+	file := ses.file.Load()
+	if parts[2] != strconv.Itoa(fileIndex(ses.t, file)) {
 		http.NotFound(w, r)
 		return
 	}
-	reader := ses.file.NewReader()
+	reader := file.NewReader()
 	defer reader.Close()
 	reader.SetResponsive()
 	reader.SetReadahead(s.readahead)
 	served := &servedReader{r: reader, ctx: r.Context()}
 	ses.readers.Store(served, struct{}{})
 	defer ses.readers.Delete(served)
-	w.Header().Set("Content-Type", contentType(ses.file.DisplayPath()))
+	w.Header().Set("Content-Type", contentType(file.DisplayPath()))
 	http.ServeContent(w, r, "", time.Time{}, served)
 }
 

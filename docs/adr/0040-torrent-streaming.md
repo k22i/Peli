@@ -24,7 +24,7 @@ date: 2026-10-30
 
 **[anacrolix/torrent](https://github.com/anacrolix/torrent) v1.61** (MPL-2.0, file-level copyleft, allowed by CONTRIBUTING), in-process. It is the one mature Go engine with streaming readers: a `Reader` marks the piece it reads and the next as urgent and a readahead window after them, so pieces arrive in playback order and a seek moves the window. libtorrent through cgo would be faster to fetch but means a C++ build of Boost on three OSes for a P1 feature. A WebTorrent or peerflix process would mean shipping Node.
 
-The client starts with the first `Open` and stops five minutes after the last torrent is let go, so it costs no memory, port or DHT traffic until someone streams a torrent, and the next pick within five minutes skips joining the DHT again. One torrent plays at a time: opening another drops the one before. It listens on a free port (a fixed one clashes with another client), uses the DHT, UPnP, the stream's own `sources` trackers and seven public trackers (Torrentio sends none), and doesn't do WebTorrent.
+The client starts with the first `Open` and stops five minutes after the last torrent is let go, so it costs no memory, port or DHT traffic until someone streams a torrent, and the next pick within five minutes skips joining the DHT again. One torrent plays at a time: opening another drops the one before, and opening another file of the same torrent (the next episode in a pack, #65) switches the file it serves. It listens on a free port (a fixed one clashes with another client), uses the DHT, UPnP, the stream's own `sources` trackers and seven public trackers (Torrentio sends none), and doesn't do WebTorrent.
 
 ## The player gets a link
 
