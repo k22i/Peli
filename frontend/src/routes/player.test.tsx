@@ -12,6 +12,7 @@ import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.j
 import opensubtitlesManifest from "@/lib/addon-protocol/fixtures/opensubtitles/manifest.json";
 import opensubtitlesMovie from "@/lib/addon-protocol/fixtures/opensubtitles/subtitles-movie.json";
 import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.json";
+import type { Stream } from "@/lib/addon-protocol";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import { renderApp } from "@/test/render-app";
@@ -161,7 +162,7 @@ async function openPlayer(
   episode?: string,
   played = source,
   subtitles?: SubtitleTarget,
-  progress: { watching?: Watching; resumedAt?: number } = {},
+  progress: { watching?: Watching; resumedAt?: number; stream?: Stream } = {},
 ) {
   const app = await renderApp("/library", { shell: false });
   await act(() =>
@@ -1148,6 +1149,177 @@ describe("next episode", () => {
     emit("player:state", watched);
     await screen.findByRole("button", { name: "Pause" });
     expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
+  });
+});
+
+describe("stream switcher", () => {
+  const cinemeta: Addon = {
+    url: "https://v3-cinemeta.strem.io/manifest.json",
+    name: "Cinemeta",
+    enabled: true,
+  };
+  const torrentio: Addon = {
+    url: "https://torrentio.strem.fun/manifest.json",
+    name: "Torrentio",
+    enabled: true,
+  };
+  const pilotStreams = "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json";
+  // Two cached Torrentio+TorBox streams of the pilot: the 720p one plays.
+  const hd: Stream = {
+    name: "[TB+] Torrentio\n720p",
+    title: "Breaking.Bad.S01E01.720p.BluRay.x264-GRP.mkv\n👤 20 💾 1.1 GB ⚙️ Tracker",
+    url: "https://torrentio.strem.fun/resolve/torbox/KEY/b/null/1/Breaking.Bad.S01E01.720p.mkv",
+  };
+  const fullHd: Stream = {
+    name: "[TB+] Torrentio\n1080p",
+    title: "Breaking.Bad.S01E01.1080p.BluRay.x264-GRP.mkv\n👤 40 💾 2.1 GB ⚙️ Tracker",
+    url: "https://torrentio.strem.fun/resolve/torbox/KEY/a/null/1/Breaking.Bad.S01E01.1080p.mkv",
+  };
+  const pilot: Watching = {
+    profileId: 1,
+    contentId: "tt0903747",
+    contentType: "series",
+    videoId: "tt0903747:1:1",
+    season: 1,
+    episode: 1,
+    title: "Pilot",
+  };
+
+  function serve(streams: Stream[]) {
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio]);
+    const answers: Record<string, unknown> = {
+      [cinemeta.url]: cinemetaManifest,
+      [torrentio.url]: torrentioManifest,
+      "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
+      [pilotStreams]: { streams },
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(url: string) => Promise<Response>>(async (url) =>
+        url in answers ? Response.json(answers[url]) : new Response("", { status: 503 }),
+      ),
+    );
+  }
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  const openPilot = () =>
+    openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot, stream: hd, resumedAt: 0 });
+
+  it("lists the streams of what plays, the one playing marked, and plays the one picked from where this one is", async () => {
+    serve([hd, fullHd]);
+    const { router } = await openPilot();
+    emit("player:state", playing);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Streams" }));
+    const panel = await screen.findByRole("dialog", { name: "Streams" });
+    const top = await within(panel).findByRole("button", { name: /^Top pick/ });
+    expect(top).toHaveTextContent("1080p");
+    expect(top).not.toHaveTextContent("Playing");
+    expect(await within(panel).findByRole("button", { name: /Playing/ })).toHaveTextContent("720p");
+
+    // It has played on while the user chose.
+    mocks.snapshot.mockResolvedValue({ ...playing, position: 642 });
+    await user.click(top);
+    await waitFor(() =>
+      expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+        expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
+        expect.objectContaining({ start: 642, audioLanguage: "ja", watching: pilot }),
+      ),
+    );
+    expect(mocks.resolve).toHaveBeenCalledWith({ url: fullHd.url, headers: {} });
+    await waitFor(() =>
+      expect(router.state.location.state.player?.source?.url).toBe(
+        "https://cdn.example/KEY/fresh.mkv",
+      ),
+    );
+    expect(router.state.location.state.player).toMatchObject({
+      title: "The Film",
+      episode: "S1 · E1 · Pilot",
+      stream: fullHd,
+      watching: pilot,
+      resumedAt: 0,
+    });
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    expect(router.state.location.pathname).toBe("/player");
+    expect(mocks.stop).not.toHaveBeenCalled();
+  });
+
+  it("opens on S, and closes on picking the one playing", async () => {
+    serve([hd, fullHd]);
+    await openPilot();
+    emit("player:state", playing);
+    await screen.findByRole("button", { name: "Pause" });
+    const user = userEvent.setup();
+    await user.keyboard("s");
+    const panel = await screen.findByRole("dialog", { name: "Streams" });
+    // The player's keys are the panel's while it's open.
+    await user.keyboard("k");
+    expect(mocks.setPaused).not.toHaveBeenCalled();
+    await user.click(await within(panel).findByRole("button", { name: /Playing/ }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    expect(mocks.load).not.toHaveBeenCalled();
+  });
+
+  it("says why a stream can't be opened, and plays on", async () => {
+    serve([hd, fullHd]);
+    mocks.resolve.mockRejectedValue(new Error("unreachable"));
+    const { router } = await openPilot();
+    emit("player:state", playing);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Streams" }));
+    const panel = await screen.findByRole("dialog", { name: "Streams" });
+    await user.click(await within(panel).findByRole("button", { name: /^Top pick/ }));
+    expect(await within(panel).findByRole("alert")).toBeInTheDocument();
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(router.state.location.state.player?.source).toEqual(source);
+  });
+
+  it("opens from a stream that stopped, and plays another from where it stopped", async () => {
+    serve([hd, fullHd]);
+    const { router } = await openPilot();
+    emit("player:state", playing);
+    await screen.findByRole("button", { name: "Pause" });
+    emit("player:ended", { reason: "error", code: "unsupported" } satisfies Ended);
+    const user = userEvent.setup();
+    const alert = await screen.findByRole("alert");
+    await user.click(within(alert).getByRole("button", { name: "Choose another stream" }));
+    const panel = await screen.findByRole("dialog", { name: "Streams" });
+    expect(router.state.location.pathname).toBe("/player");
+    await user.click(await within(panel).findByRole("button", { name: /^Top pick/ }));
+    await waitFor(() =>
+      expect(mocks.load).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ start: 600 }),
+      ),
+    );
+    await waitFor(() =>
+      expect(screen.queryByText("Sinag can’t play this file")).not.toBeInTheDocument(),
+    );
+  });
+
+  it("lets the torrent playing go when the new stream comes from a link", async () => {
+    serve([hd, fullHd]);
+    await openPlayer("S1 · E1 · Pilot", torrent, undefined, { watching: pilot });
+    emit("player:state", playing);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Streams" }));
+    const panel = await screen.findByRole("dialog", { name: "Streams" });
+    await user.click(await within(panel).findByRole("button", { name: /^Top pick/ }));
+    await waitFor(() => expect(mocks.release).toHaveBeenCalledOnce());
+    expect(mocks.load.mock.invocationCallOrder[0]).toBeLessThan(
+      mocks.release.mock.invocationCallOrder[0]!,
+    );
+  });
+
+  it("isn't offered without what plays", async () => {
+    await openPlayer();
+    emit("player:state", playing);
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByRole("button", { name: "Streams" })).not.toBeInTheDocument();
   });
 });
 

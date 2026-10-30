@@ -34,3 +34,4 @@
 - [Hardware decoding and HDR](hardware-decoding-hdr.md) — #66 hwdec from Settings per session, per-OS hwdecAPIs, video-params/gamma → host.showHDR, macOS half-float EDR layer; real db has hwdec OFF
 - [Player keys and media controls](player-keys-media.md) — #67 onKey maps + shortcuts.tsx overlay, SetNowPlaying, media.go → Now Playing/MPRIS/libmpv SMTC, mock SetNowPlaying, live media-key check
 - [Platform priority](platform-priority.md) — macOS first, then Windows; Linux deferred to after v1.0 (#103), #79/#91 in Later
+- [Stream switcher](stream-switcher.md) — #68 Streams sheet (S), useStreamChoices shared with the picker, player.stream marks Playing, switch loads at the Snapshot position

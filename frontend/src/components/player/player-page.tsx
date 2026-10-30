@@ -7,6 +7,7 @@ import {
   Captions,
   ChevronLeft,
   Keyboard,
+  ListVideo,
   Maximize,
   Minimize,
   Pause,
@@ -23,6 +24,7 @@ import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from
 import { NextEpisode } from "@/components/player/next-episode";
 import { SeekBar } from "@/components/player/seek-bar";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
+import { StreamSwitcher } from "@/components/player/stream-switcher";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -63,13 +65,15 @@ import {
   type Track,
 } from "@/lib/player";
 import { useCurrentProfile } from "@/lib/profile";
-import { resolvePick } from "@/lib/resolve";
+import type { Candidate } from "@/lib/ranking";
+import { attempts, PlayError, resolvePick, sameStream } from "@/lib/resolve";
 import {
   profileSettingsQuery,
   subtitleSizes,
   useSaveProfileSettings,
   type ProfileSettings,
 } from "@/lib/settings";
+import { resolutionLabel } from "@/lib/stream-labels";
 import {
   autoSubtitle,
   byLanguage,
@@ -144,7 +148,9 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // Once an episode counts as watched, a card offers the next (#65), which
 // plays in the same session at the end, as a new file of the screen. The
 // keys (#67) are in shortcuts.tsx, listed by ? over the video; the OS's
-// media controls (Go, media.go) name what plays from the heading.
+// media controls (Go, media.go) name what plays from the heading. Streams
+// (or S) lists the film's or episode's other streams, ranked, and plays the
+// one picked from where this one is, as a new file of the screen (#68).
 export function PlayerPage() {
   const queryClient = useQueryClient();
   const playing = useLocation({ select: (location) => location.state.player });
@@ -244,6 +250,11 @@ function PlayerFile() {
   const [over, setOver] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [switcherOpen, setSwitcherOpen] = useState(false);
+  // The stream being opened from the switcher, or why it couldn't be.
+  const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
+  const pickAbort = useRef<AbortController>(null);
+  useEffect(() => () => pickAbort.current?.abort(), []);
   const [idle, wake] = useIdle(idleAfter);
   // What a key just changed, shown over the video for a moment.
   const [notice, setNotice] = useState<{ text: string }>();
@@ -387,6 +398,7 @@ function PlayerFile() {
           player: {
             ...playerHeading(meta, next.id, nextTarget.title),
             source: nextSource,
+            stream: attempt.stream,
             watching: nextWatching,
             resumedAt: start,
             subtitles: subtitleTarget(
@@ -401,6 +413,95 @@ function PlayerFile() {
     } catch {
       if (!controller.signal.aborted) chooseNext();
     }
+  };
+  // Another stream of what's playing (#68): resolved as the picker resolves
+  // a pick, loaded into this session from where this one is (or stopped),
+  // with the same progress kept, in the languages playing now. This one
+  // plays on until the new one opens, and one that can't be opened leaves
+  // it playing and says why in the switcher.
+  const switchStream = async (candidate: Candidate, names: ReadonlyMap<string, string>) => {
+    if (!watching) return;
+    const current = playing?.stream;
+    if (!error && current && attempts(candidate).some(({ stream }) => sameStream(stream, current)))
+      return setSwitcherOpen(false);
+    pickAbort.current?.abort();
+    const controller = new AbortController();
+    pickAbort.current = controller;
+    const quality = resolutionLabel(candidate.parsed) ?? "the stream";
+    setSwitchStatus({
+      text: `Opening ${quality} from ${names.get(candidate.source) ?? "an addon"}…`,
+    });
+    try {
+      const { source: picked, attempt } = await resolvePick(candidate, {
+        refresh: async (addon) =>
+          (
+            await queryClient.fetchQuery({
+              ...streamsQuery(addon, watching.contentType, watching.videoId),
+              staleTime: 0,
+            })
+          ).streams,
+        signal: controller.signal,
+      });
+      const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
+      controller.signal.throwIfAborted();
+      switching.current = true;
+      try {
+        await Player.Load(picked, loadOptions(at, settings, lastTracks.current, watching));
+      } catch {
+        switching.current = false;
+        return setSwitchStatus({
+          text: "",
+          failed: "Sinag’s player couldn’t start it. Try another stream.",
+        });
+      }
+      // A torrent playing that the new stream doesn't come from.
+      if (isTorrentSource(source.current) && !isTorrentSource(picked))
+        Torrents.Release().catch(() => {});
+      const subtitles = subtitleTarget(
+        watching.contentType,
+        watching.videoId,
+        attempt.stream,
+        names.get(attempt.source) ?? "",
+      );
+      if (picked.url === source.current?.url) {
+        // The same link: this screen plays it on.
+        switching.current = false;
+        source.current = picked;
+        reloaded();
+        setError(undefined);
+        setSwitchStatus(undefined);
+        setSwitcherOpen(false);
+        return;
+      }
+      void navigate({
+        to: "/player",
+        replace: true,
+        state: (history) => ({
+          ...history,
+          player: {
+            ...history.player,
+            title: history.player?.title ?? "",
+            source: picked,
+            stream: attempt.stream,
+            resumedAt: 0,
+            subtitles,
+          },
+        }),
+      });
+    } catch (failure) {
+      if (controller.signal.aborted) return;
+      const why =
+        failure instanceof PlayError
+          ? failure
+          : new PlayError("unreachable", candidate.parsed.debrid);
+      setSwitchStatus({ text: why.message, failed: why.description });
+    } finally {
+      if (pickAbort.current === controller) pickAbort.current = null;
+    }
+  };
+  const openSwitcher = () => {
+    setSwitchStatus(undefined);
+    setSwitcherOpen(true);
   };
   // "Start over", while a resumed file has played less than startOverFor.
   const resumedAt = playing?.resumedAt ?? 0;
@@ -567,8 +668,9 @@ function PlayerFile() {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       wake();
-      // An open menu has the keys: Esc closes it, Space picks.
-      if (error || menuOpen) return;
+      // An open menu or the switcher has the keys: Esc closes it, Space
+      // picks.
+      if (error || menuOpen || switcherOpen) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       // Not a click on the focused button too, as its key comes up.
       if (event.key === " ") event.preventDefault();
@@ -589,6 +691,7 @@ function PlayerFile() {
         f: toggleFullscreen,
         c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
+        s: () => watching && openSwitcher(),
         "?": () => setHelpOpen(!helpOpen),
         escape: () => {
           if (helpOpen) setHelpOpen(false);
@@ -616,7 +719,15 @@ function PlayerFile() {
   const seekingLate = useLate(state.seeking, 300);
   const waiting = starting || (!failure && (state.loading || state.buffering || seekingLate));
   const shown =
-    !idle || paused || !ready || state.loading || dragging || over || menuOpen || helpOpen;
+    !idle ||
+    paused ||
+    !ready ||
+    state.loading ||
+    dragging ||
+    over ||
+    menuOpen ||
+    helpOpen ||
+    switcherOpen;
   const hold = { onPointerEnter: () => setOver(true), onPointerLeave: () => setOver(false) };
   const VolumeIcon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
 
@@ -850,6 +961,15 @@ function PlayerFile() {
                   </PlayerMenuPopup>
                 </Menu>
               )}
+              {watching && (
+                <ControlButton
+                  label="Streams"
+                  icon={ListVideo}
+                  onClick={openSwitcher}
+                  aria-keyshortcuts="S"
+                  aria-expanded={switcherOpen}
+                />
+              )}
               <ControlButton
                 label="Keyboard shortcuts"
                 icon={Keyboard}
@@ -895,6 +1015,21 @@ function PlayerFile() {
           onStart={(prepared) => void playNext(prepared)}
         />
       )}
+      {watching && (
+        <StreamSwitcher
+          open={switcherOpen}
+          onOpenChange={(open) => {
+            setSwitcherOpen(open);
+            // Closing gives up on a stream still opening.
+            if (!open) pickAbort.current?.abort();
+          }}
+          watching={watching}
+          title={playing?.title ?? ""}
+          playing={playing?.stream}
+          status={switchStatus}
+          onPick={(candidate, names) => void switchStream(candidate, names)}
+        />
+      )}
       {helpOpen && !failure && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
       {notice && !failure && (
         <div
@@ -917,7 +1052,11 @@ function PlayerFile() {
                   Try again
                 </Button>
               )}
-              <Button variant="secondary" onClick={leave} disabled={retrying}>
+              <Button
+                variant="secondary"
+                onClick={watching ? openSwitcher : leave}
+                disabled={retrying}
+              >
                 Choose another stream
               </Button>
             </div>

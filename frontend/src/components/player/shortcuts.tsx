@@ -15,6 +15,7 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["↑", "↓"], action: "Volume up or down" },
       { keys: ["M"], action: "Mute or unmute" },
       { keys: ["F"], action: "Full screen" },
+      { keys: ["S"], action: "Choose another stream" },
       { keys: ["Esc"], action: "Leave full screen, then the player" },
     ],
   },

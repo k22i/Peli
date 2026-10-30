@@ -27,7 +27,8 @@ import { cn } from "@/lib/utils";
 // One addon can send over a thousand streams, so the list scrolls with the
 // page and is virtualized. It's one Tab stop: the arrow keys, Home and End
 // move between rows, Enter plays, I shows a row's file name. Moving into the
-// list pins the top pick, so it doesn't change under the user.
+// list pins the top pick, so it doesn't change under the user. In the
+// player's stream switcher (#68), the stream playing is marked.
 
 export type ListRow =
   | { kind: "top"; candidate: Candidate }
@@ -63,10 +64,13 @@ export function StreamList({
   onNavigate,
   onPick,
   onToggleGroup,
+  playing,
 }: {
   rows: readonly ListRow[];
   // Addon names, by URL.
   names: ReadonlyMap<string, string>;
+  // Whether a candidate is the stream playing.
+  playing?: (candidate: Candidate) => boolean;
   onNavigate: () => void;
   onPick: (candidate: Candidate) => void;
   onToggleGroup: (tier: Tier) => void;
@@ -204,6 +208,7 @@ export function StreamList({
               <StreamRow
                 candidate={row.candidate}
                 best={row.kind === "top"}
+                current={playing?.(row.candidate) ?? false}
                 addon={names.get(row.candidate.source) ?? ""}
                 named={named.has(key)}
                 rowProps={rowProps}
@@ -278,6 +283,7 @@ function GroupHeading({
 function StreamRow({
   candidate,
   best,
+  current,
   addon,
   named,
   rowProps,
@@ -286,6 +292,7 @@ function StreamRow({
 }: {
   candidate: Candidate;
   best: boolean;
+  current: boolean;
   addon: string;
   named: boolean;
   rowProps: RowProps;
@@ -311,9 +318,16 @@ function StreamRow({
             best ? "py-4 ps-4" : "py-2.5",
           )}
         >
-          {best && (
+          {(best || current) && (
             <span className="flex items-center gap-2 text-sm font-semibold text-brand">
-              Top pick
+              {best && "Top pick"}
+              {best && current && <span aria-hidden>·</span>}
+              {current && (
+                <span className="flex items-center gap-1">
+                  <Play aria-hidden className="size-3.5 fill-current" />
+                  Playing
+                </span>
+              )}
             </span>
           )}
           <Badges candidate={candidate} best={best} />

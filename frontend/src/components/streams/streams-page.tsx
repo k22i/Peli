@@ -120,25 +120,9 @@ function Picker({
   video: string;
   target: PlayTarget;
 }) {
-  const { addons, loading } = useStreamAddons(profile.id);
-  const sources = useStreams(addons, type, video);
-  const names = new Map(addons.map((addon) => [addon.url, addon.manifest.name]));
-
-  // What ranking knows: the title's details, as its page asked for them
-  // (usually cached by now), and the profile's audio language. It starts
-  // without them and starts again once they come.
+  const { loading, sources, names, meta, settings, view, pin, rows, toggleGroup } =
+    useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
-  const browsing = useLoadedAddons(profile.id);
-  const details = useQuery({
-    ...titleMetaQuery(browsing.addons, type, target.id),
-    enabled: !browsing.loading,
-    ...cachedTitleMeta(client, browsing.addons, type, target.id),
-  });
-  const settings = useQuery(profileSettingsQuery(profile.id));
-  const ctx = titleContext(type, video, details.data?.meta, target.title);
-  const prefs = rankingPrefs(settings.data);
-  const { view, pin } = useRankedStreams(sources, ctx, prefs);
-  const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const navigate = useNavigate();
   // Where it was left may have moved on another device: pull while the
   // user picks (Go skips it if it pulled in the last half minute).
@@ -202,11 +186,11 @@ function Picker({
             .fetchQuery({ ...titleProgressQuery(profile.id, target.id), staleTime: 0 })
             .catch(() => undefined);
           if (controller.signal.aborted) return;
-          const watching = watchingFor(profile.id, target, details.data?.meta, progress ?? []);
+          const watching = watchingFor(profile.id, target, meta, progress ?? []);
           const start = progress ? resumePoint(progress, watching) : (target.resumeAt ?? 0) / 1000;
           // The player (#60) takes it from here, in the profile's languages
           // (#62), keeping its progress as it plays (#64).
-          void Player.Load(source, loadOptions(start, settings.data, [], watching)).then(
+          void Player.Load(source, loadOptions(start, settings, [], watching)).then(
             () => {
               toastManager.close(toast);
               void navigate({
@@ -214,10 +198,11 @@ function Picker({
                 state: (state) => ({
                   ...state,
                   player: {
-                    ...playerHeading(details.data?.meta, video, target.title),
+                    ...playerHeading(meta, video, target.title),
                     source,
                     watching,
                     resumedAt: start,
+                    stream: attempt.stream,
                     subtitles: subtitleTarget(
                       type,
                       video,
@@ -282,45 +267,101 @@ function Picker({
     );
   }
 
-  const waiting = sources.filter((source) => source.status === "pending").length;
   return (
     <>
-      <div className="flex flex-col gap-3 px-gutter">
-        <p aria-live="polite" className="text-sm text-muted-foreground">
-          {view.total === 1 ? "1 stream" : `${view.total} streams`}
-          {waiting > 0
-            ? `, ${waiting} of ${sources.length} addons still answering`
-            : // An addon whose manifest is still loading may serve streams too.
-              loading
-              ? ", still loading addons"
-              : ` from ${sources.length === 1 ? "1 addon" : `${sources.length} addons`}`}
-        </p>
-        <ul aria-label="Addons" className="flex flex-wrap gap-2">
-          {sources.map((source) => (
-            <SourceStatus key={source.addon.url} source={source} />
-          ))}
-        </ul>
-      </div>
+      <StreamsSummary sources={sources} loading={loading} total={view.total} />
       <StreamList
-        rows={listRows(view, open)}
+        rows={rows}
         names={names}
         onNavigate={pin}
         onPick={pick}
-        onToggleGroup={(tier) =>
-          setOpen((current) => {
-            const next = new Set(current);
-            if (!next.delete(tier)) next.add(tier);
-            return next;
-          })
-        }
+        onToggleGroup={toggleGroup}
       />
     </>
   );
 }
 
-// P plays the top pick from anywhere on the picker, unless the user is
-// typing.
-function usePlayKey(top: Candidate | null, play: (candidate: Candidate) => void) {
+// The ranked streams for one film or episode, as the picker and the
+// player's stream switcher (#68) list them: every stream addon asked, and
+// their streams ranked as they answer, by what the title's details (as its
+// page asked for them, usually cached by now) and the profile's audio
+// language say. Ranking starts without the details and starts again once
+// they come. `rows` has the collapsed groups that toggleGroup opened.
+export function useStreamChoices(
+  profileId: number,
+  type: ContentType,
+  id: string,
+  video: string,
+  title: string,
+) {
+  const { addons, loading } = useStreamAddons(profileId);
+  const sources = useStreams(addons, type, video);
+  const names = new Map(addons.map((addon) => [addon.url, addon.manifest.name]));
+  const client = useQueryClient();
+  const browsing = useLoadedAddons(profileId);
+  const meta = useQuery({
+    ...titleMetaQuery(browsing.addons, type, id),
+    enabled: !browsing.loading,
+    ...cachedTitleMeta(client, browsing.addons, type, id),
+  }).data?.meta;
+  const settings = useQuery(profileSettingsQuery(profileId)).data;
+  const ctx = titleContext(type, video, meta, title);
+  const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings));
+  const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
+  const toggleGroup = (tier: Tier) =>
+    setOpen((current) => {
+      const next = new Set(current);
+      if (!next.delete(tier)) next.add(tier);
+      return next;
+    });
+  return {
+    loading,
+    sources,
+    names,
+    meta,
+    settings,
+    view,
+    pin,
+    rows: listRows(view, open),
+    toggleGroup,
+  };
+}
+
+// How many streams so far, and each addon's answer, with Try again on one
+// that failed.
+export function StreamsSummary({
+  sources,
+  loading,
+  total,
+}: {
+  sources: StreamSource[];
+  loading: boolean;
+  total: number;
+}) {
+  const waiting = sources.filter((source) => source.status === "pending").length;
+  return (
+    <div className="flex flex-col gap-3 px-gutter">
+      <p aria-live="polite" className="text-sm text-muted-foreground">
+        {total === 1 ? "1 stream" : `${total} streams`}
+        {waiting > 0
+          ? `, ${waiting} of ${sources.length} addons still answering`
+          : // An addon whose manifest is still loading may serve streams too.
+            loading
+            ? ", still loading addons"
+            : ` from ${sources.length === 1 ? "1 addon" : `${sources.length} addons`}`}
+      </p>
+      <ul aria-label="Addons" className="flex flex-wrap gap-2">
+        {sources.map((source) => (
+          <SourceStatus key={source.addon.url} source={source} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// P plays the top pick from anywhere on the picker (or the player's stream
+// switcher), unless the user is typing.
+export function usePlayKey(top: Candidate | null, play: (candidate: Candidate) => void) {
   const latest = useRef({ top, play });
   useLayoutEffect(() => {
     latest.current = { top, play };
