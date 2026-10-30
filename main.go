@@ -18,6 +18,7 @@ import (
 	"github.com/k22i/Sinag/internal/firstmouse"
 	"github.com/k22i/Sinag/internal/licences"
 	"github.com/k22i/Sinag/internal/nuvio"
+	"github.com/k22i/Sinag/internal/player"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/store"
 	"github.com/k22i/Sinag/internal/streams"
@@ -49,6 +50,7 @@ func main() {
 	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})
 	// Sending what is queued is the first step of signing out (#30).
 	account.FlushOnSignOut(accounts, syncer.PusherOf(sync))
+	players := player.NewService(appinfo.Version)
 
 	app := application.New(application.Options{
 		Name:        "Sinag",
@@ -67,6 +69,9 @@ func main() {
 			// Resolving a picked stream to the file the player loads (#53).
 			application.NewServiceWithOptions(streams.NewService(appinfo.Version),
 				application.ServiceOptions{MarshalError: streams.MarshalError}),
+			// libmpv under the webview (#60).
+			application.NewServiceWithOptions(players,
+				application.ServiceOptions{MarshalError: player.MarshalError}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
@@ -97,6 +102,8 @@ func main() {
 		BackgroundColour: windowColourDark,
 		URL:              "/",
 	})
+
+	player.UseWindow(players, window)
 
 	// Pull from Nuvio once the window is up, so the cached UI never waits for
 	// it, and again each time the window gets focus (#29).

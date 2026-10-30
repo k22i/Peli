@@ -22,6 +22,7 @@ import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
+import { Player } from "@/lib/player";
 import { PlayError, resolvePick } from "@/lib/resolve";
 import { profileSettingsQuery } from "@/lib/settings";
 import {
@@ -127,6 +128,7 @@ function Picker({
   const prefs = rankingPrefs(settings.data);
   const { view, pin } = useRankedStreams(sources, ctx, prefs);
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
+  const navigate = useNavigate();
 
   // Resolving the pick (#53): one at a time, so a second pick replaces the
   // first, and none once the picker is left.
@@ -160,14 +162,26 @@ function Picker({
       signal: controller.signal,
     })
       .then(
-        ({ attempt }) => {
-          // #60 loads the resolved Source here.
-          toastManager.update(toast, {
-            type: "info",
-            title: `Can’t play ${target.title} yet`,
-            description: `${capitalize(quality)} from ${names.get(attempt.source) ?? "an addon"} is ready, but Sinag’s player isn’t built yet.`,
-            timeout: 8000,
-          });
+        ({ source }) => {
+          if (controller.signal.aborted) return;
+          // The player (#60) takes it from here; resumeAt is in ms.
+          void Player.Load(source, { start: (target.resumeAt ?? 0) / 1000 }).then(
+            () => {
+              toastManager.close(toast);
+              void navigate({
+                to: "/player",
+                state: (state) => ({ ...state, player: { title: target.title, source } }),
+              });
+            },
+            () => {
+              toastManager.update(toast, {
+                type: "error",
+                title: `Can’t play ${target.title}`,
+                description: "Sinag’s player couldn’t start. Try again, or restart Sinag.",
+                timeout: 8000,
+              });
+            },
+          );
         },
         (error: unknown) => {
           if (controller.signal.aborted) return;
@@ -242,8 +256,6 @@ function Picker({
     </>
   );
 }
-
-const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 
 // P plays the top pick from anywhere on the picker, unless the user is
 // typing.

@@ -1,0 +1,772 @@
+// Package player plays video with libmpv, linked in-process (ADR-0001), under
+// the webview in the app window (ADR-0002). The frontend loads a resolved
+// stream (#53) and drives playback through the Service; mpv's state comes
+// back as Wails events. See ADR-0039.
+//
+// One session is one mpv handle and one video surface: Load opens it, Stop
+// and app shutdown close it. Closing follows the binding rules from M0: stop
+// the event loop with mpv_wakeup, free the render context, then
+// mpv_terminate_destroy.
+//
+// Stream URLs carry debrid keys, so no URL is logged or put in an error, and
+// mpv's log messages have theirs removed.
+package player
+
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"log/slog"
+	"math"
+	"os"
+	"regexp"
+	"strconv"
+	"strings"
+	"sync"
+	"sync/atomic"
+	"time"
+
+	"github.com/wailsapp/wails/v3/pkg/application"
+	"github.com/wailsapp/wails/v3/pkg/events"
+
+	"github.com/k22i/Sinag/internal/streams"
+)
+
+// Events the player sends the frontend. Events sent before the page listens
+// are queued and may arrive seconds late (M0, #3), so the frontend reads
+// Snapshot when it mounts and applies events after it.
+const (
+	// EventState carries the whole State whenever anything but the time
+	// changes.
+	EventState = "player:state"
+	// EventTime carries the position, duration and buffer, at most every
+	// TimeEvery while playing, and at once after a seek.
+	EventTime = "player:time"
+	// EventEnded says the file ended by itself: played to the end, or failed.
+	// Stop and loading another file don't send it.
+	EventEnded = "player:ended"
+)
+
+func init() {
+	application.RegisterEvent[State](EventState)
+	application.RegisterEvent[Time](EventTime)
+	application.RegisterEvent[Ended](EventEnded)
+}
+
+// TimeEvery throttles EventTime. mpv changes time-pos every frame (30–60 a
+// second), and a React re-render per frame cost ~10 % CPU in WebKit (M0, #4);
+// a seek bar needs about 4 a second.
+const TimeEvery = 250 * time.Millisecond
+
+var (
+	// ErrInvalid means an argument was out of range, or the stream had no URL.
+	ErrInvalid = errors.New("player: invalid argument")
+	// ErrUnavailable means playback couldn't start: libmpv or the video host
+	// failed to come up.
+	ErrUnavailable = errors.New("player: unavailable")
+	// ErrNotPlaying means there's no session to control: nothing was loaded,
+	// or it was stopped.
+	ErrNotPlaying = errors.New("player: nothing is playing")
+)
+
+// Error codes the frontend reads (MarshalError).
+const (
+	CodeInvalid     = "invalid"
+	CodeUnavailable = "unavailable"
+	CodeNotPlaying  = "not_playing"
+)
+
+// Codes in Ended when a file failed.
+const (
+	// EndExpired means the server refused the link (401, 403, 404, 410):
+	// debrid links expire, and the addon gives a new one.
+	EndExpired = "expired"
+	// EndUnsupported means mpv found nothing it can play in the file.
+	EndUnsupported = "unsupported"
+	// EndFailed is any other failure: the network, a broken file.
+	EndFailed = "failed"
+)
+
+// State is the player's state, as Snapshot returns it and EventState
+// carries it. Times are in seconds.
+type State struct {
+	// Active is true from Load until Stop.
+	Active bool `json:"active"`
+	// Loading is true from Load until the first frame (and after a file
+	// ended, false).
+	Loading bool `json:"loading"`
+	Paused  bool `json:"paused"`
+	// Buffering is true while playback waits for the network.
+	Buffering bool `json:"buffering"`
+	// BufferPercent is how full the cache is while Buffering, 0–100.
+	BufferPercent int  `json:"bufferPercent"`
+	Seeking       bool `json:"seeking"`
+	Time
+	// Volume is 0–100.
+	Volume     float64 `json:"volume"`
+	Muted      bool    `json:"muted"`
+	Speed      float64 `json:"speed"`
+	Fullscreen bool    `json:"fullscreen"`
+	Tracks     []Track `json:"tracks"`
+	// HWDec is the hardware decoder in use, "" for software.
+	HWDec string `json:"hwdec"`
+}
+
+// Time is where playback is, in seconds.
+type Time struct {
+	Position float64 `json:"position"`
+	Duration float64 `json:"duration"`
+	// Buffered is how far ahead of Position the cache reaches.
+	Buffered float64 `json:"buffered"`
+}
+
+// Track is one of the file's video, audio or subtitle tracks.
+type Track struct {
+	ID       int    `json:"id"`
+	Type     string `json:"type"` // "video", "audio" or "sub"
+	Title    string `json:"title"`
+	Lang     string `json:"lang"`
+	Codec    string `json:"codec"`
+	Default  bool   `json:"default"`
+	Selected bool   `json:"selected"`
+	External bool   `json:"external"`
+	// Channels is an audio track's channel count.
+	Channels int `json:"channels,omitempty"`
+	// Width and Height are a video track's size.
+	Width  int `json:"width,omitempty"`
+	Height int `json:"height,omitempty"`
+}
+
+// Ended says why a file ended by itself.
+type Ended struct {
+	Reason string `json:"reason"` // "eof" or "error"
+	// Code is EndExpired, EndUnsupported or EndFailed when Reason is "error".
+	Code string `json:"code,omitempty"`
+	// Message is mpv's error, for logs and bug reports.
+	Message string `json:"message,omitempty"`
+}
+
+// LoadOptions are the optional parts of Load.
+type LoadOptions struct {
+	// Start is where to start, in seconds.
+	Start float64 `json:"start"`
+}
+
+// observed are the properties a session observes, with the format libmpv
+// sends them in. The observe id is the index + 1.
+var observed = []struct {
+	name   string
+	format mpvFormat
+}{
+	{"time-pos", fmtDouble},
+	{"duration", fmtDouble},
+	{"demuxer-cache-duration", fmtDouble},
+	{"pause", fmtFlag},
+	{"paused-for-cache", fmtFlag},
+	{"cache-buffering-state", fmtInt64},
+	{"seeking", fmtFlag},
+	{"volume", fmtDouble},
+	{"mute", fmtFlag},
+	{"speed", fmtDouble},
+	{"track-list", fmtNode},
+	{"hwdec-current", fmtString},
+	{"vo-configured", fmtFlag},
+}
+
+// options are set on every session before mpv_initialize; the host adds its
+// own (vo, wid).
+var options = [][2]string{
+	// libmpv already reads no config files and writes nothing to the
+	// terminal. With vo=libmpv, force-window would start the VO before the
+	// render context exists, and mpv would fall back to one with its own
+	// window.
+	{"idle", "yes"}, {"force-window", "no"}, {"keep-open", "no"},
+	// No mpv UI or scripts: React is the UI, and youtube-dl must not run
+	// for an HTTP link.
+	{"osc", "no"}, {"osd-level", "0"}, {"load-scripts", "no"}, {"ytdl", "no"},
+	// Pointer and keyboard go to the webview above (M0, #2).
+	{"input-default-bindings", "no"}, {"input-vo-keyboard", "no"}, {"input-cursor", "no"},
+	{"input-cursor-passthrough", "yes"}, {"cursor-autohide", "no"},
+	{"hwdec", "auto-safe"},
+	{"background-color", "#000000"},
+}
+
+// Service is the Wails service the frontend calls to play a stream.
+type Service struct {
+	userAgent string
+	// newHost makes the video host for a session; nil until UseWindow.
+	newHost func() (host, error)
+	window  *application.WebviewWindow
+	emit    func(name string, data any)
+
+	// ops serialises opening and closing sessions.
+	ops sync.Mutex
+
+	mu    sync.Mutex
+	s     *session
+	state State
+	// What the event loop has yet to send.
+	stateDirty, timeDirty, forceTime bool
+	ended                            *Ended
+	lastTime                         time.Time
+}
+
+// session is one mpv handle and its video host.
+type session struct {
+	m       *mpv
+	host    host
+	done    chan struct{}
+	closing atomic.Bool
+
+	// Only the event loop uses these.
+	loaded  bool   // a file is loaded (file-loaded until end-file)
+	playing bool   // what host.playing was last told
+	lastErr string // the file's last error-level log message
+	httpErr string // the file's last refused HTTP request, from FFmpeg
+}
+
+// NewService returns a Service that sends version in its User-Agent when a
+// stream doesn't name one. It can't show video until UseWindow.
+func NewService(version string) *Service {
+	return &Service{
+		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		emit:      func(string, any) {},
+		state:     idle(false),
+	}
+}
+
+func idle(fullscreen bool) State {
+	return State{Volume: 100, Speed: 1, Fullscreen: fullscreen, Tracks: []Track{}}
+}
+
+// UseWindow puts the service's video in window, and follows its fullscreen
+// state. It isn't a method, so Wails doesn't bind it.
+func UseWindow(s *Service, window *application.WebviewWindow) {
+	s.mu.Lock()
+	s.window = window
+	s.newHost = func() (host, error) { return newHost(window) }
+	s.mu.Unlock()
+	fullscreen := func(on bool) func(*application.WindowEvent) {
+		return func(*application.WindowEvent) { s.update(func(st *State) { st.Fullscreen = on }) }
+	}
+	window.OnWindowEvent(events.Common.WindowFullscreen, fullscreen(true))
+	window.OnWindowEvent(events.Common.WindowUnFullscreen, fullscreen(false))
+}
+
+// ServiceStartup has the service send its events to the frontend.
+func (s *Service) ServiceStartup(context.Context, application.ServiceOptions) error {
+	if app := application.Get(); app != nil {
+		s.emit = func(name string, data any) { app.Event.Emit(name, data) }
+	}
+	return nil
+}
+
+// ServiceShutdown closes the session, if one is open.
+func (s *Service) ServiceShutdown() error {
+	return s.Stop()
+}
+
+// Load plays source, opening a session if none is open, or replacing what
+// the open one plays. It returns once mpv has the file; EventState says when
+// it plays, EventEnded if it fails.
+func (s *Service) Load(source streams.Source, opts LoadOptions) error {
+	if source.URL == "" || opts.Start < 0 || math.IsNaN(opts.Start) {
+		return ErrInvalid
+	}
+	s.ops.Lock()
+	defer s.ops.Unlock()
+	ses, err := s.open()
+	if err != nil {
+		return err
+	}
+	userAgent := source.UserAgent
+	if userAgent == "" {
+		userAgent = s.userAgent
+	}
+	// Set as a list: a header's value may hold a comma, which mpv's string
+	// form splits on.
+	if err := ses.m.setStringList("http-header-fields", source.HeaderFields()); err != nil {
+		return notPlaying(err)
+	}
+	if err := ses.m.setProperty("user-agent", userAgent); err != nil {
+		return notPlaying(err)
+	}
+	if err := ses.m.setProperty("pause", "no"); err != nil {
+		return notPlaying(err)
+	}
+	// Before loadfile, so the new file's first frame can't come first.
+	s.update(func(st *State) {
+		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
+		st.Time = Time{Position: opts.Start}
+		st.Tracks = []Track{}
+	})
+	args := []string{"loadfile", source.URL, "replace"}
+	if opts.Start > 0 {
+		args = append(args, "-1", "start="+seconds(opts.Start))
+	}
+	if err := ses.m.command(args...); err != nil {
+		s.update(func(st *State) { st.Loading = false })
+		return notPlaying(err)
+	}
+	return nil
+}
+
+// open returns the open session, or opens one. ops must be held.
+func (s *Service) open() (*session, error) {
+	s.mu.Lock()
+	ses, newHost := s.s, s.newHost
+	s.mu.Unlock()
+	if ses != nil {
+		return ses, nil
+	}
+	if newHost == nil {
+		return nil, fmt.Errorf("%w: no window for the video", ErrUnavailable)
+	}
+	h, err := newHost()
+	if err == nil {
+		err = h.prepare()
+	}
+	if err != nil {
+		return nil, fmt.Errorf("%w: %w", ErrUnavailable, err)
+	}
+	m, err := mpvCreate()
+	if err != nil {
+		return nil, fmt.Errorf("%w: %w", ErrUnavailable, err)
+	}
+	ses = &session{m: m, host: h, done: make(chan struct{})}
+	fail := func(err error) (*session, error) {
+		close(ses.done)
+		m.destroy()
+		return nil, fmt.Errorf("%w: %w", ErrUnavailable, err)
+	}
+	for _, o := range options {
+		// An option a build lacks isn't worth failing playback over.
+		if err := m.setOptionString(o[0], o[1]); err != nil {
+			slog.Warn("player: option not set", "error", err)
+		}
+	}
+	if err := h.configure(m); err != nil {
+		return fail(err)
+	}
+	// $SINAG_MPV_OPTIONS ("gpu-sw hwdec=no") overrides any of these, for
+	// debugging playback, and for CI and containers without a GPU.
+	for _, o := range strings.Fields(os.Getenv("SINAG_MPV_OPTIONS")) {
+		name, value, ok := strings.Cut(o, "=")
+		if !ok {
+			value = "yes"
+		}
+		if err := m.setOptionString(name, value); err != nil {
+			slog.Warn("player: option not set", "error", err)
+		}
+	}
+	if err := m.initialize(); err != nil {
+		return fail(fmt.Errorf("mpv_initialize: %w", err))
+	}
+	for i, o := range observed {
+		if err := m.observe(uint64(i+1), o.name, o.format); err != nil {
+			return fail(fmt.Errorf("observe %s: %w", o.name, err))
+		}
+	}
+	// "v": at "warn", libmpv drops FFmpeg's "HTTP error 403", which is how
+	// an expired link shows. These come per file, not per frame.
+	if err := m.requestLogMessages("v"); err != nil {
+		return fail(err)
+	}
+	go s.loop(ses)
+	// The render context must exist before the first loadfile.
+	if err := h.attach(m); err != nil {
+		s.closeSession(ses)
+		return nil, fmt.Errorf("%w: %w", ErrUnavailable, err)
+	}
+	s.mu.Lock()
+	s.s = ses
+	fullscreen := s.state.Fullscreen
+	s.state = idle(fullscreen)
+	s.state.Active = true
+	s.stateDirty = true
+	s.mu.Unlock()
+	return ses, nil
+}
+
+// Stop closes the session: playback stops, the video surface goes and mpv is
+// destroyed. It's fine to call when nothing is playing.
+func (s *Service) Stop() error {
+	s.ops.Lock()
+	defer s.ops.Unlock()
+	s.mu.Lock()
+	ses := s.s
+	s.mu.Unlock()
+	if ses == nil {
+		return nil
+	}
+	_ = ses.m.command("stop")
+	s.closeSession(ses)
+	s.mu.Lock()
+	s.s = nil
+	s.state = idle(s.state.Fullscreen)
+	s.stateDirty, s.timeDirty, s.forceTime, s.ended = false, false, false, nil
+	state := s.copyState()
+	s.mu.Unlock()
+	s.emit(EventState, state)
+	return nil
+}
+
+// closeSession stops the event loop, then the host, then mpv, in the order
+// libmpv needs.
+func (s *Service) closeSession(ses *session) {
+	ses.closing.Store(true)
+	ses.m.wakeup()
+	<-ses.done
+	if ses.playing {
+		ses.host.playing(false)
+	}
+	ses.host.detach()
+	ses.m.destroy()
+}
+
+// SetPaused pauses or resumes playback.
+func (s *Service) SetPaused(paused bool) error {
+	return s.set("pause", flag(paused))
+}
+
+// Seek goes to position, in seconds from the start.
+func (s *Service) Seek(position float64) error {
+	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
+		return ErrInvalid
+	}
+	return s.command("seek", seconds(position), "absolute")
+}
+
+// SeekBy moves by delta seconds, back when it's negative.
+func (s *Service) SeekBy(delta float64) error {
+	if math.IsNaN(delta) || math.IsInf(delta, 0) {
+		return ErrInvalid
+	}
+	return s.command("seek", seconds(delta), "relative")
+}
+
+// SetVolume sets the volume, 0–100.
+func (s *Service) SetVolume(volume float64) error {
+	if volume < 0 || volume > 100 || math.IsNaN(volume) {
+		return ErrInvalid
+	}
+	return s.set("volume", seconds(volume))
+}
+
+// SetMuted mutes or unmutes.
+func (s *Service) SetMuted(muted bool) error {
+	return s.set("mute", flag(muted))
+}
+
+// SetSpeed sets the playback speed, 0.25–4.
+func (s *Service) SetSpeed(speed float64) error {
+	if speed < 0.25 || speed > 4 || math.IsNaN(speed) {
+		return ErrInvalid
+	}
+	return s.set("speed", seconds(speed))
+}
+
+// SetFullscreen puts the window in or out of fullscreen.
+func (s *Service) SetFullscreen(on bool) error {
+	s.mu.Lock()
+	window := s.window
+	s.mu.Unlock()
+	if window == nil {
+		return fmt.Errorf("%w: no window", ErrUnavailable)
+	}
+	if on {
+		window.Fullscreen()
+	} else {
+		window.UnFullscreen()
+	}
+	return nil
+}
+
+// Snapshot returns the current state.
+func (s *Service) Snapshot() State {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.copyState()
+}
+
+func (s *Service) copyState() State {
+	st := s.state
+	st.Tracks = append([]Track{}, st.Tracks...)
+	return st
+}
+
+func (s *Service) set(name, value string) error {
+	ses := s.current()
+	if ses == nil {
+		return ErrNotPlaying
+	}
+	return notPlaying(ses.m.setProperty(name, value))
+}
+
+func (s *Service) command(args ...string) error {
+	ses := s.current()
+	if ses == nil {
+		return ErrNotPlaying
+	}
+	return notPlaying(ses.m.command(args...))
+}
+
+func (s *Service) current() *session {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.s
+}
+
+// notPlaying turns a call on a destroyed mpv into ErrNotPlaying.
+func notPlaying(err error) error {
+	if errors.Is(err, errDestroyed) {
+		return ErrNotPlaying
+	}
+	return err
+}
+
+// update changes the state and has the event loop send it.
+func (s *Service) update(change func(*State)) {
+	s.mu.Lock()
+	change(&s.state)
+	s.stateDirty = true
+	ses := s.s
+	s.mu.Unlock()
+	if ses != nil {
+		ses.m.wakeup()
+	} else {
+		s.flush(nil)
+	}
+}
+
+// --- the event loop ---------------------------------------------------------
+
+// loop is the one goroutine that calls mpv_wait_event. It handles every
+// event waiting, then sends what changed, so a burst of property changes
+// becomes one EventState.
+func (s *Service) loop(ses *session) {
+	defer close(ses.done)
+	timeout := -1.0
+	for {
+		ev := ses.m.waitEvent(timeout)
+		switch ev.ID {
+		case eventShutdown:
+			return
+		case eventNone:
+			if ses.closing.Load() {
+				return
+			}
+			timeout = s.flush(ses)
+		default:
+			s.handle(ses, ev)
+			timeout = 0
+		}
+	}
+}
+
+func (s *Service) handle(ses *session, ev mpvEvent) {
+	switch ev.ID {
+	case eventPropertyChange:
+		s.property(ses, ev.Prop, ev.Value)
+	case eventStartFile:
+		ses.lastErr, ses.httpErr = "", ""
+	case eventFileLoaded:
+		ses.loaded = true
+	case eventPlaybackRestart:
+		// The first frame after a load or a seek.
+		s.mu.Lock()
+		s.state.Loading = false
+		s.stateDirty, s.timeDirty, s.forceTime = true, true, true
+		s.mu.Unlock()
+	case eventEndFile:
+		// "stop" and "redirect" come from Stop or another Load.
+		if ev.Reason != "eof" && ev.Reason != "error" {
+			return
+		}
+		ses.loaded = false
+		ended := &Ended{Reason: ev.Reason}
+		if ev.Reason == "error" {
+			ended.Code, ended.Message = endCode(mpvError(ev.Error), ses.httpErr), mpvError(ev.Error).Error()
+			slog.Warn("player: file failed", "code", ended.Code, "error", ended.Message, "detail", ses.lastErr)
+		}
+		s.mu.Lock()
+		s.state.Loading, s.state.Buffering, s.state.Seeking = false, false, false
+		s.stateDirty, s.ended = true, ended
+		s.mu.Unlock()
+	case eventLogMessage:
+		text := redact(strings.TrimSpace(ev.Text))
+		// FFmpeg says "HTTP error 403" at warn, before mpv's error.
+		if expired.MatchString(text) {
+			ses.httpErr = text
+		}
+		if ev.Level == "error" || ev.Level == "fatal" {
+			ses.lastErr = text
+			slog.Warn("mpv: "+text, "module", ev.Prefix)
+		} else {
+			slog.Debug("mpv: "+text, "module", ev.Prefix, "level", ev.Level)
+		}
+	}
+}
+
+func (s *Service) property(ses *session, name string, v any) {
+	if name == "vo-configured" {
+		on, _ := v.(bool)
+		ses.host.videoConfigured(on)
+		return
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	st := &s.state
+	switch name {
+	case "time-pos":
+		st.Position = number(v)
+		s.timeDirty = true
+		return
+	case "duration":
+		st.Duration = number(v)
+		s.timeDirty = true
+		return
+	case "demuxer-cache-duration":
+		st.Buffered = number(v)
+		s.timeDirty = true
+		return
+	case "pause":
+		st.Paused, _ = v.(bool)
+	case "paused-for-cache":
+		st.Buffering, _ = v.(bool)
+	case "cache-buffering-state":
+		st.BufferPercent = int(number(v))
+	case "seeking":
+		st.Seeking, _ = v.(bool)
+	case "volume":
+		st.Volume = number(v)
+	case "mute":
+		st.Muted, _ = v.(bool)
+	case "speed":
+		st.Speed = number(v)
+	case "track-list":
+		st.Tracks = tracks(v)
+	case "hwdec-current":
+		st.HWDec, _ = v.(string)
+		if st.HWDec == "no" {
+			st.HWDec = ""
+		}
+	}
+	s.stateDirty = true
+}
+
+// flush sends what changed: the state, the time (throttled) and an end. It
+// returns how long the loop may wait for events before calling it again,
+// -1 for as long as it takes. A nil ses means there's no loop: send now.
+func (s *Service) flush(ses *session) float64 {
+	now := time.Now()
+	wait := -1.0
+	s.mu.Lock()
+	var state *State
+	if s.stateDirty {
+		st := s.copyState()
+		state, s.stateDirty = &st, false
+	}
+	var t *Time
+	if s.timeDirty {
+		if since := now.Sub(s.lastTime); s.forceTime || since >= TimeEvery {
+			tm := s.state.Time
+			t, s.timeDirty, s.forceTime, s.lastTime = &tm, false, false, now
+		} else {
+			wait = (TimeEvery - since).Seconds()
+		}
+	}
+	ended := s.ended
+	s.ended = nil
+	playing := ses != nil && ses.loaded && !s.state.Paused
+	s.mu.Unlock()
+
+	if ses != nil && playing != ses.playing {
+		ses.playing = playing
+		ses.host.playing(playing)
+	}
+	if state != nil {
+		s.emit(EventState, *state)
+	}
+	if t != nil {
+		s.emit(EventTime, *t)
+	}
+	if ended != nil {
+		s.emit(EventEnded, *ended)
+	}
+	return wait
+}
+
+// --- helpers ------------------------------------------------------------------
+
+// expired matches FFmpeg's "HTTP error 403 Forbidden" and the like.
+var expired = regexp.MustCompile(`HTTP error (401|403|404|410)\b`)
+
+func endCode(err mpvError, httpErr string) string {
+	switch {
+	case httpErr != "":
+		return EndExpired
+	case err == errUnknownFormat || err == errNothingToPlay:
+		return EndUnsupported
+	}
+	return EndFailed
+}
+
+var urls = regexp.MustCompile(`[a-zA-Z][a-zA-Z0-9+.-]*://\S+`)
+
+// redact removes URLs from mpv's log messages: stream URLs carry debrid keys.
+func redact(s string) string { return urls.ReplaceAllString(s, "<url>") }
+
+func tracks(v any) []Track {
+	list, _ := v.([]any)
+	out := make([]Track, 0, len(list))
+	for _, item := range list {
+		m, _ := item.(map[string]any)
+		if m == nil {
+			continue
+		}
+		str := func(k string) string { s, _ := m[k].(string); return s }
+		b := func(k string) bool { v, _ := m[k].(bool); return v }
+		out = append(out, Track{
+			ID: int(number(m["id"])), Type: str("type"), Title: str("title"), Lang: str("lang"),
+			Codec: str("codec"), Default: b("default"), Selected: b("selected"), External: b("external"),
+			Channels: int(number(m["demux-channel-count"])),
+			Width:    int(number(m["demux-w"])), Height: int(number(m["demux-h"])),
+		})
+	}
+	return out
+}
+
+func number(v any) float64 {
+	switch n := v.(type) {
+	case float64:
+		return n
+	case int64:
+		return float64(n)
+	}
+	return 0
+}
+
+func flag(b bool) string {
+	if b {
+		return "yes"
+	}
+	return "no"
+}
+
+// seconds formats a number the way mpv parses it (LC_NUMERIC is "C").
+func seconds(f float64) string { return strconv.FormatFloat(f, 'f', -1, 64) }
+
+// MarshalError gives the frontend an error's code.
+func MarshalError(err error) []byte {
+	code := CodeUnavailable
+	switch {
+	case errors.Is(err, ErrInvalid):
+		code = CodeInvalid
+	case errors.Is(err, ErrNotPlaying):
+		code = CodeNotPlaying
+	}
+	data, _ := json.Marshal(map[string]string{"code": code})
+	return data
+}

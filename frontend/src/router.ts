@@ -1,6 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/react-router";
 
+import type { Source } from "@bindings/streams";
 import type { PlayTarget } from "@/lib/playback";
 import type { TitlePreview } from "@/lib/title";
 import { routeTree } from "@/routeTree.gen";
@@ -34,6 +35,9 @@ declare module "@tanstack/react-router" {
     title?: TitlePreview;
     // What the stream picker was opened to play, for its heading (#50).
     play?: PlayTarget;
+    // What the player is playing (#60): its heading, and the source, to ask
+    // for again if its link expires.
+    player?: { title: string; source?: Source };
   }
 
   interface Register {

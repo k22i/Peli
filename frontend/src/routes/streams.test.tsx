@@ -19,6 +19,7 @@ const mocks = vi.hoisted(() => ({
   visibleAddons: vi.fn<() => Promise<Addon[] | null>>(),
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   cancel: vi.fn<() => void>(),
+  load: vi.fn<(source: Source, opts: { start: number }) => Promise<void>>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -50,6 +51,20 @@ vi.mock("@bindings/streams", () => ({
     Resolve: (request: Request) => Object.assign(mocks.resolve(request), { cancel: mocks.cancel }),
   },
 }));
+
+vi.mock("@bindings/player", () => ({
+  Service: {
+    Load: mocks.load,
+    Snapshot: () => Promise.reject(new Error("not playing")),
+    Stop: () => Promise.resolve(),
+    SetPaused: () => Promise.resolve(),
+    SetFullscreen: () => Promise.resolve(),
+  },
+}));
+
+// The player screen, once a picked stream is loaded.
+const opensThePlayer = async () =>
+  expect(await screen.findByRole("button", { name: "Pause" })).toBeInTheDocument();
 
 vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
 
@@ -163,6 +178,7 @@ const resolved = ({ url }: Request): Source => ({
 
 beforeEach(() => {
   mocks.resolve.mockImplementation(async (request) => resolved(request));
+  mocks.load.mockResolvedValue(undefined);
   mocks.current.mockResolvedValue(kevin);
   mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
   mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio, peerflix]);
@@ -348,7 +364,7 @@ describe("stream picker", () => {
     expect(screen.getByRole("link", { name: "Manage addons" })).toBeInTheDocument();
   });
 
-  it("resolves a picked stream's link, then says the player isn't built yet", async () => {
+  it("resolves a picked stream's link and plays it", async () => {
     serve({
       [movieStreams("torrentio.strem.fun")]: {
         streams: [
@@ -367,11 +383,30 @@ describe("stream picker", () => {
       await screen.findByRole("list", { name: "Streams" }),
     ).findAllByRole("button");
     await user.click(first!);
-    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+    await opensThePlayer();
     expect(mocks.resolve).toHaveBeenCalledExactlyOnceWith({
       url: "https://debrid.example/KEY/0",
       headers: { Referer: "https://addon.example/" },
     });
+    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(await mocks.resolve.mock.results[0]!.value, {
+      start: 0,
+    });
+    expect(screen.getByRole("heading", { name: "Streams" })).toBeInTheDocument();
+  });
+
+  it("says so when the player can't start", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([torrentio]);
+    mocks.load.mockRejectedValue(new Error("call failed", { cause: { code: "unavailable" } }));
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    const [first] = await within(
+      await screen.findByRole("list", { name: "Streams" }),
+    ).findAllByRole("button");
+    await user.click(first!);
+    expect(await screen.findByText("Can’t play Streams")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Pause" })).not.toBeInTheDocument();
   });
 
   it("says why a stream won't play, naming its debrid service", async () => {
@@ -419,7 +454,7 @@ describe("stream picker", () => {
 
     await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
     await user.click(topPick());
-    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+    await opensThePlayer();
     expect(mocks.resolve.mock.calls.map(([request]) => request.url)).toEqual([
       "https://torrentio.strem.fun/resolve/torbox/KEY/link-1",
       "https://torrentio.strem.fun/resolve/torbox/KEY/link-2",
@@ -459,8 +494,12 @@ describe("stream picker", () => {
 
     await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
     await user.keyboard("p");
-    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
-    expect(screen.getByText(/1080p from Torrentio is ready/)).toBeInTheDocument();
+    await opensThePlayer();
+    // Torrentio's cached 1080p, not Peerflix's torrent.
+    expect(mocks.resolve.mock.calls[0]![0].url).toMatch(
+      /^https:\/\/torrentio\.strem\.fun\/resolve\/torbox\//,
+    );
+    expect(mocks.load).toHaveBeenCalledOnce();
   });
 
   it("shows a stream's file name only when asked", async () => {
@@ -518,7 +557,7 @@ describe("stream picker", () => {
     await user.keyboard("{Home}");
     expect(document.activeElement).toBe(topPick());
     await user.keyboard("{Enter}");
-    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+    await opensThePlayer();
   });
 
   it("keeps the top pick once the user moves into the list", async () => {

@@ -72,6 +72,12 @@ function paintNativeWindow(theme: Theme) {
   Window.SetBackgroundColour(r, g, b, 255).catch(() => {});
 }
 
+// Paints the native window in the theme in use again: the player (#60)
+// makes it transparent on Windows, so the video shows through.
+export function repaintWindow() {
+  paintNativeWindow(document.documentElement.classList.contains("dark") ? "dark" : "light");
+}
+
 // Applies the preference now and whenever it or the OS setting changes.
 export function startTheme(
   root: HTMLElement = document.documentElement,
