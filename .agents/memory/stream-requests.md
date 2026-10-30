@@ -11,7 +11,7 @@ Streams (#50, ADR-0034) are `frontend/src/lib/streams.ts`: `useStreamAddons(prof
 
 **How to apply:**
 - #51 is done: the picker ranks through `useRankedStreams` (see [[stream-ranking]]). #52 is done: the list is [[stream-picker]]; the per-addon pills and the summary stayed.
-- `usePlay()` now navigates to the picker; a series without `videoId` goes to its title page. Picking a stream still toasts "Can’t play … yet" until #60.
+- `usePlay()` now navigates to the picker; a series without `videoId` goes to its title page. Picking a stream resolves it ([[stream-resolve]]), then toasts "Can’t play … yet" until #60.
 - Cancellation relies on unmount: the picker must not keep a stream query observed elsewhere.
 - Tests: `routes/streams.test.tsx` `serve()` races each answer against the request's abort signal and returns `{url, signal}` per call, so tests can assert aborts.
 - Related: [[addon-protocol-client]], [[title-page]], [[home-page]], [[kids-profiles]].

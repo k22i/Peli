@@ -1,0 +1,241 @@
+import type { Source } from "@bindings/streams";
+import { Service as Streams } from "@bindings/streams";
+import type { Stream } from "@/lib/addon-protocol";
+import { dedupKey, parseStream, type Candidate, type Debrid } from "@/lib/ranking";
+import { debridNames } from "@/lib/stream-labels";
+
+// Resolving a picked stream (#53, ADR-0037): its link asked once through Go
+// (internal/streams), with the headers its addon names, to the file the
+// player (#60) loads. The pick is tried first, then each other copy of the
+// same file in turn (another addon's, another torrent's). A link that has
+// expired is asked for again from its addon once. Stream URLs embed the
+// user's debrid key: never log them, or the Source.
+
+export type { Source };
+
+// Why a copy wouldn't play: internal/streams' codes, and the kinds of
+// stream Sinag can't play yet.
+export type FailureKind =
+  | "caching"
+  | "denied"
+  | "busy"
+  | "failed"
+  | "expired"
+  | "unavailable"
+  | "not_video"
+  | "unreachable"
+  | "timeout"
+  | "redirects"
+  | "invalid_url"
+  // A torrent without a link: the torrent engine's (#55).
+  | "torrent"
+  // A YouTube id or a link to open elsewhere.
+  | "unsupported";
+
+const goCodes: ReadonlySet<string> = new Set<FailureKind>([
+  "caching",
+  "denied",
+  "busy",
+  "failed",
+  "expired",
+  "unavailable",
+  "not_video",
+  "unreachable",
+  "timeout",
+  "redirects",
+  "invalid_url",
+]);
+
+// One copy to try: the addon's URL and its stream.
+export type Attempt = { source: string; stream: Stream };
+
+// The pick first, then its alternates, in the engine's order.
+export const attempts = (candidate: Candidate): Attempt[] => [
+  { source: candidate.source, stream: candidate.stream },
+  ...candidate.alternates.map(({ source, stream }) => ({ source, stream })),
+];
+
+export class PlayError extends Error {
+  readonly kind: FailureKind;
+  readonly debrid: Debrid | null;
+  readonly description: string;
+
+  constructor(kind: FailureKind, debrid: Debrid | null) {
+    const { title, description } = failureMessage(kind, debrid);
+    super(title);
+    this.name = "PlayError";
+    this.kind = kind;
+    this.debrid = debrid;
+    this.description = description;
+  }
+}
+
+// What to tell the user, naming the debrid service when the stream says
+// which.
+export function failureMessage(kind: FailureKind, debrid: Debrid | null): Message {
+  return messages[kind](debrid ? debridNames[debrid] : null);
+}
+
+type Message = { title: string; description: string };
+
+const messages: Record<FailureKind, (service: string | null) => Message> = {
+  caching: (service) => ({
+    title: `${service ?? "Your debrid service"} is still downloading this`,
+    description:
+      "It isn’t cached there yet. Pick a cached stream to watch now, or try this one again in a few minutes.",
+  }),
+  denied: (service) => ({
+    title: `${service ?? "Your debrid service"} refused the stream`,
+    description:
+      "Check the debrid key in the addon’s settings and that your plan is active, then try again.",
+  }),
+  busy: (service) => ({
+    title: `${service ?? "The service"} has hit a limit`,
+    description: "It’s turning down requests for now. Wait a little, or pick another stream.",
+  }),
+  failed: (service) => ({
+    title: `${service ?? "The addon"} can’t play this file`,
+    description: "It couldn’t open or fetch the file. Pick another stream.",
+  }),
+  expired: () => ({
+    title: "This stream’s link has expired",
+    description:
+      "Sinag asked the addon again, but the link still doesn’t work. Pick another stream.",
+  }),
+  unavailable: (service) => ({
+    title: `${service ?? "The stream’s server"} is having problems`,
+    description: "Try again in a little while, or pick another stream.",
+  }),
+  not_video: () => ({
+    title: "That link isn’t a video",
+    description: "The addon sent a web page instead of the stream. Pick another stream.",
+  }),
+  timeout: () => ({
+    title: "The stream didn’t answer",
+    description: "It took too long to start. Try again, or pick another stream.",
+  }),
+  unreachable: () => unreachable,
+  redirects: () => unreachable,
+  torrent: () => ({
+    title: "Torrent streams don’t play yet",
+    description:
+      "Sinag can’t stream torrents peer to peer yet. Pick a debrid or direct stream for now.",
+  }),
+  invalid_url: () => unsupported,
+  unsupported: () => unsupported,
+};
+
+const unreachable: Message = {
+  title: "Couldn’t reach the stream",
+  description: "Check your connection, then try again or pick another stream.",
+};
+
+const unsupported: Message = {
+  title: "Sinag can’t play this kind of stream",
+  description: "Pick another stream.",
+};
+
+// Resolves a stream's link, rejecting with a cause of { code } from
+// internal/streams. Tests pass their own.
+export type Resolver = (
+  url: string,
+  headers: Record<string, string>,
+  signal: AbortSignal,
+) => Promise<Source>;
+
+export const wailsResolver: Resolver = (url, headers, signal) => {
+  const call = Streams.Resolve({ url, headers });
+  const cancel = () => void call.cancel();
+  signal.addEventListener("abort", cancel, { once: true });
+  return call.finally(() => signal.removeEventListener("abort", cancel));
+};
+
+export type ResolveOptions = {
+  resolve?: Resolver;
+  // Asks the addon at `source` for the video's streams again, for a fresh
+  // link when one has expired.
+  refresh: (source: string) => Promise<readonly Stream[]>;
+  signal: AbortSignal;
+};
+
+export type Resolved = { source: Source; attempt: Attempt };
+
+// Tries each copy of `candidate` in turn and gives the first that resolves.
+// Rejects with a PlayError for the pick's own failure (the copies are only
+// fallbacks), unless the pick is a torrent and a copy with a link failed:
+// that says more. Rejects with the signal's reason once it aborts.
+export async function resolvePick(
+  candidate: Candidate,
+  { resolve = wailsResolver, refresh, signal }: ResolveOptions,
+): Promise<Resolved> {
+  const failures: FailureKind[] = [];
+  for (const attempt of attempts(candidate)) {
+    signal.throwIfAborted();
+    const { url } = attempt.stream;
+    if (!url) {
+      failures.push(attempt.stream.infoHash ? "torrent" : "unsupported");
+      continue;
+    }
+    // One copy at a time: each resolve can make the debrid service start a
+    // download.
+    // oxlint-disable-next-line no-await-in-loop
+    const outcome = await tryAttempt(url, attempt, resolve, refresh, signal);
+    if ("source" in outcome) return outcome;
+    failures.push(outcome.failure);
+  }
+  const own = failures[0] ?? "unsupported";
+  const linked = failures.find((kind) => kind !== "torrent" && kind !== "unsupported");
+  throw new PlayError(own === "torrent" && linked ? linked : own, candidate.parsed.debrid);
+}
+
+async function tryAttempt(
+  url: string,
+  attempt: Attempt,
+  resolve: Resolver,
+  refresh: ResolveOptions["refresh"],
+  signal: AbortSignal,
+): Promise<Resolved | { failure: FailureKind }> {
+  const once = async (link: string, stream: Stream) => {
+    try {
+      return { source: await resolve(link, requestHeaders(stream), signal), attempt };
+    } catch (error) {
+      signal.throwIfAborted();
+      return { failure: failureOf(error) };
+    }
+  };
+  const first = await once(url, attempt.stream);
+  if ("source" in first || first.failure !== "expired") return first;
+
+  let fresh: Stream | undefined;
+  try {
+    fresh = (await refresh(attempt.source)).find((stream) => sameStream(stream, attempt.stream));
+  } catch {
+    signal.throwIfAborted();
+  }
+  if (!fresh?.url || fresh.url === url) return first;
+  const again = await once(fresh.url, fresh);
+  return "source" in again ? { ...again, attempt: { ...attempt, stream: fresh } } : again;
+}
+
+const requestHeaders = (stream: Stream) => stream.behaviorHints?.proxyHeaders?.request ?? {};
+
+function failureOf(error: unknown): FailureKind {
+  const cause: unknown = error instanceof Error ? error.cause : undefined;
+  const code =
+    typeof cause === "object" && cause !== null && "code" in cause ? cause.code : undefined;
+  return typeof code === "string" && isGoCode(code) ? code : "unreachable";
+}
+
+const isGoCode = (code: string): code is FailureKind => goCodes.has(code);
+
+// The same file in a fresh answer: the same torrent and file when the
+// stream says, else the same name and text.
+export function sameStream(a: Stream, b: Stream): boolean {
+  const key = dedupKey(parseStream(b));
+  if (key) return dedupKey(parseStream(a)) === key;
+  return (
+    a.name === b.name &&
+    a.description === b.description &&
+    a.behaviorHints?.filename === b.behaviorHints?.filename
+  );
+}

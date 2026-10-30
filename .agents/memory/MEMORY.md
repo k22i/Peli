@@ -22,3 +22,4 @@
 - [Stream requests](stream-requests.md) — #50 useStreamAddons (enabled, not visible), useStreams per-addon state, StreamFeed 150-slices, /streams picker that usePlay opens
 - [Stream ranking](stream-ranking.md) — #51 lib/ranking (parse, fakes, score, engine), shared worker + RankingSession, useRankedStreams restarts on ctx/prefs, accuracy.md snapshot gate, timing test
 - [Stream picker](stream-picker.md) — #52 stream-list rows + roving keys, P plays top pick, stream-labels badges, file name on demand, no autofocus (pins); #53 hand-off
+- [Stream resolve](stream-resolve.md) — #53 internal/streams Resolve → Source, notice/expired codes, resolvePick (pick → alternates, refresh on expired), tools/ttff; resolving adds to TorBox

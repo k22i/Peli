@@ -45,4 +45,4 @@ A candidate's `alternates` are other copies of the same file. The picker says ho
 
 ## Still to come
 
-Picking a stream still says the player isn't built (#60). The resolution cap, HDR / DV and language-order settings are #98.
+Picking a stream resolves it (#53, [ADR-0037](0037-resolving-streams.md)); the player (#60) loads it. The resolution cap, HDR / DV and language-order settings are #98.

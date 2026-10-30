@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Addon, Profile } from "@bindings/store";
+import type { Request, Source } from "@bindings/streams";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import cinemetaMovie from "@/lib/addon-protocol/fixtures/cinemeta/meta-movie.json";
 import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.json";
@@ -16,6 +17,8 @@ const mocks = vi.hoisted(() => ({
   current: vi.fn<() => Promise<Profile>>(),
   addons: vi.fn<() => Promise<Addon[]>>(),
   visibleAddons: vi.fn<() => Promise<Addon[] | null>>(),
+  resolve: vi.fn<(request: Request) => Promise<Source>>(),
+  cancel: vi.fn<() => void>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -38,6 +41,13 @@ vi.mock("@bindings/store", () => ({
         subtitleSize: "medium",
         captions: "system",
       }),
+  },
+}));
+
+// A Wails call: a promise with cancel.
+vi.mock("@bindings/streams", () => ({
+  Service: {
+    Resolve: (request: Request) => Object.assign(mocks.resolve(request), { cancel: mocks.cancel }),
   },
 }));
 
@@ -76,9 +86,14 @@ const peerflix: Addon = {
 const movieStreams = (addon: string) => `https://${addon}/stream/movie/tt0111161.json`;
 const pickerPath = "/streams/movie/tt0111161";
 
-// Answers addon requests by full URL: a body, or a promise of one for an
-// addon that answers when the test says. Anything else answers 503. Returns
-// each request's URL and signal.
+// An answer made afresh for each request.
+class Each {
+  constructor(readonly make: () => unknown) {}
+}
+
+// Answers addon requests by full URL: a body, a promise of one for an addon
+// that answers when the test says, or Each. Anything else answers 503.
+// Returns each request's URL and signal.
 function serve(answers: Record<string, unknown> = {}) {
   const all: Record<string, unknown> = {
     [cinemeta.url]: cinemetaManifest,
@@ -91,8 +106,9 @@ function serve(answers: Record<string, unknown> = {}) {
   const fetch = vi.fn<(url: string, init: { signal: AbortSignal }) => Promise<Response>>(
     async (url, init) => {
       if (!(url in all)) return new Response("", { status: 503 });
+      const answer = all[url];
       const body = await Promise.race([
-        all[url],
+        answer instanceof Each ? answer.make() : answer,
         new Promise((_, reject) => {
           init.signal.addEventListener("abort", () => reject(init.signal.reason));
         }),
@@ -136,7 +152,17 @@ const shownStreams = () =>
     .filter((button) => !button.hasAttribute("aria-expanded"));
 const topPick = () => shownStreams()[0]!;
 
+const resolved = ({ url }: Request): Source => ({
+  url: `${url}#cdn`,
+  origin: url,
+  headers: {},
+  userAgent: "Sinag/test",
+  contentType: "video/x-matroska",
+  size: 2_100_000_000,
+});
+
 beforeEach(() => {
+  mocks.resolve.mockImplementation(async (request) => resolved(request));
   mocks.current.mockResolvedValue(kevin);
   mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
   mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio, peerflix]);
@@ -322,8 +348,17 @@ describe("stream picker", () => {
     expect(screen.getByRole("link", { name: "Manage addons" })).toBeInTheDocument();
   });
 
-  it("says the player isn't built yet when a stream is picked", async () => {
-    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+  it("resolves a picked stream's link, then says the player isn't built yet", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [
+          {
+            ...streams(1).streams[0],
+            behaviorHints: { proxyHeaders: { request: { Referer: "https://addon.example/" } } },
+          },
+        ],
+      },
+    });
     mocks.addons.mockResolvedValue([torrentio]);
     const user = userEvent.setup();
     await renderApp(pickerPath);
@@ -333,6 +368,83 @@ describe("stream picker", () => {
     ).findAllByRole("button");
     await user.click(first!);
     expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+    expect(mocks.resolve).toHaveBeenCalledExactlyOnceWith({
+      url: "https://debrid.example/KEY/0",
+      headers: { Referer: "https://addon.example/" },
+    });
+  });
+
+  it("says why a stream won't play, naming its debrid service", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [debrid("The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv", " download")],
+      },
+    });
+    mocks.addons.mockResolvedValue([torrentio]);
+    mocks.resolve.mockRejectedValue(new Error("call failed", { cause: { code: "caching" } }));
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Not cached · TorBox"));
+    await user.click(topPick());
+    expect(await screen.findByText("TorBox is still downloading this")).toBeInTheDocument();
+    expect(screen.getByText(/Pick a cached stream to watch now/)).toBeInTheDocument();
+    expect(document.body.innerHTML).not.toContain("KEY");
+  });
+
+  it("asks the addon again for a link that has expired", async () => {
+    let asked = 0;
+    serve({
+      [movieStreams("torrentio.strem.fun")]: new Each(() => {
+        asked += 1;
+        return {
+          streams: [
+            {
+              ...debrid("The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv", "+"),
+              url: `https://torrentio.strem.fun/resolve/torbox/KEY/link-${asked}`,
+            },
+          ],
+        };
+      }),
+    });
+    mocks.addons.mockResolvedValue([torrentio]);
+    mocks.resolve.mockImplementation(async (request) => {
+      if (request.url.endsWith("link-1")) {
+        throw new Error("call failed", { cause: { code: "expired" } });
+      }
+      return resolved(request);
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await user.click(topPick());
+    expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
+    expect(mocks.resolve.mock.calls.map(([request]) => request.url)).toEqual([
+      "https://torrentio.strem.fun/resolve/torbox/KEY/link-1",
+      "https://torrentio.strem.fun/resolve/torbox/KEY/link-2",
+    ]);
+  });
+
+  it("stops resolving when the picker is left", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([torrentio]);
+    mocks.resolve.mockReturnValue(later<Source>().promise);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/title/movie/tt0111161");
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    await user.click(topPick());
+    expect(await screen.findByText("Opening the stream from Torrentio…")).toBeInTheDocument();
+    expect(mocks.cancel).not.toHaveBeenCalled();
+
+    await user.click(screen.getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/title/movie/tt0111161"));
+    expect(mocks.cancel).toHaveBeenCalledOnce();
+    await waitFor(() =>
+      expect(screen.queryByText("Opening the stream from Torrentio…")).toBeNull(),
+    );
   });
 
   it("plays the top pick with P, from anywhere on the picker", async () => {
@@ -348,7 +460,7 @@ describe("stream picker", () => {
     await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
     await user.keyboard("p");
     expect(await screen.findByText("Can’t play Streams yet")).toBeInTheDocument();
-    expect(screen.getByText(/You picked 1080p from Torrentio/)).toBeInTheDocument();
+    expect(screen.getByText(/1080p from Torrentio is ready/)).toBeInTheDocument();
   });
 
   it("shows a stream's file name only when asked", async () => {

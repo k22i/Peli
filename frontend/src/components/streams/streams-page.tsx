@@ -17,11 +17,12 @@ import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
-import type { ContentType } from "@/lib/addon-protocol";
+import { streamsQuery, type ContentType } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
+import { PlayError, resolvePick } from "@/lib/resolve";
 import { profileSettingsQuery } from "@/lib/settings";
 import {
   rankingPrefs,
@@ -37,7 +38,8 @@ import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
 // state (#50), and their streams ranked as they arrive (#51) and shown by
 // quality (#52): the top pick first, one key (P) to play it, and likely
 // fakes and CAM / TS collapsed. Leaving it aborts the requests still out.
-// Picking a stream says the player (#60) isn't built yet.
+// Picking a stream resolves its link, or another copy's (#53); the player
+// (#60) isn't built yet, so it then says so.
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -126,15 +128,64 @@ function Picker({
   const { view, pin } = useRankedStreams(sources, ctx, prefs);
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
 
+  // Resolving the pick (#53): one at a time, so a second pick replaces the
+  // first, and none once the picker is left.
+  const opening = useRef<{ controller: AbortController; toast: string }>(null);
+  useEffect(
+    () => () => {
+      if (!opening.current) return;
+      opening.current.controller.abort();
+      toastManager.close(opening.current.toast);
+    },
+    [],
+  );
   const pick = (candidate: Candidate) => {
     pin();
-    // #53 resolves `candidate.stream`, then its `alternates` in turn if it
-    // fails to.
-    const quality = resolutionLabel(candidate.parsed) ?? "Unknown quality";
-    toastManager.add({
-      title: `Can’t play ${target.title} yet`,
-      description: `You picked ${quality} from ${names.get(candidate.source) ?? "an addon"}. Sinag’s player isn’t built yet.`,
+    if (opening.current) {
+      opening.current.controller.abort();
+      toastManager.close(opening.current.toast);
+    }
+    const controller = new AbortController();
+    const quality = resolutionLabel(candidate.parsed) ?? "the stream";
+    const toast = toastManager.add({
+      type: "loading",
+      title: `Opening ${quality} from ${names.get(candidate.source) ?? "an addon"}…`,
+      timeout: 0,
     });
+    const current = { controller, toast };
+    opening.current = current;
+    resolvePick(candidate, {
+      refresh: async (source) =>
+        (await client.fetchQuery({ ...streamsQuery(source, type, video), staleTime: 0 })).streams,
+      signal: controller.signal,
+    })
+      .then(
+        ({ attempt }) => {
+          // #60 loads the resolved Source here.
+          toastManager.update(toast, {
+            type: "info",
+            title: `Can’t play ${target.title} yet`,
+            description: `${capitalize(quality)} from ${names.get(attempt.source) ?? "an addon"} is ready, but Sinag’s player isn’t built yet.`,
+            timeout: 8000,
+          });
+        },
+        (error: unknown) => {
+          if (controller.signal.aborted) return;
+          const failed =
+            error instanceof PlayError
+              ? error
+              : new PlayError("unreachable", candidate.parsed.debrid);
+          toastManager.update(toast, {
+            type: "error",
+            title: failed.message,
+            description: failed.description,
+            timeout: 8000,
+          });
+        },
+      )
+      .finally(() => {
+        if (opening.current === current) opening.current = null;
+      });
   };
   usePlayKey(view.top, pick);
 
@@ -191,6 +242,8 @@ function Picker({
     </>
   );
 }
+
+const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 
 // P plays the top pick from anywhere on the picker, unless the user is
 // typing.

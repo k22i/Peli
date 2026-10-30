@@ -20,6 +20,7 @@ import (
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Sinag/internal/streams"
 	"github.com/k22i/Sinag/internal/syncer"
 )
 
@@ -63,6 +64,9 @@ func main() {
 			// Addon requests the webview's fetch can't make (#37).
 			application.NewServiceWithOptions(addons.NewService(appinfo.Version),
 				application.ServiceOptions{MarshalError: addons.MarshalError}),
+			// Resolving a picked stream to the file the player loads (#53).
+			application.NewServiceWithOptions(streams.NewService(appinfo.Version),
+				application.ServiceOptions{MarshalError: streams.MarshalError}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
