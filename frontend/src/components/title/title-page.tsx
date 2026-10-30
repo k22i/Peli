@@ -8,6 +8,7 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import { Check, ChevronLeft, Clapperboard, Play, Plus, RotateCcw } from "lucide-react";
+import { useEffect } from "react";
 
 import type { Profile, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
@@ -30,6 +31,7 @@ import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
 import { usePlay } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
+import { warmRanking } from "@/lib/ranking";
 import {
   cachedTitleMeta,
   episodeMarks,
@@ -120,6 +122,8 @@ function Title({
   // An IMDb or TMDB id is looked up at once, beside the addon; a Kitsu id
   // waits for the details' imdb_id.
   const art = useTmdbArt(tmdbRef(type, id, meta));
+  // Play is a click away: get the ranking engine's slow first run over.
+  useEffect(warmRanking, []);
   const shown = meta ?? preview;
   if (!shown) {
     if (details.isError || visible.data?.length === 0) {

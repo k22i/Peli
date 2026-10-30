@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Link,
   useCanGoBack,
@@ -18,22 +18,32 @@ import { scrollParent } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
-import type { ContentType, Stream } from "@/lib/addon-protocol";
+import type { ContentType } from "@/lib/addon-protocol";
+import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import {
+  collapsedTiers,
+  titleContext,
+  type Candidate,
+  type RankedView,
+  type Tier,
+} from "@/lib/ranking";
+import { profileSettingsQuery } from "@/lib/settings";
+import {
+  rankingPrefs,
+  useRankedStreams,
   useStreamAddons,
-  useStreamFeed,
   useStreams,
-  type StreamSlice,
   type StreamSource,
 } from "@/lib/streams";
+import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
 
 // The stream picker (#50): every stream addon asked at once, each with its
-// own state, and their streams listed as they arrive. Leaving it aborts the
-// requests still out. Until the ranking engine (#51) and the ranked picker
-// (#52) land, the streams are listed unranked, in the order they came;
-// picking one says the player (#60) isn't built yet.
+// own state, and their streams ranked as they arrive (#51), the top pick
+// first and likely fakes and CAM / TS collapsed. Leaving it aborts the
+// requests still out. Until the ranked picker (#52) lands, the list is
+// plain; picking a stream says the player (#60) isn't built yet.
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -91,9 +101,6 @@ function Asking() {
   );
 }
 
-// A stream as listed: its addon's name and the place it arrived in.
-type Arrival = { key: string; addon: string; stream: Stream };
-
 function Picker({
   profile,
   type,
@@ -107,18 +114,23 @@ function Picker({
 }) {
   const { addons, loading } = useStreamAddons(profile.id);
   const sources = useStreams(addons, type, video);
-  const [arrived, setArrived] = useState<Arrival[]>([]);
   const names = new Map(addons.map((addon) => [addon.url, addon.manifest.name]));
-  useStreamFeed(sources, (slice: StreamSlice) =>
-    setArrived((list) => [
-      ...list,
-      ...slice.streams.map((stream, index) => ({
-        key: `${list.length + index}`,
-        addon: names.get(slice.addon) ?? "",
-        stream,
-      })),
-    ]),
-  );
+
+  // What ranking knows: the title's details, as its page asked for them
+  // (usually cached by now), and the profile's audio language. It starts
+  // without them and starts again once they come.
+  const client = useQueryClient();
+  const browsing = useLoadedAddons(profile.id);
+  const details = useQuery({
+    ...titleMetaQuery(browsing.addons, type, target.id),
+    enabled: !browsing.loading,
+    ...cachedTitleMeta(client, browsing.addons, type, target.id),
+  });
+  const settings = useQuery(profileSettingsQuery(profile.id));
+  const ctx = titleContext(type, video, details.data?.meta, target.title);
+  const prefs = rankingPrefs(settings.data);
+  const { view, pin } = useRankedStreams(sources, ctx, prefs);
+  const [showCollapsed, setShowCollapsed] = useState(false);
 
   if (sources.length === 0) {
     if (loading) return <Asking />;
@@ -143,7 +155,7 @@ function Picker({
     <>
       <div className="flex flex-col gap-3 px-gutter">
         <p aria-live="polite" className="text-sm text-muted-foreground">
-          {arrived.length === 1 ? "1 stream" : `${arrived.length} streams`}
+          {view.total === 1 ? "1 stream" : `${view.total} streams`}
           {waiting > 0
             ? `, ${waiting} of ${sources.length} addons still answering`
             : // An addon whose manifest is still loading may serve streams too.
@@ -158,7 +170,9 @@ function Picker({
         </ul>
       </div>
       <StreamList
-        items={arrived}
+        rows={rows(view, showCollapsed)}
+        names={names}
+        onNavigate={pin}
         onPick={() =>
           toastManager.add({
             title: `Can’t play ${target.title} yet`,
@@ -166,6 +180,7 @@ function Picker({
           })
         }
       />
+      <CollapsedToggle view={view} shown={showCollapsed} onToggle={setShowCollapsed} />
     </>
   );
 }
@@ -202,12 +217,62 @@ function SourceStatus({ source }: { source: StreamSource }) {
   );
 }
 
+// A listed stream: the top pick, then the rest by rank, then (when shown)
+// the collapsed groups.
+type Row = { candidate: Candidate; tier: Tier; top: boolean };
+
+function rows(view: RankedView, showCollapsed: boolean): Row[] {
+  const out: Row[] = view.top ? [{ candidate: view.top, tier: view.top.tier, top: true }] : [];
+  for (const { tier, items } of view.groups) {
+    if (collapsedTiers.has(tier) && !showCollapsed) continue;
+    for (const candidate of items) {
+      if (candidate !== view.top) out.push({ candidate, tier, top: false });
+    }
+  }
+  return out;
+}
+
+function CollapsedToggle({
+  view,
+  shown,
+  onToggle,
+}: {
+  view: RankedView;
+  shown: boolean;
+  onToggle: (shown: boolean) => void;
+}) {
+  const counts = view.groups.filter(({ tier }) => collapsedTiers.has(tier));
+  if (counts.length === 0) return null;
+  const label = counts
+    .map(
+      ({ tier, items }) => `${items.length} ${tier === "Low quality" ? "CAM / TS" : "likely fake"}`,
+    )
+    .join(" and ");
+  return (
+    <div className="px-gutter">
+      <Button variant="ghost" onClick={() => onToggle(!shown)}>
+        {shown ? `Hide ${label}` : `Show ${label}`}
+      </Button>
+    </div>
+  );
+}
+
 // A row's height before it's measured: two lines of name and two of detail.
 const rowPx = 88;
 
 // The streams, scrolled with the page and virtualized: one addon can send
-// over a thousand.
-function StreamList({ items, onPick }: { items: readonly Arrival[]; onPick: () => void }) {
+// over a thousand. Moving into the list pins the top pick.
+function StreamList({
+  rows: items,
+  names,
+  onNavigate,
+  onPick,
+}: {
+  rows: readonly Row[];
+  names: ReadonlyMap<string, string>;
+  onNavigate: () => void;
+  onPick: () => void;
+}) {
   const list = useRef<HTMLOListElement>(null);
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
   const [top, setTop] = useState(0);
@@ -237,7 +302,7 @@ function StreamList({ items, onPick }: { items: readonly Arrival[]; onPick: () =
     estimateSize: () => rowPx,
     // Nothing laid out (jsdom, a hidden page): keep the estimate.
     measureElement: (element) => element.getBoundingClientRect().height || rowPx,
-    getItemKey: (index) => items[index]!.key,
+    getItemKey: (index) => items[index]!.candidate.key,
     scrollMargin: top,
     overscan: 6,
     initialRect: { width: 0, height: window.innerHeight },
@@ -251,7 +316,9 @@ function StreamList({ items, onPick }: { items: readonly Arrival[]; onPick: () =
       style={{ height: virtualizer.getTotalSize() }}
     >
       {virtualizer.getVirtualItems().map((item) => {
-        const { addon, stream } = items[item.index]!;
+        const { candidate, tier, top: best } = items[item.index]!;
+        const { stream } = candidate;
+        const addon = names.get(candidate.source) ?? "";
         const name = lines(stream.name).join(" · ");
         // Torrentio's names start with its own.
         const from = name.startsWith(addon) ? undefined : addon;
@@ -266,9 +333,12 @@ function StreamList({ items, onPick }: { items: readonly Arrival[]; onPick: () =
             <button
               type="button"
               onClick={onPick}
+              onFocus={onNavigate}
+              onPointerDown={onNavigate}
               className="flex w-full cursor-pointer flex-col gap-1 rounded-lg px-3 py-2 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
             >
               <span className="flex gap-2 text-sm">
+                <span className="font-medium text-brand">{best ? "Top pick" : tier}</span>
                 <span className="font-medium">{name || addon}</span>
                 {name && from && <span className="text-muted-foreground">{from}</span>}
               </span>

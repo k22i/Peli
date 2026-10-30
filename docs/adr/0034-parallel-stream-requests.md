@@ -30,7 +30,7 @@ Every **enabled** addon whose manifest loaded, in the user's order, routed with 
 
 Comet alone can send ~1,400 streams for a popular title. `StreamFeed` hands each addon's answer on **once**, in the order answers arrive, cut into slices of at most 150 (`sliceSize`), the size #6 measured as fitting in a frame. A refetch of an addon already fed is skipped; an addon that failed is fed once a retry answers. `useStreamFeed(sources, onSlice)` runs it after each render. One feed lives per mount, so the picker is keyed by video.
 
-For now, the picker's list is built from that feed: streams are appended in arrival order, so nothing already shown moves. The list is virtualized, since one addon can send over a thousand. #51 will take the same slices (in a Web Worker), and #52 will replace the list with ranked groups.
+The list is virtualized, since one addon can send over a thousand. The ranking engine (#51, ADR-0035) takes the same slices in a Web Worker, and the picker lists its ranked view; #52 will replace the list with the real design. (Until #51, streams were appended in arrival order.)
 
 ## Playback entry
 

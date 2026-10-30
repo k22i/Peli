@@ -1,5 +1,5 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   addonsFor,
@@ -9,7 +9,15 @@ import {
   type LoadedAddon,
   type Stream,
 } from "@/lib/addon-protocol";
+import type { ProfileSettings } from "@bindings/store";
 import { addonsQuery } from "@/lib/addons";
+import {
+  RankingSession,
+  emptyView,
+  type Prefs,
+  type RankedView,
+  type TitleContext,
+} from "@/lib/ranking";
 
 // Streams for the picker (#50): every addon that serves streams for the
 // video, asked at once, each with its own state, and their answers handed on
@@ -112,4 +120,63 @@ export function useStreamFeed(
   useEffect(() => {
     for (const slice of feed.current!.take(sources)) onSlice(slice);
   });
+}
+
+// What ranking prefers: the profile's audio language, and HDR when the
+// display shows it. Dolby Vision can't be detected from a webview, and the
+// resolution isn't capped: a 4K encode still looks better on a smaller
+// display, so both wait for settings of their own.
+export function rankingPrefs(settings: ProfileSettings | undefined): Prefs {
+  const hdr = typeof matchMedia === "function" && matchMedia("(dynamic-range: high)").matches;
+  return {
+    languages: settings?.audioLanguage ? [settings.audioLanguage] : [],
+    maxResolution: "2160p",
+    hdr,
+    dolbyVision: false,
+  };
+}
+
+// The streams ranked (#51): every slice from `sources` goes to the ranking
+// engine, in the worker, and the ranked view comes back after each. Ranking
+// starts at once with what's known; when `ctx` or `prefs` change (the
+// title's details or the profile's settings arrive), it starts again with
+// every slice so far, keeping a pin. `pin` keeps the top pick where it is
+// once the user starts navigating. One session per mount: key the component
+// by the video.
+export function useRankedStreams(
+  sources: readonly StreamSource[],
+  ctx: TitleContext,
+  prefs: Prefs,
+) {
+  const [view, setView] = useState<RankedView>(emptyView);
+  const session = useRef<RankingSession>(null);
+  const fed = useRef<StreamSlice[]>([]);
+  const pinned = useRef(false);
+
+  // By value: a new object each render is the same session.
+  const settings = JSON.stringify([ctx, prefs]);
+  useEffect(() => {
+    const [context, preferences]: [TitleContext, Prefs] = JSON.parse(settings);
+    const ranking = new RankingSession(context, preferences, setView);
+    for (const slice of fed.current) ranking.add(slice.addon, slice.streams);
+    if (pinned.current) ranking.pin();
+    session.current = ranking;
+    return () => {
+      ranking.close();
+      session.current = null;
+    };
+  }, [settings]);
+
+  useStreamFeed(sources, (slice) => {
+    fed.current.push(slice);
+    session.current?.add(slice.addon, slice.streams);
+  });
+
+  return {
+    view,
+    pin: () => {
+      pinned.current = true;
+      session.current?.pin();
+    },
+  };
 }

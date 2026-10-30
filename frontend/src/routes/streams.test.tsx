@@ -31,6 +31,13 @@ vi.mock("@bindings/store", () => ({
     Library: () => Promise.resolve([]),
     TitleWatched: () => Promise.resolve([]),
     TitleProgress: () => Promise.resolve([]),
+    ProfileSettings: () =>
+      Promise.resolve({
+        audioLanguage: "",
+        subtitleLanguage: "",
+        subtitleSize: "medium",
+        captions: "system",
+      }),
   },
 }));
 
@@ -113,6 +120,13 @@ const streams = (count: number) => ({
   })),
 });
 
+// A Torrentio debrid stream: cached ("+") or not (" download").
+const debrid = (file: string, marker: string) => ({
+  name: `[TB${marker}] Torrentio\n1080p`,
+  title: `${file}\n👤 20 💾 2.1 GB ⚙️ Tracker`,
+  url: `https://torrentio.strem.fun/resolve/torbox/KEY/${marker === "+" ? "a" : "b"}${"0".repeat(39)}/null/0/${file}`,
+});
+
 const addonStatus = (name: string) =>
   within(screen.getByRole("list", { name: "Addons" })).getByRole("listitem", { name });
 const shownStreams = () =>
@@ -146,7 +160,10 @@ describe("stream picker", () => {
 
     await waitFor(() => expect(addonStatus("Peerflix")).toHaveTextContent("12 streams"));
     expect(addonStatus("Torrentio")).toHaveTextContent("Asking…");
-    expect(screen.getByText(/12 streams, 1 of 2 addons still answering/)).toBeInTheDocument();
+    // Peerflix sends one file twice: the count is after de-duplication (#51).
+    expect(
+      await screen.findByText(/11 streams, 1 of 2 addons still answering/),
+    ).toBeInTheDocument();
     expect(shownStreams()).not.toHaveLength(0);
     // Both were asked before either answered; Cinemeta serves no streams.
     const streamUrls = asked()
@@ -159,10 +176,11 @@ describe("stream picker", () => {
 
     slow.resolve(streams(3));
     await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("3 streams"));
-    expect(screen.getByText("15 streams from 2 addons")).toBeInTheDocument();
-    // Torrentio's came last, so they're listed last.
+    expect(await screen.findByText("14 streams from 2 addons")).toBeInTheDocument();
+    // Torrentio's say nothing of their quality, so they rank last, in the
+    // order they came.
     const names = shownStreams().map((button) => button.textContent);
-    expect(names.at(-1)).toMatch(/^Source · 2Torrentio/);
+    expect(names.at(-1)).toMatch(/^UnknownSource · 2Torrentio/);
   });
 
   it("isn't done while an addon's manifest is still loading", async () => {
@@ -175,11 +193,11 @@ describe("stream picker", () => {
     await renderApp(pickerPath);
 
     await waitFor(() => expect(addonStatus("Peerflix")).toHaveTextContent("1 stream"));
-    expect(screen.getByText("1 stream, still loading addons")).toBeInTheDocument();
+    expect(await screen.findByText("1 stream, still loading addons")).toBeInTheDocument();
 
     manifest.resolve(torrentioManifest);
     await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("2 streams"));
-    expect(screen.getByText("3 streams from 2 addons")).toBeInTheDocument();
+    expect(await screen.findByText("3 streams from 2 addons")).toBeInTheDocument();
   });
 
   it("asks for the episode, and the heading names it", async () => {
@@ -211,7 +229,7 @@ describe("stream picker", () => {
     });
     await user.click(within(addonStatus("Torrentio")).getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("2 streams"));
-    expect(screen.getByText("14 streams from 2 addons")).toBeInTheDocument();
+    expect(await screen.findByText("13 streams from 2 addons")).toBeInTheDocument();
     expect(asked().filter(({ url }) => url.includes("peerflix.example/stream"))).toHaveLength(1);
   });
 
@@ -240,9 +258,34 @@ describe("stream picker", () => {
     await renderApp(pickerPath);
 
     await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("1400 streams"));
-    expect(shownStreams().length).toBeGreaterThan(0);
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0));
     expect(shownStreams().length).toBeLessThan(50);
     // Stream URLs carry the debrid key: never shown.
+    expect(document.body.innerHTML).not.toContain("KEY");
+  });
+
+  it("ranks the streams with the top pick first and likely fakes collapsed", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [
+          debrid("The.Shawshank.Redemption.1994.720p.BluRay.x264-GRP.mkv", " download"),
+          debrid("The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv", "+"),
+        ],
+      },
+      // Peerflix answers with Dune's streams: the wrong year for this film.
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    const toggle = await screen.findByRole("button", { name: "Show 8 likely fake" });
+    // Cached on debrid first, as the top pick.
+    expect(shownStreams()[0]).toHaveTextContent(/^Top pick\[TB\+\] Torrentio · 1080p/);
+    expect(shownStreams()).toHaveLength(5);
+
+    await user.click(toggle);
+    expect(shownStreams()).toHaveLength(13);
+    expect(screen.getByRole("button", { name: "Hide 8 likely fake" })).toBeInTheDocument();
     expect(document.body.innerHTML).not.toContain("KEY");
   });
 
