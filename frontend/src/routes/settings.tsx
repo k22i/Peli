@@ -269,14 +269,17 @@ function ProfileSections({ profileId }: { profileId: number }) {
         </SettingRow>
       </SettingsSection>
 
-      {/* Trakt is #72 (v1.x); debrid accounts, #54. */}
+      {/* Trakt is #72 (v1.x). Debrid keys stay with the addons (#54,
+          ADR-0038), so this row only points there. */}
       <SettingsSection section={section("integrations")}>
         <SettingRow
           id="debrid"
           label="Debrid services"
-          description="Connect TorBox, AllDebrid or Premiumize for faster streams."
+          description="Set up TorBox, AllDebrid or Premiumize in a stream addon’s own settings, such as Torrentio’s or Comet’s. Sinag never asks for your debrid key."
         >
-          <Badge variant="secondary">Coming soon</Badge>
+          <Link to="/addons" className={buttonVariants({ variant: "outline", size: "sm" })}>
+            Open addons
+          </Link>
         </SettingRow>
         <SettingRow id="trakt" label="Trakt" description="Scrobble what you watch to Trakt.">
           <Badge variant="secondary">Coming soon</Badge>

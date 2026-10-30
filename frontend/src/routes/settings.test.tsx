@@ -129,6 +129,17 @@ describe("settings", () => {
     expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeInTheDocument();
   });
 
+  // Addons hold the debrid keys (#54, ADR-0038): the row points there and
+  // asks for nothing.
+  it("sends debrid setup to the addons", async () => {
+    await renderSettings();
+
+    expect(
+      screen.getByText(/^Set up TorBox, AllDebrid or Premiumize in a stream addon/),
+    ).toBeVisible();
+    expect(screen.getByRole("link", { name: "Open addons" })).toHaveAttribute("href", "/addons");
+  });
+
   it("shows Sinag's licence and the third-party notices", async () => {
     const user = userEvent.setup();
     await renderSettings();

@@ -9,8 +9,7 @@ export type SecretKey =
   | "nuvio.refresh-token"
   | "trakt.access-token"
   | "trakt.refresh-token"
-  | "tmdb.api-key"
-  | `debrid.${string}`;
+  | "tmdb.api-key";
 
 export const secrets = {
   get: (key: SecretKey) => Secrets.Get(key),
