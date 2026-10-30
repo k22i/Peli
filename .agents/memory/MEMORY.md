@@ -35,3 +35,4 @@
 - [Player keys and media controls](player-keys-media.md) — #67 onKey maps + shortcuts.tsx overlay, SetNowPlaying, media.go → Now Playing/MPRIS/libmpv SMTC, mock SetNowPlaying, live media-key check
 - [Platform priority](platform-priority.md) — macOS first, then Windows; Linux deferred to after v1.0 (#103), #79/#91 in Later
 - [Stream switcher](stream-switcher.md) — #68 Streams sheet (S), useStreamChoices shared with the picker, player.stream marks Playing, switch loads at the Snapshot position
+- [Skip markers](skip-markers.md) — #69 State.chapters + lib/markers.ts, IntroDB via Go internal/markers (CORS), skipIntros/skipTimesOnline settings, card waits for credits, test mocks

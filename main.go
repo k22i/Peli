@@ -17,6 +17,7 @@ import (
 	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/firstmouse"
 	"github.com/k22i/Sinag/internal/licences"
+	"github.com/k22i/Sinag/internal/markers"
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/player"
 	"github.com/k22i/Sinag/internal/secrets"
@@ -55,6 +56,8 @@ func main() {
 	players := player.NewService(appinfo.Version)
 	// Hardware decoding, as Settings › Playback has it (#66).
 	player.UseSettings(players, db)
+	skipTimes := markers.NewService(appinfo.Version)
+	markers.UseSettings(skipTimes, db)
 	// How far each film or episode plays becomes the profile's progress, and
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.
@@ -81,6 +84,7 @@ func main() {
 			application.NewServiceWithOptions(torrent.NewService(db, torrent.DefaultDir(), appinfo.Version),
 				application.ServiceOptions{MarshalError: torrent.MarshalError}),
 			// libmpv under the webview (#60).
+			application.NewService(skipTimes),
 			application.NewServiceWithOptions(players,
 				application.ServiceOptions{MarshalError: player.MarshalError}),
 		},

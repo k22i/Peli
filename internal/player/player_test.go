@@ -377,6 +377,22 @@ func TestRedact(t *testing.T) {
 	}
 }
 
+func TestChapters(t *testing.T) {
+	got := chapters([]any{
+		map[string]any{"title": "Prologue", "time": 0.0},
+		map[string]any{"title": "Opening", "time": 61.5},
+		map[string]any{"time": int64(150)},
+		"not a chapter",
+	})
+	want := []Chapter{{Title: "Prologue"}, {Title: "Opening", Time: 61.5}, {Time: 150}}
+	if !slices.Equal(got, want) {
+		t.Fatalf("chapters = %+v; want %+v", got, want)
+	}
+	if got := chapters(nil); got == nil || len(got) != 0 {
+		t.Fatalf("chapters(nil) = %#v; want empty", got)
+	}
+}
+
 func TestMarshalError(t *testing.T) {
 	for err, want := range map[error]string{
 		ErrInvalid: CodeInvalid, ErrNotPlaying: CodeNotPlaying, ErrUnavailable: CodeUnavailable,

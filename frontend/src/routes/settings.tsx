@@ -239,6 +239,31 @@ function ProfileSections({ profileId }: { profileId: number }) {
             onChange={(subtitleLanguage) => setProfile({ subtitleLanguage })}
           />
         </SettingRow>
+        {/* #69: chapters first, IntroDB for files without them. */}
+        <SettingRow
+          id="skip-intros"
+          label="Skip intros automatically"
+          description="Skips intros and recaps without asking when Sinag knows where they are. Otherwise a button offers to skip them."
+        >
+          <Switch
+            aria-labelledby="skip-intros-label"
+            aria-describedby="skip-intros-description"
+            checked={settings.skipIntros}
+            onCheckedChange={(skipIntros) => setProfile({ skipIntros })}
+          />
+        </SettingRow>
+        <SettingRow
+          id="skip-times-online"
+          label="Look up intro and credits times"
+          description="Asks IntroDB (introdb.app) where they are, for videos that don’t mark them, which tells it what you’re watching. Applies to this device."
+        >
+          <Switch
+            aria-labelledby="skip-times-online-label"
+            aria-describedby="skip-times-online-description"
+            checked={device.skipTimesOnline}
+            onCheckedChange={(skipTimesOnline) => setDevice({ skipTimesOnline })}
+          />
+        </SettingRow>
         {/* Off unless the user turns it on (#55, ADR-0040): peers see their
             IP address. */}
         <SettingRow

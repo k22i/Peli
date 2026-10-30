@@ -4,7 +4,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 
 import type * as Runtime from "@wailsio/runtime";
 import type { Ended, State, Track, Watching } from "@bindings/player";
-import type { Addon, Profile, ProfileSettings, Progress } from "@bindings/store";
+import type { Segment, Title } from "@bindings/markers";
+import type { Addon, DeviceSettings, Profile, ProfileSettings, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
@@ -39,6 +40,8 @@ const mocks = vi.hoisted(() => ({
   visibleAddons: vi.fn<() => Promise<Addon[]>>(),
   titleProgress: vi.fn<(profileId: number, contentId: string) => Promise<Progress[]>>(),
   settings: vi.fn<() => Promise<ProfileSettings>>(),
+  deviceSettings: vi.fn<() => Promise<DeviceSettings>>(),
+  segments: vi.fn<(title: Title) => Promise<Segment[]>>(),
   saveSettings: vi.fn<(id: number, settings: ProfileSettings) => Promise<void>>(),
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   torrentStatus: vi.fn<() => Promise<Status>>(),
@@ -104,6 +107,7 @@ vi.mock("@bindings/store", () => ({
     CurrentProfile: () => Promise.resolve(kevin),
     ProfileSettings: mocks.settings,
     SaveProfileSettings: mocks.saveSettings,
+    DeviceSettings: mocks.deviceSettings,
     Addons: mocks.addons,
     VisibleAddons: mocks.visibleAddons,
     TitleProgress: mocks.titleProgress,
@@ -111,13 +115,17 @@ vi.mock("@bindings/store", () => ({
 }));
 
 // Japanese audio with English captions, large.
-const japanese: ProfileSettings = {
+const japaneseTracks = {
   audioLanguage: "ja",
   subtitleLanguage: "en",
   subtitleSize: "large",
   captions: "on",
 };
-const profileOptions = { ...japanese, start: 600 };
+const japanese: ProfileSettings = { ...japaneseTracks, skipIntros: false };
+const profileOptions = { ...japaneseTracks, start: 600 };
+
+// IntroDB, through Go (#69).
+vi.mock("@bindings/markers", () => ({ Service: { Segments: mocks.segments } }));
 
 vi.mock("@bindings/account", () => ({
   Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
@@ -216,6 +224,14 @@ beforeEach(() => {
   mocks.titleProgress.mockReset().mockResolvedValue([]);
   mocks.openTorrent.mockReset();
   mocks.settings.mockReset().mockResolvedValue(japanese);
+  mocks.deviceSettings.mockReset().mockResolvedValue({
+    hardwareDecoding: true,
+    skipTimesOnline: true,
+    diagnostics: false,
+    torrentStreaming: false,
+    torrentCacheGB: 5,
+  });
+  mocks.segments.mockReset().mockResolvedValue([]);
   mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
   mocks.release.mockReset().mockResolvedValue(undefined);
   mocks.torrentStatus.mockReset().mockResolvedValue({
@@ -1353,3 +1369,99 @@ const tracksSelecting = (audio: number, sub: number): Track[] => [
 ];
 const withTracks: State = { ...playing, tracks: tracksSelecting(1, 0) };
 const english = tracksSelecting(1, 0)[1]!;
+
+describe("skip intro and credits", () => {
+  const pilot: Watching = {
+    profileId: 1,
+    contentId: "tt0903747",
+    contentType: "series",
+    videoId: "tt0903747:1:1",
+    season: 1,
+    episode: 1,
+    title: "Pilot",
+  };
+  const film: Watching = {
+    profileId: 1,
+    contentId: "tt0371746",
+    contentType: "movie",
+    videoId: "tt0371746",
+  };
+  // A 25-minute episode whose chapters name its opening and ending.
+  const chaptered: State = {
+    ...playing,
+    position: 70,
+    duration: 1500,
+    chapters: [
+      { title: "Prologue", time: 0 },
+      { title: "Opening", time: 60 },
+      { title: "Part A", time: 150 },
+      { title: "Ending", time: 1410 },
+    ],
+  };
+
+  it("skips an intro the file's chapters name", async () => {
+    await openPlayer("S1 · E1");
+    emit("player:state", { ...chaptered, position: 30 });
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByRole("button", { name: "Skip intro" })).not.toBeInTheDocument();
+
+    emit("player:state", chaptered);
+    await userEvent.click(await screen.findByRole("button", { name: "Skip intro" }));
+    expect(mocks.seek).toHaveBeenLastCalledWith(150);
+    // Nothing to ask IntroDB about.
+    expect(mocks.segments).not.toHaveBeenCalled();
+  });
+
+  it("asks IntroDB for an episode without chapters", async () => {
+    mocks.segments.mockResolvedValue([{ kind: "intro", start: 216, end: 232 }]);
+    await openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot });
+    emit("player:state", { ...playing, position: 220, duration: 3480 });
+    expect(await screen.findByRole("button", { name: "Skip intro" })).toBeInTheDocument();
+    expect(mocks.segments).toHaveBeenCalledWith({ imdbId: "tt0903747", season: 1, episode: 1 });
+  });
+
+  it("skips a film's credits to where they end", async () => {
+    mocks.segments.mockResolvedValue([{ kind: "credits", start: 7038, end: 7140 }]);
+    await openPlayer(undefined, source, undefined, { watching: film });
+    emit("player:state", { ...playing, position: 7050, duration: 7200 });
+    await userEvent.click(await screen.findByRole("button", { name: "Skip credits" }));
+    expect(mocks.segments).toHaveBeenCalledWith({ imdbId: "tt0371746", season: 0, episode: 0 });
+    expect(mocks.seek).toHaveBeenLastCalledWith(7140);
+  });
+
+  it("doesn't ask IntroDB when Settings say not to", async () => {
+    mocks.deviceSettings.mockResolvedValue({
+      hardwareDecoding: true,
+      skipTimesOnline: false,
+      diagnostics: false,
+      torrentStreaming: false,
+      torrentCacheGB: 5,
+    });
+    mocks.segments.mockResolvedValue([{ kind: "intro", start: 216, end: 232 }]);
+    await openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot });
+    emit("player:state", { ...playing, position: 220, duration: 3480 });
+    await screen.findByRole("button", { name: "Pause" });
+    await waitFor(() => expect(mocks.deviceSettings).toHaveBeenCalled());
+    expect(screen.queryByRole("button", { name: "Skip intro" })).not.toBeInTheDocument();
+    expect(mocks.segments).not.toHaveBeenCalled();
+  });
+
+  it("skips intros by itself when the profile says so, once each", async () => {
+    mocks.settings.mockResolvedValue({ ...japanese, skipIntros: true });
+    await openPlayer("S1 · E1");
+    emit("player:state", chaptered);
+    await waitFor(() => expect(mocks.seek).toHaveBeenCalledExactlyOnceWith(150));
+    expect(await screen.findByText("Skipped the intro")).toBeInTheDocument();
+
+    // Back into it: the button, not another skip.
+    emit("player:state", { ...chaptered, position: 150 });
+    emit("player:state", { ...chaptered, position: 80 });
+    expect(await screen.findByRole("button", { name: "Skip intro" })).toBeInTheDocument();
+    expect(mocks.seek).toHaveBeenCalledOnce();
+
+    // Credits are the user's to skip.
+    emit("player:state", { ...chaptered, position: 1420 });
+    expect(await screen.findByRole("button", { name: "Skip credits" })).toBeInTheDocument();
+    expect(mocks.seek).toHaveBeenCalledOnce();
+  });
+});

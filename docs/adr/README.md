@@ -42,7 +42,7 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0036](0036-stream-picker.md) | The stream picker: one highlighted top pick played with P, groups by quality, badges instead of file names | 2026-10-30 |
 | [0037](0037-resolving-streams.md) | Resolving a picked stream: one ranged request through Go, the pick and then its copies, notices read by name | 2026-10-30 |
 | [0038](0038-debrid-keys-stay-with-addons.md) | Debrid keys stay with the addons: Sinag holds no debrid account of its own | 2026-10-30 |
-| [0039](0039-player-service.md) | The player service: one mpv session per playback, three events, a host per OS; progress reported from Go, resume from the store (#64) | 2026-10-30 |
+| [0039](0039-player-service.md) | The player service: one mpv session per playback, three events, a host per OS; progress reported from Go, resume from the store (#64); skip intro and credits from chapters or IntroDB (#69) | 2026-10-30 |
 | [0040](0040-torrent-streaming.md) | Torrent streaming: anacrolix/torrent in-process, a loopback link for mpv, our own capped cache, off until turned on | 2026-10-30 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

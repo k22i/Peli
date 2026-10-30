@@ -7,7 +7,7 @@ metadata:
 
 #65 (ADR-0039 "Next episode (#65)"): the card shows from 90 % of ≥ 60 s (the watched point, as the user asked) and counts down to the **end of the file**; eof or Play now plays the next episode in the same mpv session, Cancel leaves at the end as before. `usePreparedNext` asks/ranks/resolves the next episode's top pick in advance (settles 500 ms after every addon answered). Torrents are **never opened in advance** (one torrent at a time: it would stop the one playing). No stream / failure → stream picker for the next episode replaces /player.
 
-**Why:** the user commented on #65 "start the countdown when the episode is marked as watched"; no outro markers until #69.
+**Why:** the user commented on #65 "start the countdown when the episode is marked as watched"; since #69 the card waits for credits that start after 90 % ([[skip-markers]]).
 
 **How to apply:**
 - `PlayerPage` owns the session (Stop, torrent Release via the last real `playing.source`, since leaving re-renders it once with the next screen's state); `PlayerFile` is keyed by `source.url`, so per-file state resets. A new file = `navigate({to: "/player", replace: true, state})` with new `watching`/`resumedAt`/`subtitles`.

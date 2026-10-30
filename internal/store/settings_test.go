@@ -20,7 +20,7 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(anna.ID)), DefaultProfileSettings())
 	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
-	equal(t, DefaultDeviceSettings(), DeviceSettings{HardwareDecoding: true, TorrentCacheGB: 5})
+	equal(t, DefaultDeviceSettings(), DeviceSettings{HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))
 	check(t, s.SaveDeviceSettings(laptop))

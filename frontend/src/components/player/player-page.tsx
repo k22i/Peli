@@ -14,12 +14,20 @@ import {
   Play,
   RotateCcw,
   RotateCw,
+  SkipForward,
   Volume1,
   Volume2,
   VolumeX,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  type ComponentProps,
+  type ReactNode,
+} from "react";
 
 import { NextEpisode } from "@/components/player/next-episode";
 import { SeekBar } from "@/components/player/seek-bar";
@@ -44,6 +52,13 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { streamsQuery } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
+import {
+  segmentAt,
+  skipLabels,
+  skipSegments,
+  useOnlineSegments,
+  type Segment,
+} from "@/lib/markers";
 import { countdownFrom, nextEpisode, type PreparedNext } from "@/lib/next-episode";
 import { streamsPath, streamsSearch } from "@/lib/playback";
 import { repaintWindow } from "@/lib/theme";
@@ -151,6 +166,10 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // media controls (Go, media.go) name what plays from the heading. Streams
 // (or S) lists the film's or episode's other streams, ranked, and plays the
 // one picked from where this one is, as a new file of the screen (#68).
+// Where the file's chapters or IntroDB say an intro, recap or credits are
+// (#69), a button skips them; intros and recaps skip by themselves when the
+// profile says so, once each. With a next episode, the card stands in for
+// Skip credits, and waits for them when they start after the watched mark.
 export function PlayerPage() {
   const queryClient = useQueryClient();
   const playing = useLocation({ select: (location) => location.state.player });
@@ -284,7 +303,12 @@ function PlayerFile() {
   }).data?.meta;
   const next = meta && series ? nextEpisode(meta, series.videoId) : undefined;
   const [cancelled, setCancelled] = useState(false);
-  const from = countdownFrom(state.duration);
+  const onlineSegments = useOnlineSegments(watching);
+  const segments = skipSegments(state.chapters ?? [], onlineSegments, state.duration);
+  const from = countdownFrom(
+    state.duration,
+    segments.find((segment) => segment.kind === "credits")?.start,
+  );
   const counting =
     next !== undefined && from !== undefined && state.position >= from && !cancelled && !error;
   // Play now, or the end: the card hands over what it found.
@@ -528,6 +552,25 @@ function PlayerFile() {
     setStartOverDone(true);
     seek(0);
   };
+  // The segment playing, and those skipped already, by kind and start.
+  const segment = started ? segmentAt(segments, position) : undefined;
+  const skipped = useRef(new Set<string>());
+  const skipSegment = (skipping: Segment) => {
+    skipped.current.add(`${skipping.kind}:${skipping.start}`);
+    seek(skipping.end);
+  };
+  const autoSkip = settings?.skipIntros === true && !dragging;
+  const skipNow = useEffectEvent((skipping: Segment) => {
+    skipSegment(skipping);
+    setNotice({ text: skipping.kind === "recap" ? "Skipped the recap" : "Skipped the intro" });
+  });
+  const autoSkipping = segment && autoSkip && segment.kind !== "credits" ? segment : undefined;
+  const autoKey = autoSkipping && `${autoSkipping.kind}:${autoSkipping.start}`;
+  useEffect(() => {
+    if (!autoSkipping || !autoKey || skipped.current.has(autoKey)) return;
+    skipNow(autoSkipping);
+    // oxlint-disable-next-line react/exhaustive-deps -- once per segment
+  }, [autoKey]);
   const changeVolume = (to: number) => {
     setVolume(to);
     volumer(to);
@@ -1001,6 +1044,20 @@ function PlayerFile() {
           </Button>
         </div>
       )}
+      {segment &&
+        !failure &&
+        !(segment.kind === "credits" && meta && next && (counting || starting)) && (
+          <div {...hold} className="absolute right-6 bottom-28">
+            <Button
+              variant="secondary"
+              className="rounded-full shadow-lg"
+              onClick={() => skipSegment(segment)}
+            >
+              {skipLabels[segment.kind]}
+              <SkipForward className="fill-current" />
+            </Button>
+          </div>
+        )}
       {meta && next && (counting || starting) && (
         <NextEpisode
           profileId={profileId}

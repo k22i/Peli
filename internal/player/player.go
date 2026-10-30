@@ -111,6 +111,9 @@ type State struct {
 	Speed      float64 `json:"speed"`
 	Fullscreen bool    `json:"fullscreen"`
 	Tracks     []Track `json:"tracks"`
+	// Chapters are the file's chapters, in order (#69): their names say
+	// where intros and credits are in some files.
+	Chapters []Chapter `json:"chapters"`
 	// SubtitleDelay is how much later than the file says subtitles show, in
 	// seconds; negative is earlier.
 	SubtitleDelay float64 `json:"subtitleDelay"`
@@ -151,6 +154,13 @@ type Track struct {
 	// Width and Height are a video track's size.
 	Width  int `json:"width,omitempty"`
 	Height int `json:"height,omitempty"`
+}
+
+// Chapter is one of the file's chapters: its name and where it starts, in
+// seconds.
+type Chapter struct {
+	Title string  `json:"title"`
+	Time  float64 `json:"time"`
 }
 
 // Ended says why a file ended by itself.
@@ -283,6 +293,7 @@ var observed = []struct {
 	{"mute", fmtFlag},
 	{"speed", fmtDouble},
 	{"track-list", fmtNode},
+	{"chapter-list", fmtNode},
 	{"hwdec-current", fmtString},
 	{"vo-configured", fmtFlag},
 	{"sub-delay", fmtDouble},
@@ -389,7 +400,10 @@ func NewService(version string) *Service {
 }
 
 func idle(fullscreen bool) State {
-	return State{Volume: 100, Speed: 1, Fullscreen: fullscreen, Tracks: []Track{}, SubtitleSize: "medium"}
+	return State{
+		Volume: 100, Speed: 1, Fullscreen: fullscreen, Tracks: []Track{}, Chapters: []Chapter{},
+		SubtitleSize: "medium",
+	}
 }
 
 // UseWindow puts the service's video in window, and follows its fullscreen
@@ -504,7 +518,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.update(func(st *State) {
 		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
 		st.Time = Time{Position: opts.Start}
-		st.Tracks = []Track{}
+		st.Tracks, st.Chapters = []Track{}, []Chapter{}
 		s.watching, s.reportWhy, s.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
@@ -762,6 +776,7 @@ func (s *Service) Snapshot() State {
 func (s *Service) copyState() State {
 	st := s.state
 	st.Tracks = append([]Track{}, st.Tracks...)
+	st.Chapters = append([]Chapter{}, st.Chapters...)
 	return st
 }
 
@@ -936,6 +951,8 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.Speed = number(v)
 	case "track-list":
 		st.Tracks = tracks(v)
+	case "chapter-list":
+		st.Chapters = chapters(v)
 	case "hwdec-current":
 		st.HWDec, _ = v.(string)
 		if st.HWDec == "no" {
@@ -1119,6 +1136,20 @@ func tracks(v any) []Track {
 			Channels: int(number(m["demux-channel-count"])),
 			Width:    int(number(m["demux-w"])), Height: int(number(m["demux-h"])),
 		})
+	}
+	return out
+}
+
+func chapters(v any) []Chapter {
+	list, _ := v.([]any)
+	out := make([]Chapter, 0, len(list))
+	for _, item := range list {
+		m, _ := item.(map[string]any)
+		if m == nil {
+			continue
+		}
+		title, _ := m["title"].(string)
+		out = append(out, Chapter{Title: title, Time: number(m["time"])})
 	}
 	return out
 }

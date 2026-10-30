@@ -26,10 +26,14 @@ export function nextEpisode(meta: Meta, videoId: string, now = Date.now()): Epis
 }
 
 // Where the countdown starts, in seconds: where the file counts as watched,
-// 90 % of at least a minute (internal/watching). None for a shorter file or
-// one of unknown length.
-export function countdownFrom(duration: number): number | undefined {
-  return duration >= 60 ? duration * 0.9 : undefined;
+// 90 % of at least a minute (internal/watching), or where its credits start
+// when that's later (#69), so the card doesn't cover the last scene. Never
+// before the watched mark: Play now would leave the episode unwatched. None
+// for a shorter file or one of unknown length.
+export function countdownFrom(duration: number, credits?: number): number | undefined {
+  if (duration < 60) return undefined;
+  const watched = duration * 0.9;
+  return credits !== undefined && credits > watched && credits < duration ? credits : watched;
 }
 
 // Asking, ranked and ready to play, or no stream to play. A ready one

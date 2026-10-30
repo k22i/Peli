@@ -20,11 +20,18 @@ type ProfileSettings struct {
 	SubtitleSize     string `json:"subtitleSize"`
 	// "system" follows the OS's captions preference; "on" and "off" override it.
 	Captions string `json:"captions"`
+	// SkipIntros skips intros and recaps without asking, where their times
+	// are known (#69). Credits are always the user's to skip.
+	SkipIntros bool `json:"skipIntros"`
 }
 
 // DeviceSettings belong to this machine, whoever is watching.
 type DeviceSettings struct {
 	HardwareDecoding bool `json:"hardwareDecoding"`
+	// Asking IntroDB where intros and credits are (#69), for files without
+	// chapters that say so. On unless the user turns it off: it tells IntroDB
+	// what's playing, by IMDb id.
+	SkipTimesOnline bool `json:"skipTimesOnline"`
 	// Opt-in crash reports and play outcomes (#90). Off unless the user turns
 	// it on.
 	Diagnostics bool `json:"diagnostics"`
@@ -50,7 +57,7 @@ func DefaultProfileSettings() ProfileSettings {
 
 // DefaultDeviceSettings are the device's settings until they are changed.
 func DefaultDeviceSettings() DeviceSettings {
-	return DeviceSettings{HardwareDecoding: true, TorrentCacheGB: 5}
+	return DeviceSettings{HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5}
 }
 
 // ProfileSettings returns profile id's settings.

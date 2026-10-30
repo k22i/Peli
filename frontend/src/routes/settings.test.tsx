@@ -75,6 +75,7 @@ vi.mock("@bindings/store", () => {
     subtitleLanguage: "",
     subtitleSize: "medium",
     captions: "system",
+    skipIntros: false,
   };
   return {
     Service: {
@@ -86,6 +87,7 @@ vi.mock("@bindings/store", () => {
       DeviceSettings: async () =>
         store.device ?? {
           hardwareDecoding: true,
+          skipTimesOnline: true,
           diagnostics: false,
           torrentStreaming: false,
           torrentCacheGB: 5,

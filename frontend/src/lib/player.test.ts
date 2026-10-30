@@ -121,9 +121,10 @@ describe("loadOptions", () => {
     subtitleSize: "large",
     captions: "system",
   };
+  const profile = { ...settings, skipIntros: false };
 
   it("takes the profile's languages, captions and size", () => {
-    expect(loadOptions(5, settings)).toEqual({ start: 5, ...settings });
+    expect(loadOptions(5, profile)).toEqual({ start: 5, ...settings });
     expect(loadOptions(0, undefined)).toEqual({
       start: 0,
       audioLanguage: "",
@@ -135,7 +136,7 @@ describe("loadOptions", () => {
 
   it("names what it plays, for its progress (#64)", () => {
     const watching = { profileId: 1, contentId: "tt1", contentType: "movie", videoId: "tt1" };
-    expect(loadOptions(5, settings, [], watching)).toEqual({ start: 5, ...settings, watching });
+    expect(loadOptions(5, profile, [], watching)).toEqual({ start: 5, ...settings, watching });
   });
 
   it("keeps the tracks the file was playing", () => {
@@ -143,7 +144,7 @@ describe("loadOptions", () => {
       track({ id: 1, type: "audio", lang: "eng", selected: true }),
       track({ id: 2, type: "sub", lang: "spa", selected: true }),
     ];
-    expect(loadOptions(5, settings, playing)).toMatchObject({
+    expect(loadOptions(5, profile, playing)).toMatchObject({
       audioLanguage: "eng",
       subtitleLanguage: "spa",
       captions: "on",
@@ -151,14 +152,14 @@ describe("loadOptions", () => {
     });
     // Forced subtitles only, or none: captions were off.
     playing[1] = { ...playing[1]!, forced: true };
-    expect(loadOptions(5, settings, playing)).toMatchObject({ captions: "off" });
-    expect(loadOptions(5, settings, playing.slice(0, 1))).toMatchObject({
+    expect(loadOptions(5, profile, playing)).toMatchObject({ captions: "off" });
+    expect(loadOptions(5, profile, playing.slice(0, 1))).toMatchObject({
       subtitleLanguage: "",
       captions: "off",
     });
     // A tag Go wouldn't take is the file's default.
     expect(
-      loadOptions(5, settings, [track({ id: 1, type: "audio", lang: "en-US", selected: true })]),
+      loadOptions(5, profile, [track({ id: 1, type: "audio", lang: "en-US", selected: true })]),
     ).toMatchObject({ audioLanguage: "" });
   });
 });

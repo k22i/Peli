@@ -39,4 +39,11 @@ describe("countdownFrom", () => {
     expect(countdownFrom(59)).toBeUndefined();
     expect(countdownFrom(0)).toBeUndefined();
   });
+
+  it("waits for credits that start after the watched mark", () => {
+    expect(countdownFrom(3000, 2850)).toBe(2850);
+    // Never before it, and not for credits past the end.
+    expect(countdownFrom(3000, 2400)).toBe(2700);
+    expect(countdownFrom(3000, 3000)).toBe(2700);
+  });
 });
