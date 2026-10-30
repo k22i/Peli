@@ -33,6 +33,7 @@ import {
   type StreamSource,
 } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
+import { subtitleTarget } from "@/lib/subtitles";
 import { Torrents, torrentStatusText } from "@/lib/torrent";
 import { cachedTitleMeta, playerHeading, titleMetaQuery } from "@/lib/title";
 
@@ -179,7 +180,7 @@ function Picker({
         clearInterval(watching);
       })
       .then(
-        ({ source }) => {
+        ({ source, attempt }) => {
           if (controller.signal.aborted) return;
           // The player (#60) takes it from here, in the profile's languages
           // (#62); resumeAt is in ms.
@@ -190,7 +191,16 @@ function Picker({
                 to: "/player",
                 state: (state) => ({
                   ...state,
-                  player: { ...playerHeading(details.data?.meta, video, target.title), source },
+                  player: {
+                    ...playerHeading(details.data?.meta, video, target.title),
+                    source,
+                    subtitles: subtitleTarget(
+                      type,
+                      video,
+                      attempt.stream,
+                      names.get(attempt.source) ?? "",
+                    ),
+                  },
                 }),
               });
             },

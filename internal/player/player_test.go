@@ -379,6 +379,7 @@ func TestRedact(t *testing.T) {
 func TestMarshalError(t *testing.T) {
 	for err, want := range map[error]string{
 		ErrInvalid: CodeInvalid, ErrNotPlaying: CodeNotPlaying, ErrUnavailable: CodeUnavailable,
+		ErrSubtitles: CodeSubtitles,
 	} {
 		if got := string(MarshalError(err)); got != `{"code":"`+want+`"}` {
 			t.Errorf("MarshalError(%v) = %s", err, got)

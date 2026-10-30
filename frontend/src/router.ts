@@ -3,6 +3,7 @@ import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/r
 
 import type { Source } from "@bindings/streams";
 import type { PlayTarget } from "@/lib/playback";
+import type { SubtitleTarget } from "@/lib/subtitles";
 import type { TitlePreview } from "@/lib/title";
 import { routeTree } from "@/routeTree.gen";
 
@@ -36,8 +37,14 @@ declare module "@tanstack/react-router" {
     // What the stream picker was opened to play, for its heading (#50).
     play?: PlayTarget;
     // What the player is playing (#60): its heading, the episode under it
-    // (#61), and the source, to ask for again if its link expires.
-    player?: { title: string; episode?: string | undefined; source?: Source };
+    // (#61), the source, to ask for again if its link expires, and what to
+    // ask subtitle addons (#63).
+    player?: {
+      title: string;
+      episode?: string | undefined;
+      source?: Source;
+      subtitles?: SubtitleTarget;
+    };
   }
 
   interface Register {

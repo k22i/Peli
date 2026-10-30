@@ -4,10 +4,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 
 import type * as Runtime from "@wailsio/runtime";
 import type { Ended, State, Track } from "@bindings/player";
-import type { Profile, ProfileSettings } from "@bindings/store";
+import type { Addon, Profile, ProfileSettings } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Status } from "@bindings/torrent";
+import opensubtitlesManifest from "@/lib/addon-protocol/fixtures/opensubtitles/manifest.json";
+import opensubtitlesMovie from "@/lib/addon-protocol/fixtures/opensubtitles/subtitles-movie.json";
 import { idleState } from "@/lib/player";
+import type { SubtitleTarget } from "@/lib/subtitles";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -25,6 +28,10 @@ const mocks = vi.hoisted(() => ({
   setSubtitleTrack: vi.fn<(id: number) => Promise<void>>(),
   setSubtitleDelay: vi.fn<(delay: number) => Promise<void>>(),
   setSubtitleSize: vi.fn<(size: string) => Promise<void>>(),
+  addSubtitle: vi.fn<(sub: { url: string; lang: string; title: string }) => Promise<number>>(),
+  systemCaptions: vi.fn<() => Promise<boolean>>(),
+  addons: vi.fn<() => Promise<Addon[]>>(),
+  settings: vi.fn<() => Promise<ProfileSettings>>(),
   saveSettings: vi.fn<(id: number, settings: ProfileSettings) => Promise<void>>(),
   resolve: vi.fn<(request: Request) => Promise<Source>>(),
   torrentStatus: vi.fn<() => Promise<Status>>(),
@@ -60,6 +67,8 @@ vi.mock("@bindings/player", () => ({
     SetSubtitleTrack: mocks.setSubtitleTrack,
     SetSubtitleDelay: mocks.setSubtitleDelay,
     SetSubtitleSize: mocks.setSubtitleSize,
+    AddSubtitle: mocks.addSubtitle,
+    SystemCaptions: mocks.systemCaptions,
   },
 }));
 
@@ -74,8 +83,9 @@ vi.mock("@bindings/store", () => ({
   Service: {
     Profiles: () => Promise.resolve([kevin]),
     CurrentProfile: () => Promise.resolve(kevin),
-    ProfileSettings: () => Promise.resolve(japanese),
+    ProfileSettings: mocks.settings,
     SaveProfileSettings: mocks.saveSettings,
+    Addons: mocks.addons,
   },
 }));
 
@@ -127,12 +137,15 @@ const torrent: Source = {
   size: 1,
 };
 
-async function openPlayer(episode?: string, played = source) {
+async function openPlayer(episode?: string, played = source, subtitles?: SubtitleTarget) {
   const app = await renderApp("/library", { shell: false });
   await act(() =>
     app.router.navigate({
       to: "/player",
-      state: (state) => ({ ...state, player: { title: "The Film", episode, source: played } }),
+      state: (state) => ({
+        ...state,
+        player: { title: "The Film", episode, source: played, ...(subtitles && { subtitles }) },
+      }),
     }),
   );
   await screen.findByRole("heading", { name: "The Film" });
@@ -163,6 +176,10 @@ beforeEach(() => {
   ]) {
     call.mockReset().mockResolvedValue(undefined);
   }
+  mocks.addSubtitle.mockReset().mockResolvedValue(10);
+  mocks.systemCaptions.mockReset().mockResolvedValue(false);
+  mocks.addons.mockReset().mockResolvedValue([]);
+  mocks.settings.mockReset().mockResolvedValue(japanese);
   mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
   mocks.release.mockReset().mockResolvedValue(undefined);
   mocks.torrentStatus.mockReset().mockResolvedValue({
@@ -553,6 +570,186 @@ describe("player", () => {
       subtitleLanguage: "eng",
       captions: "on",
     });
+  });
+});
+
+describe("addon subtitles", () => {
+  const opensubtitles: Addon = {
+    url: "https://opensubtitles-v3.strem.io/manifest.json",
+    name: "OpenSubtitles v3",
+    enabled: true,
+  };
+  const asked =
+    "https://opensubtitles-v3.strem.io/subtitles/movie/tt0111161/filename=film.mkv.json";
+  const target: SubtitleTarget = {
+    type: "movie",
+    id: "tt0111161",
+    extra: { filename: "film.mkv" },
+  };
+  const firstEnglish = opensubtitlesMovie.subtitles[0]!.url;
+
+  // Serves OpenSubtitles' manifest and its answer for the film.
+  function serve(answer: unknown = opensubtitlesMovie) {
+    mocks.addons.mockResolvedValue([opensubtitles]);
+    const fetch = vi.fn<(url: string) => Promise<Response>>(async (url) => {
+      if (url === opensubtitles.url) return Response.json(opensubtitlesManifest);
+      if (url === asked) return Response.json(answer);
+      return new Response("", { status: 503 });
+    });
+    vi.stubGlobal("fetch", fetch);
+    return fetch;
+  }
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  // Japanese audio only: no subtitles of its own.
+  const japaneseAudio = [track({ id: 1, type: "audio", lang: "jpn", selected: true })];
+  const japaneseOnly: State = { ...playing, tracks: japaneseAudio };
+
+  it("adds the first in the profile's language when the file has none", async () => {
+    const fetch = serve();
+    await openPlayer(undefined, source, target);
+    emit("player:state", japaneseOnly);
+
+    await waitFor(() =>
+      expect(mocks.addSubtitle).toHaveBeenCalledExactlyOnceWith({
+        url: firstEnglish,
+        lang: "en",
+        title: "OpenSubtitles v3",
+      }),
+    );
+    expect(fetch).toHaveBeenCalledWith(asked, expect.anything());
+    // Not saved: nobody picked it.
+    expect(mocks.saveSettings).not.toHaveBeenCalled();
+  });
+
+  it("leaves the file's own subtitles in the language alone", async () => {
+    serve();
+    await openPlayer(undefined, source, target);
+    emit("player:state", { ...playing, tracks: tracksSelecting(1, 4) });
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Subtitles" }));
+    await within(await screen.findByRole("menu")).findByRole("menuitem", { name: "English3" });
+    expect(mocks.addSubtitle).not.toHaveBeenCalled();
+  });
+
+  it("follows the OS when captions are System", async () => {
+    serve();
+    mocks.settings.mockResolvedValue({ ...japanese, captions: "system" });
+    await openPlayer(undefined, source, target);
+    emit("player:state", japaneseOnly);
+    // The menu lists them, but none is added.
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Subtitles" }));
+    await within(await screen.findByRole("menu")).findByRole("menuitem", { name: "English3" });
+    expect(mocks.addSubtitle).not.toHaveBeenCalled();
+  });
+
+  it("adds them when the OS asks for captions", async () => {
+    serve();
+    mocks.settings.mockResolvedValue({ ...japanese, captions: "system" });
+    mocks.systemCaptions.mockResolvedValue(true);
+    await openPlayer(undefined, source, target);
+    emit("player:state", japaneseOnly);
+    await waitFor(() => expect(mocks.addSubtitle).toHaveBeenCalledTimes(1));
+  });
+
+  it("lists them by language and adds the one picked, keeping its language", async () => {
+    serve();
+    await openPlayer(undefined, source, target);
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Subtitles" }));
+    const menu = await screen.findByRole("menu");
+    const languages = await within(menu).findAllByRole("menuitem", {
+      name: /English|Portuguese|Croatian/,
+    });
+    // The profile's language first.
+    expect(languages.map((item) => item.textContent)).toEqual([
+      "English3",
+      "Brazilian Portuguese4",
+      "Croatian1",
+    ]);
+
+    // Base UI's submenus open from the keyboard in jsdom.
+    languages[1]!.focus();
+    await user.keyboard("{ArrowRight}");
+    const portuguese = await screen.findByRole("menu", { name: "Brazilian Portuguese4" });
+    await user.click(
+      within(portuguese).getByRole("menuitemradio", {
+        name: /The\.Shawshank\.Redemption\.1994.*PT-BR\.srt/,
+      }),
+    );
+    expect(mocks.addSubtitle).toHaveBeenLastCalledWith({
+      url: opensubtitlesMovie.subtitles[4]!.url,
+      lang: "pt",
+      title: "OpenSubtitles v3",
+    });
+    await waitFor(() =>
+      expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
+        ...japanese,
+        subtitleLanguage: "pt",
+      }),
+    );
+  });
+
+  it("keeps the language of the file's own subtitles picked", async () => {
+    await openPlayer();
+    emit("player:state", {
+      ...withTracks,
+      tracks: [...tracksSelecting(1, 0), track({ id: 5, type: "sub", lang: "jpn" })],
+    });
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Subtitles" }));
+    await user.click(
+      within(await screen.findByRole("menu")).getByRole("menuitemradio", { name: "Japanese" }),
+    );
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(5);
+    await waitFor(() =>
+      expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
+        ...japanese,
+        subtitleLanguage: "ja",
+      }),
+    );
+  });
+
+  it("shows the subtitles menu for addon subtitles alone, and adds them again after a retry", async () => {
+    serve();
+    await openPlayer(undefined, source, target);
+    emit("player:state", japaneseOnly);
+    await waitFor(() => expect(mocks.addSubtitle).toHaveBeenCalledTimes(1));
+    const added = track({ id: 10, type: "sub", lang: "en", external: true, selected: true });
+    emit("player:state", { ...japaneseOnly, tracks: [...japaneseAudio, added] });
+    expect(await screen.findByRole("button", { name: "Subtitles" })).toBeInTheDocument();
+
+    emit("player:state", playing);
+    emit("player:ended", { reason: "error", code: "failed" } satisfies Ended);
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Try again" }));
+    expect(mocks.load).toHaveBeenLastCalledWith(
+      source,
+      expect.objectContaining({ subtitleLanguage: "en", captions: "on" }),
+    );
+    emit("player:state", japaneseOnly);
+    await waitFor(() => expect(mocks.addSubtitle).toHaveBeenCalledTimes(2));
+    expect(mocks.addSubtitle).toHaveBeenLastCalledWith(
+      expect.objectContaining({ url: firstEnglish }),
+    );
+  });
+
+  it("says when they can't be loaded", async () => {
+    serve();
+    mocks.addSubtitle.mockRejectedValue(new Error("subtitles"));
+    await openPlayer(undefined, source, target);
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Subtitles" }));
+    const english = await within(await screen.findByRole("menu")).findByRole("menuitem", {
+      name: "English3",
+    });
+    english.focus();
+    await user.keyboard("{ArrowRight}");
+    const list = await screen.findByRole("menu", { name: "English3" });
+    await user.click(within(list).getAllByRole("menuitemradio")[0]!);
+    expect(await screen.findByText("Couldn’t load those subtitles")).toBeInTheDocument();
   });
 });
 

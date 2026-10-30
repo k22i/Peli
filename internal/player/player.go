@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log/slog"
 	"math"
+	"net/http"
 	"os"
 	"regexp"
 	"strconv"
@@ -263,6 +264,8 @@ var options = [][2]string{
 // Service is the Wails service the frontend calls to play a stream.
 type Service struct {
 	userAgent string
+	// http downloads addon subtitles.
+	http *http.Client
 	// newHost makes the video host for a session; nil until UseWindow.
 	newHost func() (host, error)
 	window  *application.WebviewWindow
@@ -292,6 +295,10 @@ type session struct {
 	playing bool   // what host.playing was last told
 	lastErr string // the file's last error-level log message
 	httpErr string // the file's last refused HTTP request, from FFmpeg
+
+	// subDir holds the addon subtitles AddSubtitle added (#63); ops guards
+	// it.
+	subDir string
 }
 
 // NewService returns a Service that sends version in its User-Agent when a
@@ -299,6 +306,7 @@ type session struct {
 func NewService(version string) *Service {
 	return &Service{
 		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		http:      &http.Client{},
 		emit:      func(string, any) {},
 		state:     idle(false),
 	}
@@ -496,6 +504,9 @@ func (s *Service) closeSession(ses *session) {
 	}
 	ses.host.detach()
 	ses.m.destroy()
+	if ses.subDir != "" {
+		_ = os.RemoveAll(ses.subDir)
+	}
 }
 
 // SetPaused pauses or resumes playback.
@@ -904,6 +915,8 @@ func MarshalError(err error) []byte {
 		code = CodeInvalid
 	case errors.Is(err, ErrNotPlaying):
 		code = CodeNotPlaying
+	case errors.Is(err, ErrSubtitles):
+		code = CodeSubtitles
 	}
 	data, _ := json.Marshal(map[string]string{"code": code})
 	return data

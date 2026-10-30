@@ -31,6 +31,9 @@ import {
   MenuRadioItem,
   MenuSeparator,
   MenuShortcut,
+  MenuSub,
+  MenuSubPopup,
+  MenuSubTrigger,
   MenuTrigger,
 } from "@/components/ui/menu";
 import { Spinner } from "@/components/ui/spinner";
@@ -58,6 +61,13 @@ import {
   useSaveProfileSettings,
   type ProfileSettings,
 } from "@/lib/settings";
+import {
+  autoSubtitle,
+  byLanguage,
+  subtitleLanguage,
+  useAddonSubtitles,
+  type AddonSubtitle,
+} from "@/lib/subtitles";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -99,7 +109,10 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // torrent (#55) shows its peers, speed and buffer at the top, and under the
 // spinner while it waits for pieces. The Audio and Subtitles menus (#62)
 // switch tracks, size subtitles (saved as the profile's size) and time them,
-// as do Z (earlier) and X (later).
+// as do Z (earlier) and X (later). Subtitles from addons (#63) are listed by
+// language under the file's own; one in the profile's language is added by
+// itself when captions are on and the file has none in it. The language of
+// subtitles picked here becomes the profile's.
 export function PlayerPage() {
   const router = useRouter();
   const navigate = useNavigate();
@@ -125,6 +138,22 @@ export function PlayerPage() {
     if (state.tracks?.length) lastTracks.current = state.tracks;
   }, [state.tracks]);
   const tracks = state.tracks ?? [];
+  const target = useLocation({ select: (location) => location.state.player?.subtitles });
+  const addonSubtitles = useAddonSubtitles(profileId, target);
+  const systemCaptions = useQuery({
+    queryKey: ["player", "system-captions"],
+    queryFn: () => Player.SystemCaptions(),
+  }).data;
+  // Each time this screen loads the file again (a retry, a fresh link), mpv
+  // drops the subtitles added to it: the addon ones added to this load, by
+  // key, and the one showing, to add again to the next.
+  const [added, setAdded] = useState<{ load: number; ids: ReadonlyMap<string, number> }>({
+    load: 0,
+    ids: new Map(),
+  });
+  const showingAddon = useRef<AddonSubtitle>(undefined);
+  const autoDone = useRef(false);
+  const readdedFor = useRef(0);
 
   const [paused, setPaused] = useAhead(state.paused, same);
   const [position, setPosition] = useAhead(state.position, near);
@@ -160,6 +189,7 @@ export function PlayerPage() {
     return () => clearTimeout(timer);
   }, [notice]);
 
+  const reloaded = () => setAdded(({ load }) => ({ load: load + 1, ids: new Map() }));
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
   // Leaving the screen, however it happens, ends the session, and lets the
   // torrent go once mpv no longer reads it.
@@ -192,6 +222,7 @@ export function PlayerPage() {
       reloadExpired(expired, loadOptions(state.position, settings, lastTracks.current)).then(
         (fresh) => {
           source.current = fresh;
+          reloaded();
         },
         () => setError(ended),
       );
@@ -208,6 +239,7 @@ export function PlayerPage() {
       if (ended.code === "expired" && !isTorrentSource(current))
         source.current = await reloadExpired(current, options);
       else await Player.Load(current, options);
+      reloaded();
       setError(undefined);
     } catch {
       // Still failed: the overlay stays.
@@ -246,10 +278,81 @@ export function PlayerPage() {
     setAudioId(id);
     Player.SetAudioTrack(id).catch(() => {});
   };
+  // The profile's subtitle language from now on: what the user picked.
+  const rememberLanguage = (code: string) => {
+    if (code && settings && settings.subtitleLanguage !== code)
+      saveSettings.mutate({ ...settings, subtitleLanguage: code } satisfies ProfileSettings);
+  };
   const pickSubtitles = (id: number) => {
+    autoDone.current = true;
     setSubtitleId(id);
     Player.SetSubtitleTrack(id).catch(() => {});
+    const track = subtitleTracks.find((each) => each.id === id);
+    if (track && !track.forced) rememberLanguage(subtitleLanguage(track.lang).code);
   };
+  // Adds an addon's subtitles, or shows them if they were added already.
+  const addSubtitles = (subtitle: AddonSubtitle, picked: boolean) => {
+    if (picked) {
+      autoDone.current = true;
+      rememberLanguage(subtitle.code);
+    }
+    const id = added.ids.get(subtitle.key);
+    if (id) {
+      setSubtitleId(id);
+      Player.SetSubtitleTrack(id).catch(() => {});
+      return;
+    }
+    const load = added.load;
+    if (picked) setNotice({ text: "Loading subtitles…" });
+    Player.AddSubtitle({ url: subtitle.url, lang: subtitle.code, title: subtitle.addon }).then(
+      (newId) => {
+        setAdded((current) =>
+          current.load === load
+            ? { load, ids: new Map(current.ids).set(subtitle.key, newId) }
+            : current,
+        );
+        setSubtitleId(newId);
+        if (picked) setNotice(undefined);
+      },
+      () => {
+        if (picked) setNotice({ text: "Couldn’t load those subtitles" });
+      },
+    );
+  };
+  const fileReady = ready && !state.loading && tracks.length > 0;
+  const captionsOn =
+    settings?.captions === "on" || (settings?.captions !== "off" && systemCaptions === true);
+  useEffect(() => {
+    if (!fileReady || !settings) return;
+    if (added.load > 0) {
+      // A reload: the addon subtitles that were showing, again.
+      if (readdedFor.current === added.load) return;
+      readdedFor.current = added.load;
+      if (showingAddon.current) addSubtitles(showingAddon.current, false);
+      return;
+    }
+    if (autoDone.current || systemCaptions === undefined) return;
+    const auto = autoSubtitle(
+      addonSubtitles.subtitles,
+      tracks,
+      settings.subtitleLanguage,
+      captionsOn,
+    );
+    if (auto || !addonSubtitles.loading) autoDone.current = true;
+    if (auto) addSubtitles(auto, false);
+  });
+  // Which addon subtitles are showing, to add again after a reload. After
+  // the effect above, which reads the last load's.
+  const addonKey = [...added.ids].find(([, id]) => id === subtitleId)?.[0];
+  useEffect(() => {
+    if (tracks.length === 0) return;
+    showingAddon.current = addonKey
+      ? addonSubtitles.subtitles.find((subtitle) => subtitle.key === addonKey)
+      : undefined;
+  });
+  const languageGroups = byLanguage(addonSubtitles.subtitles, settings?.subtitleLanguage ?? "");
+  const subtitlesMenu =
+    subtitleTracks.length > 0 || addonSubtitles.subtitles.length > 0 || addonSubtitles.loading;
   const timeSubtitles = (to: number) => {
     // In whole steps, so presses add up without float drift.
     const delay = Math.max(-maxSubtitleDelay, Math.min(maxSubtitleDelay, Math.round(to * 10) / 10));
@@ -425,7 +528,7 @@ export function PlayerPage() {
                   </PlayerMenuPopup>
                 </Menu>
               )}
-              {ready && subtitleTracks.length > 0 && (
+              {ready && subtitlesMenu && (
                 <Menu onOpenChange={setMenuOpen}>
                   <MenuTrigger render={<ControlButton label="Subtitles" icon={Captions} />} />
                   <PlayerMenuPopup>
@@ -441,6 +544,49 @@ export function PlayerPage() {
                         ))}
                       </MenuRadioGroup>
                     </MenuGroup>
+                    {(languageGroups.length > 0 || addonSubtitles.loading) && (
+                      <>
+                        <MenuSeparator />
+                        <MenuGroup>
+                          <MenuGroupLabel>From addons</MenuGroupLabel>
+                          {languageGroups.map((group) => (
+                            <MenuSub key={group.language}>
+                              <MenuSubTrigger>
+                                <span className="truncate">{group.label}</span>
+                                <span className="ms-auto text-xs text-muted-foreground tabular-nums">
+                                  {group.subtitles.length}
+                                </span>
+                              </MenuSubTrigger>
+                              <MenuSubPopup className="dark max-w-80 text-foreground">
+                                <MenuRadioGroup
+                                  value={addonKey ?? ""}
+                                  onValueChange={(key: string) => {
+                                    const subtitle = group.subtitles.find(
+                                      (each) => each.key === key,
+                                    );
+                                    if (subtitle) addSubtitles(subtitle, true);
+                                  }}
+                                >
+                                  {group.subtitles.map((subtitle, index) => (
+                                    <AddonSubtitleItem
+                                      key={subtitle.key}
+                                      subtitle={subtitle}
+                                      number={index + 1}
+                                    />
+                                  ))}
+                                </MenuRadioGroup>
+                              </MenuSubPopup>
+                            </MenuSub>
+                          ))}
+                          {addonSubtitles.loading && (
+                            <MenuItem disabled>
+                              <Spinner />
+                              Asking addons…
+                            </MenuItem>
+                          )}
+                        </MenuGroup>
+                      </>
+                    )}
                     <MenuSeparator />
                     <MenuGroup>
                       <MenuGroupLabel>Size</MenuGroupLabel>
@@ -579,6 +725,18 @@ function TrackItem({ track }: { track: Track }) {
       <span className="flex flex-col">
         <span className="truncate">{name}</span>{" "}
         {detail && <span className="truncate text-xs text-muted-foreground">{detail}</span>}
+      </span>
+    </MenuRadioItem>
+  );
+}
+
+// One addon's file: its name, or "English 2" when it has none, and the addon.
+function AddonSubtitleItem({ subtitle, number }: { subtitle: AddonSubtitle; number: number }) {
+  return (
+    <MenuRadioItem value={subtitle.key}>
+      <span className="flex min-w-0 flex-col">
+        <span className="truncate">{subtitle.name || `Subtitles ${number}`}</span>{" "}
+        <span className="truncate text-xs text-muted-foreground">{subtitle.addon}</span>
       </span>
     </MenuRadioItem>
   );
