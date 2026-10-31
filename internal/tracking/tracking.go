@@ -77,8 +77,8 @@ var (
 // since Sinag only uses the device flow; AniList's redirect URL is
 // AniListRedirect.
 const (
-	SimklClientID   = ""
-	AniListClientID = ""
+	SimklClientID   = "8105afefcfd3e6e85301f21b25c4efab4f43d4f8b5b511839c78870f08985261"
+	AniListClientID = "55505"
 )
 
 // Config is what the service is built from.
