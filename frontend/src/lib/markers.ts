@@ -86,6 +86,13 @@ export function segmentAt(segments: readonly Segment[], position: number): Segme
   return segments.find((segment) => position >= segment.start && position < segment.end - 1);
 }
 
+// What the seek bar calls each kind.
+export const segmentNames: Record<string, string> = {
+  intro: "Intro",
+  recap: "Recap",
+  credits: "Credits",
+};
+
 export const skipLabels: Record<string, string> = {
   intro: "Skip intro",
   recap: "Skip recap",

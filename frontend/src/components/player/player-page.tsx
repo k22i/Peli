@@ -859,6 +859,7 @@ function PlayerFile() {
             position={position}
             duration={state.duration}
             buffered={state.buffered}
+            segments={segments}
             playing={!paused && ready}
             onScrub={(to) => ready && seeker({ to, exact: false })}
             onSeek={seek}

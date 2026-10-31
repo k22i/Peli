@@ -1,11 +1,13 @@
 import { Slider } from "@base-ui/react/slider";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
+import { segmentNames, type Segment } from "@/lib/markers";
 import { formatTime } from "@/lib/player";
 import { cn } from "@/lib/utils";
 
-// The seek bar: what's played, what's buffered ahead of it, and the time
-// under the pointer. Dragging scrubs (keyframe seeks, so the picture keeps
+// The seek bar: what's played, what's buffered ahead of it, where the intro,
+// recap and credits are, and the time under the pointer (with the segment's
+// name when it's in one). Dragging scrubs (keyframe seeks, so the picture keeps
 // up) and lands exactly when let go; arrow keys step a second, Page Up and
 // Down ten. Between the ~4 a second time events the played part slides on
 // in a linear transition, so it moves smoothly.
@@ -13,6 +15,7 @@ export function SeekBar({
   position,
   duration,
   buffered,
+  segments,
   playing,
   onScrub,
   onSeek,
@@ -22,6 +25,8 @@ export function SeekBar({
   duration: number;
   // Seconds of cache ahead of position.
   buffered: number;
+  // What there is to skip (skipSegments): marked on the track.
+  segments: readonly Segment[];
   playing: boolean;
   onScrub: (position: number) => void;
   onSeek: (position: number) => void;
@@ -39,6 +44,10 @@ export function SeekBar({
     return Math.min(1, Math.max(0, (event.clientX - box.left) / box.width)) * duration;
   };
   const label = drag ?? hover;
+  const labelSegment =
+    label === undefined
+      ? undefined
+      : segments.find((segment) => label >= segment.start && label < segment.end);
   const start = (value: number) => {
     if (dragging.current === undefined) onDraggingChange(true);
     dragging.current = value;
@@ -91,6 +100,11 @@ export function SeekBar({
             style={{ left: `${percent(label)}%` }}
             className="pointer-events-none absolute bottom-full mb-2 -translate-x-1/2 rounded-md bg-black/80 px-1.5 py-0.5 font-mono text-xs tabular-nums"
           >
+            {labelSegment && (
+              <span className="me-1.5 font-sans text-warning">
+                {segmentNames[labelSegment.kind] ?? labelSegment.kind}
+              </span>
+            )}
             {formatTime(label)}
           </span>
         )}
@@ -106,6 +120,20 @@ export function SeekBar({
               smooth(playing && drag === undefined),
             )}
           />
+          {/* Under the played part, so what's left of one stays marked. */}
+          {known &&
+            segments.map((segment) => (
+              <div
+                key={`${segment.kind}-${segment.start}`}
+                data-testid="segment"
+                data-kind={segment.kind}
+                style={{
+                  left: `${percent(segment.start)}%`,
+                  width: `${percent(segment.end) - percent(segment.start)}%`,
+                }}
+                className="absolute inset-y-0 rounded-full bg-warning"
+              />
+            ))}
           <Slider.Indicator
             className={cn("rounded-full bg-brand", smooth(playing && drag === undefined))}
           />

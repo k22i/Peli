@@ -1454,6 +1454,29 @@ describe("skip intro and credits", () => {
     expect(mocks.segments).toHaveBeenCalledWith({ imdbId: "tt0903747", season: 1, episode: 1 });
   });
 
+  it("marks the intro and credits on the seek bar", async () => {
+    await openPlayer("S1 · E1");
+    emit("player:state", chaptered);
+    const bar = await screen.findByTestId("seek-bar");
+    await waitFor(() => expect(within(bar).getAllByTestId("segment")).toHaveLength(2));
+    const [intro, credits] = within(bar).getAllByTestId("segment");
+    expect(intro).toHaveAttribute("data-kind", "intro");
+    expect(intro!.style.left).toBe("4%");
+    expect(intro!.style.width).toBe("6%");
+    expect(credits).toHaveAttribute("data-kind", "credits");
+    expect(credits!.style.left).toBe("94%");
+    expect(credits!.style.width).toBe("6%");
+
+    // The pointer over one names it.
+    vi.spyOn(bar, "getBoundingClientRect").mockReturnValue(
+      DOMRect.fromRect({ x: 0, y: 0, width: 1000, height: 20 }),
+    );
+    fireEvent.pointerMove(bar, { clientX: 960 });
+    expect(within(bar).getByText("Credits")).toBeInTheDocument();
+    fireEvent.pointerMove(bar, { clientX: 500 });
+    expect(within(bar).queryByText("Credits")).not.toBeInTheDocument();
+  });
+
   it("skips a film's credits to where they end", async () => {
     mocks.segments.mockResolvedValue([{ kind: "credits", start: 7038, end: 7140 }]);
     await openPlayer(undefined, source, undefined, { watching: film });
