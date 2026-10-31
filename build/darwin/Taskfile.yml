@@ -171,7 +171,34 @@ tasks:
         fi
       - cp "{{.BIN_DIR}}/{{.APP_NAME}}" "{{.BIN_DIR}}/{{.APP_NAME}}.app/Contents/MacOS"
       - cp build/darwin/Info.plist "{{.BIN_DIR}}/{{.APP_NAME}}.app/Contents"
+      - task: bundle:libmpv
       - task: '{{if eq OS "darwin"}}codesign:adhoc{{else}}codesign:skip{{end}}'
+
+  bundle:libmpv:
+    summary: Copies our libmpv into the bundle (#92)
+    internal: true
+    platforms: [darwin]
+    # Our LGPL build (build/libmpv) links as @rpath/libmpv.2.dylib: it goes in
+    # Contents/Frameworks, and the binary's rpath moves there from the build
+    # directory that mpv.pc gave it. Any other libmpv (Homebrew's) still runs
+    # locally, but the bundle can't ship (ADR-0003).
+    cmds:
+      - |
+        app="{{.BIN_DIR}}/{{.APP_NAME}}.app/Contents"
+        exe="$app/MacOS/{{.APP_NAME}}"
+        lib=$(otool -L "$exe" | awk '/libmpv/ { print $1 }')
+        case $lib in
+        @rpath/*)
+          dir=$(pkg-config --variable=libdir mpv)
+          mkdir -p "$app/Frameworks"
+          cp "$dir/${lib#@rpath/}" "$app/Frameworks/"
+          install_name_tool -delete_rpath "$dir" "$exe" 2>/dev/null || true
+          install_name_tool -add_rpath @executable_path/../Frameworks "$exe"
+          ;;
+        *)
+          echo "warning: {{.APP_NAME}} links $lib, not Sinag's own libmpv (#92): this bundle can't ship"
+          ;;
+        esac
 
   codesign:adhoc:
     summary: Ad-hoc signs the app bundle (macOS only)

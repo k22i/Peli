@@ -1,0 +1,15 @@
+# #92: the pinned sources of our LGPL libmpv. build.sh refuses a tarball whose
+# SHA-256 differs, and a git source whose tag isn't at the pinned commit.
+# Bump a pin by changing the version, URL and checksum together, then rebuild
+# every target (README.md).
+#
+# name        version    source                                                                                        sha256 or commit
+mpv           0.41.0     https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz                             ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209
+ffmpeg        9.0.2      https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.xz                                               8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e
+# Git, not a tarball: the tarball leaves out the submodules (glad, jinja, fast_float).
+libplacebo    v7.360.1   git+https://code.videolan.org/videolan/libplacebo.git                                         cee9b076f2c63104ccfd497fa79c39a867293ec4
+libass        0.17.5     https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.xz                2dca25c0e0c837ddf00b52011b3f82cac1e4ddd3ad018227806b0c2288864acc
+freetype      2.14.3     https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.xz                     36bc4f1cc413335368ee656c42afca65c5a3987e8768cc28cf11ba775e785a5f
+harfbuzz      14.6.0     https://github.com/harfbuzz/harfbuzz/releases/download/14.6.0/harfbuzz-14.6.0.tar.xz          d07a007327277708a2a73ae437887cdbaf282937f6d03ca5467723e9099af586
+fribidi       1.0.18     https://github.com/fribidi/fribidi/releases/download/v1.0.18/fribidi-1.0.18.tar.xz            1de5e8073d035388b71d0b2d452b1da1f8caeea8a7702997b401fe1b6250727f
+dav1d         1.5.4      https://code.videolan.org/videolan/dav1d/-/archive/1.5.4/dav1d-1.5.4.tar.bz2                  2abfb0c89212e6e4733a54e0ae509ec00a5b845a6360946f918806e14aedb011

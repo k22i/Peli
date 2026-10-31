@@ -106,3 +106,26 @@ func TestLibmpvName(t *testing.T) {
 		t.Error("sinag matched as libmpv")
 	}
 }
+
+// #92: libmpv and each library built into it get a notice, versioned from
+// build/libmpv/sources.txt.
+func TestBuildLibmpv(t *testing.T) {
+	n, err := build(filepath.Join("..", ".."), nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(n.Components) != 1+len(libmpvParts) {
+		t.Fatalf("%d components, want libmpv and %d parts", len(n.Components), len(libmpvParts))
+	}
+	for _, c := range n.Components {
+		if c.Kind != "native" || c.Version == "" || c.Licence == "" || c.Text == "" {
+			t.Errorf("incomplete notice: %+v", dep{Kind: c.Kind, Name: c.Name, Version: c.Version, Licence: c.Licence})
+		}
+		if bad := scan(c.Name, []byte(c.Text)); len(bad) > 0 {
+			t.Errorf("%s: the audit would flag Sinag's own binary: %v", c.Name, bad)
+		}
+	}
+	if !strings.HasPrefix(n.Components[0].Version, "mpv ") {
+		t.Errorf("libmpv version = %q", n.Components[0].Version)
+	}
+}

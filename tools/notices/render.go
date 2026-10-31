@@ -16,7 +16,7 @@ type notices struct {
 }
 
 // build reads Sinag's own LICENSE and adds the components that are not
-// package-manager dependencies.
+// package-manager dependencies: our libmpv and what is built into it (#92).
 func build(root string, deps []dep) (notices, error) {
 	own, err := licenceFile(root)
 	if err != nil {
@@ -26,26 +26,84 @@ func build(root string, deps []dep) (notices, error) {
 	if err != nil {
 		return notices{}, err
 	}
-
-	n := notices{
-		App: dep{Kind: "app", Name: "Sinag", Licence: "MIT", Text: own},
-		Components: append([]dep{{
-			Kind:    "native",
-			Name:    "libmpv and FFmpeg",
-			Version: "",
-			Licence: "LGPL-2.1-or-later",
-			Text:    libmpvNote + "\n\n" + strings.TrimSpace(string(lgpl)),
-		}}, deps...),
+	versions, err := libmpvSources(root)
+	if err != nil {
+		return notices{}, err
 	}
-	return n, nil
+
+	native := []dep{{
+		Kind:    "native",
+		Name:    "libmpv and FFmpeg",
+		Version: fmt.Sprintf("mpv %s, FFmpeg %s", versions["mpv"], versions["ffmpeg"]),
+		Licence: "LGPL-2.1-or-later",
+		Text:    libmpvNote + "\n\n" + strings.TrimSpace(string(lgpl)),
+	}}
+	for _, p := range libmpvParts {
+		text := lgplPart
+		if p.file != "" {
+			b, err := os.ReadFile(filepath.Join(root, "third_party", "licences", p.file))
+			if err != nil {
+				return notices{}, err
+			}
+			text = strings.TrimSpace(string(b))
+		}
+		native = append(native, dep{Kind: "native", Name: p.name, Version: strings.TrimPrefix(versions[p.source], "v"), Licence: p.licence, Text: text})
+	}
+	return notices{
+		App:        dep{Kind: "app", Name: "Sinag", Licence: "MIT", Text: own},
+		Components: append(native, deps...),
+	}, nil
 }
 
-// libmpvNote is the notice that goes with the LGPL text. It must not spell out
-// FFmpeg's GPL configure flags: the audit would find them in Sinag's own binary. #92 adds the
-// pinned versions, the build configuration and the source location.
-const libmpvNote = `Sinag plays video with libmpv, which uses FFmpeg and other libraries. They are licensed under the GNU Lesser General Public License, version 2.1 or later.
+// libmpvSources reads the pinned versions from build/libmpv/sources.txt.
+func libmpvSources(root string) (map[string]string, error) {
+	b, err := os.ReadFile(filepath.Join(root, "build", "libmpv", "sources.txt"))
+	if err != nil {
+		return nil, err
+	}
+	versions := map[string]string{}
+	for _, line := range strings.Split(string(b), "\n") {
+		f := strings.Fields(line)
+		if len(f) >= 2 && !strings.HasPrefix(f[0], "#") {
+			versions[f[0]] = f[1]
+		}
+	}
+	for _, name := range []string{"mpv", "ffmpeg"} {
+		if versions[name] == "" {
+			return nil, fmt.Errorf("build/libmpv/sources.txt: no %s", name)
+		}
+	}
+	for _, p := range libmpvParts {
+		if versions[p.source] == "" {
+			return nil, fmt.Errorf("build/libmpv/sources.txt: no %s", p.source)
+		}
+	}
+	return versions, nil
+}
 
-Sinag ships its own build of libmpv, configured for the LGPL (mpv and FFmpeg both built without their GPL and non-free parts). It is linked dynamically, so you can replace it with your own build of libmpv. The Linux .deb package uses your distribution's libmpv2 instead.
+// libmpvParts are the libraries built into our libmpv besides mpv and FFmpeg
+// (build/libmpv/build.sh). file is their licence text in third_party/licences;
+// the LGPL ones point to the text under libmpv and FFmpeg instead.
+var libmpvParts = []struct{ source, name, licence, file string }{
+	{"libplacebo", "libplacebo", "LGPL-2.1-or-later", ""},
+	{"libass", "libass", "ISC", "libass-COPYING.txt"},
+	{"freetype", "FreeType", "FTL", "freetype-FTL.txt"},
+	{"harfbuzz", "HarfBuzz", "MIT-Modern-Variant", "harfbuzz-COPYING.txt"},
+	{"fribidi", "GNU FriBidi", "LGPL-2.1-or-later", ""},
+	{"dav1d", "dav1d", "BSD-2-Clause", "dav1d-COPYING.txt"},
+}
+
+const lgplPart = `Built into Sinag's libmpv. Licensed under the GNU Lesser General Public License, version 2.1 or later: the complete text is under "libmpv and FFmpeg".`
+
+// libmpvNote is the notice that goes with the LGPL text. It must not spell out
+// FFmpeg's GPL configure flags: the audit would find them in Sinag's own binary.
+const libmpvNote = `Sinag plays video with libmpv, which uses FFmpeg and the other libraries listed after it. libmpv and FFmpeg are licensed under the GNU Lesser General Public License, version 2.1 or later.
+
+Sinag ships its own build of libmpv, configured for the LGPL: mpv is built as the libmpv library only, without its GPL parts, Lua, JavaScript or VapourSynth, and FFmpeg without its GPL, version 3 and non-free parts, keeping only what playback needs (no encoders, muxers or devices). libplacebo, libass, FreeType, HarfBuzz, FriBidi and dav1d are built into the same library. It is linked dynamically, so you can replace it with your own build of libmpv (on macOS, Sinag.app/Contents/Frameworks/libmpv.2.dylib). The Linux .deb package uses your distribution's libmpv2 instead.
+
+The build script, the pinned versions and the checksums of every source are in Sinag's source code under build/libmpv, and each published build of the library comes with the exact sources it was built from.
+
+FreeType: portions of this software are copyright © The FreeType Project (www.freetype.org). All rights reserved.
 
 The complete licence text follows.`
 

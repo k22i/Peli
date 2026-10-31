@@ -1,0 +1,102 @@
+# #92: our own LGPL libmpv (ADR-0003), built from build/libmpv's pinned
+# sources. ci.yml calls this for every run; a build is cached by the hash of
+# build/libmpv, so it only rebuilds when a pin or the script changes. build.sh
+# refuses a GPL configuration; ci.yml's build job audits the app bundle that
+# includes it (#18).
+# Run it by hand with `publish` to put the builds, their checksums and the
+# exact sources on a release that packaging (#88) fetches.
+name: libmpv
+
+on:
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the builds and their sources as a release
+        type: boolean
+        default: false
+      tag:
+        description: Release tag, e.g. libmpv-0.41.0-1 (with publish)
+        type: string
+        default: ""
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Each on its own architecture, so the smoke test runs natively.
+        include:
+          - target: macos-arm64
+            os: macos-15
+          - target: macos-x86_64
+            os: macos-15-intel
+    name: libmpv (${{ matrix.target }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
+            build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz.sha256
+            build/libmpv/.work/sources-${{ matrix.target }}.tar
+          key: libmpv-${{ matrix.target }}-${{ hashFiles('build/libmpv/**') }}
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          brew install nasm
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install meson ninja
+          echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          build/libmpv/build.sh ${{ matrix.target }}
+          # The exact sources, for the LGPL's source offer.
+          tar -C build/libmpv/.work --exclude .git -cf build/libmpv/.work/sources-${{ matrix.target }}.tar downloads src/libplacebo-*
+      - if: steps.cache.outputs.cache-hit == 'true'
+        run: tar -C build/libmpv/.work -xJf build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
+      - run: cat build/libmpv/.work/libmpv-${{ matrix.target }}/BUILD-INFO.txt
+      - run: build/libmpv/smoke.sh build/libmpv/.work/libmpv-${{ matrix.target }}
+      - name: Sizes
+        run: |
+          cd build/libmpv/.work
+          ls -l libmpv-${{ matrix.target }}/lib libmpv-${{ matrix.target }}.tar.xz | tee -a "$GITHUB_STEP_SUMMARY"
+          cat libmpv-${{ matrix.target }}.tar.xz.sha256 | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: libmpv-${{ matrix.target }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
+            build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz.sha256
+            build/libmpv/.work/sources-${{ matrix.target }}.tar
+
+  publish:
+    if: github.event_name == 'workflow_dispatch' && inputs.publish
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          test -n "$TAG" || { echo "publish needs a tag"; exit 1; }
+          cd dist
+          # The sources are the same for every target: publish one copy.
+          mv sources-macos-arm64.tar "sources-$TAG.tar" && rm -f sources-*-*.tar
+          xz -9 "sources-$TAG.tar"
+          sha256sum "sources-$TAG.tar.xz" > "sources-$TAG.tar.xz.sha256"
+          cat ./*.sha256 > SHA256SUMS
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" \
+            --notes "Sinag's LGPL libmpv (#92), built from build/libmpv at $GITHUB_SHA. Checksums in SHA256SUMS." \
+            ./*.tar.xz SHA256SUMS

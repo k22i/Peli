@@ -40,9 +40,10 @@ env:
   # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers,
   # and the player (#60) libmpv's and libepoxy's.
   LINUX_DEPS: build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev libmpv-dev libepoxy-dev
-  # TODO(#92): until our own LGPL builds exist, CI links a third-party
-  # libmpv: the distro's on Linux, Homebrew's on macOS, shinchiro's on
-  # Windows (the M0 spikes' build). Nothing ships it yet.
+  # #92: macOS builds with our own LGPL libmpv (libmpv.yml). TODO(#92):
+  # Windows still links shinchiro's (the M0 spikes' build) until our Windows
+  # build lands; Linux links the distro's, which the .deb depends on anyway
+  # (AppImage and Flatpak are deferred, #103).
   LIBMPV_WIN_TAG: "20261009"
   LIBMPV_WIN_ASSET: mpv-dev-x86_64-20261009-git-36abaa32d0.7z
 
@@ -98,8 +99,13 @@ jobs:
         run: git diff --exit-code THIRD_PARTY_NOTICES.md internal/licences/notices.json
       - run: go run ./tools/notices -audit
 
+  libmpv:
+    if: github.event_name != 'schedule'
+    uses: ./.github/workflows/libmpv.yml
+
   go:
     if: github.event_name != 'schedule'
+    needs: libmpv
     strategy:
       fail-fast: false
       matrix:
@@ -117,9 +123,16 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends $LINUX_DEPS
-      # TODO(#92): fetch our pinned LGPL libmpv here instead.
+      # #92: our own LGPL libmpv, from the libmpv job.
       - if: runner.os == 'macOS'
-        run: brew install mpv
+        uses: actions/download-artifact@v4
+        with:
+          name: libmpv-${{ runner.arch == 'ARM64' && 'macos-arm64' || 'macos-x86_64' }}
+          path: ${{ runner.temp }}/libmpv
+      - if: runner.os == 'macOS'
+        run: |
+          tar -C "$RUNNER_TEMP/libmpv" -xJf "$RUNNER_TEMP"/libmpv/libmpv-macos-*.tar.xz
+          echo "PKG_CONFIG_PATH=$(echo "$RUNNER_TEMP"/libmpv/libmpv-macos-*/lib/pkgconfig)" >> "$GITHUB_ENV"
       - if: runner.os == 'Windows'
         name: Fetch libmpv
         env:
@@ -167,6 +180,7 @@ jobs:
 
   build:
     if: github.event_name != 'schedule'
+    needs: libmpv
     strategy:
       fail-fast: false
       matrix:
@@ -201,9 +215,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends $LINUX_DEPS
       - run: go install "$WAILS3"
-      # TODO(#92): fetch our pinned LGPL libmpv here instead.
+      # #92: our own LGPL libmpv, from the libmpv job.
       - if: runner.os == 'macOS'
-        run: brew install mpv
+        uses: actions/download-artifact@v4
+        with:
+          name: libmpv-${{ runner.arch == 'ARM64' && 'macos-arm64' || 'macos-x86_64' }}
+          path: ${{ runner.temp }}/libmpv
+      - if: runner.os == 'macOS'
+        run: |
+          tar -C "$RUNNER_TEMP/libmpv" -xJf "$RUNNER_TEMP"/libmpv/libmpv-macos-*.tar.xz
+          echo "PKG_CONFIG_PATH=$(echo "$RUNNER_TEMP"/libmpv/libmpv-macos-*/lib/pkgconfig)" >> "$GITHUB_ENV"
       - if: runner.os == 'Windows'
         name: Fetch libmpv
         env:
@@ -235,6 +256,12 @@ jobs:
           grep -Eq -- "-tags=production,nosqlite" buildinfo.txt
           ! grep -q go-llsqlite buildinfo.txt
           ls -l bin
+      # #92: the bundle carries our libmpv and loads it from there.
+      - if: runner.os == 'macOS'
+        run: |
+          ls -l bin/sinag.app/Contents/Frameworks/libmpv.2.dylib
+          otool -L bin/sinag.app/Contents/MacOS/sinag | grep -q '@rpath/libmpv.2.dylib'
+          test "$(otool -l bin/sinag.app/Contents/MacOS/sinag | awk '/LC_RPATH/ { f = 1 } f && / path / { print $2; f = 0 }')" = "@executable_path/../Frameworks"
       - if: runner.os == 'macOS'
         run: cd bin && ditto -c -k --keepParent sinag.app sinag.app.zip
       - uses: actions/upload-artifact@v4
@@ -277,9 +304,6 @@ jobs:
           # Ubuntu 24.04 blocks unprivileged user namespaces through AppArmor,
           # which WebKitGTK's sandbox needs.
           sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-      # TODO(#92): fetch our pinned LGPL libmpv here instead.
-      - if: runner.os == 'macOS'
-        run: brew install mpv
       - if: runner.os == 'Windows'
         name: Fetch libmpv
         env:

@@ -33,6 +33,7 @@ libmpv is the one LGPL component, and it is how the app stays MIT ([ADR-0003](do
 
 - Every package that bundles libmpv ships **our own LGPL build** (`-Dgpl=false`, FFmpeg without `--enable-gpl` or `--enable-nonfree`), **dynamically linked** so users can swap it.
 - Never bundle shinchiro's, Homebrew's or Debian's builds. They are GPL.
+- Our build is in [`build/libmpv`](build/libmpv/README.md) ([ADR-0041](docs/adr/0041-our-libmpv-build.md)), and CI's macOS jobs use it. Homebrew's mpv is fine for local development: `wails3 package` warns that such a bundle can't ship.
 - The `.deb` depends on the distro's `libmpv2` and bundles nothing.
 - `go run ./tools/notices -audit -bundle <dir>` scans a release bundle for GPL or non-free FFmpeg builds. Run it on every package before release.
 
