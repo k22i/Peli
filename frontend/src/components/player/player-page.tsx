@@ -11,6 +11,7 @@ import {
   Maximize,
   Minimize,
   Pause,
+  PictureInPicture2,
   Play,
   RotateCcw,
   RotateCw,
@@ -170,6 +171,9 @@ const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", l
 // (#69), a button skips them; intros and recaps skip by themselves when the
 // profile says so, once each. With a next episode, the card stands in for
 // Skip credits, and waits for them when they start after the watched mark.
+// Mini player (or I) makes the window small and keeps it above other
+// windows (#70; Go's SetMini): the controls shrink to play, mute and the
+// seek bar, and a double click or Esc makes it the app window again.
 export function PlayerPage() {
   const queryClient = useQueryClient();
   const playing = useLocation({ select: (location) => location.state.player });
@@ -248,6 +252,7 @@ function PlayerFile() {
   const [volume, setVolume] = useAhead(state.volume, near);
   const [muted, setMuted] = useAhead(state.muted, same);
   const [fullscreen, setFullscreen] = useAhead(state.fullscreen, same);
+  const [mini, setMini] = useAhead(state.mini, same);
   const audioTracks = tracks.filter((track) => track.type === "audio");
   const subtitleTracks = tracks.filter((track) => track.type === "sub");
   const [audioId, setAudioId] = useAhead(selectedId(audioTracks), same);
@@ -523,7 +528,12 @@ function PlayerFile() {
       if (pickAbort.current === controller) pickAbort.current = null;
     }
   };
+  // The switcher needs the app window: the mini player leaves for it.
   const openSwitcher = () => {
+    if (mini) {
+      setMini(false);
+      Player.SetMini(false).catch(() => {});
+    }
     setSwitchStatus(undefined);
     setSwitcherOpen(true);
   };
@@ -582,7 +592,19 @@ function PlayerFile() {
   };
   const toggleFullscreen = () => {
     setFullscreen(!fullscreen);
+    if (!fullscreen) setMini(false);
     Player.SetFullscreen(!fullscreen).catch(() => {});
+  };
+  // The mini player has no room for the shortcuts or the switcher.
+  const toggleMini = () => {
+    if (!mini && !ready) return;
+    setMini(!mini);
+    if (!mini) {
+      setFullscreen(false);
+      setHelpOpen(false);
+      setSwitcherOpen(false);
+    }
+    Player.SetMini(!mini).catch(() => {});
   };
   const pickAudio = (id: number) => {
     setAudioId(id);
@@ -732,12 +754,14 @@ function PlayerFile() {
         k: togglePause,
         m: toggleMute,
         f: toggleFullscreen,
+        i: toggleMini,
         c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
         s: () => watching && openSwitcher(),
-        "?": () => setHelpOpen(!helpOpen),
+        "?": () => !mini && setHelpOpen(!helpOpen),
         escape: () => {
           if (helpOpen) setHelpOpen(false);
+          else if (mini) toggleMini();
           else if (fullscreen) toggleFullscreen();
           else leave();
         },
@@ -780,15 +804,16 @@ function PlayerFile() {
       onPointerMove={wake}
       onPointerDown={wake}
     >
-      {/* The video itself: a click pauses, a double click goes fullscreen.
-          The Play button below is the one to reach by keyboard. */}
+      {/* The video itself: a click pauses, a double click goes fullscreen
+          (or, from the mini player, back to the app window). The Play
+          button below is the one to reach by keyboard. */}
       <button
         type="button"
         tabIndex={-1}
         aria-hidden
         className={cn("absolute inset-0 outline-none", shown ? "cursor-default" : "cursor-none")}
         onClick={togglePause}
-        onDoubleClick={toggleFullscreen}
+        onDoubleClick={mini ? toggleMini : toggleFullscreen}
       />
       <div
         data-testid="controls"
@@ -798,10 +823,14 @@ function PlayerFile() {
           shown ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >
-        {/* Room for the macOS traffic lights, and a drag strip. */}
+        {/* Room for the macOS traffic lights, and a drag strip. The mini
+            player hides the traffic lights. */}
         <div
           {...hold}
-          className="absolute inset-x-0 top-0 flex h-20 items-start gap-2 bg-linear-to-b from-black/70 to-transparent pt-3 pr-4 pl-20 drag-region"
+          className={cn(
+            "absolute inset-x-0 top-0 flex items-start gap-2 bg-linear-to-b from-black/70 to-transparent drag-region",
+            mini ? "h-16 pt-2 pr-3 pl-2" : "h-20 pt-3 pr-4 pl-20",
+          )}
         >
           <ControlButton label="Back" icon={ChevronLeft} onClick={leave} />
           <div className="flex min-w-0 flex-col pt-1">
@@ -810,7 +839,7 @@ function PlayerFile() {
               <p className="truncate text-xs text-white/70">{playing.episode}</p>
             )}
           </div>
-          {torrentStatus?.active && (
+          {torrentStatus?.active && !mini && (
             <p
               aria-label="Torrent status"
               className="ms-auto shrink-0 pt-1.5 font-mono text-xs text-white/70 tabular-nums"
@@ -821,7 +850,10 @@ function PlayerFile() {
         </div>
         <div
           {...hold}
-          className="absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-linear-to-t from-black/80 via-black/40 to-transparent px-6 pt-16 pb-4"
+          className={cn(
+            "absolute inset-x-0 bottom-0 flex flex-col gap-1 bg-linear-to-t from-black/80 via-black/40 to-transparent",
+            mini ? "px-3 pt-10 pb-1" : "px-6 pt-16 pb-4",
+          )}
         >
           <SeekBar
             position={position}
@@ -841,22 +873,26 @@ function PlayerFile() {
               disabled={!ready}
               fill
             />
-            <ControlButton
-              label="Back 10 seconds"
-              icon={RotateCcw}
-              aria-keyshortcuts="ArrowLeft"
-              onClick={() => seek(position - skip)}
-              disabled={!ready || !known}
-              badge={skip}
-            />
-            <ControlButton
-              label="Forward 10 seconds"
-              icon={RotateCw}
-              aria-keyshortcuts="ArrowRight"
-              onClick={() => seek(position + skip)}
-              disabled={!ready || !known}
-              badge={skip}
-            />
+            {!mini && (
+              <>
+                <ControlButton
+                  label="Back 10 seconds"
+                  icon={RotateCcw}
+                  aria-keyshortcuts="ArrowLeft"
+                  onClick={() => seek(position - skip)}
+                  disabled={!ready || !known}
+                  badge={skip}
+                />
+                <ControlButton
+                  label="Forward 10 seconds"
+                  icon={RotateCw}
+                  aria-keyshortcuts="ArrowRight"
+                  onClick={() => seek(position + skip)}
+                  disabled={!ready || !known}
+                  badge={skip}
+                />
+              </>
+            )}
             <div className="group/volume flex items-center">
               <ControlButton
                 label={muted ? "Unmute" : "Mute"}
@@ -883,12 +919,17 @@ function PlayerFile() {
               </Slider.Root>
             </div>
             {known && (
-              <p className="ms-2 font-mono text-xs text-white/80 tabular-nums">
+              <p
+                className={cn(
+                  "font-mono text-xs text-white/80 tabular-nums",
+                  mini ? "ms-1 truncate" : "ms-2",
+                )}
+              >
                 {formatTime(position)} / {formatTime(state.duration)}
               </p>
             )}
             <div className="ms-auto flex items-center gap-1">
-              {ready && audioTracks.length > 1 && (
+              {ready && !mini && audioTracks.length > 1 && (
                 <Menu onOpenChange={setMenuOpen}>
                   <MenuTrigger render={<ControlButton label="Audio" icon={AudioLines} />} />
                   <PlayerMenuPopup>
@@ -903,7 +944,7 @@ function PlayerFile() {
                   </PlayerMenuPopup>
                 </Menu>
               )}
-              {ready && subtitlesMenu && (
+              {ready && !mini && subtitlesMenu && (
                 <Menu onOpenChange={setMenuOpen}>
                   <MenuTrigger render={<ControlButton label="Subtitles" icon={Captions} />} />
                   <PlayerMenuPopup>
@@ -1004,7 +1045,7 @@ function PlayerFile() {
                   </PlayerMenuPopup>
                 </Menu>
               )}
-              {watching && (
+              {watching && !mini && (
                 <ControlButton
                   label="Streams"
                   icon={ListVideo}
@@ -1013,24 +1054,35 @@ function PlayerFile() {
                   aria-expanded={switcherOpen}
                 />
               )}
+              {!mini && (
+                <ControlButton
+                  label="Keyboard shortcuts"
+                  icon={Keyboard}
+                  onClick={() => setHelpOpen(!helpOpen)}
+                  aria-keyshortcuts="Shift+?"
+                  aria-expanded={helpOpen}
+                />
+              )}
               <ControlButton
-                label="Keyboard shortcuts"
-                icon={Keyboard}
-                onClick={() => setHelpOpen(!helpOpen)}
-                aria-keyshortcuts="Shift+?"
-                aria-expanded={helpOpen}
+                label={mini ? "Exit mini player" : "Mini player"}
+                icon={PictureInPicture2}
+                onClick={toggleMini}
+                aria-keyshortcuts="I"
+                disabled={!mini && !ready}
               />
-              <ControlButton
-                label={fullscreen ? "Exit full screen" : "Full screen"}
-                icon={fullscreen ? Minimize : Maximize}
-                onClick={toggleFullscreen}
-                aria-keyshortcuts="F"
-              />
+              {!mini && (
+                <ControlButton
+                  label={fullscreen ? "Exit full screen" : "Full screen"}
+                  icon={fullscreen ? Minimize : Maximize}
+                  onClick={toggleFullscreen}
+                  aria-keyshortcuts="F"
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
-      {offerStartOver && !failure && (
+      {offerStartOver && !failure && !mini && (
         <div
           {...hold}
           className="absolute bottom-28 left-6 flex items-center gap-3 rounded-full bg-black/70 py-1.5 ps-4 pe-1.5 text-sm"
@@ -1047,7 +1099,10 @@ function PlayerFile() {
       {segment &&
         !failure &&
         !(segment.kind === "credits" && meta && next && (counting || starting)) && (
-          <div {...hold} className="absolute right-6 bottom-28">
+          <div
+            {...hold}
+            className={cn("absolute", mini ? "right-3 bottom-16" : "right-6 bottom-28")}
+          >
             <Button
               variant="secondary"
               className="rounded-full shadow-lg"
@@ -1067,6 +1122,7 @@ function PlayerFile() {
           remaining={Math.max(0, state.duration - state.position)}
           share={from === undefined ? 0 : (state.position - from) / (state.duration - from)}
           starting={starting}
+          mini={mini}
           onPlay={() => setStarting(true)}
           onCancel={() => setCancelled(true)}
           onStart={(prepared) => void playNext(prepared)}
@@ -1087,11 +1143,14 @@ function PlayerFile() {
           onPick={(candidate, names) => void switchStream(candidate, names)}
         />
       )}
-      {helpOpen && !failure && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
+      {helpOpen && !failure && !mini && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
       {notice && !failure && (
         <div
           aria-live="polite"
-          className="pointer-events-none absolute inset-x-0 top-20 flex justify-center"
+          className={cn(
+            "pointer-events-none absolute inset-x-0 flex justify-center",
+            mini ? "top-14" : "top-20",
+          )}
         >
           <p className="rounded-full bg-black/70 px-4 py-1.5 text-sm font-medium">{notice.text}</p>
         </div>

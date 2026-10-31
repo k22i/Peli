@@ -29,6 +29,7 @@ const mocks = vi.hoisted(() => ({
   setVolume: vi.fn<(volume: number) => Promise<void>>(),
   setMuted: vi.fn<(muted: boolean) => Promise<void>>(),
   setFullscreen: vi.fn<(on: boolean) => Promise<void>>(),
+  setMini: vi.fn<(on: boolean) => Promise<void>>(),
   setNowPlaying: vi.fn<(np: { title: string; subtitle: string }) => Promise<void>>(),
   setAudioTrack: vi.fn<(id: number) => Promise<void>>(),
   setSubtitleTrack: vi.fn<(id: number) => Promise<void>>(),
@@ -74,6 +75,7 @@ vi.mock("@bindings/player", () => ({
     SetVolume: mocks.setVolume,
     SetMuted: mocks.setMuted,
     SetFullscreen: mocks.setFullscreen,
+    SetMini: mocks.setMini,
     SetNowPlaying: mocks.setNowPlaying,
     SetAudioTrack: mocks.setAudioTrack,
     SetSubtitleTrack: mocks.setSubtitleTrack,
@@ -208,6 +210,7 @@ beforeEach(() => {
     mocks.setVolume,
     mocks.setMuted,
     mocks.setFullscreen,
+    mocks.setMini,
     mocks.setNowPlaying,
     mocks.setAudioTrack,
     mocks.setSubtitleTrack,
@@ -440,6 +443,37 @@ describe("player", () => {
     await user.keyboard("{Escape}");
     expect(mocks.setFullscreen).toHaveBeenLastCalledWith(false);
     expect(screen.getByRole("heading", { name: "The Film" })).toBeInTheDocument();
+  });
+
+  it("makes the window the mini player and back", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+
+    await user.click(await screen.findByRole("button", { name: "Mini player" }));
+    expect(mocks.setMini).toHaveBeenLastCalledWith(true);
+    emit("player:state", { ...withTracks, mini: true });
+    // Only play, mute and the seek bar fit.
+    expect(screen.getByRole("button", { name: "Pause" })).toBeInTheDocument();
+    expect(screen.getByRole("slider", { name: "Seek" })).toBeInTheDocument();
+    for (const name of ["Subtitles", "Audio", "Full screen", "Keyboard shortcuts"])
+      expect(screen.queryByRole("button", { name })).not.toBeInTheDocument();
+    // No room for the shortcuts.
+    await user.keyboard("?");
+    expect(screen.queryByRole("region", { name: "Keyboard shortcuts" })).not.toBeInTheDocument();
+
+    // Esc leaves the mini player, not the player.
+    await user.keyboard("{Escape}");
+    expect(mocks.setMini).toHaveBeenLastCalledWith(false);
+    emit("player:state", withTracks);
+    expect(screen.getByRole("heading", { name: "The Film" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Full screen" })).toBeInTheDocument();
+
+    await user.keyboard("i");
+    expect(mocks.setMini).toHaveBeenLastCalledWith(true);
+    emit("player:state", { ...withTracks, mini: true });
+    await user.click(screen.getByRole("button", { name: "Exit mini player" }));
+    expect(mocks.setMini).toHaveBeenLastCalledWith(false);
   });
 
   it("Space on a focused button only pauses", async () => {

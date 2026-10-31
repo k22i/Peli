@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 
 // The player's keys (#67), as the help overlay lists them; player-page.tsx
-// handles them. Space, F, M, Z and X are mpv's, K and C YouTube's.
+// handles them. Space, F, M, Z and X are mpv's, K, C and I YouTube's.
 export const playerShortcuts: { group: string; items: { keys: string[]; action: string }[] }[] = [
   {
     group: "Playback",
@@ -15,8 +15,9 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["↑", "↓"], action: "Volume up or down" },
       { keys: ["M"], action: "Mute or unmute" },
       { keys: ["F"], action: "Full screen" },
+      { keys: ["I"], action: "Mini player" },
       { keys: ["S"], action: "Choose another stream" },
-      { keys: ["Esc"], action: "Leave full screen, then the player" },
+      { keys: ["Esc"], action: "Leave the mini player or full screen, then the player" },
     ],
   },
   {

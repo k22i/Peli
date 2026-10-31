@@ -42,6 +42,7 @@ export const idleState: PlayerState = {
   muted: false,
   speed: 1,
   fullscreen: false,
+  mini: false,
   tracks: [],
   chapters: [],
   hwdec: "",

@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-#67 (ADR-0039 "Keys and media controls"): keys live in the one `onKey` listener in `player-page.tsx` (`repeating` and `once` maps); the list the `?` overlay shows is `playerShortcuts` in `components/player/shortcuts.tsx`, so a new key goes in both. Taken: Space/K, ←→, ↑↓, M, F, Esc, A, C, Z/X, ?. Go: `Service.SetNowPlaying({title, subtitle})` (the screen sends its heading; Stop forgets it), `media.go` hands `mediaState` to `mediaControls` (`media_darwin.m` MPNowPlayingInfoCenter/MPRemoteCommandCenter, `media_linux.go` MPRIS via godbus, Windows = libmpv's own SMTC via `media-controls=yes` + `force-media-title`).
+#67 (ADR-0039 "Keys and media controls"): keys live in the one `onKey` listener in `player-page.tsx` (`repeating` and `once` maps); the list the `?` overlay shows is `playerShortcuts` in `components/player/shortcuts.tsx`, so a new key goes in both. Taken: Space/K, ←→, ↑↓, M, F, I (mini player, #70), Esc, A, C, S, Z/X, ?. Go: `Service.SetNowPlaying({title, subtitle})` (the screen sends its heading; Stop forgets it), `media.go` hands `mediaState` to `mediaControls` (`media_darwin.m` MPNowPlayingInfoCenter/MPRemoteCommandCenter, `media_linux.go` MPRIS via godbus, Windows = libmpv's own SMTC via `media-controls=yes` + `force-media-title`).
 
 **Why:** #68–#70 add to the same screen and session; #92's Windows libmpv must be built with `win32-smtc` or Windows loses media keys silently.
 

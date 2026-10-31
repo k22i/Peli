@@ -370,6 +370,19 @@ func TestStopClosesTheSession(t *testing.T) {
 	}
 }
 
+func TestTheMiniPlayerNeedsTheWindow(t *testing.T) {
+	t.Parallel()
+	s, _ := newTestService(t)
+	for _, on := range []bool{true, false} {
+		if err := s.SetMini(on); !errors.Is(err, ErrUnavailable) {
+			t.Errorf("SetMini(%v) without a window: %v, want ErrUnavailable", on, err)
+		}
+	}
+	if s.Snapshot().Mini {
+		t.Error("Mini is on without a window")
+	}
+}
+
 func TestRedact(t *testing.T) {
 	got := redact("Opening https://torrentio.strem.fun/realdebrid=KEY/abc/1/file.mkv failed")
 	if strings.Contains(got, "KEY") || got != "Opening <url> failed" {

@@ -12,10 +12,11 @@ date: 2026-10-30
 | File | |
 |---|---|
 | `internal/player/mpv.go` | The cgo binding to `mpv/client.h`, from the spikes. A live-handle count for tests |
-| `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `Scrub` (keyframe seek, for dragging; #61), `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetAudioTrack`, `SetSubtitleTrack`, `SetSubtitleDelay`, `SetSubtitleSize` (#62), `SetFullscreen`, `Stop`, `Snapshot`; the event loop |
+| `internal/player/player.go` | `Service`: `Load`, `SetPaused`, `Seek`, `Scrub` (keyframe seek, for dragging; #61), `SeekBy`, `SetVolume`, `SetMuted`, `SetSpeed`, `SetAudioTrack`, `SetSubtitleTrack`, `SetSubtitleDelay`, `SetSubtitleSize` (#62), `SetFullscreen`, `SetMini` (#70), `Stop`, `Snapshot`; the event loop |
 | `internal/watching/watching.go` | `Reporter` (#64): the player's progress reports become the profile's progress and watched marks, and ask the push loop to send them |
 | `internal/player/media.go`, `media_{darwin.go,darwin.m,linux.go,windows.go}` | The OS's media controls (#67): Now Playing and the remote commands on macOS, MPRIS on Linux, libmpv's own SMTC on Windows |
 | `internal/player/captions_{darwin,other}.go` | The OS's captions preference (#62): MediaAccessibility on macOS, none elsewhere |
+| `internal/player/mini_{darwin.go,darwin.m,other.go}` | The mini player (#70): the window made small and kept on top, natively on macOS, with Wails' window calls elsewhere |
 | `internal/player/host.go` | The `host` interface each OS implements, and `nullHost` (no video or audio output) for tests |
 | `host_darwin.go`, `video_darwin.m` | macOS: a `CAOpenGLLayer` view below the `WKWebView`, drawn on our own serial queue; half-float and EDR for HDR (#66) |
 | `host_linux.go`, `video_linux.c` | Linux (X11 and Wayland): `gltex`, textures rendered on our own thread, shown by a `GtkPicture` below the webview |
@@ -144,7 +145,8 @@ The screen is checked when the session opens, because the pixel format can't cha
 | ← → | Back or forward 10 s, as the buttons |
 | ↑ ↓ | Volume ±5; ↑ unmutes, at the volume it had |
 | M, F | Mute, full screen |
-| Esc | Closes the shortcuts, then leaves full screen, then the screen |
+| I | The mini player and back (#70) |
+| Esc | Closes the shortcuts, then leaves the mini player or full screen, then the screen |
 | A | Next audio track (two or more) |
 | C | Next subtitle track, then off (the file's and the addon ones added) |
 | Z, X | Subtitles 0.1 s earlier or later (#62, kept where they were) |
@@ -164,6 +166,24 @@ Space, F, M, Z and X are mpv's keys, K and C YouTube's, so the keys most people 
 Next and previous track are off on macOS and Linux: a film has no tracks, and the next episode is the card's to offer (#65). No artwork yet. Windows may show "Unknown app" until Sinag is installed with an AppUserModelID.
 
 **Checked:** Go tests drive the service's media state and commands with a fake (title, pause, toggle, jumps, Stop), and on Linux a test of its own bus checks MPRIS: properties, every method, the signals and the instance name (Docker, `dbus-daemon`). Route tests cover every key. In the app on macOS, the play/pause media key paused and resumed a playing clip with the window in the background, and the Music app stayed closed. **Not checked:** Windows (cross-compiled and vetted, no Windows machine), a real Linux desktop widget (#91).
+
+## Mini player (#70)
+
+F25's picture-in-picture is **the app window made small**, not a second window or the OS's PiP. The video is drawn under the webview in the app window (ADR-0002), so moving it to another window would mean a second host and render context per OS. macOS's own PiP (`AVPictureInPictureController`) only takes an `AVPlayerLayer` or sample buffers, so every mpv frame would have to be copied out of OpenGL into `CVPixelBuffer`s. Windows has no system PiP at all. A small window works the same way on both OSes, and it keeps the session, the controls and the keys as they are. The cost is that the app can't be browsed while the mini player shows, which is fine for watching while working in other apps.
+
+`Service.SetMini(on)` needs a session; `Stop` leaves the mini player, so leaving the screen any way (Back, the end, quitting) puts the window back. A fullscreen window leaves fullscreen first (it waits up to 3 s for the window event, as macOS animates it), and `SetFullscreen(true)` leaves the mini player first. `State.mini` tells the screen.
+
+| OS | The mini player |
+|---|---|
+| macOS (`mini_darwin.m`) | 480 pt wide (a third of the screen at most), in the video's shape (`video-out-params/aspect`, 16:9 before the first frame), at the bottom right of the screen's visible frame, 16 pt in. `NSFloatingWindowLevel`, on every Space and over full-screen apps (`CanJoinAllSpaces`, `FullScreenAuxiliary`). The traffic lights are hidden (close would quit). A resize keeps the shape (`contentAspectRatio`). Leaving restores the frame, level and Spaces behaviour |
+| Windows (`mini_other.go`) | The same size and corner of the screen's work area, with Wails' `SetBounds` and `SetAlwaysOnTop`. No aspect lock: Wails has none |
+| Linux | The Windows code compiles for it; deferred with Linux (#103) |
+
+Both remember where the user left the mini player during the run, and open there again while it's still on that screen.
+
+**The screen in the mini player** shows play/pause, mute and volume, the time, the seek bar, Back and Exit mini player. Menus, ±10 s, Streams, the shortcuts and Full screen are hidden, and so is "Start over". The skip button shows, and so does a smaller next-episode card without the thumbnail. A double click or Esc goes back to the app window. Streams (S, or "Choose another stream" when a file fails) leaves the mini player first, and `?` does nothing.
+
+**Checked:** in the app on macOS, with a temporary play hook (not committed) and a 2.4:1 clip, the mini player opened at 480×200 in the bottom right corner of a 3840-wide display at window layer 3 (floating). It opened from fullscreen too, and the window went back to 999×617 at layer 0 when leaving and on Stop. Route tests cover the button, I, Esc and the hidden controls. **Not checked:** screenshots (no screen-recording permission in that session), resizing by hand, Spaces and full-screen apps, Windows.
 
 ## The hosts, as run
 

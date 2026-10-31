@@ -73,6 +73,7 @@ vi.mock("@bindings/player", () => ({
     Stop: () => Promise.resolve(),
     SetPaused: () => Promise.resolve(),
     SetFullscreen: () => Promise.resolve(),
+    SetMini: () => Promise.resolve(),
     SetNowPlaying: () => Promise.resolve(),
   },
 }));

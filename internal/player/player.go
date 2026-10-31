@@ -110,7 +110,10 @@ type State struct {
 	Muted      bool    `json:"muted"`
 	Speed      float64 `json:"speed"`
 	Fullscreen bool    `json:"fullscreen"`
-	Tracks     []Track `json:"tracks"`
+	// Mini is true while the window is the mini player (#70): small, in a
+	// corner of the screen, above other windows.
+	Mini   bool    `json:"mini"`
+	Tracks []Track `json:"tracks"`
 	// Chapters are the file's chapters, in order (#69): their names say
 	// where intros and credits are in some files.
 	Chapters []Chapter `json:"chapters"`
@@ -336,7 +339,11 @@ type Service struct {
 	// newHost makes the video host for a session; nil until UseWindow.
 	newHost func() (host, error)
 	window  *application.WebviewWindow
-	emit    func(name string, data any)
+	// windowed gets a value each time the window leaves fullscreen.
+	windowed chan struct{}
+	// windowOps serialises fullscreen and mini player changes.
+	windowOps sync.Mutex
+	emit      func(name string, data any)
 	// report gets how far a Watching file got (#64); nil until ReportTo.
 	report      func(Report)
 	reportEvery time.Duration
@@ -393,6 +400,7 @@ func NewService(version string) *Service {
 	return &Service{
 		userAgent:   fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
 		http:        &http.Client{},
+		windowed:    make(chan struct{}, 1),
 		emit:        func(string, any) {},
 		state:       idle(false),
 		reportEvery: ReportEvery,
@@ -414,7 +422,15 @@ func UseWindow(s *Service, window *application.WebviewWindow) {
 	s.newHost = func() (host, error) { return newHost(window) }
 	s.mu.Unlock()
 	fullscreen := func(on bool) func(*application.WindowEvent) {
-		return func(*application.WindowEvent) { s.update(func(st *State) { st.Fullscreen = on }) }
+		return func(*application.WindowEvent) {
+			s.update(func(st *State) { st.Fullscreen = on })
+			if !on {
+				select {
+				case s.windowed <- struct{}{}:
+				default:
+				}
+			}
+		}
 	}
 	window.OnWindowEvent(events.Common.WindowFullscreen, fullscreen(true))
 	window.OnWindowEvent(events.Common.WindowUnFullscreen, fullscreen(false))
@@ -628,6 +644,8 @@ func (s *Service) Stop() error {
 	s.sendReport(s.stopReport())
 	_ = ses.m.command("stop")
 	s.closeSession(ses)
+	// The app window again, whatever the screen does next.
+	_ = s.SetMini(false)
 	s.mu.Lock()
 	s.s = nil
 	s.state = idle(s.state.Fullscreen)
@@ -750,8 +768,11 @@ func (s *Service) SetSubtitleSize(size string) error {
 	return s.set("sub-scale", seconds(scale))
 }
 
-// SetFullscreen puts the window in or out of fullscreen.
+// SetFullscreen puts the window in or out of fullscreen. The mini player
+// becomes the app window first.
 func (s *Service) SetFullscreen(on bool) error {
+	s.windowOps.Lock()
+	defer s.windowOps.Unlock()
 	s.mu.Lock()
 	window := s.window
 	s.mu.Unlock()
@@ -759,10 +780,70 @@ func (s *Service) SetFullscreen(on bool) error {
 		return fmt.Errorf("%w: no window", ErrUnavailable)
 	}
 	if on {
+		if err := s.setMini(window, false); err != nil {
+			return err
+		}
 		window.Fullscreen()
 	} else {
 		window.UnFullscreen()
 	}
+	return nil
+}
+
+// leaveFullscreenFor is how long SetMini waits for the window to leave
+// fullscreen: macOS animates it.
+const leaveFullscreenFor = 3 * time.Second
+
+// SetMini makes the window the mini player (#70), or the app window again.
+// The mini player is the same window, small, in the bottom right corner of
+// its screen (or where it was last left), above other windows, in the
+// video's shape; leaving puts it back where it was. A fullscreen window
+// leaves fullscreen first. It needs a session; Stop leaves it.
+func (s *Service) SetMini(on bool) error {
+	s.windowOps.Lock()
+	defer s.windowOps.Unlock()
+	s.mu.Lock()
+	window, ses := s.window, s.s
+	s.mu.Unlock()
+	if window == nil {
+		return fmt.Errorf("%w: no window", ErrUnavailable)
+	}
+	if on && ses == nil {
+		return ErrNotPlaying
+	}
+	if on && window.IsFullscreen() {
+		select {
+		case <-s.windowed:
+		default:
+		}
+		window.UnFullscreen()
+		select {
+		case <-s.windowed:
+		case <-time.After(leaveFullscreenFor):
+		}
+	}
+	return s.setMini(window, on)
+}
+
+// setMini changes the window, and the state, if Mini isn't on already.
+func (s *Service) setMini(window *application.WebviewWindow, on bool) error {
+	s.mu.Lock()
+	mini, ses := s.state.Mini, s.s
+	s.mu.Unlock()
+	if mini == on {
+		return nil
+	}
+	aspect := 0.0
+	if on && ses != nil {
+		// The video's shape, as shown: "" before the first frame.
+		if a, err := ses.m.getString("video-out-params/aspect"); err == nil {
+			aspect, _ = strconv.ParseFloat(a, 64)
+		}
+	}
+	if err := setMini(window, on, aspect); err != nil {
+		return fmt.Errorf("%w: %w", ErrUnavailable, err)
+	}
+	s.update(func(st *State) { st.Mini = on })
 	return nil
 }
 

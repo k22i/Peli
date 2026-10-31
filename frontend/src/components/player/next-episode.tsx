@@ -9,11 +9,13 @@ import { formatTime } from "@/lib/player";
 import type { ProfileSettings } from "@bindings/store";
 import { resolutionLabel } from "@/lib/stream-labels";
 import { episodeCode, type Episode } from "@/lib/title";
+import { cn } from "@/lib/utils";
 
 // The next-episode card (#65): mounted from where the episode counts as
 // watched, it gets the next one ready and counts down to the end. Play now
 // (or the end) sets `starting`; once the next is ready, or there's no
-// stream for it, onStart gets what was found and the card hides.
+// stream for it, onStart gets what was found and the card hides. In the
+// mini player (#70) it's smaller, without the thumbnail.
 export function NextEpisode({
   profileId,
   meta,
@@ -22,6 +24,7 @@ export function NextEpisode({
   remaining,
   share,
   starting,
+  mini = false,
   onPlay,
   onCancel,
   onStart,
@@ -34,6 +37,7 @@ export function NextEpisode({
   remaining: number;
   share: number;
   starting: boolean;
+  mini?: boolean;
   onPlay: () => void;
   onCancel: () => void;
   onStart: (prepared: PreparedNext) => void;
@@ -51,9 +55,12 @@ export function NextEpisode({
   return (
     <section
       aria-label="Next episode"
-      className="absolute right-6 bottom-28 flex w-80 flex-col overflow-hidden rounded-2xl bg-black/75 shadow-2xl ring-1 ring-white/10 backdrop-blur-md"
+      className={cn(
+        "absolute flex flex-col overflow-hidden rounded-2xl bg-black/75 shadow-2xl ring-1 ring-white/10 backdrop-blur-md",
+        mini ? "right-3 bottom-16 w-64" : "right-6 bottom-28 w-80",
+      )}
     >
-      {next.thumbnail && (
+      {next.thumbnail && !mini && (
         <div className="relative aspect-video bg-white/5">
           <img
             src={next.thumbnail}
@@ -68,7 +75,7 @@ export function NextEpisode({
           </div>
         </div>
       )}
-      <div className="flex flex-col gap-3 p-4">
+      <div className={cn("flex flex-col", mini ? "gap-2 p-3" : "gap-3 p-4")}>
         <div className="flex min-w-0 flex-col gap-0.5">
           <p className="text-xs font-medium text-white/60">
             Next episode in{" "}
