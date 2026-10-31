@@ -38,4 +38,5 @@
 - [Skip markers](skip-markers.md) — #69 State.chapters + lib/markers.ts, IntroDB via Go internal/markers (CORS), skipIntros/skipTimesOnline settings, card waits for credits, test mocks
 - [Mini player](mini-player.md) — #70 SetMini = app window made small (floating, all Spaces, aspect lock on macOS), Stop leaves it, I key, compact controls, `SetMini` in mocks
 - [libmpv build](libmpv-build.md) — #92 build/libmpv pins + build.sh + smoke.sh, one dylib in Contents/Frameworks, libmpv.yml cached in CI; Go cache ignores PKG_CONFIG_PATH, no Rosetta
-- [Tracking integrations](tracking-integrations.md) — #71 is SIMKL (#72–#74) + AniList (#104/#105); no Trakt, no Discord; Trakt leftovers in code go in #72
+- [Tracking integrations](tracking-integrations.md) — #71 built (ADR-0042): simkl/anilist/animelist/tracking packages, client ids, min_progress=90, live-test hook
+- [Live tests push to Nuvio](live-tests-push-to-nuvio.md) — a copied store still uses the real keychain session; plan the undo or use a local profile
