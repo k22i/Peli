@@ -73,8 +73,9 @@ var (
 // The apps Sinag is registered as (public: a desktop app can't keep a
 // secret, and neither flow needs one). $SINAG_SIMKL_CLIENT_ID and
 // $SINAG_ANILIST_CLIENT_ID stand in for them, for a build of your own.
-// SIMKL's is an AUTH V2 app of the "Mobile, desktop & browser apps" kind;
-// AniList's redirect URL is AniListRedirect.
+// SIMKL's is an AUTH V2 app of the "TV, devices & command line" kind,
+// since Sinag only uses the device flow; AniList's redirect URL is
+// AniListRedirect.
 const (
 	SimklClientID   = ""
 	AniListClientID = ""

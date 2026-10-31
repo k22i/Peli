@@ -70,7 +70,7 @@ pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge
 
 ### SIMKL and AniList
 
-Settings › Integrations connects a profile to SIMKL and AniList ([ADR-0042](docs/adr/0042-simkl-and-anilist.md)). The code is `internal/tracking`, with the clients in `internal/simkl` and `internal/anilist`. Sinag's registered apps are the client ids in `internal/tracking/tracking.go`; to use your own, register a SIMKL AUTH V2 app (Mobile, desktop & browser apps) and an AniList app with the redirect URL `http://127.0.0.1:47613/anilist`, and set `SINAG_SIMKL_CLIENT_ID` and `SINAG_ANILIST_CLIENT_ID`.
+Settings › Integrations connects a profile to SIMKL and AniList ([ADR-0042](docs/adr/0042-simkl-and-anilist.md)). The code is `internal/tracking`, with the clients in `internal/simkl` and `internal/anilist`. Sinag's registered apps are the client ids in `internal/tracking/tracking.go`; to use your own, register a SIMKL AUTH V2 app of the "TV, devices & command line" kind (Sinag only uses the device flow, so it needs no redirect URL) and an AniList app with the redirect URL `http://127.0.0.1:47613/anilist`, and set `SINAG_SIMKL_CLIENT_ID` and `SINAG_ANILIST_CLIENT_ID`.
 
 ### CI
 
