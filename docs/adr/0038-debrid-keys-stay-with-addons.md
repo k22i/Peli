@@ -26,7 +26,7 @@ Every addon recorded for #6, #50 and #53 does all of this itself, and addons tha
 
 - **Settings.** The "Debrid services" row in Integrations said "Coming soon". It now says to set up TorBox, AllDebrid or Premiumize in a stream addon's own settings, and that Sinag never asks for the key. Its button opens the addon manager. The addon's configure page is where the key goes (ADR-0024).
 - **Secrets.** `debrid.*` is no longer a key the webview can name (`lib/secrets.ts`). The Go secrets service still accepts any well-formed key, and its tests use `debrid.torbox` only as a sample name.
-- **ADR-0007** listed debrid keys among what the keychain holds. That part no longer applies; the Nuvio session, Trakt tokens and the TMDB key still do.
+- **ADR-0007** listed debrid keys among what the keychain holds. That part no longer applies; the Nuvio session, SIMKL and AniList tokens and the TMDB key still do.
 
 Nothing else changes: debrid keys still pass through Sinag inside addon URLs and stream links, so they are still never logged or shown (ADR-0023, ADR-0024, ADR-0037).
 

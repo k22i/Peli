@@ -115,13 +115,20 @@ const track = (fields: Partial<Track> & Pick<Track, "id" | "type">): Track => ({
 });
 
 describe("loadOptions", () => {
+  const trackers = {
+    simklScrobble: true,
+    simklImport: true,
+    simklAnime: true,
+    anilistProgress: true,
+    anilistImport: true,
+  };
   const settings = {
     audioLanguage: "ja",
     subtitleLanguage: "en",
     subtitleSize: "large",
     captions: "system",
   };
-  const profile = { ...settings, skipIntros: false };
+  const profile = { ...settings, skipIntros: false, ...trackers };
 
   it("takes the profile's languages, captions and size", () => {
     expect(loadOptions(5, profile)).toEqual({ start: 5, ...settings });

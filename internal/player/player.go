@@ -206,6 +206,12 @@ type Watching struct {
 	Episode     *int   `json:"episode,omitempty"`
 	// Title names the watched item: the episode's name, or the title's.
 	Title string `json:"title,omitempty"`
+	// What SIMKL and AniList need to name it (#73, #105): the film's or
+	// series' own name and year, and its ids by catalog ("imdb", "tmdb",
+	// "tvdb", "kitsu", "mal", "anilist", "anidb").
+	Name string            `json:"name,omitempty"`
+	Year int               `json:"year,omitempty"`
+	IDs  map[string]string `json:"ids,omitempty"`
 }
 
 // Report says how far a Watching file got, and why it's said now. Times are
@@ -229,6 +235,10 @@ const (
 	ReportSeeked  = "seeked"
 	ReportEnded   = "ended"
 	ReportStopped = "stopped"
+	// ReportStarted comes at a file's first frame, and ReportResumed when
+	// it plays again after a pause: what a scrobble's start is (#73).
+	ReportStarted = "started"
+	ReportResumed = "resumed"
 )
 
 // ReportEvery is how often a file that plays is reported. The store keeps
@@ -947,6 +957,8 @@ func (s *Service) handle(ses *session, ev mpvEvent) {
 		if ses.started {
 			s.due(ReportSeeked)
 			s.seeks++
+		} else {
+			s.due(ReportStarted)
 		}
 		ses.started = true
 		s.mu.Unlock()
@@ -1016,6 +1028,9 @@ func (s *Service) property(ses *session, name string, v any) {
 		paused, _ := v.(bool)
 		if paused && !st.Paused && ses.loaded {
 			s.due(ReportPaused)
+		}
+		if !paused && st.Paused && ses.loaded && ses.started {
+			s.due(ReportResumed)
 		}
 		st.Paused = paused
 	case "paused-for-cache":

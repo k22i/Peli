@@ -23,6 +23,16 @@ type ProfileSettings struct {
 	// SkipIntros skips intros and recaps without asking, where their times
 	// are known (#69). Credits are always the user's to skip.
 	SkipIntros bool `json:"skipIntros"`
+	// SIMKL (#72): scrobble what plays, import the watched history, and
+	// include anime in both. Profiles that keep anime on AniList turn
+	// SimklAnime off.
+	SimklScrobble bool `json:"simklScrobble"`
+	SimklImport   bool `json:"simklImport"`
+	SimklAnime    bool `json:"simklAnime"`
+	// AniList (#104): update the list's progress when an episode is
+	// watched, and import the list into watched marks.
+	AniListProgress bool `json:"anilistProgress"`
+	AniListImport   bool `json:"anilistImport"`
 }
 
 // DeviceSettings belong to this machine, whoever is watching.
@@ -52,7 +62,11 @@ var (
 
 // DefaultProfileSettings are a profile's settings until it changes them.
 func DefaultProfileSettings() ProfileSettings {
-	return ProfileSettings{SubtitleSize: "medium", Captions: "system"}
+	return ProfileSettings{
+		SubtitleSize: "medium", Captions: "system",
+		SimklScrobble: true, SimklImport: true, SimklAnime: true,
+		AniListProgress: true, AniListImport: true,
+	}
 }
 
 // DefaultDeviceSettings are the device's settings until they are changed.

@@ -272,6 +272,7 @@ export function watchingFor(
     contentType: target.type,
     videoId,
     title: name,
+    ...trackingNames(name, meta),
   };
   if (!isSeriesType(target.type)) return watching;
   const video = meta?.videos?.find((candidate) => candidate.id === videoId);
@@ -290,6 +291,34 @@ export function watchingFor(
   const numbers = /:(\d+):(\d+)$/.exec(videoId);
   if (!numbers || !videoId.startsWith(`${target.id}:`)) return watching;
   return { ...watching, season: Number(numbers[1]), episode: Number(numbers[2]) };
+}
+
+// The meta fields SIMKL and AniList are told about (#73, #105), by their
+// names there. Go adds the content id's own ("tt…", "kitsu:…") and keeps
+// only well-formed ones.
+const trackingFields = {
+  imdb: "imdb_id",
+  tmdb: "moviedb_id",
+  tvdb: "tvdb_id",
+  kitsu: "kitsu_id",
+  mal: "mal_id",
+  anilist: "anilist_id",
+  anidb: "anidb_id",
+} as const;
+
+export function trackingNames(
+  name: string,
+  meta: Meta | undefined,
+): Pick<Watching, "name" | "year" | "ids"> {
+  const ids: Record<string, string> = {};
+  for (const [key, field] of Object.entries(trackingFields)) {
+    const value = meta?.[field];
+    if (typeof value === "string" || typeof value === "number") ids[key] = String(value);
+  }
+  // "2008–2013" or "2023-2024": the first year is the title's.
+  const released = meta?.releaseInfo ?? meta?.["year"];
+  const year = Number(/\d{4}/.exec(typeof released === "string" ? released : "")?.[0]);
+  return { name, ...(year ? { year } : {}), ids };
 }
 
 // Where the player starts (#64), in seconds: where the film or episode was

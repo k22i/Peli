@@ -13,14 +13,17 @@
 //	                   settings → ProfileSettings
 //	                   home-layout → Nuvio's home layout blob (#35)
 //	                   collections → Nuvio's collections blob (#35)
+//	                   tracking → Tracking: SIMKL and AniList (#71)
 //	  library/         <content id> 0x00 <content type> → LibraryItem
 //	  progress/        <progress key> → Progress
 //	  watched/         <content id> 0x00 <season+1> <episode+1> → WatchedItem
 //	  cursors/         <surface> → int64
 //	  outbox/          <surface> 0x00 <key> → Push
+//	  tracking-outbox/ <sequence> → TrackingJob (made when first needed)
 //	settings           device → DeviceSettings
 //	                   current → uint64 (profile id)
 //	                   account → string (the linked Nuvio account's user id)
+//	                   tracking-token-owners → []uint64 (profiles with tokens)
 //	cache              <key> → bytes
 package store
 

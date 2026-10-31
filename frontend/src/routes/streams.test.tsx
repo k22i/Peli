@@ -441,6 +441,10 @@ describe("stream picker", () => {
         contentType: "movie",
         videoId: "tt0111161",
         title: "The Shawshank Redemption",
+        // For SIMKL and AniList (#73).
+        name: "The Shawshank Redemption",
+        year: 1994,
+        ids: { imdb: "tt0111161", tmdb: "278" },
       },
     });
     // Named from the title's details, not the picker's fallback heading.
@@ -525,7 +529,7 @@ describe("stream picker", () => {
       expect.anything(),
       expect.objectContaining({
         start: 0,
-        watching: {
+        watching: expect.objectContaining({
           profileId: 1,
           contentId: "tt0903747",
           contentType: "series",
@@ -533,7 +537,7 @@ describe("stream picker", () => {
           season: 1,
           episode: 1,
           title: "Pilot",
-        },
+        }),
       }),
     );
   });

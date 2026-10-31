@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { DeviceSettings, Profile, ProfileSettings } from "@bindings/store";
+import type { Connections } from "@bindings/tracking";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 import { renderApp } from "@/test/render-app";
 
@@ -55,6 +56,77 @@ vi.mock("@bindings/torrent", () => ({
   },
 }));
 
+// SIMKL and AniList (#71): Go's connections for the profile, and the calls
+// Settings makes.
+const trackers = vi.hoisted(() => ({
+  connections: undefined as Connections | undefined,
+  calls: [] as string[],
+  // Resolves the pending sign-in's wait.
+  approve: undefined as (() => void) | undefined,
+  status(): Connections {
+    return (
+      this.connections ?? {
+        simklAvailable: true,
+        anilistAvailable: true,
+        kids: false,
+        simkl: null,
+        anilist: null,
+      }
+    );
+  },
+  record<T>(name: string, answer: () => T) {
+    return async (...args: unknown[]) => {
+      this.calls.push(`${name}(${args.join(",")})`);
+      return answer();
+    };
+  },
+}));
+
+vi.mock("@bindings/tracking", () => {
+  const record = trackers.record.bind(trackers);
+  return {
+    Service: {
+      Status: async () => trackers.status(),
+      ImportSoon: record("ImportSoon", () => undefined),
+      Import: record("Import", () => ({ simkl: 0, anilist: 0 })),
+      StartSimkl: record("StartSimkl", () => ({
+        code: "BDWP-HQPK",
+        url: "https://simkl.com/pin?user_code=BDWP-HQPK",
+        pageUrl: "https://simkl.com/pin",
+        expiresAt: new Date(Date.now() + 900_000).toISOString(),
+      })),
+      WaitSimkl: () =>
+        new Promise<Connections>((resolve) => {
+          trackers.approve = () => {
+            trackers.connections = {
+              ...trackers.status(),
+              simkl: { user: "kevin", needsReconnect: false, importedAt: 0 },
+            };
+            resolve(trackers.connections);
+          };
+        }),
+      CancelSimkl: record("CancelSimkl", () => undefined),
+      DisconnectSimkl: record("DisconnectSimkl", () => {
+        trackers.connections = { ...trackers.status(), simkl: null };
+        return trackers.connections;
+      }),
+      StartAniList: record("StartAniList", () => "https://anilist.co/api/v2/oauth/authorize"),
+      WaitAniList: () => new Promise(() => {}),
+      CancelAniList: record("CancelAniList", () => undefined),
+      DisconnectAniList: record("DisconnectAniList", () => trackers.status()),
+    },
+  };
+});
+
+const browser = vi.hoisted(() => ({
+  openURL: vi.fn<(url: string) => Promise<void>>(async () => {}),
+}));
+
+vi.mock("@wailsio/runtime", async (importOriginal) => ({
+  ...(await importOriginal<object>()),
+  Browser: { OpenURL: browser.openURL },
+}));
+
 // An in-memory stand-in for the Go store, with its defaults
 // (internal/store/settings.go).
 const store = vi.hoisted(() => ({
@@ -76,6 +148,11 @@ vi.mock("@bindings/store", () => {
     subtitleSize: "medium",
     captions: "system",
     skipIntros: false,
+    simklScrobble: true,
+    simklImport: true,
+    simklAnime: true,
+    anilistProgress: true,
+    anilistImport: true,
   };
   return {
     Service: {
@@ -111,6 +188,10 @@ beforeEach(() => {
   store.failSaves = false;
   torrents.cache = 3_200_000_000;
   torrents.setCacheSize.mockClear();
+  trackers.connections = undefined;
+  trackers.calls = [];
+  trackers.approve = undefined;
+  browser.openURL.mockClear();
 });
 
 const sectionTitles = [
@@ -291,5 +372,80 @@ describe("settings", () => {
     await user.click(diagnostics);
     await waitFor(() => expect(diagnostics).not.toBeChecked());
     expect(store.device).toBeUndefined();
+  });
+  // SIMKL's device sign-in (#72): the page opens with the code filled in,
+  // the code shows for another device, and the row then shows the account.
+  it("connects SIMKL and shows its settings", async () => {
+    const user = userEvent.setup();
+    await renderSettings();
+
+    await user.click(await screen.findByRole("button", { name: "Connect SIMKL" }));
+    const dialog = await screen.findByRole("dialog", { name: "Connect SIMKL" });
+    expect(await within(dialog).findByText("BDWP-HQPK")).toBeVisible();
+    expect(browser.openURL).toHaveBeenCalledWith("https://simkl.com/pin?user_code=BDWP-HQPK");
+    expect(trackers.calls).toContain("StartSimkl(1)");
+
+    trackers.approve?.();
+    await waitFor(() => expect(dialog).not.toBeInTheDocument());
+    expect(await screen.findByText(/^Connected as kevin\./)).toBeVisible();
+    for (const name of ["Scrobble", "Import watched history", "Include anime"]) {
+      expect(screen.getByRole("switch", { name })).toBeChecked();
+    }
+
+    // Turning the import back on brings in what's there now.
+    await user.click(screen.getByRole("switch", { name: "Import watched history" }));
+    expect(trackers.calls).not.toContain("Import(1)");
+    await user.click(screen.getByRole("switch", { name: "Import watched history" }));
+    await waitFor(() => expect(trackers.calls).toContain("Import(1)"));
+    expect(store.profileSettings.get(1)?.simklImport).toBe(true);
+
+    await user.click(screen.getByRole("button", { name: "Disconnect SIMKL" }));
+    expect(await screen.findByRole("button", { name: "Connect SIMKL" })).toBeVisible();
+    expect(screen.queryByRole("switch", { name: "Scrobble" })).not.toBeInTheDocument();
+  });
+
+  it("cancels a SIMKL sign-in when the dialog closes", async () => {
+    const user = userEvent.setup();
+    await renderSettings();
+    await user.click(await screen.findByRole("button", { name: "Connect SIMKL" }));
+    const dialog = await screen.findByRole("dialog", { name: "Connect SIMKL" });
+    await user.click(within(dialog).getByRole("button", { name: "Cancel" }));
+    await waitFor(() => expect(trackers.calls).toContain("CancelSimkl()"));
+  });
+
+  it("opens AniList's approval page to connect", async () => {
+    const user = userEvent.setup();
+    await renderSettings();
+    await user.click(await screen.findByRole("button", { name: "Connect AniList" }));
+    expect(await screen.findByRole("dialog", { name: "Connect AniList" })).toBeVisible();
+    await waitFor(() =>
+      expect(browser.openURL).toHaveBeenCalledWith("https://anilist.co/api/v2/oauth/authorize"),
+    );
+  });
+
+  it("asks to reconnect when a sign-in stopped working", async () => {
+    trackers.connections = {
+      simklAvailable: true,
+      anilistAvailable: true,
+      kids: false,
+      simkl: { user: "kevin", needsReconnect: true, importedAt: 0 },
+      anilist: { user: "kev", needsReconnect: true, expires: 0, importedAt: 0 },
+    };
+    await renderSettings();
+    expect(await screen.findByRole("button", { name: "Reconnect SIMKL" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Reconnect AniList" })).toBeVisible();
+  });
+
+  it("doesn't offer trackers to kids profiles", async () => {
+    trackers.connections = {
+      simklAvailable: true,
+      anilistAvailable: true,
+      kids: true,
+      simkl: null,
+      anilist: null,
+    };
+    await renderSettings();
+    expect(await screen.findByText("Kids profiles don’t connect to trackers.")).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Connect SIMKL" })).not.toBeInTheDocument();
   });
 });

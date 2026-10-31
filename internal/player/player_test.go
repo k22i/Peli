@@ -606,6 +606,10 @@ func TestReportsProgress(t *testing.T) {
 		return func(whys []string) bool { return slices.Contains(whys, why) }
 	}
 	wait("a report while playing", has(ReportPlaying))
+	// The first frame starts it, for SIMKL (#73).
+	if whys := got.whys(); whys[0] != ReportStarted {
+		t.Fatalf("reports %v, want the start first", whys)
+	}
 	if rep := got.last(); rep.Watching.VideoID != w.VideoID || *rep.Watching.Season != 2 ||
 		rep.Duration < clipSeconds-0.1 || rep.Position < 0.5 || rep.Position > rep.Duration {
 		t.Fatalf("report %+v", rep)
@@ -618,14 +622,23 @@ func TestReportsProgress(t *testing.T) {
 		t.Fatal(err)
 	}
 	wait("the pause", has(ReportPaused))
+	if err := s.SetPaused(false); err != nil {
+		t.Fatal(err)
+	}
+	wait("playing again", has(ReportResumed))
+	if err := s.SetPaused(true); err != nil {
+		t.Fatal(err)
+	}
+	wait("the second pause", func(whys []string) bool { return whys[len(whys)-1] == ReportPaused })
 	if err := s.Stop(); err != nil {
 		t.Fatal(err)
 	}
 	if rep := got.last(); rep.Why != ReportStopped || rep.Position < 0.2 || rep.Position > 1.5 {
 		t.Fatalf("last report %+v, want stopped where it paused", rep)
 	}
-	// A pause before the file played is nothing: only the one asked for.
-	if whys := got.whys(); slices.Index(whys, ReportPaused) != len(whys)-2 {
+	// A pause before the file played is nothing: only the ones asked for.
+	if whys := got.whys(); slices.Index(whys, ReportPaused) < slices.Index(whys, ReportSeeked) ||
+		whys[len(whys)-2] != ReportPaused {
 		t.Fatalf("reports %v", whys)
 	}
 }

@@ -123,7 +123,15 @@ const japaneseTracks = {
   subtitleSize: "large",
   captions: "on",
 };
-const japanese: ProfileSettings = { ...japaneseTracks, skipIntros: false };
+const japanese: ProfileSettings = {
+  ...japaneseTracks,
+  skipIntros: false,
+  simklScrobble: true,
+  simklImport: true,
+  simklAnime: true,
+  anilistProgress: true,
+  anilistImport: true,
+};
 const profileOptions = { ...japaneseTracks, start: 600 };
 
 // IntroDB, through Go (#69).
@@ -1079,7 +1087,7 @@ describe("next episode", () => {
         expect.objectContaining({
           start: 0,
           audioLanguage: "ja",
-          watching: {
+          watching: expect.objectContaining({
             profileId: 1,
             contentId: "tt0903747",
             contentType: "series",
@@ -1087,7 +1095,7 @@ describe("next episode", () => {
             season: 1,
             episode: 2,
             title: "Cat's in the Bag...",
-          },
+          }),
         }),
       ),
     );

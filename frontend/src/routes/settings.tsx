@@ -7,6 +7,7 @@ import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import { ServerDialog } from "@/components/settings/server-dialog";
 import { TmdbDialog } from "@/components/settings/tmdb-dialog";
+import { AniListDialog, SimklDialog } from "@/components/settings/tracking-dialogs";
 import {
   SettingRow,
   SettingsNav,
@@ -14,7 +15,6 @@ import {
   type SettingsSectionInfo,
 } from "@/components/settings/settings-section";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Select,
@@ -44,6 +44,7 @@ import {
   type ProfileSettings,
 } from "@/lib/settings";
 import { useTmdbKey } from "@/lib/tmdb";
+import { trackingQuery, useDisconnectAniList, useDisconnectSimkl, useImport } from "@/lib/tracking";
 import {
   formatBytes,
   torrentCacheQuery,
@@ -324,8 +325,8 @@ function ProfileSections({ profileId }: { profileId: number }) {
         </SettingRow>
       </SettingsSection>
 
-      {/* Trakt is #72 (v1.x). Debrid keys stay with the addons (#54,
-          ADR-0038), so this row only points there. */}
+      {/* Debrid keys stay with the addons (#54, ADR-0038), so this row only
+          points there. */}
       <SettingsSection section={section("integrations")}>
         <SettingRow
           id="debrid"
@@ -336,9 +337,7 @@ function ProfileSections({ profileId }: { profileId: number }) {
             Open addons
           </Link>
         </SettingRow>
-        <SettingRow id="trakt" label="Trakt" description="Scrobble what you watch to Trakt.">
-          <Badge variant="secondary">Coming soon</Badge>
-        </SettingRow>
+        <TrackingRows profileId={profileId} settings={settings} onChange={setProfile} />
         <TmdbRow />
       </SettingsSection>
 
@@ -406,6 +405,204 @@ function TorrentCacheRow({ size, onChange }: { size: number; onChange: (gb: numb
           </SelectPopup>
         </Select>
       </div>
+    </SettingRow>
+  );
+}
+
+// SIMKL and AniList (#71), connected per profile: kids profiles get
+// neither. Their settings are the profile's.
+function TrackingRows({
+  profileId,
+  settings,
+  onChange,
+}: {
+  profileId: number;
+  settings: ProfileSettings;
+  onChange: (change: Partial<ProfileSettings>) => void;
+}) {
+  const connections = useQuery(trackingQuery(profileId)).data;
+  const disconnectSimkl = useDisconnectSimkl(profileId);
+  const disconnectAniList = useDisconnectAniList(profileId);
+  const importNow = useImport(profileId);
+  const [connecting, setConnecting] = useState<"simkl" | "anilist">();
+  if (!connections) return null;
+
+  const simkl = connections.simkl;
+  const anilist = connections.anilist;
+  // Turning an import on brings in what's there now.
+  const setImport = (change: Partial<ProfileSettings>, on: boolean) => {
+    onChange(change);
+    if (on) importNow.mutate();
+  };
+
+  if (connections.kids) {
+    return (
+      <SettingRow
+        id="trackers"
+        label="SIMKL and AniList"
+        description="Kids profiles don’t connect to trackers."
+      />
+    );
+  }
+
+  return (
+    <>
+      <SettingRow
+        id="simkl"
+        label="SIMKL"
+        description={
+          !connections.simklAvailable
+            ? "Not available in this build."
+            : simkl
+              ? simkl.needsReconnect
+                ? `Connected as ${simkl.user}, but SIMKL stopped accepting the sign-in. Connect again.`
+                : `Connected as ${simkl.user}. What this profile watches is scrobbled to SIMKL, and marked watched at 90 %.`
+              : "Scrobble what this profile watches to SIMKL, and bring in your SIMKL history."
+        }
+      >
+        {connections.simklAvailable && (
+          <div className="flex items-center gap-2">
+            {simkl && (
+              <Button
+                variant="outline"
+                size="sm"
+                aria-label="Disconnect SIMKL"
+                loading={disconnectSimkl.isPending}
+                onClick={() => disconnectSimkl.mutate()}
+              >
+                Disconnect
+              </Button>
+            )}
+            {(!simkl || simkl.needsReconnect) && (
+              <Button
+                variant="outline"
+                size="sm"
+                aria-label={simkl ? "Reconnect SIMKL" : "Connect SIMKL"}
+                onClick={() => setConnecting("simkl")}
+              >
+                {simkl ? "Reconnect" : "Connect"}
+              </Button>
+            )}
+          </div>
+        )}
+      </SettingRow>
+      {simkl && (
+        <>
+          <ToggleRow
+            id="simkl-scrobble"
+            label="Scrobble"
+            description="Shows SIMKL what’s playing, and marks it watched there when it’s finished."
+            checked={settings.simklScrobble}
+            onChange={(simklScrobble) => onChange({ simklScrobble })}
+          />
+          <ToggleRow
+            id="simkl-import"
+            label="Import watched history"
+            description="Marks what you watched on SIMKL as watched here, and in Nuvio. Nothing here is unmarked."
+            checked={settings.simklImport}
+            onChange={(simklImport) => setImport({ simklImport }, simklImport)}
+          />
+          <ToggleRow
+            id="simkl-anime"
+            label="Include anime"
+            description="Turn off if you keep anime on AniList instead."
+            checked={settings.simklAnime}
+            onChange={(simklAnime) => setImport({ simklAnime }, simklAnime && settings.simklImport)}
+          />
+        </>
+      )}
+      <SettingRow
+        id="anilist"
+        label="AniList"
+        description={
+          !connections.anilistAvailable
+            ? "Not available in this build."
+            : anilist
+              ? anilist.needsReconnect
+                ? `Connected as ${anilist.user}, but the sign-in has run out. Connect again.`
+                : `Connected as ${anilist.user}. Anime this profile watches moves along on your list.`
+              : "Update your AniList list as you watch anime, and bring in what’s on it."
+        }
+      >
+        {connections.anilistAvailable && (
+          <div className="flex items-center gap-2">
+            {anilist && (
+              <Button
+                variant="outline"
+                size="sm"
+                aria-label="Disconnect AniList"
+                loading={disconnectAniList.isPending}
+                onClick={() => disconnectAniList.mutate()}
+              >
+                Disconnect
+              </Button>
+            )}
+            {(!anilist || anilist.needsReconnect) && (
+              <Button
+                variant="outline"
+                size="sm"
+                aria-label={anilist ? "Reconnect AniList" : "Connect AniList"}
+                onClick={() => setConnecting("anilist")}
+              >
+                {anilist ? "Reconnect" : "Connect"}
+              </Button>
+            )}
+          </div>
+        )}
+      </SettingRow>
+      {anilist && (
+        <>
+          <ToggleRow
+            id="anilist-progress"
+            label="Update progress"
+            description="Moves the list’s progress on when an episode is watched, and completes it at the last."
+            checked={settings.anilistProgress}
+            onChange={(anilistProgress) => onChange({ anilistProgress })}
+          />
+          <ToggleRow
+            id="anilist-import"
+            label="Import list"
+            description="Marks the episodes on your AniList list as watched here, and in Nuvio."
+            checked={settings.anilistImport}
+            onChange={(anilistImport) => setImport({ anilistImport }, anilistImport)}
+          />
+        </>
+      )}
+      <SimklDialog
+        profileId={profileId}
+        open={connecting === "simkl"}
+        onOpenChange={(open) => setConnecting(open ? "simkl" : undefined)}
+      />
+      <AniListDialog
+        profileId={profileId}
+        open={connecting === "anilist"}
+        onOpenChange={(open) => setConnecting(open ? "anilist" : undefined)}
+      />
+    </>
+  );
+}
+
+function ToggleRow({
+  id,
+  label,
+  description,
+  checked,
+  onChange,
+}: {
+  id: string;
+  label: string;
+  description: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}) {
+  return (
+    <SettingRow id={id} label={label} description={description}>
+      <Switch
+        aria-labelledby={`${id}-label`}
+        aria-describedby={`${id}-description`}
+        checked={checked}
+        onCheckedChange={onChange}
+      />
     </SettingRow>
   );
 }

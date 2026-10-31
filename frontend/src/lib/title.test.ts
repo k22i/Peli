@@ -16,6 +16,7 @@ import {
   seriesMarkChange,
   titleSearch,
   titleState,
+  trackingNames,
   watchingFor,
 } from "@/lib/title";
 
@@ -213,6 +214,9 @@ describe("watchingFor", () => {
       contentType: "movie",
       videoId: movie.id,
       title: movie.name,
+      name: movie.name,
+      year: 1994,
+      ids: { imdb: "tt0111161", tmdb: "278" },
     });
     expect(watchingFor(2, episode, show, [])).toEqual({
       profileId: 2,
@@ -222,7 +226,26 @@ describe("watchingFor", () => {
       season: 1,
       episode: 2,
       title: "One two",
+      name: "Show",
+      ids: {},
     });
+  });
+
+  it("names the title for SIMKL and AniList by the meta's ids (#73)", () => {
+    const anime = {
+      id: "kitsu:46474",
+      type: "series",
+      name: "Sousou no Frieren",
+      kitsu_id: "46474",
+      imdb_id: "tt22248376",
+      year: "2023-2024",
+    } as Meta;
+    expect(trackingNames(anime.name, anime)).toEqual({
+      name: "Sousou no Frieren",
+      year: 2023,
+      ids: { kitsu: "46474", imdb: "tt22248376" },
+    });
+    expect(trackingNames("Fallback", undefined)).toEqual({ name: "Fallback", ids: {} });
   });
 
   it("finds the episode without the details: from its progress, else its id", () => {

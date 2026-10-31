@@ -11,6 +11,7 @@ import {
 } from "@/lib/account";
 import { accountQuery, useCurrentProfile } from "@/lib/profile";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
+import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
 
 export type RouterContext = {
   queryClient: QueryClient;
@@ -44,6 +45,7 @@ function RootLayout() {
   useSessionEndedRedirect();
   useSyncEvents();
   useConnectionEvents();
+  useTrackingEvents();
   const location = useLocation();
   // The launch gate only applies once a profile is in use, so it skips the
   // screens that come before one — and doesn't ask the store for the current
@@ -63,6 +65,7 @@ function ProfileGate() {
   const current = useCurrentProfile();
   const unlocked = useUnlockedProfiles();
   useSyncProfile(current.id);
+  useTrackingProfile(current.id);
 
   if (current.pinEnabled && current.id !== undefined && !unlocked.includes(current.id)) {
     return (

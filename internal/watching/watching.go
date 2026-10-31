@@ -46,8 +46,8 @@ func New(open func() *store.Store, flush func(context.Context) error) *Reporter 
 }
 
 // Report keeps r: the profile's progress in the film or episode, its watched
-// mark at 90 %, and a push now unless it's a periodic report (the push loop
-// sends those every 30 s by itself).
+// mark at 90 %, and a push now unless it's a periodic report or playing
+// starting again (the push loop sends those every 30 s by itself).
 func (rep *Reporter) Report(r player.Report) {
 	db := rep.open()
 	w := r.Watching
@@ -74,7 +74,7 @@ func (rep *Reporter) Report(r player.Report) {
 			slog.Warn("watching: not marked watched", "error", err)
 		}
 	}
-	if r.Why != player.ReportPlaying {
+	if r.Why != player.ReportPlaying && r.Why != player.ReportStarted && r.Why != player.ReportResumed {
 		rep.push()
 	}
 }

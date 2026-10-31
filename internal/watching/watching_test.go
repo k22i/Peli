@@ -85,8 +85,13 @@ func TestReportsBecomeProgress(t *testing.T) {
 		e.Position != want.Position || e.Duration != want.Duration || e.LastWatched != want.LastWatched {
 		t.Fatalf("progress = %+v, want %+v", e, want)
 	}
+	// Nor does playing starting, or starting again (they're for SIMKL).
+	for _, why := range []string{player.ReportStarted, player.ReportResumed} {
+		rep.Report(player.Report{Watching: w, Position: 600.25, Duration: 2820, Why: why})
+		rep.wait()
+	}
 	if n := pushes.Load(); n != 0 {
-		t.Fatalf("a periodic report pushed %d times", n)
+		t.Fatalf("a periodic report, a start or a resume pushed %d times", n)
 	}
 	if resume, err := db.ContinueWatching(profile.ID); err != nil || len(resume) != 1 {
 		t.Fatalf("ContinueWatching = %+v, %v", resume, err)

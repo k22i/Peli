@@ -5,7 +5,7 @@ date: 2026-10-19
 
 # Secrets live in the OS keychain through go-keyring, with no file fallback
 
-**OS keychain, through [go-keyring](https://github.com/zalando/go-keyring).** Sinag keeps the Nuvio session, Trakt tokens and debrid keys in the macOS Keychain, Windows Credential Manager or the Linux Secret Service (#15). They are never written to a file: not `sinag.db` (ADR-0006), not the persisted query cache, not webview storage. The Go package is `internal/secrets`, and the frontend reaches it through a Wails service.
+**OS keychain, through [go-keyring](https://github.com/zalando/go-keyring).** Sinag keeps the Nuvio session, SIMKL and AniList tokens (per profile, ADR-0042) and debrid keys in the macOS Keychain, Windows Credential Manager or the Linux Secret Service (#15). They are never written to a file: not `sinag.db` (ADR-0006), not the persisted query cache, not webview storage. The Go package is `internal/secrets`, and the frontend reaches it through a Wails service.
 
 ## Why
 

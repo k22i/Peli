@@ -6,6 +6,7 @@ import (
 	"embed"
 	"log"
 	"os"
+	"path/filepath"
 	"runtime"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
@@ -13,6 +14,8 @@ import (
 
 	"github.com/k22i/Sinag/internal/account"
 	"github.com/k22i/Sinag/internal/addons"
+	"github.com/k22i/Sinag/internal/anilist"
+	"github.com/k22i/Sinag/internal/animelist"
 	"github.com/k22i/Sinag/internal/appinfo"
 	"github.com/k22i/Sinag/internal/backend"
 	"github.com/k22i/Sinag/internal/firstmouse"
@@ -21,10 +24,12 @@ import (
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/player"
 	"github.com/k22i/Sinag/internal/secrets"
+	"github.com/k22i/Sinag/internal/simkl"
 	"github.com/k22i/Sinag/internal/store"
 	"github.com/k22i/Sinag/internal/streams"
 	"github.com/k22i/Sinag/internal/syncer"
 	"github.com/k22i/Sinag/internal/torrent"
+	"github.com/k22i/Sinag/internal/tracking"
 	"github.com/k22i/Sinag/internal/watching"
 )
 
@@ -61,7 +66,20 @@ func main() {
 	// How far each film or episode plays becomes the profile's progress, and
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.
-	player.ReportTo(players, watching.New(func() *store.Store { return store.Opened(db) }, syncer.PusherOf(sync).FlushProgress).Report)
+	watched := watching.New(func() *store.Store { return store.Opened(db) }, syncer.PusherOf(sync).FlushProgress)
+	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
+	trackers := tracking.NewService(tracking.Config{
+		Simkl:           simkl.New(simkl.DefaultURL, cmp.Or(os.Getenv("SINAG_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
+		AniList:         anilist.New(anilist.DefaultURL, appinfo.Version),
+		AniListClientID: cmp.Or(os.Getenv("SINAG_ANILIST_CLIENT_ID"), tracking.AniListClientID),
+		Anime:           animelist.New(animelist.DefaultURL, filepath.Dir(store.DefaultPath())),
+		Keychain:        keychain,
+		Open:            func() *store.Store { return store.Opened(db) },
+	})
+	player.ReportTo(players, func(r player.Report) {
+		watched.Report(r)
+		tracking.Report(trackers, r)
+	})
 
 	app := application.New(application.Options{
 		Name:        "Sinag",
@@ -83,6 +101,10 @@ func main() {
 			// Torrents streamed peer to peer, if the user turns it on (#55).
 			application.NewServiceWithOptions(torrent.NewService(db, torrent.DefaultDir(), appinfo.Version),
 				application.ServiceOptions{MarshalError: torrent.MarshalError}),
+			// Before the player, so it shuts down after it and sends the
+			// last stop.
+			application.NewServiceWithOptions(trackers,
+				application.ServiceOptions{MarshalError: tracking.MarshalError}),
 			// libmpv under the webview (#60).
 			application.NewService(skipTimes),
 			application.NewServiceWithOptions(players,
@@ -129,14 +151,26 @@ func main() {
 			window.SetBackgroundColour(windowColourLight)
 		}
 		puller.Background(context.Background())
+		importTracked(trackers, db)
 	})
 	// Focus also retries pushes that failed, such as after being offline (#30).
 	window.OnWindowEvent(events.Common.WindowFocus, func(*application.WindowEvent) {
 		puller.Background(context.Background())
 		pusher.Background(context.Background())
+		importTracked(trackers, db)
 	})
 
 	if err := app.Run(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+// importTracked imports SIMKL's and AniList's watches for the profile in
+// use (#74, #105), at most every 15 minutes.
+func importTracked(trackers *tracking.Service, db *store.Service) {
+	if s := store.Opened(db); s != nil {
+		if profile, ok, err := s.ProfileInUse(); err == nil && ok {
+			trackers.ImportSoon(profile.ID)
+		}
 	}
 }
