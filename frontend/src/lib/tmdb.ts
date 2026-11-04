@@ -251,6 +251,28 @@ const tmdbDetailsQuery = (key: string, tmdb: number, media: Media) =>
     meta: { persist: true },
   });
 
+// A title's TMDB id, as plugins ask by it (#56): at once from the ref, or
+// looked up from its IMDb id with the user's key. Undefined while that
+// lookup runs; null when there's no id to be had (no ref, no key, or TMDB
+// doesn't know the title).
+export function useTmdbId(
+  ref: TmdbRef | undefined,
+): { tmdb: number; media: Media } | null | undefined {
+  const imdb = ref && "imdb" in ref ? ref : undefined;
+  // The keychain is only read when there's an IMDb id to look up.
+  const key = useQuery({ ...tmdbKeyQuery, enabled: Boolean(imdb) }).data;
+  const found = useQuery({
+    ...tmdbFindQuery(key ?? "", imdb?.imdb ?? "", imdb?.media),
+    enabled: Boolean(key && imdb),
+  });
+  if (!ref) return null;
+  if ("tmdb" in ref) return ref;
+  if (key === undefined) return undefined;
+  if (!key) return null;
+  if (found.isPending) return undefined;
+  return found.data ?? null;
+}
+
 // TMDB's art for a title, or undefined: with no key, no mapping, while it
 // loads, or when TMDB fails. Pages show the addon's details meanwhile.
 export function useTmdbArt(ref: TmdbRef | undefined): TmdbArt | undefined {

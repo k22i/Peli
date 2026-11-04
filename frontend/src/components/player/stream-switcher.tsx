@@ -13,7 +13,10 @@ import { StreamList } from "@/components/streams/stream-list";
 import { StreamsSummary, usePlayKey, useStreamChoices } from "@/components/streams/streams-page";
 import type { Stream } from "@/lib/addon-protocol";
 import type { Candidate } from "@/lib/ranking";
-import { attempts, sameStream } from "@/lib/resolve";
+import { attempts, sameStream, type ResolveOptions } from "@/lib/resolve";
+
+// Asks a stream's source (an addon, a plugin) again for a fresh link.
+export type Refresh = ResolveOptions["refresh"];
 
 // The stream switcher (#68, F24): the picker's ranked streams for the film
 // or episode playing, in a panel over the video, with the one playing
@@ -39,7 +42,7 @@ export function StreamSwitcher({
   playing: Stream | undefined;
   // The stream being opened, or why the last pick couldn't be.
   status: { text: string; failed?: string } | undefined;
-  onPick: (candidate: Candidate, names: ReadonlyMap<string, string>) => void;
+  onPick: (candidate: Candidate, names: ReadonlyMap<string, string>, refresh: Refresh) => void;
 }) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -87,9 +90,9 @@ function Choices({
   watching: Watching;
   title: string;
   playing: Stream | undefined;
-  onPick: (candidate: Candidate, names: ReadonlyMap<string, string>) => void;
+  onPick: (candidate: Candidate, names: ReadonlyMap<string, string>, refresh: Refresh) => void;
 }) {
-  const { loading, sources, names, view, pin, rows, toggleGroup } = useStreamChoices(
+  const { loading, sources, names, view, pin, rows, toggleGroup, refresh } = useStreamChoices(
     watching.profileId,
     watching.contentType,
     watching.contentId,
@@ -98,7 +101,7 @@ function Choices({
   );
   const pick = (candidate: Candidate) => {
     pin();
-    onPick(candidate, names);
+    onPick(candidate, names, refresh);
   };
   usePlayKey(view.top, pick);
   const isPlaying = (candidate: Candidate) =>

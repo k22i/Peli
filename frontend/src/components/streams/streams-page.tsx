@@ -18,16 +18,18 @@ import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
-import { streamsQuery, type ContentType } from "@/lib/addon-protocol";
+import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
+import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
 import { profileSettingsQuery } from "@/lib/settings";
 import {
   rankingPrefs,
+  usePluginSources,
   useRankedStreams,
   useStreamAddons,
   useStreams,
@@ -120,7 +122,7 @@ function Picker({
   video: string;
   target: PlayTarget;
 }) {
-  const { loading, sources, names, meta, settings, view, pin, rows, toggleGroup } =
+  const { loading, sources, names, meta, settings, view, pin, rows, toggleGroup, refresh } =
     useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
   const navigate = useNavigate();
@@ -168,11 +170,7 @@ function Picker({
             .catch(() => {});
         }, 1000)
       : undefined;
-    resolvePick(candidate, {
-      refresh: async (source) =>
-        (await client.fetchQuery({ ...streamsQuery(source, type, video), staleTime: 0 })).streams,
-      signal: controller.signal,
-    })
+    resolvePick(candidate, { refresh, signal: controller.signal })
       .finally(() => {
         settled = true;
         clearInterval(statusTimer);
@@ -294,9 +292,8 @@ export function useStreamChoices(
   video: string,
   title: string,
 ) {
-  const { addons, loading } = useStreamAddons(profileId);
-  const sources = useStreams(addons, type, video);
-  const names = new Map(addons.map((addon) => [addon.url, addon.manifest.name]));
+  const { addons, loading: addonsLoading } = useStreamAddons(profileId);
+  const addonSources = useStreams(addons, type, video);
   const client = useQueryClient();
   const browsing = useLoadedAddons(profileId);
   const meta = useQuery({
@@ -304,6 +301,22 @@ export function useStreamChoices(
     enabled: !browsing.loading,
     ...cachedTitleMeta(client, browsing.addons, type, id),
   }).data?.meta;
+  // Plugins (#56) are asked beside the addons, and ranked with them.
+  const plugins = usePluginSources(type, id, video, meta);
+  const sources = [...addonSources, ...plugins.sources];
+  const loading = addonsLoading || plugins.loading;
+  const names = new Map(sources.map((source) => [source.key, source.name]));
+  // A fresh answer from the source of an expired link (#53): its addon, or
+  // its plugin.
+  const refresh = async (source: string): Promise<readonly Stream[]> => {
+    if (isPluginSource(source)) {
+      const plugin = plugins.plugins.find((p) => pluginSource(p) === source);
+      if (!plugin || !plugins.query) return [];
+      return client.fetchQuery({ ...pluginStreamsQuery(plugin, plugins.query), staleTime: 0 });
+    }
+    return (await client.fetchQuery({ ...streamsQuery(source, type, video), staleTime: 0 }))
+      .streams;
+  };
   const settings = useQuery(profileSettingsQuery(profileId)).data;
   const ctx = titleContext(type, video, meta, title);
   const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings));
@@ -324,11 +337,12 @@ export function useStreamChoices(
     pin,
     rows: listRows(view, open),
     toggleGroup,
+    refresh,
   };
 }
 
-// How many streams so far, and each addon's answer, with Try again on one
-// that failed.
+// How many streams so far, and each addon's (and plugin's) answer, with Try
+// again on one that failed.
 export function StreamsSummary({
   sources,
   loading,
@@ -339,20 +353,26 @@ export function StreamsSummary({
   total: number;
 }) {
   const waiting = sources.filter((source) => source.status === "pending").length;
+  const plural = sources.some((source) => source.kind === "plugin") ? "sources" : "addons";
+  const one = plural === "sources" ? "1 source" : "1 addon";
   return (
     <div className="flex flex-col gap-3 px-gutter">
       <p aria-live="polite" className="text-sm text-muted-foreground">
         {total === 1 ? "1 stream" : `${total} streams`}
         {waiting > 0
-          ? `, ${waiting} of ${sources.length} addons still answering`
-          : // An addon whose manifest is still loading may serve streams too.
+          ? `, ${waiting} of ${sources.length} ${plural} still answering`
+          : // An addon whose manifest is still loading may serve streams too,
+            // and plugins wait for the title's TMDB id.
             loading
-            ? ", still loading addons"
-            : ` from ${sources.length === 1 ? "1 addon" : `${sources.length} addons`}`}
+            ? `, still loading ${plural}`
+            : ` from ${sources.length === 1 ? one : `${sources.length} ${plural}`}`}
       </p>
-      <ul aria-label="Addons" className="flex flex-wrap gap-2">
+      <ul
+        aria-label={plural === "sources" ? "Addons and plugins" : "Addons"}
+        className="flex flex-wrap gap-2"
+      >
         {sources.map((source) => (
-          <SourceStatus key={source.addon.url} source={source} />
+          <SourceStatus key={source.key} source={source} />
         ))}
       </ul>
     </div>
@@ -386,7 +406,7 @@ const typing = (target: EventTarget | null) =>
   (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
 
 function SourceStatus({ source }: { source: StreamSource }) {
-  const { name } = source.addon.manifest;
+  const { name } = source;
   const count = source.streams?.length ?? 0;
   return (
     <li

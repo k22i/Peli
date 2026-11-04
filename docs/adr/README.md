@@ -46,5 +46,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0040](0040-torrent-streaming.md) | Torrent streaming: anacrolix/torrent in-process, a loopback link for mpv, our own capped cache, off until turned on | 2026-10-30 |
 | [0041](0041-our-libmpv-build.md) | Our libmpv build: one self-contained library per target, every decoder kept, built and cached in CI | 2026-10-31 |
 | [0042](0042-simkl-and-anilist.md) | SIMKL and AniList: connected per profile from Go, scrobbles from the player's reports, imports that only add | 2026-10-31 |
+| [0043](0043-plugin-sandbox.md) | Nuvio plugins: one goja runtime per call in a child process, a host API written from how plugins behave, streams ranked with the addons' | 2026-11-04 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

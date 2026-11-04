@@ -1,38 +1,29 @@
 import { describe, expect, it, vi } from "vite-plus/test";
 
-import type { LoadedAddon, Manifest, Stream } from "@/lib/addon-protocol";
+import type { Stream } from "@/lib/addon-protocol";
 
 import { StreamFeed, slices, type StreamSource } from "./streams";
 
 vi.mock("@bindings/addons", () => ({ Service: { Fetch: vi.fn<() => void>() } }));
 vi.mock("@bindings/store", () => ({ Service: {} }));
+vi.mock("@bindings/plugins", () => ({ Service: {} }));
+vi.mock("@bindings/secrets", () => ({ Service: {} }));
 
 const streams = (count: number, from = 0): Stream[] =>
   Array.from({ length: count }, (_, i) => ({ name: `s${from + i}` }));
 
-const addon = (url: string): LoadedAddon => {
-  const manifest: Manifest = {
-    id: url,
-    name: url,
-    version: "1.0.0",
-    types: ["movie"],
-    resources: [{ name: "stream", types: ["movie"] }],
-    catalogs: [],
-    behaviorHints: {},
-  };
-  return { url, manifest };
-};
-
 const source = (url: string, status: StreamSource["status"], answer?: Stream[]): StreamSource => ({
-  addon: addon(url),
+  key: url,
+  name: url,
+  kind: "addon",
   status,
   streams: answer,
   error: null,
   retry: () => {},
 });
 
-const shape = (out: { addon: string; streams: readonly Stream[] }[]) =>
-  out.map((slice) => `${slice.addon}:${slice.streams.length}`);
+const shape = (out: { source: string; streams: readonly Stream[] }[]) =>
+  out.map((slice) => `${slice.source}:${slice.streams.length}`);
 
 describe("slices", () => {
   it("cuts an answer into slices of at most 150, in order", () => {

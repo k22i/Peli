@@ -7,10 +7,12 @@ import {
   streamsQuery,
   type ContentType,
   type LoadedAddon,
+  type Meta,
   type Stream,
 } from "@/lib/addon-protocol";
 import type { ProfileSettings } from "@bindings/store";
 import { addonsQuery } from "@/lib/addons";
+import { pluginSource, usePluginStreams, usePluginTargets } from "@/lib/plugins";
 import {
   RankingSession,
   emptyView,
@@ -43,11 +45,15 @@ export function useStreamAddons(profileId: number) {
   };
 }
 
-// One addon's part in a stream search: asking, answered or failed. `error`
-// is an AddonError when the addon was reached, timed out or answered badly;
-// its message is for the user and never names the URL.
+// One addon's or plugin's part in a stream search: asking, answered or
+// failed. `key` is what ranking knows it by (the addon's URL, or
+// pluginSource), `name` what the picker calls it. `error` is an AddonError
+// when the addon was reached, timed out or answered badly, or a PluginError
+// (#56); its message is for the user and never names the URL.
 export type StreamSource = {
-  addon: LoadedAddon;
+  key: string;
+  name: string;
+  kind: "addon" | "plugin";
   status: "pending" | "success" | "error";
   streams: readonly Stream[] | undefined;
   error: Error | null;
@@ -68,7 +74,9 @@ export function useStreams(addons: readonly LoadedAddon[], type: ContentType, id
   return asked.map((addon, index): StreamSource => {
     const result = results[index]!;
     return {
-      addon,
+      key: addon.url,
+      name: addon.manifest.name,
+      kind: "addon",
       status: result.status,
       streams: result.data?.streams,
       error: result.error,
@@ -77,12 +85,39 @@ export function useStreams(addons: readonly LoadedAddon[], type: ContentType, id
   });
 }
 
+// Asks every installed plugin that serves the title (#56) for the video's
+// streams, as useStreams asks addons: at once, each with its own state.
+// None until the title's TMDB id is known; `loading` is true until then.
+export function usePluginSources(
+  type: ContentType,
+  id: string,
+  video: string,
+  meta: Meta | undefined,
+) {
+  const { plugins, query, loading } = usePluginTargets(type, id, video, meta);
+  const results = usePluginStreams(plugins, query);
+  const sources = (query ? plugins : []).map((plugin, index): StreamSource => {
+    const result = results[index]!;
+    return {
+      key: pluginSource(plugin),
+      name: plugin.name,
+      kind: "plugin",
+      status: result.status,
+      streams: result.data,
+      error: result.error,
+      retry: () => void result.refetch(),
+    };
+  });
+  return { sources, loading, plugins, query };
+}
+
 // The most streams handed on at once. Comet alone can send ~1,400 for a
 // popular title (#6); ranking a slice this size fits in a frame.
 export const sliceSize = 150;
 
-// Part of one addon's answer, by the addon's URL.
-export type StreamSlice = { addon: string; streams: readonly Stream[] };
+// Part of one source's answer, by its key (an addon's URL, a plugin's
+// source).
+export type StreamSlice = { source: string; streams: readonly Stream[] };
 
 export function slices(streams: readonly Stream[], size = sliceSize): (readonly Stream[])[] {
   const out: Stream[][] = [];
@@ -92,18 +127,18 @@ export function slices(streams: readonly Stream[], size = sliceSize): (readonly 
   return out;
 }
 
-// Hands each addon's answer on once, in the order they arrive, cut into
-// slices. An addon that answers again (a refetch) isn't handed on twice; one
+// Hands each source's answer on once, in the order they arrive, cut into
+// slices. A source that answers again (a refetch) isn't handed on twice; one
 // that failed is, once a retry answers.
 export class StreamFeed {
   readonly #fed = new Set<string>();
 
   take(sources: readonly StreamSource[]): StreamSlice[] {
     const out: StreamSlice[] = [];
-    for (const { addon, status, streams } of sources) {
-      if (status !== "success" || !streams || this.#fed.has(addon.url)) continue;
-      this.#fed.add(addon.url);
-      for (const slice of slices(streams)) out.push({ addon: addon.url, streams: slice });
+    for (const { key, status, streams } of sources) {
+      if (status !== "success" || !streams || this.#fed.has(key)) continue;
+      this.#fed.add(key);
+      for (const slice of slices(streams)) out.push({ source: key, streams: slice });
     }
     return out;
   }
@@ -158,7 +193,7 @@ export function useRankedStreams(
   useEffect(() => {
     const [context, preferences]: [TitleContext, Prefs] = JSON.parse(settings);
     const ranking = new RankingSession(context, preferences, setView);
-    for (const slice of fed.current) ranking.add(slice.addon, slice.streams);
+    for (const slice of fed.current) ranking.add(slice.source, slice.streams);
     if (pinned.current) ranking.pin();
     session.current = ranking;
     return () => {
@@ -169,7 +204,7 @@ export function useRankedStreams(
 
   useStreamFeed(sources, (slice) => {
     fed.current.push(slice);
-    session.current?.add(slice.addon, slice.streams);
+    session.current?.add(slice.source, slice.streams);
   });
 
   return {

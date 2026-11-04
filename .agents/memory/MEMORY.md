@@ -40,3 +40,4 @@
 - [libmpv build](libmpv-build.md) — #92 build/libmpv pins + build.sh + smoke.sh, one dylib in Contents/Frameworks, libmpv.yml cached in CI; Go cache ignores PKG_CONFIG_PATH, no Rosetta
 - [Tracking integrations](tracking-integrations.md) — #71 built (ADR-0042): simkl/anilist/animelist/tracking packages, client ids, min_progress=90, live-test hook
 - [Live tests push to Nuvio](live-tests-push-to-nuvio.md) — a copied store still uses the real keychain session; plan the undo or use a local profile
+- [Plugin sandbox](plugin-sandbox.md) — #56/ADR-0043 internal/plugins child process per call, host API, limits, SINAG_DEV_PLUGINS stand-in for #57, StreamSource key/name/kind, goja pin, mock @bindings/plugins

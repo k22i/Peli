@@ -2,6 +2,7 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import type { Plugin, Query, Stream as PluginStream } from "@bindings/plugins";
 import type { Addon, Profile, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
@@ -25,6 +26,8 @@ const mocks = vi.hoisted(() => ({
   pull: vi.fn<() => Promise<unknown>>(),
   openTorrent: vi.fn<(request: TorrentRequest) => Promise<Source>>(),
   torrentStatus: vi.fn<() => Promise<Status>>(),
+  installed: vi.fn<() => Promise<Plugin[]>>(),
+  pluginStreams: vi.fn<(plugin: Plugin, query: Query) => Promise<PluginStream[]>>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -54,6 +57,15 @@ vi.mock("@bindings/store", () => ({
 vi.mock("@bindings/streams", () => ({
   Service: {
     Resolve: (request: Request) => Object.assign(mocks.resolve(request), { cancel: mocks.cancel }),
+  },
+}));
+
+// Plugins (#56): none installed unless a test says.
+vi.mock("@bindings/plugins", () => ({
+  Service: {
+    Installed: () => mocks.installed(),
+    Streams: (plugin: Plugin, query: Query) =>
+      Object.assign(mocks.pluginStreams(plugin, query), { cancel: mocks.cancel }),
   },
 }));
 
@@ -176,6 +188,9 @@ const debrid = (file: string, marker: string) => ({
 
 const addonStatus = (name: string) =>
   within(screen.getByRole("list", { name: "Addons" })).getByRole("listitem", { name });
+// With a plugin installed (#56), the list is the addons' and plugins'.
+const pluginStatus = (name: string) =>
+  within(screen.getByRole("list", { name: "Addons and plugins" })).getByRole("listitem", { name });
 // The streams' own buttons: not group headings, not "File name".
 const shownStreams = () =>
   within(screen.getByRole("list", { name: "Streams" }))
@@ -219,6 +234,8 @@ beforeEach(() => {
   mocks.titleProgress.mockReset().mockResolvedValue([]);
   mocks.pull.mockReset().mockRejectedValue(new Error("offline"));
   mocks.current.mockResolvedValue(kevin);
+  mocks.installed.mockReset().mockResolvedValue([]);
+  mocks.pluginStreams.mockReset().mockResolvedValue([]);
   mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
   mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio, peerflix]);
 });
@@ -401,6 +418,74 @@ describe("stream picker", () => {
       await screen.findByRole("heading", { name: "No addon has streams for this" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Manage addons" })).toBeInTheDocument();
+  });
+
+  it("asks plugins by TMDB id beside the addons, ranks their streams with the rest, and plays one with its headers", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    const plugin: Plugin = {
+      id: "site",
+      name: "Site Plugin",
+      version: "1.0.0",
+      url: "https://plugins.example/site.js",
+      supportedTypes: ["movie", "tv"],
+    };
+    mocks.installed.mockResolvedValue([plugin]);
+    mocks.pluginStreams.mockResolvedValue([
+      {
+        name: "Site",
+        title: "The.Shawshank.Redemption.1994.1080p.WEB-DL.mkv",
+        url: "https://cdn.site.example/master.m3u8",
+        quality: "1080p",
+        size: "2.1 GB",
+        headers: { Referer: "https://site.example/" },
+      },
+    ]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(pluginStatus("Site Plugin")).toHaveTextContent("1 stream"));
+    // By the TMDB id in Cinemeta's details.
+    expect(mocks.pluginStreams).toHaveBeenCalledExactlyOnceWith(plugin, {
+      tmdbId: "278",
+      mediaType: "movie",
+      season: 0,
+      episode: 0,
+    });
+    expect(await screen.findByText("2 streams from 2 sources")).toBeInTheDocument();
+    // Its 1080p ranks above Torrentio's stream of no known quality.
+    await user.click(topPick());
+    await opensThePlayer();
+    expect(mocks.resolve).toHaveBeenCalledExactlyOnceWith({
+      url: "https://cdn.site.example/master.m3u8",
+      headers: { Referer: "https://site.example/" },
+    });
+  });
+
+  it("shows a plugin that failed, and asks it again on Try again", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.installed.mockResolvedValue([
+      {
+        id: "slow",
+        name: "Slow Plugin",
+        version: "1",
+        url: "https://plugins.example/slow.js",
+        supportedTypes: [],
+      },
+    ]);
+    mocks.pluginStreams.mockRejectedValueOnce(new Error("timeout", { cause: { code: "timeout" } }));
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() =>
+      expect(pluginStatus("Slow Plugin")).toHaveTextContent("The plugin didn’t answer."),
+    );
+    await user.click(
+      within(pluginStatus("Slow Plugin")).getByRole("button", { name: "Try again" }),
+    );
+    await waitFor(() => expect(pluginStatus("Slow Plugin")).toHaveTextContent("0 streams"));
+    expect(mocks.pluginStreams).toHaveBeenCalledTimes(2);
   });
 
   it("resolves a picked stream's link and plays it", async () => {

@@ -23,6 +23,7 @@ import (
 	"github.com/k22i/Sinag/internal/markers"
 	"github.com/k22i/Sinag/internal/nuvio"
 	"github.com/k22i/Sinag/internal/player"
+	"github.com/k22i/Sinag/internal/plugins"
 	"github.com/k22i/Sinag/internal/secrets"
 	"github.com/k22i/Sinag/internal/simkl"
 	"github.com/k22i/Sinag/internal/store"
@@ -46,6 +47,10 @@ var (
 )
 
 func main() {
+	// Started as a plugin sandbox (#56): run that one call and exit, before
+	// anything of the app starts.
+	plugins.ServeChild()
+
 	firstmouse.Enable()
 
 	db := store.NewService(store.DefaultPath())
@@ -98,6 +103,9 @@ func main() {
 			// Resolving a picked stream to the file the player loads (#53).
 			application.NewServiceWithOptions(streams.NewService(appinfo.Version),
 				application.ServiceOptions{MarshalError: streams.MarshalError}),
+			// Nuvio JS plugins, each call in its own sandbox process (#56).
+			application.NewServiceWithOptions(plugins.NewService(appinfo.Version),
+				application.ServiceOptions{MarshalError: plugins.MarshalError}),
 			// Torrents streamed peer to peer, if the user turns it on (#55).
 			application.NewServiceWithOptions(torrent.NewService(db, torrent.DefaultDir(), appinfo.Version),
 				application.ServiceOptions{MarshalError: torrent.MarshalError}),

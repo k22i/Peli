@@ -72,6 +72,10 @@ pnpm refuses package versions published less than 7 days ago (`minimumReleaseAge
 
 Settings › Integrations connects a profile to SIMKL and AniList ([ADR-0042](docs/adr/0042-simkl-and-anilist.md)). The code is `internal/tracking`, with the clients in `internal/simkl` and `internal/anilist`. Sinag's registered apps are the client ids in `internal/tracking/tracking.go`; to use your own, register a SIMKL AUTH V2 app of the "TV, devices & command line" kind (Sinag only uses the device flow, so it needs no redirect URL) and an AniList app with the redirect URL `http://127.0.0.1:47613/anilist`, and set `SINAG_SIMKL_CLIENT_ID` and `SINAG_ANILIST_CLIENT_ID`.
 
+### Nuvio plugins
+
+Nuvio's JS plugins run in a sandbox in `internal/plugins`, one child process per call ([ADR-0043](docs/adr/0043-plugin-sandbox.md)). Until plugin management (#57) lands there is no list of plugins, so to try one in a dev build set `SINAG_DEV_PLUGINS` to a plugin repository's `manifest.json` URL: its enabled plugins are asked beside the addons. `go run ./tools/plugins -manifest <url> -tmdb 550 -type movie` (or `-file plugin.js`) runs plugins in the same sandbox and reports what each answered. `SINAG_PLUGIN_LOG=1` passes the plugins' console output to the log.
+
 ### CI
 
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every PR and push to `main`: frontend format, lint, type check, tests and build; Go `gofmt`, vet and tests (with the real-keychain tests) on Windows, macOS arm64, macOS Intel and Linux; and a production build per OS, uploaded as `sinag-<os>-<arch>` artifacts (kept 14 days). PRs skip the Intel Mac build to save macOS minutes. Run it by hand with `dev-smoke` ticked to also check that `wails3 dev` starts the app on Windows and Linux.
@@ -85,6 +89,7 @@ Settings › Integrations connects a profile to SIMKL and AniList ([ADR-0042](do
 | `frontend/` | React + TypeScript UI, built with Vite+ |
 | `build/` | Per-platform build and packaging config; app metadata is in `build/config.yml` |
 | `tools/notices/` | Generates the third-party notices and audits releases for GPL-only parts |
+| `tools/plugins/` | Runs Nuvio plugins in Sinag's sandbox and reports what each answered |
 | `docs/` | Gate review, ADRs and spike findings |
 | `spikes/` | Throwaway M0 spike code, not part of the app |
 

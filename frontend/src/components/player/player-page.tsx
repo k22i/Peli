@@ -33,7 +33,7 @@ import {
 import { NextEpisode } from "@/components/player/next-episode";
 import { SeekBar } from "@/components/player/seek-bar";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
-import { StreamSwitcher } from "@/components/player/stream-switcher";
+import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -448,7 +448,11 @@ function PlayerFile() {
   // with the same progress kept, in the languages playing now. This one
   // plays on until the new one opens, and one that can't be opened leaves
   // it playing and says why in the switcher.
-  const switchStream = async (candidate: Candidate, names: ReadonlyMap<string, string>) => {
+  const switchStream = async (
+    candidate: Candidate,
+    names: ReadonlyMap<string, string>,
+    refresh: Refresh,
+  ) => {
     if (!watching) return;
     const current = playing?.stream;
     if (!error && current && attempts(candidate).some(({ stream }) => sameStream(stream, current)))
@@ -461,14 +465,9 @@ function PlayerFile() {
       text: `Opening ${quality} from ${names.get(candidate.source) ?? "an addon"}…`,
     });
     try {
+      // The switcher's refresh asks a plugin's stream of its plugin (#56).
       const { source: picked, attempt } = await resolvePick(candidate, {
-        refresh: async (addon) =>
-          (
-            await queryClient.fetchQuery({
-              ...streamsQuery(addon, watching.contentType, watching.videoId),
-              staleTime: 0,
-            })
-          ).streams,
+        refresh,
         signal: controller.signal,
       });
       const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
@@ -1141,7 +1140,7 @@ function PlayerFile() {
           title={playing?.title ?? ""}
           playing={playing?.stream}
           status={switchStatus}
-          onPick={(candidate, names) => void switchStream(candidate, names)}
+          onPick={(candidate, names, refresh) => void switchStream(candidate, names, refresh)}
         />
       )}
       {helpOpen && !failure && !mini && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
