@@ -14,5 +14,6 @@ Plugins (#56, ADR-0043) are `internal/plugins`. Each `getStreams` call is a fres
 - #57: `Plugins.Installed()` is the stand-in list: empty unless `SINAG_DEV_PLUGINS=<manifest URL>`. Replace it with the stored, synced list (Nuvio `plugins` table, `uses_primary_plugins`), keep plugins off by default, and pass per-plugin `Settings` (SCRAPER_SETTINGS). `ParseManifest` takes both manifest shapes.
 - Route tests that render the picker or the player must mock `@bindings/plugins` (`Installed`, `Streams` with `cancel`).
 - The auto-mode classifier blocked running third-party plugin code (2026-11-04). Only our own `testdata/` fixtures have run. Ask the user before `go run ./tools/plugins -manifest …` against a real repo.
-- goja is pinned to `dc0ad5d0dc92` (2026-10-01): later commits need Go 1.26, and `go mod tidy` would bump `go.mod`'s Go version.
+- goja is at `2cb8274eed06` (2026-10-14), which needs Go 1.26: `go.mod` says 1.26 and ci.yml's `GO_VERSION` is 1.27.x (the user's toolchain is 1.27). Bump both together.
+- The classifier also blocked comments on tickets the user didn't name (#57), even after the user said to go ahead in chat: hand the command to the user to run with `!`.
 - Related: [[stream-ranking]], [[stream-requests]], [[stream-resolve]], [[tmdb-key]], [[kids-profiles]].

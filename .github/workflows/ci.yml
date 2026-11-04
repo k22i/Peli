@@ -34,7 +34,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  GO_VERSION: "1.25.x"
+  GO_VERSION: "1.27.x"
   NODE_VERSION: "24"
   WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.28
   # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers,

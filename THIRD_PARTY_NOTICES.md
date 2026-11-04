@@ -4636,7 +4636,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## github.com/dop251/goja v0.0.0-20261001165353-dc0ad5d0dc92
+## github.com/dop251/goja v0.0.0-20261014135309-2cb8274eed06
 
 Licence: MIT
 
@@ -7809,7 +7809,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## golang.org/x/sync v0.21.0
+## golang.org/x/sync v0.24.0
 
 Licence: BSD-3-Clause
 
@@ -7881,7 +7881,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## golang.org/x/text v0.39.0
+## golang.org/x/text v0.43.0
 
 Licence: BSD-3-Clause
 

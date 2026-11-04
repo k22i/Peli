@@ -1,6 +1,6 @@
 module github.com/k22i/Sinag
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/adrg/xdg v0.5.3
@@ -8,7 +8,7 @@ require (
 	github.com/anacrolix/log v0.17.1-0.20251118025802-918f1157b7bb
 	github.com/anacrolix/torrent v1.61.0
 	github.com/andybalholm/cascadia v1.3.4
-	github.com/dop251/goja v0.0.0-20261001165353-dc0ad5d0dc92
+	github.com/dop251/goja v0.0.0-20261014135309-2cb8274eed06
 	github.com/dop251/goja_nodejs v0.0.0-20260918173711-b481721df8a2
 	github.com/godbus/dbus/v5 v5.2.2
 	github.com/wailsapp/wails/v3 v3.0.0-beta.28
@@ -16,7 +16,7 @@ require (
 	go.etcd.io/bbolt v1.5.0
 	golang.org/x/net v0.56.0
 	golang.org/x/sys v0.46.0
-	golang.org/x/text v0.39.0
+	golang.org/x/text v0.43.0
 	rsc.io/qr v0.2.0
 )
 
@@ -99,7 +99,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.38.0 // indirect
 	golang.org/x/crypto v0.53.0 // indirect
 	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
-	golang.org/x/sync v0.21.0 // indirect
+	golang.org/x/sync v0.24.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
 	lukechampine.com/blake3 v1.1.6 // indirect
 	modernc.org/libc v1.67.6 // indirect

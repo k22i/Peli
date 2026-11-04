@@ -50,7 +50,7 @@ The host API was worked out by reading what plugins call, not from Nuvio's code 
 
 **The HTML and crypto APIs are ours.** Bundling cheerio means bundling its parser and Node shims, and bundling crypto-js means vendoring a library outside the notices tool's Go and npm scans. Both APIs are small in practice. So Go does the work (x/net/html, cascadia selectors with `:contains` and `:has`, Go's crypto) and about 900 lines of our own JS give it cheerio's and crypto-js's shapes. Elements look like htmlparser2's (`type`, `name`, `attribs`, `data`, `parent`, `children`, `next`, `prev`), so plugins that walk nodes by hand work. crypto-js's decrypt is just as lenient: a wrong key gives garbage or "Malformed UTF-8 data", never a cipher error. Its PBKDF2 defaults are 4.2's (SHA-256, 250,000 iterations). Not covered: cheerio's DOM writes beyond `attr` and `remove`, crypto-js's RC4, Rabbit and RIPEMD-160, and crypto-js's Keccak SHA3 (ours is FIPS 202).
 
-**goja** is pinned to 2026-10-01 (`dc0ad5d0dc92`), the last commit before goja moved to Go 1.26. Sinag stays on Go 1.25 until the toolchain moves on its own.
+**goja** is at its 2026-10-14 commit (`2cb8274eed06`), which needs Go 1.26, so `go.mod` asks for Go 1.26 and CI builds with 1.27, as the dev machines do.
 
 ## Plugin streams in the picker
 
