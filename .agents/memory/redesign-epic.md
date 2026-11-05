@@ -18,3 +18,5 @@ On 2026-11-05 the user asked for a total redesign: more liquid glass, posters an
 **#112 status (2026-11-05):** step 1 done (9642fa5): `gallery/type-specimens.tsx` (`typeOptions`, `TypeSample`) and `docs/design/type-specimen-{A,B,C}-dark.jpg`. Board item is back at Ready, waiting for the user to pick A, B or C in a comment on #112; step 2 (rollout) starts after that. The screenshots come from a throwaway page, not the real Home and title pages.
 
 **#113 status (2026-11-05):** built (see [[card-sizes]]), left open until `pnpm test` is run; commits 879f629, 13ef549, 59dec47 not pushed (Actions down).
+
+**#114 status (2026-11-05):** built (see [[app-shell]]), left open until `pnpm test` is run and the native sidebar is eyeballed; not pushed (Actions down).
