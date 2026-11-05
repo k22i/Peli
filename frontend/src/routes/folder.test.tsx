@@ -170,6 +170,30 @@ describe("collection folders", () => {
     );
   });
 
+  it("puts a poster cover beside the title, over the cover's haze", async () => {
+    serve({});
+    mocks.collections.mockResolvedValue([collection({ ...picks, shape: "POSTER" })]);
+    await renderApp("/folder/c1/f1");
+
+    const header = await screen.findByRole("region", { name: "Picks" });
+    expect(within(header).getByRole("heading", { level: 1, name: "Picks" })).toBeInTheDocument();
+    expect(within(header).getByText("Weekend")).toBeInTheDocument();
+    expect(header.querySelector("img[src*='picks.jpg']")).not.toBeNull();
+    expect(header.querySelector("[data-slot='ambient']")).not.toBeNull();
+  });
+
+  it("shows a landscape cover as a banner with the collection as its eyebrow", async () => {
+    serve({});
+    mocks.collections.mockResolvedValue([collection({ ...picks, shape: "LANDSCAPE" })]);
+    await renderApp("/folder/c1/f1");
+
+    const banner = await screen.findByRole("region", { name: "Picks" });
+    expect(within(banner).getByRole("heading", { level: 1, name: "Picks" })).toBeInTheDocument();
+    expect(within(banner).getByText("Weekend")).toBeInTheDocument();
+    expect(banner.querySelector("img[src*='picks.jpg']")).not.toBeNull();
+    expect(banner.querySelector("[data-slot='ambient']")).toBeNull();
+  });
+
   it("pages every catalog with skip", async () => {
     const asked = serve({
       [`${cinemetaBase}/movie/top/genre=Drama.json`]: {

@@ -21,6 +21,9 @@ import { cn } from "@/lib/utils";
 // `size="title"` (title pages, #117) is the same full-bleed billboard, a
 // little shorter (`min-h-[min(72vh,40rem)]`) with a smaller logo, since the
 // page below has its own content to show.
+//
+// `compact` (the folder banner, #119) is a short default hero: a banner, not a
+// billboard.
 export type HeroSize = "default" | "feature" | "title";
 
 // The sizes that run under the sidebar and the title bar.
@@ -36,6 +39,7 @@ export function Hero({
   fallbackBackdrop,
   actions,
   size = "default",
+  compact = false,
   className,
   ref,
 }: {
@@ -53,6 +57,7 @@ export function Hero({
   fallbackBackdrop?: string | undefined;
   actions?: ReactNode;
   size?: HeroSize;
+  compact?: boolean;
   className?: string;
   // The section, for a page that watches it scroll away (the title page's
   // Back button).
@@ -84,7 +89,7 @@ export function Hero({
             "dark relative isolate flex items-end text-foreground",
             size === "feature" && "min-h-[min(80vh,46rem)]",
             size === "title" && "min-h-[min(72vh,40rem)]",
-            size === "default" && "min-h-[min(68vh,36rem)]",
+            size === "default" && (compact ? "min-h-72" : "min-h-[min(68vh,36rem)]"),
           )}
         >
           <Artwork
@@ -111,7 +116,7 @@ export function Hero({
             className={cn(
               bleeds
                 ? "w-full pe-gutter ps-[calc(var(--sidebar-inset)+var(--spacing-gutter))] pt-32 pb-16"
-                : "max-w-2xl px-gutter pt-24 pb-12",
+                : cn("max-w-2xl px-gutter pb-12", compact ? "pt-16" : "pt-24"),
             )}
           >
             <div className={cn("flex flex-col gap-4", bleeds && "max-w-3xl")}>
@@ -201,9 +206,11 @@ export function Logo({
 
 export function HeroSkeleton({
   size = "default",
+  compact = false,
   className,
 }: {
   size?: HeroSize;
+  compact?: boolean;
   className?: string;
 }) {
   const bleeds = bled(size);
@@ -217,7 +224,8 @@ export function HeroSkeleton({
           "flex items-end bg-muted",
           size === "feature" && "min-h-[min(80vh,46rem)]",
           size === "title" && "min-h-[min(72vh,40rem)]",
-          size === "default" && "min-h-[min(68vh,36rem)] rounded-2xl dark:rounded-none",
+          size === "default" &&
+            cn(compact ? "min-h-72" : "min-h-[min(68vh,36rem)]", "rounded-2xl dark:rounded-none"),
         )}
       >
         <div

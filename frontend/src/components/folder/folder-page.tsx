@@ -7,7 +7,8 @@ import { NoAddons } from "@/components/addons/no-addons";
 import { GridSkeleton, Notice } from "@/components/browse/browse-page";
 import { Artwork } from "@/components/media/artwork";
 import { PosterCard } from "@/components/media/cards";
-import { HeroSkeleton, Logo } from "@/components/media/hero";
+import { Ambient } from "@/components/media/ambient";
+import { Hero, HeroSkeleton, Logo } from "@/components/media/hero";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
@@ -25,8 +26,8 @@ import { cn } from "@/lib/utils";
 import type { Collection, CollectionFolder, Profile } from "@bindings/store";
 
 // A collection folder (#96), opened from its tile on Home: a header with the
-// folder's cover and title or logo, then its catalogs merged into one grid
-// that loads more as it scrolls.
+// folder's cover and title or logo (a banner, or the cover beside the title,
+// #119), then its catalogs merged into one grid that loads more as it scrolls.
 export function FolderPage() {
   const { collectionId, folderId } = useParams({ from: "/folder/$collectionId/$folderId" });
   const profile = useQuery(currentProfileQuery).data;
@@ -74,7 +75,7 @@ function Folder({
   const { collection, folder } = found;
   const sources = loading ? [] : folderSources(folder, addons, shown);
   return (
-    <div className="flex flex-col gap-6 py-6">
+    <div className="flex flex-col gap-8 py-6">
       <FolderHeader collection={collection} folder={folder} />
       {visible.data?.length === 0 ? (
         <NoAddons profile={profile} />
@@ -105,15 +106,16 @@ function Folder({
 const folderTitle = (folder: CollectionFolder) =>
   folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title;
 
-// The cover in the tile's own shape, as on Home.
-const coverShape: Record<string, string> = {
-  POSTER: "aspect-[2/3] w-42",
-  SQUARE: "aspect-square w-54",
-};
+// The collection's name above the title: Mona Sans, small, uppercase and
+// tracked (not the hero's mono).
+const eyebrow = (collection: Collection) => (
+  <span className="font-sans font-semibold tracking-[0.06em]">{collection.title}</span>
+);
 
-// Like the Hero, but shorter, and always over the backdrop's dark scrim, so
-// a title logo (drawn for dark art) reads in either theme. With no backdrop,
-// the folder's generated gradient.
+// The header takes the cover's shape (#119). A poster or square cover stands
+// beside the title block, over a haze of its own colours; anything else is a
+// short banner (the Hero), with the cover as its art, or, with no cover, the
+// folder's backdrop or its generated gradient.
 function FolderHeader({
   collection,
   folder,
@@ -122,44 +124,56 @@ function FolderHeader({
   folder: CollectionFolder;
 }) {
   const title = folderTitle(folder);
+  if (folder.cover && (folder.shape === "POSTER" || folder.shape === "SQUARE")) {
+    return <CoverHeader collection={collection} folder={folder} cover={folder.cover} />;
+  }
+  return (
+    <Hero
+      compact
+      title={title}
+      logo={folder.logo}
+      eyebrow={eyebrow(collection)}
+      backdrop={folder.cover || folder.backdrop || collection.backdrop}
+      fallbackBackdrop={folder.backdrop || collection.backdrop}
+      className={headerOffset}
+    />
+  );
+}
+
+// The cover at w-56 beside the title, over the cover's own colours.
+function CoverHeader({
+  collection,
+  folder,
+  cover,
+}: {
+  collection: Collection;
+  folder: CollectionFolder;
+  cover: string;
+}) {
+  const title = folderTitle(folder);
+  const poster = folder.shape === "POSTER";
   return (
     <section
       aria-label={folder.title}
-      className={cn("relative px-gutter pt-4 dark:px-0 dark:pt-0", headerOffset)}
+      className="relative isolate flex items-end gap-8 px-gutter pt-6"
     >
-      <div className="overflow-hidden rounded-2xl shadow-lift dark:rounded-none dark:shadow-none">
-        <div className="dark relative isolate flex min-h-72 items-end gap-6 px-gutter pt-20 pb-10 text-foreground">
-          <Artwork
-            src={folder.backdrop || collection.backdrop}
-            title={folder.title}
-            className="absolute inset-0 -z-10"
-          />
-          <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/40 to-black/10" />
-          {folder.cover && (
-            <div
-              className={cn(
-                "shrink-0 overflow-hidden rounded-xl shadow-lift",
-                coverShape[folder.shape ?? ""] ?? "aspect-video w-84",
-              )}
-            >
-              <Artwork
-                src={folder.cover}
-                use={folder.shape === "POSTER" ? "poster" : "landscape"}
-                title={folder.title}
-              />
-            </div>
-          )}
-          <div className="flex min-w-0 flex-col gap-3">
-            <p className="font-mono text-meta font-medium tracking-widest text-brand uppercase">
-              {collection.title}
-            </p>
-            <h1 className="font-heading text-display text-balance font-stretch-expanded">
-              {folder.logo ? <Logo src={folder.logo} title={title} className="max-h-24" /> : title}
-            </h1>
-          </div>
-        </div>
+      <Ambient src={cover} />
+      <div
+        className={cn(
+          "w-56 shrink-0 overflow-hidden rounded-2xl shadow-lift",
+          poster ? "aspect-[2/3]" : "aspect-square",
+        )}
+      >
+        <Artwork src={cover} use={poster ? "poster" : "landscape"} title={folder.title} />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-12 bg-linear-to-t from-background to-transparent dark:block" />
+      <div className="flex min-w-0 flex-col gap-3 pb-2">
+        <p className="text-meta font-semibold tracking-[0.06em] text-brand uppercase">
+          {collection.title}
+        </p>
+        <h1 className="font-heading text-display text-balance font-stretch-expanded">
+          {folder.logo ? <Logo src={folder.logo} title={title} className="max-h-24" /> : title}
+        </h1>
+      </div>
     </section>
   );
 }
@@ -255,8 +269,8 @@ function FolderGrid({
 
 function FolderSkeleton() {
   return (
-    <div className="flex flex-col gap-6 py-6">
-      <HeroSkeleton className={headerOffset} />
+    <div className="flex flex-col gap-8 py-6">
+      <HeroSkeleton compact className={headerOffset} />
       <GridSkeleton />
     </div>
   );
