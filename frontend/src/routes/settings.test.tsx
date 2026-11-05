@@ -253,6 +253,17 @@ describe("settings", () => {
     expect(router.state.location.pathname).toBe("/settings");
   });
 
+  it("gives only the current pane a sliding pill", async () => {
+    await renderSettings("playback");
+
+    const pills = [...paneList().querySelectorAll("[data-settings-pill]")];
+
+    expect(pills).toHaveLength(1);
+    expect(within(paneList()).getByRole("link", { name: "Playback" }).contains(pills[0]!)).toBe(
+      true,
+    );
+  });
+
   it("falls back to Account for a pane that doesn't exist", async () => {
     await renderApp("/settings?section=nope");
 

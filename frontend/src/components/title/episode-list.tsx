@@ -178,7 +178,7 @@ function EpisodeRow({
   ].filter(Boolean);
 
   return (
-    <div className="group/episode flex items-center gap-5 rounded-2xl p-3 transition-colors hover:bg-accent/60">
+    <div className="group/episode flex items-center gap-5 rounded-2xl p-3 transition-[background-color,scale] duration-(--duration-fast) hover:bg-accent/60 motion-safe:has-[[data-episode-index]:active]:scale-[0.99]">
       <button
         type="button"
         data-episode-index={index}

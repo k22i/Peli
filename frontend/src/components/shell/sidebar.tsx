@@ -37,12 +37,12 @@ const browse = sections.filter((section) => section !== search && section !== li
 const visualOrder = [search, ...browse, library].filter((section) => section !== undefined);
 
 const itemClass =
-  "group/item flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-[550] text-sidebar-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:bg-brand-soft data-[status=active]:text-foreground [&_svg]:size-5 [&_svg]:shrink-0 data-[status=active]:[&_svg]:text-brand";
+  "group/item relative isolate flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-[550] text-sidebar-foreground outline-none transition-[scale] duration-(--duration-fast) hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.99] data-[status=active]:text-foreground data-[status=active]:hover:bg-transparent [&_svg]:size-5 [&_svg]:shrink-0 data-[status=active]:[&_svg]:text-brand";
 
 // Search is the entry to a field (Apple Music style): a link that looks like
 // one, with its shortcut on the right. Below md it is an icon like the rest.
 const searchClass =
-  "group/item flex h-9 items-center gap-2.5 rounded-xl px-3 text-sm text-muted-foreground outline-none glass-thin hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:text-foreground [&_svg]:size-4.5 [&_svg]:shrink-0 data-[status=active]:[&_svg]:text-brand max-md:h-10 max-md:justify-center max-md:px-0";
+  "group/item relative isolate flex h-9 items-center gap-2.5 rounded-xl px-3 text-sm text-muted-foreground outline-none transition-[scale] duration-(--duration-fast) glass-thin hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.99] data-[status=active]:text-foreground [&_svg]:size-4.5 [&_svg]:shrink-0 data-[status=active]:[&_svg]:text-brand max-md:h-10 max-md:justify-center max-md:px-0";
 
 // The six sections, the offline indicator and the profile menu, in a glass
 // panel floating inset from the window's edges (#114). An icon rail below the
@@ -80,6 +80,13 @@ export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void
               />
             }
           >
+            {pathname === section.to && (
+              <span
+                aria-hidden
+                data-slot="nav-pill"
+                className="absolute inset-0 -z-10 rounded-xl bg-brand-soft [view-transition-name:nav-pill]"
+              />
+            )}
             <section.icon aria-hidden />
             <span className="sr-only md:not-sr-only">{section.label}</span>
             {isSearch && (

@@ -4,6 +4,7 @@ import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/r
 import type { Watching } from "@bindings/player";
 import type { Source } from "@bindings/streams";
 import type { Stream } from "@/lib/addon-protocol";
+import { trackNavDirection } from "@/lib/nav-direction";
 import type { PlayTarget } from "@/lib/playback";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import type { TitlePreview } from "@/lib/title";
@@ -15,7 +16,7 @@ export function createAppRouter(
   queryClient: QueryClient,
   history: RouterHistory = createHashHistory(),
 ) {
-  return createRouter({
+  const router = createRouter({
     routeTree,
     history,
     context: { queryClient },
@@ -25,10 +26,14 @@ export function createAppRouter(
     // The shell's content pane scrolls, not the window (see AppShell).
     scrollRestoration: true,
     scrollToTopSelectors: ["#content"],
-    // Cross-fades the content pane only; index.css keeps the shell still and
-    // turns it off for reduced motion.
+    // Animates the content pane only (a cross-fade between sections, a scale
+    // in or out for deeper pages and back, see lib/nav-direction.ts); index.css
+    // keeps the shell still and turns it off for reduced motion.
     defaultViewTransition: true,
   });
+  // The router lives as long as the app, so the subscription is never undone.
+  trackNavDirection(router);
+  return router;
 }
 
 declare module "@tanstack/react-router" {

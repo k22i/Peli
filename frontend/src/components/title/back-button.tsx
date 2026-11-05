@@ -44,7 +44,7 @@ export function BackButton({ hero }: { hero: Element | null }) {
       data-over-hero={overHero || undefined}
       onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
       className={cn(
-        "fixed start-[calc(var(--sidebar-inset)+var(--spacing-gutter))] top-[calc(var(--titlebar-h)+0.75rem)] z-20 size-10 rounded-full sm:size-10 transition-colors duration-(--duration-base)",
+        "fixed start-[calc(var(--sidebar-inset)+var(--spacing-gutter))] top-[calc(var(--titlebar-h)+0.75rem)] z-20 size-10 rounded-full sm:size-10 transition-[color,background-color,scale] duration-(--duration-fast)",
         overHero
           ? "glass-media text-white hover:bg-(--glass-media) hover:text-white"
           : "glass text-popover-foreground hover:bg-(--glass-regular)",

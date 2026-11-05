@@ -56,6 +56,24 @@ describe("app shell", () => {
     ).toEqual([expect.stringContaining("Search"), "Home", "Movies", "Shows", "Anime", "Library"]);
   });
 
+  it("gives only the current section a sliding pill, and moves it with the route", async () => {
+    const user = userEvent.setup();
+    await renderApp("/shows");
+
+    const nav = screen.getByRole("navigation", { name: "Main" });
+    const pills = () => [...nav.querySelectorAll('[data-slot="nav-pill"]')];
+
+    expect(pills()).toHaveLength(1);
+    expect(within(nav).getByRole("link", { name: "Shows" }).contains(pills()[0]!)).toBe(true);
+    expect(pills()[0]).toHaveAttribute("aria-hidden", "true");
+
+    await user.click(within(nav).getByRole("link", { name: "Movies" }));
+    await heading("Movies");
+
+    expect(pills()).toHaveLength(1);
+    expect(within(nav).getByRole("link", { name: "Movies" }).contains(pills()[0]!)).toBe(true);
+  });
+
   it("shows the title bar's scroll edge once the page is scrolled", async () => {
     await renderApp("/");
     const content = document.getElementById("content");

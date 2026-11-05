@@ -809,6 +809,56 @@
 }
 
 /*
+ * Directional page transitions (#124). lib/nav-direction.ts puts
+ * data-nav="forward" | "back" | "section" on <html> as each navigation starts.
+ * Going deeper (a title, a folder, the stream picker) the new page comes in
+ * from a touch smaller; going back it comes in from a touch larger, so a page
+ * leaves the way it came. The old page just fades out, and moving between
+ * sections keeps the quick cross-fade above. Nothing waits on these: the new
+ * page is live from the first frame.
+ */
+@keyframes nav-enter-forward {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@keyframes nav-enter-back {
+  from {
+    opacity: 0;
+    transform: scale(1.015);
+  }
+}
+
+:root[data-nav="forward"]::view-transition-new(content) {
+  animation: nav-enter-forward var(--duration-slow) var(--ease-smooth) both;
+}
+
+:root[data-nav="back"]::view-transition-new(content) {
+  animation: nav-enter-back var(--duration-slow) var(--ease-smooth) both;
+}
+
+/*
+ * Sliding pills (#124): the active sidebar item's and Settings pane's
+ * background are elements of their own, named so a route change glides them
+ * from the old item to the new one. Their groups sit above the shell's, and
+ * blend with multiply (the light pill is opaque) so labels still show through
+ * while the pill passes over them.
+ */
+::view-transition-group(nav-pill),
+::view-transition-group(settings-pill) {
+  z-index: 2;
+  animation-duration: var(--duration-base);
+  animation-timing-function: var(--ease-spring);
+}
+
+:root:not(.dark)::view-transition-image-pair(nav-pill),
+:root:not(.dark)::view-transition-image-pair(settings-pill) {
+  mix-blend-mode: multiply;
+}
+
+/*
  * Reduced motion: nothing moves. Components use `motion-safe:` for travel,
  * scale and springs; this catches the rest (the skeleton shimmer, smooth
  * scrolling, view transitions) and keeps fades to an instant.

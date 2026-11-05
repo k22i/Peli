@@ -114,8 +114,8 @@ function moveFocus(event: KeyboardEvent<HTMLAnchorElement>) {
 // router uses the URL hash, so "#playback" would be read as a route. The
 // current pane is the one Tab stop; arrows move between panes.
 //
-// The active item's background is its own element (`data-settings-pill`), so
-// it can become one sliding pill later (#124).
+// The active item's background is its own element (`data-settings-pill`),
+// named for the view transition, so it glides to the next pane (#124).
 export function SettingsPaneList({
   current,
   onNavigate,
@@ -145,13 +145,13 @@ export function SettingsPaneList({
                 data-status={active ? "active" : undefined}
                 onClick={onClick}
                 onKeyDown={moveFocus}
-                className="group/pane relative flex h-10 items-center gap-3 rounded-xl px-2.5 text-sm font-[550] outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:hover:bg-transparent"
+                className="group/pane relative flex h-10 items-center gap-3 rounded-xl px-2.5 text-sm font-[550] outline-none transition-[scale] duration-(--duration-fast) hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.99] data-[status=active]:hover:bg-transparent"
               >
                 {active && (
                   <span
                     aria-hidden
                     data-settings-pill
-                    className="absolute inset-0 rounded-xl bg-brand-soft"
+                    className="absolute inset-0 rounded-xl bg-brand-soft [view-transition-name:settings-pill]"
                   />
                 )}
                 <span
