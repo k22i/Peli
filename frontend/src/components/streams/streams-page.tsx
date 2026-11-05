@@ -19,10 +19,11 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
 import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
+import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
 import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
-import { titleContext, type Candidate, type Tier } from "@/lib/ranking";
+import { rememberedMatch, titleContext, type Candidate, type Tier } from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
@@ -40,6 +41,7 @@ import { subtitleTarget } from "@/lib/subtitles";
 import { Torrents, torrentStatusText } from "@/lib/torrent";
 import {
   cachedTitleMeta,
+  isSeriesType,
   playerHeading,
   resumePoint,
   titleMetaQuery,
@@ -53,7 +55,8 @@ import {
 // fakes and CAM / TS collapsed. Leaving it aborts the requests still out.
 // Picking a stream resolves its link, or another copy's (#53), or streams
 // its torrent (#55), and plays it (#60) from where the profile left it, as
-// synced (#64).
+// synced (#64). A show's top pick is the closest match to the source it
+// last played from (#58), and what plays is remembered as that source.
 export function StreamsPage() {
   const { type, id } = useParams({ from: "/streams/$type/$id" });
   const search: StreamsSearch = useSearch({ from: "/streams/$type/$id" });
@@ -122,7 +125,7 @@ function Picker({
   video: string;
   target: PlayTarget;
 }) {
-  const { loading, sources, names, meta, settings, view, pin, rows, toggleGroup, refresh } =
+  const { loading, sources, names, meta, settings, view, pin, rows, toggleGroup, refresh, usual } =
     useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
   const navigate = useNavigate();
@@ -191,6 +194,9 @@ function Picker({
           void Player.Load(source, loadOptions(start, settings, [], watching)).then(
             () => {
               toastManager.close(toast);
+              // What played is the show's source now (#58), the top pick or
+              // not: the next episode starts from it.
+              rememberSource(client, profile.id, type, target.id, candidate, attempt);
               void navigate({
                 to: "/player",
                 state: (state) => ({
@@ -274,6 +280,7 @@ function Picker({
         onNavigate={pin}
         onPick={pick}
         onToggleGroup={toggleGroup}
+        usual={usual}
       />
     </>
   );
@@ -284,7 +291,9 @@ function Picker({
 // their streams ranked as they answer, by what the title's details (as its
 // page asked for them, usually cached by now) and the profile's audio
 // language say. Ranking starts without the details and starts again once
-// they come. `rows` has the collapsed groups that toggleGroup opened.
+// they come. The source a show last played from (#58) puts its closest
+// match on top, which `usual` tells. `rows` has the collapsed groups that
+// toggleGroup opened.
 export function useStreamChoices(
   profileId: number,
   type: ContentType,
@@ -318,8 +327,13 @@ export function useStreamChoices(
       .streams;
   };
   const settings = useQuery(profileSettingsQuery(profileId)).data;
+  const chosen = useQuery({
+    ...chosenSourceQuery(profileId, id),
+    enabled: isSeriesType(type),
+  }).data;
+  const last = isSeriesType(type) ? remembered(chosen) : null;
   const ctx = titleContext(type, video, meta, title);
-  const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings));
+  const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, last));
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const toggleGroup = (tier: Tier) =>
     setOpen((current) => {
@@ -338,6 +352,7 @@ export function useStreamChoices(
     rows: listRows(view, open),
     toggleGroup,
     refresh,
+    usual: (candidate: Candidate) => !!last && rememberedMatch(last, candidate) > 0,
   };
 }
 

@@ -1,6 +1,7 @@
 // Package store is Sinag's local database: profiles, their library, watch
-// progress, watched items, addons, home layout, collections and settings,
-// the device's settings, the sync bookkeeping (#28) and a cache.
+// progress, watched items, addons, home layout, collections, settings and
+// the source each show was last played from (#58), the device's settings,
+// the sync bookkeeping (#28) and a cache.
 // It is one bbolt file in the OS app-data directory (ADR-0006).
 //
 // Layout: every profile has its own bucket under "profiles", and everything
@@ -20,6 +21,7 @@
 //	  cursors/         <surface> → int64
 //	  outbox/          <surface> 0x00 <key> → Push
 //	  tracking-outbox/ <sequence> → TrackingJob (made when first needed)
+//	  sources/         <content id> → ChosenSource (#58, made when first needed)
 //	settings           device → DeviceSettings
 //	                   current → uint64 (profile id)
 //	                   account → string (the linked Nuvio account's user id)

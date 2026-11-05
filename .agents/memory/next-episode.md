@@ -13,7 +13,7 @@ metadata:
 - `PlayerPage` owns the session (Stop, torrent Release via the last real `playing.source`, since leaving re-renders it once with the next screen's state); `PlayerFile` is keyed by `source.url`, so per-file state resets. A new file = `navigate({to: "/player", replace: true, state})` with new `watching`/`resumedAt`/`subtitles`.
 - `switching` ref ignores player:ended while the next opens. Released torrent only when the next is a link.
 - internal/torrent: `session.file` is an atomic pointer; `Open` with another file of the same hash switches it (old URL 404s). Before this it silently returned the first file.
-- #58 hook: put the remembered source first in `usePreparedNext` (same as the picker).
+- #58 is done: `usePreparedNext` ranks with the remembered source and waits for it to load ([[remembered-source]]); playNext saves what played.
 - Tests: `next episode` describe in routes/player.test.tsx; stream URLs are `%3A`-encoded (`tt0903747%3A1%3A2.json`); Resolve/Open mocks need `cancel`.
 - Stubbed screenshot of /player: throwaway `vite.stub.config.ts` + `stub-main.tsx` in frontend/ exposing `window.router`, then `router.navigate({to: "/player", state})` over CDP; Player.Snapshot stub sets position/duration. Delete both after.
 - Related: [[progress-resume]], [[player-service]], [[stream-resolve]], [[torrent-streaming]].

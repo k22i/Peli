@@ -1,8 +1,9 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 import type { ProfileSettings } from "@bindings/store";
 import { streamsQuery, type Meta } from "@/lib/addon-protocol";
+import { chosenSourceQuery, remembered } from "@/lib/chosen-source";
 import { titleContext, type Candidate } from "@/lib/ranking";
 import { attempts, resolvePick, type Resolved } from "@/lib/resolve";
 import { rankingPrefs, useRankedStreams, useStreamAddons, useStreams } from "@/lib/streams";
@@ -55,8 +56,9 @@ const settleAfter = 500;
 
 // Gets the next episode ready while mounted: its streams from every stream
 // addon, ranked as the picker ranks them, and the top pick resolved. Leaving
-// aborts what's still out. Once #58 remembers a show's source, the
-// remembered one goes first here as in the picker.
+// aborts what's still out. The top pick is the closest match to the source
+// the show last played from (#58), as in the picker, so the pick waits for
+// the store to say what that was.
 export function usePreparedNext(
   profileId: number,
   meta: Meta,
@@ -66,9 +68,11 @@ export function usePreparedNext(
   const client = useQueryClient();
   const { addons, loading } = useStreamAddons(profileId);
   const sources = useStreams(addons, meta.type, next.id);
+  const chosen = useQuery(chosenSourceQuery(profileId, meta.id));
   const ctx = titleContext(meta.type, next.id, meta, meta.name);
-  const { view } = useRankedStreams(sources, ctx, rankingPrefs(settings));
-  const answered = !loading && sources.every((source) => source.status !== "pending");
+  const { view } = useRankedStreams(sources, ctx, rankingPrefs(settings, remembered(chosen.data)));
+  const answered =
+    !loading && !chosen.isPending && sources.every((source) => source.status !== "pending");
 
   // The top pick once the ranking settles, null for none.
   const [top, setTop] = useState<Candidate | null>();

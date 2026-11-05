@@ -18,6 +18,7 @@ import {
   emptyView,
   type Prefs,
   type RankedView,
+  type Remembered,
   type TitleContext,
 } from "@/lib/ranking";
 
@@ -158,16 +159,21 @@ export function useStreamFeed(
 }
 
 // What ranking prefers: the profile's audio language, and HDR when the
-// display shows it. Dolby Vision can't be detected from a webview, and the
-// resolution isn't capped: a 4K encode still looks better on a smaller
-// display, so both wait for settings of their own.
-export function rankingPrefs(settings: ProfileSettings | undefined): Prefs {
+// display shows it, and the show's remembered source (#58) as the top pick.
+// Dolby Vision can't be detected from a webview, and the resolution isn't
+// capped: a 4K encode still looks better on a smaller display, so both wait
+// for settings of their own.
+export function rankingPrefs(
+  settings: ProfileSettings | undefined,
+  remembered: Remembered | null = null,
+): Prefs {
   const hdr = typeof matchMedia === "function" && matchMedia("(dynamic-range: high)").matches;
   return {
     languages: settings?.audioLanguage ? [settings.audioLanguage] : [],
     maxResolution: "2160p",
     hdr,
     dolbyVision: false,
+    remembered,
   };
 }
 

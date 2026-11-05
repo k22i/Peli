@@ -5,7 +5,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 import type * as Runtime from "@wailsio/runtime";
 import type { Ended, State, Track, Watching } from "@bindings/player";
 import type { Segment, Title } from "@bindings/markers";
-import type { Addon, DeviceSettings, Profile, ProfileSettings, Progress } from "@bindings/store";
+import type {
+  Addon,
+  ChosenSource,
+  DeviceSettings,
+  Profile,
+  ProfileSettings,
+  Progress,
+} from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
@@ -48,6 +55,9 @@ const mocks = vi.hoisted(() => ({
   torrentStatus: vi.fn<() => Promise<Status>>(),
   release: vi.fn<() => Promise<void>>(),
   openTorrent: vi.fn<(request: TorrentRequest) => Promise<Source>>(),
+  chosen: vi.fn<(profileId: number, contentId: string) => Promise<ChosenSource | null>>(),
+  setChosen:
+    vi.fn<(profileId: number, contentId: string, chosen: ChosenSource | null) => Promise<void>>(),
 }));
 
 vi.mock("@wailsio/runtime", async (importOriginal) => {
@@ -113,6 +123,8 @@ vi.mock("@bindings/store", () => ({
     Addons: mocks.addons,
     VisibleAddons: mocks.visibleAddons,
     TitleProgress: mocks.titleProgress,
+    ChosenSource: mocks.chosen,
+    SetChosenSource: mocks.setChosen,
   },
 }));
 
@@ -213,6 +225,8 @@ afterEach(() => {
 
 beforeEach(() => {
   mocks.handlers.clear();
+  mocks.chosen.mockReset().mockResolvedValue(null);
+  mocks.setChosen.mockReset().mockResolvedValue(undefined);
   mocks.snapshot.mockResolvedValue({ ...idleState, active: true, loading: true });
   mocks.load.mockResolvedValue(undefined);
   mocks.stop.mockResolvedValue(undefined);
@@ -1069,6 +1083,38 @@ describe("next episode", () => {
   const openPilot = (played = source) =>
     openPlayer("S1 · E1 · Pilot", played, undefined, { watching: pilot });
 
+  // #58: the source the show last played from, not the ranked best.
+  it("gets the stream matching the show's last source ready, and remembers it as it plays", async () => {
+    const ntb = {
+      name: "[TB+] Torrentio\n720p",
+      title: "Breaking.Bad.S01E02.720p.WEB-DL.DDP5.1.H264-NTb.mkv\n👤 20 💾 1.1 GB ⚙️ Tracker",
+      url: "https://torrentio.strem.fun/resolve/torbox/KEY/c/null/1/Breaking.Bad.S01E02.720p.mkv",
+    };
+    serve([debrid, ntb]);
+    mocks.chosen.mockResolvedValue({
+      source: torrentio.url,
+      resolution: "720p",
+      group: "NTb",
+      chosenAt: 1,
+    });
+    await openPilot();
+    emit("player:state", watched);
+    const next = await card();
+    expect(await within(next).findByText("720p from Torrentio")).toBeInTheDocument();
+    expect(mocks.resolve).toHaveBeenCalledWith({ url: ntb.url, headers: {} });
+    expect(mocks.resolve).not.toHaveBeenCalledWith({ url: debrid.url, headers: {} });
+
+    emit("player:ended", { reason: "eof" } satisfies Ended);
+    await waitFor(() =>
+      expect(mocks.setChosen).toHaveBeenCalledExactlyOnceWith(1, "tt0903747", {
+        source: torrentio.url,
+        resolution: "720p",
+        group: "NTb",
+        chosenAt: expect.any(Number),
+      }),
+    );
+  });
+
   it("offers it once this one counts as watched, ready in advance, and plays it at the end", async () => {
     serve([debrid]);
     const { router } = await openPilot();
@@ -1271,6 +1317,25 @@ describe("stream switcher", () => {
   const openPilot = () =>
     openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot, stream: hd, resumedAt: 0 });
 
+  it("tops the list with the show's last source, saying so", async () => {
+    serve([hd, fullHd]);
+    mocks.chosen.mockResolvedValue({
+      source: torrentio.url,
+      resolution: "720p",
+      group: "GRP",
+      chosenAt: 1,
+    });
+    await openPilot();
+    emit("player:state", playing);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Streams" }));
+    const panel = await screen.findByRole("dialog", { name: "Streams" });
+    const top = await within(panel).findByRole("button", { name: /^Top pick/ });
+    await waitFor(() => expect(top).toHaveTextContent("Same source as last time"));
+    expect(top).toHaveTextContent("720p");
+    expect(top).toHaveTextContent("Playing");
+  });
+
   it("lists the streams of what plays, the one playing marked, and plays the one picked from where this one is", async () => {
     serve([hd, fullHd]);
     const { router } = await openPilot();
@@ -1293,6 +1358,13 @@ describe("stream switcher", () => {
       ),
     );
     expect(mocks.resolve).toHaveBeenCalledWith({ url: fullHd.url, headers: {} });
+    // The show's source from now on (#58).
+    expect(mocks.setChosen).toHaveBeenCalledExactlyOnceWith(1, "tt0903747", {
+      source: torrentio.url,
+      resolution: "1080p",
+      group: "GRP",
+      chosenAt: expect.any(Number),
+    });
     await waitFor(() =>
       expect(router.state.location.state.player?.source?.url).toBe(
         "https://cdn.example/KEY/fresh.mkv",

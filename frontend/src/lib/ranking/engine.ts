@@ -1,6 +1,7 @@
 import type { Stream } from "@/lib/addon-protocol";
 
 import type { TitleContext } from "./context";
+import { rememberedPick } from "./remembered";
 import {
   better,
   candidate,
@@ -24,8 +25,9 @@ import {
 export type RankedGroup<C = Candidate> = { tier: Tier; items: C[] };
 
 export type RankedView<C = Candidate> = {
-  // The highlighted pick: the best outside the collapsed groups, or the one
-  // pinned when the user started navigating.
+  // The highlighted pick: the best outside the collapsed groups (or the
+  // closest match to the show's remembered source, #58), or the one pinned
+  // when the user started navigating.
   top: C | null;
   // In `tiers` order, without empty ones.
   groups: RankedGroup<C>[];
@@ -115,8 +117,12 @@ export class StreamEngine {
     this.#pinned ??= this.#best();
   }
 
+  // The best outside the collapsed groups, or the closest match to the
+  // source remembered for the show (#58).
   #best(): Candidate | null {
-    return this.#sorted.find((c) => !collapsedTiers.has(c.tier)) ?? null;
+    const best = this.#sorted.find((c) => !collapsedTiers.has(c.tier)) ?? null;
+    const { remembered } = this.prefs;
+    return (remembered && rememberedPick(remembered, this.#sorted, best)) || best;
   }
 
   view(): RankedView {

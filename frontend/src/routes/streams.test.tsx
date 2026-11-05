@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Plugin, Query, Stream as PluginStream } from "@bindings/plugins";
-import type { Addon, Profile, Progress } from "@bindings/store";
+import type { Addon, ChosenSource, Profile, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
@@ -28,6 +28,9 @@ const mocks = vi.hoisted(() => ({
   torrentStatus: vi.fn<() => Promise<Status>>(),
   installed: vi.fn<() => Promise<Plugin[]>>(),
   pluginStreams: vi.fn<(plugin: Plugin, query: Query) => Promise<PluginStream[]>>(),
+  chosen: vi.fn<(profileId: number, contentId: string) => Promise<ChosenSource | null>>(),
+  setChosen:
+    vi.fn<(profileId: number, contentId: string, chosen: ChosenSource | null) => Promise<void>>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -43,6 +46,8 @@ vi.mock("@bindings/store", () => ({
     Library: () => Promise.resolve([]),
     TitleWatched: () => Promise.resolve([]),
     TitleProgress: mocks.titleProgress,
+    ChosenSource: mocks.chosen,
+    SetChosenSource: mocks.setChosen,
     ProfileSettings: () =>
       Promise.resolve({
         audioLanguage: "",
@@ -236,6 +241,8 @@ beforeEach(() => {
   mocks.current.mockResolvedValue(kevin);
   mocks.installed.mockReset().mockResolvedValue([]);
   mocks.pluginStreams.mockReset().mockResolvedValue([]);
+  mocks.chosen.mockReset().mockResolvedValue(null);
+  mocks.setChosen.mockReset().mockResolvedValue(undefined);
   mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
   mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio, peerflix]);
 });
@@ -872,5 +879,80 @@ describe("stream picker", () => {
     await waitFor(() => expect(shownStreams()).toHaveLength(2));
     expect(topPick()).toHaveTextContent("P2P · 40 seeders");
     expect(shownStreams()[1]).toHaveTextContent("Cached · TorBox");
+  });
+  // #58: the show's last source on top, and what plays remembered.
+  it("puts the source the show last played from on top, and remembers what plays", async () => {
+    serve({
+      "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json": torrentioSeries,
+    });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.chosen.mockResolvedValue({
+      source: torrentio.url,
+      resolution: "1080p",
+      group: "PSA",
+      chosenAt: 1,
+    });
+    mocks.openTorrent.mockImplementation(async ({ infoHash }) =>
+      resolved({ url: infoHash, headers: {} }),
+    );
+    const user = userEvent.setup();
+    await renderApp("/title/series/tt0903747");
+
+    await user.click(await screen.findByRole("button", { name: /^S1 · E1/ }));
+    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("12 streams"));
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick·Same source as last time/));
+    expect(mocks.chosen).toHaveBeenCalledWith(1, "tt0903747");
+    expect(shownStreams()[1]).not.toHaveTextContent("Same source as last time");
+
+    await user.click(topPick());
+    await opensThePlayer();
+    expect(mocks.setChosen).toHaveBeenCalledExactlyOnceWith(1, "tt0903747", {
+      source: torrentio.url,
+      resolution: "1080p",
+      group: "PSA",
+      chosenAt: expect.any(Number),
+    });
+  });
+
+  it("remembers another stream the user picks instead, from then on", async () => {
+    serve({
+      "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json": torrentioSeries,
+    });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.chosen.mockResolvedValue({
+      source: torrentio.url,
+      resolution: "1080p",
+      group: "PSA",
+      chosenAt: 1,
+    });
+    mocks.openTorrent.mockImplementation(async ({ infoHash }) =>
+      resolved({ url: infoHash, headers: {} }),
+    );
+    const user = userEvent.setup();
+    await renderApp("/title/series/tt0903747");
+
+    await user.click(await screen.findByRole("button", { name: /^S1 · E1/ }));
+    await waitFor(() => expect(topPick()).toHaveTextContent("Same source as last time"));
+    await user.click(shownStreams()[1]!);
+    await opensThePlayer();
+    expect(mocks.setChosen).toHaveBeenCalledExactlyOnceWith(
+      1,
+      "tt0903747",
+      expect.objectContaining({ source: torrentio.url }),
+    );
+    expect(mocks.setChosen.mock.calls[0]![2]!.group).not.toBe("PSA");
+  });
+
+  it("keeps no source for a film", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    await user.click(topPick());
+    await opensThePlayer();
+    expect(mocks.chosen).not.toHaveBeenCalled();
+    expect(mocks.setChosen).not.toHaveBeenCalled();
   });
 });

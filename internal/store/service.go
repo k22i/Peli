@@ -223,6 +223,18 @@ func (s *Service) SaveProfileSettings(profileID uint64, settings ProfileSettings
 	return s.store.SaveProfileSettings(profileID, settings)
 }
 
+// ChosenSource returns the source a profile last played a show from (#58),
+// or null for none.
+func (s *Service) ChosenSource(profileID uint64, contentID string) (*ChosenSource, error) {
+	return s.store.ChosenSource(profileID, contentID)
+}
+
+// SetChosenSource remembers the source a profile played a show from, or
+// forgets it when chosen is null.
+func (s *Service) SetChosenSource(profileID uint64, contentID string, chosen *ChosenSource) error {
+	return s.store.SetChosenSource(profileID, contentID, chosen)
+}
+
 // DeviceSettings returns this device's settings.
 func (s *Service) DeviceSettings() (DeviceSettings, error) { return s.store.DeviceSettings() }
 

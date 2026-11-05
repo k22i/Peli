@@ -3,6 +3,7 @@ import type { Stream } from "@/lib/addon-protocol";
 import type { TitleContext } from "./context";
 import { judge, mbps, type Verdict } from "./fakes";
 import { parseStream, type Parsed, type Resolution } from "./parse";
+import type { Remembered } from "./remembered";
 
 // Scoring, quality tiers and cross-addon de-duplication (#51). Every weight
 // is in `defaultWeights`, hand-set from #6 and tuned there; they aren't
@@ -17,6 +18,9 @@ export type Prefs = {
   // The display shows HDR10, and Dolby Vision.
   hdr: boolean;
   dolbyVision: boolean;
+  // The source the profile last played this show from (#58): its best
+  // match is the top pick. It changes no score.
+  remembered?: Remembered | null;
 };
 
 export const defaultPrefs: Prefs = {

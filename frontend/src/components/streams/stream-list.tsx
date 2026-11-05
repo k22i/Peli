@@ -1,5 +1,14 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { ChevronRight, Download, FileText, Play, TriangleAlert, Users, Zap } from "lucide-react";
+import {
+  ChevronRight,
+  Download,
+  FileText,
+  History,
+  Play,
+  TriangleAlert,
+  Users,
+  Zap,
+} from "lucide-react";
 import { useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 
 import { scrollParent } from "@/components/media/poster-grid";
@@ -28,7 +37,8 @@ import { cn } from "@/lib/utils";
 // page and is virtualized. It's one Tab stop: the arrow keys, Home and End
 // move between rows, Enter plays, I shows a row's file name. Moving into the
 // list pins the top pick, so it doesn't change under the user. In the
-// player's stream switcher (#68), the stream playing is marked.
+// player's stream switcher (#68), the stream playing is marked, and a top
+// pick that matches the show's remembered source (#58) says so.
 
 export type ListRow =
   | { kind: "top"; candidate: Candidate }
@@ -65,12 +75,15 @@ export function StreamList({
   onPick,
   onToggleGroup,
   playing,
+  usual,
 }: {
   rows: readonly ListRow[];
   // Addon names, by URL.
   names: ReadonlyMap<string, string>;
   // Whether a candidate is the stream playing.
   playing?: (candidate: Candidate) => boolean;
+  // Whether a candidate matches the source the show last played from.
+  usual?: (candidate: Candidate) => boolean;
   onNavigate: () => void;
   onPick: (candidate: Candidate) => void;
   onToggleGroup: (tier: Tier) => void;
@@ -208,6 +221,7 @@ export function StreamList({
               <StreamRow
                 candidate={row.candidate}
                 best={row.kind === "top"}
+                usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
                 current={playing?.(row.candidate) ?? false}
                 addon={names.get(row.candidate.source) ?? ""}
                 named={named.has(key)}
@@ -283,6 +297,7 @@ function GroupHeading({
 function StreamRow({
   candidate,
   best,
+  usual,
   current,
   addon,
   named,
@@ -292,6 +307,7 @@ function StreamRow({
 }: {
   candidate: Candidate;
   best: boolean;
+  usual: boolean;
   current: boolean;
   addon: string;
   named: boolean;
@@ -321,6 +337,15 @@ function StreamRow({
           {(best || current) && (
             <span className="flex items-center gap-2 text-sm font-semibold text-brand">
               {best && "Top pick"}
+              {usual && (
+                <>
+                  <span aria-hidden>·</span>
+                  <span className="flex items-center gap-1">
+                    <History aria-hidden className="size-3.5" />
+                    Same source as last time
+                  </span>
+                </>
+              )}
               {best && current && <span aria-hidden>·</span>}
               {current && (
                 <span className="flex items-center gap-1">

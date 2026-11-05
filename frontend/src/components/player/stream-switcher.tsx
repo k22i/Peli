@@ -92,13 +92,14 @@ function Choices({
   playing: Stream | undefined;
   onPick: (candidate: Candidate, names: ReadonlyMap<string, string>, refresh: Refresh) => void;
 }) {
-  const { loading, sources, names, view, pin, rows, toggleGroup, refresh } = useStreamChoices(
-    watching.profileId,
-    watching.contentType,
-    watching.contentId,
-    watching.videoId,
-    title || (watching.title ?? ""),
-  );
+  const { loading, sources, names, view, pin, rows, toggleGroup, refresh, usual } =
+    useStreamChoices(
+      watching.profileId,
+      watching.contentType,
+      watching.contentId,
+      watching.videoId,
+      title || (watching.title ?? ""),
+    );
   const pick = (candidate: Candidate) => {
     pin();
     onPick(candidate, names, refresh);
@@ -128,6 +129,7 @@ function Choices({
         onPick={pick}
         onToggleGroup={toggleGroup}
         playing={isPlaying}
+        usual={usual}
       />
     </div>
   );

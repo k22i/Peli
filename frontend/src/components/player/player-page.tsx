@@ -52,6 +52,7 @@ import {
 } from "@/components/ui/menu";
 import { Spinner } from "@/components/ui/spinner";
 import { streamsQuery } from "@/lib/addon-protocol";
+import { rememberSource } from "@/lib/chosen-source";
 import { useLoadedAddons } from "@/lib/home";
 import {
   segmentAt,
@@ -416,6 +417,8 @@ function PlayerFile() {
       const nextWatching = watchingFor(profileId, nextTarget, meta, progress ?? []);
       const start = progress ? resumePoint(progress, nextWatching) : 0;
       await Player.Load(nextSource, loadOptions(start, settings, lastTracks.current, nextWatching));
+      // The show's source (#58), as it played this time.
+      rememberSource(queryClient, profileId, meta.type, meta.id, prepared.candidate, attempt);
       // A torrent playing that the next episode doesn't come from.
       if (isTorrentSource(source.current) && !isTorrentSource(nextSource))
         Torrents.Release().catch(() => {});
@@ -482,6 +485,15 @@ function PlayerFile() {
           failed: "Sinag’s player couldn’t start it. Try another stream.",
         });
       }
+      // The user's choice is the show's source from now on (#58).
+      rememberSource(
+        queryClient,
+        watching.profileId,
+        watching.contentType,
+        watching.contentId,
+        candidate,
+        attempt,
+      );
       // A torrent playing that the new stream doesn't come from.
       if (isTorrentSource(source.current) && !isTorrentSource(picked))
         Torrents.Release().catch(() => {});

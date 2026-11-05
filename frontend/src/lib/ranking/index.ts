@@ -7,4 +7,5 @@ export * from "./engine";
 export { judge, mbps, type Bucket, type Reason, type Verdict } from "./fakes";
 export * from "./parse";
 export * from "./score";
+export * from "./remembered";
 export { RankingSession, emptyView, warmRanking } from "./ranker";
