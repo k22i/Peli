@@ -35,6 +35,13 @@ describe("glass tiers (index.css)", () => {
     expect(body).toMatch(/@variant contrast-more \{[^}]*border: 1px solid/);
   });
 
+  it("treats more contrast like reduced transparency: the variant covers both", () => {
+    const start = css.indexOf("@custom-variant reduced-transparency {");
+    const body = css.slice(start, css.indexOf("\n}\n", start));
+    expect(body).toContain("prefers-reduced-transparency: reduce");
+    expect(body).toContain("prefers-contrast: more");
+  });
+
   it("blurs and saturates by tier", () => {
     expect(utility("glass-thin")).toContain("blur(12px) saturate(160%)");
     expect(utility("glass")).toContain("blur(24px) saturate(180%)");

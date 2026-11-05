@@ -478,12 +478,17 @@
  * shadow. Never stack a light tier on another light tier. The -webkit- prefix
  * stays for WKWebView builds that still want it.
  *
- * `reduced-transparency:` is this app's variant for "the OS asks for less
- * transparency" (prefers-reduced-transparency) or a `data-transparency=
- * "reduced"` ancestor, which the gallery sets to show the fallback.
+ * `reduced-transparency:` is this app's variant for "the OS asks for solid
+ * surfaces": prefers-reduced-transparency, prefers-contrast: more (macOS's
+ * Increase contrast; the tiers also get a border from `contrast-more:`) or a
+ * `data-transparency="reduced"` ancestor, which the gallery sets to show the
+ * fallback.
  */
 @custom-variant reduced-transparency {
   @media (prefers-reduced-transparency: reduce) {
+    @slot;
+  }
+  @media (prefers-contrast: more) {
     @slot;
   }
   &:where([data-transparency="reduced"], [data-transparency="reduced"] *) {
