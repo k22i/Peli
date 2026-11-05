@@ -15,7 +15,11 @@ On 2026-11-05 the user asked for a total redesign: more liquid glass, posters an
 
 **How to apply:** follow the epic's order (#111, #112 and #113 first; #125 last). Use the tiers rather than raw `backdrop-blur`. Record the chosen type option in [[sinag-design-direction]]. The workflow is [[spike-ticket-workflow]].
 
-**#112 status (2026-11-05):** step 1 done (9642fa5): `gallery/type-specimens.tsx` (`typeOptions`, `TypeSample`) and `docs/design/type-specimen-{A,B,C}-dark.jpg`. Board item is back at Ready, waiting for the user to pick A, B or C in a comment on #112; step 2 (rollout) starts after that. The screenshots come from a throwaway page, not the real Home and title pages.
+**#112 status (2026-11-05):** step 1 done (9642fa5): `gallery/type-specimens.tsx` (`typeOptions`, `TypeSample`) and `docs/design/type-specimen-{A,B,C}-dark.jpg`. On 2026-11-05 the user picked **B · Semi-wide** (comment on #112). Step 2 (rollout) ran after the page tickets merged, so it could sweep their final code.
+
+**How the rest was built (2026-11-05):** the coordinator (Opus) ran #117–#124 as Orca workers (Sonnet 5.5, high), each in its own worktree branched from `main` (`~/orca/workspaces/staysh/redesign-<N>`, branch `k22i/redesign-<N>`). It reviewed each branch's diff and screenshots, rebased it onto `main` and fast-forwarded (no PRs, no push), then posted a "Built, not closed yet" comment with the real hashes. Workers drafted those comments in `~/Developer/staysh-notes/<N>-closing.md`. Gotchas: the append-only files (`MEMORY.md`, `docs/design/README.md`, `contrastPairs` in `contrast.ts`) conflict on every merge. A union resolver can split a `contrastPairs` entry mid-object, so run `pnpm check` after each merge. Give each worker its own Vite/CDP ports, and tell them never to `pkill -f` a shared pattern (two workers killed each other's servers).
+
+**#117–#123 status (2026-11-05):** built and on `main`, left open until `pnpm test` is run (the user asked to skip tests) and pushed (Actions down). Open items, for #125: #121 needs the built-app blur check over video, but the session had no Screen Recording permission (`screencapture -l` fails); the #123 PIN dialog shots predate #122's dialog backdrop; Search has a tall gap under the field; the title page in light mode has a tall gap between the hero fade and Episodes; and the unchecked Switch in dark Settings is faint.
 
 **#113 status (2026-11-05):** built (see [[card-sizes]]), left open until `pnpm test` is run; commits 879f629, 13ef549, 59dec47 not pushed (Actions down).
 
