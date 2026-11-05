@@ -30,7 +30,7 @@ export function About({ meta, withCast }: { meta: Meta; withCast: boolean }) {
           >
             {rows.map(({ label, values }) => (
               <div key={label} className="flex flex-col gap-1">
-                <dt className="text-meta font-medium tracking-[0.06em] text-muted-foreground uppercase">
+                <dt className="text-xs font-semibold tracking-[0.06em] text-muted-foreground uppercase">
                   {label}
                 </dt>
                 <dd>{values.join(", ")}</dd>
