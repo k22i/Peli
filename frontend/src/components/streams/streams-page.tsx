@@ -14,6 +14,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { Profile } from "@bindings/store";
 import { Service as Sync } from "@bindings/syncer";
 import { Notice } from "@/components/browse/browse-page";
+import { Ambient } from "@/components/media/ambient";
 import { ScrollRail } from "@/components/media/scroll-rail";
 import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -39,6 +40,7 @@ import {
 } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
 import { subtitleTarget } from "@/lib/subtitles";
+import { tmdbRef, useTmdbArt } from "@/lib/tmdb";
 import { Torrents, torrentStatusText } from "@/lib/torrent";
 import {
   cachedTitleMeta,
@@ -70,11 +72,8 @@ export function StreamsPage() {
       : { type, id, title: "Streams", videoId: search.video, resumeAt: search.at };
 
   return (
-    <div className="flex flex-col gap-6 py-6">
-      <div className="flex items-center gap-3 px-gutter">
-        <BackButton />
-        <h1 className="font-heading text-title font-stretch-semi-expanded">{target.title}</h1>
-      </div>
+    // `isolate` holds the Ambient art behind the page.
+    <div className="relative isolate flex flex-col gap-6 pt-6 pb-12">
       {profile ? (
         <Picker
           key={`${type}/${video}`}
@@ -84,8 +83,25 @@ export function StreamsPage() {
           target={target}
         />
       ) : (
-        <Asking />
+        <>
+          <PageHeader title={target.title} />
+          <Asking />
+        </>
       )}
+    </div>
+  );
+}
+
+// Back, then the title at page-title size, and under it, for an episode, its
+// number and name. The `h1` is always the title the picker was opened with.
+function PageHeader({ title, episode }: { title: string; episode?: string | undefined }) {
+  return (
+    <div className="flex items-center gap-4 px-gutter">
+      <BackButton />
+      <div className="flex min-w-0 flex-col gap-1">
+        <h1 className="font-heading text-title font-stretch-semi-expanded">{title}</h1>
+        {episode && <p className="text-base text-muted-foreground">{episode}</p>}
+      </div>
     </div>
   );
 }
@@ -97,10 +113,10 @@ function BackButton() {
   return (
     <Button
       variant="ghost"
-      size="icon-lg"
+      size="icon-xl"
       aria-label="Back"
       onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
-      className="rounded-full"
+      className="glass size-10 shrink-0 rounded-full text-popover-foreground hover:bg-(--glass-regular)"
     >
       <ChevronLeft className="size-5" />
     </Button>
@@ -130,6 +146,16 @@ function Picker({
     useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
   const navigate = useNavigate();
+  // The title's backdrop, as its page shows it (TMDB's with a key, else the
+  // addon's), from the cache when the page was seen. It tints the top.
+  const art = useTmdbArt(tmdbRef(type, target.id, meta));
+  const backdrop = art?.backdrop ?? meta?.background ?? meta?.poster;
+  const header = (
+    <>
+      <Ambient tone="art" src={backdrop} className="-top-(--titlebar-h)" />
+      <PageHeader title={target.title} episode={playerHeading(meta, video, target.title).episode} />
+    </>
+  );
   // Where it was left may have moved on another device: pull while the
   // user picks (Go skips it if it pulled in the last half minute).
   useEffect(() => {
@@ -255,39 +281,53 @@ function Picker({
   usePlayKey(view.top, pick);
 
   if (sources.length === 0) {
-    if (loading) return <Asking />;
+    if (loading) {
+      return (
+        <>
+          {header}
+          <Asking />
+        </>
+      );
+    }
     // An AniList id: AniList knows the title, but the anime list has no
     // Kitsu id for it yet, and stream addons find anime by Kitsu or IMDb id
     // (#108).
     if (video.startsWith("anilist:")) {
       return (
-        <div className="pt-12">
-          <Notice
-            icon={Puzzle}
-            title="No streams yet"
-            description="Stream addons find anime by its Kitsu or IMDb id, and this one doesn’t have either yet. New titles usually get one within a few days."
-          />
-        </div>
+        <>
+          {header}
+          <div className="pt-12">
+            <Notice
+              icon={Puzzle}
+              title="No streams yet"
+              description="Stream addons find anime by its Kitsu or IMDb id, and this one doesn’t have either yet. New titles usually get one within a few days."
+            />
+          </div>
+        </>
       );
     }
     return (
-      <div className="pt-12">
-        <Notice
-          icon={Puzzle}
-          title="No addon has streams for this"
-          description="None of your enabled addons serves streams for it. Add a stream addon to watch it."
-          action={
-            <Link to="/addons" className={buttonVariants()}>
-              Manage addons
-            </Link>
-          }
-        />
-      </div>
+      <>
+        {header}
+        <div className="pt-12">
+          <Notice
+            icon={Puzzle}
+            title="No addon has streams for this"
+            description="None of your enabled addons serves streams for it. Add a stream addon to watch it."
+            action={
+              <Link to="/addons" className={buttonVariants()}>
+                Manage addons
+              </Link>
+            }
+          />
+        </div>
+      </>
     );
   }
 
   return (
     <>
+      {header}
       <StreamsSummary sources={sources} loading={loading} total={view.total} />
       <StreamList
         rows={rows}
