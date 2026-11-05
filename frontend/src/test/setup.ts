@@ -1,6 +1,16 @@
 import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
-import { afterEach } from "vite-plus/test";
+import { afterEach, vi } from "vite-plus/test";
+
+// Which IMDb ids are anime (#109): none, unless a test says otherwise with
+// vi.mocked(AnimeList.IMDbIDs).
+vi.mock("@bindings/animelist", () => ({
+  Service: {
+    IMDbIDs: vi.fn<() => Promise<{ imdb: string[]; ready: boolean }>>(() =>
+      Promise.resolve({ imdb: [], ready: true }),
+    ),
+  },
+}));
 
 // jsdom does not implement scrolling; the router's scroll restoration and
 // Base UI's menus call it.

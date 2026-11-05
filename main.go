@@ -73,8 +73,8 @@ func main() {
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.
 	watched := watching.New(func() *store.Store { return store.Opened(db) }, syncer.PusherOf(sync).FlushProgress)
-	// The anime list maps ids for tracking (#71) and the AniList addon
-	// (#108).
+	// The anime list maps ids for tracking (#71), the AniList addon (#108)
+	// and leaving anime out of Movies and Shows (#109).
 	animeList := animelist.New(animelist.DefaultURL, filepath.Dir(store.DefaultPath()))
 	anilistClient := anilist.New(anilist.DefaultURL, appinfo.Version)
 	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
@@ -108,6 +108,8 @@ func main() {
 			application.NewServiceWithOptions(accounts,
 				application.ServiceOptions{MarshalError: account.MarshalError}),
 			application.NewService(sync),
+			// Which IMDb ids are anime, for Movies and Shows (#109).
+			application.NewService(animelist.NewService(animeList)),
 			application.NewServiceWithOptions(addonFetcher,
 				application.ServiceOptions{MarshalError: addons.MarshalError}),
 			// Resolving a picked stream to the file the player loads (#53).

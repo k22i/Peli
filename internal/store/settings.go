@@ -33,6 +33,9 @@ type ProfileSettings struct {
 	// watched, and import the list into watched marks.
 	AniListProgress bool `json:"anilistProgress"`
 	AniListImport   bool `json:"anilistImport"`
+	// AnimeInMoviesAndShows keeps anime the anime list knows in Movies,
+	// Shows and their search results (#109). Off: it's the Anime tab's.
+	AnimeInMoviesAndShows bool `json:"animeInMoviesAndShows"`
 }
 
 // DeviceSettings belong to this machine, whoever is watching.

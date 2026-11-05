@@ -201,7 +201,21 @@ function ProfileSections({ profileId }: { profileId: number }) {
 
   return (
     <>
-      <AddonsSection profileId={profileId} />
+      <AddonsSection profileId={profileId}>
+        {/* #109: anime the anime list knows is the Anime tab's. */}
+        <SettingRow
+          id="anime-in-movies-and-shows"
+          label="Show anime in Movies and Shows"
+          description="Off: anime that general addons list among films and series shows only under Anime."
+        >
+          <Switch
+            aria-labelledby="anime-in-movies-and-shows-label"
+            aria-describedby="anime-in-movies-and-shows-description"
+            checked={settings.animeInMoviesAndShows}
+            onCheckedChange={(animeInMoviesAndShows) => setProfile({ animeInMoviesAndShows })}
+          />
+        </SettingRow>
+      </AddonsSection>
 
       <SettingsSection section={section("playback")}>
         <SettingRow
@@ -640,7 +654,7 @@ function TmdbRow() {
   );
 }
 
-function AddonsSection({ profileId }: { profileId: number }) {
+function AddonsSection({ profileId, children }: { profileId: number; children?: React.ReactNode }) {
   const addons = useQuery(addonsQuery(profileId));
   const count = addons.data?.length;
 
@@ -661,6 +675,7 @@ function AddonsSection({ profileId }: { profileId: number }) {
           Manage addons
         </Link>
       </SettingRow>
+      {children}
     </SettingsSection>
   );
 }

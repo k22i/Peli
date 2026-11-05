@@ -13,6 +13,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useBrowsableAddons } from "@/lib/home";
 import { currentPlatform } from "@/lib/platform";
+import { useLeaveOutAnime } from "@/lib/anime";
 import { currentProfileQuery } from "@/lib/profile";
 import {
   searchCatalogs,
@@ -135,6 +136,7 @@ function SearchField({
 function Results({ profile, term }: { profile: Profile; term: string | undefined }) {
   const open = useOpenTitle();
   const { visible, addons, shown, loading } = useBrowsableAddons(profile.id);
+  const leaveOutAnime = useLeaveOutAnime(profile.id);
   // Not until a kids profile's allowed catalogs are known, so the rest are
   // never asked, not merely hidden, and "none can search" doesn't flash.
   const catalogs = loading ? [] : searchCatalogs(addons, shown);
@@ -177,6 +179,7 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
 
   const groups = searchGroups(
     catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas })),
+    leaveOutAnime,
   );
   const addonNames = (pick: (i: number) => boolean) => [
     ...new Set(catalogs.filter((_, i) => pick(i)).map(({ addon }) => addon.manifest.name)),

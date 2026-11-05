@@ -14,6 +14,8 @@ import {
   type LoadedAddon,
   type MetaPreview,
 } from "@/lib/addon-protocol";
+import { useLeaveOutAnime } from "@/lib/anime";
+import { isAnimeCatalog } from "@/lib/browse";
 import { folderParams, folderPath } from "@/lib/folder";
 import {
   collectionsQuery,
@@ -68,6 +70,7 @@ function HomeRows({ profile }: { profile: Profile }) {
   const layout = useQuery(homeLayoutQuery(profileId));
   const collections = useQuery(collectionsQuery(profileId));
   const { visible, addons, shown, loading: addonsLoading } = useBrowsableAddons(profileId);
+  const leaveOutAnime = useLeaveOutAnime(profileId);
   // A catalog row waits for its manifest and for what a kids profile may
   // see (`shown`); until then the collections show alone.
   const rows = homeRows(layout.data, collections.data ?? [], addons, shown);
@@ -97,7 +100,12 @@ function HomeRows({ profile }: { profile: Profile }) {
   return (
     <div className="flex flex-col gap-6 py-6">
       {featured ? (
-        <CatalogHero row={featured} hideUnreleased={hideUnreleased} {...context} />
+        <CatalogHero
+          row={featured}
+          hideUnreleased={hideUnreleased}
+          leaveOutAnime={leaveOutAnime}
+          {...context}
+        />
       ) : addonsLoading ? (
         <HeroSkeleton className={heroOffset} />
       ) : (
@@ -116,7 +124,12 @@ function HomeRows({ profile }: { profile: Profile }) {
         )}
         {rows.map((row) =>
           row.kind === "catalog" ? (
-            <CatalogRowView key={row.key} row={row} hideUnreleased={hideUnreleased} />
+            <CatalogRowView
+              key={row.key}
+              row={row}
+              hideUnreleased={hideUnreleased}
+              leaveOutAnime={leaveOutAnime}
+            />
           ) : (
             <CollectionRow key={row.key} row={row} />
           ),
@@ -203,15 +216,17 @@ function WatchingCard({ entry, ...context }: { entry: Progress } & WatchingConte
 function CatalogHero({
   row,
   hideUnreleased,
+  leaveOutAnime,
   ...context
-}: { row: CatalogRow; hideUnreleased: boolean } & WatchingContext) {
+}: { row: CatalogRow; hideUnreleased: boolean; leaveOutAnime: LeaveOut } & WatchingContext) {
   const play = usePlay();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
   if (catalogData.isPending) return <HeroSkeleton className={heroOffset} />;
 
+  const leaveOut = leaveOutOf(row, leaveOutAnime);
   const meta = catalogData.data?.metas.find(
-    (item) => item.background && (!hideUnreleased || isReleased(item)),
+    (item) => item.background && (!hideUnreleased || isReleased(item)) && !leaveOut(item.id),
   );
   if (!meta) {
     return context.watching[0] ? <WatchingHero entry={context.watching[0]} {...context} /> : null;
@@ -301,13 +316,29 @@ function metaLine(meta: MetaPreview): string[] {
 
 // A catalog's first page, from cache first. One that fails or comes back
 // empty isn't shown. A card opens its title page (#45).
-function CatalogRowView({ row, hideUnreleased }: { row: CatalogRow; hideUnreleased: boolean }) {
+type LeaveOut = (id: string) => boolean;
+
+// Anime in a general catalog's row is the Anime tab's (#109); an anime
+// catalog keeps all of it.
+const leaveOutOf = (row: CatalogRow, leaveOutAnime: LeaveOut): LeaveOut =>
+  isAnimeCatalog(row.source) ? () => false : leaveOutAnime;
+
+function CatalogRowView({
+  row,
+  hideUnreleased,
+  leaveOutAnime,
+}: {
+  row: CatalogRow;
+  hideUnreleased: boolean;
+  leaveOutAnime: LeaveOut;
+}) {
   const open = useOpenTitle();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
   if (catalogData.isPending) return <RowSkeleton />;
+  const leaveOut = leaveOutOf(row, leaveOutAnime);
   const metas = (catalogData.data?.metas ?? []).filter(
-    (meta) => !hideUnreleased || isReleased(meta),
+    (meta) => (!hideUnreleased || isReleased(meta)) && !leaveOut(meta.id),
   );
   if (metas.length === 0) return null;
   return (

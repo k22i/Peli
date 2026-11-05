@@ -62,13 +62,19 @@ const rank = (kind: string) => {
 // order it first appears. A title two catalogs both found shows once, where
 // the first one put it. Anime catalogs' results go under Anime whatever
 // their items' types, as the browse pages split them (ADR-0027).
-export function searchGroups(answers: readonly SearchAnswer[]): SearchGroup[] {
+//
+// `leaveOutAnime` drops general catalogs' anime (#109): the anime catalogs'
+// own results have it under Anime.
+export function searchGroups(
+  answers: readonly SearchAnswer[],
+  leaveOutAnime: (id: string) => boolean = () => false,
+): SearchGroup[] {
   const seen = new Set<string>();
   const groups = new Map<string, MetaPreview[]>();
   for (const { source, metas } of answers) {
     const anime = isAnimeCatalog(source);
     for (const meta of metas ?? []) {
-      if (seen.has(meta.id)) continue;
+      if (seen.has(meta.id) || (!anime && leaveOutAnime(meta.id))) continue;
       seen.add(meta.id);
       const kind = anime ? "anime" : meta.type;
       const group = groups.get(kind);

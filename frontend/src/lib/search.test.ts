@@ -85,6 +85,20 @@ describe("searchGroups", () => {
     expect(groups.map((group) => group.metas.map((m) => m.id))).toEqual([["tt1", "tt2"], ["tt3"]]);
   });
 
+  it("leaves general catalogs' anime to the anime catalogs (#109)", () => {
+    const groups = searchGroups(
+      [
+        { source: series!, metas: [meta("tt2", "series"), meta("tt3", "series")] },
+        { source: anime!, metas: [meta("kitsu:1", "series"), meta("tt2", "series")] },
+      ],
+      (id) => id === "tt2",
+    );
+    expect(groups.map((group) => [group.title, group.metas.map((m) => m.id)])).toEqual([
+      ["Shows", ["tt3"]],
+      ["Anime", ["kitsu:1", "tt2"]],
+    ]);
+  });
+
   it("puts other types last and skips catalogs that haven't answered", () => {
     const groups = searchGroups([
       { source: movies!, metas: [meta("ch1", "channel"), meta("tt1")] },

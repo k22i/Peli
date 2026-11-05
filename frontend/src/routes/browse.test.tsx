@@ -2,6 +2,7 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import { Service as AnimeList } from "@bindings/animelist";
 import type { Addon, HomeLayout, Profile } from "@bindings/store";
 import { catalogQuery, manifestQuery } from "@/lib/addon-protocol";
 import { parseCatalogResponse, parseManifest } from "@/lib/addon-protocol/parse";
@@ -246,6 +247,27 @@ describe("browse pages", () => {
         .getAllByRole("button")
         .map((chip) => chip.textContent),
     ).toEqual(["New", "Featured"]);
+  });
+
+  it("leaves anime to the Anime tab, reading on past a page of only anime", async () => {
+    vi.mocked(AnimeList.IMDbIDs).mockResolvedValue({
+      imdb: ["tt1", "tt2", "tt3", "tt4", "tt6"],
+      ready: true,
+    });
+    const asked = serve({
+      [`${base}/catalog/series/top.json`]: { metas: films(1, 4), hasMore: true },
+      [`${base}/catalog/series/top/skip=4.json`]: { metas: films(5, 3), hasMore: false },
+    });
+    await renderApp("/shows");
+
+    const popular = await grid("Popular");
+    await waitFor(async () =>
+      expect(await titles(popular)).toEqual([
+        expect.stringContaining("Film 5"),
+        expect.stringContaining("Film 7"),
+      ]),
+    );
+    expect(asked()).toContain(`${base}/catalog/series/top/skip=4.json`);
   });
 
   it("hides unreleased titles when the layout says to", async () => {

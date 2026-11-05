@@ -143,6 +143,7 @@ const japanese: ProfileSettings = {
   simklAnime: true,
   anilistProgress: true,
   anilistImport: true,
+  animeInMoviesAndShows: false,
 };
 const profileOptions = { ...japaneseTracks, start: 600 };
 

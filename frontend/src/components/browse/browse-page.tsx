@@ -1,7 +1,7 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { LayoutGrid, type LucideIcon } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { PosterCard } from "@/components/media/cards";
@@ -36,6 +36,7 @@ import {
   type BrowseKind,
   type BrowseSearch,
 } from "@/lib/browse";
+import { useLeaveOutAnime } from "@/lib/anime";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
@@ -63,6 +64,7 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
   const navigate = useNavigate();
   const { visible, addons, shown, loading } = useBrowsableAddons(profile.id);
   const hideUnreleased = useQuery(homeLayoutQuery(profile.id)).data?.hideUnreleased ?? false;
+  const leaveOutAnime = useLeaveOutAnime(profile.id);
 
   if (visible.data?.length === 0) return <NoAddons profile={profile} />;
   if (loading) return <GridSkeleton />;
@@ -110,6 +112,8 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
         source={selected}
         genre={genre}
         hideUnreleased={hideUnreleased}
+        // Anime is the Anime tab's (#109).
+        leaveOut={kind === "anime" ? undefined : leaveOutAnime}
       />
     </>
   );
@@ -146,16 +150,22 @@ function FilterSelect({
   );
 }
 
+// How many pages a grid reads on its own while they add nothing, before it
+// waits for the user to scroll.
+const maxEmptyPages = 20;
+
 // One catalog, page by page. The first page is Home's, so a catalog Home
 // showed paints from cache at once and refreshes behind.
 function CatalogGrid({
   source: { addon, catalog, label },
   genre,
   hideUnreleased,
+  leaveOut,
 }: {
   source: BrowseCatalog;
   genre: string | undefined;
   hideUnreleased: boolean;
+  leaveOut?: ((id: string) => boolean) | undefined;
 }) {
   const client = useQueryClient();
   const open = useOpenTitle();
@@ -174,6 +184,31 @@ function CatalogGrid({
     if (hasNextPage && !isFetchingNextPage) void fetchNextPage();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
+  // Addons repeat titles across pages; the first stays. Counts what the
+  // last page added, so a page left out whole asks for the next.
+  const seen = new Set<string>();
+  const metas: MetaPreview[] = [];
+  let lastPageAdded = 0;
+  const loaded = pages.data?.pages ?? [];
+  for (const [i, page] of loaded.entries()) {
+    const before = metas.length;
+    for (const meta of page.metas) {
+      if (seen.has(meta.id) || (hideUnreleased && !isReleased(meta)) || leaveOut?.(meta.id)) {
+        continue;
+      }
+      seen.add(meta.id);
+      metas.push(meta);
+    }
+    if (i === loaded.length - 1) lastPageAdded = metas.length - before;
+  }
+  // The grid asks for more as its end comes near, and only when new items
+  // arrive: with none, the next page is asked here (#109), up to a point.
+  const pageCount = loaded.length;
+  const starved = pageCount > 0 && lastPageAdded === 0 && pageCount < maxEmptyPages;
+  useEffect(() => {
+    if (starved) loadMore();
+  }, [starved, loadMore]);
+
   if (pages.isPending) return <GridSkeleton />;
   if (!pages.data) {
     return (
@@ -185,14 +220,6 @@ function CatalogGrid({
     );
   }
 
-  // Addons repeat titles across pages; the first stays.
-  const seen = new Set<string>();
-  const metas: MetaPreview[] = [];
-  for (const meta of pages.data.pages.flatMap((page) => page.metas)) {
-    if (seen.has(meta.id) || (hideUnreleased && !isReleased(meta))) continue;
-    seen.add(meta.id);
-    metas.push(meta);
-  }
   if (metas.length === 0 && !hasNextPage) {
     return (
       <Notice

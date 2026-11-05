@@ -103,3 +103,15 @@ func TestDownloadAndKeep(t *testing.T) {
 		t.Fatal("the kept copy wasn't read")
 	}
 }
+
+func TestIMDbIDs(t *testing.T) {
+	l := FromEntries([]Entry{
+		{AniList: 1, IMDb: []string{"tt2", "tt1"}},
+		{AniList: 2, IMDb: []string{"tt1"}},
+		{AniList: 3},
+	})
+	got := NewService(l).IMDbIDs(t.Context())
+	if !got.Ready || len(got.IMDb) != 2 || got.IMDb[0] != "tt1" || got.IMDb[1] != "tt2" {
+		t.Errorf("IMDbIDs = %+v", got)
+	}
+}

@@ -153,6 +153,7 @@ vi.mock("@bindings/store", () => {
     simklAnime: true,
     anilistProgress: true,
     anilistImport: true,
+    animeInMoviesAndShows: false,
   };
   return {
     Service: {

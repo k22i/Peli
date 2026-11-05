@@ -121,6 +121,7 @@ describe("loadOptions", () => {
     simklAnime: true,
     anilistProgress: true,
     anilistImport: true,
+    animeInMoviesAndShows: false,
   };
   const settings = {
     audioLanguage: "ja",
