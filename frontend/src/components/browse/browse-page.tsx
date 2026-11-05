@@ -40,6 +40,7 @@ import { useLeaveOutAnime } from "@/lib/anime";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
+import { cn } from "@/lib/utils";
 import type { Profile } from "@bindings/store";
 
 // Movies, Shows and Anime (#43): the profile's catalogs of one kind as chips
@@ -61,15 +62,21 @@ export function BrowsePage({ kind }: { kind: BrowseKind }) {
 // The page: a header with the title, the filter and the catalog rail, which
 // sticks under the title bar as a glass strip once the grid scrolls beneath it
 // (#116), and the body below. The Library page uses it too (#118).
+//
+// `quietTitle` (Search, #119): once the header sticks the title leaves the
+// screen but stays for screen readers, and the row it sat in gives its space
+// back, so the strip is just the field.
 export function BrowseFrame({
   title,
   filter,
   rail,
+  quietTitle = false,
   children,
 }: {
   title: string;
   filter?: ReactNode;
   rail?: ReactNode;
+  quietTitle?: boolean;
   children: ReactNode;
 }) {
   const sentinel = useRef<HTMLDivElement | null>(null);
@@ -106,8 +113,18 @@ export function BrowseFrame({
         className="group/header sticky top-(--titlebar-h) z-10 mb-4 data-stuck:scroll-edge-top"
       >
         <div className="flex flex-col gap-3 pt-6 pb-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:glass group-data-stuck/header:py-2">
-          <div className="flex items-baseline justify-between gap-x-6 gap-y-2 px-gutter">
-            <h1 className="font-heading text-title font-stretch-semi-expanded motion-safe:transition-[font-size,line-height] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:text-heading">
+          <div
+            className={cn(
+              "flex items-baseline justify-between gap-x-6 gap-y-2 px-gutter",
+              quietTitle && "group-data-stuck/header:-mb-3",
+            )}
+          >
+            <h1
+              className={cn(
+                "font-heading text-title font-stretch-semi-expanded motion-safe:transition-[font-size,line-height] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:text-heading",
+                quietTitle && "group-data-stuck/header:sr-only",
+              )}
+            >
               {title}
             </h1>
             {filter}

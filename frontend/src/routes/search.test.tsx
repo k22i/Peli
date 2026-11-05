@@ -91,7 +91,9 @@ function later<T>() {
   return { promise, resolve };
 }
 
-const row = (name: string) => screen.findByRole("region", { name });
+// A row's heading is its kind and the addons behind it ("Movies · Cinemeta").
+const named = (name: string) => ({ name: new RegExp(`^${name}( ·|$)`) });
+const row = (name: string) => screen.findByRole("region", named(name));
 // Cards mount once the row has measured its scroller.
 const titles = async (region: HTMLElement) =>
   (await within(region).findAllByRole("button")).map((card) => card.textContent);
@@ -122,7 +124,7 @@ describe("search", () => {
     expect((await titles(await row("Movies")))[0]).toContain("Dune");
     expect(await titles(await row("Shows"))).toEqual([expect.stringContaining("Dune (2000)")]);
     expect(screen.getByText("Searching Anime Kitsu…")).toBeInTheDocument();
-    expect(screen.queryByRole("region", { name: "Anime" })).toBeNull();
+    expect(screen.queryByRole("region", named("Anime"))).toBeNull();
 
     kitsuAnswer.resolve(anime);
     expect(await titles(await row("Anime"))).toEqual([expect.stringContaining("Dune Anime")]);
@@ -138,7 +140,9 @@ describe("search", () => {
     const user = userEvent.setup();
     const { router } = await renderApp("/search");
 
-    expect(await screen.findByRole("heading", { name: "Search your addons" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "Search your addons’ catalogs" }),
+    ).toBeInTheDocument();
     await waitFor(() => expect(field()).toHaveFocus());
     await user.type(field(), "dune");
 
@@ -150,6 +154,48 @@ describe("search", () => {
       seriesSearch("dune"),
       animeSearch("dune"),
     ]);
+  });
+
+  it("names the addons behind each row in its heading", async () => {
+    serve({
+      [movieSearch("dune")]: cinemetaMovies,
+      [seriesSearch("dune")]: shows,
+      [animeSearch("dune")]: anime,
+    });
+    await renderApp("/search?q=dune");
+
+    expect(await screen.findByRole("region", { name: "Movies · Cinemeta" })).toBeInTheDocument();
+    expect(await screen.findByRole("region", { name: "Shows · Cinemeta" })).toBeInTheDocument();
+    expect(await screen.findByRole("region", { name: "Anime · Anime Kitsu" })).toBeInTheDocument();
+  });
+
+  it("clears the field with its button and puts the cursor back in it", async () => {
+    serve({ [movieSearch("dune")]: cinemetaMovies, [seriesSearch("dune")]: shows });
+    const user = userEvent.setup();
+    const { router } = await renderApp("/search?q=dune");
+
+    await row("Movies");
+    expect(field()).toHaveValue("dune");
+    await user.click(screen.getByRole("button", { name: "Clear search" }));
+
+    expect(field()).toHaveValue("");
+    expect(field()).toHaveFocus();
+    await waitFor(() => expect(router.state.location.search).toEqual({}));
+    expect(screen.queryByRole("button", { name: "Clear search" })).toBeNull();
+  });
+
+  it("hints the shortcut while the field is empty and not focused", async () => {
+    serve({});
+    const user = userEvent.setup();
+    await renderApp("/search");
+
+    const bar = field().closest("[data-slot='input-control']")!.parentElement!;
+    await waitFor(() => expect(field()).toHaveFocus());
+    expect(within(bar).queryByText(/^(⌘F|Ctrl\+F)$/)).toBeNull();
+    await user.click(document.body);
+    expect(await within(bar).findByText(/^(⌘F|Ctrl\+F)$/)).toBeInTheDocument();
+    await user.type(field(), "d");
+    expect(within(bar).queryByText(/^(⌘F|Ctrl\+F)$/)).toBeNull();
   });
 
   it("shows a query from the address", async () => {
@@ -175,7 +221,7 @@ describe("search", () => {
 
     expect(await row("Movies")).toBeInTheDocument();
     await waitFor(() => expect(screen.queryByText(/Searching/)).toBeNull());
-    expect(screen.queryByRole("region", { name: "Shows" })).toBeNull();
+    expect(screen.queryByRole("region", named("Shows"))).toBeNull();
     expect(asked().filter((url) => url.includes("search="))).toEqual([movieSearch("dune")]);
     expect(asked().some((url) => url.startsWith("https://anime-kitsu.strem.fun"))).toBe(false);
   });

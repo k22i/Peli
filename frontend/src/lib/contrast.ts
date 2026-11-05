@@ -356,6 +356,20 @@ export const contrastPairs: ContrastPair[] = [
     background: ["#ffffff", "glass-regular"],
     min: AA_TEXT,
   },
+  // Search's field (#119): the clear button's icon on thin glass over the
+  // field's regular glass, and the ⌘F hint on its muted chip.
+  {
+    label: "Search clear button",
+    foreground: "foreground",
+    background: ["background", "glass-regular", "glass-thin"],
+    min: AA_UI,
+  },
+  {
+    label: "Shortcut hint",
+    foreground: "muted-foreground",
+    background: ["muted"],
+    min: AA_TEXT,
+  },
 ];
 
 export function parseHex(hex: string): Rgba {

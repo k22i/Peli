@@ -93,7 +93,8 @@ export function Row<T>({
   card = "poster",
   className,
 }: {
-  title: string;
+  // Text, or text with a muted byline (Search: "Movies · Cinemeta").
+  title: ReactNode;
   action?: ReactNode;
   items: readonly T[];
   getKey: (item: T, index: number) => Key;

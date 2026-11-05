@@ -48,8 +48,9 @@ export function searchCatalogs<A extends LoadedAddon>(
 // One search catalog's answer so far: its results once it has answered.
 export type SearchAnswer = { source: CatalogSource; metas?: readonly MetaPreview[] | undefined };
 
-// Results of one kind, under its heading.
-export type SearchGroup = { kind: string; title: string; metas: MetaPreview[] };
+// Results of one kind, under its heading, and the names of the addons that
+// gave them (#119: "Movies · Cinemeta"), in addon order.
+export type SearchGroup = { kind: string; title: string; addons: string[]; metas: MetaPreview[] };
 
 const groupOrder = ["movie", "series", "anime"];
 const rank = (kind: string) => {
@@ -70,19 +71,32 @@ export function searchGroups(
   leaveOutAnime: (id: string) => boolean = () => false,
 ): SearchGroup[] {
   const seen = new Set<string>();
-  const groups = new Map<string, MetaPreview[]>();
+  const groups = new Map<string, { metas: MetaPreview[]; addons: Set<string> }>();
   for (const { source, metas } of answers) {
     const anime = isAnimeCatalog(source);
     for (const meta of metas ?? []) {
       if (seen.has(meta.id) || (!anime && leaveOutAnime(meta.id))) continue;
       seen.add(meta.id);
       const kind = anime ? "anime" : meta.type;
-      const group = groups.get(kind);
-      if (group) group.push(meta);
-      else groups.set(kind, [meta]);
+      const group = groups.get(kind) ?? { metas: [], addons: new Set<string>() };
+      groups.set(kind, group);
+      group.metas.push(meta);
+      group.addons.add(source.addon.manifest.name);
     }
   }
   return [...groups]
     .toSorted(([a], [b]) => rank(a) - rank(b))
-    .map(([kind, metas]) => ({ kind, title: typeName(kind), metas }));
+    .map(([kind, { metas, addons }]) => ({
+      kind,
+      title: typeName(kind),
+      addons: [...addons],
+      metas,
+    }));
+}
+
+// The addons behind a group, for its heading: "Cinemeta", "Cinemeta and
+// Kitsu", "Cinemeta +2" (the first one, then how many more).
+export function groupByline(addons: readonly string[]): string {
+  if (addons.length <= 2) return new Intl.ListFormat("en", { type: "conjunction" }).format(addons);
+  return `${addons[0]} +${addons.length - 1}`;
 }

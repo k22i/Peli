@@ -4,7 +4,7 @@ import type { LoadedAddon, MetaPreview } from "@/lib/addon-protocol";
 import { parseManifest } from "@/lib/addon-protocol/parse";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import kitsuManifest from "@/lib/addon-protocol/fixtures/kitsu/manifest.json";
-import { searchCatalogs, searchGroups, searchSearch, searchTerm } from "@/lib/search";
+import { groupByline, searchCatalogs, searchGroups, searchSearch, searchTerm } from "@/lib/search";
 
 const loaded = (url: string, manifest: unknown): LoadedAddon => ({
   url,
@@ -105,5 +105,30 @@ describe("searchGroups", () => {
       { source: series! },
     ]);
     expect(groups.map((group) => group.title)).toEqual(["Movies", "Channels"]);
+  });
+});
+
+describe("searchGroups addons", () => {
+  const [movies, series] = searchCatalogs([cinemeta]);
+  const [anime] = searchCatalogs([kitsu]);
+
+  it("names the addons that gave a group's results, in addon order", () => {
+    const groups = searchGroups([
+      { source: movies!, metas: [meta("tt1")] },
+      { source: anime!, metas: [meta("kitsu:1", "series")] },
+      { source: series!, metas: [] },
+    ]);
+    expect(groups.map((group) => [group.title, group.addons])).toEqual([
+      ["Movies", ["Cinemeta"]],
+      ["Anime", ["Anime Kitsu"]],
+    ]);
+  });
+});
+
+describe("groupByline", () => {
+  it("lists one or two addons, and counts the rest", () => {
+    expect(groupByline(["Cinemeta"])).toBe("Cinemeta");
+    expect(groupByline(["Cinemeta", "Kitsu"])).toBe("Cinemeta and Kitsu");
+    expect(groupByline(["Cinemeta", "Kitsu", "MAL", "TMDB"])).toBe("Cinemeta +3");
   });
 });
