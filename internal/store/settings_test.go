@@ -7,9 +7,12 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-var japanese = ProfileSettings{AudioLanguage: "jpn", SubtitleLanguage: "en", SubtitleSize: "large", Captions: "on"}
+var japanese = ProfileSettings{AudioLanguages: []string{"jpn"}, SubtitleLanguage: "en", SubtitleSize: "large", Captions: "on"}
 
-var laptop = DeviceSettings{HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20}
+var laptop = DeviceSettings{
+	HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20,
+	MaxResolution: "1080p", HDR: "off", DolbyVision: "on",
+}
 
 // The acceptance criterion: settings persist, per profile where they follow a
 // person and per device where they follow the machine.
@@ -20,7 +23,10 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(anna.ID)), DefaultProfileSettings())
 	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
-	equal(t, DefaultDeviceSettings(), DeviceSettings{HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5})
+	equal(t, DefaultDeviceSettings(), DeviceSettings{
+		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
+		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
+	})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))
 	check(t, s.SaveDeviceSettings(laptop))
@@ -43,9 +49,24 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 func TestDeviceSettingsValidation(t *testing.T) {
 	s, _ := openTemp(t)
 	for _, gb := range []int{0, -5, 3, 1000} {
-		err := s.SaveDeviceSettings(DeviceSettings{TorrentCacheGB: gb})
-		if !errors.Is(err, ErrInvalidSettings) {
+		device := DefaultDeviceSettings()
+		device.TorrentCacheGB = gb
+		if err := s.SaveDeviceSettings(device); !errors.Is(err, ErrInvalidSettings) {
 			t.Errorf("cache of %d GB: err = %v", gb, err)
+		}
+	}
+	// The stream preferences (#98) are one of the choices Settings offers.
+	for name, change := range map[string]func(*DeviceSettings){
+		"cap of 4320p":     func(d *DeviceSettings) { d.MaxResolution = "4320p" },
+		"no cap":           func(d *DeviceSettings) { d.MaxResolution = "" },
+		"HDR maybe":        func(d *DeviceSettings) { d.HDR = "maybe" },
+		"Dolby Vision off": func(d *DeviceSettings) { d.DolbyVision = "Off" },
+		"HDR unset":        func(d *DeviceSettings) { d.HDR = "" },
+	} {
+		device := DefaultDeviceSettings()
+		change(&device)
+		if err := s.SaveDeviceSettings(device); !errors.Is(err, ErrInvalidSettings) {
+			t.Errorf("%s: err = %v", name, err)
 		}
 	}
 	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
@@ -56,7 +77,10 @@ func TestProfileSettingsValidation(t *testing.T) {
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
 
 	for name, settings := range map[string]ProfileSettings{
-		"language name":    {AudioLanguage: "English", SubtitleSize: "medium", Captions: "system"},
+		"language name":    {AudioLanguages: []string{"English"}, SubtitleSize: "medium", Captions: "system"},
+		"empty language":   {AudioLanguages: []string{"en", ""}, SubtitleSize: "medium", Captions: "system"},
+		"language twice":   {AudioLanguages: []string{"en", "ja", "en"}, SubtitleSize: "medium", Captions: "system"},
+		"too many":         {AudioLanguages: []string{"en", "es", "fr", "de", "it", "pt", "nl", "sv", "pl"}, SubtitleSize: "medium", Captions: "system"},
 		"upper case":       {SubtitleLanguage: "EN", SubtitleSize: "medium", Captions: "system"},
 		"no size":          {Captions: "system"},
 		"unknown size":     {SubtitleSize: "huge", Captions: "system"},
@@ -79,8 +103,38 @@ func TestSettingsDecodeOverDefaults(t *testing.T) {
 		return b.Put(keySettings, []byte(`{"audioLanguage":"fr"}`))
 	}))
 	want := DefaultProfileSettings()
-	want.AudioLanguage = "fr"
+	want.AudioLanguages = []string{"fr"}
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(p.ID)), want)
+}
+
+// The audio languages are a list (#98): the order is kept, and a record saved
+// with one language, or none, reads as a list.
+func TestAudioLanguagesKeepTheirOrder(t *testing.T) {
+	s, _ := openTemp(t)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
+
+	settings := DefaultProfileSettings()
+	settings.AudioLanguages = []string{"ja", "en", "ko"}
+	check(t, s.SaveProfileSettings(p.ID, settings))
+	equal(t, must[ProfileSettings](t)(s.ProfileSettings(p.ID)).AudioLanguages, []string{"ja", "en", "ko"})
+
+	// A nil list is none, and reads as an empty one: it is JSON for the
+	// frontend, which can't map null.
+	settings.AudioLanguages = nil
+	check(t, s.SaveProfileSettings(p.ID, settings))
+	equal(t, must[ProfileSettings](t)(s.ProfileSettings(p.ID)).AudioLanguages, []string{})
+
+	// A profile that saved "audioLanguage" before the list keeps it, but a
+	// list it saved since wins.
+	for record, want := range map[string][]string{
+		`{"audioLanguage":"ja"}`:                         {"ja"},
+		`{"audioLanguage":""}`:                           {},
+		`{"audioLanguage":"ja","audioLanguages":["en"]}`: {"en"},
+		`{"audioLanguages":null}`:                        {},
+	} {
+		check(t, s.update(p.ID, func(b *bolt.Bucket) error { return b.Put(keySettings, []byte(record)) }))
+		equal(t, must[ProfileSettings](t)(s.ProfileSettings(p.ID)).AudioLanguages, want)
+	}
 }
 
 func TestCurrentProfile(t *testing.T) {

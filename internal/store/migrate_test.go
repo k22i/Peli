@@ -26,7 +26,7 @@ func fixtureData(t *testing.T, s *Store) {
 	check(t, s.SetAddons(p.ID, []Addon{cinemeta}))
 	check(t, s.SetCursor(p.ID, SurfaceLibrary, 242_369_012))
 	check(t, s.SaveProfileSettings(p.ID, japanese))
-	check(t, s.SaveDeviceSettings(DeviceSettings{Diagnostics: true, TorrentCacheGB: 5}))
+	check(t, s.SaveDeviceSettings(DeviceSettings{Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto"}))
 }
 
 // Every shipped schema has a fixture written by the build that introduced it.
@@ -78,8 +78,12 @@ func TestFixtures(t *testing.T) {
 				t.Fatalf("pending = %d pushes, want 4", len(pending))
 			}
 			// Settings arrived in schema 2; older files read as the defaults.
-			// Fields added since (#55) read as their defaults.
-			profileSettings, deviceSettings := japanese, DeviceSettings{Diagnostics: true, TorrentCacheGB: 5}
+			// Fields added since (#55, #98) read as their defaults, and the
+			// single audio language older files saved reads as a list of one.
+			profileSettings := japanese
+			deviceSettings := DeviceSettings{
+				Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
+			}
 			if filepath.Base(fixture) == "schema-1.db" {
 				profileSettings, deviceSettings = DefaultProfileSettings(), DefaultDeviceSettings()
 			}

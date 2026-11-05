@@ -428,10 +428,12 @@ func TestPicksTracksByLanguageAndCaptions(t *testing.T) {
 	}{
 		"defaults, captions off":   {LoadOptions{Captions: "off"}, 1, 3},
 		"captions on":              {LoadOptions{Captions: "on"}, 1, 1},
-		"Japanese, captions off":   {LoadOptions{AudioLanguage: "ja", Captions: "off"}, 2, 0},
-		"Japanese, English on":     {LoadOptions{AudioLanguage: "ja", SubtitleLanguage: "en", Captions: "on"}, 2, 1},
+		"Japanese, captions off":   {LoadOptions{AudioLanguages: []string{"ja"}, Captions: "off"}, 2, 0},
+		"Japanese, English on":     {LoadOptions{AudioLanguages: []string{"ja"}, SubtitleLanguage: "en", Captions: "on"}, 2, 1},
 		"Japanese subtitles on":    {LoadOptions{SubtitleLanguage: "jpn", Captions: "on"}, 1, 2},
-		"a language it hasn't":     {LoadOptions{AudioLanguage: "fr", SubtitleLanguage: "fr", Captions: "on"}, 1, 1},
+		"a language it hasn't":     {LoadOptions{AudioLanguages: []string{"fr"}, SubtitleLanguage: "fr", Captions: "on"}, 1, 1},
+		"first one it has":         {LoadOptions{AudioLanguages: []string{"fr", "ja", "en"}, Captions: "off"}, 2, 0},
+		"later one when no first":  {LoadOptions{AudioLanguages: []string{"fr", "en"}, Captions: "off"}, 1, 3},
 		"off ignores the language": {LoadOptions{SubtitleLanguage: "ja", Captions: "off"}, 1, 3},
 	} {
 		t.Run(name, func(t *testing.T) {
@@ -524,7 +526,10 @@ func TestTrackControls(t *testing.T) {
 		func() error { return s.SetSubtitleDelay(math.NaN()) },
 		func() error { return s.SetSubtitleDelay(MaxSubtitleDelay + 1) },
 		func() error { return s.SetSubtitleSize("huge") },
-		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{AudioLanguage: "en,ja"}) },
+		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{AudioLanguages: []string{"en,ja"}}) },
+		func() error {
+			return s.Load(streams.Source{URL: path}, LoadOptions{AudioLanguages: []string{"en", ""}})
+		},
 		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{Captions: "sometimes"}) },
 		func() error { return s.Load(streams.Source{URL: path}, LoadOptions{SubtitleSize: "huge"}) },
 	} {

@@ -179,10 +179,11 @@ type Ended struct {
 type LoadOptions struct {
 	// Start is where to start, in seconds.
 	Start float64 `json:"start"`
-	// AudioLanguage and SubtitleLanguage pick the tracks, as ISO 639 codes
-	// ("en", "jpn"), or "" for the file's own default (#62).
-	AudioLanguage    string `json:"audioLanguage"`
-	SubtitleLanguage string `json:"subtitleLanguage"`
+	// AudioLanguages and SubtitleLanguage pick the tracks, as ISO 639 codes
+	// ("en", "jpn"). The first audio language the file has is played (#98);
+	// none, or "" for the subtitles, is the file's own default (#62).
+	AudioLanguages   []string `json:"audioLanguages"`
+	SubtitleLanguage string   `json:"subtitleLanguage"`
 	// Captions is "on", "off", or "system" (or "") for the OS's captions
 	// preference. On shows full subtitles: in SubtitleLanguage if the file
 	// has them, or else its default or first. Off still shows forced ones
@@ -261,10 +262,21 @@ func (o LoadOptions) valid() bool {
 	_, sized := subtitleScales[o.SubtitleSize]
 	return o.Start >= 0 && !math.IsNaN(o.Start) &&
 		// Codes only: mpv's alang and slang are lists, split on commas.
-		languageCode.MatchString(o.AudioLanguage) && languageCode.MatchString(o.SubtitleLanguage) &&
+		languageCode.MatchString(o.SubtitleLanguage) && audioLanguagesValid(o.AudioLanguages) &&
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
 		(o.SubtitleSize == "" || sized) &&
 		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
+}
+
+// audioLanguagesValid reports whether every one of codes is a code, and none
+// is empty: an empty entry would end mpv's list early.
+func audioLanguagesValid(codes []string) bool {
+	for _, code := range codes {
+		if code == "" || !languageCode.MatchString(code) {
+			return false
+		}
+	}
+	return true
 }
 
 // tracks are the properties that pick a new file's tracks from o, found by
@@ -273,7 +285,7 @@ func (o LoadOptions) tracks() [][2]string {
 	captions := o.Captions == "on" || (o.Captions != "off" && systemCaptions())
 	props := [][2]string{
 		{"aid", "auto"}, {"sid", "auto"},
-		{"alang", o.AudioLanguage},
+		{"alang", strings.Join(o.AudioLanguages, ",")},
 		// Off: no language and no fallback leaves forced subtitles only.
 		{"slang", ""}, {"subs-fallback", "no"}, {"subs-fallback-forced", "yes"},
 	}
