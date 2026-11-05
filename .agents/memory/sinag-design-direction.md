@@ -14,3 +14,5 @@ For Sinag's UI the user asked for "Apple, Vercel and Nuvio had a love child" and
 - They asked for exact hex codes before agreeing, so give concrete values with WCAG contrast numbers rather than describing colours in words.
 
 **How to apply:** new UI should extend `docs/design/README.md` and the `/gallery` page rather than inventing new colours or fonts. Related: [[frontend-stack-preferences]].
+
+**Type (#112, 2026-11-05):** the user picked **option B · Semi-wide** from three specimens: hero and page titles at 112.5% width, row headings at 100%, body 15px, Mona Sans labels, mono only for numbers and codes. Details and the utilities: [[typography-scale]].
