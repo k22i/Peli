@@ -195,33 +195,107 @@ beforeEach(() => {
   browser.openURL.mockClear();
 });
 
-const sectionTitles = [
-  "Account & profiles",
-  "Addons",
+const paneTitles = [
+  "Account",
+  "Addons & content",
   "Playback",
-  "Subtitles",
+  "Languages & subtitles",
+  "Streaming",
+  "Tracking",
   "Appearance",
-  "Integrations",
   "Privacy",
   "About",
 ];
 
-async function renderSettings() {
-  const result = await renderApp("/settings");
-  await screen.findByRole("switch", { name: "Hardware decoding" });
+// What shows when a pane's rows have loaded.
+const ready: Record<string, [role: string, name: string]> = {
+  account: ["button", "Change server"],
+  content: ["switch", "Show anime in Movies and Shows"],
+  playback: ["switch", "Hardware decoding"],
+  languages: ["combobox", "Audio language"],
+  streaming: ["switch", "Stream torrents"],
+  tracking: ["heading", "Tracking"],
+  appearance: ["heading", "Appearance"],
+  privacy: ["switch", "Share diagnostics"],
+  about: ["button", "Licences"],
+};
+
+// Settings opens on one pane at a time (`?section=`), so each test opens the
+// pane its rows are in.
+async function renderSettings(section = "playback") {
+  const result = await renderApp(`/settings?section=${section}`);
+  const [role, name] = ready[section]!;
+  await screen.findByRole(role, { name });
   return result;
 }
 
-describe("settings", () => {
-  it("shows every section with the defaults", async () => {
-    await renderSettings();
+// The group titles on screen.
+const groups = () => screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
 
-    expect(screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual(
-      sectionTitles,
+const paneList = () => screen.getByRole("navigation", { name: "Settings panes" });
+
+describe("settings", () => {
+  it("lists the panes and opens the one in ?section=, Account by default", async () => {
+    const { router } = await renderApp("/settings");
+    await screen.findByRole("button", { name: "Change server" });
+
+    expect(
+      within(paneList())
+        .getAllByRole("link")
+        .map((link) => link.textContent),
+    ).toEqual(paneTitles);
+    expect(screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual([
+      "Account",
+    ]);
+    expect(screen.getByRole("heading", { level: 1, name: "Settings" })).toBeInTheDocument();
+    const current = within(paneList()).getAllByRole("link", { current: "page" });
+    expect(current.map((link) => link.textContent)).toEqual(["Account"]);
+    expect(router.state.location.pathname).toBe("/settings");
+  });
+
+  it("falls back to Account for a pane that doesn't exist", async () => {
+    await renderApp("/settings?section=nope");
+
+    expect(await screen.findByRole("heading", { level: 2, name: "Account" })).toBeInTheDocument();
+    expect(within(paneList()).getByRole("link", { name: "Account" })).toHaveAttribute(
+      "aria-current",
+      "page",
     );
-    expect(screen.getByRole("switch", { name: "Hardware decoding" })).toBeChecked();
-    expect(screen.getByRole("switch", { name: "Share diagnostics" })).not.toBeChecked();
-    expect(screen.getByRole("combobox", { name: "Audio language" })).toHaveTextContent("Original");
+  });
+
+  it("shows every row in its pane, with the defaults", async () => {
+    const user = userEvent.setup();
+    await renderSettings("account");
+    const open = async (pane: string) => {
+      await user.click(within(paneList()).getByRole("link", { name: pane }));
+      expect(await screen.findByRole("heading", { level: 2, name: pane })).toBeInTheDocument();
+    };
+
+    expect(groups()).toEqual(["Nuvio", "Profiles"]);
+    expect(screen.getByText("Nuvio account")).toBeInTheDocument();
+    expect(screen.getByText("Server")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Manage" })).toBeInTheDocument();
+
+    await open("Addons & content");
+    expect(groups()).toEqual(["Addons", "Catalogs", "Artwork"]);
+    expect(await screen.findByText("1 addon installed")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open addons" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("switch", { name: "Show anime in Movies and Shows" }),
+    ).not.toBeChecked();
+    expect(screen.getByRole("button", { name: "Add TMDB key" })).toBeInTheDocument();
+
+    await open("Playback");
+    expect(groups()).toEqual(["Video", "Intros and credits"]);
+    expect(await screen.findByRole("switch", { name: "Hardware decoding" })).toBeChecked();
+    expect(screen.getByRole("switch", { name: "Skip intros automatically" })).not.toBeChecked();
+    expect(screen.getByRole("switch", { name: "Look up intro and credits times" })).toBeChecked();
+
+    await open("Languages & subtitles");
+    expect(groups()).toEqual(["Languages", "Subtitles"]);
+    expect(await screen.findByRole("combobox", { name: "Audio language" })).toHaveTextContent(
+      "Original",
+    );
     expect(screen.getByRole("combobox", { name: "Subtitle language" })).toHaveTextContent(
       "Automatic",
     );
@@ -230,16 +304,90 @@ describe("settings", () => {
       "aria-pressed",
       "true",
     );
-    expect(await screen.findByText("1 addon installed")).toBeInTheDocument();
+
+    await open("Streaming");
+    expect(groups()).toEqual(["Torrents"]);
+    expect(await screen.findByRole("switch", { name: "Stream torrents" })).not.toBeChecked();
+
+    await open("Tracking");
+    expect(groups()).toEqual(["SIMKL", "AniList"]);
+    expect(await screen.findByRole("button", { name: "Connect SIMKL" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Connect AniList" })).toBeInTheDocument();
+
+    await open("Appearance");
+    expect(screen.getByText("Theme")).toBeInTheDocument();
+
+    await open("Privacy");
+    expect(await screen.findByRole("switch", { name: "Share diagnostics" })).not.toBeChecked();
+
+    await open("About");
     expect(await screen.findByText("1.2.3")).toBeInTheDocument();
     // The welcome screen's words (#39).
     expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Design system" })).toHaveAttribute("href", "/gallery");
+  });
+
+  it("picks a pane from the chip rail in a narrow window", async () => {
+    const user = userEvent.setup();
+    const { router } = await renderSettings("account");
+
+    const rail = screen.getByRole("group", { name: "Settings panes" });
+    expect(within(rail).getByRole("button", { name: "Account" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await user.click(within(rail).getByRole("button", { name: "Appearance" }));
+
+    expect(await screen.findByRole("heading", { level: 2, name: "Appearance" })).toBeVisible();
+    expect(router.state.location.search).toEqual({ section: "appearance" });
+    expect(within(rail).getByRole("button", { name: "Appearance" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    // Pressing the current chip keeps the pane.
+    await user.click(within(rail).getByRole("button", { name: "Appearance" }));
+    expect(router.state.location.search).toEqual({ section: "appearance" });
+  });
+
+  it("opens a pane from the pane list with the keyboard", async () => {
+    const user = userEvent.setup();
+    const { router } = await renderSettings("playback");
+
+    // One Tab stop, on the current pane; arrows move, Enter opens.
+    const links = within(paneList()).getAllByRole("link");
+    expect(links.filter((link) => link.tabIndex === 0).map((link) => link.textContent)).toEqual([
+      "Playback",
+    ]);
+    const playback = within(paneList()).getByRole("link", { name: "Playback" });
+    playback.focus();
+    await user.keyboard("{ArrowDown}");
+    const languages = within(paneList()).getByRole("link", { name: "Languages & subtitles" });
+    expect(languages).toHaveFocus();
+    await user.keyboard("{Enter}");
+
+    const heading = await screen.findByRole("heading", { level: 2, name: "Languages & subtitles" });
+    await waitFor(() => expect(heading).toHaveFocus());
+    expect(router.state.location.search).toEqual({ section: "languages" });
+    expect(languages).toHaveAttribute("aria-current", "page");
+    // Then Tab goes into the pane's rows.
+    await user.tab();
+    expect(await screen.findByRole("combobox", { name: "Audio language" })).toHaveFocus();
+  });
+
+  it("doesn't move focus when the pane is picked with the pointer", async () => {
+    const user = userEvent.setup();
+    await renderSettings("playback");
+
+    await user.click(within(paneList()).getByRole("link", { name: "Privacy" }));
+
+    const heading = await screen.findByRole("heading", { level: 2, name: "Privacy" });
+    expect(heading).not.toHaveFocus();
   });
 
   // Addons hold the debrid keys (#54, ADR-0038): the row points there and
   // asks for nothing.
   it("sends debrid setup to the addons", async () => {
-    await renderSettings();
+    await renderSettings("content");
 
     expect(
       screen.getByText(/^Set up TorBox, AllDebrid or Premiumize in a stream addon/),
@@ -249,7 +397,7 @@ describe("settings", () => {
 
   it("shows Sinag's licence and the third-party notices", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("about");
 
     await user.click(screen.getByRole("button", { name: "Licences" }));
 
@@ -265,19 +413,25 @@ describe("settings", () => {
 
   it("is fully keyboard-operable", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("playback");
 
-    // Switches toggle with Space.
+    // Switches toggle with Space, and Tab moves on to the next row.
     const hardwareDecoding = screen.getByRole("switch", { name: "Hardware decoding" });
     hardwareDecoding.focus();
     await user.keyboard(" ");
     await waitFor(() => expect(store.device?.hardwareDecoding).toBe(false));
     expect(hardwareDecoding).not.toBeChecked();
-
-    // Tab moves on to the language select, which opens and picks with keys.
     await user.tab();
+    expect(screen.getByRole("switch", { name: "Skip intros automatically" })).toHaveFocus();
+  });
+
+  it("picks languages and sizes with the keyboard", async () => {
+    const user = userEvent.setup();
+    await renderSettings("languages");
+
+    // The language select opens and picks with keys.
     const audio = screen.getByRole("combobox", { name: "Audio language" });
-    expect(audio).toHaveFocus();
+    audio.focus();
     await user.keyboard("{ArrowDown}");
     const japanese = await screen.findByRole("option", { name: "Japanese" });
     await waitFor(() => expect(screen.getByRole("listbox")).toBeVisible());
@@ -287,6 +441,10 @@ describe("settings", () => {
     await user.keyboard("{Enter}");
     await waitFor(() => expect(store.profileSettings.get(1)?.audioLanguage).toBe("ja"));
     expect(audio).toHaveTextContent("Japanese");
+
+    // Tab moves on to the next language select.
+    await user.tab();
+    expect(screen.getByRole("combobox", { name: "Subtitle language" })).toHaveFocus();
 
     // Segmented controls move with arrow keys and press with Space.
     const size = screen.getByRole("group", { name: "Size" });
@@ -300,39 +458,30 @@ describe("settings", () => {
   });
 
   it("gives every keyboard-reachable element a visible focus ring", async () => {
-    await renderSettings();
+    await renderSettings("languages");
 
     const elements = keyboardReachable();
-    expect(elements.length).toBeGreaterThan(20);
+    expect(elements.length).toBeGreaterThan(10);
     const missing = elements.filter((element) => !hasFocusRing(element));
     expect(missing.map((element) => element.outerHTML.slice(0, 120))).toEqual([]);
   });
 
-  it("jumps to a section from the section list", async () => {
-    const user = userEvent.setup();
-    await renderSettings();
-
-    const nav = screen.getByRole("navigation", { name: "Settings sections" });
-    within(nav).getByRole("button", { name: "Privacy" }).focus();
-    await user.keyboard("{Enter}");
-
-    expect(screen.getByRole("heading", { level: 2, name: "Privacy" })).toHaveFocus();
-  });
-
   it("keeps profile settings per profile and device settings for everyone", async () => {
     const user = userEvent.setup();
-    const first = await renderSettings();
+    const first = await renderSettings("privacy");
     await user.click(screen.getByRole("switch", { name: "Share diagnostics" }));
-    await user.click(screen.getByRole("button", { name: "Off" }));
+    await user.click(within(paneList()).getByRole("link", { name: "Languages & subtitles" }));
+    await user.click(await screen.findByRole("button", { name: "Off" }));
     await waitFor(() => expect(store.profileSettings.get(1)?.captions).toBe("off"));
     expect(store.device?.diagnostics).toBe(true);
     first.unmount();
 
     // Another profile: its own subtitles, the same device.
     store.current = 1;
-    await renderSettings();
+    await renderSettings("privacy");
     expect(screen.getByRole("switch", { name: "Share diagnostics" })).toBeChecked();
-    const captions = screen.getByRole("group", { name: "Captions" });
+    await user.click(within(paneList()).getByRole("link", { name: "Languages & subtitles" }));
+    const captions = await screen.findByRole("group", { name: "Captions" });
     expect(within(captions).getByRole("button", { name: "System" })).toHaveAttribute(
       "aria-pressed",
       "true",
@@ -342,7 +491,7 @@ describe("settings", () => {
 
   it("streams torrents only once turned on, with a cache to size and clear", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("streaming");
     const streaming = screen.getByRole("switch", { name: "Stream torrents" });
     expect(streaming).not.toBeChecked();
     expect(streaming).toHaveAccessibleDescription(/can see your IP address/);
@@ -366,7 +515,7 @@ describe("settings", () => {
 
   it("puts a setting back if saving it fails", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("privacy");
     store.failSaves = true;
 
     const diagnostics = screen.getByRole("switch", { name: "Share diagnostics" });
@@ -378,7 +527,7 @@ describe("settings", () => {
   // the code shows for another device, and the row then shows the account.
   it("connects SIMKL and shows its settings", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("tracking");
 
     await user.click(await screen.findByRole("button", { name: "Connect SIMKL" }));
     const dialog = await screen.findByRole("dialog", { name: "Connect SIMKL" });
@@ -407,7 +556,7 @@ describe("settings", () => {
 
   it("cancels a SIMKL sign-in when the dialog closes", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("tracking");
     await user.click(await screen.findByRole("button", { name: "Connect SIMKL" }));
     const dialog = await screen.findByRole("dialog", { name: "Connect SIMKL" });
     await user.click(within(dialog).getByRole("button", { name: "Cancel" }));
@@ -416,7 +565,7 @@ describe("settings", () => {
 
   it("opens AniList's approval page to connect", async () => {
     const user = userEvent.setup();
-    await renderSettings();
+    await renderSettings("tracking");
     await user.click(await screen.findByRole("button", { name: "Connect AniList" }));
     expect(await screen.findByRole("dialog", { name: "Connect AniList" })).toBeVisible();
     await waitFor(() =>
@@ -432,7 +581,7 @@ describe("settings", () => {
       simkl: { user: "kevin", needsReconnect: true, importedAt: 0 },
       anilist: { user: "kev", needsReconnect: true, expires: 0, importedAt: 0 },
     };
-    await renderSettings();
+    await renderSettings("tracking");
     expect(await screen.findByRole("button", { name: "Reconnect SIMKL" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Reconnect AniList" })).toBeVisible();
   });
@@ -445,7 +594,7 @@ describe("settings", () => {
       simkl: null,
       anilist: null,
     };
-    await renderSettings();
+    await renderSettings("tracking");
     expect(await screen.findByText("Kids profiles don’t connect to trackers.")).toBeVisible();
     expect(screen.queryByRole("button", { name: "Connect SIMKL" })).not.toBeInTheDocument();
   });

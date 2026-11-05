@@ -70,7 +70,7 @@ afterEach(() => {
 });
 
 async function openTmdbDialog(user: ReturnType<typeof userEvent.setup>, name: string) {
-  await renderApp("/settings");
+  await renderApp("/settings?section=content");
   await user.click(await screen.findByRole("button", { name }));
   return screen.findByRole("dialog", { name: "TMDB" });
 }

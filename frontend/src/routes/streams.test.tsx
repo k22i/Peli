@@ -716,6 +716,8 @@ describe("stream picker", () => {
     expect(await screen.findByText("Torrent streaming is off")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Open Settings" }));
     await waitFor(() => expect(router.state.location.pathname).toBe("/settings"));
+    // The Streaming pane has the torrent setting.
+    expect(router.state.location.search).toEqual({ section: "streaming" });
   });
 
   it("asks the addon again for a link that has expired", async () => {

@@ -1,6 +1,7 @@
 import { useMatches, useNavigate, useRouter } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
+import { lastOpenPane } from "@/components/settings/panes";
 import { Sidebar } from "@/components/shell/sidebar";
 import { TitleBar } from "@/components/shell/title-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
@@ -86,7 +87,10 @@ export function AppShell({ children }: { children: ReactNode }) {
       if (!to) return;
       event.preventDefault();
       focusContentAfterNavigate();
-      void navigate({ to });
+      // Settings opens at the pane last used this run (#120).
+      void navigate(
+        event.key === "," ? { to: "/settings", search: { section: lastOpenPane() } } : { to },
+      );
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);

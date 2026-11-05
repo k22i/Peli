@@ -242,7 +242,7 @@ function Picker({
             ...(failed.kind === "torrent" && {
               actionProps: {
                 children: "Open Settings",
-                onClick: () => void navigate({ to: "/settings" }),
+                onClick: () => void navigate({ to: "/settings", search: { section: "streaming" } }),
               },
             }),
           });

@@ -127,7 +127,7 @@ const messages: Record<FailureKind, (service: string | null) => Message> = {
   torrent: () => ({
     title: "Torrent streaming is off",
     description:
-      "Turn it on in Settings › Playback to stream torrents peer to peer, or pick a debrid or direct stream.",
+      "Turn it on in Settings › Streaming to stream torrents peer to peer, or pick a debrid or direct stream.",
   }),
   no_peers: () => ({
     title: "No one is sharing this torrent",

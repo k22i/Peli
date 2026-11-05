@@ -137,6 +137,19 @@ describe("app shell", () => {
     expect(document.getElementById("content")).toHaveFocus();
   });
 
+  it("opens Settings at the pane last used", async () => {
+    const user = userEvent.setup();
+    const { router } = await renderApp("/settings?section=about");
+    expect(await screen.findByRole("heading", { level: 2, name: "About" })).toBeInTheDocument();
+
+    await user.keyboard("{Meta>}1{/Meta}");
+    await waitFor(() => expect(router.state.location.pathname).toBe("/"));
+    await user.keyboard("{Meta>},{/Meta}");
+
+    await waitFor(() => expect(router.state.location.pathname).toBe("/settings"));
+    expect(router.state.location.search).toEqual({ section: "about" });
+  });
+
   it("skips to the content pane", async () => {
     const user = userEvent.setup();
     await renderApp("/");

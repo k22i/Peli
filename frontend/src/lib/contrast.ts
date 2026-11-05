@@ -231,6 +231,14 @@ export const contrastPairs: ContrastPair[] = [
   { label: "Focus ring", foreground: "ring", background: ["background"], min: AA_UI },
   { label: "Focus ring on sidebar", foreground: "ring", background: ["sidebar"], min: AA_UI },
   { label: "Focus ring on card", foreground: "ring", background: ["card"], min: AA_UI },
+  // Settings' pane list (#120): the current pane's label over its brand-soft
+  // pill, and its icon (brand-foreground on the brand tile is "Brand fill").
+  {
+    label: "Settings pane label, current",
+    foreground: "foreground",
+    background: ["background", "brand-soft"],
+    min: AA_TEXT,
+  },
 ];
 
 export function parseHex(hex: string): Rgba {
