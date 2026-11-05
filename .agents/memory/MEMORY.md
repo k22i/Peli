@@ -43,3 +43,4 @@
 - [Remembered source](remembered-source.md) — #58/ADR-0044 store.ChosenSource per show, Prefs.remembered → engine top pick, saved on every play, mock ChosenSource/SetChosenSource
 - [Plugin sandbox](plugin-sandbox.md) — #56/ADR-0043 internal/plugins child process per call, host API, limits, SINAG_DEV_PLUGINS stand-in for #57, StreamSource key/name/kind, goja pin, mock @bindings/plugins
 - [Anime from AniList](anime-from-anilist.md) — #106–#109: sinag:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock
+- [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Sinag's identity, glass tiers (#111), 2× cards, type usage rework (fonts stay), sub-tickets #111–#125
