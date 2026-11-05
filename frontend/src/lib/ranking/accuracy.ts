@@ -2,7 +2,7 @@ import type { Stream } from "@/lib/addon-protocol";
 import { parseStreamResponse } from "@/lib/addon-protocol/parse";
 
 import type { EpisodeMap, TitleContext } from "./context";
-import { judge } from "./fakes";
+import { judge, type Bucket, type Verdict } from "./fakes";
 import { parseStream, type Parsed } from "./parse";
 
 // The parser's accuracy against the labelled corpus (#51): 360 streams from
@@ -277,9 +277,109 @@ export function fakeRates(rows: readonly LabelledStream[]) {
   };
 }
 
+// --- The title check, measured (#99) -----------------------------------------------
+//
+// "title mismatch" is reported but moves nothing. These rates say what it
+// would do as `suspicious` (shown, ranked lower) or as `hidden` (collapsed
+// with the likely fakes), without turning it on.
+
+export type TitleCheckMode = "report only" | "suspicious" | "hidden";
+export const titleCheckModes: TitleCheckMode[] = ["report only", "suspicious", "hidden"];
+
+// The bucket a verdict would have if a title mismatch counted in `mode`. A
+// CAM / TS release stays in its own group.
+export function bucketWith(verdict: Verdict, mode: TitleCheckMode): Bucket {
+  const mismatch = verdict.reasons.includes("title mismatch");
+  if (!mismatch || mode === "report only" || verdict.bucket === "low quality") {
+    return verdict.bucket;
+  }
+  if (mode === "hidden") return "hidden";
+  return verdict.bucket === "ok" ? "suspicious" : verdict.bucket;
+}
+
+export function titleCheckRates(rows: readonly LabelledStream[], mode: TitleCheckMode) {
+  let genuine = 0;
+  let hiddenGenuine = 0;
+  let localized = 0;
+  let flaggedLocalized = 0;
+  let movedGenuine = 0;
+  let fakes = 0;
+  let hiddenFakes = 0;
+  let movedFakes = 0;
+  for (const row of rows) {
+    const verdict = verdictOf(row);
+    const bucket = bucketWith(verdict, mode);
+    const moved = bucket !== bucketWith(verdict, "report only");
+    if (row.label.fake) {
+      fakes++;
+      if (bucket === "hidden") hiddenFakes++;
+      if (moved) movedFakes++;
+    } else {
+      genuine++;
+      if (bucket === "hidden") hiddenGenuine++;
+      if (moved) movedGenuine++;
+      if (row.label.localized) {
+        localized++;
+        if (bucket === "suspicious" || bucket === "hidden") flaggedLocalized++;
+      }
+    }
+  }
+  return {
+    hiddenFalsePositiveRate: percent(hiddenGenuine, genuine),
+    // Genuine rows named in another language, suspicious or hidden.
+    localizedFlaggedRate: percent(flaggedLocalized, localized),
+    // Genuine and fake rows the title check alone put in another bucket.
+    genuineMovedRate: percent(movedGenuine, genuine),
+    fakesMovedRate: percent(movedFakes, fakes),
+    hiddenRecall: percent(hiddenFakes, fakes),
+  };
+}
+
 // --- Report -------------------------------------------------------------------
 
 type Rates = ReturnType<typeof fakeRates>;
+
+// What the title check would do in each mode, over the "titles" split, the 360
+// rows labelled in full, and both.
+function titleCheckSection(
+  originals: readonly LabelledStream[],
+  titles: readonly LabelledStream[],
+): string[] {
+  const groups = [
+    ["titles split", titles],
+    ["original 360", originals],
+    ["both", [...originals, ...titles]],
+  ] as const;
+  const rows: string[] = [];
+  const line = (label: string, key: keyof ReturnType<typeof titleCheckRates>) =>
+    rows.push(
+      `| ${label} | ${titleCheckModes
+        .map((mode) => `${titleCheckRates(group, mode)[key]}%`)
+        .join(" | ")} |`,
+    );
+  let group: readonly LabelledStream[] = titles;
+  for (const [name, list] of groups) {
+    group = list;
+    const localized = list.filter((row) => row.label.localized).length;
+    const scope = `${name} (n=${list.length}${localized ? `, ${localized} localized` : ""})`;
+    line(`${scope}: hidden, false-positive rate`, "hiddenFalsePositiveRate");
+    if (localized)
+      line(`${scope}: genuine localized, suspicious or hidden`, "localizedFlaggedRate");
+    line(`${scope}: genuine moved by the title check`, "genuineMovedRate");
+    line(`${scope}: hidden, recall`, "hiddenRecall");
+    line(`${scope}: fakes moved by the title check`, "fakesMovedRate");
+  }
+  return [
+    "",
+    "## Title check (#99)",
+    "",
+    'What the title check would do if a mismatch counted as `suspicious` or as `hidden`. It is report only: the first column is what ships. The titles\' aliases were written by hand, as stand-ins for TMDB\'s (`aliasesSource: "manual"`), and the "titles" rows over-sample localized names and wrong-title hits, so these are estimates, not rates a user would see.',
+    "",
+    `| | ${titleCheckModes.join(" | ")} |`,
+    `|---|${titleCheckModes.map(() => "---:").join("|")}|`,
+    ...rows,
+  ];
+}
 
 // Accuracy per split, the fake checks' rates, and every miss, as Markdown.
 export function report(everything: readonly LabelledStream[]): string {
@@ -352,5 +452,6 @@ export function report(everything: readonly LabelledStream[]): string {
     const note = row.label.note ? `: ${row.label.note}` : "";
     out.push(`- \`${row.id}\`: ${bucket}${why}, labelled ${truth}${note}`);
   }
+  if (titles.length) out.push(...titleCheckSection(rows, titles));
   return out.join("\n") + "\n";
 }

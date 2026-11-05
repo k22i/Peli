@@ -63,7 +63,13 @@ describe("titleContext", () => {
       { ...meta, name: "The Shawshank Redemption" },
       "x",
       {
-        aliases: ["Cadena perpetua", "the shawshank redemption", "Les Évadés", "cadena perpetua", ""],
+        aliases: [
+          "Cadena perpetua",
+          "the shawshank redemption",
+          "Les Évadés",
+          "cadena perpetua",
+          "",
+        ],
       },
     );
     expect(ctx.aliases).toEqual(["Cadena perpetua", "Les Évadés"]);

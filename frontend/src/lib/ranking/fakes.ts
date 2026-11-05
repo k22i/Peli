@@ -57,27 +57,59 @@ export function mbps(p: Parsed, ctx: TitleContext): number | null {
   return (p.sizeBytes * 8) / (ctx.runtimeMin * 60) / 1e6;
 }
 
-const stopWords = new Set(["the", "of", "and", "vs", "part", "no", "na", "wa"]);
-const words = (text: string) =>
-  text
+// --- Title matching (#99) ------------------------------------------------------
+//
+// Does a release name the asked-for title? The title is its name or any alias
+// (TMDB's alternative titles and translations, Kitsu's aliases), compared
+// word by word, so "Cadena perpetua" and "Les évadés" count for The
+// Shawshank Redemption once TMDB lists them. The verdict is reported but
+// moves nothing (ADR-0049): it needs measuring with real TMDB titles first.
+
+// Words that say nothing about which title it is: articles, particles and
+// "part" in the languages releases come in.
+const stopWords = new Set(
+  (
+    "the of and vs part no na wa " +
+    "le la les el los las il lo gli der die das den de du des un une uno una et und do da dos um"
+  ).split(" "),
+);
+
+const kana = /[぀-ヿ㐀-鿿]/u;
+
+// A text's content words: lowercase, accents and apostrophes removed
+// ("d'Amélie" is "damelie", "Pan's" is "pans"), in any script. Kana and Han
+// have no spaces between words, so they are cut into pairs of characters.
+// Single letters are dropped; single digits stay ("1+1", "Cars 2").
+export function titleWords(text: string): string[] {
+  const out: string[] = [];
+  const plain = text
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .split(" ")
-    .filter((word) => word.length > 1 && !stopWords.has(word));
+    .replace(/['’`´]/g, "");
+  for (const word of plain.split(/[^\p{L}\p{N}]+/u)) {
+    if (!word || stopWords.has(word)) continue;
+    if (kana.test(word)) {
+      if (word.length === 1) out.push(word);
+      else for (let i = 0; i + 1 < word.length; i++) out.push(word.slice(i, i + 2));
+    } else if (word.length > 1 || /\d/.test(word)) {
+      out.push(word);
+    }
+  }
+  return out;
+}
 
-// The share of the best-matching title's words that the release names
-// share; null for Cyrillic, Thai, Japanese, Chinese or Korean release names,
-// which have no Latin title to compare.
-function titleOverlap(p: Parsed, ctx: TitleContext): number | null {
+// The share of a title's words that the release names have, for the best
+// matching of the name and aliases; null when no title has a word to compare.
+export function titleCoverage(p: Parsed, ctx: TitleContext): number | null {
   const names = p.releaseNames.join(" ");
-  if (/[Ѐ-ӿ฀-๿぀-ヿ㐀-鿿가-힯]/.test(names)) return null;
-  const have = new Set(words(names));
-  let best = 0;
+  // An elision as "d'Amélie" is also read as "d" and "Amélie".
+  const have = new Set([...titleWords(names), ...titleWords(names.replace(/['’`´]/g, " "))]);
+  let best: number | null = null;
   for (const title of [ctx.name, ...(ctx.aliases ?? [])]) {
-    const want = words(title);
-    if (want.length) best = Math.max(best, want.filter((w) => have.has(w)).length / want.length);
+    const want = [...new Set(titleWords(title))];
+    if (!want.length) continue;
+    best = Math.max(best ?? 0, want.filter((w) => have.has(w)).length / want.length);
   }
   return best;
 }
@@ -127,6 +159,14 @@ function mappedNumbering(p: Parsed, ctx: TitleContext, map: EpisodeMap): Reason 
   return "wrong season";
 }
 
+// The release names less than this share of the title's words.
+export const minTitleCoverage = 0.5;
+
+export function titleMismatch(p: Parsed, ctx: TitleContext): boolean {
+  const coverage = titleCoverage(p, ctx);
+  return coverage !== null && coverage < minTitleCoverage;
+}
+
 export function judge(p: Parsed, ctx: TitleContext): Verdict {
   const reasons: Reason[] = [];
 
@@ -166,7 +206,7 @@ export function judge(p: Parsed, ctx: TitleContext): Verdict {
   const max = p.source ? maxMbps[p.source] : undefined;
   if (rate !== null && max && rate > max) reasons.push("too large");
 
-  if (titleOverlap(p, ctx) === 0) reasons.push("title mismatch");
+  if (titleMismatch(p, ctx)) reasons.push("title mismatch");
 
   if (p.source === "cam" || p.source === "ts" || p.source === "tc" || p.source === "scr") {
     reasons.push("cam / ts");

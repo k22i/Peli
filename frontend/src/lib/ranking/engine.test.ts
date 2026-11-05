@@ -2,7 +2,7 @@ import { describe, expect, it } from "vite-plus/test";
 
 import type { Stream } from "@/lib/addon-protocol";
 
-import { labelled } from "./accuracy";
+import { fieldRows, labelled } from "./accuracy";
 import type { TitleContext } from "./context";
 import corpus from "./corpus/labelled.json";
 import { StreamEngine, rankStreams } from "./engine";
@@ -263,7 +263,8 @@ describe("StreamEngine", () => {
   });
 
   it("ranks the same incrementally as all at once", () => {
-    const rows = labelled(corpus);
+    // The first 360 rows: the "titles" split repeats a few titles with other recordings.
+    const rows = fieldRows(labelled(corpus));
     for (const title of new Set(rows.map((row) => row.ctx.id))) {
       const ofTitle = rows.filter((row) => row.ctx.id === title);
       const ctx = ofTitle[0]!.ctx;

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vite-plus/test";
 import type { Stream } from "@/lib/addon-protocol";
 
 import type { EpisodeMap, TitleContext } from "./context";
-import { judge } from "./fakes";
+import { judge, titleCoverage, titleMismatch, titleWords } from "./fakes";
 import { parseStream } from "./parse";
 
 // Long-running anime asked for by Kitsu's absolute number (#100, ADR-0050).
@@ -124,5 +124,114 @@ describe("Kitsu episodes without an episode map", () => {
     expect(
       verdict(answer("x", "[SubsPlease] One Piece - 1099 (1080p).mkv"), onePiece).reasons,
     ).toEqual(["wrong episode"]);
+  });
+});
+
+// Title matching (#99, ADR-0049).
+const hash = "c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6";
+const torrent = (file: string, torrentName = file): Stream => ({
+  name: "Torrentio\n1080p",
+  description: `${torrentName}\n${file}\n👤 50 💾 4.2 GB ⚙️ Tracker`,
+  infoHash: hash,
+  fileIdx: 0,
+  behaviorHints: { filename: file },
+});
+const parse = (file: string, torrentName?: string) =>
+  parseStream(torrent(file, torrentName), { type: "movie" });
+
+const shawshank: TitleContext = {
+  type: "movie",
+  anime: false,
+  id: "tt0111161",
+  name: "The Shawshank Redemption",
+  year: 1994,
+  runtimeMin: 142,
+};
+// What TMDB's alternative titles and translations give (#99).
+const withAliases: TitleContext = {
+  ...shawshank,
+  aliases: ["Cadena perpetua", "Les Évadés", "Побег из Шоушенка", "ショーシャンクの空に"],
+};
+
+describe("titleWords", () => {
+  it("drops accents, apostrophes, articles and single letters", () => {
+    expect(titleWords("Le Fabuleux Destin d'Amélie Poulain")).toEqual([
+      "fabuleux",
+      "destin",
+      "damelie",
+      "poulain",
+    ]);
+    expect(titleWords("Pan's Labyrinth")).toEqual(["pans", "labyrinth"]);
+    expect(titleWords("The Lion King")).toEqual(["lion", "king"]);
+  });
+
+  it("keeps digits, and other scripts as they are", () => {
+    expect(titleWords("1+1")).toEqual(["1", "1"]);
+    expect(titleWords("Побег из Шоушенка")).toEqual(["побег", "из", "шоушенка"]);
+  });
+
+  it("cuts kana and Han, which have no spaces, into pairs", () => {
+    expect(titleWords("君の名は")).toEqual(["君の", "の名", "名は"]);
+    expect(titleWords("奥")).toEqual(["奥"]);
+  });
+});
+
+const reasons = (file: string, ctx: TitleContext, torrentName?: string) =>
+  judge(parse(file, torrentName), ctx).reasons;
+
+describe("title mismatch", () => {
+  it("passes a localized genuine title the metadata lists", () => {
+    const file = "Cadena.perpetua.1994.1080p.BluRay.x264.DUAL.mkv";
+    expect(reasons(file, withAliases)).not.toContain("title mismatch");
+    expect(titleCoverage(parse(file), withAliases)).toBe(1);
+    // In Russian, Japanese and French as well.
+    expect(reasons("Побег из Шоушенка (1994) BDRip 1080p.mkv", withAliases)).not.toContain(
+      "title mismatch",
+    );
+    expect(reasons("ショーシャンクの空に.1994.1080p.mkv", withAliases)).not.toContain(
+      "title mismatch",
+    );
+    expect(reasons("Les.evades.1994.1080p.FR.EN.x264.mkv", withAliases)).not.toContain(
+      "title mismatch",
+    );
+  });
+
+  it("finds the title in a pack's name when the file doesn't carry it", () => {
+    expect(
+      reasons("gfath1.1994.x264.mkv", withAliases, "Побег из Шоушенка [1994 Трилогия]"),
+    ).not.toContain("title mismatch");
+  });
+
+  it("flags another film in the report, in any script", () => {
+    expect(reasons("The.Lion.King.1994.1080p.BluRay.mkv", withAliases)).toContain("title mismatch");
+    expect(reasons("Зимородок (1994).mkv", withAliases)).toContain("title mismatch");
+    expect(reasons("Cars.2006.1080p.mkv", withAliases)).toContain("title mismatch");
+  });
+
+  it("flags a localized genuine title the metadata doesn't list", () => {
+    // Without TMDB's translations the check is the English one: it is why it
+    // stays report only.
+    const file = "Cadena.perpetua.1994.1080p.BluRay.x264.DUAL.mkv";
+    expect(reasons(file, shawshank)).toContain("title mismatch");
+    expect(titleMismatch(parse(file), { ...shawshank, aliases: [] })).toBe(true);
+  });
+
+  it("needs half of the title's words", () => {
+    const ctx: TitleContext = { ...shawshank, name: "Spider-Man: Brand New Day", year: 2026 };
+    expect(titleMismatch(parse("Spider-Man.Brand.New.Day.2026.1080p.mkv"), ctx)).toBe(false);
+    expect(titleMismatch(parse("Spider-Man.Brand.2026.1080p.mkv"), ctx)).toBe(false);
+    expect(titleMismatch(parse("Spider-Man.2.2026.1080p.mkv"), ctx)).toBe(true);
+  });
+
+  it("is report only: it moves nothing", () => {
+    const verdict = judge(parse("The.Lion.King.1994.1080p.BluRay.mkv"), withAliases);
+    expect(verdict.reasons).toContain("title mismatch");
+    expect(verdict.bucket).toBe("ok");
+  });
+
+  it("has nothing to compare for a title without words", () => {
+    const ctx: TitleContext = { ...shawshank, name: "A", aliases: [] };
+    expect(titleCoverage(parse("Anything.1994.1080p.mkv"), ctx)).toBeNull();
+    expect(titleMismatch(parse("Anything.1994.1080p.mkv"), ctx)).toBe(false);
   });
 });

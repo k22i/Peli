@@ -4,6 +4,9 @@
 //
 //   node scripts/extract-ranking-corpus.ts
 //
+// Writes the whole file: run extract-title-matching-corpus.ts after it, to
+// add the "titles" split (#99) back.
+//
 // The spike's fixtures already have debrid keys and opaque URL tokens
 // redacted (spikes/stream-ranking/src/redact.ts). Labels follow the rules in
 // spikes/stream-ranking/labels/README.md. Fixtures are for tests only; no

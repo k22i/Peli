@@ -2,7 +2,7 @@ import { expect, it } from "vite-plus/test";
 
 import { parseStreamResponse } from "@/lib/addon-protocol/parse";
 
-import { labelled } from "./accuracy";
+import { fieldRows, labelled } from "./accuracy";
 import corpus from "./corpus/labelled.json";
 import { StreamEngine } from "./engine";
 
@@ -58,7 +58,10 @@ it.runIf(import.meta.env["RANKING_TIMING"])(
     // The contexts the labels were judged against, by title, and each
     // title's answers in the order they came (fastest addon first).
     const contexts = new Map(
-      labelled(corpus).map((row) => [row.id.replace(/^[^/]+\/([^#]+)#.*/, "$1"), row.ctx]),
+      fieldRows(labelled(corpus)).map((row) => [
+        row.id.replace(/^[^/]+\/([^#]+)#.*/, "$1"),
+        row.ctx,
+      ]),
     );
     const titles = [...contexts].map(([slug, ctx]) => ({
       ctx,
