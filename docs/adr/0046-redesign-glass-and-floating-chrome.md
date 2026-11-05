@@ -24,7 +24,7 @@ Tailwind utilities in `frontend/src/index.css`, so every ticket after this uses 
 | `glass-thick` | sidebar, sheets, dialogs, settings pane nav | 40px / 200% | `#F7F7F8C7` / `#141416C7` |
 | `glass-media`, `glass-media-strong` | always dark; over artwork and video | 30px / 180% | `#00000073` (icons) / `#0000008C` (text) |
 
-Each tier adds a soft highlight from the top, a 1px specular inner edge, a 0.5px hairline and a shadow. `--popover` becomes the regular tint, so coss's `bg-popover` matches, and coss's popups are pointed at tiers by selector. Under `prefers-reduced-transparency: reduce` every tier is a solid (`--glass-solid`, `#000000E0` for media) with no blur; under `prefers-contrast: more` it also gets a border. Popups materialize (opacity, scale from .96 and a 6px blur) and leave the same way. `Ambient` gives a page a blurred-artwork or brand wash behind its content. The tints and their worst-case contrast are in `contrastPairs`.
+Each tier adds a soft highlight from the top, a 1px specular inner edge, a 0.5px hairline and a shadow. `--popover` becomes the regular tint, so coss's `bg-popover` matches, and coss's popups are pointed at tiers by selector. Under `prefers-reduced-transparency: reduce` every tier is a solid (`--glass-solid`, `#000000E0` for media) with no blur; under `prefers-contrast: more` it goes solid too and also gets a border (the solid part was added in #125's QA pass). Popups materialize (opacity, scale from .96 and a 6px blur) and leave the same way. `Ambient` gives a page a blurred-artwork or brand wash behind its content. The tints and their worst-case contrast are in `contrastPairs`.
 
 ## Decisions
 
