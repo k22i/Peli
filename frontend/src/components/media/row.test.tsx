@@ -34,7 +34,7 @@ describe("Row", () => {
   it("mounts only the cards near the viewport", () => {
     render(<PosterRow title="Popular" items={titles(200)} />);
 
-    // 1280 px of 344 px slots (320 px cards, 24 px gap), plus overscan.
+    // 1280 px of 264 px slots (240 px cards, 24 px gap), plus overscan.
     const cards = cardsIn("Popular");
     expect(cards.length).toBeGreaterThan(3);
     expect(cards.length).toBeLessThan(20);

@@ -30,7 +30,7 @@ export type CardShape = "poster" | "landscape";
 // --container-poster and --container-landscape in index.css (a test keeps
 // them in step), and the row's 24px gap. Cards are fixed widths, so these are
 // exact and cards aren't measured.
-export const cardRem: Record<CardShape, number> = { poster: 20, landscape: 36 };
+export const cardRem: Record<CardShape, number> = { poster: 15, landscape: 27 };
 const gapPx = 24;
 
 export const remToPx = (rem: number) =>

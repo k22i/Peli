@@ -107,8 +107,8 @@ const folderTitle = (folder: CollectionFolder) =>
 
 // The cover in the tile's own shape, as on Home.
 const coverShape: Record<string, string> = {
-  POSTER: "aspect-[2/3] w-56",
-  SQUARE: "aspect-square w-72",
+  POSTER: "aspect-[2/3] w-42",
+  SQUARE: "aspect-square w-54",
 };
 
 // Like the Hero, but shorter, and always over the backdrop's dark scrim, so
@@ -139,7 +139,7 @@ function FolderHeader({
             <div
               className={cn(
                 "shrink-0 overflow-hidden rounded-xl shadow-lift",
-                coverShape[folder.shape ?? ""] ?? "aspect-video w-112",
+                coverShape[folder.shape ?? ""] ?? "aspect-video w-84",
               )}
             >
               <Artwork

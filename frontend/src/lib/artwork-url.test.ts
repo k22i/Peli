@@ -3,28 +3,30 @@ import { describe, expect, it } from "vite-plus/test";
 import { sharper } from "@/lib/artwork-url";
 
 const poster = "https://images.metahub.space/poster/small/tt0111161/img";
-const background = "https://images.metahub.space/background/medium/tt0111161/img";
+const background = "https://images.metahub.space/background/small/tt0111161/img";
 const logo = "https://images.metahub.space/logo/medium/tt0111161/img";
 
 describe("sharper", () => {
-  it("asks Metahub for large posters on poster cards", () => {
+  it("asks Metahub for medium posters on poster cards", () => {
     expect(sharper(poster, "poster")).toBe(
-      "https://images.metahub.space/poster/large/tt0111161/img",
-    );
-    expect(sharper("https://images.metahub.space/poster/medium/tt0903747/img", "poster")).toBe(
-      "https://images.metahub.space/poster/large/tt0903747/img",
+      "https://images.metahub.space/poster/medium/tt0111161/img",
     );
     expect(sharper("https://live.metahub.space/poster/small/tt14828040/img", "poster")).toBe(
-      "https://live.metahub.space/poster/large/tt14828040/img",
+      "https://live.metahub.space/poster/medium/tt14828040/img",
     );
+    // Already big enough.
+    const medium = "https://images.metahub.space/poster/medium/tt0903747/img";
+    expect(sharper(medium, "poster")).toBe(medium);
   });
 
-  it("asks for large backgrounds on landscape cards only", () => {
+  it("asks for medium backgrounds on landscape cards only", () => {
     expect(sharper(background, "landscape")).toBe(
-      "https://images.metahub.space/background/large/tt0111161/img",
+      "https://images.metahub.space/background/medium/tt0111161/img",
     );
     // Hero backdrops stay as they are.
     expect(sharper(background, "backdrop")).toBe(background);
+    const medium = "https://images.metahub.space/background/medium/tt0111161/img";
+    expect(sharper(medium, "landscape")).toBe(medium);
   });
 
   it("asks for a large logo on a logo", () => {
@@ -35,14 +37,13 @@ describe("sharper", () => {
   it("leaves a Metahub image of another kind than the use alone", () => {
     expect(sharper(poster, "landscape")).toBe(poster);
     expect(sharper(background, "poster")).toBe(background);
-    expect(sharper("https://images.metahub.space/poster/large/tt1/img", "poster")).toBe(
-      "https://images.metahub.space/poster/large/tt1/img",
-    );
+    const large = "https://images.metahub.space/poster/large/tt1/img";
+    expect(sharper(large, "poster")).toBe(large);
   });
 
-  it("raises TMDB posters and stills to w780 and cast photos to w342", () => {
-    expect(sharper("https://image.tmdb.org/t/p/w500/a.jpg", "poster")).toBe(
-      "https://image.tmdb.org/t/p/w780/a.jpg",
+  it("raises TMDB posters to w500, stills to w780 and cast photos to w342", () => {
+    expect(sharper("https://image.tmdb.org/t/p/w342/a.jpg", "poster")).toBe(
+      "https://image.tmdb.org/t/p/w500/a.jpg",
     );
     expect(sharper("https://image.tmdb.org/t/p/w300/s.jpg", "landscape")).toBe(
       "https://image.tmdb.org/t/p/w780/s.jpg",
@@ -52,18 +53,18 @@ describe("sharper", () => {
     );
   });
 
-  it("never steps a TMDB image down, and leaves original and backdrops alone", () => {
+  it("never steps a TMDB image down, and leaves original, logos and backdrops alone", () => {
     expect(sharper("https://image.tmdb.org/t/p/original/back.jpg", "poster")).toBe(
       "https://image.tmdb.org/t/p/original/back.jpg",
     );
-    expect(sharper("https://image.tmdb.org/t/p/w1280/a.jpg", "poster")).toBe(
-      "https://image.tmdb.org/t/p/w1280/a.jpg",
+    expect(sharper("https://image.tmdb.org/t/p/w780/a.jpg", "poster")).toBe(
+      "https://image.tmdb.org/t/p/w780/a.jpg",
     );
     expect(sharper("https://image.tmdb.org/t/p/w500/en.png", "logo")).toBe(
       "https://image.tmdb.org/t/p/w500/en.png",
     );
-    expect(sharper("https://image.tmdb.org/t/p/w500/a.jpg", "backdrop")).toBe(
-      "https://image.tmdb.org/t/p/w500/a.jpg",
+    expect(sharper("https://image.tmdb.org/t/p/w300/a.jpg", "backdrop")).toBe(
+      "https://image.tmdb.org/t/p/w300/a.jpg",
     );
   });
 

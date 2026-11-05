@@ -185,7 +185,7 @@ function EpisodeRow({
         onKeyDown={onKeyDown}
         className="flex min-w-0 flex-1 cursor-pointer items-start gap-4 rounded-lg text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
       >
-        <span className="relative aspect-video w-112 shrink-0 overflow-hidden rounded-lg shadow-card">
+        <span className="relative aspect-video w-84 shrink-0 overflow-hidden rounded-lg shadow-card">
           <Artwork src={episode.thumbnail} use="landscape" title={title} />
           {entry && <WatchProgress value={entry.position / entry.duration} />}
           {watched && (

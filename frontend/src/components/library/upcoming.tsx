@@ -153,7 +153,7 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
       onClick={() => open(libraryPreview(item), { season: episode.season })}
       className="flex w-full max-w-3xl cursor-pointer items-center gap-4 rounded-xl p-2 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <span className="relative aspect-[2/3] w-24 shrink-0 overflow-hidden rounded-md shadow-card">
+      <span className="relative aspect-[2/3] w-18 shrink-0 overflow-hidden rounded-md shadow-card">
         <Artwork src={item.poster} use="poster" title={item.name} />
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
@@ -177,7 +177,7 @@ function UpcomingSkeleton() {
       <Skeleton className="h-6 w-32 rounded-md" />
       {Array.from({ length: 4 }, (_, index) => (
         <div key={index} className="flex max-w-3xl items-center gap-4 p-2">
-          <Skeleton className="aspect-[2/3] w-24 rounded-md" />
+          <Skeleton className="aspect-[2/3] w-18 rounded-md" />
           <div className="flex flex-1 flex-col gap-2">
             <Skeleton className="h-4 w-48 rounded" />
             <Skeleton className="h-3 w-64 rounded" />
