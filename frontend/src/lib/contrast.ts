@@ -370,6 +370,25 @@ export const contrastPairs: ContrastPair[] = [
     background: ["background", "glass-regular", "muted"],
     min: AA_TEXT,
   },
+  {
+    // An off Switch's track (#125): the control's boundary, 1.4.11.
+    label: "Switch track, off, on a card",
+    foreground: "switch-off",
+    background: ["card"],
+    min: AA_UI,
+  },
+  {
+    label: "Switch track, off, on the page",
+    foreground: "switch-off",
+    background: ["background"],
+    min: AA_UI,
+  },
+  {
+    label: "Switch thumb on the off track",
+    foreground: "#ffffff",
+    background: ["switch-off"],
+    min: AA_UI,
+  },
 ];
 
 export function parseHex(hex: string): Rgba {
