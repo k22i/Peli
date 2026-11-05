@@ -354,3 +354,26 @@ The screens before a profile is in use (the `focus` chrome) sit on `Ambient tone
 | Welcome | ![](welcome-dark.jpg) | ![](welcome-guest-light.jpg) |
 
 Every screenshot in the #20–#24 and #95 sections above has been re-taken under the same file name, apart from the ones that are another screen's: `native-welcome-dark.jpg` (the built app), the profile-menu shots (`menu-*`, #122) and the Settings ones (`settings-*`, #120). The sign-in shots are 1280×900 and the session-ended one 1280×1040, since the card is taller than the window; the rest are 1280×800 (2×). They come from a throwaway Vite config with the Go services stubbed and the platform forced to macOS, so the title bar is the real overlay strip. The avatars are drawn for the shots (simple faces on Nuvio's colours), not Nuvio's stock catalog, which needs its key. Contrast: the PIN key digits over thin-on-thick glass are in `contrastPairs` (14.5:1 and 9.5:1 in dark, 13.0 and 17.2 in light over black and white); muted text over the brightest point of the brand glow (brand at 18% over the page) is 5.9:1 in dark and 4.6:1 in light.
+
+### Library and Upcoming (#118)
+
+| | Before | After |
+|---|---|---|
+| Titles, dark (header: title and a segmented view switch, then the type rail and Sort in a sticky glass header; 1.5× cards) | ![](library-titles-dark-before.jpg) | ![](library-titles-dark-after.jpg) |
+| Titles, light | ![](library-titles-light-before.jpg) | ![](library-titles-light-after.jpg) |
+| Empty library, dark (larger icon, solid button) | ![](library-empty-dark-before.jpg) | ![](library-empty-dark-after.jpg) |
+| Empty library, light | ![](library-empty-light-before.jpg) | ![](library-empty-light-after.jpg) |
+| Upcoming, dark (glass day headers, `w-24` posters, time at the end) | ![](library-upcoming-dark-before.jpg) | ![](library-upcoming-dark-after.jpg) |
+| Upcoming, light | ![](library-upcoming-light-before.jpg) | ![](library-upcoming-light-after.jpg) |
+
+| | |
+|---|---|
+| Titles filtered to Shows, A–Z, dark: a show in progress adds "S2 · E5" to its year | ![](library-progress-dark-after.jpg) |
+| …light | ![](library-progress-light-after.jpg) |
+| Upcoming scrolled, dark: the page header has stuck and "Sunday" holds under it while "Tomorrow" slides beneath | ![](library-upcoming-scrolled-dark-after.jpg) |
+| …light | ![](library-upcoming-scrolled-light-after.jpg) |
+| Context menu on glass, dark | ![](library-menu-dark-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed and a local addon serving the episode dates (real Metahub posters). Before is a clean checkout of `5ee995c`.
+
+The header is Browse's `BrowseFrame` (exported from `components/browse/browse-page.tsx`, behaviour unchanged): the view switch is its `filter` slot and the chips with Sort are its `rail`. The switch is coss `Tabs` (so `?view=` and the tab roles stay) on a `glass-thin` pill with the active tab as a `bg-background shadow-card` knob. The Upcoming day headers are sticky at `--titlebar-h` plus the stuck header's height (3.375rem) plus 1rem, under the page header (`z-9` against its `z-10`). A row's end shows the air time only when the addon gives one (Cinemeta's plain dates are midnight UTC, so those rows have none); Later shows the date.
