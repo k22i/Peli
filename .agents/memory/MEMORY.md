@@ -58,3 +58,4 @@
 - [Search and folder layouts](search-folder-layouts.md) — #119 BrowseFrame quietTitle, glass h-14 field + clear + ⌘F hint, row bylines, compact Hero / CoverHeader, Input unstyled gotcha
 - [Typography scale](typography-scale.md) — #112 option B: text-display/title/heading/body/item/caption/label/num, twMerge extension, mono rule, text-card colour clash, shot rig
 - [Motion](motion.md) — #124 data-nav from history index, sliding nav/settings pills (resolved location, named lists), Button press scale, CDP checks
+- [Gallery and design docs](gallery-and-design-docs.md) — #125 docs: README order, removed/stale screenshots, new gallery samples, contrast-pair fix, shot rig
