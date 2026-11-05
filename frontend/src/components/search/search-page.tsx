@@ -158,7 +158,7 @@ function SearchField({
         // The coss Input sets its own height and padding on the <input>; the
         // field here is a glass bar, so the wrapper takes the look and the
         // input is sized from it.
-        className="glass h-14 rounded-2xl outline-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2 [&_input]:h-14 [&_input]:ps-14 [&_input]:pe-16 [&_input]:text-heading [&_input]:leading-14 [&_input]:placeholder:text-muted-foreground"
+        className="glass flex h-14 w-full rounded-2xl outline-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2 [&_input]:h-14 [&_input]:ps-14 [&_input]:pe-16 [&_input]:text-heading [&_input]:leading-14 [&_input]:placeholder:text-muted-foreground"
       />
       {text ? (
         <button
