@@ -72,6 +72,7 @@ vi.mock("@bindings/streams", () => ({
 vi.mock("@bindings/plugins", () => ({
   Service: {
     Installed: () => mocks.installed(),
+    Refresh: () => Promise.resolve(0),
     Streams: (plugin: Plugin, query: Query) =>
       Object.assign(mocks.pluginStreams(plugin, query), { cancel: mocks.cancel }),
   },

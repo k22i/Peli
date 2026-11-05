@@ -15,12 +15,13 @@ export const pulledEvent = "sync:pulled";
 // can mark an item watched on the server (the 90 % rule), so watched is
 // refreshed with it. The library's last-watched times (#46) read both. The
 // addon list comes whole with every pull (#32), and so do Home's layout and
-// collections (#35).
+// collections (#35). So does the plugin repository list (#57).
 export const surfaceQueryKeys: Partial<Record<Surface, readonly (readonly string[])[]>> = {
   library: [["library"]],
   progress: [["progress"], ["continue-watching"], ["last-watched"]],
   watched: [["watched"], ["last-watched"]],
   addons: [["addons"]],
+  plugins: [["plugins"]],
   homeLayout: [["home-layout"]],
   collections: [["collections"]],
 };

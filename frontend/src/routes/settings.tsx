@@ -13,6 +13,7 @@ import {
   settingsPanes,
   type PaneId,
 } from "@/components/settings/panes";
+import { PluginsPane } from "@/components/settings/plugins-pane";
 import { ServerDialog } from "@/components/settings/server-dialog";
 import {
   paneHeadingId,
@@ -145,6 +146,8 @@ function Pane({
       return <LanguagesPane title={title} profileId={profileId} />;
     case "streaming":
       return <StreamingPane title={title} profileId={profileId} />;
+    case "plugins":
+      return <PluginsPane title={title} profileId={profileId} />;
     case "tracking":
       return <TrackingPane title={title} profileId={profileId} />;
     case "appearance":

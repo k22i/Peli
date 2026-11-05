@@ -1,8 +1,21 @@
-import { queryOptions, useQueries, useQuery } from "@tanstack/react-query";
+import {
+  queryOptions,
+  useMutation,
+  useQueries,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 
-import type { Plugin, Query, Stream as PluginStream } from "@bindings/plugins";
+import type {
+  Overview,
+  Plugin,
+  Query,
+  Repository,
+  Stream as PluginStream,
+} from "@bindings/plugins";
 import { Service as Plugins } from "@bindings/plugins";
 import type { ContentType, Meta, Stream } from "@/lib/addon-protocol";
+import { useCurrentProfile } from "@/lib/profile";
 import { videoNumbers } from "@/lib/ranking";
 import { tmdbRef, useTmdbId } from "@/lib/tmdb";
 
@@ -14,7 +27,7 @@ import { tmdbRef, useTmdbId } from "@/lib/tmdb";
 // TMDB key to look its IMDb id up) isn't asked. Plugin stream URLs are
 // scraped links: never log them.
 
-export type { Plugin };
+export type { Overview, Plugin, Repository };
 
 // A plugin's answers are fed to ranking under this source, as an addon's
 // are under its URL.
@@ -23,13 +36,95 @@ export const isPluginSource = (source: string) => source.startsWith("plugin:");
 
 const minute = 60 * 1000;
 
-// The plugins to ask. Off by default, so none until plugin management (#57)
-// keeps a list; a dev build lists $SINAG_DEV_PLUGINS's.
-export const installedPluginsQuery = queryOptions({
-  queryKey: ["plugins", "installed"],
-  queryFn: async () => (await Plugins.Installed()) ?? [],
-  staleTime: 5 * minute,
-});
+// The plugins to ask for the profile in use (#57): Go lists the enabled
+// plugins of the profile's enabled repositories, and none while the profile's
+// switch is off (the default) or on a kids profile. Repositories that came
+// from Nuvio have no plugin list here yet, so Go reads those first (Refresh
+// reads nothing while plugins are off). A pull that changes the list, and any
+// edit below, refreshes it.
+export const installedPluginsQuery = (profileId: number | undefined) =>
+  queryOptions({
+    queryKey: ["plugins", profileId, "installed"],
+    queryFn: async () => {
+      if (profileId !== undefined) {
+        // A repository that didn't answer keeps its last list.
+        await Plugins.Refresh(profileId, false).catch(() => 0);
+      }
+      return (await Plugins.Installed()) ?? [];
+    },
+    enabled: profileId !== undefined,
+    staleTime: 5 * minute,
+  });
+
+// What Settings › Plugins shows: the profile's switch, repositories and their
+// plugins. For a kids profile, `kids` is set and nothing else is.
+export const pluginsOverviewQuery = (profileId: number) =>
+  queryOptions({
+    queryKey: ["plugins", profileId, "overview"],
+    queryFn: async () => {
+      const overview = await Plugins.Overview(profileId);
+      return { ...overview, repositories: overview.repositories ?? [] };
+    },
+  });
+
+// What a failed plugin edit says, by Go's code.
+export function pluginEditProblem(error: unknown): { title: string; description: string } {
+  switch (pluginCode(error)) {
+    case "bad_address":
+      return { title: "That isn’t a repository address", description: "Paste its manifest link." };
+    case "not_a_repository":
+      return {
+        title: "No plugins found",
+        description: "That address isn’t a plugin repository, or lists nothing Sinag can run.",
+      };
+    case "unreachable":
+      return { title: "Couldn’t read it", description: "Check the address and your connection." };
+    case "already_installed":
+      return { title: "Already installed", description: "That repository is in the list." };
+    case "kids_profile":
+      return { title: "Not for kids profiles", description: "Kids profiles don’t use plugins." };
+    case "off":
+      return { title: "Plugins are off", description: "Turn plugins on first." };
+    default:
+      return { title: "Couldn’t change plugins", description: "Try again." };
+  }
+}
+
+// A profile's plugin edits, each one change Go makes to what it has stored
+// (kids profiles are refused there). They refresh everything plugins show,
+// the picker's list included.
+export function usePluginEdits(profileId: number) {
+  const queryClient = useQueryClient();
+  const settled = () => queryClient.invalidateQueries({ queryKey: ["plugins", profileId] });
+  return {
+    setEnabled: useMutation({
+      mutationFn: (enabled: boolean) => Plugins.SetEnabled(profileId, enabled),
+      onSettled: settled,
+    }),
+    install: useMutation({
+      mutationFn: (address: string) => Plugins.InstallRepository(profileId, address),
+      onSettled: settled,
+    }),
+    remove: useMutation({
+      mutationFn: (url: string) => Plugins.RemoveRepository(profileId, url),
+      onSettled: settled,
+    }),
+    enableRepository: useMutation({
+      mutationFn: ({ url, enabled }: { url: string; enabled: boolean }) =>
+        Plugins.EnableRepository(profileId, url, enabled),
+      onSettled: settled,
+    }),
+    enablePlugin: useMutation({
+      mutationFn: ({ id, enabled }: { id: string; enabled: boolean }) =>
+        Plugins.EnablePlugin(profileId, id, enabled),
+      onSettled: settled,
+    }),
+    refresh: useMutation({
+      mutationFn: () => Plugins.Refresh(profileId, true),
+      onSettled: settled,
+    }),
+  };
+}
 
 export type PluginErrorKind =
   | "timeout"
@@ -39,7 +134,8 @@ export type PluginErrorKind =
   | "stalled"
   | "crashed"
   | "invalid_plugin"
-  | "unreachable";
+  | "unreachable"
+  | "not_enabled";
 
 const messages: Record<PluginErrorKind, string> = {
   timeout: "The plugin didn’t answer.",
@@ -50,6 +146,7 @@ const messages: Record<PluginErrorKind, string> = {
   crashed: "The plugin stopped unexpectedly.",
   invalid_plugin: "This plugin can’t run in Sinag.",
   unreachable: "The plugin couldn’t be downloaded.",
+  not_enabled: "This plugin is turned off.",
 };
 
 // A plugin call that failed, by internal/plugins' code. The message is for
@@ -64,10 +161,19 @@ export class PluginError extends Error {
   }
 }
 
-function pluginError(error: unknown): PluginError {
+// The code Go gave an error, if any.
+function pluginCode(error: unknown): string | undefined {
   const cause: unknown = error instanceof Error ? error.cause : undefined;
-  const code =
-    typeof cause === "object" && cause !== null && "code" in cause ? cause.code : undefined;
+  return typeof cause === "object" &&
+    cause !== null &&
+    "code" in cause &&
+    typeof cause.code === "string"
+    ? cause.code
+    : undefined;
+}
+
+function pluginError(error: unknown): PluginError {
+  const code = pluginCode(error);
   return new PluginError(isKind(code) ? code : "failed");
 }
 
@@ -166,7 +272,7 @@ export function usePluginTargets(
   video: string,
   meta: Meta | undefined,
 ) {
-  const installed = useQuery(installedPluginsQuery);
+  const installed = useQuery(installedPluginsQuery(useCurrentProfile().id));
   const plugins = installed.data ?? [];
   const tmdb = useTmdbId(plugins.length > 0 ? tmdbRef(type, id, meta) : undefined);
   const query = pluginQuery(type, video, tmdb);

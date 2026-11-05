@@ -150,7 +150,11 @@ const profileOptions = { ...japaneseTracks, start: 600 };
 // IntroDB, through Go (#69).
 // Plugins (#56): none installed.
 vi.mock("@bindings/plugins", () => ({
-  Service: { Installed: () => Promise.resolve([]), Streams: () => Promise.resolve([]) },
+  Service: {
+    Installed: () => Promise.resolve([]),
+    Refresh: () => Promise.resolve(0),
+    Streams: () => Promise.resolve([]),
+  },
 }));
 
 vi.mock("@bindings/markers", () => ({ Service: { Segments: mocks.segments } }));

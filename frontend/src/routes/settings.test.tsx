@@ -127,6 +127,15 @@ vi.mock("@wailsio/runtime", async (importOriginal) => ({
   Browser: { OpenURL: browser.openURL },
 }));
 
+// Plugins (#57): off, with nothing installed.
+vi.mock("@bindings/plugins", () => ({
+  Service: {
+    Installed: () => Promise.resolve([]),
+    Refresh: () => Promise.resolve(0),
+    Overview: () => Promise.resolve({ kids: false, enabled: false, repositories: [] }),
+  },
+}));
+
 // An in-memory stand-in for the Go store, with its defaults
 // (internal/store/settings.go).
 const store = vi.hoisted(() => ({
@@ -220,6 +229,7 @@ const paneTitles = [
   "Playback",
   "Languages & subtitles",
   "Streaming",
+  "Plugins",
   "Tracking",
   "Appearance",
   "Privacy",
@@ -233,6 +243,7 @@ const ready: Record<string, [role: string, name: string]> = {
   playback: ["switch", "Hardware decoding"],
   languages: ["combobox", "Audio languages"],
   streaming: ["switch", "Stream torrents"],
+  plugins: ["switch", "Use plugins"],
   tracking: ["heading", "Tracking"],
   appearance: ["heading", "Appearance"],
   privacy: ["switch", "Share diagnostics"],
