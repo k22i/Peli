@@ -22,6 +22,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
 import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
+import { useEpisodeMap } from "@/lib/episode-map";
 import { useLoadedAddons } from "@/lib/home";
 import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
@@ -388,7 +389,8 @@ export function useStreamChoices(
     enabled: isSeriesType(type),
   }).data;
   const last = isSeriesType(type) ? remembered(chosen) : null;
-  const ctx = titleContext(type, video, meta, title);
+  const map = useEpisodeMap(browsing.addons, browsing.loading, type, id, video);
+  const ctx = titleContext(type, video, meta, title, map);
   const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, device, last));
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const toggleGroup = (tier: Tier) =>

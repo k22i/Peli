@@ -16,7 +16,27 @@ export type TitleContext = {
   runtimeMin?: number;
   season?: number;
   episode?: number;
+  // A Kitsu episode's numbers by season, for long runners (#100).
+  map?: EpisodeMap;
 };
+
+// One Kitsu episode in the other numbering systems (ADR-0050): the season and
+// episode the releases may call it ("S22E15"), and its absolute number
+// ("1100"). The Kitsu addon sends them on each video as `imdbSeason`,
+// `imdbEpisode` and `absoluteEpisode`.
+export type EpisodeMap = { season: number; episode: number; absolute: number };
+
+// The map of `video` ("kitsu:12:1100") from a title's details, when the
+// addon that answered sends one (the AniList addon doesn't).
+export function episodeMapOf(meta: Meta | undefined, video: string): EpisodeMap | undefined {
+  const found = meta?.videos?.find((v) => v.id === video);
+  const season = found?.["imdbSeason"];
+  const episode = found?.["imdbEpisode"];
+  const absolute = found?.["absoluteEpisode"];
+  return typeof season === "number" && typeof episode === "number" && typeof absolute === "number"
+    ? { season, episode, absolute }
+    : undefined;
+}
 
 // "142 min", "2h 22min", "2h".
 export function runtimeMinutes(runtime: string | undefined): number | undefined {
@@ -51,6 +71,7 @@ export function titleContext(
   video: string,
   meta: Meta | undefined,
   fallbackName: string,
+  map?: EpisodeMap,
 ): TitleContext {
   const aliases = meta?.["aliases"];
   const year = yearOf(meta);
@@ -69,5 +90,6 @@ export function titleContext(
     ...(year && { year }),
     ...(runtimeMin && { runtimeMin }),
     ...videoNumbers(video),
+    ...(map && { map }),
   };
 }

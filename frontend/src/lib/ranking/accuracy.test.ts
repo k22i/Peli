@@ -11,10 +11,12 @@ import corpus from "./corpus/labelled.json";
 const rows = labelled(corpus);
 
 it("has the whole labelled corpus", () => {
-  expect(rows).toHaveLength(360);
+  expect(rows).toHaveLength(492);
   expect(
-    ["dev", "holdout", "blind"].map((split) => rows.filter((row) => row.split === split).length),
-  ).toEqual([200, 100, 60]);
+    ["dev", "holdout", "blind", "longrun"].map(
+      (split) => rows.filter((row) => row.split === split).length,
+    ),
+  ).toEqual([200, 100, 60, 132]);
 });
 
 describe.each(fields)("$name", (field) => {

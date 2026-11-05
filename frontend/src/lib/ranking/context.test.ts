@@ -2,7 +2,7 @@ import { describe, expect, it } from "vite-plus/test";
 
 import type { Meta } from "@/lib/addon-protocol";
 
-import { runtimeMinutes, titleContext, videoNumbers } from "./context";
+import { episodeMapOf, runtimeMinutes, titleContext, videoNumbers } from "./context";
 
 describe("runtimeMinutes", () => {
   it.each([
@@ -59,5 +59,45 @@ describe("titleContext", () => {
   it("knows anime by its Kitsu id or its genre", () => {
     expect(titleContext("series", "kitsu:46474:1", undefined, "Frieren").anime).toBe(true);
     expect(titleContext("series", "tt1:1:1", { ...meta, genres: ["Anime"] }, "x").anime).toBe(true);
+  });
+});
+
+describe("episodeMapOf", () => {
+  const meta: Meta = {
+    id: "kitsu:12",
+    type: "series",
+    name: "One Piece",
+    videos: [
+      {
+        id: "kitsu:12:1100",
+        title: "Powers on a Different Level!",
+        season: 1,
+        episode: 1100,
+        imdbSeason: 22,
+        imdbEpisode: 15,
+        absoluteEpisode: 1100,
+      },
+      { id: "kitsu:12:1101", title: "Episode 1101", season: 1, episode: 1101 },
+    ],
+  };
+
+  it("reads the numbers by season from the video the Kitsu addon sends", () => {
+    expect(episodeMapOf(meta, "kitsu:12:1100")).toEqual({
+      season: 22,
+      episode: 15,
+      absolute: 1100,
+    });
+  });
+
+  it("has none for a video without them (the AniList addon's), another video, or no details", () => {
+    expect(episodeMapOf(meta, "kitsu:12:1101")).toBeUndefined();
+    expect(episodeMapOf(meta, "kitsu:12:5")).toBeUndefined();
+    expect(episodeMapOf(undefined, "kitsu:12:1100")).toBeUndefined();
+  });
+
+  it("goes into the title context only when given", () => {
+    const map = { season: 22, episode: 15, absolute: 1100 };
+    expect(titleContext("series", "kitsu:12:1100", meta, "One Piece", map).map).toEqual(map);
+    expect(titleContext("series", "kitsu:12:1100", meta, "One Piece")).not.toHaveProperty("map");
   });
 });

@@ -1,7 +1,7 @@
 import type { Stream } from "@/lib/addon-protocol";
 import { parseStreamResponse } from "@/lib/addon-protocol/parse";
 
-import type { TitleContext } from "./context";
+import type { EpisodeMap, TitleContext } from "./context";
 import { judge } from "./fakes";
 import { parseStream, type Parsed } from "./parse";
 
@@ -47,6 +47,8 @@ export type Corpus = {
     runtimeMin?: number;
     season?: number;
     episode?: number;
+    // Long runners' numbers by season (#100), from the Kitsu addon.
+    map?: EpisodeMap;
   }[];
   streams: {
     id: string;
@@ -59,8 +61,9 @@ export type Corpus = {
 };
 
 // Dev was tuned on in #6; holdout only by its totals; blind was labelled
-// after #6's parser was frozen.
-export type Split = "dev" | "holdout" | "blind";
+// after #6's parser was frozen; longrun (#100) is long-running anime asked
+// for by absolute episode, labelled before the episode map existed.
+export type Split = "dev" | "holdout" | "blind" | "longrun";
 
 export type LabelledStream = {
   id: string;
@@ -74,7 +77,7 @@ export type LabelledStream = {
 export function labelled(corpus: Corpus): LabelledStream[] {
   const titles = new Map(
     corpus.titles.map(
-      ({ slug, kind, type, id, name, aliases, year, runtimeMin, season, episode }) => {
+      ({ slug, kind, type, id, name, aliases, year, runtimeMin, season, episode, map }) => {
         const ctx: TitleContext = {
           type: type === "movie" ? "movie" : "series",
           anime: kind === "anime",
@@ -85,6 +88,7 @@ export function labelled(corpus: Corpus): LabelledStream[] {
           ...(runtimeMin && { runtimeMin }),
           ...(season !== undefined && { season }),
           ...(episode !== undefined && { episode }),
+          ...(map && { map }),
         };
         return [slug, ctx];
       },
@@ -94,7 +98,7 @@ export function labelled(corpus: Corpus): LabelledStream[] {
   const { streams } = parseStreamResponse({ streams: corpus.streams.map((row) => row.stream) });
   return corpus.streams.map(({ id, split, addon, title, label }, index) => ({
     id,
-    split: split === "dev" || split === "holdout" ? split : "blind",
+    split: split === "dev" || split === "holdout" || split === "longrun" ? split : "blind",
     addon,
     stream: streams[index]!,
     label,
@@ -212,8 +216,9 @@ export function accuracy(rows: readonly LabelledStream[], field: Field) {
 export const fakeTargets = {
   // Per cent of genuine streams hidden as likely fake.
   hiddenFalsePositiveRateMax: 1,
-  // Per cent of fakes hidden; raise it as title matching lands.
-  hiddenRecallMin: 60,
+  // Per cent of fakes hidden; raise it as title matching lands. 75 since the
+  // episode map (#100): 82.5 over all 492, 78.9 over the original 360.
+  hiddenRecallMin: 75,
   camTsRecallMin: 95,
   camTsFalsePositiveRateMax: 1,
 };
@@ -261,7 +266,7 @@ type Rates = ReturnType<typeof fakeRates>;
 // Accuracy per split, the fake checks' rates, and every miss, as Markdown.
 export function report(rows: readonly LabelledStream[]): string {
   const splits = [
-    ...(["dev", "holdout", "blind"] as const).map(
+    ...(["dev", "holdout", "blind", "longrun"] as const).map(
       (split) => [split, rows.filter((row) => row.split === split)] as const,
     ),
     ["all", rows] as const,

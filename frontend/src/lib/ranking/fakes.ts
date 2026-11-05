@@ -1,4 +1,4 @@
-import type { TitleContext } from "./context";
+import type { EpisodeMap, TitleContext } from "./context";
 import type { Parsed } from "./parse";
 
 // Fake and low-quality heuristics (#51, from #6). Each check gives a reason or
@@ -82,6 +82,51 @@ function titleOverlap(p: Parsed, ctx: TitleContext): number | null {
   return best;
 }
 
+// A season range in a release name: "S01-S22", "Seasons 16 to 21", "S01_S23".
+const seasonRange =
+  /(?:^|[^a-z0-9])(?:s|seasons?|saison|temporada)[ ._]?(\d{1,2})\s*(?:-|~|to|&|\+|_)\s*(?:s|seasons?)?[ ._]?(\d{1,2})(?![0-9])/gi;
+// An episode range: "0001-1118", "892 ~ 1089", "E40-E928", "S01e296-300".
+const episodeRange = /(?<![0-9])(\d{1,4})\s*(?:-|~|to)\s*e?(\d{1,4})(?![0-9])/gi;
+
+function covers(names: readonly string[], range: RegExp, n: number): boolean {
+  return names.some((name) =>
+    [...name.matchAll(range)].some(
+      (m) => Number(m[1]) < Number(m[2]) && Number(m[1]) <= n && n <= Number(m[2]),
+    ),
+  );
+}
+
+// Wrong season or wrong episode for a Kitsu episode whose numbers by season
+// are known (#100, ADR-0050). A file is the asked-for episode when it says
+// the season and episode of the map ("S22E15"), or the absolute number with
+// no season, season 1 or a season that isn't the number of any other episode
+// ("S01E1100", "Season 14 Voyage 09 / One Piece - 1000"), or Kitsu's own
+// number with no season. A season pack is kept when its season is the
+// episode's, a range of seasons or of episodes covers it, or the file name
+// carries the absolute number; any other season is the wrong season.
+// Episode ranges and releases with no season or episode aren't judged.
+function mappedNumbering(p: Parsed, ctx: TitleContext, map: EpisodeMap): Reason | null {
+  const { season: S, episode: E, absolute: A } = map;
+  const { season, episode } = p;
+  const longRunner = A !== E;
+  if (episode !== null) {
+    if (season === S && episode === E) return null;
+    if (episode === A && (longRunner || season === null || season === 1 || season === S)) {
+      return null;
+    }
+    if (episode === ctx.episode && season === null) return null;
+    return season === null || season === S ? "wrong episode" : "wrong season";
+  }
+  if (season === null || season === S) return null;
+  const names = [...p.releaseNames, ...(p.fileName ? [p.fileName] : [])];
+  if (covers(names, seasonRange, S)) return null;
+  if (longRunner) {
+    if (covers(names, episodeRange, A)) return null;
+    if (p.fileName && new RegExp(`(?<![0-9])${A}(?![0-9])`).test(p.fileName)) return null;
+  }
+  return "wrong season";
+}
+
 export function judge(p: Parsed, ctx: TitleContext): Verdict {
   const reasons: Reason[] = [];
 
@@ -99,8 +144,12 @@ export function judge(p: Parsed, ctx: TitleContext): Verdict {
       // Kitsu ids are per season and count episodes from 1 (or absolutely,
       // for long runners). "S02E01" for episode 1 is another season;
       // "S22E15" for episode 1100 may be the same episode numbered by season,
-      // which can't be told without an episode map.
-      if (p.season !== null && p.season > 1 && p.episode === ctx.episode) {
+      // which can't be told without an episode map. With one (#100), the
+      // map judges; without, what can't be judged isn't flagged.
+      if (ctx.map) {
+        const mapped = mappedNumbering(p, ctx, ctx.map);
+        if (mapped) reasons.push(mapped);
+      } else if (p.season !== null && p.season > 1 && p.episode === ctx.episode) {
         reasons.push("wrong season");
       } else if (p.episode !== null && (p.season === null || p.season === 1)) {
         if (p.episode !== ctx.episode) reasons.push("wrong episode");

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import type { ProfileSettings } from "@bindings/store";
 import { streamsQuery, type Meta } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered } from "@/lib/chosen-source";
+import { useEpisodeMap } from "@/lib/episode-map";
+import { useLoadedAddons } from "@/lib/home";
 import { titleContext, type Candidate } from "@/lib/ranking";
 import { attempts, resolvePick, type Resolved } from "@/lib/resolve";
 import { deviceSettingsQuery } from "@/lib/settings";
@@ -71,7 +73,9 @@ export function usePreparedNext(
   const sources = useStreams(addons, meta.type, next.id);
   const chosen = useQuery(chosenSourceQuery(profileId, meta.id));
   const device = useQuery(deviceSettingsQuery).data;
-  const ctx = titleContext(meta.type, next.id, meta, meta.name);
+  const browsing = useLoadedAddons(profileId);
+  const map = useEpisodeMap(browsing.addons, browsing.loading, meta.type, meta.id, next.id);
+  const ctx = titleContext(meta.type, next.id, meta, meta.name, map);
   const { view } = useRankedStreams(
     sources,
     ctx,
