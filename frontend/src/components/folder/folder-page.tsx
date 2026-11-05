@@ -157,7 +157,11 @@ function CoverHeader({
       aria-label={folder.title}
       className="relative isolate flex items-end gap-8 px-gutter pt-6"
     >
-      <Ambient src={cover} />
+      {/* Runs under the title bar and the sidebar, to the window's edge. */}
+      <Ambient
+        src={cover}
+        className="top-[calc(-1*(var(--titlebar-h)+1.5rem))] -ms-(--sidebar-inset)"
+      />
       <div
         className={cn(
           "w-56 shrink-0 overflow-hidden rounded-2xl shadow-lift",
