@@ -221,6 +221,9 @@ function LoadedTitle({
       <Hero
         ref={heroRef}
         size="title"
+        // The hero's fade already ends at its bottom edge, so the page's own
+        // gap would show as a blank band under it (worst in light mode).
+        className="-mb-8"
         title={meta.name}
         logo={art?.logo ?? meta.logo}
         meta={[<TitleMeta key="meta" meta={meta} />]}
