@@ -15,11 +15,12 @@ import {
   type MetaPreview,
 } from "@/lib/addon-protocol";
 import { useLeaveOutAnime } from "@/lib/anime";
-import { isAnimeCatalog } from "@/lib/browse";
+import { browseTarget, isAnimeCatalog } from "@/lib/browse";
 import { folderParams, folderPath } from "@/lib/folder";
 import {
   collectionsQuery,
   homeLayoutQuery,
+  homeRowLimit,
   homeRows,
   isReleased,
   useBrowsableAddons,
@@ -143,7 +144,7 @@ function HomeRows({ profile }: { profile: Profile }) {
                 See all
               </Link>
             }
-            items={library.data}
+            items={library.data.slice(0, homeRowLimit)}
             getKey={(item) => `${item.contentId}:${item.contentType}`}
             renderItem={(item) => (
               <PosterCard
@@ -341,10 +342,23 @@ function CatalogRowView({
     (meta) => (!hideUnreleased || isReleased(meta)) && !leaveOut(meta.id),
   );
   if (metas.length === 0) return null;
+  // Ten titles and a link to the rest, where a browse page has the catalog.
+  const target = browseTarget(row.source);
   return (
     <Row
       title={row.title}
-      items={metas}
+      action={
+        target && (
+          <Link
+            to={target.to}
+            search={{ catalog: target.catalog }}
+            className={buttonVariants({ variant: "link", size: "sm" })}
+          >
+            Browse all
+          </Link>
+        )
+      }
+      items={target ? metas.slice(0, homeRowLimit) : metas}
       getKey={(meta) => meta.id}
       card={(meta) => (meta.posterShape === "landscape" ? "landscape" : "poster")}
       renderItem={(meta) => {

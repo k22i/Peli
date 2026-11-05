@@ -164,6 +164,11 @@ export type HomeRowOf<A extends LoadedAddon> =
       source: CatalogSource<A>;
     };
 
+// How many titles a catalog row on Home shows (#113): big cards (1.5×) keep
+// the page light, and "Browse all" opens the rest. Rows without a browse
+// page keep all of theirs.
+export const homeRowLimit = 10;
+
 // Home's rows in the user's order (#42): the sections of the layout, with
 // each catalog matched to an addon by manifest id, then the catalogs the
 // layout doesn't name, in addon order. `addons` are the profile's visible

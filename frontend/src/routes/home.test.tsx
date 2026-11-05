@@ -283,6 +283,31 @@ describe("catalogs", () => {
     expect(router.state.location.pathname).toBe(`/streams/movie/${theInvite.id}`);
   });
 
+  // #113: big cards, so a catalog row shows ten and links to the rest.
+  it("shows ten titles of a catalog and links to its browse page", async () => {
+    const user = userEvent.setup();
+    const metas = Array.from({ length: 14 }, (_, i) => ({
+      ...theInvite,
+      id: `tt900000${i}`,
+      name: `Extra ${i + 1}`,
+    }));
+    serve({
+      "manifest.json": cinemetaManifest,
+      "catalog/movie/top.json": { metas },
+      "catalog/series/top.json": cinemetaShows,
+    });
+    await renderApp("/");
+
+    const popular = await row("Popular · Movies");
+    const link = within(popular).getByRole("link", { name: "Browse all" });
+    expect(link).toHaveAttribute("href", expect.stringContaining("/movies?catalog="));
+    within(popular)
+      .getByRole("button", { name: /^Extra 1(\s|$)/ })
+      .focus();
+    await user.keyboard("{End}");
+    expect(await screen.findByRole("button", { name: /^Extra 10(\s|$)/ })).toHaveFocus();
+  });
+
   it("offers Resume when the featured title is in Continue Watching", async () => {
     mocks.continueWatching.mockResolvedValue([progressOn(theInvite.id)]);
     await renderApp("/");

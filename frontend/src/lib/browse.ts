@@ -64,6 +64,36 @@ export type BrowseCatalog<A extends LoadedAddon = LoadedAddon> = CatalogSource<A
   label: string;
 };
 
+// Whether browse can ask a catalog with nothing but a genre. Search,
+// calendar and "last videos" catalogs need extras it can't give.
+const asksOnlyGenre = ({ addon, catalog }: CatalogSource) =>
+  !addon.manifest.behaviorHints.configurationRequired &&
+  catalog.extra.every(
+    (extra) => !extra.isRequired || (extra.name === "genre" && (extra.options?.length ?? 0) > 0),
+  );
+
+export const browsePaths = { movie: "/movies", series: "/shows", anime: "/anime" } as const;
+
+// Where a catalog opens in full (Home's "Browse all"): its browse page with
+// its chip chosen. Undefined for a catalog no browse page offers (a "tv"
+// type, or one that needs extras), which is why Home only shortens the rows
+// that have one.
+export function browseTarget(
+  source: CatalogSource,
+): { to: (typeof browsePaths)[BrowseKind]; catalog: string } | undefined {
+  const type = isAnimeCatalog(source) ? "anime" : source.catalog.type;
+  const to =
+    type === "movie"
+      ? browsePaths.movie
+      : type === "series"
+        ? browsePaths.series
+        : type === "anime"
+          ? browsePaths.anime
+          : undefined;
+  if (!to || !asksOnlyGenre(source)) return undefined;
+  return { to, catalog: catalogRef(source) };
+}
+
 // The catalogs a browse page offers, in addon order: those of its type (any
 // type, for Anime) that can be asked with nothing but a genre. Search,
 // calendar and "last videos" catalogs need extras browse can't give.
@@ -74,22 +104,18 @@ export function browseCatalogs<A extends LoadedAddon>(
   kind: BrowseKind,
   visible: (source: CatalogSource<A>) => boolean = () => true,
 ): BrowseCatalog<A>[] {
-  const sources = addons.flatMap((addon) => {
-    if (addon.manifest.behaviorHints.configurationRequired) return [];
-    return addon.manifest.catalogs
+  const sources = addons.flatMap((addon) =>
+    addon.manifest.catalogs
       .map((catalog) => ({ addon, catalog }))
       .filter(
         (source) =>
           (kind === "anime"
             ? isAnimeCatalog(source)
             : source.catalog.type === kind && !isAnimeCatalog(source)) &&
-          source.catalog.extra.every(
-            (extra) =>
-              !extra.isRequired || (extra.name === "genre" && (extra.options?.length ?? 0) > 0),
-          ) &&
+          asksOnlyGenre(source) &&
           visible(source),
-      );
-  });
+      ),
+  );
   const labels = chipLabels(sources, kind);
   return sources.map(({ addon, catalog }, i) => ({
     addon,

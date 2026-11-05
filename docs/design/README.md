@@ -169,3 +169,14 @@ Chrome at 1280×800 and 1000×618 (2×); the dialog and menu pairs show the old 
 | C · Marquee: 125% heavy hero, mono eyebrows | ![](type-specimen-C-dark.jpg) |
 
 Dark, 1280 wide (2×). Gallery › Type specimens has the switch; the sample block holds a hero, a row with two captioned posters, a title-page block, a settings row and a player time readout. The shots come from a throwaway page that renders that block, since the full app needs the Go services. Once an option is picked, the Type rule above changes to match.
+
+### Cards at 1.5× (#113)
+
+| | Before | After |
+|---|---|---|
+| Home rows, dark | ![](cards-home-dark-before.jpg) | ![](cards-home-dark-after.jpg) |
+| Home rows, light | ![](cards-home-light-before.jpg) | ![](cards-home-light-after.jpg) |
+| Browse grid, dark | ![](cards-browse-dark-before.jpg) | ![](cards-browse-dark-after.jpg) |
+| Browse grid, light | ![](cards-browse-light-before.jpg) | ![](cards-browse-light-after.jpg) |
+
+Chrome at 1280×800 (2×). Posters are 15rem wide and landscape cards 27rem (`--container-poster`, `--container-landscape`; `cardRem` in `row.tsx` follows). The art is real: the recorded Cinemeta fixtures' Metahub posters and backdrops, and the after shots go through `lib/artwork-url.ts` (small → medium). The shots come from a throwaway page with a `Row` and a `PosterGrid`, not the full app, which needs the Go services. The title page's episode list isn't shown: it needs the store.
