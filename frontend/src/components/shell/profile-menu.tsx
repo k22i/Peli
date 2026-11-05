@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
+import { ChevronsUpDown, LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
 import { useState } from "react";
 
 import { parentSteps, pinSteps, usePinSteps } from "@/components/account/pin-dialog";
@@ -42,10 +42,16 @@ export function ProfileMenu() {
       <Menu>
         <MenuTrigger
           aria-label={`Profile: ${profile.name}`}
-          className="flex w-full items-center gap-2.5 rounded-lg p-1.5 text-start text-sm outline-none hover:bg-sidebar-accent focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-sidebar-accent"
+          className="flex w-full items-center gap-3 rounded-xl p-2 text-start text-sm outline-none hover:bg-sidebar-accent focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-sidebar-accent max-md:justify-center"
         >
-          <ProfileAvatar profile={profile} className="size-7" />
-          <span className="sr-only truncate font-medium md:not-sr-only">{profile.name}</span>
+          <ProfileAvatar profile={profile} className="size-8" />
+          <span className="sr-only min-w-0 flex-1 truncate font-[550] md:not-sr-only">
+            {profile.name}
+          </span>
+          <ChevronsUpDown
+            aria-hidden
+            className="hidden size-4 shrink-0 text-muted-foreground md:block"
+          />
         </MenuTrigger>
         <MenuPopup side="top" align="start" className="w-56">
           <MenuGroup>

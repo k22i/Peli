@@ -40,11 +40,11 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-// The --sidebar token in each mode (frontend/src/index.css); keep in step
+// The --background token in each mode (frontend/src/index.css); keep in step
 // with windowColours in frontend/src/lib/theme.ts.
 var (
-	windowColourLight = application.NewRGB(247, 247, 248)
-	windowColourDark  = application.NewRGB(17, 17, 17)
+	windowColourLight = application.NewRGB(255, 255, 255)
+	windowColourDark  = application.NewRGB(10, 10, 11)
 )
 
 func main() {

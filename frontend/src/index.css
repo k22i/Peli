@@ -549,24 +549,37 @@
     content: "";
     position: absolute;
     inset-inline: 0;
-    top: 100%;
-    height: 24px;
+    /* --scroll-edge-cover extends the blur up over the element itself, for a
+       bar with no background of its own (the title bar, #114). */
+    top: calc(100% - var(--scroll-edge-cover, 0px));
+    height: calc(24px + var(--scroll-edge-cover, 0px));
     pointer-events: none;
     background: linear-gradient(
       to bottom,
-      color-mix(in srgb, var(--background) 60%, transparent),
+      color-mix(in srgb, var(--background) 60%, transparent) calc(100% - 24px),
       transparent
     );
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-    -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
-    mask-image: linear-gradient(to bottom, #000, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent);
     @variant reduced-transparency {
-      background: linear-gradient(to bottom, var(--background), transparent);
+      background: linear-gradient(to bottom, var(--background) calc(100% - 24px), transparent);
       -webkit-backdrop-filter: none;
       backdrop-filter: none;
     }
   }
+}
+
+/*
+ * Bleed: for artwork that runs to the window's top and left edge, under the
+ * floating sidebar and the title bar (the shell pads its content by
+ * --sidebar-inset and --titlebar-h). Text inside a bled element offsets
+ * itself with ps-[calc(var(--sidebar-inset)+var(--spacing-gutter))].
+ */
+@utility bleed {
+  margin-inline-start: calc(-1 * var(--sidebar-inset, 0px));
+  margin-top: calc(-1 * var(--titlebar-h, 0px));
 }
 
 /*

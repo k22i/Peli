@@ -87,10 +87,10 @@ describe("theme preference", () => {
 });
 
 describe("windowColours", () => {
-  it("match the --sidebar token in each mode", () => {
-    const sidebars = [...css.matchAll(/^\s+--sidebar:\s*#([\da-f]{6});/gim)].map((match) =>
+  it("match the --background token in each mode", () => {
+    const backgrounds = [...css.matchAll(/^\s+--background:\s*#([\da-f]{6});/gim)].map((match) =>
       [0, 2, 4].map((index) => Number.parseInt(match[1]!.slice(index, index + 2), 16)),
     );
-    expect(sidebars).toEqual([[...windowColours.light], [...windowColours.dark]]);
+    expect(backgrounds).toEqual([[...windowColours.light], [...windowColours.dark]]);
   });
 });

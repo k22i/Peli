@@ -25,7 +25,7 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 - **Motion:** `ease-spring` for lifts and presses, `ease-smooth` for fades and travel, durations from `--duration-fast|base|slow`. Put movement behind `motion-safe:`; reduced motion zeroes the durations.
 - **Long lists:** use `Row` (inside a `RowGroup` when rows stack) and `PosterGrid`, which mount only the cards near the viewport, rather than mapping cards into a flex row. Gallery › Long rows has a 200-poster row, a 1,000-poster grid and a scroll test.
 - **Focus:** every interactive element shows a ring in `--ring` (the brand), either its own `focus-visible:ring-*` or the global `:focus-visible` outline. Cards ring their artwork. The gallery test audits this.
-- **Window colour:** if `--sidebar` changes, update `windowColours` in `theme.ts` (a test checks it) and the colours in `main.go`.
+- **Window colour:** it is `--background`, because the content pane fills the window and the glass sidebar floats over it. If `--background` changes, update `windowColours` in `theme.ts` (a test checks it) and the colours in `main.go`.
 
 ## Glass
 
@@ -47,6 +47,17 @@ Defined once in `index.css` (#111, [ADR-0046](../adr/0046-redesign-glass-and-flo
 - **Ambient.** `<Ambient src tone="art" | "brand" />` is a tall wash behind a page's content: the page's artwork blurred to a haze, or two pools of `--brand`. The parent needs `relative isolate`. With no `src` the art tone shows the brand glow.
 
 Not done on purpose: SVG refraction (`backdrop-filter: url()` doesn't work in WKWebView and is slow in WebView2), native window vibrancy, and a motion library.
+
+## Shell
+
+The shell (#114, `components/shell/`) is the app window's frame. The content pane (`#content`) fills the whole window and scrolls **under** two pieces of chrome: a floating `glass-thick` sidebar (a 15rem panel inset 0.5rem from the edges; a 4rem icon rail below `md`) and a title bar strip that is empty until the page is scrolled 4px, then shows `scroll-edge-top`. The shell root sets two variables, and the pane pads itself by them, so a page needs nothing:
+
+- `--sidebar-inset`: the room the sidebar takes (`calc(15rem + 1rem)` from `md`, `calc(4rem + 1rem)` below).
+- `--titlebar-h`: `2.75rem` on macOS, `2rem` on Windows, `0px` elsewhere (Linux keeps its native frame).
+
+Full-bleed artwork (the Home and title heroes, #115 and #117) uses the `bleed` utility, which cancels both paddings so the art runs under the glass. Text on it offsets itself with `ps-[calc(var(--sidebar-inset)+var(--spacing-gutter))]`. Gallery › Shell has a sample.
+
+The sidebar lists Search (a field-like link, `⌘F`), Home, Movies, Shows, Anime, then Library. That is only how it looks: ⌘/Ctrl+1–6 still follow `sections.ts`, and the arrow keys follow what is on screen. The active item is `bg-brand-soft` with a brand icon. On macOS the panel keeps `pt-11` free for the traffic lights, which sit in its top-left corner. On Windows the caption buttons sit top-right on a `glass-thin` pill. Under reduced transparency the panel is the solid `--glass-solid`.
 
 ## Screenshots
 
@@ -180,3 +191,23 @@ Dark, 1280 wide (2×). Gallery › Type specimens has the switch; the sample blo
 | Browse grid, light | ![](cards-browse-light-before.jpg) | ![](cards-browse-light-after.jpg) |
 
 Chrome at 1280×800 (2×). Posters are 15rem wide and landscape cards 27rem (`--container-poster`, `--container-landscape`; `cardRem` in `row.tsx` follows). The art is real: the recorded Cinemeta fixtures' Metahub posters and backdrops, and the after shots go through `lib/artwork-url.ts` (small → medium). The shots come from a throwaway page with a `Row` and a `PosterGrid`, not the full app, which needs the Go services. The title page's episode list isn't shown: it needs the store.
+
+### Shell (#114)
+
+| | Before | After |
+|---|---|---|
+| Home, dark | ![](shell-home-dark-before.jpg) | ![](shell-home-dark-after.jpg) |
+| Home, light | ![](shell-home-light-before.jpg) | ![](shell-home-light-after.jpg) |
+| Scrolled, dark | ![](shell-scrolled-dark-before.jpg) | ![](shell-scrolled-dark-after.jpg) |
+| Scrolled, light | ![](shell-scrolled-light-before.jpg) | ![](shell-scrolled-light-after.jpg) |
+
+| | |
+|---|---|
+| Icon rail below `md` (720×700), dark | ![](shell-rail-dark.jpg) |
+| …light | ![](shell-rail-light.jpg) |
+| 900×700 keeps the full panel (`md` is 768), dark | ![](shell-narrow-dark.jpg) |
+| Windows: caption buttons on a glass pill, scrolled | ![](shell-windows-dark.jpg) |
+| Settings in the new shell (its nav sticks below the title bar) | ![](shell-settings-dark.jpg) |
+| The built macOS app on the welcome screen (focus chrome): traffic lights at the top-left, the window painted `--background` | ![](shell-native-welcome-dark.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta posters), and the platform forced to macOS or Windows. The scrolled shots show the title bar's scroll edge over the first row. The Home hero does not run under the glass yet: it uses `bleed` in #115.

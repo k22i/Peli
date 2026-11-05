@@ -11,12 +11,13 @@ export type Theme = "light" | "dark";
 
 export const themeStorageKey = "sinag.theme";
 
-// The shell's outer colour (--sidebar in index.css) for each mode. The native
-// window paints it under the webview, so resizing or a slow load never shows
-// the other mode's colour. main.go starts with the OS's.
+// The page colour (--background in index.css) for each mode. The content
+// pane fills the window now, so this is what shows under the webview while
+// resizing or a slow load, and never the other mode's colour. main.go starts
+// with the OS's.
 export const windowColours: Record<Theme, readonly [number, number, number]> = {
-  light: [247, 247, 248],
-  dark: [17, 17, 17],
+  light: [255, 255, 255],
+  dark: [10, 10, 11],
 };
 
 const listeners = new Set<() => void>();

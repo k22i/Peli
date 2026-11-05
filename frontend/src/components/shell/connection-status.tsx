@@ -42,7 +42,7 @@ export function ConnectionStatus() {
                   setChecking(true);
                   void check().finally(() => setChecking(false));
                 }}
-                className="group/status flex h-9 w-full items-center gap-3 rounded-lg px-2.5 text-sm font-medium text-muted-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-progress [&_svg]:size-4.5 [&_svg]:shrink-0"
+                className="group/status flex h-10 w-full items-center gap-3 rounded-xl px-3 text-sm font-[550] text-muted-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-progress [&_svg]:size-5 [&_svg]:shrink-0"
               />
             }
           >

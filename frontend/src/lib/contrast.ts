@@ -183,6 +183,32 @@ export const contrastPairs: ContrastPair[] = [
     background: ["#ffffff", "#000000e0"],
     min: AA_TEXT,
   },
+  // The sidebar's active item (#114): brand-soft over the thick glass, over
+  // the worst backdrops. The icon is brand (3:1), the label foreground.
+  {
+    label: "Sidebar active icon, over black",
+    foreground: "brand",
+    background: ["#000000", "glass-thick", "brand-soft"],
+    min: AA_UI,
+  },
+  {
+    label: "Sidebar active icon, over white",
+    foreground: "brand",
+    background: ["#ffffff", "glass-thick", "brand-soft"],
+    min: AA_UI,
+  },
+  {
+    label: "Sidebar active label, over black",
+    foreground: "foreground",
+    background: ["#000000", "glass-thick", "brand-soft"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Sidebar active label, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "glass-thick", "brand-soft"],
+    min: AA_TEXT,
+  },
   {
     label: "Text on glass, solid fallback",
     foreground: "foreground",

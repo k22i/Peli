@@ -66,7 +66,7 @@ export function SettingsNav({ sections }: { sections: readonly SettingsSectionIn
   return (
     <nav
       aria-label="Settings sections"
-      className="sticky top-8 hidden w-44 shrink-0 self-start md:block"
+      className="sticky top-[calc(var(--titlebar-h)+2rem)] hidden w-44 shrink-0 self-start md:block"
     >
       <ul className="flex flex-col gap-0.5">
         {sections.map((section) => (

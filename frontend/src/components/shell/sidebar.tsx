@@ -3,8 +3,11 @@ import type { KeyboardEvent, MouseEvent } from "react";
 
 import { ConnectionStatus } from "@/components/shell/connection-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
+import { Kbd } from "@/components/ui/kbd";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
-import { sections } from "@/sections";
+import { currentPlatform } from "@/lib/platform";
+import { cn } from "@/lib/utils";
+import { sections, type Section } from "@/sections";
 
 const nextIndex: Record<string, (index: number, count: number) => number> = {
   ArrowDown: (index, count) => (index + 1) % count,
@@ -13,7 +16,8 @@ const nextIndex: Record<string, (index: number, count: number) => number> = {
   End: (_, count) => count - 1,
 };
 
-// Arrow keys, Home and End move focus between the nav's links.
+// Arrow keys, Home and End move focus between the nav's links, in the order
+// they are on screen.
 function moveFocus(event: KeyboardEvent<HTMLAnchorElement>) {
   const move = nextIndex[event.key];
   const list = event.currentTarget.closest("ul");
@@ -24,52 +28,82 @@ function moveFocus(event: KeyboardEvent<HTMLAnchorElement>) {
   links[move(index, links.length)]?.focus();
 }
 
-// The six sections, the offline indicator and the profile menu. An icon rail below the md
-// breakpoint, with labels kept for screen readers and shown as tooltips.
+// What the sidebar shows, top to bottom: Search as a field, the browse
+// sections, a gap, then Library. Only the look moves; Ctrl/⌘+1–6 follow
+// sections.ts.
+const search = sections.find((section) => section.to === "/search");
+const library = sections.find((section) => section.to === "/library");
+const browse = sections.filter((section) => section !== search && section !== library);
+const visualOrder = [search, ...browse, library].filter((section) => section !== undefined);
+
+const itemClass =
+  "group/item flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-[550] text-sidebar-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:bg-brand-soft data-[status=active]:text-foreground [&_svg]:size-5 [&_svg]:shrink-0 data-[status=active]:[&_svg]:text-brand";
+
+// Search is the entry to a field (Apple Music style): a link that looks like
+// one, with its shortcut on the right. Below md it is an icon like the rest.
+const searchClass =
+  "group/item flex h-9 items-center gap-2.5 rounded-xl px-3 text-sm text-muted-foreground outline-none glass-thin hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:text-foreground [&_svg]:size-4.5 [&_svg]:shrink-0 data-[status=active]:[&_svg]:text-brand max-md:h-10 max-md:justify-center max-md:px-0";
+
+// The six sections, the offline indicator and the profile menu, in a glass
+// panel floating inset from the window's edges (#114). An icon rail below the
+// md breakpoint, with labels kept for screen readers and shown as tooltips.
 export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void }) {
   const pathname = useLocation({ select: (location) => location.pathname });
+  const mac = currentPlatform() === "mac";
   // One Tab stop for the whole nav (roving tabindex): the current section, or
   // Home when the page isn't one of them (Settings, Addons).
-  const tabStop = Math.max(
-    0,
-    sections.findIndex((section) => section.to === pathname),
-  );
+  const current = visualOrder.findIndex((section) => section.to === pathname);
+  const tabStop = current >= 0 ? current : visualOrder.findIndex((section) => section.to === "/");
 
   // A click with no pointer (detail 0) came from Enter on a focused link.
   const onClick = (event: MouseEvent) => {
     if (event.detail === 0) onKeyboardNavigate();
   };
 
+  const item = (section: Section, index: number) => {
+    const isSearch = section === search;
+    return (
+      <li key={section.to} className={cn(section === library && "mt-4")}>
+        <Tooltip>
+          <TooltipTrigger
+            delay={300}
+            render={
+              <Link
+                to={section.to}
+                activeOptions={{ exact: true }}
+                tabIndex={index === tabStop ? 0 : -1}
+                onClick={onClick}
+                onKeyDown={moveFocus}
+                className={isSearch ? searchClass : itemClass}
+              />
+            }
+          >
+            <section.icon aria-hidden />
+            <span className="sr-only md:not-sr-only">{section.label}</span>
+            {isSearch && (
+              <Kbd aria-hidden className="ms-auto hidden md:inline-flex">
+                {mac ? "⌘F" : "Ctrl+F"}
+              </Kbd>
+            )}
+          </TooltipTrigger>
+          <TooltipPopup side="right" className="md:hidden">
+            {section.label}
+          </TooltipPopup>
+        </Tooltip>
+      </li>
+    );
+  };
+
   return (
-    <aside className="drag-region row-start-2 flex w-14 flex-col gap-2 bg-sidebar p-2 text-sidebar-foreground md:w-52">
+    <aside
+      className={cn(
+        "drag-region fixed start-2 top-2 bottom-2 z-30 flex w-16 flex-col gap-2 rounded-[1.25rem] p-2 text-sidebar-foreground glass-thick md:w-60",
+        // Room for the traffic lights, which sit in the panel's top-left.
+        mac && "pt-11",
+      )}
+    >
       <nav aria-label="Main" className="flex-1">
-        <ul className="flex flex-col gap-0.5">
-          {sections.map((section, index) => (
-            <li key={section.to}>
-              <Tooltip>
-                <TooltipTrigger
-                  delay={300}
-                  render={
-                    <Link
-                      to={section.to}
-                      activeOptions={{ exact: true }}
-                      tabIndex={index === tabStop ? 0 : -1}
-                      onClick={onClick}
-                      onKeyDown={moveFocus}
-                      className="flex h-9 items-center gap-3 rounded-lg px-2.5 text-sm font-medium text-sidebar-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:bg-sidebar-accent data-[status=active]:text-sidebar-accent-foreground [&_svg]:size-4.5 [&_svg]:shrink-0"
-                    />
-                  }
-                >
-                  <section.icon aria-hidden />
-                  <span className="sr-only md:not-sr-only">{section.label}</span>
-                </TooltipTrigger>
-                <TooltipPopup side="right" className="md:hidden">
-                  {section.label}
-                </TooltipPopup>
-              </Tooltip>
-            </li>
-          ))}
-        </ul>
+        <ul className="flex flex-col gap-1">{visualOrder.map(item)}</ul>
       </nav>
       <ConnectionStatus />
       <ProfileMenu />

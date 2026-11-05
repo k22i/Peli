@@ -33,6 +33,29 @@ describe("app shell", () => {
     expect(tabbable).toEqual([within(nav).getByRole("link", { name: "Shows" })]);
   });
 
+  it("lists Search first, then the browse sections, then Library", async () => {
+    await renderApp("/");
+
+    const nav = screen.getByRole("navigation", { name: "Main" });
+
+    expect(
+      within(nav)
+        .getAllByRole("link")
+        .map((link) => link.textContent),
+    ).toEqual([expect.stringContaining("Search"), "Home", "Movies", "Shows", "Anime", "Library"]);
+  });
+
+  it("shows the title bar's scroll edge once the page is scrolled", async () => {
+    await renderApp("/");
+    const content = document.getElementById("content");
+    expect(content).not.toHaveAttribute("data-scrolled");
+
+    content!.scrollTop = 120;
+    content!.dispatchEvent(new Event("scroll"));
+
+    await waitFor(() => expect(content).toHaveAttribute("data-scrolled"));
+  });
+
   it("reaches every section from the keyboard and focuses the new page", async () => {
     const user = userEvent.setup();
     const { router } = await renderApp("/");
@@ -44,9 +67,13 @@ describe("app shell", () => {
 
     await user.keyboard("{ArrowDown}");
     expect(screen.getByRole("link", { name: "Movies" })).toHaveFocus();
+    // Arrow keys follow the order on screen: Search, then Home to Anime,
+    // then Library, and round again.
     await user.keyboard("{ArrowUp}{ArrowUp}");
+    expect(screen.getByRole("link", { name: "Search" })).toHaveFocus();
+    await user.keyboard("{ArrowUp}");
     expect(screen.getByRole("link", { name: "Library" })).toHaveFocus();
-    await user.keyboard("{ArrowDown}");
+    await user.keyboard("{ArrowDown}{ArrowDown}");
     expect(screen.getByRole("link", { name: "Home" })).toHaveFocus();
     await user.keyboard("{End}{Enter}");
 
