@@ -16,6 +16,8 @@ export type CardProps = useRender.ComponentProps<"button"> & {
   progress?: number | undefined;
   // Top-left over the artwork: a coss Badge such as "New" or "4K".
   badge?: ReactNode | undefined;
+  // Top-right over the artwork, in mono on media glass: "S2 · E5".
+  pill?: ReactNode | undefined;
 };
 
 // The artwork lifts on hover and focus (Apple TV) and the focus ring is drawn
@@ -29,6 +31,7 @@ function Card({
   src,
   progress,
   badge,
+  pill,
   shape,
   render,
   className,
@@ -59,6 +62,11 @@ function Card({
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent" />
           )}
           {badge && <div className="absolute start-3 top-3 flex gap-1">{badge}</div>}
+          {pill && (
+            <span className="glass-media-strong absolute end-3 top-3 rounded-full px-2.5 py-1 font-mono text-meta font-medium text-white">
+              {pill}
+            </span>
+          )}
           {progress !== undefined && <WatchProgress value={progress} />}
         </div>
         <div className="flex min-w-0 flex-col gap-0.5 px-0.5">

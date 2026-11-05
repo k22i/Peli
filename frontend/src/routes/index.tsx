@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Info, Play, RotateCcw } from "lucide-react";
+import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Hero, HeroSkeleton } from "@/components/media/hero";
-import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Row, RowGroup, RowSkeleton, rowLinkClassName } from "@/components/media/row";
+import { Button } from "@/components/ui/button";
 import {
   addonsFor,
   catalogQuery,
@@ -31,11 +31,13 @@ import {
   episodeLabel,
   libraryPreview,
   libraryQuery,
+  timeLeft,
   watchedFraction,
 } from "@/lib/library";
 import { usePlay, type PlayTarget } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle, type TitlePreview } from "@/lib/title";
+import { cn } from "@/lib/utils";
 import type { LibraryItem, Profile, Progress } from "@bindings/store";
 
 export const Route = createFileRoute("/")({
@@ -99,7 +101,7 @@ function HomeRows({ profile }: { profile: Profile }) {
   const hideUnreleased = layout.data?.hideUnreleased ?? false;
   const context = { addons, library: library.data, watching: watching.data };
   return (
-    <div className="flex flex-col gap-6 py-6">
+    <div className="flex flex-col pb-12">
       {featured ? (
         <CatalogHero
           row={featured}
@@ -108,62 +110,63 @@ function HomeRows({ profile }: { profile: Profile }) {
           {...context}
         />
       ) : addonsLoading ? (
-        <HeroSkeleton className={heroOffset} />
+        <HeroSkeleton size="feature" />
       ) : (
         watching.data[0] && <WatchingHero entry={watching.data[0]} {...context} />
       )}
-      {noAddons}
-      <RowGroup>
-        {watching.data.length > 0 && (
-          <Row
-            title="Continue watching"
-            card="landscape"
-            items={watching.data}
-            getKey={(entry) => entry.key}
-            renderItem={(entry) => <WatchingCard entry={entry} {...context} />}
-          />
-        )}
-        {rows.map((row) =>
-          row.kind === "catalog" ? (
-            <CatalogRowView
-              key={row.key}
-              row={row}
-              hideUnreleased={hideUnreleased}
-              leaveOutAnime={leaveOutAnime}
+      {/* RowGroup renders no element, so its rows are this wrapper's children:
+          a shelf apart (3rem), and 1.5rem below the hero. */}
+      <div className="flex flex-col gap-12 pt-6">
+        {noAddons}
+        <RowGroup>
+          {watching.data.length > 0 && (
+            <Row
+              title="Continue watching"
+              card="landscape"
+              items={watching.data}
+              getKey={(entry) => entry.key}
+              renderItem={(entry) => <WatchingCard entry={entry} {...context} />}
             />
-          ) : (
-            <CollectionRow key={row.key} row={row} />
-          ),
-        )}
-        {addonsLoading && <RowSkeleton />}
-        {library.data.length > 0 && (
-          <Row
-            title="Your library"
-            action={
-              <Link to="/library" className={buttonVariants({ variant: "link", size: "sm" })}>
-                See all
-              </Link>
-            }
-            items={library.data.slice(0, homeRowLimit)}
-            getKey={(item) => `${item.contentId}:${item.contentType}`}
-            renderItem={(item) => (
-              <PosterCard
-                title={item.name}
-                meta={item.releaseInfo}
-                src={item.poster}
-                onClick={() => open(libraryPreview(item))}
+          )}
+          {rows.map((row) =>
+            row.kind === "catalog" ? (
+              <CatalogRowView
+                key={row.key}
+                row={row}
+                hideUnreleased={hideUnreleased}
+                leaveOutAnime={leaveOutAnime}
               />
-            )}
-          />
-        )}
-      </RowGroup>
+            ) : (
+              <CollectionRow key={row.key} row={row} />
+            ),
+          )}
+          {addonsLoading && <RowSkeleton />}
+          {library.data.length > 0 && (
+            <Row
+              title="Your library"
+              action={
+                <Link to="/library" className={rowLinkClassName}>
+                  See all
+                  <ChevronRight aria-hidden />
+                </Link>
+              }
+              items={library.data.slice(0, homeRowLimit)}
+              getKey={(item) => `${item.contentId}:${item.contentType}`}
+              renderItem={(item) => (
+                <PosterCard
+                  title={item.name}
+                  meta={item.releaseInfo}
+                  src={item.poster}
+                  onClick={() => open(libraryPreview(item))}
+                />
+              )}
+            />
+          )}
+        </RowGroup>
+      </div>
     </div>
   );
 }
-
-// The hero sits at the top of the page, under its padding: flush in dark
-// mode, where it runs edge to edge, and inset by its own in light.
-const heroOffset = "-mt-6";
 
 type WatchingContext = {
   addons: readonly LoadedAddon[];
@@ -203,7 +206,8 @@ function WatchingCard({ entry, ...context }: { entry: Progress } & WatchingConte
   return (
     <LandscapeCard
       title={title}
-      meta={episodeLabel(entry)}
+      pill={episodeLabel(entry)}
+      meta={timeLeft(entry)}
       src={art}
       progress={watchedFraction(entry)}
       onClick={() => play(resumeTarget(entry, title))}
@@ -223,7 +227,7 @@ function CatalogHero({
   const play = usePlay();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
-  if (catalogData.isPending) return <HeroSkeleton className={heroOffset} />;
+  if (catalogData.isPending) return <HeroSkeleton size="feature" />;
 
   const leaveOut = leaveOutOf(row, leaveOutAnime);
   const meta = catalogData.data?.metas.find(
@@ -235,7 +239,7 @@ function CatalogHero({
   const entry = context.watching.find((item) => item.contentId === meta.id);
   return (
     <Hero
-      className={heroOffset}
+      size="feature"
       title={meta.name}
       eyebrow={row.title}
       meta={metaLine(meta)}
@@ -268,7 +272,7 @@ function WatchingHero({ entry, ...context }: { entry: Progress } & WatchingConte
   const episode = episodeLabel(entry);
   return (
     <Hero
-      className={heroOffset}
+      size="feature"
       title={title}
       eyebrow="Continue watching"
       meta={episode ? [episode] : []}
@@ -286,11 +290,24 @@ function WatchingHero({ entry, ...context }: { entry: Progress } & WatchingConte
   );
 }
 
+// Apple TV's pattern for hero actions: Play is solid white, the rest glass
+// (media glass, since the hero is dark over any art). Pills that press in.
+const heroButton =
+  "rounded-full px-6 transition-transform duration-(--duration-fast) motion-safe:active:scale-[0.97]";
+
 // The hero's title page.
 function DetailsButton({ title }: { title: TitlePreview }) {
   const open = useOpenTitle();
   return (
-    <Button size="lg" variant="secondary" onClick={() => open(title)}>
+    <Button
+      size="lg"
+      variant="ghost"
+      className={cn(
+        heroButton,
+        "glass-media-strong text-white hover:text-white hover:before:bg-white/15",
+      )}
+      onClick={() => open(title)}
+    >
       <Info />
       Details
     </Button>
@@ -299,7 +316,14 @@ function DetailsButton({ title }: { title: TitlePreview }) {
 
 function PlayButton({ resume, onClick }: { resume: boolean; onClick: () => void }) {
   return (
-    <Button size="lg" onClick={onClick}>
+    <Button
+      size="lg"
+      className={cn(
+        heroButton,
+        "border-transparent bg-white text-black hover:bg-white/90 data-pressed:bg-white/90",
+      )}
+      onClick={onClick}
+    >
       {resume ? <RotateCcw /> : <Play className="fill-current" />}
       {resume ? "Resume" : "Play"}
     </Button>
@@ -349,12 +373,9 @@ function CatalogRowView({
       title={row.title}
       action={
         target && (
-          <Link
-            to={target.to}
-            search={{ catalog: target.catalog }}
-            className={buttonVariants({ variant: "link", size: "sm" })}
-          >
+          <Link to={target.to} search={{ catalog: target.catalog }} className={rowLinkClassName}>
             Browse all
+            <ChevronRight aria-hidden />
           </Link>
         )
       }
@@ -406,10 +427,12 @@ function CollectionRow({ row }: { row: Extract<HomeRow, { kind: "collection" }> 
 
 function HomeSkeleton() {
   return (
-    <div className="flex flex-col gap-6 py-6">
-      <HeroSkeleton className={heroOffset} />
-      <RowSkeleton card="landscape" />
-      <RowSkeleton />
+    <div className="flex flex-col pb-12">
+      <HeroSkeleton size="feature" />
+      <div className="flex flex-col gap-12 pt-6">
+        <RowSkeleton card="landscape" />
+        <RowSkeleton />
+      </div>
     </div>
   );
 }

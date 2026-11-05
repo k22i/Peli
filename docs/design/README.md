@@ -211,3 +211,19 @@ Chrome at 1280×800 (2×). Posters are 15rem wide and landscape cards 27rem (`--
 | The built macOS app on the welcome screen (focus chrome): traffic lights at the top-left, the window painted `--background` | ![](shell-native-welcome-dark.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta posters), and the platform forced to macOS or Windows. The scrolled shots show the title bar's scroll edge over the first row. The Home hero does not run under the glass yet: it uses `bleed` in #115.
+
+### Home hero and shelves (#115)
+
+| | Before | After |
+|---|---|---|
+| 1280×800, dark | ![](hero-home-dark-1280-before.jpg) | ![](hero-home-dark-1280-after.jpg) |
+| 1280×800, light | ![](hero-home-light-1280-before.jpg) | ![](hero-home-light-1280-after.jpg) |
+| 1728×1080, dark | ![](hero-home-dark-1728-before.jpg) | ![](hero-home-dark-1728-after.jpg) |
+| 1728×1080, light | ![](hero-home-light-1728-before.jpg) | ![](hero-home-light-1728-after.jpg) |
+
+| | |
+|---|---|
+| Shelves scrolled into view, dark: Continue watching with the episode pill and time left, "Browse all ›" at the heading's end | ![](hero-shelves-dark-after.jpg) |
+| …light | ![](hero-shelves-light-after.jpg) |
+
+Chrome at 2× with the Go services stubbed (real Cinemeta catalogs and Metahub art; three Continue watching entries and a library made up in the stub). The feature hero is `min-h-[min(80vh,46rem)]`, full-bleed in both themes, with a 8rem fade (`--fade` is the page colour, resolved outside the `.dark` scope) that sits under the text.

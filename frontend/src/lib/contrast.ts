@@ -178,6 +178,13 @@ export const contrastPairs: ContrastPair[] = [
     min: AA_UI,
   },
   {
+    // Home's hero Play button (#115): black on solid white.
+    label: "Hero Play button",
+    foreground: "#000000",
+    background: ["#ffffff"],
+    min: AA_TEXT,
+  },
+  {
     label: "Text on media glass, solid fallback",
     foreground: "#ffffff",
     background: ["#ffffff", "#000000e0"],

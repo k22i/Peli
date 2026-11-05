@@ -27,6 +27,19 @@ import { cn } from "@/lib/utils";
 
 export type CardShape = "poster" | "landscape";
 
+// A row's link at the end of its heading ("See all", "Browse all"): quiet text
+// with a chevron, so it reads as part of the heading.
+export const rowLinkClassName =
+  "inline-flex items-center gap-0.5 rounded-md text-sm font-medium text-muted-foreground outline-none transition-colors duration-(--duration-fast) hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-4";
+
+// Where the artwork's centre sits below the scroller's top: its padding plus
+// half the card's height (posters are 2:3, stills 16:9). The arrows line up
+// with the art, not with the caption under it.
+const arrowTop: Record<CardShape, string> = {
+  poster: "calc(0.75rem + var(--container-poster) * 3 / 4)",
+  landscape: "calc(0.75rem + var(--container-landscape) * 9 / 32)",
+};
+
 // --container-poster and --container-landscape in index.css (a test keeps
 // them in step), and the row's 24px gap. Cards are fixed widths, so these are
 // exact and cards aren't measured.
@@ -261,8 +274,18 @@ export function Row<T>({
           </RovingContext.Provider>
         </div>
         {/* Mouse paging only: keyboard users have the arrow keys. */}
-        <PageButton side="start" hidden={edges.start} onClick={() => page(-1)} />
-        <PageButton side="end" hidden={edges.end} onClick={() => page(1)} />
+        <PageButton
+          side="start"
+          top={arrowTop[count > 0 ? shapeOf(0) : "poster"]}
+          hidden={edges.start}
+          onClick={() => page(-1)}
+        />
+        <PageButton
+          side="end"
+          top={arrowTop[count > 0 ? shapeOf(0) : "poster"]}
+          hidden={edges.end}
+          onClick={() => page(1)}
+        />
       </div>
     </section>
   );
@@ -270,10 +293,12 @@ export function Row<T>({
 
 function PageButton({
   side,
+  top,
   hidden,
   onClick,
 }: {
   side: "start" | "end";
+  top: string;
   hidden: boolean;
   onClick: () => void;
 }) {
@@ -284,10 +309,11 @@ function PageButton({
       tabIndex={-1}
       aria-hidden
       onClick={onClick}
+      style={{ top }}
       className={cn(
-        "glass absolute top-[calc(50%-1rem)] grid size-10 -translate-y-1/2 place-items-center rounded-full text-popover-foreground opacity-0 transition-[opacity,scale] duration-(--duration-base) ease-smooth group-hover/row:opacity-100 motion-safe:active:scale-95 [&_svg]:size-5",
+        "glass-thin absolute grid size-12 -translate-y-1/2 place-items-center rounded-full text-foreground opacity-0 transition-[opacity,scale] duration-(--duration-base) ease-smooth group-focus-within/row:opacity-100 group-hover/row:opacity-100 motion-safe:active:scale-95 [&_svg]:size-6",
         side === "start" ? "start-3" : "end-3",
-        hidden && "pointer-events-none group-hover/row:opacity-0",
+        hidden && "pointer-events-none group-focus-within/row:opacity-0 group-hover/row:opacity-0",
       )}
     >
       <Icon />

@@ -55,6 +55,17 @@ export function episodeLabel(entry: Progress): string | undefined {
   return `S${entry.season} · E${entry.episode}`;
 }
 
+// What is left of an entry, for under its title: "38 min left", "1 h 12 min
+// left". Positions are milliseconds. Nothing without a known duration.
+export function timeLeft(entry: Progress): string | undefined {
+  if (entry.duration <= 0) return undefined;
+  const minutes = Math.max(1, Math.ceil((entry.duration - entry.position) / 60_000));
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  if (hours === 0) return `${minutes} min left`;
+  return rest === 0 ? `${hours} h left` : `${hours} h ${rest} min left`;
+}
+
 // How much of an entry has been watched, 0 to 1.
 export function watchedFraction(entry: Progress): number {
   return entry.duration > 0 ? entry.position / entry.duration : 0;
