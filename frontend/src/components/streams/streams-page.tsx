@@ -14,6 +14,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { Profile } from "@bindings/store";
 import { Service as Sync } from "@bindings/syncer";
 import { Notice } from "@/components/browse/browse-page";
+import { ScrollRail } from "@/components/media/scroll-rail";
 import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
@@ -385,8 +386,8 @@ export function StreamsSummary({
   const plural = sources.some((source) => source.kind === "plugin") ? "sources" : "addons";
   const one = plural === "sources" ? "1 source" : "1 addon";
   return (
-    <div className="flex flex-col gap-3 px-gutter">
-      <p aria-live="polite" className="text-sm text-muted-foreground">
+    <div className="flex flex-col gap-3">
+      <p aria-live="polite" className="px-gutter text-sm text-muted-foreground">
         {total === 1 ? "1 stream" : `${total} streams`}
         {waiting > 0
           ? `, ${waiting} of ${sources.length} ${plural} still answering`
@@ -396,14 +397,16 @@ export function StreamsSummary({
             ? `, still loading ${plural}`
             : ` from ${sources.length === 1 ? one : `${sources.length} ${plural}`}`}
       </p>
-      <ul
-        aria-label={plural === "sources" ? "Addons and plugins" : "Addons"}
-        className="flex flex-wrap gap-2"
-      >
-        {sources.map((source) => (
-          <SourceStatus key={source.key} source={source} />
-        ))}
-      </ul>
+      <ScrollRail>
+        <ul
+          aria-label={plural === "sources" ? "Addons and plugins" : "Addons"}
+          className="flex shrink-0 gap-2"
+        >
+          {sources.map((source) => (
+            <SourceStatus key={source.key} source={source} />
+          ))}
+        </ul>
+      </ScrollRail>
     </div>
   );
 }
@@ -440,7 +443,7 @@ function SourceStatus({ source }: { source: StreamSource }) {
   return (
     <li
       aria-label={name}
-      className="flex h-9 items-center gap-2 rounded-full border bg-card ps-3 pe-1.5 text-sm"
+      className="flex h-9 shrink-0 items-center gap-2 rounded-full border bg-card ps-3 pe-1.5 text-sm whitespace-nowrap"
     >
       {source.status === "pending" && <Spinner className="size-4 text-muted-foreground" />}
       {source.status === "success" && <Check aria-hidden className="size-4 text-brand" />}

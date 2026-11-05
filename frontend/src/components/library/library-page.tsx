@@ -5,7 +5,7 @@ import { Library as LibraryIcon, Trash2 } from "lucide-react";
 import { GridSkeleton, Notice } from "@/components/browse/browse-page";
 import { Upcoming } from "@/components/library/upcoming";
 import { PosterCard } from "@/components/media/cards";
-import { Chip, ChipGroup } from "@/components/media/chip";
+import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -136,9 +136,12 @@ function Library({ profile }: { profile: Profile }) {
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 px-gutter">
-        {types.length > 1 && (
-          <ChipGroup
+      {/* The type chips share one line with Sort and scroll sideways when
+          there are more than fit (#116); the rail brings its own gutter. */}
+      <div className="flex items-center gap-3">
+        {types.length > 1 ? (
+          <ChipRail
+            railClassName="min-w-0 flex-1"
             aria-label="Type"
             value={[type ?? allTypes]}
             onValueChange={(value: string[]) => {
@@ -152,14 +155,16 @@ function Library({ profile }: { profile: Profile }) {
                 {option.label}
               </Chip>
             ))}
-          </ChipGroup>
+          </ChipRail>
+        ) : (
+          <div className="flex-1" />
         )}
         <Select
           items={librarySorts}
           value={sort}
           onValueChange={(next: LibrarySort | null) => next && choose({ type, sort: next })}
         >
-          <SelectTrigger aria-label="Sort" className="w-48">
+          <SelectTrigger aria-label="Sort" className="me-gutter w-48 shrink-0">
             <SelectValue />
           </SelectTrigger>
           <SelectPopup>

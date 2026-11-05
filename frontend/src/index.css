@@ -535,6 +535,39 @@
   }
 }
 
+/* A scroller with no visible scrollbar (the chip rail, #116). */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Fades a scroller's start and end edges to transparent. The rail's wrapper
+   sets --rail-fade-start/-end (48px) on a side that has more to show. */
+@utility rail-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--rail-fade-start, 0px),
+    #000 calc(100% - var(--rail-fade-end, 0px)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--rail-fade-start, 0px),
+    #000 calc(100% - var(--rail-fade-end, 0px)),
+    transparent
+  );
+}
+[data-slot="scroll-rail"]:not([data-at-start]) {
+  --rail-fade-start: 48px;
+}
+[data-slot="scroll-rail"]:not([data-at-end]) {
+  --rail-fade-end: 48px;
+}
+
 /*
  * Scroll edge: for sticky chrome that content scrolls under (the title bar,
  * page headers). A 24px strip hangs below the element and softens the

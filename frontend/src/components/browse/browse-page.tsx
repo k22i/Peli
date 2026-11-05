@@ -1,11 +1,11 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { LayoutGrid, type LucideIcon } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { PosterCard } from "@/components/media/cards";
-import { Chip, ChipGroup } from "@/components/media/chip";
+import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -42,35 +42,115 @@ import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
 import type { Profile } from "@bindings/store";
 
-// Movies, Shows and Anime (#43): the profile's catalogs of one kind as chips,
-// in addon order, and the chosen one as a grid that loads more as it
-// scrolls. A catalog that takes a genre gets a Genre or Year filter from its
-// own options. The choice lives in the address (BrowseSearch), so Back from
-// a title page (#45) returns to it.
+// Movies, Shows and Anime (#43): the profile's catalogs of one kind as chips
+// on one line that scrolls sideways (#116), in addon order, and the chosen one
+// as a grid that loads more as it scrolls. A catalog that takes a genre gets
+// a Genre or Year filter from its own options. The choice lives in the
+// address (BrowseSearch), so Back from a title page (#45) returns to it.
 export function BrowsePage({ kind }: { kind: BrowseKind }) {
   const profile = useQuery(currentProfileQuery).data;
+  return profile ? (
+    <Browse kind={kind} profile={profile} />
+  ) : (
+    <BrowseFrame title={browseTitle(kind)}>
+      <GridSkeleton />
+    </BrowseFrame>
+  );
+}
+
+// The page: a header with the title, the filter and the catalog rail, which
+// sticks under the title bar as a glass strip once the grid scrolls beneath it
+// (#116), and the body below.
+function BrowseFrame({
+  title,
+  filter,
+  rail,
+  children,
+}: {
+  title: string;
+  filter?: ReactNode;
+  rail?: ReactNode;
+  children: ReactNode;
+}) {
+  const sentinel = useRef<HTMLDivElement | null>(null);
+  const header = useRef<HTMLElement | null>(null);
+  const [stuck, setStuck] = useState(false);
+
+  // A 1px sentinel at the page's top leaves the view the moment the header
+  // sticks. The title bar covers the top of the window, so the view starts
+  // below it: the header's own `top`.
+  useEffect(() => {
+    const target = sentinel.current;
+    if (!target || !header.current || typeof IntersectionObserver === "undefined") {
+      return undefined;
+    }
+    const top = Number.parseFloat(getComputedStyle(header.current).top) || 0;
+    const observer = new IntersectionObserver(
+      (entries) => setStuck(!entries[entries.length - 1]!.isIntersecting),
+      { rootMargin: `-${top}px 0px 0px 0px` },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex flex-col gap-5 py-6">
-      <h1 className="px-gutter font-heading text-title font-stretch-semi-expanded">
-        {browseTitle(kind)}
-      </h1>
-      {profile ? <Browse kind={kind} profile={profile} /> : <GridSkeleton />}
+    <div className="relative flex flex-col pb-6">
+      <div
+        ref={sentinel}
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+      />
+      <header
+        ref={header}
+        data-stuck={stuck || undefined}
+        className="group/header sticky top-(--titlebar-h) z-10 mb-4 data-stuck:scroll-edge-top"
+      >
+        <div className="flex flex-col gap-3 pt-6 pb-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:glass group-data-stuck/header:py-2">
+          <div className="flex items-baseline justify-between gap-x-6 gap-y-2 px-gutter">
+            <h1 className="font-heading text-title font-stretch-semi-expanded motion-safe:transition-[font-size,line-height] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:text-heading">
+              {title}
+            </h1>
+            {filter}
+          </div>
+          {rail}
+        </div>
+      </header>
+      {children}
     </div>
   );
 }
 
 function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
+  const title = browseTitle(kind);
   const search: BrowseSearch = useSearch({ strict: false });
   const navigate = useNavigate();
   const { visible, addons, shown, loading } = useBrowsableAddons(profile.id);
   const hideUnreleased = useQuery(homeLayoutQuery(profile.id)).data?.hideUnreleased ?? false;
   const leaveOutAnime = useLeaveOutAnime(profile.id);
 
-  if (visible.data?.length === 0) return <NoAddons profile={profile} />;
-  if (loading) return <GridSkeleton />;
+  if (visible.data?.length === 0) {
+    return (
+      <BrowseFrame title={title}>
+        <NoAddons profile={profile} />
+      </BrowseFrame>
+    );
+  }
+  if (loading) {
+    return (
+      <BrowseFrame title={title}>
+        <GridSkeleton />
+      </BrowseFrame>
+    );
+  }
   const catalogs = browseCatalogs(addons, kind, shown);
   const selected = catalogs.find((catalog) => catalog.ref === search.catalog) ?? catalogs[0];
-  if (!selected) return <NoCatalogs kind={kind} />;
+  if (!selected) {
+    return (
+      <BrowseFrame title={title}>
+        <NoCatalogs kind={kind} />
+      </BrowseFrame>
+    );
+  }
 
   const filter = catalogFilter(selected.catalog);
   const genre =
@@ -83,9 +163,19 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
   const choose = (next: BrowseSearch) => void navigate({ to: ".", search: next, replace: true });
 
   return (
-    <>
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 px-gutter">
-        <ChipGroup
+    <BrowseFrame
+      title={title}
+      filter={
+        filter && (
+          <FilterSelect
+            filter={filter}
+            value={genre ?? ""}
+            onChange={(next) => choose({ catalog: selected.ref, ...(next ? { genre: next } : {}) })}
+          />
+        )
+      }
+      rail={
+        <ChipRail
           aria-label="Catalogs"
           value={[selected.ref]}
           onValueChange={(value: string[]) => {
@@ -98,15 +188,9 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
               {catalog.label}
             </Chip>
           ))}
-        </ChipGroup>
-        {filter && (
-          <FilterSelect
-            filter={filter}
-            value={genre ?? ""}
-            onChange={(next) => choose({ catalog: selected.ref, ...(next ? { genre: next } : {}) })}
-          />
-        )}
-      </div>
+        </ChipRail>
+      }
+    >
       <CatalogGrid
         key={`${selected.ref}|${genre ?? ""}`}
         source={selected}
@@ -115,7 +199,7 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
         // Anime is the Anime tab's (#109).
         leaveOut={kind === "anime" ? undefined : leaveOutAnime}
       />
-    </>
+    </BrowseFrame>
   );
 }
 

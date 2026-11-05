@@ -121,6 +121,34 @@ describe("browse pages", () => {
     expect(within(chips()).queryByRole("button", { name: /Kitsu/ })).toBeNull();
   });
 
+  it("puts 50 catalogs on one scrolling rail, with the chosen one pressed", async () => {
+    const catalogs = Array.from({ length: 50 }, (_, i) => ({
+      type: "movie",
+      id: `c${i + 1}`,
+      name: `Catalog ${i + 1}`,
+    }));
+    serve({
+      [cinemeta.url]: { ...cinemetaManifest, catalogs },
+      [`${base}/catalog/movie/c40.json`]: { metas: films(1, 4), hasMore: false },
+    });
+    const user = userEvent.setup();
+    const catalog = encodeURIComponent(`${cinemeta.url}|movie|c40`);
+    await renderApp(`/movies?catalog=${catalog}`);
+
+    const group = await screen.findByRole("group", { name: "Catalogs" });
+    expect(group.closest('[data-slot="scroll-rail"]')).not.toBeNull();
+    expect(within(group).getAllByRole("button")).toHaveLength(50);
+    expect(within(group).getByRole("button", { name: "Catalog 40" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+
+    // The arrow keys move between the chips.
+    within(group).getByRole("button", { name: "Catalog 40" }).focus();
+    await user.keyboard("{ArrowRight}");
+    expect(within(group).getByRole("button", { name: "Catalog 41" })).toHaveFocus();
+  });
+
   it("filters by the catalog's genres", async () => {
     const asked = serve({
       [`${base}/catalog/movie/top.json`]: { metas: films(1, 4), hasMore: false },

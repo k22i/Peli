@@ -11,7 +11,7 @@ import {
   PosterCard,
   PosterCardSkeleton,
 } from "@/components/media/cards";
-import { Chip, ChipGroup } from "@/components/media/chip";
+import { Chip, ChipGroup, ChipRail } from "@/components/media/chip";
 import { Hero, HeroSkeleton } from "@/components/media/hero";
 import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
 import { Badge } from "@/components/ui/badge";
@@ -41,8 +41,14 @@ import { toastManager } from "@/components/ui/toast";
 
 const [featured] = sampleTitles;
 
+// What a profile with many addons has: 50 catalogs, the 40th selected.
+const catalogNames = Array.from({ length: 50 }, (_, index) =>
+  index % 5 === 0 ? `Top ${index + 1}` : `Catalog ${index + 1}`,
+);
+
 export function Components() {
   const [filters, setFilters] = useState<string[]>(["Drama", "Mystery"]);
+  const [catalog, setCatalog] = useState(catalogNames[39]!);
   const [loading, setLoading] = useState(false);
 
   return (
@@ -195,6 +201,20 @@ export function Components() {
               </Chip>
             ))}
           </ChipGroup>
+        </Specimen>
+        <Specimen label="chip rail · 50 catalogs, one line that scrolls sideways">
+          <ChipRail
+            railClassName="-mx-gutter w-[calc(100%+2*var(--spacing-gutter))]"
+            aria-label="Catalogs"
+            value={[catalog]}
+            onValueChange={(value: string[]) => value[0] && setCatalog(value[0])}
+          >
+            {catalogNames.map((name) => (
+              <Chip key={name} value={name}>
+                {name}
+              </Chip>
+            ))}
+          </ChipRail>
         </Specimen>
         <Specimen label="badges">
           <Badge>New</Badge>
