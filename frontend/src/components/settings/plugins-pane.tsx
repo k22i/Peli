@@ -48,7 +48,7 @@ export const pluginsWarning = {
   title: "Turn on plugins?",
   points: [
     "Plugins are third-party scrapers. They are written by other people, not by Sinag or Nuvio.",
-    "Sinag runs each one in a sandbox that keeps it away from your files and your network, but it doesn’t check what they do.",
+    "Sinag runs each one in a sandbox that keeps it away from your files and your home network, but it doesn’t check what they do.",
     "Plugins can break, return fake or unsafe links, or stop working without notice.",
     "You are responsible for the repositories you install and for what you watch with them.",
   ],
