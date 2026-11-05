@@ -74,7 +74,13 @@ export function usePreparedNext(
   const chosen = useQuery(chosenSourceQuery(profileId, meta.id));
   const device = useQuery(deviceSettingsQuery).data;
   const browsing = useLoadedAddons(profileId);
-  const map = useEpisodeMap(browsing.addons, browsing.loading, meta.type, meta.id, next.id);
+  const { map, pending: mapPending } = useEpisodeMap(
+    browsing.addons,
+    browsing.loading,
+    meta.type,
+    meta.id,
+    next.id,
+  );
   const ctx = titleContext(meta.type, next.id, meta, meta.name, map);
   const { view } = useRankedStreams(
     sources,
@@ -82,7 +88,10 @@ export function usePreparedNext(
     rankingPrefs(settings, device, remembered(chosen.data)),
   );
   const answered =
-    !loading && !chosen.isPending && sources.every((source) => source.status !== "pending");
+    !loading &&
+    !chosen.isPending &&
+    !mapPending &&
+    sources.every((source) => source.status !== "pending");
 
   // The top pick once the ranking settles, null for none.
   const [top, setTop] = useState<Candidate | null>();

@@ -389,7 +389,7 @@ export function useStreamChoices(
     enabled: isSeriesType(type),
   }).data;
   const last = isSeriesType(type) ? remembered(chosen) : null;
-  const map = useEpisodeMap(browsing.addons, browsing.loading, type, id, video);
+  const { map } = useEpisodeMap(browsing.addons, browsing.loading, type, id, video);
   const ctx = titleContext(type, video, meta, title, map);
   const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, device, last));
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());

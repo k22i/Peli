@@ -39,18 +39,21 @@ export const episodeMapQuery = (
     retry: false,
   });
 
-// The map of `video`, once the addons have loaded; undefined until it's
-// found, or when there is none.
+// The map of `video`, and whether it may still come: for a Kitsu video, until
+// the addons have loaded and one has answered. A video with none, or an
+// addon that fails, settles with no map and `pending` false, so callers that
+// wait for it (the next-episode pick) never hang.
 export function useEpisodeMap(
   addons: readonly LoadedAddon[],
   loading: boolean,
   type: ContentType,
   id: string,
   video: string,
-): EpisodeMap | undefined {
-  const { data } = useQuery({
+): { map: EpisodeMap | undefined; pending: boolean } {
+  const kitsu = video.startsWith("kitsu:");
+  const query = useQuery({
     ...episodeMapQuery(addons, type, id, video),
-    enabled: !loading && video.startsWith("kitsu:"),
+    enabled: !loading && kitsu,
   });
-  return data ?? undefined;
+  return { map: query.data ?? undefined, pending: kitsu && (loading || query.isPending) };
 }
