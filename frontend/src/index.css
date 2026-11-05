@@ -287,7 +287,7 @@
   --foreground: #18181b;
   --card: #ffffff;
   --card-foreground: #18181b;
-  --popover: #ffffffd6;
+  --popover: #ffffffa6;
   --popover-foreground: #18181b;
   --primary: #0a0a0b;
   --primary-foreground: #ffffff;
@@ -326,6 +326,22 @@
   --sidebar-primary: #18181b;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-ring: #0b6e94;
+
+  /* Glass (#111, ADR-0046). Tints for the four tiers, the specular top edge,
+     the hairline and the solid fallback. --popover is the regular tint, so
+     coss's bg-popover matches. The media tints are sized for white on the
+     worst backdrop, a pure white frame: text on #0000008c composites to
+     about #737373 (4.7:1), icons on #00000073 to about #8c8c8c (3.4:1,
+     UI needs 3:1). contrastPairs checks all of it. */
+  --glass-thin: #ffffff73;
+  --glass-regular: #ffffffa6;
+  --glass-thick: #f7f7f8c7;
+  --glass-media: #00000073;
+  --glass-media-strong: #0000008c;
+  --glass-edge: #ffffffb3;
+  --glass-stroke: #0000000f;
+  --glass-sheen: #ffffff59;
+  --glass-solid: #f7f7f8;
 }
 
 .dark {
@@ -338,7 +354,7 @@
   --foreground: #ededef;
   --card: #161618;
   --card-foreground: #ededef;
-  --popover: #1c1c1ed6;
+  --popover: #1c1c1ea6;
   --popover-foreground: #ededef;
   --primary: #fafafa;
   --primary-foreground: #0a0a0b;
@@ -375,21 +391,277 @@
   --sidebar-primary: #ededef;
   --sidebar-primary-foreground: #0a0a0b;
   --sidebar-ring: #33b5e0;
+  --glass-thin: #2c2c2e73;
+  --glass-regular: #1c1c1ea6;
+  --glass-thick: #141416c7;
+  --glass-media: #00000073;
+  --glass-media-strong: #0000008c;
+  --glass-edge: #ffffff24;
+  --glass-stroke: #ffffff14;
+  --glass-sheen: #ffffff1a;
+  --glass-solid: #1c1c1e;
 }
 
 /*
- * Glass: coss's popups (menus, tooltips, dialogs, sheets, toasts) sit on a
- * translucent --popover; blurring what's behind them gives Apple's material.
+ * Glass (#111, ADR-0046). Four tiers, defined once; components pick a tier
+ * and never hand-roll backdrop-blur.
+ *
+ *   glass-thin          chips, small controls over content, row arrows
+ *   glass (= regular)   popovers, menus, tooltips, toasts, sticky page headers
+ *   glass-thick         sidebar, sheets, dialogs, settings nav
+ *   glass-media(-strong) always dark; over artwork and video. -strong when it
+ *                       holds text
+ *
+ * Each tier is a tint, a blur and saturation, a soft highlight from the top
+ * (the "liquid" part), a 1px specular inner edge, a 0.5px hairline and a
+ * shadow. Never stack a light tier on another light tier. The -webkit- prefix
+ * stays for WKWebView builds that still want it.
+ *
+ * `reduced-transparency:` is this app's variant for "the OS asks for less
+ * transparency" (prefers-reduced-transparency) or a `data-transparency=
+ * "reduced"` ancestor, which the gallery sets to show the fallback.
+ */
+@custom-variant reduced-transparency {
+  @media (prefers-reduced-transparency: reduce) {
+    @slot;
+  }
+  &:where([data-transparency="reduced"], [data-transparency="reduced"] *) {
+    @slot;
+  }
+}
+
+@utility glass-thin {
+  background-color: var(--glass-thin);
+  background-image: linear-gradient(180deg, var(--glass-sheen), transparent 45%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-edge),
+    inset 0 0 0 0.5px var(--glass-stroke),
+    var(--shadow-card);
+  @variant reduced-transparency {
+    background-color: var(--glass-solid);
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @variant contrast-more {
+    border: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+  }
+}
+
+@utility glass {
+  background-color: var(--glass-regular);
+  background-image: linear-gradient(180deg, var(--glass-sheen), transparent 45%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-edge),
+    inset 0 0 0 0.5px var(--glass-stroke),
+    var(--shadow-glass);
+  @variant reduced-transparency {
+    background-color: var(--glass-solid);
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @variant contrast-more {
+    border: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+  }
+}
+
+@utility glass-thick {
+  background-color: var(--glass-thick);
+  background-image: linear-gradient(180deg, var(--glass-sheen), transparent 45%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  backdrop-filter: blur(40px) saturate(200%);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-edge),
+    inset 0 0 0 0.5px var(--glass-stroke),
+    var(--shadow-glass);
+  @variant reduced-transparency {
+    background-color: var(--glass-solid);
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @variant contrast-more {
+    border: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+  }
+}
+
+/* Media tiers are the same in light and dark: artwork and video are dark
+   either way. White icons and text go on top; scope the content with `.dark`
+   if it uses theme colours. */
+@utility glass-media {
+  color-scheme: dark;
+  background-color: var(--glass-media);
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.08), transparent 45%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(30px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
+    inset 0 0 0 0.5px rgb(255 255 255 / 0.08),
+    var(--shadow-glass);
+  @variant reduced-transparency {
+    background-color: #000000e0;
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @variant contrast-more {
+    border: 1px solid rgb(255 255 255 / 0.4);
+  }
+}
+
+@utility glass-media-strong {
+  color-scheme: dark;
+  background-color: var(--glass-media-strong);
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.08), transparent 45%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(30px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
+    inset 0 0 0 0.5px rgb(255 255 255 / 0.08),
+    var(--shadow-glass);
+  @variant reduced-transparency {
+    background-color: #000000e0;
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @variant contrast-more {
+    border: 1px solid rgb(255 255 255 / 0.4);
+  }
+}
+
+/*
+ * Scroll edge: for sticky chrome that content scrolls under (the title bar,
+ * page headers). A 24px strip hangs below the element and softens the
+ * content as it passes: a little blur and a --background wash that both fade
+ * out downwards. The element must be positioned (sticky, fixed or absolute).
+ * Don't put it on an element that also has a glass tier: a backdrop-filter
+ * makes its element a backdrop root, so the strip inside it would have
+ * nothing of the page to blur. Put it on a wrapper without one.
+ */
+@utility scroll-edge-top {
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: 24px;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--background) 60%, transparent),
+      transparent
+    );
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+    mask-image: linear-gradient(to bottom, #000, transparent);
+    @variant reduced-transparency {
+      background: linear-gradient(to bottom, var(--background), transparent);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+}
+
+/*
+ * coss's popups sit on tiers: menus, selects, tooltips and toasts on regular,
+ * dialogs and sheets on thick. These rules are unlayered, so they win over the
+ * components' bg-popover and shadow classes.
  */
 [data-slot="menu-popup"],
 [data-slot="tooltip-popup"],
+[data-slot="toast-popup"] {
+  @apply glass;
+}
+
+/* Stacked toasts shade the ones behind with a mix of black (white in dark
+   mode), as the component did with --popover. */
+[data-slot="toast-viewport"] > * {
+  @apply glass;
+  background-color: color-mix(
+    in srgb,
+    var(--glass-regular),
+    black calc(1% * max(0, var(--toast-index, 0)))
+  );
+}
+
+.dark [data-slot="toast-viewport"] > * {
+  background-color: color-mix(
+    in srgb,
+    var(--glass-regular),
+    white calc(2% * max(0, var(--toast-index, 0)))
+  );
+}
+
+[data-slot="toast-viewport"] > [data-expanded] {
+  background-color: var(--glass-regular);
+}
+
 [data-slot="dialog-popup"],
-[data-slot="sheet-popup"],
-[data-slot="toast-viewport"] > *,
+[data-slot="sheet-popup"] {
+  @apply glass-thick;
+}
+
+/*
+ * Materialize: a popup arrives as a material, out of focus and a little
+ * small, and leaves the same way. Opacity, scale and a 6px blur share one
+ * transition (--duration-base, ease-smooth). Sheets travel from their edge
+ * already, so they skip the scale. Reduced motion keeps opacity only (below).
+ */
+[data-slot="menu-popup"],
+[data-slot="select-popup"],
+[data-slot="toast-popup"] {
+  transition-property: opacity, scale, filter;
+}
+
+[data-slot="tooltip-popup"] {
+  transition-property: width, height, opacity, scale, filter;
+}
+
+[data-slot="dialog-popup"] {
+  transition-property: opacity, scale, translate, filter;
+}
+
+[data-slot="sheet-popup"] {
+  transition-property: opacity, translate, filter;
+}
+
+[data-slot="menu-popup"],
+[data-slot="select-popup"],
+[data-slot="tooltip-popup"],
 [data-slot="toast-popup"],
-.glass {
-  backdrop-filter: blur(24px) saturate(1.8);
-  box-shadow: var(--shadow-glass);
+[data-slot="dialog-popup"],
+[data-slot="sheet-popup"] {
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-smooth);
+}
+
+/* Tooltips that follow another tooltip swap without animating. */
+[data-slot="tooltip-popup"][data-instant] {
+  transition-duration: 0s;
+}
+
+:is(
+  [data-slot="menu-popup"],
+  [data-slot="select-popup"],
+  [data-slot="tooltip-popup"],
+  [data-slot="toast-popup"],
+  [data-slot="dialog-popup"]
+):is([data-starting-style], [data-ending-style]) {
+  opacity: 0;
+  scale: 0.96;
+  filter: blur(6px);
+}
+
+[data-slot="sheet-popup"]:is([data-starting-style], [data-ending-style]) {
+  opacity: 0;
+  filter: blur(6px);
 }
 
 /*
@@ -440,12 +712,16 @@
   }
 
   /* coss's sheets slide and its tooltips and menus grow in without a
-     motion-safe guard; keep them to a fade. */
+     motion-safe guard, and materializing adds a blur; keep them to a fade. */
   [data-slot="sheet-popup"],
   [data-slot="tooltip-popup"],
-  [data-slot="menu-popup"] {
+  [data-slot="menu-popup"],
+  [data-slot="select-popup"],
+  [data-slot="dialog-popup"],
+  [data-slot="toast-popup"] {
     translate: none !important;
     scale: none !important;
+    filter: none !important;
   }
 
   ::view-transition-group(*),

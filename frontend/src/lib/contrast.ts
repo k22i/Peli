@@ -110,6 +110,91 @@ export const contrastPairs: ContrastPair[] = [
     min: AA_TEXT,
   },
   { label: "Info text", foreground: "info-foreground", background: ["background"], min: AA_TEXT },
+  // Glass (#111). The tint paints over whatever is behind, so the text is
+  // measured over the worst backdrops: pure black and pure white. Regular and
+  // thick hold text over either in both modes. Thin is for chips and icons
+  // over content, and a light-on-glass pair over bright artwork fails by
+  // design, so it is measured over the page and cards it sits on.
+  {
+    label: "Text on regular glass, over black",
+    foreground: "foreground",
+    background: ["#000000", "glass-regular"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on regular glass, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "glass-regular"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on thick glass, over black",
+    foreground: "foreground",
+    background: ["#000000", "glass-thick"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on thick glass, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "glass-thick"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Muted text on regular glass",
+    foreground: "muted-foreground",
+    background: ["background", "glass-regular"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Muted text on thick glass",
+    foreground: "muted-foreground",
+    background: ["background", "glass-thick"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on thin glass, over the page",
+    foreground: "foreground",
+    background: ["background", "glass-thin"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on thin glass, over a card",
+    foreground: "foreground",
+    background: ["card", "glass-thin"],
+    min: AA_TEXT,
+  },
+  {
+    // Always dark, so white on the strong tint over a white frame (4.7:1).
+    label: "Text on media glass, over white",
+    foreground: "#ffffff",
+    background: ["#ffffff", "glass-media-strong"],
+    min: AA_TEXT,
+  },
+  {
+    // Icons only (3.4:1 over a white frame); text uses the strong tint.
+    label: "Icons on media glass, over white",
+    foreground: "#ffffff",
+    background: ["#ffffff", "glass-media"],
+    min: AA_UI,
+  },
+  {
+    label: "Text on media glass, solid fallback",
+    foreground: "#ffffff",
+    background: ["#ffffff", "#000000e0"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on glass, solid fallback",
+    foreground: "foreground",
+    background: ["glass-solid"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Muted text on glass, solid fallback",
+    foreground: "muted-foreground",
+    background: ["glass-solid"],
+    min: AA_TEXT,
+  },
   { label: "Focus ring", foreground: "ring", background: ["background"], min: AA_UI },
   { label: "Focus ring on sidebar", foreground: "ring", background: ["sidebar"], min: AA_UI },
   { label: "Focus ring on card", foreground: "ring", background: ["card"], min: AA_UI },

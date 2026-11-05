@@ -91,7 +91,7 @@ function BackButton() {
       size="icon-lg"
       aria-label="Back"
       onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
-      className="glass absolute start-[calc(var(--spacing-gutter)+0.5rem)] top-6 z-10 rounded-full bg-popover/80 text-popover-foreground hover:bg-popover dark:start-gutter dark:top-4"
+      className="glass absolute start-[calc(var(--spacing-gutter)+0.5rem)] top-6 z-10 rounded-full text-popover-foreground hover:bg-(--glass-regular) dark:start-gutter dark:top-4"
     >
       <ChevronLeft className="size-5" />
     </Button>

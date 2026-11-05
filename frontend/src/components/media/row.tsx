@@ -285,7 +285,7 @@ function PageButton({
       aria-hidden
       onClick={onClick}
       className={cn(
-        "glass absolute top-[calc(50%-1rem)] grid size-10 -translate-y-1/2 place-items-center rounded-full bg-popover text-popover-foreground opacity-0 transition-[opacity,scale] duration-(--duration-base) ease-smooth group-hover/row:opacity-100 hover:bg-popover motion-safe:active:scale-95 [&_svg]:size-5",
+        "glass absolute top-[calc(50%-1rem)] grid size-10 -translate-y-1/2 place-items-center rounded-full text-popover-foreground opacity-0 transition-[opacity,scale] duration-(--duration-base) ease-smooth group-hover/row:opacity-100 motion-safe:active:scale-95 [&_svg]:size-5",
         side === "start" ? "start-3" : "end-3",
         hidden && "pointer-events-none group-hover/row:opacity-0",
       )}

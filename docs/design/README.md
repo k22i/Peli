@@ -1,6 +1,6 @@
 # Design system
 
-Sinag has one theme, in light and dark (#13; theme studio is cut). The direction: **Apple's** glass and spring motion, **Vercel's** monochrome precision, **Nuvio's** poster-first, near-black cinema.
+Sinag has one theme, in light and dark (#13; theme studio is cut). The direction: **Apple's** liquid glass (four tiers, below) and spring motion, **Vercel's** monochrome precision, **Nuvio's** poster-first, near-black cinema.
 
 The living reference is the in-app gallery: **Settings › Design system** (`/gallery`). It shows every token and component in its states and measures contrast live.
 
@@ -12,18 +12,41 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 | Light/dark: OS by default, System/Light/Dark override | `frontend/src/lib/theme.ts`, the inline script in `frontend/index.html`, the window colour in `main.go` |
 | WCAG AA checks for every colour pairing | `frontend/src/lib/contrast.ts` (`contrastPairs`), `contrast.test.ts` |
 | Base components (button, dialog, sheet, toast, skeleton, toggle, badge, menu, tooltip…) | coss ui, `frontend/src/components/ui` (add more with `pnpm dlx shadcn@4.21.4 add @coss/<name>`) |
+| Glass tiers, scroll edge, materialize motion | `frontend/src/index.css` (`@utility glass-*`, `scroll-edge-top`); `Ambient` in `frontend/src/components/media/ambient.tsx` |
 | Sinag's own: poster and landscape cards, row, poster grid, hero, chip, skeletons | `frontend/src/components/media` (rows and grids are virtualized, ADR-0025) |
 
 ## Rules of thumb
 
 - **Colour:** surfaces are greys; the one accent is `--brand`, the "lagoon" (`#33b5e0` dark, `#0b6e94` light). Use it for focus, progress, selection and small highlights, never for large fills. coss's `--accent` is its hover tint, not the brand.
 - **Contrast:** a new foreground/background pairing goes into `contrastPairs`, so the test holds it to AA (4.5:1 text, 3:1 UI) in both modes. Keep colour tokens as hex so the test can read them.
+- **Glass:** pick a tier (below); don't hand-roll `backdrop-blur`. Never stack a light tier on another light tier. Over artwork or video use `glass-media` (icons) or `glass-media-strong` (text), which stay dark in both themes.
 - **Over artwork, stay dark:** the hero and the progress bar scope themselves with `.dark`, since artwork is dark in either theme.
 - **Type:** Mona Sans. Use `font-heading` plus `font-stretch-expanded` (display) or `font-stretch-semi-expanded` (titles, row headings) for headings, normal width for UI. Geist Mono `text-meta` for metadata (`2025 · 1h 52m`).
 - **Motion:** `ease-spring` for lifts and presses, `ease-smooth` for fades and travel, durations from `--duration-fast|base|slow`. Put movement behind `motion-safe:`; reduced motion zeroes the durations.
 - **Long lists:** use `Row` (inside a `RowGroup` when rows stack) and `PosterGrid`, which mount only the cards near the viewport, rather than mapping cards into a flex row. Gallery › Long rows has a 200-poster row, a 1,000-poster grid and a scroll test.
 - **Focus:** every interactive element shows a ring in `--ring` (the brand), either its own `focus-visible:ring-*` or the global `:focus-visible` outline. Cards ring their artwork. The gallery test audits this.
 - **Window colour:** if `--sidebar` changes, update `windowColours` in `theme.ts` (a test checks it) and the colours in `main.go`.
+
+## Glass
+
+Defined once in `index.css` (#111, [ADR-0046](../adr/0046-redesign-glass-and-floating-chrome.md)). A tier is a tint, a blur and saturation, a soft highlight from the top, a 1px specular inner edge, a 0.5px hairline and a shadow. Use it as a class (`glass-thick`, `md:glass`, `hover:glass-thin`).
+
+| Utility | Use | Blur / saturate | Tint (light / dark) |
+|---|---|---|---|
+| `glass-thin` | chips, small controls over content, row arrows | 12px / 160% | `#FFFFFF73` / `#2C2C2E73` |
+| `glass` (also the old `.glass`) | popovers, menus, tooltips, toasts, sticky page headers | 24px / 180% | `#FFFFFFA6` / `#1C1C1EA6` |
+| `glass-thick` | sidebar, sheets, dialogs, settings pane nav | 40px / 200% | `#F7F7F8C7` / `#141416C7` |
+| `glass-media` | always dark; icons over artwork and video | 30px / 180% | `#00000073` |
+| `glass-media-strong` | the same, when it holds text | 30px / 180% | `#0000008C` |
+
+- **Tokens:** `--glass-thin|regular|thick|media|media-strong` (tints), `--glass-edge`, `--glass-stroke`, `--glass-sheen`, `--glass-solid` (the fallback). `--popover` is the regular tint, so coss's `bg-popover` matches. coss's menus, selects, tooltips and toasts sit on the regular tier, and dialogs and sheets on thick, by selector in `index.css`.
+- **Over video, glass is mostly tint.** mpv draws on a native layer under the webview, so `backdrop-filter` can't blur it. The media tints are sized for contrast on their own: white text on `#0000008C` over a white frame is 4.7:1, white icons on `#00000073` 3.4:1 (`contrastPairs` holds both).
+- **Fallbacks.** Under `prefers-reduced-transparency: reduce` every tier turns into `--glass-solid` (`#000000E0` for media) with no blur or highlight; under `prefers-contrast: more` it also gets a 1px border. `reduced-transparency:` is a Tailwind variant for the same condition, and the gallery's toggle sets `data-transparency="reduced"` to show it. Support for the media feature varies by engine, so check it with CDP: `Emulation.setEmulatedMedia({ features: [{ name: "prefers-reduced-transparency", value: "reduce" }] })`.
+- **Scroll edge.** `scroll-edge-top` on a sticky or fixed header adds a 24px strip below it that blurs and washes out what scrolls past. Don't put it on an element that has a glass tier: a `backdrop-filter` makes its element a backdrop root, and the strip inside it would have nothing to blur. Use a wrapper.
+- **Materialize.** coss popups arrive and leave with opacity, a scale from .96 and a 6px blur (`--duration-base`, `ease-smooth`); sheets skip the scale. Reduced motion keeps opacity only.
+- **Ambient.** `<Ambient src tone="art" | "brand" />` is a tall wash behind a page's content: the page's artwork blurred to a haze, or two pools of `--brand`. The parent needs `relative isolate`. With no `src` the art tone shows the brand glow.
+
+Not done on purpose: SVG refraction (`backdrop-filter: url()` doesn't work in WKWebView and is slow in WebView2), native window vibrancy, and a motion library.
 
 ## Screenshots
 
@@ -121,3 +144,18 @@ Chrome at 1280×800 (2×), with the Go services stubbed. Avatar images are Nuvio
 | Gallery › Stream picker: cached on debrid (brand, with a bolt), not cached, and P2P | ![](stream-picker-gallery-light.jpg) |
 
 Chrome at 1280×800 (2×), with the Go services stubbed. The top pick's border and "Top pick" are `--brand` on `--card` (checked in `contrastPairs`).
+
+### Glass materials (#111)
+
+| | |
+|---|---|
+| Gallery › Materials, dark: each tier over a busy image and over the page, the two Ambient tones, and a scroll edge | ![](glass-materials-dark.jpg) |
+| …and light | ![](glass-materials-light.jpg) |
+| With "Reduced transparency" on: every tier is solid | ![](glass-materials-reduced-dark.jpg) |
+| The scroll edge, scrolled (light) | ![](glass-scroll-edge-light.jpg) |
+| A dialog (thick tier) over a busy image, before and after, dark | ![](glass-dialog-dark-before-after.jpg) |
+| …light | ![](glass-dialog-light-before-after.jpg) |
+| A menu (regular tier), before and after, dark | ![](glass-menu-dark-before-after.jpg) |
+| …light | ![](glass-menu-light-before-after.jpg) |
+
+Chrome at 1280×800 and 1000×618 (2×); the dialog and menu pairs show the old look on the left. The shots come from a throwaway page that renders the gallery's Materials section and the coss dialog and menu, since the full app needs the Go services.

@@ -1,6 +1,7 @@
 import { Check, X } from "lucide-react";
 
 import { GallerySection } from "@/components/gallery/gallery-section";
+import { Materials } from "@/components/gallery/materials";
 import { Badge } from "@/components/ui/badge";
 import { contrastPairs, contrastRatio } from "@/lib/contrast";
 import { useTheme } from "@/lib/theme";
@@ -172,7 +173,7 @@ export function Foundations() {
             [
               ["shadow-card", "shadow-card · at rest"],
               ["shadow-lift", "shadow-lift · hover, hero"],
-              ["shadow-glass glass bg-popover", "glass · popups"],
+              ["glass", "glass · popups (Materials, below)"],
             ] as const
           ).map(([shadow, label]) => (
             <div key={label} className="flex flex-col gap-2">
@@ -188,6 +189,8 @@ export function Foundations() {
           </div>
         </div>
       </GallerySection>
+
+      <Materials />
     </>
   );
 }
