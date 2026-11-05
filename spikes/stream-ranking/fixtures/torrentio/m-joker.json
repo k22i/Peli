@@ -1,0 +1,1219 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-joker",
+  "request": "https://torrentio.strem.fun/stream/movie/tt7286456.json",
+  "recordedAt": "2026-11-05T22:41:46.515Z",
+  "status": 200,
+  "ms": 234,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker.2019.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1\n👤 100 💾 5.98 GB ⚙️ ThePirateBay",
+      "infoHash": "42e92deaa863d1b6083bb159c14fa827ea8ef9b6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Joker.2019.2160p.4K.BluRay.x265.10bit.HDR.AAC5.1-[YTS.LT].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Джокер / Joker [2019 UHD BDRemux 2160p HDR10 Dolby Vision] Dub + MVO + AVO + VO + Original (Eng) + Sub (Rus Eng)\n👤 62 💾 55.23 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "d2ab59cf31d4ce394f0fff767ca46e92cdad9e02",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Джокер.2019.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:d2ab59cf31d4ce394f0fff767ca46e92cdad9e02",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Джокер / Joker [2019 WEB-DL 2160p HDR10 Dolby Vision] [Hybrid] Dub + MVO + AVO + Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 41 💾 20.8 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "5e0ddd151cc2847fe7d55fe20f3c6720be08ea23",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR",
+        "filename": "Джокер.2019.WEB-DL.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:5e0ddd151cc2847fe7d55fe20f3c6720be08ea23",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker.2019.2160p.UHD.Bluray.HDR.TrueHD.Atmos.7.1.HEVC-DDR\n👤 29 💾 17.24 GB ⚙️ ThePirateBay",
+      "infoHash": "3498dfbf930ee3f4f583a61b611552e7c133f987",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Joker.2019.2160p.UHD.Bluray.HDR.TrueHD.Atmos.7.1.HEVC-DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker 2019 USA BluRay Remux UHD DoVi HDR10 2160p Atmos TrueHD7.1-DreamHD\n👤 20 💾 47.87 GB ⚙️ ThePirateBay\n🇬🇧 / 🇨🇳",
+      "infoHash": "121403258f9219e601c590d760ac8e68041f6ff7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Joker 2019 USA BluRay Remux UHD DoVi HDR10 2160p Atmos TrueHD7.1-DreamHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker.2019.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.ENG.RUS.ITA.LATINO.TrueHD.7.1.Atmos.DV.x265.MKV-BEN.THE.MEN\n👤 17 💾 49.36 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇷🇺 / 🇮🇹 / 🇲🇽",
+      "infoHash": "c627f7d47b733691e1b08c36578d3a42c9925a5b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|DV|HDR",
+        "filename": "Joker.2019.2160p.REMUX.IMAX.Dolby.Vision.And.HDR10.ENG.RUS.ITA.LATINO.TrueHD.7.1.Atmos.DV.x265.MKV-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker (2019) 2160p 4K UHD HDR10 DV Blu-ray REMUX Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv\n👤 15 💾 47.25 GB ⚙️ EXT\nDual Audio / 🇬🇧 / 🇮🇳",
+      "infoHash": "de1d7bfbe75087b2982523a14079de45e308e9cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Joker (2019) 2160p 4K UHD HDR10 DV Blu-ray REMUX Dual Audio [Hindi + English] ESub ~ RemuxDoc.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Джокер / Joker [2019 UHD Blu-ray disc 2160p HDR10 Dolby Vision] [EUR] Dub + Sub Rus Eng + Original Eng\n👤 15 💾 59.42 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "574526aabfdf5b05c00de8c80a2c1186a8debfa5",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|10bit|DV|HDR"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:574526aabfdf5b05c00de8c80a2c1186a8debfa5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker 2019 UHD 4K BluRay 2160p HDR10 TrueHD 7.1 Atmos H.265-MgB\n👤 14 💾 21.82 GB ⚙️ ThePirateBay",
+      "infoHash": "194f75b5e0b7cdedb9e339a31fae153cd10fa3dc",
+      "fileIdx": 24,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|h265|10bit|HDR",
+        "filename": "Joker 2019 UHD 4K BluRay 2160p DoVi HDR10 TrueHD 7.1 Atmos H.265-MgB.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Джокер / Joker [2019 WEB-DL 2160p Dolby Vision TV] Dub + MVO + AVO + Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 13 💾 21.16 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "75bad69564cf2055b2853e8472908925ea592f61",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV",
+        "filename": "Джокер.2019.WEB-DL.2160p.DV.mp4"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:75bad69564cf2055b2853e8472908925ea592f61",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker (2019) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG AC3-SUBS] [M@HD]\n👤 11 💾 16.73 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "1d3c4ea820e9bac8f3cd0fa393c2afe6fb81fcb6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|hevc|10bit|HDR",
+        "filename": "Joker (2019) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG AC3-SUBS] [M@HD].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker.2019.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-AAAUHD\n👤 9 💾 16.22 GB ⚙️ RARBG",
+      "infoHash": "33b8d0a6f822e118bd20a5a592468f4a1ac86843",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Joker.2019.2160p.UHD.BluRay.x265-AAAUHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker.2019.2160p.BluRay.DV.HDR10.PLUS.ENG.LATINO.ITA.HINDI.DDP5.1.H265.MP4-BTM\n👤 8 💾 18.65 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇲🇽 / 🇮🇳",
+      "infoHash": "e82be3271b616246e945efda91be18855cbed6e5",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|h265|10bit|DV|HDR",
+        "filename": "Joker.2019.2160p.BluRay.DV.HDR10.PLUS.ENG.LATINO.ITA.HINDI.DDP5.1.H265.MP4-BEN.THE.MEN.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker.2019.2160p.MAX.WEB-DL.DDPA.5.1.DV.HDR.H.265-PiRaTeS[TGx]\n👤 8 💾 18.4 GB ⚙️ TorrentGalaxy",
+      "infoHash": "662cae3762d926748c6ff250a48437aaf8c20057",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265|DV|HDR",
+        "filename": "Joker.2019.2160p.MAX.WEB-DL.DDPA.5.1.DV.HDR.H.265-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker.2019.Eng.Fre.Ger.Ita.Spa.Cze.Hun.Pol.Rus.Tha.Jpn.2160p.BluRay.Remux.DV.HDR.HEVC.Atmos-SGF\n👤 6 💾 58.77 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇵🇱 / 🇨🇿 / 🇭🇺",
+      "infoHash": "fe8a254e4d19fb72583c7e33f55760bdef3d87a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR",
+        "filename": "Joker.2019.Eng.Fre.Ger.Ita.Spa.Cze.Hun.Pol.Rus.Tha.Jpn.2160p.BluRay.Remux.DV.HDR.HEVC.Atmos-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker.2019.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM\n👤 6 💾 9.09 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "d19c758223373af723dcd5d4e343005ae7086d48",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Joker.2019.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker (2019) [MULTi] [2160p] [DV] [HDR10] [BluRay] [H.265-hallow…\n👤 5 💾 16.65 GB ⚙️ TorrentGalaxy\nMulti Audio",
+      "infoHash": "7eb402a24997d299d0f4d10894e4740a7392458a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|h265|10bit|DV|HDR",
+        "filename": "Joker.2019.MULTi.REPACK.UHD.BluRay.2160p.DDP.Atmos.5.1.DV.HDR.x265-hallowed.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Joker.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 5 💾 44.02 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "47daf069c12ca610e54636f57510d6820c26dca9",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Joker.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Joker.2019.UHD.BluRay.2160p.DD.5.1.HDR.x265-BHDStudio\n👤 5 💾 14.02 GB ⚙️ 1337x",
+      "infoHash": "33234c3cfe2500f2b02a62a7b27c69aaa3e916e0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|HDR",
+        "filename": "Joker.2019.UHD.BluRay.2160p.DD.5.1.HDR.x265-BHDStudio.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Coringa 2019 (4K - BluRay) Acesse o ORIGINAL WWW.BLUDV.TV\n👤 5 💾 13.21 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "236f0860e2cb91236b64109f061b2e1b80c35812",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|HDR",
+        "filename": "Coringa.2019.2160p.BluRay.4K.HDR.6CH.x265.DUAL-WWW.BLUDV.TV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.2160p. Ai Enhanced BluRay.60FPSxH265.SDR.DTS-HD.MA.Tr…\n👤 23 💾 40.5 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "b7da10d62bd5fb2d044c0d999b366c3828c40de0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|8bit",
+        "filename": "Joker.2019.2160p. Ai Enhanced BluRay.60FPSxH265.BT709.8bit.SDR.DTS-HD.MA.TrueHD.7.1.Atmos_Marjenbo .mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.2160p.MA.WEB-DL.H.265.DDP5.1.Atmos-PandaQT SDR 4k UHD [GoodFilms]\n👤 19 💾 21.4 GB ⚙️ ThePirateBay",
+      "infoHash": "e6957ed6f617f41bf77b47fa10578f09f1fd30a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h265",
+        "filename": "Joker.2019.2160p.MA.WEB-DL.H.265.DDP5.1.Atmos-PandaQT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-JATO\n👤 17 💾 46.58 GB ⚙️ ThePirateBay",
+      "infoHash": "de2c810c26317b5b72afc0438b8266b798a9e0f1",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 11 💾 51.63 GB ⚙️ TorrentGalaxy",
+      "infoHash": "b566b878e4b9947755dc7ab63531c7889593e81d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Joker.2019.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 10 💾 51.62 GB ⚙️ RARBG",
+      "infoHash": "543a5eb1e79098be38490dc20fb7854ce2ee8c91",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Joker.2019.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.2160p.WEB-DL.H264.AC3-EVO[TGx]\n👤 8 💾 19.08 GB ⚙️ TorrentGalaxy",
+      "infoHash": "7b9282ed1799b008aba2277955a1f8b2327f15b1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|h264",
+        "filename": "Joker.2019.2160p.WEB-DL.H264.AC3-EVO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-JATO\n👤 7 💾 53.28 GB ⚙️ RARBG",
+      "infoHash": "8e991abb03f2d435a7d4530e9c1e334a282bda00",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Joker.2019.2160p.WEB-DL.DDP5.1.HEVC-BLUTONiUM\n👤 6 💾 18.87 GB ⚙️ ThePirateBay",
+      "infoHash": "e1908b268c54d9e64a698b1019e7a6d1bf8b08ba",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "www.Movcr.to. -Joker.2019.2160p.WEB-DL.DDP5.1.HEVC-BLUTONiUM[MOVCR].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Джокер / Joker [2019 UHD BDRip 1080p HDR10] Dub + MVO + AVO + VO + Original (Eng) + Sub (Rus Eng)\n👤 12 💾 18.36 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "726cac0064320b9a0354a202375eacf47346c5f0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|10bit|HDR",
+        "filename": "Джокер.2019.UHD.BDRip.1080p.HDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:726cac0064320b9a0354a202375eacf47346c5f0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Joker 2019 UHD BluRay 1080p DDP 7 1 DoVi HDR x265-SM737\n👤 7 💾 5.51 GB ⚙️ ThePirateBay",
+      "infoHash": "44af766f357d686797661d2f073ecf0186c35858",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|DV|HDR",
+        "filename": "Joker 2019 UHD BluRay 1080p DDP 7 1 DoVi HDR x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Joker 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737\n👤 7 💾 5.76 GB ⚙️ ThePirateBay",
+      "infoHash": "d69c5bc13c0e3be8f1d8df5c33b7fee437ad93cc",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Joker 2019 UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10  x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Джокер / Joker (2019) UHD BDRip-HEVC 1080p | HDR | D\n👤 6 💾 7.75 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e780522a6d27aafc148e9b5b9351dbeaf20eb594",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|HDR",
+        "filename": "Joker (2019).mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:e780522a6d27aafc148e9b5b9351dbeaf20eb594",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker 2019 1080p BluRay\n👤 100 💾 1.92 GB ⚙️ YTS",
+      "infoHash": "bfea2333b7a7959270b1fd296d7d9632d1af5713",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Joker.2019.1080p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.WEBRip.x264-MP4\n👤 100 💾 1.91 GB ⚙️ ThePirateBay",
+      "infoHash": "2b415a885a3e2210a6ef1d6c57eba325f20d8bc6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Joker.2019.1080p.WEBRip.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker 2019 REPACK 1080p BluRay x265-YAWNTiC\n👤 91 💾 5.86 GB ⚙️ ThePirateBay",
+      "infoHash": "8db1ab30f5f126c5d8007bf2ca70d8f73395adc2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Joker 2019 REPACK 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Джокер / Joker [2019 BDRip 1080p] Dub (BD EUR) + MVO (HDRezka Studio) + VO (Чадов) + Dub (Ukr) + Sub (Rus Eng) + Original Eng\n👤 71 💾 17.53 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e1cdcc2c79f335781b2b22713f2036af90d9d63a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Joker_2019_BDRip_1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:e1cdcc2c79f335781b2b22713f2036af90d9d63a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Джокер / Joker [2019 WEB-DL 1080p] [Локализованный видеоряд] Dub (Мосфильм) + MVO (HDRezka Studio) + AVO (Сербин) + VO (Чадов) + Original Eng + Sub (Rus Eng)\n👤 63 💾 7.1 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "15d15f94911265e6f2a07691909d6356df1812cc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Joker.2019.WEB-DL.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:15d15f94911265e6f2a07691909d6356df1812cc",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole) [QxR]\nJoker (2019) (1080p BluRay x265 10bit Tigole).mkv\n👤 50 💾 5.01 GB ⚙️ 1337x\n🇬🇧 / 🇵🇹 / 🇪🇸 / 🇫🇷",
+      "infoHash": "13c6f4c67fb5e15a1dabdace2a7124494ded4059",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Joker (2019) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 48 💾 2.48 GB ⚙️ ThePirateBay",
+      "infoHash": "e6e30f8fb3ba7e9d99436f026348aecc28ec3065",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Joker.2019.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker (2019) - 1080p - BD AV1 Opus MULTi4 [V2] [dAV1nci]\n👤 35 💾 2.38 GB ⚙️ 1337x",
+      "infoHash": "f9895b60edf42045fd4889703bf332303aa4849b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Joker.2019.1080p.BD.AV1.Opus.MULTi4.V2-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker 2019 BluRay 1080p DDP 5 1 x264-hallowed\n👤 16 💾 9.07 GB ⚙️ ThePirateBay",
+      "infoHash": "2feb758d1f1a743eee28f1dabd074e7084c40ca4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Joker 2019 BluRay 1080p DDP 5 1 x264-hallowed.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joaquin Phoenix - Triple Feature (1986-2019) BDRip 1080p\n2019.Joker.1920x1036.BDRip.x264.TrueHD-Atmos.mkv\n👤 16 💾 16.58 GB ⚙️ ThePirateBay",
+      "infoHash": "ee3d26e88ecdcdab91a6a90745bfa2d4ef6dd7dd",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2019.Joker.1920x1036.BDRip.x264.TrueHD-Atmos.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.10bit.BluRay.[Org.NF.DDP2.0-Hindi DDP7.1-English].ESub.HEVC-The.PunisheR\n👤 15 💾 4.17 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "infoHash": "d49caaa81f91dc172c0e967164145ced6a6d6c81",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Joker.2019.1080p.10bit.BluRay.[Org.NF.DDP2.0-Hindi+DDP7.1-English].ESub.HEVC-The.PunisheR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.BluRay.x265-RARBG\n👤 10 💾 1.9 GB ⚙️ RARBG",
+      "infoHash": "44a9b29b9413f5023f059aff26663c37f50be0cb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Joker.2019.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Джокер / Joker [2019 BDRemux 1080p] Dub + MVO + VO + Sub Rus Eng + Original Eng\n👤 10 💾 28.1 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "cbbac108b64a6c0b619c84f0f52490faa93ac7fa",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:cbbac108b64a6c0b619c84f0f52490faa93ac7fa",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.AMZN.WEBRip.DDP5.1.x264-NTG\n👤 10 💾 8.05 GB ⚙️ RARBG",
+      "infoHash": "ba0e1eb7806598733f2b3472e52f4091b5e361fb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Joker.2019.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.WEBRip.x264-RARBG\n👤 10 💾 2.32 GB ⚙️ RARBG",
+      "infoHash": "68461c270d4463963d0af6bb330331b07e378c88",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Joker.2019.1080p.WEBRip.x264-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker 2019 WEBRip 1080p x264 EAC3 ITA ENG SUB ITA ENG Lullozz\n👤 9 💾 5.86 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "febb20e79563ca2f93c6dd58a6ec488521590271",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Joker (2019) WEBRip 1080p x264 EAC3 ITA ENG SUB ITA ENG - Lullozzo.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.MULTi.1080p.BluRay.x264.AC3-NTK\n👤 9 💾 8.74 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "78fd1a0aa2866080f280a21cc70728ed5e199a1e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ Torrent911.com ] Joker.2019.MULTi.1080p.BluRay.x264.AC3-NTK.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker [MicroHD 1080p][AC3 5.1-Castellano-AC3 5.1-Ingles+Subs][ES-EN]\n👤 9 💾 5.49 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "infoHash": "fbc594b0409fb6767d41240793228e652ce51c09",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip",
+        "filename": "Joker M1080.www.pctnew.org.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.HC.1080p.HDRip.X264.AC3-EVO[TGx]\n👤 9 💾 3.95 GB ⚙️ ThePirateBay",
+      "infoHash": "ac568abfa75f6001c4fa24e7129d9af59055d3c2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "Joker.2019.HC.1080p.HDRip.X264.AC3-EVO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 9 - Mp4 x264 AC3 1080p\nJoker (2019) 1080p Surround.mp4\n👤 8 💾 3.43 GB ⚙️ ThePirateBay",
+      "infoHash": "37f048a1d5cc62f11fbac81185168eeb9d9101bf",
+      "fileIdx": 33,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Joker (2019) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker (2019) Blu Ray 1080p. H264 Ita Eng AC3 5.1 Sub Ita Eng MIRCrew\n👤 8 💾 3.06 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "62edc2d53fdb0f8ad112d8f879db28144a9d5601",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Joker 2019 Blu Ray 1080xH264 Ita Eng AC3 5.1 Sub Ita Eng.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.WEB-DL.DD5.1.H264-CMRG[TGx]\n👤 7 💾 4.7 GB ⚙️ ThePirateBay",
+      "infoHash": "0d785f04b54cb7570c0741e2833eee6322653517",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Joker.2019.1080p.WEB-DL.DD5.1.H264-CMRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker (2019) ITA ENG Ac3 5.1 sub Ita BDRip 1080p H264 [ArMor]\n👤 6 💾 3.07 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "0468d6e41d3b537006d90a4758bebcd3d96baafa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Joker (2019) ITA ENG Ac3 5.1 sub Ita BDRip 1080p H264 [ArMor].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coringa 2019 (1080p - BluRay) Acesse o ORIGINAL WWW.BLUDV.TV\n👤 6 💾 2.65 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "54206b4e24527d88302048335395e053d0ba73dc",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Coringa.2019.1080p.BluRay.6CH.x264.DUAL-WWW.BLUDV.TV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker (2019) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 6 💾 2.61 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "bd341f8cf97e408016cca31a7022ff463385ab26",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Joker (2019) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.MULTi.1080p.BluRay.x264.AC3-NTK\n👤 6 💾 8.74 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "340914ee7c15075f58e116a48f4ad7b03cc89c2a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ OxTorrent.com ]Joker.2019.MULTi.1080p.BluRay.x264.AC3-NTK.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.1080p.AMZN.WEB-DL.DDP5.1.H264-CMRG[EtHD]\n👤 6 💾 8.05 GB ⚙️ ThePirateBay",
+      "infoHash": "b4168b7744c34a24d1ddedc76f16fbad807b37cb",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Joker.2019.1080p.AMZN.WEB-DL.DDP5.1.H264-CMRG[EtHD].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker (2019) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 5 💾 1.74 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "153af193e11d1e0094ac34bb498723d7dc7a3646",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Joker (2019) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Джокер / Joker [2019 Blu-ray disc 1080p] [EUR] Dub + Sub (Rus Eng) + Original (Eng)\n👤 5 💾 32.19 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸",
+      "infoHash": "2633c28025feaa10568e2a0fc7a64605f23bfbb1",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:2633c28025feaa10568e2a0fc7a64605f23bfbb1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joker.2019.BluRay.1080p.TrueHD7.1.x264-CHD\n👤 5 💾 12.96 GB ⚙️ ThePirateBay",
+      "infoHash": "a974c7f8a3732d5e60b06d8c2c0778fe1a4f0792",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Joker.2019.BluRay.1080p.TrueHD7.1.x264-CHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Joker.2019.720p.BluRay.x264\n👤 56 💾 1.07 GB ⚙️ ThePirateBay",
+      "infoHash": "ba693a610b43a3aa246d3382299775ebdf0fec34",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Joker.2019.720p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Джокер / Joker [2019 BDRip 720p] Dub (BD EUR) + MVO (HDRezka Studio) + VO (Чадов) + Dub (Ukr) + Original (Eng) + Sub (Rus Eng)\n👤 28 💾 7.75 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "c54317ae5062b195138686015a5c82261c7d08d7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Joker_2019_BDRip_720p_by_Dalemake.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:c54317ae5062b195138686015a5c82261c7d08d7",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Joker 2019 720p BluRay x264-GeneMige\n👤 11 💾 4.67 GB ⚙️ ThePirateBay",
+      "infoHash": "711a7ff1d85cf1774189721da5d174c5c47bb062",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Joker 2019 720p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Joker Dublado dual áudio 720p\n👤 11 💾 1.06 GB ⚙️ MicoLeaoDublado\nDual Audio / 🇵🇹",
+      "infoHash": "33435e0d8ee7311f5ac93531a402f7a002e4a750",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Joker.2019.720p.WEBRip.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Joker.2019.720p.HC.HDRip.800MB.x264-GalaxyRG\n👤 5 💾 798.29 MB ⚙️ ThePirateBay",
+      "infoHash": "67c876fa3a565be72f35a6d4766d74ed88b9a435",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|HDRip|x264",
+        "filename": "Joker.2019.720p.HC.HDRip.800MB.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Joker 2019 1080p [broski]\n👤 6 💾 1.62 GB ⚙️ TorrentGalaxy",
+      "infoHash": "08db4352d8ca11a95ad0e959c4380b698b1013c4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Joker 2019 1080p.ts"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Джокер / Joker [2019 BDRip-AVC] Dub (BD EUR) + Original Eng + Sub Rus Eng\n👤 69 💾 2.84 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "4ec1e202750e7e422f8ac5091c4f8100360e4708",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Джокер (2019) BDRip-AVC__ivanes.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:4ec1e202750e7e422f8ac5091c4f8100360e4708",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Джокер / Joker [2019 BDRip] Dub\n👤 50 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "50dbc857a804e8c902127e7748d3f08ae2ca16dd",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Joker_2019_BDRip_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:50dbc857a804e8c902127e7748d3f08ae2ca16dd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Джокер / Joker [2019 BDRip-AVC] Dub (BD EUR) + AVO (Юрий Сербин) + Original (Eng) + Sub (Rus Ukr Eng)\n👤 23 💾 4.21 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "75b88e53b003c42faa3d76a2174c27e786d8d8c1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Joker_2019_BDRip-AVC_by_Dalemake.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:75b88e53b003c42faa3d76a2174c27e786d8d8c1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Джокер / Joker [2019 BDRip-AVC] Dub (BD EUR)\n👤 8 💾 1.5 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "93a58cc16c703a84dd904d9cb3f6208f2777020b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Джокер (2019) BDRip-AVC___ivanes.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:93a58cc16c703a84dd904d9cb3f6208f2777020b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Джокер / Joker [2019 BDRip] AVO (Юрий Сербин)\n👤 7 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "f8146bb3de48667fdb5b3b3f2d24f209db87affb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Joker_2019_BDRip_AVO_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:f8146bb3de48667fdb5b3b3f2d24f209db87affb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Джокер / Joker [2019 BDRip] Dub (iTunes) + Sub (Rus Eng) + Original Eng\n👤 6 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "7efdf49d58dcb0424cb1c9ab5900166b6bd9d6af",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Джокер_2019_BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:7efdf49d58dcb0424cb1c9ab5900166b6bd9d6af",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    }
+  ]
+}

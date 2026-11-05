@@ -1,0 +1,830 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-downfall",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0363163.json",
+  "recordedAt": "2026-11-05T22:38:53.136Z",
+  "status": 200,
+  "ms": 240,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Downfall.2004.4K.HDR.2160p.BDRemux Ita Ger x265-NAHOM\n👤 16 💾 51.76 GB ⚙️ 1337x\n🇮🇹 / 🇩🇪",
+      "infoHash": "584b2428e1f1af36aeba65eb3de00a5f57fcc3df",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|HDR",
+        "filename": "Downfall.2004.4K.HDR.2160p.BDRemux Ita Ger x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Downfall - Der Untergang 2004 2160p UHD Blu-ray Remux HEVC HDR DTS-HD HR 5.1-HDT\n👤 16 💾 51.16 GB ⚙️ ThePirateBay",
+      "infoHash": "b9b980578232cb30924dafd4c5f7ab7d00da6370",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|HDR",
+        "filename": "Der Untergang 2004 2160p UHD Blu-ray Remux HEVC HDR DTS-HD HR 5.1-HDT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Downfall 2004 UHD BluRay 2160p HDR10 HEVC DTS-HD HRA 5.1 x265-E\n👤 9 💾 32.34 GB ⚙️ TorrentGalaxy\n🇩🇪",
+      "infoHash": "175bff5589c70e21cdc5d789c76347bae15738a5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Der Untergang 2004.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Downfall 2004 2160p BluRay\n👤 43 💾 7 GB ⚙️ YTS",
+      "infoHash": "acc0c033668aaf4c106d6cdc29abbafb0e277814",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Downfall.2004.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Downfall (Der Untergang) (2004) 2160p GER-ITA-FRE moviesbyrizzo\nDownfall (2004) (2160p) MULTI CD2 (moviesbyrizzo conv).mkv\n👤 6 💾 11.15 GB ⚙️ ThePirateBay\nMulti Audio / 🇮🇹 / 🇫🇷 / 🇩🇪",
+      "infoHash": "90264c261ab827a4badaca984b0a00e44282ee6d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Downfall (2004) (2160p) MULTI CD2 (moviesbyrizzo conv).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Downfall (Der Untergang) (2004) 2160p GER-ITA-FRE moviesbyrizzo\nDownfall (2004) (2160p) MULTI CD1 (moviesbyrizzo conv).mkv\n👤 6 💾 12.7 GB ⚙️ ThePirateBay\nMulti Audio / 🇮🇹 / 🇫🇷 / 🇩🇪",
+      "infoHash": "90264c261ab827a4badaca984b0a00e44282ee6d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Downfall (2004) (2160p) MULTI CD1 (moviesbyrizzo conv).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall 2004 REMASTERED 1080p German BluRay HEVC x265 5.1 BONE\n👤 129 💾 2.01 GB ⚙️ 1337x\n🇩🇪",
+      "infoHash": "f2e6dcec6c7582bc809ab99d232fa35bbadc3fc6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Downfall 2004 REMASTERED 1080p German BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall.2004.GERMAN.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 81 💾 4.88 GB ⚙️ ThePirateBay\n🇩🇪",
+      "infoHash": "e78bea6e8c6c702194fbf4879867ff9a0248eea8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Downfall.2004.GERMAN.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall 2004 1080p BluRay\n👤 73 💾 2.68 GB ⚙️ YTS",
+      "infoHash": "88e909051416303bd632b4198e36eee542681522",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Downfall.2004.REPACK.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall 2004 1080p BluRay\n👤 62 💾 2.49 GB ⚙️ YTS",
+      "infoHash": "e83f17e65dcda6a05146900234abe10352bbc1f4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Downfall.2004.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall (2004)[1080p Ita Ger Spa 5.1 h265 10bit SubS ENG] byMe7alh [MIRCrew]\n👤 57 💾 3.02 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇪🇸 / 🇩🇪",
+      "infoHash": "5156c2fa6f6901560bf030a5fb8efb7ecb4b6644",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265|10bit",
+        "filename": "Downfall.2004.Ita.Spa.Ger.5.1.1080p.h265.10bit.SubS.ENG-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Бункер / Downfall / Der Untergang [2004 BDRip 1080p] 2x MVO (R5 D2Lab) + AVO (С. Рябов) + Sub Rus Deu Eng + Original Deu\n👤 44 💾 22.36 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "d50e5776d32b88af63c26a9a8199736cc9567db5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Der Untergang (2004).mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:d50e5776d32b88af63c26a9a8199736cc9567db5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall (Der Untergang) (2004) 1080p H.264 (moviesbyrizzo) subs\n👤 35 💾 4.28 GB ⚙️ ThePirateBay",
+      "infoHash": "d9270e5b04e271c49b4057f8b186a3676e34428a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Downfall - Der Untergang (2004) 1080p H.264 (moviesbyrizzo).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall.(Der.Untergang).2004.RERIP.US.Bluray.1080p.DD-5.1.x264-\n👤 14 💾 18.37 GB ⚙️ ThePirateBay",
+      "infoHash": "7f2b6a0795573fc9cfa2fdd0a36b5c5b368df893",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall (2004) Extras (1080p BluRay x265 HEVC 10bit AAC 5.1 German afm72) [QxR]\n👤 13 💾 7.4 GB ⚙️ 1337x\n🇩🇪",
+      "infoHash": "8014ca389669f265b054fb4011ecf5fc59dbf0b3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Der Untergang (Downfall) (2004) [1080p] x264 - Jalucian\n👤 12 💾 2.35 GB ⚙️ ThePirateBay",
+      "infoHash": "a1a4b654673aa41e7353242f1e8f07bf2ad3f7d8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Бункер / Downfall / Der Untergang [2004 BDRemux 1080p] MVO + Original Deu + Sub Rus Eng\n👤 12 💾 34.35 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "7167e74008452fb4a6204d555c44832c1c41698f",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:7167e74008452fb4a6204d555c44832c1c41698f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall.2004.GERMAN.1080p.BluRay.x265-VXT\n👤 11 💾 2.42 GB ⚙️ RARBG\n🇩🇪",
+      "infoHash": "43d763e36b0187ffba0fe4b5c3c68de8d30de7fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Downfall.2004.GERMAN.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall 2004 1080p BluRayRip EAC3 5 1 x265-Lootera\n👤 8 💾 2.97 GB ⚙️ ThePirateBay",
+      "infoHash": "91d2770856c78d94a32a00e84a4a0cca442e6689",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x265",
+        "filename": "Downfall 2004 1080p BluRayRip EAC3 5 1 x265-Lootera.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "500 top all-time movies collection 1080p H.264 480GB (moviesbyrizzo upl)\nDownfall (2004) Der Untergang 1080p (moviesbyrizzo upl).mp4\n👤 8 💾 1.2 GB ⚙️ 1337x",
+      "infoHash": "3facf8e9f4f7c506a2330ac2ba33645aa6f12b81",
+      "fileIdx": 147,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Downfall (2004) Der Untergang 1080p (moviesbyrizzo upl).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 101-150 BluRay 1080p x265 10bit MNHD-FRDS\n121.帝国的毁灭.Der.Untergang.2004.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Der.Untergang.2004.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 6 💾 10.99 GB ⚙️ EXT",
+      "infoHash": "08079cb5f524683e3a8da9e31f53ab81663b2501",
+      "fileIdx": 142,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Der.Untergang.2004.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Бункер / Downfall / Der Untergang (2004) BDRip-HEVC 1080p от HEVC-CLUB | P\n👤 6 💾 14.46 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "7f53236a07a7c25f536ce9bc1b520a3e3dcb1c3b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|10bit",
+        "filename": "Бункер (2004) BDRip 1080p [HEVC] 10bit by Spartanec.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:7f53236a07a7c25f536ce9bc1b520a3e3dcb1c3b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall.2004.GERMAN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 5 💾 32.97 GB ⚙️ RARBG\n🇩🇪",
+      "infoHash": "a0bf7a76f4fa7f90c978e33bf5192c8238914a16",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Downfall.2004.GERMAN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall (2004) [1080p] [YTS] [YIFY]\n👤 4 💾 2.29 GB ⚙️ 1337x",
+      "infoHash": "85c290ab1c4679a8ac46d453b6b096022f706aab",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Downfall.2004.1080p.BluRay.x264-[YTS.PE].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Бункер / Downfall / Der Untergang (2004) BDRip 1080p от DONOR1967\n👤 4 💾 10.32 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "28934800b1366906aefef1b77428de66a6cfab8f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Бункер.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:28934800b1366906aefef1b77428de66a6cfab8f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall 2004 1080p BluRay x264-OFT\n👤 3 💾 6.29 GB ⚙️ ThePirateBay",
+      "infoHash": "78826479140bf89d44cfc175f4722cedcb5c19b8",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Downfall 2004 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Downfall.2004.GERMAN.1080p.BluRay.H264.AAC-VXT\n👤 3 💾 2.96 GB ⚙️ RARBG\n🇩🇪",
+      "infoHash": "bbf92ed436555b6c814d18fe44ed6be3fdbfb5ef",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Downfall.2004.GERMAN.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Downfall 2004 720p BluRay\n👤 26 💾 1.29 GB ⚙️ YTS",
+      "infoHash": "fab63a003a7d328f99298829deb695e59306108b",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Downfall.2004.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Downfall 2004 720p BluRay\n👤 17 💾 1.3 GB ⚙️ YTS",
+      "infoHash": "3d8c6a9d2e49bd5b092ecdfa0b57cc07d2c08cbf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Downfall.2004.REPACK.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Бункер / Der Untergang / Downfall [2004 BDRip 720p] MVO (R5) + MVO (D2Lab) + AVO (С. Рябов) + Sub Rus Eng Deu + Original Deu\n👤 12 💾 13.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "331c068ef3a814a5223063b9409ca00dc8bb9e57",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Der.Untergang.2004.BDRip.720p.[HunterB02].mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:331c068ef3a814a5223063b9409ca00dc8bb9e57",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "A Queda! As Últimas Horas de Hitler 720P (2004) Dublado\n👤 10 💾 1.64 GB ⚙️ ThePirateBay\n🇵🇹",
+      "infoHash": "c55ecf286af962d00e87a543db12c3e0faf7c98a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "A Queda! As Últimas Horas de Hitler -wolverdonfilmes.com-.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Downfall 2004 720p BluRay x264 DuaL-TURKO\n👤 6 💾 2.31 GB ⚙️ ThePirateBay\nDual Audio / 🇩🇪 / 🇹🇷",
+      "infoHash": "31750cd0dd3acbf43a559b4f9a354434bd7f9a2f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Downfall 2004 720p BluRay x264 DuaL-TURKO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Downfall.2004.GERMAN.720p.V2.BrRip.x265.HEVCBay\n👤 5 💾 531.82 MB ⚙️ 1337x\n🇬🇧 / 🇩🇪",
+      "infoHash": "3cf2b4dbcbde635313716f924ec56af5e0f1731e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x265",
+        "filename": "Downfall.2004.GERMAN.720p.V2.BrRip.x265.HEVCBay.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Downfall.2004.GERMAN.720p.BrRip.x265.HEVCBay\n👤 3 💾 645.01 MB ⚙️ 1337x\n🇩🇪",
+      "infoHash": "e076e31dfa84a1fb5014e6bd926f0bcd8974c134",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x265",
+        "filename": "Downfall.2004.GERMAN.720p.BrRip.x265.HEVCBay.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n480p",
+      "title": "Downfall Der Untergang with Commentary and Extras 2004 480p x265\nDownfall.Der.Untergang.2004.DVDRip.480p.6ch-de-movie.2ch-en-director.subs.x265.mkv\n👤 3 💾 1.07 GB ⚙️ ThePirateBay",
+      "infoHash": "43e5dfc44cb1bedccb12beb19d988a3a3a6ac1a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|480p|DVDRip|x265",
+        "filename": "Downfall.Der.Untergang.2004.DVDRip.480p.6ch-de-movie.2ch-en-director.subs.x265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n400p",
+      "title": "Der Untergang 2004 BrRip-AVI-720X400 NL sub[CBCS][h33t].avi\n👤 3 💾 1.63 GB ⚙️ ThePirateBay\n🇳🇱",
+      "infoHash": "3b3f2c2c59b47a3304b7ad9b970a1757efb00677",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|400p|BRRip"
+      }
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Downfall (2004) - BRRip - mHD - x264 - MKV by RiddlerA\n👤 15 💾 811.07 MB ⚙️ ThePirateBay",
+      "infoHash": "824752c2579af1dbfc2483639c26ad3897fd6412",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|x264",
+        "filename": "Downfall (2004) m-HD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Бункер / Der Untergang [2004 HDRip - AVC]\n👤 10 💾 2.2 GB ⚙️ Rutracker\n🇷🇺 / 🇩🇪",
+      "infoHash": "86f61ffa54e44344139aaae5b4d92466ce76188a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Der_Untergang_R.G.Torrents.Ru.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:86f61ffa54e44344139aaae5b4d92466ce76188a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "The War Machines Of World War II 10 COMPLETE BOXSET DVDRip XviD\nDisc04/Disc 04.avi\n👤 9 💾 1.4 GB ⚙️ MagnetDL",
+      "infoHash": "55ca46bb29f3e4095050a36ae30e730b4764df89",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid",
+        "filename": "Disc 04.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Der Untergang - Downfall 2004 BRRip H264 AAC-GreatMagician (King\n👤 7 💾 2.24 GB ⚙️ ThePirateBay",
+      "infoHash": "aa41f97bf20496923f2be94eaead21829dfe29ba",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|h264"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Der Untergang / Downfall (Extended Edition) 2004 DVDRip - German\nDer Untergang (Extended) cd2.avi\n👤 6 💾 699.63 MB ⚙️ ThePirateBay\n🇩🇪",
+      "infoHash": "35b75a9e2e8bfdd16ffcce942b6d6fb116f7fd56",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Der Untergang (Extended) cd2.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Der Untergang / Downfall (Extended Edition) 2004 DVDRip - German\nDer Untergang (Extended) cd1.avi\n👤 6 💾 699.37 MB ⚙️ ThePirateBay\n🇩🇪",
+      "infoHash": "35b75a9e2e8bfdd16ffcce942b6d6fb116f7fd56",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Der Untergang (Extended) cd1.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Бункер / Der Untergang / Downfall [2004 HDRip] DVO\n👤 6 💾 1.37 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "53bce6489280421e196ac886981a2feecc729396",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Der.Untergang.HDRip.Rutracker.org._Drek.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:53bce6489280421e196ac886981a2feecc729396",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Эвиленко / Нелюдь (Чикатило) / Evilenko [2004 DVDRip] AVO (Гранкин)\n👤 6 💾 1.37 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "abfa5b819c626f0c09c105f2cdf7ac20d05fcae6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Chikatilo_[torrents.ru].avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:abfa5b819c626f0c09c105f2cdf7ac20d05fcae6",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Бункер / Der Untergang [2004 BDRip-AVC]\n👤 5 💾 3.31 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷 / 🇩🇪",
+      "infoHash": "7459d20e434551cd735e5d8868f73d01d01351ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Der Untergang.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:7459d20e434551cd735e5d8868f73d01d01351ca",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Бункер - Падение / Der Untergang - Downfall [2004 DVDRip AC3+Оригинал]\n👤 4 💾 1.81 GB ⚙️ Rutracker\n🇷🇺 / 🇩🇪",
+      "infoHash": "bc0da69c6f4374b3ead5065fd11e762caa4e4dcb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Bunker_dvdrip_by_ViTaNoL.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:bc0da69c6f4374b3ead5065fd11e762caa4e4dcb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Бункер / Крушение / Downfall / Der Untergang [2004 HDRip] AVO (Сергей Рябов)\n👤 3 💾 2.17 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "7c352a56f06672b4e20444d0320dbb0d3c15d7f4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Бункер  (боевик, военный 2004 год).avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:7c352a56f06672b4e20444d0320dbb0d3c15d7f4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Бункер / Downfall / Der Untergang (2004) BDRip-AVC от ExKinoRay | P\n👤 3 💾 3.68 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "45c9d1c0761a02797c2f745a730223d4597af0b5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Bunker.2004.x264.BDRip.(AVC).ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:45c9d1c0761a02797c2f745a730223d4597af0b5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Der Untergang - Extended Version - LeChiffre-Edit w eng subs\n👤 6 💾 7.82 GB ⚙️ ThePirateBay",
+      "infoHash": "12c40c252d69f833cd621711853492f71d40739d"
+    },
+    {
+      "name": "Torrentio",
+      "title": "Downfall.(Der.Untergang)[email protected]\n👤 3 💾 19.25 GB ⚙️ MagnetDL",
+      "infoHash": "30662faa512251d9c3a2a932a307fe98ea0e8f3b"
+    }
+  ]
+}

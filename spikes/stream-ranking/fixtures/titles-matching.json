@@ -1,0 +1,475 @@
+[
+  {
+    "slug": "m-shawshank",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0111161",
+    "name": "The Shawshank Redemption",
+    "year": 1994,
+    "runtimeMin": 142,
+    "aliases": [
+      "Cadena perpetua",
+      "Les Évadés",
+      "Die Verurteilten",
+      "Um Sonho de Liberdade",
+      "Le ali della libertà",
+      "Побег из Шоушенка",
+      "Skazani na Shawshank",
+      "ショーシャンクの空に",
+      "쇼생크 탈출",
+      "肖申克的救赎"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-your-name",
+    "kind": "anime",
+    "type": "movie",
+    "id": "tt5311514",
+    "name": "Your Name.",
+    "year": 2017,
+    "runtimeMin": 106,
+    "aliases": [
+      "Kimi no Na wa.",
+      "Kimi no Na wa",
+      "君の名は。",
+      "Seu Nome",
+      "Dein Name",
+      "Ваше имя",
+      "너의 이름은.",
+      "你的名字。"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-amelie",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0211915",
+    "name": "Amélie",
+    "year": 2002,
+    "runtimeMin": 122,
+    "aliases": [
+      "Le Fabuleux Destin d'Amélie Poulain",
+      "Amélie from Montmartre",
+      "El fabuloso destino de Amélie",
+      "Die fabelhafte Welt der Amélie",
+      "O Fabuloso Destino de Amélie Poulain",
+      "Il favoloso mondo di Amélie"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-spirited-away",
+    "kind": "anime",
+    "type": "movie",
+    "id": "tt0245429",
+    "name": "Spirited Away",
+    "year": 2003,
+    "runtimeMin": 125,
+    "aliases": [
+      "Sen to Chihiro no Kamikakushi",
+      "千と千尋の神隠し",
+      "El viaje de Chihiro",
+      "Le Voyage de Chihiro",
+      "Chihiros Reise ins Zauberland",
+      "A Viagem de Chihiro",
+      "La città incantata",
+      "Унесённые призраками"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-godfather",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0068646",
+    "name": "The Godfather",
+    "year": 1972,
+    "runtimeMin": 175,
+    "aliases": [
+      "El padrino",
+      "Le Parrain",
+      "Der Pate",
+      "O Poderoso Chefão",
+      "Il padrino",
+      "Крёстный отец",
+      "Ojciec chrzestny",
+      "教父"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-lion-king",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0110357",
+    "name": "The Lion King",
+    "year": 1994,
+    "runtimeMin": 89,
+    "aliases": [
+      "El rey león",
+      "Le Roi lion",
+      "Der König der Löwen",
+      "O Rei Leão",
+      "Il re leone",
+      "Король Лев"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-leon",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0110413",
+    "name": "Léon: The Professional",
+    "year": 1994,
+    "runtimeMin": 111,
+    "aliases": [
+      "Léon",
+      "Léon, der Profi",
+      "El profesional",
+      "O Profissional",
+      "Léon: The Professional",
+      "Леон"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-life-is-beautiful",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0118799",
+    "name": "Life Is Beautiful",
+    "year": 1997,
+    "runtimeMin": 116,
+    "aliases": [
+      "La vita è bella",
+      "La vie est belle",
+      "Das Leben ist schön",
+      "La vida es bella",
+      "A Vida é Bela",
+      "Жизнь прекрасна"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-pans-labyrinth",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0457430",
+    "name": "Pan's Labyrinth",
+    "year": 2007,
+    "runtimeMin": 118,
+    "aliases": [
+      "El laberinto del fauno",
+      "Le Labyrinthe de Pan",
+      "Pans Labyrinth",
+      "O Labirinto do Fauno",
+      "Il labirinto del fauno",
+      "Лабиринт Фавна"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-wall-e",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0910970",
+    "name": "WALL·E",
+    "year": 2008,
+    "runtimeMin": 98,
+    "aliases": [
+      "WALL-E",
+      "WALL·E: Batallón de limpieza",
+      "WALL·E – Der Letzte räumt die Erde auf",
+      "ВАЛЛ-И"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-her",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt1798709",
+    "name": "Her",
+    "year": 2014,
+    "runtimeMin": 126,
+    "aliases": [
+      "Ela",
+      "Lei",
+      "Она",
+      "Ella"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-up",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt1049413",
+    "name": "Up",
+    "year": 2009,
+    "runtimeMin": 96,
+    "aliases": [
+      "Up: Altas Aventuras",
+      "Là-haut",
+      "Oben",
+      "Up - Altamente",
+      "Вверх"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-oldboy",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0364569",
+    "name": "Oldboy",
+    "year": 2003,
+    "runtimeMin": 120,
+    "aliases": [
+      "올드보이",
+      "Old Boy"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-intouchables",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt1675434",
+    "name": "The Intouchables",
+    "year": 2011,
+    "runtimeMin": 113,
+    "aliases": [
+      "Intouchables",
+      "Ziemlich beste Freunde",
+      "Quasi amici",
+      "Amigos Intocáveis",
+      "Intocable",
+      "Неприкасаемые"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-downfall",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0363163",
+    "name": "Downfall",
+    "year": 2005,
+    "runtimeMin": 155,
+    "aliases": [
+      "Der Untergang",
+      "La Chute",
+      "El hundimiento",
+      "A Queda",
+      "La caduta",
+      "Бункер"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-city-of-god",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0317248",
+    "name": "City of God",
+    "year": 2004,
+    "runtimeMin": 129,
+    "aliases": [
+      "Cidade de Deus",
+      "Ciudad de Dios",
+      "La Cité de Dieu",
+      "Город Бога"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-cars",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0317219",
+    "name": "Cars",
+    "year": 2006,
+    "runtimeMin": 117,
+    "aliases": [
+      "Cars: Quatre roues",
+      "Cars: Motori ruggenti",
+      "Carros",
+      "Тачки"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-money-heist-s01e01",
+    "kind": "series",
+    "type": "series",
+    "id": "tt6468322:1:1",
+    "name": "Money Heist",
+    "year": 2017,
+    "runtimeMin": 70,
+    "season": 1,
+    "episode": 1,
+    "aliases": [
+      "La casa de papel",
+      "Haus des Geldes",
+      "Casa de Papel",
+      "Бумажный дом",
+      "纸钞屋"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-squid-game-s01e01",
+    "kind": "series",
+    "type": "series",
+    "id": "tt10919420:1:1",
+    "name": "Squid Game",
+    "year": 2021,
+    "runtimeMin": 59,
+    "season": 1,
+    "episode": 1,
+    "aliases": [
+      "오징어 게임",
+      "El juego del calamar",
+      "Round 6",
+      "Squid Game: Round 6"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-heat",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0113277",
+    "name": "Heat",
+    "year": 1995,
+    "runtimeMin": 170,
+    "aliases": [
+      "Fuego contra fuego",
+      "Heat - La sfida",
+      "Heat - Hetzjagd",
+      "Fogo contra Fogo",
+      "Схватка"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-alien",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt0078748",
+    "name": "Alien",
+    "year": 1979,
+    "runtimeMin": 117,
+    "aliases": [
+      "Alien, el octavo pasajero",
+      "Alien, le huitième passager",
+      "Alien - Das unheimliche Wesen aus einer fremden Welt",
+      "Alien - Il 8º passeggero",
+      "Alien, o 8º Passageiro",
+      "Чужой"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-joker",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt7286456",
+    "name": "Joker",
+    "year": 2019,
+    "runtimeMin": 122,
+    "aliases": [
+      "Coringa",
+      "Джокер",
+      "小丑"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-split",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt4972582",
+    "name": "Split",
+    "year": 2017,
+    "runtimeMin": 117,
+    "aliases": [
+      "Fragmentado",
+      "Múltiple",
+      "Split - Dissociazione",
+      "Расщепленный"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-coco",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt2380307",
+    "name": "Coco",
+    "year": 2017,
+    "runtimeMin": 105,
+    "aliases": [
+      "Viva - A Vida é uma Festa",
+      "Coco: Una aventura de película",
+      "Coco - Lebendiger als das Leben!",
+      "Тайна Коко"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-frozen",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt2294629",
+    "name": "Frozen",
+    "year": 2013,
+    "runtimeMin": 102,
+    "aliases": [
+      "Frozen: El reino del hielo",
+      "La Reine des neiges",
+      "Die Eiskönigin - Völlig unverfroren",
+      "Frozen: Uma Aventura Congelante",
+      "Frozen - Il regno di ghiaccio",
+      "Холодное сердце"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-us",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt6857112",
+    "name": "Us",
+    "year": 2019,
+    "runtimeMin": 116,
+    "aliases": [
+      "Nosotros",
+      "Nous",
+      "Wir",
+      "Nós",
+      "Noi",
+      "Мы"
+    ],
+    "aliasesSource": "manual"
+  },
+  {
+    "slug": "m-soul",
+    "kind": "movie",
+    "type": "movie",
+    "id": "tt2948372",
+    "name": "Soul",
+    "year": 2020,
+    "runtimeMin": 101,
+    "aliases": [
+      "Soul: Uma Aventura com Alma",
+      "Душа",
+      "Soul - Una aventura con alma"
+    ],
+    "aliasesSource": "manual"
+  }
+]

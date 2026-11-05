@@ -4,15 +4,19 @@
 //   node src/record.ts            # everything
 //   node src/record.ts torrentio  # one addon
 //   node src/record.ts titles     # only refresh fixtures/titles.json
+//   node src/record.ts matching [slug,slug]  # #99: the title-matching set (titles-matching.ts), Torrentio only,
+//                                 # into fixtures/torrentio and fixtures/titles-matching.json; the
+//                                 # other fixtures and titles.json are left alone
 //
 // Debrid keys live in git-ignored .env (TORBOX_API_KEY). Before a fixture is written, the key,
 // the config path segment and any opaque URL token are redacted, and the file is checked for
 // leftovers.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertClean, redactStreams } from './redact.ts';
 import { titles, type TitleSpec } from './titles.ts';
+import { matchingTitles } from './titles-matching.ts';
 import type { Fixture, TitleContext } from './types.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -120,23 +124,43 @@ async function context(t: TitleSpec): Promise<TitleContext> {
 // --- Main ------------------------------------------------------------------------------------
 
 const only = process.argv[2];
-const selected = addons.filter((a) => (only ? a.key === only : true)).filter((a) => a.config === 'p2p' || torbox);
-if (!torbox) console.error('TORBOX_API_KEY not set: skipping debrid configs');
+const matching = only === 'matching';
+const slugs = process.argv[3]?.split(',');
+const set: TitleSpec[] = matching
+  ? matchingTitles.filter((t) => !slugs || slugs.includes(t.slug))
+  : titles;
+const selected = addons
+  .filter((a) => (matching ? a.key === 'torrentio' : only ? a.key === only : true))
+  .filter((a) => a.config === 'p2p' || torbox);
+if (!torbox && !matching) console.error('TORBOX_API_KEY not set: skipping debrid configs');
 
 mkdirSync(join(root, 'fixtures'), { recursive: true });
 const contexts: TitleContext[] = [];
-for (const t of titles) {
-  contexts.push(await context(t));
+for (const t of set) {
+  const ctx = await context(t);
+  if (matching) {
+    // Hand-written stand-ins for TMDB's alternative titles and translations.
+    const spec = matchingTitles.find((m) => m.slug === t.slug)!;
+    ctx.aliases = spec.aliases;
+    ctx.aliasesSource = 'manual';
+  }
+  contexts.push(ctx);
   await sleep(300);
 }
-writeFileSync(join(root, 'fixtures', 'titles.json'), JSON.stringify(contexts, null, 2) + '\n');
+const titlesFile = join(root, 'fixtures', matching ? 'titles-matching.json' : 'titles.json');
+if (matching && slugs) {
+  // Add to the recorded set; re-recording a title would change its streams' indexes, and the labels use them.
+  const old: TitleContext[] = existsSync(titlesFile) ? JSON.parse(readFileSync(titlesFile, 'utf8')) : [];
+  contexts.unshift(...old.filter((o) => !contexts.some((c) => c.slug === o.slug)));
+}
+writeFileSync(titlesFile, JSON.stringify(contexts, null, 2) + '\n');
 if (only === 'titles') process.exit(0);
 
 for (const addon of selected) {
   const segment = addon.configSegment ? await addon.configSegment() : '';
   const secrets = [torbox, segment].filter(Boolean);
   mkdirSync(join(root, 'fixtures', addon.key), { recursive: true });
-  for (const t of titles) {
+  for (const t of set) {
     const prefix = t.id.startsWith('kitsu:') ? 'kitsu' : 'tt';
     if (!addon.prefixes.includes(prefix)) continue;
     const url = `${addon.base}${segment ? `/${segment}` : ''}/stream/${t.type}/${encodeURIComponent(t.id)}.json`;

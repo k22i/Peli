@@ -1,0 +1,954 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-split",
+  "request": "https://torrentio.strem.fun/stream/movie/tt4972582.json",
+  "recordedAt": "2026-11-05T22:41:48.261Z",
+  "status": 200,
+  "ms": 242,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Сплит / Split [2016 WEB-DL 2160p HDR10] Dub + 2x AVO + 2x Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 26 💾 23.84 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e7e64b891832ca00f3e1781c3ef7112b9656e7d2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|HDR",
+        "filename": "Сплит.2016.WEB-DL.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:e7e64b891832ca00f3e1781c3ef7112b9656e7d2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Сплит / Split [2016 UHD BDRemux 2160p HDR10] Dub + MVO + 2x AVO + VO + Original (Eng) + Sub (Rus Eng)\n👤 17 💾 63.65 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "b8dd26d29c547bd3b0a070168520ef35cc284d83",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|HDR",
+        "filename": "Сплит.2016.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:b8dd26d29c547bd3b0a070168520ef35cc284d83",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Split 2016 2160p UHD BDRip HEVC 10bit HDR DTS-HD.MA.5.1 MUSHR00M\n👤 16 💾 20.61 GB ⚙️ EXT",
+      "infoHash": "599a88117ea041b53101c735c5e17fc5e42209cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|hevc|10bit|HDR",
+        "filename": "Split 2016 2160p UHD BDRip HEVC 10bit HDR DTS-HD.MA.5.1 MUSHR00M.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Сплит / Split [2016 WEB-DL 2160p HDR10] [Локализованный видеоряд] Dub + 2x AVO + Original Eng + Sub (Rus Eng)\n👤 16 💾 12.7 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "048f6fee7b8df3bcc58c689c1897c761523f3ac2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|HDR",
+        "filename": "Split.WEB-DL.2160p.HDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:048f6fee7b8df3bcc58c689c1897c761523f3ac2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Split (2016) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng NUeng Licdom\n👤 7 💾 3.25 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "27398981e830afb42c370e8e6324f6009b57ae80",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Split (2016) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng NUeng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Split 2016 UHD BluRay 2160p HDR10 HEVC DTS-HD MA 5.1 x265-E\n👤 7 💾 19.25 GB ⚙️ 1337x",
+      "infoHash": "493a0f1f5371de99ee8a26b54ac7faac76977547",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Split 2016 (1).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Split.2016.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.5.1-IAMABLE\n👤 4 💾 14.83 GB ⚙️ RARBG",
+      "infoHash": "7172b2f92022605032a41d4b7bbdb74c73e3d327",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Split.2016.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Split 2016 2160p BluRay\n👤 82 💾 5.34 GB ⚙️ YTS",
+      "infoHash": "21b8570ccc57fa47fc57e48208da49806f2f507b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Split.2016.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Сплит / Split [2016 WEB-DL 2160p SDR] Dub + 2x AVO + 2x Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 8 💾 23.85 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "f285773d41ab675bb921f9f7a308861f3232c69c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL",
+        "filename": "Сплит.2016.WEB-DL.2160p.SDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:f285773d41ab675bb921f9f7a308861f3232c69c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Split.2016.2160p.Blu-Ray.HEVC.DTS-HD.MA.5.1.x265-E\n👤 7 💾 46.68 GB ⚙️ 1337x",
+      "infoHash": "d655670751f3d040ea66ce378001deafa85d341c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc",
+        "filename": "Split.2016.2160p.Blu-Ray.HEVC.DTS-HD.MA.5.1.x265-E.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Split.2016.2160p.BluRay.HEVC.DTS-HD.MA.5.1-COASTER\n👤 7 💾 59.22 GB ⚙️ RARBG",
+      "infoHash": "18a6c5ae87db33ce059e41005bddc34dca894aca",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Split 2016 1080p HEVC 10-bit SDR from 4K BluRay Source DTS-HD MA 5 1-MrTentsaw\n👤 5 💾 15.84 GB ⚙️ ThePirateBay",
+      "infoHash": "827c849e552ce489fb237da967e514064b587f78",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "Split 2016 1080p HEVC 10-bit SDR from 4K BluRay Source DTS-HD MA 5 1-MrTentsaw.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Split 2016 REPACK UHD BluRay 1080p DDP 5 1 HDR10 x265-SM737\n👤 9 💾 6.28 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇺🇦 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇮🇩 / 🇹🇭",
+      "infoHash": "d87b7c7adb567b95590249c073fcfb4869a1f908",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Split 2016 REPACK UHD BluRay 1080p DDP 5 1 HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Сплит / Split [2016 UHD BDRip 1080p HDR10] Dub + MVO + 2x AVO + VO + Original (Eng) + Sub (Rus Eng)\n👤 9 💾 17.02 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "5e2fc128fb3f3a44802e5baec325136089260029",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|10bit|HDR",
+        "filename": "Сплит.2016.UHD.BDRip.1080p.HDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:5e2fc128fb3f3a44802e5baec325136089260029",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Split 2016 UHD BluRay 1080p DDP 5 1 HDR10 x265-SM737\n👤 6 💾 4.74 GB ⚙️ ThePirateBay",
+      "infoHash": "9892e75c57452beb0b76657a91b195afb5c5ee9f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Split 2016 UHD BluRay 1080p DDP 5 1 HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.1080p.BRRip.x264.AAC-ETRG\n👤 178 💾 1.72 GB ⚙️ ThePirateBay",
+      "infoHash": "5960ac7068fb8333be8c12f3e28f43d28e98f7c1",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Split.2016.1080p.BRRip.x264.AAC-ETRG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split 2016 1080p BluRay\n👤 100 💾 1.79 GB ⚙️ YTS",
+      "infoHash": "aa1fcd4067a829b6866d3d3d36263d993d994a69",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Split.2016.1080p.BluRay.x264-[YTS.AG].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Сплит / Split [2016 WEB-DL 1080p] [Локализованный видеоряд] Dub + 2x AVO + Original Eng + Sub (Rus Eng)\n👤 60 💾 4.6 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "43ac707d0855bb4df60467eaff14a171c0449c00",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Split.WEB-DL.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:43ac707d0855bb4df60467eaff14a171c0449c00",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 48 💾 1.62 GB ⚙️ TorrentGalaxy",
+      "infoHash": "f008211853e2fc43d136f46ca6feff9bc38f2f7a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Split.2016.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Сплит / Split [2016 BDRip 1080p] Dub + VO + Sub Rus Eng + Original Eng\n👤 33 💾 17.03 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "6ed0b110ca2f7e6f800ec668284d4545b3bc6eea",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Split.2016.BDRip.1080p.Secrets.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:6ed0b110ca2f7e6f800ec668284d4545b3bc6eea",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Сплит / Split [2016 WEB-DLRip 1080p 60 FPS] Dub + 2x AVO + 2x Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 18 💾 18.95 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "64ea697fd1f877047ec9f5da3a178902d1daf195",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Сплит WEB-DLRip 1080p 60 FPS.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:64ea697fd1f877047ec9f5da3a178902d1daf195",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split (2016) (1080p BluRay x265 HEVC 10bit AAC 5.1 afm72) [QxR]\n👤 16 💾 4.41 GB ⚙️ 1337x",
+      "infoHash": "d6091706ead56a7c0dfffd5cd7fca2fdba491baf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Split (2016) (1080p BluRay x265 afm72).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.1080p.BluRay.AVC.AC3.DD5.1.x264-PANAM\n👤 14 💾 6.56 GB ⚙️ TorrentGalaxy",
+      "infoHash": "d033192225de84855886d3749f26f0bad8234620",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|avc",
+        "filename": "Split.2016.1080p.BluRay.AVC.AC3.DD5.1.x264-PANAM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Fragmentado 2017 (1080p)\n👤 14 💾 2.08 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "6f787ff9933ff508f29201e5a94367ca2f7f6dfa",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Fragmentado.2017.1080p.BluRay.6CH.x264.DUAL-BLUDV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split 2016 1080p PCOK WEB-DL DDP 5 1 H 264-PiRaTeS\n👤 13 💾 4.09 GB ⚙️ EXT",
+      "infoHash": "fb091a5c7b6349b2ea3c513a1d97b6cadd536ce5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Split 2016 1080p PCOK WEB-DL DDP 5 1 H 264-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.1080p.BluRay.x265-RARBG\n👤 11 💾 1.83 GB ⚙️ RARBG",
+      "infoHash": "153cd334af9ca67ada8347c70b9c4cfe544c2d15",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Split.2016.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 9 💾 1.51 GB ⚙️ ThePirateBay",
+      "infoHash": "da6171ea321cbaeb1eaca591c606ecedf5091988",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Split.2016.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split (2016) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng NUeng Licdom\n👤 8 💾 1.91 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "dd4f9f5d404020c368f741af8e92d79c4bf19649",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Split (2016) 1080p H265 ita eng AC3 5.1 sub ita eng NUeng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split 2016 1080p MAX WEB-DL H 265-PiRaTeS\n👤 8 💾 1.57 GB ⚙️ ThePirateBay",
+      "infoHash": "d310ab1e9c42ecbc3d8bfffe8e0f7dc371af465c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Split 2016 1080p MAX WEB-DL H 265-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Veliki.paket.filmova.sa područja.ExYu.PART.III.1080p.x264.[ExYuSubs]\nOsmi.putnik.-.Live.in.Split.2019.1080p.HDTV.x264.[ExYuSubs]/Osmi.putnik.-.Live.in.Split.2019.1080p.HDTV.x264.[ExYuSubs].mp4\n👤 7 💾 1021.82 MB ⚙️ ThePirateBay",
+      "infoHash": "a91389759a75f0ce425118f4782f82b9980ecd17",
+      "fileIdx": 92,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDTV|x264",
+        "filename": "Osmi.putnik.-.Live.in.Split.2019.1080p.HDTV.x264.[ExYuSubs].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.MULTi.1080p.BluRay.x264-VENUE\n👤 6 💾 9.84 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "3d9f5525597e5356251bed5cb8450918787ce9a7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ OxTorrent.com ] Split.2016.MULTi.1080p.BluRay.x264-VENUE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Unbreakable Trilogy (2000-2019) BDRip 1080p\n2016.Split.1920x804.BDRip.x264.DTS-HD.MA.mkv\n👤 6 💾 15.36 GB ⚙️ ThePirateBay",
+      "infoHash": "6406c6f4e1a078ae53f0a93178aabc02c0a8dabf",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2016.Split.1920x804.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Сплит / Split [2016 BDRemux 1080p] Dub + MVO + 2x AVO + VO + Original (Eng) + Sub (Rus Eng)\n👤 5 💾 41.52 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "39b178c6a1949cf240a9b671671f37e3e574ca2d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Сплит.2016.Blu-Ray.Remux.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:39b178c6a1949cf240a9b671671f37e3e574ca2d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Split.2016.1080P-Dual-Lat\n👤 4 💾 1.8 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "4459eb3e9df473ee90d9371d7992fa8bfe05dc62",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Split.2016.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Eastrail 177 Trilogy aKa Unbreakable Trilogy 2000 2019 Eng Rus Multi Subs 1080p [H264-mp4]\nEastrail 177 Trilogy aKa Unbreakable Trilogy 2000 2016 2019/02 Split - Thriller 2016 Eng Rus Multi Subs 1080p [H264-mp4].mp4\n👤 4 💾 8.94 GB ⚙️ TorrentGalaxy\nMulti Subs / 🇬🇧 / 🇷🇺",
+      "infoHash": "fbc9a599bc69c6ca345871473a131489cb3c7723",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "02 Split - Thriller 2016 Eng Rus Multi Subs 1080p [H264-mp4].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Split 2016 720p BluRay\n👤 29 💾 867.23 MB ⚙️ YTS",
+      "infoHash": "4e3b70474d7799070a6be6775681bc2a0475eb3c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Split.2016.720p.BluRay.x264-[YTS.AG].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Split.2016.FRENCH.720p.BluRay.x264-Cortex91\n👤 13 💾 4.86 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "965df130bb8bd52a41de667283a5244b44d42f03",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Split.2016.FRENCH.720p.BluRay.x264-Cortex91.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Split.2016.720p.BRRip.x264.AAC-ETRG\n👤 5 💾 876.79 MB ⚙️ ThePirateBay",
+      "infoHash": "32dd8e6ec4369029f40b5636d9d3caed7707ff4b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Split 2016 720p Blu-ray DD5 1 X264-playHD\n👤 4 💾 7.31 GB ⚙️ ThePirateBay",
+      "infoHash": "1a61beb3d9137e2f151c7ad9c79d5d660140dbd9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Split 2016 720p Blu-ray DD5 1 X264-playHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Split (2016) BluRay 720p [Hindi 5.1 English] Dual-Audio x264 ESub - KatmovieHD\n👤 4 💾 1 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇮🇳",
+      "infoHash": "431296b69aaf3a6613f3f2cb1e91d65fe52e9f00",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Split .2017.NF.WebDL.AVC.DD.5.1-ETRG\n👤 53 💾 1.13 GB ⚙️ ThePirateBay",
+      "infoHash": "451e6f7e1da1c21a83b30524994c0c4579968484",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Split .2017.NF.WebDL.AVC.DD.5.1-ETRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Split [2016 BDRip-AVC] Dub + Original + Sub (rus eng)\n👤 34 💾 2.19 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "f78d3ed077ae143dd4a35af15f263a392438b1ee",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Split.(2016).BDRip.x264.AFM.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:f78d3ed077ae143dd4a35af15f263a392438b1ee",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Split [2016 BDRip] Dub + Sub Rus Eng + Original Eng\n👤 13 💾 2.18 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺",
+      "infoHash": "4ed813d80ee8b0786ca5d8c3e7bc5bc084e1b3d3",
+      "fileIdx": 7,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Split.2016.DUAL.BDRip.XviD.AC3.-HQCLUB.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:4ed813d80ee8b0786ca5d8c3e7bc5bc084e1b3d3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Split [2016 BDRip-AVC] Dub + Sub (rus)\n👤 10 💾 1.47 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "f4acfa5b62c057c184802d5458be4b03216f1198",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Split.(2016).BDRip.x264.Rus.AFM.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:f4acfa5b62c057c184802d5458be4b03216f1198",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Расщепленный / Split [2016 BDRip] AVO (Андрей Гаврилов) + AVO (Юрий Сербин)\nСплит_(ужасы, триллер 2016 год)_Leonard_Lew.avi\n👤 8 💾 2.07 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "770192d0a09e8da6106d8b466471a72fd517a180",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Сплит_(ужасы, триллер 2016 год)_Leonard_Lew.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:770192d0a09e8da6106d8b466471a72fd517a180",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Split.2016.FRENCH.BDRip.XviD-EXTREME\n👤 7 💾 1.38 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "035078aa739aab457f5da01b3bbbf06678cca816",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "[ OxTorrent.com ] Split.2016.FRENCH.BDRip.XviD-EXTREME.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Split [2016 BDRip] Dub\n👤 6 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "ef96574b374ab5060d53f64e9f01018a515e4d62",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Split_2016_BDRip_iT_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:ef96574b374ab5060d53f64e9f01018a515e4d62",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Split (2016) BDRip от MegaPeer | A\n👤 5 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "e8ee6a498da83d7aef1512b835388c4fe0349330",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Split.2016.BDRip.1.46Gb.AVO.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:e8ee6a498da83d7aef1512b835388c4fe0349330",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Сплит / Split [2016 BDRip] Dub\n👤 4 💾 747.6 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "475d281953b1a2bcaa63ad1beb1a88696e598894",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Сплит_2016_BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:475d281953b1a2bcaa63ad1beb1a88696e598894",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Paczka filmow nr.12 na Telegram | 1900 - 2026 | Dubbing Lektor\nSplit.2016.Lektor.mp4\n👤 41 💾 967.03 MB ⚙️ EXT\nDubbed",
+      "infoHash": "29bc0f7d1519bd6659224df6ac044681385d9385",
+      "fileIdx": 77,
+      "behaviorHints": {
+        "filename": "Split.2016.Lektor.mp4"
+      }
+    }
+  ]
+}

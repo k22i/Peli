@@ -1,0 +1,857 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-amelie",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0211915.json",
+  "recordedAt": "2026-11-05T22:38:33.612Z",
+  "status": 200,
+  "ms": 284,
+  "streams": [
+    {
+      "name": "Torrentio\n4k",
+      "title": "Амели / Амели с Монмартра / Le Fabuleux Destin d'Amelie Poulain / Amelie of Montmartre [2001 4К AI UPSCALE HEVC 2160p SDR]\n👤 19 💾 57.09 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "c5ff42ac1ab1559aa0ded507aae430a49d775080",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc",
+        "filename": "Fabuleux destin d'Amelie Poulain, Le.2001.BD.AI_UPSCALE_3840x2160_alq-13_Final.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:c5ff42ac1ab1559aa0ded507aae430a49d775080",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.1080p.BRRip.AC3.x264-LESS\n👤 172 💾 2.68 GB ⚙️ ThePirateBay\n🇬🇧 / 🇫🇷",
+      "infoHash": "672c60552fd7e28057afebce09a8e0383127beda",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Amelie.2001.1080p.BRRip.AC3.x264-LESS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Амели / Амели с Монмартра / Le Fabuleux Destin d'Amelie Poulain / Amelie of Montmartre [2001 BDRip 1080p] Dub + AVO (Карцев) + Original Fra + Sub Rus Eng Fra\n👤 168 💾 15.56 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "57743da19658af9ce05e9e98aa8a211221b83e13",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Амели (Le Fabuleux Destin d'Amelie Poulain).2001.BDRip.1080p.-CtrlHD.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:57743da19658af9ce05e9e98aa8a211221b83e13",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amélie 2001 1080p BluRay\n👤 100 💾 1.94 GB ⚙️ YTS",
+      "infoHash": "02d09e0586dfa698874acad150dc3a9e509c907f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Amélie.2001.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie (2001) (1080p BluRay x265 HEVC 10bit AAC 5.1 French Tigole) [QxR]\nAmelie (2001) (1080p BluRay x265 10bit Tigole).mkv\n👤 81 💾 5.62 GB ⚙️ 1337x\n🇫🇷",
+      "infoHash": "47279f9438897777a843b5a4271dc044a81f3a4c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Amelie (2001) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.1080p.BluRay.x264-CtrlHD\n👤 57 💾 12.14 GB ⚙️ ThePirateBay",
+      "infoHash": "935b18c97976af2a971b4e55be0cfd555357b0e4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Le.Fabuleux.Destin.d'Amélie.Poulain.2001.1080p.BluRay.DTS.x264-CtrlHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.1080p.BluRay.REMUX.MULTi.FRE.LAT.ITA.JAP.RUS.TrueHD.H264-BTM\n👤 51 💾 28.03 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇯🇵 / 🇷🇺 / 🇮🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷",
+      "infoHash": "3d06017ff13951ea9187f11a2e404e6cc77c914e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|h264",
+        "filename": "Amelie.2001.1080p.BluRay.REMUX.MULTi[Ben The Men].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "[BluRay 1080p - REPACK - SUBS: FR EN ES] Le fabuleux destin d'Amélie Poulain (2001) - Jean-Pierre Jeunet Audrey Tautou Mathieu Kassovitz Rufus\n👤 45 💾 3.64 GB ⚙️ 1337x\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "f56bce7bb94429915891ffb82d7a4c5ae03f1a68",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Le.fabuleux.destin.dAmelie.Poulain.2001.VOF.BluRay.1080p.x265.ACC+AC3.SUBS.EN+FR+ES.[1337x].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.aka.Le.fabuleux.destin.dAmelie.Poulain.1080p.BluRay.…\n👤 19 💾 3.86 GB ⚙️ TorrentGalaxy\n🇫🇷",
+      "infoHash": "d03b7e06443b051b0638e692aa68d563f107ed08",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Amelie.2001.aka.Le.fabuleux.destin.dAmelie.Poulain.1080p.BluRay.10bit.HEVC.Opus.5.1.RFranklin.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.FRENCH.1080p.BluRay.x265-VXT\n👤 18 💾 1.89 GB ⚙️ RARBG\n🇫🇷",
+      "infoHash": "07acfb452f57907ccd578e4d16a001d657ee50b8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Amelie.2001.FRENCH.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.FRENCH.1080p.BluRay.AC35.1.x265-SMaSH\n👤 16 💾 88.67 MB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e97c8ebb43b2405ff44d805cef031698511dfb10",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Amelie.2001.FRENCH.1080p.BluRay.AC35.1.x265-SMaSH-trailer.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.FRENCH.1080p.BluRay.AC35.1.x265-SMaSH\n👤 16 💾 2.26 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e97c8ebb43b2405ff44d805cef031698511dfb10",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Amelie.2001.FRENCH.1080p.BluRay.AC35.1.x265-SMaSH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Амели / Амели с Монмартра / Le Fabuleux Destin d'Amelie Poulain / Amelie of Montmartre [2001 Blu-ray disc (custom) 1080p] Dub + AVO + Original Fra + Sub Rus Eng\n👤 16 💾 43.77 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "234acaa52e385d729b374895ddf1b5d146b62d84",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:234acaa52e385d729b374895ddf1b5d146b62d84",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Den fabelagtige Amelie fra Montmartre 2001 NORDiC 1080p WEB-DL DDP5 1 H 264-ADDICTION\n👤 15 💾 3.27 GB ⚙️ ThePirateBay\n🇫🇷 / 🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴",
+      "infoHash": "e5b96cb427fcbd39fb2d1db41ef2634903aa0042",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Den fabelagtige Amelie fra Montmartre 2001 NORDiC 1080p WEB-DL DDP5 1 H 264-ADDICTION.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amélie (2001) 1080p BluRay AV1 Opus AAC AC3 Multi6 [GRAV1TY]\nAmélie (2001) [GRAV1TY].mkv\n👤 14 💾 2.18 GB ⚙️ 1337x",
+      "infoHash": "1a0d00c9a8d53aa82123c3af7c4f87d054f62b4e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Amélie (2001) [GRAV1TY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie 2001 1080p BluRay x264-OFT\n👤 12 💾 5.46 GB ⚙️ ThePirateBay",
+      "infoHash": "22ae463fe24bd9c715103cdecb900e55e5fc107d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Amelie 2001 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie.2001.FRENCH.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 11 💾 32.83 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇫🇷",
+      "infoHash": "9f50b8f8790eee149427fdc69f6f7313debe6de6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Amelie.2001.FRENCH.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Амели / Амели с Монмартра / Le Fabuleux Destin d'Amelie Poulain / Amelie of Montmartre [2001 BDRemux 1080p]\n👤 10 💾 30.86 GB ⚙️ Rutracker\n🇯🇵 / 🇷🇺 / 🇫🇷",
+      "infoHash": "515ec4647b4870fd7b36cb9e50371c48568c20ee",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:515ec4647b4870fd7b36cb9e50371c48568c20ee",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 051-100 BluRay 1080p x265 10bit MNHD-FRDS\n096.天使爱美丽.Amelie.2001.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Amelie.2001.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 9 💾 8.7 GB ⚙️ EXT",
+      "infoHash": "e6d934fd7e96efcb009c3372198360262bca2b65",
+      "fileIdx": 318,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Amelie.2001.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Le fabuleux destin d'Amelie Poulain (2001) FR [1080p] BluRay x244-PopHD\n👤 9 💾 2.43 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "67346c3832c8227279a9bc1b8796dacd6d288db8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Le fabuleux destin d'Amelie Poulain (2001) FR [1080p] BluRay x244-PopHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie 2001 UK Bluray 1080p DTS-HD X264-Grym\nInside.the.Making.of.AmÃ©lie-Grym.mkv\n👤 9 💾 266.23 MB ⚙️ MagnetDL",
+      "infoHash": "0a7c4fdbad06d91c9100047555d30b26a7875c42",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Inside.the.Making.of.AmÃ©lie-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie 2001 UK Bluray 1080p DTS-HD X264-Grym\nAmelie.2001.UK.Bluray.1080p.DTS-HD.x264-Grym.mkv\n👤 9 💾 15.01 GB ⚙️ MagnetDL",
+      "infoHash": "0a7c4fdbad06d91c9100047555d30b26a7875c42",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Amelie.2001.UK.Bluray.1080p.DTS-HD.x264-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie 2001 UK Bluray 1080p DTS-HD X264-Grym\nThe.Look.of.Amelie-Grym.mkv\n👤 9 💾 267.04 MB ⚙️ MagnetDL",
+      "infoHash": "0a7c4fdbad06d91c9100047555d30b26a7875c42",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Look.of.Amelie-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie (2001) + EXTRAS (1080p BluRay x265 10bit MULTILANG MULTIS…\n👤 8 💾 10.84 GB ⚙️ TorrentGalaxy\nMulti Audio / Multi Subs / 🇬🇧",
+      "infoHash": "15997f258bd2b6b9d01192170cb6b186f28b071e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Amelie (2001) (1080p BluRay x265 10bit MULTILANG MULTISUB) - GEGE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amélie (2001) BDRip 1080p DTS multi HighCode-PHD\n👤 8 💾 6.01 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "8035284ad3764c5dc419365716dbb56c2a72e572",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amelie 2001 m1080p BluRay x264-GeneMige\n👤 6 💾 4.95 GB ⚙️ ThePirateBay",
+      "infoHash": "516ce759041b7da0aadafb0a67212d1717b48d49",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Amelie 2001 m1080p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Il favoloso mondo di Amélie (2001) 1080p H264 ITA DTS 5.1 FRA AC3 5.1 Sub Ita BluRay-lele753\n👤 5 💾 7.95 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇫🇷",
+      "infoHash": "4d0e1f6260628c567b836c8a0d4506902d3ee7de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "il.favoloso.mondo.di.amelie.2001.bdrip.1080p.x264.dts.ita.ac3.fre.subs.lele753.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Амели / Le Fabuleux Destin d'Amelie Poulain (2001) BDRip-HEVC 1080p от HEVC-CLUB | D\n👤 5 💾 7.03 GB ⚙️ Rutor\n🇷🇺 / 🇫🇷 / 🇺🇦",
+      "infoHash": "c2a1c15eeb3c83516c975449d955fd324b141ebc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc",
+        "filename": "Le Fabuleux destin d'Amelie Poulain (2001) BDRip 1080p H.265 [RUS_4xUKR_FRE] [HEVC-CLUB].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:c2a1c15eeb3c83516c975449d955fd324b141ebc",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Le Fabuleux Destin D Amelie Poulain 2001 1080p BluRay X265 HEVC 10bit AAC 5.1-LordVako\n👤 5 💾 1.44 GB ⚙️ MagnetDL",
+      "infoHash": "7d3acdc22d6cf5e4e026b4724969ff1aea3e6455",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Le Fabuleux Destin d Amelie Poulain 2001 1080p BluRay x265 HEVC 10bit AAC 5.1-LordVako.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Le Fabuleux Destin DAmelie Poulain 2001 1080p BluRay DTS X264-CtrlHD\n👤 4 💾 11.01 GB ⚙️ ThePirateBay",
+      "infoHash": "1032791abe530abb9c2b87d9251a1ced3112506c",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Le.Fabuleux.Destin.dAmelie.Poulain.2001.1080p.BluRay.DTS.x264-CtrlHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Амели / Le fabuleux destin d'Amélie Poulain (2001) BDRip 1080p\n👤 4 💾 7.76 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "cf567d1d7686cb90698a4d69d007e4817b63f670",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Amelie.2001.BDRip.1080p.Rus.Fre.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:cf567d1d7686cb90698a4d69d007e4817b63f670",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Amélie 2001 720p BluRay\n👤 34 💾 1 GB ⚙️ YTS",
+      "infoHash": "9536d2c3772d6349af8fef444663b04af916dd77",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Amélie.2001.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Amelie (2001) 720p BRrip_sujaidr\n👤 18 💾 716.82 MB ⚙️ ThePirateBay",
+      "infoHash": "68e9c21729fadbd19b8933951fcc7ed2ab3e2b31",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Amelie-2001--ReEncode-720p-FR.w.EN.subs-x265-HEVC.mp4\n👤 13 💾 1007 MB ⚙️ ThePirateBay\n🇬🇧 / 🇫🇷",
+      "infoHash": "0c45515e726f4e7cfca824976dd2ceb77a611b9c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Амели / Амели с Монмартра / Le Fabuleux Destin d'Amelie Poulain / Amelie of Montmartre [2001 BDRip 720p] Dub + AVO (Карцев) + Original Fra + Sub Rus Eng Fra\n👤 11 💾 8.19 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "a36cd07e0feff4d2375e99e672a1cabfb8ec2e3d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Амели (Le Fabuleux Destin d'Amelie Poulain).2001.BDRip.720p.-CtrlHD.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:a36cd07e0feff4d2375e99e672a1cabfb8ec2e3d",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Amelie AKA Le Fabuleux Destin d'Amélie Poulain (2001) (EN subs EN & FR commentaries) 720p.10bit.BluRay.x265-budgetbits\n👤 8 💾 663.63 MB ⚙️ 1337x\n🇬🇧 / 🇫🇷",
+      "infoHash": "aab8d1feda71553aa78969fc7077e273cddaff42",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "Amelie AKA Le Fabuleux Destin d'Amélie Poulain (2001) (EN subs, EN & FR commentaries) 720p.10bit.BluRay.x265-budgetbits.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Il Favoloso Mondo Di Amelie: HDmux 720p: X264: Fre Ita DTS\n👤 5 💾 8.72 GB ⚙️ MagnetDL\n🇮🇹 / 🇫🇷",
+      "infoHash": "d0cd35d990d9bfcc4c07bed270c5b2ad1b7d2dfd",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Amelie [2001] 720p BRRip H264 AC3 - CODY\n👤 4 💾 1.8 GB ⚙️ ThePirateBay",
+      "infoHash": "1e80439694e9e6fff1a74a50bdf4b4a726a2403b",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|h264",
+        "filename": "Amélie [2001] 720p BRRip H264 AC3 - CODY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Amelie [Amélie Poulain].2001.BRRip.x264.AAC[5.1]-VLiS\n👤 252 💾 1.36 GB ⚙️ ThePirateBay",
+      "infoHash": "d1c5bd9a2eec5fe6eba19e7f663af3e8d932ab8e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|x264",
+        "filename": "Amelie [Amélie Poulain].2001.BRRip.x264.AAC[5.1]-VLiS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Амели / Le Fabuleux destin d'Amélie Poulain [2001 BDRip] Dub\n👤 91 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "41f1f6dee668c75e7b470864ac42854bc98dcf1a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Ameli.2001.BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:41f1f6dee668c75e7b470864ac42854bc98dcf1a",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Амели / Le Fabuleux Destin d'Amelie Poulain / Amelie from Montmartre [2001 BDRip-AVC] Dub + AVO (Карцев) + Original Fra + Comm (Rus Fra) + Sub (Rus Eng Fra)\n👤 39 💾 4.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "09b7af6bd6b7813f9dfc325fc573b85cc01bf8bc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Amelie from Montmartre (2001) BDRip.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:09b7af6bd6b7813f9dfc325fc573b85cc01bf8bc",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Amelie 2001 English subs BluRay Rip\n👤 22 💾 696.01 MB ⚙️ ThePirateBay",
+      "infoHash": "44f9c0e07a406d5aa9c9d80513be23f23d70c66b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Амели / Le Fabuleux destin d'Amélie Poulain [2001 BDRip-AVC] Dub + AVO (Пётр Карцев) + Jpn + Original Fra + Comm (Rus Fra) + Sub (Rus Eng Fra)\n👤 11 💾 2.12 GB ⚙️ Rutracker\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇫🇷",
+      "infoHash": "347485835d52eb64f690a3a5e98dade31570d04d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Le.Fabuleux.destin.d'Amelie.Poulain.(2001).AVC.AAC.[tRuAVC].mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:347485835d52eb64f690a3a5e98dade31570d04d",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Амели / Le Fabuleux Destin d'Amelie Poulain / Amelie from Montmartre [2001 BDRip-AVC] Dub + AVO + Original Fra + Comm (Rus Fra) + Sub (Rus Eng Fra)\n👤 8 💾 3.28 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "22c1ccf2ed941dbb11a370e6072c76801468ff63",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Amelie from Montmartre (2001) BDRip.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:22c1ccf2ed941dbb11a370e6072c76801468ff63",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Il Favoloso Mondo di Amélie (2001) Ita Ac3 Fra Aac BrRip\n👤 6 💾 2.25 GB ⚙️ ThePirateBay\n🇮🇹 / 🇫🇷",
+      "infoHash": "8e4c49740e261f2c80e87340b39736353fb0fec8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Амели / Le Fabuleux destin d'Amélie Poulain [2001 BDRip-AVC] Dub\n👤 5 💾 742.07 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "bdc8f3dcac45a5023d49a76516e592c6bed544db",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Амели by vovaniez 742mb.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:bdc8f3dcac45a5023d49a76516e592c6bed544db",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Амели / Le Fabuleux destin d'Amélie Poulain [2001 HDRip] Dub\n👤 5 💾 744.81 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "d004b54217b9fc3a6baf265797793ecd4492def1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Amelie.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:d004b54217b9fc3a6baf265797793ecd4492def1",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Amelie [dvdrip][spanish]\n👤 4 💾 699.91 MB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "a1636ed14782582f425b2a6e40468ca7a507c23f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Amelie [dvdrip][spanish][www.lokotorrents.com].avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Le Fabuleux Destin d'Amelie Poulain - Amelie\n👤 7 💾 1.53 GB ⚙️ ThePirateBay",
+      "infoHash": "1460057b3164cb0c3c3d6783756026b28b1c65f7"
+    },
+    {
+      "name": "Torrentio",
+      "title": "Destinos - 52 Instructional Spanish Videos\nDestinos_01.wmv\n👤 6 💾 107.33 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "60062c2eca70d174d46039b4b71c04079f5769ba",
+      "fileIdx": 30,
+      "behaviorHints": {
+        "filename": "Destinos_01.wmv"
+      }
+    }
+  ]
+}

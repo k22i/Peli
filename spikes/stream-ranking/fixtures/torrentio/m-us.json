@@ -1,0 +1,868 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-us",
+  "request": "https://torrentio.strem.fun/stream/movie/tt6857112.json",
+  "recordedAt": "2026-11-05T22:41:52.984Z",
+  "status": 200,
+  "ms": 75,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Us 2019.MULTi.UHD.BluRay.2160p.HEVC.HDR.Atmos.7.1-DDR\n👤 21 💾 16.89 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "cf86a83d47a3aff4d55cc733e5e9ff25a175bc57",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Us 2019.MULTi.UHD.BluRay.2160p.HEVC.HDR.Atmos.7.1-DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Us.2019.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-IAMABLE\n👤 19 💾 12.58 GB ⚙️ RARBG",
+      "infoHash": "defef6973b18288a66f0a69231bb1c3c4071fefa",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Us.2019.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Us 2019 UHD BluRay 2160p HDR10 HEVC TrueHD Atmos 7.1 x265-E\n👤 14 💾 19.37 GB ⚙️ 1337x",
+      "infoHash": "5126468139fe26e841a252b6e57ade1afb1d3a2c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Us 2019 4K.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Us.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 12 💾 63.97 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "1bb2accaefcd69f4f30c25954b4f7c748ab97cd1",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Us.2019.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Мы / Us [2019 UHD BDRemux 2160p HDR10 Dolby Vision] Dub + MVO + Ukr + Original (Eng) + Sub (Rus Eng)\n👤 9 💾 66.21 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "d3d3dfe03db11fa4d8ed0b6af694200fcf3f54bf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Мы.2019.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:d3d3dfe03db11fa4d8ed0b6af694200fcf3f54bf",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Мы / Us [2019 WEB-DL 2160p HDR10 Dolby Vision] [Hybrid] Dub + MVO + Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 7 💾 22.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "9fd49b79c6eaf08b74eff44d621bd6e67e14032b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR",
+        "filename": "Мы.2019.WEB-DL.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:9fd49b79c6eaf08b74eff44d621bd6e67e14032b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Us (2019) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\nUs (2019) (2160p BluRay x265 10bit HDR Tigole).mkv\n👤 6 💾 7.56 GB ⚙️ 1337x",
+      "infoHash": "41bd0a9c25bd69aaded493cf89e2929296d01f18",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Us (2019) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Us 2019 UHD BluRay 2160p TrueHD Atmos 7.1 DV HEVC REMUX-FraMeSToR\n👤 4 💾 65.92 GB ⚙️ 1337x",
+      "infoHash": "b205bc5b7b09173b964693d9fb84acc7d4e08a32",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Us.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Мы / Us (2019) UHD BDRemux 2160p от селезень | 4K | HDR | Dolby Vision Profile 8 | Лицензия\n👤 2 💾 57.16 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "add979069e1c252c3dc224832ac99ec98dd24283",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "Us.2019.Lic.BDREMUX.2160p.HDR.DVP8.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:add979069e1c252c3dc224832ac99ec98dd24283",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Us.2019.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 9 💾 70.56 GB ⚙️ RARBG",
+      "infoHash": "7fcbf7100980feaa2cedddf4485649a9a21d41fa",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Us 2019 2160p BluRay\n👤 4 💾 5.22 GB ⚙️ YTS",
+      "infoHash": "d211c439a4ee4cc794502ea55a98c29d80e98d16",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Us.2019.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Us.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR [\n👤 4 💾 56.65 GB ⚙️ ThePirateBay",
+      "infoHash": "45cf2dbd1a113e1caa77c9a9c27ddfdd2e3276ae",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Us.2019.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Мы / Us [2019 WEB-DL 2160p SDR] Dub + MVO + Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 3 💾 22.58 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "05b51da70f8908913c842ec53053cde38fd797ff",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL",
+        "filename": "Мы.2019.WEB-DL.2160p.SDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:05b51da70f8908913c842ec53053cde38fd797ff",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Мы / Us [2019 UHD Blu-ray disc 2160p] [EUR] Dub + Sub Rus Eng + Original Eng\n👤 3 💾 87.27 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹 / 🇪🇸",
+      "infoHash": "492452192b5507afbbbf3df96fcb4a455ff9ef5c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:492452192b5507afbbbf3df96fcb4a455ff9ef5c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Us (2019) (BDRip 1080p HEVC HDR10 EAC3 ATMOS) [OEP][22D2694B].mkv\n👤 3 💾 6.12 GB ⚙️ TorrentGalaxy",
+      "infoHash": "5517614c162c7507404cda562f507283e2c5e8bb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|10bit|HDR",
+        "filename": "Us (2019) (BDRip 1080p HEVC HDR10 EAC3 ATMOS) [OEP][22D2694B].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Us 2019 1080p UHD BluRay DD 5 1 Atmos DV HDR x265-SQS\n👤 2 💾 5.45 GB ⚙️ ThePirateBay",
+      "infoHash": "4d9673153df14a431173e1dd61e9388f6301f422",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|DV|HDR",
+        "filename": "Us 2019 1080p UHD BluRay DD  5 1 Atmos DV HDR x265-SQS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us-(2019)-[WEBRip]-(1080p)\n👤 120 💾 1.87 GB ⚙️ ThePirateBay",
+      "infoHash": "9f1bad7be934a423ea53832aa498903f0ad5ef20",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Us.2019.1080p.WEBRip.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Equilibrium (2002) Extras (1080p BluRay x265 HEVC 10bit TrueHD 5.1 SAMPA) [QxR]\nFeaturettes/Stills Gallery.mkv\n👤 111 💾 13.79 MB ⚙️ 1337x",
+      "infoHash": "84320604f449f20bc465d3c3d9a74c90918bcfa0",
+      "fileIdx": 59,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Stills Gallery.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p BluRay\n👤 54 💾 1.87 GB ⚙️ YTS",
+      "infoHash": "baffbac8f71f19caa938d521046cec37beb41fe0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Us.2019.1080p.BluRay.x264-[YTS.LT].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us (2019) PROPER 1080p BluRay AV1 Opus 7.1 [Retr0]\n👤 45 💾 1.91 GB ⚙️ TorrentGalaxy",
+      "infoHash": "88a9b33e385507d4ee9d50ef4c2fb3ff6973ef3f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Us.2019.1080p.BluRay.AV1.Opus.7.1-Retr0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Мы / Us [2019 BDRip 1080p] Dub (BD EUR) + MVO (HDRezka Studio) + VO (Яроцкий) + Dub Ukr + Sub (Rus Eng Fra Deu Spa) + Original Eng\n👤 22 💾 15.02 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇺🇦",
+      "infoHash": "fdc8e51a0f543641eb4c98f5214393fa0460a5ac",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Us.2019.BDRip.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:fdc8e51a0f543641eb4c98f5214393fa0460a5ac",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p AMZN WEB-DL DDP5 1 x 264-Saon\n👤 21 💾 4.9 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇳🇱 / 🇮🇳 / 🇵🇱 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇮🇩 / 🇹🇭",
+      "infoHash": "13bd0ba5a9d3c4d000e2cf5546fbf1b72542d8c9",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Us 2019 1080p AMZN WEB-DL DDP5 1 x 264-Saon.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p BluRay x265-YAWNTiC\n👤 17 💾 7.09 GB ⚙️ ThePirateBay",
+      "infoHash": "392c690a7c4227688d662f3885bae05d32aef9e3",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Us 2019 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.1080p.WEB-DL.DD5.1.H264-FGT\n👤 13 💾 4.02 GB ⚙️ RARBG",
+      "infoHash": "d382e65e73b797b84c896f32500ee9f90b5120df",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole) [QxR]\nUs (2019) (1080p BluRay x265 10bit Tigole).mkv\n👤 10 💾 2.49 GB ⚙️ 1337x",
+      "infoHash": "0f6f7e66db6013c514fb1234c86572d1a838aaac",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Us (2019) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.1080p.WEB-DL.H264.AC3-EVO[EtHD]\n👤 10 💾 4.03 GB ⚙️ ThePirateBay",
+      "infoHash": "fdba20a4b31620c09e6436ec359fd8a4cec5a52b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p PMTP WEB-DL DDP5 1 H 264-BLOOM\n👤 9 💾 3.48 GB ⚙️ ThePirateBay",
+      "infoHash": "adaf101ac1ddb7b2e4faf86022dcdde35f81734e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Us 2019 1080p PMTP WEB-DL DDP5 1 H 264-BLOOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p WEB-DL H265 SDR DDP Atmos 5 1 English HONE\n👤 7 💾 6.95 GB ⚙️ ThePirateBay",
+      "infoHash": "445ea7ce5f1d31fb861a5b71c0957c2647d52187",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Us 2019 1080p WEB-DL H265 SDR DDP Atmos 5 1 English HONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 REMUX 1080p Blu-ray AVC Atmos DTS-HD MA 7 1-LEGi0N [RiCK\n👤 7 💾 30.07 GB ⚙️ ThePirateBay",
+      "infoHash": "87b7c825e64cbc40825800e77e52dc5d72dbf9dd",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Us.2019.REMUX.1080p.Blu-ray.AVC.Atmos.DTS-HD.MA.7.1-LEGi0N.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.1080p.BluRay.x265-RARBG\n👤 4 💾 1.81 GB ⚙️ RARBG",
+      "infoHash": "462d51cb3698275ed927f82ca72d263a8051c5ee",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Us.2019.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.1080p-dual-lat-cinecalidad.is.mp4\n👤 4 💾 1.87 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "a79c752b5b4aba8bc9b776d8c4e4ee1b168024fc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Us.2019.1080p-dual-lat-cinecalidad.is.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p BluRay x264-OFT\n👤 3 💾 5.05 GB ⚙️ ThePirateBay",
+      "infoHash": "fcd6198fc459c57008f015103b3d71409c982775",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Us 2019 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.1080p.BluRay.x264.DTS-HD.MA.7.1-FGT\n👤 3 💾 10.62 GB ⚙️ RARBG",
+      "infoHash": "6cb3a87ceabdaae6ad151ae8f2158057bcbfbf81",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us 2019 1080p.Ai Enhanced.WEB-DL 60FPS H265 SDR DDP Atmos 5 1 …\n👤 2 💾 32.21 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸",
+      "infoHash": "4121dc4a29958eac32ce671a523f225635854547",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Us 2019   1080p.Ai Enhanced.WEB-DL 60FPS H265 SDR DDP Atmos 5 1 EngSubs Marjenbo.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.MULTi.1080p.BluRay.x264.AC3-EXTREME\n👤 2 💾 8.31 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "fed3b6e0371f218cf7d1d29b628f3a59141100e5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ OxTorrent.com ] Us.2019.MULTi.1080p.BluRay.x264.AC3-EXTREME.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Nosotros [1080p][Castellano][wWw.EliteTorrent.IO]\n👤 2 💾 4.9 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "93099abf743c5321ade5e5ae703a28bb6bd7f67d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "N0s0tros.m1080p.Castellano.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Us.2019.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 2 💾 32.17 GB ⚙️ RARBG",
+      "infoHash": "8ae9fba8b59f3973c78047966b56838057a48e0a",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Us..2019..[WEBRip].[720p]\n👤 26 💾 996.14 MB ⚙️ ThePirateBay",
+      "infoHash": "70b2976df8afbc7eba95cdb979a8498cdac250bc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Us.2019.720p.WEBRip.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Это не мы / To nie my [2020 WEB-DL 720p]\n👤 3 💾 304.58 MB ⚙️ Rutracker\n🇷🇺 / 🇵🇱",
+      "infoHash": "b3be0934c10a086e737ac563f65d74c3a9edcc9a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL",
+        "filename": "It's.Not.Us.To.Nie.My.2020.J.Skolimowski.720p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:b3be0934c10a086e737ac563f65d74c3a9edcc9a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Us - Horror 2019 Eng Ita Rus Multi-Subs 720p [H264-mp4]\n👤 2 💾 1.72 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "fb1905dd0ada1201a5b0d243e6000d8f955c944b",
+      "fileIdx": 13,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "Us - Horror 2019 Eng Ita Rus Multi-Subs 720p [H264-mp4].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n480p",
+      "title": "Giant Robo (BD 1080p x265 HEVC FLAC 2.0)(Dual Audio)[sxales]\nUS Volume 3 CM (BD 480p x265 HEVC AC3 2.0)[sxales] .mkv\n👤 14 💾 11.91 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+      "infoHash": "49230cfa8adda3cd8aae47f4c398479698cae5b8",
+      "fileIdx": 49,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|49230cfa8adda3cd8aae47f4c398479698cae5b8",
+        "filename": "US Volume 3 CM (BD 480p x265 HEVC AC3 2.0)[sxales] .mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://nyaa.tracker.wf:7777/announce",
+        "tracker:http://anidex.moe:6969/announce",
+        "tracker:http://tracker.anirena.com:80/announce",
+        "tracker:udp://tracker.uw0.xyz:6969/announce",
+        "tracker:http://share.camoe.cn:8080/announce",
+        "tracker:http://t.nyaatracker.com:80/announce",
+        "dht:49230cfa8adda3cd8aae47f4c398479698cae5b8"
+      ]
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Us.2019.TRUEFRENCH.TS.XViD-HARDLiNE\n👤 4 💾 1.17 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "b2cbb81277959bf499f9e4fde952831e6eace395",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|xvid",
+        "filename": "[ www.Torrent9.uno ] Us.2019.TRUEFRENCH.TS.XViD-HARDLiNE.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Мы / Us (2019) HDRip от Scarabey | Лицензия\n👤 4 💾 1.45 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "9454c46d7974dd00f8244da5693ba0c3a46c5f42",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Us.2019_HDRip_r5_[scarabey.org].avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:9454c46d7974dd00f8244da5693ba0c3a46c5f42",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Мы / Us [2019 WEB-DLRip-AVC] Dub (iTunes)\n👤 4 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "96137c9eb19cdd58a68d492ac1b8dc0275fd56f0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "My_2019_WEB-DLRip-AVC_by_Dalemake.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:96137c9eb19cdd58a68d492ac1b8dc0275fd56f0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Мы / Us (2019) BDRip от Twister & ExKinoRay | Лицензия\n👤 3 💾 2.18 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "3593fa2a920a8007edb3f9688f5694b8a9283f0f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Mu.2019.D.BDRip.2100Mb.ExKinoRay_by_Twi7ter.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:3593fa2a920a8007edb3f9688f5694b8a9283f0f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Nosotros [BluRay Rip][AC3 5.1 Castellano][2019].avi\n👤 3 💾 1.96 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "714a230f8d0ef60139b0f9c44418b3a40316e764",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "Nosotros [BluRay Rip][AC3 5.1 Castellano][2019].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Us.2019.HC.HDRip.XviD.AC3-EVO\n👤 3 💾 1.3 GB ⚙️ ThePirateBay",
+      "infoHash": "320bfca5b4c5dbfa5ebce11b8c22c4b7f5bb6d89",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|xvid"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Мы / Us (2019) BDRip-AVC от OlLanDGroup | Лицензия\n👤 2 💾 2.19 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "353d55cbaa11ec3cdfc1331d583de7cd1230aeb6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Us.2019.BDRip(AVC).OllanDGroup.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:353d55cbaa11ec3cdfc1331d583de7cd1230aeb6",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Мы / Us [2019 BDRip] Dub (iTunes) + Sub (Rus Eng) + Original Eng\n👤 2 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "202076d6000e0cde68f6dd8bf80debaf661ed5f7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Мы_2019_BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:202076d6000e0cde68f6dd8bf80debaf661ed5f7",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Christmas on Saturday Night Live - 216 SNL Shorts 2023-12-08 15GB jZQ\nAmerican Households Cold Open.mp4\n👤 4 💾 82.86 MB ⚙️ TorrentGalaxy",
+      "infoHash": "eb0cf1e065a6c1a779e548c3cd1bb3c582ccc572",
+      "fileIdx": 10,
+      "behaviorHints": {
+        "filename": "American Households Cold Open.mp4"
+      }
+    }
+  ]
+}

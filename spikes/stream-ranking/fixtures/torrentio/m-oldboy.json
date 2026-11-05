@@ -1,0 +1,759 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-oldboy",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0364569.json",
+  "recordedAt": "2026-11-05T22:38:49.825Z",
+  "status": 200,
+  "ms": 63,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oldboy.2003.2160p.UHD.BluRay.X265.10bit.HDR.Old-Boy.DTS-HD.MA.5.\n👤 62 💾 30.71 GB ⚙️ ThePirateBay",
+      "infoHash": "ebdd497697c32af83536c391868a9bad6369c4ac",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Oldboy.2003.2160p.UHD.BluRay.x265-NODLABS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Олдбой / Oldeuboi / Oldboy [2003 UHD BDRemux 2160p HDR10 Dolby Vision] Dub + MVO + DVO + VO + 2x AVO + Eng + Original (Kor) + Sub (Rus Eng)\n👤 57 💾 84.4 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "7e1412de0e72e4c17888a85dbb2b6e32423eb86a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Олдбой.2003.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:7e1412de0e72e4c17888a85dbb2b6e32423eb86a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oldboy (2003) (2160p BluRay x265 HEVC 10bit HDR EAC3 7.1 Korean English Bandi) [QxR]\n👤 48 💾 17.67 GB ⚙️ 1337x\n🇬🇧 / 🇰🇷",
+      "infoHash": "cd1e272625396d36b847be4b76ceb001a1b2b2a3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Oldboy (2003) (2160p BluRay x265 10bit HDR Bandi).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oldboy (2003) AC3 5.1 ITA.KOR 2160p H265 HDR10 sub ita.eng Sp33dy94 MIRCrew\n👤 43 💾 3.73 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "7ef483b26b773da97557e586be94fdb2209e6309",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|HDR",
+        "filename": "Oldboy (2003) AC3 5.1 ITA.KOR 2160p H265 HDR10 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oldboy.2003.4K.HDR.DV.2160p.BDRemux Ita Eng Kor x265-NAHOM\n👤 23 💾 72.8 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "4a04c26a1d657e2cb09073082c6b3b643c1c30dd",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Oldboy.2003.4K.HDR.DV.2160p.BDRemux Ita Eng Kor x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Old Boy - 올드보이 (2003) 2160p H265 BluRay Rip 10 bit DV HDR10 ita eng kor AC3 5.1 sub ita eng Licdom\n👤 20 💾 3.65 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "d02ad2cd49492faaf35386fe2a36fe68fe59c69c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR",
+        "filename": "Oldboy (2003) 2160p H265 10 bit DV HDR10+ ita eng kor AC3 5.1 sub ita eng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Oldboy.2003.4K.HDR.2160p.BDRip Ita Eng Kor x265-NAHOM\n👤 9 💾 29.24 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "cf32641b05955d15ddb966eb17c1e3168ddb0714",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Oldboy.2003.4K.HDR.2160p.BDRip Ita Eng Kor x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Oldboy 2003 Korean ARROW UHD BluRay 2160p HDR10 DV HEVC DTS-HD MA 5.1 x265-E\n👤 7 💾 23.65 GB ⚙️ 1337x\n🇰🇷",
+      "infoHash": "aa04520fef88228708aadacddf88e9bb5786fdf0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Oldboy 2003 KOREAN ARROW.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Old.Boy.2003.MULTI.VFI.2160p.Custom.UHD.BluRay.REMUX.DV.HDR.DTS.HD.MA.7.1.HEVC-Psaro\n👤 4 💾 77.31 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "1250f061efc592fe6645106531a232ba3ebaf7df",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV|HDR",
+        "filename": "Old.Boy.2003.REMASTERED.MULTi.VFi.4K.UHD.BluRay.REMUX.CUSTOM.DoVi.HDR.HEVC.DTS-HD.MA.7.1-Psaro.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Old.Boy.2003.KOREAN.2160p.BluRay.3500MB.DDP5.1.x264-GalaxyRG\n👤 41 💾 3.65 GB ⚙️ ThePirateBay\n🇰🇷",
+      "infoHash": "e39115802589d4ec77072b10e5f232cddfe817ed",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x264",
+        "filename": "Old.Boy.2003.KOREAN.2160p.BluRay.3500MB.DDP5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Oldboy 2003 2160p BluRay\n👤 39 💾 5.41 GB ⚙️ YTS\n🇰🇷",
+      "infoHash": "ce46135b6920f76374b6786450bad8007fb81c93",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Oldboy.2003.KOREAN.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Oldboy.2003.KOREAN.ARROW.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT\n👤 9 💾 77.88 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇰🇷",
+      "infoHash": "0fdf34d3e838fda00050660d0bc3a8a131d3b0e9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Oldboy.2003.KOREAN.ARROW.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Oldboy (2003) (1080p BluRay x265 HEVC 10bit HDR EAC3 7.1 Korean English Bandi) [QxR]\n👤 104 💾 7.76 GB ⚙️ 1337x\n🇬🇧 / 🇰🇷",
+      "infoHash": "d8b6473b855e53126aa4aafd527d5ac9f2b5dcb2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit|HDR",
+        "filename": "Oldboy (2003) (1080p BluRay x265 10bit HDR Bandi).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Oldboy 2003 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 8 💾 7.68 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷 / 🇸🇦",
+      "infoHash": "e5e3114a285f4f6fedf3bad87b506c92bfa3999b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Oldboy 2003 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Oldboy (2003) (1080p DS4K BluRay x265 10-bit HDR AAC 5.1) [WeSLeY]\n👤 5 💾 8.92 GB ⚙️ 1337x",
+      "infoHash": "219ec8b8d225ea45243b1aea7f15e60c226bb45d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Oldboy (2003) (1080p DS4K BluRay x265 10-bit HDR AAC 5.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Oldboy 2003 UHD BluRay 1080p DUAL DDP 5 1 DoVi HDR10 x265-SM737\n👤 5 💾 8.21 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "d9fe950285283a600860595ad4eba0dc81b2f8f0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Oldboy 2003 UHD BluRay 1080p DUAL DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy.2003.REMASTERED.1080p.BluRay.H264-VXT [Oldeuboi/ Old Boy]\n👤 541 💾 2.29 GB ⚙️ ThePirateBay\n🇰🇷",
+      "infoHash": "ecc9806c95e65fbc32ae3b2fa1976876a3b68c44",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Oldboy.2003.REMASTERED.KOREAN.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 1080p BluRay\n👤 158 💾 1.91 GB ⚙️ YTS",
+      "infoHash": "d814996f2821a1ccfd958e230c0356cce9419637",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oldboy.2003.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Олдбой / Oldeuboi / Oldboy [2003 BDRip 1080p] [Alliance Films] Dub + DVO + MVO + 2x AVO + VO + Eng + Original Kor + Sub Rus Eng\n👤 96 💾 21.31 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "abc0a2c1d4f9f43a8873f02574dffb5f05e6e5a5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Oldeuboi.2003.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:abc0a2c1d4f9f43a8873f02574dffb5f05e6e5a5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 REMASTERED 1080p Korean BluRay HEVC x265 5.1 BONE\n👤 95 💾 2.16 GB ⚙️ TorrentGalaxy\n🇰🇷",
+      "infoHash": "157fd37b29a211c59260b9367ef94b36454dbf84",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Oldboy 2003 REMASTERED 1080p Korean BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Old Boy - 올드보이 (2003) 1080p H265 BluRay Rip ita eng kor AC3 5.1 sub ita eng Licdom\n👤 41 💾 2.6 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "d1193db0d4b6394f17e7be0ece116a6e08d3aa1d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Oldboy (2003) 1080p H265 ita eng kor AC3 5.1 sub ita eng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy (2003) REMASTERED HYBRiD 1080p BluRay AV1 Opus Multi2 [Retr0]\n👤 30 💾 2.88 GB ⚙️ TorrentGalaxy\n🇰🇷",
+      "infoHash": "b641c8fb00afa84aeeee0ad918ab6b58f02cf4f8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Oldboy.2003.REMASTERED.HYBRiD.1080p.BluRay.AV1.Opus.Multi2-Retr0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "OldBoy 2003 1080p AMZN WEB-DL DUAL DDP5 1 H 264-NiSHKRiY0\n👤 21 💾 8.48 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "9d148baa8fc5c1ee846f182a0403c7959bf0b226",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "OldBoy 2003 1080p AMZN WEB-DL DUAL DDP5 1 H 264-NiSHKRiY0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Old.Boy.2003.VFi.1080p.BluRay.mHD.x264.AC3-ROMKENT\n👤 13 💾 3.9 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "72e0fee62bcf53e27b92f26657f6830dd37dce31",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ Torrent911.cc ] Old.Boy.2003.VFi.1080p.BluRay.mHD.x264.AC3-ROMKENT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy (Oldeuboi) (2003) 1080p BrRip x264 Ac3 [TuGAZx]\n👤 13 💾 3.26 GB ⚙️ ThePirateBay",
+      "infoHash": "3025babe5d1d2953eee7f08bec4b3c5861a278b2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Oldboy (Oldeuboi) (2003) 1080p BrRip 5.1 x264 Ac3 [TuGAZx].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 NORDiC 1080p AMZN WEB-DL H 265-NORViNE\n👤 11 💾 6.47 GB ⚙️ ThePirateBay\n🇰🇷 / 🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴",
+      "infoHash": "34c1279154fb93882f26f1579cfcbb468b32cb72",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Oldboy 2003 NORDiC 1080p AMZN WEB-DL H 265-NORViNE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 NORDiC 1080p AMZN WEB-DL H 264-NORViNE\n👤 11 💾 8.39 GB ⚙️ ThePirateBay\n🇰🇷 / 🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴",
+      "infoHash": "d0f569bcd280594733ae8505d6b86109228402c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Oldboy 2003 NORDiC 1080p AMZN WEB-DL H 264-NORViNE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy (2003) RM4K Extras (1080p BluRay x265 HEVC 10bit AC3 5.1 English SAMPA) [QxR]\nOldboy (2003) (1080p BluRay x265 SAMPA).mkv\n👤 11 💾 7.23 GB ⚙️ 1337x",
+      "infoHash": "57363ae85b1fb28d12f8457e91de128817ae26ba",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Oldboy (2003) (1080p BluRay x265 SAMPA).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 051-100 BluRay 1080p x265 10bit MNHD-FRDS\n067.老男孩.Oldboy.2003.BluRay.1080p.x265.10bit.MNHD-FRDS/Oldboy.2003.BluRay.1080p.x265.10bit.MNHD-FRDS.mkv\n👤 9 💾 8.41 GB ⚙️ EXT",
+      "infoHash": "e6d934fd7e96efcb009c3372198360262bca2b65",
+      "fileIdx": 115,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Oldboy.2003.BluRay.1080p.x265.10bit.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy.2003.KOR.RM.LE.Bluray.1080p.DTS-HD-7.1.x264-Grym.mkv\n👤 8 💾 17.29 GB ⚙️ MagnetDL\n🇰🇷",
+      "infoHash": "2ab5bb1a0b7866571db35a0541a999c59a238ed3",
+      "fileIdx": 33,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oldboy.2003.KOR.RM.LE.Bluray.1080p.DTS-HD-7.1.x264-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy (2003) ENG ITA.KOR + commenti 1080p av1 [gege]\n👤 7 💾 3.26 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "68344be36329997742e376efe72dbf48fdaaebfe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Oldboy (2003) ENG ITA.KOR +comm 1080p av1 [gege].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 1080p BluRay x264-OFT\n👤 6 💾 5.2 GB ⚙️ ThePirateBay",
+      "infoHash": "cc754ef40bb41c77afaa4d7512c5efb7653dd7ad",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Oldboy 2003 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy.2003.REMASTERED.KOREAN.1080p.BluRay.x265-VXT\n👤 6 💾 1.87 GB ⚙️ RARBG\n🇰🇷",
+      "infoHash": "7d0a224b08313798383a8bde972f0cbed89ccf64",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Oldboy.2003.REMASTERED.KOREAN.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Олдбой / Oldboy / Oldeuboi (2003) BDRemux 1080р | UK Transfer | Remastered | D P P2 A L1\n👤 6 💾 36.98 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "29ec4ba0a039a156f6d8821b1addc39839fc2bac",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Олдбой.2003.Blu-Ray.Remux.(1080p).mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:29ec4ba0a039a156f6d8821b1addc39839fc2bac",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 RM (1080p x265 10bit Tigole)\n👤 6 💾 6.61 GB ⚙️ ThePirateBay",
+      "infoHash": "edc8320f50bdb34d25ea51f8f1f11b7271790f41",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy (2003) ENG ITA KOR 1080p av1 + EXTRAS [gege]\nOldboy (2003) ENG ITA.KOR +comm 1080p av1 [gege].mkv\n👤 5 💾 3.26 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "88fa77e7549e71e969c987f4b3bb26f49298989d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Oldboy (2003) ENG ITA.KOR +comm 1080p av1 [gege].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy (2003) [ BDMux HEVC 1080p - Ita Kor ] TNT Village\n👤 5 💾 3.95 GB ⚙️ ThePirateBay\n🇮🇹 / 🇰🇷",
+      "infoHash": "b840adfd8999d33ccd6cb4bd5e9ab6d448933655",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDMux|hevc",
+        "filename": "Oldboy (2003) - BDMux HEVC 1080p - Ita Kor - LuMiNaL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Oldboy 2003 1080p AV1 10bit-DKong\n👤 4 💾 1.27 GB ⚙️ EXT\n🇬🇧 / 🇰🇷 / 🇮🇱",
+      "infoHash": "50a8eff025572ecf95a6d5f887108546ee439251",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1|10bit",
+        "filename": "Oldboy 2003 1080p AV1 10bit-DKong.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Олдбой / Oldboy / Oldeuboi [2003 BDRip 720p] [Alliance Films] Dub (Cinema Prestige) + DVO (Tycoon-Studio) + Sub Rus Eng + Original Kor\n👤 52 💾 7.29 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "6e70996a02ba28bd1518eb88b5be14e0c7648050",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Oldboy.2003.720p.BluRay.IIIKOJIO3ABP.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:6e70996a02ba28bd1518eb88b5be14e0c7648050",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oldboy 2003 720p BRRip x264 [Kor - Eng] AAC MultiSub-AGiX\n👤 37 💾 1.94 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇰🇷",
+      "infoHash": "6422a34e23ffb09f70dc7c75ed6a5b50ac7b86a7",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oldboy.2003.REMASTERED.KOREAN.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG\n👤 8 💾 995.38 MB ⚙️ TorrentGalaxy\n🇰🇷",
+      "infoHash": "919f4d42b3b2c361f4c903f836196b9c4f042ea4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "Oldboy.2003.REMASTERED.KOREAN.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Oldboy Bluray 720p | mp4 | 916 mb | dual áudio\n👤 7 💾 915.55 MB ⚙️ MicoLeaoDublado\nDual Audio / 🇬🇧 / 🇵🇹 / 🇰🇷",
+      "infoHash": "e41abffb92ae3573da9188da064ca1b60a87a5ed",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Oldboy (2003).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Asian film collection\nOldboy.2003.720p.BluRay.x264-[YTS.AM].mp4\n👤 4 💾 1012.61 MB ⚙️ TorrentGalaxy",
+      "infoHash": "9f92d9f1a3b386a407529233ee971ba299cba27f",
+      "fileIdx": 75,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9f92d9f1a3b386a407529233ee971ba299cba27f",
+        "filename": "Oldboy.2003.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Олдбой / Oldboy [2003 HDRip] MVO (Первый канал) + DVO (Tycoon Studio)\n👤 28 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "c20459fb16ed321000dd26beb611adc5fdfc1f66",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Олдбой.2003.HDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:c20459fb16ed321000dd26beb611adc5fdfc1f66",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Олдбой / Oldboy/ Oldeuboi [2003 BDRip-AVC] Dub + DVO + Original Kor\n👤 18 💾 2.82 GB ⚙️ Rutracker\n🇷🇺 / 🇰🇷",
+      "infoHash": "2228a4135e5345074603dd0309932b19c3073b67",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Oldeuboi.2003.BDRip.x264.lx1966.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:2228a4135e5345074603dd0309932b19c3073b67",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "OLD.BOY.2003.VF.DVDRIP-T911\n👤 14 💾 874 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "e2c0b33cdb500eb6bf9615330c5f43fb35cd0889",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "[ Torrent911.cc ] OLD.BOY.2003.VF.DVDRIP-T911.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Олдбой / Oldeuboi / Oldboy [2003 BDRip-AVC] [REMASTERED] AVO (Ю. Сербин)\n👤 11 💾 2.2 GB ⚙️ Rutracker\n🇷🇺 / 🇰🇷",
+      "infoHash": "f9f94b131c296207fe4987eac825a973ba9ae55b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Oldboy.2003.BDRip-AVC.DD5.1.x264-CasStudio.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:f9f94b131c296207fe4987eac825a973ba9ae55b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Олдбой / Old Boy / Oldeuboi [2003 BDRip] Dub (Cinema Prestige) + DVO (Tycoon-Studio) + Sub Rus\n👤 11 💾 2.18 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "8b83dcbdbf2c93b6fad070f6e0ec13f3a91c1218",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Oldboy.2003.DUALRUS.BDRip.XviD.AC3.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:8b83dcbdbf2c93b6fad070f6e0ec13f3a91c1218",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Oldboy 2003 ENGLISH DUBBED DVDRip XviD-pong\n👤 10 💾 699.68 MB ⚙️ ThePirateBay\nDubbed",
+      "infoHash": "cd9b3f8a078546c10336e122b389936923c114d4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Олдбой / Старина / Oldeuboi / Oldboy / Old boy [2003 HDRip] AVO (Визгунов) + DVO (Tycoon Studio)\n👤 5 💾 1.45 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "69467131a0b99bc0e33fdcee59d4f0b903377e0c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Олдбой 2003.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:69467131a0b99bc0e33fdcee59d4f0b903377e0c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1147 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-soul",
+  "request": "https://torrentio.strem.fun/stream/movie/tt2948372.json",
+  "recordedAt": "2026-11-05T22:41:54.731Z",
+  "status": 200,
+  "ms": 241,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Soul.2020.2160p.DSNP.WEBRip.x265.10bit.HDR.DDP5.1.Atmos-CM\n👤 85 💾 16.18 GB ⚙️ RARBG",
+      "infoHash": "d0196008d117815c52a3cea53317a0aaf1d60f54",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit|HDR",
+        "filename": "Soul.2020.2160p.WEB-DL.DDP5.1.Atmos.HDR.x265-CMRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Душа / Soul [2020 WEB-DL 2160p HDR10 Dolby Vision] [Hybrid] Dub + MVO + 2x Ukr + Kaz + Original (Eng) + Sub (Rus Ukr Eng)\n👤 42 💾 13.72 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "ae47153cb7904514bd67f795bae1b97f2897c0ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|DV|HDR",
+        "filename": "Душа.2020.WEB-DL.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:ae47153cb7904514bd67f795bae1b97f2897c0ce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Soul.2020.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 29 💾 37.37 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "038e072817a7992e1e122c9862145a4b34c4e82b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Soul.2020.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Душа / Soul [2020 UHD BDRemux 2160p HDR10 Dolby Vision] [Hybrid] Dub + MVO + 2x Ukr + Kaz + Original (Eng) + Sub (Rus Ukr Eng)\n👤 25 💾 39.01 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "8e7d8fe483f821a5e9a476c08e434dad3870e893",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Душа.2020.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:8e7d8fe483f821a5e9a476c08e434dad3870e893",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Soul (2020) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 18 💾 3.1 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "f70dce1db5550681df8f6fe3b54c01d50ea07561",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Soul (2020) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Soul 2020 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 9 💾 19.2 GB ⚙️ 1337x",
+      "infoHash": "d3263d3a57fbc6ab3ec90332260886badcbd2a6b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Soul (2020).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Душа / Soul [2020 WEB-DL 2160p Dolby Vision TV] Dub + MVO + 2x Ukr + Kaz + Original (Eng) + Sub (Rus Ukr Eng)\n👤 6 💾 13.93 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "f5f0ec6c6171c509ee75f6e076ecf77291a0394b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|DV",
+        "filename": "Душа.2020.WEB-DL.2160p.DV.mp4"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:f5f0ec6c6171c509ee75f6e076ecf77291a0394b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Soul 2020 2160p WEBRip\n👤 49 💾 4.49 GB ⚙️ YTS",
+      "infoHash": "93d4c52214c315e5198e631288ae4f9eedd94654",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit",
+        "filename": "Soul.2020.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Душа / Soul [2020 WEB-DL 2160p SDR] Dub + MVO + Original (Eng) + Sub (Rus Eng)\n👤 35 💾 15.28 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "4ce58ca9b10ae76a9da1352a546a710c89d79e06",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL",
+        "filename": "Душа.2020.WEB-DL.2160p.SDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:4ce58ca9b10ae76a9da1352a546a710c89d79e06",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Soul.2020.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 7 💾 43.46 GB ⚙️ RARBG",
+      "infoHash": "ea7f09e28a4375971ace295eb9ef590197a9cde3",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Soul.2020.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Soul (2020) (2160p DSNP WEBRip x265 HEVC 10bit EAC3 5.1 Joy) [UTR]\n👤 7 💾 4.76 GB ⚙️ 1337x",
+      "infoHash": "9da6a2b9a530afbcfca9b4598b7cfc100c0f4b15",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|hevc|10bit",
+        "filename": "Soul (2020)  [2160p x265 10bit S91 Joy].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Soul 2020 1080p BluRay EAC3 DV HDR AV1-TiZU\n👤 26 💾 2.25 GB ⚙️ ThePirateBay",
+      "infoHash": "0c23e2d5a9271b25561deb3bdc728b613f961a89",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1|DV|HDR",
+        "filename": "Soul 2020 1080p BluRay EAC3 DV HDR AV1-TiZU.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Душа / Soul [2020 WEB-DL 1080p] [Локализованный видеоряд] Dub (Невафильм) + Original (Eng) + Sub (Rus Eng)\n👤 155 💾 4.1 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "6e4cc5995a5903446ed805a2c74b5ae6016e1fcb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Soul.2020.1080p.WEB-DL.DD5.1.H.264-EniaHD.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:6e4cc5995a5903446ed805a2c74b5ae6016e1fcb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Душа / Soul [2020 BDRip 1080p] Dub (Rus Ukr) + Sub (Rus Ukr Eng) + Original Eng\n👤 130 💾 7.89 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "39e791994a2f865c074032a9001c3de6fa70f920",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Soul (2020).BDRip 1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:39e791994a2f865c074032a9001c3de6fa70f920",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul.2020.1080p.DSNP.WEB-DL.DDP5.1.Atmos.x264-CM\n👤 101 💾 5.25 GB ⚙️ ThePirateBay",
+      "infoHash": "11cbe41bbd9ebecd88e8476ed4051f6ade71e90f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "Soul.2020.1080p.DSNP.WEBRip.DDP5.1.Atmos.x264-CM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul (2020) [1080p] [BluRay] [5.1]\n👤 100 💾 1.85 GB ⚙️ ThePirateBay",
+      "infoHash": "acd885336b04e022e411364e03bdf3ef04ef3a14",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Soul.2020.1080p.BluRay.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2020.Soul.1920x804.BDRip.x264.DTS-HD.MA.mkv\n👤 75 💾 13.69 GB ⚙️ ThePirateBay",
+      "infoHash": "a200be18e2d389cadc9246167434fe9555f5d113",
+      "fileIdx": 14,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2020.Soul.1920x804.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul (2020) 1080p H264 Ac3 5.1 ita eng sub ita eng-MIRCrew\n👤 40 💾 2.37 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "5924b748c5eb95580fed05c9e72d400edcd3b6c9",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Soul (2020) 1080p H264 Ac3 5.1 ita eng sub ita eng-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul 2020 BluRay 1080p DDP Atmos 5 1 x264-hallowed\n👤 35 💾 6.42 GB ⚙️ ThePirateBay",
+      "infoHash": "28255efa969f569e17130e6f5b1d3bd25ca737bd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Soul 2020 BluRay 1080p DDP Atmos 5 1 x264-hallowed.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2024) BDRip 1080p\n2020.Soul.1920x804.BDRip.x264.DTS-HD.MA.mkv\n👤 35 💾 13.69 GB ⚙️ ThePirateBay",
+      "infoHash": "58733961d2672b8bcf08d928cee0ae96f4150fda",
+      "fileIdx": 16,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2020.Soul.1920x804.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Душа / Soul [2020 BDRemux 1080p] Dub (iTunes) + MVO (HDRezka Studio) + Original Eng + Sub (rus ukr eng)\n👤 32 💾 20.76 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "adfd7c9730b39caa264c7b6fdfad3e48d8c7a63d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Soul.BDRemux.1080p.pk.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:adfd7c9730b39caa264c7b6fdfad3e48d8c7a63d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul 2020 1080p WEBRip\n👤 23 💾 1.85 GB ⚙️ YTS",
+      "infoHash": "b25cd5b511f114c6f4e278269e38d0257b6cd8a1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Soul.2020.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul 2020 1080p BluRay 10Bit X265 DD 5 1-Chivaman\n👤 15 💾 3.29 GB ⚙️ ThePirateBay",
+      "infoHash": "27ab16d450df3691e5840c0bd59d19873febba6a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Soul 2020 1080p BluRay 10Bit X265 DD 5 1-Chivaman.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul (2020) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 15 💾 1.71 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "7939e4eb3b3cc4d53006dc1b9c57e10f9567e3be",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Soul (2020) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul 2020 1080p BluRay DD 7.1 x265-edge2020\n👤 13 💾 2.18 GB ⚙️ 1337x",
+      "infoHash": "21ea698343f63acc237b49085d7127a771d07aad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Soul.2020.1080p.BluRay.DDP.7.1.x265-EDGE2020.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul.2020.1080p.BluRay.DDP.7.1.x265-NAN0\n👤 10 💾 6.19 GB ⚙️ 1337x",
+      "infoHash": "3ec322de22f91bac5e083a1d480e73d33dc8db3d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Soul.2020.1080p.BluRay.DDP.7.1.x265-NAN0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Collection Disney Pixar 1937 à 2022 - 1080p H265 French VFF c3r153\n[126] Soul (2020).mkv\n👤 10 💾 1.51 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e2fd41349c1de6ea461a18a9185e0d7301c22f81",
+      "fileIdx": 125,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "[126] Soul (2020).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul (2020) (1080p DSNP WEBRip x265 HEVC 10bit AAC 5.1 Q22 Joy) [UTR]\n👤 10 💾 1.52 GB ⚙️ 1337x",
+      "infoHash": "8a70d59418dd0271ad1ea571df3ae2fbcdc4cec7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Soul (2020)  [1080p x265 q22 S92 Joy].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul 2020 1080p BluRay x264-OFT\n👤 9 💾 4.5 GB ⚙️ ThePirateBay",
+      "infoHash": "a48e378c62effc0699b45668b613dbee6ddca8ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Soul 2020 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul.2020.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\n👤 9 💾 1.26 GB ⚙️ 1337x",
+      "infoHash": "b031ce2b2330a4635bd64395626355028f3822aa",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|hevc|10bit",
+        "filename": "Soul.2020.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul 2020 1080p DSNP WEB-DL DDPA 5 1 H 264-PiRaTeS\n👤 7 💾 4.73 GB ⚙️ ThePirateBay",
+      "infoHash": "85e554b9193a290f96344a9d817f28e33e80ca5a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Soul 2020 1080p DSNP WEB-DL DDPA 5 1 H 264-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Душа в 3Д / Soul 3D [2020 WEB-DL] [Локализованный видеоряд] Dub (Невафильм) + Kaz + Original (Eng) + Sub (Rus Eng) Half SideBySide / Горизонтальная анаморфная стереопара\n👤 7 💾 4.68 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "92ec8c4dea3ec55123cd88ec276e0b0a6756d41a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Душа.1080p.3D.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:92ec8c4dea3ec55123cd88ec276e0b0a6756d41a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul.2020.1080p.BluRay.x264.TrueHD.7.1.Atmos-FGT\n👤 7 💾 12.63 GB ⚙️ RARBG",
+      "infoHash": "8c904aa43a183ed5cc5dff9f4f1e4c8c962caec0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Soul.2020.1080p.BluRay.x264.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul (2020) 1080p BluRay AV1 Opus 7.1 [RAV1NE]\n👤 6 💾 1.33 GB ⚙️ 1337x",
+      "infoHash": "68ac7ac688f2460970f13ba5aa29a635011b6bbb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Soul.2020.1080p.BluRay.AV1.Opus.7.1-RAV1NE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Душа / Soul (2020) BDRip 1080p от селезень | D P | iTunes\n👤 6 💾 12.14 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "3fd5a5a4c6ef2c6ad6cb63a290d884729892c919",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Soul.2020.BDRip.1080p.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:3fd5a5a4c6ef2c6ad6cb63a290d884729892c919",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Soul (2020) ITA-ENG Ac3 5.1 WebRip 1080p H264 [ArMor]\n👤 5 💾 4.14 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "a77c663ca7c354359acb97fbf7e2800393e2a42d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|h264",
+        "filename": "Soul (2020) ITA-ENG Ac3 5.1 WebRip 1080p H264 [ArMor].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Soul.2020.720p.WEBRip.800MB.x264-GalaxyRG\n👤 38 💾 798.41 MB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇩🇰 / 🇸🇪 / 🇳🇴",
+      "infoHash": "5f4f1921f2e21f4caad9894e51c1a780fa410c3c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Soul.2020.720p.WEBRip.800MB.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Soul (2020) [720p] [BluRay]\n👤 37 💾 923.24 MB ⚙️ ThePirateBay",
+      "infoHash": "298a20dfc24855d3d1b366f25bdf247a0af160d3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Soul.2020.720p.BluRay.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Душа / Soul [2020 BDRip 720p] Dub + Sub (Rus Eng) + Original Eng\n👤 25 💾 5.53 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "037b7f1a88fa6be3f7d5ee781402f1906fc38ac4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Soul (2020).BDRip 720p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:037b7f1a88fa6be3f7d5ee781402f1906fc38ac4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Soul 2020 720p WEBRip\n👤 5 💾 923.24 MB ⚙️ YTS",
+      "infoHash": "8041803f89c0b44a7d8b188d30cefadec7df8498",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEBRip|x264",
+        "filename": "Soul.2020.720p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Душа / Soul [2020 BDRip-AVC] Dub (Rus Ukr) + Sub (Rus Ukr Eng) + Original Eng\n👤 76 💾 2.29 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "3957feefd57caed27f2e4b82bd1d414af5bbec78",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Soul (2020).mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:3957feefd57caed27f2e4b82bd1d414af5bbec78",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Душа / Soul [2020 WEB-DLRip] MVO (HDrezka Studio) + Original (Eng) + Sub (Rus Ukr Eng)\n👤 44 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "0a6c571e12fd36fee3eb84c962116f52c4b3b061",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Soul_2020_WEB-DLRip_MVO_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:0a6c571e12fd36fee3eb84c962116f52c4b3b061",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Душа / Soul [2020 BDRip] Dub (iTunes)\n👤 30 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "23586ae77ef2e9f7cf1f9073de4b7885632bb773",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Soul_2020_BDRip_iT_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:23586ae77ef2e9f7cf1f9073de4b7885632bb773",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Душа / Soul (2020) BDRip от Twister & ExKinoRay | iTunes\n👤 22 💾 1.42 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "80111ea07cb5dee7a3a67e26c08347500072d2f5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Dusha.2020.D.BDRip.1400Mb_ExKinoRay_by_Twi7ter.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:80111ea07cb5dee7a3a67e26c08347500072d2f5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Soul (2020) [BluRay Rip][AC3 5.1 Castellano][www.PctMix.com]\n👤 22 💾 1.37 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "53928f024600105126e1bdc3f6b3729150922530",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "Soul (2020) [BluRay Rip][AC3 5.1 Castellano][www.PctMix.com].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Soul.2020.HDRip.XviD.AC3-EVO[TGx]\n👤 22 💾 1.33 GB ⚙️ ThePirateBay",
+      "infoHash": "0e66e8d3c268f58076fe71f96750f978b3884384",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|xvid",
+        "filename": "Soul.2020.HDRip.XviD.AC3-EVO.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Душа / Soul [2020 WEB-DLRip] MVO (HDrezka Studio)\n👤 13 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "5e2a608247e0c64983b52b88a9bfe3a3d8a9ad45",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Душа_2020_WEB-DLRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:5e2a608247e0c64983b52b88a9bfe3a3d8a9ad45",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Душа / Soul [2020 BDRip-AVC] Dub (Rus) + Dub (Ukr) + Original (Eng) + Sub (Rus Ukr Eng)\n👤 10 💾 1.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "c690fc626cfaddb157293586a062d3d149356991",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Soul_2020_BDRip-AVC_by_Dalemake.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:c690fc626cfaddb157293586a062d3d149356991",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Душа / Soul [2020 WEB-DLRip] Sub (Rus Eng) + Original Eng\n👤 8 💾 1.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "e760b38435ce6ebded3127ffd1839668a8472817",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Душа_2020_WEB-DLRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e760b38435ce6ebded3127ffd1839668a8472817",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDTV",
+      "title": "Душа / Soul [2020 HDTVRip] [Локализованный видеоряд] Dub (Невафильм)\n👤 7 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "f2829e65395a5100c458c9e0cba5b9d606f01697",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDTV|xvid",
+        "filename": "Soul.2020.HDTVRip.XviD.DUB.DD.5.1.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:f2829e65395a5100c458c9e0cba5b9d606f01697",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip 3D HOU",
+      "title": "Душа в 3Д / Soul 3D [2020 HDRip - AVC] Half OverUnder / Вертикальная анаморфная стереопара\n👤 6 💾 7.31 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "16b48d3627ecf7030b2972d4d687b4ea945a0e21",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Soul.(2020).HDRip-hOU.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:16b48d3627ecf7030b2972d4d687b4ea945a0e21",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Душа / Soul (2020) WEB-DLRip-AVC от New-Team | Локализованный видеоряд | D | iTunes\n👤 6 💾 1.4 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "ebeeb2ec5b8a3cbb374be543ad71ed6479f438e7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Soul.2020.WEB-DLRip.x264.Rus.stalkerok.New-Team.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:ebeeb2ec5b8a3cbb374be543ad71ed6479f438e7",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Soul (2020) [Cartoon] BluRay H264 DolbyD 5.1 + nickarad\n👤 5 💾 2.28 GB ⚙️ ThePirateBay",
+      "infoHash": "2195bd8195255cdef8589470b930d1de9d00acb3",
+      "fileIdx": 12,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|h264",
+        "filename": "Soul (2020) BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Душа / Soul (2020) WEB-DLRip-AVC | D | Локализованный видеоряд\n👤 5 💾 1.45 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "8eac2e2e5573ae51a9f1cd2d1dea33ca26e5bf02",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|avc",
+        "filename": "Душа.(2020).WEB-DLRip-AVC.[-=DoMiNo=-].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:8eac2e2e5573ae51a9f1cd2d1dea33ca26e5bf02",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    }
+  ]
+}

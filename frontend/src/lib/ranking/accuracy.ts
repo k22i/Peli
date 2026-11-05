@@ -30,6 +30,10 @@ export type Label = {
   episode?: number | null;
   cached?: boolean | null;
   fake?: boolean;
+  // Genuine, but the release names the title only in another language or
+  // spelling than the name asked for ("Cadena perpetua" for The Shawshank
+  // Redemption); labelled for the "titles" split (#99).
+  localized?: boolean;
   note?: string;
 };
 
@@ -43,6 +47,9 @@ export type Corpus = {
     id: string;
     name: string;
     aliases?: string[];
+    // "manual": written by hand as a stand-in for TMDB's alternative titles
+    // and translations (#99); replace with TMDB's when there is a key.
+    aliasesSource?: string;
     year?: number;
     runtimeMin?: number;
     season?: number;
@@ -62,8 +69,12 @@ export type Corpus = {
 
 // Dev was tuned on in #6; holdout only by its totals; blind was labelled
 // after #6's parser was frozen; longrun (#100) is long-running anime asked
-// for by absolute episode, labelled before the episode map existed.
-export type Split = "dev" | "holdout" | "blind" | "longrun";
+// for by absolute episode, labelled before the episode map existed. "titles"
+// (#99) is Torrentio streams for titles with localized names and wrong-title
+// fuzzy hits, labelled for the title check only (`fake`, `localized`, a
+// CAM / TS `source`): it is left out of the field accuracy and of the CI gate,
+// and reported on its own.
+export type Split = "dev" | "holdout" | "blind" | "longrun" | "titles";
 
 export type LabelledStream = {
   id: string;
@@ -98,13 +109,20 @@ export function labelled(corpus: Corpus): LabelledStream[] {
   const { streams } = parseStreamResponse({ streams: corpus.streams.map((row) => row.stream) });
   return corpus.streams.map(({ id, split, addon, title, label }, index) => ({
     id,
-    split: split === "dev" || split === "holdout" || split === "longrun" ? split : "blind",
+    split:
+      split === "dev" || split === "holdout" || split === "longrun" || split === "titles"
+        ? split
+        : "blind",
     addon,
     stream: streams[index]!,
     label,
     ctx: titles.get(title)!,
   }));
 }
+
+// The rows labelled in full, which the field accuracy and the gate count.
+export const fieldRows = (rows: readonly LabelledStream[]) =>
+  rows.filter((row) => row.split !== "titles");
 
 export const parseLabelled = (row: LabelledStream): Parsed =>
   parseStream(row.stream, { type: row.ctx.type, anime: row.ctx.anime });
@@ -264,16 +282,21 @@ export function fakeRates(rows: readonly LabelledStream[]) {
 type Rates = ReturnType<typeof fakeRates>;
 
 // Accuracy per split, the fake checks' rates, and every miss, as Markdown.
-export function report(rows: readonly LabelledStream[]): string {
+export function report(everything: readonly LabelledStream[]): string {
+  const rows = fieldRows(everything);
+  const titles = everything.filter((row) => row.split === "titles");
   const splits = [
     ...(["dev", "holdout", "blind", "longrun"] as const).map(
       (split) => [split, rows.filter((row) => row.split === split)] as const,
     ),
     ["all", rows] as const,
   ];
-  const head = (title: string) => [
-    `| ${title} | ${splits.map(([name, list]) => `${name} (n=${list.length})`).join(" | ")} | Target |`,
-    `|---|${splits.map(() => "---:").join("|")}|---:|`,
+  const head = (
+    title: string,
+    columns: readonly (readonly [string, readonly LabelledStream[]])[] = splits,
+  ) => [
+    `| ${title} | ${columns.map(([name, list]) => `${name} (n=${list.length})`).join(" | ")} | Target |`,
+    `|---|${columns.map(() => "---:").join("|")}|---:|`,
   ];
   const out = [
     "# Ranking engine accuracy",
@@ -286,13 +309,15 @@ export function report(rows: readonly LabelledStream[]): string {
     const pcts = splits.map(([, list]) => `${accuracy(list, field).pct}%`);
     out.push(`| ${field.name} | ${pcts.join(" | ")} | ≥ ${field.target}% |`);
   }
-  const rates = splits.map(([, list]) => fakeRates(list));
+  // The title split has only fake labels, so it joins the fake table alone.
+  const fakeSplits = titles.length ? [...splits, ["titles", titles] as const] : splits;
+  const rates = fakeSplits.map(([, list]) => fakeRates(list));
   const rate = (name: string, key: keyof Rates, target: string) =>
     `| ${name} | ${rates.map((r) => `${r[key]}%`).join(" | ")} | ${target} |`;
   const t = fakeTargets;
   out.push(
     "",
-    ...head("Fake checks"),
+    ...head("Fake checks", fakeSplits),
     rate(
       "Hidden, false-positive rate",
       "hiddenFalsePositiveRate",
@@ -319,7 +344,7 @@ export function report(rows: readonly LabelledStream[]): string {
     out.push("");
   }
   out.push("### Fake checks", "");
-  for (const row of rows) {
+  for (const row of everything) {
     const { bucket, reasons } = verdictOf(row);
     if ((bucket === "hidden") === !!row.label.fake) continue;
     const why = reasons.length ? ` (${reasons.join(", ")})` : "";

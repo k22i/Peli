@@ -1,0 +1,1237 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-frozen",
+  "request": "https://torrentio.strem.fun/stream/movie/tt2294629.json",
+  "recordedAt": "2026-11-05T22:41:51.405Z",
+  "status": 200,
+  "ms": 73,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen.2013.REPACK.MULTi.VFF.2160p.10bit.4KLight.HDR.BluRay.AC3.5.1.x265\n👤 20 💾 2.85 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "7c2597fb1282f5789af09d3cc232ce1e20e1ab82",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "[ Torrent911.io ] Frozen.2013.REPACK.MULTi.VFF.2160p.10bit.4KLight.HDR.BluRay.AC3.5.1.x265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen (2013) 2160p HDR 5.1 x265 10bit Phun Psyz\n👤 19 💾 2.07 GB ⚙️ 1337x",
+      "infoHash": "4aa75d1732341acbfbf8c96395279e7a5e1ef3e0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|HDR",
+        "filename": "Frozen (2013) 2160p HDR 5.1 x265 10bit Phun Psyz.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen.2013.2160p.UHD.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-SWTYBLZ\n👤 17 💾 8.94 GB ⚙️ RARBG",
+      "infoHash": "851c8c064631bdaa7dfeb0475a1af176ab2b7ceb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Frozen.2013.2160p.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen.2013.REPACK.MULTi.VFF.2160p.10bit.4KLight.HDR.BluRay.AC3.5.1.x265\n👤 16 💾 2.85 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "infoHash": "06bbf8edfb12cd7a9b863eac160d5847eb264972",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "[ Torrent911.io ] Frozen.2013.REPACK.MULTi.VFF.2160p.10bit.4KLight.HDR.BluRay.AC3.5.1.x265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Frozen 2013 UHD BluRay 2160p TrueHD Atmos 7 1 DV HEVC HYBRID REMUX-FraMeSToR\n👤 16 💾 44.87 GB ⚙️ 1337x",
+      "infoHash": "299a1259d219079db3fa01ca6f5a45bdaec3d49b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Frozen.2013.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen (2013) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 15 💾 3.98 GB ⚙️ 1337x",
+      "infoHash": "5368b2f7ee101a06640168086da47177dc450988",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Frozen (2013) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Холодное сердце / Frozen (2013) UHD BDRemux 2160p | 4K | HDR | Dolby Vision Profile 8 | D A | Лицензия\n👤 11 💾 52.25 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "69dfd3a747dd39fa02b6b25e04a1c6015c53e08b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "Frozen.2013.2160p.UHD.BDRemux.TrueHD.Atmos.7.1.HYBRID.DoVi-DVT.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:69dfd3a747dd39fa02b6b25e04a1c6015c53e08b",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Frozen.2013.2160p.DV.HDR10 .REQUEST.WEB-DL.DDP5.1.Multi-Language.Atmos.x265.BluBit\n👤 9 💾 14.35 GB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "9d520a3d48b8b28e856168a64563c91de4fddfaf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|DV|HDR",
+        "filename": "Frozen (2013).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen.2013.2160p.HDR10.WEB-DL.DDP5.1.Atmos.x265.BluBit\n👤 8 💾 9.35 GB ⚙️ 1337x",
+      "infoHash": "82d473b49ae8b08ed9e59fe4edad547edac5dd93",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|HDR",
+        "filename": "Frozen (2013).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Frozen.Il Regno di Ghiaccio.2013.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM\n👤 8 💾 5.7 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "f0dc131f155313b0eb779f3ba16d8128a274692e",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Frozen.2013.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 6 💾 42.08 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "1d4a66582e9930da95c2910774d01430ae5a29aa",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Frozen.2013.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen.2013.MULTi.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC-DDR\n👤 85 💾 16.46 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "219da8d03bc4cf9ec6122ee5e0cdbc793a69d153",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc",
+        "filename": "Frozen.2013.MULTi.UHD.BluRay.2160p.TrueHD.Atmos.7.1.HEVC-DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen 2013 2160p BluRay\n👤 70 💾 4.66 GB ⚙️ YTS",
+      "infoHash": "400a2fbf9eec18256805a0b7e86bca600c0912aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Frozen.2013.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen Uma Aventura Congelante 4K Dual Áudio WWW.BLUDV.TV\n👤 11 💾 5.97 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "f9ba9b65725a697ad73298e2becc00fcd94c0a58",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Frozen Uma Aventura Congelante 2013 4K 2160p Dual Áudio Encoder by Carlos José WWW.BLUDV.TV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen.2013.2160p.BluRay.AV1.TrueHD.Atmos.en.mkv\n👤 10 💾 9.38 GB ⚙️ 1337x",
+      "infoHash": "b49b11184d3137b81a36d7a3e0dc0b534531c28f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|av1",
+        "filename": "Frozen.2013.2160p.BluRay.AV1.TrueHD.Atmos.en.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen (2013) (2160p BluRay x265 HEVC 10bit AAC 7.1 Joy) [UTR]\nFrozen 2013  (2160p x265 10bit FS94 Joy).mkv\n👤 7 💾 5 GB ⚙️ 1337x",
+      "infoHash": "f2d9139dc732f47cb84c32c9b0c4f63d681d527d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "Frozen 2013  (2160p x265 10bit FS94 Joy).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen.2013.2160p.BluRay.AV1.Opus.Multi.en.fr-CA.es-419.ja.es.pt.ca.it.de.tr.mkv\n👤 5 💾 8.09 GB ⚙️ 1337x\nMulti Audio / 🇬🇧 / 🇪🇸 / 🇫🇷 / 🇩🇪",
+      "infoHash": "f52c1e53706d1bdef5bf14eeb117b7bb3f63eb0f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|av1",
+        "filename": "Frozen.2013.2160p.BluRay.AV1.Opus.Multi.en.fr-CA.es-419.ja.es.pt.ca.it.de.tr.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Frozen.2013.UHD.BluRay.REMUX.2160p.HEVC.Atmos.TrueHD7.1.3Audio-TAG\n👤 5 💾 48.46 GB ⚙️ TorrentGalaxy",
+      "infoHash": "cc743e4ca04960a4197d8982a71858b924d48c5b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Frozen 2013 UHD BluRay REMUX 2160p HEVC Atmos TrueHD7.1 3Audio-TAG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Frozen (2013) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY]\n👤 9 💾 2.5 GB ⚙️ 1337x",
+      "infoHash": "d434208ffd2829adbb3727a0f3790333d97624e3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Frozen (2013) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Холодное сердце: Дилогия / Frozen: Dilogy (2013-2019) UHD BDRip-HEVC 1080p от RIPS CLUB | HDR | D\nFrozen (2013).mkv\n👤 5 💾 3.78 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e53b20c77f651141221adf04ff57e675d7e1345c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|HDR",
+        "filename": "Frozen (2013).mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710",
+        "tracker:http://retracker.local/announce",
+        "dht:e53b20c77f651141221adf04ff57e675d7e1345c",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Холодное сердце / Frozen [2013 BDRip 1080p] [Оригинальный видеоряд] Dub (BD CEE) + 2x AVO (Ю. Сербин Ю.Живов) + Dub (Ukr) + Sub\n👤 132 💾 11.6 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "8a66c5aa8591fa6bc63c43628691d937d6dc7f6f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Frozen (2013)1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:8a66c5aa8591fa6bc63c43628691d937d6dc7f6f",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Холодное сердце (Караоке Версия) / Frozen (Sing-Along Edition) [2013 WEB-DL] [Локализованный видеоряд] Dub (Невафильм)\n👤 127 💾 3.89 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "47a1eb86dcc28cd364b2a5f2615ec781ab9a1ca9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Frozen.Sing-Along.Edition.WEB-DL.OKKO.1080p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:47a1eb86dcc28cd364b2a5f2615ec781ab9a1ca9",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Холодное сердце / Frozen [2013 BDRip 1080p] (Локализованный видеоряд) Dub + AVO (Живов Сербин) + Eng + Sub (Rus Eng)\n👤 114 💾 9.66 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "53e11e537381807080ab7cd80a0de1fd030f9cb7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Frozen.2013.Rus.Video.BDRip.1080p.dfcbit.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:53e11e537381807080ab7cd80a0de1fd030f9cb7",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen 2013 1080p DSNP WEB-DL DDP5 1 Atmos H 264-BLOOM\n👤 68 💾 4.07 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷",
+      "infoHash": "26b8be700aa0b6ce4fbc7deabd639ea2e818099a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Frozen 2013 1080p DSNP WEB-DL DDP5 1 Atmos H 264-BLOOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.1080p.BluRay.REMUX.DTS-HD.MA.7.1-PublicHD\n👤 52 💾 22.42 GB ⚙️ ThePirateBay",
+      "infoHash": "5e44917cad4ed9c3f6710b59ddc939970ff74acd",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen 2013 1080p 10bit BluRay 8CH x265 HEVC-PSA\n👤 41 💾 1.63 GB ⚙️ ThePirateBay",
+      "infoHash": "f29b5d862bb4e59a187bd4c66226c7181041b8c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Frozen 2013 1080p 10bit BluRay 8CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Холодное сердце / Frozen [2013 BDRemux 1080p] (Локализованный видеоряд) Dub + AVO + UKR + Original (Eng) + Sub\n👤 36 💾 30.32 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "dc1a95191275d6bb3fa3dde03f026a6aa4f1f926",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Frozen.2013.BDRemux 1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:dc1a95191275d6bb3fa3dde03f026a6aa4f1f926",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.1080p.BluRay.ENG.LATINO.DD5.1.H264-BEN.THE.MEN\n👤 29 💾 8.05 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇲🇽",
+      "infoHash": "605949bf18cb9607268dc01ab56d96440667bb1e",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Frozen.2013.1080p.BluRay.ENG.LATINO.DD5.1.H264-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Холодное сердце / Frozen (2013) BDRip 1080p\n👤 27 💾 5.76 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "da30d7f8369ccf7f62e22fbce02f899d56be8733",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Frozen.2013.BDRip.1080p.Rus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:da30d7f8369ccf7f62e22fbce02f899d56be8733",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen (2013) (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy) [UTR]\nFrozen 2013  (1080p x265 q22 S89 Joy).mkv\n👤 21 💾 2.18 GB ⚙️ 1337x",
+      "infoHash": "69b7d0ce991456b9dc0a9a2f1e439bdd6dcfd258",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Frozen 2013  (1080p x265 q22 S89 Joy).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.1080p.10bit.BluRay.8CH.x265.HEVC-PSA\n👤 20 💾 1.63 GB ⚙️ 1337x",
+      "infoHash": "aff96157aacf92dc52d24bdacd50a2c487573430",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Frozen.2013.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen (2013) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole) [QxR]\n👤 18 💾 3.9 GB ⚙️ 1337x",
+      "infoHash": "3da80c8bf0375f5d99986f729fd03d4955fc49a5",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen 2013 1080p BluRay AV1 Opus 5.1 [981]\n👤 16 💾 1.06 GB ⚙️ TorrentGalaxy",
+      "infoHash": "81a2bed22337797cd690187cb8b41658cdd376ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Frozen 2013 1080p BluRay AV1 Opus 5.1 [981].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen (2013) BDRip 1080p ENG-ITA x265 - Il Regno Di Ghiaccio\n👤 16 💾 4.08 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "infoHash": "aee029c8d3d0a76d8384376e6c126c2efe885bbc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "Frozen (2013) BDRip 1080p ENG-ITA x265 - Il Regno Di Ghiaccio -Shiv@.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Filmografia D'animazione Disney (Classici + Direct To Video + Lungometraggi) (1937-2023) 1080p H265 - AC3 5.1 ITA-ENG - SUB ITA-ENG [Completa]\n(2013) Frozen.mkv\n👤 15 💾 4.08 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "4c9afe92bbf60ab9fadd584f0449e0d395fa7872",
+      "fileIdx": 95,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "(2013) Frozen.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen 2013 1080p BluRay x264-OFT\n👤 13 💾 4.43 GB ⚙️ ThePirateBay",
+      "infoHash": "1358fa660ddc4633ea10a6bfd4707ab7532f1d30",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Frozen 2013 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.MULTi.1080p.BluRay.x264.DTS-HD.MA.7.1.AC3.5.1-LeRalouf\n👤 12 💾 6.7 GB ⚙️ 1337x\nMulti Audio",
+      "infoHash": "2b2c81c43d343024615f1b320a5079822ec4e9bd",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.1080p.WEB-DL.H264-PublicHD\n👤 12 💾 3.12 GB ⚙️ ThePirateBay",
+      "infoHash": "4f028fac03b2fd92c37dee248163b076f334c22b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.1080p.BluRay.x265-RARBG\n👤 11 💾 1.59 GB ⚙️ RARBG\n🇬🇧 / 🇳🇴",
+      "infoHash": "8b5e465cfec0da27a978254816acff8575d2f019",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Frozen.2013.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Collection Disney Pixar 1937 à 2022 - 1080p H265 French VFF c3r153\n[109] La Reine Des Neiges (2013).mkv\n👤 10 💾 1.9 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e2fd41349c1de6ea461a18a9185e0d7301c22f81",
+      "fileIdx": 108,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "[109] La Reine Des Neiges (2013).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La Reine Des Neiges - Multi - 1080p mHDgz\n👤 10 💾 2.22 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "a3cfb32f182c4d3414f2b5ce264f09c7fd85c0de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "[ Torrent911.com ] La Reine Des Neiges - Multi - 1080p mHDgz.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Classics-Disney Animations Collection (1937-2023) BDRip 1080\n53.2013.Frozen.1920x856.BDRip.x264.DTS-HD.MA.mkv\n👤 8 💾 13.7 GB ⚙️ ThePirateBay",
+      "infoHash": "961bdceba71fd15bebb58305d2c41a9abb5eb8c9",
+      "fileIdx": 52,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "53.2013.Frozen.1920x856.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen - Il regno di ghiaccio (2013) 1080p H264 ita eng Ac3 5.1 sub ita eng-MIRCrew\n👤 8 💾 2.76 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "d8e675324a8ca0c044e08c035d7af809d4136799",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Frozen - Il regno di ghiaccio (2013).1080p.ita.eng.sub.ita.eng-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Холодное сердце 3D / Frozen 3D [2013 BDRemux 1080p] BD3D\n👤 8 💾 35.69 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "4a345e09786c2fbc4542c1be22500f033276238d",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:4a345e09786c2fbc4542c1be22500f033276238d",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Frozen 2013 3D 1080p BluRay x264-GLASSES\n👤 7 💾 5.46 GB ⚙️ ThePirateBay",
+      "infoHash": "18f80f455f340b29a035bedb190c5e68049e23d2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Frozen 2013 3D 1080p BluRay x264-GLASSES.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frost / Frozen (2013) - Dansk Tale [1080p]\n👤 7 💾 3.31 GB ⚙️ ThePirateBay",
+      "infoHash": "8fa5f07e20a5f8e1e14e928fa5c0e2f1dafe4507",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Snjezno.Kraljevstvo.(2013).1080p.x265.4Mbps.6CH.224.crtani.film.hrvatski.sink\n👤 6 💾 3.15 GB ⚙️ 1337x\n🇭🇷",
+      "infoHash": "69ad229d901c5907a53908118012b95a5e94840d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265",
+        "filename": "Snježno Kraljevstvo - Frozen (2013).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D HSBS",
+      "title": "Frozen (2013) 3D HSBS 1080p BluRay H264 DolbyD 5.1 + nickarad\n👤 6 💾 2.03 GB ⚙️ ThePirateBay",
+      "infoHash": "0aaec432511f486f034754b9bbf9c3fd7f7477de",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Frozen (2013) 3D HSBS 1080p BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen 2013 1080p 5.1 BluRip EST-ENG FLY635 Eesti Keeles\n👤 6 💾 2.99 GB ⚙️ ThePirateBay",
+      "infoHash": "4d6627f582e01847ba801bad7eb829b505fe5f4f",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Frozen.2013.1080p.BluRay.x264-SPARKS [PublicHD]\n👤 6 💾 5.44 GB ⚙️ ThePirateBay",
+      "infoHash": "715f525d35f1d8ca2c539a054e4c81568a44edd2",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "frozen.2013.1080p.bluray.x264-sparks.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Холодное сердце в 3Д / Frozen 3D [2013 WEB-DL] [Локализованный видеоряд] Dub (Невафильм) + Original (Eng) Half SideBySide / Горизонтальная анаморфная стереопара\n👤 5 💾 3.62 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "d08fd3b682bd57c29ff5c59fd1e7acd3e7d38739",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Frozen.WEB-DL.OKKO.3D.1080p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:d08fd3b682bd57c29ff5c59fd1e7acd3e7d38739",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p 3D HSBS",
+      "title": "Frozen (2013) 3D BrRip x264 - YIFY\n👤 5 💾 1.63 GB ⚙️ ThePirateBay",
+      "infoHash": "06c0d76d3b5ab230fcf2584fb381d529c6fabd2f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Frozen.2013.1080p.3D.HSBS.BluRay.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Frozen (2013) 720p BrRip x264 - YIFY\n👤 97 💾 805.35 MB ⚙️ ThePirateBay",
+      "infoHash": "25b4cd46e389e96f80ee42e418cd89d3a65ecd66",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Frozen.2013.720p.BluRay.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Холодное сердце / Frozen [2013 BDRip 720p] [Оригинальный видеоряд] Dub (BD CEE) + 2x AVO (Ю. Сербин Ю.Живов) + Dub (Ukr) + Sub\n👤 50 💾 5.08 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "f7d5a006e9ea86aabf390ca663ec044aead9e15f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Frozen (2013).720p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:f7d5a006e9ea86aabf390ca663ec044aead9e15f",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Холодное сердце / Frozen [2013 BDRip 720p] (Локализованный видеоряд) Dub + AVO (Живов Сербин) + Eng + Sub (Rus Eng)\n👤 35 💾 4.59 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "534f676c6e3413b76ab174d5e9c371509d4dbee4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Frozen.2013.Rus.Video.BDRip.720p.dfcbit.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:534f676c6e3413b76ab174d5e9c371509d4dbee4",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Холодное сердце / Frozen [2013 BDRip 720p] [Локализованный видеоряд] Dub (Rus) + Dub (Ukr) + AVO (Ю.Живов) + AVO (Ю.Сербин) + Sub (Rus Ukr Eng) + Original Eng\n👤 13 💾 7.4 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "c9460188b6519fa1f04eb20a2a24000565b4036d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Frozen (2013).mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:c9460188b6519fa1f04eb20a2a24000565b4036d",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n530p",
+      "title": "Холодное сердце / Frozen [2013 BDRip-AVC] (Локализованный видеоряд) Dub + AVO (Живов Сербин) + Eng + Sub (Rus Eng)\nFrozen.2013.Rus.Video.BDRip-AVC.530p.dfcbit.mkv\n👤 13 💾 2.94 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a3cfd02bc3b0941783fa8c070cc8af33a8c7d622",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|530p|BDRip|avc",
+        "filename": "Frozen.2013.Rus.Video.BDRip-AVC.530p.dfcbit.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a3cfd02bc3b0941783fa8c070cc8af33a8c7d622",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n446p",
+      "title": "Холодное сердце / Frozen [2013 BDRip-AVC] (Локализованный видеоряд) Dub + Eng + Sub (Rus Eng)\n👤 41 💾 1.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "f5305361345b232074878b549c94a4bab00788cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|446p|BDRip|avc",
+        "filename": "Frozen.2013.Rus.Video.BDRip-AVC.446p.dfcbit.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:f5305361345b232074878b549c94a4bab00788cd",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n360p",
+      "title": "Frozen 2013 2 2019 - threesixtyp\nFrozen M01 (2013 360p re-blurip).mp4\n👤 12 💾 325.48 MB ⚙️ ThePirateBay",
+      "infoHash": "37b84d86d478f5dd15495193a6a84059996c94c8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|360p",
+        "filename": "Frozen M01 (2013 360p re-blurip).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Холодное сердце / Frozen [2013 BDRip] [Локализованный видеоряд] Dub + Original Eng + Sub (Rus Full) (Eng Full Eng SDH)\n👤 147 💾 2.19 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺",
+      "infoHash": "3493c11fbf97014ed15e4d4a5d9239bce72a1a57",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Frozen.2013.DUAL.BDRip.XviD.AC3.HELLYWOOD.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:3493c11fbf97014ed15e4d4a5d9239bce72a1a57",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Frozen 2013 FRENCH BRRiP XviD AC3-CARPEDIEM\n👤 20 💾 1.37 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "97cb0849f663270309dcc9e0d16e2e025c7e74b3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|xvid",
+        "filename": "[ Torrent911.com ] Frozen 2013 FRENCH BRRiP XviD AC3-CARPEDIEM.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip 3D HOU",
+      "title": "Холодное сердце в 3Д / Frozen 3D [2013 BDRip-AVC] Half OverUnder / Вертикальная анаморфная стереопара\n👤 19 💾 9.04 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "60f6e5c67c330a51062aee8b62be55ce998ac663",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Frozen.2013.3D.HOU.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:60f6e5c67c330a51062aee8b62be55ce998ac663",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Холодное сердце / Frozen [2013 HDRip] [Локализованный видеоряд] Dub\n👤 11 💾 747.7 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "88663edae91dfa1a7dd60d7774506965a7780cda",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Frozen.2013.HDRip.Dub.745MB.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:88663edae91dfa1a7dd60d7774506965a7780cda",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Холодное сердце / Frozen [2013 BDRip-AVC] [Оригинальный видеоряд] Dub (BD CEE) + 2x AVO (Ю. Сербин Ю.Живов) + Dub (Ukr) + Sub\n👤 10 💾 3.54 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "bbae0ac9d0f689e4ad2fd3488a2378ddc4780121",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Frozen (2013).mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:bbae0ac9d0f689e4ad2fd3488a2378ddc4780121",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Холодное сердце / Frozen [2013 BDRip] [Оригинальный видеоряд] 2x AVO (Сербин Живов) + UKR + KAZ + ENG + Sub\nHolodnoe_serdce.avi\n👤 7 💾 1.45 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "372d7e38152f4648458d470023b523c8b4743790",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Holodnoe_serdce.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:372d7e38152f4648458d470023b523c8b4743790",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Frozen: El reino del hielo (2013) HDRip\n👤 7 💾 1.92 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "12aa6990023ee2d3b0c8a5243c75d66c7e99eac6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Frozen El reino del hielo (HDRip) (EliteTorrent.net).avi"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "La Reine des neiges TRUEFRENCH DVDRiP 2013\n👤 5 💾 706.54 MB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "8955f14066e82e4b86165dd4ff9467ba06633300",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip"
+      }
+    },
+    {
+      "name": "Torrentio\nSCR",
+      "title": "Frozen (2013) DVDScr-AVC eng / rus\n👤 5 💾 1.87 GB ⚙️ ThePirateBay\n🇬🇧 / 🇷🇺",
+      "infoHash": "6cd138a38f025e8e8c84d1f6ddc9e97f95bb343e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR|avc",
+        "filename": "Frozen (2013). DVDScr-AVC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Frozen 2013 2 2019 - threesixtyp\nFrozen M02X01 Once Upon a Snowman (2020).mp4\n👤 12 💾 15.81 MB ⚙️ ThePirateBay",
+      "infoHash": "37b84d86d478f5dd15495193a6a84059996c94c8",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "filename": "Frozen M02X01 Once Upon a Snowman (2020).mp4"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Frozen 2013 2 2019 - threesixtyp\nFrozen M01X02 Olaf's Frozen Adventure (2017).mp4\n👤 12 💾 85.88 MB ⚙️ ThePirateBay",
+      "infoHash": "37b84d86d478f5dd15495193a6a84059996c94c8",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "filename": "Frozen M01X02 Olaf's Frozen Adventure (2017).mp4"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Walt Disney Animations Collection HD [ENG PL SPA]\n2013 Frozen.mkv\n👤 7 💾 1.55 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇵🇱",
+      "infoHash": "0df23fd508d067bca7d7191be9b42ac4fa333353",
+      "fileIdx": 53,
+      "behaviorHints": {
+        "filename": "2013 Frozen.mkv"
+      }
+    }
+  ]
+}

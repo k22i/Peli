@@ -32,6 +32,7 @@ export type TitleContext = {
   id: string; // the id sent to /stream, e.g. tt0903747:1:1 or kitsu:46474:1
   name: string;
   aliases?: string[]; // other titles the release names may use (Kitsu gives these for anime)
+  aliasesSource?: 'manual'; // hand-written stand-ins for TMDB's alternative titles and translations (#99)
   year?: number;
   runtimeMin?: number;
   season?: number;

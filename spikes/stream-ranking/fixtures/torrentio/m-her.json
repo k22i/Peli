@@ -1,0 +1,745 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-her",
+  "request": "https://torrentio.strem.fun/stream/movie/tt1798709.json",
+  "recordedAt": "2026-11-05T22:38:46.685Z",
+  "status": 200,
+  "ms": 56,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Her 2013 Upscaled BluRay 2160p HDR10 HEVC DTS-HD MA 5.1 x265-E\n👤 22 💾 24.57 GB ⚙️ 1337x",
+      "infoHash": "fa9176ea24179795c57e8321ca7940018cf39ba3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Her 2013.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Her (2013) (2160p Upscale x265 AAC Fitguy-Upscales)\n👤 9 💾 6.54 GB ⚙️ EXT",
+      "infoHash": "83963235d35aaa3d899f55b93dba2d29fafcbd8a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265",
+        "filename": "Her.2013.2160p.x265.AAC.Fitguy-Upscales.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her (2013) (1080p BluRay x265 HEVC 10bit AAC 5.1 afm72) [QxR]\n👤 234 💾 4.14 GB ⚙️ 1337x",
+      "infoHash": "7aba5b437c1c90b0af5e0c4696c7ec420b3f7dd0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Her (2013) (1080p BluRay x265 afm72).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her (2013) 1080p BrRip x264 - YIFY\n👤 100 💾 1.85 GB ⚙️ ThePirateBay",
+      "infoHash": "e56880dbbdc834706c9f9272c84c68517a7adbb9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Her.2013.1080p.BluRay.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265\n👤 79 💾 1.89 GB ⚙️ TorrentGalaxy",
+      "infoHash": "587577010e1dbb42c543afdc45ceefda0e857102",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Her.2013.1080p.BluRay.DDP5.1.x265.10bit-GalaxyRG265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 1080p BluRay REMUX AVC DTS-HD MA 5 1-RARBG\n👤 65 💾 24.46 GB ⚙️ ThePirateBay",
+      "infoHash": "6698439d88b8d71bc7253b6017016bc74babeecc",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 NORDiC 1080p WEB-DL DDP5 1 H 264-ADDICTION\n👤 34 💾 3.34 GB ⚙️ EXT\n🇬🇧 / 🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴",
+      "infoHash": "b58fac0bf007d463a38ccee99a47320d3a3788b6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Her 2013 NORDiC 1080p WEB-DL DDP5 1 H 264-ADDICTION.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Она / Her [2013 BDRemux 1080p] [Nor Transfer] [Universal Studios] Dub (Lizard Cinema Trade) + AVO (Юрий Сербин) + MVO (Студия Гараж) + VO (Алексей Матвеев) + Sub Rus Eng Dat Fin Nor Swe + Original Eng\n👤 29 💾 33.32 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇸🇪 / 🇳🇴",
+      "infoHash": "7b29dfc702ca41f1624ceb90307c39bd27d79555",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Her.2013.Nor.BDRemux.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:7b29dfc702ca41f1624ceb90307c39bd27d79555",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.AVC.DTS-HD.MA.5.1-PublicHD\n👤 25 💾 34.55 GB ⚙️ ThePirateBay",
+      "infoHash": "da3d6d4ecfe6162fc6cf5b4108daf4d1d12a0e9a",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her (2013) AV1 Opus 1080p 7RIP\n👤 20 💾 321.77 MB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇸🇪 / 🇹🇷 / 🇸🇦 / 🇮🇩",
+      "infoHash": "044d552424b6a1c433ecde099c2db5d1d1015e07",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Her (2013) AV1 Opus 1080p 7RIP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her (2013) 1080p BluRay AV1 Opus 5.1 [RAV1NE]\n👤 19 💾 1.09 GB ⚙️ TorrentGalaxy",
+      "infoHash": "6a2825e869d1cd2a67b034c34a6f05721e9aa801",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Her.2013.1080p.BluRay.AV1.Opus.5.1-RAV1NE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Она / Her (2013) BDRip 1080p | Лицензия L A\n👤 19 💾 16.52 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e7bac41c44d1199e6ddb5ac3a483aaf024dd41aa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Her.2013.BDRip.1080p.AC3.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.net:6969",
+        "dht:e7bac41c44d1199e6ddb5ac3a483aaf024dd41aa",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.x264-SPARKS [PublicHD]\n👤 19 💾 8.74 GB ⚙️ ThePirateBay",
+      "infoHash": "a33cae25ff938cfc4e398d81b3cc16a8d9b6f078",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Her.2013.1080p.BluRay.x264-SPARKS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 1080p AMZN WEB-DL DDP5 1 H 264-TheyThem\n👤 18 💾 7.5 GB ⚙️ ThePirateBay",
+      "infoHash": "ae34ed8abd005b9e59ae09d1ebd0b7c9aecfb9e2",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Her 2013 1080p AMZN WEB-DL DDP5 1 H 264-TheyThem.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.DTS-HD.MA.5.1.x264-PublicHD\n👤 17 💾 12.54 GB ⚙️ ThePirateBay",
+      "infoHash": "386e23cb929fde68746f08efa282e6766faf252a",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Joaquin Phoenix - Triple Feature (1986-2019) BDRip 1080p\n2013.Her.1920x1036.BDRip.x264.DTS-HD.MA.mkv\n👤 16 💾 15.41 GB ⚙️ ThePirateBay",
+      "infoHash": "ee3d26e88ecdcdab91a6a90745bfa2d4ef6dd7dd",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2013.Her.1920x1036.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 1080p BluRay x265-YAWNTiC\n👤 14 💾 5.85 GB ⚙️ ThePirateBay",
+      "infoHash": "f1d51f799b77a1595ab10de07e618da0b20b79c8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Her 2013 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.x265-RARBG\n👤 13 💾 1.96 GB ⚙️ RARBG",
+      "infoHash": "c8f3145a5da0516b7e6de753da4433fc30ae1a6c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Her.2013.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 8 - Mp4 x264 AC3 1080p\nHer (2013) 1080p Surround.mp4\n👤 11 💾 3.54 GB ⚙️ ThePirateBay",
+      "infoHash": "86cdbd9f120d27ddd1af7a9ce497555046fb6678",
+      "fileIdx": 34,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Her (2013) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 1080p BluRay AV1 Opus 5.1 Multi4 [dAV1nci]\n👤 10 💾 2.66 GB ⚙️ TorrentGalaxy",
+      "infoHash": "80b809c8443313256a5095431dfd6620e574c673",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Her.2013.1080p.BluRay.AV1.Opus.5.1.Multi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.BluRay.1080p.DTS-HD.MA.5.1.AVC.REMUX-FraMeSToR\n👤 9 💾 24.46 GB ⚙️ ThePirateBay",
+      "infoHash": "b3e1657f68f34ca011de23e3a89e7e42b1485fc9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Her.2013.BluRay.1080p.DTS-HD.MA.5.1.AVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Epic Films 6 - Mp4 x264 AC3 1080p\nHer (2013) 1080p Surround.mp4\n👤 9 💾 3.54 GB ⚙️ ThePirateBay",
+      "infoHash": "93b968d8033ce026146c9c414ecdfb9ab7eb6092",
+      "fileIdx": 18,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Her (2013) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p-Dual-Lat.mp4\n👤 7 💾 1.84 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "d13920f1773dcca8ffd4ea9b865b834837d8e91b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Her.2013.1080p-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Ela (2014) BRrip Blu-Ray 1080p Dublado - AndreTPF\n👤 7 💾 1.89 GB ⚙️ ThePirateBay\n🇬🇧 / 🇵🇹",
+      "infoHash": "57b11bf742b096ac79a8249552afa4c885141a8e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Ela (2014) BRrip 1080p Dublado - AndreTPF.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 (1080p Bluray X265 HEVC 10bit AAC 5.1 Joy) [UTR]\n👤 6 💾 1.1 GB ⚙️ 1337x",
+      "infoHash": "7b6acd861f2ae86ca38884544caa40cde57320c3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Lei - Her (2013) 1080p H265 AC3 5.1 ITA ENG sub ita eng Ph4nt0mX\n👤 5 💾 2.89 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "759739c699f28748e45353f4ec1c48200fb5c98b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Lei - Her (2013) 1080p H265 AC3 5.1 ITA ENG sub ita eng Ph4nt0mX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her_2013_PRTD_H264_MULTI3_DTS_en_fr_spa_1080p\n👤 5 💾 7.05 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "f0c25be6c074e4e5485d42995bcef7d0e892390a",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Lei - Her (2013) 1080p H265 AC3 5.1 ITA ENG sub ita Ph4nt0mX\n👤 4 💾 3.8 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "9e9a4c975777b704310554a6eb2f51e1e4b85052",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Lei - Her (2013) 1080p H265 AC3 5.1 ITA ENG sub ita Ph4nt0mX.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.H264.AAC-RARBG\n👤 4 💾 2.4 GB ⚙️ RARBG",
+      "infoHash": "98cfe167285fe371897796dd7a98d12e1e3f7b0b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Her.2013.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Она / Her (2013) BDRip 1080p от NNNB | Rus Transfer\n👤 4 💾 7.95 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "b52c91c17e080774c0cfe0aae44638679350e81c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Ona.(2013).BDRip.1080p.[denis100].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:b52c91c17e080774c0cfe0aae44638679350e81c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Она / Her (2013) BDRemux 1080p от NovaLan | Лицензия\n👤 4 💾 30.85 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "85eb659f47cefccebacec0ddf0b78d048ea5a3fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Her.2013.BDRemux.1080p.NovaLan.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:85eb659f47cefccebacec0ddf0b78d048ea5a3fd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Ela (2014) BluRay 1080p Dual Audio\n👤 4 💾 2.25 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "36f8bd23ee2a6b4f808b15cb19bec970bd18329b",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Ela.2014.1080p.Dual-WOLVERDONFILMES.COM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.Bluray.1080p.DTS-HD.x264-Grym\n👤 4 💾 16.24 GB ⚙️ ThePirateBay",
+      "infoHash": "21141de58a34e5f969a1004156f96f7bae63b6b8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.BluRay.x264-SPARKS\n👤 3 💾 8.74 GB ⚙️ RARBG",
+      "infoHash": "4afa5023f5c95f31d0c31bba0a95c85e9c1683fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Her.2013.1080p.BluRay.x264-SPARKS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 (1080p Bluray x265 HEVC 10bit AAC 5.1 Tigole) [UTR]\nHer 2013 (1080p x265 10bit Tigole).mkv\n👤 3 💾 3.16 GB ⚙️ 1337x",
+      "infoHash": "34951450db5e025aa1a290c8e6a8c3916cca7ce2",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Her 2013 (1080p x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Она / Her [2013 Blu-Ray disc 1080i] Dub\n👤 3 💾 18.52 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "15c2aebe760269935f4447a4ca079447c8339f61",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:15c2aebe760269935f4447a4ca079447c8339f61",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her 2013 1080p BluRay AVC Remux DTS-HD MA 5.1-alrmothe\n👤 3 💾 24.41 GB ⚙️ ThePirateBay",
+      "infoHash": "39d2a108cc16a8b8dca1ea6d80e5e5061d2c1dc4",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "ALL Best Picture Nominees 1080p BluRay Part 2 of 3 2005-2014 75 Movies jZQ\n2013/Her (2013) IMDB 8.0/Her.2013.1080p.BluRay.x265-RARBG.mp4\n👤 2 💾 1.96 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1d4ecc974b5c309f76ccc51ec637e4e3422416b6",
+      "fileIdx": 378,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Her.2013.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Her.2013.1080p.US.Transfer.BluRay.Rip.HEVC.H.265.10Bit.DD5.1.Ukr.Eng-Hurtom\n👤 2 💾 4.85 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇺🇦",
+      "infoHash": "89b3df37536c8549512fa8c8e2d329384e0883f8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|hevc|10bit",
+        "filename": "Her (2013) [US Transfer] BDRip 1080p H.265 [UKR_ENG] [Hurtom].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Her (2013) 720p BrRip x264 - YIFY\n👤 50 💾 874.76 MB ⚙️ ThePirateBay",
+      "infoHash": "dc0b5ff98d23221746024eb34336b6891aecff25",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Her.2013.720p.BluRay.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Her 2013 720p BluRay x264-WiKi\n👤 3 💾 5.05 GB ⚙️ ThePirateBay",
+      "infoHash": "125245358e529c90c50918cb470b814fa5e05d50",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Она / Her [2013 HDRip-AVC] Dub + Original (Eng) + Sub (Rus Eng)\n👤 77 💾 1.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a902698171faf5ab1a049f7a5b88665c9ae8b25e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Ona(Her)_(2013).HDRip-AVC.aac.Dub.Eng.Sub_[All.Films][RG].mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:a902698171faf5ab1a049f7a5b88665c9ae8b25e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Она / Her [2013 HDRip] Dub\n👤 5 💾 750.33 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "e266b7743c362f4aceb19d5cf81db090e1628cdb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Ona(Her)_(2013).HDRip.mp3.Dub_[All.Films][RG].avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:e266b7743c362f4aceb19d5cf81db090e1628cdb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Она / Her [2013 BDRip] Dub\n👤 5 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "a4db5f39e48fb97d3fc5e34083bf95da14c6a150",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Ona_2013_BDRip_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a4db5f39e48fb97d3fc5e34083bf95da14c6a150",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Her.2013.FRENCH.BRRip.XviD.AC3-NoTag\n👤 4 💾 2.05 GB ⚙️ EXT\n🇫🇷",
+      "infoHash": "7f83b578fdab1e6e368ff020234127b34422966d",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|xvid"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Эротические истории. Том IV / Erotic tales. Volume IV (1996) DVDRip от R.G. Mega Best\neroticheskie.istorii.2.tom.4.DVDRip.R.G.Mega.Best.avi\n👤 3 💾 451.28 MB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "f70c2c8496366a13680d95a5af3ee780d1593ef9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "eroticheskie.istorii.2.tom.4.DVDRip.R.G.Mega.Best.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:f70c2c8496366a13680d95a5af3ee780d1593ef9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nSCR",
+      "title": "Her.2013.FANSUB.VOSTFR.DVDSCR.XVID.AC3-NIKOo\n👤 3 💾 1.7 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "a99193eea81e4c9349e9d38a665f2a26cf31aa4e",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR|xvid"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "0peliculas series\nPELICULAS MAYOR/2013.R.L.A.avi\n👤 75 💾 699.93 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "cca5d69debbb9dadf164d91ad6bbd8c04216f3be",
+      "fileIdx": 85,
+      "behaviorHints": {
+        "filename": "2013.R.L.A.avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Her - Lei (2013) [Xvid- Italian English Ac3 5.1 - Sub Ita] MIRCrew\n👤 5 💾 1.99 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "3cb70e93b588701f33e87700091878551d88296d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|xvid",
+        "filename": "Lei - Her (2013).ita.eng.sub.ita.MIRCrew.avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Her-Lei (2013) [H264 - Ita Eng Aac - Sub Ita][TNT Village]\n👤 4 💾 2.1 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "8c53dde24f7c37357d013547dfd4e1eb23954a8b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|h264"
+      }
+    }
+  ]
+}

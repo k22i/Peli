@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { accuracy, fakeRates, fakeTargets, fields, labelled, report } from "./accuracy";
+import { accuracy, fakeRates, fakeTargets, fieldRows, fields, labelled, report } from "./accuracy";
 import corpus from "./corpus/labelled.json";
 
 // The CI gate (#51): the parser's per-field accuracy and the fake checks'
@@ -8,7 +8,10 @@ import corpus from "./corpus/labelled.json";
 // parser regression fails the build. corpus/accuracy.md lists the numbers
 // and every miss.
 
-const rows = labelled(corpus);
+const everything = labelled(corpus);
+// The gate counts the 492 rows labelled in full; the "titles" split (#99) has
+// only the labels the title check needs and is reported on its own.
+const rows = fieldRows(everything);
 
 it("has the whole labelled corpus", () => {
   expect(rows).toHaveLength(492);
@@ -17,6 +20,7 @@ it("has the whole labelled corpus", () => {
       (split) => rows.filter((row) => row.split === split).length,
     ),
   ).toEqual([200, 100, 60, 132]);
+  expect(everything.filter((row) => row.split === "titles")).toHaveLength(290);
 });
 
 describe.each(fields)("$name", (field) => {
@@ -46,5 +50,5 @@ describe("fake checks", () => {
 
 // A parser change shows as a diff in the report.
 it("matches the recorded report", async () => {
-  await expect(report(rows)).toMatchFileSnapshot("./corpus/accuracy.md");
+  await expect(report(everything)).toMatchFileSnapshot("./corpus/accuracy.md");
 });

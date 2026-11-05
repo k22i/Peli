@@ -1,0 +1,1517 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-heat",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0113277.json",
+  "recordedAt": "2026-11-05T22:41:43.022Z",
+  "status": 200,
+  "ms": 239,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Схватка / Heat [1995 UHD BDRemux 2160p HDR10] [Director's Definitive Edition / Ultimate Collector's Edition] 5x MVO + 2x DVO + 7x AVO + 2x VO + Original (Eng) + Sub (Rus Eng)\n👤 88 💾 101.09 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "c4265c6392a4cf18eb25145ca2373ae5367d7db1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|HDR",
+        "filename": "Схватка - Heat (1995) UHD BDRemux US 2160p HDR Ultimate Collector's Edition от RuTracker.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:c4265c6392a4cf18eb25145ca2373ae5367d7db1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Heat (1995) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Tigole) [QxR]\n👤 69 💾 18.84 GB ⚙️ 1337x",
+      "infoHash": "a648ea7b762de0547ce191e46819173b17172c6f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Heat (1995) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Схватка / Погоня / Одержимость / Heat [1995 WEB-DL 2160p HDR10] 5x MVO + 2x DVO + 6x AVO + Original (Eng) + Sub (Rus Eng)\n👤 55 💾 38.51 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "c38c277b1f1c82eaf7612ca5faa334dca1ac9046",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|10bit|HDR",
+        "filename": "Схватка.1995.WEB-DL.2160p.HDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:c38c277b1f1c82eaf7612ca5faa334dca1ac9046",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Heat (1995) (EPS UHD Regrade) (2160p x265 HEVC 10bit HDR DTS 7.1 SAMPA) [QxR]\n👤 37 💾 23.74 GB ⚙️ 1337x",
+      "infoHash": "9d2f491c64d3b901e9eca813faaa1d67d74676d4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Heat (1995) (2160p BluRay x265 HDR SAMPA).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Heat.1995.2160p.WEB-DL.x265.10bit.HDR.DTS-HD.MA.5.1-SWTYBLZ\n👤 24 💾 34.99 GB ⚙️ RARBG",
+      "infoHash": "afc37b343d7d3acb013f45946cf2f0c0148eebe3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|HDR",
+        "filename": "Heat.1995.2160p.WEB-DL.x265.10bit.HDR.DTS-HD.MA.5.1-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Heat.1995.4K.HDR.2160p.BDRemux Ita Eng x265-NAHOM\n👤 14 💾 50.4 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "0031c26ae77f0f64e571aa11d75a19c01a4f60b9",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|HDR",
+        "filename": "Heat.1995.4K.HDR.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Heat 1995 UHD BluRay 2160p HDR10 DV HEVC DTS-HD MA 5.1 x265-E\n👤 13 💾 36.97 GB ⚙️ 1337x",
+      "infoHash": "65b64539076a8d07cc66cd56eaf422551de92803",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Heat 1995.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Схватка / Heat (1995) UHD BDRip 2160p | 4K | HDR10 | P P2 A\n👤 9 💾 30.36 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "ac643788820ba5a54cd0fc09306db0c965734a79",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|h265|10bit|HDR",
+        "filename": "Схватка.Heat.1995.2160P.10bit.HDR.h265.MVO AC3 5.1.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:ac643788820ba5a54cd0fc09306db0c965734a79",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Heat - La sfida (1995) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng NUeng Licdom\n👤 9 💾 3.84 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "a70200f0b6f627eda4a00fc1e5088f42d3d8115b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Heat - La Sfida (1995) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng NUeng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Heat.1995.2160p.WEB-DL.x265.10bit.HDR.ITA.DTS.ENG.DDP-MeM.mkv\n👤 7 💾 31.8 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "837659ad0f2552e9f6e5b17a212e649f0cec4c99",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|HDR",
+        "filename": "Heat.1995.2160p.WEB-DL.x265.10bit.HDR.ITA.DTS.ENG.DDP-MeM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Heat.1995.2160p.Ai-Enhanced.DV.HDR10Plus.H265.DTS-HD.MA.5.1-MULTI-RIFE.4.15v2-60fps-DirtyHippie\n👤 6 💾 33.38 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧",
+      "infoHash": "f830410723dc57cec1268e69757e369229971d0d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|DV|HDR10+",
+        "filename": "Heat.1995.2160p.Ai-Enhanced.DV.HDR10Plus.H265.DTS-HD.MA.5.1-MULTI-RIFE.4.15v2-60fps-DirtyHippie.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Схватка / Heat (1995) UHD BDRip 2160p | 4K | HDR10 | P P2 A\n👤 5 💾 45.28 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "fc2c73c8ebaa2d3eae96ad64c4ed6f5d1ef42e2d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "Heat (1995) UHD_BDRip_2160p_HDR_BT2020_x265.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:fc2c73c8ebaa2d3eae96ad64c4ed6f5d1ef42e2d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Схватка / Heat (1995) UHD BDRemux 2160p от селезень | 4K | HDR | P P2 A\n👤 5 💾 76.14 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "e9d89a1c02d0e725b33821ab16db6a2828935800",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "Heat.1995.BDREMUX.2160p.HDR.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:e9d89a1c02d0e725b33821ab16db6a2828935800",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Heat 1995 2160p WEBRip\n👤 83 💾 7.6 GB ⚙️ YTS",
+      "infoHash": "2789dd0006b2c5ff9e9777059024c27ac0f105a8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x265|10bit",
+        "filename": "Heat.1995.2160p.4K.WEB.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Heat.1995.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT\n👤 20 💾 57.59 GB ⚙️ RARBG",
+      "infoHash": "f2337b554a945c7f86d8189fa9a8679eb6103f14",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Heat.1995.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Heat.1995.4K.UHD.BluRay.2160p.HEVC.DTS-HD.HexDrift\n👤 15 💾 55.41 GB ⚙️ 1337x",
+      "infoHash": "d46d2c65963da64733775b5a51286683a3f566e1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc",
+        "filename": "Heat.1995.4K.UHD.BluRay.2160p.HEVC.DTS-HD.HexDrift.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Heat.1995.2160p.WEBRip.3999MB.DDP5.1.x264-GalaxyRG\n👤 10 💾 4 GB ⚙️ ThePirateBay",
+      "infoHash": "a63543d919814605b283a758d4bdfede652ec542",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEBRip|x264",
+        "filename": "Heat.1995.2160p.WEBRip.3999MB.DDP5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Heat (1995) (UHD BDRip 1080p HEVC HDR10 EAC3) [OEP][E47384F6].mkv\n👤 12 💾 7.98 GB ⚙️ ThePirateBay\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+      "infoHash": "a42756f4d9efb02e74b5ace6aae5ec9a9dd156db",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|10bit|HDR",
+        "filename": "Heat (1995) (UHD BDRip 1080p HEVC HDR10 EAC3) [OEP][E47384F6].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Heat 1995 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 11 💾 6.93 GB ⚙️ ThePirateBay",
+      "infoHash": "8ff7708cf16eb051779b59a1f5a600297af89b4a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Heat 1995 UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Heat 1995 1080p UHD BluRay DD 5 1 HDR x265-SQS\n👤 7 💾 9.15 GB ⚙️ ThePirateBay",
+      "infoHash": "69e86fb21f8e24ea2ea830fda442259d7dd78258",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|HDR",
+        "filename": "Heat 1995 1080p UHD BluRay DD  5 1 HDR x265-SQS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat 1995 Directors Cut Remastered BluRay 1080p HEVC x265 5.1 BONE\n👤 198 💾 1.98 GB ⚙️ 1337x",
+      "infoHash": "74cd358d23fca24a811114f734edf5f5fb081af3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Heat 1995 Directors Cut Remastered BluRay 1080p HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Essential Films 4: MP4 X264 AC3 720p 1080p\nHeat (1995) 1080p Surround.mp4\n👤 148 💾 3.79 GB ⚙️ MagnetDL",
+      "infoHash": "cd7908a91847c63f191fe529447221e9b013c494",
+      "fileIdx": 14,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Heat (1995) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Схватка / Heat [1080p] [1995 BDRip]\nHeat.1995.BD.Rip.1080p.h264.Rus.Eng.mkv\n👤 121 💾 12.24 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "fd2c9376434cf2075bba433ca7fcbf1d0bbebb72",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Heat.1995.BD.Rip.1080p.h264.Rus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:fd2c9376434cf2075bba433ca7fcbf1d0bbebb72"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat 1995 REPACK Directors Definitive Edition 4K REMASTERED 1080p BluRay x265-YAWNTiC\n👤 108 💾 8.76 GB ⚙️ ThePirateBay",
+      "infoHash": "666188c8d7e153020c3eb8b5a2d1de9c91698242",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Heat 1995 REPACK Directors Definitive Edition 4K REMASTERED 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat (1995) 1080p BrRip x264 - YIFY\n👤 100 💾 2.1 GB ⚙️ ThePirateBay",
+      "infoHash": "447f32a80b66a52f044e4bb953357a334bed399a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Heat.1995.1080p.BRrip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Схватка / Heat [1995 BDRip 1080p] [JPN Transfer] 3x MVO + 2x DVO + 5x AVO + 3xUkr + Original Eng + Sub Rus Eng\n👤 66 💾 35.73 GB ⚙️ Rutracker\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇺🇦",
+      "infoHash": "7cc94c924832f2333bb30d83d42b2226f046445f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Heat.1995.1080p.BluRay.10xRus.3xUkr.Eng.HDCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:7cc94c924832f2333bb30d83d42b2226f046445f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.Director's.Definitive.Edition.HQ.REGRADED.UHD.BluRay.1080p.x265.10Bit.HEVC.Eng.DDP.5.1.ViTO\n👤 35 💾 6.96 GB ⚙️ 1337x",
+      "infoHash": "481f67d6e5decb87b0dd8d75570258187419a777",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Heat.1995.Director's.Definitve.Edition.HQ.REGRADED.UHD.BluRay.1080p.x265.10Bit.HEVC.Eng.DDP.5.1.ViTO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Схватка / Погоня / Одержимость / Heat [1995 BDRemux 1080p] [JPN Tran] 5x MVO (Карусель Гемини ОРТ НТВ+ Нота) + 2x DVO (Кипарис Рен-ТВ) + 6x AVO (Гаврилов Живов Горчаков Володарский Сербин Пучков) + VO + Sub Rus Eng + Original Eng\n👤 35 💾 62.58 GB ⚙️ Rutracker\n🇬🇧 / 🇯🇵 / 🇷🇺",
+      "infoHash": "c1b29b225f6a7f960692501f7af520ff61a27758",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Схватка (1995) BDRemux 1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:c1b29b225f6a7f960692501f7af520ff61a27758",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.REMASTERED.1080p.BluRay.x264.AAC 5.1\n👤 34 💾 3.25 GB ⚙️ TorrentGalaxy",
+      "infoHash": "8f76b3c624d4ea9ab4c2985b490e1f4bb4df0ef1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Heat.1995.REMASTERED.1080p.BluRay.x264.AAC 5.1-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Схватка / Heat [1995 BDRip 1080p 60 FPS] [JPN Tran] 5x MVO + 2x DVO + 6x AVO + VO + Sub Rus Eng + Original Eng\n👤 32 💾 46.42 GB ⚙️ Rutracker\n🇬🇧 / 🇯🇵 / 🇷🇺",
+      "infoHash": "b95c47746b42c10ca1e4d10b4ad0065639a2855a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Схватка (1995) BDRemux 1080p-59.94fps.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:b95c47746b42c10ca1e4d10b4ad0065639a2855a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.REMASTERED.1080p.BluRay.x265-RARBG\n👤 20 💾 2.65 GB ⚙️ RARBG",
+      "infoHash": "a2129dcd84c2f2a54886d2765e762d54a690acd9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Heat.1995.REMASTERED.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Схватка / Heat (1995) BDRip 1080p | P A\n👤 20 💾 11.55 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "cdcc56da1d41e7e7363deef528ea8ba1680aa3a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Схватка.1995.BDRip.1080p.Rus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:cdcc56da1d41e7e7363deef528ea8ba1680aa3a4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG\n👤 18 💾 1.6 GB ⚙️ ThePirateBay",
+      "infoHash": "071b63c9adfee12f48b2720a53cd2c0fe680ff46",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x264",
+        "filename": "Heat.1995.1080p.WEBRip.1600MB.DD5.1.x264-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat 1995 Directors Cut Remastered BluRay 1080p HEVC x265 5.1 [CheerfulTomato]\n👤 11 💾 1.98 GB ⚙️ 1337x",
+      "infoHash": "b1c0dae6e4e6d40d5f5f2cb1bc6922e4c391ec7d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Heat 1995 Directors Cut Remastered BluRay 1080p HEVC x265 5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat - La sfida (1995) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 10 💾 3.78 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "e6d2e54c43b19bdd26affcabe4eb59ff1a59f5c4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Heat - La sfida (1995) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 4 - Mp4 x264 AC3 1080p\nHeat (1995) 1080p Surround.mp4\n👤 10 💾 3.79 GB ⚙️ ThePirateBay",
+      "infoHash": "4e20131a166cee7614ce583330e0c0d2405bbce7",
+      "fileIdx": 21,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Heat (1995) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat - La sfida (1995) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng NUeng Licdom\n👤 9 💾 2.43 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "883c13ee2fedb8957863678aa227758af6db4b4f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Heat - La Sfida (1995) 1080p H265 ita eng AC3 5.1 sub ita eng NUeng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat 1995 1080p WebRip EAC3 5 1 x265-Lootera\n👤 9 💾 3 GB ⚙️ ThePirateBay",
+      "infoHash": "da955aaa89b0dccdc564d074784444bc8e2d6637",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEBRip|x265",
+        "filename": "Heat 1995 1080p WebRip EAC3 5 1 x265-Lootera.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.Directors.Definitive.Edition.4K.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-EPSiLON\n👤 8 💾 36.5 GB ⚙️ 1337x",
+      "infoHash": "508218777ae97f0ec509aa5cb02f2ba4a37fc1de",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.Hybrid.DDE.Bluray.1080p.DTS-HD.x264-Grym\n👤 8 💾 25.94 GB ⚙️ ThePirateBay",
+      "infoHash": "7f97f60e39847691039db46fea210e2d87b681a3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Схватка / Heat (1995) BDRip 1080p от ExKinoRay | P P2 A\n👤 7 💾 39.98 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "6fb0f50252b84b3d255685b61a996a8401ef1965",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Heat.1995.BDRip.1080p.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:6fb0f50252b84b3d255685b61a996a8401ef1965",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat-La sfida (1995) ITA-ENG Ac3 5.1 BDRip 1080p H264 [ArMor]\n👤 7 💾 5.85 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "3ef16d008cb8a5bac40658ce9793119cd151a27f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Heat-La sfida (1995) ITA-ENG Ac3 5.1 BDRip 1080p H264 [ArMor].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 101-150 BluRay 1080p x265 10bit MNHD-FRDS\n124.盗火线.Heat.1995.BluRay.1080p.x265.10bit.3Audio.MNHD-FRDS/Heat.1995.BluRay.1080p.x265.10bit.3Audio.MNHD-FRDS.mkv\n👤 6 💾 8.42 GB ⚙️ EXT",
+      "infoHash": "08079cb5f524683e3a8da9e31f53ab81663b2501",
+      "fileIdx": 163,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Heat.1995.BluRay.1080p.x265.10bit.3Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat 1995 1080p DUAL BluRay x264 AC3 5 1 - HdT\n👤 6 💾 5.54 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇹🇷",
+      "infoHash": "1a11dec54e7cf605da32edc64b9e9bd6ca877d86",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Heat 1995 1080p DUAL BluRay x264 AC3 5 1 - HdT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat.1995.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 6 💾 43.78 GB ⚙️ RARBG",
+      "infoHash": "001810dae4e445e788fe54376055463e984da27e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Heat.1995.REMASTERED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "[1995] HEAT - LA SFIDA - EXTENDED [1080p x265 ITA DTS 5.1 ENG AAC 5.1] (by.phadron) MIRCrew\n👤 5 💾 4.71 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "0c096882f19947b0636b38dd5e20359df7102e11",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265",
+        "filename": "Heat - La sfida (1995) EXTENDED [1080p.x265.ITA-DTS-5.1-ENG] (by.phadron) MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Fuegocontrafuego.1995.1080P-Dual-Lat\n👤 5 💾 2.76 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "430ece53756b6d7189909173970a3024844b03c5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Fuegocontrafuego.1995.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Heat (1995) 1080p BluRay AV1 Opus Multi4 [dAV1nci]\n👤 5 💾 3.5 GB ⚙️ 1337x",
+      "infoHash": "5838ab63bae7212da83c0bff9ecb5a17551004d7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Heat.1995.1080p.BluRay.AV1.Opus.Multi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Heat (1995) 720p BrRip x264 - 850MB - YIFY\n👤 82 💾 849.94 MB ⚙️ ThePirateBay",
+      "infoHash": "21520ea90c877272c5639c136d5e6a1327486837",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Heat.1995.BrRip.720p.x264.YIFY.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Схватка / Heat [1995 BDRip-AVC] [720p / DVD5] DVO + AVO (Гоблин) + Original + Sub (3 x rus США 2 x eng)\n👤 40 💾 4.36 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "cd9db102b1e5627d06862868f401c6d16727c2e3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|avc",
+        "filename": "Heat.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:cd9db102b1e5627d06862868f401c6d16727c2e3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Схватка / Heat [1995 BDRip 720p] [JPN Transfer] 5x MVO + 2x DVO + 7x AVO + 2x VO + Sub Rus Eng + Original Eng\nHeat [BDRip 720p 1995].mkv\n👤 18 💾 10.53 GB ⚙️ Rutracker\n🇬🇧 / 🇯🇵 / 🇷🇺",
+      "infoHash": "a121b5d5ad828b34815ffdfaeaa31fd4af9c7ce5",
+      "fileIdx": 16,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Heat [BDRip 720p 1995].mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a121b5d5ad828b34815ffdfaeaa31fd4af9c7ce5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Heat (1995) [720p] [BDRip.XviD.AC3-5.1-ELiTE] [AVI] [Lektor PL] [RobSil]\n👤 7 💾 4.69 GB ⚙️ BestTorrents\n🇵🇱",
+      "infoHash": "b32579c66762b7e46499ced7ca2f9451aaa1f336",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|xvid",
+        "filename": "Gorączka.Heat.1995.PL.720p.BDRip.XviD.AC3-ELiTE.avi"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Heat 1995 720p TUBI WEB-DL AAC 2 0 H 264-PiRaTeS\n👤 5 💾 3.03 GB ⚙️ ThePirateBay",
+      "infoHash": "c51c893daab7301d1d4205ac6d1ee8c9a7c84740",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|WEB-DL|h264",
+        "filename": "Heat 1995 720p TUBI WEB-DL AAC 2 0 H 264-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip-AVC] MVO (ОРТ) + DVO (REN-TV) + Original eng + Sub (Rus Eng)\n👤 126 💾 2.92 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "399b6a53c4fefa8bc3536ebdd2feb238d850d413",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Heat.1995.BDRip-AVC.2xRus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:399b6a53c4fefa8bc3536ebdd2feb238d850d413",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] MVO (ТВ-Центр)\n👤 73 💾 2.15 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "ee68dd21b3ef9d2aee04ed35a48b390a38a66b51",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Схватка (ТВ-Центр).avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:ee68dd21b3ef9d2aee04ed35a48b390a38a66b51",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] MVO (РТР)\n👤 23 💾 2.15 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "204a3e954b900d40029f84dbba4abacdf399ccf9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Схватка.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:204a3e954b900d40029f84dbba4abacdf399ccf9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] MVO (ОРТ)\n👤 23 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "25c6ce0c551111327b6f3f4129d8190f566e57ec",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Shvatka.1995.BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:25c6ce0c551111327b6f3f4129d8190f566e57ec",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] AVO (Гоблин / Goblin)\n👤 20 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "16045d37dd1eaaeaf51c78b87d8eb2b6807657d3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Shvatka.1995_Goblin.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:16045d37dd1eaaeaf51c78b87d8eb2b6807657d3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] MVO (НТВ) + DVO (REN-TV)\n👤 14 💾 2.11 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "36126c91269ad44ea04fdc3c92f6ebb9e0195bf9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Схватка (НТВ + REN-TV).avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:36126c91269ad44ea04fdc3c92f6ebb9e0195bf9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Схватка / Heat (1995) HDRip-AVC | JPN Transfer | P\n👤 11 💾 1.45 GB ⚙️ Rutor\n🇬🇧 / 🇯🇵 / 🇷🇺",
+      "infoHash": "37db2c328f251b618adb6009eb07736463a1f2c5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Схватка.(1995).HDRip-AVC.JPN.[-=DoMiNo=-].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:37db2c328f251b618adb6009eb07736463a1f2c5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [США 1995 триллер BDRip-AVC] MVO + DVO + AVO (Гаврилов) + AVO (Живов) + Original (Eng) + Sub (Rus Eng)\n👤 10 💾 1.47 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "8603b7aa76be1b13142ba74e0ac292a126e1570a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Схватка.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:8603b7aa76be1b13142ba74e0ac292a126e1570a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Схватка / Heat [1995 Blu-ray] MVO + AVO\n👤 9 💾 42.97 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "64ebf5b4315c2a18a1b9afd30a547d24333ef54d",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:64ebf5b4315c2a18a1b9afd30a547d24333ef54d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Погоня / Heat [1995 BDRip-AVC] AVO (Гоблин) + Original + Sub (Rus Eng)\n👤 9 💾 2.47 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "8576951f3f712a0e0ef4c15ae719f879e9444ad8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Heat.1995.BDRip.by.gjiAm.AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:8576951f3f712a0e0ef4c15ae719f879e9444ad8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] AVO (Гаврилов)\n👤 8 💾 2.91 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "51ef28aa03aad3b114d6c474035be354413fc5cf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Схватка (1995) BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:51ef28aa03aad3b114d6c474035be354413fc5cf",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Схватка / Heat [1995 DVDRip] [Расширенная версия / Extended Cut] MVO (Первый канал)\n👤 6 💾 2.19 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "eb8b4d142203e7f012c304d70b8960b831259f69",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid",
+        "filename": "Heat.Extended.1995.RUS.DVDRip.XviD.AC3.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:eb8b4d142203e7f012c304d70b8960b831259f69",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Схватка / Heat [1995 BDRip] DVO + MVO + 2x AVO + Original\nShvatka.1995.DUAL.BDRip.XviD.AC3.-HQ-ViDEO.avi\n👤 6 💾 2.91 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺",
+      "infoHash": "480eba5d03b0cdb3bf2354349c378882d0d18109",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Shvatka.1995.DUAL.BDRip.XviD.AC3.-HQ-ViDEO.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:480eba5d03b0cdb3bf2354349c378882d0d18109",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Схватка / Heat [1995 DVDRip]\n👤 6 💾 2.91 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "c302bb6db20c8f030be3686f2b26cc8eed6c2871",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Heat (DVDrip, Rus)_int_.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:c302bb6db20c8f030be3686f2b26cc8eed6c2871",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Схватка / Heat (1995) HDRip от Scarabey\n👤 5 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "c3abd0fef8ad67464665c5d91583ce00570ff2fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Shvatka_HDRip_1995_[scarabey.org]_by_Scarabey.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:c3abd0fef8ad67464665c5d91583ce00570ff2fd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Схватка / Heat [1995 DVDRip-AVC]\n👤 5 💾 3.44 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "7c04fc002537dc5650d3525529718c324c95f8cf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|avc",
+        "filename": "Схватка (1995) AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:7c04fc002537dc5650d3525529718c324c95f8cf",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    }
+  ]
+}

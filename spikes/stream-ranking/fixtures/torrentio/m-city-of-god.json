@@ -1,0 +1,857 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-city-of-god",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0317248.json",
+  "recordedAt": "2026-11-05T22:38:54.711Z",
+  "status": 200,
+  "ms": 72,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "City of God 2002 Upscaled Bluray 2160p HDR10 HEVC DTS-HD MA 5.1 x265-E\n👤 18 💾 32.7 GB ⚙️ 1337x\n🇵🇹",
+      "infoHash": "dc8a85cb682b8f66905634250ed130f55efc78db",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "City of God 2002.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City Of God 2002 1080p BluRay x264-CiNEFiLE\n👤 162 💾 8.75 GB ⚙️ ThePirateBay",
+      "infoHash": "93936a441908d50dce630431b46e9680a068a89e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "City.Of.God.2002.1080p.BluRay.x264-CiNEFiLE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.1080p.BluRay.x264.anoXmous\n👤 104 💾 2.23 GB ⚙️ ThePirateBay",
+      "infoHash": "80275c5c97dbb22837dfd51098c56cc2aa11a30d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "City.of.God.2002.1080p.BluRay.x264.anoXmous_.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God 2002 1080p BluRay\n👤 100 💾 2.07 GB ⚙️ YTS",
+      "infoHash": "86a338246204a48d75985861817bf56f9e3e18e9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "City.Of.God.2002.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God (2002) (1080p BluRay x265 HEVC 10bit EAC3 5.1 Portuguese Bandi) [QxR]\nCity of God (2002) (1080p BluRay x265 Bandi).mkv\n👤 82 💾 7.88 GB ⚙️ 1337x\n🇵🇹",
+      "infoHash": "d3aee6d673c6cf52e93ecdb954029119b934cdc4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "City of God (2002) (1080p BluRay x265 Bandi).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City Of God (2002) [Cidade de Deus] 1080p BluRay x265 HEVC EAC3-SARTRE\n👤 66 💾 6.03 GB ⚙️ 1337x",
+      "infoHash": "dfeb00253a134a37c63a6615bae68b09a7721107",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "City.Of.God.2002.1080p.BluRay.x265.HEVC.EAC3-SARTRE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.Of.God.2002.CUSTOM.MULTi.1080p.BluRay.AC3.5.1.x264-YTS.mkv\n👤 56 💾 3.1 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "468bc97a398e552d32f43eefa0560d00fe912971",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "City.Of.God.2002.CUSTOM.MULTi.1080p.BluRay.AC3.5.1.x264-YTS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip 1080p] MVO + VO + Sub Rus Eng + Original Por\n👤 54 💾 12.32 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "ee20ec1aa8dd718050cf455c9e2ca6e1ee5bb8b5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Cidade de Deus.2002.BD.Rip.1080p.h264.2xRus.Por.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:ee20ec1aa8dd718050cf455c9e2ca6e1ee5bb8b5"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRemux 1080p] MVO + VO + Sub Rus Eng + Original Por\n👤 45 💾 26.97 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "5cd150203a63ee58dc50d0d6dc3a7eba543cb446",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|h264",
+        "filename": "Cidade de Deus.2002.BD.Remux.1080p.h264.2xRus.Por.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:5cd150203a63ee58dc50d0d6dc3a7eba543cb446",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God 2002 REPACK 1080p BluRay x265-YAWNTiC\n👤 40 💾 7.42 GB ⚙️ ThePirateBay",
+      "infoHash": "30c48c4589799fe59062935bf4cfc76bd9f61267",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "City of God 2002 REPACK 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.1080p.BluRay.Remux.DTS-HD.MA.5.1-WARHD\n👤 30 💾 26.6 GB ⚙️ ThePirateBay",
+      "infoHash": "9dc37dd6d03fbdbed1cfd46459db913e9580c063",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God - Cidade de Deus (2002) AC3 5.1 ITA.POR 1080p H265 sub ita.eng MIRCrew\n👤 21 💾 3.16 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇵🇹",
+      "infoHash": "022e3905421cf425a1b5d8b32acb094691b1181b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "City of God - Cidade de Deus (2002) AC3 5.1 ITA.POR 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City Of God - Cidade de Deus (2002) 1080p H265 ITA POR AC3 5.1 SUB ITA ENG - Tarek\n👤 16 💾 3.96 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹 / 🇵🇹",
+      "infoHash": "b7bcbdddad8e62c7c81523dc3de8b42fd048f77d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "City.Of.God-Cidade.de.Deus.2002.1080p.H265.ITA.POR.AC3.5.1.SUB.ITA.ENG-Tarek.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Город бога / Cidade de Deus [2002 BDRip 1080p] [Open Matte] MVO + 4 х VO + Sub Rus Eng + Original Por\n👤 13 💾 16.42 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "79fdc8c0d2722f84c29d95fade535e2f8c42c8ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Город Бога.2002.BDRip.1080p.Open-Matte.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:79fdc8c0d2722f84c29d95fade535e2f8c42c8ad",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.PORTUGUESE.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 13 💾 24.22 GB ⚙️ BluDV\n🇬🇧 / 🇵🇹",
+      "infoHash": "7a7560cf64fb2fc4a1b1973d6b4ed0c151724888",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "City.of.God.2002.PORTUGUESE.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City Of God 2002 1080p BluRay x265-YAWNTiC\n👤 11 💾 5.45 GB ⚙️ ThePirateBay",
+      "infoHash": "889e894a22a507bf058323089ead37e17f41c62f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "City Of God 2002 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.bluray.sdr.portuguese.1080p.av1.1500mb-Rosy\n👤 11 💾 1.41 GB ⚙️ 1337x\n🇵🇹",
+      "infoHash": "2e1738e2ede25cfb4ac3d755270a17db8abbbb9d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "City.of.God.2002.bluray.sdr.portuguese.1080p.av1.1500mb-Rosy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God (2002) (1080p x265 HEVC 10bit BluRay DTS-HD MA 5.1) [Prof]\n👤 10 💾 14.47 GB ⚙️ 1337x\n🇵🇹",
+      "infoHash": "a4c9e8b79dc5c119c5e00e336e309e02d18fea18",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "City of God (2002).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.PORTUGUESE.1080p.BluRay.x265-VXT\n👤 9 💾 2.02 GB ⚙️ RARBG\n🇵🇹",
+      "infoHash": "493d7f6595958043515c80ef9f85bd2e4b8b52e8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "City.of.God.2002.PORTUGUESE.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God (2002 ITA/POR) [1080p] [HollywoodMovie]\n👤 9 💾 11.85 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇵🇹",
+      "infoHash": "4c57ee9e260e154ad950253aaa9230f218432e89",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "City of God - 2002 - HMR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS\n022.上帝之城.City.of.God.2002.BluRay.1080p.x265.10bit.MNHD-FRDS/City.of.God.2002.BluRay.1080p.x265.10bit.MNHD-FRDS.mkv\n👤 8 💾 8.27 GB ⚙️ EXT",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 155,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "City.of.God.2002.BluRay.1080p.x265.10bit.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God (Cidade.de.Deus).2002.Bluray.1080p.DTS-HD.x264-Grym\n👤 8 💾 17.58 GB ⚙️ ThePirateBay",
+      "infoHash": "8384ea226cd73af01885568a8c959c33a3592f6b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God 2002 (1080p Bluray x265 HEVC 10bit AAC 5.1 Portuguese Tigole) [UTR]\n👤 6 💾 5.6 GB ⚙️ 1337x\n🇵🇹",
+      "infoHash": "87622451df94bd689842f2f78cccc5f6c555edef",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God / Cidade de Deus (2002) (1080p BluRay x265 10-bit AAC 5.1) [WeSLeY]\n👤 5 💾 9.94 GB ⚙️ 1337x",
+      "infoHash": "77bd76789bf7933363fb16935fe7718e8f9a4157",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "City of God (2002) (1080p BluRay x265 10-bit AAC 5.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La Cité de Dieu FRENCH HDLight 1080p 2002\n[ Torrent9.cz ] La.Cité.De.Dieu.2002(HDLight-x264)1080p-AAC_Multi.mkv\n👤 5 💾 2.85 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "dfab8c83cac109430c22430644494572dfc54e31",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "[ Torrent9.cz ] La.Cité.De.Dieu.2002(HDLight-x264)1080p-AAC_Multi.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God 2002 & City of Men 2007 BDRip 1080p DTS 5.1-HighCode\n👤 5 💾 33.6 GB ⚙️ 1337x",
+      "infoHash": "ff5188a25852436b232bee1e83ebc79bcfd3055b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City of God - 2002 - MICRO 1080P - HMR\n👤 4 💾 4.03 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇵🇹",
+      "infoHash": "3ef00948eef517af32cb43518d1325f6587bb972",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "City of God - 2002 - MICRO 1080P - HMR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Ciudad.de.Dios.2002.1080p-Dual-Lat\n👤 4 💾 3.59 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "f04f22b99612ad70018d0b904cbd4968b1e3136c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Ciudad.de.Dios.2002.1080p-Dual-Lat.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.PORTUGUESE.1080p.av1.opus.5.1.BluRay-Pandit\n👤 4 💾 4.24 GB ⚙️ 1337x\n🇬🇧 / 🇵🇹",
+      "infoHash": "2b0089a890c66f8819d06ed0d73b378d1a055286",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "City.of.God.2002.PORTUGUESE.1080p.av1.opus.5.1.BluRay-Pandit.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.PORTUGUESE.1080p.BluRay.H264.AAC-VXT\n👤 4 💾 2.47 GB ⚙️ RARBG\n🇵🇹",
+      "infoHash": "c5619b96b6aa2dbe538a6d103d04404fd17815df",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "City.of.God.2002.PORTUGUESE.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God.2002.PROPER.1080p.BluRay.x264-PHOBOS\n👤 4 💾 10.92 GB ⚙️ RARBG",
+      "infoHash": "b550bb34635923f5e6aad0b39e278c1ab333a4a6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "City.of.God.2002.PROPER.1080p.BluRay.x264-PHOBOS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "City.of.God - La città di Dio 2002 BDRip 1080p Ita Por x265-NAHOM\n👤 4 💾 2 GB ⚙️ 1337x\n🇮🇹 / 🇵🇹",
+      "infoHash": "ef3c6b969d8d7f903aeab00840f466da2f221f07",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "City.of.God - La città di Dio 2002 BDRip 1080p Ita Por x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Город бога / Cidade de Deus [2002 Blu-ray disc (custom) 1080p] MVO + VO + Original Por + Sub Rus\n👤 4 💾 34.52 GB ⚙️ Rutracker\n🇷🇺 / 🇵🇹",
+      "infoHash": "49c14a231bb9262b5e9cc5c633f5378bdd851ad2",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:49c14a231bb9262b5e9cc5c633f5378bdd851ad2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip 720p] MVO + VO + Sub Rus Eng + Original Por\n👤 20 💾 7.38 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "cf6f5c68031a4725bae7f6598ae0e8a7d91a3515",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|h264",
+        "filename": "Cidade de Deus.2002.BD.Rip.720p.h264.2xRus.Por.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:cf6f5c68031a4725bae7f6598ae0e8a7d91a3515",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "City.Of.God.2002.720p.Bluray.x264.anoXmous\n👤 16 💾 791.2 MB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "361db8f0516f48c86c1fee8d02fd0ca97a4abc1f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "City.Of.God.2002.720p.Bluray.x264.anoXmous.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "City.of.God.2002.PROPER.720p.BluRay.x264-PHOBOS [Cidade de Deus]\n👤 13 💾 6.55 GB ⚙️ ThePirateBay",
+      "infoHash": "3ab3a7f3de1c71ac196be572cd173d9f5e3f86c5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "City.of.God.2002.PROPER.720p.BluRay.x264-PHOBOS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "City Of God-720p MP4 AAC x264 BRRip 2002-CC\n👤 12 💾 2.26 GB ⚙️ ThePirateBay",
+      "infoHash": "c8f7e803c0bdef87ad6d8e5748c5c0aa91934260",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "City of God (2002) 720p BRRiP x264 AAC 5.1 [Team Nanban](pimprg)\n👤 6 💾 1.16 GB ⚙️ ThePirateBay",
+      "infoHash": "8ffbadcada5292e00e462b566f4628d80b328f00",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "City of God 2002 720p BluRay\n👤 5 💾 1.07 GB ⚙️ YTS",
+      "infoHash": "ed567d8c5aac0b417de9aeceedd3ad76c32f1c31",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "City.Of.God.2002.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Cidade de Deus [City Of God][2002] 720p BRRip H264 AC3 - CODY\n👤 5 💾 2.32 GB ⚙️ ThePirateBay",
+      "infoHash": "acd5c654b8631c34149b6386dfe013c94737f73a",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|h264"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip] MVO + Original (Por) + Sub (rus eng)\n👤 37 💾 2.18 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "aa2f109da32268052e1b2c643b31cddbbce6e5ce",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Gorod.Boga.2002.DUAL.BDRip.XviD.AC3.-Shevon.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:aa2f109da32268052e1b2c643b31cddbbce6e5ce",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Cidade.de.Deus.[City.Of.God].2002.BRRip.H264.AAC.5.1ch.Gopo\n👤 29 💾 2.02 GB ⚙️ ThePirateBay",
+      "infoHash": "063ab0837a27ed1197386d3a6c52248905db5f57",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|h264"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Город бога / Cidade de Deus [2002 DVDRip] MVO\n👤 8 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "d5e167839a7c84c7f8a4c75cab309868c5100fa8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Gorod.boga.2002_[torrents.ru].avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:d5e167839a7c84c7f8a4c75cab309868c5100fa8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Город бога / City of God / Cidade de Deus (2002) HDRip-AVC | P P1 A | Open Matte\n👤 5 💾 4.62 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇵🇹",
+      "infoHash": "03e1a1e4c604352919729233afdbda0b70e1c1de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Cidade.de.Deus.2002.x264.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:03e1a1e4c604352919729233afdbda0b70e1c1de",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip] VO (The LEXX)\n👤 5 💾 2.18 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "16421ec41848f5beb1e18e262e711ce5e055e7dc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Cidade de Deus.2002.BDRip.VO.THE_LEXX.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:16421ec41848f5beb1e18e262e711ce5e055e7dc",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Город Бога / Cidade de Deus / City of God [2002 HDRip] MVO (Мега-Видео)\n👤 4 💾 746.23 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "2e9e1c7ecc3a0cdcf1bef7b10c86f3b080f921ef",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Gorod.Boga.2002.HDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:2e9e1c7ecc3a0cdcf1bef7b10c86f3b080f921ef",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip-AVC] MVO + VO + Original + Sub\n👤 4 💾 2.19 GB ⚙️ Rutracker\n🇷🇺 / 🇵🇹",
+      "infoHash": "a25ef47e7d49214c3ae1f5118d13e766feccb45d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "City of God.mkv"
+      },
+      "sources": [
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:a25ef47e7d49214c3ae1f5118d13e766feccb45d"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip-AVC] MVO + VO + Original + Sub\n👤 4 💾 3.41 GB ⚙️ Rutracker\n🇷🇺 / 🇵🇹",
+      "infoHash": "b2dd590c93241d2876ff98f1b9df96f41f93e4c8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Cidade.de.Deus.2002.BDRip.by.gjiAm.AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:b2dd590c93241d2876ff98f1b9df96f41f93e4c8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Город бога / Cidade de Deus / City of God [2002 BDRip] MVO + VO\n👤 4 💾 2.18 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "711e256f0128a0dcecdb1769e30fd1375c8ef9fa",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Gorod.Boga.2002_[torrents.ru].avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:711e256f0128a0dcecdb1769e30fd1375c8ef9fa",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "City Of God (2002) - English Hardcoded Subs\n👤 81 💾 820.92 MB ⚙️ ThePirateBay",
+      "infoHash": "f2f4c5bc9bc502aa8619f55549ad067a423cf3be",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "filename": "City of God hard subbed.avi"
+      }
+    }
+  ]
+}

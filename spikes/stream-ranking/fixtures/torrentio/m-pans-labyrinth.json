@@ -1,0 +1,713 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-pans-labyrinth",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0457430.json",
+  "recordedAt": "2026-11-05T22:38:43.370Z",
+  "status": 200,
+  "ms": 57,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Pans.Labyrinth.2006.2160p.UHD.BluRay.x265.10bit.HDR.DTS-HD.MA.7.\n👤 56 💾 21.07 GB ⚙️ ThePirateBay",
+      "infoHash": "6a54faded4e49cede7305f7543ee1234c08f6a6c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Pan's Labyrinth (2006) (2160p BluRay x265 HEVC 10bit HDR AAC 5.1 Spanish Tigole) [QxR]\n👤 28 💾 14 GB ⚙️ 1337x\n🇪🇸",
+      "infoHash": "4054aae27fe6868c2d1922f6893da8b7c8a83368",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Pan's Labyrinth (2006) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Pans Labyrinth 2006.UHD.BluRay.2160p.HDR.DTS-HD.MA.5.1.HEVC-DDR\n👤 24 💾 16.19 GB ⚙️ TorrentGalaxy",
+      "infoHash": "6136620950c636fc8ab4318abdcb10a3224f4ced",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Pans Labyrinth 2006.UHD.BluRay.2160p.HDR.DTS-HD.MA.5.1.HEVC-DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Il.Labirinto.del.Fauno.2006.4K.HDR.2160p.BDRip Ita Spa x265-NAHOM\n👤 18 💾 14.07 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇪🇸",
+      "infoHash": "7938e03406399a68b2ed72b7490c63ee9b13eadc",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Pan's.Labyrinth.2006.4K.HDR.2160p.BDRip Ita Spa x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Pan's Labyrinth 2006 UHD BluRay 2160p HDR10 DV HEVC DTS-HD MA 7.1 x265-E\n👤 16 💾 21.32 GB ⚙️ 1337x\n🇪🇸",
+      "infoHash": "35b4bfdfef45908e3f11c53ea3ff529f68987fc3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Pan's Labyrinth 2006.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Pans.Labyrinth.2006.UHD.BluRay.2160p.DTS-HD.MA.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR\n👤 16 💾 50.99 GB ⚙️ TorrentGalaxy",
+      "infoHash": "88098cb2f90d79c2b14aeaf28c03e8715c1f968c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Pans.Labyrinth.2006.UHD.BluRay.2160p.DTS-HD.MA.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Il Labirinto del Fauno.2006.4K.HDR.DV.2160p BDRemux Ita Spa x265-NAHOM\n👤 5 💾 52.02 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇪🇸",
+      "infoHash": "ad4e223917f1a9ecae11f141e1b9099c8d0395cb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Pans.Labyrinth.2006.4K.HDR.DV.2160p BDRemux Ita Spa x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Pan's Labyrinth 2006 2160p BluRay\n👤 76 💾 5.34 GB ⚙️ YTS\n🇪🇸",
+      "infoHash": "c2739210033cae78a1b59d806b931e43254eb4b9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Pans.Labyrinth.2006.SPANISH.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Pans.Labyrinth.2006.SPANISH.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.7.1-FGT\n👤 8 💾 53.65 GB ⚙️ RARBG\n🇪🇸",
+      "infoHash": "ea3e54d2f67bda3a7832dcdce4dfd57df644a2ea",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Pans.Labyrinth.2006.SPANISH.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.7.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "O Labirinto do Fauno 4K 2006 Dual Áudio WWW.BLUDV.TV\n👤 7 💾 19.25 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹 / 🇪🇸",
+      "infoHash": "a1056f233736415fff2a3aa80c1b3b6b8df9fcf0",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "O Labirinto do Fauno 2006 4K 2160p Dual Áudio Encoder by Carlos José WWW.BLUDV.TV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Pans Labyrinth 2006 REPACK UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 133 💾 6.61 GB ⚙️ ThePirateBay",
+      "infoHash": "13a541319216a6682c41179cede70eb4ecee69e1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Pans Labyrinth 2006 REPACK UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Pans Labyrinth 2006 1080p UHD BluRay DoVi HDR x265 DDP 5 1-SM737\n👤 23 💾 4.95 GB ⚙️ ThePirateBay",
+      "infoHash": "d4015728f897827a74c4e57297c333c04f9667d9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|DV|HDR",
+        "filename": "Pans Labyrinth 2006 1080p UHD BluRay DoVi HDR x265 DDP 5 1-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans Labyrinth 2006 1080p BluRay x264 Spanish AAC - Ozlem\n👤 132 💾 1.74 GB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "99fc30b41eb179e3718ae47330b390df5a485634",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan's Labyrinth 2006 1080p BluRay\n👤 100 💾 1.91 GB ⚙️ YTS",
+      "infoHash": "41ddd441693d13a6979847b4fe974e4dda256cbf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Pan's.Labyrinth.2006.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan's.Labyrinth.2006.1080p.BluRay.x264.anoXmous\n👤 99 💾 1.76 GB ⚙️ ThePirateBay",
+      "infoHash": "524728687587713c30d68b8dc24f66cf314bd062",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Pan's.Labyrinth.2006.1080p.BluRay.x264.anoXmous_.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans Labyrinth 2006 Criterion 1080p Spanish BluRay HEVC x265 5.1…\n👤 80 💾 2.05 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇪🇸",
+      "infoHash": "a56b5031ef7a85dc47589ea6b99e16e136290476",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Pans Labyrinth 2006 Criterion 1080p Spanish BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan's Labyrinth (2006) (1080p BluRay x265 10bit AAC 7.1 afm72) [QxR]\n👤 77 💾 5.08 GB ⚙️ 1337x",
+      "infoHash": "199e5b6327c6515ba2bb8e11c53eab36062f1bf2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Pan's Labyrinth (2006) (1080p BluRay x265 afm72).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Лабиринт Фавна / Pan's Labyrinth / El laberinto del fauno [2006 BDRemux 1080p] [Criterion Collection] Dub + DVO + MVO + AVO + Sub Rus Eng + Original Spa\n👤 62 💾 33.9 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸",
+      "infoHash": "1967b5d741179e307d7bd57ebff3326da588e3c4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Pan's.Labyrinth.2006.Criterion.Collection-BDRemux.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:1967b5d741179e307d7bd57ebff3326da588e3c4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "31 Nights Of Halloween Horror Pack\nPan's.Labyrinth.2006.1080p.BluRay.x264.anoXmous/Pan's.Labyrinth.2006.1080p.BluRay.x264.anoXmous_.mp4\n👤 61 💾 1.76 GB ⚙️ MagnetDL",
+      "infoHash": "36d863829ec3c2cb2a0354ab94d5d3d2ff79479d",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Pan's.Labyrinth.2006.1080p.BluRay.x264.anoXmous_.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Лабиринт Фавна / El Laberinto del fauno / Pan's Labyrinth [2006 BDRip 1080p] Dub + MVO + Sub Rus Eng + Original Spa\n👤 49 💾 16.89 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸",
+      "infoHash": "5f5dcca6617d792267eeb4f735ba6c66fe17b620",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Pan's.Labyrinth.2006.1080p.BluRay.x264.DTS.Rus-Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:5f5dcca6617d792267eeb4f735ba6c66fe17b620",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Лабиринт Фавна / El laberinto del fauno / Pan's Labyrinth [2006 BDRip 1080p] Dub + DVO + MVO + AVO + Sub Rus Eng + Original Spa\n👤 37 💾 20.02 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸",
+      "infoHash": "515d5ab731da12286ccf1cc57ba1b2b0fee5a4e5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "El laberinto del fauno.2006.BD-Rip.HYBRID.1080p-EbP.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:515d5ab731da12286ccf1cc57ba1b2b0fee5a4e5",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans.Labyrinth.2006.REMASTERED.1080p.BluRay.AV1.DDP5.1-KiUAS\n👤 35 💾 4.91 GB ⚙️ 1337x",
+      "infoHash": "d7a5811ed259bd1bca826e7119faa8e5a254463e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Pans.Labyrinth.2006.REMASTERED.1080p.BluRay.AV1.DDP5.1-KiUAS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan's Labyrinth (2006) 1080p 5.1 BrRip x264 - Judas\n👤 33 💾 2.11 GB ⚙️ ThePirateBay",
+      "infoHash": "a5c24743b50dd6b68c176ef34967d5f9b0e5abc5",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan’s.Labyrinth.A.K.A.El.laberinto.del.fauno.2006.CRITERION.COLLECTION.SPANISH.1080p.10bit.BluRay.8CH.x265.HEVC-PSA\n👤 18 💾 2.03 GB ⚙️ 1337x\n🇪🇸",
+      "infoHash": "a1a680ce10b90de5aac0811fa46a49488fc94523",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Pan's.Labyrinth.A.K.A.El.laberinto.del.fauno.2006.CRITERION.COLLECTION.SPANISH.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans.Labyrinth.2006.CC.Bluray.1080p.DTS-HD-7.1.x264-Grym\n👤 14 💾 20.94 GB ⚙️ ThePirateBay",
+      "infoHash": "ec373c1c10c52f016407022bc19d93fca46c66f0",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Il Labirinto del Fauno - El Laberinto del Fauno (BDrip 1080p Ita\n👤 12 💾 7.96 GB ⚙️ ThePirateBay\n🇮🇹 / 🇪🇸",
+      "infoHash": "366ddc2e09bf1eb84c21a2b335b80da9f03bb4ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Il Labirinto del Fauno - El Laberinto del Fauno (BDrip 1080p Ita-Spa) 2006.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan's Labyrinth (El laberinto del fauno) Criterion (2006) 1080p BluRay Multi AV1 Opus [AV1D]\n👤 11 💾 1.3 GB ⚙️ 1337x\nMulti Audio / 🇪🇸",
+      "infoHash": "2fe4b1be25592c45335db60bc418ae3225fb37ac",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "El laberinto del fauno (Pan's Labyrinth) Criterion (2006) 1080p BluRay Multi AV1 Opus [AV1D].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans Labyrinth 2006 REMASTERED 1080p BluRay x264-DEPTH\n👤 10 💾 12.01 GB ⚙️ ThePirateBay",
+      "infoHash": "aaca690a49611539fe7a5b88b1e8f399ae9581ee",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Pans Labyrinth 2006 REMASTERED 1080p BluRay x264-DEPTH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans.Labyrinth.2006.REMASTERED.SPANISH.1080p.BluRay.H264.AAC-VXT\n👤 9 💾 2.28 GB ⚙️ RARBG\n🇪🇸",
+      "infoHash": "6a7dcd038bc5486937e0a085c7033852f4b4b46f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Pans.Labyrinth.2006.REMASTERED.SPANISH.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans.Labyrinth.2006.HYBRID.1080p.BluRay.x264-EbP [PublicHD]\n👤 9 💾 16.6 GB ⚙️ ThePirateBay",
+      "infoHash": "9dfa6ec1bcd1fa6361e6b5cbc3e94a101e3fb156",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Лабиринт Фавна / El Laberinto del fauno (2006) BDRip-HEVC 1080p от RIPS CLUB | D P P2 A | JPN Transfer\n👤 8 💾 9.59 GB ⚙️ Rutor\n🇬🇧 / 🇯🇵 / 🇷🇺 / 🇪🇸 / 🇺🇦",
+      "infoHash": "5e5ac0a1b2851e35026a5b73d0f8e89bf09f908e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc",
+        "filename": "El laberinto del fauno (2006) [JPN Transfer] BDRip 1080p H.265 [4xRUS_3xUKR_SPA] [RIPS-CLUB].mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710",
+        "tracker:http://retracker.local/announce",
+        "dht:5e5ac0a1b2851e35026a5b73d0f8e89bf09f908e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Il Labirinto del Fauno AC3 5.1 ITA 1080p H265 sub ita (2006) Sp33dy94 MIRCrew\n👤 8 💾 2.75 GB ⚙️ TorrentGalaxy\n🇮🇹",
+      "infoHash": "7bbf4b17f1aaaabd04b5f8f266516bd92903aec3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Il Labirinto del Fauno AC3 5.1 ITA 1080p H265 sub ita (2006) Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 101-150 BluRay 1080p x265 10bit MNHD-FRDS\n132.潘神的迷宫.Pan's.Labyrinth.2006.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Pan's.Labyrinth.2006.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 6 💾 4.58 GB ⚙️ EXT",
+      "infoHash": "08079cb5f524683e3a8da9e31f53ab81663b2501",
+      "fileIdx": 219,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Pan's.Labyrinth.2006.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Il labirinto del Fauno (2006 ITA/SPA) [1080p x265] [Paso77]\n👤 6 💾 6.96 GB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇪🇸",
+      "infoHash": "3e1870b6ac88719bb6fba241310cfc2e510392af",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "El laberinto del fauno 2006 BDRip ITA SPA 1080p x265 Paso77.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Лабиринт Фавна / El Laberinto del fauno / Pan's Labyrinth [2006 Blu-ray disc (custom) 1080p] Dub + Sub Rus Spa Ukr + Original Spa\n👤 5 💾 38.19 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸 / 🇩🇪 / 🇺🇦",
+      "infoHash": "c1b7b34ced49b5aa2e5b066f5b772de981da9d82",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:c1b7b34ced49b5aa2e5b066f5b772de981da9d82",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pan's Labyrinth [2006] [Criterion Collection] COMPLETE 1080p BDRip x265 DTS-HD MA 7.1 Kira [SEV]\nPan's Labyrinth [2006] [Criterion Collection] 1080p BDRip x265 DTS-HD MA 7.1 Kira [SEV].mkv\n👤 4 💾 17.46 GB ⚙️ 1337x\n🇪🇸",
+      "infoHash": "a1c84fd1f94217411eb6c7aec4dbdb0156e5b9a0",
+      "fileIdx": 21,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265",
+        "filename": "Pan's Labyrinth [2006] [Criterion Collection] 1080p BDRip x265 DTS-HD MA 7.1 Kira [SEV].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Pans.Labyrinth.2006.REMASTERED.SPANISH.1080p.BluRay.REMUX.AVC.DTS-HD.MA.7.1-FGT\n👤 4 💾 29.15 GB ⚙️ RARBG\n🇪🇸",
+      "infoHash": "cbf0b9c268953ddfe9b727b33b74239590f888be",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Pan's Labyrinth 2006 720p BluRay\n👤 46 💾 1013.6 MB ⚙️ YTS",
+      "infoHash": "a616bf410850c2936061dbed4df1693eaebe1352",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Pan's.Labyrinth.2006.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Лабиринт Фавна / El Laberinto del fauno / Pan's Labyrinth [2006 BDRip 720p] Dub + DVO + Sub Rus Eng + Original Spa\n👤 29 💾 7.91 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸",
+      "infoHash": "ad5967ab75a2a640542f83c4c0df1d73e4f8a40c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "El.laberinto.del.fauno.2006.720p.BluRay.2xRus.Spa.Eng.HDCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:ad5967ab75a2a640542f83c4c0df1d73e4f8a40c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Pans.Labyrinth.2006.SPANISH.REMASTERED.720p.BluRay.999MB.x265\n👤 13 💾 990.83 MB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "d841e5bfbf398f94812bd14f282c8ecbd3679ed8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "Pans.Labyrinth.2006.SPANISH.REMASTERED.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Pans Labyrinth (2006) 720p Hardcoded English Subs Midget\n👤 13 💾 1.92 GB ⚙️ ThePirateBay",
+      "infoHash": "fc952b8ae7e96b667eadb51ebbc028d6102de910",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Pan's Labyrinth.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Pans Labyrinth 2006 720p.x264.BRRip.GokU61\n👤 9 💾 697.83 MB ⚙️ ThePirateBay",
+      "infoHash": "47acc7671705b2b47c8f152cfa41362e5b69a603",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Pans Labyrinth 2006 720p BluRay x264 Spanish AAC - Ozlem\n👤 4 💾 932.16 MB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "fc4a5a55ad58e45be43093700be3622449da580b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nDVD",
+      "title": "0peliculas series\nPELICULAS MAYOR/joaquin/El.Laberinto.Del.Fauno.Esp.DVD.XviD.AC3.www.DivxTotaL.CoM]/El.Laberinto.Del.Fauno.Esp.CD1.DVD.XviD.AC3.www.DivxTotaL.CoM].avi\n👤 75 💾 702.44 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "cca5d69debbb9dadf164d91ad6bbd8c04216f3be",
+      "fileIdx": 121,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVD|xvid",
+        "filename": "El.Laberinto.Del.Fauno.Esp.CD1.DVD.XviD.AC3.www.DivxTotaL.CoM].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nDVD",
+      "title": "0peliculas series\nPELICULAS MAYOR/joaquin/El.Laberinto.Del.Fauno.Esp.DVD.XviD.AC3.www.DivxTotaL.CoM]/El.Laberinto.Del.Fauno.Esp.CD2.DVD.XviD.AC3.www.DivxTotaL.CoM].avi\n👤 75 💾 680.06 MB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "cca5d69debbb9dadf164d91ad6bbd8c04216f3be",
+      "fileIdx": 122,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVD|xvid",
+        "filename": "El.Laberinto.Del.Fauno.Esp.CD2.DVD.XviD.AC3.www.DivxTotaL.CoM].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Лабиринт Фавна / El Laberinto del fauno [2006 BDRip-AVC] дубляж + Original + Sub\n👤 55 💾 2.13 GB ⚙️ Rutracker\n🇷🇺 / 🇪🇸",
+      "infoHash": "b6ace625621504a9fda0fcd6dd141d91068eeadd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Pan's Labyrinth.2006.BDRip.x264.AAC.Rus.Spa.Sub-AVCVideo.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:b6ace625621504a9fda0fcd6dd141d91068eeadd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Лабиринт Фавна / El Laberinto del Fauno / Pan's Labyrinth [2006 BDRip] Dub\n👤 18 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "9c21d2f9440ed2b83f3ce337dbb02a4db0cef0e1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Labirint.Favna.2006.XviD.BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:9c21d2f9440ed2b83f3ce337dbb02a4db0cef0e1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Pans.Labyrinth[2006]DvDrip[Eng.Sub]-aXXo\n👤 32 💾 701.22 MB ⚙️ ThePirateBay",
+      "infoHash": "a04dda5c18d72eac2b3d79489f93b96e80c6b01a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "filename": "Pan's.Labyrinth[2006]DvDrip[Eng.Sub]-aXXo.avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "101 Horror Movies Mega Pack Mixed x264 [i c]\nPan's Labyrinth 2006.mkv\n👤 10 💾 2.39 GB ⚙️ TorrentGalaxy",
+      "infoHash": "7def7af5c47cf2c4b48ae8c239326d79d2b53d19",
+      "fileIdx": 65,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|x264",
+        "filename": "Pan's Labyrinth 2006.mkv"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Pan's Labyrinth[2006]DvDrip[Eng Sub]-aXXo\n👤 5 💾 701.32 MB ⚙️ ThePirateBay",
+      "infoHash": "8735d5b121629e0748c2e8fccb4a64bb67eff093"
+    }
+  ]
+}

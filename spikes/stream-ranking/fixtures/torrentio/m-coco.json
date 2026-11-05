@@ -1,0 +1,1196 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-coco",
+  "request": "https://torrentio.strem.fun/stream/movie/tt2380307.json",
+  "recordedAt": "2026-11-05T22:41:49.828Z",
+  "status": 200,
+  "ms": 64,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Coco.2017.2160p.UHD.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-WhiteRhino\n👤 148 💾 14.05 GB ⚙️ RARBG",
+      "infoHash": "6a5625346a5f798a6d15e308c578e754617e9d9a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Coco.2017.2160p.UHD.BluRay.x265-WhiteRhino.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Тайна Коко / Coco [2017 UHD BDRemux 2160p HDR10 Dolby Vision] [Hybrid] Dub + AVO + Ukr + Original (Eng) + Sub (Rus Eng)\n👤 111 💾 45.89 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "514b73a6fd01a0d7c7142f075bf0ee9d7ce2749e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Тайна Коко.2017.Hybrid.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:514b73a6fd01a0d7c7142f075bf0ee9d7ce2749e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Coco 2017 UHD BluRay 2160p TrueHD Atmos 7 1 DV HEVC HYBRID REMUX-FraMeSToR\n👤 40 💾 40.57 GB ⚙️ 1337x",
+      "infoHash": "ab9a7f1a2fe776bfa3c709186ff882b71de87395",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Coco.2017.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Coco (2017) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 32 💾 8.23 GB ⚙️ 1337x",
+      "infoHash": "516ea2bfa54447f572e5266b8fc62d9e884d4621",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Coco (2017) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Coco.2017.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 31 💾 36.28 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "0cd0f036f44f91be2a595718b30847092cb7886c",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Coco.2017.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Coco 2017 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 29 💾 25.13 GB ⚙️ 1337x",
+      "infoHash": "b72ac9632cd07e384d297dae2ea3704b88d18b20",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Coco 2017.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Coco (2017) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 24 💾 5.63 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "49d3f87744284be26f64903d25bca5f0d5b6b5ea",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Coco (2017) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Coco.2017.2160p.HDR10.REQUEST.WEB-DL.DDP5.1.Multi-Language.Atmos.x265.BluBit\n👤 15 💾 12.51 GB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "6e61b3eb52d59bacb2a2541eaf9a0ac9a0c0c8af",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|x265|10bit|HDR",
+        "filename": "Coco (2017).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "[PACK] Pixar Animation 4K UHD Collection (2160p HDR BDRip x265 10bit AC3) [4KLiGHT]\nCoco (2017) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv\n👤 12 💾 4.85 GB ⚙️ 1337x\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "infoHash": "5839f4ef665dcc00978d3fb017a62c52a20feeea",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "Coco (2017) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Coco [4K Remux][2160p][HDR][AC3 5.1 Castellano TrueHD 7.1-Ingles+Subs][ES-EN]\n👤 8 💾 39.88 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "infoHash": "854a3a8365b8e49db7bb1941fdb110b37fa33a28",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|HDR",
+        "filename": "Coco 4K2160.www.descargas2020.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Coco (2017) x 1608 (2160p) HDR 5.1 x265 10bit Phun Psyz\n👤 5 💾 3.08 GB ⚙️ 1337x",
+      "infoHash": "1d71cc118f5ee810e14098df1edf030f5593cada",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265|10bit|HDR",
+        "filename": "Coco (2017) x 1608 (2160p) HDR 5.1 x265 10bit Phun Psyz.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Viva - A Vida é uma Festa 2018 (4K) WWW.BLUDV.COM\n👤 12 💾 9.73 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "e148976e09e360a549bfc9512b4e1b5589c37c9a",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265",
+        "filename": "Viva.A.Vida.é.uma.Festa.2018.2160p.4K.UHD.BluRay.6CH.x265.DUAL-WWW.BLUDV.COM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Coco.2017.2160p.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-FGT\n👤 6 💾 42.29 GB ⚙️ RARBG",
+      "infoHash": "3705f585d9e56e49ddf8562682bab7e13ce17088",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Coco.2017.2160p.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Coco 2017 2160p BluRay\n👤 5 💾 5 GB ⚙️ YTS",
+      "infoHash": "a63a17a01bf74b2ed022ff813e04f7f6def90d56",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Coco.2017.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Coco.2017.UHD.2160p.x265.ita.eng.ac3.subs.fd MeM.mkv\n👤 5 💾 8.68 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "d09d94c2fb89ff975d85d70034a5c3b7e347a420",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|x265",
+        "filename": "Coco.2017.UHD.2160p.x265.ita.eng.ac3.subs.fd+MeM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Coco (2017) (2160p BluRay x265 HEVC 10bit AAC 7.1 Joy) [UTR]\n👤 5 💾 4.84 GB ⚙️ 1337x",
+      "infoHash": "8be0382a730e9bd2cd93429cba527628caa5fdbb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "Coco 2017  (2160p x265 10bit S91 Joy).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Тайна Коко / Coco (2017) UHD BDRip-HEVC 1080p | HDR | D\n👤 11 💾 6.06 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "20dcf609d4e9dd548b951400aa12aae0c32265dc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|HDR",
+        "filename": "Coco (2017).mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:20dcf609d4e9dd548b951400aa12aae0c32265dc",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Coco (2017) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY]\n👤 7 💾 2.46 GB ⚙️ 1337x",
+      "infoHash": "c20632ee7ca4ba09e79a74a84b2c16fc6635ef46",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Coco (2017) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.1080p.10bit.BluRay.8CH.x265.HEVC-PSA\n👤 484 💾 1.78 GB ⚙️ ThePirateBay",
+      "infoHash": "6bc91fb5e02ad991e180b92f3382cdd1d252247e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Coco.2017.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тайна Коко / Coco [2017 BDRip 1080p] Dub + Rus Eng Sub + Original Eng\n👤 187 💾 10.57 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "8db72874e4f2191119cb84322f796572a33fbed9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Coco (2017) BDRip.1080.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:8db72874e4f2191119cb84322f796572a33fbed9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p BluRay\n👤 164 💾 1.59 GB ⚙️ YTS",
+      "infoHash": "56ea070327c4f34bfb3adfbebda29bb1125799e7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Coco.2017.1080p.BluRay.x264-[YTS.AG].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.1080p.Remux.AVC.DTS-HD.MA 7.1-Paulista\n👤 77 💾 24.22 GB ⚙️ ThePirateBay",
+      "infoHash": "8ca1a0f3794948cd7221aba6c796dd9c5b6e4672",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.MULTI.1080p.BluRay.Light.x264.AC3-ACOOL\n👤 66 💾 2.71 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "6e1d882d7a5cdd8e9a422784ca2e396f0ee3c835",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ OxTorrent.com ] Coco.2017.MULTI.1080p.BluRay.Light.x264.AC3-ACOOL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p DSNP WEB-DL DDP5 1 H 264-GPRS\n👤 60 💾 4.66 GB ⚙️ ThePirateBay",
+      "infoHash": "398fd96cd81c611260bfdfd035c5f100106acc0a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Coco 2017 1080p DSNP WEB-DL DDP5 1 H 264-GPRS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p BluRay DD+ 7.1 x265-edge2020\n👤 59 💾 2.85 GB ⚙️ ThePirateBay",
+      "infoHash": "8fb5b9868cad129fbe67190451aa00c53a4aad02",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Coco.2017.1080p.BluRay.DDP.7.1.H.265-EDGE2020.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2017.Coco.1920x804.BDRip.x264.DTS-HD.MA.mkv\n👤 54 💾 14.59 GB ⚙️ ThePirateBay",
+      "infoHash": "a200be18e2d389cadc9246167434fe9555f5d113",
+      "fileIdx": 18,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2017.Coco.1920x804.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 ITA ENG 1080p BluRay x264-BLUWORLD\n👤 38 💾 8.42 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "2c06e5321d5432f717b216152fdcb202d0691d9f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Coco.2017.ITA.ENG.1080p.BluRay.x264-BLUWORLD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "coco 2017 latino 1080p theloko1984\n👤 38 💾 1.83 GB ⚙️ ThePirateBay\n🇲🇽",
+      "infoHash": "777e02757367427d7852cd966c8b236e3886567d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coco.2017.1080p.LATiNO.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2024) BDRip 1080p\n2017.Coco.1920x804.BDRip.x264.DTS-HD.MA.mkv\n👤 37 💾 14.59 GB ⚙️ ThePirateBay",
+      "infoHash": "58733961d2672b8bcf08d928cee0ae96f4150fda",
+      "fileIdx": 23,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2017.Coco.1920x804.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тайна Коко / Coco [2017 BDRemux 1080p] Dub (Rus Ukr) + AVO (Ю.Сербин) + Rus Eng Sub + Original Eng\n👤 37 💾 29.25 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e8b1ed935902c31b15f3189ab63f68d3edcec6cb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Coco (2017).BDRemux.1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:e8b1ed935902c31b15f3189ab63f68d3edcec6cb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p BluRay REMUX AVC DTS-HD MA 7 1-FGT\n👤 33 💾 5.81 GB ⚙️ ThePirateBay",
+      "infoHash": "04d742bd91657f864e3da885c95374720cb7c817",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Coco 2017 1080p BluRay REMUX AVC DTS-HD MA 7 1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco (2017) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 26 💾 2.71 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "f0ae969a845177b3c05da868daac4c22ee92bcc4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Coco (2017) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.1080p.Eng-Spa(Latino)_MediaClubMX\n👤 26 💾 1.68 GB ⚙️ 1337x\n🇬🇧 / 🇪🇸 / 🇲🇽",
+      "infoHash": "d53805d1d7a05b1ed99737c506cab7b44202d888",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Coco.2017.1080p_MediaClubMx.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.1080p.BluRay.x264.TrueHD.7.1.Atmos-SWTYBLZ\n👤 24 💾 11.54 GB ⚙️ RARBG",
+      "infoHash": "384ca0b317b71a359b08518d8591270e23682ec9",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.1080p.BluRay.x265-RARBG\n👤 19 💾 1.64 GB ⚙️ RARBG\n🇬🇧 / 🇪🇸",
+      "infoHash": "408d85f1b28a3408af138a312872559b5b5b57dc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Coco.2017.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Viva - A Vida é uma Festa 2018 (1080p) WWW.BLUDV.COM\n👤 17 💾 1.92 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "69c68d516348be7ed355437e1680cea191baeddd",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Viva.A.Vida.é.uma.Festa.2018.1080p.BluRay.6CH.x264.DUAL-WWW.BLUDV.COM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p 10bit BluRay 8CH x265 HEVC-PSA\n👤 13 💾 1.78 GB ⚙️ ThePirateBay",
+      "infoHash": "b36aafd2de1078707ecf36b74b834754e11e4df0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Coco 2017 1080p 10bit BluRay 8CH x265 HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco (2017) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole) [QxR]\n👤 13 💾 4.2 GB ⚙️ 1337x",
+      "infoHash": "09fa43722b653a20ba48df94df2edf2b37b895a5",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Collection Disney Pixar 1937 à 2022 - 1080p H265 French VFF c3r153\n[120] Coco (2017).mkv\n👤 10 💾 2.31 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e2fd41349c1de6ea461a18a9185e0d7301c22f81",
+      "fileIdx": 119,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "[120] Coco (2017).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Viva - A Vida é uma Festa 2018 (1080p) DUBLADO WWW.BLUDV.COM\n👤 10 💾 1.6 GB ⚙️ Comando\n🇬🇧 / 🇵🇹",
+      "infoHash": "b2619afdcce76c1a18be80256d19b98ed09cc181",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Viva.A.Vida.é.uma.Festa.2018.1080p.BluRay.x264.DUBLADO-WWW.BLUDV.COM.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco (2017) 1080p BluRay Multi AV1 Opus [AV1D]\n👤 10 💾 1007.57 MB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "b6c066ec97093ee16e6fa7ec82e87f826916bc08",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Coco (2017) 1080p BluRay Multi AV1 Opus [AV1D].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco (2017) 1080p BluRay x264 Dual Audio Hindi English AC3 5.1 - MeGUiL\n👤 10 💾 3.37 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇮🇳",
+      "infoHash": "bdc3b4e901ae05752ff6a640fb867ea682fee520",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Coco (2017) 1080p BluRay x264 Dual Audio Hindi English AC3 5.1 - MeGUiL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco (2017) BDmux 1080p H264 - Ita AC3 Eng DTS Multisub\n👤 10 💾 5.94 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇮🇹",
+      "infoHash": "b8066e3f40d84bdf7c2a3d455953aa1d8b42ea7b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDmux|h264",
+        "filename": "Coco.2017.1080p.BluRay.x264.ITA.AC3.ENG.DTS.SUBS-Plusam.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 051-100 BluRay 1080p x265 10bit MNHD-FRDS\n073.寻梦环游记.Coco.2017.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Coco.2017.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 9 💾 4.9 GB ⚙️ EXT",
+      "infoHash": "e6d934fd7e96efcb009c3372198360262bca2b65",
+      "fileIdx": 150,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Coco.2017.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тайна Коко / Coco (2017) BDRip 1080p от ExKinoRay | Лицензия\n👤 9 💾 9 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "c9f2de88fd4ac347af0613c3c92c8d42eb748e2a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Coco.2017.Lic.BDRip.1080p.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:c9f2de88fd4ac347af0613c3c92c8d42eb748e2a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p BluRay x265-YAWNTiC\n👤 8 💾 5.93 GB ⚙️ ThePirateBay",
+      "infoHash": "a5a1a72a0866eeca36a52fea55b982af9e7caf02",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Coco 2017 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D OU",
+      "title": "Тайна Коко в 3Д / Coco 3D [2017 BDRip 1080p] OverUnder / Вертикальная стереопара\n👤 8 💾 11.33 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "60782b004759c19b65b4c57d05782f61a75a1b75",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Coco.Rip by SeRoGa00.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:60782b004759c19b65b4c57d05782f61a75a1b75",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.NORDiC.ENG.1080p.BluRay.x264-RAPiDCOWS\n👤 8 💾 7.35 GB ⚙️ ThePirateBay\n🇬🇧 / 🇩🇰 / 🇫🇮 / 🇸🇪 / 🇳🇴",
+      "infoHash": "a6364820a7da81dc1789a57277c458b875ae29c1",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Тайна Коко 3Д / Coco 3D [2017 WEB-DL] [Локализованный видеоряд] Dub (Невафильм) + Kaz + Original (Eng) Half SideBySide / Горизонтальная анаморфная стереопара\n👤 7 💾 4 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "e3f5fc6129b7cbdecf5dc1c8b2fe74ca8fe4f5bb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Coco.WEB-DL.OKKO.3D.1080p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e3f5fc6129b7cbdecf5dc1c8b2fe74ca8fe4f5bb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2017.Coco.1920x804.BDRip.x264.DTS-HD.MA.mkv\n👤 6 💾 14.59 GB ⚙️ ThePirateBay",
+      "infoHash": "52d497e454d04d8bfdca5d2181dbaa51fd27f3f7",
+      "fileIdx": 19,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2017.Coco.1920x804.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.BluRay.1080p.DTS-HD.MA.7.1.AVC.REMUX-FraMeSToR\n👤 5 💾 21.51 GB ⚙️ EXT",
+      "infoHash": "e1bfb77879a0b0a208b3e27bf944b449e18a2d44",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Coco.2017.BluRay.1080p.DTS-HD.MA.7.1.AVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 m1080p BluRay x264-GeneMige\n👤 5 💾 2.61 GB ⚙️ ThePirateBay",
+      "infoHash": "27972587a627d5f25c7feb4da6dd48525032a71e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Coco 2017 m1080p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D HSBS",
+      "title": "Coco (2017) 3D HSBS 1080p BluRay H264 DolbyD 5.1 + nickarad\n👤 5 💾 2.13 GB ⚙️ ThePirateBay",
+      "infoHash": "01ec795bf4cb6fa6edc2dd5d53c93d79c774c656",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Coco (2017) 3D HSBS 1080p BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco.2017.1080p.HDRip.X264.AC3-EVO\n👤 5 💾 4.1 GB ⚙️ 1337x",
+      "infoHash": "e0a264fe27332874d7931c32d4ca62ac832cf69d",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco [BluRay 1080p][AC3 5.1 Castellano DTS 5.1-Ingles+Subs][ES-EN]\n👤 5 💾 9.14 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "infoHash": "657c3322830369ddb9bb1c13f4f01b1ed66251bd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Coco BD1080.www.newpct1.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Coco 2017 1080p HDRip x264 AC3-M2Tv\n👤 5 💾 2.47 GB ⚙️ ThePirateBay",
+      "infoHash": "ada78b0a30e0e27136c8dfe7c19550f66f56f0d6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip|x264",
+        "filename": "Coco 2017 1080p HDRip x264 AC3-M2Tv.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Тайна Коко / Coco (2017) BDRip 720p от ExKinoRay | Лицензия\n👤 48 💾 5.23 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "15113ba8b81cc6f39e8c5072b9c3da0f0076e1b8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Coco.2017.Lic.BDRip.720p.ExKinoRay.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:15113ba8b81cc6f39e8c5072b9c3da0f0076e1b8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Coco.(2017).720p.Spanish.Robmerc\n👤 34 💾 1.17 GB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "ac0da48e5d18f67d11daf366d0fbc87e06124edc",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Movie.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Тайна Коко / Coco [2017 BDRip 720p] Dub + Rus Eng Sub + Original Eng\n👤 34 💾 4.38 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "ba098c152c94189700f4e391c48760381265fd13",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Coco (2017) BDRip.720p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:ba098c152c94189700f4e391c48760381265fd13",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Coco (2017).720p.H264.italian.english.Ac3-5.1.sub.ita.eng.MIRCrew\n👤 11 💾 1.92 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "54588c5fd7bd551c24d1f3a77cefc8e23a30353c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "Coco (2017).720p.h264.ita.eng.sub.ita-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Coco 2017 720p BluRay x264-GeneMige\n👤 10 💾 4.44 GB ⚙️ ThePirateBay",
+      "infoHash": "e888aaac85dc9fac122960200028140c14a84c33",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Coco 2017 720p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Viva - A Vida é uma Festa 2018 (720p) WWW.BLUDV.COM\n👤 8 💾 1.07 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "d74d91b7d55f5cffa7a6ee2f4427f627eb566824",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Viva.A.Vida.é.uma.Festa.2018.720p.BluRay.6CH.x264.DUAL-WWW.BLUDV.COM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Coco 2017 720p BluRay\n👤 8 💾 765.97 MB ⚙️ YTS",
+      "infoHash": "ba625ad4538eb9520341f989fba78e69fd2458ec",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Coco.2017.720p.BluRay.x264-[YTS.AG].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Coco 2017 HD-TS X264 HQ-CPG\n👤 8 💾 1.51 GB ⚙️ ThePirateBay",
+      "infoHash": "586e5da18c32b85305eb9b6440545fc1fd21ff09",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync|x264",
+        "filename": "Coco 2017 HD-TS X264 HQ-CPG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тайна Коко / Coco [2017 BDRip-AVC] Dub + Original (eng) + Sub (rus eng)\n👤 118 💾 2.14 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a4ae0e3f486f8b097721b49d831535f5e71998b4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Coco.2017.BDRip-AVC.RUS.ENG.stalkerok.new-team.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:a4ae0e3f486f8b097721b49d831535f5e71998b4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Тайна Коко / Coco [2017 WEBRip] [Локализованный видеоряд] Dub + AVO (Сербин) + Dub (Ukr) + Sub (Rus Eng)\n👤 102 💾 5.32 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "5c8b9a1e01ba6d7fa5bb1f8bc7a227801d588801",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "Тайна Коко (Локализованный видеоряд).mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:5c8b9a1e01ba6d7fa5bb1f8bc7a227801d588801",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тайна Коко / Coco [2017 BDRip] Dub\n👤 39 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "5a7035855945e1d15f6d03f73065ea2d1e65a6c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Taina_Koko_2017_BDRip_iT_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:5a7035855945e1d15f6d03f73065ea2d1e65a6c7",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Coco.2017.FRENCH.BDRip.XviD-FuN\n👤 34 💾 700.23 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "b673c31c573f7f7a15d2638dcfe9c5f201cd9676",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "[ OxTorrent.com ] Coco.2017.FRENCH.BDRip.XviD-FuN.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тайна Коко / Coco [2017 BDRip-AVC] Dub + Rus Eng Sub + Original Eng\n👤 29 💾 3.07 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "3379461a8dda4af2962e7c0fa6dcf86483d688e8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Coco (2017) BDRip-AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:3379461a8dda4af2962e7c0fa6dcf86483d688e8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тайна Коко / Coco (2017) BDRip от MegaPeer | Лицензия\n👤 19 💾 1.46 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "fe86127ea8f5b6b7a7ae079a1d3e181a802f718d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Coco.2017.BDRip.1.46Gb.Dub.MegaPeer.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:fe86127ea8f5b6b7a7ae079a1d3e181a802f718d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay 3D HSBS",
+      "title": "Coco 2017 3D BluRay\n👤 14 💾 1.75 GB ⚙️ YTS",
+      "infoHash": "e350370e8640f1e3537e514b19a4e23d6375e572",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|x264",
+        "filename": "Coco.2017.3D.HSBS.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тайна Коко / Coco [2017 BDRip] Dub + Sub (Rus Eng) + Original Eng\n👤 11 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "588a4f8132e1d1296aa86bc19550bd7026ef45b2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Тайна Коко_2017_BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:588a4f8132e1d1296aa86bc19550bd7026ef45b2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тайна Коко / Coco [2017 BDRip-AVC] Dub + Sub (rus)\n👤 8 💾 1.41 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "ca967bf499d4bdc3d44a7a755bdec29d53905f8f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Coco.2017.BDRip-AVC.RUS.stalkerok.new-team.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:ca967bf499d4bdc3d44a7a755bdec29d53905f8f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Coco (2017) Eesti keeles\n👤 14 💾 3.85 GB ⚙️ ThePirateBay",
+      "infoHash": "774d864332b2c87149864f685501a57eb6cf0380",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "filename": "Coco (2017) Eesti keeles.mkv"
+      }
+    }
+  ]
+}

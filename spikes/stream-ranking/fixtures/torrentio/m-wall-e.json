@@ -1,0 +1,975 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-wall-e",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0910970.json",
+  "recordedAt": "2026-11-05T22:38:45.127Z",
+  "status": 200,
+  "ms": 254,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "WALL-E.2008.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-AViATOR\n👤 41 💾 9.28 GB ⚙️ RARBG",
+      "infoHash": "4a69065b30b6464ab012c1d7b8d71971bc727364",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "WALL.E.2008.2160p.UHD.BluRay.x265-AViATOR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "WALL E.2008.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC-DDR\n👤 32 💾 17.13 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧",
+      "infoHash": "7e946d0af69dcb91d6346a46819f0d3877407ebd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "WALL E.2008.MULTi.UHD.Bluray.2160p.HDR.Atmos.7.1.HEVC-DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "WALL-E.2008.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR\n👤 23 💾 34.93 GB ⚙️ 1337x",
+      "infoHash": "f0e6afa0aa8f6aebeedbb5562a852d4be3e5ac64",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "WALL-E.2008.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "ВАЛЛ·И / WALL·E (2008) UHD BDRemux 2160p | 4K | HDR | Dolby Vision Profile 8 | D P A | Лицензия\n👤 23 💾 35.52 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "c46b5b758af2a3892b0d567f76be765d40b815ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "WALL-E.2008.2160p.UHD.BDRemux.HDR.DoVi.P8.Hybrid.by.DVT.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710",
+        "tracker:http://retracker.local/announce",
+        "dht:c46b5b758af2a3892b0d567f76be765d40b815ca",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "WALL-E (2008) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 23 💾 3.8 GB ⚙️ 1337x",
+      "infoHash": "a21d5d2a3b71b2db655d619e9088f873c7811add",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "ВАЛЛ-И / WALL-E [2008 BDRip 2160p HDR10 Dolby Vision] Dub + MVO (С.Р.И.) + AVO (Сербин) + Original (Eng) + Commentary (Rus Eng) + Sub (Rus Eng)\n👤 20 💾 14.54 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "e7ea6b7f2d908783af49a5bb3a03d8d3e9794eeb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|10bit|DV|HDR",
+        "filename": "WALL-E (2008) BDRip 2160p HDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:e7ea6b7f2d908783af49a5bb3a03d8d3e9794eeb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Wall-E (2008) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG DTS-AC3-SUBS] [M@HD]\n👤 20 💾 10.75 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "10b64a5c2a75aa96db7068e3d5cbe38ca12d1bcb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|hevc|10bit|HDR",
+        "filename": "Wall-E (2008) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG DTS-AC3-SUBS] [M@HD].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Wall E 2008 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 18 💾 18.8 GB ⚙️ 1337x",
+      "infoHash": "28848e0895a13865ab3b8057ce9b65a818cbea8a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Wall.E.2008.Criterion.Collection.x265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "WALL-E (2008) 2160p UHD HDR Bluray AV1 Opus Multi6 [dAV1nci]\n👤 18 💾 4.19 GB ⚙️ 1337x",
+      "infoHash": "ded12831242ccb1d2a89bb672a104086ea5f12e9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|av1|HDR",
+        "filename": "WALL-E.2008.2160p.UHD.HDR.Bluray.AV1.Opus.Multi6-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "WALL-E 2008 UHD BluRay 2160p TrueHD Atmos 7 1 DV HEVC HYBRID REMUX-FraMeSToR\n👤 15 💾 34.93 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1508eca96e9034d00a3fd83620614627d3c2fa7c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "WALL-E.2008.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Wall•E (2008) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 14 💾 3.13 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "10d37b61a341004dad5f1fd2a4cceba25788dff9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Wall-E (2008) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "[PACK] Pixar Animation 4K UHD Collection (2160p HDR BDRip x265 10bit AC3) [4KLiGHT]\nWALL-E (2008) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv\n👤 12 💾 2.83 GB ⚙️ 1337x\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "infoHash": "5839f4ef665dcc00978d3fb017a62c52a20feeea",
+      "fileIdx": 23,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "WALL-E (2008) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Wall - E.2008.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 7 💾 29.96 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "8ab840f190f1effe6d013ce174093d85f74d876c",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Wall·E.2008.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "WALL-E 2008 2160p DV HDR BluRay AV1 Opus 7.1 MULTi5 [dAV1nci]\n👤 6 💾 5.13 GB ⚙️ TorrentGalaxy",
+      "infoHash": "2ed0e29f6376f2d910b34dbd6beaec6d240e30b6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|av1|DV|HDR",
+        "filename": "WALL-E.2008.2160p.DV.HDR.BluRay.AV1.Opus.7.1.Multi5-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "WALL-E 2008 2160p UHD BluRay x265 HDR DD5 1-Pahe in\n👤 5 💾 2.65 GB ⚙️ EXT",
+      "infoHash": "d5ecee1a6f3486230bf971037f7cb8076cdb980c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "WALL·E.Criterion.2008.2160p.60fps.AI.RIFE.REMASTER.DV.HDR10+.Tru…\n👤 5 💾 27.63 GB ⚙️ TorrentGalaxy",
+      "infoHash": "0c4ace26272bd427c9271ecab386f7e24c64ae02",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|10bit|DV|HDR10+",
+        "filename": "WALL·E.Criterion.2008.2160p.60fps.AI.RIFE.REMASTER.DV.HDR10+.TrueHD.Atmos.7.1.HEVC-WoodrowsPoo69.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "WALL-E.2008.CRITERION.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 94 💾 39.31 GB ⚙️ RARBG",
+      "infoHash": "6e4fd9de28349ae56175f7676fbf6307d8d5c47d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "WALL-E.2008.CRITERION.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "WALL E (2008) [REPACK] [2160p] [4K] [BluRay] [5 1]\n👤 45 💾 4.41 GB ⚙️ KickassTorrents",
+      "infoHash": "ebd0686c51dce96542a7ce770fcf6f534d367ba6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "WALL-E.2008.REPACK.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "WALL-E.2008.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-AViATOR\n👤 9 💾 60.38 GB ⚙️ RARBG",
+      "infoHash": "b44a83fdc2cac26f1c5e2a028340db7382e2f401",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "WALL-E 2008 1080p UHD BluRay x265 HDR DV DD 5 1-Pahe in\n👤 9 💾 3.2 GB ⚙️ ThePirateBay",
+      "infoHash": "efd4ccb57ba07baaed5766b01d5a499b5b789122",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|DV|HDR",
+        "filename": "WALL-E.2008.1080p.UHD.BluRay.x265.HDR.DV.DD+5.1-Pahe.in.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "WALL E 2008 1080p UHD BluRay DDP7 1 DoVi HDR10 x265-c0kE\n👤 8 💾 6.48 GB ⚙️ EXT\n🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇧🇬 / 🇷🇸   / 🇭🇷 / 🇸🇪 / 🇹🇷 / 🇸🇦 / 🇮🇱 / 🇻🇳 / 🇮🇩 / 🇲🇾 / 🇹🇭",
+      "infoHash": "a13c5ccbd2ad24a8fb3220bc85f1052f8d3d9dc6",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "WALL E 2008 1080p UHD BluRay DDP7 1 DoVi HDR10 x265-c0kE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) 1080p BrRip x264 - 1.20GB - YIFY\n👤 408 💾 1.2 GB ⚙️ ThePirateBay",
+      "infoHash": "6687a51bb38802620e13542d9c50235039f939d1",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "WALL-E.2008.1080p.BrRip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E 2008 REPACK 1080p BluRay x265-YAWNTiC\n👤 118 💾 5.61 GB ⚙️ TorrentGalaxy",
+      "infoHash": "3efa96b0a6f6eb557b2477592c72432cfeac88fa",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "WALL-E 2008 REPACK 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E.2008.1080p.BluRay.x264-HD1080\n👤 65 💾 7.95 GB ⚙️ RARBG",
+      "infoHash": "3525195bb3f6c60eeb760640b894e0081274aaf5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "hd1080-walle.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL E 2008 BluRay 1080p DDP 5 1 x264-hallowed\n👤 62 💾 5.94 GB ⚙️ ThePirateBay",
+      "infoHash": "475102b1c0e09f70c1dea4b7bc0078c403829771",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "WALL E 2008 BluRay 1080p DDP 5 1 x264-hallowed.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2008.WALL-E.1920x802.BDRip.x264.DTS-HD.MA.mkv\n👤 54 💾 13.15 GB ⚙️ ThePirateBay",
+      "infoHash": "a200be18e2d389cadc9246167434fe9555f5d113",
+      "fileIdx": 10,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2008.WALL-E.1920x802.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]\nWALL-E (2008) (1080p BluRay x265 10bit Tigole).mkv\n👤 45 💾 2.99 GB ⚙️ 1337x\n🇬🇧 / 🇫🇷 / 🇳🇱",
+      "infoHash": "89469716916b072145f792a4fa6e72e23a1248c2",
+      "fileIdx": 18,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "WALL-E (2008) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL E 2008 Criterion 1080p BluRay HEVC x265 5 1 BONE\n👤 39 💾 1.47 GB ⚙️ TorrentGalaxy",
+      "infoHash": "213d427f9a6e080b1d2c4ba6aed22f9e87100c1a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "WALL-E 2008 Criterion 1080p BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2024) BDRip 1080p\n2008.WALL-E.1920x802.BDRip.x264.DTS-HD.MA.mkv\n👤 37 💾 13.15 GB ⚙️ ThePirateBay",
+      "infoHash": "58733961d2672b8bcf08d928cee0ae96f4150fda",
+      "fileIdx": 11,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2008.WALL-E.1920x802.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) (1080p BluRay x265 HEVC 10bit AAC 6.1 Silence) [QxR]\nWALL-E (2008) (1080p BluRay x265 Silence).mkv\n👤 32 💾 3.38 GB ⚙️ 1337x",
+      "infoHash": "e8000c828d6dc69a02d91fccc1e463eed133f575",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "WALL-E (2008) (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "ВАЛЛ-И / WALL-E (2008) BDRip 1080p | D\n👤 31 💾 4.36 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "61c058eb380a9d7e46a4018bce088cd4f9468376",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "WALL-E.2008.BDRip.1080p.Rus.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:61c058eb380a9d7e46a4018bce088cd4f9468376",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Wall-E.2008.1080p.DSNP.WEB-DL.ENG.LATINO.ITA.HINDI.DDP.5.1.H264-BEN.THE.MEN\n👤 26 💾 5.13 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹 / 🇲🇽 / 🇮🇳",
+      "infoHash": "3a5290043893464276238b1deaa3fb37039b4c04",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Wall-E.2008.1080p.DSNP.WEB-DL.ENG.LATINO.ITA.HINDI.DDP.5.1.H264-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E.2008.1080p.BluRay.x265-RARBG\n👤 21 💾 1.53 GB ⚙️ RARBG",
+      "infoHash": "c13b7516694c31cf97d645c993fbe7f3ee06b2c0",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "WALL-E.2008.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) - 1080p BD AV1 Opus MULTi3 [V2] [dAV1nci]\n👤 20 💾 2 GB ⚙️ 1337x",
+      "infoHash": "fc2741054c5bf62aee19e163fb7e474de2c6ce3f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Wall.E.2008.1080p.BD.AV1.Opus.MULTi3.V2-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Wall-E 2008 Bluray 1080p AV1 OPUS 7.1-UH [UserHEVC]\n👤 18 💾 4.08 GB ⚙️ 1337x",
+      "infoHash": "9f7ef0d14df8e06bad0eb81715ccdfbfa91b59e2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Wall-E.2008.Bluray.1080p.AV1.OPUS.7.1-UH.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Wall•E (2008) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 14 💾 1.71 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "cca9dcbb124cae146da9c24c114410449c12d85d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Wall-E (2008) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "ВАЛЛ-И / WALL-E [2008 2 x Blu-ray Disc 1080p] [Двухдисковое издание] Dub + ENG + Sub\n👤 13 💾 73.75 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇵🇹 / 🇸🇦",
+      "infoHash": "d7f5f74eae57a98a7cac8715f3dc31634d8ba4a0",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:d7f5f74eae57a98a7cac8715f3dc31634d8ba4a0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL•E (2008) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 12 💾 2.07 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "120056066c3573724ace9cfeb91e6cc6f8e29108",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "WALL•E (2008) AC3 5.1 ITA.ENG 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL·E 2008 1080p BluRay DD+ 7.1 x265-edge2020\n👤 11 💾 2.1 GB ⚙️ TorrentGalaxy",
+      "infoHash": "5e325e1692025289675d43ef485239c4f54e7207",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "WALL E.2008.1080p.BluRay.DDP.7.1.x265-edge2020.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) - 1080p Bluray AV1 Opus Multi4 [dAV1nci]\n👤 11 💾 2.09 GB ⚙️ 1337x",
+      "infoHash": "f18934c948c7b91500bf22a6c333df5d2495ae73",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Wall.E.2008.1080p.Bluray.AV1.Opus.Multi4-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Collection Disney Pixar 1937 à 2022 - 1080p H265 French VFF c3r153\n[094] Wall-E (2008).mkv\n👤 10 💾 1.65 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e2fd41349c1de6ea461a18a9185e0d7301c22f81",
+      "fileIdx": 93,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "[094] Wall-E (2008).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "ВАЛЛ·И / WALL·E (2008) BDRip 1080p от HQCLUB | Лицензия\n👤 10 💾 7.77 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "551c82ed906102b8b81cc897f111a8e7fc667d31",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "WALL·E.2008.1080p.BluRay.3xRus.Ukr.Eng.-HQCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:551c82ed906102b8b81cc897f111a8e7fc667d31",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 051-100 BluRay 1080p x265 10bit MNHD-FRDS\n064.机器人总动员.Wall-E.2008.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS/Wall-E.2008.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS.mkv\n👤 9 💾 4.89 GB ⚙️ EXT",
+      "infoHash": "e6d934fd7e96efcb009c3372198360262bca2b65",
+      "fileIdx": 93,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Wall-E.2008.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Wall·E.2008.1080P-Dual-Lat (1).mp4\n👤 9 💾 1.59 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "e7743a9a2bea378558f1c843f5c99b6d188aec70",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Wall·E.2008.1080P-Dual-Lat (1).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Wall-E.2008.Blu-Ray.1080p.x265.12bit.[Hindi-English].DD 5.1-WiCK\n👤 9 💾 6.72 GB ⚙️ 1337x\n🇬🇧 / 🇮🇳",
+      "infoHash": "084ca63f3af99c670930012ee26cf03144a81fed",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|12bit",
+        "filename": "Wall-E.2008.Blu-Ray.1080p.x265.12bit.DD+5.1-WiCK.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL- E (2008)(1080p) (ENG DUTCH VLAAMS)(MKV) TBS\n👤 9 💾 6.55 GB ⚙️ ThePirateBay\n🇬🇧 / 🇳🇱",
+      "infoHash": "d33cf8dfd6d4e5c1953582bf87de670fd0899f56",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL E 2008 1080p DSNP WEB-DL H265 SDR DDP Atmos 5 1 English --HONE\n👤 8 💾 5 GB ⚙️ EXT\n🇬🇧 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇳🇴 / 🇹🇷",
+      "infoHash": "e3f182065d75edbe1c41f16750c1670cf400b66d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "WALL E 2008 1080p DSNP WEB-DL H265 SDR DDP Atmos 5 1 English --HONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E 2008 1080p AV1 10bit-DKong\n👤 8 💾 792.68 MB ⚙️ ThePirateBay",
+      "infoHash": "cde6fce65c26eacb45ab1a9640e81b9028b1e2a0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1|10bit",
+        "filename": "WALL-E 2008 1080p AV1 10bit-DKong.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) 1080p BluRay Multi AV1 Opus [AV1D]\n👤 8 💾 752.79 MB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "119796f873f0923d8f481e32f7a963bb026d22b2",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "WALL-E (2008) 1080p BluRay Multi AV1 Opus [AV1D].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E (2008) MULTi 1080p BluRay DTS-HD MA 5.1 Dubbing i Napisy [PL ENG]\n👤 7 💾 20.4 GB ⚙️ 1337x\nMulti Subs / 🇬🇧 / 🇵🇱",
+      "infoHash": "4acb348ad7b2a8c06010d56eca2823a6511d647a",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Wall-E.2008.Bluray.1080p.DTS-HD-5.1-ES.x264-Grym\n👤 7 💾 13.4 GB ⚙️ ThePirateBay",
+      "infoHash": "f2cffb0c5c5a599314809422037b5246402f9cc0",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E 2008 1080p BluRay x265-YAWNTiC\n👤 6 💾 3.91 GB ⚙️ ThePirateBay",
+      "infoHash": "8d2801e16b3af630e464bdf14fc1c10b8d2e6bd1",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "WALL-E 2008 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2008.WALL-E.1920x802.BDRip.x264.DTS-HD.MA.mkv\n👤 6 💾 13.15 GB ⚙️ ThePirateBay",
+      "infoHash": "52d497e454d04d8bfdca5d2181dbaa51fd27f3f7",
+      "fileIdx": 11,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2008.WALL-E.1920x802.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "WALL-E.2008.1080p.BluRay.H264.AAC-RARBG\n👤 5 💾 1.86 GB ⚙️ ThePirateBay",
+      "infoHash": "2ed4f450083a8c2ea85ce586973b3b07006f307c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "ВАЛЛ·И / WALL·E [2008 BDRip 720p] Dub + MVO + AVO (Сербин) + Ukr + Original Eng + Sub [Локализованный видеоряд]\n👤 93 💾 4.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "d8c142ac8136efbee1d8311c8dbbd5df3445bff2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "WALL·E.2008.720p.BluRay.3xRus.Ukr.Eng.-HQCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:d8c142ac8136efbee1d8311c8dbbd5df3445bff2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "WALL-E (2008) 720p BrRip x264 - 650MB - YIFY\n👤 46 💾 650.85 MB ⚙️ ThePirateBay",
+      "infoHash": "c637d6abb988bf06bb9d02322db66c47e027dce7",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "WALL-E.2008.720p.BrRip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "WALL-E 2008 720p BluRay DD5 1 x264-LoRD\n👤 20 💾 3.94 GB ⚙️ EXT",
+      "infoHash": "04425977cd0465c2ab20b66a82d7e6fede69aafe",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "WALL-E 2008 720p BluRay DD5 1 x264-LoRD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "ВАЛЛ·И / WALL·E (2008) BDRip 720p [Hi10P] от IIIKOJIO3ABP\n👤 6 💾 2.68 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "4cd5a74dc9ea1becfbc3a78e937114efb34d7aad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Vall-i.2008.720p.BluRay.Hi10P.IIIKOJIO3ABP.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:4cd5a74dc9ea1becfbc3a78e937114efb34d7aad",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "ВАЛЛ-И / WALL·E [2008 BDRip-AVC] [Локализованный видеоряд] Dub + Original (Eng) + Sub (Rus Ukr Eng)\n👤 152 💾 1.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "a6db2b6052b6b420d3bfbf6b9d4b0d5568f73cb6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Wall-E.2008.BDRip-AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a6db2b6052b6b420d3bfbf6b9d4b0d5568f73cb6",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "ВАЛЛ-И / WALL-E [2008 BDRip-AVC] [Локализованный видеоряд] Dub + MVO (С.Р.И.) + AVO (Сербин) + Original + Commentary (Rus) + Sub (Rus Eng)\nWALL-E (2008) BDRip.mkv\n👤 32 💾 2.71 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "51f02aff54c412f21d182346a317b218d1586ac0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "WALL-E (2008) BDRip.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:51f02aff54c412f21d182346a317b218d1586ac0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Wall-E dvdrip FRENCH 2008\n👤 15 💾 699.73 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "2f1256d9d39eceec6f4c6f96dfbc3bf45802f7b2",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "wall-e.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Movie 140 Dub Arabic Disney Pixar Dreamworks\nWALL-E.2008.DVDRip.By.Monster.avi\n👤 14 💾 869.37 MB ⚙️ ThePirateBay\n🇸🇦",
+      "infoHash": "acff768e727770068974bd731c71de28543f25db",
+      "fileIdx": 154,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "WALL-E.2008.DVDRip.By.Monster.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "ВАЛЛ-И / WALL·E [2008 BDRip] [Локализованный видеоряд] Dub + MVO + AVO (Сербин) + Dub (Ukr) + Original (Eng) + Sub (Rus Ukr Eng)\nWall-E.2008.BDRip.avi\n👤 11 💾 1.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "d5e7ca47fbfa97950beaa8d1e2a7c1e3c806efdd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Wall-E.2008.BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:d5e7ca47fbfa97950beaa8d1e2a7c1e3c806efdd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Walt Disney - Intégrale de 95 Animations de 1937 à 2007 DVDRIP AVI MPEG FR Diablo\nN° 094 - 2008 Walt Disney - Wall-E.avi\n👤 7 💾 697.99 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "241ea718ac48de9f205ee89cd3f8479e2d58dac4",
+      "fileIdx": 93,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "N° 094 - 2008 Walt Disney - Wall-E.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "ВАЛЛ-И / WALL-E [2008 HDRip] [Оригинальный видеоряд] Dub\n👤 6 💾 746.73 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "e108fe30ba833f4d893d17a2c0dd0fc2759e41de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "WALL-E.2008.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:e108fe30ba833f4d893d17a2c0dd0fc2759e41de",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Disney Collection 1937-2008\nWall-E (2008).m4v\n👤 26 💾 427.92 MB ⚙️ MagnetDL",
+      "infoHash": "694effefbad374fbff0d64485774b87ea9126bd1",
+      "fileIdx": 106,
+      "behaviorHints": {
+        "filename": "Wall-E (2008).m4v"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "WALL-E-fr\n👤 5 💾 700.11 MB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "f54b8544aabf80804b64e13a628e7c97b5fec4dd"
+    }
+  ]
+}

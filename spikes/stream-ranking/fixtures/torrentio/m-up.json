@@ -1,0 +1,914 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-up",
+  "request": "https://torrentio.strem.fun/stream/movie/tt1049413.json",
+  "recordedAt": "2026-11-05T22:38:48.260Z",
+  "status": 200,
+  "ms": 72,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Up 2009.MULTi.UHD.BluRay.2160p.HDR.TrueHD.Atmos.7.1.HEVC.DDR\n👤 53 💾 16.75 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧",
+      "infoHash": "1d3f1adb3c87d4fc3cb2707540c617640ed92673",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Up.2009.MULTi.UHD.BluRay.2160p.HDR.TrueHD.Atmos.7.1.HEVC.DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Up.2009.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-AViATOR\n👤 38 💾 11.28 GB ⚙️ RARBG",
+      "infoHash": "032e91d2758f2a5fed5c92270aca2b221a41de79",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "up.2009.2160p.uhd.bluray.x265-aviator.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Up (2009) 2160p H265 BluRay Rip 10 bit DV HDR10 ita eng AC3 5.1 sub ita eng Licdom\n👤 30 💾 4.19 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "113378357ad21d4a5504dea8352c8a116cc02070",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR",
+        "filename": "Up (2009) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Up (2009) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 30 💾 5.4 GB ⚙️ 1337x",
+      "infoHash": "0f9c4f02b101805b3a3bc1b28b320a14eeaa860c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Up 2009 UHD BluRay 2160p TrueHD Atmos 7 1 DV HEVC HYBRID REMUX-FraMeSToR\n👤 26 💾 38.38 GB ⚙️ 1337x",
+      "infoHash": "f24cd51776543d8fc00799d286370e31ac0c887b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Up.2009.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Up.2009.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 13 💾 34.5 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "a60c2f87e103b8ebede4cf84530d5fd965796bb2",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Up.2009.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Up (2009) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG DTS-AC3-SUBS] [M@HD]\n👤 13 💾 12.71 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "d9058c2a45086516ddf438243099bda84be83e3b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|hevc|10bit|HDR",
+        "filename": "Up (2009) [BluRay Rip 2160p HEVC 10bit-HDR ITA-ENG DTS-AC3-SUBS] [M@HD].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "[PACK] Pixar Animation 4K UHD Collection (2160p HDR BDRip x265 10bit AC3) [4KLiGHT]\nUp (2009) REPACK MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv\n👤 12 💾 3.66 GB ⚙️ 1337x\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "infoHash": "5839f4ef665dcc00978d3fb017a62c52a20feeea",
+      "fileIdx": 22,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "Up (2009) REPACK MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Up (2009) [2160p] UHD [BD] DV HDR10 AV1 TrueHD.7.1+Atmos\n👤 11 💾 18 GB ⚙️ TorrentGalaxy",
+      "infoHash": "861b9b93da2a3739cf2857915aa6394e88f905ca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|av1|10bit|DV|HDR",
+        "filename": "Up (2009) [2160p] UHD [BD] DV HDR10 AV1 TrueHD.7.1+Atmos.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Up 2009 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 9 💾 19.02 GB ⚙️ 1337x",
+      "infoHash": "020f65bb5bd2b88ec3fc26168cced0ca73c21f3f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Up (2009).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Up 2009 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 5 💾 19.02 GB ⚙️ 1337x",
+      "infoHash": "bbb92139d4405eb917d3c6a45f28538ea5ebb14f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Up (2009).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Up 2009 2160p BluRay\n👤 48 💾 4.35 GB ⚙️ YTS",
+      "infoHash": "fae3ef3faca8e8f55679107cf30ee6b58c6354d4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Up.2009.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n2060p",
+      "title": "Вверх / Up [2009 WEB-DL 2160p SDR] Dub (Невафильм) + Sub (Rus)\n👤 22 💾 13.94 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "1e78a701ea26b1cd695d94fdf1b542e4952cecca",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|2060p|WEB-DL",
+        "filename": "Up.2009.WEB-DL.IVI.SDR.2060p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:1e78a701ea26b1cd695d94fdf1b542e4952cecca",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Up.2009.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 9 💾 41.49 GB ⚙️ RARBG",
+      "infoHash": "a0ab685f2db9bb2c23688dc2dd72df1fc7c6d38d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Up.2009.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Up.2009.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-AViATOR\n👤 7 💾 61.38 GB ⚙️ RARBG",
+      "infoHash": "777db3a00e8acf5304816d143fb741068a0e71f9",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Up 2009 1080p DS4K BluRay x265 10 bit HDR AAC 7 1 WeSLeY\n👤 8 💾 3.3 GB ⚙️ TorrentGalaxy",
+      "infoHash": "a1c65db39c4fd90c375c0d015f660656f3b6227b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Up (2009) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up (2009) 1080p BrRip x264 - YIFY\n👤 380 💾 1.43 GB ⚙️ ThePirateBay",
+      "infoHash": "6ac7f6c2c49342f02de3621b9595c073c485a47a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Up.2009.1080p.BluRay.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Вверх / Up [2009 WEB-DL 1080p] [Локализованный видеоряд] Dub + Original (Eng) + Sub (Rus Eng)\n👤 146 💾 4.28 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "9ace5f16e5eb7c66a7767701bb8924b892cfc563",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Up.WEB-DL.KP.1080p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:9ace5f16e5eb7c66a7767701bb8924b892cfc563",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up (2009) (1080p BluRay x265 HEVC 10bit AAC 6.1 Silence) [QxR]\nUp (2009) (1080p BluRay x265 Silence).mkv\n👤 60 💾 3.75 GB ⚙️ 1337x\n🇬🇧 / 🇪🇸 / 🇫🇷",
+      "infoHash": "2f1a77461f876baaa2c732f46f32817a8e35cb37",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Up (2009) (1080p BluRay x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Вверх / Up [2009 BDRip 1080p] [Оригинальный видеоряд] Dub (Blu-ray CEE Rus Ukr) + 2x AVO + ENG + Sub Rus Eng Ukr\n👤 60 💾 10.85 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "e7461210c3b5009626744161bf620528c8ef13d3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Up (2009).1080p.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:e7461210c3b5009626744161bf620528c8ef13d3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2009.Up.1920x1080.BDRip.x264.DTS-HD.MA.mkv\n👤 54 💾 12.94 GB ⚙️ ThePirateBay",
+      "infoHash": "a200be18e2d389cadc9246167434fe9555f5d113",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2009.Up.1920x1080.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up (2009) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 39 💾 1.91 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "bb26f4a180c3b793c74d36b2b9612abe2a6a4940",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Up (2009) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2024) BDRip 1080p\n2009.Up.1920x1080.BDRip.x264.DTS-HD.MA.mkv\n👤 37 💾 12.94 GB ⚙️ ThePirateBay",
+      "infoHash": "58733961d2672b8bcf08d928cee0ae96f4150fda",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2009.Up.1920x1080.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p UHD BluRay DD+7.1 x264-LoRD\n👤 34 💾 9.78 GB ⚙️ ThePirateBay",
+      "infoHash": "474be6256672939ea86b43752653b363ff153332",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Up 2009 1080p UHD BluRay DD+7.1 x264-LoRD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up.2009.PROPER.1080p.BluRay.H264.AAC-RARBG\n👤 26 💾 1.83 GB ⚙️ RARBG",
+      "infoHash": "8c4bbe71ed3df7765da8fedeafaf98de1738fdab",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Up.2009.PROPER.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 BluRay 1080p Hi10P DTS 4Audio-CHD\n👤 25 💾 9.2 GB ⚙️ ThePirateBay",
+      "infoHash": "3a9bf670010f28a18da1f429676a310c490f7818",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p BluRay AV1 Opus 5.1 [981]\n👤 24 💾 1.11 GB ⚙️ TorrentGalaxy",
+      "infoHash": "72e4a55494ffe52a49e406123a3c11970f0c30d4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Up 2009 1080p BluRay AV1 Opus 5.1 [981].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p DSNP WEB-DL DDP5 1 Atmos H 264-GPRS\n👤 22 💾 4.85 GB ⚙️ ThePirateBay",
+      "infoHash": "d7f8c5de6c7b07ea1dd83044a026a7e7fac43067",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Up 2009 1080p DSNP WEB-DL DDP5 1 Atmos H 264-GPRS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up (2009) 1080p BluRay Multi AV1 Opus [AV1D]\n👤 20 💾 691 MB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "7aee864ddd4d3dcf132c1d620e2f641df06429b9",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Up (2009) 1080p BluRay Multi AV1 Opus [AV1D].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Вверх / Up (2009) BDRip 1080p\n👤 20 💾 4.37 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "8d2f7c74f15f6d748660d624bb2271fa752270ab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Up.2009.BDRip.1080p.Rus.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:8d2f7c74f15f6d748660d624bb2271fa752270ab",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p BluRay x264-OFT\n👤 18 💾 4.19 GB ⚙️ TorrentGalaxy",
+      "infoHash": "dddb2a282681848820e4a8986069a9279f13c83c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Up 2009 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p BluRay DD+ 7.1 x265-edge2020\n👤 17 💾 2.51 GB ⚙️ TorrentGalaxy",
+      "infoHash": "bf2db80a8a67c4b581fffcfdbc1408e0850d2b6e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Up.2009.1080p.BluRay.DDP.7.1.x265-edge2020.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up.2009.1080p.BluRay.x265-RARBG\n👤 14 💾 1.5 GB ⚙️ RARBG",
+      "infoHash": "6bb84fbacc9aca480df45cbae576fbd7a00ef589",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Up.2009.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up.2009.1080P-Dual-Lat.mp4\n👤 12 💾 1.48 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "d2e8fb277e6ae0c1256692dbf1f9ff3929c44ab4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Up.2009.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p DSNP WEB-DL DDP5 1 Atmos H 264-BLOOM\n👤 11 💾 4.85 GB ⚙️ TorrentGalaxy",
+      "infoHash": "6dd90dadeaadaaa1361cf71db2aa651a3c0b6135",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Up 2009 1080p DSNP WEB-DL DDP5 1 Atmos H 264-BLOOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Collection Disney Pixar 1937 à 2022 - 1080p H265 French VFF c3r153\n[097] La-Haut (2009).mkv\n👤 10 💾 1.67 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e2fd41349c1de6ea461a18a9185e0d7301c22f81",
+      "fileIdx": 96,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "[097] La-Haut (2009).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up 2009 1080p BluRay x265-YAWNTiC\n👤 9 💾 4.61 GB ⚙️ ThePirateBay",
+      "infoHash": "ffc6b6f0c2bb2eccde2209700b45c2c47f7da370",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Up 2009 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D HSBS",
+      "title": "Up (2009) 3D HSBS 1080p BluRay H264 DolbyD 5.1 [nickarad]\n👤 7 💾 2.76 GB ⚙️ TorrentGalaxy",
+      "infoHash": "934963f6541edef4ddfc85dd7ffe9f17211e00e6",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Up (2009) 3D HSBS 1080p BluRay H264 DolbyD 5.1 + nickarad.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Вверх / Up [2009 2 x Blu-ray Disc 1080p] [Двухдисковое издание] Dub + ENG + Sub\n👤 7 💾 53.8 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇮🇳 / 🇺🇦 / 🇸🇦",
+      "infoHash": "40b745f3eac424188296bf63ec5c831bc665cf9e",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:40b745f3eac424188296bf63ec5c831bc665cf9e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 101-150 BluRay 1080p x265 10bit MNHD-FRDS\n115.飞屋环游记.Up.2009.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS/Up.2009.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS.mkv\n👤 6 💾 5.17 GB ⚙️ EXT",
+      "infoHash": "08079cb5f524683e3a8da9e31f53ab81663b2501",
+      "fileIdx": 100,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Up.2009.BluRay.1080p.x265.10bit.4Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2009.Up.1920x1080.BDRip.x264.DTS-HD.MA.mkv\n👤 6 💾 12.94 GB ⚙️ ThePirateBay",
+      "infoHash": "52d497e454d04d8bfdca5d2181dbaa51fd27f3f7",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2009.Up.1920x1080.BDRip.x264.DTS-HD.MA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Up: Altas Aventuras (2009) BluRay 1080p Dual Audio\n👤 6 💾 1.52 GB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "ca294c5f6afb34519b04a9edf98822f1953a0b65",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Up - Altas Aventuras [2009]-BluRay 1080p Dual Áudio.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Вверх в 3Д / Up 3D [2009 WEB-DL] [Локализованный видеоряд] Dub (Невафильм) + Original (Eng) Half SideBySide / Горизонтальная анаморфная стереопара\n👤 5 💾 3.56 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "e147b7ecc694e80aea92c710871f3f0c2495e75b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Up.WEB-DL.OKKO.3D.1080p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:e147b7ecc694e80aea92c710871f3f0c2495e75b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Up (2009) 720p BrRip x264 - 600MB - YIFY\n👤 28 💾 601.75 MB ⚙️ ThePirateBay",
+      "infoHash": "afcae5cd844c83dd38a9c827671b08d11da8c081",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Up.2009.720p.BluRay.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Вверх / Up [2009 BDRip 720p] [Локализованный видеоряд] Dub (Blu-ray CEE) + ENG + Sub Rus Eng Ukr\n👤 18 💾 3.7 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "98bfd7a27342b484998a5a89c1e60af86754456a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Up (2009).Rus. 720p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:98bfd7a27342b484998a5a89c1e60af86754456a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Up (2009) 720p H264 Ita Eng E-Ac3 5.1 ub Ita Eng SnakeSPL MIRCrew\n👤 7 💾 1.83 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "9ceaa03eeda8611f8752b04bd8d9bf9c98925ef7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "Up (2009) 720p H264 Ita Eng E-Ac3 5.1 ub Ita Eng SnakeSPL MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Вверх / Up [2009 BDRip 720p] [Оригинальный видеоряд] Dub (Blu-ray CEE Rus Ukr) + 2x AVO + ENG + Sub Rus Eng Ukr\n👤 7 💾 4.91 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "0a989685470a1f33b018ced0328992530241d719",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "Up (2009).720p.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:0a989685470a1f33b018ced0328992530241d719",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Movie 140 Dub Arabic Disney Pixar Dreamworks\nUp.2009.DVDRip.By.Monster.MST.avi\n👤 97 💾 705.13 MB ⚙️ ThePirateBay\n🇸🇦",
+      "infoHash": "acff768e727770068974bd731c71de28543f25db",
+      "fileIdx": 186,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Up.2009.DVDRip.By.Monster.MST.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Вверх / Up [2009 HDRip] [Локализованный видеоряд] Dub\n👤 66 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "215693137e53d3bf7d3502a53f921fd63a8dfe64",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|HDRip",
+        "filename": "Up.2009.BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:215693137e53d3bf7d3502a53f921fd63a8dfe64",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Вверх / Up [2009 BDRip-AVC] [Локализованный видеоряд] Dub (Blu-ray CEE) + ENG + Sub Rus Eng Ukr\n👤 21 💾 2.69 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "12881bceda8f037f4dfaf64b284de3edc86d0794",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|avc",
+        "filename": "Up (2009).Rus.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:12881bceda8f037f4dfaf64b284de3edc86d0794",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n3D",
+      "title": "75.3D.Movies\nUp.mp4\n👤 17 💾 1.5 GB ⚙️ MagnetDL",
+      "infoHash": "61826fc42681d1f7bcae235d1ff7699f85b9669b",
+      "fileIdx": 47,
+      "behaviorHints": {
+        "filename": "Up.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Up 2009 XviD Dub AC3 BDRip [hamXa-buTT]\n👤 14 💾 1.46 GB ⚙️ MagnetDL\nDubbed",
+      "infoHash": "84a2026e1fa729ca5e35954b2c375abc9c702075",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Up.2009.XviD.Dub.AC3.BDRip.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Вверх / Up [2009 BDRip-AVC] [Оригинальный видеоряд] Dub (Blu-ray CEE Rus Ukr) + AVO (Сербин) + ENG + Sub Rus Eng Ukr\n👤 12 💾 3.24 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "b7cfc4a714dcdff0ee5045f6f132e8cc1cc40bbe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|avc",
+        "filename": "Up (2009).Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:b7cfc4a714dcdff0ee5045f6f132e8cc1cc40bbe",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Вверх / Up [2009 HDRip] [локализованный видеоряд] Dub\n👤 8 💾 746.36 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "0425f8f351cedc5b805df625d13c3a715e172ba9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Вверх.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:0425f8f351cedc5b805df625d13c3a715e172ba9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Up DVDRip Spanish 2009\n👤 5 💾 696.66 MB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "efadc6a3abb76e4e5a25f6e89fa2936ea3ad7e69",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip"
+      }
+    },
+    {
+      "name": "Torrentio\nSCR",
+      "title": "Up (2009) Spanish DVDSCR\n👤 5 💾 1.1 GB ⚙️ ThePirateBay\n🇪🇸",
+      "infoHash": "0fe9783be4119d0fda2beb61ed1dfc1d49d910b8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SCR"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Disney Animated Pack (54 Movies) | mkv compression [mkvGOD]\nUp.mkv\n👤 34 💾 374.99 MB ⚙️ ThePirateBay",
+      "infoHash": "663d7fbc4e0185412081c475a69be17f66d4b9b1",
+      "fileIdx": 16,
+      "behaviorHints": {
+        "filename": "Up.mkv"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Sinhronizovani crtaci\nNebesa (Up).avi\n👤 19 💾 700.01 MB ⚙️ ThePirateBay",
+      "infoHash": "3110df474db73a78352f19dfcd9950b07a150e23",
+      "fileIdx": 25,
+      "behaviorHints": {
+        "filename": "Nebesa (Up).avi"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1130 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-intouchables",
+  "request": "https://torrentio.strem.fun/stream/movie/tt1675434.json",
+  "recordedAt": "2026-11-05T22:38:51.395Z",
+  "status": 200,
+  "ms": 66,
+  "streams": [
+    {
+      "name": "Torrentio\n4k",
+      "title": "The.Intouchables.2011.2160p.WEB.AI.DDP5.1.AV1-GoodFilms [Untouchable] SDR 4k UHD\n👤 40 💾 10.03 GB ⚙️ ThePirateBay\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "5d593484d4da8059a08caaf5114eddc394a7f0e7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB|av1",
+        "filename": "1+1 (Intouchables)(2011)(4K_AV1_9Mbps)(AI by Vadik-p).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "1+1 / Intouchables (2011) UHD WEB-DL-HEVC 2160p | 4K | SDR | D\n👤 15 💾 16.39 GB ⚙️ Rutor\n🇷🇺 / 🇫🇷",
+      "infoHash": "fcacd21d688f39f73a6f221c0b839d7c464e6fa3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|WEB-DL|hevc",
+        "filename": "Intouchables.2011.UHD.WEB-DL.2160p.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:fcacd21d688f39f73a6f221c0b839d7c464e6fa3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables 2011 1080p BluRay x264 French AAC - Ozlem\n👤 198 💾 1.64 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "9a7b86272e5a73689f3aa4a6b91475d1f1c678b5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The Intouchables 2011 1080p BluRay x264 French AAC - Ozlem.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "1+1 / Неприкасаемые / Intouchables [2011 BDRemux 1080p] [US] Dub + MVO + DVO + AVO + VO + Original (Fra) + Sub (Rus Fra Eng)\n👤 155 💾 26.34 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "fc155380461f6183b3691520054a07c555c0e37f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Неприкасаемые.2011.Blu-Ray.Remux.(1080p).mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:fc155380461f6183b3691520054a07c555c0e37f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "1+1 / Неприкасаемые / Intouchables [2011 BDRip 1080p] Dub + DVO + VO + Sub Rus Eng Fra + Original Fra\n👤 120 💾 16.93 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷 / 🇫🇮",
+      "infoHash": "e796e9246ae83addb1f793c07eae6c32b7d4d035",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Intouchables.2011.1080p.BluRay.5.1.x264.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e796e9246ae83addb1f793c07eae6c32b7d4d035",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables 2011 1080p BluRay\n👤 100 💾 1.79 GB ⚙️ YTS",
+      "infoHash": "4bdcb593dac54b2e78f710bf4e3e78349148a70b",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Intouchables.2011.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Intouchables.2011.VF.1080p.BluRay.x264-PopHD\n👤 59 💾 2.24 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "bfd8d77e7846c977c570022e1907c9fc07a76460",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Intouchables.2011.VF.1080p.BluRay.x264-PopHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables 2011 1080p BluRay x265-YAWNTiC\n👤 42 💾 5.73 GB ⚙️ TorrentGalaxy",
+      "infoHash": "9d6bc7ca99eedf303bcb709cfd9b54aaf6021226",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The Intouchables 2011 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.AKA.Untouchable.1080p.BluRay.x264-NODLABS\n👤 34 💾 8.74 GB ⚙️ ThePirateBay",
+      "infoHash": "6c4b9e70484a2c875d8779631c5b26ee3bdfb806",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "the.intouchables.2011.1080p.bluray.x264-nodlabs.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Intocáveis.2011.BluRay.1080p.x264.5.1.DUAL-SF\n👤 30 💾 1.99 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "943c0065cd04c37fd0b389c49d6ae6bccdb3620a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Intocáveis.2011.BluRay.1080p.x264.5.1.DUAL-SF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables 2011 (1080p Bluray x265 HEVC 10bit AAC 5.1 French Tigole) [UTR]\n👤 29 💾 4.04 GB ⚙️ 1337x\n🇫🇷",
+      "infoHash": "745bc13b754b54fa6eee919d0b8b869d260f7b94",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "The Intouchables 2011 (1080p x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.Bluray.1080p.DTS-HD.x264-Grym\n👤 24 💾 13.68 GB ⚙️ ThePirateBay",
+      "infoHash": "94bafc26148dd6e7ca85f4961a823e4b8b952372",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Intouchables.2011.Bluray.1080p.DTS-HD.x264-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables (2011)-François Cluzet-1080p-H264-AC 3 (DolbyDigital-5.1)-Eng.Sub-DEMO & nickarad\n👤 19 💾 2.07 GB ⚙️ 1337x",
+      "infoHash": "dd8b767a5d6b83ef5fa6f67cc250162f7c41292e",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "The Intouchables (2011) 1080p-H264-AC 3 (DolbyDigital-5.1)-En.Sub-DEMO & nickarad.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.FRENCH.1080p.BluRay.x264.DTS-FGT\n👤 18 💾 12.29 GB ⚙️ RARBG\n🇫🇷",
+      "infoHash": "ff62fece531d707b40732d3fd8045a4a471a9caa",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Intouchables.2011.FRENCH.1080p.BluRay.x264.DTS-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables 2011 FRENCH 1080p BluRay AV1 Opus 5.1 [981]\n👤 14 💾 1.71 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇫🇷",
+      "infoHash": "7e5036585070fc171c7d26497dfc79ca6cce3b86",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "The Intouchables 2011 FRENCH 1080p BluRay AV1 Opus 5.1 [981].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.FRENCH.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 13 💾 20.2 GB ⚙️ RARBG\n🇫🇷",
+      "infoHash": "49a29105d44715e9995553e129b5cb96cc34ade7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Intouchables.2011.FRENCH.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.1080p.NF.WEB-DL.H264-ETRG[EtHD]\n👤 12 💾 4.41 GB ⚙️ ThePirateBay",
+      "infoHash": "279e622b5b06ded6de9898ec4199c8d38b9c01e3",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.FRENCH.1080p.BluRay.H264.AAC-VXT\n👤 10 💾 2.14 GB ⚙️ RARBG\n🇫🇷",
+      "infoHash": "7ffe57c9e9f7eacec43738b505d0acead8cdf3cc",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "The.Intouchables.2011.FRENCH.1080p.BluRay.H264.AAC-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Intouchables 2011 1080p BluRay x264 DD5 1-Pahe in\n👤 9 💾 2.71 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "bd10a4a6a610d654c3c0ae3e12bccef84131bd86",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The Intouchables 2011 1080p BluRay x264 DD5 1-Pahe in.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Intocable.2011.1080P-Dual-Lat\n👤 9 💾 1.84 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "473d8d5741c326a3b17f49b6677cd7c96a4efe21",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Intocable.2011.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "1+1 / Intouchables (2011) BDRip 1080p\n👤 9 💾 5.77 GB ⚙️ Rutor\n🇷🇺 / 🇫🇷",
+      "infoHash": "00286eff6b44c7c5c8377b6d7df77fad5456184a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "1+1.2011.BDRip.1080p.Rus.Fre.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:00286eff6b44c7c5c8377b6d7df77fad5456184a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS\n040.触不可及.Intouchables.2011.BluRay.1080p.x265.10bit.MNHD-FRDS/Intouchables.2011.BluRay.1080p.x265.10bit.MNHD-FRDS.mkv\n👤 8 💾 6.74 GB ⚙️ EXT",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 284,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Intouchables.2011.BluRay.1080p.x265.10bit.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.1080p.BluRay.x264.[ExYu-Subs]\n👤 8 💾 1.36 GB ⚙️ ThePirateBay",
+      "infoHash": "d718b728959f369c0950913062de03d831f67892",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "The.Intouchables.2011.1080p.BluRay.x264.[ExYu-Subs].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Intouchables 2011 FRENCH VOF 1080p HDLight AC3 5 1 H264-LiHDL\n👤 7 💾 2.71 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "178bb02ba5f883e90707d4bccff17815ebaf6b3e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Intouchables 2011 FRENCH VOF 1080p HDLight AC3 5 1 H264-LiHDL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.FRENCH.1080p.BluRay.x265-VXT\n👤 7 💾 1.76 GB ⚙️ RARBG\n🇫🇷",
+      "infoHash": "13a911faea6af66b184bc7fdcdddc29af0803eca",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "The.Intouchables.2011.FRENCH.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.1080p.NF.WEB-DL.DD 5.1.x264-Telly\n👤 7 💾 6.07 GB ⚙️ 1337x",
+      "infoHash": "284af8210e737355ae8c59f99f7a162ce3aa1418",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x264",
+        "filename": "The.Intouchables.2011.1080p.NF.WEB-DL.DD+5.1.x264-Telly.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "1+1 / Неприкасаемые / Intouchables [2011 Blu-ray disc 1080p] [RUS] Dub + Original Fra\n👤 6 💾 30.61 GB ⚙️ Rutracker\n🇷🇺 / 🇫🇷 / 🇺🇦",
+      "infoHash": "8c4631da50b8c13ff09f395ed1e3b7350d4228fb",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:8c4631da50b8c13ff09f395ed1e3b7350d4228fb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "1+1 / Неприкасаемые / Intouchables [2011 Blu-ray disc (custom) 1080p] [Fra Transfer] Dub + DVO (OzzTV) + MVO (Ukr) + Original (Fra) + Sub Rus\n👤 6 💾 35 GB ⚙️ Rutracker\n🇷🇺 / 🇫🇷 / 🇺🇦",
+      "infoHash": "f43c82a57b908ff5c0f60817bf1f987acb63e380",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:f43c82a57b908ff5c0f60817bf1f987acb63e380",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.Intouchables.2011.Quasi.amici.1080p.H264.ITA\n👤 5 💾 2.21 GB ⚙️ ilCorSaRoNeRo\n🇮🇹",
+      "infoHash": "5c62b5d629688b6a4c8d35b474c72681339ce074",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "The.Intouchables.2011.Quasi.amici.1080p.H264.ITA.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "1+1 / Неприкасаемые / Intouchables [2011 BDRip 720p] Dub + DVO + VO + Sub Rus Fra Eng + Original Fra\n👤 68 💾 9.58 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷 / 🇫🇮",
+      "infoHash": "b9283219286d5e8bc3c6ca2b158d4735b0cd330b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|x264",
+        "filename": "Intouchables.2011.720p.BluRay.5.1.x264.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:b9283219286d5e8bc3c6ca2b158d4735b0cd330b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "The Intouchables 2011 720p BluRay\n👤 35 💾 951.37 MB ⚙️ YTS",
+      "infoHash": "801264bc5de4181c4c6686b4b0d15b7f395f48c2",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "The.Intouchables.2011.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 BDRip-AVC] Dub + Original (Fra) + Sub (Rus Fra Eng)\n👤 145 💾 1.45 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "38d85550f5501f7621d8754c5e47952f557eb374",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Neprikasaemye.2011.BDRip-AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:38d85550f5501f7621d8754c5e47952f557eb374",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "1+1 / Неприкасаемые / Intouchables [2011 BDRip-AVC] Dub |Лицензия|\n👤 38 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "d458f01a8fcbef795c204fbfde85488d246c838f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Nepricosaemie.2011.BDRip-AVC.chopper887.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:d458f01a8fcbef795c204fbfde85488d246c838f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 HDRip] AVO (Андрей Гаврилов)\n👤 31 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "efc6344dcf92cfbaf318d8af586f86d81a562eb4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Intouchables.2011.HDRip.Gavrilov.lumpeN.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:efc6344dcf92cfbaf318d8af586f86d81a562eb4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Intouchables.2011.FRENCH.DVDRiP.XViD-Ox\n👤 16 💾 700.63 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "7d03ab30570143dcd9d77073ce6894772c5e9d43",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid",
+        "filename": "Intouchables.2011.FRENCH.DVDRiP.XViD-Ox.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "The Intouchables.2011.BRRip.x264-VLiS\n👤 13 💾 1.2 GB ⚙️ ThePirateBay",
+      "infoHash": "bc1de5eccf9902bfef21d6fc644a7f78eebe026f",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 HDRip-AVC] Dub + Sub Rus Eng Fra\n👤 12 💾 749.3 MB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "f8bbe844c6052949abfb0edc8c847eefc5cbfcf9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Неприкасаемые (2011).mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:f8bbe844c6052949abfb0edc8c847eefc5cbfcf9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 HDRip] Dub\n👤 11 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "422e46f74d54ff19ad9e0947cc172aa8ab759eb2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Neprikasaemye.2011.HDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:422e46f74d54ff19ad9e0947cc172aa8ab759eb2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Неприкасаемые / Intouchables [2011 BDRip-AVC] Dub + DVO + VO (zamez) + Original (Fra) + Sub (rus Fra eng)\nIntouchables.Dub.Ozz.tv.barm.mkv\n👤 11 💾 4.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "c63d3a684d628d7bed6c3fd57bec1a1f71439dba",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Intouchables.Dub.Ozz.tv.barm.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:c63d3a684d628d7bed6c3fd57bec1a1f71439dba",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Intocable [BluRay Rip][AC3 5.1 Castellano][2011]\n👤 8 💾 1.92 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "c281a61a1ed5cc0b7c9638b977af89b8c1323265",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip",
+        "filename": "Intocable [BluRay Rip][www.descargas2020.com].avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "1+1 / Intouchables (2011) BDRip-AVC от HQ-ViDEO | Лицензия\n👤 8 💾 2.18 GB ⚙️ Rutor\n🇷🇺 / 🇫🇷",
+      "infoHash": "58dae3a90d3b5e68c4f9839dea34f402088971c4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "1+1.2011.RUS.BDRip-AVC.AC3.-HQ-ViDEO.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:58dae3a90d3b5e68c4f9839dea34f402088971c4",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nSATRip",
+      "title": "Борис I / Boris I [1984 SATRip-AVC] [Полная версия] DVO (СВ-Дубль)\n1_1 Крещение.mkv\n👤 7 💾 1.09 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "0e2700a829c89a214f1d761bd2d9ea827b9164a0",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|SATRip|avc",
+        "filename": "1_1 Крещение.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:0e2700a829c89a214f1d761bd2d9ea827b9164a0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 HDRip] Dub\n👤 6 💾 744.27 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "295b9a7b2012bf6ac8d18dd87422c123419dd8dd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Neprikasaemye_HDRip_dub__[scarabey.org]_by_Scarabey.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:295b9a7b2012bf6ac8d18dd87422c123419dd8dd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "1+1 / Intouchables (2011) HDRip | Лицензия\n👤 5 💾 744.27 MB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "891ad6918ee661ec57ebf0f094f7ebd224063f48",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Intouchables (2011) HDRip.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:891ad6918ee661ec57ebf0f094f7ebd224063f48",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 BDRip-AVC] DVO + MVO (Ukr / Hurtom) + Original Fra\n👤 5 💾 2.93 GB ⚙️ Rutracker\n🇷🇺 / 🇫🇷 / 🇺🇦",
+      "infoHash": "640aef42668264b3e1cf96691c421954709b5a3e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Intouchables.(1+1).2011.BDRip-AVC.RUS.UKR.FRE.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:640aef42668264b3e1cf96691c421954709b5a3e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Неприкасаемые / 1+1 / Intouchables [2011 HDRip] DVO (Ozz)\n👤 5 💾 1.45 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "6ce715c67d6c156451ad294f46965a67b649d51a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|xvid",
+        "filename": "1.1.2011.DVO.HDRip.XviD.AC3.-Vaippp.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:6ce715c67d6c156451ad294f46965a67b649d51a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Неприкасаемые / Intouchables [2011 DVDRip] Original + Sub (Rus)\n👤 5 💾 1.37 GB ⚙️ Rutracker\n🇷🇺 / 🇫🇷",
+      "infoHash": "afdeb2a69ef6cafaf9fa17f7781feef2c4371915",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Intouchables 2011.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:afdeb2a69ef6cafaf9fa17f7781feef2c4371915",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Черепашка герой / Turtle Hero / 26 серий [2006 DVDRip]\nCherepashka.Geroy-1..avi\n👤 5 💾 349.04 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "e92b47b43a941abfe1f5c24b2930dee46915eac1",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Cherepashka.Geroy-1..avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e92b47b43a941abfe1f5c24b2930dee46915eac1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Погоня за смертью / Road Rage / A Friday Night Date [2000 DVDRip] MVO\nPogonja_za_smertju_1.avi\n👤 5 💾 699.51 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "01067ffa3c805dd93e9b110c1cfbc81de109daa9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Pogonja_za_smertju_1.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:01067ffa3c805dd93e9b110c1cfbc81de109daa9",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Dansk Film Pakke\n👤 11 💾 699.05 MB ⚙️ MagnetDL",
+      "infoHash": "9d0955fadd9fe4dde3d208473e398757070b5512",
+      "fileIdx": 119,
+      "behaviorHints": {
+        "filename": "Det Støver Stadig -=(MAB)=-.avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Intouchable (2012)\n👤 10 💾 700.63 MB ⚙️ ThePirateBay",
+      "infoHash": "14e81c0cb2991c700d40b3f56a14ac6a97d008d5"
+    }
+  ]
+}

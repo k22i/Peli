@@ -1,0 +1,2193 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-alien",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0078748.json",
+  "recordedAt": "2026-11-05T22:41:44.777Z",
+  "status": 200,
+  "ms": 245,
+  "streams": [
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Alien.1979.Directors.Cut.2160p.UHD.Blu-Ray.DV.HEVC.HDR10 .DTS-HD.MA.5.1.x265-E\n👤 31 💾 24.82 GB ⚙️ 1337x",
+      "infoHash": "7fd5028c81574cbcc3d05e8e192d168eb65ebd68",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Alien (1979) 4K.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR10+",
+      "title": "Чужой / Alien [1979 UHD BDRemux 2160p HDR10+] [Uncut Director's Cut] [2019] Dub (CPIG) + AVO (Сербин) + VO (Чадов) + Original (Eng) + Sub (Rus Eng)\n👤 19 💾 51.48 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "99e1e63cd27a307beeb2639567b02d22285b0e11",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|HDR10+",
+        "filename": "Alien (1979) (Uncut Director's Cut) (2019) 4K.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:99e1e63cd27a307beeb2639567b02d22285b0e11",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR10+",
+      "title": "Alien.1979.DC.2160p.BluRay.x265.10bit.HDR10Plus.-SSDSSE\n👤 16 💾 21.5 GB ⚙️ ThePirateBay",
+      "infoHash": "55a8050b57cbf4a8d004e5441e52e3bdbddcd5e2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR10+",
+        "filename": "Alien.1979.DC.2160p.BluRay.x265.10bit.HDR10Plus.-SSDSSE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien (1979) Theatrical HDR10 2160p UHD BluRay x265 HEVC DTS-SARTRE\n👤 14 💾 17.7 GB ⚙️ 1337x",
+      "infoHash": "c4697efaccd693eb100301e61440f1145f860084",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Alien.1979.Theatrical.HDR10+.2160p.UHD.BluRay.x265.HEVC.DTS-SARTRE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien.1979.DC.2160p.UHD.BluRay.X265.10bit.HDR.DTS-HD.MA.5.1-IAMABLE\n👤 14 💾 23.23 GB ⚙️ RARBG",
+      "infoHash": "912ee9a768d85f10942002aed1ff45db2157f9bb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Alien.1979.DC.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien (1979) 2160p UHD HDR Bluray AV1 Opus Multi6 [dAV1nci]\n👤 13 💾 7.6 GB ⚙️ 1337x",
+      "infoHash": "9846786190dd0c6db3971ee2a58f6836ffab0fa0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|av1|HDR",
+        "filename": "Alien.Theatrical.Cut.1979.2160p.UHD.HDR.Bluray.AV1.Opus.Multi6-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien EXTENDED (1979) 2160p H265 BluRy Rip 10 bit HDR ita eng AC3 5.1 sub ita eng Licdom\n👤 12 💾 4.95 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "4522676fceb2f30ed17e033f71b0b3161ab3cb18",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|HDR",
+        "filename": "Alien EXTENDED (1979) 2160p H265 10 bit ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR10+ | HDR",
+      "title": "Alien.1979.Directors.Cut.Eng.Fre.Ger.Ita.Spa.Cze.Tha.Jpn.2160p.BluRay.Remux.HDR10Plus.HDR.HEVC.DTS-HD.MA-SGF\n👤 11 💾 47.42 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇪🇸 / 🇫🇷 / 🇩🇪 / 🇨🇿",
+      "infoHash": "50d0d1fc015c5aa2401ddd4d405dcaccb75f660b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|HDR10+|HDR",
+        "filename": "Alien.1979.Directors.Cut.Eng.Fre.Ger.Ita.Spa.Cze.Tha.Jpn.2160p.BluRay.Remux.HDR10Plus.HDR.HEVC.DTS-HD.MA-SGF.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien.1979.DC.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM\n👤 8 💾 20.67 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "fc7f0300c2c6737e209768c9e5ce75e18a6c1553",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Alien.1979.DC.4K.HDR.2160p.BDRip Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR10+",
+      "title": "Alien.1979.INTERNAL.Theatrical.2160p.UHD.BluRay.X265.10bit.HDR10Plus.DTS-HD.MA.5.1-IAMABLE\n👤 8 💾 30.28 GB ⚙️ RARBG",
+      "infoHash": "a5714dc8be860ff72555c6981db586e602e8ccda",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR10+",
+        "filename": "Alien.1979.INTERNAL.Theatrical.HDR10Plus.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Alien.1979.Directors.Cut.2160p.UHD.BluRay.HEVC.DV.DTS-HD.MA.5.1.x265-E\n👤 7 💾 24.65 GB ⚙️ 1337x",
+      "infoHash": "4b3fda695169e63d7b9b626c81ce9cbf96a9bc31",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|DV",
+        "filename": "Alien.1979.Directors.Cut.2160p.UHD.BluRay.HEVC.DV.DTS-HD.MA.5.1.x265-E.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Alien - EXTENDED (1979) UpScaled 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng NUeng Licdom\n👤 6 💾 2.96 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "d8c67e80219d3d59f0a608eef34a08538b954654",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Alien EXTENDED (1979) UpScaled 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng NUeng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Alien (1979) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 6 💾 3.29 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "29f0b666017cf8cc7b8f3a6656d54a4081f8f8d4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Alien (1979) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien El octavo pasajero Director Cut [4K UHDremux][2160p][HDR][DTS 5.1 Castellano-DTS 5.1-Ingles+Subs][ES-EN]\n👤 5 💾 43.86 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "infoHash": "50767e59e02607301d9e3218799264979c02be5f",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "Alien Director Cut 4Kremux2160.www.descargas2020.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Alien.1979.Theatrical.Cut.UHD.4K.HDR.2160p 44.3GB\n👤 5 💾 44.29 GB ⚙️ ThePirateBay",
+      "infoHash": "d9d65440034c195e925824204964e73b6cd20c97",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|HDR",
+        "filename": "Alien.1979.Theatrical.Cut.UHD.4K.HDR.2160p.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien.1979.THEATRICAL.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT\n👤 139 💾 52.76 GB ⚙️ TorrentGalaxy",
+      "infoHash": "b58da28a06fcd0a7c9964474cb5ec171bf2d3f50",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Alien.1979.THEATRICAL.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Vetřelec - Kolekce 1-8 2160p CZ\n👤 89 💾 39.5 GB ⚙️ EXT\n🇬🇧 / 🇨🇿 / 🇸🇰",
+      "infoHash": "073b1eb6ca37b896ec6fb005f50343a4557f7fab",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien 1979 2160p BluRay\n👤 79 💾 5.44 GB ⚙️ YTS",
+      "infoHash": "ef03a4b867ffe3b0d77b710a2dba49a237506ef2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Alien.1979.DC.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien (1979) DC Featurettes (2160p AI BluRay x265 HEVC 10bit AAC 5.1 Joy) [UTR]\nAlien (1979) DC  [2160p x265 10bit S91 Joy].mkv\n👤 62 💾 5.84 GB ⚙️ 1337x",
+      "infoHash": "7edd53f60869a75d2883119f94bec4e4c712b535",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit",
+        "filename": "Alien (1979) DC  [2160p x265 10bit S91 Joy].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien 1979 Directors Cut UHD BluRay 2160p DTS-HD MA 5 1 HEVC REMUX-FraMeSToR\n👤 22 💾 43.51 GB ⚙️ 1337x",
+      "infoHash": "f94d6ea35539debf14dcd6b1414ebb0437d31e31",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Alien.1979.Directors.Cut.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien 1979 Directors Cut 2160p Bluray x265 DDP DTS-KiNGDOM\n👤 21 💾 12.32 GB ⚙️ 1337x",
+      "infoHash": "71cdda96d122f9c4d9c172e4988d6e9550b3cb78",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265",
+        "filename": "Alien 1979 Directors Cut 2160p Bluray x265 DDP+DTS-KiNGDOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien.1979.Theatrical.Cut.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR\n👤 19 💾 44.29 GB ⚙️ 1337x",
+      "infoHash": "efc5745e7496822f8a40fb362095c67fe5650d21",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Alien.1979.Theatrical.Cut.UHD.BluRay.2160p.DTS-HD.MA.5.1.HEVC.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Чужой: Квадрология [Режиссерские и Кинотеатральные версии] / Alien: Quadrilogy [Special Edition and Theatrical cuts] [1979 1986 1992 1997 4К AI UPSCALE HEVC 2160p SDR] обновление от 27-04-2023\nAlien.1979.Director's Cut.BD.AI_UPSCALE_3840x2160_SDR_Final_prob-3.mkv\n👤 16 💾 59.6 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a0334483eb991b8aa724b6e7609be33f659cd54f",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc",
+        "filename": "Alien.1979.Director's Cut.BD.AI_UPSCALE_3840x2160_SDR_Final_prob-3.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:a0334483eb991b8aa724b6e7609be33f659cd54f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Чужой: Квадрология [Режиссерские и Кинотеатральные версии] / Alien: Quadrilogy [Special Edition and Theatrical cuts] [1979 1986 1992 1997 4К AI UPSCALE HEVC 2160p SDR] обновление от 27-04-2023\nAlien.1979.Theatrical Cut.BD.AI_UPSCALE_3840x2160_SDR_Final_prob-3.mkv\n👤 16 💾 54.61 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a0334483eb991b8aa724b6e7609be33f659cd54f",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc",
+        "filename": "Alien.1979.Theatrical Cut.BD.AI_UPSCALE_3840x2160_SDR_Final_prob-3.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:a0334483eb991b8aa724b6e7609be33f659cd54f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien.1979.DC.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT\n👤 11 💾 48.91 GB ⚙️ TorrentGalaxy",
+      "infoHash": "61a258a0926eef862b3743061573e2aa44844e25",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Alien.1979.DC.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien.1979.THEATRICAL.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.5.1-SWTYBLZ\n👤 10 💾 45.54 GB ⚙️ RARBG",
+      "infoHash": "a293aab3c7af2f110b96e072058a4a5b51957bf7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x264|8bit",
+        "filename": "Alien.1979.THEATRICAL.2160p.BluRay.x264.8bit.SDR.DTS-HD.MA.5.1-SWTYBLZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien.1979.DC.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT\n👤 9 💾 52.59 GB ⚙️ RARBG",
+      "infoHash": "9dfa199cfb0085b8b1ae76c3d9b01b2da68a186e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Alien.1979.DC.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "ALIEN.1979.4K.UHD.COMPLETE.BLURAY-MassModz\n👤 7 💾 83.62 GB ⚙️ TorrentGalaxy",
+      "infoHash": "d69cd34aa055952e51f395544f618d55f10d6863",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Alien O Oitavo Passageiro 1979 4K Versão de Cinema WWW.BLUDV.TV\n👤 6 💾 23.3 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "8175abc74a5fd90738327ca920edfbccdbc1769f",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k",
+        "filename": "Alien, O Oitavo Passageiro 1979 Versão de Cinema 4K 2160p Dual Áudio Encoder by Carlos José WWW.BLUDV.TV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Alien (1979) DC (1080p BluRay x265 HEVC 10bit HDR AAC 5.1 afm72) [QxR]\n👤 67 💾 5.58 GB ⚙️ 1337x",
+      "infoHash": "46ab441583423a6c44c58942ffc0855ddf52dc51",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit|HDR",
+        "filename": "Alien (1979) DC (1080p BluRay x265 HDR afm72).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Alien 1979 Directors Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 31 💾 6.67 GB ⚙️ ThePirateBay",
+      "infoHash": "4140f1657c96c27d2a798e5f1c98272cc5f6fcab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Alien 1979 Directors Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10  x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Alien.1979.Theatrical.HDR.1080p.UHD.BluRay.x265.HEVC.EAC3-SARTRE\n👤 20 💾 6.53 GB ⚙️ ThePirateBay",
+      "infoHash": "204da316cfebeab22b1bfd2ab3b23b73141fdd90",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Alien 1979 Theatrical Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 16 💾 6.89 GB ⚙️ ThePirateBay",
+      "infoHash": "19e4fb6cce2b9c2807d934acaddb1aa5a5a090d3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Alien 1979 Theatrical Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10  x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Alien (1979) Theatrical (1080p BluRay x265 HEVC 10bit HDR AAC 5.1 afm72) [QxR]\n👤 16 💾 6.05 GB ⚙️ 1337x",
+      "infoHash": "e3fd37648b4d38f1ef212e1ef88318a27165b61d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit|HDR",
+        "filename": "Alien (1979) Theatrical (1080p BluRay x265 HDR afm72).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Alien 1979 Theatrical Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 12 💾 6.89 GB ⚙️ ThePirateBay",
+      "infoHash": "0ea80419d9914ed01cd29b7dc17c8163a9a6695e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Alien 1979 Theatrical Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Alien 1979 Directors Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737\n👤 9 💾 6.67 GB ⚙️ ThePirateBay",
+      "infoHash": "fe1f3fd730cd15c1d817be0a0d4c02e60eb01170",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Alien 1979 Directors Cut UHD BluRay 1080p DDP 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV",
+      "title": "Alien 1979 1080p DSNP WEB-DL DDP5 1 DV H 265-OnlyWeb\n👤 8 💾 6.13 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷",
+      "infoHash": "d7f58e5dcec463e8e409370f453d1ce7f7e406a2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265|DV",
+        "filename": "Alien 1979 1080p DSNP WEB-DL DDP5 1 DV H 265-OnlyWeb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Kolekcja - Obcy - Alien [HLG HDR SDR] [1080p.BluRay.H264.AC3.5.1-AS76-FT] [ENG-Lektor PL] [Alusia]\nObcy - Alien 1979 [HLG HDR SDR] EXTENDED] [1080p.BluRay.H264.AC3.5.1-AS76-FT] [ENG-Lektor PL] [Alusia].mkv\n👤 5 💾 5.36 GB ⚙️ EXT\n🇬🇧 / 🇵🇱",
+      "infoHash": "e8bd6997e5511aa94c22ca1a739c5e9f2b514db7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264|HDR",
+        "filename": "Obcy - Alien 1979 [HLG HDR SDR] EXTENDED] [1080p.BluRay.H264.AC3.5.1-AS76-FT] [ENG-Lektor PL] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 DC REMASTERED 1080p BluRay HEVC x265 5.1 BONE\n👤 330 💾 1.93 GB ⚙️ 1337x",
+      "infoHash": "03054d31f3c87018ac27a7e63bcb4cc7cda25f6a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Alien 1979 DC REMASTERED 1080p BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.Directors.Cut.1080p.BluRay.H264.AAC-RARBG\n👤 88 💾 2.21 GB ⚙️ ThePirateBay",
+      "infoHash": "1815a467da2820aea936b622c09966abed626c9c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Alien.1979.Directors.Cut.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.DIRECTOR'S.CUT.1080p.10bit.BluRay.6CH.x265.HEVC-PSA\n👤 74 💾 2.41 GB ⚙️ 1337x",
+      "infoHash": "5eb690e444eaa93603b48532cf2e115f63484bb3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Alien.1979.DIRECTOR'S.CUT.1080p.10bit.BluRay.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужие: Антология / Alien Anthology [1979 1986 1992 1997 BDRip 1080p] [Director's cut / Режиссерская версия]\nAlien I [Чужой 1] Director's cut (1979) 1920x818 BDRip -=RbM=- RusEngSubsChpt.mkv\n👤 59 💾 23.62 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "29edb41575a3bca7463a463e69cc18abba6f199b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Alien I [Чужой 1] Director's cut (1979) 1920x818 BDRip -=RbM=- RusEngSubsChpt.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:29edb41575a3bca7463a463e69cc18abba6f199b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 Theatrical Cut BluRay 1080p DDP 5 1 x264-hallowed\n👤 51 💾 10.3 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸",
+      "infoHash": "d5e3a5f5bba41928efc1fa0aec8484b6a4249bc8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Alien 1979 Theatrical Cut BluRay 1080p DDP 5 1 x264-hallowed.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (1979) - 1080p - BD AV1 Opus MULTi4 [V2] [dAV1nci]\n👤 47 💾 3.01 GB ⚙️ 1337x",
+      "infoHash": "32730bd776d08230d0936b8ac4063351d5493468",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Alien.Theatrical.Cut.1979.1080p.AV1.Opus.Multi4.V2-dAV1nci.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien [1979 UHD BDRip 1080p SDR] [Uncut Director's Cut] [2019] Dub (CPIG) + AVO (Сербин) + VO (Чадов) + Original (Eng) + Sub (Rus Eng)\n👤 42 💾 12.71 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "fbfb08574e18b92c7ce7d3386f2574547373fd81",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Alien (1979) (Uncut Director's Cut) (2019).mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:fbfb08574e18b92c7ce7d3386f2574547373fd81",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien [1979 BDRemux 1080p] [Theatrical cut / Театральная версия]\n👤 42 💾 27.5 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a94ad3cfc583ac793abaf63bb9e6d28644ab36e8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Alien.1979.Theatrical.Cut.BDRemux.1080p.AVC.11xRus.3xEng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a94ad3cfc583ac793abaf63bb9e6d28644ab36e8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.PROPER.REMASTERED.THEATRICAL.1080p.BluRay.x265-RARBG\n👤 40 💾 1.82 GB ⚙️ RARBG",
+      "infoHash": "97910fd1d89ce0a3874380fcd5874dae6d4763f6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Alien.1979.PROPER.REMASTERED.THEATRICAL.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.1080p.REMUX.Director.Cut.ENG.And.ESP.LATINO.DTS-HD.Master.DDP5.1.MKV-BEN.THE.MEN\n👤 33 💾 25.76 GB ⚙️ 1337x\n🇬🇧 / 🇪🇸 / 🇲🇽",
+      "infoHash": "4e351351517433a7b9957675f0a70527efe26ba3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Alien.1979.1080p.REMUX.Director.Cut.ENG.And.ESP.LATINO.DTS-HD.Master.DDP5.1.MKV-BEN.THE.MEN.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien DC (1979) 1080p BrRip x264 - YIFY\n👤 33 💾 1.7 GB ⚙️ ThePirateBay",
+      "infoHash": "63dbb194903342cb1a674a56bb520f7f48366fa4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Alien.Directors.Cut.1979.1080p.BRrip.x264.GAZ.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (1979) (RLM Jaboody Theatrical RM4k Hybrid 1080p BluRay x265 HEVC 10bit AAC 5.1 Commentary) Ridley Scott Tom Skerritt Sigourney Weaver Veronica Cartwright Harry Dean Stanton John Hurt Ian Holm Yaphet Kotto Bolaji Badejo Helen Horton\n👤 32 💾 13.41 GB ⚙️ 1337x",
+      "infoHash": "67cea2010c901066bef2e6e5f9a4daab48e93bb6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Alien.1979.Theatrical.RM4k.Hybrid.1080p.BluRay.x265.hevc.10bit.AAC.5.1.commentary.RLM.jaboody-HeVK.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien [1979 DTheaterRip 1080p] [Director's cut / Режиссерская версия] Dub + 8x AVO + 5x MVO + VO + Sub 3x Rus Eng\nAlien.[D.C.].DTheaterRip.1080p.Crusader3000-NewAge.mkv\n👤 31 💾 14.46 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "f361806ec1e480344615babba3e5fa2573637cfb",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Alien.[D.C.].DTheaterRip.1080p.Crusader3000-NewAge.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:f361806ec1e480344615babba3e5fa2573637cfb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (1979) Theatrical Cut MULTI 1080p BluRay AV1 Opus [AV1D]\n👤 30 💾 2.92 GB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "789c223a1431e0d2abcd7be70dd887171f4f4e2f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Alien (1979) MULTI 1080p BluRay AV1 Opus [AV1D].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 1080p BluRay HEVC x265 10-Bit DDP5.1 Subs KINGDOM RG\n👤 23 💾 3.78 GB ⚙️ TorrentGalaxy",
+      "infoHash": "6ec7eec7ea1ff1e72ca3bcc790746b6c66012247",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Alien 1979 1080p BluRay HEVC  x265 10-Bit DDP5.1 Subs KINGDOM RG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.PROPER.REMASTERED.DC.1080p.BluRay.x265-RARBG\n👤 17 💾 1.8 GB ⚙️ RARBG",
+      "infoHash": "53d44af88beb8da5957f5ae078e443673df03c9a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Alien.1979.PROPER.REMASTERED.DC.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien Saga originale Extended REPACK (1979-1997) 1080pH265 AC3 5.1 ITA.ENG multisub Sp33dy94 MIRCrew\nAlien 1 Extended AC3 5.1 ITA.ENG 1080p H265 multisub (1979) Sp33dy94-MIRCrew.mkv\n👤 13 💾 2.88 GB ⚙️ ilCorSaRoNeRo\nMulti Subs / 🇬🇧 / 🇮🇹",
+      "infoHash": "5b5f4c06d73b81f1c5f072c33d8c46ccf77168a9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Alien 1 Extended AC3 5.1 ITA.ENG 1080p H265 multisub (1979) Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (Saga) Av1 A5.1 1080p 7RIP\n3 - Alien DC (1979) AV1 A5.1 1080p 7RIP.mkv\n👤 12 💾 366.64 MB ⚙️ TorrentGalaxy\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇹🇷 / 🇸🇦 / 🇮🇩",
+      "infoHash": "ffe3813303c82aa79ce5bae601b541e5563449ab",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "3 - Alien DC (1979) AV1 A5.1 1080p 7RIP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien - EXTENDED (1979) ITA ENG Ac3 5.1 Sub Ita BDRip 1080p H264 [ArMor]\n👤 12 💾 3.79 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "8a5a137c652dea71d7010cdd1ed2c11bff78398d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Alien - EXTENDED (1979) ITA ENG Ac3 5.1 Sub Ita BDRip 1080p H264 [ArMor].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien [1979 BDRip 1080p] [Uncut Director's Cut] [2019] [Color Resurrected] 3x MVO (Rus) + Sub (Rus En)\n👤 12 💾 8.04 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a7aaf1f8e9bd64ea5812b060110da0fd4a95c0ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Alien (1979) (Uncut Director's Cut)+RipByFox.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a7aaf1f8e9bd64ea5812b060110da0fd4a95c0ad",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 2 - Mp4 x264 AC3 1080p\nA3 Alien (1979) 1080p Surround.mp4\n👤 11 💾 2.58 GB ⚙️ ThePirateBay",
+      "infoHash": "d98427aa3ebdac78bc2a690ac3ec2139280b7af7",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "A3 Alien (1979) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.REMASTERED.DC.PROPER.1080p.BluRay.x265-RARBG\n👤 11 💾 1.8 GB ⚙️ RARBG",
+      "infoHash": "b1cceda1fbc62bf693f73ff6f2a58e6c8ff8d16b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Alien.1979.REMASTERED.DC.PROPER.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 MULTi 1080p WEB H264-SUPPLY\n👤 10 💾 4.41 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "infoHash": "b87ff232c39d304671d49f859866a234dacf71ec",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB|h264",
+        "filename": "Alien 1979 MULTi 1080p WEB H264-SUPPLY.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (1979) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 10 💾 1.99 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "de6f93b2dd7471492d1e2a9eb0e585fc71f2a1d6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Alien (1979) 1080p H265 ita eng AC3 5.1 sub ita eng-Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien o 8° Passageiro (1979) BluRay 1080p Dublado\n👤 10 💾 1.73 GB ⚙️ ThePirateBay\n🇬🇧 / 🇵🇹",
+      "infoHash": "e9e542f90ad9537c2997d4016eb19b4dd524b0ef",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Alien o  8° Passageiro (1979) BluRay 1080p Dublado.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 051-100 BluRay 1080p x265 10bit MNHD-FRDS\n052.异形.Alien.1979.Directors.Cut.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Alien.1979.Directors.Cut.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 9 💾 6.06 GB ⚙️ EXT",
+      "infoHash": "e6d934fd7e96efcb009c3372198360262bca2b65",
+      "fileIdx": 7,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Alien.1979.Directors.Cut.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 Theatrical Cut 1080p MA WEB-DL x265 10bit EAC3 5 1-TimeDistortion\n👤 9 💾 5.42 GB ⚙️ ThePirateBay",
+      "infoHash": "a5b692b8a243cb077425ade68d20cc77d3705ae5",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|x265|10bit",
+        "filename": "Alien 1979 Theatrical Cut 1080p MA WEB-DL x265 10bit EAC3 5 1-TimeDistortion.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "[REUP] Alien 1979 (1080p Bluray x265 HEVC 10bit AAC 5.1 Tigole) [UTR]\n👤 9 💾 2.54 GB ⚙️ 1337x",
+      "infoHash": "56ea88fe249d4a24b5d9908190f87ba8bfe0a847",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Alien 1979 (1080p x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien O Oitavo Passageiro.1979.1080p.Bluray.x264.DUAL.5.1\n👤 8 💾 2.81 GB ⚙️ BluDV\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "aa1ffba6020ad1029d753c648c945077e6cac5da",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Alien O Oitavo Passageiro.1979.1080p.Bluray.x264.DUAL.5.1.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.BluRay.1080p.HEVC.DTS-HD.MA.5.1.H265-PANAM\n👤 8 💾 13.02 GB ⚙️ 1337x",
+      "infoHash": "30b5f6b2c5f37cc42a0428abef1cf7cf65e4fafd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Alien.1979.BluRay.1080p.HEVC.DTS-HD.MA.5.1.H265-PANAM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.Anthologie.Version.Cinema.1979.1997.MULTI.1080p.BluRayHDLight.AC3.x264-gismo65\nAlien.Le.Huitieme.Passager.Version.Cinema.1979.MULTI.1080p.HDLight.AC3.x264-gis.mkv\n👤 8 💾 3.06 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "b06afc784544b9e094370b5af04c8bd0763393a2",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Alien.Le.Huitieme.Passager.Version.Cinema.1979.MULTI.1080p.HDLight.AC3.x264-gis.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.REMASTERED.DC.1080p.BluRay.x265-RARBG\n👤 8 💾 1.8 GB ⚙️ RARBG",
+      "infoHash": "71f03dfde3ef79309c85c6bb9e57d8be53998a7f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Alien.1979.REMASTERED.DC.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien (1979) BDRip 1080p | Director's Cut\n👤 8 💾 7.76 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "7eef58fe6e1c7b2538a40508c684df88de30bd0e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Чужой.1979.BDRip.1080p.Rus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:7eef58fe6e1c7b2538a40508c684df88de30bd0e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 1080p DSNP WEB-DL DDP5 1 SDR H 264-OnlyWeb\n👤 7 💾 5.81 GB ⚙️ EXT",
+      "infoHash": "12f3ebb5eacb9e238a9d37100ef5c60313012493",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Alien 1979 1080p DSNP WEB-DL DDP5 1 SDR H 264-OnlyWeb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Дикари [1979 35mm Film Scan 1080p]\n👤 7 💾 1.28 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "796d332a5fc7e1be05fe7055e38c86a61f7b77a2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Дикари.1979.Грузия-фильм.35mm Film Scan 1080p-rutracker.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:796d332a5fc7e1be05fe7055e38c86a61f7b77a2",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Quadrilogie Alien 1080p Multi X264 AC3-mHDgz\nAlien, le huitieme passager 1979 1080p FR EN X264 AC3-mHDgz.mkv\n👤 7 💾 3.56 GB ⚙️ Torrent9\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "infoHash": "86340aa704cf4acb8c1a8f60b2d86c5d55f7bd41",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Alien, le huitieme passager 1979 1080p FR EN X264 AC3-mHDgz.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien El octavo pasajero [BDremux 1080p][DTS 5.1 Castellano-DTS 5.1 Ingles+Subs][ES-EN]\n👤 7 💾 22.98 GB ⚙️ MejorTorrent\n🇬🇧 / 🇪🇸",
+      "infoHash": "569044953832d45c0791570fae31e9a1cf4e64f9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX",
+        "filename": "Alien El octavo pasajero BDR1080.pctfenix.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.REMASTERED.THEATRICAL.1080p.BluRay.H264.AAC-RARBG\n👤 7 💾 2.22 GB ⚙️ RARBG",
+      "infoHash": "953c0eef04887f386c18d7ee7443760804563e79",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Alien.1979.REMASTERED.THEATRICAL.1080p.BluRay.H264.AAC-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 DC (1080p x265 10bit Tigole)\n👤 7 💾 2.37 GB ⚙️ ThePirateBay",
+      "infoHash": "d9c5121dfb34b19aa79564251566e0b18f46cca8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265|10bit",
+        "filename": "Alien 1979 DC (1080p x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien Dublado dual áudio mkv bluray 1080p\nAlien Director's Cut 1979 1080p BluRay x264-Belex - Dual Audio + Legenda.mkv\n👤 7 💾 8.3 GB ⚙️ MicoLeaoDublado\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "085e0c3d89db43a7288f5ab52e9ff4da0febd347",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Alien Director's Cut 1979 1080p BluRay x264-Belex - Dual Audio + Legenda.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (1979) DC Featurettes (1080p BluRay AI x265 HEVC 10bit AAC 5.1 Q22 Joy) [UTR]\nAlien (1979) DC  [1080p x265 q22 S95 Joy].mkv\n👤 6 💾 2.36 GB ⚙️ 1337x",
+      "infoHash": "834f3ea0f561f9c3b38b33cd9963d03a17698143",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Alien (1979) DC  [1080p x265 q22 S95 Joy].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien (1979) 1080p Rifftrax 6ch 2ch v2\n👤 6 💾 2.21 GB ⚙️ ThePirateBay",
+      "infoHash": "8df56f237e885c8b0ce7b8a7c98105ac9ff1b3ef",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.Theatrical.Cut.Bluray.1080p.DTS-HD.x264-Grym\n👤 6 💾 15.41 GB ⚙️ ThePirateBay",
+      "infoHash": "97eed2d76f1f0f71a63bccda2608d64a1b25a7cf",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien Anthology DC & Special Edition 1979-1997 1080p DTS Hig\nAlien (1979) DC 1080p DTS multisub HighCode- PublicHD.mkv\n👤 6 💾 4.94 GB ⚙️ ThePirateBay\nMulti Subs",
+      "infoHash": "8437b851e448a7f2fa80b69085f666039020623a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Alien (1979) DC 1080p DTS multisub HighCode- PublicHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien [1979 Blu-ray 1080p] [2-in-1: Theatrical & Director's Cut / Special Edition]\n👤 6 💾 42.64 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇪🇸 / 🇹🇷",
+      "infoHash": "7fe03d670673d640fa0520d450b533ebb983f4e1",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:7fe03d670673d640fa0520d450b533ebb983f4e1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 1080p DSNP WEB-DL DDP5 1 SDR H 265-OnlyWeb\n👤 5 💾 4.05 GB ⚙️ EXT\n🇬🇧 / 🇯🇵 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇰🇷 / 🇨🇳 / 🇫🇷 / 🇩🇪 / 🇳🇱 / 🇵🇱 / 🇨🇿 / 🇭🇺 / 🇩🇰 / 🇸🇪 / 🇳🇴 / 🇹🇷",
+      "infoHash": "49d800c1480b1a98d13a3d85351378d3f0870444",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h265",
+        "filename": "Alien 1979 1080p DSNP WEB-DL DDP5 1 SDR H 265-OnlyWeb.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 1979 m1080p BluRay x264-GeneMige\n👤 5 💾 2.72 GB ⚙️ ThePirateBay",
+      "infoHash": "8a7b56070735255d8ef9754f048c377ac50feac1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Alien 1979 m1080p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien-Predator 12 Pack BluRay 1080p Dts H265\nAlien (1979)/Alien (1979) BluRay 10Bit 1080p DtsHD Ma5.1 H265-d3g.mkv\n👤 5 💾 8.07 GB ⚙️ 1337x",
+      "infoHash": "12623eb7a207144c0814fde7e8ff5e76b1edb4b6",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265|10bit",
+        "filename": "Alien (1979) BluRay 10Bit 1080p DtsHD Ma5.1 H265-d3g.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.1080p-dual-lat.mp4\n👤 5 💾 1.87 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "9bc06bbaf27230d164726c416360c980e8ed5642",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Alien.1979.1080p-dual-lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien 6-Film Collection (1979-2017) 1080p 10bit Bluray x265 HEVC [Org DD 5.1 Hindi DD 5.1 English] MSubs ~ TombDoc\nAlien (1979) 1080p 10bit Bluray x265 HEVC [DD+ 2.0 Hindi + DD 5.1 English] MSubs ~ TombDoc.mkv\n👤 5 💾 3.81 GB ⚙️ 1337x\nMulti Subs / 🇬🇧 / 🇮🇳",
+      "infoHash": "75e8e606e72bf317e74139d1da96c96ec0999c23",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Alien (1979) 1080p 10bit Bluray x265 HEVC [DD+ 2.0 Hindi + DD 5.1 English] MSubs ~ TombDoc.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Alien.1979.REMASTERED.THEATRICAL.1080p.BluRay.x265-RARBG\n👤 5 💾 1.82 GB ⚙️ RARBG",
+      "infoHash": "373f20a4abe085954fe89272afa89ee27257f376",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Alien.1979.REMASTERED.THEATRICAL.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Чужой / Alien [1979 DTheaterRemux 1080i] [Director's cut / Режиссерская версия]\n👤 5 💾 18.88 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "fc937a6e0ed2a45f874ee217e8920dd19df1bc3f",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:fc937a6e0ed2a45f874ee217e8920dd19df1bc3f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Чужой / Alien [1979 BDRip 720p] [Director's cut / Режиссерская версия]\n👤 28 💾 5.1 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "30bf694f559cd593a3113e06d04bc5545e63b0b3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Alien (1979) BDRip.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:30bf694f559cd593a3113e06d04bc5545e63b0b3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Alien Movie Collection - 9 Films DC SE Unrated 1979-2017 Eng Sub\nAlien 9 Movie Extended Collection/01 Alien Directors Cut - Sci-Fi 1979 Eng Subs 720p [H264-mp4].mp4\n👤 27 💾 1.54 GB ⚙️ ThePirateBay\n🇬🇧 / 🇸🇪",
+      "infoHash": "f7b1fcfd29d9f19dc69383e7ee54ca7dc3237c91",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "01 Alien Directors Cut - Sci-Fi 1979 Eng Subs 720p [H264-mp4].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Alien.1979.REMASTERED.DC.720p.BluRay.999MB.x265.10bit-GalaxyR\n👤 22 💾 989.7 MB ⚙️ ThePirateBay",
+      "infoHash": "a21bf84e62a26601a11fcf7637c4f3c44f2a9ac8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "Alien.1979.REMASTERED.DC.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Чужой / Alien [1979 D-Theater Rip 720p] [Расширенная версия / Extended cut] Dub + MVO + Original Eng + Sub (rus eng)\n👤 18 💾 2.97 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "5ece97f664a0f7f7e06a06029de9fbc8b9361a1a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Чужой (1979) Расширенная версия.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:5ece97f664a0f7f7e06a06029de9fbc8b9361a1a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Чужой / Alien [1979 DTheaterRip 720p] [Director's cut / Режиссерская версия]\n1/Alien.DirCut.1979.DTheater.720p.x264.Rus.mkv\n👤 17 💾 6.25 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "6335759d4901342622fd5ee18cabab8669fd1ca0",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|x264",
+        "filename": "Alien.DirCut.1979.DTheater.720p.x264.Rus.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:6335759d4901342622fd5ee18cabab8669fd1ca0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Alien 1 2 3 4 5 6 7 - Sci-Fi DC SE Unrated 1979-2012 Eng S\nAlien Film Franchise [Directors Cut-Special Edition-Unrated] 1979-2012/01 Alien Directors Cut - Sci-Fi 1979 Eng Subs 720p [H264-mp4].mp4\n👤 16 💾 1.33 GB ⚙️ ThePirateBay\n🇬🇧 / 🇸🇪",
+      "infoHash": "1d44fd1bbdb8f1f1db7c03a01d96c734c4f3446f",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "01 Alien Directors Cut - Sci-Fi 1979 Eng Subs 720p [H264-mp4].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Alien 1979 Directors Cut 720p BluRay x264 DuaL-TURKO\n👤 10 💾 1.88 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "684b970f40ceb3465404e009075fe4f209a0ce92",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Alien 1979 Directors Cut 720p BluRay x264 DuaL-TURKO.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Чужие: Антология / Alien Anthology [1979 1986 1992 1997 BDRip 720p] [Director's cut / Режиссерская версия]\nAlien.1979.DirCut.720p.BluRay.DTS.Rus.Eng.HDCLUB.mkv\n👤 9 💾 11.15 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "864c78b1292678131b8dae69c1a4066829a00755",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Alien.1979.DirCut.720p.BluRay.DTS.Rus.Eng.HDCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:864c78b1292678131b8dae69c1a4066829a00755",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Alien 1979 720p BluRay x264-GeneMige\n👤 8 💾 4.71 GB ⚙️ ThePirateBay",
+      "infoHash": "670218d838c8fab1a1f4b05239af56558738952d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Alien 1979 720p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Alien SAGA 8 Movies (1979-2017) 720p h264 Ac3 5.1 Ita Eng Sub Ita Eng-MIRCrew\n(1979) - Alien 1 Extended  (1979) 720p h264 Ac3 5.1 Ita Eng Sub Ita Eng-MIRCrew.mkv\n👤 8 💾 2.21 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "4c73dff9f21d514be5768b28df1917ef0c312e78",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|h264",
+        "filename": "(1979) - Alien 1 Extended  (1979) 720p h264 Ac3 5.1 Ita Eng Sub Ita Eng-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Чужие: Антология / Alien Anthology [1979 1986 1992 1997 BDRip 720p] [Theatrical cut / Театральная версия]\n1-Alien.1979.BDRip.720p.tRuAVC.mkv\n👤 6 💾 6.1 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "a4e30d729994cf9c3b868198b4594d7d1d2551fc",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "1-Alien.1979.BDRip.720p.tRuAVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:a4e30d729994cf9c3b868198b4594d7d1d2551fc",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n360p",
+      "title": "Alien 1986 1986 1992 1997 Prometheus 2012 2017: Threesixtyp\nAlien M01 [Director's Cut] (1979 360p re-blurip).mp4\n👤 7 💾 350.38 MB ⚙️ MagnetDL",
+      "infoHash": "f1b3f76e91d1331ab8cbe5bba31aada6efd10196",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|360p",
+        "filename": "Alien M01 [Director's Cut] (1979 360p re-blurip).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужой / Alien [1979 BDRip-AVC] [Театральная версия / Theatrical cut] MVO (Селена Интернешнл / ОРТ) + Original Eng + Sub (rus eng)\n👤 50 💾 2.74 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "f931dcbab5e955702d7e8d7067d9225448e6126b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Alien.1979.Theatrical.Cut.BDRip-AVC.MVO(ОРТ).mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:f931dcbab5e955702d7e8d7067d9225448e6126b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужой / Alien [1979 BDRip-AVC] [Director's cut] AVO (Goblin) + Original Eng + Sub Rus Eng\n👤 44 💾 4.45 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "30ceb09dae599e76075d2bb4f1c70335474d0e95",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Chuzhoi.1979.Directors.Cut.DUAL.BDRip-AVC.AC3.-HRIME.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:30ceb09dae599e76075d2bb4f1c70335474d0e95",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Чужой - Квадрология Режиссерские версии / Alien Quadrilogy - Collection Edition Director [1979 1986 1992 1997 боевик фильм ужасов фантастика триллер DVDRip-AVC]\nЧужой (часть 1).mkv\n👤 26 💾 2.05 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "c5c2337d98c9f5e842d4b0f292b24ee98762e2fb",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|avc",
+        "filename": "Чужой (часть 1).mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:c5c2337d98c9f5e842d4b0f292b24ee98762e2fb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n3D",
+      "title": "3D Peliculas\n3D Alien/3D Alien 1 - El 8 pasajero 1979 (Montaje.del.Director)AC3_DIVX1500_OK_3Dcombine_StereoscopicPlayerAspctratio235-100.avi\n👤 15 💾 1.55 GB ⚙️ Wolfmax4k\n🇪🇸",
+      "infoHash": "ab330f1fc0e6e26c443c4b720bbf976540d98067",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "filename": "3D Alien 1 - El 8 pasajero 1979 (Montaje.del.Director)AC3_DIVX1500_OK_3Dcombine_StereoscopicPlayerAspctratio235-100.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nXviD",
+      "title": "Чужой / Alien [1979 D-TheaterRip] [Режиссерская версия / Director's Cut] Dub + Original (eng) + Sub (rus eng)\n👤 13 💾 2.18 GB ⚙️ Rutracker\nDual Audio / 🇬🇧 / 🇷🇺",
+      "infoHash": "ded8c1cfe3781db0b207e01753c62707f7252912",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|XviD|xvid",
+        "filename": "Chuzhoy.1979.DirCut.DUAL.XviD.D-TheaterRip.-Allfilms.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:ded8c1cfe3781db0b207e01753c62707f7252912",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay REMUX",
+      "title": "Чужой / Alien [1979 BDRemux Remastered Театральная версия / Theatrical cut] Улучшенный перевод Селена Интернешнл / ОРТ\n👤 12 💾 20.3 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "093c641822994a3080746ca5899b83f3835265cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay REMUX",
+        "filename": "Alien 1979 BD-Remux [Remastered] Селена Интернешнл ОРТ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:093c641822994a3080746ca5899b83f3835265cd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBluRay",
+      "title": "Alien Theatrical Version (1979) Genuine Blu-Ray HEVC 10 Bit AC3 5.1 EN Subs EN\n👤 10 💾 2.4 GB ⚙️ 1337x",
+      "infoHash": "b57e9d246bbe66169123a3962d0849622bfa156e",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужой / Alien (1979) BDRip от New-Team | P | Director's Cut\n👤 9 💾 2.18 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "4fab0c48f2c1d495ee23d52e7b869d40df367332",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Alien.1979.BDRip.Director's.Cut_от New-Team_by_JNS82.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710",
+        "tracker:http://retracker.local/announce",
+        "dht:4fab0c48f2c1d495ee23d52e7b869d40df367332",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Чужой / Alien [1979 D-Theater HDRip] (Режиссерская версия / Director's Cut) MVO (Позитив) + 2*AVO (Гаврилов Живов) + Original Eng + Sub (2*Rus + Eng)\nAlien_1979.avi\n👤 8 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "05b208da4e0dc24a99acc212c7d610ebd1e3957b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Alien_1979.avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:05b208da4e0dc24a99acc212c7d610ebd1e3957b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Чужой / Alien [1979 1986 1992 1997 ужасы триллер фантастика DVDRip] AVO (Гоблин)\nЧужой.avi\n👤 7 💾 1.36 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "6fc1b3b9bc14f310184e08603bbddcf7a922c84d",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Чужой.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:6fc1b3b9bc14f310184e08603bbddcf7a922c84d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Чужой / Alien (Extended edition) (Расширенная версия) [1979 DVDRip]AVO Original Eng\nAlien (Virtual Workprint FANEDIT) (Ridley Scott, 1979).avi\n👤 6 💾 1.62 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "75e64d4a456f5c8c419ca93a7940650f4433bc69",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Alien (Virtual Workprint FANEDIT) (Ridley Scott, 1979).avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:75e64d4a456f5c8c419ca93a7940650f4433bc69",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Alien (1979) DVDrip xvid (The Director's Cut)\n👤 6 💾 1.28 GB ⚙️ ThePirateBay",
+      "infoHash": "fd221ea4729292a4daf7a0209ef31da89bdaf783",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужой / Alien [1979 BDRip] [Director's Cut / Special Edition] AVO (Юрий Сербин)\n👤 5 💾 2.06 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "7d0f4fd8ba6ca59b2c62d0ccc31facf4bb5537b8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Чужой  (фантастика, боевик, триллер 1979 год).avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:7d0f4fd8ba6ca59b2c62d0ccc31facf4bb5537b8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужой / Alien [1979 BDRip] [Театральная версия / Theatrical Cut] DVO (Лазер Видео) + Original Eng\n👤 5 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "2baa5a8cd6e286ecab2fb3a2f45a057bfe4f3876",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Чужой (Лазер Видео + Оригинал).avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:2baa5a8cd6e286ecab2fb3a2f45a057bfe4f3876",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Чужой / Alien (1979) HDRip от Scarabey | D | Режиссерская версия\n👤 5 💾 1.45 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "b3f69a724838fff287554781625c8c7f5f99ad7a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Alien.1979_DirCut_HDRip__[scarabey.org].avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:b3f69a724838fff287554781625c8c7f5f99ad7a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужой / Alien [1979 BDRip-AVC] [Director's Cut] Dub + Sub (Rus Eng)\n👤 5 💾 745.43 MB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "45a7ae281c1e55c8b8fd5df4273e5788f10997dd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Alien.1979.bdrip-avc.dexter_lex.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:45a7ae281c1e55c8b8fd5df4273e5788f10997dd",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDTV",
+      "title": "Чужой / Alien [1979 DVB] MVO [Fullscreen]\n👤 5 💾 2.39 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "b0193b70b07c05de4502acc4583bce90766d6e02",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDTV",
+        "filename": "Alien.mpg"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:b0193b70b07c05de4502acc4583bce90766d6e02",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Чужие: Антология / Alien Anthology [1979 1986 1992 1997 боевик BDRip-AVC] [Director's cut]\nAlien.1979.DirCut.BDRip.x264.Rus.Eng-Skazhutin/Alien.1979.DirCut.BDRip.x264.Rus.Eng-Skazhutin.mkv\n👤 5 💾 4.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "fa43319b29deae6859b3b9d01635ca6400da675f",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Alien.1979.DirCut.BDRip.x264.Rus.Eng-Skazhutin.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:fa43319b29deae6859b3b9d01635ca6400da675f",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nTeleCine HDR10+",
+      "title": "Чужой / Alien [1979 UHD BDRemux 2160p HDR10+] [Кинотеатральная версия 40th Anniversary Remaster] MVO (ОРТ) + Dub + 5x DVO + 10x AVO + 2x VO + Original Eng + Sub Rus Eng\n👤 74 💾 64.93 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "6aa48a723e62061729c98a34fc10c490a8f01e68",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleCine|BluRay REMUX|10bit|HDR10+",
+        "filename": "ALIEN [TC, 40TH ANNIVERSARY REMASTER] (1979).mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:6aa48a723e62061729c98a34fc10c490a8f01e68",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Чужой / Alien [1979 DTheaterRip] [Режиссерская версия / Director's Cut] Dub\n👤 24 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "93617124b209cba77dac1dc5c6082db31a31eb53",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "filename": "Chuzhoy_1979_DTheaterRip_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:93617124b209cba77dac1dc5c6082db31a31eb53",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "101 Horror Movies Mega Pack Vol 16 Mixed x264 [i_c]\nAlien 1979.mkv\n👤 19 💾 2.78 GB ⚙️ ThePirateBay",
+      "infoHash": "debe613422bd034cbe2e1e9b4678e59769c4500b",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|x264",
+        "filename": "Alien 1979.mkv"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "B Movie Bonanza Redux\n135_Alien_1979_DC.avi\n👤 17 💾 1.46 GB ⚙️ ThePirateBay",
+      "infoHash": "1bdff33ea1e91e7e50f832d68ee16803b5ccfdef",
+      "fileIdx": 92,
+      "behaviorHints": {
+        "filename": "135_Alien_1979_DC.avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Alien 9 Movie Collection - Sci-Fi DC SE Unrated 1979-2017 mp4\n👤 16 💾 32.94 GB ⚙️ ThePirateBay\n🇸🇪",
+      "infoHash": "0e4dd969150f87434cbc77c0fc231969d38d47a3"
+    }
+  ]
+}

@@ -1,0 +1,826 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-life-is-beautiful",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0118799.json",
+  "recordedAt": "2026-11-05T22:38:41.810Z",
+  "status": 200,
+  "ms": 224,
+  "streams": [
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Życie jest piękne - Life Is Beautiful 1997 [HLG HDR SDR] [1080p.BluRay.H264.AC3.AS76-FT] [Lektor PL] [Alusia]\n👤 3 💾 5.2 GB ⚙️ EXT\n🇵🇱",
+      "infoHash": "bde891386a96cfac9e241d5a8847367133099ce8",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264|HDR",
+        "filename": "Życie jest piękne - Life Is Beautiful 1997 [HLG HDR SDR] [1080p.BluRay.H264.AC3.AS76-FT] [Lektor PL] [Alusia].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life Is Beautiful 1997 1080p BluRay\n👤 100 💾 1.86 GB ⚙️ YTS",
+      "infoHash": "35e38eb6225ea407a6da679a59fec79eccc8b941",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Life.Is.Beautiful.1997.1080p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life Is Beautiful 1997 1080p BDRip English Dubbed x264 AC3-PoNg\n👤 67 💾 1.69 GB ⚙️ ThePirateBay\nDubbed",
+      "infoHash": "a087db9508d4db6ac3402016bab471d7f0a09791",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Life Is Beautiful 1997 1080p BDRip English Dubbed x264 AC3-PoNg.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Жизнь прекрасна / Life Is Beautiful / La vita e bella [1997 BDRip 1080p] MVO + Original Ita + Sub Rus\n👤 60 💾 9.95 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "173c7ee5cffb2fdea415d22a39a3db1686b44b60",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Life.Is.Beautiful.1997.BluRay.1080p.DTS.Audio.x264-CHD.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:173c7ee5cffb2fdea415d22a39a3db1686b44b60",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life.Is.Beautiful.1997.ITALIAN.1080p.BluRay.x265-VXT\n👤 48 💾 1.81 GB ⚙️ RARBG\n🇮🇹",
+      "infoHash": "9c0eb72aee48c4f3bfd07cb78422f05bc337a55a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Life.Is.Beautiful.1997.ITALIAN.1080p.BluRay.x265-VXT.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life is Beautiful (1997) 1080p H.264 ITA-ENG-FRE (moviesbyrizzo)\n👤 44 💾 4.25 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇫🇷",
+      "infoHash": "134fbdb38646694d9beda214c6dafebd9d21c4b8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Жизнь прекрасна / La vita e bella / Life Is Beautiful [1997 BDRemux 1080p] [Original Version] VO (Белов) + AVO (Санаев) + Original Ita + Sub Deu\n👤 31 💾 33.35 GB ⚙️ Rutracker\n🇷🇺 / 🇮🇹 / 🇩🇪",
+      "infoHash": "3e4033c11ceb4e15e95991d599db6b4d73dae316",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:3e4033c11ceb4e15e95991d599db6b4d73dae316",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La vita è bella - Life Is Beautiful (1997) AC3 5.1 ITA 1080p H265 sub ita.eng Sp33dy94 MIRCrew\n👤 26 💾 2.49 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "2aae2d3f73c8308b0098a882f57d7484aa75077d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "La vita è bella - Life Is Beautiful (1997) AC3 5.1 ITA 1080p H265 sub ita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Così è la vita (1998) 1080p AV1 ITA AC3 5.1 Sub Ita [HerpCrew]\n👤 17 💾 2.61 GB ⚙️ 1337x\n🇮🇹 / 🇩🇪",
+      "infoHash": "2869e38ed78cfb5849da3fff87693263c0b5374e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|av1",
+        "filename": "Così è la vita (1998) 1080p AV1 ITA AC3 5.1 Sub Ita [HerpCrew].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life.Is.Beautiful.1997.Italian.1080p.BluRay.x264.AAC 2.0-SUBS\n👤 16 💾 1.86 GB ⚙️ ThePirateBay\n🇮🇹",
+      "infoHash": "dca05b6d4ce74422a185ca4875e23ae7da57d10c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Life.Is.Beautiful.1997.1080p.BluRay.x264.AAC 2.0.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life Is Beautiful (1997) (1080p BluRay x265 HEVC 10bit AAC 5.1 Italian Tigole) [QxR]\n👤 16 💾 4.8 GB ⚙️ 1337x\n🇮🇹",
+      "infoHash": "4f8d45d623a286b5a08b9ed6c9595fdfdc40b474",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life Is Beautiful 1997 1080p BluRay x265 SDR DDP 5 1 DUAL - DarQ-HONE\n👤 15 💾 6.49 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "567bb71534de14690bc90e0db1658626c04fa101",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Life Is Beautiful 1997 1080p BluRay x265 SDR DDP 5 1 DUAL - DarQ-HONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Filmografia D'animazione Disney (Classici + Direct To Video + Lungometraggi) (1937-2023) 1080p H265 - AC3 5.1 ITA-ENG - SUB ITA-ENG [Completa]\n(1991) La Bella E La Bestia.mkv\n👤 15 💾 3.72 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "4c9afe92bbf60ab9fadd584f0449e0d395fa7872",
+      "fileIdx": 30,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "(1991) La Bella E La Bestia.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La Vita è Bella - Life is Beautiful (BDrip 1080p ITA-ENG-RUS -\n👤 14 💾 7.95 GB ⚙️ ThePirateBay\n🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "8410881aac75a6506ef814edbf6c4ff6f2d17c58",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "La Vita è Bella - Life is Beautiful (BDrip 1080p ITA-ENG-RUS - AC3) x264 bluray (1997).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life is Beautiful 1997 1080p WEB-DL h264 MULTi-lucpop\n👤 12 💾 19.35 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "fc5415bcf314f0d907babfd6cb07e794b5c92f0e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Life is Beautiful 1997 1080p WEB-DL h264 MULTi-lucpop.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La Vida es Bella (1997) [BDrip 1080p][AC3 5.1-Castellano-Italian\n👤 12 💾 7.95 GB ⚙️ ThePirateBay\n🇮🇹 / 🇪🇸",
+      "infoHash": "5b8d23ceabea7ff05cbefee1b4eedb2b01015848",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Жизнь прекрасна / La vita è bella / Life Is Beautiful [1997 BDRemux 1080p] MVO |R5| + Sub |Rus Eng| + Original Ita\n👤 12 💾 22.07 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "d4b32464f7d8e811c54572d7f46ba80eecee955c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:d4b32464f7d8e811c54572d7f46ba80eecee955c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Život je krásný / La vita è bella (1997)(CZ/IT)[1080p]\n👤 10 💾 10 GB ⚙️ EXT\n🇬🇧 / 🇮🇹 / 🇨🇿",
+      "infoHash": "04d2c0945c1e63273686f6f6c9ca0b0f5774f3ce",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "La.vita.è.bella..1997.1080p.BluRay.x264.CZ.IT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life.Is.Beautiful.1997.ITALIAN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT\n👤 9 💾 20.99 GB ⚙️ RARBG\n🇮🇹",
+      "infoHash": "e983dd9ee93b7091e373e31723ba07d32aad194f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Life.Is.Beautiful.1997.ITALIAN.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life is Beautiful (1997) [1080p x265 HEVC 10bit BluRay DTS-HD MA 5.1] [Prof]\n👤 9 💾 8.27 GB ⚙️ 1337x",
+      "infoHash": "d2254a5bc900e9df6b74bd1f4fc0a471a34b0db9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Life is Beautiful (1997) [1080p x265 HEVC 10bit BluRay DTS-HD MA 5.1] [Prof].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS\n026.美丽人生.Life.Is.Beautiful.1997.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Life.Is.Beautiful.1997.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 8 💾 7.44 GB ⚙️ EXT",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 184,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Life.Is.Beautiful.1997.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "500 top all-time movies collection 1080p H.264 480GB (moviesbyrizzo upl)\nLa Vita E Bella (1997) Roberto Benigni 1080p (moviesbyrizzo).mp4\n👤 8 💾 917.41 MB ⚙️ 1337x",
+      "infoHash": "3facf8e9f4f7c506a2330ac2ba33645aa6f12b81",
+      "fileIdx": 277,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "La Vita E Bella (1997) Roberto Benigni 1080p (moviesbyrizzo).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La Vita è Bella - Life is Beautiful AC3 5.1 ITA.ENG 1080p H265 sub eng.rus (1997) Sp33dy94 MIRCrew\n👤 7 💾 3.34 GB ⚙️ 1337x\n🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "68062b69e623c00daeee9768670776b238eb2b4c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "La Vita è Bella - Life is Beautiful AC3 5.1 ITA.ENG 1080p H265 sub eng.rus (1997) Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life Is Beautiful 1997 1080p BluRay x264-OFT\n👤 5 💾 5.56 GB ⚙️ ThePirateBay",
+      "infoHash": "a9b02a92b6c487c063fabdd8374ffa73345c4ac4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Life Is Beautiful 1997 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life.Is.Beautiful.1997.1080p.BluRay.x264.anoXmous\n👤 5 💾 2.01 GB ⚙️ ThePirateBay",
+      "infoHash": "49c559e2d96229fc572afc3196783788b879a937",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "La.Vida.Es.Bella.1997.1080P.Dual.Lat.mp4\n👤 4 💾 1.89 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "ebf3e2ea1b7921d1f3061059dcb76539b2726029",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "La.Vida.Es.Bella.1997.1080P.Dual.Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Life.is.Beautiful.1997.CAN.Bluray.1080p.DTS-HD.x264-Grym\n👤 4 💾 14.73 GB ⚙️ MagnetDL",
+      "infoHash": "b4211ea7abcdda4692b26bf8d54c6b34a8169b50",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Life.is.Beautiful.1997.CAN.Bluray.1080p.DTS-HD.x264-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Life Is Beautiful - Comedy Drama 1997 Eng Ita Spa Multi-Subs 720\n👤 99 💾 1.59 GB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇪🇸",
+      "infoHash": "8809899042ed2264f645db29de06fa9f701aa3e4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p",
+        "filename": "Life Is Beautiful - Comedy Drama 1997 Eng Ita Spa Multi-Subs 720p [H246-mp4].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Life Is Beautiful 1997 720p BluRay\n👤 21 💾 989.77 MB ⚙️ YTS",
+      "infoHash": "82f1c75f14b96ebf7d231538f29edf92d8b3c79c",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Life.Is.Beautiful.1997.720p.BluRay.x264-[YTS.AM].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Life Is Beautiful Bluray 720p | mp4 | 846 mb | dublado\n👤 13 💾 845.55 MB ⚙️ MicoLeaoDublado\n🇮🇹 / 🇵🇹",
+      "infoHash": "77a0f948c7b4a339af3d2bf09f07155edfe9fd28",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "A Vida é Bela.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Жизнь прекрасна / Life Is Beautiful / La Vita è bella [1997 BDRip 720p] DVO + Sub Rus + Original Ita\n👤 10 💾 5.59 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "6fcf15eed90c5810c9943f65e29aa6d4ed9a15a1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Life.Is.Beautiful.1997.720p.BluRay.HDCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:6fcf15eed90c5810c9943f65e29aa6d4ed9a15a1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Life is Beautiful 1997 720p BluRay x264 AC3-FuzerHD\n👤 4 💾 5.31 GB ⚙️ ThePirateBay",
+      "infoHash": "99b315f71f33906a1afd125c18a7b2e98fa02ac7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Life is Beautiful 1997 720p BluRay x264 AC3-FuzerHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "A Vida é Bela (1998) BDRip BluRay 720p dublado - FB\n👤 4 💾 845.55 MB ⚙️ ThePirateBay\n🇮🇹 / 🇵🇹",
+      "infoHash": "b1752ddcea30c19dbdb81b46e4353ec6205d2061",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay",
+        "filename": "A Vida é Bela 720p - Filmes Beta.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Life is Beautiful 1997 Theatrical Cut 720p BluRay x264-GeneMige\n👤 3 💾 4.95 GB ⚙️ EXT\n🇬🇧 / 🇮🇹",
+      "infoHash": "cde694d5c539500becf70a52980220180db13ea9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Life is Beautiful 1997 Theatrical Cut 720p BluRay x264-GeneMige.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nTeleSync",
+      "title": "Life Is Beautiful 1997 1080p [PortalGoods]\n👤 6 💾 1.94 GB ⚙️ TorrentGalaxy",
+      "infoHash": "cf436fce872a9d699e2c362e7651ec2a28c374f1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|TeleSync",
+        "filename": "Life Is Beautiful  1080p.ts"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Жизнь прекрасна / La vita è bella / Life Is Beautiful [1997 BDRip-AVC] DVO\n👤 23 💾 1.45 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "7a76eaa4fa1938f628173fc0c8e81cd710234689",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Zhizn.prekrasna.1997.BDRip.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:7a76eaa4fa1938f628173fc0c8e81cd710234689",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Жизнь прекрасна / La vita è bella / Life Is Beautiful [1997 BDRip-AVC] [Original Version] VO (Белов) + Original Ita\n👤 12 💾 4.27 GB ⚙️ Rutracker\n🇷🇺 / 🇮🇹",
+      "infoHash": "bc8205e91899c56bbbc83d4ca3ef491f3dc00ca3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Жизнь прекрасна (1997).mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:bc8205e91899c56bbbc83d4ca3ef491f3dc00ca3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Жизнь прекрасна / La Vita e bella [1997 DVDRip] AVO (Санаев)\n👤 12 💾 1.99 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "34fb49d74f55fa18cb96efe85172674eca4c78d8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "La Vita e bella (DVDrip, Rus)_int_.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:34fb49d74f55fa18cb96efe85172674eca4c78d8",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "La.Vie.est.belle.1998.French.Dvdrip.XVID-T911\n👤 9 💾 847.78 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "ac2ee23c96a9d3c0210999d0af7d980b58c0a3a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid",
+        "filename": "[ Torrent911.net ] La.Vie.est.belle.1998.French.Dvdrip.XVID.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nXviD",
+      "title": "La Vita è Bella - Life Is Beautiful (1997) Roberto Benigni [XviD - Italian English Ac3 5.1 - Sub Eng] MIRCrew [TNT Village]\n👤 7 💾 1.7 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "6ed4902aa3f7433eec62e03f286522929972a5ba",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|XviD|xvid"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Жизнь прекрасна / La vita è bella / Life Is Beautiful [1997 BDRip-AVC] VO\n👤 6 💾 2.28 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "1197ad02838a09f81de2e96060f1c726924b4cb1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Жизнь прекрасна (La vita è bella) BDRip-AVC [by ale_x2008].mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:1197ad02838a09f81de2e96060f1c726924b4cb1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Жизнь прекрасна / Life Is Beautiful / La vita e bella (1997) BDRip от HQCLUB\n👤 6 💾 2.18 GB ⚙️ Rutor\nDual Audio / 🇬🇧 / 🇷🇺 / 🇮🇹",
+      "infoHash": "707f42fcfadfd73f1d6655e86ca92b8e7485d798",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Zhizn.prekrasna.1997.DUAL.BDRip.XviD.AC3.-HQCLUB.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:707f42fcfadfd73f1d6655e86ca92b8e7485d798",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Жизнь прекрасна / Vita e Bella La / Life Is Beautiful [1997 HDRip] DVO\n👤 5 💾 1.46 GB ⚙️ Rutracker\n🇷🇺 / 🇫🇷",
+      "infoHash": "2f36420c20f8f1ccb4e23f84955cb24f59d382ac",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Jizn'_prekrasna_HDRip_[rutracker.org]_by_Scarabey.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:2f36420c20f8f1ccb4e23f84955cb24f59d382ac",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "La Vie est belle FRENCH DVDRIP 1998\n👤 4 💾 847.78 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "c4d2dddb11aa021b3d214734169030ab5a31b7cf",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|xvid",
+        "filename": "[ OxTorrent.cc ] La.Vie.est.belle.1998.French.Dvdrip.XVID.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBluRay REMUX",
+      "title": "Life Is Beautiful 1997 (La vita e bella) BDRemux AVC multi HighC\n👤 4 💾 18.05 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "89af262a35e2597635b65598a0e456d8957adeef",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay REMUX|avc"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Жизнь прекрасна / La Vita e bella [1997 HDTVRip-AVC] DVO\n👤 4 💾 1.43 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "810cb7b466f8ca76b09b92b9d9fc76380fdaca66",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|HDTV|avc",
+        "filename": "La.Vita.è.bella.1997.DVDRip-AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:810cb7b466f8ca76b09b92b9d9fc76380fdaca66",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Жизнь прекрасна / La Vita e bella [1997 DVDRip] DVO\n👤 4 💾 664.03 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "7ff8c42067ce86978493081cfe1588360b34f13d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Life is Beautiful (Жизнь прекрасна).avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:7ff8c42067ce86978493081cfe1588360b34f13d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Life Is Beautiful -La Vita E Bella (1997) Dual Audio English Ita\n👤 15 💾 887.63 MB ⚙️ ThePirateBay\nDual Audio / 🇬🇧 / 🇮🇹",
+      "infoHash": "60595b7a57f086cef215ca682864c13a10bb7e57",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "filename": "Life Is Beautiful -La Vita E Bella (1997) Dual Audio English Italian.mkv"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Life Is Beautiful - La Vita è Bella 1997 ENG MultiSub WunSeeDee\n👤 6 💾 700.65 MB ⚙️ ThePirateBay\nMulti Subs / 🇬🇧",
+      "infoHash": "84dacbaaf93fdb0f9aab0f9070872ba8b7699ad4"
+    },
+    {
+      "name": "Torrentio",
+      "title": "[ArabP2P.net][مكتبة الأفلام لـ رشدي اباظة Library Rushdi AbaZa][#121 فلم]\nAlDaya3.mkv\n👤 4 💾 800.8 MB ⚙️ 1337x\n🇸🇦",
+      "infoHash": "49a397a96b02564670effb4a24b8b7b02015763a",
+      "fileIdx": 125,
+      "behaviorHints": {
+        "filename": "AlDaya3.mkv"
+      }
+    }
+  ]
+}

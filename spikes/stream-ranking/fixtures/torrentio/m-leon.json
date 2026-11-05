@@ -1,0 +1,1890 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-leon",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0110413.json",
+  "recordedAt": "2026-11-05T22:38:40.082Z",
+  "status": 200,
+  "ms": 98,
+  "streams": [
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Leon.The.Professional.1994.EXTENDED.4K.HDR.2160p.BDRip Ita Eng Fre x265-NAHOM\n👤 30 💾 11.54 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇫🇷",
+      "infoHash": "8670a26919295aa389131e01953ad03526a3a36c",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|HDR",
+        "filename": "Leon.The.Professional.1994.EXTENDED.4K.HDR.2160p.BDRip Ita Eng Fre x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Leon: The Professional (1994) Extended (2160p BluRay X265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 19 💾 17 GB ⚙️ MagnetDL",
+      "infoHash": "46437127c642d1142ff96f47009412d38d14ae0c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Leon - The Professional (1994) Extended (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Leon.The.Professional.1994.EXTENDED.2160p.UHD.BluRay.x265.10bit.HDR.TrueHD.7.1.Atmos-IAMABLE\n👤 19 💾 36.49 GB ⚙️ RARBG",
+      "infoHash": "393a38d199fce21be92afd4b6a002805750e47de",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Leon.The.Professional.1994.EXTENDED.2160p.UHD.BluRay.X265-IAMABLE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Leon.The.Professional.1994.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM\n👤 13 💾 49.17 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "1ac202af5bce9c2bfa2038da77af8e6381b08459",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|x265|DV|HDR",
+        "filename": "Leon.The.Professional.1994.4K.HDR.DV.2160p.BDRemux Ita Eng x265-NAHOM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Leon.1994.Version.integrale.UHD.2160p.REMUX..HDR10.DV.MULTi.ATMOS.7.1.H265-KC\n👤 12 💾 71.49 GB ⚙️ ThePirateBay\nMulti Audio / 🇬🇧",
+      "infoHash": "a6b2a79ec757e58526115dbacd02774c320050ab",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|h265|10bit|DV|HDR",
+        "filename": "leon.the.professional.1994.version.integrale.4k-kc.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Léon (1994) International Cut MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ\n👤 12 💾 5.2 GB ⚙️ EXT\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "infoHash": "773eae7bf78c4081c67ea335c515ee501ed75c6a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Léon (1994) International Cut MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Leon The Professional 1994 International Cut UHD BluRay 2160p HDR...\n👤 11 💾 29.77 GB ⚙️ TorrentGalaxy",
+      "infoHash": "eb55c6755b4e074383ae29f66ab2a09fd8d903b5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|HDR",
+        "filename": "Leon The Professional 1994 International Cut.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Леон / Léon (1994) UHD BDRemux 2160p | 4K | HDR | Dolby Vision Profile 8 | P\n👤 6 💾 58.16 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "bdf462316005e464ea0fd9c25316e7d3962b7f74",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|DV|HDR",
+        "filename": "Leon.The.Professional.1994.BDREMUX.2160p.DV.HDR..mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:bdf462316005e464ea0fd9c25316e7d3962b7f74",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Léon.The.Professional.1994.Extended.SonyRemaster.UHD.Remux.HEVC.2160p.HDR.TrueHD.MULTI.ScotchWhisky\n👤 5 💾 66.2 GB ⚙️ 1337x\nMulti Audio",
+      "infoHash": "5312247e22bc4b23180152dd5435607eab4c04e7",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|hevc|HDR"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Léon: The Professional 1994 2160p BluRay\n👤 75 💾 6.03 GB ⚙️ YTS",
+      "infoHash": "55b9222e31899adb0641a28ffb70e7bae544e3ec",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Leon.The.Professional.1994.EXTENDED.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Leon.The.Professional.1994.EXTENDED.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 17 💾 69.75 GB ⚙️ RARBG",
+      "infoHash": "62951840dfb1b33f22e05b0a9c213dad0daaa857",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Leon.The.Professional.1994.EXTENDED.PROPER.2160p.BluRay.REMUX.HEVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Leon The Professional 1994 UHD 2160p Blu-ray Remux HEVC Atmos 7.\n👤 17 💾 65.54 GB ⚙️ ThePirateBay\n🇬🇧 / 🇵🇹 / 🇪🇸 / 🇫🇷",
+      "infoHash": "527f8bcfac7d845d857318658b090f05c4f74fbe",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Leon The Professional 1994 UHD 2160p Blu-ray Remux HEVC Atmos 7.1-DTOne.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Leon.The.Professional.1994.EXTENDED.4K.UltraHD.BluRay.2160p.x264\n👤 5 💾 11.82 GB ⚙️ ThePirateBay",
+      "infoHash": "229a8a21d174b04cd88b6aac123d624c54ef76fd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x264",
+        "filename": "Leon.The.Professional.1994.EXTENDED.4K.UltraHD.BluRay.2160p.x264.TrueHD.Atmos.7.1.AAC.7.1-POOP.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p DV | HDR",
+      "title": "Leon The Professional 1994 International Cut UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737\n👤 26 💾 7.19 GB ⚙️ ThePirateBay",
+      "infoHash": "4ea906c43d4433e1bf37324198c583a6f659f4fb",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|DV|HDR",
+        "filename": "Leon The Professional 1994 International Cut UHD BluRay 1080p DD Atmos 5 1 DoVi HDR10 x265-SM737.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Léon The Professional (1994) (BDRip DC 1080p HEVC HDR EAC3) [OEP][37088079].mkv\n👤 5 💾 6.73 GB ⚙️ TorrentGalaxy",
+      "infoHash": "29b8957e49fdd961e876bc212e8d53465823b0a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|HDR",
+        "filename": "Léon The Professional (1994) (BDRip 1080p HEVC HDR EAC3) [OEP][37088079].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Léon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.x265 -88\n👤 169 💾 2.07 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1b098691a1ecbada5d878364c473627e30f36ab3",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Léon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.x265.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Leon [1994 BDRip 1080p] [Международная версия / International Version] MVO (ОРТ Амальгама Киномания) AVO (Гаврилов Рукин Гоблин Живов) Sub Rus Eng\n👤 147 💾 19.73 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "e40c0b0dfcd850f5d53ac1051323076ed3c2f0af",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Леон (авторская версия) 1994 BDRip 1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e40c0b0dfcd850f5d53ac1051323076ed3c2f0af",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon 1994 IC REMASTERED 1080p BluRay HEVC x265 5.1 BONE\n👤 105 💾 2.22 GB ⚙️ ThePirateBay",
+      "infoHash": "cc2c757ddd42ed25c228c1b5db85c4a503302c1e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Leon 1994 IC REMASTERED 1080p BluRay HEVC x265 5.1 BONE.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon The Professional Extended (1994) 1080p BrRip 1.7GB - YIFY\n👤 100 💾 1.7 GB ⚙️ ThePirateBay",
+      "infoHash": "f4dd3dd606cf31ce79be33311c6b8ab7b7c7dc2f",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Leon.the.Professional.Extended.1994.BrRip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.x265-RARBG\n👤 56 💾 2.07 GB ⚙️ RARBG",
+      "infoHash": "c31683d3fcdf4db6bdd5384f0de7b1fa98f1fec7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Leon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 BDRemux 1080p] [JPN] [Международная версия / International Version] MVO (Супербит / Киномания) + DVO (Кармен Видео) + 4x AVO + Sub\n👤 53 💾 51.87 GB ⚙️ Rutracker\n🇬🇧 / 🇯🇵 / 🇷🇺",
+      "infoHash": "ef5c287d48649379a7d4c4f7b3a8a98a74278393",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|h264",
+        "filename": "Leon.The.Professional.BD.Remux.1080p.H.264.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:ef5c287d48649379a7d4c4f7b3a8a98a74278393",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 BDRip 1080p] [Международная версия / International Version] MVO (Супербит / Киномания) + 2x AVO + Sub Rus Eng + Original Eng\nLeon.Directors Cut.1994.BD.Rip.1080p.h264.3xRus.Eng.mkv\n👤 41 💾 12.32 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "b1fdcb2ff98dde38029fe46fbe96c4706fe27887",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Leon.Directors Cut.1994.BD.Rip.1080p.h264.3xRus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:b1fdcb2ff98dde38029fe46fbe96c4706fe27887",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.Extended.1080p.BluRay.DDP.5.1.10bit.H.265-iVy\n👤 38 💾 3.94 GB ⚙️ 1337x",
+      "infoHash": "692607f70a9ba5005b2299d2f320573173db7b37",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h265|10bit",
+        "filename": "Leon.The.Professional.1994.{edition-Extended}.1080p.BluRay.DDP.5.1.10bit.H.265-iVy.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Great Films 3: MP4 X264 AC3 1080p\nLeon The Professional (1994) 1080p Surround.mp4\n👤 33 💾 3 GB ⚙️ MagnetDL",
+      "infoHash": "40f15e970e6f21466402a1ec4fbd059097ad587a",
+      "fileIdx": 21,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Leon The Professional (1994) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Léon 1994 Multi 1080p BluRay HDlight.x264~Tonyk\n👤 25 💾 2.9 GB ⚙️ Torrent9\nMulti Audio / 🇫🇷",
+      "infoHash": "404609716cdceab5dfe5516c300f8d01121bbd0e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ OxTorrent.com ] Léon 1994 Multi 1080p BluRay HDlight.x264~Tonyk.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Léon: The Professional 1994 1080p BluRay DD+ 7.1 x265-edge2020\n👤 21 💾 8.99 GB ⚙️ TorrentGalaxy",
+      "infoHash": "1fa507a879d3619a4a8dc70b2fabb00897de8ac6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Leon.The.Professional.1994.Remastered.Extended.1080p.BluRay.DDP.7.1.x265-EDGE2020.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.EXTENDED.REMASTERED.VFi.1080p.BluRay.mHD.x264.AC3-ROMKENT\n👤 21 💾 4.16 GB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "acd5f4de0bf662187694a02253a39887b51de4b7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "[ Torrent911.tv ] Leon.The.Professional.1994.EXTENDED.REMASTERED.VFi.1080p.BluRay.mHD.x264.AC3-ROMKENT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.1994.4K.RM.DC.Bluray.1080p.TrueHD-7.1.Atmos.x264-Grym\n👤 20 💾 17.74 GB ⚙️ ThePirateBay",
+      "infoHash": "0f199e8b32b7701c100c260fabb14514acf3512f",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Leon.1994.4K.RM.DC.Bluray.1080p.TrueHD-7.1.Atmos.x264-Grym.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon 1994 REMASTERED EXTENDED 1080p BluRay x265-YAWNTiC\n👤 19 💾 5.72 GB ⚙️ ThePirateBay",
+      "infoHash": "071378c6be987dd776f4197ead04e6021be60359",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Leon 1994 REMASTERED EXTENDED 1080p BluRay x265-YAWNTiC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon The professional (1994) 1080P H264 Bluray Rip AC3 iTA Eng Sub iTA Eng - CoSmo Crew\n👤 18 💾 2.79 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "d34540dfbce8a48b8be3354c9cde7b96d24287ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h264",
+        "filename": "Leon The professional (1994) 1080P H264 Bluray Rip AC3 iTA Eng Sub iTA Eng - CoSmo Crew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon: The Professional (1994) Extended RM4K (1080p BluRay X265 HEVC 10bit AAC 7.1 Tigole) [QxR]\n👤 18 💾 5.6 GB ⚙️ MagnetDL",
+      "infoHash": "cacd24e5e81655e0035a19695b94aa8ebbf216ef",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Leon - The Professional (1994) Extended RM4K (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon The Professional (1994) 1080p RM4K Extended International Cut BluRay AV1 Opus 7.1 [Retr0]\n👤 15 💾 1.69 GB ⚙️ TorrentGalaxy",
+      "infoHash": "6aa5a18d15f358e56f03e394252390b13d24de1b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Leon.The.Professional.1994.1080p.RM4K.Extended.International.Cut.BluRay.AV1.Opus.7.1-Retr0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT\n👤 15 💾 31.64 GB ⚙️ RARBG",
+      "infoHash": "42f38dcfc83883264c8fa85899d25391b101b9f6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|avc",
+        "filename": "Leon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.REMUX.AVC.DTS-HD.MA.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Léon Extended (1994) AC3 5.1 ITA.ENG 1080p H265 sub NUita.eng Sp33dy94 MIRCrew\n👤 14 💾 3.25 GB ⚙️ ilCorSaRoNeRo\n🇬🇧 / 🇮🇹",
+      "infoHash": "c4b7d22ccc915f7665f6cf8e80fa54497ec9b0f0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Léon Extended (1994) AC3 5.1 ITA.ENG 1080p H265 sub NUita.eng Sp33dy94-MIRCrew.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 BDRemux 1080p] [Международная версия / International Version] MVO (Супербит / Киномания) + 2x AVO + Original + Sub (Rus Eng)\n👤 14 💾 28.53 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "fbfa9366537b8471d681eb510ca30b1102461640",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay REMUX|h264",
+        "filename": "Leon.Directors Cut.1994.BD.Remux.1080p.h264.3xRus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:fbfa9366537b8471d681eb510ca30b1102461640",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.REMASTERED.THEATRICAL.1080p.BluRay.x264-ARCHiViST\n👤 12 💾 10.96 GB ⚙️ RARBG",
+      "infoHash": "cf23e9eb4f57b9cae4d90f31d9b901d4461209ec",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.1994.EXTENDED.REMASTERED.1080p.BluRay.AVC.TrueHD.7.1.Atmos-\n👤 12 💾 42.77 GB ⚙️ ThePirateBay",
+      "infoHash": "85f8f0a48c43aa20be0391a031ac44945790df36",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 Blu-ray disc (custom) 1080p] [2 в 1: Международная и театральная версии / International and Theatrical Versions] 2x AVO (Рукин Гоблин) + Original + Sub\n👤 11 💾 47.23 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "12fa1f405dc8769dadb11d669697a2d91c781d3b",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:12fa1f405dc8769dadb11d669697a2d91c781d3b",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Amazing Films 4 - Mp4 x264 AC3 1080p\nLeon The Professional (1994) 1080p Surround.mp4\n👤 10 💾 2.96 GB ⚙️ ThePirateBay",
+      "infoHash": "4e20131a166cee7614ce583330e0c0d2405bbce7",
+      "fileIdx": 32,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x264",
+        "filename": "Leon The Professional (1994) 1080p Surround.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 BDRip 1080p] [Театральная версия / Theatrical Version] MVO + Sub Rus Eng + Original Eng\n👤 10 💾 7.95 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "bd95f59e9bea05ac2ea2d651a006a7fdbe71871a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|h264",
+        "filename": "Leon (Theatrical Cut).1994.BD.Rip.1080p.h264.Rus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:bd95f59e9bea05ac2ea2d651a006a7fdbe71871a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon The Professional (1994)(UnRated)(Remastered)(Extended)(FHD)(x264)(1080p)(BluRay)(English-CZ) PHDTeam\n👤 9 💾 2.68 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇨🇿",
+      "infoHash": "720de59424252a0b7a53f2492e841dca562fdd8d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Leon The Professional (1994)(Remastered)(Extended)(FHD)(x264)(1080p)(BluRay)(English-CZ) PHDTeam .mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "IMDB TOP 001-050 BluRay 1080p x265 10bit MNHD-FRDS\n030.这个杀手不太冷.Leon.1994.Extended.Remastered.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS/Leon.1994.Extended.Remastered.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv\n👤 8 💾 8.86 GB ⚙️ EXT",
+      "infoHash": "9351bcf9e7437f706549f8b60314c39259c420b4",
+      "fileIdx": 212,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit",
+        "filename": "Leon.1994.Extended.Remastered.BluRay.1080p.x265.10bit.2Audio.MNHD-FRDS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon (1994) BDRip-HEVC 1080p от HEVC-CLUB | P A | International Cut | Remastered\n👤 8 💾 13.71 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "4c6f0bd5ca9b2e6726b74ba3ab6937a77cce1a19",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc",
+        "filename": "Léon The Professional (1994) BDRip-HEVC 1080p.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:4c6f0bd5ca9b2e6726b74ba3ab6937a77cce1a19",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon 1994 BluRay 1080p Ita Eng Ac3 X265 Mkv\n👤 8 💾 5.94 GB ⚙️ MagnetDL\n🇬🇧 / 🇮🇹",
+      "infoHash": "4a24d7f2eada222e6da38cd532b0820811bba0b1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Leon.1994.BluRay.1080p.Ita.Eng.Ac3.x265.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.THEATRICAL.CUT.1080p.10bit.BluRay.6CH.x265.HEVC\n👤 7 💾 2.12 GB ⚙️ ThePirateBay",
+      "infoHash": "8861e17bf1e06d055cad995af1925caaac6638b1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Leon.The.Professional.1994.THEATRICAL.CUT.1080p.10bit.BluRay.6CH.x265.HEVC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.The.Professional.1994.REMASTERED.1080p.BRRip.AC3.x264-LESS\n👤 7 💾 2.92 GB ⚙️ ThePirateBay",
+      "infoHash": "150f333d087ca7ca0d8b4b816f21e0814da117a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Leon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BRRip.AC3.x264-LESS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Luc Besson Collection 1080p H264 AC3 Will1869\nLeon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.H264.AC3.DD5.1.mp4\n👤 7 💾 3.21 GB ⚙️ TorrentGalaxy",
+      "infoHash": "fe82c099d9aa038c481a137e7246d9fe2feeae0f",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264",
+        "filename": "Leon.The.Professional.1994.REMASTERED.EXTENDED.1080p.BluRay.H264.AC3.DD5.1.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 Blu-ray disc (custom) 1080p] [FRA] [Международная версия / International Version] DVO + Original + Sub (Rus)\n👤 7 💾 18.83 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "db49b1b66f665855af25c5232d277e861a1612b1",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:db49b1b66f665855af25c5232d277e861a1612b1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon.1994.4K.REMASTERED.EXT.INT.1080p.10bit.BR.8CH.x265.HEVC-PSA\n👤 6 💾 3.36 GB ⚙️ ThePirateBay",
+      "infoHash": "544a224938b2a8aee6b536dbf241a71dc5c2a066",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Leon.The.Professional.1994.4K.REMASTERED.EXTENDED.INTERNATIONAL.1080p.10bit.BluRay.8CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Léon The Professional DC 1994 1080p Bluray x265 10Bit AAC 5.1 - GetSchwifty\n👤 6 💾 3.8 GB ⚙️ 1337x",
+      "infoHash": "2569dbf3ae179d31b6482a390c5cc769ee6b98b8",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Elperfectoasesino.1994.1080P-Dual-Lat\n👤 5 💾 1.79 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "d683b64be934367cfa23eb8df440bb99f5427107",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Elperfectoasesino.1994.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon The Professional 1994 1080p BluRay x264-OFT\n👤 5 💾 5.75 GB ⚙️ ThePirateBay",
+      "infoHash": "7eca4dce06d25f3030cf22346bd5fd7769bd91f6",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Leon The Professional 1994 1080p BluRay x264-OFT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Leon the Professional (1994)(FHD)(Mastered)(Hevc)(1080p)(BluRay)(English-CZ) PHDTeam\n👤 5 💾 2.15 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇨🇿",
+      "infoHash": "2267e9e3a9f1998fe2cc61f204e0dde41e1b023e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc",
+        "filename": "Leon the Professional (1994)(FHD)(Mastered)(Hevc)(1080p)(BluRay)(English-CZ) PHDTeam.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon (1994) BDRip 1080p от NoLimits-Team | Director's Cut\n👤 5 💾 7.94 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "d53c5799f714ac5f423f053980abf0e131d64482",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Leon.(1994).BDRip.1080p.(DVD9).[NoLimits-Team].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:d53c5799f714ac5f423f053980abf0e131d64482",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Леон / Léon / Leon [1994 Blu-ray disc (custom) 1080p] [2 в 1: Международная и театральная версии / International and Theatrical Versions] MVO + Original +\n👤 5 💾 37.97 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇩🇪",
+      "infoHash": "0c9d52656a285fd49612ce19a94628bf015e66fb",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:0c9d52656a285fd49612ce19a94628bf015e66fb",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Leon The Professional Extended (1994) 720p BrRip x264 - YIFY\n👤 68 💾 856.89 MB ⚙️ ThePirateBay",
+      "infoHash": "1ecf2d1175b9a4a857e8b82590f26b6835d949ec",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Leon.the.Professional.Extended.1994.720p.BrRip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Леон / Léon / Leon [1994 BDRip 720p] [4K Mastered] [Международная версия / International Version] 2x MVO + 3x AVO (Гаврилов Живов Пучков) + VO + Sub Rus Eng\n👤 38 💾 15.55 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "5644b81dd4a2a29a3d073fd78e4fbe79b3c23d10",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Leon.1994.International.Cut.BluRay.720p.6хRus.Eng.-HQCLUB.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:5644b81dd4a2a29a3d073fd78e4fbe79b3c23d10",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Leon.The.Professional.1994.REMASTERED.EXTENDED.720p.BluRay.999MB\n👤 27 💾 991.56 MB ⚙️ ThePirateBay",
+      "infoHash": "3829b1026ce1ef87204141c5f5e26e3cd3fd7de2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x265|10bit",
+        "filename": "Leon.The.Professional.1994.REMASTERED.EXTENDED.720p.BluRay.999MB.HQ.x265.10bit-GalaxyRG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Леон / Léon (1994) BDRip 720p от Leonardo and Scarabey | Director's Cut | FRA Transfer\n👤 8 💾 4.97 GB ⚙️ Rutor\n🇷🇺 / 🇫🇷",
+      "infoHash": "de3a914fa1467cbc92bcf3bd1b2cda07f71be437",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|x264",
+        "filename": "Leon.1997.720p.FR.x264-LEONARDO_[scarabey.org].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:de3a914fa1467cbc92bcf3bd1b2cda07f71be437",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Леон / Léon / Leon [1994 BDRip 720p] [Театральная версия / Theatrical Version] MVO + Sub Rus Eng + Original Eng\n👤 8 💾 4.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "e3bb468080465ecd20269db46074ac5dbaaa7e85",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|h264",
+        "filename": "Leon (Theatrical Cut).1994.BD.Rip.720p.h264.Rus.Eng.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e3bb468080465ecd20269db46074ac5dbaaa7e85",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Леон / Léon / Leon [1994 BDRip 720p] [Международная версия / International Version] MVO (Супербит / Киномания) + 2x AVO (Пучков Гаврилов) + Original + Sub\nLeon.BDRip.1994.Rus.Eng.720p.mkv\n👤 7 💾 4.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "fc44d67a8cf4134ba377cfc1010f50378cae2c5d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip",
+        "filename": "Leon.BDRip.1994.Rus.Eng.720p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:fc44d67a8cf4134ba377cfc1010f50378cae2c5d",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Леон / Léon / Leon [1994 HDRip-AVC] [Международная версия / International version] DVO (Кубик в Кубе) + Original (Eng) + Sub (Rus Eng)\n👤 90 💾 2.9 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "893d361751c036c1949f72f356c3568abf1537c0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Leon.HDRip.Kubik.v.Kube.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:893d361751c036c1949f72f356c3568abf1537c0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip-AVC] [Международная версия / International Version] MVO (Кармен Видео) + Original (eng) + Sub (rus eng)\n👤 18 💾 4.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "53ac50e67794cbd932326774316c085317aeb295",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Leon.(1994).International.BDRip.x264.AFM.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:53ac50e67794cbd932326774316c085317aeb295",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Леон / Léon / Leon [1994 HDRip-AVC] [Международная версия / International Version] MVO + Original Eng + Sub (Rus eng)\nLeon.Directors Cut_1994-HDRip-AVC.mkv\n👤 13 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "af52bffc19b8553d7a6b538ddeed975f5a2f45a1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Leon.Directors Cut_1994-HDRip-AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:af52bffc19b8553d7a6b538ddeed975f5a2f45a1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Театральная версия / Theatrical Version] 2 AVO (Леша-прапорщик Виктор Махонько) + Original Eng\n👤 12 💾 2.14 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "9e230f3f7a6c9c50befe79a9ffe518f39d4cfaf3",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Леон (Léon) BDRip [by ale_x2008].avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:9e230f3f7a6c9c50befe79a9ffe518f39d4cfaf3",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Международная версия / International Version] MVO (ОРТ)\n👤 12 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "509f7ef861929de48aa6a420c4812a2db060bdb0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Леон.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:509f7ef861929de48aa6a420c4812a2db060bdb0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Международная версия / International Version] MVO (R5 Амальгама)\n👤 12 💾 1.46 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "f0aea630bb3acc79536b22bafbf4ef9ee9401a12",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Leon.1994.DirCut.XviD.BDRip.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:f0aea630bb3acc79536b22bafbf4ef9ee9401a12",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip-AVC] [2 в 1: Международная и театральная версии / International and Theatrical Versions] 2x MVO + AVO (Goblin) + Original + Sub (rus eng)\n👤 12 💾 4.35 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "77b8cac410904929f9378ccdaa148ae62b501804",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Leon (1994) BDRip.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:77b8cac410904929f9378ccdaa148ae62b501804",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip-AVC] [Театральная версия / Theatrical Version] MVO + Original Eng + Sub\n👤 11 💾 1.45 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "a3d5e980ec32a7346373b2e960af9ed8bda549b0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Leon.1994.BDRip.AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:a3d5e980ec32a7346373b2e960af9ed8bda549b0",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Международная версия / International Version] MVO (Кармен Видео) + MVO (Киномания) + AVO (Д.Пучков) + Sub Rus Eng\nLeon.1994.RUS.BDRip.XviD.AC3.-HQCLUB.avi\n👤 10 💾 2.19 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "bf82526502b9aa6f30a87f432c3b9ff825397f15",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Leon.1994.RUS.BDRip.XviD.AC3.-HQCLUB.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:bf82526502b9aa6f30a87f432c3b9ff825397f15",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Леон / Léon / Leon [1994 HDRip-AVC] [Международная версия / International Version] MVO + AVO (Гоблин) + Original + Sub\n👤 10 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "09de7699b8b99e74f92002d7b7510cb83b0d0b73",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Leon.1994.HDRip.x264.aac.[torrents.ru].mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:09de7699b8b99e74f92002d7b7510cb83b0d0b73",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Leon.The.Professional.1994.PTV.WEB-DL.AAC.2.0.H.264-PiRaTeS[TGx]\n👤 9 💾 1.26 GB ⚙️ TorrentGalaxy",
+      "infoHash": "569b7330617de3520a9fc45940987767e5177418",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL|h264",
+        "filename": "Leon.The.Professional.1994.PTV.WEB-DL.AAC.2.0.H.264-PiRaTeS.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Léon FRENCH DVDRIP 1994\n👤 7 💾 700.65 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "33dcd25be154dae1c4e28ba9c69c62476c45f99c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "[ OxTorrent.com ] Léon.TrueFrench.DVDRIP.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Леон / Léon / Leon [1994 HDRip] [Театральная версия] MVO (Петербург - 5-й канал) + DVO (Мост-Медиа)\n👤 7 💾 2.17 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "d65d8665ae8669e50fb6c883a3a9e2e5a277a923",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Леон (Театральная версия).avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:d65d8665ae8669e50fb6c883a3a9e2e5a277a923",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Leon.The.Professional.1994.Directors.Cut.BDRip.x264-AKS74u\n👤 7 💾 1.87 GB ⚙️ ThePirateBay",
+      "infoHash": "ecda7e8f29dfafbe1d20025698c5775f69c853a9",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|x264"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Международная версия / International Version] MVO (Супербит / Киномания) + 3x AVO (Гоблин Гаврилов Рукин) + Original + Sub (Rus Eng)\nLeon_1994_BDRip_Directors Cut_Menen.avi\n👤 7 💾 2.9 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "15a427e695e194a097ffed201beb1f653cc39d7e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Leon_1994_BDRip_Directors Cut_Menen.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:15a427e695e194a097ffed201beb1f653cc39d7e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Леон / Léon (1994) HDRip от Scarabey | Режиссерская версия\n👤 6 💾 1.45 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "0738d0e79cbd1a3332e7896c93730ce562758554",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Leon_HDRip_dir_[scarabey.org].avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:0738d0e79cbd1a3332e7896c93730ce562758554",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Международная версия / International Version] MVO (Супербит / Киномания)\n👤 6 💾 2.19 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "50fff4b217d6f91244e1616d0ac3141fe11c98b1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Leon_1994_BDRip_Directors Cut_Menen_2,18.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:50fff4b217d6f91244e1616d0ac3141fe11c98b1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Леон / Léon / Leon [1994 DVDRip] [Международная версия / International Version] AVO (Гоблин) + Original Eng + Sub Rus\nLeon2.avi\n👤 6 💾 681.22 MB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "88ca09ef5240ac7b923b0979621ab5a285900d0e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Leon2.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:88ca09ef5240ac7b923b0979621ab5a285900d0e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Леон / Léon / Leon [1994 DVDRip] [Международная версия / International Version] AVO (Гоблин) + Original Eng + Sub Rus\nLeon1.avi\n👤 6 💾 689.79 MB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "88ca09ef5240ac7b923b0979621ab5a285900d0e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Leon1.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:88ca09ef5240ac7b923b0979621ab5a285900d0e",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip-AVC] [Международная версия / International Version] DVO + Original Eng + Sub Rus\n👤 5 💾 2.18 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇫🇷",
+      "infoHash": "b155dc5e46e19692dab4f7b93fcb8f9cd6a2ff88",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Leon.The.Professional.DC.1994.BDRip.AVC.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:b155dc5e46e19692dab4f7b93fcb8f9cd6a2ff88",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Театральная версия / Theatrical Version] MVO (R5 Амальгама)\n👤 5 💾 743.88 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "b2a6a0bbe09fa8f1c4662b4531ca9918e651597c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Leon professional (1994) - BDRip by TaniaVGTU.avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:b2a6a0bbe09fa8f1c4662b4531ca9918e651597c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Леон / Léon / Leon [1994 BDRip] [Международная версия / International Version] AVO (Гоблин)\n👤 5 💾 2.19 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "25f240eb7070b268ae80b2c9eff310e533b963e6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Leon.1994.BDRip.XviD.AC3.[torrents.ru].avi"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:25f240eb7070b268ae80b2c9eff310e533b963e6",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Леон / Léon / Leon [1994 DVDRip] [Международная версия / International Version] AVO (Юрий Живов)\n👤 5 💾 1.65 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "a9b72481ccee27419cb14397f2296abcd12a397c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Léon_(torrents.ru).avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:a9b72481ccee27419cb14397f2296abcd12a397c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Леон / Léon / Leon [1994 HDRip-AVC] [2 в 1: Международная и театральная версии / International and Theatrical Versions] AVO (Гоблин) + MVO + Original Eng + Sub\n👤 5 💾 2.91 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "6d62ed736a4891254305d24823b3198765615c41",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Leon_2in1_AVC-Video.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:6d62ed736a4891254305d24823b3198765615c41",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Paczka filmow nr.12 na Telegram | 1900 - 2026 | Dubbing Lektor\nLeon.1994.Lektor-002.mp4\n👤 41 💾 1.35 GB ⚙️ EXT\nDubbed",
+      "infoHash": "29bc0f7d1519bd6659224df6ac044681385d9385",
+      "fileIdx": 40,
+      "behaviorHints": {
+        "filename": "Leon.1994.Lektor-002.mp4"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Paczka filmow nr.12 na Telegram | 1900 - 2026 | Dubbing Lektor\nLeon.1994.Lektor-001.mp4\n👤 41 💾 1.37 GB ⚙️ EXT\nDubbed",
+      "infoHash": "29bc0f7d1519bd6659224df6ac044681385d9385",
+      "fileIdx": 39,
+      "behaviorHints": {
+        "filename": "Leon.1994.Lektor-001.mp4"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "13.02.2023.turktorent.Group.Movies.Pack.Part.II - TURKTORRENT\nSıfırdan İleri Düzey Etik Hacker Kursu (Uygulamalı)/Bölüm 13- Sosyal Mühendislik/Ders 94- Strateji Oluşturalım.mkv\n👤 15 💾 31.5 MB ⚙️ TorrentGalaxy",
+      "infoHash": "9e4e4198bc59aaca856fa659069035b79243b147",
+      "fileIdx": 31,
+      "behaviorHints": {
+        "filename": "Ders 94- Strateji Oluşturalım.mkv"
+      }
+    }
+  ]
+}

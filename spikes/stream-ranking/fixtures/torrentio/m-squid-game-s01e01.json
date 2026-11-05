@@ -1,0 +1,937 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-squid-game-s01e01",
+  "request": "https://torrentio.strem.fun/stream/series/tt10919420%3A1%3A1.json",
+  "recordedAt": "2026-11-05T22:38:59.583Z",
+  "status": 200,
+  "ms": 242,
+  "streams": [
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / Серии: 1-9 из 9 [2021 WEB-DL 2160p HDR10 Dolby Vision] [Hybrid] Dub + 3x MVO + Ukr + Eng + Original (Kor) + Sub (Rus Ukr Eng Kor)\nИгра в кальмара.S01E01.WEB-DL.2160p.mkv\n👤 59 💾 9.58 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷 / 🇺🇦",
+      "infoHash": "94e57d84aed58c0beda0a26b1d921aa3d8f0f381",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|94e57d84aed58c0beda0a26b1d921aa3d8f0f381",
+        "filename": "Игра в кальмара.S01E01.WEB-DL.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:94e57d84aed58c0beda0a26b1d921aa3d8f0f381",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Squid Game S01 2160p NF WEBRip HDR x265 DD+5.1 Atmos-N0TTZ [RiCK\nSquid.Game.S01E01.2160p.NF.WEBRip.HDR.x265.DD+5.1.Atmos.-N0TTZ.mkv\n👤 41 💾 6.92 GB ⚙️ ThePirateBay",
+      "infoHash": "8e3d74ea33e16d6bd200b045f23137fe05664604",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8e3d74ea33e16d6bd200b045f23137fe05664604",
+        "filename": "Squid.Game.S01E01.2160p.NF.WEBRip.HDR.x265.DD+5.1.Atmos.-N0TTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Squid.Game.S01.KOREAN.ENG.FRA.GER.ITA.SPA.MULTI+.2160p.NF.WEB-DL.DDP5.1.DV.HDR.x265.Atmos-MassModz\nSquid.Game.S01E01.Red.Light.Green.Light.2160p.WEB-DL.MULTI.DDP5.1.Atmos.DV.HDR.H.265-MassModz.mkv\n👤 11 💾 10.45 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧 / 🇮🇹 / 🇪🇸 / 🇰🇷 / 🇫🇷 / 🇩🇪",
+      "infoHash": "6942736e634026cb9bc2c134090b9c9ba54ec3cc",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6942736e634026cb9bc2c134090b9c9ba54ec3cc",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.2160p.WEB-DL.MULTI.DDP5.1.Atmos.DV.HDR.H.265-MassModz.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / Серии: 1-9 из 9 [2021 WEB-DL 2160p Dolby Vision TV] Dub + 3x MVO + Ukr + Eng + Original (Kor) + Sub (Rus Ukr Eng Kor)\nИгра в кальмара.S01E01.WEB-DL.2160p.DV.mp4\n👤 9 💾 9.68 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷 / 🇺🇦",
+      "infoHash": "40bc05f0b11d3e42504b641a1d19f9bcd768396a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|40bc05f0b11d3e42504b641a1d19f9bcd768396a",
+        "filename": "Игра в кальмара.S01E01.WEB-DL.2160p.DV.mp4"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:40bc05f0b11d3e42504b641a1d19f9bcd768396a",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Squid Game S01E01 Red Light Green Light 2160p NF WEB-DL DDP5 1 Atmos HDR HE\n👤 6 💾 8.4 GB ⚙️ ThePirateBay",
+      "infoHash": "9afd052cc2aea0ba86d86ff7f5a7e313e7ca2025",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|HDR|XEBEC",
+        "filename": "Squid Game S01E01 Red Light Green Light 2160p NF WEB-DL DDP5 1 Atmos HDR HEVC-XEBEC.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "SQUID.GAME.S01.2021.KOREAN.[19.AUDIO.LANGUAGES+EVERY.SUBTITLE.LANGUAGE].2160p.NF.WEB-DL.DDP5.1.DV.HDR.x265.Atmos-MassModz\nSquid.Game.S01E01.Red.Light.Green.Light.2160p.[19.AUDIO.LANGUAGES+EVERY.SUBTITLE.LANGUAGE].WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-MassModz.mkv\n👤 4 💾 12.59 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇰🇷",
+      "infoHash": "ed103667bb1d53ea7c8df0a566f9390d7e63ff58",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ed103667bb1d53ea7c8df0a566f9390d7e63ff58",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.2160p.[19.AUDIO.LANGUAGES+EVERY.SUBTITLE.LANGUAGE].WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-MassModz.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Squid.Game.S01.KOREAN.2160p.NF.WEB-DL.x265.10bit.HDR.DDP5.1.Atmos-NorthKorea\nSquid.Game.S01E01.Red.Light.Green.Light.2160p.NF.WEB-DL.DUAL.DDP5.1.Atmos.DV.HDR10.H.265-NorthKorea.mkv\n👤 4 💾 8.42 GB ⚙️ TorrentGalaxy\nDual Audio / 🇬🇧 / 🇰🇷",
+      "infoHash": "08ea8ef73bdcc4142f8ffac682b53810748d44d4",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|08ea8ef73bdcc4142f8ffac682b53810748d44d4",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.2160p.NF.WEB-DL.DUAL.DDP5.1.Atmos.DV.HDR10.H.265-NorthKorea.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 [2021 WEB-DLRip 2160p SDR] Dub + MVO (LostFilm) + Eng + Original Kor + Sub Rus Eng\nSquid.Game.S01E01.WEB-DLRip.2160p.SDR.HEVC.2xRus.Eng.Kor.mkv\n👤 14 💾 6.75 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "a953ac64e723b46127ab5014cc42e3cbb3f2fc33",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a953ac64e723b46127ab5014cc42e3cbb3f2fc33",
+        "filename": "Squid.Game.S01E01.WEB-DLRip.2160p.SDR.HEVC.2xRus.Eng.Kor.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:a953ac64e723b46127ab5014cc42e3cbb3f2fc33",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Squid Game S01 2160p NF WEB-DL Multi-Audio DDP5.1 Atmos H.265-TBMovies\nSquid Game S01EP01 2160p NF WEB-DL Multi-Audio DDP5.1 Atmos H.265-TBMovies.mkv\n👤 4 💾 8.23 GB ⚙️ 1337x\nMulti Audio / 🇰🇷",
+      "infoHash": "2cf40ffd0bfc77eb587f7b7b3ae239d7fad206d6",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|2cf40ffd0bfc77eb587f7b7b3ae239d7fad206d6",
+        "filename": "Squid Game S01EP01 2160p NF WEB-DL Multi-Audio DDP5.1 Atmos H.265-TBMovies.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / [9 из 9] [2021 HEVC HDR10 WEB-DL 1080p] [RAW] Dub (Пифагор) + Original (Kor) + Eng + Sub (Rus Eng Kor)\nИгра в кальмара.S01E01.WEB-DL.1080p.HDR.mkv\n👤 30 💾 2.99 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "1ec1e733b8d75a1cb61b0b1fddee700b8d7ae837",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1ec1e733b8d75a1cb61b0b1fddee700b8d7ae837",
+        "filename": "Игра в кальмара.S01E01.WEB-DL.1080p.HDR.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:1ec1e733b8d75a1cb61b0b1fddee700b8d7ae837",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Squid Game S01 KOREAN 1080p NF WEBRip x265 10bit HDR DDP5 1 Atmos-AGLET\nSquid.Game.S01E01.Red.Light.Green.Light.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.HDR.HEVC-AGLET[eztv.re].mkv\n👤 15 💾 2.72 GB ⚙️ EZTV\nDual Audio / 🇰🇷",
+      "infoHash": "e4417825697625e5f5925101c7e06b9cc9981969",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e4417825697625e5f5925101c7e06b9cc9981969",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.HDR.HEVC-AGLET[eztv.re].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Squid.Game.S01.KOREAN.1080p.NF.WEBRip.x265.10bit.HDR.DDP5.1.Atmos-AGLET[rartv]\nSquid.Game.S01E01.Red.Light.Green.Light.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.HDR.HEVC-AGLET.mkv\n👤 15 💾 2.72 GB ⚙️ RARBG\nDual Audio / 🇰🇷",
+      "infoHash": "aa36541889f413853ee11f038b2f6cca15649a80",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|aa36541889f413853ee11f038b2f6cca15649a80",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.HDR.HEVC-AGLET.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Squid Game (S01)(2021)(Hevc)(1080p)(HDR)(10bit)(WebDL)(Atmos-MultiLang)(MultiSub) PHDTeam\nHra na oliheň_S01E01_Červená, zelená.mkv\n👤 6 💾 2.08 GB ⚙️ TorrentGalaxy\nMulti Audio / Multi Subs / 🇬🇧",
+      "infoHash": "a316ca860fbb0b5165972ba3d2df5ddbb9ca6b33",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|a316ca860fbb0b5165972ba3d2df5ddbb9ca6b33",
+        "filename": "Hra na oliheň_S01E01_Červená, zelená.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game Season 1 S01 1080p Dual Audio Rip AAC5.1 10bit x265-R\nSquid Game - S01E01 - Red Light, Green Light.mkv\n👤 235 💾 808.49 MB ⚙️ ThePirateBay\nDual Audio / 🇬🇧",
+      "infoHash": "bbd2d659524085da86a3b7e1b0fc12bd33b7b1c7",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bbd2d659524085da86a3b7e1b0fc12bd33b7b1c7",
+        "filename": "Squid Game - S01E01 - Red Light, Green Light.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.KOREAN.1080p.NF.WEBRip.DDP5.1.Atmos.x264-AGLET[rartv]\nSquid.Game.S01E01.Red.Light.Green.Light.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.x264-AGLET.mkv\n👤 68 💾 2.08 GB ⚙️ RARBG\nDual Audio / 🇰🇷",
+      "infoHash": "146316439516089335a8f6956b4c631737ea720b",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|146316439516089335a8f6956b4c631737ea720b",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.x264-AGLET.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game Season 1 S01 1080p Dual Audio NF WEBRip AAC5.1 x264-R\nSquid Game - S01E01 - Red Light, Green Light.mkv\n👤 53 💾 1.29 GB ⚙️ ThePirateBay\nDual Audio",
+      "infoHash": "f1d7c732abc356b4d2174cf3cd156923eb8bcc8a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f1d7c732abc356b4d2174cf3cd156923eb8bcc8a",
+        "filename": "Squid Game - S01E01 - Red Light, Green Light.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.DUAL-AUDIO.KOR-ENG.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA\nSquid.Game.S01E01.Red.Light.Green.Light.DUAL-AUDIO.KOR-ENG.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv\n👤 28 💾 849.58 MB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇰🇷",
+      "infoHash": "0c05091febcd38d8184158c4748617fdb7cdd7be",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|0c05091febcd38d8184158c4748617fdb7cdd7be",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.DUAL-AUDIO.KOR-ENG.1080p.10bit.WEBRip.6CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / Серии: 1-9 из 9 [2021 WEB-DL 1080p] DVO (Softbox) + Original\nSquid.Game.S01E01.mkv\n👤 23 💾 1.84 GB ⚙️ Rutracker\n🇷🇺 / 🇰🇷",
+      "infoHash": "00151703c2f3740e9705b684d546429edd0b6a53",
+      "fileIdx": 5,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|00151703c2f3740e9705b684d546429edd0b6a53",
+        "filename": "Squid.Game.S01E01.mkv"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:00151703c2f3740e9705b684d546429edd0b6a53",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Игра в кальмара / Шестой раунд / Ojingeo geim / Squid Game [S01] (2021) WEB-DL 1080p | HDrezka Studio\nSquid.Game.S01E01.Red.Light.Green.Light.mkv\n👤 15 💾 2.26 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "4f08a3d16ce20806bff52a79a942dfb1b1550b97",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4f08a3d16ce20806bff52a79a942dfb1b1550b97",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:4f08a3d16ce20806bff52a79a942dfb1b1550b97",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.COMPLETE.1080p.Multi-Audio.NF.10bit.DDP.5.1.x265.[HashMiner]\nSquid.Game.S01E01.Red.Light.Green.Light.1080p.10bit.DDP.5.1.x265.[HashMiner].mkv\n👤 14 💾 1.18 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇰🇷 / 🇮🇳",
+      "infoHash": "e85a169f933658178073b43daffec44a6e272541",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e85a169f933658178073b43daffec44a6e272541",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.1080p.10bit.DDP.5.1.x265.[HashMiner].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game (2021) S01 (1080p NF WEB-DL x265 10bit EAC3 5.1 Korean Silence) [QxR]\nSquid Game (2021) - S01E01 - Red Light, Green Light (1080p NF WEB-DL x265 Silence).mkv\n👤 13 💾 1.94 GB ⚙️ 1337x\n🇰🇷",
+      "infoHash": "9ae5801b8d8203f52a0a38580787a040bffcd55e",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|9ae5801b8d8203f52a0a38580787a040bffcd55e",
+        "filename": "Squid Game (2021) - S01E01 - Red Light, Green Light (1080p NF WEB-DL x265 Silence).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Sqid Game - Stagione 01 (2021 ITA) [COMPLETA] [Pir8][1080p]\nSquid.Game.1x01.Un.Due.Tre.Stella.iTALiAN.1080p.NFRip.AAC.x265-Pir8.mkv\n👤 12 💾 648.78 MB ⚙️ ilCorSaRoNeRo\n🇮🇹 / 🇰🇷",
+      "infoHash": "dfd62801236b5a244ac465abff06d18c55270470",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|dfd62801236b5a244ac465abff06d18c55270470",
+        "filename": "Squid.Game.1x01.Un.Due.Tre.Stella.iTALiAN.1080p.NFRip.AAC.x265-Pir8.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.COMPLETE.TRi-AUDiO.SPA-ENG-KOR.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-dem3nt3\nsquid.game.s01e01.tri-audio.spa-eng-kor.1080p.nf.web-dl.ddp5.1.atmos.h.264-dem3nt3.mkv\n👤 10 💾 2.94 GB ⚙️ 1337x\nMulti Audio / 🇬🇧 / 🇪🇸 / 🇰🇷",
+      "infoHash": "f093f206c17e4ce6e5e9f65c9759d18f7ffe68e2",
+      "fileIdx": 3,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|f093f206c17e4ce6e5e9f65c9759d18f7ffe68e2",
+        "filename": "squid.game.s01e01.tri-audio.spa-eng-kor.1080p.nf.web-dl.ddp5.1.atmos.h.264-dem3nt3.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game (2021) Season 1 S01 + Extras (1080p NF WEB-DL x265 HEVC 10bit EAC3 5.1 Korean SAMPA) [QxR]\nSquid Game (2021) - S01E01 - Red Light, Green Light (1080p RED WEB-DL x265 SAMPA).mkv\n👤 9 💾 1.37 GB ⚙️ TorrentGalaxy\n🇰🇷",
+      "infoHash": "b11955b3fa5575302fb6cefc0b96a4e38806309d",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b11955b3fa5575302fb6cefc0b96a4e38806309d",
+        "filename": "Squid Game (2021) - S01E01 - Red Light, Green Light (1080p RED WEB-DL x265 SAMPA).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game S01 MULTi 1080p WEB AV1 E-AC-3 -Tsundere-Raws (NF) (VF FRENCH VOSTFR Multi-Audio)\nSquid Game S01E01 MULTi 1080p WEB AV1 E-AC-3 -Tsundere-Raws (NF).mkv\n👤 8 💾 2.29 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "infoHash": "32a5da4e2667412b29f6cd84299204e3a95c3b9e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|32a5da4e2667412b29f6cd84299204e3a95c3b9e",
+        "filename": "Squid Game S01E01 MULTi 1080p WEB AV1 E-AC-3 -Tsundere-Raws (NF).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.DUAL.1080p.WEBRip.x265-KONTRAST\nSquid.Game.S01E01.DUAL.1080p.WEBRip.x265-KONTRAST.mp4\n👤 7 💾 1.2 GB ⚙️ TorrentGalaxy\nDual Audio / 🇰🇷",
+      "infoHash": "6f3e3c9644ed0c96e7974da35c4a80cf0f35644a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6f3e3c9644ed0c96e7974da35c4a80cf0f35644a",
+        "filename": "Squid.Game.S01E01.DUAL.1080p.WEBRip.x265-KONTRAST.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.Complete.1080p.WEBRip.10bit.DDP5.1.x265-HODL\nSquid.Game.S01E01.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv\n👤 7 💾 1.01 GB ⚙️ TorrentGalaxy\n🇰🇷",
+      "infoHash": "488cd01d600b9191f26ac58a4932512be16393b7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|488cd01d600b9191f26ac58a4932512be16393b7",
+        "filename": "Squid.Game.S01E01.1080p.WEBRip.10bit.DDP5.1.x265-HODL.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game S01 [1080p Ita Eng Spa Kor 5.1 h265 MultiSubS][MirCrewRelease] byMe7alh\nSquid.Game.S01e01.Ita.Eng.Spa.Kor.5.1.1080p.h265.Multisub-Me7alh.mkv\n👤 7 💾 2.5 GB ⚙️ ilCorSaRoNeRo\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇪🇸 / 🇰🇷",
+      "infoHash": "7a9895d6514157eaf6de84552abc2258b9531582",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7a9895d6514157eaf6de84552abc2258b9531582",
+        "filename": "Squid.Game.S01e01.Ita.Eng.Spa.Kor.5.1.1080p.h265.Multisub-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game S01 KOREAN 1080p WEBRip x265-\nSquid.Game.S01E01.KOREAN.1080p.WEBRip.x265-RARBG[eztv.re].mp4\n👤 7 💾 952.69 MB ⚙️ EZTV\n🇰🇷",
+      "infoHash": "7b9e0599355e1adf3f3cbac9d0f741d1eaf8b6b2",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|7b9e0599355e1adf3f3cbac9d0f741d1eaf8b6b2",
+        "filename": "Squid.Game.S01E01.KOREAN.1080p.WEBRip.x265-RARBG[eztv.re].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.1080p.WEB.AAC.6CH.x265-LUMI\nSquid.Game.S01E01.1080p.WEB.AAC.6CH.x265-LUMI.mkv\n👤 7 💾 775.65 MB ⚙️ 1337x\n🇰🇷",
+      "infoHash": "8ee45c96ae58edbd5264526db1f7a26ab4c4a46f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|8ee45c96ae58edbd5264526db1f7a26ab4c4a46f",
+        "filename": "Squid.Game.S01E01.1080p.WEB.AAC.6CH.x265-LUMI.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid Game S01 1080p WebRip Multi AV1 Opus [AV1D]\nSquid Game S01E01.mkv\n👤 7 💾 431.29 MB ⚙️ 1337x\nMulti Audio / 🇰🇷",
+      "infoHash": "1bc579c5a65b9786c15b88d33f91a0c4b309f722",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1bc579c5a65b9786c15b88d33f91a0c4b309f722",
+        "filename": "Squid Game S01E01.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-TURG\nSquid.Game.S01E01.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-TURG.mkv\n👤 5 💾 2.61 GB ⚙️ TorrentGalaxy\n🇹🇷",
+      "infoHash": "e833ef1aa381c83ecdc5d37887b96073fb1e127a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e833ef1aa381c83ecdc5d37887b96073fb1e127a",
+        "filename": "Squid.Game.S01E01.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-TURG.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Squid.Game.S01-S03.(2021).1080p.WEBRip.HEVC.OPUS2.0\nSquid.Game.S01.(2021).1080p.WEBRIP.HEVC.OPUS2.0/Squid.Game.S01E01.(2021).1080p.WEBRIP.HEVC.OPUS2.0.mkv\n👤 4 💾 443.75 MB ⚙️ 1337x\n🇰🇷",
+      "infoHash": "095e1761ef99222f6bd11b9b87e3e04a1eec2c9b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|095e1761ef99222f6bd11b9b87e3e04a1eec2c9b",
+        "filename": "Squid.Game.S01E01.(2021).1080p.WEBRIP.HEVC.OPUS2.0.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Squid.Game.S01.COMPLETE.KOREAN.720p.NF.WEBRip.x264-GalaxyTV\nSquid.Game.S01E01.KOREAN.720p.NF.WEBRip.x264-GalaxyTV.mkv\n👤 69 💾 431.14 MB ⚙️ ThePirateBay\n🇰🇷",
+      "infoHash": "4063110de4169291bf2eee98c994ff91820c3498",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4063110de4169291bf2eee98c994ff91820c3498",
+        "filename": "Squid.Game.S01E01.KOREAN.720p.NF.WEBRip.x264-GalaxyTV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Squid.Game.S01.COMPLETE.DUBBED.720p.NF.WEBRip.x264-GalaxyTV\nSquid.Game.S01E01.DUBBED.720p.NF.WEBRip.x264-GalaxyTV.mkv\n👤 43 💾 431.14 MB ⚙️ ThePirateBay\nDubbed",
+      "infoHash": "da5b23c06326d2f79aeaba51ca9db62bcfd61633",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|da5b23c06326d2f79aeaba51ca9db62bcfd61633",
+        "filename": "Squid.Game.S01E01.DUBBED.720p.NF.WEBRip.x264-GalaxyTV.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Игра в кальмара / Ojingeo geim / Сезон: 1 / [9 из 9] [2021 WEB-DL 720p] MVO (LostFilm) + Original + Sub (Rus Eng Korean)\nSquid.Game.S01E01.WEBDL.720p.RGzsRutracker.mkv\n👤 37 💾 1.75 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇰🇷",
+      "infoHash": "d231d4684ba80b2d70c7d99102eaebb68e890564",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|d231d4684ba80b2d70c7d99102eaebb68e890564",
+        "filename": "Squid.Game.S01E01.WEBDL.720p.RGzsRutracker.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:d231d4684ba80b2d70c7d99102eaebb68e890564",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Squid.Game.S01.720p.ITA-KOR-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R\nSquid.Game.S01E01.Red.Light.Green.Light.720p.ITA-KOR-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R.mkv\n👤 11 💾 445.65 MB ⚙️ ilCorSaRoNeRo\nMulti Audio / 🇬🇧 / 🇮🇹 / 🇰🇷",
+      "infoHash": "ea6a0fa6a859054a4620a1c212ebfb6f74126d7c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|ea6a0fa6a859054a4620a1c212ebfb6f74126d7c",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.720p.ITA-KOR-ENG.MULTI.WEBRip.x265.AAC-V3SP4EV3R.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Squid.Game.S01.DUAL-AUDIO.KOR-ENG.720p.10bit.WEBRip.2CH.x265.HEVC-PSA\nSquid.Game.S01E01.Red.Light.Green.Light.DUAL-AUDIO.KOR-ENG.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv\n👤 8 💾 377.93 MB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇰🇷",
+      "infoHash": "896c3494365f1f706410fa9e4ae2fca55abd64f2",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|896c3494365f1f706410fa9e4ae2fca55abd64f2",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.DUAL-AUDIO.KOR-ENG.720p.10bit.WEBRip.2CH.x265.HEVC-PSA.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game [9/9] [2021 WEB-DLRip] [RAW] [720p] MVO (STEPonee)\nSquid.Game.2021.E01.MVO.STEPonee.mp4\n👤 5 💾 1.22 GB ⚙️ Rutracker\n🇷🇺 / 🇰🇷",
+      "infoHash": "e2bf65fdc01ba8218ac95bb2e7de309ad78a28a1",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e2bf65fdc01ba8218ac95bb2e7de309ad78a28a1",
+        "filename": "Squid.Game.2021.E01.MVO.STEPonee.mp4"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:e2bf65fdc01ba8218ac95bb2e7de309ad78a28a1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Squid.Game.S01E01.720p.WEB.H264-SYLiX\n👤 4 💾 1.38 GB ⚙️ ThePirateBay",
+      "infoHash": "25b3a68ac364856273d47878619b5c978cb460d7",
+      "fileIdx": 4,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|sylix",
+        "filename": "squid.game.s01e01.720p.web.h264-sylix.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / [9 из 9] [2021 WEB-DLRip] Dub (Пифагор)\nIgra_v_kalmara_S01_E01_2021_WEB-DLRip_by_Dalemake.avi\n👤 43 💾 725.82 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "6da1809dea873fa4d3cb7955ef0db76fceb9e806",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|6da1809dea873fa4d3cb7955ef0db76fceb9e806",
+        "filename": "Igra_v_kalmara_S01_E01_2021_WEB-DLRip_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:6da1809dea873fa4d3cb7955ef0db76fceb9e806",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / [9 из 9] [2021 WEB-DLRip] MVO (LostFilm)\nIgra_v_kalmara_S01_E01_2021_WEB-DLRip_LF_by_Dalemake.avi\n👤 31 💾 726.18 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "fd714f2e17c4ef191a7a86ffe86981435ddb9819",
+      "fileIdx": 6,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|fd714f2e17c4ef191a7a86ffe86981435ddb9819",
+        "filename": "Igra_v_kalmara_S01_E01_2021_WEB-DLRip_LF_by_Dalemake.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:fd714f2e17c4ef191a7a86ffe86981435ddb9819",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Шестой раунд / Ojingeo geim / Squid Game [S01] (2021) WEB-DLRip | Пифагор\nSquid Game.S01E01.avi\n👤 21 💾 741.36 MB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "b4c07e564e12586216bee1b0c100a1c9b1715751",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|b4c07e564e12586216bee1b0c100a1c9b1715751",
+        "filename": "Squid Game.S01E01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:b4c07e564e12586216bee1b0c100a1c9b1715751",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Ojingeo geim / Squid Game / Сезон: 1 / [9 из 9] [2021 WEB-DLRip-AVC] MVO (LostFilm)\nSquid Game (2021) S01E01 RGzsRutracker_ivanes.mkv\n👤 16 💾 838.94 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "bfed7817f5d7c794acadd1dfcb46856f7965648c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|bfed7817f5d7c794acadd1dfcb46856f7965648c",
+        "filename": "Squid Game (2021) S01E01 RGzsRutracker_ivanes.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:bfed7817f5d7c794acadd1dfcb46856f7965648c",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Шестой раунд / Ojingeo geim / Squid Game [S01] (2021) WEB-DLRip-AVC | HDrezka Studio\nSquid.Game.S01E01.Red.Light.Green.Light.mkv\n👤 12 💾 870.93 MB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "infoHash": "34f4b7d1e0aa0f3e872301b6b100e8f40fc1ff54",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|34f4b7d1e0aa0f3e872301b6b100e8f40fc1ff54",
+        "filename": "Squid.Game.S01E01.Red.Light.Green.Light.mkv"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:udp://opentor.org:2710",
+        "tracker:http://retracker.local/announce",
+        "dht:34f4b7d1e0aa0f3e872301b6b100e8f40fc1ff54",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Squid.Game.S01.FRENCH.WEBRip.Xvid-EXTREME\nSquid.Game.S01E01.FRENCH.WEBRip.Xvid-EXTREME.avi\n👤 10 💾 462.18 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "cb83373d0645cc49908a6a921ffa2853e9733d9a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|cb83373d0645cc49908a6a921ffa2853e9733d9a",
+        "filename": "Squid.Game.S01E01.FRENCH.WEBRip.Xvid-EXTREME.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Шестой раунд / Ojingeo geim / Squid Game [S01-03] (2021-2025) WEB-DLRip | LostFilm\nS01/Squid.Game.S01E01.avi\n👤 8 💾 726.18 MB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "e33b03e7c5022174b4f0430a441d1a7f03d5a4b1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|e33b03e7c5022174b4f0430a441d1a7f03d5a4b1",
+        "filename": "Squid.Game.S01E01.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:e33b03e7c5022174b4f0430a441d1a7f03d5a4b1",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Игра в кальмара / Шестой раунд / Ojingeo geim / Squid Game [S01] (2021) WEB-DLRip | HDrezka Studio\nSquid Game.S01.E01.WEB-DLRip.by.Сибиряк.avi\n👤 6 💾 852.81 MB ⚙️ Rutor\n🇷🇺 / 🇰🇷",
+      "infoHash": "03013a5937b9dcfcd17b0fe3e9f835adb3540259",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|03013a5937b9dcfcd17b0fe3e9f835adb3540259",
+        "filename": "Squid Game.S01.E01.WEB-DLRip.by.Сибиряк.avi"
+      },
+      "sources": [
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://retracker.local/announce",
+        "dht:03013a5937b9dcfcd17b0fe3e9f835adb3540259",
+        "tracker:udp://tracker.opentrackr.org:1337/announce",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.skynetcloud.site:6969/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://tracker.theoks.net:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.tryhackx.org:6969/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.peerfect.org:6969/announce",
+        "tracker:udp://tracker.opentrackr.com:6969/announce",
+        "tracker:udp://tracker.ilibr.org:6969/announce",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Squid Game Saison 1 FRENCH HDTV\nSquid.Game.S01E01.FRENCH.WEBRip.Xvid-EXTREME.avi\n👤 6 💾 462.18 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "04f37576242db12732a9e399ac435736a740bb28",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|04f37576242db12732a9e399ac435736a740bb28",
+        "filename": "Squid.Game.S01E01.FRENCH.WEBRip.Xvid-EXTREME.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Squid Game (2021-2025) Complete Series NETFLIX WebDL H265 Dual Audio EAC3 5.1 Multi Sub\nS01/Squid Game - 1X01 - Red Light, Green Light.mkv\n👤 4 💾 1002.49 MB ⚙️ 1337x\nMulti Subs / Dual Audio / 🇰🇷",
+      "infoHash": "3ee2057e84f3fb3daf226c44c04e76e37b3d2a4c",
+      "fileIdx": 13,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|3ee2057e84f3fb3daf226c44c04e76e37b3d2a4c",
+        "filename": "Squid Game - 1X01 - Red Light, Green Light.mkv"
+      }
+    }
+  ]
+}

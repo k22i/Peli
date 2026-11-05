@@ -1,0 +1,1340 @@
+{
+  "addon": "torrentio",
+  "config": "p2p",
+  "title": "m-cars",
+  "request": "https://torrentio.strem.fun/stream/movie/tt0317219.json",
+  "recordedAt": "2026-11-05T22:38:56.275Z",
+  "status": 200,
+  "ms": 61,
+  "streams": [
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Тачки / Cars [2006 UHD BDRemux 2160p HDR10 Dolby Vision] [Hybrid] Dub + DVO + 2x AVO + Ukr + Original (Eng) + Sub (Rus Ukr Eng)\n👤 113 💾 41.81 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "dd5b0502f943b4a1a7d0b424a0256184b58a14ea",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|10bit|DV|HDR",
+        "filename": "Тачки.2006.Hybrid.UHD.Blu-Ray.Remux.2160p.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:dd5b0502f943b4a1a7d0b424a0256184b58a14ea",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Cars.2006.2160p.UHD.BluRay.X265.10bit.HDR.TrueHD.7.1.Atmos-TERMiNAL\n👤 52 💾 15.27 GB ⚙️ RARBG",
+      "infoHash": "313e4dbaca4e38d513f81bce337b33460817404c",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "cars.2006.2160p.uhd.bluray.x265-terminal.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Cars (2006) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]\n👤 36 💾 8.87 GB ⚙️ 1337x",
+      "infoHash": "78f1fdfe3b4cd13d3a0319386864fed7e686c60a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|HDR",
+        "filename": "Cars (2006) (2160p BluRay x265 10bit HDR Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV",
+      "title": "Cars.2006.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR\n👤 33 💾 40.08 GB ⚙️ 1337x",
+      "infoHash": "1bb3a7bf985b205bc4bdcba8aac3f9687c1b8d71",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc|DV",
+        "filename": "Cars.2006.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.HYBRID.REMUX-FraMeSToR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Cars 2006.MULTi.UHD.Blu-ray.2160p.HDR.Atmos.7.1.HEVC-DDR\n👤 32 💾 19.92 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "41afa469fd014064dfebafceb352802cc011af25",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|HDR",
+        "filename": "Cars 2006.MULTi.UHD.Blu-ray.2160p.HDR.Atmos.7.1.HEVC-DDR.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR10+",
+      "title": "Cars - Motori ruggenti (2006) 2160p H265 BluRay Rip 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom\n👤 18 💾 5.18 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "de378c6a0d333c6295583151aa9eeaae939dcc8b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BRRip|h265|10bit|DV|HDR10+",
+        "filename": "Cars - Motori Ruggenti (2006) 2160p H265 10 bit DV HDR10+ ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Cars (2006) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ\n👤 17 💾 5.09 GB ⚙️ EXT\nMulti Audio / 🇫🇷",
+      "infoHash": "5f77c7a563bba1f2df22053d18ac34db7732838c",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit|HDR",
+        "filename": "Cars (2006) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "[PACK] Pixar Animation 4K UHD Collection (2160p HDR BDRip x265 10bit AC3) [4KLiGHT]\nCars (2006) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv\n👤 12 💾 5.09 GB ⚙️ 1337x\nMulti Audio / 🇬🇧 / 🇫🇷",
+      "infoHash": "5839f4ef665dcc00978d3fb017a62c52a20feeea",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BDRip|x265|10bit|HDR",
+        "filename": "Cars (2006) MULTi VFF 2160p 10bit 4KLight HDR BluRay AC3 5.1 x265-QTZ.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k DV | HDR",
+      "title": "Cars 2006 UHD BluRay 2160p HDR10 DV HEVC TrueHD Atmos 7.1 x265-E\n👤 9 💾 23.31 GB ⚙️ 1337x",
+      "infoHash": "bdf9c015fcf7bd025a94122575e75515e71e700f",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc|10bit|DV|HDR",
+        "filename": "Cars (2006).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Тачки / Cars (2006) UHD BDRemux 2160p от селезень | 4K | HDR | Лицензия\n👤 8 💾 39.68 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "192579eb00754b1ef76839586dffcdfb20a4edfc",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|HDR",
+        "filename": "Cars.2006.BDREMUX.2160p.HDR.seleZen.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:192579eb00754b1ef76839586dffcdfb20a4edfc",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n4k HDR",
+      "title": "Cars (2006) [2160p][UHD][HDR][BluRay][H.265][TrueHD Atmos][AC-3 Dubbing PL][Napisy PL]\n👤 7 💾 15.72 GB ⚙️ BestTorrents\n🇬🇧 / 🇵🇱",
+      "infoHash": "7e19e031cd534a164f25fb7e9a6fdd837f336ab4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|h265|HDR",
+        "filename": "Cars (2006) [2160p][UHD][HDR][BluRay][H.265][TrueHD Atmos][AC-3 Dubbing PL][Napisy PL].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Cars 2006 2160p BluRay\n👤 100 💾 5.25 GB ⚙️ YTS",
+      "infoHash": "189bf88e31c8f7d3246e3fe6fd40d1f4ce00ee3e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|x265|10bit",
+        "filename": "Cars.2006.2160p.4K.BluRay.x265.10bit.AAC5.1-[YTS.MX].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Cars.2006.2160p.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-FGT\n👤 8 💾 41.9 GB ⚙️ RARBG",
+      "infoHash": "503dffd0634cbb0988962e06106306bc7b06a038",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay REMUX|hevc",
+        "filename": "Cars.2006.2160p.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-FGT.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n4k",
+      "title": "Cars.2006.2160p.BluRay.HEVC.TrueHD.7.1.Atmos-TERMiNAL\n👤 5 💾 56.5 GB ⚙️ RARBG",
+      "infoHash": "b860d739b6ab7e4f7153451f2d53cbf9a0bce51c",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|4k|BluRay|hevc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Cars.2006.1080p.BDRip.10bit.HDR.x265.AC3-Webhiker\n👤 19 💾 3.02 GB ⚙️ ThePirateBay",
+      "infoHash": "cf2839a401df1d198f28ddf421da824e090e85a4",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x265|10bit|HDR",
+        "filename": "Cars.2006.1080p.BDRip.10bit.HDR.x265.AC3-Webhiker.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Тачки: Трилогия / Cars: Trilogy (2006-2017) UHD BDRip-HEVC 1080p | HDR | D\nCars (2006).mkv\n👤 13 💾 6.7 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "ffeb7612b5099b3efed1528d77c042bb480c8a86",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|hevc|HDR",
+        "filename": "Cars (2006).mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:ffeb7612b5099b3efed1528d77c042bb480c8a86",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p HDR",
+      "title": "Cars (2006) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY]\n👤 6 💾 3.15 GB ⚙️ 1337x",
+      "infoHash": "3766a1e1a9f01aea05925f68b86924f4d819972a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265|10bit|HDR",
+        "filename": "Cars (2006) (1080p DS4K BluRay x265 10-bit HDR AAC 7.1) [WeSLeY].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars.2006.1080p.BluRay.x264.AAC-ETRG\n👤 408 💾 1.71 GB ⚙️ ThePirateBay",
+      "infoHash": "ac667971a6e12ff895ab9a57ceae83b7e9e8e343",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тачки / Cars [2006 WEB-DL 1080p] [Open Matte] Dub (Невафильм) + DVO (Гланц и Королёва) + AVO (Королёв Гаврилов) + Sub (Rus Eng) + Original Eng\n👤 336 💾 7.43 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "4139fda3868d9831ad310660deab9ce2bc63f096",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Cars.2006.WEB-DL.OM.KP.1080p-SOFCJ.mkv"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:4139fda3868d9831ad310660deab9ce2bc63f096",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars (2006) (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]\nCars (2006) (1080p BluRay x265 10bit Tigole).mkv\n👤 102 💾 4.74 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹 / 🇩🇪",
+      "infoHash": "2f6456b0392431764346bc408777c5ef742c41c5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|hevc|10bit",
+        "filename": "Cars (2006) (1080p BluRay x265 10bit Tigole).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars 2006 1080p BluRay\n👤 100 💾 1.78 GB ⚙️ YTS",
+      "infoHash": "bee9b68b74f66881066968a58d4f7f08a797a75a",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Cars.2006.1080p.BluRay.x264-[YTS.AG].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars 2006 BluRay 1080p DDP 5 1 x264-hallowed\n👤 82 💾 7.06 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇫🇷 / 🇳🇱",
+      "infoHash": "8e474ffdd3ff61c58e24ed51127181e9d3a05589",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Cars 2006 BluRay 1080p DDP 5 1 x264-hallowed.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2006.Cars.1920x802.BDRip.x264.TrueHD.mkv\n👤 75 💾 15.61 GB ⚙️ ThePirateBay",
+      "infoHash": "a200be18e2d389cadc9246167434fe9555f5d113",
+      "fileIdx": 21,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2006.Cars.1920x802.BDRip.x264.TrueHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars 2006 1080p BluRay DD+ 5.1 x265-edge2020\n👤 43 💾 3.8 GB ⚙️ TorrentGalaxy",
+      "infoHash": "fb6b810ff48ce11810af62f080036ea4df73f264",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Cars.2006.1080p.BluRay.DDP.5.1.H.265-EDGE2020.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2024) BDRip 1080p\n2006.Cars.1920x802.BDRip.x264.TrueHD.mkv\n👤 35 💾 15.61 GB ⚙️ ThePirateBay",
+      "infoHash": "58733961d2672b8bcf08d928cee0ae96f4150fda",
+      "fileIdx": 26,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2006.Cars.1920x802.BDRip.x264.TrueHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars 1-2-3 Saga (2006-2011) 1080p H264 Ac3 5.1 Ita Eng Sub Ita Eng-MIRCrew\nCars - Motori ruggenti (2006) 1080p H264.mkv\n👤 34 💾 2.83 GB ⚙️ 1337x\n🇬🇧 / 🇮🇹",
+      "infoHash": "4cb85a2d0041dc901c6e531e0948c770b921ac4a",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h264",
+        "filename": "Cars - Motori ruggenti (2006) 1080p H264.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Cars.2006.1080p.BluRay.3D.AVC.TrueHD.5.1-PublicHD\n👤 33 💾 44.77 GB ⚙️ ThePirateBay",
+      "infoHash": "3f959a1ee770ac6cb94749f48a70292c69ec8dd1",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|avc"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars (2006) [1080p Ita Eng Spa 5.1 h265 SubS] byMe7alh [MIRCrew]\n👤 31 💾 3.59 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹 / 🇪🇸",
+      "infoHash": "5589df1f2e665001d270bed95b2c61d9ad67d1d9",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "Cars.2006.Ita.Eng.Spa.5.1.1080p.h265.SubS-Me7alh.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тачки / Cars (2006) BDRip 1080p | D\n👤 29 💾 4.37 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "21d066dcb4d7d3b3295cfbbab9b40cc3b60ee9f1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Cars.2006.BDRip.1080p.Rus.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:21d066dcb4d7d3b3295cfbbab9b40cc3b60ee9f1",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars 2006 1080p BluRay x265 DD 5 1-Pahe in\n👤 28 💾 2.71 GB ⚙️ ThePirateBay\n🇬🇧 / 🇪🇸 / 🇫🇷 / 🇸🇦 / 🇮🇩",
+      "infoHash": "e88071cff4f8a420ebe4a5c8e46a53232b71b4ad",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Cars 2006 1080p BluRay x265 DD 5 1-Pahe in.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars.2006.1080p.BluRay.x265-RARBG\n👤 26 💾 1.82 GB ⚙️ RARBG",
+      "infoHash": "a290d6e9555b6017eb98ab76aa248f3f82280c35",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x265",
+        "filename": "Cars.2006.1080p.BluRay.x265-RARBG.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Carros.1.2006.OPEN.MATTE.IMAX.1080p.WEB-DL.H264.AC3.5.1.DUAL-RICKSZ-BLUDV\n👤 23 💾 5.05 GB ⚙️ Comando\nDual Audio / 🇬🇧 / 🇵🇹",
+      "infoHash": "eb9ba6643f39b50fdadf8a98b65608671c71b6dd",
+      "fileIdx": 9,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Carros.2006.OPEN.MATTE.IMAX.1080p.WEB-DL.H264.AC3.5.1.DUAL-MLD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars - Motori ruggenti (2006) 1080p H265 BluRay Rip ita eng AC3 5.1 sub ita eng Licdom\n👤 17 💾 3.07 GB ⚙️ TorrentGalaxy\n🇬🇧 / 🇮🇹",
+      "infoHash": "7385c6184b73f97c4a79b8ba50478b348c3e5997",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|h265",
+        "filename": "Cars - Motori Ruggenti (2006) 1080p H265 ita eng AC3 5.1 sub ita eng Licdom.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тачки / Cars [2006 BDRip 1080p 120 FPS] Dub + Ukr Dub + Original Eng + Eng Chi Rus Ukr Sub\n👤 14 💾 21.15 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇨🇳 / 🇺🇦",
+      "infoHash": "dc82c590510cd7d05f5cbe2f4922fd2e05bfa0f1",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Cars - Blu-ray™ 120 FPS.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:dc82c590510cd7d05f5cbe2f4922fd2e05bfa0f1",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars 2006 Open Matte 1080p KP WEB-DL FLAC5 1 H 264-MUM\n👤 14 💾 7.55 GB ⚙️ ThePirateBay",
+      "infoHash": "606864238bb243426d76f1b83fbccb827084c678",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL|h264",
+        "filename": "Cars 2006 Open Matte 1080p KP WEB-DL FLAC5 1 H 264-MUM.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Тачки в 3Д / Cars 3D [2006 WEB-DL] Dub (Невафильм) + Original (Eng) + Sub Rus(Forced) Half SideBySide / Горизонтальная анаморфная стереопара\n👤 14 💾 4.51 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "6f39a7dbe910e63dc7d298d3a4935e9d48495895",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|WEB-DL",
+        "filename": "Тачки.1080p.3D.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:6f39a7dbe910e63dc7d298d3a4935e9d48495895",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars.2006.1080p-dual-lat.mp4\n👤 14 💾 1.87 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "ff194efbc7aa0ce58f90c6cf139dfdb81a6425b5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Cars.2006.1080p-dual-lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тачки / Cars [2006 Blu-ray Disc 1080p] Dub + Ukr Dub + Original Eng + Eng Chi Rus Ukr Sub\n👤 14 💾 27.39 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺 / 🇨🇳 / 🇺🇦",
+      "infoHash": "f79db072146e8ba49ed24a13b6905e1ad45027fd",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:f79db072146e8ba49ed24a13b6905e1ad45027fd",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars.3.2017.1080p-dual-lat.mp4\n👤 12 💾 1.64 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "3eb031a49c8a8cfec1a6e80f2e46644c57a8904d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Cars.3.2017.1080p-dual-lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Carros (2006) BDRip 1080p Dublado JohnL\n👤 12 💾 1.6 GB ⚙️ ThePirateBay\n🇵🇹",
+      "infoHash": "4fb7c82d0f3e8f7a1c790a5296de8af2be41240b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip",
+        "filename": "Carros (2006) 1080p Dublado JohnL.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Collection Disney Pixar 1937 à 2022 - 1080p H265 French VFF c3r153\n[086] Cars (2006).mkv\n👤 10 💾 3.04 GB ⚙️ ThePirateBay\n🇫🇷",
+      "infoHash": "e2fd41349c1de6ea461a18a9185e0d7301c22f81",
+      "fileIdx": 85,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|h265",
+        "filename": "[086] Cars (2006).mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Carros BluRay 1 (2006) 1080p Dublado JohnL\n👤 10 💾 1.6 GB ⚙️ Comando\n🇵🇹",
+      "infoHash": "83d0b800ee8eed868700cd6a1d013b9133712ec6",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay",
+        "filename": "Carros 1 (2006) 1080p Dublado JohnL.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars (2006) 1080p BluRay Multi AV1 Opus [AV1D]\n👤 8 💾 1.05 GB ⚙️ 1337x\nMulti Audio / 🇬🇧",
+      "infoHash": "8c795b47569693cfe807524c4ec55c5f7f6f45e5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|av1",
+        "filename": "Cars (2006) 1080p BluRay Multi AV1 Opus [AV1D].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The.2006.KOREAN.1080p.BluRay.H264.AAC-VXT\n👤 8 💾 2.29 GB ⚙️ ThePirateBay\n🇰🇷",
+      "infoHash": "33d7ce92abcf88c93dad1f1e65806b1b0e7f1c82",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|h264"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars.2006.1080P-Dual-Lat\n👤 7 💾 1.87 GB ⚙️ Cinecalidad\nDual Audio / 🇲🇽",
+      "infoHash": "93b0acf51f83ace295bbe73cf4fce6602d7269b7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p",
+        "filename": "Cars.2006.1080P-Dual-Lat.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "The Pixar-Disney Animations Collection (1995-2021) BDRip 1080p\n2006.Cars.1920x802.BDRip.x264.TrueHD.mkv\n👤 6 💾 15.61 GB ⚙️ ThePirateBay",
+      "infoHash": "52d497e454d04d8bfdca5d2181dbaa51fd27f3f7",
+      "fileIdx": 22,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "2006.Cars.1920x802.BDRip.x264.TrueHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p 3D",
+      "title": "Cars.2006.3D.MULTi.1080p.BluRay.x264-THREESOME\n👤 6 💾 5.45 GB ⚙️ ThePirateBay\nMulti Audio",
+      "infoHash": "10b564f2e50e20775e21cecae4358d4914e63292",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Cars.2006.3D.MULTi.1080p.BluRay.x264-THREESOME.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Тачки / Cars (2006) BDRip 1080p от Leonardo and Scarabey | Лицензия\n👤 6 💾 7.94 GB ⚙️ Rutor\n🇷🇺 / 🇺🇦",
+      "infoHash": "f326af97c20c0ddd279df5ebd938dcf237d48b72",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BDRip|x264",
+        "filename": "Тачки.2006.1080p.BluRay.x264-LEONARDO_[scarabey.org].mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:f326af97c20c0ddd279df5ebd938dcf237d48b72",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n1080p 3D HSBS",
+      "title": "Cars.3D.2006.1080p.BluRay.Half-SBS.x264-PublicHD\n👤 6 💾 10.21 GB ⚙️ 1337x",
+      "infoHash": "2799886ac4219d2b37204a7bc6abba6442762b82",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BluRay|x264",
+        "filename": "Cars.3D.2006.1080p.BluRay.Half-SBS.x264-PublicHD.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Auti.(2006).1080p.x265.4Mbps.6CH.224.crtani.film.hrvatski.sink\n👤 5 💾 3.58 GB ⚙️ 1337x\n🇭🇷",
+      "infoHash": "beecb4065df0f12eb2309463ecfa92d060f14fc5",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|x265",
+        "filename": "Auti - Cars (2006).mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Cars (2006) BRRiP 1080p x264 DD5.1 DUAL Audio EN NL Subs\n👤 5 💾 2.57 GB ⚙️ 1337x\nDual Audio / 🇬🇧 / 🇳🇱",
+      "infoHash": "c707e4e427be8308c1d22aa94786f018fa8d2408",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|BRRip|x264",
+        "filename": "Cars 2006 1080p.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n1080p",
+      "title": "Duologia Cars [MicroHD][1080 px][AC3 5.1-DTS-Castellano+Subs]\nCars1M1080.www.newpct.com.mkv\n👤 5 💾 7.42 GB ⚙️ MejorTorrent\n🇪🇸",
+      "infoHash": "9254f5ca47f0a61ca79a415a5e5ce635a6fe35b8",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|1080p|HDRip",
+        "filename": "Cars1M1080.www.newpct.com.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Тачки / Cars (2006) BDRip 720p от HQ-ViDEO\n👤 141 💾 4.7 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "1720eb06c7d2efa223f20914808ac96c0551ba34",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|x264",
+        "filename": "Tachki.2006.TRIPLE.BDRip.720p.x264.AC3.-HQ-ViDEO.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:1720eb06c7d2efa223f20914808ac96c0551ba34",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Cars (2006) 720p BrRip x264 - 600MB - YIFY\n👤 100 💾 601.71 MB ⚙️ ThePirateBay",
+      "infoHash": "532a821cd3e4a31594b661de2c9e8622546c4655",
+      "fileIdx": 2,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip|x264",
+        "filename": "Cars.2006.720p.BrRip.x264.YIFY.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Тачки / Cars [2006 BDRip 720p] Dub + Eng + Sub\n👤 76 💾 4.36 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "4385785cd12a14882a15aa6017f2423d8e588a3a",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BDRip|x264",
+        "filename": "Cars.2006.720p.BluRay.x264-Skazhutin.mkv"
+      },
+      "sources": [
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "dht:4385785cd12a14882a15aa6017f2423d8e588a3a",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "CARS.2006.BRrip.720p.Spanish.Audio Latino AC3-rucucu\n👤 17 💾 1.47 GB ⚙️ ThePirateBay\n🇪🇸 / 🇲🇽",
+      "infoHash": "73d27705d0141975613b5383bb394b29ad7db147",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BRRip"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Cars.2006.720p.BluRay.x264-ESiR [Pixar] [PublicHD]\n👤 7 💾 4.37 GB ⚙️ ThePirateBay",
+      "infoHash": "0125c3b8b72c2763581788ade9a0134b8edf3b16",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|x264",
+        "filename": "Cars.2006.720p.BluRay.x264-ESiR [PublicHD].mkv"
+      }
+    },
+    {
+      "name": "Torrentio\n720p",
+      "title": "Cars - 3 Movies Collection (2006-2017) 720p 10bit BluRay x265 HEVC [Hindi + English] ESub - Immortal\nCars (2006) 720p 10bit BluRay x265 HEVC [Org NF Hindi DDP 2.0 ~128Kbps + English DDP 2.0] ESub - Immortal.mkv\n👤 6 💾 1.48 GB ⚙️ EXT\n🇬🇧 / 🇮🇳",
+      "infoHash": "4ac1b4396085454fd875440fed33deb84c7fd92d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|720p|BluRay|hevc|10bit",
+        "filename": "Cars (2006) 720p 10bit BluRay x265 HEVC [Org NF Hindi DDP 2.0 ~128Kbps + English DDP 2.0] ESub - Immortal.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Movie 140 Dub Arabic Disney Pixar Dreamworks\nCars 2006/Cars[2006]DvDrip.avi\n👤 97 💾 698.9 MB ⚙️ ThePirateBay\n🇸🇦",
+      "infoHash": "acff768e727770068974bd731c71de28543f25db",
+      "fileIdx": 30,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Cars[2006]DvDrip.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тачки / Cars [2006 BDRip] Dub + Eng + Sub\nCars.2006.[dragomire]_rutracker.org.avi\n👤 72 💾 1.47 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "22aca9c5eedb93488ec64bda96118d7d2ff87251",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip",
+        "filename": "Cars.2006.[dragomire]_rutracker.org.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:22aca9c5eedb93488ec64bda96118d7d2ff87251",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Cars FRENCH DVDRIP 2006\n👤 57 💾 699.63 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "cac369ded60404ea3f80df3230532081151c694b",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "[ OxTorrent.com ] Cars.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Тачки / Cars [2006 WEBRip] [Open Matte] Dub + DVO (Гланц и Королёва) + AVO (Королёв) + Original Eng\nТачки (2006) WEBRip [Open Matte].avi\n👤 34 💾 2.19 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "132dac09d31161668bca10f67b5fe64bee598b71",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "Тачки (2006) WEBRip [Open Matte].avi"
+      },
+      "sources": [
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "dht:132dac09d31161668bca10f67b5fe64bee598b71",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Carros Cars 2006 DvdRip[Dublado]-MJD\n👤 19 💾 694.03 MB ⚙️ ThePirateBay\n🇵🇹",
+      "infoHash": "6a8448a3cd21d3bc101b14cb8a175ef2d19c1075",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "Carros Cars 2006 DvdRip[Dublado]-MJD.mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тачки / Cars (2006) BDRip-AVC | D\n👤 16 💾 1.46 GB ⚙️ Rutor\n🇬🇧 / 🇷🇺",
+      "infoHash": "fcdbe8a3c5feb2a9bdce6a0620123bb99a9df16d",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|avc",
+        "filename": "Cars_SD_barm.mkv"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:fcdbe8a3c5feb2a9bdce6a0620123bb99a9df16d",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEB-DL",
+      "title": "Тачки / Cars (2006) WEB-DLRip от Koenig | Open Matte | D P\n👤 13 💾 2.18 GB ⚙️ Rutor\n🇷🇺",
+      "infoHash": "2ee26d5eab22b7919c19afce2b2e9f07b4918a8e",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEB-DL",
+        "filename": "Cars.2006.Open.Matte.WEB-DLRip.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:2ee26d5eab22b7919c19afce2b2e9f07b4918a8e",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Тачки / Cars [2006 HDRip-AVC] Dub + Eng + Sub\n👤 13 💾 745.01 MB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+      "infoHash": "39aabf6429d76ac8825bc0e0a0ac13f8a148f8a0",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip|avc",
+        "filename": "Tachki.2006.HDRip-AVC.All.Films.mkv"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:39aabf6429d76ac8825bc0e0a0ac13f8a148f8a0",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nWEBRip",
+      "title": "Тачки / Cars (альтернативные титры) [2006 WEBRip]\n👤 11 💾 1.31 GB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "179c9a318cb59501a277e7a13015f59a7d388d27",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|WEBRip",
+        "filename": "The.Cars.2006.Extended.Cut.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:179c9a318cb59501a277e7a13015f59a7d388d27",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тачки / Cars [2006 BDRip] Dub + Ukr + rus Sub\nTachki.2006.DUAL.BDRip.XviD.AC3.-HELLYWOOD.avi\n👤 11 💾 2.18 GB ⚙️ Rutracker\nDual Audio / 🇷🇺 / 🇺🇦",
+      "infoHash": "3d599790d77604a441478f6ea12ab1f2685c46cd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Tachki.2006.DUAL.BDRip.XviD.AC3.-HELLYWOOD.avi"
+      },
+      "sources": [
+        "tracker:http://bt4.t-ru.org/ann?magnet",
+        "dht:3d599790d77604a441478f6ea12ab1f2685c46cd",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nBRRip",
+      "title": "Cars - Motori Ruggenti (2006).BRrip.XviD - Italian English.Ac3 -\n👤 10 💾 1.97 GB ⚙️ ThePirateBay\n🇬🇧 / 🇮🇹",
+      "infoHash": "59e9f0837777a3ae3482494ef0c19d51865e1964",
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BRRip|xvid"
+      }
+    },
+    {
+      "name": "Torrentio\nHDRip",
+      "title": "Тачки / Cars [2006 HDRip] Dub\n👤 9 💾 752.99 MB ⚙️ Rutracker\n🇷🇺",
+      "infoHash": "eeb44a39e33743565e1b9901408ecea8313f8ccd",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|HDRip",
+        "filename": "Тачки_745.avi"
+      },
+      "sources": [
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "dht:eeb44a39e33743565e1b9901408ecea8313f8ccd",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Walt Disney - Intégrale de 95 Animations de 1937 à 2007 DVDRIP AVI MPEG FR Diablo\nN° 086 - 2006 Walt Disney - Cars.avi\n👤 8 💾 697.08 MB ⚙️ Torrent9\n🇫🇷",
+      "infoHash": "241ea718ac48de9f205ee89cd3f8479e2d58dac4",
+      "fileIdx": 85,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip",
+        "filename": "N° 086 - 2006 Walt Disney - Cars.avi"
+      }
+    },
+    {
+      "name": "Torrentio\nDVDRip",
+      "title": "Cars 2006 OPEN MATTE MULTI DVDRip 10bit x265 AAC Hellsing989\n👤 7 💾 2.82 GB ⚙️ TorrentGalaxy\nMulti Audio / 🇬🇧",
+      "infoHash": "d763732f18e519ac84e318b29dfc34ef6b6d7848",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|DVDRip|x265|10bit",
+        "filename": "Cars.2006.OPEN.MATTE.MULTI.DVDRip.10bit.x265.AAC-Hellsing989.mkv"
+      }
+    },
+    {
+      "name": "Torrentio\nBluRay 3D HSBS",
+      "title": "Cars 2006 3D BluRay\n👤 6 💾 1.78 GB ⚙️ YTS",
+      "infoHash": "bc8973e7f59ab0444d2e7a90950b2f4fefc4a0d7",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BluRay|x264",
+        "filename": "Cars.2006.3D.HSBS.BluRay.x264-[YTS.AG].mp4"
+      }
+    },
+    {
+      "name": "Torrentio\nBDRip",
+      "title": "Тачки / Cars (2006) BDRip от HQ-ViDEO\nTachki.2006.DUAL.BDRip.XviD.AC3.HQ-Video.avi\n👤 5 💾 2.18 GB ⚙️ Rutor\nDual Audio / 🇬🇧 / 🇷🇺 / 🇺🇦",
+      "infoHash": "ced16d13d4acab22e75ba8480662b4386007276f",
+      "fileIdx": 1,
+      "behaviorHints": {
+        "bingeGroup": "torrentio|BDRip|xvid",
+        "filename": "Tachki.2006.DUAL.BDRip.XviD.AC3.HQ-Video.avi"
+      },
+      "sources": [
+        "tracker:http://retracker.local/announce",
+        "tracker:udp://opentor.org:2710",
+        "dht:ced16d13d4acab22e75ba8480662b4386007276f",
+        "tracker:udp://open.stealth.si:80/announce",
+        "tracker:udp://tracker.torrent.eu.org:451/announce",
+        "tracker:udp://open.demonii.com:1337/announce",
+        "tracker:udp://exodus.desync.com:6969/announce",
+        "tracker:udp://open.tracker.cl:1337/announce",
+        "tracker:udp://tracker.qu.ax:6969/announce",
+        "tracker:udp://explodie.org:6969/announce",
+        "tracker:udp://tracker-udp.gbitt.info:80/announce",
+        "tracker:udp://retracker01-msk-virt.corbina.net:80/announce",
+        "tracker:udp://tracker.ducks.party:1984/announce",
+        "tracker:udp://tracker.dler.org:6969/announce",
+        "tracker:http://tracker.dler.com:6969/announce",
+        "tracker:udp://tracker2.dler.org:80/announce",
+        "tracker:udp://tracker.nyaa.vc:6969/announce",
+        "tracker:http://tracker.renfei.net:8080/announce",
+        "tracker:udp://tracker.gmi.gd:6969/announce",
+        "tracker:udp://tracker.farted.net:6969/announce",
+        "tracker:http://t.overflow.biz:6969/announce",
+        "tracker:http://bittorrent-tracker.e-n-c-r-y-p-t.net:1337/announce",
+        "tracker:udp://tracker.004430.xyz:1337/announce",
+        "tracker:udp://opentor.net:6969",
+        "tracker:http://bt.t-ru.org/ann?magnet",
+        "tracker:http://bt2.t-ru.org/ann?magnet",
+        "tracker:http://bt3.t-ru.org/ann?magnet",
+        "tracker:http://bt4.t-ru.org/ann?magnet"
+      ]
+    },
+    {
+      "name": "Torrentio",
+      "title": "Disney Collection 1937-2008\nCars (2006).m4v\n👤 33 💾 484.24 MB ⚙️ MagnetDL",
+      "infoHash": "694effefbad374fbff0d64485774b87ea9126bd1",
+      "fileIdx": 21,
+      "behaviorHints": {
+        "filename": "Cars (2006).m4v"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Barnfilmer\nBilar (2006).avi\n👤 12 💾 1.36 GB ⚙️ ThePirateBay",
+      "infoHash": "175eac2468d0622246ee1c284fc2471b2ad72948",
+      "fileIdx": 79,
+      "behaviorHints": {
+        "filename": "Bilar (2006).avi"
+      }
+    },
+    {
+      "name": "Torrentio",
+      "title": "Cars 2006 RUS [hamXa-buTT] Avi\n👤 8 💾 1.45 GB ⚙️ MagnetDL\n🇷🇺",
+      "infoHash": "e2e79103f270c1aefb62ac13878453efe2ceea61",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "filename": "Cars.2006__[scarabey.org].avi"
+      }
+    }
+  ]
+}
