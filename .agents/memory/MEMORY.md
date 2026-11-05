@@ -49,3 +49,4 @@
 - [App shell](app-shell.md) — #114 floating glass sidebar, --sidebar-inset/--titlebar-h, bleed, visual nav order vs ⌘1–6, scroll-edge cover, window colour = --background, shot harness
 - [Home hero](home-hero.md) — #115 Hero size="feature" (bleed, fade under text), glass hero buttons, rowLinkClassName, arrow top, Card pill + timeLeft, Home wrapper
 - [Chip rail](chip-rail.md) — #116 ScrollRail/ChipRail, BrowseFrame sticky glass header, rail gutter + shrink-0 rules, 50-catalog screenshot rig
+- [Settings panes](settings-panes.md) — #120 panes.ts, ?section=, pane list/rail/group/row, last pane for ⌘,, settings-pill element, tests open a pane first

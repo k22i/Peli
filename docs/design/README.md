@@ -248,3 +248,26 @@ Chrome at 2× with the Go services stubbed (real Cinemeta catalogs and Metahub a
 | Gallery › Components: `ChipRail` with 50 chips | ![](rail-gallery-dark.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed. A local server stood in for the addons: one with 50 movie catalogs (Cinemeta data) and 12 stream addons, one of which answers 503 and one that is still pending.
+
+### Settings panes (#120)
+
+| | Before | After |
+|---|---|---|
+| Account, dark (before: the top of one long page with a table of contents) | ![](settings-before-account-dark.jpg) | ![](settings-pane-account-dark.jpg) |
+| Account, light | ![](settings-before-account-light.jpg) | ![](settings-pane-account-light.jpg) |
+| Playback, dark (before: the Playback section scrolled into view, with Subtitles and the torrent rows in the same list) | ![](settings-before-playback-dark.jpg) | ![](settings-pane-playback-dark.jpg) |
+
+| | |
+|---|---|
+| Playback, light | ![](settings-pane-playback-light.jpg) |
+| Addons & content, dark | ![](settings-pane-content-dark.jpg) |
+| Languages & subtitles, dark | ![](settings-pane-languages-dark.jpg) |
+| Streaming, dark (torrent streaming on, so the cache row shows) | ![](settings-pane-streaming-dark.jpg) |
+| Tracking, dark (SIMKL connected, AniList not; the lead paragraph is the old "SIMKL and AniList" row) | ![](settings-pane-tracking-dark.jpg) |
+| Appearance, dark | ![](settings-pane-appearance-dark.jpg) |
+| Privacy, dark | ![](settings-pane-privacy-dark.jpg) |
+| About, dark | ![](settings-pane-about-dark.jpg) |
+| Narrow window (640×900), dark: the pane list becomes a chip rail | ![](settings-pane-narrow-dark.jpg) |
+| …light | ![](settings-pane-narrow-light.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed; the narrow shots are 640×900. The pane list is `SettingsPaneList` (`components/settings/settings-section.tsx`): icon tiles, a `data-settings-pill` element behind the current item, arrow keys with a single Tab stop. Below `md` it is a `ChipRail`.
