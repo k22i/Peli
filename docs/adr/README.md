@@ -51,5 +51,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0045](0045-anime-from-anilist.md) | Anime from AniList: a built-in addon, kept on the device, and anime out of Movies and Shows | 2026-11-05 |
 | [0046](0046-redesign-glass-and-floating-chrome.md) | Redesign: four glass tiers in CSS, floating chrome, Apple TV × Music layout with Sinag's own identity | 2026-11-05 |
 | [0048](0048-stream-preferences.md) | Stream preferences: device settings for resolution cap, HDR and Dolby Vision, and an ordered audio language list on the profile | 2026-11-06 |
+| [0050](0050-anime-episode-map.md) | Anime episode map: the Kitsu addon's season and absolute numbers, asked beside the details, judged in the fake checks | 2026-11-06 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).
