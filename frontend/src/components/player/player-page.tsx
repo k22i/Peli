@@ -1377,12 +1377,14 @@ function selectedId(tracks: Track[]): number {
 
 // The player's menus are dark over any theme, like the rest of its chrome,
 // on the regular glass tier (the menu popup's), and open above the control
-// bar, clear of it.
+// bar, clear of it: the buttons sit 46 px under the bar's top edge (its
+// padding, the seek row, the gap and the Play button's extra height), and the
+// menu stands 12 px above the bar.
 const menuPopupClass =
   "dark max-w-80 rounded-2xl text-foreground before:rounded-[calc(var(--radius-2xl)-1px)]";
 function PlayerMenuPopup({ children }: { children: ReactNode }) {
   return (
-    <MenuPopup side="top" align="end" sideOffset={12} className={menuPopupClass}>
+    <MenuPopup side="top" align="end" sideOffset={46 + 12} className={menuPopupClass}>
       {children}
     </MenuPopup>
   );
