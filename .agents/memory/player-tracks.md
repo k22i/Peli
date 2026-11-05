@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-#62 (ADR-0039, "Tracks and subtitles"): `LoadOptions` carries `audioLanguage`, `subtitleLanguage`, `captions` (on/off/system), `subtitleSize`. Build it with `loadOptions(start, settings, lastTracks)` in `lib/player.ts`; every `Player.Load` call site must use it. Go sets mpv properties before loadfile (captions off = forced-only via `subs-fallback=no`; on = `subs-fallback=yes` + `subs-fallback-forced=no`). `Service.SetAudioTrack/SetSubtitleTrack(0 = off)/SetSubtitleDelay/SetSubtitleSize`. State has `subtitleDelay` (rounded to ms: mpv stores a float32) and `subtitleSize`. Tracks have `forced` and `hearingImpaired`.
+#62 (ADR-0039, "Tracks and subtitles"): `LoadOptions` carries `audioLanguages` (a list since #98, [[stream-preferences]]), `subtitleLanguage`, `captions` (on/off/system), `subtitleSize`. Build it with `loadOptions(start, settings, lastTracks)` in `lib/player.ts`; every `Player.Load` call site must use it. Go sets mpv properties before loadfile (captions off = forced-only via `subs-fallback=no`; on = `subs-fallback=yes` + `subs-fallback-forced=no`). `Service.SetAudioTrack/SetSubtitleTrack(0 = off)/SetSubtitleDelay/SetSubtitleSize`. State has `subtitleDelay` (rounded to ms: mpv stores a float32) and `subtitleSize`. Tracks have `forced` and `hearingImpaired`.
 
 **Why:** #63 (addon subtitles), #65, #67 and #68 build on these menus and rules.
 

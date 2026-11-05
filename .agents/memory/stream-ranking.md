@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-The ranking engine (#51, ADR-0035) is `frontend/src/lib/ranking/`: `parseStream` → `judge` → `scoreStream` (all weights in `defaultWeights`) → `StreamEngine` (incremental `add`, `view`, `pinTop`, `takeChanges`), `rankStreams()` for a whole list. It runs in one shared Web Worker (`worker.ts`, `protocol.ts`); the page side is `RankingSession` (`ranker.ts`), falling back to the page when there's no `Worker` (jsdom). The picker uses `useRankedStreams(sources, ctx, prefs)` in `lib/streams.ts`; `titleContext()` builds ctx from meta + video id, `rankingPrefs()` from ProfileSettings.audioLanguage + `(dynamic-range: high)`.
+The ranking engine (#51, ADR-0035) is `frontend/src/lib/ranking/`: `parseStream` → `judge` → `scoreStream` (all weights in `defaultWeights`) → `StreamEngine` (incremental `add`, `view`, `pinTop`, `takeChanges`), `rankStreams()` for a whole list. It runs in one shared Web Worker (`worker.ts`, `protocol.ts`); the page side is `RankingSession` (`ranker.ts`), falling back to the page when there's no `Worker` (jsdom). The picker uses `useRankedStreams(sources, ctx, prefs)` in `lib/streams.ts`; `titleContext()` builds ctx from meta + video id, `rankingPrefs(profile, device, remembered)` from the audio language list and the device's cap/HDR/DV settings ([[stream-preferences]]).
 
 **Why:** #6 measured ~1,400 streams per Comet answer; the worker + 150-slices keep the page under a frame. The user wants our own code, no ranking library.
 
@@ -16,5 +16,5 @@ The ranking engine (#51, ADR-0035) is `frontend/src/lib/ranking/`: `parseStream`
 - Timing: `RANKING_TIMING=1 vp test run src/lib/ranking/timing.test.ts --silent=false` (V8). Vitest won't run under Bun; for JSC, copy that loop into a scratchpad Bun script (Bun resolves `@/` via frontend/tsconfig.json). Scripts in `frontend/scripts/` can't import `src/` (tsconfig.node TS6307).
 - Route tests that render the picker must mock `ProfileSettings` in `@bindings/store`; ranking lands a tick after a pill updates, so use `findBy…` for the summary.
 - `vitest` `bench` isn't exported from `vite-plus/test`.
-- Follow-ups (2026-10-30): #97 AllDebrid/Premiumize cache markers (P0, needs #54 keys), #98 resolution cap / HDR / DV / language-order settings, #99 title matching with TMDB translated titles (report-only until then), #100 anime episode map.
+- Follow-ups (2026-10-30): #97 AllDebrid/Premiumize cache markers (P0, needs #54 keys), #98 resolution cap / HDR / DV / language-order settings (done: [[stream-preferences]]), #99 title matching with TMDB translated titles (report-only until then), #100 anime episode map.
 - Related: [[stream-requests]], [[tmdb-key]], [[addon-protocol-client]].

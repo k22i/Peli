@@ -29,7 +29,7 @@ As #6 set it: **cached on debrid first, then quality, then a plausible size**. E
 
 **Likely fakes:** another season or episode, extras, a non-video file, a file too small for the runtime, the wrong year, or an episode for a film. **Suspicious** (shown, ranked 3,000 lower): too large for its source. A **title mismatch** is reported but moves nothing: #6 found it wrong 22 times out of 26 against English titles, since releases use localized ones. It should count, as suspicious, once the metadata gives translated titles (TMDB's `alternative_titles` and `translations`), measured on the corpus first.
 
-**Preferences** (`Prefs`): the profile's audio language (`ProfileSettings.audioLanguage`), and HDR when the display reports `(dynamic-range: high)`. Dolby Vision can't be detected from a webview, so it's off. The resolution isn't capped: a 4K encode still looks better on a 1440p or 1600p panel, and the cap needs a setting of its own. Both wait for that setting.
+**Preferences** (`Prefs`): the profile's audio language (`ProfileSettings.audioLanguage`), and HDR when the display reports `(dynamic-range: high)`. Dolby Vision can't be detected from a webview, so it's off. The resolution isn't capped: a 4K encode still looks better on a 1440p or 1600p panel, and the cap needs a setting of its own. Both wait for that setting. (Update, ADR-0048: #98 added the device settings for the cap, HDR and Dolby Vision, and the profile's audio languages became an ordered list.)
 
 ## One engine
 
