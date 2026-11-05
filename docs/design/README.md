@@ -457,3 +457,22 @@ Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta and Anime Ki
 | Player bar, dark | ![](type-player-bar-dark-before.jpg) | ![](type-player-bar-dark-after.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta answering for real; the library and Continue watching entries are stubbed, so the posters are the same in both columns. Before is the commit the ticket started from. The player bar sits over the Breaking Bad backdrop with a fake player state. The gallery's Type and Type in use sections show the whole scale.
+
+## #124 Motion
+
+Motion is CSS only (no library) and all of it is off under `prefers-reduced-motion`: the `--duration-*` tokens drop to 0 and the block in `index.css` removes every view-transition animation, so pages swap and pills jump.
+
+- **Press feedback.** coss `Button` scales to 0.97 on pointer-down (`motion-safe:active:scale-[0.97]`, `scale` in its transition at `--duration-fast`; `variant="link"` is excluded). Sidebar items, Settings panes and episode rows go to 0.99. Chips (0.95) and cards (0.98) already did.
+- **Sliding pills.** The active sidebar item and the active Settings pane draw their background in their own element (`span[data-slot="nav-pill"]`, `span[data-settings-pill]`) named `nav-pill` / `settings-pill`, so a route change glides it from the old item to the new one (`--duration-base`, `--ease-spring`, a few px of overshoot). The two lists are named too (`sidebar-nav`, `settings-nav`) and their groups sit above the pill's, otherwise the pill (opaque in light mode) would cover a label for the length of the glide. The sidebar reads the *resolved* location, not the one being navigated to, or the pill would move before the transition captures its old position.
+- **Directional pages.** `lib/nav-direction.ts` sets `<html data-nav>` in the router's `onBeforeLoad`: `forward` for a push into a title, folder or stream picker; `back` whenever the history index goes down (Back buttons, the browser, a popstate); `section` for everything else. `index.css` keys `::view-transition-new(content)` off it: `scale(0.985)` and `opacity 0` to normal over `--duration-slow` going deeper, `scale(1.015)` going back, and the unchanged 120 ms cross-fade between sections. The old page always fades out over `--duration-fast`. The attribute is not cleared: the pseudo-elements are styled after the update callback, and the next navigation replaces it.
+- **Popups.** Menu, context menu, select and tooltip already set `origin-(--transform-origin)` (the menu opens from its trigger's corner: `0px 244px` for the profile menu opening upward); dialogs grow from the centre on purpose. Sheets travel from their edge and leave the same way, because the starting and ending styles are one rule.
+- **Hover.** Card lift stays `ease-spring`. The hero's Play is solid white, so `brightness-110` would be a no-op there: it keeps its 90 % white hover, and the glass buttons keep the `before:` highlight from #115 (a `bg-white/*` on the element would replace the tint).
+
+| | |
+|---|---|
+| Going deeper, dark: Home to a title, caught 130 ms in (the new page scales in over the fading old one) | ![](124-forward-dark.jpg) |
+| Going back, light: the title to Home, 130 ms in (the new page comes in from 1.015) | ![](124-back-light.jpg) |
+| Nav pill, light: Home to Movies, 60 ms in (labels stay readable under the pill) | ![](124-nav-pill-light.jpg) |
+| Settings pill, dark: Account to Appearance | ![](124-settings-pill-dark.jpg) |
+
+Stills are single frames from Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta answering for real; there are no "before" shots, because the change is the movement. The recordings (opening a title and going back, the sections, the Settings panes) are MP4/GIF kept outside the repo. Checked by emulation in Chrome: with `prefers-reduced-motion: reduce` no view-transition animation is created at all and a pressed button's `scale` stays `none`; a second click 40 ms after the first navigates (nothing waits on an animation). The built app with macOS's Reduce motion setting has not been checked.

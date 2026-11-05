@@ -842,9 +842,9 @@
 /*
  * Sliding pills (#124): the active sidebar item's and Settings pane's
  * background are elements of their own, named so a route change glides them
- * from the old item to the new one. Their groups sit above the shell's, and
- * blend with multiply (the light pill is opaque) so labels still show through
- * while the pill passes over them.
+ * from the old item to the new one. Each pill's group sits above its panel's
+ * and below the list of labels (the sidebar's <nav> and the Settings pane
+ * list are named too), so a label is never covered while the pill passes.
  */
 ::view-transition-group(nav-pill),
 ::view-transition-group(settings-pill) {
@@ -853,9 +853,9 @@
   animation-timing-function: var(--ease-spring);
 }
 
-:root:not(.dark)::view-transition-image-pair(nav-pill),
-:root:not(.dark)::view-transition-image-pair(settings-pill) {
-  mix-blend-mode: multiply;
+::view-transition-group(sidebar-nav),
+::view-transition-group(settings-nav) {
+  z-index: 3;
 }
 
 /*

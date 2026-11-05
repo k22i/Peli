@@ -130,7 +130,10 @@ export function SettingsPaneList({
   const onClick = (event: MouseEvent) => onNavigate(event.detail === 0);
 
   return (
-    <nav aria-label="Settings panes" className={className}>
+    <nav
+      aria-label="Settings panes"
+      className={cn("[view-transition-name:settings-nav]", className)}
+    >
       <ul className="flex flex-col gap-0.5">
         {settingsPanes.map((pane) => {
           const active = pane.id === current;

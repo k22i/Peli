@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import type { KeyboardEvent, MouseEvent } from "react";
 
 import { ConnectionStatus } from "@/components/shell/connection-status";
@@ -48,7 +48,11 @@ const searchClass =
 // panel floating inset from the window's edges (#114). An icon rail below the
 // md breakpoint, with labels kept for screen readers and shown as tooltips.
 export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void }) {
-  const pathname = useLocation({ select: (location) => location.pathname });
+  // The page on screen, not the one being navigated to: the pill moves when
+  // the route commits, inside its view transition, so it glides (#124).
+  const pathname = useRouterState({
+    select: (state) => (state.resolvedLocation ?? state.location).pathname,
+  });
   const mac = currentPlatform() === "mac";
   // One Tab stop for the whole nav (roving tabindex): the current section, or
   // Home when the page isn't one of them (Settings, Addons).
@@ -111,7 +115,7 @@ export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void
         mac && "pt-11",
       )}
     >
-      <nav aria-label="Main" className="flex-1">
+      <nav aria-label="Main" className="flex-1 [view-transition-name:sidebar-nav]">
         <ul className="flex flex-col gap-1">{visualOrder.map(item)}</ul>
       </nav>
       <ConnectionStatus />
