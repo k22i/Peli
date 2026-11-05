@@ -28,7 +28,7 @@ export function SheetBackdrop({
   return (
     <SheetPrimitive.Backdrop
       className={cn(
-        "fixed inset-0 z-50 bg-black/32 backdrop-blur-sm transition-all duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-[-webkit-touch-callout:none]:absolute",
+        "fixed inset-0 z-50 bg-black/40 transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-[-webkit-touch-callout:none]:absolute",
         className,
       )}
       data-slot="sheet-backdrop"
@@ -54,6 +54,7 @@ export function SheetViewport({
         side === "top" && "grid grid-rows-[auto_1fr] pb-12",
         side === "left" && "flex justify-start",
         side === "right" && "flex justify-end",
+        "p-3",
         variant === "inset" && "sm:p-4",
         className,
       )}
@@ -85,17 +86,14 @@ export function SheetPopup({
       <SheetViewport side={side} variant={variant}>
         <SheetPrimitive.Popup
           className={cn(
-            "relative flex max-h-full min-h-0 w-full min-w-0 flex-col bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg/5 transition-[opacity,translate] duration-200 ease-in-out will-change-transform before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_1px_--theme(--color-black/4%)] data-ending-style:opacity-0 data-starting-style:opacity-0 max-sm:before:hidden dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
+            "relative flex max-h-full min-h-0 w-full min-w-0 flex-col rounded-3xl border bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg/5 transition-[opacity,translate] duration-200 ease-in-out will-change-transform before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-3xl)-1px)] before:shadow-[0_1px_--theme(--color-black/4%)] data-ending-style:opacity-0 data-starting-style:opacity-0 dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
             side === "bottom" &&
-              "row-start-2 border-t data-ending-style:translate-y-8 data-starting-style:translate-y-8",
-            side === "top" &&
-              "border-b data-ending-style:-translate-y-8 data-starting-style:-translate-y-8",
+              "row-start-2 data-ending-style:translate-y-8 data-starting-style:translate-y-8",
+            side === "top" && "data-ending-style:-translate-y-8 data-starting-style:-translate-y-8",
             side === "left" &&
-              "w-[calc(100%-(--spacing(12)))] max-w-md border-e data-ending-style:-translate-x-8 data-starting-style:-translate-x-8",
+              "w-[calc(100%-(--spacing(12)))] max-w-md data-ending-style:-translate-x-8 data-starting-style:-translate-x-8",
             side === "right" &&
-              "col-start-2 w-[calc(100%-(--spacing(12)))] max-w-md border-s data-ending-style:translate-x-8 data-starting-style:translate-x-8",
-            variant === "inset" &&
-              "before:hidden sm:rounded-2xl sm:border sm:before:rounded-[calc(var(--radius-2xl)-1px)] sm:**:data-[slot=sheet-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
+              "col-start-2 w-[calc(100%-(--spacing(12)))] max-w-md data-ending-style:translate-x-8 data-starting-style:translate-x-8",
             className,
           )}
           data-slot="sheet-popup"
@@ -105,7 +103,7 @@ export function SheetPopup({
           {showCloseButton && (
             <SheetPrimitive.Close
               aria-label="Close"
-              className="absolute end-2 top-2"
+              className="absolute end-4 top-4"
               render={<Button size="icon" variant="ghost" />}
               {...closeProps}
             >
@@ -148,8 +146,8 @@ export function SheetFooter({
 }): React.ReactElement {
   const defaultProps = {
     className: cn(
-      "flex flex-col-reverse gap-2 px-6 sm:flex-row sm:justify-end",
-      variant === "default" && "border-t bg-muted/72 py-4",
+      "flex flex-col-reverse gap-2 px-6 sm:flex-row sm:justify-end rounded-b-[calc(var(--radius-3xl)-1px)] *:data-[slot=button]:h-10 *:data-[slot=button]:px-[calc(--spacing(3.5)-1px)]",
+      variant === "default" && "border-t py-4",
       variant === "bare" &&
         "in-[[data-slot=sheet-popup]:has([data-slot=sheet-panel])]:pt-3 pt-4 pb-6",
       className,
@@ -170,7 +168,7 @@ export function SheetTitle({
 }: SheetPrimitive.Title.Props): React.ReactElement {
   return (
     <SheetPrimitive.Title
-      className={cn("font-bold font-heading text-xl leading-none", className)}
+      className={cn("font-heading text-heading", className)}
       data-slot="sheet-title"
       {...props}
     />

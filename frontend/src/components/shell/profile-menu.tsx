@@ -53,9 +53,18 @@ export function ProfileMenu() {
             className="hidden size-4 shrink-0 text-muted-foreground md:block"
           />
         </MenuTrigger>
-        <MenuPopup side="top" align="start" className="w-56">
+        <MenuPopup side="top" align="start" className="w-64">
           <MenuGroup>
-            <MenuGroupLabel>{profile.name}</MenuGroupLabel>
+            <MenuGroupLabel className="flex items-center gap-3 py-2 text-sm tracking-normal text-foreground normal-case">
+              <ProfileAvatar profile={profile} className="size-10 text-sm" />
+              <span className="flex min-w-0 flex-col">
+                <span className="truncate font-semibold">{profile.name}</span>
+                <span className="truncate text-meta font-normal text-muted-foreground">
+                  {statusLine(profile)}
+                </span>
+              </span>
+            </MenuGroupLabel>
+            <MenuSeparator />
             <SwitchProfileMenu currentId={profile.id} />
             {profile.kids ? (
               <MenuItem
@@ -108,6 +117,14 @@ export function ProfileMenu() {
       {parentDialog}
     </>
   );
+}
+
+// The header's second line: whose profile it is and how it syncs.
+function statusLine(profile: { kids: boolean; signedIn: boolean; sessionEnded: boolean }): string {
+  if (profile.kids) return "Kids profile";
+  if (profile.signedIn) return "Signed in to Nuvio";
+  if (profile.sessionEnded) return "Session ended";
+  return "Not signed in";
 }
 
 // Every profile on this device, the current one checked (#24). Picking one
