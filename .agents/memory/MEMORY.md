@@ -48,3 +48,4 @@
 - [Card sizes](card-sizes.md) — #113 1.5× cards (15rem/27rem), Artwork `use` + sharper(), Home rows capped at 10 + Browse all, memory numbers, deferred grid cache growth
 - [App shell](app-shell.md) — #114 floating glass sidebar, --sidebar-inset/--titlebar-h, bleed, visual nav order vs ⌘1–6, scroll-edge cover, window colour = --background, shot harness
 - [Home hero](home-hero.md) — #115 Hero size="feature" (bleed, fade under text), glass hero buttons, rowLinkClassName, arrow top, Card pill + timeLeft, Home wrapper
+- [Chip rail](chip-rail.md) — #116 ScrollRail/ChipRail, BrowseFrame sticky glass header, rail gutter + shrink-0 rules, 50-catalog screenshot rig

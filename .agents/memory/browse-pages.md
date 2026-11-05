@@ -16,3 +16,4 @@ Browse (#43, ADR-0027) is one `BrowsePage` (`components/browse/browse-page.tsx`)
 - Tests: `src/test/setup.ts` now forces `#content`'s computed `overflowY` to auto (jsdom doesn't expand Base UI's inline `overflow: scroll`), so a `PosterGrid` inside the real shell mounts cards. Cards still mount a tick later: use `findAllByRole`. `routes/browse.test.tsx`'s `serve()` keys by full URL for several addons.
 - Stubbed WebKit screenshots: the #42 Playwright harness + stubs (copy `pw/` and `stubs/` from an old scratchpad; add Kitsu to the store stub's addons) against `vp dev --config vite.stub.config.ts` on port 9398; live Cinemeta/Kitsu answer CORS fine.
 - Related: [[home-page]], [[virtualized-rows]], [[addon-protocol-client]], [[kids-profiles]].
+- #116: the catalog chips are a `ChipRail` in a sticky `BrowseFrame` header, see [[chip-rail]].

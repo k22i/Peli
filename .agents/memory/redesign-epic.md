@@ -20,3 +20,5 @@ On 2026-11-05 the user asked for a total redesign: more liquid glass, posters an
 **#113 status (2026-11-05):** built (see [[card-sizes]]), left open until `pnpm test` is run; commits 879f629, 13ef549, 59dec47 not pushed (Actions down).
 
 **#114 status (2026-11-05):** built (see [[app-shell]]), left open until `pnpm test` is run and the native sidebar is eyeballed; not pushed (Actions down).
+
+**#116 status (2026-11-05):** built (see [[chip-rail]]), left open until `pnpm test` is run; commits 5b7e3a5, ab39ca0 not pushed (Actions down).
