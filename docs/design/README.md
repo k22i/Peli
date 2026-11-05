@@ -1,29 +1,47 @@
 # Design system
 
-Sinag has one theme, in light and dark (#13; theme studio is cut). The direction: **Apple's** liquid glass (four tiers, below) and spring motion, **Vercel's** monochrome precision, **Nuvio's** poster-first, near-black cinema.
+Sinag has one theme, in light and dark (#13; theme studio is cut). Since the redesign (epic #110, [ADR-0046](../adr/0046-redesign-glass-and-floating-chrome.md)) its layout and materials come from **Apple TV and Apple Music on macOS 26**: a floating glass sidebar and a title bar that content scrolls under, big artwork (a tall billboard hero, shelves at 1.5× size, an episode row), chrome made of four glass tiers with scroll-edge blur instead of hairlines, glass buttons over artwork with Play solid, settings in panes, and a floating glass control bar in the player. It keeps **Sinag's own identity** (below) and **Vercel's** monochrome precision, and **Nuvio's** poster-first, near-black cinema.
 
-The living reference is the in-app gallery: **Settings › Design system** (`/gallery`). It shows every token and component in its states and measures contrast live.
+The living reference is the in-app gallery: **Settings › Design system** (`/gallery`). It shows every token and component in its states and measures contrast live: colour, contrast, type and "Type in use", shape and motion, the glass tiers (Materials), the shell, then the Hero, Rows, Cards, Buttons, Glass buttons, Chips and badges, Scroll rail, Player bar, Overlays, Skeletons, Stream picker and Long rows.
+
+## Sinag's identity (what we don't take from Apple)
+
+- **Colour:** the lagoon `--brand` (`#33b5e0` dark, `#0b6e94` light) is the only accent. Apple's pink, red and system blue never appear. Surfaces are neutral greys; dark mode is Nuvio's near-black cinema (`#0a0a0b`).
+- **Type:** Mona Sans for UI and headings, Geist Mono for numbers and codes. No SF Pro and no `system-ui` look.
+- **Shape:** the radius scale (`--radius: 0.75rem`), the poster-first layout and the card lift on hover.
+- **Copy:** Sinag's section names: Home, Movies, Shows, Anime, Search, Library. No "Up Next", "Watch Now" or "Listen Now".
+- **No tricks that don't ship:** no SVG refraction filters (`backdrop-filter: url()` fails in WKWebView and is slow in WebView2), no native window vibrancy, no animation library. "Liquid glass" here is blur, saturation, a specular edge and a soft highlight.
 
 ## Where things live
 
 | What | Where |
 |---|---|
-| Tokens: colour, type, spacing, radius, elevation, motion | `frontend/src/index.css` (`:root` light, `.dark` dark, the `@theme` blocks) |
+| Tokens: colour, type, spacing, radius, elevation, motion, card sizes | `frontend/src/index.css` (`:root` light, `.dark` dark, the `@theme` blocks) |
 | Light/dark: OS by default, System/Light/Dark override | `frontend/src/lib/theme.ts`, the inline script in `frontend/index.html`, the window colour in `main.go` |
 | WCAG AA checks for every colour pairing | `frontend/src/lib/contrast.ts` (`contrastPairs`), `contrast.test.ts` |
 | Base components (button, dialog, sheet, toast, skeleton, toggle, badge, menu, tooltip…) | coss ui, `frontend/src/components/ui` (add more with `pnpm dlx shadcn@4.21.4 add @coss/<name>`) |
 | Glass tiers, scroll edge, materialize motion | `frontend/src/index.css` (`@utility glass-*`, `scroll-edge-top`); `Ambient` in `frontend/src/components/media/ambient.tsx` |
-| Sinag's own: poster and landscape cards, row, poster grid, hero, chip, skeletons | `frontend/src/components/media` (rows and grids are virtualized, ADR-0025) |
+| Type scale | `frontend/src/index.css` (`--text-*` tokens and the `@utility text-*` blocks), `cn` in `frontend/src/lib/utils.ts` |
+| Shell: floating sidebar, title bar, window controls, `bleed` | `frontend/src/components/shell/`, `frontend/src/index.css` |
+| Sinag's own: poster and landscape cards, row, poster grid, hero, chip, `ScrollRail` / `ChipRail`, skeletons | `frontend/src/components/media` (rows and grids are virtualized, ADR-0025) |
+| Page frames: Browse header (`BrowseFrame`), settings panes, `FocusScreen` | `components/browse/browse-page.tsx`, `components/settings/settings-section.tsx`, `components/account/focus-screen.tsx` |
+| Motion: press scale, sliding pills, `data-nav` transitions | `frontend/src/index.css`, `frontend/src/lib/nav-direction.ts`, coss `Button` |
+| The gallery | `frontend/src/routes/gallery.tsx`, `frontend/src/components/gallery/` |
 
 ## Rules of thumb
 
-- **Colour:** surfaces are greys; the one accent is `--brand`, the "lagoon" (`#33b5e0` dark, `#0b6e94` light). Use it for focus, progress, selection and small highlights, never for large fills. coss's `--accent` is its hover tint, not the brand.
-- **Contrast:** a new foreground/background pairing goes into `contrastPairs`, so the test holds it to AA (4.5:1 text, 3:1 UI) in both modes. Keep colour tokens as hex so the test can read them.
-- **Glass:** pick a tier (below); don't hand-roll `backdrop-blur`. Never stack a light tier on another light tier. Over artwork or video use `glass-media` (icons) or `glass-media-strong` (text), which stay dark in both themes.
-- **Over artwork, stay dark:** the hero and the progress bar scope themselves with `.dark`, since artwork is dark in either theme.
-- **Type** (#112, option B · Semi-wide): Mona Sans for words, Geist Mono for numbers and codes only. Never pair `font-heading` with a `font-stretch-*` class: the utilities own family and width. `text-display` (hero, 112.5% width, 700, −0.03em), `text-title` (page title, 112.5%, 660, −0.02em, 2.25rem), `text-heading` (row heading, 100%, 640, −0.015em, 1.375rem), `text-body` (15px / 450 / 1.45, the page default), `text-item` (15px / 550: card captions, settings row labels, names), `text-caption` (13px: secondary lines, card meta), `text-label` (Mona Sans 12px / 600 / +0.06em, uppercase: eyebrows, `dt` labels, "Top pick"), `text-num` (Geist Mono, tabular: years, runtimes, `S2 · E5`, times, sizes, versions). Keep `text-sm` in dense controls (menus, chips, sidebar items). Words, even small uppercase ones, are never mono.
-- **Motion:** `ease-spring` for lifts and presses, `ease-smooth` for fades and travel, durations from `--duration-fast|base|slow`. Put movement behind `motion-safe:`; reduced motion zeroes the durations.
-- **Long lists:** use `Row` (inside a `RowGroup` when rows stack) and `PosterGrid`, which mount only the cards near the viewport, rather than mapping cards into a flex row. Gallery › Long rows has a 200-poster row, a 1,000-poster grid and a scroll test.
+- **Colour:** surfaces are greys; the one accent is `--brand` (see identity). Use it for focus, progress, selection and small highlights, never for large fills. coss's `--accent` is its hover tint, not the brand.
+- **Contrast:** a new foreground/background pairing goes into `contrastPairs`, so the test holds it to AA (4.5:1 text, 3:1 UI) in both modes. Keep colour tokens as hex so the test can read them. List a translucent background with the layers under it (`["background", "glass-regular", "muted"]`), never alone: a translucent token measured on its own reads as black.
+- **Glass:** pick a tier (Glass, below); don't hand-roll `backdrop-blur`. Never stack a light tier on another light tier. Over artwork or video use `glass-media` (icons) or `glass-media-strong` (text), which stay dark in both themes. A tier sets its own `background-color`: don't add `bg-*` to the same element, and never use `bg-popover` without one (it is translucent now).
+- **Chrome over content:** the sidebar, the title bar, sticky page headers and the player bar are glass that content scrolls under (Shell, below). Put `scroll-edge-top` on a sticky wrapper, not on a glass element. Sticky things inside `#content` offset themselves by `--titlebar-h`.
+- **Over artwork, stay dark:** the hero and the player scope themselves with `.dark`, since artwork is dark in either theme. Text over video is plain white, not muted white.
+- **Actions over artwork:** Play (or the main action) is solid; everything beside it is glass (`glass-media` over art, `glass` on the page via `glassButton`). Big actions are pills that press in (`pillButton`).
+- **Cards:** posters are 15rem and landscape stills 27rem, 1.5× what they were (`--container-poster`, `--container-landscape`; `cardRem` in `row.tsx` follows). The card size is one token; the height of everything else follows.
+- **Sideways lists:** one line of chips, source pills or cast is a `ScrollRail` (`ChipRail` for chips): the first item lines up with the page text, items scroll out to the window edge and fade, glass arrows show on hover, the wheel scrolls sideways. Children are `shrink-0`; the rail carries its own gutter, so put it outside a `px-gutter` wrapper. Never wrap chips into a block.
+- **Type** (#112, option B · Semi-wide): Mona Sans for words, Geist Mono for numbers and codes only. Never pair `font-heading` with a `font-stretch-*` class: the utilities own family and width. See Type, below.
+- **Motion:** `ease-spring` for lifts and presses, `ease-smooth` for fades and travel, durations from `--duration-fast|base|slow` (120, 220, 420 ms). Put movement behind `motion-safe:`; reduced motion zeroes the durations and removes the view-transition animations. See Motion, below.
+- **Accessibility settings:** every tier turns solid under `prefers-reduced-transparency` and gets a border under `prefers-contrast: more`; nothing may need blur to be readable. Reduced motion means no scale, slide or spring.
+- **Long lists:** use `Row` (inside a `RowGroup` when rows stack) and `PosterGrid`, which mount only the cards near the viewport, rather than mapping cards into a flex row. Home catalog rows show 10 titles and a "Browse all" link. Gallery › Long rows has a 200-poster row, a 1,000-poster grid and a scroll test.
 - **Focus:** every interactive element shows a ring in `--ring` (the brand), either its own `focus-visible:ring-*` or the global `:focus-visible` outline. Cards ring their artwork. The gallery test audits this.
 - **Window colour:** it is `--background`, because the content pane fills the window and the glass sidebar floats over it. If `--background` changes, update `windowColours` in `theme.ts` (a test checks it) and the colours in `main.go`.
 
@@ -48,6 +66,41 @@ Defined once in `index.css` (#111, [ADR-0046](../adr/0046-redesign-glass-and-flo
 
 Not done on purpose: SVG refraction (`backdrop-filter: url()` doesn't work in WKWebView and is slow in WebView2), native window vibrancy, and a motion library.
 
+
+## Type
+
+Mona Sans is a variable face with a width axis; Geist Mono is for numbers and codes. The scale is the user's pick of three specimens (#112, option B). Each `text-*` utility sets size, weight, tracking and line height (and, for the three big ones, family and `font-stretch`), so a page never writes `font-heading` or `font-stretch-*`.
+
+| Utility | Use | Spec |
+|---|---|---|
+| `text-display` | hero titles | 112.5% width · 700 · −0.03em · clamp 2.5–4.5rem |
+| `text-title` | page titles (and the gallery's section titles) | 112.5% · 660 · −0.02em · 2.25rem |
+| `text-heading` | row headings, big labels, PIN digits | 100% · 640 · −0.015em · 1.375rem |
+| `text-body` | synopses, settings, the page default (on `body`) | 15px · 450 · line height 1.45 |
+| `text-item` | card captions, settings row labels, names | 15px · 550 |
+| `text-caption` | secondary lines, card meta | 13px · line height 1.4 |
+| `text-label` | eyebrows, `dt` labels, "Top pick", menu group labels | Mona Sans 12px · 600 · +0.06em · uppercase |
+| `text-num` | years, runtimes, `S2 · E5`, times, sizes, versions, ids | Geist Mono · tabular |
+
+Keep `text-sm` in dense controls (menus, chips, sidebar items, the pane list); `text-meta` (12px) is left for tooltips and badges. Words, even small uppercase ones, are never mono. Two gotchas: a size token must not share a name with a colour token (`text-card` is coss's card colour, which is why the item token is `text-item`), and `cn` in `lib/utils.ts` registers the size tokens and `text-num` with tailwind-merge, so `text-title text-white` keeps both. A new `--text-*` token goes into that list too.
+
+## Cards, rails and the hero
+
+- **Cards at 1.5×** (#113): `PosterCard` and `LandscapeCard` size from `--container-poster` (15rem) and `--container-landscape` (27rem). Artwork goes through `lib/artwork-url.ts` (a sharper source for the bigger card) and `Artwork`'s `use`. The art lifts on hover and the focus ring wraps it. The Browse grid at this size holds a lot of decoded images in WebKit's cache while it is scrolled (a cache, not a leak; see #113 and #125).
+- **ScrollRail and ChipRail** (#116): the sideways line described under Rules of thumb. Browse's catalog chips, Library's type chips, the stream picker's source pills and the title page's cast use it. `BrowseFrame` is the page that carries it: a sticky header (title, filter row, rail row) that takes `glass` once stuck.
+- **Hero** (#115, #117, #119): `size="feature"` (Home) and `size="title"` (title pages) run full-bleed under the sidebar and title bar with an 8rem fade into the page; `compact` is the folder banner; the default size is an inset card in light mode. The title block offsets itself by `--sidebar-inset` plus the gutter.
+- **Glass buttons** (#115, #123): see Rules of thumb. Gallery › Glass buttons shows both kinds.
+- **Player bar** (#121): a `glass-media-strong` capsule over the video with the seek bar, plain white text and icons; every overlay is strong media glass too. Gallery › Player bar is a live sample.
+
+## Motion
+
+CSS only. All of it is off under `prefers-reduced-motion` (the durations go to 0 and the view-transition animations are removed). The record is in the #124 section below.
+
+- **Press feedback:** coss `Button` scales to 0.97 on pointer-down; sidebar items, Settings panes and episode rows to 0.99; chips 0.95, cards 0.98.
+- **Sliding pills:** the active sidebar item and Settings pane glide to the next one (`--duration-base`, `--ease-spring`).
+- **Directional pages:** `<html data-nav>` is `forward` (into a title, folder or picker), `back` (history index goes down) or `section`; `index.css` scales the new page in from 0.985, out from 1.015, or cross-fades.
+- **Popups** materialize (opacity, scale from .96, 6px blur) and leave the same way; sheets travel from their edge.
+
 ## Shell
 
 The shell (#114, `components/shell/`) is the app window's frame. The content pane (`#content`) fills the whole window and scrolls **under** two pieces of chrome: a floating `glass-thick` sidebar (a 15rem panel inset 0.5rem from the edges; a 4rem icon rail below `md`) and a title bar strip that is empty until the page is scrolled 4px, then shows `scroll-edge-top`. The shell root sets two variables, and the pane pads itself by them, so a page needs nothing:
@@ -59,22 +112,37 @@ Full-bleed artwork (the Home and title heroes, #115 and #117) uses the `bleed` u
 
 The sidebar lists Search (a field-like link, `⌘F`), Home, Movies, Shows, Anime, then Library. That is only how it looks: ⌘/Ctrl+1–6 still follow `sections.ts`, and the arrow keys follow what is on screen. The active item is `bg-brand-soft` with a brand icon. On macOS the panel keeps `pt-11` free for the traffic lights, which sit in its top-left corner. On Windows the caption buttons sit top-right on a `glass-thin` pill. Under reduced transparency the panel is the solid `--glass-solid`.
 
-## Screenshots
+## Gallery screenshots
+
+Refreshed in #125 from the stubbed frontend (Chrome at 1280×800, 2×): each shot scrolls the `/gallery` page to a section. The sidebar on the left is the real shell.
 
 | | Dark | Light |
 |---|---|---|
 | Overview | ![](gallery-dark-top.jpg) | ![](gallery-light-top.jpg) |
+| Contrast (measured live, all pairs pass) | ![](gallery-dark-contrast.jpg) | ![](gallery-light-contrast.jpg) |
+| Type: the scale | ![](gallery-dark-type.jpg) | ![](gallery-light-type.jpg) |
+| Materials: the glass tiers over artwork and the page | ![](gallery-dark-materials.jpg) | ![](gallery-light-materials.jpg) |
+| Shell: a mini window with `bleed` | ![](gallery-dark-shell.jpg) | ![](gallery-light-shell.jpg) |
 | Hero | ![](gallery-dark-hero.jpg) | ![](gallery-light-hero.jpg) |
-| Rows / components | ![](gallery-dark-rows.jpg) | ![](gallery-light-components.jpg) |
-| Contrast | ![](gallery-dark-contrast.jpg) | |
+| Rows (1.5× cards) | ![](gallery-dark-rows.jpg) | |
+| Cards at 1.5× | ![](gallery-dark-cards.jpg) | ![](gallery-light-cards.jpg) |
+| Glass buttons | ![](gallery-dark-glass-buttons.jpg) | ![](gallery-light-glass-buttons.jpg) |
+| Chips, `ChipRail` (50 catalogs) and badges | | ![](gallery-light-components.jpg) |
+| Scroll rail (cast) | ![](gallery-dark-rail.jpg) | ![](gallery-light-rail.jpg) |
+| Player bar | ![](gallery-dark-player-bar.jpg) | ![](gallery-light-player-bar.jpg) |
+| Stream picker | | ![](stream-picker-gallery-light.jpg) |
 
-The macOS app at launch in dark mode: ![](native-home-dark.jpg)
+Not refreshed: `native-home-dark.jpg`, the macOS app at launch, which still shows the look from before the redesign. Capturing the built app needs Screen Recording permission, which the run that refreshed these lacked. Retake it from the built app (`screencapture -l <window id>`) and replace the file.
 
-The gallery shots are from Chrome at 1280×800 (2×); the macOS one is the app window.
+Removed in #125, because they showed screens the redesign replaced and no ticket re-took them: `native-welcome-dark.jpg` (the built app's first run, now `welcome-dark.jpg` and `shell-native-welcome-dark.jpg`), `settings-signed-in-light.jpg`, `settings-session-ended-light.jpg` and `settings-profiles-light.jpg` (the old one-page Settings; the panes are under #120), `stream-picker-dark.jpg` (now `picker-dark-after.jpg`), `stream-picker-file-name-light.jpg`, `menu-switch-profile-dark.jpg` (now `popups-submenu-dark-after.jpg`) and `sign-out-dialog-dark.jpg` (now `popups-alert-dark-after.jpg`). Still in the record, marked where they appear: `menu-guest-dark.jpg` and `menu-session-ended-dark.jpg` (menus before #122 put them on glass) and `shell-native-welcome-dark.jpg` (the welcome screen before #123). Every `…-before` image is the old look on purpose.
+
+## Record, by ticket
+
+What each ticket changed, with its screenshots, kept as written. The sections run in order: the screens from before the redesign (#20–#24, #95, #52), then the redesign (#111–#124).
+
+**Before the redesign (#20–#24, #95, #52).**
 
 ### Welcome and sign-in (#20)
-
-First run, in the macOS app: ![](native-welcome-dark.jpg)
 
 | | |
 |---|---|
@@ -84,7 +152,7 @@ First run, in the macOS app: ![](native-welcome-dark.jpg)
 | Rate limited | ![](sign-in-rate-limited-dark.jpg) |
 | Nuvio returns a server error | ![](sign-in-nuvio-down-light.jpg) |
 
-These are from Chrome at 1000×618 (2×), with the Go services stubbed. Before there's a profile, the screens use the `focus` chrome: the title bar only, no sidebar.
+Chrome at 1000×618 (2×), with the Go services stubbed. Before there's a profile, the screens use the `focus` chrome: the title bar only, no sidebar.
 
 ### QR sign-in (#21)
 
@@ -100,11 +168,11 @@ The QR is black modules on a white tile in both themes (21:1), because phone cam
 
 | | |
 |---|---|
-| Signed in: Settings offers Sign out | ![](settings-signed-in-light.jpg) |
-| Sign out asks first | ![](sign-out-dialog-dark.jpg) |
+| Signed in: Settings › Account offers Sign out | ![](settings-pane-account-dark.jpg) |
+| Sign out asks first (the alert dialog, since #122) | ![](popups-alert-dark-after.jpg) |
 | The session ended (revoked or expired): at launch, or as soon as Go notices | ![](sign-in-session-ended-dark.jpg) |
-| After "Not now": the profile menu offers Sign in again | ![](menu-session-ended-dark.jpg) |
-| …and so does Settings, which still offers Sign out to remove the account's data | ![](settings-session-ended-light.jpg) |
+| After "Not now": the profile menu offers Sign in again (the menu as it was before #122 put it on glass) | ![](menu-session-ended-dark.jpg) |
+| …and so does Settings › Account, which still offers Sign out to remove the account's data | |
 
 Chrome at 1000×618 (2×), with the Go services stubbed.
 
@@ -113,7 +181,7 @@ Chrome at 1000×618 (2×), with the Go services stubbed.
 | | |
 |---|---|
 | First run: the welcome screen says what a guest keeps and that the Guest stays as it is | ![](welcome-guest-light.jpg) |
-| A guest's profile menu offers Sign in to Nuvio instead of Sign out | ![](menu-guest-dark.jpg) |
+| A guest's profile menu offers Sign in to Nuvio instead of Sign out (before #122 put menus on glass) | ![](menu-guest-dark.jpg) |
 | Signing in from the Guest: its profile stays apart from the account's ([ADR-0010](../adr/0010-guest-data-stays-apart.md)) | ![](sign-in-guest-dark.jpg) |
 
 Chrome at 1000×618 (2×), with the Go services stubbed.
@@ -124,8 +192,8 @@ Chrome at 1000×618 (2×), with the Go services stubbed.
 |---|---|
 | At launch with more than one profile: the last one used is focused, and Nuvio's avatars show on their colours | ![](profiles-dark.jpg) |
 | Offline, or before an image loads: initials on the profile's colour, the Guest on the lagoon brand ([ADR-0011](../adr/0011-profile-avatars-and-picker.md)) | ![](profiles-offline-light.jpg) |
-| The profile menu switches in place | ![](menu-switch-profile-dark.jpg) |
-| Settings › Profiles opens the picker | ![](settings-profiles-light.jpg) |
+| The profile menu switches in place | ![](popups-submenu-dark-after.jpg) |
+| Settings › Profiles opens the picker | |
 | The picker removes the Guest after asking | ![](profiles-remove-guest-dark.jpg) |
 | A guest on their own: the picker offers to sign in | ![](profiles-guest-only-light.jpg) |
 
@@ -150,11 +218,13 @@ Chrome at 1280×800 (2×), with the Go services stubbed. Avatar images are Nuvio
 
 | | |
 |---|---|
-| The top pick, played with **P**, then groups by quality; each stream told by its badges ([ADR-0036](../adr/0036-stream-picker.md)). Live answers from Torrentio and Peerflix, no debrid | ![](stream-picker-dark.jpg) |
-| A file name, shown only on request (the File name button, or **I**) | ![](stream-picker-file-name-light.jpg) |
+| The top pick, played with **P**, then groups by quality; each stream told by its badges ([ADR-0036](../adr/0036-stream-picker.md)); the redesigned picker is `picker-dark-after.jpg` under #122 | ![](picker-dark-after.jpg) |
+| A file name, shown only on request (the File name button, or **I**) | |
 | Gallery › Stream picker: cached on debrid (brand, with a bolt), not cached, and P2P | ![](stream-picker-gallery-light.jpg) |
 
-Chrome at 1280×800 (2×), with the Go services stubbed. The top pick's border and "Top pick" are `--brand` on `--card` (checked in `contrastPairs`).
+Chrome at 1280×800 (2×). The first shot is the picker as redesigned in #122 (the original from #52 was removed); the gallery one was retaken in #125. The top pick's border and "Top pick" are `--brand` on `--card` (checked in `contrastPairs`).
+
+**The redesign (#111–#124).**
 
 ### Glass materials (#111)
 
@@ -180,6 +250,23 @@ Chrome at 1280×800 and 1000×618 (2×); the dialog and menu pairs show the old 
 | C · Marquee: 125% heavy hero, mono eyebrows | ![](type-specimen-C-dark.jpg) |
 
 Dark, 1280 wide (2×). These were the specimens the user chose from (B won); the gallery now shows the final scale and a "Type in use" block instead of the switch. The sample block held a hero, a row with two captioned posters, a title-page block, a settings row and a player time readout. The shots come from a throwaway page that renders that block, since the full app needs the Go services. The Type rule above is B.
+
+### Typography, option B rolled out (#112)
+
+| | Before | After |
+|---|---|---|
+| Home, hero and Continue watching, dark | ![](type-home-dark-before.jpg) | ![](type-home-dark-after.jpg) |
+| Home, a row, scrolled, dark | ![](type-home-row-dark-before.jpg) | ![](type-home-row-dark-after.jpg) |
+| Home, light | ![](type-home-light-before.jpg) | ![](type-home-light-after.jpg) |
+| Title page, dark | ![](type-title-dark-before.jpg) | ![](type-title-dark-after.jpg) |
+| Title page, episodes, dark | ![](type-title-episodes-dark-before.jpg) | ![](type-title-episodes-dark-after.jpg) |
+| Title page, light | ![](type-title-light-before.jpg) | ![](type-title-light-after.jpg) |
+| Settings, Playback pane, dark | ![](type-settings-dark-before.jpg) | ![](type-settings-dark-after.jpg) |
+| Library, dark | ![](type-library-dark-before.jpg) | ![](type-library-dark-after.jpg) |
+| Search, dark | ![](type-search-dark-before.jpg) | ![](type-search-dark-after.jpg) |
+| Player bar, dark | ![](type-player-bar-dark-before.jpg) | ![](type-player-bar-dark-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta answering for real; the library and Continue watching entries are stubbed, so the posters are the same in both columns. Before is the commit the ticket started from. The player bar sits over the Breaking Bad backdrop with a fake player state. The gallery's Type and Type in use sections show the whole scale.
 
 ### Cards at 1.5× (#113)
 
@@ -208,9 +295,9 @@ Chrome at 1280×800 (2×). Posters are 15rem wide and landscape cards 27rem (`--
 | 900×700 keeps the full panel (`md` is 768), dark | ![](shell-narrow-dark.jpg) |
 | Windows: caption buttons on a glass pill, scrolled | ![](shell-windows-dark.jpg) |
 | Settings in the new shell (its nav sticks below the title bar) | ![](shell-settings-dark.jpg) |
-| The built macOS app on the welcome screen (focus chrome): traffic lights at the top-left, the window painted `--background` | ![](shell-native-welcome-dark.jpg) |
+| The built macOS app on the welcome screen (focus chrome; the screen itself is from before #123): traffic lights at the top-left, the window painted `--background` | ![](shell-native-welcome-dark.jpg) |
 
-Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta posters), and the platform forced to macOS or Windows. The scrolled shots show the title bar's scroll edge over the first row. The Home hero does not run under the glass yet: it uses `bleed` in #115.
+Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta posters), and the platform forced to macOS or Windows. The scrolled shots show the title bar's scroll edge over the first row. The Home hero did not run under the glass yet at this point; #115 moved it to `bleed`.
 
 ### Home hero and shelves (#115)
 
@@ -248,6 +335,92 @@ Chrome at 2× with the Go services stubbed (real Cinemeta catalogs and Metahub a
 | Gallery › Components: `ChipRail` with 50 chips | ![](rail-gallery-dark.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed. A local server stood in for the addons: one with 50 movie catalogs (Cinemeta data) and 12 stream addons, one of which answers 503 and one that is still pending.
+
+### Title page (#117)
+
+| | Before | After |
+|---|---|---|
+| Breaking Bad, top, dark | ![](title-series-top-dark-before.jpg) | ![](title-series-top-dark-after.jpg) |
+| …light | ![](title-series-top-light-before.jpg) | ![](title-series-top-light-after.jpg) |
+| Episodes, dark | ![](title-series-episodes-dark-before.jpg) | ![](title-series-episodes-dark-after.jpg) |
+| …light | ![](title-series-episodes-light-before.jpg) | ![](title-series-episodes-light-after.jpg) |
+| Cast and About, dark | ![](title-series-about-dark-before.jpg) | ![](title-series-about-dark-after.jpg) |
+| …light | ![](title-series-about-light-before.jpg) | ![](title-series-about-light-after.jpg) |
+| A film (The Shawshank Redemption), dark | ![](title-film-top-dark-before.jpg) | ![](title-film-top-dark-after.jpg) |
+| …light | ![](title-film-top-light-before.jpg) | ![](title-film-top-light-after.jpg) |
+| One Piece (Kitsu, 1,410 episodes in one season), scrolled to E230, dark | ![](title-anime-deep-dark-before.jpg) | ![](title-anime-deep-dark-after.jpg) |
+| …light | ![](title-anime-deep-light-before.jpg) | ![](title-anime-deep-light-after.jpg) |
+
+| | |
+|---|---|
+| Scrolled: the Episodes header sticks as a glass strip, the heading steps clear of the Back button, which has turned to regular glass, dark | ![](title-series-stuck-dark-after.jpg) |
+| …light | ![](title-series-stuck-light-after.jpg) |
+| Pointer over an episode: the glass play glyph on the still and the row's hover fill, dark | ![](title-series-hover-dark-after.jpg) |
+| …light | ![](title-series-hover-light-after.jpg) |
+| One Piece on Cinemeta (23 seasons plus specials): the season rail, centred on Season 14 and fading at both ends, dark | ![](title-anime-seasons-dark-after.jpg) |
+| …light | ![](title-anime-seasons-light-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta and Kitsu data and art over the network; the watched marks and the in-progress episode are made up in the stub). No TMDB key was available, so the cast is a stub too: real names and characters from each title's credits, with the generated gradient `Artwork` shows where there's no photo. Cinemeta and Kitsu have no episode stills for One Piece, so those rows show the same gradient. Before shots are from a clean checkout of the starting commit.
+
+`Hero size="title"` is the Home feature hero (full-bleed under the sidebar and title bar, the same scrims and fade) at `min-h-[min(72vh,40rem)]` with a `max-h-36` logo. Play is the solid white pill, Library and Watched are round `glass-media` icon buttons (`size-11`) with the same accessible names as the text buttons they replaced, and the IMDb rating is a `glass-media-strong` pill (it holds text). The Back button is `fixed` under the title bar and flips from `glass-media` to `glass` once an IntersectionObserver says the hero is above it. The Episodes header uses the Browse header's pattern: a sticky wrapper with `scroll-edge-top`, the inner row taking `glass` once stuck.
+
+### Library and Upcoming (#118)
+
+| | Before | After |
+|---|---|---|
+| Titles, dark (header: title and a segmented view switch, then the type rail and Sort in a sticky glass header; 1.5× cards) | ![](library-titles-dark-before.jpg) | ![](library-titles-dark-after.jpg) |
+| Titles, light | ![](library-titles-light-before.jpg) | ![](library-titles-light-after.jpg) |
+| Empty library, dark (larger icon, solid button) | ![](library-empty-dark-before.jpg) | ![](library-empty-dark-after.jpg) |
+| Empty library, light | ![](library-empty-light-before.jpg) | ![](library-empty-light-after.jpg) |
+| Upcoming, dark (glass day headers, `w-24` posters, time at the end) | ![](library-upcoming-dark-before.jpg) | ![](library-upcoming-dark-after.jpg) |
+| Upcoming, light | ![](library-upcoming-light-before.jpg) | ![](library-upcoming-light-after.jpg) |
+
+| | |
+|---|---|
+| Titles filtered to Shows, A–Z, dark: a show in progress adds "S2 · E5" to its year | ![](library-progress-dark-after.jpg) |
+| …light | ![](library-progress-light-after.jpg) |
+| Upcoming scrolled, dark: the page header has stuck and "Sunday" holds under it while "Tomorrow" slides beneath | ![](library-upcoming-scrolled-dark-after.jpg) |
+| …light | ![](library-upcoming-scrolled-light-after.jpg) |
+| Context menu on glass, dark | ![](library-menu-dark-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed and a local addon serving the episode dates (real Metahub posters). Before is a clean checkout of `5ee995c`.
+
+The header is Browse's `BrowseFrame` (exported from `components/browse/browse-page.tsx`, behaviour unchanged): the view switch is its `filter` slot and the chips with Sort are its `rail`. The switch is coss `Tabs` (so `?view=` and the tab roles stay) on a `glass-thin` pill with the active tab as a `bg-background shadow-card` knob. The Upcoming day headers are sticky at `--titlebar-h` plus the stuck header's height (3.375rem) plus 1rem, under the page header (`z-9` against its `z-10`). A row's end shows the air time only when the addon gives one (Cinemeta's plain dates are midnight UTC, so those rows have none); Later shows the date.
+
+### Search and Folder layouts (#119)
+
+Search takes Browse's sticky header (#116): the `h1` "Search" and a big glass field. Once the header is stuck the title is `sr-only` (the screen reader still has it) and the strip is just the field. The field is `h-14 rounded-2xl glass`, `max-w-3xl`, with a `size-5` magnifier, row-heading text, a round `glass-thin` clear button (`size-8`, refocuses the field) when there is text, and a `Kbd` "⌘F" (Ctrl+F elsewhere) while it is empty and not focused. Result rows are `gap-12`, and each heading names the addons that gave it ("Movies · Cinemeta", the addon muted; two addons read "A and B", more read "A +N"). Nothing stores earlier searches, so the empty state is a quiet prompt, not a recent-searches list.
+
+| | Before | After |
+|---|---|---|
+| Results, dark | ![](search-results-dark-before.jpg) | ![](search-results-dark.jpg) |
+| Results, light | ![](search-results-light-before.jpg) | ![](search-results-light.jpg) |
+
+| | |
+|---|---|
+| Empty, dark (the field is blurred, so the ⌘F hint shows) | ![](search-empty-dark.jpg) |
+| …light | ![](search-empty-light.jpg) |
+| Searching, dark (a local stand-in for Anime Kitsu answers late; Cinemeta's rows are already there) | ![](search-searching-dark.jpg) |
+| …light | ![](search-searching-light.jpg) |
+| Header stuck, dark (title hidden, field in the glass strip) | ![](search-stuck-dark.jpg) |
+| …light | ![](search-stuck-light.jpg) |
+
+The folder header follows the cover's shape. A landscape cover (or none) is a short banner: the `Hero` with `compact` (a new additive prop, `min-h-72`), no synopsis, the collection as its eyebrow, and the cover as its art (with no cover, the folder's backdrop, then the collection's, then the generated gradient). A poster or square cover stands at `w-56` beside the title block (`flex gap-8 items-end`) over an `Ambient` haze of its own colours that runs under the title bar and the sidebar. The grid below is the 1.5× `PosterGrid`.
+
+| | Before | After |
+|---|---|---|
+| Poster cover, dark (before: the backdrop with the cover as a small thumbnail in it) | ![](folder-poster-dark-before.jpg) | ![](folder-poster-dark.jpg) |
+| Poster cover, light | ![](folder-poster-light-before.jpg) | ![](folder-poster-light.jpg) |
+| Landscape cover, dark | ![](folder-banner-dark-before.jpg) | ![](folder-banner-dark.jpg) |
+
+| | |
+|---|---|
+| Landscape cover, light | ![](folder-banner-light.jpg) |
+| Square cover, dark | ![](folder-square-dark.jpg) |
+| …light | ![](folder-square-light.jpg) |
+| No cover, dark (the generated gradient) | ![](folder-nocover-dark.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta and Anime Kitsu answering for real. The folder covers are Metahub posters and a backdrop. The after shots of the poster and square covers were taken after the haze was moved to bleed to the window's edge.
 
 ### Settings panes (#120)
 
@@ -355,110 +528,7 @@ The screens before a profile is in use (the `focus` chrome) sit on `Ambient tone
 
 Every screenshot in the #20–#24 and #95 sections above has been re-taken under the same file name, apart from the ones that are another screen's: `native-welcome-dark.jpg` (the built app), the profile-menu shots (`menu-*`, #122) and the Settings ones (`settings-*`, #120). The sign-in shots are 1280×900 and the session-ended one 1280×1040, since the card is taller than the window; the rest are 1280×800 (2×). They come from a throwaway Vite config with the Go services stubbed and the platform forced to macOS, so the title bar is the real overlay strip. The avatars are drawn for the shots (simple faces on Nuvio's colours), not Nuvio's stock catalog, which needs its key. Contrast: the PIN key digits over thin-on-thick glass are in `contrastPairs` (14.5:1 and 9.5:1 in dark, 13.0 and 17.2 in light over black and white); muted text over the brightest point of the brand glow (brand at 18% over the page) is 5.9:1 in dark and 4.6:1 in light.
 
-### Library and Upcoming (#118)
-
-| | Before | After |
-|---|---|---|
-| Titles, dark (header: title and a segmented view switch, then the type rail and Sort in a sticky glass header; 1.5× cards) | ![](library-titles-dark-before.jpg) | ![](library-titles-dark-after.jpg) |
-| Titles, light | ![](library-titles-light-before.jpg) | ![](library-titles-light-after.jpg) |
-| Empty library, dark (larger icon, solid button) | ![](library-empty-dark-before.jpg) | ![](library-empty-dark-after.jpg) |
-| Empty library, light | ![](library-empty-light-before.jpg) | ![](library-empty-light-after.jpg) |
-| Upcoming, dark (glass day headers, `w-24` posters, time at the end) | ![](library-upcoming-dark-before.jpg) | ![](library-upcoming-dark-after.jpg) |
-| Upcoming, light | ![](library-upcoming-light-before.jpg) | ![](library-upcoming-light-after.jpg) |
-
-| | |
-|---|---|
-| Titles filtered to Shows, A–Z, dark: a show in progress adds "S2 · E5" to its year | ![](library-progress-dark-after.jpg) |
-| …light | ![](library-progress-light-after.jpg) |
-| Upcoming scrolled, dark: the page header has stuck and "Sunday" holds under it while "Tomorrow" slides beneath | ![](library-upcoming-scrolled-dark-after.jpg) |
-| …light | ![](library-upcoming-scrolled-light-after.jpg) |
-| Context menu on glass, dark | ![](library-menu-dark-after.jpg) |
-
-Chrome at 1280×800 (2×) with the Go services stubbed and a local addon serving the episode dates (real Metahub posters). Before is a clean checkout of `5ee995c`.
-
-The header is Browse's `BrowseFrame` (exported from `components/browse/browse-page.tsx`, behaviour unchanged): the view switch is its `filter` slot and the chips with Sort are its `rail`. The switch is coss `Tabs` (so `?view=` and the tab roles stay) on a `glass-thin` pill with the active tab as a `bg-background shadow-card` knob. The Upcoming day headers are sticky at `--titlebar-h` plus the stuck header's height (3.375rem) plus 1rem, under the page header (`z-9` against its `z-10`). A row's end shows the air time only when the addon gives one (Cinemeta's plain dates are midnight UTC, so those rows have none); Later shows the date.
-
-### Title page (#117)
-
-| | Before | After |
-|---|---|---|
-| Breaking Bad, top, dark | ![](title-series-top-dark-before.jpg) | ![](title-series-top-dark-after.jpg) |
-| …light | ![](title-series-top-light-before.jpg) | ![](title-series-top-light-after.jpg) |
-| Episodes, dark | ![](title-series-episodes-dark-before.jpg) | ![](title-series-episodes-dark-after.jpg) |
-| …light | ![](title-series-episodes-light-before.jpg) | ![](title-series-episodes-light-after.jpg) |
-| Cast and About, dark | ![](title-series-about-dark-before.jpg) | ![](title-series-about-dark-after.jpg) |
-| …light | ![](title-series-about-light-before.jpg) | ![](title-series-about-light-after.jpg) |
-| A film (The Shawshank Redemption), dark | ![](title-film-top-dark-before.jpg) | ![](title-film-top-dark-after.jpg) |
-| …light | ![](title-film-top-light-before.jpg) | ![](title-film-top-light-after.jpg) |
-| One Piece (Kitsu, 1,410 episodes in one season), scrolled to E230, dark | ![](title-anime-deep-dark-before.jpg) | ![](title-anime-deep-dark-after.jpg) |
-| …light | ![](title-anime-deep-light-before.jpg) | ![](title-anime-deep-light-after.jpg) |
-
-| | |
-|---|---|
-| Scrolled: the Episodes header sticks as a glass strip, the heading steps clear of the Back button, which has turned to regular glass, dark | ![](title-series-stuck-dark-after.jpg) |
-| …light | ![](title-series-stuck-light-after.jpg) |
-| Pointer over an episode: the glass play glyph on the still and the row's hover fill, dark | ![](title-series-hover-dark-after.jpg) |
-| …light | ![](title-series-hover-light-after.jpg) |
-| One Piece on Cinemeta (23 seasons plus specials): the season rail, centred on Season 14 and fading at both ends, dark | ![](title-anime-seasons-dark-after.jpg) |
-| …light | ![](title-anime-seasons-light-after.jpg) |
-
-Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta and Kitsu data and art over the network; the watched marks and the in-progress episode are made up in the stub). No TMDB key was available, so the cast is a stub too: real names and characters from each title's credits, with the generated gradient `Artwork` shows where there's no photo. Cinemeta and Kitsu have no episode stills for One Piece, so those rows show the same gradient. Before shots are from a clean checkout of the starting commit.
-
-`Hero size="title"` is the Home feature hero (full-bleed under the sidebar and title bar, the same scrims and fade) at `min-h-[min(72vh,40rem)]` with a `max-h-36` logo. Play is the solid white pill, Library and Watched are round `glass-media` icon buttons (`size-11`) with the same accessible names as the text buttons they replaced, and the IMDb rating is a `glass-media-strong` pill (it holds text). The Back button is `fixed` under the title bar and flips from `glass-media` to `glass` once an IntersectionObserver says the hero is above it. The Episodes header uses the Browse header's pattern: a sticky wrapper with `scroll-edge-top`, the inner row taking `glass` once stuck.
-
-## #119 Search and Folder layouts
-
-Search takes Browse's sticky header (#116): the `h1` "Search" and a big glass field. Once the header is stuck the title is `sr-only` (the screen reader still has it) and the strip is just the field. The field is `h-14 rounded-2xl glass`, `max-w-3xl`, with a `size-5` magnifier, row-heading text, a round `glass-thin` clear button (`size-8`, refocuses the field) when there is text, and a `Kbd` "⌘F" (Ctrl+F elsewhere) while it is empty and not focused. Result rows are `gap-12`, and each heading names the addons that gave it ("Movies · Cinemeta", the addon muted; two addons read "A and B", more read "A +N"). Nothing stores earlier searches, so the empty state is a quiet prompt, not a recent-searches list.
-
-| | Before | After |
-|---|---|---|
-| Results, dark | ![](search-results-dark-before.jpg) | ![](search-results-dark.jpg) |
-| Results, light | ![](search-results-light-before.jpg) | ![](search-results-light.jpg) |
-
-| | |
-|---|---|
-| Empty, dark (the field is blurred, so the ⌘F hint shows) | ![](search-empty-dark.jpg) |
-| …light | ![](search-empty-light.jpg) |
-| Searching, dark (a local stand-in for Anime Kitsu answers late; Cinemeta's rows are already there) | ![](search-searching-dark.jpg) |
-| …light | ![](search-searching-light.jpg) |
-| Header stuck, dark (title hidden, field in the glass strip) | ![](search-stuck-dark.jpg) |
-| …light | ![](search-stuck-light.jpg) |
-
-The folder header follows the cover's shape. A landscape cover (or none) is a short banner: the `Hero` with `compact` (a new additive prop, `min-h-72`), no synopsis, the collection as its eyebrow, and the cover as its art (with no cover, the folder's backdrop, then the collection's, then the generated gradient). A poster or square cover stands at `w-56` beside the title block (`flex gap-8 items-end`) over an `Ambient` haze of its own colours that runs under the title bar and the sidebar. The grid below is the 2× `PosterGrid`.
-
-| | Before | After |
-|---|---|---|
-| Poster cover, dark (before: the backdrop with the cover as a small thumbnail in it) | ![](folder-poster-dark-before.jpg) | ![](folder-poster-dark.jpg) |
-| Poster cover, light | ![](folder-poster-light-before.jpg) | ![](folder-poster-light.jpg) |
-| Landscape cover, dark | ![](folder-banner-dark-before.jpg) | ![](folder-banner-dark.jpg) |
-
-| | |
-|---|---|
-| Landscape cover, light | ![](folder-banner-light.jpg) |
-| Square cover, dark | ![](folder-square-dark.jpg) |
-| …light | ![](folder-square-light.jpg) |
-| No cover, dark (the generated gradient) | ![](folder-nocover-dark.jpg) |
-
-Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta and Anime Kitsu answering for real. The folder covers are Metahub posters and a backdrop. The after shots of the poster and square covers were taken after the haze was moved to bleed to the window's edge.
-
-## #112 Typography, option B rolled out
-
-| | Before | After |
-|---|---|---|
-| Home, hero and Continue watching, dark | ![](type-home-dark-before.jpg) | ![](type-home-dark-after.jpg) |
-| Home, a row, scrolled, dark | ![](type-home-row-dark-before.jpg) | ![](type-home-row-dark-after.jpg) |
-| Home, light | ![](type-home-light-before.jpg) | ![](type-home-light-after.jpg) |
-| Title page, dark | ![](type-title-dark-before.jpg) | ![](type-title-dark-after.jpg) |
-| Title page, episodes, dark | ![](type-title-episodes-dark-before.jpg) | ![](type-title-episodes-dark-after.jpg) |
-| Title page, light | ![](type-title-light-before.jpg) | ![](type-title-light-after.jpg) |
-| Settings, Playback pane, dark | ![](type-settings-dark-before.jpg) | ![](type-settings-dark-after.jpg) |
-| Library, dark | ![](type-library-dark-before.jpg) | ![](type-library-dark-after.jpg) |
-| Search, dark | ![](type-search-dark-before.jpg) | ![](type-search-dark-after.jpg) |
-| Player bar, dark | ![](type-player-bar-dark-before.jpg) | ![](type-player-bar-dark-after.jpg) |
-
-Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta answering for real; the library and Continue watching entries are stubbed, so the posters are the same in both columns. Before is the commit the ticket started from. The player bar sits over the Breaking Bad backdrop with a fake player state. The gallery's Type and Type in use sections show the whole scale.
-
-## #124 Motion
+### Motion (#124)
 
 Motion is CSS only (no library) and all of it is off under `prefers-reduced-motion`: the `--duration-*` tokens drop to 0 and the block in `index.css` removes every view-transition animation, so pages swap and pills jump.
 
@@ -476,3 +546,10 @@ Motion is CSS only (no library) and all of it is off under `prefers-reduced-moti
 | Settings pill, dark: Account to Appearance | ![](124-settings-pill-dark.jpg) |
 
 Stills are single frames from Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta answering for real; there are no "before" shots, because the change is the movement. The recordings (opening a title and going back, the sections, the Settings panes) are MP4/GIF kept outside the repo. Checked by emulation in Chrome: with `prefers-reduced-motion: reduce` no view-transition animation is created at all and a pressed button's `scale` stays `none`; a second click 40 ms after the first navigates (nothing waits on an animation). The built app with macOS's Reduce motion setting has not been checked.
+
+
+## #125 Docs and gallery refresh
+
+The README's intro and rules were rewritten for the redesign, the record sections above were put in ticket order (#111–#124), and the screenshots that no longer matched the app were removed or marked (see Gallery screenshots). The `/gallery` page gained **Glass buttons**, **Scroll rail** and **Player bar** sections (`components/gallery/glass-buttons.tsx`, `rail-sample.tsx`, `player-bar-sample.tsx`); its Hero and Cards copy now describes the redesign (the hero's secondary buttons are `glass-media-strong`, cards are 1.5×). The gallery screenshots in the table above were retaken in dark and light with the stubbed rig (no "before" set: the old ones were of the pre-redesign gallery and are replaced under the same names).
+
+One fix came out of it: the "Shortcut hint" pair in `contrastPairs` (the ⌘F `Kbd`: `--muted-foreground` on `--muted`) listed `--muted` alone as its background. `--muted` is translucent (`#0000000a` in light), so it was measured on black: 3.53:1 in light, and the gallery's live table showed it as a fail. It now lists `["background", "glass-regular", "muted"]` like the popup-nav pair, and measures 5.46:1 in light and 6.22:1 in dark.
