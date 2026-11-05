@@ -3,6 +3,7 @@ import { Link, createFileRoute, useNavigate, useRouter } from "@tanstack/react-r
 import { ArrowLeft, LogIn, LockKeyhole, QrCode } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { FocusScreen } from "@/components/account/focus-screen";
 import { SignInProblem, problemFor, type Problem } from "@/components/account/sign-in-problem";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -18,6 +19,7 @@ import {
   useSignIn,
 } from "@/lib/account";
 import { serverName, serverQuery } from "@/lib/server";
+import { cn } from "@/lib/utils";
 
 type SignInSearch = {
   // Why the app sent the user here: their session ended (#22).
@@ -30,6 +32,10 @@ export const Route = createFileRoute("/sign-in")({
     search["reason"] === "session-ended" ? { reason: "session-ended" } : {},
   component: SignIn,
 });
+
+// Fields and buttons in the card are a little taller and rounder than the
+// defaults. The input's height sits on the inner <input>.
+const fieldClass = "rounded-xl [&_input]:h-11 [&_input]:text-base [&_input]:leading-11";
 
 // Nuvio allows 10 sign-in attempts a second and says nothing about when to
 // retry (no Retry-After), so after a 429 the form waits this long.
@@ -101,82 +107,94 @@ function SignIn() {
   };
 
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center gap-8 px-6 py-12">
+    <FocusScreen className="max-w-md">
       <Button variant="ghost" size="sm" className="-ms-2.5 self-start" onClick={back}>
         <ArrowLeft />
         {sessionEnded ? "Not now" : "Back"}
       </Button>
 
-      <header className="flex flex-col gap-2">
-        <h1 className="font-heading text-title font-stretch-semi-expanded">
-          {own ? "Sign in to your server" : "Sign in to Nuvio"}
-        </h1>
-        <p className="text-pretty text-muted-foreground">
-          {own
-            ? `Use the email and password of your account on ${own}.`
-            : "Use the email and password of your Nuvio account."}
-          {hasGuest &&
-            " Your Guest profile stays on this computer as it is, apart from your Nuvio profiles."}
+      <div className="flex flex-col gap-8 glass-thick rounded-3xl p-8">
+        <header className="flex flex-col gap-2">
+          <h1 className="font-heading text-title font-stretch-semi-expanded">
+            {own ? "Sign in to your server" : "Sign in to Nuvio"}
+          </h1>
+          <p className="text-pretty text-muted-foreground">
+            {own
+              ? `Use the email and password of your account on ${own}.`
+              : "Use the email and password of your Nuvio account."}
+            {hasGuest &&
+              " Your Guest profile stays on this computer as it is, apart from your Nuvio profiles."}
+          </p>
+        </header>
+
+        {sessionEnded && (
+          <Alert variant="info">
+            <LogIn />
+            <AlertTitle>Your Nuvio session ended</AlertTitle>
+            <AlertDescription>
+              You were signed out on another device, or the session expired. Sign in again to keep
+              syncing. Your library and progress on this computer are kept.
+            </AlertDescription>
+          </Alert>
+        )}
+
+        <Form className="flex flex-col gap-5" errors={errors} onFormSubmit={submit}>
+          <Field name="email" className="items-stretch">
+            <FieldLabel>Email</FieldLabel>
+            <Input
+              type="email"
+              required
+              autoComplete="username"
+              spellCheck={false}
+              autoCapitalize="none"
+              className={fieldClass}
+            />
+            <FieldError />
+          </Field>
+          <Field name="password" className="items-stretch">
+            <FieldLabel>Password</FieldLabel>
+            <Input
+              type="password"
+              required
+              autoComplete="current-password"
+              className={fieldClass}
+            />
+            <FieldError />
+          </Field>
+
+          {problem && <SignInProblem problem={problem} />}
+
+          <Button
+            type="submit"
+            size="lg"
+            className="h-11 w-full rounded-xl text-base before:rounded-[calc(var(--radius-xl)-1px)] sm:h-11 sm:text-base"
+            loading={signIn.isPending}
+            disabled={cooldown.seconds > 0 || keychain.data != null}
+          >
+            {cooldown.seconds > 0 ? `Try again in ${cooldown.seconds} s` : "Sign in"}
+          </Button>
+        </Form>
+
+        {keychain.data == null && !own && (
+          <Link
+            to="/qr-sign-in"
+            replace
+            className={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "h-11 rounded-xl text-base before:rounded-[calc(var(--radius-xl)-1px)] sm:h-11 sm:text-base",
+            )}
+          >
+            <QrCode />
+            Sign in with your phone instead
+          </Link>
+        )}
+
+        <p className="flex gap-2 text-sm text-muted-foreground">
+          <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
+          Sinag doesn’t keep your password. Your session is stored in this computer’s keychain.
         </p>
-      </header>
-
-      {sessionEnded && (
-        <Alert variant="info">
-          <LogIn />
-          <AlertTitle>Your Nuvio session ended</AlertTitle>
-          <AlertDescription>
-            You were signed out on another device, or the session expired. Sign in again to keep
-            syncing. Your library and progress on this computer are kept.
-          </AlertDescription>
-        </Alert>
-      )}
-
-      <Form className="flex flex-col gap-5" errors={errors} onFormSubmit={submit}>
-        <Field name="email" className="items-stretch">
-          <FieldLabel>Email</FieldLabel>
-          <Input
-            type="email"
-            required
-            autoComplete="username"
-            spellCheck={false}
-            autoCapitalize="none"
-          />
-          <FieldError />
-        </Field>
-        <Field name="password" className="items-stretch">
-          <FieldLabel>Password</FieldLabel>
-          <Input type="password" required autoComplete="current-password" />
-          <FieldError />
-        </Field>
-
-        {problem && <SignInProblem problem={problem} />}
-
-        <Button
-          type="submit"
-          size="lg"
-          loading={signIn.isPending}
-          disabled={cooldown.seconds > 0 || keychain.data != null}
-        >
-          {cooldown.seconds > 0 ? `Try again in ${cooldown.seconds} s` : "Sign in"}
-        </Button>
-      </Form>
-
-      {keychain.data == null && !own && (
-        <Link
-          to="/qr-sign-in"
-          replace
-          className={buttonVariants({ variant: "outline", size: "lg" })}
-        >
-          <QrCode />
-          Sign in with your phone instead
-        </Link>
-      )}
-
-      <p className="flex gap-2 text-sm text-muted-foreground">
-        <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
-        Sinag doesn’t keep your password. Your session is stored in this computer’s keychain.
-      </p>
-    </div>
+      </div>
+    </FocusScreen>
   );
 }
 

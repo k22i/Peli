@@ -3,6 +3,7 @@ import { Link, createFileRoute, useNavigate, useRouter } from "@tanstack/react-r
 import { ArrowLeft, Lock, Pencil, Plus } from "lucide-react";
 import { useId, useState } from "react";
 
+import { FocusScreen, glassButton, pillButton } from "@/components/account/focus-screen";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import {
   DeleteProfileDialog,
@@ -15,6 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { toastManager } from "@/components/ui/toast";
 import { maxNuvioProfiles, profilesQuery, useSwitchProfile } from "@/lib/account";
 import { useCurrentProfile } from "@/lib/profile";
+import { cn } from "@/lib/utils";
 import type { Profile } from "@bindings/store";
 
 type Search = { manage?: boolean };
@@ -85,7 +87,7 @@ function Profiles() {
   const editable = (p: Profile) => !linked(p) || current.signedIn;
 
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center gap-10 px-6 py-12">
+    <FocusScreen className="max-w-4xl gap-10">
       {canGoBack && (
         <Button
           variant="ghost"
@@ -102,11 +104,11 @@ function Profiles() {
         {managing ? "Manage profiles" : "Who’s watching?"}
       </h1>
 
-      <ul aria-label="Profiles" className="flex flex-wrap justify-center gap-x-6 gap-y-8">
+      <ul aria-label="Profiles" className="flex flex-wrap justify-center gap-x-6 gap-y-10">
         {!ready &&
           [0, 1].map((i) => (
             <li key={i}>
-              <Skeleton className="size-24 rounded-full md:size-28" />
+              <Skeleton className="size-32 rounded-full md:size-36" />
             </li>
           ))}
         {ready &&
@@ -126,12 +128,17 @@ function Profiles() {
             <button
               type="button"
               onClick={() => askParent(() => setEditing({ add: true }))}
-              className="group flex w-28 flex-col items-center gap-3 rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-ring md:w-32"
+              className="group flex w-40 flex-col items-center gap-3 rounded-2xl p-2 outline-none"
             >
-              <span className="flex size-24 items-center justify-center rounded-full border-2 border-dashed border-foreground/24 text-muted-foreground transition-[border-color,scale] group-hover:border-foreground/48 group-active:scale-96 md:size-28">
-                <Plus className="size-8" />
+              <span
+                className={cn(
+                  tileLift,
+                  "flex size-32 items-center justify-center rounded-full border-2 border-dashed border-foreground/24 text-muted-foreground group-hover:border-foreground/48 group-focus-visible:border-brand md:size-36",
+                )}
+              >
+                <Plus className="size-10" />
               </span>
-              <span className="min-h-8 text-sm font-medium">Add profile</span>
+              <span className="min-h-10 text-base font-[550]">Add profile</span>
             </button>
           </li>
         )}
@@ -151,17 +158,30 @@ function Profiles() {
                 All {maxNuvioProfiles} Nuvio profiles are in use. Delete one to add another.
               </p>
             )}
-            <Button onClick={() => setManaging(false)}>Done</Button>
+            <Button
+              variant="ghost"
+              className={cn(pillButton, glassButton)}
+              onClick={() => setManaging(false)}
+            >
+              Done
+            </Button>
           </>
         ) : (
           <>
             {!account && (
-              <Link to="/sign-in" className={buttonVariants({ variant: "outline" })}>
+              <Link
+                to="/sign-in"
+                className={cn(buttonVariants({ variant: "ghost" }), pillButton, glassButton)}
+              >
                 Sign in to bring your Nuvio profiles
               </Link>
             )}
             {ready && (
-              <Button variant="outline" onClick={() => setManaging(true)}>
+              <Button
+                variant="ghost"
+                className={cn(pillButton, glassButton)}
+                onClick={() => setManaging(true)}
+              >
                 <Pencil />
                 Manage profiles
               </Button>
@@ -170,6 +190,7 @@ function Profiles() {
               <Button
                 variant="ghost"
                 size="sm"
+                className="rounded-full before:rounded-full"
                 onClick={() => askParent(() => setRemoving(removableGuest))}
               >
                 Remove the Guest profile
@@ -186,9 +207,14 @@ function Profiles() {
       />
       <DeleteProfileDialog profile={removing} onClose={() => setRemoving(undefined)} />
       {pinDialog}
-    </div>
+    </FocusScreen>
   );
 }
+
+// The lift a tile's picture takes on hover and focus: a spring to 1.05×, and
+// a press back down. Still under reduced motion.
+const tileLift =
+  "transition-[box-shadow,scale,border-color] duration-(--duration-slow) ease-spring motion-safe:group-hover:scale-[1.05] motion-safe:group-focus-visible:scale-[1.05] motion-safe:group-active:scale-95";
 
 // One profile: its avatar and name, read out as the name with a note. In
 // Manage mode it opens the editor.
@@ -233,23 +259,25 @@ function ProfileTile({
       aria-describedby={note ? noteId : undefined}
       disabled={disabled}
       onClick={onPick}
-      className="group flex w-28 flex-col items-center gap-3 rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-64 md:w-32"
+      className="group flex w-40 flex-col items-center gap-3 rounded-2xl p-2 outline-none disabled:opacity-64"
     >
-      <span className="relative">
+      <span className={cn("relative", tileLift)}>
         <ProfileAvatar
           profile={profile}
-          className="size-24 text-2xl ring-offset-2 ring-offset-background transition-[box-shadow,scale] group-hover:ring-2 group-hover:ring-foreground/24 group-active:scale-96 group-aria-current:ring-2 group-aria-current:ring-primary md:size-28"
+          className={cn(
+            "size-32 text-3xl ring-offset-4 ring-offset-background transition-shadow group-hover:ring-2 group-hover:ring-foreground/24 group-aria-current:ring-2 group-aria-current:ring-primary group-focus-visible:ring-2 group-focus-visible:ring-brand md:size-36",
+          )}
         />
         {managing && (
-          <span className="absolute end-0 bottom-0 flex size-9 items-center justify-center rounded-full border-3 border-background bg-foreground text-background transition-scale group-active:scale-96">
+          <span className="absolute end-0 bottom-0 flex size-10 items-center justify-center rounded-full glass">
             <Pencil className="size-4" />
           </span>
         )}
       </span>
       <span className="flex max-w-full flex-col">
-        <span className="truncate text-sm font-medium">{profile.name}</span>
+        <span className="truncate text-base font-[550]">{profile.name}</span>
         {/* Kept when empty, so names line up. */}
-        <span id={noteId} className="min-h-4 text-xs text-muted-foreground">
+        <span id={noteId} className="min-h-4 text-meta text-muted-foreground">
           {note}
         </span>
       </span>

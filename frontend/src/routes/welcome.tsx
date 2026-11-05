@@ -2,12 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Info, KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
 
+import { FocusScreen, glassButton, pillButton } from "@/components/account/focus-screen";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { keychainQuery, useContinueAsGuest } from "@/lib/account";
 import { contentDisclaimer } from "@/lib/disclaimer";
 import { serverName, serverQuery } from "@/lib/server";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/welcome")({
   staticData: { chrome: "focus" },
@@ -34,10 +36,10 @@ function Welcome() {
     });
 
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center gap-10 px-6 py-12">
-      <header className="flex flex-col gap-3">
+    <FocusScreen className="max-w-md gap-10">
+      <header className="flex flex-col items-center gap-4 text-center">
         <h1 className="font-heading text-display font-stretch-semi-expanded">Sinag</h1>
-        <p className="text-pretty text-muted-foreground">
+        <p className="max-w-sm text-pretty text-muted-foreground">
           {server.data?.custom
             ? `Sign in with your account on ${serverName(server.data.url)} to bring your profiles, library and Continue Watching with you.`
             : "Sign in with your Nuvio account to bring your profiles, library and Continue Watching with you."}
@@ -52,14 +54,14 @@ function Welcome() {
         </Alert>
       )}
 
-      <div className="flex flex-col gap-2.5">
+      <div className="flex flex-col gap-3">
         {noKeychain ? (
-          <Button size="lg" disabled>
+          <Button size="lg" className={pillButton} disabled>
             <Mail />
             Sign in with email
           </Button>
         ) : (
-          <Link to="/sign-in" className={buttonVariants({ size: "lg" })}>
+          <Link to="/sign-in" className={cn(buttonVariants({ size: "lg" }), pillButton)}>
             <Mail />
             Sign in with email
           </Link>
@@ -67,17 +69,30 @@ function Welcome() {
         {/* QR sign-in (#21): approve on the phone, no password typed here.
             Nuvio's server only. */}
         {server.data?.custom ? null : noKeychain ? (
-          <Button size="lg" variant="outline" disabled>
+          <Button size="lg" variant="ghost" className={cn(pillButton, glassButton)} disabled>
             <QrCode />
             Sign in with your phone
           </Button>
         ) : (
-          <Link to="/qr-sign-in" className={buttonVariants({ size: "lg", variant: "outline" })}>
+          <Link
+            to="/qr-sign-in"
+            className={cn(
+              buttonVariants({ size: "lg", variant: "ghost" }),
+              pillButton,
+              glassButton,
+            )}
+          >
             <QrCode />
             Sign in with your phone
           </Link>
         )}
-        <Button size="lg" variant="ghost" loading={guest.isPending} onClick={continueAsGuest}>
+        <Button
+          size="lg"
+          variant="ghost"
+          className={cn(pillButton, glassButton)}
+          loading={guest.isPending}
+          onClick={continueAsGuest}
+        >
           Continue as guest
         </Button>
       </div>
@@ -94,6 +109,6 @@ function Welcome() {
           {contentDisclaimer}
         </p>
       </div>
-    </div>
+    </FocusScreen>
   );
 }

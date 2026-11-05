@@ -4,6 +4,7 @@ import { Browser } from "@wailsio/runtime";
 import { ArrowLeft, LockKeyhole, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { FocusScreen } from "@/components/account/focus-screen";
 import { SignInProblem, problemFor } from "@/components/account/sign-in-problem";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
@@ -57,102 +58,104 @@ function QRSignIn() {
   };
 
   return (
-    <div className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center gap-8 px-6 py-12">
+    <FocusScreen className="max-w-md gap-6 py-8">
       <Button variant="ghost" size="sm" className="-ms-2.5 self-start" onClick={back}>
         <ArrowLeft />
         Back
       </Button>
 
-      <header className="flex flex-col gap-2">
-        <h1 className="font-heading text-title font-stretch-semi-expanded">
-          Sign in with your phone
-        </h1>
-        <p className="text-pretty text-muted-foreground">
-          Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and
-          approve Sinag.
-        </p>
-      </header>
+      <div className="flex flex-col gap-6 glass-thick rounded-3xl p-8">
+        <header className="flex flex-col gap-2">
+          <h1 className="font-heading text-title font-stretch-semi-expanded">
+            Sign in with your phone
+          </h1>
+          <p className="text-pretty text-muted-foreground">
+            Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and
+            approve Sinag.
+          </p>
+        </header>
 
-      <div className="flex flex-col items-center gap-5">
-        {/* Dark on white in both themes: phone cameras read that best. */}
-        {!qr.error && (
-          <div className="relative size-52 rounded-2xl bg-white p-4 shadow-lift ring-1 ring-border">
-            {code ? (
-              <img
-                src={qrImage(code.size, code.path)}
-                alt={`QR code for ${code.url}`}
-                className={cn("size-full", (expired || error) && "opacity-15 blur-[2px]")}
-              />
-            ) : (
-              <Spinner className="absolute inset-0 m-auto size-6 text-neutral-500" />
-            )}
-            {code && expired && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <p className="font-medium text-neutral-900">The code expired</p>
-                <Button onClick={newCode}>
+        <div className="flex flex-col items-center gap-6">
+          {/* Dark on white in both themes: phone cameras read that best. */}
+          {!qr.error && (
+            <div className="relative size-52 rounded-2xl bg-white p-4 shadow-lift">
+              {code ? (
+                <img
+                  src={qrImage(code.size, code.path)}
+                  alt={`QR code for ${code.url}`}
+                  className={cn("size-full", (expired || error) && "opacity-15 blur-[2px]")}
+                />
+              ) : (
+                <Spinner className="absolute inset-0 m-auto size-6 text-neutral-500" />
+              )}
+              {code && expired && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <p className="font-medium text-neutral-900">The code expired</p>
+                  <Button onClick={newCode}>
+                    <RefreshCw />
+                    New code
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {code && !expired && !error && (
+            <>
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-sm text-muted-foreground">
+                  Or go to{" "}
+                  <button
+                    type="button"
+                    className="font-medium text-foreground underline underline-offset-4 hover:text-brand"
+                    onClick={() => void Browser.OpenURL(code.url)}
+                  >
+                    {code.linkUrl.replace(/^https?:\/\//, "")}
+                  </button>{" "}
+                  and enter
+                </p>
+                <p
+                  className="font-mono text-4xl font-semibold tracking-[0.2em] tabular-nums"
+                  aria-label={code.code.split("").join(" ")}
+                >
+                  <span aria-hidden>{code.code.slice(0, 3)}</span>
+                  <span aria-hidden className="ms-[0.4em]">
+                    {code.code.slice(3)}
+                  </span>
+                </p>
+              </div>
+              <div className="flex w-full flex-col items-center gap-2">
+                <p className="flex items-center gap-2 text-sm whitespace-nowrap text-muted-foreground">
+                  <Spinner className="size-4" aria-hidden />
+                  Waiting for approval ·{" "}
+                  <span className="tabular-nums">{formatLeft(secondsLeft)}</span>
+                </p>
+                <Button size="sm" variant="ghost" onClick={newCode}>
                   <RefreshCw />
                   New code
                 </Button>
               </div>
-            )}
-          </div>
-        )}
+            </>
+          )}
+        </div>
 
-        {code && !expired && !error && (
-          <>
-            <div className="flex flex-col items-center gap-1.5">
-              <p className="text-sm text-muted-foreground">
-                Or go to{" "}
-                <button
-                  type="button"
-                  className="font-medium text-foreground underline underline-offset-4 hover:text-brand"
-                  onClick={() => void Browser.OpenURL(code.url)}
-                >
-                  {code.linkUrl.replace(/^https?:\/\//, "")}
-                </button>{" "}
-                and enter
-              </p>
-              <p
-                className="font-mono text-3xl font-semibold tracking-[0.2em]"
-                aria-label={code.code.split("").join(" ")}
-              >
-                <span aria-hidden>{code.code.slice(0, 3)}</span>
-                <span aria-hidden className="ms-[0.4em]">
-                  {code.code.slice(3)}
-                </span>
-              </p>
-            </div>
-            <div className="flex w-full flex-col items-center gap-2">
-              <p className="flex items-center gap-2 text-sm whitespace-nowrap text-muted-foreground">
-                <Spinner className="size-4" aria-hidden />
-                Waiting for approval ·{" "}
-                <span className="tabular-nums">{formatLeft(secondsLeft)}</span>
-              </p>
-              <Button size="sm" variant="ghost" onClick={newCode}>
-                <RefreshCw />
-                New code
+        {error && (
+          <SignInProblem
+            problem={problemFor(error)}
+            action={
+              <Button size="sm" variant="outline" onClick={newCode}>
+                Try again
               </Button>
-            </div>
-          </>
+            }
+          />
         )}
+
+        <p className="flex gap-2 text-sm text-muted-foreground">
+          <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
+          You never type your password here. Your session is stored in this computer’s keychain.
+        </p>
       </div>
-
-      {error && (
-        <SignInProblem
-          problem={problemFor(error)}
-          action={
-            <Button size="sm" variant="outline" onClick={newCode}>
-              Try again
-            </Button>
-          }
-        />
-      )}
-
-      <p className="flex gap-2 text-sm text-muted-foreground">
-        <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
-        You never type your password here. Your session is stored in this computer’s keychain.
-      </p>
-    </div>
+    </FocusScreen>
   );
 }
 

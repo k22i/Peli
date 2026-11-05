@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { Ambient } from "@/components/media/ambient";
 import { PinEntry, type PinMode, type PinProfile } from "@/components/account/pin-entry";
 import { Button } from "@/components/ui/button";
 import {
@@ -65,9 +66,10 @@ export function PinGate({ profile }: { profile: Profile }) {
   const [unlocked, setUnlocked] = useState(false);
   if (unlocked) return null;
   return (
-    <section className="grid min-h-full place-items-center p-6">
-      <div className="flex w-full max-w-xs flex-col items-center gap-6 glass-thick rounded-2xl border p-8 text-center">
-        <h1 className="font-heading text-xl">This profile is locked</h1>
+    <section className="relative isolate grid min-h-full place-items-center p-6">
+      <Ambient tone="brand" />
+      <div className="flex w-full max-w-sm flex-col items-center gap-6 glass-thick rounded-3xl p-8 text-center">
+        <h1 className="font-heading text-heading">This profile is locked</h1>
         <PinEntry profile={profile} onUnlocked={() => setUnlocked(true)} />
       </div>
     </section>

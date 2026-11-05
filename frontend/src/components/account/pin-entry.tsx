@@ -38,6 +38,8 @@ export function PinEntry({
   const unlock = mode === "parent" ? approveParent : unlockProfile;
   const [pin, setPin] = useState("");
   const [retryIn, setRetryIn] = useState(0);
+  // Counts wrong PINs, so the dots shake each time.
+  const [wrong, setWrong] = useState(0);
   const [problem, setProblem] = useState<{ title: string; description?: string }>();
 
   const waiting = unlock.isPending || retryIn > 0;
@@ -63,8 +65,10 @@ export function PinEntry({
           if (retry > 0) {
             setRetryIn(retry);
             setProblem(undefined);
+            setWrong((n) => n + 1);
           } else if (wrongPin(error)) {
             setProblem({ title: "Wrong PIN. Try again." });
+            setWrong((n) => n + 1);
           } else {
             setProblem(profileProblem(error));
           }
@@ -79,16 +83,16 @@ export function PinEntry({
   };
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <ProfileAvatar profile={profile} className="size-16 text-xl" />
-      <p className="text-sm font-medium">{profile.name}</p>
+    <div className="flex flex-col items-center gap-5">
+      <ProfileAvatar profile={profile} className="size-20 text-2xl" />
+      <p className="text-base font-[550]">{profile.name}</p>
       {mode === "parent" && (
         <p className="max-w-56 text-center text-sm text-muted-foreground">
           Ask a parent to enter the PIN.
         </p>
       )}
 
-      <PinField value={pin} disabled={waiting} onValueChange={enter} />
+      <PinField value={pin} disabled={waiting} shake={wrong} onValueChange={enter} />
 
       {retryIn > 0 ? (
         <p role="alert" className="text-sm text-destructive">

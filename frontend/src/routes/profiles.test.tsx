@@ -251,6 +251,19 @@ describe("profile picker", () => {
     expect(backend.switches).toEqual([kevin.id]);
   });
 
+  it("sits on the brand glow, with a pencil badge in manage mode (#123)", async () => {
+    const user = userEvent.setup();
+    signedIn(kevin, kevin, kids);
+    await renderApp("/profiles", { shell: false });
+    await tile("Kevin");
+
+    expect(document.querySelector('[data-slot="ambient"][data-tone="brand"]')).not.toBeNull();
+
+    await user.click(screen.getByRole("button", { name: "Manage profiles" }));
+    const badge = (await tile("Edit Kevin")).querySelector(".glass");
+    expect(badge).not.toBeNull();
+  });
+
   it("goes straight in with one profile", async () => {
     signedIn(kevin, kevin);
     const { router } = await renderApp("/");
@@ -626,6 +639,34 @@ describe("PIN-locked profiles", () => {
     await user.click(within(dialog).getByRole("button", { name: "4" }));
 
     expect(await screen.findByRole("button", { name: "Profile: Kids Room" })).toBeVisible();
+  });
+
+  it("shows a dot for each digit in, and shakes the dots on a wrong PIN (#123)", async () => {
+    signedIn(kevin, kevin, kidsPin);
+    backend.wrongPin = true;
+    const user = userEvent.setup();
+    await renderApp("/profiles", { shell: false });
+
+    await user.click(await tile("Kids Room"));
+    const dialog = await screen.findByRole("dialog", { name: "Enter PIN" });
+    const dots = () => dialog.querySelector('[data-slot="pin-dots"]')!;
+
+    expect(dots().children).toHaveLength(4);
+    expect(dots().querySelectorAll("[data-filled]")).toHaveLength(0);
+    // Not shaking until a PIN is wrong.
+    expect(dots().className).not.toContain("animate-toast-error-odd");
+
+    await user.click(within(dialog).getByRole("button", { name: "1" }));
+    await user.click(within(dialog).getByRole("button", { name: "2" }));
+    expect(dots().querySelectorAll("[data-filled]")).toHaveLength(2);
+
+    await user.click(within(dialog).getByRole("button", { name: "3" }));
+    await user.click(within(dialog).getByRole("button", { name: "4" }));
+
+    expect(await within(dialog).findByText(/Wrong PIN/)).toBeVisible();
+    // Emptied, and shaking (motion-safe: none under reduced motion).
+    expect(dots().querySelectorAll("[data-filled]")).toHaveLength(0);
+    expect(dots().className).toContain("motion-safe:animate-toast-error-odd");
   });
 
   it("shows a lock note for a locked profile", async () => {

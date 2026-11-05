@@ -116,6 +116,19 @@ describe("first run", () => {
     expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeVisible();
   });
 
+  it("sits on the brand glow, with the choices as pills (#123)", async () => {
+    await renderFirstRun();
+
+    expect(document.querySelector('[data-slot="ambient"][data-tone="brand"]')).not.toBeNull();
+    const email = screen.getByRole("link", { name: "Sign in with email" });
+    expect(email.className).toContain("rounded-full");
+    // The others are glass.
+    expect(screen.getByRole("link", { name: "Sign in with your phone" }).className).toContain(
+      "glass",
+    );
+    expect(screen.getByRole("button", { name: "Continue as guest" }).className).toContain("glass");
+  });
+
   it("continues as a guest into the app", async () => {
     const user = userEvent.setup();
     const { router } = await renderFirstRun();
@@ -186,6 +199,14 @@ describe("sign in", () => {
         "That email and password don’t match an account on nuvio.example.com.",
       ),
     ).toBeVisible();
+  });
+
+  it("holds the form in a thick glass card on the brand glow (#123)", async () => {
+    await renderApp("/sign-in", { shell: false });
+    const heading = await screen.findByRole("heading", { level: 1, name: "Sign in to Nuvio" });
+
+    expect(heading.closest(".glass-thick")).not.toBeNull();
+    expect(document.querySelector('[data-slot="ambient"][data-tone="brand"]')).not.toBeNull();
   });
 
   it("asks for both fields before calling Nuvio", async () => {

@@ -161,6 +161,18 @@ describe("QR sign-in", () => {
     expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
   });
 
+  it("keeps the QR black on a white tile, inside a thick glass card (#123)", async () => {
+    await renderQR();
+
+    const image = await screen.findByRole("img", {
+      name: "QR code for https://nuvio.tv/link?code=ABC001",
+    });
+    // The tile is white in both themes; the card around it is glass.
+    expect(image.parentElement?.className).toContain("bg-white");
+    expect(image.closest(".glass-thick")).not.toBeNull();
+    expect(document.querySelector('[data-slot="ambient"][data-tone="brand"]')).not.toBeNull();
+  });
+
   it("opens the link page in the browser", async () => {
     const user = userEvent.setup();
     await renderQR();

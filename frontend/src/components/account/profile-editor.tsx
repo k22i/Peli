@@ -74,7 +74,7 @@ export function ProfileEditor({
   return (
     <>
       <Dialog open={target !== undefined} onOpenChange={(open) => !open && onClose()}>
-        <DialogPopup className="sm:max-w-xl">
+        <DialogPopup className="sm:max-w-2xl">
           {shown && (
             <EditorForm
               // A fresh form for each profile.
@@ -216,9 +216,9 @@ function EditorForm({
                 Avatar
               </h3>
               {avatars.isPending && (
-                <div className="grid grid-cols-6 gap-2 sm:grid-cols-10">
+                <div className="flex flex-wrap gap-3">
                   {Array.from({ length: 8 }, (_, i) => (
-                    <Skeleton key={i} className="aspect-square rounded-full" />
+                    <Skeleton key={i} className="size-16 rounded-full" />
                   ))}
                 </div>
               )}
@@ -232,14 +232,14 @@ function EditorForm({
                   aria-labelledby="avatar-heading"
                   value={avatar}
                   onValueChange={(value) => pickAvatar(String(value))}
-                  className="grid grid-cols-6 gap-2 sm:grid-cols-10"
+                  className="flex flex-row flex-wrap gap-3"
                 >
                   {avatars.data.map((a) => (
                     <RadioPrimitive.Root
                       key={a.id}
                       value={a.id}
                       aria-label={a.name}
-                      className="aspect-square overflow-hidden rounded-full ring-offset-2 ring-offset-popover outline-none transition-shadow hover:ring-2 hover:ring-foreground/24 focus-visible:ring-2 focus-visible:ring-ring data-checked:ring-2 data-checked:ring-primary"
+                      className="size-16 overflow-hidden rounded-full ring-offset-2 ring-offset-transparent outline-none transition-shadow hover:ring-2 hover:ring-foreground/24 focus-visible:ring-2 focus-visible:ring-ring data-checked:ring-2 data-checked:ring-primary"
                       style={a.color ? { backgroundColor: a.color } : undefined}
                     >
                       <img src={a.image} alt="" draggable={false} className="size-full" />
@@ -264,7 +264,7 @@ function EditorForm({
                     key={c}
                     value={c.toUpperCase()}
                     aria-label={c.toUpperCase()}
-                    className="flex size-8 items-center justify-center rounded-full ring-offset-2 ring-offset-popover outline-none transition-shadow hover:ring-2 hover:ring-foreground/24 focus-visible:ring-2 focus-visible:ring-ring data-checked:ring-2 data-checked:ring-primary"
+                    className="flex size-8 items-center justify-center rounded-full ring-offset-2 ring-offset-transparent outline-none transition-shadow hover:ring-2 hover:ring-foreground/24 focus-visible:ring-2 focus-visible:ring-ring data-checked:ring-2 data-checked:ring-primary"
                     style={{ backgroundColor: c, color: initialsColor(c) }}
                   >
                     <RadioPrimitive.Indicator>

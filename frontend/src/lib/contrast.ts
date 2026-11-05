@@ -294,6 +294,20 @@ export const contrastPairs: ContrastPair[] = [
     background: ["background", "brand-soft"],
     min: AA_TEXT,
   },
+  // The PIN keypad (#123): digits on thin glass keys, inside the thick glass
+  // of a dialog or the lock card, over black or white.
+  {
+    label: "PIN key digit, over black",
+    foreground: "foreground",
+    background: ["#000000", "glass-thick", "glass-thin"],
+    min: AA_TEXT,
+  },
+  {
+    label: "PIN key digit, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "glass-thick", "glass-thin"],
+    min: AA_TEXT,
+  },
 ];
 
 export function parseHex(hex: string): Rgba {
