@@ -22,6 +22,7 @@ import {
   RovingContext,
   RovingIndexContext,
   prefersReducedMotion,
+  stickyInset,
   useRovingFocus,
   withIndex,
 } from "@/components/media/roving";
@@ -93,9 +94,16 @@ export function PosterGrid<T>({
   const { columns, cardWidth } = layout;
   const count = items.length;
   const rows = Math.ceil(count / columns);
+  const [headerInset, setHeaderInset] = useState(0);
   // A smooth scrollIntoView stops short on long jumps: rows measured on the
   // way move the target. The virtualizer's own scroll retargets as they do.
-  const { active, setActive, focusIndex } = useRovingFocus(list, count, (_, index) => {
+  const { active, setActive, focusIndex } = useRovingFocus(list, count, (item, index) => {
+    // A row scrolled up stops below the sticky header, not under it. The
+    // virtualizer is told now for this scroll and, through state, for the
+    // retargeting a smooth scroll does on later renders.
+    const inset = stickyInset(item) + 8;
+    setHeaderInset(inset);
+    virtualizer.setOptions({ ...virtualizer.options, scrollPaddingStart: inset });
     virtualizer.scrollToIndex(Math.floor(index / columns), {
       align: "auto",
       behavior: prefersReducedMotion() ? "auto" : "smooth",
@@ -141,6 +149,7 @@ export function PosterGrid<T>({
     measureElement: measureRow,
     gap: rowGapPx,
     scrollMargin: layout.top,
+    scrollPaddingStart: headerInset,
     overscan: 2,
     initialRect: { width: 0, height: window.innerHeight },
     rangeExtractor: useCallback(

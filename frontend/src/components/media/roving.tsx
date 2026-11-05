@@ -40,9 +40,30 @@ export function useRovingItem() {
   };
 }
 
+// How far down a card must stay from its scroll container's top edge to clear
+// a sticky page header (Browse, Search and Library's, the title page's
+// Episodes): the lowest such header's bottom edge. Zero when there is none.
+export function stickyInset(from: HTMLElement): number {
+  let scroller: HTMLElement | null = from.parentElement;
+  while (scroller && !/auto|scroll|overlay/.test(getComputedStyle(scroller).overflowY)) {
+    scroller = scroller.parentElement;
+  }
+  if (!scroller) return 0;
+  const top = scroller.getBoundingClientRect().top;
+  let bottom = top;
+  for (const header of scroller.querySelectorAll<HTMLElement>("header")) {
+    if (getComputedStyle(header).position === "sticky") {
+      bottom = Math.max(bottom, header.getBoundingClientRect().bottom);
+    }
+  }
+  return bottom - top;
+}
+
 // Scrolls a card into view on both axes, so the page follows a row the focus
-// moved into.
+// moved into. A card above the fold stops below the sticky header, not under
+// it.
 function scrollIntoView(item: HTMLElement) {
+  item.style.scrollMarginTop = `${stickyInset(item) + 8}px`;
   item.scrollIntoView?.({
     block: "nearest",
     inline: "nearest",
