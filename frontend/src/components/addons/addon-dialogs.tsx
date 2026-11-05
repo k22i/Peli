@@ -26,15 +26,18 @@ import { addonLink, configureUrl } from "@/lib/addons";
 // the manifest first, fresh from the addon, and save nothing until it reads:
 // an address that isn't an addon is refused here, not installed broken.
 
+// Labels are Mona Sans caps; the values are mono (codes).
+const label = "font-sans text-xs font-semibold tracking-[0.06em] uppercase";
+
 // What an addon offers, in a line each: the content types it knows, and the
 // resources it answers.
 export function ManifestFacts({ manifest }: { manifest: Manifest }) {
   const resources = [...new Set(manifest.resources.map((r) => r.name))];
   return (
     <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 font-mono text-meta text-muted-foreground">
-      <dt>Types</dt>
+      <dt className={label}>Types</dt>
       <dd className="text-foreground/80">{manifest.types.join(", ") || "none"}</dd>
-      <dt>Resources</dt>
+      <dt className={label}>Resources</dt>
       <dd className="text-foreground/80">{resources.join(", ") || "none"}</dd>
     </dl>
   );

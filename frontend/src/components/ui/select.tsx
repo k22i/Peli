@@ -233,7 +233,7 @@ export function SelectLabel({
 export function SelectGroupLabel(props: SelectPrimitive.GroupLabel.Props): React.ReactElement {
   return (
     <SelectPrimitive.GroupLabel
-      className="px-2.5 py-1.5 font-medium text-muted-foreground text-xs uppercase tracking-[0.06em]"
+      className="px-2.5 py-1.5 font-semibold text-muted-foreground text-xs uppercase tracking-[0.06em]"
       data-slot="select-group-label"
       {...props}
     />
