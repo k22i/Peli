@@ -298,3 +298,31 @@ The two full-width gradient strips became a rounded `glass-media-strong` capsule
 Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta art and episode details; a made-up Torrentio answer for the next episode). Over the real player the video is a native layer under the transparent webview, so `backdrop-filter` is expected to blur nothing there: the shots switch it off (`backdrop-filter: none`) and show the tints alone, which is what the player's text contrast is sized for. The frame behind is a Metahub backdrop, and a white gradient for the bright shot. **Not captured:** the built macOS app over real video. This run had no screen-capture permission, so whether blur really does nothing over the video is still to be confirmed (see ADR-0046).
 
 Notes from the shots: text inside the bar and the strong-glass overlays is plain white, not `white/70`: muted white over strong glass over a white frame is 3.2:1, plain white 4.7:1. The title cluster sits on the lighter top gradient only (`from-black/45`); over a pure white frame the title is about 3.4:1 and relies on its drop shadow.
+
+### Stream picker, Addons page and popups (#122)
+
+| | Before | After |
+|---|---|---|
+| Stream picker, dark | ![](picker-dark-before.jpg) | ![](picker-dark-after.jpg) |
+| Stream picker, light | ![](picker-light-before.jpg) | ![](picker-light-after.jpg) |
+| Addons, dark | ![](addons-dark-before.jpg) | ![](addons-dark-after.jpg) |
+| Addons, light | ![](addons-light-before.jpg) | ![](addons-light-after.jpg) |
+| Dialog (Install an addon), dark | ![](popups-dialog-dark-before.jpg) | ![](popups-dialog-dark-after.jpg) |
+| Menu with a submenu (profile menu › Switch profile), dark | ![](popups-submenu-dark-before.jpg) | ![](popups-submenu-dark-after.jpg) |
+| Profile menu, dark | ![](popups-profile-menu-dark-before.jpg) | ![](popups-profile-menu-dark-after.jpg) |
+| Toast (Removed … with Undo), dark | ![](popups-toast-dark-before.jpg) | ![](popups-toast-dark-after.jpg) |
+| Alert dialog (Sign out), dark | ![](popups-alert-dark-before.jpg) | ![](popups-alert-dark-after.jpg) |
+
+| | |
+|---|---|
+| Picker scrolled: the quality heading stays under the title bar on glass, dark | ![](picker-stuck-dark-after.jpg) |
+| …light | ![](picker-stuck-light-after.jpg) |
+| Picker for an episode: the title with its episode line under it, dark | ![](picker-episode-dark-after.jpg) |
+| Addon row menu, dark | ![](popups-row-menu-dark-after.jpg) |
+| Dialog, light | ![](popups-dialog-light-after.jpg) |
+| Menu with a submenu, light | ![](popups-submenu-light-after.jpg) |
+| Profile menu, light | ![](popups-profile-menu-light-after.jpg) |
+| Toast, light | ![](popups-toast-light-after.jpg) |
+| Alert dialog, light | ![](popups-alert-light-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta meta and art), and a local server standing in for two stream addons (a debrid one and a peer-to-peer one) with made-up releases for the film and an episode. The "before" shots come from the starting commit, the same rig. The picker shows each stream as its quality and source in the row's own name, the addon muted after it, neutral badges, and size and languages in mono at the end; only "Cached" keeps the brand. The alert dialog was not on a glass tier before (the tier rules named only `dialog-popup`), which the before shot shows.
