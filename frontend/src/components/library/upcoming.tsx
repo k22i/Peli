@@ -177,7 +177,7 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
         <Artwork src={item.poster} use="poster" title={item.name} />
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className="truncate text-card text-foreground">{item.name}</span>
+        <span className="truncate text-item text-foreground">{item.name}</span>
         <span className="truncate text-body text-muted-foreground">
           <span className="text-num text-caption">{code}</span> · {title}
         </span>

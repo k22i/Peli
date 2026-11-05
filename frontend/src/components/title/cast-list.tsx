@@ -22,7 +22,7 @@ export function CastList({ cast }: { cast: CastMember[] }) {
                 className="aspect-square size-32 rounded-full shadow-card"
               />
               <div className="flex w-full flex-col items-center text-center">
-                <span className="line-clamp-2 text-card">{person.name}</span>
+                <span className="line-clamp-2 text-item">{person.name}</span>
                 {person.character && (
                   <span className="line-clamp-2 text-caption text-muted-foreground">
                     {person.character}

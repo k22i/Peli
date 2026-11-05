@@ -163,7 +163,7 @@ function PinWizard({
   return (
     <DialogPanel className="flex flex-col items-center gap-4">
       <ProfileAvatar profile={profile} className="size-16 text-xl" />
-      <p className="text-card">{profile.name}</p>
+      <p className="text-item">{profile.name}</p>
 
       <p className="text-body text-muted-foreground">{kind ? stepLabels[kind] : ""}</p>
 

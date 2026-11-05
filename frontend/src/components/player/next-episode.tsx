@@ -85,7 +85,7 @@ export function NextEpisode({
               {formatTime(Math.ceil(remaining))}
             </span>
           </p>
-          <p className="truncate text-card">{name}</p>
+          <p className="truncate text-item">{name}</p>
           <p aria-live="polite" className="flex items-center gap-1.5 text-caption">
             {preparedText(prepared)}
           </p>

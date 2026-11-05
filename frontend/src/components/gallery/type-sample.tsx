@@ -78,7 +78,7 @@ export function TypeSample() {
                   <Artwork title={title!} showTitle />
                 </div>
                 <div className="flex flex-col gap-0.5 px-0.5">
-                  <span className="truncate text-card">{title}</span>
+                  <span className="truncate text-item">{title}</span>
                   <span className="truncate text-caption text-muted-foreground">
                     <Num>{year}</Num> · <Num>{extra}</Num>
                   </span>
@@ -117,7 +117,7 @@ export function TypeSample() {
         <Block title="Settings row">
           <div className="flex items-center justify-between gap-6 rounded-xl border bg-card px-4 py-3">
             <div className="flex flex-col gap-0.5">
-              <span className="text-card">Skip intros</span>
+              <span className="text-item">Skip intros</span>
               <span className="text-caption text-muted-foreground">
                 Jump past the opening credits when a marker exists.
               </span>

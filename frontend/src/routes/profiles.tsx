@@ -136,7 +136,7 @@ function Profiles() {
               >
                 <Plus className="size-10" />
               </span>
-              <span className="min-h-10 text-card">Add profile</span>
+              <span className="min-h-10 text-item">Add profile</span>
             </button>
           </li>
         )}
@@ -273,7 +273,7 @@ function ProfileTile({
         )}
       </span>
       <span className="flex max-w-full flex-col">
-        <span className="truncate text-card">{profile.name}</span>
+        <span className="truncate text-item">{profile.name}</span>
         {/* Kept when empty, so names line up. */}
         <span id={noteId} className="min-h-4 text-caption text-muted-foreground">
           {note}

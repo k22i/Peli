@@ -222,7 +222,7 @@ function AccountPane({ title }: { title: string }) {
         <div className="flex min-h-14 items-center gap-3 px-4 py-3.5">
           <ProfileAvatar profile={profile} className="size-9" />
           <div className="flex flex-col">
-            <span className="text-card">{profile.name}</span>
+            <span className="text-item">{profile.name}</span>
             <span className="text-caption text-muted-foreground">{status}</span>
           </div>
         </div>

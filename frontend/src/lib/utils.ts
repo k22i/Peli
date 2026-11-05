@@ -6,7 +6,7 @@ import { extendTailwindMerge } from "tailwind-merge";
 // round. `text-num` is the mono utility: it sets a family, no size or colour.
 const twMerge = extendTailwindMerge({
   extend: {
-    theme: { text: ["display", "title", "heading", "body", "card", "caption", "meta", "label"] },
+    theme: { text: ["display", "title", "heading", "body", "item", "caption", "meta", "label"] },
     classGroups: { "font-family": [{ text: ["num"] }] },
   },
 });

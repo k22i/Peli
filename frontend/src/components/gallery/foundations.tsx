@@ -32,7 +32,7 @@ const typeScale = [
   ["text-title", "Title · page headings", "112.5% width · 660 · −0.02em · 2.25rem"],
   ["text-heading", "Heading · rows", "100% width · 640 · −0.015em · 1.375rem"],
   ["text-body", "Body · synopses, settings, UI", "15px · 450 · 0 · line-height 1.45"],
-  ["text-card", "Card caption · Low Tide", "15px · 550"],
+  ["text-item", "Item name · card caption, row label", "15px · 550"],
   ["text-caption", "Meta line · secondary text", "13px · line-height 1.4"],
   ["text-label", "Eyebrow · Continue watching", "Mona Sans 12px · 600 · +0.06em · uppercase"],
   ["text-num", "2025 · 1h 52m · S2 · E5 · 1:12:08", "Geist Mono, tabular: numbers and codes only"],

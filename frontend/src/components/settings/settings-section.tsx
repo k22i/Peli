@@ -74,7 +74,7 @@ export function SettingRow({
   return (
     <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-3.5">
       <div className="flex min-w-0 flex-1 basis-60 flex-col gap-0.5">
-        <span id={`${id}-label`} className="text-card">
+        <span id={`${id}-label`} className="text-item">
           {label}
         </span>
         {description && (

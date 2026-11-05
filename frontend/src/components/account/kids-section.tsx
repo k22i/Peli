@@ -27,7 +27,7 @@ export function KidsSection({ profile }: { profile: Profile }) {
 
   return (
     <section className="flex flex-col gap-3" aria-labelledby={headingId}>
-      <h3 id={headingId} className="flex items-center gap-2 text-card">
+      <h3 id={headingId} className="flex items-center gap-2 text-item">
         <Baby className="size-4" aria-hidden />
         Kids profile
       </h3>

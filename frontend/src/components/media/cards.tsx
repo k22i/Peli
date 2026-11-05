@@ -70,7 +70,7 @@ function Card({
           {progress !== undefined && <WatchProgress value={progress} />}
         </div>
         <div className="flex min-w-0 flex-col gap-0.5 px-0.5">
-          <span className="truncate text-card text-foreground">{title}</span>
+          <span className="truncate text-item text-foreground">{title}</span>
           {meta && (
             <span className="truncate text-num text-caption text-muted-foreground">{meta}</span>
           )}

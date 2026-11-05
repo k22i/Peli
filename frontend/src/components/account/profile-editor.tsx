@@ -212,7 +212,7 @@ function EditorForm({
         ) : (
           <>
             <section className="flex flex-col gap-3" aria-labelledby="avatar-heading">
-              <h3 id="avatar-heading" className="text-card">
+              <h3 id="avatar-heading" className="text-item">
                 Avatar
               </h3>
               {avatars.isPending && (
@@ -250,7 +250,7 @@ function EditorForm({
             </section>
 
             <section className="flex flex-col gap-3" aria-labelledby="color-heading">
-              <h3 id="color-heading" className="text-card">
+              <h3 id="color-heading" className="text-item">
                 Colour
               </h3>
               <RadioGroup
@@ -277,7 +277,7 @@ function EditorForm({
 
             {profile && (
               <section className="flex flex-col gap-3" aria-labelledby="pin-heading">
-                <h3 id="pin-heading" className="flex items-center gap-2 text-card">
+                <h3 id="pin-heading" className="flex items-center gap-2 text-item">
                   <Lock className="size-4" aria-hidden />
                   PIN
                 </h3>

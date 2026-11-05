@@ -1328,7 +1328,7 @@ function PlayerFile() {
               )}
             >
               <Spinner className="size-10 text-white" />
-              {starting && next && <p className="text-card">Opening {episodeCode(next)}…</p>}
+              {starting && next && <p className="text-item">Opening {episodeCode(next)}…</p>}
               {!starting && state.buffering && state.bufferPercent > 0 && (
                 <p className="text-caption tabular-nums">Buffering {state.bufferPercent} %</p>
               )}
