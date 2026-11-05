@@ -70,6 +70,7 @@ const rowPx = { top: 176, group: 56, stream: 68 } as const;
 
 // Where a stuck group heading sits below the title bar.
 const stickGap = 8;
+const stuckHeight = 48;
 
 export function StreamList({
   rows,
@@ -143,7 +144,8 @@ export function StreamList({
     setStickAt((Number.isFinite(bar) ? bar : 0) + stickGap);
   }, []);
   const scrolled = virtualizer.scrollOffset ?? 0;
-  const line = scrolled + stickAt;
+  // The next heading takes over as it reaches the stuck one.
+  const line = scrolled + stickAt + stuckHeight;
   let stuck: Extract<ListRow, { kind: "group" }> | undefined;
   for (let index = 0; index < (scrolled > 0 ? rows.length : 0); index += 1) {
     const row = rows[index]!;
