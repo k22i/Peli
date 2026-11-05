@@ -86,6 +86,7 @@ export function AddonRow({
     // oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <li
       aria-label={name}
+      data-addon-url={addon.url}
       draggable={armed}
       onDragStart={(event) => {
         event.dataTransfer.effectAllowed = "move";

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Browser } from "@wailsio/runtime";
 import { CircleCheck, ExternalLink, Settings2, TriangleAlert } from "lucide-react";
-import { useState } from "react";
+import { type RefObject, useState } from "react";
 
 import type { Addon } from "@bindings/store";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -160,15 +160,19 @@ export function InstallDialog({
   onOpenChange,
   installed,
   onInstall,
+  returnFocusTo,
 }: {
   open: boolean;
+  // Where focus goes on Escape or Close: the button that opened it. Base UI
+  // can't find it for a dialog with no trigger of its own.
+  returnFocusTo?: RefObject<HTMLElement | null>;
   onOpenChange: (open: boolean) => void;
   installed: readonly Addon[];
   onInstall: (addon: Addon) => void;
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogPopup>
+      <DialogPopup finalFocus={returnFocusTo}>
         {/* Mounted while open, so each opening starts empty. */}
         {open && <InstallForm installed={installed} onInstall={onInstall} />}
       </DialogPopup>
@@ -258,9 +262,24 @@ export function ConfigureDialog({
   onOpenChange: (open: boolean) => void;
   onSave: (addon: Addon) => void;
 }) {
+  // The addon goes away with the dialog, but focus is returned after.
+  const [lastUrl, setLastUrl] = useState(addon?.url);
+  if (addon && addon.url !== lastUrl) setLastUrl(addon.url);
+
   return (
     <Dialog open={addon !== undefined} onOpenChange={onOpenChange}>
-      <DialogPopup>
+      {/* The row's menu is gone by now (it opened this), so focus goes to its
+          button by the row's address. A saved change moves the address, and
+          then focus takes Base UI's default. */}
+      <DialogPopup
+        finalFocus={() =>
+          lastUrl
+            ? document.querySelector<HTMLElement>(
+                `[data-addon-url="${CSS.escape(lastUrl)}"] [aria-label^="More for"]`,
+              )
+            : null
+        }
+      >
         {addon && (
           <ConfigureForm
             key={addon.url}

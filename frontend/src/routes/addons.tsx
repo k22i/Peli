@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { ConfigureDialog, InstallDialog } from "@/components/addons/addon-dialogs";
 import { addonLabel as label, useAddonEdits } from "@/components/addons/addon-edits";
@@ -54,6 +54,7 @@ function Manager({ profile }: { profile: Profile }) {
   const edits = useAddonEdits(profile);
   const { run, dialog } = edits;
   const [installing, setInstalling] = useState(false);
+  const installButton = useRef<HTMLButtonElement>(null);
   const [configuring, setConfiguring] = useState<{ addon: Addon; manifest?: Manifest }>();
   const [announcement, setAnnouncement] = useState("");
   const list = addons.data ?? [];
@@ -110,7 +111,12 @@ function Manager({ profile }: { profile: Profile }) {
           <h1 className="text-title">Addons</h1>
           <p className="text-body text-muted-foreground">{syncNote(profile)}</p>
         </div>
-        <Button size="lg" onClick={() => setInstalling(true)} disabled={addons.isPending}>
+        <Button
+          ref={installButton}
+          size="lg"
+          onClick={() => setInstalling(true)}
+          disabled={addons.isPending}
+        >
           <Plus aria-hidden />
           Install addon
         </Button>
@@ -180,6 +186,7 @@ function Manager({ profile }: { profile: Profile }) {
         onOpenChange={setInstalling}
         installed={list}
         onInstall={install}
+        returnFocusTo={installButton}
       />
       <ConfigureDialog
         addon={configuring?.addon}
