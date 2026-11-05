@@ -712,11 +712,25 @@
 
 /*
  * Route transitions (the router's defaultViewTransition): only the content
- * pane cross-fades; the rest of the shell is left out of the transition so it
- * stays perfectly still.
+ * pane cross-fades; the rest of the shell stays perfectly still. The pane
+ * fills the window, so its snapshot would sit over the sidebar and title bar
+ * (which are part of the root snapshot, below it) for as long as the router
+ * waits on a page's data. They get groups of their own, above the pane's.
  */
 .content-pane {
   view-transition-name: content;
+}
+
+::view-transition-group(sidebar),
+::view-transition-group(titlebar) {
+  z-index: 1;
+}
+
+::view-transition-old(sidebar),
+::view-transition-new(sidebar),
+::view-transition-old(titlebar),
+::view-transition-new(titlebar) {
+  animation: none;
 }
 
 ::view-transition-old(root),

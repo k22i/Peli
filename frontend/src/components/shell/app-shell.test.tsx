@@ -33,6 +33,17 @@ describe("app shell", () => {
     expect(tabbable).toEqual([within(nav).getByRole("link", { name: "Shows" })]);
   });
 
+  it("keeps the section current while a page's search (a chip, a filter) changes", async () => {
+    await renderApp("/shows?genre=Drama");
+
+    const nav = screen.getByRole("navigation", { name: "Main" });
+
+    expect(within(nav).getByRole("link", { name: "Shows" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
   it("lists Search first, then the browse sections, then Library", async () => {
     await renderApp("/");
 

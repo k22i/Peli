@@ -11,7 +11,7 @@ metadata:
 
 **How to apply:**
 - Sidebar order is `visualOrder` in `sidebar.tsx`; ⌘1–6 still use `sections.ts`. Arrow keys and the roving Tab stop follow DOM order, so Search is index 0 and wrap-around goes Library → Search. The Search link's ⌘F `Kbd` is `aria-hidden` so its name stays "Search".
-- A link's `activeOptions exact` also compares search params: a stubbed page at `/?x=1` shows no active item. Put harness switches in the hash.
+- Sidebar links use `activeOptions { exact: true, includeSearch: false }`, so a chip or filter (`?genre=`) keeps its section highlighted; a stubbed page at `/?x=1` is still Home. Sidebar and title bar have their own view-transition groups (above `content`) so a route change never hides them.
 - The md breakpoint is 768px, so a 900×700 window still has the full panel; the rail shows below 768.
 - Sticky things inside `#content` need `top-[calc(var(--titlebar-h)+…)]` (Settings nav does).
 - Brand-on-active-sidebar pairs (over black/white, via `glass-thick` + `brand-soft`) are in `contrastPairs`; checked by hand with node (4.5/3.14+ dark, 5.05 light).

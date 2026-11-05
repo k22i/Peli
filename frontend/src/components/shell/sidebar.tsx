@@ -70,7 +70,9 @@ export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void
             render={
               <Link
                 to={section.to}
-                activeOptions={{ exact: true }}
+                // Path only: a chip or filter changes the search, and the
+                // section stays the one you're in.
+                activeOptions={{ exact: true, includeSearch: false }}
                 tabIndex={index === tabStop ? 0 : -1}
                 onClick={onClick}
                 onKeyDown={moveFocus}
@@ -97,7 +99,7 @@ export function Sidebar({ onKeyboardNavigate }: { onKeyboardNavigate: () => void
   return (
     <aside
       className={cn(
-        "drag-region fixed start-2 top-2 bottom-2 z-30 flex w-16 flex-col gap-2 rounded-[1.25rem] p-2 text-sidebar-foreground glass-thick md:w-60",
+        "drag-region fixed start-2 top-2 bottom-2 z-30 [view-transition-name:sidebar] flex w-16 flex-col gap-2 rounded-[1.25rem] p-2 text-sidebar-foreground glass-thick md:w-60",
         // Room for the traffic lights, which sit in the panel's top-left.
         mac && "pt-11",
       )}

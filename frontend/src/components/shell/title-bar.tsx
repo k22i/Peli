@@ -24,7 +24,7 @@ export function TitleBar({
       data-platform={platform}
       data-scrolled={scrolled || undefined}
       className={cn(
-        "drag-region fixed inset-x-0 top-0 z-20 flex h-(--titlebar-h) items-center justify-end",
+        "drag-region fixed inset-x-0 top-0 z-20 [view-transition-name:titlebar] flex h-(--titlebar-h) items-center justify-end",
         // The blur reaches over the strip itself, not only below it.
         "[--scroll-edge-cover:var(--titlebar-h)] not-data-scrolled:before:hidden scroll-edge-top",
       )}
