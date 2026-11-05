@@ -27,13 +27,13 @@ export const Route = createFileRoute("/addons")({
 function Addons() {
   const profile = useQuery(currentProfileQuery).data;
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-gutter py-8">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-gutter py-8">
       {profile ? (
         <Manager profile={profile} />
       ) : (
         <>
           <h1 className="font-heading text-title font-stretch-semi-expanded">Addons</h1>
-          <Skeleton className="h-40 rounded-xl" />
+          <Skeleton className="h-40 rounded-2xl" />
         </>
       )}
     </div>
@@ -110,20 +110,20 @@ function Manager({ profile }: { profile: Profile }) {
           <h1 className="font-heading text-title font-stretch-semi-expanded">Addons</h1>
           <p className="text-sm text-muted-foreground">{syncNote(profile)}</p>
         </div>
-        <Button onClick={() => setInstalling(true)} disabled={addons.isPending}>
+        <Button size="lg" onClick={() => setInstalling(true)} disabled={addons.isPending}>
           <Plus aria-hidden />
           Install addon
         </Button>
       </header>
 
       {addons.isPending ? (
-        <Skeleton className="h-40 rounded-xl" />
+        <Skeleton className="h-40 rounded-2xl" />
       ) : addons.isError ? (
         <p className="text-sm text-destructive-foreground">The addons could not be read.</p>
       ) : list.length === 0 ? (
         <p className="text-sm text-muted-foreground">No addons installed.</p>
       ) : (
-        <section className="flex flex-col gap-2">
+        <section className="flex flex-col gap-3">
           <p id="addon-reorder-help" className="text-sm text-muted-foreground">
             Catalogs and streams come from addons in this order. Drag to reorder, or use the arrow
             keys on an addon’s handle.
@@ -132,7 +132,7 @@ function Manager({ profile }: { profile: Profile }) {
           {/* oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
           <ul
             aria-label="Installed addons"
-            className="flex flex-col divide-y rounded-xl border bg-card"
+            className="flex flex-col divide-y rounded-2xl border bg-card"
             onDragLeave={(event) => {
               const to = event.relatedTarget;
               if (!(to instanceof Node && event.currentTarget.contains(to))) {

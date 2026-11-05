@@ -95,6 +95,7 @@ function AddressField({
         autoComplete="off"
         spellCheck={false}
         autoCapitalize="none"
+        className="rounded-xl before:rounded-[calc(var(--radius-xl)-1px)] **:data-[slot=input]:h-11 **:data-[slot=input]:leading-11"
         // oxlint-disable-next-line jsx-a11y/no-autofocus
         autoFocus
       />
@@ -226,8 +227,10 @@ function InstallForm({
         {checked && needsConfig && !duplicate && <NeedsConfiguring url={checked.url} />}
       </DialogPanel>
       <DialogFooter>
-        <DialogClose render={<Button type="button" variant="ghost" />}>Cancel</DialogClose>
-        <Button type="submit" loading={check.isPending} disabled={input.trim() === ""}>
+        <DialogClose render={<Button type="button" variant="ghost" size="lg" />}>
+          Cancel
+        </DialogClose>
+        <Button type="submit" size="lg" loading={check.isPending} disabled={input.trim() === ""}>
           {ready ? "Install" : "Check"}
         </Button>
       </DialogFooter>
@@ -344,8 +347,10 @@ function ConfigureForm({
         {checked && needsConfig && !other && !duplicate && <NeedsConfiguring url={checked.url} />}
       </DialogPanel>
       <DialogFooter>
-        <DialogClose render={<Button type="button" variant="ghost" />}>Cancel</DialogClose>
-        <Button type="submit" loading={check.isPending} disabled={input.trim() === ""}>
+        <DialogClose render={<Button type="button" variant="ghost" size="lg" />}>
+          Cancel
+        </DialogClose>
+        <Button type="submit" size="lg" loading={check.isPending} disabled={input.trim() === ""}>
           {ready ? "Save" : "Check"}
         </Button>
       </DialogFooter>
