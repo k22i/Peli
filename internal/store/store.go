@@ -78,6 +78,8 @@ type Store struct {
 	db *bolt.DB
 	// Called, outside any transaction, after a write that queued a push.
 	queued atomic.Pointer[func(profileID uint64)]
+	// The built-in addons each profile is offered (UseBuiltins).
+	offered atomic.Pointer[[]Addon]
 }
 
 // Open opens the database at path, creating it and its directory if needed,

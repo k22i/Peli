@@ -136,3 +136,31 @@ func TestSharedAddonsArePrimarys(t *testing.T) {
 		t.Fatalf("profile 3 pulled %+v, want its own empty list", changes)
 	}
 }
+
+// Built-in addons stay on the device that has them (#107): pushes leave them
+// out, pulls keep them in place, and editing only them pushes nothing.
+func TestBuiltinAddonsStayOnTheDevice(t *testing.T) {
+	server := nuviotest.NewServer(t)
+	phone, desktop := newDevice(t, server), newDevice(t, server)
+	check(t, desktop.store.UseBuiltins(store.Builtins))
+	a := addons("a")[0]
+
+	check(t, desktop.store.InstallAddon(desktop.profile.ID, a))
+	desktop.push(t)
+	if rows := server.SyncedAddons(email, 1); len(rows) != 1 {
+		t.Fatalf("server has %v, want only a", rows)
+	}
+	phone.pull(t)
+	if got, _ := phone.store.Addons(phone.profile.ID); names(got) != "a" {
+		t.Fatalf("phone has %q", names(got))
+	}
+	desktop.pull(t)
+	if got, _ := desktop.store.Addons(desktop.profile.ID); names(got) != "AniList a" {
+		t.Fatalf("desktop has %q after pulling", names(got))
+	}
+
+	check(t, desktop.store.EnableAddon(desktop.profile.ID, store.AniListAddon.URL, false))
+	if pending, _ := desktop.store.Pending(desktop.profile.ID); len(pending) != 0 {
+		t.Fatalf("turning a built-in addon off queued %v", pending)
+	}
+}

@@ -40,12 +40,14 @@ The protocol sends one `genre` per request (`optionsLimit` defaults to 1), so ge
 
 ## Anime classification
 
+> Extended by [ADR-0045](0045-anime-from-anilist.md) (#109): general catalogs' titles that the anime list knows by IMDb id are left out of Movies and Shows too.
+
 A catalog is anime's when:
 
 1. its type is `anime` (Kitsu's catalogs), or
 2. its addon's `catalog` resource answers only anime ids: every id prefix is `kitsu`, `mal`, `anilist` or `anidb`, with or without a separator (`mal:`, `mal_`). This catches anime addons that type their catalogs `series` or `movie`.
 
-Anime catalogs show only on Anime, so an anime addon's `series` catalogs don't fill Shows. Classification goes by catalog and addon only: Cinemeta's "Animation" genre stays a genre of Movies and Shows, and a general addon with an anime-only catalog under a general id prefix stays where its type puts it.
+Anime catalogs show only on Anime, so an anime addon's `series` catalogs don't fill Shows. Classification goes by catalog and addon (titles, since ADR-0045): Cinemeta's "Animation" genre stays a genre of Movies and Shows, and a general addon with an anime-only catalog under a general id prefix stays where its type puts it.
 
 ## State, kids and the rest
 

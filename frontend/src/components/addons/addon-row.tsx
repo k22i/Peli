@@ -14,6 +14,7 @@ import { useState, type DragEvent } from "react";
 
 import type { Addon } from "@bindings/store";
 import { configurable, ManifestFacts } from "@/components/addons/addon-dialogs";
+import { isBuiltinAddon } from "@/lib/addon-protocol";
 import { Button } from "@/components/ui/button";
 import { Menu, MenuItem, MenuPopup, MenuSeparator, MenuTrigger } from "@/components/ui/menu";
 import { Spinner } from "@/components/ui/spinner";
@@ -157,15 +158,23 @@ export function AddonRow({
         )}
         {manifest.data && <ManifestFacts manifest={manifest.data} />}
         {/* The host only: the path can hold the user's settings and keys. */}
-        <span className="truncate font-mono text-meta text-muted-foreground/80">
-          {host(addon.url)}
-        </span>
+        {isBuiltinAddon(addon.url) ? (
+          <span className="truncate text-meta text-muted-foreground/80">
+            Built into Sinag · on this device only
+          </span>
+        ) : (
+          <span className="truncate font-mono text-meta text-muted-foreground/80">
+            {host(addon.url)}
+          </span>
+        )}
         {manifest.isError && (
           <p className="mt-1 flex items-start gap-1.5 text-sm text-destructive-foreground">
             <CircleAlert aria-hidden className="mt-0.5 size-4 shrink-0" />
             <span>
-              Couldn’t load its manifest. {manifest.error.message} It stays installed, here and on
-              your other devices.
+              Couldn’t load its manifest. {manifest.error.message}{" "}
+              {isBuiltinAddon(addon.url)
+                ? "It stays installed."
+                : "It stays installed, here and on your other devices."}
             </span>
           </p>
         )}
@@ -184,7 +193,7 @@ export function AddonRow({
           <Ellipsis aria-hidden />
         </MenuTrigger>
         <MenuPopup align="end" className="w-48">
-          {(configurable(manifest.data) || manifest.isError) && (
+          {!isBuiltinAddon(addon.url) && (configurable(manifest.data) || manifest.isError) && (
             <>
               <MenuItem onClick={() => actions.configure(manifest.data)}>
                 <Settings2 aria-hidden />

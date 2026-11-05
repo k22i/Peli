@@ -121,3 +121,32 @@ func TestMarshalError(t *testing.T) {
 		}
 	}
 }
+
+func TestFetchAnswersBuiltinAddons(t *testing.T) {
+	s := NewService("test")
+	var path string
+	s.Register("anilist", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		path = r.URL.EscapedPath()
+		if strings.HasSuffix(path, "/missing.json") {
+			http.NotFound(w, r)
+			return
+		}
+		_, _ = w.Write([]byte(`{"id":"sinag.anilist"}`))
+	}))
+	got, err := s.Fetch(t.Context(), "sinag://anilist/meta/series/kitsu%3A1.json")
+	if err != nil || got.Status != 200 || got.Body != `{"id":"sinag.anilist"}` {
+		t.Errorf("Fetch = %+v, %v", got, err)
+	}
+	if path != "/meta/series/kitsu%3A1.json" {
+		t.Errorf("handler saw %q", path)
+	}
+	if got, err := s.Fetch(t.Context(), "sinag://AniList/missing.json"); err != nil || got.Status != 404 {
+		t.Errorf("Fetch(missing) = %+v, %v; want 404", got, err)
+	}
+	if _, err := s.Fetch(t.Context(), "sinag://nothing/manifest.json"); !errors.Is(err, ErrUnreachable) {
+		t.Errorf("unknown built-in: error = %v, want ErrUnreachable", err)
+	}
+	if !IsBuiltin("sinag://anilist/manifest.json") || IsBuiltin("https://anilist/manifest.json") {
+		t.Error("IsBuiltin")
+	}
+}

@@ -48,5 +48,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0042](0042-simkl-and-anilist.md) | SIMKL and AniList: connected per profile from Go, scrobbles from the player's reports, imports that only add | 2026-10-31 |
 | [0043](0043-plugin-sandbox.md) | Nuvio plugins: one goja runtime per call in a child process, a host API written from how plugins behave, streams ranked with the addons' | 2026-11-04 |
 | [0044](0044-remembered-stream-source.md) | Remembered stream source: a fingerprint per profile and show, matched by the ranking engine, replaced by whatever plays | 2026-11-05 |
+| [0045](0045-anime-from-anilist.md) | Anime from AniList: a built-in addon, kept on the device, and anime out of Movies and Shows | 2026-11-05 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

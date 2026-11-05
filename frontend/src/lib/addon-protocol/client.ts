@@ -25,6 +25,10 @@ import type {
 // pages. An addon URL can embed the user's debrid key, so neither URLs nor
 // answers are logged, and errors don't name them.
 
+// Whether an addon runs inside Sinag (#107, ADR-0045):
+// sinag://<name>/manifest.json, answered by Go and never synced to Nuvio.
+export const isBuiltinAddon = (url: string) => /^sinag:\/\//i.test(url);
+
 // Where an addon's manifest is. Lists synced from Nuvio hold some addons by
 // their base URL ("https://opensubtitles-v3.strem.io"), Stremio by the
 // manifest's, and links may use stremio://.
@@ -118,14 +122,16 @@ export function createAddonClient(transport: Transport = wailsTransport) {
   async function getText(url: string, timeout: number, signal?: AbortSignal) {
     const timer = AbortSignal.timeout(timeout);
     const both = signal ? AbortSignal.any([signal, timer]) : timer;
-    const origin = new URL(url).origin;
+    // A built-in addon is only Go's to answer.
+    const builtin = isBuiltinAddon(url);
+    const origin = builtin ? "sinag:" : new URL(url).origin;
     const failed = (error: unknown) => {
       if (signal?.aborted) throw signal.reason;
       if (timer.aborted) throw timedOut();
       throw error;
     };
 
-    if (!viaGo.has(origin)) {
+    if (!builtin && !viaGo.has(origin)) {
       let response: Response | undefined;
       try {
         response = await transport.fetch(url, { signal: both });

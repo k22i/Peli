@@ -50,6 +50,10 @@ func (s *Service) ServiceStartup(context.Context, application.ServiceOptions) er
 		return err
 	}
 	store.OnQueued(s.queued)
+	if err := store.UseBuiltins(Builtins); err != nil {
+		store.Close()
+		return err
+	}
 	s.store = store
 	return nil
 }

@@ -152,7 +152,7 @@ func TestMigrateFlagsGuest(t *testing.T) {
 	var ids []uint64
 	check(t, db.Update(func(tx *bolt.Tx) error {
 		for _, profile := range []Profile{{Name: "Kevin", NuvioIndex: ptr(1)}, {Name: "Guest"}, {Name: "Local"}} {
-			created, err := createProfile(tx, profile)
+			created, err := (&Store{}).createProfile(tx, profile)
 			if err != nil {
 				return err
 			}

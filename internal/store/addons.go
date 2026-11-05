@@ -183,6 +183,18 @@ func editAddonList(p *bolt.Bucket, edit func([]Addon) ([]Addon, error)) error {
 	if bytes.Equal(data, before) {
 		return nil
 	}
+	if err := p.Put(keyAddons, data); err != nil {
+		return err
+	}
+	// Built-in addons stay on this device (#107): an edit of only them
+	// changes nothing Nuvio has.
+	var was []Addon
+	if err := json.Unmarshal(before, &was); err != nil {
+		return err
+	}
+	if slices.Equal(SyncedAddons(was), SyncedAddons(addons)) {
+		return nil
+	}
 	base := json.RawMessage(bytes.Clone(before))
 	if queued := p.Bucket(bucketOutbox).Get(joinKey(string(SurfaceAddons), "")); queued != nil {
 		var push Push
@@ -190,9 +202,6 @@ func editAddonList(p *bolt.Bucket, edit func([]Addon) ([]Addon, error)) error {
 			return err
 		}
 		base = push.Base
-	}
-	if err := p.Put(keyAddons, data); err != nil {
-		return err
 	}
 	return queue(p, Push{Surface: SurfaceAddons, Op: OpUpsert, Item: data, Base: base})
 }

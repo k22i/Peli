@@ -47,11 +47,14 @@ func (n Nuvio) pushAddons(ctx context.Context, s nuvio.Session, index int, pushe
 	if err := json.Unmarshal(newest.Item, &list); err != nil {
 		return fmt.Errorf("backend: addons push: %w", err)
 	}
+	// Built-in addons stay on this device (#107).
+	list = store.SyncedAddons(list)
 	if newest.Base != nil {
 		var base []store.Addon
 		if err := json.Unmarshal(newest.Base, &base); err != nil {
 			return fmt.Errorf("backend: addons push base: %w", err)
 		}
+		base = store.SyncedAddons(base)
 		rows, err := n.Client.Addons(ctx, s, index)
 		if err != nil {
 			return err

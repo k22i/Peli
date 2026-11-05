@@ -4,6 +4,7 @@ import {
   AddonError,
   addonBase,
   createAddonClient,
+  isBuiltinAddon,
   manifestUrl,
   resourceUrl,
   type Transport,
@@ -165,6 +166,22 @@ describe("createAddonClient", () => {
     await client.manifest("https://other.example");
     expect(transport.fetch).toHaveBeenCalledTimes(2);
     expect(transport.fetchViaGo).toHaveBeenCalledTimes(2);
+  });
+
+  it("asks Go alone for a built-in addon", async () => {
+    const transport = fakeTransport({
+      "sinag://anilist/manifest.json": { body: cinemeta },
+    });
+    const client = createAddonClient(transport);
+
+    expect(isBuiltinAddon("sinag://anilist/manifest.json")).toBe(true);
+    expect(isBuiltinAddon("https://anilist.example/manifest.json")).toBe(false);
+    expect((await client.manifest("sinag://anilist/manifest.json")).id).toBe("com.linvo.cinemeta");
+    expect(transport.fetch).not.toHaveBeenCalled();
+    expect(transport.fetchViaGo).toHaveBeenCalledWith(
+      "sinag://anilist/manifest.json",
+      expect.any(AbortSignal),
+    );
   });
 
   it("reports an error status, even from a page without CORS headers", async () => {

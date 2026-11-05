@@ -103,6 +103,14 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 	if have == nil && c.Surface == SurfaceAddons {
 		have = []byte("[]") // a profile never given a list has none
 	}
+	if c.Surface == SurfaceAddons {
+		// Built-in addons stay where they were (#107).
+		var mine []Addon
+		if err := json.Unmarshal(have, &mine); err != nil {
+			return false, err
+		}
+		t.value = keepBuiltins(mine, t.value.([]Addon))
+	}
 	if t.watchedAt != nil && have != nil {
 		var stored Progress
 		if err := json.Unmarshal(have, &stored); err != nil {

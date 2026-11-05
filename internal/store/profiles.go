@@ -74,7 +74,7 @@ func (s *Store) Profile(id uint64) (Profile, error) {
 func (s *Store) CreateProfile(profile Profile) (Profile, error) {
 	err := s.db.Update(func(tx *bolt.Tx) error {
 		var err error
-		profile, err = createProfile(tx, profile)
+		profile, err = s.createProfile(tx, profile)
 		return err
 	})
 	if err != nil {
@@ -103,7 +103,7 @@ func (s *Store) CurrentProfile() (Profile, error) {
 			current = profiles[0]
 			return nil
 		}
-		current, err = guestProfile(tx)
+		current, err = s.guestProfile(tx)
 		return err
 	})
 	if err != nil {
@@ -138,7 +138,7 @@ func (s *Store) SwitchToGuest() (Profile, error) {
 	var guest Profile
 	err := s.db.Update(func(tx *bolt.Tx) error {
 		var err error
-		if guest, err = guestProfile(tx); err != nil {
+		if guest, err = s.guestProfile(tx); err != nil {
 			return err
 		}
 		return tx.Bucket(bucketSettings).Put(keyCurrent, u64(guest.ID))
@@ -150,7 +150,7 @@ func (s *Store) SwitchToGuest() (Profile, error) {
 }
 
 // guestProfile returns the Guest profile, creating it if there is none.
-func guestProfile(tx *bolt.Tx) (Profile, error) {
+func (s *Store) guestProfile(tx *bolt.Tx) (Profile, error) {
 	profiles, err := allProfiles(tx)
 	if err != nil {
 		return Profile{}, err
@@ -158,7 +158,7 @@ func guestProfile(tx *bolt.Tx) (Profile, error) {
 	if i := slices.IndexFunc(profiles, func(p Profile) bool { return p.Guest }); i >= 0 {
 		return profiles[i], nil
 	}
-	return createProfile(tx, Profile{Name: "Guest", Guest: true})
+	return s.createProfile(tx, Profile{Name: "Guest", Guest: true})
 }
 
 // SetCurrentProfile makes profile id the one in use.
@@ -208,7 +208,7 @@ func (s *Store) LinkNuvioProfiles(account string, nuvio []Profile) ([]Profile, e
 				return p.NuvioIndex != nil && *p.NuvioIndex == *profile.NuvioIndex
 			})
 			if linked < 0 {
-				if nuvio[i], err = createProfile(tx, profile); err != nil {
+				if nuvio[i], err = s.createProfile(tx, profile); err != nil {
 					return err
 				}
 				continue
@@ -270,7 +270,8 @@ func removeNuvioProfiles(tx *bolt.Tx) error {
 	return settings.Delete(keyAccount)
 }
 
-func createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
+// createProfile adds profile, offered the built-in addons (UseBuiltins).
+func (s *Store) createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
 	if err := validateProfile(tx, profile, 0); err != nil {
 		return Profile{}, err
 	}
@@ -288,6 +289,9 @@ func createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
 		if _, err := p.CreateBucket(name); err != nil {
 			return Profile{}, err
 		}
+	}
+	if err := offerBuiltins(p, s.builtins()); err != nil {
+		return Profile{}, err
 	}
 	return profile, put(p, keyProfile, profile)
 }
