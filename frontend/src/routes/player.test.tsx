@@ -386,9 +386,12 @@ describe("player", () => {
     await openPlayer("S1 · E2 · Cat’s in the Bag");
     expect(screen.getByText("S1 · E2 · Cat’s in the Bag")).toBeInTheDocument();
     emit("player:state", playing);
-    expect(await screen.findByText("10:00 / 2:00:00")).toBeInTheDocument();
+    // The time played at the bar's start, what's left at its end.
+    expect(await screen.findByTestId("elapsed")).toHaveTextContent("10:00");
+    expect(screen.getByTestId("remaining")).toHaveTextContent("-1:50:00");
     emit("player:time", { position: 601, duration: 7200, buffered: 30 });
-    expect(await screen.findByText("10:01 / 2:00:00")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByTestId("elapsed")).toHaveTextContent("10:01"));
+    expect(screen.getByTestId("remaining")).toHaveTextContent("-1:49:59");
     expect(screen.getByRole("slider", { name: "Seek" })).toHaveAttribute(
       "aria-valuetext",
       "10:01 of 2:00:00",
@@ -402,10 +405,10 @@ describe("player", () => {
 
     await user.click(await screen.findByRole("button", { name: "Forward 10 seconds" }));
     expect(mocks.seek).toHaveBeenLastCalledWith(610);
-    expect(screen.getByText("10:10 / 2:00:00")).toBeInTheDocument();
+    expect(screen.getByTestId("elapsed")).toHaveTextContent("10:10");
     // A time event from before the seek doesn't take it back.
     emit("player:time", { position: 600.2, duration: 7200, buffered: 0 });
-    expect(screen.getByText("10:10 / 2:00:00")).toBeInTheDocument();
+    expect(screen.getByTestId("elapsed")).toHaveTextContent("10:10");
     // Twice quickly: from where the first one went.
     await user.click(screen.getByRole("button", { name: "Forward 10 seconds" }));
     await waitFor(() => expect(mocks.seek).toHaveBeenLastCalledWith(620));
@@ -502,6 +505,42 @@ describe("player", () => {
     emit("player:state", { ...withTracks, mini: true });
     await user.click(screen.getByRole("button", { name: "Exit mini player" }));
     expect(mocks.setMini).toHaveBeenLastCalledWith(false);
+  });
+
+  it("keeps the volume slider in the bar, and the mini player's time as it was", async () => {
+    await openPlayer();
+    emit("player:state", playing);
+    // In the bar, with no hover to reveal it.
+    expect(await screen.findByRole("slider", { name: "Volume" })).toBeInTheDocument();
+    expect(screen.getByTestId("elapsed")).toBeInTheDocument();
+
+    emit("player:state", { ...playing, mini: true });
+    // The mini player has no room for the two times: one reads "pos / duration".
+    expect(await screen.findByText("10:00 / 2:00:00")).toBeInTheDocument();
+    expect(screen.queryByTestId("elapsed")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("remaining")).not.toBeInTheDocument();
+  });
+
+  it("marks a click or Space on the video at the centre, for a moment", async () => {
+    await openPlayer();
+    emit("player:state", playing);
+    const user = userEvent.setup();
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByTestId("playback-flash")).not.toBeInTheDocument();
+
+    // The video is the button behind the controls.
+    await user.click(screen.getByTestId("controls").previousElementSibling!);
+    expect(mocks.setPaused).toHaveBeenLastCalledWith(true);
+    // It's for the eye: the Play button's label already says it.
+    expect(screen.getByTestId("playback-flash")).toHaveAttribute("aria-hidden", "true");
+    expect(await screen.findByRole("button", { name: "Play" })).toBeInTheDocument();
+    await waitFor(() => expect(screen.queryByTestId("playback-flash")).not.toBeInTheDocument(), {
+      timeout: 2000,
+    });
+
+    await user.keyboard(" ");
+    expect(mocks.setPaused).toHaveBeenLastCalledWith(false);
+    expect(screen.getByTestId("playback-flash")).toBeInTheDocument();
   });
 
   it("Space on a focused button only pauses", async () => {

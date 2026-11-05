@@ -190,6 +190,23 @@ export const contrastPairs: ContrastPair[] = [
     background: ["#ffffff", "#000000e0"],
     min: AA_TEXT,
   },
+  // The player (#121): its text sits on strong media glass over whatever the
+  // video shows, so plain white is what holds over a white frame; muted white
+  // (white/70) doesn't (3.2:1) and isn't used there. The shortcut keys sit on
+  // a darker chip, and the failure card over the scrim, where muted text is
+  // fine.
+  {
+    label: "Player shortcut key, over white",
+    foreground: "#ffffff",
+    background: ["#ffffff", "#0000008c", "#0000004d"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Player failure text, muted, over the scrim",
+    foreground: "#ffffffb3",
+    background: ["#ffffff", "#000000bf", "#0000008c"],
+    min: AA_TEXT,
+  },
   // The sidebar's active item (#114): brand-soft over the thick glass, over
   // the worst backdrops. The icon is brand (3:1), the label foreground.
   {

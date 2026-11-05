@@ -10,7 +10,10 @@ import { cn } from "@/lib/utils";
 // name when it's in one). Dragging scrubs (keyframe seeks, so the picture keeps
 // up) and lands exactly when let go; arrow keys step a second, Page Up and
 // Down ten. Between the ~4 a second time events the played part slides on
-// in a linear transition, so it moves smoothly.
+// in a linear transition, so it moves smoothly. The track is 6 px and grows
+// to 10 px under the pointer or a drag (#121, with the spring curve); the
+// thumb only shows then, or on keyboard focus. The time under the pointer is
+// a small glass pill.
 export function SeekBar({
   position,
   duration,
@@ -90,7 +93,7 @@ export function SeekBar({
     >
       <Slider.Control
         data-testid="seek-bar"
-        className="relative flex h-5 cursor-pointer touch-none items-center select-none data-disabled:cursor-default"
+        className="relative flex h-6 cursor-pointer touch-none items-center select-none data-disabled:cursor-default"
         onPointerMove={(event) => known && setHover(pointerAt(event))}
         onPointerLeave={() => setHover(undefined)}
       >
@@ -98,17 +101,20 @@ export function SeekBar({
           <span
             aria-hidden
             style={{ left: `${percent(label)}%` }}
-            className="pointer-events-none absolute bottom-full mb-2 -translate-x-1/2 rounded-md bg-black/80 px-1.5 py-0.5 font-mono text-xs tabular-nums"
+            className="pointer-events-none absolute bottom-full mb-3 flex -translate-x-1/2 items-center rounded-full px-2.5 py-1 font-mono text-meta whitespace-nowrap text-white tabular-nums glass-media-strong"
           >
             {labelSegment && (
-              <span className="me-1.5 font-sans text-warning">
+              // White on the glass (amber text fails over a white frame); the
+              // dot carries the segment's colour.
+              <span className="me-1.5 flex items-center gap-1.5 font-sans">
+                <span aria-hidden className="size-1.5 rounded-full bg-warning" />
                 {segmentNames[labelSegment.kind] ?? labelSegment.kind}
               </span>
             )}
             {formatTime(label)}
           </span>
         )}
-        <Slider.Track className="relative h-1 w-full rounded-full bg-white/25 transition-[height] group-hover/seek:h-1.5 group-data-dragging/seek:h-1.5">
+        <Slider.Track className="relative h-1.5 w-full rounded-full bg-white/25 transition-[height] duration-300 ease-spring motion-reduce:transition-none group-hover/seek:h-2.5 group-data-dragging/seek:h-2.5">
           <div
             data-testid="buffered"
             style={{

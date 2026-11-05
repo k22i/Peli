@@ -15,7 +15,9 @@ import { cn } from "@/lib/utils";
 // watched, it gets the next one ready and counts down to the end. Play now
 // (or the end) sets `starting`; once the next is ready, or there's no
 // stream for it, onStart gets what was found and the card hides. In the
-// mini player (#70) it's smaller, without the thumbnail.
+// mini player (#70) it's smaller, without the thumbnail. A strong media-glass
+// card (#121): the player lays it out above the control bar, at the end, and
+// its text is plain white so it reads over a white frame too.
 export function NextEpisode({
   profileId,
   meta,
@@ -56,8 +58,8 @@ export function NextEpisode({
     <section
       aria-label="Next episode"
       className={cn(
-        "absolute flex flex-col overflow-hidden rounded-2xl bg-black/75 shadow-2xl ring-1 ring-white/10 backdrop-blur-md",
-        mini ? "right-3 bottom-16 w-64" : "right-6 bottom-28 w-120 max-w-[calc(100%-3rem)]",
+        "dark flex flex-col overflow-hidden rounded-3xl text-white glass-media-strong",
+        mini ? "w-64" : "w-120 max-w-full",
       )}
     >
       {next.thumbnail && !mini && (
@@ -77,19 +79,23 @@ export function NextEpisode({
       )}
       <div className={cn("flex flex-col", mini ? "gap-2 p-3" : "gap-3 p-4")}>
         <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="text-xs font-medium text-white/60">
+          <p className="text-meta font-medium">
             Next episode in{" "}
             <span className="tabular-nums" aria-label={`${Math.ceil(remaining)} seconds`}>
               {formatTime(Math.ceil(remaining))}
             </span>
           </p>
           <p className="truncate text-sm font-semibold">{name}</p>
-          <p aria-live="polite" className="flex items-center gap-1.5 text-xs text-white/60">
+          <p aria-live="polite" className="flex items-center gap-1.5 text-meta">
             {preparedText(prepared)}
           </p>
         </div>
         <div className="flex gap-2">
-          <Button size="sm" className="rounded-full" onClick={onPlay}>
+          <Button
+            size="sm"
+            className="rounded-full border-transparent bg-white text-black hover:bg-white/90"
+            onClick={onPlay}
+          >
             <Play className="fill-current" />
             {prepared.status === "none" ? "Choose a stream" : "Play now"}
           </Button>
