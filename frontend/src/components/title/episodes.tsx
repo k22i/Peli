@@ -83,7 +83,7 @@ export function Episodes({
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-6 gap-y-3 py-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:glass group-data-stuck/header:py-2">
           <h2
             id="episodes"
-            className="col-start-1 row-start-1 ps-gutter font-heading text-heading font-stretch-semi-expanded motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:ps-[calc(var(--spacing-gutter)+3.25rem)]"
+            className="col-start-1 row-start-1 ps-gutter text-heading motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:ps-[calc(var(--spacing-gutter)+3.25rem)]"
           >
             Episodes
           </h2>

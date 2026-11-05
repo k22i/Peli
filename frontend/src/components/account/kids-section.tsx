@@ -27,16 +27,16 @@ export function KidsSection({ profile }: { profile: Profile }) {
 
   return (
     <section className="flex flex-col gap-3" aria-labelledby={headingId}>
-      <h3 id={headingId} className="flex items-center gap-2 text-sm font-medium">
+      <h3 id={headingId} className="flex items-center gap-2 text-card">
         <Baby className="size-4" aria-hidden />
         Kids profile
       </h3>
       <div className="flex items-center justify-between gap-4">
         <span className="flex flex-col">
-          <span id={`${headingId}-label`} className="text-sm">
+          <span id={`${headingId}-label`} className="text-body">
             Only show what I choose
           </span>
-          <span id={`${headingId}-description`} className="text-sm text-muted-foreground">
+          <span id={`${headingId}-description`} className="text-caption text-muted-foreground">
             {needsPin
               ? "Set a PIN first. It becomes the parent PIN that leaves this profile."
               : "Leaving this profile, and changing it, asks for its PIN."}
@@ -68,7 +68,7 @@ function AllowedAddons({ profileId }: { profileId: number }) {
   const allowed = scope.data?.addons ?? [];
   if (list.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">
+      <p className="text-body text-muted-foreground">
         This profile has no addons yet, so it shows nothing. Install some, then come back and choose
         which ones it can see.
       </p>
@@ -89,7 +89,7 @@ function AllowedAddons({ profileId }: { profileId: number }) {
 
   return (
     <div className="flex flex-col gap-2">
-      <p id={labelId} className="text-sm text-muted-foreground">
+      <p id={labelId} className="text-body text-muted-foreground">
         This profile’s catalogs and search show only these addons.
         {allowed.length === 0 && " None is chosen yet, so it shows nothing."}
       </p>
@@ -97,7 +97,7 @@ function AllowedAddons({ profileId }: { profileId: number }) {
         {list.map((addon) => (
           <li key={addon.url}>
             <label className="flex items-center justify-between gap-4 px-3 py-2.5">
-              <span className="min-w-0 truncate text-sm">
+              <span className="min-w-0 truncate text-body">
                 {addon.name || addon.url}
                 {!addon.enabled && <span className="text-muted-foreground"> (off)</span>}
               </span>

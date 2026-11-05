@@ -26,7 +26,7 @@ function MiniWindow() {
           style={{ backgroundImage: art }}
         >
           <code className="font-mono text-meta opacity-80">bleed</code>
-          <span className="font-heading text-heading">Art under the glass</span>
+          <span className="text-heading">Art under the glass</span>
         </div>
         <ul className="flex gap-3 py-4 pe-5 ps-5">
           {Array.from({ length: 4 }, (_, index) => (

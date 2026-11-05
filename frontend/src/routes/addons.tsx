@@ -32,7 +32,7 @@ function Addons() {
         <Manager profile={profile} />
       ) : (
         <>
-          <h1 className="font-heading text-title font-stretch-semi-expanded">Addons</h1>
+          <h1 className="text-title">Addons</h1>
           <Skeleton className="h-40 rounded-2xl" />
         </>
       )}
@@ -107,8 +107,8 @@ function Manager({ profile }: { profile: Profile }) {
     <>
       <header className="flex items-end justify-between gap-4">
         <div className="flex flex-col gap-1">
-          <h1 className="font-heading text-title font-stretch-semi-expanded">Addons</h1>
-          <p className="text-sm text-muted-foreground">{syncNote(profile)}</p>
+          <h1 className="text-title">Addons</h1>
+          <p className="text-body text-muted-foreground">{syncNote(profile)}</p>
         </div>
         <Button size="lg" onClick={() => setInstalling(true)} disabled={addons.isPending}>
           <Plus aria-hidden />
@@ -119,12 +119,12 @@ function Manager({ profile }: { profile: Profile }) {
       {addons.isPending ? (
         <Skeleton className="h-40 rounded-2xl" />
       ) : addons.isError ? (
-        <p className="text-sm text-destructive-foreground">The addons could not be read.</p>
+        <p className="text-body text-destructive-foreground">The addons could not be read.</p>
       ) : list.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No addons installed.</p>
+        <p className="text-body text-muted-foreground">No addons installed.</p>
       ) : (
         <section className="flex flex-col gap-3">
-          <p id="addon-reorder-help" className="text-sm text-muted-foreground">
+          <p id="addon-reorder-help" className="text-body text-muted-foreground">
             Catalogs and streams come from addons in this order. Drag to reorder, or use the arrow
             keys on an addon’s handle.
           </p>

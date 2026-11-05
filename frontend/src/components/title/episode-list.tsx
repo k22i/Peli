@@ -211,17 +211,12 @@ function EpisodeRow({
           )}
         </span>
         <span className="flex min-w-0 flex-col gap-1.5 py-1">
-          <span className="font-mono text-meta text-muted-foreground">{line.join(" · ")}</span>
-          <span
-            className={cn(
-              "font-heading text-heading",
-              aired ? "text-foreground" : "text-muted-foreground",
-            )}
-          >
+          <span className="text-num text-caption text-muted-foreground">{line.join(" · ")}</span>
+          <span className={cn("text-heading", aired ? "text-foreground" : "text-muted-foreground")}>
             {title}
           </span>
           {episode.overview && (
-            <span className="line-clamp-3 text-sm text-pretty text-muted-foreground">
+            <span className="line-clamp-3 text-body text-pretty text-muted-foreground">
               {episode.overview}
             </span>
           )}

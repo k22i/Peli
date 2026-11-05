@@ -121,7 +121,15 @@ function Title({
           size="title"
           title={shown.name}
           logo={art?.logo}
-          meta={shown.releaseInfo ? [shown.releaseInfo] : []}
+          meta={
+            shown.releaseInfo
+              ? [
+                  <span key="year" className="text-num">
+                    {shown.releaseInfo}
+                  </span>,
+                ]
+              : []
+          }
           synopsis={shown.description}
           {...backdrops(shown, art)}
         />
@@ -327,19 +335,22 @@ function backdrops(
 
 // "2008–2013 · 49 min · Crime, Drama, Thriller", then the IMDb rating in a
 // small media-glass pill.
-function metaLine(meta: Meta): string[] {
-  return [meta.releaseInfo, meta.runtime, (meta.genres ?? []).slice(0, 3).join(", ")].filter(
-    (item): item is string => Boolean(item),
-  );
+// The year and the runtime are numbers (mono), the genres are words.
+function metaLine(meta: Meta): { text: string; numeric: boolean }[] {
+  return [
+    { text: meta.releaseInfo, numeric: true },
+    { text: meta.runtime, numeric: true },
+    { text: (meta.genres ?? []).slice(0, 3).join(", "), numeric: false },
+  ].filter((item): item is { text: string; numeric: boolean } => Boolean(item.text));
 }
 
 function TitleMeta({ meta }: { meta: Meta }) {
   return (
     <span className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-      {metaLine(meta).map((item, index) => (
-        <span key={item} className="flex items-center gap-2">
+      {metaLine(meta).map(({ text, numeric }, index) => (
+        <span key={text} className="flex items-center gap-2">
           {index > 0 && <span aria-hidden>·</span>}
-          {item}
+          <span className={numeric ? "text-num" : undefined}>{text}</span>
         </span>
       ))}
       {meta.imdbRating && (

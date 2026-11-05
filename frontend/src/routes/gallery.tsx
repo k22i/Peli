@@ -15,8 +15,8 @@ function Gallery() {
     <div className="flex flex-col gap-section pb-section">
       <header className="flex flex-wrap items-end justify-between gap-4 px-gutter pt-8">
         <div className="flex flex-col gap-2">
-          <p className="font-mono text-meta tracking-widest text-brand uppercase">Sinag</p>
-          <h1 className="font-heading text-display font-stretch-expanded">Design system</h1>
+          <p className="text-label text-brand">Sinag</p>
+          <h1 className="text-display">Design system</h1>
           <p className="max-w-xl text-pretty text-muted-foreground">
             Apple’s glass and motion, Vercel’s monochrome precision, Nuvio’s cinema. One theme, in
             light and dark.

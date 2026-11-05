@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 import { GallerySection } from "@/components/gallery/gallery-section";
 import { Materials } from "@/components/gallery/materials";
 import { Shell } from "@/components/gallery/shell";
-import { TypeSpecimens } from "@/components/gallery/type-specimens";
+import { TypeSample } from "@/components/gallery/type-sample";
 import { Badge } from "@/components/ui/badge";
 import { contrastPairs, contrastRatio } from "@/lib/contrast";
 import { useTheme } from "@/lib/theme";
@@ -25,13 +25,17 @@ const swatches = [
   ["warning", "Warning"],
 ] as const;
 
+// The scale (#112, option B). Each class is the real utility: size, weight, line
+// height and tracking from the --text-* tokens, family and width from index.css.
 const typeScale = [
-  ["text-display", "Display · hero titles", "font-heading text-display font-stretch-expanded"],
-  ["text-title", "Title · page headings", "font-heading text-title font-stretch-semi-expanded"],
-  ["text-heading", "Heading · rows", "font-heading text-heading font-stretch-semi-expanded"],
-  ["text-base", "Body · synopses, settings", "text-base"],
-  ["text-sm", "UI · buttons, nav, card titles", "text-sm font-medium"],
-  ["text-meta", "Meta · 2025 · 1h 52m · PG-13", "font-mono text-meta text-muted-foreground"],
+  ["text-display", "Display · hero titles", "112.5% width · 700 · −0.03em · clamp 2.5–4.5rem"],
+  ["text-title", "Title · page headings", "112.5% width · 660 · −0.02em · 2.25rem"],
+  ["text-heading", "Heading · rows", "100% width · 640 · −0.015em · 1.375rem"],
+  ["text-body", "Body · synopses, settings, UI", "15px · 450 · 0 · line-height 1.45"],
+  ["text-card", "Card caption · Low Tide", "15px · 550"],
+  ["text-caption", "Meta line · secondary text", "13px · line-height 1.4"],
+  ["text-label", "Eyebrow · Continue watching", "Mona Sans 12px · 600 · +0.06em · uppercase"],
+  ["text-num", "2025 · 1h 52m · S2 · E5 · 1:12:08", "Geist Mono, tabular: numbers and codes only"],
 ] as const;
 
 // A pairing's colour: a token's current value, or a literal hex.
@@ -141,19 +145,29 @@ export function Foundations() {
 
       <GallerySection
         title="Type"
-        description="Mona Sans, a variable face with a width axis: headings run wide for a marquee feel, UI text stays at normal width. Geist Mono sets metadata."
+        description="Mona Sans, a variable face with a width axis: hero and page titles run at 112.5% width, row headings and everything else at normal width. Geist Mono sets numbers and codes only; words, even small uppercase labels, are Mona Sans. Body is 15px."
       >
         <ul className="flex flex-col divide-y">
-          {typeScale.map(([token, sample, className]) => (
+          {typeScale.map(([token, sample, spec]) => (
             <li key={token} className="flex flex-col gap-1 py-4 first:pt-0">
-              <code className="text-meta text-muted-foreground">{token}</code>
-              <span className={cn("truncate", className)}>{sample}</span>
+              <div className="flex flex-wrap items-baseline gap-x-4">
+                <code className="text-meta text-muted-foreground">{token}</code>
+                <span className="text-caption text-muted-foreground">{spec}</span>
+              </div>
+              <span className={cn("truncate", token === "text-label" && "text-brand", token)}>
+                {sample}
+              </span>
             </li>
           ))}
         </ul>
       </GallerySection>
 
-      <TypeSpecimens />
+      <GallerySection
+        title="Type in use"
+        description="The scale on a hero, a row with two captioned posters, a title page, a settings row and a player time readout. Mono is only the numbers: years, runtimes, S2 · E5, times."
+      >
+        <TypeSample />
+      </GallerySection>
 
       <GallerySection
         title="Shape, depth and motion"

@@ -115,9 +115,7 @@ function SignIn() {
 
       <div className="flex flex-col gap-8 glass-thick rounded-3xl p-8">
         <header className="flex flex-col gap-2">
-          <h1 className="font-heading text-title font-stretch-semi-expanded">
-            {own ? "Sign in to your server" : "Sign in to Nuvio"}
-          </h1>
+          <h1 className="text-title">{own ? "Sign in to your server" : "Sign in to Nuvio"}</h1>
           <p className="text-pretty text-muted-foreground">
             {own
               ? `Use the email and password of your account on ${own}.`
@@ -189,7 +187,7 @@ function SignIn() {
           </Link>
         )}
 
-        <p className="flex gap-2 text-sm text-muted-foreground">
+        <p className="flex gap-2 text-body text-muted-foreground">
           <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
           Sinag doesn’t keep your password. Your session is stored in this computer’s keychain.
         </p>

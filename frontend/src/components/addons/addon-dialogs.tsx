@@ -27,7 +27,7 @@ import { addonLink, configureUrl } from "@/lib/addons";
 // an address that isn't an addon is refused here, not installed broken.
 
 // Labels are Mona Sans caps; the values are mono (codes).
-const label = "font-sans text-xs font-semibold tracking-[0.06em] uppercase";
+const label = "text-label";
 
 // What an addon offers, in a line each: the content types it knows, and the
 // resources it answers.

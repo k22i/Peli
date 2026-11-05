@@ -95,7 +95,7 @@ export function Artwork({
         <span
           aria-hidden
           className={cn(
-            "absolute inset-x-0 bottom-0 line-clamp-3 p-3 font-heading text-lg leading-tight font-bold text-balance text-white font-stretch-semi-expanded",
+            "absolute inset-x-0 bottom-0 line-clamp-3 p-3 font-heading text-lg leading-tight font-bold text-balance text-white",
             titleClassName,
           )}
         >

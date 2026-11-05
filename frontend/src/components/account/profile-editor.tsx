@@ -206,13 +206,13 @@ function EditorForm({
           </Alert>
         )}
         {local ? (
-          <p className="text-sm text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             The Guest stays on this computer. Its name doesn’t reach Nuvio.
           </p>
         ) : (
           <>
             <section className="flex flex-col gap-3" aria-labelledby="avatar-heading">
-              <h3 id="avatar-heading" className="text-sm font-medium">
+              <h3 id="avatar-heading" className="text-card">
                 Avatar
               </h3>
               {avatars.isPending && (
@@ -223,7 +223,7 @@ function EditorForm({
                 </div>
               )}
               {avatars.isError && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body text-muted-foreground">
                   Nuvio’s avatars need a connection. The name and colour can still change.
                 </p>
               )}
@@ -250,7 +250,7 @@ function EditorForm({
             </section>
 
             <section className="flex flex-col gap-3" aria-labelledby="color-heading">
-              <h3 id="color-heading" className="text-sm font-medium">
+              <h3 id="color-heading" className="text-card">
                 Colour
               </h3>
               <RadioGroup
@@ -277,13 +277,13 @@ function EditorForm({
 
             {profile && (
               <section className="flex flex-col gap-3" aria-labelledby="pin-heading">
-                <h3 id="pin-heading" className="flex items-center gap-2 text-sm font-medium">
+                <h3 id="pin-heading" className="flex items-center gap-2 text-card">
                   <Lock className="size-4" aria-hidden />
                   PIN
                 </h3>
                 {profile.pinEnabled ? (
                   <>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body text-muted-foreground">
                       This profile needs its PIN to open.
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -308,7 +308,7 @@ function EditorForm({
                   </>
                 ) : (
                   <>
-                    <p className="text-sm text-muted-foreground">No PIN set.</p>
+                    <p className="text-body text-muted-foreground">No PIN set.</p>
                     <div className="flex flex-wrap gap-2">
                       <Button
                         type="button"
@@ -325,7 +325,7 @@ function EditorForm({
 
             {profile && <KidsSection profile={profile} />}
 
-            <p className="text-sm text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               {profile
                 ? "Changes show on every device signed in to this Nuvio account."
                 : "The new profile starts empty, with Nuvio’s default addons, on every device."}

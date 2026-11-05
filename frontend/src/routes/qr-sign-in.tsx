@@ -66,9 +66,7 @@ function QRSignIn() {
 
       <div className="flex flex-col gap-6 glass-thick rounded-3xl p-8">
         <header className="flex flex-col gap-2">
-          <h1 className="font-heading text-title font-stretch-semi-expanded">
-            Sign in with your phone
-          </h1>
+          <h1 className="text-title">Sign in with your phone</h1>
           <p className="text-pretty text-muted-foreground">
             Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and
             approve Sinag.
@@ -103,7 +101,7 @@ function QRSignIn() {
           {code && !expired && !error && (
             <>
               <div className="flex flex-col items-center gap-2">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body text-muted-foreground">
                   Or go to{" "}
                   <button
                     type="button"
@@ -125,7 +123,7 @@ function QRSignIn() {
                 </p>
               </div>
               <div className="flex w-full flex-col items-center gap-2">
-                <p className="flex items-center gap-2 text-sm whitespace-nowrap text-muted-foreground">
+                <p className="flex items-center gap-2 text-body whitespace-nowrap text-muted-foreground">
                   <Spinner className="size-4" aria-hidden />
                   Waiting for approval ·{" "}
                   <span className="tabular-nums">{formatLeft(secondsLeft)}</span>
@@ -150,7 +148,7 @@ function QRSignIn() {
           />
         )}
 
-        <p className="flex gap-2 text-sm text-muted-foreground">
+        <p className="flex gap-2 text-body text-muted-foreground">
           <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
           You never type your password here. Your session is stored in this computer’s keychain.
         </p>

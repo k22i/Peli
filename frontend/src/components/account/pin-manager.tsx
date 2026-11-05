@@ -163,14 +163,14 @@ function PinWizard({
   return (
     <DialogPanel className="flex flex-col items-center gap-4">
       <ProfileAvatar profile={profile} className="size-16 text-xl" />
-      <p className="text-sm font-medium">{profile.name}</p>
+      <p className="text-card">{profile.name}</p>
 
-      <p className="text-sm text-muted-foreground">{kind ? stepLabels[kind] : ""}</p>
+      <p className="text-body text-muted-foreground">{kind ? stepLabels[kind] : ""}</p>
 
       <PinField value={digits} disabled={waiting} onValueChange={enter} />
 
       {problem && (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className="text-body text-destructive">
           {problem.description ? problem.title + " " + problem.description : problem.title}
         </p>
       )}

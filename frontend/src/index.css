@@ -37,8 +37,10 @@
   body {
     /* coss ui: popups stack above the app without z-index wars. No
        background here: the app shell paints its own, so a route without the
-       shell (the player) can be transparent. */
-    @apply relative isolate text-foreground select-none;
+       shell (the player) can be transparent. text-body: body and UI text is
+       15px / 450 (#112) and content inherits it; dense controls (menus,
+       chips, sidebar items) set text-sm themselves. */
+    @apply relative isolate text-body text-foreground select-none;
   }
 
   /* The fallback focus ring for anything that doesn't draw its own (coss
@@ -218,23 +220,44 @@
  * text-display, px-gutter, shadow-lift, ease-spring, …
  */
 @theme {
-  /* Type. Mona Sans has a width axis: display and title sizes set it wide
-     (font-stretch) for marquee-style headings; body text stays at 100%. */
+  /* Type (#112, option B · Semi-wide). Mona Sans has a width axis: the hero
+     and page titles run at 112.5% (font-stretch), row headings and everything
+     else at 100%. Each size token carries its weight, line height and
+     tracking (negative when large, ~0 for body, positive for 12px labels);
+     the .text-* utilities below add the family and the width, so a page
+     writes `text-display` and never pairs a font-stretch class by hand.
+     Mono (Geist) is for numbers and codes only: years, runtimes, S2 · E5,
+     times, sizes, versions. */
   --text-display: clamp(2.5rem, 1.25rem + 3.5vw, 4.5rem);
   --text-display--line-height: 0.95;
-  --text-display--letter-spacing: -0.025em;
-  --text-display--font-weight: 760;
-  --text-title: 1.75rem;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+  --text-title: 2.25rem;
   --text-title--line-height: 1.1;
   --text-title--letter-spacing: -0.02em;
-  --text-title--font-weight: 680;
-  --text-heading: 1.125rem;
-  --text-heading--line-height: 1.3;
-  --text-heading--letter-spacing: -0.01em;
-  --text-heading--font-weight: 620;
+  --text-title--font-weight: 660;
+  --text-heading: 1.375rem;
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: -0.015em;
+  --text-heading--font-weight: 640;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.45;
+  --text-body--letter-spacing: 0;
+  --text-body--font-weight: 450;
+  --text-card: 0.9375rem;
+  --text-card--line-height: 1.3;
+  --text-card--letter-spacing: 0;
+  --text-card--font-weight: 550;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0;
   --text-meta: 0.75rem;
   --text-meta--line-height: 1.4;
   --text-meta--letter-spacing: 0.01em;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.06em;
+  --text-label--font-weight: 600;
 
   /* Spacing. The page gutter grows with the window; rows sit a section apart. */
   --spacing-gutter: clamp(1.25rem, 0.5rem + 2.5vw, 3rem);
@@ -400,6 +423,42 @@
   --glass-stroke: #ffffff14;
   --glass-sheen: #ffffff1a;
   --glass-solid: #1c1c1e;
+}
+
+/*
+ * Type utilities (#112). Size, weight, line height and tracking come from the
+ * --text-* tokens above; these add what a token can't carry: the family and
+ * the width axis. A heading is one class (`text-title`), so pages never pair
+ * `font-heading` with a font-stretch class. Tailwind merges each with the
+ * token-driven utility of the same name.
+ */
+@utility text-display {
+  font-family: var(--font-heading);
+  font-stretch: 112.5%;
+}
+
+@utility text-title {
+  font-family: var(--font-heading);
+  font-stretch: 112.5%;
+}
+
+@utility text-heading {
+  font-family: var(--font-heading);
+  font-stretch: 100%;
+}
+
+/* Eyebrows and labels ("Continue watching", "Director", "Top pick"): Mona
+   Sans 12px, 600, +0.06em, uppercase. Words are never mono. */
+@utility text-label {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+}
+
+/* Numbers and codes: years, runtimes, S2 · E5, times, sizes, versions.
+   Geist Mono, tabular so a value that updates in place doesn't jiggle. */
+@utility text-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 /*

@@ -241,7 +241,7 @@ export function Row<T>({
       className={cn("group/row relative", className)}
     >
       <div className="flex items-baseline justify-between gap-4 px-gutter pb-1">
-        <h2 id={headingId} className="font-heading text-heading font-stretch-semi-expanded">
+        <h2 id={headingId} className="text-heading">
           {title}
         </h2>
         {action}

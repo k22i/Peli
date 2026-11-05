@@ -117,7 +117,7 @@ function TmdbForm({ hasKey, onDone }: { hasKey: boolean; onDone: () => void }) {
             <AlertDescription>{problem.description}</AlertDescription>
           </Alert>
         )}
-        <p className="text-sm text-muted-foreground">{tmdbNotice}</p>
+        <p className="text-body text-muted-foreground">{tmdbNotice}</p>
       </DialogPanel>
       <DialogFooter>
         {hasKey && (

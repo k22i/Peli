@@ -56,7 +56,7 @@ export function StreamSwitcher({
           <div aria-live="polite">
             {status &&
               (status.failed ? (
-                <div role="alert" className="flex items-start gap-2 text-sm">
+                <div role="alert" className="flex items-start gap-2 text-body">
                   <AlertCircle
                     aria-hidden
                     className="mt-0.5 size-4 shrink-0 text-destructive-foreground"
@@ -67,7 +67,7 @@ export function StreamSwitcher({
                   </p>
                 </div>
               ) : (
-                <p className="flex items-center gap-2 text-sm">
+                <p className="flex items-center gap-2 text-body">
                   <Spinner className="size-3.5" />
                   {status.text}
                 </p>
@@ -110,7 +110,7 @@ function Choices({
 
   if (sources.length === 0) {
     return (
-      <div className="flex justify-center px-6 py-12 text-center text-sm text-muted-foreground">
+      <div className="flex justify-center px-6 py-12 text-center text-body text-muted-foreground">
         {loading ? (
           <Spinner className="size-6" />
         ) : (

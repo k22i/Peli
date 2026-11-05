@@ -108,9 +108,7 @@ const folderTitle = (folder: CollectionFolder) =>
 
 // The collection's name above the title: Mona Sans, small, uppercase and
 // tracked (not the hero's mono).
-const eyebrow = (collection: Collection) => (
-  <span className="font-sans font-semibold tracking-[0.06em]">{collection.title}</span>
-);
+const eyebrow = (collection: Collection) => <span>{collection.title}</span>;
 
 // The header takes the cover's shape (#119). A poster or square cover stands
 // beside the title block, over a haze of its own colours; anything else is a
@@ -171,10 +169,8 @@ function CoverHeader({
         <Artwork src={cover} use={poster ? "poster" : "landscape"} title={folder.title} />
       </div>
       <div className="flex min-w-0 flex-col gap-3 pb-2">
-        <p className="text-meta font-semibold tracking-[0.06em] text-brand uppercase">
-          {collection.title}
-        </p>
-        <h1 className="font-heading text-display text-balance font-stretch-expanded">
+        <p className="text-label text-brand">{collection.title}</p>
+        <h1 className="text-display text-balance">
           {folder.logo ? <Logo src={folder.logo} title={title} className="max-h-24" /> : title}
         </h1>
       </div>

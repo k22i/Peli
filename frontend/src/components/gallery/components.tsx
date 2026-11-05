@@ -62,9 +62,15 @@ export function Components() {
           title="The Lighthouse Keeper"
           eyebrow="New season"
           meta={[
-            "2024",
-            "2h 08m",
-            "PG-13",
+            <span key="year" className="text-num">
+              2024
+            </span>,
+            <span key="runtime" className="text-num">
+              2h 08m
+            </span>,
+            <span key="rating" className="text-num">
+              PG-13
+            </span>,
             <Badge key="4k" variant="outline" size="sm">
               4K
             </Badge>,

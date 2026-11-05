@@ -83,7 +83,7 @@ function Entry({
     <details open={open} className="group rounded-lg border">
       <summary className="flex cursor-pointer items-baseline justify-between gap-4 rounded-lg px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring">
         <span className="min-w-0 truncate font-medium">{title}</span>
-        <span className="shrink-0 text-meta text-muted-foreground">{meta}</span>
+        <span className="shrink-0 text-caption text-muted-foreground">{meta}</span>
       </summary>
       <pre className="overflow-x-auto border-t px-3 py-2 font-mono text-meta whitespace-pre-wrap text-muted-foreground">
         {component.text}

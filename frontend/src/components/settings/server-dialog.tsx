@@ -126,13 +126,13 @@ function ServerForm({ server, onDone }: { server: Server; onDone: () => void }) 
           >
             <div className="flex items-center gap-2.5">
               <RadioGroupItem id="server-nuvio" value="nuvio" />
-              <label htmlFor="server-nuvio" className="text-sm">
+              <label htmlFor="server-nuvio" className="text-body">
                 Nuvio’s server
               </label>
             </div>
             <div className="flex items-center gap-2.5">
               <RadioGroupItem id="server-own" value="own" />
-              <label htmlFor="server-own" className="text-sm">
+              <label htmlFor="server-own" className="text-body">
                 My own server
               </label>
             </div>

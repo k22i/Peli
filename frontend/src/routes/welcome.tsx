@@ -38,7 +38,7 @@ function Welcome() {
   return (
     <FocusScreen className="max-w-md gap-10">
       <header className="flex flex-col items-center gap-4 text-center">
-        <h1 className="font-heading text-display font-stretch-semi-expanded">Sinag</h1>
+        <h1 className="text-display">Sinag</h1>
         <p className="max-w-sm text-pretty text-muted-foreground">
           {server.data?.custom
             ? `Sign in with your account on ${serverName(server.data.url)} to bring your profiles, library and Continue Watching with you.`
@@ -97,7 +97,7 @@ function Welcome() {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-3 text-sm text-muted-foreground">
+      <div className="flex flex-col gap-3 text-body text-muted-foreground">
         <p className="flex gap-2">
           <KeyRound className="mt-0.5 size-4 shrink-0" aria-hidden />
           As a guest, your addons, library and progress stay on this device. You can sign in later

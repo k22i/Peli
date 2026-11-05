@@ -91,7 +91,7 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
         {code && !expired && !problem && (
           <>
             <div className="flex flex-col items-center gap-1.5">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-body text-muted-foreground">
                 Or go to{" "}
                 <button
                   type="button"
@@ -104,7 +104,7 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
               </p>
               <p className="font-mono text-3xl font-semibold tracking-[0.15em]">{code.code}</p>
             </div>
-            <p className="flex items-center gap-2 text-sm whitespace-nowrap text-muted-foreground">
+            <p className="flex items-center gap-2 text-body whitespace-nowrap text-muted-foreground">
               <Spinner className="size-4" aria-hidden />
               Waiting for SIMKL · <span className="tabular-nums">{formatLeft(secondsLeft)}</span>
             </p>
@@ -201,7 +201,7 @@ function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () =>
       </DialogHeader>
       <DialogPanel className="flex flex-col items-center gap-5">
         {!problem && (
-          <p className="flex items-center gap-2 text-sm text-muted-foreground">
+          <p className="flex items-center gap-2 text-body text-muted-foreground">
             <Spinner className="size-4" aria-hidden />
             Waiting for AniList
           </p>

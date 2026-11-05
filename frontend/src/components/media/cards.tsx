@@ -63,16 +63,16 @@ function Card({
           )}
           {badge && <div className="absolute start-3 top-3 flex gap-1">{badge}</div>}
           {pill && (
-            <span className="glass-media-strong absolute end-3 top-3 rounded-full px-2.5 py-1 font-mono text-meta font-medium text-white">
+            <span className="glass-media-strong absolute end-3 top-3 rounded-full px-2.5 py-1 text-num text-caption font-medium text-white">
               {pill}
             </span>
           )}
           {progress !== undefined && <WatchProgress value={progress} />}
         </div>
         <div className="flex min-w-0 flex-col gap-0.5 px-0.5">
-          <span className="truncate text-sm font-medium text-foreground">{title}</span>
+          <span className="truncate text-card text-foreground">{title}</span>
           {meta && (
-            <span className="truncate font-mono text-meta text-muted-foreground">{meta}</span>
+            <span className="truncate text-num text-caption text-muted-foreground">{meta}</span>
           )}
         </div>
       </>

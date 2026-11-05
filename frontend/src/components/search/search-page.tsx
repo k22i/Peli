@@ -270,7 +270,7 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
 
   return (
     <>
-      <output className="flex min-h-8 items-center gap-3 px-gutter text-sm">
+      <output className="flex min-h-8 items-center gap-3 px-gutter text-body">
         {pending.length > 0 && (
           <span className="flex items-center gap-2 text-muted-foreground">
             <Spinner aria-hidden className="size-4" />

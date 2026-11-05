@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
+import type { ReactNode } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
@@ -90,7 +91,7 @@ function HomeRows({ profile }: { profile: Profile }) {
   ) {
     return (
       noAddons || (
-        <p className="p-8 text-center text-sm text-muted-foreground">
+        <p className="p-8 text-center text-body text-muted-foreground">
           Titles you save and watch show up here.
         </p>
       )
@@ -275,7 +276,15 @@ function WatchingHero({ entry, ...context }: { entry: Progress } & WatchingConte
       size="feature"
       title={title}
       eyebrow="Continue watching"
-      meta={episode ? [episode] : []}
+      meta={
+        episode
+          ? [
+              <span key="episode" className="text-num">
+                {episode}
+              </span>,
+            ]
+          : []
+      }
       synopsis={synopsis}
       backdrop={art}
       actions={
@@ -330,13 +339,22 @@ function PlayButton({ resume, onClick }: { resume: boolean; onClick: () => void 
   );
 }
 
-// "2024 · IMDb 7.5 · Drama · Comedy"
-function metaLine(meta: MetaPreview): string[] {
+// "2024 · IMDb 7.5 · Drama · Comedy": the year and the rating are numbers (mono),
+// the genres are words.
+function metaLine(meta: MetaPreview): ReactNode[] {
   return [
-    meta.releaseInfo,
-    meta.imdbRating && `IMDb ${meta.imdbRating}`,
-    ...(meta.genres ?? []).slice(0, 2),
-  ].filter((item): item is string => Boolean(item));
+    meta.releaseInfo && (
+      <span key="year" className="text-num">
+        {meta.releaseInfo}
+      </span>
+    ),
+    meta.imdbRating && (
+      <span key="imdb">
+        IMDb <span className="text-num">{meta.imdbRating}</span>
+      </span>
+    ),
+    ...(meta.genres ?? []).slice(0, 2).map((genre) => <span key={genre}>{genre}</span>),
+  ].filter(Boolean);
 }
 
 // A catalog's first page, from cache first. One that fails or comes back

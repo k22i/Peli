@@ -942,13 +942,13 @@ function PlayerFile() {
               </h1>
             )}
             {playing?.episode && (
-              <p className="truncate text-meta drop-shadow-md">{playing.episode}</p>
+              <p className="truncate text-caption drop-shadow-md">{playing.episode}</p>
             )}
           </div>
           {torrentStatus?.active && !mini && (
             <p
               aria-label="Torrent status"
-              className="ms-auto mt-1.5 shrink-0 rounded-full px-3 py-1.5 font-mono text-meta text-white tabular-nums glass-media-strong"
+              className="ms-auto mt-1.5 shrink-0 rounded-full px-3 py-1.5 text-num text-caption text-white glass-media-strong"
             >
               {torrentStatusText(torrentStatus)}
             </p>
@@ -977,7 +977,7 @@ function PlayerFile() {
               <p
                 data-testid="elapsed"
                 className={cn(
-                  "shrink-0 font-mono text-meta text-white tabular-nums",
+                  "shrink-0 text-num text-caption text-white",
                   hours ? "w-[7ch]" : "w-[5ch]",
                 )}
               >
@@ -1000,7 +1000,7 @@ function PlayerFile() {
               <p
                 data-testid="remaining"
                 className={cn(
-                  "shrink-0 text-end font-mono text-meta text-white tabular-nums",
+                  "shrink-0 text-end text-num text-caption text-white",
                   hours ? "w-[8ch]" : "w-[6ch]",
                 )}
               >
@@ -1013,7 +1013,7 @@ function PlayerFile() {
               {playButton}
               {volumeControl}
               {known && (
-                <p className="ms-1 truncate font-mono text-meta text-white tabular-nums">
+                <p className="ms-1 truncate text-num text-caption text-white">
                   {formatTime(position)} / {formatTime(state.duration)}
                 </p>
               )}
@@ -1300,7 +1300,7 @@ function PlayerFile() {
           <div className="flex w-full max-w-md flex-col items-center gap-3 rounded-3xl p-8 text-center glass-media-strong">
             <AlertCircle className="size-8 text-white/70" />
             <p className="text-lg font-semibold">{failure.title}</p>
-            <p className="text-sm text-white/70">{failure.description}</p>
+            <p className="text-body text-white/70">{failure.description}</p>
             <div className="mt-2 flex gap-2">
               {failure.retry && playing?.source && (
                 <Button onClick={() => void retry(error)} disabled={retrying}>
@@ -1328,18 +1328,12 @@ function PlayerFile() {
               )}
             >
               <Spinner className="size-10 text-white" />
-              {starting && next && (
-                <p className="text-sm font-medium">Opening {episodeCode(next)}…</p>
-              )}
+              {starting && next && <p className="text-card">Opening {episodeCode(next)}…</p>}
               {!starting && state.buffering && state.bufferPercent > 0 && (
-                <p className="font-mono text-meta tabular-nums">
-                  Buffering {state.bufferPercent} %
-                </p>
+                <p className="text-caption tabular-nums">Buffering {state.bufferPercent} %</p>
               )}
               {!starting && torrentStatus?.active && (
-                <p className="font-mono text-meta tabular-nums">
-                  {torrentStatusText(torrentStatus)}
-                </p>
+                <p className="text-caption tabular-nums">{torrentStatusText(torrentStatus)}</p>
               )}
             </div>
           </div>

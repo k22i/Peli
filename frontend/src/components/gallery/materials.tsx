@@ -83,7 +83,7 @@ function ScrollEdge() {
   return (
     <div className="h-64 overflow-y-auto rounded-2xl border bg-background">
       <div className="scroll-edge-top sticky top-0 z-10 bg-background/90 px-5 py-3">
-        <h3 className="font-heading text-heading">Page header</h3>
+        <h3 className="text-heading">Page header</h3>
         <p className="text-sm text-muted-foreground">
           Scroll the list: it passes under the header and softens at its edge.
         </p>
@@ -127,23 +127,21 @@ export function Materials() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-mono text-meta text-muted-foreground">Over artwork</h3>
+          <h3 className="text-label text-muted-foreground">Over artwork</h3>
           <div className="overflow-hidden rounded-3xl" style={busy}>
             <Tiles />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-mono text-meta text-muted-foreground">Over the page</h3>
+          <h3 className="text-label text-muted-foreground">Over the page</h3>
           <div className="rounded-3xl border bg-background">
             <Tiles />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-mono text-meta text-muted-foreground">
-            Ambient · brand tone and art tone
-          </h3>
+          <h3 className="text-label text-muted-foreground">Ambient · brand tone and art tone</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {(["brand", "art"] as const).map((tone) => (
               <div
@@ -163,7 +161,7 @@ export function Materials() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="font-mono text-meta text-muted-foreground">Scroll edge</h3>
+          <h3 className="text-label text-muted-foreground">Scroll edge</h3>
           <ScrollEdge />
         </div>
       </div>

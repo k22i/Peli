@@ -304,9 +304,7 @@ function GroupHeading({
   const label = (
     <>
       {tierLabel(row.tier)}{" "}
-      <span className="font-mono text-meta font-normal text-muted-foreground tabular-nums">
-        {row.count}
-      </span>
+      <span className="text-num text-caption font-normal text-muted-foreground">{row.count}</span>
     </>
   );
   const inner =
@@ -329,12 +327,12 @@ function GroupHeading({
           )}
         />
         <span>{label}</span>
-        <span className="ms-auto font-sans text-sm font-normal text-muted-foreground font-stretch-normal">
+        <span className="ms-auto text-caption font-normal text-muted-foreground">
           {groupNotes[row.tier]}
         </span>
       </button>
     );
-  const type = "font-heading text-base font-semibold font-stretch-semi-expanded";
+  const type = "font-heading text-base font-semibold";
   if (stuck) {
     return <div className={`glass pointer-events-auto rounded-2xl p-1 ${type}`}>{inner}</div>;
   }
@@ -406,8 +404,8 @@ function StreamRow({
             className="-m-2 flex min-w-0 flex-1 cursor-pointer items-center gap-6 rounded-2xl p-2 text-start outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <span className="flex min-w-0 flex-1 flex-col items-start gap-2.5">
-              <span className="flex items-center gap-2 text-meta font-semibold text-brand">
-                <span className="tracking-[0.06em] uppercase">Top pick</span>
+              <span className="flex items-center gap-2 text-caption font-semibold text-brand">
+                <span className="text-label">Top pick</span>
                 {usual && (
                   <>
                     <span aria-hidden>·</span>
@@ -420,7 +418,7 @@ function StreamRow({
                 {current && <span aria-hidden>·</span>}
                 {current && <Playing />}
               </span>
-              <span className="flex flex-wrap items-baseline gap-x-2 font-heading text-heading">
+              <span className="flex flex-wrap items-baseline gap-x-2 text-heading">
                 <span>{quality}</span>
                 {source && <span>{source}</span>}
               </span>
@@ -458,7 +456,9 @@ function StreamRow({
             <span className="flex min-w-0 items-baseline gap-2">
               <span className="font-[550]">{quality}</span>
               {source && <span className="font-[550]">{source}</span>}
-              {addon && <span className="truncate text-sm text-muted-foreground">{addon}</span>}
+              {addon && (
+                <span className="truncate text-caption text-muted-foreground">{addon}</span>
+              )}
             </span>
             <Badges candidate={candidate} />
             <Warning candidate={candidate} />
@@ -474,7 +474,7 @@ function StreamRow({
 
 function Playing() {
   return (
-    <span className="flex items-center gap-1 text-meta font-semibold text-brand">
+    <span className="flex items-center gap-1 text-caption font-semibold text-brand">
       <Play aria-hidden className="size-3.5 fill-current" />
       Playing
     </span>
@@ -512,7 +512,7 @@ function Warning({ candidate }: { candidate: Candidate }) {
   const why = candidate.verdict.bucket === "ok" ? null : reasonsLabel(candidate);
   if (!why) return null;
   return (
-    <span className="flex items-center gap-1 text-meta text-warning-foreground">
+    <span className="flex items-center gap-1 text-caption text-warning-foreground">
       <TriangleAlert aria-hidden className="size-3.5" />
       {why}
     </span>
@@ -533,7 +533,7 @@ function Facts({ candidate, className }: { candidate: Candidate; className?: str
   ].filter(Boolean);
   if (facts.length === 0) return null;
   return (
-    <span className={`font-mono text-meta tabular-nums text-muted-foreground ${className ?? ""}`}>
+    <span className={`text-num text-caption text-muted-foreground ${className ?? ""}`}>
       {facts.join(" · ")}
     </span>
   );
@@ -554,8 +554,8 @@ function Details({ candidate, addon }: { candidate: Candidate; addon: string }) 
         : null,
   ].filter(Boolean);
   return (
-    <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-meta text-muted-foreground">
-      {facts.length > 0 && <span className="font-mono tabular-nums">{facts.join(" · ")}</span>}
+    <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-caption text-muted-foreground">
+      {facts.length > 0 && <span className="text-num">{facts.join(" · ")}</span>}
       <Warning candidate={candidate} />
     </span>
   );
@@ -574,7 +574,7 @@ function RawNames({ id, candidate }: { id: string; candidate: Candidate }) {
           ))}
         </ul>
       ) : (
-        <p className="text-sm text-muted-foreground">The addon doesn’t name the file.</p>
+        <p className="text-body text-muted-foreground">The addon doesn’t name the file.</p>
       )}
     </div>
   );

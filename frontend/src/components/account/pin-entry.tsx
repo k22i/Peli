@@ -85,9 +85,9 @@ export function PinEntry({
   return (
     <div className="flex flex-col items-center gap-5">
       <ProfileAvatar profile={profile} className="size-20 text-2xl" />
-      <p className="text-base font-[550]">{profile.name}</p>
+      <p className="text-card">{profile.name}</p>
       {mode === "parent" && (
-        <p className="max-w-56 text-center text-sm text-muted-foreground">
+        <p className="max-w-56 text-center text-body text-muted-foreground">
           Ask a parent to enter the PIN.
         </p>
       )}
@@ -95,12 +95,12 @@ export function PinEntry({
       <PinField value={pin} disabled={waiting} shake={wrong} onValueChange={enter} />
 
       {retryIn > 0 ? (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className="text-body text-destructive">
           Too many attempts. Try again in {retryIn}s.
         </p>
       ) : (
         problem && (
-          <p role="alert" className="text-sm text-destructive">
+          <p role="alert" className="text-body text-destructive">
             {problem.description ? problem.title + " " + problem.description : problem.title}
           </p>
         )

@@ -79,14 +79,14 @@ export function NextEpisode({
       )}
       <div className={cn("flex flex-col", mini ? "gap-2 p-3" : "gap-3 p-4")}>
         <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="text-xs font-semibold tracking-[0.06em] uppercase">
+          <p className="text-label">
             Next episode in{" "}
             <span className="tabular-nums" aria-label={`${Math.ceil(remaining)} seconds`}>
               {formatTime(Math.ceil(remaining))}
             </span>
           </p>
-          <p className="truncate text-sm font-semibold">{name}</p>
-          <p aria-live="polite" className="flex items-center gap-1.5 text-meta">
+          <p className="truncate text-card">{name}</p>
+          <p aria-live="polite" className="flex items-center gap-1.5 text-caption">
             {preparedText(prepared)}
           </p>
         </div>

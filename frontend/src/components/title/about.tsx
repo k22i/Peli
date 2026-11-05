@@ -17,7 +17,7 @@ export function About({ meta, withCast }: { meta: Meta; withCast: boolean }) {
   if (rows.length === 0 && !meta.description) return null;
   return (
     <section aria-labelledby="about" className="flex flex-col gap-4 px-gutter">
-      <h2 id="about" className="font-heading text-heading font-stretch-semi-expanded">
+      <h2 id="about" className="text-heading">
         About
       </h2>
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,24rem)] lg:gap-12">
@@ -30,9 +30,7 @@ export function About({ meta, withCast }: { meta: Meta; withCast: boolean }) {
           >
             {rows.map(({ label, values }) => (
               <div key={label} className="flex flex-col gap-1">
-                <dt className="text-xs font-semibold tracking-[0.06em] text-muted-foreground uppercase">
-                  {label}
-                </dt>
+                <dt className="text-label text-muted-foreground">{label}</dt>
                 <dd>{values.join(", ")}</dd>
               </div>
             ))}

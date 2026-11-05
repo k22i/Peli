@@ -100,9 +100,7 @@ function Profiles() {
         </Button>
       )}
 
-      <h1 className="text-center font-heading text-title font-stretch-semi-expanded">
-        {managing ? "Manage profiles" : "Who’s watching?"}
-      </h1>
+      <h1 className="text-center text-title">{managing ? "Manage profiles" : "Who’s watching?"}</h1>
 
       <ul aria-label="Profiles" className="flex flex-wrap justify-center gap-x-6 gap-y-10">
         {!ready &&
@@ -138,7 +136,7 @@ function Profiles() {
               >
                 <Plus className="size-10" />
               </span>
-              <span className="min-h-10 text-base font-[550]">Add profile</span>
+              <span className="min-h-10 text-card">Add profile</span>
             </button>
           </li>
         )}
@@ -148,13 +146,13 @@ function Profiles() {
         {managing ? (
           <>
             {current.sessionEnded && (
-              <p className="max-w-sm text-sm text-balance text-muted-foreground">
+              <p className="max-w-sm text-body text-balance text-muted-foreground">
                 Your Nuvio session ended. Sign in again to change your Nuvio profiles; they change
                 on every device.
               </p>
             )}
             {current.signedIn && full && (
-              <p className="max-w-sm text-sm text-balance text-muted-foreground">
+              <p className="max-w-sm text-body text-balance text-muted-foreground">
                 All {maxNuvioProfiles} Nuvio profiles are in use. Delete one to add another.
               </p>
             )}
@@ -275,9 +273,9 @@ function ProfileTile({
         )}
       </span>
       <span className="flex max-w-full flex-col">
-        <span className="truncate text-base font-[550]">{profile.name}</span>
+        <span className="truncate text-card">{profile.name}</span>
         {/* Kept when empty, so names line up. */}
-        <span id={noteId} className="min-h-4 text-meta text-muted-foreground">
+        <span id={noteId} className="min-h-4 text-caption text-muted-foreground">
           {note}
         </span>
       </span>

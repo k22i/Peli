@@ -15,7 +15,7 @@ export function GallerySection({
   return (
     <section className="flex flex-col gap-5">
       <div className="flex max-w-2xl flex-col gap-1.5 px-gutter">
-        <h2 className="font-heading text-title font-stretch-semi-expanded">{title}</h2>
+        <h2 className="text-title">{title}</h2>
         {description && <p className="text-pretty text-muted-foreground">{description}</p>}
       </div>
       {bleed ? children : <div className="flex flex-col gap-6 px-gutter">{children}</div>}
@@ -27,7 +27,7 @@ export function GallerySection({
 export function Specimen({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="font-mono text-meta text-muted-foreground">{label}</h3>
+      <h3 className="text-label text-muted-foreground">{label}</h3>
       <div className="flex flex-wrap items-center gap-3">{children}</div>
     </div>
   );

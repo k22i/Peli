@@ -69,7 +69,7 @@ export function Upcoming({ profile }: { profile: Profile }) {
   return (
     <div className="flex flex-col gap-8 px-gutter">
       {(checking || failed.length > 0) && (
-        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+        <div className="flex items-center gap-3 text-body text-muted-foreground">
           {checking ? (
             <>
               <Spinner className="size-4" />
@@ -138,9 +138,9 @@ function DaySection({
         style={{ top: `calc(var(--titlebar-h) + ${stuckHeader})` }}
         className="sticky z-9 scroll-edge-top"
       >
-        <h2 className="glass flex items-baseline gap-3 rounded-xl px-3 py-2 font-heading text-heading">
+        <h2 className="glass flex items-baseline gap-3 rounded-xl px-3 py-2 text-heading">
           {title}
-          {date && <span className="font-mono text-meta text-muted-foreground">{date}</span>}
+          {date && <span className="text-num text-caption text-muted-foreground">{date}</span>}
         </h2>
       </div>
       <ul className="flex flex-col">
@@ -177,16 +177,12 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
         <Artwork src={item.poster} use="poster" title={item.name} />
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className="truncate text-base font-semibold text-foreground">{item.name}</span>
-        <span className="truncate text-sm text-muted-foreground">
-          <span className="font-mono text-meta tabular-nums">{code}</span> · {title}
+        <span className="truncate text-card text-foreground">{item.name}</span>
+        <span className="truncate text-body text-muted-foreground">
+          <span className="text-num text-caption">{code}</span> · {title}
         </span>
       </span>
-      {end && (
-        <span className="shrink-0 font-mono text-meta tabular-nums text-muted-foreground">
-          {end}
-        </span>
-      )}
+      {end && <span className="shrink-0 text-num text-caption text-muted-foreground">{end}</span>}
     </button>
   );
 }

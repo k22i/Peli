@@ -6,7 +6,7 @@ import { sharper } from "@/lib/artwork-url";
 import { cn } from "@/lib/utils";
 
 // The billboard at the top of Home and the detail pages: a backdrop with the
-// title, a mono meta line, the synopsis and actions over a scrim.
+// title, a meta line (numbers in mono, words in Mona Sans), the synopsis and actions over a scrim.
 //
 // The content is always dark (the `.dark` scope), whatever the theme, so its
 // text and buttons read on any artwork. In dark mode the default hero runs
@@ -49,7 +49,8 @@ export function Hero({
   logo?: string | undefined;
   // A short line above the title: "New season", "Continue watching".
   eyebrow?: ReactNode;
-  // Year, runtime, rating…, joined with middots; coss Badges also fit here.
+  // Year, runtime, rating…, joined with middots; coss Badges also fit here. Wrap
+  // numbers and codes in `text-num`.
   meta?: ReactNode[];
   synopsis?: ReactNode;
   backdrop?: string | undefined;
@@ -120,12 +121,8 @@ export function Hero({
             )}
           >
             <div className={cn("flex flex-col gap-4", bleeds && "max-w-3xl")}>
-              {eyebrow && (
-                <p className="font-mono text-meta font-medium tracking-widest text-brand uppercase">
-                  {eyebrow}
-                </p>
-              )}
-              <h1 className="font-heading text-display text-balance font-stretch-expanded">
+              {eyebrow && <p className="text-label text-brand">{eyebrow}</p>}
+              <h1 className="text-display text-balance">
                 {logo ? (
                   <Logo
                     src={logo}
@@ -143,7 +140,7 @@ export function Hero({
                 )}
               </h1>
               {meta && meta.length > 0 && (
-                <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-meta text-foreground/80">
+                <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-foreground/80">
                   {Children.map(meta, (item, index) => (
                     <span className="flex items-center gap-2">
                       {index > 0 && <span aria-hidden>·</span>}

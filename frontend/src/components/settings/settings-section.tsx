@@ -22,14 +22,10 @@ export function SettingsPaneView({
   return (
     <section aria-labelledby={paneHeadingId} className="flex min-w-0 flex-col gap-8">
       <header className="flex flex-col gap-2">
-        <h2
-          id={paneHeadingId}
-          tabIndex={-1}
-          className="font-heading text-title font-stretch-semi-expanded outline-none"
-        >
+        <h2 id={paneHeadingId} tabIndex={-1} className="text-title outline-none">
           {title}
         </h2>
-        {lead && <p className="max-w-prose text-sm text-pretty text-muted-foreground">{lead}</p>}
+        {lead && <p className="max-w-prose text-body text-pretty text-muted-foreground">{lead}</p>}
       </header>
       {children}
     </section>
@@ -51,15 +47,12 @@ export function SettingsGroup({
   return (
     <section aria-labelledby={title ? titleId : undefined} className="flex flex-col gap-2">
       {title && (
-        <h3
-          id={titleId}
-          className="px-4 text-meta font-semibold tracking-[0.06em] text-muted-foreground uppercase"
-        >
+        <h3 id={titleId} className="px-4 text-label text-muted-foreground">
           {title}
         </h3>
       )}
       <div className="flex flex-col divide-y rounded-2xl border bg-card">{children}</div>
-      {footer && <p className="px-4 text-meta text-pretty text-muted-foreground">{footer}</p>}
+      {footer && <p className="px-4 text-caption text-pretty text-muted-foreground">{footer}</p>}
     </section>
   );
 }
@@ -81,13 +74,13 @@ export function SettingRow({
   return (
     <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-3.5">
       <div className="flex min-w-0 flex-1 basis-60 flex-col gap-0.5">
-        <span id={`${id}-label`} className="text-sm font-[550]">
+        <span id={`${id}-label`} className="text-card">
           {label}
         </span>
         {description && (
           <p
             id={`${id}-description`}
-            className="max-w-prose text-meta text-pretty text-muted-foreground"
+            className="max-w-prose text-caption text-pretty text-muted-foreground"
           >
             {description}
           </p>

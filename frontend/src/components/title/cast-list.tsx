@@ -8,7 +8,7 @@ import type { CastMember } from "@/lib/tmdb";
 export function CastList({ cast }: { cast: CastMember[] }) {
   return (
     <section aria-labelledby="cast" className="flex flex-col gap-2">
-      <h2 id="cast" className="px-gutter font-heading text-heading font-stretch-semi-expanded">
+      <h2 id="cast" className="px-gutter text-heading">
         Cast
       </h2>
       <ScrollRail>
@@ -22,9 +22,9 @@ export function CastList({ cast }: { cast: CastMember[] }) {
                 className="aspect-square size-32 rounded-full shadow-card"
               />
               <div className="flex w-full flex-col items-center text-center">
-                <span className="line-clamp-2 text-sm font-medium">{person.name}</span>
+                <span className="line-clamp-2 text-card">{person.name}</span>
                 {person.character && (
-                  <span className="line-clamp-2 text-sm text-muted-foreground">
+                  <span className="line-clamp-2 text-caption text-muted-foreground">
                     {person.character}
                   </span>
                 )}

@@ -121,7 +121,7 @@ export function BrowseFrame({
           >
             <h1
               className={cn(
-                "font-heading text-title font-stretch-semi-expanded motion-safe:transition-[font-size,line-height] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:text-heading",
+                "text-title motion-safe:transition-[font-size,line-height,font-stretch,font-weight] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:text-heading",
                 quietTitle && "group-data-stuck/header:sr-only",
               )}
             >

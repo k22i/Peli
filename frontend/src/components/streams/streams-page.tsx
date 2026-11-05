@@ -99,8 +99,8 @@ function PageHeader({ title, episode }: { title: string; episode?: string | unde
     <div className="flex items-center gap-4 px-gutter">
       <BackButton />
       <div className="flex min-w-0 flex-col gap-1">
-        <h1 className="font-heading text-title font-stretch-semi-expanded">{title}</h1>
-        {episode && <p className="text-base text-muted-foreground">{episode}</p>}
+        <h1 className="text-title">{title}</h1>
+        {episode && <p className="text-body text-muted-foreground">{episode}</p>}
       </div>
     </div>
   );
@@ -427,7 +427,7 @@ export function StreamsSummary({
   const one = plural === "sources" ? "1 source" : "1 addon";
   return (
     <div className="flex flex-col gap-3">
-      <p aria-live="polite" className="px-gutter text-sm text-muted-foreground">
+      <p aria-live="polite" className="px-gutter text-body text-muted-foreground">
         {total === 1 ? "1 stream" : `${total} streams`}
         {waiting > 0
           ? `, ${waiting} of ${sources.length} ${plural} still answering`

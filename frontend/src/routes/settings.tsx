@@ -102,7 +102,7 @@ function Settings() {
   return (
     <div className="mx-auto w-full max-w-6xl px-gutter py-8 md:grid md:grid-cols-[15rem_minmax(0,1fr)] md:items-start md:gap-10">
       <div className="mb-6 md:sticky md:top-[calc(var(--titlebar-h)+2rem)] md:mb-0">
-        <h1 className="sr-only font-heading text-heading font-stretch-semi-expanded md:not-sr-only md:mb-5 md:px-2.5 md:leading-[1.925rem]">
+        <h1 className="sr-only text-heading md:not-sr-only md:mb-5 md:px-2.5 md:leading-[1.925rem]">
           Settings
         </h1>
         <SettingsPaneList
@@ -222,8 +222,8 @@ function AccountPane({ title }: { title: string }) {
         <div className="flex min-h-14 items-center gap-3 px-4 py-3.5">
           <ProfileAvatar profile={profile} className="size-9" />
           <div className="flex flex-col">
-            <span className="text-sm font-[550]">{profile.name}</span>
-            <span className="text-meta text-muted-foreground">{status}</span>
+            <span className="text-card">{profile.name}</span>
+            <span className="text-caption text-muted-foreground">{status}</span>
           </div>
         </div>
         <SettingRow id="nuvio" label="Nuvio account" description={nuvio}>
@@ -868,7 +868,7 @@ function AboutPane({ title }: { title: string }) {
     <SettingsPaneView title={title}>
       <SettingsGroup>
         <SettingRow id="version" label="Version">
-          <span className="font-mono text-meta text-muted-foreground">{version.data ?? "…"}</span>
+          <span className="text-num text-caption text-muted-foreground">{version.data ?? "…"}</span>
         </SettingRow>
         {/* The welcome screen says the same (#39). */}
         <SettingRow id="disclaimer" label="Content" description={contentDisclaimer} />

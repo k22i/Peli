@@ -101,7 +101,7 @@ export function SeekBar({
           <span
             aria-hidden
             style={{ left: `${percent(label)}%` }}
-            className="pointer-events-none absolute bottom-full mb-3 flex -translate-x-1/2 items-center rounded-full px-2.5 py-1 font-mono text-meta whitespace-nowrap text-white tabular-nums glass-media-strong"
+            className="pointer-events-none absolute bottom-full mb-3 flex -translate-x-1/2 items-center rounded-full px-2.5 py-1 text-num text-caption whitespace-nowrap text-white glass-media-strong"
           >
             {labelSegment && (
               // White on the glass (amber text fails over a white frame); the

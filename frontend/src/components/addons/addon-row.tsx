@@ -146,7 +146,7 @@ export function AddonRow({
 
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex min-w-0 items-center gap-2">
-          <span className="truncate text-base font-semibold">{name}</span>
+          <span className="truncate text-card">{name}</span>
           {manifest.data && (
             <span className="shrink-0 font-mono text-meta text-muted-foreground">
               v{manifest.data.version}
@@ -156,19 +156,23 @@ export function AddonRow({
           {manifest.isPending && <Spinner className="size-3.5 self-center text-muted-foreground" />}
         </div>
         {manifest.data?.description && (
-          <p className="line-clamp-2 text-sm text-muted-foreground">{manifest.data.description}</p>
+          <p className="line-clamp-2 text-body text-muted-foreground">
+            {manifest.data.description}
+          </p>
         )}
         {manifest.data && <ManifestFacts manifest={manifest.data} />}
         {/* The host only: the path can hold the user's settings and keys. */}
         {isBuiltinAddon(addon.url) ? (
-          <span className="truncate text-meta text-muted-foreground/80">On this device only</span>
+          <span className="truncate text-caption text-muted-foreground/80">
+            On this device only
+          </span>
         ) : (
           <span className="truncate font-mono text-meta text-muted-foreground/80">
             {host(addon.url)}
           </span>
         )}
         {manifest.isError && (
-          <p className="mt-1 flex items-start gap-1.5 text-sm text-destructive-foreground">
+          <p className="mt-1 flex items-start gap-1.5 text-body text-destructive-foreground">
             <CircleAlert aria-hidden className="mt-0.5 size-4 shrink-0" />
             <span>
               Couldn’t load its manifest. {manifest.error.message}{" "}
