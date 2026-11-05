@@ -3,6 +3,7 @@ import { describe, expect, it } from "vite-plus/test";
 import type { LibraryItem } from "@bindings/store";
 import type { Meta, Video } from "@/lib/addon-protocol";
 import {
+  airTime,
   calendar,
   calendarShows,
   dayKey,
@@ -130,5 +131,25 @@ describe("dayLabel", () => {
     expect(later.title).toContain(weekday.format(at(11, 6)));
     expect(later.title).not.toContain("2026");
     expect(dayLabel(dayKey(at(1, 4, 12, 2027)), now).title).toContain("2027");
+  });
+});
+
+const first = (released: number | string) =>
+  calendar([show("Dune", [video(1, 1, released)])], now).days[0]?.entries[0];
+
+describe("airTime", () => {
+  it("is the time an episode airs, in the viewer's zone", () => {
+    const entry = first(at(10, 31, 21));
+    expect(entry && airTime(entry)).toBe(
+      new Intl.DateTimeFormat(undefined, { timeStyle: "short" }).format(at(10, 31, 21)),
+    );
+  });
+
+  it("is nothing for a date, which an addon gives as midnight UTC", () => {
+    const entry = first("2026-11-02");
+    expect(entry).toBeDefined();
+    expect(entry && airTime(entry)).toBeUndefined();
+    const stamped = first("2026-11-02T00:00:00.000Z");
+    expect(stamped && airTime(stamped)).toBeUndefined();
   });
 });

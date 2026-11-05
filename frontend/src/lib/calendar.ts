@@ -129,3 +129,12 @@ const short = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
 
 // When a Later episode airs: "16 Jan 2027".
 export const airDate = (time: number) => short.format(time);
+
+const clock = new Intl.DateTimeFormat(undefined, { timeStyle: "short" });
+const msPerDay = 86_400_000;
+
+// When an entry's first episode airs that day, in the viewer's time zone
+// ("9:00 PM"). Addons mostly give a date, which parses as midnight UTC and is
+// no time at all, so those have none.
+export const airTime = (entry: CalendarEntry): string | undefined =>
+  entry.airs % msPerDay === 0 ? undefined : clock.format(entry.airs);

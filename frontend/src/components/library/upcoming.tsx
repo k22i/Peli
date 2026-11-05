@@ -2,13 +2,14 @@ import { useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { CalendarDays } from "lucide-react";
 
-import { Notice } from "@/components/browse/browse-page";
+import { LibraryNotice } from "@/components/library/notice";
 import { Artwork } from "@/components/media/artwork";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
 import {
   airDate,
+  airTime,
   calendar,
   calendarShows,
   dayLabel,
@@ -41,12 +42,12 @@ export function Upcoming({ profile }: { profile: Profile }) {
   if (library.isPending) return <UpcomingSkeleton />;
   if (shows.length === 0) {
     return (
-      <Notice
+      <LibraryNotice
         icon={CalendarDays}
         title="No shows in your library"
         description="Add a show from its page and its new episodes show up here."
         action={
-          <Link to="/shows" className={buttonVariants({ variant: "outline" })}>
+          <Link to="/shows" className={buttonVariants()}>
             Browse shows
           </Link>
         }
@@ -91,22 +92,28 @@ export function Upcoming({ profile }: { profile: Profile }) {
         </div>
       )}
       {days.length === 0 && later.length === 0 && !checking ? (
-        <Notice
+        <LibraryNotice
           icon={CalendarDays}
           title="Nothing coming up"
           description="None of the shows in your library has a new episode scheduled yet."
         />
       ) : (
-        <>
+        <div className="flex max-w-4xl flex-col gap-8">
           {days.map(({ day, entries }) => (
             <DaySection key={day} {...dayLabel(day)} entries={entries} />
           ))}
           {later.length > 0 && <DaySection title="Later" entries={later} dated />}
-        </>
+        </div>
       )}
     </div>
   );
 }
+
+// How far the sticky day headers sit under the title bar: the Library page's
+// header once it has stuck on this view (py-2 around the 38px view switch,
+// see BrowseFrame). Only the Upcoming view has day headers, and it has one
+// row, so the offset is fixed.
+const stuckHeader = "3.375rem";
 
 function DaySection({
   title,
@@ -121,12 +128,21 @@ function DaySection({
   dated?: boolean;
 }) {
   return (
-    <section aria-label={title} className="flex flex-col gap-2">
-      <h2 className="flex items-baseline gap-3 font-heading text-heading">
-        {title}
-        {date && <span className="font-mono text-meta text-muted-foreground">{date}</span>}
-      </h2>
-      <ul className="flex flex-col gap-1">
+    <section aria-label={title} className="flex flex-col gap-1">
+      {/* Sticks under the page header while its day scrolls by, then the next
+          day's takes over. The wrapper holds the scroll edge, as a glass
+          element can't (see glass-materials); it sits above the page
+          header's own edge (z-10) so that doesn't veil it. */}
+      <div
+        style={{ top: `calc(var(--titlebar-h) + ${stuckHeader})` }}
+        className="sticky z-11 scroll-edge-top"
+      >
+        <h2 className="glass flex items-baseline gap-3 rounded-xl px-3 py-2 font-heading text-heading">
+          {title}
+          {date && <span className="font-mono text-meta text-muted-foreground">{date}</span>}
+        </h2>
+      </div>
+      <ul className="flex flex-col">
         {entries.map((entry) => (
           <li key={`${entry.item.contentId}:${entry.episode.id}`}>
             <EpisodeEntry entry={entry} dated={dated} />
@@ -146,41 +162,46 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
     episodes.length > 1
       ? `${episodes.length} episodes`
       : episode.title || `Episode ${episode.episode}`;
+  // At the end: the day's rows show the time (when the addon gives one),
+  // Later's the date.
+  const end = dated ? airDate(entry.airs) : airTime(entry);
   return (
     <button
       type="button"
       aria-label={`${item.name}, ${code}: ${title}${dated ? `, ${airDate(entry.airs)}` : ""}`}
       onClick={() => open(libraryPreview(item), { season: episode.season })}
-      className="flex w-full max-w-3xl cursor-pointer items-center gap-4 rounded-xl p-2 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
+      className="flex w-full cursor-pointer items-center gap-5 rounded-2xl p-3 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <span className="relative aspect-[2/3] w-18 shrink-0 overflow-hidden rounded-md shadow-card">
+      <span className="relative aspect-[2/3] w-24 shrink-0 overflow-hidden rounded-lg shadow-card">
         <Artwork src={item.poster} use="poster" title={item.name} />
       </span>
-      <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-        <span className="truncate font-medium text-foreground">{item.name}</span>
+      <span className="flex min-w-0 flex-1 flex-col gap-1">
+        <span className="truncate text-base font-semibold text-foreground">{item.name}</span>
         <span className="truncate text-sm text-muted-foreground">
-          <span className="font-mono text-meta">{code}</span> · {title}
+          <span className="font-mono text-meta tabular-nums">{code}</span> · {title}
         </span>
       </span>
-      {dated && (
-        <span className="shrink-0 font-mono text-meta text-muted-foreground">
-          {airDate(entry.airs)}
+      {end && (
+        <span className="shrink-0 font-mono text-meta tabular-nums text-muted-foreground">
+          {end}
         </span>
       )}
     </button>
   );
 }
 
+// Two day sections' worth of rows, as tall as the real ones (p-3 around a
+// w-24 poster).
 function UpcomingSkeleton() {
   return (
-    <div aria-hidden className="flex flex-col gap-3 px-gutter">
-      <Skeleton className="h-6 w-32 rounded-md" />
+    <div aria-hidden className="flex max-w-4xl flex-col gap-1 px-gutter">
+      <Skeleton className="mb-1 h-9 w-48 rounded-xl" />
       {Array.from({ length: 4 }, (_, index) => (
-        <div key={index} className="flex max-w-3xl items-center gap-4 p-2">
-          <Skeleton className="aspect-[2/3] w-18 rounded-md" />
+        <div key={index} className="flex items-center gap-5 p-3">
+          <Skeleton className="aspect-[2/3] w-24 rounded-lg" />
           <div className="flex flex-1 flex-col gap-2">
-            <Skeleton className="h-4 w-48 rounded" />
-            <Skeleton className="h-3 w-64 rounded" />
+            <Skeleton className="h-5 w-48 rounded" />
+            <Skeleton className="h-4 w-72 rounded" />
           </div>
         </div>
       ))}

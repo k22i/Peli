@@ -55,6 +55,21 @@ export function episodeLabel(entry: Progress): string | undefined {
   return `S${entry.season} · E${entry.episode}`;
 }
 
+// "S2 · E5" by content ID for the entries that are on an episode, so the
+// library's cards can show where a show in progress is up to (#118).
+export function episodeLabels(entries: readonly Progress[]): Map<string, string> {
+  const labels = new Map<string, string>();
+  for (const entry of entries) {
+    const label = episodeLabel(entry);
+    if (label) labels.set(entry.contentId, label);
+  }
+  return labels;
+}
+
+// A library card's meta line: the year, then "S2 · E5" for a show in progress.
+export const libraryMeta = (item: LibraryItem, episode?: string): string | undefined =>
+  [item.releaseInfo, episode].filter(Boolean).join(" · ") || undefined;
+
 // What is left of an entry, for under its title: "38 min left", "1 h 12 min
 // left". Positions are milliseconds. Nothing without a known duration.
 export function timeLeft(entry: Progress): string | undefined {

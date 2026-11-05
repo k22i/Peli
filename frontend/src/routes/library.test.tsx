@@ -2,7 +2,7 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { Addon, LibraryItem, Profile } from "@bindings/store";
+import type { Addon, LibraryItem, Profile, Progress } from "@bindings/store";
 import { metaQuery } from "@/lib/addon-protocol";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import kitsuManifest from "@/lib/addon-protocol/fixtures/kitsu/manifest.json";
@@ -20,6 +20,7 @@ const mocks = vi.hoisted(() => ({
   current: vi.fn<() => Promise<Profile>>(),
   library: vi.fn<(id: number) => Promise<LibraryItem[]>>(),
   lastWatched: vi.fn<(id: number) => Promise<Record<string, number>>>(),
+  continueWatching: vi.fn<(id: number) => Promise<Progress[]>>(),
   save: vi.fn<(id: number, item: LibraryItem) => Promise<void>>(),
   remove: vi.fn<(id: number, contentId: string, type: string) => Promise<void>>(),
   visibleAddons: vi.fn<() => Promise<Addon[]>>(),
@@ -33,6 +34,7 @@ vi.mock("@bindings/store", () => ({
     VisibleAddons: mocks.visibleAddons,
     Library: mocks.library,
     LastWatched: mocks.lastWatched,
+    ContinueWatching: mocks.continueWatching,
     SaveLibraryItem: mocks.save,
     RemoveLibraryItem: mocks.remove,
   },
@@ -81,6 +83,7 @@ beforeEach(() => {
   mocks.library.mockImplementation((id) =>
     Promise.resolve((db.library.get(id) ?? []).toSorted((a, b) => b.addedAt - a.addedAt)),
   );
+  mocks.continueWatching.mockResolvedValue([]);
   mocks.lastWatched.mockImplementation((id) => Promise.resolve(db.lastWatched.get(id) ?? {}));
   mocks.save.mockImplementation((id, saved) => {
     db.library.set(id, [...(db.library.get(id) ?? []), saved]);
@@ -113,6 +116,28 @@ describe("library page", () => {
     expect(screen.getByRole("heading", { level: 1, name: "Library" })).toBeInTheDocument();
     expect(await titles()).toEqual(["Breaking Bad", "Frieren", "Heat", "Alien"]);
     expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("shows the episode a show in progress is on beside its year", async () => {
+    mocks.continueWatching.mockResolvedValue([
+      {
+        key: "",
+        contentId: breakingBad.contentId,
+        contentType: "series",
+        videoId: "tt0903747:5:3",
+        season: 5,
+        episode: 3,
+        position: 1000,
+        duration: 3000,
+        lastWatched: 1,
+      },
+    ]);
+    await renderApp("/library");
+    await waitFor(async () =>
+      expect(await card("Breaking Bad")).toHaveTextContent("2008 · S5 · E3"),
+    );
+    // A title nobody is partway through has only its year.
+    expect(await card("Heat")).not.toHaveTextContent("S5");
   });
 
   it("filters by type, keeping the choice in the address", async () => {
@@ -316,6 +341,14 @@ describe("upcoming episodes", () => {
     await user.click(screen.getByRole("tab", { name: "Titles" }));
     expect(router.state.location.search).toEqual({ sort: "name" });
     expect(await titles()).toEqual(["Alien", "Breaking Bad", "Frieren", "Heat"]);
+  });
+
+  it("shows when a day's episode airs, at the end of its row", async () => {
+    serve(metas);
+    await renderApp("/library?view=upcoming");
+    const time = new Intl.DateTimeFormat(undefined, { timeStyle: "short" }).format(day(1));
+    const [row] = within(await section("Tomorrow")).getAllByRole("button");
+    expect(row?.lastElementChild).toHaveTextContent(time);
   });
 
   it("shows each show's next episode past four weeks under Later", async () => {

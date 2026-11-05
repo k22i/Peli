@@ -60,8 +60,8 @@ export function BrowsePage({ kind }: { kind: BrowseKind }) {
 
 // The page: a header with the title, the filter and the catalog rail, which
 // sticks under the title bar as a glass strip once the grid scrolls beneath it
-// (#116), and the body below.
-function BrowseFrame({
+// (#116), and the body below. The Library page uses it too (#118).
+export function BrowseFrame({
   title,
   filter,
   rail,

@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { libraryItems, librarySearch, libraryTypes } from "@/lib/library";
-import type { LibraryItem } from "@bindings/store";
+import {
+  episodeLabels,
+  libraryItems,
+  libraryMeta,
+  librarySearch,
+  libraryTypes,
+} from "@/lib/library";
+import type { LibraryItem, Progress } from "@bindings/store";
 
 const item = (contentId: string, contentType: string, name: string, addedAt: number) =>
   ({ contentId, contentType, name, addedAt }) as LibraryItem;
@@ -75,5 +81,38 @@ describe("librarySearch", () => {
       view: "upcoming",
     });
     expect(librarySearch({ view: "titles" })).toEqual({});
+  });
+});
+
+describe("libraryMeta", () => {
+  const show = { ...item("tt3", "series", "The Wire", 30), releaseInfo: "2002–2008" };
+
+  it("is the year, then the episode a show in progress is on", () => {
+    expect(libraryMeta(show)).toBe("2002–2008");
+    expect(libraryMeta(show, "S2 · E5")).toBe("2002–2008 · S2 · E5");
+  });
+
+  it("has no line when there is nothing to say", () => {
+    expect(libraryMeta({ ...show, releaseInfo: "" })).toBeUndefined();
+    expect(libraryMeta({ ...show, releaseInfo: "" }, "S1 · E1")).toBe("S1 · E1");
+  });
+});
+
+const entry = (contentId: string, season: number | null, episode: number | null): Progress => ({
+  key: "",
+  contentId,
+  contentType: "series",
+  videoId: contentId,
+  season,
+  episode,
+  position: 0,
+  duration: 1000,
+  lastWatched: 1,
+});
+
+describe("episodeLabels", () => {
+  it("labels the entries that are on an episode, by content ID", () => {
+    const labels = episodeLabels([entry("tt3", 2, 5), entry("tt2", null, null)]);
+    expect([...labels]).toEqual([["tt3", "S2 · E5"]]);
   });
 });
