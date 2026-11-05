@@ -271,3 +271,30 @@ Chrome at 1280×800 (2×) with the Go services stubbed. A local server stood in 
 | …light | ![](settings-pane-narrow-light.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed; the narrow shots are 640×900. The pane list is `SettingsPaneList` (`components/settings/settings-section.tsx`): icon tiles, a `data-settings-pill` element behind the current item, arrow keys with a single Tab stop. Below `md` it is a `ChipRail`.
+
+### Player: floating glass control bar (#121)
+
+The two full-width gradient strips became a rounded `glass-media-strong` capsule along the bottom (elapsed, seek bar, remaining; volume at the start, Back 10 / Play / Forward 10 in the centre, the menus at the end), a title cluster with a glass Back button, and strong media glass for every overlay. The player has one look in both themes (everything is `dark`), so only the first shot has a light twin.
+
+| | Before | After |
+|---|---|---|
+| Controls up over a frame | ![](player-controls-before.jpg) | ![](player-controls-after.jpg) |
+| …over a white frame (the worst case; Back was invisible before) | ![](player-bright-before.jpg) | ![](player-bright-after.jpg) |
+| Subtitles menu open | ![](player-menu-subtitles-before.jpg) | ![](player-menu-subtitles-after.jpg) |
+| Next-episode card | ![](player-next-episode-before.jpg) | ![](player-next-episode-after.jpg) |
+| Resume toast, Skip intro and a notice | ![](player-overlays-before.jpg) | ![](player-overlays-after.jpg) |
+| Shortcuts overlay | ![](player-shortcuts-before.jpg) | ![](player-shortcuts-after.jpg) |
+| Failure card | ![](player-failure-before.jpg) | ![](player-failure-after.jpg) |
+| Mini player (480×270) | ![](player-mini-before.jpg) | ![](player-mini-after.jpg) |
+
+| | |
+|---|---|
+| Controls, light colour scheme (the same) | ![](player-controls-light-after.jpg) |
+| Audio menu | ![](player-menu-audio-after.jpg) |
+| Pointer over the seek bar: the track has grown, glass time pill | ![](player-seek-hover-after.jpg) |
+| Space pressed: the centre mark, 30 ms in (it fades out over 450 ms) | ![](player-flash-after.jpg) |
+| Buffering panel | ![](player-loading-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta art and episode details; a made-up Torrentio answer for the next episode). Over the real player the video is a native layer under the transparent webview, so `backdrop-filter` is expected to blur nothing there: the shots switch it off (`backdrop-filter: none`) and show the tints alone, which is what the player's text contrast is sized for. The frame behind is a Metahub backdrop, and a white gradient for the bright shot. **Not captured:** the built macOS app over real video. This run had no screen-capture permission, so whether blur really does nothing over the video is still to be confirmed (see ADR-0046).
+
+Notes from the shots: text inside the bar and the strong-glass overlays is plain white, not `white/70`: muted white over strong glass over a white frame is 3.2:1, plain white 4.7:1. The title cluster sits on the lighter top gradient only (`from-black/45`); over a pure white frame the title is about 3.4:1 and relies on its drop shadow.
