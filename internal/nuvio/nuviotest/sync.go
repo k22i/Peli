@@ -10,7 +10,8 @@ import (
 	"strings"
 )
 
-// The fake's library, watch progress, watched items and addons (#28), and
+// The fake's library, watch progress, watched items, addons (#28), plugin
+// repositories (#57), and
 // home layouts and collections (#35, home.go). They
 // behave as docs/spikes/nuvio-backend.md saw them:
 //   - Event IDs are one sequence for the whole backend, starting high and
@@ -19,7 +20,7 @@ import (
 //   - A progress push is dropped, with a 200, unless the position moved 15 s
 //     or last_watched is 30 s newer than the stored one.
 //   - Progress of 90 % or more of an item over a minute adds a watched item.
-//   - An addons push replaces the whole list.
+//   - An addons or plugins push replaces the whole list.
 //   - Every push must send p_origin_client_id, or the call matches no
 //     function (PGRST202).
 
@@ -58,21 +59,23 @@ type syncState struct {
 	rows    map[string]map[rowKey]map[string]any // by surface
 	events  map[string][]event
 	addons  map[profileKey][]map[string]any
-	home    map[homeKey]map[string]any // home layouts (home.go)
-	colls   map[profileKey][]any       // collections (home.go)
-	pushes  map[string]int             // pushes received, by RPC name
-	dropped int                        // progress entries dropped by the throttle
+	plugins map[profileKey][]map[string]any // plugin repositories (#57)
+	home    map[homeKey]map[string]any      // home layouts (home.go)
+	colls   map[profileKey][]any            // collections (home.go)
+	pushes  map[string]int                  // pushes received, by RPC name
+	dropped int                             // progress entries dropped by the throttle
 }
 
 func newSyncState() *syncState {
 	return &syncState{
-		next:   firstEventID,
-		rows:   map[string]map[rowKey]map[string]any{Library: {}, Progress: {}, Watched: {}},
-		events: map[string][]event{},
-		addons: map[profileKey][]map[string]any{},
-		home:   map[homeKey]map[string]any{},
-		colls:  map[profileKey][]any{},
-		pushes: map[string]int{},
+		next:    firstEventID,
+		rows:    map[string]map[rowKey]map[string]any{Library: {}, Progress: {}, Watched: {}},
+		events:  map[string][]event{},
+		addons:  map[profileKey][]map[string]any{},
+		plugins: map[profileKey][]map[string]any{},
+		home:    map[homeKey]map[string]any{},
+		colls:   map[profileKey][]any{},
+		pushes:  map[string]int{},
 	}
 }
 
@@ -105,6 +108,14 @@ func (s *Server) SyncedAddons(email string, index int) []map[string]any {
 	return append([]map[string]any{}, s.sync.addons[profileKey{UserID(email), index}]...)
 }
 
+// SyncedPlugins returns the plugin repositories of an account's profile, in
+// order, as the server stores them (#57).
+func (s *Server) SyncedPlugins(email string, index int) []map[string]any {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return append([]map[string]any{}, s.sync.plugins[profileKey{UserID(email), index}]...)
+}
+
 // Pushes returns how many times the RPC (such as "sync_push_watch_progress")
 // was called, and DroppedProgress how many progress entries the throttle
 // dropped.
@@ -126,6 +137,10 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 	path := r.URL.Path
 	if path == "/rest/v1/addons" {
 		s.readAddons(w, user, r.URL.Query())
+		return true
+	}
+	if path == "/rest/v1/plugins" {
+		s.readPlugins(w, user, r.URL.Query())
 		return true
 	}
 	rpc, ok := strings.CutPrefix(path, "/rest/v1/rpc/")
@@ -204,6 +219,19 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 			})
 		}
 		st.addons[profile] = addons
+	case "sync_push_plugins":
+		plugins := []map[string]any{}
+		for i, p := range list(body["p_plugins"]) {
+			// Like the table: a client that leaves out enabled gets true.
+			enabled, ok := p["enabled"]
+			if !ok {
+				enabled = true
+			}
+			plugins = append(plugins, map[string]any{
+				"url": p["url"], "name": p["name"], "enabled": enabled, "sort_order": i, "repo_type": p["repo_type"],
+			})
+		}
+		st.plugins[profile] = plugins
 	case "sync_push_home_catalog_settings", "sync_push_collections":
 		s.pushHome(rpc, profile, body)
 	}
@@ -230,6 +258,7 @@ var syncArgs = map[string][]string{
 	"sync_push_watched_items":        {"p_items", "p_profile_id", "p_origin_client_id"},
 	"sync_delete_watched_items":      {"p_keys", "p_profile_id", "p_origin_client_id"},
 	"sync_push_addons":               {"p_addons", "p_profile_id", "p_origin_client_id"},
+	"sync_push_plugins":              {"p_plugins", "p_profile_id", "p_origin_client_id"},
 
 	"sync_pull_home_catalog_settings": {"p_profile_id", "p_platform"},
 	"sync_push_home_catalog_settings": {"p_profile_id", "p_settings_json", "p_platform", "p_origin_client_id"},
@@ -374,6 +403,17 @@ func (s *Server) readAddons(w http.ResponseWriter, user string, query url.Values
 	}
 	index, _ := strconv.Atoi(strings.TrimPrefix(query.Get("profile_id"), "eq."))
 	json.NewEncoder(w).Encode(append([]map[string]any{}, s.sync.addons[profileKey{user, index}]...))
+}
+
+// readPlugins answers GET /rest/v1/plugins?profile_id=eq.N&order=sort_order.asc
+// the way readAddons does (#57).
+func (s *Server) readPlugins(w http.ResponseWriter, user string, query url.Values) {
+	if user == "" {
+		w.Write([]byte(`[]`))
+		return
+	}
+	index, _ := strconv.Atoi(strings.TrimPrefix(query.Get("profile_id"), "eq."))
+	json.NewEncoder(w).Encode(append([]map[string]any{}, s.sync.plugins[profileKey{user, index}]...))
 }
 
 func number(v any) float64 {

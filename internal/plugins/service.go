@@ -7,10 +7,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"os"
+	"slices"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/k22i/Sinag/internal/store"
 )
 
 const (
@@ -20,9 +22,6 @@ const (
 	// codeFor is how long downloaded code is kept before it's asked for
 	// again.
 	codeFor = 10 * time.Minute
-	// DevManifestEnv names a plugin manifest URL whose enabled plugins
-	// Installed lists, until plugin management (#57) keeps a list.
-	DevManifestEnv = "SINAG_DEV_PLUGINS"
 )
 
 // Plugin is a plugin to call: its id and name, and where its code is.
@@ -42,8 +41,15 @@ type Service struct {
 	http      *http.Client
 	userAgent string
 
+	// The store plugins are kept in and the guarded way to change it
+	// (UseStore).
+	open func() *store.Store
+	edit Editor
+
 	mu    sync.Mutex
 	codes map[string]code
+	// When a repository's manifest last failed to load, by URL (Refresh).
+	failedAt map[string]time.Time
 }
 
 type code struct {
@@ -59,12 +65,30 @@ func NewService(version string) *Service {
 		http:      &http.Client{Timeout: 30 * time.Second},
 		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
 		codes:     map[string]code{},
+		failedAt:  map[string]time.Time{},
 	}
 }
 
 // Streams asks plugin for query's streams, in a sandbox with the default
 // limits. Cancelling ctx (the frontend leaving the picker) kills it.
+//
+// Only a plugin Installed lists is asked, and with the settings kept for it,
+// not the ones the caller sent: with plugins off, or on a kids profile, or
+// for a plugin that was turned off, nothing runs (#57, ADR-0047).
 func (s *Service) Streams(ctx context.Context, plugin Plugin, query Query) ([]Stream, error) {
+	installed, err := s.Installed(ctx)
+	if err != nil {
+		return nil, err
+	}
+	i := slices.IndexFunc(installed, func(p Plugin) bool { return p.ID == plugin.ID && p.URL == plugin.URL })
+	if i < 0 {
+		return nil, ErrNotEnabled
+	}
+	return s.run(ctx, installed[i], query)
+}
+
+// run is Streams for a plugin that has been checked.
+func (s *Service) run(ctx context.Context, plugin Plugin, query Query) ([]Stream, error) {
 	if query.TmdbID == "" || (query.MediaType != "movie" && query.MediaType != "tv") {
 		return nil, fmt.Errorf("%w: a TMDB id and movie or tv", ErrBadAnswer)
 	}
@@ -133,33 +157,6 @@ func (s *Service) get(ctx context.Context, link string, max int64) ([]byte, erro
 		return nil, fmt.Errorf("%w: too large", ErrUnreachable)
 	}
 	return data, nil
-}
-
-// Installed is the plugins to ask. Until plugin management (#57) there's
-// no list to keep, and plugins are off by default, so it's empty unless
-// $SINAG_DEV_PLUGINS names a manifest: then it's that manifest's enabled
-// plugins, for trying plugins out in a dev build.
-func (s *Service) Installed(ctx context.Context) ([]Plugin, error) {
-	link := os.Getenv(DevManifestEnv)
-	if link == "" {
-		return []Plugin{}, nil
-	}
-	data, err := s.get(ctx, link, 4<<20)
-	if err != nil {
-		return nil, err
-	}
-	m, err := ParseManifest(data, link)
-	if err != nil {
-		return nil, fmt.Errorf("%w: %v", ErrUnreachable, err)
-	}
-	out := []Plugin{}
-	for _, sc := range m.Scrapers {
-		if !sc.Enabled {
-			continue
-		}
-		out = append(out, Plugin{ID: sc.ID, Name: sc.Name, Version: sc.Version, URL: sc.File, SupportedTypes: sc.SupportedTypes})
-	}
-	return out, nil
 }
 
 // MarshalError gives the frontend an error's code, as {"code": …}. The

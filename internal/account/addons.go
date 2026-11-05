@@ -65,3 +65,10 @@ func (s *Service) editAddons(profileID uint64, edit func(db *store.Store) error)
 	}
 	return edit(db)
 }
+
+// EditorOf returns service's guarded way to change a profile's data, for the
+// plugin service (#57, internal/plugins): the same check the addon edits make.
+// It isn't a method, so Wails doesn't bind it.
+func EditorOf(service *Service) func(profileID uint64, edit func(db *store.Store) error) error {
+	return service.editAddons
+}

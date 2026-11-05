@@ -29,6 +29,11 @@ type Profile struct {
 	// (uses_primary_addons): its addons are then profile 1's list, read and
 	// written there, and the profile's own copy here is that list (#32).
 	UsesPrimaryAddons bool `json:"usesPrimaryAddons,omitempty"`
+	// The same for plugin repositories (uses_primary_plugins, #57): the
+	// primary's list is read and written, and the profile's own copy is
+	// that list. The master switch and each plugin's settings stay the
+	// profile's own.
+	UsesPrimaryPlugins bool `json:"usesPrimaryPlugins,omitempty"`
 	// The Guest profile, for using Sinag without an account (#23). There is
 	// at most one, it is local-only, and signing in or out leaves it as it
 	// is: its data never merges into an account's (ADR-0010).

@@ -92,6 +92,11 @@ func main() {
 	addonFetcher.Register(anilistaddon.Name,
 		anilistaddon.New(anilistClient, animeList, anilistaddon.KitsuURL, appinfo.Version))
 	go animeList.Warm(context.Background())
+	// Plugins are off for every profile until its owner turns them on, and
+	// never run for a kids profile (#57); their list is the profile's, kept
+	// in the store and synced with Nuvio.
+	pluginHost := plugins.NewService(appinfo.Version)
+	plugins.UseStore(pluginHost, func() *store.Store { return store.Opened(db) }, account.EditorOf(accounts))
 	player.ReportTo(players, func(r player.Report) {
 		watched.Report(r)
 		tracking.Report(trackers, r)
@@ -115,8 +120,9 @@ func main() {
 			// Resolving a picked stream to the file the player loads (#53).
 			application.NewServiceWithOptions(streams.NewService(appinfo.Version),
 				application.ServiceOptions{MarshalError: streams.MarshalError}),
-			// Nuvio JS plugins, each call in its own sandbox process (#56).
-			application.NewServiceWithOptions(plugins.NewService(appinfo.Version),
+			// Nuvio JS plugins, each call in its own sandbox process (#56),
+			// and which ones a profile runs (#57).
+			application.NewServiceWithOptions(pluginHost,
 				application.ServiceOptions{MarshalError: plugins.MarshalError}),
 			// Torrents streamed peer to peer, if the user turns it on (#55).
 			application.NewServiceWithOptions(torrent.NewService(db, torrent.DefaultDir(), appinfo.Version),

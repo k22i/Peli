@@ -56,3 +56,37 @@ func TestUsesPrimaryAddonsIsKept(t *testing.T) {
 		t.Fatal("profile 3 uses the primary's addons in the fake, but isn't marked")
 	}
 }
+
+// The same for plugins (#57): profile 1 never shares, and profile 3 does.
+func TestUsesPrimaryPluginsIsKept(t *testing.T) {
+	f, _, _ := signedIn(t)
+	if profileAt(t, f, 1).UsesPrimaryPlugins {
+		t.Fatal("the primary is marked as sharing its own plugins")
+	}
+	if !profileAt(t, f, 3).UsesPrimaryPlugins {
+		t.Fatal("profile 3 uses the primary's plugins in the fake, but isn't marked")
+	}
+}
+
+// The plugin service's edits go through the same guard as the addon manager's
+// (#57): with a kids profile in use, even another profile's plugins change
+// only with the parent PIN.
+func TestEditorOfAsksForTheParentPIN(t *testing.T) {
+	f, kevin, kids := kidsFixture(t)
+	edit := EditorOf(f.service)
+	ran := false
+	set := func(*store.Store) error { ran = true; return nil }
+
+	for _, id := range []uint64{kids.ID, kevin.ID} {
+		wantCode(t, "edit", edit(id, set), CodeParentPINRequired)
+	}
+	if ran {
+		t.Fatal("an edit ran without the parent PIN")
+	}
+	if err := f.service.ApproveParent(t.Context(), kids.ID, "1234"); err != nil {
+		t.Fatal(err)
+	}
+	if err := edit(kevin.ID, set); err != nil || !ran {
+		t.Fatalf("after approving: ran = %v, err = %v", ran, err)
+	}
+}

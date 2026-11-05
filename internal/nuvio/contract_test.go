@@ -89,6 +89,8 @@ var contract = map[string]answer{
 	"/rest/v1/rpc/sync_delete_watched_items":      {},
 	"/rest/v1/addons":                             rows[AddonRow](),
 	"/rest/v1/rpc/sync_push_addons":               {},
+	"/rest/v1/plugins":                            rows[PluginRow](),
+	"/rest/v1/rpc/sync_push_plugins":              {},
 
 	"/rest/v1/rpc/sync_pull_home_catalog_settings": rows[HomeLayoutRow](),
 	"/rest/v1/rpc/sync_push_home_catalog_settings": {},
@@ -678,6 +680,29 @@ func TestContract(t *testing.T) {
 		b.SortOrder = 0
 		if err != nil || !slices.Equal(got, []AddonRow{b}) {
 			t.Fatalf("after pushing one addon: %+v, %v; want only %+v", got, err, b)
+		}
+	})
+
+	run("plugin repositories replace-all", func(t *testing.T) {
+		js, dex := "NUVIO_JS", "EXTERNAL_DEX"
+		a := PluginRow{URL: "https://a.example.com/manifest.json", Name: ptr("A"), Enabled: true, RepoType: &js}
+		b := PluginRow{URL: "https://b.example.com/repo.cs3", Name: ptr("B"), Enabled: false, RepoType: &dex}
+		if err := c.PushPlugins(t.Context(), s, index, []PluginRow{a, b}); err != nil {
+			t.Fatal(err)
+		}
+		got, err := c.Plugins(t.Context(), s, index)
+		b.SortOrder = 1
+		if err != nil || !reflect.DeepEqual(got, []PluginRow{a, b}) {
+			t.Fatalf("plugins = %+v, %v; want %+v", got, err, []PluginRow{a, b})
+		}
+		// A repository pushed without a type (Nuvio's desktop app) has none.
+		a.RepoType = nil
+		if err := c.PushPlugins(t.Context(), s, index, []PluginRow{a}); err != nil {
+			t.Fatal(err)
+		}
+		got, err = c.Plugins(t.Context(), s, index)
+		if err != nil || !reflect.DeepEqual(got, []PluginRow{a}) {
+			t.Fatalf("after pushing one repository: %+v, %v; want only %+v", got, err, a)
 		}
 	})
 

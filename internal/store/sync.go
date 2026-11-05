@@ -17,6 +17,7 @@ const (
 	SurfaceProgress Surface = "progress"
 	SurfaceWatched  Surface = "watched"
 	SurfaceAddons   Surface = "addons"
+	SurfacePlugins  Surface = "plugins"
 )
 
 // Op is what a push does to the item at its key.
@@ -35,7 +36,7 @@ type Push struct {
 	Key     string  `json:"key"`
 	// The item as it should be on the server, or as it was before a delete.
 	Item json.RawMessage `json:"item"`
-	// For an addons push, the list it was edited from: what the backend had
+	// For an addons or plugins push, the list it was edited from: what the backend had
 	// before the first edit that hasn't been sent, so the push can be merged
 	// with what other devices changed since (ADR-0019). Nil for any other
 	// push, and for an addons push queued before #32.

@@ -119,6 +119,18 @@ type AddonRow struct {
 	SortOrder int    `json:"sort_order"`
 }
 
+// PluginRow is a plugin repository: Nuvio's plugins table lists repositories
+// by manifest URL, not the plugins in them (#57). RepoType is "NUVIO_JS" for
+// a repository of JS plugins and "EXTERNAL_DEX" for Android's Cloudstream
+// ones; clients that predate the column leave it null.
+type PluginRow struct {
+	URL       string  `json:"url"`
+	Name      *string `json:"name"`
+	Enabled   bool    `json:"enabled"`
+	SortOrder int     `json:"sort_order"`
+	RepoType  *string `json:"repo_type"`
+}
+
 // delta calls one of the sync_pull_*_delta RPCs.
 func delta[E any](c *Client, ctx context.Context, rpc string, s Session, index int, since int64) ([]E, error) {
 	events := []E{}
@@ -206,4 +218,29 @@ func (c *Client) PushAddons(ctx context.Context, s Session, index int, addons []
 		rows[i] = addon
 	}
 	return c.write(ctx, "sync_push_addons", s, index, "p_addons", rows)
+}
+
+// Plugins returns a profile's plugin repositories in order. As with addons
+// there is no pull RPC: it reads the table.
+func (c *Client) Plugins(ctx context.Context, s Session, index int) ([]PluginRow, error) {
+	rows := []PluginRow{}
+	query := url.Values{
+		"select":     {"url,name,enabled,sort_order,repo_type"},
+		"profile_id": {"eq." + strconv.Itoa(index)},
+		"order":      {"sort_order.asc"},
+	}
+	err := c.call(ctx, http.MethodGet, "/rest/v1/plugins?"+query.Encode(), s.AccessToken, nil, &rows)
+	return rows, err
+}
+
+// PushPlugins replaces a profile's whole repository list with repos, in
+// order. An empty list deletes every repository on the profile, so never push
+// a partial list, or one from a stale cache.
+func (c *Client) PushPlugins(ctx context.Context, s Session, index int, repos []PluginRow) error {
+	rows := make([]PluginRow, len(repos))
+	for i, repo := range repos {
+		repo.SortOrder = i
+		rows[i] = repo
+	}
+	return c.write(ctx, "sync_push_plugins", s, index, "p_plugins", rows)
 }

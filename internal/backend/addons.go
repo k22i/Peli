@@ -78,11 +78,17 @@ func fromAddonRows(rows []nuvio.AddonRow) []store.Addon {
 
 // mergeAddons applies what changed from base to local onto server, the list
 // the backend has now, and returns the list to push. Addons are matched by
-// manifest URL.
+// manifest URL; see mergeByURL for the rules.
+func mergeAddons(base, local, server []store.Addon) []store.Addon {
+	return mergeByURL(base, local, server, func(a store.Addon) string { return a.URL })
+}
+
+// mergeByURL is the three-way merge both lists that Nuvio replaces whole
+// share, addons and plugin repositories (#57). Items are matched by URL.
 //
 //   - Removed here: removed, unless it is gone already.
 //   - Added here: added, or updated if another device added it too. It goes
-//     before the addon after it here, or last, as an install does.
+//     before the item after it here, or last, as an install does.
 //   - Turned on or off, or renamed, here: so on the server too, unless
 //     another device removed it, which wins.
 //   - Reordered here: local's order, with what only the server has after it.
@@ -91,34 +97,34 @@ func fromAddonRows(rows []nuvio.AddonRow) []store.Addon {
 //
 // Edits on other devices that this device didn't touch are kept. With
 // nothing changed elsewhere (server equals base) the result is local.
-func mergeAddons(base, local, server []store.Addon) []store.Addon {
-	inBase := map[string]store.Addon{}
+func mergeByURL[T comparable](base, local, server []T, url func(T) string) []T {
+	inBase := map[string]T{}
 	for _, a := range base {
-		inBase[a.URL] = a
+		inBase[url(a)] = a
 	}
 	inLocal := map[string]bool{}
 	for _, a := range local {
-		inLocal[a.URL] = true
+		inLocal[url(a)] = true
 	}
 
-	merged := []store.Addon{}
+	merged := []T{}
 	for _, a := range server {
-		if _, ok := inBase[a.URL]; ok && !inLocal[a.URL] {
+		if _, ok := inBase[url(a)]; ok && !inLocal[url(a)] {
 			continue // removed here
 		}
 		merged = append(merged, a)
 	}
 	for i, a := range local {
-		at := addonAt(merged, a.URL)
-		was, known := inBase[a.URL]
+		at := indexByURL(merged, url(a), url)
+		was, known := inBase[url(a)]
 		switch {
 		case at >= 0 && (!known || was != a):
 			merged[at] = a // edited here, or added on both
 		case at < 0 && !known:
-			// Added here: before the addon after it here, or last.
+			// Added here: before the item after it here, or last.
 			pos := len(merged)
 			for _, next := range local[i+1:] {
-				if k := addonAt(merged, next.URL); k >= 0 {
+				if k := indexByURL(merged, url(next), url); k >= 0 {
 					pos = k
 					break
 				}
@@ -128,47 +134,47 @@ func mergeAddons(base, local, server []store.Addon) []store.Addon {
 		// at < 0 && known: removed on another device, which wins.
 	}
 
-	if !reordered(base, local) {
+	if !reordered(base, local, url) {
 		return merged
 	}
-	ordered := make([]store.Addon, 0, len(merged))
+	ordered := make([]T, 0, len(merged))
 	for _, a := range local {
-		if k := addonAt(merged, a.URL); k >= 0 {
+		if k := indexByURL(merged, url(a), url); k >= 0 {
 			ordered = append(ordered, merged[k])
 		}
 	}
 	for _, a := range merged {
-		if !inLocal[a.URL] {
+		if !inLocal[url(a)] {
 			ordered = append(ordered, a)
 		}
 	}
 	return ordered
 }
 
-// reordered is whether the addons in both base and local are in a different
+// reordered is whether the items in both base and local are in a different
 // order in local.
-func reordered(base, local []store.Addon) bool {
+func reordered[T any](base, local []T, url func(T) string) bool {
 	inLocal := map[string]bool{}
 	for _, a := range local {
-		inLocal[a.URL] = true
+		inLocal[url(a)] = true
 	}
 	var before []string
 	for _, a := range base {
-		if inLocal[a.URL] {
-			before = append(before, a.URL)
+		if inLocal[url(a)] {
+			before = append(before, url(a))
 		}
 	}
 	i := 0
 	for _, a := range local {
-		if i < len(before) && a.URL == before[i] {
+		if i < len(before) && url(a) == before[i] {
 			i++
-		} else if slices.Contains(before, a.URL) {
+		} else if slices.Contains(before, url(a)) {
 			return true
 		}
 	}
 	return false
 }
 
-func addonAt(addons []store.Addon, url string) int {
-	return slices.IndexFunc(addons, func(a store.Addon) bool { return a.URL == url })
+func indexByURL[T any](list []T, link string, url func(T) string) int {
+	return slices.IndexFunc(list, func(a T) bool { return url(a) == link })
 }

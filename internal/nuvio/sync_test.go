@@ -177,6 +177,46 @@ func TestAddonsSync(t *testing.T) {
 	}
 }
 
+// A plugins push replaces the list of repositories, in the order sent, and
+// keeps what the column holds: a name, a type, or neither (#57).
+func TestPluginsSync(t *testing.T) {
+	b, c, s := signedIn(t)
+	ctx := t.Context()
+	js := "NUVIO_JS"
+	input := []PluginRow{
+		{URL: "https://repo.example.com/manifest.json", Name: ptr("Example"), Enabled: true, RepoType: &js},
+		{URL: "https://other.example.com/manifest.json", Enabled: false},
+	}
+	fail(t, c.PushPlugins(ctx, s, 1, input))
+	if input[1].SortOrder != 0 {
+		t.Fatal("PushPlugins changed the caller's list")
+	}
+	got, err := c.Plugins(ctx, s, 1)
+	fail(t, err)
+	want := []PluginRow{input[0], input[1]}
+	want[1].SortOrder = 1
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("plugins = %+v, want %+v", got, want)
+	}
+
+	fail(t, c.PushPlugins(ctx, s, 1, input[:1]))
+	got, err = c.Plugins(ctx, s, 1)
+	fail(t, err)
+	if len(got) != 1 {
+		t.Fatalf("a shorter list left %+v", got)
+	}
+	if other, err := c.Plugins(ctx, s, 2); err != nil || len(other) != 0 {
+		t.Fatalf("profile 2 has %+v, %v", other, err)
+	}
+	if rows := b.SyncedPlugins("me@example.com", 1); len(rows) != 1 {
+		t.Fatalf("server has %v", rows)
+	}
+	body := b.Body("/rest/v1/rpc/sync_push_plugins")
+	if body["p_origin_client_id"] != c.OriginClientID() || body["p_profile_id"] != 1.0 {
+		t.Errorf("sync_push_plugins body = %v", body)
+	}
+}
+
 // Every write carries p_origin_client_id and the profile index.
 func TestWritesNameTheirOrigin(t *testing.T) {
 	b, c, s := signedIn(t)

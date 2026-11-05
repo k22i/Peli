@@ -52,8 +52,8 @@ func main() {
 		}
 		jobs = append(jobs, job(*file, string(code), query))
 	case *manifest != "":
-		os.Setenv(plugins.DevManifestEnv, *manifest)
-		list, err := plugins.NewService("dev").Installed(ctx)
+		svc := plugins.NewService("dev")
+		list, err := plugins.ManifestPlugins(ctx, svc, *manifest)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -63,7 +63,6 @@ func main() {
 				want[id] = true
 			}
 		}
-		svc := plugins.NewService("dev")
 		var wg sync.WaitGroup
 		for _, p := range list {
 			if len(want) > 0 && !want[p.ID] {
@@ -71,7 +70,7 @@ func main() {
 			}
 			wg.Go(func() {
 				start := time.Now()
-				streams, err := svc.Streams(ctx, p, query)
+				streams, err := plugins.RunUnchecked(ctx, svc, p, query)
 				report(p.ID, start, streams, err)
 			})
 		}

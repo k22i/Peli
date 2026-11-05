@@ -419,12 +419,13 @@ func profileName(name string) (string, error) {
 // avatar from images, a stock avatar's image by ID.
 func fromNuvio(p nuvio.Profile, images map[string]string) store.Profile {
 	return store.Profile{
-		Name:              p.Name,
-		NuvioIndex:        &p.Index,
-		UsesPrimaryAddons: p.UsesPrimaryAddons && p.Index != 1,
-		Avatar:            avatarImage(p, images),
-		AvatarColor:       hexColor(p.AvatarColor),
-		PinEnabled:        p.PinEnabled,
-		PinLockedUntil:    p.PinLockedUntil,
+		Name:               p.Name,
+		NuvioIndex:         &p.Index,
+		UsesPrimaryAddons:  p.UsesPrimaryAddons && p.Index != 1,
+		UsesPrimaryPlugins: p.UsesPrimaryPlugins && p.Index != 1,
+		Avatar:             avatarImage(p, images),
+		AvatarColor:        hexColor(p.AvatarColor),
+		PinEnabled:         p.PinEnabled,
+		PinLockedUntil:     p.PinLockedUntil,
 	}
 }

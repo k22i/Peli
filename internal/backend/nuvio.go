@@ -39,7 +39,7 @@ func indexOf(profile store.Profile) (int, error) {
 }
 
 // Pull reads the surface's delta feed from cursor, page after page until a
-// short one. Addons, the home layout and collections have no feed: Pull
+// short one. Addons, plugin repositories, the home layout and collections have no feed: Pull
 // returns the whole of each, as one change, every time, and the cursor stays
 // as it was.
 func (n Nuvio) Pull(ctx context.Context, profile store.Profile, surface store.Surface, cursor int64, ok bool) ([]Change, int64, error) {
@@ -56,6 +56,11 @@ func (n Nuvio) Pull(ctx context.Context, profile store.Profile, surface store.Su
 		changes, next = nil, cursor
 		if surface == store.SurfaceAddons {
 			change, err := n.pullAddons(ctx, s, addonsIndex(profile, index))
+			changes = []Change{change}
+			return err
+		}
+		if surface == store.SurfacePlugins {
+			change, err := n.pullPlugins(ctx, s, pluginsIndex(profile, index))
 			changes = []Change{change}
 			return err
 		}
@@ -198,7 +203,8 @@ type batch struct {
 // Addons replace the whole list, so only the newest addons push is sent, and
 // it is always the whole list, merged with the server's (addons.go); all of
 // them are acked with it. A profile that uses the primary's addons pulls and
-// pushes the primary's list. The home layout and collections go to a custom
+// pushes the primary's list. Plugin repositories (#57) do the same, with
+// uses_primary_plugins (plugins.go). The home layout and collections go to a custom
 // server only; on Nuvio's they are acked without being sent (home.go).
 func (n Nuvio) Push(ctx context.Context, profile store.Profile, pushes []store.Push) ([]store.Push, error) {
 	index, err := indexOf(profile)
@@ -214,8 +220,11 @@ func (n Nuvio) Push(ctx context.Context, profile store.Profile, pushes []store.P
 	pushes, acked := n.withoutHome(pushes)
 	for _, b := range batches(pushes) {
 		target := index
-		if b.surface == store.SurfaceAddons {
+		switch b.surface {
+		case store.SurfaceAddons:
 			target = addonsIndex(profile, index)
+		case store.SurfacePlugins:
+			target = pluginsIndex(profile, index)
 		}
 		err := n.Sessions.Do(ctx, func(s nuvio.Session) error { return n.send(ctx, s, target, b) })
 		if err == nil {
@@ -283,7 +292,7 @@ func batches(pushes []store.Push) []batch {
 	var out []batch
 	for _, k := range order {
 		group := groups[k]
-		if k.surface == store.SurfaceAddons || homeSurface(k.surface) {
+		if k.surface == store.SurfaceAddons || k.surface == store.SurfacePlugins || homeSurface(k.surface) {
 			out = append(out, batch{k.surface, k.op, group})
 			continue
 		}
@@ -299,7 +308,7 @@ func batches(pushes []store.Push) []batch {
 // send makes the RPC for b.
 func (n Nuvio) send(ctx context.Context, s nuvio.Session, index int, b batch) error {
 	c, upsert := n.Client, b.op == store.OpUpsert
-	if !upsert && (b.op != store.OpDelete || b.surface == store.SurfaceAddons || homeSurface(b.surface)) {
+	if !upsert && (b.op != store.OpDelete || b.surface == store.SurfaceAddons || b.surface == store.SurfacePlugins || homeSurface(b.surface)) {
 		return fmt.Errorf("backend: no call to push %s %s", b.surface, b.op)
 	}
 	switch b.surface {
@@ -350,6 +359,8 @@ func (n Nuvio) send(ctx context.Context, s nuvio.Session, index int, b batch) er
 		return c.DeleteWatched(ctx, s, index, keys)
 	case store.SurfaceAddons:
 		return n.pushAddons(ctx, s, index, b.pushes)
+	case store.SurfacePlugins:
+		return n.pushPlugins(ctx, s, index, b.pushes)
 	case store.SurfaceHomeLayout, store.SurfaceCollections:
 		return n.pushHome(ctx, s, index, b.pushes)
 	}

@@ -44,11 +44,11 @@ const (
 	MinGap = 30 * time.Second
 )
 
-// surfaces are what the pull reads. Addons, the home layout and collections
+// surfaces are what the pull reads. Addons, plugin repositories (#57), the home layout and collections
 // have no delta feed: each pull reads the whole of each (one small request)
 // and the cursor never moves (#32, #35).
 var surfaces = []store.Surface{
-	store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons,
+	store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons, store.SurfacePlugins,
 	store.SurfaceHomeLayout, store.SurfaceCollections,
 }
 

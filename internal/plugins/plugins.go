@@ -14,6 +14,8 @@ package plugins
 import (
 	"errors"
 	"time"
+
+	"github.com/k22i/Sinag/internal/store"
 )
 
 var (
@@ -36,6 +38,22 @@ var (
 	ErrCrashed = errors.New("plugins: sandbox crashed")
 	// ErrUnreachable means the plugin's code couldn't be downloaded.
 	ErrUnreachable = errors.New("plugins: plugin code unreachable")
+	// ErrNotEnabled means the plugin isn't one to ask: plugins are off for
+	// the profile in use, it's a kids profile, or the plugin or its
+	// repository is off or gone (#57).
+	ErrNotEnabled = errors.New("plugins: plugin isn't enabled")
+	// ErrOff means plugins are off for the profile, so nothing is fetched
+	// or installed for it.
+	ErrOff = errors.New("plugins: plugins are off")
+	// ErrKids means a kids profile can't use plugins (ADR-0047).
+	ErrKids = errors.New("plugins: kids profiles don't use plugins")
+	// ErrNotRepository means the address isn't a plugin repository: it
+	// isn't a manifest, or lists no plugin this device can run.
+	ErrNotRepository = errors.New("plugins: not a plugin repository")
+	// ErrBadAddress means the address can't be a manifest URL.
+	ErrBadAddress = errors.New("plugins: not a manifest address")
+	// ErrNoStore means the service has no store to keep plugins in.
+	ErrNoStore = errors.New("plugins: no store")
 )
 
 // Error codes the frontend reads (MarshalError).
@@ -48,6 +66,16 @@ const (
 	CodeStalled       = "stalled"
 	CodeCrashed       = "crashed"
 	CodeUnreachable   = "unreachable"
+
+	// Plugin management (#57).
+	CodeNotEnabled    = "not_enabled"
+	CodeOff           = "off"
+	CodeKids          = "kids_profile"
+	CodeNotRepository = "not_a_repository"
+	CodeBadAddress    = "bad_address"
+	CodeInstalled     = "already_installed"
+	CodeNotFound      = "not_found"
+	CodeNoStore       = "no_store"
 )
 
 var codes = map[error]string{
@@ -59,6 +87,16 @@ var codes = map[error]string{
 	ErrStalled:       CodeStalled,
 	ErrCrashed:       CodeCrashed,
 	ErrUnreachable:   CodeUnreachable,
+
+	ErrNotEnabled:                CodeNotEnabled,
+	ErrOff:                       CodeOff,
+	ErrKids:                      CodeKids,
+	ErrNotRepository:             CodeNotRepository,
+	ErrBadAddress:                CodeBadAddress,
+	store.ErrPluginRepoInstalled: CodeInstalled,
+	store.ErrPluginRepoNotFound:  CodeNotFound,
+	store.ErrPluginNotFound:      CodeNotFound,
+	ErrNoStore:                   CodeNoStore,
 }
 
 // codeOf is err's code, or CodeFailed.

@@ -45,7 +45,7 @@ type Backend interface {
 // backend (#35): Nuvio.Push drops them there unsent.
 func Syncs(surface store.Surface) bool {
 	switch surface {
-	case store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons,
+	case store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons, store.SurfacePlugins,
 		store.SurfaceHomeLayout, store.SurfaceCollections:
 		return true
 	}

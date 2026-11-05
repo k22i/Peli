@@ -82,7 +82,7 @@ func (d *device) push(t *testing.T) {
 // It returns how many changes it applied.
 func (d *device) pull(t *testing.T) (applied int) {
 	t.Helper()
-	for _, surface := range []store.Surface{store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons} {
+	for _, surface := range []store.Surface{store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons, store.SurfacePlugins} {
 		cursor, ok, err := d.store.Cursor(d.profile.ID, surface)
 		check(t, err)
 		changes, next, err := d.backend.Pull(t.Context(), d.profile, surface, cursor, ok)

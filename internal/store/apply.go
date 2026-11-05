@@ -17,7 +17,7 @@ type Change struct {
 	// Item again, so it only has to be right for a reader.
 	Key string `json:"key"`
 	// The item as the backend has it, or as it was before a delete. For the
-	// addons surface, the whole list: addons have no delta feed. For the
+	// addons and plugins surfaces, the whole list: they have no delta feed. For the
 	// home layout and collections, Nuvio's whole blob, and a delete means
 	// the backend has none.
 	Item json.RawMessage `json:"item"`
@@ -100,7 +100,7 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 		dest = p.Bucket(t.bucket)
 	}
 	have := dest.Get(t.key)
-	if have == nil && c.Surface == SurfaceAddons {
+	if have == nil && (c.Surface == SurfaceAddons || c.Surface == SurfacePlugins) {
 		have = []byte("[]") // a profile never given a list has none
 	}
 	if c.Surface == SurfaceAddons {
@@ -133,7 +133,14 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 	if bytes.Equal(have, want) {
 		return false, nil
 	}
-	return true, dest.Put(t.key, want)
+	if err := dest.Put(t.key, want); err != nil {
+		return false, err
+	}
+	if c.Surface == SurfacePlugins {
+		// A repository another device removed takes its plugins with it.
+		return true, prunePluginCaches(p, t.value.([]PluginRepo))
+	}
+	return true, nil
 }
 
 // targetOf decodes c's item and works out where it lives.
@@ -183,6 +190,15 @@ func targetOf(c Change) (target, error) {
 			addons = []Addon{}
 		}
 		return target{nil, keyAddons, "", addons, nil}, nil
+	case SurfacePlugins:
+		repos := []PluginRepo{}
+		if err := json.Unmarshal(c.Item, &repos); err != nil {
+			return target{}, err
+		}
+		if repos == nil {
+			repos = []PluginRepo{}
+		}
+		return target{nil, keyPluginRepos, "", repos, nil}, nil
 	case SurfaceHomeLayout, SurfaceCollections:
 		// Whole blobs, like addons; a delete is the backend having none.
 		key, want := keyHomeLayout, byte('{')

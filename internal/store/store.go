@@ -1,5 +1,5 @@
 // Package store is Sinag's local database: profiles, their library, watch
-// progress, watched items, addons, home layout, collections, settings and
+// progress, watched items, addons, plugin repositories (#57), home layout, collections, settings and
 // the source each show was last played from (#58), the device's settings,
 // the sync bookkeeping (#28) and a cache.
 // It is one bbolt file in the OS app-data directory (ADR-0006).
@@ -11,6 +11,8 @@
 //	meta               schema → uint64
 //	profiles/<id>      profile → Profile
 //	                   addons → []Addon
+//	                   plugin-repos → []PluginRepo (synced, #57)
+//	                   plugin-config → PluginConfig (local, #57)
 //	                   settings → ProfileSettings
 //	                   home-layout → Nuvio's home layout blob (#35)
 //	                   collections → Nuvio's collections blob (#35)
@@ -55,15 +57,18 @@ var (
 	bucketCursors  = []byte("cursors")
 	bucketOutbox   = []byte("outbox")
 
-	keySchema   = []byte("schema")
-	keyProfile  = []byte("profile")
-	keyAddons   = []byte("addons")
-	keySettings = []byte("settings")
-	keyDevice   = []byte("device")
-	keyCurrent  = []byte("current")
-	keyAccount  = []byte("account")
-	keyKids     = []byte("kids")
-	keyServer   = []byte("server")
+	keySchema  = []byte("schema")
+	keyProfile = []byte("profile")
+	keyAddons  = []byte("addons")
+
+	keyPluginRepos  = []byte("plugin-repos")
+	keyPluginConfig = []byte("plugin-config")
+	keySettings     = []byte("settings")
+	keyDevice       = []byte("device")
+	keyCurrent      = []byte("current")
+	keyAccount      = []byte("account")
+	keyKids         = []byte("kids")
+	keyServer       = []byte("server")
 )
 
 var (
