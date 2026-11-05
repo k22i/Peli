@@ -157,7 +157,12 @@
    "year": 2023,
    "runtimeMin": 24,
    "episode": 1,
-   "absoluteEpisode": 1
+   "absoluteEpisode": 1,
+   "map": {
+    "season": 1,
+    "episode": 1,
+    "absolute": 1
+   }
   },
   {
    "slug": "attack-on-titan-e01",
@@ -173,7 +178,12 @@
    "year": 2013,
    "runtimeMin": 24,
    "episode": 1,
-   "absoluteEpisode": 1
+   "absoluteEpisode": 1,
+   "map": {
+    "season": 1,
+    "episode": 1,
+    "absolute": 1
+   }
   },
   {
    "slug": "one-piece-e1100",
@@ -188,7 +198,12 @@
    "year": 1999,
    "runtimeMin": 24,
    "episode": 1100,
-   "absoluteEpisode": 1100
+   "absoluteEpisode": 1100,
+   "map": {
+    "season": 22,
+    "episode": 15,
+    "absolute": 1100
+   }
   },
   {
    "slug": "dandadan-e01",
@@ -207,7 +222,12 @@
    "year": 2024,
    "runtimeMin": 23,
    "episode": 1,
-   "absoluteEpisode": 1
+   "absoluteEpisode": 1,
+   "map": {
+    "season": 1,
+    "episode": 1,
+    "absolute": 1
+   }
   },
   {
    "slug": "solo-leveling-s01e01",
@@ -228,6 +248,145 @@
    "name": "Your Name.",
    "year": 2016,
    "runtimeMin": 106
+  },
+  {
+   "slug": "one-piece-e1000",
+   "kind": "anime",
+   "type": "series",
+   "id": "kitsu:12:1000",
+   "name": "One Piece",
+   "aliases": [
+    "ONE PIECE",
+    "ワンピース"
+   ],
+   "year": 1999,
+   "runtimeMin": 24,
+   "episode": 1000,
+   "absoluteEpisode": 1000,
+   "map": {
+    "season": 21,
+    "episode": 109,
+    "absolute": 1000
+   }
+  },
+  {
+   "slug": "detective-conan-e1100",
+   "kind": "anime",
+   "type": "series",
+   "id": "kitsu:210:1100",
+   "name": "Detective Conan",
+   "aliases": [
+    "المحقق كونان",
+    "Detectiu Conan",
+    "Mesterdetektiven Conan",
+    "Detektiv Conan",
+    "Al Mohackek Conan",
+    "Meitantei Conan",
+    "Case Closed",
+    "El Detective Conan",
+    "Salapollisi Conan",
+    "Détective Conan",
+    "Detektif Conan",
+    "名探偵コナン",
+    "명탐정 코난",
+    "Detektyw Conan",
+    "Detetive Conan",
+    "Detectivul Conan",
+    "Детектив Конан",
+    "Mästerdetektiven Conan",
+    "Thám tử lừng danh Conan",
+    "名偵探柯南",
+    "Case Closed: One Truth Prevails"
+   ],
+   "year": 1996,
+   "runtimeMin": 25,
+   "episode": 1100,
+   "absoluteEpisode": 1100,
+   "map": {
+    "season": 31,
+    "episode": 33,
+    "absolute": 1100
+   }
+  },
+  {
+   "slug": "naruto-shippuden-e300",
+   "kind": "anime",
+   "type": "series",
+   "id": "kitsu:1555:300",
+   "name": "Naruto: Shippuuden",
+   "aliases": [
+    "Naruto: Shippuden",
+    "ナルト- 疾風伝",
+    "Naruto Hurricane Chronicles"
+   ],
+   "year": 2007,
+   "runtimeMin": 23,
+   "episode": 300,
+   "absoluteEpisode": 300,
+   "map": {
+    "season": 14,
+    "episode": 5,
+    "absolute": 300
+   }
+  },
+  {
+   "slug": "one-piece-e700",
+   "kind": "anime",
+   "type": "series",
+   "id": "kitsu:12:700",
+   "name": "One Piece",
+   "aliases": [
+    "ONE PIECE",
+    "ワンピース"
+   ],
+   "year": 1999,
+   "runtimeMin": 24,
+   "episode": 700,
+   "absoluteEpisode": 700,
+   "map": {
+    "season": 17,
+    "episode": 72,
+    "absolute": 700
+   }
+  },
+  {
+   "slug": "detective-conan-e500",
+   "kind": "anime",
+   "type": "series",
+   "id": "kitsu:210:500",
+   "name": "Detective Conan",
+   "aliases": [
+    "المحقق كونان",
+    "Detectiu Conan",
+    "Mesterdetektiven Conan",
+    "Detektiv Conan",
+    "Al Mohackek Conan",
+    "Meitantei Conan",
+    "Case Closed",
+    "El Detective Conan",
+    "Salapollisi Conan",
+    "Détective Conan",
+    "Detektif Conan",
+    "名探偵コナン",
+    "명탐정 코난",
+    "Detektyw Conan",
+    "Detetive Conan",
+    "Detectivul Conan",
+    "Детектив Конан",
+    "Mästerdetektiven Conan",
+    "Thám tử lừng danh Conan",
+    "名偵探柯南",
+    "Case Closed: One Truth Prevails"
+   ],
+   "year": 1996,
+   "runtimeMin": 25,
+   "episode": 500,
+   "absoluteEpisode": 500,
+   "map": {
+    "season": 17,
+    "episode": 10,
+    "absolute": 500
+   }
   }
  ],
  "streams": [
@@ -12886,6 +13045,4428 @@
      "es"
     ],
     "note": "FullBluray, no size"
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#8",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One Piece 1999 Seasons 16 to 21 ANIME 1080p WEB-DL x264 [i_c]\nSeason 20/[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 22 💾 644.13 MB ⚙️ ThePirateBay",
+    "infoHash": "7cee20309ff9ff2abf09d552ea19a11d0a8c34ec",
+    "fileIdx": 421,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|7cee20309ff9ff2abf09d552ea19a11d0a8c34ec",
+     "filename": "[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    }
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "source": "web-dl",
+    "group": "i_c",
+    "season": 20,
+    "episode": 1000,
+    "sizeGB": 0.629
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#2",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[Anime Time] One Piece - 222 363 537 599 602 835 965 966 1000 (Fixed) [1080p][HEVC 10bit x265][AAC] [Dual Audio][Eng Sub]\n[Anime Time] One Piece - 1000 - Overwhelming Strength The Straw Hats Come Together.mkv\n👤 52 💾 811.63 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+    "infoHash": "d6d32305b4c7265fb3d7ca9f27c7b5583cf8a346",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|d6d32305b4c7265fb3d7ca9f27c7b5583cf8a346",
+     "filename": "[Anime Time] One Piece - 1000 - Overwhelming Strength The Straw Hats Come Together.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:d6d32305b4c7265fb3d7ca9f27c7b5583cf8a346"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "group": "Anime Time",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "episode": 1000,
+    "sizeGB": 0.793
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#48",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\nTeleSync",
+    "title": "One Piece English Dubbed episodes 1 - 1000\nOne Piece English Dub 1000.ts\n👤 5 💾 450.51 MB ⚙️ TorrentGalaxy\nDubbed / 🇬🇧",
+    "infoHash": "ac53df57c874a1b7e5749b7f662fe96b66b92c3c",
+    "fileIdx": 999,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|ac53df57c874a1b7e5749b7f662fe96b66b92c3c",
+     "filename": "One Piece English Dub 1000.ts"
+    }
+   },
+   "label": {
+    "langs": [
+     "en"
+    ],
+    "episode": 1000,
+    "sizeGB": 0.44,
+    "note": "a .ts file, not a TeleSync"
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#42",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "[46620] One Piece 0001-1000 480p h265\nSeason 1/One Piece - S01E1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 3 💾 92.67 MB ⚙️ NyaaSi",
+    "infoHash": "5609ddb0e60cb616f3fa8239a2ea37a2076b5f63",
+    "fileIdx": 999,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|5609ddb0e60cb616f3fa8239a2ea37a2076b5f63",
+     "filename": "One Piece - S01E1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:5609ddb0e60cb616f3fa8239a2ea37a2076b5f63"
+    ]
+   },
+   "label": {
+    "res": "480p",
+    "vcodec": "hevc",
+    "season": 1,
+    "episode": 1000,
+    "sizeGB": 0.09
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#17",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[Erai-raws] One Piece - 1000 [1080p][Multiple Subtitle][F2AE5FF6].mkv\n👤 5 💾 1.36 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇵🇹",
+    "infoHash": "b39511d40cf234a48b89e6b07f49f0645079330d",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p|Erai-raws",
+     "filename": "[Erai-raws] One Piece - 1000 [1080p][Multiple Subtitle][F2AE5FF6].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:b39511d40cf234a48b89e6b07f49f0645079330d"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "group": "Erai-raws",
+    "episode": 1000,
+    "sizeGB": 1.36
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#49",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio",
+    "title": "One Piece\n👤 8 💾 257.17 MB ⚙️ EXT\n🇮🇹",
+    "infoHash": "012c63a9d5a89a8930575192feb451edc0e5b242",
+    "fileIdx": 743,
+    "behaviorHints": {
+     "filename": "One Piece - 21x109 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    }
+   },
+   "label": {
+    "langs": [
+     "it"
+    ],
+    "season": 21,
+    "episode": 109,
+    "sizeGB": 0.251,
+    "note": "S21E109 is absolute episode 1000"
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#43",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "[SubsPlease] One Piece - 1000 (480p) [DBB0D9AF].mkv\n👤 3 💾 362.17 MB ⚙️ NyaaSi",
+    "infoHash": "1dcd287a49d9675668bde7beeb73e3c03d46becb",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|480p|SubsPlease",
+     "filename": "[SubsPlease] One Piece - 1000 (480p) [DBB0D9AF].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:1dcd287a49d9675668bde7beeb73e3c03d46becb"
+    ]
+   },
+   "label": {
+    "res": "480p",
+    "group": "SubsPlease",
+    "episode": 1000,
+    "sizeGB": 0.354
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#35",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[Zoku] One Piece - (807-1036) [720p] [English Dub] - Unofficial Batch\n[Zoku] One Piece - Season 14 Voyage 09 (989-1000) [720p] [English Dub]/One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together! [DD222B27].mkv\n👤 2 💾 709.54 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+    "infoHash": "395838fa19c94591f5b8c2458650313caedbea80",
+    "fileIdx": 193,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|395838fa19c94591f5b8c2458650313caedbea80",
+     "filename": "One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together! [DD222B27].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:395838fa19c94591f5b8c2458650313caedbea80"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "group": "Zoku",
+    "langs": [
+     "en"
+    ],
+    "season": 14,
+    "episode": 1000,
+    "sizeGB": 0.693
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#31",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[Erai-raws] One Piece - 974 ~ 1006 [720p][Multiple Subtitle]\n[Erai-raws] One Piece - 1000 [720p][Multiple Subtitle][DB021006].mkv\n👤 4 💾 710.25 MB ⚙️ NyaaSi\nMulti Subs",
+    "infoHash": "b109213992a78e1eb99254ed85c171de5e2f1404",
+    "fileIdx": 13,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|b109213992a78e1eb99254ed85c171de5e2f1404",
+     "filename": "[Erai-raws] One Piece - 1000 [720p][Multiple Subtitle][DB021006].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:b109213992a78e1eb99254ed85c171de5e2f1404"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "group": "Erai-raws",
+    "episode": 1000,
+    "sizeGB": 0.694
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#11",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One Piece (0001-1071 Movies Specials) [BD CR] [Dual Audio] [1080p][HEVC 10bit x265][AAC][Multi Sub] - Anime Time\nSeason 20 - Wano Country/[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 18 💾 560.5 MB ⚙️ 1337x\nDubbed / Multi Subs / Dual Audio / 🇬🇧",
+    "infoHash": "1e15b9b47b7869345c6497f7bacbd29db028e067",
+    "fileIdx": 1412,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1e15b9b47b7869345c6497f7bacbd29db028e067",
+     "filename": "[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    }
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "source": "bluray",
+    "group": "Anime Time",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 20,
+    "episode": 1000,
+    "sizeGB": 0.547
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#14",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One Piece [1080p]\nOne Piece - 1000.mkv\n👤 11 💾 454.8 MB ⚙️ EXT",
+    "infoHash": "4252abce716828d2c57beb43e82d179cb3715001",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|4252abce716828d2c57beb43e82d179cb3715001",
+     "filename": "One Piece - 1000.mkv"
+    }
+   },
+   "label": {
+    "res": "1080p",
+    "episode": 1000,
+    "sizeGB": 0.444
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#4",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[One Pace][1000] Wano 55 [1080p][2501AC5A].mkv\n👤 36 💾 449.86 MB ⚙️ NyaaSi\n🇬🇧 / 🇫🇷 / 🇩🇪",
+    "infoHash": "9806712382cf97d7c7e190bf20cbd1a6284e6906",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p|One Pace",
+     "filename": "[One Pace][1000] Wano 55 [1080p][2501AC5A].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:9806712382cf97d7c7e190bf20cbd1a6284e6906"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "group": "One Pace",
+    "langs": [
+     "en",
+     "fr",
+     "de"
+    ],
+    "episode": 1000,
+    "sizeGB": 0.439,
+    "fake": true,
+    "note": "One Pace fan re-edit, numbered by manga chapter"
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#27",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[ASW] One Piece - 1000 [1080p HEVC x265 10Bit][AAC]\n👤 1 💾 536.32 MB ⚙️ NyaaSi",
+    "infoHash": "781c07cc5b9babaa3628c91104f98a72c28785b0",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p|ASW",
+     "filename": "[ASW] One Piece - 1000 [1080p HEVC][48F328FF].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:781c07cc5b9babaa3628c91104f98a72c28785b0"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "group": "ASW",
+    "episode": 1000,
+    "sizeGB": 0.524
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#40",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n540p",
+    "title": "One Piece - 1000 - 540p WEB H.264 -NanDesuKa (FUNi).mkv\n👤 2 💾 361.71 MB ⚙️ NyaaSi",
+    "infoHash": "fdd12975d7c1e7d81efdd99a089ca8ac63ddd567",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|540p|FUNi",
+     "filename": "One Piece - 1000 - 540p WEB H.264 -NanDesuKa (FUNi).mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:fdd12975d7c1e7d81efdd99a089ca8ac63ddd567"
+    ]
+   },
+   "label": {
+    "vcodec": "avc",
+    "source": "web-dl",
+    "group": "NanDesuKa",
+    "episode": 1000,
+    "sizeGB": 0.353
+   }
+  },
+  {
+   "id": "torrentio-tb/one-piece-e1000#40",
+   "split": "longrun",
+   "addon": "torrentio-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "[TB download] Torrentio\n720p",
+    "title": "[Zoku] One Piece - Season 14 Voyage 09 (989-1000) [720p] [English Dub] [CR]\nOne Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together! [DD222B27].mkv\n👤 3 💾 709.54 MB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+    "behaviorHints": {
+     "bingeGroup": "torrentio|3b47af981a1c9eaa6e62d963c8f69abce4c401b8",
+     "filename": "One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together! [DD222B27].mkv"
+    },
+    "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3b47af981a1c9eaa6e62d963c8f69abce4c401b8/One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together! [DD222B27].mkv/11/One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together! [DD222B27].mkv"
+   },
+   "label": {
+    "res": "720p",
+    "group": "Zoku",
+    "langs": [
+     "en"
+    ],
+    "season": 14,
+    "episode": 1000,
+    "sizeGB": 0.693,
+    "cached": false
+   }
+  },
+  {
+   "id": "torrentio-tb/one-piece-e1000#12",
+   "split": "longrun",
+   "addon": "torrentio-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "[TB+] Torrentio\n1080p",
+    "title": "[Erai-raws] One Piece - 0892 ~ 1089 [1080p][BATCH][Multiple Subtitle] [ENG][POR-BR][SPA-LA][SPA][ARA][FRE][GER][ITA][RUS]\n[Erai-raws] One Piece - 1000 [1080p][Multiple Subtitle][4ADEBB5F].mkv\n👤 12 💾 1.38 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇷🇺 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇫🇷 / 🇩🇪 / 🇸🇦",
+    "behaviorHints": {
+     "bingeGroup": "torrentio|428c8312eded7d03788198308f38df365c976eb3",
+     "filename": "[Erai-raws] One Piece - 1000 [1080p][Multiple Subtitle][4ADEBB5F].mkv"
+    },
+    "url": "https://torrentio.strem.fun/resolve/torbox/<key>/428c8312eded7d03788198308f38df365c976eb3/<opaque>/[Erai-raws] One Piece - 1000 [1080p][Multiple Subtitle][4ADEBB5F].mkv"
+   },
+   "label": {
+    "res": "1080p",
+    "group": "Erai-raws",
+    "episode": 1000,
+    "sizeGB": 1.38,
+    "cached": true
+   }
+  },
+  {
+   "id": "torrentio-tb/one-piece-e1000#0",
+   "split": "longrun",
+   "addon": "torrentio-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "[TB+] Torrentio\n1080p",
+    "title": "[Anime Time] One Piece (0001-1071+Movies+Specials) [BD+CR] [Dual Audio] [1080p][HEVC 10bit x265][AAC][Multi Sub] [Batch]\nSeason 20 - Wano Country/[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 146 💾 560.5 MB ⚙️ NyaaSi\nDubbed / Multi Subs / Dual Audio / 🇬🇧",
+    "behaviorHints": {
+     "bingeGroup": "torrentio|3e3219582bc614cf52fa921209001343c361f318",
+     "filename": "[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    },
+    "url": "https://torrentio.strem.fun/resolve/torbox/<key>/3e3219582bc614cf52fa921209001343c361f318/[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv/1437/[Anime Time] One Piece - 1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "source": "bluray",
+    "group": "Anime Time",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 20,
+    "episode": 1000,
+    "sizeGB": 0.547,
+    "cached": true
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#237",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|9c59c7e24b30b05007362ce54c892c554fa45a69",
+     "filename": "One.Piece.2023.S01.NF.WEBRip.x264.Hun.Eng-MaMMuT",
+     "videoSize": 5971313181
+    },
+    "description": "📄 One.Piece.2023.S01.NF.WEBRip.x264.Hun.Eng-MaMMuT\n📹 avc\n⭐ WEBRip | 🏷️ MaMMuT\n💾 5.6 GB 🔎 DMM\n🌎/🇬🇧/🇭🇺",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "avc",
+    "source": "webrip",
+    "group": "MaMMuT",
+    "langs": [
+     "en",
+     "hu"
+    ],
+    "season": 1,
+    "sizeGB": 5.6,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#205",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|9e99ad3bf634f34a6a0574aa57c114d873d1443d",
+     "filename": "One Piece",
+     "videoSize": 2458868776
+    },
+    "description": "📄 One Piece\n👤 1 💾 2.3 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 2.3,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#110",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|d76cc30c9fb197e1ab98932ea7c7e91f125577bf",
+     "filename": "One.Piece.S01.1080p.ColdFilm",
+     "videoSize": 514499109
+    },
+    "description": "📄 One.Piece.S01.1080p.ColdFilm\n💾 490.7 MB 🔎 DMM",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "season": 1,
+    "sizeGB": 0.479,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack, asked for episode 1000 (season 21)"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#140",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|0d7fcd2a108c3d73f4658bc11f076d98864b1987",
+     "filename": "One.Piece.S01.1080p.H264.AAC.WEBRip.le-production",
+     "videoSize": 79151266292
+    },
+    "description": "📄 One.Piece.S01.1080p.H264.AAC.WEBRip.le-production\n📹 avc | 🔊 AAC\n⭐ WEBRip | 🏷️ production\n💾 73.7 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "audio": "aac",
+    "source": "webrip",
+    "group": [
+     "production",
+     "le-production"
+    ],
+    "season": 1,
+    "sizeGB": 73.7,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#80",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|c5baff2474d599d7edf27d88aacee2e8bca08a7a",
+     "filename": "One.Piece.2023.S01.COMPLETE.SPANiSH.LATiNO.1080p.NF.WEB-DL.DDP5.1.H.264-dem3nt3",
+     "videoSize": 20650202759
+    },
+    "description": "📄 One.Piece.2023.S01.COMPLETE.SPANiSH.LATiNO.1080p.NF.WEB-DL.DDP5.1.H.264-dem3nt3\n📹 avc | 🔊 Dolby Digital Plus • 5.1\n⭐ WEB-DL | 🏷️ dem3nt3\n👤 32 💾 19.2 GB 🔎 1337x\n💃🏻",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "audio": "eac3",
+    "ch": "5.1",
+    "source": "web-dl",
+    "group": "dem3nt3",
+    "langs": [
+     "es"
+    ],
+    "season": 1,
+    "sizeGB": 19.2,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#226",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|318eee8b7f72ae878f2b5cd4aa420df23017b40b",
+     "filename": "Season.01.Camera.and.Lighting.Test.(Easter.Egg).mkv",
+     "videoSize": 88986288
+    },
+    "description": "📄 Season.01.Camera.and.Lighting.Test.(Easter.Egg).mkv\n👤 0 💾 84.9 MB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 0.083,
+    "cached": false,
+    "fake": true,
+    "note": "a season 1 extra of another show"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#14",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|1941d1aac17205c9d0c56873b634e1efd4a61e66",
+     "filename": "[Intervencion] One Piece '3D2Y' – The 15th Anniversary Special Episode [WebDL 1080p AAC TriSub].mkv",
+     "videoSize": 6517540121
+    },
+    "description": "📄 [Intervencion] One Piece '3D2Y' – The 15th Anniversary Special Episode [WebDL 1080p AAC TriSub].mkv\n🔊 AAC\n⭐ WEB-DL | 🏷️ Intervencion\n👤 0 💾 6.1 GB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⚡] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "audio": "aac",
+    "source": "web-dl",
+    "group": "Intervencion",
+    "sizeGB": 6.1,
+    "cached": true,
+    "fake": true,
+    "note": "anniversary special, not episode 1000"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#15",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|33920f9b48670854e23e0b3c23238c1b2b73b686",
+     "filename": "[HatSubs] One Piece Fan Letter (WEB 1080p) [B351A9BA].mkv",
+     "videoSize": 1539819862
+    },
+    "description": "📄 [HatSubs] One Piece Fan Letter (WEB 1080p) [B351A9BA].mkv\n⭐ WEB | 🏷️ HatSubs\n👤 0 💾 1.4 GB 🔎 DebridAccount|torbox",
+    "name": "[TB⚡] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "source": "web-dl",
+    "group": "HatSubs",
+    "sizeGB": 1.4,
+    "cached": true,
+    "fake": true,
+    "note": "Fan Letter special, not episode 1000"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#211",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|876d3753bfc312d544bd37bab50adf12ffc86df9",
+     "filename": "One Piece",
+     "videoSize": 116168127938
+    },
+    "description": "📄 One Piece\n👤 1 💾 108.2 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 108.2,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#64",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|7420806e9a7cc05e4c8cc0cab4bd920273649375",
+     "filename": "One.Piece.2023.S01.2160p.SDR",
+     "videoSize": 7442480557
+    },
+    "description": "📄 One.Piece.2023.S01.2160p.SDR\n📹 SDR\n💾 6.9 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 2160p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "2160p",
+    "season": 1,
+    "sizeGB": 6.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#50",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|61fff252999999de95b6982b0b3dbcd5370f90e4",
+     "filename": "One.Piece.2023.S01.MULTi.VFI.2160p.WebRip.10bit.4KLight.DV.HDR.DDP.5.1.Atmos.x265-QTZ",
+     "videoSize": 21592397125
+    },
+    "description": "📄 One.Piece.2023.S01.MULTi.VFI.2160p.WebRip.10bit.4KLight.DV.HDR.DDP.5.1.Atmos.x265-QTZ\n📹 hevc • DV • HDR • 10bit | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEBRip | 🏷️ QTZ\n💾 20.1 GB 🔎 DMM\n🌎/🇫🇷",
+    "name": "[TB⬇️] Comet 2160p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "2160p",
+    "hdr": [
+     "DV",
+     "HDR10"
+    ],
+    "vcodec": "hevc",
+    "audio": "eac3",
+    "ch": "5.1",
+    "source": "webrip",
+    "group": "QTZ",
+    "langs": [
+     "multi",
+     "fr"
+    ],
+    "season": 1,
+    "atmos": true,
+    "sizeGB": 20.1,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#137",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|6f2ceefff2949bf853df3c6e29b5162842103dbd",
+     "filename": "ONE PIECE S01 S01 2023 1080p NF WEBRip AAC5.1 10bits x265-Rapta",
+     "videoSize": 3805990404
+    },
+    "description": "📄 ONE PIECE S01 S01 2023 1080p NF WEBRip AAC5.1 10bits x265-Rapta\n📹 hevc | 🔊 AAC • 5.1\n⭐ WEBRip | 🏷️ Rapta\n👤 75 💾 3.5 GB 🔎 The Pirate Bay",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "ch": "5.1",
+    "source": "webrip",
+    "group": "Rapta",
+    "season": 1,
+    "sizeGB": 3.5,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#245",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|e010c76895c3bd99ed9038f30347a9a7250f8ede",
+     "filename": "One.Piece.S01.ITA.ENG.NFRip.XviD-Pir8",
+     "videoSize": 5844068304
+    },
+    "description": "📄 One.Piece.S01.ITA.ENG.NFRip.XviD-Pir8\n📹 xvid\n🏷️ Pir8\n💾 5.4 GB 🔎 DMM\n🌎/🇬🇧/🇮🇹",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "xvid",
+    "source": "webrip",
+    "group": "Pir8",
+    "langs": [
+     "it",
+     "en"
+    ],
+    "season": 1,
+    "sizeGB": 5.4,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#179",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|d9805503fe27fdb775911a65ab9913cde2f4e60d",
+     "filename": "[waka] One Piece S01 [480p][x265][AAC][Multi Sub]",
+     "videoSize": 8729521029
+    },
+    "description": "📄 [waka] One Piece S01 [480p][x265][AAC][Multi Sub]\n📹 hevc | 🔊 AAC\n🏷️ waka\n👤 1 💾 8.1 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet 480p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "480p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "group": "waka",
+    "season": 1,
+    "sizeGB": 8.1,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#87",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|90e6f31b75f81f8237e1511ce5499349b5b3e0e6",
+     "filename": "One Piece 2023 S01 REPACK MULTi 1080p WEB DDP5 1 Atmos x264-TFA",
+     "videoSize": 21201261071
+    },
+    "description": "📄 One Piece 2023 S01 REPACK MULTi 1080p WEB DDP5 1 Atmos x264-TFA\n📹 avc | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB • REPACK | 🏷️ TFA\n💾 19.7 GB 🔎 DMM\n🌎",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "audio": "eac3",
+    "ch": "5.1",
+    "source": "web-dl",
+    "group": "TFA",
+    "langs": [
+     "multi"
+    ],
+    "season": 1,
+    "atmos": true,
+    "sizeGB": 19.7,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#61",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|d61ca4c96336c1778b79d7e2f3e7c2cc4cc48236",
+     "filename": "One.Piece.2023.S01.2160p.SDR",
+     "videoSize": 7382725581
+    },
+    "description": "📄 One.Piece.2023.S01.2160p.SDR\n📹 SDR\n💾 6.9 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 2160p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "2160p",
+    "season": 1,
+    "sizeGB": 6.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#151",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|f64e845acd0c879f1090b0a50dcd2bfdeaa10b99",
+     "filename": "[HatSubs] One Piece (BD 1080p 10-bit)",
+     "videoSize": 10962438809
+    },
+    "description": "📄 [HatSubs] One Piece (BD 1080p 10-bit)\n📹 10bit\n⭐ BDRip | 🏷️ HatSubs\n👤 0 💾 10.2 GB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "source": "bluray",
+    "group": "HatSubs",
+    "sizeGB": 10.2,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#115",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|9c72bc45c566c6b9f629c21db3fad5f166667c4d",
+     "filename": "One.Piece.2023.S01.1080p",
+     "videoSize": 3623752751
+    },
+    "description": "📄 One.Piece.2023.S01.1080p\n💾 3.4 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "season": 1,
+    "sizeGB": 3.4,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#37",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|a9e8886f3a469147bcb66cab12589f1106d87269",
+     "filename": "ONE.PIECE.2023.S01.REPACK.2160p.NF.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX",
+     "videoSize": 67272562808
+    },
+    "description": "📄 ONE.PIECE.2023.S01.REPACK.2160p.NF.WEB-DL.DDP5.1.Atmos.DV.HDR.H.265-FLUX\n📹 hevc • DV • HDR | 🔊 Atmos • Dolby Digital Plus • 5.1\n⭐ WEB-DL • REPACK | 🏷️ FLUX\n👤 0 💾 62.7 GB 🔎 DebridAccount|torbox",
+    "name": "[TB⬇️] Comet 2160p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "2160p",
+    "hdr": [
+     "DV",
+     "HDR10"
+    ],
+    "vcodec": "hevc",
+    "audio": "eac3",
+    "ch": "5.1",
+    "source": "web-dl",
+    "group": "FLUX",
+    "season": 1,
+    "atmos": true,
+    "sizeGB": 62.7,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "2023 live-action season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#114",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|9ee3e88799f24f2d41ddf03b1aff3b19b6a7ec10",
+     "filename": "One.Piece.S01.1080p.ColdFilm",
+     "videoSize": 14166033359
+    },
+    "description": "📄 One.Piece.S01.1080p.ColdFilm\n💾 13.2 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "season": 1,
+    "sizeGB": 13.2,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#20",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|abbe4b90da3ae2d95b3256992b967932dce38caf",
+     "filename": "WuQf6t8.gif",
+     "videoSize": 1411575
+    },
+    "description": "📄 WuQf6t8.gif\n📹 hevc • 10bit\n⭐ BDRip\n👤 0 💾 1.3 MB 🔎 DebridAccount|torbox\n🌎/🇸🇦",
+    "name": "[TB⚡] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "hevc",
+    "source": "bluray",
+    "langs": [
+     "ar"
+    ],
+    "sizeGB": 0.001,
+    "cached": true,
+    "fake": true,
+    "note": ".gif, not a video"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#171",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|306b4da791bc8fb8115d7bd585bf0fda0f4f8a4f",
+     "filename": "One.Piece.S01.720p.LostFilm",
+     "videoSize": 8589934592
+    },
+    "description": "📄 One.Piece.S01.720p.LostFilm\n💾 8.0 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "season": 1,
+    "sizeGB": 8.0,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#1",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[ASW] Detective Conan - 1100 [1080p HEVC x265 10Bit][AAC]\n👤 8 💾 174.37 MB ⚙️ NyaaSi",
+    "infoHash": "11745876adf1a3cefc32d7c101904aceb203b210",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p|ASW",
+     "filename": "[ASW] Detective Conan - 1100 [1080p HEVC][81C08B5F].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:11745876adf1a3cefc32d7c101904aceb203b210"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "group": "ASW",
+    "episode": 1100,
+    "sizeGB": 0.17
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#4",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[Erai-raws] Detective Conan - 1100 ~ 1111 [1080p][HEVC][BATCH] [ENG]\n[Erai-raws] Detective Conan - 1100 [1080p][HEVC][F51E6F9B].mkv\n👤 4 💾 337.92 MB ⚙️ NyaaSi",
+    "infoHash": "0c8a891930fb5545965f9611496063943d8e0355",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|0c8a891930fb5545965f9611496063943d8e0355",
+     "filename": "[Erai-raws] Detective Conan - 1100 [1080p][HEVC][F51E6F9B].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:0c8a891930fb5545965f9611496063943d8e0355"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "group": "Erai-raws",
+    "episode": 1100,
+    "sizeGB": 0.33
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#9",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "[SubsPlease] Detective Conan - 1100 (480p) [077D3F12].mkv\n👤 1 💾 373.31 MB ⚙️ NyaaSi",
+    "infoHash": "db6fe2d0c857adc2fd481dc76eaac039454c8261",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|480p|SubsPlease",
+     "filename": "[SubsPlease] Detective Conan - 1100 (480p) [077D3F12].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:db6fe2d0c857adc2fd481dc76eaac039454c8261"
+    ]
+   },
+   "label": {
+    "res": "480p",
+    "group": "SubsPlease",
+    "episode": 1100,
+    "sizeGB": 0.365
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#7",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[SubsPlease] Detective Conan - 1100 (720p) [C23B7087].mkv\n👤 1 💾 720.85 MB ⚙️ NyaaSi",
+    "infoHash": "ac740c0589e5b87dba640323a6c9de29810b9151",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|720p|SubsPlease",
+     "filename": "[SubsPlease] Detective Conan - 1100 (720p) [C23B7087].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:ac740c0589e5b87dba640323a6c9de29810b9151"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "group": "SubsPlease",
+    "episode": 1100,
+    "sizeGB": 0.704
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#8",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "[Erai-raws] Detective Conan - 0754 ~ 1132 [480p][BATCH] [ENG]\n[Erai-raws] Detective Conan - 1100 [480p][42867D6C].mkv\n👤 4 💾 376.61 MB ⚙️ NyaaSi",
+    "infoHash": "5cd38dd88ae5690be7ca4c39e419eaecbc25b274",
+    "fileIdx": 346,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|5cd38dd88ae5690be7ca4c39e419eaecbc25b274",
+     "filename": "[Erai-raws] Detective Conan - 1100 [480p][42867D6C].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:5cd38dd88ae5690be7ca4c39e419eaecbc25b274"
+    ]
+   },
+   "label": {
+    "res": "480p",
+    "group": "Erai-raws",
+    "episode": 1100,
+    "sizeGB": 0.368
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#0",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[Erai-raws] Detective Conan - 0754 ~ 1132 [1080p][BATCH] [ENG]\n[Erai-raws] Detective Conan - 1100 [1080p][948606E8].mkv\n👤 17 💾 1.37 GB ⚙️ NyaaSi",
+    "infoHash": "11c8646a8e15764002c8e42299526b3e02c3ca35",
+    "fileIdx": 346,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|11c8646a8e15764002c8e42299526b3e02c3ca35",
+     "filename": "[Erai-raws] Detective Conan - 1100 [1080p][948606E8].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:11c8646a8e15764002c8e42299526b3e02c3ca35"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "group": "Erai-raws",
+    "episode": 1100,
+    "sizeGB": 1.37
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#6",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[Erai-raws] Detective Conan - 0754 ~ 1132 [720p][BATCH] [ENG]\n[Erai-raws] Detective Conan - 1100 [720p][E16BA27A].mkv\n👤 2 💾 718.5 MB ⚙️ NyaaSi",
+    "infoHash": "65e6ad92330d885453695a2e7f0c09717923cffb",
+    "fileIdx": 346,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|65e6ad92330d885453695a2e7f0c09717923cffb",
+     "filename": "[Erai-raws] Detective Conan - 1100 [720p][E16BA27A].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:65e6ad92330d885453695a2e7f0c09717923cffb"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "group": "Erai-raws",
+    "episode": 1100,
+    "sizeGB": 0.702
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#2",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[HDEncodes] Detective Conan (1996) Remastered 1001 ~ 1100 [1080p…\n[HDEncodes] Detective Conan (1996) - 1100 [1080p WEBRip HEVC NVENC AAC].mp4\n👤 6 💾 202.96 MB ⚙️ TorrentGalaxy",
+    "infoHash": "a27fd8a214569f294248a4585db465f2bf678c2c",
+    "fileIdx": 99,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|a27fd8a214569f294248a4585db465f2bf678c2c",
+     "filename": "[HDEncodes] Detective Conan (1996) - 1100 [1080p WEBRip HEVC NVENC AAC].mp4"
+    }
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "source": "webrip",
+    "group": "HDEncodes",
+    "episode": 1100,
+    "sizeGB": 0.198
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#3",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "Детектив Конан / Meitantei Conan / Detective Conan / Case Closed [TV] [0622-0978 0989 1029-1110 1xxx] [JAP+Sub] & [0622-0940 1xxx] [RUS(ext)] [1996 WEB-DL] [1080p]\nDetective Conan 1100.mkv\n👤 4 💾 1.37 GB ⚙️ Rutracker\n🇬🇧 / 🇷🇺",
+    "infoHash": "f13e8747277eb63b291ef12ae4a8520a786941db",
+    "fileIdx": 429,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|f13e8747277eb63b291ef12ae4a8520a786941db",
+     "filename": "Detective Conan 1100.mkv"
+    },
+    "sources": [
+     "tracker:http://bt2.t-ru.org/ann?magnet",
+     "dht:f13e8747277eb63b291ef12ae4a8520a786941db",
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:udp://opentor.net:6969",
+     "tracker:http://bt.t-ru.org/ann?magnet",
+     "tracker:http://bt3.t-ru.org/ann?magnet",
+     "tracker:http://bt4.t-ru.org/ann?magnet"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "source": "web-dl",
+    "langs": [
+     "ja",
+     "en",
+     "ru"
+    ],
+    "episode": 1100,
+    "sizeGB": 1.37
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e1100#5",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[SubsPlease] Detective Conan - 1100 (1080p) [BB2B6C01].mkv\n👤 3 💾 1.37 GB ⚙️ NyaaSi",
+    "infoHash": "87bfd0930a5c3a3d949ffd15e834f2c7a9d8f112",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p|SubsPlease",
+     "filename": "[SubsPlease] Detective Conan - 1100 (1080p) [BB2B6C01].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:87bfd0930a5c3a3d949ffd15e834f2c7a9d8f112"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "group": "SubsPlease",
+    "episode": 1100,
+    "sizeGB": 1.37
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#70",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|1662a63a1093a5a35d2cb7ed7d8f37fc5d90298b",
+     "filename": "Meitantei Conan [Concise]",
+     "videoSize": 0
+    },
+    "description": "📄 Meitantei Conan [Concise]\n👤 0 💾 0.0 B 🔎 DebridAccount|realdebrid",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#71",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|14e2981ba26ca714122641961c8f27e817102fac",
+     "filename": "Detective Conan",
+     "videoSize": 705209303
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 672.5 MB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 0.657,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#22",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|d08a33d891b511f9afd7bc394fe09a5a1846908e",
+     "filename": "[RAW Reghost-Fabre] Detective Conan [Season 01][DVDR2J][480p][Hi10][AC3]",
+     "videoSize": 13186996209
+    },
+    "description": "📄 [RAW Reghost-Fabre] Detective Conan [Season 01][DVDR2J][480p][Hi10][AC3]\n📹 10bit | 🔊 Dolby Digital\n⭐ DVD | 🏷️ RAW Reghost-Fabre\n💾 12.3 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 480p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "480p",
+    "audio": "ac3",
+    "source": "dvd",
+    "group": "RAW Reghost-Fabre",
+    "season": 1,
+    "sizeGB": 12.3,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#20",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|c5ab3b3e686417e45e8f9e5e77457a51190011e8",
+     "filename": "Detective.Conan.S01-08.VFF.576p.DVDRip.AC3.2.0.H264-NOTAG",
+     "videoSize": 47110008502
+    },
+    "description": "📄 Detective.Conan.S01-08.VFF.576p.DVDRip.AC3.2.0.H264-NOTAG\n📹 avc | 🔊 Dolby Digital • 2.0\n⭐ DVDRip | 🏷️ NOTAG\n💾 43.9 GB 🔎 DMM\n🇫🇷",
+    "name": "[TB⬇️] Comet 576p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "576p",
+    "vcodec": "avc",
+    "audio": "ac3",
+    "ch": "2.0",
+    "source": "dvd",
+    "group": "NOTAG",
+    "langs": [
+     "fr"
+    ],
+    "season": 1,
+    "sizeGB": 43.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "seasons 1-8 pack"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#0",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|a92c72f0cac7ec3139bdd54a498d103647a786ba",
+     "filename": "[Fabre-RAW] Detective Conan 0425 [NetflixUS] [1080p].mkv",
+     "videoSize": 4276047106
+    },
+    "description": "📄 [Fabre-RAW] Detective Conan 0425 [NetflixUS] [1080p].mkv\n🏷️ Fabre-RAW\n👤 0 💾 4.0 GB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⚡] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "group": "Fabre-RAW",
+    "episode": 425,
+    "sizeGB": 4.0,
+    "cached": true,
+    "fake": true,
+    "note": "episode 425, asked for 1100"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#52",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|752af95c4faaa02a6a503ea921d9509a5d32e948",
+     "filename": "Detective Conan",
+     "videoSize": 2695091978
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 2.5 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 2.5,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#19",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|efb25906ee385f17c3255c5dbbae8f96d285348b",
+     "filename": "[df68] Detective Conan Season 01 - Part 1 [720p][x264][JPN][SUB]",
+     "videoSize": 2228453861
+    },
+    "description": "📄 [df68] Detective Conan Season 01 - Part 1 [720p][x264][JPN][SUB]\n📹 avc\n🏷️ df68\n💾 2.1 GB 🔎 DMM\n🇯🇵",
+    "name": "[TB⬇️] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "avc",
+    "group": "df68",
+    "langs": [
+     "ja"
+    ],
+    "season": 1,
+    "sizeGB": 2.1,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 part 1"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#32",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|e2539b95ac065a7e4d3824581d5ff57a4fcb3a89",
+     "filename": "Detective Conan",
+     "videoSize": 105913893519
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 98.6 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 98.6,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#46",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|9dd1af4fc062a0f3a427409635c00569f8757809",
+     "filename": "Detective Conan",
+     "videoSize": 160395553669
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 149.4 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 149.4,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#74",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|78de9015dffd5b2df52832fc9fa0cc2871fe3e03",
+     "filename": "Detective.Conan.S01.FRENCH.DVDRip.x264.AC3.Chap",
+     "videoSize": 11419876981
+    },
+    "description": "📄 Detective.Conan.S01.FRENCH.DVDRip.x264.AC3.Chap\n📹 avc | 🔊 Dolby Digital\n⭐ DVDRip\n💾 10.6 GB 🔎 DMM\n🇫🇷",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "avc",
+    "audio": "ac3",
+    "source": "dvd",
+    "group": "Chap",
+    "langs": [
+     "fr"
+    ],
+    "season": 1,
+    "sizeGB": 10.6,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#33",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|df5909005fffaaedda5768ed991cf4d14d7a6362",
+     "filename": "Detective Conan",
+     "videoSize": 64113124311
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 59.7 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 59.7,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#21",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|a187a3afda5e925c28eef88f187d7b8de2183e49",
+     "filename": "Detective.Conan.1996.S01.VFF.576p.DVDRip.AC3.x264-Chap",
+     "videoSize": 0
+    },
+    "description": "📄 Detective.Conan.1996.S01.VFF.576p.DVDRip.AC3.x264-Chap\n📹 avc | 🔊 Dolby Digital\n⭐ DVDRip | 🏷️ Chap\n💾 0.0 B 🔎 DMM\n🇫🇷",
+    "name": "[TB⬇️] Comet 576p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "576p",
+    "vcodec": "avc",
+    "audio": "ac3",
+    "source": "dvd",
+    "group": "Chap",
+    "langs": [
+     "fr"
+    ],
+    "season": 1,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#72",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|8069838b803b8ba2b3f6addb06d23cc96a9ed854",
+     "filename": "Detective Conan S1-7 Arabic Dub",
+     "videoSize": 61263878852
+    },
+    "description": "📄 Detective Conan S1-7 Arabic Dub\n💾 57.1 GB 🔎 DMM\n🌎/🇸🇦",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "langs": [
+     "ar"
+    ],
+    "season": 1,
+    "sizeGB": 57.1,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "seasons 1-7 pack"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#4",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|e7362aac9cb3660aa96131c9f2f4d1abecab774d",
+     "filename": "Detective Conan Movie 27; The Million-dollar Pentagram.mkv",
+     "videoSize": 5954852701
+    },
+    "description": "📄 Detective Conan Movie 27; The Million-dollar Pentagram.mkv\n👤 0 💾 5.5 GB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⚡] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 5.5,
+    "cached": true,
+    "fake": true,
+    "note": "a film"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#23",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|0fdeebff4ecec66b8ce6f7e91d7438e7245bb4f7",
+     "filename": "[RAW Reghost-Fabre] Detective Conan [Season 01][V2][DVDR2J][480p][Hi10][AC3]",
+     "videoSize": 13355494552
+    },
+    "description": "📄 [RAW Reghost-Fabre] Detective Conan [Season 01][V2][DVDR2J][480p][Hi10][AC3]\n📹 10bit | 🔊 Dolby Digital\n⭐ DVD | 🏷️ RAW Reghost-Fabre\n💾 12.4 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 480p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "480p",
+    "audio": "ac3",
+    "source": "dvd",
+    "group": "RAW Reghost-Fabre",
+    "season": 1,
+    "sizeGB": 12.4,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#2",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|bd907c43c1cc8a97b6891af8d50569970184bd59",
+     "filename": "Detective Conan - Live Action Movie 4 (Eng. sub) [Heiwa Fansubs] [720p] [3D0A2A0E].mp4",
+     "videoSize": 1258659316
+    },
+    "description": "📄 Detective Conan - Live Action Movie 4 (Eng. sub) [Heiwa Fansubs] [720p] [3D0A2A0E].mp4\n👤 1 💾 1.2 GB 🔎 BTdirectory\n🇬🇧",
+    "name": "[TB⚡] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "group": "Heiwa Fansubs",
+    "langs": [
+     "en"
+    ],
+    "sizeGB": 1.2,
+    "cached": true,
+    "fake": true,
+    "note": "live-action film"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#37",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|be9d4ab75bb18dd610b0d4cb4bc08ee008122086",
+     "filename": "Detective Conan",
+     "videoSize": 11682311045
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 10.9 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 10.9,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#56",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|55da730480f076710106282cdcf0a4730d28d550",
+     "filename": "Detective Conan season 1 to season 22 + season 23(incomplete)",
+     "videoSize": 183502539156
+    },
+    "description": "📄 Detective Conan season 1 to season 22 + season 23(incomplete)\n🏷️ incomplete\n💾 170.9 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 170.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "seasons 1-23 pack, asked for episode 1100 (season 31)"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#49",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|95a3bc998ac2cfd41f8ef844895999724a20e711",
+     "filename": "Detective Conan Remastered  Episodes[Batch] [Arabic Subs]",
+     "videoSize": 6341466729
+    },
+    "description": "📄 Detective Conan Remastered  Episodes[Batch] [Arabic Subs]\n👤 0 💾 5.9 GB 🔎 DebridAccount|torbox\n🇸🇦",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 5.9,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#11",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|fe2940c0351a3c476870a198c26189ae6f6e92db",
+     "filename": "[HDEncodes] Detective Conan (1996) Remastered 0901 ~ 1000 [1080p WEBRip HEVC NVENC AAC]",
+     "videoSize": 15139759718
+    },
+    "description": "📄 [HDEncodes] Detective Conan (1996) Remastered 0901 ~ 1000 [1080p WEBRip HEVC NVENC AAC]\n📹 hevc | 🔊 AAC\n⭐ WEBRip | 🏷️ HDEncodes\n👤 41 💾 14.1 GB 🔎 TheRARBG",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "source": "webrip",
+    "group": "HDEncodes",
+    "sizeGB": 14.1,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "episodes 901-1000, asked for 1100"
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#40",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|b441cbbd234f584a5413f0de1e5a2db2e76c2d15",
+     "filename": "Detective Conan",
+     "videoSize": 1001599795
+    },
+    "description": "📄 Detective Conan\n👤 1 💾 955.2 MB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 0.933,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/detective-conan-e1100#25",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "detective-conan-e1100",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|feb6a20b2788c2c6663c465cfdb3fd2802e50399",
+     "filename": "Detective.Conan.Season.1.x265.HEVC-imad_sam",
+     "videoSize": 2400617711
+    },
+    "description": "📄 Detective.Conan.Season.1.x265.HEVC-imad_sam\n📹 hevc\n💾 2.2 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "hevc",
+    "group": "imad_sam",
+    "season": 1,
+    "sizeGB": 2.2,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#20",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[Erai-raws] Naruto Shippuuden - 080 ~ 500 [720p CR WEB-DL AVC AAC][MultiSub] [BATCH]\n[Erai-raws] Naruto Shippuuden - 300 [720p CR WEB-DL AVC AAC][MultiSub][A99D38A8].mkv\n👤 2 💾 700.42 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇩🇪 / 🇸🇦",
+    "infoHash": "19fd18649e7221cda3d743c27eae77dbc0b876b0",
+    "fileIdx": 220,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|19fd18649e7221cda3d743c27eae77dbc0b876b0",
+     "filename": "[Erai-raws] Naruto Shippuuden - 300 [720p CR WEB-DL AVC AAC][MultiSub][A99D38A8].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:19fd18649e7221cda3d743c27eae77dbc0b876b0"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "avc",
+    "audio": "aac",
+    "source": "web-dl",
+    "group": "Erai-raws",
+    "episode": 300,
+    "sizeGB": 0.684
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#4",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[AnimeRG] Naruto Shippuden (Complete Series 001-500) Naruto Shippuuden [1080p] [HEVC] [x265] [Batch] [pseudo]\nSeason 14 (Episodes 296-320)/[AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv\n👤 18 💾 241.02 MB ⚙️ NyaaSi",
+    "infoHash": "2904f007be563101c4589749f2398ea84b920e30",
+    "fileIdx": 311,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|2904f007be563101c4589749f2398ea84b920e30",
+     "filename": "[AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:2904f007be563101c4589749f2398ea84b920e30"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "group": "AnimeRG",
+    "season": 14,
+    "episode": 300,
+    "sizeGB": 0.235
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#15",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[Sotark] Naruto Shippuden (001-500 complete series) [480p][720p][HEVC][x265][Dual-Audio]\n[Sotark] Naruto Shippuden - 300 [720p][HEVC][x265][Dual-Audio].mkv\n👤 31 💾 166.3 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+    "infoHash": "de2fee7cd8f32514dc138b4cdd53c93d7d7a1eb6",
+    "fileIdx": 299,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|de2fee7cd8f32514dc138b4cdd53c93d7d7a1eb6",
+     "filename": "[Sotark] Naruto Shippuden - 300 [720p][HEVC][x265][Dual-Audio].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:de2fee7cd8f32514dc138b4cdd53c93d7d7a1eb6"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "hevc",
+    "group": "Sotark",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "episode": 300,
+    "sizeGB": 0.162
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#28",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio",
+    "title": "Naruto Shippuden Season 1-18 (1-393) English Dubbed\n[animeawake] Naruto Shippuden Episode 300.mp4\n👤 29 💾 56.24 MB ⚙️ ThePirateBay\nDubbed / 🇬🇧",
+    "infoHash": "270fc051cd2ae4a6297bfcd19648b08e5fe2fc0e",
+    "fileIdx": 302,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|270fc051cd2ae4a6297bfcd19648b08e5fe2fc0e",
+     "filename": "[animeawake] Naruto Shippuden Episode 300.mp4"
+    }
+   },
+   "label": {
+    "group": "animeawake",
+    "langs": [
+     "en"
+    ],
+    "episode": 300,
+    "sizeGB": 0.055
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#31",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio",
+    "title": "[JySzE] Naruto Shippuden [Dual Audio] [Complete] [Extras] [x264] [v2]\n[JySzE] Naruto Shippuden - 300 [v2].mkv\n👤 3 💾 3.05 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+    "infoHash": "116e8a12b57acb6f152f1b23af02b896a0ea4e3d",
+    "fileIdx": 299,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|116e8a12b57acb6f152f1b23af02b896a0ea4e3d",
+     "filename": "[JySzE] Naruto Shippuden - 300 [v2].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:116e8a12b57acb6f152f1b23af02b896a0ea4e3d"
+    ]
+   },
+   "label": {
+    "vcodec": "avc",
+    "group": "JySzE",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "episode": 300,
+    "sizeGB": 3.05
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#9",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[Yellow-Flash] Naruto Shippuden 152-382 (v2/v3 10bit 720p/BD1080p AAC)\n[Yellow-Flash]_Naruto_Shippuden_-_300_[v2][Blu-Ray][1080p][10bit][B5D089DA].mkv\n👤 5 💾 1.9 GB ⚙️ NyaaSi",
+    "infoHash": "2ec3b05fc48e83466c9b6377c294b8257687a39f",
+    "fileIdx": 185,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|2ec3b05fc48e83466c9b6377c294b8257687a39f",
+     "filename": "[Yellow-Flash]_Naruto_Shippuden_-_300_[v2][Blu-Ray][1080p][10bit][B5D089DA].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:2ec3b05fc48e83466c9b6377c294b8257687a39f"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "source": "bluray",
+    "group": "Yellow-Flash",
+    "episode": 300,
+    "sizeGB": 1.9
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#12",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[HorribleSubs] Naruto Shippuuden 01 - 500(Batch) [480p][720p] [1080p]\n[HorribleSubs] Naruto Shippuuden - 300 [1080p].mkv\n👤 2 💾 530.12 MB ⚙️ NyaaSi",
+    "infoHash": "ae1cdee4d6f1d81767aaa4a43839d459f49b38d5",
+    "fileIdx": 299,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|ae1cdee4d6f1d81767aaa4a43839d459f49b38d5",
+     "filename": "[HorribleSubs] Naruto Shippuuden - 300 [1080p].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:ae1cdee4d6f1d81767aaa4a43839d459f49b38d5"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "group": "HorribleSubs",
+    "episode": 300,
+    "sizeGB": 0.518
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#23",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "Naruto.Shippuden.480p.ITA.AAC.x265-MaDTiA\nNaruto.Shippuden.EP300.480p.ITA.AAC.x265-MaDTiA.mkv\n👤 4 💾 111.31 MB ⚙️ 1337x\n🇮🇹",
+    "infoHash": "964a03cf05e7687b523e0c51228fa7cfe659333f",
+    "fileIdx": 299,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|964a03cf05e7687b523e0c51228fa7cfe659333f",
+     "filename": "Naruto.Shippuden.EP300.480p.ITA.AAC.x265-MaDTiA.mkv"
+    }
+   },
+   "label": {
+    "res": "480p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "group": "MaDTiA",
+    "langs": [
+     "it"
+    ],
+    "episode": 300,
+    "sizeGB": 0.109
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#26",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\nHDTV",
+    "title": "Naruto Shippuden Épisodes 1 à 453 - MULTI (VF + VOSTFR) HDTV\nVolume 24/Naruto.Shippuden.E300.mkv\n👤 19 💾 170.14 MB ⚙️ Torrent9\nDubbed / Multi Audio / 🇫🇷",
+    "infoHash": "c7c742d0e5c7136512b539702825f91b8dc80ba1",
+    "fileIdx": 302,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|c7c742d0e5c7136512b539702825f91b8dc80ba1",
+     "filename": "Naruto.Shippuden.E300.mkv"
+    }
+   },
+   "label": {
+    "source": "hdtv",
+    "langs": [
+     "multi",
+     "fr"
+    ],
+    "episode": 300,
+    "sizeGB": 0.166
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#0",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "Naruto Shippuden (001-500) [Complete Series + Movies (1080p)] (Dual Audio)\nSeason 14 (296-320)/Naruto Shippuden Episode 300 The Mizukage, the Giant Clam, and the Mirage.mkv\n👤 212 💾 267.88 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧",
+    "infoHash": "ee34425d5595f37297bc8c94dab3184c02d43daf",
+    "fileIdx": 312,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|ee34425d5595f37297bc8c94dab3184c02d43daf",
+     "filename": "Naruto Shippuden Episode 300 The Mizukage, the Giant Clam, and the Mirage.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:ee34425d5595f37297bc8c94dab3184c02d43daf"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 14,
+    "episode": 300,
+    "sizeGB": 0.262
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#24",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "[Erai-raws] Naruto Shippuuden - 080 ~ 500 [480p CR WEB-DL AVC AAC][MultiSub] [BATCH]\n[Erai-raws] Naruto Shippuuden - 300 [480p CR WEB-DL AVC AAC][MultiSub][8241C688].mkv\n👤 3 💾 370.5 MB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇩🇪 / 🇸🇦",
+    "infoHash": "14d6f10861acead7bc3017c61205d9a2de6a6f77",
+    "fileIdx": 220,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|14d6f10861acead7bc3017c61205d9a2de6a6f77",
+     "filename": "[Erai-raws] Naruto Shippuuden - 300 [480p CR WEB-DL AVC AAC][MultiSub][8241C688].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:14d6f10861acead7bc3017c61205d9a2de6a6f77"
+    ]
+   },
+   "label": {
+    "res": "480p",
+    "vcodec": "avc",
+    "audio": "aac",
+    "source": "web-dl",
+    "group": "Erai-raws",
+    "episode": 300,
+    "sizeGB": 0.362
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#13",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "Naruto Shippuden (2007)\n👤 1 💾 507.34 MB ⚙️ EXT",
+    "infoHash": "d26ec4cbba0946bfb004efaba2f56ae157ab1849",
+    "fileIdx": 326,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p",
+     "filename": "Naruto Shippuden (2007) - s14e05 - The Mizukage, the Giant Clam, and the Mirage - HDTV-1080p - h265.mp4"
+    }
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "source": "hdtv",
+    "season": 14,
+    "episode": 5,
+    "sizeGB": 0.495,
+    "note": "s14e05 is absolute episode 300"
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#30",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio",
+    "title": "Naruto + Naruto Shippuuden - Canon Only Edit\nNaruto Part III - Shippuuden - The Fourth Shinobi World War/Naruto Shippuuden 269-324/Naruto Shippuuden 300 [10bit] [Hatsuyuki] [F06B7C2B].mkv\n👤 12 💾 453.04 MB ⚙️ ThePirateBay",
+    "infoHash": "88294d1d776d53c708c8066779cbd69c896c0eee",
+    "fileIdx": 305,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|88294d1d776d53c708c8066779cbd69c896c0eee",
+     "filename": "Naruto Shippuuden 300 [10bit] [Hatsuyuki] [F06B7C2B].mkv"
+    }
+   },
+   "label": {
+    "group": "Hatsuyuki",
+    "episode": 300,
+    "sizeGB": 0.442
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#3",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[Erai-raws] Naruto Shippuuden - 080 ~ 500 [1080p CR WEB-DL AVC AAC][MultiSub] [BATCH]\n[Erai-raws] Naruto Shippuuden - 300 [1080p CR WEB-DL AVC AAC][MultiSub][875D6936].mkv\n👤 34 💾 1.33 GB ⚙️ NyaaSi\nMulti Subs / 🇬🇧 / 🇮🇹 / 🇵🇹 / 🇪🇸 / 🇲🇽 / 🇩🇪 / 🇸🇦",
+    "infoHash": "73debd20a68b039bad1fc6572c84338f8eb21f88",
+    "fileIdx": 220,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|73debd20a68b039bad1fc6572c84338f8eb21f88",
+     "filename": "[Erai-raws] Naruto Shippuuden - 300 [1080p CR WEB-DL AVC AAC][MultiSub][875D6936].mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:73debd20a68b039bad1fc6572c84338f8eb21f88"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "audio": "aac",
+    "source": "web-dl",
+    "group": "Erai-raws",
+    "episode": 300,
+    "sizeGB": 1.33
+   }
+  },
+  {
+   "id": "torrentsdb/naruto-shippuden-e300#0",
+   "split": "longrun",
+   "addon": "torrentsdb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "TorrentsDB\nUnknown",
+    "title": "Naruto Shippuden Subtitle Indonesia\n📅 S14E05 👤 0 💾 51.50 GB ⚙️ nyaa",
+    "infoHash": "9c6a9590a00d0d47d8214bffbc0b2b5b2bc2baf6",
+    "fileIdx": 244,
+    "behaviorHints": {
+     "bingeGroup": "torrentsdb|Unknown",
+     "filename": "Naruto_Shippuuden_Ep300.mkv"
+    }
+   },
+   "label": {
+    "episode": 300,
+    "sizeGB": 51.5,
+    "pack": true
+   }
+  },
+  {
+   "id": "torrentio-tb/naruto-shippuden-e300#8",
+   "split": "longrun",
+   "addon": "torrentio-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "[TB+] Torrentio\n1080p",
+    "title": "[AnimeRG] Naruto Shippuden (Complete Series 001-500) Naruto Shippuuden [1080p] [HEVC] [x265] [Batch] [pseudo]\nSeason 14 (Episodes 296-320)/[AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv\n👤 5 💾 241.02 MB ⚙️ NyaaSi",
+    "behaviorHints": {
+     "bingeGroup": "torrentio|fa4922aaea2305b05282f1d8f30954c59972a471",
+     "filename": "[AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv"
+    },
+    "url": "https://torrentio.strem.fun/resolve/torbox/<key>/fa4922aaea2305b05282f1d8f30954c59972a471/<opaque>/[AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "group": "AnimeRG",
+    "season": 14,
+    "episode": 300,
+    "sizeGB": 0.235,
+    "cached": true
+   }
+  },
+  {
+   "id": "torrentio-tb/naruto-shippuden-e300#21",
+   "split": "longrun",
+   "addon": "torrentio-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "[TB+] Torrentio",
+    "title": "[JySzE] Naruto Shippuden [Dual Audio] [Complete] [Extras] [x264] [v2]\n[JySzE] Naruto Shippuden - 300 [v2].mkv\n👤 77 💾 3.05 GB ⚙️ NyaaSi\nDubbed / Dual Audio",
+    "behaviorHints": {
+     "bingeGroup": "torrentio|6d78537b926c3411225eeac29b487b12c5611c4d",
+     "filename": "[JySzE] Naruto Shippuden - 300 [v2].mkv"
+    },
+    "url": "https://torrentio.strem.fun/resolve/torbox/<key>/6d78537b926c3411225eeac29b487b12c5611c4d/<opaque>/[JySzE] Naruto Shippuden - 300 [v2].mkv"
+   },
+   "label": {
+    "vcodec": "avc",
+    "group": "JySzE",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "episode": 300,
+    "sizeGB": 3.05,
+    "cached": true
+   }
+  },
+  {
+   "id": "torrentio-tb/naruto-shippuden-e300#32",
+   "split": "longrun",
+   "addon": "torrentio-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "[TB download] Torrentio\n720p",
+    "title": "[Sokudo] Naruto + Naruto Shippuuden [Vilmadith edit][720p][AV1]\n2012 Naruto Part III - Shippuuden - The Fourth Shinobi World War/Naruto Shippuuden 269-324/[Sokudo] Naruto Shippuuden 300 [Vilmadith edit][720p][AV1].mkv\n👤 1 💾 216.01 MB ⚙️ NyaaSi",
+    "behaviorHints": {
+     "bingeGroup": "torrentio|c580c2dbb489fe237b12d9bfa28d457cc16ae9f5",
+     "filename": "[Sokudo] Naruto Shippuuden 300 [Vilmadith edit][720p][AV1].mkv"
+    },
+    "url": "https://torrentio.strem.fun/resolve/torbox/<key>/c580c2dbb489fe237b12d9bfa28d457cc16ae9f5/<opaque>/[Sokudo] Naruto Shippuuden 300 [Vilmadith edit][720p][AV1].mkv"
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "av1",
+    "group": "Sokudo",
+    "episode": 300,
+    "sizeGB": 0.211,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#90",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|1ca805623ced82a34e08e6e34a5623563addde60",
+     "filename": "Naruto Shippuden",
+     "videoSize": 108276125532
+    },
+    "description": "📄 Naruto Shippuden\n👤 1 💾 100.8 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 100.8,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#98",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|1debc03f0187f6fc6da8aa56905f045f8eb33e19",
+     "filename": "Naruto.Shippuden.S01-S09.MULTi.432p.NF.WEB.AV1-THESYNDiCATE",
+     "videoSize": 25804733707
+    },
+    "description": "📄 Naruto.Shippuden.S01-S09.MULTi.432p.NF.WEB.AV1-THESYNDiCATE\n📹 av1\n⭐ WEB | 🏷️ THESYNDiCATE\n💾 24.0 GB 🔎 DMM\n🌎",
+    "name": "[TB⬇️] Comet 432p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "av1",
+    "source": "web-dl",
+    "group": "THESYNDiCATE",
+    "langs": [
+     "multi"
+    ],
+    "season": 1,
+    "sizeGB": 24.0,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "seasons 1-9 pack"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#88",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|4694be67f94a141fcc78e7af3b2a3ec2f10eeb7f",
+     "filename": "Naruto Shippuden",
+     "videoSize": 35798552412
+    },
+    "description": "📄 Naruto Shippuden\n👤 1 💾 33.3 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 33.3,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#73",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|73ac5abcddf4c704c9bd7b417aae9c3b434662fa",
+     "filename": "Naruto Shippuden 2011 [MULTI22][PC]",
+     "videoSize": 1248916405
+    },
+    "description": "📄 Naruto Shippuden 2011 [MULTI22][PC]\n👤 1 💾 1.2 GB 🔎 The Pirate Bay",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "langs": [
+     "multi"
+    ],
+    "sizeGB": 1.2,
+    "cached": false,
+    "fake": true,
+    "note": "a PC game"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#102",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|57c1586c9d97463f8f47529c1b8e8c21c8be8463",
+     "filename": "Naruto Shippuden 1-380 Mon Sub Dub S01",
+     "videoSize": 56908316672
+    },
+    "description": "📄 Naruto Shippuden 1-380 Mon Sub Dub S01\n💾 53.0 GB 🔎 DMM\n🌎",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 53.0,
+    "pack": true,
+    "cached": false,
+    "note": "episodes 1-380 cover 300"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#44",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|fc2968ec73648cc133055a10f1d6dce593e98649",
+     "filename": "Naruto Shippuden S01",
+     "videoSize": 9045813115
+    },
+    "description": "📄 Naruto Shippuden S01\n💾 8.4 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 8.4,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack, asked for episode 300 (season 14)"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#14",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|48569ad8160ad0980c2d49373cbfc373d81a0c08",
+     "filename": "Naruto Shippuuden 300.mkv",
+     "videoSize": 270609652
+    },
+    "description": "📄 Naruto Shippuuden 300.mkv\n👤 1 💾 258.1 MB 🔎 BTdirectory",
+    "name": "[TB⚡] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "episode": 300,
+    "sizeGB": 0.252,
+    "cached": true
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#79",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|600f610d886735e570f057d99899c7a5a69b93d1",
+     "filename": "Naruto Shippuuden",
+     "videoSize": 8686571356
+    },
+    "description": "📄 Naruto Shippuuden\n💾 8.1 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 8.1,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#12",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|c7c742d0e5c7136512b539702825f91b8dc80ba1",
+     "filename": "Naruto.Shippuden.E300.mkv",
+     "videoSize": 178407752
+    },
+    "description": "📄 Naruto.Shippuden.E300.mkv\n👤 0 💾 170.1 MB 🔎 DebridAccount|torbox",
+    "name": "[TB⚡] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "episode": 300,
+    "sizeGB": 0.166,
+    "cached": true
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#23",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|ccc4dfdc97c8b34596fffa543ce6b0d6885befeb",
+     "filename": "[KuroSen!][Naruto Shippuuden][297-300][h.264@mkv][Subs flotantes][DobleSub - español de España][720p][Hi10p]",
+     "videoSize": 1073741824
+    },
+    "description": "📄 [KuroSen!][Naruto Shippuuden][297-300][h.264@mkv][Subs flotantes][DobleSub - español de España][720p][Hi10p]\n📹 avc\n🏷️ KuroSen!\n💾 1.0 GB 🔎 DMM\n🇪🇸",
+    "name": "[TB⬇️] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "avc",
+    "group": "KuroSen!",
+    "sizeGB": 1.0,
+    "pack": true,
+    "cached": false,
+    "note": "episodes 297-300 cover 300"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#40",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|5f71c54df56677dcbf62f9e7df2b83d3d185b14f",
+     "filename": "Naruto Shippuden AV1",
+     "videoSize": 114559772255
+    },
+    "description": "📄 Naruto Shippuden AV1\n📹 av1\n👤 0 💾 106.7 GB 🔎 DebridAccount|torbox",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "av1",
+    "sizeGB": 106.7,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#93",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|0df27040377300cd2d2b2f6920bfd2fbbb643d9c",
+     "filename": "Naruto Shippuden S01_S23",
+     "videoSize": 407120369183
+    },
+    "description": "📄 Naruto Shippuden S01_S23\n💾 379.2 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 379.2,
+    "pack": true,
+    "cached": false,
+    "note": "seasons 1-23 cover season 14"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#59",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|b435193f11a20cbc5a3bb5201eee647b3ca613af",
+     "filename": "Naruto Shippuden",
+     "videoSize": 23343147253
+    },
+    "description": "📄 Naruto Shippuden\n👤 1 💾 21.7 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 21.7,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#6",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|2365793be25d600bebecf70f55005ffeaa909835",
+     "filename": "[Daemon Anime] Naruto Shippuden 300 [Akira].mkv",
+     "videoSize": 252862877
+    },
+    "description": "📄 [Daemon Anime] Naruto Shippuden 300 [Akira].mkv\n🏷️ Daemon Anime\n👤 0 💾 241.1 MB 🔎 DebridAccount|torbox",
+    "name": "[TB⚡] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "group": "Daemon Anime",
+    "episode": 300,
+    "sizeGB": 0.235,
+    "cached": true
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#36",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|38e20edf62231114025f398f2f674094af83c11f",
+     "filename": "Naruto Shippuuden Season 1, 2, 3, 4, 5, 6 480p Dub",
+     "videoSize": 8535035585
+    },
+    "description": "📄 Naruto Shippuuden Season 1, 2, 3, 4, 5, 6 480p Dub\n💾 7.9 GB 🔎 DMM\n🌎",
+    "name": "[TB⬇️] Comet 480p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "480p",
+    "season": 1,
+    "sizeGB": 7.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "seasons 1-6 pack"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#25",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|98c03ad88650ec93f3af6aaa24a8308395ea6b8c",
+     "filename": "Naruto Shippuuden 1ª à 13ª Temporadas 720p Lege",
+     "videoSize": 60043642798
+    },
+    "description": "📄 Naruto Shippuuden 1ª à 13ª Temporadas 720p Lege\n💾 55.9 GB 🔎 DMM\n🇪🇸",
+    "name": "[TB⬇️] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "season": 1,
+    "sizeGB": 55.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "seasons 1-13 pack, asked for episode 300 (season 14)"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#21",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|be5fb806bb78ef6ac3355f5f5ed115db2be868c3",
+     "filename": "[TV-Japan] NARUTO Shippuuden OP 2009.04 [1280x720 h264+AAC 1m30s D-TX]",
+     "videoSize": 26109542
+    },
+    "description": "📄 [TV-Japan] NARUTO Shippuuden OP 2009.04 [1280x720 h264+AAC 1m30s D-TX]\n📹 avc | 🔊 AAC\n🏷️ TV-Japan\n💾 24.9 MB 🔎 DMM",
+    "name": "[TB⬇️] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "avc",
+    "audio": "aac",
+    "group": "TV-Japan",
+    "sizeGB": 0.024,
+    "cached": false,
+    "fake": true,
+    "note": "an opening clip"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#63",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|94bbd9da3004b8a6f211cad2916d1a3a3735bb0f",
+     "filename": "Naruto Shippuuden VOSTFR - S01 par Mirage-Team",
+     "videoSize": 5261334937
+    },
+    "description": "📄 Naruto Shippuuden VOSTFR - S01 par Mirage-Team\n🏷️ Team\n💾 4.9 GB 🔎 DMM\n🇫🇷",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "group": [
+     "Mirage-Team",
+     "Team"
+    ],
+    "season": 1,
+    "sizeGB": 4.9,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#38",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|ed0704a809fef631db07cc6f0dfb9a9dfc510d3d",
+     "filename": "Naruto.Shippuden.S01.FRENCH.R2DVD.960x728.x264.AC3_SB-RAW",
+     "videoSize": 17216103921
+    },
+    "description": "📄 Naruto.Shippuden.S01.FRENCH.R2DVD.960x728.x264.AC3_SB-RAW\n📹 avc | 🔊 Dolby Digital\n🏷️ RAW\n💾 16.0 GB 🔎 DMM\n🇫🇷",
+    "name": "[TB⬇️] Comet 960x728p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "vcodec": "avc",
+    "audio": "ac3",
+    "source": "dvd",
+    "group": [
+     "SB-RAW",
+     "RAW"
+    ],
+    "langs": [
+     "fr"
+    ],
+    "season": 1,
+    "sizeGB": 16.0,
+    "pack": true,
+    "cached": false,
+    "fake": true,
+    "note": "season 1 pack"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#2",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|fa4922aaea2305b05282f1d8f30954c59972a471",
+     "filename": "[AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv",
+     "videoSize": 252726187
+    },
+    "description": "📄 [AnimeRG] Naruto Shippuden - 300 [1080p] [x265] [pseudo].mkv\n📹 hevc\n🏷️ AnimeRG\n👤 0 💾 241.0 MB 🔎 DebridAccount|torbox",
+    "name": "[TB⚡] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "group": "AnimeRG",
+    "episode": 300,
+    "sizeGB": 0.235,
+    "cached": true
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#95",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|0744e34f9a35b2be191496d22056564c200c4676",
+     "filename": "Naruto Shippuden",
+     "videoSize": 35551591792
+    },
+    "description": "📄 Naruto Shippuden\n👤 1 💾 33.1 GB 🔎 BTdirectory",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "sizeGB": 33.1,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#34",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|964a03cf05e7687b523e0c51228fa7cfe659333f",
+     "filename": "Naruto Shippuden 480p ITA AAC x265 MaDTiA",
+     "videoSize": 55405078118
+    },
+    "description": "📄 Naruto Shippuden 480p ITA AAC x265 MaDTiA\n📹 hevc | 🔊 AAC\n👤 3 💾 51.6 GB 🔎 TheRARBG\n🇮🇹",
+    "name": "[TB⬇️] Comet 480p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "480p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "group": "MaDTiA",
+    "langs": [
+     "it"
+    ],
+    "sizeGB": 51.6,
+    "pack": true,
+    "cached": false
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#5",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[AO] One Piece - S21E109 [1080p][HEVC x265 10bit][Multi-Subs] (Weekly)\n👤 25 💾 481.19 MB ⚙️ NyaaSi\nMulti Subs",
+    "infoHash": "f006ea7f2631fbf85958583d2b2bd4ef26a004eb",
+    "fileIdx": 0,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1080p|AO",
+     "filename": "[AO] One Piece - 1000.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:f006ea7f2631fbf85958583d2b2bd4ef26a004eb"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "group": "AO",
+    "episode": 1000,
+    "sizeGB": 0.47,
+    "note": "named S21E109, file is episode 1000"
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#20",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One Piece E0001-E1155 KOREAN 1080p 720p JBOX WEB-DL H264 -R1 (원피스)\nOne.Piece.S01E1000.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv\n👤 3 💾 700.91 MB ⚙️ nekoBT\n🇰🇷",
+    "infoHash": "35bcac1ac58f5083f8760c952ff3db056f3472ce",
+    "fileIdx": 995,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|35bcac1ac58f5083f8760c952ff3db056f3472ce",
+     "filename": "One.Piece.S01E1000.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:35bcac1ac58f5083f8760c952ff3db056f3472ce"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "source": "web-dl",
+    "group": "R1",
+    "langs": [
+     "ko"
+    ],
+    "season": 1,
+    "episode": 1000,
+    "sizeGB": 0.684
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#21",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[46620] One Piece 0001-1000 [1080p AV1]\nSeason 1/One Piece - S01E1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 3 💾 316.4 MB ⚙️ NyaaSi",
+    "infoHash": "34799617277d028c667988cc7e6a04949e7c2f6c",
+    "fileIdx": 999,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|34799617277d028c667988cc7e6a04949e7c2f6c",
+     "filename": "One Piece - S01E1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:34799617277d028c667988cc7e6a04949e7c2f6c"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "av1",
+    "season": 1,
+    "episode": 1000,
+    "sizeGB": 0.309
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e1000#24",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e1000",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One Piece - 989 - 1000 [English Dub][1080p][CR]\nOne Piece Season 14 Episode 1000 Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 1 💾 1.36 GB ⚙️ NyaaSi\nDubbed / 🇬🇧",
+    "infoHash": "1f2be4f7c97c182f10f5674472286056b94c2e79",
+    "fileIdx": 11,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|1f2be4f7c97c182f10f5674472286056b94c2e79",
+     "filename": "One Piece Season 14 Episode 1000 Overwhelming Strength! The Straw Hats Come Together!.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:1f2be4f7c97c182f10f5674472286056b94c2e79"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "langs": [
+     "en"
+    ],
+    "season": 14,
+    "episode": 1000,
+    "sizeGB": 1.36
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e1000#35",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e1000",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|34799617277d028c667988cc7e6a04949e7c2f6c",
+     "filename": "One Piece - S01E1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv",
+     "videoSize": 331765864
+    },
+    "description": "📄 One Piece - S01E1000 - Overwhelming Strength! The Straw Hats Come Together!.mkv\n👤 0 💾 316.4 MB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⚡] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "episode": 1000,
+    "sizeGB": 0.309,
+    "cached": true
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#2",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "[BlackRabbit] Naruto Shippuden (2007) - S14 [Bluray-1080p][Opus 2.0][Dual Audio][AV1]\nNaruto Shippuden (2007) - S14E05 - The Mizukage the Giant Clam and the Mirage [Bluray-1080p][Opus 2.0][Dual Audio][AV1]-BlackRabbit.mkv\n👤 41 💾 358.66 MB ⚙️ nekoBT\nDubbed / Dual Audio / 🇬🇧",
+    "infoHash": "d69c4ba9a3f8cb094ec236876868e668be009af6",
+    "fileIdx": 4,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|d69c4ba9a3f8cb094ec236876868e668be009af6",
+     "filename": "Naruto Shippuden (2007) - S14E05 - The Mizukage the Giant Clam and the Mirage [Bluray-1080p][Opus 2.0][Dual Audio][AV1]-BlackRabbit.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:d69c4ba9a3f8cb094ec236876868e668be009af6"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "av1",
+    "audio": "opus",
+    "source": "bluray",
+    "group": "BlackRabbit",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 14,
+    "episode": 5,
+    "sizeGB": 0.35,
+    "note": "S14E05 is absolute episode 300"
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#11",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "Naruto - The Ocean Cut (2002) - 480-1080p HEVC OPUS2.0 [English Dub Only - Re-encode]\nSeason 14 - Fourth Shinobi World War/Naruto S14E05 - Golden Bonds.mp4\n👤 3 💾 357.63 MB ⚙️ 1337x\nDubbed / 🇬🇧",
+    "infoHash": "4fcc56d296160e2650a8e5bcda520efeac600365",
+    "fileIdx": 103,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|4fcc56d296160e2650a8e5bcda520efeac600365",
+     "filename": "Naruto S14E05 - Golden Bonds.mp4"
+    }
+   },
+   "label": {
+    "vcodec": "hevc",
+    "audio": "opus",
+    "langs": [
+     "en"
+    ],
+    "season": 14,
+    "episode": 5,
+    "sizeGB": 0.349,
+    "fake": true,
+    "note": "Ocean Cut re-edit of the first Naruto; S14E05 is another episode"
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#29",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio",
+    "title": "Naruto Shippuden Remake Complete (1-500 all seasons) [h.264] [Dual Audio]\nSeason 14/Naruto Shippuden - s14e05.mkv\n👤 19 💾 947.85 MB ⚙️ NyaaSi\nDubbed / Dual Audio",
+    "infoHash": "a7e7475ea9b885b8746bb025c81a6c18fd4f992e",
+    "fileIdx": 299,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|a7e7475ea9b885b8746bb025c81a6c18fd4f992e",
+     "filename": "Naruto Shippuden - s14e05.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:a7e7475ea9b885b8746bb025c81a6c18fd4f992e"
+    ]
+   },
+   "label": {
+    "vcodec": "avc",
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 14,
+    "episode": 5,
+    "sizeGB": 0.926,
+    "note": "s14e05 is absolute episode 300"
+   }
+  },
+  {
+   "id": "torrentio/naruto-shippuden-e300#32",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "name": "Torrentio",
+    "title": "Naruto Shippuden Collection [ Dual Audio ][ English & Arabic Sub ]\nSeason 14/Naruto Shippūden - S14E300 - The Mizukage, the Giant Clam, and the Mirage.mkv\n👤 2 💾 160.71 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧 / 🇸🇦",
+    "infoHash": "bbb3a4a27002e3e8cb01221c4d86517b4720595b",
+    "fileIdx": 913,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|bbb3a4a27002e3e8cb01221c4d86517b4720595b",
+     "filename": "Naruto Shippūden - S14E300 - The Mizukage, the Giant Clam, and the Mirage.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:bbb3a4a27002e3e8cb01221c4d86517b4720595b"
+    ]
+   },
+   "label": {
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 14,
+    "episode": 300,
+    "sizeGB": 0.157
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#20",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|009fdd60819bba32a7b5145b8ab67b7942d356d5",
+     "filename": "[SOFCJ-Raws] Naruto Shippuuden - S01E275-500 - 275-500 (TX 1280x720 x264 8bit AAC)",
+     "videoSize": 88798445568
+    },
+    "description": "📄 [SOFCJ-Raws] Naruto Shippuuden - S01E275-500 - 275-500 (TX 1280x720 x264 8bit AAC)\n📹 avc • 8bit | 🔊 AAC\n🏷️ SOFCJ-Raws\n💾 82.7 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet 720p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "720p",
+    "vcodec": "avc",
+    "audio": "aac",
+    "group": "SOFCJ-Raws",
+    "season": 1,
+    "sizeGB": 82.7,
+    "pack": true,
+    "cached": false,
+    "note": "episodes 275-500 cover 300"
+   }
+  },
+  {
+   "id": "comet-tb/naruto-shippuden-e300#91",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "naruto-shippuden-e300",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|13433677fc7bbc95c94207b664e8543e1135efaa",
+     "filename": "Naruto Shippuuden S01e296-300",
+     "videoSize": 1610612736
+    },
+    "description": "📄 Naruto Shippuuden S01e296-300\n💾 1.5 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 1.5,
+    "pack": true,
+    "cached": false,
+    "note": "episodes 296-300 cover 300"
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e700#39",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e700",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|34799617277d028c667988cc7e6a04949e7c2f6c",
+     "filename": "One Piece - S01E0700 - The Ultimate Power! The Secret of the Op-Op Fruit!.mkv",
+     "videoSize": 86238538
+    },
+    "description": "📄 One Piece - S01E0700 - The Ultimate Power! The Secret of the Op-Op Fruit!.mkv\n👤 0 💾 82.2 MB 🔎 DebridAccount|realdebrid",
+    "name": "[TB⚡] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "episode": 700,
+    "sizeGB": 0.08,
+    "cached": true
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e700#102",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e700",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|fa76faf791ec42c6a251da302582c3559a7bf21b",
+     "filename": "[NanakoRaws] One Piece S01E700 (FujiTV TWO 1080p HEVC AAC).mkv",
+     "videoSize": 451833450
+    },
+    "description": "📄 [NanakoRaws] One Piece S01E700 (FujiTV TWO 1080p HEVC AAC).mkv\n📹 hevc | 🔊 AAC\n🏷️ NanakoRaws\n💾 430.9 MB 🔎 DMM",
+    "name": "[TB⬇️] Comet 1080p",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "hevc",
+    "audio": "aac",
+    "group": "NanakoRaws",
+    "season": 1,
+    "episode": 700,
+    "sizeGB": 0.421,
+    "cached": false
+   }
+  },
+  {
+   "id": "comet-tb/one-piece-e700#229",
+   "split": "longrun",
+   "addon": "comet-tb",
+   "title": "one-piece-e700",
+   "stream": {
+    "behaviorHints": {
+     "bingeGroup": "comet|torbox|49507636338d0932ca45b4d81230b39a9995bd38",
+     "filename": "One.Piece.S01E40-E928",
+     "videoSize": 71265518487
+    },
+    "description": "📄 One.Piece.S01E40-E928\n💾 66.4 GB 🔎 DMM",
+    "name": "[TB⬇️] Comet unknown",
+    "url": "https://comet.elfhosted.com/playback/<opaque>?<redacted>"
+   },
+   "label": {
+    "season": 1,
+    "sizeGB": 66.4,
+    "pack": true,
+    "cached": false,
+    "note": "episodes 40-928 cover 700"
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e700#15",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e700",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One.Piece.S17E699-708.1999-2014.Mkv.BDMux.1080p.Ita.Jap.Ac3.Subs.ProgettoOnePiece\nOne Piece ep. 700 Ope Ope - Il Segreto del Frutto del Diavolo Definitivo!.HD.ITA-JAP.1080p.mkv\n👤 4 💾 899.74 MB ⚙️ 1337x\n🇮🇹",
+    "infoHash": "b2c1c437d837b9c907de56a499222931ebe5c1be",
+    "fileIdx": 3,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|b2c1c437d837b9c907de56a499222931ebe5c1be",
+     "filename": "One Piece ep. 700 Ope Ope - Il Segreto del Frutto del Diavolo Definitivo!.HD.ITA-JAP.1080p.mkv"
+    }
+   },
+   "label": {
+    "res": "1080p",
+    "audio": "ac3",
+    "source": "bluray",
+    "group": "ProgettoOnePiece",
+    "langs": [
+     "it",
+     "ja"
+    ],
+    "season": 17,
+    "episode": 700,
+    "sizeGB": 0.879
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e700#18",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e700",
+   "stream": {
+    "name": "Torrentio\n1080p",
+    "title": "One Piece E0001-E1155 KOREAN 1080p 720p JBOX WEB-DL H264 -R1 (원피스)\nOne.Piece.S01E0700.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv\n👤 3 💾 776.3 MB ⚙️ nekoBT\n🇰🇷",
+    "infoHash": "35bcac1ac58f5083f8760c952ff3db056f3472ce",
+    "fileIdx": 696,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|35bcac1ac58f5083f8760c952ff3db056f3472ce",
+     "filename": "One.Piece.S01E0700.KOREAN.1080p.JBOX.WEB-DL.H264-R1.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:35bcac1ac58f5083f8760c952ff3db056f3472ce"
+    ]
+   },
+   "label": {
+    "res": "1080p",
+    "vcodec": "avc",
+    "source": "web-dl",
+    "group": "R1",
+    "langs": [
+     "ko"
+    ],
+    "season": 1,
+    "episode": 700,
+    "sizeGB": 0.758
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e700#37",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e700",
+   "stream": {
+    "name": "Torrentio\n480p",
+    "title": "[46620] One Piece 0001-1000 480p h265\nSeason 1/One Piece - S01E0700 - The Ultimate Power! The Secret of the Op-Op Fruit!.mkv\n👤 3 💾 93.22 MB ⚙️ NyaaSi",
+    "infoHash": "5609ddb0e60cb616f3fa8239a2ea37a2076b5f63",
+    "fileIdx": 699,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|5609ddb0e60cb616f3fa8239a2ea37a2076b5f63",
+     "filename": "One Piece - S01E0700 - The Ultimate Power! The Secret of the Op-Op Fruit!.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:5609ddb0e60cb616f3fa8239a2ea37a2076b5f63"
+    ]
+   },
+   "label": {
+    "res": "480p",
+    "vcodec": "hevc",
+    "season": 1,
+    "episode": 700,
+    "sizeGB": 0.091
+   }
+  },
+  {
+   "id": "torrentio/one-piece-e700#43",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "one-piece-e700",
+   "stream": {
+    "name": "Torrentio",
+    "title": "One Piece\n👤 8 💾 255.25 MB ⚙️ EXT\n🇮🇹",
+    "infoHash": "012c63a9d5a89a8930575192feb451edc0e5b242",
+    "fileIdx": 529,
+    "behaviorHints": {
+     "filename": "One Piece - 17x72 - Ultimate Power! The Secret of the Ope Ope no Mi!.mkv"
+    }
+   },
+   "label": {
+    "langs": [
+     "it"
+    ],
+    "season": 17,
+    "episode": 72,
+    "sizeGB": 0.249,
+    "note": "17x72 is absolute episode 700"
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e500#3",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e500",
+   "stream": {
+    "name": "Torrentio\n720p",
+    "title": "[PsyPlex] Detective Conan 1-1006 + Movies 1-23 Batch\nSeason 17/Detective Conan - S17E10 - Clash of Red and Black (Testament) HDTV-720p-DCTP.mkv\n👤 25 💾 232.72 MB ⚙️ NyaaSi",
+    "infoHash": "2c8b18e82da885625a9260b47da6234e4d86fb14",
+    "fileIdx": 262,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|2c8b18e82da885625a9260b47da6234e4d86fb14",
+     "filename": "Detective Conan - S17E10 - Clash of Red and Black (Testament) HDTV-720p-DCTP.mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:2c8b18e82da885625a9260b47da6234e4d86fb14"
+    ]
+   },
+   "label": {
+    "res": "720p",
+    "source": "hdtv",
+    "group": "DCTP",
+    "season": 17,
+    "episode": 10,
+    "sizeGB": 0.227,
+    "note": "S17E10 is absolute episode 500"
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e500#5",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e500",
+   "stream": {
+    "name": "Torrentio\n420p",
+    "title": "Detective Conan (1996) E01-E1018\nDetective Conan - S01E500 [420p] [DVD].mkv\n👤 5 💾 58.27 MB ⚙️ 1337x",
+    "infoHash": "a3fbacddd2e3798132eb3e1d2ced9b3e5a8a8f01",
+    "fileIdx": 898,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|a3fbacddd2e3798132eb3e1d2ced9b3e5a8a8f01",
+     "filename": "Detective Conan - S01E500 [420p] [DVD].mkv"
+    }
+   },
+   "label": {
+    "source": "dvd",
+    "season": 1,
+    "episode": 500,
+    "sizeGB": 0.057
+   }
+  },
+  {
+   "id": "torrentio/detective-conan-e500#10",
+   "split": "longrun",
+   "addon": "torrentio",
+   "title": "detective-conan-e500",
+   "stream": {
+    "name": "Torrentio",
+    "title": "Detective Conan - Episodes [Arabic Sub] Movies [1 2 3 4 5 6 19 20 21 22 23 Dual Audio - Eng-Jap-Ara ] [Arabic Sub]\n1 - Episodes/Season 17 (491-527)/Detective Conan - S01E500 - Clash of Red and Black (Testament).mkv\n👤 4 💾 96.91 MB ⚙️ NyaaSi\nDubbed / Dual Audio / 🇬🇧 / 🇸🇦",
+    "infoHash": "b6467e188ece56e32bedfc28bf1b0493980b731a",
+    "fileIdx": 469,
+    "behaviorHints": {
+     "bingeGroup": "torrentio|b6467e188ece56e32bedfc28bf1b0493980b731a",
+     "filename": "Detective Conan - S01E500 - Clash of Red and Black (Testament).mkv"
+    },
+    "sources": [
+     "tracker:udp://tracker.opentrackr.org:1337/announce",
+     "tracker:udp://open.stealth.si:80/announce",
+     "tracker:udp://open.demonii.com:1337/announce",
+     "tracker:udp://open.tracker.cl:1337/announce",
+     "tracker:udp://tracker.skynetcloud.site:6969/announce",
+     "tracker:udp://tracker.qu.ax:6969/announce",
+     "tracker:udp://tracker.theoks.net:6969/announce",
+     "tracker:udp://tracker-udp.gbitt.info:80/announce",
+     "tracker:udp://explodie.org:6969/announce",
+     "tracker:udp://tracker.ducks.party:1984/announce",
+     "tracker:udp://tracker.tryhackx.org:6969/announce",
+     "tracker:udp://tracker.nyaa.vc:6969/announce",
+     "tracker:udp://tracker.dler.org:6969/announce",
+     "tracker:udp://tracker2.dler.org:80/announce",
+     "tracker:http://tracker.dler.com:6969/announce",
+     "tracker:udp://tracker.gmi.gd:6969/announce",
+     "tracker:http://tracker.renfei.net:8080/announce",
+     "tracker:udp://tracker.peerfect.org:6969/announce",
+     "tracker:udp://tracker.opentrackr.com:6969/announce",
+     "tracker:udp://tracker.ilibr.org:6969/announce",
+     "tracker:http://nyaa.tracker.wf:7777/announce",
+     "tracker:http://anidex.moe:6969/announce",
+     "tracker:http://tracker.anirena.com:80/announce",
+     "tracker:udp://tracker.uw0.xyz:6969/announce",
+     "tracker:http://share.camoe.cn:8080/announce",
+     "tracker:http://t.nyaatracker.com:80/announce",
+     "dht:b6467e188ece56e32bedfc28bf1b0493980b731a"
+    ]
+   },
+   "label": {
+    "langs": [
+     "multi",
+     "ja",
+     "en"
+    ],
+    "season": 1,
+    "episode": 500,
+    "sizeGB": 0.095
    }
   }
  ]
