@@ -367,7 +367,7 @@ export const contrastPairs: ContrastPair[] = [
   {
     label: "Shortcut hint",
     foreground: "muted-foreground",
-    background: ["muted"],
+    background: ["background", "glass-regular", "muted"],
     min: AA_TEXT,
   },
 ];
