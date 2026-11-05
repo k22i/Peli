@@ -28,10 +28,10 @@ import { cn } from "@/lib/utils";
 export type CardShape = "poster" | "landscape";
 
 // --container-poster and --container-landscape in index.css (a test keeps
-// them in step), and the row's gap-4. Cards are fixed widths, so these are
+// them in step), and the row's 24px gap. Cards are fixed widths, so these are
 // exact and cards aren't measured.
-export const cardRem: Record<CardShape, number> = { poster: 10, landscape: 18 };
-const gapPx = 16;
+export const cardRem: Record<CardShape, number> = { poster: 20, landscape: 36 };
+const gapPx = 24;
 
 export const remToPx = (rem: number) =>
   rem * (Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16);
@@ -299,12 +299,12 @@ export function RowSkeleton({ count = 8, card = "poster" }: { count?: number; ca
   return (
     <div aria-hidden className="flex flex-col gap-3">
       <Skeleton className="mx-gutter h-5 w-40 rounded-md" />
-      <div className="flex gap-4 overflow-hidden px-gutter pt-3 pb-5">
+      <div className="flex gap-6 overflow-hidden px-gutter pt-3 pb-5">
         {Array.from({ length: count }, (_, index) => (
           <Skeleton
             key={index}
             className={cn(
-              "shrink-0 rounded-xl",
+              "shrink-0 rounded-2xl",
               card === "poster" ? "aspect-[2/3] w-poster" : "aspect-video w-landscape",
             )}
           />

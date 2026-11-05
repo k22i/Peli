@@ -57,7 +57,7 @@ export function NextEpisode({
       aria-label="Next episode"
       className={cn(
         "absolute flex flex-col overflow-hidden rounded-2xl bg-black/75 shadow-2xl ring-1 ring-white/10 backdrop-blur-md",
-        mini ? "right-3 bottom-16 w-64" : "right-6 bottom-28 w-80",
+        mini ? "right-3 bottom-16 w-64" : "right-6 bottom-28 w-160 max-w-[calc(100%-3rem)]",
       )}
     >
       {next.thumbnail && !mini && (

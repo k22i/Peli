@@ -307,10 +307,10 @@ export function GridSkeleton() {
   return (
     <div
       aria-hidden
-      className="grid grid-cols-[repeat(auto-fill,minmax(var(--container-poster),1fr))] gap-x-4 gap-y-7 px-gutter"
+      className="grid grid-cols-[repeat(auto-fill,minmax(var(--container-poster),1fr))] gap-x-6 gap-y-10 px-gutter"
     >
       {Array.from({ length: 12 }, (_, index) => (
-        <Skeleton key={index} className="aspect-[2/3] rounded-xl" />
+        <Skeleton key={index} className="aspect-[2/3] rounded-2xl" />
       ))}
     </div>
   );

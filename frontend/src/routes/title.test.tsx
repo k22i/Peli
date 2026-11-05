@@ -407,7 +407,7 @@ describe("title page", () => {
       const cast = screen.getByRole("list", { name: "Cast" });
       expect(within(cast).getByText("Tim Robbins")).toBeInTheDocument();
       expect(within(cast).getByText("Andy Dufresne")).toBeInTheDocument();
-      expect(cast.querySelector(`img[src="${img}/w185/tim.jpg"]`)).not.toBeNull();
+      expect(cast.querySelector(`img[src="${img}/w342/tim.jpg"]`)).not.toBeNull();
       expect(screen.getByRole("img", { name: "The Shawshank Redemption" })).toHaveAttribute(
         "src",
         `${img}/w500/shawshank-logo.png`,
@@ -451,7 +451,8 @@ describe("title page", () => {
       await waitFor(() => expect(screen.getByText("Cast", { selector: "dt" })).toBeInTheDocument());
       expect(screen.getByRole("img", { name: "The Shawshank Redemption" })).toHaveAttribute(
         "src",
-        cinemetaMovie.meta.logo,
+        // Asked for large (#113); the logo is the same file at every size.
+        cinemetaMovie.meta.logo.replace("/logo/medium/", "/logo/large/"),
       );
       expect(screen.queryByRole("heading", { name: "Cast" })).toBeNull();
     });

@@ -21,7 +21,7 @@ export type CardProps = useRender.ComponentProps<"button"> & {
 // The artwork lifts on hover and focus (Apple TV) and the focus ring is drawn
 // around it rather than around the whole card.
 const frame =
-  "relative overflow-hidden rounded-xl bg-muted shadow-card transition-[translate,scale,box-shadow] duration-(--duration-base) ease-spring after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:ring-1 after:ring-black/8 after:ring-inset dark:after:ring-white/8 group-hover/card:shadow-lift group-focus-visible/card:shadow-lift group-focus-visible/card:outline-2 group-focus-visible/card:outline-offset-3 group-focus-visible/card:outline-ring motion-safe:group-hover/card:-translate-y-1 motion-safe:group-hover/card:scale-[1.03] motion-safe:group-focus-visible/card:scale-[1.03] motion-safe:group-active/card:scale-[0.98]";
+  "relative overflow-hidden rounded-2xl bg-muted shadow-card transition-[translate,scale,box-shadow] duration-(--duration-base) ease-spring after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:ring-1 after:ring-black/8 after:ring-inset dark:after:ring-white/8 group-hover/card:shadow-lift group-focus-visible/card:shadow-lift group-focus-visible/card:outline-2 group-focus-visible/card:outline-offset-3 group-focus-visible/card:outline-ring motion-safe:group-hover/card:-translate-y-1.5 motion-safe:group-hover/card:scale-[1.02] motion-safe:group-focus-visible/card:scale-[1.02] motion-safe:group-active/card:scale-[0.98]";
 
 function Card({
   title,
@@ -39,7 +39,7 @@ function Card({
   const defaultProps = {
     type: render ? undefined : ("button" as const),
     className: cn(
-      "group/card flex cursor-pointer flex-col gap-2.5 text-start outline-none",
+      "group/card flex cursor-pointer flex-col gap-3 text-start outline-none",
       shape === "poster" ? "w-poster" : "w-landscape",
       className,
     ),
@@ -49,6 +49,7 @@ function Card({
         <div className={cn(frame, shape === "poster" ? "aspect-[2/3]" : "aspect-video")}>
           <Artwork
             src={src}
+            use={shape}
             title={title}
             showTitle
             // Above the scrim, clear of the progress bar.
@@ -57,7 +58,7 @@ function Card({
           {shape === "landscape" && progress !== undefined && (
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent" />
           )}
-          {badge && <div className="absolute start-2 top-2 flex gap-1">{badge}</div>}
+          {badge && <div className="absolute start-3 top-3 flex gap-1">{badge}</div>}
           {progress !== undefined && <WatchProgress value={progress} />}
         </div>
         <div className="flex min-w-0 flex-col gap-0.5 px-0.5">
@@ -96,7 +97,7 @@ export function WatchProgress({ value, className }: { value: number; className?:
       <div
         aria-hidden
         className={cn(
-          "dark absolute inset-x-2.5 bottom-2.5 h-1 overflow-hidden rounded-full bg-white/30 backdrop-blur-sm",
+          "dark absolute inset-x-4 bottom-4 h-1.5 overflow-hidden rounded-full bg-white/30 backdrop-blur-sm",
           className,
         )}
       >
@@ -119,10 +120,10 @@ function CardSkeleton({ shape }: { shape: "poster" | "landscape" }) {
   return (
     <div
       aria-hidden
-      className={cn("flex flex-col gap-2.5", shape === "poster" ? "w-poster" : "w-landscape")}
+      className={cn("flex flex-col gap-3", shape === "poster" ? "w-poster" : "w-landscape")}
     >
       <Skeleton
-        className={cn("rounded-xl", shape === "poster" ? "aspect-[2/3]" : "aspect-video")}
+        className={cn("rounded-2xl", shape === "poster" ? "aspect-[2/3]" : "aspect-video")}
       />
       <div className="flex flex-col gap-1.5 px-0.5">
         <Skeleton className="h-3.5 w-3/4 rounded-sm" />

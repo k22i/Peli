@@ -2,6 +2,7 @@ import { Children, useState, type ReactNode } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { Skeleton } from "@/components/ui/skeleton";
+import { sharper } from "@/lib/artwork-url";
 import { cn } from "@/lib/utils";
 
 // The billboard at the top of Home and the detail pages: a backdrop with the
@@ -98,13 +99,17 @@ export function Logo({
   title: string;
   className?: string;
 }) {
-  const [failed, setFailed] = useState<string>();
-  if (failed === src) return title;
+  // The sharper logo (#113) first; the one the addon named if that fails;
+  // the title's name if both do.
+  const [failed, setFailed] = useState<string[]>([]);
+  if (failed.includes(src)) return title;
+  const sharp = sharper(src, "logo") ?? src;
+  const shown = failed.includes(sharp) ? src : sharp;
   return (
     <img
-      src={src}
+      src={shown}
       alt={title}
-      onError={() => setFailed(src)}
+      onError={() => setFailed([...failed, shown])}
       className={cn(
         "max-h-32 max-w-[min(28rem,100%)] object-contain object-left drop-shadow-lg",
         className,

@@ -27,12 +27,12 @@ import {
 } from "@/components/media/roving";
 import { cn } from "@/lib/utils";
 
-const columnGapPx = 16;
-const rowGapPx = 28;
+const columnGapPx = 24;
+const rowGapPx = 40;
 // How many rows from the end onEndReached fires: about a screen ahead.
 const endRows = 3;
 // A card's title and meta lines under the art, until rows are measured.
-const captionPx = 48;
+const captionPx = 56;
 
 const px = (value: string) => Number.parseFloat(value) || 0;
 

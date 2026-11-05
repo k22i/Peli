@@ -17,6 +17,7 @@ export function CastList({ cast }: { cast: CastMember[] }) {
           <li key={person.id} className="flex w-28 shrink-0 snap-start flex-col items-center gap-2">
             <Artwork
               src={person.photo}
+              use="avatar"
               title={person.name}
               className="aspect-square size-24 rounded-full shadow-lift"
             />

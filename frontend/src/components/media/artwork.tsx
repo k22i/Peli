@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from "react";
 
+import { sharper, type ArtworkUse } from "@/lib/artwork-url";
 import { cn } from "@/lib/utils";
 
 // A stable hue per title, so a title without artwork always gets the same
@@ -45,8 +46,14 @@ export function forgetArtwork() {
 // it while it loads and if it fails: the art it replaces, such as the
 // addon's backdrop under TMDB's (#47), so swapping art never flashes the
 // gradient.
+//
+// With a `use`, the URL is first rewritten to a sharper size (#113,
+// `lib/artwork-url.ts`) here, in the one place every card, still, cover and
+// hero goes through. The `seen` map is keyed by the rewritten URL, so the
+// cache stays coherent; if that URL fails, the original is tried once.
 export function Artwork({
-  src,
+  src: original,
+  use,
   fallback,
   title,
   showTitle = false,
@@ -54,6 +61,7 @@ export function Artwork({
   className,
 }: {
   src?: string | undefined;
+  use?: ArtworkUse | undefined;
   fallback?: string | undefined;
   title: string;
   showTitle?: boolean;
@@ -62,6 +70,12 @@ export function Artwork({
 }) {
   // What this <img> did; until it does anything, what the URL did before.
   const [own, setOwn] = useState<{ src: string; status: "loaded" | "failed" }>();
+  const sharp = use ? sharper(original, use) : original;
+  const sharpFailed =
+    sharp !== original &&
+    (own && own.src === sharp ? own.status === "failed" : seen.get(sharp ?? "") === "failed");
+  // The sharper URL, or the original once it has failed.
+  const src = sharpFailed ? original : sharp;
   const known = src ? seen.get(src) : undefined;
   const status = own && own.src === src ? own.status : known;
   const settle = (next: "loaded" | "failed") => {
