@@ -188,6 +188,8 @@ describe("app shell", () => {
     // A guest has nothing to sign out of, and can sign in instead (#23).
     expect(within(menu).queryByRole("menuitem", { name: "Sign out" })).toBeNull();
     expect(within(menu).getByRole("menuitem", { name: "Sign in to Nuvio" })).toBeVisible();
+    // The header: the profile's name and how it is signed in (#122).
+    expect(within(menu).getByText("Not signed in")).toBeVisible();
 
     await user.click(within(menu).getByRole("menuitem", { name: "Settings" }));
     expect(await heading("Settings")).toBeInTheDocument();

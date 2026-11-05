@@ -201,6 +201,20 @@ describe("Addons", () => {
     expect(screen.getByText("The same on every device signed in to Nuvio.")).toBeInTheDocument();
   });
 
+  // #122: Sinag's own addons carry a neutral badge.
+  it("marks an addon that is built into Sinag", async () => {
+    mocks.addons.mockResolvedValue([
+      cinemeta,
+      { url: "sinag://anilist/manifest.json", name: "AniList", enabled: true },
+    ]);
+
+    await renderApp("/addons");
+
+    const items = within(await list()).getAllByRole("listitem");
+    expect(within(items[1]!).getByText("Built in")).toBeInTheDocument();
+    expect(within(items[0]!).queryByText("Built in")).toBeNull();
+  });
+
   it("refreshes when a pull brings a new list", async () => {
     mocks.addons.mockResolvedValue([cinemeta]);
 

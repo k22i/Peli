@@ -142,9 +142,10 @@ export function StreamList({
     const bar = Number.parseFloat(getComputedStyle(element).getPropertyValue("--titlebar-h"));
     setStickAt((Number.isFinite(bar) ? bar : 0) + stickGap);
   }, []);
-  const line = (virtualizer.scrollOffset ?? 0) + stickAt;
+  const scrolled = virtualizer.scrollOffset ?? 0;
+  const line = scrolled + stickAt;
   let stuck: Extract<ListRow, { kind: "group" }> | undefined;
-  for (let index = 0; index < rows.length; index += 1) {
+  for (let index = 0; index < (scrolled > 0 ? rows.length : 0); index += 1) {
     const row = rows[index]!;
     if (row.kind !== "group") continue;
     if ((virtualizer.measurementsCache[index]?.start ?? Number.POSITIVE_INFINITY) >= line) break;

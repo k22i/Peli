@@ -324,6 +324,19 @@ describe("stream picker", () => {
     expect(asked().filter(({ url }) => url.includes("/stream/"))).toHaveLength(2);
   });
 
+  // #122: the header names the episode under the title.
+  it("names the episode under the title", async () => {
+    serve({
+      "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json": torrentioSeries,
+    });
+    const user = userEvent.setup();
+    await renderApp("/title/series/tt0903747");
+
+    await user.click(await screen.findByRole("button", { name: /^S1 · E1/ }));
+
+    expect(await screen.findByText("S1 · E1 · Pilot")).toBeInTheDocument();
+  });
+
   it("shows a failed addon's reason and asks it again on Try again", async () => {
     const asked = serve({ [movieStreams("peerflix.example")]: peerflixMovie });
     const user = userEvent.setup();

@@ -245,6 +245,44 @@ export const contrastPairs: ContrastPair[] = [
     background: ["glass-solid"],
     min: AA_TEXT,
   },
+  // The stream picker and the shared popups (#122). Glass over the page, as
+  // for the other regular-glass text pairs.
+  {
+    label: "Badge text on muted, over a card",
+    foreground: "foreground",
+    background: ["card", "muted"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Badge text on muted, on regular glass",
+    foreground: "foreground",
+    background: ["background", "glass-regular", "muted"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Cached badge, over a card",
+    foreground: "brand",
+    background: ["card", "brand-soft"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Cached badge, on regular glass",
+    foreground: "brand",
+    background: ["background", "glass-regular", "brand-soft"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Top pick label, on regular glass",
+    foreground: "brand",
+    background: ["background", "glass-regular"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Highlighted menu item, on regular glass",
+    foreground: "foreground",
+    background: ["background", "glass-regular", "accent"],
+    min: AA_TEXT,
+  },
   { label: "Focus ring", foreground: "ring", background: ["background"], min: AA_UI },
   { label: "Focus ring on sidebar", foreground: "ring", background: ["sidebar"], min: AA_UI },
   { label: "Focus ring on card", foreground: "ring", background: ["card"], min: AA_UI },
