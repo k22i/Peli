@@ -13,6 +13,6 @@ metadata:
 - A new field on either settings record: add it to Go defaults and validation, regenerate bindings, and add it to the full-object mocks in tests (`DeviceSettings`/`ProfileSettings` are typed there, so `pnpm check` finds the misses). Go nil slices reach the frontend as `null`: keep `AudioLanguages` non-nil (`[]string{}`), read with `audioLanguagesOf`.
 - `AudioLanguagesRow` (`components/settings/audio-languages.tsx`): add Select, ordered list with move earlier/later/remove buttons (`aria-disabled` at the ends so focus stays), a live `<output>`; remove returns focus to the add control.
 - Picker tests mock `DeviceSettings` in `@bindings/store`; the re-rank test sets `deviceSettingsQuery.queryKey` on the `renderApp` queryClient.
-- `remembered.ts` ignores the cap, so a show last played in 4K can still get a 4K pick under a 1080p cap (left alone on purpose).
+- `rememberedPick(..., maxResolution)` skips candidates above the cap (review fix), so a remembered 4K gives way to the ranked best under a 1080p cap ([[remembered-source]]); `resolutionOrder` is exported from `score.ts` for it.
 - Tests were written, not run (worker rules); the screenshot rig is [[settings-panes]]'s: scratchpad stubs aliased by a throwaway `vite.shot98.config.ts`, `?res=`/`?langs=` in the hash drive the stub.
 - Related: [[stream-ranking]], [[stream-picker]], [[remembered-source]], [[player-tracks]], [[hardware-decoding-hdr]].

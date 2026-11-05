@@ -159,7 +159,15 @@ function tierOf(p: Parsed, v: Verdict): Tier {
   return p.resolution ? "SD" : "Unknown";
 }
 
-const resolutionOrder: Resolution[] = ["360p", "480p", "576p", "720p", "1080p", "1440p", "2160p"];
+export const resolutionOrder: Resolution[] = [
+  "360p",
+  "480p",
+  "576p",
+  "720p",
+  "1080p",
+  "1440p",
+  "2160p",
+];
 
 export function scoreStream(
   p: Parsed,

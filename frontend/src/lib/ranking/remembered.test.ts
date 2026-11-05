@@ -83,6 +83,28 @@ describe("the remembered source", () => {
     expect(top(remembered, only720)).toBe("Some.Show.S01E02.2160p.WEB-DL.DDP5.1.H265-FLUX.mkv");
   });
 
+  // #98: a remembered 4K isn't picked over the device's resolution cap.
+  it("never picks a match above the resolution cap, and the ranked best stays", () => {
+    const remembered = { source: torrentio, resolution: "2160p", group: "FLUX" } as const;
+    const capped = { ...defaultPrefs, maxResolution: "1080p" } as const;
+    const view = rankStreams(episode, answers, { ...capped, remembered });
+    // The ranked best under the cap, not the remembered 4K.
+    expect(view.top?.parsed.resolution).toBe("1080p");
+    expect(view.top).toBe(rankStreams(episode, answers, capped).top);
+    // Without a cap the remembered 4K is the pick, as before.
+    expect(top(remembered, answers)).toBe("Some.Show.S01E02.2160p.WEB-DL.DDP5.1.H265-FLUX.mkv");
+  });
+
+  it("still picks a remembered match that fits the cap", () => {
+    const remembered = { source: torrentio, resolution: "1080p", group: "NTb" } as const;
+    const view = rankStreams(episode, answers, {
+      ...defaultPrefs,
+      maxResolution: "1080p",
+      remembered,
+    });
+    expect(view.top?.parsed.fileName).toBe("Some.Show.S01E02.1080p.WEB-DL.DDP5.1.H264-NTb.mkv");
+  });
+
   it("never picks a likely fake", () => {
     const remembered = { source: torrentio, resolution: "1080p", group: "NTb" } as const;
     // Another season's file, from the remembered group.

@@ -60,4 +60,4 @@
 - [Motion](motion.md) — #124 data-nav from history index, sliding nav/settings pills (resolved location, named lists), Button press scale, CDP checks
 - [Gallery and design docs](gallery-and-design-docs.md) — #125 docs: README order, removed/stale screenshots, new gallery samples, contrast-pair fix, shot rig
 - [Redesign QA](redesign-qa.md) — #125 checks 1–6: fixes (focus return, sticky-header clearance, contrast-more solid, Switch), CDP rig and probes, open items
-- [Stream preferences](stream-preferences.md) — #98/ADR-0048 device cap/HDR/DV + audioLanguages list, rankingPrefs(profile, device), -30,000 cap penalty + tierOrder, Settings UI, remembered ignores the cap
+- [Stream preferences](stream-preferences.md) — #98/ADR-0048 device cap/HDR/DV + audioLanguages list, rankingPrefs(profile, device), -30,000 cap penalty + tierOrder, Settings UI, remembered source respects the cap

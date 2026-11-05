@@ -18,7 +18,7 @@ It isn't kept as a file or an infohash. The next episode is another file, often 
 The fingerprint goes into the ranking `Prefs` (`remembered`). It changes no score. It only changes which candidate the engine calls the top pick (`lib/ranking/remembered.ts`), so the picker, the player's stream switcher and the next-episode card (`usePreparedNext`) all agree, as ADR-0039 asked of #68:
 
 - The quality must match. Then the group (case-insensitive) counts 2 and the addon counts 1, where any copy of the file from that addon counts. A candidate needs the group or the addon as well as the quality. The closest match wins, and the higher-ranked one wins a tie.
-- It is never a likely fake or a CAM, and never a debrid stream that needs a download when the ranked best plays at once. With no match the ranked top pick stays, which is the ticket's fallback.
+- It is never a likely fake or a CAM, never a stream above the device's resolution cap (#98, ADR-0048), and never a debrid stream that needs a download when the ranked best plays at once. With no match the ranked top pick stays, which is the ticket's fallback.
 - Pinning (#52) still holds. Once the user moves into the list, a closer match that arrives later doesn't take over.
 
 The picker and switcher show "Top pick · Same source as last time" when the top pick matches. The next-episode card waits for the store to answer before it takes its pick, so it never resolves the unremembered best first.

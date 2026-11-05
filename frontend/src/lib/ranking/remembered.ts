@@ -1,4 +1,5 @@
-import { collapsedTiers, type Candidate } from "./score";
+import type { Resolution } from "./parse";
+import { collapsedTiers, resolutionOrder, type Candidate } from "./score";
 
 // The source a profile last played a show from (#58, F19), as a
 // fingerprint: the addon (or plugin) it came from, its quality and its
@@ -29,18 +30,22 @@ export function rememberedMatch(remembered: Remembered, c: Candidate): number {
 }
 
 // The best match in `sorted` (ranked best first): the closest match, the
-// higher-ranked of equals. Never a likely fake or CAM, and never one that
-// needs a debrid download when the ranked best doesn't. null for none, when
-// the ranked best is the pick.
+// higher-ranked of equals. Never a likely fake or CAM, never one above the
+// device's resolution cap (#98), and never one that needs a debrid download
+// when the ranked best doesn't. null for none, when the ranked best is the
+// pick.
 export function rememberedPick(
   remembered: Remembered,
   sorted: readonly Candidate[],
   best: Candidate | null,
+  maxResolution: Resolution = "2160p",
 ): Candidate | null {
+  const cap = resolutionOrder.indexOf(maxResolution);
   let pick: Candidate | null = null;
   let level = 0;
   for (const c of sorted) {
     if (collapsedTiers.has(c.tier)) continue;
+    if (c.parsed.resolution && resolutionOrder.indexOf(c.parsed.resolution) > cap) continue;
     if (c.parsed.cached === false && best?.parsed.cached !== false) continue;
     const match = rememberedMatch(remembered, c);
     if (match > level) {

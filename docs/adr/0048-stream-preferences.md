@@ -30,12 +30,10 @@ The scoring already had `maxResolution`, `hdr`, `dolbyVision` and `languages`. T
 - **`aboveMaxResolution` is -30,000, was -6,000.** At -6,000 a cached 4K (10,000 + 4,000 - 6,000) still beat an uncached 1080p, so a stream over the cap didn't "rank below every stream that fits". The new value clears the widest gap: about 17,000 for the best stream over the cap against about -9,000 for the worst one that fits (dead swarm, wrong language, DV without a fallback).
 - **The groups follow the cap.** `tierOrder(prefs)` moves the groups whose lowest resolution is above the cap to just before the collapsed ones, nearest to the cap first, so a 1080p cap lists 1080p, 720p, SD, Unknown, then 4K. The 1080p group holds 1440p too, so it stays where it is under a 1080p cap and its 1440p streams score lower inside it.
 
+- **The remembered source respects the cap.** `rememberedPick` (ADR-0044) skips any candidate above `maxResolution`, as it skips collapsed groups. A show last played in 4K gets the ranked best under a 1080p cap, not the 4K match. The matching rules are otherwise unchanged.
+
 With Dolby Vision off, `dvWithoutFallback` (-800) already put a DV-only stream below the same stream with an HDR10 layer and below plain SDR. Tests pin that.
 
 ## The player
 
 `LoadOptions.audioLanguage` became `audioLanguages` (a list). Go joins it into mpv's `alang`, which already takes a list, so playback starts with the first language the file has. Every code is checked, and an empty entry is refused, as a comma would have been. A retry of the same file passes the language of the track that was playing, as a list of one.
-
-## Known interaction
-
-A remembered source (ADR-0044) is matched on quality, and `remembered.ts` doesn't look at the cap. A show last played in 4K can still get a 4K top pick under a 1080p cap, because that was the user's own choice. Left as is: that file wasn't in this ticket.

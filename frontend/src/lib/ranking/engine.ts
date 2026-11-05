@@ -123,7 +123,10 @@ export class StreamEngine {
   #best(): Candidate | null {
     const best = this.#sorted.find((c) => !collapsedTiers.has(c.tier)) ?? null;
     const { remembered } = this.prefs;
-    return (remembered && rememberedPick(remembered, this.#sorted, best)) || best;
+    return (
+      (remembered && rememberedPick(remembered, this.#sorted, best, this.prefs.maxResolution)) ||
+      best
+    );
   }
 
   view(): RankedView {

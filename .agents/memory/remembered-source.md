@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-#58 (ADR-0044): a show's last source is a fingerprint `{source key, resolution, group}` in Go `store.ChosenSource` (`profiles/<id>/sources/<content id>`, local only, series only). The frontend reads `chosenSourceQuery(profileId, showId)` (`lib/chosen-source.ts`) and passes `remembered(...)` as the second argument of `rankingPrefs(settings, remembered)`. `StreamEngine.#best()` then returns `rememberedPick` (`lib/ranking/remembered.ts`). The rules: quality must match, then group +2 / addon (or any alternate's) +1; never collapsed tiers; never uncached when the best is cached. It doesn't change the score, and pins still hold.
+#58 (ADR-0044): a show's last source is a fingerprint `{source key, resolution, group}` in Go `store.ChosenSource` (`profiles/<id>/sources/<content id>`, local only, series only). The frontend reads `chosenSourceQuery(profileId, showId)` (`lib/chosen-source.ts`) and passes `remembered(...)` as the second argument of `rankingPrefs(settings, remembered)`. `StreamEngine.#best()` then returns `rememberedPick` (`lib/ranking/remembered.ts`). The rules: quality must match, then group +2 / addon (or any alternate's) +1; never collapsed tiers; never above the device's resolution cap (#98, `rememberedPick`'s 4th argument, passed `prefs.maxResolution`); never uncached when the best is cached. It doesn't change the score, and pins still hold.
 
 **Why:** one place for the rule, so the picker, the switcher and `usePreparedNext` agree (the #68 hand-off asked for that). The override is any pick, because `rememberSource` runs after every successful `Player.Load` (picker, switchStream, playNext).
 
