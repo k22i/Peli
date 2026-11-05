@@ -227,3 +227,24 @@ Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta posters), 
 | …light | ![](hero-shelves-light-after.jpg) |
 
 Chrome at 2× with the Go services stubbed (real Cinemeta catalogs and Metahub art; three Continue watching entries and a library made up in the stub). The feature hero is `min-h-[min(80vh,46rem)]`, full-bleed in both themes, with a 8rem fade (`--fade` is the page colour, resolved outside the `.dark` scope) that sits under the text.
+
+### Chip rail and sticky Browse header (#116)
+
+| | Before | After |
+|---|---|---|
+| Movies with 50 catalogs, dark (the 40th is selected) | ![](rail-browse-dark-before.jpg) | ![](rail-browse-dark-after.jpg) |
+| …light | ![](rail-browse-light-before.jpg) | ![](rail-browse-light-after.jpg) |
+| Stream picker with 12 addons, dark | ![](rail-picker-dark-before.jpg) | ![](rail-picker-dark-after.jpg) |
+
+| | |
+|---|---|
+| Browse scrolled: the header sticks as a glass strip, the title steps down, dark | ![](rail-browse-stuck-dark.jpg) |
+| …light | ![](rail-browse-stuck-light.jpg) |
+| Pointer over the rail: glass arrows at both ends, dark | ![](rail-browse-hover-dark.jpg) |
+| …light | ![](rail-browse-hover-light.jpg) |
+| Stream picker, light (an addon in error keeps Try again) | ![](rail-picker-light-after.jpg) |
+| Library, dark (three type chips fit, so no arrows or fades) | ![](rail-library-dark.jpg) |
+| …light | ![](rail-library-light.jpg) |
+| Gallery › Components: `ChipRail` with 50 chips | ![](rail-gallery-dark.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed. A local server stood in for the addons: one with 50 movie catalogs (Cinemeta data) and 12 stream addons, one of which answers 503 and one that is still pending.
