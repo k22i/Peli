@@ -377,3 +377,31 @@ Every screenshot in the #20–#24 and #95 sections above has been re-taken under
 Chrome at 1280×800 (2×) with the Go services stubbed and a local addon serving the episode dates (real Metahub posters). Before is a clean checkout of `5ee995c`.
 
 The header is Browse's `BrowseFrame` (exported from `components/browse/browse-page.tsx`, behaviour unchanged): the view switch is its `filter` slot and the chips with Sort are its `rail`. The switch is coss `Tabs` (so `?view=` and the tab roles stay) on a `glass-thin` pill with the active tab as a `bg-background shadow-card` knob. The Upcoming day headers are sticky at `--titlebar-h` plus the stuck header's height (3.375rem) plus 1rem, under the page header (`z-9` against its `z-10`). A row's end shows the air time only when the addon gives one (Cinemeta's plain dates are midnight UTC, so those rows have none); Later shows the date.
+
+### Title page (#117)
+
+| | Before | After |
+|---|---|---|
+| Breaking Bad, top, dark | ![](title-series-top-dark-before.jpg) | ![](title-series-top-dark-after.jpg) |
+| …light | ![](title-series-top-light-before.jpg) | ![](title-series-top-light-after.jpg) |
+| Episodes, dark | ![](title-series-episodes-dark-before.jpg) | ![](title-series-episodes-dark-after.jpg) |
+| …light | ![](title-series-episodes-light-before.jpg) | ![](title-series-episodes-light-after.jpg) |
+| Cast and About, dark | ![](title-series-about-dark-before.jpg) | ![](title-series-about-dark-after.jpg) |
+| …light | ![](title-series-about-light-before.jpg) | ![](title-series-about-light-after.jpg) |
+| A film (The Shawshank Redemption), dark | ![](title-film-top-dark-before.jpg) | ![](title-film-top-dark-after.jpg) |
+| …light | ![](title-film-top-light-before.jpg) | ![](title-film-top-light-after.jpg) |
+| One Piece (Kitsu, 1,410 episodes in one season), scrolled to E230, dark | ![](title-anime-deep-dark-before.jpg) | ![](title-anime-deep-dark-after.jpg) |
+| …light | ![](title-anime-deep-light-before.jpg) | ![](title-anime-deep-light-after.jpg) |
+
+| | |
+|---|---|
+| Scrolled: the Episodes header sticks as a glass strip, the heading steps clear of the Back button, which has turned to regular glass, dark | ![](title-series-stuck-dark-after.jpg) |
+| …light | ![](title-series-stuck-light-after.jpg) |
+| Pointer over an episode: the glass play glyph on the still and the row's hover fill, dark | ![](title-series-hover-dark-after.jpg) |
+| …light | ![](title-series-hover-light-after.jpg) |
+| One Piece on Cinemeta (23 seasons plus specials): the season rail, centred on Season 14 and fading at both ends, dark | ![](title-anime-seasons-dark-after.jpg) |
+| …light | ![](title-anime-seasons-light-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta and Kitsu data and art over the network; the watched marks and the in-progress episode are made up in the stub). No TMDB key was available, so the cast is a stub too: real names and characters from each title's credits, with the generated gradient `Artwork` shows where there's no photo. Cinemeta and Kitsu have no episode stills for One Piece, so those rows show the same gradient. Before shots are from a clean checkout of the starting commit.
+
+`Hero size="title"` is the Home feature hero (full-bleed under the sidebar and title bar, the same scrims and fade) at `min-h-[min(72vh,40rem)]` with a `max-h-36` logo. Play is the solid white pill, Library and Watched are round `glass-media` icon buttons (`size-11`) with the same accessible names as the text buttons they replaced, and the IMDb rating is a `glass-media-strong` pill (it holds text). The Back button is `fixed` under the title bar and flips from `glass-media` to `glass` once an IntersectionObserver says the hero is above it. The Episodes header uses the Browse header's pattern: a sticky wrapper with `scroll-edge-top`, the inner row taking `glass` once stuck.
