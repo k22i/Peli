@@ -58,7 +58,7 @@ The host API was worked out by reading what plugins call, not from Nuvio's code 
 
 **By TMDB id.** Plugins take TMDB ids and Sinag's titles mostly have IMDb ids. The id comes from Cinemeta's `moviedb_id`, from a `tmdb:` id, or from the user's own TMDB key (ADR-0031) through `/find`. A title with none of these (an unmapped Kitsu anime, or an IMDb id with no key and no `moviedb_id`) doesn't ask plugins. The episode's season and number come from the video id. Plugins aren't asked until the title's details have loaded, so an IMDb-only title first lists its addons' streams and the plugins join a moment later.
 
-**The list.** `Plugins.Installed` is empty until #57 keeps a list, so nothing runs for users yet and plugins stay off by default as the requirement asks. In a dev build, `SINAG_DEV_PLUGINS=<manifest URL>` lists that manifest's enabled plugins (not ones with `desktop` in `disabledPlatforms`). The picker's summary says "sources" instead of "addons" when a plugin is among them.
+**The list** (replaced by [ADR-0047](0047-plugin-management.md): a stored per-profile list, `SINAG_DEV_PLUGINS` removed). `Plugins.Installed` is empty until #57 keeps a list, so nothing runs for users yet and plugins stay off by default as the requirement asks. In a dev build, `SINAG_DEV_PLUGINS=<manifest URL>` lists that manifest's enabled plugins (not ones with `desktop` in `disabledPlatforms`). The picker's summary says "sources" instead of "addons" when a plugin is among them.
 
 ## Not done here
 
