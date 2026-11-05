@@ -160,11 +160,14 @@ export function tmdbRef(type: ContentType, id: string, meta?: Meta): TmdbRef | u
 // A cast member with a photo, as TMDB lists them.
 export type CastMember = { id: number; name: string; character?: string; photo?: string };
 
-// What TMDB adds to a title page.
+// What TMDB adds to a title page, and to the ranking: the title's other names.
 export type TmdbArt = {
   logo?: string;
   backdrop?: string;
   cast: CastMember[];
+  // The title's original name, alternative titles and translated titles, once
+  // each, for matching release names (#99). Absent when TMDB lists none.
+  aliases?: string[];
 };
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -180,9 +183,40 @@ const image = (size: string, path: unknown) => {
 };
 
 const castLimit = 20;
+const aliasLimit = 300;
+
+// Every other name TMDB gives a title (#99): `original_title` / `original_name`,
+// `alternative_titles` (`titles` for a film, `results` for a series) and
+// `translations` (a film's `data.title`, a series' `data.name`). Each is listed
+// once, without the title's own name, in the order TMDB sends them.
+export function parseTmdbAliases(answer: unknown): string[] {
+  const details = record(answer);
+  const alternatives = record(details["alternative_titles"]);
+  const own = text(details["title"] ?? details["name"])?.toLowerCase();
+  const names = [
+    text(details["original_title"]),
+    text(details["original_name"]),
+    ...list(alternatives["titles"] ?? alternatives["results"]).map((alt) => text(alt["title"])),
+    ...list(record(details["translations"])["translations"]).map((translation) => {
+      const data = record(translation["data"]);
+      return text(data["title"]) ?? text(data["name"]);
+    }),
+  ];
+  const seen = new Set<string>(own ? [own] : []);
+  const out: string[] = [];
+  for (const name of names) {
+    const title = name?.trim();
+    if (!title || seen.has(title.toLowerCase())) continue;
+    seen.add(title.toLowerCase());
+    out.push(title);
+    if (out.length === aliasLimit) break;
+  }
+  return out;
+}
 
 // Reads TMDB's details with `images` and `credits` (a film) or
-// `aggregate_credits` (a series, which names a character per role).
+// `aggregate_credits` (a series, which names a character per role), and the
+// title's other names from `alternative_titles` and `translations`.
 export function parseTmdbArt(answer: unknown): TmdbArt {
   const details = record(answer);
   const logos = list(record(details["images"])["logos"]);
@@ -204,7 +238,13 @@ export function parseTmdbArt(answer: unknown): TmdbArt {
     .slice(0, castLimit);
   const logoUrl = logo && image("w500", logo["file_path"]);
   const backdrop = image("original", details["backdrop_path"]);
-  return { ...(logoUrl && { logo: logoUrl }), ...(backdrop && { backdrop }), cast };
+  const aliases = parseTmdbAliases(details);
+  return {
+    ...(logoUrl && { logo: logoUrl }),
+    ...(backdrop && { backdrop }),
+    cast,
+    ...(aliases.length > 0 && { aliases }),
+  };
 }
 
 const day = 24 * 60 * 60 * 1000;
@@ -233,14 +273,19 @@ const tmdbFindQuery = (key: string, imdb: string, media: Media | undefined) =>
 
 const tmdbDetailsQuery = (key: string, tmdb: number, media: Media) =>
   queryOptions({
-    queryKey: ["tmdb", media, tmdb],
+    // "aliases": the answer carries the title's other names (#99); older
+    // persisted answers under ["tmdb", media, id] don't, and age out.
+    queryKey: ["tmdb", media, tmdb, "aliases"],
     queryFn: async ({ signal }) =>
       parseTmdbArt(
         await tmdbGet(
           key,
           `/${media}/${tmdb}`,
           {
-            append_to_response: media === "tv" ? "images,aggregate_credits" : "images,credits",
+            append_to_response:
+              media === "tv"
+                ? "images,aggregate_credits,alternative_titles,translations"
+                : "images,credits,alternative_titles,translations",
             include_image_language: "en,null",
           },
           signal,
@@ -289,4 +334,14 @@ export function useTmdbArt(ref: TmdbRef | undefined): TmdbArt | undefined {
   });
   // Cached answers stay in the cache after the key goes; don't show them.
   return key && target ? details.data : undefined;
+}
+
+const none: string[] = [];
+
+// The title's other names from TMDB, for the ranking's title check (#99): the
+// same request as the title page's art, so it is asked once. Empty with no
+// key, no mapping, while it loads, or when TMDB fails or doesn't know the
+// title: ranking then has only the addon's name.
+export function useTmdbAliases(ref: TmdbRef | undefined): string[] {
+  return useTmdbArt(ref)?.aliases ?? none;
 }

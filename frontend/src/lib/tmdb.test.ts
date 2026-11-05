@@ -4,7 +4,7 @@ import { parseMetaResponse } from "@/lib/addon-protocol/parse";
 import cinemetaMovie from "@/lib/addon-protocol/fixtures/cinemeta/meta-movie.json";
 import kitsuAnime from "@/lib/addon-protocol/fixtures/kitsu/meta-anime.json";
 
-import { checkTmdbKey, parseTmdbArt, tmdbKeyProblem, tmdbRef } from "./tmdb";
+import { checkTmdbKey, parseTmdbAliases, parseTmdbArt, tmdbKeyProblem, tmdbRef } from "./tmdb";
 
 vi.mock("@bindings/secrets", () => ({ Service: {} }));
 
@@ -105,6 +105,66 @@ function answer(status: number) {
   vi.stubGlobal("fetch", fetch);
   return fetch;
 }
+
+describe("parseTmdbAliases", () => {
+  it("lists a film's original, alternative and translated titles once each", () => {
+    const aliases = parseTmdbAliases({
+      title: "The Shawshank Redemption",
+      original_title: "The Shawshank Redemption",
+      alternative_titles: {
+        titles: [
+          { iso_3166_1: "ES", title: "Cadena perpetua", type: "" },
+          { iso_3166_1: "FR", title: "Les Évadés", type: "" },
+          { iso_3166_1: "MX", title: "cadena perpetua", type: "" },
+        ],
+      },
+      translations: {
+        translations: [
+          { iso_639_1: "de", data: { title: "Die Verurteilten" } },
+          { iso_639_1: "en", data: { title: "The Shawshank Redemption" } },
+          { iso_639_1: "ru", data: { title: "Побег из Шоушенка" } },
+          { iso_639_1: "xx", data: { title: "" } },
+        ],
+      },
+    });
+    expect(aliases).toEqual([
+      "Cadena perpetua",
+      "Les Évadés",
+      "Die Verurteilten",
+      "Побег из Шоушенка",
+    ]);
+  });
+
+  it("reads a series' results and translated names", () => {
+    expect(
+      parseTmdbAliases({
+        name: "Money Heist",
+        original_name: "La casa de papel",
+        alternative_titles: { results: [{ iso_3166_1: "DE", title: "Haus des Geldes" }] },
+        translations: { translations: [{ iso_639_1: "ru", data: { name: "Бумажный дом" } }] },
+      }),
+    ).toEqual(["La casa de papel", "Haus des Geldes", "Бумажный дом"]);
+  });
+
+  it("keeps the original title of a film named differently", () => {
+    expect(parseTmdbAliases({ title: "Your Name.", original_title: "君の名は。" })).toEqual([
+      "君の名は。",
+    ]);
+  });
+
+  it("has none for an answer without them, or an odd one", () => {
+    expect(parseTmdbAliases({ title: "Up" })).toEqual([]);
+    expect(parseTmdbAliases(null)).toEqual([]);
+    expect(
+      parseTmdbAliases({ alternative_titles: "no", translations: { translations: 3 } }),
+    ).toEqual([]);
+  });
+
+  it("is part of the details art, when there are any", () => {
+    expect(parseTmdbArt({ title: "Up", original_title: "Up" })).toEqual({ cast: [] });
+    expect(parseTmdbArt({ title: "Up", original_title: "Oben" }).aliases).toEqual(["Oben"]);
+  });
+});
 
 describe("checkTmdbKey", () => {
   it("sends a v3 key as api_key and a v4 token as a bearer token", async () => {

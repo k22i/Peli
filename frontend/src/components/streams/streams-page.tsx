@@ -41,7 +41,7 @@ import {
 } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
 import { subtitleTarget } from "@/lib/subtitles";
-import { tmdbRef, useTmdbArt } from "@/lib/tmdb";
+import { tmdbRef, useTmdbAliases, useTmdbArt } from "@/lib/tmdb";
 import { Torrents, torrentStatusText } from "@/lib/torrent";
 import {
   cachedTitleMeta,
@@ -390,7 +390,9 @@ export function useStreamChoices(
   }).data;
   const last = isSeriesType(type) ? remembered(chosen) : null;
   const { map } = useEpisodeMap(browsing.addons, browsing.loading, type, id, video);
-  const ctx = titleContext(type, video, meta, title, map);
+  // TMDB's other names for the title, from the title page's own request (#99).
+  const aliases = useTmdbAliases(tmdbRef(type, id, meta));
+  const ctx = titleContext(type, video, meta, title, { map, aliases });
   const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, device, last));
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const toggleGroup = (tier: Tier) =>

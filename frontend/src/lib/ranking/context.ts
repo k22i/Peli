@@ -63,6 +63,21 @@ export function videoNumbers(id: string): { season?: number; episode?: number } 
 const yearOf = (meta: Meta | undefined) =>
   Number((meta?.releaseInfo ?? meta?.released)?.match(/\b(19|20)\d\d\b/)?.[0]) || undefined;
 
+// The title's other names, once each and without the name itself: the
+// addon's own (Kitsu sends `aliases`) and `extra`, TMDB's alternative and
+// translated titles (#99).
+function aliasesOf(meta: Meta | undefined, name: string, extra: readonly string[]): string[] {
+  const own = meta?.["aliases"];
+  const seen = new Set([name.toLowerCase()]);
+  const out: string[] = [];
+  for (const alias of [...(Array.isArray(own) ? own : []), ...extra]) {
+    if (typeof alias !== "string" || alias === "" || seen.has(alias.toLowerCase())) continue;
+    seen.add(alias.toLowerCase());
+    out.push(alias);
+  }
+  return out;
+}
+
 // The context for streams of `video` (the film's id, or an episode's), from
 // the title's details when they're known. Without them, the name is the
 // fallback heading and the checks that need a year or runtime don't run.
@@ -71,9 +86,12 @@ export function titleContext(
   video: string,
   meta: Meta | undefined,
   fallbackName: string,
-  map?: EpisodeMap,
+  // The episode map (#100) and TMDB's other names for the title (#99), when
+  // known.
+  { map, aliases = [] }: { map?: EpisodeMap; aliases?: readonly string[] } = {},
 ): TitleContext {
-  const aliases = meta?.["aliases"];
+  const name = meta?.name ?? fallbackName;
+  const others = aliasesOf(meta, name, aliases);
   const year = yearOf(meta);
   const runtimeMin = runtimeMinutes(meta?.runtime);
   return {
@@ -83,10 +101,8 @@ export function titleContext(
       type === "anime" ||
       (meta?.genres ?? []).some((genre) => /^anime$/i.test(genre)),
     id: video,
-    name: meta?.name ?? fallbackName,
-    ...(Array.isArray(aliases) && {
-      aliases: aliases.filter((alias): alias is string => typeof alias === "string"),
-    }),
+    name,
+    ...(others.length > 0 && { aliases: others }),
     ...(year && { year }),
     ...(runtimeMin && { runtimeMin }),
     ...videoNumbers(video),

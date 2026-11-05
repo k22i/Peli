@@ -503,9 +503,9 @@ describe("title page", () => {
   describe("with a TMDB key", () => {
     const tmdb = "https://api.themoviedb.org/3";
     const img = "https://image.tmdb.org/t/p";
-    const movie = `${tmdb}/movie/278?append_to_response=images%2Ccredits&include_image_language=en%2Cnull&api_key=key`;
+    const movie = `${tmdb}/movie/278?append_to_response=images%2Ccredits%2Calternative_titles%2Ctranslations&include_image_language=en%2Cnull&api_key=key`;
     const findFrieren = `${tmdb}/find/tt22248376?external_source=imdb_id&api_key=key`;
-    const frieren = `${tmdb}/tv/209867?append_to_response=images%2Caggregate_credits&include_image_language=en%2Cnull&api_key=key`;
+    const frieren = `${tmdb}/tv/209867?append_to_response=images%2Caggregate_credits%2Calternative_titles%2Ctranslations&include_image_language=en%2Cnull&api_key=key`;
     const shawshank = {
       backdrop_path: "/shawshank.jpg",
       images: { logos: [{ iso_639_1: "en", file_path: "/shawshank-logo.png" }] },

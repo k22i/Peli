@@ -56,6 +56,35 @@ describe("titleContext", () => {
     });
   });
 
+  it("takes TMDB's other names as aliases, once each and without the name", () => {
+    const ctx = titleContext(
+      "movie",
+      "tt0111161",
+      { ...meta, name: "The Shawshank Redemption" },
+      "x",
+      {
+        aliases: ["Cadena perpetua", "the shawshank redemption", "Les Évadés", "cadena perpetua", ""],
+      },
+    );
+    expect(ctx.aliases).toEqual(["Cadena perpetua", "Les Évadés"]);
+  });
+
+  it("adds them to the addon's own aliases", () => {
+    const kitsu = { ...meta, id: "kitsu:1", aliases: ["Sousou no Frieren", "Frieren"] };
+    expect(
+      titleContext("series", "kitsu:1:1", kitsu, "x", { aliases: ["葬送のフリーレン", "Frieren"] })
+        .aliases,
+    ).toEqual(["Sousou no Frieren", "Frieren", "葬送のフリーレン"]);
+  });
+
+  it("has no aliases without TMDB's, or the addon's", () => {
+    expect(titleContext("movie", "tt1", meta, "x")).not.toHaveProperty("aliases");
+    expect(titleContext("movie", "tt1", meta, "x", { aliases: [] })).not.toHaveProperty("aliases");
+    expect(titleContext("movie", "tt1", { ...meta, aliases: [] }, "x")).not.toHaveProperty(
+      "aliases",
+    );
+  });
+
   it("knows anime by its Kitsu id or its genre", () => {
     expect(titleContext("series", "kitsu:46474:1", undefined, "Frieren").anime).toBe(true);
     expect(titleContext("series", "tt1:1:1", { ...meta, genres: ["Anime"] }, "x").anime).toBe(true);
@@ -95,9 +124,9 @@ describe("episodeMapOf", () => {
     expect(episodeMapOf(undefined, "kitsu:12:1100")).toBeUndefined();
   });
 
-  it("goes into the title context only when given", () => {
+  it("goes into the title context only when given, beside the aliases", () => {
     const map = { season: 22, episode: 15, absolute: 1100 };
-    expect(titleContext("series", "kitsu:12:1100", meta, "One Piece", map).map).toEqual(map);
+    expect(titleContext("series", "kitsu:12:1100", meta, "One Piece", { map }).map).toEqual(map);
     expect(titleContext("series", "kitsu:12:1100", meta, "One Piece")).not.toHaveProperty("map");
   });
 });

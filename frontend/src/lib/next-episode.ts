@@ -11,6 +11,7 @@ import { attempts, resolvePick, type Resolved } from "@/lib/resolve";
 import { deviceSettingsQuery } from "@/lib/settings";
 import { rankingPrefs, useRankedStreams, useStreamAddons, useStreams } from "@/lib/streams";
 import { episodes, mainEpisodes, type Episode } from "@/lib/title";
+import { tmdbRef, useTmdbAliases } from "@/lib/tmdb";
 
 // The next episode (#65, F22): once the episode playing counts as watched
 // (90 %, as Go marks it, #64), a card offers the next one and counts down
@@ -81,7 +82,8 @@ export function usePreparedNext(
     meta.id,
     next.id,
   );
-  const ctx = titleContext(meta.type, next.id, meta, meta.name, map);
+  const aliases = useTmdbAliases(tmdbRef(meta.type, meta.id, meta));
+  const ctx = titleContext(meta.type, next.id, meta, meta.name, { map, aliases });
   const { view } = useRankedStreams(
     sources,
     ctx,

@@ -159,6 +159,9 @@ vi.mock("@bindings/plugins", () => ({
 
 vi.mock("@bindings/markers", () => ({ Service: { Segments: mocks.segments } }));
 
+// No TMDB key (#99): ranking asks for the title's other names only with one.
+vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
+
 vi.mock("@bindings/account", () => ({
   Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
 }));
