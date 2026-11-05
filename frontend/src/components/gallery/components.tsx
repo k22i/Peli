@@ -2,6 +2,9 @@ import { Info, Play, Plus, SlidersHorizontal, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 import { GallerySection, Specimen } from "@/components/gallery/gallery-section";
+import { GlassButtons } from "@/components/gallery/glass-buttons";
+import { PlayerBarSample } from "@/components/gallery/player-bar-sample";
+import { RailSample } from "@/components/gallery/rail-sample";
 import { StreamSample } from "@/components/gallery/stream-sample";
 import { StressSection } from "@/components/gallery/stress";
 import { continueWatching, genres, sampleTitles } from "@/components/gallery/samples";
@@ -41,6 +44,10 @@ import { toastManager } from "@/components/ui/toast";
 
 const [featured] = sampleTitles;
 
+// The hero's buttons: Play solid white, the rest media glass (routes/index.tsx).
+const heroGlass =
+  "rounded-full px-6 text-white glass-media-strong hover:text-white hover:before:bg-white/15";
+
 // What a profile with many addons has: 50 catalogs, the 40th selected.
 const catalogNames = Array.from({ length: 50 }, (_, index) =>
   index % 5 === 0 ? `Top ${index + 1}` : `Catalog ${index + 1}`,
@@ -55,7 +62,7 @@ export function Components() {
     <>
       <GallerySection
         title="Hero"
-        description="The billboard at the top of Home and detail pages. Always dark over the art; in dark mode it runs edge to edge and melts into the page, in light mode it's an inset card."
+        description="The billboard at the top of Home and detail pages. Always dark over the art. This is the default size: in dark mode it runs edge to edge and melts into the page, in light mode it's an inset card. Home and title pages use size feature and title, which bleed under the sidebar and title bar; folders use compact."
         bleed
       >
         <Hero
@@ -81,18 +88,18 @@ export function Components() {
           synopsis="On a storm-cut island at the edge of the map, a keeper who hasn't spoken in years finds a message in the lamp room, written in her own hand."
           actions={
             <>
-              <Button size="lg">
+              <Button size="lg" className="rounded-full px-6">
                 <Play className="fill-current" />
                 Play
               </Button>
-              <Button size="lg" variant="secondary" className="glass">
+              <Button size="lg" variant="ghost" className={heroGlass}>
                 <Info />
                 More info
               </Button>
               <Button
                 size="icon-lg"
-                variant="secondary"
-                className="glass"
+                variant="ghost"
+                className="size-11 rounded-full text-white glass-media hover:bg-(--glass-media) hover:text-white hover:before:bg-white/15 sm:size-11"
                 aria-label="Add to Library"
               >
                 <Plus />
@@ -143,7 +150,7 @@ export function Components() {
 
       <GallerySection
         title="Cards"
-        description="Posters (2:3) and landscape stills (16:9). The art lifts and the focus ring wraps it; with no art, a generated gradient and the title stand in."
+        description="Posters (2:3) at 15rem wide and landscape stills (16:9) at 27rem: 1.5× the old sizes, from --container-poster and --container-landscape (#113). The art lifts and the focus ring wraps it; with no art, a generated gradient and the title stand in."
       >
         <div className="flex flex-wrap items-start gap-6">
           {featured && (
@@ -195,6 +202,8 @@ export function Components() {
         </Specimen>
       </GallerySection>
 
+      <GlassButtons />
+
       <GallerySection
         title="Chips and badges"
         description="Chips filter (on: brand tint); badges label. Both come from coss ui."
@@ -232,6 +241,10 @@ export function Components() {
           <Badge variant="error">Unavailable</Badge>
         </Specimen>
       </GallerySection>
+
+      <RailSample />
+
+      <PlayerBarSample />
 
       <GallerySection
         title="Overlays"

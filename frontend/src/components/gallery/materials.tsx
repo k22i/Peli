@@ -47,7 +47,7 @@ const ambientArt = `data:image/svg+xml;utf8,${encodeURIComponent(
 
 // A busy backdrop, so the blur and the tint have something to work on:
 // stripes, blobs and hard-edged shapes, with no third-party images.
-const busy: CSSProperties = {
+export const busy: CSSProperties = {
   backgroundImage: [
     "radial-gradient(40% 60% at 15% 25%, oklch(0.78 0.17 25), transparent 70%)",
     "radial-gradient(45% 55% at 80% 20%, oklch(0.8 0.15 200), transparent 70%)",

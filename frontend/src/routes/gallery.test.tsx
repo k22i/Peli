@@ -38,6 +38,9 @@ describe("gallery", () => {
       "Cards",
       "Buttons",
       "Chips and badges",
+      "Scroll rail",
+      "Glass buttons",
+      "Player bar",
       "Overlays",
       "Skeletons",
       "Stream picker",
@@ -47,6 +50,18 @@ describe("gallery", () => {
     }
     expect(screen.getByRole("region", { name: "The Lighthouse Keeper" })).toBeInTheDocument();
     expect(screen.getAllByText("84% watched").length).toBeGreaterThan(0);
+  });
+
+  it("shows the materials, the type scale and the shell", async () => {
+    await renderGallery();
+
+    for (const name of ["Type", "Type in use", "Materials", "Shell"]) {
+      expect(screen.getByRole("heading", { level: 2, name })).toBeInTheDocument();
+    }
+    // The player bar's seek bar and the glass buttons are the real components.
+    expect(screen.getByRole("slider", { name: "Seek" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Back 10 seconds" })).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "Cast" })).toBeInTheDocument();
   });
 
   it("gives every keyboard-reachable element a visible focus ring", async () => {
