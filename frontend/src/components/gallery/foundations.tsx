@@ -2,6 +2,7 @@ import { Check, X } from "lucide-react";
 
 import { GallerySection } from "@/components/gallery/gallery-section";
 import { Materials } from "@/components/gallery/materials";
+import { TypeSpecimens } from "@/components/gallery/type-specimens";
 import { Badge } from "@/components/ui/badge";
 import { contrastPairs, contrastRatio } from "@/lib/contrast";
 import { useTheme } from "@/lib/theme";
@@ -150,6 +151,8 @@ export function Foundations() {
           ))}
         </ul>
       </GallerySection>
+
+      <TypeSpecimens />
 
       <GallerySection
         title="Shape, depth and motion"

@@ -159,3 +159,13 @@ Chrome at 1280×800 (2×), with the Go services stubbed. The top pick's border a
 | …light | ![](glass-menu-light-before-after.jpg) |
 
 Chrome at 1280×800 and 1000×618 (2×); the dialog and menu pairs show the old look on the left. The shots come from a throwaway page that renders the gallery's Materials section and the coss dialog and menu, since the full app needs the Go services.
+
+### Type specimens (#112)
+
+| | |
+|---|---|
+| A · Calm: 100% width, weight 720 display, Mona Sans labels | ![](type-specimen-A-dark.jpg) |
+| B · Semi-wide: 112.5% display and page titles (recommended) | ![](type-specimen-B-dark.jpg) |
+| C · Marquee: 125% heavy hero, mono eyebrows | ![](type-specimen-C-dark.jpg) |
+
+Dark, 1280 wide (2×). Gallery › Type specimens has the switch; the sample block holds a hero, a row with two captioned posters, a title-page block, a settings row and a player time readout. The shots come from a throwaway page that renders that block, since the full app needs the Go services. Once an option is picked, the Type rule above changes to match.
