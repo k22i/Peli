@@ -21,7 +21,7 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 - **Contrast:** a new foreground/background pairing goes into `contrastPairs`, so the test holds it to AA (4.5:1 text, 3:1 UI) in both modes. Keep colour tokens as hex so the test can read them.
 - **Glass:** pick a tier (below); don't hand-roll `backdrop-blur`. Never stack a light tier on another light tier. Over artwork or video use `glass-media` (icons) or `glass-media-strong` (text), which stay dark in both themes.
 - **Over artwork, stay dark:** the hero and the progress bar scope themselves with `.dark`, since artwork is dark in either theme.
-- **Type:** Mona Sans. Use `font-heading` plus `font-stretch-expanded` (display) or `font-stretch-semi-expanded` (titles, row headings) for headings, normal width for UI. Geist Mono `text-meta` for metadata (`2025 · 1h 52m`).
+- **Type** (#112, option B · Semi-wide): Mona Sans for words, Geist Mono for numbers and codes only. Never pair `font-heading` with a `font-stretch-*` class: the utilities own family and width. `text-display` (hero, 112.5% width, 700, −0.03em), `text-title` (page title, 112.5%, 660, −0.02em, 2.25rem), `text-heading` (row heading, 100%, 640, −0.015em, 1.375rem), `text-body` (15px / 450 / 1.45, the page default), `text-item` (15px / 550: card captions, settings row labels, names), `text-caption` (13px: secondary lines, card meta), `text-label` (Mona Sans 12px / 600 / +0.06em, uppercase: eyebrows, `dt` labels, "Top pick"), `text-num` (Geist Mono, tabular: years, runtimes, `S2 · E5`, times, sizes, versions). Keep `text-sm` in dense controls (menus, chips, sidebar items). Words, even small uppercase ones, are never mono.
 - **Motion:** `ease-spring` for lifts and presses, `ease-smooth` for fades and travel, durations from `--duration-fast|base|slow`. Put movement behind `motion-safe:`; reduced motion zeroes the durations.
 - **Long lists:** use `Row` (inside a `RowGroup` when rows stack) and `PosterGrid`, which mount only the cards near the viewport, rather than mapping cards into a flex row. Gallery › Long rows has a 200-poster row, a 1,000-poster grid and a scroll test.
 - **Focus:** every interactive element shows a ring in `--ring` (the brand), either its own `focus-visible:ring-*` or the global `:focus-visible` outline. Cards ring their artwork. The gallery test audits this.
@@ -179,7 +179,7 @@ Chrome at 1280×800 and 1000×618 (2×); the dialog and menu pairs show the old 
 | B · Semi-wide: 112.5% display and page titles (recommended) | ![](type-specimen-B-dark.jpg) |
 | C · Marquee: 125% heavy hero, mono eyebrows | ![](type-specimen-C-dark.jpg) |
 
-Dark, 1280 wide (2×). Gallery › Type specimens has the switch; the sample block holds a hero, a row with two captioned posters, a title-page block, a settings row and a player time readout. The shots come from a throwaway page that renders that block, since the full app needs the Go services. Once an option is picked, the Type rule above changes to match.
+Dark, 1280 wide (2×). These were the specimens the user chose from (B won); the gallery now shows the final scale and a "Type in use" block instead of the switch. The sample block held a hero, a row with two captioned posters, a title-page block, a settings row and a player time readout. The shots come from a throwaway page that renders that block, since the full app needs the Go services. The Type rule above is B.
 
 ### Cards at 1.5× (#113)
 
@@ -440,3 +440,20 @@ The folder header follows the cover's shape. A landscape cover (or none) is a sh
 | No cover, dark (the generated gradient) | ![](folder-nocover-dark.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta and Anime Kitsu answering for real. The folder covers are Metahub posters and a backdrop. The after shots of the poster and square covers were taken after the haze was moved to bleed to the window's edge.
+
+## #112 Typography, option B rolled out
+
+| | Before | After |
+|---|---|---|
+| Home, hero and Continue watching, dark | ![](type-home-dark-before.jpg) | ![](type-home-dark-after.jpg) |
+| Home, a row, scrolled, dark | ![](type-home-row-dark-before.jpg) | ![](type-home-row-dark-after.jpg) |
+| Home, light | ![](type-home-light-before.jpg) | ![](type-home-light-after.jpg) |
+| Title page, dark | ![](type-title-dark-before.jpg) | ![](type-title-dark-after.jpg) |
+| Title page, episodes, dark | ![](type-title-episodes-dark-before.jpg) | ![](type-title-episodes-dark-after.jpg) |
+| Title page, light | ![](type-title-light-before.jpg) | ![](type-title-light-after.jpg) |
+| Settings, Playback pane, dark | ![](type-settings-dark-before.jpg) | ![](type-settings-dark-after.jpg) |
+| Library, dark | ![](type-library-dark-before.jpg) | ![](type-library-dark-after.jpg) |
+| Search, dark | ![](type-search-dark-before.jpg) | ![](type-search-dark-after.jpg) |
+| Player bar, dark | ![](type-player-bar-dark-before.jpg) | ![](type-player-bar-dark-after.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta answering for real; the library and Continue watching entries are stubbed, so the posters are the same in both columns. Before is the commit the ticket started from. The player bar sits over the Breaking Bad backdrop with a fake player state. The gallery's Type and Type in use sections show the whole scale.
