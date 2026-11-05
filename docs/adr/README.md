@@ -52,6 +52,7 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0046](0046-redesign-glass-and-floating-chrome.md) | Redesign: four glass tiers in CSS, floating chrome, Apple TV × Music layout with Sinag's own identity | 2026-11-05 |
 | [0047](0047-plugin-management.md) | Plugin management: off by default per profile, repositories synced like addons, everything else on the device, never on a kids profile | 2026-11-06 |
 | [0048](0048-stream-preferences.md) | Stream preferences: device settings for resolution cap, HDR and Dolby Vision, and an ordered audio language list on the profile | 2026-11-06 |
+| [0049](0049-title-matching-with-tmdb-titles.md) | Title matching: TMDB's alternative and translated titles feed the ranking, report only until measured with a key | 2026-11-06 |
 | [0050](0050-anime-episode-map.md) | Anime episode map: the Kitsu addon's season and absolute numbers, asked beside the details, judged in the fake checks | 2026-11-06 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

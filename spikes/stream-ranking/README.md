@@ -29,6 +29,7 @@ node src/bench.ts        # V8 timings
 bun src/bench.ts         # JavaScriptCore timings
 node src/inventory.ts    # signal inventory
 node src/record.ts       # re-record fixtures (hits public addons; see below)
+node src/record.ts matching [slugs]  # #99: Torrentio streams for the title-matching titles (titles-matching.ts)
 ```
 
 ## Fixtures

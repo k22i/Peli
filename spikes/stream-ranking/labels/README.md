@@ -25,3 +25,7 @@ An omitted field means `null`, `[]` or `false`. Where two answers are both defen
 | `cached` | `true` `false` `null` | Debrid cache marker; `null` for P2P addons. |
 | `fake` | boolean | Would not play what was asked for: a different title or episode, a non-video file, a size impossible for the claimed quality, or a "4K / BluRay" claim for a film still only in cinemas. CAM / TS are **not** fake by this rule (they're real, just bad); they're judged through `source`. |
 | `note` | string | Why, when something is odd. |
+
+## Title-matching labels (#99)
+
+`title-matching.jsonl` labels streams that `node src/record.ts matching` recorded from Torrentio, by reading their release names before the title check was changed. Only the fields the check needs are labelled: `fake` (as above: another film, a sequel or short, a collection's other file, an unrelated upload), `source` for CAM / TS / screener releases, and `localized`: a genuine release that names the film only in another language or spelling than the name asked for (*Cadena perpetua* for The Shawshank Redemption). A release that has the English name beside the local one (*Побег из Шоушенка / The Shawshank Redemption*), or in its file name, is not localized. The rows' ids are `torrentio/<slug>#<index>`, and `frontend/scripts/extract-title-matching-corpus.ts` appends them to the corpus as the `titles` split. The titles' aliases (`titles-matching.ts`) are written by hand, as stand-ins for TMDB's.

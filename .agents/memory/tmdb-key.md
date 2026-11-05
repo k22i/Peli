@@ -15,4 +15,5 @@ The optional TMDB key (#47, ADR-0031) is the user's own, saved as `tmdb.api-key`
 - `Artwork`/`Hero` take a `fallback`/`fallbackBackdrop` shown under new art while it loads — use it when swapping art.
 - No TMDB key has been available for a live check; ask the user for one if a live test is needed. Never print it.
 - Tests: route tests must mock `@bindings/secrets` (`Get`), or the Wails runtime's own call goes through the test's `fetch` stub — with `URL` objects, not strings.
+- #99: the details request also asks `alternative_titles,translations` (title route tests' URLs name them); `TmdbArt.aliases` and `useTmdbAliases` feed the ranking ([[title-matching]]). Anything rendering `useStreamChoices` or `usePreparedNext` now reads the key, so mock `@bindings/secrets`.
 - Related: [[title-page]], [[addon-protocol-client]].

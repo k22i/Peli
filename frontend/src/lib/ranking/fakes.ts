@@ -212,10 +212,10 @@ export function judge(p: Parsed, ctx: TitleContext): Verdict {
     reasons.push("cam / ts");
   }
 
-  // A title mismatch is reported but moves nothing: against Cinemeta's
-  // English titles it was wrong 22 times out of 26, since releases use
-  // localized ones ("Cadena perpetua", "Linternas"). It can count once the
-  // metadata gives translated titles, starting as suspicious (#6).
+  // A title mismatch is reported but moves nothing (ADR-0049): against
+  // English titles it was wrong 22 times out of 26 (#6), and the aliases from
+  // TMDB, which fix that, haven't been measured yet (no key). To count it,
+  // follow "what to do once a TMDB key is available" in that ADR.
   const bucket: Bucket = reasons.some((r) => strong.has(r))
     ? "hidden"
     : reasons.includes("cam / ts")
