@@ -326,3 +326,31 @@ Notes from the shots: text inside the bar and the strong-glass overlays is plain
 | Alert dialog, light | ![](popups-alert-light-after.jpg) |
 
 Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta meta and art), and a local server standing in for two stream addons (a debrid one and a peer-to-peer one) with made-up releases for the film and an episode. The "before" shots come from the starting commit, the same rig. The picker shows each stream as its quality and source in the row's own name, the addon muted after it, neutral badges, and size and languages in mono at the end; only "Cached" keeps the brand. The alert dialog was not on a glass tier before (the tier rules named only `dialog-popup`), which the before shot shows.
+
+### Welcome, sign-in, QR, profile picker and PIN screens (#123)
+
+The screens before a profile is in use (the `focus` chrome) sit on `Ambient tone="brand"`: the lagoon glow, pulled up under the title bar's strip by `FocusScreen` (`components/account/focus-screen.tsx`), which also centres the content. Forms are `glass-thick` cards (`max-w-md rounded-3xl p-8`) with `h-11 rounded-xl` fields; big actions are pills: the main one solid, the others `glass` (`pillButton` and `glassButton` in the same file). The picker's avatars are `size-32` (`md:size-36`) on `w-40` tiles that lift to 1.05× with `ease-spring` on hover and focus (a brand ring on focus), and the pencil badge is a `glass` circle. PIN keys are `size-16 rounded-full glass-thin` with digits at `text-heading`; four `size-3.5` dots fill with `bg-foreground`, and shake with the toast-error keyframes on a wrong PIN (none under reduced motion).
+
+| | Before | After |
+|---|---|---|
+| Welcome, dark | ![](welcome-dark-before.jpg) | ![](welcome-dark.jpg) |
+| Welcome, light (the guest note) | ![](welcome-guest-light-before.jpg) | ![](welcome-guest-light.jpg) |
+| Sign-in, wrong password, dark | ![](sign-in-wrong-password-dark-before.jpg) | ![](sign-in-wrong-password-dark.jpg) |
+| QR waiting, dark | ![](qr-waiting-dark-before.jpg) | ![](qr-waiting-dark.jpg) |
+| Who's watching, dark | ![](profiles-dark-before.jpg) | ![](profiles-dark.jpg) |
+| Manage profiles, dark | ![](profiles-manage-dark-before.jpg) | ![](profiles-manage-dark.jpg) |
+| Profile editor, light | ![](profile-edit-light-before.jpg) | ![](profile-edit-light.jpg) |
+| Wrong PIN, dark | ![](pin-wrong-dark-before.jpg) | ![](pin-wrong-dark.jpg) |
+
+| | Dark | Light |
+|---|---|---|
+| Sign-in | ![](sign-in-guest-dark.jpg) (with a Guest on the device) | ![](sign-in-light.jpg) |
+| QR waiting: the tile stays black on white | ![](qr-waiting-dark.jpg) | ![](qr-waiting-light.jpg) |
+| QR expired | ![](qr-expired-dark.jpg) | ![](qr-expired-light.jpg) |
+| Who's watching | ![](profiles-dark.jpg) | ![](profiles-light.jpg) |
+| Manage profiles | ![](profiles-manage-dark.jpg) | ![](profiles-manage-light.jpg) |
+| Profile editor (avatars at `size-16`) | ![](profile-edit-dark.jpg) | ![](profile-edit-light.jpg) |
+| Enter PIN, two digits in | ![](pin-entry-dark.jpg) | ![](pin-entry-light.jpg) |
+| Welcome | ![](welcome-dark.jpg) | ![](welcome-guest-light.jpg) |
+
+Every screenshot in the #20–#24 and #95 sections above has been re-taken under the same file name, apart from the ones that are another screen's: `native-welcome-dark.jpg` (the built app), the profile-menu shots (`menu-*`, #122) and the Settings ones (`settings-*`, #120). The sign-in shots are 1280×900 and the session-ended one 1280×1040, since the card is taller than the window; the rest are 1280×800 (2×). They come from a throwaway Vite config with the Go services stubbed and the platform forced to macOS, so the title bar is the real overlay strip. The avatars are drawn for the shots (simple faces on Nuvio's colours), not Nuvio's stock catalog, which needs its key. Contrast: the PIN key digits over thin-on-thick glass are in `contrastPairs` (14.5:1 and 9.5:1 in dark, 13.0 and 17.2 in light over black and white); muted text over the brightest point of the brand glow (brand at 18% over the page) is 5.9:1 in dark and 4.6:1 in light.

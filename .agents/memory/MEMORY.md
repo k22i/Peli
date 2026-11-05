@@ -52,3 +52,4 @@
 - [Settings panes](settings-panes.md) — #120 panes.ts, ?section=, pane list/rail/group/row, last pane for ⌘,, settings-pill element, tests open a pane first
 - [Player glass](player-glass.md) — #121 capsule layout, --above-bar overlay layer, plain-white text rule, centre flash, menu offset, built-app blur check open, shot rig
 - [Picker, Addons and popups](picker-addons-popups.md) — #122 top pick card, stuck group heading overlay, StreamBadge (tailwind-merge gotcha), alert dialog tier, popup sizes, rig with a local stream addon
+- [Focus screens](focus-screens.md) — #123 FocusScreen/pillButton/glassButton, glass cards, picker tile lift, PIN dots + shake, scene-stub screenshot rig
