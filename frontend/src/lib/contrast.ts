@@ -283,6 +283,21 @@ export const contrastPairs: ContrastPair[] = [
     background: ["background", "glass-regular", "accent"],
     min: AA_TEXT,
   },
+  // The title page (#117): the information card's labels on thin glass over
+  // the page, and an episode's synopsis on the row's hover fill (accent, at
+  // full strength, which is stronger than the row's accent/60).
+  {
+    label: "Muted text on thin glass, over the page",
+    foreground: "muted-foreground",
+    background: ["background", "glass-thin"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Muted text on a hovered episode row",
+    foreground: "muted-foreground",
+    background: ["background", "accent"],
+    min: AA_TEXT,
+  },
   { label: "Focus ring", foreground: "ring", background: ["background"], min: AA_UI },
   { label: "Focus ring on sidebar", foreground: "ring", background: ["sidebar"], min: AA_UI },
   { label: "Focus ring on card", foreground: "ring", background: ["card"], min: AA_UI },

@@ -1,5 +1,5 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { Check, EllipsisVertical } from "lucide-react";
+import { Check, EllipsisVertical, Play } from "lucide-react";
 import { useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 
 import { Artwork } from "@/components/media/artwork";
@@ -11,8 +11,9 @@ import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
 import { episodeCode, isAired, type Episode, type TitleState } from "@/lib/title";
 import { cn } from "@/lib/utils";
 
-// A row's height before it's measured: a 16:9 still 14rem wide, plus padding.
-const rowPx = 144;
+// A row's height before it's measured: a 16:9 still about 28rem wide on a
+// roomy window (#117), plus padding.
+const rowPx = 252;
 const gapPx = 8;
 
 const date = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
@@ -74,6 +75,9 @@ export function EpisodeList({
     gap: gapPx,
     scrollMargin: top,
     overscan: 4,
+    // Rows scrolled to clear the sticky Episodes header above them.
+    scrollPaddingStart: 176,
+    scrollPaddingEnd: 32,
     initialRect: { width: 0, height: window.innerHeight },
   });
 
@@ -114,7 +118,9 @@ export function EpisodeList({
             key={episode.id}
             ref={virtualizer.measureElement}
             data-index={item.index}
-            className="absolute inset-x-gutter top-0"
+            // The still lines up with the page text; the row's hover fill
+            // reaches past it (the row's own padding).
+            className="absolute inset-x-[calc(var(--spacing-gutter)-0.75rem)] top-0"
             style={{ transform: `translateY(${item.start - top}px)` }}
           >
             <EpisodeRow
@@ -163,19 +169,16 @@ function EpisodeRow({
   const title = episode.title || `Episode ${episode.episode}`;
   const released = episode.released ? Date.parse(episode.released) : Number.NaN;
   const runtime = typeof episode["runtime"] === "string" ? episode["runtime"] : undefined;
+  // "S1 · E3 · 52 min · 4 Mar 2008"; unaired, the air date takes the runtime's
+  // place: "S1 · E3 · Airs 4 Mar 2008".
   const line = [
-    `E${episode.episode}`,
+    code,
+    aired ? runtime : undefined,
     Number.isNaN(released) ? undefined : `${aired ? "" : "Airs "}${date.format(released)}`,
-    runtime,
   ].filter(Boolean);
 
   return (
-    <div
-      className={cn(
-        "group/episode flex items-start gap-2 rounded-xl p-2 transition-colors hover:bg-accent/60",
-        !aired && "opacity-55",
-      )}
-    >
+    <div className="group/episode flex items-center gap-5 rounded-2xl p-3 transition-colors hover:bg-accent/60">
       <button
         type="button"
         data-episode-index={index}
@@ -183,22 +186,42 @@ function EpisodeRow({
         aria-label={`${code}: ${title}${watched ? ", watched" : entry ? ", in progress" : ""}`}
         onClick={onPlay}
         onKeyDown={onKeyDown}
-        className="flex min-w-0 flex-1 cursor-pointer items-start gap-4 rounded-lg text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
+        className="group/play flex min-w-0 flex-1 scroll-mt-[calc(var(--titlebar-h)+11rem)] scroll-mb-8 cursor-pointer items-start gap-5 rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
       >
-        <span className="relative aspect-video w-84 shrink-0 overflow-hidden rounded-lg shadow-card">
-          <Artwork src={episode.thumbnail} use="landscape" title={title} />
+        <span className="relative aspect-video w-[min(28rem,40%)] shrink-0 overflow-hidden rounded-xl shadow-card lg:w-[min(28rem,45%)]">
+          <Artwork
+            src={episode.thumbnail}
+            use="landscape"
+            title={title}
+            className={cn(!aired && "opacity-60")}
+          />
           {entry && <WatchProgress value={entry.position / entry.duration} />}
           {watched && (
-            <span className="dark absolute end-2 top-2 grid size-6 place-items-center rounded-full bg-black/60 text-brand backdrop-blur-sm">
+            <span className="glass-media absolute end-2 top-2 grid size-7 place-items-center rounded-full text-white">
               <Check className="size-4" aria-hidden />
             </span>
           )}
+          {aired && (
+            <span
+              aria-hidden
+              className="glass-media absolute top-1/2 left-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-white opacity-0 transition-opacity duration-(--duration-fast) group-hover/episode:opacity-100 group-focus-visible/play:opacity-100"
+            >
+              <Play className="size-5 fill-current" />
+            </span>
+          )}
         </span>
-        <span className="flex min-w-0 flex-col gap-1 py-1">
+        <span className="flex min-w-0 flex-col gap-1.5 py-1">
           <span className="font-mono text-meta text-muted-foreground">{line.join(" · ")}</span>
-          <span className="font-medium text-foreground">{title}</span>
+          <span
+            className={cn(
+              "font-heading text-heading",
+              aired ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
+            {title}
+          </span>
           {episode.overview && (
-            <span className="line-clamp-2 text-sm text-pretty text-muted-foreground">
+            <span className="line-clamp-3 text-sm text-pretty text-muted-foreground">
               {episode.overview}
             </span>
           )}
@@ -213,7 +236,7 @@ function EpisodeRow({
                 size="icon"
                 aria-label={`More for ${code}`}
                 disabled={busy}
-                className="mt-1 opacity-70 group-hover/episode:opacity-100"
+                className="opacity-70 group-hover/episode:opacity-100"
               />
             }
           >

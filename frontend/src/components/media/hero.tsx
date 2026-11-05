@@ -1,4 +1,4 @@
-import { Children, useState, type ReactNode } from "react";
+import { Children, useState, type ReactNode, type Ref } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -17,7 +17,14 @@ import { cn } from "@/lib/utils";
 // art runs under the floating sidebar and the title bar, the text starts
 // clear of the sidebar, and a long fade (with a middle stop, so it isn't
 // muddy in light mode) melts the bottom into the page.
-export type HeroSize = "default" | "feature";
+//
+// `size="title"` (title pages, #117) is the same full-bleed billboard, a
+// little shorter (`min-h-[min(72vh,40rem)]`) with a smaller logo, since the
+// page below has its own content to show.
+export type HeroSize = "default" | "feature" | "title";
+
+// The sizes that run under the sidebar and the title bar.
+const bled = (size: HeroSize) => size !== "default";
 
 export function Hero({
   title,
@@ -30,6 +37,7 @@ export function Hero({
   actions,
   size = "default",
   className,
+  ref,
 }: {
   title: string;
   // The title's logo, drawn in place of its name (title pages); the name
@@ -46,16 +54,20 @@ export function Hero({
   actions?: ReactNode;
   size?: HeroSize;
   className?: string;
+  // The section, for a page that watches it scroll away (the title page's
+  // Back button).
+  ref?: Ref<HTMLElement>;
 }) {
-  const feature = size === "feature";
+  const bleeds = bled(size);
   return (
     <section
+      ref={ref}
       aria-label={title}
       className={cn(
         "relative",
         // The page colour, resolved here (outside the `.dark` scope) for the
         // fade drawn inside it.
-        feature ? "bleed [--fade:var(--background)]" : "px-gutter pt-4 dark:px-0 dark:pt-0",
+        bleeds ? "bleed [--fade:var(--background)]" : "px-gutter pt-4 dark:px-0 dark:pt-0",
         className,
       )}
     >
@@ -64,13 +76,15 @@ export function Hero({
       <div
         className={cn(
           "overflow-hidden",
-          !feature && "rounded-2xl shadow-lift dark:rounded-none dark:shadow-none",
+          !bleeds && "rounded-2xl shadow-lift dark:rounded-none dark:shadow-none",
         )}
       >
         <div
           className={cn(
             "dark relative isolate flex items-end text-foreground",
-            feature ? "min-h-[min(80vh,46rem)]" : "min-h-[min(68vh,36rem)]",
+            size === "feature" && "min-h-[min(80vh,46rem)]",
+            size === "title" && "min-h-[min(72vh,40rem)]",
+            size === "default" && "min-h-[min(68vh,36rem)]",
           )}
         >
           <Artwork
@@ -84,23 +98,23 @@ export function Hero({
           <div
             className={cn(
               "absolute inset-0 -z-10 bg-linear-to-r to-transparent",
-              feature ? "from-black/75 via-black/30" : "from-black/70 via-black/20",
+              bleeds ? "from-black/75 via-black/30" : "from-black/70 via-black/20",
             )}
           />
 
-          {/* The feature's fade sits with the scrims, under the text. */}
-          {feature && (
+          {/* The bled sizes' fade sits with the scrims, under the text. */}
+          {bleeds && (
             <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-linear-to-t from-(--fade) via-(--fade)/60 to-transparent" />
           )}
 
           <div
             className={cn(
-              feature
+              bleeds
                 ? "w-full pe-gutter ps-[calc(var(--sidebar-inset)+var(--spacing-gutter))] pt-32 pb-16"
                 : "max-w-2xl px-gutter pt-24 pb-12",
             )}
           >
-            <div className={cn("flex flex-col gap-4", feature && "max-w-3xl")}>
+            <div className={cn("flex flex-col gap-4", bleeds && "max-w-3xl")}>
               {eyebrow && (
                 <p className="font-mono text-meta font-medium tracking-widest text-brand uppercase">
                   {eyebrow}
@@ -111,7 +125,13 @@ export function Hero({
                   <Logo
                     src={logo}
                     title={title}
-                    className={feature ? "max-h-40 max-w-[min(34rem,100%)]" : undefined}
+                    className={
+                      size === "feature"
+                        ? "max-h-40 max-w-[min(34rem,100%)]"
+                        : size === "title"
+                          ? "max-h-36 max-w-[min(30rem,100%)]"
+                          : undefined
+                    }
                   />
                 ) : (
                   title
@@ -131,7 +151,7 @@ export function Hero({
                 <p
                   className={cn(
                     "line-clamp-3 text-pretty text-foreground/85",
-                    feature ? "max-w-2xl" : "max-w-xl",
+                    bleeds ? "max-w-2xl" : "max-w-xl",
                   )}
                 >
                   {synopsis}
@@ -143,7 +163,7 @@ export function Hero({
         </div>
       </div>
       {/* Dark mode: melt the default hero's bottom edge into the page. */}
-      {!feature && (
+      {!bleeds && (
         <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-12 bg-linear-to-t from-background to-transparent dark:block" />
       )}
     </section>
@@ -186,29 +206,29 @@ export function HeroSkeleton({
   size?: HeroSize;
   className?: string;
 }) {
-  const feature = size === "feature";
+  const bleeds = bled(size);
   return (
     <div
       aria-hidden
-      className={cn(feature ? "bleed" : "px-gutter pt-4 dark:px-0 dark:pt-0", className)}
+      className={cn(bleeds ? "bleed" : "px-gutter pt-4 dark:px-0 dark:pt-0", className)}
     >
       <div
         className={cn(
           "flex items-end bg-muted",
-          feature
-            ? "min-h-[min(80vh,46rem)]"
-            : "min-h-[min(68vh,36rem)] rounded-2xl dark:rounded-none",
+          size === "feature" && "min-h-[min(80vh,46rem)]",
+          size === "title" && "min-h-[min(72vh,40rem)]",
+          size === "default" && "min-h-[min(68vh,36rem)] rounded-2xl dark:rounded-none",
         )}
       >
         <div
           className={cn(
             "w-full",
-            feature
+            bleeds
               ? "pe-gutter ps-[calc(var(--sidebar-inset)+var(--spacing-gutter))] pt-32 pb-16"
               : "max-w-2xl px-gutter pt-24 pb-12",
           )}
         >
-          <div className={cn("flex flex-col gap-4", feature && "max-w-3xl")}>
+          <div className={cn("flex flex-col gap-4", bleeds && "max-w-3xl")}>
             <Skeleton className="h-3 w-28 rounded-sm" />
             <Skeleton className="h-14 w-4/5 rounded-lg" />
             <Skeleton className="h-3 w-56 rounded-sm" />
@@ -217,8 +237,8 @@ export function HeroSkeleton({
               <Skeleton className="h-4 w-2/3 rounded-sm" />
             </div>
             <div className="mt-2 flex gap-3">
-              <Skeleton className={cn("h-10 w-28", feature ? "rounded-full" : "rounded-lg")} />
-              <Skeleton className={cn("h-10 w-32", feature ? "rounded-full" : "rounded-lg")} />
+              <Skeleton className={cn("h-10 w-28", bleeds ? "rounded-full" : "rounded-lg")} />
+              <Skeleton className={cn("h-10 w-32", bleeds ? "rounded-full" : "rounded-lg")} />
             </div>
           </div>
         </div>

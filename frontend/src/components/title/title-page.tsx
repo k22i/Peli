@@ -1,31 +1,19 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  useCanGoBack,
-  useNavigate,
-  useParams,
-  useRouter,
-  useRouterState,
-  useSearch,
-} from "@tanstack/react-router";
-import { Check, ChevronLeft, Clapperboard, Play, Plus, RotateCcw } from "lucide-react";
-import { useEffect } from "react";
+import { useParams, useRouterState } from "@tanstack/react-router";
+import { Check, Clapperboard, Eye, EyeOff, Play, Plus, RotateCcw } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import type { Profile, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
-import { Chip, ChipGroup } from "@/components/media/chip";
 import { Hero, HeroSkeleton } from "@/components/media/hero";
+import { About } from "@/components/title/about";
+import { BackButton } from "@/components/title/back-button";
 import { CastList } from "@/components/title/cast-list";
-import { EpisodeList } from "@/components/title/episode-list";
+import { Episodes } from "@/components/title/episodes";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { toastManager } from "@/components/ui/toast";
+import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import type { ContentType, Meta } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
@@ -36,78 +24,64 @@ import {
   cachedTitleMeta,
   episodeMarks,
   episodes as episodesOf,
-  isAired,
   isSeriesType,
   libraryItem,
   mainEpisodes,
   playChoice,
-  seasonLabel,
-  seasons as seasonsOf,
   seriesMarkChange,
   titleMark,
   titleMetaQuery,
   titleProgressQuery,
   titleState,
   titleWatchedQuery,
-  type Episode,
   type TitlePreview,
-  type TitleSearch,
 } from "@/lib/title";
 import { tmdbRef, useTmdbArt, type TmdbArt } from "@/lib/tmdb";
+import { cn } from "@/lib/utils";
 
-// A title's page (#45): its art, details and cast, Play or Resume, the
-// library and watched toggles, and for a series its seasons and episodes.
-// It paints from the card it was opened from, then from the details' cache,
-// then fills in. Watched state follows Nuvio's apps (ADR-0029). With a TMDB
-// key, TMDB's logo, backdrop and cast photos replace the addon's (ADR-0031).
+// A title's page (#45, redesigned in #117): its art under the glass chrome,
+// details and cast, Play or Resume, the library and watched toggles, and for
+// a series its seasons and episodes. It paints from the card it was opened
+// from, then from the details' cache, then fills in. Watched state follows
+// Nuvio's apps (ADR-0029). With a TMDB key, TMDB's logo, backdrop and cast
+// photos replace the addon's (ADR-0031).
 export function TitlePage() {
   const { type, id } = useParams({ from: "/title/$type/$id" });
   const profile = useQuery(currentProfileQuery).data;
   const passed = useRouterState({ select: (state) => state.location.state.title });
   const preview = passed?.id === id && passed.type === type ? passed : undefined;
+  // The hero, for the Back button to watch scroll away.
+  const [hero, setHero] = useState<HTMLElement | null>(null);
 
   return (
-    <div className="relative flex flex-col gap-10 pb-12">
-      <BackButton />
+    <div className="relative flex flex-col gap-12 pb-16">
+      <BackButton hero={hero} />
       {profile ? (
-        <Title profile={profile} type={type} id={id} preview={preview} />
+        <Title profile={profile} type={type} id={id} preview={preview} heroRef={setHero} />
       ) : (
-        <HeroSkeleton className={heroOffset} />
+        <HeroSkeleton size="title" />
       )}
     </div>
   );
 }
 
-// Flush with the top of the page, as on Home.
-const heroOffset = "-mb-4";
-
-function BackButton() {
-  const router = useRouter();
-  const navigate = useNavigate();
-  const canGoBack = useCanGoBack();
-  return (
-    <Button
-      variant="ghost"
-      size="icon-lg"
-      aria-label="Back"
-      onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
-      className="glass absolute start-[calc(var(--spacing-gutter)+0.5rem)] top-6 z-10 rounded-full text-popover-foreground hover:bg-(--glass-regular) dark:start-gutter dark:top-4"
-    >
-      <ChevronLeft className="size-5" />
-    </Button>
-  );
-}
+// Apple TV's pattern for hero actions, as on Home (#115): Play is solid
+// white, the rest media glass; pills and circles that press in.
+const heroButton =
+  "rounded-full transition-transform duration-(--duration-fast) motion-safe:active:scale-[0.97]";
 
 function Title({
   profile,
   type,
   id,
   preview,
+  heroRef,
 }: {
   profile: Profile;
   type: ContentType;
   id: string;
   preview: TitlePreview | undefined;
+  heroRef: (hero: HTMLElement | null) => void;
 }) {
   const client = useQueryClient();
   const { visible, addons, loading } = useLoadedAddons(profile.id);
@@ -129,15 +103,22 @@ function Title({
     if (details.isError || visible.data?.length === 0) {
       return <LoadFailed onRetry={() => void details.refetch()} />;
     }
-    return <HeroSkeleton className={heroOffset} />;
+    return <HeroSkeleton size="title" />;
   }
   return (
     <>
       {meta && details.data ? (
-        <LoadedTitle profile={profile} meta={meta} addonUrl={details.data.addonUrl} art={art} />
+        <LoadedTitle
+          profile={profile}
+          meta={meta}
+          addonUrl={details.data.addonUrl}
+          art={art}
+          heroRef={heroRef}
+        />
       ) : (
         <Hero
-          className={heroOffset}
+          ref={heroRef}
+          size="title"
           title={shown.name}
           logo={art?.logo}
           meta={shown.releaseInfo ? [shown.releaseInfo] : []}
@@ -168,11 +149,13 @@ function LoadedTitle({
   meta,
   addonUrl,
   art,
+  heroRef,
 }: {
   profile: Profile;
   meta: Meta;
   addonUrl: string;
   art: TmdbArt | undefined;
+  heroRef: (hero: HTMLElement | null) => void;
 }) {
   const client = useQueryClient();
   const play = usePlay();
@@ -228,38 +211,42 @@ function LoadedTitle({
   return (
     <>
       <Hero
-        className={heroOffset}
+        ref={heroRef}
+        size="title"
         title={meta.name}
         logo={art?.logo ?? meta.logo}
-        meta={metaLine(meta)}
+        meta={[<TitleMeta key="meta" meta={meta} />]}
         synopsis={meta.description}
         {...backdrops(meta, art)}
         actions={
           <>
             {choice && (
-              <Button size="lg" onClick={() => play(choice.target)}>
+              <Button
+                size="lg"
+                className={cn(
+                  heroButton,
+                  "border-transparent bg-white px-6 text-black hover:bg-white/90 data-pressed:bg-white/90",
+                )}
+                onClick={() => play(choice.target)}
+              >
                 {choice.resume ? <RotateCcw /> : <Play className="fill-current" />}
                 {choice.label}
               </Button>
             )}
-            <Button
-              size="lg"
-              variant="secondary"
+            <RoundAction
+              label={saved ? "In library" : "Add to library"}
               disabled={library === undefined || toggleLibrary.isPending}
               onClick={() => toggleLibrary.mutate()}
             >
               {saved ? <Check /> : <Plus />}
-              {saved ? "In library" : "Add to library"}
-            </Button>
-            <Button
-              size="lg"
-              variant="secondary"
+            </RoundAction>
+            <RoundAction
+              label={watched ? "Watched" : "Mark watched"}
               disabled={setWatched.isPending || (series && mainEpisodes(list).length === 0)}
               onClick={toggleWatched}
             >
-              <Check className={watched ? "text-brand" : undefined} />
-              {watched ? "Watched" : "Mark watched"}
-            </Button>
+              {watched ? <EyeOff /> : <Eye />}
+            </RoundAction>
           </>
         }
       />
@@ -289,6 +276,43 @@ function LoadedTitle({
   );
 }
 
+// A round media-glass icon button with a tooltip. The label is the button's
+// accessible name, as the text buttons it replaced had.
+function RoundAction({
+  label,
+  disabled,
+  onClick,
+  children,
+}: {
+  label: string;
+  disabled: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon-xl"
+            aria-label={label}
+            disabled={disabled}
+            onClick={onClick}
+            className={cn(
+              heroButton,
+              "glass-media size-11 text-white hover:bg-(--glass-media) hover:text-white hover:before:bg-white/15 sm:size-11",
+            )}
+          />
+        }
+      >
+        {children}
+      </TooltipTrigger>
+      <TooltipPopup>{label}</TooltipPopup>
+    </Tooltip>
+  );
+}
+
 // TMDB's backdrop over the addon's, which shows while it loads or if it
 // fails.
 function backdrops(
@@ -301,166 +325,28 @@ function backdrops(
     : { backdrop: own, fallbackBackdrop: undefined };
 }
 
-// "2008–2013 · 49 min · Crime, Drama, Thriller · IMDb 9.5"
+// "2008–2013 · 49 min · Crime, Drama, Thriller", then the IMDb rating in a
+// small media-glass pill.
 function metaLine(meta: Meta): string[] {
-  return [
-    meta.releaseInfo,
-    meta.runtime,
-    (meta.genres ?? []).slice(0, 3).join(", "),
-    meta.imdbRating && `IMDb ${meta.imdbRating}`,
-  ].filter((item): item is string => Boolean(item));
-}
-
-function Episodes({
-  meta,
-  list,
-  state,
-  next,
-  busy,
-  onMark,
-  onPlay,
-}: {
-  meta: Meta;
-  list: Episode[];
-  state: ReturnType<typeof titleState>;
-  next: string | undefined;
-  busy: boolean;
-  onMark: (items: WatchedItem[], watched: boolean) => void;
-  onPlay: (episode: Episode) => void;
-}) {
-  const navigate = useNavigate();
-  const search: TitleSearch = useSearch({ strict: false });
-  const seasons = seasonsOf(list);
-  // The season asked for, else the one Play would play from, else the first.
-  const season =
-    (search.season !== undefined && seasons.includes(search.season) ? search.season : undefined) ??
-    list.find((episode) => episode.id === next)?.season ??
-    seasons[0]!;
-  const shown = list.filter((episode) => episode.season === season);
-  const aired = shown.filter((episode) => isAired(episode));
-  const seasonWatched = aired.length > 0 && aired.every((episode) => state.watched(episode));
-  // Replaced, not pushed: Back leaves the page rather than walking seasons.
-  const choose = (picked: number) =>
-    void navigate({ to: ".", search: { season: picked }, replace: true, resetScroll: false });
-
-  return (
-    <section aria-labelledby="episodes" className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 px-gutter">
-        <h2 id="episodes" className="font-heading text-heading font-stretch-semi-expanded">
-          Episodes
-        </h2>
-        {seasons.length > 1 && seasons.length <= 8 ? (
-          <ChipGroup
-            aria-label="Seasons"
-            value={[String(season)]}
-            onValueChange={(value: string[]) => {
-              const [picked] = value;
-              if (picked !== undefined) choose(Number(picked));
-            }}
-          >
-            {seasons.map((number) => (
-              <Chip key={number} value={String(number)}>
-                {seasonLabel(number)}
-              </Chip>
-            ))}
-          </ChipGroup>
-        ) : (
-          seasons.length > 1 && <SeasonSelect seasons={seasons} value={season} onChange={choose} />
-        )}
-        <Button
-          variant="ghost"
-          className="ms-auto"
-          disabled={busy || aired.length === 0}
-          onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
-        >
-          <Check className={seasonWatched ? "text-brand" : undefined} />
-          {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
-        </Button>
-      </div>
-      <EpisodeList
-        key={season}
-        label={seasonLabel(season)}
-        episodes={shown}
-        state={state}
-        busy={busy}
-        onPlay={onPlay}
-        onMark={(episode, watched) => onMark(episodeMarks(meta, [episode]), watched)}
-        onMarkEarlier={(episode, watched) => {
-          const main = mainEpisodes(list);
-          const earlier = main.slice(0, main.indexOf(episode));
-          onMark(episodeMarks(meta, earlier), watched);
-        }}
-        earlier={(episode) => {
-          const main = mainEpisodes(list);
-          const index = main.indexOf(episode);
-          if (index <= 0) return undefined;
-          return main.slice(0, index).every((before) => state.watched(before));
-        }}
-      />
-    </section>
+  return [meta.releaseInfo, meta.runtime, (meta.genres ?? []).slice(0, 3).join(", ")].filter(
+    (item): item is string => Boolean(item),
   );
 }
 
-function SeasonSelect({
-  seasons,
-  value,
-  onChange,
-}: {
-  seasons: number[];
-  value: number;
-  onChange: (season: number) => void;
-}) {
-  const items = seasons.map((number) => ({ value: String(number), label: seasonLabel(number) }));
+function TitleMeta({ meta }: { meta: Meta }) {
   return (
-    <Select
-      items={items}
-      value={String(value)}
-      onValueChange={(next) => next !== null && onChange(Number(next))}
-    >
-      <SelectTrigger aria-label="Season" className="w-44">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectPopup>
-        {items.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
-          </SelectItem>
-        ))}
-      </SelectPopup>
-    </Select>
-  );
-}
-
-// Cast and crew, as the addon names them. The cast has its own strip, with
-// photos, when TMDB lists it (#47).
-function About({ meta, withCast }: { meta: Meta; withCast: boolean }) {
-  const rows = [
-    ["Cast", withCast ? meta.cast : undefined],
-    ["Directed by", meta.director],
-    ["Written by", meta.writer],
-    ["Genres", meta.genres],
-    ["Country", meta.country ? [meta.country] : undefined],
-    ["Awards", meta.awards ? [meta.awards] : undefined],
-  ].flatMap(([label, values]) =>
-    Array.isArray(values) && values.length > 0 ? [{ label: String(label), values }] : [],
-  );
-  if (rows.length === 0 && !meta.description) return null;
-  return (
-    <section aria-labelledby="about" className="flex max-w-4xl flex-col gap-4 px-gutter">
-      <h2 id="about" className="font-heading text-heading font-stretch-semi-expanded">
-        About
-      </h2>
-      {meta.description && (
-        <p className="max-w-prose text-pretty text-muted-foreground">{meta.description}</p>
+    <span className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+      {metaLine(meta).map((item, index) => (
+        <span key={item} className="flex items-center gap-2">
+          {index > 0 && <span aria-hidden>·</span>}
+          {item}
+        </span>
+      ))}
+      {meta.imdbRating && (
+        <span className="glass-media-strong ms-1 rounded-full px-2.5 py-0.5 text-white">
+          IMDb {meta.imdbRating}
+        </span>
       )}
-      <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
-        {rows.map(({ label, values }) => (
-          <div key={label} className="contents">
-            <dt className="font-mono text-meta text-muted-foreground uppercase">{label}</dt>
-            <dd>{values.join(", ")}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
+    </span>
   );
 }

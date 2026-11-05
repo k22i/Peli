@@ -1,4 +1,4 @@
-import { screen, waitFor, within } from "@testing-library/react";
+import { act, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
@@ -156,6 +156,27 @@ const backdrops = () =>
     (image) => image.src,
   );
 
+// The hero is the one labelled <section> a page observes; the Episodes
+// header's sentinel is its 1px aria-hidden strip.
+const isHero = (target: Element) =>
+  target.tagName === "SECTION" && target.hasAttribute("aria-label");
+const isSentinel = (target: Element) =>
+  target.getAttribute("aria-hidden") === "true" && target.classList.contains("h-px");
+
+// A series with `count` seasons of one episode each.
+function seasons(count: number) {
+  const series = structuredClone(cinemetaSeries);
+  series.meta.videos = Array.from({ length: count }, (_, index) => ({
+    ...cinemetaSeries.meta.videos[0]!,
+    id: `tt0903747:${index + 1}:1`,
+    name: `Episode of season ${index + 1}`,
+    season: index + 1,
+    number: 1,
+    episode: 1,
+  }));
+  return { [`${base}/meta/series/tt0903747.json`]: series };
+}
+
 beforeEach(() => {
   keychain.tmdb = null;
   db.watched = [];
@@ -208,6 +229,8 @@ describe("title page", () => {
     meta.resolve(cinemetaMovie);
     expect(await screen.findByRole("button", { name: "Play" })).toBeInTheDocument();
     expect(screen.getByText("142 min")).toBeInTheDocument();
+    // The rating sits in its own pill, after the meta line (#117).
+    expect(screen.getByText("IMDb 9.3")).toBeInTheDocument();
     expect(screen.getByText("Frank Darabont")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Back" }));
@@ -367,6 +390,8 @@ describe("title page", () => {
 
     expect(await screen.findByRole("button", { name: "S1 · E4: Cancer Man" })).toBeDisabled();
     expect(screen.queryByRole("button", { name: "More for S1 · E4" })).toBeNull();
+    // The air date takes the runtime's place.
+    expect(screen.getByText(/^S1 · E4 · Airs /)).toBeInTheDocument();
   });
 
   it("opens Kitsu's anime from their own addon", async () => {
@@ -378,6 +403,103 @@ describe("title page", () => {
       "https://anime-kitsu.strem.fun/meta/series/kitsu%3A46474.json",
     ]);
   });
+  it("keeps the Library and Watched buttons' names on their round icon buttons", async () => {
+    serve();
+    await renderApp(moviePath);
+
+    const library = await screen.findByRole("button", { name: "Add to library" });
+    const watched = screen.getByRole("button", { name: "Mark watched" });
+    // Icon-only: the label is the accessible name and the tooltip's text, not
+    // text in the button.
+    expect(library.textContent).toBe("");
+    expect(watched.textContent).toBe("");
+    expect(library).toHaveClass("rounded-full");
+    expect(watched).toHaveClass("rounded-full");
+  });
+
+  describe("scrolling", () => {
+    // jsdom has no IntersectionObserver: record who watches what, and let a
+    // test say what they see.
+    type Watcher = {
+      callback: (entries: { isIntersecting: boolean }[]) => void;
+      targets: Element[];
+    };
+    const watchers: Watcher[] = [];
+    const see = (match: (target: Element) => boolean, isIntersecting: boolean) =>
+      act(() => {
+        for (const { callback, targets } of watchers) {
+          if (targets.some(match)) callback([{ isIntersecting }]);
+        }
+      });
+
+    beforeEach(() => {
+      watchers.length = 0;
+      vi.stubGlobal(
+        "IntersectionObserver",
+        class {
+          private readonly entry: Watcher;
+          constructor(callback: Watcher["callback"]) {
+            this.entry = { callback, targets: [] };
+            watchers.push(this.entry);
+          }
+          observe(target: Element) {
+            this.entry.targets.push(target);
+          }
+          disconnect() {}
+          unobserve() {}
+        },
+      );
+    });
+
+    it("turns the Back button from media glass to glass once the hero scrolls away", async () => {
+      serve();
+      await renderApp(moviePath);
+
+      const back = await screen.findByRole("button", { name: "Back" });
+      await waitFor(() => expect(back).toHaveAttribute("data-over-hero"));
+      expect(back).toHaveClass("glass-media");
+
+      see(isHero, false);
+      await waitFor(() => expect(back).not.toHaveAttribute("data-over-hero"));
+      expect(back).toHaveClass("glass");
+      expect(back).not.toHaveClass("glass-media");
+
+      see(isHero, true);
+      await waitFor(() => expect(back).toHaveAttribute("data-over-hero"));
+    });
+
+    it("sticks the Episodes header as glass once the list scrolls under it", async () => {
+      serve();
+      await renderApp(seriesPath);
+
+      const header = (await screen.findByRole("heading", { name: "Episodes" })).closest("header")!;
+      expect(header).not.toHaveAttribute("data-stuck");
+      see(isSentinel, false);
+      await waitFor(() => expect(header).toHaveAttribute("data-stuck"));
+      see(isSentinel, true);
+      await waitFor(() => expect(header).not.toHaveAttribute("data-stuck"));
+    });
+  });
+
+  describe("seasons", () => {
+    it("lists up to thirty seasons as chips on a rail", async () => {
+      serve(seasons(30));
+      await renderApp(seriesPath);
+
+      const group = await screen.findByRole("group", { name: "Seasons" });
+      expect(within(group).getAllByRole("button")).toHaveLength(30);
+      expect(screen.queryByRole("combobox", { name: "Season" })).toBeNull();
+    });
+
+    it("puts more than thirty seasons in a menu", async () => {
+      serve(seasons(31));
+      await renderApp(seriesPath);
+
+      expect(await screen.findByRole("combobox", { name: "Season" })).toBeInTheDocument();
+      expect(screen.queryByRole("group", { name: "Seasons" })).toBeNull();
+    });
+  });
+
   describe("with a TMDB key", () => {
     const tmdb = "https://api.themoviedb.org/3";
     const img = "https://image.tmdb.org/t/p";
