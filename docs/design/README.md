@@ -405,3 +405,38 @@ The header is Browse's `BrowseFrame` (exported from `components/browse/browse-pa
 Chrome at 1280×800 (2×) with the Go services stubbed (real Cinemeta and Kitsu data and art over the network; the watched marks and the in-progress episode are made up in the stub). No TMDB key was available, so the cast is a stub too: real names and characters from each title's credits, with the generated gradient `Artwork` shows where there's no photo. Cinemeta and Kitsu have no episode stills for One Piece, so those rows show the same gradient. Before shots are from a clean checkout of the starting commit.
 
 `Hero size="title"` is the Home feature hero (full-bleed under the sidebar and title bar, the same scrims and fade) at `min-h-[min(72vh,40rem)]` with a `max-h-36` logo. Play is the solid white pill, Library and Watched are round `glass-media` icon buttons (`size-11`) with the same accessible names as the text buttons they replaced, and the IMDb rating is a `glass-media-strong` pill (it holds text). The Back button is `fixed` under the title bar and flips from `glass-media` to `glass` once an IntersectionObserver says the hero is above it. The Episodes header uses the Browse header's pattern: a sticky wrapper with `scroll-edge-top`, the inner row taking `glass` once stuck.
+
+## #119 Search and Folder layouts
+
+Search takes Browse's sticky header (#116): the `h1` "Search" and a big glass field. Once the header is stuck the title is `sr-only` (the screen reader still has it) and the strip is just the field. The field is `h-14 rounded-2xl glass`, `max-w-3xl`, with a `size-5` magnifier, row-heading text, a round `glass-thin` clear button (`size-8`, refocuses the field) when there is text, and a `Kbd` "⌘F" (Ctrl+F elsewhere) while it is empty and not focused. Result rows are `gap-12`, and each heading names the addons that gave it ("Movies · Cinemeta", the addon muted; two addons read "A and B", more read "A +N"). Nothing stores earlier searches, so the empty state is a quiet prompt, not a recent-searches list.
+
+| | Before | After |
+|---|---|---|
+| Results, dark | ![](search-results-dark-before.jpg) | ![](search-results-dark.jpg) |
+| Results, light | ![](search-results-light-before.jpg) | ![](search-results-light.jpg) |
+
+| | |
+|---|---|
+| Empty, dark (the field is blurred, so the ⌘F hint shows) | ![](search-empty-dark.jpg) |
+| …light | ![](search-empty-light.jpg) |
+| Searching, dark (a local stand-in for Anime Kitsu answers late; Cinemeta's rows are already there) | ![](search-searching-dark.jpg) |
+| …light | ![](search-searching-light.jpg) |
+| Header stuck, dark (title hidden, field in the glass strip) | ![](search-stuck-dark.jpg) |
+| …light | ![](search-stuck-light.jpg) |
+
+The folder header follows the cover's shape. A landscape cover (or none) is a short banner: the `Hero` with `compact` (a new additive prop, `min-h-72`), no synopsis, the collection as its eyebrow, and the cover as its art (with no cover, the folder's backdrop, then the collection's, then the generated gradient). A poster or square cover stands at `w-56` beside the title block (`flex gap-8 items-end`) over an `Ambient` haze of its own colours that runs under the title bar and the sidebar. The grid below is the 2× `PosterGrid`.
+
+| | Before | After |
+|---|---|---|
+| Poster cover, dark (before: the backdrop with the cover as a small thumbnail in it) | ![](folder-poster-dark-before.jpg) | ![](folder-poster-dark.jpg) |
+| Poster cover, light | ![](folder-poster-light-before.jpg) | ![](folder-poster-light.jpg) |
+| Landscape cover, dark | ![](folder-banner-dark-before.jpg) | ![](folder-banner-dark.jpg) |
+
+| | |
+|---|---|
+| Landscape cover, light | ![](folder-banner-light.jpg) |
+| Square cover, dark | ![](folder-square-dark.jpg) |
+| …light | ![](folder-square-light.jpg) |
+| No cover, dark (the generated gradient) | ![](folder-nocover-dark.jpg) |
+
+Chrome at 1280×800 (2×) with the Go services stubbed and Cinemeta and Anime Kitsu answering for real. The folder covers are Metahub posters and a backdrop. The after shots of the poster and square covers were taken after the haze was moved to bleed to the window's edge.

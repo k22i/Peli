@@ -55,3 +55,4 @@
 - [Focus screens](focus-screens.md) — #123 FocusScreen/pillButton/glassButton, glass cards, picker tile lift, PIN dots + shake, scene-stub screenshot rig
 - [Library redesign](library-redesign.md) — #118 LibraryFrame on BrowseFrame, glass-thin Tabs switch, episodeLabels card meta, sticky day headers (offset/z-order), airTime, LibraryNotice, shot rig
 - [Title page redesign](title-page-redesign.md) — #117 Hero size=title, BackButton media glass → glass, sticky Episodes header + 30-season rail, 2× rows, About card, cast on ScrollRail, gotchas
+- [Search and folder layouts](search-folder-layouts.md) — #119 BrowseFrame quietTitle, glass h-14 field + clear + ⌘F hint, row bylines, compact Hero / CoverHeader, Input unstyled gotcha
