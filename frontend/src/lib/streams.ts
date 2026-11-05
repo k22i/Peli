@@ -10,7 +10,7 @@ import {
   type Meta,
   type Stream,
 } from "@/lib/addon-protocol";
-import type { ProfileSettings } from "@bindings/store";
+import type { DeviceSettings, ProfileSettings } from "@bindings/store";
 import { addonsQuery } from "@/lib/addons";
 import { pluginSource, usePluginStreams, usePluginTargets } from "@/lib/plugins";
 import {
@@ -21,6 +21,7 @@ import {
   type Remembered,
   type TitleContext,
 } from "@/lib/ranking";
+import { audioLanguagesOf, displayModeOf, maxResolutionOf } from "@/lib/settings";
 
 // Streams for the picker (#50): every addon that serves streams for the
 // video, asked at once, each with its own state, and their answers handed on
@@ -160,22 +161,32 @@ export function useStreamFeed(
 
 // What ranking prefers: the profile's audio language, and HDR when the
 // display shows it, and the show's remembered source (#58) as the top pick.
-// Dolby Vision can't be detected from a webview, and the resolution isn't
-// capped: a 4K encode still looks better on a smaller display, so both wait
-// for settings of their own.
+// What ranking needs from the settings (#98, ADR-0048). The device's say what
+// it can show: no resolution cap unless one is set (the screen's size is no
+// guide, a 4K encode looks better on a 1440p panel too), HDR as the display
+// reports `(dynamic-range: high)` unless it is turned On or Off, and Dolby
+// Vision off unless it is turned On, since a webview can't see it and the
+// player doesn't report it. The profile's say which audio languages come
+// first. Settings that haven't loaded yet count as their defaults; when they
+// arrive, `useRankedStreams` ranks again.
 export function rankingPrefs(
   settings: ProfileSettings | undefined,
+  device: DeviceSettings | undefined,
   remembered: Remembered | null = null,
 ): Prefs {
-  const hdr = typeof matchMedia === "function" && matchMedia("(dynamic-range: high)").matches;
+  const hdr = displayModeOf(device?.hdr);
+  const cap = maxResolutionOf(device);
   return {
-    languages: settings?.audioLanguage ? [settings.audioLanguage] : [],
-    maxResolution: "2160p",
-    hdr,
-    dolbyVision: false,
+    languages: audioLanguagesOf(settings),
+    maxResolution: cap === "auto" ? "2160p" : cap,
+    hdr: hdr === "auto" ? displayShowsHdr() : hdr === "on",
+    dolbyVision: displayModeOf(device?.dolbyVision) === "on",
     remembered,
   };
 }
+
+const displayShowsHdr = () =>
+  typeof matchMedia === "function" && matchMedia("(dynamic-range: high)").matches;
 
 // The streams ranked (#51): every slice from `sources` goes to the ranking
 // engine, in the worker, and the ranked view comes back after each. Ranking

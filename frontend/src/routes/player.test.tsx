@@ -130,7 +130,7 @@ vi.mock("@bindings/store", () => ({
 
 // Japanese audio with English captions, large.
 const japaneseTracks = {
-  audioLanguage: "ja",
+  audioLanguages: ["ja"],
   subtitleLanguage: "en",
   subtitleSize: "large",
   captions: "on",
@@ -257,6 +257,9 @@ beforeEach(() => {
   mocks.settings.mockReset().mockResolvedValue(japanese);
   mocks.deviceSettings.mockReset().mockResolvedValue({
     hardwareDecoding: true,
+    maxResolution: "auto",
+    hdr: "auto",
+    dolbyVision: "auto",
     skipTimesOnline: true,
     diagnostics: false,
     torrentStreaming: false,
@@ -872,7 +875,7 @@ describe("player", () => {
 
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(source, {
       ...profileOptions,
-      audioLanguage: "eng",
+      audioLanguages: ["eng"],
       subtitleLanguage: "eng",
       captions: "on",
     });
@@ -1177,7 +1180,7 @@ describe("next episode", () => {
         expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
         expect.objectContaining({
           start: 0,
-          audioLanguage: "ja",
+          audioLanguages: ["ja"],
           watching: expect.objectContaining({
             profileId: 1,
             contentId: "tt0903747",
@@ -1394,7 +1397,7 @@ describe("stream switcher", () => {
     await waitFor(() =>
       expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
         expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
-        expect.objectContaining({ start: 642, audioLanguage: "ja", watching: pilot }),
+        expect.objectContaining({ start: 642, audioLanguages: ["ja"], watching: pilot }),
       ),
     );
     expect(mocks.resolve).toHaveBeenCalledWith({ url: fullHd.url, headers: {} });
@@ -1614,6 +1617,9 @@ describe("skip intro and credits", () => {
   it("doesn't ask IntroDB when Settings say not to", async () => {
     mocks.deviceSettings.mockResolvedValue({
       hardwareDecoding: true,
+      maxResolution: "auto",
+      hdr: "auto",
+      dolbyVision: "auto",
       skipTimesOnline: false,
       diagnostics: false,
       torrentStreaming: false,

@@ -1,9 +1,9 @@
-import { screen, waitFor, within } from "@testing-library/react";
+import { act, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Plugin, Query, Stream as PluginStream } from "@bindings/plugins";
-import type { Addon, ChosenSource, Profile, Progress } from "@bindings/store";
+import type { Addon, ChosenSource, DeviceSettings, Profile, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
@@ -13,6 +13,7 @@ import peerflixManifest from "@/lib/addon-protocol/fixtures/peerflix/manifest.js
 import peerflixMovie from "@/lib/addon-protocol/fixtures/peerflix/stream-movie.json";
 import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.json";
 import torrentioSeries from "@/lib/addon-protocol/fixtures/torrentio/stream-series.json";
+import { deviceSettingsQuery } from "@/lib/settings";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -28,6 +29,7 @@ const mocks = vi.hoisted(() => ({
   torrentStatus: vi.fn<() => Promise<Status>>(),
   installed: vi.fn<() => Promise<Plugin[]>>(),
   pluginStreams: vi.fn<(plugin: Plugin, query: Query) => Promise<PluginStream[]>>(),
+  device: vi.fn<() => Promise<DeviceSettings>>(),
   chosen: vi.fn<(profileId: number, contentId: string) => Promise<ChosenSource | null>>(),
   setChosen:
     vi.fn<(profileId: number, contentId: string, chosen: ChosenSource | null) => Promise<void>>(),
@@ -46,11 +48,12 @@ vi.mock("@bindings/store", () => ({
     Library: () => Promise.resolve([]),
     TitleWatched: () => Promise.resolve([]),
     TitleProgress: mocks.titleProgress,
+    DeviceSettings: mocks.device,
     ChosenSource: mocks.chosen,
     SetChosenSource: mocks.setChosen,
     ProfileSettings: () =>
       Promise.resolve({
-        audioLanguage: "",
+        audioLanguages: [],
         subtitleLanguage: "",
         subtitleSize: "medium",
         captions: "system",
@@ -191,6 +194,16 @@ const debrid = (file: string, marker: string) => ({
   url: `https://torrentio.strem.fun/resolve/torbox/KEY/${marker === "+" ? "a" : "b"}${"0".repeat(39)}/null/0/${file}`,
 });
 
+// #98: a cached stream per resolution, so only the device decides.
+const cachedAt = (resolution: "2160p" | "1080p") => {
+  const file = `The.Shawshank.Redemption.1994.${resolution}.BluRay.x265-GRP.mkv`;
+  return {
+    name: `[TB+] Torrentio\n${resolution}`,
+    title: `${file}\n👤 20 💾 ${resolution === "2160p" ? "14" : "2.1"} GB ⚙️ Tracker`,
+    url: `https://torrentio.strem.fun/resolve/torbox/KEY/${resolution === "2160p" ? "c" : "d"}${"0".repeat(39)}/null/0/${file}`,
+  };
+};
+
 const addonStatus = (name: string) =>
   within(screen.getByRole("list", { name: "Addons" })).getByRole("listitem", { name });
 // With a plugin installed (#56), the list is the addons' and plugins'.
@@ -221,7 +234,20 @@ const p2p = {
   sources: ["tracker:udp://open.stealth.si:80/announce"],
 };
 
+// What the device settings are until a test changes them (#98).
+const device: DeviceSettings = {
+  hardwareDecoding: true,
+  maxResolution: "auto",
+  hdr: "auto",
+  dolbyVision: "auto",
+  skipTimesOnline: true,
+  diagnostics: false,
+  torrentStreaming: false,
+  torrentCacheGB: 5,
+};
+
 beforeEach(() => {
+  mocks.device.mockReset().mockResolvedValue(device);
   mocks.resolve.mockImplementation(async (request) => resolved(request));
   mocks.openTorrent.mockReset();
   mocks.torrentStatus.mockReset().mockResolvedValue({
@@ -417,6 +443,34 @@ describe("stream picker", () => {
     expect(document.body.innerHTML).not.toContain("KEY");
   });
 
+  it("ranks again, with the pick and the groups moved, when a device setting changes", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [cachedAt("1080p"), cachedAt("2160p")],
+      },
+    });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    const { queryClient } = await renderApp(pickerPath);
+
+    // No cap: the 4K stream is the top pick, and its group comes first.
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick4K/));
+    expect(shownStreams().at(-1)).toHaveTextContent("1080p");
+
+    // A 1080p cap, set while the picker is open (Settings saves it the same
+    // way): the 1080p stream is the pick, and 4K is listed after it.
+    act(() => {
+      queryClient.setQueryData(deviceSettingsQuery.queryKey, { ...device, maxResolution: "1080p" });
+    });
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick1080p/));
+    expect(shownStreams().at(-1)).toHaveTextContent("4K");
+
+    // Back to Auto: 4K is first again.
+    act(() => {
+      queryClient.setQueryData(deviceSettingsQuery.queryKey, { ...device, maxResolution: "auto" });
+    });
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick4K/));
+  });
+
   it("asks every enabled addon, even ones a kids profile doesn't browse", async () => {
     mocks.current.mockResolvedValue({ ...kevin, kids: true });
     mocks.visibleAddons.mockResolvedValue([cinemeta]);
@@ -536,7 +590,7 @@ describe("stream picker", () => {
     // film's progress (#64).
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(await mocks.resolve.mock.results[0]!.value, {
       start: 0,
-      audioLanguage: "",
+      audioLanguages: [],
       subtitleLanguage: "",
       captions: "system",
       subtitleSize: "medium",

@@ -124,7 +124,7 @@ describe("loadOptions", () => {
     animeInMoviesAndShows: false,
   };
   const settings = {
-    audioLanguage: "ja",
+    audioLanguages: ["ja"],
     subtitleLanguage: "en",
     subtitleSize: "large",
     captions: "system",
@@ -135,7 +135,7 @@ describe("loadOptions", () => {
     expect(loadOptions(5, profile)).toEqual({ start: 5, ...settings });
     expect(loadOptions(0, undefined)).toEqual({
       start: 0,
-      audioLanguage: "",
+      audioLanguages: [],
       subtitleLanguage: "",
       captions: "system",
       subtitleSize: "",
@@ -153,7 +153,7 @@ describe("loadOptions", () => {
       track({ id: 2, type: "sub", lang: "spa", selected: true }),
     ];
     expect(loadOptions(5, profile, playing)).toMatchObject({
-      audioLanguage: "eng",
+      audioLanguages: ["eng"],
       subtitleLanguage: "spa",
       captions: "on",
       subtitleSize: "large",
@@ -168,7 +168,7 @@ describe("loadOptions", () => {
     // A tag Go wouldn't take is the file's default.
     expect(
       loadOptions(5, profile, [track({ id: 1, type: "audio", lang: "en-US", selected: true })]),
-    ).toMatchObject({ audioLanguage: "" });
+    ).toMatchObject({ audioLanguages: [] });
   });
 });
 

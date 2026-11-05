@@ -143,7 +143,7 @@ const store = vi.hoisted(() => ({
 
 vi.mock("@bindings/store", () => {
   const defaults: ProfileSettings = {
-    audioLanguage: "",
+    audioLanguages: [],
     subtitleLanguage: "",
     subtitleSize: "medium",
     captions: "system",
@@ -165,6 +165,9 @@ vi.mock("@bindings/store", () => {
       DeviceSettings: async () =>
         store.device ?? {
           hardwareDecoding: true,
+          maxResolution: "auto",
+          hdr: "auto",
+          dolbyVision: "auto",
           skipTimesOnline: true,
           diagnostics: false,
           torrentStreaming: false,
@@ -176,6 +179,22 @@ vi.mock("@bindings/store", () => {
         }),
     },
   };
+});
+
+// A profile's settings with a few changed, for tests that start from some.
+const settingsWith = (changes: Partial<ProfileSettings>): ProfileSettings => ({
+  audioLanguages: [],
+  subtitleLanguage: "",
+  subtitleSize: "medium",
+  captions: "system",
+  skipIntros: false,
+  simklScrobble: true,
+  simklImport: true,
+  simklAnime: true,
+  anilistProgress: true,
+  anilistImport: true,
+  animeInMoviesAndShows: false,
+  ...changes,
 });
 
 beforeEach(() => {
@@ -212,7 +231,7 @@ const ready: Record<string, [role: string, name: string]> = {
   account: ["button", "Change server"],
   content: ["switch", "Show anime in Movies and Shows"],
   playback: ["switch", "Hardware decoding"],
-  languages: ["combobox", "Audio language"],
+  languages: ["combobox", "Audio languages"],
   streaming: ["switch", "Stream torrents"],
   tracking: ["heading", "Tracking"],
   appearance: ["heading", "Appearance"],
@@ -304,8 +323,8 @@ describe("settings", () => {
 
     await open("Languages & subtitles");
     expect(groups()).toEqual(["Languages", "Subtitles"]);
-    expect(await screen.findByRole("combobox", { name: "Audio language" })).toHaveTextContent(
-      "Original",
+    expect(await screen.findByRole("combobox", { name: "Audio languages" })).toHaveTextContent(
+      "Add a language",
     );
     expect(screen.getByRole("combobox", { name: "Subtitle language" })).toHaveTextContent(
       "Automatic",
@@ -317,7 +336,7 @@ describe("settings", () => {
     );
 
     await open("Streaming");
-    expect(groups()).toEqual(["Torrents"]);
+    expect(groups()).toEqual(["Picture", "Torrents"]);
     expect(await screen.findByRole("switch", { name: "Stream torrents" })).not.toBeChecked();
 
     await open("Tracking");
@@ -382,7 +401,7 @@ describe("settings", () => {
     expect(languages).toHaveAttribute("aria-current", "page");
     // Then Tab goes into the pane's rows.
     await user.tab();
-    expect(await screen.findByRole("combobox", { name: "Audio language" })).toHaveFocus();
+    expect(await screen.findByRole("combobox", { name: "Audio languages" })).toHaveFocus();
   });
 
   it("doesn't move focus when the pane is picked with the pointer", async () => {
@@ -440,8 +459,8 @@ describe("settings", () => {
     const user = userEvent.setup();
     await renderSettings("languages");
 
-    // The language select opens and picks with keys.
-    const audio = screen.getByRole("combobox", { name: "Audio language" });
+    // The select that adds an audio language opens and picks with keys.
+    const audio = screen.getByRole("combobox", { name: "Audio languages" });
     audio.focus();
     await user.keyboard("{ArrowDown}");
     const japanese = await screen.findByRole("option", { name: "Japanese" });
@@ -450,10 +469,16 @@ describe("settings", () => {
     await user.keyboard("Jap");
     await waitFor(() => expect(japanese).toHaveAttribute("data-highlighted"));
     await user.keyboard("{Enter}");
-    await waitFor(() => expect(store.profileSettings.get(1)?.audioLanguage).toBe("ja"));
-    expect(audio).toHaveTextContent("Japanese");
+    await waitFor(() => expect(store.profileSettings.get(1)?.audioLanguages).toEqual(["ja"]));
+    expect(
+      screen.getByRole("list", { name: "Audio languages, most preferred first" }),
+    ).toHaveTextContent("Japanese");
 
-    // Tab moves on to the next language select.
+    // Tab moves on through the language's buttons, then to the next select.
+    await user.tab();
+    expect(screen.getByRole("button", { name: "Move Japanese earlier" })).toHaveFocus();
+    await user.tab();
+    await user.tab();
     await user.tab();
     expect(screen.getByRole("combobox", { name: "Subtitle language" })).toHaveFocus();
 
@@ -466,6 +491,102 @@ describe("settings", () => {
       "aria-pressed",
       "true",
     );
+  });
+
+  // #98: the profile's audio languages, most preferred first.
+  it("orders audio languages with buttons the keyboard reaches", async () => {
+    const user = userEvent.setup();
+    store.profileSettings.set(1, settingsWith({ audioLanguages: ["en", "ja", "ko"] }));
+    await renderSettings("languages");
+    const list = screen.getByRole("list", { name: "Audio languages, most preferred first" });
+    const order = () =>
+      within(list)
+        .getAllByRole("listitem")
+        .map((item) => item.textContent);
+    expect(order()).toEqual(["1English", "2Japanese", "3Korean"]);
+
+    // Enter moves a language, and focus stays on its button.
+    const korean = within(list).getByRole("button", { name: "Move Korean earlier" });
+    korean.focus();
+    await user.keyboard("{Enter}");
+    await waitFor(() =>
+      expect(store.profileSettings.get(1)?.audioLanguages).toEqual(["en", "ko", "ja"]),
+    );
+    expect(order()).toEqual(["1English", "2Korean", "3Japanese"]);
+    expect(korean).toHaveFocus();
+    expect(screen.getByRole("status")).toHaveTextContent("Korean is number 2 of 3");
+
+    // The first can't go earlier, and the last can't go later.
+    const english = within(list).getByRole("button", { name: "Move English earlier" });
+    expect(english).toHaveAttribute("aria-disabled", "true");
+    english.focus();
+    await user.keyboard("{Enter}");
+    expect(order()).toEqual(["1English", "2Korean", "3Japanese"]);
+    expect(store.profileSettings.get(1)?.audioLanguages).toEqual(["en", "ko", "ja"]);
+
+    // Removing one leaves the add control focused.
+    within(list).getByRole("button", { name: "Remove Korean" }).focus();
+    await user.keyboard("{Enter}");
+    await waitFor(() => expect(store.profileSettings.get(1)?.audioLanguages).toEqual(["en", "ja"]));
+    expect(screen.getByRole("combobox", { name: "Audio languages" })).toHaveFocus();
+  });
+
+  it("starts with no audio languages: an add control and no list", async () => {
+    await renderSettings("languages");
+    expect(screen.queryByRole("list", { name: /Audio languages/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("combobox", { name: "Audio languages" })).toHaveTextContent(
+      "Add a language",
+    );
+  });
+
+  // #98: what this device shows, in words about the device.
+  it("sets the maximum resolution, HDR and Dolby Vision for this device", async () => {
+    const user = userEvent.setup();
+    await renderSettings("streaming");
+
+    const resolution = screen.getByRole("group", { name: "Maximum resolution" });
+    expect(within(resolution).getByRole("button", { name: "Auto" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(
+      within(resolution)
+        .getAllByRole("button")
+        .map((button) => button.textContent),
+    ).toEqual(["Auto", "4K", "1080p", "720p"]);
+    await user.click(within(resolution).getByRole("button", { name: "1080p" }));
+    await waitFor(() => expect(store.device?.maxResolution).toBe("1080p"));
+    expect(within(resolution).getByRole("button", { name: "1080p" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+
+    const hdr = screen.getByRole("group", { name: "HDR" });
+    await user.click(within(hdr).getByRole("button", { name: "Off" }));
+    await waitFor(() => expect(store.device?.hdr).toBe("off"));
+
+    const dolbyVision = screen.getByRole("group", { name: "Dolby Vision" });
+    expect(within(dolbyVision).getByRole("button", { name: "Auto" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await user.click(within(dolbyVision).getByRole("button", { name: "On" }));
+    await waitFor(() => expect(store.device?.dolbyVision).toBe("on"));
+
+    // The other device settings stay as they were.
+    expect(store.device).toMatchObject({
+      hardwareDecoding: true,
+      maxResolution: "1080p",
+      hdr: "off",
+      dolbyVision: "on",
+    });
+  });
+
+  it("describes the device, not the ranking", async () => {
+    await renderSettings("streaming");
+    const group = screen.getByRole("region", { name: "Picture" });
+    expect(group).toHaveTextContent("Maximum resolution");
+    expect(group.textContent).not.toMatch(/score|weight|points/i);
   });
 
   it("gives every keyboard-reachable element a visible focus ring", async () => {

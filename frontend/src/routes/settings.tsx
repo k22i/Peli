@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
+import { AudioLanguagesRow } from "@/components/settings/audio-languages";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import {
   defaultPane,
@@ -41,10 +42,15 @@ import { contentDisclaimer } from "@/lib/disclaimer";
 import { useCurrentProfile } from "@/lib/profile";
 import { serverName, serverQuery } from "@/lib/server";
 import {
+  audioLanguagesOf,
   captionsModes,
   deviceSettingsQuery,
+  displayModeOf,
+  displayModes,
   languageName,
   languages,
+  maxResolutionOf,
+  maxResolutions,
   profileSettingsQuery,
   subtitleSizes,
   useSaveDeviceSettings,
@@ -393,18 +399,10 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
         {({ settings, setProfile }) => (
           <>
             <SettingsGroup title="Languages">
-              <SettingRow
-                id="audio-language"
-                label="Audio language"
-                description="Played when a stream has it."
-              >
-                <LanguageSelect
-                  id="audio-language"
-                  value={settings.audioLanguage}
-                  defaultLabel="Original"
-                  onChange={(audioLanguage) => setProfile({ audioLanguage })}
-                />
-              </SettingRow>
+              <AudioLanguagesRow
+                value={audioLanguagesOf(settings)}
+                onChange={(audioLanguages) => setProfile({ audioLanguages })}
+              />
               <SettingRow
                 id="subtitle-language"
                 label="Subtitle language"
@@ -454,36 +452,96 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
     <SettingsPaneView title={title}>
       <WithSettings profileId={profileId}>
         {({ device, setDevice }) => (
-          <SettingsGroup title="Torrents">
-            {/* Off unless the user turns it on (#55, ADR-0040): peers see
+          <>
+            <QualityGroup device={device} onChange={setDevice} />
+            <SettingsGroup title="Torrents">
+              {/* Off unless the user turns it on (#55, ADR-0040): peers see
                 their IP address. */}
-            <SettingRow
-              id="torrent-streaming"
-              label="Stream torrents"
-              description="Plays torrents without a debrid or direct link by fetching them from other people as you watch (peer to peer). They can see your IP address, and get pieces of the file from you too. Off unless you turn it on. Applies to this device."
-            >
-              <Switch
-                aria-labelledby="torrent-streaming-label"
-                aria-describedby="torrent-streaming-description"
-                checked={device.torrentStreaming}
-                onCheckedChange={(torrentStreaming) => setDevice({ torrentStreaming })}
-              />
-            </SettingRow>
-            {device.torrentStreaming && (
-              <TorrentCacheRow
-                size={device.torrentCacheGB}
-                onChange={(torrentCacheGB) => {
-                  setDevice({ torrentCacheGB });
-                  Torrents.SetCacheSize(torrentCacheGB).catch(() => {});
-                }}
-              />
-            )}
-          </SettingsGroup>
+              <SettingRow
+                id="torrent-streaming"
+                label="Stream torrents"
+                description="Plays torrents without a debrid or direct link by fetching them from other people as you watch (peer to peer). They can see your IP address, and get pieces of the file from you too. Off unless you turn it on. Applies to this device."
+              >
+                <Switch
+                  aria-labelledby="torrent-streaming-label"
+                  aria-describedby="torrent-streaming-description"
+                  checked={device.torrentStreaming}
+                  onCheckedChange={(torrentStreaming) => setDevice({ torrentStreaming })}
+                />
+              </SettingRow>
+              {device.torrentStreaming && (
+                <TorrentCacheRow
+                  size={device.torrentCacheGB}
+                  onChange={(torrentCacheGB) => {
+                    setDevice({ torrentCacheGB });
+                    Torrents.SetCacheSize(torrentCacheGB).catch(() => {});
+                  }}
+                />
+              )}
+            </SettingsGroup>
+          </>
         )}
       </WithSettings>
     </SettingsPaneView>
   );
 }
+
+// What this device shows (#98, ADR-0048), for choosing between streams: the
+// ranking's weights stay out of sight, so these say what the screen can do. A
+// stream that doesn't fit is listed after the ones that do, never hidden.
+function QualityGroup({
+  device,
+  onChange,
+}: {
+  device: DeviceSettings;
+  onChange: (change: Partial<DeviceSettings>) => void;
+}) {
+  return (
+    <SettingsGroup title="Picture">
+      <SettingRow
+        id="max-resolution"
+        label="Maximum resolution"
+        description="The biggest picture to pick. Streams above it are listed after the rest. Auto doesn’t limit it. Applies to this device."
+      >
+        <Choice
+          id="max-resolution"
+          value={maxResolutionOf(device)}
+          options={maxResolutions}
+          labels={{ auto: "Auto", "2160p": "4K", "1080p": "1080p", "720p": "720p" }}
+          onChange={(maxResolution) => onChange({ maxResolution })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="hdr"
+        label="HDR"
+        description="Prefers HDR streams if this screen shows them. Auto asks the screen. Applies to this device."
+      >
+        <Choice
+          id="hdr"
+          value={displayModeOf(device.hdr)}
+          options={displayModes}
+          labels={displayLabels}
+          onChange={(hdr) => onChange({ hdr })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="dolby-vision"
+        label="Dolby Vision"
+        description="Prefers Dolby Vision streams, even ones with no HDR layer to fall back on. Auto leaves it off, as Sinag can’t tell if this screen shows it. Applies to this device."
+      >
+        <Choice
+          id="dolby-vision"
+          value={displayModeOf(device.dolbyVision)}
+          options={displayModes}
+          labels={displayLabels}
+          onChange={(dolbyVision) => onChange({ dolbyVision })}
+        />
+      </SettingRow>
+    </SettingsGroup>
+  );
+}
+
+const displayLabels = { auto: "Auto", on: "On", off: "Off" };
 
 function AppearancePane({ title }: { title: string }) {
   return (

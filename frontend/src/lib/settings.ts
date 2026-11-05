@@ -12,8 +12,55 @@ export type { DeviceSettings, ProfileSettings };
 export const subtitleSizes = ["small", "medium", "large"] as const;
 export const captionsModes = ["system", "on", "off"] as const;
 
-// Offered as default audio and subtitle languages, as ISO 639-1 codes; "" is
-// the stream's own default. mpv matches these against 2- and 3-letter tags.
+// What this device can show (#98, ADR-0048): the biggest picture to prefer,
+// and whether HDR and Dolby Vision are wanted. "auto" for the resolution is no
+// cap; for HDR it follows the display, and for Dolby Vision it is off, since a
+// webview can't see it.
+export const maxResolutions = ["auto", "2160p", "1080p", "720p"] as const;
+export const displayModes = ["auto", "on", "off"] as const;
+export type MaxResolution = (typeof maxResolutions)[number];
+export type DisplayMode = (typeof displayModes)[number];
+
+// A saved value this build doesn't know (or an older record's blank) is auto.
+export function maxResolutionOf(
+  device: Pick<DeviceSettings, "maxResolution"> | undefined,
+): MaxResolution {
+  return maxResolutions.find((value) => value === device?.maxResolution) ?? "auto";
+}
+
+export function displayModeOf(value: string | undefined): DisplayMode {
+  return displayModes.find((mode) => mode === value) ?? "auto";
+}
+
+// The audio languages as a list: Go sends null for none until a profile saves.
+export const audioLanguagesOf = (settings: ProfileSettings | undefined): string[] =>
+  settings?.audioLanguages ?? [];
+
+// The most audio languages a profile can list; the same cap as the store's.
+export const audioLanguageLimit = 8;
+
+// Adds a language at the end, unless it's listed already or the list is full.
+export function addLanguage(list: readonly string[], code: string): string[] {
+  if (!code || list.includes(code) || list.length >= audioLanguageLimit) return [...list];
+  return [...list, code];
+}
+
+export const removeLanguage = (list: readonly string[], code: string): string[] =>
+  list.filter((listed) => listed !== code);
+
+// Moves a language one place earlier (-1) or later (1); the ends stay put.
+export function moveLanguage(list: readonly string[], code: string, by: -1 | 1): string[] {
+  const from = list.indexOf(code);
+  const to = from + by;
+  if (from < 0 || to < 0 || to >= list.length) return [...list];
+  const next = [...list];
+  next.splice(from, 1);
+  next.splice(to, 0, code);
+  return next;
+}
+
+// Offered as audio and subtitle languages, as ISO 639-1 codes; "" is the
+// stream's own default. mpv matches these against 2- and 3-letter tags.
 export const languages = [
   "en",
   "es",

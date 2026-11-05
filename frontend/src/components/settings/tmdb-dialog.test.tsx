@@ -13,7 +13,7 @@ vi.mock("@bindings/store", () => ({
     Profiles: async () => [{ id: 1, name: "Guest", guest: true }],
     CurrentProfile: async () => ({ id: 1, name: "Guest", guest: true }),
     ProfileSettings: async () => ({
-      audioLanguage: "",
+      audioLanguages: [],
       subtitleLanguage: "",
       subtitleSize: "medium",
       captions: "system",

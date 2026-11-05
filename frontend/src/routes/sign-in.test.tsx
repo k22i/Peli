@@ -41,7 +41,7 @@ vi.mock("@bindings/store", () => ({
       return backend.current;
     },
     ProfileSettings: async () => ({
-      audioLanguage: "",
+      audioLanguages: [],
       subtitleLanguage: "",
       subtitleSize: "medium",
       captions: "system",

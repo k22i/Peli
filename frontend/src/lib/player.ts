@@ -11,7 +11,7 @@ import {
 } from "@bindings/player";
 import type { ProfileSettings } from "@bindings/store";
 import { Service as Streams, type Source } from "@bindings/streams";
-import { languageName } from "@/lib/settings";
+import { audioLanguagesOf, languageName } from "@/lib/settings";
 
 // The player (#60, ADR-0039): libmpv in Go, under the webview, driven
 // through internal/player's Service. Its state comes back as events:
@@ -108,7 +108,7 @@ export function loadOptions(
 ): LoadOptions {
   const options = {
     start,
-    audioLanguage: settings?.audioLanguage ?? "",
+    audioLanguages: audioLanguagesOf(settings),
     subtitleLanguage: settings?.subtitleLanguage ?? "",
     captions: settings?.captions ?? "system",
     subtitleSize: settings?.subtitleSize ?? "",
@@ -119,7 +119,7 @@ export function loadOptions(
   const sub = playing.find((track) => track.type === "sub" && track.selected);
   return {
     ...options,
-    audioLanguage: languageCode(audio.lang),
+    audioLanguages: languageCodes(audio.lang),
     subtitleLanguage: languageCode(sub?.lang),
     captions: sub && !sub.forced ? "on" : "off",
   };
@@ -127,6 +127,9 @@ export function loadOptions(
 
 // Go takes ISO 639 codes only; mpv's tags may be anything.
 const languageCode = (lang = "") => (/^[a-z]{2,3}$/.test(lang) ? lang : "");
+
+// The language of the track that was playing, as a list of one, or none.
+const languageCodes = (lang = ""): string[] => (languageCode(lang) ? [lang] : []);
 
 // A track as the pickers show it: its language (or title) as the name, and
 // what tells it apart: "English", "Commentary · AC3 · 5.1".

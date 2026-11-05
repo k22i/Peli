@@ -6,6 +6,7 @@ import { streamsQuery, type Meta } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered } from "@/lib/chosen-source";
 import { titleContext, type Candidate } from "@/lib/ranking";
 import { attempts, resolvePick, type Resolved } from "@/lib/resolve";
+import { deviceSettingsQuery } from "@/lib/settings";
 import { rankingPrefs, useRankedStreams, useStreamAddons, useStreams } from "@/lib/streams";
 import { episodes, mainEpisodes, type Episode } from "@/lib/title";
 
@@ -69,8 +70,13 @@ export function usePreparedNext(
   const { addons, loading } = useStreamAddons(profileId);
   const sources = useStreams(addons, meta.type, next.id);
   const chosen = useQuery(chosenSourceQuery(profileId, meta.id));
+  const device = useQuery(deviceSettingsQuery).data;
   const ctx = titleContext(meta.type, next.id, meta, meta.name);
-  const { view } = useRankedStreams(sources, ctx, rankingPrefs(settings, remembered(chosen.data)));
+  const { view } = useRankedStreams(
+    sources,
+    ctx,
+    rankingPrefs(settings, device, remembered(chosen.data)),
+  );
   const answered =
     !loading && !chosen.isPending && sources.every((source) => source.status !== "pending");
 

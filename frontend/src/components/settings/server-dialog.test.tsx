@@ -28,7 +28,7 @@ vi.mock("@bindings/store", () => ({
       backend.profiles.find((p) => p.nuvioIndex != null) ??
       backend.profiles[0] ?? { id: 1, name: "Guest", guest: true },
     ProfileSettings: async () => ({
-      audioLanguage: "",
+      audioLanguages: [],
       subtitleLanguage: "",
       subtitleSize: "medium",
       captions: "system",

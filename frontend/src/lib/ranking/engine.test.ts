@@ -101,6 +101,62 @@ describe("scoreStream", () => {
       score(p2p("Some.Film.2024.2160p.WEB-DL.H265-GRP.mkv", "15 GB"), capped),
     );
   });
+
+  // #98: "with a 1080p cap, 4K streams rank below every stream that fits",
+  // whatever else the fitting one lacks.
+  it("ranks a cached 4K below every stream that fits the cap", () => {
+    const capped = { ...defaultPrefs, maxResolution: "1080p" as const };
+    const cached4k = score(
+      cached("Some.Film.2024.2160p.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-GRP.mkv", 60 * 2 ** 30),
+      { ...capped, languages: ["en"] },
+    );
+    const fitting = [
+      // Uncached, a dead swarm, and in a language it isn't asked for.
+      p2p("Some.Film.2024.360p.WEB-DL.FRENCH.H264-GRP.mkv", "400 MB", 0),
+      p2p("Some.Film.2024.720p.WEB-DL.FRENCH.H264-GRP.mkv", "1 GB", 0),
+      p2p("Some.Film.2024.1080p.WEB-DL.FRENCH.H264-GRP.mkv", "2 GB", 0),
+      // Dolby Vision with nothing to fall back on.
+      p2p("Some.Film.2024.1080p.WEB-DL.DV.H265-GRP.mkv", "4 GB"),
+    ];
+    for (const stream of fitting) {
+      expect(score(stream, { ...capped, languages: ["en"] })).toBeGreaterThan(cached4k);
+    }
+  });
+
+  it("doesn't cap anything by default, or at 4K", () => {
+    const remux = p2p("Some.Film.2024.2160p.BluRay.REMUX.HEVC.TrueHD.7.1.Atmos-GRP.mkv", "60 GB");
+    const fhd = p2p("Some.Film.2024.1080p.WEB-DL.H264-GRP.mkv");
+    expect(score(remux)).toBeGreaterThan(score(fhd));
+    expect(score(remux, { ...defaultPrefs, maxResolution: "2160p" })).toBe(score(remux));
+  });
+
+  describe("Dolby Vision and HDR", () => {
+    const dvOnly = p2p("Some.Film.2024.2160p.WEB-DL.DV.H265-GRP.mkv", "15 GB");
+    const withFallback = p2p("Some.Film.2024.2160p.WEB-DL.DV.HDR10.H265-GRP.mkv", "15 GB");
+    const hdr10 = p2p("Some.Film.2024.2160p.WEB-DL.HDR10.H265-GRP.mkv", "15 GB");
+    const sdr = p2p("Some.Film.2024.2160p.WEB-DL.H265-GRP.mkv", "15 GB");
+
+    it("with Dolby Vision off, ranks DV-only below the same stream with an HDR10 layer", () => {
+      for (const hdr of [true, false]) {
+        const off = { ...defaultPrefs, hdr, dolbyVision: false };
+        expect(score(withFallback, off)).toBeGreaterThan(score(dvOnly, off));
+        expect(score(hdr10, off)).toBeGreaterThan(score(dvOnly, off));
+        // Wrong colours are worse than no HDR at all.
+        expect(score(sdr, off)).toBeGreaterThan(score(dvOnly, off));
+      }
+    });
+
+    it("with Dolby Vision on, ranks it first and doesn't penalize DV-only", () => {
+      const on = { ...defaultPrefs, hdr: true, dolbyVision: true };
+      expect(score(dvOnly, on)).toBeGreaterThan(score(hdr10, on));
+      expect(score(dvOnly, on)).toBeGreaterThan(score(sdr, on));
+    });
+
+    it("with HDR off, HDR10 earns nothing", () => {
+      expect(score(hdr10, { ...defaultPrefs, hdr: false })).toBe(score(sdr));
+      expect(score(hdr10, { ...defaultPrefs, hdr: true })).toBeGreaterThan(score(sdr));
+    });
+  });
 });
 
 describe("StreamEngine", () => {
@@ -137,6 +193,50 @@ describe("StreamEngine", () => {
     ]);
     expect(view.groups.map((g) => g.tier)).toEqual(["4K", "720p", "Low quality", "Likely fake"]);
     expect(view.top?.tier).toBe("4K");
+  });
+
+  // #98: over the cap, the group follows the ones that fit.
+  it("lists the groups above the resolution cap after the ones that fit", () => {
+    const answers = [
+      {
+        source: "a",
+        streams: [
+          p2p("Some.Film.2024.2160p.WEB-DL.H265-GRP.mkv", "15 GB", 50, "1".repeat(40)),
+          p2p("Some.Film.2024.1080p.WEB-DL.H264-GRP.mkv", "2 GB", 50, "2".repeat(40)),
+          p2p("Some.Film.2024.720p.WEB-DL.H264-GRP.mkv", "1 GB", 50, "3".repeat(40)),
+          p2p("Some.Film.2024.480p.WEB-DL.H264-GRP.mkv", "700 MB", 50, "4".repeat(40)),
+          p2p("Some.Film.2024.1080p.CAM.H264-GRP.mkv", "2 GB", 50, "5".repeat(40)),
+        ],
+      },
+    ];
+    const tiers = (maxResolution: "2160p" | "1080p" | "720p") =>
+      rankStreams(movie, answers, { ...defaultPrefs, maxResolution }).groups.map((g) => g.tier);
+    expect(tiers("2160p")).toEqual(["4K", "1080p", "720p", "SD", "Low quality"]);
+    expect(tiers("1080p")).toEqual(["1080p", "720p", "SD", "4K", "Low quality"]);
+    // The nearest to the cap first.
+    expect(tiers("720p")).toEqual(["720p", "SD", "1080p", "4K", "Low quality"]);
+
+    // The pick is the best that fits.
+    const view = rankStreams(movie, answers, { ...defaultPrefs, maxResolution: "1080p" });
+    expect(view.top?.tier).toBe("1080p");
+  });
+
+  it("picks the top pick that fits, and a cached 4K waits below an uncached 1080p", () => {
+    const view = rankStreams(
+      movie,
+      [
+        { source: "a", streams: [p2p("Some.Film.2024.1080p.WEB-DL.H264-GRP.mkv", "2 GB", 0)] },
+        {
+          source: "b",
+          streams: [
+            cached("Some.Film.2024.2160p.WEB-DL.H265-GRP.mkv", 15 * 2 ** 30, "9".repeat(40)),
+          ],
+        },
+      ],
+      { ...defaultPrefs, maxResolution: "1080p" },
+    );
+    expect(view.top?.source).toBe("a");
+    expect(view.groups.map((g) => g.tier)).toEqual(["1080p", "4K"]);
   });
 
   it("keeps the pinned top pick when a better stream arrives", () => {

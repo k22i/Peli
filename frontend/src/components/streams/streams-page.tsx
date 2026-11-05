@@ -29,7 +29,7 @@ import { rememberedMatch, titleContext, type Candidate, type Tier } from "@/lib/
 import { loadOptions, Player } from "@/lib/player";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
-import { profileSettingsQuery } from "@/lib/settings";
+import { deviceSettingsQuery, profileSettingsQuery } from "@/lib/settings";
 import {
   rankingPrefs,
   usePluginSources,
@@ -382,13 +382,14 @@ export function useStreamChoices(
       .streams;
   };
   const settings = useQuery(profileSettingsQuery(profileId)).data;
+  const device = useQuery(deviceSettingsQuery).data;
   const chosen = useQuery({
     ...chosenSourceQuery(profileId, id),
     enabled: isSeriesType(type),
   }).data;
   const last = isSeriesType(type) ? remembered(chosen) : null;
   const ctx = titleContext(type, video, meta, title);
-  const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, last));
+  const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, device, last));
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const toggleGroup = (tier: Tier) =>
     setOpen((current) => {

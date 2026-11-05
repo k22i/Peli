@@ -51,8 +51,11 @@ export const defaultWeights = {
     "360p": 500,
     unknown: 1_500,
   },
-  // Over the cap: below everything that fits.
-  aboveMaxResolution: -6_000,
+  // Over the device's cap (#98): below everything that fits, cached or not.
+  // The widest gap between a fitting stream and an over-cap one is the cached
+  // bonus plus the best of the rest (about 17,000), against the worst fitting
+  // score (about -9,000), so the penalty clears both.
+  aboveMaxResolution: -30_000,
   source: {
     remux: 600,
     bluray: 500,
@@ -124,6 +127,28 @@ export const tiers: readonly Tier[] = [
   "Likely fake",
 ];
 export const collapsedTiers: ReadonlySet<Tier> = new Set(["Low quality", "Likely fake"]);
+
+// The order of the picker's groups. Those above the device's resolution cap
+// (#98) follow the ones that fit, the nearest to the cap first, but stay ahead
+// of the collapsed groups.
+export function tierOrder(prefs: Prefs): readonly Tier[] {
+  const cap = resolutionOrder.indexOf(prefs.maxResolution);
+  const over = tiers.filter((tier) => {
+    const lowest = tierLowest[tier];
+    return lowest !== undefined && resolutionOrder.indexOf(lowest) > cap;
+  });
+  if (!over.length) return tiers;
+  const fits = tiers.filter((tier) => !over.includes(tier));
+  const at = fits.findIndex((tier) => collapsedTiers.has(tier));
+  return [...fits.slice(0, at), ...over.toReversed(), ...fits.slice(at)];
+}
+
+// The smallest resolution a tier holds, for those that hold one.
+const tierLowest: Partial<Record<Tier, Resolution>> = {
+  "4K": "2160p",
+  "1080p": "1080p",
+  "720p": "720p",
+};
 
 function tierOf(p: Parsed, v: Verdict): Tier {
   if (v.bucket === "hidden") return "Likely fake";

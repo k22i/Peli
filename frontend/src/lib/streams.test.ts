@@ -1,8 +1,10 @@
-import { describe, expect, it, vi } from "vite-plus/test";
+import { afterEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Stream } from "@/lib/addon-protocol";
 
-import { StreamFeed, slices, type StreamSource } from "./streams";
+import type { DeviceSettings, ProfileSettings } from "@bindings/store";
+
+import { StreamFeed, rankingPrefs, slices, type StreamSource } from "./streams";
 
 vi.mock("@bindings/addons", () => ({ Service: { Fetch: vi.fn<() => void>() } }));
 vi.mock("@bindings/store", () => ({ Service: {} }));
@@ -60,5 +62,97 @@ describe("StreamFeed", () => {
 
   it("feeds an addon that answered with no streams nothing", () => {
     expect(new StreamFeed().take([source("a", "success", [])])).toEqual([]);
+  });
+});
+
+// #98: what ranking is told from the settings.
+const profile = (audioLanguages: string[] | null): ProfileSettings => ({
+  audioLanguages,
+  subtitleLanguage: "",
+  subtitleSize: "medium",
+  captions: "system",
+  skipIntros: false,
+  simklScrobble: true,
+  simklImport: true,
+  simklAnime: true,
+  anilistProgress: true,
+  anilistImport: true,
+  animeInMoviesAndShows: false,
+});
+const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
+  hardwareDecoding: true,
+  maxResolution: "auto",
+  hdr: "auto",
+  dolbyVision: "auto",
+  skipTimesOnline: true,
+  diagnostics: false,
+  torrentStreaming: false,
+  torrentCacheGB: 5,
+  ...changes,
+});
+// The display reports HDR, or not.
+const display = (hdr: boolean) =>
+  vi.stubGlobal("matchMedia", (query: string) => ({
+    matches: hdr && query === "(dynamic-range: high)",
+  }));
+
+const cap = (maxResolution: string) =>
+  rankingPrefs(profile([]), device({ maxResolution })).maxResolution;
+const hdrOf = (mode: string) => rankingPrefs(profile([]), device({ hdr: mode })).hdr;
+const dolbyVisionOf = (mode: string) =>
+  rankingPrefs(profile([]), device({ dolbyVision: mode })).dolbyVision;
+
+describe("rankingPrefs", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("is no cap, the display's HDR and no Dolby Vision before anything has loaded", () => {
+    display(false);
+    expect(rankingPrefs(undefined, undefined)).toEqual({
+      languages: [],
+      maxResolution: "2160p",
+      hdr: false,
+      dolbyVision: false,
+      remembered: null,
+    });
+    display(true);
+    expect(rankingPrefs(undefined, undefined).hdr).toBe(true);
+  });
+
+  it("caps the resolution as the device says, and Auto is no cap", () => {
+    expect(cap("auto")).toBe("2160p");
+    expect(cap("2160p")).toBe("2160p");
+    expect(cap("1080p")).toBe("1080p");
+    expect(cap("720p")).toBe("720p");
+    // A value this build doesn't know is no cap, not an error.
+    expect(cap("")).toBe("2160p");
+    expect(cap("8k")).toBe("2160p");
+  });
+
+  it("follows the display for HDR on Auto, and the setting otherwise", () => {
+    display(true);
+    expect(hdrOf("auto")).toBe(true);
+    expect(hdrOf("off")).toBe(false);
+    display(false);
+    expect(hdrOf("auto")).toBe(false);
+    expect(hdrOf("on")).toBe(true);
+  });
+
+  it("leaves Dolby Vision off on Auto, whatever the display says", () => {
+    display(true);
+    expect(dolbyVisionOf("auto")).toBe(false);
+    expect(dolbyVisionOf("off")).toBe(false);
+    expect(dolbyVisionOf("on")).toBe(true);
+  });
+
+  it("passes the audio languages on in order, and none for null", () => {
+    expect(rankingPrefs(profile(["ja", "en"]), device()).languages).toEqual(["ja", "en"]);
+    expect(rankingPrefs(profile(null), device()).languages).toEqual([]);
+  });
+
+  it("carries the remembered source", () => {
+    const remembered = { source: "https://torrentio.example/", resolution: "1080p", group: "PSA" };
+    expect(rankingPrefs(profile([]), device(), remembered).remembered).toBe(remembered);
   });
 });

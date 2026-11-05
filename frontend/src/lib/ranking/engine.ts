@@ -10,6 +10,7 @@ import {
   defaultPrefs,
   defaultWeights,
   fileKey,
+  tierOrder,
   tiers,
   type Candidate,
   type Prefs,
@@ -29,7 +30,7 @@ export type RankedView<C = Candidate> = {
   // closest match to the show's remembered source, #58), or the one pinned
   // when the user started navigating.
   top: C | null;
-  // In `tiers` order, without empty ones.
+  // In `tierOrder(prefs)` order, without empty ones.
   groups: RankedGroup<C>[];
   // Unique streams, after de-duplication.
   total: number;
@@ -130,7 +131,7 @@ export class StreamEngine {
     for (const c of this.#sorted) groups.get(c.tier)!.push(c);
     return {
       top: this.#pinned ?? this.#best(),
-      groups: tiers.flatMap((tier) => {
+      groups: tierOrder(this.prefs).flatMap((tier) => {
         const items = groups.get(tier)!;
         return items.length ? [{ tier, items }] : [];
       }),
