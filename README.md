@@ -74,7 +74,7 @@ Settings › Integrations connects a profile to SIMKL and AniList ([ADR-0042](do
 
 ### Nuvio plugins
 
-Nuvio's JS plugins run in a sandbox in `internal/plugins`, one child process per call ([ADR-0043](docs/adr/0043-plugin-sandbox.md)). Until plugin management (#57) lands there is no list of plugins, so to try one in a dev build set `SINAG_DEV_PLUGINS` to a plugin repository's `manifest.json` URL: its enabled plugins are asked beside the addons. `go run ./tools/plugins -manifest <url> -tmdb 550 -type movie` (or `-file plugin.js`) runs plugins in the same sandbox and reports what each answered. `SINAG_PLUGIN_LOG=1` passes the plugins' console output to the log.
+Nuvio's JS plugins run in a sandbox in `internal/plugins`, one child process per call ([ADR-0043](docs/adr/0043-plugin-sandbox.md)). They are off until you turn them on in Settings › Plugins, which also installs plugin repositories by their manifest address and syncs the list with Nuvio ([ADR-0047](docs/adr/0047-plugin-management.md)); kids profiles never run them. `go run ./tools/plugins -manifest <url> -tmdb 550 -type movie` (or `-file plugin.js`) runs plugins in the same sandbox and reports what each answered. `SINAG_PLUGIN_LOG=1` passes the plugins' console output to the log.
 
 ### CI
 

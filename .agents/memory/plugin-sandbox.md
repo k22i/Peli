@@ -1,6 +1,6 @@
 ---
 name: plugin-sandbox
-description: "How Nuvio JS plugins run (#56, ADR-0043): internal/plugins child process per call, host API, limits, SINAG_DEV_PLUGINS, StreamSource key/name/kind, tools/plugins, goja pin; read before #57, #58, #65 or touching the picker's sources"
+description: "How Nuvio JS plugins run (#56, ADR-0043): internal/plugins child process per call, host API, limits, StreamSource key/name/kind, tools/plugins, goja pin; read before #57, #58, #65 or touching the picker's sources"
 metadata:
   type: project
 ---
@@ -11,7 +11,7 @@ Plugins (#56, ADR-0043) are `internal/plugins`. Each `getStreams` call is a fres
 
 **How to apply:**
 - Frontend: `lib/plugins.ts` (`pluginStreamsQuery`, `toStream`, `pluginQuery` by TMDB id via `useTmdbId` in `lib/tmdb.ts`). `StreamSource` is now `{key, name, kind, …}` and `StreamSlice.source`, not `.addon`. `useStreamChoices` merges `usePluginSources` and returns `refresh`, which the picker and the player's switcher pass to `resolvePick`.
-- #57: `Plugins.Installed()` is the stand-in list: empty unless `SINAG_DEV_PLUGINS=<manifest URL>`. Replace it with the stored, synced list (Nuvio `plugins` table, `uses_primary_plugins`), keep plugins off by default, and pass per-plugin `Settings` (SCRAPER_SETTINGS). `ParseManifest` takes both manifest shapes.
+- #57 is built ([[plugin-management]]): `Installed()` is the stored, per-profile, off-by-default list; `SINAG_DEV_PLUGINS` is gone (install the repository instead; `tools/plugins` has its own path). `Streams` only runs plugins `Installed` lists.
 - Route tests that render the picker or the player must mock `@bindings/plugins` (`Installed`, `Streams` with `cancel`).
 - The auto-mode classifier blocked running third-party plugin code (2026-11-04). Only our own `testdata/` fixtures have run. Ask the user before `go run ./tools/plugins -manifest …` against a real repo.
 - goja is at `2cb8274eed06` (2026-10-14), which needs Go 1.26: `go.mod` says 1.26 and ci.yml's `GO_VERSION` is 1.27.x (the user's toolchain is 1.27). Bump both together.
