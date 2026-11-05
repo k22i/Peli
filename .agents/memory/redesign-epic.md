@@ -14,3 +14,5 @@ On 2026-11-05 the user asked for a total redesign: more liquid glass, posters an
 **Why:** the user wants tickets detailed enough for a lower-level model to finish with little supervision, so each one names files, current classes, target values, tests and screenshots.
 
 **How to apply:** follow the epic's order (#111, #112 and #113 first; #125 last). Use the tiers rather than raw `backdrop-blur`. Record the chosen type option in [[sinag-design-direction]]. The workflow is [[spike-ticket-workflow]].
+
+**#112 status (2026-11-05):** step 1 done (9642fa5): `gallery/type-specimens.tsx` (`typeOptions`, `TypeSample`) and `docs/design/type-specimen-{A,B,C}-dark.jpg`. Board item is back at Ready, waiting for the user to pick A, B or C in a comment on #112; step 2 (rollout) starts after that. The screenshots come from a throwaway page, not the real Home and title pages.
