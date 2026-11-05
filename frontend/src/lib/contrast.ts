@@ -308,6 +308,39 @@ export const contrastPairs: ContrastPair[] = [
     background: ["#ffffff", "glass-thick", "glass-thin"],
     min: AA_TEXT,
   },
+  // Library (#118): the view switch's idle tab (muted text on thin glass, on
+  // the page or inside the stuck header's regular glass), and the Upcoming
+  // day header's label on regular glass, also over the worst backdrops.
+  {
+    label: "Library view switch, idle tab",
+    foreground: "muted-foreground",
+    background: ["background", "glass-thin"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Library view switch, idle tab, in the stuck header",
+    foreground: "muted-foreground",
+    background: ["background", "glass-regular", "glass-thin"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Day header label, over the page",
+    foreground: "foreground",
+    background: ["background", "glass-regular"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Day header label, over black",
+    foreground: "foreground",
+    background: ["#000000", "glass-regular"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Day header label, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "glass-regular"],
+    min: AA_TEXT,
+  },
 ];
 
 export function parseHex(hex: string): Rgba {

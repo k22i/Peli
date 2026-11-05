@@ -111,9 +111,10 @@ export function Upcoming({ profile }: { profile: Profile }) {
 
 // How far the sticky day headers sit under the title bar: the Library page's
 // header once it has stuck on this view (py-2 around the 38px view switch,
-// see BrowseFrame). Only the Upcoming view has day headers, and it has one
-// row, so the offset is fixed.
-const stuckHeader = "3.375rem";
+// see BrowseFrame; only the Upcoming view has day headers, and it has one
+// row, so the offset is fixed), plus 1rem so the header's own 24px scroll
+// edge doesn't veil the day header's top.
+const stuckHeader = "4.375rem";
 
 function DaySection({
   title,
@@ -131,11 +132,11 @@ function DaySection({
     <section aria-label={title} className="flex flex-col gap-1">
       {/* Sticks under the page header while its day scrolls by, then the next
           day's takes over. The wrapper holds the scroll edge, as a glass
-          element can't (see glass-materials); it sits above the page
-          header's own edge (z-10) so that doesn't veil it. */}
+          element can't (see glass-materials). It sits under the page header
+          (z-10), so a day header pushed out by the next one slides beneath it. */}
       <div
         style={{ top: `calc(var(--titlebar-h) + ${stuckHeader})` }}
-        className="sticky z-11 scroll-edge-top"
+        className="sticky z-9 scroll-edge-top"
       >
         <h2 className="glass flex items-baseline gap-3 rounded-xl px-3 py-2 font-heading text-heading">
           {title}
