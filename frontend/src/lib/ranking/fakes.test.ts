@@ -224,9 +224,9 @@ describe("title mismatch", () => {
   });
 
   it("is report only: it moves nothing", () => {
-    const verdict = judge(parse("The.Lion.King.1994.1080p.BluRay.mkv"), withAliases);
-    expect(verdict.reasons).toContain("title mismatch");
-    expect(verdict.bucket).toBe("ok");
+    const judged = judge(parse("The.Lion.King.1994.1080p.BluRay.mkv"), withAliases);
+    expect(judged.reasons).toContain("title mismatch");
+    expect(judged.bucket).toBe("ok");
   });
 
   it("has nothing to compare for a title without words", () => {

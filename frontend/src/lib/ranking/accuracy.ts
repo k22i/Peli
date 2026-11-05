@@ -347,7 +347,7 @@ function titleCheckSection(
 ): string[] {
   const groups = [
     ["titles split", titles],
-    ["original 360", originals],
+    ["gate rows", originals],
     ["both", [...originals, ...titles]],
   ] as const;
   const rows: string[] = [];

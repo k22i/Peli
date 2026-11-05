@@ -88,7 +88,7 @@ export function titleContext(
   fallbackName: string,
   // The episode map (#100) and TMDB's other names for the title (#99), when
   // known.
-  { map, aliases = [] }: { map?: EpisodeMap; aliases?: readonly string[] } = {},
+  { map, aliases = [] }: { map?: EpisodeMap | undefined; aliases?: readonly string[] } = {},
 ): TitleContext {
   const name = meta?.name ?? fallbackName;
   const others = aliasesOf(meta, name, aliases);

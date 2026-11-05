@@ -12,7 +12,7 @@ The user has no TMDB key (ADR-0031: the key is the user's own), so that measurem
 ## What is built
 
 - **TMDB's names reach the ranking.** The details request the title page already makes (`/movie/<id>` or `/tv/<id>`) also asks for `alternative_titles` and `translations` in `append_to_response`. `parseTmdbAliases()` lists the original title, the alternative titles (`titles` for a film, `results` for a series) and the translated titles (`data.title` / `data.name`), once each, without the title's own name (at most 300). They sit on `TmdbArt.aliases`, and `useTmdbAliases(ref)` reads them from the same query, so nothing is asked twice. The query key gained a suffix (`["tmdb", media, id, "aliases"]`), so answers persisted before this change, which have no aliases, age out instead of being read as "none".
-- **`titleContext(…, aliases)`** takes them as a fifth argument and merges them with the addon's own (Kitsu's `aliases`), dropping repeats and the name itself. The picker (`useStreamChoices`, which the player's switcher shares) and the next-episode prefetch pass them. With no key, or a title TMDB doesn't map (an unmapped Kitsu anime), the list is empty and the context is exactly what it was. The ranking session restarts once when the aliases arrive, as it does when the details do.
+- **`titleContext(…, { map, aliases })`** takes them in an options object (the episode map of ADR-0050 is the other member) and merges them with the addon's own (Kitsu's `aliases`), dropping repeats and the name itself. The picker (`useStreamChoices`, which the player's switcher shares) and the next-episode prefetch pass them. With no key, or a title TMDB doesn't map (an unmapped Kitsu anime), the list is empty and the context is exactly what it was. The ranking session restarts once when the aliases arrive, as it does when the details do.
 - **The title check** (`titleCoverage`, `titleMismatch` in `fakes.ts`) is rewritten:
   - Words are compared in **every script**. #6's check gave up on any Cyrillic, Thai, Japanese, Chinese or Korean release name; now *Побег из Шоушенка* is compared with TMDB's Russian title, and kana and Han, which have no spaces, are cut into pairs of characters.
   - Accents, apostrophes (*d'Amélie* is *damelie*, *Pan's* is *pans*) and articles in English, French, Spanish, Italian, German and Portuguese are ignored; single digits stay (*1+1*, *Cars 2*).
@@ -23,7 +23,7 @@ The user has no TMDB key (ADR-0031: the key is the user's own), so that measurem
 
 Torrentio (public, no debrid) was recorded for 27 titles (`node src/record.ts matching` in the spike): 19 films and shows with other names in their releases, and 8 with short or generic names (*Heat*, *Alien*, *Joker*, *Split*, *Coco*, *Frozen*, *Us*, *Soul*), where fuzzy search answers with other films. 290 streams were labelled by reading release names, **before the check was changed** (the labels are their own commit), and appended to `labelled.json` as a new split, **`titles`**: 32 fakes (other films, sequels and shorts, a collection's other file, courses and clips), 258 genuine, 112 of those under another title than the name asked for (`localized`). The selection over-samples hard cases: streams whose names lack the English title, and each title's tail. The rates below are not what a user would see.
 
-The `titles` rows carry only the labels the check needs (`fake`, `localized`, a CAM / TS `source`). They are left out of the field accuracy and of the CI gate, which still count the original 360 (200 / 100 / 60, unchanged), and report in their own column of `corpus/accuracy.md`.
+The `titles` rows carry only the labels the check needs (`fake`, `localized`, a CAM / TS `source`). They are left out of the field accuracy and of the CI gate, which still count the 492 rows labelled in full (200 / 100 / 60 / 132 longrun, unchanged), and report in their own column of `corpus/accuracy.md`.
 
 **The aliases are hand-written.** For each title the aliases are the official localized titles I know (Spanish, French, German, Italian, Portuguese, Russian, Japanese, Korean, Chinese, and a few more), marked `aliasesSource: "manual"`. TMDB lists more languages, but also some junk, so these are stand-ins, not an upper or lower bound. They were written before the streams were read. Seven genuine rows use a language that has no alias (Swedish, Estonian, Serbian/Croatian, Czech, a title without spaces); TMDB would list some of those.
 
@@ -38,18 +38,18 @@ The `titles` rows carry only the labels the check needs (`fake`, `localized`, a 
 | titles split, genuine rows moved by this check | 0% | 2.3% | 2.3% |
 | titles split, fake recall (hidden) | 46.9% | 46.9% | 84.4% |
 | titles split, fakes not `ok` (suspicious or hidden) | 15 of 32 | 27 of 32 | 27 of 32 |
-| **original 360**, hidden false-positive rate | 0% | 0% | 8.4% |
-| original 360, genuine rows moved by this check | 0% | 8.4% | 8.4% |
-| original 360, fake recall (hidden) | 63.2% | 63.2% | 71.1% |
+| **gate rows** (360 + longrun), hidden false-positive rate | 0.2% | 0.2% | 6.8% |
+| gate rows, genuine rows moved by this check | 0% | 6.6% | 6.6% |
+| gate rows, fake recall (hidden) | 82.5% | 82.5% | 85% |
 
-Against #6's check, on the same rows: it moved 4 of 32 fakes in the `titles` split and 2 of 38 in the old 360, now 12 and 3, for 6 genuine in the split (the same ones) and 22 → 27 of 322 in the old 360. The extra five are Chinese and Russian release names with no alias in the corpus, which the old check skipped as "non-Latin".
+Against #6's check, on the same rows (as the reason, before the bucket): it carried the `title mismatch` reason for 8 of 32 fakes in the `titles` split and 6 of 80 in the gate rows, now 16 and 10, for the same 7 genuine in the split and 22 → 27 of 412 in the gate rows. The extra five are Chinese and Russian release names with no alias in the corpus, which the old check skipped as "non-Latin". The check doesn't change any other figure: the gate's own rates are the same as with #6's (original 360: 0% hidden false positives and 78.9% recall; longrun: 1.1% and 85.7%, from #100's episode map).
 
 What it says:
 
 - **The check finds fakes well**: it flags 27 of 32 wrong-title rows once the verdict counts, and it catches Russian, Chinese and Japanese release names for other films that #6's skipped.
 - **Every genuine row it flags in the split is a language the title has no alias for**: all 7 are localized, none of the 146 genuine rows that name the title in English is flagged, and 105 of the 112 localized ones pass thanks to the aliases. So its precision depends on how complete TMDB's translations are, which can't be known without a key.
-- **On the old 360, whose titles are English-only (no key), it flags 8.4% of genuine streams** (releases in other languages). That is the same problem as #6's 22 of 26, and the reason it can't count for people without a key.
-- **`hidden` is out**: 8.4–10.5% genuine hidden against a limit of 1%. `hiddenRecallMin` stays 60; the 71.1% above isn't worth that. 
+- **On the gate rows, whose titles are English-only (no key), it would move 6.6% of genuine streams** (releases in other languages). That is the same problem as #6's 22 of 26, and the reason it can't count for people without a key.
+- **`hidden` is out**: 6.8–10.5% genuine hidden against a limit of 1%. `hiddenRecallMin` stays at #100's 75; the 85% above isn't worth that. 
 - **A finding outside the title check:** 21 of the split's 258 genuine rows are *hidden* (8.1%, the whole of the first row) by `wrong year`, not by the title check. Cinemeta's year is the local release year (Spirited Away 2003, City of God 2004), while releases carry the original one (2001, 2002). It is a #51 check, not changed here. TMDB's `release_date` is the original year, so a key should fix it too; worth a ticket.
 
 ## What to do once a TMDB key is available
@@ -58,8 +58,8 @@ What it says:
 2. **Replace the hand-written aliases**: fetch `alternative_titles` and `translations` for the 27 `titles` rows with `parseTmdbAliases` and write them into `labelled.json` (`aliasesSource: "tmdb"`). Keep the manual ones in git history. This is a scripted step that reads the key from the keychain or an env var, and never prints it.
 3. Regenerate `corpus/accuracy.md` and read the **Title check** table. Count the rows that moved, and read each genuine one: it is either an alias TMDB lacks or a real problem.
 4. Turn it on as `suspicious` only if, with TMDB's aliases, the check alone moves **at most 2%** of genuine localized rows and keeps most of the 27 fakes. Move `"title mismatch"` out of the `reasons.some((r) => r !== "title mismatch")` exclusion in `judge()`.
-5. **Count it only when TMDB's aliases are in the context** (a title whose `aliases` came from TMDB). Without a key, the English-only check flags 8.4% of genuine streams, and that is not better than not checking. Keep a separate flag in `TitleContext` for it.
-6. Leave `hidden` for a second step: it needs the false-positive rate (including the year problem above) under 1% on a larger, unselected sample. Raise `hiddenRecallMin` only if the measured recall with the check on `hidden` justifies it without the new check.
+5. **Count it only when TMDB's aliases are in the context** (a title whose `aliases` came from TMDB). Without a key, the English-only check moves 6.6% of genuine streams, and that is not better than not checking. Keep a separate flag in `TitleContext` for it.
+6. Leave `hidden` for a second step: it needs the false-positive rate (including the year problem above) under 1% on a larger, unselected sample. Raise `hiddenRecallMin` (75 since #100) only if the measured recall with the check on `hidden` justifies it without the new check.
 
 ## What we give up
 

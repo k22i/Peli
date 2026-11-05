@@ -19,12 +19,12 @@ Written by `src/lib/ranking/accuracy.test.ts`; `vp test run -u` updates it.
 | pack | 96% | 97% | 96.7% | 75% | 90.7% | ≥ 90% |
 | cached | 100% | 100% | 100% | 100% | 100% | ≥ 100% |
 
-| Fake checks | dev (n=200) | holdout (n=100) | blind (n=60) | longrun (n=132) | all (n=492) | Target |
-|---|---:|---:|---:|---:|---:|---:|
-| Hidden, false-positive rate | 0% | 0% | 0% | 1.1% | 0.2% | ≤ 1% |
-| Hidden, recall | 82.6% | 87.5% | 57.1% | 85.7% | 82.5% | ≥ 75% |
-| CAM / TS recall | 100% | 100% | 100% | 0% | 100% | ≥ 95% |
-| CAM / TS false-positive rate | 0% | 0% | 0% | 0.8% | 0.2% | ≤ 1% |
+| Fake checks | dev (n=200) | holdout (n=100) | blind (n=60) | longrun (n=132) | all (n=492) | titles (n=290) | Target |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Hidden, false-positive rate | 0% | 0% | 0% | 1.1% | 0.2% | 8.1% | ≤ 1% |
+| Hidden, recall | 82.6% | 87.5% | 57.1% | 85.7% | 82.5% | 46.9% | ≥ 75% |
+| CAM / TS recall | 100% | 100% | 100% | 0% | 100% | 100% | ≥ 95% |
+| CAM / TS false-positive rate | 0% | 0% | 0% | 0.8% | 0.2% | 0% | ≤ 1% |
 
 ## Misses
 
@@ -205,7 +205,7 @@ Written by `src/lib/ranking/accuracy.test.ts`; `vp test run -u` updates it.
 - `comet-tb/one-piece-e1100#54`: ok, labelled fake: One Piece Film Z, asked for episode 1100
 - `torrentio-tb/attack-on-titan-e01#134`: ok, labelled fake: episode 1 of the Junior High spin-off
 - `comet-tb/solo-leveling-s01e01#126`: ok (title mismatch), labelled fake: Family Guy
-- `comet-tb/spider-man-brand-new-day#380`: ok, labelled fake: Spider-Man 2 (2004)
+- `comet-tb/spider-man-brand-new-day#380`: ok (title mismatch), labelled fake: Spider-Man 2 (2004)
 - `torrentio/attack-on-titan-e01#47`: ok, labelled fake: OAD episode 1, not the series' episode 1
 - `comet-tb/one-piece-e1000#14`: ok, labelled fake: anniversary special, not episode 1000
 - `comet-tb/one-piece-e1000#15`: ok, labelled fake: Fan Letter special, not episode 1000
@@ -214,3 +214,62 @@ Written by `src/lib/ranking/accuracy.test.ts`; `vp test run -u` updates it.
 - `comet-tb/naruto-shippuden-e300#73`: ok, labelled fake: a PC game
 - `comet-tb/naruto-shippuden-e300#25`: ok, labelled fake: seasons 1-13 pack, asked for episode 300 (season 14)
 - `torrentio/naruto-shippuden-e300#11`: ok, labelled fake: Ocean Cut re-edit of the first Naruto; S14E05 is another episode
+- `torrentio/m-your-name#81`: ok, labelled fake: creditless opening clip (Zenzenzense) from an anime collection, not the film
+- `torrentio/m-spirited-away#0`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#1`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#34`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#62`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#28`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#35`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#44`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#57`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#60`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#65`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#72`: hidden (wrong year), labelled genuine
+- `torrentio/m-spirited-away#73`: hidden (wrong year, title mismatch), labelled genuine
+- `torrentio/m-godfather#66`: hidden (wrong year), labelled genuine
+- `torrentio/m-godfather#91`: hidden (wrong year), labelled genuine
+- `torrentio/m-godfather#46`: ok (title mismatch), labelled fake: Zimorodok (Kingfisher), a 1972 Soviet film
+- `torrentio/m-godfather#51`: ok (title mismatch), labelled fake: Stolen Poodle, a 1972 Soviet film
+- `torrentio/m-lion-king#79`: ok (title mismatch), labelled fake: The Lion King II (Kralj Lavova 2)
+- `torrentio/m-life-is-beautiful#8`: ok, labelled fake: Così è la vita (1998), another Italian comedy
+- `torrentio/m-life-is-beautiful#49`: ok (title mismatch), labelled fake: Arabic film library file (AlDaya3)
+- `torrentio/m-her#45`: ok (title mismatch), labelled fake: Erotic Tales, Volume IV (1996)
+- `torrentio/m-intouchables#41`: ok (title mismatch), labelled fake: Boris I (1984)
+- `torrentio/m-intouchables#47`: ok (title mismatch), labelled fake: Turtle Hero, a 26-episode cartoon
+- `torrentio/m-intouchables#48`: ok (title mismatch), labelled fake: Road Rage / A Friday Night Date (2000)
+- `torrentio/m-downfall#38`: ok (title mismatch), labelled fake: WWII war machines documentary box set, disc 4
+- `torrentio/m-downfall#43`: ok (title mismatch), labelled fake: Evilenko (2004), a film about Chikatilo
+- `torrentio/m-city-of-god#0`: hidden (wrong year), labelled genuine
+- `torrentio/m-city-of-god#23`: hidden (wrong year), labelled genuine
+- `torrentio/m-city-of-god#13`: hidden (wrong year), labelled genuine
+- `torrentio/m-city-of-god#24`: hidden (wrong year), labelled genuine
+- `torrentio/m-city-of-god#27`: hidden (wrong year), labelled genuine
+- `torrentio/m-city-of-god#32`: hidden (wrong year), labelled genuine
+- `torrentio/m-city-of-god#42`: hidden (wrong year), labelled genuine
+- `torrentio/m-cars#43`: ok (title mismatch), labelled fake: a Korean 2006 film cut down to 'The'
+- `torrentio/m-money-heist-s01e01#20`: ok, labelled fake: Little House on the Prairie (2026)
+- `torrentio/m-money-heist-s01e01#32`: ok, labelled fake: Little House on the Prairie (2026)
+- `torrentio/m-alien#72`: ok (title mismatch), labelled fake: Dikari (Savages), a 1979 Georgian film
+- `torrentio/m-us#38`: ok, labelled fake: It's Not Us (2020)
+
+## Title check (#99)
+
+What the title check would do if a mismatch counted as `suspicious` or as `hidden`. It is report only: the first column is what ships. The titles' aliases were written by hand, as stand-ins for TMDB's (`aliasesSource: "manual"`), and the "titles" rows over-sample localized names and wrong-title hits, so these are estimates, not rates a user would see.
+
+| | report only | suspicious | hidden |
+|---|---:|---:|---:|
+| titles split (n=290, 112 localized): hidden, false-positive rate | 8.1% | 8.1% | 10.5% |
+| titles split (n=290, 112 localized): genuine localized, suspicious or hidden | 13.4% | 18.8% | 18.8% |
+| titles split (n=290, 112 localized): genuine moved by the title check | 0% | 2.3% | 2.3% |
+| titles split (n=290, 112 localized): hidden, recall | 46.9% | 46.9% | 84.4% |
+| titles split (n=290, 112 localized): fakes moved by the title check | 0% | 37.5% | 37.5% |
+| gate rows (n=492): hidden, false-positive rate | 0.2% | 0.2% | 6.8% |
+| gate rows (n=492): genuine moved by the title check | 0% | 6.6% | 6.6% |
+| gate rows (n=492): hidden, recall | 82.5% | 82.5% | 85% |
+| gate rows (n=492): fakes moved by the title check | 0% | 2.5% | 2.5% |
+| both (n=782, 112 localized): hidden, false-positive rate | 3.3% | 3.3% | 8.2% |
+| both (n=782, 112 localized): genuine localized, suspicious or hidden | 13.4% | 18.8% | 18.8% |
+| both (n=782, 112 localized): genuine moved by the title check | 0% | 4.9% | 4.9% |
+| both (n=782, 112 localized): hidden, recall | 72.3% | 72.3% | 84.8% |
+| both (n=782, 112 localized): fakes moved by the title check | 0% | 12.5% | 12.5% |
