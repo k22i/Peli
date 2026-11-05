@@ -15,6 +15,7 @@ import (
 	"github.com/k22i/Sinag/internal/account"
 	"github.com/k22i/Sinag/internal/addons"
 	"github.com/k22i/Sinag/internal/anilist"
+	"github.com/k22i/Sinag/internal/anilistaddon"
 	"github.com/k22i/Sinag/internal/animelist"
 	"github.com/k22i/Sinag/internal/appinfo"
 	"github.com/k22i/Sinag/internal/backend"
@@ -72,15 +73,25 @@ func main() {
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.
 	watched := watching.New(func() *store.Store { return store.Opened(db) }, syncer.PusherOf(sync).FlushProgress)
+	// The anime list maps ids for tracking (#71) and the AniList addon
+	// (#108).
+	animeList := animelist.New(animelist.DefaultURL, filepath.Dir(store.DefaultPath()))
+	anilistClient := anilist.New(anilist.DefaultURL, appinfo.Version)
 	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
 	trackers := tracking.NewService(tracking.Config{
 		Simkl:           simkl.New(simkl.DefaultURL, cmp.Or(os.Getenv("SINAG_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
-		AniList:         anilist.New(anilist.DefaultURL, appinfo.Version),
+		AniList:         anilistClient,
 		AniListClientID: cmp.Or(os.Getenv("SINAG_ANILIST_CLIENT_ID"), tracking.AniListClientID),
-		Anime:           animelist.New(animelist.DefaultURL, filepath.Dir(store.DefaultPath())),
+		Anime:           animeList,
 		Keychain:        keychain,
 		Open:            func() *store.Store { return store.Opened(db) },
 	})
+	// Addon requests the webview's fetch can't make (#37), and the addons
+	// built into Sinag (#107): AniList's lists and details (#108).
+	addonFetcher := addons.NewService(appinfo.Version)
+	addonFetcher.Register(anilistaddon.Name,
+		anilistaddon.New(anilistClient, animeList, anilistaddon.KitsuURL, appinfo.Version))
+	go animeList.Warm(context.Background())
 	player.ReportTo(players, func(r player.Report) {
 		watched.Report(r)
 		tracking.Report(trackers, r)
@@ -97,8 +108,7 @@ func main() {
 			application.NewServiceWithOptions(accounts,
 				application.ServiceOptions{MarshalError: account.MarshalError}),
 			application.NewService(sync),
-			// Addon requests the webview's fetch can't make (#37).
-			application.NewServiceWithOptions(addons.NewService(appinfo.Version),
+			application.NewServiceWithOptions(addonFetcher,
 				application.ServiceOptions{MarshalError: addons.MarshalError}),
 			// Resolving a picked stream to the file the player loads (#53).
 			application.NewServiceWithOptions(streams.NewService(appinfo.Version),

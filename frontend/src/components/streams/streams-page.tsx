@@ -255,6 +255,20 @@ function Picker({
 
   if (sources.length === 0) {
     if (loading) return <Asking />;
+    // An AniList id: AniList knows the title, but the anime list has no
+    // Kitsu id for it yet, and stream addons find anime by Kitsu or IMDb id
+    // (#108).
+    if (video.startsWith("anilist:")) {
+      return (
+        <div className="pt-12">
+          <Notice
+            icon={Puzzle}
+            title="No streams yet"
+            description="Stream addons find anime by its Kitsu or IMDb id, and this one doesn’t have either yet. New titles usually get one within a few days."
+          />
+        </div>
+      );
+    }
     return (
       <div className="pt-12">
         <Notice

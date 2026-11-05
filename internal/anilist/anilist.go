@@ -1,6 +1,7 @@
 // Package anilist is Sinag's client for AniList's GraphQL API
 // (docs.anilist.co): who a token belongs to, finding anime, and the user's
-// list (#104, #105). Only internal/tracking calls it. See ADR-0042.
+// list (#104, #105), called by internal/tracking. internal/anilistaddon
+// asks it for lists and details with Public (#108). See ADR-0042, ADR-0045.
 package anilist
 
 import (
@@ -205,6 +206,12 @@ func (c *Client) List(ctx context.Context, token string, user int) ([]ListEntry,
 		entries = append(entries, list.Entries...)
 	}
 	return entries, nil
+}
+
+// Public runs a query that needs no token, such as AniList's lists and a
+// title's details, and decodes its data into out.
+func (c *Client) Public(ctx context.Context, query string, variables map[string]any, out any) error {
+	return c.query(ctx, "", query, variables, out)
 }
 
 func (c *Client) query(ctx context.Context, token, query string, variables map[string]any, out any) error {
