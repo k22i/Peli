@@ -309,14 +309,15 @@ function parseCertificate(details: Record<string, unknown>, region: string): str
 
 // An official English YouTube trailer, else any English one, else any
 // YouTube trailer.
+const trailerRank = (video: Record<string, unknown>) =>
+  (video["official"] === true ? 2 : 0) + (video["iso_639_1"] === "en" ? 1 : 0);
+
 function parseTrailer(details: Record<string, unknown>): string | undefined {
-  const rank = (video: Record<string, unknown>) =>
-    (video["official"] === true ? 2 : 0) + (video["iso_639_1"] === "en" ? 1 : 0);
   const trailers = list(record(details["videos"])["results"]).filter(
     (video) => video["site"] === "YouTube" && video["type"] === "Trailer" && text(video["key"]),
   );
   const best = trailers.reduce<Record<string, unknown> | undefined>(
-    (top, video) => (!top || rank(video) > rank(top) ? video : top),
+    (top, video) => (!top || trailerRank(video) > trailerRank(top) ? video : top),
     undefined,
   );
   const key = text(best?.["key"]);
