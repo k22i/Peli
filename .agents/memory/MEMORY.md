@@ -65,3 +65,4 @@
 - [Anime episode map](anime-episode-map.md) — #100/ADR-0050 Kitsu addon imdbSeason/absoluteEpisode → TitleContext.map, useEpisodeMap, mappedNumbering, longrun split + numbers
 - [Title matching](title-matching.md) — #99/ADR-0049 TMDB aliases → titleContext, titleCoverage (report only), `titles` corpus split with manual aliases, what to do with a key
 - [Title page from TMDB](title-page-tmdb.md) — crew/PersonLink, certificate + score, Trailer action, collection and More Like This rows, TMDB id → IMDb on open, kids hidden
+- [Title menus](title-menus.md) — shared card context menu (TitleMenu, lib/title-actions, `menu` prop), TitleMenuExtras slot for Tracking, keyboard open, episode menu, startOver, baseline test failures
