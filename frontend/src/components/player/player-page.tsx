@@ -17,6 +17,7 @@ import {
   RotateCcw,
   RotateCw,
   SkipForward,
+  SlidersHorizontal,
   Volume1,
   Volume2,
   VolumeX,
@@ -32,6 +33,7 @@ import {
 } from "react";
 
 import { NextEpisode } from "@/components/player/next-episode";
+import { PictureSheet } from "@/components/player/picture-sheet";
 import { Prompt, promptEnter } from "@/components/player/prompt";
 import { SeekBar } from "@/components/player/seek-bar";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
@@ -78,7 +80,13 @@ import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream } from "@/lib/resolve";
 import { profileSettingsQuery, useSaveProfileSettings, type ProfileSettings } from "@/lib/settings";
+import { pictureOf, savePreset, standardPicture, userPreset, type Picture } from "@/lib/picture";
 import { resolutionLabel } from "@/lib/stream-labels";
+import {
+  titleAdjustmentsQuery,
+  useSaveTitleAdjustments,
+  withSection,
+} from "@/lib/title-adjustments";
 import {
   autoSubtitle,
   subtitleLanguage,
@@ -262,7 +270,8 @@ function PlayerFile() {
   const [over, setOver] = useState(false);
   // The audio and subtitles panel, by tab, or closed.
   const [panel, setPanel] = useState<PanelTab>();
-  const menuOpen = panel !== undefined;
+  const [pictureOpen, setPictureOpen] = useState(false);
+  const menuOpen = panel !== undefined || pictureOpen;
   // The addon subtitles being added, to show a spinner on their row.
   const [loadingKey, setLoadingKey] = useState<string>();
   const [helpOpen, setHelpOpen] = useState(false);
@@ -614,6 +623,7 @@ function PlayerFile() {
       setFullscreen(false);
       setHelpOpen(false);
       setSwitcherOpen(false);
+      setPictureOpen(false);
     }
     Player.SetMini(!mini).catch(() => {});
   };
@@ -758,7 +768,58 @@ function PlayerFile() {
   const openPanel = (tab: PanelTab) => {
     if (mini) return;
     setHelpOpen(false);
+    setPictureOpen(false);
     setPanel(panel === tab ? undefined : tab);
+  };
+
+  // The picture (P): the title's own, else the profile's (lib/picture.ts),
+  // as Go applied it at load. A change shows at once and is kept for the
+  // title (a show's id for every episode); a file nothing names keeps it
+  // until it ends.
+  const titleKey = watching && profileId > 0 ? watching.contentId : "";
+  const adjustments = useQuery({
+    ...titleAdjustmentsQuery(profileId, titleKey),
+    enabled: titleKey !== "",
+  }).data;
+  const saveAdjustments = useSaveTitleAdjustments(profileId, titleKey);
+  const [unsavedPicture, setUnsavedPicture] = useState<Picture>();
+  const picture = unsavedPicture ?? pictureOf(settings, adjustments);
+  const namedPictures = settings?.picturePresets ?? [];
+  const [picturer] = useState(() => latestOnly(Player.SetPicture));
+  const changePicture = (changed: Picture) => {
+    picturer(changed);
+    if (!titleKey) {
+      setUnsavedPicture(changed);
+      return;
+    }
+    saveAdjustments.mutate(withSection(adjustments, "picture", changed));
+  };
+  const resetPicture = () => {
+    setUnsavedPicture(undefined);
+    picturer(settings?.picture ?? standardPicture);
+    if (titleKey) saveAdjustments.mutate(withSection(adjustments, "picture", undefined));
+  };
+  const pictureForAll = () => {
+    if (!settings) return;
+    saveSettings.mutate({ ...settings, picture } satisfies ProfileSettings);
+    setUnsavedPicture(undefined);
+    if (titleKey && adjustments?.picture) {
+      saveAdjustments.mutate(withSection(adjustments, "picture", undefined));
+    }
+    setNotice({ text: "Picture set for all titles" });
+  };
+  const savePicturePreset = (name: string) => {
+    const presets = settings && savePreset(namedPictures, name, picture);
+    if (!settings || !presets) return;
+    saveSettings.mutate({ ...settings, picturePresets: presets } satisfies ProfileSettings);
+    changePicture({ ...picture, preset: userPreset(name.trim()) });
+    setNotice({ text: `Saved “${name.trim()}”` });
+  };
+  const openPicture = () => {
+    if (mini) return;
+    setHelpOpen(false);
+    setPanel(undefined);
+    setPictureOpen(!pictureOpen);
   };
 
   useEffect(() => {
@@ -768,10 +829,17 @@ function PlayerFile() {
       // keeps them too, but for Z and X (timing) and Esc (closes it).
       if (error || switcherOpen) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
-      if (panel) {
+      if (panel || pictureOpen) {
         const key = event.key.toLowerCase();
         if (event.type !== "keydown") return;
-        if (key === "escape") setPanel(undefined);
+        if (key === "escape") {
+          setPanel(undefined);
+          setPictureOpen(false);
+        }
+        // P closes the sheet it opened, unless it's typed (a preset's name).
+        const typing = event.target instanceof HTMLInputElement;
+        if (pictureOpen && key === "p" && !typing) setPictureOpen(false);
+        if (!panel) return;
         if ((key === "z" || key === "x") && ready && subtitleTracks.length > 0) {
           event.preventDefault();
           timeSubtitles(subtitleDelay + (key === "z" ? -delayStep : delayStep));
@@ -798,6 +866,7 @@ function PlayerFile() {
         i: toggleMini,
         c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
         v: () => ready && subtitlesMenu && openPanel("subtitles"),
+        p: () => ready && openPicture(),
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
         s: () => watching && openSwitcher(),
         "?": () => !mini && setHelpOpen(!helpOpen),
@@ -977,7 +1046,12 @@ function PlayerFile() {
         tabIndex={-1}
         aria-hidden
         className={cn("absolute inset-0 outline-none", shown ? "cursor-default" : "cursor-none")}
-        onClick={() => (panel ? setPanel(undefined) : togglePause())}
+        onClick={() => {
+          if (panel || pictureOpen) {
+            setPanel(undefined);
+            setPictureOpen(false);
+          } else togglePause();
+        }}
         onDoubleClick={mini ? toggleMini : toggleFullscreen}
       />
       <div
@@ -1063,6 +1137,7 @@ function PlayerFile() {
                 icon={Keyboard}
                 onClick={() => {
                   setPanel(undefined);
+                  setPictureOpen(false);
                   setHelpOpen(!helpOpen);
                 }}
                 aria-keyshortcuts="Shift+?"
@@ -1177,6 +1252,16 @@ function PlayerFile() {
                     onClick={() => openPanel("audio")}
                   />
                 )}
+                {ready && (
+                  <PanelButton
+                    label="Picture and sound"
+                    icon={SlidersHorizontal}
+                    active={pictureOpen}
+                    on={picture.preset !== "standard"}
+                    onClick={openPicture}
+                    shortcut="P"
+                  />
+                )}
               </div>
             </div>
           )}
@@ -1207,6 +1292,20 @@ function PlayerFile() {
         onDelayChange={timeSubtitles}
         position={position}
         subtitleText={state.subtitleText ?? ""}
+      />
+      <PictureSheet
+        open={pictureOpen && !mini && !failure}
+        onClose={() => setPictureOpen(false)}
+        title={watching?.name || playing?.title || "this title"}
+        picture={picture}
+        presets={namedPictures}
+        ownPicture={adjustments?.picture != null || unsavedPicture !== undefined}
+        saves={titleKey !== ""}
+        onPreview={picturer}
+        onChange={changePicture}
+        onReset={resetPicture}
+        onUseForAll={pictureForAll}
+        onSavePreset={savePicturePreset}
       />
       {watching && (
         <StreamSwitcher

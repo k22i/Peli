@@ -126,6 +126,8 @@ vi.mock("@bindings/store", () => ({
     TitleProgress: mocks.titleProgress,
     ChosenSource: mocks.chosen,
     SetChosenSource: mocks.setChosen,
+    TitleAdjustments: () => Promise.resolve(null),
+    SetTitleAdjustments: () => Promise.resolve(),
   },
 }));
 

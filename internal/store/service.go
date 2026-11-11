@@ -246,6 +246,28 @@ func (s *Service) SetChosenSource(profileID uint64, contentID string, chosen *Ch
 	return s.store.SetChosenSource(profileID, contentID, chosen)
 }
 
+// TitleAdjustments returns how a profile plays a title (a show's id or a
+// film's) when it isn't the profile's defaults, or null.
+func (s *Service) TitleAdjustments(profileID uint64, contentID string) (*TitleAdjustments, error) {
+	return s.store.TitleAdjustments(profileID, contentID)
+}
+
+// SetTitleAdjustments keeps how a profile plays a title, or forgets it when
+// adjustments is null or empty.
+func (s *Service) SetTitleAdjustments(profileID uint64, contentID string, adjustments *TitleAdjustments) error {
+	return s.store.SetTitleAdjustments(profileID, contentID, adjustments)
+}
+
+// AdjustedTitles counts the titles a profile plays its own way.
+func (s *Service) AdjustedTitles(profileID uint64) (int, error) {
+	return s.store.AdjustedTitles(profileID)
+}
+
+// ClearTitleAdjustments has every title of a profile follow its defaults.
+func (s *Service) ClearTitleAdjustments(profileID uint64) error {
+	return s.store.ClearTitleAdjustments(profileID)
+}
+
 // RecentSearches returns a profile's last searches, newest first.
 func (s *Service) RecentSearches(profileID uint64) ([]string, error) {
 	return s.store.RecentSearches(profileID)

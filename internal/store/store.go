@@ -25,6 +25,7 @@
 //	  outbox/          <surface> 0x00 <key> → Push
 //	  tracking-outbox/ <sequence> → TrackingJob (made when first needed)
 //	  sources/         <content id> → ChosenSource (#58, made when first needed)
+//	  titles/          <content id> → TitleAdjustments (local, made when first needed)
 //	settings           device → DeviceSettings
 //	                   current → uint64 (profile id)
 //	                   account → string (the linked Nuvio account's user id)

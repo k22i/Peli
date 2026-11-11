@@ -46,6 +46,10 @@ type ProfileSettings struct {
 	// shows, where an entry is one film or show to it; "" keeps AniList's
 	// covers. The catalog and its details stay AniList's.
 	AnimePosterAddon string `json:"animePosterAddon"`
+	// Picture is the adjustment every title plays with, unless it has its
+	// own (TitleAdjustments); PicturePresets are the profile's own presets.
+	Picture        Picture        `json:"picture"`
+	PicturePresets []NamedPicture `json:"picturePresets"`
 }
 
 // SubtitleStyle is how text subtitles look: player.SubtitleStyle,
@@ -122,6 +126,7 @@ func DefaultProfileSettings() ProfileSettings {
 		AudioLanguages: []string{}, SubtitleSize: "medium", SubtitleStyle: DefaultSubtitleStyle(), Captions: "system",
 		SimklScrobble: true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
+		Picture: DefaultPicture(), PicturePresets: []NamedPicture{},
 	}
 }
 
@@ -145,6 +150,9 @@ func (s *Store) ProfileSettings(id uint64) (ProfileSettings, error) {
 	})
 	if settings.AudioLanguages == nil {
 		settings.AudioLanguages = []string{}
+	}
+	if settings.PicturePresets == nil {
+		settings.PicturePresets = []NamedPicture{}
 	}
 	if settings.SubtitleStyle.Font == "" {
 		// Saved before subtitle styles: the default style at the size picked then.
@@ -181,6 +189,9 @@ func (s *Store) SaveProfileSettings(id uint64, settings ProfileSettings) error {
 	}
 	if settings.AudioLanguages == nil {
 		settings.AudioLanguages = []string{}
+	}
+	if settings.PicturePresets == nil {
+		settings.PicturePresets = []NamedPicture{}
 	}
 	return s.update(id, func(p *bolt.Bucket) error {
 		return put(p, keySettings, settings)
@@ -251,7 +262,7 @@ func validateProfileSettings(settings ProfileSettings) error {
 	if !slices.Contains(CaptionsModes, settings.Captions) {
 		return fmt.Errorf("%w: captions %q", ErrInvalidSettings, settings.Captions)
 	}
-	return nil
+	return validatePictures(settings.Picture, settings.PicturePresets)
 }
 
 // Server returns the URL of the user's own Nuvio backend (#34), or "" for

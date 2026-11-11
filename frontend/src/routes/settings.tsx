@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
@@ -33,6 +33,7 @@ import {
   type SubtitleStyle,
 } from "@/components/player/subtitle-panel";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { toastManager } from "@/components/ui/toast";
 import { posterAddons } from "@/lib/anime-posters";
 import { useLoadedAddons } from "@/lib/home";
 import {
@@ -75,7 +76,19 @@ import {
   type DeviceSettings,
   type ProfileSettings,
 } from "@/lib/settings";
+import {
+  pictureControls,
+  picturePresets,
+  presetName,
+  presetPicture,
+  signed,
+  standardPicture,
+  userPreset,
+  type Picture,
+} from "@/lib/picture";
+import { adjustedTitlesQuery } from "@/lib/title-adjustments";
 import { useTmdbKey } from "@/lib/tmdb";
+import { Service as Store } from "@bindings/store";
 import {
   trackingQuery,
   useDisconnectAniList,
@@ -382,6 +395,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 />
               </SettingRow>
             </SettingsGroup>
+            <PictureDefaults profileId={profileId} settings={settings} setProfile={setProfile} />
             {/* #69: chapters first, IntroDB for files without them. */}
             <SettingsGroup title="Intros and credits">
               <SettingRow
@@ -414,6 +428,110 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
       </WithSettings>
     </SettingsPaneView>
   );
+}
+
+// The picture every title plays with unless it has its own (the player's
+// Picture & sound sheet keeps those per title), the profile's own presets,
+// and the titles adjusted.
+function PictureDefaults({
+  profileId,
+  settings,
+  setProfile,
+}: {
+  profileId: number | undefined;
+  settings: ProfileSettings;
+  setProfile: (changes: Partial<ProfileSettings>) => void;
+}) {
+  const named = settings.picturePresets ?? [];
+  const current = settings.picture ?? standardPicture;
+  const options = [
+    ...picturePresets.map(({ id }) => id),
+    ...(current.preset === "custom" ? ["custom"] : []),
+    ...named.map(({ name }) => userPreset(name)),
+  ];
+  const labels = Object.fromEntries(options.map((id) => [id, presetName(id)]));
+  const id = profileId ?? 0;
+  const adjusted = useQuery({ ...adjustedTitlesQuery(id), enabled: id > 0 }).data ?? 0;
+  const queryClient = useQueryClient();
+  const clearTitles = () =>
+    Store.ClearTitleAdjustments(id).then(
+      () => {
+        void queryClient.invalidateQueries({ queryKey: ["title-adjustments", id] });
+        toastManager.add({ type: "success", title: "Every title follows your defaults again" });
+      },
+      () => toastManager.add({ type: "error", title: "Couldn’t clear the titles’ adjustments" }),
+    );
+  return (
+    <SettingsGroup title="Picture">
+      <SettingRow
+        id="picture-preset"
+        label="Picture"
+        description="How every title looks unless you adjust it in the player (P). Changes made there stay with that title; Use for all titles there makes them this."
+      >
+        <Choice
+          id="picture-preset"
+          value={current.preset}
+          options={options}
+          labels={labels}
+          onChange={(preset) => {
+            const picture = presetPicture(preset, named);
+            if (picture) setProfile({ picture });
+          }}
+        />
+      </SettingRow>
+      {named.map((preset) => (
+        <SettingRow
+          key={preset.name}
+          id={`picture-preset-${preset.name}`}
+          label={preset.name}
+          description={pictureSummary(preset.picture)}
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label={`Delete preset ${preset.name}`}
+            onClick={() => {
+              const left = named.filter((each) => each.name !== preset.name);
+              const usedIt = current.preset === userPreset(preset.name);
+              setProfile({
+                picturePresets: left,
+                ...(usedIt && { picture: { ...current, preset: "custom" } }),
+              });
+            }}
+          >
+            Delete
+          </Button>
+        </SettingRow>
+      ))}
+      <SettingRow
+        id="adjusted-titles"
+        label="Titles with their own picture"
+        description={
+          adjusted === 0
+            ? "None: every title follows your defaults."
+            : `${adjusted} ${adjusted === 1 ? "title plays" : "titles play"} the way you adjusted ${adjusted === 1 ? "it" : "them"}, on this device.`
+        }
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={adjusted === 0}
+          onClick={() => void clearTitles()}
+        >
+          Clear
+        </Button>
+      </SettingRow>
+    </SettingsGroup>
+  );
+}
+
+// "Brightness −4 · Contrast +6": a preset's values that aren't 0.
+function pictureSummary(picture: Picture): string {
+  const parts = pictureControls
+    .filter(({ key }) => picture[key] !== 0)
+    .map(({ key, label }) => `${label} ${signed(picture[key])}`);
+  if (picture.shadowLift) parts.push("Shadow lift");
+  return parts.join(" · ") || "The file as it is";
 }
 
 // Where the Anime tab's posters come from: AniList's covers, or an addon's

@@ -197,6 +197,9 @@ type LoadOptions struct {
 	SubtitleSize string `json:"subtitleSize"`
 	// SubtitleStyle is how text subtitles look; nil keeps mpv's.
 	SubtitleStyle *SubtitleStyle `json:"subtitleStyle,omitempty"`
+	// Picture adjusts the video; nil is the title's own (TitleAdjustments)
+	// or the profile's, read from the store for Watching's profile.
+	Picture *store.Picture `json:"picture,omitempty"`
 	// Watching names what the file is, so how far it plays is reported
 	// (#64); nil for a file nobody keeps progress of.
 	Watching *Watching `json:"watching,omitempty"`
@@ -271,6 +274,7 @@ func (o LoadOptions) valid() bool {
 		languageCode.MatchString(o.SubtitleLanguage) && audioLanguagesValid(o.AudioLanguages) &&
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
 		(o.SubtitleSize == "" || sized) && (o.SubtitleStyle == nil || o.SubtitleStyle.valid()) &&
+		(o.Picture == nil || o.Picture.Valid()) &&
 		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
 }
 
@@ -556,7 +560,8 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	if err := ses.m.setProperty("pause", "no"); err != nil {
 		return notPlaying(err)
 	}
-	for _, p := range opts.tracks() {
+	// The session keeps the last file's picture: each file sets its own.
+	for _, p := range append(opts.tracks(), pictureProps(s.pictureFor(opts))...) {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			return notPlaying(err)
 		}

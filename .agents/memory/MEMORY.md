@@ -47,7 +47,7 @@
 - [Plugin management](plugin-management.md) — #57/ADR-0047 per-profile off-by-default switch, repos synced like addons (Nuvio table = repositories only), kids never, Settings › Plugins, rig
 - [Anime from AniList](anime-from-anilist.md) — #106–#109: sinag:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock
 - [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Sinag's identity, glass tiers (#111), 1.5× cards (first asked 2×), type usage rework (fonts stay), sub-tickets #111–#125; type B picked; #117–#123 built by Orca workers
-- [Glass materials](glass-materials.md) — #111 glass-* utilities, --glass-* tokens, reduced-transparency variant, scroll-edge-top, Ambient, backdrop-root gotchas
+- [Glass materials](glass-materials.md) — superseded by the 2026-11-11 revamp: material-bar/pop/media; #111 history and backdrop-root gotchas
 - [Card sizes](card-sizes.md) — #113 1.5× cards (15rem/27rem), Artwork `use` + sharper(), Home rows capped at 10 + Browse all, memory numbers, deferred grid cache growth
 - [App shell](app-shell.md) — #114 floating glass sidebar, --sidebar-inset/--titlebar-h, bleed, visual nav order vs ⌘1–6, scroll-edge cover, window colour = --background, shot harness
 - [Home hero](home-hero.md) — #115 Hero size="feature" (bleed, fade under text), glass hero buttons, rowLinkClassName, arrow top, Card pill + timeLeft, Home wrapper
@@ -59,7 +59,7 @@
 - [Library redesign](library-redesign.md) — #118 LibraryFrame on BrowseFrame, glass-thin Tabs switch, episodeLabels card meta, sticky day headers (offset/z-order), airTime, LibraryNotice, shot rig
 - [Title page redesign](title-page-redesign.md) — #117 Hero size=title, BackButton media glass → glass, sticky Episodes header + 30-season rail, 2× rows, About card, cast on ScrollRail, gotchas
 - [Search and folder layouts](search-folder-layouts.md) — #119 BrowseFrame quietTitle, glass h-14 field + clear + ⌘F hint, row bylines, compact Hero / CoverHeader, Input unstyled gotcha
-- [Typography scale](typography-scale.md) — #112 option B: text-display/title/heading/body/item/caption/label/num, twMerge extension, mono rule, text-card colour clash, shot rig
+- [Typography scale](typography-scale.md) — superseded by the 2026-11-11 revamp: type-*/tnum/text-small; #112 history
 - [Motion](motion.md) — #124 data-nav from history index, sliding nav/settings pills (resolved location, named lists), Button press scale, CDP checks
 - [Gallery and design docs](gallery-and-design-docs.md) — #125 docs: README order, removed/stale screenshots, new gallery samples, contrast-pair fix, shot rig
 - [Redesign QA](redesign-qa.md) — #125 checks 1–6: fixes (focus return, sticky-header clearance, contrast-more solid, Switch), CDP rig and probes, open items
@@ -72,3 +72,4 @@
 - [Person pages](person-pages.md) — /person/$id from TMDB: PersonLink Link, credit groups in PosterGrids, sort chip, no-key notice, kids hide filmography
 - [Library housekeeping](library-housekeeping.md) — ClearContinueWatching (delete, not a hide flag), Library multi-select: selection.ts, useBulkEdits, SelectionBar, listbox semantics
 - [Discovery](discovery.md) — search kind/decade/genre filters in the URL, recent searches per profile, TMDB People row, Home New episodes + Surprise me
+- [Player picture (phase 1)](player-picture.md) — Picture & sound sheet (P), store.Picture + TitleAdjustments per title, Go resolves at Load, panel-controls.tsx; facts for phases 2–6

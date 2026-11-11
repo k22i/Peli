@@ -27,5 +27,15 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
   anilistImport: true,
   animeInMoviesAndShows: false,
   animePosterAddon: "",
+  picture: {
+    preset: "standard",
+    brightness: 0,
+    contrast: 0,
+    saturation: 0,
+    gamma: 0,
+    hue: 0,
+    shadowLift: false,
+  },
+  picturePresets: [],
   ...changes,
 });
