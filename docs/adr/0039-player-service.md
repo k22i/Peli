@@ -167,6 +167,12 @@ Next and previous track are off on macOS and Linux: a film has no tracks, and th
 
 **Checked:** Go tests drive the service's media state and commands with a fake (title, pause, toggle, jumps, Stop), and on Linux a test of its own bus checks MPRIS: properties, every method, the signals and the instance name (Docker, `dbus-daemon`). Route tests cover every key. In the app on macOS, the play/pause media key paused and resumed a playing clip with the window in the background, and the Music app stayed closed. **Not checked:** Windows (cross-compiled and vetted, no Windows machine), a real Linux desktop widget (#91).
 
+## The window while playing
+
+A session makes the window fill its screen, **not fullscreen**: what a double click on the title bar does, not the green button. On macOS the window takes the screen's visible frame (all but the menu bar and Dock), which macOS then counts as zoomed; on Windows it's Wails' `Maximise`. A window that's fullscreen or fills the screen already is left as it is. `Stop` puts it back at its size and place before playback, from the mini player too, in one move (`sinag_window_restore`, `restoreWindow` in `mini_other.go`). A window still fullscreen at `Stop` stays fullscreen, and leaving fullscreen later brings back the filled size. Next episodes keep the session, so the window doesn't move between them.
+
+**Checked:** in the app on macOS with a temporary play hook, a 1100×700 window filled the 3840×1477 work area on Load, and went back to 1100×700 at the same place on Stop, and on Stop from the mini player. **Not checked:** Windows.
+
 ## Mini player (#70)
 
 F25's picture-in-picture is **the app window made small**, not a second window or the OS's PiP. The video is drawn under the webview in the app window (ADR-0002), so moving it to another window would mean a second host and render context per OS. macOS's own PiP (`AVPictureInPictureController`) only takes an `AVPlayerLayer` or sample buffers, so every mpv frame would have to be copied out of OpenGL into `CVPixelBuffer`s. Windows has no system PiP at all. A small window works the same way on both OSes, and it keeps the session, the controls and the keys as they are. The cost is that the app can't be browsed while the mini player shows, which is fine for watching while working in other apps.

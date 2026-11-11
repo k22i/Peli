@@ -662,7 +662,36 @@ func (s *Service) open() (*session, error) {
 	s.state.Active = true
 	s.stateDirty = true
 	s.mu.Unlock()
+	s.fillScreen()
 	return ses, nil
+}
+
+// fillScreen makes the window as big as its screen allows for playback,
+// short of fullscreen: what a double click on the title bar does. restore
+// puts it back.
+func (s *Service) fillScreen() {
+	s.windowOps.Lock()
+	defer s.windowOps.Unlock()
+	s.mu.Lock()
+	window := s.window
+	s.mu.Unlock()
+	if window != nil {
+		fillScreen(window)
+	}
+}
+
+// restoreWindow leaves the mini player and puts the window back at its
+// size before playback, in one move. Only Stop calls it, which sets the
+// state's Mini off itself.
+func (s *Service) restoreWindow() {
+	s.windowOps.Lock()
+	defer s.windowOps.Unlock()
+	s.mu.Lock()
+	window := s.window
+	s.mu.Unlock()
+	if window != nil {
+		restoreWindow(window)
+	}
 }
 
 // Stop closes the session: playback stops, the video surface goes and mpv is
@@ -680,8 +709,9 @@ func (s *Service) Stop() error {
 	s.sendReport(s.stopReport())
 	_ = ses.m.command("stop")
 	s.closeSession(ses)
-	// The app window again, whatever the screen does next.
-	_ = s.SetMini(false)
+	// The app window again, at its size before playback, whatever the
+	// screen does next.
+	s.restoreWindow()
 	s.mu.Lock()
 	s.s = nil
 	s.state = idle(s.state.Fullscreen)

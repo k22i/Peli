@@ -2,6 +2,8 @@ package player
 
 /*
 void sinag_window_mini(void *win, int on, double aspect);
+void sinag_window_fill(void *win);
+void sinag_window_restore(void *win);
 */
 import "C"
 
@@ -14,4 +16,15 @@ func setMini(window *application.WebviewWindow, on bool, aspect float64) error {
 		C.sinag_window_mini(window.NativeWindow(), cbool(on), C.double(aspect))
 	})
 	return nil
+}
+
+// fillScreen has window fill its screen for playback, in mini_darwin.m.
+func fillScreen(window *application.WebviewWindow) {
+	application.InvokeSync(func() { C.sinag_window_fill(window.NativeWindow()) })
+}
+
+// restoreWindow puts window back as it was before playback, in
+// mini_darwin.m.
+func restoreWindow(window *application.WebviewWindow) {
+	application.InvokeSync(func() { C.sinag_window_restore(window.NativeWindow()) })
 }

@@ -12,13 +12,63 @@ import (
 const miniWidth, miniMargin = 480, 16
 
 // The window as it was before the mini player, to put back, and where the
-// user last left the mini player in this run.
+// user last left the mini player in this run; and the window before
+// playback maximised it.
 var (
-	miniMu    sync.Mutex
-	fullFrame application.Rect
-	miniFrame application.Rect
-	miniMoved bool
+	miniMu        sync.Mutex
+	mini          bool
+	fullFrame     application.Rect
+	fullMaximised bool
+	miniFrame     application.Rect
+	miniMoved     bool
+	filled        bool
 )
+
+// fillScreen maximises window for playback, unless it's fullscreen or
+// maximised already: what a double click on the title bar does.
+func fillScreen(window *application.WebviewWindow) {
+	miniMu.Lock()
+	defer miniMu.Unlock()
+	if filled || mini || window.IsFullscreen() || window.IsMaximised() {
+		return
+	}
+	filled = true
+	window.Maximise()
+}
+
+// restoreWindow ends playback's window: the mini player becomes the app
+// window, and a window playback maximised is restored. A fullscreen window
+// stays as it is.
+func restoreWindow(window *application.WebviewWindow) {
+	miniMu.Lock()
+	defer miniMu.Unlock()
+	wasMini, wasFilled := mini, filled
+	filled = false
+	if wasMini {
+		mini = false
+		miniFrame, miniMoved = window.Bounds(), true
+		window.SetAlwaysOnTop(false)
+	}
+	if window.IsFullscreen() {
+		return
+	}
+	switch {
+	case wasFilled && wasMini:
+		// Back to the size before both.
+		window.SetBounds(fullFrame)
+	case wasFilled:
+		window.UnMaximise()
+	case wasMini:
+		leaveMini(window)
+	}
+}
+
+func leaveMini(window *application.WebviewWindow) {
+	window.SetBounds(fullFrame)
+	if fullMaximised {
+		window.Maximise()
+	}
+}
 
 // setMini makes window the mini player, or the app window again, with
 // Wails' window calls: small, on top of other windows, in the bottom right
@@ -28,9 +78,16 @@ func setMini(window *application.WebviewWindow, on bool, aspect float64) error {
 	miniMu.Lock()
 	defer miniMu.Unlock()
 	if !on {
+		if !mini {
+			return nil
+		}
+		mini = false
 		miniFrame, miniMoved = window.Bounds(), true
 		window.SetAlwaysOnTop(false)
-		window.SetBounds(fullFrame)
+		leaveMini(window)
+		return nil
+	}
+	if mini {
 		return nil
 	}
 	if !(aspect > 0) {
@@ -40,7 +97,14 @@ func setMini(window *application.WebviewWindow, on bool, aspect float64) error {
 	if err != nil {
 		return err
 	}
+	// A maximised window can't take other bounds: the mini player restores
+	// it first, and maximises it again after.
+	fullMaximised = window.IsMaximised()
+	if fullMaximised {
+		window.UnMaximise()
+	}
 	fullFrame = window.Bounds()
+	mini = true
 	work := screen.WorkArea
 	width := min(miniWidth, work.Width/3)
 	if miniMoved && inside(miniFrame, work) {

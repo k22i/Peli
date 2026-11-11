@@ -13,4 +13,5 @@ metadata:
 - Frontend: `mini` from `useAhead(state.mini)`; `toggleMini` closes help/switcher; `openSwitcher` leaves mini; `?` is a no-op in mini; Esc leaves mini before fullscreen; double click toggles mini. New controls in the bottom bar need a `!mini` decision. `NextEpisode` takes `mini` (no thumbnail, `right-3 bottom-16`).
 - Mocks of `@bindings/player` that reach /player need `SetMini` too (player.test.tsx has `mocks.setMini`).
 - This session had no screen-recording permission (`screencapture` → "could not create image"). Window size/position came from logging `window.Bounds()` in the dev-play hook ([[player-service]]), and the floating level from CGWindowList `kCGWindowLayer` (3 = floating, 0 = normal).
+- Playback fills the screen (visible frame, as a title-bar double click, not fullscreen) when a session opens, and `Stop` calls `restoreWindow` (not `SetMini(false)`), which leaves mini and goes back to the pre-play frame in one move. The fill/restore code lives in `mini_darwin.m` / `mini_other.go` beside the mini state it shares.
 - Related: [[player-keys-media]], [[next-episode]], [[stream-switcher]].

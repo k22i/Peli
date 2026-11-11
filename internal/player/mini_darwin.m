@@ -1,8 +1,15 @@
-// The mini player on macOS (#70): the app window itself, made small, kept
-// above other apps' windows and on every Space, over full-screen apps too,
-// in the shape of the video. The video view and the webview follow the
-// window's size, so nothing moves between windows. Runs on the main thread.
+// The window while playing on macOS. Playback fills the screen as a double
+// click on the title bar does (not fullscreen), and the window goes back to
+// its size after. The mini player (#70) is the app window itself, made
+// small, kept above other apps' windows and on every Space, over
+// full-screen apps too, in the shape of the video. The video view and the
+// webview follow the window's size, so nothing moves between windows. Runs
+// on the main thread.
 #import <Cocoa/Cocoa.h>
+
+// The window before playback filled the screen, to put back after.
+static NSRect g_before_play;
+static BOOL g_filled;
 
 // The window as it was before, to put back.
 static NSRect g_full_frame;
@@ -39,18 +46,56 @@ static NSRect mini_frame(NSRect visible, double aspect) {
 	return frame;
 }
 
+static BOOL is_fullscreen(NSWindow *window) {
+	return (window.styleMask & NSWindowStyleMaskFullScreen) != 0;
+}
+
+// The app window again, without moving it.
+static void leave_mini(NSWindow *window) {
+	g_mini = NO;
+	g_mini_frame = window.frame;
+	g_mini_moved = YES;
+	window.level = g_full_level;
+	window.collectionBehavior = g_full_behavior;
+	// Setting resize increments clears the aspect ratio.
+	window.contentResizeIncrements = NSMakeSize(1, 1);
+	show_buttons(window, YES);
+}
+
+// Fills the screen's visible frame (all but the menu bar and Dock), as
+// zoom does with no delegate, unless the window is fullscreen or fills it
+// already.
+void sinag_window_fill(void *win) {
+	NSWindow *window = (__bridge NSWindow *)win;
+	if (g_filled || g_mini || is_fullscreen(window)) return;
+	NSScreen *screen = window.screen ?: NSScreen.mainScreen;
+	NSRect visible = screen.visibleFrame;
+	if (NSEqualRects(window.frame, visible) || window.isZoomed) return;
+	g_filled = YES;
+	g_before_play = window.frame;
+	[window setFrame:visible display:YES animate:YES];
+}
+
+// Ends playback's window: the mini player becomes the app window, and the
+// window goes back to its size before playback, in one move. A fullscreen
+// window stays as it is.
+void sinag_window_restore(void *win) {
+	NSWindow *window = (__bridge NSWindow *)win;
+	BOOL mini = g_mini, filled = g_filled;
+	g_filled = NO;
+	if (mini) leave_mini(window);
+	if (is_fullscreen(window)) return;
+	if (filled)
+		[window setFrame:g_before_play display:YES animate:YES];
+	else if (mini)
+		[window setFrame:g_full_frame display:YES animate:YES];
+}
+
 void sinag_window_mini(void *win, int on, double aspect) {
 	NSWindow *window = (__bridge NSWindow *)win;
 	if (!on) {
 		if (!g_mini) return;
-		g_mini = NO;
-		g_mini_frame = window.frame;
-		g_mini_moved = YES;
-		window.level = g_full_level;
-		window.collectionBehavior = g_full_behavior;
-		// Setting resize increments clears the aspect ratio.
-		window.contentResizeIncrements = NSMakeSize(1, 1);
-		show_buttons(window, YES);
+		leave_mini(window);
 		[window setFrame:g_full_frame display:YES animate:YES];
 		return;
 	}
