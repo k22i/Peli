@@ -24,7 +24,13 @@ function loopProps(loop: Loop) {
 describe("MoreMenu", () => {
   it("opens from a button with a focus ring", async () => {
     const user = userEvent.setup();
-    render(<Harness chapters={noChapters} loop={loopProps({})} />);
+    render(
+      <Harness
+        chapters={noChapters}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        loop={loopProps({})}
+      />,
+    );
     const trigger = screen.getByRole("button", { name: "More" });
     expect(hasFocusRing(trigger)).toBe(true);
     await user.click(trigger);
@@ -34,14 +40,26 @@ describe("MoreMenu", () => {
   it("starts, ends and stops an A–B loop", async () => {
     const user = userEvent.setup();
     const none = loopProps({});
-    const { unmount } = render(<Harness chapters={noChapters} loop={none} />);
+    const { unmount } = render(
+      <Harness
+        chapters={noChapters}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        loop={none}
+      />,
+    );
     await user.click(screen.getByRole("button", { name: "More" }));
     await user.click(screen.getByRole("menuitem", { name: /Start a loop here/ }));
     expect(none.onNext).toHaveBeenCalled();
     unmount();
 
     const half = loopProps({ a: 65 });
-    const second = render(<Harness chapters={noChapters} loop={half} />);
+    const second = render(
+      <Harness
+        chapters={noChapters}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        loop={half}
+      />,
+    );
     await user.click(screen.getByRole("button", { name: "More" }));
     expect(screen.getByRole("menuitem", { name: /End the loop here/ })).toBeInTheDocument();
     await user.click(screen.getByRole("menuitem", { name: /Forget A/ }));
@@ -49,7 +67,13 @@ describe("MoreMenu", () => {
     second.unmount();
 
     const both = loopProps({ a: 65, b: 90 });
-    render(<Harness chapters={noChapters} loop={both} />);
+    render(
+      <Harness
+        chapters={noChapters}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        loop={both}
+      />,
+    );
     await user.click(screen.getByRole("button", { name: "More" }));
     await user.click(screen.getByRole("menuitem", { name: /Stop looping 1:05–1:30/ }));
     expect(both.onClear).toHaveBeenCalled();
@@ -69,6 +93,7 @@ describe("MoreMenu", () => {
           onPick,
         }}
         loop={loopProps({})}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
       />,
     );
     await user.click(screen.getByRole("button", { name: "More" }));
@@ -83,8 +108,26 @@ describe("MoreMenu", () => {
 
   it("has no Chapters row for a file with one or none", async () => {
     const user = userEvent.setup();
-    render(<Harness chapters={noChapters} loop={loopProps({})} />);
+    render(
+      <Harness
+        chapters={noChapters}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        loop={loopProps({})}
+      />,
+    );
     await user.click(screen.getByRole("button", { name: "More" }));
     expect(screen.queryByRole("menuitem", { name: /Chapters/ })).toBeNull();
+  });
+
+  it("takes a screenshot with the subtitles showing, or without", async () => {
+    const user = userEvent.setup();
+    const onScreenshot = vi.fn<(subtitles: boolean) => void>();
+    render(<Harness chapters={noChapters} loop={loopProps({})} onScreenshot={onScreenshot} />);
+    await user.click(screen.getByRole("button", { name: "More" }));
+    await user.click(screen.getByRole("menuitem", { name: /Take a screenshot/ }));
+    expect(onScreenshot).toHaveBeenLastCalledWith(true);
+    await user.click(screen.getByRole("button", { name: "More" }));
+    await user.click(screen.getByRole("menuitem", { name: /Without subtitles/ }));
+    expect(onScreenshot).toHaveBeenLastCalledWith(false);
   });
 });

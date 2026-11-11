@@ -1,4 +1,4 @@
-import { Ellipsis, ListOrdered, Repeat, X } from "lucide-react";
+import { Camera, Ellipsis, ListOrdered, Repeat, X } from "lucide-react";
 
 import {
   PlayerMenu,
@@ -33,11 +33,14 @@ export function MoreMenu({
   onOpenChange,
   chapters,
   loop,
+  onScreenshot,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   chapters: ChaptersProps;
   loop: LoopProps;
+  // Saves the frame, with the subtitles showing or without.
+  onScreenshot: (subtitles: boolean) => void;
 }) {
   const { a, b } = loop.loop;
   return (
@@ -101,6 +104,13 @@ export function MoreMenu({
             Forget A
           </PlayerMenuItem>
         )}
+      </PlayerMenuGroup>
+      <PlayerMenuSeparator />
+      <PlayerMenuGroup label="Screenshot">
+        <PlayerMenuItem icon={<Camera aria-hidden />} hint="⇧S" onClick={() => onScreenshot(true)}>
+          Take a screenshot
+        </PlayerMenuItem>
+        <PlayerMenuItem onClick={() => onScreenshot(false)}>Without subtitles</PlayerMenuItem>
       </PlayerMenuGroup>
     </PlayerMenu>
   );

@@ -51,6 +51,7 @@ import {
 } from "@/components/player/subtitle-panel";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { toastManager } from "@/components/ui/toast";
 import { loopArgs, loopOf, nextLoop, sameLoop, type Loop } from "@/lib/ab-loop";
 import { streamsQuery } from "@/lib/addon-protocol";
 import { chapterAt, chapterName, nextChapter, previousChapter } from "@/lib/chapters";
@@ -775,6 +776,24 @@ function PlayerFile() {
     seek(to.chapter.time);
     setNotice({ text: `${to.index + 1}. ${chapterName(to.chapter, to.index)}` });
   };
+  // Shift+S, or More: the frame as a PNG in ~/Pictures/Sinag (Go), with
+  // the subtitles showing or without them, and a toast to find it.
+  const takeScreenshot = (subtitles: boolean) => {
+    if (!ready || state.loading) return;
+    Player.Screenshot(subtitles).then(
+      (path) =>
+        toastManager.add({
+          type: "success",
+          title: "Screenshot saved",
+          description: path.split(/[\\/]/).pop(),
+          actionProps: {
+            children: fileManager,
+            onClick: () => void Player.ShowScreenshot(path).catch(() => {}),
+          },
+        }),
+      () => toastManager.add({ type: "error", title: "Couldn’t take a screenshot" }),
+    );
+  };
   const toggleMute = () => {
     setMuted(!muted);
     Player.SetMuted(!muted).catch(() => {});
@@ -1299,6 +1318,7 @@ function PlayerFile() {
         F: () => ready && !mini && cycleFit(),
         A: () => ready && !mini && cycleAspect(),
         C: () => ready && !mini && cycleSecondary(),
+        S: () => takeScreenshot(true),
       };
       // Held down, these go on.
       const shiftedRepeating: Record<string, () => void> = {
@@ -1882,6 +1902,7 @@ function PlayerFile() {
                       onNext: stepLoop,
                       onClear: () => changeLoop({}, "A–B loop off"),
                     }}
+                    onScreenshot={takeScreenshot}
                   />
                 )}
               </div>
@@ -2082,6 +2103,11 @@ function PlayerFile() {
 }
 
 const same = <T,>(a: T, b: T) => a === b;
+
+// Where a screenshot's toast shows it.
+const fileManager = navigator.userAgent.includes("Mac")
+  ? "Show in Finder"
+  : "Show in File Explorer";
 const near = (a: number, b: number) => Math.abs(a - b) < 1.5;
 
 // on, once it has been on for ms: a seek that lands at once shows nothing.
