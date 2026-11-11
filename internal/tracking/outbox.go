@@ -18,15 +18,29 @@ import (
 // it was watched, rather than as a late stop.
 
 // simklJob is a watch for SIMKL's history.
+//
+// Op says what else the job is, for the list and rating changes the user
+// makes (actions.go); the empty Op is a watch.
 type simklJob struct {
 	Item      simkl.Item `json:"item"`
 	WatchedAt string     `json:"watchedAt"`
+
+	Op     string       `json:"op,omitempty"`
+	Kind   string       `json:"kind,omitempty"`
+	Media  *simkl.Media `json:"media,omitempty"`
+	List   string       `json:"list,omitempty"`
+	Rating int          `json:"rating,omitempty"`
 }
 
-// aniListJob is an entry's progress for AniList.
+// aniListJob is an entry's progress for AniList, or with Op a list or score
+// change.
 type aniListJob struct {
 	Media   int `json:"media"`
 	Episode int `json:"episode"`
+
+	Op     string `json:"op,omitempty"`
+	Status string `json:"status,omitempty"`
+	Score  int    `json:"score,omitempty"`
 }
 
 // Backoff: 30 s, doubling to 1 h. A job older than jobMaxAge is dropped.
@@ -102,9 +116,7 @@ func (s *Service) sendJob(ctx context.Context, db *store.Store, profileID uint64
 	case ServiceSimkl:
 		var p simklJob
 		if err = json.Unmarshal(job.Payload, &p); err == nil {
-			err = s.withSimkl(call, profileID, func(token string) error {
-				return s.simkl.AddHistory(call, token, historyOf(p))
-			})
+			err = s.sendSimkl(call, profileID, p)
 			temporary = simkl.Temporary(err)
 		}
 	case ServiceAniList:

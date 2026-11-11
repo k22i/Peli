@@ -330,18 +330,22 @@ type LibraryItem struct {
 	Status        string  `json:"status"`
 	LastWatchedAt *string `json:"last_watched_at"`
 	// An anime's kind: "tv", "movie", "ova"…
-	AnimeType string          `json:"anime_type"`
-	Movie     *LibraryMedia   `json:"movie"`
-	Show      *LibraryMedia   `json:"show"`
-	Seasons   []LibrarySeason `json:"seasons"`
+	AnimeType string `json:"anime_type"`
+	// The user's rating, 1–10, when they gave one.
+	UserRating *int            `json:"user_rating"`
+	Movie      *LibraryMedia   `json:"movie"`
+	Show       *LibraryMedia   `json:"show"`
+	Seasons    []LibrarySeason `json:"seasons"`
 }
 
 // LibraryMedia is a listed title. SIMKL sends its own id as a number and
 // every other as a string.
 type LibraryMedia struct {
-	Title string         `json:"title"`
-	Year  int            `json:"year"`
-	IDs   map[string]any `json:"ids"`
+	Title string `json:"title"`
+	Year  int    `json:"year"`
+	// A poster id, for PosterURL.
+	Poster string         `json:"poster"`
+	IDs    map[string]any `json:"ids"`
 }
 
 // ID returns the id named key as a string, or "".

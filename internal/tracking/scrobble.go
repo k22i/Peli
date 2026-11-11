@@ -251,10 +251,13 @@ func (s *Service) aniListJob(ctx context.Context, w player.Watching) (aniListJob
 	return aniListJob{}, false
 }
 
-// sendAniList moves the entry's progress up to job's episode: Completed at
+// sendAniList sends job: a list or score change, or else moves the entry's progress up to job's episode: Completed at
 // the last episode (or a film), Current before it. An entry already as far
 // is left as it is, and so is one being rewatched, but for its progress.
 func (s *Service) sendAniList(ctx context.Context, profileID uint64, job aniListJob) error {
+	if job.Op != "" {
+		return s.changeAniList(ctx, profileID, job)
+	}
 	return s.withAniList(ctx, profileID, func(_ store.AniListLink, token string) error {
 		media, err := s.anilist.WithEntry(ctx, token, job.Media)
 		if err != nil {

@@ -26,6 +26,12 @@ type Scrobble struct {
 	Body        map[string]any
 }
 
+// Post is a write other than a scrobble or history post.
+type Post struct {
+	Path string
+	Body map[string]any
+}
+
 // Server is the fake.
 type Server struct {
 	*httptest.Server
@@ -45,7 +51,9 @@ type Server struct {
 	Done bool
 
 	Scrobbles []Scrobble
-	History   []map[string]any
+	// Posts are the list, rating and removal calls, by path, in order.
+	Posts   []Post
+	History []map[string]any
 	// Activities and Library are what the user's lists answer;
 	// LibraryCalls are the all-items paths and queries asked.
 	Activities   map[string]any
@@ -74,6 +82,19 @@ func (s *Server) Histories() []map[string]any {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	return append([]map[string]any(nil), s.History...)
+}
+
+// Writes returns the posts to path so far.
+func (s *Server) Writes(path string) []map[string]any {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	var out []map[string]any
+	for _, p := range s.Posts {
+		if p.Path == path {
+			out = append(out, p.Body)
+		}
+	}
+	return out
 }
 
 // Set changes the fake under its lock.
@@ -134,10 +155,23 @@ func (s *Server) handle(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusCreated, map[string]any{"added": map[string]int{}})
 	case r.URL.Path == "/sync/activities":
 		writeJSON(w, http.StatusOK, s.Activities)
+	case r.Method == http.MethodPost && (r.URL.Path == "/sync/add-to-list" || r.URL.Path == "/sync/history/remove" ||
+		r.URL.Path == "/sync/ratings" || r.URL.Path == "/sync/ratings/remove"):
+		s.Posts = append(s.Posts, Post{Path: r.URL.Path, Body: body})
+		writeJSON(w, http.StatusCreated, map[string]any{"added": map[string]int{}})
 	case strings.HasPrefix(r.URL.Path, "/sync/all-items/"):
-		kind := strings.TrimPrefix(r.URL.Path, "/sync/all-items/")
-		s.LibraryCalls = append(s.LibraryCalls, kind+"?"+q.Get("date_from"))
-		writeJSON(w, http.StatusOK, s.Library[kind])
+		// "movies", or "movies/plantowatch" for one list: Library is keyed by
+		// either, and a list the fake has nothing for answers empty.
+		path := strings.TrimPrefix(r.URL.Path, "/sync/all-items/")
+		kind, _, _ := strings.Cut(path, "/")
+		s.LibraryCalls = append(s.LibraryCalls, path+"?"+q.Get("date_from"))
+		answer, ok := s.Library[path]
+		if !ok && path != kind {
+			answer = map[string]any{}
+		} else if !ok {
+			answer = s.Library[kind]
+		}
+		writeJSON(w, http.StatusOK, answer)
 	default:
 		http.NotFound(w, r)
 	}

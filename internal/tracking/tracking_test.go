@@ -89,13 +89,40 @@ func newFakeAniList(t *testing.T) *fakeAniList {
 		switch {
 		case strings.Contains(req.Query, "Viewer"):
 			answer = map[string]any{"Viewer": map[string]any{"id": 7, "name": "kev"}}
+		case strings.Contains(req.Query, "DeleteMediaListEntry"):
+			id := int(req.Variables["id"].(float64))
+			for media, e := range f.entries {
+				if e.ID == id {
+					delete(f.entries, media)
+				}
+			}
+			f.saved = append(f.saved, fmt.Sprintf("delete:%d", id))
+			answer = map[string]any{"DeleteMediaListEntry": map[string]any{"deleted": true}}
 		case strings.Contains(req.Query, "SaveMediaListEntry"):
 			id := int(req.Variables["id"].(float64))
-			progress := int(req.Variables["progress"].(float64))
-			status := req.Variables["status"].(string)
-			f.entries[id] = &anilist.Entry{Status: status, Progress: progress}
-			f.saved = append(f.saved, fmt.Sprintf("%d:%d:%s", id, progress, status))
+			e := f.entries[id]
+			if e == nil {
+				e = &anilist.Entry{ID: 1000 + id, Status: "PLANNING"}
+				f.entries[id] = e
+			}
+			if v, ok := req.Variables["progress"].(float64); ok {
+				e.Progress = int(v)
+			}
+			if v, ok := req.Variables["status"].(string); ok {
+				e.Status = v
+			}
+			if v, ok := req.Variables["score"].(float64); ok {
+				e.Score = int(v)
+			}
+			f.saved = append(f.saved, fmt.Sprintf("%d:%d:%s:%d", id, e.Progress, e.Status, e.Score))
 			answer = map[string]any{"SaveMediaListEntry": map[string]any{"id": 1}}
+		case strings.Contains(req.Query, "MediaListCollection") && req.Variables["status"] == "PLANNING":
+			answer = map[string]any{"MediaListCollection": map[string]any{"lists": []any{map[string]any{"entries": []any{
+				map[string]any{"status": "PLANNING", "progress": 0, "updatedAt": 1_800_000_000,
+					"media": map[string]any{"id": 154587, "idMal": 52991, "episodes": 28, "format": "TV",
+						"title": map[string]any{"romaji": "Sousou no Frieren", "english": "Frieren: Beyond Journey's End"},
+						"coverImage": map[string]any{"large": "https://img.example/frieren.jpg"}, "startDate": map[string]any{"year": 2023}}},
+			}}}}}
 		case strings.Contains(req.Query, "MediaListCollection"):
 			answer = map[string]any{"MediaListCollection": map[string]any{"lists": []any{map[string]any{"entries": []any{
 				map[string]any{"status": "CURRENT", "progress": 2, "updatedAt": 1_800_000_000,
@@ -130,7 +157,7 @@ func setup(t *testing.T) *fixture {
 	db, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
 	check(t, err)
 	t.Cleanup(func() { db.Close() })
-	profile, err := db.CreateProfile(store.Profile{Name: "Kevin", NuvioIndex: ptr(1)})
+	profile, err := db.CreateProfile(store.Profile{Name: "Kevin", NuvioIndex: ptr(1), PinEnabled: true})
 	check(t, err)
 	f := &fixture{db: db, profile: profile, keys: &memKeychain{items: map[string]string{}}, simkl: simkltest.New(t), ani: newFakeAniList(t)}
 	f.clock = time.UnixMilli(1_800_000_000_000)
@@ -459,7 +486,7 @@ func TestAniListProgressOnWatched(t *testing.T) {
 	f.report(w, player.ReportPlaying, 1000)
 	f.report(w, player.ReportPlaying, 2600) // 92 %: watched
 	f.report(w, player.ReportStopped, 2700) // once per file
-	if strings.Join(f.ani.saved, " ") != "154587:3:CURRENT" {
+	if strings.Join(f.ani.saved, " ") != "154587:3:CURRENT:0" {
 		t.Fatalf("saved = %v", f.ani.saved)
 	}
 	// An earlier episode doesn't move the list back.
@@ -471,7 +498,7 @@ func TestAniListProgressOnWatched(t *testing.T) {
 	// The last episode completes it.
 	w.VideoID, w.Episode = "tt22248376:1:28", ptr(28)
 	f.report(w, player.ReportEnded, 2800)
-	if f.ani.saved[len(f.ani.saved)-1] != "154587:28:COMPLETED" {
+	if f.ani.saved[len(f.ani.saved)-1] != "154587:28:COMPLETED:0" {
 		t.Fatalf("saved = %v", f.ani.saved)
 	}
 }

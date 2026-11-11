@@ -112,20 +112,37 @@ type Media struct {
 	IDMal    *int   `json:"idMal"`
 	Episodes *int   `json:"episodes"`
 	Format   string `json:"format"`
+	// Only asked for with ListByStatus.
+	Title *struct {
+		Romaji  string `json:"romaji"`
+		English string `json:"english"`
+	} `json:"title"`
+	CoverImage *struct {
+		Large string `json:"large"`
+	} `json:"coverImage"`
+	StartDate *struct {
+		Year *int `json:"year"`
+	} `json:"startDate"`
 	// The user's entry, when asked with their token.
 	Entry *Entry `json:"mediaListEntry"`
 }
 
 // Entry is a list entry's state.
 type Entry struct {
+	ID       int    `json:"id"`
 	Status   string `json:"status"`
 	Progress int    `json:"progress"`
+	// The user's score out of 100, whatever format they keep it in; 0 for none.
+	Score int `json:"score"`
 }
 
 // List statuses.
 const (
+	StatusPlanning  = "PLANNING"
 	StatusCurrent   = "CURRENT"
 	StatusCompleted = "COMPLETED"
+	StatusPaused    = "PAUSED"
+	StatusDropped   = "DROPPED"
 	StatusRepeating = "REPEATING"
 )
 
@@ -153,7 +170,7 @@ func (c *Client) WithEntry(ctx context.Context, token string, id int) (Media, er
 	var out struct {
 		Media *Media `json:"Media"`
 	}
-	err := c.query(ctx, token, `query ($id: Int) { Media(id: $id, type: ANIME) { `+mediaFields+` mediaListEntry { status progress } } }`,
+	err := c.query(ctx, token, `query ($id: Int) { Media(id: $id, type: ANIME) { `+mediaFields+` mediaListEntry { id status progress score(format: POINT_100) } } }`,
 		map[string]any{"id": id}, &out)
 	if err == nil && out.Media == nil {
 		err = ErrNotFound
@@ -170,6 +187,53 @@ func (c *Client) SaveProgress(ctx context.Context, token string, id, progress in
 	return c.query(ctx, token,
 		`mutation ($id: Int, $progress: Int, $status: MediaListStatus) { SaveMediaListEntry(mediaId: $id, progress: $progress, status: $status) { id } }`,
 		map[string]any{"id": id, "progress": progress, "status": status}, nil)
+}
+
+// SaveStatus puts anime id on the user's list with status, leaving its
+// progress and score as they are.
+func (c *Client) SaveStatus(ctx context.Context, token string, id int, status string) error {
+	return c.query(ctx, token,
+		`mutation ($id: Int, $status: MediaListStatus) { SaveMediaListEntry(mediaId: $id, status: $status) { id } }`,
+		map[string]any{"id": id, "status": status}, nil)
+}
+
+// SaveScore sets the user's score for anime id out of 100 (AniList converts
+// it to the format they keep); 0 clears it.
+func (c *Client) SaveScore(ctx context.Context, token string, id, score int) error {
+	return c.query(ctx, token,
+		`mutation ($id: Int, $score: Int) { SaveMediaListEntry(mediaId: $id, scoreRaw: $score) { id } }`,
+		map[string]any{"id": id, "score": score}, nil)
+}
+
+// DeleteEntry takes the list entry entryID (an Entry's ID, not the anime's)
+// off the user's list.
+func (c *Client) DeleteEntry(ctx context.Context, token string, entryID int) error {
+	return c.query(ctx, token,
+		`mutation ($id: Int) { DeleteMediaListEntry(id: $id) { deleted } }`,
+		map[string]any{"id": entryID}, nil)
+}
+
+// ListByStatus returns user's anime with status, with the titles and covers
+// to show them.
+func (c *Client) ListByStatus(ctx context.Context, token string, user int, status string) ([]ListEntry, error) {
+	var out struct {
+		Collection struct {
+			Lists []struct {
+				Entries []ListEntry `json:"entries"`
+			} `json:"lists"`
+		} `json:"MediaListCollection"`
+	}
+	err := c.query(ctx, token,
+		`query ($user: Int, $status: MediaListStatus) { MediaListCollection(userId: $user, type: ANIME, status: $status) { lists { entries { status progress updatedAt media { `+mediaFields+` title { romaji english } coverImage { large } startDate { year } } } } } }`,
+		map[string]any{"user": user, "status": status}, &out)
+	if err != nil {
+		return nil, err
+	}
+	var entries []ListEntry
+	for _, list := range out.Collection.Lists {
+		entries = append(entries, list.Entries...)
+	}
+	return entries, nil
 }
 
 // ListEntry is an anime on the user's list.

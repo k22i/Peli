@@ -117,6 +117,10 @@ type Service struct {
 	simklIn  *simklSignIn
 	aniIn    *aniListSignIn
 
+	// SIMKL's lists as last fetched, by profile and kind, for TitleStatus.
+	listsMu sync.Mutex
+	lists   map[listKey]cachedLists
+
 	// Imports, one per profile at a time, and when each last ran.
 	importMu  sync.Mutex
 	importing map[uint64]bool
@@ -131,8 +135,8 @@ func NewService(cfg Config) *Service {
 	s := &Service{
 		simkl: cfg.Simkl, anilist: cfg.AniList, anilistID: cfg.AniListClientID, anime: cfg.Anime,
 		keychain: cfg.Keychain, open: cfg.Open, now: time.Now, sleep: sleep,
-		emit:      func(string, uint64) {},
-		importing: map[uint64]bool{}, lastAuto: map[uint64]time.Time{},
+		emit:  func(string, uint64) {},
+		lists: map[listKey]cachedLists{}, importing: map[uint64]bool{}, lastAuto: map[uint64]time.Time{},
 	}
 	s.scrobbler = newScrobbler(s)
 	s.connected = func(id uint64) {
@@ -335,6 +339,8 @@ func MarshalError(err error) []byte {
 		code = CodeKidsProfile
 	case errors.Is(err, ErrNotConnected):
 		code = CodeNotConnected
+	case errors.Is(err, ErrNotTrackable):
+		code = CodeNotTrackable
 	case errors.Is(err, ErrSignInExpired), errors.Is(err, simkl.ErrCodeGone):
 		code = CodeSignInExpired
 	case errors.Is(err, ErrNoSignIn):
