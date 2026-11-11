@@ -101,6 +101,26 @@ var contract = map[string]answer{
 	"/rest/v1/rpc/sync_push_collections":           {},
 }
 
+// liveOnly lists the endpoints only api.nuvio.tv has: self-host has no watch
+// parties (ADR-0051), so TestContract can't reach them, and the fake doesn't
+// pretend to. TestLiveParty (live_party_test.go) calls each and checks its
+// answer against the type here.
+var liveOnly = map[string]answer{
+	"/rest/v1/rpc/watch_party_create":        one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_join":          one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_preview":       one[PartyPreview](),
+	"/rest/v1/rpc/watch_party_heartbeat":     one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_update":        one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_leave":         one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_end":           one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_set_host_only": one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_remove_member": one[PartySnapshot](),
+	"/rest/v1/rpc/watch_party_send_message":  one[PartyMessageSent](),
+	"/rest/v1/rpc/watch_party_list_messages": one[PartyMessages](),
+	"/rest/v1/rpc/watch_party_clock":         {},
+	"/rest/v1/rpc/watch_party_enabled":       {},
+}
+
 // shapeErrors checks a JSON answer against the type the client reads it
 // into. It returns what doesn't fit, and the fields the client doesn't read,
 // which are new or unused, not wrong.
@@ -303,13 +323,17 @@ func TestContractCoversEveryCall(t *testing.T) {
 		})
 	}
 	for path, where := range called {
-		if _, ok := contract[path]; !ok {
+		_, ok := contract[path]
+		_, live := liveOnly[path]
+		if !ok && !live {
 			t.Errorf("%s calls %s, which isn't in contract: add it, with the type its answer is read into, and a case to TestContract", where, path)
 		}
 	}
-	for path := range contract {
-		if _, ok := called[path]; !ok {
-			t.Errorf("contract lists %s, which the client no longer calls", path)
+	for _, listed := range []map[string]answer{contract, liveOnly} {
+		for path := range listed {
+			if _, ok := called[path]; !ok {
+				t.Errorf("contract lists %s, which the client no longer calls", path)
+			}
 		}
 	}
 }

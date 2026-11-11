@@ -17,6 +17,7 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["F"], action: "Full screen" },
       { keys: ["I"], action: "Mini player" },
       { keys: ["S"], action: "Choose another stream" },
+      { keys: ["W"], action: "Watch party" },
       { keys: ["P"], action: "Picture and sound" },
       { keys: ["Esc"], action: "Leave the mini player or full screen, then the player" },
     ],

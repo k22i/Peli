@@ -1,3 +1,4 @@
+import type { Media, Member, Party as PartyInfo, State as PartyState } from "@bindings/party";
 import type { ProfileSettings } from "@bindings/store";
 
 // A profile's settings as Go's store.DefaultProfileSettings has them, with
@@ -39,3 +40,63 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
   picturePresets: [],
   ...changes,
 });
+
+// A watch party (ADR-0051) watching The Shawshank Redemption, hosted by Ana,
+// as party.Service.State answers it.
+export function partyState(party: Partial<PartyInfo> = {}, media: Partial<Media> = {}): PartyState {
+  return {
+    unavailable: "",
+    busy: false,
+    party: {
+      id: "p1",
+      code: "ABCDEF",
+      memberId: "me",
+      hostId: "ana",
+      isHost: false,
+      hostOnly: false,
+      canControl: true,
+      connected: true,
+      maxMembers: 8,
+      members: [partyMember({ id: "ana", name: "Ana", host: true })],
+      media: {
+        type: "movie",
+        id: "tt0111161",
+        videoId: "",
+        season: null,
+        episode: null,
+        title: "The Shawshank Redemption",
+        episodeTitle: "",
+        description: "",
+        poster: "",
+        background: "",
+        logo: "",
+        source: null,
+        ...media,
+      },
+      watching: false,
+      paused: false,
+      waiting: false,
+      waitingFor: [],
+      behind: false,
+      behindMs: 0,
+      sharing: false,
+      shared: null,
+      ...party,
+    },
+  };
+}
+
+export function partyMember(member: Partial<Member> = {}): Member {
+  return {
+    id: "a",
+    name: "Ana",
+    avatarUrl: "",
+    avatarColor: "",
+    host: false,
+    you: false,
+    status: "ready",
+    watchingElse: false,
+    behindMs: 0,
+    ...member,
+  };
+}

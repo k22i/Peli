@@ -15,6 +15,7 @@ import { Route as AnimeRouteImport } from './routes/anime'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MoviesRouteImport } from './routes/movies'
+import { Route as PartyRouteImport } from './routes/party'
 import { Route as PlayerRouteImport } from './routes/player'
 import { Route as ProfilesRouteImport } from './routes/profiles'
 import { Route as QrSignInRouteImport } from './routes/qr-sign-in'
@@ -56,6 +57,11 @@ const LibraryRoute = LibraryRouteImport.update({
 const MoviesRoute = MoviesRouteImport.update({
   id: '/movies',
   path: '/movies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartyRoute = PartyRouteImport.update({
+  id: '/party',
+  path: '/party',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlayerRoute = PlayerRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
+  '/party': typeof PartyRoute
   '/player': typeof PlayerRoute
   '/profiles': typeof ProfilesRoute
   '/qr-sign-in': typeof QrSignInRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
+  '/party': typeof PartyRoute
   '/player': typeof PlayerRoute
   '/profiles': typeof ProfilesRoute
   '/qr-sign-in': typeof QrSignInRoute
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
   '/movies': typeof MoviesRoute
+  '/party': typeof PartyRoute
   '/player': typeof PlayerRoute
   '/profiles': typeof ProfilesRoute
   '/qr-sign-in': typeof QrSignInRoute
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/library'
     | '/movies'
+    | '/party'
     | '/player'
     | '/profiles'
     | '/qr-sign-in'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/library'
     | '/movies'
+    | '/party'
     | '/player'
     | '/profiles'
     | '/qr-sign-in'
@@ -230,6 +241,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/library'
     | '/movies'
+    | '/party'
     | '/player'
     | '/profiles'
     | '/qr-sign-in'
@@ -251,6 +263,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   LibraryRoute: typeof LibraryRoute
   MoviesRoute: typeof MoviesRoute
+  PartyRoute: typeof PartyRoute
   PlayerRoute: typeof PlayerRoute
   ProfilesRoute: typeof ProfilesRoute
   QrSignInRoute: typeof QrSignInRoute
@@ -307,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/movies'
       fullPath: '/movies'
       preLoaderRoute: typeof MoviesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/party': {
+      id: '/party'
+      path: '/party'
+      fullPath: '/party'
+      preLoaderRoute: typeof PartyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/player': {
@@ -403,6 +423,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   LibraryRoute: LibraryRoute,
   MoviesRoute: MoviesRoute,
+  PartyRoute: PartyRoute,
   PlayerRoute: PlayerRoute,
   ProfilesRoute: ProfilesRoute,
   QrSignInRoute: QrSignInRoute,

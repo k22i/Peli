@@ -21,13 +21,15 @@ import opensubtitlesManifest from "@/lib/addon-protocol/fixtures/opensubtitles/m
 import opensubtitlesMovie from "@/lib/addon-protocol/fixtures/opensubtitles/subtitles-movie.json";
 import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.json";
 import type { Stream } from "@/lib/addon-protocol";
+import { Party } from "@/lib/party";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import { profileSettings } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
-  handlers: new Map<string, (event: { data: unknown }) => void>(),
+  // Every listener of each event, as the runtime keeps them.
+  handlers: new Map<string, Set<(event: { data: unknown }) => void>>(),
   snapshot: vi.fn<() => Promise<State>>(),
   load: vi.fn<(source: Source, opts: { start: number }) => Promise<void>>(),
   stop: vi.fn<() => Promise<void>>(),
@@ -68,8 +70,10 @@ vi.mock("@wailsio/runtime", async (importOriginal) => {
     Events: {
       ...runtime.Events,
       On: (name: string, callback: (event: { data: unknown }) => void) => {
-        mocks.handlers.set(name, callback);
-        return () => mocks.handlers.delete(name);
+        const listeners = mocks.handlers.get(name) ?? new Set();
+        listeners.add(callback);
+        mocks.handlers.set(name, listeners);
+        return () => listeners.delete(callback);
       },
     },
   };
@@ -181,7 +185,7 @@ const source: Source = {
 
 const emit = (name: string, data: unknown) =>
   act(() => {
-    mocks.handlers.get(name)?.({ data });
+    for (const listener of mocks.handlers.get(name) ?? []) listener({ data });
   });
 
 const playing: State = { ...idleState, active: true, position: 600, duration: 7200 };
@@ -1653,5 +1657,162 @@ describe("skip intro and credits", () => {
     emit("player:state", { ...chaptered, position: 1420 });
     expect(await screen.findByRole("button", { name: "Skip credits" })).toBeInTheDocument();
     expect(mocks.seek).toHaveBeenCalledOnce();
+  });
+});
+
+describe("watch party", () => {
+  const watching: Watching = {
+    profileId: 1,
+    contentId: "tt0111161",
+    contentType: "movie",
+    videoId: "tt0111161",
+    title: "The Film",
+    name: "The Film",
+  };
+  const media = {
+    type: "movie",
+    id: "tt0111161",
+    videoId: "",
+    season: null,
+    episode: null,
+    title: "The Film",
+    episodeTitle: "",
+    description: "",
+    poster: "",
+    background: "",
+    logo: "",
+    source: null,
+  };
+  const inParty = (more: Record<string, unknown> = {}) => ({
+    unavailable: "",
+    busy: false,
+    party: {
+      id: "p1",
+      code: "ABCDEF",
+      memberId: "me",
+      hostId: "me",
+      isHost: true,
+      hostOnly: false,
+      canControl: true,
+      connected: true,
+      maxMembers: 8,
+      members: [
+        {
+          id: "me",
+          name: "Kevin",
+          avatarUrl: "",
+          avatarColor: "",
+          host: true,
+          you: true,
+          status: "ready",
+          watchingElse: false,
+          behindMs: 0,
+        },
+        {
+          id: "ana",
+          name: "Ana",
+          avatarUrl: "",
+          avatarColor: "",
+          host: false,
+          you: false,
+          status: "loading",
+          watchingElse: false,
+          behindMs: 0,
+        },
+      ],
+      media,
+      watching: true,
+      paused: true,
+      waiting: true,
+      waitingFor: ["Ana"],
+      behind: false,
+      behindMs: 0,
+      sharing: false,
+      shared: null,
+      ...more,
+    },
+  });
+
+  it("tells the party what plays, and that it stopped on leaving", async () => {
+    await openPlayer(undefined, source, undefined, { watching });
+    await waitFor(() =>
+      expect(Party.Watch).toHaveBeenCalledWith(media, expect.objectContaining({ url: source.url })),
+    );
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(Party.Watch).toHaveBeenLastCalledWith(null, null));
+  });
+
+  it("starts one for what plays from W", async () => {
+    await openPlayer(undefined, source, undefined, { watching });
+    emit("player:state", playing);
+    const user = userEvent.setup();
+    await user.keyboard("w");
+    await user.click(await screen.findByRole("button", { name: "Start a watch party" }));
+    expect(Party.Create).toHaveBeenCalledExactlyOnceWith(media);
+  });
+
+  it("shows the code, the people and who it waits for", async () => {
+    await openPlayer(undefined, source, undefined, { watching });
+    emit("party:state", inParty());
+    expect(await screen.findByText("Waiting for Ana")).toBeInTheDocument();
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Watch party" }));
+    expect(await screen.findByText("ABC DEF")).toBeInTheDocument();
+    expect(screen.getByText("Loading")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Remove Ana" })).toBeInTheDocument();
+    await user.click(screen.getByRole("switch", { name: /Only I can control playback/ }));
+    expect(Party.SetHostOnly).toHaveBeenCalledWith(true);
+  });
+
+  it("offers to catch up while behind, and says what others did", async () => {
+    await openPlayer(undefined, source, undefined, { watching });
+    emit(
+      "party:state",
+      inParty({
+        isHost: false,
+        hostId: "ana",
+        canControl: false,
+        hostOnly: true,
+        waiting: false,
+        behind: true,
+        behindMs: 80_000,
+      }),
+    );
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Catch up" }));
+    expect(Party.CatchUp).toHaveBeenCalled();
+    expect(screen.getByText("You’re 1:20 behind the party")).toBeInTheDocument();
+    emit("party:notice", {
+      kind: "action",
+      name: "Ana",
+      action: "paused",
+      positionMs: 0,
+      rate: 1,
+      media: null,
+      hostOnly: false,
+    });
+    expect(await screen.findByText("Ana paused")).toBeInTheDocument();
+  });
+
+  it("offers to follow the party when it watches something else", async () => {
+    const { router } = await openPlayer(undefined, source, undefined, { watching });
+    const other = {
+      ...media,
+      type: "series",
+      id: "tt0903747",
+      videoId: "tt0903747:1:1",
+      season: 1,
+      episode: 1,
+      title: "Breaking Bad",
+    };
+    emit("party:state", inParty({ isHost: false, hostId: "ana", media: other, watching: false }));
+    expect(
+      await screen.findByText("The party is watching Breaking Bad · S1 E1"),
+    ).toBeInTheDocument();
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Watch with the party" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
+    expect(router.state.location.search).toEqual({ video: "tt0903747:1:1" });
   });
 });

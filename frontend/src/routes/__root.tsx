@@ -1,8 +1,15 @@
-import type { QueryClient } from "@tanstack/react-query";
-import { Outlet, createRootRouteWithContext, redirect, useLocation } from "@tanstack/react-router";
+import { useQueryClient, type QueryClient } from "@tanstack/react-query";
+import {
+  Outlet,
+  createRootRouteWithContext,
+  redirect,
+  useLocation,
+  useRouter,
+} from "@tanstack/react-router";
 
 import { PinGate } from "@/components/account/pin-dialog";
 import { AppShell } from "@/components/shell/app-shell";
+import { toastManager } from "@/components/ui/toast";
 import {
   needsPicker,
   profilesQuery,
@@ -10,6 +17,7 @@ import {
   useSessionEndedRedirect,
   useUnlockedProfiles,
 } from "@/lib/account";
+import { usePartyEvents, usePartyToasts } from "@/lib/party";
 import { accountQuery, useCurrentProfile } from "@/lib/profile";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
@@ -48,6 +56,17 @@ function RootLayout() {
   useSyncEvents();
   useConnectionEvents();
   useTrackingEvents();
+  usePartyEvents(useQueryClient());
+  const router = useRouter();
+  usePartyToasts(
+    () => router.state.location.pathname === "/player",
+    ({ title, type, action }) =>
+      toastManager.add({
+        title,
+        type,
+        ...(action && { actionProps: { children: action.label, onClick: action.run } }),
+      }),
+  );
   const location = useLocation();
   // The launch gate only applies once a profile is in use, so it skips the
   // screens that come before one — and doesn't ask the store for the current

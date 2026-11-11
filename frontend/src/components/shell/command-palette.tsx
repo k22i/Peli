@@ -4,6 +4,7 @@ import {
   Blocks,
   CalendarDays,
   Clock,
+  PartyPopper,
   Search as SearchIcon,
   Users,
   type LucideIcon,
@@ -170,6 +171,18 @@ function PaletteBody({ profile, done }: { profile: Profile; done: () => void }) 
     },
     // A kids profile needs its parent PIN for addons, which the profile menu
     // asks for, so the palette doesn't offer them there.
+    // Watch parties (ADR-0051): never for a kids profile.
+    ...(profile.kids
+      ? []
+      : [
+          {
+            id: "go:party",
+            label: "Watch party",
+            keywords: "join together friends code invite host",
+            icon: PartyPopper,
+            run: go(() => void navigate({ to: "/party" })),
+          },
+        ]),
     ...(profile.kids
       ? []
       : [

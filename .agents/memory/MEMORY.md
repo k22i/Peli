@@ -73,3 +73,4 @@
 - [Library housekeeping](library-housekeeping.md) — ClearContinueWatching (delete, not a hide flag), Library multi-select: selection.ts, useBulkEdits, SelectionBar, listbox semantics
 - [Discovery](discovery.md) — search kind/decade/genre filters in the URL, recent searches per profile, TMDB People row, Home New episodes + Surprise me
 - [Player picture (phase 1)](player-picture.md) — Picture & sound sheet (P), store.Picture + TitleAdjustments per title, Go resolves at Load, panel-controls.tsx; facts for phases 2–6
+- [Watch party](watch-party.md) — ADR-0051 internal/party + nuvio realtime.go, nuvio_realtime=1 flag, live-only RPCs + live tests, player gate/Direct, party mocks in test setup

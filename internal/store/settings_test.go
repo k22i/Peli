@@ -375,3 +375,19 @@ func TestServerPersists(t *testing.T) {
 	check(t, s.SetServer(""))
 	equal(t, must[string](t)(s.Server()), "")
 }
+
+// The device ID is made once and kept, so a watch party knows this install
+// again after a restart (ADR-0051).
+func TestDeviceIDPersists(t *testing.T) {
+	s, path := openTemp(t)
+	id := must[string](t)(s.DeviceID())
+	if len(id) != len("sinag-")+32 || id[:6] != "sinag-" {
+		t.Fatalf("id = %q", id)
+	}
+	equal(t, must[string](t)(s.DeviceID()), id)
+	check(t, s.Close())
+	s, err := Open(path)
+	check(t, err)
+	defer s.Close()
+	equal(t, must[string](t)(s.DeviceID()), id)
+}

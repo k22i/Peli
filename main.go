@@ -23,6 +23,7 @@ import (
 	"github.com/k22i/Sinag/internal/licences"
 	"github.com/k22i/Sinag/internal/markers"
 	"github.com/k22i/Sinag/internal/nuvio"
+	"github.com/k22i/Sinag/internal/party"
 	"github.com/k22i/Sinag/internal/player"
 	"github.com/k22i/Sinag/internal/plugins"
 	"github.com/k22i/Sinag/internal/secrets"
@@ -103,6 +104,12 @@ func main() {
 		watched.Report(r)
 		tracking.Report(trackers, r)
 	})
+	// Watch parties with Nuvio's apps (ADR-0051): the party keeps the
+	// player in step, and the user's pauses and seeks go through it first.
+	parties := party.NewService(backend.Parties{Client: client, Sessions: account.SessionOf(accounts)},
+		party.Who(db, account.SessionOf(accounts).SignedIn))
+	party.UsePlayer(parties, player.DirectOf(players))
+	player.GateWith(players, party.GateOf(parties))
 
 	app := application.New(application.Options{
 		Name:        "Sinag",
@@ -137,6 +144,9 @@ func main() {
 			application.NewService(skipTimes),
 			application.NewServiceWithOptions(players,
 				application.ServiceOptions{MarshalError: player.MarshalError}),
+			// After the player, so it leaves the party first on the way out.
+			application.NewServiceWithOptions(parties,
+				application.ServiceOptions{MarshalError: party.MarshalError}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),

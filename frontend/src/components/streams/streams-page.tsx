@@ -8,10 +8,11 @@ import {
   useRouterState,
   useSearch,
 } from "@tanstack/react-router";
-import { AlertCircle, Check, ChevronLeft, Puzzle } from "lucide-react";
+import { AlertCircle, Check, ChevronLeft, Puzzle, Users } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import type { Profile } from "@bindings/store";
+import type { Source } from "@bindings/streams";
 import { Service as Sync } from "@bindings/syncer";
 import { Notice } from "@/components/browse/browse-page";
 import { Artwork } from "@/components/media/artwork";
@@ -30,6 +31,14 @@ import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { rememberedMatch, titleContext, type Candidate, type Tier } from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
+import {
+  matchesPartySource,
+  Party,
+  partyWatches,
+  useParty,
+  type PartyInfo,
+  type SharedStream,
+} from "@/lib/party";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
 import { deviceSettingsQuery, profileSettingsQuery } from "@/lib/settings";
@@ -181,6 +190,12 @@ function Picker({
     useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
   const navigate = useNavigate();
+  // The watch party, when it watches this (ADR-0051): its host's stream and
+  // source are offered first, and what's picked starts where the party is.
+  const partyState = useParty();
+  const forParty = partyWatches(partyState?.party, type, target.id, video)
+    ? (partyState?.party ?? undefined)
+    : undefined;
   // The title's backdrop, as its page shows it (TMDB's with a key, else the
   // addon's), from the cache when the page was seen. It tints the top.
   const art = useTmdbArt(tmdbRef(type, target.id, meta));
@@ -251,11 +266,16 @@ function Picker({
             .catch(() => undefined);
           if (controller.signal.aborted) return;
           const watching = watchingFor(profile.id, target, meta, progress ?? []);
-          const start = target.startOver
-            ? 0
-            : progress
-              ? resumePoint(progress, watching)
-              : (target.resumeAt ?? 0) / 1000;
+          const partyAt = forParty ? await Party.StartAt(forParty.media).catch(() => -1) : -1;
+          if (controller.signal.aborted) return;
+          const start =
+            partyAt >= 0
+              ? partyAt
+              : target.startOver
+                ? 0
+                : progress
+                  ? resumePoint(progress, watching)
+                  : (target.resumeAt ?? 0) / 1000;
           // The player (#60) takes it from here, in the profile's languages
           // (#62), keeping its progress as it plays (#64).
           void Player.Load(source, loadOptions(start, settings, [], watching)).then(
@@ -368,6 +388,56 @@ function Picker({
   return (
     <>
       {header}
+      {forParty && (
+        <PartySources
+          party={forParty}
+          match={view.groups
+            .flatMap((group) => group.items)
+            .find((candidate) => matchesPartySource(candidate.stream, forParty.media.source))}
+          onPick={pick}
+          onPlayShared={(shared) => {
+            const stream: Stream = {
+              name: shared.name,
+              url: shared.url,
+              ...(shared.filename && { behaviorHints: { filename: shared.filename } }),
+            };
+            const source: Source = {
+              url: shared.url,
+              origin: shared.url,
+              headers: shared.headers ?? {},
+              userAgent: "",
+              contentType: "",
+              size: shared.videoSize,
+            };
+            void (async () => {
+              const watching = watchingFor(profile.id, target, meta, []);
+              const at = await Party.StartAt(forParty.media).catch(() => -1);
+              const start = Math.max(0, at);
+              await Player.Load(source, loadOptions(start, settings, [], watching));
+              void navigate({
+                to: "/player",
+                state: (state) => ({
+                  ...state,
+                  player: {
+                    ...playerHeading(meta, video, target.title),
+                    source,
+                    watching,
+                    resumedAt: start,
+                    stream,
+                    subtitles: subtitleTarget(type, video, stream, shared.addonName),
+                  },
+                }),
+              });
+            })().catch(() =>
+              toastManager.add({
+                type: "error",
+                title: `Can’t play ${shared.sharedBy}’s stream`,
+                description: "Their link didn’t open here. Choose a stream of your own.",
+              }),
+            );
+          }}
+        />
+      )}
       <StreamsSummary sources={sources} loading={loading} total={view.total} />
       <StreamList
         rows={rows}
@@ -453,6 +523,58 @@ export function useStreamChoices(
     refresh,
     usual: (candidate: Candidate) => !!last && rememberedMatch(last, candidate) > 0,
   };
+}
+
+// The watch party's way in (ADR-0051): the host's own link when they share
+// it, and the stream of the user's that is the host's (the same torrent, or
+// file), else any pick, which the party keeps in step.
+function PartySources({
+  party,
+  match,
+  onPick,
+  onPlayShared,
+}: {
+  party: PartyInfo;
+  match: Candidate | undefined;
+  onPick: (candidate: Candidate) => void;
+  onPlayShared: (shared: SharedStream) => void;
+}) {
+  const host = party.members?.find((member) => member.host);
+  const shared = party.shared ?? undefined;
+  return (
+    <section
+      aria-label="Watch party"
+      className="mx-page flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl bg-sun/10 px-5 py-4"
+    >
+      <div className="flex min-w-0 flex-1 items-start gap-3">
+        <Users aria-hidden className="mt-0.5 size-5 shrink-0 text-sun-ink" />
+        <div className="flex min-w-0 flex-col gap-0.5">
+          <p className="text-body font-[590]">
+            {party.isHost
+              ? "Your watch party is watching this"
+              : `Watching with ${host?.name ?? "the"}${host ? "’s" : ""} party`}
+          </p>
+          <p className="text-small text-muted-foreground">
+            {match
+              ? "One of your streams is the host’s file, so you’ll see the same thing."
+              : "Pick any stream: Sinag keeps it in step with the party."}
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {shared && !party.isHost && (
+          <Button variant="secondary" onClick={() => onPlayShared(shared)}>
+            Play {shared.sharedBy}’s stream
+          </Button>
+        )}
+        {match && !party.isHost && (
+          <Button variant="sun" onClick={() => onPick(match)}>
+            Play the party’s source
+          </Button>
+        )}
+      </div>
+    </section>
+  );
 }
 
 // How many streams so far, and each addon's (and plugin's) answer, with Try

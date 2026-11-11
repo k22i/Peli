@@ -33,6 +33,32 @@ vi.mock("@bindings/tracking", () => ({
   },
 }));
 
+// Watch parties (ADR-0051): not in one, unless a test says otherwise. The
+// shell, the player and the picker all ask.
+vi.mock("@bindings/party", () => ({
+  Service: {
+    State: vi.fn<() => Promise<unknown>>(() =>
+      Promise.resolve({ unavailable: "", busy: false, party: null }),
+    ),
+    Chat: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ messages: [], unread: 0 })),
+    Watch: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    StartAt: vi.fn<() => Promise<number>>(() => Promise.resolve(-1)),
+    SetChatOpen: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Create: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Join: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Leave: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    End: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Preview: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ error: "party_not_found" })),
+    CatchUp: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetHostOnly: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetSharing: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SwitchTo: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    RemoveMember: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SendMessage: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    RetryMessage: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+  },
+}));
+
 // jsdom does not implement scrolling; the router's scroll restoration and
 // Base UI's menus call it.
 window.scrollTo = () => {};

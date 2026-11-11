@@ -18,6 +18,7 @@ import {
   RotateCw,
   SkipForward,
   SlidersHorizontal,
+  Users,
   Volume1,
   Volume2,
   VolumeX,
@@ -32,6 +33,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { NextEpisode } from "@/components/player/next-episode";
 import { PictureSheet } from "@/components/player/picture-sheet";
 import { Prompt, promptEnter } from "@/components/player/prompt";
@@ -57,6 +59,17 @@ import {
   type Segment,
 } from "@/lib/markers";
 import { countdownFrom, nextEpisode, type PreparedNext } from "@/lib/next-episode";
+import {
+  mediaLabel,
+  noticeText,
+  Party,
+  partyMedia,
+  sharedStream,
+  useParty,
+  usePartyChat,
+  usePartyNotices,
+  useWatchWithParty,
+} from "@/lib/party";
 import { streamsPath, streamsSearch } from "@/lib/playback";
 import { repaintWindow } from "@/lib/theme";
 import {
@@ -186,6 +199,9 @@ export function PlayerPage() {
   useEffect(
     () => () => {
       const streamed = isTorrentSource(playingSource.current);
+      // A watch party (ADR-0051) sees this member stop watching; the next
+      // episode or another stream, as a new file of the screen, doesn't.
+      Party.Watch(null, null).catch(() => {});
       Player.Stop()
         .catch(() => {})
         .finally(() => {
@@ -327,6 +343,53 @@ function PlayerFile() {
     next !== undefined && from !== undefined && state.position >= from && !cancelled && !error;
   // Play now, or the end: the card hands over what it found.
   const [starting, setStarting] = useState(false);
+
+  // A watch party (ADR-0051): Go follows the player and keeps it in step;
+  // this screen says what it plays (as the party names it), opens the party
+  // sheet (W), shows the party's line at the top, and offers to follow the
+  // party when it watches something else.
+  const partyState = useParty();
+  const party = partyState?.party ?? undefined;
+  const partyChat = usePartyChat();
+  const [partyOpen, setPartyOpen] = useState(false);
+  const media = watching ? partyMedia(watching, heading, meta, playing?.stream) : undefined;
+  const shared =
+    playing?.source && !torrent ? sharedStream(playing.source, playing.stream) : undefined;
+  const mediaKey = media
+    ? [
+        media.type,
+        media.id,
+        media.season,
+        media.episode,
+        media.source?.infoHash,
+        media.source?.filename,
+        media.poster,
+      ].join("|")
+    : "";
+  useEffect(() => {
+    if (media) Party.Watch(media, shared ?? null).catch(() => {});
+    // oxlint-disable-next-line react/exhaustive-deps -- once per file and stream
+  }, [mediaKey, shared?.url]);
+  const [partyNotice, setPartyNotice] = useState<string>();
+  useEffect(() => {
+    if (!partyNotice) return undefined;
+    const timer = setTimeout(() => setPartyNotice(undefined), 3000);
+    return () => clearTimeout(timer);
+  }, [partyNotice]);
+  usePartyNotices((said) => {
+    // The party moving on is the prompt's to offer.
+    if (said.kind === "media") return;
+    const text = noticeText(said);
+    if (text) setPartyNotice(text);
+  });
+  const watchWithParty = useWatchWithParty();
+  const partyElsewhere = party && !party.watching && media ? party.media : undefined;
+  const partyIsNext =
+    partyElsewhere !== undefined &&
+    meta !== undefined &&
+    next !== undefined &&
+    partyElsewhere.id === meta.id &&
+    partyElsewhere.videoId === next.id;
   // While the next episode opens, the file ending or failing is expected.
   const switching = useRef(false);
   const switchAbort = useRef<AbortController>(null);
@@ -555,6 +618,14 @@ function PlayerFile() {
     }
     setSwitchStatus(undefined);
     setSwitcherOpen(true);
+  };
+  const openParty = () => {
+    if (mini) {
+      setMini(false);
+      Player.SetMini(false).catch(() => {});
+    }
+    setHelpOpen(false);
+    setPartyOpen(!partyOpen);
   };
   // "Start over", while a resumed file has played less than startOverFor.
   const resumedAt = playing?.resumedAt ?? 0;
@@ -827,7 +898,7 @@ function PlayerFile() {
       wake();
       // The switcher has the keys: Esc closes it, Space picks. The panel
       // keeps them too, but for Z and X (timing) and Esc (closes it).
-      if (error || switcherOpen) return;
+      if (error || switcherOpen || partyOpen) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       if (panel || pictureOpen) {
         const key = event.key.toLowerCase();
@@ -869,6 +940,7 @@ function PlayerFile() {
         p: () => ready && openPicture(),
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
         s: () => watching && openSwitcher(),
+        w: () => (watching || party) && openParty(),
         "?": () => !mini && setHelpOpen(!helpOpen),
         escape: () => {
           if (helpOpen) setHelpOpen(false);
@@ -905,7 +977,8 @@ function PlayerFile() {
     over ||
     menuOpen ||
     helpOpen ||
-    switcherOpen;
+    switcherOpen ||
+    partyOpen;
   const hold = { onPointerEnter: () => setOver(true), onPointerLeave: () => setOver(false) };
   const VolumeIcon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
   // Hours show once the file is that long; the times keep one width so the
@@ -982,6 +1055,37 @@ function PlayerFile() {
         !mini && (shown ? "bottom-[calc(var(--dock-h)+1.25rem)]" : "bottom-8"),
       )}
     >
+      {partyElsewhere && !mini && (
+        <Prompt
+          {...hold}
+          icon={<Users />}
+          action={
+            party?.isHost && media ? (
+              <Button
+                size="sm"
+                variant="light"
+                onClick={() => void Party.SwitchTo(media).catch(() => {})}
+              >
+                Switch the party to this
+              </Button>
+            ) : partyIsNext ? (
+              <Button size="sm" variant="light" onClick={() => setStarting(true)}>
+                Play it
+              </Button>
+            ) : (
+              <Button
+                size="sm"
+                variant="light"
+                onClick={() => watchWithParty(partyElsewhere, true)}
+              >
+                Watch with the party
+              </Button>
+            )
+          }
+        >
+          The party is watching {mediaLabel(partyElsewhere)}
+        </Prompt>
+      )}
       {offerStartOver && !mini && (
         <Prompt
           {...hold}
@@ -1122,6 +1226,20 @@ function PlayerFile() {
                 >
                   {torrentStatusText(torrentStatus)}
                 </p>
+              )}
+              {(watching || party) && (
+                <ControlButton
+                  label={party ? "Watch party" : "Start a watch party"}
+                  icon={Users}
+                  onClick={openParty}
+                  aria-keyshortcuts="W"
+                  aria-expanded={partyOpen}
+                  className={cn(
+                    party && "bg-white/12",
+                    partyChat.unread > 0 &&
+                      "after:absolute after:top-1.5 after:right-1.5 after:size-2 after:rounded-full after:bg-[#ffb547]",
+                  )}
+                />
               )}
               {watching && (
                 <ControlButton
@@ -1320,6 +1438,20 @@ function PlayerFile() {
           playing={playing?.stream}
           status={switchStatus}
           onPick={(candidate, names, refresh) => void switchStream(candidate, names, refresh)}
+        />
+      )}
+      <PartySheet
+        open={partyOpen && !mini}
+        onOpenChange={setPartyOpen}
+        state={partyState}
+        media={media}
+        canShare={shared !== undefined}
+      />
+      {!mini && !failure && (
+        <PartyPill
+          state={partyState}
+          notice={partyNotice}
+          onCatchUp={() => void Party.CatchUp().catch(() => {})}
         />
       )}
       {helpOpen && !failure && !mini && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}

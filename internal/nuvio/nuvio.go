@@ -580,6 +580,10 @@ func (c *Client) AvatarImageURL(a Avatar) string {
 type discovery struct {
 	Service        string `json:"service"`
 	PublishableKey string `json:"publishable_key"`
+	// What the backend offers beyond sync; older ones leave it out.
+	Capabilities *struct {
+		WatchParty bool `json:"watch_party"`
+	} `json:"capabilities,omitempty"`
 }
 
 // publishableKey returns the backend and its public key, reading the

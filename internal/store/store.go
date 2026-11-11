@@ -71,6 +71,7 @@ var (
 	keyAccount      = []byte("account")
 	keyKids         = []byte("kids")
 	keyServer       = []byte("server")
+	keyDeviceID     = []byte("device-id")
 )
 
 var (

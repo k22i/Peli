@@ -384,6 +384,9 @@ type Service struct {
 	reportEvery time.Duration
 	// media are the OS's media controls (#67); nil until UseMediaControls.
 	media mediaControls
+	// gate is asked before the user's pauses, seeks and speed changes: a
+	// watch party (ADR-0051). Nil until GateWith.
+	gate atomic.Pointer[Gate]
 
 	// ops serialises opening and closing sessions.
 	ops sync.Mutex
@@ -743,13 +746,67 @@ func (s *Service) closeSession(ses *session) {
 	}
 }
 
+// Gate is asked before each of the user's pauses, seeks and speed changes
+// reaches mpv, and may refuse it: a watch party (ADR-0051) publishes them
+// to the other members, or refuses them while only the host controls
+// playback. A refused change does nothing, and isn't an error.
+type Gate interface {
+	UserPause(paused bool) bool
+	// UserSeek returns where to go, or false to stay.
+	UserSeek(position float64) (float64, bool)
+	UserSpeed(speed float64) bool
+	// UserScrub is told while the seek bar is dragged.
+	UserScrub()
+}
+
+// GateWith has s ask g before the user's changes. It isn't a method, so
+// Wails doesn't bind it.
+func GateWith(s *Service, g Gate) { s.gate.Store(&g) }
+
+func (s *Service) gated() Gate {
+	if g := s.gate.Load(); g != nil {
+		return *g
+	}
+	return nil
+}
+
+// Direct is the player without its gate: what a watch party uses to keep
+// playback in step, which mustn't come back to it as the user's.
+type Direct struct{ s *Service }
+
+// DirectOf returns s without its gate. It isn't a method, so Wails doesn't
+// bind it.
+func DirectOf(s *Service) Direct { return Direct{s} }
+
+func (d Direct) Snapshot() State              { return d.s.Snapshot() }
+func (d Direct) SetPaused(paused bool) error  { return d.s.set("pause", flag(paused)) }
+func (d Direct) Seek(position float64) error  { return d.s.seek(position) }
+func (d Direct) SetSpeed(speed float64) error { return d.s.setSpeed(speed) }
+
 // SetPaused pauses or resumes playback.
 func (s *Service) SetPaused(paused bool) error {
+	if g := s.gated(); g != nil && !g.UserPause(paused) {
+		return nil
+	}
 	return s.set("pause", flag(paused))
 }
 
 // Seek goes to position, in seconds from the start.
 func (s *Service) Seek(position float64) error {
+	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
+		return ErrInvalid
+	}
+	if g := s.gated(); g != nil {
+		to, ok := g.UserSeek(position)
+		if !ok {
+			return nil
+		}
+		position = to
+	}
+	return s.seek(position)
+}
+
+func (s *Service) seek(position float64) error {
 	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
 		return ErrInvalid
 	}
@@ -764,13 +821,20 @@ func (s *Service) Scrub(position float64) error {
 	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
 		return ErrInvalid
 	}
+	if g := s.gated(); g != nil {
+		g.UserScrub()
+	}
 	return s.command("seek", seconds(position), "absolute+keyframes")
 }
 
-// SeekBy moves by delta seconds, back when it's negative.
+// SeekBy moves by delta seconds, back when it's negative. With a gate it
+// is a Seek to where that lands.
 func (s *Service) SeekBy(delta float64) error {
 	if math.IsNaN(delta) || math.IsInf(delta, 0) {
 		return ErrInvalid
+	}
+	if s.gated() != nil {
+		return s.Seek(math.Max(0, s.Snapshot().Position+delta))
 	}
 	return s.command("seek", seconds(delta), "relative")
 }
@@ -790,6 +854,16 @@ func (s *Service) SetMuted(muted bool) error {
 
 // SetSpeed sets the playback speed, 0.25–4.
 func (s *Service) SetSpeed(speed float64) error {
+	if speed < 0.25 || speed > 4 || math.IsNaN(speed) {
+		return ErrInvalid
+	}
+	if g := s.gated(); g != nil && !g.UserSpeed(speed) {
+		return nil
+	}
+	return s.setSpeed(speed)
+}
+
+func (s *Service) setSpeed(speed float64) error {
 	if speed < 0.25 || speed > 4 || math.IsNaN(speed) {
 		return ErrInvalid
 	}

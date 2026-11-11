@@ -1,6 +1,8 @@
 package store
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -274,6 +276,35 @@ func (s *Store) Server() (string, error) {
 		return nil
 	})
 	return server, err
+}
+
+// DeviceID returns this install's ID, made the first time it's asked for and
+// kept from then on: a watch party (ADR-0051) knows a device by it, so Sinag
+// opened again takes its own seat back rather than a new one. It isn't on
+// Service, so the webview never sees it.
+func (s *Store) DeviceID() (string, error) {
+	var id string
+	err := s.db.View(func(tx *bolt.Tx) error {
+		id = string(tx.Bucket(bucketSettings).Get(keyDeviceID))
+		return nil
+	})
+	if err != nil || id != "" {
+		return id, err
+	}
+	err = s.db.Update(func(tx *bolt.Tx) error {
+		settings := tx.Bucket(bucketSettings)
+		if kept := settings.Get(keyDeviceID); len(kept) > 0 {
+			id = string(kept)
+			return nil
+		}
+		b := make([]byte, 16)
+		if _, err := rand.Read(b); err != nil {
+			return err
+		}
+		id = "sinag-" + hex.EncodeToString(b)
+		return settings.Put(keyDeviceID, []byte(id))
+	})
+	return id, err
 }
 
 // SetServer keeps the URL of the user's own Nuvio backend, or "" for Nuvio's.

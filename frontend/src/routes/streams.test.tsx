@@ -13,7 +13,9 @@ import peerflixManifest from "@/lib/addon-protocol/fixtures/peerflix/manifest.js
 import peerflixMovie from "@/lib/addon-protocol/fixtures/peerflix/stream-movie.json";
 import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.json";
 import torrentioSeries from "@/lib/addon-protocol/fixtures/torrentio/stream-series.json";
+import { Party } from "@/lib/party";
 import { deviceSettingsQuery } from "@/lib/settings";
+import { partyState } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -1024,5 +1026,91 @@ describe("stream picker", () => {
     await opensThePlayer();
     expect(mocks.chosen).not.toHaveBeenCalled();
     expect(mocks.setChosen).not.toHaveBeenCalled();
+  });
+});
+
+// What the host plays, as the party names it.
+const partySource = {
+  infoHash: "",
+  fileIdx: null,
+  filename: "Party.File.mkv",
+  videoSize: 0,
+  bingeGroup: "",
+  addonId: "",
+  name: "",
+};
+
+describe("with a watch party", () => {
+  const answer = {
+    streams: [
+      {
+        name: "Source\nA",
+        url: "https://debrid.example/KEY/a",
+        behaviorHints: { filename: "Other.mkv" },
+      },
+      {
+        name: "Source\nB",
+        url: "https://debrid.example/KEY/b",
+        behaviorHints: { filename: "party.file.mkv" },
+      },
+    ],
+  };
+
+  it("offers the host's file, and starts it where the party is", async () => {
+    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
+    vi.mocked(Party.StartAt).mockResolvedValueOnce(754);
+    serve({ [movieStreams("torrentio.strem.fun")]: answer });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    expect(await screen.findByText("Watching with Ana’s party")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Play Ana’s stream" })).toBeNull();
+    await user.click(await screen.findByRole("button", { name: "Play the party’s source" }));
+    await opensThePlayer();
+    expect(mocks.resolve).toHaveBeenCalledWith(
+      expect.objectContaining({ url: "https://debrid.example/KEY/b" }),
+    );
+    expect(mocks.load).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ start: 754 }),
+    );
+  });
+
+  it("plays the host's own link when they share it", async () => {
+    vi.mocked(Party.State).mockResolvedValueOnce(
+      partyState(
+        {
+          shared: {
+            mediaKey: "movie|tt0111161||",
+            url: "https://cdn.example/host.mkv",
+            headers: { X: "y" },
+            responseHeaders: {},
+            name: "Host 4K",
+            description: "",
+            addonName: "",
+            addonId: "",
+            addonLogo: "",
+            filename: "",
+            videoSize: 0,
+            bingeGroup: "",
+            sharedBy: "Ana",
+          },
+        },
+        { source: partySource },
+      ),
+    );
+    serve({ [movieStreams("torrentio.strem.fun")]: answer });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await user.click(await screen.findByRole("button", { name: "Play Ana’s stream" }));
+    await opensThePlayer();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    expect(mocks.load).toHaveBeenCalledWith(
+      expect.objectContaining({ url: "https://cdn.example/host.mkv", headers: { X: "y" } }),
+      expect.objectContaining({ start: 0 }),
+    );
   });
 });

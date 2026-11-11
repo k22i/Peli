@@ -5,6 +5,7 @@ import type { KeyboardEvent, MouseEvent } from "react";
 
 import { useBarOverArt } from "@/components/shell/bar-tone";
 import { ConnectionStatus } from "@/components/shell/connection-status";
+import { PartyStatus } from "@/components/shell/party-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
 import { WindowControls } from "@/components/shell/window-controls";
 import { Wordmark } from "@/components/shell/wordmark";
@@ -173,6 +174,7 @@ export function TopBar({
         </nav>
         <div className="ms-auto flex items-center gap-2">
           <ConnectionStatus />
+          <PartyStatus />
           <ProfileMenu />
           {platform === "windows" && (
             <div className="-me-3 flex h-bar items-stretch">

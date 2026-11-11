@@ -1,6 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ChevronDown, LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
+import {
+  ChevronDown,
+  LogIn,
+  LogOut,
+  PartyPopper,
+  Puzzle,
+  Settings,
+  UserCog,
+  Users,
+} from "lucide-react";
 import { useState } from "react";
 
 import { parentSteps, pinSteps, usePinSteps } from "@/components/account/pin-dialog";
@@ -76,6 +85,14 @@ export function ProfileMenu() {
               <MenuLinkItem render={<Link to="/addons" />}>
                 <Puzzle />
                 Addons
+              </MenuLinkItem>
+            )}
+            {/* Watch parties (ADR-0051) need a Nuvio profile, and kids
+              profiles never join one. */}
+            {profile.signedIn && !profile.kids && (
+              <MenuLinkItem render={<Link to="/party" />}>
+                <PartyPopper />
+                Watch party
               </MenuLinkItem>
             )}
             {/* The app shell's shortcut. */}
