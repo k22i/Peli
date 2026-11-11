@@ -158,6 +158,13 @@ func (s *Service) RemoveProgress(profileID uint64, key string) error {
 	return s.store.RemoveProgress(profileID, key)
 }
 
+// ClearContinueWatching takes a title out of Continue Watching by removing
+// its unfinished progress. It does not mark it watched.
+func (s *Service) ClearContinueWatching(profileID uint64, contentID string) error {
+	_, err := s.store.ClearContinueWatching(profileID, contentID)
+	return err
+}
+
 // Watched returns everything a profile has watched.
 func (s *Service) Watched(profileID uint64) ([]WatchedItem, error) {
 	return s.store.Watched(profileID)

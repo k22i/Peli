@@ -184,6 +184,52 @@ func TestContinueWatching(t *testing.T) {
 	equal(t, got, []string{"tt4_s1e2", "tt1"})
 }
 
+func TestClearContinueWatching(t *testing.T) {
+	s, _ := openTemp(t)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P", NuvioIndex: ptr(1)}))
+	save := func(entry Progress) { must[Progress](t)(s.SaveProgress(p.ID, entry)) }
+	keys := func() []string {
+		var got []string
+		for _, entry := range must[[]Progress](t)(s.ContinueWatching(p.ID)) {
+			got = append(got, entry.Key)
+		}
+		return got
+	}
+
+	// A show with two unfinished episodes and a finished one, a longer ID
+	// that shares its prefix, and a film.
+	save(Progress{ContentID: "tt1", ContentType: "series", Season: ptr(1), Episode: ptr(1), Position: 50, Duration: 100, LastWatched: 1})
+	save(Progress{ContentID: "tt1", ContentType: "series", Season: ptr(1), Episode: ptr(2), Position: 20, Duration: 100, LastWatched: 2})
+	save(Progress{ContentID: "tt1", ContentType: "series", Season: ptr(1), Episode: ptr(3), Position: 95, Duration: 100, LastWatched: 0})
+	save(Progress{ContentID: "tt12", ContentType: "movie", Position: 10, Duration: 100, LastWatched: 3})
+	save(Progress{ContentID: "tt9", ContentType: "movie", Position: 10, Duration: 100, LastWatched: 4})
+	equal(t, keys(), []string{"tt9", "tt12", "tt1_s1e2"})
+
+	// Both unfinished episodes go, not just the latest, or the older one
+	// would take its place in the row. The finished one stays.
+	removed := must[int](t)(s.ClearContinueWatching(p.ID, "tt1"))
+	equal(t, removed, 2)
+	equal(t, keys(), []string{"tt9", "tt12"})
+	equal(t, len(must[[]Progress](t)(s.TitleProgress(p.ID, "tt1"))), 1)
+	if len(must[[]WatchedItem](t)(s.TitleWatched(p.ID, "tt1"))) != 0 {
+		t.Fatal("clearing marked the title watched")
+	}
+
+	// A delete per removed entry reaches Nuvio, in place of its upsert.
+	var deletes []string
+	for _, push := range must[[]Push](t)(s.Pending(p.ID)) {
+		if push.Surface == SurfaceProgress && push.Op == OpDelete {
+			deletes = append(deletes, push.Key)
+		}
+	}
+	equal(t, deletes, []string{"tt1_s1e1", "tt1_s1e2"})
+
+	// Nothing to clear is not an error, and playing it again brings it back.
+	equal(t, must[int](t)(s.ClearContinueWatching(p.ID, "tt1")), 0)
+	save(Progress{ContentID: "tt1", ContentType: "series", Season: ptr(1), Episode: ptr(2), Position: 5, Duration: 100, LastWatched: 9})
+	equal(t, keys(), []string{"tt1_s1e2", "tt9", "tt12"})
+}
+
 func TestLastWatched(t *testing.T) {
 	s, _ := openTemp(t)
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))

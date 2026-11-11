@@ -104,3 +104,37 @@ func (s *Store) RemoveProgress(id uint64, key string) error {
 		return remove(p, bucketProgress, SurfaceProgress, []byte(key), key)
 	})
 }
+
+// ClearContinueWatching takes a title out of profile id's Continue Watching
+// without marking it watched: it removes the title's unfinished progress, in
+// one transaction, and queues the deletes like any removal.
+//
+// Nuvio has no hidden flag to sync: its progress is rows, and its apps
+// "remove from Continue Watching" by deleting them. Deleting is also what
+// makes the title come back when it is played again, since playing saves
+// fresh progress. A flag would be local to this device, and would have to
+// be reset on play. Finished entries stay, as they are what "watched"
+// reads, and Continue Watching leaves them out anyway.
+func (s *Store) ClearContinueWatching(id uint64, contentID string) (int, error) {
+	removed := 0
+	err := s.update(id, func(p *bolt.Bucket) error {
+		var keys []string
+		err := eachPrefix(p.Bucket(bucketProgress), []byte(contentID), func(entry Progress) {
+			// The prefix also matches longer IDs ("tt12" and "tt123").
+			if entry.ContentID == contentID && !entry.finished() {
+				keys = append(keys, entry.Key)
+			}
+		})
+		if err != nil {
+			return err
+		}
+		for _, key := range keys {
+			if err := remove(p, bucketProgress, SurfaceProgress, []byte(key), key); err != nil {
+				return err
+			}
+		}
+		removed = len(keys)
+		return nil
+	})
+	return removed, err
+}
