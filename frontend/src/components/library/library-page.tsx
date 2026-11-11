@@ -7,6 +7,7 @@ import { BrowseFrame, GridSkeleton } from "@/components/browse/browse-page";
 import { LibraryNotice } from "@/components/library/notice";
 import { Upcoming } from "@/components/library/upcoming";
 import { SelectionBar } from "@/components/library/selection-bar";
+import { Watchlist } from "@/components/library/watchlist";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
@@ -49,7 +50,8 @@ import type { LibraryItem, Profile } from "@bindings/store";
 // type and sorted. It reads the local store, which pulls keep in step with
 // Nuvio, so it shows offline too. A card's context menu (the shared title menu) or Delete on a
 // focused card removes it, with Undo in the toast. The Upcoming tab is the calendar of
-// the library's new episodes (#48). The header is Browse's (#116, #118): the
+// the library's new episodes (#48); the Watchlist tab is what SIMKL and AniList
+// have planned. The header is Browse's (#116, #118): the
 // title and the view switch, and under them the type chips and Sort.
 export function LibraryPage() {
   const profile = useQuery(currentProfileQuery).data;
@@ -72,12 +74,14 @@ function LibraryFrame({ rail, children }: { rail?: ReactNode; children: ReactNod
   );
 }
 
-// Titles or Upcoming: coss Tabs as a segmented control on an ink tint. The
+// Titles, Upcoming or Watchlist: coss Tabs as a segmented control on an ink tint. The
 // pill is a wrapper, since a tier sets its own background; the tab list
 // inside it is bare, and its indicator is the raised knob.
 function ViewSwitch() {
   const search: LibrarySearch = useSearch({ strict: false });
   const navigate = useNavigate();
+  // Kids profiles keep no tracking, so no Watchlist.
+  const kids = useQuery(currentProfileQuery).data?.kids ?? false;
   return (
     // Replaced, as the filters are; the titles' filters stay in the address
     // for coming back.
@@ -88,7 +92,7 @@ function ViewSwitch() {
           to: ".",
           search: (previous: LibrarySearch): LibrarySearch => ({
             ...previous,
-            view: next === "upcoming" ? "upcoming" : undefined,
+            view: next === "upcoming" || next === "watchlist" ? next : undefined,
           }),
           replace: true,
         })
@@ -105,6 +109,11 @@ function ViewSwitch() {
           <TabsTab value="upcoming" className="rounded-full px-4">
             Upcoming
           </TabsTab>
+          {!kids && (
+            <TabsTab value="watchlist" className="rounded-full px-4">
+              Watchlist
+            </TabsTab>
+          )}
         </TabsList>
       </span>
     </Tabs>
@@ -128,6 +137,13 @@ function Library({ profile }: { profile: Profile }) {
     return (
       <LibraryFrame>
         <Upcoming profile={profile} />
+      </LibraryFrame>
+    );
+  }
+  if (search.view === "watchlist" && !profile.kids) {
+    return (
+      <LibraryFrame>
+        <Watchlist profile={profile} />
       </LibraryFrame>
     );
   }

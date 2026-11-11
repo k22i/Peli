@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouterState } from "@tanstack/react-router";
 import { Browser } from "@wailsio/runtime";
 import { Check, Clapperboard, Eye, EyeOff, Film, Play, Plus, RotateCcw } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 
 import type { Profile, WatchedItem } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
@@ -11,9 +11,10 @@ import { About } from "@/components/title/about";
 import { BackButton } from "@/components/title/back-button";
 import { CastList } from "@/components/title/cast-list";
 import { Episodes } from "@/components/title/episodes";
+import { RoundAction } from "@/components/title/round-action";
+import { TrackingActions } from "@/components/title/tracking-actions";
 import { RelatedRows } from "@/components/title/related-rows";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import type { ContentType, Meta } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
@@ -221,6 +222,7 @@ function LoadedTitle({
             >
               {watched ? <EyeOff /> : <Eye />}
             </RoundAction>
+            <TrackingActions profile={profile} meta={meta} />
             {/* YouTube opens in the system browser; the player isn't involved.
                 A kids profile doesn't leave the app. */}
             {art?.trailer && !profile.kids && (
@@ -257,39 +259,6 @@ function LoadedTitle({
       <About meta={meta} withCast={!art || art.cast.length === 0} art={art} />
       {art && !profile.kids && <RelatedRows art={art} />}
     </>
-  );
-}
-
-// A round media-glass icon button with a tooltip. The label is the button's
-// accessible name, as the text buttons it replaced had.
-function RoundAction({
-  label,
-  disabled,
-  onClick,
-  children,
-}: {
-  label: string;
-  disabled: boolean;
-  onClick: () => void;
-  children: ReactNode;
-}) {
-  return (
-    <Tooltip>
-      <TooltipTrigger
-        render={
-          <Button
-            variant="media"
-            size="icon-xl"
-            aria-label={label}
-            disabled={disabled}
-            onClick={onClick}
-          />
-        }
-      >
-        {children}
-      </TooltipTrigger>
-      <TooltipPopup>{label}</TooltipPopup>
-    </Tooltip>
   );
 }
 

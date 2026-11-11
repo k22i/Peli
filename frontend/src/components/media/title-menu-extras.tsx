@@ -1,3 +1,4 @@
+import { TrackingMenu } from "@/components/media/tracking-menu";
 import type { Meta } from "@/lib/addon-protocol";
 import type { MenuTitle } from "@/lib/title-actions";
 import type { Profile } from "@bindings/store";
@@ -19,8 +20,6 @@ export type TitleMenuExtrasProps = {
   profile: Profile;
 };
 
-// Nothing yet.
 export function TitleMenuExtras(props: TitleMenuExtrasProps) {
-  void props;
-  return null;
+  return <TrackingMenu {...props} />;
 }

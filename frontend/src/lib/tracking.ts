@@ -1,6 +1,8 @@
-import { queryOptions, useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryOptions, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Events } from "@wailsio/runtime";
 import { useEffect } from "react";
+
+import { toastManager } from "@/components/ui/toast";
 
 import {
   Service as Tracking,
@@ -181,6 +183,9 @@ export const trackingStatuses = [
 ] as const;
 export type TrackingStatus = (typeof trackingStatuses)[number];
 
+// What a rating can be, lowest first.
+export const ratingValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
+
 // Labels for menus and buttons. "none" takes the title off the lists.
 export const trackingStatusLabels: Record<TrackingStatus, string> = {
   planned: "Plan to watch",
@@ -288,24 +293,35 @@ function useOptimisticChange<Value>(
   ref: TitleRef,
   send: (value: Value) => Promise<TitleTracking>,
   apply: (current: TitleTracking, value: Value) => TitleTracking,
+  // The watchlist as it is once the change is made, when the change moves
+  // the title on or off it.
+  afterWatchlist?: (list: WatchlistItem[], value: Value) => WatchlistItem[],
 ) {
   const queryClient = useQueryClient();
   const key = titleKey(profileId, ref);
+  const watchlistKey = watchlistQuery(profileId).queryKey;
   return useMutation({
     mutationFn: send,
     onMutate: async (value: Value) => {
       await queryClient.cancelQueries({ queryKey: key });
       const before = queryClient.getQueryData<TitleTracking>(key);
+      const listBefore = queryClient.getQueryData<WatchlistItem[]>(watchlistKey);
       const current = before ?? { status: "none", rating: 0, services: [], queued: false };
       queryClient.setQueryData<TitleTracking>(key, apply(current, value));
-      return { before };
+      if (afterWatchlist && listBefore) {
+        queryClient.setQueryData(watchlistKey, afterWatchlist(listBefore, value));
+      }
+      return { before, listBefore };
     },
-    onError: (_error, _value, context) => {
+    onError: (error, _value, context) => {
       queryClient.setQueryData(key, context?.before);
+      if (context?.listBefore) queryClient.setQueryData(watchlistKey, context.listBefore);
+      const { title, description } = trackingActionProblem(error);
+      toastManager.add({ type: "error", title, ...(description ? { description } : {}) });
     },
     onSuccess: (answer) => {
       queryClient.setQueryData(key, answer);
-      void queryClient.invalidateQueries({ queryKey: ["tracking", profileId, "watchlist"] });
+      void queryClient.invalidateQueries({ queryKey: watchlistKey });
     },
   });
 }
@@ -318,6 +334,8 @@ export function useSetTrackingStatus(profileId: number, ref: TitleRef) {
     ref,
     (status) => Tracking.SetStatus(profileId, ref, status),
     (current, status) => ({ ...current, status }),
+    // Only the planned titles are on the watchlist.
+    (list, status) => (status === "planned" ? list : list.filter((item) => item.id !== ref.id)),
   );
 }
 
@@ -355,3 +373,25 @@ export function trackingActionProblem(error: unknown) {
       return { title: "Couldn’t update your lists", description: "Try again." };
   }
 }
+
+// Everything a title's menu or page needs to show and change its tracking.
+// `statuses` is empty on a kids profile and with nothing connected, which is
+// how callers know to show nothing; the title's own state is only asked for
+// when there is something to show it in.
+export function useTrackingControls(
+  profile: { id: number; kids?: boolean | undefined },
+  type: string,
+  ref: TitleRef,
+) {
+  const connections = useQuery(trackingQuery(profile.id)).data;
+  const statuses = profile.kids ? [] : statusesFor(connections, type);
+  const available = statuses.length > 0;
+  const state = useQuery({ ...titleTrackingQuery(profile.id, ref), enabled: available });
+  const setStatus = useSetTrackingStatus(profile.id, ref);
+  const setRating = useSetTrackingRating(profile.id, ref);
+  return { available, statuses, state: state.data, setStatus, setRating };
+}
+
+// A status from a menu's value, or nothing.
+export const trackingStatusOf = (value: unknown): TrackingStatus | undefined =>
+  trackingStatuses.find((status) => status === value);

@@ -12,6 +12,27 @@ vi.mock("@bindings/animelist", () => ({
   },
 }));
 
+// Tracking (#71): nothing connected, unless a test says otherwise. Every
+// title's menu and page asks.
+vi.mock("@bindings/tracking", () => ({
+  Service: {
+    Status: vi.fn<() => Promise<unknown>>(() =>
+      Promise.resolve({
+        simklAvailable: true,
+        anilistAvailable: true,
+        kids: false,
+        simkl: null,
+        anilist: null,
+      }),
+    ),
+    ImportSoon: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    TitleStatus: vi.fn<() => Promise<unknown>>(() =>
+      Promise.resolve({ status: "none", rating: 0, services: [], queued: false }),
+    ),
+    Watchlist: vi.fn<() => Promise<unknown[]>>(() => Promise.resolve([])),
+  },
+}));
+
 // jsdom does not implement scrolling; the router's scroll restoration and
 // Base UI's menus call it.
 window.scrollTo = () => {};
