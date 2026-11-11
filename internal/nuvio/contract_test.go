@@ -81,6 +81,9 @@ var contract = map[string]answer{
 	"/rest/v1/rpc/sync_pull_library_delta":        rows[LibraryEvent](),
 	"/rest/v1/rpc/sync_pull_watch_progress_delta": rows[ProgressEvent](),
 	"/rest/v1/rpc/sync_pull_watched_items_delta":  rows[WatchedEvent](),
+	"/rest/v1/rpc/sync_pull_library":              rows[LibraryRow](),
+	"/rest/v1/rpc/sync_pull_watch_progress":       rows[ProgressRow](),
+	"/rest/v1/rpc/sync_pull_watched_items":        rows[WatchedRow](),
 	"/rest/v1/rpc/sync_push_library_items":        {},
 	"/rest/v1/rpc/sync_delete_library_items":      {},
 	"/rest/v1/rpc/sync_push_watch_progress":       {},
@@ -549,6 +552,31 @@ func TestContract(t *testing.T) {
 		deleted, err := c.LibraryDelta(t.Context(), s, index, cursor)
 		if err != nil || len(deleted) != 1 || deleted[0].Operation != OpDelete || deleted[0].ContentID != items[0].ContentID {
 			t.Fatalf("delta after a delete = %+v, %v", deleted, err)
+		}
+	})
+
+	run("snapshots", func(t *testing.T) {
+		// The library paging case above left DeltaLimit items, less the one
+		// it deleted: more than a page of them.
+		library, err := c.LibraryList(t.Context(), s, index)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(library) != DeltaLimit {
+			t.Fatalf("library snapshot has %d items, want %d", len(library), DeltaLimit)
+		}
+		seen := map[string]bool{}
+		for _, item := range library {
+			if seen[item.ContentID] {
+				t.Fatalf("library snapshot repeats %s across pages", item.ContentID)
+			}
+			seen[item.ContentID] = true
+		}
+		if _, complete, err := c.ProgressList(t.Context(), s, index); err != nil || !complete {
+			t.Fatalf("progress snapshot: complete %v, %v", complete, err)
+		}
+		if _, err := c.WatchedList(t.Context(), s, index); err != nil {
+			t.Fatal(err)
 		}
 	})
 

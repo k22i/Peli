@@ -85,7 +85,7 @@ export function PinEntry({
   return (
     <div className="flex flex-col items-center gap-5">
       <ProfileAvatar profile={profile} className="size-20 text-2xl" />
-      <p className="text-item">{profile.name}</p>
+      <p className="type-item">{profile.name}</p>
       {mode === "parent" && (
         <p className="max-w-56 text-center text-body text-muted-foreground">
           Ask a parent to enter the PIN.

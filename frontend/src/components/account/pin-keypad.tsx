@@ -12,7 +12,7 @@ const key =
 
 // The shared 3×4 numeric keypad for PIN entry (#25), used by the unlock
 // dialog and the set/change/clear wizard, in the style of a lock screen
-// (#123): round keys on the thin glass tier. Buttons keep the accessible
+// (#123): round keys on the thin material-pop tier. Buttons keep the accessible
 // names "1".."9", "0" and "Backspace" so both flows can be driven the same
 // way.
 export function PinKeypad({
@@ -35,7 +35,7 @@ export function PinKeypad({
             variant="ghost"
             className={cn(
               key,
-              "glass-thin border-transparent text-heading hover:bg-(--glass-thin) hover:before:bg-foreground/8 data-pressed:bg-(--glass-thin)",
+              "border-transparent bg-foreground/7 font-display text-[1.75rem] font-normal hover:bg-foreground/12 data-pressed:bg-foreground/16",
             )}
             disabled={disabled}
             onClick={() => onPress(digit)}

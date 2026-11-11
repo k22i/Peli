@@ -19,7 +19,11 @@ type ProfileSettings struct {
 	// one, saved as "audioLanguage": ProfileSettings carries it over.
 	AudioLanguages   []string `json:"audioLanguages"`
 	SubtitleLanguage string   `json:"subtitleLanguage"`
-	SubtitleSize     string   `json:"subtitleSize"`
+	// SubtitleSize is the size from before subtitle styles, kept for older data: the
+	// style's Size is what the player uses.
+	SubtitleSize string `json:"subtitleSize"`
+	// SubtitleStyle is how text subtitles look.
+	SubtitleStyle SubtitleStyle `json:"subtitleStyle"`
 	// "system" follows the OS's captions preference; "on" and "off" override it.
 	Captions string `json:"captions"`
 	// SkipIntros skips intros and recaps without asking, where their times
@@ -38,7 +42,39 @@ type ProfileSettings struct {
 	// AnimeInMoviesAndShows keeps anime the anime list knows in Movies,
 	// Shows and their search results (#109). Off: it's the Anime tab's.
 	AnimeInMoviesAndShows bool `json:"animeInMoviesAndShows"`
+	// AnimePosterAddon is the URL of the addon whose posters the Anime tab
+	// shows, where an entry is one film or show to it; "" keeps AniList's
+	// covers. The catalog and its details stay AniList's.
+	AnimePosterAddon string `json:"animePosterAddon"`
 }
+
+// SubtitleStyle is how text subtitles look: player.SubtitleStyle,
+// saved with the profile.
+type SubtitleStyle struct {
+	// Font is one of SubtitleFonts.
+	Font string `json:"font"`
+	// Size is a percentage of the player's own size, 50–200.
+	Size int `json:"size"`
+	// Color is "#RRGGBB".
+	Color string `json:"color"`
+	// Edge is one of SubtitleEdges; Backdrop is the box's opacity, 0–100.
+	Edge     string `json:"edge"`
+	Backdrop int    `json:"backdrop"`
+	// Lift raises the subtitles, in percent of the picture, 0–30.
+	Lift int  `json:"lift"`
+	Bold bool `json:"bold"`
+	// Override restyles subtitles that bring their own styling too.
+	Override bool `json:"override"`
+}
+
+// DefaultSubtitleStyle is a profile's style until it changes it: plain
+// white sans with an outline, where the file puts it.
+func DefaultSubtitleStyle() SubtitleStyle {
+	return SubtitleStyle{Font: "sans", Size: 100, Color: "#FFFFFF", Edge: "outline", Backdrop: 60}
+}
+
+// subtitleSizePercent is an older SubtitleSize as a style's Size.
+var subtitleSizePercent = map[string]int{"small": 75, "medium": 100, "large": 135}
 
 // DeviceSettings belong to this machine, whoever is watching.
 type DeviceSettings struct {
@@ -66,6 +102,9 @@ type DeviceSettings struct {
 
 var (
 	SubtitleSizes     = []string{"small", "medium", "large"}
+	SubtitleFonts     = []string{"sans", "serif", "mono"}
+	SubtitleEdges     = []string{"none", "outline", "shadow", "box"}
+	hexRGB            = regexp.MustCompile(`^#[0-9A-Fa-f]{6}$`)
 	CaptionsModes     = []string{"system", "on", "off"}
 	TorrentCacheSizes = []int{2, 5, 10, 20, 50}
 	MaxResolutions    = []string{"auto", "2160p", "1080p", "720p"}
@@ -80,7 +119,7 @@ var (
 // DefaultProfileSettings are a profile's settings until it changes them.
 func DefaultProfileSettings() ProfileSettings {
 	return ProfileSettings{
-		AudioLanguages: []string{}, SubtitleSize: "medium", Captions: "system",
+		AudioLanguages: []string{}, SubtitleSize: "medium", SubtitleStyle: DefaultSubtitleStyle(), Captions: "system",
 		SimklScrobble: true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
 	}
@@ -106,6 +145,13 @@ func (s *Store) ProfileSettings(id uint64) (ProfileSettings, error) {
 	})
 	if settings.AudioLanguages == nil {
 		settings.AudioLanguages = []string{}
+	}
+	if settings.SubtitleStyle.Font == "" {
+		// Saved before subtitle styles: the default style at the size picked then.
+		settings.SubtitleStyle = DefaultSubtitleStyle()
+		if size, ok := subtitleSizePercent[settings.SubtitleSize]; ok {
+			settings.SubtitleStyle.Size = size
+		}
 	}
 	return settings, err
 }
@@ -195,6 +241,12 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	if !slices.Contains(SubtitleSizes, settings.SubtitleSize) {
 		return fmt.Errorf("%w: subtitle size %q", ErrInvalidSettings, settings.SubtitleSize)
+	}
+	style := settings.SubtitleStyle
+	if !slices.Contains(SubtitleFonts, style.Font) || style.Size < 50 || style.Size > 200 ||
+		!hexRGB.MatchString(style.Color) || !slices.Contains(SubtitleEdges, style.Edge) ||
+		style.Backdrop < 0 || style.Backdrop > 100 || style.Lift < 0 || style.Lift > 30 {
+		return fmt.Errorf("%w: subtitle style %+v", ErrInvalidSettings, style)
 	}
 	if !slices.Contains(CaptionsModes, settings.Captions) {
 		return fmt.Errorf("%w: captions %q", ErrInvalidSettings, settings.Captions)

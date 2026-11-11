@@ -27,12 +27,14 @@ export const Route = createFileRoute("/addons")({
 function Addons() {
   const profile = useQuery(currentProfileQuery).data;
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-gutter py-8">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-8 px-page pt-8 pb-16">
       {profile ? (
         <Manager profile={profile} />
       ) : (
         <>
-          <h1 className="text-title">Addons</h1>
+          <h1 className="font-display text-[clamp(2.75rem,1.9rem+2.6vw,4.5rem)] leading-[0.95] tracking-[-0.01em]">
+            Addons
+          </h1>
           <Skeleton className="h-40 rounded-2xl" />
         </>
       )}
@@ -106,9 +108,11 @@ function Manager({ profile }: { profile: Profile }) {
 
   return (
     <>
-      <header className="flex items-end justify-between gap-4">
-        <div className="flex flex-col gap-1">
-          <h1 className="text-title">Addons</h1>
+      <header className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-col gap-3">
+          <h1 className="font-display text-[clamp(2.75rem,1.9rem+2.6vw,4.5rem)] leading-[0.95] tracking-[-0.01em]">
+            Addons
+          </h1>
           <p className="text-body text-muted-foreground">{syncNote(profile)}</p>
         </div>
         <Button
@@ -138,7 +142,7 @@ function Manager({ profile }: { profile: Profile }) {
           {/* oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
           <ul
             aria-label="Installed addons"
-            className="flex flex-col divide-y rounded-2xl border bg-card"
+            className="flex flex-col divide-y divide-border rounded-2xl bg-card hairline"
             onDragLeave={(event) => {
               const to = event.relatedTarget;
               if (!(to instanceof Node && event.currentTarget.contains(to))) {

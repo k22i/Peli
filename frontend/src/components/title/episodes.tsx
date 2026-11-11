@@ -29,7 +29,7 @@ import {
 const chipSeasons = 30;
 
 // The Episodes section (#117): a header that sticks under the title bar as a
-// glass strip once the episodes scroll beneath it (the Browse header's
+// material-pop strip once the episodes scroll beneath it (the Browse header's
 // pattern, #116), holding the heading, the season picker and "Mark season
 // watched", then the season's episodes.
 export function Episodes({
@@ -75,15 +75,15 @@ export function Episodes({
       <header
         ref={header}
         data-stuck={stuck || undefined}
-        className="group/header sticky top-(--titlebar-h) z-10 mb-2 data-stuck:scroll-edge-top"
+        className="group/header sticky top-(--spacing-bar) z-10 mb-1 transition-[background-color,box-shadow] duration-(--duration-base) data-stuck:material-bar data-stuck:shadow-[0_1px_0_var(--border)]"
       >
         {/* Heading, rail, button in the DOM (and Tab) order; the grid puts the
             rail on its own row. Stuck, the heading steps clear of the fixed
             Back button. */}
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-6 gap-y-3 py-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:glass group-data-stuck/header:py-2">
+        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-6 gap-y-3 py-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:py-2">
           <h2
             id="episodes"
-            className="col-start-1 row-start-1 ps-gutter text-heading motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:ps-[calc(var(--spacing-gutter)+3.25rem)]"
+            className="col-start-1 row-start-1 ps-page font-display text-[2.25rem] leading-none motion-safe:transition-[padding,font-size] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:ps-[calc(var(--spacing-page)+3.25rem)] group-data-stuck/header:text-[1.75rem]"
           >
             Episodes
           </h2>
@@ -105,18 +105,18 @@ export function Episodes({
             </ChipRail>
           ) : (
             seasons.length > 1 && (
-              <div className="col-span-2 row-start-2 px-gutter">
+              <div className="col-span-2 row-start-2 px-page">
                 <SeasonSelect seasons={seasons} value={season} onChange={choose} />
               </div>
             )
           )}
           <Button
-            variant="ghost"
-            className="col-start-2 row-start-1 me-[calc(var(--spacing-gutter)-0.5rem)]"
+            variant="secondary"
+            className="col-start-2 row-start-1 me-page"
             disabled={busy || aired.length === 0}
             onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
           >
-            <Check className={seasonWatched ? "text-brand" : undefined} />
+            <Check className={seasonWatched ? "text-sun-ink opacity-100" : undefined} />
             {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
           </Button>
         </div>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ChevronsUpDown, LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
+import { ChevronDown, LogIn, LogOut, Puzzle, Settings, UserCog, Users } from "lucide-react";
 import { useState } from "react";
 
 import { parentSteps, pinSteps, usePinSteps } from "@/components/account/pin-dialog";
@@ -42,24 +42,23 @@ export function ProfileMenu() {
       <Menu>
         <MenuTrigger
           aria-label={`Profile: ${profile.name}`}
-          className="flex w-full items-center gap-3 rounded-xl p-2 text-start text-sm outline-none hover:bg-sidebar-accent focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-sidebar-accent max-md:justify-center"
+          className="group/profile flex items-center gap-1.5 rounded-full p-0.5 pe-2 outline-none transition-colors duration-(--duration-fast) hover:bg-foreground/8 focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-foreground/10"
         >
-          <ProfileAvatar profile={profile} className="size-8" />
-          <span className="sr-only min-w-0 flex-1 truncate font-[550] md:not-sr-only">
-            {profile.name}
-          </span>
-          <ChevronsUpDown
+          <ProfileAvatar profile={profile} className="size-7 text-[0.625rem]" />
+          <ChevronDown
             aria-hidden
-            className="hidden size-4 shrink-0 text-muted-foreground md:block"
+            className="size-3.5 text-foreground/60 transition-transform duration-(--duration-fast) group-data-popup-open/profile:rotate-180"
           />
         </MenuTrigger>
-        <MenuPopup side="top" align="start" className="w-64">
+        <MenuPopup side="bottom" align="end" sideOffset={8} className="w-72">
           <MenuGroup>
-            <MenuGroupLabel className="flex items-center gap-3 py-2 text-sm tracking-normal text-foreground normal-case">
-              <ProfileAvatar profile={profile} className="size-10 text-sm" />
-              <span className="flex min-w-0 flex-col">
-                <span className="truncate font-semibold">{profile.name}</span>
-                <span className="truncate text-meta font-normal text-muted-foreground">
+            <MenuGroupLabel className="flex items-center gap-3 px-2 pt-2 pb-3 text-body tracking-normal text-foreground normal-case">
+              <ProfileAvatar profile={profile} className="size-11 text-sm" />
+              <span className="flex min-w-0 flex-col gap-0.5">
+                <span className="truncate font-display text-[1.375rem] leading-none font-normal">
+                  {profile.name}
+                </span>
+                <span className="truncate text-small font-normal text-muted-foreground">
                   {statusLine(profile)}
                 </span>
               </span>

@@ -222,7 +222,7 @@ export function MenuGroupLabel({
 }): React.ReactElement {
   return (
     <MenuPrimitive.GroupLabel
-      className={cn("px-2.5 py-1.5 text-label text-muted-foreground data-inset:ps-9", className)}
+      className={cn("px-2.5 py-1.5 type-eyebrow text-muted-foreground data-inset:ps-9", className)}
       data-inset={inset}
       data-slot="menu-label"
       {...props}

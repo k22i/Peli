@@ -496,3 +496,28 @@ export function useSessionEndedRedirect() {
     [queryClient, navigate],
   );
 }
+
+const profilesChangedEvent = "account:profiles-changed";
+
+// Keeps the profiles on screen in step when a sync finds they changed on
+// Nuvio: one deleted, added or renamed elsewhere, or a PIN set or
+// removed on another device. A profile in use that gains a PIN stays
+// unlocked for this run (Go does the same); if the one in use was deleted,
+// the app moves to the profile Go made current.
+export function useProfilesChangedEvents() {
+  const queryClient = useQueryClient();
+  useEffect(
+    () =>
+      Events.On(profilesChangedEvent, (event) => {
+        const { current, currentGone } = event.data;
+        if (!currentGone && current.pinEnabled && current.id !== undefined) {
+          const id = current.id;
+          queryClient.setQueryData<number[]>(unlockedProfilesKey, (ids) =>
+            ids?.includes(id) ? ids : [...(ids ?? []), id],
+          );
+        }
+        void profileChanged(queryClient, current);
+      }),
+    [queryClient],
+  );
+}

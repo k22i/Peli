@@ -17,35 +17,72 @@ export type ContrastPair = {
 };
 
 // Every foreground/background pairing the components use, checked in both
-// modes by contrast.test.ts and listed in the gallery.
+// modes by contrast.test.ts and listed in the gallery. Translucent layers go
+// on top of what they sit over; "over black" and "over white" stand for the
+// darkest and brightest art or page under a material.
+const media = "#1c1a188c"; // material-media: rgb(28 26 24 / 0.55)
+
 export const contrastPairs: ContrastPair[] = [
   { label: "Text", foreground: "foreground", background: ["background"], min: AA_TEXT },
-  { label: "Text on card", foreground: "card-foreground", background: ["card"], min: AA_TEXT },
-  { label: "Text on sidebar", foreground: "foreground", background: ["sidebar"], min: AA_TEXT },
   {
-    label: "Muted text",
-    foreground: "muted-foreground",
-    background: ["background"],
+    label: "Text on a raised surface",
+    foreground: "card-foreground",
+    background: ["card"],
     min: AA_TEXT,
   },
+  { label: "Muted text", foreground: "muted-foreground", background: ["background"], min: AA_TEXT },
   {
-    label: "Muted text on card",
+    label: "Muted text on a raised surface",
     foreground: "muted-foreground",
     background: ["card"],
     min: AA_TEXT,
   },
+  { label: "Popup text", foreground: "popover-foreground", background: ["popover"], min: AA_TEXT },
   {
-    label: "Sidebar item",
-    foreground: "sidebar-foreground",
-    background: ["sidebar"],
+    label: "Muted popup text",
+    foreground: "muted-foreground",
+    background: ["popover"],
+    min: AA_TEXT,
+  },
+  // The pop material (menus, selects, tooltips, toasts) over whatever is under it.
+  {
+    label: "Text on pop, over black",
+    foreground: "foreground",
+    background: ["#000000", "pop"],
     min: AA_TEXT,
   },
   {
-    label: "Sidebar item, active",
-    foreground: "sidebar-accent-foreground",
-    background: ["sidebar", "sidebar-accent"],
+    label: "Text on pop, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "pop"],
     min: AA_TEXT,
   },
+  {
+    label: "Muted text on pop, over the page",
+    foreground: "muted-foreground",
+    background: ["background", "pop"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Highlighted menu item",
+    foreground: "foreground",
+    background: ["background", "pop", "accent"],
+    min: AA_TEXT,
+  },
+  // The top bar and sticky headers once the page scrolls under them.
+  {
+    label: "Text on the bar, over black",
+    foreground: "foreground",
+    background: ["#000000", "bar"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on the bar, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "bar"],
+    min: AA_TEXT,
+  },
+  // Buttons.
   {
     label: "Primary button",
     foreground: "primary-foreground",
@@ -58,39 +95,32 @@ export const contrastPairs: ContrastPair[] = [
     background: ["background", "secondary"],
     min: AA_TEXT,
   },
+  { label: "Sun button", foreground: "sun-foreground", background: ["sun"], min: AA_TEXT },
+  // coss's destructive Button sets `text-white`.
+  { label: "Destructive button", foreground: "#ffffff", background: ["destructive"], min: AA_TEXT },
+  { label: "Selected chip", foreground: "background", background: ["foreground"], min: AA_TEXT },
+  // The sun as text: eyebrows, the top pick's label, cached badges.
+  { label: "Sun text", foreground: "sun-ink", background: ["background"], min: AA_TEXT },
   {
-    // coss's destructive Button sets `text-white`.
-    label: "Destructive button",
-    foreground: "#ffffff",
-    background: ["destructive"],
+    label: "Sun text on a raised surface",
+    foreground: "sun-ink",
+    background: ["card"],
+    min: AA_TEXT,
+  },
+  { label: "Sun badge", foreground: "sun-ink", background: ["card", "sun-soft"], min: AA_TEXT },
+  {
+    label: "Sun badge on the page",
+    foreground: "sun-ink",
+    background: ["background", "sun-soft"],
     min: AA_TEXT,
   },
   {
-    label: "Brand fill",
-    foreground: "brand-foreground",
-    background: ["brand"],
+    label: "Badge text on muted",
+    foreground: "foreground",
+    background: ["card", "muted"],
     min: AA_TEXT,
   },
-  { label: "Brand text", foreground: "brand", background: ["background"], min: AA_TEXT },
-  { label: "Brand text on card", foreground: "brand", background: ["card"], min: AA_TEXT },
-  {
-    label: "Selected chip",
-    foreground: "brand",
-    background: ["background", "brand-soft"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Popup text",
-    foreground: "popover-foreground",
-    background: ["background", "popover"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Popup muted text",
-    foreground: "muted-foreground",
-    background: ["background", "popover"],
-    min: AA_TEXT,
-  },
+  // States.
   {
     label: "Error text",
     foreground: "destructive-foreground",
@@ -110,285 +140,53 @@ export const contrastPairs: ContrastPair[] = [
     min: AA_TEXT,
   },
   { label: "Info text", foreground: "info-foreground", background: ["background"], min: AA_TEXT },
-  // Glass (#111). The tint paints over whatever is behind, so the text is
-  // measured over the worst backdrops: pure black and pure white. Regular and
-  // thick hold text over either in both modes. Thin is for chips and icons
-  // over content, and a light-on-glass pair over bright artwork fails by
-  // design, so it is measured over the page and cards it sits on.
   {
-    label: "Text on regular glass, over black",
-    foreground: "foreground",
-    background: ["#000000", "glass-regular"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Text on regular glass, over white",
-    foreground: "foreground",
-    background: ["#ffffff", "glass-regular"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Text on thick glass, over black",
-    foreground: "foreground",
-    background: ["#000000", "glass-thick"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Text on thick glass, over white",
-    foreground: "foreground",
-    background: ["#ffffff", "glass-thick"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Muted text on regular glass",
+    label: "Muted text on a hovered row",
     foreground: "muted-foreground",
-    background: ["background", "glass-regular"],
+    background: ["background", "accent"],
     min: AA_TEXT,
   },
   {
-    label: "Muted text on thick glass",
-    foreground: "muted-foreground",
-    background: ["background", "glass-thick"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Text on thin glass, over the page",
+    label: "Settings pane, current",
     foreground: "foreground",
-    background: ["background", "glass-thin"],
+    background: ["background", "accent"],
     min: AA_TEXT,
   },
+  // Over artwork and video: always light-on-dark.
+  { label: "Hero Play button", foreground: "#141210", background: ["#ffffff"], min: AA_TEXT },
   {
-    label: "Text on thin glass, over a card",
-    foreground: "foreground",
-    background: ["card", "glass-thin"],
-    min: AA_TEXT,
-  },
-  {
-    // Always dark, so white on the strong tint over a white frame (4.7:1).
-    label: "Text on media glass, over white",
+    label: "Icons on media, over white",
     foreground: "#ffffff",
-    background: ["#ffffff", "glass-media-strong"],
-    min: AA_TEXT,
-  },
-  {
-    // Icons only (3.4:1 over a white frame); text uses the strong tint.
-    label: "Icons on media glass, over white",
-    foreground: "#ffffff",
-    background: ["#ffffff", "glass-media"],
+    background: ["#ffffff", media],
     min: AA_UI,
   },
   {
-    // Home's hero Play button (#115): black on solid white.
-    label: "Hero Play button",
-    foreground: "#000000",
-    background: ["#ffffff"],
+    label: "Text on media, over mid-grey art",
+    foreground: "#ffffff",
+    background: ["#808080", media],
     min: AA_TEXT,
   },
   {
-    label: "Text on media glass, solid fallback",
+    label: "Text on media, solid fallback",
     foreground: "#ffffff",
-    background: ["#ffffff", "#000000e0"],
+    background: ["#1c1a18"],
     min: AA_TEXT,
   },
-  // The player (#121): its text sits on strong media glass over whatever the
-  // video shows, so plain white is what holds over a white frame; muted white
-  // (white/70) doesn't (3.2:1) and isn't used there. The shortcut keys sit on
-  // a darker chip, and the failure card over the scrim, where muted text is
-  // fine.
   {
-    label: "Player shortcut key, over white",
-    foreground: "#ffffff",
-    background: ["#ffffff", "#0000008c", "#0000004d"],
+    label: "Hero eyebrow, over the scrim",
+    foreground: "#ffc46b",
+    background: ["#808080", "#000000b3"],
     min: AA_TEXT,
   },
   {
     label: "Player failure text, muted, over the scrim",
     foreground: "#ffffffb3",
-    background: ["#ffffff", "#000000bf", "#0000008c"],
+    background: ["#ffffff", "#000000bf", media],
     min: AA_TEXT,
   },
-  // The sidebar's active item (#114): brand-soft over the thick glass, over
-  // the worst backdrops. The icon is brand (3:1), the label foreground.
-  {
-    label: "Sidebar active icon, over black",
-    foreground: "brand",
-    background: ["#000000", "glass-thick", "brand-soft"],
-    min: AA_UI,
-  },
-  {
-    label: "Sidebar active icon, over white",
-    foreground: "brand",
-    background: ["#ffffff", "glass-thick", "brand-soft"],
-    min: AA_UI,
-  },
-  {
-    label: "Sidebar active label, over black",
-    foreground: "foreground",
-    background: ["#000000", "glass-thick", "brand-soft"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Sidebar active label, over white",
-    foreground: "foreground",
-    background: ["#ffffff", "glass-thick", "brand-soft"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Text on glass, solid fallback",
-    foreground: "foreground",
-    background: ["glass-solid"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Muted text on glass, solid fallback",
-    foreground: "muted-foreground",
-    background: ["glass-solid"],
-    min: AA_TEXT,
-  },
-  // The stream picker and the shared popups (#122). Glass over the page, as
-  // for the other regular-glass text pairs.
-  {
-    label: "Badge text on muted, over a card",
-    foreground: "foreground",
-    background: ["card", "muted"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Badge text on muted, on regular glass",
-    foreground: "foreground",
-    background: ["background", "glass-regular", "muted"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Cached badge, over a card",
-    foreground: "brand",
-    background: ["card", "brand-soft"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Cached badge, on regular glass",
-    foreground: "brand",
-    background: ["background", "glass-regular", "brand-soft"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Top pick label, on regular glass",
-    foreground: "brand",
-    background: ["background", "glass-regular"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Highlighted menu item, on regular glass",
-    foreground: "foreground",
-    background: ["background", "glass-regular", "accent"],
-    min: AA_TEXT,
-  },
-  // The title page (#117): the information card's labels on thin glass over
-  // the page, and an episode's synopsis on the row's hover fill (accent, at
-  // full strength, which is stronger than the row's accent/60).
-  {
-    label: "Muted text on thin glass, over the page",
-    foreground: "muted-foreground",
-    background: ["background", "glass-thin"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Muted text on a hovered episode row",
-    foreground: "muted-foreground",
-    background: ["background", "accent"],
-    min: AA_TEXT,
-  },
+  // Focus.
   { label: "Focus ring", foreground: "ring", background: ["background"], min: AA_UI },
-  { label: "Focus ring on sidebar", foreground: "ring", background: ["sidebar"], min: AA_UI },
-  { label: "Focus ring on card", foreground: "ring", background: ["card"], min: AA_UI },
-  // Settings' pane list (#120): the current pane's label over its brand-soft
-  // pill, and its icon (brand-foreground on the brand tile is "Brand fill").
-  {
-    label: "Settings pane label, current",
-    foreground: "foreground",
-    background: ["background", "brand-soft"],
-    min: AA_TEXT,
-  },
-  // The PIN keypad (#123): digits on thin glass keys, inside the thick glass
-  // of a dialog or the lock card, over black or white.
-  {
-    label: "PIN key digit, over black",
-    foreground: "foreground",
-    background: ["#000000", "glass-thick", "glass-thin"],
-    min: AA_TEXT,
-  },
-  {
-    label: "PIN key digit, over white",
-    foreground: "foreground",
-    background: ["#ffffff", "glass-thick", "glass-thin"],
-    min: AA_TEXT,
-  },
-  // Library (#118): the view switch's idle tab (muted text on thin glass, on
-  // the page or inside the stuck header's regular glass), and the Upcoming
-  // day header's label on regular glass, also over the worst backdrops.
-  {
-    label: "Library view switch, idle tab",
-    foreground: "muted-foreground",
-    background: ["background", "glass-thin"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Library view switch, idle tab, in the stuck header",
-    foreground: "muted-foreground",
-    background: ["background", "glass-regular", "glass-thin"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Day header label, over the page",
-    foreground: "foreground",
-    background: ["background", "glass-regular"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Day header label, over black",
-    foreground: "foreground",
-    background: ["#000000", "glass-regular"],
-    min: AA_TEXT,
-  },
-  {
-    label: "Day header label, over white",
-    foreground: "foreground",
-    background: ["#ffffff", "glass-regular"],
-    min: AA_TEXT,
-  },
-  // Search's field (#119): the clear button's icon on thin glass over the
-  // field's regular glass, and the ⌘F hint on its muted chip.
-  {
-    label: "Search clear button",
-    foreground: "foreground",
-    background: ["background", "glass-regular", "glass-thin"],
-    min: AA_UI,
-  },
-  {
-    label: "Shortcut hint",
-    foreground: "muted-foreground",
-    background: ["background", "glass-regular", "muted"],
-    min: AA_TEXT,
-  },
-  {
-    // An off Switch's track (#125): the control's boundary, 1.4.11.
-    label: "Switch track, off, on a card",
-    foreground: "switch-off",
-    background: ["card"],
-    min: AA_UI,
-  },
-  {
-    label: "Switch track, off, on the page",
-    foreground: "switch-off",
-    background: ["background"],
-    min: AA_UI,
-  },
-  {
-    label: "Switch thumb on the off track",
-    foreground: "#ffffff",
-    background: ["switch-off"],
-    min: AA_UI,
-  },
+  { label: "Focus ring on a raised surface", foreground: "ring", background: ["card"], min: AA_UI },
 ];
 
 export function parseHex(hex: string): Rgba {

@@ -67,9 +67,9 @@ export function PinGate({ profile }: { profile: Profile }) {
   if (unlocked) return null;
   return (
     <section className="relative isolate grid min-h-full place-items-center p-6">
-      <Ambient tone="brand" />
-      <div className="flex w-full max-w-sm flex-col items-center gap-6 glass-thick rounded-3xl p-8 text-center">
-        <h1 className="text-heading">This profile is locked</h1>
+      <Ambient tone="sun" />
+      <div className="flex w-full max-w-sm flex-col items-center gap-6 rounded-[1.75rem] bg-card p-9 text-center shadow-float hairline">
+        <h1 className="type-row">This profile is locked</h1>
         <PinEntry profile={profile} onUnlocked={() => setUnlocked(true)} />
       </div>
     </section>

@@ -40,9 +40,14 @@ type Change struct {
 // one that is edited from several devices at once, and the backend drops
 // pushes that come too soon after the last (a 200 all the same), so a pull
 // can bring back an older position than ours that we thought was saved. Its
-// rule is latest lastWatched wins: a change older than the stored entry is
-// skipped, a delete too (a delete carries the row as it was, and an entry
-// watched again since is not that row). Equal times take the backend's copy.
+// rule is latest lastWatched wins for upserts: one older than the stored
+// entry is skipped. Equal times take the backend's copy. A delete always
+// applies (unless a push is queued): it carries the row as the backend last
+// stored it, which is often a few seconds older than ours because the
+// backend dropped our last small update, and comparing times kept entries
+// the user had removed elsewhere. Watching it again here since would
+// have queued a push, or, once sent, comes back as an upsert after the
+// delete.
 func (s *Store) ApplyChanges(id uint64, changes []Change) (applied int, err error) {
 	err = s.update(id, func(p *bolt.Bucket) error {
 		applied = 0
@@ -111,7 +116,7 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 		}
 		t.value = keepBuiltins(mine, t.value.([]Addon))
 	}
-	if t.watchedAt != nil && have != nil {
+	if t.watchedAt != nil && have != nil && c.Op == OpUpsert {
 		var stored Progress
 		if err := json.Unmarshal(have, &stored); err != nil {
 			return false, err
@@ -141,6 +146,75 @@ func applyChange(p *bolt.Bucket, c Change) (bool, error) {
 		return true, prunePluginCaches(p, t.value.([]PluginRepo))
 	}
 	return true, nil
+}
+
+// Reconcile makes profile id's surface (library, progress or watched) match
+// snapshot, the backend's whole current list of it as upserts, in one
+// transaction. Each item is applied as ApplyChanges would; then every local
+// item the snapshot doesn't have is deleted, unless a push of it is queued
+// (it was made here and isn't sent yet). It returns how many items changed.
+//
+// The delta feeds keep the store up to date between snapshots; a snapshot
+// repairs what a feed can't: a change the store once skipped and the cursor
+// has since gone past.
+func (s *Store) Reconcile(id uint64, surface Surface, snapshot []Change) (changed int, err error) {
+	var bucket []byte
+	switch surface {
+	case SurfaceLibrary:
+		bucket = bucketLibrary
+	case SurfaceProgress:
+		bucket = bucketProgress
+	case SurfaceWatched:
+		bucket = bucketWatched
+	default:
+		return 0, fmt.Errorf("%w: no snapshot for %s", ErrInvalidItem, surface)
+	}
+	err = s.update(id, func(p *bolt.Bucket) error {
+		changed = 0
+		keep := map[string]bool{}
+		for _, c := range snapshot {
+			c.Surface, c.Op = surface, OpUpsert
+			t, err := targetOf(c)
+			if err != nil {
+				return fmt.Errorf("%w: %s snapshot: %v", ErrInvalidItem, surface, err)
+			}
+			keep[string(t.key)] = true
+			ok, err := applyChange(p, c)
+			if err != nil {
+				return fmt.Errorf("%w: %s snapshot: %v", ErrInvalidItem, surface, err)
+			}
+			if ok {
+				changed++
+			}
+		}
+		dest, outbox := p.Bucket(bucket), p.Bucket(bucketOutbox)
+		var gone [][]byte
+		err := dest.ForEach(func(k, v []byte) error {
+			if keep[string(k)] {
+				return nil
+			}
+			t, err := targetOf(Change{Surface: surface, Op: OpDelete, Item: v})
+			if err != nil {
+				return nil // unreadable: leave it for the feed
+			}
+			if outbox.Get(joinKey(string(surface), t.pushKey)) != nil {
+				return nil
+			}
+			gone = append(gone, bytes.Clone(k))
+			return nil
+		})
+		if err != nil {
+			return err
+		}
+		for _, k := range gone {
+			if err := dest.Delete(k); err != nil {
+				return err
+			}
+			changed++
+		}
+		return nil
+	})
+	return changed, err
 }
 
 // targetOf decodes c's item and works out where it lives.

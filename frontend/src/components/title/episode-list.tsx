@@ -108,7 +108,7 @@ export function EpisodeList({
     <ol
       ref={list}
       aria-label={label}
-      className="relative px-gutter"
+      className="relative px-page"
       style={{ height: virtualizer.getTotalSize() }}
     >
       {virtualizer.getVirtualItems().map((item) => {
@@ -120,7 +120,7 @@ export function EpisodeList({
             data-index={item.index}
             // The still lines up with the page text; the row's hover fill
             // reaches past it (the row's own padding).
-            className="absolute inset-x-[calc(var(--spacing-gutter)-0.75rem)] top-0"
+            className="absolute inset-x-[calc(var(--spacing-page)-0.75rem)] top-0"
             style={{ transform: `translateY(${item.start - top}px)` }}
           >
             <EpisodeRow
@@ -178,7 +178,7 @@ function EpisodeRow({
   ].filter(Boolean);
 
   return (
-    <div className="group/episode flex items-center gap-5 rounded-2xl p-3 transition-[background-color,scale] duration-(--duration-fast) hover:bg-accent/60 motion-safe:has-[[data-episode-index]:active]:scale-[0.99]">
+    <div className="group/episode flex items-center gap-4 rounded-2xl p-3 transition-[background-color,scale] duration-(--duration-fast) hover:bg-foreground/4 motion-safe:has-[[data-episode-index]:active]:scale-[0.995]">
       <button
         type="button"
         data-episode-index={index}
@@ -186,9 +186,18 @@ function EpisodeRow({
         aria-label={`${code}: ${title}${watched ? ", watched" : entry ? ", in progress" : ""}`}
         onClick={onPlay}
         onKeyDown={onKeyDown}
-        className="group/play flex min-w-0 flex-1 scroll-mt-[calc(var(--titlebar-h)+11rem)] scroll-mb-8 cursor-pointer items-start gap-5 rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
+        className="group/play flex min-w-0 flex-1 scroll-mt-[calc(var(--spacing-bar)+8rem)] scroll-mb-8 cursor-pointer items-center gap-6 rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
       >
-        <span className="relative aspect-video w-[min(28rem,40%)] shrink-0 overflow-hidden rounded-xl shadow-card lg:w-[min(28rem,45%)]">
+        <span
+          aria-hidden
+          className={cn(
+            "w-9 shrink-0 text-end font-display text-[2.5rem] leading-none tnum transition-colors",
+            watched ? "text-faint" : "text-muted-foreground group-hover/episode:text-foreground",
+          )}
+        >
+          {episode.episode}
+        </span>
+        <span className="relative aspect-video w-[clamp(11rem,20vw,16.5rem)] shrink-0 overflow-hidden rounded-card shadow-card">
           <Artwork
             src={episode.thumbnail}
             use="landscape"
@@ -197,26 +206,31 @@ function EpisodeRow({
           />
           {entry && <WatchProgress value={entry.position / entry.duration} />}
           {watched && (
-            <span className="glass-media absolute end-2 top-2 grid size-7 place-items-center rounded-full text-white">
-              <Check className="size-4" aria-hidden />
+            <span className="absolute end-2 top-2 grid size-6 place-items-center rounded-full bg-black/60 text-white backdrop-blur-md">
+              <Check className="size-3.5" strokeWidth={3} aria-hidden />
             </span>
           )}
           {aired && (
             <span
               aria-hidden
-              className="glass-media absolute top-1/2 left-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-white opacity-0 transition-opacity duration-(--duration-fast) group-hover/episode:opacity-100 group-focus-visible/play:opacity-100"
+              className="absolute top-1/2 left-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 scale-90 place-items-center rounded-full bg-white text-black opacity-0 shadow-float transition-[opacity,scale] duration-(--duration-base) ease-out-soft group-hover/episode:scale-100 group-hover/episode:opacity-100 group-focus-visible/play:scale-100 group-focus-visible/play:opacity-100"
             >
-              <Play className="size-5 fill-current" />
+              <Play className="size-4.5 translate-x-px fill-current" />
             </span>
           )}
         </span>
-        <span className="flex min-w-0 flex-col gap-1.5 py-1">
-          <span className="text-num text-caption text-muted-foreground">{line.join(" · ")}</span>
-          <span className={cn("text-heading", aired ? "text-foreground" : "text-muted-foreground")}>
+        <span className="flex max-w-3xl min-w-0 flex-col gap-1">
+          <span
+            className={cn(
+              "text-[0.9375rem] font-[620] tracking-[-0.01em]",
+              aired ? "text-foreground" : "text-muted-foreground",
+            )}
+          >
             {title}
           </span>
+          <span className="text-small text-muted-foreground tnum">{line.join(" · ")}</span>
           {episode.overview && (
-            <span className="line-clamp-3 text-body text-pretty text-muted-foreground">
+            <span className="mt-1 line-clamp-2 text-body text-pretty text-muted-foreground">
               {episode.overview}
             </span>
           )}

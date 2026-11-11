@@ -48,7 +48,7 @@ export function StreamSwitcher({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetPopup
         side="right"
-        className="dark max-w-lg text-foreground [--spacing-gutter:--spacing(3)]"
+        className="dark max-w-lg text-foreground [--spacing-page:--spacing(3)]"
       >
         <SheetHeader className="px-6 pb-3">
           <SheetTitle>Streams</SheetTitle>

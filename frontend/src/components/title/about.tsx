@@ -16,21 +16,23 @@ export function About({ meta, withCast }: { meta: Meta; withCast: boolean }) {
   );
   if (rows.length === 0 && !meta.description) return null;
   return (
-    <section aria-labelledby="about" className="flex flex-col gap-4 px-gutter">
-      <h2 id="about" className="text-heading">
+    <section aria-labelledby="about" className="flex flex-col gap-4 px-page">
+      <h2 id="about" className="font-display text-[2.25rem] leading-none">
         About
       </h2>
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,24rem)] lg:gap-12">
         {meta.description && (
-          <p className="max-w-prose text-pretty text-muted-foreground">{meta.description}</p>
+          <p className="max-w-prose text-[0.9375rem] leading-relaxed text-pretty text-foreground/80">
+            {meta.description}
+          </p>
         )}
         {rows.length > 0 && (
           <dl
-            className={`glass-thin flex flex-col gap-4 rounded-2xl p-5 ${meta.description ? "lg:col-start-2" : ""}`}
+            className={`flex flex-col gap-4 rounded-2xl bg-card p-5 hairline ${meta.description ? "lg:col-start-2" : ""}`}
           >
             {rows.map(({ label, values }) => (
               <div key={label} className="flex flex-col gap-1">
-                <dt className="text-label text-muted-foreground">{label}</dt>
+                <dt className="type-eyebrow text-muted-foreground">{label}</dt>
                 <dd>{values.join(", ")}</dd>
               </div>
             ))}

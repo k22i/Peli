@@ -100,13 +100,15 @@ function Profiles() {
         </Button>
       )}
 
-      <h1 className="text-center text-title">{managing ? "Manage profiles" : "Who’s watching?"}</h1>
+      <h1 className="text-center font-display text-[clamp(3rem,2rem+3vw,4.5rem)] leading-none tracking-[-0.01em]">
+        {managing ? "Manage profiles" : "Who’s watching?"}
+      </h1>
 
-      <ul aria-label="Profiles" className="flex flex-wrap justify-center gap-x-6 gap-y-10">
+      <ul aria-label="Profiles" className="flex flex-wrap justify-center gap-x-8 gap-y-10">
         {!ready &&
           [0, 1].map((i) => (
             <li key={i}>
-              <Skeleton className="size-32 rounded-full md:size-36" />
+              <Skeleton className="size-36 rounded-[2.5rem]" />
             </li>
           ))}
         {ready &&
@@ -126,17 +128,17 @@ function Profiles() {
             <button
               type="button"
               onClick={() => askParent(() => setEditing({ add: true }))}
-              className="group flex w-40 flex-col items-center gap-3 rounded-2xl p-2 outline-none"
+              className="group flex w-40 flex-col items-center gap-4 rounded-2xl p-2 outline-none"
             >
               <span
                 className={cn(
                   tileLift,
-                  "flex size-32 items-center justify-center rounded-full border-2 border-dashed border-foreground/24 text-muted-foreground group-hover:border-foreground/48 group-focus-visible:border-brand md:size-36",
+                  "flex size-36 items-center justify-center rounded-[2.5rem] bg-foreground/5 text-muted-foreground shadow-[inset_0_0_0_1.5px_var(--border)] group-hover:bg-foreground/8 group-hover:text-foreground group-focus-visible:shadow-[inset_0_0_0_2px_var(--sun)]",
                 )}
               >
-                <Plus className="size-10" />
+                <Plus className="size-9" strokeWidth={1.5} />
               </span>
-              <span className="min-h-10 text-item">Add profile</span>
+              <span className="min-h-10 type-item">Add profile</span>
             </button>
           </li>
         )}
@@ -212,7 +214,7 @@ function Profiles() {
 // The lift a tile's picture takes on hover and focus: a spring to 1.05×, and
 // a press back down. Still under reduced motion.
 const tileLift =
-  "transition-[box-shadow,scale,border-color] duration-(--duration-slow) ease-spring motion-safe:group-hover:scale-[1.05] motion-safe:group-focus-visible:scale-[1.05] motion-safe:group-active:scale-95";
+  "transition-[box-shadow,scale,background-color,color] duration-(--duration-slow) ease-bounce motion-safe:group-hover:scale-[1.05] motion-safe:group-focus-visible:scale-[1.05] motion-safe:group-active:scale-95";
 
 // One profile: its avatar and name, read out as the name with a note. In
 // Manage mode it opens the editor.
@@ -257,25 +259,32 @@ function ProfileTile({
       aria-describedby={note ? noteId : undefined}
       disabled={disabled}
       onClick={onPick}
-      className="group flex w-40 flex-col items-center gap-3 rounded-2xl p-2 outline-none disabled:opacity-64"
+      className="group flex w-40 flex-col items-center gap-4 rounded-2xl p-2 outline-none disabled:opacity-45"
     >
-      <span className={cn("relative", tileLift)}>
+      <span className={cn("relative rounded-[2.5rem]", tileLift)}>
         <ProfileAvatar
           profile={profile}
-          className={cn(
-            "size-32 text-3xl ring-offset-4 ring-offset-background transition-shadow group-hover:ring-2 group-hover:ring-foreground/24 group-aria-current:ring-2 group-aria-current:ring-primary group-focus-visible:ring-2 group-focus-visible:ring-brand md:size-36",
-          )}
+          className="size-36 rounded-[2.5rem] text-4xl shadow-float ring-offset-4 ring-offset-background transition-shadow group-hover:ring-2 group-hover:ring-foreground/25 group-focus-visible:ring-[3px] group-focus-visible:ring-sun"
         />
+        {current && !managing && (
+          <span
+            aria-hidden
+            className="absolute -bottom-2.5 left-1/2 h-1 w-6 -translate-x-1/2 rounded-full bg-sun shadow-sun"
+          />
+        )}
         {managing && (
-          <span className="absolute end-0 bottom-0 flex size-10 items-center justify-center rounded-full glass">
+          <span
+            data-slot="edit-badge"
+            className="absolute -end-1 -bottom-1 flex size-10 items-center justify-center rounded-full bg-foreground text-background shadow-float"
+          >
             <Pencil className="size-4" />
           </span>
         )}
       </span>
-      <span className="flex max-w-full flex-col">
-        <span className="truncate text-item">{profile.name}</span>
+      <span className="flex max-w-full flex-col gap-0.5">
+        <span className="truncate text-[0.9375rem] font-[590]">{profile.name}</span>
         {/* Kept when empty, so names line up. */}
-        <span id={noteId} className="min-h-4 text-caption text-muted-foreground">
+        <span id={noteId} className="min-h-4 text-small text-muted-foreground">
           {note}
         </span>
       </span>

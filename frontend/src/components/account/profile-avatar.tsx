@@ -29,7 +29,7 @@ export function ProfileAvatar({ profile, className }: ProfileAvatarProps) {
     // Always shown beside the name, so screen readers skip it.
     <Avatar
       aria-hidden
-      className={cn(!color && "bg-brand text-brand-foreground", className)}
+      className={cn(!color && "bg-sun text-sun-foreground", className)}
       style={color ? { backgroundColor: color, color: initialsColor(color) } : undefined}
     >
       {profile.avatar && <AvatarImage src={profile.avatar} alt="" draggable={false} />}

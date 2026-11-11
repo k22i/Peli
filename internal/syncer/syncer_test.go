@@ -356,3 +356,54 @@ func TestPullBringsInAddons(t *testing.T) {
 		t.Fatalf("no addons read in %v", got)
 	}
 }
+
+// Continue Watching entries removed on another device leave Sinag too, even
+// when the store once skipped the delete and its cursor has gone past it:
+// the hourly snapshot catches them.
+func TestReconcileRemovesWhatTheFeedMissed(t *testing.T) {
+	server := nuviotest.NewServer(t)
+	d := newDevice(t, server)
+	other := newDevice(t, server)
+	// Watched on the other device and synced here.
+	_, err := other.store.SaveProgress(other.profile.ID, episode)
+	check(t, err)
+	other.push(t)
+	p, clock, emitted := d.puller()
+	_, err = p.Pull(t.Context())
+	check(t, err)
+	got, err := d.store.ContinueWatching(d.profile.ID)
+	check(t, err)
+	if len(got) != 1 {
+		t.Fatalf("continue watching after the first pull = %+v, want the episode", got)
+	}
+
+	// Removed on the other device. This store skipped the delete before
+	//, and its cursor is past it: the feed has nothing more to say.
+	key := store.ProgressKey(episode.ContentID, episode.Season, episode.Episode)
+	check(t, other.backend.Client.DeleteProgress(t.Context(), other.sessions.session, 1, []string{key}))
+	check(t, d.store.SetCursor(d.profile.ID, store.SurfaceProgress, 1<<60))
+
+	// Within the hour: the feed only, so it stays.
+	*clock = clock.Add(time.Minute)
+	_, err = p.Pull(t.Context())
+	check(t, err)
+	got, err = d.store.ContinueWatching(d.profile.ID)
+	check(t, err)
+	if len(got) != 1 {
+		t.Fatalf("continue watching before the snapshot = %+v", got)
+	}
+
+	// An hour on, the snapshot removes it and says so.
+	*clock = clock.Add(ReconcileEvery)
+	*emitted = nil
+	_, err = p.Pull(t.Context())
+	check(t, err)
+	got, err = d.store.ContinueWatching(d.profile.ID)
+	check(t, err)
+	if len(got) != 0 {
+		t.Fatalf("continue watching after the snapshot = %+v, want none", got)
+	}
+	if len(*emitted) != 1 || !slices.Contains((*emitted)[0].Surfaces, store.SurfaceProgress) {
+		t.Errorf("emitted %+v, want a pull that changed progress", *emitted)
+	}
+}

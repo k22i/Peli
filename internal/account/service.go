@@ -36,8 +36,21 @@ const (
 // account's profiles and data are kept.
 const EventSessionEnded = "account:session-ended"
 
+// EventProfilesChanged tells the frontend a refresh from Nuvio changed the
+// profiles on this device: renamed, added, deleted, or a PIN set or removed
+// elsewhere. Current is the profile in use now, which moves if the
+// one in use was deleted.
+const EventProfilesChanged = "account:profiles-changed"
+
+// ProfilesChanged is EventProfilesChanged's data.
+type ProfilesChanged struct {
+	Current     store.Profile `json:"current"`
+	CurrentGone bool          `json:"currentGone"`
+}
+
 func init() {
 	application.RegisterEvent[application.Void](EventSessionEnded)
+	application.RegisterEvent[ProfilesChanged](EventProfilesChanged)
 }
 
 // Keychain is where the session is kept: *secrets.Keychain in the app.
@@ -67,6 +80,11 @@ type Service struct {
 
 	// Sends what is queued before a sign-out removes it (#30).
 	flusher Flusher
+
+	// Tells the frontend of a profiles refresh that changed something, and
+	// the stock avatars' images, read once a run (RefreshProfiles).
+	emitProfiles func(ProfilesChanged)
+	avatars      map[string]string
 
 	// Nuvio's backend: the one the client was made for, used unless the
 	// user picks their own (#34, server.go).
@@ -114,6 +132,7 @@ func SessionOf(service *Service) *Session { return service.session }
 func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptions) error {
 	if app := application.Get(); app != nil {
 		s.session.onEnded = func() { app.Event.Emit(EventSessionEnded) }
+		s.emitProfiles = func(changed ProfilesChanged) { app.Event.Emit(EventProfilesChanged, changed) }
 	}
 	// Before the first refresh, which goes to the server the session is from.
 	s.restoreServer()

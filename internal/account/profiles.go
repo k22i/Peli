@@ -429,3 +429,72 @@ func fromNuvio(p nuvio.Profile, images map[string]string) store.Profile {
 		PinLockedUntil:     p.PinLockedUntil,
 	}
 }
+
+// RefreshProfiles brings this device's Nuvio profiles in line with the
+// account's: a profile deleted, added or renamed on another device, or
+// a PIN set or removed there (on nuvio.tv, say), shows here at the next sync,
+// not only at the next sign-in. The syncer calls it before each pull; it does
+// nothing without Nuvio profiles or a session, and an error leaves the
+// profiles as they were. A profile in use that gains a PIN stays unlocked for
+// this run: the user is already in it.
+func (s *Service) RefreshProfiles(ctx context.Context) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	db := store.Opened(s.store)
+	if db == nil {
+		return nil
+	}
+	if linked, err := db.HasNuvioProfiles(); err != nil || !linked {
+		return err
+	}
+	var remote []nuvio.Profile
+	var locks []nuvio.ProfileLock
+	var account string
+	err := s.session.Do(ctx, func(session nuvio.Session) error {
+		var err error
+		if remote, err = s.nuvio.Profiles(ctx, session); err != nil {
+			return err
+		}
+		// The locks are the authoritative PIN state; the profiles carry it too.
+		locks, _ = s.nuvio.ProfileLocks(ctx, session)
+		account = session.UserID
+		return nil
+	})
+	if err != nil {
+		return err
+	}
+	if s.avatars == nil {
+		s.avatars = s.avatarImages(ctx)
+	}
+	profiles := make([]store.Profile, len(remote))
+	for i, p := range remote {
+		profiles[i] = fromNuvio(p, s.avatars)
+		for _, lock := range locks {
+			if lock.Index == p.Index {
+				profiles[i].PinEnabled, profiles[i].PinLockedUntil = lock.PinEnabled, lock.PinLockedUntil
+			}
+		}
+	}
+	before, _, _ := db.ProfileInUse()
+	changed, gone, err := db.SyncNuvioProfiles(account, profiles)
+	if err != nil || !changed {
+		return err
+	}
+	current, err := db.CurrentProfile()
+	if err != nil {
+		return err
+	}
+	if !gone && current.ID == before.ID && current.PinEnabled && !before.PinEnabled {
+		s.unlocked[current.ID] = true
+	}
+	if s.emitProfiles != nil {
+		s.emitProfiles(ProfilesChanged{Current: current, CurrentGone: gone})
+	}
+	return nil
+}
+
+// ProfileRefresher returns service's RefreshProfiles, for the syncer to call
+// before each pull. It isn't a method, so Wails doesn't bind it.
+func ProfileRefresher(service *Service) func(context.Context) error {
+	return service.RefreshProfiles
+}

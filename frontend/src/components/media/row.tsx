@@ -27,24 +27,24 @@ import { cn } from "@/lib/utils";
 
 export type CardShape = "poster" | "landscape";
 
-// A row's link at the end of its heading ("See all", "Browse all"): quiet text
-// with a chevron, so it reads as part of the heading.
+// A row's link at the end of its heading ("See all", "Browse all"): a quiet
+// capsule that brightens on hover.
 export const rowLinkClassName =
-  "inline-flex items-center gap-0.5 rounded-md text-sm font-medium text-muted-foreground outline-none transition-colors duration-(--duration-fast) hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-4";
+  "inline-flex h-7 items-center gap-0.5 rounded-full ps-3 pe-2 text-small font-[590] text-muted-foreground outline-none transition-colors duration-(--duration-fast) hover:bg-foreground/8 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-3.5";
 
-// Where the artwork's centre sits below the scroller's top: its padding plus
-// half the card's height (posters are 2:3, stills 16:9). The arrows line up
-// with the art, not with the caption under it.
-const arrowTop: Record<CardShape, string> = {
-  poster: "calc(0.75rem + var(--container-poster) * 3 / 4)",
-  landscape: "calc(0.75rem + var(--container-landscape) * 9 / 32)",
+// The paging edges cover the art only, not the caption under it: from the
+// scroller's top padding, as tall as a card's art (posters are 2:3, stills
+// 16:9).
+const artEdge: Record<CardShape, { top: string; height: string }> = {
+  poster: { top: "0.75rem", height: "calc(var(--container-poster) * 3 / 2)" },
+  landscape: { top: "0.75rem", height: "calc(var(--container-landscape) * 9 / 16)" },
 };
 
 // --container-poster and --container-landscape in index.css (a test keeps
-// them in step), and the row's 24px gap. Cards are fixed widths, so these are
+// them in step), and the row's 16px gap. Cards are fixed widths, so these are
 // exact and cards aren't measured.
-export const cardRem: Record<CardShape, number> = { poster: 15, landscape: 27 };
-const gapPx = 24;
+export const cardRem: Record<CardShape, number> = { poster: 11.5, landscape: 20 };
+const gapPx = 16;
 
 export const remToPx = (rem: number) =>
   rem * (Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16);
@@ -240,8 +240,8 @@ export function Row<T>({
       aria-labelledby={headingId}
       className={cn("group/row relative", className)}
     >
-      <div className="flex items-baseline justify-between gap-4 px-gutter pb-1">
-        <h2 id={headingId} className="text-heading">
+      <div className="flex items-center justify-between gap-4 px-page">
+        <h2 id={headingId} className="type-row">
           {title}
         </h2>
         {action}
@@ -251,7 +251,7 @@ export function Row<T>({
           ref={scroller}
           onScroll={updateEdges}
           data-slot="row-scroller"
-          className="snap-x snap-mandatory scroll-px-gutter overflow-x-auto overscroll-x-contain pt-3 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="no-scrollbar snap-x snap-mandatory scroll-px-page overflow-x-auto overscroll-x-contain pt-3 pb-4"
         >
           <RovingContext.Provider value={roving}>
             {/* Every card in one grid cell, each pushed along by its offset:
@@ -277,13 +277,13 @@ export function Row<T>({
         {/* Mouse paging only: keyboard users have the arrow keys. */}
         <PageButton
           side="start"
-          top={arrowTop[count > 0 ? shapeOf(0) : "poster"]}
+          edge={artEdge[count > 0 ? shapeOf(0) : "poster"]}
           hidden={edges.start}
           onClick={() => page(-1)}
         />
         <PageButton
           side="end"
-          top={arrowTop[count > 0 ? shapeOf(0) : "poster"]}
+          edge={artEdge[count > 0 ? shapeOf(0) : "poster"]}
           hidden={edges.end}
           onClick={() => page(1)}
         />
@@ -292,14 +292,16 @@ export function Row<T>({
   );
 }
 
+// A tall edge over the clipped end of the row: the canvas darkens towards
+// it and a chevron shows on hover.
 function PageButton({
   side,
-  top,
+  edge,
   hidden,
   onClick,
 }: {
   side: "start" | "end";
-  top: string;
+  edge: { top: string; height: string };
   hidden: boolean;
   onClick: () => void;
 }) {
@@ -310,28 +312,30 @@ function PageButton({
       tabIndex={-1}
       aria-hidden
       onClick={onClick}
-      style={{ top }}
+      style={edge}
       className={cn(
-        "glass-thin absolute grid size-12 -translate-y-1/2 place-items-center rounded-full text-foreground opacity-0 transition-[opacity,scale] duration-(--duration-base) ease-smooth group-focus-within/row:opacity-100 group-hover/row:opacity-100 motion-safe:active:scale-95 [&_svg]:size-6",
-        side === "start" ? "start-3" : "end-3",
-        hidden && "pointer-events-none group-focus-within/row:opacity-0 group-hover/row:opacity-0",
+        "absolute z-10 grid w-page min-w-12 place-items-center text-foreground opacity-0 transition-opacity duration-(--duration-base) ease-out-soft group-hover/row:opacity-100 [&_svg]:size-7 [&_svg]:drop-shadow-md [&_svg]:transition-transform [&_svg]:duration-(--duration-fast) hover:[&_svg]:scale-115",
+        side === "start"
+          ? "start-0 bg-linear-to-r from-background/90 via-background/50 to-transparent"
+          : "end-0 bg-linear-to-l from-background/90 via-background/50 to-transparent",
+        hidden && "pointer-events-none group-hover/row:opacity-0",
       )}
     >
-      <Icon />
+      <Icon strokeWidth={2.5} />
     </button>
   );
 }
 
 export function RowSkeleton({ count = 8, card = "poster" }: { count?: number; card?: CardShape }) {
   return (
-    <div aria-hidden className="flex flex-col gap-3">
-      <Skeleton className="mx-gutter h-5 w-40 rounded-md" />
-      <div className="flex gap-6 overflow-hidden px-gutter pt-3 pb-5">
+    <div aria-hidden className="flex flex-col">
+      <Skeleton className="mx-page my-1 h-4 w-36 rounded-full" />
+      <div className="flex gap-4 overflow-hidden px-page pt-3 pb-4">
         {Array.from({ length: count }, (_, index) => (
           <Skeleton
             key={index}
             className={cn(
-              "shrink-0 rounded-2xl",
+              "shrink-0 rounded-card",
               card === "poster" ? "aspect-[2/3] w-poster" : "aspect-video w-landscape",
             )}
           />

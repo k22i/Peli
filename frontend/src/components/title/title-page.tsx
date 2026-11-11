@@ -6,7 +6,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import type { Profile, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
-import { Hero, HeroSkeleton } from "@/components/media/hero";
+import { Hero, HeroSkeleton, ImdbScore, MetaLine } from "@/components/media/hero";
 import { About } from "@/components/title/about";
 import { BackButton } from "@/components/title/back-button";
 import { CastList } from "@/components/title/cast-list";
@@ -37,9 +37,8 @@ import {
   type TitlePreview,
 } from "@/lib/title";
 import { tmdbRef, useTmdbArt, type TmdbArt } from "@/lib/tmdb";
-import { cn } from "@/lib/utils";
 
-// A title's page (#45, redesigned in #117): its art under the glass chrome,
+// A title's page (#45, redesigned in #117): its art under the material-pop chrome,
 // details and cast, Play or Resume, the library and watched toggles, and for
 // a series its seasons and episodes. It paints from the card it was opened
 // from, then from the details' cache, then fills in. Watched state follows
@@ -54,7 +53,7 @@ export function TitlePage() {
   const [hero, setHero] = useState<HTMLElement | null>(null);
 
   return (
-    <div className="relative flex flex-col gap-12 pb-16">
+    <div className="relative flex flex-col gap-14 pb-20">
       <BackButton hero={hero} />
       {profile ? (
         <Title profile={profile} type={type} id={id} preview={preview} heroRef={setHero} />
@@ -64,11 +63,6 @@ export function TitlePage() {
     </div>
   );
 }
-
-// Apple TV's pattern for hero actions, as on Home (#115): Play is solid
-// white, the rest media glass; pills and circles that press in.
-const heroButton =
-  "rounded-full transition-transform duration-(--duration-fast) motion-safe:active:scale-[0.97]";
 
 function Title({
   profile,
@@ -121,15 +115,7 @@ function Title({
           size="title"
           title={shown.name}
           logo={art?.logo}
-          meta={
-            shown.releaseInfo
-              ? [
-                  <span key="year" className="text-num">
-                    {shown.releaseInfo}
-                  </span>,
-                ]
-              : []
-          }
+          meta={shown.releaseInfo ? [<span key="year">{shown.releaseInfo}</span>] : []}
           synopsis={shown.description}
           {...backdrops(shown, art)}
         />
@@ -227,17 +213,16 @@ function LoadedTitle({
         title={meta.name}
         logo={art?.logo ?? meta.logo}
         meta={[<TitleMeta key="meta" meta={meta} />]}
+        metaRaw
         synopsis={meta.description}
         {...backdrops(meta, art)}
         actions={
           <>
             {choice && (
               <Button
-                size="lg"
-                className={cn(
-                  heroButton,
-                  "border-transparent bg-white px-6 text-black hover:bg-white/90 data-pressed:bg-white/90",
-                )}
+                size="xl"
+                variant="light"
+                className="min-w-40"
                 onClick={() => play(choice.target)}
               >
                 {choice.resume ? <RotateCcw /> : <Play className="fill-current" />}
@@ -305,15 +290,11 @@ function RoundAction({
       <TooltipTrigger
         render={
           <Button
-            variant="ghost"
+            variant="media"
             size="icon-xl"
             aria-label={label}
             disabled={disabled}
             onClick={onClick}
-            className={cn(
-              heroButton,
-              "glass-media size-11 text-white hover:bg-(--glass-media) hover:text-white hover:before:bg-white/15 sm:size-11",
-            )}
           />
         }
       >
@@ -336,31 +317,11 @@ function backdrops(
     : { backdrop: own, fallbackBackdrop: undefined };
 }
 
-// "2008–2013 · 49 min · Crime, Drama, Thriller", then the IMDb rating in a
-// small media-glass pill.
-// The year and the runtime are numbers (mono), the genres are words.
-function metaLine(meta: Meta): { text: string; numeric: boolean }[] {
-  return [
-    { text: meta.releaseInfo, numeric: true },
-    { text: meta.runtime, numeric: true },
-    { text: (meta.genres ?? []).slice(0, 3).join(", "), numeric: false },
-  ].filter((item): item is { text: string; numeric: boolean } => Boolean(item.text));
-}
-
+// "2008–2013 · 49 min · Crime, Drama, Thriller · IMDb 8.4".
 function TitleMeta({ meta }: { meta: Meta }) {
-  return (
-    <span className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-      {metaLine(meta).map(({ text, numeric }, index) => (
-        <span key={text} className="flex items-center gap-2">
-          {index > 0 && <span aria-hidden>·</span>}
-          <span className={numeric ? "text-num" : undefined}>{text}</span>
-        </span>
-      ))}
-      {meta.imdbRating && (
-        <span className="glass-media-strong ms-1 rounded-full px-2.5 py-0.5 text-white">
-          IMDb {meta.imdbRating}
-        </span>
-      )}
-    </span>
-  );
+  const items = [meta.releaseInfo, meta.runtime, (meta.genres ?? []).slice(0, 3).join(", ")]
+    .filter(Boolean)
+    .map((text) => <span key={text}>{text}</span>);
+  if (meta.imdbRating) items.push(<ImdbScore key="imdb" rating={meta.imdbRating} />);
+  return <MetaLine items={items} className="text-[0.8125rem]" />;
 }

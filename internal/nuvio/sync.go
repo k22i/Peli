@@ -156,6 +156,67 @@ func (c *Client) WatchedDelta(ctx context.Context, s Session, index int, since i
 	return delta[WatchedEvent](c, ctx, "sync_pull_watched_items_delta", s, index, since)
 }
 
+// The snapshot RPCs read a profile's whole current list, not its events. The
+// delta feeds say what changed since a cursor; a snapshot says what is there
+// now, which is how the syncer catches what a cursor already went past (a
+// delete it once ignored, say).
+const (
+	// SnapshotPage is how many library items or watched items one snapshot
+	// call asks for.
+	SnapshotPage = 500
+	// ProgressSnapshotLimit is how many progress entries the progress
+	// snapshot asks for, in one call: the RPC has no offset. A profile with
+	// this many is read as incomplete (see ProgressList).
+	ProgressSnapshotLimit = 5000
+)
+
+// LibraryList returns every library item of profile index, in pages.
+func (c *Client) LibraryList(ctx context.Context, s Session, index int) ([]LibraryRow, error) {
+	all := []LibraryRow{}
+	for offset := 0; ; offset += SnapshotPage {
+		page := []LibraryRow{}
+		err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_library", s.AccessToken, map[string]any{
+			"p_profile_id": index, "p_limit": SnapshotPage, "p_offset": offset,
+		}, &page)
+		if err != nil {
+			return nil, err
+		}
+		all = append(all, page...)
+		if len(page) < SnapshotPage {
+			return all, nil
+		}
+	}
+}
+
+// ProgressList returns every progress entry of profile index. complete is
+// false when the list reached ProgressSnapshotLimit, so there may be more.
+func (c *Client) ProgressList(ctx context.Context, s Session, index int) (rows []ProgressRow, complete bool, err error) {
+	rows = []ProgressRow{}
+	err = c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_watch_progress", s.AccessToken, map[string]any{
+		"p_profile_id": index, "p_since_last_watched": 0, "p_limit": ProgressSnapshotLimit,
+	}, &rows)
+	return rows, len(rows) < ProgressSnapshotLimit, err
+}
+
+// WatchedList returns every watched item of profile index, in pages. Pages
+// count from 1.
+func (c *Client) WatchedList(ctx context.Context, s Session, index int) ([]WatchedRow, error) {
+	all := []WatchedRow{}
+	for page := 1; ; page++ {
+		rows := []WatchedRow{}
+		err := c.call(ctx, http.MethodPost, "/rest/v1/rpc/sync_pull_watched_items", s.AccessToken, map[string]any{
+			"p_profile_id": index, "p_page": page, "p_page_size": SnapshotPage,
+		}, &rows)
+		if err != nil {
+			return nil, err
+		}
+		all = append(all, rows...)
+		if len(rows) < SnapshotPage {
+			return all, nil
+		}
+	}
+}
+
 // write calls one of the push and delete RPCs, which return nothing.
 func (c *Client) write(ctx context.Context, rpc string, s Session, index int, arg string, rows any) error {
 	return c.call(ctx, http.MethodPost, "/rest/v1/rpc/"+rpc, s.AccessToken, map[string]any{

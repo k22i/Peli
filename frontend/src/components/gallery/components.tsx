@@ -44,10 +44,6 @@ import { toastManager } from "@/components/ui/toast";
 
 const [featured] = sampleTitles;
 
-// The hero's buttons: Play solid white, the rest media glass (routes/index.tsx).
-const heroGlass =
-  "rounded-full px-6 text-white glass-media-strong hover:text-white hover:before:bg-white/15";
-
 // What a profile with many addons has: 50 catalogs, the 40th selected.
 const catalogNames = Array.from({ length: 50 }, (_, index) =>
   index % 5 === 0 ? `Top ${index + 1}` : `Catalog ${index + 1}`,
@@ -62,20 +58,20 @@ export function Components() {
     <>
       <GallerySection
         title="Hero"
-        description="The billboard at the top of Home and detail pages. Always dark over the art. This is the default size: in dark mode it runs edge to edge and melts into the page, in light mode it's an inset card. Home and title pages use size feature and title, which bleed under the sidebar and title bar; folders use compact."
+        description="The marquee at the top of Home and title pages. Always light-on-dark over the art; the default size is a framed banner inside the page."
         bleed
       >
         <Hero
           title="The Lighthouse Keeper"
           eyebrow="New season"
           meta={[
-            <span key="year" className="text-num">
+            <span key="year" className="tnum">
               2024
             </span>,
-            <span key="runtime" className="text-num">
+            <span key="runtime" className="tnum">
               2h 08m
             </span>,
-            <span key="rating" className="text-num">
+            <span key="rating" className="tnum">
               PG-13
             </span>,
             <Badge key="4k" variant="outline" size="sm">
@@ -88,20 +84,15 @@ export function Components() {
           synopsis="On a storm-cut island at the edge of the map, a keeper who hasn't spoken in years finds a message in the lamp room, written in her own hand."
           actions={
             <>
-              <Button size="lg" className="rounded-full px-6">
+              <Button size="xl" variant="light">
                 <Play className="fill-current" />
                 Play
               </Button>
-              <Button size="lg" variant="ghost" className={heroGlass}>
+              <Button size="xl" variant="media">
                 <Info />
                 More info
               </Button>
-              <Button
-                size="icon-lg"
-                variant="ghost"
-                className="size-11 rounded-full text-white glass-media hover:bg-(--glass-media) hover:text-white hover:before:bg-white/15 sm:size-11"
-                aria-label="Add to Library"
-              >
+              <Button size="icon-xl" variant="media" aria-label="Add to Library">
                 <Plus />
               </Button>
             </>
@@ -150,7 +141,7 @@ export function Components() {
 
       <GallerySection
         title="Cards"
-        description="Posters (2:3) at 15rem wide and landscape stills (16:9) at 27rem: 1.5× the old sizes, from --container-poster and --container-landscape (#113). The art lifts and the focus ring wraps it; with no art, a generated gradient and the title stand in."
+        description="Posters (2:3) at 11.5rem and landscape stills (16:9) at 20rem, from --container-poster and --container-landscape. The art grows towards you on hover and focus, and the sun ring wraps it; progress is a hairline of sunlight."
       >
         <div className="flex flex-wrap items-start gap-6">
           {featured && (
@@ -168,7 +159,7 @@ export function Components() {
 
       <GallerySection
         title="Buttons"
-        description="coss ui's Button on Sinag's tokens. The primary is solid white on black (black on white in light mode), like a Play button should be."
+        description="coss ui’s Button as capsules. Ink is the main action on a page, sun the rare call to begin something, light and media sit over artwork."
       >
         <Specimen label="variant">
           <Button>Primary</Button>
@@ -206,7 +197,7 @@ export function Components() {
 
       <GallerySection
         title="Chips and badges"
-        description="Chips filter (on: brand tint); badges label. Both come from coss ui."
+        description="Chips filter (on: solid ink); badges label. Both come from coss ui."
       >
         <Specimen label="chips · multiple">
           <ChipGroup multiple aria-label="Genres" value={filters} onValueChange={setFilters}>
@@ -219,7 +210,7 @@ export function Components() {
         </Specimen>
         <Specimen label="chip rail · 50 catalogs, one line that scrolls sideways">
           <ChipRail
-            railClassName="-mx-gutter w-[calc(100%+2*var(--spacing-gutter))]"
+            railClassName="-mx-page w-[calc(100%+2*var(--spacing-page))]"
             aria-label="Catalogs"
             value={[catalog]}
             onValueChange={(value: string[]) => value[0] && setCatalog(value[0])}
@@ -248,7 +239,7 @@ export function Components() {
 
       <GallerySection
         title="Overlays"
-        description="Dialogs, sheets and toasts sit on frosted glass. Escape closes them and focus returns to what opened them."
+        description="Dialogs and sheets rise on the popup surface with a serif title; menus and toasts use the pop material. Escape closes them and focus returns to what opened them."
       >
         <Specimen label="dialog · sheet · toast">
           <Dialog>
@@ -321,7 +312,7 @@ export function Components() {
         <div className="flex flex-col gap-6">
           <HeroSkeleton />
           <RowSkeleton count={6} card="landscape" />
-          <div className="flex flex-wrap gap-6 px-gutter">
+          <div className="flex flex-wrap gap-6 px-page">
             <PosterCardSkeleton />
             <LandscapeCardSkeleton />
             <div className="flex w-64 flex-col gap-2">

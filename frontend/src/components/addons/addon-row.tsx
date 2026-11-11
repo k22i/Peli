@@ -107,9 +107,9 @@ export function AddonRow({
         "relative flex items-start gap-4 bg-card px-4 py-4 first:rounded-t-2xl last:rounded-b-2xl",
         dragging && "opacity-50",
         dropEdge === "before" &&
-          "before:absolute before:inset-x-4 before:-top-px before:h-0.5 before:rounded-full before:bg-brand",
+          "before:absolute before:inset-x-4 before:-top-px before:h-0.5 before:rounded-full before:bg-sun",
         dropEdge === "after" &&
-          "after:absolute after:inset-x-4 after:-bottom-px after:h-0.5 after:rounded-full after:bg-brand",
+          "after:absolute after:inset-x-4 after:-bottom-px after:h-0.5 after:rounded-full after:bg-sun",
       )}
     >
       <button
@@ -133,13 +133,13 @@ export function AddonRow({
         <img
           src={manifest.data.logo}
           alt=""
-          className="size-10 shrink-0 rounded-xl bg-muted object-contain"
+          className="size-11 shrink-0 rounded-[0.8rem] bg-muted object-contain hairline"
           onError={() => setLogoFailed(true)}
         />
       ) : (
         <span
           aria-hidden
-          className="grid size-10 shrink-0 place-items-center rounded-xl bg-muted font-heading text-base text-muted-foreground"
+          className="grid size-11 shrink-0 place-items-center rounded-[0.8rem] bg-muted font-display text-xl text-muted-foreground"
         >
           {name.charAt(0).toUpperCase()}
         </span>
@@ -147,9 +147,9 @@ export function AddonRow({
 
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex min-w-0 items-center gap-2">
-          <span className="truncate text-item">{name}</span>
+          <span className="truncate text-[0.9375rem] font-[620]">{name}</span>
           {manifest.data && (
-            <span className="shrink-0 font-mono text-meta text-muted-foreground">
+            <span className="shrink-0 tnum text-small text-muted-foreground">
               v{manifest.data.version}
             </span>
           )}
@@ -164,11 +164,9 @@ export function AddonRow({
         {manifest.data && <ManifestFacts manifest={manifest.data} />}
         {/* The host only: the path can hold the user's settings and keys. */}
         {isBuiltinAddon(addon.url) ? (
-          <span className="truncate text-caption text-muted-foreground/80">
-            On this device only
-          </span>
+          <span className="truncate text-small text-muted-foreground/80">On this device only</span>
         ) : (
-          <span className="truncate font-mono text-meta text-muted-foreground/80">
+          <span className="truncate tnum text-small text-muted-foreground/80">
             {host(addon.url)}
           </span>
         )}

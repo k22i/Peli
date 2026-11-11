@@ -5,42 +5,28 @@ import { Ambient } from "@/components/media/ambient";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 
-// The glass tiers (#111, ADR-0046). `utility` is the class a component uses.
+// The material-pop tiers (#111, ADR-0046). `utility` is the class a component uses.
 const tiers = [
   {
-    utility: "glass-thin",
-    use: "Chips, small controls over content, row arrows",
-    values: "12px blur · 160% saturate",
+    utility: "material-bar",
+    use: "The top bar and sticky page headers, once content scrolls under them",
+    values: "canvas at 76–82% · 28px blur · 170% saturate",
     dark: false,
   },
   {
-    utility: "glass",
-    use: "Popovers, menus, tooltips, toasts, sticky headers",
-    values: "24px blur · 180% saturate",
+    utility: "material-pop",
+    use: "Menus, selects, tooltips, toasts",
+    values: "popup at 88–90% · 36px blur · 180% saturate · hairline",
     dark: false,
   },
   {
-    utility: "glass-thick",
-    use: "Sidebar, sheets, dialogs, settings nav",
-    values: "40px blur · 200% saturate",
-    dark: false,
-  },
-  {
-    utility: "glass-media",
-    use: "Icons over artwork and video",
-    values: "30px blur · 180% saturate · tint 45%",
-    dark: true,
-  },
-  {
-    utility: "glass-media-strong",
-    use: "Text over artwork and video",
-    values: "30px blur · 180% saturate · tint 55%",
+    utility: "material-media",
+    use: "Controls over artwork and video",
+    values: "warm black at 42% · 24px blur · inner hairline",
     dark: true,
   },
 ] as const;
 
-// The art tone's sample: an inline SVG poster, so the gallery needs no
-// network and ships no third-party image.
 const ambientArt = `data:image/svg+xml;utf8,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#13324a"/><circle cx="90" cy="80" r="90" fill="#e9573f"/><circle cx="300" cy="120" r="110" fill="#33b5e0"/><circle cx="220" cy="260" r="80" fill="#f5c542"/></svg>`,
 )}`;
@@ -70,7 +56,7 @@ function Tiles({ className }: { className?: string }) {
         >
           <code className="font-mono text-sm font-medium">{tier.utility}</code>
           <span className="text-sm">{tier.use}</span>
-          <span className="font-mono text-meta opacity-80">{tier.values}</span>
+          <span className="font-mono text-small opacity-80">{tier.values}</span>
         </li>
       ))}
     </ul>
@@ -78,12 +64,12 @@ function Tiles({ className }: { className?: string }) {
 }
 
 // Content scrolls under a sticky header; the strip below it softens what
-// passes (the `scroll-edge-top` utility).
+// passes (the `material-bar` utility).
 function ScrollEdge() {
   return (
     <div className="h-64 overflow-y-auto rounded-2xl border bg-background">
-      <div className="scroll-edge-top sticky top-0 z-10 bg-background/90 px-5 py-3">
-        <h3 className="text-heading">Page header</h3>
+      <div className="material-bar sticky top-0 z-10 bg-background/90 px-5 py-3">
+        <h3 className="type-row">Page header</h3>
         <p className="text-sm text-muted-foreground">
           Scroll the list: it passes under the header and softens at its edge.
         </p>
@@ -94,7 +80,7 @@ function ScrollEdge() {
             key={index}
             className="flex items-center gap-3 rounded-lg bg-secondary px-3 py-2 text-sm"
           >
-            <span className="size-8 shrink-0 rounded-md bg-brand/70" />
+            <span className="size-8 shrink-0 rounded-md bg-sun/70" />
             Episode {index + 1}
           </li>
         ))}
@@ -111,7 +97,7 @@ export function Materials() {
   return (
     <GallerySection
       title="Materials"
-      description="Four glass tiers, defined once in index.css. Pick a tier; never hand-roll backdrop-blur, and never stack a light tier on another light tier. Each is a tint, a blur, a soft highlight from the top and a specular edge. Switch themes above to see both."
+      description="Three materials, defined once in index.css: bar, pop and media. Pick one; never hand-roll a blur. With reduced transparency or increased contrast each turns solid."
     >
       <div data-transparency={reduced ? "reduced" : undefined} className="flex flex-col gap-6">
         <div className="flex w-fit items-center gap-3 text-sm">
@@ -127,23 +113,23 @@ export function Materials() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-label text-muted-foreground">Over artwork</h3>
+          <h3 className="type-eyebrow text-muted-foreground">Over artwork</h3>
           <div className="overflow-hidden rounded-3xl" style={busy}>
             <Tiles />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-label text-muted-foreground">Over the page</h3>
+          <h3 className="type-eyebrow text-muted-foreground">Over the page</h3>
           <div className="rounded-3xl border bg-background">
             <Tiles />
           </div>
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-label text-muted-foreground">Ambient · brand tone and art tone</h3>
+          <h3 className="type-eyebrow text-muted-foreground">Ambient · sun tone and art tone</h3>
           <div className="grid gap-4 sm:grid-cols-2">
-            {(["brand", "art"] as const).map((tone) => (
+            {(["sun", "art"] as const).map((tone) => (
               <div
                 key={tone}
                 className="relative isolate h-56 overflow-hidden rounded-2xl border bg-background p-5"
@@ -151,8 +137,8 @@ export function Materials() {
                 <Ambient tone={tone} src={tone === "art" ? ambientArt : undefined} />
                 <code className="font-mono text-sm">{`tone="${tone}"`}</code>
                 <p className="mt-1 max-w-xs text-sm text-muted-foreground">
-                  {tone === "brand"
-                    ? "Two pools of the lagoon accent, behind a page's content."
+                  {tone === "sun"
+                    ? "A sunrise along the bottom of the screens before the app."
                     : "The page's artwork, blurred to a haze of its colours."}
                 </p>
               </div>
@@ -161,7 +147,7 @@ export function Materials() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-label text-muted-foreground">Scroll edge</h3>
+          <h3 className="type-eyebrow text-muted-foreground">Scroll edge</h3>
           <ScrollEdge />
         </div>
       </div>

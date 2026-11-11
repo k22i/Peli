@@ -95,14 +95,14 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
                 Or go to{" "}
                 <button
                   type="button"
-                  className="font-medium text-foreground underline underline-offset-4 hover:text-brand"
+                  className="font-medium text-foreground underline underline-offset-4 hover:text-sun-ink"
                   onClick={() => void Browser.OpenURL(code.url)}
                 >
                   {code.pageUrl.replace(/^https?:\/\//, "")}
                 </button>{" "}
                 and enter
               </p>
-              <p className="font-mono text-3xl font-semibold tracking-[0.15em]">{code.code}</p>
+              <p className="tnum text-3xl font-semibold tracking-[0.15em]">{code.code}</p>
             </div>
             <p className="flex items-center gap-2 text-body whitespace-nowrap text-muted-foreground">
               <Spinner className="size-4" aria-hidden />

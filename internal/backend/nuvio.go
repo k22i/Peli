@@ -89,6 +89,64 @@ func (n Nuvio) Pull(ctx context.Context, profile store.Profile, surface store.Su
 	return changes, next, nil
 }
 
+// Snapshot reads the surface's whole current list from Nuvio, as upserts.
+func (n Nuvio) Snapshot(ctx context.Context, profile store.Profile, surface store.Surface) ([]Change, bool, error) {
+	index, err := indexOf(profile)
+	if err != nil {
+		return nil, false, err
+	}
+	var changes []Change
+	complete := true
+	add := func(item any) error {
+		change, err := newChange(surface, store.OpUpsert, item)
+		changes = append(changes, change)
+		return err
+	}
+	err = n.Sessions.Do(ctx, func(s nuvio.Session) error {
+		changes, complete = nil, true
+		switch surface {
+		case store.SurfaceLibrary:
+			rows, err := n.Client.LibraryList(ctx, s, index)
+			if err != nil {
+				return err
+			}
+			for _, r := range rows {
+				if err := add(libraryItem(r)); err != nil {
+					return err
+				}
+			}
+		case store.SurfaceProgress:
+			rows, all, err := n.Client.ProgressList(ctx, s, index)
+			if err != nil {
+				return err
+			}
+			complete = all
+			for _, r := range rows {
+				if err := add(progress(r)); err != nil {
+					return err
+				}
+			}
+		case store.SurfaceWatched:
+			rows, err := n.Client.WatchedList(ctx, s, index)
+			if err != nil {
+				return err
+			}
+			for _, r := range rows {
+				if err := add(watchedItem(r)); err != nil {
+					return err
+				}
+			}
+		default:
+			return fmt.Errorf("backend: no snapshot of %q", surface)
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, false, err
+	}
+	return changes, complete, nil
+}
+
 // page reads one page of a feed, and returns it as changes with the ID of its
 // last event.
 func (n Nuvio) page(ctx context.Context, s nuvio.Session, index int, surface store.Surface, since int64) (changes []Change, last int64, err error) {

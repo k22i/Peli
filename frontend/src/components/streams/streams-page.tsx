@@ -14,11 +14,13 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { Profile } from "@bindings/store";
 import { Service as Sync } from "@bindings/syncer";
 import { Notice } from "@/components/browse/browse-page";
-import { Ambient } from "@/components/media/ambient";
+import { Artwork } from "@/components/media/artwork";
+import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { ScrollRail } from "@/components/media/scroll-rail";
 import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { cn } from "@/lib/utils";
 import { toastManager } from "@/components/ui/toast";
 import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
@@ -74,7 +76,7 @@ export function StreamsPage() {
 
   return (
     // `isolate` holds the Ambient art behind the page.
-    <div className="relative isolate flex flex-col gap-6 pt-6 pb-12">
+    <div className="relative isolate flex flex-col gap-6 pb-16">
       {profile ? (
         <Picker
           key={`${type}/${video}`}
@@ -93,33 +95,65 @@ export function StreamsPage() {
   );
 }
 
-// Back, then the title at page-title size, and under it, for an episode, its
-// number and name. The `h1` is always the title the picker was opened with.
-function PageHeader({ title, episode }: { title: string; episode?: string | undefined }) {
+// A banner of the title's art under the top bar: Back, "Choose a source",
+// the title in the display serif and, for an episode, its number and name.
+// The `h1` is always the title the picker was opened with.
+function PageHeader({
+  title,
+  episode,
+  backdrop,
+}: {
+  title: string;
+  episode?: string | undefined;
+  backdrop?: string | undefined;
+}) {
+  useArtUnderBar(backdrop !== undefined);
   return (
-    <div className="flex items-center gap-4 px-gutter">
-      <BackButton />
-      <div className="flex min-w-0 flex-col gap-1">
-        <h1 className="text-title">{title}</h1>
-        {episode && <p className="text-body text-muted-foreground">{episode}</p>}
+    <header
+      className={cn(
+        "relative isolate [--fade:var(--background)]",
+        backdrop && "dark under-bar text-foreground",
+      )}
+    >
+      {backdrop && (
+        <>
+          <Artwork src={backdrop} use="backdrop" title={title} className="absolute inset-0 -z-10" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(110%_120%_at_0%_100%,rgb(0_0_0/0.85),rgb(0_0_0/0.4)_55%,rgb(0_0_0/0.15))]" />
+          <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-linear-to-t from-(--fade) to-transparent" />
+        </>
+      )}
+      <div
+        className={cn(
+          "flex items-end gap-5 px-page",
+          backdrop ? "min-h-[min(40vh,22rem)] pt-[calc(var(--spacing-bar)+1rem)] pb-10" : "pt-2",
+        )}
+      >
+        <BackButton overArt={backdrop !== undefined} />
+        <div className="flex min-w-0 flex-col gap-2">
+          <p className={cn("type-eyebrow", backdrop ? "text-[#ffc46b]" : "text-sun-ink")}>
+            Choose a source
+          </p>
+          <h1 className="type-display text-balance">{title}</h1>
+          {episode && <p className="text-[0.9375rem] text-foreground/75">{episode}</p>}
+        </div>
       </div>
-    </div>
+    </header>
   );
 }
 
-function BackButton() {
+function BackButton({ overArt = false }: { overArt?: boolean }) {
   const router = useRouter();
   const navigate = useNavigate();
   const canGoBack = useCanGoBack();
   return (
     <Button
-      variant="ghost"
-      size="icon-xl"
+      variant={overArt ? "media" : "secondary"}
+      size="icon-lg"
       aria-label="Back"
       onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
-      className="glass size-10 shrink-0 rounded-full text-popover-foreground hover:bg-(--glass-regular)"
+      className="mb-1 shrink-0"
     >
-      <ChevronLeft className="size-5" />
+      <ChevronLeft className="size-5" strokeWidth={2.25} />
     </Button>
   );
 }
@@ -152,10 +186,11 @@ function Picker({
   const art = useTmdbArt(tmdbRef(type, target.id, meta));
   const backdrop = art?.backdrop ?? meta?.background ?? meta?.poster;
   const header = (
-    <>
-      <Ambient tone="art" src={backdrop} className="-top-(--titlebar-h)" />
-      <PageHeader title={target.title} episode={playerHeading(meta, video, target.title).episode} />
-    </>
+    <PageHeader
+      title={target.title}
+      episode={playerHeading(meta, video, target.title).episode}
+      backdrop={backdrop}
+    />
   );
   // Where it was left may have moved on another device: pull while the
   // user picks (Go skips it if it pulled in the last half minute).
@@ -432,7 +467,7 @@ export function StreamsSummary({
   const one = plural === "sources" ? "1 source" : "1 addon";
   return (
     <div className="flex flex-col gap-3">
-      <p aria-live="polite" className="px-gutter text-body text-muted-foreground">
+      <p aria-live="polite" className="px-page text-body text-muted-foreground">
         {total === 1 ? "1 stream" : `${total} streams`}
         {waiting > 0
           ? `, ${waiting} of ${sources.length} ${plural} still answering`
@@ -491,7 +526,7 @@ function SourceStatus({ source }: { source: StreamSource }) {
       className="flex h-9 shrink-0 items-center gap-2 rounded-full border bg-card ps-3 pe-1.5 text-sm whitespace-nowrap"
     >
       {source.status === "pending" && <Spinner className="size-4 text-muted-foreground" />}
-      {source.status === "success" && <Check aria-hidden className="size-4 text-brand" />}
+      {source.status === "success" && <Check aria-hidden className="size-4 text-sun-ink" />}
       {source.status === "error" && (
         <AlertCircle aria-hidden className="size-4 text-destructive-foreground" />
       )}

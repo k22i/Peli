@@ -16,7 +16,7 @@ const copy: Partial<Record<Connection, { label: string; detail: string }>> = {
   },
 };
 
-// A quiet line above the profile menu while Nuvio can't be reached (#31). It
+// A quiet pill beside the profile menu while Nuvio can't be reached (#31). It
 // never blocks anything: the library and Continue Watching come from the
 // local store, and changes wait to be sent. Clicking it checks again; Go
 // also checks by itself and when the network comes back.
@@ -42,7 +42,7 @@ export function ConnectionStatus() {
                   setChecking(true);
                   void check().finally(() => setChecking(false));
                 }}
-                className="group/status flex h-10 w-full items-center gap-3 rounded-xl px-3 text-sm font-[550] text-muted-foreground outline-none hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-progress [&_svg]:size-5 [&_svg]:shrink-0"
+                className="group/status flex h-7 items-center gap-1.5 rounded-full bg-warning/14 px-2.5 text-small font-[590] text-warning-foreground outline-none transition-colors hover:bg-warning/22 focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-progress [&_svg]:size-3.5 [&_svg]:shrink-0"
               />
             }
           >
@@ -54,11 +54,11 @@ export function ConnectionStatus() {
                 <RefreshCw aria-hidden className="hidden group-hover/status:block" />
               </>
             )}
-            <span aria-hidden className="hidden truncate md:inline">
+            <span aria-hidden className="hidden truncate lg:inline">
               {text.label}
             </span>
           </TooltipTrigger>
-          <TooltipPopup side="right" className="max-w-60">
+          <TooltipPopup side="bottom" className="max-w-64">
             {text.detail} Click to try again.
           </TooltipPopup>
         </Tooltip>

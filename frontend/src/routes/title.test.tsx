@@ -230,7 +230,7 @@ describe("title page", () => {
     expect(await screen.findByRole("button", { name: "Play" })).toBeInTheDocument();
     expect(screen.getByText("142 min")).toBeInTheDocument();
     // The rating sits in its own pill, after the meta line (#117).
-    expect(screen.getByText("IMDb 9.3")).toBeInTheDocument();
+    expect(screen.getByTestId("imdb-score")).toHaveTextContent("IMDb 9.3");
     expect(screen.getByText("Frank Darabont")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Back" }));
@@ -451,24 +451,24 @@ describe("title page", () => {
       );
     });
 
-    it("turns the Back button from media glass to glass once the hero scrolls away", async () => {
+    it("turns the Back button from media material-pop to material-pop once the hero scrolls away", async () => {
       serve();
       await renderApp(moviePath);
 
       const back = await screen.findByRole("button", { name: "Back" });
       await waitFor(() => expect(back).toHaveAttribute("data-over-hero"));
-      expect(back).toHaveClass("glass-media");
+      expect(back).toHaveClass("material-media");
 
       see(isHero, false);
       await waitFor(() => expect(back).not.toHaveAttribute("data-over-hero"));
-      expect(back).toHaveClass("glass");
-      expect(back).not.toHaveClass("glass-media");
+      expect(back).toHaveClass("material-pop");
+      expect(back).not.toHaveClass("material-media");
 
       see(isHero, true);
       await waitFor(() => expect(back).toHaveAttribute("data-over-hero"));
     });
 
-    it("sticks the Episodes header as glass once the list scrolls under it", async () => {
+    it("sticks the Episodes header as material-pop once the list scrolls under it", async () => {
       serve();
       await renderApp(seriesPath);
 

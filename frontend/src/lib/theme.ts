@@ -16,8 +16,8 @@ export const themeStorageKey = "sinag.theme";
 // resizing or a slow load, and never the other mode's colour. main.go starts
 // with the OS's.
 export const windowColours: Record<Theme, readonly [number, number, number]> = {
-  light: [255, 255, 255],
-  dark: [10, 10, 11],
+  light: [245, 242, 236],
+  dark: [14, 13, 12],
 };
 
 const listeners = new Set<() => void>();

@@ -251,16 +251,16 @@ describe("profile picker", () => {
     expect(backend.switches).toEqual([kevin.id]);
   });
 
-  it("sits on the brand glow, with a pencil badge in manage mode (#123)", async () => {
+  it("sits on the sunrise, with a pencil badge in manage mode (#123)", async () => {
     const user = userEvent.setup();
     signedIn(kevin, kevin, kids);
     await renderApp("/profiles", { shell: false });
     await tile("Kevin");
 
-    expect(document.querySelector('[data-slot="ambient"][data-tone="brand"]')).not.toBeNull();
+    expect(document.querySelector('[data-slot="ambient"][data-tone="sun"]')).not.toBeNull();
 
     await user.click(screen.getByRole("button", { name: "Manage profiles" }));
-    const badge = (await tile("Edit Kevin")).querySelector(".glass");
+    const badge = (await tile("Edit Kevin")).querySelector("[data-slot=edit-badge]");
     expect(badge).not.toBeNull();
   });
 

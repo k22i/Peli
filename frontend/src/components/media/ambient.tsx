@@ -1,34 +1,24 @@
 import { cn } from "@/lib/utils";
 
-// The brand tone: two soft pools of the lagoon accent, high left and mid
-// right. Sinag's own glow, for pages with no artwork of their own.
-const brandGlow = [
-  "radial-gradient(60% 55% at 20% 0%, color-mix(in srgb, var(--brand) 18%, transparent), transparent 70%)",
-  "radial-gradient(50% 45% at 85% 30%, color-mix(in srgb, var(--brand) 10%, transparent), transparent 70%)",
+// A sunrise along the bottom edge: a low warm arc of light, for the screens
+// that come before the app (welcome, sign-in, who's watching).
+const sunrise = [
+  "radial-gradient(70% 55% at 50% 115%, color-mix(in srgb, var(--sun) 38%, transparent), transparent 70%)",
+  "radial-gradient(40% 30% at 50% 108%, color-mix(in srgb, var(--sun) 55%, transparent), transparent 70%)",
 ].join(", ");
 
-// Fades the layer out towards the page below.
-const fade = "linear-gradient(to bottom, #000 30%, transparent)";
+const fadeDown = "linear-gradient(to bottom, #000 25%, transparent)";
 
-// An ambient backdrop (#111): a tall wash of colour at the top of a page,
-// behind its content, so glass and text sit on something that has life.
-//
-// - `art` blurs the image into a haze of its colours (`filter`, not
-//   `backdrop-filter`, so it costs one blurred bitmap, not a live backdrop).
-//   Without a `src` it shows the brand glow, so a page that waits for its
-//   artwork still has a backdrop.
-// - `brand` is the glow alone.
-//
-// The parent must be `relative isolate`, so the layer sits behind the page's
-// content and not behind the app's background. With reduced transparency the
-// blur goes and the layer is a faint flat tint.
+// A wash of colour behind a page.
+//  art  the title's art, blurred far out of focus, fading down the page
+//  sun  the sunrise (also while art is missing)
 export function Ambient({
   src,
   tone = "art",
   className,
 }: {
   src?: string | undefined;
-  tone?: "art" | "brand";
+  tone?: "art" | "sun";
   className?: string;
 }) {
   const art = tone === "art" && src;
@@ -36,22 +26,23 @@ export function Ambient({
     <div
       aria-hidden
       data-slot="ambient"
-      data-tone={art ? "art" : "brand"}
+      data-tone={art ? "art" : "sun"}
       className={cn(
-        "pointer-events-none absolute inset-x-0 top-0 -z-10 h-[60vh] overflow-hidden",
+        "pointer-events-none absolute inset-x-0 -z-10 overflow-hidden",
+        art ? "top-0 h-[70vh]" : "inset-y-0",
         className,
       )}
-      style={{ maskImage: fade, WebkitMaskImage: fade }}
+      style={art ? { maskImage: fadeDown, WebkitMaskImage: fadeDown } : undefined}
     >
       {art ? (
         <div
-          className="absolute -inset-16 bg-cover bg-center opacity-25 blur-[60px] saturate-[1.4] dark:opacity-35 reduced-transparency:opacity-15 reduced-transparency:blur-none"
+          className="absolute -inset-24 bg-cover bg-center opacity-30 blur-[80px] saturate-150 dark:opacity-45 reduced-transparency:opacity-15 reduced-transparency:blur-none"
           style={{ backgroundImage: `url("${src}")` }}
         />
       ) : (
         <div
           className="absolute inset-0 reduced-transparency:opacity-50"
-          style={{ backgroundImage: brandGlow }}
+          style={{ backgroundImage: sunrise }}
         />
       )}
     </div>

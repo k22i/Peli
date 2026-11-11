@@ -284,7 +284,7 @@ function RepositoryGroup({
         label={repo.name}
         description={
           <>
-            <span className="block truncate font-mono text-meta">{sourceOf(repo.url)}</span>
+            <span className="block truncate tnum text-small">{sourceOf(repo.url)}</span>
             {!repo.supported
               ? "Android only: Sinag can’t run it. It stays in your list so your phone keeps it."
               : repo.fetchedAt === 0

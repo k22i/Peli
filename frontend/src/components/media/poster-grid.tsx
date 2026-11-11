@@ -28,12 +28,12 @@ import {
 } from "@/components/media/roving";
 import { cn } from "@/lib/utils";
 
-const columnGapPx = 24;
-const rowGapPx = 40;
+const columnGapPx = 16;
+const rowGapPx = 28;
 // How many rows from the end onEndReached fires: about a screen ahead.
 const endRows = 3;
 // A card's title and meta lines under the art, until rows are measured.
-const captionPx = 56;
+const captionPx = 48;
 
 const px = (value: string) => Number.parseFloat(value) || 0;
 
@@ -196,7 +196,7 @@ export function PosterGrid<T>({
         ref={list}
         aria-label={label}
         data-slot="poster-grid"
-        className={cn("relative px-gutter", className)}
+        className={cn("relative px-page", className)}
         style={
           {
             height: virtualizer.getTotalSize(),
@@ -218,7 +218,7 @@ export function PosterGrid<T>({
                 data-item={index}
                 className="absolute top-0"
                 style={{
-                  insetInlineStart: `calc(var(--spacing-gutter) + ${column * (cardWidth + columnGapPx)}px)`,
+                  insetInlineStart: `calc(var(--spacing-page) + ${column * (cardWidth + columnGapPx)}px)`,
                   transform: `translateY(${row.start - margin}px)`,
                 }}
               >

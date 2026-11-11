@@ -134,13 +134,13 @@ export function StreamList({
   const items = virtualizer.getVirtualItems();
 
   // The group whose heading has scrolled up under the title bar stays there,
-  // on glass. The list is virtualized, so a heading can't be `sticky` in its
+  // on material-pop. The list is virtualized, so a heading can't be `sticky` in its
   // own row: this copy is drawn over it instead.
   const [stickAt, setStickAt] = useState(stickGap);
   useLayoutEffect(() => {
     const element = list.current;
     if (!element) return;
-    const bar = Number.parseFloat(getComputedStyle(element).getPropertyValue("--titlebar-h"));
+    const bar = Number.parseFloat(getComputedStyle(element).getPropertyValue("--spacing-bar"));
     setStickAt((Number.isFinite(bar) ? bar : 0) + stickGap);
   }, []);
   const scrolled = virtualizer.scrollOffset ?? 0;
@@ -213,8 +213,8 @@ export function StreamList({
       {stuck && (
         // For the pointer only: the real heading, in the list, is the one
         // the keyboard and screen readers use.
-        <div aria-hidden className="pointer-events-none sticky top-(--titlebar-h) z-10 h-0">
-          <div className="scroll-edge-top absolute inset-x-0 top-2 px-gutter">
+        <div aria-hidden className="pointer-events-none sticky top-(--spacing-bar) z-10 h-0">
+          <div className="material-bar absolute inset-x-0 top-2 px-page">
             <GroupHeading row={stuck} stuck onToggle={() => onToggleGroup(stuck.tier)} />
           </div>
         </div>
@@ -222,7 +222,7 @@ export function StreamList({
       <ol
         ref={list}
         aria-label="Streams"
-        className="relative px-gutter"
+        className="relative px-page"
         style={{ height: virtualizer.getTotalSize() }}
       >
         {items.map((item) => {
@@ -243,7 +243,7 @@ export function StreamList({
               key={item.key}
               ref={virtualizer.measureElement}
               data-index={item.index}
-              className="absolute inset-x-gutter top-0"
+              className="absolute inset-x-page top-0"
               style={{ transform: `translateY(${item.start - top}px)` }}
             >
               {row.kind === "group" ? (
@@ -288,7 +288,7 @@ const groupNotes: Partial<Record<Tier, string>> = {
 
 // A quality group's heading: its name and how many streams it holds. The
 // collapsed groups are a button that opens them. `stuck` is the copy that
-// stays under the title bar, on glass: for the pointer only, so it leaves
+// stays under the title bar, on material-pop: for the pointer only, so it leaves
 // the tab order.
 function GroupHeading({
   row,
@@ -304,7 +304,7 @@ function GroupHeading({
   const label = (
     <>
       {tierLabel(row.tier)}{" "}
-      <span className="text-num text-caption font-normal text-muted-foreground">{row.count}</span>
+      <span className="tnum text-small font-normal text-muted-foreground">{row.count}</span>
     </>
   );
   const inner =
@@ -317,24 +317,26 @@ function GroupHeading({
         {...(stuck && { tabIndex: -1 })}
         aria-expanded={row.open}
         onClick={onToggle}
-        className="pointer-events-auto flex w-full cursor-pointer items-center gap-2 rounded-xl px-4 py-1.5 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
+        className="pointer-events-auto flex w-full cursor-pointer items-center gap-2 rounded-full px-4 py-1.5 text-start outline-none transition-colors hover:bg-foreground/5 focus-visible:ring-2 focus-visible:ring-ring"
       >
         <ChevronRight
           aria-hidden
           className={cn(
-            "size-4 text-muted-foreground transition-transform duration-fast ease-smooth",
+            "size-4 text-muted-foreground transition-transform duration-fast ease-out-soft",
             row.open && "rotate-90",
           )}
         />
         <span>{label}</span>
-        <span className="ms-auto text-caption font-normal text-muted-foreground">
+        <span className="ms-auto text-small font-normal text-muted-foreground">
           {groupNotes[row.tier]}
         </span>
       </button>
     );
-  const type = "font-heading text-base font-semibold";
+  const type = "text-[0.9375rem] font-[650] tracking-[-0.01em]";
   if (stuck) {
-    return <div className={`glass pointer-events-auto rounded-2xl p-1 ${type}`}>{inner}</div>;
+    return (
+      <div className={`material-pop pointer-events-auto rounded-full p-0.5 ${type}`}>{inner}</div>
+    );
   }
   return <h2 className={`pt-6 pb-1 ${type}`}>{inner}</h2>;
 }
@@ -395,17 +397,17 @@ function StreamRow({
   if (best) {
     return (
       <div className="py-1 pb-4">
-        <div className="glass relative flex items-center gap-4 rounded-3xl border-[1.5px] border-brand p-5">
+        <div className="relative isolate flex items-center gap-4 overflow-hidden rounded-3xl bg-card p-6 shadow-float hairline before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(80%_140%_at_100%_50%,color-mix(in_srgb,var(--sun)_16%,transparent),transparent_70%)]">
           <button
             type="button"
             {...rowProps}
             onClick={onPick}
             aria-describedby={named ? nameId : undefined}
-            className="-m-2 flex min-w-0 flex-1 cursor-pointer items-center gap-6 rounded-2xl p-2 text-start outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group/top -m-2 flex min-w-0 flex-1 cursor-pointer items-center gap-6 rounded-2xl p-2 text-start outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <span className="flex min-w-0 flex-1 flex-col items-start gap-2.5">
-              <span className="flex items-center gap-2 text-caption font-semibold text-brand">
-                <span className="text-label">Top pick</span>
+              <span className="flex items-center gap-2 text-small font-semibold text-sun-ink">
+                <span className="type-eyebrow">Top pick</span>
                 {usual && (
                   <>
                     <span aria-hidden>·</span>
@@ -418,7 +420,7 @@ function StreamRow({
                 {current && <span aria-hidden>·</span>}
                 {current && <Playing />}
               </span>
-              <span className="flex flex-wrap items-baseline gap-x-2 text-heading">
+              <span className="flex flex-wrap items-baseline gap-x-2.5 font-display text-[2.25rem] leading-none">
                 <span>{quality}</span>
                 {source && <span>{source}</span>}
               </span>
@@ -427,11 +429,11 @@ function StreamRow({
             </span>
             <span
               aria-hidden
-              className="hidden h-11 shrink-0 items-center gap-2 rounded-full bg-brand px-5 text-base font-semibold text-brand-foreground sm:flex"
+              className="hidden h-12 shrink-0 items-center gap-2.5 rounded-full bg-sun px-6 text-[0.9375rem] font-[620] text-sun-foreground shadow-[0_8px_24px_-10px_var(--sun)] transition-[scale,filter] duration-(--duration-fast) group-hover/top:brightness-105 sm:flex"
             >
               <Play className="size-4 fill-current" />
               Play
-              <Kbd className="bg-brand-foreground/16 text-brand-foreground">P</Kbd>
+              <Kbd className="bg-sun-foreground/16 text-sun-foreground">P</Kbd>
             </span>
           </button>
           {fileName}
@@ -443,7 +445,7 @@ function StreamRow({
 
   return (
     <div className="py-0.5">
-      <div className="group/stream flex items-center gap-1 rounded-2xl pe-3 transition-colors hover:bg-accent/60">
+      <div className="group/stream flex items-center gap-1 rounded-xl pe-3 transition-colors hover:bg-foreground/5">
         <button
           type="button"
           {...rowProps}
@@ -456,9 +458,7 @@ function StreamRow({
             <span className="flex min-w-0 items-baseline gap-2">
               <span className="font-[550]">{quality}</span>
               {source && <span className="font-[550]">{source}</span>}
-              {addon && (
-                <span className="truncate text-caption text-muted-foreground">{addon}</span>
-              )}
+              {addon && <span className="truncate text-small text-muted-foreground">{addon}</span>}
             </span>
             <Badges candidate={candidate} />
             <Warning candidate={candidate} />
@@ -474,7 +474,7 @@ function StreamRow({
 
 function Playing() {
   return (
-    <span className="flex items-center gap-1 text-caption font-semibold text-brand">
+    <span className="flex items-center gap-1 text-small font-semibold text-sun-ink">
       <Play aria-hidden className="size-3.5 fill-current" />
       Playing
     </span>
@@ -496,7 +496,7 @@ function Badges({ candidate }: { candidate: Candidate }) {
       {audio && <StreamBadge>{audio}</StreamBadge>}
       {parsed.atmos && <StreamBadge>Atmos</StreamBadge>}
       {how && (
-        <StreamBadge tone={how.kind === "cached" ? "brand" : "neutral"}>
+        <StreamBadge tone={how.kind === "cached" ? "sun" : "neutral"}>
           {how.kind === "cached" && <Zap aria-hidden className="fill-current" />}
           {how.kind === "uncached" && <Download aria-hidden />}
           {how.kind === "p2p" && <Users aria-hidden />}
@@ -512,7 +512,7 @@ function Warning({ candidate }: { candidate: Candidate }) {
   const why = candidate.verdict.bucket === "ok" ? null : reasonsLabel(candidate);
   if (!why) return null;
   return (
-    <span className="flex items-center gap-1 text-caption text-warning-foreground">
+    <span className="flex items-center gap-1 text-small text-warning-foreground">
       <TriangleAlert aria-hidden className="size-3.5" />
       {why}
     </span>
@@ -533,7 +533,7 @@ function Facts({ candidate, className }: { candidate: Candidate; className?: str
   ].filter(Boolean);
   if (facts.length === 0) return null;
   return (
-    <span className={`text-num text-caption text-muted-foreground ${className ?? ""}`}>
+    <span className={`tnum text-small text-muted-foreground ${className ?? ""}`}>
       {facts.join(" · ")}
     </span>
   );
@@ -554,8 +554,8 @@ function Details({ candidate, addon }: { candidate: Candidate; addon: string }) 
         : null,
   ].filter(Boolean);
   return (
-    <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-caption text-muted-foreground">
-      {facts.length > 0 && <span className="text-num">{facts.join(" · ")}</span>}
+    <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-small text-muted-foreground">
+      {facts.length > 0 && <span className="tnum">{facts.join(" · ")}</span>}
       <Warning candidate={candidate} />
     </span>
   );
@@ -566,9 +566,9 @@ function Details({ candidate, addon }: { candidate: Candidate; addon: string }) 
 function RawNames({ id, candidate }: { id: string; candidate: Candidate }) {
   const names = rawNames(candidate.parsed);
   return (
-    <div id={id} className="mx-4 mt-1 mb-2 rounded-xl bg-muted px-4 py-3">
+    <div id={id} className="mx-4 mt-1 mb-2 rounded-xl bg-muted px-4 py-3 [&_ul]:font-mono">
       {names.length ? (
-        <ul className="flex flex-col gap-1 font-mono text-meta break-all">
+        <ul className="flex flex-col gap-1 tnum text-small break-all">
           {names.map((name) => (
             <li key={name}>{name}</li>
           ))}

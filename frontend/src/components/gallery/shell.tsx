@@ -1,59 +1,59 @@
-import { House, Library, Search } from "lucide-react";
+import { Search } from "lucide-react";
 
 import { GallerySection } from "@/components/gallery/gallery-section";
+import { SunMark } from "@/components/shell/wordmark";
 
-// The hero's stand-in: shapes in the brand and a warm colour, dark at the
-// edges as a poster's backdrop is.
+// The hero's stand-in: a warm sky over a dark horizon, as a backdrop is.
 const art = [
-  "radial-gradient(60% 90% at 20% 20%, oklch(0.62 0.17 30), transparent 70%)",
-  "radial-gradient(55% 80% at 80% 30%, oklch(0.7 0.13 215), transparent 70%)",
-  "linear-gradient(180deg, oklch(0.25 0.04 260), oklch(0.15 0.02 260))",
+  "radial-gradient(60% 90% at 70% 10%, oklch(0.75 0.14 60), transparent 70%)",
+  "radial-gradient(55% 80% at 20% 40%, oklch(0.45 0.1 30), transparent 70%)",
+  "linear-gradient(180deg, oklch(0.3 0.04 50), oklch(0.14 0.02 50))",
 ].join(", ");
 
-// The app shell in miniature (#114): a floating glass sidebar and a title
-// strip over a pane that pads itself by --sidebar-inset and --titlebar-h. The
-// first block uses `bleed`, so its art runs under both; its text offsets
-// itself by the inset plus the gutter. Everything below it keeps clear.
+// The app shell in miniature: the top bar, clear over the hero's art, with
+// the wordmark, the sections and the profile; the hero pulls up under it and
+// melts into the canvas, and the shelves follow.
 function MiniWindow() {
   return (
     <div
       aria-hidden
-      className="relative h-80 overflow-hidden rounded-3xl border bg-background [--sidebar-inset:8rem] [--titlebar-h:1.75rem]"
+      className="relative h-80 overflow-hidden rounded-3xl bg-background hairline [--fade:var(--background)]"
     >
-      <div className="size-full overflow-hidden ps-(--sidebar-inset) pt-(--titlebar-h)">
-        <div
-          className="bleed flex h-44 flex-col justify-end gap-1 pb-4 ps-[calc(var(--sidebar-inset)+1.25rem)] text-white"
-          style={{ backgroundImage: art }}
-        >
-          <code className="font-mono text-meta opacity-80">bleed</code>
-          <span className="text-heading">Art under the glass</span>
-        </div>
-        <ul className="flex gap-3 py-4 pe-5 ps-5">
-          {Array.from({ length: 4 }, (_, index) => (
-            <li key={index} className="h-24 w-16 shrink-0 rounded-lg bg-secondary" />
-          ))}
-        </ul>
+      <div
+        className="dark relative flex h-48 flex-col justify-end gap-1 px-5 pb-6 text-white"
+        style={{ backgroundImage: art }}
+      >
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-(--fade) to-transparent" />
+        <code className="relative text-small opacity-80">under-bar</code>
+        <span className="relative font-display text-3xl leading-none">Art under the bar</span>
       </div>
-
-      <div className="absolute inset-x-0 top-0 flex h-(--titlebar-h) items-center gap-1.5 ps-3">
-        {["#ff5f57", "#febc2e", "#28c840"].map((colour) => (
-          <span key={colour} className="size-2.5 rounded-full" style={{ background: colour }} />
+      <ul className="flex gap-3 px-5 py-3">
+        {Array.from({ length: 6 }, (_, index) => (
+          <li key={index} className="h-24 w-16 shrink-0 rounded-lg bg-secondary" />
         ))}
-      </div>
+      </ul>
 
-      <div className="absolute start-2 top-2 bottom-2 flex w-28 flex-col gap-1 rounded-2xl p-2 pt-7 glass-thick">
-        <div className="flex h-6 items-center gap-1.5 rounded-lg px-2 text-meta text-muted-foreground glass-thin">
-          <Search className="size-3" />
-          Search
-        </div>
-        <div className="mt-1 flex h-7 items-center gap-1.5 rounded-lg bg-brand-soft px-2 text-meta font-medium">
-          <House className="size-3.5 text-brand" />
-          Home
-        </div>
-        <div className="mt-3 flex h-7 items-center gap-1.5 rounded-lg px-2 text-meta text-sidebar-foreground">
-          <Library className="size-3.5" />
-          Library
-        </div>
+      <div className="absolute inset-x-0 top-0 flex h-9 items-center gap-3 px-3 text-white">
+        <span className="flex gap-1.5">
+          {["#ff5f57", "#febc2e", "#28c840"].map((colour) => (
+            <span key={colour} className="size-2.5 rounded-full" style={{ background: colour }} />
+          ))}
+        </span>
+        <span className="flex items-center gap-1">
+          <SunMark className="size-3.5 text-[#ffb547]" />
+          <span className="font-display text-sm italic">Sinag</span>
+        </span>
+        <span className="mx-auto flex items-center gap-3 rounded-full bg-black/30 px-3 py-1 text-[0.625rem] font-semibold">
+          <span className="relative">
+            Home
+            <span className="absolute -bottom-1 left-1/2 size-0.5 -translate-x-1/2 rounded-full bg-[#ffb547]" />
+          </span>
+          <span className="opacity-60">Movies</span>
+          <span className="opacity-60">Shows</span>
+          <span className="opacity-60">Library</span>
+          <Search className="size-2.5 opacity-60" />
+        </span>
+        <span className="size-4 rounded-full bg-white/70" />
       </div>
     </div>
   );
@@ -63,7 +63,7 @@ export function Shell() {
   return (
     <GallerySection
       title="Shell"
-      description="The content pane fills the window and scrolls under a floating glass sidebar and the title bar. It pads itself by --sidebar-inset and --titlebar-h, so pages need nothing. Full-bleed artwork uses the bleed utility to run under both; text on it offsets itself by the inset plus the gutter."
+      description="A top bar over a content pane that fills the window. The bar holds the wordmark, the sections (a small sun marks the current one) and the profile; over a hero it is clear with light text, and it frosts once the page scrolls. Pages start below it; a full-bleed hero pulls itself up under it with under-bar."
     >
       <MiniWindow />
     </GallerySection>

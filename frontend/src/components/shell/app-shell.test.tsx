@@ -44,7 +44,7 @@ describe("app shell", () => {
     );
   });
 
-  it("lists Search first, then the browse sections, then Library", async () => {
+  it("lists the browse sections, then Library, then Search", async () => {
     await renderApp("/");
 
     const nav = screen.getByRole("navigation", { name: "Main" });
@@ -53,15 +53,15 @@ describe("app shell", () => {
       within(nav)
         .getAllByRole("link")
         .map((link) => link.textContent),
-    ).toEqual([expect.stringContaining("Search"), "Home", "Movies", "Shows", "Anime", "Library"]);
+    ).toEqual(["Home", "Movies", "Shows", "Anime", "Library", expect.stringContaining("Search")]);
   });
 
-  it("gives only the current section a sliding pill, and moves it with the route", async () => {
+  it("marks only the current section with the sun, and moves it with the route", async () => {
     const user = userEvent.setup();
     await renderApp("/shows");
 
     const nav = screen.getByRole("navigation", { name: "Main" });
-    const pills = () => [...nav.querySelectorAll('[data-slot="nav-pill"]')];
+    const pills = () => [...nav.querySelectorAll('[data-slot="nav-sun"]')];
 
     expect(pills()).toHaveLength(1);
     expect(within(nav).getByRole("link", { name: "Shows" }).contains(pills()[0]!)).toBe(true);
@@ -74,7 +74,7 @@ describe("app shell", () => {
     expect(within(nav).getByRole("link", { name: "Movies" }).contains(pills()[0]!)).toBe(true);
   });
 
-  it("shows the title bar's scroll edge once the page is scrolled", async () => {
+  it("frosts the top bar once the page is scrolled", async () => {
     await renderApp("/");
     const content = document.getElementById("content");
     expect(content).not.toHaveAttribute("data-scrolled");
@@ -94,17 +94,17 @@ describe("app shell", () => {
     await user.tab();
     expect(screen.getByRole("link", { name: "Home" })).toHaveFocus();
 
-    await user.keyboard("{ArrowDown}");
+    await user.keyboard("{ArrowRight}");
     expect(screen.getByRole("link", { name: "Movies" })).toHaveFocus();
-    // Arrow keys follow the order on screen: Search, then Home to Anime,
-    // then Library, and round again.
-    await user.keyboard("{ArrowUp}{ArrowUp}");
+    // Arrow keys follow the order on screen: Home to Anime, Library, then
+    // Search, and round again.
+    await user.keyboard("{ArrowLeft}{ArrowLeft}");
     expect(screen.getByRole("link", { name: "Search" })).toHaveFocus();
-    await user.keyboard("{ArrowUp}");
+    await user.keyboard("{ArrowLeft}");
     expect(screen.getByRole("link", { name: "Library" })).toHaveFocus();
-    await user.keyboard("{ArrowDown}{ArrowDown}");
+    await user.keyboard("{ArrowRight}{ArrowRight}");
     expect(screen.getByRole("link", { name: "Home" })).toHaveFocus();
-    await user.keyboard("{End}{Enter}");
+    await user.keyboard("{End}{ArrowLeft}{Enter}");
 
     expect(await heading("Library")).toBeInTheDocument();
     expect(router.state.location.pathname).toBe("/library");

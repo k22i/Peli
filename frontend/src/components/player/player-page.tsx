@@ -2,6 +2,7 @@ import { Slider } from "@base-ui/react/slider";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCanGoBack, useLocation, useNavigate, useRouter } from "@tanstack/react-router";
 import {
+  History as Resumed,
   AlertCircle,
   AudioLines,
   Captions,
@@ -31,25 +32,17 @@ import {
 } from "react";
 
 import { NextEpisode } from "@/components/player/next-episode";
+import { Prompt, promptEnter } from "@/components/player/prompt";
 import { SeekBar } from "@/components/player/seek-bar";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
 import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
-import { Button } from "@/components/ui/button";
 import {
-  Menu,
-  MenuGroup,
-  MenuGroupLabel,
-  MenuItem,
-  MenuPopup,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuSeparator,
-  MenuShortcut,
-  MenuSub,
-  MenuSubPopup,
-  MenuSubTrigger,
-  MenuTrigger,
-} from "@/components/ui/menu";
+  defaultSubtitleStyle,
+  SubtitlePanel,
+  type PanelTab,
+  type SubtitleStyle,
+} from "@/components/player/subtitle-panel";
+import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { streamsQuery } from "@/lib/addon-protocol";
 import { rememberSource } from "@/lib/chosen-source";
@@ -84,16 +77,10 @@ import {
 import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream } from "@/lib/resolve";
-import {
-  profileSettingsQuery,
-  subtitleSizes,
-  useSaveProfileSettings,
-  type ProfileSettings,
-} from "@/lib/settings";
+import { profileSettingsQuery, useSaveProfileSettings, type ProfileSettings } from "@/lib/settings";
 import { resolutionLabel } from "@/lib/stream-labels";
 import {
   autoSubtitle,
-  byLanguage,
   subtitleLanguage,
   subtitleTarget,
   useAddonSubtitles,
@@ -147,7 +134,6 @@ const volumeStep = 5;
 const startOverFor = 10_000;
 // How long the play/pause mark at the centre takes to fade out.
 const flashFor = 450;
-const sizeLabels: Record<string, string> = { small: "Small", medium: "Medium", large: "Large" };
 
 // The player screen: the video under a transparent page, with no app shell,
 // and the controls over it (#61). They show on any move or key and hide
@@ -264,7 +250,6 @@ function PlayerFile() {
     state.subtitleDelay,
     (a, b) => Math.abs(a - b) < 0.001,
   );
-  const [subtitleSize, setSubtitleSize] = useAhead(state.subtitleSize, same);
   // One seek and one volume change at a time, the newest next.
   const [seeker] = useState(() =>
     latestOnly(({ to, exact }: { to: number; exact: boolean }) =>
@@ -275,7 +260,11 @@ function PlayerFile() {
   const [delayer] = useState(() => latestOnly(Player.SetSubtitleDelay));
   const [dragging, setDragging] = useState(false);
   const [over, setOver] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  // The audio and subtitles panel, by tab, or closed.
+  const [panel, setPanel] = useState<PanelTab>();
+  const menuOpen = panel !== undefined;
+  // The addon subtitles being added, to show a spinner on their row.
+  const [loadingKey, setLoadingKey] = useState<string>();
   const [helpOpen, setHelpOpen] = useState(false);
   const [switcherOpen, setSwitcherOpen] = useState(false);
   // The stream being opened from the switcher, or why it couldn't be.
@@ -657,7 +646,7 @@ function PlayerFile() {
       return;
     }
     const load = added.load;
-    if (picked) setNotice({ text: "Loading subtitles…" });
+    if (picked) setLoadingKey(subtitle.key);
     Player.AddSubtitle({ url: subtitle.url, lang: subtitle.code, title: subtitle.addon }).then(
       (newId) => {
         setAdded((current) =>
@@ -666,10 +655,13 @@ function PlayerFile() {
             : current,
         );
         setSubtitleId(newId);
-        if (picked) setNotice(undefined);
+        if (picked) setLoadingKey(undefined);
       },
       () => {
-        if (picked) setNotice({ text: "Couldn’t load those subtitles" });
+        if (picked) {
+          setLoadingKey(undefined);
+          setNotice({ text: "Couldn’t load those subtitles" });
+        }
       },
     );
   };
@@ -704,7 +696,6 @@ function PlayerFile() {
       ? addonSubtitles.subtitles.find((subtitle) => subtitle.key === addonKey)
       : undefined;
   });
-  const languageGroups = byLanguage(addonSubtitles.subtitles, settings?.subtitleLanguage ?? "");
   const subtitlesMenu =
     subtitleTracks.length > 0 || addonSubtitles.subtitles.length > 0 || addonSubtitles.loading;
   const timeSubtitles = (to: number) => {
@@ -744,21 +735,49 @@ function PlayerFile() {
     changeVolume(to);
     setNotice({ text: `Volume ${to} %` });
   };
-  const sizeSubtitles = (size: string) => {
-    setSubtitleSize(size);
-    Player.SetSubtitleSize(size).catch(() => {});
-    // The profile's size from now on, as in Settings.
-    if (settings && settings.subtitleSize !== size)
-      saveSettings.mutate({ ...settings, subtitleSize: size } satisfies ProfileSettings);
+
+  // How subtitles look: the profile's, changed live from the panel
+  // and saved to the profile once the changes settle.
+  const [subStyle, setSubStyle] = useState<SubtitleStyle>();
+  const style = subStyle ?? settings?.subtitleStyle ?? defaultSubtitleStyle;
+  const [styler] = useState(() => latestOnly(Player.SetSubtitleStyle));
+  const restyle = (changed: SubtitleStyle) => {
+    setSubStyle(changed);
+    styler(changed);
+  };
+  useEffect(() => {
+    if (!subStyle || !settings) return undefined;
+    if (JSON.stringify(subStyle) === JSON.stringify(settings.subtitleStyle)) return undefined;
+    const timer = setTimeout(
+      () => saveSettings.mutate({ ...settings, subtitleStyle: subStyle } satisfies ProfileSettings),
+      700,
+    );
+    return () => clearTimeout(timer);
+    // oxlint-disable-next-line react/exhaustive-deps -- saves the newest style once it settles
+  }, [subStyle]);
+  const openPanel = (tab: PanelTab) => {
+    if (mini) return;
+    setHelpOpen(false);
+    setPanel(panel === tab ? undefined : tab);
   };
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       wake();
-      // An open menu or the switcher has the keys: Esc closes it, Space
-      // picks.
-      if (error || menuOpen || switcherOpen) return;
+      // The switcher has the keys: Esc closes it, Space picks. The panel
+      // keeps them too, but for Z and X (timing) and Esc (closes it).
+      if (error || switcherOpen) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (panel) {
+        const key = event.key.toLowerCase();
+        if (event.type !== "keydown") return;
+        if (key === "escape") setPanel(undefined);
+        if ((key === "z" || key === "x") && ready && subtitleTracks.length > 0) {
+          event.preventDefault();
+          timeSubtitles(subtitleDelay + (key === "z" ? -delayStep : delayStep));
+        }
+        return;
+      }
       // Not a click on the focused button too, as its key comes up.
       if (event.key === " ") event.preventDefault();
       if (event.type !== "keydown") return;
@@ -778,6 +797,7 @@ function PlayerFile() {
         f: toggleFullscreen,
         i: toggleMini,
         c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
+        v: () => ready && subtitlesMenu && openPanel("subtitles"),
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
         s: () => watching && openSwitcher(),
         "?": () => !mini && setHelpOpen(!helpOpen),
@@ -856,7 +876,8 @@ function PlayerFile() {
         className={cn(
           mini &&
             "w-0 overflow-hidden opacity-0 transition-[width,opacity] duration-200 group-focus-within/volume:w-24 group-focus-within/volume:opacity-100 group-hover/volume:w-24 group-hover/volume:opacity-100",
-          !mini && "w-24",
+          !mini &&
+            "w-0 overflow-hidden opacity-0 transition-[width,opacity] duration-300 ease-out-soft group-focus-within/volume:w-24 group-focus-within/volume:opacity-100 group-hover/volume:w-24 group-hover/volume:opacity-100",
         )}
       >
         <Slider.Control className="flex h-8 cursor-pointer touch-none items-center px-2 select-none">
@@ -881,13 +902,68 @@ function PlayerFile() {
     />
   );
 
+  // The prompts (resume, skip, up next) share one place: right above the
+  // dock's right end while the controls show, and down in the corner when
+  // they hide, so they never jump about or cover the controls.
+  const prompts = !failure && (
+    <div
+      className={cn(
+        "pointer-events-none absolute end-0 flex flex-col items-end gap-2.5 transition-[bottom] duration-300 ease-out-soft *:pointer-events-auto",
+        mini ? "inset-x-2 bottom-16 items-stretch" : "pe-8",
+        !mini && (shown ? "bottom-[calc(var(--dock-h)+1.25rem)]" : "bottom-8"),
+      )}
+    >
+      {offerStartOver && !mini && (
+        <Prompt
+          {...hold}
+          icon={<Resumed />}
+          action={
+            <Button size="sm" variant="light" onClick={startOver}>
+              <RotateCcw />
+              Start over
+            </Button>
+          }
+        >
+          Resumed at <span className="tnum">{formatTime(resumedAt)}</span>
+        </Prompt>
+      )}
+      {segment && !(segment.kind === "credits" && meta && next && (counting || starting)) && (
+        <div {...hold} className={promptEnter}>
+          <Button
+            size={mini ? "sm" : "lg"}
+            variant="light"
+            className="shadow-[0_18px_48px_-12px_rgb(0_0_0/0.7)]"
+            onClick={() => skipSegment(segment)}
+          >
+            {skipLabels[segment.kind]}
+            <SkipForward className="fill-current" />
+          </Button>
+        </div>
+      )}
+      {meta && next && (counting || starting) && (
+        <NextEpisode
+          profileId={profileId}
+          meta={meta}
+          next={next}
+          settings={settings}
+          remaining={Math.max(0, state.duration - state.position)}
+          share={from === undefined ? 0 : (state.position - from) / (state.duration - from)}
+          starting={starting}
+          mini={mini}
+          onPlay={() => setStarting(true)}
+          onCancel={() => setCancelled(true)}
+          onStart={(prepared) => void playNext(prepared)}
+        />
+      )}
+    </div>
+  );
+
   return (
     <div
-      // --above-bar is where the overlays sit: above the control bar (its
-      // bottom margin, its height, and a gap).
+      // --above-bar is where the overlays sit: above the dock.
       className={cn(
-        "fixed inset-0 text-white select-none",
-        mini ? "[--above-bar:6.25rem]" : "[--above-bar:8.375rem]",
+        "fixed inset-0 text-white select-none [--dock-h:7.5rem]",
+        mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
       onPointerMove={wake}
@@ -895,13 +971,13 @@ function PlayerFile() {
     >
       {/* The video itself: a click pauses, a double click goes fullscreen
           (or, from the mini player, back to the app window). The Play
-          button below is the one to reach by keyboard. */}
+          button is the one to reach by keyboard. */}
       <button
         type="button"
         tabIndex={-1}
         aria-hidden
         className={cn("absolute inset-0 outline-none", shown ? "cursor-default" : "cursor-none")}
-        onClick={togglePause}
+        onClick={() => (panel ? setPanel(undefined) : togglePause())}
         onDoubleClick={mini ? toggleMini : toggleFullscreen}
       />
       <div
@@ -912,72 +988,113 @@ function PlayerFile() {
           shown ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >
-        {/* A light gradient for the title to sit on, then room for the macOS
-            traffic lights and a drag strip. The mini player hides the traffic
-            lights. */}
+        {/* Scrims: a band at the top for the title, a deeper one at the
+            bottom for the dock. */}
         <div
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-x-0 top-0 bg-linear-to-b from-black/45 to-transparent",
-            mini ? "h-16" : "h-28",
+            "pointer-events-none absolute inset-x-0 top-0 bg-linear-to-b from-black/60 via-black/20 to-transparent",
+            mini ? "h-16" : "h-36",
           )}
         />
         <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 via-black/30 to-transparent",
+            mini ? "h-24" : "h-64",
+          )}
+        />
+
+        {/* The top: Back and what's playing on the left; the window's
+            actions on the right. A drag strip, clear of the traffic lights. */}
+        <div
           {...hold}
           className={cn(
-            "absolute inset-x-0 top-0 flex items-start gap-3 drag-region",
-            mini ? "h-14 pt-2 pr-3 pl-2" : "h-16 pt-3 pr-4 pl-20",
+            "drag-region absolute inset-x-0 top-0 flex items-start gap-4",
+            mini ? "h-14 pt-2 pr-3 pl-2" : "pt-3 pr-5 pl-[5.75rem]",
           )}
         >
-          <ControlButton label="Back" icon={ChevronLeft} onClick={leave} glass />
-          <div className="flex h-10 min-w-0 flex-col justify-center">
-            {playing?.title && (
+          <ControlButton label="Back" icon={ChevronLeft} onClick={leave} raised />
+          {playing?.title && (
+            <div
+              className={cn(
+                "flex min-w-0 flex-col drop-shadow-[0_1px_8px_rgb(0_0_0/0.6)]",
+                mini ? "h-10 justify-center" : "gap-1.5 pt-0.5",
+              )}
+            >
               <h1
                 className={cn(
-                  "truncate font-semibold drop-shadow-md",
-                  mini ? "text-sm" : "text-heading",
+                  "truncate",
+                  mini
+                    ? "text-sm font-semibold"
+                    : "font-display text-[1.875rem] leading-none font-normal",
                 )}
               >
                 {playing.title}
               </h1>
-            )}
-            {playing?.episode && (
-              <p className="truncate text-caption drop-shadow-md">{playing.episode}</p>
-            )}
-          </div>
-          {torrentStatus?.active && !mini && (
-            <p
-              aria-label="Torrent status"
-              className="ms-auto mt-1.5 shrink-0 rounded-full px-3 py-1.5 text-num text-caption text-white glass-media-strong"
-            >
-              {torrentStatusText(torrentStatus)}
-            </p>
+              {playing.episode && (
+                <p className={cn("truncate", mini ? "text-small" : "text-small text-white/75")}>
+                  {playing.episode}
+                </p>
+              )}
+            </div>
+          )}
+          {!mini && (
+            <div className="ms-auto flex shrink-0 items-center gap-1">
+              {torrentStatus?.active && (
+                <p
+                  aria-label="Torrent status"
+                  className="me-2 rounded-full bg-black/45 px-3 py-1.5 text-small text-white/85 tnum backdrop-blur-md"
+                >
+                  {torrentStatusText(torrentStatus)}
+                </p>
+              )}
+              {watching && (
+                <ControlButton
+                  label="Streams"
+                  icon={ListVideo}
+                  onClick={openSwitcher}
+                  aria-keyshortcuts="S"
+                  aria-expanded={switcherOpen}
+                />
+              )}
+              <ControlButton
+                label="Keyboard shortcuts"
+                icon={Keyboard}
+                onClick={() => {
+                  setPanel(undefined);
+                  setHelpOpen(!helpOpen);
+                }}
+                aria-keyshortcuts="Shift+?"
+                aria-expanded={helpOpen}
+              />
+              {miniButton}
+              <ControlButton
+                label={fullscreen ? "Exit full screen" : "Full screen"}
+                icon={fullscreen ? Minimize : Maximize}
+                onClick={toggleFullscreen}
+                aria-keyshortcuts="F"
+              />
+            </div>
           )}
         </div>
-        <div
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/40 to-transparent",
-            mini ? "h-24" : "h-40",
-          )}
-        />
-        {/* The control bar: a capsule floating over the video. Text in it is
-            plain white: it's what stays readable over a white frame. */}
+
+        {/* The dock: the timeline across, and the transport under it. */}
         <div
           {...hold}
           className={cn(
-            "absolute flex flex-col gap-1 glass-media-strong",
+            "absolute flex flex-col",
             mini
-              ? "inset-x-2 bottom-2 rounded-2xl px-3 py-2"
-              : "inset-x-6 bottom-6 mx-auto max-w-5xl rounded-[1.75rem] px-5 pt-3 pb-2.5",
+              ? "inset-x-2 bottom-2 gap-1 rounded-2xl px-3 py-2 material-media"
+              : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
           )}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {timeShown && (
               <p
                 data-testid="elapsed"
                 className={cn(
-                  "shrink-0 text-num text-caption text-white",
+                  "shrink-0 text-small font-[590] text-white tnum",
                   hours ? "w-[7ch]" : "w-[5ch]",
                 )}
               >
@@ -1000,7 +1117,7 @@ function PlayerFile() {
               <p
                 data-testid="remaining"
                 className={cn(
-                  "shrink-0 text-end text-num text-caption text-white",
+                  "shrink-0 text-end text-small font-[590] text-white/70 tnum",
                   hours ? "w-[8ch]" : "w-[6ch]",
                 )}
               >
@@ -1013,7 +1130,7 @@ function PlayerFile() {
               {playButton}
               {volumeControl}
               {known && (
-                <p className="ms-1 truncate text-num text-caption text-white">
+                <p className="ms-1 truncate text-small text-white tnum">
                   {formatTime(position)} / {formatTime(state.duration)}
                 </p>
               )}
@@ -1021,8 +1138,8 @@ function PlayerFile() {
             </div>
           ) : (
             <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-              <div className="flex items-center">{volumeControl}</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">{volumeControl}</div>
+              <div className="flex items-center gap-4">
                 <ControlButton
                   label="Back 10 seconds"
                   icon={RotateCcw}
@@ -1041,213 +1158,56 @@ function PlayerFile() {
                   badge={skip}
                 />
               </div>
-              <div className="flex items-center justify-self-end gap-1">
-                {ready && !mini && audioTracks.length > 1 && (
-                  <Menu onOpenChange={setMenuOpen}>
-                    <MenuTrigger render={<ControlButton label="Audio" icon={AudioLines} />} />
-                    <PlayerMenuPopup>
-                      <MenuGroup>
-                        <MenuGroupLabel>Audio</MenuGroupLabel>
-                        <MenuRadioGroup
-                          value={audioId}
-                          onValueChange={(id: number) => pickAudio(id)}
-                        >
-                          {audioTracks.map((track) => (
-                            <TrackItem key={track.id} track={track} />
-                          ))}
-                        </MenuRadioGroup>
-                      </MenuGroup>
-                    </PlayerMenuPopup>
-                  </Menu>
-                )}
-                {ready && !mini && subtitlesMenu && (
-                  <Menu onOpenChange={setMenuOpen}>
-                    <MenuTrigger render={<ControlButton label="Subtitles" icon={Captions} />} />
-                    <PlayerMenuPopup>
-                      <MenuGroup>
-                        <MenuGroupLabel>Subtitles</MenuGroupLabel>
-                        <MenuRadioGroup
-                          value={subtitleId}
-                          onValueChange={(id: number) => pickSubtitles(id)}
-                        >
-                          <MenuRadioItem value={0}>Off</MenuRadioItem>
-                          {subtitleTracks.map((track) => (
-                            <TrackItem key={track.id} track={track} />
-                          ))}
-                        </MenuRadioGroup>
-                      </MenuGroup>
-                      {(languageGroups.length > 0 || addonSubtitles.loading) && (
-                        <>
-                          <MenuSeparator />
-                          <MenuGroup>
-                            <MenuGroupLabel>From addons</MenuGroupLabel>
-                            {languageGroups.map((group) => (
-                              <MenuSub key={group.language}>
-                                <MenuSubTrigger>
-                                  <span className="truncate">{group.label}</span>
-                                  <span className="ms-auto text-xs text-muted-foreground tabular-nums">
-                                    {group.subtitles.length}
-                                  </span>
-                                </MenuSubTrigger>
-                                <MenuSubPopup className={menuPopupClass}>
-                                  <MenuRadioGroup
-                                    value={addonKey ?? ""}
-                                    onValueChange={(key: string) => {
-                                      const subtitle = group.subtitles.find(
-                                        (each) => each.key === key,
-                                      );
-                                      if (subtitle) addSubtitles(subtitle, true);
-                                    }}
-                                  >
-                                    {group.subtitles.map((subtitle, index) => (
-                                      <AddonSubtitleItem
-                                        key={subtitle.key}
-                                        subtitle={subtitle}
-                                        number={index + 1}
-                                      />
-                                    ))}
-                                  </MenuRadioGroup>
-                                </MenuSubPopup>
-                              </MenuSub>
-                            ))}
-                            {addonSubtitles.loading && (
-                              <MenuItem disabled>
-                                <Spinner />
-                                Asking addons…
-                              </MenuItem>
-                            )}
-                          </MenuGroup>
-                        </>
-                      )}
-                      <MenuSeparator />
-                      <MenuGroup>
-                        <MenuGroupLabel>Size</MenuGroupLabel>
-                        <MenuRadioGroup
-                          value={subtitleSize}
-                          onValueChange={(size: string) => sizeSubtitles(size)}
-                        >
-                          {subtitleSizes.map((size) => (
-                            <MenuRadioItem key={size} value={size}>
-                              {sizeLabels[size]}
-                            </MenuRadioItem>
-                          ))}
-                        </MenuRadioGroup>
-                      </MenuGroup>
-                      <MenuSeparator />
-                      <MenuGroup>
-                        <MenuGroupLabel>Timing: {subtitleDelayText(subtitleDelay)}</MenuGroupLabel>
-                        <MenuItem
-                          closeOnClick={false}
-                          onClick={() => timeSubtitles(subtitleDelay - delayStep)}
-                        >
-                          Earlier
-                          <MenuShortcut aria-hidden>Z</MenuShortcut>
-                        </MenuItem>
-                        <MenuItem
-                          closeOnClick={false}
-                          onClick={() => timeSubtitles(subtitleDelay + delayStep)}
-                        >
-                          Later
-                          <MenuShortcut aria-hidden>X</MenuShortcut>
-                        </MenuItem>
-                        <MenuItem
-                          closeOnClick={false}
-                          disabled={subtitleDelay === 0}
-                          onClick={() => timeSubtitles(0)}
-                        >
-                          Reset timing
-                        </MenuItem>
-                      </MenuGroup>
-                    </PlayerMenuPopup>
-                  </Menu>
-                )}{" "}
-                {watching && (
-                  <ControlButton
-                    label="Streams"
-                    icon={ListVideo}
-                    onClick={openSwitcher}
-                    aria-keyshortcuts="S"
-                    aria-expanded={switcherOpen}
+              <div className="flex items-center justify-self-end gap-1.5">
+                {ready && subtitlesMenu && (
+                  <PanelButton
+                    label="Subtitles"
+                    icon={Captions}
+                    active={panel !== undefined && panel !== "audio"}
+                    on={subtitleId > 0}
+                    onClick={() => openPanel("subtitles")}
+                    shortcut="V"
                   />
                 )}
-                <ControlButton
-                  label="Keyboard shortcuts"
-                  icon={Keyboard}
-                  onClick={() => setHelpOpen(!helpOpen)}
-                  aria-keyshortcuts="Shift+?"
-                  aria-expanded={helpOpen}
-                />
-                {miniButton}
-                <ControlButton
-                  label={fullscreen ? "Exit full screen" : "Full screen"}
-                  icon={fullscreen ? Minimize : Maximize}
-                  onClick={toggleFullscreen}
-                  aria-keyshortcuts="F"
-                />
+                {ready && audioTracks.length > 1 && (
+                  <PanelButton
+                    label="Audio"
+                    icon={AudioLines}
+                    active={panel === "audio"}
+                    onClick={() => openPanel("audio")}
+                  />
+                )}
               </div>
             </div>
           )}
         </div>
       </div>
-      {/* Above the control bar: the resume toast at its start, and at its end
-          the skip button and the next-episode card. */}
-      <div
-        className={cn(
-          "pointer-events-none absolute bottom-(--above-bar) flex items-end justify-between gap-4 *:pointer-events-auto",
-          mini ? "inset-x-2" : "inset-x-6 mx-auto max-w-5xl",
-        )}
-      >
-        {offerStartOver && !failure && !mini && (
-          <div
-            {...hold}
-            className="flex items-center gap-3 rounded-full py-1.5 ps-4 pe-1.5 text-sm text-white glass-media-strong"
-          >
-            <p className="font-medium">
-              Resumed at <span className="tabular-nums">{formatTime(resumedAt)}</span>
-            </p>
-            <Button
-              size="sm"
-              className="rounded-full border-transparent bg-white text-black hover:bg-white/90"
-              onClick={startOver}
-            >
-              <RotateCcw />
-              Start over
-            </Button>
-          </div>
-        )}
-        <div className="ms-auto flex flex-col items-end gap-3">
-          {segment &&
-            !failure &&
-            !(segment.kind === "credits" && meta && next && (counting || starting)) && (
-              <div {...hold}>
-                <Button
-                  size={mini ? "sm" : "lg"}
-                  variant="ghost"
-                  className="rounded-full text-white glass-media-strong hover:bg-(--glass-media-strong) hover:text-white hover:before:bg-white/15"
-                  onClick={() => skipSegment(segment)}
-                >
-                  {skipLabels[segment.kind]}
-                  <SkipForward className="fill-current" />
-                </Button>
-              </div>
-            )}
-          {meta && next && (counting || starting) && (
-            <NextEpisode
-              profileId={profileId}
-              meta={meta}
-              next={next}
-              settings={settings}
-              remaining={Math.max(0, state.duration - state.position)}
-              share={from === undefined ? 0 : (state.position - from) / (state.duration - from)}
-              starting={starting}
-              mini={mini}
-              onPlay={() => setStarting(true)}
-              onCancel={() => setCancelled(true)}
-              onStart={(prepared) => void playNext(prepared)}
-            />
-          )}
-        </div>
-      </div>
+      {prompts}
+      <SubtitlePanel
+        open={panel !== undefined && !mini && !failure}
+        tab={panel ?? "subtitles"}
+        onTabChange={setPanel}
+        onClose={() => setPanel(undefined)}
+        subtitleTracks={subtitleTracks}
+        addedIds={new Set(added.ids.values())}
+        subtitleId={subtitleId}
+        onPickTrack={pickSubtitles}
+        addonSubtitles={addonSubtitles.subtitles}
+        addonLoading={addonSubtitles.loading}
+        addonKey={addonKey}
+        loadingKey={loadingKey}
+        onPickAddon={(subtitle) => addSubtitles(subtitle, true)}
+        preferredLanguage={settings?.subtitleLanguage ?? ""}
+        audioTracks={audioTracks}
+        audioId={audioId}
+        onPickAudio={pickAudio}
+        style={style}
+        onStyleChange={restyle}
+        delay={subtitleDelay}
+        onDelayChange={timeSubtitles}
+        position={position}
+        subtitleText={state.subtitleText ?? ""}
+      />
       {watching && (
         <StreamSwitcher
           open={switcherOpen}
@@ -1269,10 +1229,10 @@ function PlayerFile() {
           aria-live="polite"
           className={cn(
             "pointer-events-none absolute inset-x-0 flex justify-center",
-            mini ? "top-14" : "top-20",
+            mini ? "top-14" : "top-24",
           )}
         >
-          <p className="rounded-full px-4 py-1.5 text-sm font-medium text-white glass-media-strong">
+          <p className="rounded-full bg-black/65 px-4 py-2 text-small font-[600] text-white shadow-float backdrop-blur-xl motion-safe:animate-in motion-safe:fade-in-0 motion-safe:zoom-in-95">
             {notice.text}
           </p>
         </div>
@@ -1286,30 +1246,36 @@ function PlayerFile() {
           data-testid="playback-flash"
           className="pointer-events-none absolute inset-0 grid place-items-center"
         >
-          <div className="grid size-20 place-items-center rounded-full text-white opacity-0 transition-[opacity,scale] duration-450 ease-out glass-media starting:scale-90 starting:opacity-100 motion-reduce:starting:scale-100">
+          <div className="grid size-24 place-items-center rounded-full bg-black/40 text-white opacity-0 backdrop-blur-md transition-[opacity,scale] duration-500 ease-out starting:scale-75 starting:opacity-100 motion-reduce:starting:scale-100">
             {flash.paused ? (
-              <Pause className="size-9 fill-current" />
+              <Pause className="size-10 fill-current" />
             ) : (
-              <Play className="size-9 fill-current" />
+              <Play className="size-10 translate-x-0.5 fill-current" />
             )}
           </div>
         </div>
       )}
       {failure ? (
-        <div role="alert" className="absolute inset-0 grid place-items-center bg-black/75 p-6">
-          <div className="flex w-full max-w-md flex-col items-center gap-3 rounded-3xl p-8 text-center glass-media-strong">
-            <AlertCircle className="size-8 text-white/70" />
-            <p className="text-lg font-semibold">{failure.title}</p>
+        <div role="alert" className="absolute inset-0 grid place-items-center bg-black/80 p-6">
+          <div className="flex w-full max-w-md flex-col items-center gap-4 text-center">
+            <AlertCircle className="size-9 text-[#ffc46b]" />
+            <p className="font-display text-[2.25rem] leading-none">{failure.title}</p>
             <p className="text-body text-white/70">{failure.description}</p>
-            <div className="mt-2 flex gap-2">
+            <div className="mt-3 flex gap-2.5">
               {failure.retry && playing?.source && (
-                <Button onClick={() => void retry(error)} disabled={retrying}>
+                <Button
+                  variant="light"
+                  size="lg"
+                  onClick={() => void retry(error)}
+                  disabled={retrying}
+                >
                   {retrying && <Spinner />}
                   Try again
                 </Button>
               )}
               <Button
-                variant="secondary"
+                variant="media"
+                size="lg"
                 onClick={watching ? openSwitcher : leave}
                 disabled={retrying}
               >
@@ -1321,19 +1287,16 @@ function PlayerFile() {
       ) : (
         waiting && (
           <div className="pointer-events-none absolute inset-0 grid place-items-center">
-            <div
-              className={cn(
-                "flex flex-col items-center gap-2 rounded-3xl p-5",
-                waitingText ? "glass-media-strong" : "glass-media",
-              )}
-            >
-              <Spinner className="size-10 text-white" />
-              {starting && next && <p className="text-item">Opening {episodeCode(next)}…</p>}
-              {!starting && state.buffering && state.bufferPercent > 0 && (
-                <p className="text-caption tabular-nums">Buffering {state.bufferPercent} %</p>
-              )}
-              {!starting && torrentStatus?.active && (
-                <p className="text-caption tabular-nums">{torrentStatusText(torrentStatus)}</p>
+            <div className="flex flex-col items-center gap-3">
+              <Spinner className="size-11 text-white drop-shadow-[0_2px_12px_rgb(0_0_0/0.6)]" />
+              {waitingText && (
+                <p className="rounded-full bg-black/55 px-3.5 py-1.5 text-small font-[560] tnum backdrop-blur-md">
+                  {starting && next
+                    ? `Opening ${episodeCode(next)}…`
+                    : torrentStatus?.active
+                      ? torrentStatusText(torrentStatus)
+                      : `Buffering ${state.bufferPercent} %`}
+                </p>
               )}
             </div>
           </div>
@@ -1369,48 +1332,49 @@ function selectedId(tracks: Track[]): number {
   return tracks.find((track) => track.selected)?.id ?? 0;
 }
 
-// The player's menus are dark over any theme, like the rest of its chrome,
-// on the regular glass tier (the menu popup's), and open above the control
-// bar, clear of it: the buttons sit 46 px under the bar's top edge (its
-// padding, the seek row, the gap and the Play button's extra height), and the
-// menu stands 12 px above the bar.
-const menuPopupClass =
-  "dark max-w-80 rounded-2xl text-foreground before:rounded-[calc(var(--radius-2xl)-1px)]";
-function PlayerMenuPopup({ children }: { children: ReactNode }) {
+// A dock button that opens the panel at its tab: lit while the panel is
+// open there, with a sun dot while subtitles are on.
+function PanelButton({
+  label,
+  icon: Icon,
+  active,
+  on = false,
+  onClick,
+  shortcut,
+}: {
+  label: string;
+  icon: LucideIcon;
+  active: boolean;
+  on?: boolean;
+  onClick: () => void;
+  shortcut?: string;
+}) {
   return (
-    <MenuPopup side="top" align="end" sideOffset={46 + 12} className={menuPopupClass}>
-      {children}
-    </MenuPopup>
-  );
-}
-
-function TrackItem({ track }: { track: Track }) {
-  const { name, detail } = trackLabel(track);
-  return (
-    <MenuRadioItem value={track.id}>
-      <span className="flex flex-col">
-        <span className="truncate">{name}</span>{" "}
-        {detail && <span className="truncate text-xs text-muted-foreground">{detail}</span>}
-      </span>
-    </MenuRadioItem>
-  );
-}
-
-// One addon's file: its name, or "English 2" when it has none, and the addon.
-function AddonSubtitleItem({ subtitle, number }: { subtitle: AddonSubtitle; number: number }) {
-  return (
-    <MenuRadioItem value={subtitle.key}>
-      <span className="flex min-w-0 flex-col">
-        <span className="truncate">{subtitle.name || `Subtitles ${number}`}</span>{" "}
-        <span className="truncate text-xs text-muted-foreground">{subtitle.addon}</span>
-      </span>
-    </MenuRadioItem>
+    <button
+      type="button"
+      aria-label={label}
+      aria-expanded={active}
+      aria-keyshortcuts={shortcut}
+      onClick={onClick}
+      className={cn(
+        "relative grid size-10 place-items-center rounded-full outline-none transition-[background-color,color,scale] focus-visible:ring-2 focus-visible:ring-white/70 motion-safe:active:scale-90 [&_svg]:size-5",
+        active ? "bg-white text-black" : "text-white/90 hover:bg-white/12 hover:text-white",
+      )}
+    >
+      <Icon />
+      {on && !active && (
+        <span
+          aria-hidden
+          className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-[#ffb547]"
+        />
+      )}
+    </button>
   );
 }
 
 // A round button for the controls. In the bar it's bare (the bar is the
-// glass); `glass` makes it a media-glass circle of its own, over the video
-// (Back). `large` is the Play button. The glass ones keep their tint on hover
+// material-pop); `material-pop` makes it a media-glass circle of its own, over the video
+// (Back). `large` is the Play button. The material-pop ones keep their tint on hover
 // (the ghost variant's hover colour would replace it) and lighten the
 // highlight instead.
 function ControlButton({
@@ -1418,7 +1382,7 @@ function ControlButton({
   icon: Icon,
   fill,
   badge,
-  glass,
+  raised,
   large,
   className,
   ...props
@@ -1427,7 +1391,7 @@ function ControlButton({
   icon: LucideIcon;
   fill?: boolean;
   badge?: ReactNode;
-  glass?: boolean;
+  raised?: boolean;
   large?: boolean;
 } & Omit<ComponentProps<typeof Button>, "children">) {
   return (
@@ -1436,15 +1400,14 @@ function ControlButton({
       size="icon-lg"
       aria-label={label}
       className={cn(
-        "relative rounded-full text-white hover:bg-white/15 hover:text-white data-popup-open:bg-white/15",
-        glass &&
-          "size-10 glass-media hover:bg-(--glass-media) data-popup-open:bg-(--glass-media) data-pressed:bg-(--glass-media) hover:before:bg-white/15 data-popup-open:before:bg-white/15 sm:size-10",
-        large && "size-12 sm:size-12",
+        "relative rounded-full text-white/90 hover:bg-white/12 hover:text-white data-popup-open:bg-white/15",
+        raised && "size-10 material-media hover:bg-[rgb(60_56_52/0.55)]",
+        large && "size-14 bg-white text-black hover:bg-white/90 hover:text-black",
         className,
       )}
       {...props}
     >
-      <Icon className={cn(large ? "size-7" : "size-5", fill && "fill-current")} />
+      <Icon className={cn(large ? "size-6" : "size-5", fill && "fill-current")} />
       {badge !== undefined && (
         <span aria-hidden className="absolute text-[0.5rem] font-semibold">
           {badge}

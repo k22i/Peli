@@ -41,7 +41,7 @@ import type { Profile } from "@bindings/store";
 // the field moves into them and ↑ from the first row comes back. The query
 // lives in the address, so Back from a title page returns to the results.
 //
-// The header is Browse's (#116, #119): the "Search" title and the big glass
+// The header is Browse's (#116, #119): the "Search" title and the big material-pop
 // field stick under the title bar, and once stuck the title is only for
 // screen readers.
 export function SearchPage() {
@@ -133,10 +133,10 @@ function SearchField({
   };
 
   return (
-    <div className="relative max-w-3xl px-gutter">
+    <div className="relative max-w-3xl px-page">
       <SearchIcon
         aria-hidden
-        className="pointer-events-none absolute start-[calc(var(--spacing-gutter)+1.25rem)] top-1/2 z-10 size-5 -translate-y-1/2 text-muted-foreground"
+        className="pointer-events-none absolute start-[calc(var(--spacing-page)+1.125rem)] top-1/2 z-10 size-5 -translate-y-1/2 text-muted-foreground"
       />
       <Input
         ref={input}
@@ -156,16 +156,16 @@ function SearchField({
         onBlur={() => setFocused(false)}
         onKeyDown={onKeyDown}
         // The coss Input sets its own height and padding on the <input>; the
-        // field here is a glass bar, so the wrapper takes the look and the
+        // field here is a material-pop bar, so the wrapper takes the look and the
         // input is sized from it.
-        className="glass flex h-14 w-full rounded-2xl outline-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-2 [&_input]:h-14 [&_input]:ps-14 [&_input]:pe-16 [&_input]:text-heading [&_input]:leading-14 [&_input]:placeholder:text-muted-foreground"
+        className="flex h-13 w-full rounded-full bg-foreground/7 outline-ring transition-colors hover:bg-foreground/9 has-focus-visible:bg-foreground/9 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 [&_input]:h-13 [&_input]:ps-13 [&_input]:pe-16 [&_input]:text-[1.0625rem] [&_input]:leading-13 [&_input]:font-[510] [&_input]:placeholder:text-muted-foreground"
       />
       {text ? (
         <button
           type="button"
           aria-label="Clear search"
           onClick={clear}
-          className="glass-thin absolute end-[calc(var(--spacing-gutter)+0.75rem)] top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground outline-ring transition-[scale] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:active:scale-95 [&_svg]:size-4"
+          className="absolute end-[calc(var(--spacing-page)+0.625rem)] bg-foreground/12 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground outline-ring transition-[scale] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:active:scale-95 [&_svg]:size-4"
         >
           <X aria-hidden />
         </button>
@@ -173,7 +173,7 @@ function SearchField({
         !focused && (
           <Kbd
             aria-hidden
-            className="absolute end-[calc(var(--spacing-gutter)+1.25rem)] top-1/2 -translate-y-1/2"
+            className="absolute end-[calc(var(--spacing-page)+1.25rem)] top-1/2 -translate-y-1/2"
           >
             {shortcutLabel()}
           </Kbd>
@@ -270,7 +270,7 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
 
   return (
     <>
-      <output className="flex min-h-8 items-center gap-3 px-gutter text-body empty:sr-only">
+      <output className="flex min-h-8 items-center gap-3 px-page text-body empty:sr-only">
         {pending.length > 0 && (
           <span className="flex items-center gap-2 text-muted-foreground">
             <Spinner aria-hidden className="size-4" />

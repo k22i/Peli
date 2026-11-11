@@ -25,7 +25,7 @@ export function RailSample() {
   return (
     <GallerySection
       title="Scroll rail"
-      description="One line of anything that scrolls sideways: chips, source pills, cast. The first item lines up with the page text; the rest run out to the window edge, fading at an end that has more. Hover for the glass arrows; Tab and the wheel work too."
+      description="One line of anything that scrolls sideways: chips, source pills, cast. The first item lines up with the page text; the rest run out to the window edge, fading at an end that has more. Hover for the material-pop arrows; Tab and the wheel work too."
       bleed
     >
       <ScrollRail label="Cast">
@@ -35,7 +35,7 @@ export function RailSample() {
               <button
                 type="button"
                 aria-label={name}
-                className="grid size-32 place-items-center rounded-full text-heading text-white shadow-card"
+                className="grid size-32 place-items-center rounded-full type-row text-white shadow-card"
                 style={{
                   background: `linear-gradient(135deg, oklch(0.62 0.14 ${hues[index]}), oklch(0.32 0.07 ${hues[index]}))`,
                 }}
@@ -46,8 +46,8 @@ export function RailSample() {
                   .join("")}
               </button>
               <div className="flex w-full flex-col items-center text-center">
-                <span className="line-clamp-2 text-item">{name}</span>
-                <span className="line-clamp-2 text-caption text-muted-foreground">{character}</span>
+                <span className="line-clamp-2 type-item">{name}</span>
+                <span className="line-clamp-2 text-small text-muted-foreground">{character}</span>
               </div>
             </li>
           ))}

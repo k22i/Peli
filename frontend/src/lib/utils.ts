@@ -2,8 +2,8 @@ import { type ClassValue, clsx } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
 // Sinag's type tokens (index.css, #112) are font sizes. Without this, tailwind-merge
-// reads `text-title` as a colour and drops it next to `text-white`, or the other way
-// round. `text-num` is the mono utility: it sets a family, no size or colour.
+// reads `type-title` as a colour and drops it next to `text-white`, or the other way
+// round. `tnum` is the mono utility: it sets a family, no size or colour.
 const twMerge = extendTailwindMerge({
   extend: {
     theme: { text: ["display", "title", "heading", "body", "item", "caption", "meta", "label"] },

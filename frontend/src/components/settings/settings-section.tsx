@@ -20,9 +20,12 @@ export function SettingsPaneView({
   children: ReactNode;
 }) {
   return (
-    <section aria-labelledby={paneHeadingId} className="flex min-w-0 flex-col gap-8">
+    <section
+      aria-labelledby={paneHeadingId}
+      className="flex min-w-0 flex-col gap-9 md:pt-[4.25rem]"
+    >
       <header className="flex flex-col gap-2">
-        <h2 id={paneHeadingId} tabIndex={-1} className="text-title outline-none">
+        <h2 id={paneHeadingId} tabIndex={-1} className="type-title outline-none">
           {title}
         </h2>
         {lead && <p className="max-w-prose text-body text-pretty text-muted-foreground">{lead}</p>}
@@ -47,12 +50,14 @@ export function SettingsGroup({
   return (
     <section aria-labelledby={title ? titleId : undefined} className="flex flex-col gap-2">
       {title && (
-        <h3 id={titleId} className="px-4 text-label text-muted-foreground">
+        <h3 id={titleId} className="px-1 type-eyebrow text-muted-foreground">
           {title}
         </h3>
       )}
-      <div className="flex flex-col divide-y rounded-2xl border bg-card">{children}</div>
-      {footer && <p className="px-4 text-caption text-pretty text-muted-foreground">{footer}</p>}
+      <div className="flex flex-col divide-y divide-border rounded-2xl bg-card hairline">
+        {children}
+      </div>
+      {footer && <p className="px-1 text-small text-pretty text-muted-foreground">{footer}</p>}
     </section>
   );
 }
@@ -72,15 +77,15 @@ export function SettingRow({
   children?: ReactNode;
 }) {
   return (
-    <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-3.5">
+    <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-5 py-3.5">
       <div className="flex min-w-0 flex-1 basis-60 flex-col gap-0.5">
-        <span id={`${id}-label`} className="text-item">
+        <span id={`${id}-label`} className="type-item">
           {label}
         </span>
         {description && (
           <p
             id={`${id}-description`}
-            className="max-w-prose text-caption text-pretty text-muted-foreground"
+            className="max-w-prose text-small text-pretty text-muted-foreground"
           >
             {description}
           </p>
@@ -148,24 +153,19 @@ export function SettingsPaneList({
                 data-status={active ? "active" : undefined}
                 onClick={onClick}
                 onKeyDown={moveFocus}
-                className="group/pane relative flex h-10 items-center gap-3 rounded-xl px-2.5 text-sm font-[550] outline-none transition-[scale] duration-(--duration-fast) hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.99] data-[status=active]:hover:bg-transparent"
+                className="group/pane relative flex h-9 items-center gap-3 rounded-full px-3.5 text-small font-[590] text-muted-foreground outline-none transition-[color,scale] duration-(--duration-fast) hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.98] data-[status=active]:text-foreground"
               >
                 {active && (
                   <span
                     aria-hidden
                     data-settings-pill
-                    className="absolute inset-0 rounded-xl bg-brand-soft [view-transition-name:settings-pill]"
+                    className="absolute inset-0 rounded-full bg-foreground/8 [view-transition-name:settings-pill]"
                   />
                 )}
-                <span
+                <pane.icon
                   aria-hidden
-                  className={cn(
-                    "relative grid size-7 shrink-0 place-items-center rounded-lg bg-foreground/8 text-foreground",
-                    active && "bg-brand text-brand-foreground",
-                  )}
-                >
-                  <pane.icon className="size-4" />
-                </span>
+                  className={cn("relative size-4 shrink-0", active && "text-sun-ink")}
+                />
                 <span className="relative truncate">{pane.title}</span>
               </Link>
             </li>
@@ -189,7 +189,7 @@ export function SettingsPaneRail({ current, className }: { current: PaneId; clas
         const pane = settingsPanes.find((candidate) => candidate.id === next);
         if (pane) void navigate({ to: "/settings", search: { section: pane.id }, replace: true });
       }}
-      railClassName={cn("-mx-gutter w-[calc(100%+2*var(--spacing-gutter))]", className)}
+      railClassName={cn("-mx-page w-[calc(100%+2*var(--spacing-page))]", className)}
     >
       {settingsPanes.map((pane) => (
         <Chip key={pane.id} value={pane.id}>

@@ -3,14 +3,12 @@ import type { ReactNode } from "react";
 import { Ambient } from "@/components/media/ambient";
 import { cn } from "@/lib/utils";
 
-// The page the screens before a profile is in use share (#123): Sinag's
-// lagoon glow behind the content, which is centred in the window. The `focus`
-// chrome pads its pane by --titlebar-h, so the page pulls the glow up under
-// the title bar's strip and pads the content back down.
+// The page the screens before a profile is in use share: a sunrise along
+// the bottom of the window and the content centred above it.
 export function FocusScreen({ className, children }: { className?: string; children: ReactNode }) {
   return (
-    <div className="relative isolate -mt-(--titlebar-h) flex min-h-[calc(100%+var(--titlebar-h))] flex-col pt-(--titlebar-h)">
-      <Ambient tone="brand" />
+    <div className="relative isolate flex min-h-full flex-col pt-bar">
+      <Ambient tone="sun" />
       <div
         className={cn(
           "mx-auto flex w-full flex-1 flex-col justify-center gap-8 px-6 py-12",
@@ -23,13 +21,10 @@ export function FocusScreen({ className, children }: { className?: string; child
   );
 }
 
-// A pill that presses in, for the large buttons on these screens (Apple TV's
-// pattern: the main action solid, the others glass).
+// The large capsule for these screens' actions.
 export const pillButton =
-  "h-11 rounded-full px-6 text-base before:rounded-full transition-transform duration-(--duration-fast) motion-safe:active:scale-[0.97] sm:h-11 sm:text-base";
+  "h-12 px-6 text-[0.9375rem] [&_svg:not([class*='size-'])]:size-[1.125rem]";
 
-// The glass look for a ghost button: the tier's tint stays on hover (a
-// hover:bg-* would replace it), and a faint wash marks the hover instead.
-// Put it with variant="ghost".
-export const glassButton =
-  "glass border-transparent hover:bg-(--glass-regular) hover:before:bg-foreground/6 data-pressed:bg-(--glass-regular)";
+// The quieter actions beside the main one: a soft tint of ink. Put it with
+// variant="ghost".
+export const glassButton = "bg-foreground/7 hover:bg-foreground/12 data-pressed:bg-foreground/12";

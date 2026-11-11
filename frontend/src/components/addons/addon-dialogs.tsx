@@ -27,14 +27,14 @@ import { addonLink, configureUrl } from "@/lib/addons";
 // an address that isn't an addon is refused here, not installed broken.
 
 // Labels are Mona Sans caps; the values are mono (codes).
-const label = "text-label";
+const label = "type-eyebrow";
 
 // What an addon offers, in a line each: the content types it knows, and the
 // resources it answers.
 export function ManifestFacts({ manifest }: { manifest: Manifest }) {
   const resources = [...new Set(manifest.resources.map((r) => r.name))];
   return (
-    <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 font-mono text-meta text-muted-foreground">
+    <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 tnum text-small text-muted-foreground">
       <dt className={label}>Types</dt>
       <dd className="text-foreground/80">{manifest.types.join(", ") || "none"}</dd>
       <dt className={label}>Resources</dt>
@@ -114,7 +114,7 @@ function CheckedAddon({ checked }: { checked: Checked }) {
     <Alert variant="success">
       <CircleCheck />
       <AlertTitle>
-        {manifest.name} <span className="font-mono text-meta">v{manifest.version}</span>
+        {manifest.name} <span className="tnum text-small">v{manifest.version}</span>
       </AlertTitle>
       <AlertDescription className="flex flex-col gap-2">
         {manifest.description && <span className="line-clamp-3">{manifest.description}</span>}

@@ -5,15 +5,16 @@ import { segmentNames, type Segment } from "@/lib/markers";
 import { formatTime } from "@/lib/player";
 import { cn } from "@/lib/utils";
 
-// The seek bar: what's played, what's buffered ahead of it, where the intro,
-// recap and credits are, and the time under the pointer (with the segment's
-// name when it's in one). Dragging scrubs (keyframe seeks, so the picture keeps
-// up) and lands exactly when let go; arrow keys step a second, Page Up and
-// Down ten. Between the ~4 a second time events the played part slides on
-// in a linear transition, so it moves smoothly. The track is 6 px and grows
-// to 10 px under the pointer or a drag (#121, with the spring curve); the
-// thumb only shows then, or on keyboard focus. The time under the pointer is
-// a small glass pill.
+// The seek bar: what's played (white), what's buffered ahead of it (a
+// fainter white), and the time under the pointer. The intro, recap and
+// credits never touch the progress itself: they are short amber dashes in a
+// lane of their own above the track, so "played" and "skippable" can't be
+// mistaken for each other, and the hover label names the one under the
+// pointer. Dragging scrubs (keyframe seeks, so the picture keeps up) and
+// lands exactly when let go; arrow keys step a second, Page Up and Down ten.
+// Between the ~4 a second time events the played part glides on, so it moves
+// smoothly. The track is 4 px and grows to 8 px under the pointer or a drag;
+// the thumb only shows then, or on keyboard focus.
 export function SeekBar({
   position,
   duration,
@@ -93,7 +94,7 @@ export function SeekBar({
     >
       <Slider.Control
         data-testid="seek-bar"
-        className="relative flex h-6 cursor-pointer touch-none items-center select-none data-disabled:cursor-default"
+        className="relative flex h-7 cursor-pointer touch-none items-center pt-1.5 select-none data-disabled:cursor-default"
         onPointerMove={(event) => known && setHover(pointerAt(event))}
         onPointerLeave={() => setHover(undefined)}
       >
@@ -101,20 +102,37 @@ export function SeekBar({
           <span
             aria-hidden
             style={{ left: `${percent(label)}%` }}
-            className="pointer-events-none absolute bottom-full mb-3 flex -translate-x-1/2 items-center rounded-full px-2.5 py-1 text-num text-caption whitespace-nowrap text-white glass-media-strong"
+            className="pointer-events-none absolute bottom-full mb-5 flex -translate-x-1/2 flex-col items-center gap-0.5 rounded-xl bg-black/80 px-2.5 py-1.5 text-white shadow-float backdrop-blur-md"
           >
             {labelSegment && (
-              // White on the glass (amber text fails over a white frame); the
-              // dot carries the segment's colour.
-              <span className="me-1.5 flex items-center gap-1.5 font-sans">
-                <span aria-hidden className="size-1.5 rounded-full bg-warning" />
+              <span className="type-eyebrow text-[0.625rem] text-[#ffc46b]">
                 {segmentNames[labelSegment.kind] ?? labelSegment.kind}
               </span>
             )}
-            {formatTime(label)}
+            <span className="text-small font-semibold tnum">{formatTime(label)}</span>
           </span>
         )}
-        <Slider.Track className="relative h-1.5 w-full rounded-full bg-white/25 transition-[height] duration-300 ease-spring motion-reduce:transition-none group-hover/seek:h-2.5 group-data-dragging/seek:h-2.5">
+        {/* The chapters lane: above the track, apart from the progress. */}
+        {known && segments.length > 0 && (
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1">
+            {segments.map((segment) => (
+              <div
+                key={`${segment.kind}-${segment.start}`}
+                data-testid="segment"
+                data-kind={segment.kind}
+                style={{
+                  left: `${percent(segment.start)}%`,
+                  width: `max(4px, ${percent(segment.end) - percent(segment.start)}%)`,
+                }}
+                className={cn(
+                  "absolute inset-y-0 rounded-full bg-[#ffb547] transition-opacity",
+                  labelSegment === segment ? "opacity-100" : "opacity-75",
+                )}
+              />
+            ))}
+          </div>
+        )}
+        <Slider.Track className="relative h-1 w-full rounded-full bg-white/18 transition-[height] duration-300 ease-bounce motion-reduce:transition-none group-hover/seek:h-2 group-data-dragging/seek:h-2">
           <div
             data-testid="buffered"
             style={{
@@ -122,32 +140,18 @@ export function SeekBar({
               width: `${Math.max(0, percent(at + buffered) - percent(at))}%`,
             }}
             className={cn(
-              "absolute inset-y-0 rounded-full bg-white/35",
+              "absolute inset-y-0 rounded-full bg-white/30",
               smooth(playing && drag === undefined),
             )}
           />
-          {/* Under the played part, so what's left of one stays marked. */}
-          {known &&
-            segments.map((segment) => (
-              <div
-                key={`${segment.kind}-${segment.start}`}
-                data-testid="segment"
-                data-kind={segment.kind}
-                style={{
-                  left: `${percent(segment.start)}%`,
-                  width: `${percent(segment.end) - percent(segment.start)}%`,
-                }}
-                className="absolute inset-y-0 rounded-full bg-warning"
-              />
-            ))}
           <Slider.Indicator
-            className={cn("rounded-full bg-brand", smooth(playing && drag === undefined))}
+            className={cn("rounded-full bg-white", smooth(playing && drag === undefined))}
           />
           <Slider.Thumb
             aria-label="Seek"
             getAriaValueText={(_, value) => `${formatTime(value)} of ${formatTime(duration)}`}
             className={cn(
-              "size-3.5 rounded-full bg-white opacity-0 shadow-md outline-none transition-opacity group-hover/seek:opacity-100 group-data-dragging/seek:opacity-100 has-focus-visible:opacity-100 has-focus-visible:ring-2 has-focus-visible:ring-white/60",
+              "size-4 rounded-full bg-white opacity-0 shadow-[0_0_0_4px_rgb(255_255_255/0.18),0_2px_8px_rgb(0_0_0/0.5)] outline-none transition-opacity group-hover/seek:opacity-100 group-data-dragging/seek:opacity-100 has-focus-visible:opacity-100 has-focus-visible:ring-2 has-focus-visible:ring-white/60",
               smooth(playing && drag === undefined),
             )}
           />

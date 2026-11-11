@@ -64,9 +64,12 @@ function QRSignIn() {
         Back
       </Button>
 
-      <div className="flex flex-col gap-6 glass-thick rounded-3xl p-8">
+      <div
+        data-slot="focus-card"
+        className="flex flex-col gap-6 rounded-[1.75rem] bg-card p-9 shadow-float hairline"
+      >
         <header className="flex flex-col gap-2">
-          <h1 className="text-title">Sign in with your phone</h1>
+          <h1 className="font-display text-[2.5rem] leading-none">Sign in with your phone</h1>
           <p className="text-pretty text-muted-foreground">
             Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and
             approve Sinag.
@@ -76,7 +79,7 @@ function QRSignIn() {
         <div className="flex flex-col items-center gap-6">
           {/* Dark on white in both themes: phone cameras read that best. */}
           {!qr.error && (
-            <div className="relative size-52 rounded-2xl bg-white p-4 shadow-lift">
+            <div className="relative size-52 rounded-2xl bg-white p-4 shadow-float">
               {code ? (
                 <img
                   src={qrImage(code.size, code.path)}
@@ -105,7 +108,7 @@ function QRSignIn() {
                   Or go to{" "}
                   <button
                     type="button"
-                    className="font-medium text-foreground underline underline-offset-4 hover:text-brand"
+                    className="font-medium text-foreground underline underline-offset-4 hover:text-sun-ink"
                     onClick={() => void Browser.OpenURL(code.url)}
                   >
                     {code.linkUrl.replace(/^https?:\/\//, "")}
@@ -113,7 +116,7 @@ function QRSignIn() {
                   and enter
                 </p>
                 <p
-                  className="font-mono text-4xl font-semibold tracking-[0.2em] tabular-nums"
+                  className="tnum text-4xl font-semibold tracking-[0.2em] tabular-nums"
                   aria-label={code.code.split("").join(" ")}
                 >
                   <span aria-hidden>{code.code.slice(0, 3)}</span>

@@ -5,11 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// The title page's Back button (#117): a round button that floats at the
-// window's top-left, clear of the sidebar and the title bar. Over the hero it
-// is media glass (white on any art); once the page scrolls past the hero it
-// turns to regular glass, so it reads over the page and the Episodes header.
-// With no hero (loading, or an error) it is regular glass.
+// The title page's Back button: a round button that floats under the top
+// bar at the page's left edge. Over the hero it is media material (white on
+// any art); once the page scrolls past the hero it takes the popup material,
+// so it reads over the page.
 export function BackButton({ hero }: { hero: Element | null }) {
   const router = useRouter();
   const navigate = useNavigate();
@@ -38,19 +37,17 @@ export function BackButton({ hero }: { hero: Element | null }) {
   return (
     <Button
       ref={button}
-      variant="ghost"
+      variant={overHero ? "media" : "ghost"}
       size="icon-lg"
       aria-label="Back"
       data-over-hero={overHero || undefined}
       onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
       className={cn(
-        "fixed start-[calc(var(--sidebar-inset)+var(--spacing-gutter))] top-[calc(var(--titlebar-h)+0.75rem)] z-20 size-10 rounded-full sm:size-10 transition-[color,background-color,scale] duration-(--duration-fast)",
-        overHero
-          ? "glass-media text-white hover:bg-(--glass-media) hover:text-white"
-          : "glass text-popover-foreground hover:bg-(--glass-regular)",
+        "fixed start-page top-[calc(var(--spacing-bar)+0.5rem)] z-20",
+        !overHero && "material-pop text-popover-foreground hover:bg-popover",
       )}
     >
-      <ChevronLeft className="size-5" />
+      <ChevronLeft className="size-5" strokeWidth={2.25} />
     </Button>
   );
 }

@@ -8,23 +8,23 @@ import type { CastMember } from "@/lib/tmdb";
 export function CastList({ cast }: { cast: CastMember[] }) {
   return (
     <section aria-labelledby="cast" className="flex flex-col gap-2">
-      <h2 id="cast" className="px-gutter text-heading">
+      <h2 id="cast" className="px-page font-display text-[2.25rem] leading-none">
         Cast
       </h2>
       <ScrollRail>
-        <ul aria-labelledby="cast" className="flex shrink-0 gap-4 py-3">
+        <ul aria-labelledby="cast" className="flex shrink-0 gap-3 py-3">
           {cast.map((person) => (
-            <li key={person.id} className="flex w-36 shrink-0 flex-col items-center gap-3">
+            <li key={person.id} className="flex w-28 shrink-0 flex-col items-center gap-2.5">
               <Artwork
                 src={person.photo}
                 use="avatar"
                 title={person.name}
-                className="aspect-square size-32 rounded-full shadow-card"
+                className="aspect-square size-24 rounded-full shadow-card grayscale-[35%] transition-[filter] duration-(--duration-base) hover:grayscale-0"
               />
               <div className="flex w-full flex-col items-center text-center">
-                <span className="line-clamp-2 text-item">{person.name}</span>
+                <span className="line-clamp-2 text-small font-[590]">{person.name}</span>
                 {person.character && (
-                  <span className="line-clamp-2 text-caption text-muted-foreground">
+                  <span className="line-clamp-2 text-small text-muted-foreground">
                     {person.character}
                   </span>
                 )}

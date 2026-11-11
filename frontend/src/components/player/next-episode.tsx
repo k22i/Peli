@@ -9,6 +9,7 @@ import { formatTime } from "@/lib/player";
 import type { ProfileSettings } from "@bindings/store";
 import { resolutionLabel } from "@/lib/stream-labels";
 import { episodeCode, type Episode } from "@/lib/title";
+import { promptEnter, promptSurface } from "@/components/player/prompt";
 import { cn } from "@/lib/utils";
 
 // The next-episode card (#65): mounted from where the episode counts as
@@ -54,59 +55,68 @@ export function NextEpisode({
   if (starting) return null;
 
   const name = next.title ? `${episodeCode(next)} · ${next.title}` : episodeCode(next);
+  // The countdown runs out along the Play button: it fills as the card waits.
+  const fill = Math.round(Math.min(Math.max(share, 0), 1) * 100);
   return (
     <section
       aria-label="Next episode"
       className={cn(
-        "dark flex flex-col overflow-hidden rounded-3xl text-white glass-media-strong",
-        mini ? "w-64" : "w-120 max-w-full",
+        promptSurface,
+        promptEnter,
+        "dark flex overflow-hidden",
+        mini ? "w-64 flex-col" : "w-[26rem] max-w-full items-stretch",
       )}
     >
       {next.thumbnail && !mini && (
-        <div className="relative aspect-video bg-white/5">
+        <div className="relative w-40 shrink-0 bg-white/5">
           <img
             src={next.thumbnail}
             alt=""
-            className="size-full object-cover"
+            className="absolute inset-0 size-full object-cover"
             onError={(event) => {
               event.currentTarget.hidden = true;
             }}
           />
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20">
-            <div className="h-full bg-white" style={{ width: `${Math.round(share * 100)}%` }} />
-          </div>
         </div>
       )}
-      <div className={cn("flex flex-col", mini ? "gap-2 p-3" : "gap-3 p-4")}>
-        <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="text-label">
-            Next episode in{" "}
-            <span className="tabular-nums" aria-label={`${Math.ceil(remaining)} seconds`}>
+      <div className={cn("flex min-w-0 flex-1 flex-col", mini ? "gap-2 p-3" : "gap-3 p-4")}>
+        <div className="flex min-w-0 flex-col gap-1">
+          <p className="type-eyebrow text-[#ffc46b]">
+            Up next ·{" "}
+            <span className="tnum" aria-label={`in ${Math.ceil(remaining)} seconds`}>
               {formatTime(Math.ceil(remaining))}
             </span>
           </p>
-          <p className="truncate text-item">{name}</p>
-          <p aria-live="polite" className="flex items-center gap-1.5 text-caption">
+          <p className="line-clamp-2 text-[0.9375rem] leading-snug font-[620]">{name}</p>
+          <p aria-live="polite" className="flex items-center gap-1.5 text-small text-white/60">
             {preparedText(prepared)}
           </p>
         </div>
         <div className="flex gap-2">
           <Button
             size="sm"
-            className="rounded-full border-transparent bg-white text-black hover:bg-white/90"
+            variant="light"
+            className="relative flex-1 overflow-hidden"
             onClick={onPlay}
           >
-            <Play className="fill-current" />
-            {prepared.status === "none" ? "Choose a stream" : "Play now"}
+            <span
+              aria-hidden
+              className="absolute inset-y-0 start-0 bg-black/10"
+              style={{ width: `${fill}%` }}
+            />
+            <Play className="relative fill-current" />
+            <span className="relative">
+              {prepared.status === "none" ? "Choose a stream" : "Play now"}
+            </span>
           </Button>
           <Button
-            size="sm"
+            size="icon-sm"
             variant="ghost"
-            className="rounded-full text-white hover:bg-white/15 hover:text-white"
+            aria-label="Cancel"
+            className="text-white/70 hover:bg-white/12 hover:text-white"
             onClick={onCancel}
           >
             <X />
-            Cancel
           </Button>
         </div>
       </div>

@@ -35,7 +35,8 @@ export const Route = createFileRoute("/sign-in")({
 
 // Fields and buttons in the card are a little taller and rounder than the
 // defaults. The input's height sits on the inner <input>.
-const fieldClass = "rounded-xl [&_input]:h-11 [&_input]:text-base [&_input]:leading-11";
+const fieldClass =
+  "rounded-2xl [&_input]:h-12 [&_input]:px-4 [&_input]:text-[0.9375rem] [&_input]:leading-12";
 
 // Nuvio allows 10 sign-in attempts a second and says nothing about when to
 // retry (no Retry-After), so after a 429 the form waits this long.
@@ -113,9 +114,14 @@ function SignIn() {
         {sessionEnded ? "Not now" : "Back"}
       </Button>
 
-      <div className="flex flex-col gap-8 glass-thick rounded-3xl p-8">
+      <div
+        data-slot="focus-card"
+        className="flex flex-col gap-8 rounded-[1.75rem] bg-card p-9 shadow-float hairline"
+      >
         <header className="flex flex-col gap-2">
-          <h1 className="text-title">{own ? "Sign in to your server" : "Sign in to Nuvio"}</h1>
+          <h1 className="font-display text-[2.5rem] leading-none">
+            {own ? "Sign in to your server" : "Sign in to Nuvio"}
+          </h1>
           <p className="text-pretty text-muted-foreground">
             {own
               ? `Use the email and password of your account on ${own}.`
@@ -164,8 +170,9 @@ function SignIn() {
 
           <Button
             type="submit"
-            size="lg"
-            className="h-11 w-full rounded-xl text-base before:rounded-[calc(var(--radius-xl)-1px)] sm:h-11 sm:text-base"
+            size="xl"
+            variant="sun"
+            className="w-full"
             loading={signIn.isPending}
             disabled={cooldown.seconds > 0 || keychain.data != null}
           >
@@ -177,10 +184,7 @@ function SignIn() {
           <Link
             to="/qr-sign-in"
             replace
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "h-11 rounded-xl text-base before:rounded-[calc(var(--radius-xl)-1px)] sm:h-11 sm:text-base",
-            )}
+            className={cn(buttonVariants({ variant: "secondary", size: "xl" }))}
           >
             <QrCode />
             Sign in with your phone instead

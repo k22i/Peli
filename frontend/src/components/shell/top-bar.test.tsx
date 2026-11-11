@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import { TitleBar } from "@/components/shell/title-bar";
+import { FocusBar } from "@/components/shell/top-bar";
 
 const Window = vi.hoisted(() => ({
   Minimise: vi.fn<() => Promise<void>>(() => Promise.resolve()),
@@ -25,14 +25,16 @@ vi.mock("@wailsio/runtime", () => ({
   },
 }));
 
-describe("title bar", () => {
+// The bare bar the screens before the app use; TopBar shares its caption
+// buttons and is covered by the app shell's tests.
+describe("focus bar", () => {
   beforeEach(() => {
     Window.IsMaximised.mockResolvedValue(false);
   });
 
   it("draws caption buttons on Windows", async () => {
     const user = userEvent.setup();
-    render(<TitleBar platform="windows" />);
+    render(<FocusBar platform="windows" />);
 
     await user.click(screen.getByRole("button", { name: "Minimise" }));
     await user.click(screen.getByRole("button", { name: "Maximise" }));
@@ -45,20 +47,20 @@ describe("title bar", () => {
 
   it("offers Restore once the window is maximised", async () => {
     Window.IsMaximised.mockResolvedValue(true);
-    render(<TitleBar platform="windows" />);
+    render(<FocusBar platform="windows" />);
 
     expect(await screen.findByRole("button", { name: "Restore" })).toBeInTheDocument();
   });
 
   it("leaves macOS's traffic lights to the OS", () => {
-    const { container } = render(<TitleBar platform="mac" />);
+    const { container } = render(<FocusBar platform="mac" />);
 
-    expect(container.querySelector("[data-slot=title-bar]")).toBeInTheDocument();
+    expect(container.querySelector("[data-slot=top-bar]")).toBeInTheDocument();
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   it.each(["linux", "browser"] as const)("keeps the native frame on %s", (platform) => {
-    const { container } = render(<TitleBar platform={platform} />);
+    const { container } = render(<FocusBar platform={platform} />);
 
     expect(container).toBeEmptyDOMElement();
   });

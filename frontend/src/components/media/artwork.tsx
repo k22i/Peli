@@ -11,13 +11,15 @@ function hueOf(title: string): number {
   return hash;
 }
 
+// Missing art becomes a dimly lit slate in the title's own hue: a low warm
+// light from above, deepening towards the bottom, like a dark stage.
 export function placeholderStyle(title: string): CSSProperties {
   const hue = hueOf(title);
   return {
+    backgroundColor: `oklch(0.22 0.025 ${hue})`,
     backgroundImage: [
-      `radial-gradient(120% 80% at 20% 0%, oklch(0.62 0.13 ${hue} / 0.9), transparent 60%)`,
-      `radial-gradient(90% 70% at 100% 100%, oklch(0.45 0.12 ${(hue + 50) % 360} / 0.9), transparent 70%)`,
-      `linear-gradient(160deg, oklch(0.32 0.08 ${hue}), oklch(0.16 0.04 ${(hue + 30) % 360}))`,
+      `radial-gradient(90% 60% at 50% -10%, oklch(0.52 0.09 ${hue} / 0.75), transparent 70%)`,
+      `linear-gradient(to bottom, transparent 40%, oklch(0.13 0.02 ${hue}))`,
     ].join(", "),
   };
 }
@@ -41,8 +43,8 @@ export function forgetArtwork() {
 }
 
 // A poster, still or backdrop. Fades in once loaded; until then, or with no
-// `src` (addons often lack art), it shows a generated gradient and, for
-// cards, the title set in the display face. A `fallback` image shows under
+// `src` (addons often lack art), it shows a slate in the title's hue and,
+// for cards, the title set in the display serif. A `fallback` image shows under
 // it while it loads and if it fails: the art it replaces, such as the
 // addon's backdrop under TMDB's (#47), so swapping art never flashes the
 // gradient.
@@ -95,7 +97,7 @@ export function Artwork({
         <span
           aria-hidden
           className={cn(
-            "absolute inset-x-0 bottom-0 line-clamp-3 p-3 font-heading text-lg leading-tight font-bold text-balance text-white",
+            "absolute inset-0 flex items-center justify-center p-4 text-center font-display text-[1.375rem] leading-[1.05] text-balance text-white/90",
             titleClassName,
           )}
         >
@@ -127,7 +129,7 @@ export function Artwork({
             status !== "loaded" && "opacity-0",
             // A cached image shows at once; only a first load fades.
             (status !== "loaded" || own?.src === src) &&
-              "transition-opacity duration-(--duration-slow) ease-smooth",
+              "transition-opacity duration-(--duration-slow) ease-out-soft",
           )}
         />
       )}

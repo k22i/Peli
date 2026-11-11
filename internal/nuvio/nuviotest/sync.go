@@ -177,6 +177,9 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 		s.deltaFeed(w, profile, feed, body)
 		return true
 	}
+	if s.snapshot(w, rpc, profile, body) {
+		return true
+	}
 	if s.pullHome(w, rpc, profile, body) {
 		return true
 	}
@@ -251,6 +254,9 @@ var syncArgs = map[string][]string{
 	"sync_pull_library_delta":        {"p_since_event_id", "p_profile_id", "p_limit"},
 	"sync_pull_watch_progress_delta": {"p_since_event_id", "p_profile_id", "p_limit"},
 	"sync_pull_watched_items_delta":  {"p_since_event_id", "p_profile_id", "p_limit"},
+	"sync_pull_library":              {"p_profile_id", "p_limit", "p_offset"},
+	"sync_pull_watch_progress":       {"p_profile_id", "p_since_last_watched", "p_limit"},
+	"sync_pull_watched_items":        {"p_profile_id", "p_page", "p_page_size"},
 	"sync_push_library_items":        {"p_items", "p_profile_id", "p_origin_client_id"},
 	"sync_delete_library_items":      {"p_keys", "p_profile_id", "p_origin_client_id"},
 	"sync_push_watch_progress":       {"p_entries", "p_profile_id", "p_origin_client_id"},
@@ -391,6 +397,57 @@ func (s *Server) deltaFeed(w http.ResponseWriter, profile profileKey, surface st
 		}
 	}
 	json.NewEncoder(w).Encode(out)
+}
+
+// snapshots maps the snapshot RPCs to their surface.
+var snapshots = map[string]string{
+	"sync_pull_library":        Library,
+	"sync_pull_watch_progress": Progress,
+	"sync_pull_watched_items":  Watched,
+}
+
+// snapshot answers the sync_pull_* list RPCs: the profile's rows now, in key
+// order, a page of them. Library pages by p_limit and p_offset, watched items
+// by p_page (from 1) and p_page_size, and progress takes only p_limit. It
+// reports whether rpc was one of them. s.mu is held.
+func (s *Server) snapshot(w http.ResponseWriter, rpc string, profile profileKey, body map[string]any) bool {
+	surface, ok := snapshots[rpc]
+	if !ok {
+		return false
+	}
+	var keys []string
+	byKey := map[string]map[string]any{}
+	for k, row := range s.sync.rows[surface] {
+		if k.profileKey == profile {
+			keys = append(keys, k.key)
+			byKey[k.key] = row
+		}
+	}
+	slices.Sort(keys)
+	offset, limit := 0, len(keys)
+	switch surface {
+	case Library:
+		offset, limit = int(number(body["p_offset"])), int(number(body["p_limit"]))
+	case Progress:
+		limit = int(number(body["p_limit"]))
+	case Watched:
+		size := int(number(body["p_page_size"]))
+		page := int(number(body["p_page"]))
+		if page < 1 {
+			postgrestError(w, http.StatusBadRequest, "2201X", "OFFSET must not be negative")
+			return true
+		}
+		offset, limit = (page-1)*size, size
+	}
+	if limit <= 0 {
+		limit = len(keys)
+	}
+	out := []map[string]any{}
+	for i := offset; i < len(keys) && len(out) < limit; i++ {
+		out = append(out, byKey[keys[i]])
+	}
+	json.NewEncoder(w).Encode(out)
+	return true
 }
 
 // readAddons answers GET /rest/v1/addons?profile_id=eq.N&order=sort_order.asc,

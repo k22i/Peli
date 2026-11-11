@@ -17,6 +17,7 @@ import (
 	"context"
 	"errors"
 	"log/slog"
+	"slices"
 	"sync"
 	"time"
 
@@ -42,6 +43,11 @@ const (
 	// that is focused and unfocused in quick succession, or a profile
 	// switched back and forth, doesn't make a request each time.
 	MinGap = 30 * time.Second
+	// ReconcileEvery is how often a profile's library, progress and watched
+	// items are checked against the backend's whole lists, on top of the
+	// delta feeds: at the first pull of each run, then at most this often
+	//.
+	ReconcileEvery = time.Hour
 )
 
 // surfaces are what the pull reads. Addons, plugin repositories (#57), the home layout and collections
@@ -68,17 +74,35 @@ type Puller struct {
 	emit func(Pulled)
 	// Called with the result of every pull that asked Nuvio (Monitor.observe).
 	observe func(error)
-	now     func() time.Time
+	// Brings the profiles themselves in line with Nuvio before each pull
+	// (account.RefreshProfiles); nil does nothing.
+	refreshProfiles func(context.Context) error
+	now             func() time.Time
 
-	// One pull at a time, and when each profile was last pulled.
-	mu   sync.Mutex
-	last map[uint64]time.Time
+	// One pull at a time, and when each profile was last pulled and last
+	// reconciled.
+	mu         sync.Mutex
+	last       map[uint64]time.Time
+	reconciled map[uint64]time.Time
+	profilesAt time.Time
+}
+
+// RefreshProfilesWith has puller refresh the profiles with fn before each
+// pull (at most every MinGap). It isn't a method of Service, so Wails
+// doesn't bind it.
+func RefreshProfilesWith(puller *Puller, fn func(context.Context) error) {
+	puller.mu.Lock()
+	defer puller.mu.Unlock()
+	puller.refreshProfiles = fn
 }
 
 // NewPuller returns a puller that reads from open's store and, for a profile
 // linked to Nuvio, from linked.
 func NewPuller(open func() *store.Store, linked backend.Backend) *Puller {
-	return &Puller{open: open, linked: linked, emit: func(Pulled) {}, observe: func(error) {}, now: time.Now, last: map[uint64]time.Time{}}
+	return &Puller{
+		open: open, linked: linked, emit: func(Pulled) {}, observe: func(error) {}, now: time.Now,
+		last: map[uint64]time.Time{}, reconciled: map[uint64]time.Time{},
+	}
 }
 
 // Pull pulls the profile in use, unless it was pulled less than MinGap ago
@@ -101,6 +125,12 @@ func (p *Puller) pullInUse(ctx context.Context, throttle bool) (Pulled, error) {
 	if db == nil {
 		return Pulled{}, nil
 	}
+	if p.refreshProfiles != nil && (!throttle || p.now().Sub(p.profilesAt) >= MinGap) {
+		p.profilesAt = p.now()
+		if err := p.refreshProfiles(ctx); err != nil && !backend.Offline(err) && ctx.Err() == nil {
+			slog.Warn("syncer: refreshing profiles failed", "error", err)
+		}
+	}
 	profile, ok, err := db.ProfileInUse()
 	if err != nil || !ok || profile.NuvioIndex == nil {
 		return Pulled{}, err
@@ -111,6 +141,17 @@ func (p *Puller) pullInUse(ctx context.Context, throttle bool) (Pulled, error) {
 	p.last[profile.ID] = p.now()
 
 	pulled, err := p.pull(ctx, db, profile)
+	if at, ok := p.reconciled[profile.ID]; err == nil && (!ok || p.now().Sub(at) >= ReconcileEvery) {
+		var surfaces []store.Surface
+		if surfaces, err = p.reconcile(ctx, db, profile); err == nil {
+			p.reconciled[profile.ID] = p.now()
+		}
+		for _, surface := range surfaces {
+			if !slices.Contains(pulled.Surfaces, surface) {
+				pulled.Surfaces = append(pulled.Surfaces, surface)
+			}
+		}
+	}
 	p.observe(err)
 	if len(pulled.Surfaces) > 0 {
 		p.emit(pulled)
@@ -118,6 +159,7 @@ func (p *Puller) pullInUse(ctx context.Context, throttle bool) (Pulled, error) {
 	if errors.Is(err, store.ErrProfileNotFound) {
 		// Signed out, or the profile deleted, while the pull was running.
 		delete(p.last, profile.ID)
+		delete(p.reconciled, profile.ID)
 		err = nil
 	}
 	return pulled, err
@@ -155,6 +197,44 @@ func (p *Puller) pull(ctx context.Context, db *store.Store, profile store.Profil
 		}
 	}
 	return pulled, errors.Join(errs...)
+}
+
+// reconcile makes profile's library, progress and watched items match the
+// backend's whole lists, when the backend can read them (store.Reconcile).
+// The delta feeds bring changes as they happen; this catches one the store
+// once skipped and the cursor has gone past, such as Continue Watching
+// entries removed on another device. A list the backend says may be
+// cut short only adds and updates. It returns the surfaces it changed.
+func (p *Puller) reconcile(ctx context.Context, db *store.Store, profile store.Profile) ([]store.Surface, error) {
+	snapshotter, ok := backend.For(profile, p.linked).(backend.Snapshotter)
+	if !ok {
+		return nil, nil
+	}
+	var changed []store.Surface
+	for _, surface := range backend.Snapshots {
+		changes, complete, err := snapshotter.Snapshot(ctx, profile, surface)
+		if err != nil {
+			return changed, err
+		}
+		var n int
+		if complete {
+			n, err = db.Reconcile(profile.ID, surface, changes)
+		} else {
+			n, err = apply(db, profile.ID, changes)
+		}
+		if errors.Is(err, store.ErrInvalidItem) {
+			// One bad row spoils the snapshot; the feeds carry on.
+			slog.Warn("syncer: skipping a snapshot the store refused", "surface", surface, "error", err)
+			continue
+		}
+		if err != nil {
+			return changed, err
+		}
+		if n > 0 {
+			changed = append(changed, surface)
+		}
+	}
+	return changed, nil
 }
 
 // apply merges changes into profile id. If the store refuses a change as

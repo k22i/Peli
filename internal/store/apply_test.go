@@ -123,11 +123,51 @@ func TestApplyChangesProgressLatestWins(t *testing.T) {
 	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpUpsert, at(310, 2000))})), 1)
 	equal(t, position().Position, int64(310))
 
-	// A delete of a row older than ours is not about ours: watched again since.
-	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpDelete, at(100, 1000))})), 0)
-	equal(t, len(must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID))), 1)
-	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpDelete, at(310, 2000))})), 1)
+	// A delete carries the row as the backend last stored it, which can be a
+	// few seconds older than ours (it dropped our last small update): it
+	// still removes ours. The entry was removed on another device.
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{change(t, SurfaceProgress, OpDelete, at(305, 1995))})), 1)
 	equal(t, len(must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID))), 0)
+}
+
+// A snapshot is the backend's whole list: what it has is applied, and what
+// it doesn't have goes, unless a push of it is still queued.
+func TestReconcile(t *testing.T) {
+	s, _ := openTemp(t)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P", NuvioIndex: ptr(1)}))
+	other := episode
+	other.Season, other.Episode, other.VideoID = ptr(3), ptr(1), "tt11280740:3:1"
+	gone := WatchedItem{ContentID: "tt0388629", ContentType: "series", Season: ptr(1), Episode: ptr(1), WatchedAt: 5}
+	kept := WatchedItem{ContentID: "tt0388629", ContentType: "series", Season: ptr(1), Episode: ptr(2), WatchedAt: 6}
+	equal(t, must[int](t)(s.ApplyChanges(p.ID, []Change{
+		change(t, SurfaceProgress, OpUpsert, episode),
+		change(t, SurfaceProgress, OpUpsert, other),
+		change(t, SurfaceWatched, OpUpsert, gone),
+		change(t, SurfaceWatched, OpUpsert, kept),
+		change(t, SurfaceLibrary, OpUpsert, dune),
+	})), 5)
+	// Saved here and not pushed yet: the snapshot can't know it.
+	if err := s.SaveLibraryItem(p.ID, severance); err != nil {
+		t.Fatal(err)
+	}
+
+	// The backend kept the first episode only.
+	equal(t, must[int](t)(s.Reconcile(p.ID, SurfaceProgress, []Change{change(t, SurfaceProgress, OpUpsert, episode)})), 1)
+	keys := []string{}
+	for _, e := range must[[]Progress](t)(s.TitleProgress(p.ID, episode.ContentID)) {
+		keys = append(keys, e.Key)
+	}
+	equal(t, keys, []string{"tt11280740_s1e2"})
+
+	equal(t, must[int](t)(s.Reconcile(p.ID, SurfaceWatched, []Change{change(t, SurfaceWatched, OpUpsert, kept)})), 1)
+	equal(t, must[[]WatchedItem](t)(s.Watched(p.ID)), []WatchedItem{kept})
+
+	// An empty library on the backend: Dune goes, Severance waits for its push.
+	equal(t, must[int](t)(s.Reconcile(p.ID, SurfaceLibrary, nil)), 1)
+	equal(t, must[[]LibraryItem](t)(s.Library(p.ID)), []LibraryItem{severance})
+
+	// Already matching: nothing to do.
+	equal(t, must[int](t)(s.Reconcile(p.ID, SurfaceWatched, []Change{change(t, SurfaceWatched, OpUpsert, kept)})), 0)
 }
 
 // The backend makes a watched item itself when progress passes 90 %, so a

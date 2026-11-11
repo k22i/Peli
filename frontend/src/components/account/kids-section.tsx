@@ -27,7 +27,7 @@ export function KidsSection({ profile }: { profile: Profile }) {
 
   return (
     <section className="flex flex-col gap-3" aria-labelledby={headingId}>
-      <h3 id={headingId} className="flex items-center gap-2 text-item">
+      <h3 id={headingId} className="flex items-center gap-2 type-item">
         <Baby className="size-4" aria-hidden />
         Kids profile
       </h3>
@@ -36,7 +36,7 @@ export function KidsSection({ profile }: { profile: Profile }) {
           <span id={`${headingId}-label`} className="text-body">
             Only show what I choose
           </span>
-          <span id={`${headingId}-description`} className="text-caption text-muted-foreground">
+          <span id={`${headingId}-description`} className="text-small text-muted-foreground">
             {needsPin
               ? "Set a PIN first. It becomes the parent PIN that leaves this profile."
               : "Leaving this profile, and changing it, asks for its PIN."}

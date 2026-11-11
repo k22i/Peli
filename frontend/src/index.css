@@ -1,21 +1,33 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@fontsource-variable/mona-sans/wdth.css";
-@import "@fontsource-variable/geist-mono";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
 
 /*
- * Sinag's design tokens (#13). The colour variables keep coss ui's names
- * (https://coss.com/ui/docs/styling) so its components pick them up; Sinag adds
- * --brand (the lagoon accent; coss's --accent is its hover tint) and the type,
- * spacing, elevation and motion tokens in the second @theme block. Colours are
- * plain hex so src/lib/contrast.test.ts can check every text pair against
- * WCAG AA in both modes.
+ * Sinag: "screening room".
+ *
+ * A warm, dark-first canvas (paper-warm in light mode), the system face for
+ * everything you read and press, and Instrument Serif for the big moments:
+ * hero and page titles, the wordmark. One accent, --sun (sinag is Tagalog
+ * for a ray of light), used sparingly: progress, the current place, focus.
+ *
+ * Colour variables keep coss ui's semantic names (background, foreground,
+ * popover, …) so its components follow; Sinag's own are --sun*, --raised and
+ * the media tokens. Colours are plain hex so src/lib/contrast.test.ts can
+ * check every text pair against WCAG AA in both modes.
  *
  * Dark mode is the `.dark` class on <html>: index.html sets it before first
- * paint and src/lib/theme.ts keeps it in step with the OS or the user's
- * choice in Settings.
+ * paint and src/lib/theme.ts keeps it in step with the OS or Settings.
  */
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant reduced-transparency {
+  @media (prefers-reduced-transparency: reduce) {
+    @slot;
+  }
+  @media (prefers-contrast: more) {
+    @slot;
+  }
+}
 
 @layer base {
   :root {
@@ -27,32 +39,29 @@
   }
 
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/60;
   }
 
   html {
     @apply font-sans antialiased;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    /* coss ui: popups stack above the app without z-index wars. No
-       background here: the app shell paints its own, so a route without the
-       shell (the player) can be transparent. text-body: body and UI text is
-       15px / 450 (#112) and content inherits it; dense controls (menus,
-       chips, sidebar items) set text-sm themselves. */
+    /* coss ui: popups stack above the app without z-index wars. No background
+       here: the shell paints its own, so a route without it (the player) can
+       be transparent. */
     @apply relative isolate text-body text-foreground select-none;
   }
 
-  /* The fallback focus ring for anything that doesn't draw its own (coss
-     components and ours use `focus-visible:ring-*`, which sets outline-none
-     and wins over this layer). */
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
 
-  /* The title bar and the sidebar's empty space drag the window (macOS
-     hidden-inset, frameless Windows). Controls opt out below. */
+  /* The top bar drags the window (macOS hidden-inset, frameless Windows).
+     Controls opt out below. */
   .drag-region {
     --wails-draggable: drag;
   }
@@ -61,7 +70,9 @@
   button,
   input,
   select,
-  textarea {
+  textarea,
+  [role="button"],
+  [role="tab"] {
     --wails-draggable: no-drag;
   }
 
@@ -71,38 +82,43 @@
   pre {
     font-family: var(--font-mono);
   }
+
+  ::selection {
+    background: color-mix(in srgb, var(--sun) 35%, transparent);
+  }
 }
 
 @theme inline {
-  --animate-skeleton: skeleton 2s -1s infinite linear;
+  --animate-skeleton: skeleton 2.2s -1s infinite linear;
   --animate-toast-success-odd: toast-success-odd 0.32s cubic-bezier(0.5, 1, 0.89, 1);
   --animate-toast-success-even: toast-success-even 0.32s cubic-bezier(0.5, 1, 0.89, 1);
   --animate-toast-error-odd: toast-error-odd 0.28s cubic-bezier(0.5, 1, 0.89, 1);
   --animate-toast-error-even: toast-error-even 0.28s cubic-bezier(0.5, 1, 0.89, 1);
   --animate-caret-blink: 1s ease-out infinite caret-blink;
-  --font-heading: "Mona Sans Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
-  --font-sans: "Mona Sans Variable", ui-sans-serif, system-ui, sans-serif;
-  --color-brand: var(--brand);
-  --color-brand-hover: var(--brand-hover);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-brand-soft: var(--brand-soft);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar: var(--sidebar);
-  --color-code-highlight: var(--code-highlight);
-  --code-foreground: var(--code-foreground);
-  --color-code: var(--code);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI",
+    "Helvetica Neue", sans-serif;
+  --font-heading: var(--font-sans);
+  --font-display: "Instrument Serif", "New York", ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  --color-sun: var(--sun);
+  --color-sun-ink: var(--sun-ink);
+  --color-sun-soft: var(--sun-soft);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-raised: var(--raised);
+  --color-sidebar: var(--raised);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-accent-foreground: var(--foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-ring: var(--ring);
+  --color-code: var(--card);
+  --color-code-highlight: var(--accent);
+  --code-foreground: var(--foreground);
+
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-ring: var(--ring);
@@ -111,6 +127,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-muted-foreground: var(--muted-foreground);
+  --color-faint: var(--faint);
   --color-muted: var(--muted);
   --color-input: var(--input);
   --color-foreground: var(--foreground);
@@ -128,13 +145,16 @@
   --color-info-foreground: var(--info-foreground);
   --color-info: var(--info);
   --color-destructive-foreground: var(--destructive-foreground);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  --radius-card: 0.625rem;
+
   @keyframes skeleton {
     to {
       background-position: -200% 0;
@@ -217,391 +237,235 @@
 
 /*
  * Type, spacing, elevation and motion. Each becomes a Tailwind utility:
- * text-display, px-gutter, shadow-lift, ease-spring, …
+ * text-body, px-page, w-poster, shadow-float, ease-out-soft, …
  */
 @theme {
-  /* Type (#112, option B · Semi-wide). Mona Sans has a width axis: the hero
-     and page titles run at 112.5% (font-stretch), row headings and everything
-     else at 100%. Each size token carries its weight, line height and
-     tracking (negative when large, ~0 for body, positive for 12px labels);
-     the .text-* utilities below add the family and the width, so a page
-     writes `text-display` and never pairs a font-stretch class by hand.
-     Mono (Geist) is for numbers and codes only: years, runtimes, S2 · E5,
-     times, sizes, versions. */
-  --text-display: clamp(2.5rem, 1.25rem + 3.5vw, 4.5rem);
-  --text-display--line-height: 0.95;
-  --text-display--letter-spacing: -0.03em;
-  --text-display--font-weight: 700;
-  --text-title: 2.25rem;
-  --text-title--line-height: 1.1;
-  --text-title--letter-spacing: -0.02em;
-  --text-title--font-weight: 660;
-  --text-heading: 1.375rem;
-  --text-heading--line-height: 1.2;
-  --text-heading--letter-spacing: -0.015em;
-  --text-heading--font-weight: 640;
-  --text-body: 0.9375rem;
-  --text-body--line-height: 1.45;
-  --text-body--letter-spacing: 0;
-  --text-body--font-weight: 450;
-  --text-item: 0.9375rem;
-  --text-item--line-height: 1.3;
-  --text-item--letter-spacing: 0;
-  --text-item--font-weight: 550;
-  --text-caption: 0.8125rem;
-  --text-caption--line-height: 1.4;
-  --text-caption--letter-spacing: 0;
-  --text-meta: 0.75rem;
-  --text-meta--line-height: 1.4;
-  --text-meta--letter-spacing: 0.01em;
-  --text-label: 0.75rem;
-  --text-label--line-height: 1.3;
-  --text-label--letter-spacing: 0.06em;
-  --text-label--font-weight: 600;
+  /* The system face, sized for a desktop app: 14px body, 13px controls. */
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.5;
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.4;
+  --text-tiny: 0.6875rem;
+  --text-tiny--line-height: 1.3;
 
-  /* Spacing. The page gutter grows with the window; rows sit a section apart. */
-  --spacing-gutter: clamp(1.25rem, 0.5rem + 2.5vw, 3rem);
-  --spacing-section: 2.5rem;
+  /* Page gutter: 24px on a narrow window up to 64px on a wide one. */
+  --spacing-page: clamp(1.5rem, 0.25rem + 3.4vw, 4rem);
+  /* The top bar (traffic lights, navigation, search, profile). */
+  --spacing-bar: 3.25rem;
 
-  /* Card sizes: posters are 2:3, landscape cards 16:9. */
-  --container-poster: 15rem;
-  --container-landscape: 27rem;
+  /* Card widths. A test keeps cardRem in row.tsx in step with these. */
+  --container-poster: 11.5rem;
+  --container-landscape: 20rem;
 
-  /* Elevation: soft and deep, Apple-style, never a hard drop shadow. */
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.12), 0 2px 8px rgb(0 0 0 / 0.08);
-  --shadow-lift: 0 8px 16px -4px rgb(0 0 0 / 0.24), 0 24px 48px -12px rgb(0 0 0 / 0.36);
-  --shadow-glass: 0 0 0 0.5px rgb(0 0 0 / 0.08), 0 12px 40px -8px rgb(0 0 0 / 0.32);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.18), 0 4px 14px -6px rgb(0 0 0 / 0.35);
+  --shadow-float: 0 18px 40px -16px rgb(0 0 0 / 0.65), 0 2px 8px -2px rgb(0 0 0 / 0.3);
+  --shadow-pop:
+    0 0 0 0.5px rgb(0 0 0 / 0.25), 0 24px 64px -16px rgb(0 0 0 / 0.55),
+    0 4px 14px -4px rgb(0 0 0 / 0.25);
+  --shadow-sun: 0 0 12px 1px color-mix(in srgb, var(--sun) 70%, transparent);
 
-  /* Motion. ease-spring settles with a ~5% overshoot (lifts, presses);
-     ease-smooth is for fades and travel. Durations are the --duration-*
-     variables below. */
-  --ease-spring: linear(
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-bounce: linear(
     0,
-    0.0645 2.4%,
-    0.2457 5.1%,
-    0.5062 8.4%,
-    0.7472 11.9%,
-    0.9107 15.5%,
-    1.0107 19.5%,
-    1.0451 22.9%,
-    1.0533 26.3%,
-    1.0445 30.5%,
-    1.0141 39.7%,
-    1.0004 48.6%,
-    0.9974 57.7%,
-    1.0002 79.6%,
+    0.006,
+    0.025 2.8%,
+    0.101 6.1%,
+    0.539 18.9%,
+    0.721 25.3%,
+    0.849 31.5%,
+    0.937 38.1%,
+    0.968 41.8%,
+    0.991 45.7%,
+    1.006 50.1%,
+    1.015 55%,
+    1.017 63.9%,
+    1.001 85.9%,
     1
   );
-  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration-base: 240ms;
+  --duration-slow: 480ms;
+  --radius: 0.625rem;
 }
 
+/* Light: warm paper. */
 :root {
-  --duration-fast: 120ms;
-  --duration-base: 220ms;
-  --duration-slow: 420ms;
-  --radius: 0.75rem;
-
-  /* Light mode. */
-  --brand: #0b6e94;
-  --brand-hover: #0a5f86;
-  --brand-foreground: #ffffff;
-  --brand-soft: #e6f3f9;
-  --background: #ffffff;
-  --foreground: #18181b;
+  --background: #f5f2ec;
+  --foreground: #1b1814;
+  --raised: #ffffff;
   --card: #ffffff;
-  --card-foreground: #18181b;
-  --popover: #ffffffa6;
-  --popover-foreground: #18181b;
-  --primary: #0a0a0b;
-  --primary-foreground: #ffffff;
-  --secondary: #0000000d;
-  --secondary-foreground: #18181b;
-  --muted: #0000000a;
-  --muted-foreground: #63636b;
-  --accent: #0000000a;
-  --accent-foreground: #18181b;
-  --border: #00000014;
-  --input: #0000001a;
-  --switch-off: #8e8e93;
-  --ring: #0b6e94;
-  --destructive: #dc2626;
-  --destructive-foreground: #c81e1e;
-  --info: #0b6e94;
-  --info-foreground: #0b6e94;
-  --success: #16a34a;
-  --success-foreground: #15803d;
-  --warning: #f59e0b;
-  --warning-foreground: #b45309;
-  --chart-1: #0b6e94;
-  --chart-2: #16a34a;
-  --chart-3: #f59e0b;
-  --chart-4: #7c3aed;
-  --chart-5: #e11d48;
-  --code: #ffffff;
-  --code-foreground: #18181b;
-  --code-highlight: #0000000a;
-  /* The shell's outer frame. Keep src/lib/theme.ts's window colours and
-     main.go in step. */
-  --sidebar: #f7f7f8;
-  --sidebar-foreground: #55555c;
-  --sidebar-accent: #0000000d;
-  --sidebar-accent-foreground: #18181b;
-  --sidebar-border: #0000000f;
-  --sidebar-primary: #18181b;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-ring: #0b6e94;
-
-  /* Glass (#111, ADR-0046). Tints for the four tiers, the specular top edge,
-     the hairline and the solid fallback. --popover is the regular tint, so
-     coss's bg-popover matches. The media tints are sized for white on the
-     worst backdrop, a pure white frame: text on #0000008c composites to
-     about #737373 (4.7:1), icons on #00000073 to about #8c8c8c (3.4:1,
-     UI needs 3:1). contrastPairs checks all of it. */
-  --glass-thin: #ffffff73;
-  --glass-regular: #ffffffa6;
-  --glass-thick: #f7f7f8c7;
-  --glass-media: #00000073;
-  --glass-media-strong: #0000008c;
-  --glass-edge: #ffffffb3;
-  --glass-stroke: #0000000f;
-  --glass-sheen: #ffffff59;
-  --glass-solid: #f7f7f8;
+  --card-foreground: #1b1814;
+  --popover: #fbf9f5;
+  --popover-foreground: #1b1814;
+  --primary: #1b1814;
+  --primary-foreground: #fbf9f5;
+  --secondary: #1b18140f;
+  --secondary-foreground: #1b1814;
+  --muted: #1b18140a;
+  --muted-foreground: #645d54;
+  --faint: #8a8278;
+  --accent: #1b18140d;
+  --accent-foreground: #1b1814;
+  --border: #1b181417;
+  --input: #1b181421;
+  --switch-off: #a39b90;
+  --ring: #c06c00;
+  --sun: #f0a02a;
+  --sun-ink: #8f4c00;
+  --sun-soft: #f0a02a24;
+  --sun-foreground: #1d1203;
+  --destructive: #d83a2e;
+  --destructive-foreground: #b42318;
+  --info: #2f6fd0;
+  --info-foreground: #1f5bb5;
+  --success: #2c9a52;
+  --success-foreground: #1d7a3e;
+  --warning: #e08a00;
+  --warning-foreground: #8f5200;
+  /* Translucent bars and popups (alpha over whatever passes under). */
+  --bar: #f5f2ecd1;
+  --pop: #fbf9f5e0;
 }
 
+/* Dark: the screening room. */
 .dark {
-  /* Dark mode: near-black, Nuvio's cinema. */
-  --brand: #33b5e0;
-  --brand-hover: #62c7ec;
-  --brand-foreground: #0a0a0b;
-  --brand-soft: #33b5e026;
-  --background: #0a0a0b;
-  --foreground: #ededef;
-  --card: #161618;
-  --card-foreground: #ededef;
-  --popover: #1c1c1ea6;
-  --popover-foreground: #ededef;
-  --primary: #fafafa;
-  --primary-foreground: #0a0a0b;
-  --secondary: #ffffff1a;
-  --secondary-foreground: #ededef;
-  --muted: #ffffff0d;
-  --muted-foreground: #a1a1a8;
-  --accent: #ffffff0f;
-  --accent-foreground: #ededef;
-  --border: #ffffff14;
-  --input: #ffffff1a;
-  --switch-off: #6b6b72;
-  --ring: #33b5e0;
-  --destructive: #d93036;
-  --destructive-foreground: #ff6166;
-  --info: #33b5e0;
-  --info-foreground: #33b5e0;
-  --success: #22c55e;
-  --success-foreground: #4ade80;
-  --warning: #f59e0b;
-  --warning-foreground: #fbbf24;
-  --chart-1: #33b5e0;
-  --chart-2: #4ade80;
-  --chart-3: #fbbf24;
-  --chart-4: #a78bfa;
-  --chart-5: #fb7185;
-  --code: #161618;
-  --code-foreground: #ededef;
-  --code-highlight: #ffffff0d;
-  --sidebar: #111111;
-  --sidebar-foreground: #a1a1a8;
-  --sidebar-accent: #ffffff12;
-  --sidebar-accent-foreground: #ededef;
-  --sidebar-border: #ffffff0d;
-  --sidebar-primary: #ededef;
-  --sidebar-primary-foreground: #0a0a0b;
-  --sidebar-ring: #33b5e0;
-  --glass-thin: #2c2c2e73;
-  --glass-regular: #1c1c1ea6;
-  --glass-thick: #141416c7;
-  --glass-media: #00000073;
-  --glass-media-strong: #0000008c;
-  --glass-edge: #ffffff24;
-  --glass-stroke: #ffffff14;
-  --glass-sheen: #ffffff1a;
-  --glass-solid: #1c1c1e;
+  --background: #0e0d0c;
+  --foreground: #f4efe7;
+  --raised: #181715;
+  --card: #181715;
+  --card-foreground: #f4efe7;
+  --popover: #1f1d1a;
+  --popover-foreground: #f4efe7;
+  --primary: #f4efe7;
+  --primary-foreground: #121110;
+  --secondary: #f4efe714;
+  --secondary-foreground: #f4efe7;
+  --muted: #f4efe70d;
+  --muted-foreground: #a39c92;
+  --faint: #7a746b;
+  --accent: #f4efe712;
+  --accent-foreground: #f4efe7;
+  --border: #f4efe714;
+  --input: #f4efe71f;
+  --switch-off: #5c5750;
+  --ring: #ffb547;
+  --sun: #ffb547;
+  --sun-ink: #ffc46b;
+  --sun-soft: #ffb5471f;
+  --sun-foreground: #1d1203;
+  --destructive: #cc392d;
+  --destructive-foreground: #ff8a7f;
+  --info: #5b9bf0;
+  --info-foreground: #8ab8ff;
+  --success: #3fb36a;
+  --success-foreground: #6fd394;
+  --warning: #f2a516;
+  --warning-foreground: #ffc65c;
+  --bar: #0e0d0cc2;
+  --pop: #1f1d1ae6;
 }
 
 /*
- * Type utilities (#112). Size, weight, line height and tracking come from the
- * --text-* tokens above; these add what a token can't carry: the family and
- * the width axis. A heading is one class (`text-title`), so pages never pair
- * `font-heading` with a font-stretch class. Tailwind merges each with the
- * token-driven utility of the same name.
+ * Type. The system face carries the interface; Instrument Serif (a narrow,
+ * high-contrast display serif) is kept for a few large moments only, so it
+ * stays special.
  */
-@utility text-display {
-  font-family: var(--font-heading);
-  font-stretch: 112.5%;
+@utility type-hero {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 1.6rem + 3.8vw, 6.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
-@utility text-title {
-  font-family: var(--font-heading);
-  font-stretch: 112.5%;
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 1.9rem + 1.8vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.005em;
 }
 
-@utility text-heading {
-  font-family: var(--font-heading);
-  font-stretch: 100%;
+@utility type-title {
+  font-size: 1.375rem;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  font-weight: 650;
 }
 
-/* Eyebrows and labels ("Continue watching", "Director", "Top pick"): Mona
-   Sans 12px, 600, +0.06em, uppercase. Words are never mono. */
-@utility text-label {
-  font-family: var(--font-sans);
+@utility type-row {
+  font-size: 1.1875rem;
+  line-height: 1.25;
+  letter-spacing: -0.014em;
+  font-weight: 650;
+}
+
+@utility type-item {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-weight: 560;
+  letter-spacing: -0.005em;
+}
+
+@utility type-eyebrow {
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* Numbers and codes: years, runtimes, S2 · E5, times, sizes, versions.
-   Geist Mono, tabular so a value that updates in place doesn't jiggle. */
-@utility text-num {
-  font-family: var(--font-mono);
+@utility tnum {
   font-variant-numeric: tabular-nums;
 }
 
 /*
- * Glass (#111, ADR-0046). Four tiers, defined once; components pick a tier
- * and never hand-roll backdrop-blur.
- *
- *   glass-thin          chips, small controls over content, row arrows
- *   glass (= regular)   popovers, menus, tooltips, toasts, sticky page headers
- *   glass-thick         sidebar, sheets, dialogs, settings nav
- *   glass-media(-strong) always dark; over artwork and video. -strong when it
- *                       holds text
- *
- * Each tier is a tint, a blur and saturation, a soft highlight from the top
- * (the "liquid" part), a 1px specular inner edge, a 0.5px hairline and a
- * shadow. Never stack a light tier on another light tier. The -webkit- prefix
- * stays for WKWebView builds that still want it.
- *
- * `reduced-transparency:` is this app's variant for "the OS asks for solid
- * surfaces": prefers-reduced-transparency, prefers-contrast: more (macOS's
- * Increase contrast; the tiers also get a border from `contrast-more:`) or a
- * `data-transparency="reduced"` ancestor, which the gallery sets to show the
- * fallback.
+ * Materials.
+ *  bar     the top bar once content scrolls under it
+ *  pop     menus, selects, tooltips, toasts
+ *  media   controls over artwork or video: always light-on-dark
+ * Reduced transparency (or increased contrast) makes them solid.
  */
-@custom-variant reduced-transparency {
-  @media (prefers-reduced-transparency: reduce) {
-    @slot;
-  }
-  @media (prefers-contrast: more) {
-    @slot;
-  }
-  &:where([data-transparency="reduced"], [data-transparency="reduced"] *) {
-    @slot;
-  }
-}
-
-@utility glass-thin {
-  background-color: var(--glass-thin);
-  background-image: linear-gradient(180deg, var(--glass-sheen), transparent 45%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  backdrop-filter: blur(12px) saturate(160%);
-  box-shadow:
-    inset 0 1px 0 0 var(--glass-edge),
-    inset 0 0 0 0.5px var(--glass-stroke),
-    var(--shadow-card);
+@utility material-bar {
+  background-color: var(--bar);
+  backdrop-filter: blur(28px) saturate(1.7);
+  -webkit-backdrop-filter: blur(28px) saturate(1.7);
   @variant reduced-transparency {
-    background-color: var(--glass-solid);
-    background-image: none;
-    -webkit-backdrop-filter: none;
+    background-color: var(--background);
     backdrop-filter: none;
-  }
-  @variant contrast-more {
-    border: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+    -webkit-backdrop-filter: none;
   }
 }
 
-@utility glass {
-  background-color: var(--glass-regular);
-  background-image: linear-gradient(180deg, var(--glass-sheen), transparent 45%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  backdrop-filter: blur(24px) saturate(180%);
-  box-shadow:
-    inset 0 1px 0 0 var(--glass-edge),
-    inset 0 0 0 0.5px var(--glass-stroke),
-    var(--shadow-glass);
+@utility material-pop {
+  background-color: var(--pop);
+  backdrop-filter: blur(36px) saturate(1.8);
+  -webkit-backdrop-filter: blur(36px) saturate(1.8);
+  box-shadow: var(--shadow-pop);
+  border: 1px solid var(--border);
   @variant reduced-transparency {
-    background-color: var(--glass-solid);
-    background-image: none;
-    -webkit-backdrop-filter: none;
+    background-color: var(--popover);
     backdrop-filter: none;
-  }
-  @variant contrast-more {
-    border: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+    -webkit-backdrop-filter: none;
   }
 }
 
-@utility glass-thick {
-  background-color: var(--glass-thick);
-  background-image: linear-gradient(180deg, var(--glass-sheen), transparent 45%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  backdrop-filter: blur(40px) saturate(200%);
-  box-shadow:
-    inset 0 1px 0 0 var(--glass-edge),
-    inset 0 0 0 0.5px var(--glass-stroke),
-    var(--shadow-glass);
+@utility material-media {
+  color: #fff;
+  background-color: rgb(28 26 24 / 0.55);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
   @variant reduced-transparency {
-    background-color: var(--glass-solid);
-    background-image: none;
-    -webkit-backdrop-filter: none;
+    background-color: rgb(28 26 24);
     backdrop-filter: none;
-  }
-  @variant contrast-more {
-    border: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+    -webkit-backdrop-filter: none;
   }
 }
 
-/* Media tiers are the same in light and dark: artwork and video are dark
-   either way. White icons and text go on top; scope the content with `.dark`
-   if it uses theme colours. */
-@utility glass-media {
-  color-scheme: dark;
-  background-color: var(--glass-media);
-  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.08), transparent 45%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
-  backdrop-filter: blur(30px) saturate(180%);
-  box-shadow:
-    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
-    inset 0 0 0 0.5px rgb(255 255 255 / 0.08),
-    var(--shadow-glass);
-  @variant reduced-transparency {
-    background-color: #000000e0;
-    background-image: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-  @variant contrast-more {
-    border: 1px solid rgb(255 255 255 / 0.4);
-  }
-}
-
-@utility glass-media-strong {
-  color-scheme: dark;
-  background-color: var(--glass-media-strong);
-  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.08), transparent 45%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
-  backdrop-filter: blur(30px) saturate(180%);
-  box-shadow:
-    inset 0 1px 0 0 rgb(255 255 255 / 0.18),
-    inset 0 0 0 0.5px rgb(255 255 255 / 0.08),
-    var(--shadow-glass);
-  @variant reduced-transparency {
-    background-color: #000000e0;
-    background-image: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-  @variant contrast-more {
-    border: 1px solid rgb(255 255 255 / 0.4);
-  }
-}
-
-/* A scroller with no visible scrollbar (the chip rail, #116). */
+/* Hide a scroller's bar (rows and rails page with arrows and keys). */
 @utility no-scrollbar {
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -609,16 +473,8 @@
   }
 }
 
-/* Fades a scroller's start and end edges to transparent. The rail's wrapper
-   sets --rail-fade-start/-end (48px) on a side that has more to show. */
-@utility rail-fade {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 var(--rail-fade-start, 0px),
-    #000 calc(100% - var(--rail-fade-end, 0px)),
-    transparent
-  );
+/* Fade a horizontal rail's ends where it is clipped. */
+@utility rail-mask {
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -627,121 +483,72 @@
     transparent
   );
 }
+
 [data-slot="scroll-rail"]:not([data-at-start]) {
-  --rail-fade-start: 48px;
+  --rail-fade-start: 3rem;
 }
+
 [data-slot="scroll-rail"]:not([data-at-end]) {
-  --rail-fade-end: 48px;
+  --rail-fade-end: 3rem;
+}
+
+/* Pull a full-bleed hero up under the top bar. */
+@utility under-bar {
+  margin-top: calc(var(--spacing-bar) * -1);
+}
+
+/* A hairline that reads on art and on paper. */
+@utility hairline {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foreground) 9%, transparent);
 }
 
 /*
- * Scroll edge: for sticky chrome that content scrolls under (the title bar,
- * page headers). A 24px strip hangs below the element and softens the
- * content as it passes: a little blur and a --background wash that both fade
- * out downwards. The element must be positioned (sticky, fixed or absolute).
- * Don't put it on an element that also has a glass tier: a backdrop-filter
- * makes its element a backdrop root, so the strip inside it would have
- * nothing of the page to blur. Put it on a wrapper without one.
- */
-@utility scroll-edge-top {
-  &::before {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    /* --scroll-edge-cover extends the blur up over the element itself, for a
-       bar with no background of its own (the title bar, #114). */
-    top: calc(100% - var(--scroll-edge-cover, 0px));
-    height: calc(24px + var(--scroll-edge-cover, 0px));
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--background) 60%, transparent) calc(100% - 24px),
-      transparent
-    );
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent);
-    mask-image: linear-gradient(to bottom, #000 calc(100% - 24px), transparent);
-    @variant reduced-transparency {
-      background: linear-gradient(to bottom, var(--background) calc(100% - 24px), transparent);
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-    }
-  }
-}
-
-/*
- * Bleed: for artwork that runs to the window's top and left edge, under the
- * floating sidebar and the title bar (the shell pads its content by
- * --sidebar-inset and --titlebar-h). Text inside a bled element offsets
- * itself with ps-[calc(var(--sidebar-inset)+var(--spacing-gutter))].
- */
-@utility bleed {
-  margin-inline-start: calc(-1 * var(--sidebar-inset, 0px));
-  margin-top: calc(-1 * var(--titlebar-h, 0px));
-}
-
-/*
- * coss's popups sit on tiers: menus, selects, tooltips and toasts on regular,
- * dialogs and sheets on thick. These rules are unlayered, so they win over the
- * components' bg-popover and shadow classes.
+ * Popups take the pop material. These rules are unlayered, so they win over
+ * the components' own bg-popover and shadow classes.
  */
 [data-slot="menu-popup"],
+[data-slot="select-popup"],
 [data-slot="tooltip-popup"],
 [data-slot="toast-popup"] {
-  @apply glass;
+  @apply material-pop;
 }
 
-/* Stacked toasts shade the ones behind with a mix of black (white in dark
-   mode), as the component did with --popover. */
 [data-slot="toast-viewport"] > * {
-  @apply glass;
+  @apply material-pop;
   background-color: color-mix(
     in srgb,
-    var(--glass-regular),
-    black calc(1% * max(0, var(--toast-index, 0)))
-  );
-}
-
-.dark [data-slot="toast-viewport"] > * {
-  background-color: color-mix(
-    in srgb,
-    var(--glass-regular),
-    white calc(2% * max(0, var(--toast-index, 0)))
+    var(--pop),
+    var(--foreground) calc(2% * max(0, var(--toast-index, 0)))
   );
 }
 
 [data-slot="toast-viewport"] > [data-expanded] {
-  background-color: var(--glass-regular);
+  background-color: var(--pop);
 }
 
 [data-slot="dialog-popup"],
 [data-slot="sheet-popup"] {
-  @apply glass-thick;
+  background-color: var(--popover);
+  box-shadow: var(--shadow-pop);
 }
 
-/*
- * Materialize: a popup arrives as a material, out of focus and a little
- * small, and leaves the same way. Opacity, scale and a 6px blur share one
- * transition (--duration-base, ease-smooth). Sheets travel from their edge
- * already, so they skip the scale. Reduced motion keeps opacity only (below).
- */
+/* Popups grow out of where they open and settle with a little overshoot. */
 [data-slot="menu-popup"],
 [data-slot="select-popup"],
 [data-slot="toast-popup"] {
-  transition-property: opacity, scale, filter;
+  transition-property: opacity, scale, translate;
 }
 
 [data-slot="tooltip-popup"] {
-  transition-property: width, height, opacity, scale, filter;
+  transition-property: width, height, opacity, scale;
 }
 
 [data-slot="dialog-popup"] {
-  transition-property: opacity, scale, translate, filter;
+  transition-property: opacity, scale, translate;
 }
 
 [data-slot="sheet-popup"] {
-  transition-property: opacity, translate, filter;
+  transition-property: opacity, translate;
 }
 
 [data-slot="menu-popup"],
@@ -751,10 +558,9 @@
 [data-slot="dialog-popup"],
 [data-slot="sheet-popup"] {
   transition-duration: var(--duration-base);
-  transition-timing-function: var(--ease-smooth);
+  transition-timing-function: var(--ease-out-soft);
 }
 
-/* Tooltips that follow another tooltip swap without animating. */
 [data-slot="tooltip-popup"][data-instant] {
   transition-duration: 0s;
 }
@@ -763,39 +569,41 @@
   [data-slot="menu-popup"],
   [data-slot="select-popup"],
   [data-slot="tooltip-popup"],
-  [data-slot="toast-popup"],
-  [data-slot="dialog-popup"]
+  [data-slot="toast-popup"]
 ):is([data-starting-style], [data-ending-style]) {
   opacity: 0;
-  scale: 0.96;
-  filter: blur(6px);
+  scale: 0.94;
+}
+
+[data-slot="dialog-popup"]:is([data-starting-style], [data-ending-style]) {
+  opacity: 0;
+  scale: 0.97;
+  translate: 0 12px;
 }
 
 [data-slot="sheet-popup"]:is([data-starting-style], [data-ending-style]) {
   opacity: 0;
-  filter: blur(6px);
 }
 
 /*
- * Route transitions (the router's defaultViewTransition): only the content
- * pane cross-fades; the rest of the shell stays perfectly still. The pane
- * fills the window, so its snapshot would sit over the sidebar and title bar
- * (which are part of the root snapshot, below it) for as long as the router
- * waits on a page's data. They get groups of their own, above the pane's.
+ * Route transitions (the router's defaultViewTransition): only the page
+ * moves; the top bar stays still above it. Sections cross-fade; going deeper
+ * rises in from below, going back settles from above.
  */
-.content-pane {
-  view-transition-name: content;
+.page-layer {
+  view-transition-name: page;
 }
 
-::view-transition-group(sidebar),
-::view-transition-group(titlebar) {
-  z-index: 1;
+.app-top-bar {
+  view-transition-name: app-top-bar;
 }
 
-::view-transition-old(sidebar),
-::view-transition-new(sidebar),
-::view-transition-old(titlebar),
-::view-transition-new(titlebar) {
+::view-transition-group(app-top-bar) {
+  z-index: 2;
+}
+
+::view-transition-old(app-top-bar),
+::view-transition-new(app-top-bar) {
   animation: none;
 }
 
@@ -804,105 +612,97 @@
   animation: none;
 }
 
-::view-transition-old(content),
-::view-transition-new(content) {
-  animation-duration: var(--duration-fast);
-  animation-timing-function: ease-out;
+::view-transition-old(page) {
+  animation: page-out var(--duration-fast) ease-in both;
 }
 
-/* The pane's size never changes between pages, so skip the group's resize. */
-::view-transition-group(content) {
-  animation: none;
+::view-transition-new(page) {
+  animation: page-in var(--duration-base) var(--ease-out-soft) both;
 }
 
-/*
- * Directional page transitions (#124). lib/nav-direction.ts puts
- * data-nav="forward" | "back" | "section" on <html> as each navigation starts.
- * Going deeper (a title, a folder, the stream picker) the new page comes in
- * from a touch smaller; going back it comes in from a touch larger, so a page
- * leaves the way it came. The old page just fades out, and moving between
- * sections keeps the quick cross-fade above. Nothing waits on these: the new
- * page is live from the first frame.
- */
-@keyframes nav-enter-forward {
+:root[data-nav="forward"]::view-transition-new(page) {
+  animation: page-rise var(--duration-slow) var(--ease-out-soft) both;
+}
+
+:root[data-nav="back"]::view-transition-new(page) {
+  animation: page-settle var(--duration-base) var(--ease-out-soft) both;
+}
+
+/* A hero's art settles into place as it arrives. */
+@keyframes hero-settle {
   from {
-    opacity: 0;
-    transform: scale(0.985);
+    scale: 1.06;
+    opacity: 0.4;
   }
 }
 
-@keyframes nav-enter-back {
+@keyframes marquee-fill {
   from {
-    opacity: 0;
-    transform: scale(1.015);
+    scale: 0 1;
   }
 }
 
-:root[data-nav="forward"]::view-transition-new(content) {
-  animation: nav-enter-forward var(--duration-slow) var(--ease-smooth) both;
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
 }
 
-:root[data-nav="back"]::view-transition-new(content) {
-  animation: nav-enter-back var(--duration-slow) var(--ease-smooth) both;
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
 }
 
-/*
- * Sliding pills (#124): the active sidebar item's and Settings pane's
- * background are elements of their own, named so a route change glides them
- * from the old item to the new one. Each pill's group sits above its panel's
- * and below the list of labels (the sidebar's <nav> and the Settings pane
- * list are named too), so a label is never covered while the pill passes.
- */
-::view-transition-group(nav-pill),
-::view-transition-group(settings-pill) {
-  z-index: 2;
-  animation-duration: var(--duration-base);
-  animation-timing-function: var(--ease-spring);
+@keyframes page-rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
 }
 
-::view-transition-group(sidebar-nav),
-::view-transition-group(settings-nav) {
+@keyframes page-settle {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+}
+
+/* The nav's sun dot glides between sections. */
+::view-transition-group(nav-sun) {
+  animation-duration: var(--duration-slow);
+  animation-timing-function: var(--ease-bounce);
   z-index: 3;
 }
 
-/*
- * Reduced motion: nothing moves. Components use `motion-safe:` for travel,
- * scale and springs; this catches the rest (the skeleton shimmer, smooth
- * scrolling, view transitions) and keeps fades to an instant.
- */
+/* A film-grain veil over the canvas: barely there, but it keeps large dark
+   areas from banding and gives the room some texture. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1.4 -0.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  :root {
-    --duration-fast: 0ms;
-    --duration-base: 0ms;
-    --duration-slow: 0ms;
-  }
-
-  *,
-  ::before,
-  ::after {
-    scroll-behavior: auto !important;
-  }
-
-  [data-slot="skeleton"] {
-    animation: none !important;
-  }
-
-  /* coss's sheets slide and its tooltips and menus grow in without a
-     motion-safe guard, and materializing adds a blur; keep them to a fade. */
-  [data-slot="sheet-popup"],
-  [data-slot="tooltip-popup"],
-  [data-slot="menu-popup"],
-  [data-slot="select-popup"],
-  [data-slot="dialog-popup"],
-  [data-slot="toast-popup"] {
-    translate: none !important;
-    scale: none !important;
-    filter: none !important;
-  }
-
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
+  }
+
+  [data-slot="menu-popup"],
+  [data-slot="select-popup"],
+  [data-slot="tooltip-popup"],
+  [data-slot="toast-popup"],
+  [data-slot="dialog-popup"],
+  [data-slot="sheet-popup"] {
+    transition-property: opacity;
+    scale: none !important;
+    translate: none !important;
   }
 }

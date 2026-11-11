@@ -2,34 +2,22 @@ import { useMatches, useNavigate, useRouter } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { lastOpenPane } from "@/components/settings/panes";
-import { Sidebar } from "@/components/shell/sidebar";
-import { TitleBar } from "@/components/shell/title-bar";
+import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
-import { currentPlatform, type Platform } from "@/lib/platform";
+import { currentPlatform } from "@/lib/platform";
 import { searchFieldId } from "@/lib/search";
-import { cn } from "@/lib/utils";
 import { sections } from "@/sections";
 
-// The height of the title bar strip: where the macOS traffic lights or the
-// Windows caption buttons sit. Linux keeps its native frame.
-const titleBarHeight: Record<Platform, string> = {
-  mac: "[--titlebar-h:2.75rem]",
-  windows: "[--titlebar-h:2rem]",
-  linux: "[--titlebar-h:0px]",
-  browser: "[--titlebar-h:0px]",
-};
-
-// How far the content pane has to scroll before the title bar shows its
-// scroll edge, so the hero art reaches the top of the window at rest.
+// How far the content pane has to scroll before the top bar frosts, so a
+// hero's art reaches the top of the window at rest.
 const scrolledAfterPx = 4;
 
-// The window frame every route renders in: a content pane that fills the
-// window and scrolls under a floating glass sidebar and the title bar (#114).
-// The pane pads itself by --sidebar-inset and --titlebar-h, so pages keep
-// clear of the chrome; full-bleed artwork opts out with the `bleed` utility.
-// Only the content pane changes on navigation, so the shell never shifts. All
-// backgrounds live here rather than on <body>, so a route with
-// `staticData.chrome: "none"` gets a bare, transparent page.
+// The window frame every route renders in: a top bar over a content pane
+// that fills the window. Pages start below the bar (the pane pads by
+// --spacing-bar); a full-bleed hero pulls itself up under it with
+// `under-bar`. Only the pane changes on navigation, so the bar never shifts.
+// Backgrounds live here rather than on <body>, so a route with
+// `staticData.chrome: "none"` (the player) gets a bare, transparent page.
 export function AppShell({ children }: { children: ReactNode }) {
   const chrome = useMatches({
     select: (matches) => matches.findLast((match) => match.staticData.chrome)?.staticData.chrome,
@@ -102,33 +90,31 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   if (chrome === "focus") {
     return (
-      <div className={cn("h-svh bg-background text-foreground", titleBarHeight[platform])}>
-        <TitleBar platform={platform} />
-        <main className="size-full overflow-y-auto pt-(--titlebar-h)">{children}</main>
+      <div className="grain h-svh bg-background text-foreground">
+        <FocusBar platform={platform} />
+        <main className="size-full overflow-y-auto">{children}</main>
       </div>
     );
   }
 
   return (
-    <div
-      className={cn(
-        "h-svh bg-background text-foreground [--sidebar-inset:calc(4rem+1rem)] md:[--sidebar-inset:calc(15rem+1rem)]",
-        titleBarHeight[platform],
-      )}
-    >
+    <div className="grain h-svh bg-background text-foreground">
       <a
         href="#content"
         onClick={(event) => {
           event.preventDefault();
           content.current?.focus();
         }}
-        className="sr-only z-50 glass rounded-lg px-3 py-2 text-sm outline-none focus:not-sr-only focus:fixed focus:start-2 focus:top-2 focus-visible:ring-2 focus-visible:ring-ring"
+        className="sr-only z-50 rounded-full bg-foreground px-4 py-2 text-small font-semibold text-background outline-none focus:not-sr-only focus:fixed focus:start-1/2 focus:top-2 focus:-translate-x-1/2"
       >
         Skip to content
       </a>
-      <TitleBar platform={platform} scrolled={scrolled} />
-      <Sidebar onKeyboardNavigate={focusContentAfterNavigate} />
-      <main className="content-pane fixed inset-0 overflow-hidden bg-background">
+      <TopBar
+        platform={platform}
+        scrolled={scrolled}
+        onKeyboardNavigate={focusContentAfterNavigate}
+      />
+      <main className="page-layer fixed inset-0 overflow-hidden bg-background">
         {/* Overlay scrollbars, the same on every OS (WebView2 would draw
             classic ones), and never taking width from the page. */}
         <ScrollAreaPrimitive.Root className="size-full">
@@ -142,23 +128,16 @@ export function AppShell({ children }: { children: ReactNode }) {
             tabIndex={-1}
             className="size-full outline-none"
           >
-            {/* As coss's ScrollArea does: pages wrap to the pane's width. The
-                padding keeps pages clear of the floating sidebar and the title
-                bar; `bleed` artwork reaches under them. */}
-            <ScrollAreaPrimitive.Content
-              style={{ minWidth: 0 }}
-              className="ps-(--sidebar-inset) pt-(--titlebar-h)"
-            >
+            <ScrollAreaPrimitive.Content style={{ minWidth: 0 }} className="pt-bar">
               {children}
             </ScrollAreaPrimitive.Content>
           </ScrollAreaPrimitive.Viewport>
-          <ScrollBar orientation="vertical" className="mt-[calc(var(--titlebar-h)+0.25rem)]" />
+          <ScrollBar orientation="vertical" className="mt-[calc(var(--spacing-bar)+0.25rem)]" />
         </ScrollAreaPrimitive.Root>
       </main>
     </div>
   );
 }
-
 // Whether the content pane is scrolled past the top, to show the title bar's
 // scroll edge. A passive listener, throttled to a frame.
 function useScrolled(pane: HTMLElement | null) {

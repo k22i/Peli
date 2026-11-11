@@ -4,6 +4,7 @@ import { LayoutGrid, type LucideIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
+import { AnimePosterCard } from "@/components/media/anime-poster-card";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
@@ -25,7 +26,12 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
-import { catalogPagesQuery, catalogQuery, type MetaPreview } from "@/lib/addon-protocol";
+import {
+  catalogPagesQuery,
+  catalogQuery,
+  type LoadedAddon,
+  type MetaPreview,
+} from "@/lib/addon-protocol";
 import {
   browseCatalogs,
   browseTitle,
@@ -37,6 +43,7 @@ import {
   type BrowseSearch,
 } from "@/lib/browse";
 import { useLeaveOutAnime } from "@/lib/anime";
+import { useAnimePosterAddon } from "@/lib/anime-posters";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
@@ -60,7 +67,7 @@ export function BrowsePage({ kind }: { kind: BrowseKind }) {
 }
 
 // The page: a header with the title, the filter and the catalog rail, which
-// sticks under the title bar as a glass strip once the grid scrolls beneath it
+// sticks under the title bar as a material-pop strip once the grid scrolls beneath it
 // (#116), and the body below. The Library page uses it too (#118).
 //
 // `quietTitle` (Search, #119): once the header sticks the title leaves the
@@ -110,18 +117,18 @@ export function BrowseFrame({
       <header
         ref={header}
         data-stuck={stuck || undefined}
-        className="group/header sticky top-(--titlebar-h) z-10 mb-4 data-stuck:scroll-edge-top"
+        className="group/header sticky top-(--spacing-bar) z-10 mb-5 transition-[background-color,box-shadow] duration-(--duration-base) data-stuck:material-bar data-stuck:shadow-[0_1px_0_var(--border)]"
       >
-        <div className="flex flex-col gap-3 pt-6 pb-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:glass group-data-stuck/header:py-2">
+        <div className="flex flex-col gap-4 pt-8 pb-4 motion-safe:transition-[padding,gap] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:gap-3 group-data-stuck/header:pt-2 group-data-stuck/header:pb-3">
           <div
             className={cn(
-              "flex items-baseline justify-between gap-x-6 gap-y-2 px-gutter",
+              "flex items-end justify-between gap-x-6 gap-y-2 px-page",
               quietTitle && "group-data-stuck/header:-mb-3",
             )}
           >
             <h1
               className={cn(
-                "text-title motion-safe:transition-[font-size,line-height,font-stretch,font-weight] motion-safe:duration-(--duration-base) motion-safe:ease-smooth group-data-stuck/header:text-heading",
+                "font-display text-[clamp(2.75rem,1.9rem+2.6vw,4.5rem)] leading-[0.95] tracking-[-0.01em] motion-safe:transition-[font-size] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:text-[1.875rem]",
                 quietTitle && "group-data-stuck/header:sr-only",
               )}
             >
@@ -144,6 +151,7 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
   const { visible, addons, shown, loading } = useBrowsableAddons(profile.id);
   const hideUnreleased = useQuery(homeLayoutQuery(profile.id)).data?.hideUnreleased ?? false;
   const leaveOutAnime = useLeaveOutAnime(profile.id);
+  const posterAddon = useAnimePosterAddon(profile.id);
 
   if (visible.data?.length === 0) {
     return (
@@ -215,6 +223,7 @@ function Browse({ kind, profile }: { kind: BrowseKind; profile: Profile }) {
         hideUnreleased={hideUnreleased}
         // Anime is the Anime tab's (#109).
         leaveOut={kind === "anime" ? undefined : leaveOutAnime}
+        posterAddon={kind === "anime" ? posterAddon : undefined}
       />
     </BrowseFrame>
   );
@@ -262,11 +271,14 @@ function CatalogGrid({
   genre,
   hideUnreleased,
   leaveOut,
+  posterAddon,
 }: {
   source: BrowseCatalog;
   genre: string | undefined;
   hideUnreleased: boolean;
   leaveOut?: ((id: string) => boolean) | undefined;
+  // The Anime tab's poster addon, if the profile picked one.
+  posterAddon?: LoadedAddon | undefined;
 }) {
   const client = useQueryClient();
   const open = useOpenTitle();
@@ -336,17 +348,28 @@ function CatalogGrid({
         label={genre ? `${label}, ${genre}` : label}
         items={metas}
         getKey={(meta) => meta.id}
-        renderItem={(meta) => (
-          <PosterCard
-            title={meta.name}
-            meta={meta.releaseInfo}
-            src={meta.poster}
-            onClick={() => open(meta)}
-          />
-        )}
+        renderItem={(meta) =>
+          posterAddon ? (
+            <AnimePosterCard
+              id={meta.id}
+              posterAddon={posterAddon}
+              title={meta.name}
+              meta={meta.releaseInfo}
+              src={meta.poster}
+              onClick={() => open(meta)}
+            />
+          ) : (
+            <PosterCard
+              title={meta.name}
+              meta={meta.releaseInfo}
+              src={meta.poster}
+              onClick={() => open(meta)}
+            />
+          )
+        }
         onEndReached={loadMore}
       />
-      <div className="flex min-h-10 justify-center px-gutter">
+      <div className="flex min-h-10 justify-center px-page">
         {isFetchingNextPage ? (
           <Spinner aria-label="Loading more" />
         ) : (
@@ -408,10 +431,10 @@ export function GridSkeleton() {
   return (
     <div
       aria-hidden
-      className="grid grid-cols-[repeat(auto-fill,minmax(var(--container-poster),1fr))] gap-x-6 gap-y-10 px-gutter"
+      className="grid grid-cols-[repeat(auto-fill,minmax(var(--container-poster),1fr))] gap-x-4 gap-y-7 px-page"
     >
-      {Array.from({ length: 12 }, (_, index) => (
-        <Skeleton key={index} className="aspect-[2/3] rounded-2xl" />
+      {Array.from({ length: 14 }, (_, index) => (
+        <Skeleton key={index} className="aspect-[2/3] rounded-card" />
       ))}
     </div>
   );

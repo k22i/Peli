@@ -67,7 +67,7 @@ export function Upcoming({ profile }: { profile: Profile }) {
   if (days.length === 0 && later.length === 0 && checking) return <UpcomingSkeleton />;
 
   return (
-    <div className="flex flex-col gap-8 px-gutter">
+    <div className="flex flex-col gap-8 px-page">
       {(checking || failed.length > 0) && (
         <div className="flex items-center gap-3 text-body text-muted-foreground">
           {checking ? (
@@ -131,16 +131,16 @@ function DaySection({
   return (
     <section aria-label={title} className="flex flex-col gap-1">
       {/* Sticks under the page header while its day scrolls by, then the next
-          day's takes over. The wrapper holds the scroll edge, as a glass
+          day's takes over. The wrapper holds the scroll edge, as a material-pop
           element can't (see glass-materials). It sits under the page header
           (z-10), so a day header pushed out by the next one slides beneath it. */}
       <div
-        style={{ top: `calc(var(--titlebar-h) + ${stuckHeader})` }}
-        className="sticky z-9 scroll-edge-top"
+        style={{ top: `calc(var(--spacing-bar) + ${stuckHeader})` }}
+        className="sticky z-9 material-bar"
       >
-        <h2 className="glass flex items-baseline gap-3 rounded-xl px-3 py-2 text-heading">
+        <h2 className="flex items-baseline gap-3 py-2.5 font-display text-[1.75rem] leading-none">
           {title}
-          {date && <span className="text-num text-caption text-muted-foreground">{date}</span>}
+          {date && <span className="tnum text-small text-muted-foreground">{date}</span>}
         </h2>
       </div>
       <ul className="flex flex-col">
@@ -177,12 +177,12 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
         <Artwork src={item.poster} use="poster" title={item.name} />
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className="truncate text-item text-foreground">{item.name}</span>
+        <span className="truncate type-item text-foreground">{item.name}</span>
         <span className="truncate text-body text-muted-foreground">
-          <span className="text-num text-caption">{code}</span> · {title}
+          <span className="tnum text-small">{code}</span> · {title}
         </span>
       </span>
-      {end && <span className="shrink-0 text-num text-caption text-muted-foreground">{end}</span>}
+      {end && <span className="shrink-0 tnum text-small text-muted-foreground">{end}</span>}
     </button>
   );
 }
@@ -191,7 +191,7 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
 // w-24 poster).
 function UpcomingSkeleton() {
   return (
-    <div aria-hidden className="flex max-w-4xl flex-col gap-1 px-gutter">
+    <div aria-hidden className="flex max-w-4xl flex-col gap-1 px-page">
       <Skeleton className="mb-1 h-9 w-48 rounded-xl" />
       {Array.from({ length: 4 }, (_, index) => (
         <div key={index} className="flex items-center gap-5 p-3">

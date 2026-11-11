@@ -11,7 +11,7 @@ import { Switch } from "@/components/ui/switch";
 
 // Numbers and codes: years, runtimes, S2 · E5, times, sizes, versions.
 function Num({ children }: { children: ReactNode }) {
-  return <span className="text-num">{children}</span>;
+  return <span className="tnum">{children}</span>;
 }
 
 const heroBackdrop: CSSProperties = {
@@ -25,7 +25,7 @@ const heroBackdrop: CSSProperties = {
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-label text-muted-foreground">{title}</h3>
+      <h3 className="type-eyebrow text-muted-foreground">{title}</h3>
       {children}
     </div>
   );
@@ -40,8 +40,8 @@ export function TypeSample() {
           style={heroBackdrop}
         >
           <div className="flex max-w-xl flex-col gap-3">
-            <p className="text-label text-brand">New season</p>
-            <h4 className="text-display text-balance">Northern Current</h4>
+            <p className="type-eyebrow text-sun-ink">New season</p>
+            <h4 className="type-display text-balance">Northern Current</h4>
             <p className="flex flex-wrap items-center gap-x-2 text-foreground/80">
               <Num>2025</Num>
               <span aria-hidden>·</span>
@@ -67,7 +67,7 @@ export function TypeSample() {
 
       <Block title="Row heading · card captions under two posters">
         <div className="flex flex-col gap-4">
-          <h4 className="text-heading">Continue watching</h4>
+          <h4 className="type-row">Continue watching</h4>
           <div className="flex gap-5">
             {[
               ["Low Tide", "2025", "1h 52m"],
@@ -78,8 +78,8 @@ export function TypeSample() {
                   <Artwork title={title!} showTitle />
                 </div>
                 <div className="flex flex-col gap-0.5 px-0.5">
-                  <span className="truncate text-item">{title}</span>
-                  <span className="truncate text-caption text-muted-foreground">
+                  <span className="truncate type-item">{title}</span>
+                  <span className="truncate text-small text-muted-foreground">
                     <Num>{year}</Num> · <Num>{extra}</Num>
                   </span>
                 </div>
@@ -91,7 +91,7 @@ export function TypeSample() {
 
       <Block title="Title page · page title, labels, synopsis">
         <div className="flex flex-col gap-4">
-          <h4 className="text-title">Saltwater Hymns</h4>
+          <h4 className="type-title">Saltwater Hymns</h4>
           <dl className="grid max-w-md grid-cols-[auto_1fr] gap-x-6 gap-y-2">
             {(
               [
@@ -101,7 +101,7 @@ export function TypeSample() {
               ] as const
             ).map(({ term, value }) => (
               <div key={term} className="contents">
-                <dt className="text-label text-muted-foreground">{term}</dt>
+                <dt className="type-eyebrow text-muted-foreground">{term}</dt>
                 <dd>{value}</dd>
               </div>
             ))}
@@ -117,8 +117,8 @@ export function TypeSample() {
         <Block title="Settings row">
           <div className="flex items-center justify-between gap-6 rounded-xl border bg-card px-4 py-3">
             <div className="flex flex-col gap-0.5">
-              <span className="text-item">Skip intros</span>
-              <span className="text-caption text-muted-foreground">
+              <span className="type-item">Skip intros</span>
+              <span className="text-small text-muted-foreground">
                 Jump past the opening credits when a marker exists.
               </span>
             </div>
@@ -128,11 +128,11 @@ export function TypeSample() {
 
         <Block title="Player time readout">
           <div className="dark flex items-center gap-4 rounded-xl bg-black/80 px-4 py-3 text-foreground">
-            <span className="text-num text-caption">1:12:08</span>
+            <span className="tnum text-small">1:12:08</span>
             <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/25">
-              <div className="h-full w-2/5 rounded-full bg-brand" />
+              <div className="h-full w-2/5 rounded-full bg-sun" />
             </div>
-            <span className="text-num text-caption text-white/70">−0:29:33</span>
+            <span className="tnum text-small text-white/70">−0:29:33</span>
           </div>
         </Block>
       </div>

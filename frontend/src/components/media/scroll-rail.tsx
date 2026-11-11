@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 // A single line of items that scrolls sideways (#116): catalog chips, stream
 // source pills. The first item lines up with the page text (the scroller's
 // own padding), but items scroll out to the window edge, fading at an end
-// that has more. Arrows (glass) appear on hover or focus; a mouse wheel
+// that has more. Arrows (material-pop) appear on hover or focus; a mouse wheel
 // scrolls it sideways while there is more that way; focus moving to an item
 // brings it into view; `revealSelector` brings the selected one into view
 // on mount.
@@ -114,7 +114,7 @@ export function ScrollRail({
         role={label ? "region" : undefined}
         aria-label={label}
         onFocus={followFocus}
-        className="no-scrollbar rail-fade -my-1 flex gap-2 overflow-x-auto overscroll-x-contain scroll-px-(--spacing-gutter) px-gutter py-1"
+        className="no-scrollbar rail-mask -my-1 flex gap-2 overflow-x-auto overscroll-x-contain scroll-px-(--spacing-page) px-page py-1"
       >
         {children}
       </div>
@@ -142,7 +142,7 @@ function RailArrow({ side, onClick }: { side: "start" | "end"; onClick: () => vo
       aria-label={side === "start" ? "Scroll left" : "Scroll right"}
       onClick={onClick}
       className={cn(
-        "glass-thin absolute top-1/2 z-10 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground opacity-0 transition-[opacity,scale] duration-(--duration-base) ease-smooth group-focus-within/rail:opacity-100 group-hover/rail:opacity-100 motion-safe:active:scale-95 [&_svg]:size-4",
+        "absolute top-1/2 z-10 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-popover text-foreground opacity-0 shadow-float transition-[opacity,scale] duration-(--duration-base) ease-out-soft group-focus-within/rail:opacity-100 group-hover/rail:opacity-100 motion-safe:active:scale-95 [&_svg]:size-4",
         side === "start" ? "start-2" : "end-2",
       )}
     >

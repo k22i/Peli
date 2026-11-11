@@ -34,14 +34,14 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
   },
 ];
 
-// The shortcuts over the video, on strong media glass like the rest of the
+// The shortcuts over the video, on strong media material-pop like the rest of the
 // player's chrome (#121); text is plain white so it reads over a white frame.
 // It doesn't take focus or the keys: they keep working while it shows.
 export function ShortcutsOverlay({ onClose }: { onClose: () => void }) {
   return (
     <section
       aria-label="Keyboard shortcuts"
-      className="dark absolute top-1/2 left-1/2 w-[min(28rem,calc(100%-2rem))] -translate-1/2 rounded-3xl p-5 text-foreground glass-media-strong"
+      className="dark absolute top-1/2 left-1/2 w-[min(28rem,calc(100%-2rem))] -translate-1/2 rounded-3xl p-5 text-foreground material-media"
     >
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-base font-semibold">Keyboard shortcuts</h2>
@@ -58,7 +58,7 @@ export function ShortcutsOverlay({ onClose }: { onClose: () => void }) {
       <div className="flex flex-col gap-4">
         {playerShortcuts.map(({ group, items }) => (
           <div key={group}>
-            <h3 className="mb-1.5 text-label">{group}</h3>
+            <h3 className="mb-1.5 type-eyebrow">{group}</h3>
             <dl className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1.5 text-sm">
               {items.map(({ keys, action }) => (
                 <Fragment key={action}>

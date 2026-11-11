@@ -43,8 +43,8 @@ var assets embed.FS
 // The --background token in each mode (frontend/src/index.css); keep in step
 // with windowColours in frontend/src/lib/theme.ts.
 var (
-	windowColourLight = application.NewRGB(255, 255, 255)
-	windowColourDark  = application.NewRGB(10, 10, 11)
+	windowColourLight = application.NewRGB(245, 242, 236)
+	windowColourDark  = application.NewRGB(14, 13, 12)
 )
 
 func main() {
@@ -64,6 +64,8 @@ func main() {
 	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})
 	// Sending what is queued is the first step of signing out (#30).
 	account.FlushOnSignOut(accounts, syncer.PusherOf(sync))
+	// Profiles deleted, added or re-PINned elsewhere show at the next sync.
+	syncer.RefreshProfilesWith(syncer.PullerOf(sync), account.ProfileRefresher(accounts))
 	players := player.NewService(appinfo.Version)
 	// Hardware decoding, as Settings › Playback has it (#66).
 	player.UseSettings(players, db)

@@ -239,6 +239,91 @@ func (s *Store) LinkNuvioProfiles(account string, nuvio []Profile) ([]Profile, e
 	return nuvio, nil
 }
 
+// SyncNuvioProfiles brings the profiles linked to account (its user id) in
+// line with the account's profiles on Nuvio, as a pull reads them:
+// each updates its local profile (keeping the local Kids flag), a new one is
+// added, and a linked profile Nuvio no longer has is deleted with everything
+// in it. If that was the current profile, the lowest-indexed Nuvio profile
+// becomes current. Unlike LinkNuvioProfiles it never changes the current
+// profile otherwise, and it does nothing if the store is linked to another
+// account (or none), or if nuvio is empty: every account has a profile, so an
+// empty list is a bad answer, not a deletion. It reports whether anything
+// changed, and whether the current profile was deleted.
+func (s *Store) SyncNuvioProfiles(account string, nuvio []Profile) (changed, currentGone bool, err error) {
+	if account == "" || len(nuvio) == 0 {
+		return false, false, nil
+	}
+	for _, profile := range nuvio {
+		if profile.NuvioIndex == nil {
+			return false, false, fmt.Errorf("%w: %q has no Nuvio index", ErrInvalidProfile, profile.Name)
+		}
+	}
+	nuvio = slices.Clone(nuvio)
+	slices.SortFunc(nuvio, func(a, b Profile) int { return cmp.Compare(*a.NuvioIndex, *b.NuvioIndex) })
+	err = s.db.Update(func(tx *bolt.Tx) error {
+		changed, currentGone = false, false
+		settings := tx.Bucket(bucketSettings)
+		if linked := settings.Get(keyAccount); linked == nil || string(linked) != account {
+			return nil
+		}
+		existing, err := allProfiles(tx)
+		if err != nil {
+			return err
+		}
+		current := settings.Get(keyCurrent)
+		var first uint64
+		for i, profile := range nuvio {
+			at := slices.IndexFunc(existing, func(p Profile) bool {
+				return p.NuvioIndex != nil && *p.NuvioIndex == *profile.NuvioIndex
+			})
+			if at < 0 {
+				if nuvio[i], err = s.createProfile(tx, profile); err != nil {
+					return err
+				}
+				changed = true
+			} else {
+				had := existing[at]
+				profile.ID, profile.Kids = had.ID, had.Kids
+				if profile.Avatar == "" {
+					profile.Avatar = had.Avatar // the avatar catalog couldn't be read
+				}
+				before, _ := json.Marshal(had)
+				after, _ := json.Marshal(profile)
+				if !bytes.Equal(before, after) {
+					if err := validateProfile(tx, profile, profile.ID); err != nil {
+						return err
+					}
+					if err := put(tx.Bucket(bucketProfiles).Bucket(u64(profile.ID)), keyProfile, profile); err != nil {
+						return err
+					}
+					changed = true
+				}
+				nuvio[i] = profile
+			}
+			if i == 0 {
+				first = nuvio[i].ID
+			}
+		}
+		for _, had := range existing {
+			if had.NuvioIndex == nil || slices.ContainsFunc(nuvio, func(p Profile) bool { return *p.NuvioIndex == *had.NuvioIndex }) {
+				continue
+			}
+			if err := tx.Bucket(bucketProfiles).DeleteBucket(u64(had.ID)); err != nil {
+				return err
+			}
+			changed = true
+			if bytes.Equal(current, u64(had.ID)) {
+				currentGone = true
+				if err := settings.Put(keyCurrent, u64(first)); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	})
+	return changed, currentGone, err
+}
+
 // RemoveNuvioProfiles deletes every profile linked to Nuvio and everything
 // in it, after signing out: Nuvio has the account's data, and signing in
 // again pulls it back. Local-only profiles stay.

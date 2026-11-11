@@ -6,6 +6,7 @@ import { AppShell } from "@/components/shell/app-shell";
 import {
   needsPicker,
   profilesQuery,
+  useProfilesChangedEvents,
   useSessionEndedRedirect,
   useUnlockedProfiles,
 } from "@/lib/account";
@@ -43,6 +44,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 
 function RootLayout() {
   useSessionEndedRedirect();
+  useProfilesChangedEvents();
   useSyncEvents();
   useConnectionEvents();
   useTrackingEvents();

@@ -123,6 +123,9 @@ type State struct {
 	// SubtitleSize is "small", "medium" or "large", or "" for a scale mpv
 	// was given some other way.
 	SubtitleSize string `json:"subtitleSize"`
+	// SubtitleText is the subtitle line showing now, "" between lines: the
+	// timing tool shows it so the user can match it to the speech.
+	SubtitleText string `json:"subtitleText"`
 	// HWDec is the hardware decoder in use, "" for software.
 	HWDec string `json:"hwdec"`
 	// HDR is true while an HDR video goes to the display as HDR, rather
@@ -190,7 +193,10 @@ type LoadOptions struct {
 	// (signs, foreign dialogue) in the audio's language.
 	Captions string `json:"captions"`
 	// SubtitleSize is "small", "medium" or "large"; "" keeps the current.
+	// A SubtitleStyle's size wins over it.
 	SubtitleSize string `json:"subtitleSize"`
+	// SubtitleStyle is how text subtitles look; nil keeps mpv's.
+	SubtitleStyle *SubtitleStyle `json:"subtitleStyle,omitempty"`
 	// Watching names what the file is, so how far it plays is reported
 	// (#64); nil for a file nobody keeps progress of.
 	Watching *Watching `json:"watching,omitempty"`
@@ -264,7 +270,7 @@ func (o LoadOptions) valid() bool {
 		// Codes only: mpv's alang and slang are lists, split on commas.
 		languageCode.MatchString(o.SubtitleLanguage) && audioLanguagesValid(o.AudioLanguages) &&
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
-		(o.SubtitleSize == "" || sized) &&
+		(o.SubtitleSize == "" || sized) && (o.SubtitleStyle == nil || o.SubtitleStyle.valid()) &&
 		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
 }
 
@@ -295,7 +301,9 @@ func (o LoadOptions) tracks() [][2]string {
 		props[3][1] = o.SubtitleLanguage
 		props[4][1], props[5][1] = "yes", "no"
 	}
-	if scale, ok := subtitleScales[o.SubtitleSize]; ok {
+	if o.SubtitleStyle != nil {
+		props = append(props, o.SubtitleStyle.props()...)
+	} else if scale, ok := subtitleScales[o.SubtitleSize]; ok {
 		props = append(props, [2]string{"sub-scale", seconds(scale)})
 	}
 	return props
@@ -324,6 +332,7 @@ var observed = []struct {
 	{"sub-delay", fmtDouble},
 	{"sub-scale", fmtDouble},
 	{"video-params/gamma", fmtString},
+	{"sub-text", fmtString},
 }
 
 // options are set on every session before mpv_initialize; the host adds its
@@ -1071,6 +1080,8 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.SubtitleDelay = math.Round(number(v)*1000) / 1000
 	case "sub-scale":
 		st.SubtitleSize = subtitleSize(number(v))
+	case "sub-text":
+		st.SubtitleText, _ = v.(string)
 	}
 	s.stateDirty = true
 }

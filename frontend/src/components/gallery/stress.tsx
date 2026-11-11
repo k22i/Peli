@@ -135,7 +135,7 @@ export function StressSection() {
       bleed
     >
       <div ref={section} className="flex flex-col gap-6">
-        <div className="flex flex-wrap items-center gap-3 px-gutter">
+        <div className="flex flex-wrap items-center gap-3 px-page">
           {items ? (
             <Button variant="outline" onClick={() => void run()}>
               Run scroll test
@@ -145,7 +145,7 @@ export function StressSection() {
               Load posters
             </Button>
           )}
-          <output aria-live="polite" className="font-mono text-meta text-muted-foreground">
+          <output aria-live="polite" className="font-mono text-small text-muted-foreground">
             {report}
           </output>
         </div>

@@ -60,7 +60,7 @@ export function LibraryPage() {
   );
 }
 
-// The page: Browse's sticky glass header with the view switch at the end of
+// The page: Browse's sticky header with the view switch at the end of
 // its first row and, on the Titles view, the type chips and Sort in `rail`.
 function LibraryFrame({ rail, children }: { rail?: ReactNode; children: ReactNode }) {
   return (
@@ -70,7 +70,7 @@ function LibraryFrame({ rail, children }: { rail?: ReactNode; children: ReactNod
   );
 }
 
-// Titles or Upcoming: coss Tabs as a segmented control on thin glass. The
+// Titles or Upcoming: coss Tabs as a segmented control on an ink tint. The
 // pill is a wrapper, since a tier sets its own background; the tab list
 // inside it is bare, and its indicator is the raised knob.
 function ViewSwitch() {
@@ -92,10 +92,10 @@ function ViewSwitch() {
         })
       }
     >
-      <span className="glass-thin inline-flex rounded-full p-1">
+      <span className="inline-flex rounded-full bg-foreground/7 p-1">
         <TabsList
           aria-label="View"
-          className="gap-x-1 rounded-full bg-transparent p-0 text-muted-foreground *:data-[slot=tab-indicator]:rounded-full *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-background"
+          className="gap-x-1 rounded-full bg-transparent p-0 text-muted-foreground *:data-[slot=tab-indicator]:rounded-full *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none"
         >
           <TabsTab value="titles" className="rounded-full px-4">
             Titles
@@ -211,7 +211,7 @@ function Library({ profile }: { profile: Profile }) {
             value={sort}
             onValueChange={(next: LibrarySort | null) => next && choose({ type, sort: next })}
           >
-            <SelectTrigger aria-label="Sort" className="me-gutter w-48 shrink-0">
+            <SelectTrigger aria-label="Sort" className="me-page w-48 shrink-0">
               <SelectValue />
             </SelectTrigger>
             <SelectPopup>
@@ -296,7 +296,7 @@ function LibraryGrid({
               }}
             />
           </ContextMenuTrigger>
-          <ContextMenuPopup className="glass">
+          <ContextMenuPopup className="material-pop">
             <ContextMenuItem variant="destructive" onClick={() => remove.mutate(item)}>
               <Trash2 aria-hidden />
               Remove from Library

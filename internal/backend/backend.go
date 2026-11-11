@@ -43,6 +43,18 @@ type Backend interface {
 // Syncs is whether the sync module has a call to push surface. The home
 // layout and collections have one, but they are never pushed to Nuvio's own
 // backend (#35): Nuvio.Push drops them there unsent.
+// Snapshotter is a backend that can read a surface's whole current list, as
+// upserts: Nuvio. The syncer reconciles the store with it now and then
+// (store.Reconcile), to catch what the delta feed's cursor went past.
+// complete is false when the backend may have more than it returned; the
+// store then keeps what it has.
+type Snapshotter interface {
+	Snapshot(ctx context.Context, profile store.Profile, surface store.Surface) (changes []Change, complete bool, err error)
+}
+
+// Snapshots are the surfaces a Snapshotter reads.
+var Snapshots = []store.Surface{store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched}
+
 func Syncs(surface store.Surface) bool {
 	switch surface {
 	case store.SurfaceLibrary, store.SurfaceProgress, store.SurfaceWatched, store.SurfaceAddons, store.SurfacePlugins,

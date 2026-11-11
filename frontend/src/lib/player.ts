@@ -49,6 +49,7 @@ export const idleState: PlayerState = {
   hdr: false,
   subtitleDelay: 0,
   subtitleSize: "medium",
+  subtitleText: "",
 };
 
 // The player's state: a snapshot on mount, then every event after it.
@@ -112,6 +113,7 @@ export function loadOptions(
     subtitleLanguage: settings?.subtitleLanguage ?? "",
     captions: settings?.captions ?? "system",
     subtitleSize: settings?.subtitleSize ?? "",
+    ...(settings?.subtitleStyle?.font && { subtitleStyle: settings.subtitleStyle }),
     ...(watching && { watching }),
   };
   const audio = playing.find((track) => track.type === "audio" && track.selected);

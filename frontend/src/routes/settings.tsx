@@ -26,7 +26,24 @@ import {
 import { TmdbDialog } from "@/components/settings/tmdb-dialog";
 import { AniListDialog, SimklDialog } from "@/components/settings/tracking-dialogs";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import {
+  defaultSubtitleStyle,
+  SubtitleStyleEditor,
+  subtitlePreviewStyle,
+  type SubtitleStyle,
+} from "@/components/player/subtitle-panel";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { posterAddons } from "@/lib/anime-posters";
+import { useLoadedAddons } from "@/lib/home";
+import {
+  Dialog,
+  DialogClose,
+  DialogFooter,
+  DialogHeader,
+  DialogPopup,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   Select,
   SelectItem,
@@ -53,7 +70,6 @@ import {
   maxResolutionOf,
   maxResolutions,
   profileSettingsQuery,
-  subtitleSizes,
   useSaveDeviceSettings,
   useSaveProfileSettings,
   type DeviceSettings,
@@ -107,9 +123,9 @@ function Settings() {
   }, [pane.id]);
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-gutter py-8 md:grid md:grid-cols-[15rem_minmax(0,1fr)] md:items-start md:gap-10">
-      <div className="mb-6 md:sticky md:top-[calc(var(--titlebar-h)+2rem)] md:mb-0">
-        <h1 className="sr-only text-heading md:not-sr-only md:mb-5 md:px-2.5 md:leading-[1.925rem]">
+    <div className="mx-auto w-full max-w-6xl px-page pt-8 pb-16 md:grid md:grid-cols-[13.5rem_minmax(0,1fr)] md:items-start md:gap-14">
+      <div className="mb-6 md:sticky md:top-[calc(var(--spacing-bar)+2rem)] md:mb-0">
+        <h1 className="mb-6 font-display text-[clamp(2.75rem,1.9rem+2.6vw,4.5rem)] leading-[0.95] tracking-[-0.01em]">
           Settings
         </h1>
         <SettingsPaneList
@@ -231,8 +247,8 @@ function AccountPane({ title }: { title: string }) {
         <div className="flex min-h-14 items-center gap-3 px-4 py-3.5">
           <ProfileAvatar profile={profile} className="size-9" />
           <div className="flex flex-col">
-            <span className="text-item">{profile.name}</span>
-            <span className="text-caption text-muted-foreground">{status}</span>
+            <span className="type-item">{profile.name}</span>
+            <span className="text-small text-muted-foreground">{status}</span>
           </div>
         </div>
         <SettingRow id="nuvio" label="Nuvio account" description={nuvio}>
@@ -333,6 +349,11 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
             </SettingsGroup>
             <SettingsGroup title="Artwork">
               <TmdbRow />
+              <AnimePostersRow
+                profileId={profileId!}
+                value={settings.animePosterAddon ?? ""}
+                onChange={(animePosterAddon) => setProfile({ animePosterAddon })}
+              />
             </SettingsGroup>
           </>
         )}
@@ -395,6 +416,102 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
   );
 }
 
+// Where the Anime tab's posters come from: AniList's covers, or an addon's
+// posters (BetterPosters, Xperience…) where an entry is one title to it.
+function AnimePostersRow({
+  profileId,
+  value,
+  onChange,
+}: {
+  profileId: number;
+  value: string;
+  onChange: (url: string) => void;
+}) {
+  const { addons } = useLoadedAddons(profileId);
+  const items = [
+    { value: "", label: "AniList covers" },
+    ...posterAddons(addons).map((addon) => ({ value: addon.url, label: addon.manifest.name })),
+  ];
+  // An addon since removed: keep it showing until something else is picked.
+  if (!items.some((item) => item.value === value)) items.push({ value, label: "Removed addon" });
+  return (
+    <SettingRow
+      id="anime-posters"
+      label="Anime posters"
+      description="The Anime tab’s list stays AniList’s. An addon’s posters show for films and single-season shows; later seasons and split cours keep AniList’s cover, since a show’s poster would stand for none of them."
+    >
+      <Select items={items} value={value} onValueChange={(next) => onChange(next ?? "")}>
+        <SelectTrigger
+          aria-labelledby="anime-posters-label"
+          aria-describedby="anime-posters-description"
+          className="w-48"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectPopup>
+          {items.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
+        </SelectPopup>
+      </Select>
+    </SettingRow>
+  );
+}
+
+// How subtitles look: a sample line in the profile's style, and the
+// player's own editor in a dialog. The player saves its changes here too.
+function SubtitleLookRow({
+  style,
+  onChange,
+}: {
+  style: SubtitleStyle;
+  onChange: (style: SubtitleStyle) => void;
+}) {
+  const [draft, setDraft] = useState<SubtitleStyle>();
+  return (
+    <SettingRow
+      id="subtitle-look"
+      label="Look"
+      description="Font, size, colour, edge and position. You can change it while you watch, too."
+    >
+      <div
+        aria-hidden
+        className="hidden h-10 w-40 items-end justify-center overflow-hidden rounded-lg bg-linear-to-b from-[oklch(0.55_0.08_40)] to-[oklch(0.2_0.03_260)] pb-1.5 sm:flex"
+      >
+        <span style={subtitlePreviewStyle(style, 10)}>The light finds a way</span>
+      </div>
+      <Dialog
+        open={draft !== undefined}
+        onOpenChange={(open) => setDraft(open ? style : undefined)}
+      >
+        <DialogTrigger render={<Button variant="outline" size="sm" />}>Customise</DialogTrigger>
+        <DialogPopup className="dark max-w-md bg-[rgb(18_16_14)] text-foreground">
+          <DialogHeader>
+            <DialogTitle>Subtitle look</DialogTitle>
+          </DialogHeader>
+          <div className="max-h-[70vh] overflow-y-auto pt-1">
+            {draft && <SubtitleStyleEditor style={draft} onStyleChange={setDraft} />}
+          </div>
+          <DialogFooter>
+            <DialogClose render={<Button variant="ghost" />}>Cancel</DialogClose>
+            <Button
+              variant="light"
+              onClick={() => {
+                if (draft) onChange(draft);
+                setDraft(undefined);
+              }}
+            >
+              Save
+            </Button>
+          </DialogFooter>
+        </DialogPopup>
+      </Dialog>
+    </SettingRow>
+  );
+}
+
 function LanguagesPane({ title, profileId }: { title: string; profileId: number | undefined }) {
   return (
     <SettingsPaneView title={title}>
@@ -420,15 +537,10 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
               </SettingRow>
             </SettingsGroup>
             <SettingsGroup title="Subtitles">
-              <SettingRow id="subtitle-size" label="Size">
-                <Choice
-                  id="subtitle-size"
-                  value={settings.subtitleSize}
-                  options={subtitleSizes}
-                  labels={{ small: "Small", medium: "Medium", large: "Large" }}
-                  onChange={(subtitleSize) => setProfile({ subtitleSize })}
-                />
-              </SettingRow>
+              <SubtitleLookRow
+                style={settings.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle}
+                onChange={(subtitleStyle) => setProfile({ subtitleStyle })}
+              />
               <SettingRow
                 id="captions"
                 label="Captions"
@@ -929,7 +1041,7 @@ function AboutPane({ title }: { title: string }) {
     <SettingsPaneView title={title}>
       <SettingsGroup>
         <SettingRow id="version" label="Version">
-          <span className="text-num text-caption text-muted-foreground">{version.data ?? "…"}</span>
+          <span className="tnum text-small text-muted-foreground">{version.data ?? "…"}</span>
         </SettingRow>
         {/* The welcome screen says the same (#39). */}
         <SettingRow id="disclaimer" label="Content" description={contentDisclaimer} />

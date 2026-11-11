@@ -3,6 +3,7 @@ import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Info, KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
 
 import { FocusScreen, glassButton, pillButton } from "@/components/account/focus-screen";
+import { SunMark } from "@/components/shell/wordmark";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
@@ -37,9 +38,12 @@ function Welcome() {
 
   return (
     <FocusScreen className="max-w-md gap-10">
-      <header className="flex flex-col items-center gap-4 text-center">
-        <h1 className="text-display">Sinag</h1>
-        <p className="max-w-sm text-pretty text-muted-foreground">
+      <header className="flex flex-col items-center gap-5 text-center">
+        <SunMark className="size-14 text-sun drop-shadow-[0_0_24px_var(--sun)]" />
+        <h1 className="font-display text-[5.5rem] leading-[0.85] tracking-[-0.02em] italic">
+          Sinag
+        </h1>
+        <p className="max-w-sm text-[0.9375rem] text-pretty text-muted-foreground">
           {server.data?.custom
             ? `Sign in with your account on ${serverName(server.data.url)} to bring your profiles, library and Continue Watching with you.`
             : "Sign in with your Nuvio account to bring your profiles, library and Continue Watching with you."}
@@ -56,12 +60,15 @@ function Welcome() {
 
       <div className="flex flex-col gap-3">
         {noKeychain ? (
-          <Button size="lg" className={pillButton} disabled>
+          <Button size="lg" variant="sun" className={pillButton} disabled>
             <Mail />
             Sign in with email
           </Button>
         ) : (
-          <Link to="/sign-in" className={cn(buttonVariants({ size: "lg" }), pillButton)}>
+          <Link
+            to="/sign-in"
+            className={cn(buttonVariants({ size: "lg", variant: "sun" }), pillButton)}
+          >
             <Mail />
             Sign in with email
           </Link>
@@ -97,7 +104,7 @@ function Welcome() {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-3 text-body text-muted-foreground">
+      <div className="flex flex-col gap-3 border-t border-border pt-6 text-small text-muted-foreground">
         <p className="flex gap-2">
           <KeyRound className="mt-0.5 size-4 shrink-0" aria-hidden />
           As a guest, your addons, library and progress stay on this device. You can sign in later

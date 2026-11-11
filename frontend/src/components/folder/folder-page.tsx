@@ -106,8 +106,7 @@ function Folder({
 const folderTitle = (folder: CollectionFolder) =>
   folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title;
 
-// The collection's name above the title: Mona Sans, small, uppercase and
-// tracked (not the hero's mono).
+// The collection's name above the title, as an eyebrow.
 const eyebrow = (collection: Collection) => <span>{collection.title}</span>;
 
 // The header takes the cover's shape (#119). A poster or square cover stands
@@ -153,24 +152,21 @@ function CoverHeader({
   return (
     <section
       aria-label={folder.title}
-      className="relative isolate flex items-end gap-8 px-gutter pt-6"
+      className="relative isolate flex items-end gap-8 px-page pt-6"
     >
-      {/* Runs under the title bar and the sidebar, to the window's edge. */}
-      <Ambient
-        src={cover}
-        className="top-[calc(-1*(var(--titlebar-h)+1.5rem))] -ms-(--sidebar-inset)"
-      />
+      {/* Runs under the top bar, to the window's edge. */}
+      <Ambient src={cover} className="top-[calc(-1*(var(--spacing-bar)+1.5rem))]" />
       <div
         className={cn(
-          "w-56 shrink-0 overflow-hidden rounded-2xl shadow-lift",
+          "w-52 shrink-0 overflow-hidden rounded-xl shadow-float",
           poster ? "aspect-[2/3]" : "aspect-square",
         )}
       >
         <Artwork src={cover} use={poster ? "poster" : "landscape"} title={folder.title} />
       </div>
       <div className="flex min-w-0 flex-col gap-3 pb-2">
-        <p className="text-label text-brand">{collection.title}</p>
-        <h1 className="text-display text-balance">
+        <p className="type-eyebrow text-sun-ink">{collection.title}</p>
+        <h1 className="type-display text-balance">
           {folder.logo ? <Logo src={folder.logo} title={title} className="max-h-24" /> : title}
         </h1>
       </div>
@@ -249,7 +245,7 @@ function FolderGrid({
         )}
         onEndReached={loadMore}
       />
-      <div className="flex min-h-10 justify-center px-gutter">
+      <div className="flex min-h-10 justify-center px-page">
         {results.some((result) => result.isFetchingNextPage) ? (
           <Spinner aria-label="Loading more" />
         ) : (

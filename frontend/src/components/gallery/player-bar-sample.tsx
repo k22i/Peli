@@ -56,7 +56,7 @@ function BarButton({
   );
 }
 
-// The player's control bar (#121) over a stand-in frame: a `glass-media-strong`
+// The player's control bar (#121) over a stand-in frame: a `material-media`
 // capsule with the real SeekBar, plain white text and the same button layout.
 // Over the real player the video is a native layer under the webview, so the
 // blur sees nothing there (ADR-0046); the busy frame here shows the tint and
@@ -69,15 +69,13 @@ export function PlayerBarSample() {
   return (
     <GallerySection
       title="Player bar"
-      description="The floating control bar from the player: a glass-media-strong capsule, the seek bar with its intro and credits marks, and plain white text and icons so it stays readable over a white frame. Drag the seek bar, or press Play."
+      description="The floating control bar from the player: a material-media capsule, the seek bar with its intro and credits marks, and plain white text and icons so it stays readable over a white frame. Drag the seek bar, or press Play."
     >
       <div className="dark relative h-80 overflow-hidden rounded-3xl text-foreground" style={busy}>
         <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/40 to-transparent" />
-        <div className="absolute inset-x-4 bottom-4 mx-auto flex max-w-3xl flex-col gap-1 rounded-[1.75rem] px-5 pt-3 pb-2.5 glass-media-strong">
+        <div className="absolute inset-x-4 bottom-4 mx-auto flex max-w-3xl flex-col gap-1 rounded-[1.75rem] px-5 pt-3 pb-2.5 material-media">
           <div className="flex items-center gap-3">
-            <p className="w-[7ch] shrink-0 text-num text-caption text-white">
-              {formatTime(position)}
-            </p>
+            <p className="w-[7ch] shrink-0 tnum text-small text-white">{formatTime(position)}</p>
             <div className="min-w-0 flex-1">
               <SeekBar
                 position={position}
@@ -90,7 +88,7 @@ export function PlayerBarSample() {
                 onDraggingChange={() => {}}
               />
             </div>
-            <p className="w-[8ch] shrink-0 text-end text-num text-caption text-white">
+            <p className="w-[8ch] shrink-0 text-end tnum text-small text-white">
               -{formatTime(Math.max(0, duration - position))}
             </p>
           </div>

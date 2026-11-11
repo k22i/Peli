@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const Select: typeof SelectPrimitive.Root = SelectPrimitive.Root;
 
 export const selectTriggerVariants = cva(
-  "relative inline-flex min-h-10 w-full min-w-36 select-none items-center justify-between gap-2 rounded-xl border border-input bg-background not-dark:bg-clip-padding px-[calc(--spacing(3)-1px)] text-left text-base text-foreground shadow-xs/5 outline-none ring-ring/24 transition-shadow before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] not-data-disabled:not-focus-visible:not-aria-invalid:not-data-pressed:before:shadow-[0_1px_--theme(--color-black/4%)] pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:border-destructive/36 focus-visible:aria-invalid:border-destructive/64 focus-visible:aria-invalid:ring-destructive/16 data-disabled:pointer-events-none data-disabled:opacity-64 sm:text-sm dark:bg-input/32 dark:aria-invalid:ring-destructive/24 dark:not-data-disabled:not-focus-visible:not-aria-invalid:not-data-pressed:before:shadow-[0_-1px_--theme(--color-white/6%)] [&_svg:not([class*='opacity-'])]:opacity-80 [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 [[data-disabled],:focus-visible,[aria-invalid],[data-pressed]]:shadow-none",
+  "relative inline-flex min-h-9 w-full min-w-36 cursor-pointer select-none items-center justify-between gap-2 rounded-full border border-transparent bg-foreground/7 ps-4 pe-3 text-left text-small font-[560] text-foreground outline-none ring-ring/30 transition-[box-shadow,background-color] hover:bg-foreground/11 data-popup-open:bg-foreground/11 pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:border-destructive/36 focus-visible:aria-invalid:border-destructive/64 focus-visible:aria-invalid:ring-destructive/16 data-disabled:pointer-events-none data-disabled:opacity-64 dark:aria-invalid:ring-destructive/24 [&_svg:not([class*='opacity-'])]:opacity-80 [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 [[data-disabled],:focus-visible,[aria-invalid],[data-pressed]]:shadow-none",
   {
     defaultVariants: {
       size: "default",
@@ -20,7 +20,7 @@ export const selectTriggerVariants = cva(
       size: {
         default: "",
         lg: "min-h-11",
-        sm: "min-h-9 gap-1.5 rounded-lg px-[calc(--spacing(2.5)-1px)]",
+        sm: "min-h-8 gap-1.5 rounded-full ps-3 pe-2",
       },
     },
   },
@@ -140,7 +140,7 @@ export function SelectPopup({
           >
             <ChevronUpIcon className="relative size-4.5 sm:size-4" />
           </SelectPrimitive.ScrollUpArrow>
-          <div className="glass relative h-full min-w-(--anchor-width) rounded-2xl border not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:shadow-[0_1px_--theme(--color-black/4%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]">
+          <div className="material-pop relative h-full min-w-(--anchor-width) rounded-2xl border not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:shadow-[0_1px_--theme(--color-black/4%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]">
             <SelectPrimitive.List
               className={cn("max-h-(--available-height) overflow-y-auto p-1.5", className)}
               data-slot="select-list"
@@ -233,7 +233,7 @@ export function SelectLabel({
 export function SelectGroupLabel(props: SelectPrimitive.GroupLabel.Props): React.ReactElement {
   return (
     <SelectPrimitive.GroupLabel
-      className="px-2.5 py-1.5 text-label text-muted-foreground"
+      className="px-2.5 py-1.5 type-eyebrow text-muted-foreground"
       data-slot="select-group-label"
       {...props}
     />
