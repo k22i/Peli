@@ -10,6 +10,7 @@ import { episodeCode, episodes, type Episode } from "@/lib/title";
 // each show's next one shows, so a show that lists a whole season ahead
 // doesn't fill the page.
 export const calendarDays = 28;
+const msPerDay = 86_400_000;
 
 // The library titles that can have episodes: anything that isn't a film.
 // Kitsu types its anime "series" or "movie", and channels list videos
@@ -86,6 +87,29 @@ export function calendar(shows: readonly CalendarShow[], now = Date.now()): Cale
   };
 }
 
+// How far back Home's New episodes row looks, in days.
+export const newEpisodeDays = 7;
+
+// Each show's latest episode that has aired in the last week, newest first:
+// Home's New episodes row. Specials are left out, as in `calendar`. Several
+// episodes of a show released together show as the latest one with the rest
+// in `episodes`, so a binge drop is one card.
+export function recentEpisodes(shows: readonly CalendarShow[], now = Date.now()): CalendarEntry[] {
+  const from = now - newEpisodeDays * msPerDay;
+  const out: CalendarEntry[] = [];
+  for (const show of shows) {
+    let latest: CalendarEntry | undefined;
+    for (const episode of episodes(show.meta)) {
+      const airs = episode.released === undefined ? Number.NaN : Date.parse(episode.released);
+      if (episode.season === 0 || Number.isNaN(airs) || airs > now || airs <= from) continue;
+      if (!latest || airs > latest.airs) latest = { ...show, episode, episodes: [episode], airs };
+      else if (airs === latest.airs) latest.episodes.push(episode);
+    }
+    if (latest) out.push(latest);
+  }
+  return out.toSorted((a, b) => b.airs - a.airs || collator.compare(a.item.name, b.item.name));
+}
+
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
 const weekday = new Intl.DateTimeFormat(undefined, { weekday: "long" });
@@ -131,7 +155,6 @@ const short = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
 export const airDate = (time: number) => short.format(time);
 
 const clock = new Intl.DateTimeFormat(undefined, { timeStyle: "short" });
-const msPerDay = 86_400_000;
 
 // When an entry's first episode airs that day, in the viewer's time zone
 // ("9:00 PM"). Addons mostly give a date, which parses as midnight UTC and is

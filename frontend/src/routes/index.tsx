@@ -4,6 +4,7 @@ import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
+import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
 import { AnimePosterCard } from "@/components/media/anime-poster-card";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Hero, HeroSkeleton, ImdbScore } from "@/components/media/hero";
@@ -106,6 +107,7 @@ function HomeRows({ profile }: { profile: Profile }) {
   const featured = rows.find((row): row is CatalogRow => row.kind === "catalog");
   const hideUnreleased = layout.data?.hideUnreleased ?? false;
   const context = { addons, library: library.data, watching: watching.data };
+  const surprise = <SurpriseButton profileId={profileId} source={featured?.source} />;
   return (
     <div className="flex flex-col pb-12">
       {featured ? (
@@ -113,12 +115,15 @@ function HomeRows({ profile }: { profile: Profile }) {
           row={featured}
           hideUnreleased={hideUnreleased}
           leaveOutAnime={leaveOutAnime}
+          surprise={surprise}
           {...context}
         />
       ) : addonsLoading ? (
         <HeroSkeleton size="feature" />
       ) : (
-        watching.data[0] && <WatchingHero entry={watching.data[0]} {...context} />
+        watching.data[0] && (
+          <WatchingHero entry={watching.data[0]} surprise={surprise} {...context} />
+        )
       )}
       {/* RowGroup renders no element, so its rows are this wrapper's children:
           a shelf apart, and tucked up under the hero's fade. */}
@@ -134,6 +139,7 @@ function HomeRows({ profile }: { profile: Profile }) {
               renderItem={(entry) => <WatchingCard entry={entry} {...context} />}
             />
           )}
+          <NewEpisodes profile={profile} />
           {rows.map((row) =>
             row.kind === "catalog" ? (
               <CatalogRowView
@@ -236,8 +242,14 @@ function CatalogHero({
   row,
   hideUnreleased,
   leaveOutAnime,
+  surprise,
   ...context
-}: { row: CatalogRow; hideUnreleased: boolean; leaveOutAnime: LeaveOut } & WatchingContext) {
+}: {
+  row: CatalogRow;
+  hideUnreleased: boolean;
+  leaveOutAnime: LeaveOut;
+  surprise: ReactNode;
+} & WatchingContext) {
   const play = usePlay();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
@@ -262,7 +274,9 @@ function CatalogHero({
   if (catalogData.isPending) return <HeroSkeleton size="feature" />;
   const meta = metas[index % Math.max(count, 1)];
   if (!meta) {
-    return context.watching[0] ? <WatchingHero entry={context.watching[0]} {...context} /> : null;
+    return context.watching[0] ? (
+      <WatchingHero entry={context.watching[0]} surprise={surprise} {...context} />
+    ) : null;
   }
   const entry = context.watching.find((item) => item.contentId === meta.id);
   return (
@@ -294,6 +308,7 @@ function CatalogHero({
               }
             />
             <DetailsButton title={meta} />
+            {surprise}
           </>
         }
         aside={
@@ -351,7 +366,11 @@ function MarqueeDots({
 }
 
 // With no catalog to feature, the title last watched.
-function WatchingHero({ entry, ...context }: { entry: Progress } & WatchingContext) {
+function WatchingHero({
+  entry,
+  surprise,
+  ...context
+}: { entry: Progress; surprise: ReactNode } & WatchingContext) {
   const play = usePlay();
   const { title, art, synopsis } = useWatchingDetails(entry, context);
   if (!art) return null;
@@ -370,6 +389,7 @@ function WatchingHero({ entry, ...context }: { entry: Progress } & WatchingConte
           <DetailsButton
             title={{ id: entry.contentId, type: entry.contentType, name: title, background: art }}
           />
+          {surprise}
         </>
       }
     />
