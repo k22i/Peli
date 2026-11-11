@@ -98,3 +98,78 @@ func TestFrameStepGated(t *testing.T) {
 		t.Errorf("asked to seek to %v, want a frame back from 10", got)
 	}
 }
+
+func TestLoopEnd(t *testing.T) {
+	if got := loopEnd("no"); got != nil {
+		t.Errorf("no: %v", *got)
+	}
+	if got := loopEnd("12.500000"); got == nil || *got != 12.5 {
+		t.Errorf("12.500000: %v", got)
+	}
+	if got := loopEnd(nil); got != nil {
+		t.Errorf("nil: %v", *got)
+	}
+}
+
+// An A–B loop plays from A to B over and over, until it's cleared; a new
+// file starts without it.
+func TestLoop(t *testing.T) {
+	t.Parallel()
+	s, r := newTestService(t)
+	path, _ := filepath.Abs("testdata/clip.mp4")
+	if err := s.SetLoop(2, 1); !errors.Is(err, ErrInvalid) {
+		t.Errorf("B before A: %v, want ErrInvalid", err)
+	}
+	if err := s.Load(streams.Source{URL: path}, LoadOptions{}); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the first frame", func(*recorder) bool { st := s.Snapshot(); return !st.Loading && st.Duration > 0 })
+	if err := s.SetLoop(0.5, 1.5); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the loop's ends", func(*recorder) bool {
+		st := s.Snapshot()
+		return st.LoopA != nil && *st.LoopA == 0.5 && st.LoopB != nil && *st.LoopB == 1.5
+	})
+	// Played past B, it goes back to A rather than on to the end.
+	r.waitFor(t, "a jump back to A", func(r *recorder) bool {
+		for i := 1; i < len(r.times); i++ {
+			if r.times[i-1].Position > 1.2 && r.times[i].Position < 1 {
+				return true
+			}
+		}
+		return false
+	})
+	if err := s.SetLoop(-1, -1); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "no loop", func(*recorder) bool { st := s.Snapshot(); return st.LoopA == nil && st.LoopB == nil })
+	if err := s.SetLoop(1, -1); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "A alone", func(*recorder) bool { st := s.Snapshot(); return st.LoopA != nil && st.LoopB == nil })
+	if err := s.Load(streams.Source{URL: path}, LoadOptions{}); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "a new file without it", func(*recorder) bool {
+		st := s.Snapshot()
+		return !st.Loading && st.LoopA == nil
+	})
+}
+
+// A watch party's gate is asked before a loop is set, not when it's
+// cleared.
+func TestLoopGated(t *testing.T) {
+	s := NewService("test")
+	g := &gateCalls{}
+	GateWith(s, g)
+	if err := s.SetLoop(1, 2); err != nil {
+		t.Errorf("refused: %v", err)
+	}
+	if err := s.SetLoop(-1, -1); !errors.Is(err, ErrNotPlaying) {
+		t.Errorf("clearing: %v", err)
+	}
+	if len(g.calls) != 1 || g.calls[0] != "loop" {
+		t.Errorf("calls = %v, want one loop", g.calls)
+	}
+}

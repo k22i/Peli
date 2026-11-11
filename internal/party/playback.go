@@ -430,6 +430,17 @@ func (g gate) UserSpeed(speed float64) bool {
 	return true
 }
 
+// UserLoop is asked before the user sets an A–B loop: never while watching
+// the party's media, as mpv's jumps back to A would pull this member out of
+// step with everyone else's playback.
+func (g gate) UserLoop() bool {
+	s := g.s
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	_, _, ok := s.gated()
+	return !ok
+}
+
 // UserScrub is told while the user drags the seek bar: corrections wait.
 func (g gate) UserScrub() {
 	s := g.s

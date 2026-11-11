@@ -34,6 +34,7 @@ import {
 } from "react";
 
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
+import { MoreMenu } from "@/components/player/more-menu";
 import { NextEpisode } from "@/components/player/next-episode";
 import { PictureSheet, type PictureSheetTab } from "@/components/player/picture-sheet";
 import { Prompt, promptEnter } from "@/components/player/prompt";
@@ -50,6 +51,7 @@ import {
 } from "@/components/player/subtitle-panel";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { loopArgs, loopOf, nextLoop, sameLoop, type Loop } from "@/lib/ab-loop";
 import { streamsQuery } from "@/lib/addon-protocol";
 import { rememberSource } from "@/lib/chosen-source";
 import { useLoadedAddons } from "@/lib/home";
@@ -326,6 +328,7 @@ function PlayerFile() {
     (a, b) => Math.abs(a - b) < 0.001,
   );
   const [speed, setSpeed] = useAhead(state.speed, (a, b) => Math.abs(a - b) < 0.001);
+  const [loop, setLoop] = useAhead(loopOf(state), sameLoop);
   // One seek and one volume change at a time, the newest next.
   const [seeker] = useState(() =>
     latestOnly(({ to, exact }: { to: number; exact: boolean }) =>
@@ -345,6 +348,7 @@ function PlayerFile() {
   const [helpOpen, setHelpOpen] = useState(false);
   // The dock's menus (Speed, More) have the keys while open.
   const [speedOpen, setSpeedOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [switcherOpen, setSwitcherOpen] = useState(false);
   // The stream being opened from the switcher, or why it couldn't be.
   const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
@@ -501,7 +505,7 @@ function PlayerFile() {
 
   const ready = state.active && !error;
   // A menu the dock no longer shows (the mini player, a failure) is closed.
-  const dockMenuOpen = speedOpen && ready && !mini;
+  const dockMenuOpen = (speedOpen || moreOpen) && ready && !mini;
   const known = state.duration > 0;
   // The picker for the next episode, in place of this screen: no stream
   // was found or would open.
@@ -748,6 +752,21 @@ function PlayerFile() {
     if (!paused) setPaused(true);
     Player.FrameStep(back).catch(() => {});
   };
+  // The A–B loop (L, More): set A, set B, clear. Not while a watch party
+  // watches this too: Go's gate would refuse it.
+  const changeLoop = (to: Loop, text: string) => {
+    if (!ready || !known) return;
+    if (party?.watching && to.a !== undefined) {
+      return setNotice({ text: "A–B loops are off in a watch party" });
+    }
+    setLoop(to);
+    Player.SetLoop(...loopArgs(to)).catch(() => {});
+    setNotice({ text });
+  };
+  const stepLoop = () => {
+    const step = nextLoop(loop, position);
+    changeLoop(step.loop, step.text);
+  };
   const toggleMute = () => {
     setMuted(!muted);
     Player.SetMuted(!muted).catch(() => {});
@@ -767,6 +786,7 @@ function PlayerFile() {
       setSwitcherOpen(false);
       setPictureOpen(false);
       setSpeedOpen(false);
+      setMoreOpen(false);
     }
     Player.SetMini(!mini).catch(() => {});
   };
@@ -1317,6 +1337,7 @@ function PlayerFile() {
           setNotice({ text: "Zoom 1×" });
         },
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
+        l: stepLoop,
         "[": () => changeSpeed(stepSpeed(speed, -1)),
         "]": () => changeSpeed(stepSpeed(speed, 1)),
         backspace: () => speed !== normalSpeed && changeSpeed(normalSpeed),
@@ -1744,6 +1765,7 @@ function PlayerFile() {
                 duration={state.duration}
                 buffered={state.buffered}
                 segments={segments}
+                loop={loop}
                 playing={!paused && ready}
                 onScrub={(to) => ready && seeker({ to, exact: false })}
                 onSeek={seek}
@@ -1833,6 +1855,17 @@ function PlayerFile() {
                     }
                     onClick={openPicture}
                     shortcut="P"
+                  />
+                )}
+                {ready && (
+                  <MoreMenu
+                    open={moreOpen}
+                    onOpenChange={setMoreOpen}
+                    loop={{
+                      loop,
+                      onNext: stepLoop,
+                      onClear: () => changeLoop({}, "A–B loop off"),
+                    }}
                   />
                 )}
               </div>

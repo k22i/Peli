@@ -1,6 +1,7 @@
 import { Slider } from "@base-ui/react/slider";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
+import type { Loop } from "@/lib/ab-loop";
 import { segmentNames, type Segment } from "@/lib/markers";
 import { formatTime } from "@/lib/player";
 import { cn } from "@/lib/utils";
@@ -14,12 +15,14 @@ import { cn } from "@/lib/utils";
 // lands exactly when let go; arrow keys step a second, Page Up and Down ten.
 // Between the ~4 a second time events the played part glides on, so it moves
 // smoothly. The track is 4 px and grows to 8 px under the pointer or a drag;
-// the thumb only shows then, or on keyboard focus.
+// the thumb only shows then, or on keyboard focus. An A–B loop shows as
+// sun-coloured ticks at its ends on the track and its span in the lane.
 export function SeekBar({
   position,
   duration,
   buffered,
   segments,
+  loop = noLoop,
   playing,
   onScrub,
   onSeek,
@@ -31,6 +34,8 @@ export function SeekBar({
   buffered: number;
   // What there is to skip (skipSegments): marked on the track.
   segments: readonly Segment[];
+  // The A–B loop, as far as it's set.
+  loop?: Loop;
   playing: boolean;
   onScrub: (position: number) => void;
   onSeek: (position: number) => void;
@@ -132,6 +137,17 @@ export function SeekBar({
             ))}
           </div>
         )}
+        {known && loop.a !== undefined && loop.b !== undefined && (
+          <div
+            aria-hidden
+            data-testid="loop-span"
+            style={{
+              left: `${percent(loop.a)}%`,
+              width: `max(4px, ${percent(loop.b) - percent(loop.a)}%)`,
+            }}
+            className="pointer-events-none absolute top-0 h-1 rounded-full bg-sun"
+          />
+        )}
         <Slider.Track className="relative h-1 w-full rounded-full bg-white/18 transition-[height] duration-300 ease-bounce motion-reduce:transition-none group-hover/seek:h-2 group-data-dragging/seek:h-2">
           <div
             data-testid="buffered"
@@ -147,6 +163,19 @@ export function SeekBar({
           <Slider.Indicator
             className={cn("rounded-full bg-white", smooth(playing && drag === undefined))}
           />
+          {known &&
+            (["a", "b"] as const).map(
+              (end) =>
+                loop[end] !== undefined && (
+                  <div
+                    key={end}
+                    aria-hidden
+                    data-testid={`loop-${end}`}
+                    style={{ left: `${percent(loop[end])}%` }}
+                    className="pointer-events-none absolute -inset-y-1 w-0.5 -translate-x-1/2 rounded-full bg-sun shadow-[0_0_0_1px_rgb(0_0_0/0.35)]"
+                  />
+                ),
+            )}
           <Slider.Thumb
             aria-label="Seek"
             getAriaValueText={(_, value) => `${formatTime(value)} of ${formatTime(duration)}`}
@@ -160,6 +189,8 @@ export function SeekBar({
     </Slider.Root>
   );
 }
+
+const noLoop: Loop = {};
 
 // Glides between time events (250 ms apart) while playing.
 const smooth = (on: boolean) =>

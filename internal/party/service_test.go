@@ -515,6 +515,10 @@ func TestHostOnlyGuest(t *testing.T) {
 	if GateOf(r.s).UserSpeed(2) {
 		t.Error("a guest changed the speed")
 	}
+	// A loop would pull them out of step.
+	if GateOf(r.s).UserLoop() {
+		t.Error("a guest set an A–B loop")
+	}
 	// A guest can pause for themselves: they watch on behind, and nothing
 	// is published.
 	sent := ch.count("state")
@@ -814,6 +818,9 @@ func TestNotWatchingThePartyIsUngated(t *testing.T) {
 	}
 	if !GateOf(r.s).UserSpeed(2) {
 		t.Error("a speed change in another title was refused")
+	}
+	if !GateOf(r.s).UserLoop() {
+		t.Error("an A–B loop in another title was refused")
 	}
 	r.tick()
 	if st := r.s.State(); st.Party.Watching {

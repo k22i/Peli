@@ -23,6 +23,7 @@ func (g *gateCalls) UserSeek(position float64) (float64, bool) {
 }
 func (g *gateCalls) UserSpeed(float64) bool { g.calls = append(g.calls, "speed"); return g.allow }
 func (g *gateCalls) UserScrub()             { g.calls = append(g.calls, "scrub") }
+func (g *gateCalls) UserLoop() bool         { g.calls = append(g.calls, "loop"); return g.allow }
 
 // The gate is asked before the user's changes reach mpv: refused, nothing
 // happens and nothing fails; allowed, they go on (here to no session).

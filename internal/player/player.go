@@ -144,6 +144,10 @@ type State struct {
 	// VolumeMax is the loudest the volume goes: 100, or 150 with the
 	// device's volume boost.
 	VolumeMax float64 `json:"volumeMax"`
+	// LoopA and LoopB are the A–B loop's ends, in seconds, nil while unset:
+	// with both, mpv plays from A to B over and over (SetLoop).
+	LoopA *float64 `json:"loopA"`
+	LoopB *float64 `json:"loopB"`
 }
 
 // Time is where playback is, in seconds.
@@ -371,6 +375,9 @@ var observed = []struct {
 	// The video's size, for a crop in percent (framing.go).
 	{"video-params/w", fmtInt64},
 	{"video-params/h", fmtInt64},
+	// The A–B loop: "no", or a time.
+	{"ab-loop-a", fmtString},
+	{"ab-loop-b", fmtString},
 }
 
 // options are set on every session before mpv_initialize; the host adds its
@@ -620,8 +627,10 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.mu.Unlock()
 	props := append(opts.tracks(), pictureProps(s.pictureFor(opts))...)
 	props = append(props, framingProps(framing)...)
-	// Each file plays at normal speed, whatever the last one played at.
-	props = append(props, [2]string{"video-crop", ""}, [2]string{"speed", "1"})
+	// Each file plays at normal speed, whatever the last one played at, and
+	// without the last one's A–B loop.
+	props = append(props, [2]string{"video-crop", ""}, [2]string{"speed", "1"},
+		[2]string{"ab-loop-a", "no"}, [2]string{"ab-loop-b", "no"})
 	for _, p := range props {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			return notPlaying(err)
@@ -825,6 +834,8 @@ type Gate interface {
 	UserSpeed(speed float64) bool
 	// UserScrub is told while the seek bar is dragged.
 	UserScrub()
+	// UserLoop is asked before an A–B loop is set (not cleared).
+	UserLoop() bool
 }
 
 // GateWith has s ask g before the user's changes. It isn't a method, so
@@ -956,6 +967,30 @@ func (s *Service) frameDuration() float64 {
 		}
 	}
 	return 1.0 / 24
+}
+
+// SetLoop sets the A–B loop: playback goes back to a each time it reaches
+// b. A negative a or b leaves that end unset; both unset clears the loop.
+// b must come after a. A watch party's gate refuses a loop (not clearing
+// one): the jumps back would pull the member out of step.
+func (s *Service) SetLoop(a, b float64) error {
+	if math.IsNaN(a) || math.IsNaN(b) || math.IsInf(a, 0) || math.IsInf(b, 0) || (a >= 0 && b >= 0 && b <= a) {
+		return ErrInvalid
+	}
+	if g := s.gated(); g != nil && (a >= 0 || b >= 0) && !g.UserLoop() {
+		return nil
+	}
+	end := func(t float64) string {
+		if t < 0 {
+			return "no"
+		}
+		return seconds(t)
+	}
+	// B first: with A moved past the old B, mpv would jump at once.
+	if err := s.set("ab-loop-b", end(b)); err != nil {
+		return err
+	}
+	return s.set("ab-loop-a", end(a))
 }
 
 // SetVolume sets the volume, 0–100.
@@ -1377,6 +1412,10 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.SubtitleText, _ = v.(string)
 	case "secondary-sub-text":
 		st.SecondarySubtitleText, _ = v.(string)
+	case "ab-loop-a":
+		st.LoopA = loopEnd(v)
+	case "ab-loop-b":
+		st.LoopB = loopEnd(v)
 	}
 	s.stateDirty = true
 }
@@ -1566,6 +1605,16 @@ func tracks(v any) []Track {
 		})
 	}
 	return out
+}
+
+// loopEnd reads ab-loop-a or ab-loop-b: nil for "no".
+func loopEnd(v any) *float64 {
+	text, _ := v.(string)
+	t, err := strconv.ParseFloat(text, 64)
+	if err != nil || math.IsNaN(t) || math.IsInf(t, 0) {
+		return nil
+	}
+	return &t
 }
 
 func chapters(v any) []Chapter {

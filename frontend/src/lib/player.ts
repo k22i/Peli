@@ -53,6 +53,8 @@ export const idleState: PlayerState = {
   subtitleSize: "medium",
   subtitleText: "",
   secondarySubtitleText: "",
+  loopA: null,
+  loopB: null,
 };
 
 // The player's state: a snapshot on mount, then every event after it.

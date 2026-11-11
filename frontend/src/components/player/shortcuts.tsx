@@ -16,6 +16,7 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["[", "]"], action: "Slower or faster" },
       { keys: ["Backspace"], action: "Normal speed" },
       { keys: [",", "."], action: "A frame back or forward, paused" },
+      { keys: ["L"], action: "Set A, set B, then clear an A–B loop" },
       { keys: ["M"], action: "Mute or unmute" },
       { keys: ["F"], action: "Full screen" },
       { keys: ["I"], action: "Mini player" },
