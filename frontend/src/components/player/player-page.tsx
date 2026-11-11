@@ -53,6 +53,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { loopArgs, loopOf, nextLoop, sameLoop, type Loop } from "@/lib/ab-loop";
 import { streamsQuery } from "@/lib/addon-protocol";
+import { chapterAt, chapterName, nextChapter, previousChapter } from "@/lib/chapters";
 import { rememberSource } from "@/lib/chosen-source";
 import { useLoadedAddons } from "@/lib/home";
 import {
@@ -767,6 +768,13 @@ function PlayerFile() {
     const step = nextLoop(loop, position);
     changeLoop(step.loop, step.text);
   };
+  // Page Up and Page Down, and More › Chapters: seeks to a chapter's start.
+  const chapters = state.chapters ?? [];
+  const goToChapter = (to: ReturnType<typeof nextChapter>) => {
+    if (!to || !ready || !known) return;
+    seek(to.chapter.time);
+    setNotice({ text: `${to.index + 1}. ${chapterName(to.chapter, to.index)}` });
+  };
   const toggleMute = () => {
     setMuted(!muted);
     Player.SetMuted(!muted).catch(() => {});
@@ -1338,6 +1346,8 @@ function PlayerFile() {
         },
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
         l: stepLoop,
+        pageup: () => goToChapter(previousChapter(chapters, position)),
+        pagedown: () => goToChapter(nextChapter(chapters, position)),
         "[": () => changeSpeed(stepSpeed(speed, -1)),
         "]": () => changeSpeed(stepSpeed(speed, 1)),
         backspace: () => speed !== normalSpeed && changeSpeed(normalSpeed),
@@ -1352,8 +1362,8 @@ function PlayerFile() {
         },
       };
       const key = event.key.toLowerCase();
-      // A focused slider moves itself with the arrows.
-      if (key.startsWith("arrow") && event.defaultPrevented) return;
+      // A focused slider moves itself with the arrows and Page Up/Down.
+      if ((key.startsWith("arrow") || key.startsWith("page")) && event.defaultPrevented) return;
       const action = repeating[key] ?? (event.repeat ? undefined : once[key]);
       if (!action) return;
       event.preventDefault();
@@ -1861,6 +1871,12 @@ function PlayerFile() {
                   <MoreMenu
                     open={moreOpen}
                     onOpenChange={setMoreOpen}
+                    chapters={{
+                      chapters,
+                      current: chapterAt(chapters, position),
+                      onPick: (index) =>
+                        goToChapter(chapters[index] && { index, chapter: chapters[index] }),
+                    }}
                     loop={{
                       loop,
                       onNext: stepLoop,
