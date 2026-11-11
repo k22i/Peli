@@ -1,0 +1,20 @@
+---
+name: player-playback
+description: "Player enhancements phase 6, the last (2026-11-11): speed menu + [ ] Backspace, FrameStep (, .), A–B loop (L, Gate.UserLoop), chapters + PageUp/Down, screenshots (Shift+S, Go PNG), Stats overlay (Shift+I), Still watching? + sleep timer, Windows keepAwake (#102); the dock's More menu"
+metadata:
+  type: project
+---
+
+Phase 6 of the player enhancements ([[player-picture]] has the plan). Tests written, not run, at the user's request.
+
+- **Dock menus:** `components/player/player-menu.tsx` = Base UI Menu on `sheetSurface` (PlayerMenu, Item, RadioGroup/RadioItem, CheckboxItem, Submenu, Group, Separator). Speed (`speed-menu.tsx`) and More (`more-menu.tsx`: Chapters ›, A–B loop, Screenshot, Playback stats, Sleep timer ›) sit at the right of the bar, not in the mini player. While one is open (`dockMenuOpen` = open && ready && !mini) the window key handler returns early, so Esc closes the menu rather than leaving; `toggleMini` closes them.
+- **Speed:** Go's `Load` sets `speed=1` (and clears `ab-loop-a/b`) for every file. `lib/speed.ts` steps 0.25–4; `sameSpeed` treats a party's nudge (1.03×) as 1×. Through `Player.SetSpeed` (gated).
+- **Frame step:** `Service.FrameStep(back)` = `frame-step 1 seek` (no unpause flicker; mpv 0.41 has the `seek` flag) or `frame-back-step`; both pause by themselves. With a gate: `UserPause(true)` if playing, then `UserSeek(position ± 1/fps)`; a moved seek goes there instead. `frameDuration` from `estimated-vf-fps`, then `container-fps`, else 1/24.
+- **A–B loop:** `Service.SetLoop(a, b)` (-1 = unset; B set before A), `State.loopA/loopB` (`*float64`, observed as strings, "no" → nil). `Gate.UserLoop()` is new: the party refuses it while watching the party's media; the page doesn't even ask when `party.watching`. A new Gate method must be added to `internal/party` gate and `gateCalls` in gate_test.go. Seek bar draws `loop-a`/`loop-b` ticks on the track and `loop-span` in the segments lane, in `bg-sun`.
+- **Chapters:** frontend only (`lib/chapters.ts`); Page Up within 3 s of a start goes to the previous. The slider-focus guard now skips `page*` keys too.
+- **Screenshots:** `screenshot.go`: `screenshot-raw subtitles|video bgr0` → NRGBA → `png.BestSpeed`, temp file + `os.Link` so a name is never replaced ("Title – S1 E2 0.12.34.png", then " 2"). `screenshotDir` is a var for tests. `ShowScreenshot(path)` only for files in that folder; `reveal_windows.go` sets `SysProcAttr.CmdLine` (explorer wants `/select,"path"`, exits 1 on success). The second subtitle line is the webview's, so it's never in a shot.
+- **Stats:** `stats.go` reads ~20 properties per call (`current-tracks/video/codec`, `video-params/*`, `video-out-params/dw`, `frame-drop-count`, `demuxer-cache-state` fw-bytes, `current-vo`, `current-gpu-context`…); `lib/stats.ts` formats; overlay polls with `refetchInterval: 1000` and only mounts while open.
+- **Still watching / sleep:** `ProfileSettings.stillWatchingAfter` (default 3, 0 never, ≤ 10; Settings › Playback › Next episode). `PlayerPage` owns `useEpisodesWithoutInput` (keydown/pointerdown/pointermove/wheel reset it) and the `SleepTimer`, so both outlive a file. At eof with the next-episode card counting, `stillWatchingDue` shows `StillWatching` instead of starting; otherwise the streak goes up. Sleep: `lib/sleep-timer.ts`; the episode timer pauses 0.6 s before the end (else the card would start the next); volume fades as `share²` over 10 s through `volumer`, restored after the pause or on unmount.
+- **Windows awake (#102):** `keepAwake` in host_windows.go: one goroutine, `LockOSThread` never undone, fed by a 1-slot channel (newest wins). Cross-vetted in `staysh-spike-render` with `GOTOOLCHAIN=auto` (the image has Go 1.25, go.mod wants 1.26) and a GOPATH volume in the scratchpad; Docker Desktop has to be started first (`open -a Docker`).
+- Keys added to `playerShortcuts`: [ ] Backspace , . L PageUp/PageDown Shift+S Shift+I.
+- Related: [[watch-party]], [[player-controls]], [[player-keys-media]], [[next-episode]], [[mini-player]], [[player-service]].

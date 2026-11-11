@@ -3,6 +3,8 @@ package player
 import (
 	"errors"
 	"log/slog"
+	"runtime"
+	"sync"
 	"syscall"
 	"unsafe"
 
@@ -15,6 +17,9 @@ var (
 	procFindWindowExW = user32.NewProc("FindWindowExW")
 	procSetWindowPos  = user32.NewProc("SetWindowPos")
 	procEnableWindow  = user32.NewProc("EnableWindow")
+
+	kernel32                    = windows.NewLazySystemDLL("kernel32.dll")
+	procSetThreadExecutionState = kernel32.NewProc("SetThreadExecutionState")
 )
 
 const (
@@ -22,6 +27,10 @@ const (
 	swpNoSize     = 0x0001
 	swpNoMove     = 0x0002
 	swpNoActivate = 0x0010
+
+	esContinuous      = 0x80000000
+	esSystemRequired  = 0x00000001
+	esDisplayRequired = 0x00000002
 )
 
 // hwdecAPIs: D3D11VA, which every Windows GPU driver has, then whatever
@@ -95,9 +104,45 @@ func (h *windowsHost) videoConfigured(on bool) {
 	})
 }
 
-// playing: keeping the screen awake while playing (SetThreadExecutionState)
-// isn't done yet.
-func (h *windowsHost) playing(bool) {}
+// playing keeps the display and the machine awake while video plays (#102),
+// as macOS's activity does (video_darwin.m).
+func (h *windowsHost) playing(on bool) { keepAwake(on) }
+
+// Windows keeps a thread's execution state for that thread only, and drops
+// it when the thread ends: Go moves goroutines between threads, so one
+// goroutine locked to its own thread sets it, every time.
+var (
+	awakeOnce sync.Once
+	awakeMu   sync.Mutex
+	awake     chan bool
+)
+
+func keepAwake(on bool) {
+	awakeOnce.Do(func() {
+		awake = make(chan bool, 1)
+		go func() {
+			// Never unlocked: the state lives as long as this thread does.
+			runtime.LockOSThread()
+			for on := range awake {
+				state := uintptr(esContinuous)
+				if on {
+					state |= esSystemRequired | esDisplayRequired
+				}
+				if r, _, err := procSetThreadExecutionState.Call(state); r == 0 {
+					slog.Warn("player: screen awake not set", "error", err)
+				}
+			}
+		}()
+	})
+	// The newest wins: one waiting is enough.
+	awakeMu.Lock()
+	defer awakeMu.Unlock()
+	select {
+	case <-awake:
+	default:
+	}
+	awake <- on
+}
 
 // canShowHDR: mpv's window does it by itself (configure).
 func (h *windowsHost) canShowHDR() bool { return false }
