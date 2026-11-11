@@ -3,6 +3,7 @@ package player
 import (
 	"errors"
 	"path/filepath"
+	"strconv"
 	"testing"
 
 	"github.com/k22i/Sinag/internal/store"
@@ -32,30 +33,35 @@ func TestPictureAtLoadAndLive(t *testing.T) {
 		t.Fatal(err)
 	}
 	r.waitFor(t, "the first frame", func(*recorder) bool { return !s.Snapshot().Loading })
-	read := func(name string) string {
+	// mpv keeps these as floats: "20.000000".
+	read := func(name string) float64 {
 		t.Helper()
 		ses := s.current()
 		v, err := ses.m.getString(name)
 		if err != nil {
 			t.Fatalf("%s: %v", name, err)
 		}
-		return v
+		f, err := strconv.ParseFloat(v, 64)
+		if err != nil {
+			t.Fatalf("%s = %q: %v", name, v, err)
+		}
+		return f
 	}
-	if got := read("saturation"); got != "20" {
-		t.Errorf("saturation at load = %s, want 20", got)
+	if got := read("saturation"); got != 20 {
+		t.Errorf("saturation at load = %v, want 20", got)
 	}
 	if err := s.SetPicture(store.Picture{Preset: "custom", Brightness: -12}); err != nil {
 		t.Fatal(err)
 	}
-	if got, sat := read("brightness"), read("saturation"); got != "-12" || sat != "0" {
-		t.Errorf("after SetPicture: brightness %s, saturation %s; want -12 and 0", got, sat)
+	if got, sat := read("brightness"), read("saturation"); got != -12 || sat != 0 {
+		t.Errorf("after SetPicture: brightness %v, saturation %v; want -12 and 0", got, sat)
 	}
 	// The next file without a picture plays as it is.
 	if err := s.Load(streams.Source{URL: path}, LoadOptions{}); err != nil {
 		t.Fatal(err)
 	}
-	if got := read("brightness"); got != "0" {
-		t.Errorf("next file's brightness = %s, want 0", got)
+	if got := read("brightness"); got != 0 {
+		t.Errorf("next file's brightness = %v, want 0", got)
 	}
 	if err := s.SetPicture(store.Picture{Preset: "standard", Gamma: 120}); !errors.Is(err, ErrInvalid) {
 		t.Errorf("gamma 120: %v, want ErrInvalid", err)
