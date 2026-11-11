@@ -38,6 +38,18 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
     shadowLift: false,
   },
   picturePresets: [],
+  framing: {
+    fit: "fit",
+    aspect: "auto",
+    zoom: 0,
+    panX: 0,
+    panY: 0,
+    crop: { top: 0, right: 0, bottom: 0, left: 0 },
+    autoCrop: false,
+    rotate: 0,
+    flipH: false,
+    flipV: false,
+  },
   ...changes,
 });
 

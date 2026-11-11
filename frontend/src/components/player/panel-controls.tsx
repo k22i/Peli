@@ -1,5 +1,5 @@
 import { Slider } from "@base-ui/react/slider";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, RotateCcw } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -245,5 +245,85 @@ export function Toggle({
         />
       </span>
     </label>
+  );
+}
+
+// The sheet's surface, the subtitle panel's: warm near-black glass on the
+// right. While a slider is dragged it gives way to the picture
+// (`previewing`): only that slider's row stays, on its own pill.
+export const sheetSurface =
+  "bg-[rgb(18_16_14/0.86)] shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] ring-1 ring-white/10 backdrop-blur-3xl backdrop-saturate-150 reduced-transparency:bg-[rgb(18_16_14)] reduced-transparency:backdrop-blur-none";
+
+// What a tab knows of the sheet's live preview: which row is being dragged
+// (the others hide), and how to say a drag started or ended.
+export type Preview = {
+  active: string | undefined;
+  setActive: (row: string | undefined) => void;
+};
+
+// A row's classes while previewing: hidden unless it's the one dragged,
+// which sits on its own pill.
+export function previewRow(preview: Preview, row?: string): string {
+  if (preview.active === undefined) return "";
+  return preview.active === row ? cn("-mx-2 rounded-2xl px-2 py-2", sheetSurface) : "invisible";
+}
+
+export function SectionHead({
+  title,
+  reset,
+  className,
+}: {
+  title: string;
+  reset: (() => void) | undefined;
+  className?: string;
+}) {
+  return (
+    <div className={cn("flex h-8 items-center justify-between", className)}>
+      <h3 className="type-eyebrow text-white/55">{title}</h3>
+      {reset && (
+        <button
+          type="button"
+          onClick={reset}
+          className="flex h-8 items-center gap-1.5 rounded-full px-3 text-small font-[560] text-white/75 outline-none hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-3.5"
+        >
+          <RotateCcw aria-hidden />
+          Reset
+        </button>
+      )}
+    </div>
+  );
+}
+
+export function ChipGroup({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <fieldset aria-label={label} className="m-0 flex min-w-0 flex-wrap gap-1.5 border-0 p-0">
+      {children}
+    </fieldset>
+  );
+}
+
+export function Chip({
+  pressed,
+  onClick,
+  children,
+}: {
+  pressed: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={pressed}
+      onClick={onClick}
+      className={cn(
+        "h-8 max-w-full truncate rounded-full px-3.5 text-[0.875rem] font-[560] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
+        pressed
+          ? "bg-white text-black"
+          : "bg-white/8 text-white/80 hover:bg-white/14 hover:text-white",
+      )}
+    >
+      {children}
+    </button>
   );
 }

@@ -16,14 +16,17 @@ import (
 //	  titles/ <content id> → TitleAdjustments (made when first needed)
 type TitleAdjustments struct {
 	Picture *Picture `json:"picture,omitempty"`
+	Framing *Framing `json:"framing,omitempty"`
 	// Unix ms of the last change.
 	ChangedAt int64 `json:"changedAt"`
 }
 
-func (a *TitleAdjustments) empty() bool { return a == nil || a.Picture == nil }
+func (a *TitleAdjustments) empty() bool {
+	return a == nil || (a.Picture == nil && a.Framing == nil)
+}
 
 func (a *TitleAdjustments) valid() bool {
-	return a.Picture == nil || a.Picture.Valid()
+	return (a.Picture == nil || a.Picture.Valid()) && (a.Framing == nil || a.Framing.Valid())
 }
 
 var bucketTitles = []byte("titles")

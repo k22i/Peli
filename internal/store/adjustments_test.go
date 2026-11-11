@@ -91,3 +91,30 @@ func TestPicturePresetsAreValidated(t *testing.T) {
 		}
 	}
 }
+
+func TestFramingIsValidated(t *testing.T) {
+	for _, f := range []Framing{
+		DefaultFraming(),
+		{Fit: "fill", Aspect: "2.39:1", Zoom: 1.5, PanX: -1, PanY: 0.5, Rotate: 270, FlipH: true},
+		{Fit: "fit", Aspect: "12:5", Crop: Crop{Top: 12.5, Bottom: 12.5}},
+		{Fit: "original", Aspect: "1.33:1", AutoCrop: true},
+	} {
+		if !f.Valid() {
+			t.Errorf("%+v: not valid", f)
+		}
+	}
+	for _, f := range []Framing{
+		{Fit: "zoom", Aspect: "auto"},
+		{Fit: "fit", Aspect: "wide"},
+		{Fit: "fit", Aspect: "0:9"},
+		{Fit: "fit", Aspect: "auto", Zoom: 3},
+		{Fit: "fit", Aspect: "auto", PanX: 1.5},
+		{Fit: "fit", Aspect: "auto", Crop: Crop{Left: 41}},
+		{Fit: "fit", Aspect: "auto", Crop: Crop{Left: -1}},
+		{Fit: "fit", Aspect: "auto", Rotate: 45},
+	} {
+		if f.Valid() {
+			t.Errorf("%+v: valid", f)
+		}
+	}
+}

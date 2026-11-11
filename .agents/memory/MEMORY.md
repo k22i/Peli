@@ -74,3 +74,4 @@
 - [Discovery](discovery.md) — search kind/decade/genre filters in the URL, recent searches per profile, TMDB People row, Home New episodes + Surprise me
 - [Player picture (phase 1)](player-picture.md) — Picture & sound sheet (P), store.Picture + TitleAdjustments per title, Go resolves at Load, panel-controls.tsx; facts for phases 2–6
 - [Watch party](watch-party.md) — ADR-0051 internal/party + nuvio realtime.go, nuvio_realtime=1 flag, live-only RPCs + live tests, player gate/Direct, party mocks in test setup
+- [Player framing (phase 2)](player-framing.md) — Framing section, crop % → pixels, Go auto-crop via screenshot-raw, sheet tabs, Shift+F/Shift+A/= − 0/⌥ arrows, drag to pan

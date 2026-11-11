@@ -87,6 +87,7 @@ import {
   type Picture,
 } from "@/lib/picture";
 import { adjustedTitlesQuery } from "@/lib/title-adjustments";
+import { defaultFraming, fitModes } from "@/lib/framing";
 import { useTmdbKey } from "@/lib/tmdb";
 import { Service as Store } from "@bindings/store";
 import {
@@ -396,6 +397,37 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               </SettingRow>
             </SettingsGroup>
             <PictureDefaults profileId={profileId} settings={settings} setProfile={setProfile} />
+            <SettingsGroup title="Framing">
+              <SettingRow
+                id="framing-fit"
+                label="Fit"
+                description="How the picture fills the window: all of it, the window filled (the edges cropped), stretched, or its own size. A title can have its own (P, then Framing, or Shift+F)."
+              >
+                <Choice
+                  id="framing-fit"
+                  value={settings.framing?.fit ?? "fit"}
+                  options={fitModes.map(({ id }) => id)}
+                  labels={{ fit: "Fit", fill: "Fill", stretch: "Stretch", original: "Original" }}
+                  onChange={(fit) =>
+                    setProfile({ framing: { ...(settings.framing ?? defaultFraming), fit } })
+                  }
+                />
+              </SettingRow>
+              <SettingRow
+                id="auto-crop"
+                label="Remove black bars"
+                description="Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture."
+              >
+                <Switch
+                  aria-labelledby="auto-crop-label"
+                  aria-describedby="auto-crop-description"
+                  checked={settings.framing?.autoCrop ?? false}
+                  onCheckedChange={(autoCrop) =>
+                    setProfile({ framing: { ...(settings.framing ?? defaultFraming), autoCrop } })
+                  }
+                />
+              </SettingRow>
+            </SettingsGroup>
             {/* #69: chapters first, IntroDB for files without them. */}
             <SettingsGroup title="Intros and credits">
               <SettingRow
@@ -505,11 +537,11 @@ function PictureDefaults({
       ))}
       <SettingRow
         id="adjusted-titles"
-        label="Titles with their own picture"
+        label="Titles you adjusted"
         description={
           adjusted === 0
             ? "None: every title follows your defaults."
-            : `${adjusted} ${adjusted === 1 ? "title plays" : "titles play"} the way you adjusted ${adjusted === 1 ? "it" : "them"}, on this device.`
+            : `${adjusted} ${adjusted === 1 ? "title keeps its" : "titles keep their"} own picture or framing, on this device.`
         }
       >
         <Button

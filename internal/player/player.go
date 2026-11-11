@@ -131,6 +131,9 @@ type State struct {
 	// HDR is true while an HDR video goes to the display as HDR, rather
 	// than tone-mapped to SDR (#66).
 	HDR bool `json:"hdr"`
+	// AutoCrop is the crop auto-crop found for the file, in percent; nil
+	// until it finds one, or when it's off.
+	AutoCrop *store.Crop `json:"autoCrop,omitempty"`
 }
 
 // Time is where playback is, in seconds.
@@ -200,6 +203,9 @@ type LoadOptions struct {
 	// Picture adjusts the video; nil is the title's own (TitleAdjustments)
 	// or the profile's, read from the store for Watching's profile.
 	Picture *store.Picture `json:"picture,omitempty"`
+	// Framing frames the picture; nil is the title's own or the profile's,
+	// like Picture.
+	Framing *store.Framing `json:"framing,omitempty"`
 	// Watching names what the file is, so how far it plays is reported
 	// (#64); nil for a file nobody keeps progress of.
 	Watching *Watching `json:"watching,omitempty"`
@@ -274,7 +280,7 @@ func (o LoadOptions) valid() bool {
 		languageCode.MatchString(o.SubtitleLanguage) && audioLanguagesValid(o.AudioLanguages) &&
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
 		(o.SubtitleSize == "" || sized) && (o.SubtitleStyle == nil || o.SubtitleStyle.valid()) &&
-		(o.Picture == nil || o.Picture.Valid()) &&
+		(o.Picture == nil || o.Picture.Valid()) && (o.Framing == nil || o.Framing.Valid()) &&
 		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
 }
 
@@ -337,6 +343,9 @@ var observed = []struct {
 	{"sub-scale", fmtDouble},
 	{"video-params/gamma", fmtString},
 	{"sub-text", fmtString},
+	// The video's size, for a crop in percent (framing.go).
+	{"video-params/w", fmtInt64},
+	{"video-params/h", fmtInt64},
 }
 
 // options are set on every session before mpv_initialize; the host adds its
@@ -408,6 +417,13 @@ type Service struct {
 	nowPlaying NowPlaying
 	mediaDirty bool
 	seeks      int
+	// How the file playing is framed, its video's size (0 until known),
+	// which Load it is (file counts them), and the auto-crop looking at it.
+	framing        store.Framing
+	videoW, videoH int
+	file           uint64
+	autoCrop       context.CancelFunc
+	autoCropFile   uint64
 }
 
 // session is one mpv handle and its video host.
@@ -563,8 +579,18 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	if err := ses.m.setProperty("pause", "no"); err != nil {
 		return notPlaying(err)
 	}
-	// The session keeps the last file's picture: each file sets its own.
-	for _, p := range append(opts.tracks(), pictureProps(s.pictureFor(opts))...) {
+	// The session keeps the last file's picture and framing: each file
+	// sets its own. The crop waits for the video's size.
+	framing := s.framingFor(opts)
+	s.stopAutoCrop()
+	s.mu.Lock()
+	s.framing, s.videoW, s.videoH = framing, 0, 0
+	s.file++
+	s.mu.Unlock()
+	props := append(opts.tracks(), pictureProps(s.pictureFor(opts))...)
+	props = append(props, framingProps(framing)...)
+	props = append(props, [2]string{"video-crop", ""})
+	for _, p := range props {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			return notPlaying(err)
 		}
@@ -573,7 +599,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.update(func(st *State) {
 		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
 		st.Time = Time{Position: opts.Start}
-		st.Tracks, st.Chapters = []Track{}, []Chapter{}
+		st.Tracks, st.Chapters, st.AutoCrop = []Track{}, []Chapter{}, nil
 		s.watching, s.reportWhy, s.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
@@ -733,6 +759,7 @@ func (s *Service) Stop() error {
 // closeSession stops the event loop, then the host, then mpv, in the order
 // libmpv needs.
 func (s *Service) closeSession(ses *session) {
+	s.stopAutoCrop()
 	ses.closing.Store(true)
 	ses.m.wakeup()
 	<-ses.done
@@ -1132,6 +1159,17 @@ func (s *Service) property(ses *session, name string, v any) {
 	case "vo-configured":
 		on, _ := v.(bool)
 		ses.host.videoConfigured(on)
+		return
+	case "video-params/w", "video-params/h":
+		n, _ := v.(int64)
+		s.mu.Lock()
+		if name == "video-params/w" {
+			s.videoW = int(n)
+		} else {
+			s.videoH = int(n)
+		}
+		s.mu.Unlock()
+		s.applyCrop(ses)
 		return
 	case "video-params/gamma":
 		trc, _ := v.(string)

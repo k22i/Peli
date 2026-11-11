@@ -35,7 +35,7 @@ import {
 
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { NextEpisode } from "@/components/player/next-episode";
-import { PictureSheet } from "@/components/player/picture-sheet";
+import { PictureSheet, type PictureSheetTab } from "@/components/player/picture-sheet";
 import { Prompt, promptEnter } from "@/components/player/prompt";
 import { SeekBar } from "@/components/player/seek-bar";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
@@ -93,6 +93,20 @@ import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream } from "@/lib/resolve";
 import { profileSettingsQuery, useSaveProfileSettings, type ProfileSettings } from "@/lib/settings";
+import {
+  aspectName,
+  aspectRatios,
+  cycle,
+  defaultFraming,
+  fitModes,
+  fitName,
+  framingOf,
+  panBy,
+  unzoomed,
+  zoomBy,
+  zoomLabel,
+  type Framing,
+} from "@/lib/framing";
 import { pictureOf, savePreset, standardPicture, userPreset, type Picture } from "@/lib/picture";
 import { resolutionLabel } from "@/lib/stream-labels";
 import {
@@ -886,6 +900,58 @@ function PlayerFile() {
     changePicture({ ...picture, preset: userPreset(name.trim()) });
     setNotice({ text: `Saved “${name.trim()}”` });
   };
+  // The framing (the sheet's Framing tab, Shift+F, Shift+A, = − 0, ⌥ and the
+  // arrows, a drag while zoomed): kept for the title like the picture.
+  const [sheetTab, setSheetTab] = useState<PictureSheetTab>("picture");
+  const [unsavedFraming, setUnsavedFraming] = useState<Framing>();
+  const framing = unsavedFraming ?? framingOf(settings, adjustments);
+  const [framer] = useState(() => latestOnly(Player.SetFraming));
+  const changeFraming = (changed: Framing) => {
+    framer(changed);
+    if (!titleKey) {
+      setUnsavedFraming(changed);
+      return;
+    }
+    saveAdjustments.mutate(withSection(adjustments, "framing", changed));
+  };
+  const resetFraming = () => {
+    setUnsavedFraming(undefined);
+    framer(framingOf(settings, null));
+    if (titleKey) saveAdjustments.mutate(withSection(adjustments, "framing", undefined));
+  };
+  const framingForAll = () => {
+    if (!settings) return;
+    const { fit, autoCrop } = framing;
+    saveSettings.mutate({
+      ...settings,
+      framing: { ...defaultFraming, fit, autoCrop },
+    } satisfies ProfileSettings);
+    setNotice({ text: "Fit and black bars set for all titles" });
+  };
+  const cycleFit = () => {
+    const fit = cycle<string>(
+      fitModes.map(({ id }) => id),
+      framing.fit,
+    );
+    changeFraming({ ...framing, fit });
+    setNotice({ text: fitName(fit) });
+  };
+  const cycleAspect = () => {
+    const ids: string[] = aspectRatios.map(({ id }) => id);
+    const aspect = ids.includes(framing.aspect) ? cycle(ids, framing.aspect) : "auto";
+    changeFraming({ ...framing, aspect });
+    setNotice({ text: `Aspect ${aspectName(aspect)}` });
+  };
+  const zoom = (steps: number) => {
+    const changed = zoomBy(framing, steps);
+    changeFraming(changed);
+    setNotice({ text: `Zoom ${zoomLabel(changed.zoom)}` });
+  };
+  // A drag on the video while zoomed moves the picture: by its own width
+  // and height (mpv's pan), so the share of the window it was dragged
+  // divided by the zoom. Let go, it's kept; a drag isn't a click.
+  const panDrag = useRef<{ x: number; y: number; start: Framing; last?: Framing }>(undefined);
+  const dragged = useRef(false);
   const openPicture = () => {
     if (mini) return;
     setHelpOpen(false);
@@ -899,7 +965,23 @@ function PlayerFile() {
       // The switcher has the keys: Esc closes it, Space picks. The panel
       // keeps them too, but for Z and X (timing) and Esc (closes it).
       if (error || switcherOpen || partyOpen) return;
-      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.metaKey || event.ctrlKey) return;
+      // Option and the arrows pan the picture (mpv's keys); Option changes
+      // event.key on macOS, so these go by event.code. Nothing else takes
+      // Option, so the OS keeps its own.
+      if (event.altKey) {
+        const pans: Record<string, [number, number]> = {
+          ArrowLeft: [-0.05, 0],
+          ArrowRight: [0.05, 0],
+          ArrowUp: [0, -0.05],
+          ArrowDown: [0, 0.05],
+        };
+        const by = pans[event.code];
+        if (!by || panel || pictureOpen || !ready || mini) return;
+        event.preventDefault();
+        if (event.type === "keydown") changeFraming(panBy(framing, by[0], by[1]));
+        return;
+      }
       if (panel || pictureOpen) {
         const key = event.key.toLowerCase();
         if (event.type !== "keydown") return;
@@ -920,8 +1002,23 @@ function PlayerFile() {
       // Not a click on the focused button too, as its key comes up.
       if (event.key === " ") event.preventDefault();
       if (event.type !== "keydown") return;
+      // Shift and a letter: its own key, unless it has none (then the
+      // letter's, as before).
+      const shifted: Record<string, () => void> = {
+        F: () => ready && !mini && cycleFit(),
+        A: () => ready && !mini && cycleAspect(),
+      };
+      const shiftedAction = event.shiftKey && !event.repeat ? shifted[event.key] : undefined;
+      if (shiftedAction) {
+        event.preventDefault();
+        shiftedAction();
+        return;
+      }
       // Keys held down repeat these; the rest act once a press.
       const repeating: Record<string, () => void> = {
+        "=": () => ready && !mini && zoom(1),
+        "+": () => ready && !mini && zoom(1),
+        "-": () => ready && !mini && zoom(-1),
         arrowleft: () => seek(position - skip),
         arrowright: () => seek(position + skip),
         arrowup: () => stepVolume(volumeStep),
@@ -938,6 +1035,11 @@ function PlayerFile() {
         c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
         v: () => ready && subtitlesMenu && openPanel("subtitles"),
         p: () => ready && openPicture(),
+        "0": () => {
+          if (!ready || mini || (framing.zoom === 0 && !framing.panX && !framing.panY)) return;
+          changeFraming(unzoomed(framing));
+          setNotice({ text: "Zoom 1×" });
+        },
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
         s: () => watching && openSwitcher(),
         w: () => (watching || party) && openParty(),
@@ -1149,8 +1251,41 @@ function PlayerFile() {
         type="button"
         tabIndex={-1}
         aria-hidden
-        className={cn("absolute inset-0 outline-none", shown ? "cursor-default" : "cursor-none")}
+        className={cn(
+          "absolute inset-0 outline-none",
+          !shown ? "cursor-none" : framing.zoom !== 0 && ready ? "cursor-grab" : "cursor-default",
+        )}
+        onPointerDown={(event) => {
+          if (!ready || mini || framing.zoom === 0 || event.button !== 0) return;
+          panDrag.current = { x: event.clientX, y: event.clientY, start: framing };
+          dragged.current = false;
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }}
+        onPointerMove={(event) => {
+          const drag = panDrag.current;
+          if (!drag) return;
+          const dx = event.clientX - drag.x;
+          const dy = event.clientY - drag.y;
+          if (!dragged.current && Math.hypot(dx, dy) < 4) return;
+          dragged.current = true;
+          const box = event.currentTarget.getBoundingClientRect();
+          const scale = 2 ** drag.start.zoom;
+          drag.last = panBy(drag.start, dx / (box.width * scale), dy / (box.height * scale));
+          framer(drag.last);
+        }}
+        onPointerUp={() => {
+          const drag = panDrag.current;
+          panDrag.current = undefined;
+          if (drag?.last) changeFraming(drag.last);
+        }}
+        onPointerCancel={() => {
+          panDrag.current = undefined;
+        }}
         onClick={() => {
+          if (dragged.current) {
+            dragged.current = false;
+            return;
+          }
           if (panel || pictureOpen) {
             setPanel(undefined);
             setPictureOpen(false);
@@ -1375,7 +1510,10 @@ function PlayerFile() {
                     label="Picture and sound"
                     icon={SlidersHorizontal}
                     active={pictureOpen}
-                    on={picture.preset !== "standard"}
+                    on={
+                      picture.preset !== "standard" ||
+                      JSON.stringify(framing) !== JSON.stringify(defaultFraming)
+                    }
                     onClick={openPicture}
                     shortcut="P"
                   />
@@ -1414,16 +1552,29 @@ function PlayerFile() {
       <PictureSheet
         open={pictureOpen && !mini && !failure}
         onClose={() => setPictureOpen(false)}
+        tab={sheetTab}
+        onTabChange={setSheetTab}
         title={watching?.name || playing?.title || "this title"}
-        picture={picture}
-        presets={namedPictures}
-        ownPicture={adjustments?.picture != null || unsavedPicture !== undefined}
         saves={titleKey !== ""}
-        onPreview={picturer}
-        onChange={changePicture}
-        onReset={resetPicture}
-        onUseForAll={pictureForAll}
-        onSavePreset={savePicturePreset}
+        picture={{
+          picture,
+          presets: namedPictures,
+          own: adjustments?.picture != null || unsavedPicture !== undefined,
+          onPreview: picturer,
+          onChange: changePicture,
+          onReset: resetPicture,
+          onUseForAll: pictureForAll,
+          onSavePreset: savePicturePreset,
+        }}
+        framing={{
+          framing,
+          own: adjustments?.framing != null || unsavedFraming !== undefined,
+          found: state.autoCrop ?? undefined,
+          onPreview: framer,
+          onChange: changeFraming,
+          onReset: resetFraming,
+          onUseForAll: framingForAll,
+        }}
       />
       {watching && (
         <StreamSwitcher

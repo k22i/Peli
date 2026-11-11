@@ -1,7 +1,18 @@
-import { RotateCcw, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-import { Field, PanelSlider, Toggle } from "@/components/player/panel-controls";
+import { FramingTab, type FramingProps } from "@/components/player/framing-tab";
+import {
+  Chip,
+  ChipGroup,
+  Field,
+  PanelSlider,
+  previewRow,
+  SectionHead,
+  sheetSurface,
+  Toggle,
+  type Preview,
+} from "@/components/player/panel-controls";
 import {
   maxNamedPictures,
   maxPresetName,
@@ -13,49 +24,18 @@ import {
   withValue,
   type NamedPicture,
   type Picture,
-  type PictureControl,
 } from "@/lib/picture";
 import { cn } from "@/lib/utils";
 
-export type PictureSheetTab = "picture";
+export type PictureSheetTab = "picture" | "framing";
 
-// The sheet's surface, the subtitle panel's: warm near-black glass on the
-// right. While a slider is dragged it gives way to the picture
-// (`previewing`): only that slider's row stays, on its own pill.
-const surface =
-  "bg-[rgb(18_16_14/0.86)] shadow-[0_30px_80px_-20px_rgb(0_0_0/0.8)] ring-1 ring-white/10 backdrop-blur-3xl backdrop-saturate-150 reduced-transparency:bg-[rgb(18_16_14)] reduced-transparency:backdrop-blur-none";
-
-// The player's Picture & sound sheet (P): how this title plays. A change
-// sticks to the title (the player saves it as the title's adjustment); Reset
-// gives it back the profile's default, Use for all titles makes it that
-// default.
-export function PictureSheet({
-  open,
-  onClose,
-  title,
-  picture,
-  presets,
-  ownPicture,
-  saves,
-  onPreview,
-  onChange,
-  onReset,
-  onUseForAll,
-  onSavePreset,
-}: {
-  open: boolean;
-  onClose: () => void;
-  // The title's name, for whom the changes are kept.
-  title: string;
+export type PictureProps = {
   // What plays now.
   picture: Picture;
   // The profile's own presets.
   presets: readonly NamedPicture[];
   // Whether the title has a picture of its own (Reset has something to do).
-  ownPicture: boolean;
-  // Whether a change is kept for the title: false for a file nothing names,
-  // whose changes last until it ends.
-  saves: boolean;
+  own: boolean;
   // A slider moves: show it, keep nothing yet.
   onPreview: (picture: Picture) => void;
   // A value to keep.
@@ -63,12 +43,42 @@ export function PictureSheet({
   onReset: () => void;
   onUseForAll: () => void;
   onSavePreset: (name: string) => void;
+};
+
+const tabs: { id: PictureSheetTab; label: string }[] = [
+  { id: "picture", label: "Picture" },
+  { id: "framing", label: "Framing" },
+];
+
+// The player's Picture & sound sheet (P): how this title plays. A change
+// sticks to the title (the player saves it as the title's adjustment); Reset
+// gives a section back the profile's default, Use for all titles makes it
+// that default.
+export function PictureSheet({
+  open,
+  onClose,
+  tab,
+  onTabChange,
+  title,
+  saves,
+  picture,
+  framing,
+}: {
+  open: boolean;
+  onClose: () => void;
+  tab: PictureSheetTab;
+  onTabChange: (tab: PictureSheetTab) => void;
+  // The title's name, for whom the changes are kept.
+  title: string;
+  // Whether a change is kept for the title: false for a file nothing names,
+  // whose changes last until it ends.
+  saves: boolean;
+  picture: PictureProps;
+  framing: FramingProps;
 }) {
   const panel = useRef<HTMLDialogElement>(null);
-  const [active, setActive] = useState<PictureControl>();
-  // The values while dragging: Go shows them, the sheet follows them.
-  const [draft, setDraft] = useState<Picture>();
-  const shown = draft ?? picture;
+  const [active, setActive] = useState<string>();
+  const preview: Preview = { active, setActive };
 
   useEffect(() => {
     if (!open) return undefined;
@@ -79,8 +89,7 @@ export function PictureSheet({
   }, [open]);
   if (!open) return null;
 
-  const previewing = active !== undefined;
-  const hidden = (key?: PictureControl) => previewing && active !== key && "invisible";
+  const hidden = previewRow(preview);
 
   return (
     <dialog
@@ -95,24 +104,31 @@ export function PictureSheet({
       }}
       className={cn(
         "dark absolute inset-y-3 start-auto end-3 z-20 m-0 flex h-auto w-[min(25rem,calc(100%-1.5rem))] max-w-none flex-col overflow-hidden rounded-[1.75rem] border-0 p-0 text-foreground transition-[background-color,box-shadow,backdrop-filter] duration-200 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-right-6 motion-safe:duration-300",
-        previewing ? "bg-transparent shadow-none ring-0" : surface,
+        active !== undefined ? "bg-transparent shadow-none ring-0" : sheetSurface,
       )}
     >
-      <header className={cn("flex items-center gap-2 px-4 pt-4 pb-3", hidden())}>
+      <header className={cn("flex items-center gap-2 px-4 pt-4 pb-3", hidden)}>
         <div
           role="tablist"
           aria-label="Picture and sound"
           className="flex flex-1 gap-0.5 rounded-full bg-white/7 p-0.5"
         >
-          <button
-            type="button"
-            role="tab"
-            aria-selected
-            data-autofocus
-            className="h-8 flex-1 rounded-full bg-white text-small font-[600] text-black outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            Picture
-          </button>
+          {tabs.map((each) => (
+            <button
+              key={each.id}
+              type="button"
+              role="tab"
+              aria-selected={tab === each.id}
+              data-autofocus={tab === each.id || undefined}
+              onClick={() => onTabChange(each.id)}
+              className={cn(
+                "h-8 flex-1 rounded-full text-small font-[600] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
+                tab === each.id ? "bg-white text-black" : "text-white/65 hover:text-white",
+              )}
+            >
+              {each.label}
+            </button>
+          ))}
         </div>
         <button
           type="button"
@@ -124,93 +140,82 @@ export function PictureSheet({
         </button>
       </header>
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-        <section aria-label="Picture" className="flex flex-col gap-5 px-4 pb-5">
-          <SectionHead
-            title="Picture"
-            className={cn(hidden())}
-            reset={ownPicture ? onReset : undefined}
-          />
-          <div className={cn(hidden())}>
-            <PresetChips picture={shown} presets={presets} onPick={onChange} />
-          </div>
-          {pictureControls.map(({ key, label }) => (
-            <div
-              key={key}
-              className={cn(
-                hidden(key),
-                active === key && cn("-mx-2 rounded-2xl px-2 py-2", surface),
-              )}
-            >
-              <Field label={label} value={signed(shown[key])}>
-                <PanelSlider
-                  label={label}
-                  value={shown[key]}
-                  min={-100}
-                  max={100}
-                  step={1}
-                  center
-                  onActive={(on) => {
-                    setActive(on ? key : undefined);
-                    if (!on) setDraft(undefined);
-                  }}
-                  onChange={(value) => {
-                    const next = withValue(shown, { [key]: value }, presets);
-                    setDraft(next);
-                    onPreview(next);
-                  }}
-                  onCommit={(value) => {
-                    setDraft(undefined);
-                    onChange(withValue(shown, { [key]: value }, presets));
-                  }}
-                />
-              </Field>
-            </div>
-          ))}
-          <div className={cn("-mx-4", hidden())}>
-            <Toggle
-              label="Shadow lift"
-              hint="Opens up dark scenes, for watching in a bright room."
-              checked={shown.shadowLift}
-              onChange={(shadowLift) => onChange(withValue(shown, { shadowLift }, presets))}
-            />
-          </div>
-        </section>
+        {tab === "picture" && <PictureTab {...picture} preview={preview} />}
+        {tab === "framing" && <FramingTab {...framing} preview={preview} />}
       </div>
       <Footer
-        className={cn(hidden())}
+        className={hidden}
         title={title}
         saves={saves}
-        full={presets.length >= maxNamedPictures}
-        onUseForAll={onUseForAll}
-        onSavePreset={onSavePreset}
+        onUseForAll={tab === "picture" ? picture.onUseForAll : framing.onUseForAll}
+        preset={
+          tab === "picture"
+            ? {
+                full: picture.presets.length >= maxNamedPictures,
+                onSave: picture.onSavePreset,
+              }
+            : undefined
+        }
       />
     </dialog>
   );
 }
 
-function SectionHead({
-  title,
-  reset,
-  className,
-}: {
-  title: string;
-  reset: (() => void) | undefined;
-  className?: string;
-}) {
+function PictureTab({
+  picture,
+  presets,
+  own,
+  onPreview,
+  onChange,
+  onReset,
+  preview,
+}: PictureProps & { preview: Preview }) {
+  // The values while dragging: Go shows them, the sheet follows them.
+  const [draft, setDraft] = useState<Picture>();
+  const shown = draft ?? picture;
+  const hidden = previewRow(preview);
   return (
-    <div className={cn("flex h-8 items-center justify-between", className)}>
-      <h3 className="type-eyebrow text-white/55">{title}</h3>
-      {reset && (
-        <button
-          type="button"
-          onClick={reset}
-          className="flex h-8 items-center gap-1.5 rounded-full px-3 text-small font-[560] text-white/75 outline-none hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-3.5"
-        >
-          <RotateCcw aria-hidden />
-          Reset
-        </button>
-      )}
-    </div>
+    <section aria-label="Picture" className="flex flex-col gap-5 px-4 pb-5">
+      <SectionHead title="Picture" className={hidden} reset={own ? onReset : undefined} />
+      <div className={hidden}>
+        <PresetChips picture={shown} presets={presets} onPick={onChange} />
+      </div>
+      {pictureControls.map(({ key, label }) => (
+        <div key={key} className={previewRow(preview, key)}>
+          <Field label={label} value={signed(shown[key])}>
+            <PanelSlider
+              label={label}
+              value={shown[key]}
+              min={-100}
+              max={100}
+              step={1}
+              center
+              onActive={(on) => {
+                preview.setActive(on ? key : undefined);
+                if (!on) setDraft(undefined);
+              }}
+              onChange={(value) => {
+                const next = withValue(shown, { [key]: value }, presets);
+                setDraft(next);
+                onPreview(next);
+              }}
+              onCommit={(value) => {
+                setDraft(undefined);
+                onChange(withValue(shown, { [key]: value }, presets));
+              }}
+            />
+          </Field>
+        </div>
+      ))}
+      <div className={cn("-mx-4", hidden)}>
+        <Toggle
+          label="Shadow lift"
+          hint="Opens up dark scenes, for watching in a bright room."
+          checked={shown.shadowLift}
+          onChange={(shadowLift) => onChange(withValue(shown, { shadowLift }, presets))}
+        />
+      </div>
+    </section>
   );
 }
 
@@ -231,7 +236,7 @@ function PresetChips({
     ...presets.map(({ name }) => ({ id: userPreset(name), name })),
   ];
   return (
-    <fieldset aria-label="Preset" className="m-0 flex min-w-0 flex-wrap gap-1.5 border-0 p-0">
+    <ChipGroup label="Preset">
       {chips.map((chip) => (
         <Chip
           key={chip.id}
@@ -244,56 +249,29 @@ function PresetChips({
           {chip.name}
         </Chip>
       ))}
-    </fieldset>
-  );
-}
-
-function Chip({
-  pressed,
-  onClick,
-  children,
-}: {
-  pressed: boolean;
-  onClick: () => void;
-  children: ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      aria-pressed={pressed}
-      onClick={onClick}
-      className={cn(
-        "h-8 max-w-full truncate rounded-full px-3.5 text-[0.875rem] font-[560] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
-        pressed
-          ? "bg-white text-black"
-          : "bg-white/8 text-white/80 hover:bg-white/14 hover:text-white",
-      )}
-    >
-      {children}
-    </button>
+    </ChipGroup>
   );
 }
 
 function Footer({
   title,
   saves,
-  full,
   onUseForAll,
-  onSavePreset,
+  preset,
   className,
 }: {
   title: string;
   saves: boolean;
-  full: boolean;
   onUseForAll: () => void;
-  onSavePreset: (name: string) => void;
+  // Saving the values as a preset: the Picture tab's only.
+  preset: { full: boolean; onSave: (name: string) => void } | undefined;
   className?: string;
 }) {
   const [naming, setNaming] = useState(false);
   const [name, setName] = useState("");
   const save = () => {
-    if (!name.trim()) return;
-    onSavePreset(name.trim());
+    if (!name.trim() || !preset) return;
+    preset.onSave(name.trim());
     setNaming(false);
     setName("");
   };
@@ -302,7 +280,7 @@ function Footer({
       <p className="text-tiny leading-snug text-white/55">
         {saves ? `Changes here are kept for ${title}.` : "Changes here last until this video ends."}
       </p>
-      {naming ? (
+      {naming && preset ? (
         <form
           className="flex gap-2"
           onSubmit={(event) => {
@@ -333,15 +311,19 @@ function Footer({
       ) : (
         <div className="flex gap-2">
           <FooterButton onClick={onUseForAll}>Use for all titles</FooterButton>
-          <FooterButton
-            disabled={full}
-            title={
-              full ? `You have ${maxNamedPictures} presets: delete one in Settings` : undefined
-            }
-            onClick={() => setNaming(true)}
-          >
-            Save as preset…
-          </FooterButton>
+          {preset && (
+            <FooterButton
+              disabled={preset.full}
+              title={
+                preset.full
+                  ? `You have ${maxNamedPictures} presets: delete one in Settings`
+                  : undefined
+              }
+              onClick={() => setNaming(true)}
+            >
+              Save as preset…
+            </FooterButton>
+          )}
         </div>
       )}
     </footer>

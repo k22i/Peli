@@ -52,6 +52,9 @@ type ProfileSettings struct {
 	// own (TitleAdjustments); PicturePresets are the profile's own presets.
 	Picture        Picture        `json:"picture"`
 	PicturePresets []NamedPicture `json:"picturePresets"`
+	// Framing is how titles fill the window unless they have their own: the
+	// fit and auto-crop are what a profile sets; the rest stays default.
+	Framing Framing `json:"framing"`
 }
 
 // SubtitleStyle is how text subtitles look: player.SubtitleStyle,
@@ -128,7 +131,7 @@ func DefaultProfileSettings() ProfileSettings {
 		AudioLanguages: []string{}, SubtitleSize: "medium", SubtitleStyle: DefaultSubtitleStyle(), Captions: "system",
 		SimklScrobble: true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
-		Picture: DefaultPicture(), PicturePresets: []NamedPicture{},
+		Picture: DefaultPicture(), PicturePresets: []NamedPicture{}, Framing: DefaultFraming(),
 	}
 }
 
@@ -263,6 +266,9 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	if !slices.Contains(CaptionsModes, settings.Captions) {
 		return fmt.Errorf("%w: captions %q", ErrInvalidSettings, settings.Captions)
+	}
+	if !settings.Framing.Valid() {
+		return fmt.Errorf("%w: framing %+v", ErrInvalidSettings, settings.Framing)
 	}
 	return validatePictures(settings.Picture, settings.PicturePresets)
 }
