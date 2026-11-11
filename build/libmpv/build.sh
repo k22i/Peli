@@ -164,6 +164,9 @@ meson_build libplacebo -Dopengl=enabled -Dgl-proc-addr=enabled -Ddemos=false -Dt
 # --enable-nonfree: LGPL 2.1 or later.
 ffmpeg_filters=abuffer,abuffersink,aformat,anull,aresample,buffer,buffersink,format,null,scale,
 ffmpeg_filters+=bwdif,yadif,hflip,vflip,transpose,crop,pad,volume,atempo,pan,loudnorm,dynaudnorm
+# The player's sound (internal/player/sound.go): an equalizer (all three in
+# af_biquads.c) and dialogue boost. LGPL, none needs --enable-gpl.
+ffmpeg_filters+=,equalizer,bass,treble,dialoguenhance
 ffmpeg_protocols=file,pipe,data,http,https,httpproxy,tcp,tls,crypto,hls,concat,subfile
 
 ffmpeg_flags=(

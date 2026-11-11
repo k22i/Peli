@@ -18,6 +18,12 @@ enum { W = 320, H = 180 };
 
 static int failed;
 
+// soundChain is every audio filter the player uses (internal/player/sound.go)
+// in one chain, set on every file: a filter missing from the build fails.
+static const char *soundChain =
+	"lavfi=[dialoguenhance=enhance=2,dynaudnorm=f=150:g=7:p=0.9:m=10,"
+	"equalizer=f=1000:t=q:w=1:g=2,bass=g=3,treble=g=2,volume=1.0,pan=stereo|c0=c0|c1=c1]";
+
 static void fail(const char *what, const char *detail) {
 	fprintf(stderr, "FAIL %s: %s\n", what, detail);
 	failed = 1;
@@ -78,6 +84,8 @@ static void play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char
 		if (ev->event_id == MPV_EVENT_LOG_MESSAGE) {
 			mpv_event_log_message *msg = ev->data;
 			fprintf(stderr, "[%s] %s: %s", msg->level, msg->prefix, msg->text);
+			if (strstr(msg->text, "No such filter") || strstr(msg->text, "parsing the filter graph failed"))
+				fail("af", msg->text);
 		}
 		if (ev->event_id == MPV_EVENT_END_FILE) {
 			mpv_event_end_file *end = ev->data;
@@ -148,6 +156,7 @@ int main(int argc, char **argv) {
 	check(mpv_set_option_string(mpv, "ao", "null"), "ao");
 	check(mpv_set_option_string(mpv, "hwdec", "videotoolbox,auto-safe"), "hwdec");
 	check(mpv_set_option_string(mpv, "sid", "1"), "sid");
+	check(mpv_set_option_string(mpv, "af", soundChain), "af");
 	check(mpv_initialize(mpv), "mpv_initialize");
 	check(mpv_request_log_messages(mpv, getenv("SMOKE_LOG") ? getenv("SMOKE_LOG") : "warn"), "log");
 
