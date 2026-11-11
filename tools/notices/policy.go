@@ -38,7 +38,9 @@ func identify(text string) string {
 		return "OFL-1.1"
 	case has("this is free and unencumbered software released into the public domain"):
 		return "Unlicense"
-	case has("permission to use, copy, modify, and/or distribute this software for any purpose"):
+	// The ISC text, and its older wording without "/or" (coder/websocket).
+	case has("permission to use, copy, modify, and/or distribute this software for any purpose"),
+		has("permission to use, copy, modify, and distribute this software for any purpose"):
 		return "ISC"
 	case has("redistribution and use in source and binary forms") && has("neither the name"):
 		return "BSD-3-Clause"
