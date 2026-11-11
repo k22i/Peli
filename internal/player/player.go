@@ -620,7 +620,8 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.mu.Unlock()
 	props := append(opts.tracks(), pictureProps(s.pictureFor(opts))...)
 	props = append(props, framingProps(framing)...)
-	props = append(props, [2]string{"video-crop", ""})
+	// Each file plays at normal speed, whatever the last one played at.
+	props = append(props, [2]string{"video-crop", ""}, [2]string{"speed", "1"})
 	for _, p := range props {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			return notPlaying(err)

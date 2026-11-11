@@ -40,6 +40,7 @@ import { Prompt, promptEnter } from "@/components/player/prompt";
 import { SeekBar } from "@/components/player/seek-bar";
 import { SecondSubtitles } from "@/components/player/second-subtitles";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
+import { SpeedMenu } from "@/components/player/speed-menu";
 import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
 import {
   defaultSubtitleStyle,
@@ -127,6 +128,7 @@ import {
 import { pictureOf, savePreset, standardPicture, userPreset, type Picture } from "@/lib/picture";
 import { qualityOf, type Quality } from "@/lib/quality";
 import { audioOf, clampVolume, soundOf, type Audio, type Sound } from "@/lib/sound";
+import { normalSpeed, speedLabel, stepSpeed } from "@/lib/speed";
 import { resolutionLabel } from "@/lib/stream-labels";
 import {
   titleAdjustmentsQuery,
@@ -323,6 +325,7 @@ function PlayerFile() {
     state.subtitleDelay,
     (a, b) => Math.abs(a - b) < 0.001,
   );
+  const [speed, setSpeed] = useAhead(state.speed, (a, b) => Math.abs(a - b) < 0.001);
   // One seek and one volume change at a time, the newest next.
   const [seeker] = useState(() =>
     latestOnly(({ to, exact }: { to: number; exact: boolean }) =>
@@ -340,6 +343,8 @@ function PlayerFile() {
   // The addon subtitles being added, to show a spinner on their row.
   const [loadingKey, setLoadingKey] = useState<string>();
   const [helpOpen, setHelpOpen] = useState(false);
+  // The dock's menus (Speed, More) have the keys while open.
+  const [speedOpen, setSpeedOpen] = useState(false);
   const [switcherOpen, setSwitcherOpen] = useState(false);
   // The stream being opened from the switcher, or why it couldn't be.
   const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
@@ -495,6 +500,8 @@ function PlayerFile() {
   };
 
   const ready = state.active && !error;
+  // A menu the dock no longer shows (the mini player, a failure) is closed.
+  const dockMenuOpen = speedOpen && ready && !mini;
   const known = state.duration > 0;
   // The picker for the next episode, in place of this screen: no stream
   // was found or would open.
@@ -726,6 +733,14 @@ function PlayerFile() {
     volumer(to);
     if (muted && to > 0) toggleMute();
   };
+  // The speed (the Speed menu, [ ] and Backspace), through the watch
+  // party's gate in Go: a party that only its host controls refuses it.
+  const changeSpeed = (to: number) => {
+    if (!ready) return;
+    setSpeed(to);
+    Player.SetSpeed(to).catch(() => {});
+    setNotice({ text: to === normalSpeed ? "Normal speed" : `Speed ${speedLabel(to)}` });
+  };
   const toggleMute = () => {
     setMuted(!muted);
     Player.SetMuted(!muted).catch(() => {});
@@ -744,6 +759,7 @@ function PlayerFile() {
       setHelpOpen(false);
       setSwitcherOpen(false);
       setPictureOpen(false);
+      setSpeedOpen(false);
     }
     Player.SetMini(!mini).catch(() => {});
   };
@@ -1204,7 +1220,7 @@ function PlayerFile() {
       if (!nudging) wake();
       // The switcher has the keys: Esc closes it, Space picks. The panel
       // keeps them too, but for Z and X (timing) and Esc (closes it).
-      if (error || switcherOpen || partyOpen) return;
+      if (error || switcherOpen || partyOpen || dockMenuOpen) return;
       if (event.metaKey || event.ctrlKey) return;
       // Option and the arrows pan the picture (mpv's keys); Option changes
       // event.key on macOS, so these go by event.code. Nothing else takes
@@ -1292,6 +1308,9 @@ function PlayerFile() {
           setNotice({ text: "Zoom 1×" });
         },
         a: () => ready && audioTracks.length > 1 && cycleAudio(),
+        "[": () => changeSpeed(stepSpeed(speed, -1)),
+        "]": () => changeSpeed(stepSpeed(speed, 1)),
+        backspace: () => speed !== normalSpeed && changeSpeed(normalSpeed),
         s: () => watching && openSwitcher(),
         w: () => (watching || party) && openParty(),
         "?": () => !mini && setHelpOpen(!helpOpen),
@@ -1331,7 +1350,8 @@ function PlayerFile() {
     menuOpen ||
     helpOpen ||
     switcherOpen ||
-    partyOpen;
+    partyOpen ||
+    dockMenuOpen;
   // The subtitles rise to clear the controls while they show, and settle
   // back when they hide. The user's own lift doesn't add to that: the
   // higher of the two wins, so a lift set to dodge the controls once doesn't
@@ -1767,6 +1787,14 @@ function PlayerFile() {
                 />
               </div>
               <div className="flex items-center justify-self-end gap-1.5">
+                {ready && (
+                  <SpeedMenu
+                    speed={speed}
+                    onChange={changeSpeed}
+                    open={speedOpen}
+                    onOpenChange={setSpeedOpen}
+                  />
+                )}
                 {ready && subtitlesMenu && (
                   <PanelButton
                     label="Subtitles"
