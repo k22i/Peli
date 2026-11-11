@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vite-plus/test";
 
 import { defaultFraming, type Framing } from "@/lib/framing";
 import { presetPicture, standardPicture, type Picture } from "@/lib/picture";
+import { defaultQuality, type Quality } from "@/lib/quality";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 
 import { PictureSheet, type PictureSheetTab } from "./picture-sheet";
@@ -35,6 +36,15 @@ function renderSheet(
     onReset: vi.fn<() => void>(),
     onUseForAll: vi.fn<() => void>(),
   };
+  const quality = {
+    quality: defaultQuality,
+    own: false,
+    hdrShown: false,
+    onPreview: vi.fn<(quality: Quality) => void>(),
+    onChange: vi.fn<(quality: Quality) => void>(),
+    onReset: vi.fn<() => void>(),
+    onUseForAll: vi.fn<() => void>(),
+  };
   const onClose = vi.fn<() => void>();
   const onTabChange = vi.fn<(tab: PictureSheetTab) => void>();
   render(
@@ -47,9 +57,10 @@ function renderSheet(
       saves={options.saves ?? true}
       picture={picture}
       framing={framing}
+      quality={quality}
     />,
   );
-  return { picture, framing, onClose, onTabChange };
+  return { picture, framing, quality, onClose, onTabChange };
 }
 
 describe("PictureSheet", () => {
@@ -142,5 +153,23 @@ describe("Framing tab", () => {
     expect(framing.onChange).toHaveBeenLastCalledWith({ ...defaultFraming, rotate: 90 });
     await userEvent.click(screen.getByRole("switch", { name: /Mirror/ }));
     expect(framing.onChange).toHaveBeenLastCalledWith({ ...defaultFraming, flipH: true });
+  });
+});
+
+describe("Quality tab", () => {
+  it("sets scaling, debanding and the upscaler, and warns about a heavy mix", async () => {
+    const { quality } = renderSheet({ tab: "quality" });
+    const scaling = screen.getByRole("group", { name: "Scaling" });
+    await userEvent.click(within(scaling).getByRole("button", { name: "High" }));
+    expect(quality.onChange).toHaveBeenLastCalledWith({ ...defaultQuality, scaling: "high" });
+    await userEvent.click(screen.getByRole("button", { name: "Anime4K" }));
+    expect(quality.onChange).toHaveBeenLastCalledWith({ ...defaultQuality, upscaler: "anime4k" });
+    await userEvent.click(screen.getByRole("switch", { name: /Motion smoothing/ }));
+    expect(quality.onChange).toHaveBeenLastCalledWith({ ...defaultQuality, motionSmoothing: true });
+  });
+
+  it("says on the device's button what it does", () => {
+    renderSheet({ tab: "quality" });
+    expect(screen.getByRole("button", { name: "Use on this device" })).toBeTruthy();
   });
 });

@@ -2,12 +2,13 @@ package player
 
 /*
 #cgo CFLAGS: -Wno-deprecated-declarations
-#cgo LDFLAGS: -framework Cocoa -framework QuartzCore -framework OpenGL -framework WebKit
+#cgo LDFLAGS: -framework Cocoa -framework QuartzCore -framework CoreVideo -framework OpenGL -framework WebKit
 #include "video.h"
 
 void sinag_video_playing(int on);
 int sinag_video_can_show_hdr(void);
 void sinag_video_show_hdr(int on);
+double sinag_video_smooth(int on);
 */
 import "C"
 
@@ -78,6 +79,15 @@ func (h *darwinHost) canShowHDR() bool {
 
 func (h *darwinHost) showHDR(on bool) {
 	application.InvokeSync(func() { C.sinag_video_show_hdr(cbool(on)) })
+}
+
+// smooth draws every vsync while on, and gives the display's refresh rate:
+// the render API doesn't know it.
+func (h *darwinHost) smooth(on bool) float64 {
+	if !h.attached {
+		return 0
+	}
+	return float64(C.sinag_video_smooth(cbool(on)))
 }
 
 func (h *darwinHost) detach() {

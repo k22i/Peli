@@ -7,11 +7,18 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-var japanese = ProfileSettings{AudioLanguages: []string{"jpn"}, SubtitleLanguage: "en", SubtitleSize: "large", Captions: "on"}
+var japanese = ProfileSettings{
+	AudioLanguages: []string{"jpn"}, SubtitleLanguage: "en", SubtitleSize: "large", Captions: "on",
+	SubtitleStyle:  SubtitleStyle{Font: "sans", Size: 135, Color: "#FFFFFF", Edge: "outline", Backdrop: 60},
+	Picture:        Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
+	PicturePresets: []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
+}
 
 var laptop = DeviceSettings{
 	HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20,
 	MaxResolution: "1080p", HDR: "off", DolbyVision: "on",
+	Quality: Quality{Scaling: "high", Deband: "low", Sharpen: 3, Upscaler: "fsr", MotionSmoothing: true,
+		Deinterlace: "on", ToneMapping: "bt.2390", TargetPeak: 250},
 }
 
 // The acceptance criterion: settings persist, per profile where they follow a
@@ -25,7 +32,7 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
 	equal(t, DefaultDeviceSettings(), DeviceSettings{
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
-		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
+		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 	})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))
@@ -390,4 +397,39 @@ func TestDeviceIDPersists(t *testing.T) {
 	check(t, err)
 	defer s.Close()
 	equal(t, must[string](t)(s.DeviceID()), id)
+}
+
+func TestQualityIsValidated(t *testing.T) {
+	if !DefaultQuality().Valid() || !laptop.Quality.Valid() {
+		t.Fatal("the default or laptop's quality isn't valid")
+	}
+	for _, q := range []Quality{
+		{Scaling: "ultra", Deband: "off", Upscaler: "off", Deinterlace: "auto", ToneMapping: "auto"},
+		{Scaling: "fast", Deband: "max", Upscaler: "off", Deinterlace: "auto", ToneMapping: "auto"},
+		{Scaling: "fast", Deband: "off", Sharpen: 11, Upscaler: "off", Deinterlace: "auto", ToneMapping: "auto"},
+		{Scaling: "fast", Deband: "off", Upscaler: "nnedi3", Deinterlace: "auto", ToneMapping: "auto"},
+		{Scaling: "fast", Deband: "off", Upscaler: "off", Deinterlace: "maybe", ToneMapping: "auto"},
+		{Scaling: "fast", Deband: "off", Upscaler: "off", Deinterlace: "auto", ToneMapping: "reinhard"},
+		{Scaling: "fast", Deband: "off", Upscaler: "off", Deinterlace: "auto", ToneMapping: "auto", TargetPeak: 50},
+	} {
+		if q.Valid() {
+			t.Errorf("%+v: valid", q)
+		}
+	}
+}
+
+// A caller from before picture, framing and quality saves the defaults.
+func TestEmptySectionsSaveAsDefaults(t *testing.T) {
+	s, _ := openTemp(t)
+	anna := must[Profile](t)(s.CreateProfile(Profile{Name: "Anna"}))
+	old := japanese
+	old.Picture, old.Framing = Picture{}, Framing{}
+	check(t, s.SaveProfileSettings(anna.ID, old))
+	got := must[ProfileSettings](t)(s.ProfileSettings(anna.ID))
+	equal(t, got.Picture, DefaultPicture())
+	equal(t, got.Framing, DefaultFraming())
+	device := laptop
+	device.Quality = Quality{}
+	check(t, s.SaveDeviceSettings(device))
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()).Quality, DefaultQuality())
 }

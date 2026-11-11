@@ -170,6 +170,16 @@ vi.mock("@bindings/store", async () => {
           diagnostics: false,
           torrentStreaming: false,
           torrentCacheGB: 5,
+          quality: {
+            scaling: "balanced",
+            deband: "off",
+            sharpen: 0,
+            upscaler: "off",
+            motionSmoothing: false,
+            deinterlace: "auto",
+            toneMapping: "auto",
+            targetPeak: 0,
+          },
         },
       SaveDeviceSettings: (settings: DeviceSettings) =>
         store.save(() => {

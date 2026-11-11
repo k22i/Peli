@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vite-plus/test";
 
+import { defaultQuality } from "@/lib/quality";
 import type { Stream } from "@/lib/addon-protocol";
 
 import type { DeviceSettings, ProfileSettings } from "@bindings/store";
@@ -79,6 +80,7 @@ const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   diagnostics: false,
   torrentStreaming: false,
   torrentCacheGB: 5,
+  quality: defaultQuality,
   ...changes,
 });
 // The display reports HDR, or not.

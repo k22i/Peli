@@ -2,6 +2,7 @@ import { X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { FramingTab, type FramingProps } from "@/components/player/framing-tab";
+import { QualityTab, type QualityProps } from "@/components/player/quality-tab";
 import {
   Chip,
   ChipGroup,
@@ -27,7 +28,7 @@ import {
 } from "@/lib/picture";
 import { cn } from "@/lib/utils";
 
-export type PictureSheetTab = "picture" | "framing";
+export type PictureSheetTab = "picture" | "framing" | "quality";
 
 export type PictureProps = {
   // What plays now.
@@ -48,6 +49,7 @@ export type PictureProps = {
 const tabs: { id: PictureSheetTab; label: string }[] = [
   { id: "picture", label: "Picture" },
   { id: "framing", label: "Framing" },
+  { id: "quality", label: "Quality" },
 ];
 
 // The player's Picture & sound sheet (P): how this title plays. A change
@@ -63,6 +65,7 @@ export function PictureSheet({
   saves,
   picture,
   framing,
+  quality,
 }: {
   open: boolean;
   onClose: () => void;
@@ -75,6 +78,7 @@ export function PictureSheet({
   saves: boolean;
   picture: PictureProps;
   framing: FramingProps;
+  quality: QualityProps;
 }) {
   const panel = useRef<HTMLDialogElement>(null);
   const [active, setActive] = useState<string>();
@@ -142,12 +146,20 @@ export function PictureSheet({
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         {tab === "picture" && <PictureTab {...picture} preview={preview} />}
         {tab === "framing" && <FramingTab {...framing} preview={preview} />}
+        {tab === "quality" && <QualityTab {...quality} preview={preview} />}
       </div>
       <Footer
         className={hidden}
         title={title}
         saves={saves}
-        onUseForAll={tab === "picture" ? picture.onUseForAll : framing.onUseForAll}
+        onUseForAll={
+          tab === "picture"
+            ? picture.onUseForAll
+            : tab === "framing"
+              ? framing.onUseForAll
+              : quality.onUseForAll
+        }
+        useForAllLabel={tab === "quality" ? "Use on this device" : "Use for all titles"}
         preset={
           tab === "picture"
             ? {
@@ -257,12 +269,14 @@ function Footer({
   title,
   saves,
   onUseForAll,
+  useForAllLabel,
   preset,
   className,
 }: {
   title: string;
   saves: boolean;
   onUseForAll: () => void;
+  useForAllLabel: string;
   // Saving the values as a preset: the Picture tab's only.
   preset: { full: boolean; onSave: (name: string) => void } | undefined;
   className?: string;
@@ -310,7 +324,7 @@ function Footer({
         </form>
       ) : (
         <div className="flex gap-2">
-          <FooterButton onClick={onUseForAll}>Use for all titles</FooterButton>
+          <FooterButton onClick={onUseForAll}>{useForAllLabel}</FooterButton>
           {preset && (
             <FooterButton
               disabled={preset.full}

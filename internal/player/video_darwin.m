@@ -25,6 +25,10 @@ static BOOL g_web_drew_background;
 static mpv_render_context *g_rctx; // used on g_queue, under the CGL context lock
 static atomic_int g_redraw_queued;
 static id<NSObject> g_activity;
+// g_link draws every vsync while motion smoothing is on: mpv's
+// display-resample mode needs a render each refresh, not only when a new
+// frame is due.
+static CVDisplayLinkRef g_link;
 // g_edr: the next layer gets a half-float back buffer, for HDR (#66).
 static BOOL g_edr;
 // g_sdr: the colourspace a half-float layer has for SDR, the screen's.
@@ -239,7 +243,49 @@ int sinag_video_start(mpv_handle *mpv, char *err, int errlen) {
 	return 0;
 }
 
+static void stop_link(void) {
+	@synchronized([NSProcessInfo class]) {
+		if (!g_link) return;
+		CVDisplayLinkStop(g_link);
+		CVDisplayLinkRelease(g_link);
+		g_link = NULL;
+	}
+}
+
+static CVReturn on_vsync(CVDisplayLinkRef link, const CVTimeStamp *now, const CVTimeStamp *out,
+                         CVOptionFlags flags, CVOptionFlags *flagsOut, void *ctx) {
+	redraw();
+	return kCVReturnSuccess;
+}
+
+// sinag_video_smooth starts or stops drawing every vsync of the layer's
+// display, and returns that display's refresh rate (0 if unknown or off),
+// for mpv's display-fps-override: the render API can't see the display.
+// Any thread.
+double sinag_video_smooth(int on) {
+	if (!on || !g_view) {
+		stop_link();
+		return 0;
+	}
+	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
+	@synchronized([NSProcessInfo class]) {
+		if (!g_link) {
+			if (CVDisplayLinkCreateWithActiveCGDisplays(&g_link) != kCVReturnSuccess) {
+				g_link = NULL;
+				return 0;
+			}
+			CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(g_link, layer->ctx, layer->pf);
+			CVDisplayLinkSetOutputCallback(g_link, on_vsync, NULL);
+			CVDisplayLinkStart(g_link);
+		}
+		CVTime period = CVDisplayLinkGetNominalOutputVideoRefreshPeriod(g_link);
+		if ((period.flags & kCVTimeIsIndefinite) || period.timeValue == 0) return 0;
+		return (double)period.timeScale / (double)period.timeValue;
+	}
+}
+
 void sinag_video_stop(void) {
+	stop_link();
 	if (!g_view) return;
 	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
 	dispatch_sync(g_queue, ^{

@@ -206,6 +206,9 @@ type LoadOptions struct {
 	// Framing frames the picture; nil is the title's own or the profile's,
 	// like Picture.
 	Framing *store.Framing `json:"framing,omitempty"`
+	// Quality is how hard the renderer works; nil is the title's own, else
+	// this device's.
+	Quality *store.Quality `json:"quality,omitempty"`
 	// Watching names what the file is, so how far it plays is reported
 	// (#64); nil for a file nobody keeps progress of.
 	Watching *Watching `json:"watching,omitempty"`
@@ -281,6 +284,7 @@ func (o LoadOptions) valid() bool {
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
 		(o.SubtitleSize == "" || sized) && (o.SubtitleStyle == nil || o.SubtitleStyle.valid()) &&
 		(o.Picture == nil || o.Picture.Valid()) && (o.Framing == nil || o.Framing.Valid()) &&
+		(o.Quality == nil || o.Quality.Valid()) &&
 		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
 }
 
@@ -424,6 +428,8 @@ type Service struct {
 	file           uint64
 	autoCrop       context.CancelFunc
 	autoCropFile   uint64
+	// quality is how the file playing is rendered.
+	quality store.Quality
 }
 
 // session is one mpv handle and its video host.
@@ -594,6 +600,10 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			return notPlaying(err)
 		}
+	}
+	// A shader or scaler a build refuses isn't worth failing playback over.
+	if err := s.applyQuality(ses, s.qualityFor(opts)); err != nil {
+		slog.Warn("player: quality not set", "error", err)
 	}
 	// Before loadfile, so the new file's first frame can't come first.
 	s.update(func(st *State) {
@@ -1246,7 +1256,16 @@ func (s *Service) showHDR(ses *session, hdr bool) {
 	if hdr {
 		trc, prim = "pq", "bt.2020"
 	}
-	for _, p := range [][2]string{{"target-trc", trc}, {"target-prim", prim}} {
+	// Tone mapping is for SDR screens: shown as HDR, it's mpv's (#66).
+	s.mu.Lock()
+	q := s.quality
+	s.mu.Unlock()
+	props := [][2]string{{"target-trc", trc}, {"target-prim", prim}}
+	if q.Valid() {
+		all := qualityProps(q, hdr)
+		props = append(props, all[len(all)-2:]...)
+	}
+	for _, p := range props {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			slog.Warn("player: HDR not set", "error", err)
 			return

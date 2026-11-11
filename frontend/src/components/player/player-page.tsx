@@ -92,7 +92,13 @@ import {
 import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream } from "@/lib/resolve";
-import { profileSettingsQuery, useSaveProfileSettings, type ProfileSettings } from "@/lib/settings";
+import {
+  deviceSettingsQuery,
+  profileSettingsQuery,
+  useSaveDeviceSettings,
+  useSaveProfileSettings,
+  type ProfileSettings,
+} from "@/lib/settings";
 import {
   aspectName,
   aspectRatios,
@@ -108,6 +114,7 @@ import {
   type Framing,
 } from "@/lib/framing";
 import { pictureOf, savePreset, standardPicture, userPreset, type Picture } from "@/lib/picture";
+import { qualityOf, type Quality } from "@/lib/quality";
 import { resolutionLabel } from "@/lib/stream-labels";
 import {
   titleAdjustmentsQuery,
@@ -952,6 +959,35 @@ function PlayerFile() {
   // divided by the zoom. Let go, it's kept; a drag isn't a click.
   const panDrag = useRef<{ x: number; y: number; start: Framing; last?: Framing }>(undefined);
   const dragged = useRef(false);
+  // How hard the renderer works (the sheet's Quality tab): the title's own,
+  // else this device's.
+  const device = useQuery(deviceSettingsQuery).data;
+  const saveDevice = useSaveDeviceSettings();
+  const [unsavedQuality, setUnsavedQuality] = useState<Quality>();
+  const quality = unsavedQuality ?? qualityOf(device, adjustments);
+  const [qualifier] = useState(() => latestOnly(Player.SetQuality));
+  const changeQuality = (changed: Quality) => {
+    qualifier(changed);
+    if (!titleKey) {
+      setUnsavedQuality(changed);
+      return;
+    }
+    saveAdjustments.mutate(withSection(adjustments, "quality", changed));
+  };
+  const resetQuality = () => {
+    setUnsavedQuality(undefined);
+    qualifier(qualityOf(device, null));
+    if (titleKey) saveAdjustments.mutate(withSection(adjustments, "quality", undefined));
+  };
+  const qualityForAll = () => {
+    if (!device) return;
+    saveDevice.mutate({ ...device, quality });
+    setUnsavedQuality(undefined);
+    if (titleKey && adjustments?.quality) {
+      saveAdjustments.mutate(withSection(adjustments, "quality", undefined));
+    }
+    setNotice({ text: "Quality set for this device" });
+  };
   const openPicture = () => {
     if (mini) return;
     setHelpOpen(false);
@@ -1574,6 +1610,15 @@ function PlayerFile() {
           onChange: changeFraming,
           onReset: resetFraming,
           onUseForAll: framingForAll,
+        }}
+        quality={{
+          quality,
+          own: adjustments?.quality != null || unsavedQuality !== undefined,
+          hdrShown: state.hdr,
+          onPreview: qualifier,
+          onChange: changeQuality,
+          onReset: resetQuality,
+          onUseForAll: qualityForAll,
         }}
       />
       {watching && (

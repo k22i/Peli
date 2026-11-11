@@ -39,7 +39,10 @@ export function Segmented({
   options: { value: string; name: string; family?: string | undefined }[];
 }) {
   return (
-    <div aria-label={label} className="flex gap-1 rounded-2xl bg-white/7 p-1">
+    <fieldset
+      aria-label={label}
+      className="m-0 flex min-w-0 gap-1 rounded-2xl border-0 bg-white/7 p-1"
+    >
       {options.map((option) => (
         <button
           key={option.value}
@@ -57,7 +60,7 @@ export function Segmented({
           {option.name}
         </button>
       ))}
-    </div>
+    </fieldset>
   );
 }
 

@@ -49,6 +49,13 @@ func build(root string, deps []dep) (notices, error) {
 		}
 		native = append(native, dep{Kind: "native", Name: p.name, Version: strings.TrimPrefix(versions[p.source], "v"), Licence: p.licence, Text: text})
 	}
+	for _, p := range shaderParts {
+		b, err := os.ReadFile(filepath.Join(root, "third_party", "licences", p.file))
+		if err != nil {
+			return notices{}, err
+		}
+		native = append(native, dep{Kind: "native", Name: p.name, Version: p.version, Licence: "MIT", Text: strings.TrimSpace(string(b))})
+	}
 	return notices{
 		App:        dep{Kind: "app", Name: "Sinag", Licence: "MIT", Text: own},
 		Components: append(native, deps...),
@@ -91,6 +98,13 @@ var libmpvParts = []struct{ source, name, licence, file string }{
 	{"harfbuzz", "HarfBuzz", "MIT-Modern-Variant", "harfbuzz-COPYING.txt"},
 	{"fribidi", "GNU FriBidi", "LGPL-2.1-or-later", ""},
 	{"dav1d", "dav1d", "BSD-2-Clause", "dav1d-COPYING.txt"},
+}
+
+// shaderParts are the GLSL shaders the player can load for upscaling and
+// sharpening (internal/player/shaders, SOURCES.txt there).
+var shaderParts = []struct{ name, version, file string }{
+	{"Anime4K", "4.0.1", "anime4k-LICENSE.txt"},
+	{"AMD FidelityFX FSR and CAS, ported to mpv", "FSR 1.0.2", "fidelityfx-MIT.txt"},
 }
 
 const lgplPart = `Built into Sinag's libmpv. Licensed under the GNU Lesser General Public License, version 2.1 or later: the complete text is under "libmpv and FFmpeg".`

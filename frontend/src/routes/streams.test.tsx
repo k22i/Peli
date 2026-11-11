@@ -6,6 +6,7 @@ import type { Plugin, Query, Stream as PluginStream } from "@bindings/plugins";
 import type { Addon, ChosenSource, DeviceSettings, Profile, Progress } from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
+import { defaultQuality } from "@/lib/quality";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import cinemetaMovie from "@/lib/addon-protocol/fixtures/cinemeta/meta-movie.json";
 import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.json";
@@ -247,6 +248,7 @@ const device: DeviceSettings = {
   diagnostics: false,
   torrentStreaming: false,
   torrentCacheGB: 5,
+  quality: defaultQuality,
 };
 
 beforeEach(() => {

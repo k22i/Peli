@@ -103,6 +103,9 @@ func (h *windowsHost) playing(bool) {}
 func (h *windowsHost) canShowHDR() bool { return false }
 func (h *windowsHost) showHDR(bool)     {}
 
+// smooth: mpv's own window paces itself and knows its display.
+func (h *windowsHost) smooth(bool) float64 { return 0 }
+
 // detach leaves the window colour to the frontend, which owns it (the theme
 // repaints it when the player closes); mpv_terminate_destroy takes mpv's
 // window.

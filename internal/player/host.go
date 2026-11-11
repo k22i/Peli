@@ -26,6 +26,10 @@ type host interface {
 	// showHDR switches the surface to HDR, or back to SDR, while mpv
 	// switches what it renders to.
 	showHDR(on bool)
+	// smooth has the surface draw every display refresh while motion
+	// smoothing is on, and returns that refresh rate when mpv can't see it
+	// (the render API), else 0.
+	smooth(on bool) float64
 	// detach frees the render context and removes the video surface, after
 	// the event loop has stopped and before mpv_terminate_destroy.
 	detach()
@@ -51,4 +55,5 @@ func (nullHost) videoConfigured(bool) {}
 func (nullHost) playing(bool)         {}
 func (nullHost) canShowHDR() bool     { return false }
 func (nullHost) showHDR(bool)         {}
+func (nullHost) smooth(bool) float64  { return 0 }
 func (nullHost) detach()              {}

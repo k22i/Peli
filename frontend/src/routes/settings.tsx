@@ -88,6 +88,18 @@ import {
 } from "@/lib/picture";
 import { adjustedTitlesQuery } from "@/lib/title-adjustments";
 import { defaultFraming, fitModes } from "@/lib/framing";
+import {
+  debandLevels,
+  defaultQuality,
+  deinterlaceModes,
+  heavyWarning,
+  scalingHint,
+  scalingPresets,
+  toneMappings,
+  upscalerHint,
+  upscalers,
+  type Quality,
+} from "@/lib/quality";
 import { useTmdbKey } from "@/lib/tmdb";
 import { Service as Store } from "@bindings/store";
 import {
@@ -395,6 +407,53 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                   onCheckedChange={(hardwareDecoding) => setDevice({ hardwareDecoding })}
                 />
               </SettingRow>
+              <QualityDefaults
+                quality={device.quality ?? defaultQuality}
+                setQuality={(changes) =>
+                  setDevice({ quality: { ...(device.quality ?? defaultQuality), ...changes } })
+                }
+              />
+            </SettingsGroup>
+            <SettingsGroup title="HDR on a screen without it">
+              <SettingRow
+                id="tone-mapping"
+                label="Tone mapping"
+                description="How HDR video is brought into what this screen shows, when it can't show HDR. Natural keeps it true to the film; Bright lifts it; Filmic is softer at the top. Applies to this device."
+              >
+                <Choice
+                  id="tone-mapping"
+                  value={(device.quality ?? defaultQuality).toneMapping}
+                  options={toneMappingIds}
+                  labels={toneMappingLabels}
+                  onChange={(toneMapping) =>
+                    setDevice({ quality: { ...(device.quality ?? defaultQuality), toneMapping } })
+                  }
+                />
+              </SettingRow>
+              <SettingRow
+                id="target-peak"
+                label="Screen brightness"
+                description="How bright this screen gets, for tone mapping. Auto lets the player guess; a brighter value keeps more of the highlights."
+              >
+                <Choice
+                  id="target-peak"
+                  value={String((device.quality ?? defaultQuality).targetPeak)}
+                  options={["0", "100", "200", "300", "400", "600"]}
+                  labels={{
+                    "0": "Auto",
+                    "100": "100",
+                    "200": "200",
+                    "300": "300",
+                    "400": "400",
+                    "600": "600 nits",
+                  }}
+                  onChange={(peak) =>
+                    setDevice({
+                      quality: { ...(device.quality ?? defaultQuality), targetPeak: Number(peak) },
+                    })
+                  }
+                />
+              </SettingRow>
             </SettingsGroup>
             <PictureDefaults profileId={profileId} settings={settings} setProfile={setProfile} />
             <SettingsGroup title="Framing">
@@ -459,6 +518,107 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
         )}
       </WithSettings>
     </SettingsPaneView>
+  );
+}
+
+const toneMappingIds: string[] = toneMappings.map(({ id }) => id);
+const toneMappingLabels: Record<string, string> = Object.fromEntries(
+  toneMappings.map(({ id, name }) => [id, name]),
+);
+
+// A Choice's options and labels from a list of choices.
+const choices = (
+  list: readonly { id: string; name: string }[],
+): { options: string[]; labels: Record<string, string> } => ({
+  options: list.map(({ id }) => id),
+  labels: Object.fromEntries(list.map(({ id, name }) => [id, name])),
+});
+
+// How hard the renderer works on this device, unless a title has its own
+// (the player's Picture & sound sheet, Quality tab).
+function QualityDefaults({
+  quality,
+  setQuality,
+}: {
+  quality: Quality;
+  setQuality: (changes: Partial<Quality>) => void;
+}) {
+  return (
+    <>
+      <SettingRow
+        id="scaling"
+        label="Scaling"
+        description={`${scalingHint[quality.scaling] ?? ""} Applies to this device.`}
+      >
+        <Choice
+          id="scaling"
+          value={quality.scaling}
+          {...choices(scalingPresets)}
+          onChange={(scaling) => setQuality({ scaling })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="deband"
+        label="Debanding"
+        description="Smooths the steps in skies and dark gradients. High can soften fine texture."
+      >
+        <Choice
+          id="deband"
+          value={quality.deband}
+          {...choices(debandLevels)}
+          onChange={(deband) => setQuality({ deband })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="sharpen"
+        label="Sharpening"
+        description="AMD's contrast-adaptive sharpening: crisper detail without halos."
+      >
+        <Choice
+          id="sharpen"
+          value={String(quality.sharpen)}
+          options={["0", "3", "5", "8"]}
+          labels={{ "0": "Off", "3": "Light", "5": "Medium", "8": "Strong" }}
+          onChange={(sharpen) => setQuality({ sharpen: Number(sharpen) })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="upscaler"
+        label="Upscaling"
+        description={upscalerHint[quality.upscaler] ?? ""}
+      >
+        <Choice
+          id="upscaler"
+          value={quality.upscaler}
+          {...choices(upscalers)}
+          onChange={(upscaler) => setQuality({ upscaler })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="motion-smoothing"
+        label="Motion smoothing"
+        description={`Shows frames in step with the screen and blends between them: smoother pans, but films can look like TV (the soap-opera look). Uses more power. ${heavyWarning({ ...quality, motionSmoothing: true }) ?? ""}`}
+      >
+        <Switch
+          aria-labelledby="motion-smoothing-label"
+          aria-describedby="motion-smoothing-description"
+          checked={quality.motionSmoothing}
+          onCheckedChange={(motionSmoothing) => setQuality({ motionSmoothing })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="deinterlace"
+        label="Deinterlacing"
+        description="For TV recordings and DVDs. Auto only deinterlaces video marked as interlaced."
+      >
+        <Choice
+          id="deinterlace"
+          value={quality.deinterlace}
+          {...choices(deinterlaceModes)}
+          onChange={(deinterlace) => setQuality({ deinterlace })}
+        />
+      </SettingRow>
+    </>
   );
 }
 
@@ -541,7 +701,7 @@ function PictureDefaults({
         description={
           adjusted === 0
             ? "None: every title follows your defaults."
-            : `${adjusted} ${adjusted === 1 ? "title keeps its" : "titles keep their"} own picture or framing, on this device.`
+            : `${adjusted} ${adjusted === 1 ? "title keeps its" : "titles keep their"} own picture, framing or quality, on this device.`
         }
       >
         <Button

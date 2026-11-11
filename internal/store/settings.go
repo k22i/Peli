@@ -107,6 +107,9 @@ type DeviceSettings struct {
 	// on, since peers see their IP address. The piece cache's cap, in GB.
 	TorrentStreaming bool `json:"torrentStreaming"`
 	TorrentCacheGB   int  `json:"torrentCacheGB"`
+	// Quality is how hard the renderer works on the picture, unless a
+	// title has its own.
+	Quality Quality `json:"quality"`
 }
 
 var (
@@ -139,7 +142,7 @@ func DefaultProfileSettings() ProfileSettings {
 func DefaultDeviceSettings() DeviceSettings {
 	return DeviceSettings{
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
-		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
+		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 	}
 }
 
@@ -187,8 +190,15 @@ func carryOverAudioLanguage(data []byte, settings *ProfileSettings) error {
 	return nil
 }
 
-// SaveProfileSettings replaces profile id's settings.
+// SaveProfileSettings replaces profile id's settings. A picture or framing
+// left empty (by a caller from before they existed) is the default.
 func (s *Store) SaveProfileSettings(id uint64, settings ProfileSettings) error {
+	if settings.Picture == (Picture{}) {
+		settings.Picture = DefaultPicture()
+	}
+	if settings.Framing == (Framing{}) {
+		settings.Framing = DefaultFraming()
+	}
 	if err := validateProfileSettings(settings); err != nil {
 		return err
 	}
@@ -212,8 +222,12 @@ func (s *Store) DeviceSettings() (DeviceSettings, error) {
 	return settings, err
 }
 
-// SaveDeviceSettings replaces this device's settings.
+// SaveDeviceSettings replaces this device's settings. A quality left empty
+// (by a caller from before it existed) is the default.
 func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
+	if settings.Quality == (Quality{}) {
+		settings.Quality = DefaultQuality()
+	}
 	if !slices.Contains(TorrentCacheSizes, settings.TorrentCacheGB) {
 		return fmt.Errorf("%w: torrent cache of %d GB", ErrInvalidSettings, settings.TorrentCacheGB)
 	}
@@ -224,6 +238,9 @@ func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
 		if !slices.Contains(DisplayModes, mode) {
 			return fmt.Errorf("%w: %s %q", ErrInvalidSettings, name, mode)
 		}
+	}
+	if !settings.Quality.Valid() {
+		return fmt.Errorf("%w: quality %+v", ErrInvalidSettings, settings.Quality)
 	}
 	return s.db.Update(func(tx *bolt.Tx) error {
 		return put(tx.Bucket(bucketSettings), keyDevice, settings)

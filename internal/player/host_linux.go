@@ -78,6 +78,9 @@ func (h *linuxHost) playing(bool) {}
 func (h *linuxHost) canShowHDR() bool { return false }
 func (h *linuxHost) showHDR(bool)     {}
 
+// smooth: not on Linux yet (#103); mpv draws when a frame is due.
+func (h *linuxHost) smooth(bool) float64 { return 0 }
+
 func (h *linuxHost) detach() {
 	if !h.attached {
 		return
