@@ -1,7 +1,36 @@
-import type { Person } from "@/lib/tmdb";
+import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
-// A person's name wherever TMDB names one. A plain element for now; it keeps
-// the TMDB id so people can become links without touching its callers.
-export function PersonLink({ person }: { person: Person }) {
-  return <span data-person-id={person.id}>{person.name}</span>;
+import type { Person } from "@/lib/tmdb";
+import { cn } from "@/lib/utils";
+
+// A person's name wherever TMDB names one: a link to their page. Keeps the
+// TMDB id on the element too. `decorative` is for a second link to the same
+// page (a photo beside the name), left out of the Tab order and the
+// accessibility tree so the name is the one stop.
+export function PersonLink({
+  person,
+  decorative = false,
+  className,
+  children,
+}: {
+  person: Person;
+  decorative?: boolean;
+  className?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <Link
+      to="/person/$id"
+      params={{ id: String(person.id) }}
+      data-person-id={person.id}
+      {...(decorative && { tabIndex: -1, "aria-hidden": true })}
+      className={cn(
+        "rounded-xs outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        className,
+      )}
+    >
+      {children ?? person.name}
+    </Link>
+  );
 }

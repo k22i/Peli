@@ -16,12 +16,14 @@ export function CastList({ cast }: { cast: CastMember[] }) {
         <ul aria-labelledby="cast" className="flex shrink-0 gap-3 py-3">
           {cast.map((person) => (
             <li key={person.id} className="flex w-28 shrink-0 flex-col items-center gap-2.5">
-              <Artwork
-                src={person.photo}
-                use="avatar"
-                title={person.name}
-                className="aspect-square size-24 rounded-full shadow-card grayscale-[35%] transition-[filter] duration-(--duration-base) hover:grayscale-0"
-              />
+              <PersonLink person={person} decorative className="rounded-full">
+                <Artwork
+                  src={person.photo}
+                  use="avatar"
+                  title={person.name}
+                  className="aspect-square size-24 rounded-full shadow-card grayscale-[35%] transition-[filter] duration-(--duration-base) hover:grayscale-0"
+                />
+              </PersonLink>
               <div className="flex w-full flex-col items-center text-center">
                 <span className="line-clamp-2 text-small font-[590]">
                   <PersonLink person={person} />

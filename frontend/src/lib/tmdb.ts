@@ -61,7 +61,7 @@ export function tmdbKeyProblem(key: string): string | undefined {
 
 const isToken = (key: string) => key.startsWith("eyJ");
 
-async function tmdbGet(
+export async function tmdbGet(
   key: string,
   path: string,
   params: Record<string, string>,
@@ -210,7 +210,7 @@ const list = (value: unknown): Record<string, unknown>[] =>
   Array.isArray(value) ? value.map(record) : [];
 const text = (value: unknown): string | undefined =>
   typeof value === "string" && value !== "" ? value : undefined;
-const image = (size: string, path: unknown) => {
+export const tmdbImage = (size: string, path: unknown) => {
   const file = text(path);
   return file?.startsWith("/") ? `${images}/${size}${file}` : undefined;
 };
@@ -326,7 +326,7 @@ function parseTrailer(details: Record<string, unknown>): string | undefined {
 
 const yearOf = (date: unknown) => /^\d{4}/.exec(text(date) ?? "")?.[0];
 
-function parseRelated(items: unknown, fallback: Media): RelatedTitle[] {
+export function parseRelated(items: unknown, fallback: Media): RelatedTitle[] {
   return list(items)
     .flatMap((item): RelatedTitle[] => {
       const id = item["id"];
@@ -334,7 +334,7 @@ function parseRelated(items: unknown, fallback: Media): RelatedTitle[] {
       const media = item["media_type"] ?? fallback;
       if (typeof id !== "number" || !title || (media !== "movie" && media !== "tv")) return [];
       const year = yearOf(item["release_date"] ?? item["first_air_date"]);
-      const poster = image("w342", item["poster_path"]);
+      const poster = tmdbImage("w342", item["poster_path"]);
       return [{ tmdb: id, media, title, ...(year && { year }), ...(poster && { poster }) }];
     })
     .slice(0, relatedLimit);
@@ -369,12 +369,12 @@ export function parseTmdbArt(answer: unknown, region = systemRegion()): TmdbArt 
       const name = text(person["name"]);
       if (typeof id !== "number" || !name) return [];
       const character = text(person["character"]) ?? text(list(person["roles"])[0]?.["character"]);
-      const photo = image("w185", person["profile_path"]);
+      const photo = tmdbImage("w185", person["profile_path"]);
       return [{ id, name, ...(character && { character }), ...(photo && { photo }) }];
     })
     .slice(0, castLimit);
-  const logoUrl = logo && image("w500", logo["file_path"]);
-  const backdrop = image("original", details["backdrop_path"]);
+  const logoUrl = logo && tmdbImage("w500", logo["file_path"]);
+  const backdrop = tmdbImage("original", details["backdrop_path"]);
   const aliases = parseTmdbAliases(details);
   const certificate = parseCertificate(details, region);
   const trailer = parseTrailer(details);

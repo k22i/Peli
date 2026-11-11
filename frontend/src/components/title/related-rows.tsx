@@ -15,7 +15,7 @@ import {
 // names its titles by TMDB id and Cinemeta only knows IMDb ids, so a card's
 // IMDb id is looked up when it is opened (one small request, kept for a
 // month) rather than for all twenty up front.
-function useOpenRelated() {
+export function useOpenRelated() {
   const client = useQueryClient();
   const key = useTmdbKey();
   const open = useOpenTitle();
