@@ -23,6 +23,7 @@ import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.
 import type { Stream } from "@/lib/addon-protocol";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
+import { profileSettings } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -135,17 +136,9 @@ const japaneseTracks = {
   subtitleSize: "large",
   captions: "on",
 };
-const japanese: ProfileSettings = {
-  ...japaneseTracks,
-  skipIntros: false,
-  simklScrobble: true,
-  simklImport: true,
-  simklAnime: true,
-  anilistProgress: true,
-  anilistImport: true,
-  animeInMoviesAndShows: false,
-};
-const profileOptions = { ...japaneseTracks, start: 600 };
+const japanese = profileSettings(japaneseTracks);
+// What Player.Load gets from it: the style goes too (#63).
+const profileOptions = { ...japaneseTracks, subtitleStyle: japanese.subtitleStyle, start: 600 };
 
 // IntroDB, through Go (#69).
 // Plugins (#56): none installed.

@@ -4,6 +4,8 @@ import type { Stream } from "@/lib/addon-protocol";
 
 import type { DeviceSettings, ProfileSettings } from "@bindings/store";
 
+import { profileSettings } from "@/test/fixtures";
+
 import { StreamFeed, rankingPrefs, slices, type StreamSource } from "./streams";
 
 vi.mock("@bindings/addons", () => ({ Service: { Fetch: vi.fn<() => void>() } }));
@@ -66,19 +68,8 @@ describe("StreamFeed", () => {
 });
 
 // #98: what ranking is told from the settings.
-const profile = (audioLanguages: string[] | null): ProfileSettings => ({
-  audioLanguages,
-  subtitleLanguage: "",
-  subtitleSize: "medium",
-  captions: "system",
-  skipIntros: false,
-  simklScrobble: true,
-  simklImport: true,
-  simklAnime: true,
-  anilistProgress: true,
-  anilistImport: true,
-  animeInMoviesAndShows: false,
-});
+const profile = (audioLanguages: string[] | null): ProfileSettings =>
+  profileSettings({ audioLanguages });
 const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   hardwareDecoding: true,
   maxResolution: "auto",

@@ -12,6 +12,7 @@ import {
   useAhead,
   useIdle,
 } from "@/lib/player";
+import { profileSettings } from "@/test/fixtures";
 
 afterEach(() => {
   vi.useRealTimers();
@@ -115,24 +116,18 @@ const track = (fields: Partial<Track> & Pick<Track, "id" | "type">): Track => ({
 });
 
 describe("loadOptions", () => {
-  const trackers = {
-    simklScrobble: true,
-    simklImport: true,
-    simklAnime: true,
-    anilistProgress: true,
-    anilistImport: true,
-    animeInMoviesAndShows: false,
-  };
   const settings = {
     audioLanguages: ["ja"],
     subtitleLanguage: "en",
     subtitleSize: "large",
     captions: "system",
   };
-  const profile = { ...settings, skipIntros: false, ...trackers };
+  const profile = profileSettings(settings);
+  // The style goes to Go too, once the profile has one (#63).
+  const { subtitleStyle } = profile;
 
   it("takes the profile's languages, captions and size", () => {
-    expect(loadOptions(5, profile)).toEqual({ start: 5, ...settings });
+    expect(loadOptions(5, profile)).toEqual({ start: 5, ...settings, subtitleStyle });
     expect(loadOptions(0, undefined)).toEqual({
       start: 0,
       audioLanguages: [],
@@ -144,7 +139,12 @@ describe("loadOptions", () => {
 
   it("names what it plays, for its progress (#64)", () => {
     const watching = { profileId: 1, contentId: "tt1", contentType: "movie", videoId: "tt1" };
-    expect(loadOptions(5, profile, [], watching)).toEqual({ start: 5, ...settings, watching });
+    expect(loadOptions(5, profile, [], watching)).toEqual({
+      start: 5,
+      ...settings,
+      subtitleStyle,
+      watching,
+    });
   });
 
   it("keeps the tracks the file was playing", () => {

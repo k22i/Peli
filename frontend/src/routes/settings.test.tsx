@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { DeviceSettings, Profile, ProfileSettings } from "@bindings/store";
 import type { Connections } from "@bindings/tracking";
+import { profileSettings } from "@/test/fixtures";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 import { renderApp } from "@/test/render-app";
 
@@ -150,20 +151,8 @@ const store = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@bindings/store", () => {
-  const defaults: ProfileSettings = {
-    audioLanguages: [],
-    subtitleLanguage: "",
-    subtitleSize: "medium",
-    captions: "system",
-    skipIntros: false,
-    simklScrobble: true,
-    simklImport: true,
-    simklAnime: true,
-    anilistProgress: true,
-    anilistImport: true,
-    animeInMoviesAndShows: false,
-  };
+vi.mock("@bindings/store", async () => {
+  const defaults = (await import("@/test/fixtures")).profileSettings();
   return {
     Service: {
       CurrentProfile: async () => store.profiles[store.current],
@@ -191,20 +180,8 @@ vi.mock("@bindings/store", () => {
 });
 
 // A profile's settings with a few changed, for tests that start from some.
-const settingsWith = (changes: Partial<ProfileSettings>): ProfileSettings => ({
-  audioLanguages: [],
-  subtitleLanguage: "",
-  subtitleSize: "medium",
-  captions: "system",
-  skipIntros: false,
-  simklScrobble: true,
-  simklImport: true,
-  simklAnime: true,
-  anilistProgress: true,
-  anilistImport: true,
-  animeInMoviesAndShows: false,
-  ...changes,
-});
+const settingsWith = (changes: Partial<ProfileSettings>): ProfileSettings =>
+  profileSettings(changes);
 
 beforeEach(() => {
   store.profiles = [
