@@ -4,7 +4,9 @@ import type { ReactNode } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { useRovingItem } from "@/components/media/roving";
+import { openOnContextKey, TitleMenu } from "@/components/media/title-menu";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { MenuTitle } from "@/lib/title-actions";
 import { cn } from "@/lib/utils";
 
 export type CardProps = useRender.ComponentProps<"button"> & {
@@ -20,6 +22,9 @@ export type CardProps = useRender.ComponentProps<"button"> & {
   badge?: ReactNode | undefined;
   // Bottom-left over the artwork, on a dark lozenge: "S2 · E5".
   pill?: ReactNode | undefined;
+  // The title the card stands for: with it, right-click (or the
+  // context-menu key, or Shift+F10) opens the title's menu.
+  menu?: MenuTitle | undefined;
 };
 
 // The art grows a little towards you on hover and focus, and its shadow
@@ -35,6 +40,7 @@ function Card({
   progress,
   badge,
   pill,
+  menu,
   shape,
   render,
   className,
@@ -50,6 +56,7 @@ function Card({
       className,
     ),
     "data-slot": `${shape}-card`,
+    onKeyDown: menu ? openOnContextKey : undefined,
     children: (
       <>
         <div className={cn(frame, shape === "poster" ? "aspect-[2/3]" : "aspect-video")}>
@@ -87,11 +94,12 @@ function Card({
     ),
   };
 
-  return useRender({
+  const card = useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(defaultProps, rowItem, props),
     render,
   });
+  return menu ? <TitleMenu title={menu}>{card}</TitleMenu> : card;
 }
 
 // A 2:3 poster with the title and a meta line under it.

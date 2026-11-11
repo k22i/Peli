@@ -17,6 +17,7 @@ import {
   type LoadedAddon,
   type MetaPreview,
 } from "@/lib/addon-protocol";
+import { libraryMenuTitle, menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { useAnimePosterAddon } from "@/lib/anime-posters";
 import { browseTarget, isAnimeCatalog } from "@/lib/browse";
@@ -163,6 +164,7 @@ function HomeRows({ profile }: { profile: Profile }) {
                   title={item.name}
                   meta={item.releaseInfo}
                   src={item.poster}
+                  menu={libraryMenuTitle(item)}
                   onClick={() => open(libraryPreview(item))}
                 />
               )}
@@ -215,6 +217,7 @@ function WatchingCard({ entry, ...context }: { entry: Progress } & WatchingConte
       pill={episodeLabel(entry)}
       meta={timeLeft(entry)}
       src={art}
+      menu={{ id: entry.contentId, type: entry.contentType, name: title, poster: art }}
       progress={watchedFraction(entry)}
       onClick={() => play(resumeTarget(entry, title))}
     />
@@ -458,6 +461,7 @@ function CatalogRowView({
               title={meta.name}
               meta={meta.releaseInfo}
               src={meta.poster}
+              menu={menuTitle(meta)}
               onClick={() => open(meta)}
             />
           );
@@ -468,6 +472,7 @@ function CatalogRowView({
             title={meta.name}
             meta={meta.releaseInfo}
             src={meta.poster}
+            menu={menuTitle(meta)}
             onClick={() => open(meta)}
           />
         );

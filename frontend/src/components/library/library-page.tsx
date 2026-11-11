@@ -1,6 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { Library as LibraryIcon, Trash2 } from "lucide-react";
+import { Library as LibraryIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { BrowseFrame, GridSkeleton } from "@/components/browse/browse-page";
@@ -11,12 +11,6 @@ import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuPopup,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
-import {
   Select,
   SelectItem,
   SelectPopup,
@@ -24,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
-import { toastManager } from "@/components/ui/toast";
 import {
   continueWatchingQuery,
   episodeLabels,
@@ -40,13 +33,13 @@ import {
 } from "@/lib/library";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
+import { libraryMenuTitle, useTitleEdits } from "@/lib/title-actions";
 import type { LibraryItem, Profile } from "@bindings/store";
-import { Service as Store } from "@bindings/store";
 
 // The profile's library (#46): every saved title in one grid, filtered by
 // type and sorted. It reads the local store, which pulls keep in step with
-// Nuvio, so it shows offline too. A card's context menu, or Delete on a
-// focused card, removes it, with Undo in the toast. The Upcoming tab is the calendar of
+// Nuvio, so it shows offline too. A card's context menu (the shared title menu) or Delete on a
+// focused card removes it, with Undo in the toast. The Upcoming tab is the calendar of
 // the library's new episodes (#48). The header is Browse's (#116, #118): the
 // title and the view switch, and under them the type chips and Sort.
 export function LibraryPage() {
@@ -252,26 +245,8 @@ function LibraryGrid({
   // The "S2 · E5" of each title in progress, by content ID.
   episodes: ReadonlyMap<string, string>;
 }) {
-  const client = useQueryClient();
   const open = useOpenTitle();
-  const refresh = () => client.invalidateQueries({ queryKey: ["library", profile.id] });
-  const restore = useMutation({
-    mutationFn: (item: LibraryItem) => Store.SaveLibraryItem(profile.id, item),
-    onError: () => toastManager.add({ type: "error", title: "Couldn’t put that back" }),
-    onSettled: refresh,
-  });
-  const remove = useMutation({
-    mutationFn: (item: LibraryItem) =>
-      Store.RemoveLibraryItem(profile.id, item.contentId, item.contentType),
-    onSuccess: (_, item) =>
-      toastManager.add({
-        type: "success",
-        title: `Removed ${item.name} from your library`,
-        actionProps: { children: "Undo", onClick: () => restore.mutate(item) },
-      }),
-    onError: () => toastManager.add({ type: "error", title: "Couldn’t update your library" }),
-    onSettled: refresh,
-  });
+  const { removeFromLibrary } = useTitleEdits(profile.id);
 
   return (
     <PosterGrid
@@ -279,30 +254,23 @@ function LibraryGrid({
       items={items}
       getKey={(item) => `${item.contentType}:${item.contentId}`}
       renderItem={(item) => (
-        <ContextMenu>
-          <ContextMenuTrigger className="contents">
-            <PosterCard
-              title={item.name}
-              meta={libraryMeta(item, episodes.get(item.contentId))}
-              src={item.poster}
-              onClick={() => open(libraryPreview(item))}
-              onKeyDown={(event) => {
-                if (event.key !== "Delete" && event.key !== "Backspace") return;
-                event.preventDefault();
-                const cell = event.currentTarget.closest<HTMLElement>("[data-item]");
-                const grid = cell?.parentElement;
-                const index = Number(cell?.dataset["item"]);
-                remove.mutate(item, { onSuccess: () => grid && focusAfterRemoval(grid, index) });
-              }}
-            />
-          </ContextMenuTrigger>
-          <ContextMenuPopup className="material-pop">
-            <ContextMenuItem variant="destructive" onClick={() => remove.mutate(item)}>
-              <Trash2 aria-hidden />
-              Remove from Library
-            </ContextMenuItem>
-          </ContextMenuPopup>
-        </ContextMenu>
+        <PosterCard
+          title={item.name}
+          meta={libraryMeta(item, episodes.get(item.contentId))}
+          src={item.poster}
+          menu={libraryMenuTitle(item)}
+          onClick={() => open(libraryPreview(item))}
+          onKeyDown={(event) => {
+            if (event.key !== "Delete" && event.key !== "Backspace") return;
+            event.preventDefault();
+            const cell = event.currentTarget.closest<HTMLElement>("[data-item]");
+            const grid = cell?.parentElement;
+            const index = Number(cell?.dataset["item"]);
+            removeFromLibrary.mutate(item, {
+              onSuccess: () => grid && focusAfterRemoval(grid, index),
+            });
+          }}
+        />
       )}
     />
   );

@@ -4,6 +4,7 @@ import { CalendarDays } from "lucide-react";
 
 import { LibraryNotice } from "@/components/library/notice";
 import { Artwork } from "@/components/media/artwork";
+import { openOnContextKey, TitleMenu } from "@/components/media/title-menu";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
@@ -20,6 +21,7 @@ import {
 import { useLoadedAddons } from "@/lib/home";
 import { libraryPreview, libraryQuery } from "@/lib/library";
 import { cachedTitleMeta, titleMetaQuery, useOpenTitle } from "@/lib/title";
+import { libraryMenuTitle } from "@/lib/title-actions";
 import type { Profile } from "@bindings/store";
 
 // The Library page's Upcoming view (#48): the episodes of the library's
@@ -167,23 +169,26 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
   // Later's the date.
   const end = dated ? airDate(entry.airs) : airTime(entry);
   return (
-    <button
-      type="button"
-      aria-label={`${item.name}, ${code}: ${title}${dated ? `, ${airDate(entry.airs)}` : ""}`}
-      onClick={() => open(libraryPreview(item), { season: episode.season })}
-      className="flex w-full cursor-pointer items-center gap-5 rounded-2xl p-3 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
-    >
-      <span className="relative aspect-[2/3] w-24 shrink-0 overflow-hidden rounded-lg shadow-card">
-        <Artwork src={item.poster} use="poster" title={item.name} />
-      </span>
-      <span className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className="truncate type-item text-foreground">{item.name}</span>
-        <span className="truncate text-body text-muted-foreground">
-          <span className="tnum text-small">{code}</span> · {title}
+    <TitleMenu title={libraryMenuTitle(item)}>
+      <button
+        type="button"
+        aria-label={`${item.name}, ${code}: ${title}${dated ? `, ${airDate(entry.airs)}` : ""}`}
+        onClick={() => open(libraryPreview(item), { season: episode.season })}
+        onKeyDown={openOnContextKey}
+        className="flex w-full cursor-pointer items-center gap-5 rounded-2xl p-3 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <span className="relative aspect-[2/3] w-24 shrink-0 overflow-hidden rounded-lg shadow-card">
+          <Artwork src={item.poster} use="poster" title={item.name} />
         </span>
-      </span>
-      {end && <span className="shrink-0 tnum text-small text-muted-foreground">{end}</span>}
-    </button>
+        <span className="flex min-w-0 flex-1 flex-col gap-1">
+          <span className="truncate type-item text-foreground">{item.name}</span>
+          <span className="truncate text-body text-muted-foreground">
+            <span className="tnum text-small">{code}</span> · {title}
+          </span>
+        </span>
+        {end && <span className="shrink-0 tnum text-small text-muted-foreground">{end}</span>}
+      </button>
+    </TitleMenu>
   );
 }
 

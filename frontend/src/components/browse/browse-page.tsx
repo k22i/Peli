@@ -42,6 +42,7 @@ import {
   type BrowseKind,
   type BrowseSearch,
 } from "@/lib/browse";
+import { menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { useAnimePosterAddon } from "@/lib/anime-posters";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
@@ -356,6 +357,7 @@ function CatalogGrid({
               title={meta.name}
               meta={meta.releaseInfo}
               src={meta.poster}
+              menu={menuTitle(meta)}
               onClick={() => open(meta)}
             />
           ) : (
@@ -363,6 +365,7 @@ function CatalogGrid({
               title={meta.name}
               meta={meta.releaseInfo}
               src={meta.poster}
+              menu={menuTitle(meta)}
               onClick={() => open(meta)}
             />
           )

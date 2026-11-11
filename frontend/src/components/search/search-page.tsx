@@ -18,6 +18,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Kbd } from "@/components/ui/kbd";
 import { Spinner } from "@/components/ui/spinner";
+import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useBrowsableAddons } from "@/lib/home";
 import { currentPlatform } from "@/lib/platform";
@@ -309,6 +310,7 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
                     title={meta.name}
                     meta={meta.releaseInfo}
                     src={meta.poster}
+                    menu={menuTitle(meta)}
                     onClick={() => open(meta)}
                   />
                 )}

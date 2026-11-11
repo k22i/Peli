@@ -19,6 +19,7 @@ import {
   useFolderPages,
   type FolderSource,
 } from "@/lib/folder";
+import { menuTitle } from "@/lib/title-actions";
 import { collectionsQuery, homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
@@ -240,6 +241,7 @@ function FolderGrid({
             title={meta.name}
             meta={meta.releaseInfo}
             src={meta.poster}
+            menu={menuTitle(meta)}
             onClick={() => open(meta)}
           />
         )}
