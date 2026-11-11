@@ -47,7 +47,7 @@ describe("useTmdbAliases", () => {
     const url = new URL(fetch.mock.calls[0]![0]);
     expect(url.pathname).toBe("/3/movie/278");
     expect(url.searchParams.get("append_to_response")).toBe(
-      "images,credits,alternative_titles,translations",
+      "images,credits,alternative_titles,translations,release_dates,videos,recommendations,similar",
     );
   });
 

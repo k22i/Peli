@@ -4,7 +4,14 @@ import { parseMetaResponse } from "@/lib/addon-protocol/parse";
 import cinemetaMovie from "@/lib/addon-protocol/fixtures/cinemeta/meta-movie.json";
 import kitsuAnime from "@/lib/addon-protocol/fixtures/kitsu/meta-anime.json";
 
-import { checkTmdbKey, parseTmdbAliases, parseTmdbArt, tmdbKeyProblem, tmdbRef } from "./tmdb";
+import {
+  checkTmdbKey,
+  parseTmdbAliases,
+  parseTmdbArt,
+  parseTmdbCollection,
+  tmdbKeyProblem,
+  tmdbRef,
+} from "./tmdb";
 
 vi.mock("@bindings/secrets", () => ({ Service: {} }));
 
@@ -65,6 +72,10 @@ describe("parseTmdbArt", () => {
     expect(art).toEqual({
       logo: "https://image.tmdb.org/t/p/w500/en.png",
       backdrop: "https://image.tmdb.org/t/p/original/back.jpg",
+      crew: [],
+      networks: [],
+      studios: [],
+      related: [],
       cast: [
         {
           id: 1,
@@ -92,8 +103,174 @@ describe("parseTmdbArt", () => {
   it("keeps twenty people and survives an odd answer", () => {
     const cast = Array.from({ length: 30 }, (_, id) => ({ id, name: `P${id}` }));
     expect(parseTmdbArt({ credits: { cast } }).cast).toHaveLength(20);
-    expect(parseTmdbArt(null)).toEqual({ cast: [] });
-    expect(parseTmdbArt({ images: "no", credits: { cast: "no" } })).toEqual({ cast: [] });
+    const empty = { cast: [], crew: [], networks: [], studios: [], related: [] };
+    expect(parseTmdbArt(null)).toEqual(empty);
+    expect(parseTmdbArt({ images: "no", credits: { cast: "no" } })).toEqual(empty);
+  });
+});
+
+const poster = (path: string) => `https://image.tmdb.org/t/p/w342${path}`;
+
+describe("parseTmdbArt: the rest of the page", () => {
+  const film = {
+    id: 155,
+    vote_average: 8.52,
+    vote_count: 30000,
+    credits: {
+      crew: [
+        { id: 525, name: "Christopher Nolan", job: "Director" },
+        { id: 525, name: "Christopher Nolan", job: "Screenplay" },
+        { id: 527, name: "Jonathan Nolan", job: "Screenplay" },
+        { id: 530, name: "David S. Goyer", job: "Story" },
+        { id: 947, name: "Hans Zimmer", job: "Original Music Composer" },
+        { id: 1, name: "Someone", job: "Gaffer" },
+      ],
+    },
+    release_dates: {
+      results: [
+        { iso_3166_1: "DE", release_dates: [{ certification: "12", type: 3 }] },
+        {
+          iso_3166_1: "US",
+          release_dates: [
+            { certification: "", type: 1 },
+            { certification: "R", type: 5 },
+            { certification: "PG-13", type: 3 },
+          ],
+        },
+      ],
+    },
+    production_companies: [{ name: "Legendary" }, { name: "Syncopy" }],
+    belongs_to_collection: { id: 263, name: "The Dark Knight Collection" },
+    videos: {
+      results: [
+        { site: "Vimeo", type: "Trailer", key: "vimeo", official: true, iso_639_1: "en" },
+        { site: "YouTube", type: "Teaser", key: "teaser", official: true, iso_639_1: "en" },
+        { site: "YouTube", type: "Trailer", key: "fan", official: false, iso_639_1: "en" },
+        { site: "YouTube", type: "Trailer", key: "de", official: true, iso_639_1: "de" },
+        { site: "YouTube", type: "Trailer", key: "EXeTwQWrcwY", official: true, iso_639_1: "en" },
+      ],
+    },
+    recommendations: {
+      results: [
+        { id: 272, title: "Batman Begins", release_date: "2005-06-10", poster_path: "/bb.jpg" },
+        { id: 0, poster_path: null },
+      ],
+    },
+    similar: { results: [{ id: 1, title: "Other" }] },
+  };
+
+  it("lists a film's director, writers and composer once each", () => {
+    expect(parseTmdbArt(film).crew).toEqual([
+      { label: "Directed by", people: [{ id: 525, name: "Christopher Nolan" }] },
+      {
+        label: "Written by",
+        people: [
+          { id: 525, name: "Christopher Nolan" },
+          { id: 527, name: "Jonathan Nolan" },
+          { id: 530, name: "David S. Goyer" },
+        ],
+      },
+      { label: "Music by", people: [{ id: 947, name: "Hans Zimmer" }] },
+    ]);
+  });
+
+  it("names a series' creators and composer from its aggregate credits", () => {
+    const art = parseTmdbArt({
+      first_air_date: "2008-01-20",
+      created_by: [{ id: 66633, name: "Vince Gilligan" }],
+      aggregate_credits: {
+        crew: [{ id: 7, name: "Dave Porter", jobs: [{ job: "Original Music Composer" }] }],
+      },
+    });
+    expect(art.crew).toEqual([
+      { label: "Created by", people: [{ id: 66633, name: "Vince Gilligan" }] },
+      { label: "Music by", people: [{ id: 7, name: "Dave Porter" }] },
+    ]);
+  });
+
+  it("takes the theatrical certificate for the region, else the US", () => {
+    expect(parseTmdbArt(film, "DE").certificate).toBe("12");
+    expect(parseTmdbArt(film, "US").certificate).toBe("PG-13");
+    expect(parseTmdbArt(film, "FR").certificate).toBe("PG-13");
+    expect(parseTmdbArt({ id: 1 }).certificate).toBeUndefined();
+  });
+
+  it("reads a series' content rating", () => {
+    const show = {
+      first_air_date: "2008-01-20",
+      content_ratings: {
+        results: [
+          { iso_3166_1: "GB", rating: "18" },
+          { iso_3166_1: "US", rating: "TV-MA" },
+        ],
+      },
+      networks: [{ name: "AMC" }],
+    };
+    expect(parseTmdbArt(show, "GB").certificate).toBe("18");
+    expect(parseTmdbArt(show, "AU").certificate).toBe("TV-MA");
+    expect(parseTmdbArt(show).networks).toEqual(["AMC"]);
+  });
+
+  it("gives studios and the score, which needs votes", () => {
+    expect(parseTmdbArt(film).studios).toEqual(["Legendary", "Syncopy"]);
+    expect(parseTmdbArt(film).score).toBe("8.5");
+    expect(parseTmdbArt({ vote_average: 0, vote_count: 0 }).score).toBeUndefined();
+  });
+
+  it("picks the official English YouTube trailer", () => {
+    expect(parseTmdbArt(film).trailer).toBe("https://www.youtube.com/watch?v=EXeTwQWrcwY");
+    expect(
+      parseTmdbArt({ videos: { results: [{ site: "YouTube", type: "Teaser", key: "t" }] } })
+        .trailer,
+    ).toBeUndefined();
+    expect(
+      parseTmdbArt({
+        videos: { results: [{ site: "YouTube", type: "Trailer", key: "a b&c" }] },
+      }).trailer,
+    ).toBeUndefined();
+  });
+
+  it("lists recommendations, falling back to similar titles", () => {
+    expect(parseTmdbArt(film).related).toEqual([
+      {
+        tmdb: 272,
+        media: "movie",
+        title: "Batman Begins",
+        year: "2005",
+        poster: poster("/bb.jpg"),
+      },
+    ]);
+    const { recommendations: ignored, ...similarOnly } = film;
+    expect(ignored.results).toHaveLength(2);
+    expect(parseTmdbArt(similarOnly).related).toEqual([
+      { tmdb: 1, media: "movie", title: "Other" },
+    ]);
+    const many = Array.from({ length: 30 }, (_unused, id) => ({ id: id + 1, name: `S${id}` }));
+    const art = parseTmdbArt({ first_air_date: "2020", recommendations: { results: many } });
+    expect(art.related).toHaveLength(20);
+    expect(art.related[0]?.media).toBe("tv");
+  });
+
+  it("keeps the film's own id and collection", () => {
+    const art = parseTmdbArt(film);
+    expect(art.id).toBe(155);
+    expect(art.collection).toEqual({ id: 263, name: "The Dark Knight Collection" });
+  });
+});
+
+describe("parseTmdbCollection", () => {
+  it("lists the films in release order, undated ones last", () => {
+    expect(
+      parseTmdbCollection({
+        parts: [
+          { id: 3, title: "Rises", release_date: "2012-07-16", poster_path: "/r.jpg" },
+          { id: 9, title: "Next" },
+          { id: 1, title: "Begins", release_date: "2005-06-10" },
+          { id: 2, title: "Knight", release_date: "2008-07-16" },
+        ],
+      }).map((film) => film.title),
+    ).toEqual(["Begins", "Knight", "Rises", "Next"]);
+    expect(parseTmdbCollection(null)).toEqual([]);
   });
 });
 
@@ -161,7 +338,7 @@ describe("parseTmdbAliases", () => {
   });
 
   it("is part of the details art, when there are any", () => {
-    expect(parseTmdbArt({ title: "Up", original_title: "Up" })).toEqual({ cast: [] });
+    expect(parseTmdbArt({ title: "Up", original_title: "Up" })).not.toHaveProperty("aliases");
     expect(parseTmdbArt({ title: "Up", original_title: "Oben" }).aliases).toEqual(["Oben"]);
   });
 });

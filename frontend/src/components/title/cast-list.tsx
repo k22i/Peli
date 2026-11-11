@@ -1,5 +1,6 @@
 import { Artwork } from "@/components/media/artwork";
 import { ScrollRail } from "@/components/media/scroll-rail";
+import { PersonLink } from "@/components/title/person-link";
 import type { CastMember } from "@/lib/tmdb";
 
 // The cast with their photos, from TMDB (#47): a short strip on a rail, with
@@ -22,7 +23,9 @@ export function CastList({ cast }: { cast: CastMember[] }) {
                 className="aspect-square size-24 rounded-full shadow-card grayscale-[35%] transition-[filter] duration-(--duration-base) hover:grayscale-0"
               />
               <div className="flex w-full flex-col items-center text-center">
-                <span className="line-clamp-2 text-small font-[590]">{person.name}</span>
+                <span className="line-clamp-2 text-small font-[590]">
+                  <PersonLink person={person} />
+                </span>
                 {person.character && (
                   <span className="line-clamp-2 text-small text-muted-foreground">
                     {person.character}

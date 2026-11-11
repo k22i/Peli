@@ -130,7 +130,7 @@ export function useRemoveTmdbKey() {
   });
 }
 
-type Media = "movie" | "tv";
+export type Media = "movie" | "tv";
 
 // How to find a title on TMDB: its TMDB id, or its IMDb id to look up.
 export type TmdbRef = { tmdb: number; media: Media } | { imdb: string; media: Media | undefined };
@@ -160,11 +160,44 @@ export function tmdbRef(type: ContentType, id: string, meta?: Meta): TmdbRef | u
 // A cast member with a photo, as TMDB lists them.
 export type CastMember = { id: number; name: string; character?: string; photo?: string };
 
+// A person on TMDB. The id is kept so a name can become a link later.
+export type Person = { id: number; name: string };
+
+// A line of the About card: "Directed by", "Composer", "Created by".
+export type CrewGroup = { label: string; people: Person[] };
+
+// A title TMDB suggests, or one film of a collection. It carries TMDB ids;
+// the IMDb id Sinag's addons need is looked up when one is opened.
+export type RelatedTitle = {
+  tmdb: number;
+  media: Media;
+  title: string;
+  year?: string;
+  poster?: string;
+};
+
+export type TmdbCollection = { id: number; name: string };
+
 // What TMDB adds to a title page, and to the ranking: the title's other names.
 export type TmdbArt = {
+  // The title's own TMDB id.
+  id?: number;
   logo?: string;
   backdrop?: string;
   cast: CastMember[];
+  crew: CrewGroup[];
+  // The age rating in the user's region (else the US): "PG-13", "TV-MA".
+  certificate?: string;
+  networks: string[];
+  studios: string[];
+  // TMDB's user score out of ten, one decimal; absent until it has votes.
+  score?: string;
+  // A YouTube trailer's address, for the system browser.
+  trailer?: string;
+  // "More Like This": TMDB's recommendations, else its similar titles.
+  related: RelatedTitle[];
+  // The collection a film belongs to.
+  collection?: TmdbCollection;
   // The title's original name, alternative titles and translated titles, once
   // each, for matching release names (#99). Absent when TMDB lists none.
   aliases?: string[];
@@ -183,6 +216,9 @@ const image = (size: string, path: unknown) => {
 };
 
 const castLimit = 20;
+const crewLimit = 5;
+const relatedLimit = 20;
+const companyLimit = 3;
 const aliasLimit = 300;
 
 // Every other name TMDB gives a title (#99): `original_title` / `original_name`,
@@ -214,11 +250,111 @@ export function parseTmdbAliases(answer: unknown): string[] {
   return out;
 }
 
+const people = (value: unknown): Person[] => {
+  const seen = new Set<number>();
+  return list(value).flatMap((person): Person[] => {
+    const id = person["id"];
+    const name = text(person["name"]);
+    if (typeof id !== "number" || !name || seen.has(id)) return [];
+    seen.add(id);
+    return [{ id, name }];
+  });
+};
+
+const writerJobs = new Set(["Screenplay", "Writer", "Story"]);
+const composerJobs = new Set(["Original Music Composer", "Composer"]);
+
+// The crew lines worth showing. A film's `credits.crew` names one `job` per
+// entry; a series' `aggregate_credits.crew` lists `jobs` per person, so both
+// are flattened to job names first.
+function parseCrew(details: Record<string, unknown>): CrewGroup[] {
+  const crew = list(record(details["aggregate_credits"] ?? details["credits"])["crew"]);
+  const withJob = (jobs: Set<string> | string) =>
+    people(
+      crew.filter((person) => {
+        const names = [text(person["job"]), ...list(person["jobs"]).map((j) => text(j["job"]))];
+        return names.some(
+          (job) => job !== undefined && (typeof jobs === "string" ? job === jobs : jobs.has(job)),
+        );
+      }),
+    ).slice(0, crewLimit);
+  const groups: CrewGroup[] = [
+    { label: "Created by", people: people(details["created_by"]).slice(0, crewLimit) },
+    { label: "Directed by", people: withJob("Director") },
+    { label: "Written by", people: withJob(writerJobs) },
+    { label: "Music by", people: withJob(composerJobs) },
+  ];
+  return groups.filter((group) => group.people.length > 0);
+}
+
+// The age rating for `region`, else the US, else none. A film's
+// `release_dates` list several releases per country, theatrical (type 3)
+// first; a series' `content_ratings` hold one rating per country.
+function parseCertificate(details: Record<string, unknown>, region: string): string | undefined {
+  const film = list(record(details["release_dates"])["results"]);
+  const show = list(record(details["content_ratings"])["results"]);
+  for (const country of [region, "US"]) {
+    const found = (film.length > 0 ? film : show).find((c) => c["iso_3166_1"] === country);
+    if (!found) continue;
+    const certificate =
+      text(found["rating"]) ??
+      list(found["release_dates"])
+        .toSorted((a, b) => (a["type"] === 3 ? -1 : 0) - (b["type"] === 3 ? -1 : 0))
+        .map((release) => text(release["certification"]))
+        .find(Boolean);
+    if (certificate) return certificate;
+  }
+  return undefined;
+}
+
+// An official English YouTube trailer, else any English one, else any
+// YouTube trailer.
+function parseTrailer(details: Record<string, unknown>): string | undefined {
+  const rank = (video: Record<string, unknown>) =>
+    (video["official"] === true ? 2 : 0) + (video["iso_639_1"] === "en" ? 1 : 0);
+  const trailers = list(record(details["videos"])["results"]).filter(
+    (video) => video["site"] === "YouTube" && video["type"] === "Trailer" && text(video["key"]),
+  );
+  const best = trailers.reduce<Record<string, unknown> | undefined>(
+    (top, video) => (!top || rank(video) > rank(top) ? video : top),
+    undefined,
+  );
+  const key = text(best?.["key"]);
+  return key && /^[\w-]+$/.test(key) ? `https://www.youtube.com/watch?v=${key}` : undefined;
+}
+
+const yearOf = (date: unknown) => /^\d{4}/.exec(text(date) ?? "")?.[0];
+
+function parseRelated(items: unknown, fallback: Media): RelatedTitle[] {
+  return list(items)
+    .flatMap((item): RelatedTitle[] => {
+      const id = item["id"];
+      const title = text(item["title"]) ?? text(item["name"]);
+      const media = item["media_type"] ?? fallback;
+      if (typeof id !== "number" || !title || (media !== "movie" && media !== "tv")) return [];
+      const year = yearOf(item["release_date"] ?? item["first_air_date"]);
+      const poster = image("w342", item["poster_path"]);
+      return [{ tmdb: id, media, title, ...(year && { year }), ...(poster && { poster }) }];
+    })
+    .slice(0, relatedLimit);
+}
+
+const names = (value: unknown) =>
+  list(value)
+    .map((item) => text(item["name"]))
+    .filter((name): name is string => name !== undefined)
+    .slice(0, companyLimit);
+
+// The region the user's system names ("en-GB" gives "GB"), for age ratings.
+const systemRegion = () => /-([A-Za-z]{2})\b/.exec(navigator.language)?.[1]?.toUpperCase() ?? "US";
+
 // Reads TMDB's details with `images` and `credits` (a film) or
-// `aggregate_credits` (a series, which names a character per role), and the
-// title's other names from `alternative_titles` and `translations`.
-export function parseTmdbArt(answer: unknown): TmdbArt {
+// `aggregate_credits` (a series, which names a character per role), the
+// title's other names from `alternative_titles` and `translations`, and the
+// rest of the page: age rating, trailer, suggestions and collection.
+export function parseTmdbArt(answer: unknown, region = systemRegion()): TmdbArt {
   const details = record(answer);
+  const media: Media = "first_air_date" in details || "created_by" in details ? "tv" : "movie";
   const logos = list(record(details["images"])["logos"]);
   // English first, then a logo without text language, then any.
   const logo =
@@ -239,12 +375,52 @@ export function parseTmdbArt(answer: unknown): TmdbArt {
   const logoUrl = logo && image("w500", logo["file_path"]);
   const backdrop = image("original", details["backdrop_path"]);
   const aliases = parseTmdbAliases(details);
+  const certificate = parseCertificate(details, region);
+  const trailer = parseTrailer(details);
+  const votes = details["vote_count"];
+  const average = details["vote_average"];
+  const score =
+    typeof average === "number" && typeof votes === "number" && votes > 0 && average > 0
+      ? average.toFixed(1)
+      : undefined;
+  const suggested = parseRelated(record(details["recommendations"])["results"], media);
+  const related =
+    suggested.length > 0 ? suggested : parseRelated(record(details["similar"])["results"], media);
+  const owned = record(details["belongs_to_collection"]);
+  const collectionName = text(owned["name"]);
+  const collection =
+    typeof owned["id"] === "number" && collectionName
+      ? { id: owned["id"], name: collectionName }
+      : undefined;
+  const id = details["id"];
   return {
+    ...(typeof id === "number" && { id }),
     ...(logoUrl && { logo: logoUrl }),
     ...(backdrop && { backdrop }),
     cast,
+    crew: parseCrew(details),
+    ...(certificate && { certificate }),
+    networks: names(details["networks"]),
+    studios: names(details["production_companies"]),
+    ...(score && { score }),
+    ...(trailer && { trailer }),
+    related,
+    ...(collection && { collection }),
     ...(aliases.length > 0 && { aliases }),
   };
+}
+
+// The films of a collection, oldest first; undated ones last.
+export function parseTmdbCollection(answer: unknown): RelatedTitle[] {
+  const parts = list(record(answer)["parts"]);
+  const dated = parts.map((part) => ({
+    part,
+    date: text(part["release_date"]) ?? "9999",
+  }));
+  const order = new Map(dated.map(({ part, date }) => [part["id"], date]));
+  return parseRelated(parts, "movie").toSorted((a, b) =>
+    String(order.get(a.tmdb)).localeCompare(String(order.get(b.tmdb))),
+  );
 }
 
 const day = 24 * 60 * 60 * 1000;
@@ -273,9 +449,10 @@ const tmdbFindQuery = (key: string, imdb: string, media: Media | undefined) =>
 
 const tmdbDetailsQuery = (key: string, tmdb: number, media: Media) =>
   queryOptions({
-    // "aliases": the answer carries the title's other names (#99); older
-    // persisted answers under ["tmdb", media, id] don't, and age out.
-    queryKey: ["tmdb", media, tmdb, "aliases"],
+    // "page": the answer carries crew, rating, trailer and suggestions on
+    // top of the title's other names; older persisted answers under
+    // ["tmdb", media, id] and [..., "aliases"] lack them, and age out.
+    queryKey: ["tmdb", media, tmdb, "page"],
     queryFn: async ({ signal }) =>
       parseTmdbArt(
         await tmdbGet(
@@ -284,9 +461,10 @@ const tmdbDetailsQuery = (key: string, tmdb: number, media: Media) =>
           {
             append_to_response:
               media === "tv"
-                ? "images,aggregate_credits,alternative_titles,translations"
-                : "images,credits,alternative_titles,translations",
+                ? "images,aggregate_credits,alternative_titles,translations,content_ratings,videos,recommendations,similar"
+                : "images,credits,alternative_titles,translations,release_dates,videos,recommendations,similar",
             include_image_language: "en,null",
+            include_video_language: "en,null",
           },
           signal,
         ),
@@ -345,3 +523,41 @@ const none: string[] = [];
 export function useTmdbAliases(ref: TmdbRef | undefined): string[] {
   return useTmdbArt(ref)?.aliases ?? none;
 }
+
+// A collection's films. Asked only for a film that belongs to one.
+const tmdbCollectionQuery = (key: string, id: number) =>
+  queryOptions({
+    queryKey: ["tmdb", "collection", id],
+    queryFn: async ({ signal }) =>
+      parseTmdbCollection(await tmdbGet(key, `/collection/${id}`, {}, signal)),
+    staleTime: day,
+    retry: 1,
+    meta: { persist: true },
+  });
+
+// The films of the collection, or undefined with no key, while it loads or
+// when TMDB fails.
+export function useTmdbCollection(collection: TmdbCollection | undefined) {
+  const key = useTmdbKey();
+  const found = useQuery({
+    ...tmdbCollectionQuery(key ?? "", collection?.id ?? 0),
+    enabled: Boolean(key && collection),
+  });
+  return key && collection ? found.data : undefined;
+}
+
+// A TMDB title's IMDb id, which Sinag's addons answer by. TMDB ids aren't
+// understood by Cinemeta, so a suggested title is looked up when opened.
+export const tmdbImdbQuery = (key: string, media: Media, tmdb: number) =>
+  queryOptions({
+    queryKey: ["tmdb", "imdb", media, tmdb],
+    queryFn: async ({ signal }) => {
+      const id = record(await tmdbGet(key, `/${media}/${tmdb}/external_ids`, {}, signal))[
+        "imdb_id"
+      ];
+      return typeof id === "string" && /^tt\d+$/.test(id) ? id : null;
+    },
+    staleTime: 30 * day,
+    retry: 1,
+    meta: { persist: true },
+  });

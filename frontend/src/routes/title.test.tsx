@@ -1,5 +1,6 @@
 import { act, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import type * as Runtime from "@wailsio/runtime";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Addon, LibraryItem, Profile, Progress, WatchedItem } from "@bindings/store";
@@ -27,6 +28,12 @@ const mocks = vi.hoisted(() => ({
   setWatched: vi.fn<(id: number, items: WatchedItem[], watched: boolean) => Promise<void>>(),
   saveLibraryItem: vi.fn<(id: number, item: LibraryItem) => Promise<void>>(),
   removeLibraryItem: vi.fn<(id: number, contentId: string, type: string) => Promise<void>>(),
+  openURL: vi.fn<(url: string) => Promise<void>>(),
+}));
+
+vi.mock("@wailsio/runtime", async (importOriginal) => ({
+  ...(await importOriginal<typeof Runtime>()),
+  Browser: { OpenURL: mocks.openURL },
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -112,11 +119,14 @@ function serve(answers: Record<string, unknown> = {}) {
     "https://anime-kitsu.strem.fun/meta/series/kitsu%3A46474.json": kitsuAnime,
     ...answers,
   };
-  const fetch = vi.fn<(url: string) => Promise<Response>>(async (url) =>
-    url in all ? Response.json(await all[url]) : new Response("", { status: 503 }),
-  );
+  // The Wails runtime (loaded for the trailer button) also calls fetch, with
+  // a URL object: those are normalised and left unanswered.
+  const fetch = vi.fn<(url: string | URL) => Promise<Response>>(async (input) => {
+    const url = String(input);
+    return url in all ? Response.json(await all[url]) : new Response("", { status: 503 });
+  });
   vi.stubGlobal("fetch", fetch);
-  return () => fetch.mock.calls.map(([url]) => url);
+  return () => fetch.mock.calls.map(([url]) => String(url));
 }
 
 function later<T>() {
@@ -503,9 +513,9 @@ describe("title page", () => {
   describe("with a TMDB key", () => {
     const tmdb = "https://api.themoviedb.org/3";
     const img = "https://image.tmdb.org/t/p";
-    const movie = `${tmdb}/movie/278?append_to_response=images%2Ccredits%2Calternative_titles%2Ctranslations&include_image_language=en%2Cnull&api_key=key`;
+    const movie = `${tmdb}/movie/278?append_to_response=images%2Ccredits%2Calternative_titles%2Ctranslations%2Crelease_dates%2Cvideos%2Crecommendations%2Csimilar&include_image_language=en%2Cnull&include_video_language=en%2Cnull&api_key=key`;
     const findFrieren = `${tmdb}/find/tt22248376?external_source=imdb_id&api_key=key`;
-    const frieren = `${tmdb}/tv/209867?append_to_response=images%2Caggregate_credits%2Calternative_titles%2Ctranslations&include_image_language=en%2Cnull&api_key=key`;
+    const frieren = `${tmdb}/tv/209867?append_to_response=images%2Caggregate_credits%2Calternative_titles%2Ctranslations%2Ccontent_ratings%2Cvideos%2Crecommendations%2Csimilar&include_image_language=en%2Cnull&include_video_language=en%2Cnull&api_key=key`;
     const shawshank = {
       backdrop_path: "/shawshank.jpg",
       images: { logos: [{ iso_639_1: "en", file_path: "/shawshank-logo.png" }] },
@@ -517,8 +527,98 @@ describe("title page", () => {
       },
     };
 
+    // What a full TMDB answer adds: crew, rating, trailer, suggestions, collection.
+    const full = {
+      ...shawshank,
+      id: 278,
+      vote_average: 8.7,
+      vote_count: 26000,
+      credits: {
+        ...shawshank.credits,
+        crew: [
+          { id: 4027, name: "Frank Darabont", job: "Director" },
+          { id: 4027, name: "Frank Darabont", job: "Screenplay" },
+          { id: 5, name: "Thomas Newman", job: "Original Music Composer" },
+        ],
+      },
+      release_dates: {
+        results: [{ iso_3166_1: "US", release_dates: [{ certification: "R", type: 3 }] }],
+      },
+      production_companies: [{ name: "Castle Rock Entertainment" }],
+      videos: {
+        results: [{ site: "YouTube", type: "Trailer", key: "6hB3S9bIaco", official: true }],
+      },
+      recommendations: {
+        results: [{ id: 100, title: "The Green Mile", release_date: "1999-12-10" }],
+      },
+      belongs_to_collection: { id: 7, name: "Prison Collection" },
+    };
+    const collection = `${tmdb}/collection/7?api_key=key`;
+    const parts = {
+      parts: [
+        { id: 278, title: "The Shawshank Redemption", release_date: "1994-09-23" },
+        { id: 101, title: "Shawshank Again", release_date: "2001-01-01" },
+      ],
+    };
+
     beforeEach(() => {
       keychain.tmdb = "key";
+      mocks.openURL.mockReset();
+    });
+
+    it("shows crew, rating, score and studio from TMDB", async () => {
+      serve({ [movie]: full });
+      await renderApp(moviePath);
+
+      expect(await screen.findByTestId("certificate")).toHaveTextContent("R");
+      expect(screen.getByTestId("tmdb-score")).toHaveTextContent("8.7");
+      const about = await screen.findByRole("heading", { name: "About" });
+      const card = within(about.closest("section")!);
+      // Director and writer both: one person, listed under each.
+      expect(card.getAllByText("Frank Darabont")[0]).toHaveAttribute("data-person-id", "4027");
+      expect(card.getByText("Directed by", { selector: "dt" })).toBeInTheDocument();
+      expect(card.getByText("Thomas Newman")).toBeInTheDocument();
+      expect(card.getByText("Castle Rock Entertainment")).toBeInTheDocument();
+    });
+
+    it("opens the trailer in the system browser", async () => {
+      serve({ [movie]: full });
+      await renderApp(moviePath);
+
+      await userEvent.click(await screen.findByRole("button", { name: "Trailer" }));
+      expect(mocks.openURL).toHaveBeenCalledWith("https://www.youtube.com/watch?v=6hB3S9bIaco");
+    });
+
+    it("lists a collection's films, then More Like This, and opens one by its IMDb id", async () => {
+      const asked = serve({
+        [movie]: full,
+        [collection]: parts,
+        [`${tmdb}/movie/100/external_ids?api_key=key`]: { imdb_id: "tt0120689" },
+      });
+      await renderApp(moviePath);
+
+      const part = await screen.findByRole("heading", { name: "Part of the Prison Collection" });
+      expect(part).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /Shawshank Again/ })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /The Shawshank Redemption/ })).toHaveAttribute(
+        "aria-current",
+        "page",
+      );
+      await userEvent.click(await screen.findByRole("button", { name: /The Green Mile/ }));
+      await waitFor(() =>
+        expect(asked()).toContain("https://v3-cinemeta.strem.io/meta/movie/tt0120689.json"),
+      );
+    });
+
+    it("has no trailer, suggestions or collection for a kids profile", async () => {
+      mocks.current.mockResolvedValue({ ...kevin, kids: true });
+      const asked = serve({ [movie]: full, [collection]: parts });
+      await renderApp(moviePath);
+
+      expect(await screen.findByTestId("certificate")).toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "Trailer" })).toBeNull();
+      expect(screen.queryByRole("heading", { name: "More Like This" })).toBeNull();
+      expect(asked()).not.toContain(collection);
     });
 
     it("shows TMDB's logo, backdrop and cast photos over the addon's", async () => {
@@ -587,5 +687,8 @@ describe("title page", () => {
     expect(await screen.findByRole("button", { name: "Play" })).toBeInTheDocument();
     expect(screen.getByText("Cast", { selector: "dt" })).toBeInTheDocument();
     expect(asked().some((url) => url.includes("themoviedb"))).toBe(false);
+    expect(screen.queryByRole("button", { name: "Trailer" })).toBeNull();
+    expect(screen.queryByRole("heading", { name: "More Like This" })).toBeNull();
+    expect(screen.queryByTestId("certificate")).toBeNull();
   });
 });

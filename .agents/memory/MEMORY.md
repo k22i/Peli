@@ -64,3 +64,4 @@
 - [Stream preferences](stream-preferences.md) — #98/ADR-0048 device cap/HDR/DV + audioLanguages list, rankingPrefs(profile, device), -30,000 cap penalty + tierOrder, Settings UI, remembered source respects the cap
 - [Anime episode map](anime-episode-map.md) — #100/ADR-0050 Kitsu addon imdbSeason/absoluteEpisode → TitleContext.map, useEpisodeMap, mappedNumbering, longrun split + numbers
 - [Title matching](title-matching.md) — #99/ADR-0049 TMDB aliases → titleContext, titleCoverage (report only), `titles` corpus split with manual aliases, what to do with a key
+- [Title page from TMDB](title-page-tmdb.md) — crew/PersonLink, certificate + score, Trailer action, collection and More Like This rows, TMDB id → IMDb on open, kids hidden

@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouterState } from "@tanstack/react-router";
-import { Check, Clapperboard, Eye, EyeOff, Play, Plus, RotateCcw } from "lucide-react";
+import { Browser } from "@wailsio/runtime";
+import { Check, Clapperboard, Eye, EyeOff, Film, Play, Plus, RotateCcw } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import type { Profile, WatchedItem } from "@bindings/store";
@@ -11,6 +12,7 @@ import { About } from "@/components/title/about";
 import { BackButton } from "@/components/title/back-button";
 import { CastList } from "@/components/title/cast-list";
 import { Episodes } from "@/components/title/episodes";
+import { RelatedRows } from "@/components/title/related-rows";
 import { Button } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
@@ -212,7 +214,7 @@ function LoadedTitle({
         className="-mb-8"
         title={meta.name}
         logo={art?.logo ?? meta.logo}
-        meta={[<TitleMeta key="meta" meta={meta} />]}
+        meta={[<TitleMeta key="meta" meta={meta} art={art} />]}
         metaRaw
         synopsis={meta.description}
         {...backdrops(meta, art)}
@@ -243,6 +245,17 @@ function LoadedTitle({
             >
               {watched ? <EyeOff /> : <Eye />}
             </RoundAction>
+            {/* YouTube opens in the system browser; the player isn't involved.
+                A kids profile doesn't leave the app. */}
+            {art?.trailer && !profile.kids && (
+              <RoundAction
+                label="Trailer"
+                disabled={false}
+                onClick={() => void Browser.OpenURL(art.trailer!)}
+              >
+                <Film />
+              </RoundAction>
+            )}
           </>
         }
       />
@@ -267,7 +280,8 @@ function LoadedTitle({
         />
       )}
       {art && art.cast.length > 0 && <CastList cast={art.cast} />}
-      <About meta={meta} withCast={!art || art.cast.length === 0} />
+      <About meta={meta} withCast={!art || art.cast.length === 0} art={art} />
+      {art && !profile.kids && <RelatedRows art={art} />}
     </>
   );
 }
@@ -317,11 +331,35 @@ function backdrops(
     : { backdrop: own, fallbackBackdrop: undefined };
 }
 
-// "2008–2013 · 49 min · Crime, Drama, Thriller · IMDb 8.4".
-function TitleMeta({ meta }: { meta: Meta }) {
+// "2008–2013 · 49 min · Crime, Drama, Thriller · TV-MA · IMDb 8.4 · TMDB 8.9".
+function TitleMeta({ meta, art }: { meta: Meta; art: TmdbArt | undefined }) {
   const items = [meta.releaseInfo, meta.runtime, (meta.genres ?? []).slice(0, 3).join(", ")]
     .filter(Boolean)
     .map((text) => <span key={text}>{text}</span>);
+  if (art?.certificate) {
+    items.push(
+      <span
+        key="certificate"
+        data-testid="certificate"
+        className="rounded-[3px] px-1 py-px text-[0.6875rem] leading-none font-semibold text-white/85 ring-1 ring-white/45"
+      >
+        {art.certificate}
+      </span>,
+    );
+  }
   if (meta.imdbRating) items.push(<ImdbScore key="imdb" rating={meta.imdbRating} />);
+  if (art?.score) items.push(<TmdbScore key="tmdb" rating={art.score} />);
   return <MetaLine items={items} className="text-[0.8125rem]" />;
+}
+
+// TMDB's own teal tag, then the score.
+function TmdbScore({ rating }: { rating: string }) {
+  return (
+    <span data-testid="tmdb-score" className="inline-flex items-center gap-1.5">
+      <span className="rounded-[3px] bg-[#01b4e4] px-1 py-px text-[0.5625rem] leading-none font-black tracking-tight text-black">
+        TMDB
+      </span>{" "}
+      {rating}
+    </span>
+  );
 }
