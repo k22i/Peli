@@ -29,6 +29,8 @@ vi.mock("@bindings/store", () => ({
     Collections: () => Promise.resolve([]),
     ContinueWatching: () => Promise.resolve([]),
     Library: () => Promise.resolve([]),
+    RecentSearches: () => Promise.resolve([]),
+    SetRecentSearches: () => Promise.resolve(),
   },
 }));
 

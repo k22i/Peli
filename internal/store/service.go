@@ -246,6 +246,17 @@ func (s *Service) SetChosenSource(profileID uint64, contentID string, chosen *Ch
 	return s.store.SetChosenSource(profileID, contentID, chosen)
 }
 
+// RecentSearches returns a profile's last searches, newest first.
+func (s *Service) RecentSearches(profileID uint64) ([]string, error) {
+	return s.store.RecentSearches(profileID)
+}
+
+// SetRecentSearches replaces a profile's recent searches (newest first, at
+// most eight); an empty list forgets them.
+func (s *Service) SetRecentSearches(profileID uint64, recent []string) error {
+	return s.store.SetRecentSearches(profileID, recent)
+}
+
 // DeviceSettings returns this device's settings.
 func (s *Service) DeviceSettings() (DeviceSettings, error) { return s.store.DeviceSettings() }
 

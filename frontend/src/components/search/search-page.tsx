@@ -7,6 +7,7 @@ import {
   useImperativeHandle,
   useRef,
   useState,
+  type ComponentProps,
   type KeyboardEvent,
 } from "react";
 
@@ -32,7 +33,7 @@ import { useBrowsableAddons } from "@/lib/home";
 import { currentPlatform } from "@/lib/platform";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { currentProfileQuery } from "@/lib/profile";
-import { addRecent, clearRecent, readRecent, removeRecent } from "@/lib/recent-searches";
+import { useRecentSearches } from "@/lib/recent-searches";
 import { useTmdbPeople, type PersonHit } from "@/lib/tmdb-person";
 import {
   filterGroups,
@@ -63,32 +64,14 @@ import type { Profile } from "@bindings/store";
 // screen readers.
 export function SearchPage() {
   const profile = useQuery(currentProfileQuery).data;
-  // Keyed by profile: a switch starts with that profile's recent searches.
-  return profile ? (
-    <SearchView key={profile.id} profile={profile} />
-  ) : (
-    <BrowseFrame title="Search" quietTitle>
-      <RowSkeleton />
-    </BrowseFrame>
-  );
-}
-
-function SearchView({ profile }: { profile: Profile }) {
   const search: SearchSearch = useSearch({ strict: false });
-  const { q } = search;
-  const term = searchTerm(q);
+  const term = searchTerm(search.q);
   const field = useRef<HTMLInputElement>(null);
   const results = useRef<HTMLElement>(null);
-  const [recent, setRecent] = useState(() => readRecent(profile.id));
-  const found = useSearchResults(profile, term);
+  const recents = useRecentSearches(profile?.id);
 
-  const recents = {
-    list: recent,
-    add: (value: string) => setRecent(addRecent(profile.id, value)),
-    remove: (value: string) => setRecent(removeRecent(profile.id, value)),
-    clear: () => setRecent(clearRecent(profile.id)),
-  };
-
+  // The field is there from the first paint (and keeps its focus) while the
+  // profile loads; what needs the profile fills in under it.
   return (
     <BrowseFrame
       title="Search"
@@ -103,8 +86,8 @@ function SearchView({ profile }: { profile: Profile }) {
               results.current?.querySelector<HTMLElement>("[data-row-item][tabindex='0']")?.focus()
             }
           />
-          {term !== undefined && found.groups.length > 0 && (
-            <SearchFilters search={search} genres={searchGenres(found.groups)} />
+          {profile && term !== undefined && (
+            <SearchFilters profile={profile} term={term} search={search} />
           )}
         </div>
       }
@@ -123,18 +106,40 @@ function SearchView({ profile }: { profile: Profile }) {
           field.current?.focus();
         }}
       >
-        <Results profile={profile} term={term} search={search} found={found} recents={recents} />
+        {profile ? (
+          <FoundResults profile={profile} term={term} search={search} recents={recents} />
+        ) : (
+          <RowSkeleton />
+        )}
       </section>
     </BrowseFrame>
   );
 }
 
+// Both ask for the same searches; the query cache answers the second.
+function FoundResults(props: Omit<ComponentProps<typeof Results>, "found">) {
+  const found = useSearchResults(props.profile, props.term);
+  return <Results {...props} found={found} />;
+}
+
 // What narrows the results, on the header under the field: kind chips, then
 // a decade and a genre (the genres the results have; none if they list none).
-function SearchFilters({ search, genres }: { search: SearchSearch; genres: string[] }) {
+function SearchFilters({
+  profile,
+  term,
+  search,
+}: {
+  profile: Profile;
+  term: string;
+  search: SearchSearch;
+}) {
+  const found = useSearchResults(profile, term);
+  const genres = searchGenres(found.groups);
   const navigate = useNavigate();
   const set = (changes: SearchChange) =>
     void navigate({ to: ".", search: changeSearch(search, changes), replace: true });
+  // Only once there is something to narrow.
+  if (found.groups.length === 0) return null;
   return (
     <div className="flex flex-col gap-3">
       <ChipRail

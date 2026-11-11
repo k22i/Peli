@@ -13,6 +13,8 @@ const mocks = vi.hoisted(() => ({
   current: vi.fn<() => Promise<Profile>>(),
   library: [] as LibraryItem[],
   watched: [] as WatchedItem[],
+  // Each profile's recent searches, as the store keeps them.
+  recent: new Map<number, string[]>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -27,6 +29,11 @@ vi.mock("@bindings/store", () => ({
     ContinueWatching: () => Promise.resolve([]),
     Library: () => Promise.resolve([...mocks.library]),
     Watched: () => Promise.resolve([...mocks.watched]),
+    RecentSearches: (id: number) => Promise.resolve([...(mocks.recent.get(id) ?? [])]),
+    SetRecentSearches: (id: number, list: string[]) => {
+      mocks.recent.set(id, list);
+      return Promise.resolve();
+    },
     LastWatched: () => Promise.resolve({}),
     TitleWatched: () => Promise.resolve([]),
     TitleProgress: () => Promise.resolve([]),
@@ -95,6 +102,7 @@ beforeEach(() => {
   mocks.current.mockResolvedValue(kevin);
   mocks.library = [];
   mocks.watched = [];
+  mocks.recent.clear();
   keychain.tmdb = null;
 });
 afterEach(() => vi.unstubAllGlobals());
@@ -169,8 +177,8 @@ describe("recent searches", () => {
   });
 
   it("keeps each profile's own list", async () => {
-    window.localStorage.setItem("sinag.recent-searches.2", JSON.stringify(["other profile"]));
-    window.localStorage.setItem("sinag.recent-searches.1", JSON.stringify(["mine"]));
+    mocks.recent.set(2, ["other profile"]);
+    mocks.recent.set(1, ["mine"]);
     serve({});
     await renderApp("/search");
     expect(await screen.findByRole("button", { name: "mine" })).toBeInTheDocument();

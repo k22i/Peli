@@ -1,15 +1,9 @@
-import { afterEach, describe, expect, it } from "vite-plus/test";
+import { describe, expect, it } from "vite-plus/test";
 
 import type { LibraryItem } from "@bindings/store";
 import type { MetaPreview } from "@/lib/addon-protocol";
 import { recentEpisodes, type CalendarShow } from "@/lib/calendar";
-import {
-  addRecent,
-  clearRecent,
-  readRecent,
-  recentLimit,
-  removeRecent,
-} from "@/lib/recent-searches";
+import { recentLimit, withRecent, withoutRecent } from "@/lib/recent-searches";
 import { filterGroups, searchGenres, searchSearch, type SearchGroup } from "@/lib/search";
 import { pickUnwatched, surprise } from "@/lib/surprise";
 
@@ -107,26 +101,14 @@ describe("searchSearch", () => {
 });
 
 describe("recent searches", () => {
-  afterEach(() => localStorage.clear());
-
-  it("keeps the newest first, once each, up to the limit, per profile", () => {
-    addRecent(1, "dune");
-    addRecent(1, "arrival");
-    expect(addRecent(1, "DUNE")).toEqual(["DUNE", "arrival"]);
-    expect(readRecent(2)).toEqual([]);
-    for (let i = 0; i < 12; i++) addRecent(1, `q${i}`);
-    expect(readRecent(1)).toHaveLength(recentLimit);
-    expect(readRecent(1)[0]).toBe("q11");
-    expect(removeRecent(1, "q11")[0]).toBe("q10");
-    expect(clearRecent(1)).toEqual([]);
-    expect(readRecent(1)).toEqual([]);
-  });
-
-  it("survives storage that throws or holds rubbish", () => {
-    localStorage.setItem("sinag.recent-searches.1", "{not json");
-    expect(readRecent(1)).toEqual([]);
-    localStorage.setItem("sinag.recent-searches.1", JSON.stringify([1, "ok"]));
-    expect(readRecent(1)).toEqual(["ok"]);
+  it("keeps the newest first, once each, up to the limit", () => {
+    expect(withRecent(withRecent([], "dune"), "arrival")).toEqual(["arrival", "dune"]);
+    expect(withRecent(["arrival", "dune"], "DUNE")).toEqual(["DUNE", "arrival"]);
+    let list: string[] = [];
+    for (let i = 0; i < 12; i++) list = withRecent(list, `q${i}`);
+    expect(list).toHaveLength(recentLimit);
+    expect(list[0]).toBe("q11");
+    expect(withoutRecent(list, "q11")[0]).toBe("q10");
   });
 });
 

@@ -43,9 +43,10 @@ export type SearchKind = (typeof searchKinds)[number];
 export const searchYears = ["2020", "2010", "2000", "1990", "older"] as const;
 export type SearchYear = (typeof searchYears)[number];
 
+// The router reads a bare number in the address ("1917") as a number.
+const number = (value: unknown) => (typeof value === "number" ? String(value) : value);
+
 export function searchSearch(search: Record<string, unknown>): SearchSearch {
-  // The router reads a bare number in the address ("1917") as a number.
-  const number = (value: unknown) => (typeof value === "number" ? String(value) : value);
   const q = number(search["q"]);
   const type = searchKinds.find((kind) => kind === search["type"]);
   const year = searchYears.find((decade) => decade === number(search["year"]));

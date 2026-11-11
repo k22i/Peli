@@ -14,6 +14,7 @@
 //	                   plugin-repos → []PluginRepo (synced, #57)
 //	                   plugin-config → PluginConfig (local, #57)
 //	                   settings → ProfileSettings
+//	                   recent-searches → []string (local)
 //	                   home-layout → Nuvio's home layout blob (#35)
 //	                   collections → Nuvio's collections blob (#35)
 //	                   tracking → Tracking: SIMKL and AniList (#71)
