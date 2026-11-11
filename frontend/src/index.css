@@ -532,6 +532,11 @@
   box-shadow: var(--shadow-pop);
 }
 
+[data-slot="command-dialog-popup"] {
+  background-color: var(--popover);
+  box-shadow: var(--shadow-pop);
+}
+
 /* Popups grow out of where they open and settle with a little overshoot. */
 [data-slot="menu-popup"],
 [data-slot="select-popup"],
@@ -543,7 +548,8 @@
   transition-property: width, height, opacity, scale;
 }
 
-[data-slot="dialog-popup"] {
+[data-slot="dialog-popup"],
+[data-slot="command-dialog-popup"] {
   transition-property: opacity, scale, translate;
 }
 
@@ -556,6 +562,7 @@
 [data-slot="tooltip-popup"],
 [data-slot="toast-popup"],
 [data-slot="dialog-popup"],
+[data-slot="command-dialog-popup"],
 [data-slot="sheet-popup"] {
   transition-duration: var(--duration-base);
   transition-timing-function: var(--ease-out-soft);
@@ -575,7 +582,8 @@
   scale: 0.94;
 }
 
-[data-slot="dialog-popup"]:is([data-starting-style], [data-ending-style]) {
+[data-slot="dialog-popup"]:is([data-starting-style], [data-ending-style]),
+[data-slot="command-dialog-popup"]:is([data-starting-style], [data-ending-style]) {
   opacity: 0;
   scale: 0.97;
   translate: 0 12px;
@@ -700,6 +708,7 @@
   [data-slot="tooltip-popup"],
   [data-slot="toast-popup"],
   [data-slot="dialog-popup"],
+  [data-slot="command-dialog-popup"],
   [data-slot="sheet-popup"] {
     transition-property: opacity;
     scale: none !important;

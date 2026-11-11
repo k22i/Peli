@@ -2,6 +2,7 @@ import { useMatches, useNavigate, useRouter } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { lastOpenPane } from "@/components/settings/panes";
+import { CommandPalette } from "@/components/shell/command-palette";
 import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
 import { currentPlatform } from "@/lib/platform";
@@ -114,6 +115,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         scrolled={scrolled}
         onKeyboardNavigate={focusContentAfterNavigate}
       />
+      {/* Not in the other chromes: the player's has none, and the focus
+          screens come before there is a profile. */}
+      <CommandPalette onNavigate={focusContentAfterNavigate} />
       <main className="page-layer fixed inset-0 overflow-hidden bg-background">
         {/* Overlay scrollbars, the same on every OS (WebView2 would draw
             classic ones), and never taking width from the page. */}
