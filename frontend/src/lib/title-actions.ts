@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import type { LibraryItem, WatchedItem } from "@bindings/store";
+import type { LibraryItem, Progress, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import { toastManager } from "@/components/ui/toast";
 import type { Meta } from "@/lib/addon-protocol";
@@ -161,7 +161,46 @@ export function useTitleEdits(profileId: number) {
     onSettled: (_result, _error, { contentId }) => refreshState(contentId),
   });
 
-  return { setWatched, saveToLibrary, removeFromLibrary, clearProgress };
+  // Takes a title out of Continue Watching without marking it watched (Go
+  // removes its unfinished progress, which is how Nuvio does it, so it syncs
+  // and comes back when the title is played). The row drops it at once, and
+  // Undo saves the entries back.
+  const continueKey = ["continue-watching", profileId];
+  const restoreProgress = useMutation({
+    mutationFn: async (entries: Progress[]) => {
+      for (const entry of entries) {
+        // oxlint-disable-next-line no-await-in-loop
+        await Store.SaveProgress(profileId, entry);
+      }
+    },
+    onError: () => toastManager.add({ type: "error", title: "Couldn’t put that back" }),
+    onSettled: (_result, _error, entries) => refreshState(entries[0]?.contentId ?? ""),
+  });
+  const removeFromContinueWatching = useMutation({
+    mutationFn: (variables: { contentId: string; name: string; entries: Progress[] }) =>
+      Store.ClearContinueWatching(profileId, variables.contentId),
+    onMutate: async ({ contentId }) => {
+      await client.cancelQueries({ queryKey: continueKey });
+      const before = client.getQueryData<Progress[]>(continueKey);
+      client.setQueryData<Progress[]>(continueKey, (list) =>
+        list?.filter((entry) => entry.contentId !== contentId),
+      );
+      return { before };
+    },
+    onSuccess: (_result, { name, entries }) =>
+      toastManager.add({
+        type: "success",
+        title: `Removed ${name} from Continue Watching`,
+        actionProps: { children: "Undo", onClick: () => restoreProgress.mutate(entries) },
+      }),
+    onError: (_error, _variables, context) => {
+      client.setQueryData(continueKey, context?.before);
+      toastManager.add({ type: "error", title: "Couldn’t clear that" });
+    },
+    onSettled: (_result, _error, { contentId }) => refreshState(contentId),
+  });
+
+  return { setWatched, saveToLibrary, removeFromLibrary, clearProgress, removeFromContinueWatching };
 }
 
 const sameTitle = (

@@ -220,9 +220,10 @@ function ProfileItems({ profile, title }: { profile: Profile; title: MenuTitle }
         {inProgress.length > 0 && (
           <ContextMenuItem
             onClick={() =>
-              edits.clearProgress.mutate({
+              edits.removeFromContinueWatching.mutate({
                 contentId: meta.id,
-                keys: inProgress.map((entry) => entry.key),
+                name: meta.name,
+                entries: inProgress,
               })
             }
           >

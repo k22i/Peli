@@ -20,7 +20,8 @@ const mocks = vi.hoisted(() => ({
   setWatched: vi.fn<(id: number, items: WatchedItem[], watched: boolean) => Promise<void>>(),
   save: vi.fn<(id: number, item: LibraryItem) => Promise<void>>(),
   remove: vi.fn<(id: number, contentId: string, type: string) => Promise<void>>(),
-  removeProgress: vi.fn<(id: number, key: string) => Promise<void>>(),
+  clearContinue: vi.fn<(id: number, contentId: string) => Promise<void>>(),
+  saveProgress: vi.fn<(id: number, entry: Progress) => Promise<Progress>>(),
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -42,7 +43,8 @@ vi.mock("@bindings/store", () => ({
     SetWatched: mocks.setWatched,
     SaveLibraryItem: mocks.save,
     RemoveLibraryItem: mocks.remove,
-    RemoveProgress: mocks.removeProgress,
+    ClearContinueWatching: mocks.clearContinue,
+    SaveProgress: mocks.saveProgress,
   },
 }));
 
@@ -115,9 +117,13 @@ beforeEach(() => {
     db.library = db.library.filter((item) => item.contentId !== id);
     return Promise.resolve();
   });
-  mocks.removeProgress.mockImplementation((_, key) => {
-    db.progress = db.progress.filter((entry) => entry.key !== key);
+  mocks.clearContinue.mockImplementation((_, id) => {
+    db.progress = db.progress.filter((entry) => entry.contentId !== id);
     return Promise.resolve();
+  });
+  mocks.saveProgress.mockImplementation((_, entry) => {
+    db.progress.push(entry);
+    return Promise.resolve(entry);
   });
   serve();
 });
@@ -189,11 +195,40 @@ describe("title menu", () => {
     await user.click(
       await screen.findByRole("menuitem", { name: "Remove from Continue Watching" }),
     );
-    expect(mocks.removeProgress).toHaveBeenCalledWith(1, "tt0113277");
+    expect(mocks.clearContinue).toHaveBeenCalledWith(1, "tt0113277");
+    // Not marked watched, and Undo puts the progress back.
+    expect(mocks.setWatched).not.toHaveBeenCalled();
+    await user.click(await screen.findByRole("button", { name: "Undo" }));
+    await waitFor(() => expect(db.progress).toHaveLength(1));
 
     fireEvent.contextMenu(await within(region).findByRole("button", { name: /Heat/ }));
-    await user.click(await screen.findByRole("menuitem", { name: "Play" }));
+    await user.click(await screen.findByRole("menuitem", { name: "Resume" }));
     expect(router.state.location.pathname).toBe("/streams/movie/tt0113277");
+  });
+
+  it("takes a card out of the Continue Watching row", async () => {
+    db.progress = [
+      {
+        key: "tt0113277",
+        contentId: "tt0113277",
+        contentType: "movie",
+        videoId: "tt0113277",
+        position: 600_000,
+        duration: 3_000_000,
+        lastWatched: 5,
+      },
+    ];
+    const user = userEvent.setup();
+    await renderApp("/");
+    const watching = await screen.findByRole("region", { name: "Continue watching" });
+    fireEvent.contextMenu(await within(watching).findByRole("button", { name: /Heat/ }));
+    await user.click(
+      await screen.findByRole("menuitem", { name: "Remove from Continue Watching" }),
+    );
+    await waitFor(() =>
+      expect(screen.queryByRole("region", { name: "Continue watching" })).toBeNull(),
+    );
+    expect(mocks.clearContinue).toHaveBeenCalledWith(1, "tt0113277");
   });
 
   it("goes to the title's page and chooses a stream", async () => {
