@@ -69,3 +69,4 @@
 - [Title menus](title-menus.md) — shared card context menu (TitleMenu, lib/title-actions, `menu` prop), TitleMenuExtras slot for Tracking, keyboard open, episode menu, startOver, baseline test failures
 - [Command palette](command-palette.md) — ⌘K palette: shell mount, lib/palette.ts, coss command, opener-ref focus return, search reuse, test gotchas
 - [Person pages](person-pages.md) — /person/$id from TMDB: PersonLink Link, credit groups in PosterGrids, sort chip, no-key notice, kids hide filmography
+- [Library housekeeping](library-housekeeping.md) — ClearContinueWatching (delete, not a hide flag), Library multi-select: selection.ts, useBulkEdits, SelectionBar, listbox semantics
