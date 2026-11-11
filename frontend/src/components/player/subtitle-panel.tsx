@@ -38,6 +38,10 @@ export const defaultSubtitleStyle: SubtitleStyle = {
 
 export type PanelTab = "subtitles" | "audio" | "style" | "timing";
 
+// Keeping the live style as the profile's: whether it differs from the saved
+// one, and saving it. Settings has its own save, so doesn't pass this.
+export type StyleSave = { unsaved: boolean; onSave: () => void };
+
 // One subtitle the user can pick: a track in the file, or an addon's file
 // (added to the player when picked).
 type Choice =
@@ -75,6 +79,7 @@ export function SubtitlePanel({
   onPickAudio,
   style,
   onStyleChange,
+  save,
   delay,
   onDelayChange,
   position,
@@ -106,6 +111,7 @@ export function SubtitlePanel({
   onPickAudio: (id: number) => void;
   style: SubtitleStyle;
   onStyleChange: (style: SubtitleStyle) => void;
+  save?: StyleSave;
   delay: number;
   onDelayChange: (delay: number) => void;
   position: number;
@@ -195,7 +201,7 @@ export function SubtitlePanel({
         {tab === "audio" && (
           <AudioTab audioTracks={audioTracks} audioId={audioId} onPickAudio={onPickAudio} />
         )}
-        {tab === "style" && <StyleTab style={style} onStyleChange={onStyleChange} />}
+        {tab === "style" && <StyleTab style={style} onStyleChange={onStyleChange} save={save} />}
         {tab === "timing" && (
           <TimingTab
             delay={delay}
@@ -600,9 +606,11 @@ export function SubtitleStyleEditor(props: {
 function StyleTab({
   style,
   onStyleChange,
+  save,
 }: {
   style: SubtitleStyle;
   onStyleChange: (style: SubtitleStyle) => void;
+  save?: StyleSave | undefined;
 }) {
   const set = (patch: Partial<SubtitleStyle>) => onStyleChange({ ...style, ...patch });
   const isDefault = JSON.stringify(style) === JSON.stringify(defaultSubtitleStyle);
@@ -709,6 +717,11 @@ function StyleTab({
           step={1}
           onChange={(lift) => set({ lift })}
         />
+        {save && (
+          <p className="text-tiny leading-snug text-white/50">
+            R and Shift+R move them while you watch.
+          </p>
+        )}
       </Field>
 
       <div className="flex flex-col divide-y divide-white/8 rounded-2xl bg-white/5">
@@ -720,6 +733,24 @@ function StyleTab({
           onChange={(override) => set({ override })}
         />
       </div>
+
+      {save && (
+        <div className="flex flex-col gap-2 rounded-2xl bg-white/5 p-4">
+          <button
+            type="button"
+            disabled={!save.unsaved}
+            onClick={save.onSave}
+            className="h-11 rounded-full bg-white text-[0.875rem] font-[620] text-black outline-none transition-[background-color,scale] hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-35 motion-safe:active:scale-95"
+          >
+            Save as my style
+          </button>
+          <p className="text-center text-tiny leading-snug text-white/55">
+            {save.unsaved
+              ? "Changes last until this video ends. Save them to use them everywhere."
+              : "This is your saved style."}
+          </p>
+        </div>
+      )}
 
       <button
         type="button"

@@ -29,7 +29,13 @@ const track = (id: number, lang: string, fields: Partial<Track> = {}): Track => 
 });
 
 function renderPanel(
-  options: { tracks?: Track[]; subtitleId?: number; secondaryId?: number } = {},
+  options: {
+    tracks?: Track[];
+    subtitleId?: number;
+    secondaryId?: number;
+    tab?: PanelTab;
+    unsaved?: boolean;
+  } = {},
 ) {
   const tracks = options.tracks ?? [
     track(1, "en", { selected: true }),
@@ -40,13 +46,14 @@ function renderPanel(
     onPickTrack: vi.fn<(id: number) => void>(),
     onPickSecondaryTrack: vi.fn<(id: number) => void>(),
     onPickSecondaryAddon: vi.fn<(subtitle: AddonSubtitle) => void>(),
+    onSave: vi.fn<() => void>(),
     onTabChange: vi.fn<(tab: PanelTab) => void>(),
     onClose: vi.fn<() => void>(),
   };
   render(
     <SubtitlePanel
       open
-      tab="subtitles"
+      tab={options.tab ?? "subtitles"}
       onTabChange={props.onTabChange}
       onClose={props.onClose}
       subtitleTracks={tracks}
@@ -68,6 +75,7 @@ function renderPanel(
       onPickAudio={vi.fn<(id: number) => void>()}
       style={defaultSubtitleStyle}
       onStyleChange={vi.fn<(style: SubtitleStyle) => void>()}
+      save={{ unsaved: options.unsaved ?? false, onSave: props.onSave }}
       delay={0}
       onDelayChange={vi.fn<(delay: number) => void>()}
       position={0}
@@ -120,6 +128,30 @@ describe("SubtitlePanel › second line", () => {
   it("reaches every control by keyboard, each with a focus ring", async () => {
     renderPanel();
     await userEvent.click(screen.getByRole("button", { name: "Second line" }));
+    for (const element of keyboardReachable()) expect(hasFocusRing(element)).toBe(true);
+  });
+});
+
+describe("SubtitlePanel › Style", () => {
+  it("keeps a changed style as the profile's only when asked", async () => {
+    const { onSave } = renderPanel({ tab: "style", unsaved: true });
+    expect(onSave).not.toHaveBeenCalled();
+    expect(screen.getByText(/Changes last until this video ends/)).toBeTruthy();
+    await userEvent.click(screen.getByRole("button", { name: "Save as my style" }));
+    expect(onSave).toHaveBeenCalledOnce();
+  });
+
+  it("has nothing to save when the style is the saved one", () => {
+    renderPanel({ tab: "style" });
+    expect(screen.getByRole("button", { name: "Save as my style" })).toHaveProperty(
+      "disabled",
+      true,
+    );
+    expect(screen.getByText("This is your saved style.")).toBeTruthy();
+  });
+
+  it("reaches every control by keyboard, each with a focus ring", () => {
+    renderPanel({ tab: "style", unsaved: true });
     for (const element of keyboardReachable()) expect(hasFocusRing(element)).toBe(true);
   });
 });

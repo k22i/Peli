@@ -72,6 +72,7 @@ import {
   useWatchWithParty,
 } from "@/lib/party";
 import { streamsPath, streamsSearch } from "@/lib/playback";
+import { liftStep, liftText, nudgeLift, nudgeSize, sizeStep } from "@/lib/subtitle-position";
 import { repaintWindow } from "@/lib/theme";
 import {
   formatTime,
@@ -950,25 +951,40 @@ function PlayerFile() {
     setNotice({ text: `Volume ${to} %` });
   };
 
-  // How subtitles look: the profile's, changed live from the panel
-  // and saved to the profile once the changes settle.
+  // How subtitles look: the profile's, changed live from the panel or by
+  // keys (R and G nudge their place and size). A change lasts until this
+  // video ends; "Save as my style" is what makes it the profile's.
   const [subStyle, setSubStyle] = useState<SubtitleStyle>();
-  const style = subStyle ?? settings?.subtitleStyle ?? defaultSubtitleStyle;
+  const savedStyle = settings?.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle;
+  const style = subStyle ?? savedStyle;
   const [styler] = useState(() => latestOnly(Player.SetSubtitleStyle));
   const restyle = (changed: SubtitleStyle) => {
     setSubStyle(changed);
     styler(changed);
   };
-  useEffect(() => {
-    if (!subStyle || !settings) return undefined;
-    if (JSON.stringify(subStyle) === JSON.stringify(settings.subtitleStyle)) return undefined;
-    const timer = setTimeout(
-      () => saveSettings.mutate({ ...settings, subtitleStyle: subStyle } satisfies ProfileSettings),
-      700,
-    );
-    return () => clearTimeout(timer);
-    // oxlint-disable-next-line react/exhaustive-deps -- saves the newest style once it settles
-  }, [subStyle]);
+  const styleUnsaved = JSON.stringify(style) !== JSON.stringify(savedStyle);
+  const saveStyle = () => {
+    if (!settings) return;
+    saveSettings.mutate({ ...settings, subtitleStyle: style } satisfies ProfileSettings);
+    setSubStyle(undefined);
+    setNotice({ text: "Saved as your subtitle style" });
+  };
+  // R raises the subtitles and Shift+R lowers them; G shrinks them and
+  // Shift+G grows them. Each shows at once and says where it left them.
+  const nudgeSubtitles = (lift: number, size: number) => {
+    if (!ready || mini || subtitleTracks.length === 0) return;
+    const lifted = nudgeLift(style.lift, lift);
+    const sized = nudgeSize(style.size, size);
+    if (lifted === style.lift && sized === style.size) {
+      return setNotice({
+        text: size
+          ? `Subtitles at their ${size < 0 ? "smallest" : "largest"}`
+          : `Subtitles as ${lift > 0 ? "high" : "low"} as they go`,
+      });
+    }
+    restyle({ ...style, lift: lifted, size: sized });
+    setNotice({ text: size ? `Subtitle size ${sized} %` : `Subtitles: ${liftText(lifted)}` });
+  };
   const openPanel = (tab: PanelTab) => {
     if (mini) return;
     setHelpOpen(false);
@@ -1208,7 +1224,14 @@ function PlayerFile() {
         A: () => ready && !mini && cycleAspect(),
         C: () => ready && !mini && cycleSecondary(),
       };
-      const shiftedAction = event.shiftKey && !event.repeat ? shifted[event.key] : undefined;
+      // Held down, these go on.
+      const shiftedRepeating: Record<string, () => void> = {
+        R: () => nudgeSubtitles(-liftStep, 0),
+        G: () => nudgeSubtitles(0, sizeStep),
+      };
+      const shiftedAction = event.shiftKey
+        ? (shiftedRepeating[event.key] ?? (event.repeat ? undefined : shifted[event.key]))
+        : undefined;
       if (shiftedAction) {
         event.preventDefault();
         shiftedAction();
@@ -1225,6 +1248,8 @@ function PlayerFile() {
         arrowdown: () => stepVolume(-volumeStep),
         z: () => ready && subtitleTracks.length > 0 && timeSubtitlesBy(-delayStep),
         x: () => ready && subtitleTracks.length > 0 && timeSubtitlesBy(delayStep),
+        r: () => nudgeSubtitles(liftStep, 0),
+        g: () => nudgeSubtitles(0, -sizeStep),
       };
       const once: Record<string, () => void> = {
         " ": togglePause,
@@ -1760,6 +1785,7 @@ function PlayerFile() {
         onPickAudio={pickAudio}
         style={style}
         onStyleChange={restyle}
+        save={{ unsaved: styleUnsaved, onSave: saveStyle }}
         delay={subtitleDelay}
         onDelayChange={timeSubtitles}
         position={position}

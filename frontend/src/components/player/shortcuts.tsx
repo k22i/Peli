@@ -35,6 +35,8 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["C"], action: "Next subtitles, then off" },
       { keys: ["Shift C"], action: "Next second-line subtitles, then off" },
       { keys: ["Z", "X"], action: "Subtitles 0.1 s earlier or later" },
+      { keys: ["R", "Shift R"], action: "Move subtitles up or down" },
+      { keys: ["G", "Shift G"], action: "Make subtitles smaller or larger" },
     ],
   },
   {
