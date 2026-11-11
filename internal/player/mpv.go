@@ -11,6 +11,7 @@ static const char **newArgv(int n) { return calloc(n + 1, sizeof(char *)); }
 static void setArgv(const char **argv, int i, char *s) { argv[i] = s; }
 static mpv_node *listValue(mpv_node_list *l, int i) { return &l->values[i]; }
 static char *listKey(mpv_node_list *l, int i) { return l->keys[i]; }
+static mpv_byte_array *byteArray(mpv_node *n) { return n->u.ba; }
 
 // setStringList sets a list option or property (such as http-header-fields)
 // from n strings, as an mpv_node array, so values may hold commas.
@@ -200,6 +201,29 @@ func (m *mpv) command(args ...string) error {
 	return nil
 }
 
+// commandResult runs a command that answers, such as screenshot-raw, and
+// returns its result as plain Go values.
+func (m *mpv) commandResult(args ...string) (any, error) {
+	h, done, err := m.use()
+	if err != nil {
+		return nil, err
+	}
+	defer done()
+	argv := C.newArgv(C.int(len(args)))
+	defer C.free(unsafe.Pointer(argv))
+	for i, a := range args {
+		s := C.CString(a)
+		defer C.free(unsafe.Pointer(s))
+		C.setArgv(argv, C.int(i), s)
+	}
+	var result C.mpv_node
+	if err := mpvErr(C.mpv_command_ret(h, argv, &result)); err != nil {
+		return nil, fmt.Errorf("player: %s: %w", args[0], err)
+	}
+	defer C.mpv_free_node_contents(&result)
+	return nodeToGo(&result), nil
+}
+
 func (m *mpv) setProperty(name, value string) error {
 	h, done, err := m.use()
 	if err != nil {
@@ -380,7 +404,9 @@ func nodeToGo(n *C.mpv_node) any {
 		}
 		return out
 	case C.MPV_FORMAT_BYTE_ARRAY:
-		return nil
+		// Only screenshot-raw sends one: a frame's pixels, copied out.
+		ba := C.byteArray(n)
+		return C.GoBytes(ba.data, C.int(ba.size))
 	}
 	return valueToGo(n.format, u)
 }
