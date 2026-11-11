@@ -2,14 +2,23 @@ import { queryOptions, useMutation, useQueryClient } from "@tanstack/react-query
 import { Events } from "@wailsio/runtime";
 import { useEffect } from "react";
 
-import { Service as Tracking, type Connections, type SimklCode } from "@bindings/tracking";
+import {
+  Service as Tracking,
+  type Connections,
+  type SimklCode,
+  type TitleRef,
+  type TitleTracking,
+  type WatchlistItem,
+} from "@bindings/tracking";
 
+import type { Meta } from "./addon-protocol";
 import { invalidateWatching } from "./sync";
+import { trackingNames } from "./title";
 
 // SIMKL and AniList (#71), connected per profile. Go keeps the tokens and
 // does the scrobbling, list updates and imports; the webview only shows the
 // connections and starts sign-ins (ADR-0042).
-export type { Connections, SimklCode };
+export type { Connections, SimklCode, TitleRef, TitleTracking, WatchlistItem };
 export { Tracking };
 
 // Sent by internal/tracking when an import added watched marks, and when a
@@ -38,6 +47,7 @@ const trackingErrorCodes = [
   "refused",
   "keychain_unavailable",
   "port_in_use",
+  "not_trackable",
 ] as const;
 export type TrackingErrorCode = (typeof trackingErrorCodes)[number];
 
@@ -152,4 +162,196 @@ export function useTrackingProfile(profileId: number | undefined) {
     if (profileId === undefined) return;
     Tracking.ImportSoon(profileId).catch(() => {});
   }, [profileId]);
+}
+
+// --- lists, ratings and the watchlist ------------------------------------------
+//
+// What the user does to a title: put it on a list, rate it. Go sends it to
+// every connected service that can hold the title (SIMKL, and AniList for
+// anime) and keeps what can't be sent yet (ADR-0042). The calls are refused
+// on kids profiles with the kids_profile code.
+
+export const trackingStatuses = [
+  "planned",
+  "watching",
+  "completed",
+  "paused",
+  "dropped",
+  "none",
+] as const;
+export type TrackingStatus = (typeof trackingStatuses)[number];
+
+// Labels for menus and buttons. "none" takes the title off the lists.
+export const trackingStatusLabels: Record<TrackingStatus, string> = {
+  planned: "Plan to watch",
+  watching: "Watching",
+  completed: "Completed",
+  paused: "On hold",
+  dropped: "Dropped",
+  none: "Remove from lists",
+};
+
+export type TrackingService = "simkl" | "anilist";
+export const trackingServiceNames: Record<TrackingService, string> = {
+  simkl: "SIMKL",
+  anilist: "AniList",
+};
+
+type TitleKind = "movie" | "series";
+
+// The statuses each service keeps, by kind of title. SIMKL has no film that
+// is being watched or on hold. AniList only has anime, which Go finds by the
+// title's ids, so a title that isn't anime is simply not sent to it.
+const statusSupport: Record<TrackingService, Record<TitleKind, readonly TrackingStatus[]>> = {
+  simkl: {
+    movie: ["planned", "completed", "dropped", "none"],
+    series: trackingStatuses,
+  },
+  anilist: { movie: trackingStatuses, series: trackingStatuses },
+};
+
+// The services the profile can send changes to.
+export function connectedServices(connections: Connections | undefined): TrackingService[] {
+  if (!connections || connections.kids) return [];
+  const services: TrackingService[] = [];
+  if (connections.simkl && !connections.simkl.needsReconnect) services.push("simkl");
+  if (connections.anilist && !connections.anilist.needsReconnect) services.push("anilist");
+  return services;
+}
+
+// The statuses to offer for a title of this type: those at least one
+// connected service keeps, in menu order. Empty when nothing is connected.
+export function statusesFor(connections: Connections | undefined, type: string): TrackingStatus[] {
+  const kind: TitleKind = type === "movie" ? "movie" : "series";
+  const supported = new Set(
+    connectedServices(connections).flatMap((service) => statusSupport[service][kind]),
+  );
+  return trackingStatuses.filter((status) => supported.has(status));
+}
+
+// The services that would take the status, for a hint such as "SIMKL, AniList".
+export function servicesFor(
+  connections: Connections | undefined,
+  type: string,
+  status: TrackingStatus,
+): TrackingService[] {
+  const kind: TitleKind = type === "movie" ? "movie" : "series";
+  return connectedServices(connections).filter((service) =>
+    statusSupport[service][kind].includes(status),
+  );
+}
+
+// A title as Go wants it: the addon's id and type, and the ids and year
+// its meta gave, as the player sends them.
+export function titleRef(
+  target: { type: string; id: string },
+  name: string,
+  meta?: Meta,
+): TitleRef {
+  const { ids, year } = trackingNames(name, meta);
+  return {
+    type: target.type === "movie" ? "movie" : "series",
+    id: target.id,
+    name,
+    year: year ?? 0,
+    ids: ids ?? {},
+  };
+}
+
+const titleKey = (profileId: number, ref: Pick<TitleRef, "type" | "id">) =>
+  ["tracking", profileId, "title", ref.type, ref.id] as const;
+
+// What the connected services say about a title: its list, its rating. Go
+// answers "none" when nothing is connected, and fails (with a code) only when
+// every service asked did, so a screen can leave it out.
+export const titleTrackingQuery = (profileId: number, ref: TitleRef) =>
+  queryOptions({
+    queryKey: titleKey(profileId, ref),
+    queryFn: () => Tracking.TitleStatus(profileId, ref),
+    staleTime: 5 * 60_000,
+    retry: false,
+  });
+
+// The planned titles of every connected service, to open like any addon's.
+export const watchlistQuery = (profileId: number) =>
+  queryOptions({
+    queryKey: ["tracking", profileId, "watchlist"] as const,
+    queryFn: () => Tracking.Watchlist(profileId),
+    staleTime: 5 * 60_000,
+    retry: false,
+  });
+
+// Shows the change before Go has sent it, puts it back if Go refuses, and
+// otherwise keeps Go's answer. tracking:changed refreshes the rest.
+function useOptimisticChange<Value>(
+  profileId: number,
+  ref: TitleRef,
+  send: (value: Value) => Promise<TitleTracking>,
+  apply: (current: TitleTracking, value: Value) => TitleTracking,
+) {
+  const queryClient = useQueryClient();
+  const key = titleKey(profileId, ref);
+  return useMutation({
+    mutationFn: send,
+    onMutate: async (value: Value) => {
+      await queryClient.cancelQueries({ queryKey: key });
+      const before = queryClient.getQueryData<TitleTracking>(key);
+      const current = before ?? { status: "none", rating: 0, services: [], queued: false };
+      queryClient.setQueryData<TitleTracking>(key, apply(current, value));
+      return { before };
+    },
+    onError: (_error, _value, context) => {
+      queryClient.setQueryData(key, context?.before);
+    },
+    onSuccess: (answer) => {
+      queryClient.setQueryData(key, answer);
+      void queryClient.invalidateQueries({ queryKey: ["tracking", profileId, "watchlist"] });
+    },
+  });
+}
+
+// Puts the title on a list ("none" takes it off). Moving a title to
+// "planned" or off the lists changes the watchlist too.
+export function useSetTrackingStatus(profileId: number, ref: TitleRef) {
+  return useOptimisticChange<TrackingStatus>(
+    profileId,
+    ref,
+    (status) => Tracking.SetStatus(profileId, ref, status),
+    (current, status) => ({ ...current, status }),
+  );
+}
+
+// Rates the title from 1 to 10, or clears the rating with 0.
+export function useSetTrackingRating(profileId: number, ref: TitleRef) {
+  return useOptimisticChange<number>(
+    profileId,
+    ref,
+    (rating) => Tracking.SetRating(profileId, ref, rating),
+    (current, rating) => ({ ...current, rating }),
+  );
+}
+
+// What to tell the user when a list or rating change fails.
+export function trackingActionProblem(error: unknown) {
+  switch (trackingErrorCode(error)) {
+    case "not_connected":
+      return { title: "Connect SIMKL or AniList first", description: "Do it in Settings." };
+    case "not_trackable":
+      return {
+        title: "Neither service can keep this",
+        description: "It has no id they know, or they don’t keep that status for it.",
+      };
+    case "unreachable":
+      return { title: "Can’t reach your lists", description: "Check your connection." };
+    case "unavailable":
+    case "rate_limited":
+      return { title: "Your lists aren’t answering", description: "Try again in a minute." };
+    case "read_only":
+    case "refused":
+      return { title: "Your lists refused the change", description: "Connect again in Settings." };
+    case "kids_profile":
+      return { title: "Kids profiles don’t keep lists", description: undefined };
+    default:
+      return { title: "Couldn’t update your lists", description: "Try again." };
+  }
 }
