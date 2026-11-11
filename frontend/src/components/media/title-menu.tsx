@@ -12,9 +12,10 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useRef, type KeyboardEvent, type ReactNode } from "react";
+import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 
 import type { Profile, Progress } from "@bindings/store";
+import { RemoveTrackingDialog } from "@/components/media/remove-tracking-dialog";
 import { TitleMenuExtras } from "@/components/media/title-menu-extras";
 import {
   ContextMenu,
@@ -66,19 +67,30 @@ export function TitleMenu({
   children: ReactNode;
 }) {
   const trigger = useRef<HTMLDivElement>(null);
+  // What to do once the user agrees to a question the menu asked. The dialog
+  // is here, not in the popup, which unmounts when an item is chosen.
+  const [asked, setAsked] = useState<{ run: () => void }>();
   return (
-    <ContextMenu>
-      <ContextMenuTrigger ref={trigger} className="contents">
-        {children}
-      </ContextMenuTrigger>
-      <ContextMenuPopup
-        className="material-pop w-60"
-        // Not the trigger, which is a layout-less wrapper: the card in it.
+    <>
+      <ContextMenu>
+        <ContextMenuTrigger ref={trigger} className="contents">
+          {children}
+        </ContextMenuTrigger>
+        <ContextMenuPopup
+          className="material-pop w-60"
+          // Not the trigger, which is a layout-less wrapper: the card in it.
+          finalFocus={() => focusTarget(trigger.current)}
+        >
+          {items ?? <TitleMenuItems title={title} confirm={(run) => setAsked({ run })} />}
+        </ContextMenuPopup>
+      </ContextMenu>
+      <RemoveTrackingDialog
+        open={asked !== undefined}
+        onOpenChange={(open) => !open && setAsked(undefined)}
+        onConfirm={() => asked?.run()}
         finalFocus={() => focusTarget(trigger.current)}
-      >
-        {items ?? <TitleMenuItems title={title} />}
-      </ContextMenuPopup>
-    </ContextMenu>
+      />
+    </>
   );
 }
 
@@ -113,12 +125,26 @@ export function openOnContextKey(event: KeyboardEvent<HTMLElement>): boolean {
 const started = (entry: Progress) =>
   entry.position > 0 && !(entry.duration > 0 && entry.position >= entry.duration * 0.9);
 
-function TitleMenuItems({ title }: { title: MenuTitle }) {
+function TitleMenuItems({
+  title,
+  confirm,
+}: {
+  title: MenuTitle;
+  confirm: (run: () => void) => void;
+}) {
   const profile = useQuery(currentProfileQuery).data;
-  return profile ? <ProfileItems profile={profile} title={title} /> : null;
+  return profile ? <ProfileItems profile={profile} title={title} confirm={confirm} /> : null;
 }
 
-function ProfileItems({ profile, title }: { profile: Profile; title: MenuTitle }) {
+function ProfileItems({
+  profile,
+  title,
+  confirm,
+}: {
+  profile: Profile;
+  title: MenuTitle;
+  confirm: (run: () => void) => void;
+}) {
   const client = useQueryClient();
   const play = usePlay();
   const open = useOpenTitle();
@@ -251,7 +277,7 @@ function ProfileItems({ profile, title }: { profile: Profile; title: MenuTitle }
           </ContextMenuItem>
         </>
       )}
-      <TitleMenuExtras title={title} meta={loaded} profile={profile} />
+      <TitleMenuExtras title={title} meta={loaded} profile={profile} confirm={confirm} />
     </>
   );
 }

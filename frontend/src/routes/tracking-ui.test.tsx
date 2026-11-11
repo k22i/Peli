@@ -214,6 +214,88 @@ describe("tracking in the title menu", () => {
   });
 });
 
+describe("removing a title while SIMKL is connected", () => {
+  const onSimkl: TitleTracking = {
+    status: "planned",
+    rating: 0,
+    services: ["simkl"],
+    queued: false,
+  };
+  const anilistOnly: Connections = {
+    ...none,
+    anilist: { user: "kevin", needsReconnect: false, expires: 0, importedAt: 0 },
+  };
+
+  it("asks first from Remove from Watchlist, and Cancel sends nothing", async () => {
+    mocks.titleStatus.mockResolvedValue(onSimkl);
+    const user = userEvent.setup({ pointerEventsCheck: 0 });
+    await renderApp("/library");
+    const card = await heatCard();
+    fireEvent.contextMenu(card);
+    fireEvent.click(await screen.findByRole("menuitem", { name: "Remove from Watchlist" }));
+
+    // The menu has closed; the dialog is still there.
+    const dialog = await screen.findByRole("alertdialog", {
+      name: "Remove from your SIMKL lists?",
+    });
+    expect(within(dialog).getByText(/watch history for this title too/)).toBeInTheDocument();
+    expect(mocks.setStatus).not.toHaveBeenCalled();
+    await user.click(within(dialog).getByRole("button", { name: "Cancel" }));
+    await waitFor(() => expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument());
+    expect(mocks.setStatus).not.toHaveBeenCalled();
+    // Focus goes back to the card.
+    await waitFor(() => expect(card).toHaveFocus());
+  });
+
+  it("sends none after Remove", async () => {
+    mocks.titleStatus.mockResolvedValue(onSimkl);
+    const user = userEvent.setup({ pointerEventsCheck: 0 });
+    await renderApp("/library");
+    fireEvent.contextMenu(await heatCard());
+    fireEvent.click(await screen.findByRole("menuitem", { name: "Remove from Watchlist" }));
+    await user.click(await screen.findByRole("button", { name: "Remove" }));
+    await waitFor(() => expect(mocks.setStatus).toHaveBeenCalledTimes(1));
+    expect(mocks.setStatus).toHaveBeenCalledWith(1, expect.anything(), "none");
+  });
+
+  it("asks from Status > None too", async () => {
+    mocks.titleStatus.mockResolvedValue({ ...onSimkl, status: "completed" });
+    const user = userEvent.setup({ pointerEventsCheck: 0 });
+    await renderApp("/library");
+    fireEvent.contextMenu(await heatCard());
+    await user.click(await screen.findByRole("menuitem", { name: "Status" }));
+    fireEvent.click(await screen.findByRole("menuitemradio", { name: "None" }));
+    expect(await screen.findByRole("alertdialog")).toBeInTheDocument();
+    expect(mocks.setStatus).not.toHaveBeenCalled();
+    await user.click(await screen.findByRole("button", { name: "Remove" }));
+    await waitFor(() => expect(mocks.setStatus).toHaveBeenCalledWith(1, expect.anything(), "none"));
+  });
+
+  it("asks from the title page's On watchlist button", async () => {
+    mocks.titleStatus.mockResolvedValue(onSimkl);
+    const user = userEvent.setup({ pointerEventsCheck: 0 });
+    await renderApp("/title/movie/tt0111161");
+    await user.click(await screen.findByRole("button", { name: "On watchlist" }));
+    const dialog = await screen.findByRole("alertdialog");
+    expect(mocks.setStatus).not.toHaveBeenCalled();
+    await user.click(within(dialog).getByRole("button", { name: "Cancel" }));
+    expect(mocks.setStatus).not.toHaveBeenCalled();
+    await user.click(await screen.findByRole("button", { name: "On watchlist" }));
+    await user.click(await screen.findByRole("button", { name: "Remove" }));
+    await waitFor(() => expect(mocks.setStatus).toHaveBeenCalledWith(1, expect.anything(), "none"));
+  });
+
+  it("removes at once when only AniList holds the title", async () => {
+    mocks.status.mockResolvedValue(anilistOnly);
+    mocks.titleStatus.mockResolvedValue({ ...onSimkl, services: ["anilist"] });
+    await renderApp("/library");
+    fireEvent.contextMenu(await heatCard());
+    fireEvent.click(await screen.findByRole("menuitem", { name: "Remove from Watchlist" }));
+    await waitFor(() => expect(mocks.setStatus).toHaveBeenCalledWith(1, expect.anything(), "none"));
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
+  });
+});
+
 describe("tracking on the title page", () => {
   it("toggles the watchlist from a round action", async () => {
     const user = userEvent.setup({ pointerEventsCheck: 0 });

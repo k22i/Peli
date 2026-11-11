@@ -389,7 +389,14 @@ export function useTrackingControls(
   const state = useQuery({ ...titleTrackingQuery(profile.id, ref), enabled: available });
   const setStatus = useSetTrackingStatus(profile.id, ref);
   const setRating = useSetTrackingRating(profile.id, ref);
-  return { available, statuses, state: state.data, setStatus, setRating };
+  // SIMKL takes a title off its lists through its history removal, which
+  // clears the watch history too: ask before sending "none" when SIMKL is
+  // among the services that would get it (the ones that hold the title, or
+  // every connected one until that's known).
+  const warnsOnRemoval = state.data
+    ? (state.data.services ?? []).includes("simkl")
+    : connectedServices(connections).includes("simkl");
+  return { available, statuses, state: state.data, setStatus, setRating, warnsOnRemoval };
 }
 
 // A status from a menu's value, or nothing.

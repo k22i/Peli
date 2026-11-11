@@ -18,6 +18,9 @@ export type TitleMenuExtrasProps = {
   title: MenuTitle;
   meta: Meta | undefined;
   profile: Profile;
+  // Asks the user first, in a dialog that outlives the menu (which closes
+  // when an item is chosen), then runs `run` if they agree.
+  confirm: (run: () => void) => void;
 };
 
 export function TitleMenuExtras(props: TitleMenuExtrasProps) {

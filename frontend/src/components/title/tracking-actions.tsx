@@ -1,5 +1,7 @@
 import { Bookmark, BookmarkCheck, Star } from "lucide-react";
+import { useState } from "react";
 
+import { RemoveTrackingDialog } from "@/components/media/remove-tracking-dialog";
 import { RoundAction } from "@/components/title/round-action";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,11 +23,12 @@ import type { Profile } from "@bindings/store";
 // kids profile or with SIMKL and AniList both unconnected.
 export function TrackingActions({ profile, meta }: { profile: Profile; meta: Meta }) {
   const ref = titleRef(meta, meta.name, meta);
-  const { available, statuses, state, setStatus, setRating } = useTrackingControls(
+  const { available, statuses, state, setStatus, setRating, warnsOnRemoval } = useTrackingControls(
     profile,
     meta.type,
     ref,
   );
+  const [confirming, setConfirming] = useState(false);
   if (!available) return null;
   const rating = state?.rating ?? 0;
   const ratingLabel = rating > 0 ? `Your rating: ${rating}` : "Rate";
@@ -37,11 +40,21 @@ export function TrackingActions({ profile, meta }: { profile: Profile; meta: Met
         <RoundAction
           label={onWatchlist ? "On watchlist" : "Add to watchlist"}
           disabled={setStatus.isPending}
-          onClick={() => setStatus.mutate(onWatchlist ? "none" : "planned")}
+          onClick={() => {
+            if (!onWatchlist) setStatus.mutate("planned");
+            // Off the watchlist may clear SIMKL's watch history: confirm.
+            else if (warnsOnRemoval) setConfirming(true);
+            else setStatus.mutate("none");
+          }}
         >
           {onWatchlist ? <BookmarkCheck /> : <Bookmark />}
         </RoundAction>
       )}
+      <RemoveTrackingDialog
+        open={confirming}
+        onOpenChange={setConfirming}
+        onConfirm={() => setStatus.mutate("none")}
+      />
       <Menu>
         <Tooltip>
           <TooltipTrigger

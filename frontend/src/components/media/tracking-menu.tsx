@@ -29,19 +29,24 @@ export function TrackingMenu({
   title,
   meta,
   profile,
+  confirm,
 }: {
   title: MenuTitle;
   meta: Meta | undefined;
   profile: Profile;
+  confirm: (run: () => void) => void;
 }) {
   const ref = titleRef(title, title.name, meta);
-  const { available, statuses, state, setStatus, setRating } = useTrackingControls(
+  const { available, statuses, state, setStatus, setRating, warnsOnRemoval } = useTrackingControls(
     profile,
     title.type,
     ref,
   );
   if (!available) return null;
 
+  // Taking a title off the lists may clear SIMKL's watch history: confirm.
+  const remove = () =>
+    warnsOnRemoval ? confirm(() => setStatus.mutate("none")) : setStatus.mutate("none");
   const status = state?.status ?? "none";
   const rating = state?.rating ?? 0;
   const planned = statuses.includes("planned");
@@ -54,7 +59,7 @@ export function TrackingMenu({
       <ContextMenuGroup>
         {planned && (
           <ContextMenuItem
-            onClick={() => setStatus.mutate(status === "planned" ? "none" : "planned")}
+            onClick={() => (status === "planned" ? remove() : setStatus.mutate("planned"))}
           >
             {status === "planned" ? <BookmarkCheck aria-hidden /> : <Bookmark aria-hidden />}
             {status === "planned" ? "Remove from Watchlist" : "Add to Watchlist"}
@@ -71,7 +76,8 @@ export function TrackingMenu({
                 value={status}
                 onValueChange={(next) => {
                   const chosen = trackingStatusOf(next);
-                  if (chosen) setStatus.mutate(chosen);
+                  if (chosen === "none") remove();
+                  else if (chosen) setStatus.mutate(chosen);
                 }}
               >
                 {listStatuses.map((option) => (
