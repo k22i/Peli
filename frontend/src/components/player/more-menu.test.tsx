@@ -15,6 +15,7 @@ function Harness(props: Props) {
   return <MoreMenu {...props} open={open} onOpenChange={setOpen} />;
 }
 
+const noStats = { open: false, onToggle: vi.fn<() => void>() };
 const noChapters = { chapters: [], current: -1, onPick: vi.fn<(index: number) => void>() };
 
 function loopProps(loop: Loop) {
@@ -28,6 +29,7 @@ describe("MoreMenu", () => {
       <Harness
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
         loop={loopProps({})}
       />,
     );
@@ -44,6 +46,7 @@ describe("MoreMenu", () => {
       <Harness
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
         loop={none}
       />,
     );
@@ -57,6 +60,7 @@ describe("MoreMenu", () => {
       <Harness
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
         loop={half}
       />,
     );
@@ -71,6 +75,7 @@ describe("MoreMenu", () => {
       <Harness
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
         loop={both}
       />,
     );
@@ -94,6 +99,7 @@ describe("MoreMenu", () => {
         }}
         loop={loopProps({})}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
       />,
     );
     await user.click(screen.getByRole("button", { name: "More" }));
@@ -112,6 +118,7 @@ describe("MoreMenu", () => {
       <Harness
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
         loop={loopProps({})}
       />,
     );
@@ -122,12 +129,37 @@ describe("MoreMenu", () => {
   it("takes a screenshot with the subtitles showing, or without", async () => {
     const user = userEvent.setup();
     const onScreenshot = vi.fn<(subtitles: boolean) => void>();
-    render(<Harness chapters={noChapters} loop={loopProps({})} onScreenshot={onScreenshot} />);
+    render(
+      <Harness
+        chapters={noChapters}
+        loop={loopProps({})}
+        onScreenshot={onScreenshot}
+        stats={noStats}
+      />,
+    );
     await user.click(screen.getByRole("button", { name: "More" }));
     await user.click(screen.getByRole("menuitem", { name: /Take a screenshot/ }));
     expect(onScreenshot).toHaveBeenLastCalledWith(true);
     await user.click(screen.getByRole("button", { name: "More" }));
     await user.click(screen.getByRole("menuitem", { name: /Without subtitles/ }));
     expect(onScreenshot).toHaveBeenLastCalledWith(false);
+  });
+
+  it("turns the stats overlay on and off", async () => {
+    const user = userEvent.setup();
+    const onToggle = vi.fn<() => void>();
+    render(
+      <Harness
+        chapters={noChapters}
+        loop={loopProps({})}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={{ open: true, onToggle }}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "More" }));
+    const item = screen.getByRole("menuitemcheckbox", { name: /Playback stats/ });
+    expect(item).toHaveAttribute("aria-checked", "true");
+    await user.click(item);
+    expect(onToggle).toHaveBeenCalled();
   });
 });

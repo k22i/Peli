@@ -1,7 +1,8 @@
-import { Camera, Ellipsis, ListOrdered, Repeat, X } from "lucide-react";
+import { Activity, Camera, Ellipsis, ListOrdered, Repeat, X } from "lucide-react";
 
 import {
   PlayerMenu,
+  PlayerMenuCheckboxItem,
   PlayerMenuGroup,
   PlayerMenuItem,
   PlayerMenuRadioGroup,
@@ -34,6 +35,7 @@ export function MoreMenu({
   chapters,
   loop,
   onScreenshot,
+  stats,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -41,6 +43,7 @@ export function MoreMenu({
   loop: LoopProps;
   // Saves the frame, with the subtitles showing or without.
   onScreenshot: (subtitles: boolean) => void;
+  stats: { open: boolean; onToggle: () => void };
 }) {
   const { a, b } = loop.loop;
   return (
@@ -112,6 +115,13 @@ export function MoreMenu({
         </PlayerMenuItem>
         <PlayerMenuItem onClick={() => onScreenshot(false)}>Without subtitles</PlayerMenuItem>
       </PlayerMenuGroup>
+      <PlayerMenuSeparator />
+      <PlayerMenuCheckboxItem checked={stats.open} onChange={stats.onToggle} hint="⇧I">
+        <span className="flex items-center gap-3">
+          <Activity aria-hidden className="size-4.5" />
+          Playback stats
+        </span>
+      </PlayerMenuCheckboxItem>
     </PlayerMenu>
   );
 }

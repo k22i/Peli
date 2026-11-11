@@ -42,6 +42,7 @@ import { SeekBar } from "@/components/player/seek-bar";
 import { SecondSubtitles } from "@/components/player/second-subtitles";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
 import { SpeedMenu } from "@/components/player/speed-menu";
+import { StatsOverlay } from "@/components/player/stats-overlay";
 import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
 import {
   defaultSubtitleStyle,
@@ -351,6 +352,7 @@ function PlayerFile() {
   // The dock's menus (Speed, More) have the keys while open.
   const [speedOpen, setSpeedOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [statsOpen, setStatsOpen] = useState(false);
   const [switcherOpen, setSwitcherOpen] = useState(false);
   // The stream being opened from the switcher, or why it couldn't be.
   const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
@@ -1319,6 +1321,7 @@ function PlayerFile() {
         A: () => ready && !mini && cycleAspect(),
         C: () => ready && !mini && cycleSecondary(),
         S: () => takeScreenshot(true),
+        I: () => ready && !mini && setStatsOpen(!statsOpen),
       };
       // Held down, these go on.
       const shiftedRepeating: Record<string, () => void> = {
@@ -1376,6 +1379,7 @@ function PlayerFile() {
         "?": () => !mini && setHelpOpen(!helpOpen),
         escape: () => {
           if (helpOpen) setHelpOpen(false);
+          else if (statsOpen && !mini) setStatsOpen(false);
           else if (mini) toggleMini();
           else if (fullscreen) toggleFullscreen();
           else leave();
@@ -1903,6 +1907,7 @@ function PlayerFile() {
                       onClear: () => changeLoop({}, "A–B loop off"),
                     }}
                     onScreenshot={takeScreenshot}
+                    stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
                   />
                 )}
               </div>
@@ -2020,6 +2025,7 @@ function PlayerFile() {
         />
       )}
       {helpOpen && !failure && !mini && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
+      {statsOpen && ready && !mini && <StatsOverlay onClose={() => setStatsOpen(false)} />}
       {notice && !failure && (
         <div
           aria-live="polite"

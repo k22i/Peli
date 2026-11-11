@@ -19,6 +19,7 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["Page Up", "Page Down"], action: "Previous or next chapter" },
       { keys: ["L"], action: "Set A, set B, then clear an A–B loop" },
       { keys: ["Shift S"], action: "Screenshot, with the subtitles showing" },
+      { keys: ["Shift I"], action: "Playback stats" },
       { keys: ["M"], action: "Mute or unmute" },
       { keys: ["F"], action: "Full screen" },
       { keys: ["I"], action: "Mini player" },
