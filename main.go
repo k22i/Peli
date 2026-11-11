@@ -148,9 +148,9 @@ func main() {
 
 	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Title: "Sinag",
-		// Window sized to the golden ratio (1000 / 618 ≈ 1.618).
-		Width:  1000,
-		Height: 618,
+		// Opens at 1600×900 (16:9), midway between 1280×720 and 1920×1080.
+		Width:  1600,
+		Height: 900,
 		// The app shell draws the title bar where the OS allows (#12): macOS
 		// keeps its traffic lights over the shell's 44px drag strip, Windows
 		// is frameless with our own caption buttons, and Linux keeps its
