@@ -142,3 +142,54 @@ export function useTmdbPerson(id: number) {
     refetch: () => void person.refetch(),
   };
 }
+
+// A person in search results: their photo, and what they are known for.
+export type PersonHit = {
+  id: number;
+  name: string;
+  department?: string;
+  photo?: string;
+  // Up to three titles, for the card's line.
+  knownFor: string[];
+};
+
+const peopleLimit = 20;
+
+export function parseTmdbPeople(answer: unknown): PersonHit[] {
+  return list(record(answer)["results"])
+    .flatMap((person): PersonHit[] => {
+      const id = person["id"];
+      const name = text(person["name"]);
+      if (typeof id !== "number" || !name) return [];
+      const department = text(person["known_for_department"]);
+      const photo = tmdbImage("w342", person["profile_path"]);
+      const knownFor = list(person["known_for"])
+        .map((item) => text(item["title"]) ?? text(item["name"]))
+        .filter((title): title is string => title !== undefined)
+        .slice(0, 3);
+      return [{ id, name, ...(department && { department }), ...(photo && { photo }), knownFor }];
+    })
+    .slice(0, peopleLimit);
+}
+
+// People matching a search, for Search's People row. Kept in memory only:
+// searches are one-offs.
+const tmdbPeopleQuery = (key: string, term: string) =>
+  queryOptions({
+    queryKey: ["tmdb", "search-person", term],
+    queryFn: async ({ signal }) =>
+      parseTmdbPeople(await tmdbGet(key, "/search/person", { query: term }, signal)),
+    staleTime: 5 * 60 * 1000,
+    retry: false,
+  });
+
+// The people TMDB finds for `term`: undefined with no key, no term or while
+// it loads, and when TMDB fails (the row just doesn't show).
+export function useTmdbPeople(term: string | undefined, enabled: boolean): PersonHit[] | undefined {
+  const key = useQuery(tmdbKeyQuery).data;
+  const found = useQuery({
+    ...tmdbPeopleQuery(key ?? "", term ?? ""),
+    enabled: Boolean(enabled && key && term),
+  });
+  return key && term && enabled ? found.data : undefined;
+}

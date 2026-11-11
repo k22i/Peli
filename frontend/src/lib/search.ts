@@ -20,12 +20,90 @@ export const minQueryLength = 2;
 
 // What Search keeps in its address, so Back from a title page (#45) shows
 // the same results.
-export type SearchSearch = { q?: string };
+export type SearchSearch = {
+  q?: string;
+  // Narrow the results to one kind, to a decade, or to a genre. All are
+  // kept in the address with the query.
+  type?: SearchKind;
+  year?: SearchYear;
+  genre?: string;
+};
+
+// A change to the filters: a key set to undefined drops it from the address.
+export type SearchChange = { [K in keyof SearchSearch]?: SearchSearch[K] | undefined };
+
+// The address's search with `changes` applied; a key set to undefined goes.
+export function changeSearch(search: SearchSearch, changes: SearchChange): SearchSearch {
+  return searchSearch({ ...search, ...changes });
+}
+
+export const searchKinds = ["movie", "series", "anime"] as const;
+export type SearchKind = (typeof searchKinds)[number];
+// A decade by its first year, or everything before 1990.
+export const searchYears = ["2020", "2010", "2000", "1990", "older"] as const;
+export type SearchYear = (typeof searchYears)[number];
 
 export function searchSearch(search: Record<string, unknown>): SearchSearch {
   // The router reads a bare number in the address ("1917") as a number.
-  const q = typeof search["q"] === "number" ? String(search["q"]) : search["q"];
-  return typeof q === "string" && q.trim() ? { q } : {};
+  const number = (value: unknown) => (typeof value === "number" ? String(value) : value);
+  const q = number(search["q"]);
+  const type = searchKinds.find((kind) => kind === search["type"]);
+  const year = searchYears.find((decade) => decade === number(search["year"]));
+  const genre = search["genre"];
+  return {
+    ...(typeof q === "string" && q.trim() && { q }),
+    ...(type && { type }),
+    ...(year && { year }),
+    ...(typeof genre === "string" && genre.trim() && { genre }),
+  };
+}
+
+// A title's first year, from "2010", "2010–2013" or "2010-".
+const yearOf = (meta: MetaPreview) => {
+  const year = /\d{4}/.exec(meta.releaseInfo ?? meta.released ?? "")?.[0];
+  return year ? Number(year) : undefined;
+};
+
+const inDecade = (year: number, decade: SearchYear) =>
+  decade === "older" ? year < 1990 : year >= Number(decade) && year < Number(decade) + 10;
+
+// The groups narrowed by the filters; a group left empty goes. A title with
+// no year can't be placed in a decade, so a year filter leaves it out.
+export function filterGroups(
+  groups: readonly SearchGroup[],
+  { type, year, genre }: Pick<SearchSearch, "type" | "year" | "genre">,
+): SearchGroup[] {
+  const wanted = genre?.toLowerCase();
+  return groups
+    .filter((group) => !type || group.kind === type)
+    .flatMap((group) => {
+      const metas = group.metas.filter((meta) => {
+        if (year) {
+          const released = yearOf(meta);
+          if (released === undefined || !inDecade(released, year)) return false;
+        }
+        return !wanted || (meta.genres ?? []).some((g) => g.toLowerCase() === wanted);
+      });
+      return metas.length > 0 ? [{ ...group, metas }] : [];
+    });
+}
+
+// The genres the results carry, most common first, for the genre filter.
+export function searchGenres(groups: readonly SearchGroup[]): string[] {
+  // "Drama" and "drama" are one genre; the first spelling seen is kept.
+  const counts = new Map<string, { name: string; count: number }>();
+  for (const { metas } of groups) {
+    for (const meta of metas) {
+      for (const genre of meta.genres ?? []) {
+        const entry = counts.get(genre.toLowerCase()) ?? { name: genre, count: 0 };
+        counts.set(genre.toLowerCase(), { ...entry, count: entry.count + 1 });
+      }
+    }
+  }
+  return [...counts.values()]
+    .toSorted((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+    .map(({ name }) => name)
+    .slice(0, 24);
 }
 
 // The query as it's sent, or undefined while it's too short to send.

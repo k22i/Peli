@@ -28,6 +28,7 @@ vi.mock("@bindings/store", () => ({
     HomeLayout: mocks.homeLayout,
     Collections: () => Promise.resolve([]),
     ContinueWatching: () => Promise.resolve([]),
+    Library: () => Promise.resolve([]),
   },
 }));
 

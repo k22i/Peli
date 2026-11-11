@@ -13,10 +13,18 @@ import {
 import { NoAddons } from "@/components/addons/no-addons";
 import { BrowseFrame, Notice } from "@/components/browse/browse-page";
 import { PosterCard } from "@/components/media/cards";
+import { Chip, ChipRail } from "@/components/media/chip";
 import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Kbd } from "@/components/ui/kbd";
+import {
+  Select,
+  SelectItem,
+  SelectPopup,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Spinner } from "@/components/ui/spinner";
 import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
@@ -24,9 +32,17 @@ import { useBrowsableAddons } from "@/lib/home";
 import { currentPlatform } from "@/lib/platform";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { currentProfileQuery } from "@/lib/profile";
+import { addRecent, clearRecent, readRecent, removeRecent } from "@/lib/recent-searches";
+import { useTmdbPeople, type PersonHit } from "@/lib/tmdb-person";
 import {
+  filterGroups,
   groupByline,
   searchCatalogs,
+  searchGenres,
+  searchKinds,
+  searchYears,
+  changeSearch,
+  type SearchChange,
   searchDebounceMs,
   searchFieldId,
   searchGroups,
@@ -47,22 +63,50 @@ import type { Profile } from "@bindings/store";
 // screen readers.
 export function SearchPage() {
   const profile = useQuery(currentProfileQuery).data;
-  const { q }: SearchSearch = useSearch({ strict: false });
+  // Keyed by profile: a switch starts with that profile's recent searches.
+  return profile ? (
+    <SearchView key={profile.id} profile={profile} />
+  ) : (
+    <BrowseFrame title="Search" quietTitle>
+      <RowSkeleton />
+    </BrowseFrame>
+  );
+}
+
+function SearchView({ profile }: { profile: Profile }) {
+  const search: SearchSearch = useSearch({ strict: false });
+  const { q } = search;
+  const term = searchTerm(q);
   const field = useRef<HTMLInputElement>(null);
   const results = useRef<HTMLElement>(null);
+  const [recent, setRecent] = useState(() => readRecent(profile.id));
+  const found = useSearchResults(profile, term);
+
+  const recents = {
+    list: recent,
+    add: (value: string) => setRecent(addRecent(profile.id, value)),
+    remove: (value: string) => setRecent(removeRecent(profile.id, value)),
+    clear: () => setRecent(clearRecent(profile.id)),
+  };
 
   return (
     <BrowseFrame
       title="Search"
       quietTitle
       rail={
-        <SearchField
-          ref={field}
-          q={q}
-          onArrowDown={() =>
-            results.current?.querySelector<HTMLElement>("[data-row-item][tabindex='0']")?.focus()
-          }
-        />
+        <div className="flex flex-col gap-3">
+          <SearchField
+            ref={field}
+            search={search}
+            onCommit={recents.add}
+            onArrowDown={() =>
+              results.current?.querySelector<HTMLElement>("[data-row-item][tabindex='0']")?.focus()
+            }
+          />
+          {term !== undefined && found.groups.length > 0 && (
+            <SearchFilters search={search} genres={searchGenres(found.groups)} />
+          )}
+        </div>
       }
     >
       {/* oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- handles keys bubbling up from the cards */}
@@ -79,9 +123,85 @@ export function SearchPage() {
           field.current?.focus();
         }}
       >
-        {profile ? <Results profile={profile} term={searchTerm(q)} /> : <RowSkeleton />}
+        <Results profile={profile} term={term} search={search} found={found} recents={recents} />
       </section>
     </BrowseFrame>
+  );
+}
+
+// What narrows the results, on the header under the field: kind chips, then
+// a decade and a genre (the genres the results have; none if they list none).
+function SearchFilters({ search, genres }: { search: SearchSearch; genres: string[] }) {
+  const navigate = useNavigate();
+  const set = (changes: SearchChange) =>
+    void navigate({ to: ".", search: changeSearch(search, changes), replace: true });
+  return (
+    <div className="flex flex-col gap-3">
+      <ChipRail
+        aria-label="Kind"
+        value={[search.type ?? "all"]}
+        onValueChange={(value: string[]) => {
+          const [next] = value;
+          if (next) set({ type: searchKinds.find((kind) => kind === next) });
+        }}
+      >
+        <Chip value="all">All</Chip>
+        <Chip value="movie">Movies</Chip>
+        <Chip value="series">Shows</Chip>
+        <Chip value="anime">Anime</Chip>
+      </ChipRail>
+      <div className="flex flex-wrap gap-2 px-page">
+        <FilterSelect
+          label="Year"
+          allLabel="Any year"
+          value={search.year ?? ""}
+          options={searchYears.map((year) => ({
+            value: year,
+            label: year === "older" ? "Before 1990" : `${year}s`,
+          }))}
+          onChange={(year) => set({ year: searchYears.find((decade) => decade === year) })}
+        />
+        {genres.length > 0 && (
+          <FilterSelect
+            label="Genre"
+            allLabel="Any genre"
+            value={search.genre ?? ""}
+            options={genres.map((genre) => ({ value: genre, label: genre }))}
+            onChange={(genre) => set({ genre: genre || undefined })}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FilterSelect({
+  label,
+  allLabel,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  allLabel: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (value: string) => void;
+}) {
+  const items = [{ value: "", label: allLabel }, ...options];
+  return (
+    <Select items={items} value={value} onValueChange={(next) => onChange(next ?? "")}>
+      <SelectTrigger aria-label={label} className="w-40">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectPopup>
+        {items.map((item) => (
+          <SelectItem key={item.value} value={item.value}>
+            {item.label}
+          </SelectItem>
+        ))}
+      </SelectPopup>
+    </Select>
   );
 }
 
@@ -90,24 +210,44 @@ export function SearchPage() {
 // puts the cursor back in the field.
 function SearchField({
   ref,
-  q,
+  search,
+  onCommit,
   onArrowDown,
 }: {
   ref: React.Ref<HTMLInputElement>;
-  q: string | undefined;
+  search: SearchSearch;
+  // A search the user means: Enter on it.
+  onCommit: (term: string) => void;
   onArrowDown: () => void;
 }) {
   const navigate = useNavigate();
+  const { q } = search;
   const input = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => input.current!);
   const [text, setText] = useState(q ?? "");
   const [focused, setFocused] = useState(false);
   // Replaced, not pushed: Back leaves the page rather than undoing typing.
+  // What the field itself last wrote to the address; a different `q` came
+  // from elsewhere (a recent search was picked) and replaces the text.
+  const written = useRef(q ?? "");
   const submit = useCallback(
-    (value: string) =>
-      void navigate({ to: ".", search: value.trim() ? { q: value } : {}, replace: true }),
+    (value: string) => {
+      written.current = value.trim() ? value : "";
+      // Filters belong to a query, so they go with it only while it stays.
+      void navigate({
+        to: ".",
+        search: (previous) => (value.trim() ? { ...previous, q: value } : {}),
+        replace: true,
+      });
+    },
     [navigate],
   );
+
+  useEffect(() => {
+    if ((q ?? "") === written.current) return;
+    written.current = q ?? "";
+    setText(q ?? "");
+  }, [q]);
 
   useEffect(() => {
     if (text === (q ?? "")) return undefined;
@@ -124,6 +264,8 @@ function SearchField({
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       submit(text);
+      const term = searchTerm(text);
+      if (term) onCommit(term);
     } else if (event.key === "Escape" && text) {
       event.preventDefault();
       clear();
@@ -187,8 +329,9 @@ function SearchField({
 // The shortcut that focuses the field from anywhere.
 const shortcutLabel = () => (currentPlatform() === "mac" ? "⌘F" : "Ctrl+F");
 
-function Results({ profile, term }: { profile: Profile; term: string | undefined }) {
-  const open = useOpenTitle();
+// The catalogs the profile's search asks and what they have answered so
+// far, shared by the header (its genre filter) and the results.
+function useSearchResults(profile: Profile, term: string | undefined) {
   const { visible, addons, shown, loading } = useBrowsableAddons(profile.id);
   const leaveOutAnime = useLeaveOutAnime(profile.id);
   // Not until a kids profile's allowed catalogs are known, so the rest are
@@ -202,6 +345,43 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
             searchQuery(addon.url, catalog.type, catalog.id, term),
           ),
   });
+  const groups = searchGroups(
+    catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas })),
+    leaveOutAnime,
+  );
+  return { visible, loading, catalogs, queries, groups };
+}
+
+type Found = ReturnType<typeof useSearchResults>;
+type Recents = {
+  list: string[];
+  add: (term: string) => void;
+  remove: (term: string) => void;
+  clear: () => void;
+};
+
+function Results({
+  profile,
+  term,
+  search,
+  found,
+  recents,
+}: {
+  profile: Profile;
+  term: string | undefined;
+  search: SearchSearch;
+  found: Found;
+  recents: Recents;
+}) {
+  const open = useOpenTitle();
+  const navigate = useNavigate();
+  const { visible, loading, catalogs, queries } = found;
+  // People aren't addon results: TMDB's, for an unfiltered search, never on a
+  // kids profile (nothing can say which people they may see).
+  const people = useTmdbPeople(
+    term,
+    !profile.kids && !search.type && !search.year && !search.genre,
+  );
 
   if (visible.data?.length === 0) return <NoAddons profile={profile} />;
   if (loading) return term ? <RowSkeleton /> : null;
@@ -220,22 +400,26 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
     );
   }
   if (term === undefined) {
-    // Nothing is stored of earlier searches, and none is added (#119): a quiet
-    // prompt until there's something to look for.
+    // Earlier searches under the empty field, then a quiet prompt.
     const count = new Set(catalogs.map(({ addon }) => addon.url)).size;
     return (
-      <Notice
-        icon={SearchIcon}
-        title="Search your addons’ catalogs"
-        description={`Find movies, shows and anime in ${count === 1 ? "1 addon" : `${count} addons`}. Press ${shortcutLabel()} or / to search from anywhere.`}
-      />
+      <>
+        <RecentSearches
+          recents={recents}
+          onPick={(recent) => void navigate({ to: ".", search: { q: recent }, replace: true })}
+        />
+        <Notice
+          icon={SearchIcon}
+          title="Search your addons’ catalogs"
+          description={`Find movies, shows and anime in ${count === 1 ? "1 addon" : `${count} addons`}. Press ${shortcutLabel()} or / to search from anywhere.`}
+        />
+      </>
     );
   }
 
-  const groups = searchGroups(
-    catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas })),
-    leaveOutAnime,
-  );
+  const all = found.groups;
+  const groups = filterGroups(all, search);
+  const filtered = Boolean(search.type || search.year || search.genre);
   const addonNames = (pick: (i: number) => boolean) => [
     ...new Set(catalogs.filter((_, i) => pick(i)).map(({ addon }) => addon.manifest.name)),
   ];
@@ -245,7 +429,7 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
     for (const query of queries) if (query.isError) void query.refetch();
   };
 
-  if (groups.length === 0 && pending.length === 0) {
+  if (all.length === 0 && pending.length === 0 && !people?.length) {
     return queries.every((query) => query.isError) ? (
       <Notice
         icon={SearchX}
@@ -287,8 +471,32 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
           </span>
         )}
       </output>
-      {groups.length === 0 ? (
+      {all.length === 0 && !people?.length ? (
         <RowSkeleton />
+      ) : groups.length === 0 && !people?.length ? (
+        <Notice
+          icon={SearchX}
+          title="Nothing matches those filters"
+          description="Try another kind, decade or genre, or clear them."
+          action={
+            <Button
+              variant="outline"
+              onClick={() =>
+                void navigate({
+                  to: ".",
+                  search: changeSearch(search, {
+                    type: undefined,
+                    year: undefined,
+                    genre: undefined,
+                  }),
+                  replace: true,
+                })
+              }
+            >
+              Clear filters
+            </Button>
+          }
+        />
       ) : (
         <div className="flex flex-col gap-12">
           <RowGroup>
@@ -311,11 +519,15 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
                     meta={meta.releaseInfo}
                     src={meta.poster}
                     menu={menuTitle(meta)}
-                    onClick={() => open(meta)}
+                    onClick={() => {
+                      recents.add(term);
+                      open(meta);
+                    }}
                   />
                 )}
               />
             ))}
+            {people && people.length > 0 && !filtered && <PeopleRow people={people} />}
           </RowGroup>
         </div>
       )}
@@ -326,3 +538,65 @@ function Results({ profile, term }: { profile: Profile; term: string | undefined
 // "Cinemeta", "Cinemeta and Kitsu", "Cinemeta, Kitsu and MAL".
 const list = (names: readonly string[]) =>
   new Intl.ListFormat("en", { type: "conjunction" }).format(names);
+
+// TMDB's people for the query: photo, name and what they're known for. Each
+// opens their page.
+function PeopleRow({ people }: { people: PersonHit[] }) {
+  const navigate = useNavigate();
+  return (
+    <Row
+      title="People"
+      items={people}
+      getKey={(person) => person.id}
+      renderItem={(person) => (
+        <PosterCard
+          title={person.name}
+          meta={person.knownFor.join(", ") || person.department}
+          src={person.photo}
+          onClick={() => void navigate({ to: "/person/$id", params: { id: String(person.id) } })}
+        />
+      )}
+    />
+  );
+}
+
+// The profile's last searches as removable chips, under the empty field.
+function RecentSearches({ recents, onPick }: { recents: Recents; onPick: (term: string) => void }) {
+  if (recents.list.length === 0) return null;
+  return (
+    <section aria-labelledby="recent-searches" className="flex flex-col gap-3 px-page">
+      <div className="flex items-center justify-between gap-4">
+        <h2 id="recent-searches" className="type-heading">
+          Recent searches
+        </h2>
+        <Button variant="ghost" size="sm" onClick={recents.clear}>
+          Clear all
+        </Button>
+      </div>
+      <ul className="flex flex-wrap gap-2">
+        {recents.list.map((recent) => (
+          <li
+            key={recent}
+            className="flex items-center rounded-full bg-foreground/6 text-small font-[560] text-foreground/80"
+          >
+            <button
+              type="button"
+              className="h-8 rounded-s-full ps-3.5 pe-2 outline-ring hover:text-foreground focus-visible:outline-2"
+              onClick={() => onPick(recent)}
+            >
+              {recent}
+            </button>
+            <button
+              type="button"
+              aria-label={`Remove ${recent}`}
+              className="grid size-8 place-items-center rounded-e-full outline-ring hover:text-foreground focus-visible:outline-2 [&_svg]:size-3.5"
+              onClick={() => recents.remove(recent)}
+            >
+              <X aria-hidden />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
