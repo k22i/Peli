@@ -72,7 +72,16 @@ import {
   useWatchWithParty,
 } from "@/lib/party";
 import { streamsPath, streamsSearch } from "@/lib/playback";
-import { liftStep, liftText, nudgeLift, nudgeSize, sizeStep } from "@/lib/subtitle-position";
+import {
+  liftNow,
+  liftStep,
+  liftText,
+  liftToClear,
+  nudgeLift,
+  nudgeSize,
+  sizeStep,
+  useWindowHeight,
+} from "@/lib/subtitle-position";
 import { repaintWindow } from "@/lib/theme";
 import {
   formatTime,
@@ -181,6 +190,9 @@ const volumeStep = 5;
 const startOverFor = 10_000;
 // How long the play/pause mark at the centre takes to fade out.
 const flashFor = 450;
+// How long the subtitles stay where a nudge put them, to show it, before
+// they rise for the controls again.
+const nudgeShown = 2500;
 
 // The player screen: the video under a transparent page, with no app shell,
 // and the controls over it (#61). They show on any move or key and hide
@@ -958,10 +970,15 @@ function PlayerFile() {
   const savedStyle = settings?.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle;
   const style = subStyle ?? savedStyle;
   const [styler] = useState(() => latestOnly(Player.SetSubtitleStyle));
-  const restyle = (changed: SubtitleStyle) => {
-    setSubStyle(changed);
-    styler(changed);
-  };
+  const restyle = setSubStyle;
+  // A nudge shows where it put the subtitles for a moment, before they rise
+  // for the controls (below) again.
+  const [nudgedAt, setNudgedAt] = useState<number>();
+  useEffect(() => {
+    if (nudgedAt === undefined) return undefined;
+    const timer = setTimeout(() => setNudgedAt(undefined), nudgeShown);
+    return () => clearTimeout(timer);
+  }, [nudgedAt]);
   const styleUnsaved = JSON.stringify(style) !== JSON.stringify(savedStyle);
   const saveStyle = () => {
     if (!settings) return;
@@ -983,6 +1000,7 @@ function PlayerFile() {
       });
     }
     restyle({ ...style, lift: lifted, size: sized });
+    if (lift) setNudgedAt(Date.now());
     setNotice({ text: size ? `Subtitle size ${sized} %` : `Subtitles: ${liftText(lifted)}` });
   };
   const openPanel = (tab: PanelTab) => {
@@ -1176,7 +1194,14 @@ function PlayerFile() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      wake();
+      // R and G nudge the subtitles: the controls staying hidden shows where
+      // they really go.
+      const nudging =
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        (event.key === "r" || event.key === "R" || event.key === "g" || event.key === "G");
+      if (!nudging) wake();
       // The switcher has the keys: Esc closes it, Space picks. The panel
       // keeps them too, but for Z and X (timing) and Esc (closes it).
       if (error || switcherOpen || partyOpen) return;
@@ -1307,6 +1332,24 @@ function PlayerFile() {
     helpOpen ||
     switcherOpen ||
     partyOpen;
+  // The subtitles rise to clear the controls while they show, and settle
+  // back when they hide. The user's own lift doesn't add to that: the
+  // higher of the two wins, so a lift set to dodge the controls once doesn't
+  // leave them too high the rest of the time. Nudging, or the Style tab's
+  // Position slider, shows the lift itself.
+  const windowHeight = useWindowHeight();
+  const previewing = nudgedAt !== undefined || panel === "style";
+  const lifted = liftNow(
+    style.lift,
+    shown && !previewing && ready,
+    liftToClear(windowHeight, mini),
+  );
+  const loaded = settings !== undefined;
+  useEffect(() => {
+    // A new file starts with the profile's style (Go sets it at load).
+    if (!ready || state.loading || !loaded) return;
+    styler({ ...style, lift: lifted });
+  }, [style, lifted, ready, state.loading, loaded, added.load, styler]);
   const hold = { onPointerEnter: () => setOver(true), onPointerLeave: () => setOver(false) };
   const VolumeIcon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
   // Hours show once the file is that long; the times keep one width so the
@@ -1527,7 +1570,7 @@ function PlayerFile() {
           mainText={state.subtitleText ?? ""}
           mainOn={subtitleId > 0}
           style={style}
-          lift={style.lift}
+          lift={lifted}
         />
       )}
       <div

@@ -719,7 +719,8 @@ function StyleTab({
         />
         {save && (
           <p className="text-tiny leading-snug text-white/50">
-            R and Shift+R move them while you watch.
+            R and Shift+R move them while you watch. They also rise on their own while the controls
+            show, so this is for how you like them when the controls are away.
           </p>
         )}
       </Field>
