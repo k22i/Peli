@@ -16,6 +16,7 @@ import type {
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import { defaultQuality } from "@/lib/quality";
+import { defaultAudio } from "@/lib/sound";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.json";
 import opensubtitlesManifest from "@/lib/addon-protocol/fixtures/opensubtitles/manifest.json";
@@ -272,6 +273,7 @@ beforeEach(() => {
     torrentStreaming: false,
     torrentCacheGB: 5,
     quality: defaultQuality,
+    audio: defaultAudio,
   });
   mocks.segments.mockReset().mockResolvedValue([]);
   mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
@@ -1633,6 +1635,7 @@ describe("skip intro and credits", () => {
       torrentStreaming: false,
       torrentCacheGB: 5,
       quality: defaultQuality,
+      audio: defaultAudio,
     });
     mocks.segments.mockResolvedValue([{ kind: "intro", start: 216, end: 232 }]);
     await openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot });

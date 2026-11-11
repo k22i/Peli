@@ -50,6 +50,7 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
     flipH: false,
     flipV: false,
   },
+  sound: { dialogueBoost: false, nightMode: false, equalizer: "flat" },
   ...changes,
 });
 

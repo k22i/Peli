@@ -55,6 +55,8 @@ type ProfileSettings struct {
 	// Framing is how titles fill the window unless they have their own: the
 	// fit and auto-crop are what a profile sets; the rest stays default.
 	Framing Framing `json:"framing"`
+	// Sound is how titles sound unless they have their own.
+	Sound Sound `json:"sound"`
 }
 
 // SubtitleStyle is how text subtitles look: player.SubtitleStyle,
@@ -110,6 +112,8 @@ type DeviceSettings struct {
 	// Quality is how hard the renderer works on the picture, unless a
 	// title has its own.
 	Quality Quality `json:"quality"`
+	// Audio is this device's output.
+	Audio Audio `json:"audio"`
 }
 
 var (
@@ -135,6 +139,7 @@ func DefaultProfileSettings() ProfileSettings {
 		SimklScrobble: true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
 		Picture: DefaultPicture(), PicturePresets: []NamedPicture{}, Framing: DefaultFraming(),
+		Sound: DefaultSound(),
 	}
 }
 
@@ -143,6 +148,7 @@ func DefaultDeviceSettings() DeviceSettings {
 	return DeviceSettings{
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
+		Audio: DefaultAudio(),
 	}
 }
 
@@ -199,6 +205,9 @@ func (s *Store) SaveProfileSettings(id uint64, settings ProfileSettings) error {
 	if settings.Framing == (Framing{}) {
 		settings.Framing = DefaultFraming()
 	}
+	if settings.Sound == (Sound{}) {
+		settings.Sound = DefaultSound()
+	}
 	if err := validateProfileSettings(settings); err != nil {
 		return err
 	}
@@ -227,6 +236,12 @@ func (s *Store) DeviceSettings() (DeviceSettings, error) {
 func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
 	if settings.Quality == (Quality{}) {
 		settings.Quality = DefaultQuality()
+	}
+	if settings.Audio == (Audio{}) {
+		settings.Audio = DefaultAudio()
+	}
+	if !settings.Audio.Valid() {
+		return fmt.Errorf("%w: audio %+v", ErrInvalidSettings, settings.Audio)
 	}
 	if !slices.Contains(TorrentCacheSizes, settings.TorrentCacheGB) {
 		return fmt.Errorf("%w: torrent cache of %d GB", ErrInvalidSettings, settings.TorrentCacheGB)
@@ -286,6 +301,9 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	if !settings.Framing.Valid() {
 		return fmt.Errorf("%w: framing %+v", ErrInvalidSettings, settings.Framing)
+	}
+	if !settings.Sound.Valid() {
+		return fmt.Errorf("%w: sound %+v", ErrInvalidSettings, settings.Sound)
 	}
 	return validatePictures(settings.Picture, settings.PicturePresets)
 }

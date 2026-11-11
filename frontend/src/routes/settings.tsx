@@ -89,6 +89,15 @@ import {
 import { adjustedTitlesQuery } from "@/lib/title-adjustments";
 import { defaultFraming, fitModes } from "@/lib/framing";
 import {
+  defaultAudio,
+  defaultSound,
+  deviceName,
+  equalizerHint,
+  equalizerPresets,
+  type Audio,
+  type Sound,
+} from "@/lib/sound";
+import {
   debandLevels,
   defaultQuality,
   deinterlaceModes,
@@ -102,6 +111,7 @@ import {
 } from "@/lib/quality";
 import { useTmdbKey } from "@/lib/tmdb";
 import { Service as Store } from "@bindings/store";
+import { Service as Player } from "@bindings/player";
 import {
   trackingQuery,
   useDisconnectAniList,
@@ -487,6 +497,16 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 />
               </SettingRow>
             </SettingsGroup>
+            <SoundDefaults
+              sound={settings.sound ?? defaultSound}
+              setSound={(changes) =>
+                setProfile({ sound: { ...(settings.sound ?? defaultSound), ...changes } })
+              }
+              audio={device.audio ?? defaultAudio}
+              setAudio={(changes) =>
+                setDevice({ audio: { ...(device.audio ?? defaultAudio), ...changes } })
+              }
+            />
             {/* #69: chapters first, IntroDB for files without them. */}
             <SettingsGroup title="Intros and credits">
               <SettingRow
@@ -525,6 +545,123 @@ const toneMappingIds: string[] = toneMappings.map(({ id }) => id);
 const toneMappingLabels: Record<string, string> = Object.fromEntries(
   toneMappings.map(({ id, name }) => [id, name]),
 );
+
+// How titles sound unless they have their own (the player's Sound tab), and
+// this device's output.
+function SoundDefaults({
+  sound,
+  setSound,
+  audio,
+  setAudio,
+}: {
+  sound: Sound;
+  setSound: (changes: Partial<Sound>) => void;
+  audio: Audio;
+  setAudio: (changes: Partial<Audio>) => void;
+}) {
+  const devices = useQuery({
+    queryKey: ["player", "audio-devices"],
+    queryFn: async () => (await Player.AudioDevices()) ?? [],
+  }).data;
+  const items = (devices?.length ? devices : [{ name: "auto", description: "" }]).map((each) => ({
+    value: each.name,
+    label: deviceName(each),
+  }));
+  // A device saved here and unplugged since stays listed, so it can be seen.
+  if (!items.some((item) => item.value === audio.device)) {
+    items.push({ value: audio.device, label: `${audio.device} (not connected)` });
+  }
+  return (
+    <SettingsGroup title="Sound">
+      <SettingRow
+        id="audio-device"
+        label="Output"
+        description="Where the player's sound goes. System default follows the Mac's sound settings. Applies to this device."
+      >
+        <Select
+          items={items}
+          value={audio.device}
+          onValueChange={(next) => next && setAudio({ device: next })}
+        >
+          <SelectTrigger
+            aria-labelledby="audio-device-label"
+            aria-describedby="audio-device-description"
+            className="w-56"
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectPopup>
+            {items.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectPopup>
+        </Select>
+      </SettingRow>
+      <SettingRow
+        id="stereo-downmix"
+        label="Stereo downmix"
+        description="Mixes surround tracks down to two channels, for stereo speakers and headphones. Applies to this device."
+      >
+        <Switch
+          aria-labelledby="stereo-downmix-label"
+          aria-describedby="stereo-downmix-description"
+          checked={audio.stereoDownmix}
+          onCheckedChange={(stereoDownmix) => setAudio({ stereoDownmix })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="volume-boost"
+        label="Volume up to 150 %"
+        description="For quiet tracks. Above 100 % loud parts can distort. Applies to this device."
+      >
+        <Switch
+          aria-labelledby="volume-boost-label"
+          aria-describedby="volume-boost-description"
+          checked={audio.volumeBoost}
+          onCheckedChange={(volumeBoost) => setAudio({ volumeBoost })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="dialogue-boost"
+        label="Dialogue boost"
+        description="Lifts speech over music and effects in every title, unless one has its own (B in the player). Surround sound comes out of the front while it's on."
+      >
+        <Switch
+          aria-labelledby="dialogue-boost-label"
+          aria-describedby="dialogue-boost-description"
+          checked={sound.dialogueBoost}
+          onCheckedChange={(dialogueBoost) => setSound({ dialogueBoost })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="night-mode"
+        label="Night mode"
+        description="Evens out loud and quiet, for watching late without waking anyone."
+      >
+        <Switch
+          aria-labelledby="night-mode-label"
+          aria-describedby="night-mode-description"
+          checked={sound.nightMode}
+          onCheckedChange={(nightMode) => setSound({ nightMode })}
+        />
+      </SettingRow>
+      <SettingRow
+        id="equalizer"
+        label="Equalizer"
+        description={equalizerHint[sound.equalizer] ?? ""}
+      >
+        <Choice
+          id="equalizer"
+          value={sound.equalizer}
+          {...choices(equalizerPresets)}
+          onChange={(equalizer) => setSound({ equalizer })}
+        />
+      </SettingRow>
+    </SettingsGroup>
+  );
+}
 
 // A Choice's options and labels from a list of choices.
 const choices = (

@@ -115,6 +115,7 @@ import {
 } from "@/lib/framing";
 import { pictureOf, savePreset, standardPicture, userPreset, type Picture } from "@/lib/picture";
 import { qualityOf, type Quality } from "@/lib/quality";
+import { audioOf, clampVolume, soundOf, type Audio, type Sound } from "@/lib/sound";
 import { resolutionLabel } from "@/lib/stream-labels";
 import {
   titleAdjustmentsQuery,
@@ -284,6 +285,8 @@ function PlayerFile() {
   const [paused, setPaused] = useAhead(state.paused, same);
   const [position, setPosition] = useAhead(state.position, near);
   const [volume, setVolume] = useAhead(state.volume, near);
+  // 100, or 150 with this device's volume boost (Sound tab).
+  const volumeMax = (state.volumeMax ?? 0) > 0 ? state.volumeMax : 100;
   const [muted, setMuted] = useAhead(state.muted, same);
   const [fullscreen, setFullscreen] = useAhead(state.fullscreen, same);
   const [mini, setMini] = useAhead(state.mini, same);
@@ -833,7 +836,7 @@ function PlayerFile() {
       toggleMute();
       return setNotice({ text: `Volume ${Math.round(volume)} %` });
     }
-    const to = Math.max(0, Math.min(100, Math.round(volume + by)));
+    const to = clampVolume(volume + by, volumeMax);
     changeVolume(to);
     setNotice({ text: `Volume ${to} %` });
   };
@@ -988,6 +991,57 @@ function PlayerFile() {
     }
     setNotice({ text: "Quality set for this device" });
   };
+  // How it sounds (the sheet's Sound tab, B): the title's own, else the
+  // profile's; the output is this device's; the delay is this video's.
+  const [unsavedSound, setUnsavedSound] = useState<Sound>();
+  const sound = unsavedSound ?? soundOf(settings, adjustments);
+  const [sounder] = useState(() => latestOnly(Player.SetSound));
+  const changeSound = (changed: Sound) => {
+    sounder(changed);
+    if (!titleKey) {
+      setUnsavedSound(changed);
+      return;
+    }
+    saveAdjustments.mutate(withSection(adjustments, "sound", changed));
+  };
+  const resetSound = () => {
+    setUnsavedSound(undefined);
+    sounder(soundOf(settings, null));
+    if (titleKey) saveAdjustments.mutate(withSection(adjustments, "sound", undefined));
+  };
+  const soundForAll = () => {
+    if (!settings) return;
+    saveSettings.mutate({ ...settings, sound } satisfies ProfileSettings);
+    setUnsavedSound(undefined);
+    if (titleKey && adjustments?.sound) {
+      saveAdjustments.mutate(withSection(adjustments, "sound", undefined));
+    }
+    setNotice({ text: "Sound set for all titles" });
+  };
+  const toggleDialogue = () => {
+    const dialogueBoost = !sound.dialogueBoost;
+    changeSound({ ...sound, dialogueBoost });
+    setNotice({ text: dialogueBoost ? "Dialogue boost on" : "Dialogue boost off" });
+  };
+  const audio = audioOf(device);
+  const [audioer] = useState(() => latestOnly(Player.SetAudio));
+  const changeAudio = (changed: Audio) => {
+    audioer(changed);
+    if (device) saveDevice.mutate({ ...device, audio: changed });
+  };
+  const [audioDelay, setAudioDelay] = useAhead(state.audioDelay ?? 0, near);
+  const [audioDelayer] = useState(() => latestOnly(Player.SetAudioDelay));
+  const changeAudioDelay = (to: number) => {
+    setAudioDelay(to);
+    audioDelayer(to);
+  };
+  const audioDevices = useQuery({
+    queryKey: ["player", "audio-devices"],
+    queryFn: async () => (await Player.AudioDevices()) ?? [],
+    enabled: pictureOpen && sheetTab === "sound",
+  }).data;
+  const surround =
+    (tracks.find((track) => track.type === "audio" && track.selected)?.channels ?? 0) > 2;
   const openPicture = () => {
     if (mini) return;
     setHelpOpen(false);
@@ -1071,6 +1125,7 @@ function PlayerFile() {
         c: () => ready && subtitleTracks.length > 0 && cycleSubtitles(),
         v: () => ready && subtitlesMenu && openPanel("subtitles"),
         p: () => ready && openPicture(),
+        b: () => ready && toggleDialogue(),
         "0": () => {
           if (!ready || mini || (framing.zoom === 0 && !framing.panX && !framing.panY)) return;
           changeFraming(unzoomed(framing));
@@ -1149,7 +1204,7 @@ function PlayerFile() {
       <Slider.Root
         value={muted ? 0 : volume}
         min={0}
-        max={100}
+        max={volumeMax}
         onValueChange={changeVolume}
         // Always there in the bar; the mini player has no room, so it opens
         // on hover or focus as before.
@@ -1610,6 +1665,19 @@ function PlayerFile() {
           onChange: changeFraming,
           onReset: resetFraming,
           onUseForAll: framingForAll,
+        }}
+        sound={{
+          sound,
+          own: adjustments?.sound != null || unsavedSound !== undefined,
+          onChange: changeSound,
+          onReset: resetSound,
+          onUseForAll: soundForAll,
+          delay: audioDelay,
+          onDelayChange: changeAudioDelay,
+          audio,
+          devices: audioDevices ?? [],
+          onAudioChange: changeAudio,
+          surround,
         }}
         quality={{
           quality,

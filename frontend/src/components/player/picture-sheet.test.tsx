@@ -5,6 +5,7 @@ import { describe, expect, it, vi } from "vite-plus/test";
 import { defaultFraming, type Framing } from "@/lib/framing";
 import { presetPicture, standardPicture, type Picture } from "@/lib/picture";
 import { defaultQuality, type Quality } from "@/lib/quality";
+import { defaultAudio, defaultSound, type Audio, type Sound } from "@/lib/sound";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 
 import { PictureSheet, type PictureSheetTab } from "./picture-sheet";
@@ -15,6 +16,7 @@ function renderSheet(
     saves?: boolean;
     ownPicture?: boolean;
     framing?: Framing;
+    surround?: boolean;
   } = {},
 ) {
   const picture = {
@@ -45,6 +47,22 @@ function renderSheet(
     onReset: vi.fn<() => void>(),
     onUseForAll: vi.fn<() => void>(),
   };
+  const sound = {
+    sound: defaultSound,
+    own: false,
+    onChange: vi.fn<(sound: Sound) => void>(),
+    onReset: vi.fn<() => void>(),
+    onUseForAll: vi.fn<() => void>(),
+    delay: 0,
+    onDelayChange: vi.fn<(delay: number) => void>(),
+    audio: defaultAudio,
+    devices: [
+      { name: "auto", description: "Autoselect device" },
+      { name: "coreaudio/BuiltIn", description: "MacBook Pro Speakers" },
+    ],
+    onAudioChange: vi.fn<(audio: Audio) => void>(),
+    surround: options.surround ?? false,
+  };
   const onClose = vi.fn<() => void>();
   const onTabChange = vi.fn<(tab: PictureSheetTab) => void>();
   render(
@@ -58,9 +76,10 @@ function renderSheet(
       picture={picture}
       framing={framing}
       quality={quality}
+      sound={sound}
     />,
   );
-  return { picture, framing, quality, onClose, onTabChange };
+  return { picture, framing, quality, sound, onClose, onTabChange };
 }
 
 describe("PictureSheet", () => {
@@ -171,5 +190,41 @@ describe("Quality tab", () => {
   it("says on the device's button what it does", () => {
     renderSheet({ tab: "quality" });
     expect(screen.getByRole("button", { name: "Use on this device" })).toBeTruthy();
+  });
+});
+
+describe("Sound tab", () => {
+  it("boosts dialogue, sets night mode and an equalizer preset", async () => {
+    const { sound } = renderSheet({ tab: "sound" });
+    await userEvent.click(screen.getByRole("switch", { name: /Dialogue boost/ }));
+    expect(sound.onChange).toHaveBeenLastCalledWith({ ...defaultSound, dialogueBoost: true });
+    await userEvent.click(screen.getByRole("switch", { name: /Night mode/ }));
+    expect(sound.onChange).toHaveBeenLastCalledWith({ ...defaultSound, nightMode: true });
+    await userEvent.click(screen.getByRole("button", { name: "Voice" }));
+    expect(sound.onChange).toHaveBeenLastCalledWith({ ...defaultSound, equalizer: "voice" });
+  });
+
+  it("moves the sound later or earlier for this video", async () => {
+    const { sound } = renderSheet({ tab: "sound" });
+    await userEvent.click(screen.getByRole("button", { name: "Sound later" }));
+    expect(sound.onDelayChange).toHaveBeenLastCalledWith(0.05);
+    await userEvent.click(screen.getByRole("button", { name: "Sound earlier" }));
+    expect(sound.onDelayChange).toHaveBeenLastCalledWith(-0.05);
+  });
+
+  it("picks this device's output, downmix and volume boost", async () => {
+    const { sound } = renderSheet({ tab: "sound" });
+    await userEvent.click(screen.getByRole("button", { name: "MacBook Pro Speakers" }));
+    expect(sound.onAudioChange).toHaveBeenLastCalledWith({
+      ...defaultAudio,
+      device: "coreaudio/BuiltIn",
+    });
+    await userEvent.click(screen.getByRole("switch", { name: /Volume up to 150/ }));
+    expect(sound.onAudioChange).toHaveBeenLastCalledWith({ ...defaultAudio, volumeBoost: true });
+  });
+
+  it("says a surround track comes out of the front with dialogue boost", () => {
+    renderSheet({ tab: "sound", surround: true });
+    expect(screen.getByText(/Surround sound comes out of the front/)).toBeTruthy();
   });
 });

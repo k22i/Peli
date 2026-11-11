@@ -12,6 +12,7 @@ var japanese = ProfileSettings{
 	SubtitleStyle:  SubtitleStyle{Font: "sans", Size: 135, Color: "#FFFFFF", Edge: "outline", Backdrop: 60},
 	Picture:        Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
 	PicturePresets: []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
+	Sound: Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"},
 }
 
 var laptop = DeviceSettings{
@@ -19,6 +20,7 @@ var laptop = DeviceSettings{
 	MaxResolution: "1080p", HDR: "off", DolbyVision: "on",
 	Quality: Quality{Scaling: "high", Deband: "low", Sharpen: 3, Upscaler: "fsr", MotionSmoothing: true,
 		Deinterlace: "on", ToneMapping: "bt.2390", TargetPeak: 250},
+	Audio: Audio{Device: "coreaudio/BuiltInSpeakerDevice", StereoDownmix: true, VolumeBoost: true},
 }
 
 // The acceptance criterion: settings persist, per profile where they follow a
@@ -33,6 +35,7 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 	equal(t, DefaultDeviceSettings(), DeviceSettings{
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
+		Audio: DefaultAudio(),
 	})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))

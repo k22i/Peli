@@ -277,6 +277,23 @@ func (m *mpv) getString(name string) (string, error) {
 	return C.GoString(s), nil
 }
 
+// getNode reads a property as plain Go values (lists, maps, strings…).
+func (m *mpv) getNode(name string) (any, error) {
+	h, done, err := m.use()
+	if err != nil {
+		return nil, err
+	}
+	defer done()
+	cn := C.CString(name)
+	defer C.free(unsafe.Pointer(cn))
+	var node C.mpv_node
+	if err := mpvErr(C.mpv_get_property(h, cn, C.MPV_FORMAT_NODE, unsafe.Pointer(&node))); err != nil {
+		return nil, fmt.Errorf("player: get %s: %w", name, err)
+	}
+	defer C.mpv_free_node_contents(&node)
+	return nodeToGo(&node), nil
+}
+
 func (m *mpv) observe(id uint64, name string, format mpvFormat) error {
 	h, done, err := m.use()
 	if err != nil {

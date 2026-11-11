@@ -18,17 +18,18 @@ type TitleAdjustments struct {
 	Picture *Picture `json:"picture,omitempty"`
 	Framing *Framing `json:"framing,omitempty"`
 	Quality *Quality `json:"quality,omitempty"`
+	Sound   *Sound   `json:"sound,omitempty"`
 	// Unix ms of the last change.
 	ChangedAt int64 `json:"changedAt"`
 }
 
 func (a *TitleAdjustments) empty() bool {
-	return a == nil || (a.Picture == nil && a.Framing == nil && a.Quality == nil)
+	return a == nil || (a.Picture == nil && a.Framing == nil && a.Quality == nil && a.Sound == nil)
 }
 
 func (a *TitleAdjustments) valid() bool {
 	return (a.Picture == nil || a.Picture.Valid()) && (a.Framing == nil || a.Framing.Valid()) &&
-		(a.Quality == nil || a.Quality.Valid())
+		(a.Quality == nil || a.Quality.Valid()) && (a.Sound == nil || a.Sound.Valid())
 }
 
 var bucketTitles = []byte("titles")

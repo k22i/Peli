@@ -118,3 +118,17 @@ func TestFramingIsValidated(t *testing.T) {
 		}
 	}
 }
+
+func TestSoundAndAudioAreValidated(t *testing.T) {
+	if !DefaultSound().Valid() || (Sound{Equalizer: "rock"}).Valid() {
+		t.Error("equalizer presets aren't checked")
+	}
+	if !DefaultAudio().Valid() || (Audio{}).Valid() {
+		t.Error("an audio device must be named")
+	}
+	s, _ := openTemp(t)
+	anna := must[Profile](t)(s.CreateProfile(Profile{Name: "Anna"}))
+	if err := s.SetTitleAdjustments(anna.ID, "tt1", &TitleAdjustments{Sound: &Sound{Equalizer: "rock"}}); !errors.Is(err, ErrInvalidSettings) {
+		t.Errorf("a title with an unknown preset: %v", err)
+	}
+}

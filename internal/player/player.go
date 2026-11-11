@@ -134,6 +134,12 @@ type State struct {
 	// AutoCrop is the crop auto-crop found for the file, in percent; nil
 	// until it finds one, or when it's off.
 	AutoCrop *store.Crop `json:"autoCrop,omitempty"`
+	// AudioDelay is how far the sound is moved after the picture, in
+	// seconds (rounded to ms), for this session.
+	AudioDelay float64 `json:"audioDelay"`
+	// VolumeMax is the loudest the volume goes: 100, or 150 with the
+	// device's volume boost.
+	VolumeMax float64 `json:"volumeMax"`
 }
 
 // Time is where playback is, in seconds.
@@ -209,6 +215,8 @@ type LoadOptions struct {
 	// Quality is how hard the renderer works; nil is the title's own, else
 	// this device's.
 	Quality *store.Quality `json:"quality,omitempty"`
+	// Sound is how it sounds; nil is the title's own, else the profile's.
+	Sound *store.Sound `json:"sound,omitempty"`
 	// Watching names what the file is, so how far it plays is reported
 	// (#64); nil for a file nobody keeps progress of.
 	Watching *Watching `json:"watching,omitempty"`
@@ -284,7 +292,7 @@ func (o LoadOptions) valid() bool {
 		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
 		(o.SubtitleSize == "" || sized) && (o.SubtitleStyle == nil || o.SubtitleStyle.valid()) &&
 		(o.Picture == nil || o.Picture.Valid()) && (o.Framing == nil || o.Framing.Valid()) &&
-		(o.Quality == nil || o.Quality.Valid()) &&
+		(o.Quality == nil || o.Quality.Valid()) && (o.Sound == nil || o.Sound.Valid()) &&
 		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
 }
 
@@ -347,6 +355,8 @@ var observed = []struct {
 	{"sub-scale", fmtDouble},
 	{"video-params/gamma", fmtString},
 	{"sub-text", fmtString},
+	{"audio-delay", fmtDouble},
+	{"volume-max", fmtDouble},
 	// The video's size, for a crop in percent (framing.go).
 	{"video-params/w", fmtInt64},
 	{"video-params/h", fmtInt64},
@@ -604,6 +614,11 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	// A shader or scaler a build refuses isn't worth failing playback over.
 	if err := s.applyQuality(ses, s.qualityFor(opts)); err != nil {
 		slog.Warn("player: quality not set", "error", err)
+	}
+	s.applySound(ses, s.soundFor(opts), s.audioFor())
+	// A new file plays in sync, as its subtitles do.
+	if err := ses.m.setProperty("audio-delay", "0"); err != nil {
+		return notPlaying(err)
 	}
 	// Before loadfile, so the new file's first frame can't come first.
 	s.update(func(st *State) {
@@ -1235,6 +1250,10 @@ func (s *Service) property(ses *session, name string, v any) {
 	case "sub-delay":
 		// mpv keeps it as a float32: -0.3 comes back as -0.30000001.
 		st.SubtitleDelay = math.Round(number(v)*1000) / 1000
+	case "audio-delay":
+		st.AudioDelay = math.Round(number(v)*1000) / 1000
+	case "volume-max":
+		st.VolumeMax = number(v)
 	case "sub-scale":
 		st.SubtitleSize = subtitleSize(number(v))
 	case "sub-text":

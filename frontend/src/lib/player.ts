@@ -29,6 +29,8 @@ export type { Ended, LoadOptions, Track, Watching };
 export type PlayerState = State;
 
 export const idleState: PlayerState = {
+  audioDelay: 0,
+  volumeMax: 100,
   active: false,
   loading: false,
   paused: false,

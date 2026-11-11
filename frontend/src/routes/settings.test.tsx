@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { DeviceSettings, Profile, ProfileSettings } from "@bindings/store";
+import type * as PlayerBindings from "@bindings/player";
 import type { Connections } from "@bindings/tracking";
 import { profileSettings } from "@/test/fixtures";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
@@ -151,6 +152,15 @@ const store = vi.hoisted(() => ({
   },
 }));
 
+// Settings › Playback lists the audio outputs (#sound): none here.
+vi.mock("@bindings/player", async (importOriginal) => {
+  const actual = await importOriginal<typeof PlayerBindings>();
+  return {
+    ...actual,
+    Service: { ...actual.Service, AudioDevices: () => Promise.resolve([]) },
+  };
+});
+
 vi.mock("@bindings/store", async () => {
   const defaults = (await import("@/test/fixtures")).profileSettings();
   return {
@@ -180,6 +190,7 @@ vi.mock("@bindings/store", async () => {
             toneMapping: "auto",
             targetPeak: 0,
           },
+          audio: { device: "auto", stereoDownmix: false, volumeBoost: false },
         },
       SaveDeviceSettings: (settings: DeviceSettings) =>
         store.save(() => {

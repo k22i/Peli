@@ -76,3 +76,4 @@
 - [Watch party](watch-party.md) — ADR-0051 internal/party + nuvio realtime.go, nuvio_realtime=1 flag, live-only RPCs + live tests, player gate/Direct, party mocks in test setup
 - [Player framing (phase 2)](player-framing.md) — Framing section, crop % → pixels, Go auto-crop via screenshot-raw, sheet tabs, Shift+F/Shift+A/= − 0/⌥ arrows, drag to pan
 - [Player quality (phase 3)](player-quality.md) — Quality on DeviceSettings + per title, scaling/deband, embedded CAS/FSR/Anime4K + licences, macOS CVDisplayLink smoothing, tone mapping off EDR, bench numbers
+- [Player sound (phase 4)](player-sound.md) — Sound (profile + title) and Audio (device), one lavfi af chain, dynaudnorm over loudnorm, build + smoke filter check, audio delay, volume-max 150, AudioDevices, B key

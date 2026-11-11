@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { FramingTab, type FramingProps } from "@/components/player/framing-tab";
 import { QualityTab, type QualityProps } from "@/components/player/quality-tab";
+import { SoundTab, type SoundProps } from "@/components/player/sound-tab";
 import {
   Chip,
   ChipGroup,
@@ -28,7 +29,7 @@ import {
 } from "@/lib/picture";
 import { cn } from "@/lib/utils";
 
-export type PictureSheetTab = "picture" | "framing" | "quality";
+export type PictureSheetTab = "picture" | "framing" | "quality" | "sound";
 
 export type PictureProps = {
   // What plays now.
@@ -50,6 +51,7 @@ const tabs: { id: PictureSheetTab; label: string }[] = [
   { id: "picture", label: "Picture" },
   { id: "framing", label: "Framing" },
   { id: "quality", label: "Quality" },
+  { id: "sound", label: "Sound" },
 ];
 
 // The player's Picture & sound sheet (P): how this title plays. A change
@@ -66,6 +68,7 @@ export function PictureSheet({
   picture,
   framing,
   quality,
+  sound,
 }: {
   open: boolean;
   onClose: () => void;
@@ -79,6 +82,7 @@ export function PictureSheet({
   picture: PictureProps;
   framing: FramingProps;
   quality: QualityProps;
+  sound: SoundProps;
 }) {
   const panel = useRef<HTMLDialogElement>(null);
   const [active, setActive] = useState<string>();
@@ -147,6 +151,7 @@ export function PictureSheet({
         {tab === "picture" && <PictureTab {...picture} preview={preview} />}
         {tab === "framing" && <FramingTab {...framing} preview={preview} />}
         {tab === "quality" && <QualityTab {...quality} preview={preview} />}
+        {tab === "sound" && <SoundTab {...sound} preview={preview} />}
       </div>
       <Footer
         className={hidden}
@@ -157,7 +162,9 @@ export function PictureSheet({
             ? picture.onUseForAll
             : tab === "framing"
               ? framing.onUseForAll
-              : quality.onUseForAll
+              : tab === "quality"
+                ? quality.onUseForAll
+                : sound.onUseForAll
         }
         useForAllLabel={tab === "quality" ? "Use on this device" : "Use for all titles"}
         preset={
