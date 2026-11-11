@@ -741,6 +741,13 @@ function PlayerFile() {
     Player.SetSpeed(to).catch(() => {});
     setNotice({ text: to === normalSpeed ? "Normal speed" : `Speed ${speedLabel(to)}` });
   };
+  // , and . step a frame back or on (Go), and leave it paused: a file that
+  // plays pauses first. In a watch party it's a pause and a seek.
+  const stepFrame = (back: boolean) => {
+    if (!ready || !known || state.loading) return;
+    if (!paused) setPaused(true);
+    Player.FrameStep(back).catch(() => {});
+  };
   const toggleMute = () => {
     setMuted(!muted);
     Player.SetMuted(!muted).catch(() => {});
@@ -1289,6 +1296,8 @@ function PlayerFile() {
         arrowdown: () => stepVolume(-volumeStep),
         z: () => ready && subtitleTracks.length > 0 && timeSubtitlesBy(-delayStep),
         x: () => ready && subtitleTracks.length > 0 && timeSubtitlesBy(delayStep),
+        ",": () => stepFrame(true),
+        ".": () => stepFrame(false),
         r: () => nudgeSubtitles(liftStep, 0),
         g: () => nudgeSubtitles(0, -sizeStep),
       };

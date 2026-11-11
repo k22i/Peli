@@ -907,6 +907,57 @@ func (s *Service) SeekBy(delta float64) error {
 	return s.command("seek", seconds(delta), "relative")
 }
 
+// FrameStep shows the next frame, or the one before with back, and leaves
+// playback paused: a file that plays pauses first (mpv's frame-step and
+// frame-back-step pause by themselves). Both are exact seeks, so with a gate
+// it's a pause and a seek to where the frame lands; a gate that moves the
+// seek (a party's catch-up) has it go there instead.
+func (s *Service) FrameStep(back bool) error {
+	if g := s.gated(); g != nil {
+		st := s.Snapshot()
+		if !st.Paused && !g.UserPause(true) {
+			return nil
+		}
+		step := s.frameDuration()
+		if back {
+			step = -step
+		}
+		target := math.Max(0, st.Position+step)
+		to, ok := g.UserSeek(target)
+		if !ok {
+			return s.set("pause", "yes")
+		}
+		if math.Abs(to-target) > 0.001 {
+			if err := s.set("pause", "yes"); err != nil {
+				return err
+			}
+			return s.seek(to)
+		}
+	}
+	if back {
+		return s.command("frame-back-step")
+	}
+	// "seek" steps without playing: "play" would unpause for a frame.
+	return s.command("frame-step", "1", "seek")
+}
+
+// frameDuration is how long a frame of the file playing shows, in seconds:
+// by the frame rate mpv measures, else the file's own, else film's.
+func (s *Service) frameDuration() float64 {
+	if ses := s.current(); ses != nil {
+		for _, name := range []string{"estimated-vf-fps", "container-fps"} {
+			v, err := ses.m.getString(name)
+			if err != nil {
+				continue
+			}
+			if fps, err := strconv.ParseFloat(v, 64); err == nil && fps > 0 && !math.IsInf(fps, 0) {
+				return 1 / fps
+			}
+		}
+	}
+	return 1.0 / 24
+}
+
 // SetVolume sets the volume, 0–100.
 func (s *Service) SetVolume(volume float64) error {
 	if volume < 0 || volume > 100 || math.IsNaN(volume) {
