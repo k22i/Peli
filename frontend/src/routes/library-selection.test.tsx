@@ -116,6 +116,7 @@ describe("library selection", () => {
     fireEvent.click(await card("Alien"), { shiftKey: true });
 
     for (const name of ["Casino", "Blade Runner", "Alien"]) {
+      // oxlint-disable-next-line no-await-in-loop
       expect(await option(name)).toHaveAttribute("aria-selected", "true");
     }
     expect(await option("Dune")).toHaveAttribute("aria-selected", "false");
