@@ -1,15 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { Library as LibraryIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { Eye, EyeOff, Library as LibraryIcon, Trash2 } from "lucide-react";
+import { useEffect, useState, type KeyboardEvent, type ReactNode } from "react";
 
 import { BrowseFrame, GridSkeleton } from "@/components/browse/browse-page";
 import { LibraryNotice } from "@/components/library/notice";
 import { Upcoming } from "@/components/library/upcoming";
+import { SelectionBar } from "@/components/library/selection-bar";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  ContextMenuGroup,
+  ContextMenuGroupLabel,
+  ContextMenuItem,
+  ContextMenuSeparator,
+} from "@/components/ui/context-menu";
 import {
   Select,
   SelectItem,
@@ -31,7 +38,9 @@ import {
   type LibrarySearch,
   type LibrarySort,
 } from "@/lib/library";
+import { useBulkEdits } from "@/lib/library-bulk";
 import { currentProfileQuery } from "@/lib/profile";
+import { clickKind, selectRange, toggleKey } from "@/lib/selection";
 import { useOpenTitle } from "@/lib/title";
 import { libraryMenuTitle, useTitleEdits } from "@/lib/title-actions";
 import type { LibraryItem, Profile } from "@bindings/store";
@@ -247,31 +256,183 @@ function LibraryGrid({
 }) {
   const open = useOpenTitle();
   const { removeFromLibrary } = useTitleEdits(profile.id);
+  const bulk = useBulkEdits(profile.id);
+  const keys = items.map(itemKey);
+  // The selection, as far as the grid still shows it: filtering or sorting
+  // away a title drops it.
+  const [chosen, setChosen] = useState<ReadonlySet<string>>(new Set());
+  const [anchor, setAnchor] = useState<string>();
+  const selected = new Set(keys.filter((key) => chosen.has(key)));
+  const picked = items.filter((item) => selected.has(itemKey(item)));
+  const selecting = selected.size > 0;
+  const clear = () => {
+    setChosen(new Set());
+    setAnchor(undefined);
+  };
+
+  const toggle = (key: string) => {
+    setChosen(toggleKey(selected, key));
+    setAnchor(key);
+  };
+  // Shift extends from the anchor, which stays where it was.
+  const extend = (key: string) =>
+    setChosen(new Set([...selected, ...selectRange(keys, anchor, key)]));
+
+  // ⌘A and Esc work from anywhere on the page, not only on a card; a menu
+  // or dialog that is open keeps them for itself.
+  useEffect(() => {
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.defaultPrevented || inOverlay(event.target)) return;
+      if (event.key === "Escape" && selecting) {
+        event.preventDefault();
+        clear();
+      } else if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "a") {
+        if (editable(event.target)) return;
+        event.preventDefault();
+        setChosen(new Set(keys));
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  });
+
+  // Delete removes the focused title, or the whole selection when it is in it.
+  const removeFrom = (item: LibraryItem, event: KeyboardEvent<HTMLElement>) => {
+    const cell = event.currentTarget.closest<HTMLElement>("[data-item]");
+    const grid = cell?.parentElement;
+    const index = Number(cell?.dataset["item"]);
+    const onSuccess = () => grid && focusAfterRemoval(grid, index);
+    if (selected.has(itemKey(item))) {
+      bulk.remove.mutate(picked, { onSuccess });
+      clear();
+    } else {
+      removeFromLibrary.mutate(item, { onSuccess });
+    }
+  };
+
+  const actOnSelection = (act: (items: readonly LibraryItem[]) => void) => () => {
+    act(picked);
+  };
 
   return (
-    <PosterGrid
-      label="Library"
-      items={items}
-      getKey={(item) => `${item.contentType}:${item.contentId}`}
-      renderItem={(item) => (
-        <PosterCard
-          title={item.name}
-          meta={libraryMeta(item, episodes.get(item.contentId))}
-          src={item.poster}
-          menu={libraryMenuTitle(item)}
-          onClick={() => open(libraryPreview(item))}
-          onKeyDown={(event) => {
-            if (event.key !== "Delete" && event.key !== "Backspace") return;
-            event.preventDefault();
-            const cell = event.currentTarget.closest<HTMLElement>("[data-item]");
-            const grid = cell?.parentElement;
-            const index = Number(cell?.dataset["item"]);
-            removeFromLibrary.mutate(item, {
-              onSuccess: () => grid && focusAfterRemoval(grid, index),
-            });
+    <>
+      <PosterGrid
+        label="Library"
+        items={items}
+        getKey={itemKey}
+        isSelected={(item) => selected.has(itemKey(item))}
+        renderItem={(item) => {
+          const key = itemKey(item);
+          const inSelection = selected.has(key);
+          return (
+            <PosterCard
+              title={item.name}
+              meta={libraryMeta(item, episodes.get(item.contentId))}
+              src={item.poster}
+              selected={inSelection}
+              menu={libraryMenuTitle(item)}
+              // A card in a selection of several speaks for all of it.
+              menuItems={
+                inSelection && selected.size > 1 ? (
+                  <SelectionItems
+                    count={selected.size}
+                    onMarkWatched={() => bulk.setWatched.mutate({ items: picked, watched: true })}
+                    onMarkUnwatched={() =>
+                      bulk.setWatched.mutate({ items: picked, watched: false })
+                    }
+                    onRemove={() => {
+                      bulk.remove.mutate(picked);
+                      clear();
+                    }}
+                  />
+                ) : undefined
+              }
+              onClick={(event) => {
+                const kind = clickKind(event, selecting);
+                if (kind === "toggle") toggle(key);
+                else if (kind === "range") extend(key);
+                else open(libraryPreview(item));
+              }}
+              onKeyDown={(event) => {
+                if (event.key === " ") {
+                  event.preventDefault();
+                  if (event.shiftKey) extend(key);
+                  else toggle(key);
+                } else if (event.key === "Delete" || event.key === "Backspace") {
+                  event.preventDefault();
+                  removeFrom(item, event);
+                }
+              }}
+              // Not the click a button sends when Space comes up.
+              onKeyUp={(event) => {
+                if (event.key === " ") event.preventDefault();
+              }}
+            />
+          );
+        }}
+      />
+      {selecting && (
+        <SelectionBar
+          count={selected.size}
+          onMarkWatched={actOnSelection((list) =>
+            bulk.setWatched.mutate({ items: list, watched: true }),
+          )}
+          onMarkUnwatched={actOnSelection((list) =>
+            bulk.setWatched.mutate({ items: list, watched: false }),
+          )}
+          onRemove={() => {
+            bulk.remove.mutate(picked);
+            clear();
           }}
+          onDone={clear}
         />
       )}
-    />
+    </>
+  );
+}
+
+const itemKey = (item: LibraryItem) => `${item.contentType}:${item.contentId}`;
+
+// Whether keys go to a text field, which keeps ⌘A for its own text.
+const editable = (target: EventTarget | null) =>
+  target instanceof HTMLElement &&
+  (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName));
+
+// Whether an open menu, dialog or listbox popup owns the key.
+const inOverlay = (target: EventTarget | null) =>
+  target instanceof HTMLElement &&
+  target.closest("[role=menu], [role=dialog], [role=listbox][data-popup]") !== null;
+
+// The menu of a card that is in a selection: the actions on all of it.
+function SelectionItems({
+  count,
+  onMarkWatched,
+  onMarkUnwatched,
+  onRemove,
+}: {
+  count: number;
+  onMarkWatched: () => void;
+  onMarkUnwatched: () => void;
+  onRemove: () => void;
+}) {
+  return (
+    <>
+      <ContextMenuGroup>
+        <ContextMenuGroupLabel>{count} selected</ContextMenuGroupLabel>
+        <ContextMenuItem onClick={onMarkWatched}>
+          <Eye aria-hidden />
+          Mark watched
+        </ContextMenuItem>
+        <ContextMenuItem onClick={onMarkUnwatched}>
+          <EyeOff aria-hidden />
+          Mark unwatched
+        </ContextMenuItem>
+      </ContextMenuGroup>
+      <ContextMenuSeparator />
+      <ContextMenuItem onClick={onRemove}>
+        <Trash2 aria-hidden />
+        Remove from Library
+      </ContextMenuItem>
+    </>
   );
 }

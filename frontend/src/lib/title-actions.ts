@@ -200,7 +200,13 @@ export function useTitleEdits(profileId: number) {
     onSettled: (_result, _error, { contentId }) => refreshState(contentId),
   });
 
-  return { setWatched, saveToLibrary, removeFromLibrary, clearProgress, removeFromContinueWatching };
+  return {
+    setWatched,
+    saveToLibrary,
+    removeFromLibrary,
+    clearProgress,
+    removeFromContinueWatching,
+  };
 }
 
 const sameTitle = (

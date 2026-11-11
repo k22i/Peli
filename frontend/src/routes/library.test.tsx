@@ -64,7 +64,7 @@ const frieren = item("kitsu:46474", "anime", "Frieren", 30);
 const heat = item("tt0113277", "movie", "Heat", 20);
 const alien = item("tt0078748", "movie", "Alien", 10);
 
-const grid = () => screen.findByRole("list", { name: "Library" });
+const grid = () => screen.findByRole("listbox", { name: "Library" });
 // Cards mount once the grid has measured its scroll container. A card with
 // no art also prints its name on the artwork, so read the caption's.
 const titles = async () =>

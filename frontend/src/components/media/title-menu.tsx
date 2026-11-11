@@ -54,7 +54,17 @@ import { imdbIdOf, imdbUrl, useTitleEdits, type MenuTitle } from "@/lib/title-ac
 // closing it hands the focus back to the card. Groups from other features go
 // in TitleMenuExtras. Everything but the card's own preview is read when the
 // menu opens, so a screen of cards costs nothing.
-export function TitleMenu({ title, children }: { title: MenuTitle; children: ReactNode }) {
+export function TitleMenu({
+  title,
+  items,
+  children,
+}: {
+  title: MenuTitle;
+  // Shown in place of the title's own items (and TitleMenuExtras), for a
+  // card that stands for more than itself, as one in a selection does.
+  items?: ReactNode | undefined;
+  children: ReactNode;
+}) {
   const trigger = useRef<HTMLDivElement>(null);
   return (
     <ContextMenu>
@@ -66,7 +76,7 @@ export function TitleMenu({ title, children }: { title: MenuTitle; children: Rea
         // Not the trigger, which is a layout-less wrapper: the card in it.
         finalFocus={() => focusTarget(trigger.current)}
       >
-        <TitleMenuItems title={title} />
+        {items ?? <TitleMenuItems title={title} />}
       </ContextMenuPopup>
     </ContextMenu>
   );

@@ -1,5 +1,6 @@
 import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
+import { Check } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Artwork } from "@/components/media/artwork";
@@ -25,6 +26,11 @@ export type CardProps = useRender.ComponentProps<"button"> & {
   // The title the card stands for: with it, right-click (or the
   // context-menu key, or Shift+F10) opens the title's menu.
   menu?: MenuTitle | undefined;
+  // Menu items to show in place of the title's own, such as the actions on
+  // a selection when this card is part of one.
+  menuItems?: ReactNode | undefined;
+  // Part of a multi-selection: a sun ring round the art and a check on it.
+  selected?: boolean | undefined;
 };
 
 // The art grows a little towards you on hover and focus, and its shadow
@@ -41,6 +47,8 @@ function Card({
   badge,
   pill,
   menu,
+  menuItems,
+  selected,
   shape,
   render,
   className,
@@ -56,10 +64,17 @@ function Card({
       className,
     ),
     "data-slot": `${shape}-card`,
+    "data-selected": selected ? "" : undefined,
     onKeyDown: menu ? openOnContextKey : undefined,
     children: (
       <>
-        <div className={cn(frame, shape === "poster" ? "aspect-[2/3]" : "aspect-video")}>
+        <div
+          className={cn(
+            frame,
+            shape === "poster" ? "aspect-[2/3]" : "aspect-video",
+            selected && "outline-2 outline-offset-[3px] outline-sun",
+          )}
+        >
           <Artwork
             src={src}
             fallback={fallbackSrc}
@@ -72,6 +87,14 @@ function Card({
             <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-black/70 to-transparent" />
           )}
           {badge && <div className="absolute start-2 top-2 flex gap-1">{badge}</div>}
+          {selected && (
+            <span
+              aria-hidden
+              className="absolute end-2 top-2 grid size-6 place-items-center rounded-full bg-sun text-sun-foreground shadow-card"
+            >
+              <Check className="size-3.5" strokeWidth={3} />
+            </span>
+          )}
           {pill && (
             <span
               className={cn(
@@ -99,7 +122,13 @@ function Card({
     props: mergeProps<"button">(defaultProps, rowItem, props),
     render,
   });
-  return menu ? <TitleMenu title={menu}>{card}</TitleMenu> : card;
+  return menu ? (
+    <TitleMenu title={menu} items={menuItems}>
+      {card}
+    </TitleMenu>
+  ) : (
+    card
+  );
 }
 
 // A 2:3 poster with the title and a meta line under it.

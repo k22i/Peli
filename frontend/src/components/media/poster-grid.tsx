@@ -76,6 +76,7 @@ export function PosterGrid<T>({
   onEndReached,
   label,
   className,
+  isSelected,
 }: {
   items: readonly T[];
   getKey: (item: T, index: number) => Key;
@@ -83,6 +84,9 @@ export function PosterGrid<T>({
   onEndReached?: () => void;
   label?: string;
   className?: string;
+  // Makes the grid a multi-select listbox, the cards its options: with it,
+  // `aria-selected` tells which are chosen. Without it, a plain list.
+  isSelected?: (item: T, index: number) => boolean;
 }) {
   const list = useRef<HTMLUListElement>(null);
   const [scrollElement, setScrollElement] = useState<HTMLElement | null>(null);
@@ -195,6 +199,8 @@ export function PosterGrid<T>({
       <ul
         ref={list}
         aria-label={label}
+        role={isSelected ? "listbox" : undefined}
+        aria-multiselectable={isSelected ? true : undefined}
         data-slot="poster-grid"
         className={cn("relative px-page", className)}
         style={
@@ -216,6 +222,8 @@ export function PosterGrid<T>({
                 ref={column === 0 ? virtualizer.measureElement : undefined}
                 data-index={row.index}
                 data-item={index}
+                role={isSelected ? "option" : undefined}
+                aria-selected={isSelected ? isSelected(item, index) : undefined}
                 className="absolute top-0"
                 style={{
                   insetInlineStart: `calc(var(--spacing-page) + ${column * (cardWidth + columnGapPx)}px)`,
