@@ -40,6 +40,8 @@ export function Episodes({
   busy,
   onMark,
   onPlay,
+  onPlayFromStart,
+  onClearProgress,
 }: {
   meta: Meta;
   list: Episode[];
@@ -48,6 +50,8 @@ export function Episodes({
   busy: boolean;
   onMark: (items: WatchedItem[], watched: boolean) => void;
   onPlay: (episode: Episode) => void;
+  onPlayFromStart: (episode: Episode) => void;
+  onClearProgress: (episode: Episode) => void;
 }) {
   const navigate = useNavigate();
   const search: TitleSearch = useSearch({ strict: false });
@@ -139,6 +143,23 @@ export function Episodes({
           const index = main.indexOf(episode);
           if (index <= 0) return undefined;
           return main.slice(0, index).every((before) => state.watched(before));
+        }}
+        menu={{
+          onPlayFromStart,
+          onClearProgress,
+          seasonWatched,
+          onMarkSeason: (watched) => onMark(episodeMarks(meta, aired), watched),
+          // A special has no "up to here": the main episodes aren't before it.
+          through: (episode) => {
+            const main = mainEpisodes(list);
+            const index = main.indexOf(episode);
+            if (index < 0) return undefined;
+            return main.slice(0, index + 1).every((before) => state.watched(before));
+          },
+          onMarkThrough: (episode, watched) => {
+            const main = mainEpisodes(list);
+            onMark(episodeMarks(meta, main.slice(0, main.indexOf(episode) + 1)), watched);
+          },
         }}
       />
     </section>

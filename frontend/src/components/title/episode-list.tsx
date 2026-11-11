@@ -1,12 +1,20 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { Check, EllipsisVertical, Play } from "lucide-react";
+import { Check, EllipsisVertical, Eye, EyeOff, Play, RotateCcw, X } from "lucide-react";
 import { useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { WatchProgress } from "@/components/media/cards";
 import { scrollParent } from "@/components/media/poster-grid";
 import { prefersReducedMotion } from "@/components/media/roving";
+import { openOnContextKey } from "@/components/media/title-menu";
 import { Button } from "@/components/ui/button";
+import {
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuPopup,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
 import { episodeCode, isAired, type Episode, type TitleState } from "@/lib/title";
 import { cn } from "@/lib/utils";
@@ -18,10 +26,24 @@ const gapPx = 8;
 
 const date = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
 
+// What an episode's context menu does beyond the row's own actions.
+export type EpisodeMenu = {
+  onPlayFromStart: (episode: Episode) => void;
+  // Marks every main episode up to and including this one.
+  onMarkThrough: (episode: Episode, watched: boolean) => void;
+  // Whether every main episode up to and including this one is watched;
+  // undefined for a special, which has no "up to here".
+  through: (episode: Episode) => boolean | undefined;
+  seasonWatched: boolean;
+  onMarkSeason: (watched: boolean) => void;
+  onClearProgress: (episode: Episode) => void;
+};
+
 // One season's episodes, scrolled with the page and virtualized, since an
 // anime can list a thousand in one season. Each row plays its episode and
-// has a menu to mark it, or every episode before it. ↑ and ↓ move between
-// rows. Unaired episodes are dimmed and can't be played or marked.
+// has a menu to mark it, or every episode before it; right-clicking it (or
+// the context-menu key, or Shift+F10) opens the fuller menu. ↑ and ↓ move
+// between rows. Unaired episodes are dimmed and can't be played or marked.
 export function EpisodeList({
   label,
   episodes,
@@ -31,6 +53,7 @@ export function EpisodeList({
   onMark,
   onMarkEarlier,
   earlier,
+  menu,
 }: {
   label: string;
   episodes: readonly Episode[];
@@ -42,6 +65,7 @@ export function EpisodeList({
   // Whether every main episode before this one is watched; undefined for
   // the first, or a special.
   earlier: (episode: Episode) => boolean | undefined;
+  menu: EpisodeMenu;
 }) {
   const list = useRef<HTMLOListElement>(null);
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
@@ -129,6 +153,7 @@ export function EpisodeList({
               state={state}
               busy={busy}
               earlier={earlier(episode)}
+              menu={menu}
               onPlay={() => onPlay(episode)}
               onMark={(watched) => onMark(episode, watched)}
               onMarkEarlier={(watched) => onMarkEarlier(episode, watched)}
@@ -147,6 +172,7 @@ function EpisodeRow({
   state,
   busy,
   earlier,
+  menu,
   onPlay,
   onMark,
   onMarkEarlier,
@@ -157,11 +183,13 @@ function EpisodeRow({
   state: TitleState;
   busy: boolean;
   earlier: boolean | undefined;
+  menu: EpisodeMenu;
   onPlay: () => void;
   onMark: (watched: boolean) => void;
   onMarkEarlier: (watched: boolean) => void;
   onKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
 }) {
+  const trigger = useRef<HTMLDivElement>(null);
   const aired = isAired(episode);
   const watched = state.watched(episode);
   const entry = state.progress(episode);
@@ -177,7 +205,7 @@ function EpisodeRow({
     Number.isNaN(released) ? undefined : `${aired ? "" : "Airs "}${date.format(released)}`,
   ].filter(Boolean);
 
-  return (
+  const row = (
     <div className="group/episode flex items-center gap-4 rounded-2xl p-3 transition-[background-color,scale] duration-(--duration-fast) hover:bg-foreground/4 motion-safe:has-[[data-episode-index]:active]:scale-[0.995]">
       <button
         type="button"
@@ -185,7 +213,9 @@ function EpisodeRow({
         disabled={!aired}
         aria-label={`${code}: ${title}${watched ? ", watched" : entry ? ", in progress" : ""}`}
         onClick={onPlay}
-        onKeyDown={onKeyDown}
+        onKeyDown={(event) => {
+          if (!openOnContextKey(event)) onKeyDown(event);
+        }}
         className="group/play flex min-w-0 flex-1 scroll-mt-[calc(var(--spacing-bar)+8rem)] scroll-mb-8 cursor-pointer items-center gap-6 rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
       >
         <span
@@ -264,5 +294,56 @@ function EpisodeRow({
         </Menu>
       )}
     </div>
+  );
+  if (!aired) return row;
+
+  const through = menu.through(episode);
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger ref={trigger} className="contents">
+        {row}
+      </ContextMenuTrigger>
+      <ContextMenuPopup
+        className="material-pop w-64"
+        finalFocus={() =>
+          trigger.current?.querySelector<HTMLElement>("[data-episode-index]") ?? true
+        }
+      >
+        <ContextMenuItem onClick={onPlay}>
+          {entry ? <RotateCcw aria-hidden /> : <Play aria-hidden className="fill-current" />}
+          {entry ? "Resume" : "Play"}
+        </ContextMenuItem>
+        {entry && (
+          <ContextMenuItem onClick={() => menu.onPlayFromStart(episode)}>
+            <Play aria-hidden className="fill-current" />
+            Play from start
+          </ContextMenuItem>
+        )}
+        <ContextMenuSeparator />
+        <ContextMenuItem disabled={busy} onClick={() => onMark(!watched)}>
+          {watched ? <EyeOff aria-hidden /> : <Eye aria-hidden />}
+          {watched ? "Mark unwatched" : "Mark watched"}
+        </ContextMenuItem>
+        {through !== undefined && (
+          <ContextMenuItem disabled={busy} onClick={() => menu.onMarkThrough(episode, !through)}>
+            <Check aria-hidden />
+            {through ? "Mark all up to here unwatched" : "Mark all up to here watched"}
+          </ContextMenuItem>
+        )}
+        <ContextMenuItem disabled={busy} onClick={() => menu.onMarkSeason(!menu.seasonWatched)}>
+          <Check aria-hidden />
+          {menu.seasonWatched ? "Mark season unwatched" : "Mark season watched"}
+        </ContextMenuItem>
+        {entry && (
+          <>
+            <ContextMenuSeparator />
+            <ContextMenuItem onClick={() => menu.onClearProgress(episode)}>
+              <X aria-hidden />
+              Clear progress
+            </ContextMenuItem>
+          </>
+        )}
+      </ContextMenuPopup>
+    </ContextMenu>
   );
 }

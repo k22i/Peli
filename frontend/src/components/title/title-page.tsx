@@ -1,11 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouterState } from "@tanstack/react-router";
 import { Browser } from "@wailsio/runtime";
 import { Check, Clapperboard, Eye, EyeOff, Film, Play, Plus, RotateCcw } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import type { Profile, WatchedItem } from "@bindings/store";
-import { Service as Store } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
 import { Hero, HeroSkeleton, ImdbScore, MetaLine } from "@/components/media/hero";
 import { About } from "@/components/title/about";
@@ -14,7 +13,6 @@ import { CastList } from "@/components/title/cast-list";
 import { Episodes } from "@/components/title/episodes";
 import { RelatedRows } from "@/components/title/related-rows";
 import { Button } from "@/components/ui/button";
-import { toastManager } from "@/components/ui/toast";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import type { ContentType, Meta } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
@@ -25,12 +23,12 @@ import { warmRanking } from "@/lib/ranking";
 import {
   cachedTitleMeta,
   episodeMarks,
+  episodeTarget,
   episodes as episodesOf,
   isSeriesType,
   libraryItem,
   mainEpisodes,
   playChoice,
-  seriesMarkChange,
   titleMark,
   titleMetaQuery,
   titleProgressQuery,
@@ -38,6 +36,7 @@ import {
   titleWatchedQuery,
   type TitlePreview,
 } from "@/lib/title";
+import { useTitleEdits } from "@/lib/title-actions";
 import { tmdbRef, useTmdbArt, type TmdbArt } from "@/lib/tmdb";
 
 // A title's page (#45, redesigned in #117): its art under the material-pop chrome,
@@ -153,7 +152,6 @@ function LoadedTitle({
   art: TmdbArt | undefined;
   heroRef: (hero: HTMLElement | null) => void;
 }) {
-  const client = useQueryClient();
   const play = usePlay();
   const marks = useQuery(titleWatchedQuery(profile.id, meta.id)).data ?? [];
   const progress = useQuery(titleProgressQuery(profile.id, meta.id)).data ?? [];
@@ -166,37 +164,13 @@ function LoadedTitle({
     (item) => item.contentId === meta.id && item.contentType === meta.type,
   );
 
-  // Marks or unmarks, then keeps the series-level mark in step with the
-  // episodes, as Nuvio's apps do.
-  const setWatched = useMutation({
-    mutationFn: async ({ items, watched }: { items: WatchedItem[]; watched: boolean }) => {
-      await Store.SetWatched(profile.id, items, watched);
-      if (!series) return;
-      const [nowMarks, nowProgress] = await Promise.all([
-        Store.TitleWatched(profile.id, meta.id),
-        Store.TitleProgress(profile.id, meta.id),
-      ]);
-      const change = seriesMarkChange(meta, titleState(meta, nowMarks ?? [], nowProgress ?? []));
-      if (change !== undefined) await Store.SetWatched(profile.id, [titleMark(meta)], change);
-    },
-    onError: () => toastManager.add({ type: "error", title: "Couldn’t save that" }),
-    onSettled: () =>
-      Promise.all(
-        ["watched", "progress", "continue-watching", "last-watched"].map((prefix) =>
-          client.invalidateQueries({ queryKey: [prefix, profile.id] }),
-        ),
-      ),
-  });
-  const mark = (items: WatchedItem[], watched: boolean) => setWatched.mutate({ items, watched });
-
-  const toggleLibrary = useMutation({
-    mutationFn: () =>
-      saved
-        ? Store.RemoveLibraryItem(profile.id, meta.id, meta.type)
-        : Store.SaveLibraryItem(profile.id, libraryItem(meta, addonUrl)),
-    onError: () => toastManager.add({ type: "error", title: "Couldn’t update your library" }),
-    onSettled: () => client.invalidateQueries({ queryKey: ["library", profile.id] }),
-  });
+  const { setWatched, saveToLibrary, removeFromLibrary, clearProgress } = useTitleEdits(profile.id);
+  const mark = (items: WatchedItem[], watched: boolean) =>
+    setWatched.mutate({ meta, items, watched });
+  const toggleLibrary = () =>
+    saved
+      ? removeFromLibrary.mutate({ contentId: meta.id, contentType: meta.type, name: meta.name })
+      : saveToLibrary.mutate(libraryItem(meta, addonUrl));
 
   const watched = series ? state.seriesWatched : state.watched();
   const toggleWatched = () => {
@@ -233,8 +207,10 @@ function LoadedTitle({
             )}
             <RoundAction
               label={saved ? "In library" : "Add to library"}
-              disabled={library === undefined || toggleLibrary.isPending}
-              onClick={() => toggleLibrary.mutate()}
+              disabled={
+                library === undefined || saveToLibrary.isPending || removeFromLibrary.isPending
+              }
+              onClick={toggleLibrary}
             >
               {saved ? <Check /> : <Plus />}
             </RoundAction>
@@ -267,15 +243,13 @@ function LoadedTitle({
           next={choice?.target.videoId}
           busy={setWatched.isPending}
           onMark={mark}
-          onPlay={(episode) => {
+          onPlay={(episode) =>
+            play(episodeTarget(meta, episode, state.progress(episode)?.position))
+          }
+          onPlayFromStart={(episode) => play({ ...episodeTarget(meta, episode), startOver: true })}
+          onClearProgress={(episode) => {
             const entry = state.progress(episode);
-            play({
-              type: meta.type,
-              id: meta.id,
-              title: `${meta.name} S${episode.season} · E${episode.episode}`,
-              videoId: episode.id,
-              resumeAt: entry?.position,
-            });
+            if (entry) clearProgress.mutate({ contentId: meta.id, keys: [entry.key] });
           }}
         />
       )}

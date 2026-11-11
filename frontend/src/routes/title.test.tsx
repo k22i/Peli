@@ -1,4 +1,4 @@
-import { act, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type * as Runtime from "@wailsio/runtime";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
@@ -28,6 +28,7 @@ const mocks = vi.hoisted(() => ({
   setWatched: vi.fn<(id: number, items: WatchedItem[], watched: boolean) => Promise<void>>(),
   saveLibraryItem: vi.fn<(id: number, item: LibraryItem) => Promise<void>>(),
   removeLibraryItem: vi.fn<(id: number, contentId: string, type: string) => Promise<void>>(),
+  removeProgress: vi.fn<(id: number, key: string) => Promise<void>>(() => Promise.resolve()),
   openURL: vi.fn<(url: string) => Promise<void>>(),
 }));
 
@@ -54,6 +55,7 @@ vi.mock("@bindings/store", () => ({
     SetWatched: mocks.setWatched,
     SaveLibraryItem: mocks.saveLibraryItem,
     RemoveLibraryItem: mocks.removeLibraryItem,
+    RemoveProgress: mocks.removeProgress,
   },
 }));
 
@@ -369,6 +371,77 @@ describe("title page", () => {
     );
     await waitFor(() => expect(writes()).toEqual(["+1x3", "+1x1 +1x2 +1x3"]));
     expect(await screen.findByRole("button", { name: "Play S1 · E4" })).toBeInTheDocument();
+  });
+
+  it("marks up to an episode, or its season, from its context menu", async () => {
+    serve();
+    const user = userEvent.setup();
+    await renderApp(seriesPath);
+
+    fireEvent.contextMenu(await screen.findByRole("button", { name: /^S1 · E3/ }));
+    await user.click(await screen.findByRole("menuitem", { name: "Mark all up to here watched" }));
+    await waitFor(() => expect(writes()).toEqual(["+1x1 +1x2 +1x3"]));
+
+    // Everything up to E3 is marked, so the menu offers the way back.
+    fireEvent.contextMenu(await screen.findByRole("button", { name: /^S1 · E3/ }));
+    expect(
+      await screen.findByRole("menuitem", { name: "Mark all up to here unwatched" }),
+    ).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+
+    fireEvent.contextMenu(await screen.findByRole("button", { name: /^S1 · E2/ }));
+    await user.click(await screen.findByRole("menuitem", { name: "Mark season watched" }));
+    // The whole season, then the series mark that follows from it.
+    await waitFor(() => expect(writes()).toHaveLength(3));
+    expect(writes()[1]).toMatch(/^\+1x1 \+1x2 \+1x3 /);
+    expect(writes()[2]).toBe("+show");
+  });
+
+  it("plays an episode from the start, or clears its progress, from its context menu", async () => {
+    db.progress = [
+      {
+        key: "tt0903747_s1e2",
+        contentId: "tt0903747",
+        contentType: "series",
+        videoId: "tt0903747:1:2",
+        season: 1,
+        episode: 2,
+        position: 600_000,
+        duration: 3_000_000,
+        lastWatched: 5,
+      },
+    ];
+    serve();
+    const user = userEvent.setup();
+    const { router } = await renderApp(seriesPath);
+
+    fireEvent.contextMenu(await screen.findByRole("button", { name: /^S1 · E2/ }));
+    await user.click(await screen.findByRole("menuitem", { name: "Clear progress" }));
+    expect(mocks.removeProgress).toHaveBeenCalledWith(1, "tt0903747_s1e2");
+
+    fireEvent.contextMenu(await screen.findByRole("button", { name: /^S1 · E2/ }));
+    await user.click(await screen.findByRole("menuitem", { name: "Play from start" }));
+    expect(router.state.location.pathname).toBe("/streams/series/tt0903747");
+    expect(router.state.location.state.play).toMatchObject({
+      videoId: "tt0903747:1:2",
+      startOver: true,
+    });
+  });
+
+  it("opens an episode's menu from the keyboard", async () => {
+    serve();
+    const user = userEvent.setup();
+    await renderApp(seriesPath);
+    const row = await screen.findByRole("button", { name: /^S1 · E3/ });
+
+    row.focus();
+    await user.keyboard("{ContextMenu}");
+    expect(await screen.findByRole("menuitem", { name: "Mark watched" })).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(row).toHaveFocus());
+
+    fireEvent.keyDown(row, { key: "F10", shiftKey: true });
+    expect(await screen.findByRole("menuitem", { name: "Mark watched" })).toBeInTheDocument();
   });
 
   it("picks a season from the address and keeps it there", async () => {

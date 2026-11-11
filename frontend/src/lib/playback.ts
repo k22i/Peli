@@ -14,6 +14,8 @@ export type PlayTarget = {
   videoId?: string | undefined;
   // Where to resume, in milliseconds.
   resumeAt?: number | undefined;
+  // Play from the beginning whatever progress is stored ("Play from start").
+  startOver?: boolean | undefined;
 };
 
 // The stream picker's address (#50): the title, with the video and resume

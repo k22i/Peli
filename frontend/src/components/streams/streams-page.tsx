@@ -251,7 +251,11 @@ function Picker({
             .catch(() => undefined);
           if (controller.signal.aborted) return;
           const watching = watchingFor(profile.id, target, meta, progress ?? []);
-          const start = progress ? resumePoint(progress, watching) : (target.resumeAt ?? 0) / 1000;
+          const start = target.startOver
+            ? 0
+            : progress
+              ? resumePoint(progress, watching)
+              : (target.resumeAt ?? 0) / 1000;
           // The player (#60) takes it from here, in the profile's languages
           // (#62), keeping its progress as it plays (#64).
           void Player.Load(source, loadOptions(start, settings, [], watching)).then(
