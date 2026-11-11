@@ -5,6 +5,8 @@ metadata:
   type: project
 ---
 
+**Superseded by `feat: revamp ui` (32b700d, 2026-11-11):** the `glass-*` utilities are gone. `index.css` now has three materials, `material-bar` (top bar over scrolled content), `material-pop` (menus, selects, tooltips, toasts) and `material-media` (controls over artwork or video, light on dark), each solid under `reduced-transparency:` (which also covers increased contrast). The player's sheets (subtitle panel, Picture & sound) use their own warm near-black surface, `bg-[rgb(18_16_14/0.86)]` + `backdrop-blur-3xl`. What follows is the #111 history; the backdrop-root gotchas still hold.
+
 #111 (redesign epic [[redesign-epic]]) put the glass in `frontend/src/index.css`: `@utility glass-thin | glass | glass-thick | glass-media | glass-media-strong`, tokens `--glass-*` (hex, in `:root` and `.dark`), `--popover` = the regular tint. coss popups are mapped by selector with `@apply` (menu, tooltip, toast → `glass`; dialog, sheet → `glass-thick`); the select's inner list has the `glass` class. `reduced-transparency:` is a custom Tailwind variant (media query or a `data-transparency="reduced"` ancestor); the tiers use `@variant` inside `@utility` for their solid fallbacks. `scroll-edge-top`, `components/media/ambient.tsx` and the gallery's `Materials` section (`gallery/materials.tsx`) came with it. ADR-0046 and the Glass section of `docs/design/README.md` hold the table.
 
 **Why:** the epic wants one set of materials so later tickets never hand-roll `backdrop-blur`.
