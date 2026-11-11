@@ -38,6 +38,7 @@ import { NextEpisode } from "@/components/player/next-episode";
 import { PictureSheet, type PictureSheetTab } from "@/components/player/picture-sheet";
 import { Prompt, promptEnter } from "@/components/player/prompt";
 import { SeekBar } from "@/components/player/seek-bar";
+import { SecondSubtitles } from "@/components/player/second-subtitles";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
 import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
 import {
@@ -123,7 +124,9 @@ import {
   withSection,
 } from "@/lib/title-adjustments";
 import {
+  autoSecondary,
   autoSubtitle,
+  secondChoices,
   subtitleLanguage,
   subtitleTarget,
   useAddonSubtitles,
@@ -281,6 +284,11 @@ function PlayerFile() {
   const showingAddon = useRef<AddonSubtitle>(undefined);
   const autoDone = useRef(false);
   const readdedFor = useRef(0);
+  const readdedSecondFor = useRef(0);
+  // The second line (dual subtitles): what it showed, to show again after a
+  // reload, and whether the profile's second language was tried for this file.
+  const showingSecond = useRef<{ track: number } | { addon: AddonSubtitle }>(undefined);
+  const autoSecondDone = useRef(false);
 
   const [paused, setPaused] = useAhead(state.paused, same);
   const [position, setPosition] = useAhead(state.position, near);
@@ -294,6 +302,10 @@ function PlayerFile() {
   const subtitleTracks = tracks.filter((track) => track.type === "sub");
   const [audioId, setAudioId] = useAhead(selectedId(audioTracks), same);
   const [subtitleId, setSubtitleId] = useAhead(selectedId(subtitleTracks), same);
+  const [secondaryId, setSecondaryId] = useAhead(
+    subtitleTracks.find((track) => track.secondary)?.id ?? 0,
+    same,
+  );
   const [subtitleDelay, setSubtitleDelay] = useAhead(
     state.subtitleDelay,
     (a, b) => Math.abs(a - b) < 0.001,
@@ -733,6 +745,9 @@ function PlayerFile() {
   };
   const pickSubtitles = (id: number) => {
     autoDone.current = true;
+    autoSecondDone.current = true;
+    // The same track can't be both lines: the second gives way (Go too).
+    if (id === secondaryId) setSecondaryId(0);
     setSubtitleId(id);
     Player.SetSubtitleTrack(id).catch(() => {});
     const track = subtitleTracks.find((each) => each.id === id);
@@ -742,6 +757,7 @@ function PlayerFile() {
   const addSubtitles = (subtitle: AddonSubtitle, picked: boolean) => {
     if (picked) {
       autoDone.current = true;
+      autoSecondDone.current = true;
       rememberLanguage(subtitle.code);
     }
     const id = added.ids.get(subtitle.key);
@@ -752,7 +768,12 @@ function PlayerFile() {
     }
     const load = added.load;
     if (picked) setLoadingKey(subtitle.key);
-    Player.AddSubtitle({ url: subtitle.url, lang: subtitle.code, title: subtitle.addon }).then(
+    Player.AddSubtitle({
+      url: subtitle.url,
+      lang: subtitle.code,
+      title: subtitle.addon,
+      secondary: false,
+    }).then(
       (newId) => {
         setAdded((current) =>
           current.load === load
@@ -767,6 +788,44 @@ function PlayerFile() {
           setLoadingKey(undefined);
           setNotice({ text: "Couldn’t load those subtitles" });
         }
+      },
+    );
+  };
+  // The second line: a track of the file or an added one, 0 for none.
+  const pickSecondary = (id: number) => {
+    autoSecondDone.current = true;
+    setSecondaryId(id);
+    Player.SetSecondarySubtitleTrack(id).catch(() => {
+      setSecondaryId(0);
+      setNotice({ text: "Couldn’t show those as a second line" });
+    });
+  };
+  // An addon's file as the second line, added if it wasn't yet. `quiet` is
+  // for the automatic one, which says nothing if it can't.
+  const addSecondary = (subtitle: AddonSubtitle, quiet = false) => {
+    autoSecondDone.current = true;
+    const id = added.ids.get(subtitle.key);
+    if (id) return pickSecondary(id);
+    const load = added.load;
+    if (!quiet) setLoadingKey(subtitle.key);
+    Player.AddSubtitle({
+      url: subtitle.url,
+      lang: subtitle.code,
+      title: subtitle.addon,
+      secondary: true,
+    }).then(
+      (newId) => {
+        setAdded((current) =>
+          current.load === load
+            ? { load, ids: new Map(current.ids).set(subtitle.key, newId) }
+            : current,
+        );
+        setSecondaryId(newId);
+        setLoadingKey(undefined);
+      },
+      () => {
+        setLoadingKey(undefined);
+        if (!quiet) setNotice({ text: "Couldn’t load those subtitles" });
       },
     );
   };
@@ -795,11 +854,50 @@ function PlayerFile() {
   // Which addon subtitles are showing, to add again after a reload. After
   // the effect above, which reads the last load's.
   const addonKey = [...added.ids].find(([, id]) => id === subtitleId)?.[0];
+  const secondaryAddonKey = [...added.ids].find(([, id]) => id === secondaryId)?.[0];
   useEffect(() => {
     if (tracks.length === 0) return;
     showingAddon.current = addonKey
       ? addonSubtitles.subtitles.find((subtitle) => subtitle.key === addonKey)
       : undefined;
+  });
+  // The second line, in the profile's second language, once the main
+  // subtitles have settled; or again after a reload, as it was.
+  const secondLanguage = settings?.secondSubtitleLanguage ?? "";
+  useEffect(() => {
+    if (!fileReady || !settings) return;
+    if (added.load > 0) {
+      const was = showingSecond.current;
+      showingSecond.current = undefined;
+      if (!was || readdedSecondFor.current === added.load) return;
+      readdedSecondFor.current = added.load;
+      if ("track" in was) pickSecondary(was.track);
+      else addSecondary(was.addon, true);
+      return;
+    }
+    if (autoSecondDone.current || !autoDone.current) return;
+    if (!secondLanguage) {
+      autoSecondDone.current = true;
+      return;
+    }
+    // Waiting for the main subtitles: a file with none in the profile's
+    // language gets none, so there's no second line to put by them.
+    if (subtitleId === 0) return;
+    const pick = autoSecondary(tracks, addonSubtitles.subtitles, secondLanguage, subtitleId);
+    if (pick && "track" in pick) pickSecondary(pick.track.id);
+    else if (pick) addSecondary(pick.addon, true);
+    else if (!addonSubtitles.loading) autoSecondDone.current = true;
+  });
+  useEffect(() => {
+    if (!fileReady) return;
+    const addon = secondaryAddonKey
+      ? addonSubtitles.subtitles.find((each) => each.key === secondaryAddonKey)
+      : undefined;
+    showingSecond.current = addon
+      ? { addon }
+      : secondaryId > 0 && !secondaryAddonKey
+        ? { track: secondaryId }
+        : undefined;
   });
   const subtitlesMenu =
     subtitleTracks.length > 0 || addonSubtitles.subtitles.length > 0 || addonSubtitles.loading;
@@ -819,6 +917,17 @@ function PlayerFile() {
     pickSubtitles(id);
     const track = subtitleTracks.find((each) => each.id === id);
     setNotice({ text: track ? `Subtitles: ${trackText(track)}` : "Subtitles off" });
+  };
+  // Shift+C: the next track for the second line, then none.
+  const cycleSecondary = () => {
+    const choices = secondChoices(subtitleTracks, subtitleId);
+    if (choices.length === 0) {
+      return setNotice({ text: "No other subtitles for a second line" });
+    }
+    const id = nextTrackId([0, ...choices.map((track) => track.id)], secondaryId);
+    pickSecondary(id);
+    const track = choices.find((each) => each.id === id);
+    setNotice({ text: track ? `Second subtitles: ${trackText(track)}` : "Second subtitles off" });
   };
   const cycleAudio = () => {
     const id = nextTrackId(
@@ -1097,6 +1206,7 @@ function PlayerFile() {
       const shifted: Record<string, () => void> = {
         F: () => ready && !mini && cycleFit(),
         A: () => ready && !mini && cycleAspect(),
+        C: () => ready && !mini && cycleSecondary(),
       };
       const shiftedAction = event.shiftKey && !event.repeat ? shifted[event.key] : undefined;
       if (shiftedAction) {
@@ -1384,6 +1494,17 @@ function PlayerFile() {
         }}
         onDoubleClick={mini ? toggleMini : toggleFullscreen}
       />
+      {/* The second line of subtitles, over the video and under the
+          controls. The mini player has no room for it. */}
+      {ready && !mini && !failure && !state.loading && secondaryId > 0 && (
+        <SecondSubtitles
+          text={state.secondarySubtitleText ?? ""}
+          mainText={state.subtitleText ?? ""}
+          mainOn={subtitleId > 0}
+          style={style}
+          lift={style.lift}
+        />
+      )}
       <div
         data-testid="controls"
         data-shown={shown || undefined}
@@ -1629,6 +1750,10 @@ function PlayerFile() {
         addonKey={addonKey}
         loadingKey={loadingKey}
         onPickAddon={(subtitle) => addSubtitles(subtitle, true)}
+        secondaryId={secondaryId}
+        secondaryAddonKey={secondaryAddonKey}
+        onPickSecondaryTrack={pickSecondary}
+        onPickSecondaryAddon={(subtitle) => addSecondary(subtitle)}
         preferredLanguage={settings?.subtitleLanguage ?? ""}
         audioTracks={audioTracks}
         audioId={audioId}

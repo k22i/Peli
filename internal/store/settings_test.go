@@ -8,7 +8,7 @@ import (
 )
 
 var japanese = ProfileSettings{
-	AudioLanguages: []string{"jpn"}, SubtitleLanguage: "en", SubtitleSize: "large", Captions: "on",
+	AudioLanguages: []string{"jpn"}, SubtitleLanguage: "en", SecondSubtitleLanguage: "ja", SubtitleSize: "large", Captions: "on",
 	SubtitleStyle:  SubtitleStyle{Font: "sans", Size: 135, Color: "#FFFFFF", Edge: "outline", Backdrop: 60},
 	Picture:        Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
 	PicturePresets: []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
@@ -92,6 +92,7 @@ func TestProfileSettingsValidation(t *testing.T) {
 		"language twice":   {AudioLanguages: []string{"en", "ja", "en"}, SubtitleSize: "medium", Captions: "system"},
 		"too many":         {AudioLanguages: []string{"en", "es", "fr", "de", "it", "pt", "nl", "sv", "pl"}, SubtitleSize: "medium", Captions: "system"},
 		"upper case":       {SubtitleLanguage: "EN", SubtitleSize: "medium", Captions: "system"},
+		"second language":  {SecondSubtitleLanguage: "Japanese", SubtitleSize: "medium", Captions: "system"},
 		"no size":          {Captions: "system"},
 		"unknown size":     {SubtitleSize: "huge", Captions: "system"},
 		"unknown captions": {SubtitleSize: "medium", Captions: "sometimes"},

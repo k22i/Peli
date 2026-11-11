@@ -38,11 +38,15 @@ type Subtitle struct {
 	Lang string `json:"lang"`
 	// Title names it in the track list, such as the addon's name.
 	Title string `json:"title"`
+	// Secondary adds it as the second line (dual subtitles) and leaves the
+	// main subtitles as they are.
+	Secondary bool `json:"secondary"`
 }
 
 // AddSubtitle downloads sub and adds it to the file playing as an external
-// track, and shows it. It returns the track's id in State.Tracks. Loading
-// another file drops it, as mpv drops every external track then.
+// track, and shows it (as the second line when sub.Secondary). It returns
+// the track's id in State.Tracks. Loading another file drops it, as mpv
+// drops every external track then.
 //
 // Sinag downloads it, not mpv: mpv would send the stream's headers (a
 // debrid addon's, say) to the subtitle server too.
@@ -87,7 +91,12 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	if err != nil {
 		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}
-	if err := ses.m.command("sub-add", f.Name(), "select", sub.Title, sub.Lang); err != nil {
+	// "auto" adds it without selecting it: the second line is picked below.
+	flags := "select"
+	if sub.Secondary {
+		flags = "auto"
+	}
+	if err := ses.m.command("sub-add", f.Name(), flags, sub.Title, sub.Lang); err != nil {
 		if errors.Is(err, errDestroyed) {
 			return 0, ErrNotPlaying
 		}
@@ -96,6 +105,11 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	id, err := addedTrack(ses.m, f.Name())
 	if err != nil {
 		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
+	}
+	if sub.Secondary {
+		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
+			return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
+		}
 	}
 	return id, nil
 }

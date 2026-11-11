@@ -21,6 +21,10 @@ type ProfileSettings struct {
 	// one, saved as "audioLanguage": ProfileSettings carries it over.
 	AudioLanguages   []string `json:"audioLanguages"`
 	SubtitleLanguage string   `json:"subtitleLanguage"`
+	// SecondSubtitleLanguage is the language of the second line of subtitles
+	// (dual subtitles) shown with the main ones when a file or addon has
+	// it; "" for none.
+	SecondSubtitleLanguage string `json:"secondSubtitleLanguage"`
 	// SubtitleSize is the size from before subtitle styles, kept for older data: the
 	// style's Size is what the player uses.
 	SubtitleSize string `json:"subtitleSize"`
@@ -272,7 +276,7 @@ func decodeOnto(data []byte, v any) error {
 }
 
 func validateProfileSettings(settings ProfileSettings) error {
-	for _, code := range append([]string{settings.SubtitleLanguage}, settings.AudioLanguages...) {
+	for _, code := range append([]string{settings.SubtitleLanguage, settings.SecondSubtitleLanguage}, settings.AudioLanguages...) {
 		if code != "" && !languageCode.MatchString(code) {
 			return fmt.Errorf("%w: %q is not an ISO 639 language code", ErrInvalidSettings, code)
 		}

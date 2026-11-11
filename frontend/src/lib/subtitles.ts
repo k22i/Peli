@@ -181,6 +181,46 @@ export function autoSubtitle(
   return byLanguage(subtitles, want)[0]?.subtitles.find((subtitle) => subtitle.code === want);
 }
 
+// Subtitle codecs that are pictures (Blu-ray, DVD): there is no text in them
+// to draw as a second line.
+const pictureCodecs = new Set([
+  "hdmv_pgs_subtitle",
+  "dvd_subtitle",
+  "dvb_subtitle",
+  "dvb_teletext",
+  "xsub",
+]);
+
+// Whether a track is subtitles made of text, which the second line can show.
+export const isTextSubtitle = (track: Track): boolean =>
+  track.type === "sub" && !pictureCodecs.has(track.codec);
+
+// The tracks the second line can show: text, and not the one showing as the
+// main subtitles.
+export const secondChoices = (tracks: Track[], mainId: number): Track[] =>
+  tracks.filter((track) => isTextSubtitle(track) && track.id !== mainId);
+
+// What to show as the second line when a file starts, in the profile's second
+// language: one of the file's own text tracks, or else an addon's. Nothing
+// when the main subtitles are off or only forced (signs), or are in that
+// language already, or when none of them has it.
+export function autoSecondary(
+  tracks: Track[],
+  subtitles: AddonSubtitle[],
+  second: string,
+  mainId: number,
+): { track: Track } | { addon: AddonSubtitle } | undefined {
+  const want = subtitleLanguage(second).code;
+  const main = tracks.find((track) => track.type === "sub" && track.id === mainId);
+  if (!want || !main || main.forced || subtitleLanguage(main.lang).code === want) return undefined;
+  const own = secondChoices(tracks, mainId).find(
+    (track) => !track.forced && subtitleLanguage(track.lang).code === want,
+  );
+  if (own) return { track: own };
+  const addon = byLanguage(subtitles, want)[0]?.subtitles.find((each) => each.code === want);
+  return addon && { addon };
+}
+
 function fileName(subtitle: Subtitle): string {
   for (const field of ["subtitleFileName", "fileName", "filename", "title", "name"]) {
     const value = subtitle[field];

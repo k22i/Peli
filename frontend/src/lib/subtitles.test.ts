@@ -2,8 +2,11 @@ import { describe, expect, it } from "vite-plus/test";
 
 import type { Track } from "@/lib/player";
 import {
+  autoSecondary,
   autoSubtitle,
   byLanguage,
+  isTextSubtitle,
+  secondChoices,
   subtitleLanguage,
   subtitleTarget,
   type AddonSubtitle,
@@ -25,6 +28,7 @@ const sub = (lang: string, fields: Partial<Track> = {}): Track => ({
   codec: "subrip",
   default: false,
   selected: false,
+  secondary: false,
   external: false,
   forced: false,
   hearingImpaired: false,
@@ -106,6 +110,59 @@ describe("subtitleTarget", () => {
       type: "movie",
       id: "tt1",
       extra: {},
+    });
+  });
+});
+
+describe("the second line of subtitles", () => {
+  it("is for text, not pictures", () => {
+    expect(isTextSubtitle(sub("en"))).toBe(true);
+    expect(isTextSubtitle(sub("en", { codec: "hdmv_pgs_subtitle" }))).toBe(false);
+    expect(isTextSubtitle(sub("en", { codec: "dvd_subtitle" }))).toBe(false);
+    expect(isTextSubtitle(sub("en", { type: "audio" }))).toBe(false);
+  });
+
+  it("can be any text track but the main one", () => {
+    const tracks = [
+      sub("en", { id: 1 }),
+      sub("ja", { id: 2 }),
+      sub("fr", { id: 3, codec: "hdmv_pgs_subtitle" }),
+      sub("de", { id: 4 }),
+    ];
+    expect(secondChoices(tracks, 1).map((track) => track.id)).toEqual([2, 4]);
+    expect(secondChoices(tracks, 0).map((track) => track.id)).toEqual([1, 2, 4]);
+  });
+
+  describe("autoSecondary", () => {
+    const tracks = [
+      sub("en", { id: 1, selected: true }),
+      sub("ja", { id: 2, forced: true }),
+      sub("ja", { id: 3 }),
+    ];
+
+    it("picks the file's own track in the second language, not a forced one", () => {
+      expect(autoSecondary(tracks, [], "ja", 1)).toEqual({ track: tracks[2] });
+    });
+
+    it("falls back to an addon's subtitles", () => {
+      const addon = subtitle("a", "jpn");
+      const own = [tracks[0]!];
+      expect(autoSecondary(own, [subtitle("b", "eng"), addon], "ja", 1)).toEqual({ addon });
+    });
+
+    it("has nothing for a language nobody has", () => {
+      expect(autoSecondary(tracks, [subtitle("b", "eng")], "ko", 1)).toBeUndefined();
+    });
+
+    it("waits for the main subtitles, and won't pair a language with itself", () => {
+      expect(autoSecondary(tracks, [], "ja", 0)).toBeUndefined();
+      expect(autoSecondary(tracks, [], "en", 1)).toBeUndefined();
+      expect(autoSecondary(tracks, [], "", 1)).toBeUndefined();
+    });
+
+    it("is for full subtitles: nothing next to forced signs", () => {
+      const signs = [sub("en", { id: 1, forced: true }), sub("ja", { id: 3 })];
+      expect(autoSecondary(signs, [], "ja", 1)).toBeUndefined();
     });
   });
 });

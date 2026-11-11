@@ -33,6 +33,7 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["A"], action: "Next audio track" },
       { keys: ["B"], action: "Dialogue boost on or off" },
       { keys: ["C"], action: "Next subtitles, then off" },
+      { keys: ["Shift C"], action: "Next second-line subtitles, then off" },
       { keys: ["Z", "X"], action: "Subtitles 0.1 s earlier or later" },
     ],
   },

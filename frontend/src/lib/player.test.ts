@@ -109,6 +109,7 @@ const track = (fields: Partial<Track> & Pick<Track, "id" | "type">): Track => ({
   codec: "",
   default: false,
   selected: false,
+  secondary: false,
   external: false,
   forced: false,
   hearingImpaired: false,

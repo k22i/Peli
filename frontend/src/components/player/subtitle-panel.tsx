@@ -4,7 +4,12 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { Field, PanelSlider, Segmented, Stepper, Toggle } from "@/components/player/panel-controls";
 import { Spinner } from "@/components/ui/spinner";
 import { maxSubtitleDelay, trackLabel } from "@/lib/player";
-import { languageLabel, subtitleLanguage, type AddonSubtitle } from "@/lib/subtitles";
+import {
+  isTextSubtitle,
+  languageLabel,
+  subtitleLanguage,
+  type AddonSubtitle,
+} from "@/lib/subtitles";
 import { cn } from "@/lib/utils";
 import type { Track } from "@bindings/player";
 
@@ -60,6 +65,10 @@ export function SubtitlePanel({
   addonKey,
   loadingKey,
   onPickAddon,
+  secondaryId,
+  secondaryAddonKey,
+  onPickSecondaryTrack,
+  onPickSecondaryAddon,
   preferredLanguage,
   audioTracks,
   audioId,
@@ -85,6 +94,12 @@ export function SubtitlePanel({
   addonKey: string | undefined;
   loadingKey: string | undefined;
   onPickAddon: (subtitle: AddonSubtitle) => void;
+  // The second line (dual subtitles): its track, the addon file it came from,
+  // and picking one (0 for none).
+  secondaryId: number;
+  secondaryAddonKey: string | undefined;
+  onPickSecondaryTrack: (id: number) => void;
+  onPickSecondaryAddon: (subtitle: AddonSubtitle) => void;
   preferredLanguage: string;
   audioTracks: Track[];
   audioId: number;
@@ -170,6 +185,10 @@ export function SubtitlePanel({
             addonKey={addonKey}
             loadingKey={loadingKey}
             onPickAddon={onPickAddon}
+            secondaryId={secondaryId}
+            secondaryAddonKey={secondaryAddonKey}
+            onPickSecondaryTrack={onPickSecondaryTrack}
+            onPickSecondaryAddon={onPickSecondaryAddon}
             preferredLanguage={preferredLanguage}
           />
         )}
@@ -203,6 +222,10 @@ function SubtitlesTab({
   addonKey,
   loadingKey,
   onPickAddon,
+  secondaryId,
+  secondaryAddonKey,
+  onPickSecondaryTrack,
+  onPickSecondaryAddon,
   preferredLanguage,
 }: {
   subtitleTracks: Track[];
@@ -214,6 +237,10 @@ function SubtitlesTab({
   addonKey: string | undefined;
   loadingKey: string | undefined;
   onPickAddon: (subtitle: AddonSubtitle) => void;
+  secondaryId: number;
+  secondaryAddonKey: string | undefined;
+  onPickSecondaryTrack: (id: number) => void;
+  onPickSecondaryAddon: (subtitle: AddonSubtitle) => void;
   preferredLanguage: string;
 }) {
   const choices: Choice[] = subtitleTracks
@@ -246,19 +273,49 @@ function SubtitlesTab({
   );
   const [filter, setFilter] = useState<string>("all");
   const shownLanguages = filter === "all" ? languages : languages.filter((l) => l === filter);
-  const selectedKey =
-    subtitleId === 0
-      ? "off"
-      : (addonKey ?? (addedIds.has(subtitleId) ? undefined : `track:${subtitleId}`));
+  // Which line the list picks for: the main subtitles, or the second line
+  // shown smaller above them. Only worth asking with something to pair.
+  const [line, setLine] = useState<"main" | "second">("main");
+  const second = line === "second" && choices.length > 1;
+  const keyOf = (id: number, key: string | undefined) =>
+    id === 0 ? "off" : (key ?? (addedIds.has(id) ? undefined : `track:${id}`));
+  const mainKey = keyOf(subtitleId, addonKey);
+  const selectedKey = second ? keyOf(secondaryId, secondaryAddonKey) : mainKey;
+  // The second line can't repeat the main one, or be pictures.
+  const whyNot = (choice: Choice): string | undefined => {
+    if (!second) return undefined;
+    if (choice.key === mainKey) return "Showing as the main subtitles";
+    if (choice.kind === "track" && !isTextSubtitle(choice.track))
+      return "Pictures can’t be shown as a second line";
+    return undefined;
+  };
 
   return (
     <div className="flex flex-col pb-4">
+      {choices.length > 1 && (
+        <div className="flex flex-col gap-2 px-4 pb-2">
+          <Segmented
+            label="Subtitle line"
+            value={line}
+            onChange={(next) => setLine(next === "second" ? "second" : "main")}
+            options={[
+              { value: "main", name: "Main" },
+              { value: "second", name: "Second line" },
+            ]}
+          />
+          {second && (
+            <p className="px-1 text-tiny leading-snug text-white/50">
+              A second language, smaller, above the main subtitles. Shift+C changes it.
+            </p>
+          )}
+        </div>
+      )}
       <div className="px-4">
         <ChoiceRow
           selected={selectedKey === "off"}
-          onPick={() => onPickTrack(0)}
+          onPick={() => (second ? onPickSecondaryTrack(0) : onPickTrack(0))}
           title="Off"
-          detail="No subtitles, except forced ones"
+          detail={second ? "No second line" : "No subtitles, except forced ones"}
         />
       </div>
       {languages.length > 1 && (
@@ -295,15 +352,25 @@ function SubtitlesTab({
                     <TrackRow
                       track={choice.track}
                       selected={selectedKey === choice.key}
-                      onPick={() => onPickTrack(choice.track.id)}
+                      disabledWhy={whyNot(choice)}
+                      onPick={() =>
+                        second
+                          ? onPickSecondaryTrack(choice.track.id)
+                          : onPickTrack(choice.track.id)
+                      }
                     />
                   ) : (
                     <ChoiceRow
                       selected={selectedKey === choice.key}
                       loading={loadingKey === choice.key}
-                      onPick={() => onPickAddon(choice.subtitle)}
+                      disabled={whyNot(choice) !== undefined}
+                      onPick={() =>
+                        second
+                          ? onPickSecondaryAddon(choice.subtitle)
+                          : onPickAddon(choice.subtitle)
+                      }
                       title={choice.subtitle.name || `${languageLabel(language)} ${choice.number}`}
-                      detail={choice.subtitle.addon}
+                      detail={whyNot(choice) ?? choice.subtitle.addon}
                     />
                   )}
                 </li>
@@ -333,16 +400,20 @@ const rankLanguage = (language: string, want: string) =>
 function TrackRow({
   track,
   selected,
+  disabledWhy,
   onPick,
 }: {
   track: Track;
   selected: boolean;
+  // Why this one can't be picked now, if it can't.
+  disabledWhy?: string | undefined;
   onPick: () => void;
 }) {
   const { name, detail } = trackLabel(track);
   return (
     <ChoiceRow
       selected={selected}
+      disabled={disabledWhy !== undefined}
       onPick={onPick}
       title={name}
       detail={
@@ -350,7 +421,7 @@ function TrackRow({
           <span className="rounded-[4px] bg-white/12 px-1.5 py-px text-[0.625rem] font-[700] tracking-[0.06em] text-white/75 uppercase">
             In file
           </span>
-          {detail && <span className="truncate">{detail}</span>}
+          <span className="truncate">{disabledWhy ?? detail}</span>
         </>
       }
     />
@@ -360,12 +431,14 @@ function TrackRow({
 function ChoiceRow({
   selected,
   loading = false,
+  disabled = false,
   onPick,
   title,
   detail,
 }: {
   selected: boolean;
   loading?: boolean;
+  disabled?: boolean;
   onPick: () => void;
   title: ReactNode;
   detail?: ReactNode;
@@ -374,10 +447,11 @@ function ChoiceRow({
     <button
       type="button"
       aria-pressed={selected}
+      disabled={disabled}
       onClick={onPick}
       className={cn(
-        "group/choice flex w-full items-center gap-3 rounded-2xl px-2 py-2.5 text-start outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
-        selected ? "bg-white/9" : "hover:bg-white/5",
+        "group/choice flex w-full items-center gap-3 rounded-2xl px-2 py-2.5 text-start outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-45",
+        selected ? "bg-white/9" : "enabled:hover:bg-white/5",
       )}
     >
       <span

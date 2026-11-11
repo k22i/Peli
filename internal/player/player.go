@@ -126,6 +126,10 @@ type State struct {
 	// SubtitleText is the subtitle line showing now, "" between lines: the
 	// timing tool shows it so the user can match it to the speech.
 	SubtitleText string `json:"subtitleText"`
+	// SecondarySubtitleText is the second subtitle track's line showing now.
+	// mpv doesn't draw it (secondary-sub-visibility is off: it can't be
+	// sized or placed); the screen does, above the main subtitles.
+	SecondarySubtitleText string `json:"secondarySubtitleText"`
 	// HWDec is the hardware decoder in use, "" for software.
 	HWDec string `json:"hwdec"`
 	// HDR is true while an HDR video goes to the display as HDR, rather
@@ -152,14 +156,18 @@ type Time struct {
 
 // Track is one of the file's video, audio or subtitle tracks.
 type Track struct {
-	ID       int    `json:"id"`
-	Type     string `json:"type"` // "video", "audio" or "sub"
-	Title    string `json:"title"`
-	Lang     string `json:"lang"`
-	Codec    string `json:"codec"`
-	Default  bool   `json:"default"`
-	Selected bool   `json:"selected"`
-	External bool   `json:"external"`
+	ID      int    `json:"id"`
+	Type    string `json:"type"` // "video", "audio" or "sub"
+	Title   string `json:"title"`
+	Lang    string `json:"lang"`
+	Codec   string `json:"codec"`
+	Default bool   `json:"default"`
+	// Selected is true for the audio or video track playing and the subtitle
+	// track showing as the main one; Secondary is the subtitle track
+	// feeding the second line (SetSecondarySubtitleTrack).
+	Selected  bool `json:"selected"`
+	Secondary bool `json:"secondary"`
+	External  bool `json:"external"`
 	// Forced subtitles only translate signs and foreign dialogue;
 	// HearingImpaired ones (SDH) also describe sounds.
 	Forced          bool `json:"forced"`
@@ -316,6 +324,8 @@ func (o LoadOptions) tracks() [][2]string {
 		{"alang", strings.Join(o.AudioLanguages, ",")},
 		// Off: no language and no fallback leaves forced subtitles only.
 		{"slang", ""}, {"subs-fallback", "no"}, {"subs-fallback-forced", "yes"},
+		// A second track picked for the last file means nothing in this one.
+		{"secondary-sid", "no"},
 	}
 	if captions {
 		// On: the language's full subtitles over its forced ones, and
@@ -355,6 +365,7 @@ var observed = []struct {
 	{"sub-scale", fmtDouble},
 	{"video-params/gamma", fmtString},
 	{"sub-text", fmtString},
+	{"secondary-sub-text", fmtString},
 	{"audio-delay", fmtDouble},
 	{"volume-max", fmtDouble},
 	// The video's size, for a crop in percent (framing.go).
@@ -379,6 +390,10 @@ var options = [][2]string{
 	{"background-color", "#000000"},
 	// A language left "" means the file's default, not the OS's (#62).
 	{"subs-match-os-language", "no"},
+	// The second subtitle track is drawn by the screen, which can size and
+	// place it; mpv 0.41 has no secondary-sub-scale. Hidden, mpv still
+	// decodes it and reports secondary-sub-text.
+	{"secondary-sub-visibility", "no"},
 }
 
 // Settings is where a session reads whether to decode on the GPU: the
@@ -939,7 +954,57 @@ func (s *Service) SetSubtitleTrack(id int) error {
 	case id == 0:
 		return s.set("sid", "no")
 	}
+	// The same track can't be both: the second line gives way.
+	if s.Snapshot().secondaryIs(id) {
+		if err := s.set("secondary-sid", "no"); err != nil {
+			return err
+		}
+	}
 	return s.set("sid", strconv.Itoa(id))
+}
+
+// SetSecondarySubtitleTrack shows the subtitle track with id, from
+// State.Tracks, as the second line above the main subtitles (dual
+// subtitles), or none for 0. It must be a text track other than the main
+// one: the screen draws the line itself from State.SecondarySubtitleText.
+func (s *Service) SetSecondarySubtitleTrack(id int) error {
+	switch {
+	case id < 0:
+		return ErrInvalid
+	case id == 0:
+		return s.set("secondary-sid", "no")
+	}
+	st := s.Snapshot()
+	var track *Track
+	for i := range st.Tracks {
+		if st.Tracks[i].ID == id && st.Tracks[i].Type == "sub" {
+			track = &st.Tracks[i]
+		}
+	}
+	if track == nil || track.Selected || imageSubtitle(track.Codec) {
+		return ErrInvalid
+	}
+	return s.set("secondary-sid", strconv.Itoa(id))
+}
+
+// secondaryIs reports whether the subtitle track with id is the second one.
+func (st State) secondaryIs(id int) bool {
+	for _, track := range st.Tracks {
+		if track.ID == id && track.Type == "sub" && track.Secondary {
+			return true
+		}
+	}
+	return false
+}
+
+// imageSubtitle reports whether a subtitle codec is pictures (Blu-ray, DVD),
+// which have no text to draw as the second line.
+func imageSubtitle(codec string) bool {
+	switch codec {
+	case "hdmv_pgs_subtitle", "dvd_subtitle", "dvb_subtitle", "dvb_teletext", "xsub":
+		return true
+	}
+	return false
 }
 
 // SetSubtitleDelay shows subtitles delay seconds later than the file says,
@@ -1258,6 +1323,8 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.SubtitleSize = subtitleSize(number(v))
 	case "sub-text":
 		st.SubtitleText, _ = v.(string)
+	case "secondary-sub-text":
+		st.SecondarySubtitleText, _ = v.(string)
 	}
 	s.stateDirty = true
 }
@@ -1433,10 +1500,15 @@ func tracks(v any) []Track {
 		}
 		str := func(k string) string { s, _ := m[k].(string); return s }
 		b := func(k string) bool { v, _ := m[k].(bool); return v }
+		// mpv marks the second subtitle track selected too; its
+		// main-selection says which of the two it is (0 main, 1 second).
+		_, ordered := m["main-selection"]
+		second := b("selected") && ordered && number(m["main-selection"]) == 1 && str("type") == "sub"
 		out = append(out, Track{
 			ID: int(number(m["id"])), Type: str("type"), Title: str("title"), Lang: str("lang"),
-			Codec: str("codec"), Default: b("default"), Selected: b("selected"), External: b("external"),
-			Forced: b("forced"), HearingImpaired: b("hearing-impaired"),
+			Codec: str("codec"), Default: b("default"), Selected: b("selected") && !second, Secondary: second,
+			External: b("external"),
+			Forced:   b("forced"), HearingImpaired: b("hearing-impaired"),
 			Channels: int(number(m["demux-channel-count"])),
 			Width:    int(number(m["demux-w"])), Height: int(number(m["demux-h"])),
 		})

@@ -8,6 +8,7 @@ import type { ProfileSettings } from "@bindings/store";
 export const profileSettings = (changes: Partial<ProfileSettings> = {}): ProfileSettings => ({
   audioLanguages: [],
   subtitleLanguage: "",
+  secondSubtitleLanguage: "",
   subtitleSize: "medium",
   subtitleStyle: {
     font: "sans",

@@ -982,6 +982,18 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                   onChange={(subtitleLanguage) => setProfile({ subtitleLanguage })}
                 />
               </SettingRow>
+              <SettingRow
+                id="second-subtitle-language"
+                label="Second subtitle language"
+                description="Shown smaller, above the main subtitles, when a stream or subtitle addon has it."
+              >
+                <LanguageSelect
+                  id="second-subtitle-language"
+                  value={settings.secondSubtitleLanguage ?? ""}
+                  defaultLabel="None"
+                  onChange={(secondSubtitleLanguage) => setProfile({ secondSubtitleLanguage })}
+                />
+              </SettingRow>
             </SettingsGroup>
             <SettingsGroup title="Subtitles">
               <SubtitleLookRow
