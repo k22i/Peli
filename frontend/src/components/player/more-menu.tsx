@@ -1,4 +1,4 @@
-import { Activity, Camera, Ellipsis, ListOrdered, Repeat, X } from "lucide-react";
+import { Activity, Camera, Ellipsis, ListOrdered, Moon, Repeat, X } from "lucide-react";
 
 import {
   PlayerMenu,
@@ -12,6 +12,7 @@ import {
 } from "@/components/player/player-menu";
 import { nextLoopLabel, type Loop } from "@/lib/ab-loop";
 import { chapterName, type Chapter } from "@/lib/chapters";
+import { sleepChoices, type SleepChoice } from "@/lib/sleep-timer";
 import { formatTime } from "@/lib/player";
 
 export type LoopProps = {
@@ -28,6 +29,15 @@ export type ChaptersProps = {
   onPick: (index: number) => void;
 };
 
+export type SleepProps = {
+  choice: SleepChoice;
+  // What's left: "12 min", "End of episode".
+  hint: string | undefined;
+  // Whether the episode's length is known, for "End of episode".
+  episodeKnown: boolean;
+  onChange: (choice: SleepChoice) => void;
+};
+
 // The dock's More menu: the rarer actions, each with its key.
 export function MoreMenu({
   open,
@@ -36,6 +46,7 @@ export function MoreMenu({
   loop,
   onScreenshot,
   stats,
+  sleep,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -44,6 +55,7 @@ export function MoreMenu({
   // Saves the frame, with the subtitles showing or without.
   onScreenshot: (subtitles: boolean) => void;
   stats: { open: boolean; onToggle: () => void };
+  sleep: SleepProps;
 }) {
   const { a, b } = loop.loop;
   return (
@@ -51,7 +63,7 @@ export function MoreMenu({
       label="More"
       open={open}
       onOpenChange={onOpenChange}
-      lit={a !== undefined}
+      lit={a !== undefined || sleep.choice !== "off"}
       trigger={<Ellipsis />}
     >
       {chapters.chapters.length > 1 && (
@@ -122,6 +134,17 @@ export function MoreMenu({
           Playback stats
         </span>
       </PlayerMenuCheckboxItem>
+      <PlayerSubmenu icon={<Moon aria-hidden />} label="Sleep timer" hint={sleep.hint ?? "Off"}>
+        <PlayerMenuRadioGroup label="Sleep timer" value={sleep.choice} onChange={sleep.onChange}>
+          {sleepChoices
+            .filter((each) => each.value !== "episode" || sleep.episodeKnown)
+            .map((each) => (
+              <PlayerMenuRadioItem key={each.value} value={each.value}>
+                {each.name}
+              </PlayerMenuRadioItem>
+            ))}
+        </PlayerMenuRadioGroup>
+      </PlayerSubmenu>
     </PlayerMenu>
   );
 }

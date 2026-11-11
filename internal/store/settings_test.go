@@ -87,15 +87,17 @@ func TestProfileSettingsValidation(t *testing.T) {
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
 
 	for name, settings := range map[string]ProfileSettings{
-		"language name":    {AudioLanguages: []string{"English"}, SubtitleSize: "medium", Captions: "system"},
-		"empty language":   {AudioLanguages: []string{"en", ""}, SubtitleSize: "medium", Captions: "system"},
-		"language twice":   {AudioLanguages: []string{"en", "ja", "en"}, SubtitleSize: "medium", Captions: "system"},
-		"too many":         {AudioLanguages: []string{"en", "es", "fr", "de", "it", "pt", "nl", "sv", "pl"}, SubtitleSize: "medium", Captions: "system"},
-		"upper case":       {SubtitleLanguage: "EN", SubtitleSize: "medium", Captions: "system"},
-		"second language":  {SecondSubtitleLanguage: "Japanese", SubtitleSize: "medium", Captions: "system"},
-		"no size":          {Captions: "system"},
-		"unknown size":     {SubtitleSize: "huge", Captions: "system"},
-		"unknown captions": {SubtitleSize: "medium", Captions: "sometimes"},
+		"language name":     {AudioLanguages: []string{"English"}, SubtitleSize: "medium", Captions: "system"},
+		"empty language":    {AudioLanguages: []string{"en", ""}, SubtitleSize: "medium", Captions: "system"},
+		"language twice":    {AudioLanguages: []string{"en", "ja", "en"}, SubtitleSize: "medium", Captions: "system"},
+		"too many":          {AudioLanguages: []string{"en", "es", "fr", "de", "it", "pt", "nl", "sv", "pl"}, SubtitleSize: "medium", Captions: "system"},
+		"upper case":        {SubtitleLanguage: "EN", SubtitleSize: "medium", Captions: "system"},
+		"second language":   {SecondSubtitleLanguage: "Japanese", SubtitleSize: "medium", Captions: "system"},
+		"no size":           {Captions: "system"},
+		"unknown size":      {SubtitleSize: "huge", Captions: "system"},
+		"unknown captions":  {SubtitleSize: "medium", Captions: "sometimes"},
+		"still watching -1": {SubtitleSize: "medium", Captions: "system", StillWatchingAfter: -1},
+		"still watching 11": {SubtitleSize: "medium", Captions: "system", StillWatchingAfter: 11},
 	} {
 		if err := s.SaveProfileSettings(p.ID, settings); !errors.Is(err, ErrInvalidSettings) {
 			t.Errorf("%s: err = %v, want ErrInvalidSettings", name, err)

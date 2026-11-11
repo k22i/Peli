@@ -35,6 +35,10 @@ type ProfileSettings struct {
 	// SkipIntros skips intros and recaps without asking, where their times
 	// are known (#69). Credits are always the user's to skip.
 	SkipIntros bool `json:"skipIntros"`
+	// StillWatchingAfter is how many episodes play in a row, with no key
+	// or pointer input, before the player asks "Still watching?" rather
+	// than playing the next one; 0 never asks. Up to MaxStillWatchingAfter.
+	StillWatchingAfter int `json:"stillWatchingAfter"`
 	// SIMKL (#72): scrobble what plays, import the watched history, and
 	// include anime in both. Profiles that keep anime on AniList turn
 	// SimklAnime off.
@@ -130,8 +134,11 @@ var (
 	MaxResolutions    = []string{"auto", "2160p", "1080p", "720p"}
 	DisplayModes      = []string{"auto", "on", "off"}
 	// MaxAudioLanguages is how many audio languages a profile can list.
-	MaxAudioLanguages  = 8
-	ErrInvalidSettings = errors.New("store: invalid settings")
+	MaxAudioLanguages = 8
+	// MaxStillWatchingAfter is the most episodes a profile can let play in
+	// a row before "Still watching?".
+	MaxStillWatchingAfter = 10
+	ErrInvalidSettings    = errors.New("store: invalid settings")
 
 	languageCode = regexp.MustCompile(`^[a-z]{2,3}$`)
 )
@@ -140,7 +147,8 @@ var (
 func DefaultProfileSettings() ProfileSettings {
 	return ProfileSettings{
 		AudioLanguages: []string{}, SubtitleSize: "medium", SubtitleStyle: DefaultSubtitleStyle(), Captions: "system",
-		SimklScrobble: true, SimklImport: true, SimklAnime: true,
+		StillWatchingAfter: 3,
+		SimklScrobble:      true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
 		Picture: DefaultPicture(), PicturePresets: []NamedPicture{}, Framing: DefaultFraming(),
 		Sound: DefaultSound(),
@@ -302,6 +310,9 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	if !slices.Contains(CaptionsModes, settings.Captions) {
 		return fmt.Errorf("%w: captions %q", ErrInvalidSettings, settings.Captions)
+	}
+	if settings.StillWatchingAfter < 0 || settings.StillWatchingAfter > MaxStillWatchingAfter {
+		return fmt.Errorf("%w: still watching after %d episodes", ErrInvalidSettings, settings.StillWatchingAfter)
 	}
 	if !settings.Framing.Valid() {
 		return fmt.Errorf("%w: framing %+v", ErrInvalidSettings, settings.Framing)

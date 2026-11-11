@@ -329,6 +329,11 @@ describe("settings", () => {
     expect(await screen.findByRole("switch", { name: "Hardware decoding" })).toBeChecked();
     expect(screen.getByRole("switch", { name: "Skip intros automatically" })).not.toBeChecked();
     expect(screen.getByRole("switch", { name: "Look up intro and credits times" })).toBeChecked();
+    const stillWatching = screen.getByRole("group", { name: "Ask if you’re still watching" });
+    expect(within(stillWatching).getByRole("button", { name: "After 3" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
 
     await open("Languages & subtitles");
     expect(groups()).toEqual(["Languages", "Subtitles"]);

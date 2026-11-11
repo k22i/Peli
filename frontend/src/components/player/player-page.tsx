@@ -30,6 +30,7 @@ import {
   useRef,
   useState,
   type ComponentProps,
+  type RefObject,
   type ReactNode,
 } from "react";
 
@@ -43,6 +44,7 @@ import { SecondSubtitles } from "@/components/player/second-subtitles";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
 import { SpeedMenu } from "@/components/player/speed-menu";
 import { StatsOverlay } from "@/components/player/stats-overlay";
+import { StillWatching } from "@/components/player/still-watching";
 import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
 import {
   defaultSubtitleStyle,
@@ -133,7 +135,19 @@ import {
 import { pictureOf, savePreset, standardPicture, userPreset, type Picture } from "@/lib/picture";
 import { qualityOf, type Quality } from "@/lib/quality";
 import { audioOf, clampVolume, soundOf, type Audio, type Sound } from "@/lib/sound";
+import {
+  fadeFor,
+  fadedVolume,
+  sleepChoiceOf,
+  sleepChoices,
+  sleepHint,
+  sleepLeft,
+  sleepOff,
+  sleepTimerFor,
+  type SleepTimer,
+} from "@/lib/sleep-timer";
 import { normalSpeed, speedLabel, stepSpeed } from "@/lib/speed";
+import { stillWatchingDue, useEpisodesWithoutInput } from "@/lib/still-watching";
 import { resolutionLabel } from "@/lib/stream-labels";
 import {
   titleAdjustmentsQuery,
@@ -257,11 +271,30 @@ export function PlayerPage() {
     },
     [queryClient],
   );
+  // Episodes that started by themselves since the last key or pointer
+  // input ("Still watching?"), and the sleep timer: both outlive a file.
+  const streak = useEpisodesWithoutInput();
+  const [sleep, setSleep] = useState<SleepTimer>(sleepOff);
   // One file at a time: the next episode starts afresh.
-  return <PlayerFile key={playing?.source?.url ?? ""} />;
+  return (
+    <PlayerFile
+      key={playing?.source?.url ?? ""}
+      streak={streak}
+      sleep={sleep}
+      onSleepChange={setSleep}
+    />
+  );
 }
 
-function PlayerFile() {
+function PlayerFile({
+  streak,
+  sleep,
+  onSleepChange,
+}: {
+  streak: RefObject<number>;
+  sleep: SleepTimer;
+  onSleepChange: (timer: SleepTimer) => void;
+}) {
   const router = useRouter();
   const navigate = useNavigate();
   const canGoBack = useCanGoBack();
@@ -405,6 +438,8 @@ function PlayerFile() {
     next !== undefined && from !== undefined && state.position >= from && !cancelled && !error;
   // Play now, or the end: the card hands over what it found.
   const [starting, setStarting] = useState(false);
+  // "Still watching?", with how many episodes played in a row.
+  const [asking, setAsking] = useState<number>();
 
   // A watch party (ADR-0051): Go follows the player and keeps it in step;
   // this screen says what it plays (as the party names it), opens the party
@@ -460,7 +495,19 @@ function PlayerFile() {
   usePlayerEnded((ended) => {
     if (switching.current) return;
     if (ended.reason === "eof") {
-      if (counting) return setStarting(true);
+      // The sleep timer missed the end it was waiting for: stop here.
+      if (sleep.kind === "episode") {
+        onSleepChange(sleepOff);
+        return leave();
+      }
+      if (counting) {
+        // Enough episodes in a row with nobody touching anything: ask.
+        if (stillWatchingDue(settings?.stillWatchingAfter, streak.current)) {
+          return setAsking(streak.current + 1);
+        }
+        streak.current += 1;
+        return setStarting(true);
+      }
       return leave();
     }
     stoppedAt.current = state.position;
@@ -795,6 +842,63 @@ function PlayerFile() {
         }),
       () => toastManager.add({ type: "error", title: "Couldn’t take a screenshot" }),
     );
+  };
+  // The sleep timer (More): the volume fades over its last seconds, then
+  // playback pauses and the volume comes back for the next play.
+  const fileKey = playing?.source?.url ?? "";
+  useEffect(() => {
+    // The end of an episode means the one it was set in.
+    if (sleep.kind === "episode" && sleep.file !== fileKey) onSleepChange(sleepOff);
+    // oxlint-disable-next-line react/exhaustive-deps -- once per file
+  }, []);
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    if (sleep.kind !== "minutes") return undefined;
+    setNow(Date.now());
+    const timer = setInterval(() => setNow(Date.now()), 250);
+    return () => clearInterval(timer);
+  }, [sleep]);
+  const sleepFor = sleepLeft(sleep, now, {
+    position,
+    duration: state.duration,
+    speed: state.speed,
+  });
+  const fadeFrom = useRef<number>(undefined);
+  const unfade = () => {
+    if (fadeFrom.current === undefined) return;
+    volumer(fadeFrom.current);
+    fadeFrom.current = undefined;
+  };
+  const sleepTick = useEffectEvent((left: number | undefined) => {
+    if (left === undefined || !ready) return unfade();
+    if (left <= 0) {
+      onSleepChange(sleepOff);
+      if (!paused) {
+        setPaused(true);
+        Player.SetPaused(true).catch(() => {});
+      }
+      unfade();
+      setNotice({ text: "The sleep timer paused playback" });
+      return;
+    }
+    if (left > fadeFor || paused || muted) return unfade();
+    fadeFrom.current ??= volume;
+    volumer(fadedVolume(fadeFrom.current, left));
+  });
+  useEffect(() => sleepTick(sleepFor), [sleepFor]);
+  // Leaving mid-fade, the next file plays at the volume from before it.
+  useEffect(
+    () => () => {
+      if (fadeFrom.current !== undefined) Player.SetVolume(fadeFrom.current).catch(() => {});
+    },
+    [],
+  );
+  const changeSleep = (choice: (typeof sleepChoices)[number]["value"]) => {
+    onSleepChange(sleepTimerFor(choice, fileKey, Date.now()));
+    const name = sleepChoices.find((each) => each.value === choice)?.name ?? "";
+    setNotice({
+      text: choice === "off" ? "Sleep timer off" : `Sleep timer: ${name.toLowerCase()}`,
+    });
   };
   const toggleMute = () => {
     setMuted(!muted);
@@ -1276,6 +1380,11 @@ function PlayerFile() {
       if (!nudging) wake();
       // The switcher has the keys: Esc closes it, Space picks. The panel
       // keeps them too, but for Z and X (timing) and Esc (closes it).
+      // "Still watching?" has the keys: Enter answers, Esc leaves.
+      if (asking !== undefined) {
+        if (event.type === "keydown" && event.key === "Escape") leave();
+        return;
+      }
       if (error || switcherOpen || partyOpen || dockMenuOpen) return;
       if (event.metaKey || event.ctrlKey) return;
       // Option and the arrows pan the picture (mpv's keys); Option changes
@@ -1502,7 +1611,7 @@ function PlayerFile() {
   // The prompts (resume, skip, up next) share one place: right above the
   // dock's right end while the controls show, and down in the corner when
   // they hide, so they never jump about or cover the controls.
-  const prompts = !failure && (
+  const prompts = !failure && asking === undefined && (
     <div
       className={cn(
         "pointer-events-none absolute end-0 flex flex-col items-end gap-2.5 transition-[bottom] duration-300 ease-out-soft *:pointer-events-auto",
@@ -1908,6 +2017,12 @@ function PlayerFile() {
                     }}
                     onScreenshot={takeScreenshot}
                     stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
+                    sleep={{
+                      choice: sleepChoiceOf(sleep),
+                      hint: sleepHint(sleep, sleepFor),
+                      episodeKnown: known,
+                      onChange: changeSleep,
+                    }}
                   />
                 )}
               </div>
@@ -1916,6 +2031,19 @@ function PlayerFile() {
         </div>
       </div>
       {prompts}
+      {asking !== undefined && !failure && (
+        <StillWatching
+          title={meta?.name ?? playing?.title ?? ""}
+          episodes={asking}
+          mini={mini}
+          onContinue={() => {
+            streak.current = 0;
+            setAsking(undefined);
+            setStarting(true);
+          }}
+          onStop={leave}
+        />
+      )}
       <SubtitlePanel
         open={panel !== undefined && !mini && !failure}
         tab={panel ?? "subtitles"}

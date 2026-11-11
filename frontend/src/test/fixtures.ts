@@ -22,6 +22,7 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
   },
   captions: "system",
   skipIntros: false,
+  stillWatchingAfter: 3,
   simklScrobble: true,
   simklImport: true,
   simklAnime: true,

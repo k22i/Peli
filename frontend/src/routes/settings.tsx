@@ -87,6 +87,7 @@ import {
   type Picture,
 } from "@/lib/picture";
 import { adjustedTitlesQuery } from "@/lib/title-adjustments";
+import { defaultStillWatchingAfter, stillWatchingChoices } from "@/lib/still-watching";
 import { defaultFraming, fitModes } from "@/lib/framing";
 import {
   defaultAudio,
@@ -507,6 +508,21 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 setDevice({ audio: { ...(device.audio ?? defaultAudio), ...changes } })
               }
             />
+            <SettingsGroup title="Next episode">
+              <SettingRow
+                id="still-watching"
+                label="Ask if you’re still watching"
+                description="After this many episodes in a row with no key or pointer touched, the next one waits until you say you’re still there."
+              >
+                <Choice
+                  id="still-watching"
+                  value={String(settings.stillWatchingAfter ?? defaultStillWatchingAfter)}
+                  options={stillWatchingOptions}
+                  labels={stillWatchingLabels}
+                  onChange={(after) => setProfile({ stillWatchingAfter: Number(after) })}
+                />
+              </SettingRow>
+            </SettingsGroup>
             {/* #69: chapters first, IntroDB for files without them. */}
             <SettingsGroup title="Intros and credits">
               <SettingRow
@@ -540,6 +556,11 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
     </SettingsPaneView>
   );
 }
+
+const stillWatchingOptions = stillWatchingChoices.map(String);
+const stillWatchingLabels: Record<string, string> = Object.fromEntries(
+  stillWatchingChoices.map((after) => [String(after), after === 0 ? "Never" : `After ${after}`]),
+);
 
 const toneMappingIds: string[] = toneMappings.map(({ id }) => id);
 const toneMappingLabels: Record<string, string> = Object.fromEntries(

@@ -4,6 +4,7 @@ import { useState, type ComponentProps } from "react";
 import { describe, expect, it, vi } from "vite-plus/test";
 
 import type { Loop } from "@/lib/ab-loop";
+import type { SleepChoice } from "@/lib/sleep-timer";
 import { hasFocusRing } from "@/test/focus";
 
 import { MoreMenu } from "./more-menu";
@@ -15,6 +16,12 @@ function Harness(props: Props) {
   return <MoreMenu {...props} open={open} onOpenChange={setOpen} />;
 }
 
+const noSleep = {
+  choice: "off" as const,
+  hint: undefined,
+  episodeKnown: true,
+  onChange: vi.fn<(choice: SleepChoice) => void>(),
+};
 const noStats = { open: false, onToggle: vi.fn<() => void>() };
 const noChapters = { chapters: [], current: -1, onPick: vi.fn<(index: number) => void>() };
 
@@ -30,6 +37,7 @@ describe("MoreMenu", () => {
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={noStats}
+        sleep={noSleep}
         loop={loopProps({})}
       />,
     );
@@ -47,6 +55,7 @@ describe("MoreMenu", () => {
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={noStats}
+        sleep={noSleep}
         loop={none}
       />,
     );
@@ -61,6 +70,7 @@ describe("MoreMenu", () => {
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={noStats}
+        sleep={noSleep}
         loop={half}
       />,
     );
@@ -76,6 +86,7 @@ describe("MoreMenu", () => {
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={noStats}
+        sleep={noSleep}
         loop={both}
       />,
     );
@@ -100,6 +111,7 @@ describe("MoreMenu", () => {
         loop={loopProps({})}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={noStats}
+        sleep={noSleep}
       />,
     );
     await user.click(screen.getByRole("button", { name: "More" }));
@@ -119,6 +131,7 @@ describe("MoreMenu", () => {
         chapters={noChapters}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={noStats}
+        sleep={noSleep}
         loop={loopProps({})}
       />,
     );
@@ -135,6 +148,7 @@ describe("MoreMenu", () => {
         loop={loopProps({})}
         onScreenshot={onScreenshot}
         stats={noStats}
+        sleep={noSleep}
       />,
     );
     await user.click(screen.getByRole("button", { name: "More" }));
@@ -154,6 +168,7 @@ describe("MoreMenu", () => {
         loop={loopProps({})}
         onScreenshot={vi.fn<(subtitles: boolean) => void>()}
         stats={{ open: true, onToggle }}
+        sleep={noSleep}
       />,
     );
     await user.click(screen.getByRole("button", { name: "More" }));
@@ -161,5 +176,44 @@ describe("MoreMenu", () => {
     expect(item).toHaveAttribute("aria-checked", "true");
     await user.click(item);
     expect(onToggle).toHaveBeenCalled();
+  });
+
+  it("sets the sleep timer", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn<(choice: SleepChoice) => void>();
+    render(
+      <Harness
+        chapters={noChapters}
+        loop={loopProps({})}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
+        sleep={{ ...noSleep, choice: "30", hint: "12 min", onChange }}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "More" }));
+    await user.click(screen.getByRole("menuitem", { name: /Sleep timer 12 min/ }));
+    expect(await screen.findByRole("menuitemradio", { name: "30 minutes" })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+    await user.click(screen.getByRole("menuitemradio", { name: "End of episode" }));
+    expect(onChange).toHaveBeenCalledWith("episode");
+  });
+
+  it("offers no end of episode for a file of unknown length", async () => {
+    const user = userEvent.setup();
+    render(
+      <Harness
+        chapters={noChapters}
+        loop={loopProps({})}
+        onScreenshot={vi.fn<(subtitles: boolean) => void>()}
+        stats={noStats}
+        sleep={{ ...noSleep, episodeKnown: false }}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: "More" }));
+    await user.click(screen.getByRole("menuitem", { name: /Sleep timer/ }));
+    await screen.findByRole("menuitemradio", { name: "15 minutes" });
+    expect(screen.queryByRole("menuitemradio", { name: "End of episode" })).toBeNull();
   });
 });
