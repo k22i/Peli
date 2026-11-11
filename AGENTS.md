@@ -1,4 +1,4 @@
-# Sinag: notes for agents
+# Peli: notes for agents
 
 ## Shared memory
 

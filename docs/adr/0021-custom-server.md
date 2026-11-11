@@ -5,11 +5,11 @@ date: 2026-10-27
 
 # A custom server: one client pointed at it, the URL in the store, the key in the keychain, and switching signs out
 
-Sinag can sync with the user's own Nuvio-compatible backend, such as [NuvioMedia/self-host](https://github.com/NuvioMedia/self-host), in place of Nuvio's (#34, F6). It is also the way out if Sinag loses access to the hosted backend (ADR-0004). A custom server speaks Nuvio's protocol (the same Supabase Auth, PostgREST RPCs and tables), so nothing in the sync module changes. This ADR covers how the app switches to one and what it keeps.
+Peli can sync with the user's own Nuvio-compatible backend, such as [NuvioMedia/self-host](https://github.com/NuvioMedia/self-host), in place of Nuvio's (#34, F6). It is also the way out if Peli loses access to the hosted backend (ADR-0004). A custom server speaks Nuvio's protocol (the same Supabase Auth, PostgREST RPCs and tables), so nothing in the sync module changes. This ADR covers how the app switches to one and what it keeps.
 
 ## One client, pointed somewhere else
 
-`nuvio.Client.UseServer(url, key)` changes the backend the one client calls. `account`, `backend.Nuvio` and the syncer all hold that client, so a switch reaches every call without rebuilding services. Each request reads the URL and key together, so a request never takes one server's key to another. `Client.ServerURL` says which is in use. The URL the client starts with (Nuvio's, or `$SINAG_NUVIO_URL` for development) is "Nuvio's server".
+`nuvio.Client.UseServer(url, key)` changes the backend the one client calls. `account`, `backend.Nuvio` and the syncer all hold that client, so a switch reaches every call without rebuilding services. Each request reads the URL and key together, so a request never takes one server's key to another. `Client.ServerURL` says which is in use. The URL the client starts with (Nuvio's, or `$PELI_NUVIO_URL` for development) is "Nuvio's server".
 
 ## The key is optional
 
@@ -35,9 +35,9 @@ The QR code opens nuvio.tv/link, which approves sign-ins to Nuvio's backend only
 
 ## What we give up
 
-- **No migration between servers.** Switching removes the account's data from this device. The new server's account starts with whatever it has. Moving a library from Nuvio to self-host is self-host's import (`./nuvio import-account`), not Sinag's.
+- **No migration between servers.** Switching removes the account's data from this device. The new server's account starts with whatever it has. Moving a library from Nuvio to self-host is self-host's import (`./nuvio import-account`), not Peli's.
 - **One server at a time.** A device can't have profiles from two servers.
-- **The check proves the protocol, not the version.** A server on an older or newer self-host may still differ in a call the check doesn't make. The contract tests (ADR-0020) pin the self-host version Sinag is tested against.
+- **The check proves the protocol, not the version.** A server on an older or newer self-host may still differ in a call the check doesn't make. The contract tests (ADR-0020) pin the self-host version Peli is tested against.
 
 ## Revisit if
 

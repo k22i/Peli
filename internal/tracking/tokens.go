@@ -5,10 +5,10 @@ import (
 	"errors"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // refreshBefore is how long before it expires a SIMKL access token is
@@ -40,7 +40,7 @@ func (s *Service) simklToken(ctx context.Context, profileID uint64) (string, err
 	return token, err
 }
 
-// refreshSimkl gets a new access token for profile id. Sinag is the grant's
+// refreshSimkl gets a new access token for profile id. Peli is the grant's
 // one owner, and refreshes one at a time: two refreshes would cut each
 // other's token off. stale is the token a call was refused with; if another
 // refresh replaced it meanwhile, that one is used.

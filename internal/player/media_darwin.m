@@ -10,17 +10,17 @@
 enum { kPlay = 1, kPause, kToggle, kSeekBy, kSeekTo };
 static const double kSkip = 10;
 
-extern void sinagMediaCommand(int command, double value);
+extern void peliMediaCommand(int command, double value);
 
 static MPRemoteCommandHandlerStatus command(int command, double value) {
-	sinagMediaCommand(command, value);
+	peliMediaCommand(command, value);
 	return MPRemoteCommandHandlerStatusSuccess;
 }
 
-// sinag_media_start takes the remote commands. The previous and next
+// peli_media_start takes the remote commands. The previous and next
 // track keys stay with other apps: a film has no tracks, and the next
 // episode is the screen's to offer.
-void sinag_media_start(void) {
+void peli_media_start(void) {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		MPRemoteCommandCenter *center = [MPRemoteCommandCenter sharedCommandCenter];
 		[center.playCommand addTargetWithHandler:^(MPRemoteCommandEvent *e) { return command(kPlay, 0); }];
@@ -40,7 +40,7 @@ void sinag_media_start(void) {
 	});
 }
 
-void sinag_media_show(const char *title, const char *artist, int paused, double position, double duration, double speed) {
+void peli_media_show(const char *title, const char *artist, int paused, double position, double duration, double speed) {
 	NSMutableDictionary *info = [NSMutableDictionary dictionary];
 	info[MPNowPlayingInfoPropertyMediaType] = @(MPNowPlayingInfoMediaTypeVideo);
 	info[MPMediaItemPropertyTitle] = [NSString stringWithUTF8String:title];
@@ -60,9 +60,9 @@ void sinag_media_show(const char *title, const char *artist, int paused, double 
 	});
 }
 
-// sinag_media_clear lets go of Now Playing and the commands, so the media
+// peli_media_clear lets go of Now Playing and the commands, so the media
 // keys go to other apps again.
-void sinag_media_clear(void) {
+void peli_media_clear(void) {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		MPRemoteCommandCenter *center = [MPRemoteCommandCenter sharedCommandCenter];
 		for (MPRemoteCommand *each in @[

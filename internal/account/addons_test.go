@@ -3,7 +3,7 @@ package account
 import (
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The addon manager's edits go through the kids guard: a kids profile's

@@ -10,10 +10,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 const email = "me@example.com"
@@ -42,7 +42,7 @@ func (s *sessions) Do(_ context.Context, fn func(nuvio.Session) error) error {
 	return fn(s.session)
 }
 
-// device is one Sinag install with a profile linked to Nuvio profile 1.
+// device is one Peli install with a profile linked to Nuvio profile 1.
 type device struct {
 	path     string
 	store    *store.Store
@@ -59,7 +59,7 @@ func newDevice(t *testing.T, server *nuviotest.Server) *device {
 // newDeviceAt is newDevice for any backend and account.
 func newDeviceAt(t *testing.T, url, email, password string) *device {
 	t.Helper()
-	path := filepath.Join(t.TempDir(), "sinag.db")
+	path := filepath.Join(t.TempDir(), "peli.db")
 	s, err := store.Open(path)
 	check(t, err)
 	t.Cleanup(func() { s.Close() })
@@ -357,7 +357,7 @@ func TestPullBringsInAddons(t *testing.T) {
 	}
 }
 
-// Continue Watching entries removed on another device leave Sinag too, even
+// Continue Watching entries removed on another device leave Peli too, even
 // when the store once skipped the delete and its cursor has gone past it:
 // the hourly snapshot catches them.
 func TestReconcileRemovesWhatTheFeedMissed(t *testing.T) {

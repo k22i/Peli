@@ -47,7 +47,7 @@ A catalog's items carry their own type. Kitsu's "anime" catalogs list `series` a
 - **One wasted request per CORS-less origin per session.** The webview's attempt fails before Go is asked. That happens once per origin, then Go is used directly.
 - **Error pages without CORS headers send that origin through Go.** An addon whose normal answers do carry CORS headers then loses nothing but the webview's own HTTP cache.
 - **Lenient parsing hides some broken addons.** A broken field is dropped silently. The manager (#38) shows load errors for whole answers only.
-- **Fixtures are a snapshot.** They are real answers trimmed to a few items each, so they don't cover every addon or every shape. `pnpm run record:addons` re-records them, and `SINAG_LIVE_ADDONS=1` runs one opt-in test against the live addons.
+- **Fixtures are a snapshot.** They are real answers trimmed to a few items each, so they don't cover every addon or every shape. `pnpm run record:addons` re-records them, and `PELI_LIVE_ADDONS=1` runs one opt-in test against the live addons.
 
 ## Revisit if
 

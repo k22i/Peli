@@ -4,6 +4,8 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
+	"slices"
+	"strings"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -51,6 +53,55 @@ var migrations = []migration{
 		}
 		return nil
 	},
+	// 4: the app was renamed from Sinag to Peli, so built-in addons moved
+	// from sinag:// URLs to peli:// ones (ADR-0052). Only this device has
+	// them: Nuvio's list never does.
+	func(tx *bolt.Tx) error {
+		profiles := tx.Bucket(bucketProfiles)
+		c := profiles.Cursor()
+		for id, v := c.First(); id != nil; id, v = c.Next() {
+			if v != nil {
+				continue
+			}
+			p := profiles.Bucket(id)
+			addons := []Addon{}
+			if err := decodeOnto(p.Get(keyAddons), &addons); err != nil {
+				return err
+			}
+			if slices.ContainsFunc(addons, func(a Addon) bool { return isSinagURL(a.URL) }) {
+				for i := range addons {
+					addons[i].URL = fromSinag(addons[i].URL)
+				}
+				if err := put(p, keyAddons, addons); err != nil {
+					return err
+				}
+			}
+			offered := []string{}
+			if err := decodeOnto(p.Get(keyBuiltinsOffered), &offered); err != nil {
+				return err
+			}
+			if slices.ContainsFunc(offered, isSinagURL) {
+				for i := range offered {
+					offered[i] = fromSinag(offered[i])
+				}
+				if err := put(p, keyBuiltinsOffered, offered); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	},
+}
+
+func isSinagURL(url string) bool { return strings.HasPrefix(strings.ToLower(url), "sinag://") }
+
+// fromSinag returns a built-in addon's sinag:// URL as its peli:// one, and
+// any other URL as it is.
+func fromSinag(url string) string {
+	if !isSinagURL(url) {
+		return url
+	}
+	return "peli://" + url[len("sinag://"):]
 }
 
 func migrate(db *bolt.DB, migrations []migration) error {

@@ -66,7 +66,7 @@ static void redraw(void) {
 // not call into libmpv.
 static void on_update(void *ctx) { redraw(); }
 
-@interface SinagVideoLayer : CAOpenGLLayer {
+@interface PeliVideoLayer : CAOpenGLLayer {
 @public
 	CGLContextObj ctx;
 	CGLPixelFormatObj pf;
@@ -75,7 +75,7 @@ static void on_update(void *ctx) { redraw(); }
 }
 @end
 
-@implementation SinagVideoLayer
+@implementation PeliVideoLayer
 - (instancetype)init {
 	if (!(self = [super init])) return nil;
 	CGLPixelFormatAttribute attrs[] = {
@@ -152,12 +152,12 @@ static void on_update(void *ctx) { redraw(); }
 }
 @end
 
-@interface SinagVideoView : NSView
+@interface PeliVideoView : NSView
 @end
 
-@implementation SinagVideoView
+@implementation PeliVideoView
 - (CALayer *)makeBackingLayer {
-	return [[[SinagVideoLayer alloc] init] autorelease];
+	return [[[PeliVideoLayer alloc] init] autorelease];
 }
 
 // The webview above takes all input; never let the video view be hit.
@@ -182,24 +182,24 @@ static WKWebView *find_webview(NSView *v) {
 	return nil;
 }
 
-int sinag_video_attach(void *win, char *err, int errlen) {
+int peli_video_attach(void *win, char *err, int errlen) {
 	NSWindow *window = (__bridge NSWindow *)win;
 	WKWebView *web = find_webview(window.contentView);
 	if (!web) {
 		snprintf(err, errlen, "no WKWebView in the window");
 		return -1;
 	}
-	if (!g_queue) g_queue = dispatch_queue_create("sinag.player.render", DISPATCH_QUEUE_SERIAL);
+	if (!g_queue) g_queue = dispatch_queue_create("peli.player.render", DISPATCH_QUEUE_SERIAL);
 	// The screen can show more than SDR white: an XDR display, or HDR on
 	// for it in System Settings. Decided per session, as the layer is made.
 	NSScreen *screen = window.screen ?: NSScreen.mainScreen;
 	g_edr = screen.maximumPotentialExtendedDynamicRangeColorComponentValue > 1.0;
-	SinagVideoView *view = [[SinagVideoView alloc] initWithFrame:web.frame];
+	PeliVideoView *view = [[PeliVideoView alloc] initWithFrame:web.frame];
 	view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	view.layerContentsRedrawPolicy = NSViewLayerContentsRedrawNever;
 	view.wantsLayer = YES;
-	SinagVideoLayer *layer = (SinagVideoLayer *)view.layer;
-	if (![layer isKindOfClass:[SinagVideoLayer class]] || !layer->ctx) {
+	PeliVideoLayer *layer = (PeliVideoLayer *)view.layer;
+	if (![layer isKindOfClass:[PeliVideoLayer class]] || !layer->ctx) {
 		[view release];
 		snprintf(err, errlen, "no OpenGL context for the video layer");
 		return -1;
@@ -218,9 +218,9 @@ int sinag_video_attach(void *win, char *err, int errlen) {
 	return 0;
 }
 
-int sinag_video_start(mpv_handle *mpv, char *err, int errlen) {
+int peli_video_start(mpv_handle *mpv, char *err, int errlen) {
 	__block int rc = 0;
-	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
+	PeliVideoLayer *layer = (PeliVideoLayer *)g_view.layer;
 	dispatch_sync(g_queue, ^{
 		CGLLockContext(layer->ctx);
 		CGLSetCurrentContext(layer->ctx);
@@ -258,16 +258,16 @@ static CVReturn on_vsync(CVDisplayLinkRef link, const CVTimeStamp *now, const CV
 	return kCVReturnSuccess;
 }
 
-// sinag_video_smooth starts or stops drawing every vsync of the layer's
+// peli_video_smooth starts or stops drawing every vsync of the layer's
 // display, and returns that display's refresh rate (0 if unknown or off),
 // for mpv's display-fps-override: the render API can't see the display.
 // Any thread.
-double sinag_video_smooth(int on) {
+double peli_video_smooth(int on) {
 	if (!on || !g_view) {
 		stop_link();
 		return 0;
 	}
-	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
+	PeliVideoLayer *layer = (PeliVideoLayer *)g_view.layer;
 	@synchronized([NSProcessInfo class]) {
 		if (!g_link) {
 			if (CVDisplayLinkCreateWithActiveCGDisplays(&g_link) != kCVReturnSuccess) {
@@ -284,10 +284,10 @@ double sinag_video_smooth(int on) {
 	}
 }
 
-void sinag_video_stop(void) {
+void peli_video_stop(void) {
 	stop_link();
 	if (!g_view) return;
-	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
+	PeliVideoLayer *layer = (PeliVideoLayer *)g_view.layer;
 	dispatch_sync(g_queue, ^{
 		if (!g_rctx) return;
 		CGLLockContext(layer->ctx);
@@ -299,7 +299,7 @@ void sinag_video_stop(void) {
 	});
 }
 
-void sinag_video_detach(void) {
+void peli_video_detach(void) {
 	if (!g_view) return;
 	[g_view removeFromSuperview];
 	[g_web setValue:@(g_web_drew_background) forKey:@"drawsBackground"];
@@ -310,17 +310,17 @@ void sinag_video_detach(void) {
 	g_view = nil;
 }
 
-int sinag_video_can_show_hdr(void) {
-	return g_view && ((SinagVideoLayer *)g_view.layer)->floatFB;
+int peli_video_can_show_hdr(void) {
+	return g_view && ((PeliVideoLayer *)g_view.layer)->floatFB;
 }
 
-// sinag_video_show_hdr tags the layer BT.2100 PQ, which mpv then renders,
+// peli_video_show_hdr tags the layer BT.2100 PQ, which mpv then renders,
 // and has Core Animation show it as EDR: macOS maps it to the headroom the
 // display has. Off, it's SDR in the screen's colourspace again. On the UI
 // thread.
-void sinag_video_show_hdr(int on) {
+void peli_video_show_hdr(int on) {
 	if (!g_view) return;
-	SinagVideoLayer *layer = (SinagVideoLayer *)g_view.layer;
+	PeliVideoLayer *layer = (PeliVideoLayer *)g_view.layer;
 	CGColorSpaceRef cs = on ? CGColorSpaceCreateWithName(kCGColorSpaceITUR_2100_PQ) : CGColorSpaceRetain(g_sdr);
 	layer.wantsExtendedDynamicRangeContent = on != 0;
 	layer.colorspace = cs;
@@ -328,9 +328,9 @@ void sinag_video_show_hdr(int on) {
 	redraw();
 }
 
-// sinag_video_playing holds an activity while video plays, so App Nap
+// peli_video_playing holds an activity while video plays, so App Nap
 // doesn't throttle us and the display doesn't sleep. Any thread.
-void sinag_video_playing(int on) {
+void peli_video_playing(int on) {
 	@synchronized([NSProcessInfo class]) {
 		if (on && !g_activity) {
 			g_activity = [[[NSProcessInfo processInfo]

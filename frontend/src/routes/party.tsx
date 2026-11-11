@@ -47,7 +47,7 @@ function PartyPage() {
             <h2 className="type-title text-foreground">Host one</h2>
             <p>
               Start playing something, then choose Watch party (or press W) in the player. You’ll
-              get a code to share with friends on Sinag, or on Nuvio’s phone, TV and desktop apps.
+              get a code to share with friends on Peli, or on Nuvio’s phone, TV and desktop apps.
             </p>
             <p>
               Everyone plays from their own addons and stays in step: when anyone pauses, skips or

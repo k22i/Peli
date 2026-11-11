@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // profileAt returns the local profile linked to Nuvio index.

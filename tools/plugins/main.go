@@ -1,4 +1,4 @@
-// Command plugins runs Nuvio plugins in Sinag's sandbox (#56), the way the
+// Command plugins runs Nuvio plugins in Peli's sandbox (#56), the way the
 // app does, and reports what each answered: how many streams, how long it
 // took, or which error. Use it to check a plugin repository against the
 // host API.
@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/plugins"
+	"github.com/k22i/Peli/internal/plugins"
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 	verbose := flag.Bool("v", false, "print the plugins' console output")
 	flag.Parse()
 	if *verbose {
-		os.Setenv("SINAG_PLUGIN_LOG", "1")
+		os.Setenv("PELI_PLUGIN_LOG", "1")
 	}
 	query := plugins.Query{TmdbID: *tmdb, MediaType: *media, Season: *season, Episode: *episode}
 	ctx := context.Background()
@@ -88,7 +88,7 @@ func main() {
 }
 
 func job(id, code string, query plugins.Query) plugins.Job {
-	return plugins.Job{ID: id, Code: code, Query: query, Limits: plugins.DefaultLimits, UserAgent: "Sinag/dev"}
+	return plugins.Job{ID: id, Code: code, Query: query, Limits: plugins.DefaultLimits, UserAgent: "Peli/dev"}
 }
 
 var mu sync.Mutex

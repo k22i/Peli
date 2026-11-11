@@ -4,12 +4,12 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // repos builds a list from names: "a" is repository a, "A" is a turned off,
-// and "a!" is a Cloudstream (EXTERNAL_DEX) repository Sinag can't run.
+// and "a!" is a Cloudstream (EXTERNAL_DEX) repository Peli can't run.
 func repos(names string) []store.PluginRepo {
 	list := []store.PluginRepo{}
 	for _, n := range strings.Split(names, " ") {
@@ -116,7 +116,7 @@ func TestPluginReposSyncBetweenDevices(t *testing.T) {
 	}
 }
 
-// What Nuvio's own apps put in the table survives a push from Sinag: a
+// What Nuvio's own apps put in the table survives a push from Peli: a
 // Cloudstream repository, one without a type, and a row's name.
 func TestPluginPushKeepsOtherClientsRows(t *testing.T) {
 	server := nuviotest.NewServer(t)

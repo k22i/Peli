@@ -39,8 +39,8 @@ import (
 	"github.com/anacrolix/torrent/metainfo"
 	"github.com/anacrolix/torrent/types/infohash"
 
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 var (
@@ -181,12 +181,12 @@ type session struct {
 }
 
 // DefaultDir is where pieces are cached: the OS's cache folder, or the
-// data folder SINAG_DATA_DIR names.
+// data folder PELI_DATA_DIR names.
 func DefaultDir() string {
-	if dir := os.Getenv("SINAG_DATA_DIR"); dir != "" {
+	if dir := os.Getenv("PELI_DATA_DIR"); dir != "" {
 		return filepath.Join(dir, "torrents")
 	}
-	return filepath.Join(xdg.CacheHome, "Sinag", "torrents")
+	return filepath.Join(xdg.CacheHome, "Peli", "torrents")
 }
 
 // NewService returns a Service caching pieces in dir, reading consent and
@@ -358,7 +358,7 @@ func (s *Service) startLocked(max int64) error {
 	cfg.ListenPort = 0
 	cfg.DisableWebtorrent = true
 	cfg.KeepAliveTimeout = keepAlive
-	cfg.HTTPUserAgent = "Sinag/" + s.version
+	cfg.HTTPUserAgent = "Peli/" + s.version
 	cfg.Slogger = slog.New(slog.DiscardHandler)
 	cfg.Logger = alog.Default.WithFilterLevel(alog.Disabled)
 	s.configure(cfg)

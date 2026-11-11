@@ -8,13 +8,13 @@
         AllowPromptForPassword="false">
     </Settings>
     <Installer
-        Path="sinag"
+        Path="peli"
         Arguments=""
-        InstallLocation="C:\Program Files\k22i\Sinag">
+        InstallLocation="C:\Program Files\k22i\Peli">
     </Installer>
     <PackageInformation
-        PackageName="Sinag"
-        PackageDisplayName="Sinag"
+        PackageName="Peli"
+        PackageDisplayName="Peli"
         PublisherName="CN=k22i"
         PublisherDisplayName="k22i"
         Version="0.1.0.0"
@@ -25,10 +25,10 @@
         </Capabilities>
         <Applications>
             <Application
-                Id="k22i.net.sinag"
+                Id="k22i.net.peli"
                 Description="A desktop client for Stremio-compatible addons, with Nuvio sync"
-                DisplayName="Sinag"
-                ExecutableName="sinag"
+                DisplayName="Peli"
+                ExecutableName="peli"
                 EntryPoint="Windows.FullTrustApplication">
                 
             </Application>
@@ -41,13 +41,13 @@
         </Dependencies>
         <Properties>
             <Framework>false</Framework>
-            <DisplayName>Sinag</DisplayName>
+            <DisplayName>Peli</DisplayName>
             <PublisherDisplayName>k22i</PublisherDisplayName>
             <Description>A desktop client for Stremio-compatible addons, with Nuvio sync</Description>
             <Logo>Assets\AppIcon.png</Logo>
         </Properties>
     </PackageInformation>
-    <SaveLocation PackagePath="sinag.msix" />
+    <SaveLocation PackagePath="peli.msix" />
     <PackageIntegrity>
         <CertificatePath></CertificatePath>
     </PackageIntegrity>

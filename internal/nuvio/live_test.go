@@ -15,12 +15,12 @@ import (
 
 // TestLive signs in to a real backend, reads the profiles, refreshes and
 // signs out again, leaving nothing behind: the per-release live check of
-// ADR-0004. It runs only with SINAG_NUVIO_LIVE=1 and an account in
+// ADR-0004. It runs only with PELI_NUVIO_LIVE=1 and an account in
 // NUVIO_EMAIL and NUVIO_PASSWORD (NUVIO_URL defaults to api.nuvio.tv). It
 // logs timings and counts, never the account's data.
 func TestLive(t *testing.T) {
-	if os.Getenv("SINAG_NUVIO_LIVE") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
+	if os.Getenv("PELI_NUVIO_LIVE") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
 	}
 	url := os.Getenv("NUVIO_URL")
 	if url == "" {
@@ -129,8 +129,8 @@ func TestLive(t *testing.T) {
 // refresh token gets on live: the same new session, not a sign-out. (A probe
 // in #22 still got it 8 minutes later.) Gotcha 6 feared the opposite.
 func TestLiveRefreshTokenReuse(t *testing.T) {
-	if os.Getenv("SINAG_NUVIO_LIVE") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
+	if os.Getenv("PELI_NUVIO_LIVE") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
 	}
 	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")
 	s, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
@@ -162,11 +162,11 @@ func TestLiveRefreshTokenReuse(t *testing.T) {
 // TestLiveDeviceLogin signs in by device login (#21) on a real backend,
 // with a password session standing in for the phone: it approves the code
 // with approve_device_login_session, as nuvio.tv/link does. Both sessions
-// sign out at the end. It runs only with SINAG_NUVIO_LIVE=1 and an account in
+// sign out at the end. It runs only with PELI_NUVIO_LIVE=1 and an account in
 // NUVIO_EMAIL and NUVIO_PASSWORD, and never logs the codes.
 func TestLiveDeviceLogin(t *testing.T) {
-	if os.Getenv("SINAG_NUVIO_LIVE") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
+	if os.Getenv("PELI_NUVIO_LIVE") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE=1, NUVIO_EMAIL and NUVIO_PASSWORD to sign in to a live backend")
 	}
 	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")
 	phone, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
@@ -180,7 +180,7 @@ func TestLiveDeviceLogin(t *testing.T) {
 	})
 
 	start := time.Now()
-	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag live test")
+	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Peli live test")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -241,12 +241,12 @@ func TestLiveDeviceLogin(t *testing.T) {
 // every change undone: a patch that changes nothing, a rename of profile 1
 // and back, and a profile added at a free index and deleted. Then every
 // profile must be as it was. It refuses to write if the profiles have a field
-// a push wouldn't send back. It runs only with SINAG_NUVIO_LIVE_WRITES=1 and
+// a push wouldn't send back. It runs only with PELI_NUVIO_LIVE_WRITES=1 and
 // an account in NUVIO_EMAIL and NUVIO_PASSWORD, and logs field names, never
 // the account's data.
 func TestLiveProfiles(t *testing.T) {
-	if os.Getenv("SINAG_NUVIO_LIVE_WRITES") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to write to a live account's profiles")
+	if os.Getenv("PELI_NUVIO_LIVE_WRITES") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to write to a live account's profiles")
 	}
 	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")
 	s, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
@@ -323,7 +323,7 @@ func TestLiveProfiles(t *testing.T) {
 	}
 
 	// Rename and back.
-	original, renamed := first.Name, first.Name+" (Sinag test)"
+	original, renamed := first.Name, first.Name+" (Peli test)"
 	restore := func() {
 		if _, err := c.PatchProfile(context.Background(), s, first.Index, ProfilePatch{Name: &original}); err != nil {
 			t.Errorf("restoring profile %d's name: %v", first.Index, err)
@@ -351,7 +351,7 @@ func TestLiveProfiles(t *testing.T) {
 		}
 	}
 	start = time.Now()
-	err = c.PushProfiles(t.Context(), s, append(profiles, Profile{Index: index, Name: "Sinag test", AvatarColor: "#33B5E0"}))
+	err = c.PushProfiles(t.Context(), s, append(profiles, Profile{Index: index, Name: "Peli test", AvatarColor: "#33B5E0"}))
 	t.Cleanup(func() {
 		if err := c.DeleteProfile(context.Background(), s, index); err != nil {
 			t.Errorf("deleting the test profile %d: %v", index, err)
@@ -366,7 +366,7 @@ func TestLiveProfiles(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(after) != len(profiles)+1 || !slices.ContainsFunc(after, func(p Profile) bool { return p.Index == index && p.Name == "Sinag test" }) {
+	if len(after) != len(profiles)+1 || !slices.ContainsFunc(after, func(p Profile) bool { return p.Index == index && p.Name == "Peli test" }) {
 		t.Errorf("after the push: %d profile(s), want %d with the new one", len(after), len(profiles)+1)
 	}
 }
@@ -376,11 +376,11 @@ func TestLiveProfiles(t *testing.T) {
 // its delete, with every answer checked against the contract (#33). It
 // catches drift between live and the self-host stack CI tests against. The
 // entry is far from 90 %, so no watched item is added. It runs only with
-// SINAG_NUVIO_LIVE_WRITES=1 and an account in NUVIO_EMAIL and
+// PELI_NUVIO_LIVE_WRITES=1 and an account in NUVIO_EMAIL and
 // NUVIO_PASSWORD, and logs counts, never the account's data.
 func TestLiveSync(t *testing.T) {
-	if os.Getenv("SINAG_NUVIO_LIVE_WRITES") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to push to and delete from a live account")
+	if os.Getenv("PELI_NUVIO_LIVE_WRITES") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to push to and delete from a live account")
 	}
 	rec := newRecorder(t)
 	c := New(cmp.Or(os.Getenv("NUVIO_URL"), DefaultURL), "0.0.0-live-test")

@@ -1,6 +1,6 @@
 ---
 name: library-page
-description: "How Sinag's Library page (#46) is built: lib/library.ts rules, Store.LastWatched + [\"last-watched\", id] key, context-menu/Delete removal with Undo, test and WebKit-harness gotchas; read before #48, #96"
+description: "How Peli's Library page (#46) is built: lib/library.ts rules, Store.LastWatched + [\"last-watched\", id] key, context-menu/Delete removal with Undo, test and WebKit-harness gotchas; read before #48, #96"
 metadata:
   type: project
 ---

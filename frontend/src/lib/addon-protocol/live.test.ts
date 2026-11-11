@@ -7,11 +7,11 @@ import { addonsFor, catalogsAccepting, type LoadedAddon } from "./routing";
 // route by manifest, then ask for a catalog, a meta, streams and subtitles.
 // Off by default (CI and normal runs use the fixtures); run it with
 //
-//   SINAG_LIVE_ADDONS=1 pnpm exec vp test run src/lib/addon-protocol/live.test.ts
+//   PELI_LIVE_ADDONS=1 pnpm exec vp test run src/lib/addon-protocol/live.test.ts
 //
 // Node has no CORS, so this is the webview's path only; Go's is tested in
 // internal/addons.
-const live = import.meta.env["SINAG_LIVE_ADDONS"] === "1";
+const live = import.meta.env["PELI_LIVE_ADDONS"] === "1";
 
 const transport: Transport = {
   fetch: (url, init) => fetch(url, init),

@@ -20,7 +20,7 @@ date: 2026-10-29
 
 ## Watched rules (Nuvio's)
 
-| Rule | Nuvio | Sinag |
+| Rule | Nuvio | Peli |
 |---|---|---|
 | A film or episode is watched | It has a watched mark, or its progress is ≥ 90 % (`WatchProgressCompletionPercentThreshold`) | `titleState().watched` |
 | Progress shows | Under 90 % | A progress bar on the episode, or Resume |
@@ -31,7 +31,7 @@ date: 2026-10-29
 | Episode menu | Mark watched/unwatched; mark earlier episodes watched/unwatched | The same |
 | Season | Mark the season's released episodes watched/unwatched | The button by the season picker |
 
-One difference: Nuvio also reconciles the series-level mark when a title page just opens. Sinag only does it after an edit on the page, so viewing a title never writes. The page computes "watched" from the episodes either way, so what it shows is the same.
+One difference: Nuvio also reconciles the series-level mark when a title page just opens. Peli only does it after an edit on the page, so viewing a title never writes. The page computes "watched" from the episodes either way, so what it shows is the same.
 
 ## One write for many marks
 

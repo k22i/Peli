@@ -14,8 +14,13 @@ import (
 	"github.com/zalando/go-keyring"
 )
 
-// ServiceName is the keychain service name Sinag's items are filed under.
-const ServiceName = "Sinag"
+// ServiceName is the keychain service name Peli's items are filed under.
+const ServiceName = "Peli"
+
+// LegacyServiceName is where the items were filed when the app was called
+// Sinag. The app's keychain moves an item from there the first time it reads
+// it (see MovesFrom).
+const LegacyServiceName = "Sinag"
 
 // MaxSize is the largest value Set accepts, in bytes. Windows Credential
 // Manager caps a credential at 2,560 bytes; the same cap on every OS keeps a
@@ -39,6 +44,7 @@ const maxKeyLen = 64
 // Keychain reads and writes the items of one keychain service.
 type Keychain struct {
 	service string
+	legacy  string
 }
 
 // New returns the keychain for service. The app uses ServiceName; tests use
@@ -47,14 +53,39 @@ func New(service string) *Keychain {
 	return &Keychain{service: service}
 }
 
+// MovesFrom has k move items over from the legacy service: Get falls back to
+// it for a key k doesn't have, and copies what it finds into k's service
+// before deleting it there; Delete removes the key from both services. It
+// returns k.
+func (k *Keychain) MovesFrom(legacy string) *Keychain {
+	k.legacy = legacy
+	return k
+}
+
 // Get returns the value stored at key, or ErrNotFound.
 func (k *Keychain) Get(key string) (string, error) {
 	if err := validKey(key); err != nil {
 		return "", err
 	}
 	value, err := keyring.Get(k.service, key)
+	if errors.Is(err, keyring.ErrNotFound) && k.legacy != "" {
+		return k.move(key)
+	}
 	if err != nil {
 		return "", wrap("get", key, err)
+	}
+	return value, nil
+}
+
+// move reads key from the legacy service and files it under k's own. If the
+// copy fails the legacy item stays, so the next Get tries again.
+func (k *Keychain) move(key string) (string, error) {
+	value, err := keyring.Get(k.legacy, key)
+	if err != nil {
+		return "", wrap("get", key, err)
+	}
+	if err := k.Set(key, value); err == nil {
+		_ = keyring.Delete(k.legacy, key)
 	}
 	return value, nil
 }
@@ -74,6 +105,12 @@ func (k *Keychain) Set(key, value string) error {
 func (k *Keychain) Delete(key string) error {
 	if err := validKey(key); err != nil {
 		return err
+	}
+	if k.legacy != "" {
+		// Or a key signed out of before it was ever read would come back.
+		if err := wrap("delete", key, keyring.Delete(k.legacy, key)); err != nil && !errors.Is(err, ErrNotFound) {
+			return err
+		}
 	}
 	err := wrap("delete", key, keyring.Delete(k.service, key))
 	if errors.Is(err, ErrNotFound) {

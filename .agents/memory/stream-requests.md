@@ -1,6 +1,6 @@
 ---
 name: stream-requests
-description: "How Sinag asks stream addons (#50): useStreamAddons (enabled, not visible), useStreams per-addon state, StreamFeed 150-stream slices, /streams picker route that usePlay opens; read before #51, #52, #53, #58, #60"
+description: "How Peli asks stream addons (#50): useStreamAddons (enabled, not visible), useStreams per-addon state, StreamFeed 150-stream slices, /streams picker route that usePlay opens; read before #51, #52, #53, #58, #60"
 metadata:
   type: project
 ---

@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 func TestSoundChain(t *testing.T) {
@@ -16,7 +16,7 @@ func TestSoundChain(t *testing.T) {
 		t.Errorf("flat: %q, want none", got)
 	}
 	got := soundChain(store.Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"})
-	want := "@sinag-sound:lavfi=[" + dialogueFilter + ",volume=-3dB,bass=g=-4:f=150:w=0.6," +
+	want := "@peli-sound:lavfi=[" + dialogueFilter + ",volume=-3dB,bass=g=-4:f=150:w=0.6," +
 		"equalizer=f=2500:t=q:w=1:g=4,equalizer=f=5000:t=q:w=1.2:g=2," + nightFilter + "]"
 	if got != want {
 		t.Errorf("all on:\n got %s\nwant %s", got, want)

@@ -48,7 +48,7 @@ type Subtitle struct {
 // the track's id in State.Tracks. Loading another file drops it, as mpv
 // drops every external track then.
 //
-// Sinag downloads it, not mpv: mpv would send the stream's headers (a
+// Peli downloads it, not mpv: mpv would send the stream's headers (a
 // debrid addon's, say) to the subtitle server too.
 func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	u, err := url.Parse(sub.URL)
@@ -73,7 +73,7 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	// mpv reads the file when it's added, but an ASS file's fonts and a
 	// sub-reload read it again, so it stays until the session closes.
 	if ses.subDir == "" {
-		dir, err := os.MkdirTemp("", "sinag-subtitles-")
+		dir, err := os.MkdirTemp("", "peli-subtitles-")
 		if err != nil {
 			return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 		}

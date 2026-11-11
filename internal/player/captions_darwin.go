@@ -4,11 +4,11 @@ package player
 #cgo LDFLAGS: -framework MediaAccessibility -framework CoreFoundation
 #include <MediaAccessibility/MediaAccessibility.h>
 
-// sinagCaptions is 1 when System Settings > Accessibility > Captions asks
+// peliCaptions is 1 when System Settings > Accessibility > Captions asks
 // for captions: "Prefer closed captions and SDH" (the preferred captioning
 // characteristics then include transcribing dialogue), or a display type of
 // always on, which apps such as TV set.
-static int sinagCaptions(void) {
+static int peliCaptions(void) {
 	if (MACaptionAppearanceGetDisplayType(kMACaptionAppearanceDomainUser) == kMACaptionAppearanceDisplayTypeAlwaysOn)
 		return 1;
 	CFArrayRef prefs = MACaptionAppearanceCopyPreferredCaptioningMediaCharacteristics(kMACaptionAppearanceDomainUser);
@@ -23,4 +23,4 @@ static int sinagCaptions(void) {
 import "C"
 
 // osCaptions reads the user's captions preference from MediaAccessibility.
-func osCaptions() bool { return C.sinagCaptions() != 0 }
+func osCaptions() bool { return C.peliCaptions() != 0 }

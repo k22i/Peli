@@ -33,7 +33,7 @@ func TestFetchPassesAnswersOn(t *testing.T) {
 	if got.Status != 200 || !strings.Contains(got.Body, `"org.example"`) {
 		t.Errorf("Fetch = %+v", got)
 	}
-	if userAgent != "Sinag/1.2.3 (+https://github.com/k22i/Sinag)" {
+	if userAgent != "Peli/1.2.3 (+https://github.com/k22i/Peli)" {
 		t.Errorf("User-Agent = %q", userAgent)
 	}
 
@@ -133,20 +133,20 @@ func TestFetchAnswersBuiltinAddons(t *testing.T) {
 		}
 		_, _ = w.Write([]byte(`{"id":"sinag.anilist"}`))
 	}))
-	got, err := s.Fetch(t.Context(), "sinag://anilist/meta/series/kitsu%3A1.json")
+	got, err := s.Fetch(t.Context(), "peli://anilist/meta/series/kitsu%3A1.json")
 	if err != nil || got.Status != 200 || got.Body != `{"id":"sinag.anilist"}` {
 		t.Errorf("Fetch = %+v, %v", got, err)
 	}
 	if path != "/meta/series/kitsu%3A1.json" {
 		t.Errorf("handler saw %q", path)
 	}
-	if got, err := s.Fetch(t.Context(), "sinag://AniList/missing.json"); err != nil || got.Status != 404 {
+	if got, err := s.Fetch(t.Context(), "peli://AniList/missing.json"); err != nil || got.Status != 404 {
 		t.Errorf("Fetch(missing) = %+v, %v; want 404", got, err)
 	}
-	if _, err := s.Fetch(t.Context(), "sinag://nothing/manifest.json"); !errors.Is(err, ErrUnreachable) {
+	if _, err := s.Fetch(t.Context(), "peli://nothing/manifest.json"); !errors.Is(err, ErrUnreachable) {
 		t.Errorf("unknown built-in: error = %v, want ErrUnreachable", err)
 	}
-	if !IsBuiltin("sinag://anilist/manifest.json") || IsBuiltin("https://anilist/manifest.json") {
+	if !IsBuiltin("peli://anilist/manifest.json") || IsBuiltin("https://anilist/manifest.json") {
 		t.Error("IsBuiltin")
 	}
 }

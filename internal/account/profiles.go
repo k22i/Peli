@@ -8,8 +8,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Managing profiles (#95). A Nuvio profile changes in Nuvio first and on this

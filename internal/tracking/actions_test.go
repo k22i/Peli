@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/simkl/simkltest"
+	"github.com/k22i/Peli/internal/simkl/simkltest"
 )
 
 func js(v any) string {

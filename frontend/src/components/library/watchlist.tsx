@@ -16,7 +16,7 @@ import type { WatchlistItem } from "@bindings/tracking";
 // What the profile's connected lists have planned (SIMKL's Plan to watch,
 // AniList's Planning), as the library's cards with the shared title menu, so
 // Remove from Watchlist is a right-click away. The lists are theirs, not
-// Sinag's: nothing here is kept on this device or sent to Nuvio.
+// Peli's: nothing here is kept on this device or sent to Nuvio.
 export function Watchlist({ profile }: { profile: Profile }) {
   const connections = useQuery(trackingQuery(profile.id));
   const connected = connectedServices(connections.data).length > 0;

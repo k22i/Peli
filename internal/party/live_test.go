@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/player"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/player"
 )
 
 // fixedSession hands out one session, as account.Session would.
@@ -24,10 +24,10 @@ func (f fixedSession) Do(_ context.Context, fn func(nuvio.Session) error) error 
 // each with a player that plays by itself: the guest's player catches up
 // with the host's, follows the host's pause, and the chat goes both ways.
 // The party is ended and the session signed out after. It runs only with
-// SINAG_NUVIO_LIVE_WRITES=1 and NUVIO_EMAIL and NUVIO_PASSWORD.
+// PELI_NUVIO_LIVE_WRITES=1 and NUVIO_EMAIL and NUVIO_PASSWORD.
 func TestLiveTwoMembers(t *testing.T) {
-	if os.Getenv("SINAG_NUVIO_LIVE_WRITES") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to run a party on a live backend")
+	if os.Getenv("PELI_NUVIO_LIVE_WRITES") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to run a party on a live backend")
 	}
 	c := nuvio.New(cmp.Or(os.Getenv("NUVIO_URL"), nuvio.DefaultURL), "0.0.0-live-test")
 	s, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
@@ -51,14 +51,14 @@ func TestLiveTwoMembers(t *testing.T) {
 		UsePlayer(svc, p)
 		return svc, p
 	}
-	host, hostPlayer := member("sinag-live-host", "Sinag test host")
-	guest, guestPlayer := member("sinag-live-guest", "Sinag test guest")
+	host, hostPlayer := member("peli-live-host", "Peli test host")
+	guest, guestPlayer := member("peli-live-guest", "Peli test guest")
 	t.Cleanup(func() {
 		host.End()
 		guest.Leave()
 	})
 
-	film := Media{Type: "movie", ID: "tt0000001", Title: "Sinag live test", Source: &Source{Filename: "sinag.live.mkv"}}
+	film := Media{Type: "movie", ID: "tt0000001", Title: "Peli live test", Source: &Source{Filename: "peli.live.mkv"}}
 	hostPlayer.play(100)
 	host.Watch(&film, nil)
 	if err := host.Create(film); err != nil {
@@ -116,12 +116,12 @@ func TestLiveTwoMembers(t *testing.T) {
 	guestPlayer.SetPaused(false)
 	wait("the host resumes with the guest", func() bool { return !hostPlayer.paused() })
 
-	if err := guest.SendMessage("hello from Sinag's live test"); err != nil {
+	if err := guest.SendMessage("hello from Peli's live test"); err != nil {
 		t.Fatal(err)
 	}
 	wait("the host gets the message", func() bool {
 		chat := host.Chat()
-		return len(chat.Messages) == 1 && !chat.Messages[0].Mine && chat.Messages[0].Name == "Sinag test guest"
+		return len(chat.Messages) == 1 && !chat.Messages[0].Mine && chat.Messages[0].Name == "Peli test guest"
 	})
 	wait("the guest's message is sent", func() bool {
 		chat := guest.Chat()

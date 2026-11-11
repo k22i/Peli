@@ -3,7 +3,7 @@ package player
 import (
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 func TestFramingProps(t *testing.T) {
@@ -30,7 +30,7 @@ func TestFramingProps(t *testing.T) {
 	}
 	both := props(store.Framing{Fit: "fit", Aspect: "2.39:1", Zoom: 0.5, PanX: -0.25, Rotate: 90, FlipH: true, FlipV: true})
 	if both["video-aspect-override"] != "2.39:1" || both["video-zoom"] != "0.5000" || both["video-pan-x"] != "-0.2500" ||
-		both["video-rotate"] != "90" || both["vf"] != "@sinag-hflip:lavfi=[hflip],@sinag-vflip:lavfi=[vflip]" {
+		both["video-rotate"] != "90" || both["vf"] != "@peli-hflip:lavfi=[hflip],@peli-vflip:lavfi=[vflip]" {
 		t.Errorf("aspect, zoom, pan, rotate, flips: %v", both)
 	}
 }

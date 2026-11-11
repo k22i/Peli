@@ -1,6 +1,6 @@
 ---
 name: title-page
-description: "How Sinag's title page (#45) is built: /title/$type/$id, titleMetaQuery fallback, Nuvio's watched rules in lib/title.ts, Store.SetWatched batch, useOpenTitle, Hero logo; read before #46, #48, #52, #60, #64"
+description: "How Peli's title page (#45) is built: /title/$type/$id, titleMetaQuery fallback, Nuvio's watched rules in lib/title.ts, Store.SetWatched batch, useOpenTitle, Hero logo; read before #46, #48, #52, #60, #64"
 metadata:
   type: project
 ---

@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// A layout as Nuvio's apps write it, with fields Sinag doesn't read.
+// A layout as Nuvio's apps write it, with fields Peli doesn't read.
 const nuvioLayoutJSON = `{
 	"items": [
 		{"key": "collection_c1", "type": "", "order": 2, "enabled": true, "addon_id": "", "catalog_id": "", "custom_title": "", "collection_id": "c1", "is_collection": true},
@@ -76,7 +76,7 @@ func TestHomeLayoutFromNuvio(t *testing.T) {
 	}
 }
 
-// An edit keeps what Nuvio's apps wrote that Sinag doesn't read, and queues
+// An edit keeps what Nuvio's apps wrote that Peli doesn't read, and queues
 // the whole blob.
 func TestSetHomeLayout(t *testing.T) {
 	s, _ := openTemp(t)

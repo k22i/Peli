@@ -15,12 +15,12 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
-// TestLongSession keeps a session going for SINAG_LONG_SESSION (e.g. 10m)
+// TestLongSession keeps a session going for PELI_LONG_SESSION (e.g. 10m)
 // against a self-hosted Nuvio backend started with short tokens
 // (JWT_EXPIRY=120), calling the backend every 10 s across many refreshes.
 // Then another device signs out everywhere, and the next refresh must end
@@ -28,14 +28,14 @@ import (
 // account in NUVIO_EMAIL and NUVIO_PASSWORD; never point it at live, where a
 // global sign-out would end the user's other sessions.
 func TestLongSession(t *testing.T) {
-	length, _ := time.ParseDuration(os.Getenv("SINAG_LONG_SESSION"))
+	length, _ := time.ParseDuration(os.Getenv("PELI_LONG_SESSION"))
 	url := os.Getenv("NUVIO_URL")
 	if length == 0 || url == "" || url == nuvio.DefaultURL {
-		t.Skip("set SINAG_LONG_SESSION, NUVIO_URL (self-hosted, not live), NUVIO_EMAIL and NUVIO_PASSWORD")
+		t.Skip("set PELI_LONG_SESSION, NUVIO_URL (self-hosted, not live), NUVIO_EMAIL and NUVIO_PASSWORD")
 	}
 	email, password := os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD")
 	keychain := &memKeychain{items: map[string]string{}}
-	db := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	db := store.NewService(filepath.Join(t.TempDir(), "peli.db"))
 	if err := db.ServiceStartup(t.Context(), application.ServiceOptions{}); err != nil {
 		t.Fatal(err)
 	}
@@ -114,7 +114,7 @@ func TestLongSession(t *testing.T) {
 	}
 }
 
-// logoutEverywhere is GoTrue's global sign-out, which Sinag doesn't offer.
+// logoutEverywhere is GoTrue's global sign-out, which Peli doesn't offer.
 func logoutEverywhere(ctx context.Context, url string, s nuvio.Session) error {
 	res, err := http.Get(url + "/.well-known/nuvio")
 	if err != nil {
@@ -148,7 +148,7 @@ func TestSelfHostProfiles(t *testing.T) {
 	if url == "" || url == nuvio.DefaultURL {
 		t.Skip("set NUVIO_URL to a self-hosted backend, not live")
 	}
-	email, password := "sinag-profiles-"+strconv.FormatInt(time.Now().UnixNano(), 36)+"@example.com", "throwaway-"+strconv.Itoa(os.Getpid())
+	email, password := "peli-profiles-"+strconv.FormatInt(time.Now().UnixNano(), 36)+"@example.com", "throwaway-"+strconv.Itoa(os.Getpid())
 	if err := signUp(t.Context(), url, email, password); err != nil {
 		t.Fatal(err)
 	}
@@ -175,7 +175,7 @@ func TestSelfHostProfiles(t *testing.T) {
 	}
 	before := pull()[0]
 
-	db := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	db := store.NewService(filepath.Join(t.TempDir(), "peli.db"))
 	if err := db.ServiceStartup(t.Context(), application.ServiceOptions{}); err != nil {
 		t.Fatal(err)
 	}
@@ -250,7 +250,7 @@ func TestSelfHostServer(t *testing.T) {
 	if url == "" || url == nuvio.DefaultURL {
 		t.Skip("set NUVIO_URL to a self-hosted backend, not live")
 	}
-	email, password := "sinag-server-"+strconv.FormatInt(time.Now().UnixNano(), 36)+"@example.com", "throwaway-"+strconv.Itoa(os.Getpid())
+	email, password := "peli-server-"+strconv.FormatInt(time.Now().UnixNano(), 36)+"@example.com", "throwaway-"+strconv.Itoa(os.Getpid())
 	if err := signUp(t.Context(), url, email, password); err != nil {
 		t.Fatal(err)
 	}

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 
 // Asked before a title is taken off the lists while SIMKL is one of the
 // services that gets the change: SIMKL has no call that only removes it from
-// a list, so Sinag uses its history removal, which clears the title's watch
+// a list, so Peli uses its history removal, which clears the title's watch
 // history there too.
 export function RemoveTrackingDialog({
   open,
@@ -31,7 +31,7 @@ export function RemoveTrackingDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Remove from your SIMKL lists?</AlertDialogTitle>
           <AlertDialogDescription>
-            SIMKL removes its watch history for this title too. Sinag’s own watched marks stay.
+            SIMKL removes its watch history for this title too. Peli’s own watched marks stay.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

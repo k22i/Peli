@@ -5,13 +5,13 @@
 !include "FileFunc.nsh"
 
 !ifndef INFO_PROJECTNAME
-    !define INFO_PROJECTNAME "sinag"
+    !define INFO_PROJECTNAME "peli"
 !endif
 !ifndef INFO_COMPANYNAME
     !define INFO_COMPANYNAME "k22i"
 !endif
 !ifndef INFO_PRODUCTNAME
-    !define INFO_PRODUCTNAME "Sinag"
+    !define INFO_PRODUCTNAME "Peli"
 !endif
 !ifndef INFO_PRODUCTVERSION
     !define INFO_PRODUCTVERSION "0.1.0"

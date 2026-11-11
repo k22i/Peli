@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // TestProgressReachesAnotherDeviceWithin30s is #33's integration test, and
@@ -13,7 +13,7 @@ import (
 // within 30 s. The desktop runs the push loop as it ships, debounce and all;
 // the phone pulls every second, as close as a client gets to watching. It
 // runs against the fake, and against a self-hosted Nuvio when
-// SINAG_CONTRACT_URL is set (ADR-0020).
+// PELI_CONTRACT_URL is set (ADR-0020).
 func TestProgressReachesAnotherDeviceWithin30s(t *testing.T) {
 	b := nuviotest.NewBackend(t)
 	email, password := b.Account(t)

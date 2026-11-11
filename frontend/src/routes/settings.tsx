@@ -133,7 +133,7 @@ export const Route = createFileRoute("/settings")({
   component: Settings,
 });
 
-// The few settings Sinag needs (#17, regrouped into panes in #120): a list of
+// The few settings Peli needs (#17, regrouped into panes in #120): a list of
 // panes on the left and one pane on the right, as in System Settings. It
 // should stay short rather than grow into a control panel. Reached from the
 // profile menu, outside the six-item nav; `?section=` names the pane
@@ -362,7 +362,7 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
               <SettingRow
                 id="debrid"
                 label="Debrid services"
-                description="Set up TorBox, AllDebrid or Premiumize in a stream addon’s own settings, such as Torrentio’s or Comet’s. Sinag never asks for your debrid key."
+                description="Set up TorBox, AllDebrid or Premiumize in a stream addon’s own settings, such as Torrentio’s or Comet’s. Peli never asks for your debrid key."
               >
                 <Link to="/addons" className={buttonVariants({ variant: "outline", size: "sm" })}>
                   Open addons
@@ -528,7 +528,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="skip-intros"
                 label="Skip intros automatically"
-                description="Skips intros and recaps without asking when Sinag knows where they are. Otherwise a button offers to skip them."
+                description="Skips intros and recaps without asking when Peli knows where they are. Otherwise a button offers to skip them."
               >
                 <Switch
                   aria-labelledby="skip-intros-label"
@@ -1122,7 +1122,7 @@ function QualityGroup({
       <SettingRow
         id="dolby-vision"
         label="Dolby Vision"
-        description="Prefers Dolby Vision streams, even ones with no HDR layer to fall back on. Auto leaves it off, as Sinag can’t tell if this screen shows it. Applies to this device."
+        description="Prefers Dolby Vision streams, even ones with no HDR layer to fall back on. Auto leaves it off, as Peli can’t tell if this screen shows it. Applies to this device."
       >
         <Choice
           id="dolby-vision"

@@ -47,8 +47,8 @@ import {
 export const pluginsWarning = {
   title: "Turn on plugins?",
   points: [
-    "Plugins are third-party scrapers. They are written by other people, not by Sinag or Nuvio.",
-    "Sinag runs each one in a sandbox that keeps it away from your files and your home network, but it doesn’t check what they do.",
+    "Plugins are third-party scrapers. They are written by other people, not by Peli or Nuvio.",
+    "Peli runs each one in a sandbox that keeps it away from your files and your home network, but it doesn’t check what they do.",
     "Plugins can break, return fake or unsafe links, or stop working without notice.",
     "You are responsible for the repositories you install and for what you watch with them.",
   ],
@@ -286,7 +286,7 @@ function RepositoryGroup({
           <>
             <span className="block truncate tnum text-small">{sourceOf(repo.url)}</span>
             {!repo.supported
-              ? "Android only: Sinag can’t run it. It stays in your list so your phone keeps it."
+              ? "Android only: Peli can’t run it. It stays in your list so your phone keeps it."
               : repo.fetchedAt === 0
                 ? "Reading its plugins…"
                 : `${count} ${count === 1 ? "plugin" : "plugins"}`}
@@ -336,7 +336,7 @@ function RepositoryGroup({
 }
 
 // Installs a repository by its manifest address. Go reads the manifest first
-// and saves nothing unless it lists plugins Sinag can run.
+// and saves nothing unless it lists plugins Peli can run.
 function AddRepositoryDialog({
   profileId,
   open,
@@ -376,7 +376,7 @@ function AddRepositoryForm({ profileId, onDone }: { profileId: number; onDone: (
       <DialogHeader>
         <DialogTitle>Add a plugin repository</DialogTitle>
         <DialogDescription>
-          Paste the address of its manifest. Sinag reads the list of plugins first and adds nothing
+          Paste the address of its manifest. Peli reads the list of plugins first and adds nothing
           unless it finds some it can run. Plugins only run once you add them here, and you can turn
           each one off.
         </DialogDescription>
@@ -403,7 +403,7 @@ function AddRepositoryForm({ profileId, onDone }: { profileId: number; onDone: (
           />
           <FieldError />
           <FieldDescription>
-            Sinag doesn’t vet repositories. Only add ones you trust.
+            Peli doesn’t vet repositories. Only add ones you trust.
           </FieldDescription>
         </Field>
       </DialogPanel>

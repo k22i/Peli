@@ -239,7 +239,7 @@ static void *tex_thread(void *arg) {
 		last_w = w, last_h = h;
 	}
 	mpv_render_context_free(rctx);
-	// The textures go once GTK has let go of them (sinag_video_clear took
+	// The textures go once GTK has let go of them (peli_video_clear took
 	// them off the picture first), or after half a second regardless: a
 	// hidden picture may not be drawn again to release them.
 	for (int tries = 0; tries < 250; tries++) {
@@ -261,7 +261,7 @@ static void *tex_thread(void *arg) {
 	return NULL;
 }
 
-int sinag_video_attach(void *win, char *err, int errlen) {
+int peli_video_attach(void *win, char *err, int errlen) {
 	if (!g_picture) {
 		GtkWidget *web = find_webview(GTK_WIDGET(win));
 		if (!web) {
@@ -296,7 +296,7 @@ int sinag_video_attach(void *win, char *err, int errlen) {
 	return 0;
 }
 
-int sinag_video_start(mpv_handle *mpv, char *err, int errlen) {
+int peli_video_start(mpv_handle *mpv, char *err, int errlen) {
 	T.mpv = mpv;
 	T.stop = T.update = T.ready = 0;
 	atomic_fetch_add(&T.gen, 1);
@@ -316,7 +316,7 @@ int sinag_video_start(mpv_handle *mpv, char *err, int errlen) {
 	return 0;
 }
 
-void sinag_video_stop(void) {
+void peli_video_stop(void) {
 	if (!T.mpv) return;
 	pthread_mutex_lock(&T.mu);
 	T.stop = 1;
@@ -326,9 +326,9 @@ void sinag_video_stop(void) {
 	T.mpv = NULL;
 }
 
-// sinag_video_clear drops the picture's texture, so GTK lets go of our
-// slots, and hides it. On the GTK thread, before sinag_video_stop.
-void sinag_video_clear(void) {
+// peli_video_clear drops the picture's texture, so GTK lets go of our
+// slots, and hides it. On the GTK thread, before peli_video_stop.
+void peli_video_clear(void) {
 	if (!g_picture) return;
 	if (g_tick) gtk_widget_remove_tick_callback(g_picture, g_tick);
 	g_tick = 0;
@@ -336,7 +336,7 @@ void sinag_video_clear(void) {
 	gtk_widget_set_visible(g_picture, FALSE);
 }
 
-void sinag_video_detach(void) {
+void peli_video_detach(void) {
 	g_clear_object(&T.ctx);
 	if (g_web) webkit_web_view_set_background_color((WebKitWebView *)g_web, &g_web_background);
 }

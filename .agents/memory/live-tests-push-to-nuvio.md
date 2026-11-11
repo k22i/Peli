@@ -5,7 +5,7 @@ metadata:
   type: feedback
 ---
 
-Running `bin/sinag` with `SINAG_DATA_DIR` holding a copy of the real `sinag.db` still uses the real keychain session, so every watched mark, progress entry or import it writes is pushed to the user's real Nuvio account. On 2026-10-31 the #71 live test pushed 103 imported marks and two test plays that way, and they had to be deleted from Nuvio again.
+Running `bin/peli` with `PELI_DATA_DIR` holding a copy of the real `peli.db` still uses the real keychain session, so every watched mark, progress entry or import it writes is pushed to the user's real Nuvio account. On 2026-10-31 the #71 live test pushed 103 imported marks and two test plays that way, and they had to be deleted from Nuvio again.
 
 **Why:** the copy keeps the Nuvio-linked profiles, and the session lives in the keychain, not the store.
 

@@ -5,7 +5,7 @@ date: 2026-10-20
 
 # The Guest profile stays apart: signing in never merges guest data into the account
 
-Sinag works with no account on one local **Guest** profile (#23). Its addons, library, progress and watched items live only in the local store (ADR-0006), and nothing it does reaches Nuvio. **Signing in doesn't merge the Guest into the account.** Nuvio's profiles are added beside it and one becomes current, and the Guest stays on this device as it was. **Signing out** removes only the account's profiles (ADR-0009), so the Guest survives that too.
+Peli works with no account on one local **Guest** profile (#23). Its addons, library, progress and watched items live only in the local store (ADR-0006), and nothing it does reaches Nuvio. **Signing in doesn't merge the Guest into the account.** Nuvio's profiles are added beside it and one becomes current, and the Guest stays on this device as it was. **Signing out** removes only the account's profiles (ADR-0009), so the Guest survives that too.
 
 - **One Guest.** `Profile.Guest` marks it. There is at most one, and it can't be linked to a Nuvio profile. **Continue as guest** (`Store.SwitchToGuest`) finds it or creates it.
 - **Its sync backend is local.** `backend.For` returns `backend.Local` for any profile not linked to Nuvio. `Local` pulls nothing and sends nothing, and the store queues no pushes for such a profile. The sync module (#28) adds the Nuvio backend beside it.

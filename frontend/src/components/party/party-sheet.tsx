@@ -55,7 +55,7 @@ export function PartySheet({
               ? party.isHost
                 ? "You’re hosting. Everyone plays from their own sources, in step with you."
                 : "Everyone plays from their own sources, in step with the host."
-              : "Invite friends on Sinag or Nuvio. Everyone plays from their own sources and stays in step."}
+              : "Invite friends on Peli or Nuvio. Everyone plays from their own sources and stays in step."}
           </SheetDescription>
         </SheetHeader>
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 pb-6">
@@ -150,7 +150,7 @@ function NotInParty({
             Start a watch party
           </Button>
           <p className="text-small text-muted-foreground">
-            You’ll get a code to share. Friends join it from Sinag, or from Nuvio on any device.
+            You’ll get a code to share. Friends join it from Peli, or from Nuvio on any device.
           </p>
         </div>
       )}

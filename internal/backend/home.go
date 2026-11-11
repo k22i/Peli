@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"log/slog"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Home layout and collections sync (#35, ADR-0022). Like addons there is no

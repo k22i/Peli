@@ -5,7 +5,7 @@ date: 2026-10-19
 
 # Secrets live in the OS keychain through go-keyring, with no file fallback
 
-**OS keychain, through [go-keyring](https://github.com/zalando/go-keyring).** Sinag keeps the Nuvio session, SIMKL and AniList tokens (per profile, ADR-0042) and debrid keys in the macOS Keychain, Windows Credential Manager or the Linux Secret Service (#15). They are never written to a file: not `sinag.db` (ADR-0006), not the persisted query cache, not webview storage. The Go package is `internal/secrets`, and the frontend reaches it through a Wails service.
+**OS keychain, through [go-keyring](https://github.com/zalando/go-keyring).** Peli keeps the Nuvio session, SIMKL and AniList tokens (per profile, ADR-0042) and debrid keys in the macOS Keychain, Windows Credential Manager or the Linux Secret Service (#15). They are never written to a file: not `peli.db` (ADR-0006), not the persisted query cache, not webview storage. The Go package is `internal/secrets`, and the frontend reaches it through a Wails service.
 
 ## Why
 
@@ -15,10 +15,10 @@ date: 2026-10-19
 
 ## What we give up
 
-- **On macOS, the item trusts `security`, not Sinag.** Because go-keyring writes through Apple's command-line tool, the item's access list names `/usr/bin/security`. Any process running as the user can read Sinag's items with `security find-generic-password -s Sinag -w`, with no prompt. Malware running as the user can already read browser cookies and most app data, so this weakens a defence-in-depth layer rather than opening a new hole. Items are still encrypted at rest and never sit in a file.
+- **On macOS, the item trusts `security`, not Peli.** Because go-keyring writes through Apple's command-line tool, the item's access list names `/usr/bin/security`. Any process running as the user can read Peli's items with `security find-generic-password -s Peli -w`, with no prompt. Malware running as the user can already read browser cookies and most app data, so this weakens a defence-in-depth layer rather than opening a new hole. Items are still encrypted at rest and never sit in a file.
 - **A 2,560-byte cap per value on every OS.** That's Windows Credential Manager's limit, applied everywhere so a value that works on one OS can't fail on another. A Supabase session goes in as two keys, access token (~1 KB) and refresh token, not one JSON blob.
 - **Keys are a fixed shape.** They are lowercase dot-separated names (`nuvio.refresh-token`, `debrid.torbox`), so nothing derived from user input or a URL can become a keychain entry by accident.
 
 ## Revisit when
 
-**Sinag is signed with a Developer ID (#78).** Then replace the macOS backend with direct Security.framework calls (`SecItemAdd` / `SecItemCopyMatching`, about 80 lines of cgo) so items trust Sinag's signature, and other processes have to ask. We don't do this now because Sinag is ad-hoc signed: macOS would identify it by the binary's hash, which changes with every build, so every update or rebuild would prompt "Allow Sinag to access the keychain?". The `internal/secrets` API stays the same, and existing items can be migrated with one read and rewrite on first launch.
+**Peli is signed with a Developer ID (#78).** Then replace the macOS backend with direct Security.framework calls (`SecItemAdd` / `SecItemCopyMatching`, about 80 lines of cgo) so items trust Peli's signature, and other processes have to ask. We don't do this now because Peli is ad-hoc signed: macOS would identify it by the binary's hash, which changes with every build, so every update or rebuild would prompt "Allow Peli to access the keychain?". The `internal/secrets` API stays the same, and existing items can be migrated with one read and rewrite on first launch.

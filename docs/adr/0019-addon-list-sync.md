@@ -27,7 +27,7 @@ The addon manager (#38) calls `Account.InstallAddon`, `RemoveAddon`, `MoveAddon`
 
 ## `uses_primary_addons`: the primary's list
 
-The server doesn't redirect. A profile created with `uses_primary_addons = true` gets no addon rows (its default-addons trigger only fills a profile that doesn't share), and `GET /rest/v1/addons?profile_id=eq.3` returns nothing. Nuvio's apps read profile 1's list for it. Sinag does the same: `store.Profile.UsesPrimaryAddons` comes from `sync_pull_profiles` on sign-in and refresh, and `backend.Nuvio` pulls and pushes index 1 for such a profile. Its local copy is profile 1's list, so a kids allow-list (ADR-0014) works on it unchanged. An edit made from a sharing profile changes profile 1's addons on every device, which is what sharing means in Nuvio; the `/addons` page says so. Confirmed from the self-host SQL (`handle_new_profile_default_addons`, `sync_push_addons`), not on live.
+The server doesn't redirect. A profile created with `uses_primary_addons = true` gets no addon rows (its default-addons trigger only fills a profile that doesn't share), and `GET /rest/v1/addons?profile_id=eq.3` returns nothing. Nuvio's apps read profile 1's list for it. Peli does the same: `store.Profile.UsesPrimaryAddons` comes from `sync_pull_profiles` on sign-in and refresh, and `backend.Nuvio` pulls and pushes index 1 for such a profile. Its local copy is profile 1's list, so a kids allow-list (ADR-0014) works on it unchanged. An edit made from a sharing profile changes profile 1's addons on every device, which is what sharing means in Nuvio; the `/addons` page says so. Confirmed from the self-host SQL (`handle_new_profile_default_addons`, `sync_push_addons`), not on live.
 
 ## An addon that won't load stays
 

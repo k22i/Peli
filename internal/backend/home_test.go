@@ -3,8 +3,8 @@ package backend
 import (
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The home layout and collections are pulled from Nuvio's server like any

@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
 )
 
 // The contract tests of #33. Nuvio's sync functions are undocumented and may
@@ -31,10 +31,10 @@ import (
 // the Go type it reads the answer into, and TestContract calls each of them
 // the way the client does, checking every answer against that type. A field
 // that goes missing, turns null or changes type fails with a message naming
-// the endpoint, the field and where Sinag reads it.
+// the endpoint, the field and where Peli reads it.
 //
 // TestContract runs against nuviotest's fake on every `go test`, and against
-// a self-hosted Nuvio when SINAG_CONTRACT_URL is set (CI's scheduled
+// a self-hosted Nuvio when PELI_CONTRACT_URL is set (CI's scheduled
 // contract job, ADR-0020). Running the same cases on both keeps the fake
 // honest. docs/nuvio-release-checklist.md covers what self-host can't: drift
 // between it and api.nuvio.tv.
@@ -133,7 +133,7 @@ func shapeErrors(data []byte, a answer) (problems, unread []string) {
 	if a.many {
 		var ok bool
 		if list, ok = v.([]any); !ok {
-			return []string{fmt.Sprintf("the answer is a JSON %s; Sinag reads an array of %s rows", jsonKind(v), a.row.Name())}, nil
+			return []string{fmt.Sprintf("the answer is a JSON %s; Peli reads an array of %s rows", jsonKind(v), a.row.Name())}, nil
 		}
 	}
 	for i, item := range list {
@@ -143,7 +143,7 @@ func shapeErrors(data []byte, a answer) (problems, unread []string) {
 		}
 		obj, ok := item.(map[string]any)
 		if !ok {
-			problems = append(problems, fmt.Sprintf("%s is a JSON %s; Sinag reads a %s object", where, jsonKind(item), a.row.Name()))
+			problems = append(problems, fmt.Sprintf("%s is a JSON %s; Peli reads a %s object", where, jsonKind(item), a.row.Name()))
 			continue
 		}
 		known := map[string]bool{}
@@ -159,12 +159,12 @@ func shapeErrors(data []byte, a answer) (problems, unread []string) {
 			known[name] = true
 			if slices.Contains(a.absent, name) {
 				if _, ok := obj[name]; ok {
-					problems = append(problems, fmt.Sprintf("%s: field %q is sent now; Sinag ignores it in %s.%s, and could read it", where, name, a.row.Name(), f.Name))
+					problems = append(problems, fmt.Sprintf("%s: field %q is sent now; Peli ignores it in %s.%s, and could read it", where, name, a.row.Name(), f.Name))
 				}
 				continue
 			}
 			if p := fieldProblem(obj, name, f.Type, strings.Contains(opts, "omitempty")); p != "" {
-				problems = append(problems, fmt.Sprintf("%s: field %q %s (Sinag reads it into %s.%s)", where, name, p, a.row.Name(), f.Name))
+				problems = append(problems, fmt.Sprintf("%s: field %q %s (Peli reads it into %s.%s)", where, name, p, a.row.Name(), f.Name))
 			}
 		}
 		for k := range obj {
@@ -266,14 +266,14 @@ func TestShapeErrors(t *testing.T) {
 	}{
 		{name: "fits", many: true, data: `[{"name":"a","count":1,"tags":["x"],"maybe":null,"when":"2026-10-27T10:00:00.123+00:00","updated":null,"new":1}]`, unread: []string{"new"}},
 		{name: "optional fields left out", data: `{"name":"a","count":1,"when":"2026-10-27T10:00:00Z"}`},
-		{name: "missing", data: `{"count":1,"when":"2026-10-27T10:00:00Z"}`, want: []string{`the answer: field "name" is missing (Sinag reads it into row.Name)`}},
-		{name: "null", data: `{"name":null,"count":1,"when":"2026-10-27T10:00:00Z"}`, want: []string{`the answer: field "name" is null (Sinag reads it into row.Name)`}},
-		{name: "type changed", many: true, data: `[{"name":"a","count":"1","when":"2026-10-27T10:00:00Z"}]`, want: []string{`row 0: field "count" is a JSON string, not a number (Sinag reads it into row.Count)`}},
-		{name: "fraction", data: `{"name":"a","count":1.5,"when":"2026-10-27T10:00:00Z"}`, want: []string{`the answer: field "count" is 1.5, not a whole number (Sinag reads it into row.Count)`}},
-		{name: "not a time", data: `{"name":"a","count":1,"when":"yesterday"}`, want: []string{`the answer: field "when" is "yesterday", not an RFC 3339 time (Sinag reads it into row.When)`}},
-		{name: "slice element", data: `{"name":"a","count":1,"when":"2026-10-27T10:00:00Z","tags":[1]}`, want: []string{`the answer: field "tags" has a JSON number at 0, not a string (Sinag reads it into row.Tags)`}},
-		{name: "object, not rows", many: true, data: `{"name":"a"}`, want: []string{"the answer is a JSON object; Sinag reads an array of row rows"}},
-		{name: "rows, not an object", data: `[]`, want: []string{"the answer is a JSON array; Sinag reads a row object"}},
+		{name: "missing", data: `{"count":1,"when":"2026-10-27T10:00:00Z"}`, want: []string{`the answer: field "name" is missing (Peli reads it into row.Name)`}},
+		{name: "null", data: `{"name":null,"count":1,"when":"2026-10-27T10:00:00Z"}`, want: []string{`the answer: field "name" is null (Peli reads it into row.Name)`}},
+		{name: "type changed", many: true, data: `[{"name":"a","count":"1","when":"2026-10-27T10:00:00Z"}]`, want: []string{`row 0: field "count" is a JSON string, not a number (Peli reads it into row.Count)`}},
+		{name: "fraction", data: `{"name":"a","count":1.5,"when":"2026-10-27T10:00:00Z"}`, want: []string{`the answer: field "count" is 1.5, not a whole number (Peli reads it into row.Count)`}},
+		{name: "not a time", data: `{"name":"a","count":1,"when":"yesterday"}`, want: []string{`the answer: field "when" is "yesterday", not an RFC 3339 time (Peli reads it into row.When)`}},
+		{name: "slice element", data: `{"name":"a","count":1,"when":"2026-10-27T10:00:00Z","tags":[1]}`, want: []string{`the answer: field "tags" has a JSON number at 0, not a string (Peli reads it into row.Tags)`}},
+		{name: "object, not rows", many: true, data: `{"name":"a"}`, want: []string{"the answer is a JSON object; Peli reads an array of row rows"}},
+		{name: "rows, not an object", data: `[]`, want: []string{"the answer is a JSON array; Peli reads a row object"}},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			problems, unread := shapeErrors([]byte(tc.data), answer{row: reflect.TypeFor[row](), many: tc.many})
@@ -398,7 +398,7 @@ func (r *recorder) RoundTrip(req *http.Request) (*http.Response, error) {
 }
 
 // approve approves a device login as the account s belongs to, as
-// nuvio.tv/link does. Sinag never approves logins, so this isn't in the
+// nuvio.tv/link does. Peli never approves logins, so this isn't in the
 // client.
 func approve(t *testing.T, url string, s Session, userCode string) bool {
 	t.Helper()
@@ -794,7 +794,7 @@ func TestContract(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag contract test")
+		login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Peli contract test")
 		if err != nil {
 			t.Fatal(err)
 		}

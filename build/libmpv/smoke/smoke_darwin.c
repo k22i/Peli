@@ -1,5 +1,5 @@
 // #92: smoke test for a macOS libmpv build. It checks the build has what
-// Sinag plays with, then renders each file it's given through the OpenGL
+// Peli plays with, then renders each file it's given through the OpenGL
 // render API (what internal/player's macOS host uses) in an offscreen CGL
 // context, and fails unless a decoded frame reaches the framebuffer.
 //
@@ -166,7 +166,7 @@ int main(int argc, char **argv) {
 	mpv_free(version);
 	mpv_free(ffmpeg);
 
-	// What Sinag's streams need (ticket #92): the common video codecs,
+	// What Peli's streams need (ticket #92): the common video codecs,
 	// passthrough-capable audio, the subtitle formats addons and files carry,
 	// and HTTPS for debrid links.
 	// (decoder-list has audio and video only; the Matroska fixture's SubRip

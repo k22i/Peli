@@ -53,7 +53,7 @@ func TestFixtures(t *testing.T) {
 		t.Run(filepath.Base(fixture), func(t *testing.T) {
 			data, err := os.ReadFile(fixture)
 			check(t, err)
-			path := filepath.Join(t.TempDir(), "sinag.db")
+			path := filepath.Join(t.TempDir(), "peli.db")
 			check(t, os.WriteFile(path, data, 0o600))
 
 			s, err := Open(path)
@@ -96,7 +96,7 @@ func TestFixtures(t *testing.T) {
 // Migrations run forward from an older file, keep its data and record the
 // new version; a later build can rewrite records.
 func TestMigrateForward(t *testing.T) {
-	path := filepath.Join(t.TempDir(), "sinag.db")
+	path := filepath.Join(t.TempDir(), "peli.db")
 	s, err := Open(path)
 	check(t, err)
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
@@ -149,7 +149,7 @@ func TestMigrateForward(t *testing.T) {
 // Schema 3 flags the Guest: the oldest local-only profile, which only
 // CurrentProfile made before.
 func TestMigrateFlagsGuest(t *testing.T) {
-	path := filepath.Join(t.TempDir(), "sinag.db")
+	path := filepath.Join(t.TempDir(), "peli.db")
 	db, err := bolt.Open(path, 0o600, nil)
 	check(t, err)
 	check(t, migrate(db, migrations[:2]))
@@ -181,7 +181,7 @@ func TestMigrateFlagsGuest(t *testing.T) {
 
 // A failed migration leaves the file at the version before it.
 func TestFailedMigrationRollsBack(t *testing.T) {
-	path := filepath.Join(t.TempDir(), "sinag.db")
+	path := filepath.Join(t.TempDir(), "peli.db")
 	db, err := bolt.Open(path, 0o600, nil)
 	check(t, err)
 	defer db.Close()
@@ -213,4 +213,36 @@ func version(t *testing.T, db *bolt.DB) (v uint64) {
 		return nil
 	}))
 	return v
+}
+
+// Schema 4: built-in addons saved under sinag:// move to peli://, in the list
+// and in what was offered, so AniList isn't offered again or left broken.
+func TestMigrateMovesSinagAddons(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "peli.db")
+	db, err := bolt.Open(path, 0o600, nil)
+	check(t, err)
+	check(t, migrate(db, migrations[:3]))
+	sinag := Addon{URL: "sinag://anilist/manifest.json", Name: "AniList", Enabled: false}
+	check(t, db.Update(func(tx *bolt.Tx) error {
+		created, err := (&Store{}).createProfile(tx, Profile{Name: "Kevin", NuvioIndex: ptr(1)})
+		if err != nil {
+			return err
+		}
+		p := tx.Bucket(bucketProfiles).Bucket(u64(created.ID))
+		if err := put(p, keyAddons, []Addon{cinemeta, sinag}); err != nil {
+			return err
+		}
+		return put(p, keyBuiltinsOffered, []string{sinag.URL})
+	}))
+	check(t, db.Close())
+
+	s, err := Open(path)
+	check(t, err)
+	defer s.Close()
+	check(t, s.UseBuiltins(Builtins))
+	id := must[[]Profile](t)(s.Profiles())[0].ID
+	moved := sinag
+	moved.URL = AniListAddon.URL
+	// Still turned off, still in its place, and not offered a second time.
+	equal(t, must[[]Addon](t)(s.Addons(id)), []Addon{cinemeta, moved})
 }

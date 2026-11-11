@@ -6,7 +6,7 @@ import (
 )
 
 // allowed are the licences a dependency may have: all permissive, or
-// file-level copyleft (MPL) that does not reach Sinag's own code.
+// file-level copyleft (MPL) that does not reach Peli's own code.
 var allowed = map[string]bool{
 	"0BSD": true, "Apache-2.0": true, "BSD-2-Clause": true, "BSD-3-Clause": true,
 	"BlueOak-1.0.0": true, "CC0-1.0": true, "ISC": true, "MIT": true,

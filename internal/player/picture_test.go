@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 func TestPictureProps(t *testing.T) {

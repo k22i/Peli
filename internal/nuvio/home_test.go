@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
 )
 
 // ownServer returns a client pointed at a fake as a custom server, signed in.

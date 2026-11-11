@@ -6,11 +6,11 @@ version: '3'
 # This information is used to generate the build assets.
 info:
   companyName: "k22i" # The name of the company
-  productName: "Sinag" # The name of the application
-  productIdentifier: "k22i.net.sinag" # The unique product identifier
+  productName: "Peli" # The name of the application
+  productIdentifier: "k22i.net.peli" # The unique product identifier
   description: "A desktop client for Stremio-compatible addons, with Nuvio sync" # The application description
   copyright: "© 2026, k22i" # Copyright text
-  comments: "Sinag bundles no addons and hosts no content" # Comments
+  comments: "Peli bundles no addons and hosts no content" # Comments
   version: "0.1.0" # The application version
   # cfBundleIconName: "appicon" # The macOS icon name in Assets.car icon bundles (optional)
   #                               # Should match the name of your .icon file without the extension

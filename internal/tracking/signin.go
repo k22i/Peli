@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // --- SIMKL (#72): AUTH V2's device flow ---------------------------------------
@@ -216,8 +216,8 @@ func (s *Service) disconnect(profileID uint64, service string) (Connections, err
 // --- AniList (#104): the implicit grant to a loopback redirect --------------------
 //
 // AniList's apps have one redirect URL, and its authorization code grant
-// needs the app's secret, which a desktop app can't keep. So Sinag uses the
-// implicit grant, redirected to a page Sinag serves on this computer while
+// needs the app's secret, which a desktop app can't keep. So Peli uses the
+// implicit grant, redirected to a page Peli serves on this computer while
 // the sign-in is pending: the token comes in the URL's fragment, which only
 // the page's script can read, and it posts it back.
 
@@ -344,7 +344,7 @@ func (s *Service) keepAniList(ctx context.Context, profileID uint64, token strin
 }
 
 // DisconnectAniList removes profile id's AniList token and connection.
-// AniList has no revoke call: the user can remove Sinag from their AniList
+// AniList has no revoke call: the user can remove Peli from their AniList
 // settings too.
 func (s *Service) DisconnectAniList(profileID uint64) (Connections, error) {
 	return s.disconnect(profileID, ServiceAniList)
@@ -381,22 +381,22 @@ func aniListHandler(tokens chan<- string) http.Handler {
 }
 
 // The page AniList redirects to: it posts the fragment's token back and
-// says what happened. No token in any URL Sinag logs.
+// says what happened. No token in any URL Peli logs.
 var redirectPage = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>` + html.EscapeString("Sinag · AniList") + `</title>
+<html lang="en"><head><meta charset="utf-8"><title>` + html.EscapeString("Peli · AniList") + `</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>body{font:16px/1.5 -apple-system,system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh;background:#111;color:#eee}main{max-width:28rem;padding:2rem;text-align:center}@media(prefers-color-scheme:light){body{background:#f7f7f8;color:#111}}</style>
-</head><body><main><h1 id="t">Connecting to Sinag…</h1><p id="d"></p></main>
+</head><body><main><h1 id="t">Connecting to Peli…</h1><p id="d"></p></main>
 <script>
 const params = new URLSearchParams(location.hash.slice(1));
 const token = params.get("access_token");
 history.replaceState(null, "", location.pathname);
 const say = (t, d) => { document.getElementById("t").textContent = t; document.getElementById("d").textContent = d; };
 if (!token) {
-  say("AniList didn’t connect", "Go back to Sinag and try again.");
+  say("AniList didn’t connect", "Go back to Peli and try again.");
 } else {
   fetch("/anilist/token", { method: "POST", body: token })
-    .then((r) => { if (!r.ok) throw r; say("AniList is connected", "You can close this tab and go back to Sinag."); })
-    .catch(() => say("AniList didn’t connect", "Go back to Sinag and try again."));
+    .then((r) => { if (!r.ok) throw r; say("AniList is connected", "You can close this tab and go back to Peli."); })
+    .catch(() => say("AniList didn’t connect", "Go back to Peli and try again."));
 }
 </script></body></html>`

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The shaders a Quality may load (SOURCES.txt says where each is from; all
@@ -107,7 +107,7 @@ func shaders() (string, error) {
 			shaderErr = err
 			return
 		}
-		dir := filepath.Join(base, "Sinag", "shaders", hex.EncodeToString(h.Sum(nil))[:12])
+		dir := filepath.Join(base, "Peli", "shaders", hex.EncodeToString(h.Sum(nil))[:12])
 		shaderErr = fs.WalkDir(shaderFiles, "shaders", func(p string, d fs.DirEntry, err error) error {
 			if err != nil {
 				return err

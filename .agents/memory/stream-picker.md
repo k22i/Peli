@@ -14,4 +14,4 @@ The picker's design (#52, ADR-0036): `components/streams/stream-list.tsx` (`list
 - Route tests: `shownStreams()` filters out buttons with `aria-expanded` (group headings, File name); group headings are named like "Likely fake 8"; the top pick's text starts "Top pick".
 - Screenshot harness: copy `stubs/` + `shot2.mjs` pattern (hash URLs `#/title/...`, throwaway `vite.stub.config.ts` in frontend/ aliasing `@bindings/*`, port 9311); the picker then asks live Torrentio/Peerflix.
 - #68 shares the picker's data hook (`useStreamChoices`), summary and P key with the player's switcher: [[stream-switcher]].
-- Related: [[stream-ranking]], [[stream-requests]], [[sinag-design-direction]].
+- Related: [[stream-ranking]], [[stream-requests]], [[peli-design-direction]].

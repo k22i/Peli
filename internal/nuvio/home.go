@@ -35,7 +35,7 @@ const homePlatform = "home_catalog_shared"
 // HomeLayoutRow is a profile's home layout as the server keeps it.
 type HomeLayoutRow struct {
 	ProfileID int `json:"profile_id"`
-	// Nuvio's apps' blob, passed through whole so a push keeps what Sinag
+	// Nuvio's apps' blob, passed through whole so a push keeps what Peli
 	// doesn't read.
 	Settings map[string]json.RawMessage `json:"settings_json"`
 }
@@ -47,7 +47,7 @@ type CollectionsRow struct {
 }
 
 // OwnServer reports whether the client points at a custom server: neither
-// the URL it was made with (Nuvio's, or $SINAG_NUVIO_URL in development) nor
+// the URL it was made with (Nuvio's, or $PELI_NUVIO_URL in development) nor
 // any nuvio.tv host.
 func (c *Client) OwnServer() bool {
 	base, _ := c.server()

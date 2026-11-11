@@ -9,12 +9,12 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/store"
 )
 
-// A guest uses Sinag with no request to Nuvio (#23): launching, writing every
+// A guest uses Peli with no request to Nuvio (#23): launching, writing every
 // synced surface and syncing through the profile's backend.
 func TestGuestMakesNoNuvioRequests(t *testing.T) {
 	var requests atomic.Int32
@@ -25,7 +25,7 @@ func TestGuestMakesNoNuvioRequests(t *testing.T) {
 	}))
 	defer server.Close()
 
-	db := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	db := store.NewService(filepath.Join(t.TempDir(), "peli.db"))
 	if err := db.ServiceStartup(t.Context(), application.ServiceOptions{}); err != nil {
 		t.Fatal(err)
 	}

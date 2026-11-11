@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
-Name=Sinag
+Name=Peli
 Comment=A desktop client for Stremio-compatible addons, with Nuvio sync
 # The Exec line includes %u to pass the URL to the application
-Exec=/usr/local/bin/sinag %u
+Exec=/usr/local/bin/peli %u
 Terminal=false
 Type=Application
-Icon=sinag
+Icon=peli
 Categories=Utility;
-StartupWMClass=sinag
+StartupWMClass=peli
 
  

@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Plugin repository sync (#57, ADR-0047). Nuvio's plugins table holds
@@ -85,7 +85,7 @@ func fromPluginRows(rows []nuvio.PluginRow) []store.PluginRepo {
 }
 
 // mergePluginRepos is mergeAddons for repositories, matched by manifest URL.
-// Repositories Sinag can't run (Cloudstream's) are in both lists and are
+// Repositories Peli can't run (Cloudstream's) are in both lists and are
 // carried through like any other, so a push doesn't delete them.
 func mergePluginRepos(base, local, server []store.PluginRepo) []store.PluginRepo {
 	return mergeByURL(base, local, server, func(r store.PluginRepo) string { return r.URL })

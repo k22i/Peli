@@ -65,7 +65,7 @@ static void leave_mini(NSWindow *window) {
 // Fills the screen's visible frame (all but the menu bar and Dock), as
 // zoom does with no delegate, unless the window is fullscreen or fills it
 // already.
-void sinag_window_fill(void *win) {
+void peli_window_fill(void *win) {
 	NSWindow *window = (__bridge NSWindow *)win;
 	if (g_filled || g_mini || is_fullscreen(window)) return;
 	NSScreen *screen = window.screen ?: NSScreen.mainScreen;
@@ -79,7 +79,7 @@ void sinag_window_fill(void *win) {
 // Ends playback's window: the mini player becomes the app window, and the
 // window goes back to its size before playback, in one move. A fullscreen
 // window stays as it is.
-void sinag_window_restore(void *win) {
+void peli_window_restore(void *win) {
 	NSWindow *window = (__bridge NSWindow *)win;
 	BOOL mini = g_mini, filled = g_filled;
 	g_filled = NO;
@@ -91,7 +91,7 @@ void sinag_window_restore(void *win) {
 		[window setFrame:g_full_frame display:YES animate:YES];
 }
 
-void sinag_window_mini(void *win, int on, double aspect) {
+void peli_window_mini(void *win, int on, double aspect) {
 	NSWindow *window = (__bridge NSWindow *)win;
 	if (!on) {
 		if (!g_mini) return;

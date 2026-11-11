@@ -12,28 +12,28 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
-	"github.com/k22i/Sinag/internal/account"
-	"github.com/k22i/Sinag/internal/addons"
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/anilistaddon"
-	"github.com/k22i/Sinag/internal/animelist"
-	"github.com/k22i/Sinag/internal/appinfo"
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/firstmouse"
-	"github.com/k22i/Sinag/internal/licences"
-	"github.com/k22i/Sinag/internal/markers"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/party"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/plugins"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
-	"github.com/k22i/Sinag/internal/syncer"
-	"github.com/k22i/Sinag/internal/torrent"
-	"github.com/k22i/Sinag/internal/tracking"
-	"github.com/k22i/Sinag/internal/watching"
+	"github.com/k22i/Peli/internal/account"
+	"github.com/k22i/Peli/internal/addons"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/anilistaddon"
+	"github.com/k22i/Peli/internal/animelist"
+	"github.com/k22i/Peli/internal/appinfo"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/firstmouse"
+	"github.com/k22i/Peli/internal/licences"
+	"github.com/k22i/Peli/internal/markers"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/party"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/plugins"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
+	"github.com/k22i/Peli/internal/syncer"
+	"github.com/k22i/Peli/internal/torrent"
+	"github.com/k22i/Peli/internal/tracking"
+	"github.com/k22i/Peli/internal/watching"
 )
 
 // The built frontend (frontend/dist) is embedded into the binary.
@@ -55,12 +55,16 @@ func main() {
 
 	firstmouse.Enable()
 
+	// An install from when the app was Sinag moves to Peli's folders first.
+	if err := store.MoveFromSinag(); err != nil {
+		log.Printf("moving Sinag's folders to Peli's: %v", err)
+	}
 	db := store.NewService(store.DefaultPath())
-	keychain := secrets.New(secrets.ServiceName)
-	// $SINAG_NUVIO_URL stands in for Nuvio's backend, such as the contract
+	keychain := secrets.New(secrets.ServiceName).MovesFrom(secrets.LegacyServiceName)
+	// $PELI_NUVIO_URL stands in for Nuvio's backend, such as the contract
 	// tests' self-host (#33). A server the user picks in Settings (#34) is
 	// restored over it when the account service starts.
-	client := nuvio.New(cmp.Or(os.Getenv("SINAG_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
+	client := nuvio.New(cmp.Or(os.Getenv("PELI_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
 	accounts := account.NewService(client, keychain, db)
 	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})
 	// Sending what is queued is the first step of signing out (#30).
@@ -82,15 +86,15 @@ func main() {
 	anilistClient := anilist.New(anilist.DefaultURL, appinfo.Version)
 	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
 	trackers := tracking.NewService(tracking.Config{
-		Simkl:           simkl.New(simkl.DefaultURL, cmp.Or(os.Getenv("SINAG_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
+		Simkl:           simkl.New(simkl.DefaultURL, cmp.Or(os.Getenv("PELI_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
 		AniList:         anilistClient,
-		AniListClientID: cmp.Or(os.Getenv("SINAG_ANILIST_CLIENT_ID"), tracking.AniListClientID),
+		AniListClientID: cmp.Or(os.Getenv("PELI_ANILIST_CLIENT_ID"), tracking.AniListClientID),
 		Anime:           animeList,
 		Keychain:        keychain,
 		Open:            func() *store.Store { return store.Opened(db) },
 	})
 	// Addon requests the webview's fetch can't make (#37), and the addons
-	// built into Sinag (#107): AniList's lists and details (#108).
+	// built into Peli (#107): AniList's lists and details (#108).
 	addonFetcher := addons.NewService(appinfo.Version)
 	addonFetcher.Register(anilistaddon.Name,
 		anilistaddon.New(anilistClient, animeList, anilistaddon.KitsuURL, appinfo.Version))
@@ -112,7 +116,7 @@ func main() {
 	player.GateWith(players, party.GateOf(parties))
 
 	app := application.New(application.Options{
-		Name:        "Sinag",
+		Name:        "Peli",
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
@@ -157,7 +161,7 @@ func main() {
 	})
 
 	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Title: "Sinag",
+		Title: "Peli",
 		// Opens at 1600×900 (16:9), midway between 1280×720 and 1920×1080.
 		Width:  1600,
 		Height: 900,

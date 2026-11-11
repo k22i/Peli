@@ -1,6 +1,6 @@
 ---
 name: tmdb-key
-description: "How Sinag's optional TMDB key (#47) works: tmdb.api-key in the keychain, lib/tmdb.ts id mapping + useTmdbArt, Artwork fallback, test mocks; read before using TMDB anywhere else (#51, Home hero)"
+description: "How Peli's optional TMDB key (#47) works: tmdb.api-key in the keychain, lib/tmdb.ts id mapping + useTmdbArt, Artwork fallback, test mocks; read before using TMDB anywhere else (#51, Home hero)"
 metadata:
   type: project
 ---

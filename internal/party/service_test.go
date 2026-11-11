@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/player"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/player"
 )
 
 // fakeAPI is Nuvio's side of a party, as a test sets it up.

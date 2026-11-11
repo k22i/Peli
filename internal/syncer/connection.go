@@ -8,7 +8,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/backend"
+	"github.com/k22i/Peli/internal/backend"
 )
 
 // Connection is whether the app can reach Nuvio, for the frontend's offline

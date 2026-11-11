@@ -25,9 +25,9 @@ import type {
 // pages. An addon URL can embed the user's debrid key, so neither URLs nor
 // answers are logged, and errors don't name them.
 
-// Whether an addon runs inside Sinag (#107, ADR-0045):
-// sinag://<name>/manifest.json, answered by Go and never synced to Nuvio.
-export const isBuiltinAddon = (url: string) => /^sinag:\/\//i.test(url);
+// Whether an addon runs inside Peli (#107, ADR-0045):
+// peli://<name>/manifest.json, answered by Go and never synced to Nuvio.
+export const isBuiltinAddon = (url: string) => /^peli:\/\//i.test(url);
 
 // Where an addon's manifest is. Lists synced from Nuvio hold some addons by
 // their base URL ("https://opensubtitles-v3.strem.io"), Stremio by the
@@ -124,7 +124,7 @@ export function createAddonClient(transport: Transport = wailsTransport) {
     const both = signal ? AbortSignal.any([signal, timer]) : timer;
     // A built-in addon is only Go's to answer.
     const builtin = isBuiltinAddon(url);
-    const origin = builtin ? "sinag:" : new URL(url).origin;
+    const origin = builtin ? "peli:" : new URL(url).origin;
     const failed = (error: unknown) => {
       if (signal?.aborted) throw signal.reason;
       if (timer.aborted) throw timedOut();
@@ -160,7 +160,7 @@ export function createAddonClient(transport: Transport = wailsTransport) {
     timeout: number,
     signal: AbortSignal | undefined,
     parse: (answer: unknown) => T,
-    invalid = "The addon’s answer isn’t one Sinag can read.",
+    invalid = "The addon’s answer isn’t one Peli can read.",
   ): Promise<T> {
     const { status, text } = await getText(url, timeout, signal);
     if (status < 200 || status >= 300) {

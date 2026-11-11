@@ -1,7 +1,7 @@
 package party
 
 import (
-	"github.com/k22i/Sinag/internal/backend"
+	"github.com/k22i/Peli/internal/backend"
 )
 
 // Events the service sends the frontend. Each carries the whole of what it

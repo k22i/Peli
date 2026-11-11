@@ -1,6 +1,6 @@
 ---
 name: kids-profiles
-description: "How Sinag's kids profiles work (#26): local flag, addon allow-list, parent PIN = the profile's own PIN; where later screens must call"
+description: "How Peli's kids profiles work (#26): local flag, addon allow-list, parent PIN = the profile's own PIN; where later screens must call"
 metadata:
   type: project
 ---

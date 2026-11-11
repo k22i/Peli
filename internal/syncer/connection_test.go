@@ -12,10 +12,10 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // recorder is a monitor's emit and reconnected, safe to read while its
@@ -192,7 +192,7 @@ func TestPullNowIgnoresTheGap(t *testing.T) {
 	}
 }
 
-// app is the sync service of one Sinag install, wired as main wires it, with
+// app is the sync service of one Peli install, wired as main wires it, with
 // a profile linked to Nuvio profile 1.
 type app struct {
 	db      *store.Store
@@ -202,7 +202,7 @@ type app struct {
 
 func newApp(t *testing.T, server *nuviotest.Server) *app {
 	t.Helper()
-	dbService := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	dbService := store.NewService(filepath.Join(t.TempDir(), "peli.db"))
 	client := nuvio.New(server.URL, "1.2.3")
 	session, err := client.SignInWithPassword(t.Context(), email, nuviotest.Password)
 	check(t, err)

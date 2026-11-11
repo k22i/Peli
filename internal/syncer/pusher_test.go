@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // pusher returns a pusher for the device with a clock the test moves. Tests

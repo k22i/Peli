@@ -1,6 +1,6 @@
 ---
 name: stream-ranking
-description: "How Sinag ranks streams (#51): lib/ranking layout, worker + RankingSession, useRankedStreams restarts on ctx/prefs, accuracy gate + accuracy.md snapshot, timing; read before #52, #56, #58, #68"
+description: "How Peli ranks streams (#51): lib/ranking layout, worker + RankingSession, useRankedStreams restarts on ctx/prefs, accuracy gate + accuracy.md snapshot, timing; read before #52, #56, #58, #68"
 metadata:
   type: project
 ---

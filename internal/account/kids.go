@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Kids profiles (#26). A kids profile sees only what its parent allowed

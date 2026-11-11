@@ -7,9 +7,9 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // A custom server (#34, ADR-0021): the user's own Nuvio-compatible backend,
@@ -31,7 +31,7 @@ var (
 	ErrQRUnavailable = errors.New("account: QR sign-in needs Nuvio's server")
 )
 
-// Server is the backend Sinag signs in to.
+// Server is the backend Peli signs in to.
 type Server struct {
 	URL string `json:"url"`
 	// The user's own, not Nuvio's.
@@ -41,7 +41,7 @@ type Server struct {
 	HasKey bool `json:"hasKey"`
 }
 
-// Server returns the backend Sinag signs in to.
+// Server returns the backend Peli signs in to.
 func (s *Service) Server() Server {
 	server := Server{URL: s.nuvio.ServerURL(), Custom: s.customServer()}
 	if server.Custom {

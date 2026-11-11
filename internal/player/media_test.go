@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // fakeMedia records what the media controls were given.

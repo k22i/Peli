@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/player"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/player"
 )
 
 // Following the player, as Nuvio's players follow theirs.

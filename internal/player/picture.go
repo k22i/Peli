@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"strconv"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // shadowLift is how far ShadowLift raises gamma: enough to open up a dark

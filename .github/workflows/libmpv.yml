@@ -98,5 +98,5 @@ jobs:
           sha256sum "sources-$TAG.tar.xz" > "sources-$TAG.tar.xz.sha256"
           cat ./*.sha256 > SHA256SUMS
           gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" \
-            --notes "Sinag's LGPL libmpv (#92), built from build/libmpv at $GITHUB_SHA. Checksums in SHA256SUMS." \
+            --notes "Peli's LGPL libmpv (#92), built from build/libmpv at $GITHUB_SHA. Checksums in SHA256SUMS." \
             ./*.tar.xz SHA256SUMS

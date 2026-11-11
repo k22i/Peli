@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Scrobbling (#73) and AniList progress (#105), from the player's reports.

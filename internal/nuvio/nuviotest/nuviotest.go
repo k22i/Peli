@@ -396,7 +396,7 @@ func (s *Server) serve(w http.ResponseWriter, r *http.Request) {
 	case "/rest/v1/rpc/start_device_login_session", "/rest/v1/rpc/poll_tv_login_session", "/functions/v1/tv-logins-exchange":
 		s.deviceLogin(w, r.URL.Path, body)
 	case "/rest/v1/rpc/approve_device_login_session":
-		// What nuvio.tv/link calls; Sinag doesn't, but the contract tests do.
+		// What nuvio.tv/link calls; Peli doesn't, but the contract tests do.
 		if bearer == nil {
 			w.WriteHeader(http.StatusUnauthorized)
 			w.Write([]byte(`{"code":"42501","message":"permission denied for function approve_device_login_session"}`))

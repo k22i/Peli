@@ -1,7 +1,7 @@
 // cheerio-without-node-native, as plugins use it (#56): load(html) gives a
 // $ that selects with CSS, and selections with jQuery's reading methods
 // (find, each, map, attr, text, html, first, next, closest…). Written for
-// Sinag; parsing and selector matching are Go's (html.go), where a node is
+// Peli; parsing and selector matching are Go's (html.go), where a node is
 // a number within its document. Elements look like htmlparser2's: type,
 // name, attribs, data, parent, children, next, prev.
 (function (host) {

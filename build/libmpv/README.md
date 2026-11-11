@@ -1,4 +1,4 @@
-# Sinag's libmpv
+# Peli's libmpv
 
 Our own LGPL build of libmpv ([ADR-0003](../../docs/adr/0003-mit-app-with-our-own-lgpl-libmpv.md), [ADR-0041](../../docs/adr/0041-our-libmpv-build.md), #92). Every package that bundles libmpv ships this one, never a third-party build.
 
@@ -6,7 +6,7 @@ Our own LGPL build of libmpv ([ADR-0003](../../docs/adr/0003-mit-app-with-our-ow
 |---|---|
 | `sources.txt` | The pinned sources: version, URL and SHA-256 (or a git commit) for mpv, FFmpeg and each library built into it |
 | `build.sh` | Builds one target into `.work/libmpv-<target>/` and `.work/libmpv-<target>.tar.xz` |
-| `smoke.sh`, `smoke/smoke_darwin.c` | Checks a build has the decoders and protocols Sinag needs, and renders the player's fixtures through the OpenGL render API |
+| `smoke.sh`, `smoke/smoke_darwin.c` | Checks a build has the decoders and protocols Peli needs, and renders the player's fixtures through the OpenGL render API |
 | `../../.github/workflows/libmpv.yml` | Builds, smoke-tests and caches each target for CI; publishes a release on demand |
 
 Targets: `macos-arm64` and `macos-x86_64`, minimum macOS 12. Windows is next; Linux is deferred (#103), and the `.deb` uses the distribution's libmpv2.
@@ -28,7 +28,7 @@ Either Mac architecture builds both targets. The smoke test runs only on the arc
 ```sh
 export PKG_CONFIG_PATH=$PWD/build/libmpv/.work/libmpv-macos-arm64/lib/pkgconfig
 go clean -cache   # Go's build cache doesn't notice a different pkg-config result
-wails3 package    # copies libmpv.2.dylib into Sinag.app/Contents/Frameworks
+wails3 package    # copies libmpv.2.dylib into Peli.app/Contents/Frameworks
 ```
 
 `wails3 package` copies the library into the bundle and points the binary's rpath at `Contents/Frameworks`. Built against Homebrew's mpv instead, the app still runs locally, but the package step warns that the bundle can't ship. CI builds every macOS job against this build (`ci.yml` calls `libmpv.yml`, which rebuilds only when something under `build/libmpv` changes).

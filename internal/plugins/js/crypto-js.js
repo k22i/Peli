@@ -1,7 +1,7 @@
 // crypto-js, as plugins use it (#56): WordArrays and encoders (Hex, Base64,
 // Utf8, Latin1, Utf16), hashes, HMAC, PBKDF2 and EvpKDF, and AES, DES and
 // TripleDES with crypto-js's modes, paddings and OpenSSL "Salted__" format.
-// Written for Sinag to match crypto-js's behaviour; the work is Go's
+// Written for Peli to match crypto-js's behaviour; the work is Go's
 // (crypto.go), with bytes crossing as ArrayBuffers.
 (function (host) {
   "use strict";

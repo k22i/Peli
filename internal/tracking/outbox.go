@@ -7,9 +7,9 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The offline queue (#73, #105): a watch SIMKL or AniList couldn't be told

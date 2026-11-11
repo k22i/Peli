@@ -4,15 +4,16 @@
 @import "@fontsource/instrument-serif/400-italic.css";
 
 /*
- * Sinag: "screening room".
+ * Peli: "screening room".
  *
  * A warm, dark-first canvas (paper-warm in light mode), the system face for
  * everything you read and press, and Instrument Serif for the big moments:
- * hero and page titles, the wordmark. One accent, --sun (sinag is Tagalog
- * for a ray of light), used sparingly: progress, the current place, focus.
+ * hero and page titles, the wordmark. One accent, --sun (a warm amber, the
+ * pelican's bill in the mark; the name is from when the app was Sinag), used
+ * sparingly: progress, the current place, focus.
  *
  * Colour variables keep coss ui's semantic names (background, foreground,
- * popover, …) so its components follow; Sinag's own are --sun*, --raised and
+ * popover, …) so its components follow; Peli's own are --sun*, --raised and
  * the media tokens. Colours are plain hex so src/lib/contrast.test.ts can
  * check every text pair against WCAG AA in both modes.
  *

@@ -36,16 +36,16 @@ The server listens on loopback only, and answers only with the 128-bit secret in
 
 ## The cache
 
-Pieces go to the OS cache folder (`~/Library/Caches/Sinag/torrents`, `~/.cache/Sinag/torrents`, `%LOCALAPPDATA%\cache\Sinag\torrents`; `$SINAG_DATA_DIR/torrents` when that's set), one file per verified piece. A piece being downloaded is `<index>.part` and is renamed when its hash checks. Past the cap, the **oldest written** pieces go first, not the least recently read: a stream reads in order, so promoting a piece on read would drop the pieces fetched ahead of the player, which is exactly what it needs next. A later run finds what an earlier one left, newest first and within the cap, and deletes unfinished pieces. Settings shows the size used and can clear it, but the torrent playing's pieces stay.
+Pieces go to the OS cache folder (`~/Library/Caches/Peli/torrents`, `~/.cache/Peli/torrents`, `%LOCALAPPDATA%\cache\Peli\torrents`; `$PELI_DATA_DIR/torrents` when that's set), one file per verified piece. A piece being downloaded is `<index>.part` and is renamed when its hash checks. Past the cap, the **oldest written** pieces go first, not the least recently read: a stream reads in order, so promoting a piece on read would drop the pieces fetched ahead of the player, which is exactly what it needs next. A later run finds what an earlier one left, newest first and within the cap, and deletes unfinished pieces. Settings shows the size used and can clear it, but the torrent playing's pieces stay.
 
 The client doesn't download more than the cap at once: it only asks for the readers' windows (16 MB past each) and the four end pieces. When the cache drops a piece the client is told (`Piece.UpdateCompletion`), and a read that finds a piece gone waits up to 30 s for it to come again.
 
 Two things in anacrolix/torrent v1.61 didn't work as documented, and each stalled a test stream for a minute:
 
-- **Its own storage cap** (`TorrentImpl.Capacity`): with one, its request planner stopped asking for pieces until a peer timed out. Sinag's cache doesn't give it one.
+- **Its own storage cap** (`TorrentImpl.Capacity`): with one, its request planner stopped asking for pieces until a peer timed out. Peli's cache doesn't give it one.
 - **A missed wake-up** in each connection's writer: if the signal to ask for pieces comes between its last look and its wait, it sleeps until its keep-alive timer. That was a minute by default, which stalled about 1 in 25 test streams right after the metadata came. The timer is set to 2 s, so a stall lasts 2 s at most. It costs a 4-byte keep-alive every 2 s to a peer we want something from.
 
-**No SQLite.** anacrolix's `storage` package links a SQLite piece-completion store through `github.com/go-llsqlite/adapter`, a module with no licence, unless built with `-tags nosqlite`. Sinag's cache keeps completion itself, so every production build passes `nosqlite` (the three desktop Taskfiles, the server build, bindings, `tools/notices`), and `nosqlite.go` stops a production build that doesn't. Dev and test builds still link it, and nothing ships them. CI checks the tag in the built binary's build info.
+**No SQLite.** anacrolix's `storage` package links a SQLite piece-completion store through `github.com/go-llsqlite/adapter`, a module with no licence, unless built with `-tags nosqlite`. Peli's cache keeps completion itself, so every production build passes `nosqlite` (the three desktop Taskfiles, the server build, bindings, `tools/notices`), and `nosqlite.go` stops a production build that doesn't. Dev and test builds still link it, and nothing ships them. CI checks the tag in the built binary's build info.
 
 ## Off until turned on
 
@@ -69,7 +69,7 @@ Uploading isn't turned off. Swarms favour peers that give back, and a client tha
 | Memory | The whole test process at 34–44 MB RSS (12–16 MB Go heap) while streaming. The client doesn't run until the first torrent |
 | Binary | +10.9 MB on macOS arm64 (14.6 → 25.5 MB stripped, built with `nosqlite`), **+3.7 MB gzipped**. Most of it is pion's WebRTC, which anacrolix links even with WebTorrent off, and no build tag removes it |
 
-Those are old, small swarms of Creative Commons films, run with `SINAG_TORRENT_LIVE=1 go test -v -run TestLive ./internal/torrent`. A popular release has far more peers. Time to first frame depends on the swarm, so it has no target here. ADR-0005's ≤ 3 s is for debrid links. **Installers:** the per-arch DMGs (8–24 MB) and NSIS installer stay well under 60 MB. The AppImage, about 90 MB with libmpv, comes close to its 100 MB ceiling; #88's check will tell.
+Those are old, small swarms of Creative Commons films, run with `PELI_TORRENT_LIVE=1 go test -v -run TestLive ./internal/torrent`. A popular release has far more peers. Time to first frame depends on the swarm, so it has no target here. ADR-0005's ≤ 3 s is for debrid links. **Installers:** the per-arch DMGs (8–24 MB) and NSIS installer stay well under 60 MB. The AppImage, about 90 MB with libmpv, comes close to its 100 MB ceiling; #88's check will tell.
 
 ## Tests
 

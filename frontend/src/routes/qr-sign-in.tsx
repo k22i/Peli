@@ -24,7 +24,7 @@ export const Route = createFileRoute("/qr-sign-in")({
 });
 
 // QR sign-in (#21, ADR-0013): the phone's camera opens Nuvio's "Link a
-// device" page with the code filled in, and the user approves Sinag there,
+// device" page with the code filled in, and the user approves Peli there,
 // or types the short code at nuvio.tv/link on any device. Go polls and keeps
 // the session; this page never sees a token.
 function QRSignIn() {
@@ -72,7 +72,7 @@ function QRSignIn() {
           <h1 className="font-display text-[2.5rem] leading-none">Sign in with your phone</h1>
           <p className="text-pretty text-muted-foreground">
             Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and
-            approve Sinag.
+            approve Peli.
           </p>
         </header>
 

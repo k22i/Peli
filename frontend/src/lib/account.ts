@@ -386,7 +386,7 @@ export function profileProblem(error: Error): { title: string; description: stri
       return {
         title: "Sign in again to change Nuvio profiles",
         description:
-          "Your Nuvio session ended. Nuvio profiles change on every device, so Sinag needs to be signed in.",
+          "Your Nuvio session ended. Nuvio profiles change on every device, so Peli needs to be signed in.",
       };
     case "profile_not_found":
       return {

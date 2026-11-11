@@ -12,7 +12,7 @@ import (
 	"unicode"
 )
 
-// Screenshots are PNGs in ~/Pictures/Sinag. Our FFmpeg has no encoders
+// Screenshots are PNGs in ~/Pictures/Peli. Our FFmpeg has no encoders
 // (#92), so mpv's screenshot command can't write them: screenshot-raw hands
 // Go the frame, which image/png encodes.
 
@@ -22,7 +22,7 @@ var screenshotDir = func() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(home, "Pictures", "Sinag"), nil
+	return filepath.Join(home, "Pictures", "Peli"), nil
 }
 
 // Screenshot saves the frame showing as a PNG, at the video's own size,
@@ -92,7 +92,7 @@ func screenshotName(playing NowPlaying, position float64) string {
 	}
 	title := strings.Join(parts, " – ")
 	if title == "" {
-		title = "Sinag"
+		title = "Peli"
 	}
 	if r := []rune(title); len(r) > 120 {
 		title = strings.TrimSpace(string(r[:120]))
@@ -115,7 +115,7 @@ func cleanName(s string) string {
 // writePNG writes img as name.png in dir, or name 2.png and on when that's
 // taken, through a temporary file so a half-written one never shows.
 func writePNG(dir, name string, img image.Image) (string, error) {
-	tmp, err := os.CreateTemp(dir, ".sinag-shot-*.png")
+	tmp, err := os.CreateTemp(dir, ".peli-shot-*.png")
 	if err != nil {
 		return "", fmt.Errorf("player: screenshot: %w", err)
 	}

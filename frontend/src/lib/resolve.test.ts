@@ -52,7 +52,7 @@ const source = (url: string): Source => ({
   url: `${url}#cdn`,
   origin: url,
   headers: {},
-  userAgent: "Sinag/test",
+  userAgent: "Peli/test",
   contentType: "video/x-matroska",
   size: 2_100_000_000,
 });

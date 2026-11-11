@@ -10,7 +10,7 @@ metadata:
 **Why:** later player work (#67–#70, #91, #92) touches the same session options and host interface.
 
 **How to apply:**
-- The user's real `sinag.db` has hardware decoding **off**: a dev-play run with a copy of it decodes in software (`hwdec ""`). Flip it in the scratch copy with `store.Open` + `SaveDeviceSettings` before checking VideoToolbox.
+- The user's real `peli.db` has hardware decoding **off**: a dev-play run with a copy of it decodes in software (`hwdec ""`). Flip it in the scratch copy with `store.Open` + `SaveDeviceSettings` before checking VideoToolbox.
 - The user's display has no EDR (potential 1.0), so the EDR layer only runs when forced (temporary `getenv` override of `g_edr` in `video_darwin.m`; never commit). A half-float layer must be tagged with a colourspace or SDR looks washed out.
 - New host methods: every host, including `nullHost` and test hosts (`hdrHost` in `decoding_test.go`), implements `canShowHDR`/`showHDR`.
 - Windows cross-vet in Docker needs `GOARCH=amd64` on this arm64 Mac, besides the flags in [[player-service]].

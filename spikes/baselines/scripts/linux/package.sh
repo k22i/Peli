@@ -19,16 +19,16 @@ go build -tags production,mpv "${flags[@]}" -o "$out/bin/mpv" .
 for v in shell mpv; do
   d="$out/$v"
   mkdir -p "$d"
-  cp "$out/bin/$v" "$d/sinag"
+  cp "$out/bin/$v" "$d/peli"
   # nfpm needs a value; libc6 is a no-op dependency for the shell.
   dep=libc6
-  [ "$v" = mpv ] && dep=$(dpkg -S "$(ldd "$d/sinag" | awk '/libmpv/ {print $1}')" | head -1 | cut -d: -f1)
+  [ "$v" = mpv ] && dep=$(dpkg -S "$(ldd "$d/peli" | awk '/libmpv/ {print $1}')" | head -1 | cut -d: -f1)
   # nfpm doesn't expand variables in contents, so fill the template here.
-  sed -e "s#\${SINAG_BIN}#$d/sinag#" -e "s#\${SINAG_MPV_DEP}#$dep#" scripts/linux/nfpm.yaml > "$d/nfpm.yaml"
-  GOARCH="$arch" wails3 tool package -name sinag -format deb -config "$d/nfpm.yaml" -out "$d"
-  cp ../../build/appicon.png "$d/sinag.png" # appimagetool wants the desktop file's Icon= name
-  wails3 generate appimage -binary "$d/sinag" -icon "$d/sinag.png" \
-    -desktopfile scripts/linux/sinag.desktop -outputdir "$d" -builddir "$PWD/$d/appimage-build"
+  sed -e "s#\${PELI_BIN}#$d/peli#" -e "s#\${PELI_MPV_DEP}#$dep#" scripts/linux/nfpm.yaml > "$d/nfpm.yaml"
+  GOARCH="$arch" wails3 tool package -name peli -format deb -config "$d/nfpm.yaml" -out "$d"
+  cp ../../build/appicon.png "$d/peli.png" # appimagetool wants the desktop file's Icon= name
+  wails3 generate appimage -binary "$d/peli" -icon "$d/peli.png" \
+    -desktopfile scripts/linux/peli.desktop -outputdir "$d" -builddir "$PWD/$d/appimage-build"
 done
 
 flatpak_info() { # ref -> "download installed" in bytes, from Flathub's metadata
@@ -72,7 +72,7 @@ for v in ("shell", "mpv"):
                 libs.append((os.path.getsize(p), os.path.relpath(p, appdir)))
     libs.sort(reverse=True)
     res[v] = {
-        "exeBytes": os.path.getsize(os.path.join(d, "sinag")),
+        "exeBytes": os.path.getsize(os.path.join(d, "peli")),
         "debBytes": os.path.getsize(deb),
         "appImageBytes": os.path.getsize(img),
         "appDirBytes": tree_bytes(appdir),

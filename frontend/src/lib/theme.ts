@@ -9,7 +9,7 @@ export const themePreferences = ["system", "light", "dark"] as const;
 export type ThemePreference = (typeof themePreferences)[number];
 export type Theme = "light" | "dark";
 
-export const themeStorageKey = "sinag.theme";
+export const themeStorageKey = "peli.theme";
 
 // The page colour (--background in index.css) for each mode. The content
 // pane fills the window now, so this is what shows under the webview while

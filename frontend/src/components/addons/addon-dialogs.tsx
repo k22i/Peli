@@ -211,7 +211,7 @@ function InstallForm({
       <DialogHeader>
         <DialogTitle>Install an addon</DialogTitle>
         <DialogDescription>
-          Paste the addon’s address: its manifest URL or a stremio:// link. Sinag comes with no
+          Paste the addon’s address: its manifest URL or a stremio:// link. Peli comes with no
           addons; you choose your own.
         </DialogDescription>
       </DialogHeader>
@@ -219,7 +219,7 @@ function InstallForm({
         <AddressField
           value={input}
           onChange={setInput}
-          description="An address with your settings in it can hold an account key, so Sinag shows only its host."
+          description="An address with your settings in it can hold an account key, so Peli shows only its host."
         />
         {current?.isError && (
           <Problem title="Couldn’t read that addon" description={current.error.message} />

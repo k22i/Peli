@@ -17,7 +17,7 @@ import { torrentRequest, wailsTorrentOpener, type TorrentOpener } from "@/lib/to
 export type { Source };
 
 // Why a copy wouldn't play: internal/streams' codes, internal/torrent's,
-// and the kinds of stream Sinag can't play.
+// and the kinds of stream Peli can't play.
 export type FailureKind =
   | "caching"
   | "denied"
@@ -108,7 +108,7 @@ const messages: Record<FailureKind, (service: string | null) => Message> = {
   expired: () => ({
     title: "This stream’s link has expired",
     description:
-      "Sinag asked the addon again, but the link still doesn’t work. Pick another stream.",
+      "Peli asked the addon again, but the link still doesn’t work. Pick another stream.",
   }),
   unavailable: (service) => ({
     title: `${service ?? "The stream’s server"} is having problems`,
@@ -139,7 +139,7 @@ const messages: Record<FailureKind, (service: string | null) => Message> = {
   }),
   torrent_failed: () => ({
     title: "Couldn’t start streaming the torrent",
-    description: "Sinag’s torrent engine couldn’t start. Try again, or pick another stream.",
+    description: "Peli’s torrent engine couldn’t start. Try again, or pick another stream.",
   }),
   invalid_url: () => unsupported,
   unsupported: () => unsupported,
@@ -151,7 +151,7 @@ const unreachable: Message = {
 };
 
 const unsupported: Message = {
-  title: "Sinag can’t play this kind of stream",
+  title: "Peli can’t play this kind of stream",
   description: "Pick another stream.",
 };
 

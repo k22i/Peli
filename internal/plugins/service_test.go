@@ -12,7 +12,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // repository serves a plugin repository over HTTP: a manifest with an
@@ -54,7 +54,7 @@ type host struct {
 
 func newHost(t *testing.T) *host {
 	t.Helper()
-	db, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
+	db, err := store.Open(filepath.Join(t.TempDir(), "peli.db"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -318,7 +318,7 @@ func TestRefreshAndSettings(t *testing.T) {
 	}
 	n, err := h.Refresh(ctx, h.profile.ID, false)
 	if err != nil || n != 1 {
-		t.Fatalf("refresh = %d, %v; want the one repository Sinag can run", n, err)
+		t.Fatalf("refresh = %d, %v; want the one repository Peli can run", n, err)
 	}
 	if n, err := h.Refresh(ctx, h.profile.ID, false); err != nil || n != 0 {
 		t.Fatalf("a second refresh = %d, %v; want nothing due", n, err)

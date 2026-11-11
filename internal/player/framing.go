@@ -7,7 +7,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // framingProps are the mpv properties that frame the picture as f says,
@@ -31,13 +31,13 @@ func framingProps(f store.Framing) [][2]string {
 	}
 	vf := ""
 	if f.FlipH {
-		vf = "@sinag-hflip:lavfi=[hflip]"
+		vf = "@peli-hflip:lavfi=[hflip]"
 	}
 	if f.FlipV {
 		if vf != "" {
 			vf += ","
 		}
-		vf += "@sinag-vflip:lavfi=[vflip]"
+		vf += "@peli-vflip:lavfi=[vflip]"
 	}
 	num := func(v float64) string { return strconv.FormatFloat(v, 'f', 4, 64) }
 	return [][2]string{

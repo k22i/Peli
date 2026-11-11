@@ -13,7 +13,7 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-// Profile is one person's space in Sinag: their library, progress, watched
+// Profile is one person's space in Peli: their library, progress, watched
 // items and addons.
 type Profile struct {
 	ID   uint64 `json:"id"`
@@ -34,7 +34,7 @@ type Profile struct {
 	// that list. The master switch and each plugin's settings stay the
 	// profile's own.
 	UsesPrimaryPlugins bool `json:"usesPrimaryPlugins,omitempty"`
-	// The Guest profile, for using Sinag without an account (#23). There is
+	// The Guest profile, for using Peli without an account (#23). There is
 	// at most one, it is local-only, and signing in or out leaves it as it
 	// is: its data never merges into an account's (ADR-0010).
 	Guest bool `json:"guest,omitempty"`

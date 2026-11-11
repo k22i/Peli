@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/k22i/Sinag/internal/backend"
+	"github.com/k22i/Peli/internal/backend"
 )
 
 // The party's chat: the backend keeps the messages and broadcasts each one

@@ -1,7 +1,7 @@
 # Local stand-in for the ubuntu-24.04 CI runner: Linux packaging and bench
 # (Xvfb, no GPU), plus the Windows cross-build (mingw-w64, NSIS).
-#   docker build -t sinag-spike-baselines scripts/linux
-#   docker run --rm -v "$PWD":/spike sinag-spike-baselines scripts/linux/package.sh
+#   docker build -t peli-spike-baselines scripts/linux
+#   docker run --rm -v "$PWD":/spike peli-spike-baselines scripts/linux/package.sh
 FROM golang:1.25-trixie AS go
 FROM ubuntu:24.04
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

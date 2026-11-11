@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 func propMap(props [][2]string) map[string]string {

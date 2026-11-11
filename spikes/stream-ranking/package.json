@@ -1,5 +1,5 @@
 {
-  "name": "sinag-spike-stream-ranking",
+  "name": "peli-spike-stream-ranking",
   "private": true,
   "type": "module",
   "description": "Throwaway stream parser and ranker prototype for #6",

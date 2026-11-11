@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // A file plays at normal speed, whatever the last one played at.

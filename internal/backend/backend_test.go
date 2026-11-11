@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // linked stands in for the Nuvio backend: it fails every call.

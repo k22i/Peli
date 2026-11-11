@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The push loop's timings (#30, ADR-0017).

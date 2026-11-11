@@ -11,13 +11,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Nuvio's server marks an item watched once its progress reaches 90 % of at
-// least a minute (M0 gate, #8). Sinag marks it at the same point, so both
-// agree on what is watched; the push loop holds Sinag's mark back until the
+// least a minute (M0 gate, #8). Peli marks it at the same point, so both
+// agree on what is watched; the push loop holds Peli's mark back until the
 // server has made its own (ADR-0017), so it isn't sent twice.
 const (
 	watchedShare       = 0.9

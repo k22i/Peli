@@ -1,6 +1,6 @@
 ---
 name: title-page-tmdb
-description: "Title page extras from TMDB: crew in About via PersonLink, certificate + TMDB score in the meta line, Trailer round action (system browser), Part of the X Collection and More Like This rows, how TMDB ids open in Sinag"
+description: "Title page extras from TMDB: crew in About via PersonLink, certificate + TMDB score in the meta line, Trailer round action (system browser), Part of the X Collection and More Like This rows, how TMDB ids open in Peli"
 metadata:
   type: project
 ---

@@ -1,4 +1,4 @@
-// Command notices generates Sinag's third-party notices and audits a release
+// Command notices generates Peli's third-party notices and audits a release
 // for GPL-only components (#18).
 //
 //	go run ./tools/notices                  rewrite THIRD_PARTY_NOTICES.md and internal/licences/notices.json

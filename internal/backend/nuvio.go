@@ -7,8 +7,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // ErrNotLinked means the profile has no Nuvio profile to sync with.

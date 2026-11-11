@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
 )
 
 func TestUseServer(t *testing.T) {

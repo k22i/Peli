@@ -25,7 +25,7 @@ const (
 	maxChildren = 4
 )
 
-// Runner runs plugin calls, each in its own child process: Sinag's own
+// Runner runs plugin calls, each in its own child process: Peli's own
 // binary started with ChildEnv, which runs the call and exits. The child
 // gets an empty environment and no files beyond its stdin, stdout and
 // stderr; a call over its limits, or a crash, ends that child only.
@@ -52,7 +52,7 @@ func selfCommand(ctx context.Context) (*exec.Cmd, error) {
 // and DNS need on Linux. Nothing of the user's (tokens, paths) gets in.
 func childEnv() []string {
 	env := []string{ChildEnv + "=1"}
-	for _, name := range []string{"SSL_CERT_FILE", "SSL_CERT_DIR", "SINAG_PLUGIN_LOG", "TMPDIR", "SYSTEMROOT"} {
+	for _, name := range []string{"SSL_CERT_FILE", "SSL_CERT_DIR", "PELI_PLUGIN_LOG", "TMPDIR", "SYSTEMROOT"} {
 		if v, ok := os.LookupEnv(name); ok {
 			env = append(env, name+"="+v)
 		}

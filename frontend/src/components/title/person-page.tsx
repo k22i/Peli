@@ -25,7 +25,7 @@ import {
 // A person's page (TMDB id): photo, name, what they're known for, a short
 // biography, and their films and series by kind of work. Everything comes
 // from TMDB, so without a key the page says how to add one. Titles open in
-// Sinag through the IMDb id looked up on click, as More Like This does.
+// Peli through the IMDb id looked up on click, as More Like This does.
 export function PersonPage() {
   const { id } = useParams({ from: "/person/$id" });
   const tmdb = /^\d+$/.test(id) ? Number(id) : 0;

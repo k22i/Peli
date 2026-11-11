@@ -1,15 +1,15 @@
 # Design system
 
-Sinag has one theme, in light and dark (#13; theme studio is cut). Since the redesign (epic #110, [ADR-0046](../adr/0046-redesign-glass-and-floating-chrome.md)) its layout and materials come from **Apple TV and Apple Music on macOS 26**: a floating glass sidebar and a title bar that content scrolls under, big artwork (a tall billboard hero, shelves at 1.5× size, an episode row), chrome made of four glass tiers with scroll-edge blur instead of hairlines, glass buttons over artwork with Play solid, settings in panes, and a floating glass control bar in the player. It keeps **Sinag's own identity** (below) and **Vercel's** monochrome precision, and **Nuvio's** poster-first, near-black cinema.
+Peli has one theme, in light and dark (#13; theme studio is cut). Since the redesign (epic #110, [ADR-0046](../adr/0046-redesign-glass-and-floating-chrome.md)) its layout and materials come from **Apple TV and Apple Music on macOS 26**: a floating glass sidebar and a title bar that content scrolls under, big artwork (a tall billboard hero, shelves at 1.5× size, an episode row), chrome made of four glass tiers with scroll-edge blur instead of hairlines, glass buttons over artwork with Play solid, settings in panes, and a floating glass control bar in the player. It keeps **Peli's own identity** (below) and **Vercel's** monochrome precision, and **Nuvio's** poster-first, near-black cinema.
 
 The living reference is the in-app gallery: **Settings › Design system** (`/gallery`). It shows every token and component in its states and measures contrast live: colour, contrast, type and "Type in use", shape and motion, the glass tiers (Materials), the shell, then the Hero, Rows, Cards, Buttons, Glass buttons, Chips and badges, Scroll rail, Player bar, Overlays, Skeletons, Stream picker and Long rows.
 
-## Sinag's identity (what we don't take from Apple)
+## Peli's identity (what we don't take from Apple)
 
 - **Colour:** the lagoon `--brand` (`#33b5e0` dark, `#0b6e94` light) is the only accent. Apple's pink, red and system blue never appear. Surfaces are neutral greys; dark mode is Nuvio's near-black cinema (`#0a0a0b`).
 - **Type:** Mona Sans for UI and headings, Geist Mono for numbers and codes. No SF Pro and no `system-ui` look.
 - **Shape:** the radius scale (`--radius: 0.75rem`), the poster-first layout and the card lift on hover.
-- **Copy:** Sinag's section names: Home, Movies, Shows, Anime, Search, Library. No "Up Next", "Watch Now" or "Listen Now".
+- **Copy:** Peli's section names: Home, Movies, Shows, Anime, Search, Library. No "Up Next", "Watch Now" or "Listen Now".
 - **No tricks that don't ship:** no SVG refraction filters (`backdrop-filter: url()` fails in WKWebView and is slow in WebView2), no native window vibrancy, no animation library. "Liquid glass" here is blur, saturation, a specular edge and a soft highlight.
 
 ## Where things live
@@ -23,7 +23,7 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 | Glass tiers, scroll edge, materialize motion | `frontend/src/index.css` (`@utility glass-*`, `scroll-edge-top`); `Ambient` in `frontend/src/components/media/ambient.tsx` |
 | Type scale | `frontend/src/index.css` (`--text-*` tokens and the `@utility text-*` blocks), `cn` in `frontend/src/lib/utils.ts` |
 | Shell: floating sidebar, title bar, window controls, `bleed` | `frontend/src/components/shell/`, `frontend/src/index.css` |
-| Sinag's own: poster and landscape cards, row, poster grid, hero, chip, `ScrollRail` / `ChipRail`, skeletons | `frontend/src/components/media` (rows and grids are virtualized, ADR-0025) |
+| Peli's own: poster and landscape cards, row, poster grid, hero, chip, `ScrollRail` / `ChipRail`, skeletons | `frontend/src/components/media` (rows and grids are virtualized, ADR-0025) |
 | Page frames: Browse header (`BrowseFrame`), settings panes, `FocusScreen` | `components/browse/browse-page.tsx`, `components/settings/settings-section.tsx`, `components/account/focus-screen.tsx` |
 | Motion: press scale, sliding pills, `data-nav` transitions | `frontend/src/index.css`, `frontend/src/lib/nav-direction.ts`, coss `Button` |
 | The gallery | `frontend/src/routes/gallery.tsx`, `frontend/src/components/gallery/` |

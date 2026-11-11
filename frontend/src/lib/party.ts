@@ -21,7 +21,7 @@ import type { Source } from "@bindings/streams";
 import type { Meta, Stream } from "@/lib/addon-protocol";
 import { streamsPath, streamsSearch, type PlayTarget } from "@/lib/playback";
 
-// Watch parties (ADR-0051): watching with friends on Sinag or Nuvio's apps,
+// Watch parties (ADR-0051): watching with friends on Peli or Nuvio's apps,
 // each from their own streams, in step. Go (internal/party) runs the party
 // and keeps the player in step; this side shows it. State and the chat come
 // as party:state and party:chat, each whole, so the queries below are set
@@ -92,7 +92,7 @@ export function normalizeCode(code: string): string {
 export const codeLength = 6;
 
 // What Copy invite puts on the clipboard. Nuvio's link opens its apps; a
-// Sinag friend types the code.
+// Peli friend types the code.
 export function inviteText(code: string): string {
   return `Join my watch party with code ${formatCode(code)}\nhttps://nuvio.tv/party/${normalizeCode(code)}`;
 }

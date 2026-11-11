@@ -15,10 +15,10 @@ import (
 // ContractURL names the environment variable that points the contract and
 // integration tests (#33) at a real backend: a self-hosted Nuvio
 // (NuvioMedia/self-host) whose signup is open, never api.nuvio.tv.
-const ContractURL = "SINAG_CONTRACT_URL"
+const ContractURL = "PELI_CONTRACT_URL"
 
 // Backend is what the contract and integration tests run against: this
-// package's fake, or the real backend at $SINAG_CONTRACT_URL. The same cases
+// package's fake, or the real backend at $PELI_CONTRACT_URL. The same cases
 // run on both, so the fake can't drift from the backend it stands in for.
 type Backend struct {
 	URL string
@@ -26,7 +26,7 @@ type Backend struct {
 	Fake *Server
 }
 
-// NewBackend returns the backend at $SINAG_CONTRACT_URL, or a new fake.
+// NewBackend returns the backend at $PELI_CONTRACT_URL, or a new fake.
 func NewBackend(t testing.TB) *Backend {
 	t.Helper()
 	url := strings.TrimRight(os.Getenv(ContractURL), "/")
@@ -45,12 +45,12 @@ func NewBackend(t testing.TB) *Backend {
 // once.
 func (b *Backend) Account(t testing.TB) (email, password string) {
 	t.Helper()
-	email = "sinag-contract-" + randomHex(6) + "@example.com"
+	email = "peli-contract-" + randomHex(6) + "@example.com"
 	if b.Fake != nil {
 		b.Fake.SetProfiles(t, email, `[{"profile_index":1,"name":"Contract","avatar_color_hex":"#33B5E0","avatar_id":null,"avatar_url":null,"uses_primary_addons":false,"uses_primary_plugins":false,"pin_enabled":false,"pin_locked_until":null}]`)
 		return email, Password
 	}
-	password = "Sinag-" + randomHex(12)
+	password = "Peli-" + randomHex(12)
 	key := b.key(t)
 	var session struct {
 		AccessToken string `json:"access_token"`

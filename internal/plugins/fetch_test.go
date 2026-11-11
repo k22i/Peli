@@ -65,7 +65,7 @@ func TestFetch(t *testing.T) {
 				redirected: r.redirected, ua: j.ua, referer: j.referer, query: j.query, method: j.method,
 			})));`)
 	want := `{"ok":true,"status":200,"type":"application/json","many":"one, two","redirected":false,` +
-		`"ua":"Sinag/test","referer":"https://site.test/","query":"x=1","method":"GET"}`
+		`"ua":"Peli/test","referer":"https://site.test/","query":"x=1","method":"GET"}`
 	if got != want {
 		t.Errorf("got  %s\nwant %s", got, want)
 	}
@@ -181,7 +181,7 @@ func TestFetchAbort(t *testing.T) {
 }
 
 // Without PrivateNetwork, the sandbox can't reach loopback: not the test
-// server, not Sinag's own torrent link.
+// server, not Peli's own torrent link.
 func TestFetchRefusesPrivateNetwork(t *testing.T) {
 	var hits atomic.Int32
 	server := httptest.NewServer(http.HandlerFunc(func(http.ResponseWriter, *http.Request) { hits.Add(1) }))
@@ -215,7 +215,7 @@ func TestPublic(t *testing.T) {
 }
 
 func TestBlockedDialError(t *testing.T) {
-	f := newFetcher(Limits{Requests: 1, Body: 1 << 10}, "Sinag/test")
+	f := newFetcher(Limits{Requests: 1, Body: 1 << 10}, "Peli/test")
 	res := f.do(t.Context(), fetchRequest{URL: "http://127.0.0.1:1/", Method: "GET"})
 	if res.err == nil || !strings.Contains(res.err.Error(), "can't be fetched") {
 		t.Errorf("got %v", res.err)

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 func TestScreenshotName(t *testing.T) {
@@ -20,7 +20,7 @@ func TestScreenshotName(t *testing.T) {
 		{NowPlaying{Title: "Severance", Subtitle: "S1:E2 Half Loop"}, 754.6, "Severance – S1 E2 Half Loop 0.12.34"},
 		{NowPlaying{Title: "Dune: Part Two"}, 3725, "Dune Part Two 1.02.05"},
 		{NowPlaying{Title: `a/b\c*?"<>|.`}, -3, "a b c 0.00.00"},
-		{NowPlaying{}, 5, "Sinag 0.00.05"},
+		{NowPlaying{}, 5, "Peli 0.00.05"},
 	} {
 		if got := screenshotName(c.playing, c.position); got != c.want {
 			t.Errorf("screenshotName(%+v, %v) = %q, want %q", c.playing, c.position, got, c.want)
@@ -76,7 +76,7 @@ func TestWritePNGNeverReplaces(t *testing.T) {
 func TestScreenshot(t *testing.T) {
 	dir := t.TempDir()
 	old := screenshotDir
-	screenshotDir = func() (string, error) { return filepath.Join(dir, "Sinag"), nil }
+	screenshotDir = func() (string, error) { return filepath.Join(dir, "Peli"), nil }
 	t.Cleanup(func() { screenshotDir = old })
 
 	s, r := newTestService(t)
@@ -115,7 +115,7 @@ func TestScreenshot(t *testing.T) {
 	if err := s.ShowScreenshot(filepath.Join(dir, "elsewhere.png")); !errors.Is(err, ErrInvalid) {
 		t.Errorf("showing a file outside the folder: %v, want ErrInvalid", err)
 	}
-	if err := s.ShowScreenshot(filepath.Join(dir, "Sinag", "..", "x.png")); !errors.Is(err, ErrInvalid) {
+	if err := s.ShowScreenshot(filepath.Join(dir, "Peli", "..", "x.png")); !errors.Is(err, ErrInvalid) {
 		t.Errorf("showing a way out of the folder: %v, want ErrInvalid", err)
 	}
 }

@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
 )
 
 func newTestClient(url string) *Client {
@@ -44,7 +44,7 @@ func TestSignInWithPassword(t *testing.T) {
 	if body := b.Body("/auth/v1/token"); body["email"] != "me@example.com" {
 		t.Fatalf("body = %v", body)
 	}
-	if got := b.UserAgents()[0]; got != "Sinag/1.2.3 (+https://github.com/k22i/Sinag)" {
+	if got := b.UserAgents()[0]; got != "Peli/1.2.3 (+https://github.com/k22i/Peli)" {
 		t.Fatalf("User-Agent = %q", got)
 	}
 }
@@ -564,7 +564,7 @@ func TestDeviceLogin(t *testing.T) {
 	b := nuviotest.NewServer(t)
 	c := newTestClient(b.URL)
 
-	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag on test-mac")
+	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Peli on test-mac")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -578,7 +578,7 @@ func TestDeviceLogin(t *testing.T) {
 		t.Fatalf("poll interval = %v", login.PollInterval)
 	}
 	body := b.Body("/rest/v1/rpc/start_device_login_session")
-	if nonce, _ := body["p_device_nonce"].(string); len(nonce) != 48 || body["p_device_name"] != "Sinag on test-mac" || body["p_device_type"] != "desktop" {
+	if nonce, _ := body["p_device_nonce"].(string); len(nonce) != 48 || body["p_device_name"] != "Peli on test-mac" || body["p_device_type"] != "desktop" {
 		t.Fatalf("start body = %v", body)
 	}
 
@@ -615,7 +615,7 @@ func TestDeviceLogin(t *testing.T) {
 func TestDeviceLoginExpires(t *testing.T) {
 	b := nuviotest.NewServer(t)
 	c := newTestClient(b.URL)
-	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Sinag")
+	login, err := c.StartDeviceLogin(t.Context(), DefaultLinkURL, "Peli")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -639,7 +639,7 @@ func TestDeviceLoginUnknown(t *testing.T) {
 	if _, _, err := c.PollDeviceLogin(t.Context(), login); !errors.Is(err, ErrDeviceLoginExpired) {
 		t.Fatalf("poll: err = %v, want ErrDeviceLoginExpired", err)
 	}
-	if _, err := c.StartDeviceLogin(t.Context(), "https://nuvio.tv/tv-login", "Sinag"); err == nil {
+	if _, err := c.StartDeviceLogin(t.Context(), "https://nuvio.tv/tv-login", "Peli"); err == nil {
 		t.Fatal("started a login with a redirect that isn't /link")
 	}
 }

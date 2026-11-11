@@ -141,7 +141,7 @@ func NewService(version string) *Service {
 				return nil
 			},
 		},
-		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		userAgent: fmt.Sprintf("Peli/%s (+https://github.com/k22i/Peli)", version),
 		maxWait:   MaxWait,
 	}
 }

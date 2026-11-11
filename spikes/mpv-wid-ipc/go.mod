@@ -1,4 +1,4 @@
-module sinag/spikes/mpvwid
+module peli/spikes/mpvwid
 
 go 1.25.0
 

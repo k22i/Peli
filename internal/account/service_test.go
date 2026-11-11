@@ -10,10 +10,10 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // memKeychain is an in-memory keychain, so tests never touch the user's.
@@ -75,7 +75,7 @@ func newFixture(t *testing.T) fixture {
 	t.Helper()
 	backend := nuviotest.NewServer(t)
 	keychain := &memKeychain{items: map[string]string{}}
-	db := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	db := store.NewService(filepath.Join(t.TempDir(), "peli.db"))
 	if err := db.ServiceStartup(t.Context(), application.ServiceOptions{}); err != nil {
 		t.Fatal(err)
 	}

@@ -9,10 +9,10 @@ date: 2026-10-30
 
 ## The key
 
-- **The user's own.** Sinag ships no TMDB key. The field takes either kind TMDB issues: a v3 API key (sent as `api_key`) or a v4 read access token (a JWT starting `eyJ`, sent as a bearer token). Both work on the v3 API.
+- **The user's own.** Peli ships no TMDB key. The field takes either kind TMDB issues: a v3 API key (sent as `api_key`) or a v4 read access token (a JWT starting `eyJ`, sent as a bearer token). Both work on the v3 API.
 - **Checked, then kept in the keychain.** Saving calls TMDB's `/authentication` first. A 401 says the key was refused, and nothing is saved when TMDB can't be reached. Then the key goes to the keychain as `tmdb.api-key` (ADR-0007) through the existing secrets service. On Linux without a Secret Service, the dialog says what to install.
 - **In memory only in the webview.** It's read into the `["secrets", "tmdb.api-key"]` query, which is never persisted (`shouldPersistQuery`). It is never part of another query's key, and errors don't include request URLs, since a v3 key is in the query string.
-- **Per device, for every profile.** Like the keychain itself. Nuvio's profile settings blob has a `tmdb_settings` entry; Sinag neither reads nor writes it, so a key never leaves this computer.
+- **Per device, for every profile.** Like the keychain itself. Nuvio's profile settings blob has a `tmdb_settings` entry; Peli neither reads nor writes it, so a key never leaves this computer.
 - **Removing it** deletes the keychain item and drops every `["tmdb", …]` answer, so pages go back to the addon's art at once.
 
 ## Finding the title on TMDB

@@ -92,7 +92,7 @@ export function App() {
   return (
     <div className="shell">
       <nav>
-        <div className="brand">Sinag</div>
+        <div className="brand">Peli</div>
         {NAV.map((n, i) => (
           <a key={n} className={i === 0 ? "active" : ""} href="#">
             {n}

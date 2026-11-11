@@ -1,6 +1,6 @@
 // Package plugins runs Nuvio's JS plugins (its "local scrapers", F18) in a
 // sandbox (#56): each call is a fresh goja runtime in a child process of
-// Sinag's own binary, with no file or process access, network only through
+// Peli's own binary, with no file or process access, network only through
 // the host's fetch, and a hard time and memory limit. The host API (fetch,
 // HTML parsing, crypto-js, URL, timers and so on) is written from how the
 // community plugins behave, not from Nuvio's GPL code. See ADR-0043.
@@ -8,14 +8,14 @@
 // A plugin is one CommonJS file exporting getStreams(tmdbId, mediaType,
 // season, episode), which answers a promise of streams. Plugins scrape web
 // sites, so their answers are checked like any untrusted input. Stream URLs
-// and plugin logs are never logged by Sinag.
+// and plugin logs are never logged by Peli.
 package plugins
 
 import (
 	"errors"
 	"time"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 var (
@@ -154,7 +154,7 @@ type Limits struct {
 	Streams int `json:"streams"`
 	// PrivateNetwork lets fetch reach loopback and private addresses. Only
 	// tests set it: a plugin must not reach the user's router, LAN or
-	// Sinag's own loopback servers (the torrent link, #55).
+	// Peli's own loopback servers (the torrent link, #55).
 	PrivateNetwork bool `json:"privateNetwork,omitempty"`
 }
 

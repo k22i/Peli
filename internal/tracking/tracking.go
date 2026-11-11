@@ -17,12 +17,12 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/animelist"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/animelist"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // EventImported tells the frontend an import added watched marks to a
@@ -70,11 +70,11 @@ var (
 	ErrUnavailableHere = errors.New("tracking: not available in this build")
 )
 
-// The apps Sinag is registered as (public: a desktop app can't keep a
-// secret, and neither flow needs one). $SINAG_SIMKL_CLIENT_ID and
-// $SINAG_ANILIST_CLIENT_ID stand in for them, for a build of your own.
+// The apps Peli is registered as (public: a desktop app can't keep a
+// secret, and neither flow needs one). $PELI_SIMKL_CLIENT_ID and
+// $PELI_ANILIST_CLIENT_ID stand in for them, for a build of your own.
 // SIMKL's is an AUTH V2 app of the "TV, devices & command line" kind,
-// since Sinag only uses the device flow; AniList's redirect URL is
+// since Peli only uses the device flow; AniList's redirect URL is
 // AniListRedirect.
 const (
 	SimklClientID   = "8105afefcfd3e6e85301f21b25c4efab4f43d4f8b5b511839c78870f08985261"

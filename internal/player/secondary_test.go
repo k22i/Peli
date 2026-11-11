@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // mpv marks the second subtitle track selected too; main-selection says

@@ -182,7 +182,7 @@ const source: Source = {
   url: "https://cdn.example/KEY/film.mkv",
   origin: "https://torrentio.strem.fun/resolve/torbox/KEY/abc/null/0/film.mkv",
   headers: { Referer: "https://addon.example/" },
-  userAgent: "Sinag/test",
+  userAgent: "Peli/test",
   contentType: "video/x-matroska",
   size: 1,
 };
@@ -393,7 +393,7 @@ describe("player", () => {
   it("says why a stream stopped", async () => {
     await openPlayer();
     emit("player:ended", { reason: "error", code: "unsupported" } satisfies Ended);
-    expect(await screen.findByRole("alert")).toHaveTextContent("Sinag can’t play this file");
+    expect(await screen.findByRole("alert")).toHaveTextContent("Peli can’t play this file");
     expect(document.body.innerHTML).not.toContain("KEY");
   });
 
@@ -1487,7 +1487,7 @@ describe("stream switcher", () => {
       ),
     );
     await waitFor(() =>
-      expect(screen.queryByText("Sinag can’t play this file")).not.toBeInTheDocument(),
+      expect(screen.queryByText("Peli can’t play this file")).not.toBeInTheDocument(),
     );
   });
 

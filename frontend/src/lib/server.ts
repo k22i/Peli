@@ -2,7 +2,7 @@ import { queryOptions, useMutation, useQueryClient } from "@tanstack/react-query
 
 import { Service as Account, type Server } from "@bindings/account";
 
-// The backend Sinag signs in to (#34): Nuvio's, or the user's own
+// The backend Peli signs in to (#34): Nuvio's, or the user's own
 // Nuvio-compatible server, such as a self-hosted one. Go keeps the URL in the
 // store and the key, if any, in the keychain; the key never comes back here.
 export const serverQuery = queryOptions({

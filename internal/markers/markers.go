@@ -19,7 +19,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Segment kinds.
@@ -77,7 +77,7 @@ type Service struct {
 func NewService(version string) *Service {
 	return &Service{
 		base:      DefaultBase,
-		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		userAgent: fmt.Sprintf("Peli/%s (+https://github.com/k22i/Peli)", version),
 		http:      &http.Client{Timeout: MaxWait},
 	}
 }

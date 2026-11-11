@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Editing the home layout (#35, ADR-0022). The layout is made in Nuvio's

@@ -1,6 +1,6 @@
 # Spike: our own stream parser and ranker
 
-Throwaway code for [#6](https://github.com/k22i/Sinag/issues/6). The findings are in
+Throwaway code for [#6](https://github.com/k22i/Peli/issues/6). The findings are in
 [`docs/spikes/stream-ranking.md`](../../docs/spikes/stream-ranking.md). Build #51 from the findings, not from this code.
 
 Pure TypeScript with no dependencies. It runs on Node ≥ 24 with no build step (Node strips the types), and under Bun for the JavaScriptCore timings.

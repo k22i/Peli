@@ -10,7 +10,7 @@ metadata:
 **Why:** mirror how Nuvio's apps split it; consent is per person; unvetted scrapers must fail closed.
 
 **How to apply:**
-- `Plugins.Installed()` = enabled plugins of enabled, `Runnable()` repos from the profile in use's cache; empty when switch off or `Profile.Kids`. `Streams` only runs a plugin that `Installed` lists (same id + URL) and uses stored settings. `SINAG_DEV_PLUGINS` is gone; `tools/plugins` uses `plugins.ManifestPlugins` + `RunUnchecked` (package funcs, not bound).
+- `Plugins.Installed()` = enabled plugins of enabled, `Runnable()` repos from the profile in use's cache; empty when switch off or `Profile.Kids`. `Streams` only runs a plugin that `Installed` lists (same id + URL) and uses stored settings. `PELI_DEV_PLUGINS` is gone; `tools/plugins` uses `plugins.ManifestPlugins` + `RunUnchecked` (package funcs, not bound).
 - Edits go through `plugins.UseStore(svc, open, account.EditorOf(accounts))` (the addon guard: lock + parent PIN) and refuse kids with `ErrKids`. `InstallRepository`/`Refresh` refuse while off (no network).
 - EXTERNAL_DEX/.cs3 rows stay in the list and survive pushes (`mergeByURL` shared with addons). Pull replaces the list; `prunePluginCaches` drops removed repos' plugins; `Refresh` (called by `installedPluginsQuery`) reads manifests with no cache or a day old, 5-min retry gap on failure.
 - New nuvio calls: `Client.Plugins/PushPlugins`, `nuviotest` `SyncedPlugins`, contract entries `/rest/v1/plugins`, `sync_push_plugins`; `backend` test helper `device.pull` lists `SurfacePlugins`.

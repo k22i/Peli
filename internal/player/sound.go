@@ -6,7 +6,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The sound is one lavfi chain in mpv's af, from filters in our LGPL build
@@ -47,7 +47,7 @@ func soundChain(s store.Sound) string {
 	if len(chain) == 0 {
 		return ""
 	}
-	return "@sinag-sound:lavfi=[" + strings.Join(chain, ",") + "]"
+	return "@peli-sound:lavfi=[" + strings.Join(chain, ",") + "]"
 }
 
 // audioProps are the mpv properties for this device's output.

@@ -1,6 +1,6 @@
 # Spike: mpv render API under a Wails v3 webview
 
-Throwaway code for [#4](https://github.com/k22i/Sinag/issues/4). The findings are
+Throwaway code for [#4](https://github.com/k22i/Peli/issues/4). The findings are
 in [`docs/spikes/mpv-render-api.md`](../../docs/spikes/mpv-render-api.md). Don't build on this code.
 
 The #3 harness ([`spikes/libmpv-cgo`](../libmpv-cgo/)), with `wid` embedding swapped for libmpv's **render API** (`vo=libmpv`). mpv draws into a native layer or widget that we put *below* Wails' webview, the webview stays transparent, and the React overlay from #2/#3 draws on top and receives the input. It's its own Go module, so the app's `go.mod` is untouched.
@@ -43,10 +43,10 @@ Knobs: `SPIKE_NO_BLOCK=1` passes `MPV_RENDER_PARAM_BLOCK_FOR_TARGET_TIME=0`. `SP
   Keep the window visible while it runs: an occluded window isn't drawn, and the script warns when the bench ran hidden.
 - **Linux**, headless in Docker (X11: Xvfb + openbox + picom; Wayland: sway's headless backend):
   ```sh
-  docker build -t sinag-spike-render scripts/linux
-  docker run --rm -v "$PWD":/spike sinag-spike-render bash -c 'go build -o bin/spike-linux . && scripts/linux/run.sh wayland glarea'
+  docker build -t peli-spike-render scripts/linux
+  docker run --rm -v "$PWD":/spike peli-spike-render bash -c 'go build -o bin/spike-linux . && scripts/linux/run.sh wayland glarea'
   # scripts/linux/run.sh {wayland|x11} {glarea|gltex|subsurface|sw|wid|overlay} [name]
-  docker run --rm -v "$PWD":/spike sinag-spike-render scripts/linux/run-all.sh   # the whole matrix
+  docker run --rm -v "$PWD":/spike peli-spike-render scripts/linux/run-all.sh   # the whole matrix
   ```
 
 Each run writes `results/<os>-<name>.json` (steps, latency, `video.bench` etc.), a `.log`, the mpv log and screenshots.

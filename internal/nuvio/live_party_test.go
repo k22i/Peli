@@ -20,14 +20,14 @@ import (
 // party, see each other's presence and broadcasts on its channel, chat, and
 // try every host action; then the party is ended and the session signed out,
 // so nothing is left behind. Every answer is checked against liveOnly's type.
-// It runs only with SINAG_NUVIO_LIVE_WRITES=1 and NUVIO_EMAIL and
+// It runs only with PELI_NUVIO_LIVE_WRITES=1 and NUVIO_EMAIL and
 // NUVIO_PASSWORD.
 func TestLiveParty(t *testing.T) {
-	if os.Getenv("SINAG_REALTIME_DEBUG") == "1" {
+	if os.Getenv("PELI_REALTIME_DEBUG") == "1" {
 		slog.SetLogLoggerLevel(slog.LevelDebug)
 	}
-	if os.Getenv("SINAG_NUVIO_LIVE_WRITES") != "1" {
-		t.Skip("set SINAG_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to start a party on a live backend")
+	if os.Getenv("PELI_NUVIO_LIVE_WRITES") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to start a party on a live backend")
 	}
 	url := cmpOr(os.Getenv("NUVIO_URL"), DefaultURL)
 	c := New(url, "0.0.0-live-test")
@@ -63,11 +63,11 @@ func TestLiveParty(t *testing.T) {
 	season, episode := 1, 1
 	media := PartyMedia{
 		Type: "series", MetaID: "tt0000000", MetaType: "series", VideoID: "tt0000000:1:1",
-		Season: &season, Episode: &episode, Title: "Sinag live test", EpisodeTitle: "Pilot",
-		Source: &PartySource{Filename: "sinag.live.test.mkv", Name: "1080p"},
+		Season: &season, Episode: &episode, Title: "Peli live test", EpisodeTitle: "Pilot",
+		Source: &PartySource{Filename: "peli.live.test.mkv", Name: "1080p"},
 	}
-	host := PartyIdentity{DeviceID: "sinag-live-test-host-" + randomHex(4), DisplayName: "Sinag test host"}
-	guest := PartyIdentity{DeviceID: "sinag-live-test-guest-" + randomHex(4), DisplayName: "Sinag test guest", AvatarColor: "#33B5E0"}
+	host := PartyIdentity{DeviceID: "peli-live-test-host-" + randomHex(4), DisplayName: "Peli test host"}
+	guest := PartyIdentity{DeviceID: "peli-live-test-guest-" + randomHex(4), DisplayName: "Peli test guest", AvatarColor: "#33B5E0"}
 
 	created, err := c.PartyCreate(ctx, s, host, media)
 	if err != nil || created.Error != "" || created.Party == nil {
@@ -165,7 +165,7 @@ func TestLiveParty(t *testing.T) {
 		t.Logf("guest setting host-only: %q, %v", refused.Error, err)
 	}
 
-	sent, err := c.PartySendMessage(ctx, s, party.ID, guest.DeviceID, "hello from Sinag's live test", "sinaglivetest"+randomHex(4))
+	sent, err := c.PartySendMessage(ctx, s, party.ID, guest.DeviceID, "hello from Peli's live test", "pelilivetest"+randomHex(4))
 	if err != nil || sent.Error != "" || sent.Message == nil {
 		t.Fatalf("send: %+v, %v", sent, err)
 	}

@@ -252,7 +252,7 @@ describe("settings › plugins", () => {
     await waitFor(() => expect(screen.queryByText("Example repo")).not.toBeInTheDocument());
   });
 
-  it("lists a repository Sinag can't run, without plugin switches", async () => {
+  it("lists a repository Peli can't run, without plugin switches", async () => {
     fake.overview = { kids: false, enabled: true, repositories: [cloudstream] };
     await open();
 

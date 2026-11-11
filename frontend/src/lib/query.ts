@@ -54,7 +54,7 @@ export function createPersistOptions(
   storage: AsyncStorage = storeCache,
 ): Omit<PersistQueryClientOptions, "queryClient"> {
   return {
-    persister: createAsyncStoragePersister({ storage, key: "sinag-query-cache" }),
+    persister: createAsyncStoragePersister({ storage, key: "peli-query-cache" }),
     maxAge: 7 * day,
     buster: cacheBuster,
     dehydrateOptions: { shouldDehydrateQuery: shouldPersistQuery },

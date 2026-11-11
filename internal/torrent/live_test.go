@@ -24,10 +24,10 @@ var liveTorrents = []struct {
 
 // TestLive streams from the real DHT and trackers: time to the file list,
 // to the first megabyte and after a seek, the speed, and the process's
-// memory. Run with SINAG_TORRENT_LIVE=1 go test -v -run TestLive.
+// memory. Run with PELI_TORRENT_LIVE=1 go test -v -run TestLive.
 func TestLive(t *testing.T) {
-	if os.Getenv("SINAG_TORRENT_LIVE") == "" {
-		t.Skip("set SINAG_TORRENT_LIVE=1 to stream from public swarms")
+	if os.Getenv("PELI_TORRENT_LIVE") == "" {
+		t.Skip("set PELI_TORRENT_LIVE=1 to stream from public swarms")
 	}
 	for _, live := range liveTorrents {
 		t.Run(live.name, func(t *testing.T) {

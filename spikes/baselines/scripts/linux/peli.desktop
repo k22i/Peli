@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Peli
+Comment=Peli baseline spike
+Exec=peli %u
+Terminal=false
+Type=Application
+Icon=peli
+Categories=AudioVideo;
+StartupWMClass=peli

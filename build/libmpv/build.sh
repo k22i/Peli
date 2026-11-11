@@ -32,7 +32,7 @@ macos-x86_64) arch=x86_64 ;;
 *) echo "build.sh: unknown target $target" >&2; exit 2 ;;
 esac
 
-# Sinag's own minimum (build/darwin/Taskfile.yml).
+# Peli's own minimum (build/darwin/Taskfile.yml).
 macos_min=12.0
 jobs=$(sysctl -n hw.ncpu 2>/dev/null || nproc)
 
@@ -249,7 +249,7 @@ libdir=\${prefix}/lib
 includedir=\${prefix}/include
 
 Name: mpv
-Description: mpv media player client library (Sinag's LGPL build, #92)
+Description: mpv media player client library (Peli's LGPL build, #92)
 Version: $mpv_version
 Libs: -L\${libdir} -lmpv -Wl,-rpath,\${libdir}
 Cflags: -I\${includedir}
@@ -296,7 +296,7 @@ fi
 ffmpeg_config=$(sed -n 's/^#define FFMPEG_CONFIGURATION "\(.*\)"$/\1/p' "$build/ffmpeg/config.h")
 unpacked=$(du -sk "$dist/lib/$lib" | cut -f1)
 {
-	echo "Sinag libmpv $target (#92, ADR-0003)"
+	echo "Peli libmpv $target (#92, ADR-0003)"
 	echo
 	echo "Sources:"
 	awk '!/^#/ && NF { printf "  %-11s %-10s %s %s\n", $1, $2, $3, $4 }' "$here/sources.txt"

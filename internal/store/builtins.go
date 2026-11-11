@@ -8,13 +8,13 @@ import (
 	bolt "go.etcd.io/bbolt"
 )
 
-// Built-in addons (#107, ADR-0045) run inside Sinag at sinag://<name>/…
+// Built-in addons (#107, ADR-0045) run inside Peli at peli://<name>/…
 // URLs. They are in a profile's addon list like any other, so the user can
 // reorder, turn off or remove them, but they stay on this device: Nuvio's
 // copy of the list never has them, since other devices can't reach them.
 
-// AniListAddon is Sinag's AniList addon (#108).
-var AniListAddon = Addon{URL: "sinag://anilist/manifest.json", Name: "AniList", Enabled: true}
+// AniListAddon is Peli's AniList addon (#108).
+var AniListAddon = Addon{URL: "peli://anilist/manifest.json", Name: "AniList", Enabled: true}
 
 // Builtins are the built-in addons the app offers each profile once, in
 // order (UseBuiltins).
@@ -51,7 +51,7 @@ func (s *Store) builtins() []Addon {
 var keyBuiltinsOffered = []byte("builtins-offered")
 
 // IsBuiltinAddon reports whether url is a built-in addon's.
-func IsBuiltinAddon(url string) bool { return strings.HasPrefix(strings.ToLower(url), "sinag://") }
+func IsBuiltinAddon(url string) bool { return strings.HasPrefix(strings.ToLower(url), "peli://") }
 
 // SyncedAddons returns addons without the built-in ones: the list Nuvio has.
 func SyncedAddons(addons []Addon) []Addon {

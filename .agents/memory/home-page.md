@@ -1,6 +1,6 @@
 ---
 name: home-page
-description: "How Sinag's Home (#42) is built: homeRows order, hero choice, usePlay seam, CatalogVisible batching, test fetch stub and the WebKit cache-timing harness; read before #43–#46, #52, #60, #64"
+description: "How Peli's Home (#42) is built: homeRows order, hero choice, usePlay seam, CatalogVisible batching, test fetch stub and the WebKit cache-timing harness; read before #43–#46, #52, #60, #64"
 metadata:
   type: project
 ---

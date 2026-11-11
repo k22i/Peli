@@ -33,7 +33,7 @@ func runCode(t *testing.T, code string, query Query, limits Limits) ([]Stream, e
 	t.Helper()
 	ctx, cancel := context.WithTimeoutCause(context.Background(), limits.Timeout, ErrTimeout)
 	defer cancel()
-	return run(ctx, Job{ID: "test", Code: code, Query: query, Limits: limits, UserAgent: "Sinag/test"}, nil)
+	return run(ctx, Job{ID: "test", Code: code, Query: query, Limits: limits, UserAgent: "Peli/test"}, nil)
 }
 
 var movie = Query{TmdbID: "550", MediaType: "movie"}
@@ -335,7 +335,7 @@ func TestStreamLimit(t *testing.T) {
 	}
 }
 
-// The plugin can't swap JSON.stringify to change what Sinag reads.
+// The plugin can't swap JSON.stringify to change what Peli reads.
 func TestAnswerReadWithOriginalJSON(t *testing.T) {
 	streams, err := runCode(t, `JSON.stringify = () => '[{"url":"https://evil.test/"}]';
 		module.exports.getStreams = () => [{ url: "https://good.test/" }];`, movie, testLimits)

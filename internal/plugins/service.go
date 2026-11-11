@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 const (
@@ -63,7 +63,7 @@ func NewService(version string) *Service {
 	return &Service{
 		runner:    NewRunner(),
 		http:      &http.Client{Timeout: 30 * time.Second},
-		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		userAgent: fmt.Sprintf("Peli/%s (+https://github.com/k22i/Peli)", version),
 		codes:     map[string]code{},
 		failedAt:  map[string]time.Time{},
 	}

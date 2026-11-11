@@ -178,7 +178,7 @@ describe("person page", () => {
     );
   });
 
-  it("opens a title in Sinag by its IMDb id", async () => {
+  it("opens a title in Peli by its IMDb id", async () => {
     const asked = serve({
       [personUrl]: answer,
       [`${tmdb}/movie/550/external_ids?api_key=key`]: { imdb_id: "tt0137523" },

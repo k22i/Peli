@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 
 import { GallerySection } from "@/components/gallery/gallery-section";
-import { SunMark } from "@/components/shell/wordmark";
+import { PeliMark } from "@/components/shell/wordmark";
 
 // The hero's stand-in: a warm sky over a dark horizon, as a backdrop is.
 const art = [
@@ -40,8 +40,8 @@ function MiniWindow() {
           ))}
         </span>
         <span className="flex items-center gap-1">
-          <SunMark className="size-3.5 text-[#ffb547]" />
-          <span className="font-display text-sm italic">Sinag</span>
+          <PeliMark className="size-3.5 text-[#ffb547]" />
+          <span className="font-display text-sm italic">Peli</span>
         </span>
         <span className="mx-auto flex items-center gap-3 rounded-full bg-black/30 px-3 py-1 text-[0.625rem] font-semibold">
           <span className="relative">

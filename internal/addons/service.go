@@ -23,8 +23,8 @@ import (
 
 var (
 	// ErrInvalidURL means the URL isn't an absolute http or https URL, or a
-	// built-in addon's sinag:// URL.
-	ErrInvalidURL = errors.New("addons: not an http, https or sinag URL")
+	// built-in addon's peli:// URL.
+	ErrInvalidURL = errors.New("addons: not an http, https or peli URL")
 	// ErrUnreachable means the addon couldn't be reached: no network, DNS,
 	// TLS or a dropped connection.
 	ErrUnreachable = errors.New("addons: addon unreachable")
@@ -57,10 +57,10 @@ type Response struct {
 	Body   string `json:"body"`
 }
 
-// BuiltinScheme is the scheme of an addon that runs inside Sinag (#107,
-// ADR-0045): sinag://<name>/manifest.json. Its host names the handler that
+// BuiltinScheme is the scheme of an addon that runs inside Peli (#107,
+// ADR-0045): peli://<name>/manifest.json. Its host names the handler that
 // answers it, and nothing goes over the network.
-const BuiltinScheme = "sinag"
+const BuiltinScheme = "peli"
 
 // IsBuiltin reports whether rawURL is a built-in addon's.
 func IsBuiltin(rawURL string) bool {
@@ -77,7 +77,7 @@ type Service struct {
 	builtins map[string]http.Handler
 }
 
-// Register makes handler answer sinag://name/… requests. Call it before
+// Register makes handler answer peli://name/… requests. Call it before
 // the app starts.
 func (s *Service) Register(name string, handler http.Handler) {
 	s.mu.Lock()
@@ -92,7 +92,7 @@ func (s *Service) Register(name string, handler http.Handler) {
 func NewService(version string) *Service {
 	return &Service{
 		http:      &http.Client{},
-		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		userAgent: fmt.Sprintf("Peli/%s (+https://github.com/k22i/Peli)", version),
 		maxWait:   MaxWait,
 	}
 }

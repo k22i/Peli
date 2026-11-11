@@ -1,4 +1,4 @@
-// Package anilist is Sinag's client for AniList's GraphQL API
+// Package anilist is Peli's client for AniList's GraphQL API
 // (docs.anilist.co): who a token belongs to, finding anime, and the user's
 // list (#104, #105), called by internal/tracking. internal/anilistaddon
 // asks it for lists and details with Public (#108). See ADR-0042, ADR-0045.
@@ -22,7 +22,7 @@ import (
 // DefaultURL is AniList's GraphQL endpoint.
 const DefaultURL = "https://graphql.anilist.co"
 
-// AuthorizeBase is where the user approves Sinag. AniList's implicit grant
+// AuthorizeBase is where the user approves Peli. AniList's implicit grant
 // sends the token back in the redirect's fragment.
 const AuthorizeBase = "https://anilist.co/api/v2/oauth/authorize"
 
@@ -289,7 +289,7 @@ func (c *Client) query(ctx context.Context, token, query string, variables map[s
 	}
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("User-Agent", "Sinag/"+c.version+" (+https://github.com/k22i/Sinag)")
+	req.Header.Set("User-Agent", "Peli/"+c.version+" (+https://github.com/k22i/Peli)")
 	if token != "" {
 		req.Header.Set("Authorization", "Bearer "+token)
 	}

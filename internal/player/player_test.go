@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // The fixtures are 3 s of 320x180 H.264 at 24 fps with AAC audio (English):
@@ -162,7 +162,7 @@ func server(t *testing.T, requests *atomic.Int64) (*httptest.Server, streams.Sou
 	files := http.FileServer(http.Dir("testdata"))
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		requests.Add(1)
-		if r.Header.Get("X-Token") != "a, b" || r.UserAgent() != "Sinag/test-ua" {
+		if r.Header.Get("X-Token") != "a, b" || r.UserAgent() != "Peli/test-ua" {
 			http.Error(w, "forbidden", http.StatusForbidden)
 			return
 		}
@@ -171,7 +171,7 @@ func server(t *testing.T, requests *atomic.Int64) (*httptest.Server, streams.Sou
 	t.Cleanup(srv.Close)
 	return srv, streams.Source{
 		Headers:   map[string]string{"X-Token": "a, b"}, // a comma, which mpv's string form splits on
-		UserAgent: "Sinag/test-ua",
+		UserAgent: "Peli/test-ua",
 	}
 }
 

@@ -6,7 +6,7 @@ package player
 #include <locale.h>
 #include "video.h"
 
-void sinag_video_clear(void);
+void peli_video_clear(void);
 
 static void cNumericLocale(void) { setlocale(LC_NUMERIC, "C"); }
 */
@@ -51,7 +51,7 @@ func (h *linuxHost) configure(m *mpv) error {
 func (h *linuxHost) attach(m *mpv) error {
 	err := application.InvokeSyncWithResult(func() error {
 		var buf [256]C.char
-		if C.sinag_video_attach(h.window.NativeWindow(), &buf[0], C.int(len(buf))) != 0 {
+		if C.peli_video_attach(h.window.NativeWindow(), &buf[0], C.int(len(buf))) != 0 {
 			return fmt.Errorf("video host: %s", C.GoString(&buf[0]))
 		}
 		return nil
@@ -61,7 +61,7 @@ func (h *linuxHost) attach(m *mpv) error {
 	}
 	h.attached = true
 	var buf [256]C.char
-	if C.sinag_video_start(m.handle(), &buf[0], C.int(len(buf))) != 0 {
+	if C.peli_video_start(m.handle(), &buf[0], C.int(len(buf))) != 0 {
 		h.detach()
 		return fmt.Errorf("video host: %s", C.GoString(&buf[0]))
 	}
@@ -87,7 +87,7 @@ func (h *linuxHost) detach() {
 	}
 	h.attached = false
 	// GTK lets go of the textures first, so the render thread can free them.
-	application.InvokeSync(func() { C.sinag_video_clear() })
-	C.sinag_video_stop()
-	application.InvokeSync(func() { C.sinag_video_detach() })
+	application.InvokeSync(func() { C.peli_video_clear() })
+	C.peli_video_stop()
+	application.InvokeSync(func() { C.peli_video_detach() })
 }

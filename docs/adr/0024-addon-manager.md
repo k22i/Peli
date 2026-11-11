@@ -22,7 +22,7 @@ Two edits are new:
 
 ## Install and configure
 
-- **Addresses.** `addonLink` accepts a manifest URL, an addon's base URL, `stremio://` links and links that name the addon in an `addon` parameter, as Stremio's web install links do. Only http and https are fetched. Pasting a `stremio://` link works; Sinag doesn't register itself as the OS handler for `stremio://`, which would take the scheme from Stremio if it's installed.
+- **Addresses.** `addonLink` accepts a manifest URL, an addon's base URL, `stremio://` links and links that name the addon in an `addon` parameter, as Stremio's web install links do. Only http and https are fetched. Pasting a `stremio://` link works; Peli doesn't register itself as the OS handler for `stremio://`, which would take the scheme from Stremio if it's installed.
 - **Validation.** Nothing is saved until the manifest reads, fresh from the addon and not retried. An address that isn't an addon, one already installed, or one that `configurationRequired` is refused with the reason. An addon that needs configuring gets a button to its configure page instead.
 - **Configure.** The configure page is Stremio's convention, `{base}/configure`, opened in the user's browser. The user pastes the new address back. It must be the same addon (the same manifest `id`, when the old manifest loaded). The menu offers Configure when the manifest says `configurable` or `configurationRequired`, or when it failed to load, since a new address may be the fix.
 
@@ -38,8 +38,8 @@ An addon's address can hold the user's settings and debrid key in its path. The 
 
 - **Undo is a new edit, not a rollback.** If another device changed the list in between, the addon goes back at its old index in the new list.
 - **Approval can run out mid-session.** The parent PIN approval lasts two minutes. An edit refused for it asks for the PIN again and retries.
-- **Reconfiguring is copy and paste.** Stremio's configure pages hand back a `stremio://` link the OS opens, which Sinag doesn't receive without a scheme handler.
+- **Reconfiguring is copy and paste.** Stremio's configure pages hand back a `stremio://` link the OS opens, which Peli doesn't receive without a scheme handler.
 
 ## Revisit if
 
-Sinag registers a URL scheme (its own, or `stremio://`) so configure pages can hand the address back directly; or Nuvio adds per-addon settings outside the URL.
+Peli registers a URL scheme (its own, or `stremio://`) so configure pages can hand the address back directly; or Nuvio adds per-addon settings outside the URL.

@@ -18,7 +18,7 @@ date: 2026-10-30
 
 ## In Go, not the webview
 
-The webview's fetch can't set `User-Agent`, can't see where redirects led, and is subject to CORS, which debrid CDNs don't send. `Resolve` makes **one GET with `Range: bytes=0-0`**: the headers are enough to learn the file's type and size. It sends the addon's `behaviorHints.proxyHeaders.request` on every hop. An addon's `User-Agent` replaces Sinag's. Headers the player sets itself (`Range`, `Host`, …) and invalid ones (a newline in a value) are dropped.
+The webview's fetch can't set `User-Agent`, can't see where redirects led, and is subject to CORS, which debrid CDNs don't send. `Resolve` makes **one GET with `Range: bytes=0-0`**: the headers are enough to learn the file's type and size. It sends the addon's `behaviorHints.proxyHeaders.request` on every hop. An addon's `User-Agent` replaces Peli's. Headers the player sets itself (`Range`, `Host`, …) and invalid ones (a newline in a value) are dropped.
 
 Go's client sends the previous URL as the `Referer` on each redirect. For Torrentio that URL is `/resolve/torbox/<key>/…`, so the next host would get the user's debrid key. The client strips that header unless the addon set one, and a test checks that no hop sees the key.
 
@@ -58,7 +58,7 @@ Messages name the debrid service when the stream says which: "TorBox is still do
 | The same file again | 0.7–1.4 s |
 | First play without the cap (2 files) | 3.5 s, 3.9 s |
 
-The resolve takes 1.8–2.7 s of that when cold, mostly on Torrentio's and TorBox's servers. Sinag's own check of the file costs one CDN round trip (170–200 ms). mpv's open takes 0.9–3.2 s, slowest for MP4s (about 5 MB read before the first frame). Bandwidth isn't the limit. **The ≤ 3 s target isn't met on a first play.** #101 holds it: re-measure with #60's libmpv, and decide whether to resolve a cached top pick before it's picked. That would save about 2 s, but it adds the torrent to the user's debrid list without being asked.
+The resolve takes 1.8–2.7 s of that when cold, mostly on Torrentio's and TorBox's servers. Peli's own check of the file costs one CDN round trip (170–200 ms). mpv's open takes 0.9–3.2 s, slowest for MP4s (about 5 MB read before the first frame). Bandwidth isn't the limit. **The ≤ 3 s target isn't met on a first play.** #101 holds it: re-measure with #60's libmpv, and decide whether to resolve a cached top pick before it's picked. That would save about 2 s, but it adds the torrent to the user's debrid list without being asked.
 
 ## Not done here
 

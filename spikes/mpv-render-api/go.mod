@@ -1,4 +1,4 @@
-module sinag/spikes/mpvrenderapi
+module peli/spikes/mpvrenderapi
 
 go 1.25.0
 

@@ -22,7 +22,7 @@ var (
 )
 
 // auditBundle scans every file under dir for a GPL or non-free FFmpeg build.
-// ADR-0003: the only libmpv Sinag may ship is our own LGPL one.
+// ADR-0003: the only libmpv Peli may ship is our own LGPL one.
 func auditBundle(dir string, out io.Writer) error {
 	var problems []string
 	var libmpvFound bool

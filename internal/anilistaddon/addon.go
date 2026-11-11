@@ -1,5 +1,5 @@
-// Package anilistaddon is Sinag's AniList addon (#108, ADR-0045): a Stremio
-// addon that runs inside the app at sinag://anilist/manifest.json and serves
+// Package anilistaddon is Peli's AniList addon (#108, ADR-0045): a Stremio
+// addon that runs inside the app at peli://anilist/manifest.json and serves
 // AniList's lists and details for anime. internal/addons answers the
 // webview's requests for it with Handler.
 //
@@ -21,11 +21,11 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/animelist"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/animelist"
 )
 
-// Name is the addon's host: sinag://anilist/….
+// Name is the addon's host: peli://anilist/….
 const Name = "anilist"
 
 // KitsuURL is Kitsu's public API.
@@ -125,7 +125,7 @@ func (a *Addon) serveCached(w http.ResponseWriter, ctx context.Context, key stri
 		case errors.Is(err, errNotFound), errors.Is(err, anilist.ErrNotFound):
 			writeJSON(w, http.StatusNotFound, map[string]string{"error": "not found"})
 		case errors.As(err, &limited), errors.Is(err, errBusy):
-			writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "AniList asked Sinag to wait"})
+			writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "AniList asked Peli to wait"})
 		default:
 			if ctx.Err() == nil {
 				slog.Warn("anilistaddon: request failed", "error", err)

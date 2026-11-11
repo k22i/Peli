@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/animelist"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/animelist"
 )
 
 // Frieren maps to Kitsu; the second title has no Kitsu id yet.
@@ -85,7 +85,7 @@ func newFake(t *testing.T) (*fake, *Addon) {
 func get(t *testing.T, a *Addon, path string) (int, map[string]any) {
 	t.Helper()
 	rec := httptest.NewRecorder()
-	a.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "sinag://anilist"+path, nil))
+	a.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "peli://anilist"+path, nil))
 	var out map[string]any
 	if err := json.Unmarshal(rec.Body.Bytes(), &out); err != nil {
 		t.Fatalf("%s: %v (%s)", path, err, rec.Body)

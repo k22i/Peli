@@ -435,7 +435,7 @@ describe("catalogs", () => {
   });
 });
 
-// #39: Sinag bundles no addons, so a fresh install has none. Home explains
+// #39: Peli bundles no addons, so a fresh install has none. Home explains
 // what they are and installs one, rather than opening on nothing.
 describe("with no addons", () => {
   const guest = { id: 1, name: "Guest", guest: true } as Profile;
@@ -457,7 +457,7 @@ describe("with no addons", () => {
     await renderApp("/");
 
     const region = await empty();
-    expect(region).toHaveTextContent("Sinag comes with no addons");
+    expect(region).toHaveTextContent("Peli comes with no addons");
     expect(screen.queryByText("Titles you save and watch show up here.")).toBeNull();
     // No content links: the only way out is to the addon manager.
     expect(

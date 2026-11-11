@@ -187,8 +187,8 @@ const failures: Record<string, { title: string; description: string; retry: bool
     retry: true,
   },
   unsupported: {
-    title: "Sinag can’t play this file",
-    description: "Its format isn’t one Sinag’s player reads. Choose another stream.",
+    title: "Peli can’t play this file",
+    description: "Its format isn’t one Peli’s player reads. Choose another stream.",
     retry: false,
   },
 };
@@ -664,7 +664,7 @@ function PlayerFile({
         switching.current = false;
         return setSwitchStatus({
           text: "",
-          failed: "Sinag’s player couldn’t start it. Try another stream.",
+          failed: "Peli’s player couldn’t start it. Try another stream.",
         });
       }
       // The user's choice is the show's source from now on (#58).
@@ -825,7 +825,7 @@ function PlayerFile({
     seek(to.chapter.time);
     setNotice({ text: `${to.index + 1}. ${chapterName(to.chapter, to.index)}` });
   };
-  // Shift+S, or More: the frame as a PNG in ~/Pictures/Sinag (Go), with
+  // Shift+S, or More: the frame as a PNG in ~/Pictures/Peli (Go), with
   // the subtitles showing or without them, and a toast to find it.
   const takeScreenshot = (subtitles: boolean) => {
     if (!ready || state.loading) return;

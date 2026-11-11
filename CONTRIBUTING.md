@@ -1,20 +1,20 @@
-# Contributing to Sinag
+# Contributing to Peli
 
-Sinag is MIT-licensed. Contributions are accepted under the same licence.
+Peli is MIT-licensed. Contributions are accepted under the same licence.
 
 ## Clean-room rule for Nuvio
 
-Sinag talks to Nuvio's hosted backend, but it must not copy Nuvio's code.
+Peli talks to Nuvio's hosted backend, but it must not copy Nuvio's code.
 
-- **NuvioMobile is GPL-3.** Never read it, copy from it or port it. Code derived from it would force Sinag to GPL-3.
+- **NuvioMobile is GPL-3.** Never read it, copy from it or port it. Code derived from it would force Peli to GPL-3.
 - **nuvio-web has no licence.** Without a licence, all rights are reserved: do not read or copy it either.
 - **The contract comes from observed behaviour and the Apache-2.0 `NuvioMedia/self-host` schema.** Re-implement from that, and write down what you observed in [docs/spikes/nuvio-backend.md](docs/spikes/nuvio-backend.md).
 
-If you have already read GPL or unlicensed Nuvio code for a part of Sinag, say so in the issue before you work on that part, so someone else can take it.
+If you have already read GPL or unlicensed Nuvio code for a part of Peli, say so in the issue before you work on that part, so someone else can take it.
 
 ## Dependencies
 
-Every dependency, Go or npm, must be under a permissive licence: MIT, Apache-2.0, BSD, ISC, OFL-1.1 (fonts), MPL-2.0, Unlicense or similar. No GPL, AGPL or LGPL code is linked into Sinag, and `go run ./tools/notices -audit` fails if one appears.
+Every dependency, Go or npm, must be under a permissive licence: MIT, Apache-2.0, BSD, ISC, OFL-1.1 (fonts), MPL-2.0, Unlicense or similar. No GPL, AGPL or LGPL code is linked into Peli, and `go run ./tools/notices -audit` fails if one appears.
 
 After you add, remove or update a dependency, regenerate the notices and commit the result:
 

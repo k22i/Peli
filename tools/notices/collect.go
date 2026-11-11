@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-// dep is one third-party package that ends up in a Sinag release.
+// dep is one third-party package that ends up in a Peli release.
 type dep struct {
 	Kind    string `json:"kind"` // "go" or "npm"
 	Name    string `json:"name"`

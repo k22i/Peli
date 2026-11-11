@@ -1,4 +1,4 @@
-// Package simkl is Sinag's client for SIMKL's API (api.simkl.org): AUTH V2
+// Package simkl is Peli's client for SIMKL's API (api.simkl.org): AUTH V2
 // device sign-in and token refresh, scrobbling, and the watched history
 // (#72–#74). Only internal/tracking calls it. See ADR-0042.
 package simkl
@@ -20,10 +20,10 @@ import (
 // DefaultURL is SIMKL's API.
 const DefaultURL = "https://api.simkl.com"
 
-// AppName is what SIMKL's request log calls Sinag (the app-name parameter).
-const AppName = "sinag"
+// AppName is what SIMKL's request log calls Peli (the app-name parameter).
+const AppName = "peli"
 
-// Scope is what Sinag asks for: reading the history, and writing scrobbles.
+// Scope is what Peli asks for: reading the history, and writing scrobbles.
 // SIMKL turns a scope it doesn't know into read-only without saying so, so
 // the token's scope is checked after sign-in.
 const Scope = "media:read media:write"
@@ -78,7 +78,7 @@ type Client struct {
 }
 
 // New returns a client for SIMKL's API at base, as the app clientID, sending
-// version as Sinag's.
+// version as Peli's.
 func New(base, clientID, version string) *Client {
 	return &Client{
 		base:     strings.TrimSuffix(base, "/"),
@@ -295,7 +295,7 @@ func (c *Client) AddHistory(ctx context.Context, token string, history History) 
 	return c.call(ctx, token, http.MethodPost, "/sync/history", nil, history, nil)
 }
 
-// Activities are the user's lists' last-changed times. Only the parts Sinag
+// Activities are the user's lists' last-changed times. Only the parts Peli
 // reads are kept; All moves whenever anything does.
 type Activities struct {
 	All     string        `json:"all"`

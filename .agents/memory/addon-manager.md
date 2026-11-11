@@ -1,6 +1,6 @@
 ---
 name: addon-manager
-description: "How Sinag's addon manager (#38) and Home's no-addons state (#39) are laid out, their edits and the stubbed-screenshot harness gotchas; read before anything that installs addons"
+description: "How Peli's addon manager (#38) and Home's no-addons state (#39) are laid out, their edits and the stubbed-screenshot harness gotchas; read before anything that installs addons"
 metadata:
   type: project
 ---

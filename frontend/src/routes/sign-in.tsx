@@ -193,7 +193,7 @@ function SignIn() {
 
         <p className="flex gap-2 text-body text-muted-foreground">
           <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
-          Sinag doesn’t keep your password. Your session is stored in this computer’s keychain.
+          Peli doesn’t keep your password. Your session is stored in this computer’s keychain.
         </p>
       </div>
     </FocusScreen>

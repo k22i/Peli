@@ -1,4 +1,4 @@
-module sinag/spikes/libmpvcgo
+module peli/spikes/libmpvcgo
 
 go 1.25.0
 

@@ -3,7 +3,7 @@ package account
 import (
 	"context"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Installing, reconfiguring, removing, reordering and turning addons on or off, for the addon

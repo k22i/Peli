@@ -1,4 +1,4 @@
-// Package licences exposes Sinag's own licence and its third-party notices to
+// Package licences exposes Peli's own licence and its third-party notices to
 // the frontend (Settings › About › Licences).
 package licences
 
@@ -21,7 +21,7 @@ type Component struct {
 	Text    string `json:"text"`
 }
 
-// Notices is Sinag's licence and the components it includes.
+// Notices is Peli's licence and the components it includes.
 type Notices struct {
 	App        Component   `json:"app"`
 	Components []Component `json:"components"`
@@ -30,7 +30,7 @@ type Notices struct {
 // Service is the Wails service the frontend calls for licences.
 type Service struct{}
 
-// Notices returns Sinag's licence and its third-party notices.
+// Notices returns Peli's licence and its third-party notices.
 func (Service) Notices() (Notices, error) {
 	var n Notices
 	err := json.Unmarshal(noticesJSON, &n)

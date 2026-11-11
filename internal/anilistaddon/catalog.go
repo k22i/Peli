@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/k22i/Sinag/internal/animelist"
+	"github.com/k22i/Peli/internal/animelist"
 )
 
 // Genres are AniList's, without Hentai: adult titles are never listed.
@@ -67,8 +67,10 @@ var idPrefixes = []string{"kitsu:", "anilist:"}
 
 func (a *Addon) manifest() manifest {
 	m := manifest{
+		// The id from when the app was Sinag, kept: Home layouts and folders
+		// (synced to Nuvio) name catalogs by addon id.
 		ID: "sinag.anilist", Version: a.version, Name: "AniList",
-		Description: "AniList’s lists and details for anime. Built into Sinag.",
+		Description: "AniList’s lists and details for anime. Built into Peli.",
 		Logo:        "https://anilist.co/img/icons/android-chrome-512x512.png",
 		Types:       []string{"anime", "series", "movie"},
 		IDPrefixes:  idPrefixes,

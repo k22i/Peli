@@ -1,4 +1,4 @@
-// Package store is Sinag's local database: profiles, their library, watch
+// Package store is Peli's local database: profiles, their library, watch
 // progress, watched items, addons, plugin repositories (#57), home layout, collections, settings and
 // the source each show was last played from (#58), the device's settings,
 // the sync bookkeeping (#28) and a cache.
@@ -77,8 +77,8 @@ var (
 var (
 	ErrProfileNotFound = errors.New("store: profile not found")
 	ErrInvalidItem     = errors.New("store: invalid item")
-	ErrNewerSchema     = errors.New("store: database was written by a newer version of Sinag")
-	ErrLocked          = errors.New("store: database is in use by another Sinag process")
+	ErrNewerSchema     = errors.New("store: database was written by a newer version of Peli")
+	ErrLocked          = errors.New("store: database is in use by another Peli process")
 )
 
 // Store is an open database. It is safe for concurrent use.

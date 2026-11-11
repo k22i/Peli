@@ -5,7 +5,7 @@ date: 2026-11-05
 
 # Remembered stream source: a fingerprint per profile and show, matched by the ranking engine, replaced by whatever plays
 
-#58 (F19) asks Sinag to remember the source a viewer chose for a show and pick its best match for the next episode, falling back to the ranked top pick, with an easy override in the picker and the player's switcher.
+#58 (F19) asks Peli to remember the source a viewer chose for a show and pick its best match for the next episode, falling back to the ranked top pick, with an easy override in the picker and the player's switcher.
 
 ## What is kept
 

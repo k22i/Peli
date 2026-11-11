@@ -11,7 +11,7 @@ All backend calls live in `internal/nuvio` (the wire) and `internal/backend` (th
 - **`Remote` is the account side**: sign-in, QR login, refresh, profiles, PINs and avatars. `internal/account` takes a `backend.Remote` instead of a `*nuvio.Client`, and keeps its types (`nuvio.Session`, `nuvio.Profile`) because only Nuvio has accounts. `Sessions` (`account.Session.Do`) lends the sync module a live session and refreshes once on `ErrSignedOut`, so the refresh stays in one place (ADR-0009).
 - **Import boundary, as a test.** `internal/nuvio/boundary_test.go` fails if a package other than `main`, `internal/account` or `internal/backend` imports `internal/nuvio`, if any other Go file names a Supabase path or host, or if `go.mod`, `frontend/package.json` or the frontend's sources mention Supabase.
 - **Applying a pull is the store's job.** `Store.ApplyChanges` writes a feed to a profile in one transaction and queues no push. It is idempotent: a change equal to what is stored does nothing, which is how the echo of our own writes (the feed has no origin) is ignored. A change to an item with a push still queued is skipped, so the echo of an earlier write can't undo a newer local one.
-- **The client is polite on its own.** A token bucket keeps it to 20 requests a second (burst 20) against the shared 900, on top of the full-jitter backoff on 429 from #20. Every write sends `p_origin_client_id`, a random per-process `sinag-…` ID.
+- **The client is polite on its own.** A token bucket keeps it to 20 requests a second (burst 20) against the shared 900, on top of the full-jitter backoff on 429 from #20. Every write sends `p_origin_client_id`, a random per-process `peli-…` ID.
 
 ## How the server's behaviours are handled
 

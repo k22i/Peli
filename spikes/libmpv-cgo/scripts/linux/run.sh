@@ -46,7 +46,7 @@ if timeout 120 bash -c "until grep -q 'SPIKE_READY_FOR_INPUT\|start failed' '$lo
   # Coordinates are relative to the main 1280x720 window, so in overlay mode
   # they land on whatever is stacked on top: the probe box in the centre,
   # the play/pause button bottom-left, then an empty area over the video.
-  win=$(xdotool search --name "Sinag spike: libmpv" | head -1)
+  win=$(xdotool search --name "Peli spike: libmpv" | head -1)
   xdotool mousemove --window "$win" 640 360 click 1; sleep 0.4
   xdotool mousemove --window "$win" 34 690 click 1; sleep 0.6
   xdotool mousemove --window "$win" 34 690 click 1; sleep 0.6

@@ -1,6 +1,6 @@
 //go:build darwin
 
-// Package firstmouse makes a click on an inactive Sinag window act on what it
+// Package firstmouse makes a click on an inactive Peli window act on what it
 // hits, instead of only activating the window. WKWebView refuses that first
 // click by default, so the user had to click every control twice (#8, #12),
 // and Wails beta.28 has no option for it.

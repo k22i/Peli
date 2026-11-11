@@ -220,7 +220,7 @@ func (l *List) index(entries []Entry) {
 // doesn't wait for it.
 func (l *List) Warm(ctx context.Context) { _ = l.ensure(ctx) }
 
-// Ref names a title the way Sinag's addons do, for Find.
+// Ref names a title the way Peli's addons do, for Find.
 type Ref struct {
 	Kitsu   int
 	MAL     int

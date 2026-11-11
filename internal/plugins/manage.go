@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Plugin management (#57, ADR-0047): which plugins a profile runs.

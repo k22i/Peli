@@ -1,4 +1,4 @@
-module sinag/spikes/baselines
+module peli/spikes/baselines
 
 go 1.25.0
 

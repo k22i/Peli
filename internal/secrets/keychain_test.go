@@ -12,18 +12,18 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // These tests use the OS keychain, under their own service name, and remove
-// what they write. Run them with SINAG_KEYCHAIN_TEST=1; CI does on every OS.
+// what they write. Run them with PELI_KEYCHAIN_TEST=1; CI does on every OS.
 
 func osKeychain(t *testing.T) *Keychain {
 	t.Helper()
 	if realKeychain != "1" {
-		t.Skip("set SINAG_KEYCHAIN_TEST=1 to use the OS keychain")
+		t.Skip("set PELI_KEYCHAIN_TEST=1 to use the OS keychain")
 	}
-	k := New(fmt.Sprintf("Sinag-test-%d", os.Getpid()))
+	k := New(fmt.Sprintf("Peli-test-%d", os.Getpid()))
 	t.Cleanup(func() {
 		for _, key := range []string{"nuvio.access-token", "nuvio.refresh-token", "debrid.torbox", "big"} {
 			k.Delete(key)
@@ -67,12 +67,12 @@ func TestNoTokensInAppData(t *testing.T) {
 
 	// The app's own writes: a profile, its library and the persisted query
 	// cache, next to the tokens going through the secrets service.
-	db, err := store.Open(filepath.Join(dataDir, "Sinag", "sinag.db"))
+	db, err := store.Open(filepath.Join(dataDir, "Peli", "peli.db"))
 	check(t, err)
 	profile, err := db.CreateProfile(store.Profile{Name: "Kevin"})
 	check(t, err)
 	check(t, db.SaveLibraryItem(profile.ID, store.LibraryItem{ContentID: "tt1160419", ContentType: "movie", Name: "Dune", AddedAt: 1}))
-	check(t, db.CacheSet("sinag-query-cache", []byte(`{"clientState":{"queries":[]}}`)))
+	check(t, db.CacheSet("peli-query-cache", []byte(`{"clientState":{"queries":[]}}`)))
 	service := NewService(k)
 	for key, value := range tokens {
 		check(t, service.Set(key, value))
@@ -112,13 +112,13 @@ func TestNoTokensInAppData(t *testing.T) {
 	}
 }
 
-// SINAG_KEYCHAIN_TEST=unavailable: a Linux machine with no Secret Service gets
+// PELI_KEYCHAIN_TEST=unavailable: a Linux machine with no Secret Service gets
 // a clear error and nothing is stored anywhere else.
 func TestOSKeychainUnavailable(t *testing.T) {
 	if realKeychain != "unavailable" {
-		t.Skip("set SINAG_KEYCHAIN_TEST=unavailable on Linux with no Secret Service")
+		t.Skip("set PELI_KEYCHAIN_TEST=unavailable on Linux with no Secret Service")
 	}
-	k := New("Sinag-test")
+	k := New("Peli-test")
 	for name, err := range map[string]error{
 		"Available": k.Available(),
 		"Set":       k.Set("trakt.token", token),

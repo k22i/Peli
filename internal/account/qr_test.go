@@ -12,8 +12,8 @@ import (
 
 	"rsc.io/qr"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/secrets"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/secrets"
 )
 
 // phoneApproves makes the fixture's waits instant, and has the phone approve
@@ -37,7 +37,7 @@ func phoneApproves(t *testing.T, f fixture, at int, email string) func() []time.
 
 func TestQRSignIn(t *testing.T) {
 	f := newFixture(t)
-	f.service.deviceName = "Sinag on test-mac"
+	f.service.deviceName = "Peli on test-mac"
 	waits := phoneApproves(t, f, 3, "me@example.com")
 
 	code, err := f.service.StartQRSignIn(t.Context())
@@ -50,7 +50,7 @@ func TestQRSignIn(t *testing.T) {
 	if left := time.Until(code.ExpiresAt); left < 4*time.Minute || left > 5*time.Minute {
 		t.Fatalf("expires in %v", left)
 	}
-	if name := f.backend.Body("/rest/v1/rpc/start_device_login_session")["p_device_name"]; name != "Sinag on test-mac" {
+	if name := f.backend.Body("/rest/v1/rpc/start_device_login_session")["p_device_name"]; name != "Peli on test-mac" {
 		t.Fatalf("device name = %v", name)
 	}
 	// The frontend gets no token, nonce or device code.
@@ -255,7 +255,7 @@ func TestQRPath(t *testing.T) {
 }
 
 func TestDeviceName(t *testing.T) {
-	if name := deviceName(); !strings.HasPrefix(name, "Sinag") || strings.Contains(name, ".") {
+	if name := deviceName(); !strings.HasPrefix(name, "Peli") || strings.Contains(name, ".") {
 		t.Fatalf("device name = %q", name)
 	}
 }

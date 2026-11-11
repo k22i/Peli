@@ -6,10 +6,10 @@ Unicode true
 #
 #   makensis -DSRC=<folder> -DOUT=<installer.exe> [-DSOLID_LZMA] installer.nsi
 
-!define INFO_PROJECTNAME    "sinag"
-!define INFO_PRODUCTNAME    "Sinag"
+!define INFO_PROJECTNAME    "peli"
+!define INFO_PRODUCTNAME    "Peli"
 !define INFO_COPYRIGHT      "(c) 2026, k22i"
-!define ARG_WAILS_AMD64_BINARY "${SRC}/sinag.exe"
+!define ARG_WAILS_AMD64_BINARY "${SRC}/peli.exe"
 !include "wails_tools.nsh"
 
 !ifdef SOLID_LZMA

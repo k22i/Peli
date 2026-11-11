@@ -97,7 +97,7 @@ type Client struct {
 
 // requestsPerSecond is the most requests a client sends. The backend allows
 // 900 a second across all its clients (docs/spikes/nuvio-backend.md), so
-// Sinag keeps well under it; a sync needs a few calls per surface.
+// Peli keeps well under it; a sync needs a few calls per surface.
 const requestsPerSecond = 20
 
 // limiter is a token bucket: up to burst requests at once, then rate a
@@ -131,19 +131,19 @@ func (l *limiter) reserve() time.Duration {
 	return time.Duration(-l.tokens / l.rate * float64(time.Second))
 }
 
-// New returns a client for the backend at baseURL. version is Sinag's, for
+// New returns a client for the backend at baseURL. version is Peli's, for
 // the user agent.
 func New(baseURL, version string) *Client {
 	return &Client{
 		home:      strings.TrimRight(baseURL, "/"),
 		baseURL:   strings.TrimRight(baseURL, "/"),
-		userAgent: fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		userAgent: fmt.Sprintf("Peli/%s (+https://github.com/k22i/Peli)", version),
 		http:      &http.Client{Timeout: 15 * time.Second},
 		retries:   2,
 		backoff:   time.Second,
 		sleep:     sleep,
 		limiter:   newLimiter(requestsPerSecond, requestsPerSecond),
-		originID:  "sinag-" + randomHex(8),
+		originID:  "peli-" + randomHex(8),
 	}
 }
 
@@ -195,7 +195,7 @@ type Session struct {
 
 // SessionFromTokens rebuilds a session kept as its two tokens, reading the
 // expiry and account from the access token's claims. The token isn't
-// verified: the backend does that, and Sinag only needs to know when to
+// verified: the backend does that, and Peli only needs to know when to
 // refresh and whose session it is.
 func SessionFromTokens(accessToken, refreshToken string) Session {
 	s := Session{AccessToken: accessToken, RefreshToken: refreshToken}

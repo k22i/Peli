@@ -27,11 +27,11 @@ export const posterTitleQuery = (id: string) =>
 const animeId = /^(kitsu|anilist|mal):\d+$/;
 
 // Addons that can give a poster for an IMDb title: their own meta for a
-// film or a show by IMDb id. Sinag's built-in addons are AniList's own.
+// film or a show by IMDb id. Peli's built-in addons are AniList's own.
 export function posterAddons(addons: readonly LoadedAddon[]): LoadedAddon[] {
   return addons.filter(
     (addon) =>
-      !addon.url.startsWith("sinag://") &&
+      !addon.url.startsWith("peli://") &&
       (serves(addon.manifest, "meta", "series", "tt0000000") ||
         serves(addon.manifest, "meta", "movie", "tt0000000")),
   );

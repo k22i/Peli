@@ -93,7 +93,7 @@ beforeEach(() => {
 
 async function renderFirstRun() {
   const app = await renderApp("/", { shell: false });
-  await screen.findByRole("heading", { level: 1, name: "Sinag" });
+  await screen.findByRole("heading", { level: 1, name: "Peli" });
   return app;
 }
 
@@ -112,8 +112,8 @@ describe("first run", () => {
     expect(screen.getByRole("link", { name: "Sign in with email" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Sign in with your phone" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Continue as guest" })).toBeEnabled();
-    // #39: what Sinag is, before anything is installed.
-    expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeVisible();
+    // #39: what Peli is, before anything is installed.
+    expect(screen.getByText(/^Peli comes with no addons and doesn’t host/)).toBeVisible();
   });
 
   it("sits on the sunrise, with the choices as pills (#123)", async () => {

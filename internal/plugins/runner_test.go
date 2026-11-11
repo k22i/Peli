@@ -14,7 +14,7 @@ import (
 
 func runChild(t *testing.T, code string, limits Limits) ([]Stream, error) {
 	t.Helper()
-	return NewRunner().Run(t.Context(), Job{ID: "child", Code: code, Query: movie, Limits: limits, UserAgent: "Sinag/test"})
+	return NewRunner().Run(t.Context(), Job{ID: "child", Code: code, Query: movie, Limits: limits, UserAgent: "Peli/test"})
 }
 
 func TestRunnerRunsInChild(t *testing.T) {
@@ -90,9 +90,9 @@ func TestRunnerCancel(t *testing.T) {
 
 // The child's environment holds nothing of the parent's.
 func TestChildEnvironment(t *testing.T) {
-	t.Setenv("SINAG_SECRET_FOR_TEST", "leak")
+	t.Setenv("PELI_SECRET_FOR_TEST", "leak")
 	for _, kv := range childEnv() {
-		if kv == "SINAG_SECRET_FOR_TEST=leak" {
+		if kv == "PELI_SECRET_FOR_TEST=leak" {
 			t.Fatal("the child gets the parent's environment")
 		}
 	}

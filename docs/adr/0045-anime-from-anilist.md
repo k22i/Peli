@@ -11,17 +11,17 @@ Epic #106. The Anime tab only filled from anime addons (ADR-0027), so with Cinem
 
 We considered building AniList into the browse pages as a catalog source of its own, and rejected it. It would need its own rules for order, turning off, kids profiles, Home rows, search and title pages. An addon gets all of those for free. The other option, recommending a third-party AniList addon (AIOMetadata, Anime Catalogs), leaves the ids it sends up to its configuration, and stream addons only take `kitsu:` and `tt` ids for anime.
 
-So Sinag ships its own addon:
+So Peli ships its own addon:
 
-- **Address.** A built-in addon's manifest URL is `sinag://<name>/manifest.json`. `internal/addons.Fetch` answers `sinag://` requests from handlers registered at startup (`Service.Register`), with the same status, size and error rules as the network. The webview's client (`lib/addon-protocol/client.ts`) sends them straight to Go.
+- **Address.** A built-in addon's manifest URL is `peli://<name>/manifest.json`. `internal/addons.Fetch` answers `peli://` requests from handlers registered at startup (`Service.Register`), with the same status, size and error rules as the network. The webview's client (`lib/addon-protocol/client.ts`) sends them straight to Go.
 - **In the list like any other addon.** The user can reorder it, turn it off or remove it. Kids profiles' allow-lists leave it out until the parent adds it.
 - **Kept on the device.** Other devices can't reach it, so Nuvio's copy of the list never has it. A push strips built-in addons from the list and from the merge base (`store.SyncedAddons`). An edit that only touches them queues nothing. A pulled list keeps this device's built-in addons where they were (`keepBuiltins`): after the addon each followed, or before Kitsu's or last when that addon is gone.
 - **Offered once per profile.** `Store.UseBuiltins(store.Builtins)` runs at startup and when a profile is created. It inserts each built-in addon before the first Kitsu addon (so AniList answers anime details first), or last, and remembers the offer (`builtins-offered`), so a removed one stays removed. A store opened without it, as in tests, offers none.
-- The addon manager shows "Built into Sinag · on this device only" in place of a host, and no Configure item.
+- The addon manager shows "Built into Peli · on this device only" in place of a host, and no Configure item.
 
-## Sinag's AniList addon (#108)
+## Peli's AniList addon (#108)
 
-`internal/anilistaddon`, at `sinag://anilist/manifest.json`.
+`internal/anilistaddon`, at `peli://anilist/manifest.json`.
 
 - **Catalogs**, typed `anime`: Trending, This season, Next season, Popular and Top rated, each with AniList's genres (Hentai left out) and `skip` (pages of 50). A Search catalog requires `search`. Adult titles are never listed (`isAdult: false`), and music videos are left out.
 - **Ids.** A title goes by the Kitsu id the anime list (`internal/animelist`, ADR-0042) maps its AniList entry to, since stream addons take those. With none, it goes by `anilist:<id>`. No stream addon serves that id, so the stream page says "No streams yet". The IMDb id isn't used: one IMDb id covers every season, while AniList has an entry per season or cour, and the IMDb id would put the title back among Cinemeta's.
@@ -47,4 +47,4 @@ Anime catalogs keep everything, so the AniList and Kitsu catalogs' results are u
 
 ## Verification
 
-Go: `internal/addons` (built-in fetch), `internal/store` (`builtins_test.go`: offering, keeping on pull, no push for built-in edits), `internal/backend` (`TestBuiltinAddonsStayOnTheDevice` against the fake Nuvio), `internal/anilistaddon` (manifest, catalogs, details, episodes, the cache and the rate limit against a fake AniList and Kitsu), `internal/animelist` (`IMDbIDs`). Frontend: the client sends `sinag://` to Go alone, `lib/anime.test.ts`, search's grouping, and the Shows grid reading past a page of only anime.
+Go: `internal/addons` (built-in fetch), `internal/store` (`builtins_test.go`: offering, keeping on pull, no push for built-in edits), `internal/backend` (`TestBuiltinAddonsStayOnTheDevice` against the fake Nuvio), `internal/anilistaddon` (manifest, catalogs, details, episodes, the cache and the rate limit against a fake AniList and Kitsu), `internal/animelist` (`IMDbIDs`). Frontend: the client sends `peli://` to Go alone, `lib/anime.test.ts`, search's grouping, and the Shows grid reading past a page of only anime.

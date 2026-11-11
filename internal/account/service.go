@@ -18,10 +18,10 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Keychain keys for the Nuvio session. The two tokens are stored apart to
@@ -223,7 +223,7 @@ func (s *Service) signIn(ctx context.Context, newSession func(context.Context) (
 // link pulls the account's profiles, then keeps the session and links them.
 func (s *Service) link(ctx context.Context, session nuvio.Session, avatars <-chan map[string]string) ([]store.Profile, error) {
 	// No register_current_session: Nuvio accepts only its own apps' names
-	// there, and Sinag doesn't pass itself off as one (ADR-0008).
+	// there, and Peli doesn't pass itself off as one (ADR-0008).
 	remote, err := s.nuvio.Profiles(ctx, session)
 	if err != nil {
 		return nil, err

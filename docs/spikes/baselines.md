@@ -1,6 +1,6 @@
 # Spike: baselines — installer size with libmpv, cold start, idle memory
 
-Issue: [#7](https://github.com/k22i/Sinag/issues/7) · Epic: [#1](https://github.com/k22i/Sinag/issues/1) · Previous spikes: [libmpv via cgo](libmpv-cgo.md) (#3), [mpv render API](mpv-render-api.md) (#4) · Date: 2026-10-12
+Issue: [#7](https://github.com/k22i/Peli/issues/7) · Epic: [#1](https://github.com/k22i/Peli/issues/1) · Previous spikes: [libmpv via cgo](libmpv-cgo.md) (#3), [mpv render API](mpv-render-api.md) (#4) · Date: 2026-10-12
 Spike code: [`spikes/baselines/`](../../spikes/baselines/) (throwaway). Raw results: [`spikes/baselines/results/`](../../spikes/baselines/results/).
 
 ## Verdict
@@ -169,6 +169,6 @@ Also for the tickets that follow:
 
 See [`spikes/baselines/README.md`](../../spikes/baselines/README.md). In short:
 
-- macOS: `scripts/macos/package.sh` (sizes → `results/sizes-macos.json`), then `scripts/macos/bench.sh`. The native control: `bin/bench -app bin/macos/control/Sinag.app -launch open -label macos-control -out results/macos-control.json`.
-- Windows and Linux: run the [`spike-baselines`](../../.github/workflows/spike-baselines.yml) workflow ([run 38207823235](https://github.com/k22i/Sinag/actions/runs/38207823235) for Windows and Linux sizes, [run 38210638912](https://github.com/k22i/Sinag/actions/runs/38210638912) for Linux startup and memory). The GL-off comparison ran in the local Docker image (`docker-arm64-*.json`).
+- macOS: `scripts/macos/package.sh` (sizes → `results/sizes-macos.json`), then `scripts/macos/bench.sh`. The native control: `bin/bench -app bin/macos/control/Peli.app -launch open -label macos-control -out results/macos-control.json`.
+- Windows and Linux: run the [`spike-baselines`](../../.github/workflows/spike-baselines.yml) workflow ([run 38207823235](https://github.com/k22i/Peli/actions/runs/38207823235) for Windows and Linux sizes, [run 38210638912](https://github.com/k22i/Peli/actions/runs/38210638912) for Linux startup and memory). The GL-off comparison ran in the local Docker image (`docker-arm64-*.json`).
 - Tables: `python3 scripts/summary.py results/*.json`.

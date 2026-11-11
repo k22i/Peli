@@ -1,6 +1,6 @@
 ---
 name: search-page
-description: "How Sinag's Search (#44) is built: searchCatalogs + one searchQuery per catalog, searchGroups merge, ⌘F and / shortcut, Row keeps focus by key, fail-closed kids visibility; read before #45, #46, #96"
+description: "How Peli's Search (#44) is built: searchCatalogs + one searchQuery per catalog, searchGroups merge, ⌘F and / shortcut, Row keeps focus by key, fail-closed kids visibility; read before #45, #46, #96"
 metadata:
   type: project
 ---

@@ -5,10 +5,10 @@ package player
 #cgo LDFLAGS: -framework Cocoa -framework QuartzCore -framework CoreVideo -framework OpenGL -framework WebKit
 #include "video.h"
 
-void sinag_video_playing(int on);
-int sinag_video_can_show_hdr(void);
-void sinag_video_show_hdr(int on);
-double sinag_video_smooth(int on);
+void peli_video_playing(int on);
+int peli_video_can_show_hdr(void);
+void peli_video_show_hdr(int on);
+double peli_video_smooth(int on);
 */
 import "C"
 
@@ -47,7 +47,7 @@ func (h *darwinHost) configure(m *mpv) error {
 func (h *darwinHost) attach(m *mpv) error {
 	err := application.InvokeSyncWithResult(func() error {
 		var buf [256]C.char
-		if C.sinag_video_attach(h.window.NativeWindow(), &buf[0], C.int(len(buf))) != 0 {
+		if C.peli_video_attach(h.window.NativeWindow(), &buf[0], C.int(len(buf))) != 0 {
 			return fmt.Errorf("video host: %s", C.GoString(&buf[0]))
 		}
 		return nil
@@ -57,7 +57,7 @@ func (h *darwinHost) attach(m *mpv) error {
 	}
 	h.attached = true
 	var buf [256]C.char
-	if C.sinag_video_start(m.handle(), &buf[0], C.int(len(buf))) != 0 {
+	if C.peli_video_start(m.handle(), &buf[0], C.int(len(buf))) != 0 {
 		h.detach()
 		return fmt.Errorf("video host: %s", C.GoString(&buf[0]))
 	}
@@ -67,18 +67,18 @@ func (h *darwinHost) attach(m *mpv) error {
 func (h *darwinHost) videoConfigured(bool) {}
 
 func (h *darwinHost) playing(on bool) {
-	C.sinag_video_playing(cbool(on))
+	C.peli_video_playing(cbool(on))
 }
 
 // canShowHDR is true when the window's screen could show EDR as the
 // session opened (an XDR or HDR-enabled display): the layer then has a
 // half-float back buffer.
 func (h *darwinHost) canShowHDR() bool {
-	return h.attached && C.sinag_video_can_show_hdr() != 0
+	return h.attached && C.peli_video_can_show_hdr() != 0
 }
 
 func (h *darwinHost) showHDR(on bool) {
-	application.InvokeSync(func() { C.sinag_video_show_hdr(cbool(on)) })
+	application.InvokeSync(func() { C.peli_video_show_hdr(cbool(on)) })
 }
 
 // smooth draws every vsync while on, and gives the display's refresh rate:
@@ -87,7 +87,7 @@ func (h *darwinHost) smooth(on bool) float64 {
 	if !h.attached {
 		return 0
 	}
-	return float64(C.sinag_video_smooth(cbool(on)))
+	return float64(C.peli_video_smooth(cbool(on)))
 }
 
 func (h *darwinHost) detach() {
@@ -95,8 +95,8 @@ func (h *darwinHost) detach() {
 		return
 	}
 	h.attached = false
-	C.sinag_video_stop()
-	application.InvokeSync(func() { C.sinag_video_detach() })
+	C.peli_video_stop()
+	application.InvokeSync(func() { C.peli_video_detach() })
 }
 
 func cbool(b bool) C.int {

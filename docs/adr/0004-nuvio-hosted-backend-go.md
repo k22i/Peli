@@ -5,7 +5,7 @@ date: 2026-10-12
 
 # Use Nuvio's hosted backend; ask Nuvio early
 
-**Go.** Sinag signs in to and syncs with `api.nuvio.tv` directly, through one sync module (#28): plain HTTP from Go, not supabase-js ([ADR-0008](0008-nuvio-client-in-go.md)). [#5](../spikes/nuvio-backend.md) showed that email / password sign-in, QR sign-in from the Nuvio phone app, all 20 sync reads with delta cursors, and a progress push (visible in Nuvio mobile right away) all work against live. They use only public inputs: the publishable key is served at `GET /.well-known/nuvio`, so there's no secret to ship. The backend's contract is Nuvio's Apache-2.0 [`self-host`](https://github.com/NuvioMedia/self-host) stack. We build against that schema and run it locally for contract tests (#33), and never read NuvioMobile (GPL-3) or nuvio-web (no licence).
+**Go.** Peli signs in to and syncs with `api.nuvio.tv` directly, through one sync module (#28): plain HTTP from Go, not supabase-js ([ADR-0008](0008-nuvio-client-in-go.md)). [#5](../spikes/nuvio-backend.md) showed that email / password sign-in, QR sign-in from the Nuvio phone app, all 20 sync reads with delta cursors, and a progress push (visible in Nuvio mobile right away) all work against live. They use only public inputs: the publishable key is served at `GET /.well-known/nuvio`, so there's no secret to ship. The backend's contract is Nuvio's Apache-2.0 [`self-host`](https://github.com/NuvioMedia/self-host) stack. We build against that schema and run it locally for contract tests (#33), and never read NuvioMobile (GPL-3) or nuvio-web (no licence).
 
 ## Conditions
 

@@ -6,11 +6,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
+	"github.com/k22i/Peli/internal/backend"
 )
 
 // The rules every member follows to stay in step, as Nuvio's apps follow
-// them, so a party of Sinag and Nuvio members agrees (ADR-0051). Times are
+// them, so a party of Peli and Nuvio members agrees (ADR-0051). Times are
 // in milliseconds of the server's clock.
 const (
 	// Drift past nudgeStart is corrected by playing nudgeFactor faster or

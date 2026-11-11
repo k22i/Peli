@@ -26,7 +26,7 @@ static NSString *const kPage = @"<!doctype html><html><head><meta charset=utf-8>
     ".shell{display:flex;height:100%}nav{width:200px;padding:20px 12px;background:#13161d;display:flex;flex-direction:column;gap:4px}"
     "nav a{color:#aab0bf;padding:8px;text-decoration:none}main{flex:1}header{padding:16px 24px}"
     "input{width:320px;padding:8px 12px;border-radius:6px;border:1px solid #2a3040;background:#13161d;color:inherit}"
-    "</style></head><body><div class=shell><nav><b>Sinag</b><a>Home</a><a>Movies</a><a>Shows</a><a>Anime</a><a>Library</a><a>Settings</a></nav>"
+    "</style></head><body><div class=shell><nav><b>Peli</b><a>Home</a><a>Movies</a><a>Shows</a><a>Anime</a><a>Library</a><a>Settings</a></nav>"
     "<main><header><input placeholder='Search movies and shows'></header><p>Nothing here yet.</p></main></div><script>"
     "const now=()=>performance.timeOrigin+performance.now();const m={timeOrigin:performance.timeOrigin,scriptStart:now()};"
     "m.mounted=now();requestAnimationFrame(()=>{m.raf=now();setTimeout(()=>{m.painted=now();m.visibility=document.visibilityState;"
@@ -47,7 +47,7 @@ static NSString *const kPage = @"<!doctype html><html><head><meta charset=utf-8>
                                                         NSWindowStyleMaskResizable | NSWindowStyleMaskMiniaturizable
                                                 backing:NSBackingStoreBuffered
                                                   defer:NO];
-    self.window.title = @"Sinag control";
+    self.window.title = @"Peli control";
     WKWebViewConfiguration *cfg = [WKWebViewConfiguration new];
     [cfg.userContentController addScriptMessageHandler:self name:@"report"];
     WKWebView *web = [[WKWebView alloc] initWithFrame:self.window.contentView.bounds configuration:cfg];

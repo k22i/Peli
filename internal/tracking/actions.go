@@ -9,19 +9,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Actions the user takes on a title: put it on a list, rate it, and read the
 // watchlist back. One shape for both services: the UI says "planned" and
-// Sinag says plantowatch to SIMKL and PLANNING to AniList. A change goes to
+// Peli says plantowatch to SIMKL and PLANNING to AniList. A change goes to
 // every connected service that can hold the title; one that can't be
 // reached is kept in the outbox and sent later, like a watch.
 
-// Sinag's statuses. "none" takes the title off the lists.
+// Peli's statuses. "none" takes the title off the lists.
 const (
 	StatusPlanned   = "planned"
 	StatusWatching  = "watching"
@@ -47,7 +47,7 @@ var ErrNotTrackable = errors.New("tracking: nothing to track the title with")
 // CodeNotTrackable is ErrNotTrackable's code for the frontend.
 const CodeNotTrackable = "not_trackable"
 
-// ErrBadStatus means the status isn't one of Sinag's, or the rating isn't
+// ErrBadStatus means the status isn't one of Peli's, or the rating isn't
 // 0–10.
 var ErrBadStatus = errors.New("tracking: unknown status or rating")
 
@@ -74,7 +74,7 @@ func (r TitleRef) watching(profileID uint64) player.Watching {
 
 // TitleTracking is what the connected services say about a title.
 type TitleTracking struct {
-	// One of Sinag's statuses; "none" when it's on no list.
+	// One of Peli's statuses; "none" when it's on no list.
 	Status string `json:"status"`
 	// The user's rating, 1–10; 0 for none.
 	Rating int `json:"rating"`
@@ -117,7 +117,7 @@ var aniListStatuses = map[string]string{
 	StatusDropped:   anilist.StatusDropped,
 }
 
-// simklStatus is Sinag's name for one of SIMKL's lists.
+// simklStatus is Peli's name for one of SIMKL's lists.
 func simklStatus(list string) string {
 	for status, l := range simklLists {
 		if l == list {
@@ -132,9 +132,9 @@ func aniListStatus(status string) string {
 	case anilist.StatusRepeating:
 		return StatusWatching
 	}
-	for sinag, l := range aniListStatuses {
+	for peli, l := range aniListStatuses {
 		if l == status {
-			return sinag
+			return peli
 		}
 	}
 	return StatusNone
@@ -614,7 +614,7 @@ func mergeWatchlist(list []WatchlistItem, item WatchlistItem) []WatchlistItem {
 }
 
 // contentID is the id a title opens with: IMDb's, then Kitsu's, then another
-// catalog's that Sinag's ids() reads back.
+// catalog's that Peli's ids() reads back.
 func contentID(all map[string]string) string {
 	switch {
 	case all["imdb"] != "":

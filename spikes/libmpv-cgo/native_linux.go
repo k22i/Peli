@@ -42,11 +42,11 @@ static void makeTransparent(void *win) {
 	static GtkCssProvider *provider = NULL;
 	if (!provider) {
 		provider = gtk_css_provider_new();
-		gtk_css_provider_load_from_string(provider, "window.sinag-transparent { background: transparent; }");
+		gtk_css_provider_load_from_string(provider, "window.peli-transparent { background: transparent; }");
 		gtk_style_context_add_provider_for_display(gdk_display_get_default(),
 			GTK_STYLE_PROVIDER(provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 	}
-	gtk_widget_add_css_class(GTK_WIDGET(win), "sinag-transparent");
+	gtk_widget_add_css_class(GTK_WIDGET(win), "peli-transparent");
 }
 
 static void setTransient(void *child, void *parent) {

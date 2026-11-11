@@ -74,7 +74,7 @@ func TestMPRIS(t *testing.T) {
 	if got := get(mprisPlayer, "PlaybackStatus").Value(); got != "Playing" {
 		t.Errorf("PlaybackStatus %v", got)
 	}
-	if got := get(mprisRoot, "Identity").Value(); got != "Sinag" {
+	if got := get(mprisRoot, "Identity").Value(); got != "Peli" {
 		t.Errorf("Identity %v", got)
 	}
 	meta := get(mprisPlayer, "Metadata").Value().(map[string]dbus.Variant)
@@ -115,7 +115,7 @@ func TestMPRIS(t *testing.T) {
 		}
 	}
 	// A track that no longer plays isn't moved.
-	if err := player.Call(mprisPlayer+".SetPosition", 0, dbus.ObjectPath("/app/sinag/track/0"), int64(1)).Err; err != nil {
+	if err := player.Call(mprisPlayer+".SetPosition", 0, dbus.ObjectPath("/app/peli/track/0"), int64(1)).Err; err != nil {
 		t.Fatal(err)
 	}
 	if err := player.SetProperty(mprisPlayer+".Volume", dbus.MakeVariant(0.5)); err == nil {
@@ -161,7 +161,7 @@ func TestMPRIS(t *testing.T) {
 	m.show(nil)
 }
 
-// A second Sinag takes an instance name.
+// A second Peli takes an instance name.
 func TestMPRISInstanceName(t *testing.T) {
 	addr := privateBus(t)
 	connect := func() (*dbus.Conn, error) { return dbus.Connect(addr) }
@@ -184,7 +184,7 @@ func TestMPRISInstanceName(t *testing.T) {
 		}
 	}
 	if mine != 2 {
-		t.Errorf("names %v, want two of Sinag's", names)
+		t.Errorf("names %v, want two of Peli's", names)
 	}
 }
 

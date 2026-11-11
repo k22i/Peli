@@ -193,7 +193,7 @@ func (a *Addon) kitsuEpisodes(ctx context.Context, kitsuID string) map[int]kitsu
 			return nil, nil, 0, err
 		}
 		req.Header.Set("Accept", "application/vnd.api+json")
-		req.Header.Set("User-Agent", "Sinag/"+a.version+" (+https://github.com/k22i/Sinag)")
+		req.Header.Set("User-Agent", "Peli/"+a.version+" (+https://github.com/k22i/Peli)")
 		res, err := a.http.Do(req)
 		if err != nil {
 			return nil, nil, 0, err

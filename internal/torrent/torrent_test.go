@@ -21,7 +21,7 @@ import (
 	"github.com/anacrolix/torrent/bencode"
 	"github.com/anacrolix/torrent/metainfo"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 type settings struct{ device store.DeviceSettings }
@@ -247,7 +247,7 @@ func TestServerRefusesOtherRequests(t *testing.T) {
 		"wrong secret": {base + strings.Repeat("0", len(svc.secret)) + rest, ""},
 		"other file":   {base + svc.secret + "/" + sw.hash.HexString() + "/1/x.mkv", ""},
 		"other hash":   {base + svc.secret + "/" + strings.Repeat("ab", 20) + "/0/x.mkv", ""},
-		"named host":   {source.URL, "sinag.example:80"},
+		"named host":   {source.URL, "peli.example:80"},
 	} {
 		t.Run(name, func(t *testing.T) {
 			req, err := http.NewRequest(http.MethodGet, test.url, nil)

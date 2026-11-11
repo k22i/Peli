@@ -887,8 +887,7 @@ function TimingTab({
           <h3 className="font-display text-[1.375rem] leading-none">Sync by ear</h3>
           <p className="text-tiny leading-snug text-white/55">
             Press <b className="text-white/80">Heard</b> the moment someone starts a line, then{" "}
-            <b className="text-white/80">Seen</b> when its subtitle appears. Sinag takes the gap
-            off.
+            <b className="text-white/80">Seen</b> when its subtitle appears. Peli takes the gap off.
           </p>
         </div>
         <div

@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/syncer"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/syncer"
 )
 
 func ptr(n int) *int { return &n }
@@ -29,7 +29,7 @@ func check(t *testing.T, err error) {
 // queued), and a reporter counting its pushes.
 func setup(t *testing.T) (*store.Store, store.Profile, *Reporter, *atomic.Int32) {
 	t.Helper()
-	db, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
+	db, err := store.Open(filepath.Join(t.TempDir(), "peli.db"))
 	check(t, err)
 	t.Cleanup(func() { db.Close() })
 	profile, err := db.CreateProfile(store.Profile{Name: "Kevin", NuvioIndex: ptr(1)})
@@ -185,7 +185,7 @@ func TestAlreadyWatchedIsNotMarkedAgain(t *testing.T) {
 	}
 }
 
-// Under a minute, Nuvio's server marks nothing, and nor does Sinag.
+// Under a minute, Nuvio's server marks nothing, and nor does Peli.
 func TestShortFilesAreNotMarked(t *testing.T) {
 	db, profile, rep, _ := setup(t)
 	film := player.Watching{ProfileID: profile.ID, ContentID: "tt0903747", ContentType: "movie", VideoID: "tt0903747"}
@@ -234,7 +234,7 @@ func TestGuestReportsMakeNoNuvioRequests(t *testing.T) {
 	}))
 	defer server.Close()
 
-	db, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
+	db, err := store.Open(filepath.Join(t.TempDir(), "peli.db"))
 	check(t, err)
 	defer db.Close()
 	guest, err := db.SwitchToGuest()

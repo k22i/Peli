@@ -1,6 +1,6 @@
 ---
 name: browse-pages
-description: "How Sinag's Movies/Shows/Anime pages (#43) are built: catalog chips, genre/year filter, catalogPagesQuery paging, anime rule, test gotchas; read before #44–#46, #96"
+description: "How Peli's Movies/Shows/Anime pages (#43) are built: catalog chips, genre/year filter, catalogPagesQuery paging, anime rule, test gotchas; read before #44–#46, #96"
 metadata:
   type: project
 ---

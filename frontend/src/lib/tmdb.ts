@@ -167,7 +167,7 @@ export type Person = { id: number; name: string };
 export type CrewGroup = { label: string; people: Person[] };
 
 // A title TMDB suggests, or one film of a collection. It carries TMDB ids;
-// the IMDb id Sinag's addons need is looked up when one is opened.
+// the IMDb id Peli's addons need is looked up when one is opened.
 export type RelatedTitle = {
   tmdb: number;
   media: Media;
@@ -547,7 +547,7 @@ export function useTmdbCollection(collection: TmdbCollection | undefined) {
   return key && collection ? found.data : undefined;
 }
 
-// A TMDB title's IMDb id, which Sinag's addons answer by. TMDB ids aren't
+// A TMDB title's IMDb id, which Peli's addons answer by. TMDB ids aren't
 // understood by Cinemeta, so a suggested title is looked up when opened.
 export const tmdbImdbQuery = (key: string, media: Media, tmdb: number) =>
   queryOptions({

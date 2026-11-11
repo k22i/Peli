@@ -20,7 +20,7 @@ const kindLabel: Record<string, string> = {
   npm: "Interface",
 };
 
-// Sinag's own licence and the notices of everything it includes (#18). The
+// Peli's own licence and the notices of everything it includes (#18). The
 // same text ships as THIRD_PARTY_NOTICES.md in every release.
 export function LicencesDialog({ labelledBy }: { labelledBy: string }) {
   return (
@@ -32,8 +32,7 @@ export function LicencesDialog({ labelledBy }: { labelledBy: string }) {
         <DialogHeader>
           <DialogTitle>Licences</DialogTitle>
           <DialogDescription>
-            Sinag is free software under the MIT licence. It includes the open-source software
-            below.
+            Peli is free software under the MIT licence. It includes the open-source software below.
           </DialogDescription>
         </DialogHeader>
         <DialogPanel>
@@ -55,7 +54,7 @@ function Notices() {
   const { app, components } = notices.data;
   return (
     <div className="flex flex-col gap-2">
-      <Entry component={app} title="Sinag" meta="MIT" open />
+      <Entry component={app} title="Peli" meta="MIT" open />
       {(components ?? []).map((c) => (
         <Entry
           key={`${c.kind}/${c.name}@${c.version}`}

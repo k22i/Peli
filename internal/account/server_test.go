@@ -8,9 +8,9 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The acceptance criterion: switching to another server signs out and
@@ -192,7 +192,7 @@ func TestSetServerAsksTheParent(t *testing.T) {
 }
 
 func TestStartupWithoutCustomServer(t *testing.T) {
-	db := store.NewService(filepath.Join(t.TempDir(), "sinag.db"))
+	db := store.NewService(filepath.Join(t.TempDir(), "peli.db"))
 	if err := db.ServiceStartup(t.Context(), application.ServiceOptions{}); err != nil {
 		t.Fatal(err)
 	}

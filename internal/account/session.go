@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/secrets"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/secrets"
 )
 
 // Refresh timing. A session is refreshed at launch, which is the only way to

@@ -7,7 +7,7 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 import { Spinner } from "@/components/ui/spinner";
 
-// Sinag's buttons are capsules. Ink (default) is the main action on a page,
+// Peli's buttons are capsules. Ink (default) is the main action on a page,
 // sun the rare call to begin something (sign in, install), light and media
 // sit over artwork (Play, and everything beside it).
 export const buttonVariants = cva(

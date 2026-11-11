@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const out = join(here, "../src/lib/addon-protocol/fixtures");
 const spike = join(here, "../../spikes/stream-ranking/fixtures");
-const userAgent = "Sinag/0.0.0-dev (+https://github.com/k22i/Sinag; test fixtures)";
+const userAgent = "Peli/0.0.0-dev (+https://github.com/k22i/Peli; test fixtures)";
 
 type Json = Record<string, unknown>;
 

@@ -9,25 +9,25 @@ import (
 	"github.com/zalando/go-keyring"
 )
 
-// realKeychain is set by SINAG_KEYCHAIN_TEST: "1" runs the tests in
+// realKeychain is set by PELI_KEYCHAIN_TEST: "1" runs the tests in
 // keychain_test.go against the OS keychain, "unavailable" checks the error on
 // a Linux machine with no Secret Service. Either way the mock tests here are
 // skipped, since go-keyring's mock replaces its provider for the whole binary.
-var realKeychain = os.Getenv("SINAG_KEYCHAIN_TEST")
+var realKeychain = os.Getenv("PELI_KEYCHAIN_TEST")
 
 // mock switches go-keyring to an in-memory keychain, failing every call with
 // err when it is set.
 func mock(t *testing.T, err error) *Keychain {
 	t.Helper()
 	if realKeychain != "" {
-		t.Skip("SINAG_KEYCHAIN_TEST is set: testing the OS keychain")
+		t.Skip("PELI_KEYCHAIN_TEST is set: testing the OS keychain")
 	}
 	if err != nil {
 		keyring.MockInitWithError(err)
 	} else {
 		keyring.MockInit()
 	}
-	return New("Sinag-test")
+	return New("Peli-test")
 }
 
 func check(t *testing.T, err error) {
@@ -64,11 +64,41 @@ func TestRoundTrip(t *testing.T) {
 
 func TestServicesAreSeparate(t *testing.T) {
 	mock(t, nil)
-	app, other := New(ServiceName), New("Sinag-other")
+	app, other := New(ServiceName), New("Peli-other")
 
 	check(t, app.Set("debrid.torbox", token))
 	if _, err := other.Get("debrid.torbox"); !errors.Is(err, ErrNotFound) {
 		t.Fatalf("other service sees the key: err = %v", err)
+	}
+}
+
+func TestMovesFromLegacy(t *testing.T) {
+	mock(t, nil)
+	legacy := New("Sinag-test")
+	check(t, legacy.Set("nuvio.refresh-token", token))
+	check(t, legacy.Set("debrid.torbox", token))
+	k := New("Peli-test").MovesFrom("Sinag-test")
+
+	// Read: the item moves across.
+	if got, err := k.Get("nuvio.refresh-token"); err != nil || got != token {
+		t.Fatalf("Get = %q, %v; want the legacy value", got, err)
+	}
+	if got, err := New("Peli-test").Get("nuvio.refresh-token"); err != nil || got != token {
+		t.Fatalf("after the move, own service has %q, %v", got, err)
+	}
+	if _, err := legacy.Get("nuvio.refresh-token"); !errors.Is(err, ErrNotFound) {
+		t.Fatalf("legacy item still there after the move: err = %v", err)
+	}
+
+	// Delete before any read: gone from both, so it can't come back.
+	check(t, k.Delete("debrid.torbox"))
+	if _, err := k.Get("debrid.torbox"); !errors.Is(err, ErrNotFound) {
+		t.Fatalf("deleted key came back: err = %v", err)
+	}
+
+	// Missing everywhere: still ErrNotFound.
+	if _, err := k.Get("tmdb.api-key"); !errors.Is(err, ErrNotFound) {
+		t.Fatalf("Get missing = %v, want ErrNotFound", err)
 	}
 }
 

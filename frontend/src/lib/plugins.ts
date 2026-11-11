@@ -75,7 +75,7 @@ export function pluginEditProblem(error: unknown): { title: string; description:
     case "not_a_repository":
       return {
         title: "No plugins found",
-        description: "That address isn’t a plugin repository, or lists nothing Sinag can run.",
+        description: "That address isn’t a plugin repository, or lists nothing Peli can run.",
       };
     case "unreachable":
       return { title: "Couldn’t read it", description: "Check the address and your connection." };
@@ -141,10 +141,10 @@ const messages: Record<PluginErrorKind, string> = {
   timeout: "The plugin didn’t answer.",
   memory: "The plugin used too much memory.",
   failed: "The plugin failed.",
-  bad_answer: "The plugin answered something Sinag can’t read.",
+  bad_answer: "The plugin answered something Peli can’t read.",
   stalled: "The plugin stopped without answering.",
   crashed: "The plugin stopped unexpectedly.",
-  invalid_plugin: "This plugin can’t run in Sinag.",
+  invalid_plugin: "This plugin can’t run in Peli.",
   unreachable: "The plugin couldn’t be downloaded.",
   not_enabled: "This plugin is turned off.",
 };
@@ -234,7 +234,7 @@ export function toStream(plugin: Plugin, stream: PluginStream): Stream {
     url: stream.url,
     behaviorHints: {
       notWebReady: true,
-      bingeGroup: `sinag-plugin-${plugin.id}`,
+      bingeGroup: `peli-plugin-${plugin.id}`,
       ...(videoSize && { videoSize }),
       ...(headers && { proxyHeaders: { request: headers } }),
     },

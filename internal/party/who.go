@@ -7,8 +7,8 @@ import (
 	"sync"
 	"unicode/utf8"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/store"
 )
 
 var colour = regexp.MustCompile(`^#[0-9A-Fa-f]{6}$`)

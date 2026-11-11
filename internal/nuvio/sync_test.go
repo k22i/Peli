@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
 )
 
 func signedIn(t *testing.T) (*nuviotest.Server, *Client, Session) {
@@ -233,7 +233,7 @@ func TestWritesNameTheirOrigin(t *testing.T) {
 	if id := c.OriginClientID(); len(id) < 10 || id == New(b.URL, "1").OriginClientID() {
 		t.Errorf("origin client ID %q isn't unique per client", id)
 	}
-	if got := b.UserAgents()[len(b.UserAgents())-1]; got != "Sinag/1.2.3 (+https://github.com/k22i/Sinag)" {
+	if got := b.UserAgents()[len(b.UserAgents())-1]; got != "Peli/1.2.3 (+https://github.com/k22i/Peli)" {
 		t.Errorf("User-Agent = %q", got)
 	}
 }

@@ -5,7 +5,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@bindings/*": ["./bindings/github.com/k22i/Sinag/internal/*"]
+      "@bindings/*": ["./bindings/github.com/k22i/Peli/internal/*"]
     }
   }
 }

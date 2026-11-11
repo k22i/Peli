@@ -1,10 +1,10 @@
-// Package party is Sinag's watch party (ADR-0051): watching a film or
-// episode in step with friends on Sinag or any of Nuvio's apps, each playing
+// Package party is Peli's watch party (ADR-0051): watching a film or
+// episode in step with friends on Peli or any of Nuvio's apps, each playing
 // it from their own streams. Nuvio's backend keeps who is in a party and
 // where its playback is; the members tell each other everything else on the
 // party's Realtime channel, following the rules in rules.go.
 //
-// The service follows Sinag's player from Go: what the frontend says the
+// The service follows Peli's player from Go: what the frontend says the
 // player shows (Watch), and mpv's own state, every syncEvery. The user's
 // pauses, seeks and speed changes reach it through the player's gate
 // (player.GateWith) before mpv acts on them, so it can publish them, or
@@ -22,8 +22,8 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/player"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/player"
 )
 
 func init() {
@@ -97,7 +97,7 @@ const (
 	messagesKept = 200
 	// What watch_party_list_messages answers at most.
 	historyPage = 100
-	defaultName = "Sinag"
+	defaultName = "Peli"
 )
 
 // Error is a refusal the frontend reads by Code (MarshalError).

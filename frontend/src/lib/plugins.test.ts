@@ -102,7 +102,7 @@ describe("toStream", () => {
       url: "https://cdn.example/a.m3u8",
       behaviorHints: {
         notWebReady: true,
-        bingeGroup: "sinag-plugin-site",
+        bingeGroup: "peli-plugin-site",
         videoSize: 2 * 2 ** 30,
         proxyHeaders: { request: { Referer: "https://site.example/" } },
       },
@@ -114,7 +114,7 @@ describe("toStream", () => {
     expect(stream).toEqual({
       name: "Site Plugin",
       url: "https://cdn.example/b.mp4",
-      behaviorHints: { notWebReady: true, bingeGroup: "sinag-plugin-site" },
+      behaviorHints: { notWebReady: true, bingeGroup: "peli-plugin-site" },
     });
   });
 });

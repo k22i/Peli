@@ -1,10 +1,10 @@
 - [Spike ticket workflow](spike-ticket-workflow.md) — work on main, no PR; progress/verdict comments, tick tasks, move Roadmap board status, comment on epic
 - [Nuvio live account](nuvio-live-account.md) — user's real creds in spikes/nuvio-backend/.env; quote the '#', undo every write, scan results for the UUID
 - [Frontend stack preferences](frontend-stack-preferences.md) — pnpm, Vite+ (oxc/vitest), TanStack, coss ui added per component, React 19, TS 7; release-age + wails3 PATH gotchas
-- [Sinag design direction](sinag-design-direction.md) — Apple × Vercel × Nuvio; lagoon --brand #33B5E0/#0B6E94, Mona Sans; give hex + contrast numbers
+- [Peli design direction](peli-design-direction.md) — Apple × Vercel × Nuvio, then the screening-room revamp; amber --sun, pelican mark + amber app icon; show rendered options
 - [Debrid test key](debrid-test-key.md) — TorBox key in spikes/stream-ranking/.env (git-ignored); reuse it, never print it, redact URLs
 - [Nuvio self-host stack](nuvio-self-host-stack.md) — clone to scratchpad, own COMPOSE_PROJECT_NAME, POSTGRES_PORT=54333, caffeinate long runs
-- [Product name: Sinag](product-name-sinag.md) — chosen over Cove/Marquee; repo, ids and what is still open in #82
+- [Product name: Peli](product-name-peli.md) — renamed from Sinag 2026-11-11 (ADR-0052); what moved, what kept the old name (sinag.anilist id, --sun), #82 checks
 - [Nuvio profile PINs](nuvio-profile-pins.md) — set/clear/verify RPCs, four digits, table rows, unlocked-key gotcha
 - [Kids profiles](kids-profiles.md) — local flag + addon allow-list; parent PIN = own PIN; call VisibleAddons, guardKids in new Go methods
 - [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29), push loop (#30), offline/reconnect (#31), addons merge + shared primary (#32), contract tests (#33), home layout + collections (#35)
@@ -23,7 +23,7 @@
 - [Stream ranking](stream-ranking.md) — #51 lib/ranking (parse, fakes, score, engine), shared worker + RankingSession, useRankedStreams restarts on ctx/prefs, accuracy.md snapshot gate, timing test
 - [Stream picker](stream-picker.md) — #52 stream-list rows + roving keys, P plays top pick, stream-labels badges, file name on demand, no autofocus (pins); #53 hand-off
 - [Stream resolve](stream-resolve.md) — #53 internal/streams Resolve → Source, notice/expired codes, resolvePick (pick → alternates, refresh on expired), tools/ttff; resolving adds to TorBox
-- [Debrid keys](debrid-keys.md) — #54/ADR-0038: Sinag holds no debrid keys, addons do; Settings row links /addons; revisit triggers; #97 needs AD/PM accounts
+- [Debrid keys](debrid-keys.md) — #54/ADR-0038: Peli holds no debrid keys, addons do; Settings row links /addons; revisit triggers; #97 needs AD/PM accounts
 - [Player service](player-service.md) — #60 internal/player Service + per-OS hosts, player:state/time/ended, /player route; one FFmpeg log instance, dev-play hook, find your window by PID, Docker Linux runs
 - [Player controls](player-controls.md) — #61 seek-bar.tsx, Scrub while dragging, useAhead/latestOnly/useIdle, playerHeading, slider jsdom + Space keyup gotchas
 - [Torrent streaming](torrent-streaming.md) — #55/ADR-0040 internal/torrent loopback link, FIFO capped cache, nosqlite tag on production builds, anacrolix stall fixes, CC-film live test
@@ -45,8 +45,8 @@
 - [Remembered source](remembered-source.md) — #58/ADR-0044 store.ChosenSource per show, Prefs.remembered → engine top pick, saved on every play, mock ChosenSource/SetChosenSource
 - [Plugin sandbox](plugin-sandbox.md) — #56/ADR-0043 internal/plugins child process per call, host API, limits, StreamSource key/name/kind, goja pin, mock @bindings/plugins
 - [Plugin management](plugin-management.md) — #57/ADR-0047 per-profile off-by-default switch, repos synced like addons (Nuvio table = repositories only), kids never, Settings › Plugins, rig
-- [Anime from AniList](anime-from-anilist.md) — #106–#109: sinag:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock
-- [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Sinag's identity, glass tiers (#111), 1.5× cards (first asked 2×), type usage rework (fonts stay), sub-tickets #111–#125; type B picked; #117–#123 built by Orca workers
+- [Anime from AniList](anime-from-anilist.md) — #106–#109: peli:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock
+- [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Peli's identity, glass tiers (#111), 1.5× cards (first asked 2×), type usage rework (fonts stay), sub-tickets #111–#125; type B picked; #117–#123 built by Orca workers
 - [Glass materials](glass-materials.md) — superseded by the 2026-11-11 revamp: material-bar/pop/media; #111 history and backdrop-root gotchas
 - [Card sizes](card-sizes.md) — #113 1.5× cards (15rem/27rem), Artwork `use` + sharper(), Home rows capped at 10 + Browse all, memory numbers, deferred grid cache growth
 - [App shell](app-shell.md) — #114 floating glass sidebar, --sidebar-inset/--titlebar-h, bleed, visual nav order vs ⌘1–6, scroll-edge cover, window colour = --background, shot harness

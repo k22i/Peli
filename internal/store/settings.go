@@ -335,7 +335,7 @@ func (s *Store) Server() (string, error) {
 }
 
 // DeviceID returns this install's ID, made the first time it's asked for and
-// kept from then on: a watch party (ADR-0051) knows a device by it, so Sinag
+// kept from then on: a watch party (ADR-0051) knows a device by it, so Peli
 // opened again takes its own seat back rather than a new one. It isn't on
 // Service, so the webview never sees it.
 func (s *Store) DeviceID() (string, error) {
@@ -357,7 +357,7 @@ func (s *Store) DeviceID() (string, error) {
 		if _, err := rand.Read(b); err != nil {
 			return err
 		}
-		id = "sinag-" + hex.EncodeToString(b)
+		id = "peli-" + hex.EncodeToString(b)
 		return settings.Put(keyDeviceID, []byte(id))
 	})
 	return id, err

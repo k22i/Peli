@@ -1,4 +1,4 @@
-module github.com/k22i/Sinag
+module github.com/k22i/Peli
 
 go 1.26.0
 

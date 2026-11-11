@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/k22i/Sinag/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio"
 )
 
 // Remote is the account side of a Nuvio backend: what signing in, keeping a

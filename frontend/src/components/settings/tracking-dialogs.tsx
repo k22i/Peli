@@ -19,7 +19,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
 import { Tracking, trackingErrorCode, trackingProblem, useWaitSignIn } from "@/lib/tracking";
 
-// Connecting SIMKL (#72): SIMKL's device sign-in. Sinag opens SIMKL's page
+// Connecting SIMKL (#72): SIMKL's device sign-in. Peli opens SIMKL's page
 // with the code filled in; the user clicks Allow there, and Go polls until
 // they do. The code is shown too, for signing in on another device.
 export function SimklDialog({
@@ -82,7 +82,7 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
       <DialogHeader>
         <DialogTitle>Connect SIMKL</DialogTitle>
         <DialogDescription>
-          Allow Sinag on the SIMKL page that opened in your browser. What this profile watches is
+          Allow Peli on the SIMKL page that opened in your browser. What this profile watches is
           then scrobbled to your SIMKL account.
         </DialogDescription>
       </DialogHeader>
@@ -137,8 +137,8 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
   );
 }
 
-// Connecting AniList (#104): Sinag opens AniList's approval page, and AniList
-// sends the browser back to a page Sinag serves on this computer, which
+// Connecting AniList (#104): Peli opens AniList's approval page, and AniList
+// sends the browser back to a page Peli serves on this computer, which
 // hands the token to Go.
 export function AniListDialog({
   profileId,
@@ -195,7 +195,7 @@ function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () =>
       <DialogHeader>
         <DialogTitle>Connect AniList</DialogTitle>
         <DialogDescription>
-          Approve Sinag on the AniList page that opened in your browser. Anime this profile watches
+          Approve Peli on the AniList page that opened in your browser. Anime this profile watches
           then moves along on your AniList list.
         </DialogDescription>
       </DialogHeader>

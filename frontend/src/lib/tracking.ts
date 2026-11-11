@@ -76,14 +76,14 @@ export function trackingProblem(error: unknown, service: "SIMKL" | "AniList") {
     case "read_only":
       return {
         title: `${service} gave read-only access`,
-        description: "Sinag needs to write to scrobble. Connect again and allow it.",
+        description: "Peli needs to write to scrobble. Connect again and allow it.",
       };
     case "refused":
       return { title: `${service} refused the sign-in`, description: "Connect again." };
     case "port_in_use":
       return {
-        title: "Another app is using Sinag’s sign-in port",
-        description: "Close other copies of Sinag and try again.",
+        title: "Another app is using Peli’s sign-in port",
+        description: "Close other copies of Peli and try again.",
       };
     case "keychain_unavailable":
       return {

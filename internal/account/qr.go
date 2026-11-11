@@ -12,11 +12,11 @@ import (
 
 	"rsc.io/qr"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/store"
 )
 
-// QR sign-in (#21, ADR-0013): Sinag shows a QR code and a short code, and the
+// QR sign-in (#21, ADR-0013): Peli shows a QR code and a short code, and the
 // user approves it on their phone, signed in to Nuvio at nuvio.tv/link or in
 // the Nuvio app. The device code and nonce stay in Go.
 
@@ -53,7 +53,7 @@ func (s *Service) StartQRSignIn(ctx context.Context) (QRCode, error) {
 	if s.customServer() {
 		return QRCode{}, ErrQRUnavailable
 	}
-	// Check first, so the user isn't asked to approve a sign-in Sinag can't
+	// Check first, so the user isn't asked to approve a sign-in Peli can't
 	// keep.
 	if err := s.session.keychain.Available(); err != nil {
 		return QRCode{}, err
@@ -161,7 +161,7 @@ func (s *Service) WaitQRSignIn(ctx context.Context, code string) (store.Profile,
 }
 
 // deviceName is what the phone shows when it approves a QR sign-in:
-// "Sinag on" and the computer's name, or its OS.
+// "Peli on" and the computer's name, or its OS.
 func deviceName() string {
 	host, _ := os.Hostname()
 	// macOS adds .local, and some networks a domain.
@@ -170,9 +170,9 @@ func deviceName() string {
 		host = map[string]string{"darwin": "macOS", "windows": "Windows", "linux": "Linux"}[runtime.GOOS]
 	}
 	if host == "" {
-		return "Sinag"
+		return "Peli"
 	}
-	return "Sinag on " + host
+	return "Peli on " + host
 }
 
 func sleep(ctx context.Context, d time.Duration) error {

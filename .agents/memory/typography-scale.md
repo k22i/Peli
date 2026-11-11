@@ -7,7 +7,7 @@ metadata:
 
 **Superseded by `feat: revamp ui` (32b700d, 2026-11-11):** the type utilities are now `type-hero`, `type-display` (Instrument Serif, a few large moments), `type-title`, `type-row`, `type-item`, `type-eyebrow` (11px uppercase, was `text-label`) and `tnum` (tabular numbers, was `text-num`). Small text uses `text-small` / `text-tiny`. What follows is the #112 history.
 
-#112 (redesign epic [[redesign-epic]]) rolled out the user's pick, **option B · Semi-wide** ([[sinag-design-direction]]). Tokens live in the `@theme` "Type" block of `index.css`; the `@utility` blocks after it add what a token can't carry.
+#112 (redesign epic [[redesign-epic]]) rolled out the user's pick, **option B · Semi-wide** ([[peli-design-direction]]). Tokens live in the `@theme` "Type" block of `index.css`; the `@utility` blocks after it add what a token can't carry.
 
 - `text-display` (hero, 112.5% width, 700, −0.03em, clamp 2.5–4.5rem), `text-title` (112.5%, 660, −0.02em, 2.25rem), `text-heading` (100%, 640, −0.015em, 1.375rem) set family and `font-stretch` themselves. **No page writes `font-heading` or `font-stretch-*`** (grep finds none).
 - `text-body` 15px / 450 / 1.45 is on `body`, so content inherits it. Dense controls (menus, chips, sidebar items, pane list) keep `text-sm`.

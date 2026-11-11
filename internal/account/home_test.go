@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // On Nuvio's server the layout is Nuvio's apps' and can't change here; the

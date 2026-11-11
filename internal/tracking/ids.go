@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/k22i/Sinag/internal/animelist"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/simkl"
+	"github.com/k22i/Peli/internal/animelist"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/simkl"
 )
 
 // ID mapping (#73, #105). What plays is named by its addon's content id

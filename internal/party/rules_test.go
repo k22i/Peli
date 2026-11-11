@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/store"
 )
 
 func TestExpectedPosition(t *testing.T) {
@@ -203,9 +203,9 @@ func TestMeOf(t *testing.T) {
 	index := 2
 	me := meOf(store.Profile{
 		ID: 7, Name: "  Kev  ", Avatar: "http://not-https/a.png", AvatarColor: "#33B5E0", NuvioIndex: &index,
-	}, "sinag-device", true)
+	}, "peli-device", true)
 	if !me.Linked || me.Identity.DisplayName != "Kev" || me.Identity.AvatarURL != "" ||
-		me.Identity.AvatarColor != "#33B5E0" || *me.Identity.ProfileIndex != 2 || me.Identity.DeviceID != "sinag-device" {
+		me.Identity.AvatarColor != "#33B5E0" || *me.Identity.ProfileIndex != 2 || me.Identity.DeviceID != "peli-device" {
 		t.Errorf("me = %+v", me)
 	}
 	if meOf(store.Profile{Guest: true, NuvioIndex: &index}, "d", true).Linked {
@@ -214,7 +214,7 @@ func TestMeOf(t *testing.T) {
 	if meOf(store.Profile{NuvioIndex: &index}, "d", false).Linked {
 		t.Error("signed out isn't linked")
 	}
-	if name := meOf(store.Profile{}, "d", true).Identity.DisplayName; name != "Sinag" {
+	if name := meOf(store.Profile{}, "d", true).Identity.DisplayName; name != "Peli" {
 		t.Errorf("no name: %q", name)
 	}
 }

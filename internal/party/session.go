@@ -8,7 +8,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
+	"github.com/k22i/Peli/internal/backend"
 )
 
 // session is one party this device is in, from joining until it leaves.

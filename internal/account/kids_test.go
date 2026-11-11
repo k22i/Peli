@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // kidsFixture signs in and makes Nuvio's profile 3 a kids profile with PIN

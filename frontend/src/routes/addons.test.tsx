@@ -201,11 +201,11 @@ describe("Addons", () => {
     expect(screen.getByText("The same on every device signed in to Nuvio.")).toBeInTheDocument();
   });
 
-  // #122: Sinag's own addons carry a neutral badge.
-  it("marks an addon that is built into Sinag", async () => {
+  // #122: Peli's own addons carry a neutral badge.
+  it("marks an addon that is built into Peli", async () => {
     mocks.addons.mockResolvedValue([
       cinemeta,
-      { url: "sinag://anilist/manifest.json", name: "AniList", enabled: true },
+      { url: "peli://anilist/manifest.json", name: "AniList", enabled: true },
     ]);
 
     await renderApp("/addons");

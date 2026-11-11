@@ -41,7 +41,7 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0035](0035-stream-ranking-engine.md) | Stream ranking: our own parser and ranker, in a Web Worker, fed slice by slice | 2026-10-30 |
 | [0036](0036-stream-picker.md) | The stream picker: one highlighted top pick played with P, groups by quality, badges instead of file names | 2026-10-30 |
 | [0037](0037-resolving-streams.md) | Resolving a picked stream: one ranged request through Go, the pick and then its copies, notices read by name | 2026-10-30 |
-| [0038](0038-debrid-keys-stay-with-addons.md) | Debrid keys stay with the addons: Sinag holds no debrid account of its own | 2026-10-30 |
+| [0038](0038-debrid-keys-stay-with-addons.md) | Debrid keys stay with the addons: Peli holds no debrid account of its own | 2026-10-30 |
 | [0039](0039-player-service.md) | The player service: one mpv session per playback, three events, a host per OS; progress reported from Go, resume from the store (#64); skip intro and credits from chapters or IntroDB (#69); mini player (#70) | 2026-10-30 |
 | [0040](0040-torrent-streaming.md) | Torrent streaming: anacrolix/torrent in-process, a loopback link for mpv, our own capped cache, off until turned on | 2026-10-30 |
 | [0041](0041-our-libmpv-build.md) | Our libmpv build: one self-contained library per target, every decoder kept, built and cached in CI | 2026-10-31 |
@@ -49,11 +49,12 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0043](0043-plugin-sandbox.md) | Nuvio plugins: one goja runtime per call in a child process, a host API written from how plugins behave, streams ranked with the addons' | 2026-11-04 |
 | [0044](0044-remembered-stream-source.md) | Remembered stream source: a fingerprint per profile and show, matched by the ranking engine, replaced by whatever plays | 2026-11-05 |
 | [0045](0045-anime-from-anilist.md) | Anime from AniList: a built-in addon, kept on the device, and anime out of Movies and Shows | 2026-11-05 |
-| [0046](0046-redesign-glass-and-floating-chrome.md) | Redesign: four glass tiers in CSS, floating chrome, Apple TV × Music layout with Sinag's own identity | 2026-11-05 |
+| [0046](0046-redesign-glass-and-floating-chrome.md) | Redesign: four glass tiers in CSS, floating chrome, Apple TV × Music layout with Peli's own identity | 2026-11-05 |
 | [0047](0047-plugin-management.md) | Plugin management: off by default per profile, repositories synced like addons, everything else on the device, never on a kids profile | 2026-11-06 |
 | [0048](0048-stream-preferences.md) | Stream preferences: device settings for resolution cap, HDR and Dolby Vision, and an ordered audio language list on the profile | 2026-11-06 |
 | [0049](0049-title-matching-with-tmdb-titles.md) | Title matching: TMDB's alternative and translated titles feed the ranking, report only until measured with a key | 2026-11-06 |
 | [0050](0050-anime-episode-map.md) | Anime episode map: the Kitsu addon's season and absolute numbers, asked beside the details, judged in the fake checks | 2026-11-06 |
 | [0051](0051-watch-party.md) | Watch party: Nuvio's own parties, run from Go, the player kept in step through a gate | 2026-11-11 |
+| [0052](0052-rename-to-peli.md) | Rename to Peli: a pelican mark, and an existing install moves across on first run | 2026-11-11 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

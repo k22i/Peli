@@ -113,7 +113,7 @@ func TestResolveFollowsRedirectsToTheFile(t *testing.T) {
 		URL:         d.URL + "/dld/9b2c?token=" + cdnToken,
 		Origin:      d.resolveURL("cached"),
 		Headers:     map[string]string{},
-		UserAgent:   "Sinag/1.2.3 (+https://github.com/k22i/Sinag)",
+		UserAgent:   "Peli/1.2.3 (+https://github.com/k22i/Peli)",
 		ContentType: "application/octet-stream",
 		Size:        7_414_250_351,
 	}

@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // IntroDB's answers, as recorded on 2026-10-31: Breaking Bad's S2E3 (intro

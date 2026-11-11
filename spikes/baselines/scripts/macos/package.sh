@@ -34,13 +34,13 @@ lipo -create -output "$out/bin/shell-universal" "$out/bin/shell-arm64" "$out/bin
 lipo -create -output "$out/bin/mpv-universal" "$out/bin/mpv-arm64" "$out/bin/mpv-amd64"
 
 bundle() { # name binary [frameworks source dir]
-  local app="$out/$1/Sinag.app"
+  local app="$out/$1/Peli.app"
   mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
-  cp "$2" "$app/Contents/MacOS/sinag-baseline"
+  cp "$2" "$app/Contents/MacOS/peli-baseline"
   cp ../../build/darwin/icons.icns "$app/Contents/Resources/"
-  sed -e 's#<string>sinag</string>#<string>sinag-baseline</string>#' \
-      -e 's#<string>My Product</string>#<string>Sinag</string>#' \
-      -e 's#k22i.net.sinag#k22i.net.sinag.baseline#' ../../build/darwin/Info.plist > "$app/Contents/Info.plist"
+  sed -e 's#<string>peli</string>#<string>peli-baseline</string>#' \
+      -e 's#<string>My Product</string>#<string>Peli</string>#' \
+      -e 's#k22i.net.peli#k22i.net.peli.baseline#' ../../build/darwin/Info.plist > "$app/Contents/Info.plist"
   if [ -n "${3:-}" ]; then
     mkdir -p "$app/Contents/Frameworks"
     cp "$3"/*.dylib "$app/Contents/Frameworks/"
@@ -61,21 +61,21 @@ bundle mpv-mediakit-universal "$out/bin/mpv-universal" lib/mediakit-macos-univer
 BREW=1 bundle mpv-brew-arm64 "$out/bin/mpv-arm64"
 
 # Control: plain Cocoa + WKWebView, no Wails/Go/React (bench only, not packaged).
-c="$out/control/Sinag.app/Contents"
+c="$out/control/Peli.app/Contents"
 mkdir -p "$c/MacOS"
-clang -fobjc-arc -O2 -mmacosx-version-min=12.0 -framework Cocoa -framework WebKit scripts/macos/control/main.m -o "$c/MacOS/sinag-control"
-sed -e 's#<string>sinag</string>#<string>sinag-control</string>#' -e 's#<string>My Product</string>#<string>Sinag control</string>#' \
-    -e 's#k22i.net.sinag#k22i.net.sinag.control#' ../../build/darwin/Info.plist > "$c/Info.plist"
-codesign --force --deep --sign - "$out/control/Sinag.app"
+clang -fobjc-arc -O2 -mmacosx-version-min=12.0 -framework Cocoa -framework WebKit scripts/macos/control/main.m -o "$c/MacOS/peli-control"
+sed -e 's#<string>peli</string>#<string>peli-control</string>#' -e 's#<string>My Product</string>#<string>Peli control</string>#' \
+    -e 's#k22i.net.peli#k22i.net.peli.control#' ../../build/darwin/Info.plist > "$c/Info.plist"
+codesign --force --deep --sign - "$out/control/Peli.app"
 
 for d in "$out"/*/; do
   case "$(basename "$d")" in bin | control) continue ;; esac
   v=$(basename "$d")
   stage=$(mktemp -d)
-  cp -R "$d/Sinag.app" "$stage/"
+  cp -R "$d/Peli.app" "$stage/"
   ln -s /Applications "$stage/Applications"
   for f in UDZO ULFO ULMO; do
-    hdiutil create -quiet -volname Sinag -srcfolder "$stage" -ov -format "$f" "$d/Sinag-$f.dmg"
+    hdiutil create -quiet -volname Peli -srcfolder "$stage" -ov -format "$f" "$d/Peli-$f.dmg"
   done
   rm -rf "$stage"
 done
@@ -90,9 +90,9 @@ for v in sorted(os.listdir(out)):
     d = os.path.join(out, v)
     if not os.path.isdir(d) or v in ("bin", "control"):
         continue
-    app = os.path.join(d, "Sinag.app")
+    app = os.path.join(d, "Peli.app")
     fw = os.path.join(app, "Contents", "Frameworks")
-    exe = os.path.join(app, "Contents", "MacOS", "sinag-baseline")
+    exe = os.path.join(app, "Contents", "MacOS", "peli-baseline")
     lipo = subprocess.run(["lipo", "-archs", exe], capture_output=True, text=True).stdout.strip()
     res[v] = {
         "archs": lipo,
@@ -100,7 +100,7 @@ for v in sorted(os.listdir(out)):
         "frameworksBytes": tree_bytes(fw) if os.path.isdir(fw) else 0,
         "frameworksFiles": len(os.listdir(fw)) if os.path.isdir(fw) else 0,
         "appBytes": tree_bytes(app),
-        "dmgBytes": {f: os.path.getsize(os.path.join(d, f"Sinag-{f}.dmg")) for f in ("UDZO", "ULFO", "ULMO")},
+        "dmgBytes": {f: os.path.getsize(os.path.join(d, f"Peli-{f}.dmg")) for f in ("UDZO", "ULFO", "ULMO")},
     }
 print(json.dumps(res, indent=2))
 PY

@@ -394,7 +394,7 @@ func TestServerPersists(t *testing.T) {
 func TestDeviceIDPersists(t *testing.T) {
 	s, path := openTemp(t)
 	id := must[string](t)(s.DeviceID())
-	if len(id) != len("sinag-")+32 || id[:6] != "sinag-" {
+	if len(id) != len("peli-")+32 || id[:5] != "peli-" {
 		t.Fatalf("id = %q", id)
 	}
 	equal(t, must[string](t)(s.DeviceID()), id)

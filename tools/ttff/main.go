@@ -33,7 +33,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 func main() {
@@ -115,7 +115,7 @@ func (s stream) Headers() map[string]string { return s.BehaviorHints.ProxyHeader
 func torrentio(key, id string) ([]stream, error) {
 	req, _ := http.NewRequest(http.MethodGet, "https://torrentio.strem.fun/torbox="+key+"/stream/"+id+".json", nil)
 	// Torrentio turns Go's own User-Agent away (403).
-	req.Header.Set("User-Agent", "Sinag/0.0.0-ttff (+https://github.com/k22i/Sinag)")
+	req.Header.Set("User-Agent", "Peli/0.0.0-ttff (+https://github.com/k22i/Peli)")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, errors.New("unreachable")

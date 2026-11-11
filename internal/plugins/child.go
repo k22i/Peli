@@ -11,8 +11,8 @@ import (
 	"time"
 )
 
-// ChildEnv marks Sinag's binary as started to run one plugin call.
-const ChildEnv = "SINAG_PLUGIN_SANDBOX"
+// ChildEnv marks Peli's binary as started to run one plugin call.
+const ChildEnv = "PELI_PLUGIN_SANDBOX"
 
 // exitMemory is the child's exit code when it goes over its memory limit
 // and can't stop the plugin in time to say so.
@@ -88,8 +88,8 @@ func child(in io.Reader, out, logs io.Writer) int {
 }
 
 // logging is whether plugins' console output goes to the child's stderr,
-// which the host passes on: only when $SINAG_PLUGIN_LOG=1.
-func logging() bool { return os.Getenv("SINAG_PLUGIN_LOG") == "1" }
+// which the host passes on: only when $PELI_PLUGIN_LOG=1.
+func logging() bool { return os.Getenv("PELI_PLUGIN_LOG") == "1" }
 
 func write(out io.Writer, r reply) {
 	_ = json.NewEncoder(out).Encode(r)

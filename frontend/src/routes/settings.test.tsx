@@ -18,7 +18,7 @@ vi.mock("@bindings/licences", () => ({
     Notices: async () => ({
       app: {
         kind: "app",
-        name: "Sinag",
+        name: "Peli",
         version: "",
         licence: "MIT",
         text: "Permission is hereby granted",
@@ -367,7 +367,7 @@ describe("settings", () => {
     await open("About");
     expect(await screen.findByText("1.2.3")).toBeInTheDocument();
     // The welcome screen's words (#39).
-    expect(screen.getByText(/^Sinag comes with no addons and doesn’t host/)).toBeInTheDocument();
+    expect(screen.getByText(/^Peli comes with no addons and doesn’t host/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Design system" })).toHaveAttribute("href", "/gallery");
   });
 
@@ -439,7 +439,7 @@ describe("settings", () => {
     expect(screen.getByRole("link", { name: "Open addons" })).toHaveAttribute("href", "/addons");
   });
 
-  it("shows Sinag's licence and the third-party notices", async () => {
+  it("shows Peli's licence and the third-party notices", async () => {
     const user = userEvent.setup();
     await renderSettings("about");
 

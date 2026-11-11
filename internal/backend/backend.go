@@ -17,7 +17,7 @@ package backend
 import (
 	"context"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Change is one item from a backend's delta feed, to apply to the local

@@ -32,7 +32,7 @@ import {
   type ServerInput,
 } from "@/lib/server";
 
-// Picks the server Sinag signs in to (#34): Nuvio's, or the user's own
+// Picks the server Peli signs in to (#34): Nuvio's, or the user's own
 // Nuvio-compatible one. Switching to another server signs out first.
 export function ServerDialog({
   server,
@@ -114,7 +114,7 @@ function ServerForm({ server, onDone }: { server: Server; onDone: () => void }) 
         <DialogHeader>
           <DialogTitle>Server</DialogTitle>
           <DialogDescription>
-            Sinag syncs through Nuvio’s server, or through your own Nuvio-compatible server, such as
+            Peli syncs through Nuvio’s server, or through your own Nuvio-compatible server, such as
             one you host yourself.
           </DialogDescription>
         </DialogHeader>

@@ -6,7 +6,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/store"
 )
 
 // Auto-crop finds black bars without FFmpeg's cropdetect, which is GPL and

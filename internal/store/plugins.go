@@ -25,7 +25,7 @@ import (
 // with each plugin's on/off and its settings.
 
 // PluginTypeJS is the repo_type of a repository of Nuvio JS plugins, the kind
-// Sinag runs. Android's Cloudstream repositories ("EXTERNAL_DEX") share the
+// Peli runs. Android's Cloudstream repositories ("EXTERNAL_DEX") share the
 // table but can't run here; they stay in the list, or the next push would
 // delete them from the phone.
 const PluginTypeJS = "NUVIO_JS"
@@ -39,7 +39,7 @@ type PluginRepo struct {
 	Type string `json:"type,omitempty"`
 }
 
-// Runnable is whether Sinag can run the repository's plugins: JS plugins, or
+// Runnable is whether Peli can run the repository's plugins: JS plugins, or
 // a repository of unknown type with a manifest URL (older Nuvio clients send
 // no type), but not Cloudstream's .cs3 files or URL templates.
 func (r PluginRepo) Runnable() bool {

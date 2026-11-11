@@ -1,6 +1,6 @@
 # Spike: libmpv via cgo with child-window embedding (Windows + X11)
 
-Issue: [#3](https://github.com/k22i/Sinag/issues/3) · Epic: [#1](https://github.com/k22i/Sinag/issues/1) · Previous spike: [mpv `--wid` + JSON IPC](mpv-wid-ipc.md) (#2) · Date: 2026-10-09
+Issue: [#3](https://github.com/k22i/Peli/issues/3) · Epic: [#1](https://github.com/k22i/Peli/issues/1) · Previous spike: [mpv `--wid` + JSON IPC](mpv-wid-ipc.md) (#2) · Date: 2026-10-09
 Spike code: [`spikes/libmpv-cgo/`](../../spikes/libmpv-cgo/) (throwaway). Raw results: [`spikes/libmpv-cgo/results/`](../../spikes/libmpv-cgo/results/).
 
 ## Verdict
@@ -127,7 +127,7 @@ What this says:
 - **Linux:** add `libmpv-dev` and `#cgo pkg-config: mpv`. Cross-arch builds need a target sysroot for GTK, WebKitGTK *and* libmpv. That was already true without libmpv, so the simplest route is native runners per architecture. The `.deb` can depend on the distro's `libmpv2`. AppImage and Flatpak need libmpv bundled (#79).
 - **macOS** (not tested here, relevant to #4/#78): Homebrew's libmpv isn't relocatable (dozens of dylibs with absolute paths). We'll need a self-contained libmpv build to bundle and sign.
 - **`libmpv-2.dll` is big and has a hard dependency on `vulkan-1.dll`.** shinchiro's "everything" build is 121 MB uncompressed (LuaJIT, JavaScript, VapourSynth, shaderc, …); #2's `mpv.exe` was 57 MB. It also imports `vulkan-1.dll` directly, not delay-loaded. The runner has it, as does any PC with current GPU drivers. On a machine without the Vulkan loader, though, the app **would fail to start at all**: an inference from the import table, not tested. Fix that with a trimmed libmpv build of our own (smaller, Vulkan optional), or by bundling the Vulkan loader. That's for #77 and #88.
-- **Licensing:** both libmpv builds we used are GPL. shinchiro's lists `gpl` among its features, and Debian's builds with mpv's default `gpl=true`. Linking a GPL libmpv into our process makes the app a combined work, so Sinag would have to ship under GPL-compatible terms. mpv can be built LGPL (`-Dgpl=false`, with an LGPL FFmpeg), which drops some features. A separate mpv process is usually argued to avoid this. **Not legal advice. Decide at #8, before the repo gets a license.**
+- **Licensing:** both libmpv builds we used are GPL. shinchiro's lists `gpl` among its features, and Debian's builds with mpv's default `gpl=true`. Linking a GPL libmpv into our process makes the app a combined work, so Peli would have to ship under GPL-compatible terms. mpv can be built LGPL (`-Dgpl=false`, with an LGPL FFmpeg), which drops some features. A separate mpv process is usually argued to avoid this. **Not legal advice. Decide at #8, before the repo gets a license.**
 
 ## Gotchas (what the real app must handle)
 
@@ -169,5 +169,5 @@ What this says:
 
 See [`spikes/libmpv-cgo/README.md`](../../spikes/libmpv-cgo/README.md). In short: `scripts/make-media.sh`, build the frontend, then:
 
-- Linux: `docker build -t sinag-spike-libmpv scripts/linux && docker run --rm -v "$PWD":/spike sinag-spike-libmpv scripts/linux/run.sh single` (or `overlay`; `LC_ALL=de_DE.UTF-8 SPIKE_KEEP_LOCALE=1 … single locale-unfixed` for the locale failure)
-- Windows: run the `spike-libmpv-cgo` workflow (runs [37918032020](https://github.com/k22i/Sinag/actions/runs/37918032020) and [37918970157](https://github.com/k22i/Sinag/actions/runs/37918970157)). Files in `results/` ending in `-run1` come from the first run, which predates the before-ready/tick instrumentation and `WS_CLIPCHILDREN` on the container.
+- Linux: `docker build -t peli-spike-libmpv scripts/linux && docker run --rm -v "$PWD":/spike peli-spike-libmpv scripts/linux/run.sh single` (or `overlay`; `LC_ALL=de_DE.UTF-8 SPIKE_KEEP_LOCALE=1 … single locale-unfixed` for the locale failure)
+- Windows: run the `spike-libmpv-cgo` workflow (runs [37918032020](https://github.com/k22i/Peli/actions/runs/37918032020) and [37918970157](https://github.com/k22i/Peli/actions/runs/37918970157)). Files in `results/` ending in `-run1` come from the first run, which predates the before-ready/tick instrumentation and `WS_CLIPCHILDREN` on the container.

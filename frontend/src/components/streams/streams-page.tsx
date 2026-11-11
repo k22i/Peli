@@ -308,7 +308,7 @@ function Picker({
               toastManager.update(toast, {
                 type: "error",
                 title: `Can’t play ${target.title}`,
-                description: "Sinag’s player couldn’t start. Try again, or restart Sinag.",
+                description: "Peli’s player couldn’t start. Try again, or restart Peli.",
                 timeout: 8000,
               });
             },
@@ -557,7 +557,7 @@ function PartySources({
           <p className="text-small text-muted-foreground">
             {match
               ? "One of your streams is the host’s file, so you’ll see the same thing."
-              : "Pick any stream: Sinag keeps it in step with the party."}
+              : "Pick any stream: Peli keeps it in step with the party."}
           </p>
         </div>
       </div>

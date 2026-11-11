@@ -8,9 +8,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 const email = "me@example.com"
@@ -39,7 +39,7 @@ func (f *fixedSession) Do(_ context.Context, fn func(nuvio.Session) error) error
 	return fn(f.session)
 }
 
-// device is one Sinag install: a store with a profile linked to Nuvio profile
+// device is one Peli install: a store with a profile linked to Nuvio profile
 // 1, and the backend to sync it with. All devices share the one server.
 type device struct {
 	store    *store.Store
@@ -50,7 +50,7 @@ type device struct {
 
 func newDevice(t *testing.T, server *nuviotest.Server) *device {
 	t.Helper()
-	s, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
+	s, err := store.Open(filepath.Join(t.TempDir(), "peli.db"))
 	check(t, err)
 	t.Cleanup(func() { s.Close() })
 	profile, err := s.CreateProfile(store.Profile{Name: "Kevin", NuvioIndex: ptr(1)})

@@ -15,8 +15,8 @@ import (
 // shows, in what order, and the user's collections (named groups of
 // catalogs, shown on Home as a row of folders). Both are made in Nuvio's
 // apps and pulled whole. They are kept exactly as Nuvio's apps write them,
-// so a push to a custom server doesn't drop what Sinag doesn't read; the
-// methods here read and edit the fields Sinag knows.
+// so a push to a custom server doesn't drop what Peli doesn't read; the
+// methods here read and edit the fields Peli knows.
 //
 // They are pushed to a custom server only, never to Nuvio's (the PRD's
 // rule); the store queues a push for any linked profile, and the account
@@ -111,7 +111,7 @@ func (s *Store) HomeLayout(id uint64) (*HomeLayout, error) {
 
 // SetHomeLayout replaces profile id's home layout and queues it for push.
 // Rows are saved in the order given. What Nuvio's apps keep in the layout
-// that Sinag doesn't read is kept, row by row.
+// that Peli doesn't read is kept, row by row.
 func (s *Store) SetHomeLayout(id uint64, layout HomeLayout) error {
 	return s.update(id, func(p *bolt.Bucket) error {
 		blob := map[string]json.RawMessage{}
@@ -223,7 +223,7 @@ func (s *Store) VisibleCollections(id uint64) ([]Collection, error) {
 
 // SetCollections replaces profile id's collections with collections, a JSON
 // array as Nuvio's apps write it, and queues it for push. Each collection
-// needs an id. It isn't bound for the frontend: Sinag has no collection
+// needs an id. It isn't bound for the frontend: Peli has no collection
 // editor yet, and an edit must go through the account service's check that
 // the backend is a custom server.
 func (s *Store) SetCollections(id uint64, collections json.RawMessage) error {
@@ -264,7 +264,7 @@ func putBlob(p *bolt.Bucket, surface Surface, key, data []byte) error {
 }
 
 // canonicalJSON rewrites data with object keys sorted and no spaces, so the
-// same blob from Nuvio's apps and from Sinag compares equal byte for byte.
+// same blob from Nuvio's apps and from Peli compares equal byte for byte.
 // Numbers keep their digits.
 func canonicalJSON(data []byte) ([]byte, error) {
 	dec := json.NewDecoder(bytes.NewReader(data))
@@ -276,7 +276,7 @@ func canonicalJSON(data []byte) ([]byte, error) {
 	return json.Marshal(v)
 }
 
-// nuvioLayout is the part of Nuvio's layout blob Sinag reads.
+// nuvioLayout is the part of Nuvio's layout blob Peli reads.
 type nuvioLayout struct {
 	Items          []nuvioLayoutItem `json:"items"`
 	HideUnreleased bool              `json:"hide_unreleased_content"`
@@ -316,7 +316,7 @@ func (w nuvioLayout) layout() *HomeLayout {
 	return layout
 }
 
-// nuvioCollection is the part of a collection in Nuvio's blob Sinag reads.
+// nuvioCollection is the part of a collection in Nuvio's blob Peli reads.
 type nuvioCollection struct {
 	ID       string `json:"id"`
 	Title    string `json:"title"`

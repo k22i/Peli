@@ -1,7 +1,7 @@
 // A plugin shaped like the community bundles (esbuild's IIFE, its __async
 // generator helper and __toESM around require), using the host API with no
 // network: cheerio, crypto-js, atob, TextDecoder, Buffer, URL and timers.
-// Written for Sinag's tests.
+// Written for Peli's tests.
 var __provider = (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;

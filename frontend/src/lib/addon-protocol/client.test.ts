@@ -170,16 +170,16 @@ describe("createAddonClient", () => {
 
   it("asks Go alone for a built-in addon", async () => {
     const transport = fakeTransport({
-      "sinag://anilist/manifest.json": { body: cinemeta },
+      "peli://anilist/manifest.json": { body: cinemeta },
     });
     const client = createAddonClient(transport);
 
-    expect(isBuiltinAddon("sinag://anilist/manifest.json")).toBe(true);
+    expect(isBuiltinAddon("peli://anilist/manifest.json")).toBe(true);
     expect(isBuiltinAddon("https://anilist.example/manifest.json")).toBe(false);
-    expect((await client.manifest("sinag://anilist/manifest.json")).id).toBe("com.linvo.cinemeta");
+    expect((await client.manifest("peli://anilist/manifest.json")).id).toBe("com.linvo.cinemeta");
     expect(transport.fetch).not.toHaveBeenCalled();
     expect(transport.fetchViaGo).toHaveBeenCalledWith(
-      "sinag://anilist/manifest.json",
+      "peli://anilist/manifest.json",
       expect.any(AbortSignal),
     );
   });

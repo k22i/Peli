@@ -124,7 +124,7 @@ export function StressSection() {
     const images = document.querySelectorAll("img").length;
     const line = `${results.join(" ")} images in DOM ${images}`;
     // For scripted runs (#41's profiling): read from the console.
-    console.info(`[sinag:scroll-test] ${line}`);
+    console.info(`[peli:scroll-test] ${line}`);
     setReport(line);
   };
 

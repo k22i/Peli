@@ -6,8 +6,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // hdr10.mp4 is 1 s of 160x90 HEVC Main10, BT.2020 and PQ, with HDR10

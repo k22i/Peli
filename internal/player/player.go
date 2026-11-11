@@ -31,8 +31,8 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // Events the player sends the frontend. Events sent before the page listens
@@ -490,7 +490,7 @@ type session struct {
 // stream doesn't name one. It can't show video until UseWindow.
 func NewService(version string) *Service {
 	return &Service{
-		userAgent:   fmt.Sprintf("Sinag/%s (+https://github.com/k22i/Sinag)", version),
+		userAgent:   fmt.Sprintf("Peli/%s (+https://github.com/k22i/Peli)", version),
 		http:        &http.Client{},
 		windowed:    make(chan struct{}, 1),
 		emit:        func(string, any) {},
@@ -704,9 +704,9 @@ func (s *Service) open() (*session, error) {
 	if err := h.configure(m); err != nil {
 		return fail(err)
 	}
-	// $SINAG_MPV_OPTIONS ("gpu-sw hwdec=no") overrides any of these, for
+	// $PELI_MPV_OPTIONS ("gpu-sw hwdec=no") overrides any of these, for
 	// debugging playback, and for CI and containers without a GPU.
-	for _, o := range strings.Fields(os.Getenv("SINAG_MPV_OPTIONS")) {
+	for _, o := range strings.Fields(os.Getenv("PELI_MPV_OPTIONS")) {
 		name, value, ok := strings.Cut(o, "=")
 		if !ok {
 			value = "yes"

@@ -13,7 +13,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/k22i/Sinag/internal/streams"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 const srt = "1\n00:00:00,000 --> 00:00:03,000\nBonjour\n"
@@ -94,8 +94,8 @@ func TestAddSubtitle(t *testing.T) {
 		}
 	}
 	for _, h := range seen() {
-		if !strings.HasPrefix(h.Get("User-Agent"), "Sinag/") || h.Get("Authorization") != "" {
-			t.Errorf("request headers %v, want Sinag's User-Agent and not the stream's", h)
+		if !strings.HasPrefix(h.Get("User-Agent"), "Peli/") || h.Get("Authorization") != "" {
+			t.Errorf("request headers %v, want Peli's User-Agent and not the stream's", h)
 		}
 	}
 

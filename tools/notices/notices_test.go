@@ -73,7 +73,7 @@ func TestAuditBundle(t *testing.T) {
 		t.Fatalf("empty bundle: err = %v, out = %q", err, out.String())
 	}
 
-	lib := filepath.Join(dir, "Sinag.app", "Contents", "Frameworks")
+	lib := filepath.Join(dir, "Peli.app", "Contents", "Frameworks")
 	if err := os.MkdirAll(lib, 0o755); err != nil {
 		t.Fatal(err)
 	}
@@ -102,8 +102,8 @@ func TestLibmpvName(t *testing.T) {
 			t.Errorf("%s not recognised as libmpv", n)
 		}
 	}
-	if libmpvName.MatchString("sinag") {
-		t.Error("sinag matched as libmpv")
+	if libmpvName.MatchString("peli") {
+		t.Error("peli matched as libmpv")
 	}
 }
 
@@ -122,7 +122,7 @@ func TestBuildLibmpv(t *testing.T) {
 			t.Errorf("incomplete notice: %+v", dep{Kind: c.Kind, Name: c.Name, Version: c.Version, Licence: c.Licence})
 		}
 		if bad := scan(c.Name, []byte(c.Text)); len(bad) > 0 {
-			t.Errorf("%s: the audit would flag Sinag's own binary: %v", c.Name, bad)
+			t.Errorf("%s: the audit would flag Peli's own binary: %v", c.Name, bad)
 		}
 	}
 	if !strings.HasPrefix(n.Components[0].Version, "mpv ") {

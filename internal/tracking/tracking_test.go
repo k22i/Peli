@@ -14,13 +14,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/anilist"
-	"github.com/k22i/Sinag/internal/animelist"
-	"github.com/k22i/Sinag/internal/player"
-	"github.com/k22i/Sinag/internal/secrets"
-	"github.com/k22i/Sinag/internal/simkl"
-	"github.com/k22i/Sinag/internal/simkl/simkltest"
-	"github.com/k22i/Sinag/internal/store"
+	"github.com/k22i/Peli/internal/anilist"
+	"github.com/k22i/Peli/internal/animelist"
+	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/simkl"
+	"github.com/k22i/Peli/internal/simkl/simkltest"
+	"github.com/k22i/Peli/internal/store"
 )
 
 func ptr(n int) *int { return &n }
@@ -61,7 +61,7 @@ func (k *memKeychain) Delete(key string) error {
 	return nil
 }
 
-// fakeAniList answers the few queries Sinag sends, for one list.
+// fakeAniList answers the few queries Peli sends, for one list.
 type fakeAniList struct {
 	*httptest.Server
 	mu      sync.Mutex
@@ -154,7 +154,7 @@ var frieren = animelist.Entry{AniList: 154587, Kitsu: 46474, MAL: 52991, IMDb: [
 
 func setup(t *testing.T) *fixture {
 	t.Helper()
-	db, err := store.Open(filepath.Join(t.TempDir(), "sinag.db"))
+	db, err := store.Open(filepath.Join(t.TempDir(), "peli.db"))
 	check(t, err)
 	t.Cleanup(func() { db.Close() })
 	profile, err := db.CreateProfile(store.Profile{Name: "Kevin", NuvioIndex: ptr(1), PinEnabled: true})

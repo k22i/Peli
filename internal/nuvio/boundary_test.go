@@ -70,7 +70,7 @@ func TestOnlySyncModuleImportsNuvio(t *testing.T) {
 	goFiles(t, repoRoot(t), func(rel string, file *ast.File) {
 		for _, spec := range file.Imports {
 			path, _ := strconv.Unquote(spec.Path.Value)
-			if path != "github.com/k22i/Sinag/internal/nuvio" && !strings.HasPrefix(path, "github.com/k22i/Sinag/internal/nuvio/") {
+			if path != "github.com/k22i/Peli/internal/nuvio" && !strings.HasPrefix(path, "github.com/k22i/Peli/internal/nuvio/") {
 				continue
 			}
 			if !slices.ContainsFunc(allowed, func(a string) bool { return rel == a || strings.HasSuffix(a, "/") && strings.HasPrefix(rel, a) }) {

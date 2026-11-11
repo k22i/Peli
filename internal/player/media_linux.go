@@ -16,7 +16,7 @@ import (
 // desktop's media widget and media keys (GNOME, KDE, playerctl) find
 // players by their bus name.
 const (
-	mprisName   = "org.mpris.MediaPlayer2.sinag"
+	mprisName   = "org.mpris.MediaPlayer2.peli"
 	mprisPath   = dbus.ObjectPath("/org/mpris/MediaPlayer2")
 	mprisRoot   = "org.mpris.MediaPlayer2"
 	mprisPlayer = "org.mpris.MediaPlayer2.Player"
@@ -24,7 +24,7 @@ const (
 )
 
 // mpris owns the bus name while something plays, and gives it up when the
-// session ends, so the widget only lists Sinag while it plays. The previous
+// session ends, so the widget only lists Peli while it plays. The previous
 // and next buttons are off: a film has no tracks, and the next episode is
 // the screen's to offer.
 type mpris struct {
@@ -89,7 +89,7 @@ func (m *mpris) show(st *mediaState) {
 }
 
 // open connects, puts the two interfaces on the bus and takes the name, or
-// an instance name when another Sinag has it. m.mu must be held.
+// an instance name when another Peli has it. m.mu must be held.
 func (m *mpris) open() error {
 	conn, err := m.connect()
 	if err != nil {
@@ -162,7 +162,7 @@ func (m *mpris) playerProps() map[string]dbus.Variant {
 		title, artists = st.Subtitle, []string{st.Title}
 	}
 	metadata := map[string]dbus.Variant{
-		"mpris:trackid": dbus.MakeVariant(dbus.ObjectPath(fmt.Sprintf("/app/sinag/track/%d", m.track))),
+		"mpris:trackid": dbus.MakeVariant(dbus.ObjectPath(fmt.Sprintf("/app/peli/track/%d", m.track))),
 		"xesam:title":   dbus.MakeVariant(title),
 		"xesam:artist":  dbus.MakeVariant(artists),
 	}
@@ -190,15 +190,15 @@ var mprisRootProps = map[string]dbus.Variant{
 	"CanQuit":             dbus.MakeVariant(false),
 	"CanRaise":            dbus.MakeVariant(false),
 	"HasTrackList":        dbus.MakeVariant(false),
-	"Identity":            dbus.MakeVariant("Sinag"),
-	"DesktopEntry":        dbus.MakeVariant("sinag"),
+	"Identity":            dbus.MakeVariant("Peli"),
+	"DesktopEntry":        dbus.MakeVariant("peli"),
 	"SupportedUriSchemes": dbus.MakeVariant([]string{}),
 	"SupportedMimeTypes":  dbus.MakeVariant([]string{}),
 }
 
 func micros(seconds float64) int64 { return int64(math.Round(seconds * 1e6)) }
 
-// mprisRootMethods is org.mpris.MediaPlayer2: Sinag can't be raised or
+// mprisRootMethods is org.mpris.MediaPlayer2: Peli can't be raised or
 // quit from the widget.
 type mprisRootMethods struct{}
 
@@ -227,7 +227,7 @@ func (p mprisPlayerMethods) SeekBy(offset int64) *dbus.Error {
 // the one playing.
 func (p mprisPlayerMethods) SetPosition(track dbus.ObjectPath, position int64) *dbus.Error {
 	p.m.mu.Lock()
-	current := dbus.ObjectPath(fmt.Sprintf("/app/sinag/track/%d", p.m.track))
+	current := dbus.ObjectPath(fmt.Sprintf("/app/peli/track/%d", p.m.track))
 	p.m.mu.Unlock()
 	if track != current || position < 0 {
 		return nil
@@ -236,7 +236,7 @@ func (p mprisPlayerMethods) SetPosition(track dbus.ObjectPath, position int64) *
 }
 
 func (p mprisPlayerMethods) OpenUri(string) *dbus.Error {
-	return dbus.NewError("org.mpris.MediaPlayer2.Player.Error.NotSupported", []any{"Sinag can't open a URI"})
+	return dbus.NewError("org.mpris.MediaPlayer2.Player.Error.NotSupported", []any{"Peli can't open a URI"})
 }
 
 func (p mprisPlayerMethods) run(c mediaCommand, value float64) *dbus.Error {

@@ -17,7 +17,7 @@ import {
 import { addonsQuery } from "@/lib/addons";
 import type { Profile } from "@bindings/store";
 
-// Home when the profile has no addon to browse (#39): Sinag bundles none, so
+// Home when the profile has no addon to browse (#39): Peli bundles none, so
 // a fresh install starts here. It says what addons are and installs one in
 // place, or opens the manager; it never names or links to one. A kids
 // profile's addons are the parent's to choose, and turned-off addons only
@@ -57,7 +57,7 @@ export function NoAddons({ profile }: { profile: Profile }) {
       : {
           title: "Add an addon to start watching",
           description:
-            "Sinag comes with no addons and no content of its own. Addons give you catalogs to browse and streams to play. Install one you trust by its address.",
+            "Peli comes with no addons and no content of its own. Addons give you catalogs to browse and streams to play. Install one you trust by its address.",
           actions: (
             <>
               <Button onClick={() => setInstalling(true)} disabled={addons.isPending}>

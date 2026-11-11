@@ -10,11 +10,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/k22i/Sinag/internal/backend"
-	"github.com/k22i/Sinag/internal/nuvio"
-	"github.com/k22i/Sinag/internal/nuvio/nuviotest"
-	"github.com/k22i/Sinag/internal/store"
-	"github.com/k22i/Sinag/internal/syncer"
+	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio/nuviotest"
+	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/syncer"
 )
 
 // clock is a test clock that only moves when told to.
@@ -232,7 +232,7 @@ func TestSignOut(t *testing.T) {
 	}
 	_, refresh := f.backend.Tokens()
 	db := store.Opened(f.store)
-	db.CacheSet("sinag-query-cache", []byte("{}"))
+	db.CacheSet("peli-query-cache", []byte("{}"))
 
 	if err := f.service.SignOut(t.Context()); err != nil {
 		t.Fatal(err)
@@ -254,7 +254,7 @@ func TestSignOut(t *testing.T) {
 	if current, _ := f.store.CurrentProfile(); current != guest {
 		t.Fatalf("current = %+v", current)
 	}
-	if _, ok, _ := db.CacheGet("sinag-query-cache"); ok {
+	if _, ok, _ := db.CacheGet("peli-query-cache"); ok {
 		t.Fatal("the cache is still there")
 	}
 	if st := status(t, f.service); st.SignedIn || st.SessionEnded {

@@ -1,6 +1,6 @@
 ---
 name: upcoming-episodes
-description: "How Sinag's Upcoming calendar (#48) works: Library tab ?view=upcoming, lib/calendar.ts rules, cachedTitleMeta, same-day grouping, test helpers; read before notifications or a Home 'coming up' row"
+description: "How Peli's Upcoming calendar (#48) works: Library tab ?view=upcoming, lib/calendar.ts rules, cachedTitleMeta, same-day grouping, test helpers; read before notifications or a Home 'coming up' row"
 metadata:
   type: project
 ---

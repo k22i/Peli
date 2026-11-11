@@ -3,7 +3,7 @@ package backend
 import (
 	"context"
 
-	"github.com/k22i/Sinag/internal/nuvio"
+	"github.com/k22i/Peli/internal/nuvio"
 )
 
 // Watch parties (ADR-0051) as internal/party calls them: Nuvio's functions

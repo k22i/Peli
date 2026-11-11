@@ -1,8 +1,8 @@
 // The globals a Nuvio plugin expects, as the community plugins use them
 // (#56): fetch with Headers, Response and AbortController, timers,
 // TextEncoder / TextDecoder, atob / btoa, crypto.getRandomValues, console,
-// React Native's process.env, and require() for the modules Sinag has.
-// Written for Sinag from how plugins behave; `host` is the Go side
+// React Native's process.env, and require() for the modules Peli has.
+// Written for Peli from how plugins behave; `host` is the Go side
 // (sandbox.go) and never reaches the plugin.
 (function (host, modules) {
   "use strict";
@@ -13,7 +13,7 @@
   define("global", g);
   define("self", g);
 
-  // console: to the sandbox's log, which Sinag only keeps when asked to.
+  // console: to the sandbox's log, which Peli only keeps when asked to.
   function show(value) {
     if (typeof value === "string") return value;
     if (value instanceof Error) return value.stack || String(value);
@@ -334,7 +334,7 @@
       return body.toString();
     }
     if (body instanceof FormData) {
-      var boundary = "----SinagFormBoundary" + host.randomUUID().replace(/-/g, "");
+      var boundary = "----PeliFormBoundary" + host.randomUUID().replace(/-/g, "");
       headers.set("content-type", "multipart/form-data; boundary=" + boundary);
       var parts = body._entries.map(function (e) {
         return "--" + boundary + '\r\nContent-Disposition: form-data; name="' + e[0].replace(/"/g, "%22") + '"\r\n\r\n' + e[1] + "\r\n";
@@ -474,7 +474,7 @@
     });
   });
 
-  // require(): the modules Sinag has, under the names plugins use.
+  // require(): the modules Peli has, under the names plugins use.
   var cache = Object.create(null);
   var aliases = { cheerio: "cheerio-without-node-native", "react-native-cheerio": "cheerio-without-node-native" };
   return function require(name) {
