@@ -157,6 +157,13 @@ describe("parseCatalogResponse", () => {
   });
 });
 
+// A Stremio meta link, as addons list cast and crew in them.
+const link = (name: string, category: string) => ({
+  name,
+  category,
+  url: `stremio:///search?search=${name}`,
+});
+
 describe("parseMetaResponse", () => {
   it("reads a movie", () => {
     const { meta } = parseMetaResponse(cinemetaMovie);
@@ -204,6 +211,45 @@ describe("parseMetaResponse", () => {
     expect(meta.genres).toEqual(["Drama"]);
     expect(meta.director).toEqual(["One Person"]);
     expect(meta.videos).toEqual([{ id: "tt1:1:1", title: "", season: 1, episode: 2 }]);
+  });
+
+  it("reads cast and crew from links when the arrays are missing", () => {
+    const { meta } = parseMetaResponse({
+      meta: {
+        id: "tt0974015",
+        type: "movie",
+        name: "Justice League",
+        links: [
+          link("Ben Affleck", "Cast"),
+          link("Gal Gadot", "Cast"),
+          link("Ben Affleck", "Cast"),
+          link("Zack Snyder", "Directors"),
+          link("Chris Terrio", "Writers"),
+          link("Action", "Genres"),
+        ],
+      },
+    });
+    expect(meta.cast).toEqual(["Ben Affleck", "Gal Gadot"]);
+    expect(meta.director).toEqual(["Zack Snyder"]);
+    expect(meta.writer).toEqual(["Chris Terrio"]);
+
+    // The arrays win when an addon sends both, as Cinemeta does.
+    const both = parseMetaResponse({
+      meta: {
+        id: "tt1",
+        type: "movie",
+        name: "x",
+        director: ["A"],
+        links: [link("B", "Directors")],
+      },
+    }).meta;
+    expect(both.director).toEqual(["A"]);
+
+    // An empty array doesn't hide the links.
+    const empty = parseMetaResponse({
+      meta: { id: "tt1", type: "movie", name: "x", cast: [], links: [link("C", "Cast")] },
+    }).meta;
+    expect(empty.cast).toEqual(["C"]);
   });
 
   it("refuses an answer without a meta", () => {

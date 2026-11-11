@@ -261,6 +261,9 @@ function parseMetaPreview(meta: Fields): MetaPreview | undefined {
   };
 }
 
+// A list with something in it, or undefined.
+const filled = (names: string[] | undefined) => (names?.length ? names : undefined);
+
 function parseMeta(meta: Fields): Meta | undefined {
   const preview = parseMetaPreview(meta);
   if (preview === undefined) return undefined;
@@ -276,6 +279,16 @@ function parseMeta(meta: Fields): Meta | undefined {
     writer,
     behaviorHints,
   } = meta;
+  // The spec deprecates `director`, `cast` and `writer` for `links`, and
+  // TMDB-based metadata addons (AIOMetadata, the TMDB addon) send only the
+  // links: their names are read from there when the arrays are missing.
+  const linked = (...categories: string[]) => {
+    const names = (preview.links ?? [])
+      .filter((link) => categories.includes(link.category.toLowerCase()))
+      .map((link) => link.name.trim())
+      .filter((name, index, all) => name !== "" && all.indexOf(name) === index);
+    return names.length > 0 ? names : undefined;
+  };
   return {
     ...preview,
     ...field("videos", list(videos, parseVideo)),
@@ -284,9 +297,9 @@ function parseMeta(meta: Fields): Meta | undefined {
     ...field("country", str(country)),
     ...field("awards", str(awards)),
     ...field("website", str(website)),
-    ...field("director", strs(director)),
-    ...field("cast", strs(cast)),
-    ...field("writer", strs(writer)),
+    ...field("director", filled(strs(director)) ?? linked("directors", "director")),
+    ...field("cast", filled(strs(cast)) ?? linked("cast")),
+    ...field("writer", filled(strs(writer)) ?? linked("writers", "writer")),
     ...(isFields(behaviorHints) && {
       behaviorHints: {
         ...behaviorHints,
