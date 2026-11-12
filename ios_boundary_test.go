@@ -87,6 +87,11 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 			t.Fatalf("%s: unexpected go list output %q", pkg, out)
 		}
 		for i, kind := range []string{"", "cgo", "C", "Objective-C", "header"} {
+			// secrets has one cgo file: Peli's own Keychain items, since
+			// Wails' fix the class at WhenUnlocked (ADR-0057).
+			if pkg == "internal/secrets" && kind == "cgo" && parts[i] == "[keychain_ios.go]" {
+				continue
+			}
 			if i > 0 && parts[i] != "[]" {
 				t.Errorf("%s has %s files on iOS: %s", pkg, kind, parts[i])
 			}
