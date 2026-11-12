@@ -1,0 +1,6 @@
+.fw/
+bin/
+media/
+results/*.log
+build/ios/xcode/
+frontend/bindings/
