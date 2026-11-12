@@ -54,7 +54,7 @@ export const installedPluginsQuery = (profileId: number | undefined) =>
       return (await Plugins.Installed()) ?? [];
     },
     // Not bound on iOS (ADR-0055).
-    enabled: () => profileId !== undefined && feature("plugins"),
+    enabled: profileId !== undefined && feature("plugins"),
     staleTime: 5 * minute,
   });
 
