@@ -1,0 +1,28 @@
+<!doctype html>
+<!--
+  The DMG window's background (#78): 540 × 380 points, with the arrow between
+  where Finder puts Peli (x 151) and Applications (x 389), both at y 164; the wordmark is at
+  the top because Finder's path and status bars can cover the bottom.
+  Render it at 1× and 2× and combine them into the TIFF Finder reads:
+
+    chrome=/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+    for s in 1 2; do "$chrome" --headless=new --hide-scrollbars --allow-file-access-from-files \
+      --force-device-scale-factor=$s --window-size=540,380 --screenshot=/tmp/bg$s.png \
+      "file://$PWD/build/darwin/dmg-background.html"; done
+    tiffutil -cathidpicheck /tmp/bg1.png /tmp/bg2.png -out build/darwin/dmg-background.tiff
+--><html><head><meta charset="utf-8"><style>
+@font-face{font-family:IS;font-style:italic;src:url(../../frontend/node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2)}
+html,body{margin:0;width:540px;height:380px;overflow:hidden}
+body{background:radial-gradient(120% 70% at 50% 100%,#f6e3c4 0%,rgba(246,227,196,0) 60%),linear-gradient(#faf8f5,#f4efe7);font-family:-apple-system,"SF Pro Text",sans-serif;position:relative}
+.arrow{position:absolute;left:0;top:0}
+.cap{position:absolute;left:0;right:0;top:262px;text-align:center;font-size:13px;color:#6b5a45;letter-spacing:.01em}
+.cap b{font-weight:600;color:#3d3024}
+.mark{position:absolute;left:50%;top:30px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;color:#2a211a}
+.mark svg{width:26px;height:26px;color:#e98a1c}
+.mark span{font-family:IS;font-style:italic;font-size:25px;line-height:1;letter-spacing:-.01em}
+</style></head><body>
+<svg class="arrow" width="540" height="380" viewBox="0 0 540 380"><g fill="none" stroke="#e08a24" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+<path d="M222 164 C250 146 290 146 316 160"/><path d="M302 148 L318 161 L300 170"/></g></svg>
+<div class="cap">Drag <b>Peli</b> to <b>Applications</b> to install</div>
+<div class="mark"><svg viewBox="6.5 3 53 53" fill="currentColor"><mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><rect x="22.6" y="13.2" width="4" height="7.4" rx="2" fill="#000"/><path d="M32.5 24.8C40 27.6 46 30.4 51 32.6" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round"/></mask><g mask="url(#m)"><path d="M11 24V47Q11 55 18.5 52.4L53 38.6C57.6 36.8 59.6 33.4 57.6 30.4C56.6 28.8 55 28.2 53 27.4L30 14Z"/><circle cx="22.5" cy="18.5" r="11.5"/><circle cx="11.2" cy="27" r="4.2"/><circle cx="11.2" cy="34.5" r="4"/><circle cx="11.2" cy="42" r="3.6"/><path d="M14 11.5C9 9.5 6.5 12.5 7 16C9 14 11.5 14 13 15.5Z"/><path d="M17 8.4C14 4.5 9.6 5.2 8.6 8.4C11.2 7.6 13.6 8.6 14.6 10.6Z"/></g></svg><span>Peli</span></div>
+</body></html>

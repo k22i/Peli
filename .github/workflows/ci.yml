@@ -237,9 +237,11 @@ jobs:
           echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
       - if: runner.os != 'macOS'
         run: wails3 build
-      # `package` builds the binary and wraps it in Peli.app.
+      # Builds the binary, wraps it in Peli.app (signed ad hoc, hardened
+      # runtime) and that in the drag-to-Applications DMG, failing over 60 MB
+      # (#78). Release signing and notarization are #80's.
       - if: runner.os == 'macOS'
-        run: wails3 package
+        run: wails3 task darwin:package:dmg
       # The build runs `go mod tidy`: a change means go.mod or go.sum is stale.
       - run: git diff --exit-code go.mod go.sum
       # #18: no GPL-only or non-free libmpv/FFmpeg in what we ship.
@@ -248,7 +250,7 @@ jobs:
         run: |
           bin=bin/peli
           [ "$RUNNER_OS" = Windows ] && bin=bin/peli.exe
-          [ "$RUNNER_OS" = macOS ] && bin=bin/peli.app/Contents/MacOS/peli
+          [ "$RUNNER_OS" = macOS ] && bin=bin/Peli.app/Contents/MacOS/peli
           go version -m "$bin" | tee buildinfo.txt
           grep -Eq "GOARCH=${{ matrix.arch }}$" buildinfo.txt
           grep -Eq -- "-tags=production" buildinfo.txt
@@ -256,14 +258,10 @@ jobs:
           grep -Eq -- "-tags=production,nosqlite" buildinfo.txt
           ! grep -q go-llsqlite buildinfo.txt
           ls -l bin
-      # #92: the bundle carries our libmpv and loads it from there.
+      # #92, #78: the bundle carries our libmpv for its architecture, loads it
+      # from there and links nothing else outside the system.
       - if: runner.os == 'macOS'
-        run: |
-          ls -l bin/peli.app/Contents/Frameworks/libmpv.2.dylib
-          otool -L bin/peli.app/Contents/MacOS/peli | grep -q '@rpath/libmpv.2.dylib'
-          test "$(otool -l bin/peli.app/Contents/MacOS/peli | awk '/LC_RPATH/ { f = 1 } f && / path / { print $2; f = 0 }')" = "@executable_path/../Frameworks"
-      - if: runner.os == 'macOS'
-        run: cd bin && ditto -c -k --keepParent peli.app peli.app.zip
+        run: build/darwin/dist.sh check bin/Peli.app ${{ matrix.arch }}
       - uses: actions/upload-artifact@v4
         with:
           name: peli-${{ matrix.name }}
@@ -271,7 +269,7 @@ jobs:
           if-no-files-found: error
           path: |
             bin/peli.exe
-            bin/peli.app.zip
+            bin/Peli-*.dmg
             ${{ runner.os == 'Linux' && 'bin/peli' || '' }}
 
   # Manual only: checks that `wails3 dev` starts the app (was #10's

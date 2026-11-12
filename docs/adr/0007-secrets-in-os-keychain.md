@@ -21,4 +21,6 @@ date: 2026-10-19
 
 ## Revisit when
 
+**Done in #78 ([ADR-0053](0053-macos-packaging.md#the-keychain-trusts-pelis-signature-adr-0007s-revisit)):** a Developer ID build calls Security.framework itself and migrates the items on first launch, and every other build keeps go-keyring. The original note follows.
+
 **Peli is signed with a Developer ID (#78).** Then replace the macOS backend with direct Security.framework calls (`SecItemAdd` / `SecItemCopyMatching`, about 80 lines of cgo) so items trust Peli's signature, and other processes have to ask. We don't do this now because Peli is ad-hoc signed: macOS would identify it by the binary's hash, which changes with every build, so every update or rebuild would prompt "Allow Peli to access the keychain?". The `internal/secrets` API stays the same, and existing items can be migrated with one read and rewrite on first launch.

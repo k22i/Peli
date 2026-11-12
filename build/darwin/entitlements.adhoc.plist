@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Local, ad-hoc-signed packages only (dist.sh sign without PELI_SIGN_IDENTITY).
+  Library validation wants the app and libmpv signed by the same Team ID, and
+  an ad-hoc signature has none, so dyld would refuse Contents/Frameworks.
+  A Developer ID build passes it and uses entitlements.plist instead.
+-->
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.cs.disable-library-validation</key>
+	<true/>
+</dict>
+</plist>

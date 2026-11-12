@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Entitlements for the hardened runtime (#78, ADR-0053). Peli needs none of
+  its exceptions: Go and libmpv don't JIT (WebKit's JIT runs in WebKit's own
+  processes), libmpv is in the bundle and signed with the same identity, and
+  playback only outputs audio. Add an exception here only with a reason.
+-->
+<plist version="1.0">
+<dict/>
+</plist>

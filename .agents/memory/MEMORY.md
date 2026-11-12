@@ -79,3 +79,4 @@
 - [Player sound (phase 4)](player-sound.md) — Sound (profile + title) and Audio (device), one lavfi af chain, dynaudnorm over loudnorm, build + smoke filter check, audio delay, volume-max 150, AudioDevices, B key
 - [Player subtitles (phase 5)](player-subtitles.md) — second line drawn in the webview (Track.secondary, Shift+C, secondSubtitleLanguage), R/G nudges + Save as my style, lift = max(user, clear-the-controls)
 - [Player playback (phase 6)](player-playback.md) — speed/frame step/A–B (Gate.UserLoop)/chapters/screenshots (Go PNG)/stats/Still watching + sleep timer, More menu, Windows keepAwake (#102), Docker cross-vet tips
+- [macOS packaging](macos-packaging.md) — #78 per-arch drag-to-Applications ULMO DMGs (dist.sh), hardened runtime + ad-hoc entitlements gotcha, notarize app then DMG, native keychain; no Developer ID yet

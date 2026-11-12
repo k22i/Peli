@@ -1,7 +1,9 @@
 // Package secrets keeps tokens and keys in the OS keychain: the macOS
 // Keychain, Windows Credential Manager or the Linux Secret Service
 // (gnome-keyring, KWallet). Nothing is ever written to a file, and there is no
-// plaintext fallback when the keychain is missing (ADR-0007).
+// plaintext fallback when the keychain is missing (ADR-0007). On macOS a
+// Developer ID build calls Security.framework itself, so its items trust
+// Peli's signature; other builds go through /usr/bin/security (ADR-0053).
 //
 // Errors name the key and the operation, never the value.
 package secrets
@@ -10,6 +12,7 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
+	"sync"
 
 	"github.com/zalando/go-keyring"
 )
@@ -45,12 +48,25 @@ const maxKeyLen = 64
 type Keychain struct {
 	service string
 	legacy  string
+	os      backend
+	once    sync.Once
 }
 
 // New returns the keychain for service. The app uses ServiceName; tests use
 // their own so they never touch the user's items.
 func New(service string) *Keychain {
-	return &Keychain{service: service}
+	return &Keychain{service: service, os: osBackend()}
+}
+
+// ready moves the service's items to the native macOS backend the first
+// time a Developer ID build uses them (native_darwin.go). A failure leaves
+// them where they were, still readable, and the next launch tries again.
+func (k *Keychain) ready() {
+	k.once.Do(func() {
+		if m, ok := k.os.(interface{ migrate(string) error }); ok {
+			_ = m.migrate(k.service)
+		}
+	})
 }
 
 // MovesFrom has k move items over from the legacy service: Get falls back to
@@ -67,7 +83,8 @@ func (k *Keychain) Get(key string) (string, error) {
 	if err := validKey(key); err != nil {
 		return "", err
 	}
-	value, err := keyring.Get(k.service, key)
+	k.ready()
+	value, err := k.os.get(k.service, key)
 	if errors.Is(err, keyring.ErrNotFound) && k.legacy != "" {
 		return k.move(key)
 	}
@@ -80,12 +97,12 @@ func (k *Keychain) Get(key string) (string, error) {
 // move reads key from the legacy service and files it under k's own. If the
 // copy fails the legacy item stays, so the next Get tries again.
 func (k *Keychain) move(key string) (string, error) {
-	value, err := keyring.Get(k.legacy, key)
+	value, err := k.os.get(k.legacy, key)
 	if err != nil {
 		return "", wrap("get", key, err)
 	}
 	if err := k.Set(key, value); err == nil {
-		_ = keyring.Delete(k.legacy, key)
+		_ = k.os.delete(k.legacy, key)
 	}
 	return value, nil
 }
@@ -98,7 +115,8 @@ func (k *Keychain) Set(key, value string) error {
 	if len(value) > MaxSize {
 		return fmt.Errorf("%w (set %q)", ErrTooLarge, key)
 	}
-	return wrap("set", key, keyring.Set(k.service, key, value))
+	k.ready()
+	return wrap("set", key, k.os.set(k.service, key, value))
 }
 
 // Delete removes key. Deleting a key that isn't there is not an error.
@@ -106,13 +124,14 @@ func (k *Keychain) Delete(key string) error {
 	if err := validKey(key); err != nil {
 		return err
 	}
+	k.ready()
 	if k.legacy != "" {
 		// Or a key signed out of before it was ever read would come back.
-		if err := wrap("delete", key, keyring.Delete(k.legacy, key)); err != nil && !errors.Is(err, ErrNotFound) {
+		if err := wrap("delete", key, k.os.delete(k.legacy, key)); err != nil && !errors.Is(err, ErrNotFound) {
 			return err
 		}
 	}
-	err := wrap("delete", key, keyring.Delete(k.service, key))
+	err := wrap("delete", key, k.os.delete(k.service, key))
 	if errors.Is(err, ErrNotFound) {
 		return nil
 	}
@@ -137,9 +156,10 @@ func validKey(key string) error {
 	return nil
 }
 
-// wrap maps go-keyring's errors onto ours. The value is never part of err:
+// wrap maps the backends' errors onto ours. The value is never part of err:
 // go-keyring passes it to the OS on stdin (macOS) or in a struct, and its
-// errors are exit statuses and OS error codes.
+// errors are exit statuses and OS error codes, as the native backend's are
+// OSStatus codes.
 func wrap(op, key string, err error) error {
 	switch {
 	case err == nil:

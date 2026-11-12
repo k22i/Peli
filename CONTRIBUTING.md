@@ -37,6 +37,15 @@ libmpv is the one LGPL component, and it is how the app stays MIT ([ADR-0003](do
 - The `.deb` depends on the distro's `libmpv2` and bundles nothing.
 - `go run ./tools/notices -audit -bundle <dir>` scans a release bundle for GPL or non-free FFmpeg builds. Run it on every package before release.
 
+## macOS release
+
+One DMG per architecture, signed with the hardened runtime and notarized ([ADR-0053](docs/adr/0053-macos-packaging.md)). Users open it and drag Peli onto Applications.
+
+- `wails3 task darwin:package:dmg` builds `bin/Peli.app` and `bin/Peli-<version>-<arch>.dmg` for this Mac's architecture (or pass `ARCH=amd64`), signed ad hoc. That is enough to try the app locally, and CI builds the same thing. It fails if the DMG is over 60 MB.
+- `wails3 task darwin:release ARCH=arm64` (then `ARCH=amd64`) builds against `build/libmpv/.work/libmpv-macos-<arch>` (or `LIBMPV=<dir>`), signs with your Developer ID, notarizes and staples the app, then the DMG. Either Mac builds both architectures.
+- One-time setup: join the Apple Developer Program, create a **Developer ID Application** certificate in Xcode (Settings › Accounts › Manage Certificates) or on developer.apple.com, and check that `security find-identity -v -p codesigning` lists it. Then run `xcrun notarytool store-credentials peli-notary` with an app-specific password or an App Store Connect API key, and export `PELI_SIGN_IDENTITY="Developer ID Application: <name> (<TEAMID>)"` and `PELI_NOTARY_PROFILE=peli-notary`. `build/darwin/dist.sh` lists the CI variables.
+- A Developer ID build moves the keychain items to its own signature on first launch. After that, a development build on the same Mac asks once to use them (ADR-0053).
+
 ## Before you open a PR
 
 Run what CI runs: `cd frontend && pnpm check && pnpm test` and `go vet ./internal/... && go test ./internal/...`.
