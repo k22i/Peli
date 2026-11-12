@@ -11,7 +11,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"strings"
+
 	"github.com/wailsapp/wails/v3/pkg/application"
+
+	"github.com/k22i/Peli/internal/store"
 )
 
 // The simulator remote control (build tag pelidev, never in a shipped build):
@@ -24,6 +28,10 @@ import (
 //   - $PELI_DEV_EMAIL and $PELI_DEV_PASSWORD, when both are set and nobody
 //     is signed in, sign in once at launch through Account.SignIn. Neither
 //     is ever logged or written anywhere.
+//   - $PELI_DEV_GUEST=1 switches to the local Guest profile (no Nuvio
+//     account, so playback writes stay on the device), and
+//     $PELI_DEV_ADDONS (manifest URLs, comma separated; they may carry a
+//     debrid key, so they are never logged) installs addons into it.
 
 func devAssets(next http.Handler) http.Handler {
 	dir := os.Getenv("PELI_DEV_DIR")
@@ -50,6 +58,9 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli) 
 	if dir == "" {
 		return
 	}
+	if os.Getenv("PELI_DEV_GUEST") == "1" {
+		devGuest(p)
+	}
 	if email, password := os.Getenv("PELI_DEV_EMAIL"), os.Getenv("PELI_DEV_PASSWORD"); email != "" && password != "" {
 		go func() {
 			time.Sleep(3 * time.Second)
@@ -72,4 +83,26 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli) 
 			window.ExecJS(string(js))
 		}
 	}()
+}
+
+func devGuest(p *peli) {
+	if _, err := p.db.SwitchToGuest(); err != nil {
+		log.Printf("dev guest failed: %v", err)
+		return
+	}
+	st := store.Opened(p.db)
+	prof, err := st.CurrentProfile()
+	if err != nil {
+		log.Printf("dev guest: no profile")
+		return
+	}
+	for _, u := range strings.Split(os.Getenv("PELI_DEV_ADDONS"), ",") {
+		if u = strings.TrimSpace(u); u == "" {
+			continue
+		}
+		if err := st.InstallAddon(prof.ID, store.Addon{URL: u, Enabled: true}); err != nil {
+			log.Printf("dev addon not installed") // never the URL
+		}
+	}
+	log.Printf("dev guest ready")
 }

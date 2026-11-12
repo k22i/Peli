@@ -176,6 +176,7 @@ import {
   watchingFor,
 } from "@/lib/title";
 import { feature } from "@/lib/features";
+import { isTouch } from "@/lib/platform";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -392,7 +393,12 @@ function PlayerFile({
   const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
   const pickAbort = useRef<AbortController>(null);
   useEffect(() => () => pickAbort.current?.abort(), []);
-  const [idle, wake] = useIdle(idleAfter);
+  const [idle, wake, hideControls] = useIdle(idleAfter);
+  // A finger: tap shows or hides the controls, a double tap on a side skips
+  // 10 s, and the dock is two rows (iOS).
+  const touch = isTouch();
+  const lastTap = useRef<{ at: number; timer: ReturnType<typeof setTimeout> }>(undefined);
+  useEffect(() => () => clearTimeout(lastTap.current?.timer), []);
   // A click or key that pauses or plays, shown at the centre for a moment.
   const [flash, setFlash] = useState<{ id: number; paused: boolean }>();
   const flashes = useRef(0);
@@ -764,6 +770,32 @@ function PlayerFile({
   const startOver = () => {
     setStartOverDone(true);
     seek(0);
+  };
+  // A tap on the picture, on touch: the second tap of a pair on the left or
+  // right third skips 10 s that way; a single tap (once no second one came)
+  // hides the controls when they show, and shows them when they don't.
+  const tapPicture = (x: number, box: DOMRect) => {
+    const side = x < box.left + box.width / 3 ? -1 : x > box.right - box.width / 3 ? 1 : 0;
+    const last = lastTap.current;
+    if (last && side !== 0 && Date.now() - last.at < 300) {
+      clearTimeout(last.timer);
+      lastTap.current = undefined;
+      seek(position + side * skip);
+      setNotice({ text: side < 0 ? "−10 s" : "+10 s" });
+      return;
+    }
+    clearTimeout(last?.timer);
+    lastTap.current = {
+      at: Date.now(),
+      timer: setTimeout(
+        () => {
+          lastTap.current = undefined;
+          if (shownRef.current) hideControls();
+          else wake();
+        },
+        side === 0 ? 0 : 280,
+      ),
+    };
   };
   // The segment playing, and those skipped already, by kind and start.
   const segment = started ? segmentAt(segments, position) : undefined;
@@ -1526,6 +1558,8 @@ function PlayerFile({
     switcherOpen ||
     partyOpen ||
     dockMenuOpen;
+  const shownRef = useRef(shown);
+  shownRef.current = shown;
   // The subtitles rise to clear the controls while they show, and settle
   // back when they hide. The user's own lift doesn't add to that: the
   // higher of the two wins, so a lift set to dodge the controls once doesn't
@@ -1536,7 +1570,7 @@ function PlayerFile({
   const lifted = liftNow(
     style.lift,
     shown && !previewing && ready,
-    liftToClear(windowHeight, mini),
+    liftToClear(windowHeight, mini, touch ? 20 : 16),
   );
   const loaded = settings !== undefined;
   useEffect(() => {
@@ -1616,7 +1650,7 @@ function PlayerFile({
     <div
       className={cn(
         "pointer-events-none absolute end-0 flex flex-col items-end gap-2.5 transition-[bottom] duration-300 ease-out-soft *:pointer-events-auto",
-        mini ? "inset-x-2 bottom-16 items-stretch" : "pe-8",
+        mini ? "inset-x-2 bottom-16 items-stretch" : touch ? "pe-4" : "pe-8",
         !mini && (shown ? "bottom-[calc(var(--dock-h)+1.25rem)]" : "bottom-8"),
       )}
     >
@@ -1700,7 +1734,8 @@ function PlayerFile({
     <div
       // --above-bar is where the overlays sit: above the dock.
       className={cn(
-        "fixed inset-0 text-white select-none [--dock-h:7.5rem]",
+        "fixed inset-0 text-white select-none",
+        touch ? "[--dock-h:10rem]" : "[--dock-h:7.5rem]",
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
@@ -1744,7 +1779,7 @@ function PlayerFile({
         onPointerCancel={() => {
           panDrag.current = undefined;
         }}
-        onClick={() => {
+        onClick={(event) => {
           if (dragged.current) {
             dragged.current = false;
             return;
@@ -1752,9 +1787,10 @@ function PlayerFile({
           if (panel || pictureOpen) {
             setPanel(undefined);
             setPictureOpen(false);
-          } else togglePause();
+          } else if (touch) tapPicture(event.clientX, event.currentTarget.getBoundingClientRect());
+          else togglePause();
         }}
-        onDoubleClick={mini ? toggleMini : toggleFullscreen}
+        onDoubleClick={touch ? undefined : mini ? toggleMini : toggleFullscreen}
       />
       {/* The second line of subtitles, over the video and under the
           controls. The mini player has no room for it. */}
@@ -1798,7 +1834,7 @@ function PlayerFile({
           {...hold}
           className={cn(
             "drag-region absolute inset-x-0 top-0 flex items-start gap-4",
-            mini ? "h-14 pt-2 pr-3 pl-2" : "pt-3 pr-5 pl-[5.75rem]",
+            mini ? "h-14 pt-2 pr-3 pl-2" : touch ? "pt-2 pr-3 pl-3" : "pt-3 pr-5 pl-[5.75rem]",
           )}
         >
           <ControlButton label="Back" icon={ChevronLeft} onClick={leave} raised />
@@ -1814,7 +1850,9 @@ function PlayerFile({
                   "truncate",
                   mini
                     ? "text-sm font-semibold"
-                    : "font-display text-[1.875rem] leading-none font-normal",
+                    : touch
+                      ? "font-display text-[1.5rem] leading-none font-normal"
+                      : "font-display text-[1.875rem] leading-none font-normal",
                 )}
               >
                 {playing.title}
@@ -1850,7 +1888,7 @@ function PlayerFile({
                   )}
                 />
               )}
-              {watching && (
+              {watching && feature("streamSwitcher") && (
                 <ControlButton
                   label="Streams"
                   icon={ListVideo}
@@ -1859,24 +1897,28 @@ function PlayerFile({
                   aria-expanded={switcherOpen}
                 />
               )}
-              <ControlButton
-                label="Keyboard shortcuts"
-                icon={Keyboard}
-                onClick={() => {
-                  setPanel(undefined);
-                  setPictureOpen(false);
-                  setHelpOpen(!helpOpen);
-                }}
-                aria-keyshortcuts="Shift+?"
-                aria-expanded={helpOpen}
-              />
+              {feature("desktopControls") && (
+                <ControlButton
+                  label="Keyboard shortcuts"
+                  icon={Keyboard}
+                  onClick={() => {
+                    setPanel(undefined);
+                    setPictureOpen(false);
+                    setHelpOpen(!helpOpen);
+                  }}
+                  aria-keyshortcuts="Shift+?"
+                  aria-expanded={helpOpen}
+                />
+              )}
               {miniButton}
-              <ControlButton
-                label={fullscreen ? "Exit full screen" : "Full screen"}
-                icon={fullscreen ? Minimize : Maximize}
-                onClick={toggleFullscreen}
-                aria-keyshortcuts="F"
-              />
+              {feature("desktopControls") && (
+                <ControlButton
+                  label={fullscreen ? "Exit full screen" : "Full screen"}
+                  icon={fullscreen ? Minimize : Maximize}
+                  onClick={toggleFullscreen}
+                  aria-keyshortcuts="F"
+                />
+              )}
             </div>
           )}
         </div>
@@ -1888,7 +1930,9 @@ function PlayerFile({
             "absolute flex flex-col",
             mini
               ? "inset-x-2 bottom-2 gap-1 rounded-2xl px-3 py-2 material-media"
-              : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
+              : touch
+                ? "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-4 pb-3"
+                : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
           )}
         >
           <div className="flex items-center gap-4">
@@ -1940,8 +1984,14 @@ function PlayerFile({
               <div className="ms-auto flex items-center gap-1">{miniButton}</div>
             </div>
           ) : (
-            <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-              <div className="flex items-center gap-1">{volumeControl}</div>
+            <div
+              className={cn(
+                touch
+                  ? "flex flex-col items-center gap-1"
+                  : "grid grid-cols-[1fr_auto_1fr] items-center",
+              )}
+            >
+              {!touch && <div className="flex items-center gap-1">{volumeControl}</div>}
               <div className="flex items-center gap-4">
                 <ControlButton
                   label="Back 10 seconds"
@@ -1961,7 +2011,12 @@ function PlayerFile({
                   badge={skip}
                 />
               </div>
-              <div className="flex items-center justify-self-end gap-1.5">
+              <div
+                className={cn(
+                  "flex items-center gap-1.5",
+                  touch ? "justify-center" : "justify-self-end",
+                )}
+              >
                 {ready && (
                   <SpeedMenu
                     speed={speed}
@@ -1988,7 +2043,7 @@ function PlayerFile({
                     onClick={() => openPanel("audio")}
                   />
                 )}
-                {ready && (
+                {ready && feature("playerPanels") && (
                   <PanelButton
                     label="Picture and sound"
                     icon={SlidersHorizontal}
@@ -2001,7 +2056,7 @@ function PlayerFile({
                     shortcut="P"
                   />
                 )}
-                {ready && (
+                {ready && feature("playerPanels") && (
                   <MoreMenu
                     open={moreOpen}
                     onOpenChange={setMoreOpen}
@@ -2075,56 +2130,58 @@ function PlayerFile({
         position={position}
         subtitleText={state.subtitleText ?? ""}
       />
-      <PictureSheet
-        open={pictureOpen && !mini && !failure}
-        onClose={() => setPictureOpen(false)}
-        tab={sheetTab}
-        onTabChange={setSheetTab}
-        title={watching?.name || playing?.title || "this title"}
-        saves={titleKey !== ""}
-        picture={{
-          picture,
-          presets: namedPictures,
-          own: adjustments?.picture != null || unsavedPicture !== undefined,
-          onPreview: picturer,
-          onChange: changePicture,
-          onReset: resetPicture,
-          onUseForAll: pictureForAll,
-          onSavePreset: savePicturePreset,
-        }}
-        framing={{
-          framing,
-          own: adjustments?.framing != null || unsavedFraming !== undefined,
-          found: state.autoCrop ?? undefined,
-          onPreview: framer,
-          onChange: changeFraming,
-          onReset: resetFraming,
-          onUseForAll: framingForAll,
-        }}
-        sound={{
-          sound,
-          own: adjustments?.sound != null || unsavedSound !== undefined,
-          onChange: changeSound,
-          onReset: resetSound,
-          onUseForAll: soundForAll,
-          delay: audioDelay,
-          onDelayChange: changeAudioDelay,
-          audio,
-          devices: audioDevices ?? [],
-          onAudioChange: changeAudio,
-          surround,
-        }}
-        quality={{
-          quality,
-          own: adjustments?.quality != null || unsavedQuality !== undefined,
-          hdrShown: state.hdr,
-          onPreview: qualifier,
-          onChange: changeQuality,
-          onReset: resetQuality,
-          onUseForAll: qualityForAll,
-        }}
-      />
-      {watching && (
+      {feature("playerPanels") && (
+        <PictureSheet
+          open={pictureOpen && !mini && !failure}
+          onClose={() => setPictureOpen(false)}
+          tab={sheetTab}
+          onTabChange={setSheetTab}
+          title={watching?.name || playing?.title || "this title"}
+          saves={titleKey !== ""}
+          picture={{
+            picture,
+            presets: namedPictures,
+            own: adjustments?.picture != null || unsavedPicture !== undefined,
+            onPreview: picturer,
+            onChange: changePicture,
+            onReset: resetPicture,
+            onUseForAll: pictureForAll,
+            onSavePreset: savePicturePreset,
+          }}
+          framing={{
+            framing,
+            own: adjustments?.framing != null || unsavedFraming !== undefined,
+            found: state.autoCrop ?? undefined,
+            onPreview: framer,
+            onChange: changeFraming,
+            onReset: resetFraming,
+            onUseForAll: framingForAll,
+          }}
+          sound={{
+            sound,
+            own: adjustments?.sound != null || unsavedSound !== undefined,
+            onChange: changeSound,
+            onReset: resetSound,
+            onUseForAll: soundForAll,
+            delay: audioDelay,
+            onDelayChange: changeAudioDelay,
+            audio,
+            devices: audioDevices ?? [],
+            onAudioChange: changeAudio,
+            surround,
+          }}
+          quality={{
+            quality,
+            own: adjustments?.quality != null || unsavedQuality !== undefined,
+            hdrShown: state.hdr,
+            onPreview: qualifier,
+            onChange: changeQuality,
+            onReset: resetQuality,
+            onUseForAll: qualityForAll,
+          }}
+        />
+      )}
+      {watching && feature("streamSwitcher") && (
         <StreamSwitcher
           open={switcherOpen}
           onOpenChange={(open) => {
@@ -2153,7 +2210,9 @@ function PlayerFile({
           onCatchUp={() => void Party.CatchUp().catch(() => {})}
         />
       )}
-      {helpOpen && !failure && !mini && <ShortcutsOverlay onClose={() => setHelpOpen(false)} />}
+      {helpOpen && !failure && !mini && feature("desktopControls") && (
+        <ShortcutsOverlay onClose={() => setHelpOpen(false)} />
+      )}
       {statsOpen && ready && !mini && <StatsOverlay onClose={() => setStatsOpen(false)} />}
       {notice && !failure && (
         <div
@@ -2207,7 +2266,7 @@ function PlayerFile({
               <Button
                 variant="media"
                 size="lg"
-                onClick={watching ? openSwitcher : leave}
+                onClick={watching && feature("streamSwitcher") ? openSwitcher : leave}
                 disabled={retrying}
               >
                 Choose another stream

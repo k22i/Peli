@@ -225,8 +225,8 @@ export function useAhead<T>(
 const aheadFor = 3000;
 
 // Whether the pointer and keys have been still for ms, and wake, to call
-// on every move or key.
-export function useIdle(ms: number): [idle: boolean, wake: () => void] {
+// on every move or key, and hide to go idle now.
+export function useIdle(ms: number): [idle: boolean, wake: () => void, hide: () => void] {
   const [idle, setIdle] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const wake = () => {
@@ -238,5 +238,10 @@ export function useIdle(ms: number): [idle: boolean, wake: () => void] {
     timer.current = setTimeout(() => setIdle(true), ms);
     return () => clearTimeout(timer.current);
   }, [ms]);
-  return [idle, wake];
+  // A tap on the picture while the controls show hides them at once.
+  const hide = () => {
+    clearTimeout(timer.current);
+    setIdle(true);
+  };
+  return [idle, wake, hide];
 }

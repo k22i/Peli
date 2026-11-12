@@ -13,6 +13,7 @@ import {
 import type { DeviceSettings, ProfileSettings } from "@bindings/store";
 import { addonsQuery } from "@/lib/addons";
 import { feature } from "@/lib/features";
+import { isIOS } from "@/lib/platform";
 import { pluginSource, usePluginStreams, usePluginTargets } from "@/lib/plugins";
 import {
   RankingSession,
@@ -183,8 +184,11 @@ export function rankingPrefs(
   const cap = maxResolutionOf(device);
   return {
     languages: audioLanguagesOf(settings),
-    maxResolution: cap === "auto" ? "2160p" : cap,
-    hdr: hdr === "auto" ? displayShowsHdr() : hdr === "on",
+    // iOS (ADR-0055): libmpv tone-maps HDR to SDR, so Auto neither looks for
+    // HDR nor Dolby Vision, and 1080p is what a phone's GLES path keeps up
+    // with. A choice made in Settings still wins.
+    maxResolution: cap === "auto" ? (isIOS() ? "1080p" : "2160p") : cap,
+    hdr: hdr === "auto" ? !isIOS() && displayShowsHdr() : hdr === "on",
     dolbyVision: displayModeOf(device?.dolbyVision) === "on",
     remembered,
   };

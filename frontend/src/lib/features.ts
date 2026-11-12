@@ -16,6 +16,8 @@ export type Feature =
   | "miniPlayer"
   | "playerPanels" // picture, sound, quality, framing, stats, A–B loop, screenshots
   | "hdr"
+  | "desktopControls" // fullscreen, the shortcuts list, a volume slider (iOS has the side buttons)
+  | "streamSwitcher" // the player's Streams sheet
   | "commandPalette"
   | "people" // person pages
   | "multiSelect"
@@ -29,6 +31,8 @@ const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
   "miniPlayer",
   "playerPanels",
   "hdr",
+  "desktopControls",
+  "streamSwitcher",
   "commandPalette",
   "people",
   "multiSelect",
