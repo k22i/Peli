@@ -12,10 +12,12 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { feature } from "@/lib/features";
+
 export type SettingsPane = { id: string; title: string; icon: LucideIcon };
 
 // The panes, in the order the list shows them. `?section=` names one.
-export const settingsPanes = [
+const allPanes = [
   { id: "account", title: "Account", icon: UserRound },
   { id: "content", title: "Addons & content", icon: Blocks },
   { id: "playback", title: "Playback", icon: Play },
@@ -28,13 +30,19 @@ export const settingsPanes = [
   { id: "about", title: "About", icon: Info },
 ] as const satisfies readonly SettingsPane[];
 
-export type PaneId = (typeof settingsPanes)[number]["id"];
+export type PaneId = (typeof allPanes)[number]["id"];
+
+// The panes this build shows: the iOS app has no plugins (ADR-0055). A
+// function, not a constant, since the platform is read when asked.
+export function visiblePanes(): readonly (typeof allPanes)[number][] {
+  return allPanes.filter((pane) => pane.id !== "plugins" || feature("plugins"));
+}
 
 export const defaultPane: PaneId = "account";
 
 // An unknown or missing `?section=` is the default pane.
 export function paneFromSearch(search: Record<string, unknown>): { section?: PaneId } {
-  const pane = settingsPanes.find((candidate) => candidate.id === search["section"]);
+  const pane = visiblePanes().find((candidate) => candidate.id === search["section"]);
   return pane ? { section: pane.id } : {};
 }
 

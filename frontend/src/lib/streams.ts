@@ -12,6 +12,7 @@ import {
 } from "@/lib/addon-protocol";
 import type { DeviceSettings, ProfileSettings } from "@bindings/store";
 import { addonsQuery } from "@/lib/addons";
+import { feature } from "@/lib/features";
 import { pluginSource, usePluginStreams, usePluginTargets } from "@/lib/plugins";
 import {
   RankingSession,
@@ -140,7 +141,11 @@ export class StreamFeed {
     for (const { key, status, streams } of sources) {
       if (status !== "success" || !streams || this.#fed.has(key)) continue;
       this.#fed.add(key);
-      for (const slice of slices(streams)) out.push({ source: key, streams: slice });
+      // A torrent with no link can't play on iOS (ADR-0055): it isn't offered.
+      const playable = feature("torrent")
+        ? streams
+        : streams.filter((stream) => stream.url || !stream.infoHash);
+      for (const slice of slices(playable)) out.push({ source: key, streams: slice });
     }
     return out;
   }

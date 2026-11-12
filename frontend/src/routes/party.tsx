@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Play, Users } from "lucide-react";
 
 import { Artwork } from "@/components/media/artwork";
@@ -6,11 +6,16 @@ import { PartyChat } from "@/components/party/party-chat";
 import { JoinParty, PartyPanel } from "@/components/party/party-panel";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { feature } from "@/lib/features";
 import { mediaLabel, partyProblem, useParty, useWatchWithParty, type PartyInfo } from "@/lib/party";
 
 // Reached from the profile menu, the palette and the party pill in the top
 // bar.
 export const Route = createFileRoute("/party")({
+  // Not in the iOS app (ADR-0055).
+  beforeLoad: () => {
+    if (!feature("party")) throw redirect({ to: "/", replace: true });
+  },
   component: PartyPage,
 });
 

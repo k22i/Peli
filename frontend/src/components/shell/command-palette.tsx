@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import { settingsPanes } from "@/components/settings/panes";
+import { visiblePanes } from "@/components/settings/panes";
 import {
   Command,
   CommandCollection,
@@ -194,7 +194,7 @@ function PaletteBody({ profile, done }: { profile: Profile; done: () => void }) 
             run: go(() => void navigate({ to: "/addons" })),
           },
         ]),
-    ...settingsPanes.map((pane) => ({
+    ...visiblePanes().map((pane) => ({
       id: `settings:${pane.id}`,
       label: `Settings: ${pane.title}`,
       icon: pane.icon,

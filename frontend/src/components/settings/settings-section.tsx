@@ -2,7 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useId, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
 
 import { ChipRail, Chip } from "@/components/media/chip";
-import { settingsPanes, type PaneId } from "@/components/settings/panes";
+import { visiblePanes, type PaneId } from "@/components/settings/panes";
 import { cn } from "@/lib/utils";
 
 export const paneHeadingId = "settings-pane-title";
@@ -140,7 +140,7 @@ export function SettingsPaneList({
       className={cn("[view-transition-name:settings-nav]", className)}
     >
       <ul className="flex flex-col gap-0.5">
-        {settingsPanes.map((pane) => {
+        {visiblePanes().map((pane) => {
           const active = pane.id === current;
           return (
             <li key={pane.id}>
@@ -186,12 +186,12 @@ export function SettingsPaneRail({ current, className }: { current: PaneId; clas
       value={[current]}
       onValueChange={([next]) => {
         // Pressing the current chip would clear the group; keep it.
-        const pane = settingsPanes.find((candidate) => candidate.id === next);
+        const pane = visiblePanes().find((candidate) => candidate.id === next);
         if (pane) void navigate({ to: "/settings", search: { section: pane.id }, replace: true });
       }}
       railClassName={cn("-mx-page w-[calc(100%+2*var(--spacing-page))]", className)}
     >
-      {settingsPanes.map((pane) => (
+      {visiblePanes().map((pane) => (
         <Chip key={pane.id} value={pane.id}>
           {pane.title}
         </Chip>

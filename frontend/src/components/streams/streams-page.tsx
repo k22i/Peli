@@ -22,6 +22,7 @@ import { listRows, StreamList } from "@/components/streams/stream-list";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
+import { feature } from "@/lib/features";
 import { toastManager } from "@/components/ui/toast";
 import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
@@ -241,16 +242,17 @@ function Picker({
     opening.current = current;
     // A torrent takes a while to find peers: say how it's going.
     let settled = false;
-    const statusTimer = attempts(candidate).some(({ stream }) => !stream.url && stream.infoHash)
-      ? setInterval(() => {
-          Torrents.Status()
-            .then((status) => {
-              if (settled || !status.active) return;
-              toastManager.update(toast, { description: torrentStatusText(status) });
-            })
-            .catch(() => {});
-        }, 1000)
-      : undefined;
+    const statusTimer =
+      feature("torrent") && attempts(candidate).some(({ stream }) => !stream.url && stream.infoHash)
+        ? setInterval(() => {
+            Torrents.Status()
+              .then((status) => {
+                if (settled || !status.active) return;
+                toastManager.update(toast, { description: torrentStatusText(status) });
+              })
+              .catch(() => {});
+          }, 1000)
+        : undefined;
     resolvePick(candidate, { refresh, signal: controller.signal })
       .finally(() => {
         settled = true;

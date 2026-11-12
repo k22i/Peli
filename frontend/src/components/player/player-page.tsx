@@ -175,6 +175,7 @@ import {
   titleProgressQuery,
   watchingFor,
 } from "@/lib/title";
+import { feature } from "@/lib/features";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -260,7 +261,7 @@ export function PlayerPage() {
       const streamed = isTorrentSource(playingSource.current);
       // A watch party (ADR-0051) sees this member stop watching; the next
       // episode or another stream, as a new file of the screen, doesn't.
-      Party.Watch(null, null).catch(() => {});
+      if (feature("party")) Party.Watch(null, null).catch(() => {});
       Player.Stop()
         .catch(() => {})
         .finally(() => {
@@ -464,7 +465,7 @@ function PlayerFile({
       ].join("|")
     : "";
   useEffect(() => {
-    if (media) Party.Watch(media, shared ?? null).catch(() => {});
+    if (media && feature("party")) Party.Watch(media, shared ?? null).catch(() => {});
     // oxlint-disable-next-line react/exhaustive-deps -- once per file and stream
   }, [mediaKey, shared?.url]);
   const [partyNotice, setPartyNotice] = useState<string>();
@@ -911,7 +912,7 @@ function PlayerFile({
   };
   // The mini player has no room for the shortcuts or the switcher.
   const toggleMini = () => {
-    if (!mini && !ready) return;
+    if (!feature("miniPlayer") || (!mini && !ready)) return;
     setMini(!mini);
     if (!mini) {
       setFullscreen(false);
@@ -1598,7 +1599,7 @@ function PlayerFile({
       </Slider.Root>
     </div>
   );
-  const miniButton = (
+  const miniButton = feature("miniPlayer") && (
     <ControlButton
       label={mini ? "Exit mini player" : "Mini player"}
       icon={PictureInPicture2}

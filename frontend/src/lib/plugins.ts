@@ -15,6 +15,7 @@ import type {
 } from "@bindings/plugins";
 import { Service as Plugins } from "@bindings/plugins";
 import type { ContentType, Meta, Stream } from "@/lib/addon-protocol";
+import { feature } from "@/lib/features";
 import { useCurrentProfile } from "@/lib/profile";
 import { videoNumbers } from "@/lib/ranking";
 import { tmdbRef, useTmdbId } from "@/lib/tmdb";
@@ -52,7 +53,8 @@ export const installedPluginsQuery = (profileId: number | undefined) =>
       }
       return (await Plugins.Installed()) ?? [];
     },
-    enabled: profileId !== undefined,
+    // Not bound on iOS (ADR-0055).
+    enabled: () => profileId !== undefined && feature("plugins"),
     staleTime: 5 * minute,
   });
 
@@ -279,7 +281,9 @@ export function usePluginTargets(
   return {
     plugins: query ? plugins.filter((plugin) => serves(plugin, query.mediaType)) : [],
     query,
-    loading: installed.isPending || (plugins.length > 0 && tmdb === undefined),
+    // A disabled query stays pending, so iOS must not wait on it.
+    loading:
+      feature("plugins") && (installed.isPending || (plugins.length > 0 && tmdb === undefined)),
   };
 }
 

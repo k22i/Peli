@@ -1,10 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { Components } from "@/components/gallery/components";
 import { Foundations } from "@/components/gallery/foundations";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { feature } from "@/lib/features";
 
 export const Route = createFileRoute("/gallery")({
+  // A development page, not in the iOS app (ADR-0055).
+  beforeLoad: () => {
+    if (!feature("gallery")) throw redirect({ to: "/", replace: true });
+  },
   component: Gallery,
 });
 

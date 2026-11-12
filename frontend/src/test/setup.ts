@@ -2,6 +2,8 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, vi } from "vite-plus/test";
 
+import { ios } from "./ios";
+
 // Which IMDb ids are anime (#109): none, unless a test says otherwise with
 // vi.mocked(AnimeList.IMDbIDs).
 vi.mock("@bindings/animelist", () => ({
@@ -32,6 +34,22 @@ vi.mock("@bindings/tracking", () => ({
     Watchlist: vi.fn<() => Promise<unknown[]>>(() => Promise.resolve([])),
   },
 }));
+
+// The iOS app (ADR-0055): off, unless a test turns it on with `onIOS()` from
+// ./ios (reset after each test). feature() and the shell ask these.
+vi.mock("@/lib/platform", async (importOriginal) => {
+  const original = await importOriginal<{
+    isTouch: () => boolean;
+    currentPlatform: () => string;
+  }>();
+  const state = await import("./ios");
+  return {
+    ...original,
+    isIOS: () => state.ios.on,
+    isTouch: () => state.ios.on || original.isTouch(),
+    currentPlatform: () => (state.ios.on ? "ios" : original.currentPlatform()),
+  };
+});
 
 // Updates (#83): off, as in a development build, unless a test says
 // otherwise. The shell asks, for the "update ready" pill.
@@ -80,6 +98,7 @@ Object.defineProperty(Element.prototype, "scrollTo", { value: () => {}, configur
 // Globals are off, so Testing Library cannot register its own cleanup.
 afterEach(() => {
   cleanup();
+  ios.on = false;
   window.localStorage.clear();
 });
 

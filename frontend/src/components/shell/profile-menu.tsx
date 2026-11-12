@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/menu";
 import { toastManager } from "@/components/ui/toast";
 import { profilesQuery, useSwitchProfile } from "@/lib/account";
+import { feature } from "@/lib/features";
 import { currentPlatform } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 
@@ -51,7 +52,7 @@ export function ProfileMenu() {
       <Menu>
         <MenuTrigger
           aria-label={`Profile: ${profile.name}`}
-          className="group/profile flex items-center gap-1.5 rounded-full p-0.5 pe-2 outline-none transition-colors duration-(--duration-fast) hover:bg-foreground/8 focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-foreground/10"
+          className="group/profile flex items-center gap-1.5 rounded-full p-0.5 pe-2 pointer-coarse:min-h-11 pointer-coarse:ps-2 outline-none transition-colors duration-(--duration-fast) hover:bg-foreground/8 focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-foreground/10"
         >
           <ProfileAvatar profile={profile} className="size-7 text-[0.625rem]" />
           <ChevronDown
@@ -89,7 +90,7 @@ export function ProfileMenu() {
             )}
             {/* Watch parties (ADR-0051) need a Nuvio profile, and kids
               profiles never join one. */}
-            {profile.signedIn && !profile.kids && (
+            {feature("party") && profile.signedIn && !profile.kids && (
               <MenuLinkItem render={<Link to="/party" />}>
                 <PartyPopper />
                 Watch party

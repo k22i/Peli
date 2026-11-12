@@ -3,6 +3,7 @@ import { Service as Streams } from "@bindings/streams";
 import type { Stream } from "@/lib/addon-protocol";
 import { dedupKey, parseStream, type Candidate, type Debrid } from "@/lib/ranking";
 import { debridNames } from "@/lib/stream-labels";
+import { feature } from "@/lib/features";
 import { torrentRequest, wailsTorrentOpener, type TorrentOpener } from "@/lib/torrent";
 
 // Resolving a picked stream (#53, ADR-0037): its link asked once through Go
@@ -124,11 +125,17 @@ const messages: Record<FailureKind, (service: string | null) => Message> = {
   }),
   unreachable: () => unreachable,
   redirects: () => unreachable,
-  torrent: () => ({
-    title: "Torrent streaming is off",
-    description:
-      "Turn it on in Settings › Streaming to stream torrents peer to peer, or pick a debrid or direct stream.",
-  }),
+  torrent: () =>
+    feature("torrent")
+      ? {
+          title: "Torrent streaming is off",
+          description:
+            "Turn it on in Settings › Streaming to stream torrents peer to peer, or pick a debrid or direct stream.",
+        }
+      : {
+          title: "This is a torrent",
+          description: "Peli on iPhone and iPad plays debrid and direct streams. Pick another.",
+        },
   no_peers: () => ({
     title: "No one is sharing this torrent",
     description: "No peers answered. Pick a stream with more peers, or a debrid or direct one.",
@@ -197,7 +204,9 @@ export async function resolvePick(
 ): Promise<Resolved> {
   const all = attempts(candidate);
   const linked = all.filter((attempt) => attempt.stream.url);
-  const torrents = all.filter((attempt) => !attempt.stream.url && attempt.stream.infoHash);
+  const torrents = feature("torrent")
+    ? all.filter((attempt) => !attempt.stream.url && attempt.stream.infoHash)
+    : [];
   const failures = new Map<Attempt, FailureKind>();
   for (const attempt of linked) {
     signal.throwIfAborted();

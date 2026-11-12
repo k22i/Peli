@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+import { feature } from "@/lib/features";
 import type { Person } from "@/lib/tmdb";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +20,10 @@ export function PersonLink({
   className?: string;
   children?: ReactNode;
 }) {
+  // No person pages on iOS (ADR-0055): the name is text.
+  if (!feature("people")) {
+    return <span className={className}>{children ?? person.name}</span>;
+  }
   return (
     <Link
       to="/person/$id"

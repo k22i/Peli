@@ -3,6 +3,7 @@ import { Events } from "@wailsio/runtime";
 import { useEffect, useRef } from "react";
 
 import { toastManager } from "@/components/ui/toast";
+import { feature } from "@/lib/features";
 import { Reason, Service as Updates, State, type Status } from "@bindings/updates";
 
 // Updates (#83, ADR-0054): internal/updates looks for a new release by
@@ -19,19 +20,20 @@ export const updateStatusEvent = "updates:status";
 export const updateStatusQuery = queryOptions({
   queryKey: ["updates", "status"],
   queryFn: () => Updates.Status(),
+  // Not bound on iOS: App Store updates (ADR-0055).
+  enabled: () => feature("updates"),
   staleTime: Number.POSITIVE_INFINITY,
 });
 
 // Keeps the status as Go sends it. Mounted once, at the root.
 export function useUpdateEvents() {
   const queryClient = useQueryClient();
-  useEffect(
-    () =>
-      Events.On(updateStatusEvent, (event) => {
-        queryClient.setQueryData(updateStatusQuery.queryKey, event.data);
-      }),
-    [queryClient],
-  );
+  useEffect(() => {
+    if (!feature("updates")) return undefined;
+    return Events.On(updateStatusEvent, (event) => {
+      queryClient.setQueryData(updateStatusQuery.queryKey, event.data);
+    });
+  }, [queryClient]);
 }
 
 export function useUpdateStatus(): Status | undefined {

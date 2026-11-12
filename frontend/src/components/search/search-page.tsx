@@ -30,6 +30,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useBrowsableAddons } from "@/lib/home";
+import { feature } from "@/lib/features";
 import { currentPlatform } from "@/lib/platform";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { currentProfileQuery } from "@/lib/profile";
@@ -385,7 +386,7 @@ function Results({
   // kids profile (nothing can say which people they may see).
   const people = useTmdbPeople(
     term,
-    !profile.kids && !search.type && !search.year && !search.genre,
+    feature("people") && !profile.kids && !search.type && !search.year && !search.genre,
   );
 
   if (visible.data?.length === 0) return <NoAddons profile={profile} />;

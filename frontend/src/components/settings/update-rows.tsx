@@ -5,6 +5,7 @@ import { SettingRow } from "@/components/settings/settings-section";
 import { RestartDialog } from "@/components/shell/update-status";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { feature } from "@/lib/features";
 import { deviceSettingsQuery, useSaveDeviceSettings } from "@/lib/settings";
 import {
   readyVersion,
@@ -17,6 +18,12 @@ import {
 // Settings › About's update rows (#83): where the updater is, "Check now" or
 // "Restart to update", and whether it looks by itself.
 export function UpdateRows() {
+  // App Store updates on iOS (ADR-0055).
+  if (!feature("updates")) return null;
+  return <UpdateRowsOnDesktop />;
+}
+
+function UpdateRowsOnDesktop() {
   const status = useUpdateStatus();
   const check = useCheckForUpdates();
   const [restarting, setRestarting] = useState(false);

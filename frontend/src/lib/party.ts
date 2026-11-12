@@ -19,6 +19,7 @@ import {
 } from "@bindings/party";
 import type { Source } from "@bindings/streams";
 import type { Meta, Stream } from "@/lib/addon-protocol";
+import { feature } from "@/lib/features";
 import { streamsPath, streamsSearch, type PlayTarget } from "@/lib/playback";
 
 // Watch parties (ADR-0051): watching with friends on Peli or Nuvio's apps,
@@ -37,12 +38,15 @@ export type { Chat, Media, Member, Message, Notice, PartyInfo, Preview, SharedSt
 export const partyQuery = queryOptions({
   queryKey: ["party", "state"],
   queryFn: () => Party.State(),
+  // Not bound on iOS (ADR-0055).
+  enabled: () => feature("party"),
   staleTime: Infinity,
 });
 
 export const partyChatQuery = queryOptions({
   queryKey: ["party", "chat"],
   queryFn: () => Party.Chat(),
+  enabled: () => feature("party"),
   staleTime: Infinity,
 });
 
@@ -59,6 +63,7 @@ export function usePartyChat(): Chat {
 // root.
 export function usePartyEvents(queryClient: QueryClient) {
   useEffect(() => {
+    if (!feature("party")) return undefined;
     const offState = Events.On(stateEvent, (event) => {
       queryClient.setQueryData(partyQuery.queryKey, event.data);
     });
@@ -75,7 +80,10 @@ export function usePartyEvents(queryClient: QueryClient) {
 // Calls onNotice for each notice.
 export function usePartyNotices(onNotice: (notice: Notice) => void) {
   const handle = useEffectEvent(onNotice);
-  useEffect(() => Events.On(noticeEvent, (event) => handle(event.data)), []);
+  useEffect(
+    () => (feature("party") ? Events.On(noticeEvent, (event) => handle(event.data)) : undefined),
+    [],
+  );
 }
 
 // "ABC DEF".

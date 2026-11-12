@@ -41,6 +41,7 @@ import {
 } from "@/lib/library";
 import { useBulkEdits } from "@/lib/library-bulk";
 import { currentProfileQuery } from "@/lib/profile";
+import { feature } from "@/lib/features";
 import { clickKind, selectRange, toggleKey } from "@/lib/selection";
 import { useOpenTitle } from "@/lib/title";
 import { libraryMenuTitle, useTitleEdits } from "@/lib/title-actions";
@@ -286,17 +287,21 @@ function LibraryGrid({
     setAnchor(undefined);
   };
 
+  // Not on iOS (ADR-0055): there is no Shift or ⌘ to start one.
+  const multi = feature("multiSelect");
   const toggle = (key: string) => {
+    if (!multi) return;
     setChosen(toggleKey(selected, key));
     setAnchor(key);
   };
   // Shift extends from the anchor, which stays where it was.
   const extend = (key: string) =>
-    setChosen(new Set([...selected, ...selectRange(keys, anchor, key)]));
+    multi && setChosen(new Set([...selected, ...selectRange(keys, anchor, key)]));
 
   // ⌘A and Esc work from anywhere on the page, not only on a card; a menu
   // or dialog that is open keeps them for itself.
   useEffect(() => {
+    if (!multi) return undefined;
     const onKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.defaultPrevented || inOverlay(event.target)) return;
       if (event.key === "Escape" && selecting) {
@@ -364,12 +369,13 @@ function LibraryGrid({
                 ) : undefined
               }
               onClick={(event) => {
-                const kind = clickKind(event, selecting);
+                const kind = multi ? clickKind(event, selecting) : "open";
                 if (kind === "toggle") toggle(key);
                 else if (kind === "range") extend(key);
                 else open(libraryPreview(item));
               }}
               onKeyDown={(event) => {
+                if (!multi) return;
                 if (event.key === " ") {
                   event.preventDefault();
                   if (event.shiftKey) extend(key);

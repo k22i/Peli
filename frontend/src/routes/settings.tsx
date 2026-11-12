@@ -10,7 +10,7 @@ import {
   defaultPane,
   paneFromSearch,
   rememberPane,
-  settingsPanes,
+  visiblePanes,
   type PaneId,
 } from "@/components/settings/panes";
 import { PluginsPane } from "@/components/settings/plugins-pane";
@@ -57,6 +57,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { addonsQuery } from "@/lib/addons";
+import { feature } from "@/lib/features";
 import { appVersionQuery } from "@/lib/app-info";
 import { contentDisclaimer } from "@/lib/disclaimer";
 import { useCurrentProfile } from "@/lib/profile";
@@ -142,7 +143,7 @@ export const Route = createFileRoute("/settings")({
 function Settings() {
   const profile = useCurrentProfile();
   const { section = defaultPane } = Route.useSearch();
-  const pane = settingsPanes.find((candidate) => candidate.id === section) ?? settingsPanes[0];
+  const pane = visiblePanes().find((candidate) => candidate.id === section) ?? visiblePanes()[0]!;
   const fromKeyboard = useRef(false);
   const shown = useRef<PaneId>(undefined);
 
@@ -406,109 +407,131 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
       <WithSettings profileId={profileId}>
         {({ settings, device, setProfile, setDevice }) => (
           <>
-            <SettingsGroup title="Video">
-              <SettingRow
-                id="hardware-decoding"
-                label="Hardware decoding"
-                description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device, from the next video you play."
-              >
-                <Switch
-                  aria-labelledby="hardware-decoding-label"
-                  aria-describedby="hardware-decoding-description"
-                  checked={device.hardwareDecoding}
-                  onCheckedChange={(hardwareDecoding) => setDevice({ hardwareDecoding })}
+            {/* mpv's picture, sound and HDR controls aren't in the iOS app
+                (ADR-0055). */}
+            {feature("playerPanels") && (
+              <>
+                <SettingsGroup title="Video">
+                  <SettingRow
+                    id="hardware-decoding"
+                    label="Hardware decoding"
+                    description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device, from the next video you play."
+                  >
+                    <Switch
+                      aria-labelledby="hardware-decoding-label"
+                      aria-describedby="hardware-decoding-description"
+                      checked={device.hardwareDecoding}
+                      onCheckedChange={(hardwareDecoding) => setDevice({ hardwareDecoding })}
+                    />
+                  </SettingRow>
+                  <QualityDefaults
+                    quality={device.quality ?? defaultQuality}
+                    setQuality={(changes) =>
+                      setDevice({ quality: { ...(device.quality ?? defaultQuality), ...changes } })
+                    }
+                  />
+                </SettingsGroup>
+                <SettingsGroup title="HDR on a screen without it">
+                  <SettingRow
+                    id="tone-mapping"
+                    label="Tone mapping"
+                    description="How HDR video is brought into what this screen shows, when it can't show HDR. Natural keeps it true to the film; Bright lifts it; Filmic is softer at the top. Applies to this device."
+                  >
+                    <Choice
+                      id="tone-mapping"
+                      value={(device.quality ?? defaultQuality).toneMapping}
+                      options={toneMappingIds}
+                      labels={toneMappingLabels}
+                      onChange={(toneMapping) =>
+                        setDevice({
+                          quality: { ...(device.quality ?? defaultQuality), toneMapping },
+                        })
+                      }
+                    />
+                  </SettingRow>
+                  <SettingRow
+                    id="target-peak"
+                    label="Screen brightness"
+                    description="How bright this screen gets, for tone mapping. Auto lets the player guess; a brighter value keeps more of the highlights."
+                  >
+                    <Choice
+                      id="target-peak"
+                      value={String((device.quality ?? defaultQuality).targetPeak)}
+                      options={["0", "100", "200", "300", "400", "600"]}
+                      labels={{
+                        "0": "Auto",
+                        "100": "100",
+                        "200": "200",
+                        "300": "300",
+                        "400": "400",
+                        "600": "600 nits",
+                      }}
+                      onChange={(peak) =>
+                        setDevice({
+                          quality: {
+                            ...(device.quality ?? defaultQuality),
+                            targetPeak: Number(peak),
+                          },
+                        })
+                      }
+                    />
+                  </SettingRow>
+                </SettingsGroup>
+                <PictureDefaults
+                  profileId={profileId}
+                  settings={settings}
+                  setProfile={setProfile}
                 />
-              </SettingRow>
-              <QualityDefaults
-                quality={device.quality ?? defaultQuality}
-                setQuality={(changes) =>
-                  setDevice({ quality: { ...(device.quality ?? defaultQuality), ...changes } })
-                }
-              />
-            </SettingsGroup>
-            <SettingsGroup title="HDR on a screen without it">
-              <SettingRow
-                id="tone-mapping"
-                label="Tone mapping"
-                description="How HDR video is brought into what this screen shows, when it can't show HDR. Natural keeps it true to the film; Bright lifts it; Filmic is softer at the top. Applies to this device."
-              >
-                <Choice
-                  id="tone-mapping"
-                  value={(device.quality ?? defaultQuality).toneMapping}
-                  options={toneMappingIds}
-                  labels={toneMappingLabels}
-                  onChange={(toneMapping) =>
-                    setDevice({ quality: { ...(device.quality ?? defaultQuality), toneMapping } })
+                <SettingsGroup title="Framing">
+                  <SettingRow
+                    id="framing-fit"
+                    label="Fit"
+                    description="How the picture fills the window: all of it, the window filled (the edges cropped), stretched, or its own size. A title can have its own (P, then Framing, or Shift+F)."
+                  >
+                    <Choice
+                      id="framing-fit"
+                      value={settings.framing?.fit ?? "fit"}
+                      options={fitModes.map(({ id }) => id)}
+                      labels={{
+                        fit: "Fit",
+                        fill: "Fill",
+                        stretch: "Stretch",
+                        original: "Original",
+                      }}
+                      onChange={(fit) =>
+                        setProfile({ framing: { ...(settings.framing ?? defaultFraming), fit } })
+                      }
+                    />
+                  </SettingRow>
+                  <SettingRow
+                    id="auto-crop"
+                    label="Remove black bars"
+                    description="Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture."
+                  >
+                    <Switch
+                      aria-labelledby="auto-crop-label"
+                      aria-describedby="auto-crop-description"
+                      checked={settings.framing?.autoCrop ?? false}
+                      onCheckedChange={(autoCrop) =>
+                        setProfile({
+                          framing: { ...(settings.framing ?? defaultFraming), autoCrop },
+                        })
+                      }
+                    />
+                  </SettingRow>
+                </SettingsGroup>
+                <SoundDefaults
+                  sound={settings.sound ?? defaultSound}
+                  setSound={(changes) =>
+                    setProfile({ sound: { ...(settings.sound ?? defaultSound), ...changes } })
+                  }
+                  audio={device.audio ?? defaultAudio}
+                  setAudio={(changes) =>
+                    setDevice({ audio: { ...(device.audio ?? defaultAudio), ...changes } })
                   }
                 />
-              </SettingRow>
-              <SettingRow
-                id="target-peak"
-                label="Screen brightness"
-                description="How bright this screen gets, for tone mapping. Auto lets the player guess; a brighter value keeps more of the highlights."
-              >
-                <Choice
-                  id="target-peak"
-                  value={String((device.quality ?? defaultQuality).targetPeak)}
-                  options={["0", "100", "200", "300", "400", "600"]}
-                  labels={{
-                    "0": "Auto",
-                    "100": "100",
-                    "200": "200",
-                    "300": "300",
-                    "400": "400",
-                    "600": "600 nits",
-                  }}
-                  onChange={(peak) =>
-                    setDevice({
-                      quality: { ...(device.quality ?? defaultQuality), targetPeak: Number(peak) },
-                    })
-                  }
-                />
-              </SettingRow>
-            </SettingsGroup>
-            <PictureDefaults profileId={profileId} settings={settings} setProfile={setProfile} />
-            <SettingsGroup title="Framing">
-              <SettingRow
-                id="framing-fit"
-                label="Fit"
-                description="How the picture fills the window: all of it, the window filled (the edges cropped), stretched, or its own size. A title can have its own (P, then Framing, or Shift+F)."
-              >
-                <Choice
-                  id="framing-fit"
-                  value={settings.framing?.fit ?? "fit"}
-                  options={fitModes.map(({ id }) => id)}
-                  labels={{ fit: "Fit", fill: "Fill", stretch: "Stretch", original: "Original" }}
-                  onChange={(fit) =>
-                    setProfile({ framing: { ...(settings.framing ?? defaultFraming), fit } })
-                  }
-                />
-              </SettingRow>
-              <SettingRow
-                id="auto-crop"
-                label="Remove black bars"
-                description="Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture."
-              >
-                <Switch
-                  aria-labelledby="auto-crop-label"
-                  aria-describedby="auto-crop-description"
-                  checked={settings.framing?.autoCrop ?? false}
-                  onCheckedChange={(autoCrop) =>
-                    setProfile({ framing: { ...(settings.framing ?? defaultFraming), autoCrop } })
-                  }
-                />
-              </SettingRow>
-            </SettingsGroup>
-            <SoundDefaults
-              sound={settings.sound ?? defaultSound}
-              setSound={(changes) =>
-                setProfile({ sound: { ...(settings.sound ?? defaultSound), ...changes } })
-              }
-              audio={device.audio ?? defaultAudio}
-              setAudio={(changes) =>
-                setDevice({ audio: { ...(device.audio ?? defaultAudio), ...changes } })
-              }
-            />
+              </>
+            )}
             <SettingsGroup title="Next episode">
               <SettingRow
                 id="still-watching"
@@ -1050,31 +1073,33 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
         {({ device, setDevice }) => (
           <>
             <QualityGroup device={device} onChange={setDevice} />
-            <SettingsGroup title="Torrents">
-              {/* Off unless the user turns it on (#55, ADR-0040): peers see
+            {feature("torrent") && (
+              <SettingsGroup title="Torrents">
+                {/* Off unless the user turns it on (#55, ADR-0040): peers see
                 their IP address. */}
-              <SettingRow
-                id="torrent-streaming"
-                label="Stream torrents"
-                description="Plays torrents without a debrid or direct link by fetching them from other people as you watch (peer to peer). They can see your IP address, and get pieces of the file from you too. Off unless you turn it on. Applies to this device."
-              >
-                <Switch
-                  aria-labelledby="torrent-streaming-label"
-                  aria-describedby="torrent-streaming-description"
-                  checked={device.torrentStreaming}
-                  onCheckedChange={(torrentStreaming) => setDevice({ torrentStreaming })}
-                />
-              </SettingRow>
-              {device.torrentStreaming && (
-                <TorrentCacheRow
-                  size={device.torrentCacheGB}
-                  onChange={(torrentCacheGB) => {
-                    setDevice({ torrentCacheGB });
-                    Torrents.SetCacheSize(torrentCacheGB).catch(() => {});
-                  }}
-                />
-              )}
-            </SettingsGroup>
+                <SettingRow
+                  id="torrent-streaming"
+                  label="Stream torrents"
+                  description="Plays torrents without a debrid or direct link by fetching them from other people as you watch (peer to peer). They can see your IP address, and get pieces of the file from you too. Off unless you turn it on. Applies to this device."
+                >
+                  <Switch
+                    aria-labelledby="torrent-streaming-label"
+                    aria-describedby="torrent-streaming-description"
+                    checked={device.torrentStreaming}
+                    onCheckedChange={(torrentStreaming) => setDevice({ torrentStreaming })}
+                  />
+                </SettingRow>
+                {device.torrentStreaming && (
+                  <TorrentCacheRow
+                    size={device.torrentCacheGB}
+                    onChange={(torrentCacheGB) => {
+                      setDevice({ torrentCacheGB });
+                      Torrents.SetCacheSize(torrentCacheGB).catch(() => {});
+                    }}
+                  />
+                )}
+              </SettingsGroup>
+            )}
           </>
         )}
       </WithSettings>
@@ -1107,32 +1132,36 @@ function QualityGroup({
           onChange={(maxResolution) => onChange({ maxResolution })}
         />
       </SettingRow>
-      <SettingRow
-        id="hdr"
-        label="HDR"
-        description="Prefers HDR streams if this screen shows them. Auto asks the screen. Applies to this device."
-      >
-        <Choice
-          id="hdr"
-          value={displayModeOf(device.hdr)}
-          options={displayModes}
-          labels={displayLabels}
-          onChange={(hdr) => onChange({ hdr })}
-        />
-      </SettingRow>
-      <SettingRow
-        id="dolby-vision"
-        label="Dolby Vision"
-        description="Prefers Dolby Vision streams, even ones with no HDR layer to fall back on. Auto leaves it off, as Peli can’t tell if this screen shows it. Applies to this device."
-      >
-        <Choice
-          id="dolby-vision"
-          value={displayModeOf(device.dolbyVision)}
-          options={displayModes}
-          labels={displayLabels}
-          onChange={(dolbyVision) => onChange({ dolbyVision })}
-        />
-      </SettingRow>
+      {feature("hdr") && (
+        <>
+          <SettingRow
+            id="hdr"
+            label="HDR"
+            description="Prefers HDR streams if this screen shows them. Auto asks the screen. Applies to this device."
+          >
+            <Choice
+              id="hdr"
+              value={displayModeOf(device.hdr)}
+              options={displayModes}
+              labels={displayLabels}
+              onChange={(hdr) => onChange({ hdr })}
+            />
+          </SettingRow>
+          <SettingRow
+            id="dolby-vision"
+            label="Dolby Vision"
+            description="Prefers Dolby Vision streams, even ones with no HDR layer to fall back on. Auto leaves it off, as Peli can’t tell if this screen shows it. Applies to this device."
+          >
+            <Choice
+              id="dolby-vision"
+              value={displayModeOf(device.dolbyVision)}
+              options={displayModes}
+              labels={displayLabels}
+              onChange={(dolbyVision) => onChange({ dolbyVision })}
+            />
+          </SettingRow>
+        </>
+      )}
     </SettingsGroup>
   );
 }
@@ -1530,19 +1559,21 @@ function AboutPane({ title }: { title: string }) {
         <SettingRow id="licences" label="Licences" description="Open-source licences and notices.">
           <LicencesDialog labelledBy="licences-label" />
         </SettingRow>
-        <SettingRow
-          id="design-system"
-          label="Design system"
-          description="Every token and component."
-        >
-          <Link
-            to="/gallery"
-            aria-labelledby="design-system-label"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
+        {feature("gallery") && (
+          <SettingRow
+            id="design-system"
+            label="Design system"
+            description="Every token and component."
           >
-            Open
-          </Link>
-        </SettingRow>
+            <Link
+              to="/gallery"
+              aria-labelledby="design-system-label"
+              className={buttonVariants({ variant: "outline", size: "sm" })}
+            >
+              Open
+            </Link>
+          </SettingRow>
+        )}
       </SettingsGroup>
     </SettingsPaneView>
   );
