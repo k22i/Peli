@@ -16,6 +16,15 @@ info:
   #                               # Should match the name of your .icon file without the extension
   #                               # If not set and Assets.car exists, defaults to "appicon"
 
+# The iOS app (ADR-0055). The identifier and version follow the macOS app's
+# (build/darwin/Info.plist, which is where releases and updates read the
+# version); the minimum is iOS 17.
+ios:
+  bundleID: "k22i.net.peli"
+  displayName: "Peli"
+  version: "0.1.0"
+  minIOSVersion: "17.0"
+
 # Dev mode configuration
 dev_mode:
   root_path: .
