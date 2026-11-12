@@ -118,7 +118,7 @@ export function BrowseFrame({
       <header
         ref={header}
         data-stuck={stuck || undefined}
-        className="group/header sticky top-(--spacing-bar) z-10 mb-5 transition-[background-color,box-shadow] duration-(--duration-base) data-stuck:material-bar data-stuck:shadow-[0_1px_0_var(--border)]"
+        className="group/header sticky ios-short:static top-(--spacing-bar) z-10 mb-5 transition-[background-color,box-shadow] duration-(--duration-base) data-stuck:material-bar data-stuck:shadow-[0_1px_0_var(--border)]"
       >
         <div className="flex flex-col gap-4 pt-8 pb-4 motion-safe:transition-[padding,gap] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:gap-3 group-data-stuck/header:pt-2 group-data-stuck/header:pb-3">
           <div

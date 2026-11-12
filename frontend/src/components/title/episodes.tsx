@@ -79,7 +79,7 @@ export function Episodes({
       <header
         ref={header}
         data-stuck={stuck || undefined}
-        className="group/header sticky top-(--spacing-bar) z-10 mb-1 transition-[background-color,box-shadow] duration-(--duration-base) data-stuck:material-bar data-stuck:shadow-[0_1px_0_var(--border)]"
+        className="group/header sticky ios-short:static top-(--spacing-bar) z-10 mb-1 transition-[background-color,box-shadow] duration-(--duration-base) data-stuck:material-bar data-stuck:shadow-[0_1px_0_var(--border)]"
       >
         {/* Heading, rail, button in the DOM (and Tab) order; the grid puts the
             rail on its own row. Stuck, the heading steps clear of the fixed

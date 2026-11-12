@@ -16,12 +16,14 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
+import { useCompactShell } from "@/lib/shell-mode";
 import { episodeCode, isAired, type Episode, type TitleState } from "@/lib/title";
 import { cn } from "@/lib/utils";
 
 // A row's height before it's measured: a 16:9 still about 28rem wide on a
 // roomy window (#117), plus padding.
 const rowPx = 252;
+const rowCompactPx = 124;
 const gapPx = 8;
 
 const date = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
@@ -70,6 +72,7 @@ export function EpisodeList({
   const list = useRef<HTMLOListElement>(null);
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
   const [top, setTop] = useState(0);
+  const compact = useCompactShell();
 
   useLayoutEffect(() => {
     const element = list.current;
@@ -93,9 +96,10 @@ export function EpisodeList({
   const virtualizer = useVirtualizer({
     count: episodes.length,
     getScrollElement: () => scroller,
-    estimateSize: () => rowPx,
+    estimateSize: () => (compact ? rowCompactPx : rowPx),
     // Nothing laid out (jsdom, a hidden page): keep the estimate.
-    measureElement: (element) => element.getBoundingClientRect().height || rowPx,
+    measureElement: (element) =>
+      element.getBoundingClientRect().height || (compact ? rowCompactPx : rowPx),
     gap: gapPx,
     scrollMargin: top,
     overscan: 4,
@@ -206,7 +210,7 @@ function EpisodeRow({
   ].filter(Boolean);
 
   const row = (
-    <div className="group/episode flex items-center gap-4 rounded-2xl p-3 transition-[background-color,scale] duration-(--duration-fast) hover:bg-foreground/4 motion-safe:has-[[data-episode-index]:active]:scale-[0.995]">
+    <div className="group/episode flex items-center gap-4 rounded-2xl p-3 ios-compact:gap-1 ios-compact:p-1.5 transition-[background-color,scale] duration-(--duration-fast) hover:bg-foreground/4 motion-safe:has-[[data-episode-index]:active]:scale-[0.995]">
       <button
         type="button"
         data-episode-index={index}
@@ -216,18 +220,18 @@ function EpisodeRow({
         onKeyDown={(event) => {
           if (!openOnContextKey(event)) onKeyDown(event);
         }}
-        className="group/play flex min-w-0 flex-1 scroll-mt-[calc(var(--spacing-bar)+8rem)] scroll-mb-8 cursor-pointer items-center gap-6 rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
+        className="group/play flex min-w-0 flex-1 scroll-mt-[calc(var(--spacing-bar)+8rem)] scroll-mb-8 cursor-pointer items-center gap-6 ios-compact:gap-3 rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default"
       >
         <span
           aria-hidden
           className={cn(
-            "w-9 shrink-0 text-end font-display text-[2.5rem] leading-none tnum transition-colors",
+            "w-9 shrink-0 text-end ios-compact:hidden font-display text-[2.5rem] leading-none tnum transition-colors",
             watched ? "text-faint" : "text-muted-foreground group-hover/episode:text-foreground",
           )}
         >
           {episode.episode}
         </span>
-        <span className="relative aspect-video w-[clamp(11rem,20vw,16.5rem)] shrink-0 overflow-hidden rounded-card shadow-card">
+        <span className="relative aspect-video w-[clamp(11rem,20vw,16.5rem)] ios-compact:w-32 shrink-0 overflow-hidden rounded-card shadow-card">
           <Artwork
             src={episode.thumbnail}
             use="landscape"

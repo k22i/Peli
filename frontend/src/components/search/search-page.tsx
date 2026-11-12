@@ -31,7 +31,7 @@ import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useBrowsableAddons } from "@/lib/home";
 import { feature } from "@/lib/features";
-import { currentPlatform } from "@/lib/platform";
+import { currentPlatform, isTouch } from "@/lib/platform";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { currentProfileQuery } from "@/lib/profile";
 import { useRecentSearches } from "@/lib/recent-searches";
@@ -295,6 +295,9 @@ function SearchField({
         aria-label="Search"
         placeholder="Movies, shows and anime"
         autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="none"
+        enterKeyHint="search"
         spellCheck={false}
         // On arriving here, from the sidebar or the shortcut, you type.
         // oxlint-disable-next-line jsx-a11y/no-autofocus -- a search page's field is its point
@@ -314,12 +317,13 @@ function SearchField({
           type="button"
           aria-label="Clear search"
           onClick={clear}
-          className="absolute end-[calc(var(--spacing-page)+0.625rem)] bg-foreground/12 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground outline-ring transition-[scale] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:active:scale-95 [&_svg]:size-4"
+          className="absolute end-[calc(var(--spacing-page)+0.625rem)] hit-area bg-foreground/12 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground outline-ring transition-[scale] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:active:scale-95 [&_svg]:size-4"
         >
           <X aria-hidden />
         </button>
       ) : (
-        !focused && (
+        !focused &&
+        !isTouch() && (
           <Kbd
             aria-hidden
             className="absolute end-[calc(var(--spacing-page)+1.25rem)] top-1/2 -translate-y-1/2"
