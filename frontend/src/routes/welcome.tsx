@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Info, KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
+import { Globe, Info, KeyRound, Mail, QrCode, TriangleAlert } from "lucide-react";
 
 import { FocusScreen, glassButton, pillButton } from "@/components/account/focus-screen";
 import { PeliMark } from "@/components/shell/wordmark";
@@ -9,6 +9,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { keychainQuery, useContinueAsGuest } from "@/lib/account";
 import { contentDisclaimer } from "@/lib/disclaimer";
+import { thisDevice, isIOS } from "@/lib/platform";
 import { serverName, serverQuery } from "@/lib/server";
 import { cn } from "@/lib/utils";
 
@@ -77,8 +78,8 @@ function Welcome() {
             Nuvio's server only. */}
         {server.data?.custom ? null : noKeychain ? (
           <Button size="lg" variant="ghost" className={cn(pillButton, glassButton)} disabled>
-            <QrCode />
-            Sign in with your phone
+            {isIOS() ? <Globe /> : <QrCode />}
+            {isIOS() ? "Sign in on the web" : "Sign in with your phone"}
           </Button>
         ) : (
           <Link
@@ -89,8 +90,8 @@ function Welcome() {
               glassButton,
             )}
           >
-            <QrCode />
-            Sign in with your phone
+            {isIOS() ? <Globe /> : <QrCode />}
+            {isIOS() ? "Sign in on the web" : "Sign in with your phone"}
           </Link>
         )}
         <Button
@@ -107,8 +108,8 @@ function Welcome() {
       <div className="flex flex-col gap-3 border-t border-border pt-6 text-small text-muted-foreground">
         <p className="flex gap-2">
           <KeyRound className="mt-0.5 size-4 shrink-0" aria-hidden />
-          As a guest, your addons, library and progress stay on this device. You can sign in later
-          from the profile menu or Settings, and the Guest profile stays as it is.
+          As a guest, your addons, library and progress stay on {thisDevice()}. You can sign in
+          later from the profile menu or Settings, and the Guest profile stays as it is.
         </p>
         {/* Before anything else, what Peli is (#39). Settings › About repeats it. */}
         <p className="flex gap-2">

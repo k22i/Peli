@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { openURL } from "@/lib/open-url";
 import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
-import { Browser } from "@wailsio/runtime";
-import { ArrowLeft, LockKeyhole, RefreshCw } from "lucide-react";
+import { ArrowLeft, ExternalLink, LockKeyhole, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { FocusScreen } from "@/components/account/focus-screen";
@@ -9,6 +9,7 @@ import { SignInProblem, problemFor } from "@/components/account/sign-in-problem"
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
+import { isIOS, thisDevice } from "@/lib/platform";
 import { cn } from "@/lib/utils";
 import {
   needsPicker,
@@ -50,6 +51,10 @@ function QRSignIn() {
     (code !== undefined && secondsLeft === 0) || signInErrorCode(failure) === "qr_expired";
   const error = qr.error ?? (expired ? undefined : failure);
   const newCode = () => void qr.refetch();
+  // On a phone the QR code is backwards: nothing else is there to scan it. The
+  // same link opens in Safari, the user signs in to Nuvio there and approves
+  // Peli, and the app, still polling, picks the session up on the way back.
+  const onThisDevice = isIOS();
 
   const firstRun = profiles.data?.length === 0;
   const back = () => {
@@ -69,16 +74,39 @@ function QRSignIn() {
         className="flex flex-col gap-6 rounded-[1.75rem] bg-card p-9 shadow-float hairline"
       >
         <header className="flex flex-col gap-2">
-          <h1 className="font-display text-[2.5rem] leading-none">Sign in with your phone</h1>
+          <h1 className="font-display text-[2.5rem] leading-none">
+            {onThisDevice ? "Sign in on the web" : "Sign in with your phone"}
+          </h1>
           <p className="text-pretty text-muted-foreground">
-            Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and
-            approve Peli.
+            {onThisDevice
+              ? "Open Nuvio’s sign-in page in Safari, sign in and approve Peli, then come back here."
+              : "Scan the code with your phone’s camera, sign in to Nuvio on the page that opens, and approve Peli."}
           </p>
         </header>
 
         <div className="flex flex-col items-center gap-6">
           {/* Dark on white in both themes: phone cameras read that best. */}
-          {!qr.error && (
+          {onThisDevice && code && !expired && !error && (
+            <Button
+              size="xl"
+              variant="sun"
+              className="w-full"
+              onClick={() => void openURL(code.url)}
+            >
+              <ExternalLink />
+              Open the sign-in page
+            </Button>
+          )}
+          {onThisDevice && !qr.error && !code && (
+            <Spinner className="size-6 text-muted-foreground" />
+          )}
+          {onThisDevice && code && expired && (
+            <Button size="xl" onClick={newCode}>
+              <RefreshCw />
+              New code
+            </Button>
+          )}
+          {!onThisDevice && !qr.error && (
             <div className="relative size-52 rounded-2xl bg-white p-4 shadow-float">
               {code ? (
                 <img
@@ -105,11 +133,11 @@ function QRSignIn() {
             <>
               <div className="flex flex-col items-center gap-2">
                 <p className="text-body text-muted-foreground">
-                  Or go to{" "}
+                  {onThisDevice ? "Or on another device, go to " : "Or go to "}
                   <button
                     type="button"
-                    className="font-medium text-foreground underline underline-offset-4 hover:text-sun-ink"
-                    onClick={() => void Browser.OpenURL(code.url)}
+                    className="hit-area font-medium text-foreground underline underline-offset-4 hover:text-sun-ink"
+                    onClick={() => void openURL(code.url)}
                   >
                     {code.linkUrl.replace(/^https?:\/\//, "")}
                   </button>{" "}
@@ -153,7 +181,7 @@ function QRSignIn() {
 
         <p className="flex gap-2 text-body text-muted-foreground">
           <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
-          You never type your password here. Your session is stored in this computer’s keychain.
+          You never type your password here. Your session is stored in {thisDevice()}’s keychain.
         </p>
       </div>
     </FocusScreen>

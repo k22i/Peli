@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
-import { ArrowLeft, LogIn, LockKeyhole, QrCode } from "lucide-react";
+import { ArrowLeft, Globe, LogIn, LockKeyhole, QrCode } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { FocusScreen } from "@/components/account/focus-screen";
@@ -18,6 +18,7 @@ import {
   signInErrorCode,
   useSignIn,
 } from "@/lib/account";
+import { thisDevice, isIOS } from "@/lib/platform";
 import { serverName, serverQuery } from "@/lib/server";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +37,7 @@ export const Route = createFileRoute("/sign-in")({
 // Fields and buttons in the card are a little taller and rounder than the
 // defaults. The input's height sits on the inner <input>.
 const fieldClass =
-  "rounded-2xl [&_input]:h-12 [&_input]:px-4 [&_input]:text-[0.9375rem] [&_input]:leading-12";
+  "rounded-2xl [&_input]:h-12 [&_input]:px-4 [&_input]:text-[0.9375rem] [&_input]:leading-12 pointer-coarse:[&_input]:text-base";
 
 // Nuvio allows 10 sign-in attempts a second and says nothing about when to
 // retry (no Retry-After), so after a 429 the form waits this long.
@@ -127,7 +128,7 @@ function SignIn() {
               ? `Use the email and password of your account on ${own}.`
               : "Use the email and password of your Nuvio account."}
             {hasGuest &&
-              " Your Guest profile stays on this computer as it is, apart from your Nuvio profiles."}
+              ` Your Guest profile stays on ${thisDevice()} as it is, apart from your Nuvio profiles.`}
           </p>
         </header>
 
@@ -137,7 +138,7 @@ function SignIn() {
             <AlertTitle>Your Nuvio session ended</AlertTitle>
             <AlertDescription>
               You were signed out on another device, or the session expired. Sign in again to keep
-              syncing. Your library and progress on this computer are kept.
+              syncing. Your library and progress on {thisDevice()} are kept.
             </AlertDescription>
           </Alert>
         )}
@@ -149,8 +150,11 @@ function SignIn() {
               type="email"
               required
               autoComplete="username"
+              inputMode="email"
+              enterKeyHint="next"
               spellCheck={false}
               autoCapitalize="none"
+              autoCorrect="off"
               className={fieldClass}
             />
             <FieldError />
@@ -161,6 +165,7 @@ function SignIn() {
               type="password"
               required
               autoComplete="current-password"
+              enterKeyHint="go"
               className={fieldClass}
             />
             <FieldError />
@@ -186,14 +191,14 @@ function SignIn() {
             replace
             className={cn(buttonVariants({ variant: "secondary", size: "xl" }))}
           >
-            <QrCode />
-            Sign in with your phone instead
+            {isIOS() ? <Globe /> : <QrCode />}
+            {isIOS() ? "Sign in on the web instead" : "Sign in with your phone instead"}
           </Link>
         )}
 
         <p className="flex gap-2 text-body text-muted-foreground">
           <LockKeyhole className="mt-0.5 size-4 shrink-0" aria-hidden />
-          Peli doesn’t keep your password. Your session is stored in this computer’s keychain.
+          Peli doesn’t keep your password. Your session is stored in {thisDevice()}’s keychain.
         </p>
       </div>
     </FocusScreen>

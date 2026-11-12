@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { Browser } from "@wailsio/runtime";
+import { openURL } from "@/lib/open-url";
 import { ExternalLink, RefreshCw, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -49,7 +49,7 @@ export function SimklDialog({
 function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => void }) {
   const start = useMutation({
     mutationFn: () => Tracking.StartSimkl(profileId),
-    onSuccess: (code) => void Browser.OpenURL(code.url),
+    onSuccess: (code) => void openURL(code.url),
   });
   const wait = useWaitSignIn(profileId, () => Tracking.WaitSimkl());
   const code = start.data;
@@ -96,7 +96,7 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
                 <button
                   type="button"
                   className="font-medium text-foreground underline underline-offset-4 hover:text-sun-ink"
-                  onClick={() => void Browser.OpenURL(code.url)}
+                  onClick={() => void openURL(code.url)}
                 >
                   {code.pageUrl.replace(/^https?:\/\//, "")}
                 </button>{" "}
@@ -122,7 +122,7 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
       <DialogFooter>
         <DialogClose render={<Button type="button" variant="ghost" />}>Cancel</DialogClose>
         {code && !expired && !problem ? (
-          <Button type="button" variant="outline" onClick={() => void Browser.OpenURL(code.url)}>
+          <Button type="button" variant="outline" onClick={() => void openURL(code.url)}>
             <ExternalLink />
             Open SIMKL
           </Button>
@@ -167,7 +167,7 @@ export function AniListDialog({
 function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () => void }) {
   const start = useMutation({
     mutationFn: () => Tracking.StartAniList(profileId),
-    onSuccess: (url) => void Browser.OpenURL(url),
+    onSuccess: (url) => void openURL(url),
   });
   const wait = useWaitSignIn(profileId, () => Tracking.WaitAniList());
 
@@ -222,7 +222,7 @@ function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () =>
             Try again
           </Button>
         ) : (
-          <Button type="button" variant="outline" onClick={() => void Browser.OpenURL(start.data)}>
+          <Button type="button" variant="outline" onClick={() => void openURL(start.data)}>
             <ExternalLink />
             Open AniList
           </Button>

@@ -24,6 +24,11 @@ export function isIOS(): boolean {
 // main_ios.go). Keep the two in step.
 const iosUserAgent = /\bPeliIOS\b/;
 
+// How the screens that talk about where things are kept name the device.
+export function thisDevice(): string {
+  return isIOS() ? "this device" : "this computer";
+}
+
 // Whether the only pointer is a finger: no hover, no right-click. Always on
 // iOS; on a desktop touch screen with no mouse attached, too.
 export function isTouch(): boolean {

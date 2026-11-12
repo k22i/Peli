@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Browser } from "@wailsio/runtime";
+import { openURL } from "@/lib/open-url";
 import { CircleCheck, ExternalLink, Settings2, TriangleAlert } from "lucide-react";
 import { type RefObject, useState } from "react";
 
@@ -52,7 +52,7 @@ export function configurable(manifest: Manifest | undefined): boolean {
 }
 
 function openConfigure(url: string) {
-  void Browser.OpenURL(configureUrl(url));
+  void openURL(configureUrl(url));
 }
 
 // Reads the manifest at what the user typed, skipping the cache.

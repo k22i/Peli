@@ -34,7 +34,7 @@ import {
 import { toastManager } from "@/components/ui/toast";
 import { profilesQuery, useSwitchProfile } from "@/lib/account";
 import { feature } from "@/lib/features";
-import { currentPlatform } from "@/lib/platform";
+import { currentPlatform, isTouch } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 
 // Everything that isn't a top-level section: profiles, addons, settings.
@@ -103,7 +103,7 @@ export function ProfileMenu() {
             >
               <Settings />
               Settings
-              <MenuShortcut aria-hidden>{mac ? "⌘," : "Ctrl+,"}</MenuShortcut>
+              {!isTouch() && <MenuShortcut aria-hidden>{mac ? "⌘," : "Ctrl+,"}</MenuShortcut>}
             </MenuLinkItem>
           </MenuGroup>
           <MenuSeparator />

@@ -41,6 +41,7 @@ import {
   useEditProfile,
   useRemoveProfile,
 } from "@/lib/account";
+import { thisDevice } from "@/lib/platform";
 import { avatarColors } from "@/lib/profile";
 
 // What the editor is open on: a profile, or a new Nuvio profile.
@@ -207,7 +208,7 @@ function EditorForm({
         )}
         {local ? (
           <p className="text-body text-muted-foreground">
-            The Guest stays on this computer. Its name doesn’t reach Nuvio.
+            The Guest stays on {thisDevice()}. Its name doesn’t reach Nuvio.
           </p>
         ) : (
           <>
@@ -401,7 +402,7 @@ export function DeleteProfileDialog({
           <AlertDialogDescription>
             {nuvio
               ? "Its library, progress, addons and settings are deleted from Nuvio, on every device. This can’t be undone."
-              : "Its library, progress and addons are deleted from this computer. They aren’t in Nuvio, so they can’t be brought back."}
+              : `Its library, progress and addons are deleted from ${thisDevice()}. They aren’t in Nuvio, so they can’t be brought back.`}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

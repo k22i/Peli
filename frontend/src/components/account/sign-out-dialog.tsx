@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
 import { parentSteps, usePinSteps } from "@/components/account/pin-dialog";
 import { useSignOut } from "@/lib/account";
+import { thisDevice } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 
 // Asks before signing out (#22): signing out removes the account's profiles
@@ -53,7 +54,7 @@ export function SignOutDialog({
           <AlertDialogHeader>
             <AlertDialogTitle>Sign out of Nuvio?</AlertDialogTitle>
             <AlertDialogDescription>
-              Your Nuvio profiles are removed from this computer, with their library and progress.
+              Your Nuvio profiles are removed from {thisDevice()}, with their library and progress.
               They come back when you sign in again. Changes still waiting to sync are sent first;
               anything that can't be sent, such as when you are offline, is lost.
             </AlertDialogDescription>
