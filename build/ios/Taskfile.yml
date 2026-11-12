@@ -30,9 +30,25 @@ vars:
   PROVISIONING_PROFILE: '{{.PROVISIONING_PROFILE | default ""}}'
   # Optional entitlements applied at codesign time (generated default below)
   ENTITLEMENTS_FILE: '{{.ENTITLEMENTS_FILE | default "build/ios/entitlements.plist"}}'
+  # Peli's libmpv for iOS (ADR-0055, build/libmpv/build-ios.sh): a dynamic LGPL
+  # framework, embedded in the .app so a user can swap and re-sign it. The
+  # xcframework is built once and reused (it is in build/libmpv/.work, which is
+  # git-ignored); delete it to rebuild.
+  LIBMPV_XCF: build/libmpv/.work/libmpv.xcframework
+  LIBMPV_SLICE: '{{if eq .IOS_PLATFORM "device"}}ios-arm64{{else}}ios-arm64-simulator{{end}}'
+  LIBMPV_FW_DIR: '{{.ROOT_DIR}}/{{.LIBMPV_XCF}}/{{.LIBMPV_SLICE}}'
   # SDK_PATH is computed lazily at task-level to avoid errors on non-macOS systems
 
 tasks:
+  libmpv:
+    summary: Builds libmpv.xcframework unless it is already there (build/libmpv/.work)
+    status:
+      - test -f {{.LIBMPV_XCF}}/Info.plist
+    cmds:
+      # Needs meson and ninja on PATH (pip install meson ninja) and nasm
+      # (brew install nasm); about 10 minutes cold, then cached.
+      - caffeinate -i build/libmpv/build-ios.sh
+
   install:deps:
     summary: Check and install iOS development dependencies
     cmds:
@@ -50,6 +66,7 @@ tasks:
       - task: generate:ios:overlay
       - task: generate:ios:xcode
       - task: common:go:mod:tidy
+      - task: libmpv
       # The frontend's bindings are generated from the desktop app, with no
       # build flags, and the iOS app binds the same method ids (ADR-0055).
       # Generating them with -tags ios would leave out torrent, plugins, party
@@ -76,8 +93,9 @@ tasks:
       CGO_ENABLED: 1
       GOARCH: '{{.ARCH | default "arm64"}}'
       PRODUCTION: '{{.PRODUCTION | default "false"}}'
-      CGO_CFLAGS: '-isysroot {{.SDK_PATH}} -target {{.IOS_TARGET}} {{.IOS_VERSION_MIN_FLAG}}'
-      CGO_LDFLAGS: '-isysroot {{.SDK_PATH}} -target {{.IOS_TARGET}}'
+      # -F and -I name the libmpv slice: internal/iosplayer includes mpv/client.h.
+      CGO_CFLAGS: '-isysroot {{.SDK_PATH}} -target {{.IOS_TARGET}} {{.IOS_VERSION_MIN_FLAG}} -F{{.LIBMPV_FW_DIR}} -I{{.LIBMPV_FW_DIR}}/libmpv.framework/Headers -Wno-deprecated-declarations'
+      CGO_LDFLAGS: '-isysroot {{.SDK_PATH}} -target {{.IOS_TARGET}} -F{{.LIBMPV_FW_DIR}}'
 
   package:
     summary: Packages a production build of the application into a `.app` bundle
@@ -122,6 +140,9 @@ tasks:
           -framework UniformTypeIdentifiers \
           -framework LocalAuthentication -framework UserNotifications \
           -framework AVFoundation \
+          -F "{{.LIBMPV_FW_DIR}}" -framework libmpv \
+          -framework OpenGLES -framework QuartzCore -framework CoreVideo -framework MediaAccessibility \
+          -Wl,-rpath,@executable_path/Frameworks \
           -framework CoreLocation -framework CoreMotion -framework SystemConfiguration \
           -lresolv \
           {{if ne .IOS_PLATFORM "device"}}-Wl,-sectcreate,__TEXT,__entitlements,build/ios/entitlements.simulator.plist{{end}} \
@@ -135,6 +156,8 @@ tasks:
       - mkdir -p "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app"
       - cp "{{.IOS_BIN_DIR}}/{{.APP_NAME | lower}}" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/"
       - cp build/ios/Info.plist "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/"
+      - task: embed:libmpv
+        vars: {APP_BUNDLE: '{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app'}
       - |
         # Embed the provisioning profile for device builds when provided
         if [ "{{.IOS_PLATFORM}}" = "device" ] && [ -n "{{.PROVISIONING_PROFILE}}" ]; then
@@ -174,6 +197,16 @@ tasks:
         else
           codesign --force --sign "{{.CODESIGN_IDENTITY}}" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app"
         fi
+
+  embed:libmpv:
+    internal: true
+    summary: Copies libmpv.framework into APP_BUNDLE/Frameworks and signs it
+    cmds:
+      - mkdir -p "{{.APP_BUNDLE}}/Frameworks"
+      - rm -rf "{{.APP_BUNDLE}}/Frameworks/libmpv.framework"
+      - cp -R "{{.LIBMPV_FW_DIR}}/libmpv.framework" "{{.APP_BUNDLE}}/Frameworks/"
+      # Nested code is signed before the app that holds it.
+      - codesign --force --sign "{{.CODESIGN_IDENTITY}}" "{{.APP_BUNDLE}}/Frameworks/libmpv.framework"
 
   deploy-simulator:
     summary: Deploy to iOS Simulator
@@ -307,6 +340,8 @@ tasks:
       - mkdir -p "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app"
       - cp "{{.IOS_BIN_DIR}}/{{.APP_NAME | lower}}" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app/{{.APP_NAME | lower}}"
       - cp build/ios/Info.dev.plist "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app/Info.plist"
+      - task: embed:libmpv
+        vars: {APP_BUNDLE: '{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app'}
       - |
         # Compile asset catalog and embed icons for dev bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app"
