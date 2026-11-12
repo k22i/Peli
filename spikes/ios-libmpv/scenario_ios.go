@@ -3,6 +3,7 @@
 package main
 
 import (
+	"github.com/wailsapp/wails/v3/pkg/application"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -16,6 +17,7 @@ import (
 )
 
 var lastTimeEmit atomic.Int64
+var started atomic.Bool
 
 // throttle lets the high-rate time-pos property through at 4 Hz.
 func throttle() bool {
@@ -42,6 +44,9 @@ func cpuSeconds() float64 {
 //	LIBMPV_STEPS  wait:N, ui:<button id>, snap:<name>, seek:<seconds>
 //	LIBMPV_HWDEC  mpv hwdec value (default videotoolbox; "no" for software)
 func (p *Player) autostart() {
+	if !started.CompareAndSwap(false, true) {
+		return
+	}
 	var err error
 	for i := 0; i < 20; i++ {
 		time.Sleep(300 * time.Millisecond)
@@ -58,6 +63,14 @@ func (p *Player) autostart() {
 	url := os.Getenv("LIBMPV_URL")
 	if url == "" {
 		return
+	}
+	// LIBMPV_OPTS="scale=bilinear;dither=no": mpv properties set before loading.
+	for _, kv := range strings.Split(os.Getenv("LIBMPV_OPTS"), ";") {
+		if k, v, ok := strings.Cut(kv, "="); ok {
+			if err := p.setProp(k, v); err != nil {
+				log.Printf("spike: %v", err)
+			}
+		}
 	}
 	label := os.Getenv("LIBMPV_LABEL")
 	if label == "" {
@@ -90,10 +103,17 @@ func (p *Player) autostart() {
 		case "ui":
 			p.win.ExecJS(fmt.Sprintf("document.getElementById(%q).click()", arg))
 			time.Sleep(400 * time.Millisecond)
+		case "orient": // portrait | landscape | auto, through Wails' own API
+			application.IOS.SetOrientation(arg)
+			time.Sleep(1200 * time.Millisecond)
 		case "seek":
 			f, _ := strconv.ParseFloat(arg, 64)
 			_ = p.SeekTo(f)
 		case "snap":
+			// Freeze the picture while the driver's screenshot is taken.
+			wasPaused := p.getProp("pause") == "yes"
+			_ = p.setProp("pause", "yes")
+			time.Sleep(300 * time.Millisecond)
 			now, cn := time.Now(), cpuSeconds()
 			var snap map[string]any
 			_ = json.Unmarshal([]byte(p.Snapshot()), &snap)
@@ -102,10 +122,14 @@ func (p *Player) autostart() {
 			snap["tracks"] = json.RawMessage(orNull(p.getProp("track-list")))
 			write(snap)
 			_ = os.WriteFile(filepath.Join(dir, "marker-"+label+"-"+arg), nil, 0o644)
-			time.Sleep(1500 * time.Millisecond) // the driver takes its screenshot now
+			time.Sleep(3500 * time.Millisecond) // the driver takes its screenshot now
+			if !wasPaused {
+				_ = p.setProp("pause", "no")
+			}
 		}
 	}
-	write(map[string]any{"step": "done", "logs": p.Logs()})
+	_ = os.WriteFile(filepath.Join(dir, "log-"+label+".txt"), []byte(p.Logs()), 0o644)
+	write(map[string]any{"step": "done"})
 	_ = os.WriteFile(filepath.Join(dir, "marker-"+label+"-done"), nil, 0o644)
 }
 

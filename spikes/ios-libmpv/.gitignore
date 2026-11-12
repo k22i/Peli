@@ -4,3 +4,4 @@ media/
 results/*.log
 build/ios/xcode/
 frontend/bindings/
+results/*.png

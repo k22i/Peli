@@ -71,7 +71,7 @@ static void emit(const char *name, NSString *json) {
 	self.userInteractionEnabled = NO; // touches go to the webview above
 	CAEAGLLayer *l = (CAEAGLLayer *)self.layer;
 	l.opaque = YES;
-	l.contentsScale = UIScreen.mainScreen.scale;
+	l.contentsScale = getenv("LIBMPV_SCALE") && *getenv("LIBMPV_SCALE") ? atof(getenv("LIBMPV_SCALE")) : UIScreen.mainScreen.scale;
 	l.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking: @NO,
 	                         kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8};
 	_rq = dispatch_queue_create("peli.mpv.render", DISPATCH_QUEUE_SERIAL);
@@ -93,7 +93,7 @@ static void emit(const char *name, NSString *json) {
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
-	((CAEAGLLayer *)self.layer).contentsScale = self.window.screen.scale ?: UIScreen.mainScreen.scale;
+	if (!(getenv("LIBMPV_SCALE") && *getenv("LIBMPV_SCALE"))) ((CAEAGLLayer *)self.layer).contentsScale = self.window.screen.scale ?: UIScreen.mainScreen.scale;
 	atomic_store(&_needsResize, 1);
 	[self requestDraw];
 }
@@ -244,7 +244,7 @@ int peli_attach(void *handle, const char *hwdec) {
 		mpv_set_option_string(g_mpv, "sub-auto", "no");
 		mpv_set_option_string(g_mpv, "input-default-bindings", "no");
 		mpv_set_option_string(g_mpv, "msg-level", "all=info");
-		mpv_request_log_messages(g_mpv, "info");
+		mpv_request_log_messages(g_mpv, getenv("LIBMPV_LOGLEVEL") ? getenv("LIBMPV_LOGLEVEL") : "info");
 		if (mpv_initialize(g_mpv) < 0) { rc = -4; return; }
 
 		g_evq = dispatch_queue_create("peli.mpv.events", DISPATCH_QUEUE_SERIAL);

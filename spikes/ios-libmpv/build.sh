@@ -21,6 +21,9 @@ else
 	sdkname=iphonesimulator; target=arm64-apple-ios$min-simulator; slice=ios-arm64-simulator; minflag=-mios-simulator-version-min=$min
 fi
 sdk=$(xcrun --sdk $sdkname --show-sdk-path)
+stamp_plat=$([ "$plat" = device ] && echo ios || echo ios-simulator)
+# SDK_STAMP=18.0 makes the binary look linked against an older SDK: iOS 27 refuses to launch
+# apps linked against its own SDK unless they adopt UIScene, which Wails 3.1.0 does not.
 
 rm -rf .fw && mkdir .fw && cp -R "$xcfw/$slice/libmpv.framework" .fw/
 
@@ -42,12 +45,17 @@ xcrun -sdk $sdkname clang -target $target -isysroot "$sdk" \
 	-framework AVFoundation -framework CoreLocation -framework CoreMotion -framework SystemConfiguration \
 	-framework OpenGLES -framework QuartzCore \
 	-F .fw -framework libmpv -Wl,-rpath,@executable_path/Frameworks \
-	-lresolv -o bin/$name "$main_m" -Wl,-force_load,bin/$name.a
+	${SDK_STAMP:+-Wl,-platform_version,$stamp_plat,$min,$SDK_STAMP} -lresolv -o bin/$name "$main_m" -Wl,-force_load,bin/$name.a
 
 app=bin/$name.app
 rm -rf $app && mkdir -p $app/Frameworks
 cp bin/$name $app/
 cp build/ios/Info.plist $app/
+# Wails' Info.plist has no UIDeviceFamily, which makes an iPad run the app as a scaled iPhone app.
+/usr/libexec/PlistBuddy -c "Delete :UIDeviceFamily" $app/Info.plist 2>/dev/null || true
+/usr/libexec/PlistBuddy -c "Add :UIDeviceFamily array" -c "Add :UIDeviceFamily:0 integer 1" -c "Add :UIDeviceFamily:1 integer 2" $app/Info.plist
+# Without a compiled launch screen iOS runs the app letterboxed at 640x960 (iPad) in compatibility mode.
+xcrun ibtool --compile $app/LaunchScreen.storyboardc build/ios/LaunchScreen.storyboard --minimum-deployment-target $min --target-device iphone --target-device ipad
 cp -R .fw/libmpv.framework $app/Frameworks/
 codesign --force --sign - $app/Frameworks/libmpv.framework
 codesign --force --sign - $app
