@@ -11,7 +11,7 @@ export function Chip({ className, ...props }: ComponentProps<typeof Toggle>) {
   return (
     <Toggle
       className={cn(
-        "h-8 shrink-0 rounded-full border-transparent bg-foreground/6 px-3.5 text-small font-[560] text-foreground/75 transition-[color,background-color,scale] duration-(--duration-fast) ease-out-soft before:rounded-full hover:bg-foreground/10 hover:text-foreground data-pressed:bg-foreground data-pressed:text-background data-pressed:hover:bg-foreground motion-safe:active:scale-95 sm:h-8",
+        "hit-area h-8 shrink-0 rounded-full border-transparent bg-foreground/6 px-3.5 text-small font-[560] text-foreground/75 transition-[color,background-color,scale] duration-(--duration-fast) ease-out-soft before:rounded-full hover:bg-foreground/10 hover:text-foreground data-pressed:bg-foreground data-pressed:text-background data-pressed:hover:bg-foreground motion-safe:active:scale-95 sm:h-8",
         className,
       )}
       {...props}

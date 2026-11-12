@@ -6,11 +6,13 @@ import { createRoot } from "react-dom/client";
 
 import { ToastProvider } from "@/components/ui/toast";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
+import { startPlatform } from "@/lib/platform";
 import { startTheme } from "@/lib/theme";
 import { createAppRouter } from "@/router";
 import "./index.css";
 
 startTheme();
+startPlatform();
 
 const queryClient = createQueryClient();
 const router = createAppRouter(queryClient);

@@ -314,7 +314,7 @@ function PageButton({
       onClick={onClick}
       style={edge}
       className={cn(
-        "absolute z-10 grid w-page min-w-12 place-items-center text-foreground opacity-0 transition-opacity duration-(--duration-base) ease-out-soft group-hover/row:opacity-100 [&_svg]:size-7 [&_svg]:drop-shadow-md [&_svg]:transition-transform [&_svg]:duration-(--duration-fast) hover:[&_svg]:scale-115",
+        "absolute z-10 grid w-page min-w-12 place-items-center pointer-coarse:hidden text-foreground opacity-0 transition-opacity duration-(--duration-base) ease-out-soft group-hover/row:opacity-100 [&_svg]:size-7 [&_svg]:drop-shadow-md [&_svg]:transition-transform [&_svg]:duration-(--duration-fast) hover:[&_svg]:scale-115",
         side === "start"
           ? "start-0 bg-linear-to-r from-background/90 via-background/50 to-transparent"
           : "end-0 bg-linear-to-l from-background/90 via-background/50 to-transparent",

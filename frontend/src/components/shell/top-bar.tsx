@@ -47,6 +47,7 @@ const leadingInset: Record<Platform, string> = {
   mac: "ps-[6.25rem]",
   windows: "ps-page",
   linux: "ps-page",
+  ios: "ps-page",
   browser: "ps-page",
 };
 
@@ -56,10 +57,14 @@ const leadingInset: Record<Platform, string> = {
 export function TopBar({
   platform,
   scrolled,
+  compact = false,
   onKeyboardNavigate,
 }: {
   platform: Platform;
   scrolled: boolean;
+  // The iOS tab bar holds the sections; the bar keeps the wordmark, Search
+  // and the profile.
+  compact?: boolean;
   onKeyboardNavigate: () => void;
 }) {
   const overArt = useBarOverArt();
@@ -90,7 +95,7 @@ export function TopBar({
                   onClick={onClick}
                   onKeyDown={moveFocus}
                   className={cn(
-                    "relative grid size-8 place-items-center rounded-full outline-none transition-[background-color,color,scale] duration-(--duration-fast) focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-90 [&_svg]:size-4",
+                    "relative grid size-8 place-items-center rounded-full pointer-coarse:size-11 outline-none transition-[background-color,color,scale] duration-(--duration-fast) focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-90 [&_svg]:size-4",
                     active
                       ? "bg-foreground text-background"
                       : "bg-foreground/8 text-foreground/80 hover:bg-foreground/14 hover:text-foreground",
@@ -104,7 +109,11 @@ export function TopBar({
             </TooltipTrigger>
             <TooltipPopup side="bottom">
               Search{" "}
-              <span className="text-muted-foreground">{platform === "mac" ? "⌘F" : "Ctrl+F"}</span>
+              {platform !== "ios" && (
+                <span className="text-muted-foreground">
+                  {platform === "mac" ? "⌘F" : "Ctrl+F"}
+                </span>
+              )}
             </TooltipPopup>
           </Tooltip>
         </li>
@@ -119,7 +128,7 @@ export function TopBar({
           onClick={onClick}
           onKeyDown={moveFocus}
           className={cn(
-            "relative flex h-8 items-center rounded-full px-3.5 text-[0.8125rem] font-[590] tracking-[-0.005em] outline-none transition-colors duration-(--duration-fast) focus-visible:ring-2 focus-visible:ring-ring",
+            "relative flex h-8 items-center rounded-full px-3.5 pointer-coarse:h-11 text-[0.8125rem] font-[590] tracking-[-0.005em] outline-none transition-colors duration-(--duration-fast) focus-visible:ring-2 focus-visible:ring-ring",
             active ? "text-foreground" : "text-foreground/60 hover:text-foreground",
           )}
         >
@@ -163,17 +172,24 @@ export function TopBar({
         <div aria-hidden className="flex shrink-0 items-center max-sm:hidden">
           <Wordmark />
         </div>
-        <nav aria-label="Main" className="pointer-events-none absolute inset-0 flex justify-center">
-          <ul
-            className={cn(
-              "pointer-events-auto flex items-center self-center rounded-full p-0.5 transition-[background-color,box-shadow] duration-(--duration-base)",
-              clear && "bg-black/30 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.1)] backdrop-blur-xl",
-            )}
+        {!compact && (
+          <nav
+            aria-label="Main"
+            className="pointer-events-none absolute inset-0 flex justify-center"
           >
-            {visualOrder.map(item)}
-          </ul>
-        </nav>
+            <ul
+              className={cn(
+                "pointer-events-auto flex items-center self-center rounded-full p-0.5 transition-[background-color,box-shadow] duration-(--duration-base)",
+                clear &&
+                  "bg-black/30 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.1)] backdrop-blur-xl",
+              )}
+            >
+              {visualOrder.map(item)}
+            </ul>
+          </nav>
+        )}
         <div className="ms-auto flex items-center gap-2">
+          {compact && search && <ul className="flex">{item(search, 0)}</ul>}
           <ConnectionStatus />
           <PartyStatus />
           <UpdateStatus />

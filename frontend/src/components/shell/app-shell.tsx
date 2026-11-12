@@ -2,11 +2,15 @@ import { useMatches, useNavigate, useRouter } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { lastOpenPane } from "@/components/settings/panes";
+import { TabBar } from "@/components/shell/tab-bar";
 import { CommandPalette } from "@/components/shell/command-palette";
 import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
+import { feature } from "@/lib/features";
+import { cn } from "@/lib/utils";
 import { currentPlatform } from "@/lib/platform";
 import { searchFieldId } from "@/lib/search";
+import { useCompactShell } from "@/lib/shell-mode";
 import { sections } from "@/sections";
 
 // How far the content pane has to scroll before the top bar frosts, so a
@@ -29,6 +33,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const router = useRouter();
   const navigate = useNavigate();
   const scrolled = useScrolled(pane);
+  const compact = useCompactShell();
   // A stable callback: a new one each render would null and set the state
   // again, forever.
   const contentRef = useCallback((node: HTMLDivElement | null) => {
@@ -113,11 +118,12 @@ export function AppShell({ children }: { children: ReactNode }) {
       <TopBar
         platform={platform}
         scrolled={scrolled}
+        compact={compact}
         onKeyboardNavigate={focusContentAfterNavigate}
       />
       {/* Not in the other chromes: the player's has none, and the focus
           screens come before there is a profile. */}
-      <CommandPalette onNavigate={focusContentAfterNavigate} />
+      {feature("commandPalette") && <CommandPalette onNavigate={focusContentAfterNavigate} />}
       <main className="page-layer fixed inset-0 overflow-hidden bg-background">
         {/* Overlay scrollbars, the same on every OS (WebView2 would draw
             classic ones), and never taking width from the page. */}
@@ -132,13 +138,20 @@ export function AppShell({ children }: { children: ReactNode }) {
             tabIndex={-1}
             className="size-full outline-none"
           >
-            <ScrollAreaPrimitive.Content style={{ minWidth: 0 }} className="pt-bar">
+            <ScrollAreaPrimitive.Content
+              style={{ minWidth: 0 }}
+              className={cn(
+                "pt-bar",
+                compact && "pb-[calc(var(--spacing-tabs)+env(safe-area-inset-bottom))]",
+              )}
+            >
               {children}
             </ScrollAreaPrimitive.Content>
           </ScrollAreaPrimitive.Viewport>
           <ScrollBar orientation="vertical" className="mt-[calc(var(--spacing-bar)+0.25rem)]" />
         </ScrollAreaPrimitive.Root>
       </main>
+      {compact && <TabBar />}
     </div>
   );
 }

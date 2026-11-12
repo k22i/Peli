@@ -142,7 +142,7 @@ function RailArrow({ side, onClick }: { side: "start" | "end"; onClick: () => vo
       aria-label={side === "start" ? "Scroll left" : "Scroll right"}
       onClick={onClick}
       className={cn(
-        "absolute top-1/2 z-10 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-popover text-foreground opacity-0 shadow-float transition-[opacity,scale] duration-(--duration-base) ease-out-soft group-focus-within/rail:opacity-100 group-hover/rail:opacity-100 motion-safe:active:scale-95 [&_svg]:size-4",
+        "absolute top-1/2 z-10 grid size-8 pointer-coarse:hidden -translate-y-1/2 place-items-center rounded-full bg-popover text-foreground opacity-0 shadow-float transition-[opacity,scale] duration-(--duration-base) ease-out-soft group-focus-within/rail:opacity-100 group-hover/rail:opacity-100 motion-safe:active:scale-95 [&_svg]:size-4",
         side === "start" ? "start-2" : "end-2",
       )}
     >
