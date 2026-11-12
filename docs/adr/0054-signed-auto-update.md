@@ -42,7 +42,7 @@ Peli adds rules that Wails leaves out:
 
 Artifact URLs name the version, so a release published between the check and the download can't swap the file. `go run ./tools/updates feed` writes the feed. It signs each zip's SHA-512 with `PELI_UPDATE_KEY` and refuses a key that isn't the private half of `updates.PublicKey`. `go run ./tools/updates verify` checks a feed and its files the way the app does.
 
-**The key.** Ed25519. The public half is `updates.PublicKey`, compiled in. The private half (a base64 seed) goes in the login keychain as "Peli update signing" (`security find-generic-password -s "Peli update signing" -w`), and #80 puts it in CI's secrets as `PELI_UPDATE_KEY`. While `PublicKey` is empty, updates are off and `tools/updates` refuses to sign. Make the pair once:
+**The key.** Ed25519. The public half is `updates.PublicKey`, compiled in. The private half (a base64 seed) is in the login keychain as "Peli update signing" (made 2026-11-12) (`security find-generic-password -s "Peli update signing" -w`), and #80 puts it in CI's secrets as `PELI_UPDATE_KEY`. If `PublicKey` is ever empty, updates are off and `tools/updates` refuses to sign. The pair was made with:
 
 ```sh
 priv=$(go run ./tools/updates keygen 2>pub.txt) &&

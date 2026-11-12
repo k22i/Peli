@@ -1,6 +1,6 @@
 ---
 name: auto-update
-description: "#83/ADR-0054 internal/updates on Wails' pkg/updater: signed endpoint feed, PublicKey empty until the user makes the key, darwin bundle checks, Taskfile VERSION order, e2e recipe"
+description: "#83/ADR-0054 internal/updates on Wails' pkg/updater: signed endpoint feed, release key in the user's keychain, darwin bundle checks, Taskfile VERSION order, e2e recipe"
 metadata:
   type: project
 ---
@@ -10,7 +10,7 @@ metadata:
 **Why:** the user wanted signed updates that never restart during playback; Wails already does the hard part (swap, rollback, relaunch).
 
 **How to apply:**
-- **`updates.PublicKey` is empty until the user generates the release key**: the auto-mode classifier blocked writing the private key to the keychain, so updates stay off (`unsupported`) and `tools/updates` refuses to sign. The command is in ADR-0054's "The key". Never commit a throwaway key there.
+- The release key exists (2026-11-12): `updates.PublicKey` is set, and the private seed is in the user's login keychain as "Peli update signing" (`security find-generic-password -s "Peli update signing" -w`). The auto-mode classifier blocked me from writing that item, so the user ran keygen themselves. Never print the seed or commit a throwaway key.
 - The repo is private, so the feed URL 404s (Wails reads it as up to date) until the repo or the feed goes public.
 - Task reads vars in order: `VERSION` must come before `BUILD_FLAGS` in `build:native`, or `appinfo.Version` is stamped empty (which the updater treats as a dev build).
 - E2E recipe that worked: package 0.1.0, copy `bin/Peli.app` to the scratchpad, bump Info.plist to 0.1.1, `darwin:package:zip`, restore the plist, sign a feed with a scratch key (temporarily as `PublicKey`), `python3 -m http.server` on 127.0.0.1, run the copy with `PELI_UPDATE_URL` + `PELI_DATA_DIR` and a temporary hook calling Check then Restart. The helper log is `$TMPDIR/wails-update-<pid>.log`. The relaunched app gets **none of your env** (LaunchServices), so it opens the real data folder: kill it by PID.

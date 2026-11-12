@@ -26,7 +26,7 @@ const FeedName = "peli-update.json"
 // "Peli update signing" and in CI's secrets). Changing it means shipping one
 // release signed with the old key whose app trusts the new one. Empty, updates
 // stay off.
-const PublicKey = ""
+const PublicKey = "5zeiuN4Eli5z8tHtNPnBe1trmj954BB35ltPJJQ9K1s="
 
 // SignatureAlgo is how releases are signed: Ed25519ph over the artifact's
 // SHA-512, which the updater computes while the file downloads.

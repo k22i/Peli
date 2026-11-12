@@ -80,4 +80,4 @@
 - [Player subtitles (phase 5)](player-subtitles.md) — second line drawn in the webview (Track.secondary, Shift+C, secondSubtitleLanguage), R/G nudges + Save as my style, lift = max(user, clear-the-controls)
 - [Player playback (phase 6)](player-playback.md) — speed/frame step/A–B (Gate.UserLoop)/chapters/screenshots (Go PNG)/stats/Still watching + sleep timer, More menu, Windows keepAwake (#102), Docker cross-vet tips
 - [macOS packaging](macos-packaging.md) — #78 per-arch drag-to-Applications ULMO DMGs (dist.sh), hardened runtime + ad-hoc entitlements gotcha, notarize app then DMG, native keychain; no Developer ID yet
-- [Auto-update](auto-update.md) — #83/ADR-0054 Wails pkg/updater + signed feed, PublicKey empty until the user makes the key, VERSION var order, e2e recipe (relaunch drops env)
+- [Auto-update](auto-update.md) — #83/ADR-0054 Wails pkg/updater + signed feed, release key in the keychain, VERSION var order, e2e recipe (relaunch drops env)
