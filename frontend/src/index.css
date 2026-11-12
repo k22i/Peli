@@ -331,9 +331,15 @@
   --radius: 0.625rem;
 }
 
-/* The iOS app at compact width (an iPhone, a narrow split view): smaller
-   cards, so a row shows two and a bit and the next one peeks in. Same query
-   as compactQuery in lib/shell-mode.ts. cardWidthRem in row.tsx reads these. */
+/* The iOS app: a touch smaller than the desktop's, so an iPad's grid takes
+   four posters across in portrait and six in landscape, and at compact width
+   (an iPhone, a narrow split view) smaller again, so a row shows two and a bit
+   and the next one peeks in. Same query as compactQuery in
+   lib/shell-mode.ts. cardWidthRem in row.tsx reads these. */
+:root[data-platform="ios"] {
+  --container-poster: 10rem;
+  --container-landscape: 17rem;
+}
 @media (max-width: 699.98px), (max-height: 499.98px) {
   :root[data-platform="ios"] {
     --container-poster: 9.25rem;
