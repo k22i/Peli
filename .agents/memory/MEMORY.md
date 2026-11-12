@@ -83,4 +83,4 @@
 - [Auto-update](auto-update.md) — #83/ADR-0054 Wails pkg/updater + signed feed, release key in the keychain, VERSION var order, e2e recipe (relaunch drops env)
 - [Orca worker model](orca-worker-model.md) — Sonnet 5.5, medium effort for Orca subworkers
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
-- [iOS port](ios-port.md) — Phase 1: ADR-0055, Wails iOS target, ios tag rules, main_ios, playback/secrets seams, boundary test, simulator build, baseline failures
+- [iOS port](ios-port.md) — Phases 1–2: ADR-0055, ios tag rules, isIOS()/feature(), compact tab bar, safe areas, ATS, UIScene shim, simulator recipe, baseline failures
