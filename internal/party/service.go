@@ -23,7 +23,7 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 
 	"github.com/k22i/Peli/internal/backend"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 )
 
 func init() {
@@ -55,7 +55,7 @@ var _ API = backend.Parties{}
 // Player is the player as the party drives it: player.Direct in the app,
 // whose calls don't go through the gate.
 type Player interface {
-	Snapshot() player.State
+	Snapshot() playback.State
 	SetPaused(paused bool) error
 	Seek(position float64) error
 	SetSpeed(speed float64) error

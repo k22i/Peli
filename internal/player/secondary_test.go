@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 import (
@@ -30,8 +32,8 @@ func TestTracksTellTheSecondSubtitlesApart(t *testing.T) {
 		}
 	}
 	st := State{Tracks: got}
-	if !st.secondaryIs(2) || st.secondaryIs(1) || st.secondaryIs(3) {
-		t.Errorf("secondaryIs: want only subtitle track 2 (%+v)", got)
+	if !st.SecondaryIs(2) || st.SecondaryIs(1) || st.SecondaryIs(3) {
+		t.Errorf("SecondaryIs: want only subtitle track 2 (%+v)", got)
 	}
 }
 
@@ -50,7 +52,7 @@ func TestImageSubtitlesCantBeTheSecondLine(t *testing.T) {
 // A new file starts without a second line, whatever the last one had.
 func TestLoadClearsTheSecondSubtitles(t *testing.T) {
 	t.Parallel()
-	for _, p := range (LoadOptions{}).tracks() {
+	for _, p := range trackProps(LoadOptions{}) {
 		if p[0] == "secondary-sid" && p[1] == "no" {
 			return
 		}

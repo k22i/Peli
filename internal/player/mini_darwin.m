@@ -1,3 +1,5 @@
+//go:build darwin && !ios
+
 // The window while playing on macOS. Playback fills the screen as a double
 // click on the title bar does (not fullscreen), and the window goes back to
 // its size after. The mini player (#70) is the app window itself, made

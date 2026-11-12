@@ -1,3 +1,5 @@
+//go:build darwin && !ios
+
 // macOS video host (ADR-0002): an NSView inserted below Wails' WKWebView in
 // the window's content view, backed by a CAOpenGLLayer that mpv renders into.
 // Every draw runs on our own serial queue, never the main thread: mpv's

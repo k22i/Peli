@@ -1,7 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { Track } from "@bindings/player";
+import type { Track } from "@bindings/playback";
 import {
   formatTime,
   latestOnly,

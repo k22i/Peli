@@ -1,3 +1,5 @@
+//go:build !ios
+
 // Package player plays video with libmpv, linked in-process (ADR-0001), under
 // the webview in the app window (ADR-0002). The frontend loads a resolved
 // stream (#53) and drives playback through the Service; mpv's state comes
@@ -14,7 +16,6 @@ package player
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"log/slog"
@@ -31,297 +32,18 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
 )
-
-// Events the player sends the frontend. Events sent before the page listens
-// are queued and may arrive seconds late (M0, #3), so the frontend reads
-// Snapshot when it mounts and applies events after it.
-const (
-	// EventState carries the whole State whenever anything but the time
-	// changes.
-	EventState = "player:state"
-	// EventTime carries the position, duration and buffer, at most every
-	// TimeEvery while playing, and at once after a seek.
-	EventTime = "player:time"
-	// EventEnded says the file ended by itself: played to the end, or failed.
-	// Stop and loading another file don't send it.
-	EventEnded = "player:ended"
-)
-
-func init() {
-	application.RegisterEvent[State](EventState)
-	application.RegisterEvent[Time](EventTime)
-	application.RegisterEvent[Ended](EventEnded)
-}
-
-// TimeEvery throttles EventTime. mpv changes time-pos every frame (30–60 a
-// second), and a React re-render per frame cost ~10 % CPU in WebKit (M0, #4);
-// a seek bar needs about 4 a second.
-const TimeEvery = 250 * time.Millisecond
-
-var (
-	// ErrInvalid means an argument was out of range, or the stream had no URL.
-	ErrInvalid = errors.New("player: invalid argument")
-	// ErrUnavailable means playback couldn't start: libmpv or the video host
-	// failed to come up.
-	ErrUnavailable = errors.New("player: unavailable")
-	// ErrNotPlaying means there's no session to control: nothing was loaded,
-	// or it was stopped.
-	ErrNotPlaying = errors.New("player: nothing is playing")
-)
-
-// Error codes the frontend reads (MarshalError).
-const (
-	CodeInvalid     = "invalid"
-	CodeUnavailable = "unavailable"
-	CodeNotPlaying  = "not_playing"
-)
-
-// Codes in Ended when a file failed.
-const (
-	// EndExpired means the server refused the link (401, 403, 404, 410):
-	// debrid links expire, and the addon gives a new one.
-	EndExpired = "expired"
-	// EndUnsupported means mpv found nothing it can play in the file.
-	EndUnsupported = "unsupported"
-	// EndFailed is any other failure: the network, a broken file.
-	EndFailed = "failed"
-)
-
-// State is the player's state, as Snapshot returns it and EventState
-// carries it. Times are in seconds.
-type State struct {
-	// Active is true from Load until Stop.
-	Active bool `json:"active"`
-	// Loading is true from Load until the first frame (and after a file
-	// ended, false).
-	Loading bool `json:"loading"`
-	Paused  bool `json:"paused"`
-	// Buffering is true while playback waits for the network.
-	Buffering bool `json:"buffering"`
-	// BufferPercent is how full the cache is while Buffering, 0–100.
-	BufferPercent int  `json:"bufferPercent"`
-	Seeking       bool `json:"seeking"`
-	Time
-	// Volume is 0–100.
-	Volume     float64 `json:"volume"`
-	Muted      bool    `json:"muted"`
-	Speed      float64 `json:"speed"`
-	Fullscreen bool    `json:"fullscreen"`
-	// Mini is true while the window is the mini player (#70): small, in a
-	// corner of the screen, above other windows.
-	Mini   bool    `json:"mini"`
-	Tracks []Track `json:"tracks"`
-	// Chapters are the file's chapters, in order (#69): their names say
-	// where intros and credits are in some files.
-	Chapters []Chapter `json:"chapters"`
-	// SubtitleDelay is how much later than the file says subtitles show, in
-	// seconds; negative is earlier.
-	SubtitleDelay float64 `json:"subtitleDelay"`
-	// SubtitleSize is "small", "medium" or "large", or "" for a scale mpv
-	// was given some other way.
-	SubtitleSize string `json:"subtitleSize"`
-	// SubtitleText is the subtitle line showing now, "" between lines: the
-	// timing tool shows it so the user can match it to the speech.
-	SubtitleText string `json:"subtitleText"`
-	// SecondarySubtitleText is the second subtitle track's line showing now.
-	// mpv doesn't draw it (secondary-sub-visibility is off: it can't be
-	// sized or placed); the screen does, above the main subtitles.
-	SecondarySubtitleText string `json:"secondarySubtitleText"`
-	// HWDec is the hardware decoder in use, "" for software.
-	HWDec string `json:"hwdec"`
-	// HDR is true while an HDR video goes to the display as HDR, rather
-	// than tone-mapped to SDR (#66).
-	HDR bool `json:"hdr"`
-	// AutoCrop is the crop auto-crop found for the file, in percent; nil
-	// until it finds one, or when it's off.
-	AutoCrop *store.Crop `json:"autoCrop,omitempty"`
-	// AudioDelay is how far the sound is moved after the picture, in
-	// seconds (rounded to ms), for this session.
-	AudioDelay float64 `json:"audioDelay"`
-	// VolumeMax is the loudest the volume goes: 100, or 150 with the
-	// device's volume boost.
-	VolumeMax float64 `json:"volumeMax"`
-	// LoopA and LoopB are the A–B loop's ends, in seconds, nil while unset:
-	// with both, mpv plays from A to B over and over (SetLoop).
-	LoopA *float64 `json:"loopA"`
-	LoopB *float64 `json:"loopB"`
-}
-
-// Time is where playback is, in seconds.
-type Time struct {
-	Position float64 `json:"position"`
-	Duration float64 `json:"duration"`
-	// Buffered is how far ahead of Position the cache reaches.
-	Buffered float64 `json:"buffered"`
-}
-
-// Track is one of the file's video, audio or subtitle tracks.
-type Track struct {
-	ID      int    `json:"id"`
-	Type    string `json:"type"` // "video", "audio" or "sub"
-	Title   string `json:"title"`
-	Lang    string `json:"lang"`
-	Codec   string `json:"codec"`
-	Default bool   `json:"default"`
-	// Selected is true for the audio or video track playing and the subtitle
-	// track showing as the main one; Secondary is the subtitle track
-	// feeding the second line (SetSecondarySubtitleTrack).
-	Selected  bool `json:"selected"`
-	Secondary bool `json:"secondary"`
-	External  bool `json:"external"`
-	// Forced subtitles only translate signs and foreign dialogue;
-	// HearingImpaired ones (SDH) also describe sounds.
-	Forced          bool `json:"forced"`
-	HearingImpaired bool `json:"hearingImpaired"`
-	// Channels is an audio track's channel count.
-	Channels int `json:"channels,omitempty"`
-	// Width and Height are a video track's size.
-	Width  int `json:"width,omitempty"`
-	Height int `json:"height,omitempty"`
-}
-
-// Chapter is one of the file's chapters: its name and where it starts, in
-// seconds.
-type Chapter struct {
-	Title string  `json:"title"`
-	Time  float64 `json:"time"`
-}
-
-// Ended says why a file ended by itself.
-type Ended struct {
-	Reason string `json:"reason"` // "eof" or "error"
-	// Code is EndExpired, EndUnsupported or EndFailed when Reason is "error".
-	Code string `json:"code,omitempty"`
-	// Message is mpv's error, for logs and bug reports.
-	Message string `json:"message,omitempty"`
-}
-
-// LoadOptions are the optional parts of Load.
-type LoadOptions struct {
-	// Start is where to start, in seconds.
-	Start float64 `json:"start"`
-	// AudioLanguages and SubtitleLanguage pick the tracks, as ISO 639 codes
-	// ("en", "jpn"). The first audio language the file has is played (#98);
-	// none, or "" for the subtitles, is the file's own default (#62).
-	AudioLanguages   []string `json:"audioLanguages"`
-	SubtitleLanguage string   `json:"subtitleLanguage"`
-	// Captions is "on", "off", or "system" (or "") for the OS's captions
-	// preference. On shows full subtitles: in SubtitleLanguage if the file
-	// has them, or else its default or first. Off still shows forced ones
-	// (signs, foreign dialogue) in the audio's language.
-	Captions string `json:"captions"`
-	// SubtitleSize is "small", "medium" or "large"; "" keeps the current.
-	// A SubtitleStyle's size wins over it.
-	SubtitleSize string `json:"subtitleSize"`
-	// SubtitleStyle is how text subtitles look; nil keeps mpv's.
-	SubtitleStyle *SubtitleStyle `json:"subtitleStyle,omitempty"`
-	// Picture adjusts the video; nil is the title's own (TitleAdjustments)
-	// or the profile's, read from the store for Watching's profile.
-	Picture *store.Picture `json:"picture,omitempty"`
-	// Framing frames the picture; nil is the title's own or the profile's,
-	// like Picture.
-	Framing *store.Framing `json:"framing,omitempty"`
-	// Quality is how hard the renderer works; nil is the title's own, else
-	// this device's.
-	Quality *store.Quality `json:"quality,omitempty"`
-	// Sound is how it sounds; nil is the title's own, else the profile's.
-	Sound *store.Sound `json:"sound,omitempty"`
-	// Watching names what the file is, so how far it plays is reported
-	// (#64); nil for a file nobody keeps progress of.
-	Watching *Watching `json:"watching,omitempty"`
-}
-
-// Watching is the film or episode a file plays, as the profile's progress
-// and watched items name it.
-type Watching struct {
-	ProfileID   uint64 `json:"profileId"`
-	ContentID   string `json:"contentId"`
-	ContentType string `json:"contentType"`
-	VideoID     string `json:"videoId"`
-	Season      *int   `json:"season,omitempty"`
-	Episode     *int   `json:"episode,omitempty"`
-	// Title names the watched item: the episode's name, or the title's.
-	Title string `json:"title,omitempty"`
-	// What SIMKL and AniList need to name it (#73, #105): the film's or
-	// series' own name and year, and its ids by catalog ("imdb", "tmdb",
-	// "tvdb", "kitsu", "mal", "anilist", "anidb").
-	Name string            `json:"name,omitempty"`
-	Year int               `json:"year,omitempty"`
-	IDs  map[string]string `json:"ids,omitempty"`
-}
-
-// Report says how far a Watching file got, and why it's said now. Times are
-// in seconds.
-type Report struct {
-	Watching Watching
-	Position float64
-	Duration float64
-	Why      string
-}
-
-// Why a Report is sent.
-const (
-	// ReportPlaying comes every ReportEvery while the file plays.
-	ReportPlaying = "playing"
-	// ReportPaused, ReportSeeked, ReportEnded and ReportStopped come when
-	// the file pauses, lands after a seek, ends by itself (played to the
-	// end, or failed), or is stopped or replaced (leaving the screen,
-	// another Load, the app quitting).
-	ReportPaused  = "paused"
-	ReportSeeked  = "seeked"
-	ReportEnded   = "ended"
-	ReportStopped = "stopped"
-	// ReportStarted comes at a file's first frame, and ReportResumed when
-	// it plays again after a pause: what a scrobble's start is (#73).
-	ReportStarted = "started"
-	ReportResumed = "resumed"
-)
-
-// ReportEvery is how often a file that plays is reported. The store keeps
-// each report; the push loop sends progress at most every 30 s.
-const ReportEvery = 10 * time.Second
-
-// subtitleScales are mpv's sub-scale for each SubtitleSize.
-var subtitleScales = map[string]float64{"small": 0.75, "medium": 1, "large": 1.35}
-
-// MaxSubtitleDelay bounds SetSubtitleDelay, in seconds either way.
-const MaxSubtitleDelay = 600
-
-var languageCode = regexp.MustCompile(`^([a-z]{2,3})?$`)
 
 // systemCaptions reports whether the OS asks for captions; a variable so
 // tests can set it.
 var systemCaptions = osCaptions
 
-func (o LoadOptions) valid() bool {
-	_, sized := subtitleScales[o.SubtitleSize]
-	return o.Start >= 0 && !math.IsNaN(o.Start) &&
-		// Codes only: mpv's alang and slang are lists, split on commas.
-		languageCode.MatchString(o.SubtitleLanguage) && audioLanguagesValid(o.AudioLanguages) &&
-		(o.Captions == "" || o.Captions == "system" || o.Captions == "on" || o.Captions == "off") &&
-		(o.SubtitleSize == "" || sized) && (o.SubtitleStyle == nil || o.SubtitleStyle.valid()) &&
-		(o.Picture == nil || o.Picture.Valid()) && (o.Framing == nil || o.Framing.Valid()) &&
-		(o.Quality == nil || o.Quality.Valid()) && (o.Sound == nil || o.Sound.Valid()) &&
-		(o.Watching == nil || (o.Watching.ContentID != "" && o.Watching.ContentType != ""))
-}
-
-// audioLanguagesValid reports whether every one of codes is a code, and none
-// is empty: an empty entry would end mpv's list early.
-func audioLanguagesValid(codes []string) bool {
-	for _, code := range codes {
-		if code == "" || !languageCode.MatchString(code) {
-			return false
-		}
-	}
-	return true
-}
-
 // tracks are the properties that pick a new file's tracks from o, found by
 // trying mpv 0.41 on files with forced and default-flagged subtitles.
-func (o LoadOptions) tracks() [][2]string {
+func trackProps(o LoadOptions) [][2]string {
 	captions := o.Captions == "on" || (o.Captions != "off" && systemCaptions())
 	props := [][2]string{
 		{"aid", "auto"}, {"sid", "auto"},
@@ -338,8 +60,8 @@ func (o LoadOptions) tracks() [][2]string {
 		props[4][1], props[5][1] = "yes", "no"
 	}
 	if o.SubtitleStyle != nil {
-		props = append(props, o.SubtitleStyle.props()...)
-	} else if scale, ok := subtitleScales[o.SubtitleSize]; ok {
+		props = append(props, styleProps(*o.SubtitleStyle)...)
+	} else if scale, ok := SubtitleScales[o.SubtitleSize]; ok {
 		props = append(props, [2]string{"sub-scale", seconds(scale)})
 	}
 	return props
@@ -590,7 +312,7 @@ func (s *Service) ServiceShutdown() error {
 // the open one plays. It returns once mpv has the file; EventState says when
 // it plays, EventEnded if it fails.
 func (s *Service) Load(source streams.Source, opts LoadOptions) error {
-	if source.URL == "" || !opts.valid() {
+	if source.URL == "" || !opts.Valid() {
 		return ErrInvalid
 	}
 	s.ops.Lock()
@@ -629,7 +351,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.framing, s.videoW, s.videoH = framing, 0, 0
 	s.file++
 	s.mu.Unlock()
-	props := append(opts.tracks(), pictureProps(s.pictureFor(opts))...)
+	props := append(trackProps(opts), pictureProps(s.pictureFor(opts))...)
 	props = append(props, framingProps(framing)...)
 	// Each file plays at normal speed, whatever the last one played at, and
 	// without the last one's A–B loop.
@@ -825,21 +547,6 @@ func (s *Service) closeSession(ses *session) {
 	if ses.subDir != "" {
 		_ = os.RemoveAll(ses.subDir)
 	}
-}
-
-// Gate is asked before each of the user's pauses, seeks and speed changes
-// reaches mpv, and may refuse it: a watch party (ADR-0051) publishes them
-// to the other members, or refuses them while only the host controls
-// playback. A refused change does nothing, and isn't an error.
-type Gate interface {
-	UserPause(paused bool) bool
-	// UserSeek returns where to go, or false to stay.
-	UserSeek(position float64) (float64, bool)
-	UserSpeed(speed float64) bool
-	// UserScrub is told while the seek bar is dragged.
-	UserScrub()
-	// UserLoop is asked before an A–B loop is set (not cleared).
-	UserLoop() bool
 }
 
 // GateWith has s ask g before the user's changes. It isn't a method, so
@@ -1050,7 +757,7 @@ func (s *Service) SetSubtitleTrack(id int) error {
 		return s.set("sid", "no")
 	}
 	// The same track can't be both: the second line gives way.
-	if s.Snapshot().secondaryIs(id) {
+	if s.Snapshot().SecondaryIs(id) {
 		if err := s.set("secondary-sid", "no"); err != nil {
 			return err
 		}
@@ -1082,16 +789,6 @@ func (s *Service) SetSecondarySubtitleTrack(id int) error {
 	return s.set("secondary-sid", strconv.Itoa(id))
 }
 
-// secondaryIs reports whether the subtitle track with id is the second one.
-func (st State) secondaryIs(id int) bool {
-	for _, track := range st.Tracks {
-		if track.ID == id && track.Type == "sub" && track.Secondary {
-			return true
-		}
-	}
-	return false
-}
-
 // imageSubtitle reports whether a subtitle codec is pictures (Blu-ray, DVD),
 // which have no text to draw as the second line.
 func imageSubtitle(codec string) bool {
@@ -1113,7 +810,7 @@ func (s *Service) SetSubtitleDelay(delay float64) error {
 
 // SetSubtitleSize sizes subtitles: "small", "medium" or "large".
 func (s *Service) SetSubtitleSize(size string) error {
-	scale, ok := subtitleScales[size]
+	scale, ok := SubtitleScales[size]
 	if !ok {
 		return ErrInvalid
 	}
@@ -1641,7 +1338,7 @@ func chapters(v any) []Chapter {
 
 // subtitleSize names a sub-scale, or "" for one no size has.
 func subtitleSize(scale float64) string {
-	for size, s := range subtitleScales {
+	for size, s := range SubtitleScales {
 		if math.Abs(scale-s) < 0.001 {
 			return size
 		}
@@ -1669,17 +1366,5 @@ func flag(b bool) string {
 // seconds formats a number the way mpv parses it (LC_NUMERIC is "C").
 func seconds(f float64) string { return strconv.FormatFloat(f, 'f', -1, 64) }
 
-// MarshalError gives the frontend an error's code.
-func MarshalError(err error) []byte {
-	code := CodeUnavailable
-	switch {
-	case errors.Is(err, ErrInvalid):
-		code = CodeInvalid
-	case errors.Is(err, ErrNotPlaying):
-		code = CodeNotPlaying
-	case errors.Is(err, ErrSubtitles):
-		code = CodeSubtitles
-	}
-	data, _ := json.Marshal(map[string]string{"code": code})
-	return data
-}
+// The libmpv Service is the desktop playback.Engine.
+var _ playback.Engine = (*Service)(nil)

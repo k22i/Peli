@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/k22i/Peli/internal/backend"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 )
 
 // Following the player, as Nuvio's players follow theirs.
@@ -329,23 +329,23 @@ func (s *Service) leavePlayback(sess *session) {
 	sess.sync = syncState{}
 }
 
-// The gate (player.Gate): the user's own pauses, seeks and speed changes,
+// The gate (playback.Gate): the user's own pauses, seeks and speed changes,
 // before mpv acts on them. While the player shows the party's media, they
 // are published, or refused when only the host controls playback; a guest
 // can still pause or go back for themselves, watching behind.
 
 // GateOf is s as the player's gate. It isn't a method, so Wails doesn't
 // bind the gate's methods for the webview.
-func GateOf(s *Service) player.Gate { return gate{s} }
+func GateOf(s *Service) playback.Gate { return gate{s} }
 
 type gate struct{ s *Service }
 
 // gated returns the party and the player's state when the player shows the
 // party's media. s.mu is held.
-func (s *Service) gated() (*session, player.State, bool) {
+func (s *Service) gated() (*session, playback.State, bool) {
 	sess := s.cur
 	if sess == nil || s.watching == nil || s.player == nil || s.watching.media.Key() != sess.media.Key() {
-		return nil, player.State{}, false
+		return nil, playback.State{}, false
 	}
 	st := s.player.Snapshot()
 	return sess, st, st.Active
@@ -452,7 +452,7 @@ func (g gate) UserScrub() {
 }
 
 // partyRate is the rate playback runs at for the party: not a nudge.
-func partyRate(sess *session, st player.State) float64 {
+func partyRate(sess *session, st playback.State) float64 {
 	if sess.nudged != 0 && sess.playback != nil {
 		return rate(*sess.playback)
 	}

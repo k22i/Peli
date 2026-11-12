@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -48,7 +48,7 @@ func New(open func() *store.Store, flush func(context.Context) error) *Reporter 
 // Report keeps r: the profile's progress in the film or episode, its watched
 // mark at 90 %, and a push now unless it's a periodic report or playing
 // starting again (the push loop sends those every 30 s by itself).
-func (rep *Reporter) Report(r player.Report) {
+func (rep *Reporter) Report(r playback.Report) {
 	db := rep.open()
 	w := r.Watching
 	if db == nil || r.Duration <= 0 || math.IsNaN(r.Position) {
@@ -74,7 +74,7 @@ func (rep *Reporter) Report(r player.Report) {
 			slog.Warn("watching: not marked watched", "error", err)
 		}
 	}
-	if r.Why != player.ReportPlaying && r.Why != player.ReportStarted && r.Why != player.ReportResumed {
+	if r.Why != playback.ReportPlaying && r.Why != playback.ReportStarted && r.Why != playback.ReportResumed {
 		rep.push()
 	}
 }
@@ -86,7 +86,7 @@ func finished(entry store.Progress) bool {
 
 // markWatched marks w watched unless it is already, so playing on past 90 %
 // or watching it again queues nothing more.
-func markWatched(db *store.Store, w player.Watching, now int64) error {
+func markWatched(db *store.Store, w playback.Watching, now int64) error {
 	marks, err := db.TitleWatched(w.ProfileID, w.ContentID)
 	if err != nil {
 		return err

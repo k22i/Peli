@@ -11,7 +11,7 @@ import (
 
 	"github.com/k22i/Peli/internal/backend"
 	"github.com/k22i/Peli/internal/nuvio"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/syncer"
 )
@@ -44,8 +44,8 @@ func setup(t *testing.T) (*store.Store, store.Profile, *Reporter, *atomic.Int32)
 	return db, profile, rep, &pushes
 }
 
-func episode(profile store.Profile) player.Watching {
-	return player.Watching{
+func episode(profile store.Profile) playback.Watching {
+	return playback.Watching{
 		ProfileID: profile.ID, ContentID: "tt0903747", ContentType: "series",
 		VideoID: "tt0903747:2:4", Season: ptr(2), Episode: ptr(4), Title: "Down",
 	}
@@ -71,7 +71,7 @@ func TestReportsBecomeProgress(t *testing.T) {
 	db, profile, rep, pushes := setup(t)
 	w := episode(profile)
 
-	rep.Report(player.Report{Watching: w, Position: 600.25, Duration: 2820, Why: player.ReportPlaying})
+	rep.Report(playback.Report{Watching: w, Position: 600.25, Duration: 2820, Why: playback.ReportPlaying})
 	rep.wait()
 	got := progress(t, db, profile)
 	if len(got) != 1 {
@@ -86,8 +86,8 @@ func TestReportsBecomeProgress(t *testing.T) {
 		t.Fatalf("progress = %+v, want %+v", e, want)
 	}
 	// Nor does playing starting, or starting again (they're for SIMKL).
-	for _, why := range []string{player.ReportStarted, player.ReportResumed} {
-		rep.Report(player.Report{Watching: w, Position: 600.25, Duration: 2820, Why: why})
+	for _, why := range []string{playback.ReportStarted, playback.ReportResumed} {
+		rep.Report(playback.Report{Watching: w, Position: 600.25, Duration: 2820, Why: why})
 		rep.wait()
 	}
 	if n := pushes.Load(); n != 0 {
@@ -97,8 +97,8 @@ func TestReportsBecomeProgress(t *testing.T) {
 		t.Fatalf("ContinueWatching = %+v, %v", resume, err)
 	}
 
-	for _, why := range []string{player.ReportPaused, player.ReportSeeked, player.ReportStopped} {
-		rep.Report(player.Report{Watching: w, Position: 700, Duration: 2820, Why: why})
+	for _, why := range []string{playback.ReportPaused, playback.ReportSeeked, playback.ReportStopped} {
+		rep.Report(playback.Report{Watching: w, Position: 700, Duration: 2820, Why: why})
 		rep.wait()
 	}
 	if n := pushes.Load(); n != 3 {
@@ -110,7 +110,7 @@ func TestReportsBecomeProgress(t *testing.T) {
 
 	// A file whose length isn't known (still loading, or live) is nothing to
 	// keep.
-	rep.Report(player.Report{Watching: w, Position: 50, Duration: 0, Why: player.ReportStopped})
+	rep.Report(playback.Report{Watching: w, Position: 50, Duration: 0, Why: playback.ReportStopped})
 	rep.wait()
 	if got := progress(t, db, profile); got[0].Position != 700_000 || pushes.Load() != 3 {
 		t.Fatalf("progress = %+v after a report with no duration", got)
@@ -123,11 +123,11 @@ func TestMarkedWatchedAt90Percent(t *testing.T) {
 	db, profile, rep, _ := setup(t)
 	w := episode(profile)
 
-	rep.Report(player.Report{Watching: w, Position: 2537, Duration: 2820, Why: player.ReportPlaying})
+	rep.Report(playback.Report{Watching: w, Position: 2537, Duration: 2820, Why: playback.ReportPlaying})
 	if len(watched(t, db, profile)) != 0 {
 		t.Fatal("marked watched just under 90 %")
 	}
-	rep.Report(player.Report{Watching: w, Position: 2538, Duration: 2820, Why: player.ReportPlaying})
+	rep.Report(playback.Report{Watching: w, Position: 2538, Duration: 2820, Why: playback.ReportPlaying})
 	marks := watched(t, db, profile)
 	if len(marks) != 1 || *marks[0].Season != 2 || *marks[0].Episode != 4 || marks[0].Title != "Down" ||
 		marks[0].ContentType != "series" || marks[0].WatchedAt != 1_800_000_000_000 {
@@ -143,7 +143,7 @@ func TestMarkedWatchedAt90Percent(t *testing.T) {
 	// Playing on to the end queues no second mark.
 	before, err := db.Pending(profile.ID)
 	check(t, err)
-	rep.Report(player.Report{Watching: w, Position: 2820, Duration: 2820, Why: player.ReportEnded})
+	rep.Report(playback.Report{Watching: w, Position: 2820, Duration: 2820, Why: playback.ReportEnded})
 	rep.wait()
 	after, err := db.Pending(profile.ID)
 	check(t, err)
@@ -172,7 +172,7 @@ func TestAlreadyWatchedIsNotMarkedAgain(t *testing.T) {
 	before, err := db.Pending(profile.ID)
 	check(t, err)
 
-	rep.Report(player.Report{Watching: w, Position: 2700, Duration: 2820, Why: player.ReportPlaying})
+	rep.Report(playback.Report{Watching: w, Position: 2700, Duration: 2820, Why: playback.ReportPlaying})
 	after, err := db.Pending(profile.ID)
 	check(t, err)
 	if watchedPushes(after) != watchedPushes(before) {
@@ -188,8 +188,8 @@ func TestAlreadyWatchedIsNotMarkedAgain(t *testing.T) {
 // Under a minute, Nuvio's server marks nothing, and nor does Peli.
 func TestShortFilesAreNotMarked(t *testing.T) {
 	db, profile, rep, _ := setup(t)
-	film := player.Watching{ProfileID: profile.ID, ContentID: "tt0903747", ContentType: "movie", VideoID: "tt0903747"}
-	rep.Report(player.Report{Watching: film, Position: 59, Duration: 59, Why: player.ReportEnded})
+	film := playback.Watching{ProfileID: profile.ID, ContentID: "tt0903747", ContentType: "movie", VideoID: "tt0903747"}
+	rep.Report(playback.Report{Watching: film, Position: 59, Duration: 59, Why: playback.ReportEnded})
 	rep.wait()
 	if len(watched(t, db, profile)) != 0 {
 		t.Fatal("marked a 59 s file watched")
@@ -211,7 +211,7 @@ func TestPushesCoalesce(t *testing.T) {
 	})
 	w := episode(profile)
 	for i := range 5 {
-		rep.Report(player.Report{Watching: w, Position: float64(100 + i*20), Duration: 2820, Why: player.ReportSeeked})
+		rep.Report(playback.Report{Watching: w, Position: float64(100 + i*20), Duration: 2820, Why: playback.ReportSeeked})
 	}
 	close(release)
 	rep.wait()
@@ -243,11 +243,11 @@ func TestGuestReportsMakeNoNuvioRequests(t *testing.T) {
 	pusher := syncer.NewPusher(open, backend.Nuvio{Client: nuvio.New(server.URL, "1.2.3")})
 	rep := New(open, pusher.FlushProgress)
 
-	film := player.Watching{ProfileID: guest.ID, ContentID: "tt1160419", ContentType: "movie", VideoID: "tt1160419"}
-	for _, r := range []player.Report{
-		{Watching: film, Position: 600, Duration: 9360, Why: player.ReportPlaying},
-		{Watching: film, Position: 610, Duration: 9360, Why: player.ReportPaused},
-		{Watching: film, Position: 1200, Duration: 9360, Why: player.ReportStopped},
+	film := playback.Watching{ProfileID: guest.ID, ContentID: "tt1160419", ContentType: "movie", VideoID: "tt1160419"}
+	for _, r := range []playback.Report{
+		{Watching: film, Position: 600, Duration: 9360, Why: playback.ReportPlaying},
+		{Watching: film, Position: 610, Duration: 9360, Why: playback.ReportPaused},
+		{Watching: film, Position: 1200, Duration: 9360, Why: playback.ReportStopped},
 	} {
 		rep.Report(r)
 		rep.wait()
@@ -255,7 +255,7 @@ func TestGuestReportsMakeNoNuvioRequests(t *testing.T) {
 	if resume, err := db.ContinueWatching(guest.ID); err != nil || len(resume) != 1 || resume[0].Position != 1_200_000 {
 		t.Fatalf("ContinueWatching = %+v, %v", resume, err)
 	}
-	rep.Report(player.Report{Watching: film, Position: 9000, Duration: 9360, Why: player.ReportEnded})
+	rep.Report(playback.Report{Watching: film, Position: 9000, Duration: 9360, Why: playback.ReportEnded})
 	rep.wait()
 	if marks, err := db.Watched(guest.ID); err != nil || len(marks) != 1 {
 		t.Fatalf("Watched = %+v, %v", marks, err)

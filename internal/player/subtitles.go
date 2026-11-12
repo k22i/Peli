@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 import (
@@ -7,6 +9,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/k22i/Peli/internal/playback"
 	"io"
 	"net/http"
 	"net/url"
@@ -16,13 +19,6 @@ import (
 	"time"
 )
 
-// ErrSubtitles means an addon's subtitles couldn't be added: the download
-// failed, or mpv couldn't read the file.
-var ErrSubtitles = errors.New("player: subtitles couldn't be loaded")
-
-// CodeSubtitles is ErrSubtitles' code for the frontend.
-const CodeSubtitles = "subtitles"
-
 const (
 	// MaxSubtitleBytes caps a subtitle file. A feature film's SRT is under
 	// 200 KB; ASS with styling a few MB.
@@ -30,18 +26,6 @@ const (
 	// subtitleWait caps one download.
 	subtitleWait = 30 * time.Second
 )
-
-// Subtitle is a subtitle file from an addon (#63), as AddSubtitle takes it.
-type Subtitle struct {
-	URL string `json:"url"`
-	// Lang is an ISO 639 code ("en", "por"), or "" if the addon's isn't one.
-	Lang string `json:"lang"`
-	// Title names it in the track list, such as the addon's name.
-	Title string `json:"title"`
-	// Secondary adds it as the second line (dual subtitles) and leaves the
-	// main subtitles as they are.
-	Secondary bool `json:"secondary"`
-}
 
 // AddSubtitle downloads sub and adds it to the file playing as an external
 // track, and shows it (as the second line when sub.Secondary). It returns
@@ -53,7 +37,7 @@ type Subtitle struct {
 func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	u, err := url.Parse(sub.URL)
 	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Host == "" ||
-		!languageCode.MatchString(sub.Lang) {
+		!playback.LanguageValid(sub.Lang) {
 		return 0, ErrInvalid
 	}
 	if s.current() == nil {

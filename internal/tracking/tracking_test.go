@@ -16,7 +16,7 @@ import (
 
 	"github.com/k22i/Peli/internal/anilist"
 	"github.com/k22i/Peli/internal/animelist"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/simkl/simkltest"
@@ -120,7 +120,7 @@ func newFakeAniList(t *testing.T) *fakeAniList {
 			answer = map[string]any{"MediaListCollection": map[string]any{"lists": []any{map[string]any{"entries": []any{
 				map[string]any{"status": "PLANNING", "progress": 0, "updatedAt": 1_800_000_000,
 					"media": map[string]any{"id": 154587, "idMal": 52991, "episodes": 28, "format": "TV",
-						"title": map[string]any{"romaji": "Sousou no Frieren", "english": "Frieren: Beyond Journey's End"},
+						"title":      map[string]any{"romaji": "Sousou no Frieren", "english": "Frieren: Beyond Journey's End"},
 						"coverImage": map[string]any{"large": "https://img.example/frieren.jpg"}, "startDate": map[string]any{"year": 2023}}},
 			}}}}}
 		case strings.Contains(req.Query, "MediaListCollection"):
@@ -196,16 +196,16 @@ func (f *fixture) connectAniList(t *testing.T) {
 	check(t, f.s.keepAniList(context.Background(), f.profile.ID, "ani-token"))
 }
 
-func (f *fixture) episode() player.Watching {
-	return player.Watching{
+func (f *fixture) episode() playback.Watching {
+	return playback.Watching{
 		ProfileID: f.profile.ID, ContentID: "tt0903747", ContentType: "series", VideoID: "tt0903747:2:4",
 		Season: ptr(2), Episode: ptr(4), Title: "Down", Name: "Breaking Bad", Year: 2008,
 		IDs: map[string]string{"tmdb": "1396", "tvdb": "81189", "bogus": "x"},
 	}
 }
 
-func (f *fixture) report(w player.Watching, why string, at float64) {
-	f.s.scrobbler.handle(context.Background(), player.Report{Watching: w, Position: at, Duration: 2800, Why: why})
+func (f *fixture) report(w playback.Watching, why string, at float64) {
+	f.s.scrobbler.handle(context.Background(), playback.Report{Watching: w, Position: at, Duration: 2800, Why: why})
 }
 
 func actions(calls []simkltest.Scrobble) string {
@@ -256,12 +256,12 @@ func TestScrobblesFollowThePlayer(t *testing.T) {
 	f := setup(t)
 	f.connectSimkl(t)
 	w := f.episode()
-	f.report(w, player.ReportStarted, 0)
-	f.report(w, player.ReportPlaying, 280)
-	f.report(w, player.ReportSeeked, 1400) // no call: the next one carries it
-	f.report(w, player.ReportPaused, 1400)
-	f.report(w, player.ReportResumed, 1400)
-	f.report(w, player.ReportStopped, 2660)
+	f.report(w, playback.ReportStarted, 0)
+	f.report(w, playback.ReportPlaying, 280)
+	f.report(w, playback.ReportSeeked, 1400) // no call: the next one carries it
+	f.report(w, playback.ReportPaused, 1400)
+	f.report(w, playback.ReportResumed, 1400)
+	f.report(w, playback.ReportStopped, 2660)
 	want := "start@0/90 pause@50/90 start@50/90 stop@95/90"
 	if got := actions(f.simkl.Calls()); got != want {
 		t.Fatalf("scrobbles = %s, want %s", got, want)
@@ -279,11 +279,11 @@ func TestMissedResumeStartsAgain(t *testing.T) {
 	f := setup(t)
 	f.connectSimkl(t)
 	w := f.episode()
-	f.report(w, player.ReportStarted, 0)
-	f.report(w, player.ReportPaused, 280)
+	f.report(w, playback.ReportStarted, 0)
+	f.report(w, playback.ReportPaused, 280)
 	// The player was paused and played within one report: the next periodic
 	// report finds it playing.
-	f.report(w, player.ReportPlaying, 560)
+	f.report(w, playback.ReportPlaying, 560)
 	if got := actions(f.simkl.Calls()); got != "start@0/90 pause@10/90 start@20/90" {
 		t.Fatalf("scrobbles = %s", got)
 	}
@@ -292,11 +292,11 @@ func TestMissedResumeStartsAgain(t *testing.T) {
 func TestAnimeScrobblesWithItsOwnIDs(t *testing.T) {
 	f := setup(t)
 	f.connectSimkl(t)
-	w := player.Watching{
+	w := playback.Watching{
 		ProfileID: f.profile.ID, ContentID: "kitsu:46474", ContentType: "series", VideoID: "kitsu:46474:3",
 		Season: ptr(1), Episode: ptr(3), Name: "Sousou no Frieren", IDs: map[string]string{"imdb": "tt22248376"},
 	}
-	f.report(w, player.ReportStarted, 0)
+	f.report(w, playback.ReportStarted, 0)
 	body := f.simkl.Calls()[0].Body
 	anime, _ := json.Marshal(body["anime"])
 	episode, _ := json.Marshal(body["episode"])
@@ -311,9 +311,9 @@ func TestAnimeScrobblesWithItsOwnIDs(t *testing.T) {
 	settings := store.DefaultProfileSettings()
 	settings.SimklAnime = false
 	check(t, f.db.SaveProfileSettings(f.profile.ID, settings))
-	f.report(w, player.ReportStopped, 2700)
-	cinemeta := player.Watching{ProfileID: f.profile.ID, ContentID: "tt22248376", ContentType: "series", VideoID: "tt22248376:1:3", Season: ptr(1), Episode: ptr(3)}
-	f.report(cinemeta, player.ReportStarted, 0)
+	f.report(w, playback.ReportStopped, 2700)
+	cinemeta := playback.Watching{ProfileID: f.profile.ID, ContentID: "tt22248376", ContentType: "series", VideoID: "tt22248376:1:3", Season: ptr(1), Episode: ptr(3)}
+	f.report(cinemeta, playback.ReportStarted, 0)
 	if n := len(f.simkl.Calls()); n != 1 {
 		t.Fatalf("%d scrobbles, want 1: %s", n, actions(f.simkl.Calls()))
 	}
@@ -325,8 +325,8 @@ func TestScrobbleOff(t *testing.T) {
 	settings := store.DefaultProfileSettings()
 	settings.SimklScrobble = false
 	check(t, f.db.SaveProfileSettings(f.profile.ID, settings))
-	f.report(f.episode(), player.ReportStarted, 0)
-	f.report(f.episode(), player.ReportStopped, 2700)
+	f.report(f.episode(), playback.ReportStarted, 0)
+	f.report(f.episode(), playback.ReportStopped, 2700)
 	if calls := f.simkl.Calls(); len(calls) != 0 {
 		t.Fatalf("scrobbles = %s", actions(calls))
 	}
@@ -336,12 +336,12 @@ func TestOfflineWatchIsKeptForTheHistory(t *testing.T) {
 	f := setup(t)
 	f.connectSimkl(t)
 	w := f.episode()
-	f.report(w, player.ReportStarted, 0)
+	f.report(w, playback.ReportStarted, 0)
 	f.simkl.Set(func(s *simkltest.Server) { s.Down = true })
 	// Below 90 % only a resume point is lost; at 95 % the watch is kept.
-	f.report(w, player.ReportStopped, 1000)
-	f.report(w, player.ReportStarted, 1000)
-	f.report(w, player.ReportStopped, 2660)
+	f.report(w, playback.ReportStopped, 1000)
+	f.report(w, playback.ReportStarted, 1000)
+	f.report(w, playback.ReportStopped, 2660)
 	jobs, err := f.db.TrackingJobs(f.profile.ID)
 	check(t, err)
 	if len(jobs) != 1 || jobs[0].Service != ServiceSimkl {
@@ -378,7 +378,7 @@ func TestAStopSimklFinalizedIsDone(t *testing.T) {
 	f := setup(t)
 	f.connectSimkl(t)
 	f.simkl.Set(func(s *simkltest.Server) { s.Done = true })
-	f.report(f.episode(), player.ReportStopped, 2700)
+	f.report(f.episode(), playback.ReportStopped, 2700)
 	if jobs, _ := f.db.TrackingJobs(f.profile.ID); len(jobs) != 0 {
 		t.Fatalf("a 409 was kept: %+v", jobs)
 	}
@@ -389,13 +389,13 @@ func TestRefusedTokenIsRefreshedOnce(t *testing.T) {
 	f.connectSimkl(t)
 	// Another grant's refresh cut this token off.
 	f.simkl.Set(func(s *simkltest.Server) { s.Access = "simkl_at_elsewhere" })
-	f.report(f.episode(), player.ReportStarted, 0)
+	f.report(f.episode(), playback.ReportStarted, 0)
 	if f.simkl.Refreshes != 1 || len(f.simkl.Calls()) != 1 {
 		t.Fatalf("refreshes = %d, scrobbles = %s", f.simkl.Refreshes, actions(f.simkl.Calls()))
 	}
 	// The refresh token stopped working: connect again.
 	f.simkl.Set(func(s *simkltest.Server) { s.Access, s.Refresh = "x", "y" })
-	f.report(f.episode(), player.ReportPaused, 100)
+	f.report(f.episode(), playback.ReportPaused, 100)
 	status, err := f.s.Status(f.profile.ID)
 	check(t, err)
 	if !status.Simkl.NeedsReconnect {
@@ -407,7 +407,7 @@ func TestTokenIsRefreshedBeforeItExpires(t *testing.T) {
 	f := setup(t)
 	f.connectSimkl(t)
 	f.clock = f.clock.Add(6*24*time.Hour + time.Hour)
-	f.report(f.episode(), player.ReportStarted, 0)
+	f.report(f.episode(), playback.ReportStarted, 0)
 	if f.simkl.Refreshes != 1 {
 		t.Fatalf("refreshes = %d", f.simkl.Refreshes)
 	}
@@ -482,22 +482,22 @@ func TestImportSimkl(t *testing.T) {
 func TestAniListProgressOnWatched(t *testing.T) {
 	f := setup(t)
 	f.connectAniList(t)
-	w := player.Watching{ProfileID: f.profile.ID, ContentID: "tt22248376", ContentType: "series", VideoID: "tt22248376:1:3", Season: ptr(1), Episode: ptr(3)}
-	f.report(w, player.ReportPlaying, 1000)
-	f.report(w, player.ReportPlaying, 2600) // 92 %: watched
-	f.report(w, player.ReportStopped, 2700) // once per file
+	w := playback.Watching{ProfileID: f.profile.ID, ContentID: "tt22248376", ContentType: "series", VideoID: "tt22248376:1:3", Season: ptr(1), Episode: ptr(3)}
+	f.report(w, playback.ReportPlaying, 1000)
+	f.report(w, playback.ReportPlaying, 2600) // 92 %: watched
+	f.report(w, playback.ReportStopped, 2700) // once per file
 	if strings.Join(f.ani.saved, " ") != "154587:3:CURRENT:0" {
 		t.Fatalf("saved = %v", f.ani.saved)
 	}
 	// An earlier episode doesn't move the list back.
 	w.VideoID, w.Episode = "tt22248376:1:2", ptr(2)
-	f.report(w, player.ReportEnded, 2800)
+	f.report(w, playback.ReportEnded, 2800)
 	if len(f.ani.saved) != 1 {
 		t.Fatalf("saved = %v", f.ani.saved)
 	}
 	// The last episode completes it.
 	w.VideoID, w.Episode = "tt22248376:1:28", ptr(28)
-	f.report(w, player.ReportEnded, 2800)
+	f.report(w, playback.ReportEnded, 2800)
 	if f.ani.saved[len(f.ani.saved)-1] != "154587:28:COMPLETED:0" {
 		t.Fatalf("saved = %v", f.ani.saved)
 	}

@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/k22i/Peli/internal/anilist"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
 )
@@ -41,7 +41,7 @@ const callTimeout = 20 * time.Second
 // scrobbler turns reports into calls, one at a time, on its own goroutine.
 type scrobbler struct {
 	s       *Service
-	reports chan player.Report
+	reports chan playback.Report
 	kick    chan struct{}
 
 	// Of the file playing: which it is, whether SIMKL was last told it
@@ -57,21 +57,21 @@ type scrobbler struct {
 }
 
 func newScrobbler(s *Service) *scrobbler {
-	sc := &scrobbler{s: s, reports: make(chan player.Report, 64), kick: make(chan struct{}, 1)}
+	sc := &scrobbler{s: s, reports: make(chan playback.Report, 64), kick: make(chan struct{}, 1)}
 	sc.idle = sync.NewCond(&sc.mu)
 	return sc
 }
 
 // report queues r without waiting; when the queue is full (SIMKL is slow
 // and the player busy) periodic reports are dropped first.
-func (sc *scrobbler) report(r player.Report) {
+func (sc *scrobbler) report(r playback.Report) {
 	sc.mu.Lock()
 	sc.busy++
 	sc.mu.Unlock()
 	select {
 	case sc.reports <- r:
 	default:
-		if r.Why != player.ReportPlaying {
+		if r.Why != playback.ReportPlaying {
 			go func() { sc.reports <- r }()
 			return
 		}
@@ -124,7 +124,7 @@ func (sc *scrobbler) run(ctx context.Context) {
 	}
 }
 
-func (sc *scrobbler) handle(ctx context.Context, r player.Report) {
+func (sc *scrobbler) handle(ctx context.Context, r playback.Report) {
 	w := r.Watching
 	if r.Duration <= 0 || math.IsNaN(r.Position) {
 		return
@@ -142,16 +142,16 @@ func (sc *scrobbler) handle(ctx context.Context, r player.Report) {
 
 	var action string
 	switch r.Why {
-	case player.ReportStarted, player.ReportResumed:
+	case playback.ReportStarted, playback.ReportResumed:
 		action = simkl.ActionStart
-	case player.ReportPlaying, player.ReportSeeked:
+	case playback.ReportPlaying, playback.ReportSeeked:
 		// Missed a resume (the pause and play came together): say it plays.
 		if !sc.playing {
 			action = simkl.ActionStart
 		}
-	case player.ReportPaused:
+	case playback.ReportPaused:
 		action = simkl.ActionPause
-	case player.ReportEnded, player.ReportStopped:
+	case playback.ReportEnded, playback.ReportStopped:
 		action = simkl.ActionStop
 	}
 	t, err := db.Tracking(w.ProfileID)
@@ -178,12 +178,12 @@ func (sc *scrobbler) handle(ctx context.Context, r player.Report) {
 
 // sessionKey names the file being played, so a report for another one
 // starts afresh.
-func sessionKey(w player.Watching) string {
+func sessionKey(w playback.Watching) string {
 	data, _ := json.Marshal([]any{w.ProfileID, w.ContentID, w.VideoID, w.Season, w.Episode})
 	return string(data)
 }
 
-func (sc *scrobbler) scrobble(ctx context.Context, w player.Watching, action string, progress float64, finished bool) {
+func (sc *scrobbler) scrobble(ctx context.Context, w playback.Watching, action string, progress float64, finished bool) {
 	item, ok := simklItem(w)
 	if !ok {
 		return
@@ -212,7 +212,7 @@ func (sc *scrobbler) scrobble(ctx context.Context, w player.Watching, action str
 
 // updateAniList sets the AniList entry w is in to w's episode, if it's
 // further than the list has it.
-func (s *Service) updateAniList(ctx context.Context, w player.Watching) {
+func (s *Service) updateAniList(ctx context.Context, w playback.Watching) {
 	job, ok := s.aniListJob(ctx, w)
 	if !ok {
 		return
@@ -231,7 +231,7 @@ func (s *Service) updateAniList(ctx context.Context, w player.Watching) {
 
 // aniListJob finds the AniList entry and episode w is, through the anime
 // list, or AniList itself for a MyAnimeList id the list doesn't have.
-func (s *Service) aniListJob(ctx context.Context, w player.Watching) (aniListJob, bool) {
+func (s *Service) aniListJob(ctx context.Context, w playback.Watching) (aniListJob, bool) {
 	ref := aniListRef(w)
 	if s.anime != nil {
 		if entry, episode, ok := s.anime.Find(ctx, ref); ok {

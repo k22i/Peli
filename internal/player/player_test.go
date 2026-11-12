@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 import (
@@ -467,7 +469,7 @@ func TestSystemCaptions(t *testing.T) {
 	for _, on := range []bool{false, true} {
 		systemCaptions = func() bool { return on }
 		for mode, want := range map[string]bool{"": on, "system": on, "on": true, "off": false} {
-			props := LoadOptions{Captions: mode}.tracks()
+			props := trackProps(LoadOptions{Captions: mode})
 			if got := props[4][1] == "yes"; got != want {
 				t.Errorf("system %v, captions %q: subtitles on %v, want %v (%v)", on, mode, got, want, props)
 			}

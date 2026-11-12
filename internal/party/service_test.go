@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/k22i/Peli/internal/backend"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 )
 
 // fakeAPI is Nuvio's side of a party, as a test sets it up.
@@ -213,11 +213,11 @@ func (c *fakeChannel) count(event string) int {
 // fakePlayer is mpv, as far as the party sees it.
 type fakePlayer struct {
 	mu    sync.Mutex
-	st    player.State
+	st    playback.State
 	calls []string
 }
 
-func (p *fakePlayer) Snapshot() player.State {
+func (p *fakePlayer) Snapshot() playback.State {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 	return p.st
@@ -243,7 +243,7 @@ func (p *fakePlayer) SetSpeed(speed float64) error {
 	p.calls = append(p.calls, "speed")
 	return nil
 }
-func (p *fakePlayer) set(change func(*player.State)) {
+func (p *fakePlayer) set(change func(*playback.State)) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 	change(&p.st)
@@ -318,7 +318,7 @@ func (r *rig) advance(d time.Duration) {
 	r.nowMu.Lock()
 	r.now = r.now.Add(d)
 	r.nowMu.Unlock()
-	r.player.set(func(st *player.State) {
+	r.player.set(func(st *playback.State) {
 		if st.Active && !st.Loading && !st.Paused {
 			st.Position += d.Seconds() * st.Speed
 		}
@@ -327,8 +327,8 @@ func (r *rig) advance(d time.Duration) {
 
 // playing has the player show the episode at position, playing.
 func (r *rig) playing(position float64) {
-	r.player.set(func(st *player.State) {
-		*st = player.State{Active: true, Speed: 1, Time: player.Time{Position: position, Duration: 3000}}
+	r.player.set(func(st *playback.State) {
+		*st = playback.State{Active: true, Speed: 1, Time: playback.Time{Position: position, Duration: 3000}}
 	})
 	r.s.Watch(&episode, nil)
 }
@@ -477,21 +477,21 @@ func TestDriftIsNudgedThenSeeked(t *testing.T) {
 	r.advance(3 * time.Second)
 
 	// 400 ms ahead: played a little slower.
-	r.player.set(func(st *player.State) { st.Position += 0.4 })
+	r.player.set(func(st *playback.State) { st.Position += 0.4 })
 	r.tick()
 	if st := r.player.Snapshot(); st.Speed != 0.95 {
 		t.Errorf("400 ms ahead: speed %v", st.Speed)
 	}
 	// Back in step: the party's rate again.
 	r.advance(time.Second)
-	r.player.set(func(st *player.State) { st.Position = 104 })
+	r.player.set(func(st *playback.State) { st.Position = 104 })
 	r.tick()
 	if st := r.player.Snapshot(); st.Speed != 1 {
 		t.Errorf("in step: speed %v", st.Speed)
 	}
 	// 5 s behind: a seek.
 	r.advance(time.Second)
-	r.player.set(func(st *player.State) { st.Position = 100 })
+	r.player.set(func(st *playback.State) { st.Position = 100 })
 	r.tick()
 	if st := r.player.Snapshot(); st.Position < 105 {
 		t.Errorf("5 s behind: at %.2f", st.Position)
@@ -811,7 +811,7 @@ func TestNotWatchingThePartyIsUngated(t *testing.T) {
 	r.s.Join("ABCDEF")
 	r.connect(t)
 	other := Media{Type: "movie", ID: "tt999", Title: "Something else"}
-	r.player.set(func(st *player.State) { *st = player.State{Active: true, Speed: 1} })
+	r.player.set(func(st *playback.State) { *st = playback.State{Active: true, Speed: 1} })
 	r.s.Watch(&other, nil)
 	if _, ok := GateOf(r.s).UserSeek(100); !ok {
 		t.Error("a seek in another title was refused")
@@ -854,8 +854,8 @@ func TestHostSwitchesTheParty(t *testing.T) {
 	h.connect(t)
 	film := Media{Type: "movie", ID: "tt777", Title: "A film"}
 	// Opening another title from browsing doesn't move the party.
-	h.player.set(func(st *player.State) {
-		*st = player.State{Active: true, Speed: 1, Time: player.Time{Position: 30, Duration: 6000}}
+	h.player.set(func(st *playback.State) {
+		*st = playback.State{Active: true, Speed: 1, Time: playback.Time{Position: 30, Duration: 6000}}
 	})
 	h.s.Watch(&film, nil)
 	h.tick()

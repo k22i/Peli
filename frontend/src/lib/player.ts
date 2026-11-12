@@ -1,14 +1,8 @@
 import { Events } from "@wailsio/runtime";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
-import {
-  Service as Player,
-  type Ended,
-  type LoadOptions,
-  type State,
-  type Track,
-  type Watching,
-} from "@bindings/player";
+import { Service as Player, type Ended, type LoadOptions, type State } from "@bindings/player";
+import type { Track, Watching } from "@bindings/playback";
 import type { ProfileSettings } from "@bindings/store";
 import { Service as Streams, type Source } from "@bindings/streams";
 import { audioLanguagesOf, languageName } from "@/lib/settings";

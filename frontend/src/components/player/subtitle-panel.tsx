@@ -11,7 +11,7 @@ import {
   type AddonSubtitle,
 } from "@/lib/subtitles";
 import { cn } from "@/lib/utils";
-import type { Track } from "@bindings/player";
+import type { Track } from "@bindings/playback";
 
 // How text subtitles look: the profile's, as Go's SubtitleStyle.
 export type SubtitleStyle = {

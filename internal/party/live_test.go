@@ -12,7 +12,7 @@ import (
 
 	"github.com/k22i/Peli/internal/backend"
 	"github.com/k22i/Peli/internal/nuvio"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 )
 
 // fixedSession hands out one session, as account.Session would.
@@ -137,7 +137,7 @@ func TestLiveTwoMembers(t *testing.T) {
 // livePlayer plays by the wall clock, as mpv would.
 type livePlayer struct {
 	mu    sync.Mutex
-	st    player.State
+	st    playback.State
 	since time.Time
 }
 
@@ -152,7 +152,7 @@ func (p *livePlayer) advance() {
 func (p *livePlayer) play(at float64) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
-	p.st = player.State{Active: true, Speed: 1, Time: player.Time{Position: at, Duration: 7200}}
+	p.st = playback.State{Active: true, Speed: 1, Time: playback.Time{Position: at, Duration: 7200}}
 	p.since = time.Now()
 }
 
@@ -169,7 +169,7 @@ func (p *livePlayer) paused() bool {
 	return p.st.Paused
 }
 
-func (p *livePlayer) Snapshot() player.State {
+func (p *livePlayer) Snapshot() playback.State {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 	p.advance()

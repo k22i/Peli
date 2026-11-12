@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/k22i/Peli/internal/anilist"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
 )
@@ -68,8 +68,8 @@ type TitleRef struct {
 	IDs map[string]string `json:"ids"`
 }
 
-func (r TitleRef) watching(profileID uint64) player.Watching {
-	return player.Watching{ProfileID: profileID, ContentID: r.ID, ContentType: r.Type, Name: r.Name, Year: r.Year, IDs: r.IDs}
+func (r TitleRef) watching(profileID uint64) playback.Watching {
+	return playback.Watching{ProfileID: profileID, ContentID: r.ID, ContentType: r.Type, Name: r.Name, Year: r.Year, IDs: r.IDs}
 }
 
 // TitleTracking is what the connected services say about a title.
@@ -151,7 +151,7 @@ func simklHolds(kind, status string) bool {
 
 // simklTitle is the kind of list SIMKL files ref under ("movies", "shows",
 // or "anime" for an anime catalog's own ids) and the title to name it by.
-func simklTitle(w player.Watching) (string, *simkl.Media, bool) {
+func simklTitle(w playback.Watching) (string, *simkl.Media, bool) {
 	all := ids(w)
 	native := animeNative(w)
 	keys := westernKeys
@@ -178,7 +178,7 @@ func simklTitle(w player.Watching) (string, *simkl.Media, bool) {
 
 // simklKinds are the lists to look for w on: anime catalogued by IMDb ids
 // sit under SIMKL's anime.
-func (s *Service) simklKinds(ctx context.Context, w player.Watching, kind string) []string {
+func (s *Service) simklKinds(ctx context.Context, w playback.Watching, kind string) []string {
 	if kind != "shows" || !s.isAnime(ctx, w) {
 		return []string{kind}
 	}
@@ -186,7 +186,7 @@ func (s *Service) simklKinds(ctx context.Context, w player.Watching, kind string
 }
 
 // aniListMedia finds the AniList entry for w, if it's anime.
-func (s *Service) aniListMedia(ctx context.Context, w player.Watching) (int, bool) {
+func (s *Service) aniListMedia(ctx context.Context, w playback.Watching) (int, bool) {
 	if !s.isAnime(ctx, w) {
 		return 0, false
 	}

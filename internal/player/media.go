@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 import (
@@ -10,13 +12,6 @@ import (
 // on Linux, Windows' System Media Transport Controls. They show what plays
 // and send play, pause and seeks back, which the service runs like the
 // screen's own controls; the screen follows through player:state.
-
-// NowPlaying names what plays, for the OS's media controls: the title, and
-// for an episode its code and name ("S1E2 · Pilot").
-type NowPlaying struct {
-	Title    string `json:"title"`
-	Subtitle string `json:"subtitle"`
-}
 
 // mediaState is what the media controls show.
 type mediaState struct {
@@ -64,14 +59,14 @@ func (s *Service) SetNowPlaying(np NowPlaying) error {
 	if ses == nil {
 		return nil
 	}
-	if err := ses.m.setProperty("force-media-title", np.mediaTitle()); err != nil {
+	if err := ses.m.setProperty("force-media-title", mediaTitle(np)); err != nil {
 		return notPlaying(err)
 	}
 	ses.m.wakeup()
 	return nil
 }
 
-func (np NowPlaying) mediaTitle() string {
+func mediaTitle(np NowPlaying) string {
 	if np.Subtitle == "" {
 		return np.Title
 	}

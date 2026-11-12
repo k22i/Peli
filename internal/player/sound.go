@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 import (
@@ -149,12 +151,6 @@ func (s *Service) SetAudioDelay(delay float64) error {
 		return ErrInvalid
 	}
 	return s.set("audio-delay", fmt.Sprintf("%.3f", delay))
-}
-
-// AudioDevice is an output mpv can play to.
-type AudioDevice struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
 }
 
 func audioDevices(v any) []AudioDevice {

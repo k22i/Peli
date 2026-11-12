@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from "@tanstack/react-query";
 
 import { Service as SkipTimes, type Segment, type Title } from "@bindings/markers";
-import type { Chapter, Watching } from "@bindings/player";
+import type { Chapter, Watching } from "@bindings/playback";
 import { deviceSettingsQuery } from "@/lib/settings";
 
 // Skip intro and credits (#69, F24): where a file's intro, recap and credits

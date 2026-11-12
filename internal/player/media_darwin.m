@@ -1,3 +1,5 @@
+//go:build darwin && !ios
+
 // macOS media controls (#67): Now Playing shows what plays, and the remote
 // commands (the media keys, Control Center, AirPods, the Touch Bar) come
 // back to Go. On macOS an app must set playbackState itself, and it gets the

@@ -1,6 +1,6 @@
 import { AlertCircle } from "lucide-react";
 
-import type { Watching } from "@bindings/player";
+import type { Watching } from "@bindings/playback";
 import { Spinner } from "@/components/ui/spinner";
 import {
   Sheet,

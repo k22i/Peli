@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 // host puts mpv's video under the webview, in the app window. There is one

@@ -19,7 +19,7 @@ import (
 
 	"github.com/k22i/Peli/internal/anilist"
 	"github.com/k22i/Peli/internal/animelist"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
@@ -192,7 +192,7 @@ func (s *Service) ServiceShutdown() error {
 
 // Report hands a player report to the scrobbler. It never waits on the
 // network. It isn't a method, so Wails doesn't bind it.
-func Report(s *Service, r player.Report) { s.scrobbler.report(r) }
+func Report(s *Service, r playback.Report) { s.scrobbler.report(r) }
 
 // --- status ------------------------------------------------------------------
 

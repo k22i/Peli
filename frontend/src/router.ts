@@ -1,7 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/react-router";
 
-import type { Watching } from "@bindings/player";
+import type { Watching } from "@bindings/playback";
 import type { Source } from "@bindings/streams";
 import type { Stream } from "@/lib/addon-protocol";
 import { trackNavDirection } from "@/lib/nav-direction";

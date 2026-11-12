@@ -1,7 +1,7 @@
 import { queryOptions, type QueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 
-import type { Watching } from "@bindings/player";
+import type { Watching } from "@bindings/playback";
 import type { LibraryItem, Progress, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import {

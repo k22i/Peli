@@ -1,3 +1,5 @@
+//go:build !ios
+
 // The C side of the render API hosts (video_darwin.m, video_linux.c), which
 // host_darwin.go and host_linux.go call. One video surface per process: the
 // app has one window.

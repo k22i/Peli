@@ -3,7 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type * as Runtime from "@wailsio/runtime";
-import type { Ended, State, Track, Watching } from "@bindings/player";
+import type { Ended, State } from "@bindings/player";
+import type { Track, Watching } from "@bindings/playback";
 import type { Segment, Title } from "@bindings/markers";
 import type {
   Addon,

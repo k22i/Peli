@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/k22i/Peli/internal/animelist"
-	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/simkl"
 )
 
@@ -29,7 +29,7 @@ var (
 )
 
 // ids returns w's ids by catalog: the content id's own, then the meta's.
-func ids(w player.Watching) map[string]string {
+func ids(w playback.Watching) map[string]string {
 	out := map[string]string{}
 	for key, value := range w.IDs {
 		key = strings.ToLower(key)
@@ -60,7 +60,7 @@ func ids(w player.Watching) map[string]string {
 
 // animeNative reports whether w's content id is an anime catalog's, so its
 // episodes are numbered within the one cour.
-func animeNative(w player.Watching) bool {
+func animeNative(w playback.Watching) bool {
 	prefix, _, ok := strings.Cut(w.ContentID, ":")
 	if !ok {
 		prefix, _, ok = strings.Cut(w.ContentID, "_")
@@ -77,7 +77,7 @@ func animeNative(w player.Watching) bool {
 
 // isAnime reports whether w is anime: an anime catalog's id, or an IMDb id
 // the anime list knows.
-func (s *Service) isAnime(ctx context.Context, w player.Watching) bool {
+func (s *Service) isAnime(ctx context.Context, w playback.Watching) bool {
 	if animeNative(w) {
 		return true
 	}
@@ -90,13 +90,13 @@ func (s *Service) isAnime(ctx context.Context, w player.Watching) bool {
 	return s.anime != nil && s.anime.IsAnime(ctx, all["imdb"])
 }
 
-func isMovie(w player.Watching) bool { return w.ContentType == "movie" }
+func isMovie(w playback.Watching) bool { return w.ContentType == "movie" }
 
 // simklItem is what SIMKL scrobbles w as, or false when there aren't the
 // ids or numbers for it. An anime catalog's title goes as anime with its
 // own ids only: SIMKL tries ids in a fixed order, and an IMDb id would
 // name the whole series while the episode's number counts within the cour.
-func simklItem(w player.Watching) (simkl.Item, bool) {
+func simklItem(w playback.Watching) (simkl.Item, bool) {
 	all := ids(w)
 	media := &simkl.Media{Title: w.Name, Year: w.Year, IDs: simkl.IDs{}}
 	if media.Title == "" {
@@ -135,7 +135,7 @@ func simklItem(w player.Watching) (simkl.Item, bool) {
 }
 
 // aniListRef is how the anime list looks w up.
-func aniListRef(w player.Watching) animelist.Ref {
+func aniListRef(w playback.Watching) animelist.Ref {
 	all := ids(w)
 	num := func(key string) int { n, _ := strconv.Atoi(all[key]); return n }
 	ref := animelist.Ref{AniList: num("anilist"), MAL: num("mal"), Kitsu: num("kitsu")}

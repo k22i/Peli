@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import type { Watching } from "@bindings/player";
+import type { Watching } from "@bindings/playback";
 import {
   duration,
   formatCode,

@@ -1,41 +1,11 @@
+//go:build !ios
+
 package player
 
 import (
 	"fmt"
-	"regexp"
 	"runtime"
-	"slices"
 	"strconv"
-)
-
-// SubtitleStyle is how text subtitles look: the profile's choice,
-// applied at every load and changed live from the player. Subtitles that
-// bring their own styling (ASS) keep it unless Override is on.
-type SubtitleStyle struct {
-	// Font is "sans", "serif" or "mono": a face this OS has for each.
-	Font string `json:"font"`
-	// Size is a percentage of mpv's own size, 50–200.
-	Size int `json:"size"`
-	// Color is the text's "#RRGGBB".
-	Color string `json:"color"`
-	// Edge is how the text stands off the picture: "none", "outline",
-	// "shadow" or "box".
-	Edge string `json:"edge"`
-	// Backdrop is the box's opacity for Edge "box", 0–100.
-	Backdrop int `json:"backdrop"`
-	// Lift raises the subtitles from their usual place, in percent of the
-	// picture's height, 0–30.
-	Lift int  `json:"lift"`
-	Bold bool `json:"bold"`
-	// Override restyles subtitles that bring their own styling too.
-	Override bool `json:"override"`
-}
-
-// SubtitleFonts and SubtitleEdges are a SubtitleStyle's choices.
-var (
-	SubtitleFonts = []string{"sans", "serif", "mono"}
-	SubtitleEdges = []string{"none", "outline", "shadow", "box"}
-	hexRGB        = regexp.MustCompile(`^#[0-9A-Fa-f]{6}$`)
 )
 
 // fontNames are the faces mpv asks the OS for, by Font. Each OS has them
@@ -46,14 +16,8 @@ var fontNames = map[string]map[string]string{
 	"linux":   {"sans": "Sans", "serif": "Serif", "mono": "Monospace"},
 }
 
-func (st SubtitleStyle) valid() bool {
-	return slices.Contains(SubtitleFonts, st.Font) && st.Size >= 50 && st.Size <= 200 &&
-		hexRGB.MatchString(st.Color) && slices.Contains(SubtitleEdges, st.Edge) &&
-		st.Backdrop >= 0 && st.Backdrop <= 100 && st.Lift >= 0 && st.Lift <= 30
-}
-
-// props are the mpv properties that draw st, set in this order.
-func (st SubtitleStyle) props() [][2]string {
+// styleProps are the mpv properties that draw st, set in this order.
+func styleProps(st SubtitleStyle) [][2]string {
 	fonts := fontNames[runtime.GOOS]
 	if fonts == nil {
 		fonts = fontNames["linux"]
@@ -99,10 +63,10 @@ func (st SubtitleStyle) props() [][2]string {
 
 // SetSubtitleStyle draws text subtitles in style from now on.
 func (s *Service) SetSubtitleStyle(style SubtitleStyle) error {
-	if !style.valid() {
+	if !style.Valid() {
 		return ErrInvalid
 	}
-	for _, p := range style.props() {
+	for _, p := range styleProps(style) {
 		if err := s.set(p[0], p[1]); err != nil {
 			return err
 		}

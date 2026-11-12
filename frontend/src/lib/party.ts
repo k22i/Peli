@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
 import { useEffect, useEffectEvent } from "react";
 
-import type { Watching } from "@bindings/player";
+import type { Watching } from "@bindings/playback";
 import {
   Service as Party,
   type Chat,
