@@ -409,7 +409,7 @@ function DetailsButton({ title }: { title: TitlePreview }) {
 
 function PlayButton({ resume, onClick }: { resume: boolean; onClick: () => void }) {
   return (
-    <Button size="xl" variant="light" className="min-w-36" onClick={onClick}>
+    <Button size="xl" variant="light" className="min-w-36 ios-compact:min-w-0" onClick={onClick}>
       {resume ? <RotateCcw /> : <Play className="fill-current" />}
       {resume ? "Resume" : "Play"}
     </Button>

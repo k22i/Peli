@@ -77,6 +77,7 @@ export function SurpriseButton({
     <Button
       size="xl"
       variant="media"
+      className="ios-compact:px-4"
       onClick={async () => {
         try {
           const [library, marks, catalog] = await Promise.all([
@@ -102,7 +103,8 @@ export function SurpriseButton({
       }}
     >
       <Shuffle />
-      Surprise me
+      {/* A glyph on a phone: the hero's actions share one row. */}
+      <span className="ios-compact:sr-only">Surprise me</span>
     </Button>
   );
 }
