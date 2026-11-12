@@ -17,6 +17,8 @@
 // a landscape card is 864, which `small` (480) can't fill but `medium`
 // (1920, already full HD) can. The hero keeps `medium` backdrops.
 
+import { isIOS } from "@/lib/platform";
+
 export type ArtworkUse = "poster" | "landscape" | "backdrop" | "logo" | "avatar";
 
 const metahub =
@@ -59,4 +61,18 @@ export function sharper(url: string | undefined, use: ArtworkUse): string | unde
   }
 
   return url;
+}
+
+// An `http:` image can't load in the iOS webview: App Transport Security
+// stops a plain-http subresource to a domain, and ADR-0055 keeps the app's
+// network rules strict. On iOS those go through the app's own server, which
+// fetches them from Go (imageproxy_ios.go). https and everything off iOS
+// load as they are. Never log the result: it holds the original URL.
+export const imageProxyPath = "/__image?url=";
+
+export function viaProxy(url: string): string;
+export function viaProxy(url: string | undefined): string | undefined;
+export function viaProxy(url: string | undefined): string | undefined {
+  if (url === undefined || !isIOS() || !url.startsWith("http:")) return url;
+  return imageProxyPath + encodeURIComponent(url);
 }

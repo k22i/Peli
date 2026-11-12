@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 
-import { sharper, type ArtworkUse } from "@/lib/artwork-url";
+import { sharper, viaProxy, type ArtworkUse } from "@/lib/artwork-url";
 import { cn } from "@/lib/utils";
 
 // A stable hue per title, so a title without artwork always gets the same
@@ -106,7 +106,7 @@ export function Artwork({
       )}
       {fallback && fallback !== src && status !== "loaded" && seen.get(fallback) !== "failed" && (
         <img
-          src={fallback}
+          src={viaProxy(fallback)}
           alt=""
           decoding="async"
           draggable={false}
@@ -117,7 +117,7 @@ export function Artwork({
       )}
       {src && status !== "failed" && (
         <img
-          src={src}
+          src={viaProxy(src)}
           alt=""
           loading="lazy"
           decoding="async"

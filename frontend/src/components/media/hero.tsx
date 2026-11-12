@@ -3,7 +3,7 @@ import { Children, useState, type ReactNode, type Ref } from "react";
 import { Artwork } from "@/components/media/artwork";
 import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { Skeleton } from "@/components/ui/skeleton";
-import { sharper } from "@/lib/artwork-url";
+import { sharper, viaProxy } from "@/lib/artwork-url";
 import { cn } from "@/lib/utils";
 
 // feature  Home's marquee: the whole window's width, pulled up under the top
@@ -185,7 +185,7 @@ export function Logo({
   const shown = failed.includes(sharp) ? src : sharp;
   return (
     <img
-      src={shown}
+      src={viaProxy(shown)}
       alt={title}
       onError={() => setFailed([...failed, shown])}
       className={cn(

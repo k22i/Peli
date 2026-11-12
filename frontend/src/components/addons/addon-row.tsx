@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { viaProxy } from "@/lib/artwork-url";
 import {
   ArrowDown,
   ArrowDownToLine,
@@ -131,7 +132,7 @@ export function AddonRow({
 
       {manifest.data?.logo && !logoFailed ? (
         <img
-          src={manifest.data.logo}
+          src={viaProxy(manifest.data.logo)}
           alt=""
           className="size-11 shrink-0 rounded-[0.8rem] bg-muted object-contain hairline"
           onError={() => setLogoFailed(true)}
