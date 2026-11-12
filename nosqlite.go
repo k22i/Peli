@@ -1,4 +1,4 @@
-//go:build production && cgo && !nosqlite
+//go:build production && cgo && !nosqlite && !ios
 
 package main
 

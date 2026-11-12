@@ -4,14 +4,10 @@ import (
 	"cmp"
 	"context"
 	"embed"
-	"log"
 	"os"
 	"path/filepath"
-	"runtime"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
-	"github.com/wailsapp/wails/v3/pkg/events"
-	"github.com/wailsapp/wails/v3/pkg/updater"
 
 	"github.com/k22i/Peli/internal/account"
 	"github.com/k22i/Peli/internal/addons"
@@ -20,21 +16,17 @@ import (
 	"github.com/k22i/Peli/internal/animelist"
 	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/backend"
-	"github.com/k22i/Peli/internal/firstmouse"
 	"github.com/k22i/Peli/internal/licences"
 	"github.com/k22i/Peli/internal/markers"
 	"github.com/k22i/Peli/internal/nuvio"
-	"github.com/k22i/Peli/internal/party"
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
-	"github.com/k22i/Peli/internal/plugins"
 	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
 	"github.com/k22i/Peli/internal/syncer"
-	"github.com/k22i/Peli/internal/torrent"
 	"github.com/k22i/Peli/internal/tracking"
-	"github.com/k22i/Peli/internal/updates"
 	"github.com/k22i/Peli/internal/watching"
 )
 
@@ -50,182 +42,146 @@ var (
 	windowColourDark  = application.NewRGB(14, 13, 12)
 )
 
-func main() {
-	// Started as a plugin sandbox (#56): run that one call and exit, before
-	// anything of the app starts.
-	plugins.ServeChild()
-	// Started by an update (#83) to put the new Peli.app in place once this
-	// one has quit, and open it. application.New does this too, but only
-	// after everything above it in main has run.
-	updater.HandleHelperMode()
+// What the app is, for the application's options on every platform.
+const description = "A desktop client for Stremio-compatible addons, with Nuvio sync"
 
-	firstmouse.Enable()
+// peli is the services both builds share: everything the iOS build (ADR-0055)
+// has, and the desktop build adds to. main_desktop.go and main_ios.go decide
+// the rest: which platform services join them, the window, and what the
+// window's and the app's lifecycle do.
+//
+// Nothing here may import a package the iOS build leaves out (torrent,
+// plugins, party, updates, firstmouse, the libmpv engine); main_test.go checks
+// the dependency list.
+type peli struct {
+	db        *store.Service
+	keychain  *secrets.Keychain
+	accounts  *account.Service
+	sync      *syncer.Service
+	skipTimes *markers.Service
+	watched   *watching.Reporter
+	trackers  *tracking.Service
+	// players is the libmpv Service on the desktop and the stub or iOS engine
+	// host on iOS: the same bound methods either way.
+	players *player.Service
 
-	// An install from when the app was Sinag moves to Peli's folders first.
-	if err := store.MoveFromSinag(); err != nil {
-		log.Printf("moving Sinag's folders to Peli's: %v", err)
-	}
-	db := store.NewService(store.DefaultPath())
-	keychain := secrets.New(secrets.ServiceName).MovesFrom(secrets.LegacyServiceName)
+	client       *nuvio.Client
+	animeList    *animelist.List
+	addonFetcher *addons.Service
+}
+
+// newPeli builds the services around the database at dbPath.
+func newPeli(dbPath string) *peli {
+	p := &peli{}
+	p.db = store.NewService(dbPath)
+	p.keychain = secrets.New(secrets.ServiceName).MovesFrom(secrets.LegacyServiceName)
 	// $PELI_NUVIO_URL stands in for Nuvio's backend, such as the contract
 	// tests' self-host (#33). A server the user picks in Settings (#34) is
 	// restored over it when the account service starts.
-	client := nuvio.New(cmp.Or(os.Getenv("PELI_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
-	accounts := account.NewService(client, keychain, db)
-	sync := syncer.NewService(db, backend.Nuvio{Client: client, Sessions: account.SessionOf(accounts)})
+	p.client = nuvio.New(cmp.Or(os.Getenv("PELI_NUVIO_URL"), nuvio.DefaultURL), appinfo.Version)
+	p.accounts = account.NewService(p.client, p.keychain, p.db)
+	p.sync = syncer.NewService(p.db, backend.Nuvio{Client: p.client, Sessions: account.SessionOf(p.accounts)})
 	// Sending what is queued is the first step of signing out (#30).
-	account.FlushOnSignOut(accounts, syncer.PusherOf(sync))
+	account.FlushOnSignOut(p.accounts, syncer.PusherOf(p.sync))
 	// Profiles deleted, added or re-PINned elsewhere show at the next sync.
-	syncer.RefreshProfilesWith(syncer.PullerOf(sync), account.ProfileRefresher(accounts))
-	players := player.NewService(appinfo.Version)
-	// Hardware decoding, as Settings › Playback has it (#66).
-	player.UseSettings(players, db)
-	skipTimes := markers.NewService(appinfo.Version)
-	markers.UseSettings(skipTimes, db)
+	syncer.RefreshProfilesWith(syncer.PullerOf(p.sync), account.ProfileRefresher(p.accounts))
+	p.players = player.NewService(appinfo.Version)
+	p.skipTimes = markers.NewService(appinfo.Version)
+	markers.UseSettings(p.skipTimes, p.db)
 	// How far each film or episode plays becomes the profile's progress, and
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.
-	watched := watching.New(func() *store.Store { return store.Opened(db) }, syncer.PusherOf(sync).FlushProgress)
+	p.watched = watching.New(func() *store.Store { return store.Opened(p.db) }, syncer.PusherOf(p.sync).FlushProgress)
 	// The anime list maps ids for tracking (#71), the AniList addon (#108)
 	// and leaving anime out of Movies and Shows (#109).
-	animeList := animelist.New(animelist.DefaultURL, filepath.Dir(store.DefaultPath()))
+	p.animeList = animelist.New(animelist.DefaultURL, filepath.Dir(dbPath))
 	anilistClient := anilist.New(anilist.DefaultURL, appinfo.Version)
 	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
-	trackers := tracking.NewService(tracking.Config{
+	p.trackers = tracking.NewService(tracking.Config{
 		Simkl:           simkl.New(simkl.DefaultURL, cmp.Or(os.Getenv("PELI_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
 		AniList:         anilistClient,
 		AniListClientID: cmp.Or(os.Getenv("PELI_ANILIST_CLIENT_ID"), tracking.AniListClientID),
-		Anime:           animeList,
-		Keychain:        keychain,
-		Open:            func() *store.Store { return store.Opened(db) },
+		Anime:           p.animeList,
+		Keychain:        p.keychain,
+		Open:            func() *store.Store { return store.Opened(p.db) },
 	})
 	// Addon requests the webview's fetch can't make (#37), and the addons
 	// built into Peli (#107): AniList's lists and details (#108).
-	addonFetcher := addons.NewService(appinfo.Version)
-	addonFetcher.Register(anilistaddon.Name,
-		anilistaddon.New(anilistClient, animeList, anilistaddon.KitsuURL, appinfo.Version))
-	go animeList.Warm(context.Background())
-	// Plugins are off for every profile until its owner turns them on, and
-	// never run for a kids profile (#57); their list is the profile's, kept
-	// in the store and synced with Nuvio.
-	pluginHost := plugins.NewService(appinfo.Version)
-	plugins.UseStore(pluginHost, func() *store.Store { return store.Opened(db) }, account.EditorOf(accounts))
-	player.ReportTo(players, func(r player.Report) {
-		watched.Report(r)
-		tracking.Report(trackers, r)
+	p.addonFetcher = addons.NewService(appinfo.Version)
+	p.addonFetcher.Register(anilistaddon.Name,
+		anilistaddon.New(anilistClient, p.animeList, anilistaddon.KitsuURL, appinfo.Version))
+	go p.animeList.Warm(context.Background())
+	player.ReportTo(p.players, func(r playback.Report) {
+		p.watched.Report(r)
+		tracking.Report(p.trackers, r)
 	})
-	// Watch parties with Nuvio's apps (ADR-0051): the party keeps the
-	// player in step, and the user's pauses and seeks go through it first.
-	parties := party.NewService(backend.Parties{Client: client, Sessions: account.SessionOf(accounts)},
-		party.Who(db, account.SessionOf(accounts).SignedIn))
-	party.UsePlayer(parties, player.DirectOf(players))
-	player.GateWith(players, party.GateOf(parties))
-	// Updates (#83, ADR-0054): checked and downloaded in the background,
-	// installed when the user restarts, never while something plays.
-	appUpdates := updates.NewService(appinfo.Version)
-	updates.UseSettings(appUpdates, db)
-	updates.UsePlayer(appUpdates, func() bool { return player.Playing(players) })
+	return p
+}
 
-	app := application.New(application.Options{
-		Name:        "Peli",
-		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
-		Services: []application.Service{
-			application.NewService(&appinfo.Service{}),
-			application.NewServiceWithOptions(appUpdates,
-				application.ServiceOptions{MarshalError: updates.MarshalError}),
-			application.NewService(&licences.Service{}),
-			application.NewService(db),
-			application.NewService(secrets.NewService(keychain)),
-			application.NewServiceWithOptions(accounts,
-				application.ServiceOptions{MarshalError: account.MarshalError}),
-			application.NewService(sync),
-			// Which IMDb ids are anime, for Movies and Shows (#109).
-			application.NewService(animelist.NewService(animeList)),
-			application.NewServiceWithOptions(addonFetcher,
-				application.ServiceOptions{MarshalError: addons.MarshalError}),
-			// Resolving a picked stream to the file the player loads (#53).
-			application.NewServiceWithOptions(streams.NewService(appinfo.Version),
-				application.ServiceOptions{MarshalError: streams.MarshalError}),
-			// Nuvio JS plugins, each call in its own sandbox process (#56),
-			// and which ones a profile runs (#57).
-			application.NewServiceWithOptions(pluginHost,
-				application.ServiceOptions{MarshalError: plugins.MarshalError}),
-			// Torrents streamed peer to peer, if the user turns it on (#55).
-			application.NewServiceWithOptions(torrent.NewService(db, torrent.DefaultDir(), appinfo.Version),
-				application.ServiceOptions{MarshalError: torrent.MarshalError}),
-			// Before the player, so it shuts down after it and sends the
-			// last stop.
-			application.NewServiceWithOptions(trackers,
-				application.ServiceOptions{MarshalError: tracking.MarshalError}),
-			// libmpv under the webview (#60).
-			application.NewService(skipTimes),
-			application.NewServiceWithOptions(players,
-				application.ServiceOptions{MarshalError: player.MarshalError}),
-			// After the player, so it leaves the party first on the way out.
-			application.NewServiceWithOptions(parties,
-				application.ServiceOptions{MarshalError: party.MarshalError}),
-		},
-		Assets: application.AssetOptions{
-			Handler: application.AssetFileServerFS(assets),
-		},
-		Mac: application.MacOptions{
-			ApplicationShouldTerminateAfterLastWindowClosed: true,
-		},
-	})
+// extras are the platform services that join the shared ones; nil is left
+// out. Where they sit keeps the order the desktop app has always started and
+// shut them down in.
+type extras struct {
+	updates, plugins, torrent, parties application.Service
+}
 
-	window := app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Title: "Peli",
-		// Opens at 1600×900 (16:9), midway between 1280×720 and 1920×1080.
-		Width:  1600,
-		Height: 900,
-		// The app shell draws the title bar where the OS allows (#12): macOS
-		// keeps its traffic lights over the shell's 44px drag strip, Windows
-		// is frameless with our own caption buttons, and Linux keeps its
-		// native frame (GNOME, KDE and tiling WMs disagree on decorations).
-		Mac: application.MacWindow{
-			InvisibleTitleBarHeight: 44,
-			Backdrop:                application.MacBackdropTranslucent,
-			TitleBar:                application.MacTitleBarHiddenInset,
-		},
-		Frameless: runtime.GOOS == "windows",
-		// The shell's outer colour (--sidebar), so there is no flash on load.
-		// Dark until the OS appearance is known below; the frontend then
-		// follows the user's theme (frontend/src/lib/theme.ts).
-		BackgroundColour: windowColourDark,
-		URL:              "/",
-	})
-
-	player.UseWindow(players, window)
-	player.UseMediaControls(players)
-
-	// Pull from Nuvio once the window is up, so the cached UI never waits for
-	// it, and again each time the window gets focus (#29).
-	puller, pusher := syncer.PullerOf(sync), syncer.PusherOf(sync)
-	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
-		if !app.Env.IsDarkMode() {
-			window.SetBackgroundColour(windowColourLight)
+// services lists every service to register, in order.
+func (p *peli) services(x extras) []application.Service {
+	var list []application.Service
+	add := func(s application.Service) {
+		if s.Instance() != nil {
+			list = append(list, s)
 		}
-		puller.Background(context.Background())
-		importTracked(trackers, db)
-	})
-	// Focus also retries pushes that failed, such as after being offline (#30).
-	window.OnWindowEvent(events.Common.WindowFocus, func(*application.WindowEvent) {
-		puller.Background(context.Background())
-		pusher.Background(context.Background())
-		importTracked(trackers, db)
-	})
-
-	if err := app.Run(); err != nil {
-		log.Fatal(err)
 	}
+	list = append(list, application.NewService(&appinfo.Service{}))
+	add(x.updates)
+	list = append(list,
+		application.NewService(&licences.Service{}),
+		application.NewService(p.db),
+		application.NewService(secrets.NewService(p.keychain)),
+		application.NewServiceWithOptions(p.accounts,
+			application.ServiceOptions{MarshalError: account.MarshalError}),
+		application.NewService(p.sync),
+		// Which IMDb ids are anime, for Movies and Shows (#109).
+		application.NewService(animelist.NewService(p.animeList)),
+		application.NewServiceWithOptions(p.addonFetcher,
+			application.ServiceOptions{MarshalError: addons.MarshalError}),
+		// Resolving a picked stream to the file the player loads (#53).
+		application.NewServiceWithOptions(streams.NewService(appinfo.Version),
+			application.ServiceOptions{MarshalError: streams.MarshalError}),
+	)
+	add(x.plugins)
+	add(x.torrent)
+	list = append(list,
+		// Before the player, so it shuts down after it and sends the last
+		// stop.
+		application.NewServiceWithOptions(p.trackers,
+			application.ServiceOptions{MarshalError: tracking.MarshalError}),
+		application.NewService(p.skipTimes),
+		application.NewServiceWithOptions(p.players,
+			application.ServiceOptions{MarshalError: player.MarshalError}),
+	)
+	// After the player, so it leaves the party first on the way out.
+	add(x.parties)
+	return list
 }
 
 // importTracked imports SIMKL's and AniList's watches for the profile in
 // use (#74, #105), at most every 15 minutes.
-func importTracked(trackers *tracking.Service, db *store.Service) {
-	if s := store.Opened(db); s != nil {
+func (p *peli) importTracked() {
+	if s := store.Opened(p.db); s != nil {
 		if profile, ok, err := s.ProfileInUse(); err == nil && ok {
-			trackers.ImportSoon(profile.ID)
+			p.trackers.ImportSoon(profile.ID)
 		}
 	}
+}
+
+// pullAndPush is what bringing the app to the front does: pull from Nuvio, and
+// retry the pushes that failed, such as after being offline (#29, #30), and
+// import SIMKL's and AniList's watches.
+func (p *peli) pullAndPush() {
+	ctx := context.Background()
+	syncer.PullerOf(p.sync).Background(ctx)
+	syncer.PusherOf(p.sync).Background(ctx)
+	p.importTracked()
 }

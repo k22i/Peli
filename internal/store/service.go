@@ -5,17 +5,17 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/adrg/xdg"
 	"github.com/wailsapp/wails/v3/pkg/application"
 )
 
 // DefaultPath is where the database lives: Peli/peli.db in the OS app-data
 // directory (~/Library/Application Support, %LOCALAPPDATA% or
-// $XDG_DATA_HOME), or in $PELI_DATA_DIR when set.
+// $XDG_DATA_HOME), or in $PELI_DATA_DIR when set. On iOS it is peli.db in the
+// app's own Application Support folder (datadir_ios.go).
 func DefaultPath() string {
 	dir := os.Getenv("PELI_DATA_DIR")
 	if dir == "" {
-		dir = filepath.Join(xdg.DataHome, "Peli")
+		dir = dataDir()
 	}
 	return filepath.Join(dir, "peli.db")
 }
