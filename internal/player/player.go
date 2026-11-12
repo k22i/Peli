@@ -401,6 +401,10 @@ var options = [][2]string{
 	// place it; mpv 0.41 has no secondary-sub-scale. Hidden, mpv still
 	// decodes it and reports secondary-sub-text.
 	{"secondary-sub-visibility", "no"},
+	// Interleaved float. mpv 0.41's CoreAudio output asks for planar float
+	// by default, and when the file's rate is the device's (48 kHz on
+	// AirPods) AudioUnit refuses the channel map (-50): "no sound".
+	{"audio-format", "float"},
 }
 
 // Settings is where a session reads whether to decode on the GPU: the
