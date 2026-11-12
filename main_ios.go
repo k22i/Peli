@@ -36,7 +36,7 @@ func main() {
 		Description: description,
 		Services:    p.services(extras{}),
 		Assets: application.AssetOptions{
-			Handler: application.AssetFileServerFS(assets),
+			Handler: devAssets(application.AssetFileServerFS(assets)),
 		},
 		// The signal handler is a no-op on iOS whatever this says (Wails'
 		// signal_handler_ios.go); it is set, as in Wails' own iOS template,
@@ -66,6 +66,8 @@ func main() {
 		BackgroundColour: windowColourDark,
 		URL:              "/",
 	})
+
+	devStart(app, window, p)
 
 	// Pull from Nuvio once the app is up, so the cached UI never waits for it.
 	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
