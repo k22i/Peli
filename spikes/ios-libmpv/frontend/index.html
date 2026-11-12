@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>libmpv spike</title>
+<style>
+  /* Everything transparent: the video view sits behind the webview. */
+  html, body { margin: 0; height: 100%; background: transparent; color: #fff;
+    font: 15px -apple-system, system-ui, sans-serif; -webkit-user-select: none; user-select: none; }
+  body { display: flex; flex-direction: column; justify-content: space-between; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: center;
+    padding: 10px; background: rgba(20, 20, 24, 0.55);
+    -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+  .top { border-radius: 0 0 14px 14px; }
+  .bottom { border-radius: 14px 14px 0 0; }
+  button { font: inherit; color: #fff; background: rgba(255,255,255,.18); border: 0; border-radius: 10px;
+    padding: 10px 14px; min-width: 56px; }
+  button:active { background: rgba(255,255,255,.35); }
+  #info { font-variant-numeric: tabular-nums; font-size: 13px; opacity: .9; text-align: center; width: 100%; }
+  input { font: inherit; width: 100%; padding: 8px; border-radius: 8px; border: 0; background: rgba(255,255,255,.2); color: #fff; }
+  #seek { width: 100%; }
+</style>
+</head>
+<body>
+<div class="bar top">
+  <input id="url" placeholder="http://127.0.0.1:8765/h264-dts-srt.mkv">
+  <button id="load">Load</button>
+  <button id="stop">Stop</button>
+</div>
+<div class="bar bottom">
+  <input id="seek" type="range" min="0" max="1000" value="0">
+  <button id="seekback">−10 s</button>
+  <button id="pause">Play/Pause</button>
+  <button id="seekfwd">+10 s</button>
+  <button id="audio">Audio ↻</button>
+  <button id="sub">Subs ↻</button>
+  <div id="info">no video</div>
+</div>
+<script type="module">
+import { Call, Events } from "/wails/runtime.js";
+const $ = (id) => document.getElementById(id);
+const go = (m, ...a) => Call.ByName("main.Player." + m, ...a).catch((e) => { $("info").textContent = "error: " + e; });
+const S = { t: 0, d: 0, pause: false, tracks: [], aid: "", sid: "", hwdec: "", fmt: "" };
+
+function render() {
+  const a = S.tracks.filter((t) => t.type === "audio"), s = S.tracks.filter((t) => t.type === "sub");
+  const cur = (list, id) => { const t = list.find((x) => String(x.id) === String(id)); return t ? `${t.lang || "und"}/${t.codec}` : "off"; };
+  $("info").textContent = `${S.pause ? "⏸" : "▶"} ${S.t.toFixed(1)} / ${S.d.toFixed(1)} s · audio ${cur(a, S.aid)} (${a.length}) · subs ${cur(s, S.sid)} (${s.length}) · ${S.fmt || "-"} · hwdec ${S.hwdec || "none"}`;
+  if (S.d > 0 && !dragging) $("seek").value = String(Math.round((S.t / S.d) * 1000));
+}
+let dragging = false;
+Events.On("mpv:time-pos", (e) => { S.t = Number(e.data) || 0; render(); });
+Events.On("mpv:duration", (e) => { S.d = Number(e.data) || 0; render(); });
+Events.On("mpv:pause", (e) => { S.pause = e.data === true; render(); });
+Events.On("mpv:aid", (e) => { S.aid = e.data; render(); });
+Events.On("mpv:sid", (e) => { S.sid = e.data; render(); });
+Events.On("mpv:hwdec-current", (e) => { S.hwdec = e.data; render(); });
+Events.On("mpv:video-format", (e) => { S.fmt = e.data; render(); });
+Events.On("mpv:track-list", (e) => { try { S.tracks = Array.isArray(e.data) ? e.data : []; } catch { S.tracks = []; } render(); });
+Events.On("spike:error", (e) => { $("info").textContent = "error: " + e.data; });
+
+$("load").onclick = () => go("Load", $("url").value || $("url").placeholder);
+$("stop").onclick = () => go("Stop");
+$("pause").onclick = () => go("TogglePause");
+$("seekback").onclick = () => go("Seek", -10);
+$("seekfwd").onclick = () => go("Seek", 10);
+$("audio").onclick = () => go("CycleAudio");
+$("sub").onclick = () => go("CycleSub");
+$("seek").addEventListener("input", () => { dragging = true; });
+$("seek").addEventListener("change", () => { dragging = false; if (S.d > 0) go("SeekTo", (Number($("seek").value) / 1000) * S.d); });
+</script>
+</body>
+</html>
