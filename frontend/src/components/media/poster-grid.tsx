@@ -17,7 +17,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cardRem, remToPx } from "@/components/media/row";
+import { cardWidthRem, remToPx } from "@/components/media/row";
 import {
   RovingContext,
   RovingIndexContext,
@@ -92,7 +92,7 @@ export function PosterGrid<T>({
   const [scrollElement, setScrollElement] = useState<HTMLElement | null>(null);
   const [layout, setLayout] = useState(() => ({
     columns: 1,
-    cardWidth: remToPx(cardRem.poster),
+    cardWidth: remToPx(cardWidthRem("poster")),
     top: 0,
   }));
   const { columns, cardWidth } = layout;
@@ -122,7 +122,7 @@ export function PosterGrid<T>({
     const update = () => {
       const style = getComputedStyle(element);
       const width = element.clientWidth - px(style.paddingLeft) - px(style.paddingRight);
-      const poster = remToPx(cardRem.poster);
+      const poster = remToPx(cardWidthRem("poster"));
       const fit = Math.max(Math.floor((width + columnGapPx) / (poster + columnGapPx)), 1);
       setLayout({
         columns: fit,

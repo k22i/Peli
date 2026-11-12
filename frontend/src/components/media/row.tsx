@@ -46,6 +46,18 @@ const artEdge: Record<CardShape, { top: string; height: string }> = {
 export const cardRem: Record<CardShape, number> = { poster: 11.5, landscape: 20 };
 const gapPx = 16;
 
+// The card width in rem as the page has it now: the iOS app shrinks the
+// cards at compact width (index.css), so the virtualizer and the grid read
+// the variable instead of the constants. Falls back to them where there are
+// no custom properties (jsdom).
+export function cardWidthRem(shape: CardShape): number {
+  if (typeof document === "undefined") return cardRem[shape];
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(`--container-${shape}`)
+    .trim();
+  return value.endsWith("rem") ? Number.parseFloat(value) || cardRem[shape] : cardRem[shape];
+}
+
 export const remToPx = (rem: number) =>
   rem * (Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16);
 
@@ -132,7 +144,7 @@ export function Row<T>({
     horizontal: true,
     count,
     getScrollElement: () => scroller.current,
-    estimateSize: (index) => remToPx(cardRem[shapeOf(index)]),
+    estimateSize: (index) => remToPx(cardWidthRem(shapeOf(index))),
     getItemKey: (index) => getKey(items[index]!, index),
     gap: gapPx,
     // The page gutter, so the first card lines up with the title.

@@ -21,6 +21,25 @@
  * paint and src/lib/theme.ts keeps it in step with the OS or Settings.
  */
 @custom-variant dark (&:where(.dark, .dark *));
+/* The iOS app at compact width: an iPhone (upright or on its side) or a
+   narrow split view. Same query as compactQuery in lib/shell-mode.ts; a
+   desktop window, however narrow, never matches. */
+@custom-variant ios-compact {
+  :root[data-platform="ios"] & {
+    @media (max-width: 699.98px), (max-height: 499.98px) {
+      @slot;
+    }
+  }
+}
+/* The iOS app on its side on an iPhone (under 500 pt tall): every pt of
+   height counts, so sticky page headers scroll away instead of staying. */
+@custom-variant ios-short {
+  :root[data-platform="ios"] & {
+    @media (max-height: 499.98px) {
+      @slot;
+    }
+  }
+}
 @custom-variant reduced-transparency {
   @media (prefers-reduced-transparency: reduce) {
     @slot;
@@ -310,6 +329,16 @@
   --duration-base: 240ms;
   --duration-slow: 480ms;
   --radius: 0.625rem;
+}
+
+/* The iOS app at compact width (an iPhone, a narrow split view): smaller
+   cards, so a row shows two and a bit and the next one peeks in. Same query
+   as compactQuery in lib/shell-mode.ts. cardWidthRem in row.tsx reads these. */
+@media (max-width: 699.98px), (max-height: 499.98px) {
+  :root[data-platform="ios"] {
+    --container-poster: 9.25rem;
+    --container-landscape: 15rem;
+  }
 }
 
 /* Light: warm paper. */
