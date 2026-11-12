@@ -85,3 +85,4 @@
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
 - [iOS port](ios-port.md) — Phases 1–2: ADR-0055, ios tag rules, isIOS()/feature(), compact tab bar, safe areas, ATS, UIScene shim, simulator recipe, baseline failures
 - [iOS libmpv](ios-libmpv.md) — build-ios.sh xcframework, GLES under the Wails webview via NativeWindow(), 10-bit HEVC needs videotoolbox-copy
+- [Tests later](tests-later.md) — iOS port: skip test-suite runs, fix in one pass after; 2026-11-13 failing list
