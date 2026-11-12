@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Simulator builds are ad-hoc signed, and the simulator's keychain
+         answers errSecMissingEntitlement (-34018) to an app with no
+         keychain-access-groups. The group is the app id under a fixed
+         placeholder team; real device builds take theirs from the
+         provisioning profile (entitlements.plist). -->
+    <key>keychain-access-groups</key>
+    <array>
+        <string>PELISIM000.k22i.net.peli</string>
+    </array>
+</dict>
+</plist>

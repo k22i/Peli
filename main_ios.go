@@ -38,8 +38,26 @@ func main() {
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
 		},
+		// The signal handler is a no-op on iOS whatever this says (Wails'
+		// signal_handler_ios.go); it is set, as in Wails' own iOS template,
+		// so a future Wails that honours it doesn't install one.
+		DisableDefaultSignalHandler: true,
 		IOS: application.IOSOptions{
-			BackgroundColour: windowColourDark,
+			// The page scrolls inside its own panes (#content, rows), so the
+			// webview itself must not rubber-band or show an indicator.
+			DisableBounce:           true,
+			DisableScrollIndicators: true,
+			// A long press opens a title's menu (Base UI's context menu); the
+			// system's link preview would cover it. No Next/Previous/Done bar
+			// above the keyboard either.
+			DisableLinkPreview:        true,
+			DisableInputAccessoryView: true,
+			// The player's video plays inline, under the page (Phase 5).
+			EnableInlineMediaPlayback: true,
+			// The frontend finds out it is the iOS app from this token
+			// (lib/platform.ts): Wails doesn't inject its environment on iOS.
+			ApplicationNameForUserAgent: "PeliIOS",
+			BackgroundColour:            windowColourDark,
 		},
 	})
 

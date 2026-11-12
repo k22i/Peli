@@ -111,10 +111,9 @@ tasks:
         sh: xcrun --sdk {{.IOS_SDK}} --show-sdk-path
     cmds:
       - |
-        MAIN_M=build/ios/xcode/main/main.m
-        if [ ! -f "$MAIN_M" ]; then
-          MAIN_M=build/ios/main.m
-        fi
+        # Peli's own bootstrap (the UIScene delegate lives in it), not the
+        # copy generate:ios:xcode writes into xcode/.
+        MAIN_M=build/ios/main.m
         xcrun -sdk {{.IOS_SDK}} clang \
           -target {{.IOS_TARGET}} \
           -isysroot {{.SDK_PATH}} \
@@ -125,6 +124,7 @@ tasks:
           -framework AVFoundation \
           -framework CoreLocation -framework CoreMotion -framework SystemConfiguration \
           -lresolv \
+          {{if ne .IOS_PLATFORM "device"}}-Wl,-sectcreate,__TEXT,__entitlements,build/ios/entitlements.simulator.plist{{end}} \
           -o "{{.IOS_BIN_DIR}}/{{.APP_NAME | lower}}" \
           "$MAIN_M" -Wl,-force_load,"{{.IOS_BIN_DIR}}/{{.APP_NAME}}.a"
 
