@@ -10,6 +10,9 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
+	"github.com/k22i/Peli/internal/appinfo"
+	"github.com/k22i/Peli/internal/iosplayer"
+	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/syncer"
 )
@@ -24,8 +27,8 @@ const backgroundFlush = 20 * time.Second
 // bootstrap (build/ios), in the same process as the webview. Everything the
 // App Store build must not contain is left out of this file and of the
 // packages it imports: no torrent streaming, plugins, watch parties, auto-
-// update, first-mouse handling or libmpv engine yet (the iOS engine arrives
-// in Phase 5; until then the player Service answers "not available yet").
+// update or first-mouse handling; the player is internal/iosplayer (libmpv
+// in a UIKit view under the webview, Phase 5).
 // The frontend's bindings for the left-out services stay generated, and a
 // call to one fails with "unknown bound method" (see docs/adr/0055).
 func main() {
@@ -66,6 +69,10 @@ func main() {
 		BackgroundColour: windowColourDark,
 		URL:              "/",
 	})
+
+	// libmpv in a view under the transparent webview (ADR-0055). The video
+	// host finds the view controller through the window's native handle.
+	player.UseEngine(p.players, iosplayer.New(window.NativeWindow, player.SinkOf(p.players), p.db, appinfo.Version))
 
 	devStart(app, window, p)
 

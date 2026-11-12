@@ -66,6 +66,7 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 	for _, want := range []string{
 		"github.com/k22i/Peli/internal/playback",
 		"github.com/k22i/Peli/internal/player", // its iOS Service only, below
+		"github.com/k22i/Peli/internal/iosplayer",
 		"github.com/k22i/Peli/internal/store",
 		"github.com/k22i/Peli/internal/secrets",
 		"github.com/wailsapp/wails/v3/pkg/application",
@@ -80,11 +81,19 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 
 	// internal/player is in, but only types.go and service_ios.go: no libmpv,
 	// no AppKit, no cgo.
-	for _, pkg := range []string{"internal/player", "internal/secrets"} {
+	for _, pkg := range []string{"internal/player", "internal/secrets", "internal/iosplayer"} {
 		out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/"+pkg, "ios"))
 		parts := strings.Split(out, "|")
 		if len(parts) != 5 {
 			t.Fatalf("%s: unexpected go list output %q", pkg, out)
+		}
+		// internal/iosplayer is the iOS engine (ADR-0055): libmpv's client
+		// API from Go and the UIKit video host, and nothing else with cgo.
+		if pkg == "internal/iosplayer" {
+			if parts[1] != "[engine.go mpv.go]" || parts[2] != "[]" || parts[3] != "[host_ios.m]" || parts[4] != "[host_ios.h]" {
+				t.Errorf("internal/iosplayer files changed: %s; update the boundary test on purpose", out)
+			}
+			continue
 		}
 		for i, kind := range []string{"", "cgo", "C", "Objective-C", "header"} {
 			// secrets has one cgo file: Peli's own Keychain items, since
