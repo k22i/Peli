@@ -19,7 +19,7 @@ You need:
 - The Wails CLI, pinned to the version in `go.mod`:
 
   ```sh
-  go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.28
+  go install github.com/wailsapp/wails/v3/cmd/wails3@v3.1.0
   ```
 
 - Platform dependencies:

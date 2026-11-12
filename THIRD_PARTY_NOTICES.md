@@ -6728,7 +6728,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---
 
-## github.com/wailsapp/wails/v3 v3.0.0-beta.28
+## github.com/wailsapp/wails/v3 v3.1.0
 
 Licence: MIT
 
@@ -7784,7 +7784,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## golang.org/x/crypto v0.53.0
+## golang.org/x/crypto v0.57.0
 
 Licence: BSD-3-Clause
 
@@ -7892,7 +7892,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## golang.org/x/net v0.56.0
+## golang.org/x/net v0.60.0
 
 Licence: BSD-3-Clause
 
@@ -7964,7 +7964,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-## golang.org/x/sys v0.46.0
+## golang.org/x/sys v0.48.0
 
 Licence: BSD-3-Clause
 
@@ -8837,7 +8837,7 @@ MIT License
 
 ---
 
-## @wailsio/runtime 3.0.0-beta.28
+## @wailsio/runtime 3.1.0
 
 Licence: MIT
 
