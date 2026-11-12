@@ -24,6 +24,7 @@ import {
   SettingsPaneView,
 } from "@/components/settings/settings-section";
 import { TmdbDialog } from "@/components/settings/tmdb-dialog";
+import { UpdateRows } from "@/components/settings/update-rows";
 import { AniListDialog, SimklDialog } from "@/components/settings/tracking-dialogs";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
@@ -1523,6 +1524,7 @@ function AboutPane({ title }: { title: string }) {
         <SettingRow id="version" label="Version">
           <span className="tnum text-small text-muted-foreground">{version.data ?? "…"}</span>
         </SettingRow>
+        <UpdateRows />
         {/* The welcome screen says the same (#39). */}
         <SettingRow id="disclaimer" label="Content" description={contentDisclaimer} />
         <SettingRow id="licences" label="Licences" description="Open-source licences and notices.">

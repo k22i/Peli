@@ -122,6 +122,9 @@ type DeviceSettings struct {
 	Quality Quality `json:"quality"`
 	// Audio is this device's output.
 	Audio Audio `json:"audio"`
+	// Looking for and downloading updates by itself (#83). On unless the
+	// user turns it off; Peli still asks before it restarts.
+	AutoUpdate bool `json:"autoUpdate"`
 }
 
 var (
@@ -158,7 +161,7 @@ func DefaultProfileSettings() ProfileSettings {
 // DefaultDeviceSettings are the device's settings until they are changed.
 func DefaultDeviceSettings() DeviceSettings {
 	return DeviceSettings{
-		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
+		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 		Audio: DefaultAudio(),
 	}

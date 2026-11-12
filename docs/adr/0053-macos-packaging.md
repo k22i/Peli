@@ -64,4 +64,4 @@ A Developer ID build now calls Security.framework directly (`internal/secrets/na
 
 - The DMG goes over 40 MB on either architecture (two-thirds of the limit): look at what grew before it fails the release.
 - Apple removes `kSecUseAuthenticationUIFail`: switch to an `LAContext` with `interactionNotAllowed`, which needs a little Objective-C.
-- Auto-update (#83) lands. It replaces the app in place, so it has to keep the signature (same Team ID) for the keychain items to stay readable without a prompt.
+- Auto-update (#83) lands. It replaces the app in place, so it has to keep the signature (same Team ID) for the keychain items to stay readable without a prompt. Done in ADR-0054: an update must satisfy the running copy's Team ID.

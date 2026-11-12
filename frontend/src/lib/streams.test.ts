@@ -78,6 +78,7 @@ const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   hdr: "auto",
   dolbyVision: "auto",
   skipTimesOnline: true,
+  autoUpdate: true,
   diagnostics: false,
   torrentStreaming: false,
   torrentCacheGB: 5,

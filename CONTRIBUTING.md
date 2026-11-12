@@ -46,6 +46,20 @@ One DMG per architecture, signed with the hardened runtime and notarized ([ADR-0
 - One-time setup: join the Apple Developer Program, create a **Developer ID Application** certificate in Xcode (Settings › Accounts › Manage Certificates) or on developer.apple.com, and check that `security find-identity -v -p codesigning` lists it. Then run `xcrun notarytool store-credentials peli-notary` with an app-specific password or an App Store Connect API key, and export `PELI_SIGN_IDENTITY="Developer ID Application: <name> (<TEAMID>)"` and `PELI_NOTARY_PROFILE=peli-notary`. `build/darwin/dist.sh` lists the CI variables.
 - A Developer ID build moves the keychain items to its own signature on first launch. After that, a development build on the same Mac asks once to use them (ADR-0053).
 
+### Updates
+
+Installed copies update from `peli-update.json` on the latest GitHub release ([ADR-0054](docs/adr/0054-signed-auto-update.md)). `darwin:release` also writes `bin/Peli-<version>-<arch>.zip`, the update. Sign the feed with the release key from the keychain, and attach it and both zips to the release:
+
+```sh
+export PELI_UPDATE_KEY=$(security find-generic-password -s "Peli update signing" -w)
+go run ./tools/updates feed -version 0.2.0 -notes notes.md -out bin/peli-update.json \
+  -base https://github.com/k22i/Peli/releases/download/v0.2.0/ \
+  darwin/arm64=bin/Peli-0.2.0-arm64.zip darwin/amd64=bin/Peli-0.2.0-x86_64.zip
+go run ./tools/updates verify bin/peli-update.json darwin/arm64=bin/Peli-0.2.0-arm64.zip
+```
+
+To try an update locally: package a copy, then bump `Info.plist`'s version and run `wails3 task darwin:package:zip`. Sign a feed whose `-base` is `http://127.0.0.1:<port>/`, serve the folder, and start the older copy with `PELI_UPDATE_URL=http://127.0.0.1:<port>/peli-update.json`. Development builds (`0.0.0-dev`) never update.
+
 ## Before you open a PR
 
 Run what CI runs: `cd frontend && pnpm check && pnpm test` and `go vet ./internal/... && go test ./internal/...`.

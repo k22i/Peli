@@ -7,6 +7,7 @@ import { useBarOverArt } from "@/components/shell/bar-tone";
 import { ConnectionStatus } from "@/components/shell/connection-status";
 import { PartyStatus } from "@/components/shell/party-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
+import { UpdateStatus } from "@/components/shell/update-status";
 import { WindowControls } from "@/components/shell/window-controls";
 import { Wordmark } from "@/components/shell/wordmark";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
@@ -175,6 +176,7 @@ export function TopBar({
         <div className="ms-auto flex items-center gap-2">
           <ConnectionStatus />
           <PartyStatus />
+          <UpdateStatus />
           <ProfileMenu />
           {platform === "windows" && (
             <div className="-me-3 flex h-bar items-stretch">

@@ -11,6 +11,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
+	"github.com/wailsapp/wails/v3/pkg/updater"
 
 	"github.com/k22i/Peli/internal/account"
 	"github.com/k22i/Peli/internal/addons"
@@ -33,6 +34,7 @@ import (
 	"github.com/k22i/Peli/internal/syncer"
 	"github.com/k22i/Peli/internal/torrent"
 	"github.com/k22i/Peli/internal/tracking"
+	"github.com/k22i/Peli/internal/updates"
 	"github.com/k22i/Peli/internal/watching"
 )
 
@@ -52,6 +54,10 @@ func main() {
 	// Started as a plugin sandbox (#56): run that one call and exit, before
 	// anything of the app starts.
 	plugins.ServeChild()
+	// Started by an update (#83) to put the new Peli.app in place once this
+	// one has quit, and open it. application.New does this too, but only
+	// after everything above it in main has run.
+	updater.HandleHelperMode()
 
 	firstmouse.Enable()
 
@@ -114,12 +120,19 @@ func main() {
 		party.Who(db, account.SessionOf(accounts).SignedIn))
 	party.UsePlayer(parties, player.DirectOf(players))
 	player.GateWith(players, party.GateOf(parties))
+	// Updates (#83, ADR-0054): checked and downloaded in the background,
+	// installed when the user restarts, never while something plays.
+	appUpdates := updates.NewService(appinfo.Version)
+	updates.UseSettings(appUpdates, db)
+	updates.UsePlayer(appUpdates, func() bool { return player.Playing(players) })
 
 	app := application.New(application.Options{
 		Name:        "Peli",
 		Description: "A desktop client for Stremio-compatible addons, with Nuvio sync",
 		Services: []application.Service{
 			application.NewService(&appinfo.Service{}),
+			application.NewServiceWithOptions(appUpdates,
+				application.ServiceOptions{MarshalError: updates.MarshalError}),
 			application.NewService(&licences.Service{}),
 			application.NewService(db),
 			application.NewService(secrets.NewService(keychain)),

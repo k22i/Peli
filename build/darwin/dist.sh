@@ -9,6 +9,9 @@
 #                                        ULMO-compressed, signed, ≤ 60 MB
 #   dist.sh notarize <Peli.app|.dmg>     submit to Apple, wait, staple, check
 #   dist.sh check <Peli.app> <arch>      what a shipped bundle must be
+#   dist.sh zip <Peli.app> <arch>        build bin/Peli-<version>-<arch>.zip,
+#                                        what installed copies update from
+#                                        (#83, ADR-0054)
 #
 # Signing identity: PELI_SIGN_IDENTITY, a "Developer ID Application: … (TEAM)"
 # certificate in the keychain (its name or SHA-1). Unset or "-" signs ad hoc,
@@ -116,6 +119,19 @@ dmg() {
 	[ "$size" -le "$limit" ] || die "$file is over the $limit-byte limit (ADR-0005)"
 }
 
+# The update: the same (stapled) app, zipped with Peli.app as its one
+# top-level entry, which is what Wails' updater unpacks. Resource forks and
+# extended attributes stay out: the signature doesn't use them, and xattr -cr
+# cleared them before signing anyway.
+zip() {
+	app=$1
+	arch=$(machine "$2")
+	file=$(dirname "$app")/$(basename "$app" .app)-$(version "$app")-$arch.zip
+	rm -f "$file"
+	ditto -c -k --norsrc --noextattr --noqtn --keepParent "$app" "$file"
+	echo "$file: $(stat -f %z "$file") bytes"
+}
+
 notarize() {
 	file=$1
 	[ "$identity" != - ] || die "set PELI_SIGN_IDENTITY: Apple doesn't notarize ad-hoc signatures"
@@ -159,5 +175,6 @@ sign) sign "${1:?usage: dist.sh sign <app>}" ;;
 check) check "${1:?usage: dist.sh check <app> <arch>}" "${2:?usage: dist.sh check <app> <arch>}" ;;
 dmg) dmg "${1:?usage: dist.sh dmg <app> <arch>}" "${2:?usage: dist.sh dmg <app> <arch>}" ;;
 notarize) notarize "${1:?usage: dist.sh notarize <app|dmg>}" ;;
-*) die "usage: dist.sh sign|check|dmg|notarize …" ;;
+zip) zip "${1:?usage: dist.sh zip <app> <arch>}" "${2:?usage: dist.sh zip <app> <arch>}" ;;
+*) die "usage: dist.sh sign|check|dmg|notarize|zip …" ;;
 esac

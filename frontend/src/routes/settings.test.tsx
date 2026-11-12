@@ -177,6 +177,7 @@ vi.mock("@bindings/store", async () => {
           hdr: "auto",
           dolbyVision: "auto",
           skipTimesOnline: true,
+          autoUpdate: true,
           diagnostics: false,
           torrentStreaming: false,
           torrentCacheGB: 5,

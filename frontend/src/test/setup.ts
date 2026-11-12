@@ -33,6 +33,19 @@ vi.mock("@bindings/tracking", () => ({
   },
 }));
 
+// Updates (#83): off, as in a development build, unless a test says
+// otherwise. The shell asks, for the "update ready" pill.
+vi.mock("@bindings/updates", async (importOriginal) => ({
+  ...(await importOriginal<object>()),
+  Service: {
+    Status: vi.fn<() => Promise<unknown>>(() =>
+      Promise.resolve({ state: "off", reason: "development", current: "0.0.0-dev" }),
+    ),
+    Check: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ state: "checking" })),
+    Restart: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+  },
+}));
+
 // Watch parties (ADR-0051): not in one, unless a test says otherwise. The
 // shell, the player and the picker all ask.
 vi.mock("@bindings/party", () => ({

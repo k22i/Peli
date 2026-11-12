@@ -21,6 +21,7 @@ import { usePartyEvents, usePartyToasts } from "@/lib/party";
 import { accountQuery, useCurrentProfile } from "@/lib/profile";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
+import { useUpdateEvents, useUpdateReadyToast } from "@/lib/updates";
 
 export type RouterContext = {
   queryClient: QueryClient;
@@ -57,6 +58,7 @@ function RootLayout() {
   useConnectionEvents();
   useTrackingEvents();
   usePartyEvents(useQueryClient());
+  useUpdateEvents();
   const router = useRouter();
   usePartyToasts(
     () => router.state.location.pathname === "/player",
@@ -68,6 +70,8 @@ function RootLayout() {
       }),
   );
   const location = useLocation();
+  // Not over a film: it waits until the player closes (#83).
+  useUpdateReadyToast(location.pathname === "/player");
   // The launch gate only applies once a profile is in use, so it skips the
   // screens that come before one — and doesn't ask the store for the current
   // profile (which makes a Guest on first run) while they're showing.

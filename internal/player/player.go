@@ -857,6 +857,10 @@ type Direct struct{ s *Service }
 // bind it.
 func DirectOf(s *Service) Direct { return Direct{s} }
 
+// Playing is whether a stream is loaded, from Load until Stop. It isn't a
+// method, so Wails doesn't bind it.
+func Playing(s *Service) bool { return s.current() != nil }
+
 func (d Direct) Snapshot() State              { return d.s.Snapshot() }
 func (d Direct) SetPaused(paused bool) error  { return d.s.set("pause", flag(paused)) }
 func (d Direct) Seek(position float64) error  { return d.s.seek(position) }

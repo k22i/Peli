@@ -57,5 +57,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0051](0051-watch-party.md) | Watch party: Nuvio's own parties, run from Go, the player kept in step through a gate | 2026-11-11 |
 | [0052](0052-rename-to-peli.md) | Rename to Peli: a pelican mark, and an existing install moves across on first run | 2026-11-11 |
 | [0053](0053-macos-packaging.md) | macOS packaging: a drag-to-Applications DMG per architecture, signed with the hardened runtime and notarized | 2026-11-12 |
+| [0054](0054-signed-auto-update.md) | Signed auto-update: Wails' updater, a signed feed on GitHub Releases, macOS first | 2026-11-12 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).
