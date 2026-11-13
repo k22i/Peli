@@ -22,6 +22,10 @@ Phase 6 of the iOS port (ADR-0055, ADR-0058) makes what Peli keeps (progress, wa
 - **AniList signs in inside a sheet over the app.** Its redirect is `http://127.0.0.1:47613/anilist`, a page Peli serves; opening Safari backgrounds the app and it is suspended within seconds, taking the page down. `appinfo.OpenSignInPage` shows the approval page in an `ASWebAuthenticationSession` (`internal/iosauth`, one cgo file and its Objective-C): the app stays active (no resign in the log), the loopback server answers, and the page's token reaches Go; the frontend dismisses the sheet when the wait ends. The session shares Safari's cookies (an AniList login already there is reused, at the price of the system's one-tap "wants to use … to Sign In" prompt); `PELI_AUTH_EPHEMERAL=1` (rig only) uses a private session with no prompt. Registering a second AniList app with a custom-scheme redirect was not needed. SIMKL's device code works through `openURL` as it is.
 - **Offline.** `ConnectionStatus` already sits in the top bar at compact width (icon only below `lg`); verified on iPhone. Progress queues while offline and goes out on return; kids profiles are still refused by `canConnect`.
 
+## Live check (2026-11-13)
+
+SIMKL's device code was approved by the user on the real account; Plan 9 from Outer Space (tt0052077) was on no list. Start, pause, resume and a stop at 91 % from the iOS player landed it on SIMKL's completed list (seen after the 5-minute list cache was dropped by a relaunch); `/sync/history/remove` took it off, a fresh fetch confirmed it, and SIMKL was disconnected (revoked). The same play also wrote progress and a watched mark to Nuvio, which were undone the same way as Phase 5's and verified with a fresh pull (watched 0, outbox empty). AniList was not tried live.
+
 ## Consequences
 
 - A device run is owed for the GL park (does the OS really leave the app alone), VideoToolbox, and the OS's own interruption and route notifications.

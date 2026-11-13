@@ -309,10 +309,15 @@ func devFiles(dir string, p *peli) {
 				// undo <contentId> <season> <episode>: unmark watched and drop the progress.
 				db := store.Opened(p.db)
 				profile, _, _ := db.ProfileInUse()
-				se, _ := strconv.Atoi(f[2])
-				ep, _ := strconv.Atoi(f[3])
-				e1 := db.UnmarkWatched(profile.ID, f[1], &se, &ep)
-				e2 := db.RemoveProgress(profile.ID, store.ProgressKey(f[1], &se, &ep))
+				// "-" for a film (no season or episode).
+				var sp, ep *int
+				if f[2] != "-" {
+					a, _ := strconv.Atoi(f[2])
+					b, _ := strconv.Atoi(f[3])
+					sp, ep = &a, &b
+				}
+				e1 := db.UnmarkWatched(profile.ID, f[1], sp, ep)
+				e2 := db.RemoveProgress(profile.ID, store.ProgressKey(f[1], sp, ep))
 				syncer.PusherOf(p.sync).Background(context.Background())
 				devLog("undo: unmark=%v progress=%v", e1, e2)
 			case "disconnect":
