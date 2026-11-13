@@ -207,7 +207,12 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 	if err := ses.m.setStringList("http-header-fields", source.HeaderFields()); err != nil {
 		return notPlaying(err)
 	}
-	for _, p := range [][2]string{{"user-agent", userAgent}, {"pause", "no"}, {"hwdec", hw}} {
+	props0 := [][2]string{{"user-agent", userAgent}, {"pause", "no"}}
+	// Changing hwdec makes mpv re-initialise the decoder: only when it differs.
+	if hw != ses.hw {
+		props0 = append(props0, [2]string{"hwdec", hw})
+	}
+	for _, p := range props0 {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
 			return notPlaying(err)
 		}
@@ -258,7 +263,7 @@ func (e *Engine) open() (*session, error) {
 	if err != nil {
 		return nil, fmt.Errorf("%w: %w", playback.ErrUnavailable, err)
 	}
-	ses = &session{m: m, done: make(chan struct{})}
+	ses = &session{m: m, done: make(chan struct{}), hw: e.hwdec()}
 	fail := func(err error) (*session, error) {
 		close(ses.done)
 		m.destroy()
@@ -640,7 +645,14 @@ func (e *Engine) handle(ses *session, ev mpvEvent) {
 			e.due(playback.ReportStarted)
 			if !ses.firstFrame {
 				ses.firstFrame = true
-				slog.Info("iosplayer: first frame", "ms", time.Since(ses.loadedAt).Milliseconds(), "hwdec", ses.hw, "current", e.state.HWDec)
+				// What plays, for the coverage notes (no URLs in it).
+				info := map[string]string{}
+				for _, k := range []string{"video-codec", "video-format", "video-params/pixelformat", "video-params/hw-pixelformat",
+					"video-params/gamma", "video-params/primaries", "width", "height", "audio-codec-name", "audio-params/channel-count", "file-format"} {
+					info[k], _ = ses.m.getString(k)
+				}
+				time.AfterFunc(4*time.Second, func() { e.logTracks(ses) })
+				slog.Info("iosplayer: first frame", "ms", time.Since(ses.loadedAt).Milliseconds(), "hwdec", ses.hw, "current", e.state.HWDec, "info", info)
 			}
 		}
 		ses.started = true
@@ -888,4 +900,22 @@ func endCode(err mpvError, httpErr string) string {
 		return playback.EndUnsupported
 	}
 	return playback.EndFailed
+}
+
+// logTracks writes what the file offers and what is selected, for the
+// coverage notes: codecs and languages only.
+func (e *Engine) logTracks(ses *session) {
+	if e.current() != ses {
+		return
+	}
+	st := e.Snapshot()
+	var parts []string
+	for _, t := range st.Tracks {
+		mark := ""
+		if t.Selected {
+			mark = "*"
+		}
+		parts = append(parts, fmt.Sprintf("%s%d:%s/%s/%s", mark, t.ID, t.Type, t.Codec, t.Lang))
+	}
+	slog.Info("iosplayer: tracks", "position", st.Position, "hwdec", st.HWDec, "list", strings.Join(parts, " "))
 }

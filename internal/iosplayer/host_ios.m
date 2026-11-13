@@ -46,7 +46,9 @@ static mpv_render_context *g_rctx;
 	self.userInteractionEnabled = NO; // touches go to the webview above
 	CAEAGLLayer *l = (CAEAGLLayer *)self.layer;
 	l.opaque = YES;
-	l.contentsScale = UIScreen.mainScreen.scale;
+	// PELI_VIDEO_SCALE=1: a drawable at 1x, for the simulator, where GLES runs
+	// in software and a 3x iPhone drawable draws about one frame a second.
+	l.contentsScale = getenv("PELI_VIDEO_SCALE") && *getenv("PELI_VIDEO_SCALE") ? atof(getenv("PELI_VIDEO_SCALE")) : UIScreen.mainScreen.scale;
 	l.drawableProperties = @{kEAGLDrawablePropertyRetainedBacking: @NO,
 	                         kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8};
 	_rq = dispatch_queue_create("peli.mpv.render", DISPATCH_QUEUE_SERIAL);
@@ -73,7 +75,8 @@ static mpv_render_context *g_rctx;
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
-	((CAEAGLLayer *)self.layer).contentsScale = self.window.screen.scale ?: UIScreen.mainScreen.scale;
+	if (!(getenv("PELI_VIDEO_SCALE") && *getenv("PELI_VIDEO_SCALE")))
+		((CAEAGLLayer *)self.layer).contentsScale = self.window.screen.scale ?: UIScreen.mainScreen.scale;
 	atomic_store(&_needsResize, 1);
 	[self requestDraw];
 }

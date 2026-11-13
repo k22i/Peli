@@ -11,11 +11,14 @@ import (
 	"path/filepath"
 	"time"
 
+	"strconv"
 	"strings"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
+	"github.com/k22i/Peli/internal/streams"
 )
 
 // The simulator remote control (build tag pelidev, never in a shipped build):
@@ -58,8 +61,32 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli) 
 	if dir == "" {
 		return
 	}
+	// $PELI_DEV_PLAY plays that URL once, a few seconds after launch, with
+	// no page involved: the player engine on its own.
+	if u := os.Getenv("PELI_DEV_PLAY"); u != "" {
+		go func() {
+			time.Sleep(8 * time.Second)
+			start, _ := strconv.ParseFloat(os.Getenv("PELI_DEV_START"), 64)
+			err := p.players.Load(streams.Source{URL: u}, playback.LoadOptions{Start: start, Captions: "on", SubtitleLanguage: "en", AudioLanguages: []string{"en"}})
+			log.Printf("dev play: %v", err)
+			// A seek 120 s on, and whether it landed: for the coverage notes.
+			time.Sleep(20 * time.Second)
+			want := p.players.Snapshot().Position + 120
+			at := time.Now()
+			err = p.players.Seek(want)
+			for i := 0; i < 40 && p.players.Snapshot().Loading; i++ {
+				time.Sleep(250 * time.Millisecond)
+			}
+			time.Sleep(3 * time.Second)
+			st := p.players.Snapshot()
+			log.Printf("dev seek: err=%v want=%.0f got=%.0f settled=%dms paused=%v", err, want, st.Position, time.Since(at).Milliseconds()-3000, st.Paused)
+		}()
+	}
 	if os.Getenv("PELI_DEV_GUEST") == "1" {
-		devGuest(p)
+		go func() {
+			time.Sleep(3 * time.Second) // the store opens with the services
+			devGuest(p)
+		}()
 	}
 	if email, password := os.Getenv("PELI_DEV_EMAIL"), os.Getenv("PELI_DEV_PASSWORD"); email != "" && password != "" {
 		go func() {
