@@ -90,7 +90,7 @@ import {
   sizeStep,
   useWindowHeight,
 } from "@/lib/subtitle-position";
-import { repaintWindow } from "@/lib/theme";
+import { keepWindowClear, repaintWindow } from "@/lib/theme";
 import {
   formatTime,
   latestOnly,
@@ -176,7 +176,7 @@ import {
   watchingFor,
 } from "@/lib/title";
 import { feature } from "@/lib/features";
-import { isTouch } from "@/lib/platform";
+import { isIOS, isTouch } from "@/lib/platform";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -254,6 +254,9 @@ export function PlayerPage() {
   useEffect(() => {
     if (playing?.source) playingSource.current = playing.source;
   });
+  // iOS: the video is a native view under the webview, so the window stays
+  // clear while this screen is up (the cleanup below paints it again).
+  useEffect(() => (isIOS() ? keepWindowClear() : undefined), []);
   // Leaving the screen, however it happens, ends the session, and lets the
   // torrent go once mpv no longer reads it. Go has kept where it stopped by
   // the time Stop returns, so the screens behind show it.

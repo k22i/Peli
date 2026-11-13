@@ -67,7 +67,24 @@ export function useTheme(): Theme {
   );
 }
 
+// The iOS player draws its video in a native view under the webview
+// (ADR-0058), so the window has to stay clear while that screen is up: a
+// theme paint then (the page finishing its start, the OS switching modes)
+// made the webview opaque again and hid the picture.
+let keptClear = false;
+
+// Clears the window until the returned function is called; the player's
+// repaintWindow after Stop paints it again.
+export function keepWindowClear(): () => void {
+  keptClear = true;
+  Window.SetBackgroundColour(0, 0, 0, 0).catch(() => {});
+  return () => {
+    keptClear = false;
+  };
+}
+
 function paintNativeWindow(theme: Theme) {
+  if (keptClear) return;
   const [r, g, b] = windowColours[theme];
   // Rejects in a plain browser (tests, `vp dev`), where there is no window.
   Window.SetBackgroundColour(r, g, b, 255).catch(() => {});
