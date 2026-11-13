@@ -39,7 +39,7 @@ func main() {
 		Description: description,
 		Services:    p.services(extras{}),
 		Assets: application.AssetOptions{
-			Handler: devAssets(application.AssetFileServerFS(assets)),
+			Handler: devAssets(imageProxy(application.AssetFileServerFS(assets))),
 		},
 		// The signal handler is a no-op on iOS whatever this says (Wails'
 		// signal_handler_ios.go); it is set, as in Wails' own iOS template,

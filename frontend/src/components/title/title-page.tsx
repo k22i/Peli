@@ -1,6 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouterState } from "@tanstack/react-router";
-import { Browser } from "@wailsio/runtime";
 import { Check, Clapperboard, Eye, EyeOff, Film, Play, Plus, RotateCcw } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -18,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import type { ContentType, Meta } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
+import { openURL } from "@/lib/open-url";
 import { usePlay } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { warmRanking } from "@/lib/ranking";
@@ -229,7 +229,7 @@ function LoadedTitle({
               <RoundAction
                 label="Trailer"
                 disabled={false}
-                onClick={() => void Browser.OpenURL(art.trailer!)}
+                onClick={() => void openURL(art.trailer!)}
               >
                 <Film />
               </RoundAction>

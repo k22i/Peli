@@ -3,7 +3,7 @@ import { Children, useState, type ReactNode, type Ref } from "react";
 import { Artwork } from "@/components/media/artwork";
 import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { Skeleton } from "@/components/ui/skeleton";
-import { sharper } from "@/lib/artwork-url";
+import { sharper, viaProxy } from "@/lib/artwork-url";
 import { cn } from "@/lib/utils";
 
 // feature  Home's marquee: the whole window's width, pulled up under the top
@@ -15,8 +15,8 @@ export type HeroSize = "default" | "feature" | "title";
 const bled = (size: HeroSize) => size !== "default";
 
 const heights: Record<HeroSize, string> = {
-  feature: "min-h-[min(84vh,50rem)]",
-  title: "min-h-[min(74vh,44rem)]",
+  feature: "min-h-[min(84vh,50rem)] ios-compact:min-h-[min(64vh,32rem)]",
+  title: "min-h-[min(74vh,44rem)] ios-compact:min-h-[min(60vh,28rem)]",
   default: "min-h-[min(56vh,30rem)]",
 };
 
@@ -94,8 +94,10 @@ export function Hero({
 
         <div
           className={cn(
-            "flex w-full items-end justify-between gap-8",
-            bleeds ? "px-page pt-40 pb-14" : "px-8 pt-24 pb-9 sm:px-10",
+            "flex w-full items-end justify-between gap-8 ios-compact:flex-col ios-compact:items-start ios-compact:gap-5",
+            bleeds
+              ? "px-page pt-40 pb-14 ios-compact:pt-28 ios-compact:pb-10"
+              : "px-8 pt-24 pb-9 sm:px-10",
           )}
         >
           <div className="flex max-w-2xl min-w-0 flex-col gap-4">
@@ -107,9 +109,9 @@ export function Hero({
                   title={title}
                   className={
                     size === "feature"
-                      ? "max-h-36 max-w-[min(30rem,100%)]"
+                      ? "max-h-36 max-w-[min(30rem,100%)] ios-compact:max-h-24"
                       : size === "title"
-                        ? "max-h-32 max-w-[min(28rem,100%)]"
+                        ? "max-h-32 max-w-[min(28rem,100%)] ios-compact:max-h-24"
                         : undefined
                   }
                 />
@@ -123,7 +125,11 @@ export function Hero({
                 {synopsis}
               </p>
             )}
-            {actions && <div className="mt-2 flex flex-wrap items-center gap-2.5">{actions}</div>}
+            {actions && (
+              <div className="mt-2 flex flex-wrap items-center gap-2.5 ios-compact:flex-nowrap">
+                {actions}
+              </div>
+            )}
           </div>
           {aside && <div className="shrink-0 pb-1">{aside}</div>}
         </div>
@@ -179,7 +185,7 @@ export function Logo({
   const shown = failed.includes(sharp) ? src : sharp;
   return (
     <img
-      src={shown}
+      src={viaProxy(shown)}
       alt={title}
       onError={() => setFailed([...failed, shown])}
       className={cn(
