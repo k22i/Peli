@@ -139,7 +139,7 @@ tasks:
           -framework Security -framework CoreFoundation \
           -framework UniformTypeIdentifiers \
           -framework LocalAuthentication -framework UserNotifications \
-          -framework AVFoundation \
+          -framework AVFoundation -framework AuthenticationServices \
           -F "{{.LIBMPV_FW_DIR}}" -framework libmpv \
           -framework OpenGLES -framework QuartzCore -framework CoreVideo -framework MediaAccessibility \
           -Wl,-rpath,@executable_path/Frameworks \

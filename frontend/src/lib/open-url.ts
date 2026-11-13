@@ -9,3 +9,15 @@ import { isIOS } from "@/lib/platform";
 export function openURL(url: string): Promise<void> {
   return isIOS() ? AppInfo.OpenURL(url) : Browser.OpenURL(url);
 }
+
+// Opens a sign-in page whose redirect comes back to Peli itself (AniList's
+// loopback page). On iOS it is a sheet over the app, which keeps the app in
+// the foreground so the page can answer; Safari would suspend it first.
+export function openSignInPage(url: string): Promise<void> {
+  return isIOS() ? AppInfo.OpenSignInPage(url) : openURL(url);
+}
+
+// Dismisses the sheet openSignInPage showed. Nothing happens elsewhere.
+export function closeSignInPage(): void {
+  if (isIOS()) void AppInfo.CloseSignInPage();
+}

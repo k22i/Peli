@@ -20,3 +20,19 @@ func (Service) OpenURL(address string) error {
 	}
 	return openURL(u.String())
 }
+
+// OpenSignInPage shows a sign-in page that needs Peli to keep running: on iOS
+// a sheet over the app (an ASWebAuthenticationSession), since Safari would
+// put the app in the background and suspend it before the page can call
+// back (AniList's loopback redirect, ADR-0059). Elsewhere it is OpenURL.
+// CloseSignInPage dismisses it.
+func (Service) OpenSignInPage(address string) error {
+	u, err := url.Parse(address)
+	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Host == "" {
+		return ErrNotWebURL
+	}
+	return openSignIn(u.String())
+}
+
+// CloseSignInPage dismisses the page OpenSignInPage showed, if it is up.
+func (Service) CloseSignInPage() { closeSignIn() }

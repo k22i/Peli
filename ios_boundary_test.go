@@ -111,6 +111,15 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 	}
 }
 
+// internal/iosauth is the in-app sign-in sheet (ADR-0059): one cgo file and
+// its Objective-C, for ASWebAuthenticationSession, and nothing more.
+func TestIOSAuthSheetFiles(t *testing.T) {
+	out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/internal/iosauth", "ios"))
+	if want := "[]|[auth_ios.go]|[]|[auth_ios.m]|[auth_ios.h]"; out != want {
+		t.Errorf("internal/iosauth files changed: %s, want %s; update the boundary test on purpose", out, want)
+	}
+}
+
 // listPackage lists one package's source files for env.
 func listPackage(t *testing.T, env []string, pkg string, tags ...string) string {
 	t.Helper()

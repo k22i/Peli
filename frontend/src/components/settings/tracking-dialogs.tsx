@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { openURL } from "@/lib/open-url";
+import { closeSignInPage, openSignInPage, openURL } from "@/lib/open-url";
 import { ExternalLink, RefreshCw, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -167,7 +167,9 @@ export function AniListDialog({
 function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () => void }) {
   const start = useMutation({
     mutationFn: () => Tracking.StartAniList(profileId),
-    onSuccess: (url) => void openURL(url),
+    // On iOS a sheet over the app: Safari would suspend it, and the page
+    // AniList redirects to is served by it (ADR-0059).
+    onSuccess: (url) => void openSignInPage(url),
   });
   const wait = useWaitSignIn(profileId, () => Tracking.WaitAniList());
 
@@ -183,11 +185,17 @@ function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () =>
         }),
     });
   };
-  // oxlint-disable-next-line react/exhaustive-deps -- start once, as the dialog opens.
-  useEffect(begin, []);
+  useEffect(() => {
+    begin();
+    return closeSignInPage;
+    // oxlint-disable-next-line react/exhaustive-deps -- start once, as the dialog opens.
+  }, []);
 
   const failure =
     start.error ?? (trackingErrorCode(wait.error) === "no_sign_in" ? null : wait.error);
+  useEffect(() => {
+    if (failure) closeSignInPage();
+  }, [failure]);
   const problem = failure ? trackingProblem(failure, "AniList") : undefined;
 
   return (
@@ -222,7 +230,7 @@ function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () =>
             Try again
           </Button>
         ) : (
-          <Button type="button" variant="outline" onClick={() => void openURL(start.data)}>
+          <Button type="button" variant="outline" onClick={() => void openSignInPage(start.data)}>
             <ExternalLink />
             Open AniList
           </Button>

@@ -75,6 +75,8 @@ func newPeli(dbPath string) *peli {
 	p := &peli{}
 	p.db = store.NewService(dbPath)
 	p.keychain = secrets.New(secrets.ServiceName).MovesFrom(secrets.LegacyServiceName)
+	// $PELI_SIMKL_URL and $PELI_ANILIST_URL stand in for the trackers the same
+	// way, for the fakes the simulator rig runs (tools/iosrig).
 	// $PELI_NUVIO_URL stands in for Nuvio's backend, such as the contract
 	// tests' self-host (#33). A server the user picks in Settings (#34) is
 	// restored over it when the account service starts.
@@ -95,10 +97,10 @@ func newPeli(dbPath string) *peli {
 	// The anime list maps ids for tracking (#71), the AniList addon (#108)
 	// and leaving anime out of Movies and Shows (#109).
 	p.animeList = animelist.New(animelist.DefaultURL, filepath.Dir(dbPath))
-	anilistClient := anilist.New(anilist.DefaultURL, appinfo.Version)
+	anilistClient := anilist.New(cmp.Or(os.Getenv("PELI_ANILIST_URL"), anilist.DefaultURL), appinfo.Version)
 	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
 	p.trackers = tracking.NewService(tracking.Config{
-		Simkl:           simkl.New(simkl.DefaultURL, cmp.Or(os.Getenv("PELI_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
+		Simkl:           simkl.New(cmp.Or(os.Getenv("PELI_SIMKL_URL"), simkl.DefaultURL), cmp.Or(os.Getenv("PELI_SIMKL_CLIENT_ID"), tracking.SimklClientID), appinfo.Version),
 		AniList:         anilistClient,
 		AniListClientID: cmp.Or(os.Getenv("PELI_ANILIST_CLIENT_ID"), tracking.AniListClientID),
 		Anime:           p.animeList,
