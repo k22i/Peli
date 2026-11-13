@@ -61,5 +61,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0055](0055-ios-on-wails.md) | iOS and iPadOS on Wails' experimental iOS target, debrid only: tags not forks, a shared playback package, a boundary test | 2026-11-12 |
 | [0056](0056-uiscene-on-wails-ios.md) | The UIScene life cycle on Wails' iOS target: a scene delegate in Peli's own main.m, no Wails patch, no SDK stamp | 2026-11-13 |
 | [0057](0057-ios-sign-in-and-keychain.md) | Signing in on iOS: email, or Nuvio's page in Safari; the session in Peli's own AfterFirstUnlock Keychain class | 2026-11-13 |
+| [0058](0058-ios-playback-engine.md) | The iOS playback engine: libmpv in a GLES view under the webview, hardware decoding chosen per file, a shared rules package | 2026-11-13 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

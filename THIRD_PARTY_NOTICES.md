@@ -12,7 +12,7 @@ Licence: LGPL-2.1-or-later
 ```text
 Peli plays video with libmpv, which uses FFmpeg and the other libraries listed after it. libmpv and FFmpeg are licensed under the GNU Lesser General Public License, version 2.1 or later.
 
-Peli ships its own build of libmpv, configured for the LGPL: mpv is built as the libmpv library only, without its GPL parts, Lua, JavaScript or VapourSynth, and FFmpeg without its GPL, version 3 and non-free parts, keeping only what playback needs (no encoders, muxers or devices). libplacebo, libass, FreeType, HarfBuzz, FriBidi and dav1d are built into the same library. It is linked dynamically, so you can replace it with your own build of libmpv (on macOS, Peli.app/Contents/Frameworks/libmpv.2.dylib). The Linux .deb package uses your distribution's libmpv2 instead.
+Peli ships its own build of libmpv, configured for the LGPL: mpv is built as the libmpv library only, without its GPL parts, Lua, JavaScript or VapourSynth, and FFmpeg without its GPL, version 3 and non-free parts, keeping only what playback needs (no encoders, muxers or devices). libplacebo, libass, FreeType, HarfBuzz, FriBidi and dav1d are built into the same library. It is linked dynamically, so you can replace it with your own build of libmpv (on macOS, Peli.app/Contents/Frameworks/libmpv.2.dylib; on iOS, Peli.app/Frameworks/libmpv.framework, a dynamic framework you can rebuild from the sources, build/libmpv/build-ios.sh, and sign again). The Linux .deb package uses your distribution's libmpv2 instead.
 
 The build script, the pinned versions and the checksums of every source are in Peli's source code under build/libmpv, and each published build of the library comes with the exact sources it was built from.
 

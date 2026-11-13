@@ -31,7 +31,9 @@ func auditBundle(dir string, out io.Writer) error {
 		if err != nil || !d.Type().IsRegular() {
 			return err
 		}
-		if libmpvName.MatchString(d.Name()) {
+		// iOS embeds a framework: Frameworks/libmpv.framework/libmpv.
+		if libmpvName.MatchString(d.Name()) ||
+			(d.Name() == "libmpv" && strings.HasSuffix(filepath.Dir(path), "libmpv.framework")) {
 			libmpvFound = true
 		}
 		data, err := os.ReadFile(path)

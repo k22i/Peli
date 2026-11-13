@@ -1874,7 +1874,7 @@ function PlayerFile({
                   {torrentStatusText(torrentStatus)}
                 </p>
               )}
-              {(watching || party) && (
+              {feature("party") && (watching || party) && (
                 <ControlButton
                   label={party ? "Watch party" : "Start a watch party"}
                   icon={Users}

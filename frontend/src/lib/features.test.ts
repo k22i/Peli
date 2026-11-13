@@ -11,6 +11,8 @@ const outOnIOS: Feature[] = [
   "miniPlayer",
   "playerPanels",
   "hdr",
+  "desktopControls",
+  "streamSwitcher",
   "commandPalette",
   "people",
   "multiSelect",
