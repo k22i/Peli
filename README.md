@@ -2,6 +2,8 @@
 
 A desktop app for Windows, macOS and Linux that plays streams from Stremio-compatible addons, with library and watch progress synced through Nuvio. Built with [Wails v3](https://v3.wails.io/) (Go) and React, and plays video in-window with libmpv.
 
+The same app also builds for iPhone and iPad, with a core set of features (sign-in, browsing, debrid playback, progress sync): see [`ios/README.md`](ios/README.md).
+
 Peli is early in development and not usable yet. The plan and decisions so far are in [`docs/m0-gate-review.md`](docs/m0-gate-review.md) and [`docs/adr/`](docs/adr/).
 
 ## Disclaimer
@@ -86,9 +88,10 @@ Nuvio's JS plugins run in a sandbox in `internal/plugins`, one child process per
 
 | Path | What |
 |---|---|
-| `main.go` | App entry point |
+| `main.go` | App entry point (`main_desktop.go` and `main_ios.go` per platform) |
 | `internal/` | Go packages, including the Wails services the frontend calls |
 | `frontend/` | React + TypeScript UI, built with Vite+ |
+| `ios/` | How to build and run the iOS app, what works and what's deferred |
 | `build/` | Per-platform build and packaging config; app metadata is in `build/config.yml` |
 | `tools/notices/` | Generates the third-party notices and audits releases for GPL-only parts |
 | `tools/plugins/` | Runs Nuvio plugins in Peli's sandbox and reports what each answered |
