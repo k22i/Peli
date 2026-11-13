@@ -1,0 +1,168 @@
+# ADR-0055: the iOS build (Wails' experimental iOS target), kept out of ci.yml
+# so the main CI never waits on it. It checks the simulator build only: no
+# device build, no signing, no secrets (there is no Apple account yet).
+#
+# Unverified until it has run on GitHub: written and checked locally on a Mac
+# with Xcode 27.2 (build 27B52, the one this image selects) and actionlint.
+name: ios
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*_ios.go"
+      - "main*.go"
+      - "internal/**"
+      - "frontend/**"
+      - "build/ios/**"
+      - "build/libmpv/**"
+      - "build/config.yml"
+      - "go.mod"
+      - "go.sum"
+      - ".github/workflows/ios.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "**/*_ios.go"
+      - "main*.go"
+      - "internal/**"
+      - "frontend/**"
+      - "build/ios/**"
+      - "build/libmpv/**"
+      - "build/config.yml"
+      - "go.mod"
+      - "go.sum"
+      - ".github/workflows/ios.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # go.mod says 1.26.0; the iOS build was made with 1.27 (Wails recommends it).
+  GO_VERSION: "1.27.x"
+  NODE_VERSION: "24"
+  WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.1.0
+  # The iOS 27 SDK (ADR-0056 handles its UIScene requirement); minIOSVersion is 17.0.
+  XCODE: /Applications/Xcode_27.2.app
+  MIN_IOS: "17.0"
+
+jobs:
+  ios:
+    # The macOS 27 / Xcode 27 preview image (arm64). macos-26 tops out at Xcode
+    # 26.6; if the preview image misbehaves, fall back to macos-26 with
+    # Xcode_26.6.app.
+    runs-on: xcode-27
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -s "$XCODE/Contents/Developer"
+          xcodebuild -version
+          xcrun --sdk iphonesimulator --show-sdk-version
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      # Install the pinned pnpm directly, as ci.yml does.
+      - run: |
+          npm install -g "$(node -p "require('./frontend/package.json').packageManager")"
+          echo "PNPM_STORE=$(pnpm store path --silent)" >> "$GITHUB_ENV"
+      - uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_STORE }}
+          key: pnpm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('frontend/pnpm-lock.yaml') }}
+          restore-keys: pnpm-${{ runner.os }}-${{ runner.arch }}-
+      - run: go install "$WAILS3"
+      - run: echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      # build/libmpv/build-ios.sh: libmpv.xcframework (device + simulator
+      # slices), cached on its inputs like libmpv.yml does for macOS. The
+      # ios:libmpv task skips the build when the xcframework is in place.
+      - id: libmpv
+        uses: actions/cache/restore@v4
+        with:
+          path: build/libmpv/.work/libmpv.xcframework
+          key: libmpv-ios-${{ runner.arch }}-${{ hashFiles('build/libmpv/sources.txt', 'build/libmpv/build-ios.sh') }}
+      - if: steps.libmpv.outputs.cache-hit != 'true'
+        run: |
+          brew install nasm
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install meson ninja
+          PATH="$RUNNER_TEMP/venv/bin:$PATH" build/libmpv/build-ios.sh
+      # Saved here, not at the end of the job, so a later failure keeps it.
+      - if: steps.libmpv.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: build/libmpv/.work/libmpv.xcframework
+          key: ${{ steps.libmpv.outputs.cache-primary-key }}
+      - run: ls build/libmpv/.work/libmpv.xcframework
+
+      # The root package embeds frontend/dist, which go list and go vet need to
+      # exist; the package step below builds the real one.
+      - run: mkdir -p frontend/dist && touch frontend/dist/.keep
+
+      # ADR-0055: no torrent, plugin, party or updater code in the iOS build.
+      # The test binary is the desktop main package, whose player cgo needs
+      # mpv's headers (any mpv: nothing is run, the desktop build is not made).
+      - run: brew install mpv
+      - name: Boundary test
+        run: go test -run '^Test(IOS|Desktop)Build' -count=1 .
+
+      - name: go vet (GOOS=ios)
+        env:
+          GOOS: ios
+          GOARCH: arm64
+          CGO_ENABLED: "1"
+        run: |
+          sdk=$(xcrun --sdk iphonesimulator --show-sdk-path)
+          fw="$PWD/build/libmpv/.work/libmpv.xcframework/ios-arm64-simulator"
+          export CGO_CFLAGS="-isysroot $sdk -target arm64-apple-ios$MIN_IOS-simulator -mios-simulator-version-min=$MIN_IOS -F$fw -I$fw/libmpv.framework/Headers -Wno-deprecated-declarations"
+          export CGO_LDFLAGS="-isysroot $sdk -target arm64-apple-ios$MIN_IOS-simulator -F$fw"
+          go vet -tags ios .
+
+      # Simulator, ad-hoc signed: the Taskfile's defaults.
+      - name: Build the simulator app
+        run: wails3 task ios:package
+
+      # The build runs `go mod tidy`: a change means go.mod or go.sum is stale.
+      - run: git diff --exit-code go.mod go.sum
+
+      - name: Check the binary
+        run: |
+          app=bin/ios/peli.app
+          bin=$app/peli
+          ls -l "$app" "$app/Frameworks"
+          vtool -show-build "$bin" | tee build.txt
+          grep -Eq 'platform IOSSIMULATOR$' build.txt
+          grep -Eq "minos $MIN_IOS$" build.txt
+          lipo -archs "$bin" | grep -qx arm64
+          # Go keeps its function names (pkg.Func) in the binary even when
+          # stripped. The licence notices embedded in the frontend list every
+          # module by name, so match the symbol form only. First check the
+          # pattern finds what is linked in, so the check is not blind.
+          strings -a "$bin" > strings.txt
+          for want in wailsapp/wails/v3/pkg/application k22i/Peli/internal/store k22i/Peli/internal/iosplayer; do
+            grep -Eq "$want\\.[A-Za-z(]" strings.txt || { echo "no symbols from $want: is the check blind?"; exit 1; }
+          done
+          if grep -Eo '(anacrolix|dop251/goja|go-llsqlite|pion)/[A-Za-z0-9/_.-]*\.[A-Za-z(]|Peli/internal/(torrent|plugins|party|updates|firstmouse)\.[A-Za-z(]' strings.txt | sort -u | head -20 | grep .; then
+            echo "desktop-only code is in the iOS binary"
+            exit 1
+          fi
+          # The simulator entitlements are linked into the binary as a section
+          # (a codesign --entitlements stops the simulator launching it).
+          otool -l "$bin" > otool.txt
+          grep -q __entitlements otool.txt
+          codesign --verify --deep --strict "$app"
+
+      - run: cd bin/ios && ditto -c -k --keepParent peli.app peli-simulator.app.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: peli-ios-simulator
+          retention-days: 14
+          if-no-files-found: error
+          path: bin/ios/peli-simulator.app.zip

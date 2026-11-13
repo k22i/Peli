@@ -54,3 +54,10 @@ Phase 1 of the iOS port is on `main` (ADR-0055, audit in `docs/ios-port-audit.md
 - **Memory:** iPhone WebContent ~200 MB after Home → Browse → Search → two titles; nothing heavy seen. No long-scroll harness was run.
 - **Rig:** the Phase 3 `pelidev` rig works; this phase used a private throwaway (file-polled `ExecJS`, orientation, sign-out, `SIMCTL_CHILD_` env), never committed. Both sims were driven with one shared JS file; the machine ran at load ~660, so screenshots lag 10+ s after navigation. Screenshots: `docs/ios/phase4-*.png`.
 - **Open:** kids allow-list not exercised on iOS (no kids profile, writes); on-screen keyboard behaviour not seen (simulator uses the hardware keyboard); split view; tests for `cardWidthRem`, `viaProxy` and the proxy not written (tests are deferred, [[tests-later]]).
+
+## CI (2026-11-13)
+
+- `.github/workflows/ios.yml`, separate from `ci.yml` (the user doesn't want the main CI to wait on it). Runner `xcode-27` (macOS 27 preview image, arm64) with `/Applications/Xcode_27.2.app` (27B52, the same as this Mac), because macos-26 stops at Xcode 26.6. Go 1.27.x, wails3 v3.1.0, libmpv.xcframework cached on `hashFiles(sources.txt, build-ios.sh)` (restore, build with meson/nasm on a miss, save straight after), boundary test, `GOOS=ios go vet -tags ios .`, `wails3 task ios:package`, then the binary checks and the `peli-ios-simulator` artifact.
+- The boundary test names are `TestIOSBuild…` / `TestDesktopBuild…` (no "Boundary" in them), and the test binary links the desktop main package, so the runner needs `brew install mpv`.
+- The binary check greps `strings` for the symbol form `pkg.Func` only: the embedded licence notices name every module (anacrolix, goja…) and would always match. It first checks the pattern finds wails/store/iosplayer symbols, and was shown to fire on a desktop build.
+- Written and run locally by hand (not on GitHub); the runner image, brew/pip steps and the cache are unverified until it runs. actionlint doesn't know the `xcode-27` label (use a config with `self-hosted-runner.labels`).
