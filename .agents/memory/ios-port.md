@@ -1,6 +1,6 @@
 ---
 name: ios-port
-description: "iOS/iPadOS port Phases 1–3 + Phase 6 (suspension, offline, AniList sheet; ADR-0059) (auth, Keychain class, openURL, pelidev rig): ADR-0055, Wails v3.1.0 iOS target, ios tag rules, main_ios wiring, seams, isIOS/feature(), compact tab bar, safe areas, ATS finding, UIScene shim, simulator recipe, gotchas"
+description: "iOS/iPadOS port Phases 1–7: ADR-0055–0059, Wails v3.1.0 iOS target, ios tag rules, main_ios wiring, seams, isIOS/feature(), safe areas, ATS, UIScene shim, libmpv player, suspension/offline, simulator recipe and limits, test baseline, ios/README.md"
 metadata:
   type: project
 ---
@@ -53,7 +53,7 @@ Phase 1 of the iOS port is on `main` (ADR-0055, audit in `docs/ios-port-audit.md
 - **Rotation:** portrait ↔ landscape round trips (including six in a row, with the page scrolled) always came back to 402×778 / 750×382; the 278 px reading did not reproduce on iPhone 17 with `SetOrientation`. iPad ignores `SetOrientation`; split view was not exercised.
 - **Memory:** iPhone WebContent ~200 MB after Home → Browse → Search → two titles; nothing heavy seen. No long-scroll harness was run.
 - **Rig:** the Phase 3 `pelidev` rig works; this phase used a private throwaway (file-polled `ExecJS`, orientation, sign-out, `SIMCTL_CHILD_` env), never committed. Both sims were driven with one shared JS file; the machine ran at load ~660, so screenshots lag 10+ s after navigation. Screenshots: `docs/ios/phase4-*.png`.
-- **Open:** kids allow-list not exercised on iOS (no kids profile, writes); on-screen keyboard behaviour not seen (simulator uses the hardware keyboard); split view; tests for `cardWidthRem`, `viaProxy` and the proxy not written (tests are deferred, [[tests-later]]).
+- **Open:** kids allow-list not exercised on iOS (no kids profile, writes); on-screen keyboard behaviour not seen (simulator uses the hardware keyboard); split view; tests for `cardWidthRem`, `viaProxy` and the proxy not written (still owed).
 
 ## CI (2026-11-13)
 
@@ -79,3 +79,8 @@ Phase 1 of the iOS port is on `main` (ADR-0055, audit in `docs/ios-port-audit.md
 - **AniList:** `ASWebAuthenticationSession` sheet (`internal/iosauth`, `appinfo.OpenSignInPage`), app stays active, loopback answers; system prompt needs a tap unless `PELI_AUTH_EPHEMERAL=1`. `PELI_SIMKL_URL`/`PELI_ANILIST_URL` test seams.
 - **Rig gotchas:** use fresh `peli-p6-*` sims for fakes (the real-account sim `peli-p5-iphone` keeps its Keychain session; `simctl uninstall` doesn't clear Keychain); `launch.sh`/`launchlive.sh`/`d.sh` live in the session scratchpad (play/ctl/audio files in `PELI_DEV_DIR`, commands incl. simkl-connect, ani-connect, check, undo, tracker). Live Nuvio run: Chernobyl S1E1 via the local clip, progress + watched reached Nuvio, undone with `undo` (UnmarkWatched + RemoveProgress), fresh pull showed watched=0, pending=0. Live SIMKL later ran (2026-11-13, user approved a fresh code): scrobble at 91 % landed, `tracker none` removed it, `disconnect` revoked; the title list is cached 5 min, so relaunch before re-reading it. A live play also writes Nuvio progress/watched: undo with `undo <id> - -` for a film. AniList live not done.
 - Owed for a device: GL park really prevents the kill, OS-delivered interruptions, VideoToolbox zero-copy.
+
+**Phase 7 (2026-11-13, hand-off):** `ios/README.md` is the user-facing doc (build, rig, device steps, what works, deferred, known gaps, layout); the main README links it. `docs/ios/phase7-*.png` is the final-build pass (iPhone on the real account, read-only; iPad Guest + Torrentio TB, no TorBox add since the top pick was already in the list).
+- **Test suites after the port = the pre-port baseline exactly** (60 vitest failures in 16 files, the 7 Go packages listed above). The 176/25 seen mid-port were load flakes: under load the extra failures were timeouts that pass alone, so diff names against the baseline (a saved list of `FAIL` lines) before fixing anything, and rerun under normal load.
+- **Heavy streams stay black in the simulator** while time advances and audio plays (Interstellar 46 GB H.264 remux on the iPad, in both copy and forced-software modes, after a fresh boot); a generated 720p H.264 clip drew on the same session. Coverage row 13 saw the same. Simulator limit (software decode + software GLES), not an app bug; a device run decides.
+- `wails3 task ios:xcode`'s generated project has no libmpv reference: device builds must go through the Taskfile (`IOS_PLATFORM=device`, identity, profile). This Mac had no signing identity on 2026-11-13.
