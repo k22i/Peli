@@ -80,6 +80,8 @@ Nuvio's JS plugins run in a sandbox in `internal/plugins`, one child process per
 
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every PR and push to `main`: frontend format, lint, type check, tests and build; Go `gofmt`, vet and tests (with the real-keychain tests) on Windows, macOS arm64, macOS Intel and Linux; and a production build per OS, uploaded as `peli-<os>-<arch>` artifacts (kept 14 days). PRs skip the Intel Mac build to save macOS minutes. Run it by hand with `dev-smoke` ticked to also check that `wails3 dev` starts the app on Windows and Linux.
 
+[`.github/workflows/ios.yml`](.github/workflows/ios.yml) is separate, so the main CI never waits on it: on pushes and PRs that touch iOS code (`*_ios.go`, `main*.go`, `internal/`, `frontend/`, `build/ios/`, `build/libmpv/`, `go.mod`/`go.sum`) it builds the simulator `.app` (ad-hoc signed, no device build or secrets), checks its target, minimum iOS and that no torrent, plugin or updater code is linked, and uploads it as `peli-ios-simulator`.
+
 ## Layout
 
 | Path | What |
