@@ -23,6 +23,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import { feature } from "@/lib/features";
+import { isIOS } from "@/lib/platform";
 import { toastManager } from "@/components/ui/toast";
 import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
@@ -288,6 +289,9 @@ function Picker({
               rememberSource(client, profile.id, type, target.id, candidate, attempt);
               void navigate({
                 to: "/player",
+                // iOS: the player takes the picker's place, so Back and
+                // close land on the title.
+                replace: isIOS(),
                 state: (state) => ({
                   ...state,
                   player: {
@@ -418,6 +422,9 @@ function Picker({
               await Player.Load(source, loadOptions(start, settings, [], watching));
               void navigate({
                 to: "/player",
+                // iOS: the player takes the picker's place, so Back and
+                // close land on the title.
+                replace: isIOS(),
                 state: (state) => ({
                   ...state,
                   player: {
