@@ -291,3 +291,47 @@ func TestOfflineLaunchAndReconnect(t *testing.T) {
 		t.Fatalf("server library = %+v", lib)
 	}
 }
+
+// Coming back from suspension while offline probes at once and starts the
+// probe intervals over, instead of waiting out the one armed before (which a
+// stopped clock can stretch); online, it does nothing.
+func TestMonitorWakeProbesNow(t *testing.T) {
+	var r recorder
+	var mu sync.Mutex
+	pings := 0
+	down := true
+	m := NewMonitor(func(context.Context) error {
+		mu.Lock()
+		defer mu.Unlock()
+		pings++
+		if down {
+			return nuvio.ErrUnreachable
+		}
+		return nil
+	}, r.reconnected)
+	m.emit = r.emit
+	m.probeMin, m.probeMax = time.Hour, time.Hour // the armed probe is far away
+	t.Cleanup(m.Stop)
+
+	m.Wake()
+	time.Sleep(50 * time.Millisecond)
+	mu.Lock()
+	if pings != 0 {
+		t.Fatalf("online wake pinged %d times, want 0", pings)
+	}
+	mu.Unlock()
+
+	m.observe(nuvio.ErrUnreachable) // offline, next probe in an hour
+	m.Wake()
+	eventually(t, "the wake probe", func() bool { mu.Lock(); defer mu.Unlock(); return pings == 1 })
+
+	mu.Lock()
+	down = false
+	mu.Unlock()
+	m.Wake()
+	eventually(t, "back online", func() bool { return m.Connection() == Online })
+	_, reconnects := r.get()
+	if reconnects != 1 {
+		t.Fatalf("reconnects = %d, want 1", reconnects)
+	}
+}

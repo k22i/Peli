@@ -32,12 +32,15 @@ static mpv_render_context *g_rctx;
 @property(nonatomic) GLint w, h;
 - (void)requestDraw;
 - (void)teardown;
+- (void)park;
+- (void)unpark;
 @end
 
 @implementation PeliVideoView {
 	_Atomic int _needsResize, _pending, _background;
 	id _bgObs, _fgObs;
 }
+
 + (Class)layerClass { return [CAEAGLLayer class]; }
 
 - (instancetype)initWithFrame:(CGRect)f {
@@ -55,22 +58,35 @@ static mpv_render_context *g_rctx;
 	atomic_store(&_needsResize, 1);
 	NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
 	__weak PeliVideoView *weak = self;
-	// GL work in the background is killed by the OS: park the renderer.
-	_bgObs = [nc addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil
-	                     usingBlock:^(NSNotification *n) {
-		PeliVideoView *s = weak;
-		if (!s) return;
-		atomic_store(&s->_background, 1);
-		dispatch_sync(s->_rq, ^{ glFinish(); });
-	}];
-	_fgObs = [nc addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil
-	                     usingBlock:^(NSNotification *n) {
-		PeliVideoView *s = weak;
-		if (!s) return;
-		atomic_store(&s->_background, 0);
-		[s requestDraw];
-	}];
+	// iOS kills an app that issues OpenGL ES commands once it is in the
+	// background (gpus_ReturnNotPermittedKillClient). The earliest warning is
+	// WillResignActive, which comes before DidEnterBackground on the way out:
+	// the renderer is parked there, synchronously, so the last draw has been
+	// presented and no command is queued by the time the app leaves the screen
+	// (ADR-0059). It restarts on DidBecomeActive. The simulator doesn't enforce
+	// the rule, so this is by design and unverified on a device.
+	_bgObs = [nc addObserverForName:UIApplicationWillResignActiveNotification object:nil queue:nil
+	                     usingBlock:^(NSNotification *n) { [weak park]; }];
+	_fgObs = [nc addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil
+	                     usingBlock:^(NSNotification *n) { [weak unpark]; }];
 	return self;
+}
+
+// park stops all GL work and returns once the render queue is idle. Safe on
+// any thread but the render queue, and to repeat.
+- (void)park {
+	atomic_store(&_background, 1);
+	dispatch_sync(_rq, ^{
+		if (self->_glctx) [EAGLContext setCurrentContext:self->_glctx];
+		glFinish();
+	});
+}
+
+- (void)unpark {
+	if (!atomic_exchange(&_background, 0)) return;
+	// Draw the frame on screen again even if mpv has no new one (paused).
+	atomic_store(&_needsResize, 1);
+	[self requestDraw];
 }
 
 - (void)layoutSubviews {
@@ -239,7 +255,79 @@ void peli_host_awake(int on) {
 	});
 }
 
+// peli_lifecycle_observe has Go told when the app resigns, backgrounds and
+// becomes active again. UIKit's notifications are used instead of Wails'
+// application events: those are queued to a goroutine, so Go can't finish
+// before the app leaves, and under the scene delegate they were not seen to
+// arrive at all (ADR-0059).
+void peli_lifecycle_observe(void) {
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
+		[nc addObserverForName:UIApplicationWillResignActiveNotification object:nil queue:nil
+		            usingBlock:^(NSNotification *n) { peliLifecycle(PELI_LIFECYCLE_WILL_RESIGN); }];
+		[nc addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil queue:nil
+		            usingBlock:^(NSNotification *n) { peliLifecycle(PELI_LIFECYCLE_DID_BACKGROUND); }];
+		[nc addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil
+		            usingBlock:^(NSNotification *n) { peliLifecycle(PELI_LIFECYCLE_DID_ACTIVE); }];
+	});
+}
+
+void peli_host_park(void) { [g_view park]; }
+void peli_host_unpark(void) { [g_view unpark]; }
+
+// The audio session's interruptions (a call, Siri, an alarm) and route
+// changes (headphones unplugged) go to Go, which pauses and reports. The
+// observers are installed once, with the first audio session.
+static void observe_audio(void) {
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
+		[nc addObserverForName:AVAudioSessionInterruptionNotification object:nil queue:nil
+		            usingBlock:^(NSNotification *n) {
+			NSUInteger type = [n.userInfo[AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
+			if (type == AVAudioSessionInterruptionTypeBegan) {
+				peliAudioEvent(PELI_AUDIO_INTERRUPTED, 0);
+				return;
+			}
+			// Ended: take the session back so a tap on play has sound, and
+			// say whether the system suggests resuming.
+			peli_audio_session();
+			NSUInteger opts = [n.userInfo[AVAudioSessionInterruptionOptionKey] unsignedIntegerValue];
+			peliAudioEvent(PELI_AUDIO_INTERRUPTION_ENDED, (opts & AVAudioSessionInterruptionOptionShouldResume) ? 1 : 0);
+		}];
+		[nc addObserverForName:AVAudioSessionRouteChangeNotification object:nil queue:nil
+		            usingBlock:^(NSNotification *n) {
+			NSUInteger reason = [n.userInfo[AVAudioSessionRouteChangeReasonKey] unsignedIntegerValue];
+			if (reason == AVAudioSessionRouteChangeReasonOldDeviceUnavailable)
+				peliAudioEvent(PELI_AUDIO_ROUTE_LOST, 0);
+		}];
+	});
+}
+
+// peli_dev_audio_event posts the notification the system would, so the
+// observers can be driven in the simulator (build tag pelidev in Go).
+void peli_dev_audio_event(int kind, int shouldResume) {
+	NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
+	switch (kind) {
+	case PELI_AUDIO_INTERRUPTED:
+		[nc postNotificationName:AVAudioSessionInterruptionNotification object:nil
+		                userInfo:@{AVAudioSessionInterruptionTypeKey: @(AVAudioSessionInterruptionTypeBegan)}];
+		break;
+	case PELI_AUDIO_INTERRUPTION_ENDED:
+		[nc postNotificationName:AVAudioSessionInterruptionNotification object:nil
+		                userInfo:@{AVAudioSessionInterruptionTypeKey: @(AVAudioSessionInterruptionTypeEnded),
+		                           AVAudioSessionInterruptionOptionKey: @(shouldResume ? AVAudioSessionInterruptionOptionShouldResume : 0)}];
+		break;
+	case PELI_AUDIO_ROUTE_LOST:
+		[nc postNotificationName:AVAudioSessionRouteChangeNotification object:nil
+		                userInfo:@{AVAudioSessionRouteChangeReasonKey: @(AVAudioSessionRouteChangeReasonOldDeviceUnavailable)}];
+		break;
+	}
+}
+
 int peli_audio_session(void) {
+	observe_audio();
 	AVAudioSession *s = AVAudioSession.sharedInstance;
 	NSError *err = nil;
 	// .playback: sound even with the silent switch on, and AirPlay and

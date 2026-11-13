@@ -4,6 +4,8 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -16,6 +18,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
+	"github.com/k22i/Peli/internal/iosplayer"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
@@ -35,6 +38,15 @@ import (
 //     account, so playback writes stay on the device), and
 //     $PELI_DEV_ADDONS (manifest URLs, comma separated; they may carry a
 //     debrid key, so they are never logged) installs addons into it.
+//   - play, when it appears, holds a JSON object {url, start, contentId,
+//     contentType, videoId, season, episode, title, name, year, ids} and is
+//     deleted: that stream plays as the profile in use's Watching file, with
+//     no page involved (the URL is never logged).
+//   - ctl holds one of pause, resume, seek N, stop or state (a snapshot of
+//     the player is written to state.txt) and is deleted.
+//   - audio, when it appears, holds interrupt, ended, ended-resume or route
+//     and is deleted: the notification iOS posts for that event is posted,
+//     which drives the player's handlers (iosplayer.DevAudioEvent).
 
 func devAssets(next http.Handler) http.Handler {
 	dir := os.Getenv("PELI_DEV_DIR")
@@ -56,7 +68,7 @@ func devAssets(next http.Handler) http.Handler {
 	})
 }
 
-func devStart(app *application.App, window *application.WebviewWindow, p *peli) {
+func devStart(app *application.App, window *application.WebviewWindow, p *peli, engine *iosplayer.Engine) {
 	dir := os.Getenv("PELI_DEV_DIR")
 	if dir == "" {
 		return
@@ -98,6 +110,28 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli) 
 			}
 		}()
 	}
+	go devFiles(dir, p)
+	go func() {
+		audio := filepath.Join(dir, "audio")
+		for {
+			time.Sleep(500 * time.Millisecond)
+			data, err := os.ReadFile(audio)
+			if err != nil {
+				continue
+			}
+			os.Remove(audio)
+			switch strings.TrimSpace(string(data)) {
+			case "interrupt":
+				iosplayer.DevAudioEvent(1, false)
+			case "ended":
+				iosplayer.DevAudioEvent(2, false)
+			case "ended-resume":
+				iosplayer.DevAudioEvent(2, true)
+			case "route":
+				iosplayer.DevAudioEvent(3, false)
+			}
+		}
+	}()
 	go func() {
 		cmd := filepath.Join(dir, "cmd.js")
 		for {
@@ -132,4 +166,76 @@ func devGuest(p *peli) {
 		}
 	}
 	log.Printf("dev guest ready")
+}
+
+// devLog appends a line to log.txt in the dev dir: what the rig's scripts
+// read back instead of the console.
+func devLog(format string, args ...any) {
+	dir := os.Getenv("PELI_DEV_DIR")
+	if dir == "" {
+		return
+	}
+	f, err := os.OpenFile(filepath.Join(dir, "log.txt"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+	if err != nil {
+		return
+	}
+	defer f.Close()
+	fmt.Fprintf(f, "%s %s\n", time.Now().Format("15:04:05.000"), fmt.Sprintf(format, args...))
+}
+
+// devFiles runs the play and ctl files.
+func devFiles(dir string, p *peli) {
+	for {
+		time.Sleep(300 * time.Millisecond)
+		if data, err := os.ReadFile(filepath.Join(dir, "play")); err == nil {
+			os.Remove(filepath.Join(dir, "play"))
+			var req struct {
+				URL                             string
+				Start                           float64
+				ContentID, ContentType, VideoID string
+				Season, Episode                 *int
+				Title, Name                     string
+				Year                            int
+				IDs                             map[string]string
+			}
+			if err := json.Unmarshal(data, &req); err != nil {
+				devLog("play: bad request")
+				continue
+			}
+			profile, ok, err := store.Opened(p.db).ProfileInUse()
+			if err != nil || !ok {
+				devLog("play: no profile in use")
+				continue
+			}
+			w := playback.Watching{ProfileID: profile.ID, ContentID: req.ContentID, ContentType: req.ContentType, VideoID: req.VideoID,
+				Season: req.Season, Episode: req.Episode, Title: req.Title, Name: req.Name, Year: req.Year, IDs: req.IDs}
+			err = p.players.Load(streams.Source{URL: req.URL}, playback.LoadOptions{Start: req.Start, Watching: &w, Captions: "off"})
+			devLog("play: %v", err)
+		}
+		if data, err := os.ReadFile(filepath.Join(dir, "ctl")); err == nil {
+			os.Remove(filepath.Join(dir, "ctl"))
+			f := strings.Fields(string(data))
+			if len(f) == 0 {
+				continue
+			}
+			var err error
+			switch f[0] {
+			case "pause":
+				err = p.players.SetPaused(true)
+			case "resume":
+				err = p.players.SetPaused(false)
+			case "stop":
+				err = p.players.Stop()
+			case "seek":
+				if len(f) > 1 {
+					v, _ := strconv.ParseFloat(f[1], 64)
+					err = p.players.Seek(v)
+				}
+			case "state":
+				st := p.players.Snapshot()
+				devLog("state: active=%v paused=%v loading=%v position=%.1f duration=%.1f", st.Active, st.Paused, st.Loading, st.Position, st.Duration)
+			}
+			devLog("ctl %s: %v", f[0], err)
+		}
+	}
 }

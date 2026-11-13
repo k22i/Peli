@@ -194,6 +194,23 @@ func (s *Service) ServiceShutdown() error {
 // network. It isn't a method, so Wails doesn't bind it.
 func Report(s *Service, r playback.Report) { s.scrobbler.report(r) }
 
+// Kick has the scrobbler look at its queue of kept jobs now, for the app
+// coming back from suspension: its retry timer is a monotonic one, which
+// doesn't count a sleeping device, so a job already due would otherwise wait
+// out what was left of it. Jobs not yet due stay queued. Like Report it
+// isn't a method, so Wails doesn't bind it.
+func Kick(s *Service) {
+	select {
+	case s.scrobbler.kick <- struct{}{}:
+	default:
+	}
+}
+
+// Drain waits up to d for the reports given to Report to be handled (the
+// stop of what was just paused or left), for the app going to the
+// background, where the process is about to be suspended.
+func Drain(s *Service, d time.Duration) { s.scrobbler.drain(d) }
+
 // --- status ------------------------------------------------------------------
 
 // Connections are a profile's connections, for Settings.

@@ -184,6 +184,27 @@ func (m *Monitor) probe() {
 	}
 }
 
+// Wake is for the app coming back after being suspended (iOS). Timers don't
+// run while the process is suspended, and the monotonic clock Go's timers
+// use stops while the device sleeps, so a probe armed before could wait out
+// its whole interval (up to ProbeMax) again. When Nuvio wasn't reachable it
+// probes now and starts the intervals over, rather than waiting for them.
+// It returns at once; the answer is the usual observe.
+func (m *Monitor) Wake() {
+	m.mu.Lock()
+	if m.state == Online || m.stopped {
+		m.mu.Unlock()
+		return
+	}
+	if m.timer != nil {
+		m.timer.Stop()
+		m.timer = nil
+	}
+	m.wait = m.probeMin
+	m.mu.Unlock()
+	go m.probe()
+}
+
 // Check asks Nuvio now, if it isn't known to be reachable, and returns the
 // connection: for the frontend's "Try again" and the webview's online event.
 func (m *Monitor) Check(ctx context.Context) Connection {

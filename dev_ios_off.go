@@ -6,9 +6,11 @@ import (
 	"net/http"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
+
+	"github.com/k22i/Peli/internal/iosplayer"
 )
 
 // The simulator remote control is built only with -tags pelidev (dev_ios.go).
 func devAssets(next http.Handler) http.Handler { return next }
 
-func devStart(*application.App, *application.WebviewWindow, *peli) {}
+func devStart(*application.App, *application.WebviewWindow, *peli, *iosplayer.Engine) {}

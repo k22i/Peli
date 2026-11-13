@@ -5,6 +5,7 @@ package main
 import (
 	"context"
 	"log"
+	"sync"
 	"time"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
@@ -15,6 +16,7 @@ import (
 	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/syncer"
+	"github.com/k22i/Peli/internal/tracking"
 )
 
 // backgroundFlush is how long going to the background gets to send what is
@@ -72,9 +74,10 @@ func main() {
 
 	// libmpv in a view under the transparent webview (ADR-0055). The video
 	// host finds the view controller through the window's native handle.
-	player.UseEngine(p.players, iosplayer.New(window.NativeWindow, player.SinkOf(p.players), p.db, appinfo.Version))
+	engine := iosplayer.New(window.NativeWindow, player.SinkOf(p.players), p.db, appinfo.Version)
+	player.UseEngine(p.players, engine)
 
-	devStart(app, window, p)
+	devStart(app, window, p, engine)
 
 	// Pull from Nuvio once the app is up, so the cached UI never waits for it.
 	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
@@ -84,31 +87,62 @@ func main() {
 		syncer.PullerOf(p.sync).Background(context.Background())
 		p.importTracked()
 	})
-	// Coming to the front is what the desktop's window focus is: pull, retry
-	// the pushes that failed while offline or suspended, import (#29, #30).
-	// The first one follows the launch, which the pull's throttle absorbs.
-	app.Event.OnApplicationEvent(events.IOS.ApplicationDidBecomeActive, func(*application.ApplicationEvent) {
-		p.pullAndPush()
-	})
-	// Going to the background sends how far playback got (Pusher.FlushProgress
-	// keeps the watched grace) inside a background-task window, since the
-	// process is suspended soon after and goroutines and sockets stop with it.
-	// TODO(Phase 6): the player engine must report its last position before
-	// this runs, and the Nuvio connection monitor and push timers need
-	// checking across a suspend (docs/ios-port-audit.md §8 phase 6).
-	app.Event.OnApplicationEvent(events.IOS.ApplicationDidEnterBackground, func(*application.ApplicationEvent) {
-		application.IOS.BeginBackgroundTask(int(backgroundFlush / time.Second))
-		go func() {
-			defer application.IOS.EndBackgroundTask()
-			ctx, cancel := context.WithTimeout(context.Background(), backgroundFlush)
-			defer cancel()
-			if err := syncer.PusherOf(p.sync).FlushProgress(ctx); err != nil {
-				log.Printf("flushing progress on the way to the background: %v", err)
-			}
-		}()
+
+	// UIKit's lifecycle notifications, through the engine (ADR-0059): Wails'
+	// application events are queued to a goroutine, so they can't hold the
+	// app until the last report is saved, and none was seen to arrive.
+	//   - WillResignActive (a call, the app switcher, a swipe home) is the
+	//     earliest warning and the last point where the GPU may still be used
+	//     safely: Suspend runs to the end inside the notification.
+	//   - DidEnterBackground pushes inside a background task.
+	//   - DidBecomeActive is the desktop's window focus: pull, retry, import.
+	iosplayer.OnLifecycle(iosplayer.Lifecycle{
+		WillResign:    func() { log.Printf("lifecycle: will resign active"); engine.Suspend() },
+		DidBackground: func() { p.enterBackground(engine) },
+		DidActive:     func() { p.becomeActive(engine) },
 	})
 
 	if err := app.Run(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+// becomeActive is the app coming to the front, or back from suspension: the
+// renderer restarts (the player stays paused where it was), Nuvio is pulled
+// and pushed, and what the clocks that stopped while suspended were waiting
+// for is done now: an offline probe (Monitor.Wake) and the tracking queue.
+func (p *peli) becomeActive(engine *iosplayer.Engine) {
+	log.Printf("lifecycle: became active")
+	engine.Resume()
+	p.pullAndPush()
+	syncer.WakeOf(p.sync)
+	tracking.Kick(p.trackers)
+}
+
+// enterBackground is the last thing the app does before iOS suspends it. It
+// runs inside a background task and in this order, each step finished before
+// the next:
+//
+//  1. Suspend: GL parked, playback paused, the final report (position,
+//     paused) delivered through the sink, which saves it to the store.
+//  2. FlushProgress pushes the store's outbox, so the report is in it. The
+//     scrobbler sends the pause to SIMKL meanwhile (Drain).
+//
+// A push that doesn't finish stays in the store's outbox and goes out at the
+// next launch or return (the watched mark included).
+func (p *peli) enterBackground(engine *iosplayer.Engine) {
+	log.Printf("lifecycle: entered the background")
+	application.IOS.BeginBackgroundTask(int(backgroundFlush / time.Second))
+	go func() {
+		defer application.IOS.EndBackgroundTask()
+		engine.Suspend()
+		ctx, cancel := context.WithTimeout(context.Background(), backgroundFlush-2*time.Second)
+		defer cancel()
+		var wg sync.WaitGroup
+		wg.Go(func() { tracking.Drain(p.trackers, backgroundFlush-4*time.Second) })
+		if err := syncer.PusherOf(p.sync).FlushProgress(ctx); err != nil {
+			log.Printf("flushing progress on the way to the background: %v", err)
+		}
+		wg.Wait()
+	}()
 }

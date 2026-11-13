@@ -383,6 +383,11 @@ func (s *Service) ServiceShutdown() error {
 // failed stays queued and is retried.
 func (s *Service) Flush(ctx context.Context) error { return s.pusher.FlushProgress(ctx) }
 
+// WakeOf checks the connection now if Nuvio wasn't reachable, for the app
+// coming back from suspension (main_ios.go). It isn't a method, so Wails
+// doesn't bind it.
+func WakeOf(service *Service) { service.monitor.Wake() }
+
 // Pull pulls the profile in use now, for when the frontend has just switched
 // to it or signed in. It does nothing if the profile was pulled in the last
 // half minute.

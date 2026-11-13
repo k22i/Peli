@@ -96,6 +96,11 @@ type Engine struct {
 	lastTime   time.Time
 	ended      *playback.Ended
 
+	// held is set by Suspend until Resume: the app is leaving the screen, the
+	// renderer is parked and nothing may start playing meanwhile.
+	suspendMu sync.Mutex
+	held      bool
+
 	watching    *playback.Watching
 	reportWhy   string
 	lastReport  time.Time
@@ -129,13 +134,15 @@ var _ playback.Engine = (*Engine)(nil)
 // New returns an Engine that puts its video in the window's view controller
 // (window.NativeWindow()) and reports to sink.
 func New(window func() unsafe.Pointer, sink playback.Sink, settings Settings, version string) *Engine {
-	return &Engine{
+	e := &Engine{
 		window: window, sink: sink, settings: settings,
 		userAgent:   "Peli/" + version,
 		http:        &http.Client{Timeout: playback.SubtitleWait},
 		state:       idle(),
 		reportEvery: playback.ReportEvery,
 	}
+	audioTarget.Store(e)
+	return e
 }
 
 func idle() playback.State {
@@ -984,4 +991,152 @@ func (e *Engine) logTracks(ses *session) {
 		parts = append(parts, fmt.Sprintf("%s%d:%s/%s/%s", mark, t.ID, t.Type, t.Codec, t.Lang))
 	}
 	slog.Info("iosplayer: tracks", "position", st.Position, "hwdec", st.HWDec, "list", strings.Join(parts, " "))
+}
+
+// --- leaving the screen, interruptions and route changes (ADR-0059) ------------
+
+// audioTarget is the engine the audio notifications go to: there is one.
+var audioTarget atomic.Pointer[Engine]
+
+//export peliAudioEvent
+func peliAudioEvent(kind, shouldResume C.int) {
+	e := audioTarget.Load()
+	if e == nil {
+		return
+	}
+	switch kind {
+	case C.PELI_AUDIO_INTERRUPTED:
+		slog.Info("iosplayer: audio interrupted")
+		go e.pauseAndReport()
+	case C.PELI_AUDIO_ROUTE_LOST:
+		slog.Info("iosplayer: audio output lost")
+		go e.pauseAndReport()
+	case C.PELI_AUDIO_INTERRUPTION_ENDED:
+		// Whatever the system suggests, playback stays paused: a tap resumes
+		// it, with the session already active again. Starting to play on its
+		// own after a phone call is a surprise that gains little.
+		slog.Info("iosplayer: audio interruption ended", "shouldResume", shouldResume != 0)
+	}
+}
+
+// DevAudioEvent posts the notification iOS sends for an interruption
+// (1), its end (2) or the loss of the audio output (3), so the handlers can
+// be driven in the simulator. Only the dev rig calls it.
+func DevAudioEvent(kind int, shouldResume bool) {
+	r := 0
+	if shouldResume {
+		r = 1
+	}
+	C.peli_dev_audio_event(C.int(kind), C.int(r))
+}
+
+// Suspend is what the app does before it leaves the screen. In this order,
+// and returning only when all of it is done:
+//
+//  1. the renderer is parked (no OpenGL ES command after this point; iOS
+//     kills an app that issues one in the background),
+//  2. playback is paused, so the picture and sound stop where they are,
+//  3. the final Report (position, paused) goes through the sink, which has
+//     saved it to the store (watching.Reporter) before it returns.
+//
+// Only then can a push of the store, inside the background task, include it.
+// It is safe to call again and from two lifecycle events (WillResignActive
+// and DidEnterBackground): the second waits for the first. Resume undoes it.
+func (e *Engine) Suspend() {
+	e.suspendMu.Lock()
+	defer e.suspendMu.Unlock()
+	C.peli_host_park()
+	e.held = true
+	e.pauseNow()
+}
+
+// Resume restarts the renderer when the app is active again. Playback stays
+// paused where it was: a tap plays.
+func (e *Engine) Resume() {
+	e.suspendMu.Lock()
+	defer e.suspendMu.Unlock()
+	if !e.held {
+		return
+	}
+	e.held = false
+	C.peli_host_unpark()
+}
+
+// pauseAndReport pauses for an interruption or a lost output, behind the
+// same lock as Suspend so the two don't interleave.
+func (e *Engine) pauseAndReport() {
+	e.suspendMu.Lock()
+	defer e.suspendMu.Unlock()
+	e.pauseNow()
+}
+
+// pauseNow pauses what plays and sends its final report before it returns,
+// instead of leaving that to the event loop's pause event (which would
+// follow some time later). The event then finds the state already paused and
+// sends nothing more. A file that is loading, paused, or gone reports
+// nothing: the pause or the load's own report has it.
+func (e *Engine) pauseNow() {
+	e.mu.Lock()
+	ses, st := e.s, e.state
+	e.mu.Unlock()
+	if ses == nil || st.Paused || st.Loading || !st.Active {
+		return
+	}
+	if err := ses.m.setProperty("pause", "yes"); err != nil {
+		return
+	}
+	pos, _ := ses.m.getString("time-pos")
+	e.mu.Lock()
+	if f, err := strconv.ParseFloat(pos, 64); err == nil && finite(f) {
+		e.state.Position = f
+	}
+	e.state.Paused = true
+	e.stateDirty, e.timeDirty, e.forceTime = true, true, true
+	if e.reportWhy == playback.ReportPlaying {
+		e.reportWhy = "" // superseded by this one
+	}
+	e.lastReport = time.Now()
+	report := e.reportNow(playback.ReportPaused)
+	e.mu.Unlock()
+	e.send(report)
+	ses.m.wakeup() // the loop sends the new state and time
+}
+
+// --- app lifecycle ------------------------------------------------------------
+
+// Lifecycle is what the app does as it leaves and returns to the screen.
+// Each function runs on the main thread inside UIKit's notification, so
+// WillResign can finish (pause, final report) before the app leaves, and the
+// others must not block for long.
+type Lifecycle struct {
+	WillResign, DidBackground, DidActive func()
+}
+
+var lifecycle atomic.Pointer[Lifecycle]
+
+// OnLifecycle sets what runs for the app's lifecycle notifications. They are
+// UIKit's own, not Wails' application events (see host_ios.m).
+func OnLifecycle(l Lifecycle) {
+	lifecycle.Store(&l)
+	C.peli_lifecycle_observe()
+}
+
+//export peliLifecycle
+func peliLifecycle(kind C.int) {
+	l := lifecycle.Load()
+	if l == nil {
+		return
+	}
+	var f func()
+	switch kind {
+	case C.PELI_LIFECYCLE_WILL_RESIGN:
+		f = l.WillResign
+	case C.PELI_LIFECYCLE_DID_BACKGROUND:
+		f = l.DidBackground
+	case C.PELI_LIFECYCLE_DID_ACTIVE:
+		f = l.DidActive
+	}
+	if f != nil {
+		f()
+	}
 }
