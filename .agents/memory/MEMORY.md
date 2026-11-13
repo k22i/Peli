@@ -81,7 +81,7 @@
 - [Player playback (phase 6)](player-playback.md) — speed/frame step/A–B (Gate.UserLoop)/chapters/screenshots (Go PNG)/stats/Still watching + sleep timer, More menu, Windows keepAwake (#102), Docker cross-vet tips
 - [macOS packaging](macos-packaging.md) — #78 per-arch drag-to-Applications ULMO DMGs (dist.sh), hardened runtime + ad-hoc entitlements gotcha, notarize app then DMG, native keychain; no Developer ID yet
 - [Auto-update](auto-update.md) — #83/ADR-0054 Wails pkg/updater + signed feed, release key in the keychain, VERSION var order, e2e recipe (relaunch drops env)
-- [Orca worker model](orca-worker-model.md) — Sonnet 5.5, medium effort for Orca subworkers
+- [Orca worker model](orca-worker-model.md) — Opus 5.5, high effort for Orca subworkers (Sonnet medium struggled)
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
 - [iOS port](ios-port.md) — Phases 1–3 (auth, AfterFirstUnlock Keychain, openURL, dev rig): ADR-0055, ios tag rules, isIOS()/feature(), compact tab bar, safe areas, ATS, UIScene shim, simulator recipe, baseline failures
 - [iOS libmpv](ios-libmpv.md) — build-ios.sh xcframework, GLES under the Wails webview via NativeWindow(), 10-bit HEVC needs videotoolbox-copy
