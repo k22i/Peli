@@ -17,6 +17,9 @@ void peli_host_detach(void);
 void peli_host_awake(int on);
 // peli_audio_session sets the .playback category and activates it.
 int peli_audio_session(void);
+// peli_is_simulator is 1 in the iOS simulator, whose software OpenGL ES
+// can't map VideoToolbox frames.
+int peli_is_simulator(void);
 // peli_system_captions is 1 when iOS asks for captions.
 int peli_system_captions(void);
 

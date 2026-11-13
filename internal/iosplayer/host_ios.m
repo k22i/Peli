@@ -122,6 +122,12 @@ static mpv_render_context *g_rctx;
 		{MPV_RENDER_PARAM_INVALID, NULL},
 	};
 	mpv_render_context_render(g_rctx, params);
+#if TARGET_OS_SIMULATOR
+	// The simulator's software renderer was still drawing when the frame was
+	// presented: screenshots showed frames black, or cut along the video
+	// quad's diagonal. A device's GPU orders this itself.
+	glFinish();
+#endif
 	glBindRenderbuffer(GL_RENDERBUFFER, _rbo);
 	[_glctx presentRenderbuffer:GL_RENDERBUFFER];
 	mpv_render_context_report_swap(g_rctx);
@@ -241,6 +247,14 @@ int peli_audio_session(void) {
 	if (![s setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeMoviePlayback options:0 error:&err]) return -1;
 	if (![s setActive:YES error:&err]) return -2;
 	return 0;
+}
+
+int peli_is_simulator(void) {
+#if TARGET_OS_SIMULATOR
+	return 1;
+#else
+	return 0;
+#endif
 }
 
 int peli_system_captions(void) {

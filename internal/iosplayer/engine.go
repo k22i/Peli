@@ -37,14 +37,40 @@ import (
 	"github.com/k22i/Peli/internal/streams"
 )
 
-// Hardware decoding modes. VideoToolbox's zero-copy path rejects 10-bit
-// (p010) frames in mpv's iOS GLES interop, so the copy variant takes over for
-// those; software is the last resort (spike: spikes/ios-libmpv).
+// Hardware decoding modes (ADR-0058). The picture always reaches OpenGL ES
+// as 8 bits per sample: iOS GLES 3.0 has no 16-bit normalised textures, so
+// mpv falls back to integer textures for 10-bit frames, and those drew black
+// in the simulator (p010 from the copy variant, and 10-bit software decoding
+// alike); a device is unverified, so it isn't relied on.
+//
+//   - videotoolbox: zero-copy, the default on a device. hwdec-image-format
+//     asks VideoToolbox itself for nv12, so 10-bit HEVC comes out 8-bit and
+//     maps through mpv's GLES interop (which refuses p010).
+//   - videotoolbox-copy: frames copied back to memory, then eightBit. The
+//     simulator starts here, since its software GLES can't map any
+//     VideoToolbox frame (CVOpenGLESTextureCache error -6683); on a device
+//     it is the fallback when a frame won't map.
+//   - no: software decoding, then eightBit; the last resort, or the choice
+//     when Settings turns hardware decoding off.
 const (
 	hwVideoToolbox     = "videotoolbox"
 	hwVideoToolboxCopy = "videotoolbox-copy"
 	hwSoftware         = "no"
 )
+
+// eightBit is the filter chain for frames decoded into memory: a deeper
+// format (p010, yuv420p10, …) is converted to the nearest 8-bit one; an
+// 8-bit frame passes untouched. Zero-copy frames can't go through a filter,
+// so that mode runs with no chain.
+const eightBit = "lavfi=[format=pix_fmts=nv12|yuv420p|yuvj420p|yuv422p|yuvj422p|yuv444p|yuvj444p|nv21|gray]"
+
+// filterFor is the "vf" a mode runs with.
+func filterFor(mode string) string {
+	if mode == hwVideoToolbox {
+		return ""
+	}
+	return eightBit
+}
 
 // Settings is where a session reads whether to decode on the GPU.
 type Settings interface {
@@ -145,11 +171,15 @@ var observed = []struct {
 	{"video-params/hw-pixelformat", fmtString},
 }
 
+// mapFailed are the log lines that say a zero-copy frame couldn't be drawn:
+// mpv refusing the format, or the texture cache refusing the buffer.
+var mapFailed = []string{"Format unsupported", "Mapping hardware decoded surface failed"}
+
 // options are set on every session before mpv_initialize.
 var options = [][2]string{
 	{"vo", "libmpv"}, {"ao", "audiounit"},
 	{"idle", "yes"}, {"force-window", "no"}, {"keep-open", "no"},
-	{"osc", "no"}, {"osd-level", "0"}, {"load-scripts", "no"}, {"ytdl", "no"},
+	{"osd-level", "0"},
 	{"input-default-bindings", "no"}, {"input-vo-keyboard", "no"}, {"input-cursor", "no"},
 	{"background-color", "#000000"},
 	{"subs-match-os-language", "no"},
@@ -158,12 +188,15 @@ var options = [][2]string{
 	// The second line is drawn by the screen (State.SecondarySubtitleText).
 	{"secondary-sub-visibility", "no"},
 	{"audio-format", "float"},
+	// VideoToolbox's output in zero-copy mode: 8-bit, see hwVideoToolbox.
+	{"hwdec-image-format", "nv12"},
 	// A phone has less memory than a Mac: a debrid link needs a minute of
 	// read-ahead at most.
 	{"demuxer-max-bytes", "64MiB"}, {"demuxer-max-back-bytes", "32MiB"},
 	{"cache-secs", "90"},
 }
 
+// hwdec is the mode a file starts in, chosen before its first frame.
 func (e *Engine) hwdec() string {
 	if e.settings != nil {
 		if d, err := e.settings.DeviceSettings(); err != nil {
@@ -171,6 +204,14 @@ func (e *Engine) hwdec() string {
 		} else if !d.HardwareDecoding {
 			return hwSoftware
 		}
+	}
+	// $PELI_HWDEC picks the start mode, for trying the fallbacks.
+	switch m := os.Getenv("PELI_HWDEC"); m {
+	case hwVideoToolbox, hwVideoToolboxCopy, hwSoftware:
+		return m
+	}
+	if C.peli_is_simulator() != 0 {
+		return hwVideoToolboxCopy
 	}
 	return hwVideoToolbox
 }
@@ -183,13 +224,14 @@ func (e *Engine) Load(source streams.Source, opts playback.LoadOptions) error {
 	}
 	e.ops.Lock()
 	defer e.ops.Unlock()
-	ses, err := e.open()
+	mode := e.hwdec()
+	ses, err := e.open(mode)
 	if err != nil {
 		return err
 	}
 	e.send(e.stopReport())
 	ses.retried = false
-	return e.loadFile(ses, source, opts, e.hwdec())
+	return e.loadFile(ses, source, opts, mode)
 }
 
 // loadFile starts source in ses with hardware decoding mode hw.
@@ -208,9 +250,10 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 		return notPlaying(err)
 	}
 	props0 := [][2]string{{"user-agent", userAgent}, {"pause", "no"}}
-	// Changing hwdec makes mpv re-initialise the decoder: only when it differs.
+	// Changing hwdec makes mpv re-initialise the decoder: only when it
+	// differs. The filter goes first, so no deep frame reaches the screen.
 	if hw != ses.hw {
-		props0 = append(props0, [2]string{"hwdec", hw})
+		props0 = append(props0, [2]string{"vf", filterFor(hw)}, [2]string{"hwdec", hw})
 	}
 	for _, p := range props0 {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
@@ -243,8 +286,9 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 	return nil
 }
 
-// open returns the open session, or opens one. ops must be held.
-func (e *Engine) open() (*session, error) {
+// open returns the open session, or opens one that starts in mode. ops
+// must be held.
+func (e *Engine) open(mode string) (*session, error) {
 	e.mu.Lock()
 	ses := e.s
 	e.mu.Unlock()
@@ -263,7 +307,7 @@ func (e *Engine) open() (*session, error) {
 	if err != nil {
 		return nil, fmt.Errorf("%w: %w", playback.ErrUnavailable, err)
 	}
-	ses = &session{m: m, done: make(chan struct{}), hw: e.hwdec()}
+	ses = &session{m: m, done: make(chan struct{}), hw: mode}
 	fail := func(err error) (*session, error) {
 		close(ses.done)
 		m.destroy()
@@ -274,8 +318,10 @@ func (e *Engine) open() (*session, error) {
 			slog.Warn("iosplayer: option not set", "error", err)
 		}
 	}
-	if err := m.setOptionString("hwdec", e.hwdec()); err != nil {
-		slog.Warn("iosplayer: option not set", "error", err)
+	for _, o := range [][2]string{{"hwdec", ses.hw}, {"vf", filterFor(ses.hw)}} {
+		if err := m.setOptionString(o[0], o[1]); err != nil {
+			slog.Warn("iosplayer: option not set", "error", err)
+		}
 	}
 	// $PELI_MPV_OPTIONS ("hwdec=no") overrides any of these, for debugging.
 	for _, o := range strings.Fields(os.Getenv("PELI_MPV_OPTIONS")) {
@@ -683,9 +729,14 @@ func (e *Engine) handle(ses *session, ev mpvEvent) {
 		if playback.ExpiredLog(text) {
 			ses.httpErr = text
 		}
-		// The zero-copy VideoToolbox interop refuses 10-bit frames.
-		if ses.hw == hwVideoToolbox && !ses.hwSwitched && strings.Contains(text, "Format unsupported") {
-			e.switchHW(ses, hwVideoToolboxCopy, "format unsupported")
+		// A zero-copy frame that won't map: copy frames back instead.
+		if ses.hw == hwVideoToolbox && !ses.hwSwitched {
+			for _, f := range mapFailed {
+				if strings.Contains(text, f) {
+					e.switchHW(ses, hwVideoToolboxCopy, f)
+					break
+				}
+			}
 		}
 		if ev.Level == "error" || ev.Level == "fatal" {
 			ses.lastErr = text
@@ -696,13 +747,23 @@ func (e *Engine) handle(ses *session, ev mpvEvent) {
 	}
 }
 
-// switchHW changes the decoding mode of the file playing. mpv re-initialises
-// the decoder and seeks back to where it was.
+// switchHW changes the decoding mode of the file playing: the fallback for
+// a zero-copy frame that won't map (the mode is otherwise chosen before the
+// first frame), once per file. mpv re-initialises the decoder and seeks back
+// to where it was. The 8-bit filter goes in first, so no deep frame reaches
+// the screen. In the simulator a failed mapping leaves its software GLES
+// drawing broken frames until the simulator reboots, switch or no switch
+// (ADR-0058), so this path is unverified there; it is why the simulator
+// starts in copy mode.
 func (e *Engine) switchHW(ses *session, mode, why string) {
 	if ses.hwSwitched {
 		return
 	}
 	ses.hwSwitched = true
+	if err := ses.m.setProperty("vf", filterFor(mode)); err != nil {
+		slog.Warn("iosplayer: filter not changed", "error", err)
+		return
+	}
 	if err := ses.m.setProperty("hwdec", mode); err != nil {
 		slog.Warn("iosplayer: hwdec not changed", "error", err)
 		return
@@ -727,6 +788,11 @@ func (e *Engine) retryInSoftware(ses *session) bool {
 		opts.Start = pos
 	}
 	go func() {
+		e.ops.Lock()
+		defer e.ops.Unlock()
+		if e.current() != ses {
+			return
+		}
 		if err := e.loadFile(ses, ses.source, opts, hwSoftware); err != nil {
 			slog.Warn("iosplayer: software retry failed", "error", err)
 		}
