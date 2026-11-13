@@ -401,6 +401,7 @@ function PlayerFile({
   // 10 s, and the dock is two rows (iOS).
   const touch = isTouch();
   const lastTap = useRef<{ at: number; timer: ReturnType<typeof setTimeout> }>(undefined);
+  const surface = useRef<HTMLButtonElement>(null);
   useEffect(() => () => clearTimeout(lastTap.current?.timer), []);
   // A click or key that pauses or plays, shown at the centre for a moment.
   const [flash, setFlash] = useState<{ id: number; paused: boolean }>();
@@ -1743,12 +1744,18 @@ function PlayerFile({
         !shown && "cursor-none",
       )}
       onPointerMove={wake}
-      onPointerDown={wake}
+      // A touch on the picture is the tap's to judge (tapPicture): woken
+      // here first, the controls it should show were up already, and the
+      // tap hid them again.
+      onPointerDown={(event) => {
+        if (event.pointerType !== "touch" || event.target !== surface.current) wake();
+      }}
     >
       {/* The video itself: a click pauses, a double click goes fullscreen
           (or, from the mini player, back to the app window). The Play
           button is the one to reach by keyboard. */}
       <button
+        ref={surface}
         type="button"
         tabIndex={-1}
         aria-hidden
