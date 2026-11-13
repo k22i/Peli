@@ -45,6 +45,12 @@ int peli_auth_open(const char *address, const char *scheme) {
 				if (g_session == me) { g_session = nil; peliAuthEnded(); }
 			}];
 		me.presentationContextProvider = g_anchor;
+		// Shared with Safari by default: an AniList login already there is
+		// reused, at the price of the system's one-tap "wants to use … to Sign
+		// In" prompt. $PELI_AUTH_EPHEMERAL=1 (the simulator rig, where nothing
+		// can tap the prompt) uses a private session with no prompt.
+		const char *eph = getenv("PELI_AUTH_EPHEMERAL");
+		me.prefersEphemeralWebBrowserSession = eph && *eph == '1';
 		if (![g_anchor presentationAnchorForWebAuthenticationSession:me]) { rc = -2; return; }
 		g_session = me;
 		if (![me start]) { g_session = nil; rc = -3; }

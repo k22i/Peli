@@ -18,10 +18,13 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
+	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/iosplayer"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
+	"github.com/k22i/Peli/internal/syncer"
+	"github.com/k22i/Peli/internal/tracking"
 )
 
 // The simulator remote control (build tag pelidev, never in a shipped build):
@@ -231,6 +234,92 @@ func devFiles(dir string, p *peli) {
 					v, _ := strconv.ParseFloat(f[1], 64)
 					err = p.players.Seek(v)
 				}
+			case "simkl-connect":
+				// Against the rig's fake: needs approve-simkl dropped in the dev dir.
+				profile, _, _ := store.Opened(p.db).ProfileInUse()
+				go func() {
+					if _, err := p.trackers.StartSimkl(context.Background(), profile.ID); err != nil {
+						devLog("simkl-connect start: %v", err)
+						return
+					}
+					c, err := p.trackers.WaitSimkl(context.Background())
+					devLog("simkl-connect: connected=%v err=%v", c.Simkl != nil, err)
+				}()
+			case "ani-connect":
+				// ani-connect <page>: the rig's stand-in for AniList's approval page.
+				profile, _, _ := store.Opened(p.db).ProfileInUse()
+				if _, err := p.trackers.StartAniList(context.Background(), profile.ID); err != nil {
+					devLog("ani-connect start: %v", err)
+					break
+				}
+				err = appinfo.Service{}.OpenSignInPage(f[1])
+				devLog("ani-connect sheet: %v", err)
+				go func() {
+					c, err := p.trackers.WaitAniList(context.Background())
+					appinfo.Service{}.CloseSignInPage()
+					devLog("ani-connect: connected=%v err=%v", c.AniList != nil, err)
+				}()
+			case "addon":
+				profile, _, _ := store.Opened(p.db).ProfileInUse()
+				err = store.Opened(p.db).InstallAddon(profile.ID, store.Addon{URL: f[1], Enabled: true})
+			case "tracker":
+				// tracker <get|none> <type> <contentId> <name> <year>: a title's
+				// tracker status, or "none" to remove it from the lists (and the
+				// history), which is the undo for a live scrobble.
+				profile, _, _ := store.Opened(p.db).ProfileInUse()
+				year, _ := strconv.Atoi(f[5])
+				ref := tracking.TitleRef{Type: f[2], ID: f[3], Name: f[4], Year: year, IDs: map[string]string{"imdb": f[3]}}
+				var tt tracking.TitleTracking
+				if f[1] == "none" {
+					tt, err = p.trackers.SetStatus(context.Background(), profile.ID, ref, "none")
+				} else {
+					tt, err = p.trackers.TitleStatus(context.Background(), profile.ID, ref)
+				}
+				devLog("tracker %s %s: status=%s rating=%d services=%v queued=%v", f[1], f[3], tt.Status, tt.Rating, tt.Services, tt.Queued)
+			case "simkl-code":
+				// Starts the live SIMKL sign-in and logs the code and page to approve.
+				profile, _, _ := store.Opened(p.db).ProfileInUse()
+				code, cerr := p.trackers.StartSimkl(context.Background(), profile.ID)
+				devLog("simkl-code: %s %s err=%v", code.Code, code.PageURL, cerr)
+				if cerr == nil {
+					go func() {
+						c, err := p.trackers.WaitSimkl(context.Background())
+						devLog("simkl-code done: connected=%v err=%v", c.Simkl != nil, err)
+					}()
+				}
+			case "check":
+				// check <contentId>: what the store holds for the title, the
+				// outbox and the trackers; no values that identify the account.
+				db := store.Opened(p.db)
+				profile, _, _ := db.ProfileInUse()
+				pending, _ := db.Pending(profile.ID)
+				watched, _ := db.TitleWatched(profile.ID, f[1])
+				progress, _ := db.ContinueWatching(profile.ID)
+				n := 0
+				for _, e := range progress {
+					if e.ContentID == f[1] {
+						n++
+					}
+				}
+				c, _ := p.trackers.Status(profile.ID)
+				devLog("check %s: pending=%d watched=%d continue=%d simkl=%v anilist=%v", f[1], len(pending), len(watched), n, c.Simkl != nil, c.AniList != nil)
+			case "pull":
+				_, err = syncer.PullerOf(p.sync).PullNow(context.Background())
+			case "undo":
+				// undo <contentId> <season> <episode>: unmark watched and drop the progress.
+				db := store.Opened(p.db)
+				profile, _, _ := db.ProfileInUse()
+				se, _ := strconv.Atoi(f[2])
+				ep, _ := strconv.Atoi(f[3])
+				e1 := db.UnmarkWatched(profile.ID, f[1], &se, &ep)
+				e2 := db.RemoveProgress(profile.ID, store.ProgressKey(f[1], &se, &ep))
+				syncer.PusherOf(p.sync).Background(context.Background())
+				devLog("undo: unmark=%v progress=%v", e1, e2)
+			case "disconnect":
+				profile, _, _ := store.Opened(p.db).ProfileInUse()
+				_, e1 := p.trackers.DisconnectSimkl(context.Background(), profile.ID)
+				_, e2 := p.trackers.DisconnectAniList(profile.ID)
+				devLog("disconnect: simkl=%v anilist=%v", e1, e2)
 			case "state":
 				st := p.players.Snapshot()
 				devLog("state: active=%v paused=%v loading=%v position=%.1f duration=%.1f", st.Active, st.Paused, st.Loading, st.Position, st.Duration)

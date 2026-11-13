@@ -50,7 +50,18 @@ func TestRig(t *testing.T) {
 	ani := newAniList(t)
 
 	// Media on a fixed port, so a file URL is stable across rig restarts.
-	media := httptest.NewUnstartedServer(http.FileServer(http.Dir(os.Getenv("RIG_MEDIA"))))
+	mux := http.NewServeMux()
+	mux.Handle("/", http.FileServer(http.Dir(os.Getenv("RIG_MEDIA"))))
+	// A stream addon for every movie and episode: the clip, served locally.
+	mux.HandleFunc("/addon/manifest.json", func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		io.WriteString(w, `{"id":"rig.streams","version":"1.0.0","name":"Rig streams","description":"local clip","resources":["stream"],"types":["movie","series"],"idPrefixes":["tt"],"catalogs":[]}`)
+	})
+	mux.HandleFunc("/addon/stream/", func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		io.WriteString(w, `{"streams":[{"name":"Rig","title":"clip.mp4 1080p WEB-DL","url":"http://127.0.0.1:47831/clip.mp4"}]}`)
+	})
+	media := httptest.NewUnstartedServer(mux)
 	l, err := net.Listen("tcp", "127.0.0.1:47831")
 	if err != nil {
 		t.Fatal(err)
@@ -108,6 +119,13 @@ type aniList struct {
 func newAniList(t *testing.T) *aniList {
 	a := &aniList{entries: map[int]map[string]any{}}
 	a.Server = httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodGet && r.URL.Path == "/authorize" {
+			// What AniList does after the user approves: the browser goes to
+			// the redirect page Peli serves, with the token in the fragment.
+			w.Header().Set("Content-Type", "text/html")
+			io.WriteString(w, `<!doctype html><meta name=viewport content="width=device-width"><body style="font:20px sans-serif;padding:2em"><p>Fake AniList: approving…</p><script>setTimeout(()=>{location.href="http://127.0.0.1:47613/anilist#access_token=rig-token&token_type=Bearer"},9000)</script>`)
+			return
+		}
 		a.mu.Lock()
 		defer a.mu.Unlock()
 		var req struct {

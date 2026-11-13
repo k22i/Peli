@@ -83,6 +83,6 @@
 - [Auto-update](auto-update.md) — #83/ADR-0054 Wails pkg/updater + signed feed, release key in the keychain, VERSION var order, e2e recipe (relaunch drops env)
 - [Orca worker model](orca-worker-model.md) — Opus 5.5, high effort for Orca subworkers (Sonnet medium struggled)
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
-- [iOS port](ios-port.md) — Phases 1–5 (auth, Keychain, openURL, dev rig, playback): ADR-0055/58, ios tag rules, isIOS()/feature(), safe areas, ATS, UIScene shim, touch player fixes, live-run undo, simulator recipe
+- [iOS port](ios-port.md) — Phases 1–6 (Phase 6: UIKit lifecycle, suspend order, GL park, AniList sheet, rig) (auth, Keychain, openURL, dev rig, playback): ADR-0055/58, ios tag rules, isIOS()/feature(), safe areas, ATS, UIScene shim, touch player fixes, live-run undo, simulator recipe
 - [iOS libmpv](ios-libmpv.md) — xcframework, GLES under the webview, 8-bit to GLES (nv12 / lavfi format), mode before first frame, simulator -6683 poisoning + glFinish
 - [Tests later](tests-later.md) — iOS port: skip test-suite runs, fix in one pass after; 2026-11-13 failing list
