@@ -50,7 +50,7 @@
 - [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Peli's identity, glass tiers (#111), 1.5× cards (first asked 2×), type usage rework (fonts stay), sub-tickets #111–#125; type B picked; #117–#123 built by Orca workers
 - [Glass materials](glass-materials.md) — superseded by the 2026-11-11 revamp: material-bar/pop/media; #111 history and backdrop-root gotchas
 - [Card sizes](card-sizes.md) — #113 1.5× cards (15rem/27rem), Artwork `use` + sharper(), Home rows capped at 10 + Browse all, memory numbers, deferred grid cache growth
-- [App shell](app-shell.md) — #114 floating glass sidebar, --sidebar-inset/--titlebar-h, bleed, visual nav order vs ⌘1–6, scroll-edge cover, window colour = --background, shot harness
+- [App shell](app-shell.md) — #114 floating glass sidebar, --sidebar-inset/--titlebar-h, bleed, scroll-edge cover, window colour = --background, shot harness; #129 iOS floating tab bar: internal/shell bridge, hideTabBar() counter, --tabs-float, Tab icons
 - [Home hero](home-hero.md) — #115 Hero size="feature" (bleed, fade under text), glass hero buttons, rowLinkClassName, arrow top, Card pill + timeLeft, Home wrapper
 - [Chip rail](chip-rail.md) — #116 ScrollRail/ChipRail, BrowseFrame sticky glass header, rail gutter + shrink-0 rules, 50-catalog screenshot rig
 - [Settings panes](settings-panes.md) — #120 panes.ts, ?section=, pane list/rail/group/row, last pane for ⌘,, settings-pill element, tests open a pane first

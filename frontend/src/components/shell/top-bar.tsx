@@ -62,8 +62,8 @@ export function TopBar({
 }: {
   platform: Platform;
   scrolled: boolean;
-  // The iOS tab bar holds the sections; the bar keeps the wordmark, Search
-  // and the profile.
+  // The iOS tab bar holds the sections and Search (#129); the bar keeps the
+  // wordmark and the profile.
   compact?: boolean;
   onKeyboardNavigate: () => void;
 }) {
@@ -191,7 +191,6 @@ export function TopBar({
           </nav>
         )}
         <div className="ms-auto flex items-center gap-2">
-          {compact && search && <ul className="flex">{item(search, 0)}</ul>}
           <ConnectionStatus />
           <PartyStatus />
           <UpdateStatus />

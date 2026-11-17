@@ -14,6 +14,7 @@ import (
 	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/iosplayer"
 	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/shell"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/syncer"
 	"github.com/k22i/Peli/internal/tracking"
@@ -77,6 +78,9 @@ func main() {
 	engine := iosplayer.New(window.NativeWindow, player.SinkOf(p.players), p.db, appinfo.Version)
 	// An iPhone stays upright except in the player (rotation_ios.go).
 	player.UseEngine(p.players, rotatingEngine(engine))
+
+	// The floating tab bar goes over the webview in the same controller.
+	shell.UseWindow(window.NativeWindow)
 
 	devStart(app, window, p, engine)
 

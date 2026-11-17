@@ -292,8 +292,6 @@
   --spacing-page: clamp(1.5rem, 0.25rem + 3.4vw, 4rem);
   /* The top bar (traffic lights, navigation, search, profile). */
   --spacing-bar: 3.25rem;
-  /* The iOS tab bar (compact width). */
-  --spacing-tabs: 3.5rem;
 
   /* Card widths. A test keeps cardRem in row.tsx in step with these. */
   --container-poster: 11.5rem;
@@ -345,6 +343,14 @@
      the island when an iPhone is on its side (both sides, as iOS insets
      both). Heroes and the player still reach every edge. */
   --spacing-bar: calc(3.25rem + env(safe-area-inset-top));
+  /* The floating tab bar (#129, compact width): the capsule's height, its
+     bottom edge's distance from the screen's (low, just over the home
+     indicator, as iOS 26 places its own), and the room the content pane
+     leaves under the page so the last row scrolls clear of it. The native
+     bar sets --tabs-h from shell.TabBarHeight; these are the same numbers. */
+  --tabs-h: 62px;
+  --tabs-bottom: max(calc(env(safe-area-inset-bottom) - 12px), 8px);
+  --tabs-float: calc(var(--tabs-h) + var(--tabs-bottom) + 16px);
   --spacing-page: calc(
     clamp(1.5rem, 0.25rem + 3.4vw, 4rem) +
       max(env(safe-area-inset-left), env(safe-area-inset-right))
@@ -354,6 +360,12 @@
   :root[data-platform="ios"] {
     --container-poster: 9.25rem;
     --container-landscape: 15rem;
+  }
+}
+/* An iPhone on its side: a lower capsule, labels beside the icons. */
+@media (max-height: 499.98px) {
+  :root[data-platform="ios"] {
+    --tabs-h: 52px;
   }
 }
 

@@ -22,6 +22,7 @@ import (
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/secrets"
+	"github.com/k22i/Peli/internal/shell"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
@@ -136,6 +137,8 @@ func (p *peli) services(x extras) []application.Service {
 		}
 	}
 	list = append(list, application.NewService(&appinfo.Service{}))
+	// The iOS floating tab bar (#129); no-ops on the desktop.
+	list = append(list, application.NewService(&shell.Service{}))
 	add(x.updates)
 	list = append(list,
 		application.NewService(&licences.Service{}),

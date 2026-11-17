@@ -1,9 +1,10 @@
-import { screen, waitFor, within } from "@testing-library/react";
+import { act, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Profile } from "@bindings/store";
 import { compactQuery } from "@/lib/shell-mode";
+import { hideTabBar } from "@/lib/tab-bar";
 import { onIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
 
@@ -115,15 +116,81 @@ const linkNames = (nav: HTMLElement) =>
     .map((link) => link.textContent);
 
 describe("the iOS shell", () => {
-  it("puts the sections in a tab bar at compact width, with Search at the top", async () => {
+  it("puts the sections and Search in a floating tab bar at compact width", async () => {
     width(true);
     await renderApp("/settings?section=about");
 
     const tabs = screen.getByRole("navigation", { name: "Main" });
     expect(tabs).toHaveAttribute("data-slot", "tab-bar");
-    expect(linkNames(tabs)).toEqual(["Home", "Movies", "Shows", "Anime", "Library"]);
+    // VoiceOver order: the tabs, then Search.
+    expect(linkNames(tabs)).toEqual(["Home", "Movies", "Shows", "Anime", "Library", "Search"]);
     const bar = document.querySelector<HTMLElement>('[data-slot="top-bar"]')!;
-    expect(within(bar).getByRole("link", { name: "Search" })).toBeInTheDocument();
+    expect(within(bar).queryByRole("link", { name: "Search" })).not.toBeInTheDocument();
+  });
+
+  it("keeps the section it came from on a page outside them", async () => {
+    width(true);
+    const user = userEvent.setup();
+    await renderApp("/library");
+    const tabs = screen.getByRole("navigation", { name: "Main" });
+    await waitFor(() =>
+      expect(within(tabs).getByRole("link", { name: "Library" })).toHaveAttribute(
+        "aria-current",
+        "page",
+      ),
+    );
+
+    await user.click(await screen.findByRole("button", { name: /Profile: Kevin/ }));
+    await user.click(await screen.findByRole("menuitem", { name: "Settings" }));
+
+    await screen.findByRole("navigation", { name: "Settings panes" });
+    expect(within(tabs).getByRole("link", { name: "Library" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+  });
+
+  it("scrolls to the top when the current tab is tapped again", async () => {
+    width(true);
+    const user = userEvent.setup();
+    await renderApp("/library");
+    const pane = document.getElementById("content")!;
+    const scrollTo = vi.fn<(options?: ScrollToOptions) => void>();
+    Object.defineProperty(pane, "scrollTo", { value: scrollTo, configurable: true });
+
+    const tabs = screen.getByRole("navigation", { name: "Main" });
+    await user.click(within(tabs).getByRole("link", { name: "Library" }));
+
+    expect(scrollTo).toHaveBeenCalledWith(expect.objectContaining({ top: 0 }));
+  });
+
+  it("goes back to the section's root from a page it kept the selection on", async () => {
+    width(true);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/library");
+    await user.click(await screen.findByRole("button", { name: /Profile: Kevin/ }));
+    await user.click(await screen.findByRole("menuitem", { name: "Settings" }));
+    await screen.findByRole("navigation", { name: "Settings panes" });
+
+    const tabs = screen.getByRole("navigation", { name: "Main" });
+    await user.click(within(tabs).getByRole("link", { name: "Library" }));
+
+    await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
+  });
+
+  it("hides the bar while something asks it to", async () => {
+    width(true);
+    await renderApp("/settings?section=about");
+    const tabs = screen.getByRole("navigation", { name: "Main" });
+    expect(tabs).not.toHaveAttribute("inert");
+
+    let release: (() => void) | undefined;
+    act(() => {
+      release = hideTabBar();
+    });
+    expect(tabs).toHaveAttribute("inert");
+    act(() => release?.());
+    expect(tabs).not.toHaveAttribute("inert");
   });
 
   it("keeps the top bar's sections at regular width", async () => {
