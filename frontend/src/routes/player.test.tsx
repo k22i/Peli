@@ -28,6 +28,7 @@ import { Party } from "@/lib/party";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import { profileSettings } from "@/test/fixtures";
+import { onIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -1828,5 +1829,210 @@ describe("watch party", () => {
     await user.click(screen.getByRole("button", { name: "Watch with the party" }));
     await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
     expect(router.state.location.search).toEqual({ video: "tt0903747:1:1" });
+  });
+});
+
+// The touch player's chrome (#130): a small top row, the transport in the
+// middle, a thin seek row and, for a series, a row of text buttons.
+describe("touch player", () => {
+  const pilot: Watching = {
+    profileId: 1,
+    contentId: "tt0903747",
+    contentType: "series",
+    videoId: "tt0903747:1:1",
+    season: 1,
+    episode: 1,
+    title: "Pilot",
+  };
+  const cinemeta: Addon = {
+    url: "https://v3-cinemeta.strem.io/manifest.json",
+    name: "Cinemeta",
+    enabled: true,
+  };
+  function serveSeries() {
+    mocks.addons.mockResolvedValue([cinemeta]);
+    mocks.visibleAddons.mockResolvedValue([cinemeta]);
+    const answers: Record<string, unknown> = {
+      [cinemeta.url]: cinemetaManifest,
+      "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(url: string) => Promise<Response>>(async (url) =>
+        url in answers ? Response.json(answers[url]) : new Response("", { status: 503 }),
+      ),
+    );
+  }
+  beforeEach(() => onIOS());
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("has a top row, the transport in the middle and a seek row, with no dock menus", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+    const top = await screen.findByTestId("top-row");
+    expect(within(top).getByRole("button", { name: "Back" })).toBeInTheDocument();
+    expect(within(top).getByRole("heading", { name: "The Film" })).toBeInTheDocument();
+    expect(within(top).getByRole("button", { name: "Audio and subtitles" })).toBeInTheDocument();
+    expect(within(top).getByRole("button", { name: "More" })).toBeInTheDocument();
+    // Nothing for #131's Lock until it passes a handler.
+    expect(screen.queryByRole("button", { name: "Lock the controls" })).not.toBeInTheDocument();
+    // The old dock's separate menus are gone.
+    expect(screen.queryByRole("button", { name: "Subtitles" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Audio" })).not.toBeInTheDocument();
+    // A film has no bottom row.
+    expect(screen.queryByTestId("bottom-row")).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Pause" }));
+    expect(mocks.setPaused).toHaveBeenLastCalledWith(true);
+    await user.click(screen.getByRole("button", { name: "Forward 10 seconds" }));
+    expect(mocks.seek).toHaveBeenLastCalledWith(610);
+    const row = screen.getByTestId("seek-row");
+    expect(within(row).getByTestId("elapsed")).toHaveTextContent("10:10");
+    expect(within(row).getByTestId("remaining")).toHaveTextContent("-1:49:50");
+    expect(within(row).getByRole("slider", { name: "Seek" })).toBeInTheDocument();
+
+    // A film's speed is in More.
+    await user.click(screen.getByRole("button", { name: "More" }));
+    const more = await screen.findByRole("menu");
+    expect(within(more).getByRole("menuitem", { name: /Speed/ })).toBeInTheDocument();
+    expect(
+      within(more).getByRole("menuitemcheckbox", { name: "Playback stats" }),
+    ).toBeInTheDocument();
+    expect(within(more).getByRole("menuitem", { name: /Sleep timer/ })).toBeInTheDocument();
+  });
+
+  it("picks audio and subtitles in one sheet, and times them there", async () => {
+    await openPlayer();
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Audio and subtitles" }));
+    const sheet = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    const audio = within(sheet).getByRole("region", { name: "Audio" });
+    const subtitles = within(sheet).getByRole("region", { name: "Subtitles" });
+    expect(within(audio).getByRole("button", { name: /^English/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await user.click(within(audio).getByRole("button", { name: /^Japanese/ }));
+    expect(mocks.setAudioTrack).toHaveBeenLastCalledWith(2);
+    expect(within(subtitles).getByRole("button", { name: "Off" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await user.click(within(subtitles).getByRole("button", { name: /SDH/ }));
+    expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(4);
+
+    await user.click(within(sheet).getByRole("button", { name: /^Timing/ }));
+    await user.click(within(sheet).getByRole("button", { name: "Later" }));
+    await waitFor(() => expect(mocks.setSubtitleDelay).toHaveBeenLastCalledWith(0.1));
+    expect(within(sheet).getAllByText("0.1 s later").length).toBeGreaterThan(0);
+
+    // Style opens the panel's Style tab, with the size.
+    await user.click(within(sheet).getByRole("button", { name: /^Subtitle style/ }));
+    expect(await screen.findByRole("tab", { name: "Style" })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+  });
+
+  it("lists addon subtitles in the sheet by language, and adds the one picked", async () => {
+    const opensubtitles: Addon = {
+      url: "https://opensubtitles-v3.strem.io/manifest.json",
+      name: "OpenSubtitles v3",
+      enabled: true,
+    };
+    const asked =
+      "https://opensubtitles-v3.strem.io/subtitles/movie/tt0111161/filename=film.mkv.json";
+    mocks.addons.mockResolvedValue([opensubtitles]);
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(url: string) => Promise<Response>>(async (url) =>
+        url === opensubtitles.url
+          ? Response.json(opensubtitlesManifest)
+          : url === asked
+            ? Response.json(opensubtitlesMovie)
+            : new Response("", { status: 503 }),
+      ),
+    );
+    await openPlayer(undefined, source, {
+      type: "movie",
+      id: "tt0111161",
+      extra: { filename: "film.mkv" },
+    });
+    emit("player:state", withTracks);
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Audio and subtitles" }));
+    const sheet = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    // The profile's language first, as the desktop submenus have it.
+    const groups = await within(sheet).findAllByRole("group");
+    expect(groups.map((group) => group.querySelector("legend")?.textContent)).toEqual([
+      "English",
+      "Brazilian Portuguese",
+      "Croatian",
+    ]);
+    await user.click(within(groups[1]!).getAllByRole("button")[0]!);
+    await waitFor(() =>
+      expect(mocks.addSubtitle).toHaveBeenCalledWith(expect.objectContaining({ lang: "pt" })),
+    );
+  });
+
+  it("scrubs with the time and how far large at the centre, and fades the rest", async () => {
+    await openPlayer();
+    emit("player:state", playing);
+    const bar = await screen.findByTestId("seek-bar");
+    vi.spyOn(bar, "getBoundingClientRect").mockReturnValue(
+      DOMRect.fromRect({ x: 0, y: 0, width: 1000, height: 24 }),
+    );
+    // jsdom has no pointer capture.
+    Object.assign(HTMLElement.prototype, {
+      setPointerCapture: () => {},
+      releasePointerCapture: () => {},
+      hasPointerCapture: () => true,
+    });
+    fireEvent.pointerDown(bar, { clientX: 500, pointerId: 1, button: 0, buttons: 1 });
+    fireEvent.pointerMove(bar, { clientX: 600, pointerId: 1, buttons: 1 });
+    fireEvent.pointerMove(document, { clientX: 610, pointerId: 1, buttons: 1 });
+    const label = await screen.findByTestId("scrub-label");
+    // 61 % of two hours, and how far that is from 10:00.
+    expect(label).toHaveTextContent("1:13:12+1:03:12");
+    expect(screen.getByTestId("top-row")).toHaveClass("opacity-0");
+    expect(mocks.scrub).toHaveBeenCalled();
+    fireEvent.pointerUp(bar, { clientX: 600, pointerId: 1 });
+    fireEvent.pointerUp(window, { pointerId: 1 });
+    await waitFor(() => expect(screen.queryByTestId("scrub-label")).not.toBeInTheDocument());
+    expect(mocks.seek).toHaveBeenCalled();
+    for (const name of ["setPointerCapture", "releasePointerCapture", "hasPointerCapture"])
+      Reflect.deleteProperty(HTMLElement.prototype, name);
+  });
+
+  it("offers Start over at the top", async () => {
+    await openPlayer(undefined, source, undefined, { resumedAt: 600 });
+    emit("player:state", playing);
+    expect(await screen.findByText(/^Resumed at/)).toHaveTextContent("Resumed at 10:00");
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Start over" }));
+    expect(mocks.seek).toHaveBeenCalledExactlyOnceWith(0);
+  });
+
+  it("has Speed, Episodes and Next episode under the seek bar for a series", async () => {
+    serveSeries();
+    const { router } = await openPlayer("S1 · E1 · Pilot", source, undefined, {
+      watching: pilot,
+    });
+    emit("player:state", { ...playing, duration: 3480 });
+    const row = await screen.findByTestId("bottom-row");
+    expect(within(row).getByRole("button", { name: /Playback speed, 1×/ })).toBeInTheDocument();
+    expect(await within(row).findByRole("button", { name: "Next episode" })).toBeInTheDocument();
+    const user = userEvent.setup();
+    await user.click(within(row).getByRole("button", { name: "Episodes" }));
+    const sheet = await screen.findByRole("dialog", { name: "Episodes" });
+    expect(within(sheet).getByRole("button", { name: /Pilot/ })).toHaveAttribute(
+      "aria-current",
+      "true",
+    );
+    await user.click(within(sheet).getByRole("button", { name: /Cat's in the Bag/ }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
+    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
   });
 });
