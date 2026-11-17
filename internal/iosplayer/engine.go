@@ -330,6 +330,14 @@ func (e *Engine) open(mode string) (*session, error) {
 			slog.Warn("iosplayer: option not set", "error", err)
 		}
 	}
+	// The chroma hook (chroma.go) is set in every mode: zero-copy needs it,
+	// and it is right for the copy and software modes too, so switching
+	// modes mid-file needs nothing more.
+	if path, err := chromaShader(); err != nil {
+		slog.Warn("iosplayer: chroma shader not written", "error", err)
+	} else if err := m.setOptionString("glsl-shaders", path); err != nil {
+		slog.Warn("iosplayer: option not set", "error", err)
+	}
 	// $PELI_MPV_OPTIONS ("hwdec=no") overrides any of these, for debugging.
 	for _, o := range strings.Fields(os.Getenv("PELI_MPV_OPTIONS")) {
 		name, value, ok := strings.Cut(o, "=")
