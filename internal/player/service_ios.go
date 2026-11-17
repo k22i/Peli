@@ -220,8 +220,16 @@ func (s *Service) ShowScreenshot(path string) error       { return ErrDesktopOnl
 func (s *Service) Screenshot(subtitles bool) (string, error) {
 	return "", ErrDesktopOnly
 }
-func (s *Service) Stats() (Stats, error)                { return Stats{}, ErrDesktopOnly }
 func (s *Service) AudioDevices() ([]AudioDevice, error) { return nil, ErrDesktopOnly }
+
+// Stats is the engine's when it reads them (iosplayer does, for the touch
+// player's More menu, #130).
+func (s *Service) Stats() (Stats, error) {
+	if e, ok := s.engine_().(interface{ Stats() (Stats, error) }); ok {
+		return e.Stats()
+	}
+	return Stats{}, ErrDesktopOnly
+}
 
 // The Service is itself an Engine when it has one to forward to; this keeps
 // its controls in step with the interface.

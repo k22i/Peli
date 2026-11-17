@@ -8,6 +8,7 @@ import {
   Captions,
   ChevronLeft,
   Keyboard,
+  Layers,
   ListVideo,
   Maximize,
   Minimize,
@@ -43,6 +44,17 @@ import { SeekBar } from "@/components/player/seek-bar";
 import { SecondSubtitles } from "@/components/player/second-subtitles";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
 import { SpeedMenu } from "@/components/player/speed-menu";
+import {
+  EpisodesSheet,
+  GlassButton,
+  RowButton,
+  ScrubLabel,
+  TouchMoreMenu,
+  TouchSpeedMenu,
+  TouchTopRow,
+  TracksSheet,
+  touchChromeRem,
+} from "@/components/player/touch-chrome";
 import { StatsOverlay } from "@/components/player/stats-overlay";
 import { StillWatching } from "@/components/player/still-watching";
 import { StreamSwitcher, type Refresh } from "@/components/player/stream-switcher";
@@ -168,12 +180,14 @@ import {
   cachedTitleMeta,
   episodeCode,
   episodeTarget,
+  episodes as episodesOf,
   isSeriesType,
   playerHeading,
   resumePoint,
   titleMetaQuery,
   titleProgressQuery,
   watchingFor,
+  type Episode,
 } from "@/lib/title";
 import { feature } from "@/lib/features";
 import { isIOS, isTouch } from "@/lib/platform";
@@ -400,6 +414,15 @@ function PlayerFile({
   // A finger: tap shows or hides the controls, a double tap on a side skips
   // 10 s, and the dock is two rows (iOS).
   const touch = isTouch();
+  const touchLayout = touch && !mini;
+  // The touch player's own chrome (#130): the top row, the transport in the
+  // middle, a thin seek row and a row of text buttons for a series. The mini
+  // player keeps its card.
+  const [episodesOpen, setEpisodesOpen] = useState(false);
+  // A scrub in progress: where it started and where it's going. The seek
+  // bar's drag drives it, and #131's horizontal swipe will through
+  // scrubTo/endScrub; everything but the seek row fades meanwhile.
+  const [scrub, setScrub] = useState<{ from: number; to: number }>();
   const lastTap = useRef<{ at: number; timer: ReturnType<typeof setTimeout> }>(undefined);
   const surface = useRef<HTMLButtonElement>(null);
   useEffect(() => () => clearTimeout(lastTap.current?.timer), []);
@@ -579,6 +602,20 @@ function PlayerFile({
       params: { type: nextTarget.type, id: nextTarget.id },
       search: streamsSearch({ video: nextTarget.videoId }),
       state: (current) => ({ ...current, play: nextTarget }),
+      replace: true,
+    });
+  };
+  // Another episode, from the Episodes sheet: through the stream picker,
+  // in place of this screen, as the next one goes when nothing was ready.
+  const chooseEpisode = (episode: Episode) => {
+    if (!meta) return;
+    setEpisodesOpen(false);
+    const picked = episodeTarget(meta, episode);
+    void navigate({
+      to: streamsPath,
+      params: { type: picked.type, id: picked.id },
+      search: streamsSearch({ video: picked.videoId }),
+      state: (current) => ({ ...current, play: picked }),
       replace: true,
     });
   };
@@ -770,6 +807,18 @@ function PlayerFile({
     const at = Math.min(Math.max(0, to), state.duration);
     setPosition(at);
     seeker({ to: at, exact: true });
+  };
+  // A scrub: the picture follows (keyframe seeks), and the end lands exactly.
+  const scrubTo = (to: number) => {
+    if (!ready || !known) return;
+    const at = Math.min(Math.max(0, to), state.duration);
+    setScrub((current) => ({ from: current?.from ?? position, to: at }));
+    seeker({ to: at, exact: false });
+  };
+  // #131's swipe ends its scrubs here too; a drag's release seeks itself.
+  const endScrub = (commit = true) => {
+    if (scrub && commit) seek(scrub.to);
+    setScrub(undefined);
   };
   const startOver = () => {
     setStartOverDone(true);
@@ -1561,7 +1610,9 @@ function PlayerFile({
     helpOpen ||
     switcherOpen ||
     partyOpen ||
-    dockMenuOpen;
+    dockMenuOpen ||
+    episodesOpen ||
+    scrub !== undefined;
   const shownRef = useRef(shown);
   shownRef.current = shown;
   // The subtitles rise to clear the controls while they show, and settle
@@ -1574,7 +1625,9 @@ function PlayerFile({
   const lifted = liftNow(
     style.lift,
     shown && !previewing && ready,
-    liftToClear(windowHeight, mini, touch ? 20 : 16),
+    touchLayout
+      ? liftToClear(windowHeight, false, 16, series ? touchChromeRem.series : touchChromeRem.movie)
+      : liftToClear(windowHeight, mini, touch ? 20 : 16),
   );
   const loaded = settings !== undefined;
   useEffect(() => {
@@ -1659,7 +1712,15 @@ function PlayerFile({
           : touch
             ? "pe-[calc(1rem+env(safe-area-inset-right))]"
             : "pe-8",
+        // The touch chrome's (#130): bottom right, just above the seek row
+        // (Netflix), and out of the way of a scrub.
+        touchLayout &&
+          (shown
+            ? "bottom-[calc(var(--touch-chrome)+0.5rem)]"
+            : "bottom-[calc(1rem+env(safe-area-inset-bottom))]"),
+        touchLayout && scrub !== undefined && "opacity-0 *:pointer-events-none",
         !mini &&
+          !touchLayout &&
           (shown
             ? "bottom-[calc(var(--dock-h)+1.25rem)]"
             : "bottom-[calc(2rem+env(safe-area-inset-bottom))]"),
@@ -1696,7 +1757,7 @@ function PlayerFile({
           The party is watching {mediaLabel(partyElsewhere)}
         </Prompt>
       )}
-      {offerStartOver && !mini && (
+      {offerStartOver && !mini && !touchLayout && (
         <Prompt
           {...hold}
           icon={<Resumed />}
@@ -1733,11 +1794,223 @@ function PlayerFile({
           share={from === undefined ? 0 : (state.position - from) / (state.duration - from)}
           starting={starting}
           mini={mini}
+          compact={touchLayout}
           onPlay={() => setStarting(true)}
           onCancel={() => setCancelled(true)}
           onStart={(prepared) => void playNext(prepared)}
         />
       )}
+    </div>
+  );
+
+  // The touch chrome (#130), after YouTube, Netflix and Infuse: a 44 pt top
+  // row, the transport at the centre, a thin seek row at the bottom and, for
+  // a series, a row of text buttons under it. While scrubbing only the seek
+  // row stays, with the time it goes to large at the centre.
+  const scrubbing = scrub !== undefined;
+  const faded = scrubbing && "pointer-events-none opacity-0";
+  const episodeList = meta && series ? episodesOf(meta) : [];
+  const touchControls = touchLayout && (
+    <>
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-black/55 to-transparent transition-opacity duration-200",
+          faded,
+        )}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-30 bg-linear-to-t from-black/65 to-transparent"
+      />
+      <TouchTopRow
+        {...hold}
+        className={faded}
+        title={playing?.title}
+        episode={playing?.episode}
+        onBack={leave}
+        tracks={
+          ready && (subtitlesMenu || audioTracks.length > 1)
+            ? {
+                open: panel !== undefined,
+                on: subtitleId > 0,
+                onOpen: () => openPanel("subtitles"),
+              }
+            : undefined
+        }
+        more={
+          ready && (
+            <TouchMoreMenu
+              open={moreOpen}
+              onOpenChange={setMoreOpen}
+              speed={series ? undefined : { speed, onChange: changeSpeed }}
+              sleep={{
+                choice: sleepChoiceOf(sleep),
+                hint: sleepHint(sleep, sleepFor),
+                episodeKnown: known,
+                onChange: changeSleep,
+              }}
+              stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
+            />
+          )
+        }
+      />
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 flex items-center justify-center gap-14 transition-opacity duration-200",
+          shown && !scrubbing && "*:pointer-events-auto",
+          faded,
+        )}
+      >
+        <GlassButton
+          label="Back 10 seconds"
+          size="skip"
+          aria-keyshortcuts="ArrowLeft"
+          onClick={() => seek(position - skip)}
+          disabled={!ready || !known}
+        >
+          <RotateCcw />
+          <span aria-hidden className="absolute text-[0.5625rem] font-semibold">
+            {skip}
+          </span>
+        </GlassButton>
+        <GlassButton
+          label={paused ? "Play" : "Pause"}
+          size="play"
+          aria-keyshortcuts="Space K"
+          onClick={togglePause}
+          disabled={!ready}
+        >
+          {paused ? (
+            <Play className="translate-x-0.5 fill-current" />
+          ) : (
+            <Pause className="fill-current" />
+          )}
+        </GlassButton>
+        <GlassButton
+          label="Forward 10 seconds"
+          size="skip"
+          aria-keyshortcuts="ArrowRight"
+          onClick={() => seek(position + skip)}
+          disabled={!ready || !known}
+        >
+          <RotateCw />
+          <span aria-hidden className="absolute text-[0.5625rem] font-semibold">
+            {skip}
+          </span>
+        </GlassButton>
+      </div>
+      <div
+        {...hold}
+        className="absolute inset-x-0 bottom-0 flex flex-col ps-[calc(1rem+env(safe-area-inset-left))] pe-[calc(1rem+env(safe-area-inset-right))] pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+      >
+        <div data-testid="seek-row" className="flex h-8 items-center gap-3">
+          {known && (
+            <p
+              data-testid="elapsed"
+              className={cn(
+                "shrink-0 text-[0.75rem] font-[600] text-white tnum",
+                hours ? "w-[7ch]" : "w-[5ch]",
+              )}
+            >
+              {formatTime(scrub?.to ?? position)}
+            </p>
+          )}
+          <div className="min-w-0 flex-1">
+            <SeekBar
+              touch
+              scrubAt={scrub?.to}
+              position={position}
+              duration={state.duration}
+              buffered={state.buffered}
+              segments={segments}
+              loop={loop}
+              playing={!paused && ready}
+              onScrub={scrubTo}
+              onSeek={(to) => {
+                seek(to);
+                endScrub(false);
+              }}
+              onDraggingChange={(on) => {
+                setDragging(on);
+                if (!on) setScrub(undefined);
+              }}
+            />
+          </div>
+          {known && (
+            <p
+              data-testid="remaining"
+              className={cn(
+                "shrink-0 text-end text-[0.75rem] font-[600] text-white/70 tnum",
+                hours ? "w-[8ch]" : "w-[6ch]",
+              )}
+            >
+              -{formatTime(Math.max(0, state.duration - (scrub?.to ?? position)))}
+            </p>
+          )}
+        </div>
+        {series && (
+          <div
+            data-testid="bottom-row"
+            className={cn(
+              "-ms-2.5 flex h-8 items-center gap-1 transition-opacity duration-200",
+              faded,
+            )}
+          >
+            {ready && (
+              <TouchSpeedMenu
+                speed={speed}
+                onChange={changeSpeed}
+                open={speedOpen}
+                onOpenChange={setSpeedOpen}
+              />
+            )}
+            {episodeList.length > 0 && (
+              <RowButton
+                icon={<Layers aria-hidden />}
+                aria-expanded={episodesOpen}
+                onClick={() => {
+                  setPanel(undefined);
+                  setEpisodesOpen(!episodesOpen);
+                }}
+              >
+                Episodes
+              </RowButton>
+            )}
+            {ready && next && !starting && (
+              <RowButton
+                icon={<SkipForward aria-hidden className="fill-current" />}
+                onClick={() => setStarting(true)}
+              >
+                Next episode
+              </RowButton>
+            )}
+          </div>
+        )}
+      </div>
+      {scrub && <ScrubLabel from={scrub.from} to={scrub.to} />}
+    </>
+  );
+  // "Resumed at 12:34 · Start over", at the top centre under the top row.
+  const resumePill = offerStartOver && !failure && asking === undefined && (
+    <div
+      className={cn(
+        "pointer-events-none absolute inset-x-0 top-[calc(3.75rem+env(safe-area-inset-top))] flex justify-center px-4 *:pointer-events-auto",
+        faded,
+      )}
+    >
+      <Prompt
+        {...hold}
+        icon={<Resumed />}
+        action={
+          <Button size="sm" variant="light" onClick={startOver}>
+            <RotateCcw />
+            Start over
+          </Button>
+        }
+      >
+        Resumed at <span className="tnum">{formatTime(resumedAt)}</span>
+      </Prompt>
     </div>
   );
 
@@ -1749,6 +2022,12 @@ function PlayerFile({
         // env() is the home indicator on iOS (the webview fills the screen,
         // build/ios/main.m) and 0 elsewhere.
         touch ? "[--dock-h:calc(10rem+env(safe-area-inset-bottom))]" : "[--dock-h:7.5rem]",
+        // The touch chrome's height (#130): the seek row, and the bottom row
+        // for a series, over the home indicator.
+        touchLayout &&
+          (series
+            ? "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+4rem)]"
+            : "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+2rem)]"),
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
@@ -1803,9 +2082,10 @@ function PlayerFile({
             dragged.current = false;
             return;
           }
-          if (panel || pictureOpen) {
+          if (panel || pictureOpen || episodesOpen) {
             setPanel(undefined);
             setPictureOpen(false);
+            setEpisodesOpen(false);
           } else if (touch) tapPicture(event.clientX, event.currentTarget.getBoundingClientRect());
           else togglePause();
         }}
@@ -1830,286 +2110,293 @@ function PlayerFile({
           shown ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >
-        {/* Scrims: a band at the top for the title, a deeper one at the
+        {touchLayout ? (
+          touchControls
+        ) : (
+          <>
+            {/* Scrims: a band at the top for the title, a deeper one at the
             bottom for the dock. */}
-        <div
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-x-0 top-0 bg-linear-to-b from-black/60 via-black/20 to-transparent",
-            mini ? "h-16" : "h-36",
-          )}
-        />
-        <div
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 via-black/30 to-transparent",
-            mini ? "h-24" : "h-64",
-          )}
-        />
+            <div
+              aria-hidden
+              className={cn(
+                "pointer-events-none absolute inset-x-0 top-0 bg-linear-to-b from-black/60 via-black/20 to-transparent",
+                mini ? "h-16" : "h-36",
+              )}
+            />
+            <div
+              aria-hidden
+              className={cn(
+                "pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 via-black/30 to-transparent",
+                mini ? "h-24" : "h-64",
+              )}
+            />
 
-        {/* The top: Back and what's playing on the left; the window's
+            {/* The top: Back and what's playing on the left; the window's
             actions on the right. A drag strip, clear of the traffic lights. */}
-        <div
-          {...hold}
-          className={cn(
-            "drag-region absolute inset-x-0 top-0 flex items-start gap-4",
-            mini
-              ? "h-14 pt-2 pr-3 pl-2"
-              : touch
-                ? "pt-[calc(0.5rem+env(safe-area-inset-top))] pr-[calc(0.75rem+env(safe-area-inset-right))] pl-[calc(0.75rem+env(safe-area-inset-left))]"
-                : "pt-3 pr-5 pl-[5.75rem]",
-          )}
-        >
-          <ControlButton label="Back" icon={ChevronLeft} onClick={leave} raised />
-          {playing?.title && (
             <div
+              {...hold}
               className={cn(
-                "flex min-w-0 flex-col drop-shadow-[0_1px_8px_rgb(0_0_0/0.6)]",
-                mini ? "h-10 justify-center" : "gap-1.5 pt-0.5",
+                "drag-region absolute inset-x-0 top-0 flex items-start gap-4",
+                mini
+                  ? "h-14 pt-2 pr-3 pl-2"
+                  : touch
+                    ? "pt-[calc(0.5rem+env(safe-area-inset-top))] pr-[calc(0.75rem+env(safe-area-inset-right))] pl-[calc(0.75rem+env(safe-area-inset-left))]"
+                    : "pt-3 pr-5 pl-[5.75rem]",
               )}
             >
-              <h1
-                className={cn(
-                  "truncate",
-                  mini
-                    ? "text-sm font-semibold"
-                    : touch
-                      ? "font-display text-[1.5rem] leading-none font-normal"
-                      : "font-display text-[1.875rem] leading-none font-normal",
-                )}
-              >
-                {playing.title}
-              </h1>
-              {playing.episode && (
-                <p className={cn("truncate", mini ? "text-small" : "text-small text-white/75")}>
-                  {playing.episode}
-                </p>
-              )}
-            </div>
-          )}
-          {!mini && (
-            <div className="ms-auto flex shrink-0 items-center gap-1">
-              {torrentStatus?.active && (
-                <p
-                  aria-label="Torrent status"
-                  className="me-2 rounded-full bg-black/45 px-3 py-1.5 text-small text-white/85 tnum backdrop-blur-md"
-                >
-                  {torrentStatusText(torrentStatus)}
-                </p>
-              )}
-              {feature("party") && (watching || party) && (
-                <ControlButton
-                  label={party ? "Watch party" : "Start a watch party"}
-                  icon={Users}
-                  onClick={openParty}
-                  aria-keyshortcuts="W"
-                  aria-expanded={partyOpen}
+              <ControlButton label="Back" icon={ChevronLeft} onClick={leave} raised />
+              {playing?.title && (
+                <div
                   className={cn(
-                    party && "bg-white/12",
-                    partyChat.unread > 0 &&
-                      "after:absolute after:top-1.5 after:right-1.5 after:size-2 after:rounded-full after:bg-[#ffb547]",
+                    "flex min-w-0 flex-col drop-shadow-[0_1px_8px_rgb(0_0_0/0.6)]",
+                    mini ? "h-10 justify-center" : "gap-1.5 pt-0.5",
                   )}
-                />
+                >
+                  <h1
+                    className={cn(
+                      "truncate",
+                      mini
+                        ? "text-sm font-semibold"
+                        : touch
+                          ? "font-display text-[1.5rem] leading-none font-normal"
+                          : "font-display text-[1.875rem] leading-none font-normal",
+                    )}
+                  >
+                    {playing.title}
+                  </h1>
+                  {playing.episode && (
+                    <p className={cn("truncate", mini ? "text-small" : "text-small text-white/75")}>
+                      {playing.episode}
+                    </p>
+                  )}
+                </div>
               )}
-              {watching && feature("streamSwitcher") && (
-                <ControlButton
-                  label="Streams"
-                  icon={ListVideo}
-                  onClick={openSwitcher}
-                  aria-keyshortcuts="S"
-                  aria-expanded={switcherOpen}
-                />
-              )}
-              {feature("desktopControls") && (
-                <ControlButton
-                  label="Keyboard shortcuts"
-                  icon={Keyboard}
-                  onClick={() => {
-                    setPanel(undefined);
-                    setPictureOpen(false);
-                    setHelpOpen(!helpOpen);
-                  }}
-                  aria-keyshortcuts="Shift+?"
-                  aria-expanded={helpOpen}
-                />
-              )}
-              {miniButton}
-              {feature("desktopControls") && (
-                <ControlButton
-                  label={fullscreen ? "Exit full screen" : "Full screen"}
-                  icon={fullscreen ? Minimize : Maximize}
-                  onClick={toggleFullscreen}
-                  aria-keyshortcuts="F"
-                />
+              {!mini && (
+                <div className="ms-auto flex shrink-0 items-center gap-1">
+                  {torrentStatus?.active && (
+                    <p
+                      aria-label="Torrent status"
+                      className="me-2 rounded-full bg-black/45 px-3 py-1.5 text-small text-white/85 tnum backdrop-blur-md"
+                    >
+                      {torrentStatusText(torrentStatus)}
+                    </p>
+                  )}
+                  {feature("party") && (watching || party) && (
+                    <ControlButton
+                      label={party ? "Watch party" : "Start a watch party"}
+                      icon={Users}
+                      onClick={openParty}
+                      aria-keyshortcuts="W"
+                      aria-expanded={partyOpen}
+                      className={cn(
+                        party && "bg-white/12",
+                        partyChat.unread > 0 &&
+                          "after:absolute after:top-1.5 after:right-1.5 after:size-2 after:rounded-full after:bg-[#ffb547]",
+                      )}
+                    />
+                  )}
+                  {watching && feature("streamSwitcher") && (
+                    <ControlButton
+                      label="Streams"
+                      icon={ListVideo}
+                      onClick={openSwitcher}
+                      aria-keyshortcuts="S"
+                      aria-expanded={switcherOpen}
+                    />
+                  )}
+                  {feature("desktopControls") && (
+                    <ControlButton
+                      label="Keyboard shortcuts"
+                      icon={Keyboard}
+                      onClick={() => {
+                        setPanel(undefined);
+                        setPictureOpen(false);
+                        setHelpOpen(!helpOpen);
+                      }}
+                      aria-keyshortcuts="Shift+?"
+                      aria-expanded={helpOpen}
+                    />
+                  )}
+                  {miniButton}
+                  {feature("desktopControls") && (
+                    <ControlButton
+                      label={fullscreen ? "Exit full screen" : "Full screen"}
+                      icon={fullscreen ? Minimize : Maximize}
+                      onClick={toggleFullscreen}
+                      aria-keyshortcuts="F"
+                    />
+                  )}
+                </div>
               )}
             </div>
-          )}
-        </div>
 
-        {/* The dock: the timeline across, and the transport under it. */}
-        <div
-          {...hold}
-          className={cn(
-            "absolute flex flex-col",
-            mini
-              ? "inset-x-2 bottom-2 gap-1 rounded-2xl px-3 py-2 material-media"
-              : touch
-                ? "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 ps-[calc(1rem+env(safe-area-inset-left))] pe-[calc(1rem+env(safe-area-inset-right))] pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
-                : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
-          )}
-        >
-          <div className="flex items-center gap-4">
-            {timeShown && (
-              <p
-                data-testid="elapsed"
-                className={cn(
-                  "shrink-0 text-small font-[590] text-white tnum",
-                  hours ? "w-[7ch]" : "w-[5ch]",
-                )}
-              >
-                {formatTime(position)}
-              </p>
-            )}
-            <div className="min-w-0 flex-1">
-              <SeekBar
-                position={position}
-                duration={state.duration}
-                buffered={state.buffered}
-                segments={segments}
-                loop={loop}
-                playing={!paused && ready}
-                onScrub={(to) => ready && seeker({ to, exact: false })}
-                onSeek={seek}
-                onDraggingChange={setDragging}
-              />
-            </div>
-            {timeShown && (
-              <p
-                data-testid="remaining"
-                className={cn(
-                  "shrink-0 text-end text-small font-[590] text-white/70 tnum",
-                  hours ? "w-[8ch]" : "w-[6ch]",
-                )}
-              >
-                -{formatTime(Math.max(0, state.duration - position))}
-              </p>
-            )}
-          </div>
-          {mini ? (
-            <div className="flex items-center gap-1">
-              {playButton}
-              {volumeControl}
-              {known && (
-                <p className="ms-1 truncate text-small text-white tnum">
-                  {formatTime(position)} / {formatTime(state.duration)}
-                </p>
-              )}
-              <div className="ms-auto flex items-center gap-1">{miniButton}</div>
-            </div>
-          ) : (
+            {/* The dock: the timeline across, and the transport under it. */}
             <div
+              {...hold}
               className={cn(
-                touch
-                  ? "flex flex-col items-center gap-1"
-                  : "grid grid-cols-[1fr_auto_1fr] items-center",
+                "absolute flex flex-col",
+                mini
+                  ? "inset-x-2 bottom-2 gap-1 rounded-2xl px-3 py-2 material-media"
+                  : touch
+                    ? "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 ps-[calc(1rem+env(safe-area-inset-left))] pe-[calc(1rem+env(safe-area-inset-right))] pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
+                    : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
               )}
             >
-              {!touch && <div className="flex items-center gap-1">{volumeControl}</div>}
               <div className="flex items-center gap-4">
-                <ControlButton
-                  label="Back 10 seconds"
-                  icon={RotateCcw}
-                  aria-keyshortcuts="ArrowLeft"
-                  onClick={() => seek(position - skip)}
-                  disabled={!ready || !known}
-                  badge={skip}
-                />
-                {playButton}
-                <ControlButton
-                  label="Forward 10 seconds"
-                  icon={RotateCw}
-                  aria-keyshortcuts="ArrowRight"
-                  onClick={() => seek(position + skip)}
-                  disabled={!ready || !known}
-                  badge={skip}
-                />
-              </div>
-              <div
-                className={cn(
-                  "flex items-center gap-1.5",
-                  touch ? "justify-center" : "justify-self-end",
+                {timeShown && (
+                  <p
+                    data-testid="elapsed"
+                    className={cn(
+                      "shrink-0 text-small font-[590] text-white tnum",
+                      hours ? "w-[7ch]" : "w-[5ch]",
+                    )}
+                  >
+                    {formatTime(position)}
+                  </p>
                 )}
-              >
-                {ready && (
-                  <SpeedMenu
-                    speed={speed}
-                    onChange={changeSpeed}
-                    open={speedOpen}
-                    onOpenChange={setSpeedOpen}
+                <div className="min-w-0 flex-1">
+                  <SeekBar
+                    position={position}
+                    duration={state.duration}
+                    buffered={state.buffered}
+                    segments={segments}
+                    loop={loop}
+                    playing={!paused && ready}
+                    onScrub={(to) => ready && seeker({ to, exact: false })}
+                    onSeek={seek}
+                    onDraggingChange={setDragging}
                   />
-                )}
-                {ready && subtitlesMenu && (
-                  <PanelButton
-                    label="Subtitles"
-                    icon={Captions}
-                    active={panel !== undefined && panel !== "audio"}
-                    on={subtitleId > 0}
-                    onClick={() => openPanel("subtitles")}
-                    shortcut="V"
-                  />
-                )}
-                {ready && audioTracks.length > 1 && (
-                  <PanelButton
-                    label="Audio"
-                    icon={AudioLines}
-                    active={panel === "audio"}
-                    onClick={() => openPanel("audio")}
-                  />
-                )}
-                {ready && feature("playerPanels") && (
-                  <PanelButton
-                    label="Picture and sound"
-                    icon={SlidersHorizontal}
-                    active={pictureOpen}
-                    on={
-                      picture.preset !== "standard" ||
-                      JSON.stringify(framing) !== JSON.stringify(defaultFraming)
-                    }
-                    onClick={openPicture}
-                    shortcut="P"
-                  />
-                )}
-                {ready && feature("playerPanels") && (
-                  <MoreMenu
-                    open={moreOpen}
-                    onOpenChange={setMoreOpen}
-                    chapters={{
-                      chapters,
-                      current: chapterAt(chapters, position),
-                      onPick: (index) =>
-                        goToChapter(chapters[index] && { index, chapter: chapters[index] }),
-                    }}
-                    loop={{
-                      loop,
-                      onNext: stepLoop,
-                      onClear: () => changeLoop({}, "A–B loop off"),
-                    }}
-                    onScreenshot={takeScreenshot}
-                    stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
-                    sleep={{
-                      choice: sleepChoiceOf(sleep),
-                      hint: sleepHint(sleep, sleepFor),
-                      episodeKnown: known,
-                      onChange: changeSleep,
-                    }}
-                  />
+                </div>
+                {timeShown && (
+                  <p
+                    data-testid="remaining"
+                    className={cn(
+                      "shrink-0 text-end text-small font-[590] text-white/70 tnum",
+                      hours ? "w-[8ch]" : "w-[6ch]",
+                    )}
+                  >
+                    -{formatTime(Math.max(0, state.duration - position))}
+                  </p>
                 )}
               </div>
+              {mini ? (
+                <div className="flex items-center gap-1">
+                  {playButton}
+                  {volumeControl}
+                  {known && (
+                    <p className="ms-1 truncate text-small text-white tnum">
+                      {formatTime(position)} / {formatTime(state.duration)}
+                    </p>
+                  )}
+                  <div className="ms-auto flex items-center gap-1">{miniButton}</div>
+                </div>
+              ) : (
+                <div
+                  className={cn(
+                    touch
+                      ? "flex flex-col items-center gap-1"
+                      : "grid grid-cols-[1fr_auto_1fr] items-center",
+                  )}
+                >
+                  {!touch && <div className="flex items-center gap-1">{volumeControl}</div>}
+                  <div className="flex items-center gap-4">
+                    <ControlButton
+                      label="Back 10 seconds"
+                      icon={RotateCcw}
+                      aria-keyshortcuts="ArrowLeft"
+                      onClick={() => seek(position - skip)}
+                      disabled={!ready || !known}
+                      badge={skip}
+                    />
+                    {playButton}
+                    <ControlButton
+                      label="Forward 10 seconds"
+                      icon={RotateCw}
+                      aria-keyshortcuts="ArrowRight"
+                      onClick={() => seek(position + skip)}
+                      disabled={!ready || !known}
+                      badge={skip}
+                    />
+                  </div>
+                  <div
+                    className={cn(
+                      "flex items-center gap-1.5",
+                      touch ? "justify-center" : "justify-self-end",
+                    )}
+                  >
+                    {ready && (
+                      <SpeedMenu
+                        speed={speed}
+                        onChange={changeSpeed}
+                        open={speedOpen}
+                        onOpenChange={setSpeedOpen}
+                      />
+                    )}
+                    {ready && subtitlesMenu && (
+                      <PanelButton
+                        label="Subtitles"
+                        icon={Captions}
+                        active={panel !== undefined && panel !== "audio"}
+                        on={subtitleId > 0}
+                        onClick={() => openPanel("subtitles")}
+                        shortcut="V"
+                      />
+                    )}
+                    {ready && audioTracks.length > 1 && (
+                      <PanelButton
+                        label="Audio"
+                        icon={AudioLines}
+                        active={panel === "audio"}
+                        onClick={() => openPanel("audio")}
+                      />
+                    )}
+                    {ready && feature("playerPanels") && (
+                      <PanelButton
+                        label="Picture and sound"
+                        icon={SlidersHorizontal}
+                        active={pictureOpen}
+                        on={
+                          picture.preset !== "standard" ||
+                          JSON.stringify(framing) !== JSON.stringify(defaultFraming)
+                        }
+                        onClick={openPicture}
+                        shortcut="P"
+                      />
+                    )}
+                    {ready && feature("playerPanels") && (
+                      <MoreMenu
+                        open={moreOpen}
+                        onOpenChange={setMoreOpen}
+                        chapters={{
+                          chapters,
+                          current: chapterAt(chapters, position),
+                          onPick: (index) =>
+                            goToChapter(chapters[index] && { index, chapter: chapters[index] }),
+                        }}
+                        loop={{
+                          loop,
+                          onNext: stepLoop,
+                          onClear: () => changeLoop({}, "A–B loop off"),
+                        }}
+                        onScreenshot={takeScreenshot}
+                        stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
+                        sleep={{
+                          choice: sleepChoiceOf(sleep),
+                          hint: sleepHint(sleep, sleepFor),
+                          episodeKnown: known,
+                          onChange: changeSleep,
+                        }}
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </>
+        )}
       </div>
       {prompts}
+      {touchLayout && resumePill}
       {asking !== undefined && !failure && (
         <StillWatching
           title={meta?.name ?? playing?.title ?? ""}
@@ -2124,7 +2411,14 @@ function PlayerFile({
         />
       )}
       <SubtitlePanel
-        open={panel !== undefined && !mini && !failure}
+        open={
+          panel !== undefined &&
+          !mini &&
+          !failure &&
+          // The touch player lists tracks in its own sheet (#130), and
+          // opens this panel for the style.
+          (!touchLayout || panel === "style")
+        }
         tab={panel ?? "subtitles"}
         onTabChange={setPanel}
         onClose={() => setPanel(undefined)}
@@ -2153,6 +2447,35 @@ function PlayerFile({
         position={position}
         subtitleText={state.subtitleText ?? ""}
       />
+      {touchLayout && !failure && (panel === "subtitles" || panel === "audio") && (
+        <TracksSheet
+          onClose={() => setPanel(undefined)}
+          audioTracks={audioTracks}
+          audioId={audioId}
+          onPickAudio={pickAudio}
+          subtitleTracks={subtitleTracks}
+          addedIds={new Set(added.ids.values())}
+          subtitleId={subtitleId}
+          onPickTrack={pickSubtitles}
+          addonSubtitles={addonSubtitles.subtitles}
+          addonLoading={addonSubtitles.loading}
+          addonKey={addonKey}
+          loadingKey={loadingKey}
+          onPickAddon={(subtitle) => addSubtitles(subtitle, true)}
+          preferredLanguage={settings?.subtitleLanguage ?? ""}
+          delay={subtitleDelay}
+          onDelayChange={(by) => timeSubtitlesBy(by)}
+          onStyle={() => setPanel("style")}
+        />
+      )}
+      {touchLayout && !failure && episodesOpen && meta && series && (
+        <EpisodesSheet
+          meta={meta}
+          playing={series.videoId}
+          onPick={chooseEpisode}
+          onClose={() => setEpisodesOpen(false)}
+        />
+      )}
       {feature("playerPanels") && (
         <PictureSheet
           open={pictureOpen && !mini && !failure}
