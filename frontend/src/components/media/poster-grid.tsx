@@ -37,6 +37,19 @@ const captionPx = 48;
 
 const px = (value: string) => Number.parseFloat(value) || 0;
 
+// The dense grid (#132): its fixed column count from index.css
+// (--poster-dense-columns: 3 on an iPhone upright, 6 on its side), with 8 pt
+// gaps and a shorter caption. 0 where the variable isn't set (desktop, the
+// iPad full screen, jsdom), which keeps the ordinary grid.
+export function denseColumns(): number {
+  if (typeof document === "undefined") return 0;
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue("--poster-dense-columns")
+    .trim();
+  return Math.max(Math.floor(Number(value)) || 0, 0);
+}
+const dense = { columnGap: 8, rowGap: 14, caption: 34 };
+
 // The page's scroll container: #content in the app shell, <main> on narrow
 // windows. The title page's episode list scrolls with it too.
 export function scrollParent(element: HTMLElement): HTMLElement {
@@ -77,6 +90,7 @@ export function PosterGrid<T>({
   label,
   className,
   isSelected,
+  dense: wantDense = false,
 }: {
   items: readonly T[];
   getKey: (item: T, index: number) => Key;
@@ -87,6 +101,9 @@ export function PosterGrid<T>({
   // Makes the grid a multi-select listbox, the cards its options: with it,
   // `aria-selected` tells which are chosen. Without it, a plain list.
   isSelected?: (item: T, index: number) => boolean;
+  // Dense cards in a fixed number of columns where the page asks for them
+  // (an iPhone, see denseColumns); elsewhere it changes nothing.
+  dense?: boolean;
 }) {
   const list = useRef<HTMLUListElement>(null);
   const [scrollElement, setScrollElement] = useState<HTMLElement | null>(null);
@@ -94,8 +111,10 @@ export function PosterGrid<T>({
     columns: 1,
     cardWidth: remToPx(cardWidthRem("poster")),
     top: 0,
+    dense: false,
   }));
   const { columns, cardWidth } = layout;
+  const columnGap = layout.dense ? dense.columnGap : columnGapPx;
   const count = items.length;
   const rows = Math.ceil(count / columns);
   const [headerInset, setHeaderInset] = useState(0);
@@ -123,10 +142,13 @@ export function PosterGrid<T>({
       const style = getComputedStyle(element);
       const width = element.clientWidth - px(style.paddingLeft) - px(style.paddingRight);
       const poster = remToPx(cardWidthRem("poster"));
-      const fit = Math.max(Math.floor((width + columnGapPx) / (poster + columnGapPx)), 1);
+      const fixed = wantDense ? denseColumns() : 0;
+      const gap = fixed ? dense.columnGap : columnGapPx;
+      const fit = fixed || Math.max(Math.floor((width + gap) / (poster + gap)), 1);
       setLayout({
+        dense: fixed > 0,
         columns: fit,
-        cardWidth: width > 0 ? (width - columnGapPx * (fit - 1)) / fit : poster,
+        cardWidth: width > 0 ? (width - gap * (fit - 1)) / fit : poster,
         top:
           element.getBoundingClientRect().top -
           scroller.getBoundingClientRect().top +
@@ -138,10 +160,12 @@ export function PosterGrid<T>({
     if (typeof ResizeObserver === "undefined") return undefined;
     const observer = new ResizeObserver(update);
     observer.observe(element);
+    // Turning the phone changes the column count, not only the width.
+    if (wantDense) observer.observe(document.documentElement);
     // Content above the grid moving it down, too.
     if (scroller.firstElementChild) observer.observe(scroller.firstElementChild);
     return () => observer.disconnect();
-  }, []);
+  }, [wantDense]);
 
   const activeRow = Math.floor(active / columns);
   // No React Compiler in this app: nothing here is memoized behind its back.
@@ -149,9 +173,9 @@ export function PosterGrid<T>({
   const virtualizer = useVirtualizer({
     count: rows,
     getScrollElement: () => scrollElement,
-    estimateSize: () => cardWidth * 1.5 + captionPx,
+    estimateSize: () => cardWidth * 1.5 + (layout.dense ? dense.caption : captionPx),
     measureElement: measureRow,
-    gap: rowGapPx,
+    gap: layout.dense ? dense.rowGap : rowGapPx,
     scrollMargin: layout.top,
     scrollPaddingStart: headerInset,
     overscan: 2,
@@ -202,6 +226,7 @@ export function PosterGrid<T>({
         role={isSelected ? "listbox" : undefined}
         aria-multiselectable={isSelected ? true : undefined}
         data-slot="poster-grid"
+        data-dense={layout.dense || undefined}
         className={cn("relative px-page", className)}
         style={
           {
@@ -226,7 +251,7 @@ export function PosterGrid<T>({
                 aria-selected={isSelected ? isSelected(item, index) : undefined}
                 className="absolute top-0"
                 style={{
-                  insetInlineStart: `calc(var(--spacing-page) + ${column * (cardWidth + columnGapPx)}px)`,
+                  insetInlineStart: `calc(var(--spacing-page) + ${column * (cardWidth + columnGap)}px)`,
                   transform: `translateY(${row.start - margin}px)`,
                 }}
               >

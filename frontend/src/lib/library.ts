@@ -66,6 +66,23 @@ export function episodeLabels(entries: readonly Progress[]): Map<string, string>
   return labels;
 }
 
+// How far into each title in progress the profile is, 0 to 1, by content
+// ID, for the dense grid's progress bar (#132). Entries with nothing watched
+// yet (a next episode at 0) are left out, so their cards show no bar.
+export function progressFractions(entries: readonly Progress[]): Map<string, number> {
+  const fractions = new Map<string, number>();
+  for (const entry of entries) {
+    const fraction = watchedFraction(entry);
+    if (fraction > 0 && !fractions.has(entry.contentId)) fractions.set(entry.contentId, fraction);
+  }
+  return fractions;
+}
+
+// The dense card's one meta line (#132): where a show in progress is up to,
+// else the year.
+export const denseLibraryMeta = (item: LibraryItem, episode?: string): string | undefined =>
+  episode || item.releaseInfo || undefined;
+
 // A library card's meta line: the year, then "S2 · E5" for a show in progress.
 export const libraryMeta = (item: LibraryItem, episode?: string): string | undefined =>
   [item.releaseInfo, episode].filter(Boolean).join(" · ") || undefined;
@@ -113,6 +130,14 @@ export const librarySorts: readonly { value: LibrarySort; label: string }[] = [
   { value: "watched", label: "Recently watched" },
   { value: "name", label: "A–Z" },
 ];
+
+// The caption under the iPhone's chips (#132): only when the sort isn't the
+// default.
+export function sortCaption(sort: LibrarySort): string | undefined {
+  if (sort === "added") return undefined;
+  const label = librarySorts.find((option) => option.value === sort)?.label;
+  return label ? `Sorted by ${label}` : undefined;
+}
 
 export function librarySearch(search: Record<string, unknown>): LibrarySearch {
   const { type } = search;

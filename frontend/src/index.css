@@ -360,13 +360,24 @@
   :root[data-platform="ios"] {
     --container-poster: 9.25rem;
     --container-landscape: 15rem;
+    /* The dense poster grid (#132: Library and Watchlist): a fixed number of
+       columns, three upright, instead of as many --container-poster as fit.
+       PosterGrid's `dense` reads it; unset (desktop, iPad full screen) means
+       the ordinary grid. */
+    --poster-dense-columns: 3;
   }
 }
 /* An iPhone on its side: a lower capsule, labels beside the icons. */
 @media (max-height: 499.98px) {
   :root[data-platform="ios"] {
     --tabs-h: 52px;
+    --poster-dense-columns: 6;
   }
+}
+/* Toasts stand above the floating tab bar while it shows (#132; the shell
+   sets data-tabs on <html>), not behind it. */
+:root[data-tabs] [data-slot="toast-viewport"][data-position*="bottom"] {
+  bottom: var(--tabs-float);
 }
 
 /* Light: warm paper. */
