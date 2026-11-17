@@ -243,7 +243,13 @@ function EditorForm({
                       className="size-16 overflow-hidden rounded-full ring-offset-2 ring-offset-transparent outline-none transition-shadow hover:ring-2 hover:ring-foreground/24 focus-visible:ring-2 focus-visible:ring-ring data-checked:ring-2 data-checked:ring-primary"
                       style={a.color ? { backgroundColor: a.color } : undefined}
                     >
-                      <img src={a.image} alt="" draggable={false} className="size-full" />
+                      <img
+                        decoding="async"
+                        src={a.image}
+                        alt=""
+                        draggable={false}
+                        className="size-full"
+                      />
                     </RadioPrimitive.Root>
                   ))}
                 </RadioGroup>

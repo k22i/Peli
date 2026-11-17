@@ -230,6 +230,7 @@ export function Logo({
   const shown = failed.includes(sharp) ? src : sharp;
   return (
     <img
+      decoding="async"
       src={viaProxy(shown)}
       alt={title}
       onError={() => setFailed([...failed, shown])}

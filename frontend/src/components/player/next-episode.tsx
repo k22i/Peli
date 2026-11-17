@@ -73,6 +73,7 @@ export function NextEpisode({
       {next.thumbnail && !mini && !compact && (
         <div className="relative w-40 shrink-0 bg-white/5">
           <img
+            decoding="async"
             src={next.thumbnail}
             alt=""
             className="absolute inset-0 size-full object-cover"

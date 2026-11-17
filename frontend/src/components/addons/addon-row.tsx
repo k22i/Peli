@@ -136,6 +136,7 @@ export function AddonRow({
 
       {manifest.data?.logo && !logoFailed ? (
         <img
+          decoding="async"
           src={viaProxy(manifest.data.logo)}
           alt=""
           className="size-11 shrink-0 rounded-[0.8rem] bg-muted object-contain hairline"

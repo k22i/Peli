@@ -796,6 +796,7 @@ export function EpisodesSheet({
                 <span className="relative aspect-video w-24 shrink-0 overflow-hidden rounded-lg bg-white/8">
                   {episode.thumbnail && (
                     <img
+                      decoding="async"
                       src={episode.thumbnail}
                       alt=""
                       loading="lazy"

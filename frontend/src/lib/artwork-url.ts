@@ -40,8 +40,32 @@ const metahubTarget: Partial<Record<ArtworkUse, { kind: string; size: string }>>
   logo: { kind: "logo", size: "large" },
 };
 
-export function sharper(url: string | undefined, use: ArtworkUse): string | undefined {
+// The iPhone's budget (#128): at compact width on iOS (`useCompactShell`) a
+// poster card is 9.25rem, about 444 device px at 3×, in a two-column grid,
+// and WebKit keeps every decoded poster it has shown. Posters there ask for
+// TMDB's w342 and AniList's `large` (230×326, ~72 kB, 0.3 MB decoded)
+// instead of its `extraLarge` (460×650, ~230 kB, 1.2 MB decoded; measured
+// over AniList's trending page on 2026-11-17), stepping down from a bigger
+// size. AniList names its sizes one step off in the path: `extraLarge` is
+// /cover/large/, `large` is /cover/medium/.
+const anilistCover = /^(https:\/\/s4\.anilist\.co\/file\/anilistcdn\/media\/anime\/cover\/)large\//;
+const compactTmdbPoster = 342;
+
+export function sharper(
+  url: string | undefined,
+  use: ArtworkUse,
+  compact = false,
+): string | undefined {
   if (!url) return url;
+
+  if (compact && use === "poster") {
+    if (anilistCover.test(url)) return url.replace(anilistCover, "$1medium/");
+    const movieDb = tmdb.exec(url);
+    if (movieDb) {
+      const size = movieDb[2]!;
+      return size === `w${compactTmdbPoster}` ? url : url.replace(tmdb, `$1w${compactTmdbPoster}/`);
+    }
+  }
 
   const hub = metahub.exec(url);
   if (hub) {

@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from "react";
 
 import { sharper, viaProxy, type ArtworkUse } from "@/lib/artwork-url";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // A stable hue per title, so a title without artwork always gets the same
@@ -72,7 +73,9 @@ export function Artwork({
 }) {
   // What this <img> did; until it does anything, what the URL did before.
   const [own, setOwn] = useState<{ src: string; status: "loaded" | "failed" }>();
-  const sharp = use ? sharper(original, use) : original;
+  // The iPhone asks smaller posters (#128); the desktop never is compact.
+  const compact = useCompactShell();
+  const sharp = use ? sharper(original, use, compact) : original;
   const sharpFailed =
     sharp !== original &&
     (own && own.src === sharp ? own.status === "failed" : seen.get(sharp ?? "") === "failed");
