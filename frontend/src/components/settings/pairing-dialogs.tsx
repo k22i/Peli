@@ -320,7 +320,15 @@ export function CopyDeviceDialog({
       }}
     >
       <DialogPopup className="sm:max-w-md">
-        {open && <CopyDevice onDone={() => onOpenChange(false)} />}
+        {open && (
+          <CopyDevice
+            onDone={() => {
+              // Stops this Mac's own code too, after copying by phrase.
+              void Pairing.Cancel();
+              onOpenChange(false);
+            }}
+          />
+        )}
       </DialogPopup>
     </Dialog>
   );
