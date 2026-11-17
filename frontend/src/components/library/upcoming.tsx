@@ -1,6 +1,7 @@
 import { useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 import { LibraryNotice } from "@/components/library/notice";
 import { Artwork } from "@/components/media/artwork";
@@ -22,6 +23,8 @@ import { useLoadedAddons } from "@/lib/home";
 import { libraryPreview, libraryQuery } from "@/lib/library";
 import { cachedTitleMeta, titleMetaQuery, useOpenTitle } from "@/lib/title";
 import { libraryMenuTitle } from "@/lib/title-actions";
+import { useCompactShell } from "@/lib/shell-mode";
+import { cn } from "@/lib/utils";
 import type { Profile } from "@bindings/store";
 
 // The Library page's Upcoming view (#48): the episodes of the library's
@@ -100,11 +103,11 @@ export function Upcoming({ profile }: { profile: Profile }) {
           description="None of the shows in your library has a new episode scheduled yet."
         />
       ) : (
-        <div className="flex max-w-4xl flex-col gap-8">
+        <div className="flex max-w-4xl flex-col gap-8 ios-compact:gap-4">
           {days.map(({ day, entries }) => (
             <DaySection key={day} {...dayLabel(day)} entries={entries} />
           ))}
-          {later.length > 0 && <DaySection title="Later" entries={later} dated />}
+          {later.length > 0 && <DaySection title="Later" entries={later} dated collapsible />}
         </div>
       )}
     </div>
@@ -118,18 +121,74 @@ export function Upcoming({ profile }: { profile: Profile }) {
 // edge doesn't veil the day header's top.
 const stuckHeader = "4.375rem";
 
+// On an iPhone (#132) the day headers are a 13 pt uppercase label with the
+// date ("TODAY · 17 NOV"), sticking right under the compact header: its bar's
+// measured height is --library-header-h (compact-frame.tsx), 0 on an iPhone
+// on its side, where the bar is gone.
+const compactTop = "calc(var(--spacing-bar) + var(--library-header-h, 0px))";
+
 function DaySection({
   title,
   date,
   entries,
   dated = false,
+  collapsible = false,
 }: {
   title: string;
   date?: string | undefined;
   entries: readonly CalendarEntry[];
   // Whether each entry shows its own air date (Later).
   dated?: boolean;
+  // On an iPhone, starts closed behind a header with the count (Later).
+  collapsible?: boolean;
 }) {
+  const compact = useCompactShell();
+  const [open, setOpen] = useState(false);
+  if (compact) {
+    const closed = collapsible && !open;
+    const label = date ? `${title} · ${date}` : title;
+    return (
+      <section aria-label={title} className="flex flex-col">
+        <div style={{ top: compactTop }} className="sticky z-9 -mx-page material-bar px-page">
+          {collapsible ? (
+            <h2>
+              <button
+                type="button"
+                aria-expanded={open}
+                onClick={() => setOpen(!open)}
+                className="flex min-h-11 w-full cursor-pointer items-center gap-2 text-start text-[0.8125rem] font-[590] tracking-[0.06em] text-muted-foreground uppercase outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {label}
+                <span className="tnum font-normal tracking-normal normal-case">
+                  {entries.length}
+                </span>
+                <ChevronDown
+                  aria-hidden
+                  className={cn(
+                    "ms-auto size-4 transition-transform duration-(--duration-fast)",
+                    open && "rotate-180",
+                  )}
+                />
+              </button>
+            </h2>
+          ) : (
+            <h2 className="flex min-h-9 items-center text-[0.8125rem] font-[590] tracking-[0.06em] text-muted-foreground uppercase">
+              {label}
+            </h2>
+          )}
+        </div>
+        {!closed && (
+          <ul className="flex flex-col">
+            {entries.map((entry) => (
+              <li key={`${entry.item.contentId}:${entry.episode.id}`}>
+                <EpisodeEntry entry={entry} dated={dated} compact />
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    );
+  }
   return (
     <section aria-label={title} className="flex flex-col gap-1">
       {/* Sticks under the page header while its day scrolls by, then the next
@@ -148,7 +207,7 @@ function DaySection({
       <ul className="flex flex-col">
         {entries.map((entry) => (
           <li key={`${entry.item.contentId}:${entry.episode.id}`}>
-            <EpisodeEntry entry={entry} dated={dated} />
+            <EpisodeEntry entry={entry} dated={dated} compact={false} />
           </li>
         ))}
       </ul>
@@ -157,7 +216,19 @@ function DaySection({
 }
 
 // An episode on the calendar. It opens its show's page on its season.
-function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }) {
+//
+// `compact` (#132, iPhone): Apple TV's Up Next density, a 44×66 pt poster,
+// the show in 15 pt semibold over "S2 · E5 · Episode title" in 13 pt (two
+// lines at most), and the time at the end; about 82 pt a row.
+function EpisodeEntry({
+  entry,
+  dated,
+  compact,
+}: {
+  entry: CalendarEntry;
+  dated: boolean;
+  compact: boolean;
+}) {
   const open = useOpenTitle();
   const { item, episode, episodes } = entry;
   const code = entryCode(entry);
@@ -168,6 +239,34 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
   // At the end: the day's rows show the time (when the addon gives one),
   // Later's the date.
   const end = dated ? airDate(entry.airs) : airTime(entry);
+  if (compact) {
+    return (
+      <TitleMenu title={libraryMenuTitle(item)}>
+        <button
+          type="button"
+          aria-label={`${item.name}, ${code}: ${title}${dated ? `, ${airDate(entry.airs)}` : ""}`}
+          onClick={() => open(libraryPreview(item), { season: episode.season })}
+          onKeyDown={openOnContextKey}
+          className="-mx-3 flex w-[calc(100%+1.5rem)] cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-start outline-none transition-colors active:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <span className="relative h-[4.125rem] w-11 shrink-0 overflow-hidden rounded-md shadow-card">
+            <Artwork src={item.poster} use="poster" title={item.name} />
+          </span>
+          <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <span className="truncate text-[0.9375rem] leading-[1.25] font-semibold text-foreground">
+              {item.name}
+            </span>
+            <span className="line-clamp-2 text-[0.8125rem] leading-[1.3] text-muted-foreground">
+              <span className="tnum">{code}</span> · {title}
+            </span>
+          </span>
+          {end && (
+            <span className="shrink-0 text-[0.8125rem] text-muted-foreground tnum">{end}</span>
+          )}
+        </button>
+      </TitleMenu>
+    );
+  }
   return (
     <TitleMenu title={libraryMenuTitle(item)}>
       <button
@@ -195,6 +294,24 @@ function EpisodeEntry({ entry, dated }: { entry: CalendarEntry; dated: boolean }
 // Two day sections' worth of rows, as tall as the real ones (p-3 around a
 // w-24 poster).
 function UpcomingSkeleton() {
+  const compact = useCompactShell();
+  if (compact) {
+    // The iPhone's rows (#132): a 44×66 poster in an 82 pt row.
+    return (
+      <div aria-hidden className="flex flex-col px-page">
+        <Skeleton className="my-2.5 h-3.5 w-32 rounded-full" />
+        {Array.from({ length: 8 }, (_, index) => (
+          <div key={index} className="flex items-center gap-3 py-2">
+            <Skeleton className="h-[4.125rem] w-11 rounded-md" />
+            <div className="flex flex-1 flex-col gap-2">
+              <Skeleton className="h-3.5 w-40 rounded" />
+              <Skeleton className="h-3 w-56 max-w-full rounded" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
   return (
     <div aria-hidden className="flex max-w-4xl flex-col gap-1 px-page">
       <Skeleton className="mb-1 h-9 w-48 rounded-xl" />
