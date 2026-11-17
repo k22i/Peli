@@ -82,7 +82,7 @@
 - [Player playback (phase 6)](player-playback.md) — speed/frame step/A–B (Gate.UserLoop)/chapters/screenshots (Go PNG)/stats/Still watching + sleep timer, More menu, Windows keepAwake (#102), Docker cross-vet tips
 - [macOS packaging](macos-packaging.md) — #78 per-arch drag-to-Applications ULMO DMGs (dist.sh), hardened runtime + ad-hoc entitlements gotcha, notarize app then DMG, native keychain; no Developer ID yet
 - [Auto-update](auto-update.md) — #83/ADR-0054 Wails pkg/updater + signed feed, release key in the keychain, VERSION var order, e2e recipe (relaunch drops env)
-- [Orca worker model](orca-worker-model.md) — Opus 5.5, high effort for Orca subworkers (Sonnet medium struggled)
+- [Orca worker model](orca-worker-model.md) — Opus 5.5 by default, Sonnet 5.5 for small/less crucial tickets; effort as the user names it
 - [Rex workers](rex-workers.md) — launch claude by full path in Rex tabs (old one on login PATH), worktree + spec + report file, Monitor gotcha
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
 - [iOS port](ios-port.md) — Phases 1–7 (auth, Keychain, browsing, libmpv playback, suspension/offline, hand-off in ios/README.md): ADR-0055–0059, ios tag rules, isIOS()/feature(), UIScene shim, iPhone rotation rule (rotation_ios.go), simulator recipe and limits, test baseline
