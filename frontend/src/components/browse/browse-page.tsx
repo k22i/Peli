@@ -39,6 +39,7 @@ import {
 } from "@/lib/browse";
 import { menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
+import { busyRetry, isBusy } from "@/lib/busy";
 import { useAnimePosterAddon } from "@/lib/anime-posters";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
@@ -282,7 +283,10 @@ function CatalogGrid({
       return first && { pages: [first], pageParams: [0] };
     },
     initialDataUpdatedAt: () => client.getQueryState(firstPage)?.dataUpdatedAt,
+    // AniList busy on iOS: tried again by itself (#128).
+    ...busyRetry(addon.url),
   });
+  const busy = isBusy(addon.url, pages.failureReason) && pages.isFetching;
   const { hasNextPage, isFetchingNextPage, fetchNextPage } = pages;
   // Pull to refresh on iOS (#135): the catalog on screen, every page loaded.
   usePullToRefresh(() => pages.refetch());
@@ -315,6 +319,7 @@ function CatalogGrid({
     if (starved) loadMore();
   }, [starved, loadMore]);
 
+  if (pages.isPending && busy) return <BusyNotice />;
   if (pages.isPending) return <GridSkeleton />;
   if (!pages.data) {
     return (
@@ -365,7 +370,9 @@ function CatalogGrid({
         onEndReached={loadMore}
       />
       <div className="flex min-h-10 justify-center px-page">
-        {isFetchingNextPage ? (
+        {isFetchingNextPage && busy ? (
+          <BusyLine />
+        ) : isFetchingNextPage ? (
           <Spinner aria-label="Loading more" />
         ) : (
           pages.isFetchNextPageError && (
@@ -376,6 +383,27 @@ function CatalogGrid({
         )}
       </div>
     </>
+  );
+}
+
+const busyText = "AniList is busy, trying again…";
+
+// The grid while AniList's rate limit runs (#128): it fills in by itself.
+function BusyNotice() {
+  return (
+    <output className="flex flex-col items-center gap-3 px-page py-16 text-center">
+      <Spinner aria-hidden />
+      <span className="text-muted-foreground">{busyText}</span>
+    </output>
+  );
+}
+
+function BusyLine() {
+  return (
+    <output className="flex items-center gap-2 text-muted-foreground">
+      <Spinner aria-hidden />
+      {busyText}
+    </output>
   );
 }
 
