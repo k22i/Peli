@@ -9,13 +9,11 @@ import { prefersReducedMotion } from "@/components/media/roving";
 import { openOnContextKey } from "@/components/media/title-menu";
 import { Button } from "@/components/ui/button";
 import {
-  ContextMenu,
-  ContextMenuItem,
-  ContextMenuPopup,
-  ContextMenuSeparator,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
-import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
+  ResponsiveContextMenu,
+  ResponsiveMenu,
+  ResponsiveMenuItem,
+  ResponsiveMenuSeparator,
+} from "@/components/ui/responsive-menu";
 import { useCompactShell } from "@/lib/shell-mode";
 import { episodeCode, isAired, type Episode, type TitleState } from "@/lib/title";
 import { cn } from "@/lib/utils";
@@ -271,9 +269,13 @@ function EpisodeRow({
         </span>
       </button>
       {aired && (
-        <Menu>
-          <MenuTrigger
-            render={
+        <ResponsiveMenu
+          label={`${code} ${title}`}
+          header={<EpisodeSheetHeader code={code} title={title} />}
+          align="end"
+          popupClassName="w-60"
+          trigger={{
+            render: (
               <Button
                 variant="ghost"
                 size="icon"
@@ -281,21 +283,19 @@ function EpisodeRow({
                 disabled={busy}
                 className="opacity-70 group-hover/episode:opacity-100"
               />
-            }
-          >
-            <EllipsisVertical />
-          </MenuTrigger>
-          <MenuPopup align="end" className="w-60">
-            <MenuItem onClick={() => onMark(!watched)}>
-              {watched ? "Mark unwatched" : "Mark watched"}
-            </MenuItem>
-            {earlier !== undefined && (
-              <MenuItem onClick={() => onMarkEarlier(!earlier)}>
-                {earlier ? "Mark earlier episodes unwatched" : "Mark earlier episodes watched"}
-              </MenuItem>
-            )}
-          </MenuPopup>
-        </Menu>
+            ),
+            children: <EllipsisVertical />,
+          }}
+        >
+          <ResponsiveMenuItem onClick={() => onMark(!watched)}>
+            {watched ? "Mark unwatched" : "Mark watched"}
+          </ResponsiveMenuItem>
+          {earlier !== undefined && (
+            <ResponsiveMenuItem onClick={() => onMarkEarlier(!earlier)}>
+              {earlier ? "Mark earlier episodes unwatched" : "Mark earlier episodes watched"}
+            </ResponsiveMenuItem>
+          )}
+        </ResponsiveMenu>
       )}
     </div>
   );
@@ -303,51 +303,72 @@ function EpisodeRow({
 
   const through = menu.through(episode);
   return (
-    <ContextMenu>
-      <ContextMenuTrigger ref={trigger} className="contents">
-        {row}
-      </ContextMenuTrigger>
-      <ContextMenuPopup
-        className="material-pop w-64"
-        finalFocus={() =>
-          trigger.current?.querySelector<HTMLElement>("[data-episode-index]") ?? true
-        }
-      >
-        <ContextMenuItem onClick={onPlay}>
-          {entry ? <RotateCcw aria-hidden /> : <Play aria-hidden className="fill-current" />}
-          {entry ? "Resume" : "Play"}
-        </ContextMenuItem>
-        {entry && (
-          <ContextMenuItem onClick={() => menu.onPlayFromStart(episode)}>
-            <Play aria-hidden className="fill-current" />
-            Play from start
-          </ContextMenuItem>
-        )}
-        <ContextMenuSeparator />
-        <ContextMenuItem disabled={busy} onClick={() => onMark(!watched)}>
-          {watched ? <EyeOff aria-hidden /> : <Eye aria-hidden />}
-          {watched ? "Mark unwatched" : "Mark watched"}
-        </ContextMenuItem>
-        {through !== undefined && (
-          <ContextMenuItem disabled={busy} onClick={() => menu.onMarkThrough(episode, !through)}>
+    <ResponsiveContextMenu
+      triggerRef={trigger}
+      label={`${code} ${title}`}
+      header={<EpisodeSheetHeader code={code} title={title} />}
+      popupClassName="material-pop w-64"
+      finalFocus={() => trigger.current?.querySelector<HTMLElement>("[data-episode-index]") ?? true}
+      items={
+        <>
+          <ResponsiveMenuItem onClick={onPlay}>
+            {entry ? <RotateCcw aria-hidden /> : <Play aria-hidden className="fill-current" />}
+            {entry ? "Resume" : "Play"}
+          </ResponsiveMenuItem>
+          {entry && (
+            <ResponsiveMenuItem onClick={() => menu.onPlayFromStart(episode)}>
+              <Play aria-hidden className="fill-current" />
+              Play from start
+            </ResponsiveMenuItem>
+          )}
+          <ResponsiveMenuSeparator />
+          <ResponsiveMenuItem disabled={busy} onClick={() => onMark(!watched)}>
+            {watched ? <EyeOff aria-hidden /> : <Eye aria-hidden />}
+            {watched ? "Mark unwatched" : "Mark watched"}
+          </ResponsiveMenuItem>
+          {through !== undefined && (
+            <ResponsiveMenuItem
+              disabled={busy}
+              onClick={() => menu.onMarkThrough(episode, !through)}
+            >
+              <Check aria-hidden />
+              {through ? "Mark all up to here unwatched" : "Mark all up to here watched"}
+            </ResponsiveMenuItem>
+          )}
+          <ResponsiveMenuItem
+            disabled={busy}
+            onClick={() => menu.onMarkSeason(!menu.seasonWatched)}
+          >
             <Check aria-hidden />
-            {through ? "Mark all up to here unwatched" : "Mark all up to here watched"}
-          </ContextMenuItem>
-        )}
-        <ContextMenuItem disabled={busy} onClick={() => menu.onMarkSeason(!menu.seasonWatched)}>
-          <Check aria-hidden />
-          {menu.seasonWatched ? "Mark season unwatched" : "Mark season watched"}
-        </ContextMenuItem>
-        {entry && (
-          <>
-            <ContextMenuSeparator />
-            <ContextMenuItem onClick={() => menu.onClearProgress(episode)}>
-              <X aria-hidden />
-              Clear progress
-            </ContextMenuItem>
-          </>
-        )}
-      </ContextMenuPopup>
-    </ContextMenu>
+            {menu.seasonWatched ? "Mark season unwatched" : "Mark season watched"}
+          </ResponsiveMenuItem>
+          {entry && (
+            <>
+              <ResponsiveMenuSeparator />
+              <ResponsiveMenuItem onClick={() => menu.onClearProgress(episode)}>
+                <X aria-hidden />
+                Clear progress
+              </ResponsiveMenuItem>
+            </>
+          )}
+        </>
+      }
+    >
+      {row}
+    </ResponsiveContextMenu>
+  );
+}
+
+// The top of an episode's sheet on the iPhone: its code and title.
+function EpisodeSheetHeader({ code, title }: { code: string; title: string }) {
+  return (
+    <div className="flex flex-col gap-0.5 border-b px-5 pb-3">
+      <span className="text-[13px] leading-4 font-[560] text-muted-foreground uppercase tnum">
+        {code}
+      </span>
+      <span className="line-clamp-2 text-[17px] leading-[22px] font-[620] tracking-[-0.01em]">
+        {title}
+      </span>
+    </div>
   );
 }

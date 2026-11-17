@@ -1,15 +1,13 @@
 import { Bookmark, BookmarkCheck, ListChecks, Star } from "lucide-react";
 
 import {
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuSub,
-  ContextMenuSubPopup,
-  ContextMenuSubTrigger,
-} from "@/components/ui/context-menu";
+  ResponsiveMenuGroup,
+  ResponsiveMenuItem,
+  ResponsiveMenuRadioGroup,
+  ResponsiveMenuRadioItem,
+  ResponsiveMenuSeparator,
+  ResponsiveMenuSub,
+} from "@/components/ui/responsive-menu";
 import type { Meta } from "@/lib/addon-protocol";
 import {
   ratingValues,
@@ -55,65 +53,73 @@ export function TrackingMenu({
 
   return (
     <>
-      <ContextMenuSeparator />
-      <ContextMenuGroup>
+      <ResponsiveMenuSeparator />
+      <ResponsiveMenuGroup>
         {planned && (
-          <ContextMenuItem
+          <ResponsiveMenuItem
             onClick={() => (status === "planned" ? remove() : setStatus.mutate("planned"))}
           >
             {status === "planned" ? <BookmarkCheck aria-hidden /> : <Bookmark aria-hidden />}
             {status === "planned" ? "Remove from Watchlist" : "Add to Watchlist"}
-          </ContextMenuItem>
+          </ResponsiveMenuItem>
         )}
         {listStatuses.length > 0 && (
-          <ContextMenuSub>
-            <ContextMenuSubTrigger>
-              <ListChecks aria-hidden />
-              Status
-            </ContextMenuSubTrigger>
-            <ContextMenuSubPopup className="material-pop w-48">
-              <ContextMenuRadioGroup
-                value={status}
-                onValueChange={(next) => {
-                  const chosen = trackingStatusOf(next);
-                  if (chosen === "none") remove();
-                  else if (chosen) setStatus.mutate(chosen);
-                }}
-              >
-                {listStatuses.map((option) => (
-                  <ContextMenuRadioItem key={option} value={option}>
-                    {option === "none" ? "None" : trackingStatusLabels[option]}
-                  </ContextMenuRadioItem>
-                ))}
-              </ContextMenuRadioGroup>
-            </ContextMenuSubPopup>
-          </ContextMenuSub>
-        )}
-        <ContextMenuSub>
-          <ContextMenuSubTrigger>
-            <Star aria-hidden />
-            Rate…
-          </ContextMenuSubTrigger>
-          <ContextMenuSubPopup className="material-pop w-40">
-            <ContextMenuRadioGroup
-              value={String(rating)}
-              onValueChange={(next) => setRating.mutate(Number(next))}
-            >
-              {ratingValues.map((value) => (
-                <ContextMenuRadioItem key={value} value={String(value)}>
-                  {value}
-                </ContextMenuRadioItem>
-              ))}
-            </ContextMenuRadioGroup>
-            {rating > 0 && (
+          <ResponsiveMenuSub
+            title="Status"
+            popupClassName="material-pop w-48"
+            label={
               <>
-                <ContextMenuSeparator />
-                <ContextMenuItem onClick={() => setRating.mutate(0)}>Clear rating</ContextMenuItem>
+                <ListChecks aria-hidden />
+                Status
               </>
-            )}
-          </ContextMenuSubPopup>
-        </ContextMenuSub>
-      </ContextMenuGroup>
+            }
+          >
+            <ResponsiveMenuRadioGroup
+              value={status}
+              onValueChange={(next) => {
+                const chosen = trackingStatusOf(next);
+                if (chosen === "none") remove();
+                else if (chosen) setStatus.mutate(chosen);
+              }}
+            >
+              {listStatuses.map((option) => (
+                <ResponsiveMenuRadioItem key={option} value={option}>
+                  {option === "none" ? "None" : trackingStatusLabels[option]}
+                </ResponsiveMenuRadioItem>
+              ))}
+            </ResponsiveMenuRadioGroup>
+          </ResponsiveMenuSub>
+        )}
+        <ResponsiveMenuSub
+          title="Rating"
+          popupClassName="material-pop w-40"
+          label={
+            <>
+              <Star aria-hidden />
+              Rate…
+            </>
+          }
+        >
+          <ResponsiveMenuRadioGroup
+            value={String(rating)}
+            onValueChange={(next) => setRating.mutate(Number(next))}
+          >
+            {ratingValues.map((value) => (
+              <ResponsiveMenuRadioItem key={value} value={String(value)}>
+                {value}
+              </ResponsiveMenuRadioItem>
+            ))}
+          </ResponsiveMenuRadioGroup>
+          {rating > 0 && (
+            <>
+              <ResponsiveMenuSeparator />
+              <ResponsiveMenuItem onClick={() => setRating.mutate(0)}>
+                Clear rating
+              </ResponsiveMenuItem>
+            </>
+          )}
+        </ResponsiveMenuSub>
+      </ResponsiveMenuGroup>
     </>
   );
 }

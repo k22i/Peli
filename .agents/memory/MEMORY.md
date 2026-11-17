@@ -91,3 +91,4 @@
 - [iOS polish epic](ios-polish-epic.md) — #126 (2026-11-17): sub-tickets #127–#142 with priorities, code findings (no WebKit-kill handler, extraLarge covers, 45 % player dock), native glass tab bar + QR tracker pairing decisions
 - [Touch player chrome](touch-player-chrome.md) — #130 touchLayout branch, touch-chrome.tsx, scrubTo/endScrub for #131, --touch-chrome, sheets, lift covers, iOS Stats
 - [Crash diagnostics](crash-diagnostics.md) — #127 internal/diagnostics + iosshell (WebKit-kill reload, loop guard, crash files, ring log, Share logs), safego, ErrorScreen, route restore, pelidev crash tests in Settings
+- [Bottom sheets](bottom-sheets.md) — #134 ResponsiveMenu/ContextMenu/Select + BottomSheet drag, useSheetOpen for the tab bar, haptic() stub, long press, CDP screenshot rig

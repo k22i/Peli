@@ -19,13 +19,7 @@ import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Kbd } from "@/components/ui/kbd";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import { Spinner } from "@/components/ui/spinner";
 import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
@@ -196,18 +190,13 @@ function FilterSelect({
 }) {
   const items = [{ value: "", label: allLabel }, ...options];
   return (
-    <Select items={items} value={value} onValueChange={(next) => onChange(next ?? "")}>
-      <SelectTrigger aria-label={label} className="w-40">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectPopup>
-        {items.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
-          </SelectItem>
-        ))}
-      </SelectPopup>
-    </Select>
+    <ResponsiveSelect
+      items={items}
+      value={value}
+      onValueChange={(next) => onChange(next ?? "")}
+      aria-label={label}
+      className="w-40"
+    />
   );
 }
 

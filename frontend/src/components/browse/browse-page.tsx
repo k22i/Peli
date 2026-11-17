@@ -17,13 +17,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
 import {
@@ -246,18 +240,13 @@ function FilterSelect({
     ...filter.options.map((option) => ({ value: option, label: option })),
   ];
   return (
-    <Select items={items} value={value} onValueChange={(next) => onChange(next ?? "")}>
-      <SelectTrigger aria-label={filter.label} className="w-44">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectPopup>
-        {items.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
-          </SelectItem>
-        ))}
-      </SelectPopup>
-    </Select>
+    <ResponsiveSelect
+      items={items}
+      value={value}
+      onValueChange={(next) => onChange(next ?? "")}
+      aria-label={filter.label}
+      className="w-44"
+    />
   );
 }
 
