@@ -369,3 +369,9 @@ int peli_system_captions(void) {
 	CFRelease(prefs);
 	return on;
 }
+
+int peli_bundle_build(char *buf, int size) {
+	NSString *build = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+	if (![build isKindOfClass:NSString.class] || build.length == 0 || size <= 0) return 0;
+	return [build getCString:buf maxLength:(NSUInteger)size encoding:NSUTF8StringEncoding] ? 1 : 0;
+}

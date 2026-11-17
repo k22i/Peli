@@ -16,6 +16,8 @@ func openURL(address string) error {
 	return app.Browser.OpenURL(address)
 }
 
+func build() string { return "" }
+
 func openSignIn(address string) error { return openURL(address) }
 
 func closeSignIn() {}

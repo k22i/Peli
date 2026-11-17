@@ -242,6 +242,39 @@ func (s *Store) SaveProfileSettings(id uint64, settings ProfileSettings) error {
 	})
 }
 
+// SeedAudioLanguages gives a local-only profile (the Guest, or one made here)
+// its audio languages from the device's preferred languages, the first time:
+// when it has never saved settings. A profile that syncs with Nuvio, or one
+// that has saved anything (an empty list included), is left as it is, so
+// this never undoes a choice. Codes that aren't ISO 639 and repeats are
+// dropped, and only MaxAudioLanguages are kept. It reports whether it saved.
+func (s *Store) SeedAudioLanguages(id uint64, codes []string) (bool, error) {
+	seeded := false
+	err := s.update(id, func(p *bolt.Bucket) error {
+		var profile Profile
+		if err := json.Unmarshal(p.Get(keyProfile), &profile); err != nil {
+			return err
+		}
+		if profile.NuvioIndex != nil || p.Get(keySettings) != nil {
+			return nil
+		}
+		var list []string
+		for _, code := range codes {
+			if languageCode.MatchString(code) && !slices.Contains(list, code) && len(list) < MaxAudioLanguages {
+				list = append(list, code)
+			}
+		}
+		if len(list) == 0 {
+			return nil
+		}
+		settings := DefaultProfileSettings()
+		settings.AudioLanguages = list
+		seeded = true
+		return put(p, keySettings, settings)
+	})
+	return seeded, err
+}
+
 // DeviceSettings returns this device's settings.
 func (s *Store) DeviceSettings() (DeviceSettings, error) {
 	settings := DefaultDeviceSettings()

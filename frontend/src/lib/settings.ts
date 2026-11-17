@@ -129,11 +129,34 @@ export function useSaveDeviceSettings() {
   );
 }
 
-// "en" → "English", in the UI's language.
+// "en" or "eng" → "English", in the UI's language. Some locales write
+// language names in lower case ("anglais", "inglés"); a name read from a code
+// starts each word with a capital. A track's own title is not passed through here.
 export function languageName(code: string, locale = navigator.language): string {
   try {
-    return new Intl.DisplayNames([locale], { type: "language" }).of(code) ?? code;
+    const names = new Intl.DisplayNames([locale], { type: "language" });
+    let name = names.of(code);
+    // Some engines hand a code they don't know straight back; the
+    // bibliographic ISO 639-2 ones ("fre", "ger") are the usual.
+    if (!name || name.toLowerCase() === code.toLowerCase()) {
+      const short = bibliographic[code.toLowerCase()];
+      name = short ? names.of(short) : name;
+    }
+    return name && name.toLowerCase() !== code.toLowerCase() ? titleCase(name, locale) : code;
   } catch {
     return code;
   }
+}
+
+// ISO 639-2/B codes that differ from their 639-2/T ones, which engines know.
+const bibliographic: Record<string, string> = {
+  alb: "sq", arm: "hy", baq: "eu", bur: "my", chi: "zh", cze: "cs", dut: "nl", fre: "fr",
+  geo: "ka", ger: "de", gre: "el", ice: "is", mac: "mk", mao: "mi", may: "ms", per: "fa",
+  rum: "ro", slo: "sk", tib: "bo", wel: "cy",
+};
+
+function titleCase(text: string, locale: string): string {
+  return text.replace(/(^|[\s(\-/])(\p{Ll})/gu, (_match, before: string, letter: string) => {
+    return before + letter.toLocaleUpperCase(locale);
+  });
 }

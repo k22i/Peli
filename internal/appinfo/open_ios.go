@@ -6,7 +6,10 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 
 	"github.com/k22i/Peli/internal/iosauth"
+	"github.com/k22i/Peli/internal/iosplayer"
 )
+
+func build() string { return iosplayer.Build() }
 
 // UIApplication openURL: on the main thread, in Safari.
 func openURL(address string) error {

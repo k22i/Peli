@@ -41,6 +41,9 @@ int peli_audio_session(void);
 int peli_is_simulator(void);
 // peli_is_phone is 1 on an iPhone (the phone idiom), 0 on an iPad.
 int peli_is_phone(void);
+// peli_bundle_build copies the app's CFBundleVersion (SideStore builds stamp
+// YYYYMMDD.HHMM there) into buf, NUL-terminated; 0 when it has none.
+int peli_bundle_build(char *buf, int size);
 // The motion sensor's side of the phone, for the player's rotation
 // (motion_ios.m). peli_motion_start calls peliMotionSide (exported from
 // device.go) each time the side the phone is held on changes, from a

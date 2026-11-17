@@ -58,8 +58,9 @@ import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { addonsQuery } from "@/lib/addons";
 import { feature } from "@/lib/features";
-import { appVersionQuery } from "@/lib/app-info";
+import { appBuildQuery, appVersionQuery } from "@/lib/app-info";
 import { contentDisclaimer } from "@/lib/disclaimer";
+import { deviceName, isIOS } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 import { serverName, serverQuery } from "@/lib/server";
 import {
@@ -621,7 +622,7 @@ function SoundDefaults({
       <SettingRow
         id="audio-device"
         label="Output"
-        description="Where the player's sound goes. System default follows the Mac's sound settings. Applies to this device."
+        description={`Where the player's sound goes. System default follows the ${isIOS() ? "device" : "Mac"}'s sound settings. Applies to this device.`}
       >
         <Select
           items={items}
@@ -1048,7 +1049,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
               <SettingRow
                 id="captions"
                 label="Captions"
-                description="Turn subtitles on by default. System follows your computer’s captions setting."
+                description={`Turn subtitles on by default. System follows your ${deviceName()}’s captions setting.`}
               >
                 <Choice
                   id="captions"
@@ -1191,7 +1192,7 @@ function AppearancePane({ title }: { title: string }) {
         <SettingRow
           id="theme"
           label="Theme"
-          description="System follows your computer’s light or dark mode. Applies to this device."
+          description={`System follows your ${deviceName()}’s light or dark mode. Applies to this device.`}
         >
           <ThemeSwitcher />
         </SettingRow>
@@ -1562,12 +1563,19 @@ function InstalledAddonsRow({ profileId }: { profileId: number }) {
 
 function AboutPane({ title }: { title: string }) {
   const version = useQuery(appVersionQuery);
+  // The build number stamps each SideStore build, so you can tell which one is installed.
+  const build = useQuery({ ...appBuildQuery, enabled: isIOS() });
+  const versionText = version.data
+    ? build.data
+      ? `${version.data} (${build.data})`
+      : version.data
+    : "…";
 
   return (
     <SettingsPaneView title={title}>
       <SettingsGroup>
         <SettingRow id="version" label="Version">
-          <span className="tnum text-small text-muted-foreground">{version.data ?? "…"}</span>
+          <span className="tnum text-small text-muted-foreground">{versionText}</span>
         </SettingRow>
         <UpdateRows />
         {/* The welcome screen says the same (#39). */}

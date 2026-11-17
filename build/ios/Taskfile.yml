@@ -208,6 +208,12 @@ tasks:
         # Compile asset catalog and embed icons in the app bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app"
         AC_IN="build/ios/xcode/main/Assets.xcassets"
+        # Peli's own icon set (build/ios/icons): full bleed, with the dark and
+        # tinted variants of iOS 18. Wails' generated one is the macOS tile.
+        if [ -d "$AC_IN" ]; then
+          rm -rf "$AC_IN/AppIcon.appiconset"
+          cp -R build/ios/icons/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
+        fi
         if [ -d "$AC_IN" ]; then
           TMP_AC=$(mktemp -d)
           xcrun actool \
@@ -387,6 +393,12 @@ tasks:
         # Compile asset catalog and embed icons for dev bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app"
         AC_IN="build/ios/xcode/main/Assets.xcassets"
+        # Peli's own icon set (build/ios/icons): full bleed, with the dark and
+        # tinted variants of iOS 18. Wails' generated one is the macOS tile.
+        if [ -d "$AC_IN" ]; then
+          rm -rf "$AC_IN/AppIcon.appiconset"
+          cp -R build/ios/icons/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
+        fi
         if [ -d "$AC_IN" ]; then
           TMP_AC=$(mktemp -d)
           xcrun actool \
