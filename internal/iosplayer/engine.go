@@ -705,6 +705,7 @@ func (e *Engine) handle(ses *session, ev mpvEvent) {
 					info[k], _ = ses.m.getString(k)
 				}
 				time.AfterFunc(4*time.Second, func() { e.logTracks(ses) })
+				go e.logStats(ses)
 				slog.Info("iosplayer: first frame", "ms", time.Since(ses.loadedAt).Milliseconds(), "hwdec", ses.hw, "current", e.state.HWDec, "info", info)
 			}
 		}

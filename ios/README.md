@@ -4,7 +4,7 @@ Peli's core runs on iOS and iPadOS 17 and later: sign in to Nuvio, pick a profil
 
 This folder holds only this README. The iOS build lives where Wails expects it (see [Where things are](#where-things-are)).
 
-Status on 2026-11-13: every core flow works in the iOS 27.2 simulator on iPhone and iPad. **It has never run on a real device**, and there is no App Store or TestFlight build yet.
+Status on 2026-11-13: every core flow works in the iOS 27.2 simulator on iPhone and iPad. Since 2026-11-17 a device build installs through SideStore ([On a real device](#on-a-real-device)), but there are no on-device results yet. There is no App Store or TestFlight build.
 
 ## Requirements
 
@@ -42,13 +42,91 @@ The rig's recipes and its traps are in [`.agents/memory/ios-port.md`](../.agents
 
 ## On a real device
 
-Not yet done. What should work, untested:
+Peli goes onto an iPhone or iPad through [SideStore](https://docs.sidestore.io), which signs it with a free Apple ID and refreshes it on the device, so there's no weekly re-signing from the Mac. Set-up instructions checked against docs.sidestore.io and SideStore's source on 2026-11-17.
 
-1. Sign in to Xcode with an Apple ID. A free Personal Team is enough, but its apps expire after 7 days, and only 3 can be installed per device. Turn on Developer Mode on the device.
-2. Make a development certificate and a provisioning profile for `k22i.net.peli` that includes your device.
-3. `wails3 task ios:package IOS_PLATFORM=device CODESIGN_IDENTITY="Apple Development: …" PROVISIONING_PROFILE=path/to.mobileprovision`, then `wails3 task ios:deploy-device`.
+### Build
 
-**Don't use `wails3 task ios:xcode`**: the Xcode project Wails generates doesn't link or embed `libmpv.framework`, so the player is missing.
+```sh
+wails3 task ios:sideload          # production .ipa → bin/ios/peli.ipa, copied to iCloud Drive/Peli
+wails3 task ios:package:ipa IOS_PLATFORM=device IOS_PRODUCTION=false   # debug .ipa (Wails' bridge tracing)
+```
+
+The `.ipa` is ad-hoc signed with only `get-task-allow`, and libmpv's `ios-arm64` slice is embedded in `Frameworks/`. SideStore throws that signature away and signs again, so no paid identity, certificate or profile is needed on the Mac. Test with the **production** build: Peli's own log lines (`slog`, for example `iosplayer: …`) print in both builds, while the debug build adds only Wails' internal tracing and turns Go inlining off, which skews CPU numbers. The Web Inspector is on in both (Safari → Develop → the device → Peli), because `DisableInspectable` isn't set.
+
+### What SideStore changes, and why Peli doesn't mind
+
+- **Bundle id:** it registers and installs `k22i.net.peli.<team id>` and rewrites `CFBundleIdentifier`. It also adds a `sidestore-…` URL type of its own. Nothing in Peli depends on the bundle id. Peli has no URL scheme, and the AniList sign-in returns to a loopback page (`http://127.0.0.1:47613/anilist`) in an in-app sheet. The Keychain service name `k22i.net.peli.secrets` is only an attribute.
+- **Entitlements:** it signs with the free profile's entitlements, keeping only keys the app already has, plus `application-identifier`, the team id and `get-task-allow`. Peli asks for no `keychain-access-groups` and its `SecItem*` calls set no access group, so its items land in the default group, `<team>.k22i.net.peli.<team>`. That group stays the same across refreshes on the same Apple ID. Installing with a **different** Apple ID makes a different app: a new App ID, an empty Keychain and a new container.
+- **Frameworks and extensions:** `libmpv.framework` is re-signed and needs no App ID. Each app extension would cost an App ID, but Peli has none. So Peli costs **one App ID**, and the same one on both devices.
+
+### Free Apple ID limits
+
+- **3 apps per device**, SideStore included: SideStore + Peli = 2 on each device.
+- **10 App IDs a week** per account (SideStore's own error 1009). An App ID comes back 7 days after the app was installed or last refreshed, and can't be deleted. SideStore and Peli use 2, shared by both devices. A different bundle id (such as the `.dev` build) would be a new App ID.
+- **7-day signatures:** SideStore refreshes them (below). An app that isn't refreshed in time stops opening until it is refreshed; its data is kept.
+- **Certificates:** SideStore makes one per device ("SideStore - <name>'s <device>"). If the second device offers to **revoke** certificates, don't revoke the first device's, or the first device's apps stop opening.
+
+### Install
+
+Run [`build/ios/scripts/sidestore-setup.sh`](../build/ios/scripts/sidestore-setup.sh). It walks through every step only you can do, for the iPhone and then the iPad, and saves the device identifiers to `bin/ios/devices.env`. In short, per device:
+
+1. **On the Mac, once:** install [iloader](https://iloader.app) (`iloader-darwin-universal.dmg`).
+2. **LocalDevVPN** from the App Store, then Connect. SideStore needs it, together with Wi-Fi (mobile data isn't enough), every time it installs or refreshes. WireGuard and StosVPN are no longer recommended.
+3. **iloader:** connect the device by cable and trust the Mac, sign in with the Apple ID (case-sensitive), select the device, then **Install SideStore (Stable)**. iloader also places the pairing file.
+4. **On the device:** Settings → General → VPN & Device Management → trust the developer app. Then Settings → Privacy & Security → **Developer Mode** on; the device restarts.
+5. **SideStore:** sign in, then in My Apps tap **7 DAYS** next to SideStore to finish its own setup before installing anything.
+6. **Peli:** SideStore → My Apps → **+** → iCloud Drive → Peli → `peli.ipa` (download it in Files first).
+
+The **pairing file** can expire after an iOS update or a reset, or at random. Errors such as AFC, 1006 or "no Wi-Fi/VPN" are fixed in iloader: Manage Pairing File → **Place** next to SideStore.
+
+### Keep it signed
+
+- iOS Settings → General → **Background App Refresh** on, and on for SideStore; in SideStore, Settings → **Background Refresh** on. It runs through iOS background fetch (when iOS decides), and LocalDevVPN has to be connected. Low Power Mode pauses it.
+- Backstop: a **Shortcuts automation**: Automation → + → Time of Day (a daily time when the device is on Wi-Fi, such as overnight) → Run Immediately → the SideStore action **Refresh All Apps**. SideStore also has an **Install IPA** action.
+- **To check it works:** a day later, SideStore → My Apps should show 7 DAYS again for SideStore and Peli. With Notify When Run on, the automation also posts a notification each time it runs.
+
+### Ship a new build
+
+`wails3 task ios:sideload`, then on each device install `peli.ipa` again from SideStore → My Apps → + (with LocalDevVPN on). Installing over the app keeps its data and Keychain. Each build gets a build number (`CFBundleVersion` = date and time), shown in SideStore. A self-hosted SideStore source (AltStore format, a JSON file with each version's `downloadURL`) would add one-tap updates, but it needs an https host the device can reach. For two devices that isn't worth it yet.
+
+### Logs
+
+With the cable connected (or the device paired over Wi-Fi) and Developer Mode on:
+
+```sh
+source bin/ios/devices.env
+wails3 task ios:device:console DEVICE_ID=$IPHONE_ID
+wails3 task ios:device:console DEVICE_ID=$IPAD_ID ENV='{"PELI_HWDEC":"videotoolbox-copy"}'
+```
+
+That launches Peli with stdout and stderr attached, so every `slog` line shows; Ctrl-C stops the app. `PELI_HWDEC` (`videotoolbox`, `videotoolbox-copy`, `no`) forces the decoding mode in any build. While a video plays, `iosplayer: stats` logs every 15 s: process CPU in percent of one core, decoding mode, pixel format, `container-fps`, `estimated-vf-fps`, dropped and delayed frames, and cache state. `iosplayer: first frame` names the codec and mode. A crash report is in Settings → Privacy & Security → Analytics Data (`peli-…`), or in Xcode → Devices and Simulators → View Device Logs. Don't use `ios:deploy-device`: it needs a paid identity.
+
+### First on-device checklist
+
+Run these on the **Guest profile**, with your debrid addon added there. Nothing then reaches Nuvio, and SIMKL and AniList aren't connected. Resolving a stream adds it to TorBox: note what you play and delete those entries afterwards. Record the device model and iOS version, and the result, in [`docs/ios/device-run.md`](../docs/ios/device-run.md).
+
+| # | Check | How | Pass when |
+|---|---|---|---|
+| 1 | Installs and opens | Through SideStore, on both devices | Welcome shows; `devicectl device info apps` lists `k22i.net.peli.<team>` |
+| 2 | Zero-copy, 1080p HEVC 10-bit | Play one; watch the log | `first frame` hwdec `videotoolbox`, pixelformat `nv12`; `stats` vf-fps ≈ container-fps, no new drops |
+| 3 | 1080p H.264 and 4K HEVC | Pick a 4K stream by hand (the ranking caps iOS at 1080p) | As in 2; note the CPU % |
+| 4 | 10-bit to 8-bit CPU cost | An AV1 and a Hi10p (10-bit H.264) file | Smooth playback; note the CPU % and drops |
+| 5 | Fallbacks | `ENV='{"PELI_HWDEC":"videotoolbox-copy"}'`, then `"no"`; and Settings → hardware decoding off | Picture in each mode; log names the mode |
+| 6 | No GL drawing in the background | During playback: Home, then the lock button; wait 1 min; come back | Not killed (no `peli` crash report), paused at the same place, picture returns |
+| 7 | System interruptions | A phone or FaceTime call, a timer going off, Siri, AirPods out | Pauses and doesn't resume by itself; `audio interrupted` / `output lost` in the log |
+| 8 | LocalDevVPN on | Repeat 2 with the VPN connected | Plays as before |
+| 9 | Keychain after a reboot | Save your TMDB key in Settings on Guest (TMDB checks it, so it must be a real one; the Mac has it in the keychain as `tmdb.api-key`); restart; unlock; open Peli | Key still there (the item is AfterFirstUnlockThisDeviceOnly) |
+| 10 | Keychain and data across a refresh and a reinstall | Tap 7 DAYS next to Peli; then install a new `peli.ipa` over it | TMDB key, Guest addons and history still there |
+| 11 | iPad layouts | Portrait and landscape on Home, Title, the picker, the player; rotate during playback | Regular shell, no clipped or overlapping controls |
+| 12 | iPad split view and windows | Split View, Slide Over, a resized window (narrow and wide), with a video playing too | Compact shell below 700 pt; the player follows the size |
+| 13 | On-screen keyboard | Search on both devices; the sign-in fields (don't submit) | Field stays visible, no layout jump after the keyboard closes |
+| 14 | Background refresh | Next day | My Apps shows 7 DAYS for both apps; the automation ran |
+
+To test signing in with your real account, signing in and then out is the only write: the session is created, then removed. A play on that profile writes progress to Nuvio. Undo it as in Phase 6 (episode menu → Mark unwatched; check with a fresh pull and an empty outbox).
+
+### Paid account (later)
+
+`wails3 task ios:package IOS_PLATFORM=device CODESIGN_IDENTITY="Apple Development: …" PROVISIONING_PROFILE=…`, then `wails3 task ios:deploy-device`. Not tried. **Don't use `wails3 task ios:xcode`**: the Xcode project Wails generates doesn't link or embed `libmpv.framework`.
 
 ## What works
 
@@ -76,13 +154,14 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 
 ## Known gaps
 
-- **No real-device run.** These are untested:
+- **No real-device results yet.** The SideStore build and its tooling are ready (2026-11-17, above), but these are still untested on hardware; [`docs/ios/device-run.md`](../docs/ios/device-run.md) collects the results:
   - the zero-copy VideoToolbox path;
   - the fallbacks to copy-back and software decoding;
   - frame rates at 1080p and 4K, and the CPU cost of converting 10-bit to 8-bit for AV1 and Hi10p;
   - stopping GL drawing in the background (iOS kills apps that draw there; the simulator doesn't);
   - interruptions sent by the system;
-  - device Keychain entitlements and signing.
+  - the Keychain after a reboot and across SideStore refreshes;
+  - iPad split view and resized windows, and the on-screen keyboard.
 - **The simulator is a poor guide to playback.** It draws video in software and has no hardware H.264 decoder. Heavy streams (such as a 46 GB, about 35 Mbit/s H.264 remux, or a 1080p HEVC on the iPad) can stay black while time advances and audio plays; a test clip draws on the same session. One failed VideoToolbox setup can leave the simulator drawing black until it reboots.
 - **OpenGL ES is deprecated.** It works, but rules out Picture in Picture. Moving mpv to Metal through MoltenVK is the likely next step if a device shows problems.
 - AniList hasn't been tested against a real account (fakes only); SIMKL and Nuvio have.
@@ -91,7 +170,6 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
   - The picker labels some debrid addons' cached links "P2P" (shared with desktop).
   - The Guest profile has no audio language, so a default-flagged dub can start first.
   - Some audio track names show in lower case.
-- Split view and on-screen keyboard behaviour weren't exercised (there's no Simulator.app to drive them).
 - Never run on GitHub: the separate [iOS workflow](../.github/workflows/ios.yml) has only been checked locally.
 
 ## Where things are

@@ -8,12 +8,15 @@ includes:
 # change the root's): the bundle would otherwise be bin/peli.app, the same name as the macOS Peli.app
 # on a case-insensitive disk, and bin/peli the macOS binary.
 #   task ios:package                          -> simulator bundle (ad-hoc signed)
+#   task ios:package:ipa IOS_PLATFORM=device  -> ad-hoc signed device .ipa for
+#        SideStore, which re-signs it with your Apple ID (ios/README.md, "On a
+#        real device"). IOS_PRODUCTION=false keeps Go's logs (debug build).
+#   task ios:sideload                         -> the same .ipa, copied to iCloud Drive/Peli
+#   task ios:device:console                   -> launch the installed app with its console attached
 #   task ios:package IOS_PLATFORM=device CODESIGN_IDENTITY="Apple Development: ..." \
-#        [PROVISIONING_PROFILE=path.mobileprovision]
-#                                             -> device bundle (real signing)
-#   task ios:package:ipa IOS_PLATFORM=device ... -> .ipa for distribution/install
-# For automatically managed signing & provisioning, use `task ios:xcode` and
-# build from the generated Xcode project instead.
+#        PROVISIONING_PROFILE=path.mobileprovision
+#                                             -> device bundle signed by you, for ios:deploy-device
+# Don't use `task ios:xcode` for device builds: its project doesn't embed libmpv.
 vars:
   IOS_BIN_DIR: bin/ios
   BUNDLE_ID: '{{.BUNDLE_ID | default "k22i.net.peli"}}'
@@ -24,7 +27,8 @@ vars:
   IOS_SDK: '{{if eq .IOS_PLATFORM "device"}}iphoneos{{else}}iphonesimulator{{end}}'
   IOS_TARGET: 'arm64-apple-ios{{.MIN_IOS_VERSION}}{{if ne .IOS_PLATFORM "device"}}-simulator{{end}}'
   IOS_VERSION_MIN_FLAG: '{{if eq .IOS_PLATFORM "device"}}-miphoneos-version-min={{.MIN_IOS_VERSION}}{{else}}-mios-simulator-version-min={{.MIN_IOS_VERSION}}{{end}}'
-  # "-" is ad-hoc signing: fine for the simulator, rejected by real devices.
+  # "-" is ad-hoc signing: fine for the simulator and for an .ipa that
+  # SideStore re-signs; a device refuses it installed directly.
   CODESIGN_IDENTITY: '{{.CODESIGN_IDENTITY | default "-"}}'
   # Optional path to a .mobileprovision embedded into device bundles
   PROVISIONING_PROFILE: '{{.PROVISIONING_PROFILE | default ""}}'
@@ -98,26 +102,60 @@ tasks:
       CGO_LDFLAGS: '-isysroot {{.SDK_PATH}} -target {{.IOS_TARGET}} -F{{.LIBMPV_FW_DIR}}'
 
   package:
-    summary: Packages a production build of the application into a `.app` bundle
+    summary: Packages a production build (IOS_PRODUCTION=false for a debug one) into a `.app` bundle
     deps:
       - task: build
         vars:
-          PRODUCTION: "true"
+          PRODUCTION: '{{.IOS_PRODUCTION | default "true"}}'
+          EXTRA_TAGS: '{{.EXTRA_TAGS}}'
     cmds:
       - task: compile:ios:link
       - task: create:app:bundle
 
   package:ipa:
-    summary: Packages a production build into an .ipa (requires IOS_PLATFORM=device and a real CODESIGN_IDENTITY)
+    summary: Packages a build into bin/ios/peli.ipa (IOS_PLATFORM=device; ad-hoc signed unless CODESIGN_IDENTITY is given)
     deps:
       - task: package
+        vars:
+          IOS_PRODUCTION: '{{.IOS_PRODUCTION}}'
+          EXTRA_TAGS: '{{.EXTRA_TAGS}}'
     cmds:
       - rm -rf "{{.IOS_BIN_DIR}}/Payload" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.ipa"
       - mkdir -p "{{.IOS_BIN_DIR}}/Payload"
       - cp -R "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app" "{{.IOS_BIN_DIR}}/Payload/"
       - cd "{{.IOS_BIN_DIR}}" && zip -qry "{{.APP_NAME}}.ipa" Payload
       - rm -rf "{{.IOS_BIN_DIR}}/Payload"
-      - echo "Created {{.IOS_BIN_DIR}}/{{.APP_NAME}}.ipa"
+      - echo "Created {{.IOS_BIN_DIR}}/{{.APP_NAME}}.ipa (build $(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' '{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/Info.plist'))"
+
+  sideload:
+    summary: Builds the device .ipa and copies it to iCloud Drive/Peli, to install with SideStore on each device
+    cmds:
+      # A fresh run, not a task call: the global vars (SDK, target, libmpv
+      # slice) are worked out from IOS_PLATFORM once, when the Taskfile loads.
+      - wails3 task ios:package:ipa IOS_PLATFORM=device {{if .IOS_PRODUCTION}}IOS_PRODUCTION={{.IOS_PRODUCTION}}{{end}} {{if .EXTRA_TAGS}}EXTRA_TAGS={{.EXTRA_TAGS}}{{end}}
+      - |
+        DEST="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Peli"
+        mkdir -p "$DEST"
+        cp -f "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.ipa" "$DEST/{{.APP_NAME}}.ipa"
+        echo "Copied to iCloud Drive/Peli/{{.APP_NAME}}.ipa. On each device: LocalDevVPN on, then SideStore > My Apps > + > iCloud Drive > Peli > {{.APP_NAME}}.ipa"
+
+  device:console:
+    summary: Launches the SideStore-installed Peli on DEVICE_ID with its console attached (ENV='{"PELI_HWDEC":"videotoolbox-copy"}' to pass variables)
+    cmds:
+      - |
+        DEVICE="{{.DEVICE_ID}}"
+        if [ -z "$DEVICE" ]; then
+          echo "Pass DEVICE_ID=<identifier> (xcrun devicectl list devices)"; exit 1
+        fi
+        # SideStore installs it as k22i.net.peli.<team id>; find it by name.
+        TMP=$(mktemp)
+        xcrun devicectl device info apps --device "$DEVICE" --json-output "$TMP" >/dev/null
+        BUNDLE_ID=$(plutil -extract result.apps json -o - "$TMP" | python3 -c 'import json,sys; print(next((a["bundleIdentifier"] for a in json.load(sys.stdin) if a["bundleIdentifier"].startswith("k22i.net.peli")), ""))')
+        rm -f "$TMP"
+        if [ -z "$BUNDLE_ID" ]; then echo "Peli isn't installed on $DEVICE"; exit 1; fi
+        echo "Launching $BUNDLE_ID (Ctrl-C stops the app)"
+        xcrun devicectl device process launch --device "$DEVICE" --terminate-existing --console \
+          {{if .ENV}}--environment-variables '{{.ENV}}'{{end}} "$BUNDLE_ID"
 
   # Link the Go c-archive with main.m into the final executable.
   # Used by both the dev `run` flow and `package`.
@@ -156,6 +194,9 @@ tasks:
       - mkdir -p "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app"
       - cp "{{.IOS_BIN_DIR}}/{{.APP_NAME | lower}}" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/"
       - cp build/ios/Info.plist "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/"
+      # A build number per build, so SideStore and Settings > General show
+      # which one is installed (the version stays build/darwin's).
+      - /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $(date +%Y%m%d.%H%M)" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/Info.plist"
       - task: embed:libmpv
         vars: {APP_BUNDLE: '{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app'}
       - |

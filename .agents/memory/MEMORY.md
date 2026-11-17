@@ -87,3 +87,4 @@
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
 - [iOS port](ios-port.md) — Phases 1–7 (auth, Keychain, browsing, libmpv playback, suspension/offline, hand-off in ios/README.md): ADR-0055–0059, ios tag rules, isIOS()/feature(), UIScene shim, simulator recipe and limits, test baseline
 - [iOS libmpv](ios-libmpv.md) — xcframework, GLES under the webview, 8-bit to GLES (nv12 / lavfi format), mode before first frame, simulator -6683 poisoning + glFinish
+- [iOS on devices via SideStore](ios-sidestore.md) — free Apple ID, ad-hoc ios:sideload .ipa, SideStore adds team id to bundle id + filters entitlements, iloader/LocalDevVPN, device:console logs, stats line
