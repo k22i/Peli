@@ -1,5 +1,5 @@
 import { isCancelledError, type QueryClient } from "@tanstack/react-query";
-import type { AnyRouter, ParsedLocation } from "@tanstack/react-router";
+import type { AnyRouter } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
@@ -85,9 +85,13 @@ export const recoveredParam = "peli-recovered";
 
 // Where to come back to from location. Not the player, which has nothing to
 // play after a reload: the title it was playing, or Home.
-export function restoreTarget(
-  location: Pick<ParsedLocation, "pathname" | "href" | "state">,
-): string {
+export type RouteLocation = {
+  pathname: string;
+  href: string;
+  state: { player?: { watching?: { contentType?: string; contentId?: string } | undefined } };
+};
+
+export function restoreTarget(location: RouteLocation): string {
   if (location.pathname === "/player") {
     const watching = location.state.player?.watching;
     return watching?.contentType && watching.contentId
