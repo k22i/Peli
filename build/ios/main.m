@@ -1,7 +1,34 @@
 //go:build ios
 // Minimal bootstrap: delegate comes from Go archive (WailsAppDelegate)
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 #include <stdio.h>
+
+// Wails lays its webview out INSIDE the safe area (WailsViewController's
+// viewDidLayoutSubviews), so the bands under the status bar, the Dynamic
+// Island and the home indicator show the window colour: the player's scrim
+// stopped short of the video under it, and pages couldn't bleed to the edge.
+// Run Wails' layout, then give the webview the whole view. The page pads
+// itself with env(safe-area-inset-*) (index.html has viewport-fit=cover, and
+// Wails turns the scroll view's automatic insets off). Wails' native tab bar,
+// which Peli doesn't use, keeps its own layout.
+static void peliFullScreenWebview(void) {
+    Class cls = NSClassFromString(@"WailsViewController");
+    SEL sel = @selector(viewDidLayoutSubviews);
+    Method method = cls ? class_getInstanceMethod(cls, sel) : NULL;
+    if (!method) return;
+    void (*wails)(id, SEL) = (void (*)(id, SEL))method_getImplementation(method);
+    IMP full = imp_implementationWithBlock(^(UIViewController *vc) {
+        wails(vc, sel);
+        UITabBar *tabs = nil;
+        @try { tabs = [vc valueForKey:@"tabBar"]; } @catch (NSException *e) {}
+        if (tabs && !tabs.isHidden) return;
+        UIView *web = nil;
+        @try { web = [vc valueForKey:@"webView"]; } @catch (NSException *e) {}
+        web.frame = vc.view.bounds;
+    });
+    method_setImplementation(method, full);
+}
 
 // Xcode 27's SDK refuses to launch an app that doesn't adopt the UIScene life
 // cycle ("UIScene life cycle is required for apps built with this SDK").
@@ -60,6 +87,9 @@ int main(int argc, char * argv[]) {
         // Disable buffering so stdout/stderr from Go log.Printf flush immediately
         setvbuf(stdout, NULL, _IONBF, 0);
         setvbuf(stderr, NULL, _IONBF, 0);
+
+        // Only swaps a method on a class already loaded: nothing starts.
+        peliFullScreenWebview();
 
         // Call UIApplicationMain IMMEDIATELY and start NOTHING else here. Do not
         // start the Go runtime yet: starting it concurrently with UIApplicationMain

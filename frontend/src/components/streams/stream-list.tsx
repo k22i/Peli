@@ -140,7 +140,13 @@ export function StreamList({
   useLayoutEffect(() => {
     const element = list.current;
     if (!element) return;
-    const bar = Number.parseFloat(getComputedStyle(element).getPropertyValue("--spacing-bar"));
+    // Measured in px: the variable is in rem, and on iOS a calc() with the
+    // status bar's height.
+    const probe = document.createElement("div");
+    probe.style.cssText = "position:absolute;visibility:hidden;height:var(--spacing-bar)";
+    element.append(probe);
+    const bar = probe.getBoundingClientRect().height;
+    probe.remove();
     setStickAt((Number.isFinite(bar) ? bar : 0) + stickGap);
   }, []);
   const scrolled = virtualizer.scrollOffset ?? 0;

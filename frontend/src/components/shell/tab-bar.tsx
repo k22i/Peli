@@ -20,7 +20,7 @@ export function TabBar({ onNavigate }: { onNavigate?: () => void }) {
     <nav
       aria-label="Main"
       data-slot="tab-bar"
-      className="material-bar fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom)] shadow-[0_-1px_0_var(--border)]"
+      className="material-bar fixed inset-x-0 bottom-0 z-30 ps-[env(safe-area-inset-left)] pe-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] shadow-[0_-1px_0_var(--border)]"
     >
       <ul className="mx-auto flex h-tabs max-w-xl items-stretch">
         {tabSections.map((section) => {

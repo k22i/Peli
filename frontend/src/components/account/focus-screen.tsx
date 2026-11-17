@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 // the bottom of the window and the content centred above it.
 export function FocusScreen({ className, children }: { className?: string; children: ReactNode }) {
   return (
-    <div className="relative isolate flex min-h-full flex-col pt-bar">
+    <div className="relative isolate flex min-h-full flex-col pt-bar pb-[env(safe-area-inset-bottom)]">
       <Ambient tone="sun" />
       <div
         className={cn(

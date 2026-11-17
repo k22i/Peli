@@ -145,7 +145,9 @@ export function TopBar({
       data-platform={platform}
       data-tone={clear ? "art" : undefined}
       className={cn(
-        "app-top-bar drag-region fixed inset-x-0 top-0 z-30 h-bar transition-[background-color,box-shadow] duration-(--duration-base)",
+        // On iOS the bar starts at the screen's top edge, under the status bar
+        // (--spacing-bar includes it there); the env() insets are 0 elsewhere.
+        "app-top-bar drag-region fixed inset-x-0 top-0 z-30 h-bar pt-[env(safe-area-inset-top)] pe-[env(safe-area-inset-right)] transition-[background-color,box-shadow] duration-(--duration-base)",
         clear && "dark",
         scrolled ? "material-bar shadow-[0_1px_0_var(--border)]" : "bg-transparent",
       )}

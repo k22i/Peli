@@ -1654,8 +1654,15 @@ function PlayerFile({
     <div
       className={cn(
         "pointer-events-none absolute end-0 flex flex-col items-end gap-2.5 transition-[bottom] duration-300 ease-out-soft *:pointer-events-auto",
-        mini ? "inset-x-2 bottom-16 items-stretch" : touch ? "pe-4" : "pe-8",
-        !mini && (shown ? "bottom-[calc(var(--dock-h)+1.25rem)]" : "bottom-8"),
+        mini
+          ? "inset-x-2 bottom-16 items-stretch"
+          : touch
+            ? "pe-[calc(1rem+env(safe-area-inset-right))]"
+            : "pe-8",
+        !mini &&
+          (shown
+            ? "bottom-[calc(var(--dock-h)+1.25rem)]"
+            : "bottom-[calc(2rem+env(safe-area-inset-bottom))]"),
       )}
     >
       {partyElsewhere && !mini && (
@@ -1739,7 +1746,9 @@ function PlayerFile({
       // --above-bar is where the overlays sit: above the dock.
       className={cn(
         "fixed inset-0 text-white select-none",
-        touch ? "[--dock-h:10rem]" : "[--dock-h:7.5rem]",
+        // env() is the home indicator on iOS (the webview fills the screen,
+        // build/ios/main.m) and 0 elsewhere.
+        touch ? "[--dock-h:calc(10rem+env(safe-area-inset-bottom))]" : "[--dock-h:7.5rem]",
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
@@ -1844,7 +1853,11 @@ function PlayerFile({
           {...hold}
           className={cn(
             "drag-region absolute inset-x-0 top-0 flex items-start gap-4",
-            mini ? "h-14 pt-2 pr-3 pl-2" : touch ? "pt-2 pr-3 pl-3" : "pt-3 pr-5 pl-[5.75rem]",
+            mini
+              ? "h-14 pt-2 pr-3 pl-2"
+              : touch
+                ? "pt-[calc(0.5rem+env(safe-area-inset-top))] pr-[calc(0.75rem+env(safe-area-inset-right))] pl-[calc(0.75rem+env(safe-area-inset-left))]"
+                : "pt-3 pr-5 pl-[5.75rem]",
           )}
         >
           <ControlButton label="Back" icon={ChevronLeft} onClick={leave} raised />
@@ -1941,7 +1954,7 @@ function PlayerFile({
             mini
               ? "inset-x-2 bottom-2 gap-1 rounded-2xl px-3 py-2 material-media"
               : touch
-                ? "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-4 pb-3"
+                ? "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 ps-[calc(1rem+env(safe-area-inset-left))] pe-[calc(1rem+env(safe-area-inset-right))] pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
                 : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
           )}
         >

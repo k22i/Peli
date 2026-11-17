@@ -339,6 +339,16 @@
 :root[data-platform="ios"] {
   --container-poster: 10rem;
   --container-landscape: 17rem;
+  /* The webview fills the screen (build/ios/main.m), so the status bar, the
+     Dynamic Island and the home indicator sit over the page. The top bar
+     takes the status bar's height on top of its own, and the gutter clears
+     the island when an iPhone is on its side (both sides, as iOS insets
+     both). Heroes and the player still reach every edge. */
+  --spacing-bar: calc(3.25rem + env(safe-area-inset-top));
+  --spacing-page: calc(
+    clamp(1.5rem, 0.25rem + 3.4vw, 4rem) +
+      max(env(safe-area-inset-left), env(safe-area-inset-right))
+  );
 }
 @media (max-width: 699.98px), (max-height: 499.98px) {
   :root[data-platform="ios"] {

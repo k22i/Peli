@@ -142,7 +142,10 @@ export function AppShell({ children }: { children: ReactNode }) {
               style={{ minWidth: 0 }}
               className={cn(
                 "pt-bar",
-                compact && "pb-[calc(var(--spacing-tabs)+env(safe-area-inset-bottom))]",
+                // Clear of the tab bar, or of the home indicator (0 off iOS).
+                compact
+                  ? "pb-[calc(var(--spacing-tabs)+env(safe-area-inset-bottom))]"
+                  : "pb-[env(safe-area-inset-bottom)]",
               )}
             >
               {children}
