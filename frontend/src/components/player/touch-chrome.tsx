@@ -1,4 +1,17 @@
-import { Activity, Check, ChevronRight, Ellipsis, Gauge, Minus, Moon, Plus, X } from "lucide-react";
+import {
+  Activity,
+  Captions,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Ellipsis,
+  Gauge,
+  Lock,
+  Minus,
+  Moon,
+  Plus,
+  X,
+} from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 
 import { sheetSurface } from "@/components/player/panel-controls";
@@ -70,6 +83,82 @@ export function GlassButton({
     >
       {children}
     </button>
+  );
+}
+
+// The top row, 44 pt: Back (a chevron, no disc) and what plays on one line
+// on the left; Audio & Subtitles, Lock and More on the right. Lock shows
+// only when the page passes onLock (#131 adds it).
+export function TouchTopRow({
+  title,
+  episode,
+  onBack,
+  tracks,
+  onLock,
+  more,
+  className,
+  ...hold
+}: {
+  title: string | undefined;
+  episode: string | undefined;
+  onBack: () => void;
+  // The Audio & Subtitles button, when there's something to pick.
+  tracks?: { open: boolean; on: boolean; onOpen: () => void } | undefined;
+  onLock?: (() => void) | undefined;
+  more?: ReactNode;
+  className?: string | false | undefined;
+  onPointerEnter?: () => void;
+  onPointerLeave?: () => void;
+}) {
+  return (
+    <div
+      {...hold}
+      data-testid="top-row"
+      className={cn(
+        "absolute inset-x-0 top-0 flex h-[calc(2.75rem+0.75rem+env(safe-area-inset-top))] items-end gap-1 ps-[calc(0.25rem+env(safe-area-inset-left))] pe-[calc(0.25rem+env(safe-area-inset-right))] transition-opacity duration-200",
+        className,
+      )}
+    >
+      <GlassButton label="Back" bare onClick={onBack}>
+        <ChevronLeft className="size-7!" />
+      </GlassButton>
+      {title && (
+        <div className="flex h-11 min-w-0 flex-1 items-center gap-1.5 drop-shadow-[0_1px_8px_rgb(0_0_0/0.6)]">
+          <h1 className="max-w-[60%] shrink-0 truncate text-[0.9375rem] font-[650]">{title}</h1>
+          {episode && (
+            <p className="min-w-0 truncate text-[0.8125rem] text-white/70">
+              <span aria-hidden>· </span>
+              {episode}
+            </p>
+          )}
+        </div>
+      )}
+      <div className="ms-auto flex shrink-0 items-center">
+        {tracks && (
+          <GlassButton
+            label="Audio and subtitles"
+            bare
+            aria-expanded={tracks.open}
+            aria-keyshortcuts="V"
+            onClick={tracks.onOpen}
+          >
+            <Captions />
+            {tracks.on && !tracks.open && (
+              <span
+                aria-hidden
+                className="absolute top-2 right-2 size-1.5 rounded-full bg-[#ffb547]"
+              />
+            )}
+          </GlassButton>
+        )}
+        {onLock && (
+          <GlassButton label="Lock the controls" bare onClick={onLock}>
+            <Lock />
+          </GlassButton>
+        )}
+        {more}
+      </div>
+    </div>
   );
 }
 
@@ -416,10 +505,10 @@ export function TracksSheet({
               );
             })}
             {groups.map((group) => (
-              <div key={group.language} role="group" aria-label={group.label}>
-                <p className="px-1.5 pt-2.5 pb-0.5 text-[0.6875rem] font-[650] text-white/50">
+              <fieldset key={group.language} className="m-0 min-w-0 border-0 p-0">
+                <legend className="px-1.5 pt-2.5 pb-0.5 text-[0.6875rem] font-[650] text-white/50">
                   {group.label}
-                </p>
+                </legend>
                 {group.subtitles.map((subtitle, index) => (
                   <CheckRow
                     key={subtitle.key}
@@ -430,7 +519,7 @@ export function TracksSheet({
                     detail={subtitle.addon}
                   />
                 ))}
-              </div>
+              </fieldset>
             ))}
             {addonLoading && (
               <p className="flex items-center gap-2 px-1.5 pt-3 text-[0.75rem] text-white/55">
@@ -449,7 +538,8 @@ export function TracksSheet({
             <span className="ms-auto text-white/55 tnum">{subtitleDelayText(delay)}</span>
           </SheetLink>
           {timing && (
-            <div role="group" aria-label="Subtitle timing" className="flex items-center gap-2 px-1">
+            <fieldset className="m-0 flex min-w-0 items-center gap-2 border-0 px-1 py-0">
+              <legend className="sr-only">Subtitle timing</legend>
               <GlassButton label="Earlier" bare onClick={() => onDelayChange(-0.1)}>
                 <Minus />
               </GlassButton>
@@ -459,7 +549,7 @@ export function TracksSheet({
               <GlassButton label="Later" bare onClick={() => onDelayChange(0.1)}>
                 <Plus />
               </GlassButton>
-            </div>
+            </fieldset>
           )}
         </footer>
       )}
@@ -484,7 +574,9 @@ function SheetLink({
       className="flex h-11 items-center gap-2 rounded-xl px-2.5 text-[0.8125rem] font-[600] text-white outline-none focus-visible:ring-2 focus-visible:ring-ring active:bg-white/8"
     >
       {children}
-      {expanded === undefined && <ChevronRight aria-hidden className="ms-auto size-4 text-white/50" />}
+      {expanded === undefined && (
+        <ChevronRight aria-hidden className="ms-auto size-4 text-white/50" />
+      )}
     </button>
   );
 }
@@ -512,11 +604,8 @@ export function EpisodesSheet({
   return (
     <SideSheet label="Episodes" onClose={onClose} className="w-[min(24rem,calc(100%-1rem))]">
       {all.length > 1 && (
-        <div
-          role="group"
-          aria-label="Seasons"
-          className="no-scrollbar flex shrink-0 gap-1.5 overflow-x-auto px-3 pb-2"
-        >
+        <fieldset className="no-scrollbar m-0 flex min-w-0 shrink-0 gap-1.5 overflow-x-auto border-0 px-3 pt-0 pb-2">
+          <legend className="sr-only">Seasons</legend>
           {all.map((each) => (
             <button
               key={each}
@@ -531,7 +620,7 @@ export function EpisodesSheet({
               {seasonLabel(each)}
             </button>
           ))}
-        </div>
+        </fieldset>
       )}
       <ul className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-2 pb-3">
         {shown.map((episode) => {
@@ -574,4 +663,3 @@ export function EpisodesSheet({
     </SideSheet>
   );
 }
-

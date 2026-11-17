@@ -189,14 +189,9 @@ export function SeekBar({
               left: `${percent(at)}%`,
               width: `${Math.max(0, percent(at + buffered) - percent(at))}%`,
             }}
-            className={cn(
-              "absolute inset-y-0 rounded-full bg-white/30",
-              smooth(playing && !held),
-            )}
+            className={cn("absolute inset-y-0 rounded-full bg-white/30", smooth(playing && !held))}
           />
-          <Slider.Indicator
-            className={cn("rounded-full bg-white", smooth(playing && !held))}
-          />
+          <Slider.Indicator className={cn("rounded-full bg-white", smooth(playing && !held))} />
           {known &&
             (["a", "b"] as const).map(
               (end) =>

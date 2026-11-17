@@ -28,6 +28,7 @@ export function NextEpisode({
   share,
   starting,
   mini = false,
+  compact = false,
   onPlay,
   onCancel,
   onStart,
@@ -41,6 +42,8 @@ export function NextEpisode({
   share: number;
   starting: boolean;
   mini?: boolean;
+  // The touch player's (#130): 240 pt wide, without the thumbnail.
+  compact?: boolean;
   onPlay: () => void;
   onCancel: () => void;
   onStart: (prepared: PreparedNext) => void;
@@ -64,10 +67,10 @@ export function NextEpisode({
         promptSurface,
         promptEnter,
         "dark flex overflow-hidden",
-        mini ? "w-64 flex-col" : "w-[26rem] max-w-full items-stretch",
+        mini ? "w-64 flex-col" : compact ? "w-60 flex-col" : "w-[26rem] max-w-full items-stretch",
       )}
     >
-      {next.thumbnail && !mini && (
+      {next.thumbnail && !mini && !compact && (
         <div className="relative w-40 shrink-0 bg-white/5">
           <img
             src={next.thumbnail}
@@ -79,7 +82,9 @@ export function NextEpisode({
           />
         </div>
       )}
-      <div className={cn("flex min-w-0 flex-1 flex-col", mini ? "gap-2 p-3" : "gap-3 p-4")}>
+      <div
+        className={cn("flex min-w-0 flex-1 flex-col", mini || compact ? "gap-2 p-3" : "gap-3 p-4")}
+      >
         <div className="flex min-w-0 flex-col gap-1">
           <p className="type-eyebrow text-[#ffc46b]">
             Up next ·{" "}
