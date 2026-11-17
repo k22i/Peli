@@ -15,7 +15,12 @@ const update = process.env["UPDATE_TAB_ICONS"] === "1";
 // colour from the tint), 24 pt, the web's stroke width.
 function svgOf(section: (typeof sections)[number]): string {
   const markup = renderToStaticMarkup(
-    createElement(section.icon, { size: 24, color: "#000000", strokeWidth: 2, "aria-hidden": true }),
+    createElement(section.icon, {
+      size: 24,
+      color: "#000000",
+      strokeWidth: 2,
+      "aria-hidden": true,
+    }),
   );
   return `<?xml version="1.0" encoding="UTF-8"?>\n${markup}\n`;
 }
@@ -25,7 +30,10 @@ function contentsOf(file: string): string {
     {
       images: [{ filename: file, idiom: "universal" }],
       info: { author: "xcode", version: 1 },
-      properties: { "preserves-vector-representation": true, "template-rendering-intent": "template" },
+      properties: {
+        "preserves-vector-representation": true,
+        "template-rendering-intent": "template",
+      },
     },
     null,
     2,
@@ -44,7 +52,9 @@ describe("native tab bar icons", () => {
         writeFileSync(join(dir, file), svgOf(section));
         writeFileSync(join(dir, "Contents.json"), contentsOf(file));
       }
-      expect(existsSync(join(dir, file)), `${dir}/${file} (UPDATE_TAB_ICONS=1 writes it)`).toBe(true);
+      expect(existsSync(join(dir, file)), `${dir}/${file} (UPDATE_TAB_ICONS=1 writes it)`).toBe(
+        true,
+      );
       // The same glyph as the web, so a lucide upgrade or a new icon shows.
       expect(readFileSync(join(dir, file), "utf8")).toBe(svgOf(section));
       expect(JSON.parse(readFileSync(join(dir, "Contents.json"), "utf8"))).toEqual(

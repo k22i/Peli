@@ -6,7 +6,8 @@ import { createRoot } from "react-dom/client";
 
 import { ToastProvider } from "@/components/ui/toast";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
-import { startPlatform } from "@/lib/platform";
+import { startNativeTabBar } from "@/components/shell/use-tab-bar";
+import { isIOS, startPlatform } from "@/lib/platform";
 import { startTheme } from "@/lib/theme";
 import { createAppRouter } from "@/router";
 import "./index.css";
@@ -20,12 +21,20 @@ const router = createAppRouter(queryClient);
 const root = document.getElementById("root");
 if (!root) throw new Error("missing #root element");
 
-createRoot(root).render(
-  <StrictMode>
-    <PersistQueryClientProvider client={queryClient} persistOptions={createPersistOptions()}>
-      <ToastProvider>
-        <RouterProvider router={router} />
-      </ToastProvider>
-    </PersistQueryClientProvider>
-  </StrictMode>,
-);
+// The iOS app asks once whether it has the native tab bar (iOS 26, #129)
+// before the first paint, so the CSS one never flashes in first.
+// The desktop renders at once, as before.
+if (isIOS()) void startNativeTabBar().then(() => render(root));
+else render(root);
+
+function render(container: HTMLElement) {
+  createRoot(container).render(
+    <StrictMode>
+      <PersistQueryClientProvider client={queryClient} persistOptions={createPersistOptions()}>
+        <ToastProvider>
+          <RouterProvider router={router} />
+        </ToastProvider>
+      </PersistQueryClientProvider>
+    </StrictMode>,
+  );
+}

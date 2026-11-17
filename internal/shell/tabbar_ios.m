@@ -322,6 +322,10 @@ API_AVAILABLE(ios(26.0))
 	self.search.frame = CGRectMake(right - searchW, 0, searchW, h);
 	UIView *searchButton = self.search.contentView.subviews.firstObject;
 	searchButton.frame = self.search.contentView.bounds;
+	// On Search itself, the circle is the selected item.
+	BOOL onSearch = [self.active isEqualToString:@"/search"];
+	searchButton.tintColor = onSearch ? sunInk() : UIColor.labelColor;
+	searchButton.accessibilityTraits = UIAccessibilityTraitButton | (onSearch ? UIAccessibilityTraitSelected : 0);
 
 	PeliTab *current = nil;
 	for (PeliTab *tab in self.tabs) {

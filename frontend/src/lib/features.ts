@@ -1,4 +1,5 @@
 import { isIOS } from "@/lib/platform";
+import { nativeTabBar } from "@/lib/tab-bar";
 
 // The parts of Peli that are not in the iOS app (ADR-0055). One list, so a
 // screen asks `feature("plugins")` instead of checking the platform, and the
@@ -21,7 +22,11 @@ export type Feature =
   | "commandPalette"
   | "people" // person pages
   | "multiSelect"
-  | "gallery";
+  | "gallery"
+  // The other way round: only the iOS app, and only from iOS 26 (UIGlassEffect),
+  // has the native Liquid Glass tab bar (#129). Everywhere else TabBar draws
+  // its CSS capsule.
+  | "nativeTabBar";
 
 const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
   "updates",
@@ -41,5 +46,6 @@ const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
 
 // Whether this build has the feature. Read when asked, not at import.
 export function feature(name: Feature): boolean {
+  if (name === "nativeTabBar") return isIOS() && nativeTabBar.available;
   return !(isIOS() && notOnIOS.has(name));
 }

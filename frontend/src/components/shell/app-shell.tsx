@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 
 import { lastOpenPane } from "@/components/settings/panes";
 import { TabBar } from "@/components/shell/tab-bar";
+import { useNativeTabBar, useTabBar } from "@/components/shell/use-tab-bar";
 import { CommandPalette } from "@/components/shell/command-palette";
 import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
@@ -34,6 +35,13 @@ export function AppShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const scrolled = useScrolled(pane);
   const compact = useCompactShell();
+  // The floating tab bar (#129): only in the browsing chrome at compact
+  // width, so it is gone on the player and the focus screens. Native Liquid
+  // Glass on iOS 26, else TabBar's CSS capsule.
+  const tabsShown = compact && chrome === undefined;
+  const tabBar = useTabBar(tabsShown ? pane : null, tabsShown);
+  useNativeTabBar(tabBar, tabsShown);
+  const nativeTabs = feature("nativeTabBar");
   // A stable callback: a new one each render would null and set the state
   // again, forever.
   const contentRef = useCallback((node: HTMLDivElement | null) => {
@@ -142,10 +150,9 @@ export function AppShell({ children }: { children: ReactNode }) {
               style={{ minWidth: 0 }}
               className={cn(
                 "pt-bar",
-                // Clear of the tab bar, or of the home indicator (0 off iOS).
-                compact
-                  ? "pb-[calc(var(--spacing-tabs)+env(safe-area-inset-bottom))]"
-                  : "pb-[env(safe-area-inset-bottom)]",
+                // Clear of the floating tab bar, or of the home indicator (0
+                // off iOS).
+                compact ? "pb-(--tabs-float)" : "pb-[env(safe-area-inset-bottom)]",
               )}
             >
               {children}
@@ -154,7 +161,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <ScrollBar orientation="vertical" className="mt-[calc(var(--spacing-bar)+0.25rem)]" />
         </ScrollAreaPrimitive.Root>
       </main>
-      {compact && <TabBar />}
+      {compact && !nativeTabs && <TabBar model={tabBar} />}
     </div>
   );
 }
