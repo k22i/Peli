@@ -2,6 +2,7 @@ import { CloudOff, RefreshCw } from "lucide-react";
 import { useState } from "react";
 
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
+import { isTouch } from "@/lib/platform";
 import { useCheckConnection, useConnection } from "@/lib/sync";
 import { Connection } from "@bindings/syncer";
 
@@ -59,7 +60,7 @@ export function ConnectionStatus() {
             </span>
           </TooltipTrigger>
           <TooltipPopup side="bottom" className="max-w-64">
-            {text.detail} Click to try again.
+            {text.detail} {isTouch() ? "Tap" : "Click"} to try again.
           </TooltipPopup>
         </Tooltip>
       )}
