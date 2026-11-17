@@ -231,6 +231,10 @@ type SimklStatus struct {
 	NeedsReconnect bool   `json:"needsReconnect"`
 	// When the history was last imported, Unix ms; 0 for never.
 	ImportedAt int64 `json:"importedAt"`
+	// The devices the grant was copied to or from by pairing (ADR-0061):
+	// Disconnect then asks "this device only" or "everywhere", and a refused
+	// sign-in means another device disconnected it.
+	Shared []string `json:"shared,omitempty"`
 }
 
 // AniListStatus is a connected AniList account.
@@ -240,6 +244,8 @@ type AniListStatus struct {
 	// When the token runs out, Unix ms; connect again then.
 	Expires    int64 `json:"expires"`
 	ImportedAt int64 `json:"importedAt"`
+	// As SimklStatus.Shared.
+	Shared []string `json:"shared,omitempty"`
 }
 
 // Status returns profile id's connections.
@@ -258,11 +264,11 @@ func (s *Service) Status(profileID uint64) (Connections, error) {
 	}
 	c := Connections{SimklAvailable: s.simkl.Configured(), AniListAvailable: s.anilistID != "", Kids: profile.Kids}
 	if l := t.Simkl; l != nil {
-		c.Simkl = &SimklStatus{User: l.User, NeedsReconnect: l.NeedsReconnect, ImportedAt: l.ImportedAt}
+		c.Simkl = &SimklStatus{User: l.User, NeedsReconnect: l.NeedsReconnect, ImportedAt: l.ImportedAt, Shared: l.Shared}
 	}
 	if l := t.AniList; l != nil {
 		expired := l.Expires > 0 && s.now().UnixMilli() >= l.Expires
-		c.AniList = &AniListStatus{User: l.User, NeedsReconnect: l.NeedsReconnect || expired, Expires: l.Expires, ImportedAt: l.ImportedAt}
+		c.AniList = &AniListStatus{User: l.User, NeedsReconnect: l.NeedsReconnect || expired, Expires: l.Expires, ImportedAt: l.ImportedAt, Shared: l.Shared}
 	}
 	return c, nil
 }

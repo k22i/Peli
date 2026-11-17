@@ -143,8 +143,10 @@ func (p *peli) services(x extras) []application.Service {
 		}
 	}
 	list = append(list, application.NewService(&appinfo.Service{}))
-	// The iOS floating tab bar (#129); no-ops on the desktop.
-	list = append(list, application.NewService(&shell.Service{}))
+	// The iOS floating tab bar (#129) and QR scanner (#133); no-ops on the
+	// desktop.
+	list = append(list, application.NewServiceWithOptions(&shell.Service{},
+		application.ServiceOptions{MarshalError: shell.MarshalError}))
 	if p.diag != nil {
 		list = append(list, application.NewService(p.diag))
 	}

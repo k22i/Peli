@@ -1,6 +1,7 @@
 // Package shell is the native half of the iOS app's shell (#129): the
 // floating Liquid Glass tab bar, a UIKit view over the webview that the
-// frontend drives (useNativeTabBar in components/shell/native-tab-bar.ts).
+// frontend drives (useNativeTabBar in components/shell/native-tab-bar.ts),
+// and the camera's QR scanner for device pairing (#133).
 //
 // The Service is bound on every platform, because the frontend's bindings
 // come from the desktop build and a bound method's id hashes its package,
@@ -11,6 +12,8 @@ package shell
 
 import (
 	"context"
+	"encoding/json"
+	"errors"
 	"sync"
 	"unsafe"
 
@@ -122,3 +125,50 @@ func (*Service) SetTabBar(state TabBarState) error { return setTabBar(state) }
 // there is no native bar (desktop, iOS before 26): the frontend then draws
 // its own.
 func (*Service) TabBarHeight() float64 { return tabBarHeight() }
+
+// --- the QR scanner (#133) ----------------------------------------------------
+
+// Camera access, as CameraAccess reports it.
+const (
+	CameraGranted      = "granted"
+	CameraDenied       = "denied"
+	CameraUndetermined = "undetermined"
+	// No camera here (the desktop, or a device without one): the frontend
+	// shows the phrase field instead.
+	CameraUnavailable = "unavailable"
+)
+
+var (
+	// ErrNoScanner means this device has no camera to scan with.
+	ErrNoScanner = errors.New("shell: no camera to scan with")
+	// ErrCameraDenied means the user turned camera access off for Peli.
+	ErrCameraDenied = errors.New("shell: camera access is off for Peli")
+)
+
+// CameraAccess says whether ScanQR can open the camera: "granted",
+// "denied", "undetermined" (iOS asks on the first scan) or "unavailable".
+func (*Service) CameraAccess() string { return cameraAccess() }
+
+// ScanQR opens the camera full screen over the app and returns the text of
+// the first QR code that starts with prefix ("" for any), or "" if the user
+// closed it. On iOS it's AVFoundation's QR reader (VisionKit's scanner is
+// Swift-only, ADR-0061); the camera prompt appears on the first scan. Off iOS
+// it fails with ErrNoScanner.
+func (*Service) ScanQR(ctx context.Context, prefix string) (string, error) {
+	return scanQR(ctx, prefix)
+}
+
+// MarshalError gives the frontend a code for the scanner's errors.
+func MarshalError(err error) []byte {
+	var code string
+	switch {
+	case errors.Is(err, ErrNoScanner):
+		code = "no_scanner"
+	case errors.Is(err, ErrCameraDenied):
+		code = "camera_denied"
+	default:
+		return nil
+	}
+	data, _ := json.Marshal(map[string]string{"code": code})
+	return data
+}

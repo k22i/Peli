@@ -65,7 +65,7 @@ func TestIOSServiceHasTheDesktopMethods(t *testing.T) {
 		bound = append(bound, typ.Method(i).Name)
 	}
 	sort.Strings(bound)
-	want := []string{"ServiceStartup", "SetTabBar", "TabBarHeight"}
+	want := []string{"CameraAccess", "ScanQR", "ServiceStartup", "SetTabBar", "TabBarHeight"}
 	if !reflect.DeepEqual(bound, want) {
 		t.Errorf("bound methods %v, want %v (update the frontend and this test on purpose)", bound, want)
 	}

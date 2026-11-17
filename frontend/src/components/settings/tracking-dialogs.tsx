@@ -1,9 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
 import { closeSignInPage, openSignInPage, openURL } from "@/lib/open-url";
-import { ExternalLink, RefreshCw, TriangleAlert } from "lucide-react";
+import { Check, Copy, ExternalLink, RefreshCw, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogPopup,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -16,6 +25,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Spinner } from "@/components/ui/spinner";
+import { isIOS, thisDevice } from "@/lib/platform";
 import { toastManager } from "@/components/ui/toast";
 import { Tracking, trackingErrorCode, trackingProblem, useWaitSignIn } from "@/lib/tracking";
 
@@ -54,6 +64,10 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
   const wait = useWaitSignIn(profileId, () => Tracking.WaitSimkl());
   const code = start.data;
   const secondsLeft = useSecondsLeft(code?.expiresAt);
+  // On a phone or tablet the code is easier to approve elsewhere, such as on
+  // the Mac (#133), so it's big, and copyable.
+  const phone = isIOS();
+  const [copied, setCopied] = useState(false);
 
   const begin = () => {
     wait.reset();
@@ -82,8 +96,9 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
       <DialogHeader>
         <DialogTitle>Connect SIMKL</DialogTitle>
         <DialogDescription>
-          Allow Peli on the SIMKL page that opened in your browser. What this profile watches is
-          then scrobbled to your SIMKL account.
+          {phone
+            ? "Approve this code on any device, like your Mac, or on the SIMKL page that opened. What this profile watches is then scrobbled to your SIMKL account."
+            : "Allow Peli on the SIMKL page that opened in your browser. What this profile watches is then scrobbled to your SIMKL account."}
         </DialogDescription>
       </DialogHeader>
       <DialogPanel className="flex flex-col items-center gap-5">
@@ -102,7 +117,31 @@ function SimklSignIn({ profileId, onDone }: { profileId: number; onDone: () => v
                 </button>{" "}
                 and enter
               </p>
-              <p className="tnum text-3xl font-semibold tracking-[0.15em]">{code.code}</p>
+              <p
+                className={
+                  phone
+                    ? "tnum text-5xl font-semibold tracking-[0.15em] select-text"
+                    : "tnum text-3xl font-semibold tracking-[0.15em]"
+                }
+              >
+                {code.code}
+              </p>
+              {phone && (
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() =>
+                    void navigator.clipboard.writeText(code.code).then(
+                      () => setCopied(true),
+                      () => toastManager.add({ type: "error", title: "Couldn’t copy the code" }),
+                    )
+                  }
+                >
+                  {copied ? <Check /> : <Copy />}
+                  {copied ? "Copied" : "Copy code"}
+                </Button>
+              )}
             </div>
             <p className="flex items-center gap-2 text-body whitespace-nowrap text-muted-foreground">
               <Spinner className="size-4" aria-hidden />
@@ -237,6 +276,58 @@ function AniListSignIn({ profileId, onDone }: { profileId: number; onDone: () =>
         )}
       </DialogFooter>
     </>
+  );
+}
+
+// Disconnecting a grant that pairing copied to or from other devices (#133,
+// ADR-0061). SIMKL asks: forget it here only, or revoke it, which signs the
+// other devices out too. AniList can't be revoked from Peli, so it only
+// forgets, and says the other devices stay connected.
+export function SharedDisconnectDialog({
+  service,
+  devices,
+  open,
+  onOpenChange,
+  onThisDevice,
+  onEverywhere,
+}: {
+  service: "simkl" | "anilist";
+  // sharedWith() of the connection's devices.
+  devices: string;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onThisDevice: () => void;
+  onEverywhere?: () => void;
+}) {
+  const simkl = service === "simkl";
+  const choose = (run: () => void) => () => {
+    run();
+    onOpenChange(false);
+  };
+  return (
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      <AlertDialogPopup>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{simkl ? "Disconnect SIMKL?" : "Disconnect AniList?"}</AlertDialogTitle>
+          <AlertDialogDescription>
+            {simkl
+              ? `This SIMKL connection is shared with ${devices}. Disconnect it here only, and ${devices} keeps scrobbling, or everywhere, which signs ${devices} out of SIMKL too.`
+              : `This only forgets AniList on ${thisDevice()}: ${devices} stays connected. To disconnect everywhere, remove Peli in your AniList settings.`}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogClose render={<Button variant="ghost" />}>Cancel</AlertDialogClose>
+          {simkl && onEverywhere && (
+            <Button variant="destructive-outline" onClick={choose(onEverywhere)}>
+              Everywhere
+            </Button>
+          )}
+          <Button variant={simkl ? "default" : "destructive"} onClick={choose(onThisDevice)}>
+            {simkl ? "On this device only" : "Disconnect"}
+          </Button>
+        </AlertDialogFooter>
+      </AlertDialogPopup>
+    </AlertDialog>
   );
 }
 

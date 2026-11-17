@@ -360,6 +360,18 @@ func removeNuvioProfiles(tx *bolt.Tx) error {
 	return settings.Delete(keyAccount)
 }
 
+// NuvioAccount is the Nuvio user id the linked profiles belong to, or "" on
+// a device that was never signed in (or has signed out). Device pairing
+// (#133) compares it between the two devices.
+func (s *Store) NuvioAccount() (string, error) {
+	var account string
+	err := s.db.View(func(tx *bolt.Tx) error {
+		account = string(tx.Bucket(bucketSettings).Get(keyAccount))
+		return nil
+	})
+	return account, err
+}
+
 // createProfile adds profile, offered the built-in addons (UseBuiltins).
 func (s *Store) createProfile(tx *bolt.Tx, profile Profile) (Profile, error) {
 	if err := validateProfile(tx, profile, 0); err != nil {

@@ -35,6 +35,11 @@ type SimklLink struct {
 	Imported string `json:"imported,omitempty"`
 	// When the last import ran, in Unix ms.
 	ImportedAt int64 `json:"importedAt,omitempty"`
+	// The other devices this grant was copied to or from by pairing (#133,
+	// ADR-0061), by name. A shared grant is disconnected here only, or
+	// revoked everywhere; a refused refresh on one means another device
+	// revoked it.
+	Shared []string `json:"shared,omitempty"`
 }
 
 // AniListLink is a connected AniList account.
@@ -49,6 +54,9 @@ type AniListLink struct {
 	// AniList's updatedAt) are read on the next import.
 	Imported   int64 `json:"imported,omitempty"`
 	ImportedAt int64 `json:"importedAt,omitempty"`
+	// As SimklLink.Shared. AniList has no revoke, so this only changes what
+	// Disconnect says.
+	Shared []string `json:"shared,omitempty"`
 }
 
 // TrackingJob is a scrobble or list update that couldn't be sent, kept to
