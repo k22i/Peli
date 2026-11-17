@@ -13,11 +13,18 @@ const (
 	Heavy  = "heavy"
 	// Selection is UISelectionFeedbackGenerator's tick.
 	Selection = "selection"
+	// Success, Warning and Error are UINotificationFeedbackGenerator's
+	// (#135): sign-in or pairing done, a wrong PIN, an error toast.
+	Success = "success"
+	Warning = "warning"
+	Error   = "error"
 )
 
 // Service is the bound haptics API. The zero value is ready.
 type Service struct{}
 
-// Impact plays one tap of kind (Light, Medium, Heavy or Selection; anything
-// else is Light). A no-op off iOS, and on devices without a Taptic Engine.
+// Impact plays one tap of kind (Light, Medium, Heavy, Selection, Success,
+// Warning or Error; anything else is Light). A no-op off iOS, on devices
+// without a Taptic Engine, and when Settings › Sounds & Haptics › System
+// Haptics is off (UIKit checks).
 func (*Service) Impact(kind string) { impact(kind) }

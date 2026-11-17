@@ -14,6 +14,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { toastManager } from "@/components/ui/toast";
+import { haptic } from "@/lib/haptics";
 import { profileProblem, useClearProfilePIN, useSetProfilePIN } from "@/lib/account";
 
 const pinLength = 4;
@@ -101,6 +102,7 @@ function PinWizard({
   const fail = (error: Error) => {
     if (wrongPin(error)) {
       // Back to the current step, cleared, to try the current PIN again.
+      haptic("error");
       setProblem({ title: "Wrong PIN. Try again." });
       setStep(0);
       setCurrentPin("");

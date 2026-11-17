@@ -26,6 +26,9 @@ const (
 	// EventExpand is a tap on the minimised capsule: it grows back, and the
 	// frontend stops asking for it minimised until the next scroll down.
 	EventExpand = "shell:expand"
+	// EventScrollTop is a tap on the status bar (#135): the page scrolls to
+	// the top, as a re-tap of the current tab does on a section's root.
+	EventScrollTop = "shell:scroll-top"
 )
 
 // TabItem is one section in the capsule. Icon names an image in the app's
@@ -65,6 +68,7 @@ func init() {
 	application.RegisterEvent[Tab](EventTab)
 	application.RegisterEvent[application.Void](EventSearch)
 	application.RegisterEvent[application.Void](EventExpand)
+	application.RegisterEvent[application.Void](EventScrollTop)
 }
 
 // Service is the bound shell API. The zero value is ready; UseWindow gives it
@@ -122,3 +126,9 @@ func (*Service) SetTabBar(state TabBarState) error { return setTabBar(state) }
 // there is no native bar (desktop, iOS before 26): the frontend then draws
 // its own.
 func (*Service) TabBarHeight() float64 { return tabBarHeight() }
+
+// WatchStatusBar makes a tap on the status bar send EventScrollTop (#135).
+// Pages scroll inside the webview, not in its UIScrollView, so UIKit's own
+// scroll-to-top had nothing to scroll. Safe to call more than once (after a
+// WebKit reload). A no-op off iOS.
+func (*Service) WatchStatusBar() error { return watchStatusBar() }

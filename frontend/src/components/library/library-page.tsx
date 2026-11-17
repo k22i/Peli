@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { ArrowUpDown, Eye, EyeOff, Library as LibraryIcon, Trash2 } from "lucide-react";
 import { useEffect, useState, type KeyboardEvent, type ReactNode } from "react";
@@ -8,6 +8,7 @@ import { CompactLibraryFrame } from "@/components/library/compact-frame";
 import { LibraryGridSkeleton, LibraryNotice } from "@/components/library/notice";
 import { Upcoming } from "@/components/library/upcoming";
 import { SelectionBar } from "@/components/library/selection-bar";
+import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { Watchlist } from "@/components/library/watchlist";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
@@ -59,6 +60,10 @@ import type { LibraryItem, Profile } from "@bindings/store";
 // title and the view switch, and under them the type chips and Sort.
 export function LibraryPage() {
   const profile = useQuery(currentProfileQuery).data;
+  // Pull to refresh on iOS (#135): sync now, and the tracker lists
+  // (the Watchlist view's).
+  const client = useQueryClient();
+  usePullToRefresh(() => refreshSynced(client));
   return profile ? (
     <Library profile={profile} />
   ) : (

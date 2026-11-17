@@ -2,6 +2,7 @@
 
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 import * as React from "react";
+import { haptic } from "@/lib/haptics";
 import { cn } from "@/lib/utils";
 import {
   type SegmentedControlSize,
@@ -15,9 +16,18 @@ type TabsSize = SegmentedControlSize;
 
 const TabsListContext: React.Context<TabsSize> = React.createContext<TabsSize>("default");
 
-export function Tabs({ className, ...props }: TabsPrimitive.Root.Props): React.ReactElement {
+export function Tabs({
+  className,
+  onValueChange,
+  ...props
+}: TabsPrimitive.Root.Props): React.ReactElement {
   return (
     <TabsPrimitive.Root
+      // A selection tick on iOS (#135); nothing elsewhere.
+      onValueChange={(value, details) => {
+        haptic("selection");
+        onValueChange?.(value, details);
+      }}
       className={cn("flex flex-col gap-2 data-[orientation=vertical]:flex-row", className)}
       data-slot="tabs"
       {...props}

@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { LibraryItem, Progress, WatchedItem } from "@bindings/store";
 import { Service as Store } from "@bindings/store";
 import { toastManager } from "@/components/ui/toast";
+import { haptic } from "@/lib/haptics";
 import type { Meta } from "@/lib/addon-protocol";
 import {
   seriesMarkChange,
@@ -102,6 +103,8 @@ export function useTitleEdits(profileId: number) {
       const change = seriesMarkChange(full, titleState(full, marks ?? [], progress ?? []));
       if (change !== undefined) await Store.SetWatched(profileId, [titleMark(full)], change);
     },
+    // A light tap as the mark is asked for, on iOS (#135).
+    onMutate: () => haptic("light"),
     onError: () => toastManager.add({ type: "error", title: "Couldn’t save that" }),
     onSettled: (_result, _error, { meta }) => refreshState(meta.id),
   });
@@ -111,6 +114,7 @@ export function useTitleEdits(profileId: number) {
   const saveToLibrary = useMutation({
     mutationFn: (item: LibraryItem) => Store.SaveLibraryItem(profileId, item),
     onMutate: async (item) => {
+      haptic("light");
       await client.cancelQueries({ queryKey: libraryKey });
       const before = client.getQueryData<LibraryItem[]>(libraryKey);
       client.setQueryData<LibraryItem[]>(libraryKey, (list) =>
@@ -129,6 +133,7 @@ export function useTitleEdits(profileId: number) {
     mutationFn: (title: Pick<LibraryItem, "contentId" | "contentType" | "name">) =>
       Store.RemoveLibraryItem(profileId, title.contentId, title.contentType),
     onMutate: async (title) => {
+      haptic("light");
       await client.cancelQueries({ queryKey: libraryKey });
       const before = client.getQueryData<LibraryItem[]>(libraryKey);
       client.setQueryData<LibraryItem[]>(libraryKey, (list) =>

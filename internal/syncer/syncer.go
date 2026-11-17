@@ -394,6 +394,17 @@ func WakeOf(service *Service) { service.monitor.Wake() }
 // half minute.
 func (s *Service) Pull(ctx context.Context) (Pulled, error) { return s.puller.Pull(ctx) }
 
+// Refresh is pull to refresh on the iPhone (#135): what is queued goes out
+// first, as on reconnecting, then the profile in use is pulled without
+// waiting out the half-minute throttle. It returns the pull's error (such as
+// being offline) so the frontend can say so; a push that fails stays queued.
+func (s *Service) Refresh(ctx context.Context) (Pulled, error) {
+	if err := s.pusher.Resume(ctx); err != nil {
+		logPushError(err)
+	}
+	return s.puller.PullNow(ctx)
+}
+
 // Connection is whether Nuvio can be reached, as far as the app knows: from
 // the last pull or push, or the last check while offline. The frontend shows
 // an indicator when it isn't, and EventConnection tells it of a change.

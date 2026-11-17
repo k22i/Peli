@@ -8,6 +8,7 @@ import { AnimePosterCard } from "@/components/media/anime-poster-card";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
+import { usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Empty,
@@ -283,6 +284,8 @@ function CatalogGrid({
     initialDataUpdatedAt: () => client.getQueryState(firstPage)?.dataUpdatedAt,
   });
   const { hasNextPage, isFetchingNextPage, fetchNextPage } = pages;
+  // Pull to refresh on iOS (#135): the catalog on screen, every page loaded.
+  usePullToRefresh(() => pages.refetch());
   const loadMore = useCallback(() => {
     if (hasNextPage && !isFetchingNextPage) void fetchNextPage();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);

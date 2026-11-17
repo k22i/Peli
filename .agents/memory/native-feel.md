@@ -1,0 +1,20 @@
+---
+name: native-feel
+description: "#135 iOS native feel: haptic() over internal/haptics (notification kinds), where it fires, Shell.WatchStatusBar + shell:scroll-top, edge-swipe back (lib/edge-back, use-edge-back, onLoad reset), pull to refresh (usePullToRefresh registry, Syncer.Refresh), touch scrollbar"
+metadata:
+  type: project
+---
+
+#135 (epic #126, 2026-11-17) added the small iOS behaviours. All gated on `isIOS()`; desktop runs the same code paths only through no-ops (`haptic()` returns early, the shell's iOS pieces aren't mounted).
+
+**Haptics:** `internal/haptics` (from #131) gained `success`/`warning`/`error` (UINotificationFeedbackGenerator). `lib/haptics.ts` `haptic(kind)` → `Haptics.Impact` on iOS; selection throttled to 50 ms (`throttled()`, pure). Call sites: `ui/switch.tsx` (light), `ui/tabs.tsx` + `ui/toggle-group.tsx` (selection, so every Chip/ChipRail/Tabs switch ticks), episodes `SeasonSelect`, `useTabBar.select` on a section change, `useTitleEdits` `onMutate` (watched, library add/remove), player level bump + `addSkip`, `toastManager` wraps `add` so every `type: "error"` toast buzzes, PIN entry/manager wrong PIN, `useSignIn`/`useQRSignIn` success. #133's pairing should call `haptic("success")` itself.
+
+**Status-bar tap:** `Shell.WatchStatusBar()` (shell.go; `watchStatusBar` twins) → `peli_statusbar_watch` in `tabbar_ios.m` (kept in that file so `TestIOSTabBarFiles` is unchanged): a 1 pt `PeliStatusBarTap` UIScrollView (contentOffset 1, `pointInside` NO) whose `scrollViewShouldScrollToTop:` emits `shell:scroll-top` and returns NO; `WKWebView.scrollView.scrollsToTop = NO`. The shell calls it in an effect on iOS browsing chrome and listens with `scrollToTop(pane)` (exported from `use-tab-bar.ts`, shared with #129's re-tap) + `tabBar.expand()`.
+
+**Edge back:** `lib/edge-back.ts` pure (20 pt edge, 10 pt lock, 35 % / 500 pt/s, `edgeDim` 30 %→0). `components/shell/use-edge-back.ts`: capture-phase document touch listeners (touchmove non-passive, preventDefault once claimed, so an edge touch beats a rail), styles `<main class="page-layer">` (translate + left shadow) over a black dim div the shell renders behind it on iOS. Commit: slide out 200 ms, `router.history.back()`, and the styles are cleared on the router's `onLoad` event, which fires inside the view transition's update callback, so the old snapshot is the empty dim and the new page gets `data-nav="back"`'s animation. Off: not browsing chrome (player, focus), `sheetsOpen() > 0`, `!router.history.canGoBack()`. #138 can feed the same reducer from pointer events.
+
+**Pull to refresh:** `lib/pull-refresh.ts` pure (UIScrollView-like `rubberBand`, 64 pt trigger ≈ 127 pt finger, `crossed` once for the medium haptic). `components/shell/pull-to-refresh.tsx`: `usePullToRefresh(fn)` registers the page's refresh (last mounted wins); `PullToRefresh` (in `<main>`, iOS only) watches `#content` touches from scrollTop 0 and draws a 28 pt `material-pop` puck with Peli's Spinner at `--spacing-bar + 0.5rem` (floats over content rather than relying on WebKit's rubber-band metrics). Pages: Home (`routes/index.tsx`) and Library → `refreshSynced` = bound `Syncer.Refresh` (push Resume, then `PullNow`) + invalidate `["tracking"]`; Browse catalog → `pages.refetch()`; title → `details.refetch()` + active `["tmdb"]`. Offline (navigator or `connectionQuery` Offline) → info toast "You're offline. Showing what's on this device." 10 s cap.
+
+**Scroll feel:** `#content` gets `overscroll-contain` on iOS; the overlay ScrollBar stays but hides while only "hovering" (a touch counts as hover) and is 3 px, no pointer events. `-webkit-overflow-scrolling` isn't needed (iOS 13+).
+
+**Not verified (no simulator or device for this ticket):** every touch path, the status-bar scroll view being picked by UIKit, haptic timing, the edge-back snapshot timing, momentum frame rate. Reducer and wiring tests are owed. Related: [[player-gestures]], [[app-shell]], [[bottom-sheets]], [[motion]], [[sync-module]], [[ios-polish-epic]].

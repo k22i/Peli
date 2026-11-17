@@ -4,7 +4,7 @@ package shell
 
 /*
 #cgo CFLAGS: -fobjc-arc
-#cgo LDFLAGS: -framework UIKit -framework Foundation -framework QuartzCore
+#cgo LDFLAGS: -framework UIKit -framework Foundation -framework QuartzCore -framework WebKit
 #include <stdlib.h>
 #include "tabbar_ios.h"
 */
@@ -38,6 +38,17 @@ func setTabBar(state TabBarState) error {
 	return nil
 }
 
+func watchStatusBar() error {
+	vc := nativeWindow()
+	if vc == nil {
+		return nil
+	}
+	if rc := C.peli_statusbar_watch(vc); rc < 0 {
+		return fmt.Errorf("shell: status-bar tap not watched (step %d)", int(rc))
+	}
+	return nil
+}
+
 func tabBarHeight() float64 {
 	return float64(C.peli_tabbar_height(nativeWindow()))
 }
@@ -54,3 +65,6 @@ func peliShellSearch() { go send(EventSearch, nil) }
 
 //export peliShellExpand
 func peliShellExpand() { go send(EventExpand, nil) }
+
+//export peliShellScrollTop
+func peliShellScrollTop() { go send(EventScrollTop, nil) }

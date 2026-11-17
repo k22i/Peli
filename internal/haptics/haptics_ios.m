@@ -9,6 +9,13 @@ void peli_haptic(int kind) {
 			[[UISelectionFeedbackGenerator new] selectionChanged];
 			return;
 		}
+		if (kind >= PELI_HAPTIC_SUCCESS && kind <= PELI_HAPTIC_ERROR) {
+			UINotificationFeedbackType type = UINotificationFeedbackTypeSuccess;
+			if (kind == PELI_HAPTIC_WARNING) type = UINotificationFeedbackTypeWarning;
+			if (kind == PELI_HAPTIC_ERROR) type = UINotificationFeedbackTypeError;
+			[[UINotificationFeedbackGenerator new] notificationOccurred:type];
+			return;
+		}
 		UIImpactFeedbackStyle style = UIImpactFeedbackStyleLight;
 		if (kind == PELI_HAPTIC_MEDIUM) style = UIImpactFeedbackStyleMedium;
 		if (kind == PELI_HAPTIC_HEAVY) style = UIImpactFeedbackStyleHeavy;

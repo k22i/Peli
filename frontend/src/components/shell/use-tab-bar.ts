@@ -4,6 +4,7 @@ import { Events } from "@wailsio/runtime";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { feature } from "@/lib/features";
+import { haptic } from "@/lib/haptics";
 import {
   expandedAt,
   nativeTabBar,
@@ -34,6 +35,13 @@ export type TabBarModel = {
 
 function prefersReducedMotion(): boolean {
   return typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+// Scrolls the content pane to the top, smoothly unless motion is reduced: a
+// re-tap of the current tab on a section's root (#129) and a tap on the
+// status bar (shell:scroll-top, #135).
+export function scrollToTop(pane: HTMLElement | null | undefined) {
+  pane?.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
 }
 
 // The tab bar's behaviour, the same for the native bar and the CSS one:
@@ -91,11 +99,12 @@ export function useTabBar(pane: HTMLElement | null, shown: boolean): TabBarModel
   // under it, and on the root scrolls to the top, as UIKit's tab bars do.
   const select = useCallback(
     (target: Section) => {
+      if (target !== section) haptic("selection");
       if (target !== section || pathname !== target.to) {
         void navigate({ to: target.to });
         return;
       }
-      pane?.scrollTo({ top: 0, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+      scrollToTop(pane);
       expand();
     },
     [section, pathname, navigate, pane, expand],
