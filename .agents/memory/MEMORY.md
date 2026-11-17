@@ -93,3 +93,4 @@
 - [Crash diagnostics](crash-diagnostics.md) — #127 internal/diagnostics + iosshell (WebKit-kill reload, loop guard, crash files, ring log, Share logs), safego, ErrorScreen, route restore, pelidev crash tests in Settings
 - [Bottom sheets](bottom-sheets.md) — #134 ResponsiveMenu/ContextMenu/Select + BottomSheet drag, useSheetOpen for the tab bar, haptic() stub, long press, CDP screenshot rig
 - [iOS small fixes](ios-small-fixes.md) — #139: thisDevice/deviceName, Meteor 🌩️/☁️, SeedAudioLanguages, About build, icon + launch assets, quiet webview, touch CSS
+- [Device pairing](device-pairing.md) — #133/ADR-0061 copy SIMKL/AniList/TMDB by QR over the LAN: camera always scans, CPace phrase Mac↔Mac, internal/pairing layout, shared grants, AVFoundation scanner

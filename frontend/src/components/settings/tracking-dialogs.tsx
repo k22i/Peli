@@ -338,14 +338,14 @@ function connected(service: string, user: string | undefined) {
   });
 }
 
-function formatLeft(seconds: number) {
+export function formatLeft(seconds: number) {
   const m = Math.floor(seconds / 60);
   const s = String(seconds % 60).padStart(2, "0");
   return `expires in ${m}:${s}`;
 }
 
 // Whole seconds until expiresAt, ticking every second; 0 once it's past.
-function useSecondsLeft(expiresAt: string | undefined) {
+export function useSecondsLeft(expiresAt: string | undefined) {
   const [now, setNow] = useState(Date.now);
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 1000);

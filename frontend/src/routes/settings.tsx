@@ -26,6 +26,7 @@ import {
 } from "@/components/settings/settings-section";
 import { TmdbDialog } from "@/components/settings/tmdb-dialog";
 import { UpdateRows } from "@/components/settings/update-rows";
+import { AddDeviceDialog, CopyDeviceDialog } from "@/components/settings/pairing-dialogs";
 import {
   AniListDialog,
   SharedDisconnectDialog,
@@ -1304,6 +1305,8 @@ function TrackingGroups({
   const [connecting, setConnecting] = useState<"simkl" | "anilist">();
   // A grant pairing shared with other devices asks how to disconnect (#133).
   const [disconnecting, setDisconnecting] = useState<"simkl" | "anilist">();
+  // Copying connections to or from another device (#133).
+  const [pairing, setPairing] = useState<"add" | "copy">();
   if (!connections) return <Skeleton className="h-48 rounded-2xl" />;
   if (connections.kids) return null;
 
@@ -1458,6 +1461,44 @@ function TrackingGroups({
           </>
         )}
       </SettingsGroup>
+      <SettingsGroup title="Other devices">
+        <SettingRow
+          id="pair-add"
+          label="Add to another device"
+          description="Copy SIMKL, AniList and the TMDB key from here to your iPhone, iPad or Mac, over this Wi-Fi."
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label="Add to another device"
+            onClick={() => setPairing("add")}
+          >
+            Add…
+          </Button>
+        </SettingRow>
+        <SettingRow
+          id="pair-copy"
+          label="Copy from another device"
+          description="Get the connections another device already has. Both must be signed in to the same Nuvio account."
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label="Copy from another device"
+            onClick={() => setPairing("copy")}
+          >
+            Copy…
+          </Button>
+        </SettingRow>
+      </SettingsGroup>
+      <AddDeviceDialog
+        open={pairing === "add"}
+        onOpenChange={(open) => setPairing(open ? "add" : undefined)}
+      />
+      <CopyDeviceDialog
+        open={pairing === "copy"}
+        onOpenChange={(open) => setPairing(open ? "copy" : undefined)}
+      />
       <SimklDialog
         profileId={profileId}
         open={connecting === "simkl"}
