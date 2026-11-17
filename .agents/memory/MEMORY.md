@@ -88,3 +88,4 @@
 - [iOS port](ios-port.md) — Phases 1–7 (auth, Keychain, browsing, libmpv playback, suspension/offline, hand-off in ios/README.md): ADR-0055–0059, ios tag rules, isIOS()/feature(), UIScene shim, iPhone rotation rule (rotation_ios.go), simulator recipe and limits, test baseline
 - [iOS libmpv](ios-libmpv.md) — xcframework, GLES under the webview, 8-bit to GLES (nv12 / lavfi format), mode before first frame, simulator -6683 poisoning + glFinish, zero-copy chroma hook (purple/green fix)
 - [iOS on devices via SideStore](ios-sidestore.md) — free Apple ID, ad-hoc ios:sideload .ipa, SideStore adds team id to bundle id + filters entitlements, iloader/LocalDevVPN, device:console logs, stats line
+- [iOS polish epic](ios-polish-epic.md) — #126 (2026-11-17): sub-tickets #127–#142 with priorities, code findings (no WebKit-kill handler, extraLarge covers, 45 % player dock), native glass tab bar + QR tracker pairing decisions
