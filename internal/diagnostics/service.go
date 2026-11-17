@@ -279,6 +279,20 @@ func (s *Service) DevCrash(kind string) error {
 	return nil
 }
 
+// DevMark logs one step of the rig's tab loop (#128, pelidev builds only):
+// the frontend's note (route, time to the first card, images, DOM size,
+// queries), then a memory line, and writes the log out, so a kill mid-loop
+// leaves every step before it on disk.
+func (s *Service) DevMark(note string) error {
+	if !DevBuild {
+		return ErrNotDev
+	}
+	slog.Info("dev loop", "note", clip(note, 2000))
+	logMemory(s, "dev loop")
+	Flush(s)
+	return nil
+}
+
 // Terminated is iOS killing the webview's content process (a memory kill or
 // a WebKit crash): it is logged, and the answer is what to load next, from
 // the address the webview had. An empty url means the error page.
