@@ -142,3 +142,5 @@ func peliShellScanned(text *C.char, status C.int) {
 		d <- r
 	}
 }
+
+func openAppSettings() { C.peli_open_app_settings() }

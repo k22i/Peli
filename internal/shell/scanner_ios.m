@@ -212,3 +212,10 @@ void peli_scan_cancel(void) {
 		finish(g_scanner, nil, 1, NO);
 	});
 }
+
+void peli_open_app_settings(void) {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+		if (url) [UIApplication.sharedApplication openURL:url options:@{} completionHandler:nil];
+	});
+}

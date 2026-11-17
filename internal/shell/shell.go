@@ -158,6 +158,10 @@ func (*Service) ScanQR(ctx context.Context, prefix string) (string, error) {
 	return scanQR(ctx, prefix)
 }
 
+// OpenAppSettings opens Peli's page in the Settings app (iOS), where Camera
+// and Local Network access are turned back on. A no-op elsewhere.
+func (*Service) OpenAppSettings() { openAppSettings() }
+
 // MarshalError gives the frontend a code for the scanner's errors.
 func MarshalError(err error) []byte {
 	var code string

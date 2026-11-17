@@ -14,3 +14,5 @@ func tabBarHeight() float64 { return 0 }
 func cameraAccess() string { return CameraUnavailable }
 
 func scanQR(context.Context, string) (string, error) { return "", ErrNoScanner }
+
+func openAppSettings() {}

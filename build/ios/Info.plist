@@ -73,10 +73,6 @@
     </dict>
     
     
-    <key>NSBonjourServices</key>
-    <array>
-        <string>_peli-pair._tcp</string>
-    </array>
     <key>NSCameraUsageDescription</key>
     <string>Peli scans the code on your other device to copy your SIMKL and AniList connections.</string>
     <key>NSLocalNetworkUsageDescription</key>

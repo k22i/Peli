@@ -15,6 +15,9 @@ void peli_scan_start(void *vc, const char *prefix);
 // peli_scan_cancel closes the scanner without a code (no callback).
 void peli_scan_cancel(void);
 
+// peli_open_app_settings opens Peli's page in the Settings app.
+void peli_open_app_settings(void);
+
 // Exported from shell_ios.go.
 void peliShellScanned(char *text, int status);
 
