@@ -14,9 +14,16 @@ int peli_tabbar_set(void *vc, const char *json);
 // class, or 0 when there is no native bar.
 double peli_tabbar_height(void *vc);
 
+// peli_statusbar_watch makes a status-bar tap send shell:scroll-top (#135):
+// a 1 pt scroll view over vc's view takes UIKit's scroll-to-top, and the
+// webView's own scroll view stops taking it. Safe to call again. 0, or -1
+// not a view controller, -2 no webView.
+int peli_statusbar_watch(void *vc);
+
 // Exported from shell_ios.go: the native taps.
 void peliShellTab(char *id);
 void peliShellSearch(void);
 void peliShellExpand(void);
+void peliShellScrollTop(void);
 
 #endif

@@ -7,3 +7,5 @@ package shell
 func setTabBar(TabBarState) error { return nil }
 
 func tabBarHeight() float64 { return 0 }
+
+func watchStatusBar() error { return nil }

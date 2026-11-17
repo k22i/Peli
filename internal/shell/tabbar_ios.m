@@ -16,6 +16,7 @@
 //             beside the icons, the pair centred and at most 560 wide
 //   minimised the capsule is a 48 circle with the current tab's icon
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 #include "tabbar_ios.h"
 
@@ -428,4 +429,60 @@ double peli_tabbar_height(void *vcHandle) {
 		return h;
 	}
 	return 0;
+}
+
+// The status-bar tap (#135). Pages scroll in the webview's #content, an
+// overflow div, so UIKit's tap-to-top (which scrolls the one on-screen
+// UIScrollView with scrollsToTop) did nothing. A 1 pt clear scroll view at
+// the top of the controller's view is now that one: the webview's own
+// scroll view opts out, and when UIKit asks ours whether to scroll, it says
+// no and tells the frontend (shell:scroll-top), which scrolls #content.
+@interface PeliStatusBarTap : UIScrollView <UIScrollViewDelegate>
+@end
+
+@implementation PeliStatusBarTap
+- (instancetype)initWithFrame:(CGRect)frame {
+	if ((self = [super initWithFrame:frame])) {
+		self.backgroundColor = UIColor.clearColor;
+		self.scrollsToTop = YES;
+		self.showsVerticalScrollIndicator = NO;
+		self.showsHorizontalScrollIndicator = NO;
+		self.isAccessibilityElement = NO;
+		self.delegate = self;
+		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+		// Scrolled a little, so there is a "top" to go to: UIKit skips a
+		// scroll view already there.
+		self.contentSize = CGSizeMake(frame.size.width, 1000);
+		self.contentOffset = CGPointMake(0, 1);
+	}
+	return self;
+}
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+	peliShellScrollTop();
+	return NO;
+}
+// Never in the way of a touch at the very top of the page.
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event { return NO; }
+@end
+
+static PeliStatusBarTap *g_tap;
+
+int peli_statusbar_watch(void *vcHandle) {
+	__block int rc = 0;
+	onMain(^{
+		UIViewController *vc = (__bridge UIViewController *)vcHandle;
+		if (!vc || ![vc isKindOfClass:UIViewController.class]) { rc = -1; return; }
+		UIView *web = nil;
+		@try { web = [vc valueForKey:@"webView"]; } @catch (NSException *e) {}
+		if (![web isKindOfClass:WKWebView.class]) { rc = -2; return; }
+		// Ours must be the only on-screen scroll view with scrollsToTop.
+		((WKWebView *)web).scrollView.scrollsToTop = NO;
+		if (!g_tap || g_tap.superview != vc.view) {
+			[g_tap removeFromSuperview];
+			g_tap = [[PeliStatusBarTap alloc] initWithFrame:CGRectMake(0, 0, vc.view.bounds.size.width, 1)];
+			[vc.view addSubview:g_tap];
+		}
+		g_tap.contentOffset = CGPointMake(0, 1);
+	});
+	return rc;
 }
