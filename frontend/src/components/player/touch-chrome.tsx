@@ -5,11 +5,16 @@ import {
   ChevronLeft,
   ChevronRight,
   Ellipsis,
+  FastForward,
   Gauge,
+  LifeBuoy,
   Lock,
   Minus,
   Moon,
   Plus,
+  Sun,
+  Volume2,
+  VolumeX,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
@@ -18,6 +23,7 @@ import { sheetSurface } from "@/components/player/panel-controls";
 import {
   PlayerMenu,
   PlayerMenuCheckboxItem,
+  PlayerMenuItem,
   PlayerMenuRadioGroup,
   PlayerMenuRadioItem,
   PlayerMenuSeparator,
@@ -242,6 +248,7 @@ export function TouchMoreMenu({
   speed,
   sleep,
   stats,
+  onReport,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -249,6 +256,8 @@ export function TouchMoreMenu({
   speed?: { speed: number; onChange: (speed: number) => void } | undefined;
   sleep: SleepProps;
   stats: { open: boolean; onToggle: () => void };
+  // "Report a problem": shares the logs (#127), on iOS.
+  onReport?: (() => void) | undefined;
 }) {
   const picked = speed && (speeds.find((each) => sameSpeed(each, speed.speed)) ?? speed.speed);
   return (
@@ -290,7 +299,144 @@ export function TouchMoreMenu({
           Playback stats
         </span>
       </PlayerMenuCheckboxItem>
+      {onReport && (
+        <PlayerMenuItem icon={<LifeBuoy aria-hidden />} onClick={onReport}>
+          Report a problem
+        </PlayerMenuItem>
+      )}
     </PlayerMenu>
+  );
+}
+
+// The level HUD of a brightness or volume swipe (#131, Netflix's): a thin
+// vertical capsule 32 pt inside the safe edge on the side being changed,
+// with the icon above and the percentage below. The page shows it at once
+// and fades it 600 ms after the finger lifts. Volume changes from the
+// hardware buttons show here too, and are read out (role=status).
+export function LevelHud({
+  side,
+  value,
+  shown,
+}: {
+  side: "brightness" | "volume";
+  value: number;
+  shown: boolean;
+}) {
+  const percent = Math.round(value * 100);
+  const Icon = side === "brightness" ? Sun : percent === 0 ? VolumeX : Volume2;
+  return (
+    <div
+      data-testid="level-hud"
+      className={cn(
+        "pointer-events-none absolute top-1/2 flex -translate-y-1/2 flex-col items-center gap-2.5 text-white drop-shadow-[0_1px_8px_rgb(0_0_0/0.55)]",
+        side === "brightness"
+          ? "start-[calc(2rem+env(safe-area-inset-left))]"
+          : "end-[calc(2rem+env(safe-area-inset-right))]",
+        shown ? "opacity-100" : "opacity-0 transition-opacity duration-300",
+      )}
+    >
+      <Icon aria-hidden className="size-5" />
+      <div className="material-media relative h-35 w-2 overflow-hidden rounded-full">
+        <div
+          className="absolute inset-x-0 bottom-0 rounded-full bg-white"
+          style={{ height: `${percent}%` }}
+        />
+      </div>
+      {side === "volume" ? (
+        <output className="text-xs font-[600] tnum">
+          <span className="sr-only">Volume </span>
+          {percent} %
+        </output>
+      ) : (
+        <p className="text-xs font-[600] tnum">{percent} %</p>
+      )}
+    </div>
+  );
+}
+
+// A double tap's skip (YouTube's): an arc from that side with the running
+// total.
+export function SkipRipple({ side, seconds }: { side: -1 | 1; seconds: number }) {
+  return (
+    <div
+      aria-hidden
+      data-testid="skip-ripple"
+      className={cn(
+        "pointer-events-none absolute inset-y-0 grid w-[38%] place-items-center bg-white/10 motion-safe:animate-in motion-safe:fade-in-0",
+        side < 0 ? "start-0 rounded-e-[50%]" : "end-0 rounded-s-[50%]",
+      )}
+    >
+      <p className="flex items-center gap-1.5 text-[0.9375rem] font-[650] text-white drop-shadow-[0_1px_8px_rgb(0_0_0/0.6)]">
+        {side < 0 && <FastForward aria-hidden className="size-4.5 rotate-180 fill-current" />}
+        {seconds} seconds
+        {side > 0 && <FastForward aria-hidden className="size-4.5 fill-current" />}
+      </p>
+    </div>
+  );
+}
+
+// While a hold plays at 2×: a pill at the top centre.
+export function HoldPill() {
+  return (
+    <div className="pointer-events-none absolute inset-x-0 top-[calc(1rem+env(safe-area-inset-top))] flex justify-center">
+      <output className="material-media flex h-8 items-center gap-1.5 rounded-full px-3.5 text-[0.8125rem] font-[650] text-white">
+        2× <FastForward aria-hidden className="size-3.5 fill-current" />
+      </output>
+    </div>
+  );
+}
+
+// The locked player's only control: a pill that a 1 s hold unlocks. The
+// page shows it for 2 s after a tap.
+export function LockPill({ shown, onUnlock }: { shown: boolean; onUnlock: () => void }) {
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const [holding, setHolding] = useState(false);
+  useEffect(() => () => clearTimeout(timer.current), []);
+  const release = () => {
+    clearTimeout(timer.current);
+    setHolding(false);
+  };
+  return (
+    <div
+      className={cn(
+        "pointer-events-none absolute inset-x-0 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] flex justify-center transition-opacity duration-200",
+        shown ? "opacity-100 *:pointer-events-auto" : "opacity-0",
+      )}
+    >
+      <button
+        type="button"
+        data-testid="lock-pill"
+        aria-label="Controls locked. Hold to unlock"
+        className="material-media relative flex h-11 items-center gap-2 overflow-hidden rounded-full px-4 text-[0.8125rem] font-[600] text-white outline-none select-none [-webkit-touch-callout:none]"
+        onPointerDown={(event) => {
+          event.stopPropagation();
+          setHolding(true);
+          clearTimeout(timer.current);
+          timer.current = setTimeout(() => {
+            setHolding(false);
+            onUnlock();
+          }, 1000);
+        }}
+        onPointerUp={release}
+        onPointerLeave={release}
+        onPointerCancel={release}
+        onContextMenu={(event) => event.preventDefault()}
+        onKeyDown={(event) => {
+          // A keyboard (or switch control) unlocks with Enter or Space.
+          if (event.key === "Enter" || event.key === " ") onUnlock();
+        }}
+      >
+        <span
+          aria-hidden
+          className={cn(
+            "absolute inset-y-0 start-0 bg-white/20",
+            holding ? "w-full transition-[width] duration-1000 ease-linear" : "w-0",
+          )}
+        />
+        <Lock aria-hidden className="relative size-4" />
+        <span className="relative">Controls locked · Hold to unlock</span>
+      </button>
+    </div>
   );
 }
 

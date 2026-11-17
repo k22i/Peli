@@ -53,6 +53,7 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
     flipV: false,
   },
   sound: { dialogueBoost: false, nightMode: false, equalizer: "flat" },
+  gestures: { levelSwipes: true, seekSwipe: true, holdForSpeed: true, doubleTapSkip: 10 },
   ...changes,
 });
 
