@@ -63,5 +63,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0057](0057-ios-sign-in-and-keychain.md) | Signing in on iOS: email, or Nuvio's page in Safari; the session in Peli's own AfterFirstUnlock Keychain class | 2026-11-13 |
 | [0058](0058-ios-playback-engine.md) | The iOS playback engine: libmpv in a GLES view under the webview, hardware decoding chosen per file, a shared rules package | 2026-11-13 |
 | [0059](0059-ios-suspension-offline-and-sign-in-sheet.md) | Suspension, interruptions and offline on iOS: UIKit lifecycle, a fixed order on the way out, GL parked, AniList sign-in in a sheet | 2026-11-13 |
+| [0060](0060-pre-resolve-top-pick.md) | Pre-resolving the top pick: an opt-in device setting, off by default, that resolves a cached debrid top pick before it's picked | 2026-11-17 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).
