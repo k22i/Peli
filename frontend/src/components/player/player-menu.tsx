@@ -28,6 +28,8 @@ export function PlayerMenu({
   onOpenChange,
   shortcut,
   lit = false,
+  side = "top",
+  align = "end",
   children,
 }: {
   // The trigger's name: "Playback speed", "More".
@@ -39,6 +41,10 @@ export function PlayerMenu({
   shortcut?: string;
   // A dot on the trigger: something in the menu is on.
   lit?: boolean;
+  // Where the menu opens from its trigger: above (the dock), or below (the
+  // touch player's top row, #130).
+  side?: "top" | "bottom";
+  align?: "start" | "end";
   children: ReactNode;
 }) {
   return (
@@ -60,7 +66,7 @@ export function PlayerMenu({
         )}
       </Menu.Trigger>
       <Menu.Portal>
-        <Menu.Positioner side="top" align="end" sideOffset={12} collisionPadding={12}>
+        <Menu.Positioner side={side} align={align} sideOffset={12} collisionPadding={12}>
           <Menu.Popup aria-label={label} className={popupClass}>
             {children}
           </Menu.Popup>

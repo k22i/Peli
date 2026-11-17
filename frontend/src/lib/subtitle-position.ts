@@ -41,10 +41,12 @@ const clearance = { full: 8, mini: 6.5 };
 // The lift, in percent of the height, that has the main subtitles' last line
 // clear of the controls: what the dock needs less the margin mpv leaves
 // anyway, rounded up. It can't pass what a style can hold, so in a tiny
-// window the subtitles end up as high as they go.
-export function liftToClear(height: number, mini: boolean, rem = 16): number {
+// window the subtitles end up as high as they go. `covers` is how many rem
+// the controls take, where they aren't the dock's (the touch player's thin
+// chrome, #130).
+export function liftToClear(height: number, mini: boolean, rem = 16, covers?: number): number {
   if (height <= 0) return 0;
-  const covered = (clearance[mini ? "mini" : "full"] * rem) / height;
+  const covered = ((covers ?? clearance[mini ? "mini" : "full"]) * rem) / height;
   return clamp(Math.ceil((covered - marginShare) * 100), 0, maxLift);
 }
 

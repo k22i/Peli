@@ -27,6 +27,8 @@ export function SeekBar({
   onScrub,
   onSeek,
   onDraggingChange,
+  touch = false,
+  scrubAt,
 }: {
   position: number;
   duration: number;
@@ -40,19 +42,26 @@ export function SeekBar({
   onScrub: (position: number) => void;
   onSeek: (position: number) => void;
   onDraggingChange: (dragging: boolean) => void;
+  // The touch player's sizes (#130): a 3 pt track that grows to 6 pt while
+  // touched, a 12 pt thumb (18 pt dragging) and an invisible 44 pt target.
+  touch?: boolean;
+  // A scrub driven from outside the bar (#131's swipe): the thumb and the
+  // time bubble follow it as they follow a drag.
+  scrubAt?: number | undefined;
 }) {
   const [drag, setDrag] = useState<number>();
   const dragging = useRef<number>(undefined);
   const [hover, setHover] = useState<number>();
   const known = duration > 0;
-  const at = drag ?? Math.min(position, duration);
+  const at = scrubAt ?? drag ?? Math.min(position, duration);
+  const held = scrubAt !== undefined || drag !== undefined;
   const percent = (seconds: number) => (known ? (Math.min(seconds, duration) / duration) * 100 : 0);
   const pointerAt = (event: PointerEvent<HTMLElement>) => {
     const box = event.currentTarget.getBoundingClientRect();
     if (box.width === 0) return 0;
     return Math.min(1, Math.max(0, (event.clientX - box.left) / box.width)) * duration;
   };
-  const label = drag ?? hover;
+  const label = scrubAt ?? drag ?? (touch ? undefined : hover);
   const labelSegment =
     label === undefined
       ? undefined
@@ -96,10 +105,16 @@ export function SeekBar({
       }}
       onValueCommitted={finish}
       className="group/seek w-full"
+      data-held={(touch && held) || undefined}
     >
       <Slider.Control
         data-testid="seek-bar"
-        className="relative flex h-7 cursor-pointer touch-none items-center pt-1.5 select-none data-disabled:cursor-default"
+        className={cn(
+          "relative flex cursor-pointer touch-none items-center select-none data-disabled:cursor-default",
+          touch
+            ? "h-6 before:absolute before:inset-x-0 before:-inset-y-2.5 before:content-['']"
+            : "h-7 pt-1.5",
+        )}
         onPointerMove={(event) => known && setHover(pointerAt(event))}
         onPointerLeave={() => setHover(undefined)}
       >
@@ -107,7 +122,11 @@ export function SeekBar({
           <span
             aria-hidden
             style={{ left: `${percent(label)}%` }}
-            className="pointer-events-none absolute bottom-full mb-5 flex -translate-x-1/2 flex-col items-center gap-0.5 rounded-xl bg-black/80 px-2.5 py-1.5 text-white shadow-float backdrop-blur-md"
+            data-testid="seek-time"
+            className={cn(
+              "pointer-events-none absolute bottom-full flex -translate-x-1/2 flex-col items-center gap-0.5 rounded-xl bg-black/80 px-2.5 py-1.5 text-white shadow-float backdrop-blur-md",
+              touch ? "mb-3" : "mb-5",
+            )}
           >
             {labelSegment && (
               <span className="type-eyebrow text-[0.625rem] text-[#ffc46b]">
@@ -119,7 +138,13 @@ export function SeekBar({
         )}
         {/* The chapters lane: above the track, apart from the progress. */}
         {known && segments.length > 0 && (
-          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1">
+          <div
+            aria-hidden
+            className={cn(
+              "pointer-events-none absolute inset-x-0 h-1",
+              touch ? "top-[calc(50%-0.625rem)]" : "top-0",
+            )}
+          >
             {segments.map((segment) => (
               <div
                 key={`${segment.kind}-${segment.start}`}
@@ -145,10 +170,19 @@ export function SeekBar({
               left: `${percent(loop.a)}%`,
               width: `max(4px, ${percent(loop.b) - percent(loop.a)}%)`,
             }}
-            className="pointer-events-none absolute top-0 h-1 rounded-full bg-sun"
+            className={cn(
+              "pointer-events-none absolute h-1 rounded-full bg-sun",
+              touch ? "top-[calc(50%-0.625rem)]" : "top-0",
+            )}
           />
         )}
-        <Slider.Track className="relative h-1 w-full rounded-full bg-white/18 transition-[height] duration-300 ease-bounce motion-reduce:transition-none group-hover/seek:h-2 group-data-dragging/seek:h-2">
+        <Slider.Track
+          className={
+            touch
+              ? "relative h-[3px] w-full rounded-full bg-white/25 transition-[height] duration-300 ease-bounce motion-reduce:transition-none group-data-dragging/seek:h-1.5 group-data-held/seek:h-1.5"
+              : "relative h-1 w-full rounded-full bg-white/18 transition-[height] duration-300 ease-bounce motion-reduce:transition-none group-hover/seek:h-2 group-data-dragging/seek:h-2"
+          }
+        >
           <div
             data-testid="buffered"
             style={{
@@ -157,11 +191,11 @@ export function SeekBar({
             }}
             className={cn(
               "absolute inset-y-0 rounded-full bg-white/30",
-              smooth(playing && drag === undefined),
+              smooth(playing && !held),
             )}
           />
           <Slider.Indicator
-            className={cn("rounded-full bg-white", smooth(playing && drag === undefined))}
+            className={cn("rounded-full bg-white", smooth(playing && !held))}
           />
           {known &&
             (["a", "b"] as const).map(
@@ -180,8 +214,10 @@ export function SeekBar({
             aria-label="Seek"
             getAriaValueText={(_, value) => `${formatTime(value)} of ${formatTime(duration)}`}
             className={cn(
-              "size-4 rounded-full bg-white opacity-0 shadow-[0_0_0_4px_rgb(255_255_255/0.18),0_2px_8px_rgb(0_0_0/0.5)] outline-none transition-opacity group-hover/seek:opacity-100 group-data-dragging/seek:opacity-100 has-focus-visible:opacity-100 has-focus-visible:ring-2 has-focus-visible:ring-white/60",
-              smooth(playing && drag === undefined),
+              touch
+                ? "size-3 rounded-full bg-white shadow-[0_1px_6px_rgb(0_0_0/0.5)] outline-none transition-[width,height] duration-200 group-data-dragging/seek:size-4.5 group-data-held/seek:size-4.5 has-focus-visible:ring-2 has-focus-visible:ring-white/60"
+                : "size-4 rounded-full bg-white opacity-0 shadow-[0_0_0_4px_rgb(255_255_255/0.18),0_2px_8px_rgb(0_0_0/0.5)] outline-none transition-opacity group-hover/seek:opacity-100 group-data-dragging/seek:opacity-100 has-focus-visible:opacity-100 has-focus-visible:ring-2 has-focus-visible:ring-white/60",
+              smooth(playing && !held),
             )}
           />
         </Slider.Track>
