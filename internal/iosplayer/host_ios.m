@@ -345,6 +345,20 @@ int peli_is_simulator(void) {
 #endif
 }
 
+int peli_is_phone(void) {
+	// UIKit wants the main thread; the idiom never changes, so ask once.
+	static int phone = -1;
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		void (^ask)(void) = ^{
+			phone = UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone ? 1 : 0;
+		};
+		if (NSThread.isMainThread) ask();
+		else dispatch_sync(dispatch_get_main_queue(), ask);
+	});
+	return phone;
+}
+
 int peli_system_captions(void) {
 	if (MACaptionAppearanceGetDisplayType(kMACaptionAppearanceDomainUser) == kMACaptionAppearanceDisplayTypeAlwaysOn)
 		return 1;

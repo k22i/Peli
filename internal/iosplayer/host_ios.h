@@ -39,6 +39,8 @@ int peli_audio_session(void);
 // peli_is_simulator is 1 in the iOS simulator, whose software OpenGL ES
 // can't map VideoToolbox frames.
 int peli_is_simulator(void);
+// peli_is_phone is 1 on an iPhone (the phone idiom), 0 on an iPad.
+int peli_is_phone(void);
 // peli_system_captions is 1 when iOS asks for captions.
 int peli_system_captions(void);
 

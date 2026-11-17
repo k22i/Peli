@@ -121,6 +121,7 @@ Run these on the **Guest profile**, with your debrid addon added there. Nothing 
 | 12 | iPad split view and windows | Split View, Slide Over, a resized window (narrow and wide), with a video playing too | Compact shell below 700 pt; the player follows the size |
 | 13 | On-screen keyboard | Search on both devices; the sign-in fields (don't submit) | Field stays visible, no layout jump after the keyboard closes |
 | 14 | Background refresh | Next day | My Apps shows 7 DAYS for both apps; the automation ran |
+| 15 | iPhone rotation | Rotation Lock off. Turn the phone on Home and Title; play something and turn it both ways; leave the player while sideways; start a play with the phone already sideways | Browsing stays upright; the player turns with the phone (at once when already sideways); leaving it turns the app upright |
 
 To test signing in with your real account, signing in and then out is the only write: the session is created, then removed. A play on that profile writes progress to Nuvio. Undo it as in Phase 6 (episode menu → Mark unwatched; check with a fresh pull and an empty outbox).
 

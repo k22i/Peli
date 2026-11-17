@@ -75,7 +75,8 @@ func main() {
 	// libmpv in a view under the transparent webview (ADR-0055). The video
 	// host finds the view controller through the window's native handle.
 	engine := iosplayer.New(window.NativeWindow, player.SinkOf(p.players), p.db, appinfo.Version)
-	player.UseEngine(p.players, engine)
+	// An iPhone stays upright except in the player (rotation_ios.go).
+	player.UseEngine(p.players, rotatingEngine(engine))
 
 	devStart(app, window, p, engine)
 
