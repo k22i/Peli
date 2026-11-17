@@ -101,6 +101,17 @@ wails3 task ios:device:console DEVICE_ID=$IPAD_ID ENV='{"PELI_HWDEC":"videotoolb
 
 That launches Peli with stdout and stderr attached, so every `slog` line shows; Ctrl-C stops the app. `PELI_HWDEC` (`videotoolbox`, `videotoolbox-copy`, `no`) forces the decoding mode in any build. While a video plays, `iosplayer: stats` logs every 15 s: process CPU in percent of one core, decoding mode, pixel format, `container-fps`, `estimated-vf-fps`, dropped and delayed frames, and cache state. `iosplayer: first frame` names the codec and mode. A crash report is in Settings → Privacy & Security → Analytics Data (`peli-…`), or in Xcode → Devices and Simulators → View Device Logs. Don't use `ios:deploy-device`: it needs a paid identity.
 
+### Crashes and shared logs
+
+Peli keeps its own evidence on the device ([`internal/diagnostics`](../internal/diagnostics), #127):
+
+- **Logs:** every `slog` line (and Wails' own) also goes to a ring of the last 2,000 lines. It is written to `logs/last.txt` in the app's data folder when the app leaves the front, on a recovered panic, after a WebKit kill and every 30 s. At launch the last run's file becomes `logs/previous.txt`.
+- **Go crashes:** `debug.SetCrashOutput` writes a fatal panic's trace to `crash/<launch time>.txt`. The last 5 are kept. A launch after a crash logs `previous run crashed`.
+- **Settings → About → Diagnostics** (iOS only) shows "Last crash" and has **Share logs**: the share sheet with this run's log (with a header: build, iOS version, model, free memory), the last run's log and the newest crash file. AirDrop it to the Mac, or save it to Files.
+- **A WebKit kill** (iOS ends WebKit's content process for memory) is logged as `webview: content process terminated (n=…)`. The page reloads on the route it was on (the player goes back to its title). Twice within 30 s goes to Home with "Peli reloaded to free memory", and three times within 2 minutes shows a plain page with a Reload button.
+- **Memory:** a `memory:` line every 30 s while the app is active (Go heap, `available` = `os_proc_available_memory()`, `footprint` = what iOS kills by), and `why=warning` on a memory warning, which also drops the frontend's unused queries.
+- **The crash tests** live in a `pelidev` build, which needs no Mac and no `cmd.js`: `wails3 task ios:package:ipa IOS_PLATFORM=device IOS_PRODUCTION=false EXTRA_TAGS=pelidev` makes `bin/ios/peli.ipa` (a debug build, so Go's console logs are kept). Install it like any build. Settings → About then lists "Crash tests (dev build)": throw in render, reject a promise, allocate until killed, panic in Go, a recovered panic and a memory warning. In the simulator, `cmd.js` can call the same functions as `window.peliDev.<name>()`.
+
 ### First on-device checklist
 
 Run these on the **Guest profile**, with your debrid addon added there. Nothing then reaches Nuvio, and SIMKL and AniList aren't connected. Resolving a stream adds it to TorBox: note what you play and delete those entries afterwards. Record the device model and iOS version, and the result, in [`docs/ios/device-run.md`](../docs/ios/device-run.md).
@@ -181,6 +192,7 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 | [`build/ios/`](../build/ios) | Wails' iOS build: `Taskfile.yml`, `main.m` with the UIScene delegate ([ADR-0056](../docs/adr/0056-uiscene-on-wails-ios.md)), Info and entitlements plists, icons |
 | [`build/libmpv/build-ios.sh`](../build/libmpv/build-ios.sh) | Builds the dynamic, LGPL `libmpv.xcframework` (device and simulator), cached in `build/libmpv/.work` |
 | [`internal/iosplayer/`](../internal/iosplayer) | The libmpv engine: an OpenGL ES view under the webview, decoding-mode choice, suspend and resume, audio session |
+| [`internal/iosshell/`](../internal/iosshell) | Peli's additions to Wails' shell: reloading after a WebKit kill, memory readings, the share sheet ([`internal/diagnostics`](../internal/diagnostics) decides what they do) |
 | [`internal/iosauth/`](../internal/iosauth) | The in-app sign-in sheet (`ASWebAuthenticationSession`) for AniList |
 | `*_ios.go` (`main_desktop.go` and `!ios` files for the desktop) | Platform seams: Keychain (`internal/secrets`), storage path (`internal/store`), open URL (`internal/appinfo`), the player service (`internal/player`), the image proxy |
 | [`frontend/src/lib/platform.ts`](../frontend/src/lib/platform.ts), [`features.ts`](../frontend/src/lib/features.ts) | `isIOS()` and the list of features hidden on iOS |
