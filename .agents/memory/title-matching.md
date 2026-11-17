@@ -15,5 +15,6 @@ metadata:
 - Re-record/re-label: `node src/record.ts matching [slug,slug]` in `spikes/stream-ranking` (public Torrentio, no key; a slug list adds titles without re-recording, since label ids are stream indexes), labels in `labels/title-matching.jsonl`, `frontend/scripts/extract-title-matching-corpus.ts` appends them (re-runnable). `extract-ranking-corpus.ts` rewrites the whole file: run the other after it.
 - Measuring without vitest: a scratchpad Bun script calls `labelled`, `fakeRates`, `titleCheckRates`, `report` from `accuracy.ts` and writes `corpus/accuracy.md` (the "Title check" table has the suspicious/hidden estimates). Import `accuracy.ts` by absolute path from the scratchpad.
 - Turning it on is in ADR-0049 ("what to do once a TMDB key is available"): aliases from TMDB, ≤ 2% of genuine localized rows moved, count it only when TMDB's aliases are in the context.
+- When it starts counting, also make `useStreamChoices().answered` wait for the aliases, so #101's pre-resolve doesn't fire before a late re-rank ([[pre-resolve]]).
 - Open finding: `wrong year` hides genuine streams when Cinemeta's year is the local release year (Spirited Away 2003, City of God 2004; 21 of 258 genuine rows in the split). TMDB's `release_date` may fix it; not changed (a #51 check).
 - Related: [[stream-ranking]], [[tmdb-key]], [[anime-from-anilist]].
