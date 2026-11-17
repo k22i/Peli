@@ -15,6 +15,7 @@ import (
 	"log/slog"
 	"net/http"
 	"net/url"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -37,7 +38,19 @@ const (
 	catalogTTL = 30 * time.Minute
 	metaTTL    = 6 * time.Hour
 	cacheCap   = 1000
+	// A list answered before the anime list was there (#128).
+	unmappedTTL = time.Minute
 )
+
+// waitForList is whether a catalog waits for the anime list's first
+// download to map AniList ids to Kitsu's: on the desktop, not on a phone,
+// where the first visit to the Anime tab may be on mobile data (#128).
+var waitForList = runtime.GOOS != "ios"
+
+// burst is how many AniList requests go at once before the limiter spaces
+// them: a Home page's rows on the desktop. A phone asks fewer at a time
+// (#128), so a burst of tab switches doesn't use up AniList's minute.
+var burst = map[bool]int{false: 10, true: 4}[runtime.GOOS == "ios"]
 
 // Addon answers the addon's requests.
 type Addon struct {
@@ -66,8 +79,8 @@ func New(client *anilist.Client, list *animelist.List, kitsu, version string) *A
 	return &Addon{
 		anilist: client, list: list, kitsu: strings.TrimRight(kitsu, "/"),
 		http: &http.Client{Timeout: 20 * time.Second}, version: version, now: time.Now,
-		// About 85 a minute at most, in bursts of 10 (a Home page's rows).
-		limit: rate.NewLimiter(rate.Every(700*time.Millisecond), 10),
+		// About 85 a minute at most, in bursts (burst).
+		limit: rate.NewLimiter(rate.Every(700*time.Millisecond), burst),
 		cache: map[string]cached{},
 	}
 }
@@ -96,7 +109,12 @@ func (a *Addon) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if len(parts) == 4 {
 			extra, _ = url.ParseQuery(parts[3])
 		}
-		a.serveCached(w, r.Context(), r.URL.EscapedPath(), catalogTTL, func(ctx context.Context) (any, error) {
+		ttl := catalogTTL
+		if a.list != nil && !waitForList && !a.list.Peek() {
+			// Ids made without the anime list: ask again soon, for Kitsu's.
+			ttl = unmappedTTL
+		}
+		a.serveCached(w, r.Context(), r.URL.EscapedPath(), ttl, func(ctx context.Context) (any, error) {
 			return a.catalog(ctx, parts[1], parts[2], extra)
 		})
 	case parts[0] == "meta" && len(parts) == 3:

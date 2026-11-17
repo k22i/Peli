@@ -2,7 +2,6 @@ import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import { Service as AnimeList } from "@bindings/animelist";
 import type { Addon, HomeLayout, Profile } from "@bindings/store";
 import { catalogQuery, manifestQuery } from "@/lib/addon-protocol";
 import { parseCatalogResponse, parseManifest } from "@/lib/addon-protocol/parse";
@@ -10,6 +9,7 @@ import cinemetaMovies from "@/lib/addon-protocol/fixtures/cinemeta/catalog-movie
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import kitsuTrending from "@/lib/addon-protocol/fixtures/kitsu/catalog-anime-trending.json";
 import kitsuManifest from "@/lib/addon-protocol/fixtures/kitsu/manifest.json";
+import { animeIds } from "@/test/anime";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -278,10 +278,7 @@ describe("browse pages", () => {
   });
 
   it("leaves anime to the Anime tab, reading on past a page of only anime", async () => {
-    vi.mocked(AnimeList.IMDbIDs).mockResolvedValue({
-      imdb: ["tt1", "tt2", "tt3", "tt4", "tt6"],
-      ready: true,
-    });
+    for (const id of ["tt1", "tt2", "tt3", "tt4", "tt6"]) animeIds.add(id);
     const asked = serve({
       [`${base}/catalog/series/top.json`]: { metas: films(1, 4), hasMore: true },
       [`${base}/catalog/series/top/skip=4.json`]: { metas: films(5, 3), hasMore: false },

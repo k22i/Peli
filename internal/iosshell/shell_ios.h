@@ -21,6 +21,10 @@ void peli_shell_memory(uint64_t *available, uint64_t *footprint);
 // peli_shell_device writes "iOS 27.2 (iPhone15,2)" into buf.
 void peli_shell_device(char *buf, int n);
 
+// peli_shell_cellular is 1 when the default route is the cellular network
+// (SCNetworkReachability's IsWWAN flag), 0 on Wi-Fi, wired or no network.
+int peli_shell_cellular(void);
+
 // Exported from shell_ios.go.
 // peliWebContentTerminated returns the address to load next (malloc'd, the
 // caller frees it) and sets *action: 0 reload, 1 home, 2 the error page

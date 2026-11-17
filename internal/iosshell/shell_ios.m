@@ -3,6 +3,8 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import <objc/runtime.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#include <netinet/in.h>
 #include <mach/mach.h>
 #include <os/proc.h>
 #include <stdlib.h>
@@ -145,4 +147,19 @@ void peli_shell_device(char *buf, int n) {
     uname(&u);
     NSOperatingSystemVersion v = NSProcessInfo.processInfo.operatingSystemVersion;
     snprintf(buf, n, "iOS %ld.%ld.%ld (%s)", (long)v.majorVersion, (long)v.minorVersion, (long)v.patchVersion, u.machine);
+}
+
+int peli_shell_cellular(void) {
+    struct sockaddr_in zero;
+    memset(&zero, 0, sizeof(zero));
+    zero.sin_len = sizeof(zero);
+    zero.sin_family = AF_INET;
+    SCNetworkReachabilityRef reach =
+        SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)&zero);
+    if (reach == NULL) return 0;
+    SCNetworkReachabilityFlags flags = 0;
+    Boolean ok = SCNetworkReachabilityGetFlags(reach, &flags);
+    CFRelease(reach);
+    if (!ok || !(flags & kSCNetworkReachabilityFlagsReachable)) return 0;
+    return (flags & kSCNetworkReachabilityFlagsIsWWAN) ? 1 : 0;
 }

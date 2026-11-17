@@ -207,3 +207,8 @@ func recoverWebview(diag *diagnostics.Service) {
 		MemoryWarning:    func() { diagnostics.MemoryWarning(diag) },
 	})
 }
+
+// animeListDownloads is when the anime list (5.9 MB) may download in the
+// background: not on mobile data (#128). Opening a title that needs it
+// still downloads it.
+var animeListDownloads = func() bool { return !iosshell.Cellular() }

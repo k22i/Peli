@@ -2,15 +2,22 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, vi } from "vite-plus/test";
 
+import { resetAnimeAnswers } from "@/lib/anime";
+
+import { animeIds } from "./anime";
 import { ios } from "./ios";
 
-// Which IMDb ids are anime (#109): none, unless a test says otherwise with
-// vi.mocked(AnimeList.IMDbIDs).
+// Which IMDb ids are anime (#109, asked a page at a time since #128): none,
+// unless a test adds them to animeIds (test/anime.ts). No
+// anime entry stands for one IMDb title (PosterTitles).
 vi.mock("@bindings/animelist", () => ({
   Service: {
-    IMDbIDs: vi.fn<() => Promise<{ imdb: string[]; ready: boolean }>>(() =>
-      Promise.resolve({ imdb: [], ready: true }),
+    LeaveOut: vi.fn<(ids: string[]) => Promise<{ anime: boolean[]; ready: boolean }>>((ids) =>
+      Promise.resolve({ anime: ids.map((id) => animeIds.has(id)), ready: true }),
     ),
+    PosterTitles: vi.fn<
+      (ids: string[]) => Promise<{ titles: { imdb: string; type: string }[]; ready: boolean }>
+    >((ids) => Promise.resolve({ titles: ids.map(() => ({ imdb: "", type: "" })), ready: true })),
   },
 }));
 
@@ -121,6 +128,9 @@ afterEach(() => {
   cleanup();
   ios.on = false;
   window.localStorage.clear();
+  // The anime answers are kept for the session (lib/anime.ts).
+  resetAnimeAnswers();
+  animeIds.clear();
 });
 
 // jsdom has no matchMedia: report no preference (light, motion allowed).
