@@ -8,7 +8,8 @@
 //	go run ./tools/ttff -id movie/tt0111161 -hash c3da9a3d… -mbps 50 -runs 5
 //
 // It asks Torrentio with TorBox for the title's streams and plays the one
-// whose resolve URL holds -hash. Pick a torrent already in the TorBox
+// whose resolve URL holds -hash. -app plays in the app's own player instead,
+// and compares resolving at the pick with resolving ahead (#101, app.go). Pick a torrent already in the TorBox
 // account: resolving one that isn't adds it there. Nothing it prints holds
 // the key or a link's token; links are shown by host only.
 package main
@@ -36,12 +37,19 @@ import (
 	"github.com/k22i/Peli/internal/streams"
 )
 
+// stdout is where -app prints, the key replaced.
+var stdout io.Writer = os.Stdout
+
 func main() {
 	id := flag.String("id", "movie/tt0111161", "type/id to ask Torrentio for")
 	hashes := flag.String("hash", "", "comma-separated infohashes of the streams to resolve")
 	mbps := flag.Float64("mbps", 50, "download cap in Mbit/s; 0 for none")
 	runs := flag.Int("runs", 5, "plays per stream that resolves")
 	mpvPath := flag.String("mpv", "mpv", "mpv binary")
+	inApp := flag.Bool("app", false, "measure in the app's own player, one cold sample per -ids entry (#101)")
+	ids := flag.String("ids", "", "-app: comma-separated type/ids, one sample each")
+	mode := flag.String("mode", "alternate", "-app: plain (resolve at the pick), ahead (resolved before it) or alternate")
+	look := flag.Duration("look", 3*time.Second, "-app ahead: time between the resolve and the pick")
 	flag.Parse()
 	key := os.Getenv("TORBOX_API_KEY")
 	if key == "" || *hashes == "" {
@@ -50,6 +58,14 @@ func main() {
 	redact := strings.NewReplacer(key, "<key>")
 	log.SetFlags(0)
 	log.SetOutput(redactWriter{os.Stderr, redact})
+	if *inApp {
+		if *ids == "" || !slices.Contains([]string{"plain", "ahead", "alternate"}, *mode) {
+			log.Fatal("-app needs -ids and -mode plain, ahead or alternate")
+		}
+		stdout = redactWriter{os.Stdout, redact}
+		runApp(appRun{key: key, ids: *ids, hashes: *hashes, mode: *mode, look: *look, mbps: *mbps})
+		return
+	}
 
 	list, err := torrentio(key, *id)
 	if err != nil {
