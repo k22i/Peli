@@ -48,6 +48,14 @@ vi.mock("@bindings/diagnostics", () => ({
   },
 }));
 
+// The Home Screen icon menu (#141): nothing set, nothing waiting.
+vi.mock("@bindings/quickactions", () => ({
+  Service: {
+    SetItems: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    TakePending: vi.fn<() => Promise<unknown>>(() => Promise.resolve(null)),
+  },
+}));
+
 // The iOS app (ADR-0055): off, unless a test turns it on with `onIOS()` from
 // ./ios (reset after each test). feature() and the shell ask these.
 vi.mock("@/lib/platform", async (importOriginal) => {

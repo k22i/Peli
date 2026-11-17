@@ -140,6 +140,15 @@ func TestIOSShellFiles(t *testing.T) {
 	}
 }
 
+// internal/quickactions is the Home Screen icon menu (#141): one cgo file and
+// its Objective-C, for UIApplication.shortcutItems.
+func TestIOSQuickActionsFiles(t *testing.T) {
+	out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/internal/quickactions", "ios"))
+	if want := "[quickactions.go]|[quickactions_ios.go]|[]|[quickactions_ios.m]|[quickactions_ios.h]"; out != want {
+		t.Errorf("internal/quickactions files changed: %s, want %s; update the boundary test on purpose", out, want)
+	}
+}
+
 // listPackage lists one package's source files for env.
 func listPackage(t *testing.T, env []string, pkg string, tags ...string) string {
 	t.Helper()

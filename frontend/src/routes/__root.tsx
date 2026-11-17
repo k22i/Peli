@@ -19,7 +19,9 @@ import {
   useUnlockedProfiles,
 } from "@/lib/account";
 import { usePartyEvents, usePartyToasts } from "@/lib/party";
+import { isIOS } from "@/lib/platform";
 import { accountQuery, useCurrentProfile } from "@/lib/profile";
+import { QuickActionSync, useQuickActionHandler } from "@/lib/quick-actions";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
 import { useUpdateEvents, useUpdateReadyToast } from "@/lib/updates";
@@ -73,6 +75,15 @@ function RootLayout() {
       }),
   );
   const location = useLocation();
+  // Home Screen icon-menu taps (#141): carried out once a profile is in use
+  // and unlocked, so the picker and the PIN screen come first.
+  const current = useCurrentProfile();
+  const unlocked = useUnlockedProfiles();
+  useQuickActionHandler(
+    !beforeProfile.has(location.pathname) &&
+      current.id !== undefined &&
+      (!current.pinEnabled || unlocked.includes(current.id)),
+  );
   // Not over a film: it waits until the player closes (#83).
   useUpdateReadyToast(location.pathname === "/player");
   // The launch gate only applies once a profile is in use, so it skips the
@@ -98,6 +109,7 @@ function ProfileGate() {
   if (current.pinEnabled && current.id !== undefined && !unlocked.includes(current.id)) {
     return (
       <AppShell>
+        {isIOS() && <QuickActionSync profileId={current.id} locked />}
         <PinGate profile={current} />
       </AppShell>
     );
@@ -105,6 +117,9 @@ function ProfileGate() {
 
   return (
     <AppShell>
+      {isIOS() && current.id !== undefined && (
+        <QuickActionSync profileId={current.id} locked={current.pinEnabled} />
+      )}
       <Outlet />
     </AppShell>
   );

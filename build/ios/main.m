@@ -8,6 +8,10 @@
 // content process. Must run before the webview gets its delegate.
 extern void peliCrashRecovery(void);
 
+// internal/quickactions (#141): a tap on an icon-menu item goes to Go, which
+// keeps it until the page is ready for it.
+extern BOOL peliHandleShortcutItem(UIApplicationShortcutItem *item);
+
 // Wails lays its webview out INSIDE the safe area (WailsViewController's
 // viewDidLayoutSubviews), so the bands under the status bar, the Dynamic
 // Island and the home indicator show the window colour: the player's scrim
@@ -68,6 +72,17 @@ static void peliFullScreenWebview(void) {
     [(id)self.app setValue:window forKey:@"window"];
     self.window = window;
     [window makeKeyAndVisible];
+    // The app was launched from an icon-menu item. (A scene-based app is
+    // not told through the app delegate, and not again through
+    // performAction below.)
+    peliHandleShortcutItem(options.shortcutItem);
+}
+
+// A tap on an icon-menu item while the app is running or suspended.
+- (void)windowScene:(UIWindowScene *)windowScene
+    performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
+               completionHandler:(void (^)(BOOL))completionHandler {
+    completionHandler(peliHandleShortcutItem(shortcutItem));
 }
 
 - (void)sceneDidBecomeActive:(UIScene *)scene {

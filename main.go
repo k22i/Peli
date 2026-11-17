@@ -23,6 +23,7 @@ import (
 	"github.com/k22i/Peli/internal/nuvio"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/quickactions"
 	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/shell"
@@ -148,6 +149,8 @@ func (p *peli) services(x extras) []application.Service {
 	list = append(list, application.NewService(&shell.Service{}))
 	// Taptic feedback on iOS (#131, #135); a no-op on the desktop.
 	list = append(list, application.NewService(&haptics.Service{}))
+	// The Home Screen icon menu (#141); a no-op on the desktop.
+	list = append(list, application.NewService(&quickactions.Service{}))
 	if p.diag != nil {
 		list = append(list, application.NewService(p.diag))
 	}

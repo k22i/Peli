@@ -96,3 +96,4 @@
 - [Library on iPhone](library-iphone.md) — #132 CompactLibraryFrame + --library-header-h, Sort sheet, PosterGrid dense (--poster-dense-columns), Card dense/corner, compact Upcoming, toasts above --tabs-float
 - [Player gestures](player-gestures.md) — #131 lib/player-gestures.ts reducer, native brightness/volume/immersive, Haptics.Impact (#135 extends), Gestures settings, fill per title, Lock
 - [Title and picker on iPhone](title-picker-iphone.md) — #136 Back in TopBar, Overview + More, TitleMoreMenu, season •••, compact picker header and two-line rows
+- [Quick actions](quick-actions.md) — #141 icon menu: static Search/Library, dynamic Continue watching via internal/quickactions, scene-delegate hooks, ready gate for picker/PIN, widget skipped by the user 2026-11-17
