@@ -27,6 +27,7 @@ import {
   sourceLabel,
   tierLabel,
 } from "@/lib/stream-labels";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // The ranked streams (#52): the top pick, then a group per quality, each
@@ -67,10 +68,15 @@ const focusable = (row: ListRow) => row.kind !== "group" || row.open !== null;
 
 // Heights before a row is measured.
 const rowPx = { top: 176, group: 56, stream: 68 } as const;
+// The phone's rows (#136): a 64 pt stream row, a 13 pt heading, a tighter card.
+const phoneRowPx = { top: 232, group: 40, stream: 64 } as const;
 
 // Where a stuck group heading sits below the title bar.
 const stickGap = 8;
 const stuckHeight = 48;
+// On the phone the heading's band sits flush under the bar.
+const phoneStickGap = 0;
+const phoneStuckHeight = 36;
 
 export function StreamList({
   rows,
@@ -93,6 +99,10 @@ export function StreamList({
   onToggleGroup: (tier: Tier) => void;
 }) {
   const list = useRef<HTMLOListElement>(null);
+  const compact = useCompactShell();
+  const heights = compact ? phoneRowPx : rowPx;
+  const gap = compact ? phoneStickGap : stickGap;
+  const band = compact ? phoneStuckHeight : stuckHeight;
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
   const [top, setTop] = useState(0);
   // By key, since rows move as answers arrive.
@@ -121,11 +131,11 @@ export function StreamList({
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => scroller,
-    estimateSize: (index) => rowPx[rows[index]!.kind],
+    estimateSize: (index) => heights[rows[index]!.kind],
     // Nothing laid out (jsdom, a hidden page): keep the estimate.
     measureElement: (element) =>
       element.getBoundingClientRect().height ||
-      rowPx[rows[Number(element.getAttribute("data-index"))]?.kind ?? "stream"],
+      heights[rows[Number(element.getAttribute("data-index"))]?.kind ?? "stream"],
     getItemKey: (index) => rowKey(rows[index]!),
     scrollMargin: top,
     overscan: 6,
@@ -136,7 +146,7 @@ export function StreamList({
   // The group whose heading has scrolled up under the title bar stays there,
   // on material-pop. The list is virtualized, so a heading can't be `sticky` in its
   // own row: this copy is drawn over it instead.
-  const [stickAt, setStickAt] = useState(stickGap);
+  const [stickAt, setStickAt] = useState(gap);
   useLayoutEffect(() => {
     const element = list.current;
     if (!element) return;
@@ -147,11 +157,11 @@ export function StreamList({
     element.append(probe);
     const bar = probe.getBoundingClientRect().height;
     probe.remove();
-    setStickAt((Number.isFinite(bar) ? bar : 0) + stickGap);
-  }, []);
+    setStickAt((Number.isFinite(bar) ? bar : 0) + gap);
+  }, [gap]);
   const scrolled = virtualizer.scrollOffset ?? 0;
   // The next heading takes over as it reaches the stuck one.
-  const line = scrolled + stickAt + stuckHeight;
+  const line = scrolled + stickAt + band;
   let stuck: Extract<ListRow, { kind: "group" }> | undefined;
   for (let index = 0; index < (scrolled > 0 ? rows.length : 0); index += 1) {
     const row = rows[index]!;
@@ -220,8 +230,15 @@ export function StreamList({
         // For the pointer only: the real heading, in the list, is the one
         // the keyboard and screen readers use.
         <div aria-hidden className="pointer-events-none sticky top-(--spacing-bar) z-10 h-0">
-          <div className="material-bar absolute inset-x-0 top-2 px-page">
-            <GroupHeading row={stuck} stuck onToggle={() => onToggleGroup(stuck.tier)} />
+          <div
+            className={cn("material-bar absolute inset-x-0 px-page", compact ? "top-0" : "top-2")}
+          >
+            <GroupHeading
+              row={stuck}
+              stuck
+              compact={compact}
+              onToggle={() => onToggleGroup(stuck.tier)}
+            />
           </div>
         </div>
       )}
@@ -255,11 +272,13 @@ export function StreamList({
               {row.kind === "group" ? (
                 <GroupHeading
                   row={row}
+                  compact={compact}
                   rowProps={rowProps}
                   onToggle={() => onToggleGroup(row.tier)}
                 />
               ) : (
                 <StreamRow
+                  compact={compact}
                   candidate={row.candidate}
                   best={row.kind === "top"}
                   usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
@@ -300,11 +319,14 @@ function GroupHeading({
   row,
   rowProps,
   stuck = false,
+  compact = false,
   onToggle,
 }: {
   row: Extract<ListRow, { kind: "group" }>;
   rowProps?: RowProps;
   stuck?: boolean;
+  // The phone (#136): 13 pt uppercase, in the glass band.
+  compact?: boolean;
   onToggle: () => void;
 }) {
   const label = (
@@ -338,13 +360,16 @@ function GroupHeading({
         </span>
       </button>
     );
-  const type = "text-[0.9375rem] font-[650] tracking-[-0.01em]";
+  const type = compact
+    ? "text-[0.8125rem] font-[650] tracking-[0.04em] uppercase"
+    : "text-[0.9375rem] font-[650] tracking-[-0.01em]";
+  if (stuck && compact) return <div className={`pointer-events-auto py-1.5 ${type}`}>{inner}</div>;
   if (stuck) {
     return (
       <div className={`material-pop pointer-events-auto rounded-full p-0.5 ${type}`}>{inner}</div>
     );
   }
-  return <h2 className={`pt-6 pb-1 ${type}`}>{inner}</h2>;
+  return <h2 className={`${compact ? "pt-4 pb-1" : "pt-6 pb-1"} ${type}`}>{inner}</h2>;
 }
 
 // "1080p Blu-ray": what the picture is. The parts are separate spans, spaced
@@ -358,6 +383,7 @@ function streamName(candidate: Candidate) {
 }
 
 function StreamRow({
+  compact,
   candidate,
   best,
   usual,
@@ -368,6 +394,8 @@ function StreamRow({
   onPick,
   onToggleName,
 }: {
+  // The phone's two-line rows and tighter top pick (#136).
+  compact: boolean;
   candidate: Candidate;
   best: boolean;
   usual: boolean;
@@ -392,13 +420,113 @@ function StreamRow({
       onFocus={rowProps.onFocus}
       onKeyDown={rowProps.onKeyDown}
       className={cn(
-        "flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring",
+        "flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full pointer-coarse:size-11 text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring",
         named && "bg-accent text-foreground",
       )}
     >
       <FileText className="size-4" />
     </button>
   );
+
+  if (best && compact) {
+    return (
+      <div className="py-1 pb-3">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl bg-card p-4 shadow-float hairline before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(80%_140%_at_100%_50%,color-mix(in_srgb,var(--sun)_16%,transparent),transparent_70%)]">
+          <div className="flex items-start gap-1">
+            <button
+              type="button"
+              {...rowProps}
+              onClick={onPick}
+              aria-describedby={named ? nameId : undefined}
+              className="-m-1 flex min-w-0 flex-1 cursor-pointer flex-col items-start gap-2 rounded-2xl p-1 text-start outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="flex items-center gap-2 text-small font-semibold text-sun-ink">
+                <span className="type-eyebrow">Top pick</span>
+                {usual && (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span className="flex items-center gap-1">
+                      <History aria-hidden className="size-3.5" />
+                      Same source as last time
+                    </span>
+                  </>
+                )}
+                {current && <span aria-hidden>·</span>}
+                {current && <Playing />}
+              </span>
+              <span className="flex flex-wrap items-baseline gap-x-2 font-display text-[1.75rem] leading-none">
+                <span>{quality}</span>
+                {source && <span>{source}</span>}
+              </span>
+              <Badges candidate={candidate} line />
+              <Details candidate={candidate} addon={addon} />
+            </button>
+            {fileName}
+          </div>
+          <button
+            type="button"
+            tabIndex={-1}
+            onClick={onPick}
+            className="flex h-12 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full bg-sun text-[0.9375rem] font-[620] text-sun-foreground shadow-[0_8px_24px_-10px_var(--sun)] outline-none transition-[scale,filter] duration-(--duration-fast) focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.98]"
+          >
+            <Play aria-hidden className="size-4 fill-current" />
+            Play
+          </button>
+        </div>
+        {named && <RawNames id={nameId} candidate={candidate} />}
+      </div>
+    );
+  }
+
+  if (compact) {
+    const why = candidate.verdict.bucket === "ok" ? null : reasonsLabel(candidate);
+    const size = sizeLabel(candidate.parsed.sizeBytes);
+    return (
+      <div className="py-0.5">
+        <div className="flex items-center gap-1 rounded-xl pe-1 transition-colors active:bg-foreground/5">
+          <button
+            type="button"
+            {...rowProps}
+            onClick={onPick}
+            aria-describedby={named ? nameId : undefined}
+            className="flex min-h-16 min-w-0 flex-1 cursor-pointer flex-col justify-center gap-1 rounded-2xl ps-3 pe-1 py-2 text-start outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <span className="flex min-w-0 items-baseline gap-2">
+              {current && <Playing />}
+              <span className="min-w-0 truncate font-[550]">
+                {quality}
+                {source && <span className="ms-2">{source}</span>}
+              </span>
+              {size && (
+                <span className="tnum ms-auto shrink-0 text-small text-muted-foreground">
+                  {size}
+                </span>
+              )}
+            </span>
+            <span className="flex min-w-0 items-center gap-2">
+              <Badges candidate={candidate} line />
+              {why && (
+                <>
+                  <TriangleAlert
+                    aria-hidden
+                    className="size-3.5 shrink-0 text-warning-foreground"
+                  />
+                  <span className="sr-only">{why}</span>
+                </>
+              )}
+              {addon && (
+                <span className="ms-auto max-w-[40%] shrink-0 truncate text-small text-muted-foreground">
+                  {addon}
+                </span>
+              )}
+            </span>
+          </button>
+          {fileName}
+        </div>
+        {named && <RawNames id={nameId} candidate={candidate} />}
+      </div>
+    );
+  }
 
   if (best) {
     return (
@@ -489,13 +617,19 @@ function Playing() {
 
 // HDR / Dolby Vision, audio and how it plays: neutral, but "Cached", the one
 // that plays at once, keeps the brand and its bolt.
-function Badges({ candidate }: { candidate: Candidate }) {
+function Badges({ candidate, line = false }: { candidate: Candidate; line?: boolean }) {
   const { parsed } = candidate;
   const audio = audioLabel(parsed);
   const how = delivery(parsed);
   if (parsed.hdr.length === 0 && !audio && !parsed.atmos && !how) return null;
   return (
-    <span className="flex flex-wrap items-center gap-1.5">
+    <span
+      className={cn(
+        "flex items-center gap-1.5",
+        // The phone: one line that scrolls sideways, never wrapping (#136).
+        line ? "no-scrollbar min-w-0 flex-nowrap overflow-x-auto whitespace-nowrap" : "flex-wrap",
+      )}
+    >
       {parsed.hdr.map((hdr) => (
         <StreamBadge key={hdr}>{hdr === "DV" ? "Dolby Vision" : hdr}</StreamBadge>
       ))}

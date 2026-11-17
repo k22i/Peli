@@ -11,6 +11,7 @@ import { BackButton } from "@/components/title/back-button";
 import { CastList } from "@/components/title/cast-list";
 import { Episodes } from "@/components/title/episodes";
 import { RoundAction } from "@/components/title/round-action";
+import { TitleMoreMenu } from "@/components/title/title-more";
 import { TrackingActions } from "@/components/title/tracking-actions";
 import { RelatedRows } from "@/components/title/related-rows";
 import { Button } from "@/components/ui/button";
@@ -38,6 +39,7 @@ import {
   type TitlePreview,
 } from "@/lib/title";
 import { useTitleEdits } from "@/lib/title-actions";
+import { useCompactShell } from "@/lib/shell-mode";
 import { tmdbRef, useTmdbArt, type TmdbArt } from "@/lib/tmdb";
 
 // A title's page (#45, redesigned in #117): its art under the material-pop chrome,
@@ -154,6 +156,8 @@ function LoadedTitle({
   heroRef: (hero: HTMLElement | null) => void;
 }) {
   const play = usePlay();
+  // The phone's one action row (#136): Play, Library, Watched, then "•••".
+  const compact = useCompactShell();
   const marks = useQuery(titleWatchedQuery(profile.id, meta.id)).data ?? [];
   const progress = useQuery(titleProgressQuery(profile.id, meta.id)).data ?? [];
   const library = useQuery(libraryQuery(profile.id)).data;
@@ -189,7 +193,7 @@ function LoadedTitle({
         className="-mb-8"
         title={meta.name}
         logo={art?.logo ?? meta.logo}
-        meta={[<TitleMeta key="meta" meta={meta} art={art} />]}
+        meta={[<TitleMeta key="meta" meta={meta} art={art} compact={compact} />]}
         metaRaw
         synopsis={meta.description}
         {...backdrops(meta, art)}
@@ -199,7 +203,7 @@ function LoadedTitle({
               <Button
                 size="xl"
                 variant="light"
-                className="min-w-40"
+                className="min-w-40 ios-compact:min-w-0 ios-compact:flex-1"
                 onClick={() => play(choice.target)}
               >
                 {choice.resume ? <RotateCcw /> : <Play className="fill-current" />}
@@ -222,10 +226,20 @@ function LoadedTitle({
             >
               {watched ? <EyeOff /> : <Eye />}
             </RoundAction>
-            <TrackingActions profile={profile} meta={meta} />
+            {compact && (
+              <TitleMoreMenu
+                profile={profile}
+                meta={meta}
+                trailer={art?.trailer}
+                watched={watched}
+                markDisabled={setWatched.isPending || (series && mainEpisodes(list).length === 0)}
+                onToggleWatched={toggleWatched}
+              />
+            )}
+            {!compact && <TrackingActions profile={profile} meta={meta} />}
             {/* YouTube opens in the system browser; the player isn't involved.
                 A kids profile doesn't leave the app. */}
-            {art?.trailer && !profile.kids && (
+            {!compact && art?.trailer && !profile.kids && (
               <RoundAction
                 label="Trailer"
                 disabled={false}
@@ -275,7 +289,24 @@ function backdrops(
 }
 
 // "2008–2013 · 49 min · Crime, Drama, Thriller · TV-MA · IMDb 8.4 · TMDB 8.9".
-function TitleMeta({ meta, art }: { meta: Meta; art: TmdbArt | undefined }) {
+function TitleMeta({
+  meta,
+  art,
+  compact = false,
+}: {
+  meta: Meta;
+  art: TmdbArt | undefined;
+  compact?: boolean;
+}) {
+  // The phone has one line: year · genres · IMDb (#136).
+  if (compact) {
+    const phone = [meta.releaseInfo, (meta.genres ?? []).slice(0, 2).join(", ")]
+      .filter(Boolean)
+      .map((text) => <span key={text}>{text}</span>);
+    if (meta.imdbRating) phone.push(<ImdbScore key="imdb" rating={meta.imdbRating} />);
+    else if (art?.score) phone.push(<TmdbScore key="tmdb" rating={art.score} />);
+    return <MetaLine items={phone} className="flex-nowrap overflow-hidden text-[0.8125rem]" />;
+  }
   const items = [meta.releaseInfo, meta.runtime, (meta.genres ?? []).slice(0, 3).join(", ")]
     .filter(Boolean)
     .map((text) => <span key={text}>{text}</span>);

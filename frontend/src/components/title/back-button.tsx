@@ -3,6 +3,7 @@ import { ChevronLeft } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // The title page's Back button: a round button that floats under the top
@@ -15,6 +16,8 @@ export function BackButton({ hero }: { hero: Element | null }) {
   const canGoBack = useCanGoBack();
   const button = useRef<HTMLButtonElement | null>(null);
   const [past, setPast] = useState(false);
+  // On the phone the top bar holds Back, opposite the avatar (#136).
+  const compact = useCompactShell();
 
   // The hero is "past" once it no longer reaches the button's bottom edge:
   // the view starts there (the root margin cuts everything above it).
@@ -34,6 +37,7 @@ export function BackButton({ hero }: { hero: Element | null }) {
   }, [hero]);
 
   const overHero = hero !== null && !past;
+  if (compact) return null;
   return (
     <Button
       ref={button}

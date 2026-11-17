@@ -1,6 +1,6 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useCanGoBack, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import { Window } from "@wailsio/runtime";
-import { Search } from "lucide-react";
+import { ChevronLeft, Search } from "lucide-react";
 import type { KeyboardEvent, MouseEvent } from "react";
 
 import { useBarOverArt } from "@/components/shell/bar-tone";
@@ -10,6 +10,7 @@ import { ProfileMenu } from "@/components/shell/profile-menu";
 import { UpdateStatus } from "@/components/shell/update-status";
 import { WindowControls } from "@/components/shell/window-controls";
 import { Wordmark } from "@/components/shell/wordmark";
+import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import type { Platform } from "@/lib/platform";
 import { cn } from "@/lib/utils";
@@ -40,6 +41,32 @@ function moveFocus(event: KeyboardEvent<HTMLAnchorElement>) {
   const index = links.indexOf(event.currentTarget);
   event.preventDefault();
   links[move(index, links.length)]?.focus();
+}
+
+// Detail pages that take Back in the compact bar (#136).
+const detailPage = /^\/(title|streams)\//;
+
+// The phone's Back: the bar's left end on a title page or the stream picker,
+// a 44 pt glass circle opposite the avatar. Over art it is media glass.
+function BackLink({ overArt }: { overArt: boolean }) {
+  const router = useRouter();
+  const navigate = useNavigate();
+  const canGoBack = useCanGoBack();
+  return (
+    <Button
+      variant={overArt ? "media" : "ghost"}
+      size="icon-lg"
+      aria-label="Back"
+      data-over-art={overArt || undefined}
+      onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
+      className={cn(
+        "size-11 shrink-0 sm:size-11",
+        !overArt && "material-pop text-popover-foreground hover:bg-popover",
+      )}
+    >
+      <ChevronLeft className="size-5" strokeWidth={2.25} />
+    </Button>
+  );
 }
 
 // Room for the macOS traffic lights before the wordmark.
@@ -171,6 +198,7 @@ export function TopBar({
           leadingInset[platform],
         )}
       >
+        {compact && detailPage.test(pathname) && <BackLink overArt={clear} />}
         <div aria-hidden className="flex shrink-0 items-center max-sm:hidden">
           <Wordmark />
         </div>
