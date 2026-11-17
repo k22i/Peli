@@ -15,6 +15,6 @@ Built 2026-11-17 for #141 (epic #126). No extension, no App ID cost.
 
 **Why frontend, not Go, computes the items:** only the frontend knows a title's name for entries not in the library (addon meta).
 
-**Widget (decision pending with the user):** SideSign registers and assigns App Groups (`AppGroups.swift`, `Entitlement.appGroups`), so a group should survive a free re-sign; an appex costs one more App ID (3 of 10/week, and the `.dev` build counts again). See the #141 comment for the verdict.
+**Widget: skipped by the user 2026-11-17.** SideSign registers/assigns App Groups (`AppGroups.swift`), so a declared group should survive a free re-sign, but it is unproven on a device; the group id is team-suffixed (read it from the entitlement at runtime); an appex costs one more App ID; the Wails iOS build has no WidgetKit target. If wanted later, start with an App Group proof .ipa.
 
 Related: [[crash-diagnostics]], [[ios-sidestore]], [[ios-polish-epic]], [[library-page]].
