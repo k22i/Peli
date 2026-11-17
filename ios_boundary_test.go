@@ -120,6 +120,15 @@ func TestIOSAuthSheetFiles(t *testing.T) {
 	}
 }
 
+// internal/shell is the floating tab bar (#129): one cgo file and its
+// Objective-C, for the UIGlassEffect views over the webview.
+func TestIOSTabBarFiles(t *testing.T) {
+	out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/internal/shell", "ios"))
+	if want := "[shell.go]|[shell_ios.go]|[]|[tabbar_ios.m]|[tabbar_ios.h]"; out != want {
+		t.Errorf("internal/shell files changed: %s, want %s; update the boundary test on purpose", out, want)
+	}
+}
+
 // listPackage lists one package's source files for env.
 func listPackage(t *testing.T, env []string, pkg string, tags ...string) string {
 	t.Helper()
