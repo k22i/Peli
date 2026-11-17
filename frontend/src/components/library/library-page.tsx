@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { Eye, EyeOff, Library as LibraryIcon, Trash2 } from "lucide-react";
+import { ArrowUpDown, Eye, EyeOff, Library as LibraryIcon, Trash2 } from "lucide-react";
 import { useEffect, useState, type KeyboardEvent, type ReactNode } from "react";
 
-import { BrowseFrame, GridSkeleton } from "@/components/browse/browse-page";
-import { LibraryNotice } from "@/components/library/notice";
+import { BrowseFrame } from "@/components/browse/browse-page";
+import { CompactLibraryFrame } from "@/components/library/compact-frame";
+import { LibraryGridSkeleton, LibraryNotice } from "@/components/library/notice";
 import { Upcoming } from "@/components/library/upcoming";
 import { SelectionBar } from "@/components/library/selection-bar";
 import { Watchlist } from "@/components/library/watchlist";
@@ -13,15 +14,19 @@ import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
+  ResponsiveMenu,
   ResponsiveMenuGroup,
   ResponsiveMenuGroupLabel,
   ResponsiveMenuItem,
+  ResponsiveMenuRadioGroup,
+  ResponsiveMenuRadioItem,
   ResponsiveMenuSeparator,
 } from "@/components/ui/responsive-menu";
 import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
 import {
   continueWatchingQuery,
+  denseLibraryMeta,
   episodeLabels,
   lastWatchedQuery,
   libraryItems,
@@ -30,15 +35,19 @@ import {
   libraryQuery,
   librarySorts,
   libraryTypes,
+  progressFractions,
+  sortCaption,
   type LibrarySearch,
   type LibrarySort,
 } from "@/lib/library";
 import { useBulkEdits } from "@/lib/library-bulk";
 import { currentProfileQuery } from "@/lib/profile";
 import { feature } from "@/lib/features";
+import { useCompactShell } from "@/lib/shell-mode";
 import { clickKind, selectRange, toggleKey } from "@/lib/selection";
 import { useOpenTitle } from "@/lib/title";
 import { libraryMenuTitle, useTitleEdits } from "@/lib/title-actions";
+import { cn } from "@/lib/utils";
 import type { LibraryItem, Profile } from "@bindings/store";
 
 // The profile's library (#46): every saved title in one grid, filtered by
@@ -54,14 +63,43 @@ export function LibraryPage() {
     <Library profile={profile} />
   ) : (
     <LibraryFrame>
-      <GridSkeleton />
+      <LibraryGridSkeleton />
     </LibraryFrame>
   );
 }
 
 // The page: Browse's sticky header with the view switch at the end of
 // its first row and, on the Titles view, the type chips and Sort in `rail`.
-function LibraryFrame({ rail, children }: { rail?: ReactNode; children: ReactNode }) {
+// On an iPhone (#132) the compact header instead: `chips` on their own row
+// and `sort` as a button at the end of the title's, with `caption` under
+// the chips.
+function LibraryFrame({
+  rail,
+  chips,
+  sort,
+  caption,
+  children,
+}: {
+  rail?: ReactNode;
+  chips?: ReactNode;
+  sort?: ReactNode;
+  caption?: string | undefined;
+  children: ReactNode;
+}) {
+  const compact = useCompactShell();
+  if (compact) {
+    return (
+      <CompactLibraryFrame
+        title="Library"
+        switcher={<ViewSwitch compact />}
+        sort={sort}
+        rail={chips}
+        caption={caption}
+      >
+        {children}
+      </CompactLibraryFrame>
+    );
+  }
   return (
     <BrowseFrame title="Library" filter={<ViewSwitch />} rail={rail}>
       {children}
@@ -72,7 +110,10 @@ function LibraryFrame({ rail, children }: { rail?: ReactNode; children: ReactNod
 // Titles, Upcoming or Watchlist: coss Tabs as a segmented control on an ink tint. The
 // pill is a wrapper, since a tier sets its own background; the tab list
 // inside it is bare, and its indicator is the raised knob.
-function ViewSwitch() {
+//
+// `compact` (#132, iPhone): a full-width segmented control, three equal
+// segments (two for kids), 36 pt tall with a 9 pt radius.
+function ViewSwitch({ compact = false }: { compact?: boolean }) {
   const search: LibrarySearch = useSearch({ strict: false });
   const navigate = useNavigate();
   // Kids profiles keep no tracking, so no Watchlist.
@@ -93,27 +134,53 @@ function ViewSwitch() {
         })
       }
     >
-      <span className="inline-flex rounded-full bg-foreground/7 p-1">
+      {compact ? (
         <TabsList
           aria-label="View"
-          className="gap-x-1 rounded-full bg-transparent p-0 text-muted-foreground *:data-[slot=tab-indicator]:rounded-full *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none"
+          className={cn(
+            "grid h-9 w-full gap-0 rounded-[9px] bg-foreground/7 p-0.5 text-muted-foreground *:data-[slot=tab-indicator]:rounded-[7px] *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none",
+            kids ? "grid-cols-2" : "grid-cols-3",
+          )}
         >
-          <TabsTab value="titles" className="rounded-full px-4">
+          <TabsTab value="titles" className={segment}>
             Titles
           </TabsTab>
-          <TabsTab value="upcoming" className="rounded-full px-4">
+          <TabsTab value="upcoming" className={segment}>
             Upcoming
           </TabsTab>
           {!kids && (
-            <TabsTab value="watchlist" className="rounded-full px-4">
+            <TabsTab value="watchlist" className={segment}>
               Watchlist
             </TabsTab>
           )}
         </TabsList>
-      </span>
+      ) : (
+        <span className="inline-flex rounded-full bg-foreground/7 p-1">
+          <TabsList
+            aria-label="View"
+            className="gap-x-1 rounded-full bg-transparent p-0 text-muted-foreground *:data-[slot=tab-indicator]:rounded-full *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none"
+          >
+            <TabsTab value="titles" className="rounded-full px-4">
+              Titles
+            </TabsTab>
+            <TabsTab value="upcoming" className="rounded-full px-4">
+              Upcoming
+            </TabsTab>
+            {!kids && (
+              <TabsTab value="watchlist" className="rounded-full px-4">
+                Watchlist
+              </TabsTab>
+            )}
+          </TabsList>
+        </span>
+      )}
     </Tabs>
   );
 }
+
+// A compact switch's segment: the whole third (or half), 32 pt inside the
+// 2 pt padding.
+const segment = "h-8 min-w-0 rounded-[7px] px-1 text-[0.8125rem] font-[590] sm:h-8";
 
 function Library({ profile }: { profile: Profile }) {
   const search: LibrarySearch = useSearch({ strict: false });
@@ -145,7 +212,7 @@ function Library({ profile }: { profile: Profile }) {
   if (library.isPending) {
     return (
       <LibraryFrame>
-        <GridSkeleton />
+        <LibraryGridSkeleton />
       </LibraryFrame>
     );
   }
@@ -193,32 +260,36 @@ function Library({ profile }: { profile: Profile }) {
       replace: true,
     });
 
+  const chips =
+    types.length > 1 ? (
+      <ChipRail
+        railClassName="min-w-0 flex-1"
+        aria-label="Type"
+        value={[type ?? allTypes]}
+        onValueChange={(value: string[]) => {
+          const [next] = value;
+          if (next) choose({ type: next === allTypes ? undefined : next, sort });
+        }}
+      >
+        <Chip value={allTypes}>All</Chip>
+        {types.map((option) => (
+          <Chip key={option.type} value={option.type}>
+            {option.label}
+          </Chip>
+        ))}
+      </ChipRail>
+    ) : undefined;
+
   return (
     <LibraryFrame
+      chips={chips}
+      sort={<SortMenu sort={sort} onChange={(next) => choose({ type, sort: next })} />}
+      caption={sortCaption(sort)}
       rail={
         // The type chips share one line with Sort and scroll sideways when
         // there are more than fit (#116); the rail brings its own gutter.
         <div className="flex items-center gap-3">
-          {types.length > 1 ? (
-            <ChipRail
-              railClassName="min-w-0 flex-1"
-              aria-label="Type"
-              value={[type ?? allTypes]}
-              onValueChange={(value: string[]) => {
-                const [next] = value;
-                if (next) choose({ type: next === allTypes ? undefined : next, sort });
-              }}
-            >
-              <Chip value={allTypes}>All</Chip>
-              {types.map((option) => (
-                <Chip key={option.type} value={option.type}>
-                  {option.label}
-                </Chip>
-              ))}
-            </ChipRail>
-          ) : (
-            <div className="flex-1" />
-          )}
+          {chips ?? <div className="flex-1" />}
           <ResponsiveSelect
             items={librarySorts}
             value={sort}
@@ -230,8 +301,55 @@ function Library({ profile }: { profile: Profile }) {
         </div>
       }
     >
-      <LibraryGrid profile={profile} items={items} episodes={episodeLabels(progress ?? [])} />
+      <LibraryGrid
+        profile={profile}
+        items={items}
+        episodes={episodeLabels(progress ?? [])}
+        progress={progressFractions(progress ?? [])}
+      />
     </LibraryFrame>
+  );
+}
+
+// The iPhone's Sort (#132): a 44 pt icon button at the end of the title row,
+// whose menu (a bottom sheet, #134) lists the sorts with a check by the
+// current one. librarySorts has no direction, so there is no Ascending or
+// Descending row.
+function SortMenu({
+  sort,
+  onChange,
+}: {
+  sort: LibrarySort;
+  onChange: (next: LibrarySort) => void;
+}) {
+  return (
+    <ResponsiveMenu
+      label="Sort"
+      header="Sort"
+      align="end"
+      trigger={{
+        "aria-label": "Sort",
+        className: cn(
+          buttonVariants({ variant: "ghost", size: "icon" }),
+          "size-11 rounded-full [&_svg:not([class*='size-'])]:size-5",
+        ),
+        children: <ArrowUpDown aria-hidden />,
+      }}
+    >
+      <ResponsiveMenuRadioGroup
+        value={sort}
+        onValueChange={(next) => {
+          const option = librarySorts.find((candidate) => candidate.value === next);
+          if (option) onChange(option.value);
+        }}
+      >
+        {librarySorts.map((option) => (
+          <ResponsiveMenuRadioItem key={option.value} value={option.value}>
+            {option.label}
+          </ResponsiveMenuRadioItem>
+        ))}
+      </ResponsiveMenuRadioGroup>
+    </ResponsiveMenu>
   );
 }
 
@@ -251,12 +369,18 @@ function LibraryGrid({
   profile,
   items,
   episodes,
+  progress,
 }: {
   profile: Profile;
   items: LibraryItem[];
   // The "S2 · E5" of each title in progress, by content ID.
   episodes: ReadonlyMap<string, string>;
+  // How far into each title in progress, 0 to 1, for the dense cards' bar.
+  progress: ReadonlyMap<string, number>;
 }) {
+  // The iPhone's dense grid (#132): three columns, one meta line and a
+  // progress bar on the poster.
+  const dense = useCompactShell();
   const open = useOpenTitle();
   const { removeFromLibrary } = useTitleEdits(profile.id);
   const bulk = useBulkEdits(profile.id);
@@ -325,6 +449,7 @@ function LibraryGrid({
     <>
       <PosterGrid
         label="Library"
+        dense={dense}
         items={items}
         getKey={itemKey}
         isSelected={(item) => selected.has(itemKey(item))}
@@ -334,7 +459,13 @@ function LibraryGrid({
           return (
             <PosterCard
               title={item.name}
-              meta={libraryMeta(item, episodes.get(item.contentId))}
+              meta={
+                dense
+                  ? denseLibraryMeta(item, episodes.get(item.contentId))
+                  : libraryMeta(item, episodes.get(item.contentId))
+              }
+              dense={dense}
+              progress={dense ? progress.get(item.contentId) : undefined}
               src={item.poster}
               selected={inSelection}
               menu={libraryMenuTitle(item)}

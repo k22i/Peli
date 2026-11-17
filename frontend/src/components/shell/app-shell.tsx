@@ -44,6 +44,11 @@ export function AppShell({ children }: { children: ReactNode }) {
   useNativeTabBar(tabBar, tabsShown);
   const nativeTabs = feature("nativeTabBar");
   useSeedAudioLanguages();
+  // Toasts lift above the floating bar while it shows (index.css, #132).
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-tabs", tabsShown);
+    return () => document.documentElement.removeAttribute("data-tabs");
+  }, [tabsShown]);
   // A stable callback: a new one each render would null and set the state
   // again, forever.
   const contentRef = useCallback((node: HTMLDivElement | null) => {

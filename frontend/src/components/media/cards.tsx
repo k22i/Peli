@@ -31,6 +31,13 @@ export type CardProps = useRender.ComponentProps<"button"> & {
   menuItems?: ReactNode | undefined;
   // Part of a multi-selection: a sun ring round the art and a check on it.
   selected?: boolean | undefined;
+  // The dense grid's card (#132, iPhone Library and Watchlist): a 13 pt
+  // title and an 11 pt meta line, and progress as a bar on the art's bottom
+  // edge with no scrim.
+  dense?: boolean | undefined;
+  // Top-right over the artwork: a small glyph such as the list a watchlist
+  // title comes from.
+  corner?: ReactNode | undefined;
 };
 
 // The art grows a little towards you on hover and focus, and its shadow
@@ -49,6 +56,8 @@ function Card({
   menu,
   menuItems,
   selected,
+  dense = false,
+  corner,
   shape,
   render,
   className,
@@ -60,6 +69,7 @@ function Card({
     type: render ? undefined : ("button" as const),
     className: cn(
       "group/card flex cursor-pointer flex-col gap-2.5 text-start outline-none",
+      dense && "gap-1.5",
       shape === "poster" ? "w-poster" : "w-landscape",
       className,
     ),
@@ -83,10 +93,13 @@ function Card({
             showTitle
             titleClassName={shape === "landscape" ? "text-[1.625rem]" : undefined}
           />
-          {(pill || progress !== undefined) && (
+          {(pill || (progress !== undefined && !dense)) && (
             <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-black/70 to-transparent" />
           )}
           {badge && <div className="absolute start-2 top-2 flex gap-1">{badge}</div>}
+          {corner && !selected && (
+            <div className="absolute end-1.5 top-1.5 flex gap-1">{corner}</div>
+          )}
           {selected && (
             <span
               aria-hidden
@@ -105,13 +118,35 @@ function Card({
               {pill}
             </span>
           )}
-          {progress !== undefined && <WatchProgress value={progress} />}
+          {progress !== undefined &&
+            (dense ? (
+              <WatchProgress
+                value={progress}
+                className="inset-x-0 bottom-0 rounded-none bg-black/45 *:rounded-none"
+              />
+            ) : (
+              <WatchProgress value={progress} />
+            ))}
         </div>
         <div className="flex min-w-0 flex-col gap-0.5 px-px">
-          <span className="truncate type-item text-foreground/90 transition-colors group-hover/card:text-foreground">
+          <span
+            className={cn(
+              "truncate text-foreground/90 transition-colors group-hover/card:text-foreground",
+              dense ? "text-[0.8125rem] leading-[1.25] font-[510]" : "type-item",
+            )}
+          >
             {title}
           </span>{" "}
-          {meta && <span className="truncate text-small text-muted-foreground tnum">{meta}</span>}
+          {meta && (
+            <span
+              className={cn(
+                "truncate text-muted-foreground tnum",
+                dense ? "text-[0.6875rem] leading-[1.3]" : "text-small",
+              )}
+            >
+              {meta}
+            </span>
+          )}
         </div>
       </>
     ),
@@ -163,6 +198,16 @@ export function WatchProgress({ value, className }: { value: number; className?:
 
 export function PosterCardSkeleton() {
   return <CardSkeleton shape="poster" />;
+}
+
+// The dense grid's placeholder (#132): the art and one short caption line.
+export function DensePosterSkeleton() {
+  return (
+    <div aria-hidden className="flex flex-col gap-1.5">
+      <Skeleton className="aspect-[2/3] rounded-card" />
+      <Skeleton className="h-2.5 w-3/4 rounded-full" />
+    </div>
+  );
 }
 
 export function LandscapeCardSkeleton() {

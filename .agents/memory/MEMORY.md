@@ -93,3 +93,4 @@
 - [Crash diagnostics](crash-diagnostics.md) — #127 internal/diagnostics + iosshell (WebKit-kill reload, loop guard, crash files, ring log, Share logs), safego, ErrorScreen, route restore, pelidev crash tests in Settings
 - [Bottom sheets](bottom-sheets.md) — #134 ResponsiveMenu/ContextMenu/Select + BottomSheet drag, useSheetOpen for the tab bar, haptic() stub, long press, CDP screenshot rig
 - [iOS small fixes](ios-small-fixes.md) — #139: thisDevice/deviceName, Meteor 🌩️/☁️, SeedAudioLanguages, About build, icon + launch assets, quiet webview, touch CSS
+- [Library on iPhone](library-iphone.md) — #132 CompactLibraryFrame + --library-header-h, Sort sheet, PosterGrid dense (--poster-dense-columns), Card dense/corner, compact Upcoming, toasts above --tabs-float
