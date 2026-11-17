@@ -37,6 +37,25 @@
             </array>
         </dict>
     </dict>
+    <key>UIApplicationShortcutItems</key>
+    <array>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>net.k22i.peli.search</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Search</string>
+            <key>UIApplicationShortcutItemIconSymbolName</key>
+            <string>magnifyingglass</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemType</key>
+            <string>net.k22i.peli.library</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Library</string>
+            <key>UIApplicationShortcutItemIconSymbolName</key>
+            <string>books.vertical</string>
+        </dict>
+    </array>
     <key>UIDeviceFamily</key>
     <array>
         <integer>1</integer>

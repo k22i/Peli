@@ -95,3 +95,4 @@
 - [iOS small fixes](ios-small-fixes.md) — #139: thisDevice/deviceName, Meteor 🌩️/☁️, SeedAudioLanguages, About build, icon + launch assets, quiet webview, touch CSS
 - [Library on iPhone](library-iphone.md) — #132 CompactLibraryFrame + --library-header-h, Sort sheet, PosterGrid dense (--poster-dense-columns), Card dense/corner, compact Upcoming, toasts above --tabs-float
 - [Player gestures](player-gestures.md) — #131 lib/player-gestures.ts reducer, native brightness/volume/immersive, Haptics.Impact (#135 extends), Gestures settings, fill per title, Lock
+- [Quick actions](quick-actions.md) — #141 icon menu: static Search/Library, dynamic Continue watching via internal/quickactions, scene-delegate hooks, ready gate for picker/PIN, widget notes
