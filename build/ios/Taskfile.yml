@@ -208,11 +208,16 @@ tasks:
         # Compile asset catalog and embed icons in the app bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app"
         AC_IN="build/ios/xcode/main/Assets.xcassets"
-        # Peli's own icon set (build/ios/icons): full bleed, with the dark and
-        # tinted variants of iOS 18. Wails' generated one is the macOS tile.
+        # Peli's own icon set and launch colour (build/ios/assets): the icon is
+        # full bleed, with the dark and tinted variants of iOS 18 (Wails'
+        # generated one is the macOS tile).
         if [ -d "$AC_IN" ]; then
           rm -rf "$AC_IN/AppIcon.appiconset"
-          cp -R build/ios/icons/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
+          cp -R build/ios/assets/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
+          # The launch screen's colour: --background, light and dark
+          # (UILaunchScreen in the Info plists names it).
+          rm -rf "$AC_IN/LaunchBackground.colorset"
+          cp -R build/ios/assets/LaunchBackground.colorset "$AC_IN/LaunchBackground.colorset"
         fi
         if [ -d "$AC_IN" ]; then
           TMP_AC=$(mktemp -d)
@@ -393,11 +398,16 @@ tasks:
         # Compile asset catalog and embed icons for dev bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app"
         AC_IN="build/ios/xcode/main/Assets.xcassets"
-        # Peli's own icon set (build/ios/icons): full bleed, with the dark and
-        # tinted variants of iOS 18. Wails' generated one is the macOS tile.
+        # Peli's own icon set and launch colour (build/ios/assets): the icon is
+        # full bleed, with the dark and tinted variants of iOS 18 (Wails'
+        # generated one is the macOS tile).
         if [ -d "$AC_IN" ]; then
           rm -rf "$AC_IN/AppIcon.appiconset"
-          cp -R build/ios/icons/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
+          cp -R build/ios/assets/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
+          # The launch screen's colour: --background, light and dark
+          # (UILaunchScreen in the Info plists names it).
+          rm -rf "$AC_IN/LaunchBackground.colorset"
+          cp -R build/ios/assets/LaunchBackground.colorset "$AC_IN/LaunchBackground.colorset"
         fi
         if [ -d "$AC_IN" ]; then
           TMP_AC=$(mktemp -d)

@@ -14,6 +14,13 @@ func (Service) Build() string {
 	return build()
 }
 
+// PageReady tells the app the page has started (DOMContentLoaded), so on iOS
+// the webview, kept clear since launch to avoid a white flash, fades in.
+// Nothing elsewhere.
+func (Service) PageReady() {
+	pageReady()
+}
+
 // Version returns the app version.
 func (Service) Version() string {
 	return Version

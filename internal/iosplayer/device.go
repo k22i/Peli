@@ -19,6 +19,10 @@ func Build() string {
 	return C.GoString(&buf[0])
 }
 
+// ShowWebview fades in the webview that was kept clear since launch (see
+// peli_quiet_webview in host_ios.m). Safe to call more than once.
+func ShowWebview() { C.peli_show_webview() }
+
 // Side is a way up for the screen (interface orientations, so landscape-left
 // has the phone's top to the right).
 type Side int

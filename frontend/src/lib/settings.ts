@@ -150,9 +150,26 @@ export function languageName(code: string, locale = navigator.language): string 
 
 // ISO 639-2/B codes that differ from their 639-2/T ones, which engines know.
 const bibliographic: Record<string, string> = {
-  alb: "sq", arm: "hy", baq: "eu", bur: "my", chi: "zh", cze: "cs", dut: "nl", fre: "fr",
-  geo: "ka", ger: "de", gre: "el", ice: "is", mac: "mk", mao: "mi", may: "ms", per: "fa",
-  rum: "ro", slo: "sk", tib: "bo", wel: "cy",
+  alb: "sq",
+  arm: "hy",
+  baq: "eu",
+  bur: "my",
+  chi: "zh",
+  cze: "cs",
+  dut: "nl",
+  fre: "fr",
+  geo: "ka",
+  ger: "de",
+  gre: "el",
+  ice: "is",
+  mac: "mk",
+  mao: "mi",
+  may: "ms",
+  per: "fa",
+  rum: "ro",
+  slo: "sk",
+  tib: "bo",
+  wel: "cy",
 };
 
 function titleCase(text: string, locale: string): string {

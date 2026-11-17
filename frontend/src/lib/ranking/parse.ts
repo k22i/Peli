@@ -624,7 +624,8 @@ function readSize(s: Stream, p: Pieces): number | null {
 // download]", Comet "[AD⚡]" or "[PM⬇️]". Only known service codes count, so a
 // "[EN]" tag isn't taken for one. The emoji may carry a variation selector.
 // Meteor writes "[TB🌩️]" for cached and "[TB☁️]" for not cached.
-const cacheMarker = /\[(TB|RD|AD|PM|DL|ED|OC|PP)(\+|⚡\uFE0F?|🌩\uFE0F?|☁\uFE0F?| ?download|⬇\uFE0F?|⏳)?\]/u;
+const cacheMarker =
+  /\[(TB|RD|AD|PM|DL|ED|OC|PP)(\+|⚡\uFE0F?|🌩\uFE0F?|☁\uFE0F?| ?download|⬇\uFE0F?|⏳)?\]/u;
 const debrids: Partial<Record<string, Debrid>> = {
   TB: "TB",
   RD: "RD",

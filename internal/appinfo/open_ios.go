@@ -11,6 +11,8 @@ import (
 
 func build() string { return iosplayer.Build() }
 
+func pageReady() { iosplayer.ShowWebview() }
+
 // UIApplication openURL: on the main thread, in Safari.
 func openURL(address string) error {
 	application.Mobile.OpenURL(address)

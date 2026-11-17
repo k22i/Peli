@@ -38,11 +38,11 @@ export function useSeedAudioLanguages() {
     const codes = deviceLanguageCodes();
     if (codes.length === 0) return;
     Store.SeedAudioLanguages(id, codes)
-      .then((seeded) => {
-        if (seeded) {
-          return queryClient.invalidateQueries({ queryKey: profileSettingsQuery(id).queryKey });
-        }
-      })
+      .then((seeded) =>
+        seeded
+          ? queryClient.invalidateQueries({ queryKey: profileSettingsQuery(id).queryKey })
+          : undefined,
+      )
       .catch(() => {});
   }, [id, queryClient]);
 }

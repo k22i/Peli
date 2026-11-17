@@ -95,6 +95,47 @@
     }
   }
 
+  /* The iOS app is chrome, not a web page: a long press on a card or a poster
+     opens Peli's menu, not WebKit's selection loupe or the image's "Save to
+     Photos" callout; a tap shows Peli's own pressed state, not WebKit's grey
+     flash; and a double tap or a pinch never zooms the page. Text fields and
+     anything marked data-selectable (the synopsis) stay selectable. */
+  :root[data-platform="ios"] {
+    touch-action: pan-x pan-y;
+  }
+
+  :root[data-platform="ios"] * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  :root[data-platform="ios"] :is(input, textarea, [contenteditable="true"]),
+  :root[data-platform="ios"] [data-selectable],
+  :root[data-platform="ios"] [data-selectable] * {
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  :root[data-platform="ios"]
+    :is(
+      a,
+      button,
+      input,
+      select,
+      textarea,
+      summary,
+      label,
+      [role="button"],
+      [role="tab"],
+      [role="menuitem"],
+      [role="option"]
+    ) {
+    touch-action: manipulation;
+  }
+
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;

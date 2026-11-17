@@ -107,8 +107,8 @@ function TmdbForm({ hasKey, onDone }: { hasKey: boolean; onDone: () => void }) {
           <FieldError />
           <FieldDescription>
             {hasKey ? "A key is saved. Enter a new one to replace it. " : ""}
-            Get one free from your account’s API settings on themoviedb.org. Kept in {thisDevice()}’s
-            keychain.
+            Get one free from your account’s API settings on themoviedb.org. Kept in {thisDevice()}
+            ’s keychain.
           </FieldDescription>
         </Field>
         {problem && !problem.field && (

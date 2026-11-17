@@ -18,6 +18,8 @@ func openURL(address string) error {
 
 func build() string { return "" }
 
+func pageReady() {}
+
 func openSignIn(address string) error { return openURL(address) }
 
 func closeSignIn() {}

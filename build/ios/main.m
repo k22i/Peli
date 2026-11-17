@@ -12,6 +12,10 @@
 // itself with env(safe-area-inset-*) (index.html has viewport-fit=cover, and
 // Wails turns the scroll view's automatic insets off). Wails' native tab bar,
 // which Peli doesn't use, keeps its own layout.
+// Defined in internal/iosplayer/host_ios.m: keeps the webview clear, over the
+// launch screen's colour, until the page's first paint (no white flash).
+extern void peli_quiet_webview(UIViewController *vc, UIView *web);
+
 static void peliFullScreenWebview(void) {
     Class cls = NSClassFromString(@"WailsViewController");
     SEL sel = @selector(viewDidLayoutSubviews);
@@ -26,6 +30,7 @@ static void peliFullScreenWebview(void) {
         UIView *web = nil;
         @try { web = [vc valueForKey:@"webView"]; } @catch (NSException *e) {}
         web.frame = vc.view.bounds;
+        if (web) peli_quiet_webview(vc, web);
     });
     method_setImplementation(method, full);
 }

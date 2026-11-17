@@ -60,7 +60,7 @@ import { addonsQuery } from "@/lib/addons";
 import { feature } from "@/lib/features";
 import { appBuildQuery, appVersionQuery } from "@/lib/app-info";
 import { contentDisclaimer } from "@/lib/disclaimer";
-import { deviceName, isIOS } from "@/lib/platform";
+import { deviceName as hostName, isIOS } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 import { serverName, serverQuery } from "@/lib/server";
 import {
@@ -1049,7 +1049,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
               <SettingRow
                 id="captions"
                 label="Captions"
-                description={`Turn subtitles on by default. System follows your ${deviceName()}’s captions setting.`}
+                description={`Turn subtitles on by default. System follows your ${hostName()}’s captions setting.`}
               >
                 <Choice
                   id="captions"
@@ -1192,7 +1192,7 @@ function AppearancePane({ title }: { title: string }) {
         <SettingRow
           id="theme"
           label="Theme"
-          description={`System follows your ${deviceName()}’s light or dark mode. Applies to this device.`}
+          description={`System follows your ${hostName()}’s light or dark mode. Applies to this device.`}
         >
           <ThemeSwitcher />
         </SettingRow>

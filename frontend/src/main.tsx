@@ -5,6 +5,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { ToastProvider } from "@/components/ui/toast";
+import { reportPageReady } from "@/lib/app-info";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
 import { startPlatform } from "@/lib/platform";
 import { startTheme } from "@/lib/theme";
@@ -13,6 +14,7 @@ import "./index.css";
 
 startTheme();
 startPlatform();
+reportPageReady();
 
 const queryClient = createQueryClient();
 const router = createAppRouter(queryClient);

@@ -44,6 +44,11 @@ int peli_is_phone(void);
 // peli_bundle_build copies the app's CFBundleVersion (SideStore builds stamp
 // YYYYMMDD.HHMM there) into buf, NUL-terminated; 0 when it has none.
 int peli_bundle_build(char *buf, int size);
+// peli_show_webview fades in the webview that peli_quiet_webview (called from
+// build/ios/main.m when Wails lays it out) kept clear until the page's first
+// paint. It also runs on its own after 4 s, so a page that never reports
+// can't leave the screen blank.
+void peli_show_webview(void);
 // The motion sensor's side of the phone, for the player's rotation
 // (motion_ios.m). peli_motion_start calls peliMotionSide (exported from
 // device.go) each time the side the phone is held on changes, from a

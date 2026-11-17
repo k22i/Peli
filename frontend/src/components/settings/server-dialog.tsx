@@ -196,9 +196,9 @@ function ServerForm({ server, onDone }: { server: Server; onDone: () => void }) 
               <LogOut />
               <AlertTitle>Switching signs you out</AlertTitle>
               <AlertDescription>
-                Your Nuvio profiles are removed from {thisDevice()}, with their library and progress.
-                Changes waiting to sync are sent first. The Guest profile stays. Then sign in with
-                an account on the new server.
+                Your Nuvio profiles are removed from {thisDevice()}, with their library and
+                progress. Changes waiting to sync are sent first. The Guest profile stays. Then sign
+                in with an account on the new server.
               </AlertDescription>
             </Alert>
           )}
