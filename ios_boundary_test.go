@@ -88,9 +88,10 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 			t.Fatalf("%s: unexpected go list output %q", pkg, out)
 		}
 		// internal/iosplayer is the iOS engine (ADR-0055): libmpv's client
-		// API from Go and the UIKit video host, and nothing else with cgo.
+		// API from Go, the UIKit video host, and the device and motion
+		// sensor reads the iPhone's rotation uses, and nothing else with cgo.
 		if pkg == "internal/iosplayer" {
-			if parts[1] != "[engine.go mpv.go]" || parts[2] != "[]" || parts[3] != "[host_ios.m]" || parts[4] != "[host_ios.h]" {
+			if parts[1] != "[device.go engine.go mpv.go]" || parts[2] != "[]" || parts[3] != "[host_ios.m motion_ios.m]" || parts[4] != "[host_ios.h]" {
 				t.Errorf("internal/iosplayer files changed: %s; update the boundary test on purpose", out)
 			}
 			continue
