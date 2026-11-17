@@ -1,10 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
+import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { AnimePosterCard } from "@/components/media/anime-poster-card";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Hero, HeroSkeleton, ImdbScore } from "@/components/media/hero";
@@ -63,6 +64,9 @@ type CatalogRow = Extract<HomeRow, { kind: "catalog" }>;
 // empty page.
 function Home() {
   const profile = useQuery(currentProfileQuery).data;
+  // Pull to refresh on iOS (#135): sync now, and the tracker lists.
+  const client = useQueryClient();
+  usePullToRefresh(() => refreshSynced(client));
   return (
     <>
       <h1 className="sr-only">Home</h1>

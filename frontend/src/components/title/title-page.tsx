@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import type { Profile, WatchedItem } from "@bindings/store";
 import { Notice } from "@/components/browse/browse-page";
 import { Hero, HeroSkeleton, ImdbScore, MetaLine } from "@/components/media/hero";
+import { usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { About } from "@/components/title/about";
 import { BackButton } from "@/components/title/back-button";
 import { CastList } from "@/components/title/cast-list";
@@ -92,6 +93,13 @@ function Title({
   // An IMDb or TMDB id is looked up at once, beside the addon; a Kitsu id
   // waits for the details' imdb_id.
   const art = useTmdbArt(tmdbRef(type, id, meta));
+  // Pull to refresh on iOS (#135): the addon's details and TMDB's.
+  usePullToRefresh(() =>
+    Promise.all([
+      details.refetch(),
+      client.invalidateQueries({ queryKey: ["tmdb"], refetchType: "active" }),
+    ]),
+  );
   // Play is a click away: get the ranking engine's slow first run over.
   useEffect(warmRanking, []);
   const shown = meta ?? preview;

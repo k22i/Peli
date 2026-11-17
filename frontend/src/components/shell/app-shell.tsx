@@ -1,16 +1,20 @@
+import { Service as Shell } from "@bindings/shell";
 import { useMatches, useNavigate, useRouter } from "@tanstack/react-router";
+import { Events } from "@wailsio/runtime";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { lastOpenPane } from "@/components/settings/panes";
+import { PullToRefresh } from "@/components/shell/pull-to-refresh";
 import { TabBar } from "@/components/shell/tab-bar";
-import { useNativeTabBar, useTabBar } from "@/components/shell/use-tab-bar";
+import { useEdgeBack } from "@/components/shell/use-edge-back";
+import { scrollToTop, useNativeTabBar, useTabBar } from "@/components/shell/use-tab-bar";
 import { CommandPalette } from "@/components/shell/command-palette";
 import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
 import { useSeedAudioLanguages } from "@/lib/device-languages";
 import { feature } from "@/lib/features";
 import { cn } from "@/lib/utils";
-import { currentPlatform } from "@/lib/platform";
+import { currentPlatform, isIOS } from "@/lib/platform";
 import { searchFieldId } from "@/lib/search";
 import { useCompactShell } from "@/lib/shell-mode";
 import { sections } from "@/sections";
@@ -44,6 +48,23 @@ export function AppShell({ children }: { children: ReactNode }) {
   useNativeTabBar(tabBar, tabsShown);
   const nativeTabs = feature("nativeTabBar");
   useSeedAudioLanguages();
+  // The iOS touches (#135): swipe from the left edge to go back, pull to
+  // refresh, the status-bar tap. Only in the browsing chrome: the player
+  // owns its edges (#131) and the focus screens have nowhere to go back to.
+  const ios = isIOS();
+  const browsing = chrome === undefined;
+  const [page, setPage] = useState<HTMLElement | null>(null);
+  const [dim, setDim] = useState<HTMLDivElement | null>(null);
+  useEdgeBack(page, dim, ios && browsing);
+  const expandTabs = tabBar.expand;
+  useEffect(() => {
+    if (!ios || !browsing || !pane) return undefined;
+    Shell.WatchStatusBar().catch(() => {});
+    return Events.On("shell:scroll-top", () => {
+      scrollToTop(pane);
+      expandTabs();
+    });
+  }, [ios, browsing, pane, expandTabs]);
   // Toasts lift above the floating bar while it shows (index.css, #132).
   useEffect(() => {
     document.documentElement.toggleAttribute("data-tabs", tabsShown);
@@ -139,7 +160,18 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Not in the other chromes: the player's has none, and the focus
           screens come before there is a profile. */}
       {feature("commandPalette") && <CommandPalette onNavigate={focusContentAfterNavigate} />}
-      <main className="page-layer fixed inset-0 overflow-hidden bg-background">
+      {/* Behind the page while a swipe back drags it aside (#135). */}
+      {ios && (
+        <div
+          ref={setDim}
+          aria-hidden
+          className="pointer-events-none invisible fixed inset-0 bg-black opacity-0"
+        />
+      )}
+      <main
+        ref={ios ? setPage : undefined}
+        className="page-layer fixed inset-0 overflow-hidden bg-background"
+      >
         {/* Overlay scrollbars, the same on every OS (WebView2 would draw
             classic ones), and never taking width from the page. */}
         <ScrollAreaPrimitive.Root className="size-full">
@@ -151,7 +183,12 @@ export function AppShell({ children }: { children: ReactNode }) {
             // Focusable for keyboard scrolling and for focus after navigation,
             // but not an extra Tab stop.
             tabIndex={-1}
-            className="size-full outline-none"
+            className={cn(
+              "size-full outline-none",
+              // Sideways rails don't drag the page, and the page's rubber
+              // band stays its own (#135).
+              ios && "overscroll-contain",
+            )}
           >
             <ScrollAreaPrimitive.Content
               style={{ minWidth: 0 }}
@@ -165,8 +202,19 @@ export function AppShell({ children }: { children: ReactNode }) {
               {children}
             </ScrollAreaPrimitive.Content>
           </ScrollAreaPrimitive.Viewport>
-          <ScrollBar orientation="vertical" className="mt-[calc(var(--spacing-bar)+0.25rem)]" />
+          <ScrollBar
+            orientation="vertical"
+            className={cn(
+              "mt-[calc(var(--spacing-bar)+0.25rem)]",
+              // On iOS only while scrolling, as UIKit's indicator: a touch
+              // counts as hovering and would keep it up (#135). Thin, and
+              // not something to drag.
+              ios &&
+                "pointer-events-none data-hovering:not-data-scrolling:opacity-0 data-[orientation=vertical]:w-[3px]",
+            )}
+          />
         </ScrollAreaPrimitive.Root>
+        {ios && <PullToRefresh pane={pane} />}
       </main>
       {compact && !nativeTabs && <TabBar model={tabBar} />}
     </div>
