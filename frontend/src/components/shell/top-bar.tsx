@@ -48,7 +48,7 @@ const detailPage = /^\/(title|streams)\//;
 
 // The phone's Back: the bar's left end on a title page or the stream picker,
 // a 44 pt glass circle opposite the avatar. Over art it is media glass.
-function BackLink({ overArt }: { overArt: boolean }) {
+function BackLink({ overArt, fallback = "/" }: { overArt: boolean; fallback?: "/" | "/settings" }) {
   const router = useRouter();
   const navigate = useNavigate();
   const canGoBack = useCanGoBack();
@@ -58,7 +58,7 @@ function BackLink({ overArt }: { overArt: boolean }) {
       size="icon-lg"
       aria-label="Back"
       data-over-art={overArt || undefined}
-      onClick={() => (canGoBack ? router.history.back() : void navigate({ to: "/" }))}
+      onClick={() => (canGoBack ? router.history.back() : void navigate({ to: fallback }))}
       className={cn(
         "size-11 shrink-0 sm:size-11",
         !overArt && "material-pop text-popover-foreground hover:bg-popover",
@@ -98,6 +98,14 @@ export function TopBar({
   const clear = overArt && !scrolled;
   const pathname = useRouterState({
     select: (state) => (state.resolvedLocation ?? state.location).pathname,
+  });
+  // A Settings pane (`?section=`) is pushed over the pane list on the phone
+  // (#137), so it takes Back like a detail page.
+  const inPane = useRouterState({
+    select: (state) => {
+      const location = state.resolvedLocation ?? state.location;
+      return location.pathname === "/settings" && "section" in (location.search as object);
+    },
   });
   const current = visualOrder.findIndex((section) => section.to === pathname);
   const tabStop = current >= 0 ? current : 0;
@@ -198,7 +206,9 @@ export function TopBar({
           leadingInset[platform],
         )}
       >
-        {compact && detailPage.test(pathname) && <BackLink overArt={clear} />}
+        {compact && (detailPage.test(pathname) || inPane) && (
+          <BackLink overArt={clear} fallback={inPane ? "/settings" : "/"} />
+        )}
         <div aria-hidden className="flex shrink-0 items-center max-sm:hidden">
           <Wordmark />
         </div>

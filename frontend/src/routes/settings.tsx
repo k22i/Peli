@@ -23,6 +23,7 @@ import {
   SettingsPaneList,
   SettingsPaneRail,
   SettingsPaneView,
+  SettingsRoot,
 } from "@/components/settings/settings-section";
 import { TmdbDialog } from "@/components/settings/tmdb-dialog";
 import { UpdateRows } from "@/components/settings/update-rows";
@@ -53,6 +54,7 @@ import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { addonsQuery } from "@/lib/addons";
 import { feature } from "@/lib/features";
+import { useCompactShell } from "@/lib/shell-mode";
 import { appBuildQuery, appVersionQuery } from "@/lib/app-info";
 import { contentDisclaimer } from "@/lib/disclaimer";
 import { deviceName as hostName, isIOS } from "@/lib/platform";
@@ -138,7 +140,9 @@ export const Route = createFileRoute("/settings")({
 // (components/settings/panes.ts).
 function Settings() {
   const profile = useCurrentProfile();
-  const { section = defaultPane } = Route.useSearch();
+  const { section: asked } = Route.useSearch();
+  const section = asked ?? defaultPane;
+  const compact = useCompactShell();
   const pane = visiblePanes().find((candidate) => candidate.id === section) ?? visiblePanes()[0]!;
   const fromKeyboard = useRef(false);
   const shown = useRef<PaneId>(undefined);
@@ -156,6 +160,20 @@ function Settings() {
     fromKeyboard.current = false;
     document.getElementById(paneHeadingId)?.focus({ preventScroll: true });
   }, [pane.id]);
+
+  // On the phone Settings is a list of panes you drill into (#137): no
+  // `?section=` is the list, one is that pane with Back in the top strip.
+  if (compact) {
+    return (
+      <div className="w-full px-[calc(1rem+max(env(safe-area-inset-left),env(safe-area-inset-right)))] [--spacing-page:calc(1rem+max(env(safe-area-inset-left),env(safe-area-inset-right)))]">
+        {asked === undefined ? (
+          <SettingsRoot />
+        ) : (
+          <Pane id={pane.id} title={pane.title} profileId={profile.id} />
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto w-full max-w-6xl px-page pt-8 pb-16 md:grid md:grid-cols-[13.5rem_minmax(0,1fr)] md:items-start md:gap-14">
@@ -1703,6 +1721,17 @@ function Choice<T extends string>({
   labels: Record<T, string>;
   onChange: (value: T) => void;
 }) {
+  // On the phone a choice is a value and a chevron that opens a sheet (#137).
+  if (useCompactShell()) {
+    return (
+      <ResponsiveSelect
+        items={options.map((option) => ({ value: option, label: labels[option] }))}
+        value={options.find((option) => option === value) ?? options[0]!}
+        onValueChange={(next) => next && onChange(next)}
+        aria-labelledby={`${id}-label`}
+      />
+    );
+  }
   return (
     <ToggleGroup
       aria-labelledby={`${id}-label`}

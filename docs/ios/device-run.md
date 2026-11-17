@@ -25,7 +25,7 @@ Results of the on-device checklist in [`ios/README.md`](../../ios/README.md#firs
 | 10 | Keychain and data across a refresh and a reinstall | | | |
 | 11 | iPad layouts | n/a | | |
 | 12 | iPad split view and windows | n/a | | |
-| 13 | On-screen keyboard | | | |
+| 13 | On-screen keyboard | | | Not run yet. #137 built the keyboard handling (`--keyboard-h`, scroll-to-dismiss, instant Search focus, TMDB sheet) but no device has run it. Steps in the check 13 row of `ios/README.md`. Screenshots: `epic126-137-*.png` |
 | 14 | Background refresh | | | |
 
 ## Playback numbers

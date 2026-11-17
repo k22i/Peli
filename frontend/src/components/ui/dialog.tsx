@@ -8,6 +8,7 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useCompactShell } from "@/lib/shell-mode";
 
 export const DialogCreateHandle: typeof DialogPrimitive.createHandle = DialogPrimitive.createHandle;
 
@@ -60,20 +61,31 @@ export function DialogPopup({
   children,
   showCloseButton = true,
   bottomStickOnMobile = true,
+  sheet = false,
   closeProps,
   portalProps,
   ...props
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean;
   bottomStickOnMobile?: boolean;
+  // A form with a text field: on the compact iOS shell it is a full-height
+  // sheet under the top safe area, lifted by the keyboard (--keyboard-h,
+  // lib/keyboard.ts) so its buttons stay above it (#137). Elsewhere it is
+  // the dialog it always was.
+  sheet?: boolean;
   closeProps?: DialogPrimitive.Close.Props;
   portalProps?: DialogPrimitive.Portal.Props;
 }): React.ReactElement {
+  const asSheet = useCompactShell() && sheet;
   return (
     <DialogPortal {...portalProps}>
       <DialogBackdrop />
       <DialogViewport
-        className={cn(bottomStickOnMobile && "max-sm:grid-rows-[1fr_auto] max-sm:p-0 max-sm:pt-12")}
+        className={cn(
+          bottomStickOnMobile && "max-sm:grid-rows-[1fr_auto] max-sm:p-0 max-sm:pt-12",
+          asSheet &&
+            "grid-rows-[1fr] p-0 pt-[calc(env(safe-area-inset-top)+0.5rem)] pb-(--keyboard-h,0px)",
+        )}
       >
         <DialogPrimitive.Popup
           className={cn(
@@ -81,6 +93,8 @@ export function DialogPopup({
             bottomStickOnMobile &&
               "max-sm:max-w-none max-sm:origin-bottom max-sm:rounded-none max-sm:border-x-0 max-sm:border-t max-sm:border-b-0 motion-safe:max-sm:data-ending-style:translate-y-4 motion-safe:max-sm:data-starting-style:translate-y-4 max-sm:before:hidden max-sm:before:rounded-none",
             className,
+            asSheet &&
+              "row-start-1 h-full max-w-none rounded-t-[28px] rounded-b-none border-x-0 border-b-0 pb-[env(safe-area-inset-bottom)] before:hidden sm:max-w-none in-[html[data-keyboard]]:pb-0",
           )}
           data-slot="dialog-popup"
           {...props}

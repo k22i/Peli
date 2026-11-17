@@ -97,3 +97,4 @@
 - [Player gestures](player-gestures.md) — #131 lib/player-gestures.ts reducer, native brightness/volume/immersive, Haptics.Impact (#135 extends), Gestures settings, fill per title, Lock
 - [Title and picker on iPhone](title-picker-iphone.md) — #136 Back in TopBar, Overview + More, TitleMoreMenu, season •••, compact picker header and two-line rows
 - [Quick actions](quick-actions.md) — #141 icon menu: static Search/Library, dynamic Continue watching via internal/quickactions, scene-delegate hooks, ready gate for picker/PIN, widget skipped by the user 2026-11-17
+- [Settings and Search on iPhone](settings-search-iphone.md) — #137 SettingsRoot/CompactPage + Back, Choice→sheet, DialogPopup sheet, lib/keyboard.ts (--keyboard-h, primeKeyboard), RecentList swipe

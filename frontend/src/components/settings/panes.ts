@@ -14,20 +14,22 @@ import {
 
 import { feature } from "@/lib/features";
 
-export type SettingsPane = { id: string; title: string; icon: LucideIcon };
+// `tone` is the colour of the icon's rounded square in the phone's pane list
+// (#137), as in the iOS Settings app: a background class, with a white glyph.
+export type SettingsPane = { id: string; title: string; icon: LucideIcon; tone: string };
 
 // The panes, in the order the list shows them. `?section=` names one.
 const allPanes = [
-  { id: "account", title: "Account", icon: UserRound },
-  { id: "content", title: "Addons & content", icon: Blocks },
-  { id: "playback", title: "Playback", icon: Play },
-  { id: "languages", title: "Languages & subtitles", icon: Languages },
-  { id: "streaming", title: "Streaming", icon: Radio },
-  { id: "plugins", title: "Plugins", icon: Puzzle },
-  { id: "tracking", title: "Tracking", icon: ListChecks },
-  { id: "appearance", title: "Appearance", icon: Palette },
-  { id: "privacy", title: "Privacy", icon: Shield },
-  { id: "about", title: "About", icon: Info },
+  { id: "account", title: "Account", icon: UserRound, tone: "bg-[#0a84ff]" },
+  { id: "content", title: "Addons & content", icon: Blocks, tone: "bg-[#af52de]" },
+  { id: "playback", title: "Playback", icon: Play, tone: "bg-[#ff6b35]" },
+  { id: "languages", title: "Languages & subtitles", icon: Languages, tone: "bg-[#2e9e5b]" },
+  { id: "streaming", title: "Streaming", icon: Radio, tone: "bg-[#0a8fa8]" },
+  { id: "plugins", title: "Plugins", icon: Puzzle, tone: "bg-[#6e6e73]" },
+  { id: "tracking", title: "Tracking", icon: ListChecks, tone: "bg-[#d4337a]" },
+  { id: "appearance", title: "Appearance", icon: Palette, tone: "bg-[#5856d6]" },
+  { id: "privacy", title: "Privacy", icon: Shield, tone: "bg-[#3a8a3a]" },
+  { id: "about", title: "About", icon: Info, tone: "bg-[#6e6e73]" },
 ] as const satisfies readonly SettingsPane[];
 
 export type PaneId = (typeof allPanes)[number]["id"];
@@ -36,6 +38,23 @@ export type PaneId = (typeof allPanes)[number]["id"];
 // function, not a constant, since the platform is read when asked.
 export function visiblePanes(): readonly (typeof allPanes)[number][] {
   return allPanes.filter((pane) => pane.id !== "plugins" || feature("plugins"));
+}
+
+// The panes in the phone's list, a group to a card (#137): you, what Peli
+// plays and how, what it connects to, then how it looks and what it is.
+const paneGroups: readonly (readonly PaneId[])[] = [
+  ["account"],
+  ["content", "playback", "languages", "streaming", "plugins"],
+  ["tracking"],
+  ["appearance", "privacy", "about"],
+];
+
+// The groups with only the panes this build shows; none left empty.
+export function visiblePaneGroups(): (typeof allPanes)[number][][] {
+  const panes = visiblePanes();
+  return paneGroups
+    .map((ids) => panes.filter((pane) => ids.includes(pane.id)))
+    .filter((group) => group.length > 0);
 }
 
 export const defaultPane: PaneId = "account";

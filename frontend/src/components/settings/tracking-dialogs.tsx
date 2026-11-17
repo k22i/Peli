@@ -39,7 +39,7 @@ export function SimklDialog({
         onOpenChange(next);
       }}
     >
-      <DialogPopup className="sm:max-w-md">
+      <DialogPopup sheet className="sm:max-w-md">
         {open && <SimklSignIn profileId={profileId} onDone={() => onOpenChange(false)} />}
       </DialogPopup>
     </Dialog>
@@ -157,7 +157,7 @@ export function AniListDialog({
         onOpenChange(next);
       }}
     >
-      <DialogPopup className="sm:max-w-md">
+      <DialogPopup sheet className="sm:max-w-md">
         {open && <AniListSignIn profileId={profileId} onDone={() => onOpenChange(false)} />}
       </DialogPopup>
     </Dialog>

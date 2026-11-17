@@ -1,4 +1,4 @@
-import { TriangleAlert } from "lucide-react";
+import { ClipboardPaste, TriangleAlert } from "lucide-react";
 import { useState } from "react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { toastManager } from "@/components/ui/toast";
 import { TmdbError, useRemoveTmdbKey, useSaveTmdbKey } from "@/lib/tmdb";
 import { thisDevice } from "@/lib/platform";
+import { useCompactShell } from "@/lib/shell-mode";
 
 // TMDB's terms ask apps that use its API to say so.
 export const tmdbNotice =
@@ -37,7 +38,7 @@ export function TmdbDialog({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogPopup className="sm:max-w-lg">
+      <DialogPopup sheet className="sm:max-w-lg">
         {/* A fresh form each time it opens. */}
         {open && <TmdbForm hasKey={hasKey} onDone={() => onOpenChange(false)} />}
       </DialogPopup>
@@ -51,6 +52,7 @@ function TmdbForm({ hasKey, onDone }: { hasKey: boolean; onDone: () => void }) {
   const [key, setKey] = useState("");
   // What was last saved: its error shows while the field still says it.
   const [tried, setTried] = useState<string>();
+  const compact = useCompactShell();
   const error = tried === key.trim() ? (save.error ?? remove.error) : null;
   const problem = error ? tmdbProblem(error) : undefined;
 
@@ -93,17 +95,38 @@ function TmdbForm({ hasKey, onDone }: { hasKey: boolean; onDone: () => void }) {
       <DialogPanel className="flex flex-col gap-5">
         <Field name="key" className="items-stretch">
           <FieldLabel>API key or read access token</FieldLabel>
-          <Input
-            type="password"
-            required
-            value={key}
-            onValueChange={setKey}
-            autoComplete="off"
-            spellCheck={false}
-            autoCapitalize="none"
-            // oxlint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
-          />
+          <div className="flex items-center gap-2">
+            <Input
+              type="password"
+              required
+              value={key}
+              onValueChange={setKey}
+              autoComplete="off"
+              autoCorrect="off"
+              spellCheck={false}
+              autoCapitalize="off"
+              // oxlint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+            />
+            {/* A 32-character key is no fun to type on a phone (#137). */}
+            {compact && (
+              <Button
+                type="button"
+                variant="outline"
+                aria-label="Paste"
+                onClick={() => {
+                  // iOS asks the user to allow it; a refusal changes nothing.
+                  navigator.clipboard
+                    ?.readText()
+                    .then((text) => setKey(text.trim()))
+                    .catch(() => {});
+                }}
+              >
+                <ClipboardPaste aria-hidden />
+                Paste
+              </Button>
+            )}
+          </div>
           <FieldError />
           <FieldDescription>
             {hasKey ? "A key is saved. Enter a new one to replace it. " : ""}

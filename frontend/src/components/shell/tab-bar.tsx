@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type MouseEvent } from "react";
 
 import type { TabBarModel } from "@/components/shell/use-tab-bar";
+import { primeKeyboard } from "@/lib/keyboard";
 import { searchSection, tabSections } from "@/lib/tab-bar";
 import { cn } from "@/lib/utils";
 import type { Section } from "@/sections";
@@ -46,6 +47,8 @@ export function TabBar({ model }: { model: TabBarModel }) {
 
   const onTap = (section: Section) => (event: MouseEvent) => {
     event.preventDefault();
+    // Search opens with the keyboard up: focus has to start in this tap.
+    if (section === searchSection) primeKeyboard();
     select(section);
   };
 
