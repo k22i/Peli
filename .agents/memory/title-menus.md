@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-Every poster/landscape card can open one shared right-click menu. `components/media/title-menu.tsx` is `TitleMenu` (coss `ContextMenu`, popup `material-pop w-60`) and `openOnContextKey`; `lib/title-actions.ts` is the logic: `MenuTitle` (a `TitlePreview` plus `imdbId`), `menuTitle(meta)`, `libraryMenuTitle(item)`, `imdbIdOf`, and `useTitleEdits(profileId)` (`setWatched`, `saveToLibrary`, `removeFromLibrary`, `clearProgress` mutations). The title page uses the same hook, so marks and library edits go through one path.
+Every poster/landscape card can open one shared right-click menu (a bottom sheet on the iPhone since #134, see [[bottom-sheets]]). `components/media/title-menu.tsx` is `TitleMenu` (`ResponsiveContextMenu`, popup `material-pop w-60`) and `openOnContextKey`; `lib/title-actions.ts` is the logic: `MenuTitle` (a `TitlePreview` plus `imdbId`), `menuTitle(meta)`, `libraryMenuTitle(item)`, `imdbIdOf`, and `useTitleEdits(profileId)` (`setWatched`, `saveToLibrary`, `removeFromLibrary`, `clearProgress` mutations). The title page uses the same hook, so marks and library edits go through one path.
 
 A card opts in with `menu={menuTitle(meta)}` (or `libraryMenuTitle(item)`, or a literal for Continue Watching). Wired: Home (catalog, library, Continue Watching rows), Browse, Search, Folder, Library, Upcoming rows. Collection folder tiles and the gallery have no title, so no menu.
 
