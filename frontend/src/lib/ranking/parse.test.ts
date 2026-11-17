@@ -2,6 +2,7 @@ import { describe, expect, it } from "vite-plus/test";
 
 import type { Stream } from "@/lib/addon-protocol";
 
+import meteor from "./fixtures/meteor-torbox.json";
 import { parseStream } from "./parse";
 
 const hash = "c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6";
@@ -57,6 +58,18 @@ describe("parseStream", () => {
     ["[RD⏳] Comet 1080p", "RD", false],
   ])("reads %s as %s, cached %s", (name, debrid, cached) => {
     expect(parseStream({ name, description: "x" })).toMatchObject({ debrid, cached });
+  });
+
+  it("reads Meteor's markers from a recorded TorBox response", () => {
+    const read = meteor.streams.map((s) => parseStream(s as Stream, { type: "movie" }));
+    expect(read.map((p) => [p.debrid, p.cached])).toEqual([
+      ["TB", true],
+      ["TB", true],
+      ["TB", true],
+      ["TB", false],
+      ["TB", false],
+      ["TB", false],
+    ]);
   });
 
   it("doesn't take a language tag for a debrid service", () => {

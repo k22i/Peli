@@ -623,7 +623,8 @@ function readSize(s: Stream, p: Pieces): number | null {
 // Cache markers are free text per addon: Torrentio writes "[TB+]" or "[RD
 // download]", Comet "[AD⚡]" or "[PM⬇️]". Only known service codes count, so a
 // "[EN]" tag isn't taken for one. The emoji may carry a variation selector.
-const cacheMarker = /\[(TB|RD|AD|PM|DL|ED|OC|PP)(\+|⚡️?| ?download|⬇️?|⏳)?\]/u;
+// Meteor writes "[TB🌩️]" for cached and "[TB☁️]" for not cached.
+const cacheMarker = /\[(TB|RD|AD|PM|DL|ED|OC|PP)(\+|⚡\uFE0F?|🌩\uFE0F?|☁\uFE0F?| ?download|⬇\uFE0F?|⏳)?\]/u;
 const debrids: Partial<Record<string, Debrid>> = {
   TB: "TB",
   RD: "RD",
@@ -640,7 +641,7 @@ function readCache(name: string): { cached: boolean | null; debrid: Debrid | nul
   const debrid = debrids[m?.[1] ?? ""];
   if (!m || !debrid) return { cached: null, debrid: null };
   const marker = m[2] ?? "";
-  return { cached: marker === "+" || marker.startsWith("⚡"), debrid };
+  return { cached: marker === "+" || marker.startsWith("⚡") || marker.startsWith("🌩"), debrid };
 }
 
 const hex40 = /\b([0-9a-f]{40})\b/i;

@@ -1,0 +1,83 @@
+{
+  "addon": "Meteor",
+  "title": "The Matrix (tt0133093), movie, recorded 2026-11-17 with a TorBox config; urls redacted, 6 of 793 streams",
+  "streams": [
+    {
+      "name": "[TB🌩️] Meteor\n2160p",
+      "description": "📄 The.Matrix.1999.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv\n📺 2160p | remux | hdr10 dovi | h265\n🔊 ac3 truehd atmos 7.1\n🌐 🇬🇧\n💬 🇬🇧 🇸🇦 🇧🇬 🇹🇼 🇭🇷 🇨🇿 🇩🇰 🇳🇱 🇪🇪 🇫🇮 🇫🇷 🇩🇪 🇬🇷 🇮🇱 🇭🇺 🇮🇸 🇮🇩 🇮🇹 🇯🇵 🇰🇷 🇱🇻 🇳🇴 🇵🇱 🇧🇷 🇵🇹 🇷🇴 🇷🇺 🇷🇸 🇸🇮 🇪🇸 🇲🇽 🇸🇪 🇹🇭 🇹🇷\n💾 52.91 GiB   👥 46 seeders   ⚙️ FraMeSToR",
+      "url": "https://meteor.example/<key>/play/<opaque>/0/The.Matrix.1999.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv",
+      "behaviorHints": {
+        "bingeGroup": "meteor|torbox|2160p|remux|h265|dovi",
+        "filename": "The.Matrix.1999.UHD.BluRay.2160p.TrueHD.Atmos.7.1.DV.HEVC.REMUX-FraMeSToR.mkv",
+        "videoSize": 56808632124,
+        "videoHash": "9a1be53bc2e6e2d4",
+        "folderName": "The Matrix 1999 UHD BluRay 2160p TrueHD Atmos 7 1 DV HEVC REMUX-F...",
+        "seeders": 46,
+        "duration": 8179
+      }
+    },
+    {
+      "name": "[TB🌩️] Meteor\n2160p",
+      "description": "📄 00029.m2ts\n📺 2160p | remux | hdr10 | h265\n🔊 ac3 truehd atmos 7.1\n💾 55.40 GiB   👥 1 seeders",
+      "url": "https://meteor.example/<key>/play/<opaque>/0/00029.m2ts",
+      "behaviorHints": {
+        "bingeGroup": "meteor|torbox|2160p|remux|hdr",
+        "filename": "00029.m2ts",
+        "videoSize": 59483572224,
+        "videoHash": "f4cd9f3eb2095d87",
+        "folderName": "BDMV",
+        "seeders": 1,
+        "duration": 8179
+      }
+    },
+    {
+      "name": "[TB🌩️] Meteor\n1080p",
+      "description": "📄 The.Matrix.1999.Remastered.1080p.BluRay.Remux.TrueHD.Atmos.7.1.mkv\n📺 1080p | remux | h264\n🔊 ac3 truehd atmos dtshd 7.1\n🌐 🇬🇧\n💬 🇬🇧 🇫🇷 🇩🇪 🇮🇹 🇪🇸 🇳🇱 🇵🇹 🇯🇵\n💾 29.79 GiB   👥 15 seeders",
+      "url": "https://meteor.example/<key>/play/<opaque>/0/The.Matrix.1999.Remastered.1080p.BluRay.Remux.TrueHD.Atmos.7.1.mkv",
+      "behaviorHints": {
+        "bingeGroup": "meteor|torbox|1080p|remux",
+        "filename": "The.Matrix.1999.Remastered.1080p.BluRay.Remux.TrueHD.Atmos.7.1.mkv",
+        "videoSize": 31985312473,
+        "videoHash": "7d348d6d1eb72754",
+        "folderSize": 31985312513,
+        "seeders": 15,
+        "duration": 8181
+      }
+    },
+    {
+      "name": "[TB☁️] Meteor\n2160p",
+      "description": "📄 The.Matrix.1999.REMASTERED.MULTi.VFi.2160p.UHD.BluRay.REMUX.CUSTOM.DV.HDR10.TrueHD.Atmos.7.1.HEVC-REBiRTH.mkv\n📺 2160p | remux | hdr10 dovi | h265\n🔊 truehd atmos 7.1\n🌐 🇫🇷\n💾 52.27 GiB   ⚙️ REBiRTH",
+      "url": "https://meteor.example/<key>/play/<opaque>/0/The.Matrix.1999.REMASTERED.MULTi.VFi.2160p.UHD.BluRay.REMUX.CUSTOM.DV.HDR10.TrueHD.Atmos.7.1.HEVC-REBiRTH.mkv",
+      "behaviorHints": {
+        "bingeGroup": "meteor|torbox|2160p|remux|h265|hdr10+dovi",
+        "filename": "The.Matrix.1999.REMASTERED.MULTi.VFi.2160p.UHD.BluRay.REMUX.CUSTOM.DV.HDR10.TrueHD.Atmos.7.1.HEVC-REBiRTH.mkv",
+        "videoSize": 56128288204,
+        "folderSize": 56128321392,
+        "seeders": 0
+      }
+    },
+    {
+      "name": "[TB☁️] Meteor\n2160p",
+      "description": "📄 The Matrix (1999) Remux-2160p Proper.mkv\n📺 2160p | remux | PROPER\n💾 51.84 GiB",
+      "url": "https://meteor.example/<key>/play/<opaque>/0/The Matrix (1999) Remux-2160p Proper.mkv",
+      "behaviorHints": {
+        "bingeGroup": "meteor|torbox|2160p|remux",
+        "filename": "The Matrix (1999) Remux-2160p Proper.mkv",
+        "videoSize": 55660784586,
+        "seeders": 0
+      }
+    },
+    {
+      "name": "[TB☁️] Meteor\n1080p",
+      "description": "📄 The Matrix (1999) Remux-1080p - tt0133093.mkv\n📺 1080p | remux\n💾 34.17 GiB   👥 1 seeders",
+      "url": "https://meteor.example/<key>/play/<opaque>/0/The Matrix (1999) Remux-1080p - tt0133093.mkv",
+      "behaviorHints": {
+        "bingeGroup": "meteor|torbox|1080p|remux",
+        "filename": "The Matrix (1999) Remux-1080p - tt0133093.mkv",
+        "videoSize": 36692225172,
+        "folderName": "The Matrix (1999)",
+        "seeders": 1
+      }
+    }
+  ]
+}
