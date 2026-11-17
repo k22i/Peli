@@ -24,25 +24,36 @@ import (
 // Unlocking the orientation ("auto") and leaving the turn to iOS did nothing
 // on an iPhone 14 Pro (iOS 27), with Rotation Lock on or off, so the player
 // asks for each side itself.
+//
+// On every device, from Load to Stop the player is immersive (#131): no
+// status bar, the home indicator fades, and the first swipe from an edge is
+// the player's.
 func rotatingEngine(e *iosplayer.Engine) playback.Engine {
-	if !iosplayer.Phone() {
-		return e
+	phone := iosplayer.Phone()
+	if phone {
+		application.IOS.SetOrientation("portrait")
 	}
-	application.IOS.SetOrientation("portrait")
-	return &rotating{Engine: e}
+	return &rotating{Engine: e, phone: phone}
 }
 
 // rotating is the iOS engine with the motion sensor followed between Load
-// and Stop. Every other control goes straight to the engine.
+// and Stop (on an iPhone) and the system chrome hidden. Every other control
+// goes straight to the engine.
 type rotating struct {
 	*iosplayer.Engine
+	phone     bool
 	mu        sync.Mutex
 	following bool
+	immersive bool
 }
 
 func (r *rotating) Load(source streams.Source, opts playback.LoadOptions) error {
 	r.mu.Lock()
-	if !r.following {
+	if !r.immersive {
+		r.immersive = true
+		r.Engine.SetImmersive(true)
+	}
+	if r.phone && !r.following {
 		r.following = true
 		slog.Info("rotation: player landscape")
 		turnTo(iosplayer.LandscapeRight)
@@ -56,6 +67,10 @@ func (r *rotating) Stop() error {
 	// Turn upright first: the screen behind the player is already showing,
 	// and ending the session can take a moment (the last report).
 	r.mu.Lock()
+	if r.immersive {
+		r.immersive = false
+		r.Engine.SetImmersive(false)
+	}
 	if r.following {
 		r.following = false
 		iosplayer.StopMotion()

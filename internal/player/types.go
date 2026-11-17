@@ -31,6 +31,9 @@ const (
 	EventState = playback.EventState
 	EventTime  = playback.EventTime
 	EventEnded = playback.EventEnded
+	// EventSystemVolume is the system volume, 0–1, each time it changes
+	// while the iOS player is up (its swipe or the hardware buttons, #131).
+	EventSystemVolume = "player:system-volume"
 
 	TimeEvery        = playback.TimeEvery
 	ReportEvery      = playback.ReportEvery
@@ -72,4 +75,5 @@ func init() {
 	application.RegisterEvent[State](EventState)
 	application.RegisterEvent[Time](EventTime)
 	application.RegisterEvent[Ended](EventEnded)
+	application.RegisterEvent[float64](EventSystemVolume)
 }

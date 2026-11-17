@@ -19,12 +19,15 @@ type TitleAdjustments struct {
 	Framing *Framing `json:"framing,omitempty"`
 	Quality *Quality `json:"quality,omitempty"`
 	Sound   *Sound   `json:"sound,omitempty"`
+	// Fill is the iOS player's pinch (#131): true crops the picture to fill
+	// the screen, false shows it whole.
+	Fill *bool `json:"fill,omitempty"`
 	// Unix ms of the last change.
 	ChangedAt int64 `json:"changedAt"`
 }
 
 func (a *TitleAdjustments) empty() bool {
-	return a == nil || (a.Picture == nil && a.Framing == nil && a.Quality == nil && a.Sound == nil)
+	return a == nil || (a.Picture == nil && a.Framing == nil && a.Quality == nil && a.Sound == nil && a.Fill == nil)
 }
 
 func (a *TitleAdjustments) valid() bool {

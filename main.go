@@ -17,6 +17,7 @@ import (
 	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/backend"
 	"github.com/k22i/Peli/internal/diagnostics"
+	"github.com/k22i/Peli/internal/haptics"
 	"github.com/k22i/Peli/internal/licences"
 	"github.com/k22i/Peli/internal/markers"
 	"github.com/k22i/Peli/internal/nuvio"
@@ -145,6 +146,8 @@ func (p *peli) services(x extras) []application.Service {
 	list = append(list, application.NewService(&appinfo.Service{}))
 	// The iOS floating tab bar (#129); no-ops on the desktop.
 	list = append(list, application.NewService(&shell.Service{}))
+	// Taptic feedback on iOS (#131, #135); a no-op on the desktop.
+	list = append(list, application.NewService(&haptics.Service{}))
 	if p.diag != nil {
 		list = append(list, application.NewService(p.diag))
 	}

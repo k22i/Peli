@@ -55,5 +55,25 @@ void peli_turn(int side);
 void peliMotionSide(int side);
 // peli_system_captions is 1 when iOS asks for captions.
 int peli_system_captions(void);
+// The touch player's swipes (#131). peli_brightness_set changes the player
+// window's screen brightness (0–1), saving the screen's own level on the
+// first change; peli_brightness_restore puts that back and forgets it. The
+// app resigning active restores it too, and becoming active again in the
+// player puts the player's level back. peli_brightness_get is -1 when there
+// is no screen.
+void peli_brightness_set(double v);
+double peli_brightness_get(void);
+void peli_brightness_restore(void);
+// peli_volume_set sets the system volume (0–1) through the hidden
+// MPVolumeView's slider that peli_host_attach adds: 0, or -1 when the slider
+// isn't there. peli_volume_get is AVAudioSession's outputVolume. While the
+// host is attached, peliSystemVolume (exported from Go) gets every change,
+// the hardware buttons' included.
+int peli_volume_set(double v);
+double peli_volume_get(void);
+void peliSystemVolume(double v);
+// peli_immersive hides the status bar and the home indicator and keeps the
+// first swipe from an edge for the app (1), or gives them back (0).
+void peli_immersive(int on);
 
 #endif
