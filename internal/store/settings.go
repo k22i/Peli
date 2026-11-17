@@ -65,6 +65,31 @@ type ProfileSettings struct {
 	Framing Framing `json:"framing"`
 	// Sound is how titles sound unless they have their own.
 	Sound Sound `json:"sound"`
+	// Gestures are the iOS touch player's swipes and taps (#131).
+	Gestures Gestures `json:"gestures"`
+}
+
+// Gestures are which of the touch player's picture gestures are on (#131,
+// Settings › Playback › Gestures on iOS).
+type Gestures struct {
+	// LevelSwipes: up and down on the left changes the brightness, on the
+	// right the volume.
+	LevelSwipes bool `json:"levelSwipes"`
+	// SeekSwipe: sideways seeks.
+	SeekSwipe bool `json:"seekSwipe"`
+	// HoldForSpeed: holding the picture plays at 2× until let go.
+	HoldForSpeed bool `json:"holdForSpeed"`
+	// DoubleTapSkip is how far a double tap (and the skip buttons) skip, in
+	// seconds: one of DoubleTapSkips.
+	DoubleTapSkip int `json:"doubleTapSkip"`
+}
+
+// DoubleTapSkips are the skips a profile can pick, in seconds.
+var DoubleTapSkips = []int{5, 10, 15, 30}
+
+// DefaultGestures has every gesture on and 10 s skips.
+func DefaultGestures() Gestures {
+	return Gestures{LevelSwipes: true, SeekSwipe: true, HoldForSpeed: true, DoubleTapSkip: 10}
 }
 
 // SubtitleStyle is how text subtitles look: player.SubtitleStyle,
@@ -159,7 +184,7 @@ func DefaultProfileSettings() ProfileSettings {
 		SimklScrobble:      true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
 		Picture: DefaultPicture(), PicturePresets: []NamedPicture{}, Framing: DefaultFraming(),
-		Sound: DefaultSound(),
+		Sound: DefaultSound(), Gestures: DefaultGestures(),
 	}
 }
 
@@ -227,6 +252,9 @@ func (s *Store) SaveProfileSettings(id uint64, settings ProfileSettings) error {
 	}
 	if settings.Sound == (Sound{}) {
 		settings.Sound = DefaultSound()
+	}
+	if settings.Gestures == (Gestures{}) {
+		settings.Gestures = DefaultGestures()
 	}
 	if err := validateProfileSettings(settings); err != nil {
 		return err
@@ -360,6 +388,9 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	if !settings.Sound.Valid() {
 		return fmt.Errorf("%w: sound %+v", ErrInvalidSettings, settings.Sound)
+	}
+	if !slices.Contains(DoubleTapSkips, settings.Gestures.DoubleTapSkip) {
+		return fmt.Errorf("%w: double-tap skip of %d s", ErrInvalidSettings, settings.Gestures.DoubleTapSkip)
 	}
 	return validatePictures(settings.Picture, settings.PicturePresets)
 }

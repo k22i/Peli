@@ -109,7 +109,7 @@ import {
   type Quality,
 } from "@/lib/quality";
 import { useTmdbKey } from "@/lib/tmdb";
-import { Service as Store } from "@bindings/store";
+import { Service as Store, type Gestures } from "@bindings/store";
 import { Service as Player } from "@bindings/player";
 import {
   trackingQuery,
@@ -528,6 +528,17 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 />
               </>
             )}
+            {/* The touch player's gestures (#131), on iOS only. */}
+            {isIOS() && (
+              <GestureSettings
+                gestures={settings.gestures ?? defaultGestures}
+                setGestures={(changes) =>
+                  setProfile({
+                    gestures: { ...(settings.gestures ?? defaultGestures), ...changes },
+                  })
+                }
+              />
+            )}
             <SettingsGroup title="Next episode">
               <SettingRow
                 id="still-watching"
@@ -574,6 +585,81 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
         )}
       </WithSettings>
     </SettingsPaneView>
+  );
+}
+
+const defaultGestures: Gestures = {
+  levelSwipes: true,
+  seekSwipe: true,
+  holdForSpeed: true,
+  doubleTapSkip: 10,
+};
+const doubleTapSkips = ["5", "10", "15", "30"] as const;
+const doubleTapLabels: Record<(typeof doubleTapSkips)[number], string> = {
+  "5": "5 s",
+  "10": "10 s",
+  "15": "15 s",
+  "30": "30 s",
+};
+
+// Settings › Playback › Gestures (#131): which of the touch player's
+// picture gestures are on, and how far a double tap skips.
+function GestureSettings({
+  gestures,
+  setGestures,
+}: {
+  gestures: Gestures;
+  setGestures: (changes: Partial<Gestures>) => void;
+}) {
+  const toggle = (
+    id: string,
+    label: string,
+    description: string,
+    key: "levelSwipes" | "seekSwipe" | "holdForSpeed",
+  ) => (
+    <SettingRow id={id} label={label} description={description}>
+      <Switch
+        aria-labelledby={`${id}-label`}
+        aria-describedby={`${id}-description`}
+        checked={gestures[key]}
+        onCheckedChange={(on) => setGestures({ [key]: on })}
+      />
+    </SettingRow>
+  );
+  return (
+    <SettingsGroup title="Gestures">
+      {toggle(
+        "level-swipes",
+        "Brightness and volume swipes",
+        "Swipe up or down on the left of the picture for brightness, on the right for volume.",
+        "levelSwipes",
+      )}
+      {toggle(
+        "seek-swipe",
+        "Swipe to seek",
+        "Swipe sideways across the picture to move through the video.",
+        "seekSwipe",
+      )}
+      {toggle(
+        "hold-for-speed",
+        "Hold for 2×",
+        "Touch and hold the picture to play at double speed until you let go.",
+        "holdForSpeed",
+      )}
+      <SettingRow
+        id="double-tap-skip"
+        label="Double-tap skip"
+        description="How far a double tap on either side of the picture, and the skip buttons, go."
+      >
+        <Choice
+          id="double-tap-skip"
+          value={String(gestures.doubleTapSkip)}
+          options={doubleTapSkips}
+          labels={doubleTapLabels}
+          onChange={(skip) => setGestures({ doubleTapSkip: Number(skip) })}
+        />
+      </SettingRow>
+    </SettingsGroup>
   );
 }
 

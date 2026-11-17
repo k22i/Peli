@@ -377,8 +377,9 @@ func (e *Engine) open(mode string) (*session, error) {
 	return ses, nil
 }
 
-// Stop ends the session.
+// Stop ends the session, and gives the screen its own brightness back.
 func (e *Engine) Stop() error {
+	C.peli_brightness_restore()
 	e.ops.Lock()
 	defer e.ops.Unlock()
 	e.mu.Lock()
@@ -484,6 +485,15 @@ func (e *Engine) SetVolume(volume float64) error {
 		return playback.ErrInvalid
 	}
 	return e.set("volume", playback.Seconds(volume))
+}
+
+// SetPanscan crops the picture to fill the screen: 0 shows it whole, 1
+// fills (mpv's panscan; the touch player's pinch, #131).
+func (e *Engine) SetPanscan(v float64) error {
+	if math.IsNaN(v) || v < 0 || v > 1 {
+		return playback.ErrInvalid
+	}
+	return e.set("panscan", playback.Seconds(v))
 }
 
 func (e *Engine) SetMuted(muted bool) error { return e.set("mute", playback.YesNo(muted)) }

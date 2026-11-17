@@ -13,6 +13,8 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaAccessibility/MediaAccessibility.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <objc/runtime.h>
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/EAGLDrawable.h>
 #import <OpenGLES/ES3/gl.h>
@@ -165,6 +167,9 @@ static UIColor *g_scrollBackground;
 static BOOL g_scrollOpaque;
 static UIColor *g_rootBackground;
 
+static void volume_attach(UIView *root);
+static void volume_detach(void);
+
 static void *get_proc_address(void *ctx, const char *name) { return dlsym(RTLD_DEFAULT, name); }
 static void on_update(void *ctx) { [g_view requestDraw]; }
 
@@ -198,6 +203,7 @@ int peli_host_attach(void *vcHandle, void *mpvHandle) {
 			sv.backgroundColor = UIColor.clearColor;
 		}
 		g_view = v;
+		volume_attach(root);
 	};
 	if (NSThread.isMainThread) work(); else dispatch_sync(dispatch_get_main_queue(), work);
 	if (rc) return rc;
@@ -237,6 +243,7 @@ void peli_host_detach(void) {
 	void (^work)(void) = ^{
 		[v teardown];
 		[v removeFromSuperview];
+		volume_detach();
 		if (g_web) {
 			g_web.opaque = g_webOpaque;
 			g_web.backgroundColor = g_webBackground;
@@ -420,5 +427,199 @@ void peli_show_webview(void) {
 		UIView *web = quietWebview;
 		if (!web || web.alpha >= 1) return;
 		[UIView animateWithDuration:0.12 animations:^{ web.alpha = 1; }];
+	});
+}
+
+// ---- The touch player's swipes (#131): brightness, system volume, and the
+// system chrome while the player is up. All UIKit work is on the main queue.
+
+static void on_main(void (^work)(void)) {
+	if (NSThread.isMainThread) work(); else dispatch_sync(dispatch_get_main_queue(), work);
+}
+
+// The player's screen: the video view's window scene's (UIScreen.mainScreen
+// is deprecated), else the first window scene's.
+static UIScreen *player_screen(void) {
+	UIScreen *screen = g_view.window.windowScene.screen;
+	if (screen) return screen;
+	for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
+		if ([scene isKindOfClass:UIWindowScene.class]) return ((UIWindowScene *)scene).screen;
+	}
+	return nil;
+}
+
+// The screen's own brightness from before the player changed it, or -1;
+// and the player's level, to put back when the app comes back to it.
+static double g_savedBrightness = -1;
+static double g_playerBrightness = -1;
+static BOOL g_immersive;
+
+static void brightness_restore_now(void) {
+	if (g_savedBrightness < 0) return;
+	UIScreen *screen = player_screen();
+	if (screen) screen.brightness = g_savedBrightness;
+	g_savedBrightness = -1;
+}
+
+// iOS doesn't restore the brightness an app set, so the app does whenever
+// it leaves the screen (Home, the lock button, a call, Control Center), as
+// VLC does; back in the player, the player's level returns.
+static void brightness_observe(void) {
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		NSNotificationCenter *nc = NSNotificationCenter.defaultCenter;
+		[nc addObserverForName:UIApplicationWillResignActiveNotification object:nil queue:NSOperationQueue.mainQueue
+		            usingBlock:^(NSNotification *n) { brightness_restore_now(); }];
+		[nc addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:NSOperationQueue.mainQueue
+		            usingBlock:^(NSNotification *n) {
+			if (!g_immersive || g_playerBrightness < 0 || g_savedBrightness >= 0) return;
+			UIScreen *screen = player_screen();
+			if (!screen) return;
+			g_savedBrightness = screen.brightness;
+			screen.brightness = g_playerBrightness;
+		}];
+	});
+}
+
+void peli_brightness_set(double v) {
+	if (v < 0) v = 0;
+	if (v > 1) v = 1;
+	dispatch_async(dispatch_get_main_queue(), ^{
+		brightness_observe();
+		UIScreen *screen = player_screen();
+		if (!screen) return;
+		if (g_savedBrightness < 0) g_savedBrightness = screen.brightness;
+		g_playerBrightness = v;
+		screen.brightness = v;
+	});
+}
+
+double peli_brightness_get(void) {
+	__block double v = -1;
+	on_main(^{
+		UIScreen *screen = player_screen();
+		if (screen) v = screen.brightness;
+	});
+	return v;
+}
+
+void peli_brightness_restore(void) {
+	on_main(^{
+		brightness_restore_now();
+		g_playerBrightness = -1;
+	});
+}
+
+// The system volume. An app can only set it through MPVolumeView's slider
+// (VLC and Infuse do the same); while one is in the window, iOS doesn't
+// show its own volume HUD, so the player's level HUD shows instead. It sits
+// off screen at alpha 0.01: hidden or alpha 0 would count as not shown.
+@interface PeliVolumeObserver : NSObject
+@end
+@implementation PeliVolumeObserver
+- (void)observeValueForKeyPath:(NSString *)path ofObject:(id)object change:(NSDictionary *)change context:(void *)ctx {
+	NSNumber *v = change[NSKeyValueChangeNewKey];
+	if ([v isKindOfClass:NSNumber.class]) peliSystemVolume(v.doubleValue);
+}
+@end
+
+static MPVolumeView *g_volumeView;
+static PeliVolumeObserver *g_volumeObserver;
+
+static void volume_attach(UIView *root) { // main thread
+	if (g_volumeView) return;
+	g_volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-2000, -2000, 1, 1)];
+	g_volumeView.alpha = 0.01;
+	g_volumeView.userInteractionEnabled = NO;
+	g_volumeView.isAccessibilityElement = NO;
+	g_volumeView.accessibilityElementsHidden = YES;
+	[root addSubview:g_volumeView];
+	g_volumeObserver = [PeliVolumeObserver new];
+	[AVAudioSession.sharedInstance addObserver:g_volumeObserver forKeyPath:@"outputVolume"
+	                                  options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+static void volume_detach(void) { // main thread
+	if (g_volumeObserver) {
+		[AVAudioSession.sharedInstance removeObserver:g_volumeObserver forKeyPath:@"outputVolume"];
+		g_volumeObserver = nil;
+	}
+	[g_volumeView removeFromSuperview];
+	g_volumeView = nil;
+}
+
+static UISlider *find_slider(UIView *view) {
+	for (UIView *sub in view.subviews) {
+		if ([sub isKindOfClass:UISlider.class]) return (UISlider *)sub;
+		UISlider *deeper = find_slider(sub);
+		if (deeper) return deeper;
+	}
+	return nil;
+}
+
+int peli_volume_set(double v) {
+	if (v < 0) v = 0;
+	if (v > 1) v = 1;
+	__block int rc = -1;
+	on_main(^{
+		if (!g_volumeView) return;
+		[g_volumeView layoutIfNeeded];
+		UISlider *slider = find_slider(g_volumeView);
+		if (!slider) return;
+		[slider setValue:(float)v animated:NO];
+		[slider sendActionsForControlEvents:UIControlEventValueChanged];
+		rc = 0;
+	});
+	return rc;
+}
+
+double peli_volume_get(void) { return AVAudioSession.sharedInstance.outputVolume; }
+
+// Immersive: the status bar and home indicator hidden, and the screen's
+// edges deferring their system gestures (the first swipe up from the bottom
+// is the app's, only a second goes home). Wails' view controller owns those
+// overrides, so its getters are swapped once for ones that read g_immersive
+// and otherwise answer as before (like peliFullScreenWebview in main.m).
+static void immersive_install(void) {
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		Class cls = NSClassFromString(@"WailsViewController");
+		if (!cls) {
+			fprintf(stderr, "iosplayer: immersive: no WailsViewController\n");
+			return;
+		}
+		SEL hidden = @selector(prefersStatusBarHidden);
+		BOOL (*wailsHidden)(id, SEL) = (BOOL (*)(id, SEL))class_getMethodImplementation(cls, hidden);
+		class_replaceMethod(cls, hidden, imp_implementationWithBlock(^BOOL(UIViewController *vc) {
+			return g_immersive ? YES : wailsHidden(vc, hidden);
+		}), "B@:");
+		SEL indicator = @selector(prefersHomeIndicatorAutoHidden);
+		BOOL (*wailsIndicator)(id, SEL) = (BOOL (*)(id, SEL))class_getMethodImplementation(cls, indicator);
+		class_replaceMethod(cls, indicator, imp_implementationWithBlock(^BOOL(UIViewController *vc) {
+			return g_immersive ? YES : wailsIndicator(vc, indicator);
+		}), "B@:");
+		SEL edges = @selector(preferredScreenEdgesDeferringSystemGestures);
+		UIRectEdge (*wailsEdges)(id, SEL) = (UIRectEdge (*)(id, SEL))class_getMethodImplementation(cls, edges);
+		class_replaceMethod(cls, edges, imp_implementationWithBlock(^UIRectEdge(UIViewController *vc) {
+			return g_immersive ? UIRectEdgeAll : wailsEdges(vc, edges);
+		}), "Q@:");
+	});
+}
+
+void peli_immersive(int on) {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		immersive_install();
+		if (g_immersive == (on != 0)) return;
+		g_immersive = on != 0;
+		for (UIScene *scene in UIApplication.sharedApplication.connectedScenes) {
+			if (![scene isKindOfClass:UIWindowScene.class]) continue;
+			for (UIWindow *w in ((UIWindowScene *)scene).windows) {
+				UIViewController *vc = w.rootViewController;
+				if (!vc) continue;
+				[vc setNeedsStatusBarAppearanceUpdate];
+				[vc setNeedsUpdateOfHomeIndicatorAutoHidden];
+				[vc setNeedsUpdateOfScreenEdgesDeferringSystemGestures];
+			}
+		}
 	});
 }

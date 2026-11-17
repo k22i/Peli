@@ -54,6 +54,14 @@ func UseEngine(s *Service, e playback.Engine) {
 	s.mu.Lock()
 	s.engine = e
 	s.mu.Unlock()
+	if v, ok := e.(interface{ OnSystemVolume(func(float64)) }); ok {
+		v.OnSystemVolume(func(level float64) {
+			s.mu.Lock()
+			emit := s.emit
+			s.mu.Unlock()
+			emit(EventSystemVolume, level)
+		})
+	}
 }
 
 // ReportTo sends how far a Watching file got to report, like the desktop
@@ -229,6 +237,65 @@ func (s *Service) Stats() (Stats, error) {
 		return e.Stats()
 	}
 	return Stats{}, ErrDesktopOnly
+}
+
+// The touch player's native controls (#131), when the engine has them
+// (iosplayer does).
+
+type touchControls interface {
+	SetBrightness(v float64) error
+	Brightness() float64
+	SetSystemVolume(v float64) error
+	SystemVolume() float64
+	SetImmersive(on bool) error
+	SetPanscan(v float64) error
+}
+
+func (s *Service) touch() touchControls {
+	t, _ := s.engine_().(touchControls)
+	return t
+}
+
+func (s *Service) SetBrightness(v float64) error {
+	if t := s.touch(); t != nil {
+		return t.SetBrightness(v)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) Brightness() float64 {
+	if t := s.touch(); t != nil {
+		return t.Brightness()
+	}
+	return -1
+}
+
+func (s *Service) SetSystemVolume(v float64) error {
+	if t := s.touch(); t != nil {
+		return t.SetSystemVolume(v)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SystemVolume() float64 {
+	if t := s.touch(); t != nil {
+		return t.SystemVolume()
+	}
+	return -1
+}
+
+func (s *Service) SetImmersive(on bool) error {
+	if t := s.touch(); t != nil {
+		return t.SetImmersive(on)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SetPanscan(v float64) error {
+	if t := s.touch(); t != nil {
+		return t.SetPanscan(v)
+	}
+	return ErrNotYet
 }
 
 // The Service is itself an Engine when it has one to forward to; this keeps

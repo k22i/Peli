@@ -1,4 +1,5 @@
 import { Slider } from "@base-ui/react/slider";
+import { Events } from "@wailsio/runtime";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCanGoBack, useLocation, useNavigate, useRouter } from "@tanstack/react-router";
 import {
@@ -35,6 +36,8 @@ import {
   type ReactNode,
 } from "react";
 
+import { Service as Diagnostics } from "@bindings/diagnostics";
+import { Service as Haptics } from "@bindings/haptics";
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { MoreMenu } from "@/components/player/more-menu";
 import { NextEpisode } from "@/components/player/next-episode";
@@ -47,8 +50,12 @@ import { SpeedMenu } from "@/components/player/speed-menu";
 import {
   EpisodesSheet,
   GlassButton,
+  HoldPill,
+  LevelHud,
+  LockPill,
   RowButton,
   ScrubLabel,
+  SkipRipple,
   TouchMoreMenu,
   TouchSpeedMenu,
   TouchTopRow,
@@ -190,6 +197,15 @@ import {
   type Episode,
 } from "@/lib/title";
 import { feature } from "@/lib/features";
+import {
+  holdAfter,
+  idle as gestureIdle,
+  reduce as reduceGesture,
+  type GestureEvent,
+  type GestureOutput,
+  type GestureState,
+  type Side as LevelSide,
+} from "@/lib/player-gestures";
 import { isIOS, isTouch } from "@/lib/platform";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
@@ -219,6 +235,8 @@ const failed = {
 const idleAfter = 3000;
 // ±10 s.
 const skip = 10;
+// A computed length in CSS pixels, 0 when there is none.
+const px = (v: string | undefined) => Number.parseFloat(v ?? "") || 0;
 // One press of Z or X moves subtitles this many seconds, as in mpv.
 const delayStep = 0.1;
 // One press of ↑ or ↓ moves the volume this much, of 100.
@@ -423,7 +441,39 @@ function PlayerFile({
   // bar's drag drives it, and #131's horizontal swipe will through
   // scrubTo/endScrub; everything but the seek row fades meanwhile.
   const [scrub, setScrub] = useState<{ from: number; to: number }>();
-  const lastTap = useRef<{ at: number; timer: ReturnType<typeof setTimeout> }>(undefined);
+  // The touch player's gestures (#131): how far a double tap and the skip
+  // buttons go (Settings › Playback › Gestures), and the Lock, which hides
+  // every control and turns the gestures off until its pill is held.
+  const gestureSettings = touchLayout ? settings?.gestures : undefined;
+  const skipBy = gestureSettings?.doubleTapSkip ?? skip;
+  const [locked, setLocked] = useState(false);
+  const [lockPill, setLockPill] = useState(false);
+  useEffect(() => {
+    if (!lockPill) return undefined;
+    const timer = setTimeout(() => setLockPill(false), 2000);
+    return () => clearTimeout(timer);
+  }, [lockPill]);
+  // A run of double-tap skips on one side, sent as one seek 400 ms after
+  // the last tap, and its ripple.
+  const [ripple, setRipple] = useState<{ side: -1 | 1; total: number }>();
+  const skipRun = useRef<{
+    side: -1 | 1;
+    total: number;
+    sent: number;
+    at: number;
+    seekTimer?: ReturnType<typeof setTimeout>;
+    hideTimer?: ReturnType<typeof setTimeout>;
+  }>(undefined);
+  useEffect(
+    () => () => {
+      clearTimeout(skipRun.current?.seekTimer);
+      clearTimeout(skipRun.current?.hideTimer);
+    },
+    [],
+  );
+  const lastTap = useRef<{ at: number; side: number; timer: ReturnType<typeof setTimeout> }>(
+    undefined,
+  );
   const surface = useRef<HTMLButtonElement>(null);
   useEffect(() => () => clearTimeout(lastTap.current?.timer), []);
   // A click or key that pauses or plays, shown at the centre for a moment.
@@ -824,15 +874,64 @@ function PlayerFile({
     setStartOverDone(true);
     seek(0);
   };
+  // The newest position and seek, for timers that fire after a render.
+  const positionRef = useRef(position);
+  positionRef.current = position;
+  const seekRef = useRef(seek);
+  seekRef.current = seek;
+  // One more double-tap skip on side: a new run, or one more step of the
+  // run on that side (YouTube's "20 seconds", "30 seconds").
+  const addSkip = (side: -1 | 1) => {
+    const now = Date.now();
+    let run = skipRun.current;
+    if (!run || run.side !== side || now - run.at > 600) {
+      clearTimeout(run?.seekTimer);
+      clearTimeout(run?.hideTimer);
+      run = { side, total: 0, sent: 0, at: now };
+      skipRun.current = run;
+    }
+    const current = run;
+    current.total += skipBy;
+    current.at = now;
+    setRipple({ side, total: current.total });
+    clearTimeout(current.seekTimer);
+    clearTimeout(current.hideTimer);
+    current.seekTimer = setTimeout(() => {
+      const by = current.total - current.sent;
+      current.sent = current.total;
+      if (by) seekRef.current(positionRef.current + side * by);
+    }, 400);
+    current.hideTimer = setTimeout(() => {
+      if (skipRun.current === current) skipRun.current = undefined;
+      setRipple(undefined);
+    }, 600);
+  };
   // A tap on the picture, on touch: the second tap of a pair on the left or
-  // right third skips 10 s that way; a single tap (once no second one came)
-  // hides the controls when they show, and shows them when they don't.
+  // right third skips that way (and on the touch chrome, each further tap
+  // within 600 ms adds as much again); a pair in the middle plays or
+  // pauses. A single tap (once no second one came) hides the controls when
+  // they show, and shows them when they don't.
   const tapPicture = (x: number, box: DOMRect) => {
     const side = x < box.left + box.width / 3 ? -1 : x > box.right - box.width / 3 ? 1 : 0;
+    const run = skipRun.current;
+    if (touchLayout && run && side === run.side && Date.now() - run.at < 600) {
+      clearTimeout(lastTap.current?.timer);
+      lastTap.current = undefined;
+      addSkip(side);
+      return;
+    }
     const last = lastTap.current;
-    if (last && side !== 0 && Date.now() - last.at < 300) {
+    if (last && last.side === side && Date.now() - last.at < 300) {
       clearTimeout(last.timer);
       lastTap.current = undefined;
+      if (side === 0) {
+        togglePause();
+        return;
+      }
+      if (touchLayout) {
+        addSkip(side);
+        return;
+      }
       seek(position + side * skip);
       setNotice({ text: side < 0 ? "−10 s" : "+10 s" });
       return;
@@ -840,14 +939,12 @@ function PlayerFile({
     clearTimeout(last?.timer);
     lastTap.current = {
       at: Date.now(),
-      timer: setTimeout(
-        () => {
-          lastTap.current = undefined;
-          if (shownRef.current) hideControls();
-          else wake();
-        },
-        side === 0 ? 0 : 280,
-      ),
+      side,
+      timer: setTimeout(() => {
+        lastTap.current = undefined;
+        if (shownRef.current) hideControls();
+        else wake();
+      }, 280),
     };
   };
   // The segment playing, and those skipped already, by kind and start.
@@ -1282,6 +1379,20 @@ function PlayerFile({
     enabled: titleKey !== "",
   }).data;
   const saveAdjustments = useSaveTitleAdjustments(profileId, titleKey);
+  // The touch player's pinch (#131): zoomed to fill (mpv's panscan 1, which
+  // crops a wide film to a tall phone's shape) or the original picture.
+  // Kept for the session, and for the title when there is one.
+  const [sessionFill, setSessionFill] = useState<boolean>();
+  const fill = sessionFill ?? adjustments?.fill ?? false;
+  useEffect(() => {
+    if (!touchLayout || !ready || state.loading) return;
+    Player.SetPanscan(fill ? 1 : 0).catch(() => {});
+  }, [touchLayout, ready, state.loading, fill, added.load]);
+  const changeFill = (to: boolean) => {
+    setSessionFill(to);
+    setNotice({ text: to ? "Zoomed to fill" : "Original" });
+    if (titleKey) saveAdjustments.mutate(withSection(adjustments, "fill", to));
+  };
   const [unsavedPicture, setUnsavedPicture] = useState<Picture>();
   const picture = unsavedPicture ?? pictureOf(settings, adjustments);
   const namedPictures = settings?.picturePresets ?? [];
@@ -1599,20 +1710,22 @@ function PlayerFile({
   const failure = error && ((!torrent && failures[error.code ?? ""]) || failed);
   const seekingLate = useLate(state.seeking, 300);
   const waiting = starting || (!failure && (state.loading || state.buffering || seekingLate));
+  const lockedNow = locked && !failure;
   const shown =
-    !idle ||
-    paused ||
-    !ready ||
-    state.loading ||
-    dragging ||
-    over ||
-    menuOpen ||
-    helpOpen ||
-    switcherOpen ||
-    partyOpen ||
-    dockMenuOpen ||
-    episodesOpen ||
-    scrub !== undefined;
+    !lockedNow &&
+    (!idle ||
+      paused ||
+      !ready ||
+      state.loading ||
+      dragging ||
+      over ||
+      menuOpen ||
+      helpOpen ||
+      switcherOpen ||
+      partyOpen ||
+      dockMenuOpen ||
+      episodesOpen ||
+      scrub !== undefined);
   const shownRef = useRef(shown);
   shownRef.current = shown;
   // The subtitles rise to clear the controls while they show, and settle
@@ -1807,6 +1920,177 @@ function PlayerFile({
   // row, the transport at the centre, a thin seek row at the bottom and, for
   // a series, a row of text buttons under it. While scrubbing only the seek
   // row stays, with the time it goes to large at the centre.
+  // The picture's gestures on touch (#131, lib/player-gestures.ts): level
+  // swipes on the sides, swipe to seek, hold for 2×, pinch to fill. Off
+  // while locked, while a sheet is open (a tap closes it) and when the
+  // stream failed. VoiceOver never reaches them: the picture is aria-hidden
+  // and VoiceOver turns touches into its own gestures, so the buttons do it
+  // all.
+  const gesturesOn = touchLayout && !lockedNow && !failure && !panel && !episodesOpen;
+  const gesture = useRef<{
+    state: GestureState;
+    points: Map<number, { x: number; y: number }>;
+    holdTimer?: ReturnType<typeof setTimeout>;
+    // The touch was a pan, hold or pinch: the click that may follow isn't a tap.
+    notTap: boolean;
+  }>({ state: gestureIdle, points: new Map(), notTap: false });
+  const insetProbe = useRef<HTMLDivElement>(null);
+  // The levels a swipe starts from; Go reads them, and the system volume's
+  // changes come as an event (the hardware buttons' too).
+  const levels = useRef({ brightness: -1, volume: -1 });
+  const [hud, setHud] = useState<{ side: LevelSide; value: number; shown: boolean }>();
+  const hudTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(hudTimer.current), []);
+  const showHud = (side: LevelSide, value: number, fadeSoon: boolean) => {
+    clearTimeout(hudTimer.current);
+    setHud({ side, value, shown: true });
+    if (fadeSoon) {
+      hudTimer.current = setTimeout(() => setHud((was) => was && { ...was, shown: false }), 600);
+    }
+  };
+  const [brightener] = useState(() => latestOnly(Player.SetBrightness));
+  const [systemVolumer] = useState(() => latestOnly(Player.SetSystemVolume));
+  const onSystemVolume = useEffectEvent((level: number) => {
+    levels.current.volume = level;
+    const g = gesture.current.state;
+    // A swipe's own change comes back here too; the swipe shows it already.
+    if (g.kind === "level" && g.side === "volume") return;
+    showHud("volume", level, true);
+  });
+  useEffect(() => {
+    if (!touchLayout) return undefined;
+    Player.Brightness()
+      .then((v) => {
+        levels.current.brightness = v;
+      })
+      .catch(() => {});
+    Player.SystemVolume()
+      .then((v) => {
+        levels.current.volume = v;
+      })
+      .catch(() => {});
+    return Events.On("player:system-volume", (event) => onSystemVolume(event.data));
+  }, [touchLayout]);
+  const [holding, setHolding] = useState(false);
+  const heldSpeed = useRef<number>(undefined);
+  const gestureContext = (box: DOMRect) => {
+    const probe = insetProbe.current && getComputedStyle(insetProbe.current);
+    return {
+      width: box.width,
+      height: box.height,
+      insets: {
+        top: px(probe?.paddingTop),
+        right: px(probe?.paddingRight),
+        bottom: px(probe?.paddingBottom),
+        left: px(probe?.paddingLeft),
+      },
+      brightness: levels.current.brightness >= 0 ? levels.current.brightness : 0.5,
+      volume: levels.current.volume >= 0 ? levels.current.volume : 0.5,
+      position: positionRef.current,
+      duration: known ? state.duration : 0,
+      levels: ready && gestureSettings?.levelSwipes !== false,
+      seek: ready && known && gestureSettings?.seekSwipe !== false,
+      hold: ready && !paused && gestureSettings?.holdForSpeed !== false,
+    };
+  };
+  const actOn = (out: GestureOutput | undefined) => {
+    if (!out) return;
+    switch (out.type) {
+      case "level":
+        levels.current[out.side] = out.value;
+        showHud(out.side, out.value, false);
+        if (out.side === "brightness") brightener(out.value);
+        else systemVolumer(out.value);
+        if (out.bump) Haptics.Impact("light").catch(() => {});
+        return;
+      case "level-end":
+        if (hud) showHud(out.side, levels.current[out.side], true);
+        return;
+      case "scrub":
+        setScrub({ from: out.from, to: out.to });
+        seeker({ to: out.to, exact: false });
+        return;
+      case "seek":
+        setScrub(undefined);
+        seek(out.to);
+        return;
+      case "seek-cancel":
+        setScrub(undefined);
+        seek(out.from);
+        return;
+      case "hold":
+        heldSpeed.current = speed;
+        setHolding(true);
+        Player.SetSpeed(2).catch(() => {});
+        return;
+      case "hold-end":
+        if (heldSpeed.current !== undefined) {
+          Player.SetSpeed(heldSpeed.current).catch(() => {});
+          heldSpeed.current = undefined;
+        }
+        setHolding(false);
+        return;
+      case "pinch":
+        if (ready) changeFill(out.fill);
+        return;
+      case "tap":
+        return;
+    }
+  };
+  const feed = (event: GestureEvent, box: DOMRect) => {
+    const g = gesture.current;
+    const step = reduceGesture(g.state, g.points, event, gestureContext(box));
+    g.state = step.state;
+    g.points = step.points;
+    if (step.state.kind !== "pending" && step.state.kind !== "idle") g.notTap = true;
+    clearTimeout(g.holdTimer);
+    if (step.state.kind === "pending") {
+      g.holdTimer = setTimeout(
+        () => feed({ type: "tick", t: performance.now() }, box),
+        Math.max(0, step.state.t0 + holdAfter - performance.now()),
+      );
+    }
+    actOn(step.out);
+  };
+  // Lifting off a hold or a swipe when the gestures turn off mid-touch.
+  useEffect(() => {
+    if (gesturesOn) return;
+    const g = gesture.current;
+    clearTimeout(g.holdTimer);
+    if (g.state.kind === "hold" && heldSpeed.current !== undefined) {
+      Player.SetSpeed(heldSpeed.current).catch(() => {});
+      heldSpeed.current = undefined;
+      setHolding(false);
+    }
+    g.state = gestureIdle;
+    g.points = new Map();
+  }, [gesturesOn]);
+  useEffect(() => () => clearTimeout(gesture.current.holdTimer), []);
+  const pointer = (type: "down" | "move" | "up" | "cancel", event: React.PointerEvent) => {
+    const box = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - box.left;
+    const y = event.clientY - box.top;
+    const t = performance.now();
+    if (type === "down") {
+      if (gesture.current.points.size === 0) gesture.current.notTap = false;
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+      feed({ type, id: event.pointerId, x, y, t }, box);
+    } else if (type === "move") feed({ type, id: event.pointerId, x, y }, box);
+    else if (type === "up") feed({ type, id: event.pointerId, t }, box);
+    else feed({ type, id: event.pointerId }, box);
+  };
+  const lock = () => {
+    setPanel(undefined);
+    setEpisodesOpen(false);
+    setMoreOpen(false);
+    setSpeedOpen(false);
+    setLocked(true);
+    setLockPill(true);
+  };
+  const reportProblem = () => {
+    Diagnostics.ShareLogs().catch(() => setNotice({ text: "Couldn’t share the logs" }));
+  };
+
   const scrubbing = scrub !== undefined;
   const faded = scrubbing && "pointer-events-none opacity-0";
   const episodeList = meta && series ? episodesOf(meta) : [];
@@ -1829,6 +2113,7 @@ function PlayerFile({
         title={playing?.title}
         episode={playing?.episode}
         onBack={leave}
+        onLock={ready ? lock : undefined}
         tracks={
           ready && (subtitlesMenu || audioTracks.length > 1)
             ? {
@@ -1851,6 +2136,7 @@ function PlayerFile({
                 onChange: changeSleep,
               }}
               stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
+              onReport={isIOS() ? reportProblem : undefined}
             />
           )
         }
@@ -1863,15 +2149,15 @@ function PlayerFile({
         )}
       >
         <GlassButton
-          label="Back 10 seconds"
+          label={`Back ${skipBy} seconds`}
           size="skip"
           aria-keyshortcuts="ArrowLeft"
-          onClick={() => seek(position - skip)}
+          onClick={() => seek(position - skipBy)}
           disabled={!ready || !known}
         >
           <RotateCcw />
           <span aria-hidden className="absolute text-[0.5625rem] font-semibold">
-            {skip}
+            {skipBy}
           </span>
         </GlassButton>
         <GlassButton
@@ -1888,15 +2174,15 @@ function PlayerFile({
           )}
         </GlassButton>
         <GlassButton
-          label="Forward 10 seconds"
+          label={`Forward ${skipBy} seconds`}
           size="skip"
           aria-keyshortcuts="ArrowRight"
-          onClick={() => seek(position + skip)}
+          onClick={() => seek(position + skipBy)}
           disabled={!ready || !known}
         >
           <RotateCw />
           <span aria-hidden className="absolute text-[0.5625rem] font-semibold">
-            {skip}
+            {skipBy}
           </span>
         </GlassButton>
       </div>
@@ -2031,7 +2317,13 @@ function PlayerFile({
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
-      onPointerMove={wake}
+      onPointerMove={(event) => {
+        // A swipe on the picture changes a level or seeks: the controls
+        // stay as they were (#131).
+        if (touchLayout && event.pointerType === "touch" && event.target === surface.current)
+          return;
+        wake();
+      }}
       // A touch on the picture is the tap's to judge (tapPicture): woken
       // here first, the controls it should show were up already, and the
       // tap hid them again.
@@ -2049,15 +2341,24 @@ function PlayerFile({
         aria-hidden
         className={cn(
           "absolute inset-0 outline-none",
+          touchLayout && "touch-none",
           !shown ? "cursor-none" : framing.zoom !== 0 && ready ? "cursor-grab" : "cursor-default",
         )}
         onPointerDown={(event) => {
+          if (touchLayout) {
+            if (gesturesOn) pointer("down", event);
+            return;
+          }
           if (!ready || mini || framing.zoom === 0 || event.button !== 0) return;
           panDrag.current = { x: event.clientX, y: event.clientY, start: framing };
           dragged.current = false;
           event.currentTarget.setPointerCapture(event.pointerId);
         }}
         onPointerMove={(event) => {
+          if (touchLayout) {
+            if (gesturesOn) pointer("move", event);
+            return;
+          }
           const drag = panDrag.current;
           if (!drag) return;
           const dx = event.clientX - drag.x;
@@ -2069,17 +2370,33 @@ function PlayerFile({
           drag.last = panBy(drag.start, dx / (box.width * scale), dy / (box.height * scale));
           framer(drag.last);
         }}
-        onPointerUp={() => {
+        onPointerUp={(event) => {
+          if (touchLayout) {
+            if (gesturesOn) pointer("up", event);
+            return;
+          }
           const drag = panDrag.current;
           panDrag.current = undefined;
           if (drag?.last) changeFraming(drag.last);
         }}
-        onPointerCancel={() => {
+        onPointerCancel={(event) => {
+          if (touchLayout) {
+            if (gesturesOn) pointer("cancel", event);
+            return;
+          }
           panDrag.current = undefined;
         }}
         onClick={(event) => {
           if (dragged.current) {
             dragged.current = false;
+            return;
+          }
+          if (touchLayout && lockedNow) {
+            setLockPill(true);
+            return;
+          }
+          if (touchLayout && gesture.current.notTap) {
+            gesture.current.notTap = false;
             return;
           }
           if (panel || pictureOpen || episodesOpen) {
@@ -2395,8 +2712,22 @@ function PlayerFile({
           </>
         )}
       </div>
-      {prompts}
-      {touchLayout && resumePill}
+      {!lockedNow && prompts}
+      {touchLayout && !lockedNow && resumePill}
+      {touchLayout && (
+        <>
+          {/* Reads the safe-area insets for the gestures' dead zones. */}
+          <div
+            ref={insetProbe}
+            aria-hidden
+            className="pointer-events-none invisible absolute pt-[env(safe-area-inset-top)] pe-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] ps-[env(safe-area-inset-left)]"
+          />
+          {ripple && <SkipRipple side={ripple.side} seconds={ripple.total} />}
+          {hud && <LevelHud side={hud.side} value={hud.value} shown={hud.shown} />}
+          {holding && <HoldPill />}
+          {lockedNow && <LockPill shown={lockPill} onUnlock={() => setLocked(false)} />}
+        </>
+      )}
       {asking !== undefined && !failure && (
         <StillWatching
           title={meta?.name ?? playing?.title ?? ""}

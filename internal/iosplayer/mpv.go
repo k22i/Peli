@@ -4,7 +4,7 @@ package iosplayer
 
 /*
 #cgo ios CFLAGS: -fobjc-arc
-#cgo ios LDFLAGS: -framework libmpv -framework OpenGLES -framework UIKit -framework QuartzCore -framework Foundation -framework AVFoundation -framework MediaAccessibility -framework CoreFoundation -framework CoreVideo -framework CoreMotion
+#cgo ios LDFLAGS: -framework libmpv -framework OpenGLES -framework UIKit -framework QuartzCore -framework Foundation -framework AVFoundation -framework MediaAccessibility -framework CoreFoundation -framework CoreVideo -framework CoreMotion -framework MediaPlayer
 #include <mpv/client.h>
 #include <stdlib.h>
 #include "host_ios.h"
