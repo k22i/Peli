@@ -9,6 +9,7 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 
 	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/safego"
 )
 
 // Connection is whether the app can reach Nuvio, for the frontend's offline
@@ -163,7 +164,10 @@ func (m *Monitor) arm() {
 	if m.timer != nil {
 		m.timer.Stop()
 	}
-	m.timer = time.AfterFunc(m.wait, m.probe)
+	m.timer = time.AfterFunc(m.wait, func() {
+		defer safego.Recover("syncer: connection probe")
+		m.probe()
+	})
 }
 
 // probe checks the connection and, if still offline, schedules the next check
@@ -202,7 +206,7 @@ func (m *Monitor) Wake() {
 	}
 	m.wait = m.probeMin
 	m.mu.Unlock()
-	go m.probe()
+	safego.Go("syncer: connection probe", m.probe)
 }
 
 // Check asks Nuvio now, if it isn't known to be reachable, and returns the

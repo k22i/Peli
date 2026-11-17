@@ -19,8 +19,10 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 
 	"github.com/k22i/Peli/internal/appinfo"
+	"github.com/k22i/Peli/internal/diagnostics"
 	"github.com/k22i/Peli/internal/iosplayer"
 	"github.com/k22i/Peli/internal/playback"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
 	"github.com/k22i/Peli/internal/syncer"
@@ -51,6 +53,10 @@ import (
 //   - audio, when it appears, holds interrupt, ended, ended-resume or route
 //     and is deleted: the notification iOS posts for that event is posted,
 //     which drives the player's handlers (iosplayer.DevAudioEvent).
+
+// The rig's crash commands (#127) work, and Settings › About shows them: on a
+// device, where there is no cmd.js, that is how they are run.
+func init() { diagnostics.DevBuild = true }
 
 func devAssets(next http.Handler) http.Handler {
 	dir := os.Getenv("PELI_DEV_DIR")
@@ -114,8 +120,8 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli, 
 			}
 		}()
 	}
-	go devFiles(dir, p)
-	go func() {
+	safego.Go("pelidev: files", func() { devFiles(dir, p) })
+	safego.Go("pelidev: audio", func() {
 		audio := filepath.Join(dir, "audio")
 		for {
 			time.Sleep(500 * time.Millisecond)
@@ -135,8 +141,8 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli, 
 				iosplayer.DevAudioEvent(3, false)
 			}
 		}
-	}()
-	go func() {
+	})
+	safego.Go("pelidev: cmd.js", func() {
 		cmd := filepath.Join(dir, "cmd.js")
 		for {
 			time.Sleep(500 * time.Millisecond)
@@ -147,7 +153,7 @@ func devStart(app *application.App, window *application.WebviewWindow, p *peli, 
 			os.Remove(cmd)
 			window.ExecJS(string(js))
 		}
-	}()
+	})
 }
 
 func devGuest(p *peli) {

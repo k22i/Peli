@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { AudioLanguagesRow } from "@/components/settings/audio-languages";
+import { DiagnosticsRows } from "@/components/settings/diagnostics-rows";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import {
   defaultPane,
@@ -1591,6 +1592,7 @@ function AboutPane({ title }: { title: string }) {
           </SettingRow>
         )}
       </SettingsGroup>
+      <DiagnosticsRows />
     </SettingsPaneView>
   );
 }

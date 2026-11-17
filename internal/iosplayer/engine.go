@@ -33,6 +33,7 @@ import (
 	"unsafe"
 
 	"github.com/k22i/Peli/internal/playback"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
 )
@@ -361,7 +362,7 @@ func (e *Engine) open(mode string) (*session, error) {
 	if err := m.requestLogMessages("v"); err != nil {
 		return fail(err)
 	}
-	go e.loop(ses)
+	safego.Go("iosplayer: events", func() { e.loop(ses) })
 	// The render context must exist before the first loadfile.
 	if rc := C.peli_host_attach(vc, unsafe.Pointer(m.handle())); rc != 0 {
 		e.closeSession(ses)
@@ -713,7 +714,7 @@ func (e *Engine) handle(ses *session, ev mpvEvent) {
 					info[k], _ = ses.m.getString(k)
 				}
 				time.AfterFunc(4*time.Second, func() { e.logTracks(ses) })
-				go e.logStats(ses)
+				safego.Go("iosplayer: stats", func() { e.logStats(ses) })
 				slog.Info("iosplayer: first frame", "ms", time.Since(ses.loadedAt).Milliseconds(), "hwdec", ses.hw, "current", e.state.HWDec, "info", info)
 			}
 		}
