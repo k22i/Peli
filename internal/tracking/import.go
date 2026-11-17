@@ -9,6 +9,7 @@ import (
 
 	"github.com/k22i/Peli/internal/anilist"
 	"github.com/k22i/Peli/internal/animelist"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
 )
@@ -92,13 +93,13 @@ func (s *Service) ImportSoon(profileID uint64) {
 	if recent {
 		return
 	}
-	go func() {
+	safego.Go("tracking: import", func() {
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 		defer cancel()
 		if _, err := s.Import(ctx, profileID); err != nil {
 			slog.Info("tracking: import failed", "error", err)
 		}
-	}()
+	})
 }
 
 // --- SIMKL ----------------------------------------------------------------------

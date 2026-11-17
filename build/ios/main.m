@@ -4,6 +4,10 @@
 #import <objc/runtime.h>
 #include <stdio.h>
 
+// internal/iosshell (#127): the webview comes back after iOS kills WebKit's
+// content process. Must run before the webview gets its delegate.
+extern void peliCrashRecovery(void);
+
 // Wails lays its webview out INSIDE the safe area (WailsViewController's
 // viewDidLayoutSubviews), so the bands under the status bar, the Dynamic
 // Island and the home indicator show the window colour: the player's scrim
@@ -90,6 +94,7 @@ int main(int argc, char * argv[]) {
 
         // Only swaps a method on a class already loaded: nothing starts.
         peliFullScreenWebview();
+        peliCrashRecovery();
 
         // Call UIApplicationMain IMMEDIATELY and start NOTHING else here. Do not
         // start the Go runtime yet: starting it concurrently with UIApplicationMain

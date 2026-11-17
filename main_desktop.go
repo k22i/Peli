@@ -5,6 +5,7 @@ package main
 import (
 	"context"
 	"log"
+	"path/filepath"
 	"runtime"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
@@ -14,6 +15,7 @@ import (
 	"github.com/k22i/Peli/internal/account"
 	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/diagnostics"
 	"github.com/k22i/Peli/internal/firstmouse"
 	"github.com/k22i/Peli/internal/party"
 	"github.com/k22i/Peli/internal/player"
@@ -42,7 +44,11 @@ func main() {
 	if err := store.MoveFromSinag(); err != nil {
 		log.Printf("moving Sinag's folders to Peli's: %v", err)
 	}
-	p := newPeli(store.DefaultPath())
+	dbPath := store.DefaultPath()
+	p := newPeli(dbPath)
+	// The frontend's error reports (#127). The desktop keeps its logging as
+	// it was: no log ring and no crash files; sharing reveals the folder.
+	p.diag = diagnostics.New(diagnostics.Options{Dir: filepath.Dir(dbPath), Platform: diagnostics.Desktop{}})
 	players := p.players
 	// Hardware decoding, as Settings › Playback has it (#66).
 	player.UseSettings(players, p.db)

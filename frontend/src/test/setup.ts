@@ -35,6 +35,19 @@ vi.mock("@bindings/tracking", () => ({
   },
 }));
 
+// Diagnostics (#127): reports and the saved route go nowhere; no logs kept,
+// no crash, not a dev build, unless a test says otherwise.
+vi.mock("@bindings/diagnostics", () => ({
+  Service: {
+    Report: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetRoute: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    ShareLogs: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    LastCrash: vi.fn<() => Promise<unknown>>(() => Promise.resolve(null)),
+    Info: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ dev: false, logs: false })),
+    DevCrash: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+  },
+}));
+
 // The iOS app (ADR-0055): off, unless a test turns it on with `onIOS()` from
 // ./ios (reset after each test). feature() and the shell ask these.
 vi.mock("@/lib/platform", async (importOriginal) => {

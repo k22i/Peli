@@ -24,6 +24,7 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 
 	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -264,11 +265,11 @@ func apply(db *store.Store, id uint64, changes []backend.Change) (int, error) {
 // Background pulls in a goroutine, for events with nobody to report an error
 // to: the launch, a window getting focus, the poll.
 func (p *Puller) Background(ctx context.Context) {
-	go func() {
+	safego.Go("syncer: pull", func() {
 		if _, err := p.Pull(ctx); err != nil && !backend.Offline(err) && !errors.Is(err, context.Canceled) {
 			slog.Warn("syncer: pull failed", "error", err)
 		}
-	}()
+	})
 }
 
 // ShutdownFlush is how long the app waits at exit to send what is queued.
@@ -342,7 +343,7 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 	ctx, s.stop = context.WithCancel(context.WithoutCancel(ctx))
 	s.monitor.Start(ctx)
 	s.pusher.Start(ctx)
-	go func() {
+	safego.Go("syncer: poll", func() {
 		ticker := time.NewTicker(PollEvery)
 		defer ticker.Stop()
 		for {
@@ -353,7 +354,7 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 				s.puller.Background(ctx)
 			}
 		}
-	}()
+	})
 	return nil
 }
 

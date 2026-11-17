@@ -4,6 +4,8 @@ import { createHashHistory, createRouter, type RouterHistory } from "@tanstack/r
 import type { Watching } from "@bindings/playback";
 import type { Source } from "@bindings/streams";
 import type { Stream } from "@/lib/addon-protocol";
+import { ErrorScreen } from "@/components/error-screen";
+import { trackRoute } from "@/lib/diagnostics";
 import { trackNavDirection } from "@/lib/nav-direction";
 import type { PlayTarget } from "@/lib/playback";
 import type { SubtitleTarget } from "@/lib/subtitles";
@@ -30,9 +32,14 @@ export function createAppRouter(
     // in or out for deeper pages and back, see lib/nav-direction.ts); index.css
     // keeps the shell still and turns it off for reduced motion.
     defaultViewTransition: true,
+    // A page that throws while rendering or loading shows "Something went
+    // wrong" with Reload and Go Home, not a blank pane (#127).
+    defaultErrorComponent: ErrorScreen,
   });
   // The router lives as long as the app, so the subscription is never undone.
   trackNavDirection(router);
+  // The route to come back to after the webview's content process dies.
+  trackRoute(router);
   return router;
 }
 

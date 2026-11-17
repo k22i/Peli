@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-router";
 
 import { PinGate } from "@/components/account/pin-dialog";
+import { ErrorScreen } from "@/components/error-screen";
 import { AppShell } from "@/components/shell/app-shell";
 import { toastManager } from "@/components/ui/toast";
 import {
@@ -49,6 +50,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     if (needsPicker(profiles)) throw redirect({ to: "/profiles", replace: true });
   },
   component: RootLayout,
+  // The shell itself failed: the same screen, with no shell around it.
+  errorComponent: ErrorScreen,
 });
 
 function RootLayout() {

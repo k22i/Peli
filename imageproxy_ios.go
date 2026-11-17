@@ -3,6 +3,7 @@
 package main
 
 import (
+	"github.com/k22i/Peli/internal/safego"
 	"io"
 	"net/http"
 	"net/url"
@@ -29,6 +30,7 @@ var imageClient = &http.Client{Timeout: imageTimeout}
 // The only caller is the app's own webview.
 func imageProxy(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer safego.Recover("image proxy")
 		if r.URL.Path != imagePath {
 			next.ServeHTTP(w, r)
 			return

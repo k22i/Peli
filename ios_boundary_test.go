@@ -130,6 +130,16 @@ func TestIOSTabBarFiles(t *testing.T) {
 	}
 }
 
+// internal/iosshell is Peli's additions to Wails' iOS shell (#127): one cgo
+// file and its Objective-C, for the webview's recovery, memory readings and
+// the share sheet.
+func TestIOSShellFiles(t *testing.T) {
+	out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/internal/iosshell", "ios"))
+	if want := "[]|[shell_ios.go]|[]|[shell_ios.m]|[shell_ios.h]"; out != want {
+		t.Errorf("internal/iosshell files changed: %s, want %s; update the boundary test on purpose", out, want)
+	}
+}
+
 // listPackage lists one package's source files for env.
 func listPackage(t *testing.T, env []string, pkg string, tags ...string) string {
 	t.Helper()

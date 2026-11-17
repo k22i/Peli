@@ -5,6 +5,8 @@ package main
 import (
 	"context"
 	"log"
+	"log/slog"
+	"path/filepath"
 	"sync"
 	"time"
 
@@ -12,7 +14,9 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/events"
 
 	"github.com/k22i/Peli/internal/appinfo"
+	"github.com/k22i/Peli/internal/diagnostics"
 	"github.com/k22i/Peli/internal/iosplayer"
+	"github.com/k22i/Peli/internal/iosshell"
 	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/shell"
 	"github.com/k22i/Peli/internal/store"
@@ -35,7 +39,26 @@ const backgroundFlush = 20 * time.Second
 // The frontend's bindings for the left-out services stay generated, and a
 // call to one fails with "unknown bound method" (see docs/adr/0055).
 func main() {
-	p := newPeli(store.DefaultPath())
+	// Logs to stderr and the ring first, so everything below is in what
+	// Settings › About › Diagnostics shares (#127); Go's crash output goes to
+	// this run's crash file.
+	ring := diagnostics.Install()
+	dbPath := store.DefaultPath()
+	diag := diagnostics.New(diagnostics.Options{
+		Dir:      filepath.Dir(dbPath),
+		Ring:     ring,
+		Platform: iosshell.Platform{},
+		Emit: func(name string) {
+			if app := application.Get(); app != nil {
+				app.Event.Emit(name)
+			}
+		},
+	})
+	diagnostics.Start(diag, time.Now())
+	recoverWebview(diag)
+
+	p := newPeli(dbPath)
+	p.diag = diag
 
 	app := application.New(application.Options{
 		Name:        "Peli",
@@ -48,6 +71,16 @@ func main() {
 		// signal_handler_ios.go); it is set, as in Wails' own iOS template,
 		// so a future Wails that honours it doesn't install one.
 		DisableDefaultSignalHandler: true,
+		// Wails' own log lines go into the ring too.
+		Logger: slog.Default(),
+		// A panic Wails recovers outside a bound method (an event handler,
+		// a main-thread callback) is fatal by default: log it and keep the
+		// app. Panics in bound methods already reject the call (Wails
+		// 3.1.0's BoundMethod.Call) and land here as well.
+		PanicHandler: func(d *application.PanicDetails) {
+			slog.Error("panic recovered by Wails", "error", d.Error, "stack", d.FullStackTrace)
+			diagnostics.Flush(diag)
+		},
 		IOS: application.IOSOptions{
 			// The page scrolls inside its own panes (#content, rows), so the
 			// webview itself must not rubber-band or show an indicator.
@@ -102,10 +135,19 @@ func main() {
 	//   - DidEnterBackground pushes inside a background task.
 	//   - DidBecomeActive is the desktop's window focus: pull, retry, import.
 	iosplayer.OnLifecycle(iosplayer.Lifecycle{
-		WillResign:    func() { log.Printf("lifecycle: will resign active"); engine.Suspend() },
+		WillResign: func() {
+			log.Printf("lifecycle: will resign active")
+			diagnostics.SetActive(false)
+			diagnostics.Flush(diag)
+			engine.Suspend()
+		},
 		DidBackground: func() { p.enterBackground(engine) },
-		DidActive:     func() { p.becomeActive(engine) },
+		DidActive: func() {
+			diagnostics.SetActive(true)
+			p.becomeActive(engine)
+		},
 	})
+	diagnostics.Breadcrumbs(diag)
 
 	if err := app.Run(); err != nil {
 		log.Fatal(err)
@@ -150,4 +192,18 @@ func (p *peli) enterBackground(engine *iosplayer.Engine) {
 		}
 		wg.Wait()
 	}()
+}
+
+// recoverWebview connects the native shell's handlers (internal/iosshell)
+// to diagnostics: a content-process kill reloads the page by the loop
+// guard's rules, failed loads and memory warnings are logged.
+func recoverWebview(diag *diagnostics.Service) {
+	iosshell.Handle(iosshell.Handlers{
+		Terminated: func(current string) (int, string) {
+			action, url := diagnostics.Terminated(diag, current, time.Now())
+			return int(action), url
+		},
+		NavigationFailed: diagnostics.NavigationFailed,
+		MemoryWarning:    func() { diagnostics.MemoryWarning(diag) },
+	})
 }

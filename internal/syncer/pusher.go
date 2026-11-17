@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -181,6 +182,7 @@ func (p *Pusher) reschedule() {
 	ctx := p.ctx
 	p.due = at
 	p.timer = time.AfterFunc(max(at.Sub(p.now()), 0), func() {
+		defer safego.Recover("syncer: push")
 		if err := p.flush(ctx, auto); err != nil {
 			logPushError(err)
 		}
@@ -190,11 +192,11 @@ func (p *Pusher) reschedule() {
 // Background flushes in a goroutine, for events with nobody to report an
 // error to: the launch and a window getting focus. It ignores the backoff.
 func (p *Pusher) Background(ctx context.Context) {
-	go func() {
+	safego.Go("syncer: push", func() {
 		if err := p.flush(ctx, kick); err != nil {
 			logPushError(err)
 		}
-	}()
+	})
 }
 
 // Resume is for the network coming back (#31): it forgets the backoff and

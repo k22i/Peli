@@ -20,6 +20,7 @@ import (
 	"github.com/k22i/Peli/internal/anilist"
 	"github.com/k22i/Peli/internal/animelist"
 	"github.com/k22i/Peli/internal/playback"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/simkl"
 	"github.com/k22i/Peli/internal/store"
@@ -140,13 +141,13 @@ func NewService(cfg Config) *Service {
 	}
 	s.scrobbler = newScrobbler(s)
 	s.connected = func(id uint64) {
-		go func() {
+		safego.Go("tracking: import after connecting", func() {
 			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 			defer cancel()
 			if _, err := s.Import(ctx, id); err != nil {
 				slog.Info("tracking: import after connecting failed", "error", err)
 			}
-		}()
+		})
 	}
 	return s
 }
@@ -170,10 +171,10 @@ func (s *Service) ServiceStartup(ctx context.Context, _ application.ServiceOptio
 	}
 	ctx, s.stop = context.WithCancel(context.WithoutCancel(ctx))
 	s.forgetDeleted()
-	go s.scrobbler.run(ctx)
+	safego.Go("tracking: outbox", func() { s.scrobbler.run(ctx) })
 	if db := s.open(); db != nil && s.anime != nil {
 		if tracked, err := db.TrackedProfiles(); err == nil && len(tracked) > 0 {
-			go s.anime.Warm(ctx)
+			safego.Go("animelist: download", func() { s.anime.Warm(ctx) })
 		}
 	}
 	return nil

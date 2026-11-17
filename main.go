@@ -16,11 +16,13 @@ import (
 	"github.com/k22i/Peli/internal/animelist"
 	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/backend"
+	"github.com/k22i/Peli/internal/diagnostics"
 	"github.com/k22i/Peli/internal/licences"
 	"github.com/k22i/Peli/internal/markers"
 	"github.com/k22i/Peli/internal/nuvio"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/shell"
 	"github.com/k22i/Peli/internal/simkl"
@@ -65,6 +67,10 @@ type peli struct {
 	// players is the libmpv Service on the desktop and the stub or iOS engine
 	// host on iOS: the same bound methods either way.
 	players *player.Service
+
+	// diag is the logs, crash files and the frontend's error reports
+	// (#127): main_desktop.go and main_ios.go make it, before newPeli.
+	diag *diagnostics.Service
 
 	client       *nuvio.Client
 	animeList    *animelist.List
@@ -113,7 +119,7 @@ func newPeli(dbPath string) *peli {
 	p.addonFetcher = addons.NewService(appinfo.Version)
 	p.addonFetcher.Register(anilistaddon.Name,
 		anilistaddon.New(anilistClient, p.animeList, anilistaddon.KitsuURL, appinfo.Version))
-	go p.animeList.Warm(context.Background())
+	safego.Go("animelist: download", func() { p.animeList.Warm(context.Background()) })
 	player.ReportTo(p.players, func(r playback.Report) {
 		p.watched.Report(r)
 		tracking.Report(p.trackers, r)
@@ -139,6 +145,9 @@ func (p *peli) services(x extras) []application.Service {
 	list = append(list, application.NewService(&appinfo.Service{}))
 	// The iOS floating tab bar (#129); no-ops on the desktop.
 	list = append(list, application.NewService(&shell.Service{}))
+	if p.diag != nil {
+		list = append(list, application.NewService(p.diag))
+	}
 	add(x.updates)
 	list = append(list,
 		application.NewService(&licences.Service{}),
