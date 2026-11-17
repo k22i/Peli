@@ -46,7 +46,7 @@ export function ServerDialog({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogPopup className="sm:max-w-lg">
+      <DialogPopup sheet className="sm:max-w-lg">
         {/* A fresh form each time it opens. */}
         {open && <ServerForm server={server} onDone={() => onOpenChange(false)} />}
       </DialogPopup>

@@ -1,8 +1,20 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useId, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
+import { ChevronRight } from "lucide-react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 
+import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { ChipRail, Chip } from "@/components/media/chip";
-import { visiblePanes, type PaneId } from "@/components/settings/panes";
+import { visiblePaneGroups, visiblePanes, type PaneId } from "@/components/settings/panes";
+import { useCurrentProfile } from "@/lib/profile";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 export const paneHeadingId = "settings-pane-title";
@@ -19,6 +31,14 @@ export function SettingsPaneView({
   lead?: ReactNode;
   children: ReactNode;
 }) {
+  const compact = useCompactShell();
+  if (compact) {
+    return (
+      <CompactPage title={title} headingId={paneHeadingId} lead={lead}>
+        {children}
+      </CompactPage>
+    );
+  }
   return (
     <section
       aria-labelledby={paneHeadingId}
@@ -47,17 +67,37 @@ export function SettingsGroup({
   children: ReactNode;
 }) {
   const titleId = useId();
+  const compact = useCompactShell();
   return (
     <section aria-labelledby={title ? titleId : undefined} className="flex flex-col gap-2">
       {title && (
-        <h3 id={titleId} className="px-1 type-eyebrow text-muted-foreground">
+        <h3
+          id={titleId}
+          className={cn("px-1 type-eyebrow text-muted-foreground", compact && "ps-4 text-[13px]")}
+        >
           {title}
         </h3>
       )}
-      <div className="flex flex-col divide-y divide-border rounded-2xl bg-card hairline">
+      <div
+        className={cn(
+          "flex flex-col divide-y divide-border bg-card hairline",
+          // An inset-grouped list: 12 pt corners, and rows that start 16 pt
+          // in, as in the iOS Settings app (#137).
+          compact ? "rounded-xl" : "rounded-2xl",
+        )}
+      >
         {children}
       </div>
-      {footer && <p className="px-1 text-small text-pretty text-muted-foreground">{footer}</p>}
+      {footer && (
+        <p
+          className={cn(
+            "px-1 text-small text-pretty text-muted-foreground",
+            compact && "px-4 text-[13px] leading-[1.35]",
+          )}
+        >
+          {footer}
+        </p>
+      )}
     </section>
   );
 }
@@ -76,6 +116,46 @@ export function SettingRow({
   description?: ReactNode;
   children?: ReactNode;
 }) {
+  const compact = useCompactShell();
+  if (compact) {
+    // The label (17 pt) and a short detail line (13 pt) on the left, the
+    // control at the end, never wrapped under it. A long description is a
+    // paragraph under the row, as an iOS footer is; a select shows its value
+    // and a chevron, and opens a sheet.
+    const long = typeof description === "string" && description.length > longDescription;
+    return (
+      <div className="flex flex-col px-4">
+        <div className="flex min-h-11 items-center justify-between gap-3 py-2.5">
+          <div className="flex min-w-0 flex-1 flex-col">
+            <span id={`${id}-label`} className="text-[17px] leading-[22px]">
+              {label}
+            </span>
+            {description && !long && (
+              <p
+                id={`${id}-description`}
+                className="text-[13px] leading-[1.3] text-pretty text-muted-foreground"
+              >
+                {description}
+              </p>
+            )}
+          </div>
+          {children && (
+            <div className="flex max-w-[55%] shrink-0 items-center gap-2 [&_[data-slot=select-trigger]]:w-auto [&_[data-slot=select-trigger]]:min-w-0 [&_[data-slot=select-trigger]]:max-w-full [&_[data-slot=select-trigger]]:bg-transparent [&_[data-slot=select-trigger]]:ps-2 [&_[data-slot=select-trigger]]:text-[17px] [&_[data-slot=select-trigger]]:font-normal [&_[data-slot=select-trigger]]:text-muted-foreground">
+              {children}
+            </div>
+          )}
+        </div>
+        {description && long && (
+          <p
+            id={`${id}-description`}
+            className="pb-3 text-[13px] leading-[1.35] text-pretty text-muted-foreground"
+          >
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
   return (
     <div className="flex min-h-14 flex-wrap items-center justify-between gap-x-6 gap-y-3 px-5 py-3.5">
       <div className="flex min-w-0 flex-1 basis-60 flex-col gap-0.5">
@@ -95,6 +175,9 @@ export function SettingRow({
     </div>
   );
 }
+
+// A description longer than this goes under its row, full width.
+const longDescription = 64;
 
 const nextIndex: Record<string, (index: number, count: number) => number> = {
   ArrowDown: (index, count) => (index + 1) % count,
@@ -197,5 +280,120 @@ export function SettingsPaneRail({ current, className }: { current: PaneId; clas
         </Chip>
       ))}
     </ChipRail>
+  );
+}
+
+// The phone's page: a 34 pt large title that, scrolled under the top strip,
+// becomes a 17 pt title in a 44 pt glass bar (the iOS navigation bar, as in
+// the Library, #132). Back is the top strip's (top-bar.tsx) on a pane.
+export function CompactPage({
+  title,
+  headingId,
+  lead,
+  level = 2,
+  children,
+}: {
+  title: string;
+  headingId?: string | undefined;
+  lead?: ReactNode;
+  level?: 1 | 2;
+  children: ReactNode;
+}) {
+  const bar = useRef<HTMLDivElement | null>(null);
+  const heading = useRef<HTMLHeadingElement | null>(null);
+  const [collapsed, setCollapsed] = useState(false);
+  const Heading = level === 1 ? "h1" : "h2";
+
+  // The small title shows once the large one is wholly under the bar.
+  useEffect(() => {
+    const target = heading.current;
+    const element = bar.current;
+    if (!target || !element || typeof IntersectionObserver === "undefined") return undefined;
+    const top = Number.parseFloat(getComputedStyle(element).top) || 0;
+    const observer = new IntersectionObserver(
+      (entries) => setCollapsed(!entries[entries.length - 1]!.isIntersecting),
+      { rootMargin: `-${top + element.offsetHeight}px 0px 0px 0px` },
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section aria-labelledby={headingId} className="relative flex min-w-0 flex-col gap-6 pb-8">
+      <div
+        ref={bar}
+        aria-hidden
+        data-collapsed={collapsed || undefined}
+        className="group/bar pointer-events-none sticky top-(--spacing-bar) z-10 -mx-page -mb-[4.25rem] flex h-11 items-center justify-center transition-[background-color,box-shadow] duration-(--duration-base) data-collapsed:material-bar data-collapsed:shadow-[0_1px_0_var(--border)]"
+      >
+        <span className="text-[1.0625rem] font-[590] opacity-0 transition-opacity duration-(--duration-fast) group-data-collapsed/bar:opacity-100">
+          {title}
+        </span>
+      </div>
+      <header className="flex flex-col gap-2 pt-1">
+        <Heading
+          id={headingId}
+          ref={heading}
+          tabIndex={-1}
+          className="min-h-11 font-display text-[2.125rem] leading-[1.1] tracking-[-0.01em] outline-none"
+        >
+          {title}
+        </Heading>
+        {lead && <p className="text-[15px] text-pretty text-muted-foreground">{lead}</p>}
+      </header>
+      {children}
+    </section>
+  );
+}
+
+// The phone's Settings root: the profile, then the panes in groups, each a
+// row with a coloured icon and a chevron. A row pushes `?section=` (the
+// directional transition is the router's); Back returns here.
+export function SettingsRoot() {
+  const profile = useCurrentProfile();
+  return (
+    <CompactPage title="Settings" level={1}>
+      <Link
+        to="/profiles"
+        className="flex min-h-[4.5rem] items-center gap-3.5 rounded-xl bg-card px-4 py-3 text-start outline-none hairline focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:bg-foreground/6"
+      >
+        <ProfileAvatar profile={profile} className="size-14" />
+        <span className="flex min-w-0 flex-1 flex-col">
+          <span className="truncate text-[20px] leading-[1.2] font-[590]">{profile.name}</span>
+          <span className="text-[15px] leading-[1.3] text-muted-foreground">Switch profile</span>
+        </span>
+        <ChevronRight aria-hidden className="size-5 shrink-0 text-foreground/35" />
+      </Link>
+      <nav aria-label="Settings panes" className="flex flex-col gap-6">
+        {visiblePaneGroups().map((group) => (
+          <ul
+            key={group.map((pane) => pane.id).join()}
+            className="flex flex-col divide-y divide-border overflow-hidden rounded-xl bg-card hairline"
+          >
+            {group.map((pane) => (
+              <li key={pane.id}>
+                <Link
+                  to="/settings"
+                  search={{ section: pane.id }}
+                  className="flex min-h-12 items-center gap-3.5 ps-4 pe-3 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring motion-safe:active:bg-foreground/6"
+                >
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "grid size-[29px] shrink-0 place-items-center rounded-[7px] text-white",
+                      pane.tone,
+                    )}
+                  >
+                    <pane.icon className="size-[18px]" strokeWidth={2} />
+                  </span>
+                  <span className="flex-1 truncate text-[17px]">{pane.title}</span>
+                  <ChevronRight aria-hidden className="size-5 shrink-0 text-foreground/35" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </nav>
+    </CompactPage>
   );
 }

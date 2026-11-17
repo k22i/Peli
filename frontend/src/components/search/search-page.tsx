@@ -9,10 +9,11 @@ import {
   useState,
   type ComponentProps,
   type KeyboardEvent,
+  type ReactNode,
 } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
-import { BrowseFrame, Notice } from "@/components/browse/browse-page";
+import { BrowseFrame, Notice as NoticeBase } from "@/components/browse/browse-page";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
@@ -21,6 +22,9 @@ import { Input } from "@/components/ui/input";
 import { Kbd } from "@/components/ui/kbd";
 import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import { Spinner } from "@/components/ui/spinner";
+import { RecentList } from "@/components/search/recent-list";
+import { useCompactShell } from "@/lib/shell-mode";
+import { cn } from "@/lib/utils";
 import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useBrowsableAddons } from "@/lib/home";
@@ -64,29 +68,29 @@ export function SearchPage() {
   const field = useRef<HTMLInputElement>(null);
   const results = useRef<HTMLElement>(null);
   const recents = useRecentSearches(profile?.id);
+  const compact = useCompactShell();
+
+  const fields = (
+    <>
+      <SearchField
+        ref={field}
+        search={search}
+        compact={compact}
+        onCommit={recents.add}
+        onArrowDown={() =>
+          results.current?.querySelector<HTMLElement>("[data-row-item][tabindex='0']")?.focus()
+        }
+      />
+      {profile && term !== undefined && (
+        <SearchFilters profile={profile} term={term} search={search} compact={compact} />
+      )}
+    </>
+  );
 
   // The field is there from the first paint (and keeps its focus) while the
   // profile loads; what needs the profile fills in under it.
   return (
-    <BrowseFrame
-      title="Search"
-      quietTitle
-      rail={
-        <div className="flex flex-col gap-3">
-          <SearchField
-            ref={field}
-            search={search}
-            onCommit={recents.add}
-            onArrowDown={() =>
-              results.current?.querySelector<HTMLElement>("[data-row-item][tabindex='0']")?.focus()
-            }
-          />
-          {profile && term !== undefined && (
-            <SearchFilters profile={profile} term={term} search={search} />
-          )}
-        </div>
-      }
-    >
+    <Frame compact={compact} fields={fields}>
       {/* oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- handles keys bubbling up from the cards */}
       <section
         ref={results}
@@ -107,7 +111,39 @@ export function SearchPage() {
           <RowSkeleton />
         )}
       </section>
-    </BrowseFrame>
+    </Frame>
+  );
+}
+
+// On the phone (#137) the field sits right under the top strip and scrolls
+// away with the page: no tall sticky header to eat the room above the
+// keyboard. Elsewhere it is Browse's header.
+function Frame({
+  compact,
+  fields,
+  children,
+}: {
+  compact: boolean;
+  fields: ReactNode;
+  children: ReactNode;
+}) {
+  if (!compact) {
+    return (
+      <BrowseFrame
+        title="Search"
+        quietTitle
+        rail={<div className="flex flex-col gap-3">{fields}</div>}
+      >
+        {children}
+      </BrowseFrame>
+    );
+  }
+  return (
+    <div className="relative flex flex-col gap-4 pb-6 [--spacing-page:calc(1rem+max(env(safe-area-inset-left),env(safe-area-inset-right)))]">
+      <h1 className="sr-only">Search</h1>
+      <div className="flex flex-col gap-3 pt-2">{fields}</div>
+      {children}
+    </div>
   );
 }
 
@@ -123,10 +159,12 @@ function SearchFilters({
   profile,
   term,
   search,
+  compact,
 }: {
   profile: Profile;
   term: string;
   search: SearchSearch;
+  compact: boolean;
 }) {
   const found = useSearchResults(profile, term);
   const genres = searchGenres(found.groups);
@@ -135,41 +173,60 @@ function SearchFilters({
     void navigate({ to: ".", search: changeSearch(search, changes), replace: true });
   // Only once there is something to narrow.
   if (found.groups.length === 0) return null;
+  const year = (
+    <FilterSelect
+      label="Year"
+      allLabel="Any year"
+      value={search.year ?? ""}
+      chip={compact}
+      options={searchYears.map((decade) => ({
+        value: decade,
+        label: decade === "older" ? "Before 1990" : `${decade}s`,
+      }))}
+      onChange={(next) => set({ year: searchYears.find((decade) => decade === next) })}
+    />
+  );
+  const genre = genres.length > 0 && (
+    <FilterSelect
+      label="Genre"
+      allLabel="Any genre"
+      value={search.genre ?? ""}
+      chip={compact}
+      options={genres.map((name) => ({ value: name, label: name }))}
+      onChange={(next) => set({ genre: next || undefined })}
+    />
+  );
+  const kinds = (
+    <>
+      <Chip value="all">All</Chip>
+      <Chip value="movie">Movies</Chip>
+      <Chip value="series">Shows</Chip>
+      <Chip value="anime">Anime</Chip>
+    </>
+  );
+  const onKind = (value: string[]) => {
+    const [next] = value;
+    if (next) set({ type: searchKinds.find((kind) => kind === next) });
+  };
+  // One scrolling rail on the phone: the kinds, then the decade and genre as
+  // chips that open a sheet (#137).
+  if (compact) {
+    return (
+      <ChipRail aria-label="Kind" value={[search.type ?? "all"]} onValueChange={onKind}>
+        {kinds}
+        {year}
+        {genre}
+      </ChipRail>
+    );
+  }
   return (
     <div className="flex flex-col gap-3">
-      <ChipRail
-        aria-label="Kind"
-        value={[search.type ?? "all"]}
-        onValueChange={(value: string[]) => {
-          const [next] = value;
-          if (next) set({ type: searchKinds.find((kind) => kind === next) });
-        }}
-      >
-        <Chip value="all">All</Chip>
-        <Chip value="movie">Movies</Chip>
-        <Chip value="series">Shows</Chip>
-        <Chip value="anime">Anime</Chip>
+      <ChipRail aria-label="Kind" value={[search.type ?? "all"]} onValueChange={onKind}>
+        {kinds}
       </ChipRail>
       <div className="flex flex-wrap gap-2 px-page">
-        <FilterSelect
-          label="Year"
-          allLabel="Any year"
-          value={search.year ?? ""}
-          options={searchYears.map((year) => ({
-            value: year,
-            label: year === "older" ? "Before 1990" : `${year}s`,
-          }))}
-          onChange={(year) => set({ year: searchYears.find((decade) => decade === year) })}
-        />
-        {genres.length > 0 && (
-          <FilterSelect
-            label="Genre"
-            allLabel="Any genre"
-            value={search.genre ?? ""}
-            options={genres.map((genre) => ({ value: genre, label: genre }))}
-            onChange={(genre) => set({ genre: genre || undefined })}
-          />
-        )}
+        {year}
+        {genre}
       </div>
     </div>
   );
@@ -180,10 +237,13 @@ function FilterSelect({
   allLabel,
   value,
   options,
+  chip = false,
   onChange,
 }: {
   label: string;
   allLabel: string;
+  // A chip in the phone's rail, filled once a choice is made.
+  chip?: boolean;
   value: string;
   options: { value: string; label: string }[];
   onChange: (value: string) => void;
@@ -195,7 +255,12 @@ function FilterSelect({
       value={value}
       onValueChange={(next) => onChange(next ?? "")}
       aria-label={label}
-      className="w-40"
+      className={cn(
+        "w-40",
+        chip &&
+          "hit-area h-8 min-h-8 w-auto min-w-0 shrink-0 gap-1 rounded-full ps-3.5 pe-2.5 text-small font-[560]",
+        chip && value && "bg-foreground text-background hover:bg-foreground",
+      )}
     />
   );
 }
@@ -208,9 +273,12 @@ function SearchField({
   search,
   onCommit,
   onArrowDown,
+  compact,
 }: {
   ref: React.Ref<HTMLInputElement>;
   search: SearchSearch;
+  // The phone's field: 44 pt, and Return closes the keyboard.
+  compact: boolean;
   // A search the user means: Enter on it.
   onCommit: (term: string) => void;
   onArrowDown: () => void;
@@ -261,6 +329,8 @@ function SearchField({
       submit(text);
       const term = searchTerm(text);
       if (term) onCommit(term);
+      // The Search key closes the keyboard, so the results show whole.
+      if (compact) event.currentTarget.blur();
     } else if (event.key === "Escape" && text) {
       event.preventDefault();
       clear();
@@ -274,7 +344,10 @@ function SearchField({
     <div className="relative max-w-3xl px-page">
       <SearchIcon
         aria-hidden
-        className="pointer-events-none absolute start-[calc(var(--spacing-page)+1.125rem)] top-1/2 z-10 size-5 -translate-y-1/2 text-muted-foreground"
+        className={cn(
+          "pointer-events-none absolute start-[calc(var(--spacing-page)+1.125rem)] top-1/2 z-10 size-5 -translate-y-1/2 text-muted-foreground",
+          compact && "start-[calc(var(--spacing-page)+0.875rem)]",
+        )}
       />
       <Input
         ref={input}
@@ -299,14 +372,20 @@ function SearchField({
         // The coss Input sets its own height and padding on the <input>; the
         // field here is a material-pop bar, so the wrapper takes the look and the
         // input is sized from it.
-        className="flex h-13 w-full rounded-full bg-foreground/7 outline-ring transition-colors hover:bg-foreground/9 has-focus-visible:bg-foreground/9 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 [&_input]:h-13 [&_input]:ps-13 [&_input]:pe-16 [&_input]:text-[1.0625rem] [&_input]:leading-13 [&_input]:font-[510] [&_input]:placeholder:text-muted-foreground"
+        className={cn(
+          "flex h-13 w-full rounded-full bg-foreground/7 outline-ring transition-colors hover:bg-foreground/9 has-focus-visible:bg-foreground/9 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 [&_input]:h-13 [&_input]:ps-13 [&_input]:pe-16 [&_input]:text-[1.0625rem] [&_input]:leading-13 [&_input]:font-[510] [&_input]:placeholder:text-muted-foreground",
+          compact && "h-11 [&_input]:h-11 [&_input]:ps-11 [&_input]:pe-12 [&_input]:leading-11",
+        )}
       />
       {text ? (
         <button
           type="button"
           aria-label="Clear search"
           onClick={clear}
-          className="absolute end-[calc(var(--spacing-page)+0.625rem)] hit-area bg-foreground/12 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground outline-ring transition-[scale] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:active:scale-95 [&_svg]:size-4"
+          className={cn(
+            "absolute end-[calc(var(--spacing-page)+0.625rem)] hit-area bg-foreground/12 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-foreground outline-ring transition-[scale] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 motion-safe:active:scale-95 [&_svg]:size-4",
+            compact && "size-7",
+          )}
         >
           <X aria-hidden />
         </button>
@@ -374,7 +453,11 @@ function Results({
 }) {
   const open = useOpenTitle();
   const navigate = useNavigate();
+  const compact = useCompactShell();
   const { visible, loading, catalogs, queries } = found;
+  // On the phone the empty and error states fit the room above the keyboard
+  // (#137): centred in what is left of the screen.
+  const Notice = compact ? PhoneNotice : NoticeBase;
   // People aren't addon results: TMDB's, for an unfiltered search, never on a
   // kids profile (nothing can say which people they may see).
   const people = useTmdbPeople(
@@ -403,10 +486,19 @@ function Results({
     const count = new Set(catalogs.map(({ addon }) => addon.url)).size;
     return (
       <>
-        <RecentSearches
-          recents={recents}
-          onPick={(recent) => void navigate({ to: ".", search: { q: recent }, replace: true })}
-        />
+        {compact ? (
+          <RecentList
+            list={recents.list}
+            onPick={(recent) => void navigate({ to: ".", search: { q: recent }, replace: true })}
+            onRemove={recents.remove}
+            onClear={recents.clear}
+          />
+        ) : (
+          <RecentSearches
+            recents={recents}
+            onPick={(recent) => void navigate({ to: ".", search: { q: recent }, replace: true })}
+          />
+        )}
         <Notice
           icon={SearchIcon}
           title="Search your addons’ catalogs"
@@ -531,6 +623,16 @@ function Results({
         </div>
       )}
     </>
+  );
+}
+
+// Browse's notice, in the space between the filters and the keyboard (or the
+// tab bar): about 8 rem is the top strip, the field and the rail.
+function PhoneNotice(props: ComponentProps<typeof NoticeBase>) {
+  return (
+    <div className="flex min-h-[max(14rem,calc(100svh-var(--spacing-bar)-9rem-max(var(--tabs-float),var(--keyboard-h,0px))))] items-center justify-center">
+      <NoticeBase {...props} />
+    </div>
   );
 }
 

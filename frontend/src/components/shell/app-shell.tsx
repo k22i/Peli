@@ -9,6 +9,7 @@ import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
 import { useSeedAudioLanguages } from "@/lib/device-languages";
 import { feature } from "@/lib/features";
+import { useDismissKeyboardOnScroll, useKeyboardInset } from "@/lib/keyboard";
 import { cn } from "@/lib/utils";
 import { currentPlatform } from "@/lib/platform";
 import { searchFieldId } from "@/lib/search";
@@ -44,6 +45,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   useNativeTabBar(tabBar, tabsShown);
   const nativeTabs = feature("nativeTabBar");
   useSeedAudioLanguages();
+  // --keyboard-h while the on-screen keyboard is up (iOS, #137).
+  useKeyboardInset();
+  // Scrolling a list closes the keyboard, as iOS lists do.
+  useDismissKeyboardOnScroll(pane, compact);
   // Toasts lift above the floating bar while it shows (index.css, #132).
   useEffect(() => {
     document.documentElement.toggleAttribute("data-tabs", tabsShown);
@@ -159,7 +164,11 @@ export function AppShell({ children }: { children: ReactNode }) {
                 "pt-bar",
                 // Clear of the floating tab bar, or of the home indicator (0
                 // off iOS).
-                compact ? "pb-(--tabs-float)" : "pb-[env(safe-area-inset-bottom)]",
+                // The keyboard (--keyboard-h, unset elsewhere) hides the tab bar, so
+                // it takes the bar's place: the last row scrolls above it.
+                compact
+                  ? "pb-[max(var(--tabs-float),var(--keyboard-h,0px))]"
+                  : "pb-[max(env(safe-area-inset-bottom),var(--keyboard-h,0px))]",
               )}
             >
               {children}
