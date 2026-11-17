@@ -1073,6 +1073,22 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
         {({ device, setDevice }) => (
           <>
             <QualityGroup device={device} onChange={setDevice} />
+            <SettingsGroup title="Starting">
+              {/* Off unless the user turns it on (#101, ADR-0060): resolving
+              ahead adds the stream to the debrid service's list. */}
+              <SettingRow
+                id="pre-resolve"
+                label="Start cached streams sooner"
+                description="Gets the top pick ready while you choose, when it’s cached on your debrid service, so it starts about two seconds sooner. This adds the stream to your debrid service’s list before you press play, even if you never play it. Off unless you turn it on. Applies to this device."
+              >
+                <Switch
+                  aria-labelledby="pre-resolve-label"
+                  aria-describedby="pre-resolve-description"
+                  checked={device.preResolve}
+                  onCheckedChange={(preResolve) => setDevice({ preResolve })}
+                />
+              </SettingRow>
+            </SettingsGroup>
             {feature("torrent") && (
               <SettingsGroup title="Torrents">
                 {/* Off unless the user turns it on (#55, ADR-0040): peers see

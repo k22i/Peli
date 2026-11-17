@@ -43,6 +43,7 @@ import {
 } from "@/lib/party";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
+import { usePreResolve } from "@/lib/pre-resolve";
 import { deviceSettingsQuery, profileSettingsQuery } from "@/lib/settings";
 import {
   rankingPrefs,
@@ -188,9 +189,30 @@ function Picker({
   video: string;
   target: PlayTarget;
 }) {
-  const { loading, sources, names, meta, settings, view, pin, rows, toggleGroup, refresh, usual } =
-    useStreamChoices(profile.id, type, target.id, video, target.title);
+  const {
+    loading,
+    answered,
+    sources,
+    names,
+    meta,
+    settings,
+    device,
+    view,
+    pin,
+    rows,
+    toggleGroup,
+    refresh,
+    usual,
+  } = useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
+  // "Start cached streams sooner" (#101, ADR-0060): the top pick resolves
+  // while the user looks, when it's a cached debrid stream. Never for a
+  // kids profile: it adds to the parent's debrid list.
+  const ahead = usePreResolve(view.top, {
+    enabled: device?.preResolve === true && !profile.kids,
+    answered,
+    refresh,
+  });
   const navigate = useNavigate();
   // The watch party, when it watches this (ADR-0051): its host's stream and
   // source are offered first, and what's picked starts where the party is.
@@ -254,7 +276,17 @@ function Picker({
               .catch(() => {});
           }, 1000)
         : undefined;
-    resolvePick(candidate, { refresh, signal: controller.signal })
+    // The top pick may have resolved already (#101); if that failed, it
+    // resolves now, with its copies.
+    const resolveNow = () => resolvePick(candidate, { refresh, signal: controller.signal });
+    const early = ahead.take(candidate);
+    const resolving = early
+      ? early.catch(() => {
+          controller.signal.throwIfAborted();
+          return resolveNow();
+        })
+      : resolveNow();
+    resolving
       .finally(() => {
         settled = true;
         clearInterval(statusTimer);
@@ -479,11 +511,12 @@ export function useStreamChoices(
   const addonSources = useStreams(addons, type, video);
   const client = useQueryClient();
   const browsing = useLoadedAddons(profileId);
-  const meta = useQuery({
+  const metaQuery = useQuery({
     ...titleMetaQuery(browsing.addons, type, id),
     enabled: !browsing.loading,
     ...cachedTitleMeta(client, browsing.addons, type, id),
-  }).data?.meta;
+  });
+  const meta = metaQuery.data?.meta;
   // Plugins (#56) are asked beside the addons, and ranked with them.
   const plugins = usePluginSources(type, id, video, meta);
   const sources = [...addonSources, ...plugins.sources];
@@ -502,12 +535,19 @@ export function useStreamChoices(
   };
   const settings = useQuery(profileSettingsQuery(profileId)).data;
   const device = useQuery(deviceSettingsQuery).data;
-  const chosen = useQuery({
+  const chosenQuery = useQuery({
     ...chosenSourceQuery(profileId, id),
     enabled: isSeriesType(type),
-  }).data;
+  });
+  const chosen = chosenQuery.data;
   const last = isSeriesType(type) ? remembered(chosen) : null;
-  const { map } = useEpisodeMap(browsing.addons, browsing.loading, type, id, video);
+  const { map, pending: mapPending } = useEpisodeMap(
+    browsing.addons,
+    browsing.loading,
+    type,
+    id,
+    video,
+  );
   // TMDB's other names for the title, from the title page's own request (#99).
   const aliases = useTmdbAliases(tmdbRef(type, id, meta));
   const ctx = titleContext(type, video, meta, title, { map, aliases });
@@ -519,12 +559,24 @@ export function useStreamChoices(
       if (!next.delete(tier)) next.add(tier);
       return next;
     });
+  // Every source has answered, and what ranks them has loaded: the top
+  // pick only changes now if the user moves it.
+  const answered =
+    !loading &&
+    sources.every((source) => source.status !== "pending") &&
+    !browsing.loading &&
+    !metaQuery.isPending &&
+    !mapPending &&
+    !(isSeriesType(type) && chosenQuery.isPending) &&
+    device !== undefined;
   return {
     loading,
+    answered,
     sources,
     names,
     meta,
     settings,
+    device,
     view,
     pin,
     rows: listRows(view, open),

@@ -72,6 +72,7 @@ vi.mock("@bindings/store", async () => {
         diagnostics: false,
         torrentStreaming: false,
         torrentCacheGB: 5,
+        preResolve: false,
         quality: {},
         audio: { device: "auto", stereoDownmix: false, volumeBoost: false },
       }),

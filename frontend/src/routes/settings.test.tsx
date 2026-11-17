@@ -181,6 +181,7 @@ vi.mock("@bindings/store", async () => {
           diagnostics: false,
           torrentStreaming: false,
           torrentCacheGB: 5,
+          preResolve: false,
           quality: {
             scaling: "balanced",
             deband: "off",
@@ -351,7 +352,7 @@ describe("settings", () => {
     );
 
     await open("Streaming");
-    expect(groups()).toEqual(["Picture", "Torrents"]);
+    expect(groups()).toEqual(["Picture", "Starting", "Torrents"]);
     expect(await screen.findByRole("switch", { name: "Stream torrents" })).not.toBeChecked();
 
     await open("Tracking");
@@ -658,6 +659,20 @@ describe("settings", () => {
     await user.click(screen.getByRole("button", { name: "Clear" }));
     await waitFor(() => expect(cache).toHaveAccessibleDescription(/0 B used/));
     expect(screen.getByRole("button", { name: "Clear" })).toBeDisabled();
+  });
+
+  it("starts cached streams sooner only once turned on, saying it adds to the debrid list", async () => {
+    const user = userEvent.setup();
+    await renderSettings("streaming");
+    const sooner = screen.getByRole("switch", { name: "Start cached streams sooner" });
+    expect(sooner).not.toBeChecked();
+    expect(sooner).toHaveAccessibleDescription(
+      /adds the stream to your debrid service’s list before you press play/,
+    );
+
+    await user.click(sooner);
+    await waitFor(() => expect(store.device?.preResolve).toBe(true));
+    expect(sooner).toBeChecked();
   });
 
   it("puts a setting back if saving it fails", async () => {

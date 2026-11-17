@@ -16,7 +16,7 @@ var japanese = ProfileSettings{
 }
 
 var laptop = DeviceSettings{
-	HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20,
+	HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20, PreResolve: true,
 	MaxResolution: "1080p", HDR: "off", DolbyVision: "on",
 	Quality: Quality{Scaling: "high", Deband: "low", Sharpen: 3, Upscaler: "fsr", MotionSmoothing: true,
 		Deinterlace: "on", ToneMapping: "bt.2390", TargetPeak: 250},

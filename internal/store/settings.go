@@ -117,6 +117,11 @@ type DeviceSettings struct {
 	// on, since peers see their IP address. The piece cache's cap, in GB.
 	TorrentStreaming bool `json:"torrentStreaming"`
 	TorrentCacheGB   int  `json:"torrentCacheGB"`
+	// Resolving the stream picker's top pick before it's picked, when it's
+	// a cached debrid stream (#101, ADR-0060), so it starts sooner. Off
+	// unless the user turns it on: resolving adds the file to the debrid
+	// service's list, even if it never plays.
+	PreResolve bool `json:"preResolve"`
 	// Quality is how hard the renderer works on the picture, unless a
 	// title has its own.
 	Quality Quality `json:"quality"`

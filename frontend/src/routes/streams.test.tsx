@@ -250,6 +250,7 @@ const device: DeviceSettings = {
   diagnostics: false,
   torrentStreaming: false,
   torrentCacheGB: 5,
+  preResolve: false,
   quality: defaultQuality,
   audio: defaultAudio,
 };
@@ -1044,6 +1045,99 @@ const partySource = {
   addonId: "",
   name: "",
 };
+
+// "Start cached streams sooner" (#101, ADR-0060): the cached top pick
+// resolves while the user looks, so picking it plays at once.
+describe("starting cached streams sooner", () => {
+  const shawshank = "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv";
+  const cached = debrid(shawshank, "+");
+  // Longer than the ranking takes to settle (500 ms) and then some.
+  const looking = () => new Promise((r) => setTimeout(r, 900));
+
+  it("resolves the cached top pick ahead, and plays it with P without asking again", async () => {
+    mocks.device.mockResolvedValue({ ...device, preResolve: true });
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe(cached.url);
+    expect(mocks.load).not.toHaveBeenCalled();
+
+    await user.keyboard("p");
+    await opensThePlayer();
+    expect(mocks.resolve).toHaveBeenCalledOnce();
+    expect(mocks.load).toHaveBeenCalledOnce();
+    expect(mocks.load.mock.calls[0]![0]).toEqual(resolved({ url: cached.url, headers: {} }));
+  });
+
+  it("resolves nothing ahead while the setting is off", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: { streams: [cached] } });
+    await renderApp(pickerPath);
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await looking();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("resolves no uncached or torrent top pick ahead", async () => {
+    mocks.device.mockResolvedValue({ ...device, preResolve: true });
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [debrid(shawshank, " download")] },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    await renderApp(pickerPath);
+    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("1 stream"));
+    await waitFor(() => expect(addonStatus("Peerflix")).toHaveTextContent("12 streams"));
+    await looking();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("waits for every addon to answer", async () => {
+    mocks.device.mockResolvedValue({ ...device, preResolve: true });
+    const slow = later<unknown>();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
+      [movieStreams("peerflix.example")]: slow.promise,
+    });
+    await renderApp(pickerPath);
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await looking();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    slow.resolve(peerflixMovie);
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+  });
+
+  it("resolves nothing ahead on a kids profile", async () => {
+    mocks.device.mockResolvedValue({ ...device, preResolve: true });
+    mocks.current.mockResolvedValue({ ...kevin, kids: true });
+    serve({ [movieStreams("torrentio.strem.fun")]: { streams: [cached] } });
+    await renderApp(pickerPath);
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await looking();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("resolves another stream the user picks when it's picked", async () => {
+    mocks.device.mockResolvedValue({ ...device, preResolve: true });
+    const other = debrid("The.Shawshank.Redemption.1994.720p.BluRay.x264-GRP.mkv", "+");
+    other.name = "[TB+] Torrentio\n720p";
+    other.url = other.url.replace("/a000", "/e000");
+    serve({ [movieStreams("torrentio.strem.fun")]: { streams: [cached, other] } });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+
+    const second = shownStreams().find((button) => button.textContent?.includes("720p"));
+    await user.click(second!);
+    await opensThePlayer();
+    expect(mocks.resolve).toHaveBeenCalledTimes(2);
+    expect(mocks.resolve.mock.calls[1]![0].url).toBe(other.url);
+    expect(mocks.load.mock.calls[0]![0]).toEqual(resolved({ url: other.url, headers: {} }));
+  });
+});
 
 describe("with a watch party", () => {
   const answer = {
