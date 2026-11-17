@@ -1,11 +1,12 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { Check, Ellipsis } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import type { WatchedItem } from "@bindings/store";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { EpisodeList } from "@/components/title/episode-list";
 import { Button } from "@/components/ui/button";
+import { ResponsiveMenu, ResponsiveMenuItem } from "@/components/ui/responsive-menu";
 import {
   Select,
   SelectItem,
@@ -14,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { Meta } from "@/lib/addon-protocol";
+import { useCompactShell } from "@/lib/shell-mode";
 import {
   episodeMarks,
   isAired,
@@ -54,6 +56,8 @@ export function Episodes({
   onClearProgress: (episode: Episode) => void;
 }) {
   const navigate = useNavigate();
+  // The phone (#136): a 22 pt heading, and "Mark season watched" in a "•••".
+  const compact = useCompactShell();
   const search: TitleSearch = useSearch({ strict: false });
   const { sentinel, header, stuck } = useStuck();
   const seasons = seasonsOf(list);
@@ -87,7 +91,7 @@ export function Episodes({
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-6 gap-y-3 py-3 motion-safe:transition-[padding] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:py-2">
           <h2
             id="episodes"
-            className="col-start-1 row-start-1 ps-page font-display text-[2.25rem] leading-none motion-safe:transition-[padding,font-size] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:ps-[calc(var(--spacing-page)+3.25rem)] group-data-stuck/header:text-[1.75rem]"
+            className="col-start-1 row-start-1 ps-page font-display text-[2.25rem] leading-none motion-safe:transition-[padding,font-size] motion-safe:duration-(--duration-base) motion-safe:ease-out-soft group-data-stuck/header:ps-[calc(var(--spacing-page)+3.25rem)] group-data-stuck/header:text-[1.75rem] ios-compact:text-[1.375rem] ios-compact:group-data-stuck/header:ps-page ios-compact:group-data-stuck/header:text-[1.375rem]"
           >
             Episodes
           </h2>
@@ -114,15 +118,42 @@ export function Episodes({
               </div>
             )
           )}
-          <Button
-            variant="secondary"
-            className="col-start-2 row-start-1 me-page"
-            disabled={busy || aired.length === 0}
-            onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
-          >
-            <Check className={seasonWatched ? "text-sun-ink opacity-100" : undefined} />
-            {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
-          </Button>
+          {compact ? (
+            <ResponsiveMenu
+              label={seasonLabel(season)}
+              align="end"
+              popupClassName="w-60"
+              trigger={{
+                render: (
+                  <Button
+                    variant="ghost"
+                    size="icon-lg"
+                    aria-label={`More for ${seasonLabel(season)}`}
+                    className="col-start-2 row-start-1 me-1 size-11 sm:size-11"
+                  />
+                ),
+                children: <Ellipsis />,
+              }}
+            >
+              <ResponsiveMenuItem
+                disabled={busy || aired.length === 0}
+                onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
+              >
+                <Check />
+                {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
+              </ResponsiveMenuItem>
+            </ResponsiveMenu>
+          ) : (
+            <Button
+              variant="secondary"
+              className="col-start-2 row-start-1 me-page"
+              disabled={busy || aired.length === 0}
+              onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
+            >
+              <Check className={seasonWatched ? "text-sun-ink opacity-100" : undefined} />
+              {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
+            </Button>
+          )}
         </div>
       </header>
       <EpisodeList

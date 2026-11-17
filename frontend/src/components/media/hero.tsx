@@ -1,9 +1,10 @@
-import { Children, useState, type ReactNode, type Ref } from "react";
+import { Children, useLayoutEffect, useRef, useState, type ReactNode, type Ref } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { Skeleton } from "@/components/ui/skeleton";
 import { sharper, viaProxy } from "@/lib/artwork-url";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // feature  Home's marquee: the whole window's width, pulled up under the top
@@ -16,7 +17,8 @@ const bled = (size: HeroSize) => size !== "default";
 
 const heights: Record<HeroSize, string> = {
   feature: "min-h-[min(84vh,50rem)] ios-compact:min-h-[min(64vh,32rem)]",
-  title: "min-h-[min(74vh,44rem)] ios-compact:min-h-[min(60vh,28rem)]",
+  // The phone: 52 % of the screen (#136), the text starting under the bar row.
+  title: "min-h-[min(74vh,44rem)] ios-compact:min-h-[52svh]",
   default: "min-h-[min(56vh,30rem)]",
 };
 
@@ -59,6 +61,8 @@ export function Hero({
 }) {
   const bleeds = bled(size);
   useArtUnderBar(bleeds);
+  const compactShell = useCompactShell();
+  const phoneTitle = size === "title" && compactShell;
   return (
     <section
       ref={ref}
@@ -98,6 +102,8 @@ export function Hero({
             bleeds
               ? "px-page pt-40 pb-14 ios-compact:pt-28 ios-compact:pb-10"
               : "px-8 pt-24 pb-9 sm:px-10",
+            // One bar row (Back | avatar) sits above the text, not over it.
+            size === "title" && "ios-compact:pt-[calc(var(--spacing-bar)+0.5rem)]",
           )}
         >
           <div className="flex max-w-2xl min-w-0 flex-col gap-4">
@@ -111,7 +117,7 @@ export function Hero({
                     size === "feature"
                       ? "max-h-36 max-w-[min(30rem,100%)] ios-compact:max-h-24"
                       : size === "title"
-                        ? "max-h-32 max-w-[min(28rem,100%)] ios-compact:max-h-24"
+                        ? "max-h-32 max-w-[min(28rem,100%)] ios-compact:max-h-24 ios-compact:max-w-[70%]"
                         : undefined
                   }
                 />
@@ -120,13 +126,16 @@ export function Hero({
               )}
             </h1>
             {meta && meta.length > 0 && (metaRaw ? meta : <MetaLine items={meta} />)}
-            {synopsis && (
-              <p className="line-clamp-3 max-w-xl text-[0.9375rem] leading-relaxed text-pretty text-white/78">
-                {synopsis}
-              </p>
-            )}
+            {synopsis &&
+              (phoneTitle && typeof synopsis === "string" ? (
+                <Overview key={synopsis} text={synopsis} />
+              ) : (
+                <p className="line-clamp-3 max-w-xl text-[0.9375rem] leading-relaxed text-pretty text-white/78">
+                  {synopsis}
+                </p>
+              ))}
             {actions && (
-              <div className="mt-2 flex flex-wrap items-center gap-2.5 ios-compact:flex-nowrap">
+              <div className="mt-2 flex flex-wrap items-center gap-2.5 ios-compact:w-full ios-compact:flex-nowrap">
                 {actions}
               </div>
             )}
@@ -135,6 +144,42 @@ export function Hero({
         </div>
       </div>
     </section>
+  );
+}
+
+// The phone's overview (#136): three lines, and "More" when there is more.
+function Overview({ text }: { text: string }) {
+  const paragraph = useRef<HTMLParagraphElement>(null);
+  const [open, setOpen] = useState(false);
+  const [clipped, setClipped] = useState(false);
+  useLayoutEffect(() => {
+    const element = paragraph.current;
+    if (element && !open) setClipped(element.scrollHeight > element.clientHeight + 1);
+  }, [open]);
+  return (
+    <div className="flex max-w-xl flex-col items-start gap-1">
+      <p
+        ref={paragraph}
+        id="overview"
+        className={cn(
+          "text-[0.9375rem] leading-relaxed text-pretty text-white/78",
+          !open && "line-clamp-3",
+        )}
+      >
+        {text}
+      </p>
+      {(clipped || open) && (
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="overview"
+          onClick={() => setOpen(!open)}
+          className="-my-2 min-h-11 text-[0.9375rem] font-[620] text-white outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {open ? "Less" : "More"}
+        </button>
+      )}
+    </div>
   );
 }
 

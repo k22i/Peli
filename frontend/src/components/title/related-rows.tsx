@@ -2,6 +2,7 @@ import { PosterCard } from "@/components/media/cards";
 import { Row } from "@/components/media/row";
 import { toastManager } from "@/components/ui/toast";
 import { useQueryClient } from "@tanstack/react-query";
+import { useCompactShell } from "@/lib/shell-mode";
 import { useOpenTitle } from "@/lib/title";
 import {
   tmdbImdbQuery,
@@ -47,6 +48,8 @@ function RelatedRow({
   current?: number | undefined;
 }) {
   const open = useOpenRelated();
+  // The phone's dense poster: 120 pt wide with the small caption (#136).
+  const dense = useCompactShell();
   return (
     <Row
       title={title}
@@ -57,6 +60,8 @@ function RelatedRow({
           title={item.title}
           meta={item.tmdb === current ? "This film" : item.year}
           src={item.poster}
+          dense={dense}
+          className={dense ? "w-[7.5rem]" : undefined}
           aria-current={item.tmdb === current ? "page" : undefined}
           onClick={() => void open(item)}
         />

@@ -24,6 +24,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import { feature } from "@/lib/features";
 import { isIOS } from "@/lib/platform";
+import { useCompactShell } from "@/lib/shell-mode";
 import { toastManager } from "@/components/ui/toast";
 import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
@@ -120,6 +121,43 @@ function PageHeader({
   backdrop?: string | undefined;
 }) {
   useArtUnderBar(backdrop !== undefined);
+  const compact = useCompactShell();
+  // The phone (#136): no hero. Back is in the top bar, and a 56 pt strip of
+  // blurred art under it holds "Streams" and what it is for.
+  if (compact) {
+    return (
+      <header
+        className={cn(
+          "relative isolate [--fade:var(--background)]",
+          backdrop && "dark under-bar text-foreground",
+        )}
+      >
+        {backdrop && (
+          <>
+            <Artwork
+              src={backdrop}
+              use="backdrop"
+              title={title}
+              className="absolute inset-0 -z-10 scale-125 blur-2xl"
+            />
+            <div className="absolute inset-0 -z-10 bg-black/55" />
+            <div className="absolute inset-x-0 bottom-0 -z-10 h-6 bg-linear-to-t from-(--fade) to-transparent" />
+          </>
+        )}
+        <div
+          className={cn(
+            "flex h-14 flex-col justify-center px-page",
+            backdrop && "mt-(--spacing-bar)",
+          )}
+        >
+          <h1 className="text-[1.375rem] leading-tight font-[650] tracking-[-0.015em]">
+            Streams<span className="sr-only"> · {title}</span>
+          </h1>
+          <p className="truncate text-[0.8125rem] text-foreground/75">{episode ?? title}</p>
+        </div>
+      </header>
+    );
+  }
   return (
     <header
       className={cn(
@@ -649,6 +687,7 @@ export function StreamsSummary({
   loading: boolean;
   total: number;
 }) {
+  const compact = useCompactShell();
   const waiting = sources.filter((source) => source.status === "pending").length;
   const plural = sources.some((source) => source.kind === "plugin") ? "sources" : "addons";
   const one = plural === "sources" ? "1 source" : "1 addon";
@@ -664,16 +703,19 @@ export function StreamsSummary({
             ? `, still loading ${plural}`
             : ` from ${sources.length === 1 ? one : `${sources.length} ${plural}`}`}
       </p>
-      <ScrollRail>
-        <ul
-          aria-label={plural === "sources" ? "Addons and plugins" : "Addons"}
-          className="flex shrink-0 gap-2"
-        >
-          {sources.map((source) => (
-            <SourceStatus key={source.key} source={source} />
-          ))}
-        </ul>
-      </ScrollRail>
+      {/* One addon that answered is told by the line above, not a chip. */}
+      {!(compact && sources.length === 1 && sources[0]?.status === "success") && (
+        <ScrollRail>
+          <ul
+            aria-label={plural === "sources" ? "Addons and plugins" : "Addons"}
+            className="flex shrink-0 gap-2"
+          >
+            {sources.map((source) => (
+              <SourceStatus key={source.key} source={source} />
+            ))}
+          </ul>
+        </ScrollRail>
+      )}
     </div>
   );
 }
