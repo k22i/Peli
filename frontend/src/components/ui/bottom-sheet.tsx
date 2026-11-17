@@ -45,7 +45,8 @@ export function BottomSheet({
   // The last drag's end, so the click that follows it doesn't choose a row.
   const draggedAt = useRef(0);
 
-  // The shell hides its tab bar while a sheet is open (#129).
+  // The tab bar (#129) hides while a sheet is open: lib/sheets holds a
+  // hideTabBar() request.
   useEffect(() => (open ? markSheetOpen() : undefined), [open]);
   // A fresh sheet starts at rest.
   useEffect(() => {

@@ -231,6 +231,8 @@ describe("the iOS shell", () => {
   });
 });
 
+const tabBar = () => document.querySelector('[data-slot="tab-bar"]');
+
 describe("menus on the iPhone (#134)", () => {
   it("opens the profile menu as a bottom sheet, with the tab bar hidden meanwhile", async () => {
     width(true);
@@ -244,7 +246,8 @@ describe("menus on the iPhone (#134)", () => {
     expect(sheet).toHaveAttribute("aria-modal", "true");
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     expect(within(sheet).getByRole("link", { name: "Settings" })).toBeInTheDocument();
-    expect(screen.queryByRole("navigation", { name: "Main" })).not.toBeInTheDocument();
+    // The tab bar (#129) stays mounted but hidden: inert and slid away.
+    expect(tabBar()).toHaveAttribute("inert");
 
     // Switch profile is a second page of the same sheet.
     await user.click(within(sheet).getByRole("button", { name: "Switch profile" }));
@@ -254,10 +257,7 @@ describe("menus on the iPhone (#134)", () => {
 
     await user.keyboard("{Escape}");
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
-    expect(screen.getByRole("navigation", { name: "Main" })).toHaveAttribute(
-      "data-slot",
-      "tab-bar",
-    );
+    expect(tabBar()).not.toHaveAttribute("inert");
     await waitFor(() => expect(trigger).toHaveFocus());
   });
 });
