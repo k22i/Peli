@@ -6,6 +6,7 @@ import { createRoot } from "react-dom/client";
 
 import { ToastProvider, toastManager } from "@/components/ui/toast";
 import { Service as Diagnostics } from "@bindings/diagnostics";
+import { reportPageReady } from "@/lib/app-info";
 import { installErrorHandlers, onMemoryWarning, restoreRoute } from "@/lib/diagnostics";
 import { installDevCrash } from "@/lib/dev-crash";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
@@ -54,6 +55,9 @@ function render(container: HTMLElement) {
       </PersistQueryClientProvider>
     </StrictMode>,
   );
+  // The iOS webview stays clear until now (#139): after the first render,
+  // which on iOS waits for the native tab bar check (#129).
+  reportPageReady();
   // After the toast provider has mounted: a toast added before it is lost.
   if (recovered === "home") {
     setTimeout(() => toastManager.add({ title: "Peli reloaded to free memory" }), 500);

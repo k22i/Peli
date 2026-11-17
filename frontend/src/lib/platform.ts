@@ -26,7 +26,17 @@ const iosUserAgent = /\bPeliIOS\b/;
 
 // How the screens that talk about where things are kept name the device.
 export function thisDevice(): string {
-  return isIOS() ? "this device" : "this computer";
+  return `this ${deviceName()}`;
+}
+
+// "iPhone" or "iPad" in the app, "computer" elsewhere. iPadOS can report a Mac
+// user agent, so a touch screen on a "Macintosh" counts as an iPad.
+export function deviceName(): string {
+  if (!isIOS()) return "computer";
+  const ipad =
+    /\biPad\b/.test(navigator.userAgent) ||
+    (/\bMacintosh\b/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+  return ipad ? "iPad" : "iPhone";
 }
 
 // Whether the only pointer is a finger: no hover, no right-click. Always on

@@ -24,6 +24,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toastManager } from "@/components/ui/toast";
 import { profilesQuery } from "@/lib/account";
 import { useCurrentProfile } from "@/lib/profile";
+import { thisDevice } from "@/lib/platform";
 import {
   serverName,
   serverProblem,
@@ -170,7 +171,7 @@ function ServerForm({ server, onDone }: { server: Server; onDone: () => void }) 
                   {server.custom && server.hasKey
                     ? "A key is saved for this server. Enter it again to keep it; left empty, the key the server publishes is used. "
                     : "Leave it empty if the server publishes its key, as NuvioMedia/self-host does. "}
-                  Kept in this computer’s keychain.
+                  Kept in {thisDevice()}’s keychain.
                 </FieldDescription>
               </Field>
             </>
@@ -195,9 +196,9 @@ function ServerForm({ server, onDone }: { server: Server; onDone: () => void }) 
               <LogOut />
               <AlertTitle>Switching signs you out</AlertTitle>
               <AlertDescription>
-                Your Nuvio profiles are removed from this computer, with their library and progress.
-                Changes waiting to sync are sent first. The Guest profile stays. Then sign in with
-                an account on the new server.
+                Your Nuvio profiles are removed from {thisDevice()}, with their library and
+                progress. Changes waiting to sync are sent first. The Guest profile stays. Then sign
+                in with an account on the new server.
               </AlertDescription>
             </Alert>
           )}

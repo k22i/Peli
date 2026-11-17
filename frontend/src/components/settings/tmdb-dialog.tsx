@@ -18,6 +18,7 @@ import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toastManager } from "@/components/ui/toast";
 import { TmdbError, useRemoveTmdbKey, useSaveTmdbKey } from "@/lib/tmdb";
+import { thisDevice } from "@/lib/platform";
 
 // TMDB's terms ask apps that use its API to say so.
 export const tmdbNotice =
@@ -106,8 +107,8 @@ function TmdbForm({ hasKey, onDone }: { hasKey: boolean; onDone: () => void }) {
           <FieldError />
           <FieldDescription>
             {hasKey ? "A key is saved. Enter a new one to replace it. " : ""}
-            Get one free from your account’s API settings on themoviedb.org. Kept in this computer’s
-            keychain.
+            Get one free from your account’s API settings on themoviedb.org. Kept in {thisDevice()}
+            ’s keychain.
           </FieldDescription>
         </Field>
         {problem && !problem.field && (

@@ -369,3 +369,56 @@ int peli_system_captions(void) {
 	CFRelease(prefs);
 	return on;
 }
+
+int peli_bundle_build(char *buf, int size) {
+	NSString *build = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+	if (![build isKindOfClass:NSString.class] || build.length == 0 || size <= 0) return 0;
+	return [build getCString:buf maxLength:(NSUInteger)size encoding:NSUTF8StringEncoding] ? 1 : 0;
+}
+
+// --- Launch: no white flash --------------------------------------------------
+// The launch screen is --background (UILaunchScreen, the LaunchBackground
+// colour), but the webview used to arrive white, a flash in dark mode. From
+// its first layout it is clear and non-opaque over a window and view in the
+// same colour as the launch screen, and invisible until the page reports its
+// DOMContentLoaded (appinfo.PageReady). Wails' SetBackgroundColour, from
+// lib/theme.ts, then makes it opaque in the theme's colour.
+
+static UIView *quietWebview;
+
+// --background, light and dark: windowColours in lib/theme.ts.
+static UIColor *peliBackground(void) {
+	return [UIColor colorWithDynamicProvider:^UIColor *(UITraitCollection *traits) {
+		return traits.userInterfaceStyle == UIUserInterfaceStyleDark
+			? [UIColor colorWithRed:14 / 255.0 green:13 / 255.0 blue:12 / 255.0 alpha:1]
+			: [UIColor colorWithRed:245 / 255.0 green:242 / 255.0 blue:236 / 255.0 alpha:1];
+	}];
+}
+
+// Called on the main thread by main.m's layout hook; the first call counts.
+void peli_quiet_webview(UIViewController *vc, UIView *web) {
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		quietWebview = web;
+		UIColor *background = peliBackground();
+		vc.view.backgroundColor = background;
+		vc.view.window.backgroundColor = background;
+		web.opaque = NO;
+		web.backgroundColor = UIColor.clearColor;
+		UIScrollView *scroll = [web respondsToSelector:@selector(scrollView)] ? [(id)web scrollView] : nil;
+		scroll.opaque = NO;
+		scroll.backgroundColor = UIColor.clearColor;
+		web.alpha = 0;
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 4 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+			peli_show_webview();
+		});
+	});
+}
+
+void peli_show_webview(void) {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		UIView *web = quietWebview;
+		if (!web || web.alpha >= 1) return;
+		[UIView animateWithDuration:0.12 animations:^{ web.alpha = 1; }];
+	});
+}

@@ -12,6 +12,7 @@ import { toastManager } from "@/components/ui/toast";
 import type { Manifest } from "@/lib/addon-protocol";
 import { addonsQuery } from "@/lib/addons";
 import { currentProfileQuery } from "@/lib/profile";
+import { thisDevice } from "@/lib/platform";
 import type { Addon, Profile } from "@bindings/store";
 
 // Reached from the profile menu and Settings.
@@ -44,7 +45,7 @@ function Addons() {
 
 function syncNote(profile: Profile): string {
   if (profile.nuvioIndex === undefined || profile.nuvioIndex === null) {
-    return "On this computer only.";
+    return `On ${thisDevice()} only.`;
   }
   return profile.usesPrimaryAddons
     ? "Shared with your first Nuvio profile, and the same on every device."

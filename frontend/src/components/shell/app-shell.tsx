@@ -7,6 +7,7 @@ import { useNativeTabBar, useTabBar } from "@/components/shell/use-tab-bar";
 import { CommandPalette } from "@/components/shell/command-palette";
 import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
+import { useSeedAudioLanguages } from "@/lib/device-languages";
 import { feature } from "@/lib/features";
 import { cn } from "@/lib/utils";
 import { currentPlatform } from "@/lib/platform";
@@ -42,6 +43,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const tabBar = useTabBar(tabsShown ? pane : null, tabsShown);
   useNativeTabBar(tabBar, tabsShown);
   const nativeTabs = feature("nativeTabBar");
+  useSeedAudioLanguages();
   // A stable callback: a new one each render would null and set the state
   // again, forever.
   const contentRef = useCallback((node: HTMLDivElement | null) => {

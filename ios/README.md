@@ -177,12 +177,19 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 - **The simulator is a poor guide to playback.** It draws video in software and has no hardware H.264 decoder. Heavy streams (such as a 46 GB, about 35 Mbit/s H.264 remux, or a 1080p HEVC on the iPad) can stay black while time advances and audio plays; a test clip draws on the same session. One failed VideoToolbox setup can leave the simulator drawing black until it reboots.
 - **OpenGL ES is deprecated.** It works, but rules out Picture in Picture. Moving mpv to Metal through MoltenVK is the likely next step if a device shows problems.
 - AniList hasn't been tested against a real account (fakes only); SIMKL and Nuvio have.
-- Small things:
-  - The Guest profile says "On this computer" on a phone.
-  - The picker labels some debrid addons' cached links "P2P" (shared with desktop).
-  - The Guest profile has no audio language, so a default-flagged dub can start first.
-  - Some audio track names show in lower case.
+- Small things (#139): fixed in the code on 2026-11-17, waiting for a look on a device (see "Small fixes" below).
 - Never run on GitHub: the separate [iOS workflow](../.github/workflows/ios.yml) has only been checked locally.
+
+## Small fixes (#139)
+
+- **Wording:** `thisDevice()` says "this iPhone" or "this iPad" (`deviceName()` in `lib/platform.ts`; an iPad that reports a Mac user agent counts through `maxTouchPoints`). The Guest profile, the "on this device only" note, the Keychain notes and the system sound, captions and light/dark descriptions use it; "Click to try again" is "Tap" on touch.
+- **Meteor's cache marker:** `[TB🌩️]` is cached and `[TB☁️]` is not, recorded from a real TorBox response (`lib/ranking/fixtures/meteor-torbox.json`, six of 793 streams, URLs redacted). Shared with desktop.
+- **Audio language:** `Store.SeedAudioLanguages` (called once per profile by `useSeedAudioLanguages`, iOS only) gives a local profile that has never saved settings the device's preferred languages. A Nuvio-synced profile, or one that saved anything, is left alone, so it never undoes a choice.
+- **Language names:** `languageName` title-cases what `Intl.DisplayNames` returns and maps the ISO 639-2/B codes ("fre", "ger") engines don't know. A track's own title is left alone.
+- **About:** Version reads `0.1.0 (20261117.1603)`: `appinfo.Build()` is the bundle's `CFBundleVersion`, which `ios:sideload` stamps as `YYYYMMDD.HHMM`.
+- **Icon:** `build/ios/assets/AppIcon.appiconset` replaces Wails' generated set (the macOS tile, with transparent corners) at build time: a full-bleed 1024 icon in light, dark (amber on dark) and tinted (grayscale) versions. The SVG sources sit beside it and were rendered with headless Chrome (`--screenshot` at 1024×1024).
+- **Launch screen:** `UILaunchScreen` names the `LaunchBackground` colour (`build/ios/assets/LaunchBackground.colorset`: `--background`, light and dark); the old storyboard was never compiled and is gone. The webview starts clear and invisible over a window in that colour (`peli_quiet_webview` in `internal/iosplayer/host_ios.m`, called from `main.m`'s layout hook) and fades in on `appinfo.PageReady` (DOMContentLoaded), or after 4 s.
+- **Touch CSS** (`index.css`, `data-platform="ios"` only): no selection, callout or tap highlight on the app; `touch-action: pan-x pan-y` on the page (no double-tap or pinch zoom); text fields and `[data-selectable]` (the synopsis) stay selectable.
 
 ## Where things are
 

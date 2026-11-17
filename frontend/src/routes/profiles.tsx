@@ -16,6 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { toastManager } from "@/components/ui/toast";
 import { maxNuvioProfiles, profilesQuery, useSwitchProfile } from "@/lib/account";
 import { useCurrentProfile } from "@/lib/profile";
+import { thisDevice } from "@/lib/platform";
 import { cn } from "@/lib/utils";
 import type { Profile } from "@bindings/store";
 
@@ -244,7 +245,7 @@ function ProfileTile({
         PIN
       </span>
     ) : profile.guest ? (
-      "On this computer"
+      `On ${thisDevice()}`
     ) : current ? (
       "Last used"
     ) : undefined;

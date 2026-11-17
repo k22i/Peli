@@ -52,7 +52,10 @@ export function About({
       </h2>
       <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,24rem)] lg:gap-12">
         {meta.description && (
-          <p className="max-w-prose text-[0.9375rem] leading-relaxed text-pretty text-foreground/80">
+          <p
+            data-selectable
+            className="max-w-prose text-[0.9375rem] leading-relaxed text-pretty text-foreground/80"
+          >
             {meta.description}
           </p>
         )}

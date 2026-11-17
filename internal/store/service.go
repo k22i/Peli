@@ -234,6 +234,14 @@ func (s *Service) SaveProfileSettings(profileID uint64, settings ProfileSettings
 	return s.store.SaveProfileSettings(profileID, settings)
 }
 
+// SeedAudioLanguages gives a local-only profile that has never saved settings
+// the device's preferred languages as its audio languages (iOS asks for it
+// once per profile). A Nuvio-synced profile is never touched. See
+// Store.SeedAudioLanguages.
+func (s *Service) SeedAudioLanguages(profileID uint64, codes []string) (bool, error) {
+	return s.store.SeedAudioLanguages(profileID, codes)
+}
+
 // ChosenSource returns the source a profile last played a show from (#58),
 // or null for none.
 func (s *Service) ChosenSource(profileID uint64, contentID string) (*ChosenSource, error) {
