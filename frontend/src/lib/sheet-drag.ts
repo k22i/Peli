@@ -15,12 +15,14 @@ export type SheetDrag = {
   offset: number;
   // Downward speed in px/s, smoothed over the last moves.
   velocity: number;
+  // The sheet's height when the drag began.
+  height: number;
 };
 
 export type SheetDragAction =
-  | { type: "start"; y: number; t: number }
+  | { type: "start"; y: number; t: number; height: number }
   | { type: "move"; y: number; t: number }
-  | { type: "end"; height: number }
+  | { type: "end" }
   | { type: "cancel" }
   | { type: "settled" }
   | { type: "reset" };
@@ -32,6 +34,7 @@ export const idleDrag: SheetDrag = {
   lastT: 0,
   offset: 0,
   velocity: 0,
+  height: 0,
 };
 
 // Past this share of the sheet's height, letting go closes it.
@@ -64,6 +67,7 @@ export function sheetDrag(state: SheetDrag, action: SheetDragAction): SheetDrag 
         lastT: action.t,
         offset: state.phase === "settling" ? state.offset : 0,
         velocity: 0,
+        height: action.height,
       };
     case "move": {
       if (state.phase !== "dragging") return state;
@@ -80,7 +84,7 @@ export function sheetDrag(state: SheetDrag, action: SheetDragAction): SheetDrag 
     }
     case "end":
       if (state.phase !== "dragging") return state;
-      return shouldDismiss(state.offset, state.velocity, action.height)
+      return shouldDismiss(state.offset, state.velocity, state.height)
         ? { ...state, phase: "closing" }
         : { ...state, phase: "settling", offset: 0, velocity: 0 };
     case "cancel":
@@ -90,6 +94,8 @@ export function sheetDrag(state: SheetDrag, action: SheetDragAction): SheetDrag 
       return state.phase === "settling" ? idleDrag : state;
     case "reset":
       return idleDrag;
+    default:
+      return state;
   }
 }
 
@@ -110,8 +116,7 @@ export function springEasing({ duration = 0.5, bounce = 0.12, samples = 40 } = {
       const wd = omega * Math.sqrt(1 - zeta * zeta);
       x =
         1 -
-        Math.exp(-zeta * omega * t) *
-          (Math.cos(wd * t) + ((zeta * omega) / wd) * Math.sin(wd * t));
+        Math.exp(-zeta * omega * t) * (Math.cos(wd * t) + ((zeta * omega) / wd) * Math.sin(wd * t));
     }
     points.push(String(Math.round((i === samples ? 1 : x) * 1000) / 1000));
   }

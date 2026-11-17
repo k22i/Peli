@@ -5,14 +5,12 @@ import { RemoveTrackingDialog } from "@/components/media/remove-tracking-dialog"
 import { RoundAction } from "@/components/title/round-action";
 import { Button } from "@/components/ui/button";
 import {
-  Menu,
-  MenuPopup,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuSeparator,
-  MenuItem,
-  MenuTrigger,
-} from "@/components/ui/menu";
+  ResponsiveMenu,
+  ResponsiveMenuItem,
+  ResponsiveMenuRadioGroup,
+  ResponsiveMenuRadioItem,
+  ResponsiveMenuSeparator,
+} from "@/components/ui/responsive-menu";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import type { Meta } from "@/lib/addon-protocol";
 import { ratingValues, titleRef, useTrackingControls } from "@/lib/tracking";
@@ -55,38 +53,41 @@ export function TrackingActions({ profile, meta }: { profile: Profile; meta: Met
         onOpenChange={setConfirming}
         onConfirm={() => setStatus.mutate("none")}
       />
-      <Menu>
-        <Tooltip>
-          <TooltipTrigger
-            render={
-              <MenuTrigger
+      <Tooltip>
+        <ResponsiveMenu
+          label="Rating"
+          popupClassName="material-pop w-40"
+          align="start"
+          trigger={{
+            render: (
+              <TooltipTrigger
                 render={<Button variant="media" size="icon-xl" aria-label={ratingLabel} />}
               />
-            }
-          >
-            <Star className={rating > 0 ? "fill-current" : undefined} />
-          </TooltipTrigger>
-          <TooltipPopup>{ratingLabel}</TooltipPopup>
-        </Tooltip>
-        <MenuPopup className="material-pop w-40" align="start">
-          <MenuRadioGroup
+            ),
+            children: <Star className={rating > 0 ? "fill-current" : undefined} />,
+          }}
+        >
+          <ResponsiveMenuRadioGroup
             value={String(rating)}
             onValueChange={(next) => setRating.mutate(Number(next))}
           >
             {ratingValues.map((value) => (
-              <MenuRadioItem key={value} value={String(value)}>
+              <ResponsiveMenuRadioItem key={value} value={String(value)}>
                 {value}
-              </MenuRadioItem>
+              </ResponsiveMenuRadioItem>
             ))}
-          </MenuRadioGroup>
+          </ResponsiveMenuRadioGroup>
           {rating > 0 && (
             <>
-              <MenuSeparator />
-              <MenuItem onClick={() => setRating.mutate(0)}>Clear rating</MenuItem>
+              <ResponsiveMenuSeparator />
+              <ResponsiveMenuItem onClick={() => setRating.mutate(0)}>
+                Clear rating
+              </ResponsiveMenuItem>
             </>
           )}
-        </MenuPopup>
-      </Menu>
+        </ResponsiveMenu>
+        <TooltipPopup>{ratingLabel}</TooltipPopup>
+      </Tooltip>
     </>
   );
 }

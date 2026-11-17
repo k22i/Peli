@@ -22,7 +22,8 @@ export type SelectOption<V extends string> = { value: V; label: string };
 // renders exactly what the callers wrote before: <Select items value
 // onValueChange> with a <SelectTrigger> and one <SelectItem> per option.
 // `onValueChange` gets what Base UI gives (null when cleared), so callers
-// keep their own rule for it. `title` heads the sheet (a setting's name).
+// keep their own rule for it. `title` heads the sheet; without one it's the
+// text of the `aria-labelledby` element (a setting's name).
 export function ResponsiveSelect<V extends string>({
   items,
   value,
@@ -36,7 +37,7 @@ export function ResponsiveSelect<V extends string>({
   "aria-labelledby": labelledBy,
   "aria-describedby": describedBy,
 }: {
-  items: SelectOption<V>[];
+  items: readonly SelectOption<V>[];
   value: V;
   onValueChange: (value: V | null) => void;
   disabled?: boolean | undefined;
@@ -50,6 +51,7 @@ export function ResponsiveSelect<V extends string>({
 }) {
   const compact = useCompactShell();
   const [open, setOpen] = useState(false);
+  const [heading, setHeading] = useState(title);
   const trigger = useRef<HTMLButtonElement>(null);
   const titleId = useId();
   if (!compact) {
@@ -97,7 +99,13 @@ export function ResponsiveSelect<V extends string>({
         data-disabled={disabled ? "" : undefined}
         data-slot="select-trigger"
         className={cn(selectTriggerVariants({ size }), className)}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setHeading(
+            title ??
+              (labelledBy ? document.getElementById(labelledBy)?.textContent?.trim() : undefined),
+          );
+          setOpen(true);
+        }}
       >
         <span data-slot="select-value" className="flex-1 truncate">
           {chosen?.label ?? ""}
@@ -107,9 +115,9 @@ export function ResponsiveSelect<V extends string>({
       <BottomSheet
         open={open}
         onOpenChange={setOpen}
-        label={title ? undefined : ariaLabel}
-        labelledBy={title ? titleId : labelledBy}
-        header={title ? <BottomSheetTitle id={titleId}>{title}</BottomSheetTitle> : undefined}
+        label={heading ? undefined : ariaLabel}
+        labelledBy={heading ? titleId : labelledBy}
+        header={heading ? <BottomSheetTitle id={titleId}>{heading}</BottomSheetTitle> : undefined}
         initialFocus={() =>
           document.querySelector<HTMLElement>(
             '[data-slot="bottom-sheet"] [role="radio"][aria-checked="true"]',
@@ -117,7 +125,7 @@ export function ResponsiveSelect<V extends string>({
         }
         finalFocus={() => trigger.current ?? true}
       >
-        <div role="radiogroup" aria-label={title ?? ariaLabel} className="flex flex-col">
+        <div role="radiogroup" aria-label={heading ?? ariaLabel} className="flex flex-col">
           {items.map((item) => {
             const checked = item.value === value;
             return (

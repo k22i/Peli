@@ -42,7 +42,6 @@ export function BottomSheet({
   className?: string;
 }) {
   const [drag, dispatch] = useReducer(sheetDrag, idleDrag);
-  const popup = useRef<HTMLDivElement>(null);
   // The last drag's end, so the click that follows it doesn't choose a row.
   const draggedAt = useRef(0);
 
@@ -53,7 +52,9 @@ export function BottomSheet({
     if (open) dispatch({ type: "reset" });
   }, [open]);
   const change = useRef(onOpenChange);
-  change.current = onOpenChange;
+  useEffect(() => {
+    change.current = onOpenChange;
+  });
   useEffect(() => {
     if (drag.phase === "closing") change.current(false);
     if (drag.phase === "settling") {
@@ -65,7 +66,7 @@ export function BottomSheet({
 
   const end = useCallback(() => {
     draggedAt.current = Date.now();
-    dispatch({ type: "end", height: popup.current?.offsetHeight ?? 0 });
+    dispatch({ type: "end" });
   }, []);
 
   // A pull down from the rows, once they're scrolled to the top. Touch
@@ -73,7 +74,7 @@ export function BottomSheet({
   // list starts to scroll, and only a non-passive touchmove can stop that.
   const rows = useCallback(
     (element: HTMLDivElement | null) => {
-      if (!element) return;
+      if (!element) return () => {};
       let armed: number | undefined;
       let dragging = false;
       const start = (event: TouchEvent) => {
@@ -91,7 +92,7 @@ export function BottomSheet({
           }
           if (dy < 6) return;
           dragging = true;
-          dispatch({ type: "start", y: armed, t: event.timeStamp });
+          dispatch({ type: "start", y: armed, t: event.timeStamp, height: sheetHeight(element) });
         }
         event.preventDefault();
         dispatch({ type: "move", y: touch.clientY, t: event.timeStamp });
@@ -117,8 +118,7 @@ export function BottomSheet({
 
   const dragging = drag.phase === "dragging";
   const moved = drag.phase === "dragging" || drag.phase === "settling";
-  const height = popup.current?.offsetHeight || 400;
-  const fade = moved ? Math.min(1, Math.max(0, 1 - drag.offset / height)) : undefined;
+  const fade = moved ? Math.min(1, Math.max(0, 1 - drag.offset / (drag.height || 400))) : undefined;
 
   return (
     <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
@@ -129,7 +129,6 @@ export function BottomSheet({
           style={fade === undefined ? undefined : { opacity: fade }}
         />
         <DialogPrimitive.Popup
-          ref={popup}
           aria-modal="true"
           aria-label={label}
           aria-labelledby={labelledBy}
@@ -169,7 +168,12 @@ export function BottomSheet({
             onPointerDown={(event) => {
               if (event.button !== 0) return;
               event.currentTarget.setPointerCapture?.(event.pointerId);
-              dispatch({ type: "start", y: event.clientY, t: event.timeStamp });
+              dispatch({
+                type: "start",
+                y: event.clientY,
+                t: event.timeStamp,
+                height: sheetHeight(event.currentTarget),
+              });
             }}
             onPointerMove={(event) => {
               if (drag.phase !== "dragging") return;
@@ -196,6 +200,11 @@ export function BottomSheet({
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>
   );
+}
+
+// The height of the sheet an element is in.
+function sheetHeight(element: HTMLElement): number {
+  return element.closest<HTMLElement>('[data-slot="bottom-sheet"]')?.offsetHeight ?? 0;
 }
 
 // The title line some sheets show under the grabber (a Select's name).

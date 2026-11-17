@@ -18,7 +18,11 @@ import { configurable, ManifestFacts } from "@/components/addons/addon-dialogs";
 import { StreamBadge } from "@/components/streams/stream-badge";
 import { isBuiltinAddon } from "@/lib/addon-protocol";
 import { Button } from "@/components/ui/button";
-import { Menu, MenuItem, MenuPopup, MenuSeparator, MenuTrigger } from "@/components/ui/menu";
+import {
+  ResponsiveMenu,
+  ResponsiveMenuItem,
+  ResponsiveMenuSeparator,
+} from "@/components/ui/responsive-menu";
 import { Spinner } from "@/components/ui/spinner";
 import { Switch } from "@/components/ui/switch";
 import { type Manifest, manifestQuery } from "@/lib/addon-protocol";
@@ -190,46 +194,47 @@ export function AddonRow({
         checked={addon.enabled}
         onCheckedChange={actions.enable}
       />
-      <Menu>
-        <MenuTrigger
-          className="mt-1"
-          render={<Button variant="ghost" size="icon-sm" aria-label={`More for ${name}`} />}
-        >
-          <Ellipsis aria-hidden />
-        </MenuTrigger>
-        <MenuPopup align="end" className="w-48">
-          {!isBuiltinAddon(addon.url) && (configurable(manifest.data) || manifest.isError) && (
-            <>
-              <MenuItem onClick={() => actions.configure(manifest.data)}>
-                <Settings2 aria-hidden />
-                Configure…
-              </MenuItem>
-              <MenuSeparator />
-            </>
-          )}
-          <MenuItem disabled={index === 0} onClick={() => actions.move(0)}>
-            <ArrowUpToLine aria-hidden />
-            Move to top
-          </MenuItem>
-          <MenuItem disabled={index === 0} onClick={() => actions.move(index - 1)}>
-            <ArrowUp aria-hidden />
-            Move up
-          </MenuItem>
-          <MenuItem disabled={index === count - 1} onClick={() => actions.move(index + 1)}>
-            <ArrowDown aria-hidden />
-            Move down
-          </MenuItem>
-          <MenuItem disabled={index === count - 1} onClick={() => actions.move(count - 1)}>
-            <ArrowDownToLine aria-hidden />
-            Move to bottom
-          </MenuItem>
-          <MenuSeparator />
-          <MenuItem variant="destructive" onClick={actions.remove}>
-            <Trash2 aria-hidden />
-            Remove
-          </MenuItem>
-        </MenuPopup>
-      </Menu>
+      <ResponsiveMenu
+        label={name}
+        align="end"
+        popupClassName="w-48"
+        trigger={{
+          className: "mt-1",
+          render: <Button variant="ghost" size="icon-sm" aria-label={`More for ${name}`} />,
+          children: <Ellipsis aria-hidden />,
+        }}
+      >
+        {!isBuiltinAddon(addon.url) && (configurable(manifest.data) || manifest.isError) && (
+          <>
+            <ResponsiveMenuItem onClick={() => actions.configure(manifest.data)}>
+              <Settings2 aria-hidden />
+              Configure…
+            </ResponsiveMenuItem>
+            <ResponsiveMenuSeparator />
+          </>
+        )}
+        <ResponsiveMenuItem disabled={index === 0} onClick={() => actions.move(0)}>
+          <ArrowUpToLine aria-hidden />
+          Move to top
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem disabled={index === 0} onClick={() => actions.move(index - 1)}>
+          <ArrowUp aria-hidden />
+          Move up
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem disabled={index === count - 1} onClick={() => actions.move(index + 1)}>
+          <ArrowDown aria-hidden />
+          Move down
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem disabled={index === count - 1} onClick={() => actions.move(count - 1)}>
+          <ArrowDownToLine aria-hidden />
+          Move to bottom
+        </ResponsiveMenuItem>
+        <ResponsiveMenuSeparator />
+        <ResponsiveMenuItem variant="destructive" onClick={actions.remove}>
+          <Trash2 aria-hidden />
+          Remove
+        </ResponsiveMenuItem>
+      </ResponsiveMenu>
     </li>
   );
 }

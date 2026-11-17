@@ -115,7 +115,7 @@ export function ResponsiveMenu({
 }) {
   const compact = useCompactShell();
   const [open, setOpen] = useState(false);
-  const button = useRef<HTMLElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
   if (!compact) {
     return (
       <Menu>
@@ -148,7 +148,7 @@ function SheetTrigger({
   onOpen,
   ref,
   ...props
-}: TriggerProps & { open: boolean; onOpen: () => void; ref: Ref<HTMLElement> }) {
+}: TriggerProps & { open: boolean; onOpen: () => void; ref: Ref<HTMLButtonElement> }) {
   return useRender({
     defaultTagName: "button",
     render,
@@ -251,7 +251,9 @@ export function useLongPress(onLongPress: () => void) {
   const start = useRef<{ x: number; y: number }>(undefined);
   const fired = useRef(false);
   const fire = useRef(onLongPress);
-  fire.current = onLongPress;
+  useEffect(() => {
+    fire.current = onLongPress;
+  });
 
   const cancel = () => {
     clearTimeout(timer.current);
@@ -315,33 +317,35 @@ function SheetMenu({
   const [pages, setPages] = useState<string[]>([]);
   // Where focus goes once a page changes: the new page's Back row, or the
   // row that opened the page left.
-  const [focus, setFocus] = useState<string>();
+  const focus = useRef<string>(undefined);
   useEffect(() => {
-    if (!open) setPages([]);
-  }, [open]);
-  useEffect(() => {
-    if (!focus) return;
-    const target = document.querySelector<HTMLElement>(`[data-sheet-focus="${CSS.escape(focus)}"]`);
-    target?.focus();
-    setFocus(undefined);
-  }, [focus]);
+    const target = focus.current;
+    if (!target) return;
+    focus.current = undefined;
+    document.querySelector<HTMLElement>(`[data-sheet-focus="${CSS.escape(target)}"]`)?.focus();
+  });
+  const change = (next: boolean) => {
+    // Every opening starts on the first page.
+    if (!next) setPages([]);
+    onOpenChange(next);
+  };
   const nav: SheetNav = {
     page: pages.at(-1),
     push: (page) => {
+      focus.current = `back:${page}`;
       setPages((stack) => [...stack, page]);
-      setFocus(`back:${page}`);
     },
     back: () => {
-      setPages((stack) => stack.slice(0, -1));
       const left = pages.at(-1);
-      if (left) setFocus(`sub:${left}`);
+      if (left) focus.current = `sub:${left}`;
+      setPages((stack) => stack.slice(0, -1));
     },
-    close: () => onOpenChange(false),
+    close: () => change(false),
   };
   return (
     <BottomSheet
       open={open}
-      onOpenChange={onOpenChange}
+      onOpenChange={change}
       label={label}
       header={pages.length === 0 ? header : undefined}
       finalFocus={finalFocus}
@@ -410,14 +414,24 @@ export function ResponsiveMenuItem({ onClick, disabled, variant, className, chil
   const onPage = useOnPage();
   if (mode === "menu") {
     return (
-      <MenuItem onClick={onClick} disabled={disabled} variant={variant} className={className}>
+      <MenuItem
+        onClick={onClick}
+        disabled={disabled}
+        variant={variant ?? "default"}
+        className={className}
+      >
         {children}
       </MenuItem>
     );
   }
   if (mode === "context") {
     return (
-      <ContextMenuItem onClick={onClick} disabled={disabled} variant={variant} className={className}>
+      <ContextMenuItem
+        onClick={onClick}
+        disabled={disabled}
+        variant={variant ?? "default"}
+        className={className}
+      >
         {children}
       </ContextMenuItem>
     );
@@ -426,7 +440,7 @@ export function ResponsiveMenuItem({ onClick, disabled, variant, className, chil
   return (
     <SheetRow
       disabled={disabled}
-      variant={variant}
+      variant={variant ?? "default"}
       onClick={() => {
         onClick?.();
         nav?.close();
@@ -476,7 +490,7 @@ function SheetLinkRow({ render, children }: { render: ReactElement; children: Re
       "data-slot": "sheet-row",
       onClick: () => nav?.close(),
       children,
-    } as ComponentProps<"a">,
+    },
   });
   return onPage ? element : null;
 }
@@ -533,10 +547,9 @@ export function ResponsiveMenuSeparator() {
   if (mode === "context") return <ContextMenuSeparator />;
   if (!onPage) return null;
   return (
-    <div
-      role="separator"
+    <hr
       data-slot="sheet-separator"
-      className="-mx-4 my-1.5 h-2 shrink-0 bg-foreground/6"
+      className="-mx-4 my-1.5 h-2 shrink-0 border-0 bg-foreground/6"
     />
   );
 }
@@ -593,7 +606,8 @@ export function ResponsiveMenuRadioItem({
   const nav = useContext(SheetNavContext);
   const onPage = useOnPage();
   if (mode === "menu") return <MenuRadioItem value={value}>{children}</MenuRadioItem>;
-  if (mode === "context") return <ContextMenuRadioItem value={value}>{children}</ContextMenuRadioItem>;
+  if (mode === "context")
+    return <ContextMenuRadioItem value={value}>{children}</ContextMenuRadioItem>;
   if (!onPage) return null;
   const checked = Object.is(group?.value, value);
   return (

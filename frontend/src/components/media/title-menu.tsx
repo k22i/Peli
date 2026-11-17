@@ -18,15 +18,14 @@ import type { Profile, Progress } from "@bindings/store";
 import { RemoveTrackingDialog } from "@/components/media/remove-tracking-dialog";
 import { TitleMenuExtras } from "@/components/media/title-menu-extras";
 import {
-  ContextMenu,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuPopup,
-  ContextMenuSeparator,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu";
+  ResponsiveContextMenu,
+  ResponsiveMenuGroup,
+  ResponsiveMenuItem,
+  ResponsiveMenuSeparator,
+} from "@/components/ui/responsive-menu";
 import { toastManager } from "@/components/ui/toast";
 import type { Meta } from "@/lib/addon-protocol";
+import { viaProxy } from "@/lib/artwork-url";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
 import { streamsPath, streamsSearch, usePlay } from "@/lib/playback";
@@ -72,18 +71,17 @@ export function TitleMenu({
   const [asked, setAsked] = useState<{ run: () => void }>();
   return (
     <>
-      <ContextMenu>
-        <ContextMenuTrigger ref={trigger} className="contents">
-          {children}
-        </ContextMenuTrigger>
-        <ContextMenuPopup
-          className="material-pop w-60"
-          // Not the trigger, which is a layout-less wrapper: the card in it.
-          finalFocus={() => focusTarget(trigger.current)}
-        >
-          {items ?? <TitleMenuItems title={title} confirm={(run) => setAsked({ run })} />}
-        </ContextMenuPopup>
-      </ContextMenu>
+      <ResponsiveContextMenu
+        triggerRef={trigger}
+        label={title.name}
+        header={<TitleSheetHeader title={title} />}
+        popupClassName="material-pop w-60"
+        // Not the trigger, which is a layout-less wrapper: the card in it.
+        finalFocus={() => focusTarget(trigger.current)}
+        items={items ?? <TitleMenuItems title={title} confirm={(run) => setAsked({ run })} />}
+      >
+        {children}
+      </ResponsiveContextMenu>
       <RemoveTrackingDialog
         open={asked !== undefined}
         onOpenChange={(open) => !open && setAsked(undefined)}
@@ -91,6 +89,38 @@ export function TitleMenu({
         finalFocus={() => focusTarget(trigger.current)}
       />
     </>
+  );
+}
+
+// The top of a title's sheet on the iPhone, like the preview over an iOS
+// context menu: the poster small, the title and its year.
+export function TitleSheetHeader({
+  title,
+}: {
+  title: { name: string; poster?: string | undefined; releaseInfo?: string | undefined };
+}) {
+  return (
+    <div className="flex items-center gap-3 border-b px-5 pb-3">
+      {title.poster ? (
+        <img
+          src={viaProxy(title.poster)}
+          alt=""
+          className="aspect-2/3 w-11 shrink-0 rounded-md bg-foreground/8 object-cover"
+        />
+      ) : (
+        <span aria-hidden className="aspect-2/3 w-11 shrink-0 rounded-md bg-foreground/8" />
+      )}
+      <span className="flex min-w-0 flex-col gap-0.5">
+        <span className="line-clamp-2 text-[17px] leading-[22px] font-[620] tracking-[-0.01em]">
+          {title.name}
+        </span>
+        {title.releaseInfo && (
+          <span className="text-[15px] leading-5 text-muted-foreground tnum">
+            {title.releaseInfo}
+          </span>
+        )}
+      </span>
+    </div>
   );
 }
 
@@ -218,8 +248,8 @@ function ProfileItems({
 
   return (
     <>
-      <ContextMenuGroup>
-        <ContextMenuItem
+      <ResponsiveMenuGroup>
+        <ResponsiveMenuItem
           onClick={() =>
             play(choice?.target ?? { type: title.type, id: title.id, title: title.name })
           }
@@ -230,31 +260,31 @@ function ProfileItems({
             <Play aria-hidden className="fill-current" />
           )}
           {choice?.label ?? "Play"}
-        </ContextMenuItem>
-        <ContextMenuItem disabled={!choice} onClick={chooseStream}>
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem disabled={!choice} onClick={chooseStream}>
           <ListVideo aria-hidden />
           Choose a stream…
-        </ContextMenuItem>
-        <ContextMenuItem onClick={() => open(title)}>
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem onClick={() => open(title)}>
           <ArrowUpRight aria-hidden />
           Go to title
-        </ContextMenuItem>
-      </ContextMenuGroup>
-      <ContextMenuSeparator />
-      <ContextMenuGroup>
-        <ContextMenuItem
+        </ResponsiveMenuItem>
+      </ResponsiveMenuGroup>
+      <ResponsiveMenuSeparator />
+      <ResponsiveMenuGroup>
+        <ResponsiveMenuItem
           disabled={library === undefined || (!saved && !details.data)}
           onClick={toggleLibrary}
         >
           {saved ? <Trash2 aria-hidden /> : <Plus aria-hidden />}
           {saved ? "Remove from Library" : "Add to Library"}
-        </ContextMenuItem>
-        <ContextMenuItem disabled={!markable} onClick={toggleWatched}>
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem disabled={!markable} onClick={toggleWatched}>
           {watched ? <EyeOff aria-hidden /> : <Eye aria-hidden />}
           {watched ? "Mark unwatched" : "Mark watched"}
-        </ContextMenuItem>
+        </ResponsiveMenuItem>
         {inProgress.length > 0 && (
-          <ContextMenuItem
+          <ResponsiveMenuItem
             onClick={() =>
               edits.removeFromContinueWatching.mutate({
                 contentId: meta.id,
@@ -265,16 +295,16 @@ function ProfileItems({
           >
             <X aria-hidden />
             Remove from Continue Watching
-          </ContextMenuItem>
+          </ResponsiveMenuItem>
         )}
-      </ContextMenuGroup>
+      </ResponsiveMenuGroup>
       {imdb && (
         <>
-          <ContextMenuSeparator />
-          <ContextMenuItem onClick={copyImdb}>
+          <ResponsiveMenuSeparator />
+          <ResponsiveMenuItem onClick={copyImdb}>
             <LinkIcon aria-hidden />
             Copy IMDb link
-          </ContextMenuItem>
+          </ResponsiveMenuItem>
         </>
       )}
       <TitleMenuExtras title={title} meta={loaded} profile={profile} confirm={confirm} />

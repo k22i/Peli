@@ -3,13 +3,7 @@ import { useState } from "react";
 
 import { SettingRow } from "@/components/settings/settings-section";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import {
   addLanguage,
   audioLanguageLimit,
@@ -63,7 +57,7 @@ export function AudioLanguagesRow({
         label="Audio languages"
         description="Streams in the first language rank highest, then the next. Playback starts with the first one the video has. With none, the original audio plays."
       >
-        <Select
+        <ResponsiveSelect
           items={items}
           value=""
           disabled={full}
@@ -72,23 +66,12 @@ export function AudioLanguagesRow({
             onChange(addLanguage(value, next));
             setAnnouncement(`${languageName(next)} added, number ${value.length + 1}`);
           }}
-        >
-          <SelectTrigger
-            id={addId}
-            aria-labelledby="audio-languages-label"
-            aria-describedby="audio-languages-description"
-            className="w-44"
-          >
-            <SelectValue />
-          </SelectTrigger>
-          <SelectPopup>
-            {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
-                {item.label}
-              </SelectItem>
-            ))}
-          </SelectPopup>
-        </Select>
+
+          id={addId}
+          aria-labelledby="audio-languages-label"
+          aria-describedby="audio-languages-description"
+          className="w-44"
+        />
       </SettingRow>
       {value.length > 0 && (
         <ol aria-label="Audio languages, most preferred first" className="flex flex-col divide-y">

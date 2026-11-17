@@ -17,7 +17,8 @@ vi.mock("@bindings/torrent", () => ({ Service: { Open: vi.fn<() => void>() } }))
 
 const torrentio = "https://torrentio.strem.fun/manifest.json";
 const ctx = titleContext("movie", "tt0111161", undefined, "The Shawshank Redemption");
-const file = (resolution: string) => `The.Shawshank.Redemption.1994.${resolution}.BluRay.x264-GRP.mkv`;
+const file = (resolution: string) =>
+  `The.Shawshank.Redemption.1994.${resolution}.BluRay.x264-GRP.mkv`;
 
 // A Torrentio TorBox stream, cached ("+") or not (" download").
 const debrid = (marker: string, resolution = "1080p"): Stream => ({
@@ -77,7 +78,9 @@ describe("which top picks resolve ahead", () => {
     // A torrent without a link, and a direct link that says nothing of a
     // debrid cache.
     expect(
-      preResolvable(pick({ name: "Peerflix\n1080p", title: file("1080p"), infoHash: "a".repeat(40) })),
+      preResolvable(
+        pick({ name: "Peerflix\n1080p", title: file("1080p"), infoHash: "a".repeat(40) }),
+      ),
     ).toBe(false);
     expect(preResolvable(pick({ name: "Direct\n1080p", url: "https://cdn.example/a.mkv" }))).toBe(
       false,

@@ -13,18 +13,12 @@ import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
-  ContextMenuGroup,
-  ContextMenuGroupLabel,
-  ContextMenuItem,
-  ContextMenuSeparator,
-} from "@/components/ui/context-menu";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  ResponsiveMenuGroup,
+  ResponsiveMenuGroupLabel,
+  ResponsiveMenuItem,
+  ResponsiveMenuSeparator,
+} from "@/components/ui/responsive-menu";
+import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
 import {
   continueWatchingQuery,
@@ -225,22 +219,14 @@ function Library({ profile }: { profile: Profile }) {
           ) : (
             <div className="flex-1" />
           )}
-          <Select
+          <ResponsiveSelect
             items={librarySorts}
             value={sort}
-            onValueChange={(next: LibrarySort | null) => next && choose({ type, sort: next })}
-          >
-            <SelectTrigger aria-label="Sort" className="me-page w-48 shrink-0">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectPopup>
-              {librarySorts.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectPopup>
-          </Select>
+            onValueChange={(next) => next && choose({ type, sort: next })}
+            aria-label="Sort"
+            title="Sort"
+            className="me-page w-48 shrink-0"
+          />
         </div>
       }
     >
@@ -439,22 +425,22 @@ function SelectionItems({
 }) {
   return (
     <>
-      <ContextMenuGroup>
-        <ContextMenuGroupLabel>{count} selected</ContextMenuGroupLabel>
-        <ContextMenuItem onClick={onMarkWatched}>
+      <ResponsiveMenuGroup>
+        <ResponsiveMenuGroupLabel>{count} selected</ResponsiveMenuGroupLabel>
+        <ResponsiveMenuItem onClick={onMarkWatched}>
           <Eye aria-hidden />
           Mark watched
-        </ContextMenuItem>
-        <ContextMenuItem onClick={onMarkUnwatched}>
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem onClick={onMarkUnwatched}>
           <EyeOff aria-hidden />
           Mark unwatched
-        </ContextMenuItem>
-      </ContextMenuGroup>
-      <ContextMenuSeparator />
-      <ContextMenuItem onClick={onRemove}>
+        </ResponsiveMenuItem>
+      </ResponsiveMenuGroup>
+      <ResponsiveMenuSeparator />
+      <ResponsiveMenuItem onClick={onRemove}>
         <Trash2 aria-hidden />
         Remove from Library
-      </ContextMenuItem>
+      </ResponsiveMenuItem>
     </>
   );
 }

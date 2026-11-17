@@ -47,13 +47,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectItem,
-  SelectPopup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { ResponsiveSelect } from "@/components/ui/responsive-select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -624,26 +618,15 @@ function SoundDefaults({
         label="Output"
         description="Where the player's sound goes. System default follows the Mac's sound settings. Applies to this device."
       >
-        <Select
+        <ResponsiveSelect
           items={items}
           value={audio.device}
           onValueChange={(next) => next && setAudio({ device: next })}
-        >
-          <SelectTrigger
-            aria-labelledby="audio-device-label"
-            aria-describedby="audio-device-description"
-            className="w-56"
-          >
-            <SelectValue />
-          </SelectTrigger>
-          <SelectPopup>
-            {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
-                {item.label}
-              </SelectItem>
-            ))}
-          </SelectPopup>
-        </Select>
+
+          aria-labelledby="audio-device-label"
+          aria-describedby="audio-device-description"
+          className="w-56"
+        />
       </SettingRow>
       <SettingRow
         id="stereo-downmix"
@@ -933,22 +916,14 @@ function AnimePostersRow({
       label="Anime posters"
       description="The Anime tab’s list stays AniList’s. An addon’s posters show for films and single-season shows; later seasons and split cours keep AniList’s cover, since a show’s poster would stand for none of them."
     >
-      <Select items={items} value={value} onValueChange={(next) => onChange(next ?? "")}>
-        <SelectTrigger
-          aria-labelledby="anime-posters-label"
-          aria-describedby="anime-posters-description"
-          className="w-48"
-        >
-          <SelectValue />
-        </SelectTrigger>
-        <SelectPopup>
-          {items.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
-              {item.label}
-            </SelectItem>
-          ))}
-        </SelectPopup>
-      </Select>
+      <ResponsiveSelect
+        items={items}
+        value={value}
+        onValueChange={(next) => onChange(next ?? "")}
+        aria-labelledby="anime-posters-label"
+        aria-describedby="anime-posters-description"
+        className="w-48"
+      />
     </SettingRow>
   );
 }
@@ -1251,26 +1226,15 @@ function TorrentCacheRow({ size, onChange }: { size: number; onChange: (gb: numb
         >
           Clear
         </Button>
-        <Select
+        <ResponsiveSelect
           items={items}
           value={String(size)}
           onValueChange={(next) => next && onChange(Number(next))}
-        >
-          <SelectTrigger
-            aria-labelledby="torrent-cache-label"
-            aria-describedby="torrent-cache-description"
-            className="w-28"
-          >
-            <SelectValue />
-          </SelectTrigger>
-          <SelectPopup>
-            {items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
-                {item.label}
-              </SelectItem>
-            ))}
-          </SelectPopup>
-        </Select>
+
+          aria-labelledby="torrent-cache-label"
+          aria-describedby="torrent-cache-description"
+          className="w-28"
+        />
       </div>
     </SettingRow>
   );
@@ -1620,22 +1584,14 @@ function LanguageSelect({
   }
 
   return (
-    <Select items={items} value={value} onValueChange={(next) => onChange(next ?? "")}>
-      <SelectTrigger
-        aria-labelledby={`${id}-label`}
-        aria-describedby={`${id}-description`}
-        className="w-44"
-      >
-        <SelectValue />
-      </SelectTrigger>
-      <SelectPopup>
-        {items.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
-          </SelectItem>
-        ))}
-      </SelectPopup>
-    </Select>
+    <ResponsiveSelect
+      items={items}
+      value={value}
+      onValueChange={(next) => onChange(next ?? "")}
+      aria-labelledby={`${id}-label`}
+      aria-describedby={`${id}-description`}
+      className="w-44"
+    />
   );
 }
 
