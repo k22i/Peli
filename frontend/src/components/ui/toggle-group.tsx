@@ -4,6 +4,7 @@ import type { Toggle as TogglePrimitive } from "@base-ui/react/toggle";
 import { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group";
 import type { VariantProps } from "class-variance-authority";
 import * as React from "react";
+import { haptic } from "@/lib/haptics";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import { Toggle as ToggleComponent, type toggleVariants } from "@/components/ui/toggle";
@@ -20,6 +21,7 @@ export function ToggleGroup({
   size = "default",
   orientation = "horizontal",
   children,
+  onValueChange,
   ...props
 }: ToggleGroupPrimitive.Props & VariantProps<typeof toggleVariants>): React.ReactElement {
   return (
@@ -40,6 +42,11 @@ export function ToggleGroup({
       data-slot="toggle-group"
       data-variant={variant}
       orientation={orientation}
+      // Chips and segmented switches tick on iOS (#135), at most every 50 ms.
+      onValueChange={(value, details) => {
+        haptic("selection");
+        onValueChange?.(value, details);
+      }}
       {...props}
     >
       <ToggleGroupContext.Provider value={{ size, variant }}>

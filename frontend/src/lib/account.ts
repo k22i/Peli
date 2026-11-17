@@ -12,6 +12,7 @@ import { useEffect, useEffectEvent, useState } from "react";
 import { Service as Account, type ProfileEdit } from "@bindings/account";
 import { Service as Store, type KidsScope, type Profile } from "@bindings/store";
 import { visibleAddonsQuery } from "@/lib/addons";
+import { haptic } from "@/lib/haptics";
 import { accountQuery, currentProfileQuery } from "@/lib/profile";
 import { secrets } from "@/lib/secrets";
 
@@ -80,6 +81,7 @@ export function useSignIn() {
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       Account.SignIn(email, password),
     onSuccess: async (profile) => {
+      haptic("success");
       await profileChanged(queryClient, profile);
     },
   });
@@ -111,6 +113,7 @@ export function useQRSignIn(code: string | undefined, onSignedIn: (profile: Prof
     const wait = Account.WaitQRSignIn(code);
     void wait.then(
       async (profile) => {
+        if (live) haptic("success");
         await profileChanged(queryClient, profile);
         if (live) signedIn(profile);
       },

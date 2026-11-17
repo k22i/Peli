@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { haptic } from "@/lib/haptics";
 import type { Meta } from "@/lib/addon-protocol";
 import {
   episodeMarks,
@@ -206,7 +207,11 @@ function SeasonSelect({
     <Select
       items={items}
       value={String(value)}
-      onValueChange={(next) => next !== null && onChange(Number(next))}
+      onValueChange={(next) => {
+        if (next === null) return;
+        haptic("selection");
+        onChange(Number(next));
+      }}
     >
       <SelectTrigger aria-label="Season" className="w-44">
         <SelectValue />

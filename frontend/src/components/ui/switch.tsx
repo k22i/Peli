@@ -2,11 +2,21 @@
 
 import { Switch as SwitchPrimitive } from "@base-ui/react/switch";
 import type React from "react";
+import { haptic } from "@/lib/haptics";
 import { cn } from "@/lib/utils";
 
-export function Switch({ className, ...props }: SwitchPrimitive.Root.Props): React.ReactElement {
+export function Switch({
+  className,
+  onCheckedChange,
+  ...props
+}: SwitchPrimitive.Root.Props): React.ReactElement {
   return (
     <SwitchPrimitive.Root
+      // A light tap as it flips on iOS (#135); nothing elsewhere.
+      onCheckedChange={(checked, details) => {
+        haptic("light");
+        onCheckedChange?.(checked, details);
+      }}
       className={cn(
         "hit-area inline-flex h-[calc(var(--thumb-size)+2px)] w-[calc(var(--thumb-size)*2-2px)] shrink-0 items-center rounded-full p-px outline-none transition-[background-color,box-shadow] duration-200 [--thumb-size:--spacing(5)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background data-disabled:cursor-not-allowed data-checked:bg-sun data-unchecked:bg-(--switch-off) data-disabled:opacity-64 sm:[--thumb-size:--spacing(4)]",
         className,

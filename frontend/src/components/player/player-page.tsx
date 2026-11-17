@@ -37,7 +37,6 @@ import {
 } from "react";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
-import { Service as Haptics } from "@bindings/haptics";
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { MoreMenu } from "@/components/player/more-menu";
 import { NextEpisode } from "@/components/player/next-episode";
@@ -77,6 +76,7 @@ import { toastManager } from "@/components/ui/toast";
 import { loopArgs, loopOf, nextLoop, sameLoop, type Loop } from "@/lib/ab-loop";
 import { streamsQuery } from "@/lib/addon-protocol";
 import { chapterAt, chapterName, nextChapter, previousChapter } from "@/lib/chapters";
+import { haptic } from "@/lib/haptics";
 import { rememberSource } from "@/lib/chosen-source";
 import { useLoadedAddons } from "@/lib/home";
 import {
@@ -893,6 +893,7 @@ function PlayerFile({
     const current = run;
     current.total += skipBy;
     current.at = now;
+    haptic("light");
     setRipple({ side, total: current.total });
     clearTimeout(current.seekTimer);
     clearTimeout(current.hideTimer);
@@ -2001,7 +2002,7 @@ function PlayerFile({
         showHud(out.side, out.value, false);
         if (out.side === "brightness") brightener(out.value);
         else systemVolumer(out.value);
-        if (out.bump) Haptics.Impact("light").catch(() => {});
+        if (out.bump) haptic("light");
         return;
       case "level-end":
         if (hud) showHud(out.side, levels.current[out.side], true);

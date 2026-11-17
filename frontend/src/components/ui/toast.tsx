@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type React from "react";
+import { haptic } from "@/lib/haptics";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -263,7 +264,24 @@ function AnchoredToasts({
   );
 }
 
-export const toastManager: ReturnType<typeof Toast.createToastManager> = Toast.createToastManager();
+export const toastManager: ReturnType<typeof Toast.createToastManager> = withErrorHaptic(
+  Toast.createToastManager(),
+);
+
+// An error toast comes with UIKit's error buzz on iOS (#135), wherever it is
+// added from; a no-op elsewhere.
+function withErrorHaptic(
+  manager: ReturnType<typeof Toast.createToastManager>,
+): ReturnType<typeof Toast.createToastManager> {
+  const add = manager.add;
+  return {
+    ...manager,
+    add: (options) => {
+      if (options.type === "error") haptic("error");
+      return add(options);
+    },
+  };
+}
 
 export const anchoredToastManager: ReturnType<typeof Toast.createToastManager> =
   Toast.createToastManager();

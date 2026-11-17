@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { PinField } from "@/components/account/pin-field";
+import { haptic } from "@/lib/haptics";
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import {
   pinRetryAfterSeconds,
@@ -65,9 +66,11 @@ export function PinEntry({
           if (retry > 0) {
             setRetryIn(retry);
             setProblem(undefined);
+            haptic("error");
             setWrong((n) => n + 1);
           } else if (wrongPin(error)) {
             setProblem({ title: "Wrong PIN. Try again." });
+            haptic("error");
             setWrong((n) => n + 1);
           } else {
             setProblem(profileProblem(error));

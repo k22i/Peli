@@ -18,6 +18,12 @@ func impact(kind string) {
 		k = C.PELI_HAPTIC_HEAVY
 	case Selection:
 		k = C.PELI_HAPTIC_SELECTION
+	case Success:
+		k = C.PELI_HAPTIC_SUCCESS
+	case Warning:
+		k = C.PELI_HAPTIC_WARNING
+	case Error:
+		k = C.PELI_HAPTIC_ERROR
 	}
 	C.peli_haptic(C.int(k))
 }
