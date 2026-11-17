@@ -65,7 +65,7 @@ export function TabBar({ model }: { model: TabBarModel }) {
         className={cn(
           glass,
           "pointer-events-auto relative h-full rounded-full transition-[width,height,margin] duration-(--duration-base) ease-(--ease-out-soft) motion-reduce:transition-none",
-          mini ? "my-[calc((var(--tabs-h)-48px)/2)] h-12 w-12" : "w-full min-w-0",
+          mini ? "my-[calc((var(--tabs-h)-48px)/2)] h-12 w-12 flex-none" : "min-w-0 flex-1",
         )}
       >
         {mini ? (
@@ -122,7 +122,7 @@ export function TabBar({ model }: { model: TabBarModel }) {
         data-slot="tab-search"
         className={cn(
           glass,
-          "pointer-events-auto ms-auto grid aspect-square h-full shrink-0 place-items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-6",
+          "pointer-events-auto ms-auto grid h-full w-(--tabs-h) shrink-0 place-items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-6",
           active === searchSection.to ? "text-sun-ink" : "text-foreground/85",
         )}
       >
