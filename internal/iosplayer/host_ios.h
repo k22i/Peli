@@ -41,6 +41,18 @@ int peli_audio_session(void);
 int peli_is_simulator(void);
 // peli_is_phone is 1 on an iPhone (the phone idiom), 0 on an iPad.
 int peli_is_phone(void);
+// The motion sensor's side of the phone, for the player's rotation
+// (motion_ios.m). peli_motion_start calls peliMotionSide (exported from
+// device.go) each time the side the phone is held on changes, from a
+// background queue, until peli_motion_stop. peli_turn asks the scene to show
+// exactly that side.
+#define PELI_SIDE_PORTRAIT 0
+#define PELI_SIDE_LANDSCAPE_LEFT 1
+#define PELI_SIDE_LANDSCAPE_RIGHT 2
+void peli_motion_start(void);
+void peli_motion_stop(void);
+void peli_turn(int side);
+void peliMotionSide(int side);
 // peli_system_captions is 1 when iOS asks for captions.
 int peli_system_captions(void);
 

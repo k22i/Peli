@@ -45,7 +45,8 @@ import (
 //     contentType, videoId, season, episode, title, name, year, ids} and is
 //     deleted: that stream plays as the profile in use's Watching file, with
 //     no page involved (the URL is never logged).
-//   - ctl holds one of pause, resume, seek N, stop or state (a snapshot of
+//   - ctl holds one of pause, resume, seek N, stop, turn left/right/portrait
+//     (as the motion sensor would; the simulator has none) or state (a snapshot of
 //     the player is written to state.txt) and is deleted.
 //   - audio, when it appears, holds interrupt, ended, ended-resume or route
 //     and is deleted: the notification iOS posts for that event is posted,
@@ -229,6 +230,15 @@ func devFiles(dir string, p *peli) {
 				err = p.players.SetPaused(false)
 			case "stop":
 				err = p.players.Stop()
+			case "turn":
+				// What the motion sensor would ask for (the simulator has none).
+				side := iosplayer.Portrait
+				if len(f) > 1 && f[1] == "left" {
+					side = iosplayer.LandscapeLeft
+				} else if len(f) > 1 && f[1] == "right" {
+					side = iosplayer.LandscapeRight
+				}
+				turnTo(side)
 			case "seek":
 				if len(f) > 1 {
 					v, _ := strconv.ParseFloat(f[1], 64)
