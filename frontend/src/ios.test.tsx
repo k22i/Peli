@@ -184,12 +184,12 @@ describe("the iOS shell", () => {
     const tabs = screen.getByRole("navigation", { name: "Main" });
     expect(tabs).not.toHaveAttribute("inert");
 
-    let release = () => {};
+    let release: (() => void) | undefined;
     act(() => {
       release = hideTabBar();
     });
     expect(tabs).toHaveAttribute("inert");
-    act(() => release());
+    act(() => release?.());
     expect(tabs).not.toHaveAttribute("inert");
   });
 

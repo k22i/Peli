@@ -79,19 +79,19 @@ describe("hideTabBar", () => {
     const { useTabBarHideRequested } = await import("@/lib/tab-bar");
     const { result } = renderHook(() => useTabBarHideRequested());
     expect(result.current).toBe(false);
-    let sheet = () => {};
-    let keyboard = () => {};
+    let sheet: (() => void) | undefined;
+    let keyboard: (() => void) | undefined;
     act(() => {
       sheet = hideTabBar();
       keyboard = hideTabBar();
     });
     expect(result.current).toBe(true);
     act(() => {
-      sheet();
-      sheet();
+      sheet?.();
+      sheet?.();
     });
     expect(result.current).toBe(true);
-    act(() => keyboard());
+    act(() => keyboard?.());
     expect(result.current).toBe(false);
   });
 });
