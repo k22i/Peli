@@ -205,6 +205,8 @@ tasks:
           cp "{{.PROVISIONING_PROFILE}}" "{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app/embedded.mobileprovision"
         fi
       - |
+        # Wails generates the app icon into xcode/; Peli's own images (the native
+        # tab bar's icons, #129) are in build/ios/Assets.xcassets.
         # Compile asset catalog and embed icons in the app bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.app"
         AC_IN="build/ios/xcode/main/Assets.xcassets"
@@ -219,7 +221,7 @@ tasks:
             --target-device iphone \
             --target-device ipad \
             --output-partial-info-plist "$APP_BUNDLE/assetcatalog_generated_info.plist" \
-            "$AC_IN"
+            "$AC_IN" build/ios/Assets.xcassets
           if [ -f "$TMP_AC/Assets.car" ]; then
             cp -f "$TMP_AC/Assets.car" "$APP_BUNDLE/Assets.car"
           fi
@@ -384,6 +386,8 @@ tasks:
       - task: embed:libmpv
         vars: {APP_BUNDLE: '{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app'}
       - |
+        # Wails generates the app icon into xcode/; Peli's own images (the native
+        # tab bar's icons, #129) are in build/ios/Assets.xcassets.
         # Compile asset catalog and embed icons for dev bundle
         APP_BUNDLE="{{.IOS_BIN_DIR}}/{{.APP_NAME}}.dev.app"
         AC_IN="build/ios/xcode/main/Assets.xcassets"
@@ -398,7 +402,7 @@ tasks:
             --target-device iphone \
             --target-device ipad \
             --output-partial-info-plist "$APP_BUNDLE/assetcatalog_generated_info.plist" \
-            "$AC_IN"
+            "$AC_IN" build/ios/Assets.xcassets
           if [ -f "$TMP_AC/Assets.car" ]; then
             cp -f "$TMP_AC/Assets.car" "$APP_BUNDLE/Assets.car"
           fi
