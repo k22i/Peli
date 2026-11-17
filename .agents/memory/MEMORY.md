@@ -96,3 +96,4 @@
 - [Library on iPhone](library-iphone.md) — #132 CompactLibraryFrame + --library-header-h, Sort sheet, PosterGrid dense (--poster-dense-columns), Card dense/corner, compact Upcoming, toasts above --tabs-float
 - [Player gestures](player-gestures.md) — #131 lib/player-gestures.ts reducer, native brightness/volume/immersive, Haptics.Impact (#135 extends), Gestures settings, fill per title, Lock
 - [Title and picker on iPhone](title-picker-iphone.md) — #136 Back in TopBar, Overview + More, TitleMoreMenu, season •••, compact picker header and two-line rows
+- [Settings and Search on iPhone](settings-search-iphone.md) — #137 SettingsRoot/CompactPage + Back, Choice→sheet, DialogPopup sheet, lib/keyboard.ts (--keyboard-h, primeKeyboard), RecentList swipe

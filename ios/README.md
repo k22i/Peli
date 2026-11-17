@@ -130,7 +130,7 @@ Run these on the **Guest profile**, with your debrid addon added there. Nothing 
 | 10 | Keychain and data across a refresh and a reinstall | Tap 7 DAYS next to Peli; then install a new `peli.ipa` over it | TMDB key, Guest addons and history still there |
 | 11 | iPad layouts | Portrait and landscape on Home, Title, the picker, the player; rotate during playback | Regular shell, no clipped or overlapping controls |
 | 12 | iPad split view and windows | Split View, Slide Over, a resized window (narrow and wide), with a video playing too | Compact shell below 700 pt; the player follows the size |
-| 13 | On-screen keyboard | Search on both devices; the sign-in fields (don't submit) | Field stays visible, no layout jump after the keyboard closes |
+| 13 | On-screen keyboard | Search on both devices (#137: tap the Search circle, type, scroll the results, tap Search/Return, then dismiss); the TMDB key sheet (Settings › Addons & content › TMDB); the sign-in fields (don't submit) | The keyboard opens at once from the Search circle; the field and the first results stay visible; the last row scrolls above the keyboard; scrolling closes it; no gap or jump after it closes (nothing left shifted up); the tab bar hides while it is up and returns after |
 | 14 | Background refresh | Next day | My Apps shows 7 DAYS for both apps; the automation ran |
 | 15 | iPhone rotation | With Rotation Lock off, then on. Turn the phone on Home and Title; play something holding the phone upright, then flat; turn it to both landscape sides; leave the player | Browsing stays upright; the player is landscape from the start however the phone is held, and flips to the other landscape side with the phone; leaving it turns the app upright |
 
