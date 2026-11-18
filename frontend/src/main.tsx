@@ -9,6 +9,7 @@ import { Service as Diagnostics } from "@bindings/diagnostics";
 import { reportPageReady } from "@/lib/app-info";
 import { installErrorHandlers, onMemoryWarning, restoreRoute } from "@/lib/diagnostics";
 import { installDevCrash } from "@/lib/dev-crash";
+import { startInputDevices } from "@/lib/input-devices";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
 import { startNativeTabBar } from "@/components/shell/use-tab-bar";
 import { isIOS, startPlatform } from "@/lib/platform";
@@ -35,6 +36,10 @@ if (isIOS()) {
     .then((info) => info.dev && installDevCrash())
     .catch(() => {});
 }
+
+// An iPad's hardware keyboard and trackpad turn the desktop shortcuts and
+// controls on while they're attached (#138).
+startInputDevices();
 
 const root = document.getElementById("root");
 if (!root) throw new Error("missing #root element");

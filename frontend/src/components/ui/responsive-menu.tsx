@@ -49,6 +49,7 @@ import {
   MenuTrigger,
 } from "@/components/ui/menu";
 import { haptic } from "@/lib/haptics";
+import { lastPointerType } from "@/lib/input-devices";
 import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
@@ -196,6 +197,9 @@ export function ResponsiveContextMenu({
 }) {
   const compact = useCompactShell();
   const [open, setOpen] = useState(false);
+  // A trackpad's secondary click in a narrow iPad window (#138): a popover
+  // at the pointer, as at regular width, not the sheet a finger gets.
+  const [popover, setPopover] = useState(false);
   const press = useLongPress(() => {
     setOpen(true);
     haptic("light");
@@ -213,22 +217,35 @@ export function ResponsiveContextMenu({
     );
   }
   return (
-    <>
-      <div
-        ref={triggerRef}
-        data-slot="press-scale"
-        data-pressing={press.pressing || undefined}
-        className="contents motion-safe:*:transition-[scale] motion-safe:*:duration-200 data-pressing:*:scale-[0.97]"
-        {...press.handlers}
-        onContextMenu={(event) => {
-          // The keyboard's context-menu key (openOnContextKey), a pointer's
-          // secondary click on an iPad in a narrow window.
-          event.preventDefault();
-          setOpen(true);
-        }}
-      >
-        {children}
-      </div>
+    <ContextMenu
+      open={popover}
+      // Only a mouse-type pointer opens the popover: Base UI's own touch
+      // long press is the sheet's here.
+      onOpenChange={(next) => setPopover(next && lastPointerType() === "mouse")}
+    >
+      <ContextMenuTrigger className="contents">
+        <div
+          ref={triggerRef}
+          data-slot="press-scale"
+          data-pressing={press.pressing || undefined}
+          className="contents motion-safe:*:transition-[scale] motion-safe:*:duration-200 data-pressing:*:scale-[0.97]"
+          {...press.handlers}
+          onContextMenu={(event) => {
+            // A trackpad's click goes on to the popover's trigger.
+            if (lastPointerType() === "mouse") return;
+            // The keyboard's context-menu key (openOnContextKey), or a long
+            // press: the sheet.
+            event.preventDefault();
+            event.stopPropagation();
+            setOpen(true);
+          }}
+        >
+          {children}
+        </div>
+      </ContextMenuTrigger>
+      <ContextMenuPopup className={popupClassName} finalFocus={finalFocus}>
+        <ModeContext value="context">{items}</ModeContext>
+      </ContextMenuPopup>
       <SheetMenu
         open={open}
         onOpenChange={setOpen}
@@ -238,7 +255,7 @@ export function ResponsiveContextMenu({
       >
         {items}
       </SheetMenu>
-    </>
+    </ContextMenu>
   );
 }
 

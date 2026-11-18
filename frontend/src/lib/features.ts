@@ -1,4 +1,8 @@
+import { useSyncExternalStore } from "react";
+
+import { hardwareKeyboard, subscribeInputDevices } from "@/lib/input-devices";
 import { isIOS } from "@/lib/platform";
+import { regularWidthIOS, subscribeCompact } from "@/lib/shell-mode";
 import { nativeTabBar } from "@/lib/tab-bar";
 
 // The parts of Peli that are not in the iOS app (ADR-0055). One list, so a
@@ -44,8 +48,38 @@ const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
   "gallery",
 ]);
 
-// Whether this build has the feature. Read when asked, not at import.
+// On an iPad some come back (#138):
+// - with a hardware keyboard attached: the desktop shortcuts (and their
+//   list) and ⌘K's palette, off again when it detaches;
+// - at regular width: person pages, which work with touch and a pointer;
+// - at regular width with a keyboard: the Library's multi-select, which is
+//   ⌘/Shift-click and Space, with no touch way in.
+const withKeyboard: ReadonlySet<Feature> = new Set<Feature>(["desktopControls", "commandPalette"]);
+
+// Whether this build has the feature. Read when asked, not at import; a
+// component that must follow a keyboard or a resize uses useFeature.
 export function feature(name: Feature): boolean {
   if (name === "nativeTabBar") return isIOS() && nativeTabBar.available;
-  return !(isIOS() && notOnIOS.has(name));
+  if (!isIOS() || !notOnIOS.has(name)) return true;
+  if (withKeyboard.has(name)) return hardwareKeyboard();
+  if (name === "people") return regularWidthIOS();
+  if (name === "multiSelect") return regularWidthIOS() && hardwareKeyboard();
+  return false;
+}
+
+function subscribeFeatures(onChange: () => void): () => void {
+  const stops = [subscribeInputDevices(onChange), subscribeCompact(onChange)];
+  return () => {
+    for (const stop of stops) stop();
+  };
+}
+
+// feature(), re-rendering when a keyboard comes or goes or the window
+// crosses the compact breakpoint.
+export function useFeature(name: Feature): boolean {
+  return useSyncExternalStore(
+    subscribeFeatures,
+    () => feature(name),
+    () => feature(name),
+  );
 }

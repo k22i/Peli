@@ -28,7 +28,7 @@ import { cn } from "@/lib/utils";
 import { menuTitle } from "@/lib/title-actions";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useBrowsableAddons } from "@/lib/home";
-import { feature } from "@/lib/features";
+import { useFeature } from "@/lib/features";
 import { currentPlatform, isTouch } from "@/lib/platform";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { currentProfileQuery } from "@/lib/profile";
@@ -460,9 +460,10 @@ function Results({
   const Notice = compact ? PhoneNotice : NoticeBase;
   // People aren't addon results: TMDB's, for an unfiltered search, never on a
   // kids profile (nothing can say which people they may see).
+  const peoplePages = useFeature("people");
   const people = useTmdbPeople(
     term,
-    feature("people") && !profile.kids && !search.type && !search.year && !search.genre,
+    peoplePages && !profile.kids && !search.type && !search.year && !search.genre,
   );
 
   if (visible.data?.length === 0) return <NoAddons profile={profile} />;

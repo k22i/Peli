@@ -5,13 +5,16 @@ import type { KeyboardEvent, MouseEvent } from "react";
 
 import { useBarOverArt } from "@/components/shell/bar-tone";
 import { ConnectionStatus } from "@/components/shell/connection-status";
+import { ShowSidebarButton } from "@/components/shell/ipad-sidebar";
 import { PartyStatus } from "@/components/shell/party-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
 import { UpdateStatus } from "@/components/shell/update-status";
+import { capsuleGlass } from "@/components/shell/tab-bar";
 import { WindowControls } from "@/components/shell/window-controls";
 import { Wordmark } from "@/components/shell/wordmark";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
+import { useHardwareKeyboard } from "@/lib/input-devices";
 import type { Platform } from "@/lib/platform";
 import { cn } from "@/lib/utils";
 import { sections, type Section } from "@/sections";
@@ -85,6 +88,7 @@ export function TopBar({
   platform,
   scrolled,
   compact = false,
+  ipad,
   onKeyboardNavigate,
 }: {
   platform: Platform;
@@ -92,9 +96,16 @@ export function TopBar({
   // The iOS tab bar holds the sections and Search (#129); the bar keeps the
   // wordmark and the profile.
   compact?: boolean;
+  // The iOS app at regular width (#138): the sections float in a glass
+  // capsule under the status bar, with a sidebar button at the leading end;
+  // with the sidebar shown, the bar starts beside it and leaves the sections
+  // and the wordmark to it.
+  ipad?: { sidebar: boolean; onShowSidebar: () => void } | undefined;
   onKeyboardNavigate: () => void;
 }) {
   const overArt = useBarOverArt();
+  // ⌘F in Search's tooltip on an iPad only with a keyboard to press it on.
+  const keyboard = useHardwareKeyboard();
   const clear = overArt && !scrolled;
   const pathname = useRouterState({
     select: (state) => (state.resolvedLocation ?? state.location).pathname,
@@ -144,7 +155,7 @@ export function TopBar({
             </TooltipTrigger>
             <TooltipPopup side="bottom">
               Search{" "}
-              {platform !== "ios" && (
+              {(platform !== "ios" || keyboard) && (
                 <span className="text-muted-foreground">
                   {platform === "mac" ? "⌘F" : "Ctrl+F"}
                 </span>
@@ -182,7 +193,8 @@ export function TopBar({
       className={cn(
         // On iOS the bar starts at the screen's top edge, under the status bar
         // (--spacing-bar includes it there); the env() insets are 0 elsewhere.
-        "app-top-bar drag-region fixed inset-x-0 top-0 z-30 h-bar pt-[env(safe-area-inset-top)] pe-[env(safe-area-inset-right)] transition-[background-color,box-shadow] duration-(--duration-base)",
+        "app-top-bar drag-region fixed top-0 z-30 h-bar pt-[env(safe-area-inset-top)] pe-[env(safe-area-inset-right)] transition-[background-color,box-shadow] duration-(--duration-base)",
+        ipad?.sidebar ? "start-(--ipad-sidebar) end-0" : "inset-x-0",
         clear && "dark",
         scrolled ? "material-bar shadow-[0_1px_0_var(--border)]" : "bg-transparent",
       )}
@@ -209,10 +221,17 @@ export function TopBar({
         {compact && (detailPage.test(pathname) || inPane) && (
           <BackLink overArt={clear} fallback={inPane ? "/settings" : "/"} />
         )}
-        <div aria-hidden className="flex shrink-0 items-center max-sm:hidden">
-          <Wordmark />
-        </div>
-        {!compact && (
+        {ipad && !ipad.sidebar && <ShowSidebarButton overArt={clear} onShow={ipad.onShowSidebar} />}
+        {!ipad?.sidebar && (
+          <div
+            aria-hidden
+            // On an iPad narrower than 1024 pt the capsule needs the room.
+            className={cn("flex shrink-0 items-center max-sm:hidden", ipad && "max-lg:hidden")}
+          >
+            <Wordmark />
+          </div>
+        )}
+        {!compact && !ipad?.sidebar && (
           <nav
             aria-label="Main"
             className="pointer-events-none absolute inset-0 flex justify-center"
@@ -220,8 +239,11 @@ export function TopBar({
             <ul
               className={cn(
                 "pointer-events-auto flex items-center self-center rounded-full p-0.5 transition-[background-color,box-shadow] duration-(--duration-base)",
-                clear &&
-                  "bg-black/30 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.1)] backdrop-blur-xl",
+                // The iPad's floating capsule: always glass, a touch taller.
+                ipad
+                  ? cn(capsuleGlass, "p-1")
+                  : clear &&
+                      "bg-black/30 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.1)] backdrop-blur-xl",
               )}
             >
               {visualOrder.map(item)}
