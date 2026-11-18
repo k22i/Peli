@@ -17,6 +17,7 @@ Built 2026-11-17 for #127 (epic #126). #128 and #141 build on it.
 **Facts:**
 - Wails 3.1.0 recovers a panic in a bound method (`BoundMethod.Call` → a `CallError` the frontend sees as a rejection, plus `PanicHandler`). Panics in Wails' event/callback goroutines go through `handlePanic`, which is fatal unless a `PanicHandler` is set.
 - `DevBuild` is set by `dev_ios.go`'s `init`, so the crash tests show in any `pelidev` build, even without `PELI_DEV_DIR`. Device pelidev .ipa: `wails3 task ios:package:ipa IOS_PLATFORM=device IOS_PRODUCTION=false EXTRA_TAGS=pelidev` (production builds ignore `EXTRA_TAGS`).
+- #128 (2026-11-18): `memory:` lines are Peli's process only, never WebContent's. The first device run had two WebContent kills with Peli at ~70 MiB and no memory warning before them. #128 added `Service.DevMark` (the rig's Tab loop rows log through it) and `Service.TrimWebCache` (an optional `TrimWebCache()` on the Platform, iOS only; `MemoryWarning` calls it too).
 - The `iosplayer` boundary check in `TestIOSBuildLeavesOutTheDesktopOnlyPieces` already failed on main before #127 (it lists the older file set).
 
 Related: [[ios-port]], [[ios-sidestore]], [[ios-polish-epic]].
