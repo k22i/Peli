@@ -1,12 +1,12 @@
 # Design system
 
-Peli has one theme, in light and dark (#13; theme studio is cut). Since the redesign (epic #110, [ADR-0046](../adr/0046-redesign-glass-and-floating-chrome.md)) its layout and materials come from **Apple TV and Apple Music on macOS 26**: a floating glass sidebar and a title bar that content scrolls under, big artwork (a tall billboard hero, shelves at 1.5× size, an episode row), chrome made of four glass tiers with scroll-edge blur instead of hairlines, glass buttons over artwork with Play solid, settings in panes, and a floating glass control bar in the player. It keeps **Peli's own identity** (below) and **Vercel's** monochrome precision, and **Nuvio's** poster-first, near-black cinema.
+**Peli is dark only (#143, 2026-11-18)**: there is no light theme and no Appearance setting, on every platform and whatever the OS is set to. The light-mode screenshots and tokens in the records below are history. Peli has one theme (#13; theme studio is cut). Since the redesign (epic #110, [ADR-0046](../adr/0046-redesign-glass-and-floating-chrome.md)) its layout and materials come from **Apple TV and Apple Music on macOS 26**: a floating glass sidebar and a title bar that content scrolls under, big artwork (a tall billboard hero, shelves at 1.5× size, an episode row), chrome made of four glass tiers with scroll-edge blur instead of hairlines, glass buttons over artwork with Play solid, settings in panes, and a floating glass control bar in the player. It keeps **Peli's own identity** (below) and **Vercel's** monochrome precision, and **Nuvio's** poster-first, near-black cinema.
 
 The living reference is the in-app gallery: **Settings › Design system** (`/gallery`). It shows every token and component in its states and measures contrast live: colour, contrast, type and "Type in use", shape and motion, the glass tiers (Materials), the shell, then the Hero, Rows, Cards, Buttons, Glass buttons, Chips and badges, Scroll rail, Player bar, Overlays, Skeletons, Stream picker and Long rows.
 
 ## Peli's identity (what we don't take from Apple)
 
-- **Colour:** the lagoon `--brand` (`#33b5e0` dark, `#0b6e94` light) is the only accent. Apple's pink, red and system blue never appear. Surfaces are neutral greys; dark mode is Nuvio's near-black cinema (`#0a0a0b`).
+- **Colour:** the lagoon `--brand` (`#33b5e0`) is the only accent. Apple's pink, red and system blue never appear. Surfaces are neutral greys; dark mode is Nuvio's near-black cinema (`#0a0a0b`).
 - **Type:** Mona Sans for UI and headings, Geist Mono for numbers and codes. No SF Pro and no `system-ui` look.
 - **Shape:** the radius scale (`--radius: 0.75rem`), the poster-first layout and the card lift on hover.
 - **Copy:** Peli's section names: Home, Movies, Shows, Anime, Search, Library. No "Up Next", "Watch Now" or "Listen Now".
@@ -16,8 +16,8 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 
 | What | Where |
 |---|---|
-| Tokens: colour, type, spacing, radius, elevation, motion, card sizes | `frontend/src/index.css` (`:root` light, `.dark` dark, the `@theme` blocks) |
-| Light/dark: OS by default, System/Light/Dark override | `frontend/src/lib/theme.ts`, the inline script in `frontend/index.html`, the window colour in `main.go` |
+| Tokens: colour, type, spacing, radius, elevation, motion, card sizes | `frontend/src/index.css` (`:root` holds the dark tokens, the `@theme` blocks) |
+| Dark only: the `dark` class set in `frontend/index.html` and `lib/theme.ts`, the window colour in `main.go`, `UIUserInterfaceStyle` in the iOS Info plists |
 | WCAG AA checks for every colour pairing | `frontend/src/lib/contrast.ts` (`contrastPairs`), `contrast.test.ts` |
 | Base components (button, dialog, sheet, toast, skeleton, toggle, badge, menu, tooltip…) | coss ui, `frontend/src/components/ui` (add more with `pnpm dlx shadcn@4.21.4 add @coss/<name>`) |
 | Glass tiers, scroll edge, materialize motion | `frontend/src/index.css` (`@utility glass-*`, `scroll-edge-top`); `Ambient` in `frontend/src/components/media/ambient.tsx` |
@@ -31,7 +31,7 @@ The living reference is the in-app gallery: **Settings › Design system** (`/ga
 ## Rules of thumb
 
 - **Colour:** surfaces are greys; the one accent is `--brand` (see identity). Use it for focus, progress, selection and small highlights, never for large fills. coss's `--accent` is its hover tint, not the brand.
-- **Contrast:** a new foreground/background pairing goes into `contrastPairs`, so the test holds it to AA (4.5:1 text, 3:1 UI) in both modes. Keep colour tokens as hex so the test can read them. List a translucent background with the layers under it (`["background", "glass-regular", "muted"]`), never alone: a translucent token measured on its own reads as black.
+- **Contrast:** a new foreground/background pairing goes into `contrastPairs`, so the test holds it to AA (4.5:1 text, 3:1 UI). Keep colour tokens as hex so the test can read them. List a translucent background with the layers under it (`["background", "glass-regular", "muted"]`), never alone: a translucent token measured on its own reads as black.
 - **Glass:** pick a tier (Glass, below); don't hand-roll `backdrop-blur`. Never stack a light tier on another light tier. Over artwork or video use `glass-media` (icons) or `glass-media-strong` (text), which stay dark in both themes. A tier sets its own `background-color`: don't add `bg-*` to the same element, and never use `bg-popover` without one (it is translucent now).
 - **Chrome over content:** the sidebar, the title bar, sticky page headers and the player bar are glass that content scrolls under (Shell, below). Put `scroll-edge-top` on a sticky wrapper, not on a glass element. Sticky things inside `#content` offset themselves by `--titlebar-h`.
 - **Over artwork, stay dark:** the hero and the player scope themselves with `.dark`, since artwork is dark in either theme. Text over video is plain white, not muted white.

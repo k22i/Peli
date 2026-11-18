@@ -33,7 +33,6 @@ import {
   SharedDisconnectDialog,
   SimklDialog,
 } from "@/components/settings/tracking-dialogs";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
   defaultSubtitleStyle,
   SubtitleStyleEditor,
@@ -226,8 +225,6 @@ function Pane({
       return <PluginsPane title={title} profileId={profileId} />;
     case "tracking":
       return <TrackingPane title={title} profileId={profileId} />;
-    case "appearance":
-      return <AppearancePane title={title} />;
     case "privacy":
       return <PrivacyPane title={title} profileId={profileId} />;
     case "about":
@@ -1271,22 +1268,6 @@ function QualityGroup({
 }
 
 const displayLabels = { auto: "Auto", on: "On", off: "Off" };
-
-function AppearancePane({ title }: { title: string }) {
-  return (
-    <SettingsPaneView title={title}>
-      <SettingsGroup>
-        <SettingRow
-          id="theme"
-          label="Theme"
-          description={`System follows your ${hostName()}’s light or dark mode. Applies to this device.`}
-        >
-          <ThemeSwitcher />
-        </SettingRow>
-      </SettingsGroup>
-    </SettingsPaneView>
-  );
-}
 
 // The setting is the consent only: diagnostics themselves are #90, and read
 // it before sending anything.

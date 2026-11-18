@@ -6,7 +6,6 @@ import { Shell } from "@/components/gallery/shell";
 import { TypeSample } from "@/components/gallery/type-sample";
 import { Badge } from "@/components/ui/badge";
 import { contrastPairs, contrastRatio } from "@/lib/contrast";
-import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
 const swatches = [
@@ -42,10 +41,8 @@ const typeScale = [
 // A pairing's colour: a token's current value, or a literal hex.
 const cssColour = (name: string) => (name.startsWith("#") ? name : `var(--${name})`);
 
-// The token values on screen now. Cheap to read, so read on every render;
-// useTheme re-renders when the .dark class changes.
+// The token values on screen now. Cheap to read, so read on every render.
 function useTokens(names: readonly string[]): Record<string, string> {
-  useTheme();
   const style = getComputedStyle(document.documentElement);
   return Object.fromEntries(
     names.map((name) => [

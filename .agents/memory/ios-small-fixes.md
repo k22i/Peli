@@ -15,3 +15,4 @@ metadata:
 - Webview start: `peli_quiet_webview` (host_ios.m) is the only thing main.m calls for it; if the page never calls `appinfo.PageReady` it shows after 4 s.
 
 Related: [[ios-polish-epic]], [[ios-port]].
+- **Dark only (#143):** `LaunchBackground.colorset` is the dark colour only and both Info plists set `UIUserInterfaceStyle` Dark (status bar, keyboard, system sheets, launch screen). The app icon keeps light/dark/tinted: those are Home Screen styles. See [[peli-design-direction]].

@@ -385,21 +385,17 @@ int peli_bundle_build(char *buf, int size) {
 
 // --- Launch: no white flash --------------------------------------------------
 // The launch screen is --background (UILaunchScreen, the LaunchBackground
-// colour), but the webview used to arrive white, a flash in dark mode. From
+// colour), but the webview used to arrive white, a flash. From
 // its first layout it is clear and non-opaque over a window and view in the
 // same colour as the launch screen, and invisible until the page reports its
 // DOMContentLoaded (appinfo.PageReady). Wails' SetBackgroundColour, from
-// lib/theme.ts, then makes it opaque in the theme's colour.
+// lib/theme.ts, then makes it opaque in that colour.
 
 static UIView *quietWebview;
 
-// --background, light and dark: windowColours in lib/theme.ts.
+// --background: windowColour in lib/theme.ts. Peli is dark only (#143).
 static UIColor *peliBackground(void) {
-	return [UIColor colorWithDynamicProvider:^UIColor *(UITraitCollection *traits) {
-		return traits.userInterfaceStyle == UIUserInterfaceStyleDark
-			? [UIColor colorWithRed:14 / 255.0 green:13 / 255.0 blue:12 / 255.0 alpha:1]
-			: [UIColor colorWithRed:245 / 255.0 green:242 / 255.0 blue:236 / 255.0 alpha:1];
-	}];
+	return [UIColor colorWithRed:14 / 255.0 green:13 / 255.0 blue:12 / 255.0 alpha:1];
 }
 
 // Called on the main thread by main.m's layout hook; the first call counts.

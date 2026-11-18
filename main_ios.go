@@ -119,9 +119,6 @@ func main() {
 
 	// Pull from Nuvio once the app is up, so the cached UI never waits for it.
 	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
-		if !app.Env.IsDarkMode() {
-			window.SetBackgroundColour(windowColourLight)
-		}
 		syncer.PullerOf(p.sync).Background(context.Background())
 		p.importTracked()
 	})

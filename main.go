@@ -41,12 +41,9 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-// The --background token in each mode (frontend/src/index.css); keep in step
-// with windowColours in frontend/src/lib/theme.ts.
-var (
-	windowColourLight = application.NewRGB(245, 242, 236)
-	windowColourDark  = application.NewRGB(14, 13, 12)
-)
+// The --background token (frontend/src/index.css); keep in step with
+// windowColour in frontend/src/lib/theme.ts. Peli is dark only (#143).
+var windowColourDark = application.NewRGB(14, 13, 12)
 
 // What the app is, for the application's options on every platform.
 const description = "A desktop client for Stremio-compatible addons, with Nuvio sync"

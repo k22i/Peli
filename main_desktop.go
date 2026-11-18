@@ -103,14 +103,15 @@ func main() {
 		// is frameless with our own caption buttons, and Linux keeps its
 		// native frame (GNOME, KDE and tiling WMs disagree on decorations).
 		Mac: application.MacWindow{
+			// Dark whatever macOS is set to (#143).
+			Appearance:              application.NSAppearanceNameDarkAqua,
 			InvisibleTitleBarHeight: 44,
 			Backdrop:                application.MacBackdropTranslucent,
 			TitleBar:                application.MacTitleBarHiddenInset,
 		},
 		Frameless: runtime.GOOS == "windows",
 		// The shell's outer colour (--sidebar), so there is no flash on load.
-		// Dark until the OS appearance is known below; the frontend then
-		// follows the user's theme (frontend/src/lib/theme.ts).
+		// Peli is dark only, whatever the OS appearance (#143).
 		BackgroundColour: windowColourDark,
 		URL:              "/",
 	})
@@ -121,9 +122,6 @@ func main() {
 	// Pull from Nuvio once the window is up, so the cached UI never waits for
 	// it, and again each time the window gets focus (#29).
 	app.Event.OnApplicationEvent(events.Common.ApplicationStarted, func(*application.ApplicationEvent) {
-		if !app.Env.IsDarkMode() {
-			window.SetBackgroundColour(windowColourLight)
-		}
 		syncer.PullerOf(p.sync).Background(context.Background())
 		p.importTracked()
 	})
