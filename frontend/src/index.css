@@ -420,6 +420,11 @@
 :root[data-tabs] [data-slot="toast-viewport"][data-position*="bottom"] {
   bottom: var(--tabs-float);
 }
+/* The Library's selection bar (multi-select, on an iPad with a keyboard,
+   #138) stands above the iPad's floating bar too. */
+:root[data-tabs] [data-slot="selection-bar"] {
+  bottom: calc(var(--tabs-float) + 0.5rem);
+}
 
 /* Light: warm paper. */
 :root {

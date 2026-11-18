@@ -100,4 +100,4 @@
 - [Settings and Search on iPhone](settings-search-iphone.md) — #137 SettingsRoot/CompactPage + Back, Choice→sheet, DialogPopup sheet, lib/keyboard.ts (--keyboard-h, primeKeyboard), RecentList swipe
 - [Native feel](native-feel.md) — #135 haptic() call sites + notification kinds, Shell.WatchStatusBar/shell:scroll-top, edge back (onLoad reset), usePullToRefresh + Syncer.Refresh, touch scrollbar
 - [Device pairing](device-pairing.md) — #133/ADR-0061 copy SIMKL/AniList/TMDB by QR over the LAN: camera always scans, CPace phrase Mac↔Mac, internal/pairing layout, shared grants, AVFoundation scanner
-- [iPad shell](ipad-shell.md) — #138 CSS top capsule + sidebar (user chose CSS), input-devices (GCKeyboard, pointer), useFeature, iosKeysOff, popover right-click, roomy player, one window
+- [iPad shell](ipad-shell.md) — #138 CSS bottom-centre bar (moved from the top after the device run) + sidebar (user chose CSS), input-devices (GCKeyboard, pointer), useFeature, iosKeysOff, popover right-click, roomy player, one window
