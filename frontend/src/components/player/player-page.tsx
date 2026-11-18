@@ -196,7 +196,8 @@ import {
   watchingFor,
   type Episode,
 } from "@/lib/title";
-import { feature } from "@/lib/features";
+import { feature, useFeature } from "@/lib/features";
+import { useHardwareKeyboard, usePointerAttached } from "@/lib/input-devices";
 import {
   holdAfter,
   idle as gestureIdle,
@@ -207,6 +208,7 @@ import {
   type Side as LevelSide,
 } from "@/lib/player-gestures";
 import { isIOS, isTouch } from "@/lib/platform";
+import { useCompactShell } from "@/lib/shell-mode";
 import { isTorrentSource, Torrents, torrentStatusText, useTorrentStatus } from "@/lib/torrent";
 import { cn } from "@/lib/utils";
 
@@ -239,6 +241,26 @@ const skip = 10;
 const px = (v: string | undefined) => Number.parseFloat(v ?? "") || 0;
 // One press of Z or X moves subtitles this many seconds, as in mpv.
 const delayStep = 0.1;
+// The keys the iOS player leaves alone (#138): their controls are the
+// desktop's only (ErrDesktopOnly in internal/player/service_ios.go, or a
+// feature that's off on iOS). shortcuts.tsx leaves them out of the list.
+const iosKeysOff: ReadonlySet<string> = new Set([
+  "f",
+  "i",
+  "s",
+  "w",
+  "p",
+  "b",
+  "l",
+  ",",
+  ".",
+  "=",
+  "+",
+  "-",
+  "0",
+]);
+const iosShiftedOff: ReadonlySet<string> = new Set(["F", "A", "S"]);
+
 // One press of ↑ or ↓ moves the volume this much, of 100.
 const volumeStep = 5;
 // How long "Start over" is offered once a resumed file plays.
@@ -429,10 +451,19 @@ function PlayerFile({
   const pickAbort = useRef<AbortController>(null);
   useEffect(() => () => pickAbort.current?.abort(), []);
   const [idle, wake, hideControls] = useIdle(idleAfter);
+  // The last pointer down on the picture: "mouse" for an iPad's trackpad.
+  const surfacePointer = useRef("");
   // A finger: tap shows or hides the controls, a double tap on a side skips
   // 10 s, and the dock is two rows (iOS).
   const touch = isTouch();
   const touchLayout = touch && !mini;
+  // The desktop shortcuts and their list: an iPad's while a hardware
+  // keyboard is attached (#138).
+  const desktopControls = useFeature("desktopControls");
+  const keyboard = useHardwareKeyboard();
+  const pointerAttached = usePointerAttached();
+  const compactWindow = useCompactShell();
+  // An iPad window at regular width (#138): #130's chrome with more room.
   // The touch player's own chrome (#130): the top row, the transport in the
   // middle, a thin seek row and a row of text buttons for a series. The mini
   // player keeps its card.
@@ -504,6 +535,11 @@ function PlayerFile({
   // The series' details, as its page asked for them, for the next episode.
   const browsing = useLoadedAddons(profileId);
   const series = watching && isSeriesType(watching.contentType) ? watching : undefined;
+  // The bottom row always shows there (Speed moves into it from More), and
+  // a volume slider joins it while a keyboard or a pointer is attached.
+  const roomy = touchLayout && isIOS() && !compactWindow;
+  const bottomRow = series !== undefined || roomy;
+  const volumeSlider = roomy && (keyboard || pointerAttached);
   const meta = useQuery({
     ...titleMetaQuery(browsing.addons, series?.contentType ?? "", series?.contentId ?? ""),
     enabled: series !== undefined && !browsing.loading,
@@ -1585,6 +1621,12 @@ function PlayerFile({
       }
       if (error || switcherOpen || partyOpen || dockMenuOpen) return;
       if (event.metaKey || event.ctrlKey) return;
+      // The iPad's keyboard (#138): what the iOS player can't do (framing,
+      // full screen, the mini player, the switcher, a party, frame steps,
+      // A–B loops, screenshots, the picture and sound panels) takes no key,
+      // so a press never opens state with nothing on screen.
+      const ios = isIOS();
+      if (ios && event.altKey) return;
       // Option and the arrows pan the picture (mpv's keys); Option changes
       // event.key on macOS, so these go by event.code. Nothing else takes
       // Option, so the OS keeps its own.
@@ -1635,9 +1677,10 @@ function PlayerFile({
         R: () => nudgeSubtitles(-liftStep, 0),
         G: () => nudgeSubtitles(0, sizeStep),
       };
-      const shiftedAction = event.shiftKey
-        ? (shiftedRepeating[event.key] ?? (event.repeat ? undefined : shifted[event.key]))
-        : undefined;
+      const shiftedAction =
+        event.shiftKey && !(ios && iosShiftedOff.has(event.key))
+          ? (shiftedRepeating[event.key] ?? (event.repeat ? undefined : shifted[event.key]))
+          : undefined;
       if (shiftedAction) {
         event.preventDefault();
         shiftedAction();
@@ -1693,6 +1736,7 @@ function PlayerFile({
         },
       };
       const key = event.key.toLowerCase();
+      if (ios && iosKeysOff.has(key)) return;
       // A focused slider moves itself with the arrows and Page Up/Down.
       if ((key.startsWith("arrow") || key.startsWith("page")) && event.defaultPrevented) return;
       const action = repeating[key] ?? (event.repeat ? undefined : once[key]);
@@ -1740,7 +1784,12 @@ function PlayerFile({
     style.lift,
     shown && !previewing && ready,
     touchLayout
-      ? liftToClear(windowHeight, false, 16, series ? touchChromeRem.series : touchChromeRem.movie)
+      ? liftToClear(
+          windowHeight,
+          false,
+          16,
+          bottomRow ? touchChromeRem.series : touchChromeRem.movie,
+        )
       : liftToClear(windowHeight, mini, touch ? 20 : 16),
   );
   const loaded = settings !== undefined;
@@ -1786,9 +1835,12 @@ function PlayerFile({
         // Always there in the bar; the mini player has no room, so it opens
         // on hover or focus as before.
         className={cn(
+          // The iPad's bottom row (#138): always open, as on the desktop bar.
+          volumeSlider && !mini && "w-28",
           mini &&
             "w-0 overflow-hidden opacity-0 transition-[width,opacity] duration-200 group-focus-within/volume:w-24 group-focus-within/volume:opacity-100 group-hover/volume:w-24 group-hover/volume:opacity-100",
           !mini &&
+            !volumeSlider &&
             "w-0 overflow-hidden opacity-0 transition-[width,opacity] duration-300 ease-out-soft group-focus-within/volume:w-24 group-focus-within/volume:opacity-100 group-hover/volume:w-24 group-hover/volume:opacity-100",
         )}
       >
@@ -2129,7 +2181,7 @@ function PlayerFile({
             <TouchMoreMenu
               open={moreOpen}
               onOpenChange={setMoreOpen}
-              speed={series ? undefined : { speed, onChange: changeSpeed }}
+              speed={bottomRow ? undefined : { speed, onChange: changeSpeed }}
               sleep={{
                 choice: sleepChoiceOf(sleep),
                 hint: sleepHint(sleep, sleepFor),
@@ -2137,6 +2189,17 @@ function PlayerFile({
                 onChange: changeSleep,
               }}
               stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
+              shortcuts={
+                desktopControls
+                  ? {
+                      open: helpOpen,
+                      onToggle: () => {
+                        setPanel(undefined);
+                        setHelpOpen(!helpOpen);
+                      },
+                    }
+                  : undefined
+              }
               onReport={isIOS() ? reportProblem : undefined}
             />
           )
@@ -2236,7 +2299,7 @@ function PlayerFile({
             </p>
           )}
         </div>
-        {series && (
+        {bottomRow && (
           <div
             data-testid="bottom-row"
             className={cn(
@@ -2272,6 +2335,7 @@ function PlayerFile({
                 Next episode
               </RowButton>
             )}
+            {volumeSlider && <div className="ms-auto">{volumeControl}</div>}
           </div>
         )}
       </div>
@@ -2312,7 +2376,7 @@ function PlayerFile({
         // The touch chrome's height (#130): the seek row, and the bottom row
         // for a series, over the home indicator.
         touchLayout &&
-          (series
+          (bottomRow
             ? "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+4rem)]"
             : "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+2rem)]"),
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
@@ -2346,8 +2410,11 @@ function PlayerFile({
           !shown ? "cursor-none" : framing.zoom !== 0 && ready ? "cursor-grab" : "cursor-default",
         )}
         onPointerDown={(event) => {
+          surfacePointer.current = event.pointerType;
           if (touchLayout) {
-            if (gesturesOn) pointer("down", event);
+            // A trackpad or mouse on an iPad (#138) clicks as on the
+            // desktop: no swipes, and a click pauses (onClick).
+            if (gesturesOn && event.pointerType !== "mouse") pointer("down", event);
             return;
           }
           if (!ready || mini || framing.zoom === 0 || event.button !== 0) return;
@@ -2357,7 +2424,7 @@ function PlayerFile({
         }}
         onPointerMove={(event) => {
           if (touchLayout) {
-            if (gesturesOn) pointer("move", event);
+            if (gesturesOn && event.pointerType !== "mouse") pointer("move", event);
             return;
           }
           const drag = panDrag.current;
@@ -2373,7 +2440,7 @@ function PlayerFile({
         }}
         onPointerUp={(event) => {
           if (touchLayout) {
-            if (gesturesOn) pointer("up", event);
+            if (gesturesOn && event.pointerType !== "mouse") pointer("up", event);
             return;
           }
           const drag = panDrag.current;
@@ -2382,7 +2449,7 @@ function PlayerFile({
         }}
         onPointerCancel={(event) => {
           if (touchLayout) {
-            if (gesturesOn) pointer("cancel", event);
+            if (gesturesOn && event.pointerType !== "mouse") pointer("cancel", event);
             return;
           }
           panDrag.current = undefined;
@@ -2404,8 +2471,9 @@ function PlayerFile({
             setPanel(undefined);
             setPictureOpen(false);
             setEpisodesOpen(false);
-          } else if (touch) tapPicture(event.clientX, event.currentTarget.getBoundingClientRect());
-          else togglePause();
+          } else if (touch && surfacePointer.current !== "mouse") {
+            tapPicture(event.clientX, event.currentTarget.getBoundingClientRect());
+          } else togglePause();
         }}
         onDoubleClick={touch ? undefined : mini ? toggleMini : toggleFullscreen}
       />
@@ -2522,7 +2590,7 @@ function PlayerFile({
                       aria-expanded={switcherOpen}
                     />
                   )}
-                  {feature("desktopControls") && (
+                  {desktopControls && (
                     <ControlButton
                       label="Keyboard shortcuts"
                       icon={Keyboard}
@@ -2536,7 +2604,7 @@ function PlayerFile({
                     />
                   )}
                   {miniButton}
-                  {feature("desktopControls") && (
+                  {desktopControls && (
                     <ControlButton
                       label={fullscreen ? "Exit full screen" : "Full screen"}
                       icon={fullscreen ? Minimize : Maximize}
@@ -2888,7 +2956,7 @@ function PlayerFile({
           onCatchUp={() => void Party.CatchUp().catch(() => {})}
         />
       )}
-      {helpOpen && !failure && !mini && feature("desktopControls") && (
+      {helpOpen && !failure && !mini && desktopControls && (
         <ShortcutsOverlay onClose={() => setHelpOpen(false)} />
       )}
       {statsOpen && ready && !mini && <StatsOverlay onClose={() => setStatsOpen(false)} />}

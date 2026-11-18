@@ -3,10 +3,16 @@ import { Fragment } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import { isIOS } from "@/lib/platform";
 
 // The player's keys (#67), as the help overlay lists them; player-page.tsx
 // handles them. Space, F, M, Z and X are mpv's, K, C and I YouTube's.
-export const playerShortcuts: { group: string; items: { keys: string[]; action: string }[] }[] = [
+// `desktop` marks the keys the iOS player leaves alone (iosKeysOff in
+// player-page.tsx, #138): the overlay doesn't list them on an iPad.
+export const playerShortcuts: {
+  group: string;
+  items: { keys: string[]; action: string; desktop?: true }[];
+}[] = [
   {
     group: "Playback",
     items: [
@@ -15,22 +21,22 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
       { keys: ["↑", "↓"], action: "Volume up or down" },
       { keys: ["[", "]"], action: "Slower or faster" },
       { keys: ["Backspace"], action: "Normal speed" },
-      { keys: [",", "."], action: "A frame back or forward, paused" },
+      { keys: [",", "."], action: "A frame back or forward, paused", desktop: true },
       { keys: ["Page Up", "Page Down"], action: "Previous or next chapter" },
-      { keys: ["L"], action: "Set A, set B, then clear an A–B loop" },
-      { keys: ["Shift S"], action: "Screenshot, with the subtitles showing" },
+      { keys: ["L"], action: "Set A, set B, then clear an A–B loop", desktop: true },
+      { keys: ["Shift S"], action: "Screenshot, with the subtitles showing", desktop: true },
       { keys: ["Shift I"], action: "Playback stats" },
       { keys: ["M"], action: "Mute or unmute" },
-      { keys: ["F"], action: "Full screen" },
-      { keys: ["I"], action: "Mini player" },
-      { keys: ["S"], action: "Choose another stream" },
-      { keys: ["W"], action: "Watch party" },
-      { keys: ["P"], action: "Picture and sound" },
-      { keys: ["Shift F"], action: "Fit, fill, stretch or original size" },
-      { keys: ["Shift A"], action: "Next aspect ratio" },
-      { keys: ["=", "−"], action: "Zoom in or out" },
-      { keys: ["0"], action: "Zoom back to 1×" },
-      { keys: ["⌥ ←→↑↓"], action: "Move the zoomed picture" },
+      { keys: ["F"], action: "Full screen", desktop: true },
+      { keys: ["I"], action: "Mini player", desktop: true },
+      { keys: ["S"], action: "Choose another stream", desktop: true },
+      { keys: ["W"], action: "Watch party", desktop: true },
+      { keys: ["P"], action: "Picture and sound", desktop: true },
+      { keys: ["Shift F"], action: "Fit, fill, stretch or original size", desktop: true },
+      { keys: ["Shift A"], action: "Next aspect ratio", desktop: true },
+      { keys: ["=", "−"], action: "Zoom in or out", desktop: true },
+      { keys: ["0"], action: "Zoom back to 1×", desktop: true },
+      { keys: ["⌥ ←→↑↓"], action: "Move the zoomed picture", desktop: true },
       { keys: ["Esc"], action: "Leave the mini player or full screen, then the player" },
     ],
   },
@@ -38,7 +44,7 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
     group: "Audio and subtitles",
     items: [
       { keys: ["A"], action: "Next audio track" },
-      { keys: ["B"], action: "Dialogue boost on or off" },
+      { keys: ["B"], action: "Dialogue boost on or off", desktop: true },
       { keys: ["C"], action: "Next subtitles, then off" },
       { keys: ["Shift C"], action: "Next second-line subtitles, then off" },
       { keys: ["Z", "X"], action: "Subtitles 0.1 s earlier or later" },
@@ -56,10 +62,14 @@ export const playerShortcuts: { group: string; items: { keys: string[]; action: 
 // player's chrome (#121); text is plain white so it reads over a white frame.
 // It doesn't take focus or the keys: they keep working while it shows.
 export function ShortcutsOverlay({ onClose }: { onClose: () => void }) {
+  const ios = isIOS();
+  const groups = playerShortcuts
+    .map(({ group, items }) => ({ group, items: items.filter((item) => !(ios && item.desktop)) }))
+    .filter(({ items }) => items.length > 0);
   return (
     <section
       aria-label="Keyboard shortcuts"
-      className="dark absolute top-1/2 left-1/2 w-[min(28rem,calc(100%-2rem))] -translate-1/2 rounded-3xl p-5 text-foreground material-media"
+      className="dark absolute top-1/2 left-1/2 w-[min(28rem,calc(100%-2rem))] -translate-1/2 rounded-3xl max-h-[calc(100%-2rem)] overflow-y-auto p-5 text-foreground material-media"
     >
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-base font-semibold">Keyboard shortcuts</h2>
@@ -74,7 +84,7 @@ export function ShortcutsOverlay({ onClose }: { onClose: () => void }) {
         </Button>
       </div>
       <div className="flex flex-col gap-4">
-        {playerShortcuts.map(({ group, items }) => (
+        {groups.map(({ group, items }) => (
           <div key={group}>
             <h3 className="mb-1.5 type-eyebrow">{group}</h3>
             <dl className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1.5 text-sm">

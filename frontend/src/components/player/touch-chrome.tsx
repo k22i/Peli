@@ -1,5 +1,6 @@
 import {
   Activity,
+  Keyboard,
   Captions,
   Check,
   ChevronLeft,
@@ -248,6 +249,7 @@ export function TouchMoreMenu({
   speed,
   sleep,
   stats,
+  shortcuts,
   onReport,
 }: {
   open: boolean;
@@ -256,6 +258,10 @@ export function TouchMoreMenu({
   speed?: { speed: number; onChange: (speed: number) => void } | undefined;
   sleep: SleepProps;
   stats: { open: boolean; onToggle: () => void };
+  // "Keyboard shortcuts": the list (shortcuts.tsx), while an iPad has a
+  // hardware keyboard attached (#138). iPadOS's own ⌘-hold list only shows
+  // UIKeyCommands, and Peli's keys live in the webview.
+  shortcuts?: { open: boolean; onToggle: () => void } | undefined;
   // "Report a problem": shares the logs (#127), on iOS.
   onReport?: (() => void) | undefined;
 }) {
@@ -299,6 +305,14 @@ export function TouchMoreMenu({
           Playback stats
         </span>
       </PlayerMenuCheckboxItem>
+      {shortcuts && (
+        <PlayerMenuCheckboxItem checked={shortcuts.open} onChange={shortcuts.onToggle}>
+          <span className="flex items-center gap-3">
+            <Keyboard aria-hidden className="size-4.5" />
+            Keyboard shortcuts
+          </span>
+        </PlayerMenuCheckboxItem>
+      )}
       {onReport && (
         <PlayerMenuItem icon={<LifeBuoy aria-hidden />} onClick={onReport}>
           Report a problem
