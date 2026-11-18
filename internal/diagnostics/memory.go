@@ -34,9 +34,11 @@ func Breadcrumbs(s *Service) {
 func SetActive(on bool) { active.Store(on) }
 
 // MemoryWarning is UIApplicationDidReceiveMemoryWarningNotification: logged,
-// Go hands back what it can, and the frontend trims its caches.
+// WebKit's memory cache is dropped (#128), Go hands back what it can, and the
+// frontend trims its caches.
 func MemoryWarning(s *Service) {
 	logMemory(s, "warning")
+	s.TrimWebCache()
 	debug.FreeOSMemory()
 	if s.emit != nil {
 		s.emit(EventMemoryWarning)

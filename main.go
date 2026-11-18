@@ -109,6 +109,10 @@ func newPeli(dbPath string) *peli {
 	// The anime list maps ids for tracking (#71), the AniList addon (#108)
 	// and leaving anime out of Movies and Shows (#109).
 	p.animeList = animelist.New(animelist.DefaultURL, filepath.Dir(dbPath))
+	// On iOS the launch download waits for Wi-Fi (#128); nil on the desktop.
+	if animeListDownloads != nil {
+		p.animeList.OnlyWhen(animeListDownloads)
+	}
 	anilistClient := anilist.New(cmp.Or(os.Getenv("PELI_ANILIST_URL"), anilist.DefaultURL), appinfo.Version)
 	// SIMKL and AniList, per profile (#71): scrobbles from the same reports.
 	p.trackers = tracking.NewService(tracking.Config{

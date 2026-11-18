@@ -40,8 +40,47 @@ const metahubTarget: Partial<Record<ArtworkUse, { kind: string; size: string }>>
   logo: { kind: "logo", size: "large" },
 };
 
-export function sharper(url: string | undefined, use: ArtworkUse): string | undefined {
+// The iOS budget (#128). WebKit's content process was killed twice in a
+// minute on an iPhone 14 Pro, on Movies: every image it has shown stays in
+// its memory, and the addons hand out big ones. Catalog backgrounds are
+// TMDB `original` (up to 3840×2160, 33 MB decoded each), which the Home hero
+// showed as they were and Continue Watching's landscape cards never stepped
+// down from; posters are 500×750 (1.5 MB). So on iOS TMDB images are capped
+// by use, stepping down from a bigger size: backdrops at w1280 (a phone is
+// ~1206 device px wide), landscape cards at w780. At compact width
+// (`useCompactShell`) a poster card is 9.25rem, about 444 device px at 3×,
+// so posters ask TMDB's w342 and AniList's `large` (230×326, ~72 kB, 0.3 MB
+// decoded) instead of `extraLarge` (460×650, ~230 kB, 1.2 MB; measured over
+// AniList's trending page on 2026-11-17). AniList names its sizes one step
+// off in the path: `extraLarge` is /cover/large/, `large` is /cover/medium/.
+// The desktop is unchanged.
+export type ArtworkDevice = "desktop" | "ios" | "compact";
+
+const anilistCover = /^(https:\/\/s4\.anilist\.co\/file\/anilistcdn\/media\/anime\/cover\/)large\//;
+
+const iosTmdbCap: Record<"ios" | "compact", Partial<Record<ArtworkUse, number>>> = {
+  ios: { backdrop: 1280, landscape: 780 },
+  compact: { backdrop: 1280, landscape: 780, poster: 342 },
+};
+
+export function sharper(
+  url: string | undefined,
+  use: ArtworkUse,
+  device: ArtworkDevice = "desktop",
+): string | undefined {
   if (!url) return url;
+
+  if (device !== "desktop") {
+    if (device === "compact" && use === "poster" && anilistCover.test(url)) {
+      return url.replace(anilistCover, "$1medium/");
+    }
+    const cap = iosTmdbCap[device][use];
+    const movieDb = tmdb.exec(url);
+    if (cap && movieDb) {
+      const size = movieDb[2]!;
+      return size === `w${cap}` ? url : url.replace(tmdb, `$1w${cap}/`);
+    }
+  }
 
   const hub = metahub.exec(url);
   if (hub) {

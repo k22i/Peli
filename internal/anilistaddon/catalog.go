@@ -228,8 +228,12 @@ func seasonOf(now time.Time, next bool) (string, int) {
 
 // idOf is the id a title goes by: its Kitsu id, which stream addons take,
 // or its AniList id when the anime list has none.
+//
+// On iOS it never waits on the anime list (#128): until it's loaded, titles
+// go by their AniList ids, and the catalog answer is kept for a minute only.
+// The desktop waits for it, as before.
 func (a *Addon) idOf(ctx context.Context, anilistID int) string {
-	if a.list != nil {
+	if a.list != nil && (waitForList || a.list.Peek()) {
 		if e, ok := a.list.ByAniList(ctx, anilistID); ok && e.Kitsu != 0 {
 			return fmt.Sprintf("kitsu:%d", e.Kitsu)
 		}

@@ -2,6 +2,7 @@ package animelist
 
 import (
 	"context"
+	"runtime"
 	"slices"
 	"strconv"
 	"strings"
@@ -14,18 +15,45 @@ type Service struct{ list *List }
 // NewService returns a service over list.
 func NewService(list *List) *Service { return &Service{list: list} }
 
-// AnimeIDs are the IMDb ids the anime list knows. Ready is false while
-// there's no copy of the list (first run, offline): then nothing is anime
-// yet, and the frontend asks again later.
-type AnimeIDs struct {
-	IMDb  []string `json:"imdb"`
-	Ready bool     `json:"ready"`
+// ready is whether the list is there for a lookup that can do without it.
+// The desktop waits for the list, as IMDbIDs did; a phone doesn't (#128):
+// its first download may be on mobile data, and a page must not wait on it.
+func (l *List) ready(ctx context.Context) bool {
+	if runtime.GOOS != "ios" {
+		return l.ensure(ctx) == nil
+	}
+	return l.Peek()
 }
 
-// IMDbIDs returns every IMDb id the anime list knows, sorted.
-func (s *Service) IMDbIDs(ctx context.Context) AnimeIDs {
-	ids, ok := s.list.IMDbIDs(ctx)
-	return AnimeIDs{IMDb: ids, Ready: ok}
+// LeaveOutAnswer says, for each id asked, whether it is anime the list
+// knows. Ready is false while there's no copy of the list (first run,
+// offline, on mobile data before the first Wi-Fi): then nothing is anime
+// yet, and the frontend asks again later.
+type LeaveOutAnswer struct {
+	Anime []bool `json:"anime"`
+	Ready bool   `json:"ready"`
+}
+
+// LeaveOut says which of ids (catalog item ids: "tt0388629", or an
+// episode's "tt0388629:1:1"; anything else is never anime) the anime list
+// knows as anime, one page of results at a time (#128): the full id list
+// never crosses into the webview. It never waits on the list's download.
+func (s *Service) LeaveOut(ctx context.Context, ids []string) LeaveOutAnswer {
+	answer := LeaveOutAnswer{Anime: make([]bool, len(ids))}
+	if !s.list.ready(ctx) {
+		return answer
+	}
+	answer.Ready = true
+	s.list.mu.Lock()
+	defer s.list.mu.Unlock()
+	for i, id := range ids {
+		if !strings.HasPrefix(id, "tt") {
+			continue
+		}
+		imdb, _, _ := strings.Cut(id, ":")
+		answer.Anime[i] = len(s.list.imdb[imdb]) > 0
+	}
+	return answer
 }
 
 // IMDbIDs returns every IMDb id the list knows, sorted, and whether the
@@ -52,15 +80,31 @@ type PosterTitle struct {
 	Type string `json:"type"`
 }
 
-// PosterTitle returns the IMDb title whose poster stands for id ("kitsu:N"
-// or "anilist:N", as the Anime tab's items are named), only when the entry
-// is that title one to one: a film, or a show's only season. A later
-// season, a cour of a split season, or a show AniList splits into several
-// entries all share the show's IMDb id, and its poster would stand for none
-// of them, so they keep AniList's cover (an empty PosterTitle).
-func (s *Service) PosterTitle(ctx context.Context, id string) PosterTitle {
-	title, _ := s.list.PosterTitle(ctx, id)
-	return title
+// PosterTitles returns the IMDb title whose poster stands for each id
+// ("kitsu:N" or "anilist:N", as the Anime tab's items are named), for one
+// page of results at a time (#128), only when the entry is that title one
+// to one: a film, or a show's only season. A later season, a cour of a split
+// season, or a show AniList splits into several entries all share the
+// show's IMDb id, and its poster would stand for none of them, so they keep
+// AniList's cover (an empty PosterTitle). Ready is false while the list
+// isn't loaded: then every card keeps AniList's cover and the frontend asks
+// again later. On iOS it never waits on the list's download (see ready).
+func (s *Service) PosterTitles(ctx context.Context, ids []string) PosterTitles {
+	answer := PosterTitles{Titles: make([]PosterTitle, len(ids))}
+	if !s.list.ready(ctx) {
+		return answer
+	}
+	answer.Ready = true
+	for i, id := range ids {
+		answer.Titles[i], _ = s.list.PosterTitle(ctx, id)
+	}
+	return answer
+}
+
+// PosterTitles is the answer to Service.PosterTitles, one title per id.
+type PosterTitles struct {
+	Titles []PosterTitle `json:"titles"`
+	Ready  bool          `json:"ready"`
 }
 
 // mainTypes are the entry types that count as the title itself; specials

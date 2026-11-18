@@ -1,4 +1,5 @@
-import { queryOptions, useMutation, useQuery } from "@tanstack/react-query";
+import { queryOptions, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
@@ -13,6 +14,7 @@ import {
   recoveredPanicInGo,
   rejectAPromise,
 } from "@/lib/dev-crash";
+import { runTabLoop } from "@/lib/dev-loop";
 import { isIOS } from "@/lib/platform";
 
 export const diagnosticsInfoQuery = queryOptions({
@@ -91,6 +93,8 @@ function Thrower(): never {
 // no cmd.js, so this is where they are run from.
 function CrashTests() {
   const [boom, setBoom] = useState(false);
+  const router = useRouter();
+  const queryClient = useQueryClient();
   useEffect(() => {
     const dev = installDevCrash();
     dev.throwInRender = () => setBoom(true);
@@ -126,6 +130,20 @@ function CrashTests() {
       label: "Recovered panic",
       description: "Logged with its stack; the app goes on.",
       run: () => recoveredPanicInGo().catch(() => {}),
+    },
+    {
+      id: "tab-loop",
+      label: "Tab loop",
+      description:
+        "Home, Movies, Shows and Anime, each scrolled three screens, ten times. Every step is logged with memory: share the logs after.",
+      run: () => void runTabLoop(router, queryClient),
+    },
+    {
+      id: "tab-loop-drop-src",
+      label: "Tab loop, dropping src",
+      description:
+        "The same loop with each image’s src taken off as it leaves the screen: the drop-src retest. Share the logs after.",
+      run: () => void runTabLoop(router, queryClient, { dropSrc: true }),
     },
     {
       id: "crash-memory",

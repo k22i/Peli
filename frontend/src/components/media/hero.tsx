@@ -84,6 +84,8 @@ export function Hero({
       >
         <Artwork
           src={backdrop}
+          // Only iOS rewrites a backdrop (#128): the desktop has no size for it.
+          use="backdrop"
           fallback={fallbackBackdrop}
           title={title}
           className="absolute inset-0 -z-10 motion-safe:animate-[hero-settle_1.6s_var(--ease-out-soft)_both]"
@@ -230,6 +232,7 @@ export function Logo({
   const shown = failed.includes(sharp) ? src : sharp;
   return (
     <img
+      decoding="async"
       src={viaProxy(shown)}
       alt={title}
       onError={() => setFailed([...failed, shown])}

@@ -1,5 +1,7 @@
 import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
 
+import { isIOS } from "@/lib/platform";
+
 import { addonClient, type AddonClient } from "./client";
 import type { CacheHints, CatalogResponse, ContentType, Extra } from "./types";
 
@@ -50,6 +52,18 @@ export const catalogQuery = (
     meta: { persist: true },
   });
 
+// Whether the last page only repeats titles of the pages before it. Some
+// addons answer every skip past their end with the same last few titles
+// and never say hasMore: false (AIOMetadata's MDBList catalogs, seen
+// 2026-11-18), which kept the grid asking, its spinner on, for ever (#128).
+// Such a page is the end.
+export function onlyRepeats(last: CatalogResponse, all: CatalogResponse[]): boolean {
+  if (all.length < 2) return false;
+  const before = new Set<string>();
+  for (const page of all.slice(0, -1)) for (const meta of page.metas) before.add(meta.id);
+  return last.metas.every((meta) => before.has(meta.id));
+}
+
 // A catalog page by page, for browse's infinite scroll (#43). The first page
 // is catalogQuery's, so it comes from the persisted cache and lands back in
 // it; the rest are asked with `skip` set to the items so far, as Stremio's
@@ -71,10 +85,13 @@ export const catalogPagesQuery = (
         : client.catalog(addonUrl, type, id, { ...extra, skip: pageParam }, { signal }),
     initialPageParam: 0,
     getNextPageParam: (last: CatalogResponse, all: CatalogResponse[]) =>
-      paged && last.metas.length > 0 && last.hasMore !== false
+      paged && last.metas.length > 0 && last.hasMore !== false && !onlyRepeats(last, all)
         ? all.reduce((count, page) => count + page.metas.length, 0)
         : undefined,
     staleTime: (query) => freshFor(query.state.data?.pages[0], hour),
+    // On iOS a grid nobody shows goes after a minute (#128): its pages are
+    // the bulk of a tab's memory. The first page stays, as catalogQuery's.
+    gcTime: isIOS() ? minute : 5 * minute,
     retry: 1,
   });
 

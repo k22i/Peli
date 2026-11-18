@@ -10,7 +10,7 @@
 - [Sync module](sync-module.md) — #28 layout: Backend/Remote, ApplyChanges, fake sync server, boundary test; pull (#29), push loop (#30), offline/reconnect (#31), addons merge + shared primary (#32), contract tests (#33), home layout + collections (#35)
 - [Addon protocol client](addon-protocol-client.md) — #37 layout: lib/addon-protocol (parse, routing, client, queries), internal/addons Go fallback; Kitsu item types, fixtures, live test
 - [Addon manager](addon-manager.md) — #38/#39 layout: useAddonEdits, visibleAddonsQuery, NoAddons, shared disclaimer, optimistic applyAddonEdit, test gotchas
-- [Virtualized rows](virtualized-rows.md) — #41 Row/PosterGrid/RowGroup API, jsdom sizing in setup.ts, no src drop (leaked), WebKit cache vs leak (lowMemory), in-app memory harness
+- [Virtualized rows](virtualized-rows.md) — #41 Row/PosterGrid/RowGroup API, jsdom sizing in setup.ts, no src drop (leaked), WebKit cache vs leak (lowMemory), in-app memory harness; #128 iOS WebContent kills, TMDB caps, TrimWebCache, drop-src retest row
 - [Home page](home-page.md) — #42 homeRows order, fixed hero, usePlay seam, batched CatalogVisible, test serve/seed, WebKit cache-timing harness
 - [Browse pages](browse-pages.md) — #43 BrowsePage, catalog chips + genre/year filter, catalogPagesQuery + onEndReached, anime rule, #content overflow shim
 - [Search page](search-page.md) — #44 searchCatalogs/searchQuery/searchGroups, addon-order merge, ⌘F and /, Row focus by key, fail-closed kids visibility
@@ -46,7 +46,7 @@
 - [Remembered source](remembered-source.md) — #58/ADR-0044 store.ChosenSource per show, Prefs.remembered → engine top pick, saved on every play, mock ChosenSource/SetChosenSource
 - [Plugin sandbox](plugin-sandbox.md) — #56/ADR-0043 internal/plugins child process per call, host API, limits, StreamSource key/name/kind, goja pin, mock @bindings/plugins
 - [Plugin management](plugin-management.md) — #57/ADR-0047 per-profile off-by-default switch, repos synced like addons (Nuvio table = repositories only), kids never, Settings › Plugins, rig
-- [Anime from AniList](anime-from-anilist.md) — #106–#109: peli:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock
+- [Anime from AniList](anime-from-anilist.md) — #106–#109: peli:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock; #128 Peek/LeaveOut/PosterTitles, Wi-Fi-only download
 - [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Peli's identity, glass tiers (#111), 1.5× cards (first asked 2×), type usage rework (fonts stay), sub-tickets #111–#125; type B picked; #117–#123 built by Orca workers
 - [Glass materials](glass-materials.md) — superseded by the 2026-11-11 revamp: material-bar/pop/media; #111 history and backdrop-root gotchas
 - [Card sizes](card-sizes.md) — #113 1.5× cards (15rem/27rem), Artwork `use` + sharper(), Home rows capped at 10 + Browse all, memory numbers, deferred grid cache growth

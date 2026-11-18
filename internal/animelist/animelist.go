@@ -17,6 +17,7 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -63,11 +64,22 @@ type wire struct {
 }
 
 // List is the mapping, loaded on first use.
+//
+// Lookups never wait on a download while another holds the maps (#128):
+// load serialises reading and downloading the list, and mu only guards the
+// maps, so a lookup that can do without the list (Peek: the Anime tab, the
+// leave-out filter, poster titles) answers at once.
 type List struct {
 	url  string
 	path string
 	http *http.Client
 	now  func() time.Time
+	// allowDownload says whether a download that can wait (Warm, Peek) may
+	// run now; nil is always. On iOS it is false on mobile data.
+	allowDownload func() bool
+
+	load    sync.Mutex
+	warming atomic.Bool
 
 	mu      sync.Mutex
 	loaded  time.Time
@@ -86,6 +98,12 @@ func New(url, dir string) *List {
 	}
 }
 
+// OnlyWhen makes the downloads that can wait (Warm, Peek) run only while
+// allow says so: on iOS, off mobile data. A lookup that needs the list now
+// (Find, IsAnime, ByAniList) still downloads it. Call before the list is
+// shared.
+func (l *List) OnlyWhen(allow func() bool) { l.allowDownload = allow }
+
 // FromEntries returns a list of entries, never downloaded: for tests.
 func FromEntries(entries []Entry) *List {
 	l := &List{now: time.Now}
@@ -94,59 +112,131 @@ func FromEntries(entries []Entry) *List {
 	return l
 }
 
-// ensure loads the kept copy, and downloads a new one if it's missing or a
-// week old. A failed download keeps the old copy and isn't tried again for
-// an hour.
-func (l *List) ensure(ctx context.Context) error {
-	l.mu.Lock()
-	defer l.mu.Unlock()
-	now := l.now()
-	if l.anilist != nil && now.Sub(l.loaded) < RefreshEvery {
+// ensure loads the kept copy, and downloads a new one if it's missing. A
+// copy a week old is still used while a new one downloads behind it. A
+// failed download keeps the old copy and isn't tried again for an hour.
+func (l *List) ensure(ctx context.Context) error { return l.fill(ctx, true) }
+
+// fill is ensure; download false only reads the kept copy, unless the list
+// may download now (allowDownload).
+func (l *List) fill(ctx context.Context, download bool) error {
+	if has, stale := l.state(); has {
+		if stale {
+			l.refreshBehind()
+		}
 		return nil
 	}
-	if l.anilist == nil && l.path != "" {
+	l.load.Lock()
+	defer l.load.Unlock()
+	if has, _ := l.state(); has {
+		return nil
+	}
+	if l.path != "" {
 		if info, err := os.Stat(l.path); err == nil {
-			if err := l.readFile(); err == nil {
-				l.loaded = info.ModTime()
+			if entries, err := readFile(l.path); err == nil {
+				l.swap(entries, info.ModTime())
 			} else {
 				slog.Warn("animelist: kept copy unreadable", "error", err)
 			}
 		}
 	}
-	if (l.anilist == nil || now.Sub(l.loaded) >= RefreshEvery) && now.Sub(l.tried) >= time.Hour && l.url != "" {
-		l.tried = now
-		if err := l.download(ctx); err != nil {
-			slog.Warn("animelist: download failed", "error", err)
-		} else {
-			l.loaded = now
-		}
+	has, stale := l.state()
+	if has && !stale {
+		return nil
 	}
-	if l.anilist == nil {
+	if download || l.allowDownload == nil || l.allowDownload() {
+		l.downloadNow(ctx)
+	}
+	if has, _ := l.state(); !has {
 		return ErrUnavailable
 	}
 	return nil
 }
 
-func (l *List) download(ctx context.Context) error {
+// state is whether the maps are there, and whether they're a week old.
+func (l *List) state() (has, stale bool) {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	return l.anilist != nil, l.now().Sub(l.loaded) >= RefreshEvery
+}
+
+// downloadNow downloads the list unless it was tried within the hour. Call
+// with l.load held.
+func (l *List) downloadNow(ctx context.Context) {
+	now := l.now()
+	l.mu.Lock()
+	recent := now.Sub(l.tried) < time.Hour
+	if !recent {
+		l.tried = now
+	}
+	l.mu.Unlock()
+	if recent || l.url == "" {
+		return
+	}
+	entries, err := l.download(ctx)
+	if err != nil {
+		slog.Warn("animelist: download failed", "error", err)
+		return
+	}
+	l.swap(entries, now)
+}
+
+// refreshBehind downloads a new copy of a week-old list in the background,
+// when the list may download now.
+func (l *List) refreshBehind() {
+	if l.url == "" || (l.allowDownload != nil && !l.allowDownload()) || !l.warming.CompareAndSwap(false, true) {
+		return
+	}
+	go func() {
+		defer l.warming.Store(false)
+		l.load.Lock()
+		defer l.load.Unlock()
+		if _, stale := l.state(); stale {
+			l.downloadNow(context.Background())
+		}
+	}()
+}
+
+// Peek reports whether the list is loaded, without waiting: when it isn't,
+// it starts loading it in the background (the kept copy, or a download when
+// the list may download now), so a later look finds it.
+func (l *List) Peek() bool {
+	has, stale := l.state()
+	if has {
+		if stale {
+			l.refreshBehind()
+		}
+		return true
+	}
+	if l.warming.CompareAndSwap(false, true) {
+		go func() {
+			defer l.warming.Store(false)
+			_ = l.fill(context.Background(), false)
+		}()
+	}
+	return false
+}
+
+func (l *List) download(ctx context.Context) ([]Entry, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, l.url, nil)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	res, err := l.http.Do(req)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer res.Body.Close()
 	if res.StatusCode != http.StatusOK {
-		return fmt.Errorf("HTTP %d", res.StatusCode)
+		return nil, fmt.Errorf("HTTP %d", res.StatusCode)
 	}
 	data, err := io.ReadAll(io.LimitReader(res.Body, 64<<20))
 	if err != nil {
-		return err
+		return nil, err
 	}
 	entries, err := parse(data)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if err := os.MkdirAll(filepath.Dir(l.path), 0o700); err == nil {
 		tmp := l.path + ".tmp"
@@ -154,21 +244,15 @@ func (l *List) download(ctx context.Context) error {
 			_ = os.Rename(tmp, l.path)
 		}
 	}
-	l.index(entries)
-	return nil
+	return entries, nil
 }
 
-func (l *List) readFile() error {
-	data, err := os.ReadFile(l.path)
+func readFile(path string) ([]Entry, error) {
+	data, err := os.ReadFile(path)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	entries, err := parse(data)
-	if err != nil {
-		return err
-	}
-	l.index(entries)
-	return nil
+	return parse(data)
 }
 
 func parse(data []byte) ([]Entry, error) {
@@ -197,6 +281,16 @@ func parse(data []byte) ([]Entry, error) {
 	return entries, nil
 }
 
+// swap indexes entries outside the lock and puts the maps in place.
+func (l *List) swap(entries []Entry, loaded time.Time) {
+	fresh := &List{}
+	fresh.index(entries)
+	l.mu.Lock()
+	l.anilist, l.kitsu, l.mal, l.imdb = fresh.anilist, fresh.kitsu, fresh.mal, fresh.imdb
+	l.loaded = loaded
+	l.mu.Unlock()
+}
+
 // index replaces the maps. Call with l.mu held, or before l is shared.
 func (l *List) index(entries []Entry) {
 	l.anilist = make(map[int]*Entry, len(entries))
@@ -216,9 +310,10 @@ func (l *List) index(entries []Entry) {
 	}
 }
 
-// Warm loads the list, downloading it if needed, so the first lookup
-// doesn't wait for it.
-func (l *List) Warm(ctx context.Context) { _ = l.ensure(ctx) }
+// Warm loads the list at launch, so the first lookup doesn't wait for it:
+// the kept copy, or a download when the list may download now (on iOS, not
+// on mobile data; a later Peek or lookup tries again).
+func (l *List) Warm(ctx context.Context) { _ = l.fill(ctx, false) }
 
 // Ref names a title the way Peli's addons do, for Find.
 type Ref struct {

@@ -136,3 +136,7 @@ func main() {
 		log.Fatal(err)
 	}
 }
+
+// animeListDownloads is when the anime list may download in the background:
+// any time on the desktop.
+var animeListDownloads func() bool

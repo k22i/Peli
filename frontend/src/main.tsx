@@ -7,7 +7,12 @@ import { createRoot } from "react-dom/client";
 import { ToastProvider, toastManager } from "@/components/ui/toast";
 import { Service as Diagnostics } from "@bindings/diagnostics";
 import { reportPageReady } from "@/lib/app-info";
-import { installErrorHandlers, onMemoryWarning, restoreRoute } from "@/lib/diagnostics";
+import {
+  installErrorHandlers,
+  onMemoryWarning,
+  restoreRoute,
+  trimWebCacheOnNavigation,
+} from "@/lib/diagnostics";
 import { installDevCrash } from "@/lib/dev-crash";
 import { startInputDevices } from "@/lib/input-devices";
 import { createPersistOptions, createQueryClient } from "@/lib/query";
@@ -27,8 +32,10 @@ const recovered = restoreRoute();
 
 const queryClient = createQueryClient();
 const router = createAppRouter(queryClient);
-// iOS is low on memory: drop the queries nothing shows.
+// iOS is low on memory: drop the queries nothing shows, and WebKit's
+// memory cache whenever the page changes (#128).
 onMemoryWarning(queryClient);
+trimWebCacheOnNavigation(router);
 // The rig's crash commands as window.peliDev, for the simulator's cmd.js
 // (a pelidev build only).
 if (isIOS()) {
