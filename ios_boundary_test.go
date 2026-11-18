@@ -127,7 +127,7 @@ func TestIOSAuthSheetFiles(t *testing.T) {
 // GameController's keyboard.
 func TestIOSTabBarFiles(t *testing.T) {
 	out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/internal/shell", "ios"))
-	if want := "[shell.go]|[shell_ios.go]|[]|[keyboard_ios.m scanner_ios.m tabbar_ios.m]|[scanner_ios.h tabbar_ios.h]"; out != want {
+	if want := "[shell.go]|[shell_ios.go]|[]|[focus_ios.m keyboard_ios.m scanner_ios.m tabbar_ios.m]|[scanner_ios.h tabbar_ios.h]"; out != want {
 		t.Errorf("internal/shell files changed: %s, want %s; update the boundary test on purpose", out, want)
 	}
 }
