@@ -4,7 +4,7 @@ package shell
 
 /*
 #cgo CFLAGS: -fobjc-arc
-#cgo LDFLAGS: -framework UIKit -framework Foundation -framework QuartzCore -framework WebKit
+#cgo LDFLAGS: -framework UIKit -framework Foundation -framework QuartzCore -framework WebKit -framework GameController
 #include <stdlib.h>
 #include "tabbar_ios.h"
 */
@@ -49,6 +49,8 @@ func watchStatusBar() error {
 	return nil
 }
 
+func hardwareKeyboard() bool { return C.peli_keyboard_watch() != 0 }
+
 func tabBarHeight() float64 {
 	return float64(C.peli_tabbar_height(nativeWindow()))
 }
@@ -68,3 +70,8 @@ func peliShellExpand() { go send(EventExpand, nil) }
 
 //export peliShellScrollTop
 func peliShellScrollTop() { go send(EventScrollTop, nil) }
+
+//export peliShellKeyboard
+func peliShellKeyboard(attached C.int) {
+	go send(EventKeyboard, Keyboard{Attached: attached != 0})
+}
