@@ -52,6 +52,8 @@ vi.mock("@bindings/diagnostics", () => ({
     LastCrash: vi.fn<() => Promise<unknown>>(() => Promise.resolve(null)),
     Info: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ dev: false, logs: false })),
     DevCrash: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    DevMark: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    TrimWebCache: vi.fn<() => Promise<void>>(() => Promise.resolve()),
   },
 }));
 

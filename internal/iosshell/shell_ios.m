@@ -163,3 +163,12 @@ int peli_shell_cellular(void) {
     if (!ok || !(flags & kSCNetworkReachabilityFlagsReachable)) return 0;
     return (flags & kSCNetworkReachabilityFlagsIsWWAN) ? 1 : 0;
 }
+
+void peli_shell_trim_web_cache(void) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSSet *types = [NSSet setWithObject:WKWebsiteDataTypeMemoryCache];
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:types
+                                                   modifiedSince:[NSDate distantPast]
+                                               completionHandler:^{}];
+    });
+}

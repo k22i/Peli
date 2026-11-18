@@ -177,6 +177,34 @@ export function trimCaches(queryClient: QueryClient): number {
   return inactive.length;
 }
 
+// WebKit's memory cache, decoded images with it (#128). On an iPhone the
+// content process was killed for memory twice in a minute while a Movies grid
+// scrolled, with no memory warning first: WebKit keeps every image it has
+// shown. Dropping the cache lets go of the images no longer on screen (the
+// ones shown stay in use); they come back from the disk cache. iOS only:
+// Go does nothing elsewhere.
+export function trimWebCache() {
+  if (!isIOS()) return;
+  try {
+    Diagnostics.TrimWebCache().catch(() => {});
+  } catch {
+    // No runtime.
+  }
+}
+
+// On iOS, drops WebKit's memory cache whenever the page changes: the last
+// page's images go. Returns the undo.
+export function trimWebCacheOnNavigation(router: AnyRouter): () => void {
+  if (!isIOS()) return () => {};
+  let last = router.state.location.pathname;
+  return router.subscribe("onResolved", () => {
+    const path = router.state.location.pathname;
+    if (path === last) return;
+    last = path;
+    trimWebCache();
+  });
+}
+
 // Trims the caches whenever iOS warns. Returns the undo.
 export function onMemoryWarning(queryClient: QueryClient): () => void {
   return Events.On(memoryWarningEvent, () => {

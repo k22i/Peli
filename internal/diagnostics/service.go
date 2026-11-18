@@ -279,6 +279,21 @@ func (s *Service) DevCrash(kind string) error {
 	return nil
 }
 
+// webCacheTrimmer is a Platform that can drop the webview's memory cache:
+// iOS (internal/iosshell). The desktop has none, and TrimWebCache does
+// nothing there.
+type webCacheTrimmer interface{ TrimWebCache() }
+
+// TrimWebCache drops WebKit's in-memory cache, decoded images with it (#128).
+// The frontend calls it on iOS when the page changes and on a memory
+// warning; WebKit's content process is killed for memory before the app
+// ever gets a warning.
+func (s *Service) TrimWebCache() {
+	if t, ok := s.platform.(webCacheTrimmer); ok {
+		t.TrimWebCache()
+	}
+}
+
 // DevMark logs one step of the rig's tab loop (#128, pelidev builds only):
 // the frontend's note (route, time to the first card, images, DOM size,
 // queries), then a memory line, and writes the log out, so a kill mid-loop

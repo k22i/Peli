@@ -109,3 +109,7 @@ func (Platform) Device() string {
 // Cellular reports whether the phone's connection is mobile data, where big
 // downloads that can wait (the anime list, #128) wait for Wi-Fi.
 func Cellular() bool { return C.peli_shell_cellular() == 1 }
+
+// TrimWebCache drops WebKit's memory cache, decoded images included (#128):
+// images come back from the disk cache when shown again.
+func (Platform) TrimWebCache() { C.peli_shell_trim_web_cache() }

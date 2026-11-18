@@ -40,6 +40,7 @@ import {
 import { menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { busyRetry, isBusy } from "@/lib/busy";
+import { trimWebCache } from "@/lib/diagnostics";
 import { useAnimePosterAddon } from "@/lib/anime-posters";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
@@ -318,6 +319,10 @@ function CatalogGrid({
   useEffect(() => {
     if (starved) loadMore();
   }, [starved, loadMore]);
+  // On iOS each page further down lets go of the images scrolled past (#128).
+  useEffect(() => {
+    if (pageCount > 1) trimWebCache();
+  }, [pageCount]);
 
   if (pages.isPending && busy) return <BusyNotice />;
   if (pages.isPending) return <GridSkeleton />;

@@ -25,6 +25,10 @@ void peli_shell_device(char *buf, int n);
 // (SCNetworkReachability's IsWWAN flag), 0 on Wi-Fi, wired or no network.
 int peli_shell_cellular(void);
 
+// peli_shell_trim_web_cache drops WebKit's in-memory cache (decoded images
+// with it), on the main thread. The disk cache stays.
+void peli_shell_trim_web_cache(void);
+
 // Exported from shell_ios.go.
 // peliWebContentTerminated returns the address to load next (malloc'd, the
 // caller frees it) and sets *action: 0 reload, 1 home, 2 the error page
