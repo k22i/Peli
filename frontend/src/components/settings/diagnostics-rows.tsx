@@ -139,6 +139,13 @@ function CrashTests() {
       run: () => void runTabLoop(router, queryClient),
     },
     {
+      id: "tab-loop-drop-src",
+      label: "Tab loop, dropping src",
+      description:
+        "The same loop with each image’s src taken off as it leaves the screen: the drop-src retest. Share the logs after.",
+      run: () => void runTabLoop(router, queryClient, { dropSrc: true }),
+    },
+    {
       id: "crash-memory",
       label: "Memory warning",
       description: "Logs memory and trims the caches.",

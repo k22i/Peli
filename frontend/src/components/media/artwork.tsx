@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from "react";
 
 import { sharper, viaProxy, type ArtworkUse } from "@/lib/artwork-url";
+import { isIOS } from "@/lib/platform";
 import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
@@ -43,6 +44,26 @@ export function forgetArtwork() {
   seen.clear();
 }
 
+// The drop-src retest on iOS WebKit (#128), for the dev rig only: with
+// dropSrcKey set, an image's src is taken off as it unmounts. 940e74c took
+// that out because it kept removed cards alive on macOS WebKit; the rig's
+// "Tab loop, dropping src" row runs the loop with it on, to compare.
+export const dropSrcKey = "peli.dev.dropSrc";
+
+function dropSrcTrial(): boolean {
+  if (!isIOS()) return false;
+  try {
+    return window.localStorage.getItem(dropSrcKey) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function dropSrcOnUnmount(img: HTMLImageElement | null) {
+  if (!img) return undefined;
+  return () => img.removeAttribute("src");
+}
+
 // A poster, still or backdrop. Fades in once loaded; until then, or with no
 // `src` (addons often lack art), it shows a slate in the title's hue and,
 // for cards, the title set in the display serif. A `fallback` image shows under
@@ -73,9 +94,10 @@ export function Artwork({
 }) {
   // What this <img> did; until it does anything, what the URL did before.
   const [own, setOwn] = useState<{ src: string; status: "loaded" | "failed" }>();
-  // The iPhone asks smaller posters (#128); the desktop never is compact.
+  // iOS asks smaller images (#128); the desktop is never compact or iOS.
   const compact = useCompactShell();
-  const sharp = use ? sharper(original, use, compact) : original;
+  const device = compact ? "compact" : isIOS() ? "ios" : "desktop";
+  const sharp = use ? sharper(original, use, device) : original;
   const sharpFailed =
     sharp !== original &&
     (own && own.src === sharp ? own.status === "failed" : seen.get(sharp ?? "") === "failed");
@@ -120,6 +142,7 @@ export function Artwork({
       )}
       {src && status !== "failed" && (
         <img
+          ref={dropSrcTrial() ? dropSrcOnUnmount : undefined}
           src={viaProxy(src)}
           alt=""
           loading="lazy"

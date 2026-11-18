@@ -3,6 +3,7 @@ import type { QueryClient } from "@tanstack/react-query";
 import type { AnyRouter } from "@tanstack/react-router";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
+import { dropSrcKey } from "@/components/media/artwork";
 
 // The rig's tab loop (#128), for a pelidev build only: Home → Movies →
 // Shows → Anime, each grid scrolled three screens, ten times over, the way
@@ -21,6 +22,8 @@ export type LoopOptions = {
   timeoutMs?: number;
   // Between scrolls, for the images to come in.
   pauseMs?: number;
+  // The drop-src retest (components/media/artwork.tsx dropSrcKey).
+  dropSrc?: boolean;
 };
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -56,6 +59,21 @@ function imageStats() {
   };
 }
 
+// The images fetched since the loop started, from Resource Timing: what
+// WebKit's caches have taken in (an image off screen is gone from the DOM,
+// so the DOM count alone can't say). WebContent's own footprint isn't
+// readable from the page or the app.
+function fetchedImages() {
+  const images = performance
+    .getEntriesByType("resource")
+    .filter(
+      (entry): entry is PerformanceResourceTiming =>
+        entry instanceof PerformanceResourceTiming && entry.initiatorType === "img",
+    );
+  const bytes = images.reduce((sum, entry) => sum + (entry.decodedBodySize || 0), 0);
+  return { fetched: images.length, fetchedMB: Math.round(bytes / 1e5) / 10 };
+}
+
 async function waitForContent(timeoutMs: number): Promise<number | undefined> {
   const start = performance.now();
   while (performance.now() - start < timeoutMs) {
@@ -73,16 +91,34 @@ function mark(note: string) {
 
 let running = false;
 
+function setDropSrc(on: boolean) {
+  try {
+    if (on) window.localStorage.setItem(dropSrcKey, "1");
+    else window.localStorage.removeItem(dropSrcKey);
+  } catch {
+    // Blocked storage: the loop runs without the retest.
+  }
+}
+
 export async function runTabLoop(
   router: AnyRouter,
   queryClient: QueryClient,
-  { rounds = 10, screens = 3, timeoutMs = 15_000, pauseMs = 800 }: LoopOptions = {},
+  {
+    rounds = 10,
+    screens = 3,
+    timeoutMs = 15_000,
+    pauseMs = 800,
+    dropSrc = false,
+  }: LoopOptions = {},
 ): Promise<void> {
   if (running) return;
   running = true;
   const started = performance.now();
+  performance.clearResourceTimings();
+  performance.setResourceTimingBufferSize(20_000);
+  setDropSrc(dropSrc);
   try {
-    await mark(`start rounds=${rounds} screens=${screens}`);
+    await mark(`start rounds=${rounds} screens=${screens} dropSrc=${dropSrc}`);
     for (let round = 1; round <= rounds; round++) {
       for (const route of loopRoutes) {
         await router.navigate({ to: route });
@@ -95,6 +131,7 @@ export async function runTabLoop(
         await sleep(pauseMs);
         const { notice } = pageState();
         const images = imageStats();
+        const fetched = fetchedImages();
         await mark(
           [
             `round=${round}`,
@@ -106,6 +143,8 @@ export async function runTabLoop(
             `failed=${images.failed}`,
             `decoded=${images.decodedMB}MB`,
             `widest=${images.widest}px`,
+            `fetched=${fetched.fetched}`,
+            `fetchedMB=${fetched.fetchedMB}`,
             `nodes=${document.getElementsByTagName("*").length}`,
             `queries=${queryClient.getQueryCache().getAll().length}`,
           ].join(" "),
@@ -114,6 +153,7 @@ export async function runTabLoop(
     }
     await mark(`done in ${Math.round((performance.now() - started) / 1000)}s`);
   } finally {
+    setDropSrc(false);
     running = false;
   }
 }
