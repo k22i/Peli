@@ -25,6 +25,12 @@ int peli_statusbar_watch(void *vc);
 // peliShellKeyboard on GCKeyboardDidConnect / DidDisconnect.
 int peli_keyboard_watch(void);
 
+// peli_focus_allow_keyboard (focus_ios.m) lets the next webview focus within
+// seconds show the on-screen keyboard, as if the user had tapped the field:
+// the native Search button's tap is outside the webview, so the field's
+// focus() that follows would otherwise leave the keyboard down.
+void peli_focus_allow_keyboard(double seconds);
+
 // Exported from shell_ios.go: the native taps.
 void peliShellTab(char *id);
 void peliShellSearch(void);

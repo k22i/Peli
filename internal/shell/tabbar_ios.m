@@ -197,6 +197,10 @@ API_AVAILABLE(ios(26.0))
 }
 
 - (void)tapSearch {
+	// The Search page focuses its field when it opens; let that one focus
+	// bring the keyboard up (focus_ios.m). Long enough for the route to load
+	// on a slow phone; the window closes at the first focus.
+	peli_focus_allow_keyboard(1.5);
 	peliShellSearch();
 }
 
