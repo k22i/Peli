@@ -20,10 +20,16 @@ double peli_tabbar_height(void *vc);
 // not a view controller, -2 no webView.
 int peli_statusbar_watch(void *vc);
 
+// peli_keyboard_watch (keyboard_ios.m, #138) answers whether a hardware
+// keyboard is attached (1) or not (0), and on the first call starts sending
+// peliShellKeyboard on GCKeyboardDidConnect / DidDisconnect.
+int peli_keyboard_watch(void);
+
 // Exported from shell_ios.go: the native taps.
 void peliShellTab(char *id);
 void peliShellSearch(void);
 void peliShellExpand(void);
 void peliShellScrollTop(void);
+void peliShellKeyboard(int attached);
 
 #endif

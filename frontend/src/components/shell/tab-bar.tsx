@@ -27,7 +27,7 @@ function useKeyboardUp(): boolean {
 // The glass of the capsule and the Search circle: the bar material with a
 // specular top edge and a soft shadow, the CSS stand-in for Liquid Glass
 // (ADR-0046) where the native bar isn't (iOS before 26, tests).
-const glass =
+export const capsuleGlass =
   "material-bar border border-white/12 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),inset_0_-1px_0_rgb(0_0_0/0.06),0_8px_28px_rgb(0_0_0/0.18)] dark:border-white/10 dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.16),0_8px_28px_rgb(0_0_0/0.5)]";
 
 // The compact shell's navigation (iPhone, a narrow iPad window) when there
@@ -66,7 +66,7 @@ export function TabBar({ model }: { model: TabBarModel }) {
       <div
         data-slot="tab-capsule"
         className={cn(
-          glass,
+          capsuleGlass,
           "pointer-events-auto relative h-full rounded-full transition-[width,height,margin] duration-(--duration-base) ease-(--ease-out-soft) motion-reduce:transition-none",
           mini ? "my-[calc((var(--tabs-h)-48px)/2)] h-12 w-12 flex-none" : "min-w-0 flex-1",
         )}
@@ -124,7 +124,7 @@ export function TabBar({ model }: { model: TabBarModel }) {
         aria-current={active === searchSection.to ? "page" : undefined}
         data-slot="tab-search"
         className={cn(
-          glass,
+          capsuleGlass,
           "pointer-events-auto ms-auto grid h-full w-(--tabs-h) shrink-0 place-items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-6",
           active === searchSection.to ? "text-sun-ink" : "text-foreground/85",
         )}

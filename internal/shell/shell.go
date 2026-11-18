@@ -32,6 +32,9 @@ const (
 	// EventScrollTop is a tap on the status bar (#135): the page scrolls to
 	// the top, as a re-tap of the current tab does on a section's root.
 	EventScrollTop = "shell:scroll-top"
+	// EventKeyboard is a hardware keyboard (an iPad's Magic Keyboard)
+	// connecting or going away (#138), once HardwareKeyboard has been asked.
+	EventKeyboard = "shell:keyboard"
 )
 
 // TabItem is one section in the capsule. Icon names an image in the app's
@@ -57,9 +60,15 @@ type TabBarState struct {
 	Theme string `json:"theme"`
 	// Search shows the round Search button beside the capsule.
 	Search bool `json:"search"`
-	// Placement is "bottom" (the iPhone's floating capsule). Kept a field so
-	// an iPad can ask for "top" later (#138); only "bottom" is drawn now.
+	// Placement is "bottom" (the floating capsule). Only "bottom" is drawn:
+	// at regular width the iPad shows the frontend's CSS top bar and sidebar
+	// instead (#138, decided by the user 2026-11-18).
 	Placement string `json:"placement"`
+}
+
+// Keyboard is the payload of EventKeyboard.
+type Keyboard struct {
+	Attached bool `json:"attached"`
 }
 
 // Tab is the payload of EventTab.
@@ -72,6 +81,7 @@ func init() {
 	application.RegisterEvent[application.Void](EventSearch)
 	application.RegisterEvent[application.Void](EventExpand)
 	application.RegisterEvent[application.Void](EventScrollTop)
+	application.RegisterEvent[Keyboard](EventKeyboard)
 }
 
 // Service is the bound shell API. The zero value is ready; UseWindow gives it
@@ -186,3 +196,9 @@ func MarshalError(err error) []byte {
 	data, _ := json.Marshal(map[string]string{"code": code})
 	return data
 }
+
+// HardwareKeyboard says whether a hardware keyboard is attached (GCKeyboard,
+// iPad), and from then on sends EventKeyboard when one connects or goes
+// away, so the frontend can turn the desktop shortcuts on and off (#138).
+// Always false off iOS, where the shortcuts are on anyway.
+func (*Service) HardwareKeyboard() bool { return hardwareKeyboard() }

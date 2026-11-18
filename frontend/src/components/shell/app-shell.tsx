@@ -9,15 +9,17 @@ import { TabBar } from "@/components/shell/tab-bar";
 import { useEdgeBack } from "@/components/shell/use-edge-back";
 import { scrollToTop, useNativeTabBar, useTabBar } from "@/components/shell/use-tab-bar";
 import { CommandPalette } from "@/components/shell/command-palette";
+import { IPadSidebar, sidebarInset } from "@/components/shell/ipad-sidebar";
 import { FocusBar, TopBar } from "@/components/shell/top-bar";
 import { ScrollAreaPrimitive, ScrollBar } from "@/components/ui/scroll-area";
 import { useSeedAudioLanguages } from "@/lib/device-languages";
-import { feature } from "@/lib/features";
+import { feature, useFeature } from "@/lib/features";
 import { useDismissKeyboardOnScroll, useKeyboardInset } from "@/lib/keyboard";
 import { cn } from "@/lib/utils";
 import { currentPlatform, isIOS } from "@/lib/platform";
 import { searchFieldId } from "@/lib/search";
 import { useCompactShell } from "@/lib/shell-mode";
+import { setSidebarShown, useSidebarShown } from "@/lib/sidebar-choice";
 import { sections } from "@/sections";
 
 // How far the content pane has to scroll before the top bar frosts, so a
@@ -48,6 +50,9 @@ export function AppShell({ children }: { children: ReactNode }) {
   const tabBar = useTabBar(tabsShown ? pane : null, tabsShown);
   useNativeTabBar(tabBar, tabsShown);
   const nativeTabs = feature("nativeTabBar");
+  // ⌘K's palette: the desktop's, and an iPad's while a hardware keyboard is
+  // attached (#138).
+  const palette = useFeature("commandPalette");
   useSeedAudioLanguages();
   // --keyboard-h while the on-screen keyboard is up (iOS, #137).
   useKeyboardInset();
@@ -58,6 +63,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   // owns its edges (#131) and the focus screens have nowhere to go back to.
   const ios = isIOS();
   const browsing = chrome === undefined;
+  // The iPad at regular width (#138): the top capsule, or the sidebar.
+  const ipad = ios && !compact;
+  const sidebarChoice = useSidebarShown();
+  const sidebar = ipad && sidebarChoice;
   const [page, setPage] = useState<HTMLElement | null>(null);
   const [dim, setDim] = useState<HTMLDivElement | null>(null);
   useEdgeBack(page, dim, ios && browsing);
@@ -105,6 +114,19 @@ export function AppShell({ children }: { children: ReactNode }) {
   // field (#44).
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
+      // ⌃⌘S shows or hides the iPad's sidebar, as in iPadOS's own apps.
+      if (
+        ipad &&
+        event.ctrlKey &&
+        event.metaKey &&
+        !event.altKey &&
+        !event.shiftKey &&
+        event.key.toLowerCase() === "s"
+      ) {
+        event.preventDefault();
+        setSidebarShown(!sidebarChoice);
+        return;
+      }
       if (isSearchShortcut(event)) {
         event.preventDefault();
         const field = document.getElementById(searchFieldId);
@@ -129,7 +151,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [navigate, focusContentAfterNavigate]);
+  }, [navigate, focusContentAfterNavigate, ipad, sidebarChoice]);
 
   if (chrome === "none") return children;
 
@@ -145,7 +167,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="grain h-svh bg-background text-foreground">
+    <div className={cn("grain h-svh bg-background text-foreground", sidebar && sidebarInset)}>
       <a
         href="#content"
         onClick={(event) => {
@@ -160,11 +182,18 @@ export function AppShell({ children }: { children: ReactNode }) {
         platform={platform}
         scrolled={scrolled}
         compact={compact}
+        ipad={ipad ? { sidebar, onShowSidebar: () => setSidebarShown(true) } : undefined}
         onKeyboardNavigate={focusContentAfterNavigate}
       />
+      {sidebar && (
+        <IPadSidebar
+          onHide={() => setSidebarShown(false)}
+          onKeyboardNavigate={focusContentAfterNavigate}
+        />
+      )}
       {/* Not in the other chromes: the player's has none, and the focus
           screens come before there is a profile. */}
-      {feature("commandPalette") && <CommandPalette onNavigate={focusContentAfterNavigate} />}
+      {palette && <CommandPalette onNavigate={focusContentAfterNavigate} />}
       {/* Behind the page while a swipe back drags it aside (#135). */}
       {ios && (
         <div
@@ -175,7 +204,12 @@ export function AppShell({ children }: { children: ReactNode }) {
       )}
       <main
         ref={ios ? setPage : undefined}
-        className="page-layer fixed inset-0 overflow-hidden bg-background"
+        className={cn(
+          "page-layer fixed overflow-hidden bg-background",
+          // Beside the iPad's sidebar, not under it, so a hero's art and a
+          // row's first card start at its edge.
+          sidebar ? "inset-y-0 start-(--ipad-sidebar) end-0" : "inset-0",
+        )}
       >
         {/* Overlay scrollbars, the same on every OS (WebView2 would draw
             classic ones), and never taking width from the page. */}

@@ -43,7 +43,7 @@ import {
 } from "@/lib/library";
 import { useBulkEdits } from "@/lib/library-bulk";
 import { currentProfileQuery } from "@/lib/profile";
-import { feature } from "@/lib/features";
+import { useFeature } from "@/lib/features";
 import { useCompactShell } from "@/lib/shell-mode";
 import { clickKind, selectRange, toggleKey } from "@/lib/selection";
 import { useOpenTitle } from "@/lib/title";
@@ -402,8 +402,9 @@ function LibraryGrid({
     setAnchor(undefined);
   };
 
-  // Not on iOS (ADR-0055): there is no Shift or ⌘ to start one.
-  const multi = feature("multiSelect");
+  // Not on the iPhone (ADR-0055): there is no Shift or ⌘ to start one. An
+  // iPad at regular width with a hardware keyboard has them (#138).
+  const multi = useFeature("multiSelect");
   const toggle = (key: string) => {
     if (!multi) return;
     setChosen(toggleKey(selected, key));

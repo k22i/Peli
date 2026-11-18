@@ -11,7 +11,7 @@ import { isIOS } from "@/lib/platform";
 // Desktop never takes it: a narrow desktop window keeps the top bar.
 export const compactQuery = "(max-width: 699.98px), (max-height: 499.98px)";
 
-function subscribe(onChange: () => void) {
+export function subscribeCompact(onChange: () => void) {
   if (typeof matchMedia !== "function") return () => {};
   const list = matchMedia(compactQuery);
   list.addEventListener("change", onChange);
@@ -20,8 +20,15 @@ function subscribe(onChange: () => void) {
 
 const snapshot = () => typeof matchMedia === "function" && matchMedia(compactQuery).matches;
 
+// The iOS app at regular width right now: an iPad full screen or in a wide
+// split view or Stage Manager window (#138). Read when asked; components
+// that must follow a resize use useCompactShell or useFeature.
+export function regularWidthIOS(): boolean {
+  return isIOS() && !snapshot();
+}
+
 // True when the iOS app is narrow (or short) enough for the tab bar.
 export function useCompactShell(): boolean {
-  const matches = useSyncExternalStore(subscribe, snapshot, () => false);
+  const matches = useSyncExternalStore(subscribeCompact, snapshot, () => false);
   return isIOS() && matches;
 }

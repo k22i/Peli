@@ -18,3 +18,5 @@ func cameraAccess() string { return CameraUnavailable }
 func scanQR(context.Context, string) (string, error) { return "", ErrNoScanner }
 
 func openAppSettings() {}
+
+func hardwareKeyboard() bool { return false }

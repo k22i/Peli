@@ -182,6 +182,7 @@ tasks:
           -framework OpenGLES -framework QuartzCore -framework CoreVideo -framework MediaAccessibility \
           -Wl,-rpath,@executable_path/Frameworks \
           -framework CoreLocation -framework CoreMotion -framework MediaPlayer -framework SystemConfiguration \
+          -framework GameController \
           -lresolv \
           {{if ne .IOS_PLATFORM "device"}}-Wl,-sectcreate,__TEXT,__entitlements,build/ios/entitlements.simulator.plist{{end}} \
           -o "{{.IOS_BIN_DIR}}/{{.APP_NAME | lower}}" \
