@@ -32,12 +32,22 @@ import {
   type PairingProblem,
 } from "@/lib/pairing";
 import { isIOS } from "@/lib/platform";
+import { useCompactShell } from "@/lib/shell-mode";
+import { markSheetOpen } from "@/lib/sheets";
 import type { Choice, Device, PairCode, Summary } from "@bindings/pairing";
 
 // Device pairing (#133, ADR-0061). The camera always scans: on an iPhone or
 // iPad, "Copy from another device" opens the camera, and "Add to another
 // device" shows a code or scans a Mac's. A Mac shows a code either way, and
 // a phrase for another Mac to type.
+
+// On the compact iOS shell the dialog sits at the bottom, where the floating
+// tab bar would cover its buttons: hold a sheet's hideTabBar() request while
+// it's open, as #134's bottom sheets do.
+function useHideTabBar(open: boolean) {
+  const compact = useCompactShell();
+  useEffect(() => (open && compact ? markSheetOpen() : undefined), [open, compact]);
+}
 
 // --- Add to another device (the side with the connections) -----------------
 
@@ -48,6 +58,7 @@ export function AddDeviceDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  useHideTabBar(open);
   return (
     <Dialog
       open={open}
@@ -56,7 +67,9 @@ export function AddDeviceDialog({
         onOpenChange(next);
       }}
     >
-      <DialogPopup className="sm:max-w-md">{open && <AddDevice />}</DialogPopup>
+      <DialogPopup sheet className="sm:max-w-md">
+        {open && <AddDevice />}
+      </DialogPopup>
     </Dialog>
   );
 }
@@ -311,6 +324,7 @@ export function CopyDeviceDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  useHideTabBar(open);
   return (
     <Dialog
       open={open}
@@ -319,7 +333,7 @@ export function CopyDeviceDialog({
         onOpenChange(next);
       }}
     >
-      <DialogPopup className="sm:max-w-md">
+      <DialogPopup sheet className="sm:max-w-md">
         {open && (
           <CopyDevice
             onDone={() => {
