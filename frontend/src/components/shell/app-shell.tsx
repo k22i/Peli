@@ -43,12 +43,23 @@ export function AppShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const scrolled = useScrolled(pane);
   const compact = useCompactShell();
-  // The floating tab bar (#129): only in the browsing chrome at compact
-  // width, so it is gone on the player and the focus screens. Native Liquid
-  // Glass on iOS 26, else TabBar's CSS capsule.
-  const tabsShown = compact && chrome === undefined;
+  const ios = isIOS();
+  const browsing = chrome === undefined;
+  // The iPad at regular width (#138): the sidebar, or the sections in a
+  // floating bar at the bottom centre (a top capsule overlapped the top bar
+  // on the device, 2026-11-18).
+  const ipad = ios && !compact;
+  const sidebarChoice = useSidebarShown();
+  const sidebar = ipad && sidebarChoice;
+  // The floating tab bar (#129): only in the browsing chrome, so it is gone
+  // on the player and the focus screens. At compact width native Liquid
+  // Glass on iOS 26, else TabBar's CSS capsule; on the iPad without the
+  // sidebar always the CSS capsule (the user's choice, #138).
+  const ipadTabs = ipad && !sidebar && browsing;
+  const nativeShown = compact && browsing;
+  const tabsShown = nativeShown || ipadTabs;
   const tabBar = useTabBar(tabsShown ? pane : null, tabsShown);
-  useNativeTabBar(tabBar, tabsShown);
+  useNativeTabBar(tabBar, nativeShown);
   const nativeTabs = feature("nativeTabBar");
   // ⌘K's palette: the desktop's, and an iPad's while a hardware keyboard is
   // attached (#138).
@@ -61,12 +72,6 @@ export function AppShell({ children }: { children: ReactNode }) {
   // The iOS touches (#135): swipe from the left edge to go back, pull to
   // refresh, the status-bar tap. Only in the browsing chrome: the player
   // owns its edges (#131) and the focus screens have nowhere to go back to.
-  const ios = isIOS();
-  const browsing = chrome === undefined;
-  // The iPad at regular width (#138): the top capsule, or the sidebar.
-  const ipad = ios && !compact;
-  const sidebarChoice = useSidebarShown();
-  const sidebar = ipad && sidebarChoice;
   const [page, setPage] = useState<HTMLElement | null>(null);
   const [dim, setDim] = useState<HTMLDivElement | null>(null);
   useEdgeBack(page, dim, ios && browsing);
@@ -237,7 +242,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 // off iOS).
                 // The keyboard (--keyboard-h, unset elsewhere) hides the tab bar, so
                 // it takes the bar's place: the last row scrolls above it.
-                compact
+                tabsShown
                   ? "pb-[max(var(--tabs-float),var(--keyboard-h,0px))]"
                   : "pb-[max(env(safe-area-inset-bottom),var(--keyboard-h,0px))]",
               )}
@@ -260,6 +265,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         {ios && <PullToRefresh pane={pane} />}
       </main>
       {compact && !nativeTabs && <TabBar model={tabBar} />}
+      {ipadTabs && <TabBar model={tabBar} centred />}
     </div>
   );
 }

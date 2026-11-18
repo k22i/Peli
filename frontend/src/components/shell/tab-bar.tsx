@@ -37,7 +37,10 @@ export const capsuleGlass =
 // indicator (--tabs-bottom); 52 pt with labels beside the icons, centred and
 // at most 560 pt wide, on an iPhone on its side. Scrolling down shrinks the
 // capsule to the current tab's icon; a tap brings it back.
-export function TabBar({ model }: { model: TabBarModel }) {
+// `centred` is the iPad's (#138, regular width without the sidebar): the
+// same capsule, centred at the bottom and no wider than on a phone on its
+// side, instead of spanning a wide screen.
+export function TabBar({ model, centred = false }: { model: TabBarModel; centred?: boolean }) {
   const keyboard = useKeyboardUp();
   const { active, minimized, select, expand } = model;
   const hidden = model.hidden || keyboard;
@@ -57,9 +60,11 @@ export function TabBar({ model }: { model: TabBarModel }) {
       aria-label="Main"
       data-slot="tab-bar"
       data-minimized={mini || undefined}
+      data-centred={centred || undefined}
       inert={hidden}
       className={cn(
         "pointer-events-none fixed inset-x-0 bottom-(--tabs-bottom) z-30 flex h-(--tabs-h) gap-2 ps-[calc(env(safe-area-inset-left)+1rem)] pe-[calc(env(safe-area-inset-right)+1rem)] transition-[translate,opacity] duration-(--duration-base) ease-(--ease-out-soft) motion-reduce:transition-none ios-short:mx-auto ios-short:max-w-[calc(560px+2rem)]",
+        centred && "mx-auto max-w-[calc(560px+2rem)]",
         hidden && "translate-y-[calc(100%+var(--tabs-bottom)+1.5rem)] opacity-0",
       )}
     >

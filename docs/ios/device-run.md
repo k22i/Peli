@@ -24,7 +24,7 @@ Results of the on-device checklist in [`ios/README.md`](../../ios/README.md#firs
 | 9 | Keychain after a reboot | | | |
 | 10 | Keychain and data across a refresh and a reinstall | | | |
 | 11 | iPad layouts | n/a | | |
-| 12 | iPad split view and windows | n/a | | Not run yet. #138 built the iPad shell (top capsule, sidebar, live switch at 700 × 500 pt). Steps in the check 12 row of `ios/README.md`. A second window is refused by design: `UIApplicationSupportsMultipleScenes` is `NO` (one Wails webview). Screenshots: `epic126-138-*.png` |
+| 12 | iPad split view and windows | n/a | | Not run yet. #138 built the iPad shell (sections bar at the bottom centre: the first run had it at the top, where it overlapped the top bar; sidebar; live switch at 700 × 500 pt). Steps in the check 12 row of `ios/README.md`. A second window is refused by design: `UIApplicationSupportsMultipleScenes` is `NO` (one Wails webview). Sections bar moved to the bottom centre after the first run (it overlapped the top bar). Screenshots: `epic126-138-*.png` |
 | 13 | On-screen keyboard | | | Not run yet. #137 built the keyboard handling (`--keyboard-h`, scroll-to-dismiss, instant Search focus, TMDB sheet) but no device has run it. Steps in the check 13 row of `ios/README.md`. Screenshots: `epic126-137-*.png` |
 | 14 | Background refresh | | | |
 | 16 | Hardware keyboard | n/a | | Not run yet (#138) |

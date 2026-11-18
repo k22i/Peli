@@ -19,7 +19,10 @@ export function SelectionBar({
   onDone: () => void;
 }) {
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-6 z-20 flex justify-center px-page">
+    <div
+      data-slot="selection-bar"
+      className="pointer-events-none fixed inset-x-0 bottom-6 z-20 flex justify-center px-page"
+    >
       <div
         role="toolbar"
         aria-label="Selection"

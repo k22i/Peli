@@ -9,7 +9,6 @@ import { ShowSidebarButton } from "@/components/shell/ipad-sidebar";
 import { PartyStatus } from "@/components/shell/party-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
 import { UpdateStatus } from "@/components/shell/update-status";
-import { capsuleGlass } from "@/components/shell/tab-bar";
 import { WindowControls } from "@/components/shell/window-controls";
 import { Wordmark } from "@/components/shell/wordmark";
 import { Button } from "@/components/ui/button";
@@ -96,10 +95,11 @@ export function TopBar({
   // The iOS tab bar holds the sections and Search (#129); the bar keeps the
   // wordmark and the profile.
   compact?: boolean;
-  // The iOS app at regular width (#138): the sections float in a glass
-  // capsule under the status bar, with a sidebar button at the leading end;
-  // with the sidebar shown, the bar starts beside it and leaves the sections
-  // and the wordmark to it.
+  // The iOS app at regular width (#138): the sections are in the floating
+  // bar at the bottom centre (TabBar `centred`) or in the sidebar, so the
+  // bar keeps the wordmark, the profile and a sidebar button at the leading
+  // end; with the sidebar shown, it starts beside it and leaves the wordmark
+  // to it.
   ipad?: { sidebar: boolean; onShowSidebar: () => void } | undefined;
   onKeyboardNavigate: () => void;
 }) {
@@ -223,15 +223,12 @@ export function TopBar({
         )}
         {ipad && !ipad.sidebar && <ShowSidebarButton overArt={clear} onShow={ipad.onShowSidebar} />}
         {!ipad?.sidebar && (
-          <div
-            aria-hidden
-            // On an iPad narrower than 1024 pt the capsule needs the room.
-            className={cn("flex shrink-0 items-center max-sm:hidden", ipad && "max-lg:hidden")}
-          >
+          <div aria-hidden className="flex shrink-0 items-center max-sm:hidden">
             <Wordmark />
           </div>
         )}
-        {!compact && !ipad?.sidebar && (
+        {/* The iPad's sections are in the bottom bar or the sidebar. */}
+        {!compact && !ipad && (
           <nav
             aria-label="Main"
             className="pointer-events-none absolute inset-0 flex justify-center"
@@ -239,11 +236,8 @@ export function TopBar({
             <ul
               className={cn(
                 "pointer-events-auto flex items-center self-center rounded-full p-0.5 transition-[background-color,box-shadow] duration-(--duration-base)",
-                // The iPad's floating capsule: always glass, a touch taller.
-                ipad
-                  ? cn(capsuleGlass, "p-1")
-                  : clear &&
-                      "bg-black/30 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.1)] backdrop-blur-xl",
+                clear &&
+                  "bg-black/30 shadow-[inset_0_0_0_1px_rgb(255_255_255/0.1)] backdrop-blur-xl",
               )}
             >
               {visualOrder.map(item)}
