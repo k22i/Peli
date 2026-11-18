@@ -73,7 +73,7 @@ func TestIOSServiceHasTheDesktopMethods(t *testing.T) {
 
 func TestDesktopIsANoOp(t *testing.T) {
 	var s Service
-	if err := s.SetTabBar(TabBarState{Active: "/", Theme: "dark"}); err != nil {
+	if err := s.SetTabBar(TabBarState{Active: "/"}); err != nil {
 		t.Fatal(err)
 	}
 	if h := s.TabBarHeight(); h != 0 {

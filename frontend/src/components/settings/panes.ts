@@ -3,7 +3,6 @@ import {
   Info,
   Languages,
   ListChecks,
-  Palette,
   Play,
   Puzzle,
   Radio,
@@ -27,7 +26,6 @@ const allPanes = [
   { id: "streaming", title: "Streaming", icon: Radio, tone: "bg-[#0a8fa8]" },
   { id: "plugins", title: "Plugins", icon: Puzzle, tone: "bg-[#6e6e73]" },
   { id: "tracking", title: "Tracking", icon: ListChecks, tone: "bg-[#d4337a]" },
-  { id: "appearance", title: "Appearance", icon: Palette, tone: "bg-[#5856d6]" },
   { id: "privacy", title: "Privacy", icon: Shield, tone: "bg-[#3a8a3a]" },
   { id: "about", title: "About", icon: Info, tone: "bg-[#6e6e73]" },
 ] as const satisfies readonly SettingsPane[];
@@ -41,12 +39,12 @@ export function visiblePanes(): readonly (typeof allPanes)[number][] {
 }
 
 // The panes in the phone's list, a group to a card (#137): you, what Peli
-// plays and how, what it connects to, then how it looks and what it is.
+// plays and how, what it connects to, then privacy and what it is.
 const paneGroups: readonly (readonly PaneId[])[] = [
   ["account"],
   ["content", "playback", "languages", "streaming", "plugins"],
   ["tracking"],
-  ["appearance", "privacy", "about"],
+  ["privacy", "about"],
 ];
 
 // The groups with only the panes this build shows; none left empty.

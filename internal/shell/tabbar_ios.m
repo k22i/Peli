@@ -29,11 +29,7 @@ static BOOL shortScreen(CGSize size) { return size.height < 500; }
 
 // Peli's sun-ink: the selected tab's icon and label (index.css).
 static UIColor *sunInk(void) {
-	return [UIColor colorWithDynamicProvider:^UIColor *(UITraitCollection *t) {
-		return t.userInterfaceStyle == UIUserInterfaceStyleDark
-			? [UIColor colorWithRed:1 green:0xc4 / 255.0 blue:0x6b / 255.0 alpha:1]
-			: [UIColor colorWithRed:0x8f / 255.0 green:0x4c / 255.0 blue:0 alpha:1];
-	}];
+	return [UIColor colorWithRed:1 green:0xc4 / 255.0 blue:0x6b / 255.0 alpha:1];
 }
 
 API_AVAILABLE(ios(26.0))
@@ -257,15 +253,12 @@ API_AVAILABLE(ios(26.0))
 	BOOL hidden = [state[@"hidden"] boolValue];
 	BOOL minimized = [state[@"minimized"] boolValue];
 	BOOL search = [state[@"search"] boolValue];
-	NSString *theme = [state[@"theme"] isKindOfClass:NSString.class] ? state[@"theme"] : @"";
-
-	UIUserInterfaceStyle style = [theme isEqualToString:@"dark"] ? UIUserInterfaceStyleDark
-		: [theme isEqualToString:@"light"] ? UIUserInterfaceStyleLight : UIUserInterfaceStyleUnspecified;
-	if (self.overrideUserInterfaceStyle != style) {
-		self.overrideUserInterfaceStyle = style;
-		// Over Peli's near-black page the clear glass reads as grey on a white
-		// poster: a little dark tint keeps the labels legible.
-		UIColor *tint = style == UIUserInterfaceStyleDark ? [UIColor colorWithWhite:0 alpha:0.18] : nil;
+	// Peli is dark only (#143): the bar is dark whatever iOS is set to. Over
+	// the near-black page the clear glass reads as grey on a white poster, so a
+	// little dark tint keeps the labels legible.
+	if (self.overrideUserInterfaceStyle != UIUserInterfaceStyleDark) {
+		self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+		UIColor *tint = [UIColor colorWithWhite:0 alpha:0.18];
 		for (UIVisualEffectView *v in @[ self.capsule, self.search ]) {
 			UIGlassEffect *glass = [UIGlassEffect effectWithStyle:UIGlassEffectStyleRegular];
 			glass.interactive = YES;

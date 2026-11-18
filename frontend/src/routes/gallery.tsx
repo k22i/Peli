@@ -2,7 +2,6 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { Components } from "@/components/gallery/components";
 import { Foundations } from "@/components/gallery/foundations";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { feature } from "@/lib/features";
 
 export const Route = createFileRoute("/gallery")({
@@ -24,11 +23,9 @@ function Gallery() {
           <h1 className="type-display">Design system</h1>
           <p className="max-w-xl text-pretty text-muted-foreground">
             A screening room: warm dark surfaces, the system face for reading and a display serif
-            for the big moments, and one ray of sunlight for what matters now. One theme, in light
-            and dark.
+            for the big moments, and one ray of sunlight for what matters now. Dark only.
           </p>
         </div>
-        <ThemeSwitcher />
       </header>
       <Foundations />
       <Components />

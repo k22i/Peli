@@ -6,7 +6,7 @@
 /*
  * Peli: "screening room".
  *
- * A warm, dark-first canvas (paper-warm in light mode), the system face for
+ * A warm, dark-only canvas, the system face for
  * everything you read and press, and Instrument Serif for the big moments:
  * hero and page titles, the wordmark. One accent, --sun (a warm amber, the
  * pelican's bill in the mark; the name is from when the app was Sinag), used
@@ -15,10 +15,11 @@
  * Colour variables keep coss ui's semantic names (background, foreground,
  * popover, …) so its components follow; Peli's own are --sun*, --raised and
  * the media tokens. Colours are plain hex so src/lib/contrast.test.ts can
- * check every text pair against WCAG AA in both modes.
+ * check every text pair against WCAG AA.
  *
- * Dark mode is the `.dark` class on <html>: index.html sets it before first
- * paint and src/lib/theme.ts keeps it in step with the OS or Settings.
+ * Peli is dark only (#143): the tokens are on :root, whatever the OS
+ * appearance. index.html still sets the `.dark` class on <html> (and
+ * src/lib/theme.ts keeps it), only so coss ui's `dark:` variants apply.
  */
 @custom-variant dark (&:where(.dark, .dark *));
 /* The iOS app at compact width: an iPhone (upright or on its side) or a
@@ -51,10 +52,6 @@
 
 @layer base {
   :root {
-    color-scheme: light;
-  }
-
-  .dark {
     color-scheme: dark;
   }
 
@@ -426,47 +423,9 @@
   bottom: calc(var(--tabs-float) + 0.5rem);
 }
 
-/* Light: warm paper. */
+/* The screening room. Peli is dark only (#143): these are the tokens on every
+   platform and whatever the OS appearance. */
 :root {
-  --background: #f5f2ec;
-  --foreground: #1b1814;
-  --raised: #ffffff;
-  --card: #ffffff;
-  --card-foreground: #1b1814;
-  --popover: #fbf9f5;
-  --popover-foreground: #1b1814;
-  --primary: #1b1814;
-  --primary-foreground: #fbf9f5;
-  --secondary: #1b18140f;
-  --secondary-foreground: #1b1814;
-  --muted: #1b18140a;
-  --muted-foreground: #645d54;
-  --faint: #8a8278;
-  --accent: #1b18140d;
-  --accent-foreground: #1b1814;
-  --border: #1b181417;
-  --input: #1b181421;
-  --switch-off: #a39b90;
-  --ring: #c06c00;
-  --sun: #f0a02a;
-  --sun-ink: #8f4c00;
-  --sun-soft: #f0a02a24;
-  --sun-foreground: #1d1203;
-  --destructive: #d83a2e;
-  --destructive-foreground: #b42318;
-  --info: #2f6fd0;
-  --info-foreground: #1f5bb5;
-  --success: #2c9a52;
-  --success-foreground: #1d7a3e;
-  --warning: #e08a00;
-  --warning-foreground: #8f5200;
-  /* Translucent bars and popups (alpha over whatever passes under). */
-  --bar: #f5f2ecd1;
-  --pop: #fbf9f5e0;
-}
-
-/* Dark: the screening room. */
-.dark {
   --background: #0e0d0c;
   --foreground: #f4efe7;
   --raised: #181715;

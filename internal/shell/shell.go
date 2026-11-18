@@ -56,8 +56,6 @@ type TabBarState struct {
 	Hidden bool `json:"hidden"`
 	// Minimized shrinks the capsule to a circle with the active icon.
 	Minimized bool `json:"minimized"`
-	// Theme is "light" or "dark": Peli's, which may differ from the OS's.
-	Theme string `json:"theme"`
 	// Search shows the round Search button beside the capsule.
 	Search bool `json:"search"`
 	// Placement is "bottom" (the floating capsule). Only "bottom" is drawn:

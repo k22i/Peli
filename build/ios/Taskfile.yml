@@ -217,7 +217,7 @@ tasks:
         if [ -d "$AC_IN" ]; then
           rm -rf "$AC_IN/AppIcon.appiconset"
           cp -R build/ios/assets/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
-          # The launch screen's colour: --background, light and dark
+          # The launch screen's colour: --background, dark only (#143)
           # (UILaunchScreen in the Info plists names it).
           rm -rf "$AC_IN/LaunchBackground.colorset"
           cp -R build/ios/assets/LaunchBackground.colorset "$AC_IN/LaunchBackground.colorset"
@@ -409,7 +409,7 @@ tasks:
         if [ -d "$AC_IN" ]; then
           rm -rf "$AC_IN/AppIcon.appiconset"
           cp -R build/ios/assets/AppIcon.appiconset "$AC_IN/AppIcon.appiconset"
-          # The launch screen's colour: --background, light and dark
+          # The launch screen's colour: --background, dark only (#143)
           # (UILaunchScreen in the Info plists names it).
           rm -rf "$AC_IN/LaunchBackground.colorset"
           cp -R build/ios/assets/LaunchBackground.colorset "$AC_IN/LaunchBackground.colorset"

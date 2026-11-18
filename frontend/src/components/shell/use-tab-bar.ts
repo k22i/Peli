@@ -17,7 +17,6 @@ import {
   type ScrollTrack,
 } from "@/lib/tab-bar";
 import { tabIconName } from "@/lib/tab-icons";
-import { useTheme } from "@/lib/theme";
 import type { Section } from "@/sections";
 
 export type TabBarModel = {
@@ -124,7 +123,6 @@ const items = tabSections.map((section) => ({
 // navigation. Does nothing without one (feature("nativeTabBar")).
 export function useNativeTabBar(model: TabBarModel, shown: boolean) {
   const native = feature("nativeTabBar");
-  const theme = useTheme();
   const { active, minimized, hidden, select, expand } = model;
 
   useEffect(() => {
@@ -135,13 +133,12 @@ export function useNativeTabBar(model: TabBarModel, shown: boolean) {
         active,
         hidden: hidden || !shown,
         minimized,
-        theme,
         search: true,
         placement: "bottom",
       }).catch(() => {});
     });
     return () => cancelAnimationFrame(frame);
-  }, [native, active, hidden, shown, minimized, theme]);
+  }, [native, active, hidden, shown, minimized]);
 
   // The capsule's height follows the window (52 pt on an iPhone on its
   // side): --tabs-h feeds --tabs-float, the content pane's bottom inset.
