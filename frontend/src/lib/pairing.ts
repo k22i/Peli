@@ -65,6 +65,9 @@ export type PairingProblem = {
 // What to say when pairing fails. sending is the side with the
 // connections, for the "wrong way" message.
 export function pairingProblem(error: unknown, sending: boolean): PairingProblem | undefined {
+  // No error, no problem: without this, null fell through to "Couldn't pair"
+  // and the alert showed on every step, success included.
+  if (error === null || error === undefined) return undefined;
   switch (pairingErrorCode(error)) {
     case "cancelled":
       return undefined;
