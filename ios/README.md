@@ -191,6 +191,21 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 - **Launch screen:** `UILaunchScreen` names the `LaunchBackground` colour (`build/ios/assets/LaunchBackground.colorset`: `--background`, light and dark); the old storyboard was never compiled and is gone. The webview starts clear and invisible over a window in that colour (`peli_quiet_webview` in `internal/iosplayer/host_ios.m`, called from `main.m`'s layout hook) and fades in on `appinfo.PageReady` (DOMContentLoaded), or after 4 s.
 - **Touch CSS** (`index.css`, `data-platform="ios"` only): no selection, callout or tap highlight on the app; `touch-action: pan-x pan-y` on the page (no double-tap or pinch zoom); text fields and `[data-selectable]` (the synopsis) stay selectable.
 
+## Connecting SIMKL and AniList on a phone (#133)
+
+SIMKL and AniList tokens are per device and per profile, in each device's Keychain. Two ways to get them onto an iPhone or iPad:
+
+- **Copy them from a device that has them** ([ADR-0061](../docs/adr/0061-device-pairing.md)): Settings › Integrations › Other devices. Both devices need the same Wi-Fi and the same Nuvio account. Nothing goes through a server: the transfer is end to end encrypted, and a code works once, for 3 minutes. **The camera always scans:**
+  - **Mac → iPhone/iPad:** on the Mac, *Add to another device*, pick the profiles (and the TMDB key), *Show code*. On the phone, *Copy from another device* opens the camera; scan, check the summary, *Copy*.
+  - **iPhone/iPad → Mac:** on the Mac, *Copy from another device* shows a code. On the phone, *Add to another device* › *Scan a Mac's code*. The Mac shows the summary; *Copy*.
+  - **iPhone → iPad:** like Mac → iPhone, with the iPhone showing the code.
+  - **Mac → Mac:** the sending Mac also shows six words; type them into *Copy from another device* on the other Mac.
+  - Profiles match by Nuvio profile; others (Guest) are picked by hand or skipped. Kids profiles are never copied. Afterwards each profile imports its history, as after a sign-in.
+  - The first scan asks for the camera, the first connection for Local Network. If either is off, the error has an *Open Settings* button.
+- **Sign in on the phone itself:** SIMKL's dialog says "Approve this code on any device, like your Mac", shows the code large and has *Copy code* (approve at simkl.com/pin anywhere). AniList opens its sign-in sheet in the app.
+- **Disconnecting a copied SIMKL grant** asks *On this device only* (the other devices keep scrobbling) or *Everywhere* (revokes it; the others then show "SIMKL was disconnected on another device"). AniList can't be revoked from Peli, so Disconnect only forgets it here.
+- Code: `internal/pairing` (bundle, matching, seal, LAN server and client, CPace and Bonjour for the phrase), `internal/tracking/share.go` (export and adopt, never bound), `internal/shell` (`ScanQR` with AVFoundation, `OpenAppSettings`), `frontend/src/components/settings/pairing-dialogs.tsx`.
+
 ## Where things are
 
 | Path | What |
@@ -201,6 +216,7 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 | [`internal/iosplayer/`](../internal/iosplayer) | The libmpv engine: an OpenGL ES view under the webview, decoding-mode choice, suspend and resume, audio session |
 | [`internal/iosshell/`](../internal/iosshell) | Peli's additions to Wails' shell: reloading after a WebKit kill, memory readings, the share sheet ([`internal/diagnostics`](../internal/diagnostics) decides what they do) |
 | [`internal/iosauth/`](../internal/iosauth) | The in-app sign-in sheet (`ASWebAuthenticationSession`) for AniList |
+| [`internal/pairing/`](../internal/pairing) | Copying SIMKL, AniList and the TMDB key between devices over the local network ([ADR-0061](../docs/adr/0061-device-pairing.md)) |
 | `*_ios.go` (`main_desktop.go` and `!ios` files for the desktop) | Platform seams: Keychain (`internal/secrets`), storage path (`internal/store`), open URL (`internal/appinfo`), the player service (`internal/player`), the image proxy |
 | [`frontend/src/lib/platform.ts`](../frontend/src/lib/platform.ts), [`features.ts`](../frontend/src/lib/features.ts) | `isIOS()` and the list of features hidden on iOS |
 | [`ios_boundary_test.go`](../ios_boundary_test.go) | Proves the iOS build links no torrent, plugin, party or updater code |

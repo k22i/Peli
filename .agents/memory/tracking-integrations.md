@@ -14,4 +14,5 @@ Epic #71 tracks with SIMKL (#72–#74) and AniList (#104/#105); Trakt replaced a
 - Tokens per profile in the keychain (`simkl.access-token.<id>` etc.); kids profiles refused ([[kids-profiles]]).
 - Player reports now include `started`/`resumed` (watching doesn't push on them).
 - Live check that worked: a temporary `devtrack.go` hook in package main (never commit) that calls StartSimkl/WaitSimkl, plays a 2-minute ffmpeg clip as a film through `players.Load`, checks `/sync/all-items`, removes it with `/sync/history/remove`, then the same for AniList (`DeleteMediaListEntry`). The user only clicks Allow/Approve in the browser. Pick a title not already on their list (Frieren was on AniList).
-- Related: [[spike-ticket-workflow]], [[live-tests-push-to-nuvio]].
+- Grants can be copied to another device and shared (#133): see [[device-pairing]]; a shared SIMKL grant disconnects "this device only" (`ForgetSimkl`) or everywhere (revoke).
+- Related: [[spike-ticket-workflow]], [[live-tests-push-to-nuvio]], [[device-pairing]].

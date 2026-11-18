@@ -115,6 +115,24 @@ export function useDisconnectSimkl(profileId: number) {
   });
 }
 
+// Forgets a shared SIMKL grant on this device only, without revoking it, so
+// the devices it was copied to stay connected (#133).
+export function useForgetSimkl(profileId: number) {
+  const set = useSetConnections(profileId);
+  return useMutation({
+    mutationFn: () => Tracking.ForgetSimkl(profileId),
+    onSuccess: set,
+  });
+}
+
+// The other devices a grant was copied to or from, as one phrase: "Kevin's
+// iPhone and Kevin's iPad".
+export function sharedWith(names: readonly string[] | null | undefined): string | undefined {
+  if (!names?.length) return undefined;
+  if (names.length === 1) return names[0];
+  return `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+}
+
 export function useDisconnectAniList(profileId: number) {
   const set = useSetConnections(profileId);
   return useMutation({

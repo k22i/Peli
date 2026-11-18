@@ -99,3 +99,4 @@
 - [Quick actions](quick-actions.md) — #141 icon menu: static Search/Library, dynamic Continue watching via internal/quickactions, scene-delegate hooks, ready gate for picker/PIN, widget skipped by the user 2026-11-17
 - [Settings and Search on iPhone](settings-search-iphone.md) — #137 SettingsRoot/CompactPage + Back, Choice→sheet, DialogPopup sheet, lib/keyboard.ts (--keyboard-h, primeKeyboard), RecentList swipe
 - [Native feel](native-feel.md) — #135 haptic() call sites + notification kinds, Shell.WatchStatusBar/shell:scroll-top, edge back (onLoad reset), usePullToRefresh + Syncer.Refresh, touch scrollbar
+- [Device pairing](device-pairing.md) — #133/ADR-0061 copy SIMKL/AniList/TMDB by QR over the LAN: camera always scans, CPace phrase Mac↔Mac, internal/pairing layout, shared grants, AVFoundation scanner

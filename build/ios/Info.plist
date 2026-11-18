@@ -92,6 +92,10 @@
     </dict>
     
     
+    <key>NSCameraUsageDescription</key>
+    <string>Peli scans the code on your other device to copy your SIMKL and AniList connections.</string>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Peli finds your other devices on this Wi-Fi to copy your SIMKL and AniList connections.</string>
     <key>NSHumanReadableCopyright</key>
     <string>© 2026, k22i</string>
     

@@ -21,6 +21,7 @@ import (
 	"github.com/k22i/Peli/internal/licences"
 	"github.com/k22i/Peli/internal/markers"
 	"github.com/k22i/Peli/internal/nuvio"
+	"github.com/k22i/Peli/internal/pairing"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/quickactions"
@@ -66,6 +67,8 @@ type peli struct {
 	skipTimes *markers.Service
 	watched   *watching.Reporter
 	trackers  *tracking.Service
+	// Copying SIMKL, AniList and the TMDB key to another device (#133).
+	pairing *pairing.Service
 	// players is the libmpv Service on the desktop and the stub or iOS engine
 	// host on iOS: the same bound methods either way.
 	players *player.Service
@@ -116,6 +119,13 @@ func newPeli(dbPath string) *peli {
 		Keychain:        p.keychain,
 		Open:            func() *store.Store { return store.Opened(p.db) },
 	})
+	// Pairing copies the trackers' grants and the TMDB key between devices
+	// over the local network (#133, ADR-0061).
+	p.pairing = pairing.NewService(pairing.Sources{
+		Open:     func() *store.Store { return store.Opened(p.db) },
+		Tracking: p.trackers,
+		Keychain: p.keychain,
+	})
 	// Addon requests the webview's fetch can't make (#37), and the addons
 	// built into Peli (#107): AniList's lists and details (#108).
 	p.addonFetcher = addons.NewService(appinfo.Version)
@@ -145,8 +155,10 @@ func (p *peli) services(x extras) []application.Service {
 		}
 	}
 	list = append(list, application.NewService(&appinfo.Service{}))
-	// The iOS floating tab bar (#129); no-ops on the desktop.
-	list = append(list, application.NewService(&shell.Service{}))
+	// The iOS floating tab bar (#129) and QR scanner (#133); no-ops on the
+	// desktop.
+	list = append(list, application.NewServiceWithOptions(&shell.Service{},
+		application.ServiceOptions{MarshalError: shell.MarshalError}))
 	// Taptic feedback on iOS (#131, #135); a no-op on the desktop.
 	list = append(list, application.NewService(&haptics.Service{}))
 	// The Home Screen icon menu (#141); a no-op on the desktop.
@@ -177,6 +189,8 @@ func (p *peli) services(x extras) []application.Service {
 		// stop.
 		application.NewServiceWithOptions(p.trackers,
 			application.ServiceOptions{MarshalError: tracking.MarshalError}),
+		application.NewServiceWithOptions(p.pairing,
+			application.ServiceOptions{MarshalError: pairing.MarshalError}),
 		application.NewService(p.skipTimes),
 		application.NewServiceWithOptions(p.players,
 			application.ServiceOptions{MarshalError: player.MarshalError}),

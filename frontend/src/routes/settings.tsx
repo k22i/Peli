@@ -27,7 +27,12 @@ import {
 } from "@/components/settings/settings-section";
 import { TmdbDialog } from "@/components/settings/tmdb-dialog";
 import { UpdateRows } from "@/components/settings/update-rows";
-import { AniListDialog, SimklDialog } from "@/components/settings/tracking-dialogs";
+import { AddDeviceDialog, CopyDeviceDialog } from "@/components/settings/pairing-dialogs";
+import {
+  AniListDialog,
+  SharedDisconnectDialog,
+  SimklDialog,
+} from "@/components/settings/tracking-dialogs";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
   defaultSubtitleStyle,
@@ -114,9 +119,11 @@ import { useTmdbKey } from "@/lib/tmdb";
 import { Service as Store, type Gestures } from "@bindings/store";
 import { Service as Player } from "@bindings/player";
 import {
+  sharedWith,
   trackingQuery,
   useDisconnectAniList,
   useDisconnectSimkl,
+  useForgetSimkl,
   useImport,
   type Connections,
 } from "@/lib/tracking";
@@ -1397,13 +1404,20 @@ function TrackingGroups({
 }) {
   const disconnectSimkl = useDisconnectSimkl(profileId);
   const disconnectAniList = useDisconnectAniList(profileId);
+  const forgetSimkl = useForgetSimkl(profileId);
   const importNow = useImport(profileId);
   const [connecting, setConnecting] = useState<"simkl" | "anilist">();
+  // A grant pairing shared with other devices asks how to disconnect (#133).
+  const [disconnecting, setDisconnecting] = useState<"simkl" | "anilist">();
+  // Copying connections to or from another device (#133).
+  const [pairing, setPairing] = useState<"add" | "copy">();
   if (!connections) return <Skeleton className="h-48 rounded-2xl" />;
   if (connections.kids) return null;
 
   const simkl = connections.simkl;
   const anilist = connections.anilist;
+  const simklShared = sharedWith(simkl?.shared);
+  const anilistShared = sharedWith(anilist?.shared);
   // Turning an import on brings in what's there now.
   const setImport = (change: Partial<ProfileSettings>, on: boolean) => {
     onChange(change);
@@ -1421,7 +1435,9 @@ function TrackingGroups({
               ? "Not available in this build."
               : simkl
                 ? simkl.needsReconnect
-                  ? `Connected as ${simkl.user}, but SIMKL stopped accepting the sign-in. Connect again.`
+                  ? simklShared
+                    ? "SIMKL was disconnected on another device. Connect again."
+                    : `Connected as ${simkl.user}, but SIMKL stopped accepting the sign-in. Connect again.`
                   : `Connected as ${simkl.user}. What this profile watches is scrobbled to SIMKL, and marked watched at 90 %.`
                 : "Scrobble what this profile watches to SIMKL, and bring in your SIMKL history."
           }
@@ -1433,8 +1449,16 @@ function TrackingGroups({
                   variant="outline"
                   size="sm"
                   aria-label="Disconnect SIMKL"
-                  loading={disconnectSimkl.isPending}
-                  onClick={() => disconnectSimkl.mutate()}
+                  loading={disconnectSimkl.isPending || forgetSimkl.isPending}
+                  onClick={() =>
+                    // A grant another device revoked has nothing left to
+                    // revoke: forget it.
+                    simklShared
+                      ? simkl.needsReconnect
+                        ? forgetSimkl.mutate()
+                        : setDisconnecting("simkl")
+                      : disconnectSimkl.mutate()
+                  }
                 >
                   Disconnect
                 </Button>
@@ -1502,7 +1526,9 @@ function TrackingGroups({
                   size="sm"
                   aria-label="Disconnect AniList"
                   loading={disconnectAniList.isPending}
-                  onClick={() => disconnectAniList.mutate()}
+                  onClick={() =>
+                    anilistShared ? setDisconnecting("anilist") : disconnectAniList.mutate()
+                  }
                 >
                   Disconnect
                 </Button>
@@ -1539,6 +1565,44 @@ function TrackingGroups({
           </>
         )}
       </SettingsGroup>
+      <SettingsGroup title="Other devices">
+        <SettingRow
+          id="pair-add"
+          label="Add to another device"
+          description="Copy SIMKL, AniList and the TMDB key from here to your iPhone, iPad or Mac, over this Wi-Fi."
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label="Add to another device"
+            onClick={() => setPairing("add")}
+          >
+            Add…
+          </Button>
+        </SettingRow>
+        <SettingRow
+          id="pair-copy"
+          label="Copy from another device"
+          description="Get the connections another device already has. Both must be signed in to the same Nuvio account."
+        >
+          <Button
+            variant="outline"
+            size="sm"
+            aria-label="Copy from another device"
+            onClick={() => setPairing("copy")}
+          >
+            Copy…
+          </Button>
+        </SettingRow>
+      </SettingsGroup>
+      <AddDeviceDialog
+        open={pairing === "add"}
+        onOpenChange={(open) => setPairing(open ? "add" : undefined)}
+      />
+      <CopyDeviceDialog
+        open={pairing === "copy"}
+        onOpenChange={(open) => setPairing(open ? "copy" : undefined)}
+      />
       <SimklDialog
         profileId={profileId}
         open={connecting === "simkl"}
@@ -1549,6 +1613,25 @@ function TrackingGroups({
         open={connecting === "anilist"}
         onOpenChange={(open) => setConnecting(open ? "anilist" : undefined)}
       />
+      {simklShared && (
+        <SharedDisconnectDialog
+          service="simkl"
+          devices={simklShared}
+          open={disconnecting === "simkl"}
+          onOpenChange={(open) => setDisconnecting(open ? "simkl" : undefined)}
+          onThisDevice={() => forgetSimkl.mutate()}
+          onEverywhere={() => disconnectSimkl.mutate()}
+        />
+      )}
+      {anilistShared && (
+        <SharedDisconnectDialog
+          service="anilist"
+          devices={anilistShared}
+          open={disconnecting === "anilist"}
+          onOpenChange={(open) => setDisconnecting(open ? "anilist" : undefined)}
+          onThisDevice={() => disconnectAniList.mutate()}
+        />
+      )}
     </>
   );
 }
