@@ -9,6 +9,7 @@ import {
   parseTmdbAliases,
   parseTmdbArt,
   parseTmdbCollection,
+  textlessBackdrop,
   tmdbKeyProblem,
   tmdbRef,
 } from "./tmdb";
@@ -98,6 +99,41 @@ describe("parseTmdbArt", () => {
     expect(art.logo).toBe("https://image.tmdb.org/t/p/w500/plain.svg");
     expect(art.backdrop).toBeUndefined();
     expect(art.cast).toEqual([{ id: 17419, name: "Bryan Cranston", character: "Walter White" }]);
+  });
+
+  it("prefers a backdrop without text to the main one", () => {
+    const art = parseTmdbArt({
+      backdrop_path: "/titled.jpg",
+      images: {
+        backdrops: [
+          { iso_639_1: "en", file_path: "/titled.jpg" },
+          { iso_639_1: null, file_path: "/clean.jpg" },
+          { iso_639_1: null, file_path: "/clean-2.jpg" },
+        ],
+      },
+    });
+    expect(art.backdrop).toBe("https://image.tmdb.org/t/p/original/clean.jpg");
+  });
+
+  it("keeps the main backdrop when it has no text, and falls back to it", () => {
+    const backdrops = [
+      { iso_639_1: null, file_path: "/other.jpg" },
+      { iso_639_1: "xx", file_path: "/main.jpg" },
+    ];
+    expect(textlessBackdrop({ backdrop_path: "/main.jpg", images: { backdrops } })).toBe(
+      "/main.jpg",
+    );
+    expect(
+      textlessBackdrop({
+        backdrop_path: "/main.jpg",
+        images: { backdrops: [{ iso_639_1: "en", file_path: "/main.jpg" }] },
+      }),
+    ).toBe("/main.jpg");
+    expect(textlessBackdrop({ backdrop_path: "/main.jpg" })).toBe("/main.jpg");
+    expect(textlessBackdrop({ images: { backdrops: [{ file_path: "/only.jpg" }] } })).toBe(
+      "/only.jpg",
+    );
+    expect(textlessBackdrop({})).toBeUndefined();
   });
 
   it("keeps twenty people and survives an odd answer", () => {

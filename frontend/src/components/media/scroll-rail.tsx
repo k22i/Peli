@@ -15,8 +15,9 @@ import { cn } from "@/lib/utils";
 // A single line of items that scrolls sideways (#116): catalog chips, stream
 // source pills. The first item lines up with the page text (the scroller's
 // own padding), but items scroll out to the window edge, fading at an end
-// that has more. Arrows (material-pop) appear on hover or focus; a mouse wheel
-// scrolls it sideways while there is more that way; focus moving to an item
+// that has more. Arrows (material-pop) appear on hover or focus; the wheel is
+// left alone (a vertical wheel or swipe scrolls the page; sideways trackpad
+// movement and Shift+wheel scroll the rail natively); focus moving to an item
 // brings it into view; `revealSelector` brings the selected one into view
 // on mount.
 export function ScrollRail({
@@ -62,27 +63,14 @@ export function ScrollRail({
         });
       }
     };
-    // A vertical wheel scrolls the rail while it can go that way; otherwise
-    // the page keeps the gesture. Sideways (trackpad) movement is left alone.
-    const onWheel = (event: WheelEvent) => {
-      if (event.ctrlKey || event.deltaX !== 0 || event.deltaY === 0) return;
-      const room = element.scrollWidth - element.clientWidth;
-      if (room <= 1) return;
-      const left = element.scrollLeft;
-      if (event.deltaY > 0 ? left >= room - 1 : left <= 0) return;
-      event.preventDefault();
-      element.scrollLeft += event.deltaY;
-    };
     measure();
     element.addEventListener("scroll", onScroll, { passive: true });
-    element.addEventListener("wheel", onWheel, { passive: false });
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
     observer?.observe(element);
     if (element.firstElementChild) observer?.observe(element.firstElementChild);
     return () => {
       cancelAnimationFrame(frame);
       element.removeEventListener("scroll", onScroll);
-      element.removeEventListener("wheel", onWheel);
       observer?.disconnect();
     };
   }, [measure]);

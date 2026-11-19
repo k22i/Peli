@@ -172,11 +172,41 @@ export const contrastPairs: ContrastPair[] = [
     background: ["#1c1a18"],
     min: AA_TEXT,
   },
+  // The hero's small text (eyebrow, meta, synopsis: white at 90 %) where
+  // its shade is thinnest, the text column's end (55 % black), with the
+  // extra shade over bright art (45 %). See components/media/hero.tsx.
   {
-    label: "Hero eyebrow, over the scrim",
-    foreground: "#ffc46b",
-    background: ["#808080", "#000000b3"],
+    label: "Hero text over the brightest art",
+    foreground: "#ffffffe6",
+    background: ["#ffffff", "#0000008c", "#00000073"],
     min: AA_TEXT,
+  },
+  // Art read as dark gets no extra shade; #cbcbcb is the brightest it can be
+  // behind most of the text (brightP90 in lib/art-tone.ts).
+  {
+    label: "Hero text over art read as dark",
+    foreground: "#ffffffe6",
+    background: ["#cbcbcb", "#0000008c"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Hero text over the darkest art",
+    foreground: "#ffffffe6",
+    background: ["#000000", "#0000008c"],
+    min: AA_TEXT,
+  },
+  // The phone: shaded from the bottom (75 % at the text's top).
+  {
+    label: "Hero text over the brightest art, compact",
+    foreground: "#ffffffe6",
+    background: ["#ffffff", "#000000bf", "#00000066"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Hero eyebrow dot, over the shade",
+    foreground: "sun",
+    background: ["#ffffff", "#000000d9", "#00000080"],
+    min: AA_UI,
   },
   {
     label: "Player failure text, muted, over the scrim",
