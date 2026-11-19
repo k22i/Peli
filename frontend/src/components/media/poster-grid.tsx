@@ -17,6 +17,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { EagerArtwork } from "@/components/media/artwork";
 import { cardWidthRem, remToPx } from "@/components/media/row";
 import {
   RovingContext,
@@ -178,7 +179,9 @@ export function PosterGrid<T>({
     gap: layout.dense ? dense.rowGap : rowGapPx,
     scrollMargin: layout.top,
     scrollPaddingStart: headerInset,
-    overscan: 2,
+    // Three rows past each edge, so the next ones are in and their art
+    // loaded (EagerArtwork) before they scroll into view.
+    overscan: 3,
     initialRect: { width: 0, height: window.innerHeight },
     rangeExtractor: useCallback(
       (range: Range) => withIndex(defaultRangeExtractor(range), activeRow),
@@ -220,49 +223,51 @@ export function PosterGrid<T>({
   const margin = virtualizer.options.scrollMargin;
   return (
     <RovingContext.Provider value={roving}>
-      <ul
-        ref={list}
-        aria-label={label}
-        role={isSelected ? "listbox" : undefined}
-        aria-multiselectable={isSelected ? true : undefined}
-        data-slot="poster-grid"
-        data-dense={layout.dense || undefined}
-        className={cn("relative px-page", className)}
-        style={
-          {
-            height: virtualizer.getTotalSize(),
-            // Cards take the column's width.
-            "--container-poster": `${cardWidth}px`,
-          } as CSSProperties
-        }
-      >
-        {virtualizer.getVirtualItems().flatMap((row) =>
-          Array.from({ length: Math.min(columns, count - row.index * columns) }, (_, column) => {
-            const index = row.index * columns + column;
-            const item = items[index]!;
-            return (
-              <li
-                key={getKey(item, index)}
-                // One cell per row is observed; measureRow reads them all.
-                ref={column === 0 ? virtualizer.measureElement : undefined}
-                data-index={row.index}
-                data-item={index}
-                role={isSelected ? "option" : undefined}
-                aria-selected={isSelected ? isSelected(item, index) : undefined}
-                className="absolute top-0"
-                style={{
-                  insetInlineStart: `calc(var(--spacing-page) + ${column * (cardWidth + columnGap)}px)`,
-                  transform: `translateY(${row.start - margin}px)`,
-                }}
-              >
-                <RovingIndexContext.Provider value={index}>
-                  {renderItem(item, index)}
-                </RovingIndexContext.Provider>
-              </li>
-            );
-          }),
-        )}
-      </ul>
+      <EagerArtwork value>
+        <ul
+          ref={list}
+          aria-label={label}
+          role={isSelected ? "listbox" : undefined}
+          aria-multiselectable={isSelected ? true : undefined}
+          data-slot="poster-grid"
+          data-dense={layout.dense || undefined}
+          className={cn("relative px-page", className)}
+          style={
+            {
+              height: virtualizer.getTotalSize(),
+              // Cards take the column's width.
+              "--container-poster": `${cardWidth}px`,
+            } as CSSProperties
+          }
+        >
+          {virtualizer.getVirtualItems().flatMap((row) =>
+            Array.from({ length: Math.min(columns, count - row.index * columns) }, (_, column) => {
+              const index = row.index * columns + column;
+              const item = items[index]!;
+              return (
+                <li
+                  key={getKey(item, index)}
+                  // One cell per row is observed; measureRow reads them all.
+                  ref={column === 0 ? virtualizer.measureElement : undefined}
+                  data-index={row.index}
+                  data-item={index}
+                  role={isSelected ? "option" : undefined}
+                  aria-selected={isSelected ? isSelected(item, index) : undefined}
+                  className="absolute top-0"
+                  style={{
+                    insetInlineStart: `calc(var(--spacing-page) + ${column * (cardWidth + columnGap)}px)`,
+                    transform: `translateY(${row.start - margin}px)`,
+                  }}
+                >
+                  <RovingIndexContext.Provider value={index}>
+                    {renderItem(item, index)}
+                  </RovingIndexContext.Provider>
+                </li>
+              );
+            }),
+          )}
+        </ul>
+      </EagerArtwork>
     </RovingContext.Provider>
   );
 }

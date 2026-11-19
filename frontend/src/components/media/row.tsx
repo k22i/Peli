@@ -15,6 +15,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { EagerArtwork } from "@/components/media/artwork";
 import {
   RovingContext,
   RovingIndexContext,
@@ -150,7 +151,9 @@ export function Row<T>({
     // The page gutter, so the first card lines up with the title.
     paddingStart: gutter,
     paddingEnd: gutter,
-    overscan: 3,
+    // Four cards past each edge, so the next ones are in and their art
+    // loaded (EagerArtwork) before they scroll into view.
+    overscan: 4,
     // Before the first measure: a window's width, not one card.
     initialRect: { width: window.innerWidth, height: 0 },
     rangeExtractor: useCallback(
@@ -266,24 +269,26 @@ export function Row<T>({
           className="no-scrollbar snap-x snap-mandatory scroll-px-page overflow-x-auto overscroll-x-contain pt-3 pb-4"
         >
           <RovingContext.Provider value={roving}>
-            {/* Every card in one grid cell, each pushed along by its offset:
+            <EagerArtwork value>
+              {/* Every card in one grid cell, each pushed along by its offset:
                 the row is as tall as its tallest card, and snapping sees each
                 card where it's drawn. */}
-            <ul className="grid" style={{ width: totalSize }}>
-              {virtualizer.getVirtualItems().map((item) => (
-                <li
-                  key={item.key}
-                  data-index={item.index}
-                  data-item={item.index}
-                  className="col-start-1 row-start-1 w-fit snap-start self-start"
-                  style={{ marginInlineStart: item.start }}
-                >
-                  <RovingIndexContext.Provider value={item.index}>
-                    {renderItem(items[item.index]!, item.index)}
-                  </RovingIndexContext.Provider>
-                </li>
-              ))}
-            </ul>
+              <ul className="grid" style={{ width: totalSize }}>
+                {virtualizer.getVirtualItems().map((item) => (
+                  <li
+                    key={item.key}
+                    data-index={item.index}
+                    data-item={item.index}
+                    className="col-start-1 row-start-1 w-fit snap-start self-start"
+                    style={{ marginInlineStart: item.start }}
+                  >
+                    <RovingIndexContext.Provider value={item.index}>
+                      {renderItem(items[item.index]!, item.index)}
+                    </RovingIndexContext.Provider>
+                  </li>
+                ))}
+              </ul>
+            </EagerArtwork>
           </RovingContext.Provider>
         </div>
         {/* Mouse paging only: keyboard users have the arrow keys. */}

@@ -1,6 +1,6 @@
-import { useState, type CSSProperties } from "react";
+import { createContext, useContext, useState, type CSSProperties } from "react";
 
-import { sharper, viaProxy, type ArtworkUse } from "@/lib/artwork-url";
+import { sharper, viaProxy, type ArtworkDevice, type ArtworkUse } from "@/lib/artwork-url";
 import { isIOS } from "@/lib/platform";
 import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
@@ -42,7 +42,49 @@ function remember(src: string, status: "loaded" | "failed") {
 // For tests.
 export function forgetArtwork() {
   seen.clear();
+  preloading.clear();
 }
+
+// Which sizes Artwork asks for here: iOS asks smaller images (#128); the
+// desktop is never compact or iOS.
+export function useArtworkDevice(): ArtworkDevice {
+  const compact = useCompactShell();
+  return compact ? "compact" : isIOS() ? "ios" : "desktop";
+}
+
+// Art fetched ahead of the card or page that shows it: the details page a
+// card is about to open, say. It's the URL Artwork will ask (the same
+// `sharper` rewrite), loaded into WebKit's cache and marked loaded in
+// `seen`, so the page's <img> shows at once instead of fading in. The
+// Image isn't kept, so nothing stays decoded.
+const preloading = new Set<string>();
+
+export function preloadArtwork(
+  url: string | undefined,
+  use: ArtworkUse | undefined,
+  device: ArtworkDevice,
+) {
+  const src = use ? sharper(url, use, device) : url;
+  if (!src || seen.has(src) || preloading.has(src)) return;
+  preloading.add(src);
+  const image = new Image();
+  image.decoding = "async";
+  image.addEventListener("load", () => {
+    preloading.delete(src);
+    remember(src, "loaded");
+  });
+  // A failure isn't remembered: the card's own <img> tries again, and falls
+  // back as it always has.
+  image.addEventListener("error", () => preloading.delete(src));
+  image.src = viaProxy(src);
+}
+
+// Inside a virtualized Row or PosterGrid (#41): only the cards near the
+// viewport are mounted, so their art loads at once rather than lazily, and
+// the overscanned cards past the edge are ready before they scroll in (a
+// lazy <img> in a sideways scroller waits until it's nearly on screen). Not
+// on iOS, where every image WebKit loads stays in its memory (#128).
+export const EagerArtwork = createContext(false);
 
 // The drop-src retest on iOS WebKit (#128), for the dev rig only: with
 // dropSrcKey set, an image's src is taken off as it unmounts. 940e74c took
@@ -94,9 +136,8 @@ export function Artwork({
 }) {
   // What this <img> did; until it does anything, what the URL did before.
   const [own, setOwn] = useState<{ src: string; status: "loaded" | "failed" }>();
-  // iOS asks smaller images (#128); the desktop is never compact or iOS.
-  const compact = useCompactShell();
-  const device = compact ? "compact" : isIOS() ? "ios" : "desktop";
+  const device = useArtworkDevice();
+  const eager = useContext(EagerArtwork) && !isIOS();
   const sharp = use ? sharper(original, use, device) : original;
   const sharpFailed =
     sharp !== original &&
@@ -145,7 +186,7 @@ export function Artwork({
           ref={dropSrcTrial() ? dropSrcOnUnmount : undefined}
           src={viaProxy(src)}
           alt=""
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
           draggable={false}
           onLoad={() => settle("loaded")}
