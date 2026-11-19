@@ -335,7 +335,7 @@ function backdrops(
 }
 
 // "2008–2013 · 49 min · Crime, Drama, Thriller · TV-MA · IMDb 8.4 · TMDB 8.9".
-function TitleMeta({
+export function TitleMeta({
   meta,
   art,
   compact = false,

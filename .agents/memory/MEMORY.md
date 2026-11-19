@@ -102,3 +102,4 @@
 - [Device pairing](device-pairing.md) — #133/ADR-0061 copy SIMKL/AniList/TMDB by QR over the LAN: camera always scans, CPace phrase Mac↔Mac, internal/pairing layout, shared grants, AVFoundation scanner
 - [iPad shell](ipad-shell.md) — #138 CSS bottom-centre bar (moved from the top after the device run) + sidebar (user chose CSS), input-devices (GCKeyboard, pointer), useFeature, iosKeysOff, popover right-click, roomy player, one window
 - [Hero contrast](hero-contrast.md) — text-column shade, lib/art-tone canvas sampling (CORS per host), white eyebrow + sun dot, dark-logo silhouette, textless TMDB backdrop
+- [Title, player and Home extras](title-player-home-extras.md) — Ends at (lib/ends-at), hideSpoilers + lib/spoilers reveal, ← → page the marquee, component shot rig
