@@ -8,6 +8,7 @@ import { useRovingItem } from "@/components/media/roving";
 import { openOnContextKey, TitleMenu } from "@/components/media/title-menu";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { MenuTitle } from "@/lib/title-actions";
+import { usePrefetchTitle } from "@/lib/title-prefetch";
 import { cn } from "@/lib/utils";
 
 export type CardProps = useRender.ComponentProps<"button"> & {
@@ -64,6 +65,8 @@ function Card({
   ...props
 }: CardProps & { shape: "poster" | "landscape" }) {
   const rowItem = useRovingItem();
+  // Hovering or focusing a title's card gets its page ready.
+  const prefetch = usePrefetchTitle(menu);
 
   const defaultProps = {
     type: render ? undefined : ("button" as const),
@@ -154,7 +157,7 @@ function Card({
 
   const card = useRender({
     defaultTagName: "button",
-    props: mergeProps<"button">(defaultProps, rowItem, props),
+    props: mergeProps<"button">(defaultProps, rowItem, prefetch, props),
     render,
   });
   return menu ? (

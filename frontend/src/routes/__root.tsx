@@ -23,6 +23,7 @@ import { isIOS } from "@/lib/platform";
 import { accountQuery, useCurrentProfile } from "@/lib/profile";
 import { QuickActionSync, useQuickActionHandler } from "@/lib/quick-actions";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
+import { TitlePrefetchProvider } from "@/lib/title-prefetch";
 import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
 import { useUpdateEvents, useUpdateReadyToast } from "@/lib/updates";
 
@@ -120,7 +121,13 @@ function ProfileGate() {
       {isIOS() && current.id !== undefined && (
         <QuickActionSync profileId={current.id} locked={current.pinEnabled} />
       )}
-      <Outlet />
+      {current.id === undefined ? (
+        <Outlet />
+      ) : (
+        <TitlePrefetchProvider profileId={current.id}>
+          <Outlet />
+        </TitlePrefetchProvider>
+      )}
     </AppShell>
   );
 }

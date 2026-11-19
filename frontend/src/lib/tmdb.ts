@@ -1,4 +1,10 @@
-import { queryOptions, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  queryOptions,
+  useMutation,
+  useQuery,
+  useQueryClient,
+  type QueryClient,
+} from "@tanstack/react-query";
 
 import type { ContentType, Meta } from "@/lib/addon-protocol";
 import { secrets } from "@/lib/secrets";
@@ -490,6 +496,19 @@ const tmdbDetailsQuery = (key: string, tmdb: number, media: Media) =>
     retry: 1,
     meta: { persist: true },
   });
+
+// The art useTmdbArt would show, asked ahead of opening the title
+// (lib/title-prefetch.tsx): the same two queries, so the page finds them in
+// the cache. Rejects as they do.
+export async function prefetchTmdbArt(
+  client: QueryClient,
+  key: string,
+  ref: TmdbRef,
+): Promise<TmdbArt | undefined> {
+  const target =
+    "tmdb" in ref ? ref : await client.fetchQuery(tmdbFindQuery(key, ref.imdb, ref.media));
+  return target ? client.fetchQuery(tmdbDetailsQuery(key, target.tmdb, target.media)) : undefined;
+}
 
 // A title's TMDB id, as plugins ask by it (#56): at once from the ref, or
 // looked up from its IMDb id with the user's key. Undefined while that

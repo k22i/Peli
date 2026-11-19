@@ -743,8 +743,10 @@
   animation: page-in var(--duration-base) var(--ease-out-soft) both;
 }
 
+/* As quick as the other moves: at --duration-slow the page took half a
+   second to arrive, which made opening a title feel slow. */
 :root[data-nav="forward"]::view-transition-new(page) {
-  animation: page-rise var(--duration-slow) var(--ease-out-soft) both;
+  animation: page-rise var(--duration-base) var(--ease-out-soft) both;
 }
 
 :root[data-nav="back"]::view-transition-new(page) {
