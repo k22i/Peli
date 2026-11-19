@@ -15,6 +15,8 @@ import { heroArrowStep } from "@/lib/marquee";
 import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
 import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { AnimePosterCard } from "@/components/media/anime-poster-card";
+import { preloadArtwork, useArtworkDevice } from "@/components/media/artwork";
+import { DeferredRow } from "@/components/media/deferred-row";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Hero, HeroSkeleton, ImdbScore } from "@/components/media/hero";
 import { prefersReducedMotion } from "@/components/media/roving";
@@ -29,7 +31,7 @@ import {
 } from "@/lib/addon-protocol";
 import { libraryMenuTitle, menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
-import { useAnimePosterAddon } from "@/lib/anime-posters";
+import { prefetchAnimePoster, useAnimePosterAddon } from "@/lib/anime-posters";
 import { browseTarget, isAnimeCatalog } from "@/lib/browse";
 import { folderParams, folderPath } from "@/lib/folder";
 import {
@@ -86,6 +88,7 @@ function Home() {
 function HomeRows({ profile }: { profile: Profile }) {
   const profileId = profile.id;
   const open = useOpenTitle();
+  const device = useArtworkDevice();
   const library = useQuery(libraryQuery(profileId));
   const watching = useQuery(continueWatchingQuery(profileId));
   const layout = useQuery(homeLayoutQuery(profileId));
@@ -167,26 +170,34 @@ function HomeRows({ profile }: { profile: Profile }) {
           )}
           {addonsLoading && <RowSkeleton />}
           {library.data.length > 0 && (
-            <Row
-              title="Your library"
-              action={
-                <Link to="/library" className={rowLinkClassName}>
-                  See all
-                  <ChevronRight aria-hidden />
-                </Link>
-              }
-              items={library.data.slice(0, homeRowLimit)}
-              getKey={(item) => `${item.contentId}:${item.contentType}`}
-              renderItem={(item) => (
-                <PosterCard
-                  title={item.name}
-                  meta={item.releaseInfo}
-                  src={item.poster}
-                  menu={libraryMenuTitle(item)}
-                  onClick={() => open(libraryPreview(item))}
-                />
-              )}
-            />
+            <DeferredRow
+              preload={() => {
+                for (const item of library.data?.slice(0, homeRowLimit) ?? []) {
+                  preloadArtwork(item.poster, "poster", device);
+                }
+              }}
+            >
+              <Row
+                title="Your library"
+                action={
+                  <Link to="/library" className={rowLinkClassName}>
+                    See all
+                    <ChevronRight aria-hidden />
+                  </Link>
+                }
+                items={library.data.slice(0, homeRowLimit)}
+                getKey={(item) => `${item.contentId}:${item.contentType}`}
+                renderItem={(item) => (
+                  <PosterCard
+                    title={item.name}
+                    meta={item.releaseInfo}
+                    src={item.poster}
+                    menu={libraryMenuTitle(item)}
+                    onClick={() => open(libraryPreview(item))}
+                  />
+                )}
+              />
+            </DeferredRow>
           )}
         </RowGroup>
       </div>
@@ -491,6 +502,9 @@ type LeaveOut = (id: string) => boolean;
 const leaveOutOf = (row: CatalogRow, leaveOutAnime: LeaveOut): LeaveOut =>
   isAnimeCatalog(row.source) ? () => false : leaveOutAnime;
 
+const shapeOf = (meta: MetaPreview) =>
+  meta.posterShape === "landscape" ? ("landscape" as const) : ("poster" as const);
+
 function CatalogRowView({
   row,
   hideUnreleased,
@@ -504,6 +518,8 @@ function CatalogRowView({
   posterAddon: LoadedAddon | undefined;
 }) {
   const open = useOpenTitle();
+  const client = useQueryClient();
+  const device = useArtworkDevice();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
   if (catalogData.isPending) return <RowSkeleton />;
@@ -515,26 +531,53 @@ function CatalogRowView({
   // Ten titles and a link to the rest, where a browse page has the catalog.
   const target = browseTarget(row.source);
   const anime = posterAddon !== undefined && isAnimeCatalog(row.source);
-  return (
-    <Row
-      title={row.title}
-      action={
-        target && (
-          <Link to={target.to} search={{ catalog: target.catalog }} className={rowLinkClassName}>
-            Browse all
-            <ChevronRight aria-hidden />
-          </Link>
-        )
+  const items = target ? metas.slice(0, homeRowLimit) : metas;
+  // The art the row's first cards will show, before it scrolls in: for an
+  // anime catalog, the poster addon's where there is one.
+  const preload = () => {
+    for (const meta of items.slice(0, homeRowLimit)) {
+      const shape = shapeOf(meta);
+      if (anime && shape === "poster") {
+        prefetchAnimePoster(client, posterAddon, meta.id)
+          .then((poster) => preloadArtwork(poster ?? meta.poster, "poster", device))
+          .catch(() => preloadArtwork(meta.poster, "poster", device));
+      } else {
+        preloadArtwork(meta.poster, shape, device);
       }
-      items={target ? metas.slice(0, homeRowLimit) : metas}
-      getKey={(meta) => meta.id}
-      card={(meta) => (meta.posterShape === "landscape" ? "landscape" : "poster")}
-      renderItem={(meta) => {
-        if (anime && meta.posterShape !== "landscape") {
+    }
+  };
+  return (
+    <DeferredRow shape={items[0] ? shapeOf(items[0]) : "poster"} preload={preload}>
+      <Row
+        title={row.title}
+        action={
+          target && (
+            <Link to={target.to} search={{ catalog: target.catalog }} className={rowLinkClassName}>
+              Browse all
+              <ChevronRight aria-hidden />
+            </Link>
+          )
+        }
+        items={items}
+        getKey={(meta) => meta.id}
+        card={(meta) => (meta.posterShape === "landscape" ? "landscape" : "poster")}
+        renderItem={(meta) => {
+          if (anime && meta.posterShape !== "landscape") {
+            return (
+              <AnimePosterCard
+                id={meta.id}
+                posterAddon={posterAddon}
+                title={meta.name}
+                meta={meta.releaseInfo}
+                src={meta.poster}
+                menu={menuTitle(meta)}
+                onClick={() => open(meta)}
+              />
+            );
+          }
+          const Card = meta.posterShape === "landscape" ? LandscapeCard : PosterCard;
           return (
-            <AnimePosterCard
-              id={meta.id}
-              posterAddon={posterAddon}
+            <Card
               title={meta.name}
               meta={meta.releaseInfo}
               src={meta.poster}
@@ -542,47 +585,49 @@ function CatalogRowView({
               onClick={() => open(meta)}
             />
           );
-        }
-        const Card = meta.posterShape === "landscape" ? LandscapeCard : PosterCard;
-        return (
-          <Card
-            title={meta.name}
-            meta={meta.releaseInfo}
-            src={meta.poster}
-            menu={menuTitle(meta)}
-            onClick={() => open(meta)}
-          />
-        );
-      }}
-    />
+        }}
+      />
+    </DeferredRow>
   );
 }
 
 // A collection's folders, as tiles. One opens as a merged grid (#96).
 function CollectionRow({ row }: { row: Extract<HomeRow, { kind: "collection" }> }) {
   const navigate = useNavigate();
+  const device = useArtworkDevice();
   const { collection } = row;
   const folders = collection.folders ?? [];
   if (folders.length === 0) return null;
+  const shape = (folder: (typeof folders)[number]) =>
+    folder.shape === "POSTER" ? ("poster" as const) : ("landscape" as const);
   return (
-    <Row
-      title={collection.title}
-      items={folders}
-      getKey={(folder) => folder.id}
-      card={(folder) => (folder.shape === "POSTER" ? "poster" : "landscape")}
-      renderItem={(folder) => {
-        const Card = folder.shape === "POSTER" ? PosterCard : LandscapeCard;
-        return (
-          <Card
-            title={folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title}
-            src={folder.cover || folder.backdrop}
-            onClick={() =>
-              void navigate({ to: folderPath, params: folderParams(collection, folder) })
-            }
-          />
-        );
+    <DeferredRow
+      shape={folders[0] ? shape(folders[0]) : "landscape"}
+      preload={() => {
+        for (const folder of folders.slice(0, homeRowLimit)) {
+          preloadArtwork(folder.cover || folder.backdrop, shape(folder), device);
+        }
       }}
-    />
+    >
+      <Row
+        title={collection.title}
+        items={folders}
+        getKey={(folder) => folder.id}
+        card={(folder) => (folder.shape === "POSTER" ? "poster" : "landscape")}
+        renderItem={(folder) => {
+          const Card = folder.shape === "POSTER" ? PosterCard : LandscapeCard;
+          return (
+            <Card
+              title={folder.emoji ? `${folder.emoji} ${folder.title}` : folder.title}
+              src={folder.cover || folder.backdrop}
+              onClick={() =>
+                void navigate({ to: folderPath, params: folderParams(collection, folder) })
+              }
+            />
+          );
+        }}
+      />
+    </DeferredRow>
   );
 }
 

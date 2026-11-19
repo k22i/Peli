@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery, type QueryClient } from "@tanstack/react-query";
 
 import { metaQuery, serves, type LoadedAddon } from "@/lib/addon-protocol";
 import { useLoadedAddons } from "@/lib/home";
@@ -72,4 +72,22 @@ export function useAnimePoster(addon: LoadedAddon | undefined, id: string): stri
     staleTime: week,
   }).data;
   return asks && imdb ? meta?.meta?.poster || undefined : undefined;
+}
+
+// useAnimePoster's answer ahead of the card mounting (Home's rows below the
+// fold, components/media/deferred-row.tsx): the same queries, so the card
+// finds them in the cache. Undefined where the card keeps its own poster.
+export async function prefetchAnimePoster(
+  client: QueryClient,
+  addon: LoadedAddon,
+  id: string,
+): Promise<string | undefined> {
+  if (!animeId.test(id)) return undefined;
+  const title = await client.fetchQuery(posterTitleQuery(id));
+  if (!title.imdb) return undefined;
+  const meta = await client.fetchQuery({
+    ...metaQuery(addon.url, title.type || "series", title.imdb),
+    staleTime: week,
+  });
+  return meta.meta?.poster || undefined;
 }
