@@ -6,6 +6,7 @@ import type {
   Reason,
   Resolution,
   Source,
+  VideoCodec,
   Tier,
 } from "@/lib/ranking";
 
@@ -144,3 +145,29 @@ export const tierLabel = (tier: Tier) => (tier === "Low quality" ? "Low quality 
 // file name as the addon sent it.
 export const rawNames = (p: Parsed): string[] =>
   p.fileName ? [p.fileName, ...p.releaseNames.slice(1)] : [...p.releaseNames];
+
+// "Pack · 48 GB" for a season pack: its size covers more than the episode
+// that plays, so a bare size would read as one huge file.
+export function sizeText(p: Parsed): string | null {
+  const size = sizeLabel(p.sizeBytes);
+  return size && p.pack ? `Pack · ${size}` : size;
+}
+
+const videoCodecs: Partial<Record<VideoCodec, string>> = {
+  hevc: "HEVC",
+  av1: "AV1",
+  avc: "H.264",
+};
+
+// HEVC, AV1 or H.264, when the name says. Older codecs aren't badged.
+export const videoCodecLabel = (p: Parsed): string | null =>
+  p.videoCodec ? (videoCodecs[p.videoCodec] ?? null) : null;
+
+// An estimate of the bitrate, size over runtime: "12 Mbps". Never for a
+// pack, whose size isn't one video's, nor without both numbers.
+export function bitrateLabel(p: Parsed, minutes: number | null): string | null {
+  if (p.pack || !p.sizeBytes || p.sizeBytes <= 0 || !minutes || minutes <= 0) return null;
+  const mbps = (p.sizeBytes * 8) / (minutes * 60) / 1e6;
+  if (!Number.isFinite(mbps) || mbps <= 0) return null;
+  return `~${mbps >= 10 ? Math.round(mbps) : sizeFormat.format(mbps)} Mbps`;
+}

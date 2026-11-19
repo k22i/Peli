@@ -5,13 +5,16 @@ import { candidate, parseStream, type TitleContext } from "@/lib/ranking";
 
 import {
   audioLabel,
+  bitrateLabel,
   delivery,
   languagesLabel,
   rawNames,
   reasonsLabel,
   resolutionLabel,
   sizeLabel,
+  sizeText,
   sourceLabel,
+  videoCodecLabel,
 } from "./stream-labels";
 
 const film: TitleContext = {
@@ -116,5 +119,38 @@ describe("stream labels", () => {
       "Pack.S01E02.DoVi.HDR10x265-GRP.mkv",
       "Pack.S01.2160p.DoVi.HDR10 x265-GRP",
     ]);
+  });
+});
+
+const stream = (file: string, size: string) =>
+  parseStream({
+    name: "[TB+] Torrentio\n1080p",
+    title: `${file}\n👤 20 💾 ${size} ⚙️ Tracker`,
+    url: "https://torrentio.strem.fun/resolve/torbox/KEY/x",
+  });
+
+describe("size, bitrate and codec labels", () => {
+  const single = stream("Film.1994.1080p.BluRay.x265-GRP.mkv", "2.1 GB");
+
+  it("badges HEVC, AV1 and H.264, and nothing for older codecs", () => {
+    expect(videoCodecLabel(single)).toBe("HEVC");
+    expect(videoCodecLabel(stream("Film.2020.1080p.WEB-DL.AV1-GRP.mkv", "1 GB"))).toBe("AV1");
+    expect(videoCodecLabel(stream("Film.2020.1080p.WEB-DL.H.264-GRP.mkv", "1 GB"))).toBe("H.264");
+    expect(videoCodecLabel({ ...single, videoCodec: "xvid" })).toBeNull();
+    expect(videoCodecLabel({ ...single, videoCodec: null })).toBeNull();
+  });
+
+  it("calls a pack's size a pack's", () => {
+    expect(sizeText(single)).toBe("2.1 GB");
+    expect(sizeText({ ...single, pack: true, sizeBytes: 48e9 })).toBe("Pack · 48 GB");
+    expect(sizeText({ ...single, sizeBytes: null })).toBeNull();
+  });
+
+  it("estimates the bitrate from the size and the runtime, never for a pack", () => {
+    expect(bitrateLabel(single, 142)).toBe("~2 Mbps");
+    expect(bitrateLabel({ ...single, sizeBytes: 58.3e9 }, 142)).toBe("~55 Mbps");
+    expect(bitrateLabel({ ...single, pack: true }, 142)).toBeNull();
+    expect(bitrateLabel(single, null)).toBeNull();
+    expect(bitrateLabel({ ...single, sizeBytes: null }, 142)).toBeNull();
   });
 });
