@@ -66,26 +66,14 @@ describe("ScrollRail", () => {
     expect(scrollerOf(container)).toHaveAttribute("aria-label", "Sources");
   });
 
-  it("maps a vertical wheel to sideways scrolling while there is room", () => {
+  it("does not convert or prevent a vertical wheel, even with room to scroll", () => {
     const { container } = renderRail();
     const scroller = scrollerOf(container);
     measured(scroller, { scrollWidth: 2000, clientWidth: 500 });
-    const down = new WheelEvent("wheel", { deltaY: 120, cancelable: true });
+    const down = new WheelEvent("wheel", { deltaY: 120, cancelable: true, bubbles: true });
     scroller.dispatchEvent(down);
-    expect(down.defaultPrevented).toBe(true);
-    expect(scroller.scrollLeft).toBe(120);
-
-    // At the end the page keeps the wheel.
-    scroller.scrollLeft = 1500;
-    const atEnd = new WheelEvent("wheel", { deltaY: 120, cancelable: true });
-    scroller.dispatchEvent(atEnd);
-    expect(atEnd.defaultPrevented).toBe(false);
-
-    // Trackpad sideways movement is left alone.
-    scroller.scrollLeft = 100;
-    const sideways = new WheelEvent("wheel", { deltaX: 40, deltaY: 120, cancelable: true });
-    scroller.dispatchEvent(sideways);
-    expect(sideways.defaultPrevented).toBe(false);
+    expect(down.defaultPrevented).toBe(false);
+    expect(scroller.scrollLeft).toBe(0);
   });
 
   it("leaves the wheel to the page when nothing overflows", () => {

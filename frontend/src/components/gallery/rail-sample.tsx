@@ -19,13 +19,13 @@ const people = [
 const hues = [200, 25, 300, 150, 340, 60, 240, 10, 180, 280, 100, 320];
 
 // A ScrollRail with something other than chips (#116, #117): the title page's
-// cast. Arrows and the edge fades show where there is more; the wheel scrolls
-// it sideways; focusing an item brings it into view.
+// cast. Arrows and the edge fades show where there is more; a vertical wheel
+// still scrolls the page; focusing an item brings it into view.
 export function RailSample() {
   return (
     <GallerySection
       title="Scroll rail"
-      description="One line of anything that scrolls sideways: chips, source pills, cast. The first item lines up with the page text; the rest run out to the window edge, fading at an end that has more. Hover for the material-pop arrows; Tab and the wheel work too."
+      description="One line of anything that scrolls sideways: chips, source pills, cast. The first item lines up with the page text; the rest run out to the window edge, fading at an end that has more. Hover for the material-pop arrows; Tab works too, and a vertical wheel still scrolls the page (sideways swipes and Shift+wheel move the rail)."
       bleed
     >
       <ScrollRail label="Cast">
