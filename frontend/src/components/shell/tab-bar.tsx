@@ -39,14 +39,15 @@ export const capsuleGlass =
 // capsule to the current tab's icon; a tap brings it back.
 // `centred` is the iPad's (#138, regular width without the sidebar): the
 // same capsule, centred at the bottom and no wider than on a phone on its
-// side, instead of spanning a wide screen.
+// side, instead of spanning a wide screen. It never shrinks on scroll.
 export function TabBar({ model, centred = false }: { model: TabBarModel; centred?: boolean }) {
   const keyboard = useKeyboardUp();
   const { active, minimized, select, expand } = model;
   const hidden = model.hidden || keyboard;
   const index = tabSections.findIndex((section) => section.to === active);
   const current = tabSections[index];
-  const mini = minimized && current !== undefined;
+  // The iPad has the room: its bar keeps every section (the user, #138).
+  const mini = minimized && !centred && current !== undefined;
 
   const onTap = (section: Section) => (event: MouseEvent) => {
     event.preventDefault();

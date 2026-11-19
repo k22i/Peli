@@ -55,7 +55,12 @@ tasks:
       BUILD_FLAGS: '{{if eq .DEV "true"}}{{if or .EXTRA_TAGS (eq .OBFUSCATED "true")}}-tags {{if eq .OBFUSCATED "true"}}wails_obfuscated{{if .EXTRA_TAGS}},{{end}}{{end}}{{.EXTRA_TAGS}} {{end}}-buildvcs=false -gcflags=all="-l"{{else}}-tags production,nosqlite{{if eq .OBFUSCATED "true"}},wails_obfuscated{{end}}{{if .EXTRA_TAGS}},{{.EXTRA_TAGS}}{{end}} -trimpath -buildvcs=false -ldflags="-w -s -X github.com/k22i/Peli/internal/appinfo.Version={{.VERSION}}"{{end}}'
       DEFAULT_OUTPUT: '{{.BIN_DIR}}/{{.APP_NAME}}'
       OUTPUT: '{{ .OUTPUT | default .DEFAULT_OUTPUT }}'
+      # A package links Peli's own libmpv when build/libmpv has built it (a
+      # bundle with Homebrew's crashes on play); dev builds keep Homebrew's.
+      MPV_PC:
+        sh: '{{if eq .DEV "true"}}echo "${PKG_CONFIG_PATH:-}"{{else}}build/darwin/dist.sh libmpv {{.ARCH | default ARCH}}{{end}}'
     env:
+      PKG_CONFIG_PATH: '{{.MPV_PC}}'
       GOOS: darwin
       CGO_ENABLED: 1
       GOARCH: '{{.ARCH | default ARCH}}'
@@ -64,7 +69,7 @@ tasks:
       # switching libmpv (Homebrew's, ours, the other arch's) keeps linking
       # the old one.
       CGO_CFLAGS:
-        sh: echo "-mmacosx-version-min=12.0 $(pkg-config --cflags mpv 2>/dev/null)"
+        sh: echo "-mmacosx-version-min=12.0 $(PKG_CONFIG_PATH="{{.MPV_PC}}" pkg-config --cflags mpv 2>/dev/null)"
       CGO_LDFLAGS: "-mmacosx-version-min=12.0"
       MACOSX_DEPLOYMENT_TARGET: "12.0"
 
@@ -184,8 +189,9 @@ tasks:
     platforms: [darwin]
     # Our LGPL build (build/libmpv) links as @rpath/libmpv.2.dylib: it goes in
     # Contents/Frameworks, and the binary's rpath moves there from the build
-    # directory that mpv.pc gave it. Any other libmpv (Homebrew's) still runs
-    # locally, but the bundle can't ship (ADR-0003).
+    # directory that mpv.pc gave it. Any other libmpv (Homebrew's) fails the
+    # package: it can't ship (ADR-0003), and under the hardened runtime its
+    # LuaJIT gets the app killed as soon as a video loads.
     cmds:
       - |
         app="{{.BUNDLE}}/Contents"
@@ -193,14 +199,15 @@ tasks:
         lib=$(otool -L "$exe" | awk '/libmpv/ { print $1 }')
         case $lib in
         @rpath/*)
-          dir=$(pkg-config --variable=libdir mpv)
+          dir=$(PKG_CONFIG_PATH="$(build/darwin/dist.sh libmpv {{.ARCH | default ARCH}})" pkg-config --variable=libdir mpv)
           mkdir -p "$app/Frameworks"
           cp "$dir/${lib#@rpath/}" "$app/Frameworks/"
           install_name_tool -delete_rpath "$dir" "$exe" 2>/dev/null || true
           install_name_tool -add_rpath @executable_path/../Frameworks "$exe"
           ;;
         *)
-          echo "warning: {{.APP_NAME}} links $lib, not Peli's own libmpv (#92): this bundle can't ship"
+          echo "error: {{.APP_NAME}} links $lib, not Peli's own libmpv (#92). Run build/libmpv/build.sh macos-<arch> first, or set PKG_CONFIG_PATH to its lib/pkgconfig" >&2
+          exit 1
           ;;
         esac
 

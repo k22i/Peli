@@ -38,7 +38,7 @@
 - [Stream switcher](stream-switcher.md) — #68 Streams sheet (S), useStreamChoices shared with the picker, player.stream marks Playing, switch loads at the Snapshot position
 - [Skip markers](skip-markers.md) — #69 State.chapters + lib/markers.ts, IntroDB via Go internal/markers (CORS), skipIntros/skipTimesOnline settings, card waits for credits, test mocks
 - [Mini player](mini-player.md) — #70 SetMini = app window made small (floating, all Spaces, aspect lock on macOS), Stop leaves it, I key, compact controls, `SetMini` in mocks
-- [libmpv build](libmpv-build.md) — #92 build/libmpv pins + build.sh + smoke.sh, one dylib in Contents/Frameworks, libmpv.yml cached in CI; Go cache ignores PKG_CONFIG_PATH, no Rosetta
+- [libmpv build](libmpv-build.md) — #92 build/libmpv pins + build.sh + smoke.sh, one dylib in Contents/Frameworks, libmpv.yml cached in CI; Go cache ignores PKG_CONFIG_PATH, no Rosetta; a package with Homebrew's libmpv crashes on play, so package now defaults to ours
 - [Tracking integrations](tracking-integrations.md) — #71 built (ADR-0042): simkl/anilist/animelist/tracking packages, client ids, min_progress=90, live-test hook
 - [Tracking actions](tracking-actions.md) — lists/ratings/watchlist on tracking.Service, outbox Op jobs, lib/tracking.ts helpers; SIMKL none = history remove
 - [Tracking UI](tracking-ui.md) — TrackingMenu in the menu extras slot, title-page Watchlist/Rate actions, Library ?view=watchlist, useTrackingControls, jsdom tab/radio click gotchas

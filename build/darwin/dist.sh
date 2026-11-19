@@ -12,6 +12,9 @@
 #   dist.sh zip <Peli.app> <arch>        build bin/Peli-<version>-<arch>.zip,
 #                                        what installed copies update from
 #                                        (#83, ADR-0054)
+#   dist.sh libmpv <arch>                the PKG_CONFIG_PATH a package builds
+#                                        with: $PKG_CONFIG_PATH if set, else
+#                                        build/libmpv's output for <arch>
 #
 # Signing identity: PELI_SIGN_IDENTITY, a "Developer ID Application: … (TEAM)"
 # certificate in the keychain (its name or SHA-1). Unset or "-" signs ad hoc,
@@ -168,6 +171,18 @@ notarize() {
 	esac
 }
 
+# A package must link Peli's own libmpv. Homebrew's loads LuaJIT, whose JIT
+# pages the hardened runtime kills on the first Load: playback crashes the app
+# (SIGKILL, Code Signature Invalid).
+libmpv() {
+	if [ -n "${PKG_CONFIG_PATH:-}" ]; then
+		echo "$PKG_CONFIG_PATH"
+		return
+	fi
+	dir=$here/../libmpv/.work/libmpv-macos-$(machine "$1")/lib/pkgconfig
+	[ -f "$dir/mpv.pc" ] && (cd "$dir" && pwd) || true
+}
+
 cmd=${1:-}
 [ $# -gt 0 ] && shift
 case $cmd in
@@ -176,5 +191,6 @@ check) check "${1:?usage: dist.sh check <app> <arch>}" "${2:?usage: dist.sh chec
 dmg) dmg "${1:?usage: dist.sh dmg <app> <arch>}" "${2:?usage: dist.sh dmg <app> <arch>}" ;;
 notarize) notarize "${1:?usage: dist.sh notarize <app|dmg>}" ;;
 zip) zip "${1:?usage: dist.sh zip <app> <arch>}" "${2:?usage: dist.sh zip <app> <arch>}" ;;
-*) die "usage: dist.sh sign|check|dmg|notarize|zip …" ;;
+libmpv) libmpv "${1:?usage: dist.sh libmpv <arch>}" ;;
+*) die "usage: dist.sh sign|check|dmg|notarize|zip|libmpv …" ;;
 esac
