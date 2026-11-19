@@ -9,7 +9,7 @@ import {
   useSearch,
 } from "@tanstack/react-router";
 import { AlertCircle, Check, ChevronLeft, Puzzle, Users } from "lucide-react";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import type { Profile } from "@bindings/store";
 import type { Source } from "@bindings/streams";
@@ -19,6 +19,7 @@ import { Artwork } from "@/components/media/artwork";
 import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { ScrollRail } from "@/components/media/scroll-rail";
 import { listRows, StreamList } from "@/components/streams/stream-list";
+import { filteredListProps, type Filtering } from "@/components/streams/stream-toolbar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
@@ -44,8 +45,29 @@ import {
 } from "@/lib/party";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
-import { usePreResolve } from "@/lib/pre-resolve";
-import { deviceSettingsQuery, profileSettingsQuery } from "@/lib/settings";
+import { usePreResolve, useSettled } from "@/lib/pre-resolve";
+import {
+  audioLanguagesOf,
+  deviceSettingsQuery,
+  languageName,
+  profileSettingsQuery,
+  useSaveDeviceSettings,
+} from "@/lib/settings";
+import {
+  facetChips,
+  filtersKey,
+  filtersLabel,
+  filterView,
+  isFiltered,
+  isStreamSort,
+  keepForSession,
+  offered,
+  sessionFilters,
+  sortsAvailable,
+  toggle,
+  type StreamFilters,
+  type StreamSort,
+} from "@/lib/stream-filters";
 import {
   rankingPrefs,
   usePluginSources,
@@ -236,17 +258,23 @@ function Picker({
     settings,
     device,
     view,
+    ranked,
     pin,
     rows,
     toggleGroup,
     refresh,
     usual,
+    filtering,
+    sourceFilter,
   } = useStreamChoices(profile.id, type, target.id, video, target.title);
   const client = useQueryClient();
   // "Start cached streams sooner" (#101, ADR-0060): the top pick resolves
   // while the user looks, when it's a cached debrid stream. Never for a
   // kids profile: it adds to the parent's debrid list.
-  const ahead = usePreResolve(view.top, {
+  // The filtered top pick, once the filters have stayed put a moment: a
+  // run of chip toggles resolves nothing on the way.
+  const settledTop = useSettled(view.top, filtersKey(filtering.filters), filtersSettle);
+  const ahead = usePreResolve(settledTop, {
     enabled: device?.preResolve === true && !profile.kids,
     answered,
     refresh,
@@ -467,7 +495,7 @@ function Picker({
       {forParty && (
         <PartySources
           party={forParty}
-          match={view.groups
+          match={ranked.groups
             .flatMap((group) => group.items)
             .find((candidate) => matchesPartySource(candidate.stream, forParty.media.source))}
           onPick={pick}
@@ -517,7 +545,13 @@ function Picker({
           }}
         />
       )}
-      <StreamsSummary sources={sources} loading={loading} total={view.total} />
+      <StreamsSummary
+        sources={sources}
+        loading={loading}
+        total={ranked.total}
+        shown={view.total}
+        filter={sourceFilter}
+      />
       <StreamList
         rows={rows}
         names={names}
@@ -525,13 +559,18 @@ function Picker({
         onPick={pick}
         onToggleGroup={toggleGroup}
         usual={usual}
+        {...filteredListProps(filtering, view)}
       />
     </>
   );
 }
 
+// How long the filters stay put before the filtered top pick resolves ahead.
+const filtersSettle = 1200;
+
 // The ranked streams for one film or episode, as the picker and the
-// player's stream switcher (#68) list them: every stream addon asked, and
+// player's stream switcher (#68) list them, filtered and sorted as the user
+// chose (`filtering`, `sourceFilter`): every stream addon asked, and
 // their streams ranked as they answer, by what the title's details (as its
 // page asked for them, usually cached by now) and the profile's audio
 // language say. Ranking starts without the details and starts again once
@@ -589,7 +628,53 @@ export function useStreamChoices(
   // TMDB's other names for the title, from the title page's own request (#99).
   const aliases = useTmdbAliases(tmdbRef(type, id, meta));
   const ctx = titleContext(type, video, meta, title, { map, aliases });
-  const { view, pin } = useRankedStreams(sources, ctx, rankingPrefs(settings, device, last));
+  const prefs = rankingPrefs(settings, device, last);
+  const { view: ranked, pin: pinRanked } = useRankedStreams(sources, ctx, prefs);
+
+  // The filters and the sort (the sort is the device's, the filters the
+  // session's), applied to the ranked view before its rows are listed.
+  const [filters, setFiltersState] = useState<StreamFilters>(sessionFilters);
+  const setFilters = (next: StreamFilters) => {
+    keepForSession(next);
+    setFiltersState(next);
+  };
+  const saveDevice = useSaveDeviceSettings();
+  const candidates = useMemo(() => offered(ranked), [ranked]);
+  const sorts = sortsAvailable(candidates);
+  const saved: StreamSort = isStreamSort(device?.streamSort) ? device.streamSort : "best";
+  const sort = sorts.includes(saved) ? saved : "best";
+  const setSort = (next: StreamSort) => {
+    if (device) saveDevice.mutate({ ...device, streamSort: next });
+  };
+  // A top pick the user pinned under each set of filters.
+  const [pins, setPins] = useState<ReadonlyMap<string, string>>(new Map());
+  const key = filtersKey(filters);
+  const pinned = pins.get(key) ?? null;
+  const maxResolution = prefs.maxResolution;
+  const view = filterView(ranked, filters, sort, { remembered: last, maxResolution, pinned });
+  const pin = () => {
+    pinRanked();
+    const top = view.top;
+    if (!isFiltered(filters) || !top) return;
+    setPins((current) => (current.has(key) ? current : new Map(current).set(key, top.key)));
+  };
+  const chipContext = { languages: audioLanguagesOf(settings), languageName, names };
+  const chips = facetChips(candidates, filters, chipContext);
+  const filtering: Filtering = {
+    filters,
+    setFilters,
+    chips,
+    sort,
+    sorts,
+    setSort,
+    label: filtersLabel(filters, chipContext),
+  };
+  const sourceChips = chips.find((chip) => chip.facet === "source");
+  const sourceFilter: SourceFilter | undefined = sourceChips && {
+    chosen: filters.chosen.source ?? [],
+    toggle: (source) => setFilters(toggle(filters, "source", source)),
+  };
+
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
   const toggleGroup = (tier: Tier) =>
     setOpen((current) => {
@@ -615,14 +700,24 @@ export function useStreamChoices(
     meta,
     settings,
     device,
+    // Filtered and sorted; `ranked` is the ranking's own.
     view,
+    ranked,
     pin,
     rows: listRows(view, open),
     toggleGroup,
     refresh,
     usual: (candidate: Candidate) => !!last && rememberedMatch(last, candidate) > 0,
+    filtering,
+    sourceFilter,
   };
 }
+
+// The addon chips as filters: which are chosen, and choosing one.
+export type SourceFilter = {
+  chosen: readonly string[];
+  toggle: (source: string) => void;
+};
 
 // The watch party's way in (ADR-0051): the host's own link when they share
 // it, and the stream of the user's that is the host's (the same torrent, or
@@ -682,10 +777,16 @@ export function StreamsSummary({
   sources,
   loading,
   total,
+  shown = total,
+  filter,
 }: {
   sources: StreamSource[];
   loading: boolean;
   total: number;
+  // How many the filters leave.
+  shown?: number;
+  // The chips choose addons, when the streams come from more than one.
+  filter?: SourceFilter | undefined;
 }) {
   const compact = useCompactShell();
   const waiting = sources.filter((source) => source.status === "pending").length;
@@ -694,6 +795,7 @@ export function StreamsSummary({
   return (
     <div className="flex flex-col gap-3">
       <p aria-live="polite" className="px-page text-body text-muted-foreground">
+        {shown !== total && `${shown} of `}
         {total === 1 ? "1 stream" : `${total} streams`}
         {waiting > 0
           ? `, ${waiting} of ${sources.length} ${plural} still answering`
@@ -711,7 +813,11 @@ export function StreamsSummary({
             className="flex shrink-0 gap-2"
           >
             {sources.map((source) => (
-              <SourceStatus key={source.key} source={source} />
+              <SourceStatus
+                key={source.key}
+                source={source}
+                filter={filter && (source.streams?.length ?? 0) > 0 ? filter : undefined}
+              />
             ))}
           </ul>
         </ScrollRail>
@@ -746,21 +852,29 @@ const typing = (target: EventTarget | null) =>
   target instanceof HTMLElement &&
   (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
 
-function SourceStatus({ source }: { source: StreamSource }) {
+// An addon's answer. Once it has streams, and others do too, it's a toggle
+// that keeps only its streams (with any other chosen).
+function SourceStatus({
+  source,
+  filter,
+}: {
+  source: StreamSource;
+  filter?: SourceFilter | undefined;
+}) {
   const { name } = source;
   const count = source.streams?.length ?? 0;
-  return (
-    <li
-      aria-label={name}
-      className="flex h-9 shrink-0 items-center gap-2 rounded-full border bg-card ps-3 pe-1.5 text-sm whitespace-nowrap"
-    >
+  const chosen = filter?.chosen.includes(source.key) ?? false;
+  const content = (
+    <>
       {source.status === "pending" && <Spinner className="size-4 text-muted-foreground" />}
-      {source.status === "success" && <Check aria-hidden className="size-4 text-sun-ink" />}
+      {source.status === "success" && (
+        <Check aria-hidden className={cn("size-4", chosen ? "text-current" : "text-sun-ink")} />
+      )}
       {source.status === "error" && (
         <AlertCircle aria-hidden className="size-4 text-destructive-foreground" />
       )}
       <span className="font-medium">{name}</span>
-      <span className="pe-1.5 text-muted-foreground">
+      <span className={cn("pe-1.5", chosen ? "opacity-75" : "text-muted-foreground")}>
         {source.status === "pending"
           ? "Asking…"
           : source.status === "success"
@@ -769,6 +883,30 @@ function SourceStatus({ source }: { source: StreamSource }) {
               : `${count} streams`
             : source.error?.message}
       </span>
+    </>
+  );
+  return (
+    <li
+      aria-label={name}
+      className={cn(
+        "flex h-9 shrink-0 items-center gap-2 rounded-full border bg-card text-sm whitespace-nowrap",
+        filter ? "p-0" : "ps-3 pe-1.5",
+        chosen && "border-foreground bg-foreground text-background",
+      )}
+    >
+      {filter ? (
+        <button
+          type="button"
+          aria-pressed={chosen}
+          title={chosen ? `Show every addon’s streams` : `Only ${name}’s streams`}
+          onClick={() => filter.toggle(source.key)}
+          className="flex h-full cursor-pointer items-center gap-2 rounded-full ps-3 pe-1.5 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {content}
+        </button>
+      ) : (
+        content
+      )}
       {source.status === "error" && (
         <Button size="sm" variant="ghost" className="rounded-full" onClick={source.retry}>
           Try again

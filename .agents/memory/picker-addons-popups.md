@@ -10,7 +10,7 @@ metadata:
 **Why:** the user's Apple TV layout for the last in-app surfaces; tests pin the row text order (`^Top pick1080pBlu-ray`, `^Unknown qualityTorrentio$`), so the name is quality then source as separate spans with no space.
 
 **How to apply:**
-- A group heading can't be `sticky` inside a virtualized row: `StreamList` draws a copy (`aria-hidden`, `glass`, `scroll-edge-top` on a wrapper, `tabIndex -1`) in a `sticky top-(--titlebar-h)` zero-height div, for the last group whose `measurementsCache` start is above the line (+48px so the next one takes over). Only once `scrollOffset > 0`, so jsdom never shows it.
+- The stuck group heading copy was replaced by the sticky toolbar + jump strip (C1, see [[stream-picker]]).
 - `StreamBadge` (`stream-badge.tsx`) is a plain span: `cn()`/tailwind-merge reads the `text-meta` size token as a colour and drops a sibling `text-*` class, so never pass `text-meta` plus a colour through `cn` (coss Badge/Button do). The addon row's "Built in" uses it too.
 - Alert dialogs had no tier (the CSS maps `data-slot="dialog-popup"`, the alert popup is `alert-dialog-popup`): it now has `glass-thick` as a class. Dialog/alert/sheet footers force `h-10` buttons with `*:data-[slot=button]`, since `Button` is not ours; the default footer is a `border-t` without the muted band.
 - Menu items are `min-h-9 rounded-lg px-2.5 text-sm`, popup `p-1.5` (submenu `alignOffset` -7), labels uppercase; select trigger `min-h-10 rounded-xl`, `size="lg"` is `min-h-11`; sheets are `p-3` viewport + `rounded-3xl border` popup on every side.

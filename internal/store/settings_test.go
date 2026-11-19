@@ -17,6 +17,7 @@ var japanese = ProfileSettings{
 
 var laptop = DeviceSettings{
 	HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20, PreResolve: true,
+	StreamSort:    "size-desc",
 	MaxResolution: "1080p", HDR: "off", DolbyVision: "on",
 	Quality: Quality{Scaling: "high", Deband: "low", Sharpen: 3, Upscaler: "fsr", MotionSmoothing: true,
 		Deinterlace: "on", ToneMapping: "bt.2390", TargetPeak: 250},
@@ -35,7 +36,7 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 	equal(t, DefaultDeviceSettings(), DeviceSettings{
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
-		Audio: DefaultAudio(),
+		Audio: DefaultAudio(), StreamSort: "best",
 	})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))
@@ -72,6 +73,7 @@ func TestDeviceSettingsValidation(t *testing.T) {
 		"HDR maybe":        func(d *DeviceSettings) { d.HDR = "maybe" },
 		"Dolby Vision off": func(d *DeviceSettings) { d.DolbyVision = "Off" },
 		"HDR unset":        func(d *DeviceSettings) { d.HDR = "" },
+		"sort by name":     func(d *DeviceSettings) { d.StreamSort = "name" },
 	} {
 		device := DefaultDeviceSettings()
 		change(&device)

@@ -53,6 +53,16 @@ export const playerShortcuts: {
     ],
   },
   {
+    // While the Streams panel (S) is open; the stream picker's keys too.
+    group: "In the Streams panel",
+    items: [
+      { keys: ["P"], action: "Play the top pick", desktop: true },
+      { keys: ["↑", "↓"], action: "Move through the streams", desktop: true },
+      { keys: ["I"], action: "Show a stream’s file name", desktop: true },
+      { keys: ["1–9"], action: "Jump to the top pick or a quality group", desktop: true },
+    ],
+  },
+  {
     group: "Help",
     items: [{ keys: ["?"], action: "Show or hide these shortcuts" }],
   },

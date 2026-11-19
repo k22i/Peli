@@ -17,6 +17,7 @@ import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.
 import torrentioSeries from "@/lib/addon-protocol/fixtures/torrentio/stream-series.json";
 import { Party } from "@/lib/party";
 import { deviceSettingsQuery } from "@/lib/settings";
+import { keepForSession, noFilters } from "@/lib/stream-filters";
 import { partyState } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
@@ -34,6 +35,7 @@ const mocks = vi.hoisted(() => ({
   installed: vi.fn<() => Promise<Plugin[]>>(),
   pluginStreams: vi.fn<(plugin: Plugin, query: Query) => Promise<PluginStream[]>>(),
   device: vi.fn<() => Promise<DeviceSettings>>(),
+  saveDevice: vi.fn<(settings: DeviceSettings) => Promise<void>>(),
   chosen: vi.fn<(profileId: number, contentId: string) => Promise<ChosenSource | null>>(),
   setChosen:
     vi.fn<(profileId: number, contentId: string, chosen: ChosenSource | null) => Promise<void>>(),
@@ -53,6 +55,7 @@ vi.mock("@bindings/store", () => ({
     TitleWatched: () => Promise.resolve([]),
     TitleProgress: mocks.titleProgress,
     DeviceSettings: mocks.device,
+    SaveDeviceSettings: mocks.saveDevice,
     ChosenSource: mocks.chosen,
     SetChosenSource: mocks.setChosen,
     ProfileSettings: () =>
@@ -251,12 +254,16 @@ const device: DeviceSettings = {
   torrentStreaming: false,
   torrentCacheGB: 5,
   preResolve: false,
+  streamSort: "best",
   quality: defaultQuality,
   audio: defaultAudio,
 };
 
 beforeEach(() => {
   mocks.device.mockReset().mockResolvedValue(device);
+  mocks.saveDevice.mockReset().mockResolvedValue(undefined);
+  // The filters last for the session: each test starts with none.
+  keepForSession(noFilters);
   mocks.resolve.mockImplementation(async (request) => resolved(request));
   mocks.openTorrent.mockReset();
   mocks.torrentStatus.mockReset().mockResolvedValue({
@@ -435,7 +442,11 @@ describe("stream picker", () => {
     const user = userEvent.setup();
     await renderApp(pickerPath);
 
-    const fakes = await screen.findByRole("button", { name: /^Likely fake 8/ });
+    // In the list: the jump strip names the group too.
+    const fakes = await within(await screen.findByRole("list", { name: "Streams" })).findByRole(
+      "button",
+      { name: /^Likely fake 8/ },
+    );
     expect(fakes).toHaveAttribute("aria-expanded", "false");
     // Cached on debrid first, as the top pick, though it's not the best
     // picture.
@@ -919,7 +930,9 @@ describe("stream picker", () => {
     expect(document.activeElement).toBe(topPick());
     // End reaches the collapsed group's heading; Enter opens it.
     await user.keyboard("{End}");
-    const fakes = screen.getByRole("button", { name: /^Likely fake 8/ });
+    const fakes = within(screen.getByRole("list", { name: "Streams" })).getByRole("button", {
+      name: /^Likely fake 8/,
+    });
     expect(document.activeElement).toBe(fakes);
     await user.keyboard("{Enter}");
     expect(fakes).toHaveAttribute("aria-expanded", "true");
@@ -1036,6 +1049,184 @@ describe("stream picker", () => {
 });
 
 // What the host plays, as the party names it.
+// The toolbar's chips, by facet and name ("4K 1").
+const chip = (facet: string, name: RegExp) =>
+  within(screen.getByRole("group", { name: facet })).getByRole("button", { name });
+const jumpStrip = () => screen.getByRole("navigation", { name: "Stream groups" });
+
+// A Torrentio debrid stream of the film at a resolution and size.
+const shawshankAt = (resolution: string, size: string, marker = "+", letter = "f") => ({
+  name: `[TB${marker}] Torrentio\n${resolution}`,
+  title: `The.Shawshank.Redemption.1994.${resolution}.BluRay.x265-GRP.mkv\n👤 20 💾 ${size} ⚙️ Tracker`,
+  url: `https://torrentio.strem.fun/resolve/torbox/KEY/${letter}${"0".repeat(39)}/null/0/${resolution}-${size}.mkv`,
+});
+// The rows' sizes, in order.
+const sizes = () => shownStreams().map((row) => /([\d.]+ GB)/.exec(row.textContent ?? "")?.[1]);
+
+describe("filters, sorts and the jump strip", () => {
+  it("filters with chips that count, and the top pick and P follow them", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cachedAt("2160p"), cachedAt("1080p")] },
+      [movieStreams("peerflix.example")]: { streams: [p2p] },
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick4K/));
+    // Plays now: two cached, one P2P. CAM / TS and fakes would not count.
+    expect(chip("Plays now", /^Cached 2/)).toHaveAttribute("aria-pressed", "false");
+    expect(chip("Plays now", /^P2P 1/)).toBeInTheDocument();
+    // Every stream is SDR Blu-ray x265 or x264: no HDR chips.
+    expect(screen.queryByRole("group", { name: "HDR" })).toBeNull();
+
+    await user.click(chip("Resolution", /^1080p 2/));
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick·1080p only1080p/));
+    expect(shownStreams()).toHaveLength(2);
+    expect(screen.getByText(/^2 of 3 streams/)).toBeInTheDocument();
+    // Counted with the resolution filter on.
+    expect(chip("Plays now", /^Cached 1/)).toBeInTheDocument();
+
+    await user.keyboard("p");
+    await opensThePlayer();
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe(cachedAt("1080p").url);
+  });
+
+  it("searches the release names, and says when nothing matches, with a way back", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cachedAt("2160p"), cachedAt("1080p")] },
+    });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams()).toHaveLength(2));
+
+    const search = screen.getByRole("searchbox", { name: "Search release names" });
+    await user.type(search, "2160p x265");
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    expect(topPick()).toHaveTextContent(/^Top pick·“2160p x265” only4K/);
+    // Typing P in the search box doesn't play.
+    expect(mocks.resolve).not.toHaveBeenCalled();
+
+    await user.clear(search);
+    await user.type(search, "remux");
+    expect(await screen.findByText("No streams match")).toBeInTheDocument();
+    expect(shownStreams()).toHaveLength(0);
+    const clear = screen.getAllByRole("button", { name: "Clear filters" });
+    await user.click(clear.at(-1)!);
+    await waitFor(() => expect(shownStreams()).toHaveLength(2));
+    expect(search).toHaveValue("");
+    expect(screen.queryByText("No streams match")).toBeNull();
+  });
+
+  it("keeps only an addon's streams when its chip is pressed", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cachedAt("1080p")] },
+      [movieStreams("peerflix.example")]: { streams: [p2p] },
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams()).toHaveLength(2));
+
+    const peerflixChip = within(addonStatus("Peerflix")).getByRole("button", { pressed: false });
+    await user.click(peerflixChip);
+    expect(peerflixChip).toHaveAttribute("aria-pressed", "true");
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    expect(topPick()).toHaveTextContent(/^Top pick·Peerflix only/);
+    expect(topPick()).toHaveTextContent("P2P · 59 seeders");
+    await user.click(peerflixChip);
+    await waitFor(() => expect(shownStreams()).toHaveLength(2));
+  });
+
+  it("sorts within each group, keeping the groups, and saves the sort for the device", async () => {
+    mocks.device.mockResolvedValue({ ...device, streamSort: "size-asc" });
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [
+          shawshankAt("1080p", "9.1 GB", "+", "a"),
+          shawshankAt("1080p", "2.2 GB", " download", "b"),
+          shawshankAt("1080p", "5.5 GB", " download", "c"),
+          shawshankAt("2160p", "30 GB", " download", "d"),
+        ],
+      },
+    });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(shownStreams()).toHaveLength(4));
+    // The top pick is still the best match; the rest of 1080p, smallest first.
+    expect(topPick()).toHaveTextContent("9.1 GB");
+    expect(sizes()).toEqual(["9.1 GB", "30 GB", "2.2 GB", "5.5 GB"]);
+    // No P2P streams: no "Most seeders".
+    await user.click(screen.getByRole("combobox", { name: "Sort" }));
+    expect(screen.queryByRole("option", { name: "Most seeders" })).toBeNull();
+    await user.click(screen.getByRole("option", { name: "Largest first" }));
+    await waitFor(() =>
+      expect(mocks.saveDevice).toHaveBeenCalledWith(
+        expect.objectContaining({ streamSort: "size-desc" }),
+      ),
+    );
+    await waitFor(() => expect(sizes()).toEqual(["9.1 GB", "30 GB", "5.5 GB", "2.2 GB"]));
+  });
+
+  it("jumps to a group from the strip or with the number keys", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: {
+        streams: [cachedAt("2160p"), cachedAt("1080p")],
+      },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick4K/));
+
+    const strip = within(jumpStrip()).getAllByRole("button");
+    // The top pick, a group per quality, and the collapsed fakes last.
+    expect(strip[0]).toHaveTextContent(/^Top pick/);
+    expect(strip.at(-1)).toHaveTextContent(/^Likely fake 8/);
+    expect(strip[0]).toHaveAttribute("aria-current", "location");
+    expect(strip[1]).toHaveAttribute("aria-keyshortcuts", "2");
+
+    // 2: the first group after the top pick, whose first stream takes focus.
+    await user.keyboard("2");
+    await waitFor(() => expect(document.activeElement).toBe(shownStreams()[1]));
+    // The last key: the collapsed group's heading.
+    await user.keyboard(String(strip.length));
+    await waitFor(() =>
+      expect(document.activeElement).toBe(
+        within(screen.getByRole("list", { name: "Streams" })).getByRole("button", {
+          name: /^Likely fake 8/,
+        }),
+      ),
+    );
+    // A click does the same, and 1 is the top pick.
+    await user.click(strip[0]!);
+    await waitFor(() => expect(document.activeElement).toBe(topPick()));
+    // Typing a number in the search box jumps nowhere.
+    await user.type(screen.getByRole("searchbox", { name: "Search release names" }), "2");
+    expect(document.activeElement).toHaveAttribute("type", "search");
+  });
+
+  it("keeps the filters for the session, but not the search", async () => {
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cachedAt("2160p"), cachedAt("1080p")] },
+    });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    const first = await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams()).toHaveLength(2));
+    await user.click(chip("Resolution", /^4K 1/));
+    await user.type(screen.getByRole("searchbox", { name: "Search release names" }), "x265");
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    first.unmount();
+
+    await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    expect(chip("Resolution", /^4K 1/)).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("searchbox", { name: "Search release names" })).toHaveValue("");
+  });
+});
+
 const partySource = {
   infoHash: "",
   fileIdx: null,
@@ -1118,6 +1309,37 @@ describe("starting cached streams sooner", () => {
     await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
     await looking();
     expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("resolves the filtered top pick ahead once the filters settle", async () => {
+    mocks.device.mockResolvedValue({ ...device, preResolve: true });
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cachedAt("2160p"), cachedAt("1080p")] },
+    });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe(cachedAt("2160p").url);
+
+    // On and off and on again, quickly: one resolve, for where it settles.
+    const fourK = within(screen.getByRole("group", { name: "Resolution" })).getByRole("button", {
+      name: /^4K/,
+    });
+    const hd = within(screen.getByRole("group", { name: "Resolution" })).getByRole("button", {
+      name: /^1080p/,
+    });
+    await user.click(hd);
+    await user.click(hd);
+    await user.click(fourK);
+    await user.click(fourK);
+    await user.click(hd);
+    await waitFor(() => expect(topPick()).toHaveTextContent(/^Top pick·1080p only/));
+    expect(mocks.resolve).toHaveBeenCalledOnce();
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledTimes(2), { timeout: 4000 });
+    expect(mocks.resolve.mock.calls[1]![0].url).toBe(cachedAt("1080p").url);
+    await looking();
+    expect(mocks.resolve).toHaveBeenCalledTimes(2);
   });
 
   it("resolves another stream the user picks when it's picked", async () => {
