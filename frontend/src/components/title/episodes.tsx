@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import type { WatchedItem } from "@bindings/store";
 import { Chip, ChipRail } from "@/components/media/chip";
-import { EpisodeList } from "@/components/title/episode-list";
+import { EpisodeList, type SpoilerGuard } from "@/components/title/episode-list";
 import { Button } from "@/components/ui/button";
 import { ResponsiveMenu, ResponsiveMenuItem } from "@/components/ui/responsive-menu";
 import {
@@ -45,6 +45,7 @@ export function Episodes({
   onPlay,
   onPlayFromStart,
   onClearProgress,
+  spoilers,
 }: {
   meta: Meta;
   list: Episode[];
@@ -55,6 +56,8 @@ export function Episodes({
   onPlay: (episode: Episode) => void;
   onPlayFromStart: (episode: Episode) => void;
   onClearProgress: (episode: Episode) => void;
+  // Spoiler protection: which episodes show blurred, and revealing one.
+  spoilers?: SpoilerGuard;
 }) {
   const navigate = useNavigate();
   // The phone (#136): a 22 pt heading, and "Mark season watched" in a "•••".
@@ -163,6 +166,7 @@ export function Episodes({
         episodes={shown}
         state={state}
         busy={busy}
+        spoilers={spoilers}
         onPlay={onPlay}
         onMark={(episode, watched) => onMark(episodeMarks(meta, [episode]), watched)}
         onMarkEarlier={(episode, watched) => {

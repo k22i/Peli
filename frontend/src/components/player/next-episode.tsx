@@ -1,4 +1,5 @@
-import { Play, X } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Eye, Play, X } from "lucide-react";
 import { useEffect, useEffectEvent } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,14 @@ import { usePreparedNext, type PreparedNext } from "@/lib/next-episode";
 import { formatTime } from "@/lib/player";
 import type { ProfileSettings } from "@bindings/store";
 import { resolutionLabel } from "@/lib/stream-labels";
-import { episodeCode, type Episode } from "@/lib/title";
+import { useSpoilers } from "@/lib/spoilers";
+import {
+  episodeCode,
+  titleProgressQuery,
+  titleState,
+  titleWatchedQuery,
+  type Episode,
+} from "@/lib/title";
 import { promptEnter, promptSurface } from "@/components/player/prompt";
 import { cn } from "@/lib/utils";
 
@@ -49,6 +57,11 @@ export function NextEpisode({
   onStart: (prepared: PreparedNext) => void;
 }) {
   const prepared = usePreparedNext(profileId, meta, next, settings);
+  const spoilers = useSpoilers(profileId);
+  const marks = useQuery(titleWatchedQuery(profileId, meta.id)).data ?? [];
+  const progress = useQuery(titleProgressQuery(profileId, meta.id)).data ?? [];
+  const state = titleState(meta, marks, progress);
+  const spoiler = spoilers.hidden(next.id, state.watched(next), state.progress(next) !== undefined);
   // Once: what was found when it was due.
   const start = useEffectEvent(() => onStart(prepared));
   const finding = prepared.status === "finding";
@@ -71,16 +84,30 @@ export function NextEpisode({
       )}
     >
       {next.thumbnail && !mini && !compact && (
-        <div className="relative w-40 shrink-0 bg-white/5">
+        <div className="relative w-40 shrink-0 overflow-hidden bg-white/5">
           <img
             decoding="async"
             src={next.thumbnail}
             alt=""
-            className="absolute inset-0 size-full object-cover"
+            className={cn(
+              "absolute inset-0 size-full object-cover",
+              spoiler && "scale-110 blur-xl",
+            )}
             onError={(event) => {
               event.currentTarget.hidden = true;
             }}
           />
+          {spoiler && (
+            // Spoiler protection: the still stays blurred until revealed.
+            <button
+              type="button"
+              aria-label={`Reveal ${episodeCode(next)}’s picture`}
+              onClick={() => spoilers.reveal(next.id)}
+              className="absolute inset-0 grid cursor-pointer place-items-center text-white/80 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+            >
+              <Eye aria-hidden className="size-5" />
+            </button>
+          )}
         </div>
       )}
       <div

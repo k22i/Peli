@@ -404,6 +404,20 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
                 />
               </SettingRow>
             </SettingsGroup>
+            <SettingsGroup title="Episodes">
+              <SettingRow
+                id="hide-spoilers"
+                label="Hide spoilers"
+                description="Blurs the pictures and descriptions of episodes you haven’t watched yet. Reveal one to see it."
+              >
+                <Switch
+                  aria-labelledby="hide-spoilers-label"
+                  aria-describedby="hide-spoilers-description"
+                  checked={settings.hideSpoilers}
+                  onCheckedChange={(hideSpoilers) => setProfile({ hideSpoilers })}
+                />
+              </SettingRow>
+            </SettingsGroup>
             <SettingsGroup title="Artwork">
               <TmdbRow />
               <AnimePostersRow

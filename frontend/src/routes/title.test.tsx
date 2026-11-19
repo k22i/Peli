@@ -3,12 +3,22 @@ import userEvent from "@testing-library/user-event";
 import type * as Runtime from "@wailsio/runtime";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import type { Addon, LibraryItem, Profile, Progress, WatchedItem } from "@bindings/store";
+import type {
+  Addon,
+  LibraryItem,
+  Profile,
+  ProfileSettings,
+  Progress,
+  WatchedItem,
+} from "@bindings/store";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import cinemetaMovie from "@/lib/addon-protocol/fixtures/cinemeta/meta-movie.json";
 import cinemetaSeries from "@/lib/addon-protocol/fixtures/cinemeta/meta-series.json";
 import kitsuManifest from "@/lib/addon-protocol/fixtures/kitsu/manifest.json";
 import kitsuAnime from "@/lib/addon-protocol/fixtures/kitsu/meta-anime.json";
+import { clockTime } from "@/lib/ends-at";
+import { resetRevealed } from "@/lib/spoilers";
+import { profileSettings } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
 // The store, kept in memory so marks and the library change as Go's would.
@@ -30,6 +40,7 @@ const mocks = vi.hoisted(() => ({
   removeLibraryItem: vi.fn<(id: number, contentId: string, type: string) => Promise<void>>(),
   removeProgress: vi.fn<(id: number, key: string) => Promise<void>>(() => Promise.resolve()),
   openURL: vi.fn<(url: string) => Promise<void>>(),
+  profileSettings: vi.fn<(id: number) => Promise<ProfileSettings>>(),
 }));
 
 vi.mock("@wailsio/runtime", async (importOriginal) => ({
@@ -56,6 +67,7 @@ vi.mock("@bindings/store", () => ({
     SaveLibraryItem: mocks.saveLibraryItem,
     RemoveLibraryItem: mocks.removeLibraryItem,
     RemoveProgress: mocks.removeProgress,
+    ProfileSettings: mocks.profileSettings,
   },
 }));
 
@@ -195,6 +207,8 @@ beforeEach(() => {
   db.progress = [];
   db.library = [];
   mocks.current.mockResolvedValue(kevin);
+  mocks.profileSettings.mockResolvedValue(profileSettings());
+  resetRevealed();
   mocks.addons.mockResolvedValue([cinemeta, kitsu]);
   mocks.visibleAddons.mockResolvedValue([cinemeta, kitsu]);
   mocks.setWatched.mockImplementation((_, items, watched) => {
@@ -304,6 +318,92 @@ describe("title page", () => {
     });
     await user.click(screen.getByRole("button", { name: "In library" }));
     expect(await screen.findByRole("button", { name: "Add to library" })).toBeInTheDocument();
+  });
+
+  // "Ends at": when Play's film would end, from its runtime, in the
+  // locale's clock.
+  it("says when a film would end in the meta line", async () => {
+    vi.useFakeTimers({ toFake: ["Date"], shouldAdvanceTime: true });
+    try {
+      vi.setSystemTime(new Date(2026, 10, 19, 20, 0, 0));
+      serve();
+      await renderApp(moviePath);
+
+      // 142 min from 8:00 PM.
+      const ends = await screen.findByTestId("ends-at");
+      expect(ends.textContent).toBe(
+        `Ends at ${clockTime(new Date(2026, 10, 19, 22, 22).getTime())}`,
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("says when the next episode would end, from what's left of it", async () => {
+    vi.useFakeTimers({ toFake: ["Date"], shouldAdvanceTime: true });
+    try {
+      vi.setSystemTime(new Date(2026, 10, 19, 20, 0, 0));
+      db.progress = [
+        {
+          key: "tt0903747_s1e2",
+          contentId: "tt0903747",
+          contentType: "series",
+          videoId: "tt0903747:1:2",
+          season: 1,
+          episode: 2,
+          position: 600_000,
+          duration: 3_000_000,
+          lastWatched: 5,
+        },
+      ];
+      serve();
+      await renderApp(seriesPath);
+
+      // 40 of S1 · E2's 50 minutes are left.
+      await screen.findByRole("button", { name: "Resume S1 · E2" });
+      expect(screen.getByTestId("ends-at").textContent).toBe(
+        `Ends at ${clockTime(new Date(2026, 10, 19, 20, 40).getTime())}`,
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  // Spoiler protection, off unless the profile turns it on.
+  it("shows every episode's still and description with spoilers not hidden", async () => {
+    serve();
+    await renderApp(seriesPath);
+
+    await episodeNames();
+    expect(screen.queryByRole("button", { name: /^Reveal / })).not.toBeInTheDocument();
+    expect(screen.queryByTestId("spoiler-overview")).not.toBeInTheDocument();
+  });
+
+  it("blurs unwatched episodes with spoilers hidden, until one is revealed", async () => {
+    mocks.profileSettings.mockResolvedValue(profileSettings({ hideSpoilers: true }));
+    db.watched = [mark(1, 1)];
+    serve();
+    const user = userEvent.setup();
+    await renderApp(seriesPath);
+
+    const list = await episodes();
+    await episodeNames();
+    // The watched pilot shows as it is; the rest are blurred, each with a
+    // Reveal button.
+    expect(within(list).queryByRole("button", { name: "Reveal S1 · E1" })).not.toBeInTheDocument();
+    const reveal = await within(list).findByRole("button", { name: "Reveal S1 · E2" });
+    expect(within(list).getAllByTestId("spoiler-overview")).toHaveLength(3);
+    expect(within(list).getAllByTestId("spoiler-overview")[0]).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    );
+
+    // Reachable by keyboard, and focus stays on the row once it's gone.
+    reveal.focus();
+    await user.keyboard("{Enter}");
+    expect(within(list).queryByRole("button", { name: "Reveal S1 · E2" })).not.toBeInTheDocument();
+    expect(within(list).getAllByTestId("spoiler-overview")).toHaveLength(2);
+    expect(within(list).getByRole("button", { name: /^S1 · E2: / })).toHaveFocus();
   });
 
   it("shows each episode's watched mark and progress, and resumes", async () => {

@@ -318,12 +318,13 @@ describe("settings", () => {
     expect(screen.getByRole("link", { name: "Manage" })).toBeInTheDocument();
 
     await open("Addons & content");
-    expect(groups()).toEqual(["Addons", "Catalogs", "Artwork"]);
+    expect(groups()).toEqual(["Addons", "Catalogs", "Episodes", "Artwork"]);
     expect(await screen.findByText("1 addon installed")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Open addons" })).toBeInTheDocument();
     expect(
       screen.getByRole("switch", { name: "Show anime in Movies and Shows" }),
     ).not.toBeChecked();
+    expect(screen.getByRole("switch", { name: "Hide spoilers" })).not.toBeChecked();
     expect(screen.getByRole("button", { name: "Add TMDB key" })).toBeInTheDocument();
 
     await open("Playback");
@@ -428,6 +429,22 @@ describe("settings", () => {
 
     const heading = await screen.findByRole("heading", { level: 2, name: "Privacy" });
     expect(heading).not.toHaveFocus();
+  });
+
+  // Spoiler protection is the profile's, off until turned on.
+  it("saves Hide spoilers with the profile's settings", async () => {
+    const user = userEvent.setup();
+    await renderSettings("content");
+
+    const toggle = screen.getByRole("switch", { name: "Hide spoilers" });
+    expect(toggle).toHaveAccessibleDescription(/haven’t watched yet/);
+    await user.click(toggle);
+    await waitFor(() =>
+      expect(store.profileSettings.get(store.profiles[store.current]!.id)).toMatchObject({
+        hideSpoilers: true,
+      }),
+    );
+    expect(toggle).toBeChecked();
   });
 
   // Addons hold the debrid keys (#54, ADR-0038): the row points there and

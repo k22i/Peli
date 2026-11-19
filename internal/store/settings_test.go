@@ -12,7 +12,7 @@ var japanese = ProfileSettings{
 	SubtitleStyle:  SubtitleStyle{Font: "sans", Size: 135, Color: "#FFFFFF", Edge: "outline", Backdrop: 60},
 	Picture:        Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
 	PicturePresets: []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
-	Sound: Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"},
+	Sound: Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"}, HideSpoilers: true,
 }
 
 var laptop = DeviceSettings{

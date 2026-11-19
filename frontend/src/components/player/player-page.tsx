@@ -45,6 +45,7 @@ import { Prompt, promptEnter } from "@/components/player/prompt";
 import { SeekBar } from "@/components/player/seek-bar";
 import { SecondSubtitles } from "@/components/player/second-subtitles";
 import { ShortcutsOverlay } from "@/components/player/shortcuts";
+import { PlayerEndsAt } from "@/components/player/ends-at";
 import { SpeedMenu } from "@/components/player/speed-menu";
 import {
   EpisodesSheet,
@@ -2298,6 +2299,13 @@ function PlayerFile({
               -{formatTime(Math.max(0, state.duration - (scrub?.to ?? position)))}
             </p>
           )}
+          {known && (
+            <PlayerEndsAt
+              remaining={Math.max(0, state.duration - (scrub?.to ?? position))}
+              speed={speed}
+              className="text-[0.75rem] font-[600]"
+            />
+          )}
         </div>
         {bottomRow && (
           <div
@@ -2664,6 +2672,13 @@ function PlayerFile({
                     -{formatTime(Math.max(0, state.duration - position))}
                   </p>
                 )}
+                {timeShown && !mini && (
+                  <PlayerEndsAt
+                    remaining={Math.max(0, state.duration - position)}
+                    speed={speed}
+                    className="-ms-2 text-small font-[590]"
+                  />
+                )}
               </div>
               {mini ? (
                 <div className="flex items-center gap-1">
@@ -2870,6 +2885,7 @@ function PlayerFile({
       )}
       {touchLayout && !failure && episodesOpen && meta && series && (
         <EpisodesSheet
+          profileId={profileId}
           meta={meta}
           playing={series.videoId}
           onPick={chooseEpisode}

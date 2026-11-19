@@ -17,6 +17,7 @@ import { TrackingActions } from "@/components/title/tracking-actions";
 import { RelatedRows } from "@/components/title/related-rows";
 import { Button } from "@/components/ui/button";
 import type { ContentType, Meta } from "@/lib/addon-protocol";
+import { endsAt, endsAtLabel, remainingSeconds, useClock } from "@/lib/ends-at";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
 import { openURL } from "@/lib/open-url";
@@ -37,8 +38,12 @@ import {
   titleProgressQuery,
   titleState,
   titleWatchedQuery,
+  type Episode,
+  type PlayChoice,
   type TitlePreview,
+  type TitleState,
 } from "@/lib/title";
+import { useSpoilers } from "@/lib/spoilers";
 import { useTitleEdits } from "@/lib/title-actions";
 import { useCompactShell } from "@/lib/shell-mode";
 import { tmdbRef, useTmdbArt, type TmdbArt } from "@/lib/tmdb";
@@ -173,6 +178,10 @@ function LoadedTitle({
   const choice = playChoice(meta, state, progress);
   const series = isSeriesType(meta.type);
   const list = episodesOf(meta);
+  // "Ends at 10:42 PM" for what Play plays, kept current as the clock turns.
+  const now = useClock();
+  const spoilers = useSpoilers(profile.id);
+  const ends = choice ? endsAtFor(meta, choice, state, list, now) : undefined;
   const saved = library?.some(
     (item) => item.contentId === meta.id && item.contentType === meta.type,
   );
@@ -201,7 +210,7 @@ function LoadedTitle({
         className="-mb-8"
         title={meta.name}
         logo={art?.logo ?? meta.logo}
-        meta={[<TitleMeta key="meta" meta={meta} art={art} compact={compact} />]}
+        meta={[<TitleMeta key="meta" meta={meta} art={art} compact={compact} ends={ends} />]}
         metaRaw
         synopsis={meta.description}
         {...backdrops(meta, art)}
@@ -271,6 +280,15 @@ function LoadedTitle({
             play(episodeTarget(meta, episode, state.progress(episode)?.position))
           }
           onPlayFromStart={(episode) => play({ ...episodeTarget(meta, episode), startOver: true })}
+          spoilers={{
+            hidden: (episode) =>
+              spoilers.hidden(
+                episode.id,
+                state.watched(episode),
+                state.progress(episode) !== undefined,
+              ),
+            reveal: (episode) => spoilers.reveal(episode.id),
+          }}
           onClearProgress={(episode) => {
             const entry = state.progress(episode);
             if (entry) clearProgress.mutate({ contentId: meta.id, keys: [entry.key] });
@@ -282,6 +300,26 @@ function LoadedTitle({
       {art && !profile.kids && <RelatedRows art={art} />}
     </>
   );
+}
+
+// When what Play plays would end if started now: a film from its runtime
+// (or what's left of it), a series' next episode from its own runtime, else
+// the series'. Nothing when the runtime isn't known.
+function endsAtFor(
+  meta: Meta,
+  choice: PlayChoice,
+  state: TitleState,
+  list: readonly Episode[],
+  now: number,
+): string | undefined {
+  const episode = isSeriesType(meta.type)
+    ? list.find((each) => each.id === choice.target.videoId)
+    : undefined;
+  if (isSeriesType(meta.type) && !episode) return undefined;
+  const own = typeof episode?.["runtime"] === "string" ? episode["runtime"] : undefined;
+  const left = remainingSeconds(own ?? meta.runtime, state.progress(episode));
+  const end = left === undefined ? undefined : endsAt(now, left);
+  return end === undefined ? undefined : endsAtLabel(end);
 }
 
 // TMDB's backdrop over the addon's, which shows while it loads or if it
@@ -301,18 +339,28 @@ function TitleMeta({
   meta,
   art,
   compact = false,
+  ends,
 }: {
   meta: Meta;
   art: TmdbArt | undefined;
   compact?: boolean;
+  // "Ends at 10:42 PM", last on the line.
+  ends?: string | undefined;
 }) {
-  // The phone has one line: year · genres · IMDb (#136).
+  const endsItem = ends && (
+    <span key="ends" data-testid="ends-at" className="whitespace-nowrap tnum">
+      {ends}
+    </span>
+  );
+  // The phone has one line: year · ends at · genres · IMDb (#136).
   if (compact) {
     const phone = [meta.releaseInfo, (meta.genres ?? []).slice(0, 2).join(", ")]
       .filter(Boolean)
       .map((text) => <span key={text}>{text}</span>);
     if (meta.imdbRating) phone.push(<ImdbScore key="imdb" rating={meta.imdbRating} />);
     else if (art?.score) phone.push(<TmdbScore key="tmdb" rating={art.score} />);
+    // Second, so a narrow line clips the genres rather than the time.
+    if (endsItem) phone.splice(meta.releaseInfo ? 1 : 0, 0, endsItem);
     return <MetaLine items={phone} className="flex-nowrap overflow-hidden text-[0.8125rem]" />;
   }
   const items = [meta.releaseInfo, meta.runtime, (meta.genres ?? []).slice(0, 3).join(", ")]
@@ -331,6 +379,7 @@ function TitleMeta({
   }
   if (meta.imdbRating) items.push(<ImdbScore key="imdb" rating={meta.imdbRating} />);
   if (art?.score) items.push(<TmdbScore key="tmdb" rating={art.score} />);
+  if (endsItem) items.push(endsItem);
   return <MetaLine items={items} className="text-[0.8125rem]" />;
 }
 

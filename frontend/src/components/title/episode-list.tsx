@@ -39,6 +39,13 @@ export type EpisodeMenu = {
   onClearProgress: (episode: Episode) => void;
 };
 
+// Spoiler protection (lib/spoilers.ts): whether an episode's still and
+// description show blurred, and revealing it.
+export type SpoilerGuard = {
+  hidden: (episode: Episode) => boolean;
+  reveal: (episode: Episode) => void;
+};
+
 // One season's episodes, scrolled with the page and virtualized, since an
 // anime can list a thousand in one season. Each row plays its episode and
 // has a menu to mark it, or every episode before it; right-clicking it (or
@@ -54,6 +61,7 @@ export function EpisodeList({
   onMarkEarlier,
   earlier,
   menu,
+  spoilers,
 }: {
   label: string;
   episodes: readonly Episode[];
@@ -66,6 +74,7 @@ export function EpisodeList({
   // the first, or a special.
   earlier: (episode: Episode) => boolean | undefined;
   menu: EpisodeMenu;
+  spoilers?: SpoilerGuard | undefined;
 }) {
   const list = useRef<HTMLOListElement>(null);
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
@@ -156,6 +165,8 @@ export function EpisodeList({
               busy={busy}
               earlier={earlier(episode)}
               menu={menu}
+              spoiler={spoilers?.hidden(episode) ?? false}
+              onReveal={() => spoilers?.reveal(episode)}
               onPlay={() => onPlay(episode)}
               onMark={(watched) => onMark(episode, watched)}
               onMarkEarlier={(watched) => onMarkEarlier(episode, watched)}
@@ -175,6 +186,8 @@ function EpisodeRow({
   busy,
   earlier,
   menu,
+  spoiler,
+  onReveal,
   onPlay,
   onMark,
   onMarkEarlier,
@@ -186,6 +199,9 @@ function EpisodeRow({
   busy: boolean;
   earlier: boolean | undefined;
   menu: EpisodeMenu;
+  // Spoiler protection: the still and description blurred until revealed.
+  spoiler: boolean;
+  onReveal: () => void;
   onPlay: () => void;
   onMark: (watched: boolean) => void;
   onMarkEarlier: (watched: boolean) => void;
@@ -234,7 +250,10 @@ function EpisodeRow({
             src={episode.thumbnail}
             use="landscape"
             title={title}
-            className={cn(!aired && "opacity-60")}
+            className={cn(
+              !aired && "opacity-60",
+              spoiler && "scale-110 blur-xl motion-safe:transition-[filter,scale]",
+            )}
           />
           {entry && <WatchProgress value={entry.position / entry.duration} />}
           {watched && (
@@ -261,13 +280,42 @@ function EpisodeRow({
             {title}
           </span>
           <span className="text-small text-muted-foreground tnum">{line.join(" · ")}</span>
-          {episode.overview && (
-            <span className="mt-1 line-clamp-2 text-body text-pretty text-muted-foreground">
-              {episode.overview}
-            </span>
-          )}
+          {episode.overview &&
+            (spoiler ? (
+              // Blurred and out of reach of a screen reader until revealed.
+              <span
+                aria-hidden
+                data-testid="spoiler-overview"
+                className="mt-1 line-clamp-2 text-body text-pretty text-muted-foreground blur-[5px] select-none"
+              >
+                {episode.overview}
+              </span>
+            ) : (
+              <span className="mt-1 line-clamp-2 text-body text-pretty text-muted-foreground">
+                {episode.overview}
+              </span>
+            ))}
         </span>
       </button>
+      {spoiler && (episode.thumbnail || episode.overview) && (
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label={`Reveal ${code}`}
+          title="Reveal the picture and description"
+          className="opacity-70 group-hover/episode:opacity-100"
+          onClick={(event) => {
+            // The button goes once it's revealed: focus stays on the row.
+            const play = event.currentTarget.parentElement?.querySelector<HTMLElement>(
+              "[data-episode-index]:not(:disabled)",
+            );
+            onReveal();
+            play?.focus();
+          }}
+        >
+          <Eye />
+        </Button>
+      )}
       {aired && (
         <ResponsiveMenu
           label={`${code} ${title}`}
