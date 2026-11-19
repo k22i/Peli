@@ -2,9 +2,20 @@ import { useState } from "react";
 
 import { GallerySection } from "@/components/gallery/gallery-section";
 import { listRows, StreamList } from "@/components/streams/stream-list";
+import { filteredListProps, type Filtering } from "@/components/streams/stream-toolbar";
 import { toastManager } from "@/components/ui/toast";
 import type { Stream } from "@/lib/addon-protocol";
 import { rankStreams, type Tier, type TitleContext } from "@/lib/ranking";
+import {
+  facetChips,
+  filtersLabel,
+  filterView,
+  noFilters,
+  offered,
+  sortsAvailable,
+  type StreamFilters,
+  type StreamSort,
+} from "@/lib/stream-filters";
 
 // A made-up film and what three made-up addons answer for it: one of each
 // kind of stream the picker (#52) tells apart.
@@ -80,14 +91,27 @@ const names = new Map([
   [torrents, "Torrents"],
   [web, "Direct"],
 ]);
-const view = rankStreams(film, answers);
+const ranked = rankStreams(film, answers);
+const candidates = offered(ranked);
 
 export function StreamSample() {
   const [open, setOpen] = useState<ReadonlySet<Tier>>(new Set());
+  const [filters, setFilters] = useState<StreamFilters>(noFilters);
+  const [sort, setSort] = useState<StreamSort>("best");
+  const view = filterView(ranked, filters, sort);
+  const filtering: Filtering = {
+    filters,
+    setFilters,
+    chips: facetChips(candidates, filters, { names }),
+    sort,
+    sorts: sortsAvailable(candidates),
+    setSort,
+    label: filtersLabel(filters, { names }),
+  };
   return (
     <GallerySection
       title="Stream picker"
-      description="The best stream first, told by its badges: resolution, HDR and Dolby Vision, audio, source, size and whether it plays at once from a debrid cache. The file name shows only on request. CAM / TS and likely fakes stay collapsed."
+      description="The best stream first, told by its badges: resolution, HDR and Dolby Vision, audio, source, size and whether it plays at once from a debrid cache. The file name shows only on request. CAM / TS and likely fakes stay collapsed. The sticky toolbar filters, sorts within each group and jumps between groups (1–9)."
       bleed
     >
       <StreamList
@@ -102,6 +126,7 @@ export function StreamSample() {
             return next;
           })
         }
+        {...filteredListProps(filtering, view)}
       />
     </GallerySection>
   );

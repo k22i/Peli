@@ -21,7 +21,7 @@
 - [Collection folders](collection-folders.md) — #96 /folder route, folderSources, round-robin mergeSources (append-only depth), useFolderPages observers, stub harness config
 - [Stream requests](stream-requests.md) — #50 useStreamAddons (enabled, not visible), useStreams per-addon state, StreamFeed 150-slices, /streams picker that usePlay opens
 - [Stream ranking](stream-ranking.md) — #51 lib/ranking (parse, fakes, score, engine), shared worker + RankingSession, useRankedStreams restarts on ctx/prefs, accuracy.md snapshot gate, timing test
-- [Stream picker](stream-picker.md) — #52 stream-list rows + roving keys, P plays top pick, stream-labels badges, file name on demand, no autofocus (pins); #53 hand-off
+- [Stream picker](stream-picker.md) — #52 stream-list rows + roving keys, P plays top pick, stream-labels badges, file name on demand, no autofocus (pins); #53 hand-off; C1 filters/sorts (lib/stream-filters), sticky toolbar + jump strip, streamSort device setting
 - [Stream resolve](stream-resolve.md) — #53 internal/streams Resolve → Source, notice/expired codes, resolvePick (pick → alternates, refresh on expired), tools/ttff; resolving adds to TorBox
 - [Pre-resolve](pre-resolve.md) — #101/ADR-0060 opt-in "Start cached streams sooner" (DeviceSettings.preResolve), usePreResolve/take, cached debrid pick only, ttff -app numbers + recipe
 - [Debrid keys](debrid-keys.md) — #54/ADR-0038: Peli holds no debrid keys, addons do; Settings row links /addons; revisit triggers; #97 needs AD/PM accounts
@@ -55,7 +55,7 @@
 - [Chip rail](chip-rail.md) — #116 ScrollRail/ChipRail, BrowseFrame sticky glass header, rail gutter + shrink-0 rules, 50-catalog screenshot rig
 - [Settings panes](settings-panes.md) — #120 panes.ts, ?section=, pane list/rail/group/row, last pane for ⌘,, settings-pill element, tests open a pane first
 - [Player glass](player-glass.md) — #121 capsule layout, --above-bar overlay layer, plain-white text rule, centre flash, menu offset, built-app blur check open, shot rig
-- [Picker, Addons and popups](picker-addons-popups.md) — #122 top pick card, stuck group heading overlay, StreamBadge (tailwind-merge gotcha), alert dialog tier, popup sizes, rig with a local stream addon
+- [Picker, Addons and popups](picker-addons-popups.md) — #122 top pick card, (stuck heading replaced by C1 toolbar), StreamBadge (tailwind-merge gotcha), alert dialog tier, popup sizes, rig with a local stream addon
 - [Focus screens](focus-screens.md) — #123 FocusScreen/pillButton/glassButton, glass cards, picker tile lift, PIN dots + shake, scene-stub screenshot rig
 - [Library redesign](library-redesign.md) — #118 LibraryFrame on BrowseFrame, glass-thin Tabs switch, episodeLabels card meta, sticky day headers (offset/z-order), airTime, LibraryNotice, shot rig
 - [Title page redesign](title-page-redesign.md) — #117 Hero size=title, BackButton media glass → glass, sticky Episodes header + 30-season rail, 2× rows, About card, cast on ScrollRail, gotchas

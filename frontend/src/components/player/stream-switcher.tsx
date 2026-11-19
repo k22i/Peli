@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { StreamList } from "@/components/streams/stream-list";
 import { StreamsSummary, usePlayKey, useStreamChoices } from "@/components/streams/streams-page";
+import { filteredListProps } from "@/components/streams/stream-toolbar";
 import type { Stream } from "@/lib/addon-protocol";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, sameStream, type ResolveOptions } from "@/lib/resolve";
@@ -92,14 +93,26 @@ function Choices({
   playing: Stream | undefined;
   onPick: (candidate: Candidate, names: ReadonlyMap<string, string>, refresh: Refresh) => void;
 }) {
-  const { loading, sources, names, view, pin, rows, toggleGroup, refresh, usual } =
-    useStreamChoices(
-      watching.profileId,
-      watching.contentType,
-      watching.contentId,
-      watching.videoId,
-      title || (watching.title ?? ""),
-    );
+  const {
+    loading,
+    sources,
+    names,
+    view,
+    ranked,
+    pin,
+    rows,
+    toggleGroup,
+    refresh,
+    usual,
+    filtering,
+    sourceFilter,
+  } = useStreamChoices(
+    watching.profileId,
+    watching.contentType,
+    watching.contentId,
+    watching.videoId,
+    title || (watching.title ?? ""),
+  );
   const pick = (candidate: Candidate) => {
     pin();
     onPick(candidate, names, refresh);
@@ -121,7 +134,13 @@ function Choices({
   }
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto pb-6">
-      <StreamsSummary sources={sources} loading={loading} total={view.total} />
+      <StreamsSummary
+        sources={sources}
+        loading={loading}
+        total={ranked.total}
+        shown={view.total}
+        filter={sourceFilter}
+      />
       <StreamList
         rows={rows}
         names={names}
@@ -130,6 +149,8 @@ function Choices({
         onToggleGroup={toggleGroup}
         playing={isPlaying}
         usual={usual}
+        panel
+        {...filteredListProps(filtering, view, { stacked: true })}
       />
     </div>
   );

@@ -278,6 +278,7 @@ beforeEach(() => {
     torrentStreaming: false,
     torrentCacheGB: 5,
     preResolve: false,
+    streamSort: "best",
     quality: defaultQuality,
     audio: defaultAudio,
   });
@@ -1643,6 +1644,7 @@ describe("skip intro and credits", () => {
       torrentStreaming: false,
       torrentCacheGB: 5,
       preResolve: false,
+      streamSort: "best",
       quality: defaultQuality,
       audio: defaultAudio,
     });

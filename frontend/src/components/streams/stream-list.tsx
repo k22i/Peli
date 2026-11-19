@@ -9,9 +9,17 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 
 import { scrollParent } from "@/components/media/poster-grid";
+import { ScrollRail } from "@/components/media/scroll-rail";
 import { prefersReducedMotion } from "@/components/media/roving";
 import { StreamBadge } from "@/components/streams/stream-badge";
 import { Kbd } from "@/components/ui/kbd";
@@ -37,7 +45,9 @@ import { cn } from "@/lib/utils";
 // One addon can send over a thousand streams, so the list scrolls with the
 // page and is virtualized. It's one Tab stop: the arrow keys, Home and End
 // move between rows, Enter plays, I shows a row's file name. Moving into the
-// list pins the top pick, so it doesn't change under the user. In the
+// list pins the top pick, so it doesn't change under the user. A sticky
+// toolbar over it holds the filters and sort (`toolbar`) and a jump strip,
+// one entry per group, that 1–9 reach from the keyboard too. In the
 // player's stream switcher (#68), the stream playing is marked, and a top
 // pick that matches the show's remembered source (#58) says so.
 
@@ -71,12 +81,22 @@ const rowPx = { top: 176, group: 56, stream: 68 } as const;
 // The phone's rows (#136): a 64 pt stream row, a 13 pt heading, a tighter card.
 const phoneRowPx = { top: 232, group: 40, stream: 64 } as const;
 
-// Where a stuck group heading sits below the title bar.
-const stickGap = 8;
-const stuckHeight = 48;
-// On the phone the heading's band sits flush under the bar.
-const phoneStickGap = 0;
-const phoneStuckHeight = 36;
+// A jump strip entry: the top pick or a group, by its row.
+type Jump = { index: number; key: string; label: string; count: number | null };
+
+const jumpLabels: Partial<Record<Tier, string>> = { "Low quality": "CAM / TS" };
+
+export function jumpTargets(rows: readonly ListRow[]): Jump[] {
+  return rows.flatMap((row, index): Jump[] => {
+    if (row.kind === "top") return [{ index, key: "top", label: "Top pick", count: null }];
+    if (row.kind !== "group") return [];
+    const label = jumpLabels[row.tier] ?? row.tier;
+    return [{ index, key: `group:${row.tier}`, label, count: row.count }];
+  });
+}
+
+// The number keys reach the strip's first nine entries.
+const jumpKeys = 9;
 
 export function StreamList({
   rows,
@@ -86,8 +106,22 @@ export function StreamList({
   onToggleGroup,
   playing,
   usual,
+  toolbar,
+  topNote,
+  empty,
+  panel = false,
 }: {
   rows: readonly ListRow[];
+  // The filters and sort, in the sticky toolbar above the jump strip.
+  toolbar?: ReactNode;
+  // What the filters keep, on the top pick's card: "4K only".
+  topNote?: string | null;
+  // Shown under the toolbar when the filters leave nothing outside the
+  // collapsed groups.
+  empty?: ReactNode;
+  // In the player's stream switcher: the toolbar sticks to the panel's top,
+  // not under the title bar.
+  panel?: boolean;
   // Addon names, by URL.
   names: ReadonlyMap<string, string>;
   // Whether a candidate is the stream playing.
@@ -101,8 +135,8 @@ export function StreamList({
   const list = useRef<HTMLOListElement>(null);
   const compact = useCompactShell();
   const heights = compact ? phoneRowPx : rowPx;
-  const gap = compact ? phoneStickGap : stickGap;
-  const band = compact ? phoneStuckHeight : stuckHeight;
+  const bar = useRef<HTMLDivElement>(null);
+  const [barHeight, setBarHeight] = useState(0);
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
   const [top, setTop] = useState(0);
   // By key, since rows move as answers arrive.
@@ -123,6 +157,8 @@ export function StreamList({
     if (typeof ResizeObserver === "undefined") return undefined;
     const observer = new ResizeObserver(update);
     if (parent.firstElementChild) observer.observe(parent.firstElementChild);
+    // The toolbar grows as chips appear, moving the list down.
+    if (bar.current) observer.observe(bar.current);
     return () => observer.disconnect();
   }, []);
 
@@ -138,36 +174,39 @@ export function StreamList({
       heights[rows[Number(element.getAttribute("data-index"))]?.kind ?? "stream"],
     getItemKey: (index) => rowKey(rows[index]!),
     scrollMargin: top,
+    // A jump lands its group under the sticky toolbar.
+    scrollPaddingStart: barHeight + 8,
     overscan: 6,
     initialRect: { width: 0, height: window.innerHeight },
   });
   const items = virtualizer.getVirtualItems();
 
-  // The group whose heading has scrolled up under the title bar stays there,
-  // on material-pop. The list is virtualized, so a heading can't be `sticky` in its
-  // own row: this copy is drawn over it instead.
-  const [stickAt, setStickAt] = useState(gap);
+  // Where the toolbar sticks (the title bar's height, measured in px: the
+  // variable is in rem, and on iOS a calc() with the status bar's), and how
+  // tall it is: a group is "in view" once it reaches the toolbar's bottom.
+  const [stickAt, setStickAt] = useState(0);
   useLayoutEffect(() => {
-    const element = list.current;
-    if (!element) return;
-    // Measured in px: the variable is in rem, and on iOS a calc() with the
-    // status bar's height.
-    const probe = document.createElement("div");
-    probe.style.cssText = "position:absolute;visibility:hidden;height:var(--spacing-bar)";
-    element.append(probe);
-    const bar = probe.getBoundingClientRect().height;
-    probe.remove();
-    setStickAt((Number.isFinite(bar) ? bar : 0) + gap);
-  }, [gap]);
+    const element = bar.current;
+    if (!element) return undefined;
+    const measure = () => {
+      setBarHeight(element.getBoundingClientRect().height);
+      setStickAt(panel ? 0 : Number.parseFloat(getComputedStyle(element).top) || 0);
+    };
+    measure();
+    if (typeof ResizeObserver === "undefined") return undefined;
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [panel]);
   const scrolled = virtualizer.scrollOffset ?? 0;
-  // The next heading takes over as it reaches the stuck one.
-  const line = scrolled + stickAt + band;
-  let stuck: Extract<ListRow, { kind: "group" }> | undefined;
-  for (let index = 0; index < (scrolled > 0 ? rows.length : 0); index += 1) {
-    const row = rows[index]!;
-    if (row.kind !== "group") continue;
-    if ((virtualizer.measurementsCache[index]?.start ?? Number.POSITIVE_INFINITY) >= line) break;
-    stuck = row;
+  const jumps = jumpTargets(rows);
+  const line = scrolled + stickAt + barHeight + 16;
+  let inView = jumps[0]?.key;
+  for (const jump of scrolled > 0 ? jumps : []) {
+    if ((virtualizer.measurementsCache[jump.index]?.start ?? Number.POSITIVE_INFINITY) >= line) {
+      break;
+    }
+    inView = jump.key;
   }
 
   // The list's one Tab stop: the active row, or the first one shown when
@@ -200,6 +239,44 @@ export function StreamList({
     return -1;
   };
 
+  // A jump: the group's heading to the top, under the toolbar, with focus
+  // on the heading (on the first stream, for a group that's always open).
+  const jumpTo = (index: number) => {
+    const row = rows[index];
+    if (!row) return;
+    const target = focusable(row) ? index : nextFocusable(index, 1);
+    virtualizer.scrollToIndex(index, {
+      align: "start",
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+    if (target < 0) return;
+    setActive(rowKey(rows[target]!));
+    const focus = (tries: number) =>
+      requestAnimationFrame(() => {
+        const found = list.current?.querySelector<HTMLElement>(`[data-row-index="${target}"]`);
+        if (found) found.focus({ preventScroll: true });
+        else if (tries > 0) focus(tries - 1);
+      });
+    focus(10);
+  };
+  const latestJump = useRef({ jumps, jumpTo });
+  useLayoutEffect(() => {
+    latestJump.current = { jumps, jumpTo };
+  });
+  // 1–9 jump to the strip's entries, unless the user is typing.
+  useEffect(() => {
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (!/^[1-9]$/.test(event.key) || typingIn(event.target)) return;
+      const jump = latestJump.current.jumps[Number(event.key) - 1];
+      if (!jump) return;
+      event.preventDefault();
+      latestJump.current.jumpTo(jump.index);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   const toggleName = (key: string) =>
     setNamed((current) => {
       const next = new Set(current);
@@ -226,22 +303,24 @@ export function StreamList({
 
   return (
     <div className="relative">
-      {stuck && (
-        // For the pointer only: the real heading, in the list, is the one
-        // the keyboard and screen readers use.
-        <div aria-hidden className="pointer-events-none sticky top-(--spacing-bar) z-10 h-0">
-          <div
-            className={cn("material-bar absolute inset-x-0 px-page", compact ? "top-0" : "top-2")}
-          >
-            <GroupHeading
-              row={stuck}
-              stuck
-              compact={compact}
-              onToggle={() => onToggleGroup(stuck.tier)}
-            />
-          </div>
-        </div>
-      )}
+      <div
+        ref={bar}
+        className={cn(
+          "sticky z-10 flex flex-col gap-2 py-2 material-bar",
+          panel ? "top-0" : "top-(--spacing-bar)",
+        )}
+      >
+        {toolbar}
+        {jumps.length > 1 && (
+          <JumpStrip
+            jumps={jumps}
+            current={inView}
+            compact={compact}
+            onJump={(jump) => jumpTo(jump.index)}
+          />
+        )}
+      </div>
+      {empty}
       <ol
         ref={list}
         aria-label="Streams"
@@ -282,6 +361,7 @@ export function StreamList({
                   candidate={row.candidate}
                   best={row.kind === "top"}
                   usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
+                  note={row.kind === "top" ? (topNote ?? null) : null}
                   current={playing?.(row.candidate) ?? false}
                   addon={names.get(row.candidate.source) ?? ""}
                   named={named.has(key)}
@@ -298,6 +378,80 @@ export function StreamList({
   );
 }
 
+// The strip of groups under the toolbar: "Top pick · 4K 42 · 1080p 120 · …",
+// the one in view marked. Real links in the page's navigation (buttons that
+// move focus to the group), with the number key that reaches each. On the
+// phone it's a line of chips that scrolls sideways.
+function JumpStrip({
+  jumps,
+  current,
+  compact,
+  onJump,
+}: {
+  jumps: readonly Jump[];
+  current: string | undefined;
+  compact: boolean;
+  onJump: (jump: Jump) => void;
+}) {
+  return (
+    <nav aria-label="Stream groups">
+      <ScrollRail>
+        <ul className="flex shrink-0 items-center gap-1">
+          {jumps.map((jump, index) => {
+            const here = jump.key === current;
+            const key = index < jumpKeys ? String(index + 1) : undefined;
+            return (
+              <li key={jump.key} className="flex shrink-0 items-center gap-1">
+                {!compact && index > 0 && (
+                  <span aria-hidden className="text-muted-foreground/60">
+                    ·
+                  </span>
+                )}
+                <button
+                  type="button"
+                  aria-current={here ? "location" : undefined}
+                  aria-keyshortcuts={key}
+                  title={key ? `${jump.label} (${key})` : jump.label}
+                  onClick={() => onJump(jump)}
+                  className={cn(
+                    "flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3 text-small font-[560] whitespace-nowrap outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
+                    here
+                      ? "bg-foreground text-background"
+                      : compact
+                        ? "bg-foreground/6 text-foreground/75 hover:bg-foreground/10"
+                        : "text-foreground/70 hover:bg-foreground/6 hover:text-foreground",
+                  )}
+                >
+                  {jump.label}
+                  {jump.count !== null && " "}
+                  {jump.count !== null && (
+                    <span className="tnum font-normal opacity-70">{jump.count}</span>
+                  )}
+                  {key && !compact && (
+                    <Kbd
+                      aria-hidden
+                      className={cn(
+                        "hidden h-4 min-w-4 pointer-fine:inline-flex",
+                        here && "bg-background/20 text-background",
+                      )}
+                    >
+                      {key}
+                    </Kbd>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </ScrollRail>
+    </nav>
+  );
+}
+
+const typingIn = (target: EventTarget | null) =>
+  target instanceof HTMLElement &&
+  (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+
 type RowProps = {
   "data-row-index": number;
   tabIndex: number;
@@ -312,19 +466,15 @@ const groupNotes: Partial<Record<Tier, string>> = {
 };
 
 // A quality group's heading: its name and how many streams it holds. The
-// collapsed groups are a button that opens them. `stuck` is the copy that
-// stays under the title bar, on material-pop: for the pointer only, so it leaves
-// the tab order.
+// collapsed groups are a button that opens them.
 function GroupHeading({
   row,
   rowProps,
-  stuck = false,
   compact = false,
   onToggle,
 }: {
   row: Extract<ListRow, { kind: "group" }>;
   rowProps?: RowProps;
-  stuck?: boolean;
   // The phone (#136): 13 pt uppercase, in the glass band.
   compact?: boolean;
   onToggle: () => void;
@@ -342,7 +492,6 @@ function GroupHeading({
       <button
         type="button"
         {...rowProps}
-        {...(stuck && { tabIndex: -1 })}
         aria-expanded={row.open}
         onClick={onToggle}
         className="pointer-events-auto flex w-full cursor-pointer items-center gap-2 rounded-full px-4 py-1.5 text-start outline-none transition-colors hover:bg-foreground/5 focus-visible:ring-2 focus-visible:ring-ring"
@@ -363,12 +512,6 @@ function GroupHeading({
   const type = compact
     ? "text-[0.8125rem] font-[650] tracking-[0.04em] uppercase"
     : "text-[0.9375rem] font-[650] tracking-[-0.01em]";
-  if (stuck && compact) return <div className={`pointer-events-auto py-1.5 ${type}`}>{inner}</div>;
-  if (stuck) {
-    return (
-      <div className={`material-pop pointer-events-auto rounded-full p-0.5 ${type}`}>{inner}</div>
-    );
-  }
   return <h2 className={`${compact ? "pt-4 pb-1" : "pt-6 pb-1"} ${type}`}>{inner}</h2>;
 }
 
@@ -387,6 +530,7 @@ function StreamRow({
   candidate,
   best,
   usual,
+  note,
   current,
   addon,
   named,
@@ -399,6 +543,8 @@ function StreamRow({
   candidate: Candidate;
   best: boolean;
   usual: boolean;
+  // What the filters keep, after "Top pick".
+  note: string | null;
   current: boolean;
   addon: string;
   named: boolean;
@@ -442,6 +588,12 @@ function StreamRow({
             >
               <span className="flex items-center gap-2 text-small font-semibold text-sun-ink">
                 <span className="type-eyebrow">Top pick</span>
+                {note && (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span>{note}</span>
+                  </>
+                )}
                 {usual && (
                   <>
                     <span aria-hidden>·</span>
@@ -542,6 +694,12 @@ function StreamRow({
             <span className="flex min-w-0 flex-1 flex-col items-start gap-2.5">
               <span className="flex items-center gap-2 text-small font-semibold text-sun-ink">
                 <span className="type-eyebrow">Top pick</span>
+                {note && (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span>{note}</span>
+                  </>
+                )}
                 {usual && (
                   <>
                     <span aria-hidden>·</span>

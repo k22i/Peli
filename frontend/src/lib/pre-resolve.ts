@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import type { Candidate } from "@/lib/ranking";
 import { isPluginSource } from "@/lib/plugins";
@@ -145,4 +145,23 @@ export function usePreResolve(
       return current.promise;
     },
   };
+}
+
+// `value` as it was when `key` last held still for `delay` ms: while the key
+// keeps changing (the picker's filters, chip after chip), the value from
+// before; once it settles, the live value again. The picker feeds the
+// filtered top pick through this, so toggling filters resolves nothing ahead
+// on the way.
+export function useSettled<T>(value: T, key: string, delay: number): T {
+  const [held, setHeld] = useState({ key, value });
+  const fresh = held.key === key;
+  // Kept up with while the key holds (state from the last render, as React
+  // allows during render).
+  if (fresh && held.value !== value) setHeld({ key, value });
+  useEffect(() => {
+    if (fresh) return undefined;
+    const timer = setTimeout(() => setHeld({ key, value }), delay);
+    return () => clearTimeout(timer);
+  }, [fresh, key, value, delay]);
+  return fresh ? value : held.value;
 }

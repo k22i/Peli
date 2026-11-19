@@ -83,6 +83,7 @@ const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   torrentStreaming: false,
   torrentCacheGB: 5,
   preResolve: false,
+  streamSort: "best",
   quality: defaultQuality,
   audio: defaultAudio,
   ...changes,

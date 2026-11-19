@@ -147,6 +147,9 @@ type DeviceSettings struct {
 	// unless the user turns it on: resolving adds the file to the debrid
 	// service's list, even if it never plays.
 	PreResolve bool `json:"preResolve"`
+	// How the stream picker sorts within each quality group: one of
+	// StreamSorts. Filters last for the session; the sort stays.
+	StreamSort string `json:"streamSort"`
 	// Quality is how hard the renderer works on the picture, unless a
 	// title has its own.
 	Quality Quality `json:"quality"`
@@ -166,6 +169,7 @@ var (
 	TorrentCacheSizes = []int{2, 5, 10, 20, 50}
 	MaxResolutions    = []string{"auto", "2160p", "1080p", "720p"}
 	DisplayModes      = []string{"auto", "on", "off"}
+	StreamSorts       = []string{"best", "size-desc", "size-asc", "seeders"}
 	// MaxAudioLanguages is how many audio languages a profile can list.
 	MaxAudioLanguages = 8
 	// MaxStillWatchingAfter is the most episodes a profile can let play in
@@ -193,7 +197,7 @@ func DefaultDeviceSettings() DeviceSettings {
 	return DeviceSettings{
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
-		Audio: DefaultAudio(),
+		Audio: DefaultAudio(), StreamSort: "best",
 	}
 }
 
@@ -320,6 +324,12 @@ func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
 	}
 	if settings.Audio == (Audio{}) {
 		settings.Audio = DefaultAudio()
+	}
+	if settings.StreamSort == "" {
+		settings.StreamSort = "best"
+	}
+	if !slices.Contains(StreamSorts, settings.StreamSort) {
+		return fmt.Errorf("%w: stream sort %q", ErrInvalidSettings, settings.StreamSort)
 	}
 	if !settings.Audio.Valid() {
 		return fmt.Errorf("%w: audio %+v", ErrInvalidSettings, settings.Audio)
