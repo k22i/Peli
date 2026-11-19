@@ -349,6 +349,22 @@ const names = (value: unknown) =>
 // The region the user's system names ("en-GB" gives "GB"), for age ratings.
 const systemRegion = () => /-([A-Za-z]{2})\b/.exec(navigator.language)?.[1]?.toUpperCase() ?? "US";
 
+// The backdrop to show under the hero's own title: one without text
+// (`iso_639_1` null, or "xx", TMDB's "no language"), since the hero sets the
+// title or logo itself. The main `backdrop_path` when it is textless, else
+// the first textless one (TMDB lists them best voted first), else the main
+// one whatever it carries. Needs `images` with `include_image_language`
+// naming `null`.
+export function textlessBackdrop(details: Record<string, unknown>): string | undefined {
+  const main = text(details["backdrop_path"]);
+  const textless = list(record(details["images"])["backdrops"])
+    .filter((image) => image["iso_639_1"] == null || image["iso_639_1"] === "xx")
+    .map((image) => text(image["file_path"]))
+    .filter((path): path is string => path !== undefined);
+  if (main && textless.includes(main)) return main;
+  return textless[0] ?? main;
+}
+
 // Reads TMDB's details with `images` and `credits` (a film) or
 // `aggregate_credits` (a series, which names a character per role), the
 // title's other names from `alternative_titles` and `translations`, and the
@@ -374,7 +390,7 @@ export function parseTmdbArt(answer: unknown, region = systemRegion()): TmdbArt 
     })
     .slice(0, castLimit);
   const logoUrl = logo && tmdbImage("w500", logo["file_path"]);
-  const backdrop = tmdbImage("original", details["backdrop_path"]);
+  const backdrop = tmdbImage("original", textlessBackdrop(details));
   const aliases = parseTmdbAliases(details);
   const certificate = parseCertificate(details, region);
   const trailer = parseTrailer(details);

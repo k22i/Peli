@@ -1,8 +1,17 @@
-import { Children, useLayoutEffect, useRef, useState, type ReactNode, type Ref } from "react";
+import {
+  Children,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type Ref,
+} from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { Skeleton } from "@/components/ui/skeleton";
+import { isBright, isDarkLogo, regionTone, useArtTone, type Region } from "@/lib/art-tone";
 import { sharper, viaProxy } from "@/lib/artwork-url";
 import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
@@ -21,6 +30,60 @@ const heights: Record<HeroSize, string> = {
   title: "min-h-[min(74vh,44rem)] ios-compact:min-h-[52svh]",
   default: "min-h-[min(56vh,30rem)]",
 };
+
+// The shade behind the text (#B, contrast). Wide: from the start edge,
+// ~85 % black behind the text column, gone by about 60 % of the width.
+// Compact (the phone): the text runs the full width, so it's shaded from
+// the bottom instead. `--text-x` is where the text column starts.
+const shade: Record<"wide" | "compact", string> = {
+  wide: "linear-gradient(90deg, rgb(0 0 0/0.85), rgb(0 0 0/0.8) calc(var(--text-x) + 22rem), rgb(0 0 0/0.55) calc(var(--text-x) + 38rem), transparent max(60%, calc(var(--text-x) + 50rem)))",
+  compact: "linear-gradient(0deg, rgb(0 0 0/0.85), rgb(0 0 0/0.75) 45%, transparent 80%)",
+};
+// On top over bright art, or art that can't be read (the safe side).
+const brightShade: Record<"wide" | "compact", string> = {
+  wide: "linear-gradient(90deg, rgb(0 0 0/0.5), rgb(0 0 0/0.45) calc(var(--text-x) + 38rem), transparent max(72%, calc(var(--text-x) + 60rem)))",
+  compact: "linear-gradient(0deg, rgb(0 0 0/0.5), rgb(0 0 0/0.4) 50%, transparent 85%)",
+};
+const bottomShade = "linear-gradient(0deg, rgb(0 0 0/0.7), rgb(0 0 0/0.3) 35%, transparent 65%)";
+
+// Small light text over art: a faint shadow keeps its edges off bright pixels.
+const textShadow = "[text-shadow:0_1px_2px_rgb(0_0_0/0.45)]";
+
+const regionKeys = ["aspect", "x0", "x1", "y0", "y1"] as const;
+
+// Where the text column sits over the art, measured, so the backdrop's
+// brightness is read behind the text and not across the whole image.
+function useTextRegion() {
+  const frame = useRef<HTMLDivElement>(null);
+  const column = useRef<HTMLDivElement>(null);
+  const [region, setRegion] = useState<Region>();
+  useEffect(() => {
+    const box = frame.current;
+    const text = column.current;
+    if (!box || !text || typeof ResizeObserver === "undefined") return undefined;
+    const measure = () => {
+      const outer = box.getBoundingClientRect();
+      const inner = text.getBoundingClientRect();
+      if (outer.width === 0 || outer.height === 0) return;
+      const next: Region = {
+        aspect: outer.width / outer.height,
+        x0: (inner.left - outer.left) / outer.width,
+        x1: (inner.right - outer.left) / outer.width,
+        y0: (inner.top - outer.top) / outer.height,
+        y1: (inner.bottom - outer.top) / outer.height,
+      };
+      setRegion((last) =>
+        last && regionKeys.every((key) => Math.abs(last[key] - next[key]) < 0.02) ? last : next,
+      );
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(box);
+    observer.observe(text);
+    return () => observer.disconnect();
+  }, []);
+  return { frame, column, region };
+}
 
 // Art with its story set over the lower left: an eyebrow, the title (the
 // show's logo when there is one, else the display serif), a meta line, the
@@ -63,6 +126,11 @@ export function Hero({
   useArtUnderBar(bleeds);
   const compactShell = useCompactShell();
   const phoneTitle = size === "title" && compactShell;
+  const { frame, column, region } = useTextRegion();
+  // Bright behind the text, unreadable, or not read yet: shade harder.
+  const tone = useArtTone(backdrop, "backdrop");
+  const bright = !tone || !region || isBright(regionTone(tone, region));
+  const shape = compactShell ? "compact" : "wide";
   return (
     <section
       ref={ref}
@@ -76,8 +144,11 @@ export function Hero({
       )}
     >
       <div
+        ref={frame}
+        data-art-tone={tone === undefined ? "reading" : bright ? "bright" : "dark"}
         className={cn(
           "dark relative isolate flex items-end overflow-hidden text-foreground",
+          bleeds ? "[--text-x:var(--spacing-page)]" : "[--text-x:2.5rem]",
           !bleeds && "rounded-3xl shadow-float",
           compact ? "min-h-80" : heights[size],
         )}
@@ -90,10 +161,22 @@ export function Hero({
           title={title}
           className="absolute inset-0 -z-10 motion-safe:animate-[hero-settle_1.6s_var(--ease-out-soft)_both]"
         />
-        {/* Scrims: a deep pool of shadow under the text at the lower left,
-            and the fade into the page. */}
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(120%_90%_at_0%_100%,rgb(0_0_0/0.82),rgb(0_0_0/0.35)_45%,transparent_75%)]" />
-        <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+        {/* Scrims: shade behind the text column, more over bright art,
+            from the bottom, and the fade into the page. */}
+        <div
+          data-slot="hero-shade"
+          className="absolute inset-0 -z-10"
+          style={{ backgroundImage: shade[shape] }}
+        />
+        <div
+          data-slot="hero-bright-shade"
+          className={cn(
+            "absolute inset-0 -z-10 transition-opacity duration-(--duration-slow) ease-out-soft",
+            !bright && "opacity-0",
+          )}
+          style={{ backgroundImage: brightShade[shape] }}
+        />
+        <div className="absolute inset-0 -z-10" style={{ backgroundImage: bottomShade }} />
         {bleeds && (
           <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-(--fade-h) bg-linear-to-t from-(--fade) via-(--fade)/70 to-transparent" />
         )}
@@ -108,8 +191,14 @@ export function Hero({
             size === "title" && "ios-compact:pt-[calc(var(--spacing-bar)+0.5rem)]",
           )}
         >
-          <div className="flex max-w-2xl min-w-0 flex-col gap-4">
-            {eyebrow && <p className="type-eyebrow text-[#ffc46b]">{eyebrow}</p>}
+          <div ref={column} className="flex max-w-2xl min-w-0 flex-col gap-4">
+            {eyebrow && (
+              // White to read on any art; the sun stays as the dot.
+              <p className={cn("flex items-center gap-2 type-eyebrow text-white/90", textShadow)}>
+                <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-sun" />
+                {eyebrow}
+              </p>
+            )}
             <h1 className={cn("text-white", bleeds ? "type-hero" : "type-display")}>
               {logo ? (
                 <Logo
@@ -132,7 +221,12 @@ export function Hero({
               (phoneTitle && typeof synopsis === "string" ? (
                 <Overview key={synopsis} text={synopsis} />
               ) : (
-                <p className="line-clamp-3 max-w-xl text-[0.9375rem] leading-relaxed text-pretty text-white/78">
+                <p
+                  className={cn(
+                    "line-clamp-3 max-w-xl text-[0.9375rem] leading-relaxed text-pretty text-white/90",
+                    textShadow,
+                  )}
+                >
                   {synopsis}
                 </p>
               ))}
@@ -164,7 +258,8 @@ function Overview({ text }: { text: string }) {
         ref={paragraph}
         id="overview"
         className={cn(
-          "text-[0.9375rem] leading-relaxed text-pretty text-white/78",
+          "text-[0.9375rem] leading-relaxed text-pretty text-white/90",
+          textShadow,
           !open && "line-clamp-3",
         )}
       >
@@ -191,7 +286,8 @@ export function MetaLine({ items, className }: { items: ReactNode[]; className?:
   return (
     <p
       className={cn(
-        "flex flex-wrap items-center gap-x-2.5 gap-y-1 text-small font-[510] text-white/75 tnum",
+        "flex flex-wrap items-center gap-x-2.5 gap-y-1 text-small font-[510] text-white/90 tnum",
+        textShadow,
         className,
       )}
     >
@@ -227,6 +323,9 @@ export function Logo({
   className?: string | undefined;
 }) {
   const [failed, setFailed] = useState<string[]>([]);
+  // A logo in near-black ink would vanish on the shade: show it in white.
+  const tone = useArtTone(src, "logo");
+  const silhouette = tone ? isDarkLogo(tone) : false;
   if (failed.includes(src)) return title;
   const sharp = sharper(src, "logo") ?? src;
   const shown = failed.includes(sharp) ? src : sharp;
@@ -236,8 +335,10 @@ export function Logo({
       src={viaProxy(shown)}
       alt={title}
       onError={() => setFailed([...failed, shown])}
+      data-silhouette={silhouette || undefined}
       className={cn(
         "max-h-28 max-w-[min(26rem,100%)] object-contain object-left drop-shadow-[0_4px_24px_rgb(0_0_0/0.5)]",
+        silhouette && "brightness-0 invert",
         className,
       )}
     />
