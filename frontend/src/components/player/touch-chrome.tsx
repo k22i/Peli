@@ -6,6 +6,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Ellipsis,
+  Eye,
   FastForward,
   Gauge,
   LifeBuoy,
@@ -18,6 +19,7 @@ import {
   VolumeX,
   X,
 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 
 import { sheetSurface } from "@/components/player/panel-controls";
@@ -42,8 +44,12 @@ import {
   episodes as episodesOf,
   seasonLabel,
   seasons as seasonsOf,
+  titleProgressQuery,
+  titleState,
+  titleWatchedQuery,
   type Episode,
 } from "@/lib/title";
+import { useSpoilers } from "@/lib/spoilers";
 import { cn } from "@/lib/utils";
 
 // The touch player's chrome (#130), after YouTube, Netflix and Infuse: a
@@ -745,11 +751,13 @@ function SheetLink({
 // the other seasons a tap away. Picking one goes through the stream picker,
 // as the next episode does when there's no stream ready.
 export function EpisodesSheet({
+  profileId,
   meta,
   playing,
   onPick,
   onClose,
 }: {
+  profileId: number;
   meta: Meta;
   // The episode playing's id.
   playing: string;
@@ -761,6 +769,16 @@ export function EpisodesSheet({
   const current = list.find((episode) => episode.id === playing);
   const [season, setSeason] = useState(current?.season ?? all[0] ?? 1);
   const shown = list.filter((episode) => episode.season === season);
+  // Spoiler protection: stills of episodes not watched or started are
+  // blurred; one button reveals the season's.
+  const spoilers = useSpoilers(profileId);
+  const marks = useQuery(titleWatchedQuery(profileId, meta.id)).data ?? [];
+  const progress = useQuery(titleProgressQuery(profileId, meta.id)).data ?? [];
+  const state = titleState(meta, marks, progress);
+  const hidden = (episode: Episode) =>
+    episode.id !== playing &&
+    spoilers.hidden(episode.id, state.watched(episode), state.progress(episode) !== undefined);
+  const hiddenShown = shown.filter((episode) => episode.thumbnail && hidden(episode));
   return (
     <SideSheet label="Episodes" onClose={onClose} className="w-[min(24rem,calc(100%-1rem))]">
       {all.length > 1 && (
@@ -782,6 +800,20 @@ export function EpisodesSheet({
           ))}
         </fieldset>
       )}
+      {hiddenShown.length > 0 && (
+        <div className="flex shrink-0 justify-end px-3 pb-1">
+          <button
+            type="button"
+            onClick={() => {
+              for (const episode of hiddenShown) spoilers.reveal(episode.id);
+            }}
+            className="flex h-8 items-center gap-1.5 rounded-full bg-white/10 px-3 text-[0.8125rem] font-[600] text-white/80 outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Eye aria-hidden className="size-4" />
+            Reveal pictures
+          </button>
+        </div>
+      )}
       <ul className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-2 pb-3">
         {shown.map((episode) => {
           const now = episode.id === playing;
@@ -800,7 +832,10 @@ export function EpisodesSheet({
                       src={episode.thumbnail}
                       alt=""
                       loading="lazy"
-                      className="absolute inset-0 size-full object-cover"
+                      className={cn(
+                        "absolute inset-0 size-full object-cover",
+                        hidden(episode) && "scale-110 blur-lg",
+                      )}
                       onError={(event) => {
                         event.currentTarget.hidden = true;
                       }}

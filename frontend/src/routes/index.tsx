@@ -1,9 +1,17 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
+import { heroArrowStep } from "@/lib/marquee";
 import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
 import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { AnimePosterCard } from "@/components/media/anime-poster-card";
@@ -266,6 +274,44 @@ function CatalogHero({
   const [index, setIndex] = useState(0);
   const [held, setHeld] = useState(false);
   const count = metas.length;
+  // ← and → page the marquee while focus is in it. The hero remounts per
+  // title, so the focused control's place is kept and refocused; from a dash,
+  // focus follows to the new title's dash.
+  const frame = useRef<HTMLDivElement>(null);
+  const refocus = useRef<number | "dot" | undefined>(undefined);
+  const [announced, setAnnounced] = useState("");
+  const page = useEffectEvent((event: KeyboardEvent) => {
+    const by = heroArrowStep(event, count);
+    if (!by) return;
+    event.preventDefault();
+    const focusable = [...(frame.current?.querySelectorAll<HTMLElement>(heroFocusable) ?? [])];
+    const at = focusable.findIndex((element) => element === document.activeElement);
+    const onDot = document.activeElement?.hasAttribute("data-marquee-dot") === true;
+    refocus.current = onDot ? "dot" : Math.max(at, 0);
+    const to = (index + by + count) % count;
+    setIndex(to);
+    setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
+  });
+  // A listener on the frame, as it's no control itself. Attached after each
+  // render: the frame mounts only once there's a title.
+  useEffect(() => {
+    const element = frame.current;
+    if (!element) return undefined;
+    element.addEventListener("keydown", page);
+    return () => element.removeEventListener("keydown", page);
+  });
+  // After every render, cheaply: only a keyboard page leaves a place to refocus.
+  useLayoutEffect(() => {
+    const at = refocus.current;
+    if (at === undefined) return;
+    refocus.current = undefined;
+    const focusable = frame.current?.querySelectorAll<HTMLElement>(heroFocusable);
+    const target =
+      at === "dot"
+        ? frame.current?.querySelector<HTMLElement>("[data-marquee-dot][aria-current]")
+        : focusable?.[at];
+    (target ?? focusable?.[0])?.focus({ preventScroll: true });
+  });
 
   useEffect(() => {
     if (held || count < 2 || prefersReducedMotion()) return undefined;
@@ -285,11 +331,15 @@ function CatalogHero({
   const entry = context.watching.find((item) => item.contentId === meta.id);
   return (
     <div
+      ref={frame}
       onPointerEnter={() => setHeld(true)}
       onPointerLeave={() => setHeld(false)}
       onFocus={() => setHeld(true)}
       onBlur={() => setHeld(false)}
     >
+      <p aria-live="polite" className="sr-only">
+        {announced}
+      </p>
       <Hero
         key={meta.id}
         size="feature"
@@ -325,6 +375,8 @@ function CatalogHero({
   );
 }
 
+const heroFocusable = "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])";
+
 // One dash per title; the current one is long and fills with sunlight as
 // its turn runs out.
 function MarqueeDots({
@@ -346,6 +398,7 @@ function MarqueeDots({
         <button
           key={titles[dot]?.id ?? dot}
           type="button"
+          data-marquee-dot
           aria-label={`Show ${titles[dot]?.name ?? dot + 1}`}
           aria-current={dot === index || undefined}
           onClick={() => onPick(dot)}

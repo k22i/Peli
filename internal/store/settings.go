@@ -56,6 +56,10 @@ type ProfileSettings struct {
 	// shows, where an entry is one film or show to it; "" keeps AniList's
 	// covers. The catalog and its details stay AniList's.
 	AnimePosterAddon string `json:"animePosterAddon"`
+	// HideSpoilers blurs the stills and descriptions of episodes not yet
+	// watched or started, each until it's revealed. Off unless the
+	// profile turns it on; a kids profile has its own switch too.
+	HideSpoilers bool `json:"hideSpoilers"`
 	// Picture is the adjustment every title plays with, unless it has its
 	// own (TitleAdjustments); PicturePresets are the profile's own presets.
 	Picture        Picture        `json:"picture"`

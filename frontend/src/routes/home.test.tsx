@@ -316,6 +316,85 @@ describe("catalogs", () => {
     expect(within(hero).getByRole("button", { name: "Resume" })).toBeInTheDocument();
   });
 
+  // ← and → page the rotating hero while focus is in it; focus stays on the
+  // same control of the new title, and wraps at the ends.
+  it("pages the hero with the arrow keys while it has focus", async () => {
+    const user = userEvent.setup();
+    const [first, second] = cinemetaMovies.metas.filter((meta) => meta.background);
+    await renderApp("/");
+
+    const hero = await screen.findByRole("region", { name: first!.name });
+    within(hero).getByRole("button", { name: "Play" }).focus();
+    await user.keyboard("{ArrowRight}");
+    const next = await screen.findByRole("region", { name: second!.name });
+    expect(within(next).getByRole("button", { name: "Play" })).toHaveFocus();
+    expect(screen.getByText(new RegExp(`^2 of \\d: ${second!.name}$`))).toBeInTheDocument();
+
+    await user.keyboard("{ArrowLeft}");
+    const back = await screen.findByRole("region", { name: first!.name });
+    expect(within(back).getByRole("button", { name: "Play" })).toHaveFocus();
+
+    // From the first, ← wraps to the last.
+    await user.keyboard("{ArrowLeft}");
+    const dots = screen.getAllByRole("button", { name: /^Show / });
+    expect(dots.at(-1)).toHaveAttribute("aria-current", "true");
+  });
+
+  it("moves focus to the new title's dash when paged from a dash", async () => {
+    const user = userEvent.setup();
+    const [first, second] = cinemetaMovies.metas.filter((meta) => meta.background);
+    await renderApp("/");
+
+    await screen.findByRole("region", { name: first!.name });
+    screen.getByRole("button", { name: `Show ${first!.name}` }).focus();
+    await user.keyboard("{ArrowRight}");
+    await screen.findByRole("region", { name: second!.name });
+    expect(screen.getByRole("button", { name: `Show ${second!.name}` })).toHaveFocus();
+  });
+
+  it("leaves the arrow keys alone outside the hero", async () => {
+    const user = userEvent.setup();
+    const first = cinemetaMovies.metas.find((meta) => meta.background);
+    await renderApp("/");
+
+    await screen.findByRole("region", { name: first!.name });
+    within(await row("Popular · Movies"))
+      .getAllByRole("button")[0]!
+      .focus();
+    await user.keyboard("{ArrowRight}");
+    expect(screen.getByRole("region", { name: first!.name })).toBeInTheDocument();
+  });
+
+  // Reduced motion: the hero never turns by itself, but the keys still page it.
+  it("never rotates the hero by itself with reduced motion", async () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"], shouldAdvanceTime: true });
+    vi.stubGlobal("matchMedia", (query: string) => ({
+      matches: query.includes("reduce"),
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }));
+    try {
+      const [first, second] = cinemetaMovies.metas.filter((meta) => meta.background);
+      const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+      await renderApp("/");
+
+      const hero = await screen.findByRole("region", { name: first!.name });
+      await vi.advanceTimersByTimeAsync(30_000);
+      expect(screen.getByRole("region", { name: first!.name })).toBe(hero);
+
+      within(hero).getByRole("button", { name: "Play" }).focus();
+      await user.keyboard("{ArrowRight}");
+      expect(await screen.findByRole("region", { name: second!.name })).toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   // The acceptance criterion: from launch, resuming takes one click here,
   // then the stream picker's one (#52), within the three allowed.
   it("resumes a Continue Watching entry in one click", async () => {
