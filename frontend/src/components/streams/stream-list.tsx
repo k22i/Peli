@@ -626,7 +626,7 @@ function StreamRow({
                 <span>{quality}</span>
                 {source && <span>{source}</span>}
               </span>
-              <Badges candidate={candidate} line />
+              <Badges candidate={candidate} />
               <Details candidate={candidate} addon={addon} />
             </button>
             {fileName}
@@ -648,7 +648,8 @@ function StreamRow({
 
   if (compact) {
     const why = candidate.verdict.bucket === "ok" ? null : reasonsLabel(candidate);
-    const size = [sizeText(candidate.parsed), bitrateLabel(candidate.parsed, runtime)]
+    // Size and addon share the first line, so the badges get the second.
+    const size = [sizeText(candidate.parsed), bitrateLabel(candidate.parsed, runtime), addon]
       .filter(Boolean)
       .join(" · ");
     return (
@@ -668,7 +669,7 @@ function StreamRow({
                 {source && <span className="ms-2">{source}</span>}
               </span>
               {size && (
-                <span className="tnum ms-auto shrink-0 text-small text-muted-foreground">
+                <span className="tnum ms-auto max-w-[55%] shrink-0 truncate text-small text-muted-foreground">
                   {size}
                 </span>
               )}
@@ -683,11 +684,6 @@ function StreamRow({
                   />
                   <span className="sr-only">{why}</span>
                 </>
-              )}
-              {addon && (
-                <span className="ms-auto max-w-[40%] shrink-0 truncate text-small text-muted-foreground">
-                  {addon}
-                </span>
               )}
             </span>
           </button>
@@ -799,28 +795,33 @@ function Badges({ candidate, line = false }: { candidate: Candidate; line?: bool
   const codec = videoCodecLabel(parsed);
   const how = delivery(parsed);
   if (parsed.hdr.length === 0 && !codec && !audio && !parsed.atmos && !how) return null;
+  const delivered = how && (
+    <StreamBadge tone={how.kind === "cached" ? "sun" : "neutral"}>
+      {how.kind === "cached" && <Zap aria-hidden className="fill-current" />}
+      {how.kind === "uncached" && <Download aria-hidden />}
+      {how.kind === "p2p" && <Users aria-hidden />}
+      {how.label}
+    </StreamBadge>
+  );
   return (
     <span
       className={cn(
         "flex items-center gap-1.5",
-        // The phone: one line that scrolls sideways, never wrapping (#136).
-        line ? "no-scrollbar min-w-0 flex-nowrap overflow-x-auto whitespace-nowrap" : "flex-wrap",
+        // The phone: one line that scrolls sideways, never wrapping (#136),
+        // how it plays first and the end faded where it runs on.
+        line
+          ? "no-scrollbar min-w-0 flex-nowrap overflow-x-auto whitespace-nowrap mask-[linear-gradient(to_right,black_calc(100%-1.5rem),transparent)]"
+          : "flex-wrap",
       )}
     >
+      {line && delivered}
       {codec && <StreamBadge>{codec}</StreamBadge>}
       {parsed.hdr.map((hdr) => (
         <StreamBadge key={hdr}>{hdr === "DV" ? "Dolby Vision" : hdr}</StreamBadge>
       ))}
       {audio && <StreamBadge>{audio}</StreamBadge>}
       {parsed.atmos && <StreamBadge>Atmos</StreamBadge>}
-      {how && (
-        <StreamBadge tone={how.kind === "cached" ? "sun" : "neutral"}>
-          {how.kind === "cached" && <Zap aria-hidden className="fill-current" />}
-          {how.kind === "uncached" && <Download aria-hidden />}
-          {how.kind === "p2p" && <Users aria-hidden />}
-          {how.label}
-        </StreamBadge>
-      )}
+      {!line && delivered}
     </span>
   );
 }

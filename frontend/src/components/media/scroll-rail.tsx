@@ -102,7 +102,7 @@ export function ScrollRail({
         role={label ? "region" : undefined}
         aria-label={label}
         onFocus={followFocus}
-        className="no-scrollbar rail-mask -my-1 flex gap-2 overflow-x-auto overscroll-x-contain scroll-px-(--spacing-page) px-page py-1"
+        className="no-scrollbar rail-mask relative -my-1 flex gap-2 overflow-x-auto overscroll-x-contain scroll-px-(--spacing-page) px-page py-1"
       >
         {children}
       </div>
