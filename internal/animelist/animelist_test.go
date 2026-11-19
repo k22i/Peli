@@ -115,3 +115,46 @@ func TestLeaveOut(t *testing.T) {
 		t.Errorf("LeaveOut = %+v", got)
 	}
 }
+
+// A show's first season and a show with films filed as its specials take
+// the show's poster; later seasons, second cours, specials and entries
+// that can't be told apart keep AniList's cover.
+func TestPosterTitle(t *testing.T) {
+	entries, err := parse([]byte(`[
+ {"type":"OVA","anilist_id":87528,"kitsu_id":12625,"imdb_id":["tt7441658"],"season":{"tvdb":0}},
+ {"type":"TV","anilist_id":97940,"kitsu_id":13209,"imdb_id":["tt7441658"],"season":{"tvdb":1}},
+ {"type":"TV","anilist_id":195604,"kitsu_id":50024,"imdb_id":["tt7441658"],"season":{"tvdb":2}},
+ {"type":"TV","anilist_id":1735,"kitsu_id":1555,"imdb_id":["tt0988824"]},
+ {"type":"MOVIE","anilist_id":10686,"kitsu_id":6292,"imdb_id":["tt0988824"],"season":{"tvdb":0}},
+ {"type":"TV","anilist_id":20958,"imdb_id":["tt2560140"],"season":{"tvdb":1}},
+ {"type":"TV","anilist_id":104578,"imdb_id":["tt2560140"],"season":{"tvdb":1},"episode_offset":{"tvdb":12}},
+ {"type":"MOVIE","anilist_id":21827,"imdb_id":["tt5311514"]},
+ {"type":"TV","anilist_id":1,"imdb_id":["tt0000001"]},
+ {"type":"ONA","anilist_id":2,"imdb_id":["tt0000001"]}
+]`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	l := FromEntries(entries)
+	ctx := context.Background()
+	for _, tc := range []struct {
+		id   string
+		want PosterTitle
+	}{
+		{"anilist:97940", PosterTitle{"tt7441658", "series"}},
+		{"kitsu:13209", PosterTitle{"tt7441658", "series"}},
+		{"anilist:195604", PosterTitle{}},
+		{"anilist:87528", PosterTitle{}},
+		{"kitsu:1555", PosterTitle{"tt0988824", "series"}},
+		{"anilist:10686", PosterTitle{}},
+		{"anilist:20958", PosterTitle{"tt2560140", "series"}},
+		{"anilist:104578", PosterTitle{}},
+		{"anilist:21827", PosterTitle{"tt5311514", "movie"}},
+		{"anilist:1", PosterTitle{}},
+		{"anilist:404", PosterTitle{}},
+	} {
+		if got, _ := l.PosterTitle(ctx, tc.id); got != tc.want {
+			t.Errorf("%s: PosterTitle = %+v; want %+v", tc.id, got, tc.want)
+		}
+	}
+}

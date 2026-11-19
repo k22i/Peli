@@ -82,11 +82,13 @@ type PosterTitle struct {
 
 // PosterTitles returns the IMDb title whose poster stands for each id
 // ("kitsu:N" or "anilist:N", as the Anime tab's items are named), for one
-// page of results at a time (#128), only when the entry is that title one
-// to one: a film, or a show's only season. A later season, a cour of a split
-// season, or a show AniList splits into several entries all share the
-// show's IMDb id, and its poster would stand for none of them, so they keep
-// AniList's cover (an empty PosterTitle). Ready is false while the list
+// page of results at a time (#128), only when the entry is the one that
+// title starts with: a film, or a show's first season, as the poster addon
+// (Xperience, BetterPosters…) and search show it. Later seasons, the second
+// cour of a split season, and films or OVAs TVDB files as a show's specials
+// (season 0) share the show's IMDb id, but its poster isn't theirs, so they
+// keep AniList's cover (an empty PosterTitle). So do entries the list can't
+// tell apart: two that would each be the start. Ready is false while the list
 // isn't loaded: then every card keeps AniList's cover and the frontend asks
 // again later. On iOS it never waits on the list's download (see ready).
 func (s *Service) PosterTitles(ctx context.Context, ids []string) PosterTitles {
@@ -111,6 +113,15 @@ type PosterTitles struct {
 // and OVAs share a show's IMDb id without making it ambiguous.
 var mainTypes = []string{"TV", "TV_SHORT", "ONA", "MOVIE"}
 
+// opens reports whether e is where its IMDb title starts: a main entry on
+// the first season (or with no season, as films and single-entry shows
+// have), from its first episode. Black Clover's first season (its second
+// shares the IMDb id) and Naruto Shippuden (two films filed as its
+// specials) both open their titles.
+func opens(e *Entry) bool {
+	return slices.Contains(mainTypes, e.Type) && e.Offset == 0 && (e.Season == nil || *e.Season == 1)
+}
+
 // PosterTitle is Service.PosterTitle.
 func (l *List) PosterTitle(ctx context.Context, id string) (PosterTitle, bool) {
 	kind, number, found := strings.Cut(id, ":")
@@ -129,15 +140,12 @@ func (l *List) PosterTitle(ctx context.Context, id string) (PosterTitle, bool) {
 	case "mal":
 		e = l.mal[n]
 	}
-	if e == nil || len(e.IMDb) != 1 || !slices.Contains(mainTypes, e.Type) {
-		return PosterTitle{}, false
-	}
-	if e.Offset != 0 || (e.Season != nil && *e.Season > 1) {
+	if e == nil || len(e.IMDb) != 1 || !opens(e) {
 		return PosterTitle{}, false
 	}
 	imdb := e.IMDb[0]
 	for _, other := range l.imdb[imdb] {
-		if other != e && slices.Contains(mainTypes, other.Type) {
+		if other != e && opens(other) {
 			return PosterTitle{}, false
 		}
 	}
