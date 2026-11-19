@@ -1,6 +1,8 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
+  Check,
   ChevronRight,
+  Copy,
   Download,
   FileText,
   History,
@@ -10,6 +12,8 @@ import {
   Zap,
 } from "lucide-react";
 import {
+  createContext,
+  useContext,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -26,16 +30,19 @@ import { Kbd } from "@/components/ui/kbd";
 import { collapsedTiers, type Candidate, type RankedView, type Tier } from "@/lib/ranking";
 import {
   audioLabel,
+  bitrateLabel,
   delivery,
   languagesLabel,
   rawNames,
   reasonsLabel,
   resolutionLabel,
-  sizeLabel,
+  sizeText,
   sourceLabel,
   tierLabel,
+  videoCodecLabel,
 } from "@/lib/stream-labels";
 import { useCompactShell } from "@/lib/shell-mode";
+import { toastManager } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 
 // The ranked streams (#52): the top pick, then a group per quality, each
@@ -98,6 +105,9 @@ export function jumpTargets(rows: readonly ListRow[]): Jump[] {
 // The number keys reach the strip's first nine entries.
 const jumpKeys = 9;
 
+// The title's runtime in minutes, for the bitrate estimate beside a size.
+const Runtime = createContext<number | null>(null);
+
 export function StreamList({
   rows,
   names,
@@ -110,8 +120,11 @@ export function StreamList({
   topNote,
   empty,
   panel = false,
+  runtime = null,
 }: {
   rows: readonly ListRow[];
+  // The title's (or episode's) length in minutes, when known.
+  runtime?: number | null;
   // The filters and sort, in the sticky toolbar above the jump strip.
   toolbar?: ReactNode;
   // What the filters keep, on the top pick's card: "4K only".
@@ -302,79 +315,81 @@ export function StreamList({
   };
 
   return (
-    <div className="relative">
-      <div
-        ref={bar}
-        className={cn(
-          "sticky z-10 flex flex-col gap-2 py-2 material-bar",
-          panel ? "top-0" : "top-(--spacing-bar)",
-        )}
-      >
-        {toolbar}
-        {jumps.length > 1 && (
-          <JumpStrip
-            jumps={jumps}
-            current={inView}
-            compact={compact}
-            onJump={(jump) => jumpTo(jump.index)}
-          />
-        )}
+    <Runtime.Provider value={runtime}>
+      <div className="relative">
+        <div
+          ref={bar}
+          className={cn(
+            "sticky z-10 flex flex-col gap-2 py-2 material-bar",
+            panel ? "top-0" : "top-(--spacing-bar)",
+          )}
+        >
+          {toolbar}
+          {jumps.length > 1 && (
+            <JumpStrip
+              jumps={jumps}
+              current={inView}
+              compact={compact}
+              onJump={(jump) => jumpTo(jump.index)}
+            />
+          )}
+        </div>
+        {empty}
+        <ol
+          ref={list}
+          aria-label="Streams"
+          className="relative px-page"
+          style={{ height: virtualizer.getTotalSize() }}
+        >
+          {items.map((item) => {
+            const row = rows[item.index]!;
+            const key = rowKey(row);
+            const rowProps = {
+              "data-row-index": item.index,
+              tabIndex: key === stop ? 0 : -1,
+              onFocus: () => {
+                setActive(key);
+                onNavigate();
+              },
+              onPointerDown: onNavigate,
+              onKeyDown: (event: KeyboardEvent<HTMLElement>) => onRowKeyDown(item.index, event),
+            };
+            return (
+              <li
+                key={item.key}
+                ref={virtualizer.measureElement}
+                data-index={item.index}
+                className="absolute inset-x-page top-0"
+                style={{ transform: `translateY(${item.start - top}px)` }}
+              >
+                {row.kind === "group" ? (
+                  <GroupHeading
+                    row={row}
+                    compact={compact}
+                    rowProps={rowProps}
+                    onToggle={() => onToggleGroup(row.tier)}
+                  />
+                ) : (
+                  <StreamRow
+                    compact={compact}
+                    candidate={row.candidate}
+                    best={row.kind === "top"}
+                    usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
+                    note={row.kind === "top" ? (topNote ?? null) : null}
+                    current={playing?.(row.candidate) ?? false}
+                    addon={names.get(row.candidate.source) ?? ""}
+                    named={named.has(key)}
+                    rowProps={rowProps}
+                    onPick={() => onPick(row.candidate)}
+                    onToggleName={() => toggleName(key)}
+                  />
+                )}
+              </li>
+            );
+          })}
+        </ol>
       </div>
-      {empty}
-      <ol
-        ref={list}
-        aria-label="Streams"
-        className="relative px-page"
-        style={{ height: virtualizer.getTotalSize() }}
-      >
-        {items.map((item) => {
-          const row = rows[item.index]!;
-          const key = rowKey(row);
-          const rowProps = {
-            "data-row-index": item.index,
-            tabIndex: key === stop ? 0 : -1,
-            onFocus: () => {
-              setActive(key);
-              onNavigate();
-            },
-            onPointerDown: onNavigate,
-            onKeyDown: (event: KeyboardEvent<HTMLElement>) => onRowKeyDown(item.index, event),
-          };
-          return (
-            <li
-              key={item.key}
-              ref={virtualizer.measureElement}
-              data-index={item.index}
-              className="absolute inset-x-page top-0"
-              style={{ transform: `translateY(${item.start - top}px)` }}
-            >
-              {row.kind === "group" ? (
-                <GroupHeading
-                  row={row}
-                  compact={compact}
-                  rowProps={rowProps}
-                  onToggle={() => onToggleGroup(row.tier)}
-                />
-              ) : (
-                <StreamRow
-                  compact={compact}
-                  candidate={row.candidate}
-                  best={row.kind === "top"}
-                  usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
-                  note={row.kind === "top" ? (topNote ?? null) : null}
-                  current={playing?.(row.candidate) ?? false}
-                  addon={names.get(row.candidate.source) ?? ""}
-                  named={named.has(key)}
-                  rowProps={rowProps}
-                  onPick={() => onPick(row.candidate)}
-                  onToggleName={() => toggleName(key)}
-                />
-              )}
-            </li>
-          );
-        })}
-      </ol>
-    </div>
+    </Runtime.Provider>
   );
 }
 
@@ -552,6 +567,7 @@ function StreamRow({
   onPick: () => void;
   onToggleName: () => void;
 }) {
+  const runtime = useContext(Runtime);
   const nameId = `stream-name-${rowProps["data-row-index"]}`;
   const { quality, source } = streamName(candidate);
   const fileName = (
@@ -632,7 +648,9 @@ function StreamRow({
 
   if (compact) {
     const why = candidate.verdict.bucket === "ok" ? null : reasonsLabel(candidate);
-    const size = sizeLabel(candidate.parsed.sizeBytes);
+    const size = [sizeText(candidate.parsed), bitrateLabel(candidate.parsed, runtime)]
+      .filter(Boolean)
+      .join(" · ");
     return (
       <div className="py-0.5">
         <div className="flex items-center gap-1 rounded-xl pe-1 transition-colors active:bg-foreground/5">
@@ -778,8 +796,9 @@ function Playing() {
 function Badges({ candidate, line = false }: { candidate: Candidate; line?: boolean }) {
   const { parsed } = candidate;
   const audio = audioLabel(parsed);
+  const codec = videoCodecLabel(parsed);
   const how = delivery(parsed);
-  if (parsed.hdr.length === 0 && !audio && !parsed.atmos && !how) return null;
+  if (parsed.hdr.length === 0 && !codec && !audio && !parsed.atmos && !how) return null;
   return (
     <span
       className={cn(
@@ -788,6 +807,7 @@ function Badges({ candidate, line = false }: { candidate: Candidate; line?: bool
         line ? "no-scrollbar min-w-0 flex-nowrap overflow-x-auto whitespace-nowrap" : "flex-wrap",
       )}
     >
+      {codec && <StreamBadge>{codec}</StreamBadge>}
       {parsed.hdr.map((hdr) => (
         <StreamBadge key={hdr}>{hdr === "DV" ? "Dolby Vision" : hdr}</StreamBadge>
       ))}
@@ -820,8 +840,10 @@ function Warning({ candidate }: { candidate: Candidate }) {
 // Size, languages and extra copies, in mono at the end of a row.
 function Facts({ candidate, className }: { candidate: Candidate; className?: string }) {
   const { parsed, alternates } = candidate;
+  const runtime = useContext(Runtime);
   const facts = [
-    sizeLabel(parsed.sizeBytes),
+    sizeText(parsed),
+    bitrateLabel(parsed, runtime),
     languagesLabel(parsed),
     alternates.length === 1
       ? "1 more copy"
@@ -841,9 +863,11 @@ function Facts({ candidate, className }: { candidate: Candidate; className?: str
 // ranks low, if it does.
 function Details({ candidate, addon }: { candidate: Candidate; addon: string }) {
   const { parsed, alternates } = candidate;
+  const runtime = useContext(Runtime);
   const facts = [
     addon,
-    sizeLabel(parsed.sizeBytes),
+    sizeText(parsed),
+    bitrateLabel(parsed, runtime),
     languagesLabel(parsed),
     alternates.length === 1
       ? "1 more copy"
@@ -863,16 +887,47 @@ function Details({ candidate, addon }: { candidate: Candidate; addon: string }) 
 // carry a debrid key.
 function RawNames({ id, candidate }: { id: string; candidate: Candidate }) {
   const names = rawNames(candidate.parsed);
+  const [copied, setCopied] = useState(false);
+  useEffect(() => {
+    if (!copied) return undefined;
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [copied]);
   return (
-    <div id={id} className="mx-4 mt-1 mb-2 rounded-xl bg-muted px-4 py-3 [&_ul]:font-mono">
+    <div
+      id={id}
+      className="mx-4 mt-1 mb-2 flex items-start gap-3 rounded-xl bg-muted px-4 py-3 [&_ul]:font-mono"
+    >
       {names.length ? (
-        <ul className="flex flex-col gap-1 tnum text-small break-all">
+        <ul className="flex min-w-0 flex-1 flex-col gap-1 tnum text-small break-all">
           {names.map((name) => (
             <li key={name}>{name}</li>
           ))}
         </ul>
       ) : (
-        <p className="text-body text-muted-foreground">The addon doesn’t name the file.</p>
+        <p className="min-w-0 flex-1 text-body text-muted-foreground">
+          The addon doesn’t name the file.
+        </p>
+      )}
+      {names.length > 0 && (
+        <button
+          type="button"
+          aria-label={copied ? "Copied" : "Copy file name"}
+          title={copied ? "Copied" : "Copy file name"}
+          onClick={() =>
+            void navigator.clipboard.writeText(names.join("\n")).then(
+              () => setCopied(true),
+              () => toastManager.add({ type: "error", title: "Couldn’t copy the file name" }),
+            )
+          }
+          className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground outline-none transition-colors hover:bg-foreground/8 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {copied ? (
+            <Check aria-hidden className="size-4" />
+          ) : (
+            <Copy aria-hidden className="size-4" />
+          )}
+        </button>
       )}
     </div>
   );

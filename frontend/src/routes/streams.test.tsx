@@ -905,6 +905,109 @@ describe("stream picker", () => {
     expect(screen.queryByText(file)).toBeNull();
   });
 
+  it("cancels the resolve from the Opening message and leaves the picker as it was", async () => {
+    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
+    mocks.addons.mockResolvedValue([torrentio]);
+    mocks.resolve.mockReturnValue(later<Source>().promise);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(shownStreams()).toHaveLength(1));
+    await user.click(topPick());
+    expect(await screen.findByText("Opening the stream from Torrentio…")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Cancel" }));
+
+    await waitFor(() =>
+      expect(screen.queryByText("Opening the stream from Torrentio…")).toBeNull(),
+    );
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(shownStreams()).toHaveLength(1);
+    // Picking again opens it afresh.
+    await user.click(topPick());
+    expect(await screen.findByText("Opening the stream from Torrentio…")).toBeInTheDocument();
+  });
+
+  it("tells a stream's codec and an estimated bitrate from its size and the runtime", async () => {
+    const file = "The.Shawshank.Redemption.1994.1080p.BluRay.x265-GRP.mkv";
+    serve({ [movieStreams("torrentio.strem.fun")]: { streams: [debrid(file, "+")] } });
+    mocks.addons.mockResolvedValue([torrentio]);
+    await renderApp(pickerPath);
+
+    // 2.1 GB over the film's 142 minutes.
+    await waitFor(() => expect(topPick()).toHaveTextContent("HEVC"));
+    expect(topPick()).toHaveTextContent("2.1 GB · ~2 Mbps");
+  });
+
+  it("copies a stream's parsed file names, never its link", async () => {
+    const file = "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv";
+    serve({ [movieStreams("torrentio.strem.fun")]: { streams: [debrid(file, "+")] } });
+    mocks.addons.mockResolvedValue([torrentio]);
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await user.click(
+      within(screen.getByRole("list", { name: "Streams" })).getByRole("button", {
+        name: "File name",
+      }),
+    );
+    await user.click(screen.getByRole("button", { name: "Copy file name" }));
+
+    // user-event's clipboard stands in for the system's.
+    const copied = await navigator.clipboard.readText();
+    expect(copied).toContain(file);
+    expect(copied).not.toContain("KEY");
+    expect(copied).not.toContain("https://");
+    expect(await screen.findByRole("button", { name: "Copied" })).toBeInTheDocument();
+  });
+
+  it("asks every failed addon again with Try all again, once two have failed", async () => {
+    const asked = serve();
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(addonStatus("Peerflix")).toHaveTextContent("answered 503"));
+    const before = asked().filter(({ url }) => url.includes("/stream/")).length;
+    await user.click(screen.getByRole("button", { name: "Try all again" }));
+    await waitFor(() =>
+      expect(asked().filter(({ url }) => url.includes("/stream/")).length).toBe(before + 2),
+    );
+  });
+
+  it("offers no Try all again while one addon failed", async () => {
+    serve({ [movieStreams("peerflix.example")]: peerflixMovie });
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("answered 503"));
+    expect(screen.queryByRole("button", { name: "Try all again" })).toBeNull();
+  });
+
+  it("steps to the previous and next episode from the header", async () => {
+    serve({
+      "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A2.json": torrentioSeries,
+    });
+    const user = userEvent.setup();
+    await renderApp("/title/series/tt0903747");
+
+    await user.click(await screen.findByRole("button", { name: /^S1 · E2/ }));
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "Breaking Bad S1 · E2" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Previous episode, S1 · E1" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Next episode, S1 · E3" }));
+    expect(await screen.findByText(/^S1 · E3/)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Previous episode, S1 · E2" })).toBeInTheDocument();
+  });
+
+  it("has no episode buttons for a film", async () => {
+    serve({ [movieStreams("peerflix.example")]: peerflixMovie });
+    await renderApp(pickerPath);
+
+    await screen.findByRole("heading", { level: 1 });
+    expect(screen.queryByRole("navigation", { name: "Episodes" })).toBeNull();
+  });
+
   it("moves through the list with the arrow keys, Home and End, and plays with Enter", async () => {
     serve({
       [movieStreams("torrentio.strem.fun")]: {

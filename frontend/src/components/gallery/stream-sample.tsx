@@ -116,6 +116,7 @@ export function StreamSample() {
     >
       <StreamList
         rows={listRows(view, open)}
+        runtime={film.runtimeMin ?? null}
         names={names}
         onNavigate={() => {}}
         onPick={() => toastManager.add({ title: "Picked a stream" })}

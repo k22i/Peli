@@ -8,7 +8,15 @@ import {
   useRouterState,
   useSearch,
 } from "@tanstack/react-router";
-import { AlertCircle, Check, ChevronLeft, Puzzle, Users } from "lucide-react";
+import {
+  AlertCircle,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Puzzle,
+  RotateCw,
+  Users,
+} from "lucide-react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import type { Profile } from "@bindings/store";
@@ -31,9 +39,21 @@ import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protoco
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
 import { useEpisodeMap } from "@/lib/episode-map";
 import { useLoadedAddons } from "@/lib/home";
-import { streamId, type PlayTarget, type StreamsSearch } from "@/lib/playback";
+import {
+  streamId,
+  streamsPath,
+  streamsSearch,
+  type PlayTarget,
+  type StreamsSearch,
+} from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
-import { rememberedMatch, titleContext, type Candidate, type Tier } from "@/lib/ranking";
+import {
+  rememberedMatch,
+  runtimeMinutes,
+  titleContext,
+  type Candidate,
+  type Tier,
+} from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
 import {
   matchesPartySource,
@@ -77,12 +97,15 @@ import {
   type StreamSource,
 } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
+import { neighbours, neighbourTarget } from "@/lib/stream-episodes";
 import { subtitleTarget } from "@/lib/subtitles";
 import { tmdbRef, useTmdbAliases, useTmdbArt } from "@/lib/tmdb";
 import { Torrents, torrentStatusText } from "@/lib/torrent";
 import {
   cachedTitleMeta,
+  episodeCode,
   isSeriesType,
+  type Episode,
   playerHeading,
   resumePoint,
   titleMetaQuery,
@@ -137,10 +160,12 @@ function PageHeader({
   title,
   episode,
   backdrop,
+  steps,
 }: {
   title: string;
   episode?: string | undefined;
   backdrop?: string | undefined;
+  steps?: EpisodeStepsProps | undefined;
 }) {
   useArtUnderBar(backdrop !== undefined);
   const compact = useCompactShell();
@@ -177,6 +202,11 @@ function PageHeader({
           </h1>
           <p className="truncate text-[0.8125rem] text-foreground/75">{episode ?? title}</p>
         </div>
+        {steps && (
+          <div className="absolute inset-y-0 end-3 flex items-center">
+            <EpisodeSteps {...steps} overArt={backdrop !== undefined} compact />
+          </div>
+        )}
       </header>
     );
   }
@@ -207,9 +237,56 @@ function PageHeader({
           </p>
           <h1 className="type-display text-balance">{title}</h1>
           {episode && <p className="text-[0.9375rem] text-foreground/75">{episode}</p>}
+          {steps && <EpisodeSteps {...steps} overArt={backdrop !== undefined} />}
         </div>
       </div>
     </header>
+  );
+}
+
+type EpisodeStepsProps = {
+  previous?: Episode | undefined;
+  next?: Episode | undefined;
+  go: (episode: Episode) => void;
+};
+
+// Previous and next episode, for a series: each names its episode.
+export function EpisodeSteps({
+  previous,
+  next,
+  go,
+  overArt = false,
+  compact = false,
+}: EpisodeStepsProps & { overArt?: boolean; compact?: boolean }) {
+  if (!previous && !next) return null;
+  const variant = overArt ? "media" : "secondary";
+  return (
+    <nav aria-label="Episodes" className="mt-1 flex items-center gap-2">
+      {previous && (
+        <Button
+          size="sm"
+          variant={variant}
+          className="rounded-full"
+          aria-label={`Previous episode, ${episodeCode(previous)}`}
+          onClick={() => go(previous)}
+        >
+          <ChevronLeft aria-hidden />
+          {compact ? null : <>Previous · {episodeCode(previous)}</>}
+        </Button>
+      )}
+      {next && (
+        <Button
+          size="sm"
+          variant={variant}
+          className="rounded-full"
+          aria-label={`Next episode, ${episodeCode(next)}`}
+          onClick={() => go(next)}
+        >
+          {compact ? null : <>Next · {episodeCode(next)}</>}
+          <ChevronRight aria-hidden />
+        </Button>
+      )}
+    </nav>
   );
 }
 
@@ -290,11 +367,25 @@ function Picker({
   // addon's), from the cache when the page was seen. It tints the top.
   const art = useTmdbArt(tmdbRef(type, target.id, meta));
   const backdrop = art?.backdrop ?? meta?.background ?? meta?.poster;
+  // The episodes either side: another one's picker, in place of this.
+  const near = neighbours(meta, video);
+  const goTo = (episode: Episode) => {
+    if (!meta) return;
+    const picked = neighbourTarget(meta, episode);
+    void navigate({
+      to: streamsPath,
+      params: { type: picked.type, id: picked.id },
+      search: streamsSearch({ video: picked.videoId }),
+      state: (current) => ({ ...current, play: picked }),
+      replace: true,
+    });
+  };
   const header = (
     <PageHeader
       title={target.title}
       episode={playerHeading(meta, video, target.title).episode}
       backdrop={backdrop}
+      steps={{ previous: near.previous, next: near.next, go: goTo }}
     />
   );
   // Where it was left may have moved on another device: pull while the
@@ -322,10 +413,17 @@ function Picker({
     }
     const controller = new AbortController();
     const quality = resolutionLabel(candidate.parsed) ?? "the stream";
+    // Cancel stops the resolve and leaves the picker as it was.
+    const cancel = () => {
+      controller.abort();
+      toastManager.close(toast);
+      if (opening.current === current) opening.current = null;
+    };
     const toast = toastManager.add({
       type: "loading",
       title: `Opening ${quality} from ${names.get(candidate.source) ?? "an addon"}…`,
       timeout: 0,
+      actionProps: { children: "Cancel", onClick: cancel },
     });
     const current = { controller, toast };
     opening.current = current;
@@ -414,6 +512,7 @@ function Picker({
                 title: `Can’t play ${target.title}`,
                 description: "Peli’s player couldn’t start. Try again, or restart Peli.",
                 timeout: 8000,
+                actionProps: undefined,
               });
             },
           );
@@ -429,12 +528,15 @@ function Picker({
             title: failed.message,
             description: failed.description,
             timeout: 8000,
-            ...(failed.kind === "torrent" && {
-              actionProps: {
-                children: "Open Settings",
-                onClick: () => void navigate({ to: "/settings", search: { section: "streaming" } }),
-              },
-            }),
+            // Cancel goes; Open Settings stays for a torrent.
+            actionProps:
+              failed.kind === "torrent"
+                ? {
+                    children: "Open Settings",
+                    onClick: () =>
+                      void navigate({ to: "/settings", search: { section: "streaming" } }),
+                  }
+                : undefined,
           });
         },
       )
@@ -554,6 +656,7 @@ function Picker({
       />
       <StreamList
         rows={rows}
+        runtime={runtimeMinutes(meta?.runtime) ?? null}
         names={names}
         onNavigate={pin}
         onPick={pick}
@@ -790,6 +893,7 @@ export function StreamsSummary({
 }) {
   const compact = useCompactShell();
   const waiting = sources.filter((source) => source.status === "pending").length;
+  const failed = sources.filter((source) => source.status === "error");
   const plural = sources.some((source) => source.kind === "plugin") ? "sources" : "addons";
   const one = plural === "sources" ? "1 source" : "1 addon";
   return (
@@ -805,6 +909,19 @@ export function StreamsSummary({
             ? `, still loading ${plural}`
             : ` from ${sources.length === 1 ? one : `${sources.length} ${plural}`}`}
       </p>
+      {failed.length > 1 && (
+        <div className="px-page">
+          <Button
+            size="sm"
+            variant="secondary"
+            className="rounded-full"
+            onClick={() => failed.forEach((source) => source.retry())}
+          >
+            <RotateCw aria-hidden />
+            Try all again
+          </Button>
+        </div>
+      )}
       {/* One addon that answered is told by the line above, not a chip. */}
       {!(compact && sources.length === 1 && sources[0]?.status === "success") && (
         <ScrollRail>
