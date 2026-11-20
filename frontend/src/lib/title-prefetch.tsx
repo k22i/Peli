@@ -23,35 +23,63 @@ const TitlePrefetchContext = createContext<{ start: Prefetch; cancel: () => void
   cancel: () => {},
 });
 
+type Inputs = Parameters<typeof prefetch>[0];
+
+// Always rendered, with or without a profile yet, so the pages under it keep
+// their place in the tree when the current profile arrives: wrapping them
+// only once it had would mount every page twice.
 export function TitlePrefetchProvider({
   profileId,
   children,
 }: {
-  profileId: number;
+  profileId: number | undefined;
   children: ReactNode;
 }) {
-  const client = useQueryClient();
-  const { addons, loading } = useLoadedAddons(profileId);
-  const key = useTmdbKey();
-  const device = useArtworkDevice();
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  // The latest of each, for a timer set before they changed.
-  const now = useRef({ client, addons, loading, key, device });
-  useEffect(() => {
-    now.current = { client, addons, loading, key, device };
-  });
+  // The latest inputs, for a timer set before they changed; none until
+  // there's a profile, and nothing is asked until then.
+  const now = useRef<Inputs | undefined>(undefined);
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const [value] = useState(() => ({
     start: (title: TitlePreview) => {
       clearTimeout(timer.current);
-      timer.current = setTimeout(() => prefetch(now.current, title), intentMs);
+      timer.current = setTimeout(() => {
+        if (now.current) prefetch(now.current, title);
+      }, intentMs);
     },
     cancel: () => clearTimeout(timer.current),
   }));
+  const [keep] = useState(() => (inputs: Inputs | undefined) => {
+    now.current = inputs;
+  });
 
-  return <TitlePrefetchContext value={value}>{children}</TitlePrefetchContext>;
+  return (
+    <TitlePrefetchContext value={value}>
+      {profileId !== undefined && <PrefetchInputs profileId={profileId} keep={keep} />}
+      {children}
+    </TitlePrefetchContext>
+  );
+}
+
+// The profile's addons, the TMDB key and the device, handed to `keep`.
+function PrefetchInputs({
+  profileId,
+  keep,
+}: {
+  profileId: number;
+  keep: (inputs: Inputs | undefined) => void;
+}) {
+  const client = useQueryClient();
+  const { addons, loading } = useLoadedAddons(profileId);
+  const key = useTmdbKey();
+  const device = useArtworkDevice();
+  useEffect(() => {
+    keep({ client, addons, loading, key, device });
+  });
+  useEffect(() => () => keep(undefined), [keep]);
+  return null;
 }
 
 function prefetch(

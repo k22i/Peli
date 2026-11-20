@@ -1,10 +1,11 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useLocation } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 
 import { Service as Store } from "@bindings/store";
 
 import { isIOS } from "@/lib/platform";
-import { currentProfileQuery } from "@/lib/profile";
+import { beforeProfile, currentProfileQuery } from "@/lib/profile";
 import { profileSettingsQuery } from "@/lib/settings";
 
 // The device's preferred languages as the 2- or 3-letter codes the audio
@@ -28,7 +29,12 @@ export function deviceLanguageCodes(
 // alone. Once per profile and run.
 export function useSeedAudioLanguages() {
   const queryClient = useQueryClient();
-  const { data } = useQuery(currentProfileQuery);
+  // Only on iOS, and not before a profile is in use: asking makes a Guest.
+  const pathname = useLocation({ select: (location) => location.pathname });
+  const { data } = useQuery({
+    ...currentProfileQuery,
+    enabled: isIOS() && !beforeProfile.has(pathname),
+  });
   const tried = useRef(new Set<number>());
   const id = data?.id;
 

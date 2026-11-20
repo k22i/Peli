@@ -603,9 +603,11 @@ function Results({
                 key={group.kind}
                 title={
                   <>
-                    {group.title}
+                    {group.title}{" "}
+                    {/* The space stays outside the span so the heading's
+                        accessible name keeps it: "Movies · Cinemeta". */}
                     <span className="font-normal text-muted-foreground">
-                      {` · ${groupByline(group.addons)}`}
+                      {`· ${groupByline(group.addons)}`}
                     </span>
                   </>
                 }

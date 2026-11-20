@@ -1,4 +1,4 @@
-import { useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import {
   Outlet,
   createRootRouteWithContext,
@@ -20,7 +20,7 @@ import {
 } from "@/lib/account";
 import { usePartyEvents, usePartyToasts } from "@/lib/party";
 import { isIOS } from "@/lib/platform";
-import { accountQuery, useCurrentProfile } from "@/lib/profile";
+import { accountQuery, beforeProfile, currentProfileQuery, useCurrentProfile } from "@/lib/profile";
 import { QuickActionSync, useQuickActionHandler } from "@/lib/quick-actions";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 import { TitlePrefetchProvider } from "@/lib/title-prefetch";
@@ -30,9 +30,6 @@ import { useUpdateEvents, useUpdateReadyToast } from "@/lib/updates";
 export type RouterContext = {
   queryClient: QueryClient;
 };
-
-// Screens that come before there is a profile in use.
-const beforeProfile = new Set(["/welcome", "/sign-in", "/qr-sign-in", "/profiles"]);
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   // First run: no profiles yet, so start at the welcome screen (#20). If the
@@ -78,12 +75,16 @@ function RootLayout() {
   const location = useLocation();
   // Home Screen icon-menu taps (#141): carried out once a profile is in use
   // and unlocked, so the picker and the PIN screen come first.
-  const current = useCurrentProfile();
+  // Asked only once a profile is in use: the store makes a Guest on first run
+  // when it's asked for the current profile, so the welcome and sign-in
+  // screens must not.
+  const inUse = !beforeProfile.has(location.pathname);
+  const { data: current } = useQuery({ ...currentProfileQuery, enabled: inUse });
   const unlocked = useUnlockedProfiles();
   useQuickActionHandler(
-    !beforeProfile.has(location.pathname) &&
-      current.id !== undefined &&
-      (!current.pinEnabled || unlocked.includes(current.id)),
+    inUse &&
+      current?.id !== undefined &&
+      (current.pinEnabled !== true || unlocked.includes(current.id)),
   );
   // Not over a film: it waits until the player closes (#83).
   useUpdateReadyToast(location.pathname === "/player");
@@ -121,13 +122,9 @@ function ProfileGate() {
       {isIOS() && current.id !== undefined && (
         <QuickActionSync profileId={current.id} locked={current.pinEnabled} />
       )}
-      {current.id === undefined ? (
+      <TitlePrefetchProvider profileId={current.id}>
         <Outlet />
-      ) : (
-        <TitlePrefetchProvider profileId={current.id}>
-          <Outlet />
-        </TitlePrefetchProvider>
-      )}
+      </TitlePrefetchProvider>
     </AppShell>
   );
 }

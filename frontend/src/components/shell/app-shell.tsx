@@ -179,7 +179,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           event.preventDefault();
           content.current?.focus();
         }}
-        className="sr-only z-50 rounded-full bg-foreground px-4 py-2 text-small font-semibold text-background outline-none focus:not-sr-only focus:fixed focus:start-1/2 focus:top-2 focus:-translate-x-1/2"
+        className="sr-only z-50 rounded-full bg-foreground px-4 py-2 text-small font-semibold text-background outline-none focus-visible:ring-2 focus-visible:ring-ring focus:not-sr-only focus:fixed focus:start-1/2 focus:top-2 focus:-translate-x-1/2"
       >
         Skip to content
       </a>

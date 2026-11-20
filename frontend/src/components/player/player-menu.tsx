@@ -101,6 +101,7 @@ export function PlayerMenuItem({
     >
       {icon ?? <span aria-hidden className="size-4.5 shrink-0" />}
       <span className="min-w-0 flex-1 truncate">{children}</span>
+      {hint !== undefined && " "}
       {hint !== undefined && <span className="text-small text-white/50 tnum">{hint}</span>}
     </Menu.Item>
   );
@@ -147,6 +148,7 @@ export function PlayerMenuRadioItem({
         </Menu.RadioItemIndicator>
       </span>
       <span className="min-w-0 flex-1 truncate">{children}</span>
+      {hint !== undefined && " "}
       {hint !== undefined && <span className="text-small text-white/50 tnum">{hint}</span>}
     </Menu.RadioItem>
   );
@@ -176,6 +178,7 @@ export function PlayerMenuCheckboxItem({
         </Menu.CheckboxItemIndicator>
       </span>
       <span className="min-w-0 flex-1 truncate">{children}</span>
+      {hint !== undefined && " "}
       {hint !== undefined && <span className="text-small text-white/50 tnum">{hint}</span>}
     </Menu.CheckboxItem>
   );
@@ -200,6 +203,7 @@ export function PlayerSubmenu({
       <Menu.SubmenuTrigger className={itemClass} disabled={disabled}>
         {icon}
         <span className="min-w-0 flex-1 truncate">{label}</span>
+        {hint !== undefined && " "}
         {hint !== undefined && <span className="text-small text-white/50 tnum">{hint}</span>}
         <ChevronRight aria-hidden className="text-white/50 rtl:rotate-180" />
       </Menu.SubmenuTrigger>

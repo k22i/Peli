@@ -54,6 +54,10 @@ export const currentProfileQuery = queryOptions({
   staleTime: Number.POSITIVE_INFINITY,
 });
 
+// Screens that come before there is a profile in use. They must not ask for
+// the current profile: on first run the store makes a Guest when asked.
+export const beforeProfile = new Set(["/welcome", "/sign-in", "/qr-sign-in", "/profiles"]);
+
 export function useCurrentProfile(): Profile {
   const { data } = useQuery(currentProfileQuery);
   const account = useQuery(accountQuery);
