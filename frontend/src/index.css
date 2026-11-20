@@ -730,6 +730,36 @@
   animation: none;
 }
 
+/* The floating tab bar's CSS capsule and Search button (iPad, iOS before 26)
+   stay above the page too: in the root snapshot the opaque page layer would
+   cover them until the new page is in. Named one by one rather than on the
+   <nav>, so each glass element still blurs the page (a named element is a
+   backdrop root). Only the live new state shows, at its live size, so its
+   own pill and minimise transitions play as usual. */
+.app-tab-capsule {
+  view-transition-name: app-tab-capsule;
+}
+
+.app-tab-search {
+  view-transition-name: app-tab-search;
+}
+
+::view-transition-group(app-tab-capsule),
+::view-transition-group(app-tab-search) {
+  z-index: 2;
+  animation: none;
+}
+
+::view-transition-old(app-tab-capsule),
+::view-transition-old(app-tab-search) {
+  display: none;
+}
+
+::view-transition-new(app-tab-capsule),
+::view-transition-new(app-tab-search) {
+  animation: none;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
