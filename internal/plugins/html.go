@@ -7,6 +7,7 @@ import (
 	"github.com/andybalholm/cascadia"
 	"github.com/dop251/goja"
 	"golang.org/x/net/html"
+	"golang.org/x/net/html/atom"
 )
 
 // maxDocuments caps the HTML documents one call may parse; maxSelectors
@@ -72,7 +73,7 @@ func (s *sandbox) installHTML(host *goja.Object) {
 		s.documents++
 		var root *html.Node
 		if fragment {
-			body := &html.Node{Type: html.ElementNode, Data: "body"}
+			body := &html.Node{Type: html.ElementNode, DataAtom: atom.Body, Data: "body"}
 			nodes, err := html.ParseFragment(strings.NewReader(markup), body)
 			if err != nil {
 				return nil, err

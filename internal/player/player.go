@@ -776,6 +776,9 @@ func (s *Service) SetSecondarySubtitleTrack(id int) error {
 	case id == 0:
 		return s.set("secondary-sid", "no")
 	}
+	if s.current() == nil {
+		return ErrNotPlaying
+	}
 	st := s.Snapshot()
 	var track *Track
 	for i := range st.Tracks {
