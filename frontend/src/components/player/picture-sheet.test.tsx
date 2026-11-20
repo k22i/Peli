@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vite-plus/test";
 
@@ -82,6 +82,12 @@ function renderSheet(
   return { picture, framing, quality, sound, onClose, onTabChange };
 }
 
+// The sheet puts focus on its tab a frame after it opens; wait for that, or it
+// lands in the middle of a test and takes focus from the control it chose.
+async function focusSettled() {
+  await waitFor(() => expect(screen.getByRole("tab", { selected: true })).toHaveFocus());
+}
+
 describe("PictureSheet", () => {
   it("picks a preset and says whom the change is kept for", async () => {
     const { picture } = renderSheet();
@@ -93,6 +99,7 @@ describe("PictureSheet", () => {
 
   it("moves a value with the keyboard, which keeps it", async () => {
     const { picture } = renderSheet();
+    await focusSettled();
     screen.getByRole("slider", { name: "Contrast" }).focus();
     await userEvent.keyboard("{ArrowRight}");
     expect(picture.onChange).toHaveBeenLastCalledWith(
@@ -120,6 +127,7 @@ describe("PictureSheet", () => {
 
   it("closes on Escape, and gives every control a focus ring", async () => {
     const { onClose } = renderSheet();
+    await focusSettled();
     for (const element of keyboardReachable()) expect(hasFocusRing(element)).toBe(true);
     await userEvent.keyboard("{Escape}");
     expect(onClose).toHaveBeenCalled();

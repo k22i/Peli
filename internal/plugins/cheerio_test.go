@@ -68,8 +68,10 @@ func TestCheerio(t *testing.T) {
 		{"element shape", `const el = $("li a").get(0); return [el.type, el.name, el.tagName, el.attribs.href, el.parent.name, el.children[0].type, el.children[0].data, el.nodeType];`,
 			`["tag","a","a","/v/1","li","text","Server 1",1]`},
 		{"wrap an element", `const el = $("li a")[1]; return $(el).text();`, `"Server 2"`},
+		// x/net's parser sorts the attributes of formatting elements such as <a>
+		// (the Noah's Ark clause, since v0.60), so they render alphabetically.
 		{"set attr", `$("li a").first().attr("href", "/new"); return [$("li a").first().attr("href"), $.html($("li a").first())];`,
-			`["/new","<a href=\"/new\" data-quality=\"1080p\">Server 1</a>"]`},
+			`["/new","<a data-quality=\"1080p\" href=\"/new\">Server 1</a>"]`},
 		{"fragment", `return [$("<p><b>bold</b></p>").find("b").text(), cheerio.load("<a href='x'>y</a>")("a").attr("href")];`, `["bold","x"]`},
 		{"attribute selectors", `return [$("a[href^='/v/']").length, $("a[data-quality='720p']").text(), $("li:nth-child(2) a").text(), $("li:not(.dead)").length];`,
 			`[3,"Server 2","Server 2",2]`},

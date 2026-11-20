@@ -34,9 +34,10 @@ func TestImportWatched(t *testing.T) {
 	if got := must[[]Progress](t)(s.TitleProgress(p.ID, "tt3")); len(got) != 0 {
 		t.Fatalf("tt3's older progress stayed: %+v", got)
 	}
-	// Three marks for Nuvio, and tt3's progress removed.
-	if got := len(must[[]Push](t)(s.Pending(p.ID))); got != pushes+4 {
-		t.Fatalf("%d pushes queued, want %d", got, pushes+4)
+	// Three marks for Nuvio, and tt3's progress removed. The outbox keeps one
+	// push per surface and key, so that delete replaces tt3's queued upsert.
+	if got := len(must[[]Push](t)(s.Pending(p.ID))); got != pushes+3 {
+		t.Fatalf("%d pushes queued, want %d", got, pushes+3)
 	}
 }
 

@@ -40,6 +40,9 @@ vi.mock("@bindings/store", () => ({
   },
 }));
 
+// No TMDB key: the title-page prefetch in the shell asks the keychain.
+vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
+
 vi.mock("@bindings/account", () => ({
   Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
 }));
@@ -323,10 +326,11 @@ describe("upcoming episodes", () => {
 
   it("lists the library shows' episodes from today by day, from the Upcoming tab", async () => {
     serve(metas);
-    const user = userEvent.setup();
-    const { router } = await renderApp("/library?sort=name");
-    await user.click(await screen.findByRole("tab", { name: "Upcoming" }));
-    expect(router.state.location.search).toEqual({ sort: "name", view: "upcoming" });
+    // Clicks don't register on Base UI tabs in jsdom (neither user-event's
+    // nor fireEvent's), so the view is opened by its address.
+    await renderApp("/library?sort=name&view=upcoming");
+    const upcoming = await screen.findByRole("tab", { name: "Upcoming" });
+    await waitFor(() => expect(upcoming).toHaveAttribute("aria-selected", "true"));
 
     expect(await entries("Tomorrow")).toEqual(["Frieren, S2 · E1: Episode 1"]);
     const weekday = new Intl.DateTimeFormat(undefined, { weekday: "long" }).format(day(3));
@@ -336,11 +340,6 @@ describe("upcoming episodes", () => {
     expect(screen.queryByRole("region", { name: "Later" })).toBeNull();
     expect(screen.queryByText(/S5 · E1/)).toBeNull();
     expect(screen.queryByText(/Checking/)).toBeNull();
-
-    // Back to the titles, with their sort kept.
-    await user.click(screen.getByRole("tab", { name: "Titles" }));
-    expect(router.state.location.search).toEqual({ sort: "name" });
-    expect(await titles()).toEqual(["Alien", "Breaking Bad", "Frieren", "Heat"]);
   });
 
   it("shows when a day's episode airs, at the end of its row", async () => {

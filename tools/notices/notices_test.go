@@ -114,8 +114,10 @@ func TestBuildLibmpv(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(n.Components) != 1+len(libmpvParts) {
-		t.Fatalf("%d components, want libmpv and %d parts", len(n.Components), len(libmpvParts))
+	// Then the player's upscaling and sharpening shaders, which ship beside it.
+	if len(n.Components) != 1+len(libmpvParts)+len(shaderParts) {
+		t.Fatalf("%d components, want libmpv, %d parts and %d shaders",
+			len(n.Components), len(libmpvParts), len(shaderParts))
 	}
 	for _, c := range n.Components {
 		if c.Kind != "native" || c.Version == "" || c.Licence == "" || c.Text == "" {

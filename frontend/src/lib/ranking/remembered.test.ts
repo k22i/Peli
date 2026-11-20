@@ -90,7 +90,8 @@ describe("the remembered source", () => {
     const view = rankStreams(episode, answers, { ...capped, remembered });
     // The ranked best under the cap, not the remembered 4K.
     expect(view.top?.parsed.resolution).toBe("1080p");
-    expect(view.top).toBe(rankStreams(episode, answers, capped).top);
+    // Two engines ranked it: the same stream, not the same object.
+    expect(view.top).toEqual(rankStreams(episode, answers, capped).top);
     // Without a cap the remembered 4K is the pick, as before.
     expect(top(remembered, answers)).toBe("Some.Show.S01E02.2160p.WEB-DL.DDP5.1.H265-FLUX.mkv");
   });

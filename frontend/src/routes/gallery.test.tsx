@@ -2,7 +2,6 @@ import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vite-plus/test";
 
-import { themeStorageKey } from "@/lib/theme";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 import { renderApp } from "@/test/render-app";
 
@@ -19,11 +18,15 @@ async function renderGallery() {
 describe("gallery", () => {
   it("is reachable from Settings, outside the main nav", async () => {
     const user = userEvent.setup();
-    const { router } = await renderApp("/settings");
+    const { router } = await renderApp("/settings?section=about");
 
     await user.click(await screen.findByRole("link", { name: "Design system" }));
 
-    expect(await screen.findByRole("heading", { level: 1, name: "Design system" })).toBeVisible();
+    // The gallery is a big page and the first test in the file pays for
+    // loading it.
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "Design system" }, { timeout: 10_000 }),
+    ).toBeVisible();
     expect(router.state.location.pathname).toBe("/gallery");
     const nav = screen.getByRole("navigation", { name: "Main" });
     expect(within(nav).queryByRole("link", { name: /design system/i })).toBeNull();
@@ -39,7 +42,7 @@ describe("gallery", () => {
       "Buttons",
       "Chips and badges",
       "Scroll rail",
-      "Glass buttons",
+      "Buttons over art",
       "Player bar",
       "Overlays",
       "Skeletons",
@@ -105,23 +108,10 @@ describe("gallery", () => {
     ).toHaveFocus();
   });
 
-  it("switches and remembers the appearance", async () => {
-    const user = userEvent.setup();
+  it("is dark only, with no appearance switch (#143)", async () => {
     await renderGallery();
 
-    const appearance = screen.getByRole("group", { name: "Appearance" });
-    await user.click(within(appearance).getByRole("button", { name: "Dark" }));
-    expect(localStorage.getItem(themeStorageKey)).toBe("dark");
-    expect(within(appearance).getByRole("button", { name: "Dark" })).toHaveAttribute(
-      "aria-pressed",
-      "true",
-    );
-
-    // Pressing the current option again keeps it rather than clearing it.
-    await user.click(within(appearance).getByRole("button", { name: "Dark" }));
-    expect(localStorage.getItem(themeStorageKey)).toBe("dark");
-
-    await user.click(within(appearance).getByRole("button", { name: "System" }));
-    expect(localStorage.getItem(themeStorageKey)).toBeNull();
+    expect(screen.queryByRole("group", { name: "Appearance" })).not.toBeInTheDocument();
+    expect(screen.getByText(/Dark only/)).toBeInTheDocument();
   });
 });

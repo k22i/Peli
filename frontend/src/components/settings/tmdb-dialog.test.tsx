@@ -1,8 +1,12 @@
-import { screen, waitFor, within } from "@testing-library/react";
+import { configure, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import { renderApp } from "@/test/render-app";
+
+// The first test renders the whole app cold (the Settings route loads then),
+// which can take longer than the 1 s default.
+configure({ asyncUtilTimeout: 5000 });
 
 vi.mock("@bindings/appinfo", () => ({
   Service: { Version: vi.fn<() => Promise<string>>(() => Promise.resolve("1.2.3")) },

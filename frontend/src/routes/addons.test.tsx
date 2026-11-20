@@ -52,8 +52,14 @@ vi.mock("@bindings/store", () => ({
     Profiles: () => mocks.current().then((p) => [p]),
     CurrentProfile: mocks.current,
     Addons: mocks.addons,
+    // The shell's title prefetch loads the visible addons too, and an edit
+    // refetches every ["addons", id…] query before it settles.
+    VisibleAddons: () => mocks.addons(),
   },
 }));
+
+// No TMDB key: the title-page prefetch in the shell asks the keychain.
+vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
 
 vi.mock("@bindings/account", () => ({ Service: mocks.account }));
 

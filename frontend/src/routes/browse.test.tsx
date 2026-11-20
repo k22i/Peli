@@ -33,6 +33,9 @@ vi.mock("@bindings/store", () => ({
   },
 }));
 
+// No TMDB key: the title-page prefetch in the shell asks the keychain.
+vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
+
 vi.mock("@bindings/account", () => ({
   Service: { Status: () => Promise.resolve({ signedIn: true, sessionEnded: false }) },
 }));

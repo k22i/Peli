@@ -126,6 +126,9 @@ beforeEach(() => {
   fake.overview = { kids: false, enabled: false, repositories: [] };
 });
 
+// The "Add…" button, not the "Addons & content" chip in the pane rail.
+const addRepository = /^Add(?!ons)/;
+
 const open = async () => {
   await renderApp("/settings?section=plugins");
   return screen.findByRole("switch", { name: "Use plugins" });
@@ -137,7 +140,7 @@ describe("settings › plugins", () => {
 
     expect(toggle).not.toBeChecked();
     expect(screen.getByText(/No plugin is ever asked for streams/)).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Add/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: addRepository })).not.toBeInTheDocument();
   });
 
   it("turns on only after the warning says what plugins are", async () => {
@@ -170,7 +173,7 @@ describe("settings › plugins", () => {
     );
     await waitFor(() => expect(fake.calls).toEqual(["enable:true"]));
     await waitFor(() => expect(toggle).toBeChecked());
-    expect(await screen.findByRole("button", { name: /Add/ })).toBeInTheDocument();
+    expect(await screen.findByRole("button", { name: addRepository })).toBeInTheDocument();
   });
 
   it("turns off without asking", async () => {
@@ -190,7 +193,7 @@ describe("settings › plugins", () => {
     const user = userEvent.setup();
     await open();
 
-    await user.click(await screen.findByRole("button", { name: /Add/ }));
+    await user.click(await screen.findByRole("button", { name: addRepository }));
     const dialog = await screen.findByRole("dialog", { name: "Add a plugin repository" });
     await user.type(
       within(dialog).getByRole("textbox", { name: "Manifest address" }),
@@ -214,7 +217,7 @@ describe("settings › plugins", () => {
     const user = userEvent.setup();
     await open();
 
-    await user.click(await screen.findByRole("button", { name: /Add/ }));
+    await user.click(await screen.findByRole("button", { name: addRepository }));
     const dialog = await screen.findByRole("dialog");
     await user.type(within(dialog).getByRole("textbox"), "https://nope.example");
     await user.click(within(dialog).getByRole("button", { name: "Add" }));
@@ -235,7 +238,9 @@ describe("settings › plugins", () => {
     await user.click(screen.getByRole("switch", { name: "Use Example repo" }));
     await waitFor(() => expect(fake.calls).toContain("repo:false"));
     // With its repository off, a repository's plugins can't be turned on.
-    await waitFor(() => expect(screen.getByRole("switch", { name: "Echo" })).toBeDisabled());
+    await waitFor(() =>
+      expect(screen.getByRole("switch", { name: "Echo" })).toHaveAttribute("aria-disabled", "true"),
+    );
   });
 
   it("removes a repository after asking", async () => {
@@ -269,6 +274,6 @@ describe("settings › plugins", () => {
 
     expect(await screen.findByText("Kids profiles don’t use plugins.")).toBeInTheDocument();
     expect(screen.queryByRole("switch")).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Add/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: addRepository })).not.toBeInTheDocument();
   });
 });

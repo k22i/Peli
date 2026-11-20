@@ -56,6 +56,7 @@ vi.mock("@bindings/store", async () => {
     Service: {
       Profiles: async () => [kevin],
       CurrentProfile: async () => kevin,
+      SeedAudioLanguages: async () => false,
       Addons: async () => [],
       VisibleAddons: async () => [],
       Library: async () => [],
@@ -142,7 +143,8 @@ describe("the iOS shell", () => {
     );
 
     await user.click(await screen.findByRole("button", { name: /Profile: Kevin/ }));
-    await user.click(await screen.findByRole("menuitem", { name: "Settings" }));
+    // On the iPhone the profile menu is a bottom sheet (#134): Settings is a link.
+    await user.click(await screen.findByRole("link", { name: "Settings" }));
 
     await screen.findByRole("navigation", { name: "Settings panes" });
     expect(within(tabs).getByRole("link", { name: "Library" })).toHaveAttribute(
@@ -170,7 +172,7 @@ describe("the iOS shell", () => {
     const user = userEvent.setup();
     const { router } = await renderApp("/library");
     await user.click(await screen.findByRole("button", { name: /Profile: Kevin/ }));
-    await user.click(await screen.findByRole("menuitem", { name: "Settings" }));
+    await user.click(await screen.findByRole("link", { name: "Settings" }));
     await screen.findByRole("navigation", { name: "Settings panes" });
 
     const tabs = screen.getByRole("navigation", { name: "Main" });
@@ -194,20 +196,18 @@ describe("the iOS shell", () => {
     expect(tabs).not.toHaveAttribute("inert");
   });
 
-  it("keeps the top bar's sections at regular width", async () => {
+  it("floats the sections at the bottom centre at regular width", async () => {
     width(false);
     await renderApp("/settings?section=about");
 
+    // The iPad's sections float at the bottom centre (#138), not in the top
+    // bar, and the bar never shrinks.
     const nav = screen.getByRole("navigation", { name: "Main" });
-    expect(nav).not.toHaveAttribute("data-slot", "tab-bar");
-    expect(linkNames(nav)).toEqual([
-      "Home",
-      "Movies",
-      "Shows",
-      "Anime",
-      "Library",
-      expect.stringContaining("Search"),
-    ]);
+    expect(nav).toHaveAttribute("data-slot", "tab-bar");
+    expect(nav).toHaveAttribute("data-centred");
+    expect(linkNames(nav)).toEqual(["Home", "Movies", "Shows", "Anime", "Library", "Search"]);
+    const bar = document.querySelector<HTMLElement>('[data-slot="top-bar"]')!;
+    expect(within(bar).queryByRole("navigation", { name: "Main" })).not.toBeInTheDocument();
   });
 
   it("has no command palette", async () => {
@@ -304,10 +304,25 @@ describe("Settings on iOS", () => {
 });
 
 describe("routes that aren't in the iOS app", () => {
-  it.each(["/party", "/person/1", "/gallery"])("sends %s to Home", async (path) => {
+  it.each(["/party", "/gallery"])("sends %s to Home", async (path) => {
     const { router } = await renderApp(path);
 
     await waitFor(() => expect(router.state.location.pathname).toBe("/"));
+  });
+
+  // Person pages are back on an iPad at regular width (#138), not on an iPhone.
+  it("sends /person/1 to Home on an iPhone", async () => {
+    width(true);
+    const { router } = await renderApp("/person/1");
+
+    await waitFor(() => expect(router.state.location.pathname).toBe("/"));
+  });
+
+  it("keeps /person/1 on an iPad at regular width", async () => {
+    width(false);
+    const { router } = await renderApp("/person/1");
+
+    expect(router.state.location.pathname).toBe("/person/1");
   });
 });
 

@@ -21,7 +21,7 @@ describe("SpeedMenu", () => {
     expect(trigger).toHaveTextContent("1×");
     expect(hasFocusRing(trigger)).toBe(true);
     await user.click(trigger);
-    expect(screen.getByRole("menuitemradio", { name: /^1× Normal/ })).toHaveAttribute(
+    expect(await screen.findByRole("menuitemradio", { name: /^1× Normal/ })).toHaveAttribute(
       "aria-checked",
       "true",
     );
@@ -47,7 +47,7 @@ describe("SpeedMenu", () => {
     const user = userEvent.setup();
     render(<Harness speed={1.03} onChange={vi.fn<(speed: number) => void>()} />);
     await user.click(screen.getByRole("button", { name: /Playback speed/ }));
-    expect(screen.getByRole("menuitemradio", { name: /^1× Normal/ })).toHaveAttribute(
+    expect(await screen.findByRole("menuitemradio", { name: /^1× Normal/ })).toHaveAttribute(
       "aria-checked",
       "true",
     );

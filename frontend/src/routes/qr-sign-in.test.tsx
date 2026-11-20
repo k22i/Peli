@@ -57,6 +57,7 @@ vi.mock("@bindings/store", () => ({
     }),
     DeviceSettings: async () => ({ hardwareDecoding: true, diagnostics: false }),
     Addons: async () => [],
+    VisibleAddons: async () => [],
   },
 }));
 

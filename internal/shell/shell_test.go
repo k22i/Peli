@@ -6,6 +6,7 @@ import (
 	"go/token"
 	"reflect"
 	"sort"
+	"strings"
 	"testing"
 )
 
@@ -36,7 +37,16 @@ func platformFuncs(t *testing.T, name string) (funcs map[string][2]int, methods 
 			methods = append(methods, fn.Name.Name)
 			continue
 		}
-		if fn.Doc != nil && len(fn.Doc.List) > 0 && fn.Doc.List[0].Text[:min(9, len(fn.Doc.List[0].Text))] == "//export " {
+		// //export can come after a description in the doc comment.
+		exported := false
+		if fn.Doc != nil {
+			for _, c := range fn.Doc.List {
+				if strings.HasPrefix(c.Text, "//export ") {
+					exported = true
+				}
+			}
+		}
+		if exported {
 			continue
 		}
 		funcs[fn.Name.Name] = [2]int{count(fn.Type.Params), count(fn.Type.Results)}
@@ -65,7 +75,7 @@ func TestIOSServiceHasTheDesktopMethods(t *testing.T) {
 		bound = append(bound, typ.Method(i).Name)
 	}
 	sort.Strings(bound)
-	want := []string{"CameraAccess", "OpenAppSettings", "ScanQR", "ServiceStartup", "SetTabBar", "TabBarHeight"}
+	want := []string{"CameraAccess", "HardwareKeyboard", "OpenAppSettings", "ScanQR", "ServiceStartup", "SetTabBar", "TabBarHeight", "WatchStatusBar"}
 	if !reflect.DeepEqual(bound, want) {
 		t.Errorf("bound methods %v, want %v (update the frontend and this test on purpose)", bound, want)
 	}

@@ -1,6 +1,6 @@
-import { act, fireEvent, screen, waitFor, within } from "@testing-library/react";
+import { act, configure, fireEvent, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
+import { afterEach, beforeEach, describe, expect, it, onTestFinished, vi } from "vite-plus/test";
 
 import type * as Runtime from "@wailsio/runtime";
 import type { Ended, State } from "@bindings/player";
@@ -28,8 +28,14 @@ import { Party } from "@/lib/party";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import { profileSettings } from "@/test/fixtures";
-import { onIOS } from "@/test/ios";
+import { onCompactIOS, onIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
+
+// The player is several queries deep (profile, settings, addons, their
+// answers) and loads a lot of code on the first test, so a loaded machine
+// needs more than the defaults.
+configure({ asyncUtilTimeout: 4000 });
+vi.setConfig({ testTimeout: 20_000 });
 
 const mocks = vi.hoisted(() => ({
   // Every listener of each event, as the runtime keeps them.
@@ -104,6 +110,26 @@ vi.mock("@bindings/player", () => ({
     SetSecondarySubtitleTrack: () => Promise.resolve(),
     AddSubtitle: mocks.addSubtitle,
     SystemCaptions: mocks.systemCaptions,
+    // The touch chrome reads the screen's brightness and the system volume (#131).
+    Brightness: () => Promise.resolve(0.5),
+    SetBrightness: () => Promise.resolve(),
+    SystemVolume: () => Promise.resolve(0.5),
+    SetSystemVolume: () => Promise.resolve(),
+    // The touch layout's effects reach the picture, sound and playback ones too.
+    SetPanscan: () => Promise.resolve(),
+    SetPicture: () => Promise.resolve(),
+    SetFraming: () => Promise.resolve(),
+    SetQuality: () => Promise.resolve(),
+    SetSound: () => Promise.resolve(),
+    SetAudio: () => Promise.resolve(),
+    SetAudioDelay: () => Promise.resolve(),
+    SetSpeed: () => Promise.resolve(),
+    SetLoop: () => Promise.resolve(),
+    FrameStep: () => Promise.resolve(),
+    Screenshot: () => Promise.resolve(),
+    ShowScreenshot: () => Promise.resolve(),
+    AudioDevices: () => Promise.resolve([]),
+    Stats: () => Promise.resolve(null),
   },
 }));
 
@@ -138,6 +164,8 @@ vi.mock("@bindings/store", () => ({
     SetChosenSource: mocks.setChosen,
     TitleAdjustments: () => Promise.resolve(null),
     SetTitleAdjustments: () => Promise.resolve(),
+    // iOS only: seeds the profile's audio languages from the device's.
+    SeedAudioLanguages: () => Promise.resolve(false),
   },
 }));
 
@@ -229,6 +257,11 @@ async function openPlayer(
     }),
   );
   await screen.findByRole("heading", { name: "The Film" });
+  // The profile's settings arrive after the page does; what a test does next
+  // (a retry, an ended file) should see them.
+  await waitFor(() =>
+    expect(app.queryClient.getQueryData(["settings", "profile", 1])).toBeDefined(),
+  );
   return app;
 }
 
@@ -683,42 +716,43 @@ describe("player", () => {
     await waitFor(() => expect(router.state.location.pathname).toBe("/library"));
   });
 
-  it("picks audio and subtitles from their menus", async () => {
+  it("picks audio and subtitles in the panel", async () => {
     await openPlayer();
     emit("player:state", withTracks);
     const user = userEvent.setup();
 
     await user.click(await screen.findByRole("button", { name: "Audio" }));
-    const audio = await screen.findByRole("menu");
-    expect(
-      within(audio).getByRole("menuitemradio", { name: "English AAC · Stereo" }),
-    ).toHaveAttribute("aria-checked", "true");
-    await user.click(
-      within(audio).getByRole("menuitemradio", { name: "Japanese Commentary · AC3 · 5.1" }),
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    expect(within(panel).getByRole("tab", { name: "Audio" })).toHaveAttribute(
+      "aria-selected",
+      "true",
     );
+    expect(within(panel).getByRole("button", { name: /^English.*AAC.*Stereo/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    await user.click(within(panel).getByRole("button", { name: /^Japanese.*Commentary.*AC3/ }));
     expect(mocks.setAudioTrack).toHaveBeenLastCalledWith(2);
     // Shown at once, before the player says so.
-    expect(within(audio).getByRole("menuitemradio", { name: /^Japanese/ })).toHaveAttribute(
-      "aria-checked",
+    expect(within(panel).getByRole("button", { name: /^Japanese/ })).toHaveAttribute(
+      "aria-pressed",
       "true",
     );
-    await user.keyboard("{Escape}");
-    await waitFor(() => expect(screen.queryByRole("menu")).not.toBeInTheDocument());
-    // Esc closed the menu, not the player.
+    await user.click(within(panel).getByRole("button", { name: "Close" }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
     expect(screen.getByRole("heading", { name: "The Film" })).toBeInTheDocument();
 
+    // The Subtitles button opens the same panel at its subtitles.
     await user.click(screen.getByRole("button", { name: "Subtitles" }));
-    const subtitles = await screen.findByRole("menu");
-    expect(within(subtitles).getByRole("menuitemradio", { name: "Off" })).toHaveAttribute(
-      "aria-checked",
+    const subtitles = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    expect(within(subtitles).getByRole("button", { name: /^Off/ })).toHaveAttribute(
+      "aria-pressed",
       "true",
     );
-    expect(
-      within(subtitles).getByRole("menuitemradio", { name: "English Signs · Forced" }),
-    ).toBeInTheDocument();
-    await user.click(within(subtitles).getByRole("menuitemradio", { name: "English SDH" }));
+    expect(within(subtitles).getByRole("button", { name: /^English.*Forced/ })).toBeInTheDocument();
+    await user.click(within(subtitles).getByRole("button", { name: /^English.*SDH/ }));
     expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(4);
-    await user.click(within(subtitles).getByRole("menuitemradio", { name: "Off" }));
+    await user.click(within(subtitles).getByRole("button", { name: /^Off/ }));
     expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(0);
   });
 
@@ -730,27 +764,27 @@ describe("player", () => {
     expect(screen.queryByRole("button", { name: "Subtitles" })).not.toBeInTheDocument();
   });
 
-  it("sizes subtitles and keeps the size as the profile's", async () => {
+  it("sizes subtitles in the panel's Style tab and keeps the size as the profile's", async () => {
     await openPlayer();
     emit("player:state", withTracks);
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Subtitles" }));
-    const menu = await screen.findByRole("menu");
-    expect(within(menu).getByRole("menuitemradio", { name: "Medium" })).toHaveAttribute(
-      "aria-checked",
-      "true",
-    );
-    await user.click(within(menu).getByRole("menuitemradio", { name: "Small" }));
-    expect(mocks.setSubtitleSize).toHaveBeenLastCalledWith("small");
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    await user.click(within(panel).getByRole("tab", { name: "Style" }));
+    // Not saved until asked: the size lasts until the video ends.
+    expect(within(panel).getByRole("button", { name: "Save as my style" })).toBeDisabled();
+    await user.click(within(panel).getByRole("button", { name: "Larger size" }));
+    expect(mocks.saveSettings).not.toHaveBeenCalled();
+    await user.click(within(panel).getByRole("button", { name: "Save as my style" }));
     await waitFor(() =>
       expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
         ...japanese,
-        subtitleSize: "small",
+        subtitleStyle: { ...japanese.subtitleStyle, size: 110 },
       }),
     );
   });
 
-  it("times subtitles with Z and X, and from the menu", async () => {
+  it("times subtitles with Z and X, and in the panel's Timing tab", async () => {
     await openPlayer();
     emit("player:state", withTracks);
     await screen.findByRole("button", { name: "Subtitles" });
@@ -768,16 +802,16 @@ describe("player", () => {
 
     emit("player:state", { ...withTracks, subtitleDelay: -0.1 });
     await user.click(screen.getByRole("button", { name: "Subtitles" }));
-    const menu = await screen.findByRole("menu");
-    expect(within(menu).getByText("Timing: 0.1 s earlier")).toBeInTheDocument();
-    await user.click(within(menu).getByRole("menuitem", { name: "Later" }));
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    await user.click(within(panel).getByRole("tab", { name: "Timing" }));
+    expect(within(panel).getByText("−0.1 s")).toBeInTheDocument();
+    expect(within(panel).getByText("Subtitles show 0.1 s earlier")).toBeInTheDocument();
+    await user.click(within(panel).getByRole("button", { name: "+0.1" }));
     await waitFor(() => expect(mocks.setSubtitleDelay).toHaveBeenLastCalledWith(0));
-    // The menu stays open for more steps.
-    expect(within(menu).getByText("Timing: On time")).toBeInTheDocument();
-    expect(within(menu).getByRole("menuitem", { name: "Reset timing" })).toHaveAttribute(
-      "aria-disabled",
-      "true",
-    );
+    // The panel stays open for more steps.
+    expect(within(panel).getByText("0.0 s")).toBeInTheDocument();
+    expect(within(panel).getByText("Subtitles show when the file says")).toBeInTheDocument();
+    expect(within(panel).getByRole("button", { name: "0" })).toBeDisabled();
   });
 
   it("names what plays for the OS's media controls", async () => {
@@ -943,6 +977,7 @@ describe("addon subtitles", () => {
         url: firstEnglish,
         lang: "en",
         title: "OpenSubtitles v3",
+        secondary: false,
       }),
     );
     expect(fetch).toHaveBeenCalledWith(asked, expect.anything());
@@ -955,7 +990,9 @@ describe("addon subtitles", () => {
     await openPlayer(undefined, source, target);
     emit("player:state", { ...playing, tracks: tracksSelecting(1, 4) });
     await userEvent.setup().click(await screen.findByRole("button", { name: "Subtitles" }));
-    await within(await screen.findByRole("menu")).findByRole("menuitem", { name: "English3" });
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    // The addons' answer is in the list, and none was added.
+    await within(panel).findByRole("button", { name: /^Brazilian Portuguese/ });
     expect(mocks.addSubtitle).not.toHaveBeenCalled();
   });
 
@@ -964,9 +1001,10 @@ describe("addon subtitles", () => {
     mocks.settings.mockResolvedValue({ ...japanese, captions: "system" });
     await openPlayer(undefined, source, target);
     emit("player:state", japaneseOnly);
-    // The menu lists them, but none is added.
+    // The panel lists them, but none is added.
     await userEvent.setup().click(await screen.findByRole("button", { name: "Subtitles" }));
-    await within(await screen.findByRole("menu")).findByRole("menuitem", { name: "English3" });
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    await within(panel).findByRole("button", { name: /^Brazilian Portuguese/ });
     expect(mocks.addSubtitle).not.toHaveBeenCalled();
   });
 
@@ -985,23 +1023,22 @@ describe("addon subtitles", () => {
     emit("player:state", withTracks);
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Subtitles" }));
-    const menu = await screen.findByRole("menu");
-    const languages = await within(menu).findAllByRole("menuitem", {
-      name: /English|Portuguese|Croatian/,
-    });
-    // The profile's language first.
-    expect(languages.map((item) => item.textContent)).toEqual([
-      "English3",
-      "Brazilian Portuguese4",
-      "Croatian1",
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    await within(panel).findByRole("button", { name: /^Brazilian Portuguese/ });
+    const chips = within(within(panel).getByRole("group", { name: "Languages" })).getAllByRole(
+      "button",
+    );
+    // The profile's language first (the file's own English subtitles and the
+    // addon's three), then the rest by name.
+    expect(chips.slice(1).map((chip) => chip.textContent)).toEqual([
+      "English 5",
+      "Brazilian Portuguese 4",
+      "Croatian 1",
     ]);
 
-    // Base UI's submenus open from the keyboard in jsdom.
-    languages[1]!.focus();
-    await user.keyboard("{ArrowRight}");
-    const portuguese = await screen.findByRole("menu", { name: "Brazilian Portuguese4" });
+    const portuguese = within(panel).getByRole("region", { name: "Brazilian Portuguese" });
     await user.click(
-      within(portuguese).getByRole("menuitemradio", {
+      within(portuguese).getByRole("button", {
         name: /The\.Shawshank\.Redemption\.1994.*PT-BR\.srt/,
       }),
     );
@@ -1009,6 +1046,7 @@ describe("addon subtitles", () => {
       url: opensubtitlesMovie.subtitles[4]!.url,
       lang: "pt",
       title: "OpenSubtitles v3",
+      secondary: false,
     });
     await waitFor(() =>
       expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
@@ -1026,9 +1064,8 @@ describe("addon subtitles", () => {
     });
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Subtitles" }));
-    await user.click(
-      within(await screen.findByRole("menu")).getByRole("menuitemradio", { name: "Japanese" }),
-    );
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    await user.click(within(panel).getByRole("button", { name: /^Japanese.*In file/ }));
     expect(mocks.setSubtitleTrack).toHaveBeenLastCalledWith(5);
     await waitFor(() =>
       expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
@@ -1068,13 +1105,9 @@ describe("addon subtitles", () => {
     emit("player:state", withTracks);
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Subtitles" }));
-    const english = await within(await screen.findByRole("menu")).findByRole("menuitem", {
-      name: "English3",
-    });
-    english.focus();
-    await user.keyboard("{ArrowRight}");
-    const list = await screen.findByRole("menu", { name: "English3" });
-    await user.click(within(list).getAllByRole("menuitemradio")[0]!);
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    const files = await within(panel).findAllByRole("button", { name: /OpenSubtitles v3/ });
+    await user.click(files[0]!);
     expect(await screen.findByText("Couldn’t load those subtitles")).toBeInTheDocument();
   });
 });
@@ -1185,7 +1218,7 @@ describe("next episode", () => {
     emit("player:state", watched);
     const next = await card();
     expect(next).toHaveTextContent("S1 · E2 · Cat's in the Bag...");
-    expect(next).toHaveTextContent("Next episode in 4:40");
+    expect(next).toHaveTextContent("Up next · 4:40");
     expect(await within(next).findByText("1080p from Torrentio")).toBeInTheDocument();
     // Resolved before it's due.
     expect(mocks.resolve).toHaveBeenCalledWith({ url: debrid.url, headers: {} });
@@ -1370,12 +1403,26 @@ describe("stream switcher", () => {
       ),
     );
   }
+  // jsdom has no layout, and without Tailwind the list's scroller isn't
+  // found, so it's the page: give that a height or the list mounts no rows.
+  beforeEach(() => {
+    Object.defineProperty(document.documentElement, "clientHeight", {
+      configurable: true,
+      get: () => 800,
+    });
+  });
   afterEach(() => {
     vi.unstubAllGlobals();
+    Reflect.deleteProperty(document.documentElement, "clientHeight");
   });
 
   const openPilot = () =>
-    openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot, stream: hd, resumedAt: 0 });
+    // As the app has it: the addon client copies a stream's `title` to `description`.
+    openPlayer("S1 · E1 · Pilot", source, undefined, {
+      watching: pilot,
+      stream: { ...hd, description: hd.title ?? "" },
+      resumedAt: 0,
+    });
 
   it("tops the list with the show's last source, saying so", async () => {
     serve([hd, fullHd]);
@@ -1390,7 +1437,7 @@ describe("stream switcher", () => {
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Streams" }));
     const panel = await screen.findByRole("dialog", { name: "Streams" });
-    const top = await within(panel).findByRole("button", { name: /^Top pick/ });
+    const top = await within(panel).findByRole("button", { name: /^Top pick.+/ });
     await waitFor(() => expect(top).toHaveTextContent("Same source as last time"));
     expect(top).toHaveTextContent("720p");
     expect(top).toHaveTextContent("Playing");
@@ -1403,7 +1450,7 @@ describe("stream switcher", () => {
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Streams" }));
     const panel = await screen.findByRole("dialog", { name: "Streams" });
-    const top = await within(panel).findByRole("button", { name: /^Top pick/ });
+    const top = await within(panel).findByRole("button", { name: /^Top pick.+/ });
     expect(top).toHaveTextContent("1080p");
     expect(top).not.toHaveTextContent("Playing");
     expect(await within(panel).findByRole("button", { name: /Playing/ })).toHaveTextContent("720p");
@@ -1467,7 +1514,7 @@ describe("stream switcher", () => {
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Streams" }));
     const panel = await screen.findByRole("dialog", { name: "Streams" });
-    await user.click(await within(panel).findByRole("button", { name: /^Top pick/ }));
+    await user.click(await within(panel).findByRole("button", { name: /^Top pick.+/ }));
     expect(await within(panel).findByRole("alert")).toBeInTheDocument();
     expect(mocks.load).not.toHaveBeenCalled();
     expect(router.state.location.state.player?.source).toEqual(source);
@@ -1484,7 +1531,7 @@ describe("stream switcher", () => {
     await user.click(within(alert).getByRole("button", { name: "Choose another stream" }));
     const panel = await screen.findByRole("dialog", { name: "Streams" });
     expect(router.state.location.pathname).toBe("/player");
-    await user.click(await within(panel).findByRole("button", { name: /^Top pick/ }));
+    await user.click(await within(panel).findByRole("button", { name: /^Top pick.+/ }));
     await waitFor(() =>
       expect(mocks.load).toHaveBeenCalledWith(
         expect.anything(),
@@ -1503,7 +1550,7 @@ describe("stream switcher", () => {
     const user = userEvent.setup();
     await user.click(await screen.findByRole("button", { name: "Streams" }));
     const panel = await screen.findByRole("dialog", { name: "Streams" });
-    await user.click(await within(panel).findByRole("button", { name: /^Top pick/ }));
+    await user.click(await within(panel).findByRole("button", { name: /^Top pick.+/ }));
     await waitFor(() => expect(mocks.release).toHaveBeenCalledOnce());
     expect(mocks.load.mock.invocationCallOrder[0]).toBeLessThan(
       mocks.release.mock.invocationCallOrder[0]!,
@@ -1608,10 +1655,11 @@ describe("skip intro and credits", () => {
     const [intro, credits] = within(bar).getAllByTestId("segment");
     expect(intro).toHaveAttribute("data-kind", "intro");
     expect(intro!.style.left).toBe("4%");
-    expect(intro!.style.width).toBe("6%");
+    // A marker is at least 4px wide, however short.
+    expect(intro!.style.width).toBe("max(4px, 6%)");
     expect(credits).toHaveAttribute("data-kind", "credits");
     expect(credits!.style.left).toBe("94%");
-    expect(credits!.style.width).toBe("6%");
+    expect(credits!.style.width).toBe("max(4px, 6%)");
 
     // The pointer over one names it.
     vi.spyOn(bar, "getBoundingClientRect").mockReturnValue(
@@ -1869,6 +1917,9 @@ describe("touch player", () => {
   afterEach(() => vi.unstubAllGlobals());
 
   it("has a top row, the transport in the middle and a seek row, with no dock menus", async () => {
+    // An iPhone: at regular width (an iPad, #138) the bottom row always shows.
+    const restore = onCompactIOS();
+    onTestFinished(restore);
     await openPlayer();
     emit("player:state", withTracks);
     const user = userEvent.setup();
@@ -1877,8 +1928,8 @@ describe("touch player", () => {
     expect(within(top).getByRole("heading", { name: "The Film" })).toBeInTheDocument();
     expect(within(top).getByRole("button", { name: "Audio and subtitles" })).toBeInTheDocument();
     expect(within(top).getByRole("button", { name: "More" })).toBeInTheDocument();
-    // Nothing for #131's Lock until it passes a handler.
-    expect(screen.queryByRole("button", { name: "Lock the controls" })).not.toBeInTheDocument();
+    // #131's Lock sits in the top row too.
+    expect(within(top).getByRole("button", { name: "Lock the controls" })).toBeInTheDocument();
     // The old dock's separate menus are gone.
     expect(screen.queryByRole("button", { name: "Subtitles" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Audio" })).not.toBeInTheDocument();

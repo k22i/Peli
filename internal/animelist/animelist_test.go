@@ -93,8 +93,22 @@ func TestDownloadAndKeep(t *testing.T) {
 
 	clock = clock.Add(RefreshEvery)
 	down.Store(true)
-	if !l.IsAnime(context.Background(), "tt2560140") || gets.Load() != 2 {
-		t.Fatalf("after a week: %d downloads, the old copy still answers", gets.Load())
+	// The old copy answers at once; the new download runs behind it.
+	if !l.IsAnime(context.Background(), "tt2560140") {
+		t.Fatal("after a week: the old copy didn't answer")
+	}
+	for deadline := time.Now().Add(5 * time.Second); gets.Load() < 2 && time.Now().Before(deadline); {
+		time.Sleep(5 * time.Millisecond)
+	}
+	if gets.Load() != 2 {
+		t.Fatalf("after a week: %d downloads, want 2", gets.Load())
+	}
+	// The failed download is over before the old copy is asked again.
+	for deadline := time.Now().Add(5 * time.Second); l.warming.Load() && time.Now().Before(deadline); {
+		time.Sleep(5 * time.Millisecond)
+	}
+	if !l.IsAnime(context.Background(), "tt2560140") {
+		t.Fatal("after the failed download: the old copy stopped answering")
 	}
 
 	// A new run reads the kept copy, with no network.

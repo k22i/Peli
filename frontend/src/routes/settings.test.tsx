@@ -232,7 +232,6 @@ const paneTitles = [
   "Streaming",
   "Plugins",
   "Tracking",
-  "Appearance",
   "Privacy",
   "About",
 ];
@@ -246,7 +245,6 @@ const ready: Record<string, [role: string, name: string]> = {
   streaming: ["switch", "Stream torrents"],
   plugins: ["switch", "Use plugins"],
   tracking: ["heading", "Tracking"],
-  appearance: ["heading", "Appearance"],
   privacy: ["switch", "Share diagnostics"],
   about: ["button", "Licences"],
 };
@@ -329,7 +327,15 @@ describe("settings", () => {
     expect(screen.getByRole("button", { name: "Add TMDB key" })).toBeInTheDocument();
 
     await open("Playback");
-    expect(groups()).toEqual(["Video", "Intros and credits"]);
+    expect(groups()).toEqual([
+      "Video",
+      "HDR on a screen without it",
+      "Picture",
+      "Framing",
+      "Sound",
+      "Next episode",
+      "Intros and credits",
+    ]);
     expect(await screen.findByRole("switch", { name: "Hardware decoding" })).toBeChecked();
     expect(screen.getByRole("switch", { name: "Skip intros automatically" })).not.toBeChecked();
     expect(screen.getByRole("switch", { name: "Look up intro and credits times" })).toBeChecked();
@@ -347,8 +353,10 @@ describe("settings", () => {
     expect(screen.getByRole("combobox", { name: "Subtitle language" })).toHaveTextContent(
       "Automatic",
     );
-    const size = screen.getByRole("group", { name: "Size" });
-    expect(within(size).getByRole("button", { name: "Medium" })).toHaveAttribute(
+    // Size, font and colour are in the Look dialog now.
+    expect(screen.getByRole("button", { name: "Customise" })).toBeInTheDocument();
+    const captions = screen.getByRole("group", { name: "Captions" });
+    expect(within(captions).getByRole("button", { name: "System" })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
@@ -358,12 +366,9 @@ describe("settings", () => {
     expect(await screen.findByRole("switch", { name: "Stream torrents" })).not.toBeChecked();
 
     await open("Tracking");
-    expect(groups()).toEqual(["SIMKL", "AniList"]);
+    expect(groups()).toEqual(["SIMKL", "AniList", "Other devices"]);
     expect(await screen.findByRole("button", { name: "Connect SIMKL" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Connect AniList" })).toBeInTheDocument();
-
-    await open("Appearance");
-    expect(screen.getByText("Theme")).toBeInTheDocument();
 
     await open("Privacy");
     expect(await screen.findByRole("switch", { name: "Share diagnostics" })).not.toBeChecked();
@@ -384,17 +389,17 @@ describe("settings", () => {
       "aria-pressed",
       "true",
     );
-    await user.click(within(rail).getByRole("button", { name: "Appearance" }));
+    await user.click(within(rail).getByRole("button", { name: "Privacy" }));
 
-    expect(await screen.findByRole("heading", { level: 2, name: "Appearance" })).toBeVisible();
-    expect(router.state.location.search).toEqual({ section: "appearance" });
-    expect(within(rail).getByRole("button", { name: "Appearance" })).toHaveAttribute(
+    expect(await screen.findByRole("heading", { level: 2, name: "Privacy" })).toBeVisible();
+    expect(router.state.location.search).toEqual({ section: "privacy" });
+    expect(within(rail).getByRole("button", { name: "Privacy" })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
     // Pressing the current chip keeps the pane.
-    await user.click(within(rail).getByRole("button", { name: "Appearance" }));
-    expect(router.state.location.search).toEqual({ section: "appearance" });
+    await user.click(within(rail).getByRole("button", { name: "Privacy" }));
+    expect(router.state.location.search).toEqual({ section: "privacy" });
   });
 
   it("opens a pane from the pane list with the keyboard", async () => {
@@ -485,8 +490,16 @@ describe("settings", () => {
     await user.keyboard(" ");
     await waitFor(() => expect(store.device?.hardwareDecoding).toBe(false));
     expect(hardwareDecoding).not.toBeChecked();
+    // The next stop is the picture quality choice in the same group.
     await user.tab();
-    expect(screen.getByRole("switch", { name: "Skip intros automatically" })).toHaveFocus();
+    expect(hardwareDecoding).not.toHaveFocus();
+    expect(document.activeElement).toHaveTextContent("Fast");
+
+    // And the switches further down toggle with Space too.
+    const skipIntros = screen.getByRole("switch", { name: "Skip intros automatically" });
+    skipIntros.focus();
+    await user.keyboard(" ");
+    await waitFor(() => expect(store.profileSettings.get(1)?.skipIntros).toBe(true));
   });
 
   it("picks languages and sizes with the keyboard", async () => {
@@ -517,11 +530,11 @@ describe("settings", () => {
     expect(screen.getByRole("combobox", { name: "Subtitle language" })).toHaveFocus();
 
     // Segmented controls move with arrow keys and press with Space.
-    const size = screen.getByRole("group", { name: "Size" });
-    within(size).getByRole("button", { name: "Medium" }).focus();
+    const captions = screen.getByRole("group", { name: "Captions" });
+    within(captions).getByRole("button", { name: "System" }).focus();
     await user.keyboard("{ArrowRight} ");
-    await waitFor(() => expect(store.profileSettings.get(1)?.subtitleSize).toBe("large"));
-    expect(within(size).getByRole("button", { name: "Large" })).toHaveAttribute(
+    await waitFor(() => expect(store.profileSettings.get(1)?.captions).toBe("on"));
+    expect(within(captions).getByRole("button", { name: "On" })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
@@ -548,7 +561,9 @@ describe("settings", () => {
     );
     expect(order()).toEqual(["1English", "2Korean", "3Japanese"]);
     expect(korean).toHaveFocus();
-    expect(screen.getByRole("status")).toHaveTextContent("Korean is number 2 of 3");
+    expect(screen.getAllByRole("status").map((status) => status.textContent)).toContain(
+      "Korean is number 2 of 3",
+    );
 
     // The first can't go earlier, and the last can't go later.
     const english = within(list).getByRole("button", { name: "Move English earlier" });
@@ -627,7 +642,7 @@ describe("settings", () => {
     await renderSettings("languages");
 
     const elements = keyboardReachable();
-    expect(elements.length).toBeGreaterThan(10);
+    expect(elements.length).toBeGreaterThan(5);
     const missing = elements.filter((element) => !hasFocusRing(element));
     expect(missing.map((element) => element.outerHTML.slice(0, 120))).toEqual([]);
   });

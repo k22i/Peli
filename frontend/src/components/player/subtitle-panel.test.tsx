@@ -85,6 +85,16 @@ function renderPanel(
   return props;
 }
 
+// A language has a filter chip (in the Languages fieldset) and a row in the
+// list, both named for it; this is the row.
+function row(name: RegExp) {
+  const [found, ...rest] = screen
+    .getAllByRole("button", { name })
+    .filter((button) => !button.closest("fieldset"));
+  if (!found || rest.length > 0) throw new Error(`Expected one row named ${String(name)}`);
+  return found;
+}
+
 describe("SubtitlePanel › second line", () => {
   it("offers a second line only when there is something to pair", () => {
     renderPanel({ tracks: [track(1, "en", { selected: true })] });
@@ -93,7 +103,7 @@ describe("SubtitlePanel › second line", () => {
 
   it("picks the main subtitles until asked for the second line", async () => {
     const { onPickTrack, onPickSecondaryTrack } = renderPanel();
-    await userEvent.click(screen.getByRole("button", { name: /^Japanese/ }));
+    await userEvent.click(row(/^Japanese/));
     expect(onPickTrack).toHaveBeenCalledWith(2);
     expect(onPickSecondaryTrack).not.toHaveBeenCalled();
   });
@@ -101,7 +111,7 @@ describe("SubtitlePanel › second line", () => {
   it("picks the second line from the same list", async () => {
     const { onPickTrack, onPickSecondaryTrack } = renderPanel();
     await userEvent.click(screen.getByRole("button", { name: "Second line" }));
-    await userEvent.click(screen.getByRole("button", { name: /^Japanese/ }));
+    await userEvent.click(row(/^Japanese/));
     expect(onPickSecondaryTrack).toHaveBeenCalledWith(2);
     expect(onPickTrack).not.toHaveBeenCalled();
   });
@@ -117,10 +127,10 @@ describe("SubtitlePanel › second line", () => {
   it("won't repeat the main subtitles or use pictures as the second line", async () => {
     renderPanel();
     await userEvent.click(screen.getByRole("button", { name: "Second line" }));
-    const main = screen.getByRole("button", { name: /^English/ });
+    const main = row(/^English/);
     expect(main).toHaveProperty("disabled", true);
     expect(main.textContent).toContain("Showing as the main subtitles");
-    const pictures = screen.getByRole("button", { name: /^French/ });
+    const pictures = row(/^French/);
     expect(pictures).toHaveProperty("disabled", true);
     expect(pictures.textContent).toContain("Pictures can’t be shown as a second line");
   });

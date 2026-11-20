@@ -13,6 +13,7 @@ var japanese = ProfileSettings{
 	Picture:        Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
 	PicturePresets: []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
 	Sound: Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"}, HideSpoilers: true,
+	Gestures: Gestures{LevelSwipes: true, SeekSwipe: false, HoldForSpeed: true, DoubleTapSkip: 5},
 }
 
 var laptop = DeviceSettings{
@@ -34,7 +35,7 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(anna.ID)), DefaultProfileSettings())
 	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
 	equal(t, DefaultDeviceSettings(), DeviceSettings{
-		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5,
+		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 		Audio: DefaultAudio(), StreamSort: "best",
 	})

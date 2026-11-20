@@ -81,11 +81,24 @@ func TestFixtures(t *testing.T) {
 			// Fields added since (#55, #98) read as their defaults, and the
 			// single audio language older files saved reads as a list of one.
 			profileSettings := japanese
+			// Fields added after a fixture was written (hide spoilers, gestures,
+			// auto-update) read as their defaults too.
+			profileSettings.HideSpoilers, profileSettings.Gestures = false, DefaultGestures()
 			deviceSettings := DeviceSettings{
 				Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
+				AutoUpdate: true, Quality: DefaultQuality(), Audio: DefaultAudio(), StreamSort: "best",
 			}
-			if filepath.Base(fixture) == "schema-1.db" {
+			switch filepath.Base(fixture) {
+			case "schema-1.db":
 				profileSettings, deviceSettings = DefaultProfileSettings(), DefaultDeviceSettings()
+			case "schema-2.db", "schema-3.db":
+				// These saved only the languages, size and captions; the
+				// device file only hardware decoding and diagnostics.
+				profileSettings = DefaultProfileSettings()
+				profileSettings.AudioLanguages = []string{"jpn"}
+				profileSettings.SubtitleLanguage, profileSettings.SubtitleSize, profileSettings.Captions = "en", "large", "on"
+				deviceSettings = DefaultDeviceSettings()
+				deviceSettings.HardwareDecoding, deviceSettings.Diagnostics = false, true
 			}
 			equal(t, must[ProfileSettings](t)(s.ProfileSettings(id)), profileSettings)
 			equal(t, must[DeviceSettings](t)(s.DeviceSettings()), deviceSettings)

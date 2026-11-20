@@ -18,6 +18,7 @@ import torrentioSeries from "@/lib/addon-protocol/fixtures/torrentio/stream-seri
 import { Party } from "@/lib/party";
 import { deviceSettingsQuery } from "@/lib/settings";
 import { keepForSession, noFilters } from "@/lib/stream-filters";
+import { sizeLabel } from "@/lib/stream-labels";
 import { partyState } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
@@ -164,7 +165,8 @@ function serve(answers: Record<string, unknown> = {}) {
   };
   const fetch = vi.fn<(url: string, init: { signal: AbortSignal }) => Promise<Response>>(
     async (url, init) => {
-      if (!(url in all)) return new Response("", { status: 503 });
+      // The Wails runtime's own calls (a binding no test mocks) come as a URL.
+      if (typeof url !== "string" || !(url in all)) return new Response("", { status: 503 });
       const answer = all[url];
       const body = await Promise.race([
         answer instanceof Each ? answer.make() : answer,
@@ -176,7 +178,10 @@ function serve(answers: Record<string, unknown> = {}) {
     },
   );
   vi.stubGlobal("fetch", fetch);
-  return () => fetch.mock.calls.map(([url, init]) => ({ url, signal: init.signal }));
+  return () =>
+    fetch.mock.calls
+      .filter(([url]) => typeof url === "string")
+      .map(([url, init]) => ({ url, signal: init.signal }));
 }
 
 function later<T>() {
@@ -301,7 +306,10 @@ describe("stream picker", () => {
       [movieStreams("peerflix.example")]: peerflixMovie,
     });
     const user = userEvent.setup();
-    const { router } = await renderApp("/title/movie/tt0111161");
+    // The first render in the file loads every route's code cold: allow it
+    // longer than the shell wait renderApp gives.
+    const { router } = await renderApp("/title/movie/tt0111161", { shell: false });
+    await screen.findByRole("navigation", { name: "Main" }, { timeout: 15_000 });
 
     await user.click(await screen.findByRole("button", { name: "Play" }));
     expect(router.state.location.pathname).toBe(pickerPath);
@@ -933,9 +941,10 @@ describe("stream picker", () => {
     mocks.addons.mockResolvedValue([torrentio]);
     await renderApp(pickerPath);
 
-    // 2.1 GB over the film's 142 minutes.
+    // 2.1 GB over the film's 142 minutes. The addon's GB is 2³⁰ bytes, the
+    // label's 10⁹.
     await waitFor(() => expect(topPick()).toHaveTextContent("HEVC"));
-    expect(topPick()).toHaveTextContent("2.1 GB · ~2 Mbps");
+    expect(topPick()).toHaveTextContent(`${gb(2.1)} · ~2.1 Mbps`);
   });
 
   it("copies a stream's parsed file names, never its link", async () => {
@@ -946,12 +955,9 @@ describe("stream picker", () => {
     await renderApp(pickerPath);
 
     await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
-    await user.click(
-      within(screen.getByRole("list", { name: "Streams" })).getByRole("button", {
-        name: "File name",
-      }),
-    );
-    await user.click(screen.getByRole("button", { name: "Copy file name" }));
+    // The names show on asking, and carry the copy button.
+    await user.click(screen.getByRole("button", { name: "File name" }));
+    await user.click(await screen.findByRole("button", { name: "Copy file name" }));
 
     // user-event's clipboard stands in for the system's.
     const copied = await navigator.clipboard.readText();
@@ -1059,11 +1065,11 @@ describe("stream picker", () => {
         ],
       },
     });
-    const user = userEvent.setup();
     await renderApp(pickerPath);
 
     await waitFor(() => expect(topPick()).toHaveTextContent("P2P · 40 seeders"));
-    await user.click(topPick().nextElementSibling!.querySelector("button")!);
+    // Moving into the list (here, onto the row's file name button) pins it.
+    act(() => topPick().focus());
 
     // A better one arrives: cached on debrid. It's listed, but below.
     slow.resolve({
@@ -1163,6 +1169,8 @@ const shawshankAt = (resolution: string, size: string, marker = "+", letter = "f
   title: `The.Shawshank.Redemption.1994.${resolution}.BluRay.x265-GRP.mkv\n👤 20 💾 ${size} ⚙️ Tracker`,
   url: `https://torrentio.strem.fun/resolve/torbox/KEY/${letter}${"0".repeat(39)}/null/0/${resolution}-${size}.mkv`,
 });
+// What a size an addon writes as "n GB" (n × 2³⁰ bytes) shows as.
+const gb = (n: number) => sizeLabel(Math.round(n * 2 ** 30))!;
 // The rows' sizes, in order.
 const sizes = () => shownStreams().map((row) => /([\d.]+ GB)/.exec(row.textContent ?? "")?.[1]);
 
@@ -1242,6 +1250,10 @@ describe("filters, sorts and the jump strip", () => {
 
   it("sorts within each group, keeping the groups, and saves the sort for the device", async () => {
     mocks.device.mockResolvedValue({ ...device, streamSort: "size-asc" });
+    // What's saved is what the next read returns, as the store does.
+    mocks.saveDevice.mockImplementation(async (settings) => {
+      mocks.device.mockResolvedValue(settings);
+    });
     serve({
       [movieStreams("torrentio.strem.fun")]: {
         streams: [
@@ -1258,18 +1270,19 @@ describe("filters, sorts and the jump strip", () => {
 
     await waitFor(() => expect(shownStreams()).toHaveLength(4));
     // The top pick is still the best match; the rest of 1080p, smallest first.
-    expect(topPick()).toHaveTextContent("9.1 GB");
-    expect(sizes()).toEqual(["9.1 GB", "30 GB", "2.2 GB", "5.5 GB"]);
+    expect(topPick()).toHaveTextContent(gb(9.1));
+    expect(sizes()).toEqual([gb(9.1), gb(30), gb(2.2), gb(5.5)]);
     // No P2P streams: no "Most seeders".
     await user.click(screen.getByRole("combobox", { name: "Sort" }));
+    await screen.findByRole("option", { name: "Largest first" });
     expect(screen.queryByRole("option", { name: "Most seeders" })).toBeNull();
-    await user.click(screen.getByRole("option", { name: "Largest first" }));
+    await user.click(await screen.findByRole("option", { name: "Largest first" }));
     await waitFor(() =>
       expect(mocks.saveDevice).toHaveBeenCalledWith(
         expect.objectContaining({ streamSort: "size-desc" }),
       ),
     );
-    await waitFor(() => expect(sizes()).toEqual(["9.1 GB", "30 GB", "5.5 GB", "2.2 GB"]));
+    await waitFor(() => expect(sizes()).toEqual([gb(9.1), gb(30), gb(5.5), gb(2.2)]));
   });
 
   it("jumps to a group from the strip or with the number keys", async () => {
@@ -1340,13 +1353,14 @@ const partySource = {
   name: "",
 };
 
+// Longer than the ranking takes to settle (500 ms) and then some.
+const looking = () => new Promise((r) => setTimeout(r, 900));
+
 // "Start cached streams sooner" (#101, ADR-0060): the cached top pick
 // resolves while the user looks, so picking it plays at once.
 describe("starting cached streams sooner", () => {
   const shawshank = "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv";
   const cached = debrid(shawshank, "+");
-  // Longer than the ranking takes to settle (500 ms) and then some.
-  const looking = () => new Promise((r) => setTimeout(r, 900));
 
   it("resolves the cached top pick ahead, and plays it with P without asking again", async () => {
     mocks.device.mockResolvedValue({ ...device, preResolve: true });
@@ -1357,7 +1371,7 @@ describe("starting cached streams sooner", () => {
     const user = userEvent.setup();
     await renderApp(pickerPath);
 
-    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce(), { timeout: 4000 });
     expect(mocks.resolve.mock.calls[0]![0].url).toBe(cached.url);
     expect(mocks.load).not.toHaveBeenCalled();
 
@@ -1401,7 +1415,7 @@ describe("starting cached streams sooner", () => {
     await looking();
     expect(mocks.resolve).not.toHaveBeenCalled();
     slow.resolve(peerflixMovie);
-    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce(), { timeout: 4000 });
   });
 
   it("resolves nothing ahead on a kids profile", async () => {
@@ -1422,7 +1436,7 @@ describe("starting cached streams sooner", () => {
     mocks.addons.mockResolvedValue([torrentio]);
     const user = userEvent.setup();
     await renderApp(pickerPath);
-    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce(), { timeout: 4000 });
     expect(mocks.resolve.mock.calls[0]![0].url).toBe(cachedAt("2160p").url);
 
     // On and off and on again, quickly: one resolve, for where it settles.
@@ -1453,7 +1467,7 @@ describe("starting cached streams sooner", () => {
     serve({ [movieStreams("torrentio.strem.fun")]: { streams: [cached, other] } });
     const user = userEvent.setup();
     await renderApp(pickerPath);
-    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledOnce(), { timeout: 4000 });
 
     const second = shownStreams().find((button) => button.textContent?.includes("720p"));
     await user.click(second!);

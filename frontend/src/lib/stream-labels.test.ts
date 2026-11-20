@@ -130,7 +130,12 @@ const stream = (file: string, size: string) =>
   });
 
 describe("size, bitrate and codec labels", () => {
-  const single = stream("Film.1994.1080p.BluRay.x265-GRP.mkv", "2.1 GB");
+  // Addons write sizes in 1024s ("2.1 GB" is 2.1 × 2³⁰ bytes, parse.ts), shown
+  // in decimal units, so the labels are tested from bytes.
+  const single = {
+    ...stream("Film.1994.1080p.BluRay.x265-GRP.mkv", "2.1 GB"),
+    sizeBytes: 2.1e9,
+  };
 
   it("badges HEVC, AV1 and H.264, and nothing for older codecs", () => {
     expect(videoCodecLabel(single)).toBe("HEVC");

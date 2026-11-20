@@ -2,8 +2,6 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, vi } from "vite-plus/test";
 
-import { resetAnimeAnswers } from "@/lib/anime";
-
 import { animeIds } from "./anime";
 import { ios } from "./ios";
 
@@ -130,12 +128,15 @@ window.scrollTo = () => {};
 Object.defineProperty(Element.prototype, "scrollTo", { value: () => {}, configurable: true });
 
 // Globals are off, so Testing Library cannot register its own cleanup.
-afterEach(() => {
+afterEach(async () => {
   cleanup();
   ios.on = false;
   window.localStorage.clear();
-  // The anime answers are kept for the session (lib/anime.ts).
-  resetAnimeAnswers();
+  // The anime answers are kept for the session (lib/anime.ts). Imported here,
+  // not at the top: lib/anime brings lib/settings and @bindings/store, and a
+  // module this file loads is loaded before a test file's vi.mock applies, so
+  // every test would get the real store binding for settings queries.
+  (await import("@/lib/anime")).resetAnimeAnswers();
   animeIds.clear();
 });
 

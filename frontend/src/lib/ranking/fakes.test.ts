@@ -111,7 +111,12 @@ describe("Kitsu episodes with an episode map", () => {
     expect(
       verdict(answer("x", "[Erai-raws] Dandadan 2nd Season - 01 [1080p].mkv"), second).bucket,
     ).toBe("ok");
-    expect(verdict(answer("x", "Dandadan S01E01.mkv"), second).reasons).toEqual(["wrong season"]);
+    // Season 1's episode 1 is another season. A title mismatch may ride along
+    // ("2nd Season" isn't in the file's name), reported but moving nothing
+    // (ADR-0049).
+    const first = verdict(answer("x", "Dandadan S01E01.mkv"), second);
+    expect(first.bucket).toBe("hidden");
+    expect(first.reasons).toContain("wrong season");
   });
 });
 

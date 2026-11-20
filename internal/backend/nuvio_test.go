@@ -318,7 +318,8 @@ func TestAddonsPushIsTheWholeList(t *testing.T) {
 func TestPushUnsupported(t *testing.T) {
 	d := newDevice(t, nuviotest.NewServer(t))
 	for _, p := range []store.Push{
-		{Surface: "plugins", Op: store.OpUpsert, Item: []byte(`[]`)},
+		{Surface: "bookmarks", Op: store.OpUpsert, Item: []byte(`[]`)},
+		{Surface: store.SurfacePlugins, Op: store.OpDelete, Item: []byte(`[]`)},
 		{Surface: store.SurfaceAddons, Op: store.OpDelete, Item: []byte(`[]`)},
 		{Surface: store.SurfaceLibrary, Op: "merge", Item: []byte(`{}`)},
 	} {

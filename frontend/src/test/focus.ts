@@ -16,5 +16,7 @@ export function hasFocusRing(element: HTMLElement): boolean {
   const own = element.getAttribute("class") ?? "";
   if (/(^|\s)focus-visible:/.test(own) || /(^|:)focus:/.test(own)) return true;
   if (element.querySelector("[class*='group-focus-visible']")) return true;
+  // A field inside a label that rings on focus-within (the picker's search).
+  if (element.closest("[class*='focus-within:ring']")) return true;
   return !/(^|\s)outline-none(\s|$)/.test(own);
 }

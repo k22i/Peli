@@ -3,21 +3,18 @@ import { describe, expect, it } from "vite-plus/test";
 import { contrastPairs, contrastRatio } from "@/lib/contrast";
 import { indexCss as css } from "@/test/index-css";
 
-// The colour tokens as index.css declares them: the top-level `:root` and
-// `.dark` blocks (the ones in @layer base are indented and skipped).
-function tokens(selector: ":root" | ".dark"): Record<string, string> {
-  const escaped = selector.replace(".", "\\.");
-  const block = new RegExp(`^${escaped} \\{([\\s\\S]*?)^\\}`, "m").exec(css)?.[1];
-  if (!block) throw new Error(`no ${selector} block in index.css`);
+// The colour tokens as index.css declares them: the top-level `:root` block
+// (the ones in @layer base are indented and skipped). Peli is dark only
+// (#143), so these are the one set.
+function tokens(): Record<string, string> {
+  const block = /^:root \{([\s\S]*?)^\}/m.exec(css)?.[1];
+  if (!block) throw new Error("no :root block in index.css");
   return Object.fromEntries(
     [...block.matchAll(/--([\w-]+):\s*(#[\da-f]+);/gi)].map((match) => [match[1], match[2]]),
   );
 }
 
-const modes = {
-  light: tokens(":root"),
-  dark: { ...tokens(":root"), ...tokens(".dark") },
-};
+const modes = { dark: tokens() };
 
 describe("theme contrast", () => {
   describe.each(Object.entries(modes))("%s mode", (_, values) => {
@@ -32,12 +29,6 @@ describe("theme contrast", () => {
       const [base, ...layers] = background.map(colour);
       expect(contrastRatio(colour(foreground), base!, ...layers)).toBeGreaterThanOrEqual(min);
     });
-  });
-
-  it("gives dark mode its own value for every colour", () => {
-    const light = tokens(":root");
-    const dark = tokens(".dark");
-    expect(new Set(Object.keys(dark))).toEqual(new Set(Object.keys(light)));
   });
 });
 

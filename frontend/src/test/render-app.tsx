@@ -25,7 +25,9 @@ export async function renderApp(
       </ToastProvider>
     </QueryClientProvider>,
   );
-  if (shell) await screen.findByRole("navigation", { name: "Main" });
+  // The first render in a file loads the routes cold, which can take longer
+  // than findBy's default second on a busy machine.
+  if (shell) await screen.findByRole("navigation", { name: "Main" }, { timeout: 10_000 });
 
   return { ...result, router, queryClient };
 }

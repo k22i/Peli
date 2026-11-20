@@ -59,7 +59,7 @@ func newFake(t *testing.T) (*fake, *Addon) {
 			return
 		}
 		_, _ = io.WriteString(w, `{"data":{"Media":{"id":154587,"format":"TV","status":"RELEASING","title":{"english":"Frieren"},
-			"episodes":3,"duration":24,"countryOfOrigin":"JP","siteUrl":"https://anilist.co/anime/154587",
+			"startDate":{"year":2023,"month":9,"day":29},"episodes":3,"duration":24,"countryOfOrigin":"JP","siteUrl":"https://anilist.co/anime/154587",
 			"studios":{"nodes":[{"name":"Madhouse","siteUrl":"https://anilist.co/studio/11"}]},
 			"trailer":{"id":"yt123","site":"youtube"},
 			"nextAiringEpisode":{"episode":3,"airingAt":1893456000},

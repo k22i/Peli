@@ -103,3 +103,4 @@
 - [iPad shell](ipad-shell.md) — #138 CSS bottom-centre bar (moved from the top after the device run) + sidebar (user chose CSS), input-devices (GCKeyboard, pointer), useFeature, iosKeysOff, popover right-click, roomy player, one window
 - [Hero contrast](hero-contrast.md) — text-column shade, lib/art-tone canvas sampling (CORS per host), white eyebrow + sun dot, dark-logo silhouette, textless TMDB backdrop
 - [Title, player and Home extras](title-player-home-extras.md) — Ends at (lib/ends-at), hideSpoilers + lib/spoilers reveal, ← → page the marquee, component shot rig
+- [Test suite green](test-suite-green.md) — 2026-11-20 baseline fixed (0 failures); never import app modules at the top of test/setup.ts, a11y name space rule, secrets mock, submenu keyboard picks, onCompactIOS

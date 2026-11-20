@@ -59,12 +59,15 @@ vi.mock("@bindings/store", () => ({
     }),
     DeviceSettings: async () => ({ hardwareDecoding: true, diagnostics: false }),
     Addons: async (id: number) => backend.addons.get(id) ?? [],
+    VisibleAddons: async (id: number) => backend.addons.get(id) ?? [],
     KidsScope: async (id: number): Promise<KidsScope> =>
       backend.scopes.get(id) ?? { addons: [], catalogs: [] },
   },
 }));
 
-vi.mock("@bindings/secrets", () => ({ Service: { Available: async () => {} } }));
+vi.mock("@bindings/secrets", () => ({
+  Service: { Available: async () => {}, Get: async () => null },
+}));
 
 // A stand-in for internal/account's profile changes (#95), failing with a
 // code in the cause as Wails passes it on.
@@ -214,7 +217,7 @@ beforeEach(() => {
 });
 
 const picker = () => screen.findByRole("heading", { level: 1, name: "Who’s watching?" });
-const size = () => within(screen.getByRole("group", { name: "Size" }));
+const captions = () => within(screen.getByRole("group", { name: "Captions" }));
 
 // A profile's tile, by its name.
 const tile = (name: string) => screen.findByRole("button", { name });
@@ -519,7 +522,7 @@ describe("managing profiles", () => {
 describe("switching from the profile menu", () => {
   it("swaps the profile's settings and addons in place, without a restart", async () => {
     signedIn(kevin, kevin, kids);
-    backend.settings.set(kids.id, { subtitleSize: "large" });
+    backend.settings.set(kids.id, { captions: "on" });
     backend.addons.set(kevin.id, [cinemeta]);
     backend.addons.set(kids.id, [cinemeta, anime]);
     const user = userEvent.setup();
@@ -527,10 +530,17 @@ describe("switching from the profile menu", () => {
     const { router } = await renderApp("/profiles", { shell: false });
     await user.click(await tile("Kevin"));
     await screen.findByRole("button", { name: "Profile: Kevin" });
-    await router.navigate({ to: "/settings" });
+    // Settings shows one pane at a time: the addons count is in Addons &
+    // content, the captions choice in Languages & subtitles.
+    await router.navigate({ to: "/settings", search: { section: "content" } });
 
     expect(await screen.findByText("1 addon installed")).toBeVisible();
-    expect(size().getByRole("button", { name: "Medium" })).toHaveAttribute("aria-pressed", "true");
+    await router.navigate({ to: "/settings", search: { section: "languages" } });
+    await screen.findByRole("group", { name: "Captions" });
+    expect(captions().getByRole("button", { name: "System" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
 
     screen.getByRole("button", { name: "Profile: Kevin" }).focus();
     await user.keyboard("{Enter}");
@@ -547,10 +557,14 @@ describe("switching from the profile menu", () => {
     await user.keyboard("{Enter}");
 
     expect(await screen.findByRole("button", { name: "Profile: Kids Room" })).toBeVisible();
-    expect(await screen.findByText("2 addons installed")).toBeVisible();
     await waitFor(() =>
-      expect(size().getByRole("button", { name: "Large" })).toHaveAttribute("aria-pressed", "true"),
+      expect(captions().getByRole("button", { name: "On" })).toHaveAttribute(
+        "aria-pressed",
+        "true",
+      ),
     );
+    await router.navigate({ to: "/settings", search: { section: "content" } });
+    expect(await screen.findByText("2 addons installed")).toBeVisible();
     expect(router.state.location.pathname).toBe("/settings");
     // Kevin was already current, so picking him switched nothing.
     expect(backend.switches).toEqual([kids.id]);
