@@ -116,21 +116,27 @@ func TestLeaveOut(t *testing.T) {
 	}
 }
 
-// A show's first season and a show with films filed as its specials take
-// the show's poster; later seasons, second cours, specials and entries
-// that can't be told apart keep AniList's cover.
-func TestPosterTitle(t *testing.T) {
+// Every season and cour of a show belongs to the show's IMDb title, at its
+// season; a film with an IMDb id of its own is that film; specials, OVAs and
+// films filed as a show's season 0 stay AniList's, as does a film whose IMDb
+// id a show's season also has.
+func TestTitle(t *testing.T) {
 	entries, err := parse([]byte(`[
- {"type":"OVA","anilist_id":87528,"kitsu_id":12625,"imdb_id":["tt7441658"],"season":{"tvdb":0}},
- {"type":"TV","anilist_id":97940,"kitsu_id":13209,"imdb_id":["tt7441658"],"season":{"tvdb":1}},
- {"type":"TV","anilist_id":195604,"kitsu_id":50024,"imdb_id":["tt7441658"],"season":{"tvdb":2}},
- {"type":"TV","anilist_id":1735,"kitsu_id":1555,"imdb_id":["tt0988824"]},
- {"type":"MOVIE","anilist_id":10686,"kitsu_id":6292,"imdb_id":["tt0988824"],"season":{"tvdb":0}},
+ {"type":"OVA","anilist_id":87528,"kitsu_id":12625,"imdb_id":["tt7441658"],"season":{"tvdb":0},"themoviedb_id":{"tv":73223}},
+ {"type":"TV","anilist_id":97940,"kitsu_id":13209,"imdb_id":["tt7441658"],"season":{"tvdb":1},"themoviedb_id":{"tv":73223}},
+ {"type":"TV","anilist_id":195604,"kitsu_id":50024,"imdb_id":["tt7441658"],"season":{"tvdb":2},"themoviedb_id":{"tv":73223}},
+ {"type":"TV","anilist_id":1735,"kitsu_id":1555,"imdb_id":["tt0988824"],"themoviedb_id":{"tv":31910}},
+ {"type":"MOVIE","anilist_id":10686,"kitsu_id":6292,"imdb_id":["tt0988824"],"season":{"tvdb":0},"themoviedb_id":{"tv":31910}},
  {"type":"TV","anilist_id":20958,"imdb_id":["tt2560140"],"season":{"tvdb":1}},
  {"type":"TV","anilist_id":104578,"imdb_id":["tt2560140"],"season":{"tvdb":1},"episode_offset":{"tvdb":12}},
  {"type":"MOVIE","anilist_id":21827,"imdb_id":["tt5311514"]},
- {"type":"TV","anilist_id":1,"imdb_id":["tt0000001"]},
- {"type":"ONA","anilist_id":2,"imdb_id":["tt0000001"]}
+ {"type":"MOVIE","anilist_id":112151,"imdb_id":["tt11032374"],"season":{"tvdb":0},"themoviedb_id":{"movie":[635302]}},
+ {"type":"ONA","anilist_id":195539,"imdb_id":["tt12590266"],"season":{"tvdb":2},"themoviedb_id":{"tv":105248}},
+ {"type":"OVA","anilist_id":270,"imdb_id":["tt0495212"],"season":{"tvdb":1},"themoviedb_id":{"tv":13916}},
+ {"type":"MOVIE","anilist_id":3,"imdb_id":["tt0000003"],"themoviedb_id":{"movie":[1]}},
+ {"type":"TV","anilist_id":4,"imdb_id":["tt0000003"],"season":{"tvdb":1}},
+ {"type":"TV","anilist_id":5,"imdb_id":["tt0000005","tt0000006"]},
+ {"type":"TV","anilist_id":6,"imdb_id":["tt0000007"],"themoviedb_id":17}
 ]`))
 	if err != nil {
 		t.Fatal(err)
@@ -139,22 +145,30 @@ func TestPosterTitle(t *testing.T) {
 	ctx := context.Background()
 	for _, tc := range []struct {
 		id   string
-		want PosterTitle
+		want Title
 	}{
-		{"anilist:97940", PosterTitle{"tt7441658", "series"}},
-		{"kitsu:13209", PosterTitle{"tt7441658", "series"}},
-		{"anilist:195604", PosterTitle{}},
-		{"anilist:87528", PosterTitle{}},
-		{"kitsu:1555", PosterTitle{"tt0988824", "series"}},
-		{"anilist:10686", PosterTitle{}},
-		{"anilist:20958", PosterTitle{"tt2560140", "series"}},
-		{"anilist:104578", PosterTitle{}},
-		{"anilist:21827", PosterTitle{"tt5311514", "movie"}},
-		{"anilist:1", PosterTitle{}},
-		{"anilist:404", PosterTitle{}},
+		{"anilist:97940", Title{"tt7441658", "series", 1}},
+		{"kitsu:13209", Title{"tt7441658", "series", 1}},
+		{"anilist:195604", Title{"tt7441658", "series", 2}},
+		{"kitsu:50024", Title{"tt7441658", "series", 2}},
+		{"anilist:87528", Title{}},
+		{"kitsu:1555", Title{"tt0988824", "series", 0}},
+		{"anilist:10686", Title{}},
+		{"anilist:20958", Title{"tt2560140", "series", 1}},
+		{"anilist:104578", Title{"tt2560140", "series", 1}},
+		{"anilist:21827", Title{"tt5311514", "movie", 0}},
+		{"anilist:112151", Title{"tt11032374", "movie", 0}},
+		{"anilist:195539", Title{"tt12590266", "series", 2}},
+		{"anilist:270", Title{"tt0495212", "series", 1}},
+		{"anilist:3", Title{}},
+		{"anilist:4", Title{"tt0000003", "series", 1}},
+		{"anilist:5", Title{}},
+		{"anilist:6", Title{"tt0000007", "series", 0}},
+		{"anilist:404", Title{}},
+		{"tvdb:1", Title{}},
 	} {
-		if got, _ := l.PosterTitle(ctx, tc.id); got != tc.want {
-			t.Errorf("%s: PosterTitle = %+v; want %+v", tc.id, got, tc.want)
+		if got, _ := l.Title(ctx, tc.id); got != tc.want {
+			t.Errorf("%s: Title = %+v; want %+v", tc.id, got, tc.want)
 		}
 	}
 }

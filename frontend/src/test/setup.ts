@@ -8,16 +8,20 @@ import { animeIds } from "./anime";
 import { ios } from "./ios";
 
 // Which IMDb ids are anime (#109, asked a page at a time since #128): none,
-// unless a test adds them to animeIds (test/anime.ts). No
-// anime entry stands for one IMDb title (PosterTitles).
+// unless a test adds them to animeIds (test/anime.ts). No anime entry
+// belongs to an IMDb title (Titles).
 vi.mock("@bindings/animelist", () => ({
   Service: {
     LeaveOut: vi.fn<(ids: string[]) => Promise<{ anime: boolean[]; ready: boolean }>>((ids) =>
       Promise.resolve({ anime: ids.map((id) => animeIds.has(id)), ready: true }),
     ),
-    PosterTitles: vi.fn<
-      (ids: string[]) => Promise<{ titles: { imdb: string; type: string }[]; ready: boolean }>
-    >((ids) => Promise.resolve({ titles: ids.map(() => ({ imdb: "", type: "" })), ready: true })),
+    Titles: vi.fn<
+      (
+        ids: string[],
+      ) => Promise<{ titles: { imdb: string; type: string; season: number }[]; ready: boolean }>
+    >((ids) =>
+      Promise.resolve({ titles: ids.map(() => ({ imdb: "", type: "", season: 0 })), ready: true }),
+    ),
   },
 }));
 

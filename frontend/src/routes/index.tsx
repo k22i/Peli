@@ -14,7 +14,7 @@ import { NoAddons } from "@/components/addons/no-addons";
 import { heroArrowStep } from "@/lib/marquee";
 import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
 import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
-import { AnimePosterCard } from "@/components/media/anime-poster-card";
+import { AnimeTitleCard } from "@/components/media/anime-title-card";
 import { preloadArtwork, useArtworkDevice } from "@/components/media/artwork";
 import { DeferredRow } from "@/components/media/deferred-row";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
@@ -31,7 +31,12 @@ import {
 } from "@/lib/addon-protocol";
 import { libraryMenuTitle, menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
-import { prefetchAnimePoster, useAnimePosterAddon } from "@/lib/anime-posters";
+import {
+  followAll,
+  prefetchAnimePoster,
+  useAnimePosterAddon,
+  useFollowAnime,
+} from "@/lib/anime-titles";
 import { browseTarget, isAnimeCatalog } from "@/lib/browse";
 import { folderParams, folderPath } from "@/lib/folder";
 import {
@@ -522,15 +527,19 @@ function CatalogRowView({
   const device = useArtworkDevice();
   const { addon, catalog } = row.source;
   const catalogData = useQuery(catalogQuery(addon.url, catalog.type, catalog.id));
-  if (catalogData.isPending) return <RowSkeleton />;
+  const anime = posterAddon !== undefined && isAnimeCatalog(row.source);
+  // An anime catalog's entries as the poster addon's titles, one card per
+  // show (lib/anime-titles.ts), once they're answered.
+  const listed = catalogData.data?.metas ?? [];
+  const { follow, waiting } = useFollowAnime(anime ? posterAddon : undefined, listed);
+  if (catalogData.isPending || listed.some((meta) => waiting(meta.id))) return <RowSkeleton />;
   const leaveOut = leaveOutOf(row, leaveOutAnime);
-  const metas = (catalogData.data?.metas ?? []).filter(
+  const metas = followAll(listed, follow).filter(
     (meta) => (!hideUnreleased || isReleased(meta)) && !leaveOut(meta.id),
   );
   if (metas.length === 0) return null;
   // Ten titles and a link to the rest, where a browse page has the catalog.
   const target = browseTarget(row.source);
-  const anime = posterAddon !== undefined && isAnimeCatalog(row.source);
   const items = target ? metas.slice(0, homeRowLimit) : metas;
   // The art the row's first cards will show, before it scrolls in: for an
   // anime catalog, the poster addon's where there is one.
@@ -538,7 +547,7 @@ function CatalogRowView({
     for (const meta of items.slice(0, homeRowLimit)) {
       const shape = shapeOf(meta);
       if (anime && shape === "poster") {
-        prefetchAnimePoster(client, posterAddon, meta.id)
+        prefetchAnimePoster(client, posterAddon, meta)
           .then((poster) => preloadArtwork(poster ?? meta.poster, "poster", device))
           .catch(() => preloadArtwork(meta.poster, "poster", device));
       } else {
@@ -563,17 +572,7 @@ function CatalogRowView({
         card={(meta) => (meta.posterShape === "landscape" ? "landscape" : "poster")}
         renderItem={(meta) => {
           if (anime && meta.posterShape !== "landscape") {
-            return (
-              <AnimePosterCard
-                id={meta.id}
-                posterAddon={posterAddon}
-                title={meta.name}
-                meta={meta.releaseInfo}
-                src={meta.poster}
-                menu={menuTitle(meta)}
-                onClick={() => open(meta)}
-              />
-            );
+            return <AnimeTitleCard meta={meta} posterAddon={posterAddon} />;
           }
           const Card = meta.posterShape === "landscape" ? LandscapeCard : PosterCard;
           return (

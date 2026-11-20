@@ -45,6 +45,10 @@ type Entry struct {
 	Offset int
 	// "TV", "MOVIE", "OVA", "ONA", "SPECIAL"…
 	Type string
+	// What the list's TMDB id names: "movie", "tv", or "" when it has none.
+	// It says whether the IMDb id is a film's or a show's, which Type
+	// doesn't: films filed as a show's specials carry the show's IMDb id.
+	TMDB string
 }
 
 // wire is a row of the file. imdb_id is a list; the offsets and seasons
@@ -61,6 +65,9 @@ type wire struct {
 	Offset *struct {
 		TVDB *int `json:"tvdb"`
 	} `json:"episode_offset"`
+	// {"movie": [ids]} or {"tv": id}; read leniently, so a row in another
+	// shape doesn't lose the whole list.
+	TMDB json.RawMessage `json:"themoviedb_id"`
 }
 
 // List is the mapping, loaded on first use.
@@ -272,6 +279,14 @@ func parse(data []byte) ([]Entry, error) {
 		}
 		if row.Offset != nil && row.Offset.TVDB != nil {
 			e.Offset = *row.Offset.TVDB
+		}
+		var tmdb map[string]json.RawMessage
+		if json.Unmarshal(row.TMDB, &tmdb) == nil {
+			if _, ok := tmdb["movie"]; ok {
+				e.TMDB = "movie"
+			} else if _, ok := tmdb["tv"]; ok {
+				e.TMDB = "tv"
+			}
 		}
 		entries = append(entries, e)
 	}

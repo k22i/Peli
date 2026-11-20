@@ -65,5 +65,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0059](0059-ios-suspension-offline-and-sign-in-sheet.md) | Suspension, interruptions and offline on iOS: UIKit lifecycle, a fixed order on the way out, GL parked, AniList sign-in in a sheet | 2026-11-13 |
 | [0060](0060-pre-resolve-top-pick.md) | Pre-resolving the top pick: an opt-in device setting, off by default, that resolves a cached debrid top pick before it's picked | 2026-11-17 |
 | [0061](0061-device-pairing.md) | Device pairing: copying SIMKL, AniList and the TMDB key to another device by QR code, end to end encrypted | 2026-11-17 |
+| [0062](0062-anime-tab-follows-poster-addon.md) | The Anime tab follows the poster addon: one card per IMDb title, opening that title | 2026-11-20 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

@@ -46,7 +46,7 @@
 - [Remembered source](remembered-source.md) — #58/ADR-0044 store.ChosenSource per show, Prefs.remembered → engine top pick, saved on every play, mock ChosenSource/SetChosenSource
 - [Plugin sandbox](plugin-sandbox.md) — #56/ADR-0043 internal/plugins child process per call, host API, limits, StreamSource key/name/kind, goja pin, mock @bindings/plugins
 - [Plugin management](plugin-management.md) — #57/ADR-0047 per-profile off-by-default switch, repos synced like addons (Nuvio table = repositories only), kids never, Settings › Plugins, rig
-- [Anime from AniList](anime-from-anilist.md) — #106–#109: peli:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock; #128 Peek/LeaveOut/PosterTitles, Wi-Fi-only download
+- [Anime from AniList](anime-from-anilist.md) — #106–#109: peli:// built-in addons out of sync, internal/anilistaddon, anime out of Movies/Shows, test mock; #128 Peek/LeaveOut, Wi-Fi-only download; ADR-0062 Anime tab follows the poster addon (Titles, lib/anime-titles)
 - [Redesign epic](redesign-epic.md) — #110 Apple TV × Music with Peli's identity, glass tiers (#111), 1.5× cards (first asked 2×), type usage rework (fonts stay), sub-tickets #111–#125; type B picked; #117–#123 built by Orca workers
 - [Glass materials](glass-materials.md) — superseded by the 2026-11-11 revamp: material-bar/pop/media; #111 history and backdrop-root gotchas
 - [Card sizes](card-sizes.md) — #113 1.5× cards (15rem/27rem), Artwork `use` + sharper(), Home rows capped at 10 + Browse all, memory numbers, deferred grid cache growth

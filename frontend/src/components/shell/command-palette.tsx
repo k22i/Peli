@@ -31,6 +31,8 @@ import { Kbd } from "@/components/ui/kbd";
 import { Spinner } from "@/components/ui/spinner";
 import { searchQuery } from "@/lib/addon-protocol";
 import { useLeaveOutAnime } from "@/lib/anime";
+import { useAnimePosterAddon, useFollowAnime } from "@/lib/anime-titles";
+import { isAnimeCatalog } from "@/lib/browse";
 import { useUnlockedProfiles } from "@/lib/account";
 import { useBrowsableAddons } from "@/lib/home";
 import { lastWatchedQuery, libraryPreview, libraryQuery } from "@/lib/library";
@@ -142,6 +144,12 @@ function PaletteBody({ profile, done }: { profile: Profile; done: () => void }) 
             searchQuery(addon.url, catalog.type, catalog.id, term),
           ),
   });
+  // AniList's results as the poster addon's titles (lib/anime-titles.ts).
+  const answers = catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas }));
+  const { follow } = useFollowAnime(
+    useAnimePosterAddon(profile.id),
+    answers.flatMap(({ source, metas }) => (isAnimeCatalog(source) ? (metas ?? []) : [])),
+  );
   const library = useQuery(libraryQuery(profile.id)).data;
   const lastWatched = useQuery(lastWatchedQuery(profile.id)).data;
 
@@ -227,10 +235,7 @@ function PaletteBody({ profile, done }: { profile: Profile; done: () => void }) 
     const matching = pages.filter((entry) =>
       commandMatches(entry.label, entry.keywords ?? "", query),
     );
-    const found = searchGroups(
-      catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas })),
-      leaveOutAnime,
-    ).map((group): EntryGroup => ({
+    const found = searchGroups(answers, leaveOutAnime, follow).map((group): EntryGroup => ({
       value: group.title,
       items: group.metas.slice(0, titlesPerGroup).map((meta) => ({
         id: `title:${meta.id}`,

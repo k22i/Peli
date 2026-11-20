@@ -144,16 +144,19 @@ const rank = (kind: string) => {
 // their items' types, as the browse pages split them (ADR-0027).
 //
 // `leaveOutAnime` drops general catalogs' anime (#109): the anime catalogs'
-// own results have it under Anime.
+// own results have it under Anime. `followAnime` turns an anime catalog's
+// result into the IMDb title it belongs to, with a poster addon chosen
+// (lib/anime-titles.ts), so AniList's Black Clover and the addon's are one.
 export function searchGroups(
   answers: readonly SearchAnswer[],
   leaveOutAnime: (id: string) => boolean = () => false,
+  followAnime: (meta: MetaPreview) => MetaPreview = (meta) => meta,
 ): SearchGroup[] {
   const seen = new Set<string>();
   const groups = new Map<string, { metas: MetaPreview[]; addons: Set<string> }>();
   for (const { source, metas } of answers) {
     const anime = isAnimeCatalog(source);
-    for (const meta of metas ?? []) {
+    for (const meta of anime ? (metas ?? []).map(followAnime) : (metas ?? [])) {
       if (seen.has(meta.id) || (!anime && leaveOutAnime(meta.id))) continue;
       seen.add(meta.id);
       const kind = anime ? "anime" : meta.type;

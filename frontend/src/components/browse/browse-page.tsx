@@ -4,7 +4,7 @@ import { LayoutGrid, type LucideIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 import { NoAddons } from "@/components/addons/no-addons";
-import { AnimePosterCard } from "@/components/media/anime-poster-card";
+import { AnimeTitleCard } from "@/components/media/anime-title-card";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { PosterGrid } from "@/components/media/poster-grid";
@@ -41,7 +41,7 @@ import { menuTitle } from "@/lib/title-actions";
 import { useLeaveOutAnime } from "@/lib/anime";
 import { busyRetry, isBusy } from "@/lib/busy";
 import { trimWebCache } from "@/lib/diagnostics";
-import { useAnimePosterAddon } from "@/lib/anime-posters";
+import { useAnimePosterAddon, useFollowAnime } from "@/lib/anime-titles";
 import { homeLayoutQuery, isReleased, useBrowsableAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
 import { useOpenTitle } from "@/lib/title";
@@ -295,15 +295,28 @@ function CatalogGrid({
     if (hasNextPage && !isFetchingNextPage) void fetchNextPage();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
-  // Addons repeat titles across pages; the first stays. Counts what the
-  // last page added, so a page left out whole asks for the next.
+  // On the Anime tab with a poster addon, each entry shows as the IMDb title
+  // it belongs to (lib/anime-titles.ts): a page shows once its ids are
+  // answered, so a show's seasons never flash as cards of their own.
+  const loaded = pages.data?.pages ?? [];
+  const { follow, waiting } = useFollowAnime(
+    posterAddon,
+    loaded.flatMap((page) => page.metas),
+  );
+  // Addons repeat titles across pages, and a show's seasons follow to one
+  // title; the first stays. Counts what the last page added, so a page left
+  // out whole asks for the next.
   const seen = new Set<string>();
   const metas: MetaPreview[] = [];
   let lastPageAdded = 0;
-  const loaded = pages.data?.pages ?? [];
+  let held = false;
   for (const [i, page] of loaded.entries()) {
+    if (page.metas.some((meta) => waiting(meta.id))) {
+      held = true;
+      break;
+    }
     const before = metas.length;
-    for (const meta of page.metas) {
+    for (const meta of page.metas.map(follow)) {
       if (seen.has(meta.id) || (hideUnreleased && !isReleased(meta)) || leaveOut?.(meta.id)) {
         continue;
       }
@@ -315,7 +328,7 @@ function CatalogGrid({
   // The grid asks for more as its end comes near, and only when new items
   // arrive: with none, the next page is asked here (#109), up to a point.
   const pageCount = loaded.length;
-  const starved = pageCount > 0 && lastPageAdded === 0 && pageCount < maxEmptyPages;
+  const starved = !held && pageCount > 0 && lastPageAdded === 0 && pageCount < maxEmptyPages;
   useEffect(() => {
     if (starved) loadMore();
   }, [starved, loadMore]);
@@ -325,7 +338,7 @@ function CatalogGrid({
   }, [pageCount]);
 
   if (pages.isPending && busy) return <BusyNotice />;
-  if (pages.isPending) return <GridSkeleton />;
+  if (pages.isPending || (held && metas.length === 0)) return <GridSkeleton />;
   if (!pages.data) {
     return (
       <Notice
@@ -353,15 +366,7 @@ function CatalogGrid({
         getKey={(meta) => meta.id}
         renderItem={(meta) =>
           posterAddon ? (
-            <AnimePosterCard
-              id={meta.id}
-              posterAddon={posterAddon}
-              title={meta.name}
-              meta={meta.releaseInfo}
-              src={meta.poster}
-              menu={menuTitle(meta)}
-              onClick={() => open(meta)}
-            />
+            <AnimeTitleCard meta={meta} posterAddon={posterAddon} />
           ) : (
             <PosterCard
               title={meta.name}
@@ -375,9 +380,9 @@ function CatalogGrid({
         onEndReached={loadMore}
       />
       <div className="flex min-h-10 justify-center px-page">
-        {isFetchingNextPage && busy ? (
+        {(isFetchingNextPage || held) && busy ? (
           <BusyLine />
-        ) : isFetchingNextPage ? (
+        ) : isFetchingNextPage || held ? (
           <Spinner aria-label="Loading more" />
         ) : (
           pages.isFetchNextPageError && (

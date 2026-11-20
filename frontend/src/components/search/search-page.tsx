@@ -14,6 +14,7 @@ import {
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { BrowseFrame, Notice as NoticeBase } from "@/components/browse/browse-page";
+import { AnimeTitleCard } from "@/components/media/anime-title-card";
 import { PosterCard } from "@/components/media/cards";
 import { Chip, ChipRail } from "@/components/media/chip";
 import { Row, RowGroup, RowSkeleton } from "@/components/media/row";
@@ -31,6 +32,8 @@ import { useBrowsableAddons } from "@/lib/home";
 import { useFeature } from "@/lib/features";
 import { currentPlatform, isTouch } from "@/lib/platform";
 import { useLeaveOutAnime } from "@/lib/anime";
+import { useAnimePosterAddon, useFollowAnime } from "@/lib/anime-titles";
+import { isAnimeCatalog } from "@/lib/browse";
 import { currentProfileQuery } from "@/lib/profile";
 import { useRecentSearches } from "@/lib/recent-searches";
 import { useTmdbPeople, type PersonHit } from "@/lib/tmdb-person";
@@ -423,11 +426,14 @@ function useSearchResults(profile: Profile, term: string | undefined) {
             searchQuery(addon.url, catalog.type, catalog.id, term),
           ),
   });
-  const groups = searchGroups(
-    catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas })),
-    leaveOutAnime,
+  const answers = catalogs.map((source, i) => ({ source, metas: queries[i]?.data?.metas }));
+  const posterAddon = useAnimePosterAddon(profile.id);
+  const { follow } = useFollowAnime(
+    posterAddon,
+    answers.flatMap(({ source, metas }) => (isAnimeCatalog(source) ? (metas ?? []) : [])),
   );
-  return { visible, loading, catalogs, queries, groups };
+  const groups = searchGroups(answers, leaveOutAnime, follow);
+  return { visible, loading, catalogs, queries, groups, posterAddon };
 }
 
 type Found = ReturnType<typeof useSearchResults>;
@@ -605,18 +611,26 @@ function Results({
                 }
                 items={group.metas}
                 getKey={(meta) => meta.id}
-                renderItem={(meta) => (
-                  <PosterCard
-                    title={meta.name}
-                    meta={meta.releaseInfo}
-                    src={meta.poster}
-                    menu={menuTitle(meta)}
-                    onClick={() => {
-                      recents.add(term);
-                      open(meta);
-                    }}
-                  />
-                )}
+                renderItem={(meta) =>
+                  group.kind === "anime" && found.posterAddon ? (
+                    <AnimeTitleCard
+                      meta={meta}
+                      posterAddon={found.posterAddon}
+                      onOpen={() => recents.add(term)}
+                    />
+                  ) : (
+                    <PosterCard
+                      title={meta.name}
+                      meta={meta.releaseInfo}
+                      src={meta.poster}
+                      menu={menuTitle(meta)}
+                      onClick={() => {
+                        recents.add(term);
+                        open(meta);
+                      }}
+                    />
+                  )
+                }
               />
             ))}
             {people && people.length > 0 && !filtered && <PeopleRow people={people} />}

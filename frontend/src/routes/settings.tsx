@@ -41,7 +41,7 @@ import {
 } from "@/components/player/subtitle-panel";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toastManager } from "@/components/ui/toast";
-import { posterAddons } from "@/lib/anime-posters";
+import { posterAddons } from "@/lib/anime-titles";
 import { useLoadedAddons } from "@/lib/home";
 import {
   Dialog,
@@ -1015,8 +1015,9 @@ function pictureSummary(picture: Picture): string {
   return parts.join(" · ") || "The file as it is";
 }
 
-// Where the Anime tab's posters come from: AniList's covers, or an addon's
-// posters (BetterPosters, Xperience…) where an entry is one title to it.
+// What the Anime tab's cards are: AniList's entries, or the IMDb titles they
+// belong to as an addon (BetterPosters, Xperience…) has them, one card per
+// show (lib/anime-titles.ts, ADR-0062).
 function AnimePostersRow({
   profileId,
   value,
@@ -1028,7 +1029,7 @@ function AnimePostersRow({
 }) {
   const { addons } = useLoadedAddons(profileId);
   const items = [
-    { value: "", label: "AniList covers" },
+    { value: "", label: "AniList" },
     ...posterAddons(addons).map((addon) => ({ value: addon.url, label: addon.manifest.name })),
   ];
   // An addon since removed: keep it showing until something else is picked.
@@ -1036,8 +1037,8 @@ function AnimePostersRow({
   return (
     <SettingRow
       id="anime-posters"
-      label="Anime posters"
-      description="The Anime tab’s list stays AniList’s. An addon’s posters show for films and single-season shows; later seasons and split cours keep AniList’s cover, since a show’s poster would stand for none of them."
+      label="Anime titles"
+      description="AniList picks what the Anime tab lists. With an addon, each entry shows as that addon’s title, as search has it: one card per show with its poster and details, and later seasons open on their season. AniList lists every season and cour on its own."
     >
       <ResponsiveSelect
         items={items}

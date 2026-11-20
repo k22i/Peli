@@ -72,62 +72,71 @@ func (l *List) IMDbIDs(ctx context.Context) ([]string, bool) {
 	return ids, true
 }
 
-// PosterTitle is the film or show an anime entry is, by IMDb id, for asking
-// a poster addon for its art: "movie" or "series". An empty IMDb id means
-// the entry keeps AniList's cover.
-type PosterTitle struct {
-	IMDb string `json:"imdb"`
-	Type string `json:"type"`
+// Title is the film or show an anime entry belongs to on IMDb, as the
+// poster addon (Xperience, BetterPosters…) and search have it: "movie" or
+// "series", and for a show the TVDB season the entry starts in (0 when the
+// list doesn't say). An empty IMDb id means the entry stays AniList's card.
+type Title struct {
+	IMDb   string `json:"imdb"`
+	Type   string `json:"type"`
+	Season int    `json:"season"`
 }
 
-// PosterTitles returns the IMDb title whose poster stands for each id
-// ("kitsu:N" or "anilist:N", as the Anime tab's items are named), for one
-// page of results at a time (#128), only when the entry is the one that
-// title starts with: a film, or a show's first season, as the poster addon
-// (Xperience, BetterPosters…) and search show it. Later seasons, the second
-// cour of a split season, and films or OVAs TVDB files as a show's specials
-// (season 0) share the show's IMDb id, but its poster isn't theirs, so they
-// keep AniList's cover (an empty PosterTitle). So do entries the list can't
-// tell apart: two that would each be the start. Ready is false while the list
-// isn't loaded: then every card keeps AniList's cover and the frontend asks
-// again later. On iOS it never waits on the list's download (see ready).
-func (s *Service) PosterTitles(ctx context.Context, ids []string) PosterTitles {
-	answer := PosterTitles{Titles: make([]PosterTitle, len(ids))}
+// Titles returns the IMDb title each id ("kitsu:N", "anilist:N" or "mal:N",
+// as the Anime tab's items are named) belongs to, for one page of results
+// at a time (#128). With a poster addon chosen, the Anime tab shows that
+// title in place of AniList's entry: one card per show, as the addon has it,
+// however many seasons and cours AniList splits it in (ADR-0062). Ready is
+// false while the list isn't loaded: then every card stays AniList's and the
+// frontend asks again later. On iOS it never waits on the list's download
+// (see ready).
+func (s *Service) Titles(ctx context.Context, ids []string) Titles {
+	answer := Titles{Titles: make([]Title, len(ids))}
 	if !s.list.ready(ctx) {
 		return answer
 	}
 	answer.Ready = true
 	for i, id := range ids {
-		answer.Titles[i], _ = s.list.PosterTitle(ctx, id)
+		answer.Titles[i], _ = s.list.Title(ctx, id)
 	}
 	return answer
 }
 
-// PosterTitles is the answer to Service.PosterTitles, one title per id.
-type PosterTitles struct {
-	Titles []PosterTitle `json:"titles"`
-	Ready  bool          `json:"ready"`
+// Titles is the answer to Service.Titles, one title per id.
+type Titles struct {
+	Titles []Title `json:"titles"`
+	Ready  bool    `json:"ready"`
 }
 
-// mainTypes are the entry types that count as the title itself; specials
-// and OVAs share a show's IMDb id without making it ambiguous.
-var mainTypes = []string{"TV", "TV_SHORT", "ONA", "MOVIE"}
-
-// opens reports whether e is where its IMDb title starts: a main entry on
-// the first season (or with no season, as films and single-entry shows
-// have), from its first episode. Black Clover's first season (its second
-// shares the IMDb id) and Naruto Shippuden (two films filed as its
-// specials) both open their titles.
-func opens(e *Entry) bool {
-	return slices.Contains(mainTypes, e.Type) && e.Offset == 0 && (e.Season == nil || *e.Season == 1)
+// kindOf is what e's IMDb id names: the TMDB id's kind where the list has
+// one, else a film for a MOVIE entry and a show for the rest.
+func kindOf(e *Entry) string {
+	switch {
+	case e.TMDB == "movie":
+		return "movie"
+	case e.TMDB == "tv":
+		return "series"
+	case e.Type == "MOVIE":
+		return "movie"
+	}
+	return "series"
 }
 
-// PosterTitle is Service.PosterTitle.
-func (l *List) PosterTitle(ctx context.Context, id string) (PosterTitle, bool) {
+// Title is Service.Title for one id. An entry belongs to its IMDb title when
+// it has exactly one IMDb id and is
+//   - a show's season or cour (any season but 0): Black Clover's two seasons
+//     are both tt7441658, at seasons 1 and 2; or
+//   - a film with an IMDb id of its own: Mugen Train is tt11032374, not
+//     Demon Slayer's tt9335498.
+//
+// A special, OVA or film TVDB files as a show's season 0 carries the show's
+// IMDb id, but isn't the show (Naruto Shippuden's films), so it stays
+// AniList's; so does a film whose IMDb id a show's season also has.
+func (l *List) Title(ctx context.Context, id string) (Title, bool) {
 	kind, number, found := strings.Cut(id, ":")
 	n, err := strconv.Atoi(number)
 	if !found || err != nil || l.ensure(ctx) != nil {
-		return PosterTitle{}, false
+		return Title{}, false
 	}
 	l.mu.Lock()
 	defer l.mu.Unlock()
@@ -140,18 +149,24 @@ func (l *List) PosterTitle(ctx context.Context, id string) (PosterTitle, bool) {
 	case "mal":
 		e = l.mal[n]
 	}
-	if e == nil || len(e.IMDb) != 1 || !opens(e) {
-		return PosterTitle{}, false
+	if e == nil || len(e.IMDb) != 1 {
+		return Title{}, false
 	}
 	imdb := e.IMDb[0]
+	if kindOf(e) == "series" {
+		season := 0
+		if e.Season != nil {
+			season = *e.Season
+			if season == 0 {
+				return Title{}, false
+			}
+		}
+		return Title{IMDb: imdb, Type: "series", Season: season}, true
+	}
 	for _, other := range l.imdb[imdb] {
-		if other != e && opens(other) {
-			return PosterTitle{}, false
+		if other != e && kindOf(other) == "series" && (other.Season == nil || *other.Season != 0) {
+			return Title{}, false
 		}
 	}
-	kindOf := "series"
-	if e.Type == "MOVIE" {
-		kindOf = "movie"
-	}
-	return PosterTitle{IMDb: imdb, Type: kindOf}, true
+	return Title{IMDb: imdb, Type: "movie"}, true
 }
