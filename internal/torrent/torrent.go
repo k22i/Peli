@@ -170,8 +170,9 @@ type session struct {
 	// torrent (the next episode in a season pack) replaces it.
 	file atomic.Pointer[torrent.File]
 	// Closed once the first file is chosen.
-	ready chan struct{}
-	stop  chan struct{}
+	ready     chan struct{}
+	readyOnce sync.Once
+	stop      chan struct{}
 
 	// The player's furthest-reading connection: where it reads, and how
 	// much it has read.
@@ -446,8 +447,9 @@ func (s *Service) closeLocked() {
 // is chosen, another request picks again: the file it names plays from
 // then on, and the one before stops serving.
 func (ses *session) choose(ctx context.Context, req Request, wait time.Duration) (*torrent.File, error) {
-	select {
-	case <-ses.ready:
+	// Both channels can be ready at once (a second request, once the info is
+	// in), so either one takes the same path and ready closes only once.
+	pickNow := func() (*torrent.File, error) {
 		file, err := pickFile(ses.t, req)
 		if err != nil {
 			return nil, err
@@ -456,16 +458,14 @@ func (ses *session) choose(ctx context.Context, req Request, wait time.Duration)
 			fetchEnds(ses.t, file)
 			ses.file.Store(file)
 		}
+		ses.readyOnce.Do(func() { close(ses.ready) })
 		return file, nil
+	}
+	select {
+	case <-ses.ready:
+		return pickNow()
 	case <-ses.t.GotInfo():
-		file, err := pickFile(ses.t, req)
-		if err != nil {
-			return nil, err
-		}
-		fetchEnds(ses.t, file)
-		ses.file.Store(file)
-		close(ses.ready)
-		return file, nil
+		return pickNow()
 	case <-ctx.Done():
 		return nil, ctx.Err()
 	case <-time.After(wait):
