@@ -1,7 +1,7 @@
 import { queryOptions, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
-import { useEffect, useEffectEvent } from "react";
+import { useCallback, useEffect, useEffectEvent } from "react";
 
 import type { Watching } from "@bindings/playback";
 import {
@@ -13,6 +13,7 @@ import {
   type Notice,
   type Party as PartyInfo,
   type Preview,
+  type Reaction,
   type Source as PartySource,
   type State,
   type Stream as SharedStream,
@@ -31,9 +32,39 @@ import { streamsPath, streamsSearch, type PlayTarget } from "@/lib/playback";
 export const stateEvent = "party:state";
 export const noticeEvent = "party:notice";
 export const chatEvent = "party:chat";
+// One per emoji a member sends, the sender's own included (Mine).
+export const reactionEvent = "party:reaction";
+
+// The emoji a member can send, in the order the buttons show them: Go's
+// allow-list (party.REACTIONS), so the two can’t drift.
+export const REACTIONS = ["😂", "❤️", "🔥", "😮", "😢", "👏", "🎉", "🍿"] as const;
+
+// What each emoji is called to a screen reader: an emoji on its own is read
+// as its name by some, as nothing by others.
+export const reactionName: Record<(typeof REACTIONS)[number], string> = {
+  "😂": "laugh",
+  "❤️": "love",
+  "🔥": "fire",
+  "😮": "wow",
+  "😢": "sad",
+  "👏": "applause",
+  "🎉": "party",
+  "🍿": "popcorn",
+};
 
 export { Party };
-export type { Chat, Media, Member, Message, Notice, PartyInfo, Preview, SharedStream, State };
+export type {
+  Chat,
+  Media,
+  Member,
+  Message,
+  Notice,
+  PartyInfo,
+  Preview,
+  Reaction,
+  SharedStream,
+  State,
+};
 
 export const partyQuery = queryOptions({
   queryKey: ["party", "state"],
@@ -86,6 +117,30 @@ export function usePartyNotices(onNotice: (notice: Notice) => void) {
   );
 }
 
+// Sends an emoji reaction, for the layer that bursts it and the buttons that
+// pick it. Nothing bursts here: Go sends the event back, the sender's own
+// with Mine, so everyone bursts from the same place.
+export function useSendReaction(): (emoji: string) => void {
+  return useCallback((emoji: string) => {
+    Party.SendReaction(emoji).catch((error: unknown) => {
+      // The party ended between the tap and the call: nothing to say.
+      if (errorCode(error) === codeNotInParty) return;
+      console.error("Couldn’t send a reaction", error);
+    });
+  }, []);
+}
+
+// Calls onReaction for each reaction, its own member's included. The latest
+// callback is the one called, as for notices: the layer's burst doesn't
+// resubscribe on every render.
+export function usePartyReactions(onReaction: (reaction: Reaction) => void) {
+  const handle = useEffectEvent(onReaction);
+  useEffect(
+    () => (feature("party") ? Events.On(reactionEvent, (event) => handle(event.data)) : undefined),
+    [],
+  );
+}
+
 // "ABC DEF".
 export function formatCode(code: string): string {
   const clean = normalizeCode(code);
@@ -131,6 +186,10 @@ export function partyProblem(code: string | undefined): string {
       return "Couldn’t reach the watch party. Check your connection.";
   }
 }
+
+// Go's code for a call made outside a party (party.CodeNotInParty): the
+// reaction that arrives after the party ended, mostly.
+export const codeNotInParty = "not_in_party";
 
 // The code party.MarshalError put in a call's cause.
 export function errorCode(error: unknown): string | undefined {

@@ -2,6 +2,7 @@ import { MessagesSquare, RotateCw, SendHorizontal } from "lucide-react";
 import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from "react";
 
 import { ProfileAvatar } from "@/components/account/profile-avatar";
+import { ReactionBar } from "@/components/party/reaction-bar";
 import { Button } from "@/components/ui/button";
 import { Party, usePartyChat, type Message } from "@/lib/party";
 import { useCompactShell } from "@/lib/shell-mode";
@@ -84,6 +85,9 @@ export function PartyChat({ className }: { className?: string }) {
           ))
         )}
       </div>
+      {/* A tap each, over the message box: the sheet and the dock both show
+          this chat, so one placement covers both. */}
+      <ReactionBar className="pb-1" />
       <form onSubmit={send} className="flex items-center gap-2 border-t border-foreground/8 pt-3">
         <input
           aria-label="Message"
