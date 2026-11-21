@@ -11,6 +11,8 @@ const (
 	EventState  = "party:state"
 	EventNotice = "party:notice"
 	EventChat   = "party:chat"
+	// EventReaction carries a Reaction, one per emoji a member sends.
+	EventReaction = "party:reaction"
 )
 
 // Why parties can't be used now, in State.Unavailable.
@@ -200,6 +202,16 @@ type Message struct {
 	SentAt      int64  `json:"sentAt"`
 	Mine        bool   `json:"mine"`
 	Status      string `json:"status"`
+}
+
+// Reaction is an emoji a member sent, for confetti. The sender gets their own
+// too (Mine), so the frontend bursts only from the event.
+type Reaction struct {
+	Emoji    string `json:"emoji"`
+	MemberID string `json:"memberId"`
+	Name     string `json:"name"`
+	Mine     bool   `json:"mine"`
+	At       int64  `json:"at"`
 }
 
 // presenceState is a "status" broadcast and what presence tracks.
