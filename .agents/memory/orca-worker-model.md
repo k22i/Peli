@@ -18,3 +18,6 @@ For smaller, less crucial tickets (small-fix lists, P2 conveniences, contained U
 - Pick the model per ticket by size and how crucial it is.
 - When handing over from a stopped worker, put its finished commits, findings, rig and live-write undo state into the new spec.
 - Tell workers, Sonnet especially, to wait in the foreground with bounded loops rather than ending a turn.
+- **mistral-vibe workers** (2026-11-21, user's pick for the lighter two thirds of the watch-party reactions/dock work): `--agent mistral-vibe` with no `--model` uses `~/.vibe/config.toml`'s active model (DeepSeek V4.1 Flash, thinking high). Vibe refuses to start in an untrusted folder (`agent-trust-workspace`). The user added `~/orca/workspaces/staysh` to `~/.vibe/trusted_folders.toml`. Editing that file is the user's call, so ask rather than doing it. Vibe shells don't load nvm, so they get Homebrew's Node 24.9 ([[local-node-version]]).
+- `--worktree new-child` worktrees were cut from an old ancestor of main (7cc1744) that day. Put "compare HEAD with main and move to main before editing" in every spec, and for fix rounds after a merge, `git checkout -B <branch> main`.
+- Run `pnpm check` (lint and format) as well as typecheck and tests after merging. Code-only workers left 7 lint errors that the other checks didn't catch.
