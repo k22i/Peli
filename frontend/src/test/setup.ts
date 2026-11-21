@@ -119,6 +119,9 @@ vi.mock("@bindings/party", () => ({
     RemoveMember: vi.fn<() => Promise<void>>(() => Promise.resolve()),
     SendMessage: vi.fn<() => Promise<void>>(() => Promise.resolve()),
     RetryMessage: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    // Emoji reactions ride the party channel, not a call: the burst comes
+    // from the `party:reaction` event, never from this one.
+    SendReaction: vi.fn<() => Promise<void>>(() => Promise.resolve()),
   },
 }));
 
