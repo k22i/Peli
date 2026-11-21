@@ -18,8 +18,14 @@ export function ReactionBar({ className }: { className?: string }) {
   const party = useParty()?.party;
   const send = useSendReaction();
   const ready = Boolean(party?.connected);
+  // A fieldset, not a div with a role: it is the element for a group of
+  // controls, so it is named with an aria-label the way the player's other
+  // groups are, and its border, padding and margin are reset to keep the row.
   return (
-    <div role="group" aria-label="Reactions" className={cn("flex items-center gap-0.5", className)}>
+    <fieldset
+      aria-label="Reactions"
+      className={cn("m-0 flex min-w-0 items-center gap-0.5 border-0 p-0", className)}
+    >
       {REACTIONS.map((emoji) => (
         <Button
           key={emoji}
@@ -38,7 +44,7 @@ export function ReactionBar({ className }: { className?: string }) {
           <span aria-hidden>{emoji}</span>
         </Button>
       ))}
-    </div>
+    </fieldset>
   );
 }
 
