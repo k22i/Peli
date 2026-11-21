@@ -41,3 +41,35 @@ Read from Nuvio's clients (GPL-3, so re-implemented, nothing copied) and checked
 - A `peli://party/<code>` link, and opening Nuvio's https link in Peli.
 - Nuvio's "companion" mode (a second device in the same seat, for chat).
 - Trying it in a party with Nuvio's own apps: the live tests use two Peli members on one account. Their payloads are the shapes Nuvio's clients read and send, but no Nuvio app took part.
+
+## Addendum (2026-11-21): reactions, and a party that docks beside the video
+
+Two additions, neither of them a change to the party above: emoji reactions, and a "Keep open" mode that turns the player's party sheet into a sidebar.
+
+### Reactions ride the party channel, Peli-only
+
+A reaction is one broadcast event on the party's private channel, `"reaction"`, with `{emoji, member_id, sent_at}`. There is no `watch_party_*` function for it and no new RPC: the channel already carries `state`, `status` and `chat`, and a reaction is the same kind of traffic. **Nuvio's clients ignore a broadcast event they don't know**, so this one reaches Peli members only: a friend on Nuvio's own apps neither sees a reaction nor sends one, and nothing breaks for them. That asymmetry is the price of not asking Nuvio for a backend change.
+
+**One set of eight, in one order:** 😂 ❤️ 🔥 😮 😢 👏 🎉 🍿 (`REACTIONS` in `internal/party/reaction.go`, and again in `lib/party.ts` for the buttons). The emoji is the whole payload: an emoji outside the list is refused on the way out (`CodeInvalid`, and `CodeNotInParty` with no party) and dropped silently on the way in, so a member on a doctored client can't paint the others' screen with arbitrary glyphs.
+
+**At most one reaction every 250 ms per member**, counted on both ends: `SendReaction` drops the ones in between and returns nil rather than an error (a mashed button is not a mistake), and the incoming `"reaction"` case keeps the same window per sender, so one client's flood can't be multiplied by the others. It is the only party traffic Peli rate-limits itself; chat's is Nuvio's (`rate_limited`), and playback state has none.
+
+**The sender's own reaction is emitted in Go.** The channel is joined with `self:false`, since a member already knows what it sent, so a broadcast never comes back to its sender. `SendReaction` therefore emits `party:reaction` itself, with `mine: true`, next to the broadcast for everyone else, and `session.go`'s broadcast switch gained a `"reaction"` case that does the same for another member (`mine` false, or true for this device's seat when a broadcast is replayed). **The UI never bursts on the click, only from the event**: the sender and everyone else take one path, and a refused emoji or no party means no confetti.
+
+`EventReaction = "party:reaction"` carries `Reaction{Emoji, MemberID, Name, Mine, At}` (`types.go`, JSON `emoji`, `memberId`, `name`, `mine`, `at`). The name is resolved from the session, so the burst's quiet label can say whose it was without the frontend looking a member up.
+
+On the screen: `lib/confetti.ts` holds the pure physics, `components/party/emoji-confetti.tsx` the one overlay with a module-level `burst(emoji)` that drives whichever overlay is mounted (a no-op when none is), `components/party/reaction-bar.tsx` the eight buttons (`ReactionBar`) and `PartyReactionLayer`, which mounts the overlay, bursts from `usePartyReactions` and shows the name. `lib/party.ts` has `REACTIONS`, `reactionEvent`, `useSendReaction` and `usePartyReactions`.
+
+### The dock: the party panel beside the video
+
+W's sheet dims the video behind it, which is wrong for a party you are watching. **"Keep open"** turns the panel into a sidebar on the right: no backdrop, no dimming, the members and the chat stay usable while you use the player, and the video shifts left so the sidebar never covers the picture.
+
+- **Per device, not per profile:** `partyDock` in `DeviceSettings`, persisted with the other device settings. A docked sidebar on the desktop says nothing about the iPhone.
+- **Desktop and iPad only.** `usePartyDock()` reports `available: false` on the compact shell, and `docked: false` with it, so the iPhone keeps ADR-0063's bottom sheet and hides the option altogether.
+- **The shift is mpv's, not the webview's.** `Player.SetVideoInset(rightPx)` sets mpv's `video-margin-ratio-right`, computed from the window width and recomputed on resize, so the picture is resized inside mpv's own viewport instead of being covered by a layer. It is **ungated**, like `Direct` and for the same reason: it moves the picture, it doesn't touch playback, so a member changing it must not publish anything or be refused by the host. It exists on the desktop player and in `service_ios.go`, and it is bound.
+- **`--party-dock-w`** (`22rem` while docked and open, `0` otherwise) is set on the player root. `components/party/party-dock.tsx` exports `partyDockWidth`, `usePartyDock()` and `PartyDock({ onClose })`, which fills its container's height while the player page positions it. **Undock** (`setDocked(false)`) leaves the party open and shows the sheet instead; `onClose` hides the panel and keeps the setting, so W puts it back.
+
+### Not done here
+
+- Reactions stay invisible to members on Nuvio's own clients, by construction. Nuvio gaining a reaction of its own would mean reading their payload, not ours.
+- The dock has not been seen on a device: resizing an iPad window, and the picture's margin against libmpv's own aspect handling, are a run that hasn't happened.

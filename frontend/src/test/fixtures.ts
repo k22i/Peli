@@ -1,4 +1,10 @@
-import type { Media, Member, Party as PartyInfo, State as PartyState } from "@bindings/party";
+import type {
+  Media,
+  Member,
+  Party as PartyInfo,
+  Reaction,
+  State as PartyState,
+} from "@bindings/party";
 import type { ProfileSettings } from "@bindings/store";
 
 // A profile's settings as Go's store.DefaultProfileSettings has them, with
@@ -116,4 +122,11 @@ export function partyMember(member: Partial<Member> = {}): Member {
     behindMs: 0,
     ...member,
   };
+}
+
+// A reaction as `party.Service` emits it on `party:reaction` (ADR-0051's
+// addendum): another member's, unless a test says otherwise. Nothing bursts
+// on a click, so a test that wants confetti emits one of these.
+export function partyReaction(reaction: Partial<Reaction> = {}): Reaction {
+  return { emoji: "🔥", memberId: "m2", name: "Sam", mine: false, at: 0, ...reaction };
 }
