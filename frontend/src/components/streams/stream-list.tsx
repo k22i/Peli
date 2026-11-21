@@ -955,12 +955,20 @@ function RawNames({ id, candidate }: { id: string; candidate: Candidate }) {
 // title to download from.
 type PickerTarget = { type: ContentType; id: string; video: string };
 
+// The picker's two kinds of title: the address's first part, which the pattern
+// below matches and the two wait for (ContentType is wider — channels and the
+// rest have nothing to download).
+function pickerType(part: string | undefined): ContentType | undefined {
+  return part === "movie" || part === "series" ? part : undefined;
+}
+
 export function pickerOf(pathname: string, search: { video?: unknown }): PickerTarget | undefined {
   const match = /^\/streams\/(movie|series)\/([^/]+)\/?$/.exec(pathname);
-  if (!match) return undefined;
+  const type = pickerType(match?.[1]);
+  if (!match || !type) return undefined;
   const id = decodeURIComponent(match[2]!);
   return {
-    type: match[1] as ContentType,
+    type,
     id,
     video: typeof search.video === "string" && search.video ? search.video : id,
   };

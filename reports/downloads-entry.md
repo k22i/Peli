@@ -133,3 +133,45 @@ status helper or action is re-implemented.
   its own `meta`/`addonUrl` down, the `RowDownload` context takes them without touching the rows.
 - **Part 9** still has to mount `useDownloadEvents()` once in `routes/__root.tsx` (part 4's report):
   until then the lists refetch after an add, but nothing follows Go's events.
+
+## Fix round 1
+
+Two things came back from the merge: one failing test in `lib/download-pick.test.ts` and the lint and
+type errors below. Nothing was run here (no tests, typecheck, lint or build), as the task asked.
+
+### 1. "removes a partial at once" — a press now takes a partial record away
+
+`pressDownload` only removed a record whose control said `action: "remove"`, and `downloadControl`
+gives that only to a finished one; a partial record's control reports its own status (`"none"`), so
+the press fell through and `actions.remove` was never called. The press now reads as three verbs —
+start, resume, take away — and a record that isn't being resumed goes: a finished download through
+the caller's `remove` (so the title page can ask first, as it does), a partial one (queued,
+running, waiting) at once, since nothing that was kept is lost.
+
+```ts
+if (control.action === "remove" && remove) {
+  remove(download);
+  return;
+}
+void downloads.actions.remove([download.id]);
+```
+
+### 2. Lint and type errors
+
+| Where | What | Fix |
+| --- | --- | --- |
+| `lib/download-pick.ts:414` | `react(set-state-in-effect)`, `typescript(consistent-return)` | the "no stream" toast's `told` is a `useRef`: the effect only has to know whether it has spoken, and every path now returns nothing |
+| `lib/download-pick.ts:486` | the same two | the Add's `sent` is a ref, the same way |
+| `routes/downloads-entry.test.tsx:45` | `unicorn(consistent-function-scoping)`, `vitest(require-mock-type-parameters)` | `cancels` moved to module scope and built on `CancellablePromise.resolve`, as `downloads-home.test.tsx`'s `answering` is — no `Object.assign(Promise…, { cancel: vi.fn() })` |
+| `lib/download-pick.test.ts:21` | `vitest(require-mock-type-parameters)` | `toastManager.add` is `vi.fn<() => void>()` |
+| `components/media/title-menu.tsx:371` | TS2304 `Cannot find name 'DownloadState'` | the type is imported from `@/lib/download-pick` |
+| `routes/downloads-entry.test.tsx:82` | TS7006 | `SaveProgress: (_profileId: number, entry: Progress)` |
+| `routes/downloads-entry.test.tsx:195` | TS2740 | the `ProfileSettings` literal is `profileSettings()` from `src/test/fixtures.ts` (its defaults: no subtitle language) |
+| `components/streams/stream-list.tsx:963` | `typescript(no-unsafe-type-assertion)` | `pickerType()` narrows the address's first part to `movie`/`series` — `ContentType` is wider — so the cast went |
+
+**Already fixed elsewhere, and left alone here:** `components/library/downloads.tsx:234` — the
+`as unknown as PaneId` on the Settings › Downloads address went with `k22i/downloads-view`'s round
+(`f29918a`, now on `main`, a plain `search={{ section: "downloads" }}`); this branch was cut before
+it and takes `main`'s file as is. `components/settings/downloads-pane.tsx:99` (TS2379) was fixed on
+`k22i/downloads-settings` the same way — `main` has `after ? { onSuccess: after } : {}`, and both
+snippets predate those commits.

@@ -97,7 +97,10 @@ export const findingText = "Finding a stream…";
 // What a control says when the ranking found nothing it can download.
 export const noStreamText = "No stream to download. Pick one in the stream list.";
 
-// What pressing a download control does.
+// What pressing a download control does: start the download or resume a
+// stopped one. "remove" is a finished record (what the user keeps, so a caller
+// may ask first), and "none" is a partial one showing where it is — pressing
+// it takes that record away.
 export type DownloadAction = "download" | "resume" | "remove" | "none";
 
 export type DownloadControl = {
@@ -234,8 +237,11 @@ export function downloadState(
   };
 }
 
-// What pressing a control does, from what it shows. A finished download's
-// removal goes to `remove` when a caller asks first, else it goes at once.
+// What pressing a control does, from what it shows: it starts the download or
+// resumes a stopped one, and otherwise it takes the record away. A finished
+// download is what the user keeps, so a caller that passes `remove` is asked
+// first; a partial one — queued, running, waiting — is only in the way and
+// goes at once.
 export function pressDownload(
   state: DownloadState,
   downloads: TitleDownloads,
@@ -251,10 +257,11 @@ export function pressDownload(
     void downloads.actions.resume(download.id);
     return;
   }
-  if (control.action === "remove") {
-    if (remove) remove(download);
-    else void downloads.actions.remove([download.id]);
+  if (control.action === "remove" && remove) {
+    remove(download);
+    return;
   }
+  void downloads.actions.remove([download.id]);
 }
 
 // Queues every episode of a season that isn't downloaded or queued yet, one
@@ -407,14 +414,15 @@ function DownloadRunner({
   }, [answered, ranked]);
   const candidate = ranked ? topDownloadable(view) : undefined;
 
-  // Nothing to download: say so, and let the queue move on to the next one.
-  const [told, setTold] = useState(false);
+  // Nothing to download: say so once, then let the queue move on to the next
+  // one. A ref, not state: the effect only has to know whether it has spoken.
+  const told = useRef(false);
   useEffect(() => {
-    if (told || !ranked || candidate) return undefined;
-    setTold(true);
+    if (told.current || !ranked || candidate) return;
+    told.current = true;
     toastManager.add({ type: "error", title: noStreamText });
     onDone(job.key);
-  }, [candidate, job.key, onDone, ranked, told]);
+  }, [candidate, job.key, onDone, ranked]);
 
   return candidate
     ? createElement(DownloadAdder, {
@@ -480,12 +488,14 @@ function DownloadAdder({
     [candidate, language, meta, metaAddon, picks, profileId, video],
   );
   const actions = useDownloadActions(profileId);
-  const [sent, setSent] = useState(false);
+  // The Add goes once, as soon as the language and its subtitles are in: a
+  // ref, since the effect only has to know whether it has gone.
+  const sent = useRef(false);
   useEffect(() => {
-    if (sent || !loaded) return undefined;
-    setSent(true);
+    if (sent.current || !loaded) return;
+    sent.current = true;
     void actions.add(request).then(onDone);
-  }, [actions, loaded, onDone, request, sent]);
+  }, [actions, loaded, onDone, request]);
 
   return null;
 }

@@ -18,7 +18,7 @@ import {
   type TitleDownloads,
 } from "./download-pick";
 
-vi.mock("@/components/ui/toast", () => ({ toastManager: { add: vi.fn() } }));
+vi.mock("@/components/ui/toast", () => ({ toastManager: { add: vi.fn<() => void>() } }));
 
 // Picking what to download (#85, ADR-0064): the best ranked stream that has a
 // link, never a torrent, and what a Download control says about it.
