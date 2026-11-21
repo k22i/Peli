@@ -10,11 +10,21 @@ import { cn } from "@/lib/utils";
 // enough to stay out of the way.
 const labelMs = 1500;
 
-// The eight emoji, a tap each, above the chat's message box. Nothing bursts
-// here: Go sends the reaction back to everyone, this member included, so the
-// layer below is the one place confetti starts. Out of a party, or while its
-// channel reconnects, a tap would go nowhere, so the buttons are off.
-export function ReactionBar({ className }: { className?: string }) {
+// The eight emoji, a tap each. `chrome` is the player's chrome over the video
+// (the dock, a row above the seek bar): a small glass capsule, the emoji a
+// little larger than in a page, and a click that is the emoji's alone, from a
+// pointer or the keyboard (Tab and Enter; a mouse's click gives the keyboard
+// back, so Space still pauses). Nothing bursts here: Go sends the reaction
+// back to everyone, this member included, so the layer below is the one place
+// confetti starts. Out of a party, or while its channel reconnects, a tap
+// would go nowhere, so the buttons are off.
+export function ReactionBar({
+  chrome = false,
+  className,
+}: {
+  chrome?: boolean;
+  className?: string;
+}) {
   const party = useParty()?.party;
   const send = useSendReaction();
   const ready = Boolean(party?.connected);
@@ -24,7 +34,15 @@ export function ReactionBar({ className }: { className?: string }) {
   return (
     <fieldset
       aria-label="Reactions"
-      className={cn("m-0 flex min-w-0 items-center gap-0.5 border-0 p-0", className)}
+      className={cn(
+        "m-0 flex min-w-0 items-center border-0 p-0",
+        // The player's glass tier for chrome buttons (material-media), sized
+        // to a 2.5 rem row so the dock can make exactly that room for it.
+        chrome
+          ? "mx-auto h-10 w-fit justify-center gap-0.5 rounded-full px-1.5 material-media"
+          : "gap-0.5",
+        className,
+      )}
     >
       {REACTIONS.map((emoji) => (
         <Button
@@ -32,14 +50,27 @@ export function ReactionBar({ className }: { className?: string }) {
           variant="ghost"
           size="icon-sm"
           disabled={!ready}
-          // A light tap as it sends one on iOS (#135); nothing elsewhere.
-          onClick={() => {
+          onClick={(event) => {
+            // Over the video a click is the emoji's, not the picture's (a
+            // pause).
+            event.stopPropagation();
+            // A light tap as it sends one on iOS (#135); nothing elsewhere.
             haptic("light");
             send(emoji);
+            // A pointer's click doesn't keep the keyboard, so Space stays the
+            // player's pause rather than a second press of the emoji just
+            // clicked. A keyboard's Enter has no click count and keeps its
+            // place for the next Tab.
+            if (event.detail > 0) event.currentTarget.blur();
           }}
+          // Nor is a double click's, which the picture takes as full screen.
+          onDoubleClick={(event) => event.stopPropagation()}
           aria-label={`React with ${reactionName[emoji]}`}
           title={`React with ${reactionName[emoji]}`}
-          className="text-[1.0625rem] leading-none motion-safe:active:scale-90"
+          className={cn(
+            "leading-none motion-safe:active:scale-90",
+            chrome ? "text-[1.25rem] text-white hover:bg-white/15" : "text-[1.0625rem]",
+          )}
         >
           <span aria-hidden>{emoji}</span>
         </Button>

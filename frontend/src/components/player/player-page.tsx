@@ -40,7 +40,7 @@ import {
 import { Service as Diagnostics } from "@bindings/diagnostics";
 import { PartyDock, partyDockWidth, usePartyDock } from "@/components/party/party-dock";
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
-import { PartyReactionLayer } from "@/components/party/reaction-bar";
+import { PartyReactionLayer, ReactionBar } from "@/components/party/reaction-bar";
 import { MoreMenu } from "@/components/player/more-menu";
 import { NextEpisode } from "@/components/player/next-episode";
 import { PictureSheet, type PictureSheetTab } from "@/components/player/picture-sheet";
@@ -275,6 +275,14 @@ const flashFor = 450;
 // How long the subtitles stay where a nudge put them, to show it, before
 // they rise for the controls again.
 const nudgeShown = 2500;
+// The party's reactions (ADR-0051) take a row of the controls while it runs:
+// above the seek bar, in the dock or in the touch chrome. In rem, here and at
+// the root's --party-row, so the cards, the prompts and the subtitle lift all
+// move up by it.
+const reactionRowRem = 2.75;
+// What subtitle-position calls the full dock's clearance, in rem: where the
+// controls' top edge is. The reactions row is one more than that.
+const dockClearanceRem = 8;
 
 // The player screen: the video under a transparent page, with no app shell,
 // and the controls over it (#61). They show on any move or key and hide
@@ -572,6 +580,10 @@ function PlayerFile({
   // party when it watches something else.
   const partyState = useParty();
   const party = partyState?.party ?? undefined;
+  // The party's reactions sit in the chrome, a row above the seek bar, while a
+  // party runs and the picture has room for it: the mini player keeps its few
+  // controls as they are.
+  const reactionRow = party !== undefined && !mini;
   const partyChat = usePartyChat();
   const [partyOpen, setPartyOpen] = useState(false);
   // "Keep open": the party panel is a sidebar the picture makes room for,
@@ -1847,9 +1859,17 @@ function PlayerFile({
           windowHeight,
           false,
           16,
-          bottomRow ? touchChromeRem.series : touchChromeRem.movie,
+          (bottomRow ? touchChromeRem.series : touchChromeRem.movie) +
+            (reactionRow ? reactionRowRem : 0),
         )
-      : liftToClear(windowHeight, mini, touch ? 20 : 16),
+      : liftToClear(
+          windowHeight,
+          mini,
+          touch ? 20 : 16,
+          // The reactions row rides on top of the dock: the subtitles clear it
+          // too, while it shows.
+          reactionRow ? dockClearanceRem + reactionRowRem : undefined,
+        ),
   );
   const loaded = settings !== undefined;
   useEffect(() => {
@@ -2326,6 +2346,10 @@ function PlayerFile({
         {...hold}
         className="absolute inset-x-0 bottom-0 flex flex-col ps-[calc(1rem+env(safe-area-inset-left))] pe-[calc(1rem+env(safe-area-inset-right))] pb-[max(0.5rem,env(safe-area-inset-bottom))]"
       >
+        {/* The party's reactions (ADR-0051): a row above the seek bar, so
+            reacting is a tap on the picture, not a trip to the chat. It fades
+            while scrubbing, when the seek row has the room. */}
+        {reactionRow && <ReactionBar chrome className={cn("mb-1", faded)} />}
         <div data-testid="seek-row" className="flex h-8 items-center gap-3">
           {known && (
             <p
@@ -2460,15 +2484,21 @@ function PlayerFile({
         // the player draws (the bar, the top, the flash, the cards, the
         // subtitle lift) is inside this box and moves in with it.
         "fixed inset-y-0 left-0 right-(--party-dock-w) text-white select-none",
+        // The party's reactions are a row of the controls while it runs, so
+        // the dock (and --above-bar and the prompts with it) and the touch
+        // chrome grow by that row rather than the row growing into them.
+        reactionRow ? "[--party-row:2.75rem]" : "[--party-row:0rem]",
         // env() is the home indicator on iOS (the webview fills the screen,
         // build/ios/main.m) and 0 elsewhere.
-        touch ? "[--dock-h:calc(10rem+env(safe-area-inset-bottom))]" : "[--dock-h:7.5rem]",
+        touch
+          ? "[--dock-h:calc(10rem+var(--party-row)+env(safe-area-inset-bottom))]"
+          : "[--dock-h:calc(7.5rem+var(--party-row))]",
         // The touch chrome's height (#130): the seek row, and the bottom row
         // for a series, over the home indicator.
         touchLayout &&
           (bottomRow
-            ? "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+4rem)]"
-            : "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+2rem)]"),
+            ? "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+4rem+var(--party-row))]"
+            : "[--touch-chrome:calc(max(0.5rem,env(safe-area-inset-bottom))+2rem+var(--party-row))]"),
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
@@ -2719,6 +2749,10 @@ function PlayerFile({
                     : "inset-x-0 bottom-0 h-(--dock-h) justify-end gap-1 px-8 pb-5",
               )}
             >
+              {/* The party's reactions (ADR-0051): centred over the timeline,
+                  so reacting is a move of the cursor and a click. Inside the
+                  dock, they fade with it. */}
+              {reactionRow && <ReactionBar chrome />}
               <div className="flex items-center gap-4">
                 {timeShown && (
                   <p

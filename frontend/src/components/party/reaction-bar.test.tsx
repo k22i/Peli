@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
+import { afterEach, beforeEach, describe, expect, it, onTestFinished, vi } from "vite-plus/test";
 
 import type { Reaction } from "@bindings/party";
 import type * as Runtime from "@wailsio/runtime";
@@ -138,6 +138,33 @@ describe("ReactionBar", () => {
 
     await waitFor(() => expect(mocks.state).toHaveBeenCalled());
     expect(screen.getByRole("button", { name: "React with fire" })).toBeDisabled();
+  });
+
+  // The player's chrome: the same buttons in a glass capsule, over the video.
+  it("is a glass capsule over the video, and keeps its clicks to itself", async () => {
+    const clicked = vi.fn<() => void>();
+    const user = userEvent.setup();
+    render(<ReactionBar chrome />, { wrapper: wrapper() });
+    // What the player draws under the bar (the picture, which pauses or goes
+    // full screen) hears a click that gets past it. React listens on the
+    // render's own container, so this one goes further up.
+    document.addEventListener("click", clicked);
+    onTestFinished(() => document.removeEventListener("click", clicked));
+
+    const bar = await screen.findByRole("group", { name: "Reactions" });
+    // The player's glass tier (player-glass): the one its chrome buttons use.
+    expect(bar).toHaveClass("material-media");
+
+    const fire = await screen.findByRole("button", { name: "React with fire" });
+    await waitFor(() => expect(fire).toBeEnabled());
+    await user.click(fire);
+
+    expect(mocks.sendReaction).toHaveBeenCalledWith("🔥");
+    // The picture under it hears nothing: no pause, no full screen.
+    expect(clicked).not.toHaveBeenCalled();
+    // And the emoji doesn't keep the keyboard, or Space would send it again
+    // instead of pausing.
+    expect(fire).not.toHaveFocus();
   });
 });
 
