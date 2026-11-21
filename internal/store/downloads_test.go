@@ -95,6 +95,7 @@ func TestDownloadNilLists(t *testing.T) {
 	s, _ := openTemp(t)
 	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
 	d := aDownload(downloadID(1), p.ID, 1000)
+	d.Request.Headers = nil
 	check(t, s.PutDownload(d))
 
 	got := must[*Download](t)(s.Download(d.ID))
@@ -268,6 +269,8 @@ func TestDownloadsSurviveReopen(t *testing.T) {
 	check(t, s.SetDownloadProgress(dune.ID, 30_000, 60_000))
 	want := fillLists(dune)
 	want.Bytes = 30_000
+	// SetDownloadProgress stamps UpdatedAt with the clock.
+	want.UpdatedAt = must[*Download](t)(s.Download(dune.ID)).UpdatedAt
 	check(t, s.Close())
 
 	s, err := Open(path)
