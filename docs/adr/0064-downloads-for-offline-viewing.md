@@ -266,7 +266,18 @@ Nine parts, merged into `main` in order; each one's report is `reports/downloads
 
 **Part 9, Home, the pill and these notes.** The shell mounts `useDownloadEvents()` once, in `routes/__root.tsx` beside `useSyncEvents`, so every list follows Go's events. Home has a "Downloaded" row (`components/home/downloaded-row.tsx`: the profile's finished downloads, newest first, ten at most, with a "See all" link to the view), which moves under the hero when the app is offline; its cards play through `usePlay` and open the title's menu. The connection pill's Offline text says downloaded titles play. `README.md` and `.agents/memory/downloads.md` describe it.
 
-TODO(coordinator): fold in parts 5–8's final details — their file lists, any deviation from the names above and their test files — from `reports/downloads-playback.md`, `downloads-entry.md`, `downloads-view.md` and `downloads-settings.md` as they merge.
+### Deviations parts 5 to 8 recorded
+
+- **`file://` subtitles: any `<32-hex id>/subs/` folder** (part 5). `Player.AddSubtitle` accepts a regular file (path cleaned, symlinks resolved, host empty or `localhost`) inside a `<download id>/subs/` folder under any root, rather than requiring a `Downloads` segment or the `downloadsDir` prefix: the folder is the user's to choose and `player.Service` holds no store. `internal/player/localsubtitle.go` has no build tag, so the iOS boundary test now allows it next to `service_ios.go` and `types.go`.
+- **`usePlay` answers asynchronously** (part 5): it asks `Playable` (and, offline, the connection) only when Play is pressed, never at mount, then opens the player or the picker.
+- **The picker's "Download this stream" is in the row's context menu** (part 6: right-click, or press and hold on a phone), not a new per-row button. `lib/title-actions.ts` is unchanged; the card's download item lives in `lib/download-pick.ts`, imported by `title-menu.tsx`. On the iPhone the title page keeps Download in "•••".
+- **Alternates aren't downloaded** (part 6): a candidate whose own copy is a torrent is skipped even if an alternate has a link, since `addRequestFor` sends `candidate.stream`.
+- **The Downloads view has its own selection bar** (part 7), copied from the library's, because the library's bar carries watched/library actions. A multi-select that includes a finished download asks first; unfinished ones go at once. The view value lives in `lib/library.ts`'s `librarySearch`.
+- **The Downloads pane sits after Streaming** (part 8), reads and saves the device settings itself (as `PluginsPane` does), is in `paneGroups` so a phone can reach it, and shows sizes through `formatBytes` ("12 GB used · 210 GB free on this disk").
+
+### Verified on main (2026-11-22)
+
+`go vet ./...` and `go test ./internal/... .` pass. `pnpm check`, `pnpm typecheck` and `pnpm test` pass (1372 tests, under nvm's Node 26.3). The desktop builds with `-tags production,nosqlite`, the iOS build compiles for the simulator and the device, `wails3 task darwin:package:dmg` (arm64) passes `dist.sh check` with Peli's own libmpv, and `wails3 task ios:package:ipa IOS_PLATFORM=device` and `ios:package` build. Untested on a real device: background continuation, the Wi-Fi gate, low storage, and airplane-mode playback (`ios/README.md` has the checklist). No real stream was downloaded: resolving adds to the user's debrid list.
 
 ### Deviations parts 1 and 2 recorded
 
