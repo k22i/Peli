@@ -17,6 +17,7 @@ import (
 	"github.com/k22i/Peli/internal/appinfo"
 	"github.com/k22i/Peli/internal/backend"
 	"github.com/k22i/Peli/internal/diagnostics"
+	"github.com/k22i/Peli/internal/downloads"
 	"github.com/k22i/Peli/internal/haptics"
 	"github.com/k22i/Peli/internal/licences"
 	"github.com/k22i/Peli/internal/markers"
@@ -63,6 +64,10 @@ type peli struct {
 	accounts  *account.Service
 	sync      *syncer.Service
 	skipTimes *markers.Service
+	// streams resolves a picked stream (#53); downloads (#85, ADR-0064) uses
+	// it to resolve the links it fetches.
+	streams   *streams.Service
+	downloads *downloads.Service
 	watched   *watching.Reporter
 	trackers  *tracking.Service
 	// Copying SIMKL, AniList and the TMDB key to another device (#133).
@@ -112,6 +117,14 @@ func newPeli(dbPath string) *peli {
 	player.GateWith(p.players, party.GateOf(p.parties))
 	p.skipTimes = markers.NewService(appinfo.Version)
 	markers.UseSettings(p.skipTimes, p.db)
+	p.streams = streams.NewService(appinfo.Version)
+	p.downloads = downloads.NewService(downloads.Config{
+		Open:    func() *store.Store { return store.Opened(p.db) },
+		Resolve: p.streams.Resolve,
+		Markers: p.skipTimes.Segments,
+		Root:    filepath.Join(filepath.Dir(dbPath), "Downloads"),
+		Version: appinfo.Version,
+	})
 	// How far each film or episode plays becomes the profile's progress, and
 	// watched at 90 % (#64). The player shuts down before the syncer, which
 	// sends the last of it on the way out.
@@ -193,11 +206,15 @@ func (p *peli) services(x extras) []application.Service {
 		application.NewServiceWithOptions(p.addonFetcher,
 			application.ServiceOptions{MarshalError: addons.MarshalError}),
 		// Resolving a picked stream to the file the player loads (#53).
-		application.NewServiceWithOptions(streams.NewService(appinfo.Version),
+		application.NewServiceWithOptions(p.streams,
 			application.ServiceOptions{MarshalError: streams.MarshalError}),
 	)
 	add(x.plugins)
 	add(x.torrent)
+	// Downloads for offline viewing (#85): after streams, so it shuts down
+	// (checkpointing its job) before streams and the store.
+	list = append(list, application.NewServiceWithOptions(p.downloads,
+		application.ServiceOptions{MarshalError: downloads.MarshalError}))
 	list = append(list,
 		// Before the player, so it shuts down after it and sends the last
 		// stop.

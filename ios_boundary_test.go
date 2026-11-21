@@ -71,6 +71,9 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 		// channel they talk on is the websocket below.
 		"github.com/k22i/Peli/internal/party",
 		"github.com/coder/websocket",
+		// Downloads for offline viewing (#85, ADR-0064): debrid and HTTP links
+		// only, so no torrent code comes with it.
+		"github.com/k22i/Peli/internal/downloads",
 		"github.com/k22i/Peli/internal/store",
 		"github.com/k22i/Peli/internal/secrets",
 		"github.com/wailsapp/wails/v3/pkg/application",
