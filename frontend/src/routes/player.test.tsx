@@ -50,6 +50,9 @@ const mocks = vi.hoisted(() => ({
   setMuted: vi.fn<(muted: boolean) => Promise<void>>(),
   setFullscreen: vi.fn<(on: boolean) => Promise<void>>(),
   setMini: vi.fn<(on: boolean) => Promise<void>>(),
+  setVideoInset: vi.fn<(rightPx: number) => Promise<void>>(),
+  // What usePartyDock says: the party panel as a sidebar, or a sheet.
+  dock: { docked: false },
   setNowPlaying: vi.fn<(np: { title: string; subtitle: string }) => Promise<void>>(),
   setAudioTrack: vi.fn<(id: number) => Promise<void>>(),
   setSubtitleTrack: vi.fn<(id: number) => Promise<void>>(),
@@ -89,6 +92,19 @@ vi.mock("@wailsio/runtime", async (importOriginal) => {
   };
 });
 
+// The dock is another file's (components/party/party-dock): here it is a
+// stand-in with a chat field and a close button, docked as `mocks.dock` says.
+vi.mock("@/components/party/party-dock", () => ({
+  partyDockWidth: "22rem",
+  usePartyDock: () => ({ docked: mocks.dock.docked, setDocked: () => {}, available: true }),
+  PartyDock: ({ onClose }: { onClose: () => void }) => (
+    <aside aria-label="Party dock">
+      <input aria-label="Chat message" />
+      <button onClick={onClose}>Close dock</button>
+    </aside>
+  ),
+}));
+
 vi.mock("@bindings/player", () => ({
   Service: {
     Snapshot: mocks.snapshot,
@@ -101,6 +117,7 @@ vi.mock("@bindings/player", () => ({
     SetMuted: mocks.setMuted,
     SetFullscreen: mocks.setFullscreen,
     SetMini: mocks.setMini,
+    SetVideoInset: mocks.setVideoInset,
     SetNowPlaying: mocks.setNowPlaying,
     SetAudioTrack: mocks.setAudioTrack,
     SetSubtitleTrack: mocks.setSubtitleTrack,
@@ -271,6 +288,7 @@ afterEach(() => {
 
 beforeEach(() => {
   mocks.handlers.clear();
+  mocks.dock.docked = false;
   mocks.chosen.mockReset().mockResolvedValue(null);
   mocks.setChosen.mockReset().mockResolvedValue(undefined);
   mocks.snapshot.mockResolvedValue({ ...idleState, active: true, loading: true });
@@ -284,6 +302,7 @@ beforeEach(() => {
     mocks.setMuted,
     mocks.setFullscreen,
     mocks.setMini,
+    mocks.setVideoInset,
     mocks.setNowPlaying,
     mocks.setAudioTrack,
     mocks.setSubtitleTrack,
@@ -1854,6 +1873,91 @@ describe("watch party", () => {
     await user.keyboard("w");
     await user.click(await screen.findByRole("button", { name: "Start a watch party" }));
     expect(Party.Create).toHaveBeenCalledExactlyOnceWith(media);
+  });
+
+  describe("docked", () => {
+    beforeEach(() => {
+      mocks.dock.docked = true;
+    });
+    // The player's own box: the controls' parent.
+    const root = () => screen.getByTestId("controls").parentElement!;
+
+    it("shows the dock instead of the sheet, and the picture makes room", async () => {
+      await openPlayer(undefined, source, undefined, { watching });
+      emit("player:state", playing);
+      await screen.findByRole("button", { name: "Pause" });
+      expect(root().style.getPropertyValue("--party-dock-w")).toBe("0px");
+      expect(mocks.setVideoInset).not.toHaveBeenCalled();
+
+      const user = userEvent.setup();
+      await user.keyboard("w");
+      expect(await screen.findByRole("complementary", { name: "Party dock" })).toBeInTheDocument();
+      expect(screen.queryByRole("dialog", { name: "Watch party" })).not.toBeInTheDocument();
+      expect(root().style.getPropertyValue("--party-dock-w")).toBe("22rem");
+      // 22 rem at the root font size (16 px), where jsdom measures nothing.
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(352));
+
+      // W again closes it, and the picture has its room back.
+      await user.keyboard("w");
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(0));
+      expect(screen.queryByRole("complementary", { name: "Party dock" })).not.toBeInTheDocument();
+      expect(root().style.getPropertyValue("--party-dock-w")).toBe("0px");
+    });
+
+    it("gives the room back on close, in the mini player and on leaving", async () => {
+      await openPlayer(undefined, source, undefined, { watching });
+      emit("player:state", playing);
+      await screen.findByRole("button", { name: "Pause" });
+      const user = userEvent.setup();
+      await user.keyboard("w");
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(352));
+
+      await user.click(screen.getByRole("button", { name: "Close dock" }));
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(0));
+
+      // The mini player hides the dock and keeps the party open: back from
+      // it, the dock is there again.
+      await user.keyboard("w");
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(352));
+      emit("player:state", { ...playing, mini: true });
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(0));
+      expect(screen.queryByRole("complementary", { name: "Party dock" })).not.toBeInTheDocument();
+      emit("player:state", { ...playing, mini: false });
+      expect(await screen.findByRole("complementary", { name: "Party dock" })).toBeInTheDocument();
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(352));
+
+      await user.click(screen.getByRole("button", { name: "Back" }));
+      await waitFor(() => expect(mocks.setVideoInset).toHaveBeenLastCalledWith(0));
+    });
+
+    it("keeps the player's keys, but not while typing in the chat", async () => {
+      await openPlayer(undefined, source, undefined, { watching });
+      emit("player:state", playing);
+      await screen.findByRole("button", { name: "Pause" });
+      const user = userEvent.setup();
+      await user.keyboard("w");
+      const chat = await screen.findByRole("textbox", { name: "Chat message" });
+
+      await user.keyboard("k");
+      expect(mocks.setPaused).toHaveBeenLastCalledWith(true);
+      mocks.setPaused.mockClear();
+      mocks.setFullscreen.mockClear();
+
+      await user.click(chat);
+      await user.keyboard("k m f");
+      expect(chat).toHaveValue("k m f");
+      expect(mocks.setPaused).not.toHaveBeenCalled();
+      expect(mocks.setFullscreen).not.toHaveBeenCalled();
+
+      // Esc leaves the field, and nothing else: the dock stays, and so does
+      // the window's full screen.
+      await user.keyboard("{Escape}");
+      expect(chat).not.toHaveFocus();
+      expect(screen.getByRole("complementary", { name: "Party dock" })).toBeInTheDocument();
+      expect(mocks.setFullscreen).not.toHaveBeenCalled();
+      await user.keyboard("k");
+      expect(mocks.setPaused).toHaveBeenCalled();
+    });
   });
 
   it("shows the code, the people and who it waits for", async () => {
