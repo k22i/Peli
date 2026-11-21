@@ -5,6 +5,8 @@ date: 2026-11-12
 
 # iOS and iPadOS on Wails' experimental iOS target, debrid only
 
+> Superseded in part by [ADR-0063](0063-watch-parties-on-ios.md): watch parties are in the iOS build now, and the boundary test requires `internal/party` rather than forbidding it.
+
 The first release for iPhone and iPad runs the same `main.go`, the same Go services and the unchanged React frontend in Wails v3's UIKit app: a `WKWebView` serving the embedded assets over the `wails://` scheme, with `@wailsio/runtime` for bindings and events. The audit that came before this ([`../ios-port-audit.md`](../ios-port-audit.md)) recommended a custom bridge; the user chose Wails' target knowing what it costs, and this records that choice, what was weighed, and the rules the build now follows.
 
 ## What was decided

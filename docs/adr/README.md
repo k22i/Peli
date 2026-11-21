@@ -58,13 +58,14 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0052](0052-rename-to-peli.md) | Rename to Peli: a pelican mark, and an existing install moves across on first run | 2026-11-11 |
 | [0053](0053-macos-packaging.md) | macOS packaging: a drag-to-Applications DMG per architecture, signed with the hardened runtime and notarized | 2026-11-12 |
 | [0054](0054-signed-auto-update.md) | Signed auto-update: Wails' updater, a signed feed on GitHub Releases, macOS first | 2026-11-12 |
-| [0055](0055-ios-on-wails.md) | iOS and iPadOS on Wails' experimental iOS target, debrid only: tags not forks, a shared playback package, a boundary test | 2026-11-12 |
+| [0055](0055-ios-on-wails.md) | iOS and iPadOS on Wails' experimental iOS target, debrid only: tags not forks, a shared playback package, a boundary test — superseded in part by [0063](0063-watch-parties-on-ios.md) | 2026-11-12 |
 | [0056](0056-uiscene-on-wails-ios.md) | The UIScene life cycle on Wails' iOS target: a scene delegate in Peli's own main.m, no Wails patch, no SDK stamp | 2026-11-13 |
 | [0057](0057-ios-sign-in-and-keychain.md) | Signing in on iOS: email, or Nuvio's page in Safari; the session in Peli's own AfterFirstUnlock Keychain class | 2026-11-13 |
-| [0058](0058-ios-playback-engine.md) | The iOS playback engine: libmpv in a GLES view under the webview, hardware decoding chosen per file, a shared rules package | 2026-11-13 |
+| [0058](0058-ios-playback-engine.md) | The iOS playback engine: libmpv in a GLES view under the webview, hardware decoding chosen per file, a shared rules package — superseded in part by [0063](0063-watch-parties-on-ios.md) | 2026-11-13 |
 | [0059](0059-ios-suspension-offline-and-sign-in-sheet.md) | Suspension, interruptions and offline on iOS: UIKit lifecycle, a fixed order on the way out, GL parked, AniList sign-in in a sheet | 2026-11-13 |
 | [0060](0060-pre-resolve-top-pick.md) | Pre-resolving the top pick: an opt-in device setting, off by default, that resolves a cached debrid top pick before it's picked | 2026-11-17 |
 | [0061](0061-device-pairing.md) | Device pairing: copying SIMKL, AniList and the TMDB key to another device by QR code, end to end encrypted | 2026-11-17 |
 | [0062](0062-anime-tab-follows-poster-addon.md) | The Anime tab follows the poster addon: one card per IMDb title, opening that title | 2026-11-20 |
+| [0063](0063-watch-parties-on-ios.md) | Watch parties on iOS: the party joins the build, suspension closes its socket and not its seat | 2026-11-21 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

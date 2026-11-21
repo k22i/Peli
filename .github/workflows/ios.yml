@@ -106,7 +106,8 @@ jobs:
       # exist; the package step below builds the real one.
       - run: mkdir -p frontend/dist && touch frontend/dist/.keep
 
-      # ADR-0055: no torrent, plugin, party or updater code in the iOS build.
+      # ADR-0055: no torrent, plugin or updater code in the iOS build. Watch
+      # parties are in it: they only send play/pause/seek/chat messages.
       # The test binary is the desktop main package, whose player cgo needs
       # mpv's headers (any mpv: nothing is run, the desktop build is not made).
       - run: brew install mpv
@@ -149,7 +150,7 @@ jobs:
           for want in wailsapp/wails/v3/pkg/application k22i/Peli/internal/store k22i/Peli/internal/iosplayer; do
             grep -Eq "$want\\.[A-Za-z(]" strings.txt || { echo "no symbols from $want: is the check blind?"; exit 1; }
           done
-          if grep -Eo '(anacrolix|dop251/goja|go-llsqlite|pion)/[A-Za-z0-9/_.-]*\.[A-Za-z(]|Peli/internal/(torrent|plugins|party|updates|firstmouse)\.[A-Za-z(]' strings.txt | sort -u | head -20 | grep .; then
+          if grep -Eo '(anacrolix|dop251/goja|go-llsqlite|pion)/[A-Za-z0-9/_.-]*\.[A-Za-z(]|Peli/internal/(torrent|plugins|updates|firstmouse)\.[A-Za-z(]' strings.txt | sort -u | head -20 | grep .; then
             echo "desktop-only code is in the iOS binary"
             exit 1
           fi

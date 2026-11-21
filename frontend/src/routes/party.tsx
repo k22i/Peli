@@ -12,7 +12,8 @@ import { mediaLabel, partyProblem, useParty, useWatchWithParty, type PartyInfo }
 // Reached from the profile menu, the palette and the party pill in the top
 // bar.
 export const Route = createFileRoute("/party")({
-  // Not in the iOS app (ADR-0055).
+  // Everywhere but a build without parties (nothing today: they are in the
+  // iOS app too, ADR-0051).
   beforeLoad: () => {
     if (!feature("party")) throw redirect({ to: "/", replace: true });
   },
@@ -21,13 +22,15 @@ export const Route = createFileRoute("/party")({
 
 // The watch party page (ADR-0051): join one with a friend's code, or, in
 // one, what it watches (to watch it with them), its people and the chat.
-// Hosting starts from the player, with what's playing.
+// Hosting starts from the player, with what's playing. On the compact iOS
+// shell (ADR-0063) the titles and gaps tighten and the chat sizes itself to what
+// the on-screen keyboard leaves (--keyboard-h, lib/keyboard.ts).
 function PartyPage() {
   const state = useParty();
   const party = state?.party ?? undefined;
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-page pt-8 pb-16">
-      <h1 className="font-display text-[clamp(2.75rem,1.9rem+2.6vw,4.5rem)] leading-[0.95] tracking-[-0.01em]">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-page pt-8 pb-16 ios-compact:gap-6 ios-compact:pt-6">
+      <h1 className="font-display text-[clamp(2.75rem,1.9rem+2.6vw,4.5rem)] leading-[0.95] tracking-[-0.01em] ios-compact:text-[2.125rem]">
         Watch party
       </h1>
       {!state ? (
@@ -40,7 +43,7 @@ function PartyPage() {
           <p className="text-body">{partyProblem(state.unavailable)}</p>
         </div>
       ) : (
-        <div className="grid gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
+        <div className="grid gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] ios-compact:gap-8">
           <section aria-label="Join a watch party" className="flex flex-col gap-4">
             <h2 className="type-title">Join a watch party</h2>
             <JoinParty />
@@ -69,11 +72,11 @@ function InParty({ party }: { party: PartyInfo }) {
   const watchWithParty = useWatchWithParty();
   const media = party.media;
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)]">
-      <div className="flex flex-col gap-8">
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] ios-compact:gap-6">
+      <div className="flex flex-col gap-8 ios-compact:gap-6">
         <section
           aria-label="Watching now"
-          className="relative isolate flex min-h-56 items-end overflow-hidden rounded-3xl bg-foreground/6 p-6"
+          className="relative isolate flex min-h-56 items-end overflow-hidden rounded-3xl bg-foreground/6 p-6 ios-compact:min-h-48 ios-compact:p-5"
         >
           {(media.background || media.poster) && (
             <>
@@ -99,7 +102,12 @@ function InParty({ party }: { party: PartyInfo }) {
               <p className="text-body text-foreground/75">{media.episodeTitle}</p>
             )}
             <div className="pt-2">
-              <Button variant="light" size="lg" onClick={() => watchWithParty(media)}>
+              <Button
+                variant="light"
+                size="lg"
+                className="pointer-coarse:min-h-11"
+                onClick={() => watchWithParty(media)}
+              >
                 <Play className="fill-current" />
                 Watch with the party
               </Button>
@@ -108,9 +116,11 @@ function InParty({ party }: { party: PartyInfo }) {
         </section>
         <PartyPanel party={party} />
       </div>
+      {/* On a phone the chat card is as tall as the keyboard leaves it, so
+          its field never hides under the keys. */}
       <section
         aria-label="Chat"
-        className="flex h-[32rem] flex-col rounded-3xl bg-foreground/4 p-4 lg:sticky lg:top-[calc(var(--spacing-bar)+1rem)]"
+        className="flex h-[32rem] flex-col rounded-3xl bg-foreground/4 p-4 lg:sticky lg:top-[calc(var(--spacing-bar)+1rem)] ios-compact:h-[min(32rem,calc(100dvh_-_var(--keyboard-h,0px)_-_16rem))]"
       >
         <h2 className="px-1 pb-2 type-title">Chat</h2>
         <PartyChat />

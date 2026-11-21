@@ -1808,6 +1808,45 @@ describe("watch party", () => {
     await waitFor(() => expect(Party.Watch).toHaveBeenLastCalledWith(null, null));
   });
 
+  // Watch parties are in the iOS app too (ADR-0063): what plays is told to the
+  // party there as on the desktop, and the leaving call still runs.
+  it("tells the party what plays on an iPhone, and that it stopped on leaving", async () => {
+    const restore = onCompactIOS();
+    onTestFinished(restore);
+    await openPlayer(undefined, source, undefined, { watching });
+    await waitFor(() =>
+      expect(Party.Watch).toHaveBeenCalledWith(media, expect.objectContaining({ url: source.url })),
+    );
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(Party.Watch).toHaveBeenLastCalledWith(null, null));
+  });
+
+  // The touch player's own way in: a 44 pt Users button in its top row, which
+  // opens the sheet W opens, as a bottom sheet on an iPhone.
+  it("opens the party sheet from the top row's Watch party button", async () => {
+    const restore = onCompactIOS();
+    onTestFinished(restore);
+    await openPlayer(undefined, source, undefined, { watching });
+    // The controls show once a state arrives, as in the other touch tests.
+    emit("player:state", playing);
+    const top = await screen.findByTestId("top-row");
+    const button = await within(top).findByRole("button", { name: "Watch party" });
+    expect(button).toHaveAttribute("aria-expanded", "false");
+
+    const user = userEvent.setup();
+    await user.click(button);
+
+    const sheet = await screen.findByRole("dialog", { name: "Watch party" });
+    expect(sheet).toHaveAttribute("data-slot", "bottom-sheet");
+    expect(sheet).toHaveAttribute("aria-modal", "true");
+    // The same button, under the sheet's backdrop: the sheet is open.
+    expect(button).toHaveAttribute("aria-expanded", "true");
+    // The same sheet as W's: start one for what plays, or join one.
+    expect(within(sheet).getByRole("button", { name: "Start a watch party" })).toBeInTheDocument();
+    expect(within(sheet).getByRole("textbox", { name: "Party code" })).toBeInTheDocument();
+  });
+
   it("starts one for what plays from W", async () => {
     await openPlayer(undefined, source, undefined, { watching });
     emit("player:state", playing);

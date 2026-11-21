@@ -1,6 +1,6 @@
 # Peli on iPhone and iPad
 
-Peli's core runs on iOS and iPadOS 17 and later: sign in to Nuvio, pick a profile, browse and search your addons, play a debrid stream, and send watch progress back to Nuvio, SIMKL and AniList. It is the same app as the desktop one, not a port: the Go core and the React frontend are shared, built for iOS through Wails' experimental iOS target ([ADR-0055](../docs/adr/0055-ios-on-wails.md)).
+Peli's core runs on iOS and iPadOS 17 and later: sign in to Nuvio, pick a profile, browse and search your addons, play a debrid stream, watch a party with friends, and send watch progress back to Nuvio, SIMKL and AniList. It is the same app as the desktop one, not a port: the Go core and the React frontend are shared, built for iOS through Wails' experimental iOS target ([ADR-0055](../docs/adr/0055-ios-on-wails.md)).
 
 This folder holds only this README. The iOS build lives where Wails expects it (see [Where things are](#where-things-are)).
 
@@ -155,12 +155,13 @@ To test signing in with your real account, signing in and then out is the only w
 | Progress and the 90 % watched rule to Nuvio; SIMKL and AniList scrobbling through the outbox; AniList sign-in in an in-app sheet ([ADR-0059](../docs/adr/0059-ios-suspension-offline-and-sign-in-sheet.md)) | live Nuvio and SIMKL checks, both undone (ADR-0059) |
 | Going to the background mid-play: the player stops drawing, pauses and saves its position before the push; a call or unplugged headphones pause; being killed while suspended loses nothing queued | ADR-0059, `phase6-resume-paused.png` |
 | Offline: progress queues, the offline pill shows, and coming back pushes it | `phase6-offline-pill.png` |
+| Watch parties ([ADR-0063](../docs/adr/0063-watch-parties-on-ios.md)): host or join with a code, chat, stay in step; the seat survives the app going to the background | `internal/party/suspend_test.go`, `internal/player/gate_ios_test.go`; not yet on a device |
 
 ## Deferred
 
-Not in the iOS build, by design. The App Store build contains no torrent code: build tags keep it out, and [`ios_boundary_test.go`](../ios_boundary_test.go) and the iOS CI check enforce it.
+Not in the iOS build, by design. The App Store build contains no torrent code: build tags keep it out, and [`ios_boundary_test.go`](../ios_boundary_test.go) and the iOS CI check enforce it. (Watch parties used to be on this list; they are in the build since [ADR-0063](../docs/adr/0063-watch-parties-on-ios.md).)
 
-- Torrent streaming, the plugin sandbox and watch parties.
+- Torrent streaming and the plugin sandbox.
 - Auto-update (the App Store would do this).
 - The mini player, Picture in Picture, background audio, lock-screen controls and Now Playing.
 - HDR/EDR output, and the picture, sound, quality and framing panels.
@@ -179,6 +180,7 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 - **The simulator is a poor guide to playback.** It draws video in software and has no hardware H.264 decoder. Heavy streams (such as a 46 GB, about 35 Mbit/s H.264 remux, or a 1080p HEVC on the iPad) can stay black while time advances and audio plays; a test clip draws on the same session. One failed VideoToolbox setup can leave the simulator drawing black until it reboots.
 - **OpenGL ES is deprecated.** It works, but rules out Picture in Picture. Moving mpv to Metal through MoltenVK is the likely next step if a device shows problems.
 - AniList hasn't been tested against a real account (fakes only); SIMKL and Nuvio have.
+- **Watch parties haven't been tried on a device.** A Mac and an iPhone in the same party, in step, through a suspend and back, is still owed. And a relaunch after the app is killed starts with no party: sessions are in memory only, and the old seat times out on Nuvio's side.
 - Small things (#139): fixed in the code on 2026-11-17, waiting for a look on a device (see "Small fixes" below).
 - Never run on GitHub: the separate [iOS workflow](../.github/workflows/ios.yml) has only been checked locally.
 
@@ -201,6 +203,17 @@ Not in the iOS build, by design. The App Store build contains no torrent code: b
 - **Icon:** `build/ios/assets/AppIcon.appiconset` replaces Wails' generated set (the macOS tile, with transparent corners) at build time: a full-bleed 1024 icon in light, dark (amber on dark) and tinted (grayscale) versions. The SVG sources sit beside it and were rendered with headless Chrome (`--screenshot` at 1024×1024).
 - **Launch screen:** `UILaunchScreen` names the `LaunchBackground` colour (`build/ios/assets/LaunchBackground.colorset`: `--background`, dark only since #143; `UIUserInterfaceStyle` is Dark in both Info plists, so the status bar, keyboard and system sheets follow); the old storyboard was never compiled and is gone. The webview starts clear and invisible over a window in that colour (`peli_quiet_webview` in `internal/iosplayer/host_ios.m`, called from `main.m`'s layout hook) and fades in on `appinfo.PageReady` (DOMContentLoaded), or after 4 s.
 - **Touch CSS** (`index.css`, `data-platform="ios"` only): no selection, callout or tap highlight on the app; `touch-action: pan-x pan-y` on the page (no double-tap or pinch zoom); text fields and `[data-selectable]` (the synopsis) stay selectable.
+
+## Watch parties
+
+Parties are Nuvio's own ([ADR-0051](../docs/adr/0051-watch-party.md)), and the phone runs the same Go service as the Mac ([ADR-0063](../docs/adr/0063-watch-parties-on-ios.md)). A party is a code, a synchronised player and a chat over Nuvio's backend; each member plays their own stream from their own debrid account, so no video passes between people.
+
+- **Start or join:** in the player, the party button at the top (the two-people icon, with a dot while you're in a party) opens the same sheet as the desktop's `W` key: the code to share, Nuvio's `nuvio.tv/party/<code>` link, the members and the chat. On an iPad with a hardware keyboard, `W` opens it too. `/party` (profile menu, or ⌘K) takes a code.
+- **In step:** your play, pause, seek and speed ask the party first; the party's own corrections go straight to the player. In a host-only party a guest can watch behind but not steer.
+- **Background:** on the way out the app closes the party's socket and keeps the seat; on the way back it rejoins and catches up to the party's position. A host who is away doesn't end the party.
+- **Killed:** a relaunch starts with no party, since nothing is written to disk; join again with the code.
+
+The chat sits in a sheet that keeps above the keyboard, and its list scrolls without the sheet's drag taking over.
 
 ## Connecting SIMKL and AniList on a phone (#133)
 
@@ -230,7 +243,7 @@ SIMKL and AniList tokens are per device and per profile, in each device's Keycha
 | [`internal/pairing/`](../internal/pairing) | Copying SIMKL, AniList and the TMDB key between devices over the local network ([ADR-0061](../docs/adr/0061-device-pairing.md)) |
 | `*_ios.go` (`main_desktop.go` and `!ios` files for the desktop) | Platform seams: Keychain (`internal/secrets`), storage path (`internal/store`), open URL (`internal/appinfo`), the player service (`internal/player`), the image proxy |
 | [`frontend/src/lib/platform.ts`](../frontend/src/lib/platform.ts), [`features.ts`](../frontend/src/lib/features.ts) | `isIOS()` and the list of features hidden on iOS |
-| [`ios_boundary_test.go`](../ios_boundary_test.go) | Proves the iOS build links no torrent, plugin, party or updater code |
+| [`ios_boundary_test.go`](../ios_boundary_test.go) | Proves the iOS build links no torrent, plugin or updater code, and does link the party |
 | [`.github/workflows/ios.yml`](../.github/workflows/ios.yml) | Separate CI: simulator build, boundary test, symbol check |
 | [`docs/ios/`](../docs/ios) | Screenshots per phase and the playback coverage table |
 | [`docs/ios-port-audit.md`](../docs/ios-port-audit.md) | The Phase 0 audit and the architecture choice |

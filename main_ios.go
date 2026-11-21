@@ -17,7 +17,9 @@ import (
 	"github.com/k22i/Peli/internal/diagnostics"
 	"github.com/k22i/Peli/internal/iosplayer"
 	"github.com/k22i/Peli/internal/iosshell"
+	"github.com/k22i/Peli/internal/party"
 	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/shell"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/syncer"
@@ -33,9 +35,11 @@ const backgroundFlush = 20 * time.Second
 // main is the iOS app (ADR-0055): Wails' UIKit target runs it from its
 // bootstrap (build/ios), in the same process as the webview. Everything the
 // App Store build must not contain is left out of this file and of the
-// packages it imports: no torrent streaming, plugins, watch parties, auto-
-// update or first-mouse handling; the player is internal/iosplayer (libmpv
-// in a UIKit view under the webview, Phase 5).
+// packages it imports: no torrent streaming, plugins, auto-update or
+// first-mouse handling (watch parties are in: they send only play, pause,
+// seek and chat messages through Nuvio's server, never video); the
+// player is internal/iosplayer (libmpv in a UIKit view under the webview,
+// Phase 5).
 // The frontend's bindings for the left-out services stay generated, and a
 // call to one fails with "unknown bound method" (see docs/adr/0055).
 func main() {
@@ -161,6 +165,9 @@ func (p *peli) becomeActive(engine *iosplayer.Engine) {
 	p.pullAndPush()
 	syncer.WakeOf(p.sync)
 	tracking.Kick(p.trackers)
+	// The websocket died with the suspension: rejoin the party and catch up
+	// to it, off the lifecycle callback (it makes network calls).
+	safego.Go("party back", func() { party.Back(p.parties) })
 }
 
 // enterBackground is the last thing the app does before iOS suspends it. It
@@ -180,6 +187,9 @@ func (p *peli) enterBackground(engine *iosplayer.Engine) {
 	go func() {
 		defer application.IOS.EndBackgroundTask()
 		engine.Suspend()
+		// Close the party's socket on purpose, keeping the seat, so
+		// the reconnect loop doesn't spin while suspended.
+		party.Away(p.parties)
 		ctx, cancel := context.WithTimeout(context.Background(), backgroundFlush-2*time.Second)
 		defer cancel()
 		var wg sync.WaitGroup

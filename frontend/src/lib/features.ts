@@ -9,9 +9,13 @@ import { nativeTabBar } from "@/lib/tab-bar";
 // screen asks `feature("plugins")` instead of checking the platform, and the
 // reason each is out is written down once.
 //
-// - updates, party, plugins and torrent are not bound on iOS (their Go
-//   packages are not in the binary), so a call to one fails with "unknown
-//   bound method id": every call site must skip, not catch.
+// - updates, plugins and torrent are not bound on iOS (their Go packages are
+//   not in the binary), so a call to one fails with "unknown bound method
+//   id": every call site must skip, not catch.
+// - watch parties (ADR-0051) used to be on this list; they are bound on iOS
+//   now, like every desktop piece the party needs. A party trades only
+//   play/pause/seek/chat over Nuvio's realtime channel, never video, so
+//   nothing in it is the App Review problem that left it out of ADR-0055.
 // - the rest are desktop window or mpv-only features, or out of scope.
 export type Feature =
   | "updates"
@@ -34,7 +38,6 @@ export type Feature =
 
 const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
   "updates",
-  "party",
   "plugins",
   "torrent",
   "miniPlayer",

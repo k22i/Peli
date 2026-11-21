@@ -5,7 +5,9 @@ package player
 import (
 	"context"
 	"fmt"
+	"math"
 	"sync"
+	"sync/atomic"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
@@ -40,6 +42,9 @@ type Service struct {
 	engine playback.Engine
 	emit   func(name string, data any)
 	report func(Report)
+	// gate is asked before the user's pauses, seeks and speed changes: a
+	// watch party (ADR-0051). Nil until GateWith.
+	gate atomic.Pointer[Gate]
 }
 
 // NewService returns a Service with no engine. version is the desktop
@@ -153,16 +158,73 @@ func (s *Service) Snapshot() State {
 	return State{Volume: 100, Speed: 1, Tracks: []Track{}, Chapters: []Chapter{}, SubtitleSize: "medium"}
 }
 
+// GateWith has s ask g before the user's changes. It isn't a method, so
+// Wails doesn't bind it.
+func GateWith(s *Service, g Gate) { s.gate.Store(&g) }
+
+func (s *Service) gated() Gate {
+	if g := s.gate.Load(); g != nil {
+		return *g
+	}
+	return nil
+}
+
+// Direct is the player without its gate: what a watch party uses to keep
+// playback in step, which mustn't come back to it as the user's.
+type Direct struct{ s *Service }
+
+// DirectOf returns s without its gate. It isn't a method, so Wails doesn't
+// bind it.
+func DirectOf(s *Service) Direct { return Direct{s} }
+
+func (d Direct) Snapshot() State { return d.s.Snapshot() }
+func (d Direct) SetPaused(paused bool) error {
+	return d.s.with(func(e playback.Engine) error { return e.SetPaused(paused) })
+}
+func (d Direct) Seek(position float64) error {
+	return d.s.with(func(e playback.Engine) error { return e.Seek(position) })
+}
+func (d Direct) SetSpeed(speed float64) error {
+	return d.s.with(func(e playback.Engine) error { return e.SetSpeed(speed) })
+}
+
 func (s *Service) SetPaused(paused bool) error {
+	if g := s.gated(); g != nil && !g.UserPause(paused) {
+		return nil
+	}
 	return s.with(func(e playback.Engine) error { return e.SetPaused(paused) })
 }
 func (s *Service) Seek(position float64) error {
+	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
+		return ErrInvalid
+	}
+	if g := s.gated(); g != nil {
+		to, ok := g.UserSeek(position)
+		if !ok {
+			return nil
+		}
+		position = to
+	}
 	return s.with(func(e playback.Engine) error { return e.Seek(position) })
 }
+
+// SeekBy with a gate is a Seek to where delta lands, as on the desktop.
 func (s *Service) SeekBy(delta float64) error {
+	if math.IsNaN(delta) || math.IsInf(delta, 0) {
+		return ErrInvalid
+	}
+	if s.gated() != nil {
+		return s.Seek(math.Max(0, s.Snapshot().Position+delta))
+	}
 	return s.with(func(e playback.Engine) error { return e.SeekBy(delta) })
 }
 func (s *Service) Scrub(position float64) error {
+	if position < 0 || math.IsNaN(position) || math.IsInf(position, 0) {
+		return ErrInvalid
+	}
+	if g := s.gated(); g != nil {
+		g.UserScrub()
+	}
 	return s.with(func(e playback.Engine) error { return e.Scrub(position) })
 }
 func (s *Service) SetVolume(volume float64) error {
@@ -172,6 +234,12 @@ func (s *Service) SetMuted(muted bool) error {
 	return s.with(func(e playback.Engine) error { return e.SetMuted(muted) })
 }
 func (s *Service) SetSpeed(speed float64) error {
+	if speed < 0.25 || speed > 4 || math.IsNaN(speed) {
+		return ErrInvalid
+	}
+	if g := s.gated(); g != nil && !g.UserSpeed(speed) {
+		return nil
+	}
 	return s.with(func(e playback.Engine) error { return e.SetSpeed(speed) })
 }
 func (s *Service) SetAudioTrack(id int) error {

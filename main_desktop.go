@@ -14,10 +14,8 @@ import (
 
 	"github.com/k22i/Peli/internal/account"
 	"github.com/k22i/Peli/internal/appinfo"
-	"github.com/k22i/Peli/internal/backend"
 	"github.com/k22i/Peli/internal/diagnostics"
 	"github.com/k22i/Peli/internal/firstmouse"
-	"github.com/k22i/Peli/internal/party"
 	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/plugins"
 	"github.com/k22i/Peli/internal/store"
@@ -57,12 +55,6 @@ func main() {
 	// in the store and synced with Nuvio.
 	pluginHost := plugins.NewService(appinfo.Version)
 	plugins.UseStore(pluginHost, func() *store.Store { return store.Opened(p.db) }, account.EditorOf(p.accounts))
-	// Watch parties with Nuvio's apps (ADR-0051): the party keeps the
-	// player in step, and the user's pauses and seeks go through it first.
-	parties := party.NewService(backend.Parties{Client: p.client, Sessions: account.SessionOf(p.accounts)},
-		party.Who(p.db, account.SessionOf(p.accounts).SignedIn))
-	party.UsePlayer(parties, player.DirectOf(players))
-	player.GateWith(players, party.GateOf(parties))
 	// Updates (#83, ADR-0054): checked and downloaded in the background,
 	// installed when the user restarts, never while something plays.
 	appUpdates := updates.NewService(appinfo.Version)
@@ -82,8 +74,6 @@ func main() {
 			// Torrents streamed peer to peer, if the user turns it on (#55).
 			torrent: application.NewServiceWithOptions(torrent.NewService(p.db, torrent.DefaultDir(), appinfo.Version),
 				application.ServiceOptions{MarshalError: torrent.MarshalError}),
-			parties: application.NewServiceWithOptions(parties,
-				application.ServiceOptions{MarshalError: party.MarshalError}),
 		}),
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),

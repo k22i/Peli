@@ -15,6 +15,7 @@ import {
   Moon,
   Plus,
   Sun,
+  Users,
   Volume2,
   VolumeX,
   X,
@@ -100,13 +101,14 @@ export function GlassButton({
 }
 
 // The top row, 44 pt: Back (a chevron, no disc) and what plays on one line
-// on the left; Audio & Subtitles, Lock and More on the right. Lock shows
-// only when the page passes onLock (#131 adds it).
+// on the left; Watch party, Audio & Subtitles, Lock and More on the right.
+// Lock shows only when the page passes onLock (#131 adds it).
 export function TouchTopRow({
   title,
   episode,
   onBack,
   tracks,
+  party,
   onLock,
   more,
   className,
@@ -117,6 +119,9 @@ export function TouchTopRow({
   onBack: () => void;
   // The Audio & Subtitles button, when there's something to pick.
   tracks?: { open: boolean; on: boolean; onOpen: () => void } | undefined;
+  // The watch party (ADR-0063): the sheet the desktop's W key opens, while
+  // something plays or this device is already in a party.
+  party?: { open: boolean; inParty: boolean; unread: boolean; onOpen: () => void } | undefined;
   onLock?: (() => void) | undefined;
   more?: ReactNode;
   className?: string | false | undefined;
@@ -147,6 +152,23 @@ export function TouchTopRow({
         </div>
       )}
       <div className="ms-auto flex shrink-0 items-center">
+        {party && (
+          <GlassButton
+            label="Watch party"
+            bare
+            aria-expanded={party.open}
+            onClick={party.onOpen}
+            className={cn(party.inParty && "bg-white/12")}
+          >
+            <Users />
+            {party.unread && (
+              <span
+                aria-hidden
+                className="absolute top-2 right-2 size-1.5 rounded-full bg-[#ffb547]"
+              />
+            )}
+          </GlassButton>
+        )}
         {tracks && (
           <GlassButton
             label="Audio and subtitles"

@@ -6,7 +6,6 @@ import { onCompactIOS, onIOS } from "@/test/ios";
 
 const outOnIOS: Feature[] = [
   "updates",
-  "party",
   "plugins",
   "torrent",
   "miniPlayer",
@@ -29,6 +28,18 @@ describe("feature", () => {
     const restore = onCompactIOS();
     try {
       expect(outOnIOS.filter((name) => feature(name))).toEqual([]);
+    } finally {
+      restore();
+    }
+  });
+
+  // Watch parties (ADR-0051) are in the iOS app now (ADR-0063), at both widths.
+  it("has watch parties on an iPhone and an iPad", () => {
+    onIOS();
+    expect(feature("party")).toBe(true);
+    const restore = onCompactIOS();
+    try {
+      expect(feature("party")).toBe(true);
     } finally {
       restore();
     }

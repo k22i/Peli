@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 
 import { PartyChat } from "@/components/party/party-chat";
 import { JoinParty, PartyPanel } from "@/components/party/party-panel";
+import { BottomSheet, BottomSheetTitle } from "@/components/ui/bottom-sheet";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -25,10 +26,15 @@ import {
   type PartyInfo,
   type State,
 } from "@/lib/party";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // The player's watch party sheet (W): start one for what's playing, or join
-// one with a code; in one, its people and controls, and the chat.
+// one with a code; in one, its people and controls, and the chat. On the
+// compact iOS shell (ADR-0063) it is a bottom sheet from the edge instead, as
+// the shell's other sheets are, and it gives the chat the room the on-screen
+// keyboard leaves (--keyboard-h, lib/keyboard.ts) so the field and its send
+// button stay above the keys.
 export function PartySheet({
   open,
   onOpenChange,
@@ -44,19 +50,45 @@ export function PartySheet({
   media: Media | undefined;
   canShare: boolean;
 }) {
+  const compact = useCompactShell();
   const party = state?.party ?? undefined;
+  const description = party
+    ? party.isHost
+      ? "You’re hosting. Everyone plays from their own sources, in step with you."
+      : "Everyone plays from their own sources, in step with the host."
+    : "Invite friends on Peli or Nuvio. Everyone plays from their own sources and stays in step.";
+  if (compact) {
+    return (
+      <BottomSheet
+        open={open}
+        onOpenChange={onOpenChange}
+        label="Watch party"
+        header={
+          <>
+            <BottomSheetTitle>Watch party</BottomSheetTitle>
+            <p className="px-5 pb-3 text-center text-small text-muted-foreground">{description}</p>
+          </>
+        }
+        // As tall as the picture leaves: a panel with a chat needs the room,
+        // and the keyboard's height is padding, so what's above it is left.
+        className="dark h-[min(44rem,85dvh)] max-h-none pb-[max(env(safe-area-inset-bottom),var(--keyboard-h,0px))] text-foreground"
+      >
+        <div className="flex h-full min-h-0 flex-col">
+          {party ? (
+            <InParty canShare={canShare} compact />
+          ) : (
+            <NotInParty state={state} media={media} onJoined={() => onOpenChange(false)} />
+          )}
+        </div>
+      </BottomSheet>
+    );
+  }
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetPopup side="right" className="dark max-w-md text-foreground">
         <SheetHeader className="px-6 pb-2">
           <SheetTitle>Watch party</SheetTitle>
-          <SheetDescription>
-            {party
-              ? party.isHost
-                ? "You’re hosting. Everyone plays from their own sources, in step with you."
-                : "Everyone plays from their own sources, in step with the host."
-              : "Invite friends on Peli or Nuvio. Everyone plays from their own sources and stays in step."}
-          </SheetDescription>
+          <SheetDescription>{description}</SheetDescription>
         </SheetHeader>
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 pb-6">
           {party ? (
@@ -70,18 +102,22 @@ export function PartySheet({
   );
 }
 
-function InParty({ canShare }: { canShare: boolean }) {
+function InParty({ canShare, compact = false }: { canShare: boolean; compact?: boolean }) {
   const chat = usePartyChat();
   const [tab, setTab] = useState<string>("party");
+  // A finger's 44 pt rows in the sheet; the panel's own rows are 34 pt.
+  const tabClass = compact ? "pointer-coarse:min-h-11" : undefined;
   return (
     <Tabs
       value={tab}
       onValueChange={(value) => setTab(String(value))}
       className="min-h-0 flex-1 gap-4"
     >
-      <TabsList className="w-full">
-        <TabsTab value="party">Party</TabsTab>
-        <TabsTab value="chat">
+      <TabsList className={cn("w-full", compact && "shrink-0")}>
+        <TabsTab value="party" className={tabClass}>
+          Party
+        </TabsTab>
+        <TabsTab value="chat" className={tabClass}>
           Chat
           {chat.unread > 0 && tab !== "chat" && (
             <span className="ms-1.5 grid min-w-4.5 place-items-center rounded-full bg-sun px-1 text-[0.625rem] font-[700] text-sun-foreground tnum">
@@ -95,7 +131,12 @@ function InParty({ canShare }: { canShare: boolean }) {
           {(party) => <PartyPanel party={party} canShare={canShare} />}
         </PartyStateGate>
       </TabsPanel>
-      <TabsPanel value="chat" className="flex min-h-[24rem] flex-col">
+      {/* In the sheet the chat takes the room under the two tabs: its list
+          scrolls, and its field stays at the bottom, above the keyboard. */}
+      <TabsPanel
+        value="chat"
+        className={compact ? "flex min-h-0 flex-1 flex-col" : "flex min-h-[24rem] flex-col"}
+      >
         <PartyChat />
       </TabsPanel>
     </Tabs>
@@ -145,7 +186,13 @@ function NotInParty({
     <div className="flex flex-col gap-8 pt-2">
       {media && (
         <div className="flex flex-col gap-3">
-          <Button variant="sun" size="lg" onClick={start} disabled={starting || state?.busy}>
+          <Button
+            variant="sun"
+            size="lg"
+            className="pointer-coarse:min-h-11"
+            onClick={start}
+            disabled={starting || state?.busy}
+          >
             {starting ? <Spinner /> : <PartyPopper />}
             Start a watch party
           </Button>
@@ -166,15 +213,18 @@ function NotInParty({
 
 // A line at the top of the video while the party has something to say: a
 // member's action for a moment, then the party's state (reconnecting,
-// behind with Catch up, waiting for someone).
+// behind with Catch up, waiting for someone). `className` places it: the
+// touch player puts it under its own top row (#130).
 export function PartyPill({
   state,
   notice,
   onCatchUp,
+  className,
 }: {
   state: State | undefined;
   notice: string | undefined;
   onCatchUp: () => void;
+  className?: string | false | undefined;
 }) {
   const party = state?.party;
   if (!party) return null;
@@ -195,7 +245,7 @@ export function PartyPill({
   return (
     <div
       aria-live="polite"
-      className="pointer-events-none absolute inset-x-0 top-5 flex justify-center"
+      className={cn("pointer-events-none absolute inset-x-0 top-5 flex justify-center", className)}
     >
       <p
         className={cn(

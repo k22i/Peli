@@ -7,11 +7,12 @@ import (
 	"testing"
 )
 
-// The iOS build is debrid-only (ADR-0055): torrent streaming, plugins, watch
-// parties, auto-update, first-mouse handling and the libmpv desktop engine
-// must not be compiled into it (App Store review), and the dependency list is
-// where that shows. `go list` needs no iOS SDK, so this runs on macOS and
-// Linux like the rest of the tests.
+// The iOS build is debrid-only (ADR-0055): torrent streaming, plugins,
+// auto-update, first-mouse handling and the libmpv desktop engine must not be
+// compiled into it (App Store review), and the dependency list is where that
+// shows. Watch parties are in it (they send play/pause/seek/chat messages
+// through Nuvio's server, no video). `go list` needs no iOS SDK, so this runs
+// on macOS and Linux like the rest of the tests.
 
 // goList runs `go list` for the main package with env added.
 func goList(t *testing.T, env []string, format string, args ...string) string {
@@ -36,7 +37,6 @@ var notOniOS = []string{
 	"pion/",
 	"/internal/torrent",
 	"/internal/plugins",
-	"/internal/party",
 	"/internal/updates",
 	"/internal/firstmouse",
 	// Wails' updater providers (GitHub releases and so on). The updater
@@ -67,6 +67,10 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 		"github.com/k22i/Peli/internal/playback",
 		"github.com/k22i/Peli/internal/player", // its iOS Service only, below
 		"github.com/k22i/Peli/internal/iosplayer",
+		// Watch parties (ADR-0051) are in the iOS build: the Realtime
+		// channel they talk on is the websocket below.
+		"github.com/k22i/Peli/internal/party",
+		"github.com/coder/websocket",
 		"github.com/k22i/Peli/internal/store",
 		"github.com/k22i/Peli/internal/secrets",
 		"github.com/wailsapp/wails/v3/pkg/application",

@@ -74,7 +74,7 @@
 - [Library housekeeping](library-housekeeping.md) — ClearContinueWatching (delete, not a hide flag), Library multi-select: selection.ts, useBulkEdits, SelectionBar, listbox semantics
 - [Discovery](discovery.md) — search kind/decade/genre filters in the URL, recent searches per profile, TMDB People row, Home New episodes + Surprise me
 - [Player picture (phase 1)](player-picture.md) — Picture & sound sheet (P), store.Picture + TitleAdjustments per title, Go resolves at Load, panel-controls.tsx; facts for phases 2–6
-- [Watch party](watch-party.md) — ADR-0051 internal/party + nuvio realtime.go, nuvio_realtime=1 flag, live-only RPCs + live tests, player gate/Direct, party mocks in test setup
+- [Watch party](watch-party.md) — ADR-0051 (on iOS since ADR-0063): internal/party + nuvio realtime.go, nuvio_realtime=1 flag, live-only RPCs + live tests, player gate/Direct, Away/Back suspension, touch entry, party mocks in test setup
 - [Player framing (phase 2)](player-framing.md) — Framing section, crop % → pixels, Go auto-crop via screenshot-raw, sheet tabs, Shift+F/Shift+A/= − 0/⌥ arrows, drag to pan
 - [Player quality (phase 3)](player-quality.md) — Quality on DeviceSettings + per title, scaling/deband, embedded CAS/FSR/Anime4K + licences, macOS CVDisplayLink smoothing, tone mapping off EDR, bench numbers
 - [Player sound (phase 4)](player-sound.md) — Sound (profile + title) and Audio (device), one lavfi af chain, dynaudnorm over loudnorm, build + smoke filter check, audio delay, volume-max 150, AudioDevices, B key
@@ -85,7 +85,7 @@
 - [Orca worker model](orca-worker-model.md) — Opus 5.5 by default, Sonnet 5.5 for small/less crucial tickets; effort as the user names it
 - [Rex workers](rex-workers.md) — launch claude by full path in Rex tabs (old one on login PATH), worktree + spec + report file, Monitor gotcha
 - [Local-only git](local-only-git.md) — merge into local main; no push, no PRs for now
-- [iOS port](ios-port.md) — Phases 1–7 (auth, Keychain, browsing, libmpv playback, suspension/offline, hand-off in ios/README.md): ADR-0055–0059, ios tag rules, isIOS()/feature(), UIScene shim, iPhone rotation rule (rotation_ios.go), simulator recipe and limits, test baseline
+- [iOS port](ios-port.md) — Phases 1–7 (auth, Keychain, browsing, libmpv playback, suspension/offline, hand-off in ios/README.md) plus parties on iOS (ADR-0063): ADR-0055–0059, ios tag rules, isIOS()/feature(), UIScene shim, iPhone rotation rule (rotation_ios.go), simulator recipe and limits, test baseline
 - [iOS libmpv](ios-libmpv.md) — xcframework, GLES under the webview, 8-bit to GLES (nv12 / lavfi format), mode before first frame, simulator -6683 poisoning + glFinish, zero-copy chroma hook (purple/green fix)
 - [iOS on devices via SideStore](ios-sidestore.md) — free Apple ID, ad-hoc ios:sideload .ipa (writes iCloud; compile checks use ios:package:ipa IOS_PLATFORM=device), SideStore adds team id to bundle id + filters entitlements, iloader/LocalDevVPN, device:console logs, stats line
 - [iOS polish epic](ios-polish-epic.md) — #126 (2026-11-17): sub-tickets #127–#142 with priorities, code findings (no WebKit-kill handler, extraLarge covers, 45 % player dock), native glass tab bar + QR tracker pairing decisions

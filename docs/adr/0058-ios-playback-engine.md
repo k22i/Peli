@@ -5,6 +5,8 @@ date: 2026-11-13
 
 # The iOS playback engine: libmpv in a GLES view under the webview, hardware decoding chosen per file
 
+> Superseded in part by [ADR-0063](0063-watch-parties-on-ios.md): the iOS player screen offers the watch party too, and the iOS player has the gate and `Direct` the party needs.
+
 Phase 5 of the iOS port (ADR-0055) plays real debrid streams on the iPhone and iPad. The spike (`spikes/ios-libmpv`) showed the path works; this records how it was productionised and what the coverage run found (`docs/ios/playback-coverage.md`).
 
 ## What was decided

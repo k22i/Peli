@@ -8,9 +8,11 @@ import { hideTabBar } from "@/lib/tab-bar";
 import { onIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
 
-// The iOS app (ADR-0055) has no updates, party, plugins or torrent services:
-// a call to one rejects with "unknown bound method id". These stand-ins fail
-// the same way and count the calls, so a screen that makes one shows here.
+// The iOS app (ADR-0055) has no updates, plugins or torrent services: a call
+// to one rejects with "unknown bound method id". These stand-ins fail the
+// same way and count the calls, so a screen that makes one shows here. Watch
+// parties used to be on this list; they are bound on iOS now (ADR-0063), so
+// src/test/setup.ts's mock answers them.
 const unbound = vi.hoisted(() => {
   const state = { calls: [] as string[] };
   const notBound = (service: string) => ({
@@ -31,10 +33,6 @@ vi.mock("@bindings/updates", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   ...unbound.notBound("updates"),
 }));
-vi.mock("@bindings/party", async (importOriginal) => ({
-  ...(await importOriginal<object>()),
-  ...unbound.notBound("party"),
-}));
 vi.mock("@bindings/plugins", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   ...unbound.notBound("plugins"),
@@ -43,6 +41,9 @@ vi.mock("@bindings/torrent", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   ...unbound.notBound("torrent"),
 }));
+
+// No TMDB key: the shell's title prefetch reads the keychain on every route.
+vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
 
 vi.mock("@bindings/appinfo", () => ({
   Service: { Version: () => Promise.resolve("1.2.3") },
@@ -220,15 +221,16 @@ describe("the iOS shell", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
-  it("offers no watch party in the profile menu", async () => {
+  // Watch parties are in the iOS app too (ADR-0063): signed in, and never for a
+  // kids profile.
+  it("offers a watch party in the profile menu", async () => {
     width(false);
     const user = userEvent.setup();
     await renderApp("/settings?section=about");
 
     await user.click(await screen.findByRole("button", { name: /Profile: Kevin/ }));
 
-    await screen.findByRole("menuitem", { name: "Settings" });
-    expect(screen.queryByRole("menuitem", { name: "Watch party" })).not.toBeInTheDocument();
+    expect(await screen.findByRole("menuitem", { name: "Watch party" })).toBeInTheDocument();
   });
 });
 
@@ -247,6 +249,8 @@ describe("menus on the iPhone (#134)", () => {
     expect(sheet).toHaveAttribute("aria-modal", "true");
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     expect(within(sheet).getByRole("link", { name: "Settings" })).toBeInTheDocument();
+    // Watch parties are in the iOS app too (ADR-0063), as a row of the sheet.
+    expect(within(sheet).getByRole("link", { name: "Watch party" })).toBeInTheDocument();
     // The tab bar (#129) stays mounted but hidden: inert and slid away.
     expect(tabBar()).toHaveAttribute("inert");
 
@@ -304,8 +308,8 @@ describe("Settings on iOS", () => {
 });
 
 describe("routes that aren't in the iOS app", () => {
-  it.each(["/party", "/gallery"])("sends %s to Home", async (path) => {
-    const { router } = await renderApp(path);
+  it("sends /gallery to Home", async () => {
+    const { router } = await renderApp("/gallery");
 
     await waitFor(() => expect(router.state.location.pathname).toBe("/"));
   });
@@ -323,6 +327,21 @@ describe("routes that aren't in the iOS app", () => {
     const { router } = await renderApp("/person/1");
 
     expect(router.state.location.pathname).toBe("/person/1");
+  });
+});
+
+// The party page is in the iOS app now (ADR-0063), as is everything it asks for:
+// joining with a code, and the party's own state.
+describe("the watch party page on iOS", () => {
+  it("stays, and asks for a friend's code", async () => {
+    width(false);
+    const { router } = await renderApp("/party");
+
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "Watch party" }),
+    ).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe("/party");
+    expect(await screen.findByRole("textbox", { name: "Party code" })).toBeInTheDocument();
   });
 });
 

@@ -22,6 +22,7 @@ import (
 	"github.com/k22i/Peli/internal/markers"
 	"github.com/k22i/Peli/internal/nuvio"
 	"github.com/k22i/Peli/internal/pairing"
+	"github.com/k22i/Peli/internal/party"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
 	"github.com/k22i/Peli/internal/quickactions"
@@ -54,7 +55,7 @@ const description = "A desktop client for Stremio-compatible addons, with Nuvio 
 // window's and the app's lifecycle do.
 //
 // Nothing here may import a package the iOS build leaves out (torrent,
-// plugins, party, updates, firstmouse, the libmpv engine); main_test.go checks
+// plugins, updates, firstmouse, the libmpv engine); ios_boundary_test.go checks
 // the dependency list.
 type peli struct {
 	db        *store.Service
@@ -69,6 +70,11 @@ type peli struct {
 	// players is the libmpv Service on the desktop and the stub or iOS engine
 	// host on iOS: the same bound methods either way.
 	players *player.Service
+	// parties is the watch party (ADR-0051): it follows the player and the
+	// user's pauses and seeks go through it first (party.UsePlayer and
+	// player.GateWith, below). Nuvio's backend keeps the membership, so the
+	// party works on both builds.
+	parties *party.Service
 
 	// diag is the logs, crash files and the frontend's error reports
 	// (#127): main_desktop.go and main_ios.go make it, before newPeli.
@@ -97,6 +103,13 @@ func newPeli(dbPath string) *peli {
 	// Profiles deleted, added or re-PINned elsewhere show at the next sync.
 	syncer.RefreshProfilesWith(syncer.PullerOf(p.sync), account.ProfileRefresher(p.accounts))
 	p.players = player.NewService(appinfo.Version)
+	// Watch parties with Nuvio's apps (ADR-0051): the party keeps the player
+	// in step, and the user's pauses, seeks and speed changes go through it
+	// first, so it can publish them or refuse them.
+	p.parties = party.NewService(backend.Parties{Client: p.client, Sessions: account.SessionOf(p.accounts)},
+		party.Who(p.db, account.SessionOf(p.accounts).SignedIn))
+	party.UsePlayer(p.parties, player.DirectOf(p.players))
+	player.GateWith(p.players, party.GateOf(p.parties))
 	p.skipTimes = markers.NewService(appinfo.Version)
 	markers.UseSettings(p.skipTimes, p.db)
 	// How far each film or episode plays becomes the profile's progress, and
@@ -144,7 +157,7 @@ func newPeli(dbPath string) *peli {
 // out. Where they sit keeps the order the desktop app has always started and
 // shut them down in.
 type extras struct {
-	updates, plugins, torrent, parties application.Service
+	updates, plugins, torrent application.Service
 }
 
 // services lists every service to register, in order.
@@ -197,7 +210,8 @@ func (p *peli) services(x extras) []application.Service {
 			application.ServiceOptions{MarshalError: player.MarshalError}),
 	)
 	// After the player, so it leaves the party first on the way out.
-	add(x.parties)
+	list = append(list, application.NewServiceWithOptions(p.parties,
+		application.ServiceOptions{MarshalError: party.MarshalError}))
 	return list
 }
 

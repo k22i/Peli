@@ -87,12 +87,20 @@ export function PartyPanel({
         )
       )}
       <div className="flex flex-wrap gap-2">
-        <Button variant="secondary" onClick={() => void leave()}>
+        <Button
+          variant="secondary"
+          className="pointer-coarse:min-h-11"
+          onClick={() => void leave()}
+        >
           <LogOut />
           Leave party
         </Button>
         {party.isHost && (
-          <Button variant="destructive-outline" onClick={() => setEnding(true)}>
+          <Button
+            variant="destructive-outline"
+            className="pointer-coarse:min-h-11"
+            onClick={() => setEnding(true)}
+          >
             <Power />
             End for everyone
           </Button>
@@ -133,7 +141,8 @@ function InviteCode({ code }: { code: string }) {
     return () => clearTimeout(timer);
   }, [copied]);
   return (
-    <div className="flex items-center justify-between gap-4 rounded-2xl bg-foreground/5 p-4">
+    // On a phone the code and its button stack, so neither squeezes (ADR-0063).
+    <div className="flex items-center justify-between gap-4 rounded-2xl bg-foreground/5 p-4 ios-compact:flex-col ios-compact:items-stretch">
       <div className="flex flex-col gap-1">
         <p className="type-eyebrow text-muted-foreground">Party code</p>
         <p
@@ -145,6 +154,7 @@ function InviteCode({ code }: { code: string }) {
       </div>
       <Button
         variant="secondary"
+        className="pointer-coarse:min-h-11"
         onClick={() =>
           void navigator.clipboard.writeText(inviteText(code)).then(
             () => setCopied(true),
@@ -296,7 +306,12 @@ export function JoinParty({ onJoined }: { onJoined?: () => void }) {
           {problem ?? refusal}
         </p>
       )}
-      <Button type="submit" size="lg" disabled={!complete || joining || refusal !== undefined}>
+      <Button
+        type="submit"
+        size="lg"
+        className="pointer-coarse:min-h-11"
+        disabled={!complete || joining || refusal !== undefined}
+      >
         {joining && <Spinner />}
         Join
       </Button>

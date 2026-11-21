@@ -45,6 +45,9 @@ type session struct {
 	waitStarted time.Time
 	resumedAt   time.Time
 	rejoining   bool
+	// away: the app is in the background and the channel is closed on
+	// purpose (suspend.go); the seat is kept.
+	away bool
 
 	// Watching on alone, behind the party (only-the-host parties).
 	behind   bool
@@ -123,7 +126,18 @@ func (s *Service) begin(snap backend.PartySnapshot, me Me, sentAt time.Time, pla
 			}
 		}
 	}()
-	sess.channel = s.api.Open(sess.id, sess.memberID, backend.ChannelHandler{
+	sess.channel = s.openChannel(sess)
+	go s.heartbeats(sess)
+	go s.refineClock(sess)
+	go s.loop(sess)
+	s.syncChat(sess, false)
+	s.emitChat(sess)
+}
+
+// openChannel opens sess's Realtime channel, whose callbacks run for sess
+// while it's still the party.
+func (s *Service) openChannel(sess *session) backend.Channel {
+	return s.api.Open(sess.id, sess.memberID, backend.ChannelHandler{
 		Broadcast: func(event string, payload json.RawMessage) {
 			s.locked(sess, func() { s.onMessage(sess, event, payload) })
 		},
@@ -132,11 +146,6 @@ func (s *Service) begin(snap backend.PartySnapshot, me Me, sentAt time.Time, pla
 		},
 		Connected: func(on bool) { s.locked(sess, func() { s.onConnected(sess, on) }) },
 	})
-	go s.heartbeats(sess)
-	go s.refineClock(sess)
-	go s.loop(sess)
-	s.syncChat(sess, false)
-	s.emitChat(sess)
 }
 
 // locked runs f with s.mu held while sess is still the party, then sends

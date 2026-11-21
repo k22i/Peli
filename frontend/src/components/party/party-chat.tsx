@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from "re
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { Button } from "@/components/ui/button";
 import { Party, usePartyChat, type Message } from "@/lib/party";
+import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // The longest message the backend keeps.
@@ -19,11 +20,23 @@ export function PartyChat({ className }: { className?: string }) {
   const [draft, setDraft] = useState("");
   const list = useRef<HTMLDivElement>(null);
   const pinned = useRef(true);
+  const compact = useCompactShell();
 
   useEffect(() => {
     Party.SetChatOpen(true).catch(() => {});
     return () => void Party.SetChatOpen(false).catch(() => {});
   }, []);
+  // In the player's sheet (ADR-0063, a #134 bottom sheet) the sheet closes by a
+  // drag down from its grabber: a downward touch on the messages is the
+  // list's to scroll, so it never reaches the sheet (which would move the
+  // sheet instead of reading back).
+  useEffect(() => {
+    const el = list.current;
+    if (!el || !compact) return undefined;
+    const keep = (event: TouchEvent) => event.stopPropagation();
+    el.addEventListener("touchstart", keep, { passive: true });
+    return () => el.removeEventListener("touchstart", keep);
+  }, [compact]);
   // Each new message, kept in view.
   const count = messages.length;
   useLayoutEffect(() => {
@@ -81,12 +94,14 @@ export function PartyChat({ className }: { className?: string }) {
           // The player's keys stay out of the way while typing.
           onKeyDown={(event) => event.stopPropagation()}
           onKeyUp={(event) => event.stopPropagation()}
-          className="h-10 min-w-0 flex-1 rounded-full bg-foreground/6 px-4 text-body outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
+          // 44 pt and 16 px for a finger: under 16 px WebKit zooms the page
+          // when the field takes the keyboard.
+          className="h-10 min-w-0 flex-1 rounded-full bg-foreground/6 px-4 text-body outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring pointer-coarse:min-h-11 pointer-coarse:text-[1rem]"
         />
         <Button
           type="submit"
           size="icon-lg"
-          className="rounded-full"
+          className="rounded-full pointer-coarse:min-h-11 pointer-coarse:min-w-11"
           aria-label="Send"
           disabled={!draft.trim()}
         >

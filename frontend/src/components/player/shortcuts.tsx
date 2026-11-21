@@ -30,7 +30,7 @@ export const playerShortcuts: {
       { keys: ["F"], action: "Full screen", desktop: true },
       { keys: ["I"], action: "Mini player", desktop: true },
       { keys: ["S"], action: "Choose another stream", desktop: true },
-      { keys: ["W"], action: "Watch party", desktop: true },
+      { keys: ["W"], action: "Watch party" },
       { keys: ["P"], action: "Picture and sound", desktop: true },
       { keys: ["Shift F"], action: "Fit, fill, stretch or original size", desktop: true },
       { keys: ["Shift A"], action: "Next aspect ratio", desktop: true },

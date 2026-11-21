@@ -137,6 +137,7 @@ type fakeChannel struct {
 	mu      sync.Mutex
 	sent    []frame
 	tracked []json.RawMessage
+	closed  int
 }
 
 func (c *fakeChannel) Send(event string, payload any) error {
@@ -153,7 +154,17 @@ func (c *fakeChannel) Track(payload any) error {
 	c.tracked = append(c.tracked, data)
 	return nil
 }
-func (c *fakeChannel) Close() {}
+func (c *fakeChannel) Close() {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.closed++
+}
+
+func (c *fakeChannel) closes() int {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return c.closed
+}
 
 // broadcast delivers a message from another member.
 func (c *fakeChannel) broadcast(event string, payload any) {

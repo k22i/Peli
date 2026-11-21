@@ -244,12 +244,13 @@ const px = (v: string | undefined) => Number.parseFloat(v ?? "") || 0;
 const delayStep = 0.1;
 // The keys the iOS player leaves alone (#138): their controls are the
 // desktop's only (ErrDesktopOnly in internal/player/service_ios.go, or a
-// feature that's off on iOS). shortcuts.tsx leaves them out of the list.
+// feature that's off on iOS). shortcuts.tsx leaves them out of the list. W
+// (the watch party) is not one of them any more: parties are in the iOS app
+// (ADR-0063), so an iPad with a keyboard opens the same sheet.
 const iosKeysOff: ReadonlySet<string> = new Set([
   "f",
   "i",
   "s",
-  "w",
   "p",
   "b",
   "l",
@@ -1623,9 +1624,10 @@ function PlayerFile({
       if (error || switcherOpen || partyOpen || dockMenuOpen) return;
       if (event.metaKey || event.ctrlKey) return;
       // The iPad's keyboard (#138): what the iOS player can't do (framing,
-      // full screen, the mini player, the switcher, a party, frame steps,
-      // A–B loops, screenshots, the picture and sound panels) takes no key,
-      // so a press never opens state with nothing on screen.
+      // full screen, the mini player, the switcher, frame steps, A–B loops,
+      // screenshots, the picture and sound panels) takes no key, so a press
+      // never opens state with nothing on screen. A watch party can, since
+      // it is in the iOS app too (ADR-0063).
       const ios = isIOS();
       if (ios && event.altKey) return;
       // Option and the arrows pan the picture (mpv's keys); Option changes
@@ -2148,6 +2150,18 @@ function PlayerFile({
   const scrubbing = scrub !== undefined;
   const faded = scrubbing && "pointer-events-none opacity-0";
   const episodeList = meta && series ? episodesOf(meta) : [];
+  // The top row's Watch party (ADR-0063): the sheet the desktop's W key and
+  // Users button open, under the same conditions (a party, or something
+  // playing to start one with).
+  const touchParty =
+    feature("party") && (watching || party)
+      ? {
+          open: partyOpen,
+          inParty: party !== undefined,
+          unread: partyChat.unread > 0,
+          onOpen: openParty,
+        }
+      : undefined;
   const touchControls = touchLayout && (
     <>
       <div
@@ -2177,6 +2191,7 @@ function PlayerFile({
               }
             : undefined
         }
+        party={touchParty}
         more={
           ready && (
             <TouchMoreMenu
@@ -2372,6 +2387,14 @@ function PlayerFile({
       </Prompt>
     </div>
   );
+  // The party's line (ADR-0063): at the top of the picture as on the desktop,
+  // but under the touch player's own top row, and under the resume pill
+  // when that is up.
+  const partyPillTop = touchLayout
+    ? resumePill
+      ? "top-[calc(7.25rem+env(safe-area-inset-top))]"
+      : "top-[calc(3.75rem+env(safe-area-inset-top))]"
+    : undefined;
 
   return (
     <div
@@ -2970,6 +2993,7 @@ function PlayerFile({
           state={partyState}
           notice={partyNotice}
           onCatchUp={() => void Party.CatchUp().catch(() => {})}
+          className={partyPillTop}
         />
       )}
       {helpOpen && !failure && !mini && desktopControls && (

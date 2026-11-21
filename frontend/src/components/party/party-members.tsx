@@ -82,6 +82,8 @@ export function PartyMembers({
                 variant="ghost"
                 size="icon-sm"
                 aria-label={`Remove ${member.name}`}
+                // 44 pt for a finger (ADR-0063).
+                className="pointer-coarse:min-h-11 pointer-coarse:min-w-11"
                 onClick={() => setRemoving(member)}
               >
                 <UserMinus />
