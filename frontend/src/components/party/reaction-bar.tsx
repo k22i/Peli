@@ -78,8 +78,10 @@ export function PartyReactionLayer() {
           // Not for a screen reader: the confetti already says it, and the
           // chat is where a member looks for what was said.
           aria-hidden
-          // Just above the dock, where the player's other overlays sit.
-          className="pointer-events-none absolute inset-x-0 bottom-[calc(var(--above-bar)+0.5rem)] flex justify-center"
+          // Just above the dock, where the player's other overlays sit. Named
+          // above the confetti layer, which is z-30 too and comes first; still
+          // under the menus and sheets at z-50.
+          className="pointer-events-none absolute inset-x-0 bottom-[calc(var(--above-bar)+0.5rem)] z-30 flex justify-center"
         >
           <p
             key={said.key}
