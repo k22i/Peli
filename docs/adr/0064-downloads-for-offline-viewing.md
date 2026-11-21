@@ -25,7 +25,7 @@ date: 2026-11-22
 
 ## Store (internal/store, part 1)
 
-New top-level bucket, migration 8 (`CreateBucketIfNotExists`), keyed by download id:
+New top-level bucket, migration 5 (`CreateBucketIfNotExists`), keyed by download id:
 
 ```
 downloads          <id> → Download   (device-level; not under profiles, never synced)
