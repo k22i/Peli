@@ -37,6 +37,9 @@ vi.mock("@bindings/store", () => ({
   Service: {
     Profiles: () => mocks.current().then((p) => [p]),
     CurrentProfile: mocks.current,
+    // The shell asks this on iOS (lib/device-languages): the audio
+    // languages of a local profile with no settings yet. Nothing seeded.
+    SeedAudioLanguages: () => Promise.resolve(false),
     Addons: () => Promise.resolve([]),
     VisibleAddons: () => Promise.resolve([]),
     Library: () => Promise.resolve([]),
@@ -267,10 +270,12 @@ describe("downloads view", () => {
     // 42 MB of 900 MB.
     expect(screen.getByText("Downloading 5 %")).toBeInTheDocument();
 
-    // An episode says which one; a film just its stream.
-    expect(screen.getByText("S1 · E2 · Grilled")).toBeInTheDocument();
-    expect(screen.getAllByText("1080p · 1.4 GB")).toHaveLength(2);
-    expect(screen.getByText("1080p · 900 MB")).toBeInTheDocument();
+    // An episode says which one, a film just its stream. The code sits in its
+    // own tabular span (as Upcoming's rows have it), so read the row's text
+    // rather than one node.
+    expect(await rowOf("Breaking Bad · S1 E2")).toHaveTextContent("S1 · E2 · Grilled");
+    expect(await rowOf("Heat")).toHaveTextContent("1080p · 1.4 GB");
+    expect(await rowOf("Frieren · S1 E3")).toHaveTextContent("1080p · 900 MB");
 
     // The downloaded ones, most recently downloaded first.
     const plays = await screen.findAllByRole("button", { name: /^Play / });
@@ -358,7 +363,8 @@ describe("downloads view", () => {
     await renderApp("/library?view=downloads");
 
     expect(document.querySelector('[data-slot="compact-library"]')).not.toBeNull();
-    expect(await screen.findByText("Downloaded · 1080p · 1.4 GB")).toBeInTheDocument();
+    // The compact row's own line: the state, the stream and the size.
+    expect(await rowOf("Heat")).toHaveTextContent("Downloaded · 1080p · 1.4 GB");
 
     const user = userEvent.setup();
     const trigger = await screen.findByRole("button", { name: "More for Heat" });
