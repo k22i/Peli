@@ -5,7 +5,7 @@ import type {
   Reaction,
   State as PartyState,
 } from "@bindings/party";
-import type { ProfileSettings } from "@bindings/store";
+import type { DeviceSettings, ProfileSettings } from "@bindings/store";
 
 // A profile's settings as Go's store.DefaultProfileSettings has them, with
 // changes on top. Tests build ProfileSettings from this rather than a literal
@@ -61,6 +61,36 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
   },
   sound: { dialogueBoost: false, nightMode: false, equalizer: "flat" },
   gestures: { levelSwipes: true, seekSwipe: true, holdForSpeed: true, doubleTapSkip: 10 },
+  ...changes,
+});
+
+// The device's settings as Go's store.DefaultDeviceSettings has them, with
+// changes on top (the same idea as profileSettings, for the machine's).
+export const deviceSettings = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
+  hardwareDecoding: true,
+  maxResolution: "auto",
+  hdr: "auto",
+  dolbyVision: "auto",
+  skipTimesOnline: true,
+  diagnostics: false,
+  torrentStreaming: false,
+  torrentCacheGB: 5,
+  preResolve: false,
+  streamSort: "best",
+  quality: {
+    scaling: "balanced",
+    deband: "off",
+    sharpen: 0,
+    upscaler: "off",
+    motionSmoothing: false,
+    deinterlace: "auto",
+    toneMapping: "auto",
+    targetPeak: 0,
+  },
+  audio: { device: "auto", stereoDownmix: false, volumeBoost: false },
+  autoUpdate: true,
+  // The party beside the video (ADR-0051), off until it is asked for.
+  partyDock: false,
   ...changes,
 });
 

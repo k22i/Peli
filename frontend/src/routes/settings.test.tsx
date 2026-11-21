@@ -194,6 +194,8 @@ vi.mock("@bindings/store", async () => {
             targetPeak: 0,
           },
           audio: { device: "auto", stereoDownmix: false, volumeBoost: false },
+          // The party beside the video (ADR-0051), off by default.
+          partyDock: false,
         },
       SaveDeviceSettings: (settings: DeviceSettings) =>
         store.save(() => {
@@ -335,6 +337,7 @@ describe("settings", () => {
       "Sound",
       "Next episode",
       "Intros and credits",
+      "Watch party",
     ]);
     expect(await screen.findByRole("switch", { name: "Hardware decoding" })).toBeChecked();
     expect(screen.getByRole("switch", { name: "Skip intros automatically" })).not.toBeChecked();
@@ -636,6 +639,24 @@ describe("settings", () => {
     const group = screen.getByRole("region", { name: "Picture" });
     expect(group).toHaveTextContent("Maximum resolution");
     expect(group.textContent).not.toMatch(/score|weight|points/i);
+  });
+
+  it("keeps the watch party beside the video, per device", async () => {
+    const user = userEvent.setup();
+    await renderSettings("playback");
+
+    // Off until it is asked for: the party is the player's sheet until then.
+    const dock = screen.getByRole("switch", {
+      name: "Keep watch party open beside the video",
+    });
+    expect(dock).not.toBeChecked();
+
+    await user.click(dock);
+
+    await waitFor(() => expect(store.device?.partyDock).toBe(true));
+    expect(dock).toBeChecked();
+    // It rides with the rest of this device's settings.
+    expect(store.device).toMatchObject({ hardwareDecoding: true, partyDock: true });
   });
 
   it("gives every keyboard-reachable element a visible focus ring", async () => {

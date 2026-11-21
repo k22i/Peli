@@ -5,14 +5,33 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test"
 
 import type { Media, State } from "@bindings/party";
 import { Service as Party } from "@bindings/party";
+import type { DeviceSettings } from "@bindings/store";
 import { sheetsOpen } from "@/lib/sheets";
-import { partyMember, partyState } from "@/test/fixtures";
+import { deviceSettings, partyMember, partyState } from "@/test/fixtures";
 import { onCompactIOS } from "@/test/ios";
 
 import { PartySheet } from "./party-sheet";
 
 // The tabs tick the Taptic engine on iOS (#135); a no-op here.
 vi.mock("@/lib/haptics", () => ({ haptic: vi.fn<(kind: string) => void>() }));
+
+// The device's settings, where the dock's choice lives (ADR-0051), and the
+// saves made onto them.
+const device = vi.hoisted(() => ({
+  settings: undefined as DeviceSettings | undefined,
+  saves: [] as DeviceSettings[],
+}));
+
+vi.mock("@bindings/store", () => ({
+  Service: {
+    DeviceSettings: () => Promise.resolve(device.settings),
+    SaveDeviceSettings: (settings: DeviceSettings) => {
+      device.saves.push(settings);
+      device.settings = settings;
+      return Promise.resolve();
+    },
+  },
+}));
 
 // What's playing, as the player's sheet is given it.
 const media: Media = {
@@ -67,6 +86,9 @@ beforeEach(() => {
     members: 0,
     maxMembers: 0,
   });
+  // This device's settings, not docked, and no save made yet.
+  device.settings = deviceSettings();
+  device.saves = [];
 });
 
 afterEach(() => {
@@ -218,5 +240,37 @@ describe("PartySheet", () => {
     await waitFor(() =>
       expect(within(sheet).getByRole("textbox", { name: "Message" })).toHaveValue(""),
     );
+  });
+
+  it("keeps the party open beside the video, from its header", async () => {
+    const state = hosted();
+    vi.mocked(Party.State).mockResolvedValue(state);
+    renderSheet(state);
+    const user = userEvent.setup();
+
+    const sheet = await screen.findByRole("dialog", { name: "Watch party" });
+    const keepOpen = within(sheet).getByRole("button", { name: "Keep open beside the video" });
+    // A toggle in appearance, and off until it is pressed: the dock is what
+    // it turns on, and the player then shows it in place of this sheet.
+    expect(keepOpen).toHaveAttribute("aria-pressed", "false");
+
+    await user.click(keepOpen);
+
+    await waitFor(() => expect(device.saves.at(-1)).toMatchObject({ partyDock: true }));
+    // The party is still theirs: the sheet doesn't close the party, and
+    // player-page closes the sheet when the dock takes over.
+    expect(Party.Leave).not.toHaveBeenCalled();
+  });
+
+  it("has no dock to offer on an iPhone (ADR-0063)", async () => {
+    restore = onCompactIOS();
+    const state = hosted();
+    vi.mocked(Party.State).mockResolvedValue(state);
+    renderSheet(state);
+
+    const sheet = await screen.findByRole("dialog", { name: "Watch party" });
+    expect(
+      within(sheet).queryByRole("button", { name: "Keep open beside the video" }),
+    ).not.toBeInTheDocument();
   });
 });
