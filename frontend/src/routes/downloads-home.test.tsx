@@ -2,8 +2,9 @@ import { act, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import { CancellablePromise } from "@wailsio/runtime";
 import type * as Runtime from "@wailsio/runtime";
-import { Service as Downloads } from "@bindings/downloads";
+import { Service as Downloads, type Playable } from "@bindings/downloads";
 import type { Addon, Download, LibraryItem, Profile, Progress } from "@bindings/store";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
 import { renderApp } from "@/test/render-app";
@@ -145,13 +146,11 @@ const episodeDownload = (fields: Partial<Download> = {}) =>
 // What a mocked binding call answers: a CancellablePromise, which carries a
 // cancel() that payloads made by hand don't.
 function answering<T>(value: T) {
-  return Object.assign(Promise.resolve(value), { cancel: () => {} });
+  return CancellablePromise.resolve(value);
 }
 
 function listed(downloads: Download[]) {
-  vi.mocked(Downloads.List).mockImplementation(
-    (() => answering(downloads)) as unknown as typeof Downloads.List,
-  );
+  vi.mocked(Downloads.List).mockImplementation(() => answering<Download[] | null>(downloads));
 }
 
 const emit = (name: string, data: unknown) =>
@@ -182,9 +181,7 @@ beforeEach(() => {
   mocks.continueWatching.mockReset().mockResolvedValue([]);
   // Nothing downloaded for playback: a card falls through to the picker.
   vi.mocked(Downloads.Playable).mockReset();
-  vi.mocked(Downloads.Playable).mockImplementation(
-    (() => answering(null)) as unknown as typeof Downloads.Playable,
-  );
+  vi.mocked(Downloads.Playable).mockImplementation(() => answering<Playable | null>(null));
   listed([]);
   serve();
 });
