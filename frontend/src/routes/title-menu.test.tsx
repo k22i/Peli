@@ -141,6 +141,8 @@ describe("title menu", () => {
     expect(await items()).toEqual([
       "Play",
       "Choose a stream…",
+      // Its details aren't served here, so the download waits for them.
+      "Download",
       "Go to title",
       "Remove from Library",
       "Mark watched",

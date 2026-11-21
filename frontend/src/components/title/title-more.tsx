@@ -1,4 +1,17 @@
-import { Bookmark, BookmarkCheck, Eye, EyeOff, Ellipsis, Film, Share, Star } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowDownCircle,
+  Bookmark,
+  BookmarkCheck,
+  Eye,
+  EyeOff,
+  Ellipsis,
+  Film,
+  RotateCcw,
+  Share,
+  Star,
+  Trash2,
+} from "lucide-react";
 import { useState } from "react";
 
 import type { Profile } from "@bindings/store";
@@ -12,7 +25,13 @@ import {
   ResponsiveMenuSeparator,
   ResponsiveMenuSub,
 } from "@/components/ui/responsive-menu";
-import type { Meta } from "@/lib/addon-protocol";
+import type { Meta, Video } from "@/lib/addon-protocol";
+import {
+  downloadState,
+  pressDownload,
+  type TitleDownloads,
+} from "@/lib/download-pick";
+import { statusOf, statusText } from "@/lib/downloads";
 import { openURL } from "@/lib/open-url";
 import { ratingValues, titleRef, useTrackingControls } from "@/lib/tracking";
 
@@ -22,9 +41,18 @@ export const shareURL = (meta: Meta) =>
 
 const canShare = () => typeof navigator !== "undefined" && typeof navigator.share === "function";
 
+// What the phone's sheet downloads (#85): the same film or next-up episode
+// the desktop's round action does, with the addon its details came from.
+export type MenuDownload = {
+  downloads: TitleDownloads;
+  meta: Meta;
+  metaAddon: string;
+  video?: Video | undefined;
+};
+
 // The phone's "•••" on the title page (#136): what doesn't fit the action row.
-// It opens #134's bottom sheet: Trailer, the tracking watchlist and rating,
-// Mark as watched, and Share.
+// It opens #134's bottom sheet: Trailer, Download (#85), the tracking
+// watchlist and rating, Mark as watched, and Share.
 export function TitleMoreMenu({
   profile,
   meta,
@@ -32,6 +60,7 @@ export function TitleMoreMenu({
   watched,
   markDisabled,
   onToggleWatched,
+  download,
 }: {
   profile: Profile;
   meta: Meta;
@@ -39,6 +68,7 @@ export function TitleMoreMenu({
   watched: boolean;
   markDisabled: boolean;
   onToggleWatched: () => void;
+  download?: MenuDownload | undefined;
 }) {
   const ref = titleRef(meta, meta.name, meta);
   const { available, statuses, state, setStatus, setRating, warnsOnRemoval } = useTrackingControls(
@@ -68,6 +98,7 @@ export function TitleMoreMenu({
             Trailer
           </ResponsiveMenuItem>
         )}
+        {download && <DownloadItems download={download} />}
         {available && statuses.includes("planned") && (
           <ResponsiveMenuItem
             disabled={setStatus.isPending}
@@ -132,6 +163,49 @@ export function TitleMoreMenu({
         onOpenChange={setConfirming}
         onConfirm={() => setStatus.mutate("none")}
       />
+    </>
+  );
+}
+
+// The sheet's Download row (#85): the film or the episode Play would play,
+// its status, and the way back out, as the episode rows have it.
+function DownloadItems({ download }: { download: MenuDownload }) {
+  const state = downloadState(
+    download.downloads,
+    download.meta,
+    download.metaAddon,
+    download.video,
+  );
+  const { download: record } = state;
+  if (!record) {
+    const finding = state.control.action === "none";
+    return (
+      <ResponsiveMenuItem
+        disabled={finding}
+        onClick={() => pressDownload(state, download.downloads)}
+      >
+        <ArrowDown />
+        {finding ? state.control.label : "Download"}
+      </ResponsiveMenuItem>
+    );
+  }
+  const status = statusOf(record);
+  return (
+    <>
+      <ResponsiveMenuItem disabled>
+        <ArrowDownCircle />
+        {statusText(record)}
+      </ResponsiveMenuItem>
+      {(status === "paused" || status === "failed") && (
+        <ResponsiveMenuItem onClick={() => pressDownload(state, download.downloads)}>
+          <RotateCcw />
+          Resume download
+        </ResponsiveMenuItem>
+      )}
+      <ResponsiveMenuItem onClick={() => void download.downloads.actions.remove([record.id])}>
+        <Trash2 />
+        Remove download
+      </ResponsiveMenuItem>
     </>
   );
 }
