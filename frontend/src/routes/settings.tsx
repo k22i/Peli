@@ -434,6 +434,7 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
 }
 
 function PlaybackPane({ title, profileId }: { title: string; profileId: number | undefined }) {
+  const compact = useCompactShell();
   return (
     <SettingsPaneView title={title}>
       <WithSettings profileId={profileId}>
@@ -617,6 +618,25 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 />
               </SettingRow>
             </SettingsGroup>
+            {/* The watch party kept beside the video (ADR-0051, the player's
+                "Keep open"). The compact iOS shell has no room for a sidebar,
+                so it keeps its bottom sheet and no option. */}
+            {!compact && (
+              <SettingsGroup title="Watch party">
+                <SettingRow
+                  id="party-dock"
+                  label="Keep watch party open beside the video"
+                  description="The party’s people and chat stay open in a sidebar while the video plays, which moves left instead of being covered. W opens the party over the video when this is off. Applies to this device."
+                >
+                  <Switch
+                    aria-labelledby="party-dock-label"
+                    aria-describedby="party-dock-description"
+                    checked={device.partyDock ?? false}
+                    onCheckedChange={(partyDock) => setDevice({ partyDock })}
+                  />
+                </SettingRow>
+              </SettingsGroup>
+            )}
           </>
         )}
       </WithSettings>

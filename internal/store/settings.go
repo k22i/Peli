@@ -162,6 +162,10 @@ type DeviceSettings struct {
 	// Looking for and downloading updates by itself (#83). On unless the
 	// user turns it off; Peli still asks before it restarts.
 	AutoUpdate bool `json:"autoUpdate"`
+	// PartyDock keeps the watch party open beside the video instead of over
+	// it (ADR-0051). Off until the user asks for it, so the party is the
+	// sheet it always was; the compact iOS shell has no room for a dock.
+	PartyDock bool `json:"partyDock"`
 }
 
 var (

@@ -1,6 +1,7 @@
 package store
 
 import (
+	"encoding/json"
 	"errors"
 	"testing"
 
@@ -83,6 +84,47 @@ func TestDeviceSettingsValidation(t *testing.T) {
 		}
 	}
 	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), DefaultDeviceSettings())
+}
+
+// The party dock (ADR-0051) is the device's, as the other player settings are:
+// off until it is asked for, saved with the rest, and off in a record saved
+// before the field existed.
+func TestDeviceSettingsPartyDock(t *testing.T) {
+	s, path := openTemp(t)
+	if DefaultDeviceSettings().PartyDock {
+		t.Fatal("the dock is on by default")
+	}
+
+	// A record from before the field: the same settings, without it.
+	check(t, s.SaveDeviceSettings(DefaultDeviceSettings()))
+	check(t, s.db.Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket(bucketSettings)
+		var record map[string]any
+		if err := json.Unmarshal(bucket.Get(keyDevice), &record); err != nil {
+			return err
+		}
+		delete(record, "partyDock")
+		data, err := json.Marshal(record)
+		if err != nil {
+			return err
+		}
+		return bucket.Put(keyDevice, data)
+	}))
+	if must[DeviceSettings](t)(s.DeviceSettings()).PartyDock {
+		t.Fatal("the dock is on in a record from before it")
+	}
+
+	// Docked, saved, and still docked when the database is opened again.
+	docked := must[DeviceSettings](t)(s.DeviceSettings())
+	docked.PartyDock = true
+	check(t, s.SaveDeviceSettings(docked))
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()).PartyDock, true)
+	check(t, s.Close())
+
+	reopened, err := Open(path)
+	check(t, err)
+	defer reopened.Close()
+	equal(t, must[DeviceSettings](t)(reopened.DeviceSettings()).PartyDock, true)
 }
 
 func TestProfileSettingsValidation(t *testing.T) {

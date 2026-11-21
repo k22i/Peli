@@ -1,7 +1,8 @@
-import { PartyPopper, Users } from "lucide-react";
+import { PartyPopper, Pin, Users } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
 import { PartyChat } from "@/components/party/party-chat";
+import { usePartyDock } from "@/components/party/party-dock";
 import { JoinParty, PartyPanel } from "@/components/party/party-panel";
 import { BottomSheet, BottomSheetTitle } from "@/components/ui/bottom-sheet";
 import { Button } from "@/components/ui/button";
@@ -51,6 +52,7 @@ export function PartySheet({
   canShare: boolean;
 }) {
   const compact = useCompactShell();
+  const { available: dockable, docked, setDocked } = usePartyDock();
   const party = state?.party ?? undefined;
   const description = party
     ? party.isHost
@@ -87,8 +89,29 @@ export function PartySheet({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetPopup side="right" className="dark max-w-md text-foreground">
         <SheetHeader className="px-6 pb-2">
-          <SheetTitle>Watch party</SheetTitle>
-          <SheetDescription>{description}</SheetDescription>
+          {/* pe-8 keeps the toggle clear of the popup's own close button,
+              which is absolute at the top end. */}
+          <div className="flex items-start gap-2 pe-8">
+            <div className="flex min-w-0 flex-1 flex-col gap-1">
+              <SheetTitle>Watch party</SheetTitle>
+              <SheetDescription>{description}</SheetDescription>
+            </div>
+            {/* The dock (party-dock.tsx): the party stays open beside the
+                video instead of over it. The player swaps this sheet for it.
+                The compact shell has no room for one, so no toggle. */}
+            {dockable && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                aria-label="Keep open beside the video"
+                aria-pressed={docked}
+                title="Keep open beside the video"
+                onClick={() => setDocked(true)}
+              >
+                <Pin />
+              </Button>
+            )}
+          </div>
         </SheetHeader>
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 pb-6">
           {party ? (
