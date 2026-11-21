@@ -125,6 +125,32 @@ vi.mock("@bindings/party", () => ({
   },
 }));
 
+// Downloads for offline viewing (#85, ADR-0064): nothing downloaded, nothing
+// to play offline, a device with room and a connection, unless a test says
+// otherwise. The shell mounts the events hook; the picker, the title page and
+// the Library view ask the rest. Each call resolves with a `cancel`, as the
+// bindings' CancellablePromise has.
+vi.mock("@bindings/downloads", () => {
+  const cancels = <T>(value: T) => Object.assign(Promise.resolve(value), { cancel: vi.fn() });
+  return {
+    Service: {
+      Add: vi.fn<() => Promise<unknown>>(() => cancels(undefined)),
+      ChooseFolder: vi.fn<() => Promise<string>>(() => cancels("")),
+      Delete: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+      DeleteAll: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+      Get: vi.fn<() => Promise<unknown>>(() => cancels(null)),
+      List: vi.fn<() => Promise<unknown[]>>(() => cancels([])),
+      Network: vi.fn<() => Promise<unknown>>(() => cancels({ online: true, expensive: false })),
+      Pause: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+      Playable: vi.fn<() => Promise<unknown>>(() => cancels(null)),
+      Resume: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+      Usage: vi.fn<() => Promise<unknown>>(() =>
+        cancels({ used: 0, cap: 50e9, free: 100e9, dir: "/tmp/Peli/Downloads" }),
+      ),
+    },
+  };
+});
+
 // jsdom does not implement scrolling; the router's scroll restoration and
 // Base UI's menus call it.
 window.scrollTo = () => {};
