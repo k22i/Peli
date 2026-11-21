@@ -579,6 +579,9 @@ function PlayerFile({
   const { docked } = usePartyDock();
   const dockShown = docked && partyOpen && !mini;
   const dockRef = useRef<HTMLDivElement>(null);
+  const dockStyle: CSSProperties & Record<`--${string}`, string> = {
+    "--party-dock-w": dockShown ? partyDockWidth : "0px",
+  };
   const media = watching ? partyMedia(watching, heading, meta, playing?.stream) : undefined;
   const shared =
     playing?.source && !torrent ? sharedStream(playing.source, playing.stream) : undefined;
@@ -1617,7 +1620,7 @@ function PlayerFile({
   // window, so it also takes it again when the window changes); back to 0
   // when the dock goes: undocked, closed, the mini player, the page.
   useEffect(() => {
-    if (!dockShown) return;
+    if (!dockShown) return undefined;
     let timer: ReturnType<typeof setTimeout> | undefined;
     const apply = () => {
       clearTimeout(timer);
@@ -1657,21 +1660,21 @@ function PlayerFile({
       }
       if (error || switcherOpen || (partyOpen && !dockShown) || dockMenuOpen) return;
       // The docked party leaves the player its keys, but not while typing in
-      // it (Esc leaves the field first), nor a press a focused control of its
-      // own takes.
-      const target = event.target instanceof Element ? event.target : null;
-      if (dockShown && target && dockRef.current?.contains(target)) {
+      // its chat (Esc leaves the field first), nor a press a focused control
+      // of its own takes.
+      const focused = event.target instanceof Element ? event.target : null;
+      if (dockShown && focused && dockRef.current?.contains(focused)) {
         const typing =
-          target instanceof HTMLInputElement ||
-          target instanceof HTMLTextAreaElement ||
-          (target instanceof HTMLElement && target.isContentEditable);
+          focused instanceof HTMLInputElement ||
+          focused instanceof HTMLTextAreaElement ||
+          (focused instanceof HTMLElement && focused.isContentEditable);
         if (typing) {
-          if (event.type === "keydown" && event.key === "Escape") target.blur();
+          if (event.type === "keydown" && event.key === "Escape") focused.blur();
           return;
         }
         if (
           (event.key === " " || event.key === "Enter") &&
-          target.closest("button, a, [role=switch], [role=checkbox], [role=menuitem]")
+          focused.closest("button, a, [role=switch], [role=checkbox], [role=menuitem]")
         )
           return;
       }
@@ -2469,7 +2472,7 @@ function PlayerFile({
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
-      style={{ "--party-dock-w": dockShown ? partyDockWidth : "0px" } as CSSProperties}
+      style={dockStyle}
       onPointerMove={(event) => {
         // A swipe on the picture changes a level or seeks: the controls
         // stay as they were (#131).

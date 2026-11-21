@@ -1746,6 +1746,9 @@ describe("skip intro and credits", () => {
   });
 });
 
+// The player's own box: the controls' parent.
+const root = () => screen.getByTestId("controls").parentElement!;
+
 describe("watch party", () => {
   const watching: Watching = {
     profileId: 1,
@@ -1881,8 +1884,6 @@ describe("watch party", () => {
     beforeEach(() => {
       mocks.dock.docked = true;
     });
-    // The player's own box: the controls' parent.
-    const root = () => screen.getByTestId("controls").parentElement!;
 
     it("shows the dock instead of the sheet, and the picture makes room", async () => {
       await openPlayer(undefined, source, undefined, { watching });
