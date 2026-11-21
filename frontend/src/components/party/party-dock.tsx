@@ -42,8 +42,10 @@ export function usePartyDock(): {
 // while the video plays. No backdrop and no dimming, and it doesn't trap
 // focus or close on an outside click: the player stays usable (the point of
 // the dock). Undocking leaves the party open, so the player shows the sheet
-// again; closing hides the panel and the setting stays.
-export function PartyDock({ onClose }: { onClose: () => void }) {
+// again; closing hides the panel and the setting stays. canShare comes from
+// the player like the sheet's, so the host's "Share my stream" is only offered
+// when the playing source can be shared.
+export function PartyDock({ onClose, canShare }: { onClose: () => void; canShare?: boolean }) {
   const { setDocked } = usePartyDock();
   const party = useParty()?.party ?? undefined;
   return (
@@ -73,7 +75,7 @@ export function PartyDock({ onClose }: { onClose: () => void }) {
           {/* The people and the party's controls, up to a little under half
               the dock: the chat keeps the rest of the height. */}
           <div className="max-h-[45%] min-h-0 shrink-0 overflow-y-auto overscroll-contain pt-1">
-            <PartyPanel party={party} />
+            <PartyPanel party={party} canShare={canShare} />
           </div>
           <div className="flex min-h-0 flex-1 flex-col border-t border-white/10 pt-3">
             <PartyChat />
