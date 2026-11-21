@@ -75,7 +75,7 @@ export function PartyDock({ onClose, canShare }: { onClose: () => void; canShare
           {/* The people and the party's controls, up to a little under half
               the dock: the chat keeps the rest of the height. */}
           <div className="max-h-[45%] min-h-0 shrink-0 overflow-y-auto overscroll-contain pt-1">
-            <PartyPanel party={party} canShare={canShare} />
+            <PartyPanel party={party} {...(canShare !== undefined && { canShare })} />
           </div>
           <div className="flex min-h-0 flex-1 flex-col border-t border-white/10 pt-3">
             <PartyChat />
