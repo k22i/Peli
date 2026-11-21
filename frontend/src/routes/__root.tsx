@@ -18,6 +18,7 @@ import {
   useSessionEndedRedirect,
   useUnlockedProfiles,
 } from "@/lib/account";
+import { useDownloadEvents } from "@/lib/downloads";
 import { usePartyEvents, usePartyToasts } from "@/lib/party";
 import { isIOS } from "@/lib/platform";
 import { accountQuery, beforeProfile, currentProfileQuery, useCurrentProfile } from "@/lib/profile";
@@ -58,6 +59,9 @@ function RootLayout() {
   useSessionEndedRedirect();
   useProfilesChangedEvents();
   useSyncEvents();
+  // Downloads (#85, ADR-0064): the one place the download events are
+  // followed, so every screen's list stays live.
+  useDownloadEvents();
   useConnectionEvents();
   useTrackingEvents();
   usePartyEvents(useQueryClient());

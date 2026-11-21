@@ -4,6 +4,8 @@ A desktop app for Windows, macOS and Linux that plays streams from Stremio-compa
 
 The same app also builds for iPhone and iPad, with a core set of features (sign-in, browsing, debrid playback, progress sync): see [`ios/README.md`](ios/README.md).
 
+Films and episodes can be downloaded from a debrid or HTTP stream and watched with no network, on macOS, iPhone and iPad ([ADR-0064](docs/adr/0064-downloads-for-offline-viewing.md)).
+
 Peli is early in development and not usable yet. The plan and decisions so far are in [`docs/m0-gate-review.md`](docs/m0-gate-review.md) and [`docs/adr/`](docs/adr/).
 
 ## Disclaimer

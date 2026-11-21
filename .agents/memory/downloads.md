@@ -1,0 +1,29 @@
+---
+name: downloads
+description: "Downloads for offline viewing (#85, ADR-0064): internal/downloads files and the Platform seam, the store bucket and migration 5, the three events, lib/downloads.ts, the rules (one job, one re-resolve, no torrents, kids filter, beginBackgroundTask only, Wi-Fi gate), test gotchas, and what is untested on a device"
+metadata:
+  type: project
+---
+
+Downloads (#85, ADR-0064) are Go's, not the webview's: the frontend picks a stream, `internal/downloads` resolves the addon link, fetches it into a per-device folder and plays the local file before anything is resolved.
+
+**Layout.** `internal/downloads`: `service.go` (types, `Config`, `NewService`, the bound methods, `MarshalError`, `ErrUnsupported`), `queue.go` (the loop, recovery, the startup sweep, the gate, cap and free-space checks, background/active/expiring), `http.go` (resolve, Range GET, part file, expiry, size check, subtitles, segments), `platform_desktop.go` (`!ios`) plus `freespace_unix.go`/`freespace_windows.go`, and `platform_ios.go`/`.m`/`.h`. The seam is `Platform` (`FreeSpace`, `Prepare`, `Network`, `WatchNetwork`, `Background`, `WatchLifecycle`, `ChooseFolder`), injected with `Config.Platform` (nil = `newPlatform()`), so the gates and most iOS logic are testable from shared code; `main.go` builds it after `p.skipTimes` and registers it right after `x.torrent` so it checkpoints before streams and the store. The store keeps them in one device-level bucket, `downloads`, keyed by id (migration 5; nothing queues for Nuvio), with `DeviceSettings.DownloadsDir`/`DownloadsCapGB`/`DownloadsWiFiOnly` validated in `SaveDeviceSettings`. The frontend is `lib/downloads.ts` (mounted once: `useDownloadEvents` in `routes/__root.tsx`), reached by the screens only through it.
+
+**Rules.** One job at a time; the records are the queue, so it survives a relaunch. Resolve once per run and re-resolve only on an expiry code (a second expiry fails with `expired`). No torrents: only a stream with a `url` can be downloaded, and `downloadable(stream)` is the one check. Kids profiles are filtered in Go (their `VisibleAddons`, by `metaAddon`), download what their own addons served, and never get Delete all or the folder picker. iOS runs under `beginBackgroundTask` only (no background `URLSession`, no new background mode): a job that outlives it is checkpointed to `waiting`/`suspended` and resumes on return. The Wi-Fi gate waits on cellular or a hotspot while `downloadsWiFiOnly` is on (iOS only; the field is read there). `unreachable`/`timeout` and 429/5xx back off (15 s doubling to 5 min) instead of failing; a 60 s stall counts as one of those.
+
+**Events** (Go → `useDownloadEvents`): `downloads:changed` (a whole record, upserted into that profile's list), `downloads:progress` (`{id, bytes, total, rate}`, the rate kept in a side map), `downloads:removed` (`{ids}`). Mount the hook once — the shell does it beside `useSyncEvents`; a second copy subscribes twice and patches every list twice.
+
+**Why:** the ADR fixes the interfaces so nine parts could be built in parallel, and a download only ever helps if it plays with the network gone, so the file (not a resolved CDN link) is what the player is given.
+
+**How to apply:**
+- Import every downloads query, hook, status helper and action from `@/lib/downloads`; don't re-implement one. `statusOf` is Go's state, `statusText`/`reasonText` are the words.
+- Entry points never resolve a stream themselves: `addRequestFor` builds the `AddRequest` from a play target and a ranked candidate, `subtitleRefs` takes the addon subtitles in the profile's language (≤ 10).
+- Tests: `test/setup.ts` mocks `@bindings/downloads` (empty list, `Playable` null, room on disk, online). To override, copy part 5's shape — `vi.mocked(Downloads.List).mockImplementation((() => Object.assign(Promise.resolve(list), { cancel: () => {} })) as unknown as typeof Downloads.List)`: `mockResolvedValue` won't typecheck because a `CancellablePromise` carries `cancel`. Give `Playable` an implementation too; `mockReset` leaves it returning `undefined`.
+- `useDownloadEvents` only patches lists already in the cache, so a test must render a screen that asked for `List` first, and emit inside `act()` (an events mock that keeps listeners in a `Map<string, Set<fn>>` is the pattern).
+- `Connection.Offline`'s value is the string `"offline"` (the syncer mock answers strings); that is how a route test puts the app offline.
+- Route tests mock `@bindings/secrets` (`Get → null`) for TitlePrefetch, and `@bindings/syncer` (`Connection` from a mutable value).
+- Nothing here was run in a part: parts write code and tests, the merge runs `pnpm check`, the tests and `go test`. `internal/store/testdata/schema-5.db` has to be made once with `go test ./internal/store -run TestFixtures -update`.
+- Resolving adds the torrent to the user's debrid list, so never resolve a real stream while testing ([[debrid-keys]], [[stream-resolve]]).
+- Device work is untested: `ios/README.md`'s Downloads checklist (airplane mode, a short lock, a long background, Wi-Fi off, low storage, no backup) has no results yet, and neither has macOS (the folder dialog, a folder change applying to new jobs, the cap) or a real end-to-end download — the HTTP path is unit-tested against a fake CDN only. `Player.AddSubtitle`'s `file://` branch has no pure-Go test on iOS (all of `internal/iosplayer` is `ios`-tagged).
+
+Related: [[home-page]] (the Downloaded row), [[title-menus]] (the Download items), [[sync-module]] (the connection pill's Offline state), [[progress-resume]], [[skip-markers]], [[platform-priority]].
