@@ -3044,7 +3044,7 @@ function PlayerFile({
           // Just outside the narrowed player, filling the height.
           className="absolute top-0 bottom-0 left-full w-(--party-dock-w)"
         >
-          <PartyDock onClose={() => setPartyOpen(false)} />
+          <PartyDock onClose={() => setPartyOpen(false)} canShare={shared !== undefined} />
         </div>
       )}
       <PartySheet
