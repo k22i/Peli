@@ -95,8 +95,10 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
     void client.invalidateQueries({ queryKey: downloadUsageKey });
   };
 
+  // `onSuccess` only when there is one: exactOptionalPropertyTypes, and a
+  // mutation must not be handed `undefined` in its place.
   const save = (change: Partial<DeviceSettings>, after?: () => void) =>
-    saveDevice.mutate({ ...device, ...change }, { onSuccess: after });
+    saveDevice.mutate({ ...device, ...change }, after ? { onSuccess: after } : {});
 
   // Go opens the folder dialog and saves the answer; "" is cancelled, and
   // nothing changes then.

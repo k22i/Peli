@@ -35,6 +35,15 @@ vi.mock("@bindings/store", async () => {
         store.device = settings;
         return Promise.resolve();
       },
+      // What the iOS shell calls once a profile is in use: the audio-language
+      // seed runs in an effect, so a missing method here is a thrown render,
+      // not a failed query, and the whole app shows the error screen instead
+      // of the pane. The other three are ProfileGate's icon-menu sync, which
+      // asks them through queries.
+      SeedAudioLanguages: () => Promise.resolve(false),
+      ContinueWatching: () => Promise.resolve([]),
+      Library: () => Promise.resolve([]),
+      VisibleAddons: () => Promise.resolve([]),
     },
   };
 });
