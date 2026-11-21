@@ -215,6 +215,27 @@ Parties are Nuvio's own ([ADR-0051](../docs/adr/0051-watch-party.md)), and the p
 
 The chat sits in a sheet that keeps above the keyboard, and its list scrolls without the sheet's drag taking over.
 
+## Downloads (#85)
+
+A film or an episode can be downloaded and watched with no network ([ADR-0064](../docs/adr/0064-downloads-for-offline-viewing.md)). Go downloads the linked stream (debrid or HTTP; never a torrent) into the app's own folder, and a finished download always plays before anything is resolved. Progress and watched marks queue offline and sync later, as for streaming.
+
+- **Where files live:** `Application Support/Downloads/<id>/` inside the app's container. The folder is excluded from iCloud and iTunes backup, so a restored phone starts with none. Records keep paths relative to that folder, because the container's path changes between installs.
+- **Background rule:** `beginBackgroundTask` only, no background `URLSession`, no extra background mode. After you leave the app a job keeps going for about 30 s (iOS decides). A few seconds before that runs out, Go saves the part file and the job shows "Waiting". It resumes where it stopped when you come back to the app.
+- **Wi-Fi only:** on by default (Settings › Downloads). On cellular or a Personal Hotspot, jobs wait; with no connection they wait for it too.
+- **Low storage:** free space is the "important usage" capacity (what iOS would free for the app), checked before each job. Without room the job fails with a clear reason and keeps its part file.
+- **Code:** `internal/downloads/platform_ios.go`, `platform_ios.m`, `platform_ios.h`. UIKit's notifications are used for background and active, as `internal/iosplayer` does, because Wails' events don't arrive under the scene delegate. Callbacks reach Go in order: background, expiring (at most once per background task), active.
+
+### Device checklist
+
+No on-device results yet. Check on an iPhone or iPad:
+
+1. **Airplane mode:** download a film, turn on airplane mode, force-quit and reopen: it plays from the Downloads view, and progress is kept.
+2. **Short lock:** start a large download, lock for under 30 s, unlock: the job kept going (bytes grew while locked).
+3. **Long background:** leave the app for several minutes: the job shows "Waiting", then resumes by itself on return and finishes with the right size.
+4. **Wi-Fi off:** switch Wi-Fi off with cellular on: the job waits ("Wi-Fi only"); switch Wi-Fi on: it resumes. With Wi-Fi only off in Settings it runs on cellular.
+5. **Low storage:** with the phone nearly full (or a cap above the free space), adding a download is refused or the job fails with a no-space reason and the part file stays.
+6. **Backup:** the Downloads folder is not in a device backup (`NSURLIsExcludedFromBackupKey` is set on it).
+
 ## Connecting SIMKL and AniList on a phone (#133)
 
 SIMKL and AniList tokens are per device and per profile, in each device's Keychain. Two ways to get them onto an iPhone or iPad:

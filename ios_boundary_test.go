@@ -155,6 +155,20 @@ func TestIOSQuickActionsFiles(t *testing.T) {
 	}
 }
 
+// internal/downloads has one cgo file on iOS (#85): the platform's
+// background time, path monitor, free space and backup exclusion. The shared
+// Go files are not pinned here.
+func TestIOSDownloadsCgoFiles(t *testing.T) {
+	out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/internal/downloads", "ios"))
+	parts := strings.Split(out, "|")
+	if len(parts) != 5 {
+		t.Fatalf("internal/downloads: unexpected go list output %q", out)
+	}
+	if parts[1] != "[platform_ios.go]" || parts[2] != "[]" || parts[3] != "[platform_ios.m]" || parts[4] != "[platform_ios.h]" {
+		t.Errorf("internal/downloads cgo files changed: %s; update the boundary test on purpose", out)
+	}
+}
+
 // listPackage lists one package's source files for env.
 func listPackage(t *testing.T, env []string, pkg string, tags ...string) string {
 	t.Helper()
