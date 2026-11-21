@@ -1,3 +1,5 @@
+//go:build !ios
+
 package player
 
 // insetRatio is mpv's video-margin-ratio-right for a right inset of
