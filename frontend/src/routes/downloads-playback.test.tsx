@@ -382,7 +382,6 @@ const openSwitcher = async () => {
 const card = () => screen.findByRole("region", { name: "Next episode" });
 
 describe("Play with a download", () => {
-
   it("goes straight to the player with the local file, resolving nothing", async () => {
     downloaded({ tt0111161: playableOf() });
     const { router } = await playFromHome();
@@ -467,7 +466,6 @@ describe("the player with a download", () => {
 });
 
 describe("the stream switcher with a download", () => {
-
   it("lists the local copy first, marked Playing when it is", async () => {
     downloaded({ tt0111161: playableOf() });
     await openPlayer(localSource, film);
