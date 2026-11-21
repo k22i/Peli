@@ -1666,7 +1666,7 @@ function PlayerFile({
           target instanceof HTMLTextAreaElement ||
           (target instanceof HTMLElement && target.isContentEditable);
         if (typing) {
-          if (event.type === "keydown" && event.key === "Escape") (target as HTMLElement).blur();
+          if (event.type === "keydown" && event.key === "Escape") target.blur();
           return;
         }
         if (

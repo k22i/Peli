@@ -91,9 +91,11 @@ describe("ReactionBar", () => {
     const bar = await screen.findByRole("group", { name: "Reactions" });
     expect(within(bar).getAllByRole("button")).toHaveLength(REACTIONS.length);
     // In REACTIONS' order, the way Go's list reads.
-    expect(within(bar).getAllByRole("button").map((button) => button.textContent)).toEqual([
-      ...REACTIONS,
-    ]);
+    expect(
+      within(bar)
+        .getAllByRole("button")
+        .map((button) => button.textContent),
+    ).toEqual([...REACTIONS]);
     for (const emoji of REACTIONS) {
       const button = screen.getByRole("button", { name: `React with ${reactionName[emoji]}` });
       expect(button).toHaveAttribute("title", `React with ${reactionName[emoji]}`);

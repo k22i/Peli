@@ -3,13 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { EmojiConfetti, burst } from "@/components/party/emoji-confetti";
 import { Button } from "@/components/ui/button";
 import { haptic } from "@/lib/haptics";
-import {
-  reactionName,
-  REACTIONS,
-  useParty,
-  usePartyReactions,
-  useSendReaction,
-} from "@/lib/party";
+import { reactionName, REACTIONS, useParty, usePartyReactions, useSendReaction } from "@/lib/party";
 import { cn } from "@/lib/utils";
 
 // How long someone else's reaction is named: long enough to read, short
@@ -25,11 +19,7 @@ export function ReactionBar({ className }: { className?: string }) {
   const send = useSendReaction();
   const ready = Boolean(party?.connected);
   return (
-    <div
-      role="group"
-      aria-label="Reactions"
-      className={cn("flex items-center gap-0.5", className)}
-    >
+    <div role="group" aria-label="Reactions" className={cn("flex items-center gap-0.5", className)}>
       {REACTIONS.map((emoji) => (
         <Button
           key={emoji}
