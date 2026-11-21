@@ -2,13 +2,16 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 import type { ProfileSettings } from "@bindings/store";
+import { Connection } from "@bindings/syncer";
 import { streamsQuery, type Meta } from "@/lib/addon-protocol";
 import { chosenSourceQuery, remembered } from "@/lib/chosen-source";
+import { playableQuery, type Playable } from "@/lib/downloads";
 import { useEpisodeMap } from "@/lib/episode-map";
 import { useLoadedAddons } from "@/lib/home";
 import { titleContext, type Candidate } from "@/lib/ranking";
 import { attempts, resolvePick, type Resolved } from "@/lib/resolve";
 import { deviceSettingsQuery } from "@/lib/settings";
+import { useConnection } from "@/lib/sync";
 import { rankingPrefs, useRankedStreams, useStreamAddons, useStreams } from "@/lib/streams";
 import { episodes, mainEpisodes, type Episode } from "@/lib/title";
 import { tmdbRef, useTmdbAliases } from "@/lib/tmdb";
@@ -43,9 +46,11 @@ export function countdownFrom(duration: number, credits?: number): number | unde
 
 // Asking, ranked and ready to play, or no stream to play. A ready one
 // without `resolved` is a torrent, resolved when it plays. `names` are the
-// stream addons' names, by URL.
+// stream addons' names, by URL. A downloaded episode (ADR-0064) is ready at
+// once, with nothing asked, ranked or resolved.
 export type PreparedNext =
   | { status: "finding" }
+  | { status: "downloaded"; playable: Playable }
   | {
       status: "ready";
       candidate: Candidate;
@@ -71,7 +76,12 @@ export function usePreparedNext(
 ): PreparedNext {
   const client = useQueryClient();
   const { addons, loading } = useStreamAddons(profileId);
-  const sources = useStreams(addons, meta.type, next.id);
+  // A downloaded copy plays before anything is asked (ADR-0064), and offline
+  // there is nobody to ask: no addon is.
+  const local = useQuery(playableQuery(profileId, next.id));
+  const offline = useConnection() === Connection.Offline;
+  const asking = !local.isPending && !local.data && !offline;
+  const sources = useStreams(asking ? addons : [], meta.type, next.id);
   const chosen = useQuery(chosenSourceQuery(profileId, meta.id));
   const device = useQuery(deviceSettingsQuery).data;
   const browsing = useLoadedAddons(profileId);
@@ -128,6 +138,9 @@ export function usePreparedNext(
     return () => controller.abort();
   }, [top, linked, torrents, client, meta.type, next.id]);
 
+  if (local.data) return { status: "downloaded", playable: local.data };
+  if (local.isPending) return { status: "finding" };
+  if (!asking) return { status: "none" };
   if (top === null || outcome?.failed) return { status: "none" };
   if (!top || (linked && !outcome)) return { status: "finding" };
   return {

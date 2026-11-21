@@ -6,6 +6,8 @@ import (
 	"context"
 	"fmt"
 	"math"
+	"net/url"
+	"path/filepath"
 	"sync"
 	"sync/atomic"
 
@@ -268,6 +270,15 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	e := s.engine_()
 	if e == nil {
 		return 0, ErrNotYet
+	}
+	// A subtitle saved with a download (ADR-0064): only inside a download's
+	// subs folder, handed to the engine as its real path.
+	if isFileURL(sub.URL) {
+		file, err := downloadSubtitlePath(sub.URL)
+		if err != nil {
+			return 0, ErrInvalid
+		}
+		sub.URL = (&url.URL{Scheme: "file", Path: filepath.ToSlash(file)}).String()
 	}
 	return e.AddSubtitle(ctx, sub)
 }

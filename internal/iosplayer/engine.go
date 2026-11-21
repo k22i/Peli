@@ -25,6 +25,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"sync"
@@ -252,15 +253,20 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 		w := *opts.Watching
 		watching = &w
 	}
-	userAgent := source.UserAgent
-	if userAgent == "" {
-		userAgent = e.userAgent
+	props0 := [][2]string{{"pause", "no"}}
+	// A download's file (Origin "download:<id>", ADR-0064) is a path on the
+	// disk: no request headers or user agent to set.
+	if !strings.HasPrefix(source.Origin, "download:") {
+		userAgent := source.UserAgent
+		if userAgent == "" {
+			userAgent = e.userAgent
+		}
+		// Set as a list: a header's value may hold a comma.
+		if err := ses.m.setStringList("http-header-fields", source.HeaderFields()); err != nil {
+			return notPlaying(err)
+		}
+		props0 = append(props0, [2]string{"user-agent", userAgent})
 	}
-	// Set as a list: a header's value may hold a comma.
-	if err := ses.m.setStringList("http-header-fields", source.HeaderFields()); err != nil {
-		return notPlaying(err)
-	}
-	props0 := [][2]string{{"user-agent", userAgent}, {"pause", "no"}}
 	// Changing hwdec makes mpv re-initialise the decoder: only when it
 	// differs. The filter goes first, so no deep frame reaches the screen.
 	if hw != ses.hw {
@@ -617,8 +623,15 @@ func osCaptions() bool { return C.peli_system_captions() != 0 }
 func (e *Engine) SystemCaptions() bool { return osCaptions() }
 
 // AddSubtitle downloads sub and adds it as an external track, and shows it.
+//
+// A file:// URL is a subtitle saved with a download (ADR-0064): the player
+// Service has checked that it's inside a download's subs folder (see
+// player/localsubtitle.go), and mpv reads it from disk, with no copy.
 func (e *Engine) AddSubtitle(ctx context.Context, sub playback.Subtitle) (int, error) {
 	u, err := url.Parse(sub.URL)
+	if err == nil && u.Scheme == "file" {
+		return e.addLocalSubtitle(u.Path, sub)
+	}
 	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Host == "" ||
 		!playback.LanguageValid(sub.Lang) {
 		return 0, playback.ErrInvalid
@@ -665,6 +678,43 @@ func (e *Engine) AddSubtitle(ctx context.Context, sub playback.Subtitle) (int, e
 		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
 	}
 	id, err := addedTrack(ses.m, f.Name())
+	if err != nil {
+		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
+	}
+	if sub.Secondary {
+		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
+			return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
+		}
+	}
+	return id, nil
+}
+
+// addLocalSubtitle adds the subtitle file at file, already checked by the
+// caller, as an external track.
+func (e *Engine) addLocalSubtitle(file string, sub playback.Subtitle) (int, error) {
+	if !playback.LanguageValid(sub.Lang) || !filepath.IsAbs(file) {
+		return 0, playback.ErrInvalid
+	}
+	if e.current() == nil {
+		return 0, playback.ErrNotPlaying
+	}
+	e.ops.Lock()
+	defer e.ops.Unlock()
+	ses := e.current()
+	if ses == nil {
+		return 0, playback.ErrNotPlaying
+	}
+	flags := "select"
+	if sub.Secondary {
+		flags = "auto"
+	}
+	if err := ses.m.command("sub-add", file, flags, sub.Title, sub.Lang); err != nil {
+		if errors.Is(err, errDestroyed) {
+			return 0, playback.ErrNotPlaying
+		}
+		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
+	}
+	id, err := addedTrack(ses.m, file)
 	if err != nil {
 		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
 	}

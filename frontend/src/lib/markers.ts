@@ -128,15 +128,22 @@ export const skipTimesQuery = (title: Title) =>
   });
 
 // IntroDB's segments for what's playing, while Settings allow asking it;
-// none while it answers, or if it can't.
-export function useOnlineSegments(watching: Watching | undefined): Segment[] {
+// none while it answers, or if it can't. A downloaded file passes the
+// segments saved with it (ADR-0064, possibly none): they stand in for
+// IntroDB's, which isn't asked, so skip buttons work offline.
+export function useOnlineSegments(
+  watching: Watching | undefined,
+  saved?: readonly Segment[],
+): Segment[] {
   const title = skipTitle(watching);
   const online = useQuery(deviceSettingsQuery).data?.skipTimesOnline === true;
+  const asking = saved === undefined && title !== undefined && online;
   const segments = useQuery({
     ...skipTimesQuery(title ?? { imdbId: "", season: 0, episode: 0 }),
-    enabled: title !== undefined && online,
+    enabled: asking,
   }).data;
-  return title && online && segments ? segments : none;
+  if (saved !== undefined) return saved.length > 0 ? [...saved] : none;
+  return title && asking && segments ? segments : none;
 }
 
 const none: Segment[] = [];

@@ -167,6 +167,7 @@ function preparedText(prepared: PreparedNext) {
     );
   }
   if (prepared.status === "none") return "No stream found yet";
+  if (prepared.status === "downloaded") return "Downloaded";
   const { candidate, names } = prepared;
   const quality = resolutionLabel(candidate.parsed);
   const addon = names.get(candidate.source) ?? "an addon";

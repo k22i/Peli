@@ -89,6 +89,9 @@ export function usePlayerEnded(onEnded: (ended: Ended) => void) {
 // (ADR-0037), and plays the new one with options. Debrid links expire,
 // sometimes mid-film. Returns the new source.
 export async function reloadExpired(source: Source, options: LoadOptions): Promise<Source> {
+  // A downloaded file (ADR-0064) is a path, not a link: there is nothing to
+  // ask for again, and nothing may go out to the network for it.
+  if (source.origin.startsWith("download:")) throw new Error("a download has no link to renew");
   const fresh = await Streams.Resolve({ url: source.origin, headers: source.headers });
   await Player.Load(fresh, options);
   return fresh;
