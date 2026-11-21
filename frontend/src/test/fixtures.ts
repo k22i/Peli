@@ -91,6 +91,10 @@ export const deviceSettings = (changes: Partial<DeviceSettings> = {}): DeviceSet
   autoUpdate: true,
   // The party beside the video (ADR-0051), off until it is asked for.
   partyDock: false,
+  // Downloads (#85, ADR-0064): the default folder, a 50 GB cap, Wi-Fi only.
+  downloadsDir: "",
+  downloadsCapGB: 50,
+  downloadsWiFiOnly: true,
   ...changes,
 });
 

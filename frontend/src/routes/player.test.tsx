@@ -332,6 +332,9 @@ beforeEach(() => {
     preResolve: false,
     streamSort: "best",
     partyDock: false,
+    downloadsDir: "",
+    downloadsCapGB: 50,
+    downloadsWiFiOnly: true,
     quality: defaultQuality,
     audio: defaultAudio,
   });
@@ -1714,6 +1717,9 @@ describe("skip intro and credits", () => {
       preResolve: false,
       streamSort: "best",
       partyDock: false,
+      downloadsDir: "",
+      downloadsCapGB: 50,
+      downloadsWiFiOnly: true,
       quality: defaultQuality,
       audio: defaultAudio,
     });

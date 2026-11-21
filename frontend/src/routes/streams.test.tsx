@@ -261,6 +261,9 @@ const device: DeviceSettings = {
   preResolve: false,
   streamSort: "best",
   partyDock: false,
+  downloadsDir: "",
+  downloadsCapGB: 50,
+  downloadsWiFiOnly: true,
   quality: defaultQuality,
   audio: defaultAudio,
 };
