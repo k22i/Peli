@@ -26,11 +26,7 @@ import {
   ResponsiveMenuSub,
 } from "@/components/ui/responsive-menu";
 import type { Meta, Video } from "@/lib/addon-protocol";
-import {
-  downloadState,
-  pressDownload,
-  type TitleDownloads,
-} from "@/lib/download-pick";
+import { downloadState, pressDownload, type TitleDownloads } from "@/lib/download-pick";
 import { statusOf, statusText } from "@/lib/downloads";
 import { openURL } from "@/lib/open-url";
 import { ratingValues, titleRef, useTrackingControls } from "@/lib/tracking";

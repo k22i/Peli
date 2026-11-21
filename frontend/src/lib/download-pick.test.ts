@@ -208,9 +208,9 @@ describe("what a Download control says", () => {
       label: "Queued",
       action: "none",
     });
-    expect(
-      downloadControl(record({ state: "downloading", bytes: 42, total: 100 }), false),
-    ).toEqual({ label: "Downloading 42 %", action: "none" });
+    expect(downloadControl(record({ state: "downloading", bytes: 42, total: 100 }), false)).toEqual(
+      { label: "Downloading 42 %", action: "none" },
+    );
     expect(downloadControl(record({ state: "paused" }), false)).toEqual({
       label: "Paused",
       action: "resume",
@@ -295,11 +295,7 @@ describe("pressing a control", () => {
     const actions = actionsOf();
     const finished = { ...downloadsOf([done]), actions };
     const ask = vi.fn<(download: Download) => void>();
-    pressDownload(
-      downloadState(finished, series, "cinemeta", episodes[1]),
-      finished,
-      ask,
-    );
+    pressDownload(downloadState(finished, series, "cinemeta", episodes[1]), finished, ask);
     expect(ask).toHaveBeenCalledWith(done);
     expect(actions.remove).not.toHaveBeenCalled();
 

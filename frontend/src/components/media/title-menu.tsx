@@ -99,11 +99,7 @@ export function TitleMenu({
         finalFocus={() => focusTarget(trigger.current)}
         items={
           items ?? (
-            <TitleMenuItems
-              title={title}
-              queue={queue}
-              confirm={(run) => setAsked({ run })}
-            />
+            <TitleMenuItems title={title} queue={queue} confirm={(run) => setAsked({ run })} />
           )
         }
       >
@@ -247,12 +243,7 @@ function ProfileItems({
     choice?.target.videoId,
     series,
   );
-  const download = downloadState(
-    downloads,
-    meta,
-    details.data?.addonUrl ?? "",
-    downloadVideo,
-  );
+  const download = downloadState(downloads, meta, details.data?.addonUrl ?? "", downloadVideo);
 
   const toggleWatched = () =>
     edits.setWatched.mutate({

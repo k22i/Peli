@@ -68,7 +68,7 @@ export type DownloadTarget = {
 
 // The id a film or episode's streams are asked for: the video's, or the
 // film's own (as the picker asks, lib/playback's streamId).
-export const downloadVideoId = (meta: Meta, video?: Video | undefined) =>
+export const downloadVideoId = (meta: Meta, video?: Video) =>
   video?.id ?? meta.behaviorHints?.defaultVideoId ?? meta.id;
 
 // The target for one of a title's videos, from the addon its details came
@@ -110,10 +110,7 @@ export type DownloadControl = {
 // What a Download control shows and does for a video: a record wins over a
 // ranking in flight, and a paused, failed or finished download is what
 // pressing it acts on.
-export function downloadControl(
-  download: Download | undefined,
-  finding: boolean,
-): DownloadControl {
+export function downloadControl(download: Download | undefined, finding: boolean): DownloadControl {
   if (download) {
     const status = statusOf(download);
     return {
@@ -226,7 +223,7 @@ export function downloadState(
   downloads: TitleDownloads,
   meta: Meta,
   metaAddon: string,
-  video?: Video | undefined,
+  video?: Video,
 ): DownloadState {
   const videoId = downloadVideoId(meta, video);
   const download = downloadFor(downloads.list, videoId);
@@ -270,13 +267,10 @@ export function downloadSeason(
   episodes: readonly Episode[],
 ): number {
   const todo = episodes.filter(
-    (episode) =>
-      !downloadFor(downloads.list, episode.id) && !downloads.queue.finding(episode.id),
+    (episode) => !downloadFor(downloads.list, episode.id) && !downloads.queue.finding(episode.id),
   );
   if (todo.length === 0) return 0;
-  downloads.queue.downloadMany(
-    todo.map((episode) => downloadTarget(meta, metaAddon, episode)),
-  );
+  downloads.queue.downloadMany(todo.map((episode) => downloadTarget(meta, metaAddon, episode)));
   toastManager.add({
     type: "success",
     title: `Downloading ${todo.length} ${todo.length === 1 ? "episode" : "episodes"}`,
@@ -472,8 +466,7 @@ function DownloadAdder({
   // Once the profile's language is known and its subtitles have answered (or
   // there are none to have): Go fetches the file.
   const loaded =
-    !settings.isPending &&
-    (subtitleLanguage(language).code === "" || !subtitles.loading);
+    !settings.isPending && (subtitleLanguage(language).code === "" || !subtitles.loading);
   const request = useMemo<AddRequest>(
     () =>
       addRequestFor({
@@ -524,8 +517,7 @@ export function useStreamDownloads(
       videoId !== undefined &&
       list.some(
         (download) =>
-          download.videoId === videoId &&
-          download.request.url === (candidate.stream.url ?? ""),
+          download.videoId === videoId && download.request.url === (candidate.stream.url ?? ""),
       ),
     [list, videoId],
   );
@@ -546,4 +538,3 @@ export function useStreamDownloads(
     [has, picked, runner, save],
   );
 }
-

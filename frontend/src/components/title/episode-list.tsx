@@ -372,9 +372,7 @@ function EpisodeRow({
             children: <EllipsisVertical />,
           }}
         >
-          {downloads && (
-            <DownloadMenuItems episode={episode} downloads={downloads} />
-          )}
+          {downloads && <DownloadMenuItems episode={episode} downloads={downloads} />}
           <ResponsiveMenuItem onClick={() => onMark(!watched)}>
             {watched ? "Mark unwatched" : "Mark watched"}
           </ResponsiveMenuItem>

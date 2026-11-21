@@ -380,9 +380,7 @@ function DownloadAction({
       <RoundAction
         label={state.control.label}
         disabled={false}
-        onClick={() =>
-          pressDownload(state, downloads, (download) => setRemoving(download))
-        }
+        onClick={() => pressDownload(state, downloads, (download) => setRemoving(download))}
       >
         <DownloadGlyph state={state} />
       </RoundAction>

@@ -18,11 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  downloadSeason,
-  downloadTarget,
-  type TitleDownloads,
-} from "@/lib/download-pick";
+import { downloadSeason, downloadTarget, type TitleDownloads } from "@/lib/download-pick";
 import { downloadFor } from "@/lib/downloads";
 import { haptic } from "@/lib/haptics";
 import type { Meta } from "@/lib/addon-protocol";
@@ -105,17 +101,14 @@ export function Episodes({
   const toDownload = download
     ? aired.filter((episode) => !downloadFor(download.downloads.list, episode.id))
     : [];
-  const episodeDownloads: EpisodeDownloads | undefined =
-    download && {
-      of: (episode: Episode) => downloadFor(download.downloads.list, episode.id),
-      finding: (episode: Episode) => download.downloads.queue.finding(episode.id),
-      download: (episode: Episode) =>
-        download.downloads.queue.download(
-          downloadTarget(meta, download.metaAddon, episode),
-        ),
-      remove: (entry: Download) => void download.downloads.actions.remove([entry.id]),
-      resume: (entry: Download) => void download.downloads.actions.resume(entry.id),
-    };
+  const episodeDownloads: EpisodeDownloads | undefined = download && {
+    of: (episode: Episode) => downloadFor(download.downloads.list, episode.id),
+    finding: (episode: Episode) => download.downloads.queue.finding(episode.id),
+    download: (episode: Episode) =>
+      download.downloads.queue.download(downloadTarget(meta, download.metaAddon, episode)),
+    remove: (entry: Download) => void download.downloads.actions.remove([entry.id]),
+    resume: (entry: Download) => void download.downloads.actions.resume(entry.id),
+  };
 
   return (
     <section aria-labelledby="episodes" className="relative flex flex-col">
@@ -323,7 +316,13 @@ function SeasonSelect({
 }
 
 // A season's download actions in the phone's "•••" sheet (#85).
-function SeasonDownloadItems({ aired, download, meta, seasonDownloads, toDownload }: SeasonActions) {
+function SeasonDownloadItems({
+  aired,
+  download,
+  meta,
+  seasonDownloads,
+  toDownload,
+}: SeasonActions) {
   return (
     <>
       <ResponsiveMenuItem

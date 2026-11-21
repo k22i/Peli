@@ -29,16 +29,9 @@ import { ScrollRail } from "@/components/media/scroll-rail";
 import { prefersReducedMotion } from "@/components/media/roving";
 import { StreamBadge } from "@/components/streams/stream-badge";
 import { Kbd } from "@/components/ui/kbd";
-import {
-  ResponsiveContextMenu,
-  ResponsiveMenuItem,
-} from "@/components/ui/responsive-menu";
+import { ResponsiveContextMenu, ResponsiveMenuItem } from "@/components/ui/responsive-menu";
 import type { ContentType } from "@/lib/addon-protocol";
-import {
-  downloadTarget,
-  useStreamDownloads,
-  type StreamDownloads,
-} from "@/lib/download-pick";
+import { downloadTarget, useStreamDownloads, type StreamDownloads } from "@/lib/download-pick";
 import { downloadable, useDownloads } from "@/lib/downloads";
 import { useLoadedAddons } from "@/lib/home";
 import { currentProfileQuery } from "@/lib/profile";
@@ -983,7 +976,7 @@ const RowDownload = createContext<StreamDownloads | null>(null);
 // row has none.
 function RowDownloadHost({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const search = useSearch({ strict: false }) as { video?: unknown };
+  const search = useSearch({ strict: false });
   const picker = pickerOf(pathname, search);
   // Asked only where there is a title to download: the player's switcher and
   // the gallery ask nothing.
@@ -1050,10 +1043,7 @@ function RowMenu({ candidate, children }: { candidate: Candidate; children: Reac
             Downloaded
           </ResponsiveMenuItem>
         ) : (
-          <ResponsiveMenuItem
-            disabled={downloads.saving}
-            onClick={() => downloads.save(candidate)}
-          >
+          <ResponsiveMenuItem disabled={downloads.saving} onClick={() => downloads.save(candidate)}>
             <Download aria-hidden />
             Download this stream
           </ResponsiveMenuItem>
