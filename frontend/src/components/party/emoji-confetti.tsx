@@ -5,8 +5,10 @@ import { alpha, cap, spawn, spawnGentle, step, stepGentle, type Particle } from 
 // Between the player's own chrome and the app's popups: the player tops out at
 // z-20 (stats-overlay z-10; picture-sheet, subtitle-panel, still-watching and
 // the touch chrome's sheet z-20), while components/ui's menus, sheets, dialogs
-// and the command palette are z-50 and toasts z-60. Mount it inside the video
-// area, not the player root, or the emoji fly over the docked party panel.
+// and the command palette are z-50 and toasts z-60. PartyReactionLayer renders
+// this straight into the player's fixed inset-0 root, so it spans the whole
+// player, a docked party panel and the dock included: it is inert, and the
+// emoji are gone in 2.5 s, which is the trade for never covering a menu.
 const layerZ = "z-30";
 
 // How many emoji one reaction throws.
