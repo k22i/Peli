@@ -238,12 +238,16 @@ function playableOf(fields: Partial<Playable> = {}): Playable {
   };
 }
 
+// A Wails call's promise, with the cancel it has.
+function cancellable<T>(value: T) {
+  return Object.assign(Promise.resolve(value), { cancel: vi.fn<() => void>() });
+}
+
 // Answers Downloads.Playable per video id: null for any other.
 function downloaded(byVideo: Record<string, Playable>) {
-  vi.mocked(Downloads.Playable).mockImplementation(((_: number, video: string) =>
-    Object.assign(Promise.resolve(byVideo[video] ?? null), {
-      cancel: () => {},
-    })) as unknown as typeof Downloads.Playable);
+  vi.mocked(Downloads.Playable).mockImplementation((_profileId: number, video: string) =>
+    cancellable<Playable | null>(byVideo[video] ?? null),
+  );
 }
 
 const emit = (name: string, data: unknown) =>
@@ -362,14 +366,22 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
+const playFromHome = async () => {
+  const app = await renderApp("/");
+  const region = await screen.findByRole("region", { name: "Your library" });
+  fireEvent.contextMenu(await within(region).findByRole("button", { name: /Shawshank/ }));
+  await userEvent.setup().click(await screen.findByRole("menuitem", { name: "Play" }));
+  return app;
+};
+
+const openSwitcher = async () => {
+  await userEvent.setup().click(await screen.findByRole("button", { name: "Streams" }));
+  return screen.findByRole("dialog", { name: "Streams" });
+};
+
+const card = () => screen.findByRole("region", { name: "Next episode" });
+
 describe("Play with a download", () => {
-  const playFromHome = async () => {
-    const app = await renderApp("/");
-    const region = await screen.findByRole("region", { name: "Your library" });
-    fireEvent.contextMenu(await within(region).findByRole("button", { name: /Shawshank/ }));
-    await userEvent.setup().click(await screen.findByRole("menuitem", { name: "Play" }));
-    return app;
-  };
 
   it("goes straight to the player with the local file, resolving nothing", async () => {
     downloaded({ tt0111161: playableOf() });
@@ -455,10 +467,6 @@ describe("the player with a download", () => {
 });
 
 describe("the stream switcher with a download", () => {
-  const openSwitcher = async () => {
-    await userEvent.setup().click(await screen.findByRole("button", { name: "Streams" }));
-    return screen.findByRole("dialog", { name: "Streams" });
-  };
 
   it("lists the local copy first, marked Playing when it is", async () => {
     downloaded({ tt0111161: playableOf() });
@@ -502,7 +510,6 @@ describe("the stream switcher with a download", () => {
 describe("the next episode with a download", () => {
   const before: State = { ...playing, position: 3000, duration: 3480 };
   const watched: State = { ...playing, position: 3200, duration: 3480 };
-  const card = () => screen.findByRole("region", { name: "Next episode" });
   const nextSource: Source = {
     ...localSource,
     url: `${dir}/next.mkv`,

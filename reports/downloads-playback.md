@@ -27,3 +27,9 @@ The path (cleaned, symlinks resolved) must be a regular file in `<anything>/<32-
 - With the heading, a download played from `usePlay` has no title details, so it uses the download's name and "S1 · E2 · Episode name".
 - iOS `AddSubtitle` has no pure-Go test (all of iosplayer is `ios`-tagged); the shared check is covered by `localsubtitle_test.go`.
 - The `Connection.Offline` string in the test mock is `"offline"`, an assumption about the generated enum.
+
+## Fix round 1
+
+- `usePlay` no longer calls anything at mount (no `useQuery`, no `useConnection`): on Play it reads the profile (`ensureQueryData(currentProfileQuery)`), then `Playable`, then, only for a title with no download, the connection (`ensureQueryData(connectionQuery)`). This should fix sign-in.test.tsx. It also returns consistently.
+- Test file: `playFromHome`, `openSwitcher` and `card` moved to module scope; `Downloads.Playable` is mocked through a typed `cancellable()` helper, with no cast.
+- Not touched: the lint errors in `downloads-pane.tsx` and `library/downloads.tsx`, which belong to other parts.
