@@ -38,6 +38,7 @@ import {
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
+import { PartyReactionLayer } from "@/components/party/reaction-bar";
 import { MoreMenu } from "@/components/player/more-menu";
 import { NextEpisode } from "@/components/player/next-episode";
 import { PictureSheet, type PictureSheetTab } from "@/components/player/picture-sheet";
@@ -2988,6 +2989,7 @@ function PlayerFile({
         media={media}
         canShare={shared !== undefined}
       />
+      {party && !mini && <PartyReactionLayer />}
       {!mini && !failure && (
         <PartyPill
           state={partyState}
