@@ -1880,6 +1880,69 @@ describe("watch party", () => {
     expect(Party.Create).toHaveBeenCalledExactlyOnceWith(media);
   });
 
+  // The reactions (ADR-0051's addendum) are the player's chrome now: a row of
+  // emoji above the seek bar, so reacting is a click on the picture rather
+  // than a trip to the sheet's chat.
+  it("shows the reactions above the seek bar in a party, and only then", async () => {
+    await openPlayer(undefined, source, undefined, { watching });
+    emit("player:state", playing);
+    await screen.findByRole("button", { name: "Pause" });
+    expect(screen.queryByRole("group", { name: "Reactions" })).not.toBeInTheDocument();
+
+    emit("party:state", inParty());
+    const controls = screen.getByTestId("controls");
+    const bar = await within(controls).findByRole("group", { name: "Reactions" });
+    expect(within(bar).getByRole("button", { name: "React with fire" })).toBeInTheDocument();
+    // The dock's: the timeline is under it.
+    expect(within(controls).getByTestId("seek-bar")).toBeInTheDocument();
+
+    // The mini player has no room for them.
+    emit("player:state", { ...playing, mini: true });
+    await waitFor(() =>
+      expect(screen.queryByRole("group", { name: "Reactions" })).not.toBeInTheDocument(),
+    );
+  });
+
+  it("sends the emoji clicked in the chrome, without pausing", async () => {
+    await openPlayer(undefined, source, undefined, { watching });
+    emit("player:state", playing);
+    emit("party:state", inParty());
+    const fire = await screen.findByRole("button", { name: "React with fire" });
+    await waitFor(() => expect(fire).toBeEnabled());
+    const user = userEvent.setup();
+    mocks.setPaused.mockClear();
+    mocks.setFullscreen.mockClear();
+
+    await user.click(fire);
+
+    expect(Party.SendReaction).toHaveBeenCalledWith("🔥");
+    // The click was the emoji's: the picture under it took nothing, and the
+    // emoji didn't keep the focus Space needs to pause.
+    expect(mocks.setPaused).not.toHaveBeenCalled();
+    expect(mocks.setFullscreen).not.toHaveBeenCalled();
+    expect(fire).not.toHaveFocus();
+  });
+
+  // The same row in the touch chrome (#130, ADR-0063): above its seek row.
+  it("puts the reactions above the touch player's seek row", async () => {
+    const restore = onCompactIOS();
+    onTestFinished(restore);
+    await openPlayer(undefined, source, undefined, { watching });
+    emit("player:state", playing);
+    emit("party:state", inParty());
+
+    const bar = await screen.findByRole("group", { name: "Reactions" });
+    // The chrome's bottom bar holds both, the emoji over the timeline.
+    expect(within(bar.parentElement!).getByTestId("seek-row")).toBeInTheDocument();
+
+    const user = userEvent.setup();
+    mocks.setPaused.mockClear();
+    await user.click(within(bar).getByRole("button", { name: "React with fire" }));
+
+    expect(Party.SendReaction).toHaveBeenCalledWith("🔥");
+    expect(mocks.setPaused).not.toHaveBeenCalled();
+  });
+
   describe("docked", () => {
     beforeEach(() => {
       mocks.dock.docked = true;
