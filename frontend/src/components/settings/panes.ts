@@ -1,5 +1,6 @@
 import {
   Blocks,
+  Download,
   Info,
   Languages,
   ListChecks,
@@ -24,6 +25,9 @@ const allPanes = [
   { id: "playback", title: "Playback", icon: Play, tone: "bg-[#ff6b35]" },
   { id: "languages", title: "Languages & subtitles", icon: Languages, tone: "bg-[#2e9e5b]" },
   { id: "streaming", title: "Streaming", icon: Radio, tone: "bg-[#0a8fa8]" },
+  // Downloads for offline viewing (#85, ADR-0064), right after how streams are
+  // picked: what Peli keeps on this device and for how long.
+  { id: "downloads", title: "Downloads", icon: Download, tone: "bg-[#5856d6]" },
   { id: "plugins", title: "Plugins", icon: Puzzle, tone: "bg-[#6e6e73]" },
   { id: "tracking", title: "Tracking", icon: ListChecks, tone: "bg-[#d4337a]" },
   { id: "privacy", title: "Privacy", icon: Shield, tone: "bg-[#3a8a3a]" },
@@ -42,7 +46,7 @@ export function visiblePanes(): readonly (typeof allPanes)[number][] {
 // plays and how, what it connects to, then privacy and what it is.
 const paneGroups: readonly (readonly PaneId[])[] = [
   ["account"],
-  ["content", "playback", "languages", "streaming", "plugins"],
+  ["content", "playback", "languages", "streaming", "downloads", "plugins"],
   ["tracking"],
   ["privacy", "about"],
 ];

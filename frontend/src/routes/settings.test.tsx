@@ -232,6 +232,7 @@ const paneTitles = [
   "Playback",
   "Languages & subtitles",
   "Streaming",
+  "Downloads",
   "Plugins",
   "Tracking",
   "Privacy",
