@@ -17,6 +17,7 @@ const outOnIOS: Feature[] = [
   "people",
   "multiSelect",
   "gallery",
+  "downloadFolder",
 ];
 
 describe("feature", () => {
@@ -61,6 +62,20 @@ describe("feature", () => {
       expect(feature("nativeTabBar")).toBe(false);
     } finally {
       nativeTabBar.available = false;
+    }
+  });
+
+  // The other way round (#85, ADR-0064): only the phone waits for Wi-Fi, as
+  // its Downloads settings row is the one place that setting is offered.
+  it("has Wi-Fi-only downloads on an iPhone and an iPad, not a desktop", () => {
+    expect(feature("downloadsWiFiOnly")).toBe(false);
+    onIOS();
+    expect(feature("downloadsWiFiOnly")).toBe(true);
+    const restore = onCompactIOS();
+    try {
+      expect(feature("downloadsWiFiOnly")).toBe(true);
+    } finally {
+      restore();
     }
   });
 });
