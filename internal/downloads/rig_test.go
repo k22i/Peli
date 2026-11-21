@@ -36,9 +36,9 @@ type fileServer struct {
 	ctype       string
 	ignoreRange func(hit int) bool
 	claimTotal  int64
-	status      func(hit int) int       // non-zero: answer with only this status
-	cutAfter    func(hit int) int       // >0: abort the connection after this many body bytes
-	holdAfter   func(hit int) int       // >0: stop after this many body bytes and wait
+	status      func(hit int) int // non-zero: answer with only this status
+	cutAfter    func(hit int) int // >0: abort the connection after this many body bytes
+	holdAfter   func(hit int) int // >0: stop after this many body bytes and wait
 	release     chan struct{}
 	once        sync.Once
 
@@ -272,10 +272,10 @@ type rig struct {
 	profile store.Profile
 	root    string
 
-	target     atomic.Value // the URL Resolve answers with
-	resolves   atomic.Int32
-	resolveFn  func(n int, req streams.Request) (streams.Source, error)
-	skipStart  bool
+	target    atomic.Value // the URL Resolve answers with
+	resolves  atomic.Int32
+	resolveFn func(n int, req streams.Request) (streams.Source, error)
+	skipStart bool
 }
 
 func noStart(r *rig) { r.skipStart = true }

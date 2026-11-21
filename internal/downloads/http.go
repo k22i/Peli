@@ -52,10 +52,10 @@ type runner struct {
 	reresolv bool // the link has been resolved again once
 	restart  bool // restarted from zero once
 
-	have      int64 // bytes of the part file
-	lastEmit  time.Time
-	lastSave  time.Time
-	samples   []sample
+	have     int64 // bytes of the part file
+	lastEmit time.Time
+	lastSave time.Time
+	samples  []sample
 }
 
 type sample struct {

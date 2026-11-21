@@ -458,11 +458,11 @@ func TestAddIsIdempotentUnlessFailed(t *testing.T) {
 func TestAddRefusesWhatIsNotADownload(t *testing.T) {
 	r := newRig(t)
 	for name, mutate := range map[string]func(*AddRequest){
-		"no video":    func(q *AddRequest) { q.VideoID = "" },
-		"no link":     func(q *AddRequest) { q.Request.URL = "" },
-		"not http":    func(q *AddRequest) { q.Request.URL = "magnet:?xt=urn:btih:abc" },
-		"no profile":  func(q *AddRequest) { q.ProfileID = 0 },
-		"no content":  func(q *AddRequest) { q.ContentID = "" },
+		"no video":   func(q *AddRequest) { q.VideoID = "" },
+		"no link":    func(q *AddRequest) { q.Request.URL = "" },
+		"not http":   func(q *AddRequest) { q.Request.URL = "magnet:?xt=urn:btih:abc" },
+		"no profile": func(q *AddRequest) { q.ProfileID = 0 },
+		"no content": func(q *AddRequest) { q.ContentID = "" },
 	} {
 		q := r.request("v")
 		mutate(&q)
