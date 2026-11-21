@@ -117,12 +117,13 @@ export const libraryPreview = (item: LibraryItem): TitlePreview => ({
 
 // The Library page's choices (#46), kept in the address so Back from a title
 // returns to them. No type means all of them; no view means the titles, not
-// the Upcoming calendar (#48).
+// the Upcoming calendar (#48), the Watchlist or the downloads (#85).
 export type LibrarySort = "added" | "watched" | "name";
+export type LibraryView = "upcoming" | "watchlist" | "downloads";
 export type LibrarySearch = {
   type?: string;
   sort?: LibrarySort;
-  view?: "upcoming" | "watchlist" | undefined;
+  view?: LibraryView | undefined;
 };
 
 export const librarySorts: readonly { value: LibrarySort; label: string }[] = [
@@ -141,13 +142,12 @@ export function sortCaption(sort: LibrarySort): string | undefined {
 
 export function librarySearch(search: Record<string, unknown>): LibrarySearch {
   const { type } = search;
+  const view = search["view"];
   const sort = librarySorts.find((option) => option.value === search["sort"])?.value;
   return {
     ...(typeof type === "string" && type ? { type } : {}),
     ...(sort ? { sort } : {}),
-    ...(search["view"] === "upcoming" || search["view"] === "watchlist"
-      ? { view: search["view"] }
-      : {}),
+    ...(view === "upcoming" || view === "watchlist" || view === "downloads" ? { view } : {}),
   };
 }
 
