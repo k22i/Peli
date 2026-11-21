@@ -104,3 +104,4 @@
 - [Hero contrast](hero-contrast.md) — text-column shade, lib/art-tone canvas sampling (CORS per host), white eyebrow + sun dot, dark-logo silhouette, textless TMDB backdrop
 - [Title, player and Home extras](title-player-home-extras.md) — Ends at (lib/ends-at), hideSpoilers + lib/spoilers reveal, ← → page the marquee, component shot rig
 - [Test suite green](test-suite-green.md) — 2026-11-20 baseline fixed (0 failures); never import app modules at the top of test/setup.ts, a11y name space rule, secrets mock, submenu keyboard picks, onCompactIOS
+- [Local Node version](local-node-version.md) — Node 24.9.0 makes Intl.Locale("und").language undefined and fails subtitles.test.ts on main; repo wants ^24.11.0
