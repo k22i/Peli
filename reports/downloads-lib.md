@@ -81,8 +81,9 @@ so a changed record lands where it belongs) and:
 
 ## Open questions
 
-- **Part 9 (and 7) must mount `useDownloadEvents()` exactly once** — in the shell, next to
-  `useSyncEvents`. Until then, nothing in the app follows the events; the lists refetch on mount.
+- **Part 9 (and 7) must mount `useDownloadEvents()` exactly once** — in `routes/__root.tsx`, next to
+  `useSyncEvents()` and `usePartyEvents()` (the two already there). Until then, nothing in the app
+  follows the events; the lists refetch on mount.
 - `downloadNetworkQuery` is not polled: `Network()` is read when a screen mounts. If part 7 needs
   "Waiting for Wi-Fi" to clear the moment the path changes, Go would have to emit it (no such event
   in the ADR) or the view polls `refetchInterval`.

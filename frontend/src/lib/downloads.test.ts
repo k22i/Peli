@@ -3,9 +3,11 @@ import { act, renderHook } from "@testing-library/react";
 import { createElement, type ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import { Service as Downloads, type AddRequest } from "@bindings/downloads";
 import type { Download } from "@bindings/store";
 import type * as Runtime from "@wailsio/runtime";
 
+import { toastManager } from "@/components/ui/toast";
 import type { Meta, Stream, Video } from "@/lib/addon-protocol";
 import {
   addRequestFor,
@@ -24,6 +26,7 @@ import {
   statusOf,
   statusText,
   subtitleRefs,
+  useDownloadActions,
   useDownloadEvents,
   useDownloadRate,
 } from "@/lib/downloads";
@@ -498,5 +501,88 @@ describe("useDownloadEvents", () => {
     expect(mocks.listeners.get(changedEvent)?.size ?? 0).toBe(0);
     expect(mocks.listeners.get(progressEvent)?.size ?? 0).toBe(0);
     expect(mocks.listeners.get(removedEvent)?.size ?? 0).toBe(0);
+  });
+});
+
+describe("useDownloadActions", () => {
+  // A refusal as downloads.MarshalError sends it: the code in the call's cause.
+  function refusal(code: string): Error {
+    const error = new Error(`downloads: ${code}`);
+    Object.defineProperty(error, "cause", { value: { code } });
+    return error;
+  }
+
+  function addRequest(changes: Partial<AddRequest> = {}): AddRequest {
+    return {
+      profileId: 1,
+      contentId: "tt0903747",
+      contentType: "series",
+      videoId: "tt0903747:1:2",
+      season: 1,
+      episode: 2,
+      name: "Breaking Bad",
+      episodeName: "Cat’s in the Bag…",
+      poster: "",
+      metaAddon: "https://addon.example/manifest.json",
+      streamSource: "https://addon.example/manifest.json",
+      streamName: "TorBox 1080p",
+      streamDescription: "",
+      resolution: "1080p",
+      request: { url: "https://cdn.example/file.mkv", headers: {} },
+      subtitles: null,
+      ...changes,
+    };
+  }
+
+  it("says a refusal in Go's words, and resolves either way", async () => {
+    const client = new QueryClient();
+    const add = vi.spyOn(toastManager, "add");
+    vi.mocked(Downloads.Pause).mockRejectedValue(refusal("busy"));
+    const { result } = renderHook(() => useDownloadActions(4), { wrapper: wrapper(client) });
+
+    await act(async () => {
+      await result.current.pause("a1");
+    });
+
+    expect(Downloads.Pause).toHaveBeenCalledWith(4, "a1");
+    expect(add).toHaveBeenCalledWith({
+      type: "error",
+      title: "Your debrid service is busy. Try again in a little while",
+    });
+  });
+
+  it("names what it added, and deletes the ids the row gives", async () => {
+    const client = new QueryClient();
+    const add = vi.spyOn(toastManager, "add");
+    const { result } = renderHook(() => useDownloadActions(4), { wrapper: wrapper(client) });
+
+    await act(async () => {
+      await result.current.add(addRequest());
+      await result.current.remove(["a1", "a2"]);
+    });
+
+    expect(Downloads.Add).toHaveBeenCalledWith(
+      expect.objectContaining({ profileId: 1, videoId: "tt0903747:1:2" }),
+    );
+    expect(add).toHaveBeenCalledWith({
+      type: "success",
+      title: "Downloading Breaking Bad · S1 E2",
+    });
+    expect(Downloads.Delete).toHaveBeenCalledWith(4, ["a1", "a2"]);
+  });
+
+  it("does nothing without a profile", async () => {
+    const client = new QueryClient();
+    const { result } = renderHook(() => useDownloadActions(undefined), {
+      wrapper: wrapper(client),
+    });
+
+    await act(async () => {
+      await result.current.pause("a1");
+      await result.current.removeAll();
+    });
+
+    expect(Downloads.Pause).not.toHaveBeenCalled();
+    expect(Downloads.DeleteAll).not.toHaveBeenCalled();
   });
 });
