@@ -1,10 +1,14 @@
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { Check, Ellipsis } from "lucide-react";
+import { ArrowDown, Check, Ellipsis, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import type { WatchedItem } from "@bindings/store";
+import type { Download, WatchedItem } from "@bindings/store";
 import { Chip, ChipRail } from "@/components/media/chip";
-import { EpisodeList, type SpoilerGuard } from "@/components/title/episode-list";
+import {
+  EpisodeList,
+  type EpisodeDownloads,
+  type SpoilerGuard,
+} from "@/components/title/episode-list";
 import { Button } from "@/components/ui/button";
 import { ResponsiveMenu, ResponsiveMenuItem } from "@/components/ui/responsive-menu";
 import {
@@ -14,6 +18,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  downloadSeason,
+  downloadTarget,
+  type TitleDownloads,
+} from "@/lib/download-pick";
+import { downloadFor } from "@/lib/downloads";
 import { haptic } from "@/lib/haptics";
 import type { Meta } from "@/lib/addon-protocol";
 import { useCompactShell } from "@/lib/shell-mode";
@@ -31,6 +41,10 @@ import {
 // Up to this many seasons are chips on a rail; more are a menu.
 const chipSeasons = 30;
 
+// What a season and its rows download with (#85): the title's queue and its
+// profile's records, and the addon whose details served the title.
+export type EpisodesDownload = { downloads: TitleDownloads; metaAddon: string };
+
 // The Episodes section (#117): a header that sticks under the title bar as a
 // material-pop strip once the episodes scroll beneath it (the Browse header's
 // pattern, #116), holding the heading, the season picker and "Mark season
@@ -46,6 +60,7 @@ export function Episodes({
   onPlayFromStart,
   onClearProgress,
   spoilers,
+  download,
 }: {
   meta: Meta;
   list: Episode[];
@@ -58,6 +73,8 @@ export function Episodes({
   onClearProgress: (episode: Episode) => void;
   // Spoiler protection: which episodes show blurred, and revealing one.
   spoilers?: SpoilerGuard;
+  // Downloading the season, and each of its episodes (#85).
+  download?: EpisodesDownload | undefined;
 }) {
   const navigate = useNavigate();
   // The phone (#136): a 22 pt heading, and "Mark season watched" in a "•••".
@@ -76,6 +93,29 @@ export function Episodes({
   // Replaced, not pushed: Back leaves the page rather than walking seasons.
   const choose = (picked: number) =>
     void navigate({ to: ".", search: { season: picked }, replace: true, resetScroll: false });
+
+  // The season's downloads (#85): what's already downloaded, what's left to
+  // queue, and each row's own.
+  const seasonDownloads: Download[] = download
+    ? shown.flatMap((episode) => {
+        const entry = downloadFor(download.downloads.list, episode.id);
+        return entry ? [entry] : [];
+      })
+    : [];
+  const toDownload = download
+    ? aired.filter((episode) => !downloadFor(download.downloads.list, episode.id))
+    : [];
+  const episodeDownloads: EpisodeDownloads | undefined =
+    download && {
+      of: (episode: Episode) => downloadFor(download.downloads.list, episode.id),
+      finding: (episode: Episode) => download.downloads.queue.finding(episode.id),
+      download: (episode: Episode) =>
+        download.downloads.queue.download(
+          downloadTarget(meta, download.metaAddon, episode),
+        ),
+      remove: (entry: Download) => void download.downloads.actions.remove([entry.id]),
+      resume: (entry: Download) => void download.downloads.actions.resume(entry.id),
+    };
 
   return (
     <section aria-labelledby="episodes" className="relative flex flex-col">
@@ -146,17 +186,36 @@ export function Episodes({
                 <Check />
                 {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
               </ResponsiveMenuItem>
+              {download && (
+                <SeasonDownloadItems
+                  aired={aired}
+                  download={download}
+                  meta={meta}
+                  toDownload={toDownload}
+                  seasonDownloads={seasonDownloads}
+                />
+              )}
             </ResponsiveMenu>
           ) : (
-            <Button
-              variant="secondary"
-              className="col-start-2 row-start-1 me-page"
-              disabled={busy || aired.length === 0}
-              onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
-            >
-              <Check className={seasonWatched ? "text-sun-ink opacity-100" : undefined} />
-              {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
-            </Button>
+            <div className="col-start-2 row-start-1 me-page flex items-center gap-2">
+              <Button
+                variant="secondary"
+                disabled={busy || aired.length === 0}
+                onClick={() => onMark(episodeMarks(meta, aired), !seasonWatched)}
+              >
+                <Check className={seasonWatched ? "text-sun-ink opacity-100" : undefined} />
+                {seasonWatched ? "Mark season unwatched" : "Mark season watched"}
+              </Button>
+              {download && (
+                <SeasonDownloadButtons
+                  aired={aired}
+                  download={download}
+                  meta={meta}
+                  toDownload={toDownload}
+                  seasonDownloads={seasonDownloads}
+                />
+              )}
+            </div>
           )}
         </div>
       </header>
@@ -167,6 +226,7 @@ export function Episodes({
         state={state}
         busy={busy}
         spoilers={spoilers}
+        downloads={episodeDownloads}
         onPlay={onPlay}
         onMark={(episode, watched) => onMark(episodeMarks(meta, [episode]), watched)}
         onMarkEarlier={(episode, watched) => {
@@ -260,4 +320,69 @@ function SeasonSelect({
       </SelectPopup>
     </Select>
   );
+}
+
+// A season's download actions in the phone's "•••" sheet (#85).
+function SeasonDownloadItems({ aired, download, meta, seasonDownloads, toDownload }: SeasonActions) {
+  return (
+    <>
+      <ResponsiveMenuItem
+        disabled={toDownload.length === 0}
+        onClick={() => downloadSeason(download.downloads, meta, download.metaAddon, aired)}
+      >
+        <ArrowDown />
+        Download season
+      </ResponsiveMenuItem>
+      {seasonDownloads.length > 0 && (
+        <ResponsiveMenuItem onClick={() => removeSeason(download, seasonDownloads)}>
+          <Trash2 />
+          Remove season downloads
+        </ResponsiveMenuItem>
+      )}
+    </>
+  );
+}
+
+// The same beside the season's Mark button, where there's room (#117).
+function SeasonDownloadButtons({
+  aired,
+  download,
+  meta,
+  seasonDownloads,
+  toDownload,
+}: SeasonActions) {
+  return (
+    <>
+      <Button
+        variant="ghost"
+        disabled={toDownload.length === 0}
+        onClick={() => downloadSeason(download.downloads, meta, download.metaAddon, aired)}
+      >
+        <ArrowDown />
+        Download season
+      </Button>
+      {seasonDownloads.length > 0 && (
+        <Button variant="ghost" onClick={() => removeSeason(download, seasonDownloads)}>
+          <Trash2 />
+          Remove season downloads
+        </Button>
+      )}
+    </>
+  );
+}
+
+type SeasonActions = {
+  // The season's aired episodes: only they can be downloaded.
+  aired: readonly Episode[];
+  download: EpisodesDownload;
+  meta: Meta;
+  // The aired episodes with no download yet.
+  toDownload: readonly Episode[];
+  seasonDownloads: readonly Download[];
+};
+
+// One call for the whole season: a season's episode at a time, or all at
+// once, through Go's own queue.
+function removeSeason({ downloads }: EpisodesDownload, entries: readonly Download[]) {
+  void downloads.actions.remove(entries.map((entry) => entry.id));
 }

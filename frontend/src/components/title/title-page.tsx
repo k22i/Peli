@@ -1,6 +1,16 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouterState } from "@tanstack/react-router";
-import { Check, Clapperboard, Eye, EyeOff, Film, Play, Plus, RotateCcw } from "lucide-react";
+import {
+  ArrowDown,
+  Check,
+  Clapperboard,
+  Eye,
+  EyeOff,
+  Film,
+  Play,
+  Plus,
+  RotateCcw,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import type { Profile, WatchedItem } from "@bindings/store";
@@ -15,8 +25,26 @@ import { RoundAction } from "@/components/title/round-action";
 import { TitleMoreMenu } from "@/components/title/title-more";
 import { TrackingActions } from "@/components/title/tracking-actions";
 import { RelatedRows } from "@/components/title/related-rows";
+import {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogPopup,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import type { ContentType, Meta } from "@/lib/addon-protocol";
+import type { ContentType, Meta, Video } from "@/lib/addon-protocol";
+import {
+  downloadState,
+  pressDownload,
+  useTitleDownloads,
+  videoToDownload,
+  type DownloadState,
+  type TitleDownloads,
+} from "@/lib/download-pick";
+import { downloadLabel, percent, statusOf } from "@/lib/downloads";
 import { endsAt, endsAtLabel, remainingSeconds, useClock } from "@/lib/ends-at";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
@@ -187,6 +215,16 @@ function LoadedTitle({
   );
 
   const { setWatched, saveToLibrary, removeFromLibrary, clearProgress } = useTitleEdits(profile.id);
+  // The title's downloads (#85): one queue for the page, shared by the
+  // Download action and the episode rows.
+  const downloads = useTitleDownloads(profile.id);
+  // What the Download action downloads: a film itself, or the episode Play
+  // would play. A series with nothing to play has nothing to download.
+  const { video: downloadVideo, canDownload } = videoToDownload(
+    meta,
+    choice?.target.videoId,
+    series,
+  );
   const mark = (items: WatchedItem[], watched: boolean) =>
     setWatched.mutate({ meta, items, watched });
   const toggleLibrary = () =>
@@ -243,6 +281,16 @@ function LoadedTitle({
             >
               {watched ? <EyeOff /> : <Eye />}
             </RoundAction>
+            {/* The phone keeps it in "•••" (#136): the row has no room for a
+                fifth round action. */}
+            {canDownload && !compact && (
+              <DownloadAction
+                downloads={downloads}
+                meta={meta}
+                metaAddon={addonUrl}
+                video={downloadVideo}
+              />
+            )}
             {compact && (
               <TitleMoreMenu
                 profile={profile}
@@ -251,6 +299,11 @@ function LoadedTitle({
                 watched={watched}
                 markDisabled={setWatched.isPending || (series && mainEpisodes(list).length === 0)}
                 onToggleWatched={toggleWatched}
+                download={
+                  canDownload
+                    ? { downloads, meta, metaAddon: addonUrl, video: downloadVideo }
+                    : undefined
+                }
               />
             )}
             {!compact && <TrackingActions profile={profile} meta={meta} />}
@@ -275,6 +328,7 @@ function LoadedTitle({
           state={state}
           next={choice?.target.videoId}
           busy={setWatched.isPending}
+          download={{ downloads, metaAddon: addonUrl }}
           onMark={mark}
           onPlay={(episode) =>
             play(episodeTarget(meta, episode, state.progress(episode)?.position))
@@ -298,7 +352,105 @@ function LoadedTitle({
       {art && art.cast.length > 0 && <CastList cast={art.cast} />}
       <About meta={meta} withCast={!art || art.cast.length === 0} art={art} />
       {art && !profile.kids && <RelatedRows art={art} />}
+      {/* Ranks the streams of whatever this page queued for download, and
+          leaves once it's added. */}
+      {downloads.queue.runner}
     </>
+  );
+}
+
+// The title page's Download (#85): the film itself, or the episode Play would
+// play. Download → Finding a stream… → Queued, a percent, or Downloaded; a
+// paused or failed one resumes, and a finished one is removed after a yes.
+function DownloadAction({
+  downloads,
+  meta,
+  metaAddon,
+  video,
+}: {
+  downloads: TitleDownloads;
+  meta: Meta;
+  metaAddon: string;
+  video?: Video | undefined;
+}) {
+  const state = downloadState(downloads, meta, metaAddon, video);
+  const [removing, setRemoving] = useState<DownloadState["download"]>(undefined);
+  return (
+    <>
+      <RoundAction
+        label={state.control.label}
+        disabled={false}
+        onClick={() =>
+          pressDownload(state, downloads, (download) => setRemoving(download))
+        }
+      >
+        <DownloadGlyph state={state} />
+      </RoundAction>
+      <RemoveDownloadDialog
+        download={removing}
+        onOpenChange={(open) => {
+          if (!open) setRemoving(undefined);
+        }}
+        onConfirm={() => {
+          if (removing) void downloads.actions.remove([removing.id]);
+          setRemoving(undefined);
+        }}
+      />
+    </>
+  );
+}
+
+// What the round action shows: an arrow down for what's to come, a percent
+// while it runs, a check once downloaded, and the resume arrow for one that
+// stopped.
+function DownloadGlyph({ state }: { state: DownloadState }) {
+  const { download } = state;
+  if (download) {
+    const status = statusOf(download);
+    if (status === "done") return <Check aria-hidden />;
+    if (status === "paused" || status === "failed") return <RotateCcw aria-hidden />;
+    const done = percent(download);
+    if (status === "downloading" && done !== undefined) {
+      return (
+        <span aria-hidden className="text-[0.6875rem] font-[650] tnum">
+          {done}%
+        </span>
+      );
+    }
+  }
+  return <ArrowDown aria-hidden />;
+}
+
+// Asked before a downloaded file is deleted: a partial one goes without
+// asking, since there is nothing finished to lose.
+function RemoveDownloadDialog({
+  download,
+  onOpenChange,
+  onConfirm,
+}: {
+  download: DownloadState["download"];
+  onOpenChange: (open: boolean) => void;
+  onConfirm: () => void;
+}) {
+  return (
+    <AlertDialog open={download !== undefined} onOpenChange={onOpenChange}>
+      <AlertDialogPopup>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Remove the download?</AlertDialogTitle>
+          <AlertDialogDescription>
+            {download
+              ? `${downloadLabel(download)} is deleted from this device. You can download it again from the stream list.`
+              : ""}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogClose render={<Button variant="ghost" />}>Cancel</AlertDialogClose>
+          <Button variant="destructive" onClick={onConfirm}>
+            Remove
+          </Button>
+        </AlertDialogFooter>
+      </AlertDialogPopup>
+    </AlertDialog>
   );
 }
 

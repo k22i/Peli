@@ -1,3 +1,5 @@
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useRouterState, useSearch } from "@tanstack/react-router";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
   Check,
@@ -27,7 +29,21 @@ import { ScrollRail } from "@/components/media/scroll-rail";
 import { prefersReducedMotion } from "@/components/media/roving";
 import { StreamBadge } from "@/components/streams/stream-badge";
 import { Kbd } from "@/components/ui/kbd";
+import {
+  ResponsiveContextMenu,
+  ResponsiveMenuItem,
+} from "@/components/ui/responsive-menu";
+import type { ContentType } from "@/lib/addon-protocol";
+import {
+  downloadTarget,
+  useStreamDownloads,
+  type StreamDownloads,
+} from "@/lib/download-pick";
+import { downloadable, useDownloads } from "@/lib/downloads";
+import { useLoadedAddons } from "@/lib/home";
+import { currentProfileQuery } from "@/lib/profile";
 import { collapsedTiers, type Candidate, type RankedView, type Tier } from "@/lib/ranking";
+import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
 import {
   audioLabel,
   bitrateLabel,
@@ -316,79 +332,83 @@ export function StreamList({
 
   return (
     <Runtime.Provider value={runtime}>
-      <div className="relative">
-        <div
-          ref={bar}
-          className={cn(
-            "sticky z-10 flex flex-col gap-2 py-2 material-bar",
-            panel ? "top-0" : "top-(--spacing-bar)",
-          )}
-        >
-          {toolbar}
-          {jumps.length > 1 && (
-            <JumpStrip
-              jumps={jumps}
-              current={inView}
-              compact={compact}
-              onJump={(jump) => jumpTo(jump.index)}
-            />
-          )}
+      <RowDownloadHost>
+        <div className="relative">
+          <div
+            ref={bar}
+            className={cn(
+              "sticky z-10 flex flex-col gap-2 py-2 material-bar",
+              panel ? "top-0" : "top-(--spacing-bar)",
+            )}
+          >
+            {toolbar}
+            {jumps.length > 1 && (
+              <JumpStrip
+                jumps={jumps}
+                current={inView}
+                compact={compact}
+                onJump={(jump) => jumpTo(jump.index)}
+              />
+            )}
+          </div>
+          {empty}
+          <ol
+            ref={list}
+            aria-label="Streams"
+            className="relative px-page"
+            style={{ height: virtualizer.getTotalSize() }}
+          >
+            {items.map((item) => {
+              const row = rows[item.index]!;
+              const key = rowKey(row);
+              const rowProps = {
+                "data-row-index": item.index,
+                tabIndex: key === stop ? 0 : -1,
+                onFocus: () => {
+                  setActive(key);
+                  onNavigate();
+                },
+                onPointerDown: onNavigate,
+                onKeyDown: (event: KeyboardEvent<HTMLElement>) => onRowKeyDown(item.index, event),
+              };
+              return (
+                <li
+                  key={item.key}
+                  ref={virtualizer.measureElement}
+                  data-index={item.index}
+                  className="absolute inset-x-page top-0"
+                  style={{ transform: `translateY(${item.start - top}px)` }}
+                >
+                  {row.kind === "group" ? (
+                    <GroupHeading
+                      row={row}
+                      compact={compact}
+                      rowProps={rowProps}
+                      onToggle={() => onToggleGroup(row.tier)}
+                    />
+                  ) : (
+                    <RowMenu candidate={row.candidate}>
+                      <StreamRow
+                        compact={compact}
+                        candidate={row.candidate}
+                        best={row.kind === "top"}
+                        usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
+                        note={row.kind === "top" ? (topNote ?? null) : null}
+                        current={playing?.(row.candidate) ?? false}
+                        addon={names.get(row.candidate.source) ?? ""}
+                        named={named.has(key)}
+                        rowProps={rowProps}
+                        onPick={() => onPick(row.candidate)}
+                        onToggleName={() => toggleName(key)}
+                      />
+                    </RowMenu>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
         </div>
-        {empty}
-        <ol
-          ref={list}
-          aria-label="Streams"
-          className="relative px-page"
-          style={{ height: virtualizer.getTotalSize() }}
-        >
-          {items.map((item) => {
-            const row = rows[item.index]!;
-            const key = rowKey(row);
-            const rowProps = {
-              "data-row-index": item.index,
-              tabIndex: key === stop ? 0 : -1,
-              onFocus: () => {
-                setActive(key);
-                onNavigate();
-              },
-              onPointerDown: onNavigate,
-              onKeyDown: (event: KeyboardEvent<HTMLElement>) => onRowKeyDown(item.index, event),
-            };
-            return (
-              <li
-                key={item.key}
-                ref={virtualizer.measureElement}
-                data-index={item.index}
-                className="absolute inset-x-page top-0"
-                style={{ transform: `translateY(${item.start - top}px)` }}
-              >
-                {row.kind === "group" ? (
-                  <GroupHeading
-                    row={row}
-                    compact={compact}
-                    rowProps={rowProps}
-                    onToggle={() => onToggleGroup(row.tier)}
-                  />
-                ) : (
-                  <StreamRow
-                    compact={compact}
-                    candidate={row.candidate}
-                    best={row.kind === "top"}
-                    usual={row.kind === "top" && (usual?.(row.candidate) ?? false)}
-                    note={row.kind === "top" ? (topNote ?? null) : null}
-                    current={playing?.(row.candidate) ?? false}
-                    addon={names.get(row.candidate.source) ?? ""}
-                    named={named.has(key)}
-                    rowProps={rowProps}
-                    onPick={() => onPick(row.candidate)}
-                    onToggleName={() => toggleName(key)}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </div>
+      </RowDownloadHost>
     </Runtime.Provider>
   );
 }
@@ -931,5 +951,116 @@ function RawNames({ id, candidate }: { id: string; candidate: Candidate }) {
         </button>
       )}
     </div>
+  );
+}
+
+// --- Downloading a row (#85) --------------------------------------------------
+
+// Which title and video the picker shows, from its address: /streams/movie/<id>
+// with ?video= the episode (or the film itself). Undefined on any other
+// screen, such as the player's switcher or the gallery, where a row has no
+// title to download from.
+type PickerTarget = { type: ContentType; id: string; video: string };
+
+export function pickerOf(pathname: string, search: { video?: unknown }): PickerTarget | undefined {
+  const match = /^\/streams\/(movie|series)\/([^/]+)\/?$/.exec(pathname);
+  if (!match) return undefined;
+  const id = decodeURIComponent(match[2]!);
+  return {
+    type: match[1] as ContentType,
+    id,
+    video: typeof search.video === "string" && search.video ? search.video : id,
+  };
+}
+
+// What the picker's rows download with: the stream's own link, which is
+// already in hand, so nothing is ranked. Null elsewhere.
+const RowDownload = createContext<StreamDownloads | null>(null);
+
+// Gives the picker's rows their download menu: the route says which title,
+// the details (usually cached by the page) say which addon served it, and the
+// profile's downloads say which rows are already downloaded. Anywhere else a
+// row has none.
+function RowDownloadHost({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const search = useSearch({ strict: false }) as { video?: unknown };
+  const picker = pickerOf(pathname, search);
+  // Asked only where there is a title to download: the player's switcher and
+  // the gallery ask nothing.
+  const profile = useQuery({ ...currentProfileQuery, enabled: picker !== undefined });
+  const profileId = profile.data?.id;
+  return picker && profileId !== undefined ? (
+    <PickerRowDownloads profileId={profileId} target={picker}>
+      {children}
+    </PickerRowDownloads>
+  ) : (
+    <RowDownload value={null}>{children}</RowDownload>
+  );
+}
+
+function PickerRowDownloads({
+  profileId,
+  target,
+  children,
+}: {
+  profileId: number;
+  target: PickerTarget;
+  children: ReactNode;
+}) {
+  const client = useQueryClient();
+  const { addons, loading } = useLoadedAddons(profileId);
+  const details = useQuery({
+    ...titleMetaQuery(addons, target.type, target.id),
+    enabled: !loading,
+    // The picker's own details, already asked for and cached by its page.
+    ...cachedTitleMeta(client, addons, target.type, target.id),
+  });
+  const meta = details.data?.meta;
+  const addonUrl = details.data?.addonUrl ?? "";
+  const video = meta?.videos?.find((each) => each.id === target.video);
+  const list = useDownloads(profileId);
+  const downloads = useStreamDownloads(
+    profileId,
+    meta ? downloadTarget(meta, addonUrl, video) : undefined,
+    list,
+  );
+  return (
+    <RowDownload value={downloads}>
+      {children}
+      {downloads.runner}
+    </RowDownload>
+  );
+}
+
+// A stream's own menu: "Download this stream", or that it's already
+// downloaded. The menu is the row's, opened by a right-click or, on the
+// phone, a long press (#134), so no button crowds the row.
+function RowMenu({ candidate, children }: { candidate: Candidate; children: ReactNode }) {
+  const downloads = useContext(RowDownload);
+  // A torrent, a copy with no link, can't be downloaded at all (ADR-0064).
+  if (!downloads || !downloadable(candidate.stream)) return <>{children}</>;
+  return (
+    <ResponsiveContextMenu
+      label={`${resolutionLabel(candidate.parsed) ?? "Stream"} options`}
+      popupClassName="material-pop w-60"
+      items={
+        downloads.has(candidate) ? (
+          <ResponsiveMenuItem disabled>
+            <Check aria-hidden />
+            Downloaded
+          </ResponsiveMenuItem>
+        ) : (
+          <ResponsiveMenuItem
+            disabled={downloads.saving}
+            onClick={() => downloads.save(candidate)}
+          >
+            <Download aria-hidden />
+            Download this stream
+          </ResponsiveMenuItem>
+        )
+      }
+    >
+      {children}
+    </ResponsiveContextMenu>
   );
 }

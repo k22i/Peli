@@ -1,7 +1,19 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { Check, EllipsisVertical, Eye, EyeOff, Play, RotateCcw, X } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowDownCircle,
+  Check,
+  EllipsisVertical,
+  Eye,
+  EyeOff,
+  Play,
+  RotateCcw,
+  Trash2,
+  X,
+} from "lucide-react";
 import { useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 
+import type { Download } from "@bindings/store";
 import { Artwork } from "@/components/media/artwork";
 import { WatchProgress } from "@/components/media/cards";
 import { scrollParent } from "@/components/media/poster-grid";
@@ -14,6 +26,8 @@ import {
   ResponsiveMenuItem,
   ResponsiveMenuSeparator,
 } from "@/components/ui/responsive-menu";
+import { findingText } from "@/lib/download-pick";
+import { percent, statusOf, statusText } from "@/lib/downloads";
 import { useCompactShell } from "@/lib/shell-mode";
 import { episodeCode, isAired, type Episode, type TitleState } from "@/lib/title";
 import { cn } from "@/lib/utils";
@@ -46,6 +60,17 @@ export type SpoilerGuard = {
   reveal: (episode: Episode) => void;
 };
 
+// An episode's download (#85), for its row's glyph and its menus.
+export type EpisodeDownloads = {
+  // The episode's record, when it has one.
+  of: (episode: Episode) => Download | undefined;
+  // Whether its streams are being ranked now.
+  finding: (episode: Episode) => boolean;
+  download: (episode: Episode) => void;
+  remove: (download: Download) => void;
+  resume: (download: Download) => void;
+};
+
 // One season's episodes, scrolled with the page and virtualized, since an
 // anime can list a thousand in one season. Each row plays its episode and
 // has a menu to mark it, or every episode before it; right-clicking it (or
@@ -62,6 +87,7 @@ export function EpisodeList({
   earlier,
   menu,
   spoilers,
+  downloads,
 }: {
   label: string;
   episodes: readonly Episode[];
@@ -75,6 +101,7 @@ export function EpisodeList({
   earlier: (episode: Episode) => boolean | undefined;
   menu: EpisodeMenu;
   spoilers?: SpoilerGuard | undefined;
+  downloads?: EpisodeDownloads | undefined;
 }) {
   const list = useRef<HTMLOListElement>(null);
   const [scroller, setScroller] = useState<HTMLElement | null>(null);
@@ -165,6 +192,7 @@ export function EpisodeList({
               busy={busy}
               earlier={earlier(episode)}
               menu={menu}
+              downloads={downloads}
               spoiler={spoilers?.hidden(episode) ?? false}
               onReveal={() => spoilers?.reveal(episode)}
               onPlay={() => onPlay(episode)}
@@ -186,6 +214,7 @@ function EpisodeRow({
   busy,
   earlier,
   menu,
+  downloads,
   spoiler,
   onReveal,
   onPlay,
@@ -199,6 +228,8 @@ function EpisodeRow({
   busy: boolean;
   earlier: boolean | undefined;
   menu: EpisodeMenu;
+  // Downloading the episode; none on a page that doesn't offer it.
+  downloads: EpisodeDownloads | undefined;
   // Spoiler protection: the still and description blurred until revealed.
   spoiler: boolean;
   onReveal: () => void;
@@ -211,6 +242,9 @@ function EpisodeRow({
   const aired = isAired(episode);
   const watched = state.watched(episode);
   const entry = state.progress(episode);
+  // Downloaded, downloading: a row says so beside its watched mark (#85).
+  // An unaired episode has no download.
+  const download = aired ? downloads?.of(episode) : undefined;
   const code = episodeCode(episode);
   const title = episode.title || `Episode ${episode.episode}`;
   const released = episode.released ? Date.parse(episode.released) : Number.NaN;
@@ -229,7 +263,9 @@ function EpisodeRow({
         type="button"
         data-episode-index={index}
         disabled={!aired}
-        aria-label={`${code}: ${title}${watched ? ", watched" : entry ? ", in progress" : ""}`}
+        aria-label={`${code}: ${title}${
+          watched ? ", watched" : entry ? ", in progress" : ""
+        }${download ? (statusOf(download) === "done" ? ", downloaded" : ", downloading") : ""}`}
         onClick={onPlay}
         onKeyDown={(event) => {
           if (!openOnContextKey(event)) onKeyDown(event);
@@ -261,6 +297,7 @@ function EpisodeRow({
               <Check className="size-3.5" strokeWidth={3} aria-hidden />
             </span>
           )}
+          {download && <RowDownloadGlyph download={download} />}
           {aired && (
             <span
               aria-hidden
@@ -335,6 +372,9 @@ function EpisodeRow({
             children: <EllipsisVertical />,
           }}
         >
+          {downloads && (
+            <DownloadMenuItems episode={episode} downloads={downloads} />
+          )}
           <ResponsiveMenuItem onClick={() => onMark(!watched)}>
             {watched ? "Mark unwatched" : "Mark watched"}
           </ResponsiveMenuItem>
@@ -368,6 +408,12 @@ function EpisodeRow({
               <Play aria-hidden className="fill-current" />
               Play from start
             </ResponsiveMenuItem>
+          )}
+          {downloads && (
+            <>
+              <ResponsiveMenuSeparator />
+              <DownloadMenuItems episode={episode} downloads={downloads} />
+            </>
           )}
           <ResponsiveMenuSeparator />
           <ResponsiveMenuItem disabled={busy} onClick={() => onMark(!watched)}>
@@ -418,5 +464,69 @@ function EpisodeSheetHeader({ code, title }: { code: string; title: string }) {
         {title}
       </span>
     </div>
+  );
+}
+
+// A row's download mark (#85): a filled arrow-down-circle once downloaded,
+// the percent while it runs, an arrow while it waits.
+function RowDownloadGlyph({ download }: { download: Download }) {
+  const status = statusOf(download);
+  const done = percent(download);
+  const running = status === "downloading" && done !== undefined;
+  return (
+    <span
+      aria-hidden
+      data-testid="episode-download"
+      className="absolute start-2 top-2 grid h-6 min-w-6 place-items-center rounded-full bg-black/60 px-1 text-white backdrop-blur-md"
+    >
+      {running ? (
+        <span className="text-[0.625rem] leading-none font-[650] tnum">{done}%</span>
+      ) : status === "done" ? (
+        <ArrowDownCircle className="size-3.5" strokeWidth={2.5} />
+      ) : (
+        <ArrowDown className="size-3.5" strokeWidth={2.5} />
+      )}
+    </span>
+  );
+}
+
+// An episode's download items (#85): what's to come, where it is, and the way
+// back out.
+function DownloadMenuItems({
+  episode,
+  downloads,
+}: {
+  episode: Episode;
+  downloads: EpisodeDownloads;
+}) {
+  const download = downloads.of(episode);
+  if (!download) {
+    const finding = downloads.finding(episode);
+    return (
+      <ResponsiveMenuItem disabled={finding} onClick={() => downloads.download(episode)}>
+        <ArrowDown aria-hidden />
+        {finding ? findingText : "Download"}
+      </ResponsiveMenuItem>
+    );
+  }
+  const status = statusOf(download);
+  const stopped = status === "paused" || status === "failed";
+  return (
+    <>
+      <ResponsiveMenuItem disabled>
+        <ArrowDownCircle aria-hidden />
+        {statusText(download)}
+      </ResponsiveMenuItem>
+      {stopped && (
+        <ResponsiveMenuItem onClick={() => downloads.resume(download)}>
+          <RotateCcw aria-hidden />
+          Resume download
+        </ResponsiveMenuItem>
+      )}
+      <ResponsiveMenuItem onClick={() => downloads.remove(download)}>
+        <Trash2 aria-hidden />
+        Remove download
+      </ResponsiveMenuItem>
+    </>
   );
 }

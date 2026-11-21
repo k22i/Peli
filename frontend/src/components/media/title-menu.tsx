@@ -1,6 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import {
+  ArrowDown,
+  ArrowDownCircle,
   ArrowUpRight,
   Eye,
   EyeOff,
@@ -26,6 +28,16 @@ import {
 import { toastManager } from "@/components/ui/toast";
 import type { Meta } from "@/lib/addon-protocol";
 import { viaProxy } from "@/lib/artwork-url";
+import {
+  downloadRows,
+  downloadState,
+  pressDownload,
+  useDownloadQueue,
+  useTitleDownloadsWith,
+  videoToDownload,
+  type DownloadQueue,
+  type TitleDownloads,
+} from "@/lib/download-pick";
 import { useLoadedAddons } from "@/lib/home";
 import { libraryQuery } from "@/lib/library";
 import { streamsPath, streamsSearch, usePlay } from "@/lib/playback";
@@ -49,11 +61,13 @@ import { imdbIdOf, imdbUrl, useTitleEdits, type MenuTitle } from "@/lib/title-ac
 
 // The right-click menu of a title wherever its card shows (Home, Browse,
 // Search, folders, the library): Play or Resume, its page, the library,
-// watched, the stream picker, its IMDb link. `children` is the card; the
-// context-menu key and Shift+F10 open it too (see `openOnContextKey`), and
-// closing it hands the focus back to the card. Groups from other features go
-// in TitleMenuExtras. Everything but the card's own preview is read when the
-// menu opens, so a screen of cards costs nothing.
+// watched, the stream picker, its IMDb link, and its download (#85).
+// `children` is the card; the context-menu key and Shift+F10 open it too (see
+// `openOnContextKey`), and closing it hands the focus back to the card.
+// Groups from other features go in TitleMenuExtras. Everything but the card's
+// own preview is read when the menu opens, so a screen of cards costs
+// nothing — and the download it starts outlives the menu, since the queue is
+// the card's.
 export function TitleMenu({
   title,
   items,
@@ -69,6 +83,11 @@ export function TitleMenu({
   // What to do once the user agrees to a question the menu asked. The dialog
   // is here, not in the popup, which unmounts when an item is chosen.
   const [asked, setAsked] = useState<{ run: () => void }>();
+  // The download queue lives on the card, not in the popup (#85): choosing
+  // Download closes the menu, and the ranking goes on. The rest of the
+  // downloads (the records, the actions) are read by the menu while it's open.
+  const profile = useQuery(currentProfileQuery).data;
+  const queue = useDownloadQueue(profile?.id);
   return (
     <>
       <ResponsiveContextMenu
@@ -78,7 +97,15 @@ export function TitleMenu({
         popupClassName="material-pop w-60"
         // Not the trigger, which is a layout-less wrapper: the card in it.
         finalFocus={() => focusTarget(trigger.current)}
-        items={items ?? <TitleMenuItems title={title} confirm={(run) => setAsked({ run })} />}
+        items={
+          items ?? (
+            <TitleMenuItems
+              title={title}
+              queue={queue}
+              confirm={(run) => setAsked({ run })}
+            />
+          )
+        }
       >
         {children}
       </ResponsiveContextMenu>
@@ -88,6 +115,7 @@ export function TitleMenu({
         onConfirm={() => asked?.run()}
         finalFocus={() => focusTarget(trigger.current)}
       />
+      {queue.runner}
     </>
   );
 }
@@ -157,22 +185,28 @@ const started = (entry: Progress) =>
 
 function TitleMenuItems({
   title,
+  queue,
   confirm,
 }: {
   title: MenuTitle;
+  queue: DownloadQueue;
   confirm: (run: () => void) => void;
 }) {
   const profile = useQuery(currentProfileQuery).data;
-  return profile ? <ProfileItems profile={profile} title={title} confirm={confirm} /> : null;
+  return profile ? (
+    <ProfileItems profile={profile} title={title} queue={queue} confirm={confirm} />
+  ) : null;
 }
 
 function ProfileItems({
   profile,
   title,
+  queue,
   confirm,
 }: {
   profile: Profile;
   title: MenuTitle;
+  queue: DownloadQueue;
   confirm: (run: () => void) => void;
 }) {
   const client = useQueryClient();
@@ -205,6 +239,20 @@ function ProfileItems({
   const markable = !series || mainEpisodes(episodesOf(meta)).length > 0;
   const inProgress = progress.filter(started);
   const imdb = imdbIdOf(title, loaded);
+  // Downloading (#85): a film itself, or a series' next-up episode. The
+  // details name the download and say which addon served them.
+  const downloads = useTitleDownloadsWith(profile.id, queue);
+  const { video: downloadVideo, canDownload } = videoToDownload(
+    meta,
+    choice?.target.videoId,
+    series,
+  );
+  const download = downloadState(
+    downloads,
+    meta,
+    details.data?.addonUrl ?? "",
+    downloadVideo,
+  );
 
   const toggleWatched = () =>
     edits.setWatched.mutate({
@@ -265,6 +313,14 @@ function ProfileItems({
           <ListVideo aria-hidden />
           Choose a stream…
         </ResponsiveMenuItem>
+        {canDownload && (
+          <CardDownloadItems
+            download={download}
+            downloads={downloads}
+            label={series ? "Download next episode" : "Download"}
+            ready={details.data !== undefined}
+          />
+        )}
         <ResponsiveMenuItem onClick={() => open(title)}>
           <ArrowUpRight aria-hidden />
           Go to title
@@ -308,6 +364,57 @@ function ProfileItems({
         </>
       )}
       <TitleMenuExtras title={title} meta={loaded} profile={profile} confirm={confirm} />
+    </>
+  );
+}
+
+// A card's menu rows for a download (#85): the film, or the show's next-up
+// episode, where it is, and the way back out. The queue is the card's, so the
+// ranking goes on once the menu closes.
+function CardDownloadItems({
+  download,
+  downloads,
+  label,
+  ready,
+}: {
+  download: DownloadState;
+  downloads: TitleDownloads;
+  // "Download", or "Download next episode" for a series' card.
+  label: string;
+  // The details answer which addon the title came from; Go needs it.
+  ready: boolean;
+}) {
+  const rows = downloadRows(download, label);
+  const record = download.download;
+  return (
+    <>
+      {rows.start && (
+        <ResponsiveMenuItem
+          disabled={!ready || rows.start.disabled}
+          onClick={() => pressDownload(download, downloads)}
+        >
+          <ArrowDown aria-hidden />
+          {rows.start.label}
+        </ResponsiveMenuItem>
+      )}
+      {rows.status && (
+        <ResponsiveMenuItem disabled>
+          <ArrowDownCircle aria-hidden />
+          {rows.status}
+        </ResponsiveMenuItem>
+      )}
+      {rows.resume && (
+        <ResponsiveMenuItem onClick={() => pressDownload(download, downloads)}>
+          <RotateCcw aria-hidden />
+          Resume download
+        </ResponsiveMenuItem>
+      )}
+      {rows.remove && record && (
+        <ResponsiveMenuItem onClick={() => void downloads.actions.remove([record.id])}>
+          <Trash2 aria-hidden />
+          Remove download
+        </ResponsiveMenuItem>
+      )}
     </>
   );
 }
