@@ -128,12 +128,7 @@ function Choices({
           Other streams need a connection.
         </p>
       ) : (
-        <Streams
-          watching={watching}
-          title={title}
-          playing={playing}
-          onPick={onPick}
-        />
+        <Streams watching={watching} title={title} playing={playing} onPick={onPick} />
       )}
     </>
   );

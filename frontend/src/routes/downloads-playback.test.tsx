@@ -182,7 +182,8 @@ vi.mock("@bindings/store", () => ({
 }));
 
 // A file on this device, as Go's Playable describes it.
-const dir = "/Users/test/Library/Application Support/Peli/Downloads/0123456789abcdef0123456789abcdef";
+const dir =
+  "/Users/test/Library/Application Support/Peli/Downloads/0123456789abcdef0123456789abcdef";
 const localSource: Source = {
   url: `${dir}/video.mkv`,
   origin: "download:0123456789abcdef0123456789abcdef",
@@ -328,9 +329,11 @@ beforeEach(() => {
   mocks.release.mockReset().mockResolvedValue(undefined);
   mocks.segments.mockReset().mockResolvedValue([]);
   mocks.addons.mockReset().mockResolvedValue([cinemeta]);
-  mocks.settings.mockReset().mockResolvedValue(
-    profileSettings({ audioLanguages: ["ja"], subtitleLanguage: "en", captions: "on" }),
-  );
+  mocks.settings
+    .mockReset()
+    .mockResolvedValue(
+      profileSettings({ audioLanguages: ["ja"], subtitleLanguage: "en", captions: "on" }),
+    );
   mocks.deviceSettings.mockReset().mockResolvedValue({
     hardwareDecoding: true,
     maxResolution: "auto",
@@ -405,9 +408,7 @@ describe("Play with a download", () => {
 
   it("opens the picker as before when online with nothing downloaded", async () => {
     const { router } = await playFromHome();
-    await waitFor(() =>
-      expect(router.state.location.pathname).toBe("/streams/movie/tt0111161"),
-    );
+    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/movie/tt0111161"));
     expect(screen.queryByText(offlineMessage)).not.toBeInTheDocument();
   });
 });
@@ -480,9 +481,7 @@ describe("the stream switcher with a download", () => {
 
     const row = await within(panel).findByRole("button", { name: /Downloaded/ });
     expect(row).not.toHaveTextContent("Playing");
-    expect(
-      await within(panel).findByText("Other streams need a connection."),
-    ).toBeInTheDocument();
+    expect(await within(panel).findByText("Other streams need a connection.")).toBeInTheDocument();
 
     // Picking it plays the file from where this one is.
     mocks.snapshot.mockResolvedValue({ ...playing, position: 321 });
@@ -490,7 +489,10 @@ describe("the stream switcher with a download", () => {
     await waitFor(() =>
       expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
         localSource,
-        expect.objectContaining({ start: 321, watching: expect.objectContaining({ videoId: film.videoId }) }),
+        expect.objectContaining({
+          start: 321,
+          watching: expect.objectContaining({ videoId: film.videoId }),
+        }),
       ),
     );
     expect(mocks.resolve).not.toHaveBeenCalled();

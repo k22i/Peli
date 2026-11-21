@@ -953,10 +953,7 @@ function PlayerFile({
       const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
       switching.current = true;
       try {
-        await Player.Load(
-          playable.source,
-          loadOptions(at, settings, lastTracks.current, watching),
-        );
+        await Player.Load(playable.source, loadOptions(at, settings, lastTracks.current, watching));
       } catch {
         switching.current = false;
         return setSwitchStatus({

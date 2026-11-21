@@ -105,8 +105,8 @@ export const downloadNetworkQuery = queryOptions({
 export const playableQuery = (profileId: number | undefined, videoId: string) =>
   queryOptions({
     queryKey: playableKey(profileId, videoId),
-    queryFn: () =>
-      profileId === undefined ? Promise.resolve(null) : Downloads.Playable(profileId, videoId),
+    queryFn: async (): Promise<Playable | null> =>
+      profileId === undefined ? null : await Downloads.Playable(profileId, videoId),
     staleTime: 0,
   });
 
