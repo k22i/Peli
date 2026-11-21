@@ -39,7 +39,10 @@ import { streamsQuery, type ContentType, type Stream } from "@/lib/addon-protoco
 import { chosenSourceQuery, remembered, rememberSource } from "@/lib/chosen-source";
 import { useEpisodeMap } from "@/lib/episode-map";
 import { useLoadedAddons } from "@/lib/home";
+import { playableQuery, type Playable } from "@/lib/downloads";
 import {
+  loadDownloaded,
+  playerState,
   streamId,
   streamsPath,
   streamsSearch,
@@ -351,8 +354,12 @@ function Picker({
   // The filtered top pick, once the filters have stayed put a moment: a
   // run of chip toggles resolves nothing on the way.
   const settledTop = useSettled(view.top, filtersKey(filtering.filters), filtersSettle);
+  // A finished download plays before anything is resolved (ADR-0064): with
+  // one, nothing resolves ahead either.
+  const downloaded = useQuery(playableQuery(profile.id, video));
   const ahead = usePreResolve(settledTop, {
-    enabled: device?.preResolve === true && !profile.kids,
+    enabled:
+      device?.preResolve === true && !profile.kids && !downloaded.isPending && !downloaded.data,
     answered,
     refresh,
   });
@@ -405,7 +412,44 @@ function Picker({
     },
     [],
   );
+  // A finished download of this video plays as it is, whatever was picked:
+  // no resolve, no network (ADR-0064).
+  const playDownloaded = async (playable: Playable) => {
+    const partyAt = forParty ? await Party.StartAt(forParty.media).catch(() => -1) : -1;
+    try {
+      const player = await loadDownloaded({
+        client,
+        profileId: profile.id,
+        target,
+        playable,
+        meta,
+        settings,
+        at: partyAt >= 0 ? partyAt : undefined,
+      });
+      void navigate({
+        to: "/player",
+        // iOS: the player takes the picker's place, so Back and close land
+        // on the title.
+        replace: isIOS(),
+        state: (state) => ({ ...state, player }),
+      });
+    } catch {
+      toastManager.add({
+        type: "error",
+        title: `Can’t play ${target.title}`,
+        description: "Peli’s player couldn’t start. Try again, or restart Peli.",
+        timeout: 8000,
+      });
+    }
+  };
   const pick = (candidate: Candidate) => {
+    pin();
+    void client
+      .fetchQuery(playableQuery(profile.id, video))
+      .catch(() => null)
+      .then((playable) => (playable ? playDownloaded(playable) : pickStream(candidate)));
+  };
+  const pickStream = (candidate: Candidate) => {
     pin();
     if (opening.current) {
       opening.current.controller.abort();
@@ -490,11 +534,11 @@ function Picker({
                 replace: isIOS(),
                 state: (state) => ({
                   ...state,
-                  player: {
-                    ...playerHeading(meta, video, target.title),
+                  player: playerState({
+                    heading: playerHeading(meta, video, target.title),
                     source,
                     watching,
-                    resumedAt: start,
+                    start,
                     stream: attempt.stream,
                     subtitles: subtitleTarget(
                       type,
@@ -502,7 +546,7 @@ function Picker({
                       attempt.stream,
                       names.get(attempt.source) ?? "",
                     ),
-                  },
+                  }),
                 }),
               });
             },
@@ -627,14 +671,14 @@ function Picker({
                 replace: isIOS(),
                 state: (state) => ({
                   ...state,
-                  player: {
-                    ...playerHeading(meta, video, target.title),
+                  player: playerState({
+                    heading: playerHeading(meta, video, target.title),
                     source,
                     watching,
-                    resumedAt: start,
+                    start,
                     stream,
                     subtitles: subtitleTarget(type, video, stream, shared.addonName),
-                  },
+                  }),
                 }),
               });
             })().catch(() =>

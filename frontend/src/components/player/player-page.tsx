@@ -29,6 +29,7 @@ import {
 import {
   useEffect,
   useEffectEvent,
+  useMemo,
   useRef,
   useState,
   type ComponentProps,
@@ -38,6 +39,7 @@ import {
 } from "react";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
+import { Connection } from "@bindings/syncer";
 import { PartyDock, partyDockWidth, usePartyDock } from "@/components/party/party-dock";
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { PartyReactionLayer, ReactionBar } from "@/components/party/reaction-bar";
@@ -102,7 +104,8 @@ import {
   usePartyNotices,
   useWatchWithParty,
 } from "@/lib/party";
-import { streamsPath, streamsSearch } from "@/lib/playback";
+import { playableQuery, type Playable } from "@/lib/downloads";
+import { isDownloadSource, loadDownloaded, streamsPath, streamsSearch } from "@/lib/playback";
 import {
   liftNow,
   liftStep,
@@ -186,7 +189,7 @@ import {
   useAddonSubtitles,
   type AddonSubtitle,
 } from "@/lib/subtitles";
-import { invalidateWatching } from "@/lib/sync";
+import { invalidateWatching, useConnection } from "@/lib/sync";
 import {
   cachedTitleMeta,
   episodeCode,
@@ -394,7 +397,30 @@ function PlayerFile({
   }, [state.tracks]);
   const tracks = state.tracks ?? [];
   const target = useLocation({ select: (location) => location.state.player?.subtitles });
-  const addonSubtitles = useAddonSubtitles(profileId, target);
+  // A downloaded file (ADR-0064) is its own: its saved subtitles are the
+  // only ones, read from disk, and no addon is asked for more. They take the
+  // addon subtitles' place in the menus, the automatic one and the re-add
+  // after a reload.
+  const downloaded = isDownloadSource(playing?.source);
+  const saved = useQuery({
+    ...playableQuery(profileId, watching?.videoId ?? ""),
+    enabled: downloaded && profileId > 0 && watching !== undefined,
+  });
+  const found = useAddonSubtitles(profileId, downloaded ? undefined : target);
+  const savedSubtitles = useMemo<AddonSubtitle[]>(
+    () =>
+      (saved.data?.subtitles ?? []).map((subtitle, index) => ({
+        key: `download ${index}`,
+        url: subtitle.url,
+        ...subtitleLanguage(subtitle.lang),
+        name: subtitle.title,
+        addon: "Downloaded",
+      })),
+    [saved.data],
+  );
+  const addonSubtitles = downloaded
+    ? { subtitles: savedSubtitles, loading: saved.isLoading }
+    : found;
   const systemCaptions = useQuery({
     queryKey: ["player", "system-captions"],
     queryFn: () => Player.SystemCaptions(),
@@ -559,9 +585,21 @@ function PlayerFile({
     ...(series &&
       cachedTitleMeta(queryClient, browsing.addons, series.contentType, series.contentId)),
   }).data?.meta;
-  const next = meta && series ? nextEpisode(meta, series.videoId) : undefined;
+  const afterThis = meta && series ? nextEpisode(meta, series.videoId) : undefined;
+  // Offline, only a downloaded next episode is offered: with none there is
+  // no card or countdown, and the file just ends.
+  const offline = useConnection() === Connection.Offline;
+  const afterThisSaved = useQuery({
+    ...playableQuery(profileId, afterThis?.id ?? ""),
+    enabled: offline && afterThis !== undefined && profileId > 0,
+  });
+  const next = offline && !afterThisSaved.data ? undefined : afterThis;
   const [cancelled, setCancelled] = useState(false);
-  const onlineSegments = useOnlineSegments(watching);
+  // A downloaded file's skip times are saved with it: IntroDB isn't asked.
+  const onlineSegments = useOnlineSegments(
+    watching,
+    downloaded ? (saved.data?.segments ?? []) : undefined,
+  );
   const segments = skipSegments(state.chapters ?? [], onlineSegments, state.duration);
   const from = countdownFrom(
     state.duration,
@@ -664,6 +702,7 @@ function PlayerFile({
       ended.code === "expired" &&
       expired &&
       !isTorrentSource(expired) &&
+      !isDownloadSource(expired) &&
       Date.now() - reloadedAt.current > 60_000
     ) {
       reloadedAt.current = Date.now();
@@ -687,7 +726,7 @@ function PlayerFile({
     setRetrying(true);
     try {
       const options = loadOptions(stoppedAt.current, settings, lastTracks.current, watching);
-      if (ended.code === "expired" && !isTorrentSource(current))
+      if (ended.code === "expired" && !isTorrentSource(current) && !isDownloadSource(current))
         source.current = await reloadExpired(current, options);
       else await Player.Load(current, options);
       reloaded();
@@ -733,12 +772,34 @@ function PlayerFile({
   // Plays the next episode in this session: its progress kept as its own,
   // from where it was left, in the languages playing now.
   const playNext = async (prepared: PreparedNext) => {
-    if (!meta || !next || prepared.status !== "ready") return chooseNext();
+    if (!meta || !next || (prepared.status !== "ready" && prepared.status !== "downloaded"))
+      return chooseNext();
     const controller = new AbortController();
     switchAbort.current = controller;
     switching.current = true;
     const nextTarget = episodeTarget(meta, next);
     try {
+      if (prepared.status === "downloaded") {
+        // A downloaded episode: its file, nothing resolved (ADR-0064).
+        const player = await loadDownloaded({
+          client: queryClient,
+          profileId,
+          target: nextTarget,
+          playable: prepared.playable,
+          meta,
+          settings,
+          tracks: lastTracks.current,
+        });
+        controller.signal.throwIfAborted();
+        // A torrent playing that the next episode doesn't come from.
+        if (isTorrentSource(source.current)) Torrents.Release().catch(() => {});
+        void navigate({
+          to: "/player",
+          replace: true,
+          state: (current) => ({ ...current, player }),
+        });
+        return;
+      }
       const { source: nextSource, attempt } =
         prepared.resolved ??
         (await resolvePick(prepared.candidate, {
@@ -878,6 +939,50 @@ function PlayerFile({
       setSwitchStatus({ text: why.message, failed: why.description });
     } finally {
       if (pickAbort.current === controller) pickAbort.current = null;
+    }
+  };
+  // The downloaded copy (ADR-0064), from where this one is: loaded as a
+  // switch is, with the same progress kept, in the languages playing now.
+  // Nothing is resolved, so it works offline.
+  const switchToDownload = async (playable: Playable) => {
+    if (!watching) return;
+    if (!error && isDownloadSource(playing?.source)) return setSwitcherOpen(false);
+    pickAbort.current?.abort();
+    setSwitchStatus({ text: "Opening the downloaded copy…" });
+    try {
+      const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
+      switching.current = true;
+      try {
+        await Player.Load(
+          playable.source,
+          loadOptions(at, settings, lastTracks.current, watching),
+        );
+      } catch {
+        switching.current = false;
+        return setSwitchStatus({
+          text: "",
+          failed: "Peli’s player couldn’t start it. Try another stream.",
+        });
+      }
+      // A torrent playing that the download doesn't come from.
+      if (isTorrentSource(source.current)) Torrents.Release().catch(() => {});
+      void navigate({
+        to: "/player",
+        replace: true,
+        state: (history) => {
+          // Not an addon's stream: nothing to mark playing or ask subtitles of.
+          const { stream, subtitles, ...kept } = history.player ?? { title: "" };
+          void stream;
+          void subtitles;
+          return {
+            ...history,
+            player: { ...kept, source: playable.source, resumedAt: 0 },
+          };
+        },
+      });
+    } catch {
+      switching.current = false;
+      setSwitchStatus({ text: "", failed: "Peli’s player couldn’t start it." });
     }
   };
   // The switcher needs the app window: the mini player leaves for it.
@@ -3071,8 +3176,10 @@ function PlayerFile({
           watching={watching}
           title={playing?.title ?? ""}
           playing={playing?.stream}
+          playingDownload={downloaded}
           status={switchStatus}
           onPick={(candidate, names, refresh) => void switchStream(candidate, names, refresh)}
+          onPickDownload={(playable) => void switchToDownload(playable)}
         />
       )}
       {dockShown && (

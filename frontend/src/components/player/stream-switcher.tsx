@@ -1,6 +1,8 @@
-import { AlertCircle } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { AlertCircle, Download } from "lucide-react";
 
 import type { Watching } from "@bindings/playback";
+import { Connection } from "@bindings/syncer";
 import { Spinner } from "@/components/ui/spinner";
 import {
   Sheet,
@@ -13,6 +15,9 @@ import { StreamList } from "@/components/streams/stream-list";
 import { StreamsSummary, usePlayKey, useStreamChoices } from "@/components/streams/streams-page";
 import { filteredListProps } from "@/components/streams/stream-toolbar";
 import type { Stream } from "@/lib/addon-protocol";
+import { formatBytes, playableQuery, type Playable } from "@/lib/downloads";
+import { cn } from "@/lib/utils";
+import { useConnection } from "@/lib/sync";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, sameStream, type ResolveOptions } from "@/lib/resolve";
 
@@ -24,15 +29,18 @@ export type Refresh = ResolveOptions["refresh"];
 // marked. Picking one hands it to the player, which plays it from where
 // this one is. The addons are asked while it's open (usually answered from
 // the picker's cache), and closing it aborts what's still out, as leaving
-// the picker does.
+// the picker does. A finished download of the video (ADR-0064) leads the
+// list as "Downloaded"; offline it is all the list has.
 export function StreamSwitcher({
   open,
   onOpenChange,
   watching,
   title,
   playing,
+  playingDownload,
   status,
   onPick,
+  onPickDownload,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -41,9 +49,12 @@ export function StreamSwitcher({
   title: string;
   // The addon's stream playing now.
   playing: Stream | undefined;
+  // Whether it's the downloaded copy playing.
+  playingDownload: boolean;
   // The stream being opened, or why the last pick couldn't be.
   status: { text: string; failed?: string } | undefined;
   onPick: (candidate: Candidate, names: ReadonlyMap<string, string>, refresh: Refresh) => void;
+  onPickDownload: (playable: Playable) => void;
 }) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -75,14 +86,97 @@ export function StreamSwitcher({
               ))}
           </div>
         </SheetHeader>
-        <Choices watching={watching} title={title} playing={playing} onPick={onPick} />
+        <Choices
+          watching={watching}
+          title={title}
+          playing={playing}
+          playingDownload={playingDownload}
+          onPick={onPick}
+          onPickDownload={onPickDownload}
+        />
       </SheetPopup>
     </Sheet>
   );
 }
 
-// Mounted only while the panel is open.
+// Mounted only while the panel is open: the downloaded copy, if there is
+// one, then the addons' streams, which need a connection.
 function Choices({
+  watching,
+  title,
+  playing,
+  playingDownload,
+  onPick,
+  onPickDownload,
+}: {
+  watching: Watching;
+  title: string;
+  playing: Stream | undefined;
+  playingDownload: boolean;
+  onPick: (candidate: Candidate, names: ReadonlyMap<string, string>, refresh: Refresh) => void;
+  onPickDownload: (playable: Playable) => void;
+}) {
+  const offline = useConnection() === Connection.Offline;
+  const local = useQuery(playableQuery(watching.profileId, watching.videoId)).data;
+  return (
+    <>
+      {local && (
+        <DownloadedCopy playable={local} playing={playingDownload} onPick={onPickDownload} />
+      )}
+      {offline ? (
+        <p className="px-6 py-4 text-body text-muted-foreground">
+          Other streams need a connection.
+        </p>
+      ) : (
+        <Streams
+          watching={watching}
+          title={title}
+          playing={playing}
+          onPick={onPick}
+        />
+      )}
+    </>
+  );
+}
+
+// The local copy, as a row ahead of the list.
+function DownloadedCopy({
+  playable,
+  playing,
+  onPick,
+}: {
+  playable: Playable;
+  playing: boolean;
+  onPick: (playable: Playable) => void;
+}) {
+  const { download } = playable;
+  const detail = [download.resolution, download.streamName, formatBytes(download.total)]
+    .filter(Boolean)
+    .join(" · ");
+  return (
+    <div className="px-6 pb-3">
+      <button
+        type="button"
+        onClick={() => onPick(playable)}
+        aria-current={playing ? "true" : undefined}
+        className={cn(
+          "flex w-full items-center gap-3 rounded-2xl border border-border bg-card/60 px-4 py-3 text-left transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+          playing && "border-foreground/40",
+        )}
+      >
+        <Download aria-hidden className="size-4 shrink-0 text-muted-foreground" />
+        <span className="flex min-w-0 flex-1 flex-col">
+          <span className="font-medium">Downloaded</span>
+          {detail && <span className="truncate text-small text-muted-foreground">{detail}</span>}
+        </span>
+        {playing && <span className="text-small text-muted-foreground">Playing</span>}
+      </button>
+    </div>
+  );
+}
+
+// The addons' ranked streams.
+function Streams({
   watching,
   title,
   playing,

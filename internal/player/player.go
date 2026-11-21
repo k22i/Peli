@@ -335,17 +335,21 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 		w := *opts.Watching
 		watching = &w
 	}
-	userAgent := source.UserAgent
-	if userAgent == "" {
-		userAgent = s.userAgent
-	}
-	// Set as a list: a header's value may hold a comma, which mpv's string
-	// form splits on.
-	if err := ses.m.setStringList("http-header-fields", source.HeaderFields()); err != nil {
-		return notPlaying(err)
-	}
-	if err := ses.m.setProperty("user-agent", userAgent); err != nil {
-		return notPlaying(err)
+	// A download's file (Origin "download:<id>", ADR-0064) is a path on the
+	// disk: no request headers or user agent to set.
+	if !strings.HasPrefix(source.Origin, "download:") {
+		userAgent := source.UserAgent
+		if userAgent == "" {
+			userAgent = s.userAgent
+		}
+		// Set as a list: a header's value may hold a comma, which mpv's
+		// string form splits on.
+		if err := ses.m.setStringList("http-header-fields", source.HeaderFields()); err != nil {
+			return notPlaying(err)
+		}
+		if err := ses.m.setProperty("user-agent", userAgent); err != nil {
+			return notPlaying(err)
+		}
 	}
 	if err := ses.m.setProperty("pause", "no"); err != nil {
 		return notPlaying(err)

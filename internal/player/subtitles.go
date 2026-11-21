@@ -32,9 +32,15 @@ const (
 // the track's id in State.Tracks. Loading another file drops it, as mpv
 // drops every external track then.
 //
+// A file:// URL inside a download's subs folder is read from disk instead
+// (addLocalSubtitle, localsubtitle.go).
+//
 // Peli downloads it, not mpv: mpv would send the stream's headers (a
 // debrid addon's, say) to the subtitle server too.
 func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
+	if isFileURL(sub.URL) {
+		return s.addLocalSubtitle(sub)
+	}
 	u, err := url.Parse(sub.URL)
 	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Host == "" ||
 		!playback.LanguageValid(sub.Lang) {
@@ -87,6 +93,48 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}
 	id, err := addedTrack(ses.m, f.Name())
+	if err != nil {
+		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
+	}
+	if sub.Secondary {
+		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
+			return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
+		}
+	}
+	return id, nil
+}
+
+// addLocalSubtitle adds a subtitle saved with a download (ADR-0064): a
+// file:// URL inside a download's subs folder, read by mpv directly. No
+// network, no copy: the files belong to the download and go with it.
+func (s *Service) addLocalSubtitle(sub Subtitle) (int, error) {
+	if !playback.LanguageValid(sub.Lang) {
+		return 0, ErrInvalid
+	}
+	file, err := downloadSubtitlePath(sub.URL)
+	if err != nil {
+		return 0, ErrInvalid
+	}
+	if s.current() == nil {
+		return 0, ErrNotPlaying
+	}
+	s.ops.Lock()
+	defer s.ops.Unlock()
+	ses := s.current()
+	if ses == nil {
+		return 0, ErrNotPlaying
+	}
+	flags := "select"
+	if sub.Secondary {
+		flags = "auto"
+	}
+	if err := ses.m.command("sub-add", file, flags, sub.Title, sub.Lang); err != nil {
+		if errors.Is(err, errDestroyed) {
+			return 0, ErrNotPlaying
+		}
+		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
+	}
+	id, err := addedTrack(ses.m, file)
 	if err != nil {
 		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}

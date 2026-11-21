@@ -130,3 +130,74 @@ func TestAddSubtitle(t *testing.T) {
 		t.Errorf("subtitle dir %q after Stop: %v, want it gone", dir, err)
 	}
 }
+
+// A subtitle saved with a download is read from disk, and only from a
+// download's subs folder (ADR-0064).
+func TestAddSubtitleFromDisk(t *testing.T) {
+	t.Parallel()
+	s, r := newTestService(t)
+	ctx := context.Background()
+	root := t.TempDir()
+	subs := filepath.Join(root, "0123456789abcdef0123456789abcdef", "subs")
+	if err := os.MkdirAll(subs, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	saved := filepath.Join(subs, "0.srt")
+	if err := os.WriteFile(saved, []byte(srt), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	elsewhere := filepath.Join(root, "other.srt")
+	if err := os.WriteFile(elsewhere, []byte(srt), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := s.AddSubtitle(ctx, Subtitle{URL: fileURL(saved), Lang: "fr"}); !errors.Is(err, ErrNotPlaying) {
+		t.Fatalf("before Load: got %v, want ErrNotPlaying", err)
+	}
+	path, _ := filepath.Abs("testdata/tracks.mkv")
+	// A download's source: no headers are sent for a path.
+	source := streams.Source{URL: path, Origin: "download:0123456789abcdef0123456789abcdef"}
+	if err := s.Load(source, LoadOptions{Captions: "off"}); err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the first frame", func(*recorder) bool { st := s.Snapshot(); return !st.Loading && len(st.Tracks) > 0 })
+	if err := s.SetPaused(true); err != nil {
+		t.Fatal(err)
+	}
+
+	id, err := s.AddSubtitle(ctx, Subtitle{URL: fileURL(saved), Lang: "fr", Title: "Downloaded"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	r.waitFor(t, "the subtitle selected", func(*recorder) bool {
+		for _, tr := range s.Snapshot().Tracks {
+			if tr.ID == id {
+				return tr.Selected
+			}
+		}
+		return false
+	})
+	for _, tr := range s.Snapshot().Tracks {
+		if tr.ID == id && (tr.Type != "sub" || !tr.External || tr.Lang != "fr" || tr.Title != "Downloaded") {
+			t.Errorf("track %+v, want an external French sub titled Downloaded", tr)
+		}
+	}
+	// Nothing else on the disk, and no copy of it.
+	if _, err := s.AddSubtitle(ctx, Subtitle{URL: fileURL(elsewhere), Lang: "fr"}); !errors.Is(err, ErrInvalid) {
+		t.Errorf("a file outside a subs folder: got %v, want ErrInvalid", err)
+	}
+	if _, err := s.AddSubtitle(ctx, Subtitle{URL: fileURL(saved), Lang: "fr,en"}); !errors.Is(err, ErrInvalid) {
+		t.Errorf("a language list: got %v, want ErrInvalid", err)
+	}
+	s.ops.Lock()
+	dir := s.s.subDir
+	s.ops.Unlock()
+	if dir != "" {
+		t.Errorf("subtitle dir %q, want none: the file is read in place", dir)
+	}
+	if err := s.Stop(); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(saved); err != nil {
+		t.Errorf("the download's subtitle after Stop: %v, want it kept", err)
+	}
+}
