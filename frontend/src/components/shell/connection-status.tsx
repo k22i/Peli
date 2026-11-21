@@ -9,7 +9,8 @@ import { Connection } from "@bindings/syncer";
 const copy: Partial<Record<Connection, { label: string; detail: string }>> = {
   [Connection.Offline]: {
     label: "Offline",
-    detail: "Showing what's saved on this device. Changes sync when you're back online.",
+    detail:
+      "Showing what's saved on this device. Downloaded titles play; changes sync when you're back online.",
   },
   [Connection.Unavailable]: {
     label: "Nuvio is down",

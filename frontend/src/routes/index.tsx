@@ -12,6 +12,7 @@ import {
 
 import { NoAddons } from "@/components/addons/no-addons";
 import { heroArrowStep } from "@/lib/marquee";
+import { DownloadedRow, finishedDownloads } from "@/components/home/downloaded-row";
 import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
 import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { AnimeTitleCard } from "@/components/media/anime-title-card";
@@ -38,6 +39,7 @@ import {
   useFollowAnime,
 } from "@/lib/anime-titles";
 import { browseTarget, isAnimeCatalog } from "@/lib/browse";
+import { useDownloads } from "@/lib/downloads";
 import { folderParams, folderPath } from "@/lib/folder";
 import {
   collectionsQuery,
@@ -58,9 +60,11 @@ import {
 } from "@/lib/library";
 import { usePlay, type PlayTarget } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
+import { useConnection } from "@/lib/sync";
 import { useOpenTitle, type TitlePreview } from "@/lib/title";
 import { cn } from "@/lib/utils";
 import type { LibraryItem, Profile, Progress } from "@bindings/store";
+import { Connection } from "@bindings/syncer";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -101,6 +105,12 @@ function HomeRows({ profile }: { profile: Profile }) {
   const { visible, addons, shown, loading: addonsLoading } = useBrowsableAddons(profileId);
   const leaveOutAnime = useLeaveOutAnime(profileId);
   const posterAddon = useAnimePosterAddon(profileId);
+  // Downloads (#85, part 9): what this device holds, played from the file.
+  // Offline they come first, so the titles that play are the ones in reach.
+  const downloads = useDownloads(profileId);
+  const finished = finishedDownloads(downloads);
+  const offline = useConnection() === Connection.Offline;
+  const downloadedFirst = offline && finished.length > 0;
   // A catalog row waits for its manifest and for what a kids profile may
   // see (`shown`); until then the collections show alone.
   const rows = homeRows(layout.data, collections.data ?? [], addons, shown);
@@ -113,6 +123,7 @@ function HomeRows({ profile }: { profile: Profile }) {
     library.data.length === 0 &&
     watching.data.length === 0 &&
     rows.length === 0 &&
+    finished.length === 0 &&
     !addonsLoading
   ) {
     return (
@@ -149,6 +160,7 @@ function HomeRows({ profile }: { profile: Profile }) {
           a shelf apart, and tucked up under the hero's fade. */}
       <div className="relative flex flex-col gap-9 pt-1">
         {noAddons}
+        {downloadedFirst && <DownloadedRow downloads={finished} />}
         <RowGroup>
           {watching.data.length > 0 && (
             <Row
@@ -160,6 +172,7 @@ function HomeRows({ profile }: { profile: Profile }) {
             />
           )}
           <NewEpisodes profile={profile} />
+          {!downloadedFirst && finished.length > 0 && <DownloadedRow downloads={finished} />}
           {rows.map((row) =>
             row.kind === "catalog" ? (
               <CatalogRowView

@@ -243,3 +243,40 @@ Entry points (part 6) rank episodes in the frontend: "Download season" queues ea
 - A household wants one copy shared between profiles.
 - Users ask for torrent downloads: through `internal/torrent`'s loopback server into a permanent file, yielding to the player's one torrent session.
 - Peli gets debrid keys (ADR-0038 triggers), which would allow re-resolving without the addon.
+
+## Built (2026-11-22)
+
+Nine parts, merged into `main` in order; each one's report is `reports/downloads-<part>.md`. Tests, type checks, lint and `gofmt` were run on the merge, not inside the parts.
+
+**Part 1, the store** (`reports/downloads-store.md`). `internal/store/downloads.go`: the types above, `DownloadStates`, `ErrDownloadNotFound` and the eight methods, in one top-level `downloads` bucket (the next migration, 5). `DeviceSettings` gained `DownloadsDir`, `DownloadsCapGB` (default 50, one of `DownloadCaps`) and `DownloadsWiFiOnly` (default true), validated in `SaveDeviceSettings`, so a record written before them reads with the defaults.
+
+**Part 2, the engine and the Wails service** (`reports/downloads-engine.md`). `internal/downloads`: `service.go`, `queue.go` (one job at a time, recovery, the startup sweep, the background/active/expiring seam, the network gate, the cap and free-space checks), `http.go` (resolve, the Range GET, the part file, one re-resolve on expiry, the size check, subtitles, segments) and `platform_desktop.go` with the free-space helpers. `main.go` builds `p.downloads` after `p.skipTimes` and registers it right after `x.torrent`, so it shuts down before streams and the store.
+
+**Part 3, iOS** (`reports/downloads-ios.md`). `platform_ios.go`/`.m`/`.h`: free space as iOS counts it, the backup exclusion, `nw_path_monitor` for the network, `beginBackgroundTask` around a job (no new background mode), UIKit's background and active notifications in order, and `ErrUnsupported` for the folder picker. `ios/README.md` has the rules and the device checklist.
+
+**Part 4, the frontend library** (`reports/downloads-lib.md`). `lib/downloads.ts` (keys and queries, the hooks, the events, the actions, the status and reason text, `downloadable`, `addRequestFor`, `subtitleRefs`), `lib/bytes.ts`, and the `@bindings/downloads` mock in `test/setup.ts`.
+
+**Part 5, offline playback.** Play, the picker, the next-episode card and the stream switcher ask `Playable` first and load the local file; a download's saved subtitles and skip markers are used and it is never re-resolved or released; `Player.AddSubtitle` takes `file://` URLs from a download's `subs/` folder; offline, Play on a title with no download says so instead of opening a picker that would fail.
+
+**Part 6, the download actions.** Download on the title page, in the episode menu, in `TitleMenu` and in the picker's row menu, "Download season" (each aired episode, ranked, added in order) and `lib/download-pick.ts` for the top downloadable pick. A stream with no link is never offered.
+
+**Part 7, the Downloads view.** Library `?view=downloads`: rows with progress and speed, pause, resume, delete and multi-select delete, the storage line (used of the cap) and an empty state.
+
+**Part 8, Settings › Downloads.** The folder on the desktop (`feature("downloadFolder")`), the cap, Wi-Fi only on iOS (`feature("downloadsWiFiOnly")`) and Delete all behind an alert dialog.
+
+**Part 9, Home, the pill and these notes.** The shell mounts `useDownloadEvents()` once, in `routes/__root.tsx` beside `useSyncEvents`, so every list follows Go's events. Home has a "Downloaded" row (`components/home/downloaded-row.tsx`: the profile's finished downloads, newest first, ten at most, with a "See all" link to the view), which moves under the hero when the app is offline; its cards play through `usePlay` and open the title's menu. The connection pill's Offline text says downloaded titles play. `README.md` and `.agents/memory/downloads.md` describe it.
+
+TODO(coordinator): fold in parts 5–8's final details — their file lists, any deviation from the names above and their test files — from `reports/downloads-playback.md`, `downloads-entry.md`, `downloads-view.md` and `downloads-settings.md` as they merge.
+
+### Deviations parts 1 and 2 recorded
+
+These change behaviour the decisions above describe, so they are listed here rather than left in the reports:
+
+- **Migration 5, not 8.** This branch's `main` ships four migrations, so the next index is 5; the "8" first written here counted helper functions. The ADR now says 5, and the migration is the one described above.
+- **Recovery re-queues waiting jobs too.** On startup a `downloading` record becomes `queued`, and so does a `waiting` one whose reason is `wifi` or `offline` (the decisions name going to the background, `suspended`). Nothing else would wake those jobs after a relaunch, and the gate waits again if it still applies. Paused and failed jobs stay as the user left them.
+- **Network errors back off instead of failing.** `unreachable` and `timeout` from `Resolve`, and 429 or 5xx from the CDN, put the job back in `waiting`/`offline` with a backoff (15 s doubling to 5 minutes). Every other code still fails the job with that code.
+- **A 60 s stall watchdog.** No bytes for 60 s counts as a network error, so the job backs off rather than holding the queue: a debrid CDN that stops answering does not answer within any timeout. The intervals are fields on `Service` so tests override them.
+- **`Config.Platform`.** The platform is injected (nil = `newPlatform()`), so the queue's gates and the iOS behaviour can be tested from shared code; part 3 defines only `newPlatform()`.
+- **`.part` stays in `File`.** A record's `File` is `<id>/video<ext>.part` while the job is unfinished and is renamed on completion, as the store's comment above says; `Playable` answers only for a done download.
+
+Part 4 recorded its own small deviations (a `subtitleRefs(addonSubtitles, language)` helper rather than a hook-shaped `saveSubtitlesFor`, `percent` as a rounded 0–100, and `usePlayable`/`downloadLabel` added); `reports/downloads-lib.md` has them with the reasons.
