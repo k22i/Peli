@@ -137,7 +137,12 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
             <span className="max-w-56 truncate text-small text-muted-foreground" title={usage?.dir}>
               {usage?.dir ?? "…"}
             </span>
-            <Button variant="outline" size="sm" disabled={!usage || choosing} onClick={chooseFolder}>
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={!usage || choosing}
+              onClick={chooseFolder}
+            >
               Change…
             </Button>
             {(device.downloadsDir ?? "") !== "" && (
@@ -173,7 +178,7 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
             <Switch
               aria-labelledby="downloads-wifi-label"
               aria-describedby="downloads-wifi-description"
-              checked={device.downloadsWiFiOnly === true}
+              checked={device.downloadsWiFiOnly}
               onCheckedChange={(downloadsWiFiOnly) => save({ downloadsWiFiOnly })}
             />
           </SettingRow>
@@ -203,9 +208,7 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
         <AlertDialogPopup>
           <AlertDialogHeader>
             <AlertDialogTitle>Delete all downloads on this device?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Every profile’s downloads are removed.
-            </AlertDialogDescription>
+            <AlertDialogDescription>Every profile’s downloads are removed.</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogClose render={<Button variant="ghost" />}>Cancel</AlertDialogClose>

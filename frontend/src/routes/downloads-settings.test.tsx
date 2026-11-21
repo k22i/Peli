@@ -18,7 +18,7 @@ const store = vi.hoisted(() => ({
   device: undefined as DeviceSettings | undefined,
 }));
 
-const profile = (): Profile => ({ id: 2, name: "Ben Ito", kids: store.kids }) as Profile;
+const profile = (): Profile => ({ id: 2, name: "Ben Ito", kids: store.kids });
 
 vi.mock("@bindings/store", async () => {
   const fixtures = await import("@/test/fixtures");
@@ -138,7 +138,9 @@ describe("settings › downloads", () => {
     await user.click(screen.getByRole("button", { name: "Change…" }));
 
     await waitFor(() => expect(Downloads.ChooseFolder).toHaveBeenCalledExactlyOnceWith(2));
-    await waitFor(() => expect(vi.mocked(Downloads.Usage).mock.calls.length).toBeGreaterThan(asked));
+    await waitFor(() =>
+      expect(vi.mocked(Downloads.Usage).mock.calls.length).toBeGreaterThan(asked),
+    );
   });
 
   it("puts a custom folder back to the default, which moves the usage", async () => {
@@ -151,7 +153,9 @@ describe("settings › downloads", () => {
 
     await waitFor(() => expect(store.device?.downloadsDir).toBe(""));
     // New downloads go to Go's own folder now, so what it counts moved.
-    await waitFor(() => expect(vi.mocked(Downloads.Usage).mock.calls.length).toBeGreaterThan(asked));
+    await waitFor(() =>
+      expect(vi.mocked(Downloads.Usage).mock.calls.length).toBeGreaterThan(asked),
+    );
   });
 
   it("asks before deleting every download, then deletes them all", async () => {
