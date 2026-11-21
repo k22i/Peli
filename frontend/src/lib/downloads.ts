@@ -66,8 +66,7 @@ export const removedEvent = "downloads:removed";
 // together.
 export const downloadsRoot = ["downloads"] as const;
 
-export const downloadsKey = (profileId: number | undefined) =>
-  ["downloads", profileId] as const;
+export const downloadsKey = (profileId: number | undefined) => ["downloads", profileId] as const;
 
 export const downloadUsageKey = ["downloads", "usage"] as const;
 export const downloadNetworkKey = ["downloads", "network"] as const;
@@ -271,6 +270,11 @@ const settledPromise = (action: Promise<unknown>): Promise<void> =>
     () => {},
   );
 
+// Toasts a refused call with what the code means.
+function failed(error: unknown) {
+  toastManager.add({ type: "error", title: downloadErrorText(errorCode(error)) });
+}
+
 export function useDownloadActions(profileId: number | undefined): DownloadActions {
   const client = useQueryClient();
   // The event says what changed; this catches the calls that change nothing
@@ -279,8 +283,6 @@ export function useDownloadActions(profileId: number | undefined): DownloadActio
     void client.invalidateQueries({ queryKey: downloadsKey(profileId) });
     void client.invalidateQueries({ queryKey: downloadUsageQuery.queryKey });
   };
-  const failed = (error: unknown) =>
-    toastManager.add({ type: "error", title: downloadErrorText(errorCode(error)) });
 
   const add = useMutation({
     mutationFn: (request: AddRequest) => Downloads.Add(request),

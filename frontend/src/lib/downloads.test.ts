@@ -244,15 +244,6 @@ describe("downloadable", () => {
 });
 
 describe("subtitleRefs", () => {
-  const addon = (url: string, code: string, name = "") => ({
-    key: `addon ${url}`,
-    url,
-    language: code,
-    code,
-    name,
-    addon: "OpenSubtitles v3",
-  });
-
   it("keeps the profile's language, in the addons' order", () => {
     const subtitles = [
       addon("https://subs/1.srt", "en", "One"),
@@ -505,35 +496,6 @@ describe("useDownloadEvents", () => {
 });
 
 describe("useDownloadActions", () => {
-  // A refusal as downloads.MarshalError sends it: the code in the call's cause.
-  function refusal(code: string): Error {
-    const error = new Error(`downloads: ${code}`);
-    Object.defineProperty(error, "cause", { value: { code } });
-    return error;
-  }
-
-  function addRequest(changes: Partial<AddRequest> = {}): AddRequest {
-    return {
-      profileId: 1,
-      contentId: "tt0903747",
-      contentType: "series",
-      videoId: "tt0903747:1:2",
-      season: 1,
-      episode: 2,
-      name: "Breaking Bad",
-      episodeName: "Cat’s in the Bag…",
-      poster: "",
-      metaAddon: "https://addon.example/manifest.json",
-      streamSource: "https://addon.example/manifest.json",
-      streamName: "TorBox 1080p",
-      streamDescription: "",
-      resolution: "1080p",
-      request: { url: "https://cdn.example/file.mkv", headers: {} },
-      subtitles: null,
-      ...changes,
-    };
-  }
-
   it("says a refusal in Go's words, and resolves either way", async () => {
     const client = new QueryClient();
     const add = vi.spyOn(toastManager, "add");
@@ -586,3 +548,43 @@ describe("useDownloadActions", () => {
     expect(Downloads.DeleteAll).not.toHaveBeenCalled();
   });
 });
+
+function addon(url: string, code: string, name = "") {
+  return {
+    key: `addon ${url}`,
+    url,
+    language: code,
+    code,
+    name,
+    addon: "OpenSubtitles v3",
+  };
+}
+
+// A refusal as downloads.MarshalError sends it: the code in the call's cause.
+function refusal(code: string): Error {
+  const error = new Error(`downloads: ${code}`);
+  Object.defineProperty(error, "cause", { value: { code } });
+  return error;
+}
+
+function addRequest(changes: Partial<AddRequest> = {}): AddRequest {
+  return {
+    profileId: 1,
+    contentId: "tt0903747",
+    contentType: "series",
+    videoId: "tt0903747:1:2",
+    season: 1,
+    episode: 2,
+    name: "Breaking Bad",
+    episodeName: "Cat’s in the Bag…",
+    poster: "",
+    metaAddon: "https://addon.example/manifest.json",
+    streamSource: "https://addon.example/manifest.json",
+    streamName: "TorBox 1080p",
+    streamDescription: "",
+    resolution: "1080p",
+    request: { url: "https://cdn.example/file.mkv", headers: {} },
+    subtitles: null,
+    ...changes,
+  };
+}

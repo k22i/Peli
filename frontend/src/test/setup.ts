@@ -130,8 +130,10 @@ vi.mock("@bindings/party", () => ({
 // otherwise. The shell mounts the events hook; the picker, the title page and
 // the Library view ask the rest. Each call resolves with a `cancel`, as the
 // bindings' CancellablePromise has.
+function cancels<T>(value: T) {
+  return Object.assign(Promise.resolve(value), { cancel: vi.fn<() => void>() });
+}
 vi.mock("@bindings/downloads", () => {
-  const cancels = <T>(value: T) => Object.assign(Promise.resolve(value), { cancel: vi.fn() });
   return {
     Service: {
       Add: vi.fn<() => Promise<unknown>>(() => cancels(undefined)),
