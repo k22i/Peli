@@ -4,6 +4,7 @@ import { toastManager } from "@/components/ui/toast";
 import type { Source } from "@bindings/streams";
 import { Service as Torrents, type Request, type Status } from "@bindings/torrent";
 import type { Stream } from "@/lib/addon-protocol";
+import { formatBytes } from "@/lib/bytes";
 
 // Torrent streaming (#55, ADR-0040): internal/torrent fetches a torrent's
 // pieces from peers, those around what the player reads first, and serves
@@ -67,17 +68,9 @@ export function torrentStatusText(status: TorrentStatus): string {
 }
 
 // "940 KB", "3.4 MB", "1.2 GB": decimal units, as disks and speeds count.
-export function formatBytes(bytes: number): string {
-  const units = ["B", "KB", "MB", "GB", "TB"];
-  let value = Math.max(0, bytes);
-  let unit = 0;
-  while (value >= 1000 && unit < units.length - 1) {
-    value /= 1000;
-    unit++;
-  }
-  const digits = unit > 1 && value < 10 ? 1 : 0;
-  return `${value.toFixed(digits)} ${units[unit]}`;
-}
+// Kept here for the screens that ask lib/torrent; lib/bytes has the function,
+// so downloads (#85) show sizes without the torrent bindings.
+export { formatBytes };
 
 export const torrentCacheQuery = queryOptions({
   queryKey: ["torrent", "cache"],
