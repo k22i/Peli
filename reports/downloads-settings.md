@@ -113,3 +113,56 @@ Nothing else changed; other parts' files were not touched.
   the call can take a while with no progress. Worth a look on a device before release.
 - `.agents/memory/` was not touched (outside this part's files): worth a line in `settings-panes.md`
   about the tenth pane, and one in a downloads note about `downloadCaps`.
+
+## Fix round 1
+
+Two things came back from the merge: a typecheck error in the pane, and two failing tests in
+`routes/downloads-settings.test.tsx`. Still nothing run here (`pnpm typecheck`, `lint`, `fmt` and the
+tests are the coordinator's), as the task asked.
+
+### 1. `downloads-pane.tsx:99` — TS2379 under `exactOptionalPropertyTypes`
+
+`save()` handed `{ onSuccess: after }` to `mutate` even when `after` was `undefined`, which
+`exactOptionalPropertyTypes` refuses (an optional property may be absent, not `undefined`). It now
+passes the option only when there is one:
+
+```ts
+const save = (change: Partial<DeviceSettings>, after?: () => void) =>
+  saveDevice.mutate({ ...device, ...change }, after ? { onSuccess: after } : {});
+```
+
+### 2. The two iOS tests — the cause was not the usage line
+
+The failure text (`Unable to find … 12 GB used · 210 GB free on this disk`) reads like a split or
+mis-formatted line, but the DOM dumped in it is the router's **`ErrorScreen`**, with no shell around
+it: `formatBytes(12_300_000_000)` really is `"12 GB"` (a decimal only below 10 of a unit), the line is
+one text node in the row's description, and the text the test asks for is exactly what the pane
+renders. Nothing was missing from the line — the pane never got to paint.
+
+Both failing cases are the only two that turn `onIOS()` on, and on iOS **and with a profile in use**
+the shell mounts `useSeedAudioLanguages` (`lib/device-languages.ts`), whose effect calls
+`Store.SeedAudioLanguages(id, codes)` and only `.then(…).catch(…)`s the *promise*. This file's
+`@bindings/store` mock listed eight methods and not that one, so the call threw a `TypeError`
+synchronously inside an effect of `AppShell` — past the route's boundary, up to the root route's
+`errorComponent` ("The shell itself failed: the same screen, with no shell around it",
+`routes/__root.tsx`), which is the screen in the dump. On the desktop the effect returns at
+`if (!isIOS())`, which is why every other case in the file was green; and it took `renderApp`'s first
+paint to succeed, which is why the failure is the pane query and not the shell's `navigation`.
+
+Every other route test that turns iOS on mocks the method already (`routes/player.test.tsx:185`,
+`routes/downloads-playback.test.tsx:180`, `src/ios.test.tsx`), which is the rule in
+`.agents/memory/test-suite-green.md`.
+
+So the fix is in the test's mock, not in the pane: `SeedAudioLanguages` (the effect, fatal when
+missing) plus `ContinueWatching`, `Library` and `VisibleAddons` (what `ProfileGate`'s icon-menu sync
+asks once a profile is in use, through queries), each answering empty, with a comment saying why. The
+two cases then reach the pane: the Wi-Fi switch renders, reads `false`, describes itself and saves
+`downloadsWiFiOnly`; the folder row and "Change…" are absent.
+
+| File | |
+|---|---|
+| `frontend/src/components/settings/downloads-pane.tsx` | `save()` passes `onSuccess` only when defined |
+| `frontend/src/routes/downloads-settings.test.tsx` | the store mock gains the four binds the iOS shell calls |
+
+`.agents/memory/test-suite-green.md` also gains one line, since a route test that turns `onIOS()` on
+will hit this again.

@@ -16,6 +16,7 @@ Causes worth knowing:
 - **The iPhone touch player needs `onCompactIOS()`.** `onIOS()` alone is iPad regular width, where the bottom row always shows (#138).
 - **Nothing in the touch player's chrome is accessible until a state arrives.** `emit("player:state", playing)` (or `withTracks`) right after `openPlayer()` gives the controls their roles; queries before that see the markup but no accessible roles.
 - **Base UI's `onOpenChange` takes a second argument** (the trigger's event details, e.g. `{ reason: "escape-key", event }`), so assert `toHaveBeenCalledWith(false, expect.anything())` on sheets.
+- **`onIOS()` plus a profile in the store mock needs `SeedAudioLanguages` mocked, or the whole app becomes the error screen.** `lib/device-languages.ts`'s effect calls `Store.SeedAudioLanguages` and only catches the promise, so a mock without the method throws a `TypeError` inside `AppShell`'s effect — past the route boundary, up to the root `errorComponent` ("with no shell around it"). The test then reports whatever it was waiting for (`getByText` of a row), not the crash: the DOM dump is the only clue, and the shell's `navigation` was there first, so `renderApp` passed. `routes/player.test.tsx`, `routes/downloads-playback.test.tsx` and `src/ios.test.tsx` carry the stub; desktop-only files never hit it.
 - `renderApp` waits up to 10 s for the shell, because the first render in a file loads routes cold.
 
 **Why:** these were hidden behind a baseline everyone was told not to chase.
