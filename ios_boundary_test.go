@@ -86,7 +86,8 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 		t.Logf("Wails' application package no longer imports %s on iOS; drop the exception", wailsUpdater)
 	}
 
-	// internal/player is in, but only types.go and service_ios.go: no libmpv,
+	// internal/player is in, but only types.go, service_ios.go and the
+	// downloaded-subtitle check (localsubtitle.go, #85): no libmpv,
 	// no AppKit, no cgo.
 	for _, pkg := range []string{"internal/player", "internal/secrets", "internal/iosplayer"} {
 		out := strings.TrimSpace(listPackage(t, iosEnv, "github.com/k22i/Peli/"+pkg, "ios"))
@@ -113,8 +114,8 @@ func TestIOSBuildLeavesOutTheDesktopOnlyPieces(t *testing.T) {
 				t.Errorf("%s has %s files on iOS: %s", pkg, kind, parts[i])
 			}
 		}
-		if pkg == "internal/player" && parts[0] != "[service_ios.go types.go]" {
-			t.Errorf("internal/player compiles %s on iOS, want only [service_ios.go types.go]", parts[0])
+		if pkg == "internal/player" && parts[0] != "[localsubtitle.go service_ios.go types.go]" {
+			t.Errorf("internal/player compiles %s on iOS, want only [localsubtitle.go service_ios.go types.go]", parts[0])
 		}
 	}
 }
