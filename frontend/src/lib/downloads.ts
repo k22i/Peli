@@ -23,7 +23,7 @@ import {
 import type { Download } from "@bindings/store";
 import { toastManager } from "@/components/ui/toast";
 import type { Meta, Stream, Video } from "@/lib/addon-protocol";
-import { errorCode } from "@/lib/party";
+import { errorCode } from "@/lib/error-code";
 import type { PlayTarget } from "@/lib/playback";
 import type { Candidate } from "@/lib/ranking";
 import { subtitleLanguage, type AddonSubtitle } from "@/lib/subtitles";

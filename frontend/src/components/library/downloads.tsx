@@ -136,8 +136,7 @@ export function Downloads({ profile }: { profile: Profile }) {
       setChosen(toggleKey(selected, download.id));
       setAnchor(download.id);
     },
-    extend: () =>
-      setChosen(new Set([...selected, ...selectRange(ids, anchor, download.id)])),
+    extend: () => setChosen(new Set([...selected, ...selectRange(ids, anchor, download.id)])),
     remove: () => ask(selected.has(download.id) ? picked : [download]),
   });
 
@@ -572,9 +571,7 @@ function RowText({ download, compact = false }: { download: Download; compact?: 
           <span className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-small">
             <span className="text-muted-foreground">{statusText(download)}</span>
             {running && (
-              <span className="text-muted-foreground tnum">
-                {progressText(download, rate)}
-              </span>
+              <span className="text-muted-foreground tnum">{progressText(download, rate)}</span>
             )}
           </span>
         </>
@@ -705,10 +702,7 @@ function DeleteDialog({
 function DownloadsSkeleton() {
   const compact = useCompactShell();
   return (
-    <div
-      aria-hidden
-      className={cn("flex flex-col px-page", compact ? "gap-3" : "max-w-4xl gap-2")}
-    >
+    <div aria-hidden className={cn("flex flex-col px-page", compact ? "gap-3" : "max-w-4xl gap-2")}>
       {Array.from({ length: 4 }, (_, index) => (
         <div key={index} className={cn("flex items-center gap-5", compact ? "gap-3 py-2" : "p-3")}>
           <Skeleton

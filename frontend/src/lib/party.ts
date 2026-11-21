@@ -21,6 +21,7 @@ import {
 import type { Source } from "@bindings/streams";
 import type { Meta, Stream } from "@/lib/addon-protocol";
 import { feature } from "@/lib/features";
+import { errorCode } from "@/lib/error-code";
 import { streamsPath, streamsSearch, type PlayTarget } from "@/lib/playback";
 
 // Watch parties (ADR-0051): watching with friends on Peli or Nuvio's apps,
@@ -190,14 +191,6 @@ export function partyProblem(code: string | undefined): string {
 // Go's code for a call made outside a party (party.CodeNotInParty): the
 // reaction that arrives after the party ended, mostly.
 export const codeNotInParty = "not_in_party";
-
-// The code party.MarshalError put in a call's cause.
-export function errorCode(error: unknown): string | undefined {
-  const cause: unknown = error instanceof Error ? error.cause : undefined;
-  const code =
-    typeof cause === "object" && cause !== null && "code" in cause ? cause.code : undefined;
-  return typeof code === "string" ? code : undefined;
-}
 
 // What a member is doing, in a few words.
 export function memberStatus(member: Member): string {
@@ -426,3 +419,5 @@ export type PartyToast = {
   type: "info" | "warning";
   action?: { label: string; run: () => void };
 };
+
+export { errorCode };
