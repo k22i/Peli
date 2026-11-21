@@ -5,6 +5,7 @@ import { useEffect, useState, type KeyboardEvent, type ReactNode } from "react";
 
 import { BrowseFrame } from "@/components/browse/browse-page";
 import { CompactLibraryFrame } from "@/components/library/compact-frame";
+import { Downloads } from "@/components/library/downloads";
 import { LibraryGridSkeleton, LibraryNotice } from "@/components/library/notice";
 import { Upcoming } from "@/components/library/upcoming";
 import { SelectionBar } from "@/components/library/selection-bar";
@@ -56,7 +57,8 @@ import type { LibraryItem, Profile } from "@bindings/store";
 // Nuvio, so it shows offline too. A card's context menu (the shared title menu) or Delete on a
 // focused card removes it, with Undo in the toast. The Upcoming tab is the calendar of
 // the library's new episodes (#48); the Watchlist tab is what SIMKL and AniList
-// have planned. The header is Browse's (#116, #118): the
+// have planned; the Downloads tab is what the device holds for offline viewing
+// (#85, ADR-0064). The header is Browse's (#116, #118): the
 // title and the view switch, and under them the type chips and Sort.
 export function LibraryPage() {
   const profile = useQuery(currentProfileQuery).data;
@@ -112,16 +114,16 @@ function LibraryFrame({
   );
 }
 
-// Titles, Upcoming or Watchlist: coss Tabs as a segmented control on an ink tint. The
+// Titles, Upcoming, Watchlist or Downloads: coss Tabs as a segmented control on an ink tint. The
 // pill is a wrapper, since a tier sets its own background; the tab list
 // inside it is bare, and its indicator is the raised knob.
 //
-// `compact` (#132, iPhone): a full-width segmented control, three equal
-// segments (two for kids), 36 pt tall with a 9 pt radius.
+// `compact` (#132, iPhone): a full-width segmented control, equal segments
+// (three for kids), 36 pt tall with a 9 pt radius.
 function ViewSwitch({ compact = false }: { compact?: boolean }) {
   const search: LibrarySearch = useSearch({ strict: false });
   const navigate = useNavigate();
-  // Kids profiles keep no tracking, so no Watchlist.
+  // Kids profiles keep no tracking, so no Watchlist; downloads they may have.
   const kids = useQuery(currentProfileQuery).data?.kids ?? false;
   return (
     // Replaced, as the filters are; the titles' filters stay in the address
@@ -133,7 +135,10 @@ function ViewSwitch({ compact = false }: { compact?: boolean }) {
           to: ".",
           search: (previous: LibrarySearch): LibrarySearch => ({
             ...previous,
-            view: next === "upcoming" || next === "watchlist" ? next : undefined,
+            view:
+              next === "upcoming" || next === "watchlist" || next === "downloads"
+                ? next
+                : undefined,
           }),
           replace: true,
         })
@@ -144,7 +149,7 @@ function ViewSwitch({ compact = false }: { compact?: boolean }) {
           aria-label="View"
           className={cn(
             "grid h-9 w-full gap-0 rounded-[9px] bg-foreground/7 p-0.5 text-muted-foreground *:data-[slot=tab-indicator]:rounded-[7px] *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none",
-            kids ? "grid-cols-2" : "grid-cols-3",
+            kids ? "grid-cols-3" : "grid-cols-4",
           )}
         >
           <TabsTab value="titles" className={segment}>
@@ -158,6 +163,9 @@ function ViewSwitch({ compact = false }: { compact?: boolean }) {
               Watchlist
             </TabsTab>
           )}
+          <TabsTab value="downloads" className={segment}>
+            Downloads
+          </TabsTab>
         </TabsList>
       ) : (
         <span className="inline-flex rounded-full bg-foreground/7 p-1">
@@ -176,6 +184,9 @@ function ViewSwitch({ compact = false }: { compact?: boolean }) {
                 Watchlist
               </TabsTab>
             )}
+            <TabsTab value="downloads" className="rounded-full px-4">
+              Downloads
+            </TabsTab>
           </TabsList>
         </span>
       )}
@@ -183,8 +194,8 @@ function ViewSwitch({ compact = false }: { compact?: boolean }) {
   );
 }
 
-// A compact switch's segment: the whole third (or half), 32 pt inside the
-// 2 pt padding.
+// A compact switch's segment: the whole fourth (or third for kids), 32 pt
+// inside the 2 pt padding.
 const segment = "h-8 min-w-0 rounded-[7px] px-1 text-[0.8125rem] font-[590] sm:h-8";
 
 function Library({ profile }: { profile: Profile }) {
@@ -211,6 +222,14 @@ function Library({ profile }: { profile: Profile }) {
     return (
       <LibraryFrame>
         <Watchlist profile={profile} />
+      </LibraryFrame>
+    );
+  }
+  // What this device holds for offline viewing (#85, ADR-0064).
+  if (search.view === "downloads") {
+    return (
+      <LibraryFrame>
+        <Downloads profile={profile} />
       </LibraryFrame>
     );
   }
