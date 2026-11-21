@@ -56,6 +56,8 @@ type session struct {
 	nudged float64
 	sync   syncState
 	chat   chatState
+	// The reaction rate limits.
+	reactions reactionState
 }
 
 func (sess *session) isHost() bool { return sess.memberID == sess.hostID }
@@ -302,6 +304,8 @@ func (s *Service) onMessage(sess *session, event string, payload json.RawMessage
 			stream := streamOf(w)
 			sess.shared = &stream
 		}
+	case "reaction":
+		s.onReaction(sess, payload)
 	case "chat":
 		var m backend.PartyMessage
 		if json.Unmarshal(payload, &m) == nil {
