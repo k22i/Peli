@@ -317,6 +317,7 @@ type touchControls interface {
 	SystemVolume() float64
 	SetImmersive(on bool) error
 	SetPanscan(v float64) error
+	SetVideoInset(rightPx int) error
 }
 
 func (s *Service) touch() touchControls {
@@ -364,6 +365,16 @@ func (s *Service) SetPanscan(v float64) error {
 		return t.SetPanscan(v)
 	}
 	return ErrNotYet
+}
+
+// SetVideoInset shifts the picture left for the docked watch party's
+// sidebar. Like the desktop's, it isn't gated; with no engine there is
+// nothing to shift.
+func (s *Service) SetVideoInset(rightPx int) error {
+	if t := s.touch(); t != nil {
+		return t.SetVideoInset(rightPx)
+	}
+	return nil
 }
 
 // The Service is itself an Engine when it has one to forward to; this keeps

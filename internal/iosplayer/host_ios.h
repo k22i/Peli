@@ -83,5 +83,8 @@ void peliSystemVolume(double v);
 // peli_immersive hides the status bar and the home indicator and keeps the
 // first swipe from an edge for the app (1), or gives them back (0).
 void peli_immersive(int on);
+// peli_host_width is the video view's width in points, 0 when there is no
+// view. The docked watch party's inset is a share of it.
+double peli_host_width(void);
 
 #endif

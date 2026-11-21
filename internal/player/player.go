@@ -186,6 +186,11 @@ type Service struct {
 	file           uint64
 	autoCrop       context.CancelFunc
 	autoCropFile   uint64
+
+	// inset is the right margin the picture keeps, in CSS pixels
+	// (SetVideoInset).
+	inset int
+
 	// quality is how the file playing is rendered.
 	quality store.Quality
 }
@@ -252,6 +257,8 @@ func UseWindow(s *Service, window *application.WebviewWindow) {
 	}
 	window.OnWindowEvent(events.Common.WindowFullscreen, fullscreen(true))
 	window.OnWindowEvent(events.Common.WindowUnFullscreen, fullscreen(false))
+	// The inset is in pixels, the margin a share of the width.
+	window.OnWindowEvent(events.Common.WindowDidResize, func(*application.WindowEvent) { s.applyInset() })
 }
 
 // UseSettings has each session read whether to decode on the GPU from
@@ -353,6 +360,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.mu.Unlock()
 	props := append(trackProps(opts), pictureProps(s.pictureFor(opts))...)
 	props = append(props, framingProps(framing)...)
+	s.applyInset()
 	// Each file plays at normal speed, whatever the last one played at, and
 	// without the last one's A–B loop.
 	props = append(props, [2]string{"video-crop", ""}, [2]string{"speed", "1"},
@@ -896,6 +904,7 @@ func (s *Service) setMini(window *application.WebviewWindow, on bool) error {
 		return fmt.Errorf("%w: %w", ErrUnavailable, err)
 	}
 	s.update(func(st *State) { st.Mini = on })
+	s.applyInset()
 	return nil
 }
 

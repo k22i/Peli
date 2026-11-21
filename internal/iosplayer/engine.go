@@ -96,6 +96,9 @@ type Engine struct {
 	forceTime  bool
 	lastTime   time.Time
 	ended      *playback.Ended
+	// inset is the right margin the picture keeps, in points
+	// (SetVideoInset).
+	inset int
 
 	// held is set by Suspend until Resume: the app is leaving the screen, the
 	// renderer is parked and nothing may start playing meanwhile.
@@ -374,6 +377,7 @@ func (e *Engine) open(mode string) (*session, error) {
 	e.state.Active = true
 	e.stateDirty = true
 	e.mu.Unlock()
+	e.applyInset()
 	return ses, nil
 }
 
@@ -494,6 +498,36 @@ func (e *Engine) SetPanscan(v float64) error {
 		return playback.ErrInvalid
 	}
 	return e.set("panscan", playback.Seconds(v))
+}
+
+// SetVideoInset shifts the picture left by rightPx points, for the docked
+// watch party's sidebar; 0 puts it back. mpv's margin is a share of the
+// width (the view's, clamped to 0.6), so the frontend calls it again when
+// the view's width changes, and a new session gets it too. Only the picture
+// moves: the GLES framebuffer stays the view's size.
+func (e *Engine) SetVideoInset(rightPx int) error {
+	e.mu.Lock()
+	e.inset = max(rightPx, 0)
+	e.mu.Unlock()
+	e.applyInset()
+	return nil
+}
+
+func (e *Engine) applyInset() {
+	ses := e.current()
+	if ses == nil {
+		return
+	}
+	e.mu.Lock()
+	inset := e.inset
+	e.mu.Unlock()
+	ratio := 0.0
+	if w := float64(C.peli_host_width()); inset > 0 && w > 0 {
+		ratio = math.Min(float64(inset)/w, 0.6)
+	}
+	if err := ses.m.setProperty("video-margin-ratio-right", strconv.FormatFloat(ratio, 'f', 4, 64)); err != nil {
+		slog.Warn("iosplayer: video inset not set", "error", err)
+	}
 }
 
 func (e *Engine) SetMuted(muted bool) error { return e.set("mute", playback.YesNo(muted)) }

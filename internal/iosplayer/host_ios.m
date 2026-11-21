@@ -602,6 +602,13 @@ static void immersive_install(void) {
 	});
 }
 
+double peli_host_width(void) {
+	__block double w = 0;
+	void (^work)(void) = ^{ w = g_view ? g_view.bounds.size.width : 0; };
+	if (NSThread.isMainThread) work(); else dispatch_sync(dispatch_get_main_queue(), work);
+	return w;
+}
+
 void peli_immersive(int on) {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		immersive_install();

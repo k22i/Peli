@@ -32,11 +32,13 @@ import {
   useRef,
   useState,
   type ComponentProps,
+  type CSSProperties,
   type RefObject,
   type ReactNode,
 } from "react";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
+import { PartyDock, partyDockWidth, usePartyDock } from "@/components/party/party-dock";
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { MoreMenu } from "@/components/player/more-menu";
 import { NextEpisode } from "@/components/player/next-episode";
@@ -571,6 +573,11 @@ function PlayerFile({
   const party = partyState?.party ?? undefined;
   const partyChat = usePartyChat();
   const [partyOpen, setPartyOpen] = useState(false);
+  // "Keep open": the party panel is a sidebar the picture makes room for,
+  // not a sheet over it. The mini player hides it without changing either.
+  const { docked } = usePartyDock();
+  const dockShown = docked && partyOpen && !mini;
+  const dockRef = useRef<HTMLDivElement>(null);
   const media = watching ? partyMedia(watching, heading, meta, playing?.stream) : undefined;
   const shared =
     playing?.source && !torrent ? sharedStream(playing.source, playing.stream) : undefined;
@@ -872,7 +879,8 @@ function PlayerFile({
       Player.SetMini(false).catch(() => {});
     }
     setHelpOpen(false);
-    setPartyOpen(!partyOpen);
+    // Leaving the mini player brings a docked party back, not away.
+    setPartyOpen(mini && docked ? true : !partyOpen);
   };
   // "Start over", while a resumed file has played less than startOverFor.
   const resumedAt = playing?.resumedAt ?? 0;
@@ -1604,6 +1612,31 @@ function PlayerFile({
     setPictureOpen(!pictureOpen);
   };
 
+  // The picture moves left by the dock's width (Go's margin is a share of the
+  // window, so it also takes it again when the window changes); back to 0
+  // when the dock goes: undocked, closed, the mini player, the page.
+  useEffect(() => {
+    if (!dockShown) return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const apply = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const measured = dockRef.current?.getBoundingClientRect().width ?? 0;
+        const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        Player.SetVideoInset(Math.round(measured || parseFloat(partyDockWidth) * rem)).catch(
+          () => {},
+        );
+      }, 100);
+    };
+    apply();
+    window.addEventListener("resize", apply);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", apply);
+      Player.SetVideoInset(0).catch(() => {});
+    };
+  }, [dockShown]);
+
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       // R and G nudge the subtitles: the controls staying hidden shows where
@@ -1621,7 +1654,26 @@ function PlayerFile({
         if (event.type === "keydown" && event.key === "Escape") leave();
         return;
       }
-      if (error || switcherOpen || partyOpen || dockMenuOpen) return;
+      if (error || switcherOpen || (partyOpen && !dockShown) || dockMenuOpen) return;
+      // The docked party leaves the player its keys, but not while typing in
+      // it (Esc leaves the field first), nor a press a focused control of its
+      // own takes.
+      const target = event.target instanceof Element ? event.target : null;
+      if (dockShown && target && dockRef.current?.contains(target)) {
+        const typing =
+          target instanceof HTMLInputElement ||
+          target instanceof HTMLTextAreaElement ||
+          (target instanceof HTMLElement && target.isContentEditable);
+        if (typing) {
+          if (event.type === "keydown" && event.key === "Escape") (target as HTMLElement).blur();
+          return;
+        }
+        if (
+          (event.key === " " || event.key === "Enter") &&
+          target.closest("button, a, [role=switch], [role=checkbox], [role=menuitem]")
+        )
+          return;
+      }
       if (event.metaKey || event.ctrlKey) return;
       // The iPad's keyboard (#138): what the iOS player can't do (framing,
       // full screen, the mini player, the switcher, frame steps, A–B loops,
@@ -2400,7 +2452,10 @@ function PlayerFile({
     <div
       // --above-bar is where the overlays sit: above the dock.
       className={cn(
-        "fixed inset-0 text-white select-none",
+        // Narrowed by the docked party, which sits to its right: everything
+        // the player draws (the bar, the top, the flash, the cards, the
+        // subtitle lift) is inside this box and moves in with it.
+        "fixed inset-y-0 left-0 right-(--party-dock-w) text-white select-none",
         // env() is the home indicator on iOS (the webview fills the screen,
         // build/ios/main.m) and 0 elsewhere.
         touch ? "[--dock-h:calc(10rem+env(safe-area-inset-bottom))]" : "[--dock-h:7.5rem]",
@@ -2413,6 +2468,7 @@ function PlayerFile({
         mini ? "[--above-bar:6.25rem]" : "[--above-bar:calc(var(--dock-h)+1.5rem)]",
         !shown && "cursor-none",
       )}
+      style={{ "--party-dock-w": dockShown ? partyDockWidth : "0px" } as CSSProperties}
       onPointerMove={(event) => {
         // A swipe on the picture changes a level or seeks: the controls
         // stay as they were (#131).
@@ -2981,8 +3037,17 @@ function PlayerFile({
           onPick={(candidate, names, refresh) => void switchStream(candidate, names, refresh)}
         />
       )}
+      {dockShown && (
+        <div
+          ref={dockRef}
+          // Just outside the narrowed player, filling the height.
+          className="absolute top-0 bottom-0 left-full w-(--party-dock-w)"
+        >
+          <PartyDock onClose={() => setPartyOpen(false)} />
+        </div>
+      )}
       <PartySheet
-        open={partyOpen && !mini}
+        open={partyOpen && !mini && !docked}
         onOpenChange={setPartyOpen}
         state={partyState}
         media={media}
