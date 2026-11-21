@@ -26,7 +26,12 @@ func fixtureData(t *testing.T, s *Store) {
 	check(t, s.SetAddons(p.ID, []Addon{cinemeta}))
 	check(t, s.SetCursor(p.ID, SurfaceLibrary, 242_369_012))
 	check(t, s.SaveProfileSettings(p.ID, japanese))
-	check(t, s.SaveDeviceSettings(DeviceSettings{Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto"}))
+	// The device's settings written whole, so a fixture reads back as the
+	// build that wrote it wrote them: fields added later (#83, #85) get their
+	// defaults in the records of the fixtures that came before them.
+	device := DefaultDeviceSettings()
+	device.HardwareDecoding, device.Diagnostics = false, true
+	check(t, s.SaveDeviceSettings(device))
 }
 
 // Every shipped schema has a fixture written by the build that introduced it.
@@ -78,16 +83,12 @@ func TestFixtures(t *testing.T) {
 				t.Fatalf("pending = %d pushes, want 4", len(pending))
 			}
 			// Settings arrived in schema 2; older files read as the defaults.
-			// Fields added since (#55, #98) read as their defaults, and the
-			// single audio language older files saved reads as a list of one.
+			// The newest fixture writes them whole; the ones before it saved
+			// what the build of the day knew, so the fields added since (#55,
+			// #98, #85) read as their defaults: the switch says which fields.
 			profileSettings := japanese
-			// Fields added after a fixture was written (hide spoilers, gestures,
-			// auto-update) read as their defaults too.
-			profileSettings.HideSpoilers, profileSettings.Gestures = false, DefaultGestures()
-			deviceSettings := DeviceSettings{
-				Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
-				AutoUpdate: true, Quality: DefaultQuality(), Audio: DefaultAudio(), StreamSort: "best",
-			}
+			deviceSettings := DefaultDeviceSettings()
+			deviceSettings.HardwareDecoding, deviceSettings.Diagnostics = false, true
 			switch filepath.Base(fixture) {
 			case "schema-1.db":
 				profileSettings, deviceSettings = DefaultProfileSettings(), DefaultDeviceSettings()
@@ -99,6 +100,15 @@ func TestFixtures(t *testing.T) {
 				profileSettings.SubtitleLanguage, profileSettings.SubtitleSize, profileSettings.Captions = "en", "large", "on"
 				deviceSettings = DefaultDeviceSettings()
 				deviceSettings.HardwareDecoding, deviceSettings.Diagnostics = false, true
+			case "schema-4.db":
+				// Before hide spoilers, the gestures, auto-update, the dock and
+				// the downloads fields, and written without skip times on.
+				profileSettings.HideSpoilers, profileSettings.Gestures = false, DefaultGestures()
+				deviceSettings = DeviceSettings{
+					Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
+					AutoUpdate: true, Quality: DefaultQuality(), Audio: DefaultAudio(), StreamSort: "best",
+					DownloadsCapGB: 50, DownloadsWiFiOnly: true,
+				}
 			}
 			equal(t, must[ProfileSettings](t)(s.ProfileSettings(id)), profileSettings)
 			equal(t, must[DeviceSettings](t)(s.DeviceSettings()), deviceSettings)
@@ -258,4 +268,33 @@ func TestMigrateMovesSinagAddons(t *testing.T) {
 	moved.URL = AniListAddon.URL
 	// Still turned off, still in its place, and not offered a second time.
 	equal(t, must[[]Addon](t)(s.Addons(id)), []Addon{cinemeta, moved})
+}
+
+// Schema 5: downloads get a bucket of their own, outside the profiles (#85,
+// ADR-0064), so one outlives a relaunch however many profiles there are.
+func TestMigrateAddsDownloads(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "peli.db")
+	db, err := bolt.Open(path, 0o600, nil)
+	check(t, err)
+	check(t, migrate(db, migrations[:4]))
+	check(t, db.View(func(tx *bolt.Tx) error {
+		if tx.Bucket(bucketDownloads) != nil {
+			t.Fatal("the downloads bucket is there before schema 5")
+		}
+		return nil
+	}))
+	check(t, db.Close())
+
+	s, err := Open(path)
+	check(t, err)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
+	d := aDownload(downloadID(1), p.ID, 1000)
+	check(t, s.PutDownload(d))
+	check(t, s.Close())
+
+	s, err = Open(path)
+	check(t, err)
+	defer s.Close()
+	equal(t, must[[]Download](t)(s.Downloads()), []Download{fillLists(d)})
+	equal(t, version(t, s.db), uint64(len(migrations)))
 }

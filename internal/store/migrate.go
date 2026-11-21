@@ -91,6 +91,13 @@ var migrations = []migration{
 		}
 		return nil
 	},
+	// 5: downloads for offline viewing (#85, ADR-0064). One device-level
+	// bucket, keyed by download ID, outside the profiles: a download is never
+	// synced to Nuvio.
+	func(tx *bolt.Tx) error {
+		_, err := tx.CreateBucketIfNotExists(bucketDownloads)
+		return err
+	},
 }
 
 func isSinagURL(url string) bool { return strings.HasPrefix(strings.ToLower(url), "sinag://") }

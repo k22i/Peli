@@ -24,6 +24,9 @@ var laptop = DeviceSettings{
 	Quality: Quality{Scaling: "high", Deband: "low", Sharpen: 3, Upscaler: "fsr", MotionSmoothing: true,
 		Deinterlace: "on", ToneMapping: "bt.2390", TargetPeak: 250},
 	Audio: Audio{Device: "coreaudio/BuiltInSpeakerDevice", StereoDownmix: true, VolumeBoost: true},
+	// Downloads (#85) in a folder of the user's own, capped at 25 GB, on the
+	// phone's data too.
+	DownloadsDir: "/Volumes/Media/Downloads", DownloadsCapGB: 25, DownloadsWiFiOnly: false,
 }
 
 // The acceptance criterion: settings persist, per profile where they follow a
@@ -39,6 +42,8 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 		Audio: DefaultAudio(), StreamSort: "best",
+		// Downloads are the default folder, 50 GB, and Wi-Fi only (#85).
+		DownloadsDir: "", DownloadsCapGB: 50, DownloadsWiFiOnly: true,
 	})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))
@@ -125,6 +130,67 @@ func TestDeviceSettingsPartyDock(t *testing.T) {
 	check(t, err)
 	defer reopened.Close()
 	equal(t, must[DeviceSettings](t)(reopened.DeviceSettings()).PartyDock, true)
+}
+
+// Downloads (#85) are the device's: a folder Peli can find from anywhere, a
+// cap Settings offers, and downloads over Wi-Fi only until that's turned off.
+func TestDeviceSettingsDownloads(t *testing.T) {
+	s, _ := openTemp(t)
+	if d := DefaultDeviceSettings(); d.DownloadsDir != "" || d.DownloadsCapGB != 50 || !d.DownloadsWiFiOnly {
+		t.Fatalf("downloads defaults = %q, %d GB, wi-fi only %v", d.DownloadsDir, d.DownloadsCapGB, d.DownloadsWiFiOnly)
+	}
+
+	for _, refused := range []struct {
+		name  string
+		apply func(*DeviceSettings)
+	}{
+		{name: "relative folder", apply: func(d *DeviceSettings) { d.DownloadsDir = "Peli/Downloads" }},
+		{name: "a cap of 30 GB", apply: func(d *DeviceSettings) { d.DownloadsCapGB = 30 }},
+		{name: "a cap of none", apply: func(d *DeviceSettings) { d.DownloadsCapGB = 0 }},
+		{name: "a cap of 1024 GB", apply: func(d *DeviceSettings) { d.DownloadsCapGB = 1024 }},
+	} {
+		device := DefaultDeviceSettings()
+		refused.apply(&device)
+		if err := s.SaveDeviceSettings(device); !errors.Is(err, ErrInvalidSettings) {
+			t.Errorf("%s: err = %v, want ErrInvalidSettings", refused.name, err)
+		}
+	}
+
+	// What Settings offers saves, and stays: a folder of the user's own, any
+	// of the caps, Wi-Fi only or not.
+	for _, gb := range DownloadCaps {
+		device := DefaultDeviceSettings()
+		device.DownloadsDir, device.DownloadsCapGB, device.DownloadsWiFiOnly = "/Volumes/Media/Peli", gb, false
+		check(t, s.SaveDeviceSettings(device))
+		equal(t, must[DeviceSettings](t)(s.DeviceSettings()), device)
+	}
+}
+
+// The downloads fields are newer than a saved record, which reads with their
+// defaults: the default folder, 50 GB, Wi-Fi only.
+func TestDeviceSettingsDownloadsDecodeOverDefaults(t *testing.T) {
+	s, _ := openTemp(t)
+	check(t, s.SaveDeviceSettings(DefaultDeviceSettings()))
+	check(t, s.db.Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket(bucketSettings)
+		var record map[string]any
+		if err := json.Unmarshal(bucket.Get(keyDevice), &record); err != nil {
+			return err
+		}
+		for _, key := range []string{"downloadsDir", "downloadsCapGB", "downloadsWiFiOnly"} {
+			delete(record, key)
+		}
+		data, err := json.Marshal(record)
+		if err != nil {
+			return err
+		}
+		return bucket.Put(keyDevice, data)
+	}))
+
+	device := must[DeviceSettings](t)(s.DeviceSettings())
+	equal(t, device.DownloadsDir, "")
+	equal(t, device.DownloadsCapGB, 50)
+	equal(t, device.DownloadsWiFiOnly, true)
 }
 
 func TestProfileSettingsValidation(t *testing.T) {

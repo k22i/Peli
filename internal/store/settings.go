@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"slices"
 
@@ -166,6 +167,17 @@ type DeviceSettings struct {
 	// it (ADR-0051). Off until the user asks for it, so the party is the
 	// sheet it always was; the compact iOS shell has no room for a dock.
 	PartyDock bool `json:"partyDock"`
+	// DownloadsDir is where downloads for offline viewing are saved (#85,
+	// ADR-0064): "" is the default, <app data>/Peli/Downloads, beside
+	// peli.db; otherwise an absolute path. A change applies to new downloads,
+	// as each one keeps the root it was saved under.
+	DownloadsDir string `json:"downloadsDir"`
+	// DownloadsCapGB is how much space this device's downloads may take, one
+	// of DownloadCaps. Partial files count towards it.
+	DownloadsCapGB int `json:"downloadsCapGB"`
+	// DownloadsWiFiOnly fetches them over Wi-Fi alone, never the phone's data.
+	// Only iOS reads it.
+	DownloadsWiFiOnly bool `json:"downloadsWiFiOnly"`
 }
 
 var (
@@ -188,6 +200,10 @@ var (
 	languageCode = regexp.MustCompile(`^[a-z]{2,3}$`)
 )
 
+// DownloadCaps are the caps in GB that Settings › Downloads offers for the
+// device's downloads (#85, ADR-0064).
+var DownloadCaps = []int{10, 25, 50, 100, 250, 500}
+
 // DefaultProfileSettings are a profile's settings until it changes them.
 func DefaultProfileSettings() ProfileSettings {
 	return ProfileSettings{
@@ -206,6 +222,9 @@ func DefaultDeviceSettings() DeviceSettings {
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 		Audio: DefaultAudio(), StreamSort: "best",
+		// Downloads: the default folder, 50 GB of them, and the phone's data
+		// left alone.
+		DownloadsCapGB: 50, DownloadsWiFiOnly: true,
 	}
 }
 
@@ -344,6 +363,14 @@ func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
 	}
 	if !slices.Contains(TorrentCacheSizes, settings.TorrentCacheGB) {
 		return fmt.Errorf("%w: torrent cache of %d GB", ErrInvalidSettings, settings.TorrentCacheGB)
+	}
+	// Downloads (#85): a folder Peli can find whatever it's started from, and
+	// one of the caps Settings offers.
+	if settings.DownloadsDir != "" && !filepath.IsAbs(settings.DownloadsDir) {
+		return fmt.Errorf("%w: downloads folder %q", ErrInvalidSettings, settings.DownloadsDir)
+	}
+	if !slices.Contains(DownloadCaps, settings.DownloadsCapGB) {
+		return fmt.Errorf("%w: downloads cap of %d GB", ErrInvalidSettings, settings.DownloadsCapGB)
 	}
 	if !slices.Contains(MaxResolutions, settings.MaxResolution) {
 		return fmt.Errorf("%w: maximum resolution %q", ErrInvalidSettings, settings.MaxResolution)

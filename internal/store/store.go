@@ -1,7 +1,7 @@
 // Package store is Peli's local database: profiles, their library, watch
 // progress, watched items, addons, plugin repositories (#57), home layout, collections, settings and
 // the source each show was last played from (#58), the device's settings,
-// the sync bookkeeping (#28) and a cache.
+// the device's downloads (#85), the sync bookkeeping (#28) and a cache.
 // It is one bbolt file in the OS app-data directory (ADR-0006).
 //
 // Layout: every profile has its own bucket under "profiles", and everything
@@ -30,6 +30,7 @@
 //	                   current → uint64 (profile id)
 //	                   account → string (the linked Nuvio account's user id)
 //	                   tracking-token-owners → []uint64 (profiles with tokens)
+//	downloads          <id> → Download (device-level, #85)
 //	cache              <key> → bytes
 package store
 
