@@ -2,6 +2,7 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import { CancellablePromise } from "@wailsio/runtime";
 import type { AddRequest } from "@bindings/downloads";
 import type {
   Addon,
@@ -19,6 +20,7 @@ import peerflixManifest from "@/lib/addon-protocol/fixtures/peerflix/manifest.js
 import torrentioManifest from "@/lib/addon-protocol/fixtures/torrentio/manifest.json";
 import { defaultQuality } from "@/lib/quality";
 import { defaultAudio } from "@/lib/sound";
+import { profileSettings as settingsOf } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
 // Downloading from where a title shows (#85, ADR-0064): the title page, a
@@ -40,9 +42,13 @@ const mocks = vi.hoisted(() => ({
   remove: vi.fn<(profileId: number, ids: string[] | null) => Promise<void>>(),
 }));
 
+// A Wails call: a CancellablePromise, which carries the cancel() the bindings'
+// calls have.
+function cancels<T>(value: T) {
+  return CancellablePromise.resolve(value);
+}
+
 vi.mock("@bindings/downloads", () => {
-  // A Wails call: a promise with cancel.
-  const cancels = <T,>(value: T) => Object.assign(Promise.resolve(value), { cancel: vi.fn() });
   return {
     Service: {
       Add: (request: AddRequest) => cancels(mocks.add(request)),
@@ -79,7 +85,7 @@ vi.mock("@bindings/store", () => ({
     SaveLibraryItem: () => Promise.resolve(),
     RemoveLibraryItem: () => Promise.resolve(),
     RemoveProgress: () => Promise.resolve(),
-    SaveProgress: (_, entry: Progress) => Promise.resolve(entry),
+    SaveProgress: (_profileId: number, entry: Progress) => Promise.resolve(entry),
     ClearContinueWatching: () => Promise.resolve(),
     DeviceSettings: mocks.device,
     SaveDeviceSettings: () => Promise.resolve(),
@@ -192,12 +198,9 @@ const device: DeviceSettings = {
   audio: defaultAudio,
 };
 
-const profileSettings: ProfileSettings = {
-  audioLanguages: [],
-  subtitleLanguage: "",
-  subtitleSize: "medium",
-  captions: "system",
-};
+// The profile's settings as Go keeps them, with no subtitle language: a
+// download goes without subtitles unless a test asks for them.
+const profileSettings = settingsOf();
 
 // A record as Go keeps it, for one of a title's videos.
 const record = (over: Partial<Download> = {}): Download => ({

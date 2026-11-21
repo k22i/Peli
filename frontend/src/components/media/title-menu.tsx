@@ -36,6 +36,7 @@ import {
   useTitleDownloadsWith,
   videoToDownload,
   type DownloadQueue,
+  type DownloadState,
   type TitleDownloads,
 } from "@/lib/download-pick";
 import { useLoadedAddons } from "@/lib/home";
