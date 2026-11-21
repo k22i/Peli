@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { useNavigate, type HistoryState } from "@tanstack/react-router";
 
 import { Connection } from "@bindings/syncer";
@@ -12,7 +12,7 @@ import { isIOS } from "@/lib/platform";
 import { currentProfileQuery } from "@/lib/profile";
 import { profileSettingsQuery } from "@/lib/settings";
 import type { SubtitleTarget } from "@/lib/subtitles";
-import { useConnection } from "@/lib/sync";
+import { connectionQuery } from "@/lib/sync";
 import {
   isSeriesType,
   playerHeading,
@@ -187,8 +187,8 @@ export async function loadDownloaded({
 export function usePlay() {
   const navigate = useNavigate();
   const client = useQueryClient();
-  const profile = useQuery(currentProfileQuery).data;
-  const offline = useConnection() === Connection.Offline;
+  // Nothing is asked until Play is pressed: the profile and the connection
+  // are read from the cache then.
   return (target: PlayTarget) => {
     if (!target.videoId && isSeriesType(target.type)) {
       void navigate({ to: titlePath, params: titleParams(target) });
@@ -201,32 +201,37 @@ export function usePlay() {
         search: streamsSearch({ video: target.videoId, at: target.resumeAt }),
         state: (state) => ({ ...state, play: target }),
       });
-    if (!profile) return openPicker();
-    void client
-      .fetchQuery(playableQuery(profile.id, streamId(target)))
-      .catch(() => null)
-      .then(async (playable) => {
-        if (!playable) {
-          if (offline) toastManager.add({ title: offlineMessage });
-          else openPicker();
-          return;
-        }
-        try {
-          const player = await loadDownloaded({ client, profileId: profile.id, target, playable });
-          await navigate({
-            to: "/player",
-            // iOS: the player takes the picker's place, so Back and close
-            // land on the title.
-            replace: isIOS(),
-            state: (state) => ({ ...state, player }),
-          });
-        } catch {
-          toastManager.add({
-            type: "error",
-            title: `Can’t play ${target.title}`,
-            description: "Peli’s player couldn’t start. Try again, or restart Peli.",
-          });
-        }
-      });
+    void (async () => {
+      const profile = await client.ensureQueryData(currentProfileQuery).catch(() => undefined);
+      if (!profile) {
+        openPicker();
+        return;
+      }
+      const playable = await client
+        .fetchQuery(playableQuery(profile.id, streamId(target)))
+        .catch(() => null);
+      if (!playable) {
+        const connection = await client.ensureQueryData(connectionQuery).catch(() => undefined);
+        if (connection === Connection.Offline) toastManager.add({ title: offlineMessage });
+        else openPicker();
+        return;
+      }
+      try {
+        const player = await loadDownloaded({ client, profileId: profile.id, target, playable });
+        await navigate({
+          to: "/player",
+          // iOS: the player takes the picker's place, so Back and close
+          // land on the title.
+          replace: isIOS(),
+          state: (state) => ({ ...state, player }),
+        });
+      } catch {
+        toastManager.add({
+          type: "error",
+          title: `Can’t play ${target.title}`,
+          description: "Peli’s player couldn’t start. Try again, or restart Peli.",
+        });
+      }
+    })();
   };
 }
