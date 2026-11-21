@@ -12,7 +12,6 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { LibraryNotice } from "@/components/library/notice";
 import { Artwork } from "@/components/media/artwork";
-import type { PaneId } from "@/components/settings/panes";
 import {
   AlertDialog,
   AlertDialogClose,
@@ -227,11 +226,6 @@ type RowHandlers = {
   resume: (download: Download) => void;
   remove: (download: Download) => void;
 };
-
-// Settings › Downloads (ADR-0064). Part 8 adds the pane; the address is
-// already `/settings?section=downloads`, which is why the id is cast until
-// components/settings/panes.ts knows it.
-const downloadsSection = { section: "downloads" as unknown as PaneId };
 
 // The list, as the view shows it: what hasn't finished (the queue, in the
 // order Go runs it) and then what has, most recently downloaded first.
@@ -608,7 +602,8 @@ function ProgressBar({ value }: { value: number | undefined }) {
 }
 
 // How much of the device's cap the downloads take, and the room left beside
-// it, with the way to Settings › Downloads (part 8) at its end.
+// it, with the way to Settings › Downloads (`?section=downloads`, which
+// components/settings/panes.ts names) at its end.
 function StorageLine({ usage }: { usage: Usage | undefined }) {
   if (!usage) return null;
   return (
@@ -618,7 +613,7 @@ function StorageLine({ usage }: { usage: Usage | undefined }) {
       </p>
       <Link
         to="/settings"
-        search={downloadsSection}
+        search={{ section: "downloads" }}
         className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "-me-2")}
       >
         Settings › Downloads
