@@ -20,7 +20,7 @@ const store = vi.hoisted(() => ({
 vi.mock("@bindings/store", () => ({
   Service: {
     DeviceSettings: () => Promise.resolve(store.device),
-    SaveDeviceSettings: vi.fn((settings: DeviceSettings) => {
+    SaveDeviceSettings: vi.fn<(settings: DeviceSettings) => Promise<void>>((settings) => {
       store.saves.push(settings);
       store.device = settings;
       return Promise.resolve();
