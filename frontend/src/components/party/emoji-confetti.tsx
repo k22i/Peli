@@ -1,17 +1,12 @@
 import { useEffect, useRef } from "react";
 
-import {
-  alpha,
-  cap,
-  spawn,
-  spawnGentle,
-  step,
-  stepGentle,
-  type Particle,
-} from "@/lib/confetti";
+import { alpha, cap, spawn, spawnGentle, step, stepGentle, type Particle } from "@/lib/confetti";
 
-// Above the video and the player's own overlays, below menus, sheets and
-// dialogs (z-50) and toasts (z-60).
+// Between the player's own chrome and the app's popups: the player tops out at
+// z-20 (stats-overlay z-10; picture-sheet, subtitle-panel, still-watching and
+// the touch chrome's sheet z-20), while components/ui's menus, sheets, dialogs
+// and the command palette are z-50 and toasts z-60. Mount it inside the video
+// area, not the player root, or the emoji fly over the docked party panel.
 const layerZ = "z-30";
 
 // How many emoji one reaction throws.
