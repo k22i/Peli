@@ -2,6 +2,7 @@ import { act, configure, fireEvent, screen, waitFor, within } from "@testing-lib
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import { CancellablePromise } from "@wailsio/runtime";
 import type * as Runtime from "@wailsio/runtime";
 import { Service as Downloads, type Playable } from "@bindings/downloads";
 import type { Ended, State } from "@bindings/player";
@@ -238,9 +239,9 @@ function playableOf(fields: Partial<Playable> = {}): Playable {
   };
 }
 
-// A Wails call's promise, with the cancel it has.
+// A Wails call's promise, as the bindings type it.
 function cancellable<T>(value: T) {
-  return Object.assign(Promise.resolve(value), { cancel: vi.fn<() => void>() });
+  return CancellablePromise.resolve(value);
 }
 
 // Answers Downloads.Playable per video id: null for any other.

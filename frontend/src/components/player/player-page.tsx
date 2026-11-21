@@ -409,13 +409,17 @@ function PlayerFile({
   const found = useAddonSubtitles(profileId, downloaded ? undefined : target);
   const savedSubtitles = useMemo<AddonSubtitle[]>(
     () =>
-      (saved.data?.subtitles ?? []).map((subtitle, index) => ({
-        key: `download ${index}`,
-        url: subtitle.url,
-        ...subtitleLanguage(subtitle.lang),
-        name: subtitle.title,
-        addon: "Downloaded",
-      })),
+      (saved.data?.subtitles ?? []).map((subtitle, index) => {
+        const { language, code } = subtitleLanguage(subtitle.lang);
+        return {
+          key: `download ${index}`,
+          url: subtitle.url,
+          language,
+          code,
+          name: subtitle.title,
+          addon: "Downloaded",
+        };
+      }),
     [saved.data],
   );
   const addonSubtitles = downloaded
