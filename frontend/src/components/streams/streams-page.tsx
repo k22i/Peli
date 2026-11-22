@@ -690,7 +690,7 @@ function GuestPick({ header, pick }: { header: ReactNode; pick: PartyPick }) {
   // The page's own bottom padding comes off the height, so the status fills
   // the window and the page doesn't scroll for it. The header is the page's,
   // not the status's: `data-slot="party-pick"` names the status alone, so a
-  // test (or a tool) can look at it without the header's Back.
+  // caller can find the status without the header's Back.
   return (
     <div className="relative isolate flex min-h-[calc(100dvh-var(--spacing-bar)-4rem)] flex-col">
       <Ambient tone="sun" />

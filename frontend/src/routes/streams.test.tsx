@@ -116,7 +116,7 @@ vi.mock("@bindings/player", () => ({
 // that opens the player by itself, with nothing to wait for first, may pass a
 // longer timeout.
 const opensThePlayer = async (timeout = 1000) => {
-  const pause = await screen.findByRole("button", { name: "Pause" }, {}, { timeout });
+  const pause = await screen.findByRole("button", { name: "Pause" }, { timeout });
   expect(pause).toBeInTheDocument();
 };
 
