@@ -35,8 +35,8 @@ concurrency:
 
 env:
   GO_VERSION: "1.27.x"
-  NODE_VERSION: "24"
-  WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.28
+  NODE_VERSION: "26"
+  WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.1.0
   # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers,
   # and the player (#60) libmpv's and libepoxy's.
   LINUX_DEPS: build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev libmpv-dev libepoxy-dev
@@ -101,6 +101,11 @@ jobs:
 
   libmpv:
     if: github.event_name != 'schedule'
+    # A called workflow's jobs may not ask for more than the caller grants,
+    # and libmpv.yml's publish job (manual runs only, never from here) asks
+    # for contents: write. Its build job drops back to read.
+    permissions:
+      contents: write
     uses: ./.github/workflows/libmpv.yml
 
   go:
