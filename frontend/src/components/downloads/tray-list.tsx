@@ -243,9 +243,7 @@ function Row({
         </button>
         {episodeName !== undefined && (
           <span className="truncate text-small text-muted-foreground">
-            <span className="tnum">
-              {`S${download.season} · E${download.episode}`}
-            </span>
+            <span className="tnum">{`S${download.season} · E${download.episode}`}</span>
             {` · ${episodeName}`}
           </span>
         )}

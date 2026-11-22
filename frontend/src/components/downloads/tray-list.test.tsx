@@ -177,9 +177,12 @@ describe("trayDownloads", () => {
     const held = download({ id: "held", state: "paused", doneAt: 0 });
 
     // The queue as Go runs it, then today's finished, newest first.
-    expect(
-      trayDownloads([recent, held, newest, active], now).map((each) => each.id),
-    ).toEqual(["held", "active", "newest", "recent"]);
+    expect(trayDownloads([recent, held, newest, active], now).map((each) => each.id)).toEqual([
+      "held",
+      "active",
+      "newest",
+      "recent",
+    ]);
   });
 
   it("leaves out what finished more than a day ago", () => {

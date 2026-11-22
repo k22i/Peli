@@ -513,9 +513,7 @@ export function downloadOf(
 ): Download | undefined {
   if (videoId === undefined) return undefined;
   const url = candidate.stream.url ?? "";
-  return list.findLast(
-    (download) => download.videoId === videoId && download.request.url === url,
-  );
+  return list.findLast((download) => download.videoId === videoId && download.request.url === url);
 }
 
 // Whether this very stream is the one being added now.
