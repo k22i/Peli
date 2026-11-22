@@ -20,7 +20,6 @@ import {
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 import type { Profile } from "@bindings/store";
-import type { Source } from "@bindings/streams";
 import { Service as Sync } from "@bindings/syncer";
 import { Notice } from "@/components/browse/browse-page";
 import { Artwork } from "@/components/media/artwork";
@@ -66,6 +65,7 @@ import {
   type PartyInfo,
   type SharedStream,
 } from "@/lib/party";
+import { playSharedStream } from "@/lib/party-pick";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
 import { usePreResolve, useSettled } from "@/lib/pre-resolve";
@@ -645,50 +645,26 @@ function Picker({
             .flatMap((group) => group.items)
             .find((candidate) => matchesPartySource(candidate.stream, forParty.media.source))}
           onPick={pick}
-          onPlayShared={(shared) => {
-            const stream: Stream = {
-              name: shared.name,
-              url: shared.url,
-              ...(shared.filename && { behaviorHints: { filename: shared.filename } }),
-            };
-            const source: Source = {
-              url: shared.url,
-              origin: shared.url,
-              headers: shared.headers ?? {},
-              userAgent: "",
-              contentType: "",
-              size: shared.videoSize,
-            };
-            void (async () => {
-              const watching = watchingFor(profile.id, target, meta, []);
-              const at = await Party.StartAt(forParty.media).catch(() => -1);
-              const start = Math.max(0, at);
-              await Player.Load(source, loadOptions(start, settings, [], watching));
-              void navigate({
-                to: "/player",
-                // iOS: the player takes the picker's place, so Back and
-                // close land on the title.
-                replace: isIOS(),
-                state: (state) => ({
-                  ...state,
-                  player: playerState({
-                    heading: playerHeading(meta, video, target.title),
-                    source,
-                    watching,
-                    start,
-                    stream,
-                    subtitles: subtitleTarget(type, video, stream, shared.addonName),
-                  }),
-                }),
-              });
-            })().catch(() =>
+          onPlayShared={(shared) =>
+            void playSharedStream({
+              navigate,
+              shared,
+              media: forParty.media,
+              profileId: profile.id,
+              type,
+              id: target.id,
+              video,
+              title: target.title,
+              meta,
+              settings,
+            }).catch(() =>
               toastManager.add({
                 type: "error",
                 title: `Can’t play ${shared.sharedBy}’s stream`,
                 description: "Their link didn’t open here. Choose a stream of your own.",
               }),
-            );
-          }}
+            )
+          }
         />
       )}
       <StreamsSummary
