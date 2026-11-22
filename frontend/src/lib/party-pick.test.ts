@@ -19,7 +19,8 @@ import { partyMember, partyState } from "@/test/fixtures";
 
 const mocks = vi.hoisted(() => ({
   choices: vi.fn<() => unknown>(),
-  resolvePick: vi.fn<(candidate: Candidate, options: { signal: AbortSignal }) => Promise<unknown>>(),
+  resolvePick:
+    vi.fn<(candidate: Candidate, options: { signal: AbortSignal }) => Promise<unknown>>(),
   load: vi.fn<(source: Source, options: { start: number }) => Promise<void>>(),
   navigate: vi.fn<(options: unknown) => Promise<void>>(),
   setChosen: vi.fn<() => Promise<void>>(),
@@ -206,7 +207,11 @@ type Status = "pending" | "success" | "error";
 // What useStreamChoices returns, as far as the chooser reads it.
 function choose(candidates: Candidate[], statuses: Status[], answered = false) {
   mocks.choices.mockReturnValue({
-    ranked: { top: candidates[0] ?? null, groups: [{ items: candidates }], total: candidates.length },
+    ranked: {
+      top: candidates[0] ?? null,
+      groups: [{ items: candidates }],
+      total: candidates.length,
+    },
     answered,
     loading: false,
     sources: statuses.map((status, index) => ({ key: `s${index}`, status })),

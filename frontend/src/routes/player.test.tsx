@@ -1724,9 +1724,7 @@ describe("stream switcher", () => {
       await user.click(within(alert).getByRole("button", { name: "Try another stream" }));
 
       // The picker for the party's media, which picks from the host's stream.
-      await waitFor(() =>
-        expect(router.state.location.pathname).toBe("/streams/series/tt0903747"),
-      );
+      await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
       expect(router.state.location.search).toEqual({ video: "tt0903747:1:1" });
       expect(router.state.location.state.play).toMatchObject({
         type: "series",
@@ -2435,9 +2433,7 @@ describe("watch party: following the host's stream", () => {
 
   it("follows the latest switch when the host switches again mid-switch", async () => {
     let release: (value: Source) => void = () => {};
-    mocks.resolve.mockImplementationOnce(
-      () => new Promise<Source>((done) => (release = done)),
-    );
+    mocks.resolve.mockImplementationOnce(() => new Promise<Source>((done) => (release = done)));
     await openPilot();
     emit("player:state", playing);
     emit("party:state", partyState("[TB+] Torrentio\n720p"));

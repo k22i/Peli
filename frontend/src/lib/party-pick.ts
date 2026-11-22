@@ -72,7 +72,8 @@ export function closestToHost(
     const origin =
       host.source !== null && host.source !== "other" && parsed.source === host.source ? 1 : 0;
     const size = sizeOf(candidate);
-    const gap = hostSize !== null && hostSize > 0 && size !== null ? Math.abs(size - hostSize) : Infinity;
+    const gap =
+      hostSize !== null && hostSize > 0 && size !== null ? Math.abs(size - hostSize) : Infinity;
     return { resolution, likeness: group + origin, gap };
   };
   const measured = candidates
@@ -106,7 +107,11 @@ export function partyPlan(candidates: readonly Candidate[], party: PartyInfo): P
   return [
     ...exact.map((candidate): PartyStep => ({ kind: "candidate", candidate, reason: "match" })),
     ...(party.shared ? [{ kind: "shared", shared: party.shared, reason: "shared" } as const] : []),
-    ...ordered.map((candidate): PartyStep => ({ kind: "candidate", candidate, reason: restReason })),
+    ...ordered.map((candidate): PartyStep => ({
+      kind: "candidate",
+      candidate,
+      reason: restReason,
+    })),
   ];
 }
 
@@ -167,7 +172,12 @@ type Playing = {
 async function openPlayer(
   navigate: Navigate,
   playing: Playing,
-  { source, stream, start, addon }: { source: Source; stream: Stream; start: number; addon: string },
+  {
+    source,
+    stream,
+    start,
+    addon,
+  }: { source: Source; stream: Stream; start: number; addon: string },
 ) {
   const { profileId, type, id, video, title, meta, settings } = playing;
   const watching = watchingFor(profileId, { type, id, title, videoId: video }, meta, []);
@@ -271,8 +281,7 @@ export function usePartyAutoPick({
   const navigate = useNavigate();
   const choices = useStreamChoices(profileId, type, id, video, title);
   const [attempt, setAttempt] = useState(0);
-  const active =
-    enabled && !!party && isPartyGuest(party) && partyWatches(party, type, id, video);
+  const active = enabled && !!party && isPartyGuest(party) && partyWatches(party, type, id, video);
   // One run per host stream and per retry.
   const cycle = active && party ? `${attempt}|${JSON.stringify(party.media.source)}` : null;
   const [latched, setLatched] = useState<string | null>(null);
@@ -418,10 +427,7 @@ function sharedPlayableOf(shared: SharedStream): { source: Source; attempt: Atte
 
 // The guest's candidates in ranking order, the top pick first: unfiltered, so
 // their own filter chips never change the party's pick.
-function flatten(ranked: {
-  top: Candidate | null;
-  groups: { items: Candidate[] }[];
-}): Candidate[] {
+function flatten(ranked: { top: Candidate | null; groups: { items: Candidate[] }[] }): Candidate[] {
   const all = ranked.groups.flatMap((group) => group.items);
   return ranked.top ? [ranked.top, ...all.filter((candidate) => candidate !== ranked.top)] : all;
 }

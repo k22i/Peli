@@ -105,7 +105,6 @@ import {
   usePartyNotices,
   useWatchWithParty,
 } from "@/lib/party";
-import { isPartyGuest } from "@/lib/party-pick";
 import { playableQuery, type Playable } from "@/lib/downloads";
 import { isDownloadSource, loadDownloaded, streamsPath, streamsSearch } from "@/lib/playback";
 import {
@@ -916,12 +915,7 @@ function PlayerFile({
     // A torrent playing that the new stream doesn't come from.
     if (isTorrentSource(source.current) && !isTorrentSource(picked))
       Torrents.Release().catch(() => {});
-    const subtitles = subtitleTarget(
-      watching.contentType,
-      watching.videoId,
-      attempt.stream,
-      addon,
-    );
+    const subtitles = subtitleTarget(watching.contentType, watching.videoId, attempt.stream, addon);
     if (picked.url === source.current?.url) {
       // The same link: this screen plays it on.
       switching.current = false;
@@ -962,7 +956,12 @@ function PlayerFile({
     try {
       const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
       if (controller.signal.aborted) return;
-      const loaded = await loadSwitch({ picked: picked.source, attempt: picked.attempt, addon: "", at });
+      const loaded = await loadSwitch({
+        picked: picked.source,
+        attempt: picked.attempt,
+        addon: "",
+        at,
+      });
       if (controller.signal.aborted) return;
       if (loaded) setFollowing(undefined);
       else failed();
