@@ -80,7 +80,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
 import { loopArgs, loopOf, nextLoop, sameLoop, type Loop } from "@/lib/ab-loop";
-import { streamsQuery } from "@/lib/addon-protocol";
+import { streamsQuery, type Stream } from "@/lib/addon-protocol";
 import { chapterAt, chapterName, nextChapter, previousChapter } from "@/lib/chapters";
 import { haptic } from "@/lib/haptics";
 import { rememberSource } from "@/lib/chosen-source";
@@ -97,6 +97,7 @@ import {
   mediaLabel,
   noticeText,
   Party,
+  type PartyInfo,
   partyMedia,
   sharedStream,
   useParty,
@@ -137,7 +138,11 @@ import {
 } from "@/lib/player";
 import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
-import { attempts, PlayError, resolvePick, sameStream } from "@/lib/resolve";
+import { attempts, PlayError, resolvePick, sameStream, type Attempt } from "@/lib/resolve";
+import { isPartyGuest, usePartyAutoPick, type PartyPicked } from "@/lib/party-pick";
+import type { Watching } from "@bindings/playback";
+import type { Source } from "@bindings/streams";
+import type { Source as PartySource } from "@bindings/party";
 import {
   deviceSettingsQuery,
   profileSettingsQuery,
@@ -492,6 +497,8 @@ function PlayerFile({
   const [switcherOpen, setSwitcherOpen] = useState(false);
   // The stream being opened from the switcher, or why it couldn't be.
   const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
+  // The host's new stream this guest follows (ADR-0051), until it plays.
+  const [following, setFollowing] = useState<PartySource>();
   const pickAbort = useRef<AbortController>(null);
   useEffect(() => () => pickAbort.current?.abort(), []);
   const [idle, wake, hideControls] = useIdle(idleAfter);
@@ -668,6 +675,11 @@ function PlayerFile({
   usePartyNotices((said) => {
     // The party moving on is the prompt's to offer.
     if (said.kind === "media") return;
+    // A guest follows the host onto another stream (the prompt shows it).
+    if (said.kind === "source") {
+      if (said.media?.source && isPartyGuest(party, media)) setFollowing(said.media.source);
+      return;
+    }
     const text = noticeText(said);
     if (text) setPartyNotice(text);
   });
@@ -866,6 +878,98 @@ function PlayerFile({
       if (!controller.signal.aborted) chooseNext();
     }
   };
+  // Loads a resolved stream into this session at `at` and brings the screen
+  // to it: the end of a switch, whoever chose it. `remember` is only the
+  // user's own choice; a party's pick never is (ADR-0051). False when the
+  // player couldn't open it.
+  const loadSwitch = async ({
+    picked,
+    attempt,
+    addon,
+    at,
+    remember,
+  }: {
+    picked: Source;
+    attempt: Attempt;
+    addon: string;
+    at: number;
+    remember?: Candidate;
+  }): Promise<boolean> => {
+    if (!watching) return false;
+    switching.current = true;
+    try {
+      await Player.Load(picked, loadOptions(at, settings, lastTracks.current, watching));
+    } catch {
+      switching.current = false;
+      return false;
+    }
+    if (remember) {
+      rememberSource(
+        queryClient,
+        watching.profileId,
+        watching.contentType,
+        watching.contentId,
+        remember,
+        attempt,
+      );
+    }
+    // A torrent playing that the new stream doesn't come from.
+    if (isTorrentSource(source.current) && !isTorrentSource(picked))
+      Torrents.Release().catch(() => {});
+    const subtitles = subtitleTarget(
+      watching.contentType,
+      watching.videoId,
+      attempt.stream,
+      addon,
+    );
+    if (picked.url === source.current?.url) {
+      // The same link: this screen plays it on.
+      switching.current = false;
+      source.current = picked;
+      reloaded();
+      setError(undefined);
+      setSwitchStatus(undefined);
+      setSwitcherOpen(false);
+      return true;
+    }
+    void navigate({
+      to: "/player",
+      replace: true,
+      state: (history) => ({
+        ...history,
+        player: {
+          ...history.player,
+          title: history.player?.title ?? "",
+          source: picked,
+          stream: attempt.stream,
+          resumedAt: 0,
+          subtitles,
+        },
+      }),
+    });
+    return true;
+  };
+  // The host switched streams (ADR-0051): the chooser's pick plays from
+  // where this guest is, not the party. Only the latest pick loads, and
+  // the guest's remembered source stays theirs.
+  const followAbort = useRef<AbortController>(null);
+  useEffect(() => () => followAbort.current?.abort(), []);
+  const followPick = async (picked: PartyPicked, failed: () => void) => {
+    if (picked.same || !picked.source) return setFollowing(undefined);
+    followAbort.current?.abort();
+    const controller = new AbortController();
+    followAbort.current = controller;
+    try {
+      const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
+      if (controller.signal.aborted) return;
+      const loaded = await loadSwitch({ picked: picked.source, attempt: picked.attempt, addon: "", at });
+      if (controller.signal.aborted) return;
+      if (loaded) setFollowing(undefined);
+      else failed();
+    } catch {
+      if (!controller.signal.aborted) failed();
+    }
+  };
   // Another stream of what's playing (#68): resolved as the picker resolves
   // a pick, loaded into this session from where this one is (or stopped),
   // with the same progress kept, in the languages playing now. This one
@@ -895,59 +999,20 @@ function PlayerFile({
       });
       const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
       controller.signal.throwIfAborted();
-      switching.current = true;
-      try {
-        await Player.Load(picked, loadOptions(at, settings, lastTracks.current, watching));
-      } catch {
-        switching.current = false;
+      const loaded = await loadSwitch({
+        picked,
+        attempt,
+        addon: names.get(attempt.source) ?? "",
+        at,
+        // The user's choice is the show's source from now on (#58).
+        remember: candidate,
+      });
+      if (!loaded) {
         return setSwitchStatus({
           text: "",
           failed: "Peli’s player couldn’t start it. Try another stream.",
         });
       }
-      // The user's choice is the show's source from now on (#58).
-      rememberSource(
-        queryClient,
-        watching.profileId,
-        watching.contentType,
-        watching.contentId,
-        candidate,
-        attempt,
-      );
-      // A torrent playing that the new stream doesn't come from.
-      if (isTorrentSource(source.current) && !isTorrentSource(picked))
-        Torrents.Release().catch(() => {});
-      const subtitles = subtitleTarget(
-        watching.contentType,
-        watching.videoId,
-        attempt.stream,
-        names.get(attempt.source) ?? "",
-      );
-      if (picked.url === source.current?.url) {
-        // The same link: this screen plays it on.
-        switching.current = false;
-        source.current = picked;
-        reloaded();
-        setError(undefined);
-        setSwitchStatus(undefined);
-        setSwitcherOpen(false);
-        return;
-      }
-      void navigate({
-        to: "/player",
-        replace: true,
-        state: (history) => ({
-          ...history,
-          player: {
-            ...history.player,
-            title: history.player?.title ?? "",
-            source: picked,
-            stream: attempt.stream,
-            resumedAt: 0,
-            subtitles,
-          },
-        }),
-      });
     } catch (failure) {
       if (controller.signal.aborted) return;
       const why =
@@ -2102,6 +2167,18 @@ function PlayerFile({
             : "bottom-[calc(2rem+env(safe-area-inset-bottom))]"),
       )}
     >
+      {following && watching && party && !mini && (
+        <PartyFollower
+          key={JSON.stringify(following)}
+          hold={hold}
+          watching={watching}
+          title={heading.title}
+          party={party}
+          expected={following}
+          current={playing?.stream}
+          onPicked={followPick}
+        />
+      )}
       {partyElsewhere && !mini && (
         <Prompt
           {...hold}
@@ -3429,5 +3506,74 @@ function ControlButton({
         </span>
       )}
     </Button>
+  );
+}
+
+// Follows the host onto the stream they switched to: the chooser runs again
+// against it, and while it works the player says so. It plays on with the old
+// stream when nothing opens, and offers to try again, never a list.
+function PartyFollower({
+  hold,
+  watching,
+  title,
+  party,
+  expected,
+  current,
+  onPicked,
+}: {
+  hold: { onPointerEnter: () => void; onPointerLeave: () => void };
+  watching: Watching;
+  title: string;
+  party: PartyInfo;
+  expected: PartySource;
+  current: Stream | undefined;
+  onPicked: (picked: PartyPicked, failed: () => void) => void;
+}) {
+  const [loadFailed, setLoadFailed] = useState(false);
+  // The party's state can trail its notice: wait for the new source so the
+  // chooser doesn't match the one just left.
+  const arrived = JSON.stringify(party.media.source) === JSON.stringify(expected);
+  const pick = usePartyAutoPick({
+    profileId: watching.profileId,
+    type: watching.contentType,
+    id: watching.contentId,
+    video: watching.videoId,
+    title,
+    party,
+    enabled: arrived,
+    open: false,
+    current,
+    onPicked: (picked) => {
+      setLoadFailed(false);
+      onPicked(picked, () => setLoadFailed(true));
+    },
+  });
+  if (pick.status === "failed" || loadFailed) {
+    return (
+      <Prompt
+        {...hold}
+        icon={<Users />}
+        action={
+          <Button
+            size="sm"
+            variant="light"
+            onClick={() => {
+              setLoadFailed(false);
+              pick.retry();
+            }}
+          >
+            Try again
+          </Button>
+        }
+      >
+        Couldn’t switch to {pick.hostName}’s new stream
+      </Prompt>
+    );
+  }
+  if (pick.status === "done") return null;
+  return (
+    <Prompt {...hold} icon={<Users />}>
+      {pick.hostName} switched streams: switching too…
+    </Prompt>
   );
 }

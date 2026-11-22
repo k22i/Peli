@@ -892,3 +892,79 @@ func TestHostSwitchesTheParty(t *testing.T) {
 		t.Error("a guest switched the party")
 	}
 }
+
+func withSource(m Media, hash, name string) Media {
+	idx := 2
+	m.Source = &Source{InfoHash: hash, FileIdx: &idx, Filename: name + ".mkv", VideoSize: 4_000_000_000, Name: name}
+	return m
+}
+
+func TestHostSwitchPublishesSource(t *testing.T) {
+	for _, sharing := range []bool{false, true} {
+		h := newRig(t, true)
+		h.playing(120)
+		first := withSource(episode, "aaa", "1080p")
+		h.s.Create(first)
+		ch := h.connect(t)
+		h.s.Watch(&first, &Stream{URL: "https://debrid.example/a.mkv", Name: "1080p"})
+		if sharing {
+			h.s.SetSharing(true)
+		}
+		h.tick()
+		h.api.mu.Lock()
+		before := len(h.api.media)
+		h.api.mu.Unlock()
+
+		// The same episode on another stream (a switch, a reload).
+		second := withSource(episode, "bbb", "720p")
+		h.s.Watch(&second, &Stream{URL: "https://debrid.example/b.mkv", Name: "720p"})
+		h.tick()
+		eventually(t, "the new source goes to the backend", func() bool {
+			h.api.mu.Lock()
+			defer h.api.mu.Unlock()
+			return len(h.api.media) == before+1 && h.api.media[before].Source != nil && h.api.media[before].Source.InfoHash == "bbb"
+		})
+		if sharing {
+			eventually(t, "the new link is shared", func() bool {
+				var got struct {
+					Stream wireStream `json:"stream"`
+				}
+				return json.Unmarshal(ch.lastSent(t, "stream"), &got) == nil && got.Stream.URL == "https://debrid.example/b.mkv"
+			})
+		}
+
+		// Nothing changed: nothing more is sent.
+		h.tick()
+		time.Sleep(50 * time.Millisecond)
+		h.api.mu.Lock()
+		after := len(h.api.media)
+		h.api.mu.Unlock()
+		if after != before+1 {
+			t.Errorf("sharing %v: a tick without a switch published again (%d)", sharing, after)
+		}
+	}
+}
+
+func TestGuestFollowsSourceChange(t *testing.T) {
+	r := newRig(t, false)
+	r.s.Join("ABCDEF")
+	ch := r.connect(t)
+	first := withSource(episode, "aaa", "1080p")
+	ch.broadcast("media", map[string]any{"media": first.wire(), "playback": nil})
+	r.notice(t, NoticeMedia)
+
+	second := withSource(episode, "bbb", "720p")
+	ch.broadcast("media", map[string]any{"media": second.wire(), "playback": nil})
+	n := r.notice(t, NoticeSource)
+	if n.Media == nil || n.Media.Source == nil || n.Media.Source.InfoHash != "bbb" {
+		t.Errorf("source notice = %+v", n)
+	}
+
+	// The same source again says nothing.
+	ch.broadcast("media", map[string]any{"media": second.wire(), "playback": nil})
+	for len(r.notices) > 0 {
+		if n := <-r.notices; n.Kind == NoticeSource {
+			t.Errorf("a notice for an unchanged source: %+v", n)
+		}
+	}
+}
