@@ -37,8 +37,8 @@ import { feature } from "@/lib/features";
 import { isIOS } from "@/lib/platform";
 import { useCompactShell } from "@/lib/shell-mode";
 import { toastManager } from "@/components/ui/toast";
-import type { ContentType, Stream } from "@/lib/addon-protocol";
-import { remembered, rememberSource } from "@/lib/chosen-source";
+import type { ContentType } from "@/lib/addon-protocol";
+import { rememberSource } from "@/lib/chosen-source";
 import { playableQuery, type Playable } from "@/lib/downloads";
 import {
   loadDownloaded,
@@ -56,7 +56,7 @@ import { Party, partyWatches, useParty } from "@/lib/party";
 import { usePartyAutoPick, type PartyPick } from "@/lib/party-pick";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { usePreResolve, useSettled } from "@/lib/pre-resolve";
-import { filtersKey, toggle } from "@/lib/stream-filters";
+import { filtersKey } from "@/lib/stream-filters";
 import type { StreamSource } from "@/lib/streams";
 import { resolutionLabel } from "@/lib/stream-labels";
 import { neighbours, neighbourTarget } from "@/lib/stream-episodes";
