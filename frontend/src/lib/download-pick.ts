@@ -500,16 +500,44 @@ function DownloadAdder({
   return null;
 }
 
+// The record of one stream in a list (#85 follow-up): the same video, from
+// the same link. Go keeps one record per video unless one failed and was
+// added again, and a title may hold copies of an episode from two sources, so
+// the newest record that matches is the one. Its state says whether it is
+// downloaded: a queued record is not (that was the bug — the menu said
+// "Downloaded" the moment the Add went out).
+export function downloadOf(
+  list: readonly Download[],
+  videoId: string | undefined,
+  candidate: Candidate,
+): Download | undefined {
+  if (videoId === undefined) return undefined;
+  const url = candidate.stream.url ?? "";
+  return list.findLast(
+    (download) => download.videoId === videoId && download.request.url === url,
+  );
+}
+
+// Whether this very stream is the one being added now.
+export const pendingOf = (picked: Candidate | null, candidate: Candidate): boolean =>
+  picked !== null && picked.key === candidate.key;
+
 // Downloads one stream the user picked (#85): the picker's row menu has the
 // candidate already, so nothing is ranked, and the same subtitles go beside
 // it. `list` is the profile's downloads, to tell a stream it already has.
 export type StreamDownloads = {
-  // Whether this very stream is downloaded (the same video, the same link).
-  has: (candidate: Candidate) => boolean;
+  // The profile the menu's actions are for (unset while it loads).
+  profileId: number | undefined;
+  // The record of this very stream (the same video, the same link), whatever
+  // state it is in: the menu reads statusOf to know whether that means
+  // "downloaded".
+  downloadOf: (candidate: Candidate) => Download | undefined;
   // Download this stream.
   save: (candidate: Candidate) => void;
-  // Whether its Add is out.
+  // Whether an Add is out.
   saving: boolean;
+  // Whether this candidate's Add is out ("Starting download…").
+  pending: (candidate: Candidate) => boolean;
   // Render once beside the rows: the subtitles and the Add.
   runner: ReactElement | null;
 };
@@ -522,15 +550,11 @@ export function useStreamDownloads(
   const [picked, setPicked] = useState<Candidate | null>(null);
   const videoId = target ? downloadVideoId(target.meta, target.video) : undefined;
   const save = useCallback((candidate: Candidate) => setPicked(candidate), []);
-  const has = useCallback(
-    (candidate: Candidate) =>
-      videoId !== undefined &&
-      list.some(
-        (download) =>
-          download.videoId === videoId && download.request.url === (candidate.stream.url ?? ""),
-      ),
+  const download = useCallback(
+    (candidate: Candidate) => downloadOf(list, videoId, candidate),
     [list, videoId],
   );
+  const pending = useCallback((candidate: Candidate) => pendingOf(picked, candidate), [picked]);
   const done = useCallback(() => setPicked(null), []);
   const runner =
     picked && target && profileId !== undefined
@@ -544,7 +568,14 @@ export function useStreamDownloads(
         })
       : null;
   return useMemo(
-    () => ({ has, save, saving: picked !== null, runner }),
-    [has, picked, runner, save],
+    () => ({
+      profileId,
+      downloadOf: download,
+      save,
+      saving: picked !== null,
+      pending,
+      runner,
+    }),
+    [download, pending, picked, profileId, runner, save],
   );
 }

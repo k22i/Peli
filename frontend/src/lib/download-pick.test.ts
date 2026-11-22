@@ -2,15 +2,17 @@ import { describe, expect, it, vi } from "vite-plus/test";
 
 import type { Download } from "@bindings/store";
 import type { Meta, Stream } from "@/lib/addon-protocol";
-import { rankStreams, type TitleContext } from "@/lib/ranking";
+import { rankStreams, type Candidate, type TitleContext } from "@/lib/ranking";
 import { defaultPrefs } from "@/lib/ranking/score";
 
 import {
   downloadControl,
+  downloadOf,
   downloadRows,
   downloadState,
   downloadVideoId,
   findingText,
+  pendingOf,
   pressDownload,
   topDownloadable,
   videoToDownload,
@@ -303,5 +305,57 @@ describe("pressing a control", () => {
     const downloading = { ...downloadsOf([partial]), actions };
     pressDownload(downloadState(downloading, series, "cinemeta", episodes[1]), downloading);
     expect(actions.remove).toHaveBeenCalledWith([partial.id]);
+  });
+});
+
+describe("the record of one stream", () => {
+  // The top ranked stream of one answer, as the picker's rows have it.
+  const candidateOf = (streams: Stream[]) => ranked([{ source: torrentio, streams }]).top!;
+
+  it("is the record with the same video and link, whatever its state", () => {
+    const candidate = candidateOf([linked]);
+    const queued = record({ state: "queued", doneAt: 0 });
+    // Queued is not downloaded: the record is still the row's own.
+    expect(downloadOf([queued], "tt0903747:1:2", candidate)).toBe(queued);
+  });
+
+  it("is not another link's record", () => {
+    const candidate = candidateOf([linked]);
+    const other = record({
+      request: { url: "https://torrentio.example/resolve/torbox/KEY/other.mkv", headers: null },
+    });
+    expect(downloadOf([other], "tt0903747:1:2", candidate)).toBeUndefined();
+  });
+
+  it("is not another video's record", () => {
+    const candidate = candidateOf([linked]);
+    expect(downloadOf([record()], "tt0903747:1:3", candidate)).toBeUndefined();
+    // A row with no video of its own (outside the picker) matches nothing.
+    expect(downloadOf([record()], undefined, candidate)).toBeUndefined();
+  });
+
+  it("is the newest of two records for the same stream", () => {
+    const candidate = candidateOf([linked]);
+    const older = record({ id: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", state: "failed" });
+    const newer = record({
+      id: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      state: "downloading",
+      bytes: 40,
+      total: 100,
+    });
+    expect(downloadOf([older, newer], "tt0903747:1:2", candidate)).toBe(newer);
+  });
+});
+
+describe("a stream whose Add is out", () => {
+  const one = ranked([{ source: torrentio, streams: [linked] }]).top!;
+  // Another row of the same answer: the same shape, its own key.
+  const two: Candidate = { ...one, key: `${one.key}#2` };
+
+  it("is pending only for its own candidate", () => {
+    expect(two.key).not.toBe(one.key);
+    expect(pendingOf(one, one)).toBe(true);
+    expect(pendingOf(one, two)).toBe(false);
+    expect(pendingOf(null, one)).toBe(false);
   });
 });

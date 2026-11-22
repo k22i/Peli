@@ -40,6 +40,8 @@ const mocks = vi.hoisted(() => ({
   add: vi.fn<(request: AddRequest) => Promise<unknown>>(),
   list: vi.fn<(profileId: number) => Promise<Download[] | null>>(),
   remove: vi.fn<(profileId: number, ids: string[] | null) => Promise<void>>(),
+  // The tray's shared flag: a row's "Show downloads" opens it.
+  openTray: vi.fn<() => void>(),
 }));
 
 // A Wails call: a CancellablePromise, which carries the cancel() the bindings'
@@ -93,6 +95,12 @@ vi.mock("@bindings/store", () => ({
     ChosenSource: mocks.chosen,
     SetChosenSource: () => Promise.resolve(),
   },
+}));
+
+vi.mock("@/lib/download-tray", () => ({
+  openDownloadTray: mocks.openTray,
+  setDownloadTrayOpen: vi.fn<(open: boolean) => void>(),
+  useDownloadTrayOpen: () => false,
 }));
 
 vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
@@ -264,6 +272,7 @@ beforeEach(() => {
   mocks.add.mockResolvedValue(undefined);
   mocks.list.mockResolvedValue([]);
   mocks.remove.mockResolvedValue(undefined);
+  mocks.openTray.mockClear();
   serve();
 });
 
@@ -385,5 +394,59 @@ describe("downloading from the picker", () => {
     const [request] = mocks.add.mock.calls[0]!;
     expect(request.request.url).toBe(linked.url);
     expect(request).toMatchObject({ contentId: "tt0111161", videoId: "tt0111161" });
+  });
+});
+
+// A row's menu tells the truth about its download (#85 follow-up): a record
+// is only "Downloaded" once Go says the file is here.
+describe("a stream row's download menu", () => {
+  // The row's own record, running: 40 of 100 bytes.
+  const running = record({ state: "downloading", bytes: 40, total: 100, doneAt: 0 });
+
+  it("says a running download is downloading, not downloaded", async () => {
+    mocks.list.mockResolvedValue([running]);
+
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0), { timeout: 5000 });
+
+    fireEvent.contextMenu(topPick());
+    expect(
+      await screen.findByRole("menuitem", { name: "Downloading · 40 %" }, { timeout: 5000 }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("menuitem", { name: "Downloaded" })).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("menuitem", { name: "Show downloads" }));
+    expect(mocks.openTray).toHaveBeenCalledTimes(1);
+  });
+
+  it("cancels a running download", async () => {
+    mocks.list.mockResolvedValue([running]);
+
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0), { timeout: 5000 });
+
+    fireEvent.contextMenu(topPick());
+    await user.click(
+      await screen.findByRole("menuitem", { name: "Cancel download" }, { timeout: 5000 }),
+    );
+    await waitFor(() => expect(mocks.remove).toHaveBeenCalledWith(1, [running.id]));
+  });
+
+  it("offers a finished download, and plays its own copy", async () => {
+    mocks.list.mockResolvedValue([record({ state: "done" })]);
+
+    await renderApp(pickerPath);
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0), { timeout: 5000 });
+
+    fireEvent.contextMenu(topPick());
+    expect(
+      await screen.findByRole("menuitem", { name: "Downloaded" }, { timeout: 5000 }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: "Play downloaded copy" })).toBeInTheDocument();
+    expect(
+      screen.queryByRole("menuitem", { name: "Download this stream" }),
+    ).not.toBeInTheDocument();
   });
 });
