@@ -25,12 +25,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Each on its own architecture, so the smoke test runs natively.
+        # arm64 only: no Intel Mac on CI (ci.yml). build.sh still takes
+        # macos-x86_64, on an Intel runner so the smoke test runs natively.
         include:
           - target: macos-arm64
-            os: macos-15
-          - target: macos-x86_64
-            os: macos-15-intel
+            os: macos-26
     name: libmpv (${{ matrix.target }})
     runs-on: ${{ matrix.os }}
     permissions:
@@ -81,7 +80,7 @@ jobs:
   publish:
     if: github.event_name == 'workflow_dispatch' && inputs.publish
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: write
     steps:

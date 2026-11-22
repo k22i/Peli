@@ -167,11 +167,14 @@ func TestAniListStatusRatingAndRemoval(t *testing.T) {
 	if strings.Join(f.ani.saved, " ") != want {
 		t.Fatalf("saved = %v, want %s", f.ani.saved, want)
 	}
-	for status, anilistStatus := range map[string]string{StatusWatching: "CURRENT", StatusCompleted: "COMPLETED", StatusPaused: "PAUSED", StatusDropped: "DROPPED"} {
-		_, err = f.s.SetStatus(ctx, f.profile.ID, frierenRef, status)
+	// In order (not a map, whose order is random): dropped is set last.
+	for _, c := range []struct{ status, anilist string }{
+		{StatusWatching, "CURRENT"}, {StatusCompleted, "COMPLETED"}, {StatusPaused, "PAUSED"}, {StatusDropped, "DROPPED"},
+	} {
+		_, err = f.s.SetStatus(ctx, f.profile.ID, frierenRef, c.status)
 		check(t, err)
-		if f.ani.entries[154587].Status != anilistStatus {
-			t.Fatalf("%s saved as %s", status, f.ani.entries[154587].Status)
+		if f.ani.entries[154587].Status != c.anilist {
+			t.Fatalf("%s saved as %s", c.status, f.ani.entries[154587].Status)
 		}
 	}
 	// Rating and status are kept as set.

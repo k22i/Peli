@@ -1,4 +1,6 @@
-# #16: lint, test and build Peli on Windows, macOS (arm64 + Intel) and Linux.
+# #16: lint, test and build Peli on Windows, macOS and Linux: the newest
+# runner image of each, x64 except macOS (arm64). No Intel Mac and no older
+# images: a macOS minute costs ten on a private repo.
 name: ci
 
 on:
@@ -50,7 +52,7 @@ env:
 jobs:
   frontend:
     if: github.event_name != 'schedule'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     defaults:
       run:
         working-directory: frontend
@@ -78,7 +80,7 @@ jobs:
   # #18: the notices match the dependencies, and nothing in them is GPL-only.
   licences:
     if: github.event_name != 'schedule'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -117,7 +119,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2025, macos-15, macos-15-intel, ubuntu-24.04]
+        os: [windows-2025, macos-26, ubuntu-26.04]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -135,7 +137,7 @@ jobs:
       - if: runner.os == 'macOS'
         uses: actions/download-artifact@v4
         with:
-          name: libmpv-${{ runner.arch == 'ARM64' && 'macos-arm64' || 'macos-x86_64' }}
+          name: libmpv-macos-arm64
           path: ${{ runner.temp }}/libmpv
       - if: runner.os == 'macOS'
         run: |
@@ -192,9 +194,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # The Intel Mac build costs the most minutes for the least signal, so
-        # PRs skip it; pushes to main build all four.
-        include: ${{ fromJSON(github.event_name == 'pull_request' && '[{"os":"windows-2025","name":"windows-amd64","arch":"amd64"},{"os":"macos-15","name":"macos-arm64","arch":"arm64"},{"os":"ubuntu-24.04","name":"linux-amd64","arch":"amd64"}]' || '[{"os":"windows-2025","name":"windows-amd64","arch":"amd64"},{"os":"macos-15","name":"macos-arm64","arch":"arm64"},{"os":"macos-15-intel","name":"macos-amd64","arch":"amd64"},{"os":"ubuntu-24.04","name":"linux-amd64","arch":"amd64"}]') }}
+        include:
+          - { os: windows-2025, name: windows-amd64, arch: amd64 }
+          - { os: macos-26, name: macos-arm64, arch: arm64 }
+          - { os: ubuntu-26.04, name: linux-amd64, arch: amd64 }
     name: build (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
     defaults:
@@ -227,7 +230,7 @@ jobs:
       - if: runner.os == 'macOS'
         uses: actions/download-artifact@v4
         with:
-          name: libmpv-${{ runner.arch == 'ARM64' && 'macos-arm64' || 'macos-x86_64' }}
+          name: libmpv-macos-arm64
           path: ${{ runner.temp }}/libmpv
       - if: runner.os == 'macOS'
         run: |
@@ -287,7 +290,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2025, ubuntu-24.04]
+        os: [windows-2025, ubuntu-26.04]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -349,7 +352,7 @@ jobs:
   # what to do. The same tests run against nuviotest's fake in the go job.
   contract:
     if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.contract)
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 30
     env:
       # Bump with docs/nuvio-release-checklist.md.

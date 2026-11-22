@@ -74,16 +74,29 @@ func (sess *session) member(id string) *backend.PartyMember {
 }
 
 // send queues a broadcast; it's dropped if the channel isn't joined.
+//
+// A frame goes to the channel open when it was queued (read here, under
+// Service.mu; the out goroutine runs without it). One queued before Away
+// mustn't reach the channel Back opens: that one sends its own presence,
+// state and state_request on connecting.
 func (sess *session) send(event string, payload any) {
+	ch := sess.channel
+	if ch == nil {
+		return
+	}
 	sess.queue(func() {
-		if err := sess.channel.Send(event, payload); err != nil && !errors.Is(err, errNotJoined) {
+		if err := ch.Send(event, payload); err != nil && !errors.Is(err, errNotJoined) {
 			slog.Debug("watch party send failed", "event", event, "err", err)
 		}
 	})
 }
 
 func (sess *session) track(payload any) {
-	sess.queue(func() { _ = sess.channel.Track(payload) })
+	ch := sess.channel
+	if ch == nil {
+		return
+	}
+	sess.queue(func() { _ = ch.Track(payload) })
 }
 
 func (sess *session) queue(f func()) {

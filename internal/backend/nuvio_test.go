@@ -178,6 +178,8 @@ func TestSyncBetweenDevices(t *testing.T) {
 func TestPullPages(t *testing.T) {
 	server := nuviotest.NewServer(t)
 	d := newDevice(t, server)
+	// Thousands of writes, each waiting for the disk, take minutes on Windows.
+	d.store.SkipSync()
 	const total = nuvio.DeltaLimit*2 + 7
 	for i := range total {
 		check(t, d.store.SaveLibraryItem(d.profile.ID, store.LibraryItem{

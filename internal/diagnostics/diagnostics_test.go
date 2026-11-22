@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"slices"
 	"strings"
 	"testing"
@@ -99,6 +100,7 @@ func TestCrashFilesRotate(t *testing.T) {
 
 func TestStartFindsThePreviousCrash(t *testing.T) {
 	dir := t.TempDir()
+	releaseCrashOutput(t)
 	s := New(Options{Dir: dir, Ring: NewRing(10)})
 	Start(s, time.Now())
 	if s.LastCrash() != nil {
@@ -122,6 +124,7 @@ func TestStartFindsThePreviousCrash(t *testing.T) {
 
 func TestShareLogsSendsTheHeaderLogAndCrash(t *testing.T) {
 	dir := t.TempDir()
+	releaseCrashOutput(t)
 	ring := NewRing(10)
 	p := &fakePlatform{}
 	s := New(Options{Dir: dir, Ring: ring, Platform: p})
@@ -239,3 +242,11 @@ type fakePlatform struct{ shared []string }
 func (p *fakePlatform) Share(paths []string) error     { p.shared = paths; return nil }
 func (p *fakePlatform) Memory() (uint64, uint64, bool) { return 100 << 20, 300 << 20, true }
 func (p *fakePlatform) Device() string                 { return "iPhone test" }
+
+// releaseCrashOutput undoes Start's debug.SetCrashOutput when the test ends,
+// which closes the runtime's handle on the crash file: Windows can't remove
+// an open file, so t.TempDir's cleanup (which runs after this one) would
+// fail. Call it after t.TempDir.
+func releaseCrashOutput(t *testing.T) {
+	t.Cleanup(func() { _ = debug.SetCrashOutput(nil, debug.CrashOptions{}) })
+}

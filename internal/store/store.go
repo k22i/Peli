@@ -111,6 +111,11 @@ func Open(path string) (*Store, error) {
 	return &Store{db: db}, nil
 }
 
+// SkipSync stops each write waiting for the disk (bbolt's NoSync). For
+// tests that write thousands of items: a crash can lose writes, so never
+// in the app.
+func (s *Store) SkipSync() { s.db.NoSync = true }
+
 // Close closes the database.
 func (s *Store) Close() error {
 	return s.db.Close()
