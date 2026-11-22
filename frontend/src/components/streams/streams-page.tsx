@@ -17,11 +17,13 @@ import {
   RotateCw,
   Users,
 } from "lucide-react";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 import type { Profile } from "@bindings/store";
 import { Service as Sync } from "@bindings/syncer";
+import { glassButton, pillButton } from "@/components/account/focus-screen";
 import { Notice } from "@/components/browse/browse-page";
+import { Ambient } from "@/components/media/ambient";
 import { Artwork } from "@/components/media/artwork";
 import { useArtUnderBar } from "@/components/shell/bar-tone";
 import { ScrollRail } from "@/components/media/scroll-rail";
@@ -57,15 +59,8 @@ import {
   type Tier,
 } from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
-import {
-  matchesPartySource,
-  Party,
-  partyWatches,
-  useParty,
-  type PartyInfo,
-  type SharedStream,
-} from "@/lib/party";
-import { playSharedStream } from "@/lib/party-pick";
+import { Party, partyWatches, useParty } from "@/lib/party";
+import { usePartyAutoPick, type PartyPick } from "@/lib/party-pick";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { isPluginSource, pluginSource, pluginStreamsQuery } from "@/lib/plugins";
 import { usePreResolve, useSettled } from "@/lib/pre-resolve";
@@ -357,19 +352,38 @@ function Picker({
   // A finished download plays before anything is resolved (ADR-0064): with
   // one, nothing resolves ahead either.
   const downloaded = useQuery(playableQuery(profile.id, video));
-  const ahead = usePreResolve(settledTop, {
-    enabled:
-      device?.preResolve === true && !profile.kids && !downloaded.isPending && !downloaded.data,
-    answered,
-    refresh,
-  });
   const navigate = useNavigate();
-  // The watch party, when it watches this (ADR-0051): its host's stream and
-  // source are offered first, and what's picked starts where the party is.
+  // The watch party, when it watches this (ADR-0051). Its host keeps the
+  // picker, the party card and everyone else in step. A guest never chooses a
+  // stream: Peli picks one from the host's, so there's no list to show.
   const partyState = useParty();
   const forParty = partyWatches(partyState?.party, type, target.id, video)
     ? (partyState?.party ?? undefined)
     : undefined;
+  const guest = forParty !== undefined && !forParty.isHost;
+  // What the guest's page says instead of a list. Called for a host too, so
+  // every hook keeps its place; for a host it does nothing at all.
+  const guestPick = usePartyAutoPick({
+    profileId: profile.id,
+    type,
+    id: target.id,
+    video,
+    title: target.title,
+    party: forParty ?? null,
+    enabled: true,
+  });
+  const ahead = usePreResolve(settledTop, {
+    // Never ahead for a guest: an auto-pick is the party's, not the guest's
+    // own habit, and it never pre-resolves.
+    enabled:
+      device?.preResolve === true &&
+      !profile.kids &&
+      !guest &&
+      !downloaded.isPending &&
+      !downloaded.data,
+    answered,
+    refresh,
+  });
   // The title's backdrop, as its page shows it (TMDB's with a key, else the
   // addon's), from the cache when the page was seen. It tints the top.
   const art = useTmdbArt(tmdbRef(type, target.id, meta));
@@ -588,7 +602,14 @@ function Picker({
         if (opening.current === current) opening.current = null;
       });
   };
-  usePlayKey(view.top, pick);
+  // P plays the top pick. A guest has nothing of their own to play, so the
+  // key does nothing for one: the hook still runs, so every hook keeps its
+  // place.
+  usePlayKey(guest ? null : view.top, pick);
+
+  // The guest's page, in every state: no list, no filters, no jump strip, and
+  // no addons notice either — the status says when nothing opened.
+  if (guest) return <GuestPick header={header} pick={guestPick} />;
 
   if (sources.length === 0) {
     if (loading) {
@@ -638,35 +659,7 @@ function Picker({
   return (
     <>
       {header}
-      {forParty && (
-        <PartySources
-          party={forParty}
-          match={ranked.groups
-            .flatMap((group) => group.items)
-            .find((candidate) => matchesPartySource(candidate.stream, forParty.media.source))}
-          onPick={pick}
-          onPlayShared={(shared) =>
-            void playSharedStream({
-              navigate,
-              shared,
-              media: forParty.media,
-              profileId: profile.id,
-              type,
-              id: target.id,
-              video,
-              title: target.title,
-              meta,
-              settings,
-            }).catch(() =>
-              toastManager.add({
-                type: "error",
-                title: `Can’t play ${shared.sharedBy}’s stream`,
-                description: "Their link didn’t open here. Choose a stream of your own.",
-              }),
-            )
-          }
-        />
-      )}
+      {forParty && <PartySources />}
       <StreamsSummary
         sources={sources}
         loading={loading}
@@ -842,55 +835,94 @@ export type SourceFilter = {
   toggle: (source: string) => void;
 };
 
-// The watch party's way in (ADR-0051): the host's own link when they share
-// it, and the stream of the user's that is the host's (the same torrent, or
-// file), else any pick, which the party keeps in step.
-function PartySources({
-  party,
-  match,
-  onPick,
-  onPlayShared,
-}: {
-  party: PartyInfo;
-  match: Candidate | undefined;
-  onPick: (candidate: Candidate) => void;
-  onPlayShared: (shared: SharedStream) => void;
-}) {
-  const host = party.members?.find((member) => member.host);
-  const shared = party.shared ?? undefined;
+// The watch party's card, for the host (ADR-0051): the party is watching what
+// they pick, so whatever they pick is what everyone sees. A guest has no card
+// of buttons here: they don't pick at all, and the guest's page says what
+// Peli is doing for them instead.
+function PartySources() {
   return (
     <section
       aria-label="Watch party"
-      className="mx-page flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl bg-sun/10 px-5 py-4"
+      className="mx-page flex items-center gap-3 rounded-2xl bg-sun/10 px-5 py-4"
     >
-      <div className="flex min-w-0 flex-1 items-start gap-3">
-        <Users aria-hidden className="mt-0.5 size-5 shrink-0 text-sun-ink" />
-        <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="text-body font-[590]">
-            {party.isHost
-              ? "Your watch party is watching this"
-              : `Watching with ${host?.name ?? "the"}${host ? "’s" : ""} party`}
-          </p>
-          <p className="text-small text-muted-foreground">
-            {match
-              ? "One of your streams is the host’s file, so you’ll see the same thing."
-              : "Pick any stream: Peli keeps it in step with the party."}
-          </p>
-        </div>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {shared && !party.isHost && (
-          <Button variant="secondary" onClick={() => onPlayShared(shared)}>
-            Play {shared.sharedBy}’s stream
-          </Button>
-        )}
-        {match && !party.isHost && (
-          <Button variant="sun" onClick={() => onPick(match)}>
-            Play the party’s source
-          </Button>
-        )}
+      <Users aria-hidden className="mt-0.5 size-5 shrink-0 text-sun-ink" />
+      <div className="flex min-w-0 flex-col gap-0.5">
+        <p className="text-body font-[590]">Your watch party is watching this</p>
+        <p className="text-small text-muted-foreground">
+          Pick any stream: Peli keeps it in step with the party.
+        </p>
       </div>
     </section>
+  );
+}
+
+// The guest's picker (ADR-0051): Peli picks a stream from the host's, so there
+// is nothing to choose — only what it's doing, in the FocusScreen's look
+// (Ambient and the centred column), sized to what the page's header leaves
+// rather than to the whole window.
+function GuestPick({ header, pick }: { header: ReactNode; pick: PartyPick }) {
+  const router = useRouter();
+  const navigate = useNavigate();
+  const canGoBack = useCanGoBack();
+  // Back leaves the party's picker, as the page's own Back does.
+  const back = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
+  const failed = pick.status === "failed";
+  // What Peli is doing: finding the host's stream, opening it, or neither
+  // worked, which is the one state with buttons.
+  const heading = failed
+    ? `Couldn’t open a stream like ${pick.hostName}’s`
+    : pick.status === "searching"
+      ? `Finding ${pick.hostName}’s stream…`
+      : "Opening…";
+  const detail = failed
+    ? "None of your addons opened the party’s stream. Try again, or leave the party and pick one of your own."
+    : "Peli plays the party’s stream, so you see exactly what they do.";
+  // The page's own bottom padding comes off the height, so the status fills
+  // the window and the page doesn't scroll for it.
+  return (
+    <div
+      data-slot="party-pick"
+      className="relative isolate flex min-h-[calc(100dvh-var(--spacing-bar)-4rem)] flex-col"
+    >
+      <Ambient tone="sun" />
+      {header}
+      <section
+        aria-label="Watch party"
+        className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center"
+      >
+        <div aria-live="polite" className="flex flex-col items-center gap-3">
+          {failed ? (
+            <AlertCircle aria-hidden className="size-9 text-sun" />
+          ) : (
+            <Users aria-hidden className="size-9 text-sun" />
+          )}
+          <h2 className="font-display text-[2rem] leading-tight text-balance">{heading}</h2>
+          <p className="max-w-sm text-[0.9375rem] text-pretty text-muted-foreground">{detail}</p>
+        </div>
+        {failed && (
+          <div className="flex w-full flex-col gap-3">
+            <Button
+              size="lg"
+              variant="sun"
+              className={cn(pillButton, "pointer-coarse:min-h-11")}
+              onClick={pick.retry}
+            >
+              <RotateCw />
+              Try again
+            </Button>
+            <Button
+              size="lg"
+              variant="ghost"
+              className={cn(pillButton, glassButton, "pointer-coarse:min-h-11")}
+              onClick={back}
+            >
+              <ChevronLeft />
+              Back
+            </Button>
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
 
