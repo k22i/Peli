@@ -863,7 +863,8 @@ function StreamDownloadGlyph({ download }: { download: DownloadRecord }) {
   if (statusOf(download) === "done") {
     return (
       <span className="flex text-sun-ink">
-        <CircleCheck aria-label={label} role="img" className="size-4" strokeWidth={2.5} />
+        <CircleCheck aria-hidden className="size-4" strokeWidth={2.5} />
+        <span className="sr-only">{label}</span>
       </span>
     );
   }
@@ -871,7 +872,7 @@ function StreamDownloadGlyph({ download }: { download: DownloadRecord }) {
   const ring = 2 * Math.PI * 6.5;
   return (
     <span className="relative grid place-items-center rounded-full text-muted-foreground">
-      <svg aria-label={label} role="img" viewBox="0 0 16 16" className="size-4 -rotate-90">
+      <svg aria-hidden viewBox="0 0 16 16" className="size-4 -rotate-90">
         <circle
           cx="8"
           cy="8"
@@ -894,6 +895,7 @@ function StreamDownloadGlyph({ download }: { download: DownloadRecord }) {
         />
       </svg>
       <ArrowDown aria-hidden className="absolute size-2" strokeWidth={3} />
+      <span className="sr-only">{label}</span>
     </span>
   );
 }
