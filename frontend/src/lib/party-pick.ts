@@ -291,11 +291,21 @@ export function usePartyAutoPick({
   const candidates = flatten(choices.ranked);
   const source = party?.media.source ?? null;
   const matched = candidates.some((candidate) => hasMatch(candidate, source));
+  // Streams reach the ranking a step after they reach the picker (the feed is
+  // an effect, and the engine answers a microtask later), so for a render or
+  // two a source can have streams the ranked view doesn't hold yet. Starting
+  // then would pick from an empty list and fail the guest for nothing, so the
+  // chooser waits for the ranking — unless nothing at all was handed on to it
+  // (no addon has streams, or none it can play), which is a real failure and
+  // is answered by `waitAfterFirst` below.
+  const handed = choices.sources.some((entry) => (entry.streams?.length ?? 0) > 0);
+  const caughtUp = !handed || choices.ranked.total > 0;
   const everyone =
-    choices.answered ||
-    (!choices.loading &&
-      choices.sources.length > 0 &&
-      choices.sources.every((entry) => entry.status !== "pending"));
+    caughtUp &&
+    (choices.answered ||
+      (!choices.loading &&
+        choices.sources.length > 0 &&
+        choices.sources.every((entry) => entry.status !== "pending")));
   const anyAnswered = choices.sources.some((entry) => entry.status !== "pending");
 
   // State keyed on the cycle is adjusted while rendering, not in an effect:

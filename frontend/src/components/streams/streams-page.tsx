@@ -688,15 +688,15 @@ function GuestPick({ header, pick }: { header: ReactNode; pick: PartyPick }) {
     ? "None of your addons opened the party’s stream. Try again, or leave the party and pick one of your own."
     : "Peli plays the party’s stream, so you see exactly what they do.";
   // The page's own bottom padding comes off the height, so the status fills
-  // the window and the page doesn't scroll for it.
+  // the window and the page doesn't scroll for it. The header is the page's,
+  // not the status's: `data-slot="party-pick"` names the status alone, so a
+  // test (or a tool) can look at it without the header's Back.
   return (
-    <div
-      data-slot="party-pick"
-      className="relative isolate flex min-h-[calc(100dvh-var(--spacing-bar)-4rem)] flex-col"
-    >
+    <div className="relative isolate flex min-h-[calc(100dvh-var(--spacing-bar)-4rem)] flex-col">
       <Ambient tone="sun" />
       {header}
       <section
+        data-slot="party-pick"
         aria-label="Watch party"
         className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center"
       >

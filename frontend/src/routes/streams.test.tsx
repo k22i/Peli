@@ -111,9 +111,14 @@ vi.mock("@bindings/player", () => ({
   },
 }));
 
-// The player screen, once a picked stream is loaded.
-const opensThePlayer = async () =>
-  expect(await screen.findByRole("button", { name: "Pause" })).toBeInTheDocument();
+// The player screen, once a picked stream is loaded. The picker's own tests
+// get here after waiting for the list, so a pick is all that is left; a page
+// that opens the player by itself, with nothing to wait for first, may pass a
+// longer timeout.
+const opensThePlayer = async (timeout = 1000) => {
+  const pause = await screen.findByRole("button", { name: "Pause" }, {}, { timeout });
+  expect(pause).toBeInTheDocument();
+};
 
 vi.mock("@bindings/secrets", () => ({ Service: { Get: () => Promise.resolve(null) } }));
 
@@ -1370,6 +1375,23 @@ const partySource = {
 // Longer than the ranking takes to settle (500 ms) and then some.
 const looking = () => new Promise((r) => setTimeout(r, 900));
 
+// The guest's status page, and the parts of the picker it never has. It is
+// found by its slot, which names the status alone: the page's header is
+// outside it, and its Back button shares its name with the header's.
+const partyPick = () => {
+  const page = document.querySelector('[data-slot="party-pick"]');
+  if (!(page instanceof HTMLElement)) throw new Error("no party pick screen");
+  return page;
+};
+const noPicker = () => {
+  expect(screen.queryByRole("list", { name: "Streams" })).toBeNull();
+  // Not even the addons' chips and counts: a guest picks nothing.
+  expect(screen.queryByRole("list", { name: "Addons" })).toBeNull();
+  expect(screen.queryByRole("navigation", { name: "Stream groups" })).toBeNull();
+  expect(screen.queryByRole("group", { name: "Resolution" })).toBeNull();
+  expect(screen.queryByRole("searchbox", { name: "Search release names" })).toBeNull();
+};
+
 // "Start cached streams sooner" (#101, ADR-0060): the cached top pick
 // resolves while the user looks, so picking it plays at once.
 describe("starting cached streams sooner", () => {
@@ -1511,23 +1533,6 @@ describe("with a watch party", () => {
     ],
   };
 
-  // The guest's status page, and the parts of the picker it never has. It is
-  // found by its slot: the page's header is outside it, and its Back button
-  // shares its name with the header's.
-  const partyPick = () => {
-    const page = document.querySelector('[data-slot="party-pick"]');
-    if (!(page instanceof HTMLElement)) throw new Error("no party pick screen");
-    return page;
-  };
-  const noPicker = () => {
-    expect(screen.queryByRole("list", { name: "Streams" })).toBeNull();
-    // Not even the addons' chips and counts: a guest picks nothing.
-    expect(screen.queryByRole("list", { name: "Addons" })).toBeNull();
-    expect(screen.queryByRole("navigation", { name: "Stream groups" })).toBeNull();
-    expect(screen.queryByRole("group", { name: "Resolution" })).toBeNull();
-    expect(screen.queryByRole("searchbox", { name: "Search release names" })).toBeNull();
-  };
-
   it("gives a guest the status and never a list, whatever the addons answer", async () => {
     const slow = later<unknown>();
     vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
@@ -1557,7 +1562,10 @@ describe("with a watch party", () => {
     mocks.addons.mockResolvedValue([cinemeta, torrentio]);
     const { router } = await renderApp(pickerPath);
 
-    await opensThePlayer();
+    // A guest never sees a list to wait for: the page asks its addons, ranks
+    // what they answer, resolves the party's pick and opens the player on its
+    // own, so give it longer than a second to get there.
+    await opensThePlayer(5000);
     // The host's file first, resolved once and played where the party is.
     expect(mocks.resolve.mock.calls[0]![0].url).toBe("https://debrid.example/KEY/b");
     expect(mocks.load).toHaveBeenCalledWith(
