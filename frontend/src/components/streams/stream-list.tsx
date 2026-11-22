@@ -862,20 +862,16 @@ function StreamDownloadGlyph({ download }: { download: DownloadRecord }) {
   const label = statusText(download);
   if (statusOf(download) === "done") {
     return (
-      <span role="img" aria-label={label} className="flex text-sun-ink">
-        <CircleCheck aria-hidden className="size-4" strokeWidth={2.5} />
+      <span className="flex text-sun-ink">
+        <CircleCheck aria-label={label} role="img" className="size-4" strokeWidth={2.5} />
       </span>
     );
   }
   const done = percent(download) ?? 0;
   const ring = 2 * Math.PI * 6.5;
   return (
-    <span
-      role="img"
-      aria-label={label}
-      className="relative grid place-items-center rounded-full text-muted-foreground"
-    >
-      <svg aria-hidden viewBox="0 0 16 16" className="size-4 -rotate-90">
+    <span className="relative grid place-items-center rounded-full text-muted-foreground">
+      <svg aria-label={label} role="img" viewBox="0 0 16 16" className="size-4 -rotate-90">
         <circle
           cx="8"
           cy="8"

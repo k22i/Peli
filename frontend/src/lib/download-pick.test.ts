@@ -79,6 +79,9 @@ const ranked = (answers: { source: string; streams: Stream[] }[], remembered?: s
     remembered: remembered ? { source: remembered, resolution: "1080p", group: null } : null,
   });
 
+// The top ranked stream of one answer, as the picker's rows have it.
+const candidateOf = (streams: Stream[]) => ranked([{ source: torrentio, streams }]).top!;
+
 describe("the stream to download", () => {
   it("takes the top pick when it has a link", () => {
     const view = ranked([{ source: torrentio, streams: [linked] }]);
@@ -309,9 +312,6 @@ describe("pressing a control", () => {
 });
 
 describe("the record of one stream", () => {
-  // The top ranked stream of one answer, as the picker's rows have it.
-  const candidateOf = (streams: Stream[]) => ranked([{ source: torrentio, streams }]).top!;
-
   it("is the record with the same video and link, whatever its state", () => {
     const candidate = candidateOf([linked]);
     const queued = record({ state: "queued", doneAt: 0 });
