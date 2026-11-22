@@ -2300,14 +2300,20 @@ const member = (id: string, name: string, host: boolean, you: boolean) => ({
   watchingElse: false,
   behindMs: 0,
 });
-// A promise settled from outside, for a resolve that stays open.
-function deferred<T>() {
-  let settle: (value: T) => void = () => {};
-  const promise = new Promise<T>((done) => {
-    settle = done;
-  });
-  return { promise, settle };
-}
+const hostMedia = (name: string) => ({
+  type: "series",
+  id: "tt0903747",
+  videoId: "tt0903747:1:1",
+  season: 1,
+  episode: 1,
+  title: "Breaking Bad",
+  episodeTitle: "Pilot",
+  description: "",
+  poster: "",
+  background: "",
+  logo: "",
+  source: hostSource(name),
+});
 
 describe("watch party: following the host's stream", () => {
   const cinemeta: Addon = {
@@ -2341,20 +2347,6 @@ describe("watch party: following the host's stream", () => {
     title: "Pilot",
   };
   const people = [member("me", "Kevin", false, true), member("ana", "Ana", true, false)];
-  const partyMedia = (name: string) => ({
-    type: "series",
-    id: "tt0903747",
-    videoId: "tt0903747:1:1",
-    season: 1,
-    episode: 1,
-    title: "Breaking Bad",
-    episodeTitle: "Pilot",
-    description: "",
-    poster: "",
-    background: "",
-    logo: "",
-    source: hostSource(name),
-  });
   const hostParty = (name: string, more: Record<string, unknown> = {}) => ({
     unavailable: "",
     busy: false,
@@ -2369,7 +2361,7 @@ describe("watch party: following the host's stream", () => {
       connected: true,
       maxMembers: 8,
       members: people,
-      media: partyMedia(name),
+      media: hostMedia(name),
       watching: true,
       paused: false,
       waiting: false,
@@ -2391,7 +2383,7 @@ describe("watch party: following the host's stream", () => {
       action: "",
       positionMs: 0,
       rate: 1,
-      media: partyMedia(name),
+      media: hostMedia(name),
       hostOnly: false,
     });
   };
@@ -2411,13 +2403,14 @@ describe("watch party: following the host's stream", () => {
       [cinemeta.url]: cinemetaManifest,
       [torrentio.url]: torrentioManifest,
       "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
-      [pilotStreams]: { streams: served },
     };
+    // The streams are read when asked, so a test can change what's served.
     vi.stubGlobal(
       "fetch",
-      vi.fn<(url: string) => Promise<Response>>(async (url) =>
-        url in answers ? Response.json(answers[url]) : new Response("", { status: 503 }),
-      ),
+      vi.fn<(url: string) => Promise<Response>>(async (url) => {
+        const all = { ...answers, [pilotStreams]: { streams: served } };
+        return url in all ? Response.json(all[url]) : new Response("", { status: 503 });
+      }),
     );
     Object.defineProperty(document.documentElement, "clientHeight", {
       configurable: true,
@@ -2462,7 +2455,7 @@ describe("watch party: following the host's stream", () => {
   });
 
   it("follows the latest switch when the host switches again mid-switch", async () => {
-    const open = deferred<Source>();
+    const open = Promise.withResolvers<Source>();
     mocks.resolve.mockImplementationOnce(() => open.promise);
     await openPilot();
     emit("player:state", playing);
@@ -2472,7 +2465,7 @@ describe("watch party: following the host's stream", () => {
     await waitFor(() => expect(mocks.resolve).toHaveBeenCalledTimes(1));
     // Back to the one playing: the first pick is dropped, whatever it resolves to.
     hostSwitches("[TB+] Torrentio\n720p");
-    open.settle({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
+    open.resolve({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
     await waitFor(() =>
       expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
     );
