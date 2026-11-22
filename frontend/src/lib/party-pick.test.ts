@@ -28,7 +28,7 @@ const mocks = vi.hoisted(() => ({
 
 // The picker's data hook is the page's; the chooser only reads what it
 // returns.
-vi.mock("@/components/streams/streams-page", () => ({
+vi.mock("@/components/streams/stream-choices", () => ({
   useStreamChoices: () => mocks.choices(),
 }));
 
@@ -330,10 +330,11 @@ describe("when the chooser starts", () => {
   });
 });
 
+const state = () => party(hostSource("Movie.2020.1080p.WEB-DL.x264-CCC.mkv"));
+
 describe("resolving", () => {
   const first = pick("Movie.2020.1080p.WEB-DL.x264-AAA.mkv");
   const second = pick("Movie.2020.1080p.WEB-DL.x264-BBB.mkv", 7 * GB);
-  const state = () => party(hostSource("Movie.2020.1080p.WEB-DL.x264-CCC.mkv"));
 
   it("tries the next candidate when one fails, in the chooser’s order", async () => {
     choose([first, second], ["success"], true);

@@ -3,7 +3,7 @@ import { useEffect, useEffectEvent, useState } from "react";
 
 import type { Source as PartySource } from "@bindings/party";
 import type { Source } from "@bindings/streams";
-import { useStreamChoices } from "@/components/streams/streams-page";
+import { useStreamChoices } from "@/components/streams/stream-choices";
 import type { ContentType, Meta, Stream } from "@/lib/addon-protocol";
 import {
   matchesPartySource,
@@ -78,7 +78,7 @@ export function closestToHost(
   };
   const measured = candidates
     .map((candidate, index) => ({ candidate, index, ...measure(candidate) }))
-    .sort(
+    .toSorted(
       (a, b) =>
         b.resolution - a.resolution ||
         b.likeness - a.likeness ||
@@ -298,24 +298,23 @@ export function usePartyAutoPick({
       choices.sources.every((entry) => entry.status !== "pending"));
   const anyAnswered = choices.sources.some((entry) => entry.status !== "pending");
 
-  useEffect(() => {
-    if (cycle) return;
+  // State keyed on the cycle is adjusted while rendering, not in an effect:
+  // a disabled chooser forgets everything, and a cycle latches once its
+  // start condition holds (it stays started if the ranking moves on).
+  if (!cycle && (latched !== null || waited !== null || outcome !== null)) {
     setLatched(null);
     setWaited(null);
     setOutcome(null);
-  }, [cycle]);
+  }
+  if (cycle && latched !== cycle && (matched || everyone || waited === cycle)) {
+    setLatched(cycle);
+  }
 
   useEffect(() => {
     if (!cycle || !anyAnswered || latched === cycle) return undefined;
     const timer = setTimeout(() => setWaited(cycle), waitAfterFirst);
     return () => clearTimeout(timer);
   }, [cycle, anyAnswered, latched]);
-
-  useEffect(() => {
-    if (cycle && latched !== cycle && (matched || everyone || waited === cycle)) {
-      setLatched(cycle);
-    }
-  }, [cycle, latched, matched, everyone, waited]);
 
   const go = cycle !== null && latched === cycle;
 
@@ -357,13 +356,14 @@ export function usePartyAutoPick({
       }
       let resolved: { source: Source; attempt: Attempt };
       try {
+        const resolving =
+          step.kind === "candidate"
+            ? resolvePick(step.candidate, { refresh: choices.refresh, signal })
+            : Promise.resolve(sharedPlayableOf(step.shared));
         // One at a time: each resolve can make a debrid service start a
         // download.
         // oxlint-disable-next-line no-await-in-loop
-        resolved =
-          step.kind === "candidate"
-            ? await resolvePick(step.candidate, { refresh: choices.refresh, signal })
-            : sharedPlayableOf(step.shared);
+        resolved = await resolving;
       } catch {
         if (signal.aborted) return;
         continue;
@@ -410,7 +410,7 @@ export function usePartyAutoPick({
   }, [go, cycle]);
 
   const mine = outcome && outcome.cycle === cycle ? outcome : null;
-  const hostName = party?.members.find((member) => member.host)?.name || "the host";
+  const hostName = party?.members?.find((member) => member.host)?.name || "the host";
   return {
     status: mine ? mine.status : go ? "opening" : "searching",
     ...(mine?.reason && { reason: mine.reason }),

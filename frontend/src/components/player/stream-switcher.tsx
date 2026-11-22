@@ -12,7 +12,8 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { StreamList } from "@/components/streams/stream-list";
-import { StreamsSummary, usePlayKey, useStreamChoices } from "@/components/streams/streams-page";
+import { useStreamChoices } from "@/components/streams/stream-choices";
+import { StreamsSummary, usePlayKey } from "@/components/streams/streams-page";
 import { filteredListProps } from "@/components/streams/stream-toolbar";
 import type { Stream } from "@/lib/addon-protocol";
 import { formatBytes, playableQuery, type Playable } from "@/lib/downloads";
