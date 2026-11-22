@@ -694,6 +694,9 @@ function PlayerFile({
   // gets that episode's streams ready, since a guest never picks (ADR-0051).
   // Playing it (Play it, Play now, the end of the file) opens the party's
   // picker, which picks from the host's stream and starts where the party is.
+  // The guest test is the party's own (`!party.isHost`), not `guest` above:
+  // that one asks whether the party is on the file playing, and here it is on
+  // the next one instead.
   const partyNext = partyIsNext && !party?.isHost ? partyElsewhere : undefined;
   const startNext = () => {
     if (partyNext) return watchWithParty(partyNext, true);

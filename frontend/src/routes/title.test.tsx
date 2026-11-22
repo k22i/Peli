@@ -870,10 +870,10 @@ describe("title page", () => {
 // of their own (ADR-0051), so every way into it — Play, or opening its card —
 // goes to the party's picker, which picks from the host's stream. The host,
 // and everyone not in that party, keep the flow they had.
-describe("title page in a watch party", () => {
-  const inParty = (party: Parameters<typeof partyState>[0] = {}, media = {}) =>
-    partyState(party, media);
+const inParty = (party: Parameters<typeof partyState>[0] = {}, media = {}) =>
+  partyState(party, media);
 
+describe("title page in a watch party", () => {
   it("sends a guest's Play to the party's picker, with the party's own target", async () => {
     serve();
     const user = userEvent.setup();
@@ -951,7 +951,6 @@ describe("title page in a watch party", () => {
   it("still opens the party's series page, whose episode is the party's", async () => {
     db.progress = [];
     serve();
-    const user = userEvent.setup();
     const { router } = await renderApp(seriesPath, {
       seed: (client) =>
         client.setQueryData(

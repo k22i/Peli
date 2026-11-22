@@ -1137,6 +1137,22 @@ describe("addon subtitles", () => {
 
 const card = () => screen.findByRole("region", { name: "Next episode" });
 
+// W3: the party is on the next episode, so a guest follows it there. The
+// party's picker picks from the host's stream, so nothing prepares this
+// device's pick and Play it opens the picker instead of playing.
+const partyOnNext = (party: Parameters<typeof partyState>[0] = {}) =>
+  partyState(
+    { watching: false, ...party },
+    {
+      type: "series",
+      id: "tt0903747",
+      videoId: "tt0903747:1:2",
+      season: 1,
+      episode: 2,
+      title: "Breaking Bad",
+    },
+  );
+
 describe("next episode", () => {
   const cinemeta: Addon = {
     url: "https://v3-cinemeta.strem.io/manifest.json",
@@ -1376,24 +1392,8 @@ describe("next episode", () => {
     expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
   });
 
-  // W3: the party is on the next episode, so a guest follows it there. The
-  // party's picker picks from the host's stream, so nothing prepares this
-  // device's pick and Play it opens the picker instead of playing.
-  const partyOnNext = (party: Parameters<typeof partyState>[0] = {}) =>
-    partyState(
-      { watching: false, ...party },
-      {
-        type: "series",
-        id: "tt0903747",
-        videoId: "tt0903747:1:2",
-        season: 1,
-        episode: 2,
-        title: "Breaking Bad",
-      },
-    );
-
   it("sends a guest's Play it to the party's picker for its next episode", async () => {
-    serve([debrid]);
+    const asked = serve([debrid]);
     const { router } = await openPilot();
     emit("party:state", partyOnNext());
     emit("player:state", watched);
@@ -1401,13 +1401,26 @@ describe("next episode", () => {
     expect(
       await screen.findByText("The party is watching Breaking Bad · S1 E2"),
     ).toBeInTheDocument();
-    // The card would only get this device's pick ready.
+    // The card would only get this device's pick ready: no card, and the next
+    // episode's streams are never asked for nor its pick resolved here.
     expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
+    expect(asked.mock.calls.map(([url]) => url)).not.toContain(nextStreams);
     expect(mocks.resolve).not.toHaveBeenCalled();
 
+    // The guest's picker picks from the host's stream as soon as it opens
+    // (W5), which would take this device on past it: with nothing to resolve
+    // it stays, so the address it was given can be read.
+    mocks.resolve.mockRejectedValue(new Error("no stream"));
     await userEvent.setup().click(screen.getByRole("button", { name: "Play it" }));
     await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
     expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
+    // The party's target, not this device's: the picker picks from the host's
+    // stream and starts where the party is.
+    expect(router.state.location.state.play).toMatchObject({
+      type: "series",
+      id: "tt0903747",
+      videoId: "tt0903747:1:2",
+    });
     expect(mocks.load).not.toHaveBeenCalled();
   });
 
@@ -1417,11 +1430,15 @@ describe("next episode", () => {
     emit("party:state", partyOnNext());
     emit("player:state", watched);
     await screen.findByText("The party is watching Breaking Bad · S1 E2");
+    expect(mocks.resolve).not.toHaveBeenCalled();
 
+    // Nothing of the party's pick resolves here, so its picker stays on the
+    // address the end of the file sent this guest to (see Play it above).
+    mocks.resolve.mockRejectedValue(new Error("no stream"));
     emit("player:ended", { reason: "eof" } satisfies Ended);
     await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
+    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
     expect(mocks.load).not.toHaveBeenCalled();
-    expect(mocks.resolve).not.toHaveBeenCalled();
   });
 
   it("keeps the card and the prepared pick for the host", async () => {
