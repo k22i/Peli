@@ -5,6 +5,7 @@ import type { KeyboardEvent, MouseEvent } from "react";
 
 import { useBarOverArt } from "@/components/shell/bar-tone";
 import { ConnectionStatus } from "@/components/shell/connection-status";
+import { DownloadStatus } from "@/components/shell/download-status";
 import { ShowSidebarButton } from "@/components/shell/ipad-sidebar";
 import { PartyStatus } from "@/components/shell/party-status";
 import { ProfileMenu } from "@/components/shell/profile-menu";
@@ -248,6 +249,7 @@ export function TopBar({
           <ConnectionStatus />
           <PartyStatus />
           <UpdateStatus />
+          <DownloadStatus />
           <ProfileMenu />
           {platform === "windows" && (
             <div className="-me-3 flex h-bar items-stretch">
