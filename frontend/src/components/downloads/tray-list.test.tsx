@@ -80,6 +80,11 @@ const download = (changes: Partial<Download> = {}): Download => ({
   ...changes,
 });
 
+// A film: the same record with no season, so its label — and its Play — is
+// its name alone.
+const film = (changes: Partial<Download> = {}): Download =>
+  download({ contentType: "movie", season: 0, episode: 0, episodeName: "", ...changes });
+
 // A film on its way: 42 % of 2.9 GB.
 const downloading = download({
   id: "b1",
@@ -242,10 +247,8 @@ describe("the tray's list", () => {
     expect(await screen.findByText("2 downloading · 1.7 GB of 5.0 GB")).toBeInTheDocument();
     // "42 % · 1.2 GB of 2.9 GB", with no speed until an event reports one.
     expect(await screen.findByText("42 % · 1.2 GB of 2.9 GB")).toBeInTheDocument();
-    expect(screen.getByRole("progressbar", { name: "Heat progress" })).toHaveAttribute(
-      "aria-valuenow",
-      "42",
-    );
+    // A real <progress>: 42 of 100, named for the row it belongs to.
+    expect(screen.getByRole("progressbar", { name: "Heat progress" })).toHaveProperty("value", 42);
     // The finished one's size alone.
     expect(screen.getByText("1.4 GB")).toBeInTheDocument();
   });
@@ -332,7 +335,9 @@ describe("the tray's list", () => {
 
     const seeAll = await screen.findByRole("link", { name: "See all" });
     expect(seeAll).toHaveAttribute("href", "/library?view=downloads");
-    expect(screen.getByRole("link", { name: "Show in Library" })).toHaveAttribute(
+    // The header's link is there while the list is still on its way, so the
+    // row's own has to be waited for.
+    expect(await screen.findByRole("link", { name: "Show in Library" })).toHaveAttribute(
       "href",
       "/library?view=downloads",
     );
@@ -356,8 +361,8 @@ describe("the tray's list", () => {
   it("lists only today's finished downloads, the newest first", async () => {
     const longAgo = Date.now() - 30 * hour;
     listed([
-      download({ id: "old", name: "Old Film", doneAt: longAgo, updatedAt: longAgo }),
-      download({ id: "new", name: "New Film", doneAt: justNow, updatedAt: justNow }),
+      film({ id: "old", name: "Old Film", doneAt: longAgo, updatedAt: longAgo }),
+      film({ id: "new", name: "New Film", doneAt: justNow, updatedAt: justNow }),
     ]);
     renderTray();
 

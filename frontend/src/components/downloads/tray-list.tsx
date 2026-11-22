@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Pause, Play, RotateCcw, Trash2 } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { Artwork } from "@/components/media/artwork";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -52,6 +52,20 @@ export function trayDownloads(list: readonly Download[], now: number): Download[
   return [...active, ...done];
 }
 
+// The clock the 24 h window is measured against, ticking once a minute. The
+// list is a render-time filter of it, so it is read here (an initializer, then
+// the timer) rather than from Date.now() during the render — and a finished
+// download that reaches a day old drops out on its own, without waiting for
+// something else to re-render the tray.
+function useMinute(): number {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
+  return now;
+}
+
 // Overall progress of the unfinished ones: sum(bytes)/sum(total) over those
 // with a known total, undefined when none is known. The tray's header and the
 // button's ring read it.
@@ -81,7 +95,8 @@ export function DownloadTrayList({
   const play = usePlay();
   const open = useOpenTitle();
 
-  const rows = trayDownloads(downloads, Date.now());
+  const now = useMinute();
+  const rows = trayDownloads(downloads, now);
 
   const handlers: TrayHandlers = {
     // The record says what to play: its title, its type and its video, as the
@@ -337,20 +352,20 @@ function metaText(download: Download, rate: number): string {
 }
 
 // The bar under the title, in the app's amber: quiet enough to sit in a row
-// beside the words, and a progressbar to a screen reader. A styled bar rather
-// than a form control, so it isn't a <progress>.
+// beside the words, and a progressbar to a screen reader by being one. A real
+// <progress> with the platform's own chrome turned off, drawn with the
+// pseudo-elements WebKit (macOS, iOS) and Chromium give it.
 function ProgressBar({ value, label }: { value: number | undefined; label: string }) {
   return (
-    // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role -- a bar, not a form control.
-    <span
-      role="progressbar"
+    <progress
       aria-label={`${label} progress`}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuenow={value ?? 0}
-      className="mt-0.5 block h-1 w-full overflow-hidden rounded-full bg-foreground/12"
-    >
-      <span className="block h-full rounded-full bg-sun" style={{ width: `${value ?? 0}%` }} />
-    </span>
+      value={value ?? 0}
+      max={100}
+      className={cn(
+        "mt-0.5 block h-1 w-full appearance-none rounded-full bg-foreground/12",
+        "[&::-webkit-progress-bar]:rounded-full",
+        "[&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-sun",
+      )}
+    />
   );
 }
