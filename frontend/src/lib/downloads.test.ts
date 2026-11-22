@@ -528,7 +528,10 @@ describe("useDownloadActions", () => {
     );
     expect(add).toHaveBeenCalledWith({
       type: "success",
-      title: "Downloading Breaking Bad · S1 E2",
+      title: "Download started",
+      description: "Breaking Bad · S1 E2",
+      // The tray opens from the toast's one action.
+      actionProps: expect.objectContaining({ children: "Show" }),
     });
     expect(Downloads.Delete).toHaveBeenCalledWith(4, ["a1", "a2"]);
   });

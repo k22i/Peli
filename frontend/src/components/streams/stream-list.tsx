@@ -1,16 +1,24 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouterState, useSearch } from "@tanstack/react-router";
+import { useNavigate, useRouterState, useSearch } from "@tanstack/react-router";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
+  ArrowDown,
+  ArrowDownCircle,
   Check,
   ChevronRight,
+  CircleCheck,
   Copy,
   Download,
   FileText,
   History,
+  Library,
+  Pause,
   Play,
+  RotateCcw,
+  Trash2,
   TriangleAlert,
   Users,
+  X,
   Zap,
 } from "lucide-react";
 import {
@@ -24,16 +32,43 @@ import {
   type ReactNode,
 } from "react";
 
+import type { Download as DownloadRecord } from "@bindings/store";
 import { scrollParent } from "@/components/media/poster-grid";
 import { ScrollRail } from "@/components/media/scroll-rail";
 import { prefersReducedMotion } from "@/components/media/roving";
 import { StreamBadge } from "@/components/streams/stream-badge";
+import {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogPopup,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
-import { ResponsiveContextMenu, ResponsiveMenuItem } from "@/components/ui/responsive-menu";
+import {
+  ResponsiveContextMenu,
+  ResponsiveMenuItem,
+  ResponsiveMenuSeparator,
+} from "@/components/ui/responsive-menu";
+import { Spinner } from "@/components/ui/spinner";
 import type { ContentType } from "@/lib/addon-protocol";
 import { downloadTarget, useStreamDownloads, type StreamDownloads } from "@/lib/download-pick";
-import { downloadable, useDownloads } from "@/lib/downloads";
+import { openDownloadTray } from "@/lib/download-tray";
+import {
+  downloadLabel,
+  downloadable,
+  percent,
+  reasonText,
+  statusOf,
+  statusText,
+  useDownloadActions,
+  useDownloads,
+} from "@/lib/downloads";
 import { useLoadedAddons } from "@/lib/home";
+import { usePlay } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
 import { collapsedTiers, type Candidate, type RankedView, type Tier } from "@/lib/ranking";
 import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
@@ -581,6 +616,8 @@ function StreamRow({
   onToggleName: () => void;
 }) {
   const runtime = useContext(Runtime);
+  // This row's download, if it has one: the badge beside the others (#85).
+  const download = useContext(RowDownload)?.downloadOf(candidate);
   const nameId = `stream-name-${rowProps["data-row-index"]}`;
   const { quality, source } = streamName(candidate);
   const fileName = (
@@ -639,7 +676,10 @@ function StreamRow({
                 <span>{quality}</span>
                 {source && <span>{source}</span>}
               </span>
-              <Badges candidate={candidate} />
+              <span className="flex items-center gap-2">
+                <Badges candidate={candidate} />
+                <StreamDownload download={download} />
+              </span>
               <Details candidate={candidate} addon={addon} />
             </button>
             {fileName}
@@ -698,6 +738,7 @@ function StreamRow({
                   <span className="sr-only">{why}</span>
                 </>
               )}
+              <StreamDownload download={download} />
             </span>
           </button>
           {fileName}
@@ -743,7 +784,10 @@ function StreamRow({
                 <span>{quality}</span>
                 {source && <span>{source}</span>}
               </span>
-              <Badges candidate={candidate} />
+              <span className="flex items-center gap-2">
+                <Badges candidate={candidate} />
+                <StreamDownload download={download} />
+              </span>
               <Details candidate={candidate} addon={addon} />
             </span>
             <span
@@ -780,6 +824,7 @@ function StreamRow({
               {addon && <span className="truncate text-small text-muted-foreground">{addon}</span>}
             </span>
             <Badges candidate={candidate} />
+            <StreamDownload download={download} />
             <Warning candidate={candidate} />
           </span>
           <Facts candidate={candidate} className="shrink-0" />
@@ -796,6 +841,63 @@ function Playing() {
     <span className="flex items-center gap-1 text-small font-semibold text-sun-ink">
       <Play aria-hidden className="size-3.5 fill-current" />
       Playing
+    </span>
+  );
+}
+
+// A row's download mark (#85 follow-up): a check once the file is here, and
+// an arrow in a ring filling with the percent while it isn't. The slot is
+// drawn for every row — empty when the row has no record — so the badges
+// don't shift when a download arrives.
+function StreamDownload({ download }: { download: DownloadRecord | undefined }) {
+  return (
+    <span className="flex size-4 shrink-0 items-center justify-center">
+      {download && <StreamDownloadGlyph download={download} />}
+    </span>
+  );
+}
+
+function StreamDownloadGlyph({ download }: { download: DownloadRecord }) {
+  // "Downloading 40 %", "Queued", "Downloaded": what a screen reader hears.
+  const label = statusText(download);
+  if (statusOf(download) === "done") {
+    return (
+      <span role="img" aria-label={label} className="flex text-sun-ink">
+        <CircleCheck aria-hidden className="size-4" strokeWidth={2.5} />
+      </span>
+    );
+  }
+  const done = percent(download) ?? 0;
+  const ring = 2 * Math.PI * 6.5;
+  return (
+    <span
+      role="img"
+      aria-label={label}
+      className="relative grid place-items-center rounded-full text-muted-foreground"
+    >
+      <svg aria-hidden viewBox="0 0 16 16" className="size-4 -rotate-90">
+        <circle
+          cx="8"
+          cy="8"
+          r="6.5"
+          fill="none"
+          stroke="currentColor"
+          strokeOpacity="0.25"
+          strokeWidth="1.5"
+        />
+        <circle
+          cx="8"
+          cy="8"
+          r="6.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeDasharray={ring}
+          strokeDashoffset={ring * (1 - done / 100)}
+        />
+      </svg>
+      <ArrowDown aria-hidden className="absolute size-2" strokeWidth={3} />
     </span>
   );
 }
@@ -1033,32 +1135,193 @@ function PickerRowDownloads({
   );
 }
 
-// A stream's own menu: "Download this stream", or that it's already
-// downloaded. The menu is the row's, opened by a right-click or, on the
-// phone, a long press (#134), so no button crowds the row.
+// A stream's own menu (#85 follow-up): what this row's download is doing, and
+// what can be done about it. The menu is the row's, opened by a right-click
+// or, on the phone, a long press (#134), so no button crowds the row. A
+// record is only "downloaded" once statusOf says so: a queued or running one
+// says where it is, and offers the way out — the row used to claim
+// "Downloaded" the moment its Add went out.
 function RowMenu({ candidate, children }: { candidate: Candidate; children: ReactNode }) {
   const downloads = useContext(RowDownload);
+  // Asked before a finished file goes, as the title page asks: it can be
+  // downloaded again, but not undeleted.
+  const [removing, setRemoving] = useState<DownloadRecord | null>(null);
   // A torrent, a copy with no link, can't be downloaded at all (ADR-0064).
   if (!downloads || !downloadable(candidate.stream)) return <>{children}</>;
   return (
-    <ResponsiveContextMenu
-      label={`${resolutionLabel(candidate.parsed) ?? "Stream"} options`}
-      popupClassName="material-pop w-60"
-      items={
-        downloads.has(candidate) ? (
-          <ResponsiveMenuItem disabled>
-            <Check aria-hidden />
-            Downloaded
+    <>
+      <ResponsiveContextMenu
+        label={`${resolutionLabel(candidate.parsed) ?? "Stream"} options`}
+        popupClassName="material-pop w-60"
+        items={
+          <RowDownloadItems
+            candidate={candidate}
+            downloads={downloads}
+            onRemove={(download) => setRemoving(download)}
+          />
+        }
+      >
+        {children}
+      </ResponsiveContextMenu>
+      {/* Only while it's asked: one closed dialog per visible row would be
+          five mutations' worth of bookkeeping each. */}
+      {removing && (
+        <RemoveDownloadDialog
+          profileId={downloads.profileId}
+          download={removing}
+          onOpenChange={(open) => {
+            if (!open) setRemoving(null);
+          }}
+        />
+      )}
+    </>
+  );
+}
+// A row menu's download items (#85 follow-up): where this stream's download
+// is, and what can be done about it. The status line is a disabled item, so
+// the menu says what is happening instead of offering the download as if
+// nothing had.
+function RowDownloadItems({
+  candidate,
+  downloads,
+  onRemove,
+}: {
+  candidate: Candidate;
+  downloads: StreamDownloads;
+  // A finished download goes after a yes (RemoveDownloadDialog).
+  onRemove: (download: DownloadRecord) => void;
+}) {
+  const play = usePlay();
+  const navigate = useNavigate();
+  const actions = useDownloadActions(downloads.profileId);
+  const record = downloads.downloadOf(candidate);
+  if (!record) {
+    const starting = downloads.pending(candidate);
+    return (
+      <ResponsiveMenuItem disabled={starting} onClick={() => downloads.save(candidate)}>
+        {starting ? <Spinner aria-hidden className="size-4" /> : <Download aria-hidden />}
+        {starting ? "Starting download…" : "Download this stream"}
+      </ResponsiveMenuItem>
+    );
+  }
+  const status = statusOf(record);
+  if (status === "done") {
+    // A film or a series is what Go downloads: it plays from its own file,
+    // which wins over resolving anything.
+    const type = pickerType(record.contentType);
+    return (
+      <>
+        <ResponsiveMenuItem disabled>
+          <Check aria-hidden />
+          Downloaded
+        </ResponsiveMenuItem>
+        <ResponsiveMenuSeparator />
+        {type && (
+          <ResponsiveMenuItem
+            onClick={() =>
+              play({
+                type,
+                id: record.contentId,
+                title: record.name,
+                videoId: record.videoId,
+              })
+            }
+          >
+            <Play aria-hidden />
+            Play downloaded copy
           </ResponsiveMenuItem>
-        ) : (
-          <ResponsiveMenuItem disabled={downloads.saving} onClick={() => downloads.save(candidate)}>
-            <Download aria-hidden />
-            Download this stream
-          </ResponsiveMenuItem>
-        )
-      }
-    >
-      {children}
-    </ResponsiveContextMenu>
+        )}
+        <ResponsiveMenuItem
+          onClick={() => void navigate({ to: "/library", search: { view: "downloads" } })}
+        >
+          <Library aria-hidden />
+          Show in Library
+        </ResponsiveMenuItem>
+        <ResponsiveMenuItem variant="destructive" onClick={() => onRemove(record)}>
+          <Trash2 aria-hidden />
+          Remove download
+        </ResponsiveMenuItem>
+      </>
+    );
+  }
+  // Where a partial download is: "Queued", "Downloading · 40 %", "Paused ·
+  // 40 %", "Waiting for Wi-Fi", or what went wrong with it.
+  const done = percent(record);
+  const progress = done === undefined ? "" : ` · ${done} %`;
+  const text =
+    status === "downloading"
+      ? `Downloading${progress}`
+      : status === "paused"
+        ? `Paused${progress}`
+        : status === "failed"
+          ? `Download failed: ${reasonText(record.reason)}`
+          : statusText(record);
+  const stopped = status === "paused" || status === "failed";
+  return (
+    <>
+      <ResponsiveMenuItem disabled>
+        {status === "failed" ? <TriangleAlert aria-hidden /> : <ArrowDownCircle aria-hidden />}
+        {text}
+      </ResponsiveMenuItem>
+      <ResponsiveMenuSeparator />
+      {stopped && (
+        <ResponsiveMenuItem onClick={() => void actions.resume(record.id)}>
+          <RotateCcw aria-hidden />
+          {status === "failed" ? "Retry download" : "Resume download"}
+        </ResponsiveMenuItem>
+      )}
+      {status !== "failed" && (
+        <ResponsiveMenuItem onClick={() => openDownloadTray()}>
+          <Download aria-hidden />
+          Show downloads
+        </ResponsiveMenuItem>
+      )}
+      {!stopped && (
+        <ResponsiveMenuItem onClick={() => void actions.pause(record.id)}>
+          <Pause aria-hidden />
+          Pause download
+        </ResponsiveMenuItem>
+      )}
+      <ResponsiveMenuItem variant="destructive" onClick={() => void actions.remove([record.id])}>
+        <X aria-hidden />
+        Cancel download
+      </ResponsiveMenuItem>
+    </>
+  );
+}
+
+// Asked before a downloaded file is deleted, as the title page's own action
+// asks: the file is on this device until it goes.
+function RemoveDownloadDialog({
+  profileId,
+  download,
+  onOpenChange,
+}: {
+  profileId: number | undefined;
+  download: DownloadRecord;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const actions = useDownloadActions(profileId);
+  const confirm = () => {
+    void actions.remove([download.id]);
+    onOpenChange(false);
+  };
+  return (
+    <AlertDialog open onOpenChange={onOpenChange}>
+      <AlertDialogPopup>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Remove the download?</AlertDialogTitle>
+          <AlertDialogDescription>
+            {`${downloadLabel(download)} is deleted from this device. You can download it again from the stream list.`}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogClose render={<Button variant="ghost" />}>Cancel</AlertDialogClose>
+          <Button variant="destructive" onClick={confirm}>
+            Remove
+          </Button>
+        </AlertDialogFooter>
+      </AlertDialogPopup>
+    </AlertDialog>
   );
 }

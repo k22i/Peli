@@ -23,6 +23,7 @@ import {
 import type { Download } from "@bindings/store";
 import { toastManager } from "@/components/ui/toast";
 import type { Meta, Stream, Video } from "@/lib/addon-protocol";
+import { openDownloadTray } from "@/lib/download-tray";
 import { errorCode } from "@/lib/error-code";
 import type { PlayTarget } from "@/lib/playback";
 import type { Candidate } from "@/lib/ranking";
@@ -287,12 +288,18 @@ export function useDownloadActions(profileId: number | undefined): DownloadActio
   const add = useMutation({
     mutationFn: (request: AddRequest) => Downloads.Add(request),
     // What was asked for names itself: Go's answer is the record, but the
-    // request's own name is there even when the toast is all a test sees.
+    // request's own name is there even when the toast is all a test sees. The
+    // one download toast for every way in — a row's menu, a title's control, a
+    // card's menu, a season's episodes — says what started and opens the tray,
+    // so nothing else needs a toast of its own (and a stream's row gets its
+    // feedback without the picker adding a second one).
     onSuccess: (_download, request) => {
       const label = downloadLabel(request);
       toastManager.add({
         type: "success",
-        title: label ? `Downloading ${label}` : "Added to downloads",
+        title: "Download started",
+        ...(label ? { description: label } : {}),
+        actionProps: { children: "Show", onClick: openDownloadTray },
       });
     },
     onError: failed,
