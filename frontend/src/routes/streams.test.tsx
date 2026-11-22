@@ -19,7 +19,8 @@ import { Party } from "@/lib/party";
 import { deviceSettingsQuery } from "@/lib/settings";
 import { keepForSession, noFilters } from "@/lib/stream-filters";
 import { sizeLabel } from "@/lib/stream-labels";
-import { partyState } from "@/test/fixtures";
+import { partyMember, partyState } from "@/test/fixtures";
+import { onCompactIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -59,6 +60,9 @@ vi.mock("@bindings/store", () => ({
     SaveDeviceSettings: mocks.saveDevice,
     ChosenSource: mocks.chosen,
     SetChosenSource: mocks.setChosen,
+    // The shell seeds these on iOS; without it the app becomes its error
+    // screen (the compact case below).
+    SeedAudioLanguages: () => Promise.resolve(false),
     ProfileSettings: () =>
       Promise.resolve({
         audioLanguages: [],
@@ -298,8 +302,14 @@ beforeEach(() => {
   mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio, peerflix]);
 });
 
+// The compact iOS shell swaps window.matchMedia: put it back (the setup's
+// own afterEach resets ios.on).
+let restoreMatchMedia: (() => void) | undefined;
+
 afterEach(() => {
   vi.unstubAllGlobals();
+  restoreMatchMedia?.();
+  restoreMatchMedia = undefined;
 });
 
 describe("stream picker", () => {
@@ -1483,6 +1493,9 @@ describe("starting cached streams sooner", () => {
 });
 
 describe("with a watch party", () => {
+  // Torrentio's two: the second is the host's file, name for name, so a guest
+  // opens it and nothing else. (The host's source names it "Party.File.mkv":
+  // the match ignores case.)
   const answer = {
     streams: [
       {
@@ -1498,61 +1511,165 @@ describe("with a watch party", () => {
     ],
   };
 
-  it("offers the host's file, and starts it where the party is", async () => {
+  // The guest's status page, and the parts of the picker it never has. It is
+  // found by its slot: the page's header is outside it, and its Back button
+  // shares its name with the header's.
+  const partyPick = () => {
+    const page = document.querySelector('[data-slot="party-pick"]');
+    if (!(page instanceof HTMLElement)) throw new Error("no party pick screen");
+    return page;
+  };
+  const noPicker = () => {
+    expect(screen.queryByRole("list", { name: "Streams" })).toBeNull();
+    // Not even the addons' chips and counts: a guest picks nothing.
+    expect(screen.queryByRole("list", { name: "Addons" })).toBeNull();
+    expect(screen.queryByRole("navigation", { name: "Stream groups" })).toBeNull();
+    expect(screen.queryByRole("group", { name: "Resolution" })).toBeNull();
+    expect(screen.queryByRole("searchbox", { name: "Search release names" })).toBeNull();
+  };
+
+  it("gives a guest the status and never a list, whatever the addons answer", async () => {
+    const slow = later<unknown>();
+    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
+    serve({
+      [movieStreams("torrentio.strem.fun")]: slow.promise,
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
+    await renderApp(pickerPath);
+
+    // Peerflix has 12 streams by the time this shows: a guest sees none of
+    // them, only what Peli is doing.
+    expect(await screen.findByText("Finding Ana’s stream…")).toBeInTheDocument();
+    // The page's own header stays.
+    expect(screen.getByRole("heading", { level: 1, name: "Streams" })).toBeInTheDocument();
+    noPicker();
+    // Nothing to press: no stream buttons, and no party shortcut either.
+    expect(within(partyPick()).queryAllByRole("button")).toHaveLength(0);
+    expect(screen.queryByRole("button", { name: "Play the party’s source" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Play Ana’s stream" })).toBeNull();
+  });
+
+  it("opens the guest's own copy of the host's stream, and keeps no source", async () => {
     vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
     vi.mocked(Party.StartAt).mockResolvedValueOnce(754);
     serve({ [movieStreams("torrentio.strem.fun")]: answer });
     mocks.addons.mockResolvedValue([cinemeta, torrentio]);
-    const user = userEvent.setup();
-    await renderApp(pickerPath);
+    const { router } = await renderApp(pickerPath);
 
-    expect(await screen.findByText("Watching with Ana’s party")).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Play Ana’s stream" })).toBeNull();
-    await user.click(await screen.findByRole("button", { name: "Play the party’s source" }));
     await opensThePlayer();
-    expect(mocks.resolve).toHaveBeenCalledWith(
-      expect.objectContaining({ url: "https://debrid.example/KEY/b" }),
-    );
+    // The host's file first, resolved once and played where the party is.
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe("https://debrid.example/KEY/b");
     expect(mocks.load).toHaveBeenCalledWith(
-      expect.anything(),
+      expect.objectContaining({ url: "https://debrid.example/KEY/b#cdn" }),
       expect.objectContaining({ start: 754 }),
     );
+    expect(router.state.location.pathname).toBe("/player");
+    // An auto-pick is the party's: the guest's own remembered source stays.
+    expect(mocks.setChosen).not.toHaveBeenCalled();
   });
 
-  it("plays the host's own link when they share it", async () => {
+  it("says what it couldn't open, with Try again that asks again and Back", async () => {
+    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
+    serve({ [movieStreams("torrentio.strem.fun")]: answer });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.resolve.mockRejectedValue(new Error("no link"));
+    const user = userEvent.setup();
+    const { router } = await renderApp("/title/movie/tt0111161");
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+
+    expect(await screen.findByText("Couldn’t open a stream like Ana’s")).toBeInTheDocument();
+    noPicker();
+    expect(mocks.load).not.toHaveBeenCalled();
+    const tried = mocks.resolve.mock.calls.length;
+    expect(tried).toBeGreaterThan(0);
+
+    await user.click(within(partyPick()).getByRole("button", { name: "Try again" }));
+    await waitFor(() => expect(mocks.resolve.mock.calls.length).toBeGreaterThan(tried));
+
+    // Back leaves the picker, the way the page's own Back does.
+    await user.click(within(partyPick()).getByRole("button", { name: "Back" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/title/movie/tt0111161"));
+  });
+
+  it("plays nothing on P", async () => {
+    const slow = later<unknown>();
+    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
+    serve({
+      [movieStreams("torrentio.strem.fun")]: slow.promise,
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
+    const user = userEvent.setup();
+    const { router } = await renderApp(pickerPath);
+
+    await screen.findByText("Finding Ana’s stream…");
+    // Peerflix's streams are ranked by now, and one of them would be the top
+    // pick for anyone else: P still does nothing for a guest.
+    await looking();
+    await user.keyboard("p");
+
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(router.state.location.pathname).toBe(pickerPath);
+  });
+
+  it("shows the failed status when no addon has a stream at all", async () => {
+    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
+    // Every stream request answers 503: the picker would say no addon has
+    // streams, a guest is told the pick failed instead.
+    serve();
+    mocks.addons.mockResolvedValue([cinemeta, torrentio, peerflix]);
+    await renderApp(pickerPath);
+
+    expect(await screen.findByText("Couldn’t open a stream like Ana’s")).toBeInTheDocument();
+    expect(screen.queryByText("No addon has streams for this")).toBeNull();
+    noPicker();
+  });
+
+  it("gives the host the list and the party card, without the guest's buttons", async () => {
     vi.mocked(Party.State).mockResolvedValueOnce(
       partyState(
         {
-          shared: {
-            mediaKey: "movie|tt0111161||",
-            url: "https://cdn.example/host.mkv",
-            headers: { X: "y" },
-            responseHeaders: {},
-            name: "Host 4K",
-            description: "",
-            addonName: "",
-            addonId: "",
-            addonLogo: "",
-            filename: "",
-            videoSize: 0,
-            bingeGroup: "",
-            sharedBy: "Ana",
-          },
+          isHost: true,
+          members: [
+            partyMember({ id: "ana", name: "Ana", host: true, you: true }),
+            partyMember({ id: "sam", name: "Sam" }),
+          ],
         },
         { source: partySource },
       ),
     );
     serve({ [movieStreams("torrentio.strem.fun")]: answer });
     mocks.addons.mockResolvedValue([cinemeta, torrentio]);
-    const user = userEvent.setup();
     await renderApp(pickerPath);
 
-    await user.click(await screen.findByRole("button", { name: "Play Ana’s stream" }));
-    await opensThePlayer();
-    expect(mocks.resolve).not.toHaveBeenCalled();
-    expect(mocks.load).toHaveBeenCalledWith(
-      expect.objectContaining({ url: "https://cdn.example/host.mkv", headers: { X: "y" } }),
-      expect.objectContaining({ start: 0 }),
+    expect(await screen.findByText("Your watch party is watching this")).toBeInTheDocument();
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0));
+    // The host chooses as they always have; the shortcuts were the guest's.
+    expect(screen.getByRole("list", { name: "Streams" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Play the party’s source" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Play Ana’s stream" })).toBeNull();
+    expect(screen.queryByText(/^Finding /)).toBeNull();
+  });
+
+  it("centres the same status on the iPhone, its buttons at 44 pt", async () => {
+    restoreMatchMedia = onCompactIOS();
+    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
+    serve({ [movieStreams("torrentio.strem.fun")]: answer });
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.resolve.mockRejectedValue(new Error("no link"));
+    await renderApp(pickerPath);
+
+    expect(await screen.findByText("Couldn’t open a stream like Ana’s")).toBeInTheDocument();
+    // The compact header is still the page's.
+    expect(screen.getByRole("heading", { level: 1, name: /^Streams/ })).toBeInTheDocument();
+    const page = partyPick();
+    expect(within(page).getByRole("button", { name: "Try again" })).toHaveClass(
+      "pointer-coarse:min-h-11",
+    );
+    expect(within(page).getByRole("button", { name: "Back" })).toHaveClass(
+      "pointer-coarse:min-h-11",
     );
   });
 });
