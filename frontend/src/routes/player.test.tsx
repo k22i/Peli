@@ -2315,6 +2315,15 @@ const hostMedia = (name: string) => ({
   source: hostSource(name),
 });
 
+// A promise settled from outside, for a resolve that stays open.
+function deferred<T>() {
+  let settle: (value: T) => void = () => {};
+  const promise = new Promise<T>((done) => {
+    settle = done;
+  });
+  return { promise, settle };
+}
+
 describe("watch party: following the host's stream", () => {
   const cinemeta: Addon = {
     url: "https://v3-cinemeta.strem.io/manifest.json",
@@ -2408,7 +2417,7 @@ describe("watch party: following the host's stream", () => {
     vi.stubGlobal(
       "fetch",
       vi.fn<(url: string) => Promise<Response>>(async (url) => {
-        const all = { ...answers, [pilotStreams]: { streams: served } };
+        const all: Record<string, unknown> = { ...answers, [pilotStreams]: { streams: served } };
         return url in all ? Response.json(all[url]) : new Response("", { status: 503 });
       }),
     );
@@ -2455,7 +2464,7 @@ describe("watch party: following the host's stream", () => {
   });
 
   it("follows the latest switch when the host switches again mid-switch", async () => {
-    const open = Promise.withResolvers<Source>();
+    const open = deferred<Source>();
     mocks.resolve.mockImplementationOnce(() => open.promise);
     await openPilot();
     emit("player:state", playing);
@@ -2465,7 +2474,7 @@ describe("watch party: following the host's stream", () => {
     await waitFor(() => expect(mocks.resolve).toHaveBeenCalledTimes(1));
     // Back to the one playing: the first pick is dropped, whatever it resolves to.
     hostSwitches("[TB+] Torrentio\n720p");
-    open.resolve({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
+    open.settle({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
     await waitFor(() =>
       expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
     );
