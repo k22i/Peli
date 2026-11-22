@@ -948,7 +948,7 @@ function PlayerFile({
   // the guest's remembered source stays theirs.
   const followAbort = useRef<AbortController>(null);
   useEffect(() => () => followAbort.current?.abort(), []);
-  const followPick = async (picked: PartyPicked, failed: () => void) => {
+  const followPick = async (picked: PartyPicked, onFail: () => void) => {
     if (picked.same || !picked.source) return setFollowing(undefined);
     followAbort.current?.abort();
     const controller = new AbortController();
@@ -964,9 +964,9 @@ function PlayerFile({
       });
       if (controller.signal.aborted) return;
       if (loaded) setFollowing(undefined);
-      else failed();
+      else onFail();
     } catch {
-      if (!controller.signal.aborted) failed();
+      if (!controller.signal.aborted) onFail();
     }
   };
   // Another stream of what's playing (#68): resolved as the picker resolves
@@ -3526,7 +3526,7 @@ function PartyFollower({
   party: PartyInfo;
   expected: PartySource;
   current: Stream | undefined;
-  onPicked: (picked: PartyPicked, failed: () => void) => void;
+  onPicked: (picked: PartyPicked, onFail: () => void) => void;
 }) {
   const [loadFailed, setLoadFailed] = useState(false);
   // The party's state can trail its notice: wait for the new source so the

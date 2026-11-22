@@ -2262,6 +2262,36 @@ describe("watch party", () => {
 
 // A guest follows the host onto another stream (ADR-0051): the chooser runs
 // again against the host's new source and the pick loads where this guest is.
+// The pieces of a watch party the host-following tests build.
+const hostSource = (name: string) => ({
+  infoHash: "",
+  fileIdx: null,
+  filename: "",
+  videoSize: 0,
+  bingeGroup: "",
+  addonId: "torrentio",
+  name,
+});
+const member = (id: string, name: string, host: boolean, you: boolean) => ({
+  id,
+  name,
+  host,
+  you,
+  avatarUrl: "",
+  avatarColor: "",
+  status: "ready",
+  watchingElse: false,
+  behindMs: 0,
+});
+// A promise settled from outside, for a resolve that stays open.
+function deferred<T>() {
+  let settle: (value: T) => void = () => {};
+  const promise = new Promise<T>((done) => {
+    settle = done;
+  });
+  return { promise, settle };
+}
+
 describe("watch party: following the host's stream", () => {
   const cinemeta: Addon = {
     url: "https://v3-cinemeta.strem.io/manifest.json",
@@ -2293,26 +2323,7 @@ describe("watch party: following the host's stream", () => {
     episode: 1,
     title: "Pilot",
   };
-  const hostSource = (name: string) => ({
-    infoHash: "",
-    fileIdx: null,
-    filename: "",
-    videoSize: 0,
-    bingeGroup: "",
-    addonId: "torrentio",
-    name,
-  });
-  const people = [
-    { id: "me", name: "Kevin", host: false, you: true },
-    { id: "ana", name: "Ana", host: true, you: false },
-  ].map((member) => ({
-    avatarUrl: "",
-    avatarColor: "",
-    status: "ready",
-    watchingElse: false,
-    behindMs: 0,
-    ...member,
-  }));
+  const people = [member("me", "Kevin", false, true), member("ana", "Ana", true, false)];
   const partyMedia = (name: string) => ({
     type: "series",
     id: "tt0903747",
@@ -2327,7 +2338,7 @@ describe("watch party: following the host's stream", () => {
     logo: "",
     source: hostSource(name),
   });
-  const partyState = (name: string, more: Record<string, unknown> = {}) => ({
+  const hostParty = (name: string, more: Record<string, unknown> = {}) => ({
     unavailable: "",
     busy: false,
     party: {
@@ -2356,7 +2367,7 @@ describe("watch party: following the host's stream", () => {
   // The host switches: the party's state carries the new source, then the
   // notice says so.
   const hostSwitches = (name: string, more: Record<string, unknown> = {}) => {
-    emit("party:state", partyState(name, more));
+    emit("party:state", hostParty(name, more));
     emit("party:notice", {
       kind: "source",
       name: "",
@@ -2374,14 +2385,16 @@ describe("watch party: following the host's stream", () => {
       resumedAt: 0,
     });
 
+  let served: Stream[] = [];
   beforeEach(() => {
+    served = [hd, fullHd];
     mocks.addons.mockResolvedValue([cinemeta, torrentio]);
     mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio]);
     const answers: Record<string, unknown> = {
       [cinemeta.url]: cinemetaManifest,
       [torrentio.url]: torrentioManifest,
       "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
-      [pilotStreams]: { streams: [hd, fullHd] },
+      [pilotStreams]: { streams: served },
     };
     vi.stubGlobal(
       "fetch",
@@ -2402,7 +2415,7 @@ describe("watch party: following the host's stream", () => {
   it("switches to the stream that matches the host's, from where this guest is, remembering nothing", async () => {
     await openPilot();
     emit("player:state", playing);
-    emit("party:state", partyState("[TB+] Torrentio\n720p"));
+    emit("party:state", hostParty("[TB+] Torrentio\n720p"));
     await screen.findByRole("button", { name: "Pause" });
     mocks.snapshot.mockResolvedValue({ ...playing, position: 642 });
     hostSwitches("[TB+] Torrentio\n1080p");
@@ -2421,7 +2434,7 @@ describe("watch party: following the host's stream", () => {
   it("does nothing when the chooser lands on what plays", async () => {
     await openPilot();
     emit("player:state", playing);
-    emit("party:state", partyState("[TB+] Torrentio\n1080p"));
+    emit("party:state", hostParty("[TB+] Torrentio\n1080p"));
     await screen.findByRole("button", { name: "Pause" });
     hostSwitches("[TB+] Torrentio\n720p");
     await waitFor(() =>
@@ -2432,17 +2445,17 @@ describe("watch party: following the host's stream", () => {
   });
 
   it("follows the latest switch when the host switches again mid-switch", async () => {
-    let release: (value: Source) => void = () => {};
-    mocks.resolve.mockImplementationOnce(() => new Promise<Source>((done) => (release = done)));
+    const open = deferred<Source>();
+    mocks.resolve.mockImplementationOnce(() => open.promise);
     await openPilot();
     emit("player:state", playing);
-    emit("party:state", partyState("[TB+] Torrentio\n720p"));
+    emit("party:state", hostParty("[TB+] Torrentio\n720p"));
     await screen.findByRole("button", { name: "Pause" });
     hostSwitches("[TB+] Torrentio\n1080p");
     await waitFor(() => expect(mocks.resolve).toHaveBeenCalledTimes(1));
     // Back to the one playing: the first pick is dropped, whatever it resolves to.
     hostSwitches("[TB+] Torrentio\n720p");
-    release({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
+    open.settle({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
     await waitFor(() =>
       expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
     );
@@ -2453,10 +2466,12 @@ describe("watch party: following the host's stream", () => {
   });
 
   it("plays on and offers to try again when nothing opens", async () => {
+    // The chooser would end on the stream already playing; here it has nothing else.
+    served = [fullHd];
     mocks.resolve.mockRejectedValue(new Error("unreachable"));
     const { router } = await openPilot();
     emit("player:state", playing);
-    emit("party:state", partyState("[TB+] Torrentio\n720p"));
+    emit("party:state", hostParty("[TB+] Torrentio\n720p"));
     await screen.findByRole("button", { name: "Pause" });
     hostSwitches("[TB+] Torrentio\n1080p");
     expect(await screen.findByText("Couldn’t switch to Ana’s new stream")).toBeInTheDocument();

@@ -951,7 +951,8 @@ func TestGuestFollowsSourceChange(t *testing.T) {
 	ch := r.connect(t)
 	first := withSource(episode, "aaa", "1080p")
 	ch.broadcast("media", map[string]any{"media": first.wire(), "playback": nil})
-	r.notice(t, NoticeMedia)
+	// The party's media key is the same: only its source is news.
+	r.notice(t, NoticeSource)
 
 	second := withSource(episode, "bbb", "720p")
 	ch.broadcast("media", map[string]any{"media": second.wire(), "playback": nil})
