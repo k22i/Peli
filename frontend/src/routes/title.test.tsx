@@ -18,7 +18,7 @@ import kitsuManifest from "@/lib/addon-protocol/fixtures/kitsu/manifest.json";
 import kitsuAnime from "@/lib/addon-protocol/fixtures/kitsu/meta-anime.json";
 import { clockTime } from "@/lib/ends-at";
 import { resetRevealed } from "@/lib/spoilers";
-import { profileSettings } from "@/test/fixtures";
+import { profileSettings, partyState } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
 
 // The store, kept in memory so marks and the library change as Go's would.
@@ -863,5 +863,116 @@ describe("title page", () => {
     expect(screen.queryByRole("button", { name: "Trailer" })).toBeNull();
     expect(screen.queryByRole("heading", { name: "More Like This" })).toBeNull();
     expect(screen.queryByTestId("certificate")).toBeNull();
+  });
+});
+
+// W3: a guest of the party watching exactly this film never picks a stream
+// of their own (ADR-0051), so every way into it — Play, or opening its card —
+// goes to the party's picker, which picks from the host's stream. The host,
+// and everyone not in that party, keep the flow they had.
+describe("title page in a watch party", () => {
+  const inParty = (party: Parameters<typeof partyState>[0] = {}, media = {}) =>
+    partyState(party, media);
+
+  it("sends a guest's Play to the party's picker, with the party's own target", async () => {
+    serve();
+    const user = userEvent.setup();
+    const { router } = await renderApp(moviePath, {
+      seed: (client) =>
+        client.setQueryData(["party", "state"], inParty({ isHost: false, hostId: "ana" })),
+    });
+
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+
+    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
+    // The party's own target: no resume point of this device's, and for a
+    // film no video at all, so the picker picks for the guest (W1, W5).
+    expect(router.state.location.search).toEqual({});
+    expect(router.state.location.state.play).toMatchObject({
+      type: "movie",
+      id: "tt0111161",
+      title: "The Shawshank Redemption",
+    });
+    expect(router.state.location.state.play).not.toHaveProperty("resumeAt");
+  });
+
+  it("keeps Play's own flow for the host", async () => {
+    serve();
+    const user = userEvent.setup();
+    const { router } = await renderApp(moviePath, {
+      seed: (client) =>
+        client.setQueryData(["party", "state"], inParty({ isHost: true, hostId: "me" })),
+    });
+
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+
+    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
+    // The title's own video, and the target Play chose.
+    expect(router.state.location.search).toEqual({ video: "tt0111161" });
+    expect(router.state.location.state.play).toMatchObject({ videoId: "tt0111161" });
+  });
+
+  it("keeps Play's own flow for a guest whose party watches something else", async () => {
+    serve();
+    const user = userEvent.setup();
+    const { router } = await renderApp(moviePath, {
+      seed: (client) =>
+        client.setQueryData(
+          ["party", "state"],
+          inParty({ isHost: false, hostId: "ana" }, { id: "tt0133093", title: "The Matrix" }),
+        ),
+    });
+
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+
+    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
+    expect(router.state.location.search).toEqual({ video: "tt0111161" });
+    expect(router.state.location.state.play).toMatchObject({ videoId: "tt0111161" });
+  });
+
+  it("sends a guest opening the party's film to the party's picker, not its page", async () => {
+    serve({
+      [`${base}/catalog/movie/top.json`]: {
+        metas: [{ id: "tt0111161", type: "movie", name: "The Shawshank Redemption" }],
+      },
+    });
+    const user = userEvent.setup();
+    const { router } = await renderApp("/movies", {
+      seed: (client) =>
+        client.setQueryData(["party", "state"], inParty({ isHost: false, hostId: "ana" })),
+    });
+
+    await user.click(await screen.findByRole("button", { name: /Shawshank/ }));
+
+    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
+    expect(router.state.location.search).toEqual({});
+  });
+
+  it("still opens the party's series page, whose episode is the party's", async () => {
+    db.progress = [];
+    serve();
+    const user = userEvent.setup();
+    const { router } = await renderApp(seriesPath, {
+      seed: (client) =>
+        client.setQueryData(
+          ["party", "state"],
+          inParty(
+            { isHost: false, hostId: "ana" },
+            {
+              type: "series",
+              id: "tt0903747",
+              videoId: "tt0903747:1:1",
+              season: 1,
+              episode: 1,
+              title: "Breaking Bad",
+            },
+          ),
+        ),
+    });
+
+    // The page is a series': the party's own episode is not what opening it
+    // names, so the page shows and its episodes are pickable.
+    expect(await screen.findByRole("img", { name: "Breaking Bad" })).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe(seriesPath);
   });
 });

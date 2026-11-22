@@ -674,6 +674,15 @@ function PlayerFile({
     next !== undefined &&
     partyElsewhere.id === meta.id &&
     partyElsewhere.videoId === next.id;
+  // The party's next episode, when this device is its guest: nothing here
+  // gets that episode's streams ready, since a guest never picks (ADR-0051).
+  // Playing it (Play it, Play now, the end of the file) opens the party's
+  // picker, which picks from the host's stream and starts where the party is.
+  const partyNext = partyIsNext && !party?.isHost ? partyElsewhere : undefined;
+  const startNext = () => {
+    if (partyNext) return watchWithParty(partyNext, true);
+    setStarting(true);
+  };
   // While the next episode opens, the file ending or failing is expected.
   const switching = useRef(false);
   const switchAbort = useRef<AbortController>(null);
@@ -693,7 +702,7 @@ function PlayerFile({
           return setAsking(streak.current + 1);
         }
         streak.current += 1;
-        return setStarting(true);
+        return startNext();
       }
       return leave();
     }
@@ -2091,7 +2100,7 @@ function PlayerFile({
                 Switch the party to this
               </Button>
             ) : partyIsNext ? (
-              <Button size="sm" variant="light" onClick={() => setStarting(true)}>
+              <Button size="sm" variant="light" onClick={startNext}>
                 Play it
               </Button>
             ) : (
@@ -2135,7 +2144,9 @@ function PlayerFile({
           </Button>
         </div>
       )}
-      {meta && next && (counting || starting) && (
+      {/* A guest's next episode is the party's, which the prompt above
+          offers: the card would only get this device's pick ready. */}
+      {meta && next && (counting || starting) && !partyNext && (
         <NextEpisode
           profileId={profileId}
           meta={meta}
@@ -2146,7 +2157,7 @@ function PlayerFile({
           starting={starting}
           mini={mini}
           compact={touchLayout}
-          onPlay={() => setStarting(true)}
+          onPlay={startNext}
           onCancel={() => setCancelled(true)}
           onStart={(prepared) => void playNext(prepared)}
         />
@@ -2539,7 +2550,7 @@ function PlayerFile({
             {ready && next && !starting && (
               <RowButton
                 icon={<SkipForward aria-hidden className="fill-current" />}
-                onClick={() => setStarting(true)}
+                onClick={startNext}
               >
                 Next episode
               </RowButton>
@@ -3043,7 +3054,7 @@ function PlayerFile({
           onContinue={() => {
             streak.current = 0;
             setAsking(undefined);
-            setStarting(true);
+            startNext();
           }}
           onStop={leave}
         />
