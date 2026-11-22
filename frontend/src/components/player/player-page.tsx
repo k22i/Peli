@@ -104,6 +104,7 @@ import {
   usePartyNotices,
   useWatchWithParty,
 } from "@/lib/party";
+import { isPartyGuest } from "@/lib/party-pick";
 import { playableQuery, type Playable } from "@/lib/downloads";
 import { isDownloadSource, loadDownloaded, streamsPath, streamsSearch } from "@/lib/playback";
 import {
@@ -637,6 +638,10 @@ function PlayerFile({
     "--party-dock-w": dockShown ? partyDockWidth : "0px",
   };
   const media = watching ? partyMedia(watching, heading, meta, playing?.stream) : undefined;
+  // A guest doesn't choose a stream (ADR-0051): the party picks one from the
+  // host's for them, so the switcher, S and the failure overlay's way out are
+  // the host's alone. The host keeps them as they were.
+  const guest = isPartyGuest(party, media);
   const shared =
     playing?.source && !torrent ? sharedStream(playing.source, playing.stream) : undefined;
   const mediaKey = media
@@ -986,14 +991,24 @@ function PlayerFile({
       setSwitchStatus({ text: "", failed: "Peli’s player couldn’t start it." });
     }
   };
-  // The switcher needs the app window: the mini player leaves for it.
+  // The switcher needs the app window: the mini player leaves for it. A guest
+  // in a watch party has no stream to choose, so nothing opens it for them.
   const openSwitcher = () => {
+    if (guest) return;
     if (mini) {
       setMini(false);
       Player.SetMini(false).catch(() => {});
     }
     setSwitchStatus(undefined);
     setSwitcherOpen(true);
+  };
+  // The failure overlay's way to another stream: a guest's is the party's
+  // picker, which picks one from the host's stream for them (lib/party-pick);
+  // the host's is the switcher, or leaving when there is nothing to switch.
+  const anotherStream = () => {
+    if (guest && party) return watchWithParty(party.media, true);
+    if (watching && feature("streamSwitcher")) return openSwitcher();
+    leave();
   };
   const openParty = () => {
     if (mini) {
@@ -1901,7 +1916,8 @@ function PlayerFile({
         "[": () => changeSpeed(stepSpeed(speed, -1)),
         "]": () => changeSpeed(stepSpeed(speed, 1)),
         backspace: () => speed !== normalSpeed && changeSpeed(normalSpeed),
-        s: () => watching && openSwitcher(),
+        // The switcher is the host's: a guest's stream is the party's pick.
+        ...(guest ? {} : { s: () => watching && openSwitcher() }),
         w: () => (watching || party) && openParty(),
         "?": () => !mini && setHelpOpen(!helpOpen),
         escape: () => {
@@ -2808,7 +2824,7 @@ function PlayerFile({
                       )}
                     />
                   )}
-                  {watching && feature("streamSwitcher") && (
+                  {watching && feature("streamSwitcher") && !guest && (
                     <ControlButton
                       label="Streams"
                       icon={ListVideo}
@@ -3166,7 +3182,7 @@ function PlayerFile({
           }}
         />
       )}
-      {watching && feature("streamSwitcher") && (
+      {watching && feature("streamSwitcher") && !guest && (
         <StreamSwitcher
           open={switcherOpen}
           onOpenChange={(open) => {
@@ -3209,7 +3225,7 @@ function PlayerFile({
         />
       )}
       {helpOpen && !failure && !mini && desktopControls && (
-        <ShortcutsOverlay onClose={() => setHelpOpen(false)} />
+        <ShortcutsOverlay onClose={() => setHelpOpen(false)} guest={guest} />
       )}
       {statsOpen && ready && !mini && <StatsOverlay onClose={() => setStatsOpen(false)} />}
       {notice && !failure && (
@@ -3261,13 +3277,8 @@ function PlayerFile({
                   Try again
                 </Button>
               )}
-              <Button
-                variant="media"
-                size="lg"
-                onClick={watching && feature("streamSwitcher") ? openSwitcher : leave}
-                disabled={retrying}
-              >
-                Choose another stream
+              <Button variant="media" size="lg" onClick={anotherStream} disabled={retrying}>
+                {guest ? "Try another stream" : "Choose another stream"}
               </Button>
             </div>
           </div>

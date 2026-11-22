@@ -27,7 +27,7 @@ import type { Stream } from "@/lib/addon-protocol";
 import { Party } from "@/lib/party";
 import { idleState } from "@/lib/player";
 import type { SubtitleTarget } from "@/lib/subtitles";
-import { profileSettings } from "@/test/fixtures";
+import { partyMember, partyState, profileSettings } from "@/test/fixtures";
 import { onCompactIOS, onIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
 
@@ -1585,6 +1585,108 @@ describe("stream switcher", () => {
     emit("player:state", playing);
     await screen.findByRole("button", { name: "Pause" });
     expect(screen.queryByRole("button", { name: "Streams" })).not.toBeInTheDocument();
+  });
+
+  // A guest in a watch party (ADR-0051) never chooses a stream: the party
+  // picks one from the host's for them (lib/party-pick), so everything that
+  // opens the switcher is the host's.
+  describe("in a watch party", () => {
+    // The party watches the pilot, as this device does: its media is this
+    // player's own, so a guest here is a guest of the file playing.
+    const partyMedia = {
+      type: "series",
+      id: "tt0903747",
+      videoId: "tt0903747:1:1",
+      season: 1,
+      episode: 1,
+      title: "Pilot",
+    };
+    const asGuest = () => partyState({ watching: true }, partyMedia);
+    const asHost = () =>
+      partyState(
+        {
+          isHost: true,
+          hostId: "me",
+          memberId: "me",
+          watching: true,
+          members: [
+            partyMember({ id: "me", name: "Kevin", host: true, you: true }),
+            partyMember({ id: "ana", name: "Ana" }),
+          ],
+        },
+        partyMedia,
+      );
+
+    it("gives a guest no Streams button, and no S", async () => {
+      await openPilot();
+      emit("player:state", playing);
+      emit("party:state", asGuest());
+      await screen.findByRole("button", { name: "Pause" });
+
+      expect(screen.queryByRole("button", { name: "Streams" })).not.toBeInTheDocument();
+      const user = userEvent.setup();
+      await user.keyboard("s");
+      expect(screen.queryByRole("dialog", { name: "Streams" })).not.toBeInTheDocument();
+      expect(mocks.resolve).not.toHaveBeenCalled();
+    });
+
+    it("leaves S and the Streams panel out of a guest's shortcuts", async () => {
+      await openPilot();
+      emit("player:state", playing);
+      emit("party:state", asGuest());
+      await screen.findByRole("button", { name: "Pause" });
+      const user = userEvent.setup();
+      await user.keyboard("?");
+      const help = await screen.findByRole("region", { name: "Keyboard shortcuts" });
+
+      expect(within(help).queryByText("Choose another stream")).not.toBeInTheDocument();
+      expect(within(help).queryByText("In the Streams panel")).not.toBeInTheDocument();
+      expect(within(help).queryByText("S")).not.toBeInTheDocument();
+      // The rest are still the guest's to read.
+      expect(within(help).getByText("Next subtitles, then off")).toBeInTheDocument();
+    });
+
+    it("sends a guest whose stream failed to the party's picker", async () => {
+      const { router } = await openPilot();
+      emit("player:state", playing);
+      emit("party:state", asGuest());
+      await screen.findByRole("button", { name: "Pause" });
+      emit("player:ended", { reason: "error", code: "unsupported" } satisfies Ended);
+      const alert = await screen.findByRole("alert");
+
+      expect(
+        within(alert).queryByRole("button", { name: "Choose another stream" }),
+      ).not.toBeInTheDocument();
+      const user = userEvent.setup();
+      await user.click(within(alert).getByRole("button", { name: "Try another stream" }));
+
+      // The picker for the party's media, which picks from the host's stream.
+      await waitFor(() =>
+        expect(router.state.location.pathname).toBe("/streams/series/tt0903747"),
+      );
+      expect(router.state.location.search).toEqual({ video: "tt0903747:1:1" });
+      expect(router.state.location.state.play).toMatchObject({
+        type: "series",
+        id: "tt0903747",
+        videoId: "tt0903747:1:1",
+      });
+    });
+
+    it("keeps the Streams button and S for the host", async () => {
+      serve([hd, fullHd]);
+      await openPilot();
+      emit("player:state", playing);
+      emit("party:state", asHost());
+      const user = userEvent.setup();
+
+      await user.click(await screen.findByRole("button", { name: "Streams" }));
+      const panel = await screen.findByRole("dialog", { name: "Streams" });
+      await user.click(await within(panel).findByRole("button", { name: /Playing/ }));
+      await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+
+      await user.keyboard("s");
+      expect(await screen.findByRole("dialog", { name: "Streams" })).toBeInTheDocument();
+    });
   });
 });
 
