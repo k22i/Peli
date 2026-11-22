@@ -34,7 +34,7 @@ Read from Nuvio's clients (GPL-3, so re-implemented, nothing copied) and checked
 - Parties work only on Nuvio's hosted backend: self-host has neither the functions nor the flag. The contract test lists the functions in `liveOnly`, checked by the opt-in `PELI_NUVIO_LIVE_WRITES=1 go test -run 'TestLiveParty|TestLiveTwoMembers' ./internal/nuvio/ ./internal/party/`, which ends its party and signs out.
 - Parties use Nuvio's backend for something new for a third-party client: a websocket per party member and a heartbeat every 2 minutes. Worth mentioning when Nuvio is asked about the hosted backend (#93).
 - Members match the host's source by torrent and file or by file name only; Nuvio's last resort (the same name from the same addon id) needs manifest ids Peli doesn't carry with a stream yet.
-- A guest whose party moves to the show's next episode gets "Play it" (the next-episode card's pick); anything else is "Watch with the party", which opens the picker.
+- A guest whose party moves to the show's next episode gets "Play it" (the next-episode card's pick); anything else is "Watch with the party", which opens the picker. **Superseded in part by the 2026-11-22 addendum below:** "Play it" opens the party's picker now and picks from the host's stream there, and a guest gets no next-episode card at all, since nothing here gets that episode ready.
 
 ## Not done
 
@@ -73,3 +73,59 @@ W's sheet dims the video behind it, which is wrong for a party you are watching.
 
 - Reactions stay invisible to members on Nuvio's own clients, by construction. Nuvio gaining a reaction of its own would mean reading their payload, not ours.
 - The dock has not been seen on a device: resizing an iPad window, and the picture's margin against libmpv's own aspect handling, are a run that hasn't happened.
+
+## Addendum (2026-11-22): guests don't choose a stream
+
+A party is only worth watching if everyone has the same cut in front of them, and the guest's own picker is how that stops: they join on something the host isn't playing, or the host switches and they stay on the copy they chose. So the host keeps the picker and the switcher exactly as they were, and **a guest never chooses**. Peli picks for them, from the host's stream: on joining, when the party moves on, and every time the host switches partway through. One chooser does all three, `frontend/src/lib/party-pick.ts`, and nothing else picks for a guest.
+
+### The rule: four steps, then resolve
+
+The order is `partyPlan`'s, which `orderForParty` hands out:
+
+1. **The guest's own stream that is the host's**, by `matchesPartySource` (`lib/party.ts`): the same torrent and file, or else the same file name. Exact, and the pick everyone wants.
+2. **The host's shared link** (`party.shared`), when the host shares it. It isn't a candidate, since its link plays as it is, so it sits between the exact match and the rest.
+3. **The closest of the guest's own streams to the host's source**: the host's name and filename through `lib/ranking`'s `parseStream`, preferring the same resolution, then the same source (WEB-DL, BluRay…) or release group, then the nearest size. Ties keep the ranking's order.
+4. **The guest's top ranked pick**, when nothing is alike, or the host's source is unknown, or no addon has a copy of it.
+
+The last two are one list: the guest's remaining streams nearest the host's first, and the reason is `closest` only when the first of them has something in common with the host's stream (its resolution, its source or its group); otherwise the pick is the guest's own top pick and the reason is `top`. The reason is only what the UI and a test read.
+
+The steps are then tried through `resolvePick` (`lib/resolve.ts`) in that order, each candidate's own copies (its alternates) tried in turn, one at a time because each resolve can make a debrid service start a download, and the first that opens starts at `Party.StartAt(media)`, so the guest lands where the party is. The candidates are the *unfiltered* ranking, top pick first: a guest's own filter chips never change the party's pick.
+
+**An auto-pick is the party's, not the guest's habit.** It never calls `SetChosenSource`, so the source the guest remembered for a show stays theirs, and it never pre-resolves (`usePreResolve` is off for a guest, ADR-0060): nothing is resolved ahead of the pick that actually plays.
+
+### When it picks: the wait rule
+
+**A copy of the host's stream is worth no wait**: as soon as one of the guest's streams is the host's, the chooser starts, however many addons are still answering. Anything else waits for the whole list, because the closest stream is only as good as the streams that have answered: it starts once every addon has answered, or ten seconds after the first answer (`waitAfterFirst`), whichever comes first, and then takes the best of what it has. The clock starts on the first answer, not on the mount, so an addon that never answers can't hold a guest forever.
+
+The start waits for the ranking as well as the answers. Streams reach the ranking a step after they reach the picker — the feed is an effect, and the engine answers a microtask later — so for a render or two a source can have streams the ranked view doesn't hold yet; starting then would pick from an empty list and fail the guest for nothing. The one case that doesn't wait is nothing handed on at all (no addon has streams, or none it can play), which is a real failure and is answered by the deadline above.
+
+A failure is the picker's to show, with **Try again** (`retry()` runs the chooser again from the top, against the party's source as it is then); in the player, the follower's prompt says so instead.
+
+### The guest follows the switch, always
+
+**The host switching streams is another pick, not a new choice for the guest.** `NoticeSource = "source"` (`internal/party/types.go`) is a notice, not a new media: the party's media key is the same and only its `Source` moved. `session.go`'s `applyMedia` emits it for that case to every guest, carrying the party's `Media` with the new source; the host's own device gets none, since it made the switch. Every other notice kind is unchanged.
+
+`player-page.tsx` takes the notice as `following` and mounts `PartyFollower`, keyed on the source so a second switch starts over, and enabled only once the party's state carries it (`arrived`) because the state can trail the notice. That runs the same chooser against the new source with `open: false`, which returns the pick and its `Source` instead of loading them, and the player loads it from where this guest is — the `Snapshot`, or where it stopped after a failure — not from the party's position: a stream change is a change of file, not of place in the episode.
+
+**Nothing keeps the old stream.** A guest's old copy may rank higher for them, and it is still not theirs to keep: the chooser runs from the host's new source and the guest switches to whatever it lands on. The one quiet case is `sameStream`: when the chooser lands on the stream already playing — what a switch back to it gives — nothing resolves and nothing loads, the cycle ends as `same` and the prompt goes without a word. Because that check sits inside the step loop, a switch can also arrive there the long way: once the other candidates fail to open, the stream already playing is what's left, which ends the same quiet way instead of as a failure.
+
+While it works the player says `{host} switched streams: switching too…`. If nothing opens, the guest plays on with the old stream and the prompt becomes `Couldn’t switch to {host}’s new stream`, with **Try again** to run the chooser again. There is never a list to fall back on, and the mini player shows none of it. Only the latest switch counts: each pick carries an `AbortSignal`, the hook restarts — aborting the resolve in flight — whenever the party's source changes, and the player aborts its own load too, so a stale pick never plays.
+
+### The Update behind it: the same media, a new source
+
+The host's side is `playback.go`'s `followPlayer`, in its same-media branch: it compares `streamSig` — the shared link and the `Media`'s `Source` — and publishes through `publishMedia` when that changed, which sends the backend `Update` with the party's media key and the new source. Sharing isn't part of it: `SetSharing` decides whether the link itself goes to the channel, not whether the party's source moves, so a host who never shares still moves everyone. A file that fails and a link that expires and is reloaded arrive as a new `Watch` with a new `Source`, so both move the party the same way, and a tick without a switch publishes nothing. `TestHostSwitchPublishesSource` covers sharing and not sharing; `TestGuestFollowsSourceChange` covers the guest's notice, and its absence for a source that didn't change.
+
+### What a guest loses: no list, no switcher, no S
+
+- **The Streams button and the sheet are the host's.** `isPartyGuest(party, media)` (pure, so no mock) drops the button, the `StreamSwitcher` isn't mounted at all, and `openSwitcher` returns at once, so nothing opens the panel for a guest — the button, S, and the failure overlay all went through it.
+- **No S.** `s` is out of `onKey`'s `once` map, `shortcuts.tsx`'s `playerShortcuts` became `playerShortcuts({ guest })` and drops the S row with its "In the Streams panel" group, and the ⌘K palette has no stream command, so there was nothing there to take away.
+- **The failure overlay sends them to the party.** Its second button reads "Try another stream" for a guest and calls `useWatchWithParty()(party.media, true)`: the party's picker route, which picks from the host's stream and starts where the party is. The host's still opens the sheet, or leaves when there is nothing to switch to.
+- **The guest's picker is a status, never a list.** `GuestPick` in `streams-page.tsx` replaces the whole page for a guest — no summary, no filter chips, no jump strip, not even the no-addons notice — and P plays nothing. It says `Finding {host}’s stream…`, then `Opening…`, and on failure `Couldn’t open a stream like {host}’s` with "None of your addons opened the party’s stream. Try again, or leave the party and pick one of your own.", **Try again** and **Back**. While it works it says "Peli plays the party’s stream, so you see exactly what they do." `data-slot="party-pick"` names that status alone, so a test or a tool reads it without the page's own Back.
+- **`PartySources` is the host's card.** The picker's "Your watch party is watching this" sits after the guest's early return, so only a host reads it.
+- **Every entry point goes to the party's picker route.** `usePlay` (`lib/playback.ts`) and `useOpenTitle` (`lib/title.ts`) ask `usePartyGuestMedia`, and for the party's own film or episode they call `useWatchWithParty()(party.media)` instead: Play on a title page, a title menu's Play, opening that title from a card or a row.
+- **"Play it" no longer uses `usePreparedNext`'s pick.** `player-page.tsx`'s `partyNext`/`startNext` use the party's own test, `party && !party.isHost`, because `isPartyGuest` asks whether the party is on the file *playing* and here it is on the next one; the `NextEpisode` card isn't drawn while the party is on the next episode, so nothing prepares this device's pick for it, and Play it — or the end of the file with "Still watching" — opens the party's picker for that episode instead.
+
+### Not done here
+
+- Whether Nuvio's own clients act on a same-key `Update`: untested. Peli sends it as Nuvio's clients send their own media, but Nuvio's apps may only read an `Update` that changes the media key, in which case a friend on Nuvio's apps keeps playing their own stream through a host's switch and sees no notice either.
+- No real two-device run of any of this, no host on a Nuvio app, and no live host switch. Everything above is the tests' and one device's reading of the code.
