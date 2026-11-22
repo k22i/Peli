@@ -73,10 +73,10 @@ vi.mock("@/components/downloads/tray-list", () => ({
   ),
   trayDownloads: (list: readonly Download[]) => [...list],
   overallPercent: (list: readonly Download[]) => {
-    const running = list.filter((download) => download.state !== "done");
-    const total = running.reduce((sum, download) => sum + download.total, 0);
+    const running = list.filter((item) => item.state !== "done");
+    const total = running.reduce((sum, item) => sum + item.total, 0);
     if (total <= 0) return undefined;
-    const bytes = running.reduce((sum, download) => sum + download.bytes, 0);
+    const bytes = running.reduce((sum, item) => sum + item.bytes, 0);
     return Math.min(100, Math.round((bytes / total) * 100));
   },
 }));
@@ -234,7 +234,9 @@ describe("download status", () => {
 
     // downloads:changed, as Go sends it: the same record, done.
     const done = download({ state: "done", bytes: 1_000_000_000, doneAt: Date.now() });
-    act(() => client.setQueryData<Download[]>(downloadsKey(1), [done]));
+    act(() => {
+      client.setQueryData<Download[]>(downloadsKey(1), [done]);
+    });
 
     expect(await screen.findByText("Downloaded")).toBeInTheDocument();
     expect(screen.getByText("Severance · S1 E2")).toBeInTheDocument();

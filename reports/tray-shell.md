@@ -1,8 +1,9 @@
 # Downloads tray part B: the button in the top bar, and its popover / sheet
 
-Branch `k22i/tray-shell` (cut from `main` at `0cc1050`, "shared open flag for the downloads tray").
-Code and unit tests only; nothing was run (no tests, typecheck, lint, `vp fmt`, build or
-`wails3`), per the rules — the coordinator runs all of that after merging. Go is untouched.
+Branch `k22i/tray-shell`, re-cut from `main` at `53f4ae3` ("style: format the tray files") for
+round 1 of review fixes. Code and unit tests only; nothing was run (no tests, typecheck, lint,
+`vp fmt`, build or `wails3`), per the rules — the coordinator runs all of that after merging. Go
+is untouched.
 
 ## What changed
 
@@ -62,13 +63,35 @@ Code and unit tests only; nothing was run (no tests, typecheck, lint, `vp fmt`, 
 
 | File | |
 |---|---|
-| `frontend/src/components/shell/download-status.tsx` | new: `DownloadStatus`, `useFinishedToasts`, `StatusIcon`, `downloadsName` |
+| `frontend/src/components/shell/download-status.tsx` | new: `DownloadStatus`, `useFinishedToasts`, `StatusIcon`, `downloadsName`, `closeTray` |
 | `frontend/src/components/shell/download-status.test.tsx` | new: the button's tests |
 | `frontend/src/components/shell/top-bar.tsx` | the import and the one mount line |
 | `reports/tray-shell.md` | this report |
 
 Nothing outside those. `lib/download-tray.ts`, `lib/downloads.ts`, `components/ui/*` and
 `components/downloads/tray-list.tsx` are used exactly as they are, not edited.
+
+## Round 1 lint fixes
+
+Three `vp check` findings in my own files, all style, no behaviour change. Nothing was run to
+confirm them (per the rules); the coordinator's next `vp check` is the check.
+
+- **`eslint(no-shadow)` in `download-status.test.tsx:76,77,79`** — the mocked
+  `overallPercent` named its lambda parameters `download`, which shadows the file's own
+  `download()` record builder. They are `item` now:
+  `list.filter((item) => item.state !== "done")` and the two `reduce` sums. The mock computes
+  exactly what it did before.
+- **`unicorn(consistent-function-scoping)` in `download-status.tsx:195`** — `const close = () =>
+  setDownloadTrayOpen(false)` captured nothing from `DownloadStatus`, so it is now a
+  module-scope `function closeTray(): void` beside `downloadsName` ("a row that leads somewhere
+  closes the tray it was in"). Both `onNavigate` props take `closeTray`. It is a stable function
+  reference, so the sheet and the popover no longer rebuild a prop each render either.
+- **`typescript(no-floating-promises)` in `download-status.test.tsx:237`** — `act(() =>
+  client.setQueryData(...))` returned TanStack's promise-like callback result. It has a block
+  body now, so `act`'s callback returns `undefined`.
+
+Not mine, left alone: `tray-list.tsx`'s `Date.now()` in render (purity) and `role="progressbar"`
+(a11y), `stream-list.tsx`'s two `role="img"`, and `download-pick.test.ts`'s `candidateOf`.
 
 ## Deviations from the spec, and why
 
@@ -96,12 +119,12 @@ Nothing outside those. `lib/download-tray.ts`, `lib/downloads.ts`, `components/u
 
 ## Dependencies on part A and on the merge
 
-- **`@/components/downloads/tray-list` is imported but does not exist in this worktree.**
-  Part A builds it beside me (`DownloadTrayList`, `overallPercent`; I also import nothing else
-  from it). Tests `vi.mock` it with a stub list, a real-looking `overallPercent` and a
-  `trayDownloads` passthrough, so they don't depend on part A's body — but Vite must still be
-  able to resolve the module for the file to *run*, so this branch's `download-status.test.tsx`
-  only passes once that file is merged. Same for typecheck of `download-status.tsx`.
+- **`@/components/downloads/tray-list` is part A's file** (`DownloadTrayList`, `overallPercent`;
+  I import nothing else from it). It did not exist in my round-0 worktree, so round 0 could not
+  run at all; since the re-cut onto `53f4ae3` it is present, and its exports line up with
+  what I import and pass (`profileId`, `touch`, `onNavigate`). The tests still `vi.mock` it with
+  a stub list, a real-looking `overallPercent` and a `trayDownloads` passthrough, so they test my
+  button and not part A's body.
 - **The shell now reads the downloads query.** `useDownloads(1)` is shared with any screen's
   (same `["downloads", profileId]` key), so route tests that mock `Downloads.List` with a
   *running* download will also render the top-bar button. I checked the existing queries that
@@ -110,6 +133,10 @@ Nothing outside those. `lib/download-tray.ts`, `lib/downloads.ts`, `components/u
   buttons globally, so nothing should collide — worth a glance when the suite runs.
 
 ## Open questions
+
+Settled in round 1 by the coordinator, so the build stands unchanged: the seen mark may be set
+when the tray opens, and the button hides once nothing is unfinished and nothing is unseen. The
+four below are still open.
 
 - **An iPhone sheet that closes onto a hidden button.** With `onNavigate` closing the sheet after
   a Play, the button may hide in the same commit; the sheet keeps its exit animation (see the
