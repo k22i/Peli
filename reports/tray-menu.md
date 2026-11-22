@@ -7,6 +7,23 @@ worktree, so the code below is written against the record shape in the task's ap
 Branch `k22i/tray-menu`, cut from `main` at `0cc1050` ("shared open flag for the downloads tray"),
 which is also `HEAD` — so the branch already contained the commit it had to.
 
+## Round 1 fixes (lint only)
+
+Recut on `main` at `53f4ae3` (the three tray branches merged and formatted) and fixed the two
+findings that were mine. Nothing was run, as asked — no lint, tests, typecheck, build or fmt.
+
+1. `jsx-a11y(prefer-tag-over-role)` at `components/streams/stream-list.tsx:865` and `:874` — the row
+   mark's wrapper `<span role="img" aria-label>` is gone. The label now sits on the graphic itself:
+   `aria-label={label} role="img"` on the lucide `CircleCheck` and on the ring's own `<svg>` (its
+   `ArrowDown` stays `aria-hidden`), so the wrapper spans keep only layout and colour classes. No
+   `oxlint-disable`, no visually-hidden text. This is also what the rule wants: oxc exempts
+   `role="img"` when the element **is** an `<svg>` ("an `<img>` cannot preserve an inline SVG's
+   contents"), and an `<svg>` has no implicit role, so nothing is redundant. Screen readers hear the
+   same `statusText` label as before, and the row button's accessible name is unchanged.
+2. `unicorn(consistent-function-scoping)` at `lib/download-pick.test.ts:313` — `candidateOf` moved
+   from inside `describe("the record of one stream")` to module scope, next to the `ranked` helper it
+   wraps; no change to its body or callers.
+
 ## The bug
 
 `useStreamDownloads` exposed `has(candidate)`: true for **any** record with that video and URL,
@@ -60,7 +77,8 @@ queued claimed **Downloaded** with a check.
 - **A row's own mark**: `StreamDownload` is a fixed `size-4` slot after the badges (after the warning
   on the phone) in all four row layouts, holding a check-circle once `statusOf` is `done` and an
   arrow inside a tiny progress ring otherwise (`percent` as the ring's dash offset). Both carry
-  `role="img"` and `statusText` as their `aria-label` ("Downloading 40 %", "Queued", "Downloaded").
+  `role="img"` with `statusText` as their `aria-label` ("Downloading 40 %", "Queued", "Downloaded")
+  on the `<svg>` itself, never on a wrapper (round 1 above).
   Rows without a record draw the empty slot, so a row's badges don't shift when its download arrives.
   The slot is only in the picker (the `RowDownload` context is null in the player's switcher and the
   gallery).
