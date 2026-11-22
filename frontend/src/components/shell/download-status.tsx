@@ -57,6 +57,11 @@ function downloadsName(running: number, finished: number, percent: number | unde
   return `Downloads, ${finished} finished`;
 }
 
+// A row that leads somewhere closes the tray it was in.
+function closeTray(): void {
+  setDownloadTrayOpen(false);
+}
+
 // Where each download was when the watcher last looked, or null before its
 // first look: the app's own list is not news, and only a change to done says
 // "Downloaded".
@@ -192,7 +197,6 @@ export function DownloadStatus() {
   const percent = overallPercent(downloads);
   const name = downloadsName(running.length, finished.length, percent);
   const icon = <StatusIcon checked={running.length === 0} unseen={unseen} percent={percent} />;
-  const close = () => setDownloadTrayOpen(false);
 
   if (sheet) {
     return (
@@ -214,7 +218,7 @@ export function DownloadStatus() {
         )}
         <BottomSheet open={open} onOpenChange={setDownloadTrayOpen} label="Downloads">
           {profileId !== undefined && (
-            <DownloadTrayList profileId={profileId} touch onNavigate={close} />
+            <DownloadTrayList profileId={profileId} touch onNavigate={closeTray} />
           )}
         </BottomSheet>
       </>
@@ -239,7 +243,7 @@ export function DownloadStatus() {
             )}
           >
             {profileId !== undefined && (
-              <DownloadTrayList profileId={profileId} touch={false} onNavigate={close} />
+              <DownloadTrayList profileId={profileId} touch={false} onNavigate={closeTray} />
             )}
           </PopoverPrimitive.Popup>
         </PopoverPrimitive.Positioner>
