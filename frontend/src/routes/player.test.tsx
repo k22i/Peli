@@ -2097,6 +2097,217 @@ describe("watch party", () => {
   });
 });
 
+// A guest follows the host onto another stream (ADR-0051): the chooser runs
+// again against the host's new source and the pick loads where this guest is.
+describe("watch party: following the host's stream", () => {
+  const cinemeta: Addon = {
+    url: "https://v3-cinemeta.strem.io/manifest.json",
+    name: "Cinemeta",
+    enabled: true,
+  };
+  const torrentio: Addon = {
+    url: "https://torrentio.strem.fun/manifest.json",
+    name: "Torrentio",
+    enabled: true,
+  };
+  const pilotStreams = "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json";
+  const hd: Stream = {
+    name: "[TB+] Torrentio\n720p",
+    title: "Breaking.Bad.S01E01.720p.BluRay.x264-GRP.mkv\n👤 20 💾 1.1 GB ⚙️ Tracker",
+    url: "https://torrentio.strem.fun/resolve/torbox/KEY/b/null/1/Breaking.Bad.S01E01.720p.mkv",
+  };
+  const fullHd: Stream = {
+    name: "[TB+] Torrentio\n1080p",
+    title: "Breaking.Bad.S01E01.1080p.BluRay.x264-GRP.mkv\n👤 40 💾 2.1 GB ⚙️ Tracker",
+    url: "https://torrentio.strem.fun/resolve/torbox/KEY/a/null/1/Breaking.Bad.S01E01.1080p.mkv",
+  };
+  const pilot: Watching = {
+    profileId: 1,
+    contentId: "tt0903747",
+    contentType: "series",
+    videoId: "tt0903747:1:1",
+    season: 1,
+    episode: 1,
+    title: "Pilot",
+  };
+  const hostSource = (name: string) => ({
+    infoHash: "",
+    fileIdx: null,
+    filename: "",
+    videoSize: 0,
+    bingeGroup: "",
+    addonId: "torrentio",
+    name,
+  });
+  const people = [
+    { id: "me", name: "Kevin", host: false, you: true },
+    { id: "ana", name: "Ana", host: true, you: false },
+  ].map((member) => ({
+    avatarUrl: "",
+    avatarColor: "",
+    status: "ready",
+    watchingElse: false,
+    behindMs: 0,
+    ...member,
+  }));
+  const partyMedia = (name: string) => ({
+    type: "series",
+    id: "tt0903747",
+    videoId: "tt0903747:1:1",
+    season: 1,
+    episode: 1,
+    title: "Breaking Bad",
+    episodeTitle: "Pilot",
+    description: "",
+    poster: "",
+    background: "",
+    logo: "",
+    source: hostSource(name),
+  });
+  const partyState = (name: string, more: Record<string, unknown> = {}) => ({
+    unavailable: "",
+    busy: false,
+    party: {
+      id: "p1",
+      code: "ABCDEF",
+      memberId: "me",
+      hostId: "ana",
+      isHost: false,
+      hostOnly: false,
+      canControl: true,
+      connected: true,
+      maxMembers: 8,
+      members: people,
+      media: partyMedia(name),
+      watching: true,
+      paused: false,
+      waiting: false,
+      waitingFor: [],
+      behind: false,
+      behindMs: 0,
+      sharing: false,
+      shared: null,
+      ...more,
+    },
+  });
+  // The host switches: the party's state carries the new source, then the
+  // notice says so.
+  const hostSwitches = (name: string, more: Record<string, unknown> = {}) => {
+    emit("party:state", partyState(name, more));
+    emit("party:notice", {
+      kind: "source",
+      name: "",
+      action: "",
+      positionMs: 0,
+      rate: 1,
+      media: partyMedia(name),
+      hostOnly: false,
+    });
+  };
+  const openPilot = () =>
+    openPlayer("S1 · E1 · Pilot", source, undefined, {
+      watching: pilot,
+      stream: { ...hd, description: hd.title ?? "" },
+      resumedAt: 0,
+    });
+
+  beforeEach(() => {
+    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
+    mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio]);
+    const answers: Record<string, unknown> = {
+      [cinemeta.url]: cinemetaManifest,
+      [torrentio.url]: torrentioManifest,
+      "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
+      [pilotStreams]: { streams: [hd, fullHd] },
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<(url: string) => Promise<Response>>(async (url) =>
+        url in answers ? Response.json(answers[url]) : new Response("", { status: 503 }),
+      ),
+    );
+    Object.defineProperty(document.documentElement, "clientHeight", {
+      configurable: true,
+      get: () => 800,
+    });
+  });
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    Reflect.deleteProperty(document.documentElement, "clientHeight");
+  });
+
+  it("switches to the stream that matches the host's, from where this guest is, remembering nothing", async () => {
+    await openPilot();
+    emit("player:state", playing);
+    emit("party:state", partyState("[TB+] Torrentio\n720p"));
+    await screen.findByRole("button", { name: "Pause" });
+    mocks.snapshot.mockResolvedValue({ ...playing, position: 642 });
+    hostSwitches("[TB+] Torrentio\n1080p");
+    expect(await screen.findByText(/Ana switched streams: switching too/)).toBeInTheDocument();
+    await waitFor(() =>
+      expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
+        expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
+        expect.objectContaining({ start: 642, watching: pilot }),
+      ),
+    );
+    expect(mocks.resolve).toHaveBeenCalledWith({ url: fullHd.url, headers: {} });
+    // The party's pick isn't the guest's habit.
+    expect(mocks.setChosen).not.toHaveBeenCalled();
+  });
+
+  it("does nothing when the chooser lands on what plays", async () => {
+    await openPilot();
+    emit("player:state", playing);
+    emit("party:state", partyState("[TB+] Torrentio\n1080p"));
+    await screen.findByRole("button", { name: "Pause" });
+    hostSwitches("[TB+] Torrentio\n720p");
+    await waitFor(() =>
+      expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
+    );
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    expect(mocks.load).not.toHaveBeenCalled();
+  });
+
+  it("follows the latest switch when the host switches again mid-switch", async () => {
+    let release: (value: Source) => void = () => {};
+    mocks.resolve.mockImplementationOnce(
+      () => new Promise<Source>((done) => (release = done)),
+    );
+    await openPilot();
+    emit("player:state", playing);
+    emit("party:state", partyState("[TB+] Torrentio\n720p"));
+    await screen.findByRole("button", { name: "Pause" });
+    hostSwitches("[TB+] Torrentio\n1080p");
+    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledTimes(1));
+    // Back to the one playing: the first pick is dropped, whatever it resolves to.
+    hostSwitches("[TB+] Torrentio\n720p");
+    release({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
+    await waitFor(() =>
+      expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
+    );
+    expect(mocks.load).not.toHaveBeenCalledWith(
+      expect.objectContaining({ url: "https://cdn.example/KEY/stale.mkv" }),
+      expect.anything(),
+    );
+  });
+
+  it("plays on and offers to try again when nothing opens", async () => {
+    mocks.resolve.mockRejectedValue(new Error("unreachable"));
+    const { router } = await openPilot();
+    emit("player:state", playing);
+    emit("party:state", partyState("[TB+] Torrentio\n720p"));
+    await screen.findByRole("button", { name: "Pause" });
+    hostSwitches("[TB+] Torrentio\n1080p");
+    expect(await screen.findByText("Couldn’t switch to Ana’s new stream")).toBeInTheDocument();
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(router.state.location.state.player?.source).toEqual(source);
+    mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
+    const user = userEvent.setup();
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+    await waitFor(() => expect(mocks.load).toHaveBeenCalledTimes(1));
+  });
+});
+
 // The touch player's chrome (#130): a small top row, the transport in the
 // middle, a thin seek row and, for a series, a row of text buttons.
 describe("touch player", () => {
