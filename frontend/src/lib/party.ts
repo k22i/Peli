@@ -22,7 +22,8 @@ import type { Source } from "@bindings/streams";
 import type { Meta, Stream } from "@/lib/addon-protocol";
 import { feature } from "@/lib/features";
 import { errorCode } from "@/lib/error-code";
-import { streamsPath, streamsSearch, type PlayTarget } from "@/lib/playback";
+import type { PlayTarget } from "@/lib/playback";
+import { streamsPath, streamsSearch } from "@/lib/streams-path";
 
 // Watch parties (ADR-0051): watching with friends on Peli or Nuvio's apps,
 // each from their own streams, in step. Go (internal/party) runs the party
@@ -378,6 +379,27 @@ export function useWatchWithParty() {
       state: (state) => ({ ...state, play: target }),
       replace,
     });
+  };
+}
+
+// The party's own Media when this device is a guest watching exactly what
+// target plays, and undefined otherwise: a guest never chooses a stream
+// (ADR-0051). Every way into the party's media — Play on a title page, a
+// title menu's Play, opening that title — goes to the party's picker
+// instead, which picks from the host's stream and starts where the party is.
+// The rule is lib/party-pick's isPartyGuest: the party is on that film or
+// episode, and this device isn't its host.
+export function usePartyGuestMedia(): (target: {
+  type: string;
+  id: string;
+  videoId?: string | undefined;
+}) => Media | undefined {
+  const party = useParty()?.party ?? undefined;
+  return (target) => {
+    if (!party || party.isHost) return undefined;
+    return partyWatches(party, target.type, target.id, target.videoId ?? target.id)
+      ? party.media
+      : undefined;
   };
 }
 

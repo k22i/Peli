@@ -7,10 +7,12 @@ import type { ProfileSettings } from "@bindings/store";
 import { toastManager } from "@/components/ui/toast";
 import type { ContentType, Meta, Stream } from "@/lib/addon-protocol";
 import { playableQuery, type Download, type Playable } from "@/lib/downloads";
+import { usePartyGuestMedia, useWatchWithParty } from "@/lib/party";
 import { loadOptions, Player } from "@/lib/player";
 import { isIOS } from "@/lib/platform";
 import { currentProfileQuery } from "@/lib/profile";
 import { profileSettingsQuery } from "@/lib/settings";
+import { streamsPath, streamsSearch, type StreamsSearch } from "@/lib/streams-path";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import { connectionQuery } from "@/lib/sync";
 import {
@@ -40,19 +42,10 @@ export type PlayTarget = {
 };
 
 // The stream picker's address (#50): the title, with the video and resume
-// point in its search, and the target in history state for its heading.
-export const streamsPath = "/streams/$type/$id";
-
-export type StreamsSearch = { video?: string; at?: number };
-
-export function streamsSearch(search: Record<string, unknown>): StreamsSearch {
-  const video = search["video"];
-  const at = search["at"];
-  return {
-    ...(typeof video === "string" && video ? { video } : {}),
-    ...(typeof at === "number" && Number.isFinite(at) && at > 0 ? { at } : {}),
-  };
-}
+// point in its search, and the target in history state for its heading. It
+// lives in lib/streams-path.ts so lib/party.ts can build it too; kept here as
+// well, since this is where the picker's callers have always found it.
+export { streamsPath, streamsSearch, type StreamsSearch };
 
 // The id streams are asked for: the episode's, or the film's.
 export const streamId = (target: Pick<PlayTarget, "id" | "videoId">) => target.videoId ?? target.id;
@@ -184,12 +177,23 @@ export async function loadDownloaded({
 // (ADR-0064): straight to the player, no picker. Offline, a title that
 // isn't downloaded says so in a toast instead of opening a picker that
 // would fail.
+//
+// A guest of the party watching exactly this film or episode never picks
+// (ADR-0051): Play opens the party's picker, which picks from the host's
+// stream for them, and starts where the party is.
 export function usePlay() {
   const navigate = useNavigate();
   const client = useQueryClient();
+  const withParty = useWatchWithParty();
+  const partyGuest = usePartyGuestMedia();
   // Nothing is asked until Play is pressed: the profile and the connection
   // are read from the cache then.
   return (target: PlayTarget) => {
+    const party = partyGuest(target);
+    if (party) {
+      withParty(party);
+      return;
+    }
     if (!target.videoId && isSeriesType(target.type)) {
       void navigate({ to: titlePath, params: titleParams(target) });
       return;

@@ -1375,6 +1375,69 @@ describe("next episode", () => {
     await screen.findByRole("button", { name: "Pause" });
     expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
   });
+
+  // W3: the party is on the next episode, so a guest follows it there. The
+  // party's picker picks from the host's stream, so nothing prepares this
+  // device's pick and Play it opens the picker instead of playing.
+  const partyOnNext = (party: Parameters<typeof partyState>[0] = {}) =>
+    partyState(
+      { watching: false, ...party },
+      {
+        type: "series",
+        id: "tt0903747",
+        videoId: "tt0903747:1:2",
+        season: 1,
+        episode: 2,
+        title: "Breaking Bad",
+      },
+    );
+
+  it("sends a guest's Play it to the party's picker for its next episode", async () => {
+    serve([debrid]);
+    const { router } = await openPilot();
+    emit("party:state", partyOnNext());
+    emit("player:state", watched);
+
+    expect(
+      await screen.findByText("The party is watching Breaking Bad · S1 E2"),
+    ).toBeInTheDocument();
+    // The card would only get this device's pick ready.
+    expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+
+    await userEvent.setup().click(screen.getByRole("button", { name: "Play it" }));
+    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
+    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
+    expect(mocks.load).not.toHaveBeenCalled();
+  });
+
+  it("goes to the party's picker at the end rather than playing its own pick", async () => {
+    serve([debrid]);
+    const { router } = await openPilot();
+    emit("party:state", partyOnNext());
+    emit("player:state", watched);
+    await screen.findByText("The party is watching Breaking Bad · S1 E2");
+
+    emit("player:ended", { reason: "eof" } satisfies Ended);
+    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("keeps the card and the prepared pick for the host", async () => {
+    serve([debrid]);
+    await openPilot();
+    emit("party:state", partyOnNext({ isHost: true, hostId: "me" }));
+    emit("player:state", watched);
+
+    // The host moves the party to what it plays, and its own pick is ready.
+    expect(
+      await screen.findByRole("button", { name: "Switch the party to this" }),
+    ).toBeInTheDocument();
+    const next = await card();
+    expect(await within(next).findByText("1080p from Torrentio")).toBeInTheDocument();
+    expect(mocks.resolve).toHaveBeenCalledWith({ url: debrid.url, headers: {} });
+  });
 });
 
 describe("stream switcher", () => {
