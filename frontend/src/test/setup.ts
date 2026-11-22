@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
-import { afterEach, vi } from "vite-plus/test";
+import { afterAll, afterEach, vi } from "vite-plus/test";
 
 import { animeIds } from "./anime";
 import { ios } from "./ios";
@@ -170,6 +170,12 @@ afterEach(async () => {
   (await import("@/lib/anime")).resetAnimeAnswers();
   animeIds.clear();
 });
+
+// @wailsio/runtime's drag.js starts a 50 ms setInterval when it is imported,
+// and its first tick calls window.clearInterval. A short test file can end
+// sooner, and the tick then fires after jsdom is torn down: "window is not
+// defined", an unhandled error that fails the run. Outlive that first tick.
+afterAll(() => new Promise<void>((resolve) => setTimeout(resolve, 60)));
 
 // jsdom has no matchMedia: report no preference (light, motion allowed).
 // Tests that need a setting stub their own.

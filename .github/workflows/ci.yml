@@ -93,7 +93,10 @@ jobs:
         working-directory: frontend
       # The root package embeds frontend/dist, which `go list` needs to exist.
       - run: mkdir -p frontend/dist && touch frontend/dist/.keep
-      - run: go test ./tools/...
+      # Only the notices tool has tests. The others import Wails, whose Linux
+      # cgo needs GTK headers this job skips; the go job vets ./tools/... on
+      # every OS.
+      - run: go test ./tools/notices
       - run: go run ./tools/notices
       - name: Notices are up to date
         run: git diff --exit-code THIRD_PARTY_NOTICES.md internal/licences/notices.json

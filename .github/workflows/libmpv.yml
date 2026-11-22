@@ -56,7 +56,9 @@ jobs:
         run: |
           build/libmpv/build.sh ${{ matrix.target }}
           # The exact sources, for the LGPL's source offer.
-          tar -C build/libmpv/.work --exclude .git -cf build/libmpv/.work/sources-${{ matrix.target }}.tar downloads src/libplacebo-*
+          # From inside .work, so the shell expands the libplacebo glob there.
+          cd build/libmpv/.work
+          tar --exclude .git --exclude '*.tmp' -cf sources-${{ matrix.target }}.tar downloads src/libplacebo-*
       - if: steps.cache.outputs.cache-hit == 'true'
         run: tar -C build/libmpv/.work -xJf build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
       - run: cat build/libmpv/.work/libmpv-${{ matrix.target }}/BUILD-INFO.txt
