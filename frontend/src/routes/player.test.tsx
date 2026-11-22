@@ -2317,7 +2317,7 @@ const hostMedia = (name: string) => ({
 
 // A promise settled from outside, for a resolve that stays open.
 function deferred<T>() {
-  let settle: (value: T) => void = () => {};
+  let settle!: (value: T) => void;
   const promise = new Promise<T>((done) => {
     settle = done;
   });
