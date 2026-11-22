@@ -330,8 +330,10 @@ func TestMonitorWakeProbesNow(t *testing.T) {
 	mu.Unlock()
 	m.Wake()
 	eventually(t, "back online", func() bool { return m.Connection() == Online })
-	_, reconnects := r.get()
-	if reconnects != 1 {
+	// reconnected runs on its own goroutine, after Online.
+	eventually(t, "one reconnect", func() bool { _, n := r.get(); return n == 1 })
+	m.Stop()
+	if _, reconnects := r.get(); reconnects != 1 {
 		t.Fatalf("reconnects = %d, want 1", reconnects)
 	}
 }

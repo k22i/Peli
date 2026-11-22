@@ -42,6 +42,9 @@ env:
   # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers,
   # and the player (#60) libmpv's and libepoxy's.
   LINUX_DEPS: build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev libmpv-dev libepoxy-dev
+  # Ubuntu 26.04's mpv.pc passes -fno-strict-overflow, which cgo refuses
+  # unless allowed (https://go.dev/s/invalidflag).
+  CGO_CFLAGS_ALLOW: -fno-strict-overflow
   # #92: macOS builds with our own LGPL libmpv (libmpv.yml). TODO(#92):
   # Windows still links shinchiro's (the M0 spikes' build) until our Windows
   # build lands; Linux links the distro's, which the .deb depends on anyway

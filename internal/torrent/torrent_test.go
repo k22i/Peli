@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -53,7 +54,7 @@ func quiet(cfg *torrent.ClientConfig) {
 // pieceLength, and seeds it.
 func seed(t *testing.T, pieceLength int64, sizes map[string]int) swarm {
 	t.Helper()
-	dir := t.TempDir()
+	dir := seederDir(t)
 	files := map[string][]byte{}
 	rng := rand.New(rand.NewPCG(1, uint64(len(sizes))))
 	for name, size := range sizes {
@@ -84,6 +85,34 @@ func seed(t *testing.T, pieceLength int64, sizes map[string]int) swarm {
 	check(t, err)
 	check(t, tor.VerifyData())
 	return swarm{client, mi.HashInfoBytes(), files}
+}
+
+// seederDir is the seeder's data folder. Not t.TempDir: on Windows
+// anacrolix's file storage can still hold a file open after client.Close,
+// and an open file can't be removed, which fails t.TempDir's cleanup. The
+// seeder is test scaffolding (the Service under test has its own cache),
+// so the folder is removed once the handles go, or left in the temp dir.
+func seederDir(t *testing.T) string {
+	t.Helper()
+	dir, err := os.MkdirTemp("", "peli-seeder-")
+	check(t, err)
+	t.Cleanup(func() {
+		deadline := time.Now().Add(5 * time.Second)
+		for {
+			err := os.RemoveAll(dir)
+			if err == nil {
+				return
+			}
+			if time.Now().After(deadline) {
+				if runtime.GOOS != "windows" {
+					t.Errorf("seeder folder: %v", err)
+				}
+				return
+			}
+			time.Sleep(50 * time.Millisecond)
+		}
+	})
+	return dir
 }
 
 // engine is a Service whose torrents find only the swarm's seeder.

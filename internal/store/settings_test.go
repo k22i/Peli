@@ -3,6 +3,8 @@ package store
 import (
 	"encoding/json"
 	"errors"
+	"os"
+	"path/filepath"
 	"testing"
 
 	bolt "go.etcd.io/bbolt"
@@ -17,6 +19,9 @@ var japanese = ProfileSettings{
 	Gestures: Gestures{LevelSwipes: true, SeekSwipe: false, HoldForSpeed: true, DoubleTapSkip: 5},
 }
 
+// mediaDir is an absolute folder on any OS (a Mac path isn't one on Windows).
+var mediaDir = filepath.Join(os.TempDir(), "Volumes", "Media")
+
 var laptop = DeviceSettings{
 	HardwareDecoding: false, Diagnostics: true, TorrentStreaming: true, TorrentCacheGB: 20, PreResolve: true,
 	StreamSort:    "size-desc",
@@ -26,7 +31,7 @@ var laptop = DeviceSettings{
 	Audio: Audio{Device: "coreaudio/BuiltInSpeakerDevice", StereoDownmix: true, VolumeBoost: true},
 	// Downloads (#85) in a folder of the user's own, capped at 25 GB, on the
 	// phone's data too.
-	DownloadsDir: "/Volumes/Media/Downloads", DownloadsCapGB: 25, DownloadsWiFiOnly: false,
+	DownloadsDir: filepath.Join(mediaDir, "Downloads"), DownloadsCapGB: 25, DownloadsWiFiOnly: false,
 }
 
 // The acceptance criterion: settings persist, per profile where they follow a
@@ -160,7 +165,7 @@ func TestDeviceSettingsDownloads(t *testing.T) {
 	// of the caps, Wi-Fi only or not.
 	for _, gb := range DownloadCaps {
 		device := DefaultDeviceSettings()
-		device.DownloadsDir, device.DownloadsCapGB, device.DownloadsWiFiOnly = "/Volumes/Media/Peli", gb, false
+		device.DownloadsDir, device.DownloadsCapGB, device.DownloadsWiFiOnly = filepath.Join(mediaDir, "Peli"), gb, false
 		check(t, s.SaveDeviceSettings(device))
 		equal(t, must[DeviceSettings](t)(s.DeviceSettings()), device)
 	}

@@ -4,13 +4,20 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
 const testDownloadID = "0123456789abcdef0123456789abcdef"
 
+// fileURL is a file:// URL the way downloads makes one: file:///C:/… on
+// Windows, not file:C:/….
 func fileURL(p string) string {
-	return (&url.URL{Scheme: "file", Path: filepath.ToSlash(p)}).String()
+	p = filepath.ToSlash(p)
+	if !strings.HasPrefix(p, "/") {
+		p = "/" + p
+	}
+	return (&url.URL{Scheme: "file", Path: p}).String()
 }
 
 func TestDownloadSubtitlePath(t *testing.T) {

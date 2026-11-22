@@ -1,0 +1,4 @@
+# Shaders are embedded (internal/player/quality.go) with the bytes
+# shaders/SOURCES.txt pins: never convert their line endings (a Windows
+# checkout would otherwise turn cas.glsl and fsr.glsl to CRLF).
+*.glsl -text

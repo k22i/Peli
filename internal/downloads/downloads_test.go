@@ -44,6 +44,8 @@ func TestDownloadsAFile(t *testing.T) {
 	if r.ev.count(EventProgress) == 0 {
 		t.Error("no progress events")
 	}
+	// The store says done before the event goes out: wait for it.
+	waitFor(t, "the done event", func() bool { s := r.ev.states(d.ID); return len(s) > 0 && s[len(s)-1] == "done" })
 	states := r.ev.states(d.ID)
 	if states[0] != "queued" || states[len(states)-1] != "done" || !slices.Contains(states, "downloading") {
 		t.Errorf("announced %v", states)
