@@ -71,53 +71,9 @@ func TestCropProp(t *testing.T) {
 	}
 }
 
-// letterboxed is a w×h bgr0 frame with black bars of top and bottom rows
-// and left and right columns around a mid-grey picture; dark adds a black
-// patch at the picture's left edge, as a dark scene has.
-func letterboxed(w, h, top, bottom, left, right int, dark bool) frame {
-	f := frame{w: w, h: h, stride: w * 4, data: make([]byte, w*h*4)}
-	for y := range h {
-		for x := range w {
-			in := y >= top && y < h-bottom && x >= left && x < w-right
-			if dark && x < left+w/20 {
-				in = false
-			}
-			if in {
-				i := y*f.stride + x*4
-				f.data[i], f.data[i+1], f.data[i+2] = 120, 130, 140
-			}
-		}
-	}
-	return f
-}
-
-func TestDetectBars(t *testing.T) {
-	got, ok := detectBars(letterboxed(400, 300, 38, 38, 0, 0, false))
-	if !ok || got.Top != 12.6 || got.Bottom != 12.6 || got.Left != 0 || got.Right != 0 {
-		t.Errorf("letterbox: %+v, %v; want 12.6 %% top and bottom", got, ok)
-	}
-	got, ok = detectBars(letterboxed(400, 300, 0, 0, 50, 50, false))
-	if !ok || got.Left != 12.5 || got.Right != 12.5 || got.Top != 0 {
-		t.Errorf("pillarbox: %+v, %v", got, ok)
-	}
-	// A line or two of black is no bar.
-	if got, _ := detectBars(letterboxed(400, 300, 1, 1, 0, 0, false)); !got.Empty() {
-		t.Errorf("a scan line: %+v, want none", got)
-	}
-	// A fade to black tells nothing.
-	if _, ok := detectBars(letterboxed(400, 300, 140, 140, 0, 0, false)); ok {
-		t.Error("a nearly black frame counted")
-	}
-	// A dark scene reads as more bar; leastBars keeps the smaller one.
-	darkScene, _ := detectBars(letterboxed(400, 300, 38, 38, 0, 0, true))
-	plain, _ := detectBars(letterboxed(400, 300, 38, 38, 0, 0, false))
-	if darkScene.Left <= plain.Left {
-		t.Fatalf("dark scene left %v, want more than %v", darkScene.Left, plain.Left)
-	}
-	if least := leastBars([]store.Crop{darkScene, plain, darkScene}); least != plain {
-		t.Errorf("leastBars = %+v, want %+v", least, plain)
-	}
-}
+// The bars themselves and how frames agree are playback's tests
+// (internal/playback/autocrop_test.go); what a title and a profile frame
+// with is the desktop's.
 
 func TestFramingForPrefersTheTitleThenTheProfilesFit(t *testing.T) {
 	s := NewService("test")
