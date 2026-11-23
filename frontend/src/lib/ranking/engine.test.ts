@@ -8,7 +8,7 @@ import corpus from "./corpus/labelled.json";
 import { StreamEngine, rankStreams } from "./engine";
 import { judge } from "./fakes";
 import { parseStream } from "./parse";
-import { defaultPrefs, scoreStream } from "./score";
+import { defaultPrefs, scoreStream, tierOrder, tiers } from "./score";
 
 const hash = "c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6";
 const movie: TitleContext = {
@@ -102,6 +102,21 @@ describe("scoreStream", () => {
     );
   });
 
+  // The profile's preferred quality is soft: it leads, one above it follows it,
+  // and both stay ahead of anything lower.
+  it("puts the preferred resolution first, and the one above it next", () => {
+    const wanted = {
+      ...defaultPrefs,
+      maxResolution: "2160p" as const,
+      preferredResolution: "1080p" as const,
+    };
+    const fhd = p2p("Some.Film.2024.1080p.WEB-DL.H264-GRP.mkv");
+    const uhd = p2p("Some.Film.2024.2160p.WEB-DL.H265-GRP.mkv");
+    const hd = p2p("Some.Film.2024.720p.WEB-DL.H264-GRP.mkv");
+    expect(score(fhd, wanted)).toBeGreaterThan(score(uhd, wanted));
+    expect(score(uhd, wanted)).toBeGreaterThan(score(hd, wanted));
+  });
+
   // #98: "with a 1080p cap, 4K streams rank below every stream that fits",
   // whatever else the fitting one lacks.
   it("ranks a cached 4K below every stream that fits the cap", () => {
@@ -156,6 +171,31 @@ describe("scoreStream", () => {
       expect(score(hdr10, { ...defaultPrefs, hdr: false })).toBe(score(sdr));
       expect(score(hdr10, { ...defaultPrefs, hdr: true })).toBeGreaterThan(score(sdr));
     });
+  });
+});
+
+describe("tierOrder", () => {
+  // #98: over the cap first, then the preferred quality's own tier, with the
+  // ones above it that still fit right behind.
+  it("moves the tiers above the preferred quality right under its own", () => {
+    expect(
+      tierOrder({ ...defaultPrefs, maxResolution: "2160p", preferredResolution: "1080p" }),
+    ).toEqual(["1080p", "4K", "720p", "SD", "Unknown", "Low quality", "Likely fake"]);
+  });
+
+  it("keeps the nearest above first, and leaves what's over the cap alone", () => {
+    expect(
+      tierOrder({ ...defaultPrefs, maxResolution: "2160p", preferredResolution: "720p" }),
+    ).toEqual(["720p", "1080p", "4K", "SD", "Unknown", "Low quality", "Likely fake"]);
+    // 4K is over the cap, so it stays after the ones that fit.
+    expect(
+      tierOrder({ ...defaultPrefs, maxResolution: "1080p", preferredResolution: "720p" }),
+    ).toEqual(["720p", "1080p", "SD", "Unknown", "4K", "Low quality", "Likely fake"]);
+    // No preference, or one the cap doesn't allow, is the order it always had.
+    expect(tierOrder({ ...defaultPrefs, maxResolution: "2160p" })).toEqual(tiers);
+    expect(
+      tierOrder({ ...defaultPrefs, maxResolution: "1080p", preferredResolution: "2160p" }),
+    ).toEqual(["1080p", "720p", "SD", "Unknown", "4K", "Low quality", "Likely fake"]);
   });
 });
 

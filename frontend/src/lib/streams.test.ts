@@ -70,8 +70,8 @@ describe("StreamFeed", () => {
 });
 
 // #98: what ranking is told from the settings.
-const profile = (audioLanguages: string[] | null): ProfileSettings =>
-  profileSettings({ audioLanguages });
+const profile = (audioLanguages: string[] | null, preferredQuality?: string): ProfileSettings =>
+  profileSettings({ audioLanguages, ...(preferredQuality ? { preferredQuality } : {}) });
 const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   hardwareDecoding: true,
   maxResolution: "auto",
@@ -103,6 +103,8 @@ const cap = (maxResolution: string) =>
 const hdrOf = (mode: string) => rankingPrefs(profile([]), device({ hdr: mode })).hdr;
 const dolbyVisionOf = (mode: string) =>
   rankingPrefs(profile([]), device({ dolbyVision: mode })).dolbyVision;
+const preferred = (preferredQuality: string | undefined, maxResolution = "auto") =>
+  rankingPrefs(profile([], preferredQuality), device({ maxResolution })).preferredResolution;
 
 describe("rankingPrefs", () => {
   afterEach(() => {
@@ -114,6 +116,7 @@ describe("rankingPrefs", () => {
     expect(rankingPrefs(undefined, undefined)).toEqual({
       languages: [],
       maxResolution: "2160p",
+      preferredResolution: null,
       hdr: false,
       dolbyVision: false,
       remembered: null,
@@ -130,6 +133,22 @@ describe("rankingPrefs", () => {
     // A value this build doesn't know is no cap, not an error.
     expect(cap("")).toBe("2160p");
     expect(cap("8k")).toBe("2160p");
+  });
+
+  // The profile's preferred quality is soft; the device's cap is a hard limit.
+  it("takes the profile's preferred quality, unless the cap is below it", () => {
+    expect(preferred("2160p")).toBe("2160p");
+    expect(preferred("1080p")).toBe("1080p");
+    expect(preferred("720p")).toBe("720p");
+    // "best", nothing loaded yet, and a value this build doesn't know: the
+    // highest under the cap is already first, so it asks for nothing.
+    expect(preferred("best")).toBeNull();
+    expect(preferred(undefined)).toBeNull();
+    expect(preferred("8k")).toBeNull();
+    // Over the cap, the cap decides on its own.
+    expect(preferred("2160p", "1080p")).toBeNull();
+    expect(preferred("1080p", "1080p")).toBe("1080p");
+    expect(preferred("720p", "1080p")).toBe("720p");
   });
 
   it("follows the display for HDR on Auto, and the setting otherwise", () => {

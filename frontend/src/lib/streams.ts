@@ -18,9 +18,11 @@ import { pluginSource, usePluginStreams, usePluginTargets } from "@/lib/plugins"
 import {
   RankingSession,
   emptyView,
+  resolutionOrder,
   type Prefs,
   type RankedView,
   type Remembered,
+  type Resolution,
   type TitleContext,
 } from "@/lib/ranking";
 import { audioLanguagesOf, displayModeOf, maxResolutionOf } from "@/lib/settings";
@@ -165,16 +167,18 @@ export function useStreamFeed(
   });
 }
 
-// What ranking prefers: the profile's audio language, and HDR when the
-// display shows it, and the show's remembered source (#58) as the top pick.
+// What ranking prefers: the profile's audio language and the quality it asked
+// for, HDR when the display shows it, and the show's remembered source (#58)
+// as the top pick.
 // What ranking needs from the settings (#98, ADR-0048). The device's say what
 // it can show: no resolution cap unless one is set (the screen's size is no
 // guide, a 4K encode looks better on a 1440p panel too), HDR as the display
 // reports `(dynamic-range: high)` unless it is turned On or Off, and Dolby
 // Vision off unless it is turned On, since a webview can't see it and the
 // player doesn't report it. The profile's say which audio languages come
-// first. Settings that haven't loaded yet count as their defaults; when they
-// arrive, `useRankedStreams` ranks again.
+// first, and which quality to look for under the cap. Settings that haven't
+// loaded yet count as their defaults; when they arrive, `useRankedStreams`
+// ranks again.
 export function rankingPrefs(
   settings: ProfileSettings | undefined,
   device: DeviceSettings | undefined,
@@ -182,16 +186,32 @@ export function rankingPrefs(
 ): Prefs {
   const hdr = displayModeOf(device?.hdr);
   const cap = maxResolutionOf(device);
+  // iOS (ADR-0055): libmpv tone-maps HDR to SDR, so Auto neither looks for
+  // HDR nor Dolby Vision, and 1080p is what a phone's GLES path keeps up
+  // with. A choice made in Settings still wins.
+  const maxResolution: Resolution = cap === "auto" ? (isIOS() ? "1080p" : "2160p") : cap;
   return {
     languages: audioLanguagesOf(settings),
-    // iOS (ADR-0055): libmpv tone-maps HDR to SDR, so Auto neither looks for
-    // HDR nor Dolby Vision, and 1080p is what a phone's GLES path keeps up
-    // with. A choice made in Settings still wins.
-    maxResolution: cap === "auto" ? (isIOS() ? "1080p" : "2160p") : cap,
+    maxResolution,
+    preferredResolution: preferredResolutionOf(settings, maxResolution),
     hdr: hdr === "auto" ? !isIOS() && displayShowsHdr() : hdr === "on",
     dolbyVision: displayModeOf(device?.dolbyVision) === "on",
     remembered,
   };
+}
+
+// The preferred qualities a profile can ask for; anything else is "best".
+const preferredResolutions: readonly Resolution[] = ["2160p", "1080p", "720p"];
+
+// The profile's preferred quality as a resolution, or null for "best".
+// Above the device's cap it is the cap: the cap always wins.
+export function preferredResolutionOf(
+  settings: ProfileSettings | undefined,
+  cap: Resolution,
+): Resolution | null {
+  const asked = preferredResolutions.find((res) => res === settings?.preferredQuality);
+  if (!asked) return null;
+  return resolutionOrder.indexOf(asked) > resolutionOrder.indexOf(cap) ? null : asked;
 }
 
 const displayShowsHdr = () =>
