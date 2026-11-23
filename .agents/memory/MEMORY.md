@@ -107,4 +107,5 @@
 - [Test suite green](test-suite-green.md) — 2026-11-20 baseline fixed (0 failures); never import app modules at the top of test/setup.ts, a11y name space rule, secrets mock, submenu keyboard picks, onCompactIOS
 - [Local Node version](local-node-version.md) — nvm Node 26.3 in login shells; agent shells without nvm get Homebrew 24.9, which fails subtitles.test.ts on Intl.Locale("und")
 - [Downloads](downloads.md) — #85/ADR-0064: internal/downloads + Platform seam, downloads bucket (migration 5), three events, lib/downloads.ts; one job, one re-resolve, no torrents, kids filter, beginBackgroundTask only, Wi-Fi gate; test gotchas and the untested device checklist
+- [Device subtitles](device-subtitles.md) — DeviceSettings.subtitles always + style, smartSubtitle, off = sub-visibility=no (mpv refresh-seeks on embedded sid select)
 - [Preferred quality and autoplay](preferred-quality-autoplay.md) — profile preferredQuality (soft, under the cap: abovePreferred + tierOrder) and autoplayTopPick (useAutoplay, `choose` in the address)
