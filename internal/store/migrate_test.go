@@ -108,6 +108,7 @@ func TestFixtures(t *testing.T) {
 					Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
 					AutoUpdate: true, Quality: DefaultQuality(), Audio: DefaultAudio(), StreamSort: "best",
 					DownloadsCapGB: 50, DownloadsWiFiOnly: true,
+					Subtitles: DeviceSubtitles{Style: DefaultSubtitleStyle()},
 				}
 			}
 			equal(t, must[ProfileSettings](t)(s.ProfileSettings(id)), profileSettings)
