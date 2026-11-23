@@ -857,8 +857,11 @@ describe("Playback on iOS", () => {
     for (const name of ["Scaling", "Debanding", "Tone mapping", "Dialogue boost"]) {
       expect(screen.getByText(name, { selector: "[id$=-label]" })).toBeInTheDocument();
     }
+    // The phone finds the bars too, up to 1080p (the engine's cap), and its
+    // row says so.
+    expect(screen.getByText("Remove black bars", { selector: "[id$=-label]" })).toBeInTheDocument();
+    expect(screen.getByText(/On iPhone, for videos up to 1080p/)).toBeInTheDocument();
     for (const name of [
-      "Remove black bars",
       "Sharpening",
       "Upscaling",
       "Motion smoothing",

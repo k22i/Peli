@@ -241,13 +241,16 @@ describe("Sound tab", () => {
 // The iOS player shows the same sheet, minus the rows Go doesn't apply on iOS
 // (ADR-0055): these are the tabs with one taken out.
 describe("PictureSheet on iOS", () => {
-  it("has no flips, no auto-crop and no Fill on the Framing tab", () => {
+  it("has no flips and no Fill on the Framing tab, and still finds the bars", () => {
     onIOS();
     renderSheet({ tab: "framing" });
     expect(screen.queryByRole("switch", { name: /Mirror/ })).toBeNull();
     expect(screen.queryByRole("switch", { name: /Upside down/ })).toBeNull();
-    expect(screen.queryByRole("switch", { name: /Remove black bars/ })).toBeNull();
-    // The crop edges stay by hand, since nothing finds the bars here.
+    // The phone finds the bars too, up to 1080p: the toggle is there, and
+    // its hint says how far.
+    expect(screen.getByRole("switch", { name: /Remove black bars/ })).toBeTruthy();
+    expect(screen.getByText(/On iPhone, for videos up to 1080p/)).toBeTruthy();
+    // The crop edges stay by hand until it finds them.
     expect(screen.getByRole("slider", { name: "Crop top" })).toBeTruthy();
     // The pinch fills the screen, so there is no Fit mode to pick for it.
     expect(screen.queryByRole("button", { name: "Fill" })).toBeNull();

@@ -12,6 +12,7 @@ import {
   type Preview,
 } from "@/components/player/panel-controls";
 import { feature } from "@/lib/features";
+import { isIOS } from "@/lib/platform";
 import {
   aspectRatios,
   cropSummary,
@@ -62,11 +63,19 @@ export function FramingTab({
   const shown = draft ?? framing;
   const hidden = previewRow(preview);
   const custom = !aspectRatios.some((each) => each.id === shown.aspect);
-  // The phone can't flip frames or find the bars by sampling them, and its
-  // pinch already fills the screen: those rows are left out there.
+  // The phone can't flip frames, and its pinch already fills the screen:
+  // those rows are left out there.
   const flips = feature("framingFlips");
-  const canAutoCrop = feature("autoCrop");
-  const cropping = canAutoCrop && shown.autoCrop;
+  const cropping = shown.autoCrop;
+  // What the toggle says it does, or what it found: a phone takes no frame
+  // bigger than 1080p while it looks for bars (the engine's cap), so its
+  // hint says so.
+  const cropHint = shown.autoCrop
+    ? found && cropSummary(found)
+      ? `Cutting ${cropSummary(found)}.`
+      : "Looking for bars as it plays…"
+    : "Finds the bars around a film and crops them, so a wide film fills a wide screen.";
+  const cropNote = isIOS() ? " On iPhone, for videos up to 1080p." : "";
   const fits = fitModes.filter((each) => each.id !== "fill" || feature("fillFit"));
   const [naming, setNaming] = useState(custom);
   const [aspectText, setAspectText] = useState(custom ? shown.aspect : "");
@@ -207,22 +216,14 @@ export function FramingTab({
         </>
       )}
 
-      {canAutoCrop && (
-        <div className={`-mx-4 ${hidden}`}>
-          <Toggle
-            label="Remove black bars"
-            hint={
-              shown.autoCrop
-                ? found && cropSummary(found)
-                  ? `Cutting ${cropSummary(found)}.`
-                  : "Looking for bars as it plays…"
-                : "Finds the bars around a film and crops them, so a wide film fills a wide screen."
-            }
-            checked={shown.autoCrop}
-            onChange={(autoCrop) => onChange({ ...shown, autoCrop })}
-          />
-        </div>
-      )}
+      <div className={`-mx-4 ${hidden}`}>
+        <Toggle
+          label="Remove black bars"
+          hint={cropHint + cropNote}
+          checked={shown.autoCrop}
+          onChange={(autoCrop) => onChange({ ...shown, autoCrop })}
+        />
+      </div>
       {!cropping &&
         edges.map(({ key, label }) =>
           slider(

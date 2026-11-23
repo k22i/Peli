@@ -29,7 +29,6 @@ export type Feature =
   // Playback are the same on both platforms; each of these hides one row
   // there, since the Go side doesn't apply them on iOS.
   | "framingFlips" // Mirror and Upside down: copies each frame off the GPU
-  | "autoCrop" // "Remove black bars": finds the bars by sampling frames in Go
   | "fillFit" // the Fill fit mode: on touch the pinch already fills the screen
   | "renderShaders" // sharpening and the upscalers (FSR, Anime4K)
   | "motionSmoothing" // blends frames in step with the screen, on a timer
@@ -70,7 +69,6 @@ const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
   // The picture controls of the list above: the player and Settings show the
   // sheet without them.
   "framingFlips",
-  "autoCrop",
   "fillFit",
   "renderShaders",
   "motionSmoothing",

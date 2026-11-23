@@ -20,7 +20,6 @@ const outOnIOS: Feature[] = [
   "downloadFolder",
   // The picture controls the iOS player can't do.
   "framingFlips",
-  "autoCrop",
   "fillFit",
   "renderShaders",
   "motionSmoothing",

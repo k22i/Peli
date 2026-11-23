@@ -541,24 +541,22 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                   }
                 />
               </SettingRow>
-              {feature("autoCrop") && (
-                <SettingRow
-                  id="auto-crop"
-                  label="Remove black bars"
-                  description="Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture."
-                >
-                  <Switch
-                    aria-labelledby="auto-crop-label"
-                    aria-describedby="auto-crop-description"
-                    checked={settings.framing?.autoCrop ?? false}
-                    onCheckedChange={(autoCrop) =>
-                      setProfile({
-                        framing: { ...(settings.framing ?? defaultFraming), autoCrop },
-                      })
-                    }
-                  />
-                </SettingRow>
-              )}
+              <SettingRow
+                id="auto-crop"
+                label="Remove black bars"
+                description={`Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture.${isIOS() ? " On iPhone, for videos up to 1080p." : ""}`}
+              >
+                <Switch
+                  aria-labelledby="auto-crop-label"
+                  aria-describedby="auto-crop-description"
+                  checked={settings.framing?.autoCrop ?? false}
+                  onCheckedChange={(autoCrop) =>
+                    setProfile({
+                      framing: { ...(settings.framing ?? defaultFraming), autoCrop },
+                    })
+                  }
+                />
+              </SettingRow>
             </SettingsGroup>
             <SoundDefaults
               sound={settings.sound ?? defaultSound}

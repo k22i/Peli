@@ -292,7 +292,15 @@ describe("Settings on iOS", () => {
     await renderApp("/settings?section=playback");
 
     await screen.findByRole("switch", { name: "Skip intros automatically" });
-    for (const name of ["Hardware decoding", "Tone mapping", "Scaling", "Debanding", "Fit"]) {
+    for (const name of [
+      "Hardware decoding",
+      "Tone mapping",
+      "Scaling",
+      "Debanding",
+      "Fit",
+      // The phone finds the bars too, up to 1080p (the engine's cap).
+      "Remove black bars",
+    ]) {
       expect(screen.getByText(name, { selector: "[id$=-label]" })).toBeInTheDocument();
     }
     for (const name of ["Picture", "Framing", "Sound"]) {
@@ -308,7 +316,6 @@ describe("Settings on iOS", () => {
 
     await screen.findByRole("switch", { name: "Skip intros automatically" });
     for (const name of [
-      "Remove black bars",
       "Sharpening",
       "Upscaling",
       "Motion smoothing",
