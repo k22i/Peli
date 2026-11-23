@@ -15,6 +15,9 @@ export type Prefs = {
   // for no preference.
   languages: string[];
   maxResolution: Resolution;
+  // The profile's preferred quality: streams above it rank just below it,
+  // ahead of anything lower. null prefers the highest under the cap.
+  preferredResolution?: Resolution | null;
   // The display shows HDR10, and Dolby Vision.
   hdr: boolean;
   dolbyVision: boolean;
@@ -26,6 +29,7 @@ export type Prefs = {
 export const defaultPrefs: Prefs = {
   languages: [],
   maxResolution: "2160p",
+  preferredResolution: null,
   hdr: false,
   dolbyVision: false,
 };
@@ -56,6 +60,9 @@ export const defaultWeights = {
   // bonus plus the best of the rest (about 17,000), against the worst fitting
   // score (about -9,000), so the penalty clears both.
   aboveMaxResolution: -30_000,
+  // Above the profile's preferred quality: scored as the preferred one,
+  // less this, so it follows the preferred streams but leads lower ones.
+  abovePreferred: 250,
   source: {
     remux: 600,
     bluray: 500,
@@ -137,11 +144,39 @@ export function tierOrder(prefs: Prefs): readonly Tier[] {
     const lowest = tierLowest[tier];
     return lowest !== undefined && resolutionOrder.indexOf(lowest) > cap;
   });
-  if (!over.length) return tiers;
+  const ordered = over.length ? withoutOver(over) : tiers;
+
+  // The preferred quality is soft, so the tiers above it that still fit the
+  // cap follow its own tier, nearest first: a 1080p profile sees 4K right
+  // under 1080p and ahead of 720p.
+  const preferred = prefs.preferredResolution;
+  if (!preferred) return ordered;
+  const above = ordered
+    .filter((tier) => {
+      const lowest = tierLowest[tier];
+      if (lowest === undefined) return false;
+      const rank = resolutionOrder.indexOf(lowest);
+      return rank > resolutionOrder.indexOf(preferred) && rank <= cap;
+    })
+    .sort(byTierResolution);
+  const anchor = ordered.findIndex((tier) => tierLowest[tier] === preferred);
+  if (!above.length || anchor < 0) return ordered;
+  const rest = ordered.filter((tier) => !above.includes(tier));
+  const at = rest.indexOf(ordered[anchor]!) + 1;
+  return [...rest.slice(0, at), ...above, ...rest.slice(at)];
+}
+
+// The cap-ordered list: the tiers over the cap after the ones that fit, with
+// the collapsed groups still last.
+function withoutOver(over: readonly Tier[]): readonly Tier[] {
   const fits = tiers.filter((tier) => !over.includes(tier));
   const at = fits.findIndex((tier) => collapsedTiers.has(tier));
   return [...fits.slice(0, at), ...over.toReversed(), ...fits.slice(at)];
 }
+
+// Lowest resolution first: the tier nearest the preferred one comes first.
+const byTierResolution = (a: Tier, b: Tier) =>
+  resolutionOrder.indexOf(tierLowest[a]!) - resolutionOrder.indexOf(tierLowest[b]!);
 
 // The smallest resolution a tier holds, for those that hold one.
 const tierLowest: Partial<Record<Tier, Resolution>> = {
@@ -184,7 +219,19 @@ export function scoreStream(
   }
 
   const res = p.resolution ?? "unknown";
-  s += w.resolution[res];
+  const preferred = prefs.preferredResolution;
+  if (
+    preferred &&
+    p.resolution &&
+    resolutionOrder.indexOf(p.resolution) > resolutionOrder.indexOf(preferred)
+  ) {
+    // Above the profile's preferred quality: it scores as the preferred one
+    // does, less `abovePreferred`, so it follows the preferred streams and
+    // leads every lower one.
+    s += w.resolution[preferred] - w.abovePreferred;
+  } else {
+    s += w.resolution[res];
+  }
   if (
     p.resolution &&
     resolutionOrder.indexOf(p.resolution) > resolutionOrder.indexOf(prefs.maxResolution)
