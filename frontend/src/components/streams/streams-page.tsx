@@ -445,9 +445,9 @@ function Picker({
       });
       void navigate({
         to: "/player",
-        // iOS: the player takes the picker's place, so Back and close land
-        // on the title.
-        replace: isIOS(),
+        // iOS, or an autoplay (the user never saw the list): the player
+        // takes the picker's place, so Back and close land on the title.
+        replace: isIOS() || report !== undefined,
         state: (state) => ({ ...state, player }),
       });
       return "played";
@@ -554,9 +554,9 @@ function Picker({
       rememberSource(client, profile.id, type, target.id, candidate, attempt);
       void navigate({
         to: "/player",
-        // iOS: the player takes the picker's place, so Back and close land
-        // on the title.
-        replace: isIOS(),
+        // iOS, or an autoplay (the user never saw the list): the player
+        // takes the picker's place, so Back and close land on the title.
+        replace: isIOS() || report !== undefined,
         state: (state) => ({
           ...state,
           player: playerState({
@@ -802,7 +802,10 @@ function PickScreen({
 }) {
   return (
     <div className="relative isolate flex min-h-[calc(100dvh-var(--spacing-bar)-4rem)] flex-col">
-      <Ambient tone="sun" />
+      {/* Fixed: the sunrise sits on the window's bottom edge, not on the
+          column's, which stops short of it by the page's bottom padding
+          (and the tab bar's, on the phone). */}
+      <Ambient tone="sun" className="fixed inset-0" />
       {header}
       <section
         data-slot={slot}

@@ -1827,6 +1827,9 @@ describe("autoplay", () => {
     await opensThePlayer(4000);
     expect(list.seen()).toBe(false);
     list.stop();
+    // The player took the picker's place: Back is the title, not the list.
+    act(() => router.history.back());
+    await waitFor(() => expect(router.state.location.pathname).toBe("/title/movie/tt0111161"));
   });
 
   it("shows the list on Choose myself, and plays nothing", async () => {
