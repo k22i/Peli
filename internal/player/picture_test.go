@@ -8,19 +8,20 @@ import (
 	"strconv"
 	"testing"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
 )
 
 func TestPictureProps(t *testing.T) {
-	got := pictureProps(store.Picture{Preset: "custom", Brightness: -5, Contrast: 8, Saturation: 15, Gamma: 90, Hue: 3, ShadowLift: true})
+	got := playback.PictureProps(store.Picture{Preset: "custom", Brightness: -5, Contrast: 8, Saturation: 15, Gamma: 90, Hue: 3, ShadowLift: true})
 	want := [][2]string{{"brightness", "-5"}, {"contrast", "8"}, {"saturation", "15"}, {"gamma", "100"}, {"hue", "3"}}
 	if len(got) != len(want) {
-		t.Fatalf("pictureProps = %v, want %v", got, want)
+		t.Fatalf("PictureProps = %v, want %v", got, want)
 	}
 	for i := range want {
 		if got[i] != want[i] {
-			t.Errorf("pictureProps[%d] = %v, want %v (shadow lift caps gamma at 100)", i, got[i], want[i])
+			t.Errorf("PictureProps[%d] = %v, want %v (shadow lift caps gamma at 100)", i, got[i], want[i])
 		}
 	}
 }

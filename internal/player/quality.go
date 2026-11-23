@@ -15,6 +15,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -32,40 +33,13 @@ var anime4kModeA = []string{
 	"Anime4K_AutoDownscalePre_x2.glsl", "Anime4K_AutoDownscalePre_x4.glsl", "Anime4K_Upscale_CNN_x2_S.glsl",
 }
 
-// debandSteps are mpv's deband-iterations, -threshold, -range and -grain
-// for each DebandLevel: low is lighter than mpv's own, high clears heavy
-// banding (and some fine texture with it).
-var debandSteps = map[string][4]string{
-	"low":    {"1", "32", "16", "24"},
-	"medium": {"2", "48", "16", "32"},
-	"high":   {"4", "64", "20", "48"},
-}
-
-// scalingProps are mpv's fast profile, its defaults (0.41), and its
-// high-quality profile (etc/builtin.conf). Rendering 1080p to a 4K frame
-// on an M1 Pro (build/libmpv/smoke/bench_darwin.c): 2.1, 5.6 and 14.3 ms.
-var scalingProps = map[string][][2]string{
-	"fast": {{"scale", "bilinear"}, {"dscale", "bilinear"}, {"dither", "no"},
-		{"correct-downscaling", "no"}, {"linear-downscaling", "no"}, {"sigmoid-upscaling", "no"}},
-	"balanced": {{"scale", "lanczos"}, {"dscale", "hermite"}, {"dither", "fruit"},
-		{"correct-downscaling", "yes"}, {"linear-downscaling", "yes"}, {"sigmoid-upscaling", "yes"}},
-	"high": {{"scale", "ewa_lanczossharp"}, {"dscale", "hermite"}, {"dither", "fruit"},
-		{"correct-downscaling", "yes"}, {"linear-downscaling", "yes"}, {"sigmoid-upscaling", "yes"}},
-}
-
-// qualityProps are the mpv properties for q but the shaders (shadersFor).
-// hdrOut is whether the session shows HDR as HDR (the EDR layer): tone
-// mapping is for SDR screens, so it's left to mpv then. tone-mapping and
-// target-peak come last: showHDR sets just those two.
+// qualityProps are the mpv properties for q but the shaders (shadersFor):
+// the scalers and debanding, motion smoothing, deinterlacing, then tone
+// mapping (tone-mapping and target-peak come last: showHDR sets just those
+// two). iOS takes playback's scaling and tone properties and leaves motion
+// smoothing, deinterlacing and the shaders out.
 func qualityProps(q store.Quality, hdrOut bool) [][2]string {
-	props := append([][2]string{}, scalingProps[q.Scaling]...)
-	if steps, ok := debandSteps[q.Deband]; ok {
-		props = append(props, [2]string{"deband", "yes"}, [2]string{"deband-iterations", steps[0]},
-			[2]string{"deband-threshold", steps[1]}, [2]string{"deband-range", steps[2]},
-			[2]string{"deband-grain", steps[3]})
-	} else {
-		props = append(props, [2]string{"deband", "no"})
-	}
+	props := playback.ScalingProps(q)
 	if q.MotionSmoothing {
 		props = append(props, [2]string{"video-sync", "display-resample"},
 			[2]string{"interpolation", "yes"}, [2]string{"tscale", "oversample"})
@@ -74,14 +48,7 @@ func qualityProps(q store.Quality, hdrOut bool) [][2]string {
 	}
 	deint := map[string]string{"auto": "auto", "on": "yes", "off": "no"}[q.Deinterlace]
 	props = append(props, [2]string{"deinterlace", deint})
-	tone, peak := q.ToneMapping, "auto"
-	if q.TargetPeak > 0 {
-		peak = strconv.Itoa(q.TargetPeak)
-	}
-	if hdrOut {
-		tone, peak = "auto", "auto"
-	}
-	return append(props, [2]string{"tone-mapping", tone}, [2]string{"target-peak", peak})
+	return append(props, playback.ToneProps(q, hdrOut)...)
 }
 
 var (
@@ -188,18 +155,8 @@ func (s *Service) qualityFor(opts LoadOptions) store.Quality {
 	if opts.Quality != nil {
 		return *opts.Quality
 	}
-	if title, _ := s.adjustmentsFor(opts); title != nil && title.Quality != nil && title.Quality.Valid() {
-		return *title.Quality
-	}
-	s.mu.Lock()
-	settings := s.settings
-	s.mu.Unlock()
-	if settings != nil {
-		if d, err := settings.DeviceSettings(); err == nil && d.Quality.Valid() {
-			return d.Quality
-		}
-	}
-	return store.DefaultQuality()
+	title, _ := s.adjustmentsFor(opts)
+	return playback.QualityOf(nil, title, s.thisDevice())
 }
 
 // applyQuality sets q on the session: the properties, the shaders and the

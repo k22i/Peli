@@ -4,75 +4,25 @@ package player
 
 import (
 	"context"
-	"fmt"
 	"log/slog"
-	"math"
-	"strconv"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 )
 
 // framingProps are the mpv properties that frame the picture as f says,
-// but the crop, which needs the video's size (cropProp). All are the
-// renderer's but vf: a flip is lavfi's hflip or vflip, which copies a
+// but the crop, which needs the video's size (playback.CropProp). All are
+// the renderer's but vf: a flip is lavfi's hflip or vflip, which copies a
 // hardware-decoded frame off the GPU, so it's only there while asked for.
+// The properties are playback's (the iOS engine frames with the same ones);
+// the order here is the desktop's: panscan next to the fit it comes from,
+// and the flips last.
 func framingProps(f store.Framing) [][2]string {
-	keepaspect, panscan, unscaled := "yes", "0", "no"
-	switch f.Fit {
-	case "fill":
-		panscan = "1"
-	case "stretch":
-		keepaspect = "no"
-	case "original":
-		// Its own size, unless that's bigger than the window.
-		unscaled = "downscale-big"
-	}
-	aspect := "-1" // the file's own
-	if f.Aspect != "auto" && f.Aspect != "" {
-		aspect = f.Aspect
-	}
-	vf := ""
-	if f.FlipH {
-		vf = "@peli-hflip:lavfi=[hflip]"
-	}
-	if f.FlipV {
-		if vf != "" {
-			vf += ","
-		}
-		vf += "@peli-vflip:lavfi=[vflip]"
-	}
-	num := func(v float64) string { return strconv.FormatFloat(v, 'f', 4, 64) }
-	return [][2]string{
-		{"keepaspect", keepaspect},
-		{"panscan", panscan},
-		{"video-unscaled", unscaled},
-		{"video-aspect-override", aspect},
-		{"video-zoom", num(f.Zoom)},
-		{"video-pan-x", num(f.PanX)},
-		{"video-pan-y", num(f.PanY)},
-		{"video-rotate", strconv.Itoa(f.Rotate)},
-		{"vf", vf},
-	}
-}
-
-// cropProp is mpv's video-crop for crop on a w×h video, in its pixels: ""
-// (the container's own crop, if any) when it cuts nothing. A percent offset
-// in mpv's rect means a share of the space left over, so it's computed here.
-func cropProp(crop store.Crop, w, h int) string {
-	if crop.Empty() || w <= 0 || h <= 0 {
-		return ""
-	}
-	px := func(percent float64, of int) int {
-		// Even, so chroma subsampling lines up.
-		return int(math.Round(percent/100*float64(of)/2)) * 2
-	}
-	left, right := px(crop.Left, w), px(crop.Right, w)
-	top, bottom := px(crop.Top, h), px(crop.Bottom, h)
-	cw, ch := w-left-right, h-top-bottom
-	if cw < w/10 || ch < h/10 {
-		return ""
-	}
-	return fmt.Sprintf("%dx%d+%d+%d", cw, ch, left, top)
+	framing := playback.FramingProps(f)
+	props := make([][2]string, 0, len(framing)+2)
+	props = append(props, framing[0], [2]string{"panscan", playback.FramingPanscan(f)})
+	props = append(props, framing[1:]...)
+	return append(props, [2]string{"vf", playback.FlipFilter(f)})
 }
 
 // framingFor is the framing a file plays with: the one opts names, else the
@@ -82,14 +32,7 @@ func (s *Service) framingFor(opts LoadOptions) store.Framing {
 		return *opts.Framing
 	}
 	title, profile := s.adjustmentsFor(opts)
-	if title != nil && title.Framing != nil && title.Framing.Valid() {
-		return *title.Framing
-	}
-	f := store.DefaultFraming()
-	if profile != nil && profile.Framing.Valid() {
-		f.Fit, f.AutoCrop = profile.Framing.Fit, profile.Framing.AutoCrop
-	}
-	return f
+	return playback.FramingOf(nil, title, profile)
 }
 
 // SetFraming frames the picture from now on: the Picture & sound sheet and
@@ -129,7 +72,7 @@ func (s *Service) applyCrop(ses *session) {
 	}
 	s.stopAutoCrop()
 	s.update(func(st *State) { st.AutoCrop = nil })
-	if err := ses.m.setProperty("video-crop", cropProp(f.Crop, w, h)); err != nil {
+	if err := ses.m.setProperty("video-crop", playback.CropProp(f.Crop, w, h)); err != nil {
 		slog.Warn("player: crop not set", "error", err)
 	}
 }

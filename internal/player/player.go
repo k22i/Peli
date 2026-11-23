@@ -377,7 +377,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.framing, s.videoW, s.videoH = framing, 0, 0
 	s.file++
 	s.mu.Unlock()
-	props := append(trackProps(opts), pictureProps(s.pictureFor(opts))...)
+	props := append(trackProps(opts), playback.PictureProps(s.pictureFor(opts))...)
 	props = append(props, framingProps(framing)...)
 	s.applyInset()
 	// Each file plays at normal speed, whatever the last one played at, and
@@ -1222,8 +1222,7 @@ func (s *Service) showHDR(ses *session, hdr bool) {
 	s.mu.Unlock()
 	props := [][2]string{{"target-trc", trc}, {"target-prim", prim}}
 	if q.Valid() {
-		all := qualityProps(q, hdr)
-		props = append(props, all[len(all)-2:]...)
+		props = append(props, playback.ToneProps(q, hdr)...)
 	}
 	for _, p := range props {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {

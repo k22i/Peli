@@ -3,8 +3,10 @@
 package player
 
 import (
+	"slices"
 	"testing"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -35,6 +37,17 @@ func TestFramingProps(t *testing.T) {
 		both["video-rotate"] != "90" || both["vf"] != "@peli-hflip:lavfi=[hflip],@peli-vflip:lavfi=[vflip]" {
 		t.Errorf("aspect, zoom, pan, rotate, flips: %v", both)
 	}
+	// The props are playback's, but the order they're set in is the
+	// desktop's: panscan beside the fit it comes from, the filter last.
+	var order []string
+	for _, p := range framingProps(store.Framing{Fit: "fill"}) {
+		order = append(order, p[0])
+	}
+	want := []string{"keepaspect", "panscan", "video-unscaled", "video-aspect-override",
+		"video-zoom", "video-pan-x", "video-pan-y", "video-rotate", "vf"}
+	if !slices.Equal(order, want) {
+		t.Errorf("order = %v, want %v", order, want)
+	}
 }
 
 func TestCropProp(t *testing.T) {
@@ -49,11 +62,11 @@ func TestCropProp(t *testing.T) {
 		// The most it cuts: the middle fifth is left.
 		{store.Crop{Top: 40, Bottom: 40, Left: 40, Right: 40}, "384x216+768+432"},
 	} {
-		if got := cropProp(c.crop, 1920, 1080); got != c.want {
-			t.Errorf("cropProp(%+v) = %q, want %q", c.crop, got, c.want)
+		if got := playback.CropProp(c.crop, 1920, 1080); got != c.want {
+			t.Errorf("CropProp(%+v) = %q, want %q", c.crop, got, c.want)
 		}
 	}
-	if got := cropProp(store.Crop{Top: 10}, 0, 0); got != "" {
+	if got := playback.CropProp(store.Crop{Top: 10}, 0, 0); got != "" {
 		t.Errorf("unknown size: %q, want none", got)
 	}
 }

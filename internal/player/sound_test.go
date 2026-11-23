@@ -9,23 +9,28 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
 )
 
 func TestSoundChain(t *testing.T) {
-	if got := soundChain(store.DefaultSound()); got != "" {
+	if got := playback.SoundChain(store.DefaultSound()); got != "" {
 		t.Errorf("flat: %q, want none", got)
 	}
-	got := soundChain(store.Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"})
-	want := "@peli-sound:lavfi=[" + dialogueFilter + ",volume=-3dB,bass=g=-4:f=150:w=0.6," +
-		"equalizer=f=2500:t=q:w=1:g=4,equalizer=f=5000:t=q:w=1.2:g=2," + nightFilter + "]"
+	got := playback.SoundChain(store.Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"})
+	want := "@peli-sound:lavfi=[dialoguenhance=original=1:enhance=2:voice=2," +
+		"volume=-3dB,bass=g=-4:f=150:w=0.6," +
+		"equalizer=f=2500:t=q:w=1:g=4,equalizer=f=5000:t=q:w=1.2:g=2," +
+		"dynaudnorm=f=150:g=7:p=0.9:m=10]"
 	if got != want {
 		t.Errorf("all on:\n got %s\nwant %s", got, want)
 	}
+	// Every preset has filters: flat's are none, the others' are not.
 	for _, preset := range store.EqualizerPresets {
-		if _, ok := eqFilters[preset]; !ok {
-			t.Errorf("no filters for %q", preset)
+		got := playback.SoundChain(store.Sound{Equalizer: preset})
+		if empty := preset == "flat"; (got == "") != empty {
+			t.Errorf("filters for %q: %q", preset, got)
 		}
 	}
 }

@@ -8,6 +8,7 @@ import (
 	"math"
 	"time"
 
+	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -177,7 +178,7 @@ func (s *Service) findBars(ctx context.Context, ses *session, file uint64) {
 		if ctx.Err() != nil {
 			return
 		}
-		if err := ses.m.setProperty("video-crop", cropProp(least, w, h)); err != nil {
+		if err := ses.m.setProperty("video-crop", playback.CropProp(least, w, h)); err != nil {
 			slog.Warn("player: auto-crop not set", "error", err)
 			continue
 		}
