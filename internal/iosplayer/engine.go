@@ -199,10 +199,12 @@ var observed = []struct {
 	{"sub-text", fmtString},
 	{"secondary-sub-text", fmtString},
 	{"video-params/hw-pixelformat", fmtString},
-	// The video's size, for the framing's crop (applyCrop). Last, so the
-	// observe ids above don't move.
+	// The video's size, for the framing's crop (applyCrop), and the sound's
+	// delay, the sheet's readout. Appended, so the observe ids above don't
+	// move.
 	{"video-params/w", fmtInt64},
 	{"video-params/h", fmtInt64},
+	{"audio-delay", fmtDouble},
 }
 
 // mapFailed are the log lines that say a zero-copy frame couldn't be drawn:
@@ -1069,6 +1071,8 @@ func (e *Engine) property(ses *session, name string, v any) {
 		}
 	case "sub-delay":
 		st.SubtitleDelay = math.Round(playback.Number(v)*1000) / 1000
+	case "audio-delay":
+		st.AudioDelay = math.Round(playback.Number(v)*1000) / 1000
 	case "sub-scale":
 		st.SubtitleSize = playback.SubtitleSizeName(playback.Number(v))
 	case "sub-text":

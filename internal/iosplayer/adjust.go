@@ -16,11 +16,11 @@ import (
 // too, so a title looks and sounds the same on both.
 //
 // What iOS leaves out, and why: panscan, which the touch player's pinch owns
-// (SetPanscan); the flips and the crop, which are a filter (mpv's vf, where
-// the decoding mode's 8-bit chain lives, filterFor), so the manual crop goes
-// through video-crop instead (applyCrop); auto-crop, which is the desktop's;
-// motion smoothing, deinterlacing and the shaders (glsl-shaders carries the
-// chroma fix, chroma.go); and the audio device, a phone having one output.
+// (SetPanscan); the crop, which is video-crop (applyCrop), not a filter, mpv's
+// vf being where the flips are a filter and where the decoding mode's 8-bit
+// chain lives (filterFor); auto-crop, which is the desktop's; motion
+// smoothing, deinterlacing and the shaders (glsl-shaders carries the chroma
+// fix, chroma.go); and the audio device, a phone having one output.
 
 // adjustments is where a Load finds a title's picture, framing, quality and
 // sound when the call doesn't name them: the store, which the app hands the
