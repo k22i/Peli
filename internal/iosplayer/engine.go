@@ -97,6 +97,14 @@ type Engine struct {
 	forceTime  bool
 	lastTime   time.Time
 	ended      *playback.Ended
+
+	// trackList is mpv's last raw track-list, and subHidden whether
+	// sub-visibility hides the main subtitles: a change to either rebuilds
+	// State.Tracks (showTracks), so the tracks reported say the subtitles
+	// are off while hidden.
+	trackList any
+	subHidden bool
+
 	// inset is the right margin the picture keeps, in points
 	// (SetVideoInset).
 	inset int
@@ -168,6 +176,9 @@ var observed = []struct {
 	{"demuxer-cache-duration", fmtDouble},
 	{"pause", fmtFlag},
 	{"paused-for-cache", fmtFlag},
+	// Hidden is how subtitles turn off (SetSubtitleTrack), so the tracks
+	// reported follow it.
+	{"sub-visibility", fmtFlag},
 	{"cache-buffering-state", fmtInt64},
 	{"seeking", fmtFlag},
 	{"volume", fmtDouble},
@@ -290,6 +301,9 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
 		st.Time = playback.Time{Position: opts.Start}
 		st.Tracks, st.Chapters = []playback.Track{}, []playback.Chapter{}
+		// The new file's track-list replaces these; until it comes, nothing
+		// is left of the last one's tracks to show.
+		e.trackList, e.subHidden = nil, false
 		e.watching, e.reportWhy, e.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
@@ -552,19 +566,46 @@ func (e *Engine) SetAudioTrack(id int) error {
 	return e.set("aid", strconv.Itoa(id))
 }
 
+// SetSubtitleTrack shows the subtitle track with id, or none for 0.
+//
+// Off hides the subtitles rather than deselecting them: mpv 0.41 refresh-seeks
+// on sid=no, dropping every buffered packet and re-reading from the network,
+// so a streamed file stalls until that's done. Kept, the same track is one
+// property away from being back on.
 func (e *Engine) SetSubtitleTrack(id int) error {
-	switch {
-	case id < 0:
+	if id < 0 {
 		return playback.ErrInvalid
-	case id == 0:
-		return e.set("sid", "no")
 	}
+	ses := e.current()
+	if ses == nil {
+		return playback.ErrNotPlaying
+	}
+	sid, err := ses.m.getString("sid")
+	if err != nil {
+		return notPlaying(err)
+	}
+	if id == 0 {
+		// Nothing selected: there's nothing to hide.
+		if sid == "no" {
+			return nil
+		}
+		return e.set("sub-visibility", "no")
+	}
+	// Already this track, just hidden: showing it again asks mpv for
+	// nothing.
+	if sid == strconv.Itoa(id) {
+		return e.set("sub-visibility", "yes")
+	}
+	// The same track can't be both: the second line gives way.
 	if e.Snapshot().SecondaryIs(id) {
 		if err := e.set("secondary-sid", "no"); err != nil {
 			return err
 		}
 	}
-	return e.set("sid", strconv.Itoa(id))
+	if err := e.set("sid", strconv.Itoa(id)); err != nil {
+		return err
+	}
+	return e.set("sub-visibility", "yes")
 }
 
 func (e *Engine) SetSecondarySubtitleTrack(id int) error {
@@ -685,6 +726,11 @@ func (e *Engine) AddSubtitle(ctx context.Context, sub playback.Subtitle) (int, e
 		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
 			return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
 		}
+		return id, nil
+	}
+	// Shown even when sub-visibility hid the file's own subtitles.
+	if err := ses.m.setProperty("sub-visibility", "yes"); err != nil {
+		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
 	}
 	return id, nil
 }
@@ -722,6 +768,11 @@ func (e *Engine) addLocalSubtitle(file string, sub playback.Subtitle) (int, erro
 		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
 			return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
 		}
+		return id, nil
+	}
+	// Shown even when sub-visibility hid the file's own subtitles.
+	if err := ses.m.setProperty("sub-visibility", "yes"); err != nil {
+		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
 	}
 	return id, nil
 }
@@ -956,7 +1007,13 @@ func (e *Engine) property(ses *session, name string, v any) {
 	case "speed":
 		st.Speed = playback.Number(v)
 	case "track-list":
-		st.Tracks = playback.TracksFrom(v)
+		e.trackList = v
+		e.showTracks(st)
+	case "sub-visibility":
+		e.subHidden, _ = v.(bool)
+		if e.trackList != nil {
+			e.showTracks(st)
+		}
 	case "chapter-list":
 		st.Chapters = playback.ChaptersFrom(v)
 	case "hwdec-current":
@@ -974,6 +1031,16 @@ func (e *Engine) property(ses *session, name string, v any) {
 		st.SecondarySubtitleText, _ = v.(string)
 	}
 	e.stateDirty = true
+}
+
+// showTracks rebuilds State.Tracks from mpv's last track-list, with the main
+// subtitle track unselected while sub-visibility hides it. Call with e.mu
+// held.
+func (e *Engine) showTracks(st *playback.State) {
+	st.Tracks = playback.TracksFrom(e.trackList)
+	if e.subHidden {
+		st.Tracks = playback.HideMainSubtitle(st.Tracks)
+	}
 }
 
 // flush sends what changed: the state, the time (throttled), an end and a
