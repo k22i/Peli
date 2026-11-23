@@ -169,6 +169,8 @@ vi.mock("@bindings/store", async () => {
   return {
     Service: {
       CurrentProfile: async () => store.profiles[store.current],
+      // iOS only: seeds the profile's audio languages from the device's.
+      SeedAudioLanguages: () => Promise.resolve(false),
       Addons: async () => [{ url: "https://cinemeta/manifest.json", enabled: true }],
       ProfileSettings: async (id: number) => store.profileSettings.get(id) ?? defaults,
       SaveProfileSettings: (id: number, settings: ProfileSettings) =>
