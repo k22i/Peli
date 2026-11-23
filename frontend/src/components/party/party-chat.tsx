@@ -31,7 +31,7 @@ export function PartyChat({ className }: { className?: string }) {
   const chat = usePartyChat();
   const messages = chat.messages ?? [];
   const activity = usePartyActivity();
-  const items = partyTimeline(messages, activity.entries);
+  const items = partyTimeline(messages, activity.entries ?? []);
   const [draft, setDraft] = useState("");
   const list = useRef<HTMLDivElement>(null);
   const pinned = useRef(true);
