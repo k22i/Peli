@@ -56,6 +56,7 @@ vi.mock("@bindings/party", () => ({
       Promise.resolve({ unavailable: "", busy: false, party: null }),
     ),
     Chat: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ messages: [], unread: 0 })),
+    Activity: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ entries: [] })),
     SendReaction: mocks.sendReaction,
   },
 }));

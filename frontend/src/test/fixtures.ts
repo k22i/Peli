@@ -1,4 +1,5 @@
 import type {
+  ActivityEntry,
   Media,
   Member,
   Party as PartyInfo,
@@ -178,4 +179,22 @@ export function partyMember(member: Partial<Member> = {}): Member {
 // on a click, so a test that wants confetti emits one of these.
 export function partyReaction(reaction: Partial<Reaction> = {}): Reaction {
   return { emoji: "🔥", memberId: "m2", name: "Sam", mine: false, at: 0, ...reaction };
+}
+
+// One line of the party's activity log (party:activity): the host's pause,
+// unless a test says otherwise. The member is the party's own host in
+// partyState.
+export function partyActivityEntry(entry: Partial<ActivityEntry> = {}): ActivityEntry {
+  return {
+    id: "pb:ana:1",
+    kind: "paused",
+    memberId: "ana",
+    name: "Ana",
+    positionMs: 863000,
+    rate: 1,
+    title: "",
+    at: Date.UTC(2026, 10, 23, 20, 0),
+    mine: false,
+    ...entry,
+  };
 }
