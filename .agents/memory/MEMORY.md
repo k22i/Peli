@@ -109,3 +109,4 @@
 - [Downloads](downloads.md) — #85/ADR-0064: internal/downloads + Platform seam, downloads bucket (migration 5), three events, lib/downloads.ts; one job, one re-resolve, no torrents, kids filter, beginBackgroundTask only, Wi-Fi gate; test gotchas and the untested device checklist
 - [Device subtitles](device-subtitles.md) — DeviceSettings.subtitles always + style, smartSubtitle, off = sub-visibility=no (mpv refresh-seeks on embedded sid select)
 - [Preferred quality and autoplay](preferred-quality-autoplay.md) — profile preferredQuality (soft, under the cap: abovePreferred + tierOrder) and autoplayTopPick (useAutoplay, `choose` in the address)
+- [iOS player adjustments](ios-player-adjustments.md) — 2026-11-23 Picture & sound sheet on iOS: playback/adjust.go shared rules, iosplayer subset, per-part features, what stays desktop-only and why
