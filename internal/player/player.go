@@ -1158,7 +1158,10 @@ func (s *Service) property(ses *session, name string, v any) {
 		s.trackList = v
 		s.showTracks(st)
 	case "sub-visibility":
-		s.subHidden, _ = v.(bool)
+		// mpv's property is true when the subtitles show: the field is
+		// the other way round.
+		visible, _ := v.(bool)
+		s.subHidden = !visible
 		if s.trackList != nil {
 			s.showTracks(st)
 		}

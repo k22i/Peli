@@ -1010,7 +1010,10 @@ func (e *Engine) property(ses *session, name string, v any) {
 		e.trackList = v
 		e.showTracks(st)
 	case "sub-visibility":
-		e.subHidden, _ = v.(bool)
+		// mpv's property is true when the subtitles show: the field is
+		// the other way round.
+		visible, _ := v.(bool)
+		e.subHidden = !visible
 		if e.trackList != nil {
 			e.showTracks(st)
 		}
