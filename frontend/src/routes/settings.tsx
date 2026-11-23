@@ -1075,22 +1075,25 @@ function AnimePostersRow({
   );
 }
 
-// How subtitles look: a sample line in the profile's style, and the
-// player's own editor in a dialog. The player saves its changes here too.
+// How subtitles look: a sample line in the given style, and the player's own
+// editor in a dialog. The player saves its changes here too. The profile's
+// row and this device's both use it, so its id and words are the caller's.
 function SubtitleLookRow({
+  id,
+  label,
+  description,
   style,
   onChange,
 }: {
+  id: string;
+  label: string;
+  description: string;
   style: SubtitleStyle;
   onChange: (style: SubtitleStyle) => void;
 }) {
   const [draft, setDraft] = useState<SubtitleStyle>();
   return (
-    <SettingRow
-      id="subtitle-look"
-      label="Look"
-      description="Font, size, colour, edge and position. You can change it while you watch, too."
-    >
+    <SettingRow id={id} label={label} description={description}>
       <div
         aria-hidden
         className="hidden h-10 w-40 items-end justify-center overflow-hidden rounded-lg bg-linear-to-b from-[oklch(0.55_0.08_40)] to-[oklch(0.2_0.03_260)] pb-1.5 sm:flex"
@@ -1131,59 +1134,107 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
   return (
     <SettingsPaneView title={title}>
       <WithSettings profileId={profileId}>
-        {({ settings, setProfile }) => (
-          <>
-            <SettingsGroup title="Languages">
-              <AudioLanguagesRow
-                value={audioLanguagesOf(settings)}
-                onChange={(audioLanguages) => setProfile({ audioLanguages })}
-              />
-              <SettingRow
-                id="subtitle-language"
-                label="Subtitle language"
-                description="Chosen when a stream or subtitle addon has it."
-              >
-                <LanguageSelect
+        {({ settings, device, setProfile, setDevice }) => {
+          // Old data, before the device kept subtitles of its own: off, in the
+          // default style.
+          const subtitles = device.subtitles;
+          const always = subtitles?.always ?? false;
+          const deviceStyle = subtitles?.style?.font ? subtitles.style : defaultSubtitleStyle;
+          const deviceSubtitles = subtitles ?? { always, style: deviceStyle };
+          return (
+            <>
+              <SettingsGroup title="Languages">
+                <AudioLanguagesRow
+                  value={audioLanguagesOf(settings)}
+                  onChange={(audioLanguages) => setProfile({ audioLanguages })}
+                />
+                <SettingRow
                   id="subtitle-language"
-                  value={settings.subtitleLanguage}
-                  defaultLabel="Automatic"
-                  onChange={(subtitleLanguage) => setProfile({ subtitleLanguage })}
-                />
-              </SettingRow>
-              <SettingRow
-                id="second-subtitle-language"
-                label="Second subtitle language"
-                description="Shown smaller, above the main subtitles, when a stream or subtitle addon has it."
-              >
-                <LanguageSelect
+                  label="Subtitle language"
+                  description="Chosen when a stream or subtitle addon has it."
+                >
+                  <LanguageSelect
+                    id="subtitle-language"
+                    value={settings.subtitleLanguage}
+                    defaultLabel="Automatic"
+                    onChange={(subtitleLanguage) => setProfile({ subtitleLanguage })}
+                  />
+                </SettingRow>
+                <SettingRow
                   id="second-subtitle-language"
-                  value={settings.secondSubtitleLanguage ?? ""}
-                  defaultLabel="None"
-                  onChange={(secondSubtitleLanguage) => setProfile({ secondSubtitleLanguage })}
+                  label="Second subtitle language"
+                  description="Shown smaller, above the main subtitles, when a stream or subtitle addon has it."
+                >
+                  <LanguageSelect
+                    id="second-subtitle-language"
+                    value={settings.secondSubtitleLanguage ?? ""}
+                    defaultLabel="None"
+                    onChange={(secondSubtitleLanguage) => setProfile({ secondSubtitleLanguage })}
+                  />
+                </SettingRow>
+              </SettingsGroup>
+              <SettingsGroup title="Subtitles">
+                <SubtitleLookRow
+                  id="subtitle-look"
+                  label="Look"
+                  description="Font, size, colour, edge and position. You can change it while you watch, too."
+                  style={
+                    settings.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle
+                  }
+                  onChange={(subtitleStyle) => setProfile({ subtitleStyle })}
                 />
-              </SettingRow>
-            </SettingsGroup>
-            <SettingsGroup title="Subtitles">
-              <SubtitleLookRow
-                style={settings.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle}
-                onChange={(subtitleStyle) => setProfile({ subtitleStyle })}
-              />
-              <SettingRow
-                id="captions"
-                label="Captions"
-                description={`Turn subtitles on by default. System follows your ${hostName()}’s captions setting.`}
-              >
-                <Choice
+                <SettingRow
                   id="captions"
-                  value={settings.captions}
-                  options={captionsModes}
-                  labels={{ system: "System", on: "On", off: "Off" }}
-                  onChange={(captions) => setProfile({ captions })}
-                />
-              </SettingRow>
-            </SettingsGroup>
-          </>
-        )}
+                  label="Captions"
+                  // On for everyone here, so this profile's own choice waits.
+                  description={
+                    always
+                      ? `Always on on this ${hostName()}: see On this device.`
+                      : `Turn subtitles on by default. System follows your ${hostName()}’s captions setting.`
+                  }
+                >
+                  <Choice
+                    id="captions"
+                    value={settings.captions}
+                    options={captionsModes}
+                    labels={{ system: "System", on: "On", off: "Off" }}
+                    onChange={(captions) => setProfile({ captions })}
+                  />
+                </SettingRow>
+              </SettingsGroup>
+              {/* Subtitles for everyone on this device, whatever profile is
+                  watching (W4). Each profile's language still picks the
+                  tracks. */}
+              <SettingsGroup title="On this device">
+                <SettingRow
+                  id="always-subtitles"
+                  label="Always show subtitles"
+                  description={`Subtitles on for everyone on this ${hostName()}, in the style below. Peli picks them in each profile’s language.`}
+                >
+                  <Switch
+                    aria-labelledby="always-subtitles-label"
+                    aria-describedby="always-subtitles-description"
+                    checked={always}
+                    onCheckedChange={(on) =>
+                      setDevice({ subtitles: { ...deviceSubtitles, always: on } })
+                    }
+                  />
+                </SettingRow>
+                {always && (
+                  <SubtitleLookRow
+                    id="device-subtitle-look"
+                    label="Subtitle style on this device"
+                    description="Font, size, colour, edge and position, used on this device while Always show subtitles is on."
+                    style={deviceStyle}
+                    onChange={(style) =>
+                      setDevice({ subtitles: { ...deviceSubtitles, always: true, style } })
+                    }
+                  />
+                )}
+              </SettingsGroup>
+            </>
+          );
+        }}
       </WithSettings>
     </SettingsPaneView>
   );
