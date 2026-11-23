@@ -6,6 +6,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { maxSubtitleDelay, trackLabel } from "@/lib/player";
 import {
   isPictureSubtitle,
+  isStyledSubtitle,
   isTextSubtitle,
   languageLabel,
   subtitleLanguage,
@@ -462,6 +463,11 @@ function TrackRow({
           {isPictureSubtitle(track) && (
             <Badge title="A picture of the text, from a Blu-ray or DVD: your style can’t change it">
               Image
+            </Badge>
+          )}
+          {isStyledSubtitle(track) && (
+            <Badge title="Brings its own look: Restyle gives it your font, size, colour and edge, but coloured or italic words and on-screen signs stay as made">
+              Styled
             </Badge>
           )}
           <span className="truncate">{disabledWhy ?? detail}</span>

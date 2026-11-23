@@ -202,6 +202,13 @@ export const isTextSubtitle = (track: Track): boolean =>
 export const isPictureSubtitle = (track: Track): boolean =>
   track.type === "sub" && pictureCodecs.has(track.codec);
 
+// Whether a track is styled text (ASS/SSA, as anime and some films bring):
+// Restyle gives it the profile's font, size, colour, edge and position, but
+// colours or italics set on single words and positioned signs keep their
+// own look, and Bold doesn't reach it.
+export const isStyledSubtitle = (track: Track): boolean =>
+  track.type === "sub" && (track.codec === "ass" || track.codec === "ssa");
+
 // Text subtitles to show instead of a picture track, which can't take the
 // profile's style: the file's own full text track in its language (as
 // hearing-impaired as it, then the default-flagged one), else an addon's.
