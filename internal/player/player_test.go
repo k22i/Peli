@@ -477,6 +477,21 @@ func TestSystemCaptions(t *testing.T) {
 	}
 }
 
+// A new file shows its subtitles: off is a hidden track, not a deselect, which
+// mpv 0.41 refresh-seeks on.
+func TestTrackPropsStartShown(t *testing.T) {
+	for _, o := range []LoadOptions{{}, {Captions: "on", SubtitleLanguage: "en"}, {SubtitleSize: "large"}} {
+		props := trackProps(o)
+		if last := props[len(props)-1]; last[0] != "sub-visibility" || last[1] != "yes" {
+			t.Errorf("%+v: last property %v, want sub-visibility yes", o, last)
+		}
+		// Appended, not inserted: the captions pick these by index.
+		if props[4][0] != "subs-fallback" {
+			t.Errorf("%+v: the track properties moved (%v)", o, props)
+		}
+	}
+}
+
 func TestTrackControls(t *testing.T) {
 	t.Parallel()
 	s, r := newTestService(t)

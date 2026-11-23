@@ -68,7 +68,24 @@ func TrackProps(o LoadOptions, systemCaptions bool, fonts map[string]string) [][
 	} else if scale, ok := SubtitleScales[o.SubtitleSize]; ok {
 		props = append(props, [2]string{"sub-scale", Seconds(scale)})
 	}
+	// Off is a hidden subtitle in a new file, never a deselect: mpv 0.41
+	// refresh-seeks on sid=no, which stalls a streamed file (see
+	// HideMainSubtitle).
+	props = append(props, [2]string{"sub-visibility", "yes"})
 	return props
+}
+
+// HideMainSubtitle returns tracks with no main subtitle track selected: while
+// sub-visibility hides it, the frontend has to read the subtitles as off even
+// though sid still names the track it is one property away from showing.
+func HideMainSubtitle(tracks []Track) []Track {
+	out := append([]Track{}, tracks...)
+	for i := range out {
+		if out[i].Type == "sub" && out[i].Selected && !out[i].Secondary {
+			out[i].Selected = false
+		}
+	}
+	return out
 }
 
 // IOSFonts are the faces iOS has for each SubtitleStyle.Font.

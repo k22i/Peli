@@ -64,6 +64,10 @@ func trackProps(o LoadOptions) [][2]string {
 	} else if scale, ok := SubtitleScales[o.SubtitleSize]; ok {
 		props = append(props, [2]string{"sub-scale", seconds(scale)})
 	}
+	// Off is a hidden subtitle in a new file, never a deselect: on/off is
+	// then one property, and no sid change stalls a streamed file
+	// (SetSubtitleTrack).
+	props = append(props, [2]string{"sub-visibility", "yes"})
 	return props
 }
 
@@ -78,6 +82,9 @@ var observed = []struct {
 	{"demuxer-cache-duration", fmtDouble},
 	{"pause", fmtFlag},
 	{"paused-for-cache", fmtFlag},
+	// Hidden is how subtitles turn off (SetSubtitleTrack), so the tracks
+	// reported follow it.
+	{"sub-visibility", fmtFlag},
 	{"cache-buffering-state", fmtInt64},
 	{"seeking", fmtFlag},
 	{"volume", fmtDouble},
@@ -165,6 +172,14 @@ type Service struct {
 	mu    sync.Mutex
 	s     *session
 	state State
+
+	// trackList is mpv's last raw track-list, and subHidden whether
+	// sub-visibility hides the main subtitles: a change to either rebuilds
+	// State.Tracks (showTracks), so the tracks reported say the subtitles
+	// are off while hidden.
+	trackList any
+	subHidden bool
+
 	// What the event loop has yet to send.
 	stateDirty, timeDirty, forceTime bool
 	ended                            *Ended
@@ -388,6 +403,9 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
 		st.Time = Time{Position: opts.Start}
 		st.Tracks, st.Chapters, st.AutoCrop = []Track{}, []Chapter{}, nil
+		// The new file's track-list replaces these; until it comes, nothing
+		// is left of the last one's tracks to show.
+		s.trackList, s.subHidden = nil, false
 		s.watching, s.reportWhy, s.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
@@ -761,12 +779,34 @@ func (s *Service) SetAudioTrack(id int) error {
 
 // SetSubtitleTrack shows the subtitle track with id, from State.Tracks, or
 // none for 0.
+//
+// Off hides the subtitles rather than deselecting them: mpv 0.41 refresh-seeks
+// on sid=no, dropping every buffered packet and re-reading from the network,
+// so a streamed file stalls until that's done. Kept, the same track is one
+// property away from being back on.
 func (s *Service) SetSubtitleTrack(id int) error {
-	switch {
-	case id < 0:
+	if id < 0 {
 		return ErrInvalid
-	case id == 0:
-		return s.set("sid", "no")
+	}
+	ses := s.current()
+	if ses == nil {
+		return ErrNotPlaying
+	}
+	sid, err := ses.m.getString("sid")
+	if err != nil {
+		return notPlaying(err)
+	}
+	if id == 0 {
+		// Nothing selected: there's nothing to hide.
+		if sid == "no" {
+			return nil
+		}
+		return s.set("sub-visibility", "no")
+	}
+	// Already this track, just hidden: showing it again asks mpv for
+	// nothing.
+	if sid == strconv.Itoa(id) {
+		return s.set("sub-visibility", "yes")
 	}
 	// The same track can't be both: the second line gives way.
 	if s.Snapshot().SecondaryIs(id) {
@@ -774,7 +814,10 @@ func (s *Service) SetSubtitleTrack(id int) error {
 			return err
 		}
 	}
-	return s.set("sid", strconv.Itoa(id))
+	if err := s.set("sid", strconv.Itoa(id)); err != nil {
+		return err
+	}
+	return s.set("sub-visibility", "yes")
 }
 
 // SetSecondarySubtitleTrack shows the subtitle track with id, from
@@ -1112,7 +1155,13 @@ func (s *Service) property(ses *session, name string, v any) {
 	case "speed":
 		st.Speed = number(v)
 	case "track-list":
-		st.Tracks = tracks(v)
+		s.trackList = v
+		s.showTracks(st)
+	case "sub-visibility":
+		s.subHidden, _ = v.(bool)
+		if s.trackList != nil {
+			s.showTracks(st)
+		}
 	case "chapter-list":
 		st.Chapters = chapters(v)
 	case "hwdec-current":
@@ -1139,6 +1188,16 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.LoopB = loopEnd(v)
 	}
 	s.stateDirty = true
+}
+
+// showTracks rebuilds State.Tracks from mpv's last track-list, with the main
+// subtitle track unselected while sub-visibility hides it. Call with s.mu
+// held.
+func (s *Service) showTracks(st *State) {
+	st.Tracks = tracks(s.trackList)
+	if s.subHidden {
+		st.Tracks = playback.HideMainSubtitle(st.Tracks)
+	}
 }
 
 // showHDR has an HDR video (PQ or HLG) go to the display as HDR when the

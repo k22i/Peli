@@ -100,6 +100,11 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
 			return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 		}
+		return id, nil
+	}
+	// Shown even when sub-visibility hid the file's own subtitles.
+	if err := ses.m.setProperty("sub-visibility", "yes"); err != nil {
+		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}
 	return id, nil
 }
@@ -142,6 +147,11 @@ func (s *Service) addLocalSubtitle(sub Subtitle) (int, error) {
 		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
 			return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 		}
+		return id, nil
+	}
+	// Shown even when sub-visibility hid the file's own subtitles.
+	if err := ses.m.setProperty("sub-visibility", "yes"); err != nil {
+		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}
 	return id, nil
 }
