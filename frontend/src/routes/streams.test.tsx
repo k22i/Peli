@@ -3,7 +3,14 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import type { Plugin, Query, Stream as PluginStream } from "@bindings/plugins";
-import type { Addon, ChosenSource, DeviceSettings, Profile, Progress } from "@bindings/store";
+import type {
+  Addon,
+  ChosenSource,
+  DeviceSettings,
+  Profile,
+  ProfileSettings,
+  Progress,
+} from "@bindings/store";
 import type { Request, Source } from "@bindings/streams";
 import type { Request as TorrentRequest, Status } from "@bindings/torrent";
 import { defaultQuality } from "@/lib/quality";
@@ -38,6 +45,7 @@ const mocks = vi.hoisted(() => ({
   pluginStreams: vi.fn<(plugin: Plugin, query: Query) => Promise<PluginStream[]>>(),
   device: vi.fn<() => Promise<DeviceSettings>>(),
   saveDevice: vi.fn<(settings: DeviceSettings) => Promise<void>>(),
+  profile: vi.fn<() => Promise<ProfileSettings>>(),
   chosen: vi.fn<(profileId: number, contentId: string) => Promise<ChosenSource | null>>(),
   setChosen:
     vi.fn<(profileId: number, contentId: string, chosen: ChosenSource | null) => Promise<void>>(),
@@ -63,13 +71,7 @@ vi.mock("@bindings/store", () => ({
     // The shell seeds these on iOS; without it the app becomes its error
     // screen (the compact case below).
     SeedAudioLanguages: () => Promise.resolve(false),
-    ProfileSettings: () =>
-      Promise.resolve({
-        audioLanguages: [],
-        subtitleLanguage: "",
-        subtitleSize: "medium",
-        captions: "system",
-      }),
+    ProfileSettings: () => mocks.profile(),
   },
 }));
 
@@ -277,9 +279,20 @@ const device: DeviceSettings = {
   audio: defaultAudio,
 };
 
+// What the profile's settings are until a test changes them.
+const profileSettings: ProfileSettings = {
+  audioLanguages: [],
+  subtitleLanguage: "",
+  subtitleSize: "medium",
+  captions: "system",
+  preferredQuality: "best",
+  autoplayTopPick: false,
+};
+
 beforeEach(() => {
   mocks.device.mockReset().mockResolvedValue(device);
   mocks.saveDevice.mockReset().mockResolvedValue(undefined);
+  mocks.profile.mockReset().mockResolvedValue(profileSettings);
   // The filters last for the session: each test starts with none.
   keepForSession(noFilters);
   mocks.resolve.mockImplementation(async (request) => resolved(request));
@@ -1679,5 +1692,51 @@ describe("with a watch party", () => {
     expect(within(page).getByRole("button", { name: "Back" })).toHaveClass(
       "pointer-coarse:min-h-11",
     );
+  });
+});
+
+// The profile's autoplay: the top pick plays by itself once the streams are
+// in, unless the address asks for the list.
+describe("autoplay", () => {
+  const shawshank = "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv";
+  const cached = debrid(shawshank, "+");
+  const playing = () => screen.queryByRole("button", { name: "Pause" });
+
+  it("plays the top pick by itself when the profile asks for it", async () => {
+    mocks.profile.mockResolvedValue({ ...profileSettings, autoplayTopPick: true });
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    // Nothing is pressed: the picker opens the player on its own.
+    await renderApp(pickerPath);
+    await opensThePlayer(4000);
+
+    // What P would have played: Torrentio's cached 1080p, not Peerflix's
+    // torrent.
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe(cached.url);
+    expect(mocks.load).toHaveBeenCalledOnce();
+    expect(mocks.load.mock.calls[0]![0]).toEqual(resolved({ url: cached.url, headers: {} }));
+  });
+
+  it("shows the list instead when the address asks for it", async () => {
+    mocks.profile.mockResolvedValue({ ...profileSettings, autoplayTopPick: true });
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    // Back from the player leaves `choose` in the address: the list, not
+    // another autoplay.
+    await renderApp(`${pickerPath}?choose=true`);
+
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await waitFor(() => expect(addonStatus("Peerflix")).toHaveTextContent("12 streams"));
+    // Every addon has answered: with autoplay on, the pick would be playing
+    // by now, and the status line would never show.
+    await looking();
+    expect(playing()).toBeNull();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(screen.queryByText("Playing the top pick when the streams are in")).toBeNull();
   });
 });

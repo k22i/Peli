@@ -1193,9 +1193,15 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
   return (
     <SettingsPaneView title={title}>
       <WithSettings profileId={profileId}>
-        {({ device, setDevice }) => (
+        {({ settings, device, setProfile, setDevice }) => (
           <>
-            <QualityGroup device={device} onChange={setDevice} />
+            <QualityGroup
+              device={device}
+              onChange={setDevice}
+              // The preferred quality is the profile's, not this device's.
+              quality={preferredQualityOf(settings.preferredQuality)}
+              setQuality={(preferredQuality) => setProfile({ preferredQuality })}
+            />
             <SettingsGroup title="Starting">
               {/* Off unless the user turns it on (#101, ADR-0060): resolving
               ahead adds the stream to the debrid service's list. */}
@@ -1209,6 +1215,19 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
                   aria-describedby="pre-resolve-description"
                   checked={device.preResolve}
                   onCheckedChange={(preResolve) => setDevice({ preResolve })}
+                />
+              </SettingRow>
+              {/* The profile's, not this device's: it plays by itself. */}
+              <SettingRow
+                id="autoplay-top-pick"
+                label="Autoplay the top pick"
+                description="Plays the best stream as soon as the streams are in, instead of showing the list. Choose another from the player’s Streams sheet."
+              >
+                <Switch
+                  aria-labelledby="autoplay-top-pick-label"
+                  aria-describedby="autoplay-top-pick-description"
+                  checked={settings.autoplayTopPick}
+                  onCheckedChange={(autoplayTopPick) => setProfile({ autoplayTopPick })}
                 />
               </SettingRow>
             </SettingsGroup>
@@ -1246,18 +1265,54 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
   );
 }
 
+// What the profile wants ranked first, whatever the device can show: "best"
+// keeps the ranking's own order. The device's maximum resolution still caps
+// it, so these say a preference, not a promise.
+const preferredQualities = ["best", "2160p", "1080p", "720p"] as const;
+const preferredQualityLabels: Record<(typeof preferredQualities)[number], string> = {
+  best: "Best available",
+  "2160p": "4K",
+  "1080p": "1080p",
+  "720p": "720p",
+};
+type PreferredQuality = (typeof preferredQualities)[number];
+
+// A saved value this build doesn't know is the ranking's own order.
+function preferredQualityOf(value: string | undefined): PreferredQuality {
+  return preferredQualities.find((quality) => quality === value) ?? "best";
+}
+
 // What this device shows (#98, ADR-0048), for choosing between streams: the
 // ranking's weights stay out of sight, so these say what the screen can do. A
-// stream that doesn't fit is listed after the ones that do, never hidden.
+// stream that doesn't fit is listed after the ones that do, never hidden. The
+// one row that isn't the device's is the profile's preferred quality, ranked
+// first before this device's cap applies.
 function QualityGroup({
   device,
   onChange,
+  quality,
+  setQuality,
 }: {
   device: DeviceSettings;
   onChange: (change: Partial<DeviceSettings>) => void;
+  quality: PreferredQuality;
+  setQuality: (quality: PreferredQuality) => void;
 }) {
   return (
     <SettingsGroup title="Picture">
+      <SettingRow
+        id="preferred-quality"
+        label="Preferred quality"
+        description="Ranks this quality first for every title. Higher ones follow; the device’s maximum resolution still caps it."
+      >
+        <Choice
+          id="preferred-quality"
+          value={quality}
+          options={preferredQualities}
+          labels={preferredQualityLabels}
+          onChange={(preferredQuality) => setQuality(preferredQuality)}
+        />
+      </SettingRow>
       <SettingRow
         id="max-resolution"
         label="Maximum resolution"
