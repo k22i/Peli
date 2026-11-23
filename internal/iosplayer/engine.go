@@ -98,6 +98,13 @@ type Engine struct {
 	lastTime   time.Time
 	ended      *playback.Ended
 
+	// framing is the framing the file plays with (adjustProps), kept for the
+	// crop the video's size completes (applyCrop); videoW and videoH are that
+	// size, 0 until mpv reports it and again from every Load.
+	framing store.Framing
+	videoW  int
+	videoH  int
+
 	// trackList is mpv's last raw track-list, and subHidden whether
 	// sub-visibility hides the main subtitles: a change to either rebuilds
 	// State.Tracks (showTracks), so the tracks reported say the subtitles
@@ -192,6 +199,10 @@ var observed = []struct {
 	{"sub-text", fmtString},
 	{"secondary-sub-text", fmtString},
 	{"video-params/hw-pixelformat", fmtString},
+	// The video's size, for the framing's crop (applyCrop). Last, so the
+	// observe ids above don't move.
+	{"video-params/w", fmtInt64},
+	{"video-params/h", fmtInt64},
 }
 
 // mapFailed are the log lines that say a zero-copy frame couldn't be drawn:
@@ -295,6 +306,19 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 			return notPlaying(err)
 		}
 	}
+	// The file's picture, framing, quality, sound and audio delay: what its
+	// title or this device asks for, or what opts names. A property or filter
+	// this build lacks isn't worth failing the file over, so it is logged
+	// instead: with af, the sound as the track is rather than silent.
+	for _, p := range e.adjustProps(opts) {
+		err := ses.m.setProperty(p[0], p[1])
+		if err != nil && p[0] == "af" {
+			err = ses.m.setProperty("af", "")
+		}
+		if err != nil {
+			slog.Warn("iosplayer: adjustment not set", "property", p[0], "error", err)
+		}
+	}
 	ses.hw, ses.hwSwitched, ses.firstFrame = hw, false, false
 	ses.source, ses.opts, ses.loadedAt = source, opts, time.Now()
 	e.update(func(st *playback.State) {
@@ -304,6 +328,9 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 		// The new file's track-list replaces these; until it comes, nothing
 		// is left of the last one's tracks to show.
 		e.trackList, e.subHidden = nil, false
+		// So the last file's size can't crop this one: mpv reports the new
+		// size before its first frame.
+		e.videoW, e.videoH = 0, 0
 		e.watching, e.reportWhy, e.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
@@ -966,6 +993,22 @@ func (e *Engine) property(ses *session, name string, v any) {
 	if name == "video-params/hw-pixelformat" {
 		if px, _ := v.(string); px == "p010" && ses.hw == hwVideoToolbox && !ses.hwSwitched {
 			e.switchHW(ses, hwVideoToolboxCopy, "p010")
+		}
+		return
+	}
+	// The video's size, which no state carries: it completes the framing's
+	// crop. Not under e.mu, since applyCrop takes it.
+	if name == "video-params/w" || name == "video-params/h" {
+		e.mu.Lock()
+		if name == "video-params/w" {
+			e.videoW = int(playback.Number(v))
+		} else {
+			e.videoH = int(playback.Number(v))
+		}
+		w, h := e.videoW, e.videoH
+		e.mu.Unlock()
+		if w > 0 && h > 0 {
+			e.applyCrop(ses)
 		}
 		return
 	}
