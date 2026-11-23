@@ -7,7 +7,7 @@ import type { Media, State } from "@bindings/party";
 import { Service as Party } from "@bindings/party";
 import type { DeviceSettings } from "@bindings/store";
 import { sheetsOpen } from "@/lib/sheets";
-import { deviceSettings, partyMember, partyState } from "@/test/fixtures";
+import { deviceSettings, partyActivityEntry, partyMember, partyState } from "@/test/fixtures";
 import { onCompactIOS } from "@/test/ios";
 
 import { PartySheet } from "./party-sheet";
@@ -79,6 +79,7 @@ beforeEach(() => {
   // and a code that joins nothing until a test says otherwise.
   vi.mocked(Party.State).mockResolvedValue({ unavailable: "", busy: false, party: null });
   vi.mocked(Party.Chat).mockResolvedValue({ messages: [], unread: 0 });
+  vi.mocked(Party.Activity).mockResolvedValue({ entries: [] });
   vi.mocked(Party.Preview).mockResolvedValue({
     error: "party_not_found",
     media: null,
@@ -240,6 +241,41 @@ describe("PartySheet", () => {
     await waitFor(() =>
       expect(within(sheet).getByRole("textbox", { name: "Message" })).toHaveValue(""),
     );
+  });
+
+  it("shows the party's activity log between the messages", async () => {
+    const state = partyState({ memberId: "me" });
+    vi.mocked(Party.State).mockResolvedValue(state);
+    vi.mocked(Party.Chat).mockResolvedValue({
+      messages: [
+        {
+          key: "m1",
+          memberId: "ana",
+          name: "Ana",
+          avatarUrl: "",
+          avatarColor: "",
+          body: "Ready when you are",
+          sentAt: Date.UTC(2026, 10, 23, 20, 1),
+          mine: false,
+          status: "sent",
+        },
+      ],
+      unread: 0,
+    });
+    vi.mocked(Party.Activity).mockResolvedValue({ entries: [partyActivityEntry()] });
+    renderSheet(state);
+    const user = userEvent.setup();
+
+    const sheet = await screen.findByRole("dialog", { name: "Watch party" });
+    await user.click(within(sheet).getByRole("tab", { name: /^Chat/ }));
+
+    const log = await within(sheet).findByRole("log", { name: "Chat" });
+    // A quiet line of its own, between the messages, and in time order: Ana
+    // paused a minute before her message.
+    expect(
+      await within(log).findByText(/Ana paused at 14:23/, { selector: "p" }),
+    ).toBeInTheDocument();
+    expect(within(log).getByText("Ready when you are")).toBeInTheDocument();
   });
 
   it("keeps the party open beside the video, from its header", async () => {

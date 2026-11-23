@@ -6,6 +6,8 @@ import { useCallback, useEffect, useEffectEvent } from "react";
 import type { Watching } from "@bindings/playback";
 import {
   Service as Party,
+  type Activity,
+  type ActivityEntry,
   type Chat,
   type Media,
   type Member,
@@ -27,13 +29,18 @@ import { streamsPath, streamsSearch } from "@/lib/streams-path";
 
 // Watch parties (ADR-0051): watching with friends on Peli or Nuvio's apps,
 // each from their own streams, in step. Go (internal/party) runs the party
-// and keeps the player in step; this side shows it. State and the chat come
-// as party:state and party:chat, each whole, so the queries below are set
-// from them; notices (someone paused, joined, left) come as party:notice.
+// and keeps the player in step; this side shows it. State, the chat and the
+// activity log come as party:state, party:chat and party:activity, each
+// whole, so the queries below are set from them; notices (someone paused,
+// joined, left) come as party:notice.
 
 export const stateEvent = "party:state";
 export const noticeEvent = "party:notice";
 export const chatEvent = "party:chat";
+// What happened in the party, in one log: who came and went, who paused,
+// skipped or changed the speed, and what it moved on to. The chat shows it
+// between the messages.
+export const activityEvent = "party:activity";
 // One per emoji a member sends, the sender's own included (Mine).
 export const reactionEvent = "party:reaction";
 
@@ -56,6 +63,8 @@ export const reactionName: Record<(typeof REACTIONS)[number], string> = {
 
 export { Party };
 export type {
+  Activity,
+  ActivityEntry,
   Chat,
   Media,
   Member,
@@ -83,6 +92,14 @@ export const partyChatQuery = queryOptions({
   staleTime: Infinity,
 });
 
+// The party's activity log, newest last, as party:activity carries it whole.
+export const partyActivityQuery = queryOptions({
+  queryKey: ["party", "activity"],
+  queryFn: () => Party.Activity(),
+  enabled: () => feature("party"),
+  staleTime: Infinity,
+});
+
 // The party as it is now: undefined until Go first answers.
 export function useParty(): State | undefined {
   return useQuery(partyQuery).data;
@@ -90,6 +107,10 @@ export function useParty(): State | undefined {
 
 export function usePartyChat(): Chat {
   return useQuery(partyChatQuery).data ?? { messages: [], unread: 0 };
+}
+
+export function usePartyActivity(): Activity {
+  return useQuery(partyActivityQuery).data ?? { entries: [] };
 }
 
 // Keeps the party queries in step with Go's events. Mounted once, at the
@@ -103,9 +124,13 @@ export function usePartyEvents(queryClient: QueryClient) {
     const offChat = Events.On(chatEvent, (event) => {
       queryClient.setQueryData(partyChatQuery.queryKey, event.data);
     });
+    const offActivity = Events.On(activityEvent, (event) => {
+      queryClient.setQueryData(partyActivityQuery.queryKey, event.data);
+    });
     return () => {
       offState();
       offChat();
+      offActivity();
     };
   }, [queryClient]);
 }
@@ -263,6 +288,65 @@ export function noticeText(notice: Notice): string | undefined {
       return "Back in step with the party";
   }
   return undefined;
+}
+
+// One line of the party's activity log: who did what, without the time (the
+// chat shows that beside it). "You" for what this device did, and a name
+// that didn't come through reads as someone.
+export function activityText(entry: ActivityEntry): string {
+  const who = entry.mine ? "You" : entry.name || "Someone";
+  switch (entry.kind) {
+    case "paused":
+      return `${who} paused at ${duration(entry.positionMs)}`;
+    case "resumed":
+      return `${who} resumed at ${duration(entry.positionMs)}`;
+    case "seeked":
+      return `${who} skipped to ${duration(entry.positionMs)}`;
+    case "speed":
+      return `${who} changed the speed to ${entry.rate}×`;
+    case "joined":
+      return `${who} joined`;
+    case "left":
+      return `${who} left`;
+    case "media":
+      return entry.title ? `${who} started ${entry.title}` : `${who} started something new`;
+    default:
+      // A kind this side doesn't know yet: Go may have added one.
+      return `${who} did something`;
+  }
+}
+
+// A row of the chat as it shows: a message, or one line of the log.
+export type TimelineItem =
+  | { type: "message"; message: Message }
+  | { type: "activity"; entry: ActivityEntry };
+
+// The chat and the activity log as one list, in time order. Messages keep
+// their own order and are never re-sorted: each entry goes before the first
+// message sent after it, and the entries come in the order Go sends them
+// (oldest first). A message still sending, or one that failed, is the
+// newest thing there is, so it stays at the end, after the log.
+export function partyTimeline(messages: Message[], entries: ActivityEntry[]): TimelineItem[] {
+  // The messages the log can sit between: the sent ones, in their own order.
+  const waiting = messages.filter(
+    (message) => message.status !== "sending" && message.status !== "failed",
+  );
+  const unsent = messages.filter(
+    (message) => message.status === "sending" || message.status === "failed",
+  );
+  const items: TimelineItem[] = [];
+  for (const entry of entries) {
+    let head = waiting[0];
+    while (head && head.sentAt <= entry.at) {
+      waiting.shift();
+      items.push({ type: "message", message: head });
+      head = waiting[0];
+    }
+    items.push({ type: "activity", entry });
+  }
+  for (const message of waiting) items.push({ type: "message", message });
+  for (const message of unsent) items.push({ type: "message", message });
+  return items;
 }
 
 // The party's name for what the player plays: from what its progress is

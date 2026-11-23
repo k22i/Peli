@@ -3,20 +3,35 @@ import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from "re
 
 import { ProfileAvatar } from "@/components/account/profile-avatar";
 import { Button } from "@/components/ui/button";
-import { Party, usePartyChat, type Message } from "@/lib/party";
+import {
+  activityText,
+  Party,
+  partyTimeline,
+  usePartyActivity,
+  usePartyChat,
+  type ActivityEntry,
+  type Message,
+} from "@/lib/party";
 import { useCompactShell } from "@/lib/shell-mode";
 import { cn } from "@/lib/utils";
 
 // The longest message the backend keeps.
 const maxLength = 500;
 
+// "2:04 PM", in this device's own conventions.
+const clock = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+
 // The party's chat: oldest at the top, the newest kept in view as they come
 // unless the user scrolled up to read. While it shows, nothing counts as
 // unread. A message shows at once while it sends; one that couldn't be sent
-// says so, and a click sends it again.
+// says so, and a click sends it again. The party's activity log (who paused,
+// skipped, came or went) sits between the messages as quiet one-line rows, in
+// time order.
 export function PartyChat({ className }: { className?: string }) {
   const chat = usePartyChat();
   const messages = chat.messages ?? [];
+  const activity = usePartyActivity();
+  const items = partyTimeline(messages, activity.entries);
   const [draft, setDraft] = useState("");
   const list = useRef<HTMLDivElement>(null);
   const pinned = useRef(true);
@@ -37,8 +52,8 @@ export function PartyChat({ className }: { className?: string }) {
     el.addEventListener("touchstart", keep, { passive: true });
     return () => el.removeEventListener("touchstart", keep);
   }, [compact]);
-  // Each new message, kept in view.
-  const count = messages.length;
+  // Each new message or line of the log, kept in view.
+  const count = items.length;
   useLayoutEffect(() => {
     const el = list.current;
     if (el && pinned.current && count > 0) el.scrollTop = el.scrollHeight;
@@ -66,7 +81,7 @@ export function PartyChat({ className }: { className?: string }) {
         }}
         className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-1 py-2 outline-none"
       >
-        {messages.length === 0 ? (
+        {items.length === 0 ? (
           <div className="m-auto flex max-w-60 flex-col items-center gap-2 py-10 text-center">
             <MessagesSquare aria-hidden className="size-6 text-muted-foreground" />
             <p className="text-body font-[590]">No messages yet</p>
@@ -75,13 +90,22 @@ export function PartyChat({ className }: { className?: string }) {
             </p>
           </div>
         ) : (
-          messages.map((message, index) => (
-            <ChatMessage
-              key={message.key}
-              message={message}
-              grouped={index > 0 && messages[index - 1]?.memberId === message.memberId}
-            />
-          ))
+          items.map((item, index) => {
+            const before = items[index - 1];
+            if (item.type === "activity") {
+              return <ActivityRow key={"activity:" + item.entry.id} entry={item.entry} />;
+            }
+            return (
+              <ChatMessage
+                key={item.message.key}
+                message={item.message}
+                // A run of messages from the same member reads as one.
+                grouped={
+                  before?.type === "message" && before.message.memberId === item.message.memberId
+                }
+              />
+            );
+          })
         )}
       </div>
       <form onSubmit={send} className="flex items-center gap-2 border-t border-foreground/8 pt-3">
@@ -109,6 +133,18 @@ export function PartyChat({ className }: { className?: string }) {
         </Button>
       </form>
     </div>
+  );
+}
+
+// One line of the party's log, quiet between the messages and with no face
+// of its own: what happened, then when.
+function ActivityRow({ entry }: { entry: ActivityEntry }) {
+  return (
+    <p className="px-3 text-center text-[0.6875rem] text-muted-foreground">
+      {activityText(entry)}
+      {" · "}
+      <time dateTime={new Date(entry.at).toISOString()}>{clock.format(entry.at)}</time>
+    </p>
   );
 }
 
