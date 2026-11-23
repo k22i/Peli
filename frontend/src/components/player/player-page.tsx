@@ -2657,25 +2657,33 @@ function PlayerFile({
       {scrub && <ScrubLabel from={scrub.from} to={scrub.to} />}
     </>
   );
-  // "Resumed at 12:34 · Start over", at the top centre under the top row.
+  // "Resumed at 12:34 · Start over" on touch: a small quiet pill in the top
+  // corner under the top row, so it stays out of the picture.
   const resumePill = offerStartOver && !failure && asking === undefined && (
     <div
       className={cn(
-        "pointer-events-none absolute inset-x-0 top-[calc(3.75rem+env(safe-area-inset-top))] flex justify-center px-4 *:pointer-events-auto",
+        "pointer-events-none absolute inset-x-0 top-[calc(3.5rem+env(safe-area-inset-top))] flex justify-start ps-[max(1rem,env(safe-area-inset-left))] pe-4 *:pointer-events-auto",
         faded,
       )}
     >
       <Prompt
         {...hold}
-        icon={<Resumed />}
+        className="gap-2 rounded-full py-1 ps-3 pe-1"
         action={
-          <Button size="sm" variant="light" onClick={startOver}>
-            <RotateCcw />
+          <Button
+            size="sm"
+            variant="light"
+            className="h-7 rounded-full px-2.5 text-xs"
+            onClick={startOver}
+          >
+            <RotateCcw className="size-3" />
             Start over
           </Button>
         }
       >
-        Resumed at <span className="tnum">{formatTime(resumedAt)}</span>
+        <span className="text-xs text-white/80">
+          Resumed at <span className="tnum">{formatTime(resumedAt)}</span>
+        </span>
       </Prompt>
     </div>
   );
@@ -2684,7 +2692,7 @@ function PlayerFile({
   // when that is up.
   const partyPillTop = touchLayout
     ? resumePill
-      ? "top-[calc(7.25rem+env(safe-area-inset-top))]"
+      ? "top-[calc(6.5rem+env(safe-area-inset-top))]"
       : "top-[calc(3.75rem+env(safe-area-inset-top))]"
     : undefined;
 
