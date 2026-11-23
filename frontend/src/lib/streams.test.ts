@@ -90,6 +90,19 @@ const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   downloadsWiFiOnly: true,
   quality: defaultQuality,
   audio: defaultAudio,
+  subtitles: {
+    always: false,
+    style: {
+      font: "sans",
+      size: 100,
+      color: "#FFFFFF",
+      bold: false,
+      edge: "outline",
+      backdrop: 60,
+      lift: 0,
+      override: false,
+    },
+  },
   ...changes,
 });
 // The display reports HDR, or not.

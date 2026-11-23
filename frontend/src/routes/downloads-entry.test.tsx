@@ -204,6 +204,19 @@ const device: DeviceSettings = {
   downloadsWiFiOnly: true,
   quality: defaultQuality,
   audio: defaultAudio,
+  subtitles: {
+    always: false,
+    style: {
+      font: "sans",
+      size: 100,
+      color: "#FFFFFF",
+      bold: false,
+      edge: "outline",
+      backdrop: 60,
+      lift: 0,
+      override: false,
+    },
+  },
 };
 
 // The profile's settings as Go keeps them, with no subtitle language: a

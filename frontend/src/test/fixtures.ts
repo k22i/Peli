@@ -97,7 +97,19 @@ export const deviceSettings = (changes: Partial<DeviceSettings> = {}): DeviceSet
   downloadsDir: "",
   downloadsCapGB: 50,
   downloadsWiFiOnly: true,
-  subtitles: { always: false, style: { font: "sans", size: 100, color: "#FFFFFF", bold: false, edge: "outline", backdrop: 60, lift: 0, override: false } },
+  subtitles: {
+    always: false,
+    style: {
+      font: "sans",
+      size: 100,
+      color: "#FFFFFF",
+      bold: false,
+      edge: "outline",
+      backdrop: 60,
+      lift: 0,
+      override: false,
+    },
+  },
   ...changes,
 });
 

@@ -279,6 +279,19 @@ const device: DeviceSettings = {
   downloadsWiFiOnly: true,
   quality: defaultQuality,
   audio: defaultAudio,
+  subtitles: {
+    always: false,
+    style: {
+      font: "sans",
+      size: 100,
+      color: "#FFFFFF",
+      bold: false,
+      edge: "outline",
+      backdrop: 60,
+      lift: 0,
+      override: false,
+    },
+  },
 };
 
 // What the profile's settings are until a test changes them: the shared

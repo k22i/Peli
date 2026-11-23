@@ -335,7 +335,19 @@ beforeEach(() => {
     downloadsDir: "",
     downloadsCapGB: 50,
     downloadsWiFiOnly: true,
-    subtitles: { always: false, style: { font: "sans", size: 100, color: "#FFFFFF", bold: false, edge: "outline", backdrop: 60, lift: 0, override: false } },
+    subtitles: {
+      always: false,
+      style: {
+        font: "sans",
+        size: 100,
+        color: "#FFFFFF",
+        bold: false,
+        edge: "outline",
+        backdrop: 60,
+        lift: 0,
+        override: false,
+      },
+    },
     quality: defaultQuality,
     audio: defaultAudio,
   });
@@ -1903,6 +1915,19 @@ describe("skip intro and credits", () => {
       downloadsWiFiOnly: true,
       quality: defaultQuality,
       audio: defaultAudio,
+      subtitles: {
+        always: false,
+        style: {
+          font: "sans",
+          size: 100,
+          color: "#FFFFFF",
+          bold: false,
+          edge: "outline",
+          backdrop: 60,
+          lift: 0,
+          override: false,
+        },
+      },
     });
     mocks.segments.mockResolvedValue([{ kind: "intro", start: 216, end: 232 }]);
     await openPlayer("S1 · E1 · Pilot", source, undefined, { watching: pilot });
