@@ -249,12 +249,12 @@ describe("StreamEngine", () => {
         ],
       },
     ];
-    const tiers = (maxResolution: "2160p" | "1080p" | "720p") =>
+    const groupTiers = (maxResolution: "2160p" | "1080p" | "720p") =>
       rankStreams(movie, answers, { ...defaultPrefs, maxResolution }).groups.map((g) => g.tier);
-    expect(tiers("2160p")).toEqual(["4K", "1080p", "720p", "SD", "Low quality"]);
-    expect(tiers("1080p")).toEqual(["1080p", "720p", "SD", "4K", "Low quality"]);
+    expect(groupTiers("2160p")).toEqual(["4K", "1080p", "720p", "SD", "Low quality"]);
+    expect(groupTiers("1080p")).toEqual(["1080p", "720p", "SD", "4K", "Low quality"]);
     // The nearest to the cap first.
-    expect(tiers("720p")).toEqual(["720p", "SD", "1080p", "4K", "Low quality"]);
+    expect(groupTiers("720p")).toEqual(["720p", "SD", "1080p", "4K", "Low quality"]);
 
     // The pick is the best that fits.
     const view = rankStreams(movie, answers, { ...defaultPrefs, maxResolution: "1080p" });
