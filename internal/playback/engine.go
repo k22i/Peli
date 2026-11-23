@@ -10,9 +10,13 @@ import (
 // screens share. The desktop engine is player.Service (libmpv under the
 // webview); the iOS one (libmpv in a UIKit view under the transparent
 // webview, ADR-0055) implements the same set and is handed to the iOS
-// player.Service with player.UseEngine. What is left of the desktop Service's
-// methods (mini player, framing, picture, quality, sound, stats, screenshots,
-// loops, frame stepping and fullscreen) is desktop-only and stays out of it.
+// player.Service with player.UseEngine. A title's picture, framing, quality
+// and sound are not in the set: they are an engine's own optional methods,
+// which a Service forwards to when its engine has them (the iOS one does,
+// with the rules in adjust.go), as it does stats and the touch player's
+// controls. What is left of the desktop Service's methods (the mini player,
+// screenshots, loops, frame stepping, fullscreen and the audio devices) is
+// desktop-only and stays out of it.
 //
 // An Engine reports back through a Sink it is given when it is made.
 type Engine interface {

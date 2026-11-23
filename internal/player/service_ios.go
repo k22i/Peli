@@ -28,9 +28,11 @@ import (
 // Until the iOS engine exists (Phase 5: libmpv in a UIKit view under the
 // transparent webview), every call fails with ErrNotYet, which the frontend
 // reads as "unavailable". UseEngine hands the Service that engine; the
-// playback.Engine controls then reach it, and the desktop-only methods
-// (mini player, picture, framing, quality, sound, stats, screenshots, loops,
-// frame stepping, fullscreen) keep failing with ErrDesktopOnly.
+// playback.Engine controls then reach it, and the Picture & sound sheet's
+// adjustments reach it too when it has them (iosplayer does): picture,
+// framing, quality, sound, audio and audio delay. Still desktop-only are the
+// mini player, screenshots, loops, frame stepping, fullscreen and the audio
+// devices, which keep failing with ErrDesktopOnly.
 
 // ErrNotYet means there is no engine to play with yet.
 var ErrNotYet = fmt.Errorf("%w: the player isn't available on this device yet", ErrUnavailable)
@@ -293,17 +295,11 @@ func (s *Service) SystemCaptions() bool {
 // The rest is the desktop player's: the frontend hides these controls on a
 // touch device, and the bindings still resolve.
 
-func (s *Service) FrameStep(back bool) error              { return ErrDesktopOnly }
-func (s *Service) SetLoop(a, b float64) error             { return ErrDesktopOnly }
-func (s *Service) SetFullscreen(on bool) error            { return ErrDesktopOnly }
-func (s *Service) SetMini(on bool) error                  { return ErrDesktopOnly }
-func (s *Service) SetAudio(audio store.Audio) error       { return ErrDesktopOnly }
-func (s *Service) SetAudioDelay(delay float64) error      { return ErrDesktopOnly }
-func (s *Service) SetFraming(framing store.Framing) error { return ErrDesktopOnly }
-func (s *Service) SetPicture(picture store.Picture) error { return ErrDesktopOnly }
-func (s *Service) SetQuality(quality store.Quality) error { return ErrDesktopOnly }
-func (s *Service) SetSound(sound store.Sound) error       { return ErrDesktopOnly }
-func (s *Service) ShowScreenshot(path string) error       { return ErrDesktopOnly }
+func (s *Service) FrameStep(back bool) error        { return ErrDesktopOnly }
+func (s *Service) SetLoop(a, b float64) error       { return ErrDesktopOnly }
+func (s *Service) SetFullscreen(on bool) error      { return ErrDesktopOnly }
+func (s *Service) SetMini(on bool) error            { return ErrDesktopOnly }
+func (s *Service) ShowScreenshot(path string) error { return ErrDesktopOnly }
 func (s *Service) Screenshot(subtitles bool) (string, error) {
 	return "", ErrDesktopOnly
 }
@@ -386,6 +382,60 @@ func (s *Service) SetVideoInset(rightPx int) error {
 		return t.SetVideoInset(rightPx)
 	}
 	return nil
+}
+
+// The Picture & sound sheet's adjustments, when the engine applies them
+// (iosplayer does): the picture, the framing, the quality, the sound, this
+// device's output and the session's audio delay.
+type adjustControls interface {
+	SetPicture(store.Picture) error
+	SetFraming(store.Framing) error
+	SetQuality(store.Quality) error
+	SetSound(store.Sound) error
+	SetAudio(store.Audio) error
+	SetAudioDelay(float64) error
+}
+
+func (s *Service) SetPicture(picture store.Picture) error {
+	if e, ok := s.engine_().(adjustControls); ok {
+		return e.SetPicture(picture)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SetFraming(framing store.Framing) error {
+	if e, ok := s.engine_().(adjustControls); ok {
+		return e.SetFraming(framing)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SetQuality(quality store.Quality) error {
+	if e, ok := s.engine_().(adjustControls); ok {
+		return e.SetQuality(quality)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SetSound(sound store.Sound) error {
+	if e, ok := s.engine_().(adjustControls); ok {
+		return e.SetSound(sound)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SetAudio(audio store.Audio) error {
+	if e, ok := s.engine_().(adjustControls); ok {
+		return e.SetAudio(audio)
+	}
+	return ErrNotYet
+}
+
+func (s *Service) SetAudioDelay(delay float64) error {
+	if e, ok := s.engine_().(adjustControls); ok {
+		return e.SetAudioDelay(delay)
+	}
+	return ErrNotYet
 }
 
 // The Service is itself an Engine when it has one to forward to; this keeps
