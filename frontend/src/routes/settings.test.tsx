@@ -350,7 +350,7 @@ describe("settings", () => {
     );
 
     await open("Languages & subtitles");
-    expect(groups()).toEqual(["Languages", "Subtitles"]);
+    expect(groups()).toEqual(["Languages", "Subtitles", "On this device"]);
     expect(await screen.findByRole("combobox", { name: "Audio languages" })).toHaveTextContent(
       "Add a language",
     );
@@ -658,6 +658,29 @@ describe("settings", () => {
     expect(dock).toBeChecked();
     // It rides with the rest of this device's settings.
     expect(store.device).toMatchObject({ hardwareDecoding: true, partyDock: true });
+  });
+
+  // Subtitles on for everyone on this device: the device keeps the flag and
+  // its own style, and each profile still picks the language (W4).
+  it("shows subtitles on for everyone on this device", async () => {
+    const user = userEvent.setup();
+    await renderSettings("languages");
+
+    const always = screen.getByRole("switch", { name: "Always show subtitles" });
+    expect(always).not.toBeChecked();
+    expect(always).toHaveAccessibleDescription(/in the style below/);
+    // The device's style row is there once it is on, not before.
+    expect(screen.queryByText("Subtitle style on this device")).not.toBeInTheDocument();
+
+    await user.click(always);
+
+    await waitFor(() => expect(store.device).toMatchObject({ subtitles: { always: true } }));
+    expect(always).toBeChecked();
+    expect(screen.getByText("Subtitle style on this device")).toBeInTheDocument();
+    // The profile's own choice still shows, saying the device's wins.
+    const captions = screen.getByRole("group", { name: "Captions" });
+    expect(screen.getByText(/^Always on on this .+: see On this device\.$/)).toBeInTheDocument();
+    expect(within(captions).getByRole("button", { name: "System" })).toBeEnabled();
   });
 
   it("gives every keyboard-reachable element a visible focus ring", async () => {
