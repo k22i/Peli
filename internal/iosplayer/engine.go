@@ -119,6 +119,10 @@ type Engine struct {
 	trackList any
 	subHidden bool
 
+	// subScale holds sub-scale at 1 while the main subtitles are pictures,
+	// which it would only blur (playback.SubScale).
+	subScale playback.SubScale
+
 	// inset is the right margin the picture keeps, in points
 	// (SetVideoInset).
 	inset int
@@ -308,7 +312,9 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 			return notPlaying(err)
 		}
 	}
-	props := playback.TrackProps(opts, osCaptions(), playback.IOSFonts)
+	e.mu.Lock()
+	props := e.subScale.Load(playback.TrackProps(opts, osCaptions(), playback.IOSFonts))
+	e.mu.Unlock()
 	props = append(props, [2]string{"speed", "1"}, [2]string{"sub-delay", "0"})
 	for _, p := range props {
 		if err := ses.m.setProperty(p[0], p[1]); err != nil {
@@ -686,14 +692,20 @@ func (e *Engine) SetSubtitleSize(size string) error {
 	if !ok {
 		return playback.ErrInvalid
 	}
-	return e.set("sub-scale", playback.Seconds(scale))
+	e.mu.Lock()
+	p := e.subScale.Props([][2]string{{"sub-scale", playback.Seconds(scale)}})[0]
+	e.mu.Unlock()
+	return e.set(p[0], p[1])
 }
 
 func (e *Engine) SetSubtitleStyle(style playback.SubtitleStyle) error {
 	if !style.Valid() {
 		return playback.ErrInvalid
 	}
-	for _, p := range playback.StyleProps(style, playback.IOSFonts) {
+	e.mu.Lock()
+	props := e.subScale.Props(playback.StyleProps(style, playback.IOSFonts))
+	e.mu.Unlock()
+	for _, p := range props {
 		if err := e.set(p[0], p[1]); err != nil {
 			return err
 		}
@@ -1031,6 +1043,21 @@ func (e *Engine) property(ses *session, name string, v any) {
 		}
 		return
 	}
+	if name == "track-list" {
+		e.mu.Lock()
+		e.trackList = v
+		e.showTracks(&e.state)
+		e.stateDirty = true
+		// Picture subtitles are drawn at their own size (playback.SubScale).
+		scale, changed := e.subScale.Tracks(playback.TracksFrom(v))
+		e.mu.Unlock()
+		if changed {
+			if err := ses.m.setProperty("sub-scale", scale); err != nil {
+				slog.Warn("iosplayer: subtitle scale not set", "error", err)
+			}
+		}
+		return
+	}
 	e.mu.Lock()
 	defer e.mu.Unlock()
 	st := &e.state
@@ -1068,9 +1095,6 @@ func (e *Engine) property(ses *session, name string, v any) {
 		st.Muted, _ = v.(bool)
 	case "speed":
 		st.Speed = playback.Number(v)
-	case "track-list":
-		e.trackList = v
-		e.showTracks(st)
 	case "sub-visibility":
 		// mpv's property is true when the subtitles show: the field is
 		// the other way round.
@@ -1091,7 +1115,10 @@ func (e *Engine) property(ses *session, name string, v any) {
 	case "audio-delay":
 		st.AudioDelay = math.Round(playback.Number(v)*1000) / 1000
 	case "sub-scale":
-		st.SubtitleSize = playback.SubtitleSizeName(playback.Number(v))
+		// Held at 1 for picture subtitles, it isn't the size asked for.
+		if !e.subScale.Image() {
+			st.SubtitleSize = playback.SubtitleSizeName(playback.Number(v))
+		}
 	case "sub-text":
 		st.SubtitleText, _ = v.(string)
 	case "secondary-sub-text":

@@ -180,6 +180,10 @@ type Service struct {
 	trackList any
 	subHidden bool
 
+	// subScale holds sub-scale at 1 while the main subtitles are pictures,
+	// which it would only blur (playback.SubScale).
+	subScale playback.SubScale
+
 	// What the event loop has yet to send.
 	stateDirty, timeDirty, forceTime bool
 	ended                            *Ended
@@ -377,7 +381,10 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.framing, s.videoW, s.videoH = framing, 0, 0
 	s.file++
 	s.mu.Unlock()
-	props := append(trackProps(opts), playback.PictureProps(s.pictureFor(opts))...)
+	s.mu.Lock()
+	props := s.subScale.Load(trackProps(opts))
+	s.mu.Unlock()
+	props = append(props, playback.PictureProps(s.pictureFor(opts))...)
 	props = append(props, framingProps(framing)...)
 	s.applyInset()
 	// Each file plays at normal speed, whatever the last one played at, and
@@ -847,15 +854,8 @@ func (s *Service) SetSecondarySubtitleTrack(id int) error {
 	return s.set("secondary-sid", strconv.Itoa(id))
 }
 
-// imageSubtitle reports whether a subtitle codec is pictures (Blu-ray, DVD),
-// which have no text to draw as the second line.
-func imageSubtitle(codec string) bool {
-	switch codec {
-	case "hdmv_pgs_subtitle", "dvd_subtitle", "dvb_subtitle", "dvb_teletext", "xsub":
-		return true
-	}
-	return false
-}
+// imageSubtitle is playback.ImageSubtitle.
+var imageSubtitle = playback.ImageSubtitle
 
 // SetSubtitleDelay shows subtitles delay seconds later than the file says,
 // or earlier when it's negative, up to MaxSubtitleDelay either way.
@@ -872,7 +872,10 @@ func (s *Service) SetSubtitleSize(size string) error {
 	if !ok {
 		return ErrInvalid
 	}
-	return s.set("sub-scale", seconds(scale))
+	s.mu.Lock()
+	p := s.subScale.Props([][2]string{{"sub-scale", seconds(scale)}})[0]
+	s.mu.Unlock()
+	return s.set(p[0], p[1])
 }
 
 // SetFullscreen puts the window in or out of fullscreen. The mini player
@@ -1116,6 +1119,20 @@ func (s *Service) property(ses *session, name string, v any) {
 		trc, _ := v.(string)
 		s.showHDR(ses, trc == "pq" || trc == "hlg")
 		return
+	case "track-list":
+		s.mu.Lock()
+		s.trackList = v
+		s.showTracks(&s.state)
+		s.stateDirty = true
+		// Picture subtitles are drawn at their own size (playback.SubScale).
+		scale, changed := s.subScale.Tracks(tracks(v))
+		s.mu.Unlock()
+		if changed {
+			if err := ses.m.setProperty("sub-scale", scale); err != nil {
+				slog.Warn("player: subtitle scale not set", "error", err)
+			}
+		}
+		return
 	}
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -1154,9 +1171,6 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.Muted, _ = v.(bool)
 	case "speed":
 		st.Speed = number(v)
-	case "track-list":
-		s.trackList = v
-		s.showTracks(st)
 	case "sub-visibility":
 		// mpv's property is true when the subtitles show: the field is
 		// the other way round.
@@ -1180,7 +1194,10 @@ func (s *Service) property(ses *session, name string, v any) {
 	case "volume-max":
 		st.VolumeMax = number(v)
 	case "sub-scale":
-		st.SubtitleSize = subtitleSize(number(v))
+		// Held at 1 for picture subtitles, it isn't the size asked for.
+		if !s.subScale.Image() {
+			st.SubtitleSize = subtitleSize(number(v))
+		}
 	case "sub-text":
 		st.SubtitleText, _ = v.(string)
 	case "secondary-sub-text":

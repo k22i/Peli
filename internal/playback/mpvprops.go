@@ -174,8 +174,9 @@ func SubtitleSizeName(scale float64) string {
 	return ""
 }
 
-// ImageSubtitle reports whether a subtitle codec is pictures (Blu-ray, DVD),
-// which have no text to draw as the second line.
+// ImageSubtitle reports whether a subtitle codec is pictures (Blu-ray PGS,
+// DVD, DVB), not text. mpv can't restyle a picture: no font, colour or edge
+// reaches it, and there is no text in it to draw as the second line.
 func ImageSubtitle(codec string) bool {
 	switch codec {
 	case "hdmv_pgs_subtitle", "dvd_subtitle", "dvb_subtitle", "dvb_teletext", "xsub":

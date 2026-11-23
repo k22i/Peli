@@ -66,7 +66,10 @@ func (s *Service) SetSubtitleStyle(style SubtitleStyle) error {
 	if !style.Valid() {
 		return ErrInvalid
 	}
-	for _, p := range styleProps(style) {
+	s.mu.Lock()
+	props := s.subScale.Props(styleProps(style))
+	s.mu.Unlock()
+	for _, p := range props {
 		if err := s.set(p[0], p[1]); err != nil {
 			return err
 		}
