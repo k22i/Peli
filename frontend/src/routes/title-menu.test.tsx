@@ -240,6 +240,8 @@ describe("title menu", () => {
     fireEvent.contextMenu(await within(region).findByRole("button", { name: /Heat/ }));
     await user.click(await screen.findByRole("menuitem", { name: "Choose a stream…" }));
     expect(router.state.location.pathname).toBe("/streams/movie/tt0113277");
+    // It asks for the list: a profile that autoplays shows it all the same.
+    expect(router.state.location.search).toMatchObject({ choose: true });
 
     await router.navigate({ to: "/" });
     const again = await screen.findByRole("region", { name: "Your library" });

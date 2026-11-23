@@ -786,15 +786,16 @@ function PlayerFile({
   // A menu the dock no longer shows (the mini player, a failure) is closed.
   const dockMenuOpen = (speedOpen || moreOpen) && ready && !mini;
   const known = state.duration > 0;
-  // The picker for the next episode, in place of this screen: no stream
-  // was found or would open.
-  const chooseNext = () => {
+  // The picker for the next episode, in place of this screen: it wasn't
+  // ready yet, or (`choose`) no stream was found or would open, so the list
+  // shows even for a profile that autoplays.
+  const chooseNext = (choose = false) => {
     if (!meta || !next) return leave();
     const nextTarget = episodeTarget(meta, next);
     void navigate({
       to: streamsPath,
       params: { type: nextTarget.type, id: nextTarget.id },
-      search: streamsSearch({ video: nextTarget.videoId }),
+      search: streamsSearch({ video: nextTarget.videoId, choose }),
       state: (current) => ({ ...current, play: nextTarget }),
       replace: true,
     });
@@ -817,7 +818,7 @@ function PlayerFile({
   // from where it was left, in the languages playing now.
   const playNext = async (prepared: PreparedNext) => {
     if (!meta || !next || (prepared.status !== "ready" && prepared.status !== "downloaded"))
-      return chooseNext();
+      return chooseNext(prepared.status === "none");
     const controller = new AbortController();
     switchAbort.current = controller;
     switching.current = true;
@@ -892,7 +893,7 @@ function PlayerFile({
         }),
       });
     } catch {
-      if (!controller.signal.aborted) chooseNext();
+      if (!controller.signal.aborted) chooseNext(true);
     }
   };
   // Loads a resolved stream into this session at `at` and brings the screen

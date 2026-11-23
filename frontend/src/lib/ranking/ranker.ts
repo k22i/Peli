@@ -68,6 +68,9 @@ export class RankingSession {
   readonly #slices: { source: string; streams: Stream[] }[] = [];
   #pinned = false;
   #candidates = new Map<string, Candidate>();
+  // What the engine hasn't answered yet, in order: each add and pin gets
+  // one view back. Until no add is, the view is behind what was added.
+  #owed: Request["kind"][] = [];
 
   constructor(ctx: TitleContext, prefs: Prefs, onView: (view: RankedView, ms: number) => void) {
     this.#ctx = ctx;
@@ -85,13 +88,21 @@ export class RankingSession {
     const slice = { source, streams: [...streams] };
     this.#slices.push(slice);
     for (const stream of streams) this.#arrived.push({ source, stream });
+    this.#owed.push("add");
     connect().post({ kind: "add", session: this.#id, ...slice });
+  }
+
+  // How many added slices the view hasn't ranked yet. A pin isn't one: it
+  // only keeps the top pick where it is.
+  get waiting() {
+    return this.#owed.filter((kind) => kind === "add").length;
   }
 
   // The user started navigating: keep the highlighted pick where it is.
   pin() {
     if (this.#pinned) return;
     this.#pinned = true;
+    this.#owed.push("pin");
     connect().post({ kind: "pin", session: this.#id });
   }
 
@@ -103,6 +114,9 @@ export class RankingSession {
   // Sends everything again, to a new engine.
   replay() {
     this.#candidates = new Map();
+    // The old engine's answers aren't coming: everything is sent again.
+    this.#owed = this.#slices.map(() => "add" as const);
+    if (this.#pinned) this.#owed.push("pin");
     this.#open();
     for (const slice of this.#slices) {
       connect().post({ kind: "add", session: this.#id, ...slice });
@@ -111,6 +125,7 @@ export class RankingSession {
   }
 
   receive(update: Update) {
+    this.#owed.shift();
     for (const ranked of update.changed) this.#candidates.set(ranked.key, this.#hydrate(ranked));
     const known = (key: string) => this.#candidates.get(key)!;
     this.#onView(

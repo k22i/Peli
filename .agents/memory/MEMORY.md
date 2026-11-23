@@ -108,6 +108,6 @@
 - [Local Node version](local-node-version.md) — nvm Node 26.3 in login shells; agent shells without nvm get Homebrew 24.9, which fails subtitles.test.ts on Intl.Locale("und")
 - [Downloads](downloads.md) — #85/ADR-0064: internal/downloads + Platform seam, downloads bucket (migration 5), three events, lib/downloads.ts; one job, one re-resolve, no torrents, kids filter, beginBackgroundTask only, Wi-Fi gate; test gotchas and the untested device checklist
 - [Device subtitles](device-subtitles.md) — DeviceSettings.subtitles always + style, smartSubtitle, off = sub-visibility=no (mpv refresh-seeks on embedded sid select)
-- [Preferred quality and autoplay](preferred-quality-autoplay.md) — profile preferredQuality (soft, under the cap: abovePreferred + tierOrder) and autoplayTopPick (useAutoplay, `choose` in the address)
+- [Preferred quality and autoplay](preferred-quality-autoplay.md) — profile preferredQuality (soft, under the cap: abovePreferred + tierOrder) and autoplayTopPick (useAutoplay status screen, never the list while it runs; `caughtUp` in answered; `choose` in the address)
 - [iOS auto-crop](ios-autocrop.md) — "Remove black bars" on iOS: playback/autocrop.go shared, iosplayer/autocrop.go + mpv.commandResult, loads counter, iPhone no frame above 1920×1088, lock order
 - [iOS player adjustments](ios-player-adjustments.md) — 2026-11-23 Picture & sound sheet on iOS: playback/adjust.go shared rules, iosplayer subset, per-part features, what stays desktop-only and why

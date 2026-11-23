@@ -13,6 +13,7 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
+  List as ListIcon,
   Puzzle,
   RotateCw,
   Users,
@@ -50,6 +51,7 @@ import {
   type StreamsSearch,
 } from "@/lib/playback";
 import { currentProfileQuery } from "@/lib/profile";
+import { profileSettingsQuery } from "@/lib/settings";
 import { runtimeMinutes, type Candidate } from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
 import { Party, partyWatches, useParty } from "@/lib/party";
@@ -124,11 +126,14 @@ function PageHeader({
   episode,
   backdrop,
   steps,
+  eyebrow = "Choose a source",
 }: {
   title: string;
   episode?: string | undefined;
   backdrop?: string | undefined;
   steps?: EpisodeStepsProps | undefined;
+  // What the page is for, over the title (not on the phone).
+  eyebrow?: string;
 }) {
   useArtUnderBar(backdrop !== undefined);
   const compact = useCompactShell();
@@ -196,7 +201,7 @@ function PageHeader({
         <BackButton overArt={backdrop !== undefined} />
         <div className="flex min-w-0 flex-col gap-2">
           <p className={cn("type-eyebrow", backdrop ? "text-[#ffc46b]" : "text-sun-ink")}>
-            Choose a source
+            {eyebrow}
           </p>
           <h1 className="type-display text-balance">{title}</h1>
           {episode && <p className="text-[0.9375rem] text-foreground/75">{episode}</p>}
@@ -302,7 +307,7 @@ function Picker({
     device,
     view,
     ranked,
-    pin: pinRanked,
+    pin,
     rows,
     toggleGroup,
     refresh,
@@ -310,14 +315,12 @@ function Picker({
     filtering,
     sourceFilter,
   } = useStreamChoices(profile.id, type, target.id, video, target.title);
-  // Autoplay stands down when the user gets there first: `pin` is what the
-  // list calls as soon as the user moves into it, or plays something. State,
-  // not a ref: the status line has to follow it.
-  const [autoplayStopped, setAutoplayStopped] = useState(false);
-  const pin = () => {
-    if (!autoplayStopped) setAutoplayStopped(true);
-    pinRanked();
-  };
+  // Until the profile's settings say whether it autoplays, nothing is shown
+  // that the autoplay would hide: the list mustn't flash first.
+  const settingsPending = useQuery(profileSettingsQuery(profile.id)).isPending;
+  // `choose` as the picker was opened: the autoplay puts it in the address
+  // itself as it starts, and that mustn't stop it.
+  const [chooseAtOpen] = useState(choose);
   const client = useQueryClient();
   // "Start cached streams sooner" (#101, ADR-0060): the top pick resolves
   // while the user looks, when it's a cached debrid stream. Never for a
@@ -377,14 +380,16 @@ function Picker({
       replace: true,
     });
   };
-  const header = (
+  const headerWith = (eyebrow?: string) => (
     <PageHeader
       title={target.title}
       episode={playerHeading(meta, video, target.title).episode}
       backdrop={backdrop}
       steps={{ previous: near.previous, next: near.next, go: goTo }}
+      {...(eyebrow && { eyebrow })}
     />
   );
+  const header = headerWith();
   // Where it was left may have moved on another device: pull while the
   // user picks (Go skips it if it pulled in the last half minute).
   useEffect(() => {
@@ -393,18 +398,40 @@ function Picker({
 
   // Resolving the pick (#53): one at a time, so a second pick replaces the
   // first, and none once the picker is left.
-  const opening = useRef<{ controller: AbortController; toast: string }>(null);
-  useEffect(
-    () => () => {
-      if (!opening.current) return;
-      opening.current.controller.abort();
-      toastManager.close(opening.current.toast);
-    },
-    [],
-  );
+  const opening = useRef<{ cancel: () => void }>(null);
+  useEffect(() => () => opening.current?.cancel(), []);
+  const openSettings = () => void navigate({ to: "/settings", search: { section: "streaming" } });
+  // A pick the user made says how it's going in a toast, with Cancel.
+  const toastReport = (title: string, cancel: () => void): OpeningReport => {
+    const toast = toastManager.add({
+      type: "loading",
+      title,
+      timeout: 0,
+      actionProps: { children: "Cancel", onClick: cancel },
+    });
+    return {
+      status: (description) => toastManager.update(toast, { description }),
+      failed: (notice) =>
+        toastManager.update(toast, {
+          type: "error",
+          title: notice.title,
+          description: notice.description,
+          timeout: 8000,
+          // Cancel goes; Open Settings stays for a torrent.
+          actionProps: notice.settings
+            ? { children: "Open Settings", onClick: openSettings }
+            : undefined,
+        }),
+      close: () => toastManager.close(toast),
+    };
+  };
+  const cantStart: PickNotice = {
+    title: `Can’t play ${target.title}`,
+    description: "Peli’s player couldn’t start. Try again, or restart Peli.",
+  };
   // A finished download of this video plays as it is, whatever was picked:
   // no resolve, no network (ADR-0064).
-  const playDownloaded = async (playable: Playable) => {
+  const playDownloaded = async (playable: Playable, report?: OpeningReport) => {
     const partyAt = forParty ? await Party.StartAt(forParty.media).catch(() => -1) : -1;
     try {
       const player = await loadDownloaded({
@@ -423,43 +450,34 @@ function Picker({
         replace: isIOS(),
         state: (state) => ({ ...state, player }),
       });
+      return "played";
     } catch {
-      toastManager.add({
-        type: "error",
-        title: `Can’t play ${target.title}`,
-        description: "Peli’s player couldn’t start. Try again, or restart Peli.",
-        timeout: 8000,
-      });
+      if (report) report.failed(cantStart);
+      else toastManager.add({ type: "error", ...cantStart, timeout: 8000 });
+      return "failed";
     }
   };
-  const pick = (candidate: Candidate) => {
+  // Plays a stream: the user's pick, or the autoplay's, which says how it's
+  // going on its own screen (`report`) rather than in a toast.
+  const pick = async (candidate: Candidate, report?: OpeningReport): Promise<PickOutcome> => {
     pin();
-    void client
-      .fetchQuery(playableQuery(profile.id, video))
-      .catch(() => null)
-      .then((playable) => (playable ? playDownloaded(playable) : pickStream(candidate)));
+    const playable = await client.fetchQuery(playableQuery(profile.id, video)).catch(() => null);
+    return playable ? playDownloaded(playable, report) : pickStream(candidate, report);
   };
-  const pickStream = (candidate: Candidate) => {
-    pin();
-    if (opening.current) {
-      opening.current.controller.abort();
-      toastManager.close(opening.current.toast);
-    }
+  const pickStream = async (candidate: Candidate, report?: OpeningReport): Promise<PickOutcome> => {
+    opening.current?.cancel();
     const controller = new AbortController();
     const quality = resolutionLabel(candidate.parsed) ?? "the stream";
     // Cancel stops the resolve and leaves the picker as it was.
     const cancel = () => {
       controller.abort();
-      toastManager.close(toast);
+      out.close();
       if (opening.current === current) opening.current = null;
     };
-    const toast = toastManager.add({
-      type: "loading",
-      title: `Opening ${quality} from ${names.get(candidate.source) ?? "an addon"}…`,
-      timeout: 0,
-      actionProps: { children: "Cancel", onClick: cancel },
-    });
-    const current = { controller, toast };
+    const out =
+      report ??
+      toastReport(`Opening ${quality} from ${names.get(candidate.source) ?? "an addon"}…`, cancel);
+    const current = { cancel };
     opening.current = current;
     // A torrent takes a while to find peers: say how it's going.
     let settled = false;
@@ -469,137 +487,142 @@ function Picker({
             Torrents.Status()
               .then((status) => {
                 if (settled || !status.active) return;
-                toastManager.update(toast, { description: torrentStatusText(status) });
+                out.status(torrentStatusText(status));
               })
               .catch(() => {});
           }, 1000)
         : undefined;
-    // The top pick may have resolved already (#101); if that failed, it
-    // resolves now, with its copies.
-    const resolveNow = () => resolvePick(candidate, { refresh, signal: controller.signal });
-    const early = ahead.take(candidate);
-    const resolving = early
-      ? early.catch(() => {
-          controller.signal.throwIfAborted();
-          return resolveNow();
-        })
-      : resolveNow();
-    resolving
-      .finally(() => {
+    try {
+      // The top pick may have resolved already (#101); if that failed, it
+      // resolves now, with its copies.
+      const resolveNow = () => resolvePick(candidate, { refresh, signal: controller.signal });
+      const early = ahead.take(candidate);
+      let resolved;
+      try {
+        resolved = await (early
+          ? early.catch(() => {
+              controller.signal.throwIfAborted();
+              return resolveNow();
+            })
+          : resolveNow());
+      } catch (error) {
+        if (controller.signal.aborted) return "cancelled";
+        const failed =
+          error instanceof PlayError
+            ? error
+            : new PlayError("unreachable", candidate.parsed.debrid);
+        out.failed({
+          title: failed.message,
+          description: failed.description,
+          settings: failed.kind === "torrent",
+        });
+        return "failed";
+      } finally {
         settled = true;
         clearInterval(statusTimer);
-      })
-      .then(
-        async ({ source, attempt }) => {
-          if (controller.signal.aborted) return;
-          // Where it was left, as the store has it now (#64); if the store
-          // can't say, where the card said (resumeAt is in ms).
-          const progress = await client
-            .fetchQuery({ ...titleProgressQuery(profile.id, target.id), staleTime: 0 })
-            .catch(() => undefined);
-          if (controller.signal.aborted) return;
-          const watching = watchingFor(profile.id, target, meta, progress ?? []);
-          const partyAt = forParty ? await Party.StartAt(forParty.media).catch(() => -1) : -1;
-          if (controller.signal.aborted) return;
-          const start =
-            partyAt >= 0
-              ? partyAt
-              : target.startOver
-                ? 0
-                : progress
-                  ? resumePoint(progress, watching)
-                  : (target.resumeAt ?? 0) / 1000;
-          // The player (#60) takes it from here, in the profile's languages
-          // (#62), keeping its progress as it plays (#64).
-          void Player.Load(source, loadOptions(start, settings, [], watching)).then(
-            () => {
-              toastManager.close(toast);
-              // What played is the show's source now (#58), the top pick or
-              // not: the next episode starts from it.
-              rememberSource(client, profile.id, type, target.id, candidate, attempt);
-              void navigate({
-                to: "/player",
-                // iOS: the player takes the picker's place, so Back and
-                // close land on the title.
-                replace: isIOS(),
-                state: (state) => ({
-                  ...state,
-                  player: playerState({
-                    heading: playerHeading(meta, video, target.title),
-                    source,
-                    watching,
-                    start,
-                    stream: attempt.stream,
-                    subtitles: subtitleTarget(
-                      type,
-                      video,
-                      attempt.stream,
-                      names.get(attempt.source) ?? "",
-                    ),
-                  }),
-                }),
-              });
-            },
-            () => {
-              toastManager.update(toast, {
-                type: "error",
-                title: `Can’t play ${target.title}`,
-                description: "Peli’s player couldn’t start. Try again, or restart Peli.",
-                timeout: 8000,
-                actionProps: undefined,
-              });
-            },
-          );
-        },
-        (error: unknown) => {
-          if (controller.signal.aborted) return;
-          const failed =
-            error instanceof PlayError
-              ? error
-              : new PlayError("unreachable", candidate.parsed.debrid);
-          toastManager.update(toast, {
-            type: "error",
-            title: failed.message,
-            description: failed.description,
-            timeout: 8000,
-            // Cancel goes; Open Settings stays for a torrent.
-            actionProps:
-              failed.kind === "torrent"
-                ? {
-                    children: "Open Settings",
-                    onClick: () =>
-                      void navigate({ to: "/settings", search: { section: "streaming" } }),
-                  }
-                : undefined,
-          });
-        },
-      )
-      .finally(() => {
-        if (opening.current === current) opening.current = null;
+      }
+      const { source, attempt } = resolved;
+      if (controller.signal.aborted) return "cancelled";
+      // Where it was left, as the store has it now (#64); if the store
+      // can't say, where the card said (resumeAt is in ms).
+      const progress = await client
+        .fetchQuery({ ...titleProgressQuery(profile.id, target.id), staleTime: 0 })
+        .catch(() => undefined);
+      if (controller.signal.aborted) return "cancelled";
+      const watching = watchingFor(profile.id, target, meta, progress ?? []);
+      const partyAt = forParty ? await Party.StartAt(forParty.media).catch(() => -1) : -1;
+      if (controller.signal.aborted) return "cancelled";
+      const start =
+        partyAt >= 0
+          ? partyAt
+          : target.startOver
+            ? 0
+            : progress
+              ? resumePoint(progress, watching)
+              : (target.resumeAt ?? 0) / 1000;
+      // The player (#60) takes it from here, in the profile's languages
+      // (#62), keeping its progress as it plays (#64).
+      try {
+        await Player.Load(source, loadOptions(start, settings, [], watching));
+      } catch {
+        out.failed(cantStart);
+        return "failed";
+      }
+      out.close();
+      // What played is the show's source now (#58), the top pick or not:
+      // the next episode starts from it.
+      rememberSource(client, profile.id, type, target.id, candidate, attempt);
+      void navigate({
+        to: "/player",
+        // iOS: the player takes the picker's place, so Back and close land
+        // on the title.
+        replace: isIOS(),
+        state: (state) => ({
+          ...state,
+          player: playerState({
+            heading: playerHeading(meta, video, target.title),
+            source,
+            watching,
+            start,
+            stream: attempt.stream,
+            subtitles: subtitleTarget(type, video, attempt.stream, names.get(attempt.source) ?? ""),
+          }),
+        }),
       });
+      return "played";
+    } finally {
+      if (opening.current === current) opening.current = null;
+    }
   };
-  // P plays the top pick. A guest has nothing of their own to play, so the
-  // key does nothing for one: the hook still runs, so every hook keeps its
-  // place.
-  usePlayKey(guest ? null : view.top, pick);
+  const pickFromList = (candidate: Candidate) => void pick(candidate);
 
   // Autoplay (profile setting): once every source has answered, the top
-  // pick plays by itself, once per visit. The address gets `choose` first
-  // (replace), so Back from the player shows the list instead of
-  // autoplaying again. Not for a guest (the party picks), nor when the
-  // user has already started choosing.
+  // pick plays by itself, once per visit, and the list is never shown on
+  // the way: a status screen is, with "Choose myself" for the list. Not for
+  // a guest (the party picks), nor when the address asks for the list.
   const autoplay = useAutoplay({
-    enabled: settings?.autoplayTopPick === true && !choose && !guest,
+    enabled: settings?.autoplayTopPick === true && !chooseAtOpen && !guest,
     answered,
     top: view.top,
-    pick,
-    stopped: autoplayStopped,
-    onStop: () => setAutoplayStopped(true),
+    names,
+    play: pick,
+    cancelOpening: () => opening.current?.cancel(),
   });
+
+  // P plays the top pick. A guest has nothing of their own to play, and
+  // while the autoplay is at it there's nothing to press it over, so the key
+  // does nothing then: the hook still runs, so every hook keeps its place.
+  usePlayKey(guest || autoplay.screen ? null : view.top, pickFromList);
 
   // The guest's page, in every state: no list, no filters, no jump strip, and
   // no addons notice either — the status says when nothing opened.
   if (guest) return <GuestPick header={header} pick={guestPick} />;
+
+  // Not known yet whether the profile autoplays: nothing it would hide.
+  if (settingsPending && !chooseAtOpen) {
+    return (
+      <>
+        {header}
+        <Asking />
+      </>
+    );
+  }
+
+  // The profile autoplays: what it's doing, in place of the list.
+  if (autoplay.screen && (sources.length > 0 || loading)) {
+    return (
+      <AutoplayPick
+        header={headerWith("Playing the top pick")}
+        status={autoplay.screen}
+        detail={
+          autoplay.screen.kind === "finding"
+            ? findingText(sources, loading, ranked.total)
+            : autoplay.screen.detail
+        }
+        chooseMyself={autoplay.chooseMyself}
+      />
+    );
+  }
 
   if (sources.length === 0) {
     if (loading) {
@@ -657,29 +680,15 @@ function Picker({
         shown={view.total}
         filter={sourceFilter}
       />
-      {/* The profile autoplays the top pick, and the streams are still
-          coming in: say so, and give the user a way out of it. */}
-      {autoplay.waiting && (
-        <div className="flex flex-wrap items-center gap-3 px-page">
-          <output className="text-body text-muted-foreground">
-            Playing the top pick when the streams are in
-          </output>
-          <Button
-            size="sm"
-            variant="secondary"
-            className="rounded-full"
-            onClick={autoplay.chooseMyself}
-          >
-            Choose myself
-          </Button>
-        </div>
-      )}
+      {/* The autoplay found nothing to play, or it wouldn't open: the list,
+          and why it's here. */}
+      {autoplay.notice && <AutoplayNotice notice={autoplay.notice} openSettings={openSettings} />}
       <StreamList
         rows={rows}
         runtime={runtimeMinutes(meta?.runtime) ?? null}
         names={names}
         onNavigate={pin}
-        onPick={pick}
+        onPick={pickFromList}
         onToggleGroup={toggleGroup}
         usual={usual}
         {...filteredListProps(filtering, view)}
@@ -717,11 +726,7 @@ function PartySources() {
 // (Ambient and the centred column), sized to what the page's header leaves
 // rather than to the whole window.
 function GuestPick({ header, pick }: { header: ReactNode; pick: PartyPick }) {
-  const router = useRouter();
-  const navigate = useNavigate();
-  const canGoBack = useCanGoBack();
-  // Back leaves the party's picker, as the page's own Back does.
-  const back = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
+  const back = useLeave();
   const failed = pick.status === "failed";
   // What Peli is doing: finding the host's stream, opening it, or neither
   // worked, which is the one state with buttons.
@@ -733,54 +738,186 @@ function GuestPick({ header, pick }: { header: ReactNode; pick: PartyPick }) {
   const detail = failed
     ? "None of your addons opened the party’s stream. Try again, or leave the party and pick one of your own."
     : "Peli plays the party’s stream, so you see exactly what they do.";
-  // The page's own bottom padding comes off the height, so the status fills
-  // the window and the page doesn't scroll for it. The header is the page's,
-  // not the status's: `data-slot="party-pick"` names the status alone, so a
-  // caller can find the status without the header's Back.
+  return (
+    <PickScreen header={header} slot="party-pick" label="Watch party">
+      <div aria-live="polite" className="flex flex-col items-center gap-3">
+        {failed ? (
+          <AlertCircle aria-hidden className="size-9 text-sun" />
+        ) : (
+          <Users aria-hidden className="size-9 text-sun" />
+        )}
+        <h2 className="font-display text-[2rem] leading-tight text-balance">{heading}</h2>
+        <p className="max-w-sm text-[0.9375rem] text-pretty text-muted-foreground">{detail}</p>
+      </div>
+      {failed && (
+        <div className="flex w-full flex-col gap-3">
+          <Button
+            size="lg"
+            variant="sun"
+            className={cn(pillButton, "pointer-coarse:min-h-11")}
+            onClick={pick.retry}
+          >
+            <RotateCw />
+            Try again
+          </Button>
+          <Button
+            size="lg"
+            variant="ghost"
+            className={cn(pillButton, glassButton, "pointer-coarse:min-h-11")}
+            onClick={back}
+          >
+            <ChevronLeft />
+            Back
+          </Button>
+        </div>
+      )}
+    </PickScreen>
+  );
+}
+
+// Back as the page's own Back: where the user came from, or Home.
+function useLeave() {
+  const router = useRouter();
+  const navigate = useNavigate();
+  const canGoBack = useCanGoBack();
+  return () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
+}
+
+// A status in place of the list, in the FocusScreen's look (Ambient and the
+// centred column), sized to what the page's header leaves rather than to the
+// whole window. The page's own bottom padding comes off the height, so the
+// status fills the window and the page doesn't scroll for it. The header is
+// the page's, not the status's: `slot` names the status alone, so a caller
+// can find the status without the header's Back.
+function PickScreen({
+  header,
+  slot,
+  label,
+  children,
+}: {
+  header: ReactNode;
+  slot: string;
+  label: string;
+  children: ReactNode;
+}) {
   return (
     <div className="relative isolate flex min-h-[calc(100dvh-var(--spacing-bar)-4rem)] flex-col">
       <Ambient tone="sun" />
       {header}
       <section
-        data-slot="party-pick"
-        aria-label="Watch party"
+        data-slot={slot}
+        aria-label={label}
         className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center"
       >
-        <div aria-live="polite" className="flex flex-col items-center gap-3">
-          {failed ? (
-            <AlertCircle aria-hidden className="size-9 text-sun" />
-          ) : (
-            <Users aria-hidden className="size-9 text-sun" />
-          )}
-          <h2 className="font-display text-[2rem] leading-tight text-balance">{heading}</h2>
-          <p className="max-w-sm text-[0.9375rem] text-pretty text-muted-foreground">{detail}</p>
-        </div>
-        {failed && (
-          <div className="flex w-full flex-col gap-3">
-            <Button
-              size="lg"
-              variant="sun"
-              className={cn(pillButton, "pointer-coarse:min-h-11")}
-              onClick={pick.retry}
-            >
-              <RotateCw />
-              Try again
-            </Button>
-            <Button
-              size="lg"
-              variant="ghost"
-              className={cn(pillButton, glassButton, "pointer-coarse:min-h-11")}
-              onClick={back}
-            >
-              <ChevronLeft />
-              Back
-            </Button>
-          </div>
-        )}
+        {children}
       </section>
     </div>
   );
 }
+
+// The autoplay's page: finding the top pick, then opening it. The list is
+// one press away ("Choose myself" while it looks, Cancel while it opens),
+// and the header's Back leaves.
+function AutoplayPick({
+  header,
+  status,
+  detail,
+  chooseMyself,
+}: {
+  header: ReactNode;
+  status: AutoplayScreen;
+  detail: string | undefined;
+  chooseMyself: () => void;
+}) {
+  const heading = status.kind === "finding" ? "Finding the best stream…" : status.title;
+  return (
+    <PickScreen header={header} slot="autoplay" label="Autoplay">
+      <div className="flex flex-col items-center gap-3">
+        <Spinner aria-hidden className="size-9 text-sun" />
+        <output className="flex flex-col items-center gap-3">
+          <span className="font-display text-[2rem] leading-tight text-balance">{heading}</span>
+          <span className="max-w-sm text-[0.9375rem] text-pretty text-muted-foreground">
+            {detail ?? "Peli plays the top pick for you."}
+          </span>
+        </output>
+      </div>
+      <Button
+        size="lg"
+        variant="ghost"
+        className={cn(pillButton, glassButton, "w-full pointer-coarse:min-h-11")}
+        onClick={chooseMyself}
+      >
+        {status.kind === "finding" ? (
+          <>
+            <ListIcon />
+            Choose myself
+          </>
+        ) : (
+          "Cancel"
+        )}
+      </Button>
+    </PickScreen>
+  );
+}
+
+// What the autoplay has heard so far, under "Finding the best stream…".
+function findingText(sources: StreamSource[], loading: boolean, total: number) {
+  const waiting = sources.filter((source) => source.status === "pending").length;
+  const plural = sources.some((source) => source.kind === "plugin") ? "sources" : "addons";
+  const streams = total === 1 ? "1 stream" : `${total} streams`;
+  if (waiting > 0)
+    return `${streams} so far, ${waiting} of ${sources.length} ${plural} still answering`;
+  if (loading || sources.length === 0) return `Asking your ${plural}…`;
+  return `${streams} in, choosing the best`;
+}
+
+// Why the list is showing after all: the autoplay found nothing to play, or
+// what it picked wouldn't open.
+function AutoplayNotice({
+  notice,
+  openSettings,
+}: {
+  notice: PickNotice;
+  openSettings: () => void;
+}) {
+  return (
+    <div className="mx-page flex items-start gap-3 rounded-2xl bg-sun/10 px-5 py-4">
+      <AlertCircle aria-hidden className="mt-0.5 size-5 shrink-0 text-sun-ink" />
+      <output className="flex min-w-0 flex-1 flex-col gap-0.5">
+        <span className="text-body font-[590]">{notice.title}</span>
+        <span className="text-small text-muted-foreground">{notice.description}</span>
+      </output>
+      {notice.settings && (
+        <Button
+          size="sm"
+          variant="secondary"
+          className="shrink-0 rounded-full"
+          onClick={openSettings}
+        >
+          Open Settings
+        </Button>
+      )}
+    </div>
+  );
+}
+
+// What a pick came to: the player opened, it failed (and said why), or it
+// was cancelled (or the picker was left).
+type PickOutcome = "played" | "failed" | "cancelled";
+
+// What a failed pick says: a toast's title and description, or the notice
+// above the list after an autoplay. `settings` offers Open Settings (a
+// torrent that wouldn't open).
+type PickNotice = { title: string; description: string; settings?: boolean };
+
+// Where a pick that's opening says how it's going.
+type OpeningReport = {
+  // A torrent's peers, as they come.
+  status: (description: string) => void;
+  failed: (notice: PickNotice) => void;
+  // It opened, or was cancelled.
+  close: () => void;
+};
 
 // How many streams so far, and each addon's (and plugin's) answer, with Try
 // again on one that failed.
@@ -877,59 +1014,98 @@ const typing = (target: EventTarget | null) =>
   target instanceof HTMLElement &&
   (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
 
+// The autoplay's screen: still waiting on the sources, or opening the top
+// pick (with a torrent's peers as they come).
+type AutoplayScreen =
+  | { kind: "finding" }
+  | { kind: "opening"; candidate: Candidate; title: string; detail?: string };
+
+const nothingToPlay: PickNotice = {
+  title: "Nothing to play by itself",
+  description: "Peli couldn’t find a stream to start for you. Here’s what your addons sent.",
+};
+
+// What the autoplay is at. `list` is where it ends unless the player opens:
+// the user chose, cancelled, or there was nothing to play (`notice` says).
+type AutoplayStatus = AutoplayScreen | { kind: "list"; notice?: PickNotice };
+
 // Autoplay (profile setting): once every source has answered, the top
-// pick plays by itself, once per visit. The address gets `choose` first
-// (replace), so Back from the player shows the list instead of
-// autoplaying again. Not for a guest (the party picks), nor when the
-// user has already started choosing.
+// pick plays by itself, once per visit, and the list stays hidden until it
+// either opens (the player takes over) or doesn't (the list, with a
+// notice). The address gets `choose` as it starts (replace), so Back from
+// the player shows the list instead of autoplaying again.
 function useAutoplay({
   enabled,
   answered,
   top,
-  pick,
-  stopped,
-  onStop,
+  names,
+  play,
+  cancelOpening,
 }: {
   enabled: boolean;
   answered: boolean;
   top: Candidate | null;
-  pick: (candidate: Candidate) => void;
-  // Set when the user gets there first: a key or a click in the list, as
-  // `pin` reports, or "Choose myself".
-  stopped: boolean;
-  // "Choose myself": the user is choosing, so the profile stands down.
-  onStop: () => void;
+  names: ReadonlyMap<string, string>;
+  play: (candidate: Candidate, report: OpeningReport) => Promise<PickOutcome>;
+  // Stops the pick that's opening, if any.
+  cancelOpening: () => void;
 }) {
   const navigate = useNavigate();
-  // The latest of both, as `usePlayKey` keeps its own: the effect fires
+  // The latest of each, as `usePlayKey` keeps its own: the effect fires
   // once, so it must play what pick is now, not what it was then.
-  const latest = useRef({ pick, navigate });
+  const latest = useRef({ play, navigate });
   useLayoutEffect(() => {
-    latest.current = { pick, navigate };
+    latest.current = { play, navigate };
   });
-  const fired = useRef(false);
-  // Fired or stopped: the status line goes with it.
-  const [done, setDone] = useState(false);
+  const [status, setStatus] = useState<AutoplayStatus>({ kind: "finding" });
+  // Every source has answered and the ranking has caught up: the top pick
+  // opens, or with none there's nothing to play. Set while rendering, so
+  // the screen never gives way to the list for a frame on the way.
+  if (enabled && answered && status.kind === "finding") {
+    if (top) {
+      const quality = resolutionLabel(top.parsed) ?? "the top pick";
+      setStatus({
+        kind: "opening",
+        candidate: top,
+        title: `Opening ${quality} from ${names.get(top.source) ?? "an addon"}…`,
+      });
+    } else {
+      setStatus({ kind: "list", notice: nothingToPlay });
+    }
+  }
+  // The pick to open, once.
+  const opening = status.kind === "opening" ? status.candidate : null;
+  const started = useRef<Candidate>(null);
   useEffect(() => {
-    if (!enabled || !answered || !top || stopped) return;
-    if (fired.current) return;
-    fired.current = true;
-    setDone(true);
-    const { pick: play, navigate: go } = latest.current;
+    if (!opening || started.current) return;
+    started.current = opening;
+    const { play: start, navigate: go } = latest.current;
     // The list stays reachable, and doesn't autoplay again on the way back.
     void go({
       to: ".",
       search: (previous: StreamsSearch): StreamsSearch => ({ ...previous, choose: true }),
       replace: true,
     });
-    play(top);
-  }, [enabled, answered, top, stopped]);
+    void start(opening, {
+      status: (detail) =>
+        setStatus((current) => (current.kind === "opening" ? { ...current, detail } : current)),
+      failed: (notice) => setStatus({ kind: "list", notice }),
+      close: () => {},
+    }).then((outcome) => {
+      if (outcome === "cancelled")
+        setStatus((current) => (current.kind === "list" ? current : { kind: "list" }));
+    });
+  }, [opening]);
   return {
-    // Waiting on the streams, and still going to play the top pick.
-    waiting: enabled && !answered && !stopped && !done,
+    // What to show in place of the list, or null for the list.
+    screen: enabled && status.kind !== "list" ? status : null,
+    // Why the list is showing after all.
+    notice: enabled && status.kind === "list" ? status.notice : undefined,
+    // "Choose myself" and Cancel: the user is choosing, so the profile
+    // stands down, and what it was opening stops.
     chooseMyself: () => {
-      setDone(true);
-      onStop();
+      cancelOpening();
+      setStatus({ kind: "list" });
     },
   };
 }
