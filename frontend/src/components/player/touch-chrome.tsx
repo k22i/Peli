@@ -14,6 +14,7 @@ import {
   Minus,
   Moon,
   Plus,
+  SlidersHorizontal,
   Sun,
   Users,
   Volume2,
@@ -268,15 +269,16 @@ function SpeedItems({ picked, onChange }: { picked: number; onChange: (speed: nu
   );
 }
 
-// The top row's More (•••): Speed when there's no bottom row for it, the
-// sleep timer and the playback stats. "Report a problem" (#127's Share logs)
-// joins it once that's built.
+// The top row's More (•••): the Picture & sound sheet, Speed when there's no
+// bottom row for it, the sleep timer and the playback stats. "Report a
+// problem" (#127's Share logs) joins it once that's built.
 export function TouchMoreMenu({
   open,
   onOpenChange,
   speed,
   sleep,
   stats,
+  onPicture,
   shortcuts,
   onReport,
 }: {
@@ -286,6 +288,8 @@ export function TouchMoreMenu({
   speed?: { speed: number; onChange: (speed: number) => void } | undefined;
   sleep: SleepProps;
   stats: { open: boolean; onToggle: () => void };
+  // "Picture and sound": the sheet the desktop dock has its own button for.
+  onPicture?: (() => void) | undefined;
   // "Keyboard shortcuts": the list (shortcuts.tsx), while an iPad has a
   // hardware keyboard attached (#138). iPadOS's own ⌘-hold list only shows
   // UIKeyCommands, and Peli's keys live in the webview.
@@ -315,6 +319,11 @@ export function TouchMoreMenu({
           </PlayerSubmenu>
           <PlayerMenuSeparator />
         </>
+      )}
+      {onPicture && (
+        <PlayerMenuItem icon={<SlidersHorizontal aria-hidden />} onClick={onPicture}>
+          Picture and sound
+        </PlayerMenuItem>
       )}
       <PlayerSubmenu icon={<Moon aria-hidden />} label="Sleep timer" hint={sleep.hint ?? "Off"}>
         <PlayerMenuRadioGroup label="Sleep timer" value={sleep.choice} onChange={sleep.onChange}>

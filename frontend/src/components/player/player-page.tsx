@@ -1870,7 +1870,8 @@ function PlayerFile({
   const audioDevices = useQuery({
     queryKey: ["player", "audio-devices"],
     queryFn: async () => (await Player.AudioDevices()) ?? [],
-    enabled: pictureOpen && sheetTab === "sound",
+    // iOS has the system's own output; AudioDevices isn't bound there.
+    enabled: feature("audioOutput") && pictureOpen && sheetTab === "sound",
   }).data;
   const surround =
     (tracks.find((track) => track.type === "audio" && track.selected)?.channels ?? 0) > 2;
@@ -2326,7 +2327,8 @@ function PlayerFile({
   // stream failed. VoiceOver never reaches them: the picture is aria-hidden
   // and VoiceOver turns touches into its own gestures, so the buttons do it
   // all.
-  const gesturesOn = touchLayout && !lockedNow && !failure && !panel && !episodesOpen;
+  const gesturesOn =
+    touchLayout && !lockedNow && !failure && !panel && !episodesOpen && !pictureOpen;
   const gesture = useRef<{
     state: GestureState;
     points: Map<number, { x: number; y: number }>;
@@ -2549,6 +2551,9 @@ function PlayerFile({
                 onChange: changeSleep,
               }}
               stats={{ open: statsOpen, onToggle: () => setStatsOpen(!statsOpen) }}
+              // The sheet's way in on touch: the desktop dock's button for it
+              // isn't drawn in this branch (#130).
+              onPicture={ready ? openPicture : undefined}
               shortcuts={
                 desktopControls
                   ? {
@@ -3285,57 +3290,55 @@ function PlayerFile({
           onClose={() => setEpisodesOpen(false)}
         />
       )}
-      {feature("playerPanels") && (
-        <PictureSheet
-          open={pictureOpen && !mini && !failure}
-          onClose={() => setPictureOpen(false)}
-          tab={sheetTab}
-          onTabChange={setSheetTab}
-          title={watching?.name || playing?.title || "this title"}
-          saves={titleKey !== ""}
-          picture={{
-            picture,
-            presets: namedPictures,
-            own: adjustments?.picture != null || unsavedPicture !== undefined,
-            onPreview: picturer,
-            onChange: changePicture,
-            onReset: resetPicture,
-            onUseForAll: pictureForAll,
-            onSavePreset: savePicturePreset,
-          }}
-          framing={{
-            framing,
-            own: adjustments?.framing != null || unsavedFraming !== undefined,
-            found: state.autoCrop ?? undefined,
-            onPreview: framer,
-            onChange: changeFraming,
-            onReset: resetFraming,
-            onUseForAll: framingForAll,
-          }}
-          sound={{
-            sound,
-            own: adjustments?.sound != null || unsavedSound !== undefined,
-            onChange: changeSound,
-            onReset: resetSound,
-            onUseForAll: soundForAll,
-            delay: audioDelay,
-            onDelayChange: changeAudioDelay,
-            audio,
-            devices: audioDevices ?? [],
-            onAudioChange: changeAudio,
-            surround,
-          }}
-          quality={{
-            quality,
-            own: adjustments?.quality != null || unsavedQuality !== undefined,
-            hdrShown: state.hdr,
-            onPreview: qualifier,
-            onChange: changeQuality,
-            onReset: resetQuality,
-            onUseForAll: qualityForAll,
-          }}
-        />
-      )}
+      <PictureSheet
+        open={pictureOpen && !mini && !failure}
+        onClose={() => setPictureOpen(false)}
+        tab={sheetTab}
+        onTabChange={setSheetTab}
+        title={watching?.name || playing?.title || "this title"}
+        saves={titleKey !== ""}
+        picture={{
+          picture,
+          presets: namedPictures,
+          own: adjustments?.picture != null || unsavedPicture !== undefined,
+          onPreview: picturer,
+          onChange: changePicture,
+          onReset: resetPicture,
+          onUseForAll: pictureForAll,
+          onSavePreset: savePicturePreset,
+        }}
+        framing={{
+          framing,
+          own: adjustments?.framing != null || unsavedFraming !== undefined,
+          found: state.autoCrop ?? undefined,
+          onPreview: framer,
+          onChange: changeFraming,
+          onReset: resetFraming,
+          onUseForAll: framingForAll,
+        }}
+        sound={{
+          sound,
+          own: adjustments?.sound != null || unsavedSound !== undefined,
+          onChange: changeSound,
+          onReset: resetSound,
+          onUseForAll: soundForAll,
+          delay: audioDelay,
+          onDelayChange: changeAudioDelay,
+          audio,
+          devices: audioDevices ?? [],
+          onAudioChange: changeAudio,
+          surround,
+        }}
+        quality={{
+          quality,
+          own: adjustments?.quality != null || unsavedQuality !== undefined,
+          hdrShown: state.hdr,
+          onPreview: qualifier,
+          onChange: changeQuality,
+          onReset: resetQuality,
+          onUseForAll: qualityForAll,
+        }}
+      />
       {watching && feature("streamSwitcher") && !guest && (
         <StreamSwitcher
           open={switcherOpen}

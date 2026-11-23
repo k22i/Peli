@@ -285,16 +285,39 @@ describe("Settings on iOS", () => {
     expect(screen.queryByText("Design system")).not.toBeInTheDocument();
   });
 
-  it("leaves mpv's picture, sound and HDR controls out of Playback", async () => {
+  // The iOS player applies the picture, sound and HDR settings too (the
+  // sheet's tabs are the same there), so the rows are the desktop's minus the
+  // ones Go can't do on iOS.
+  it("keeps the Playback rows the iOS player applies", async () => {
     await renderApp("/settings?section=playback");
 
     await screen.findByRole("switch", { name: "Skip intros automatically" });
-    for (const name of ["Hardware decoding", "Tone mapping", "Picture", "Fit", "Output"]) {
-      expect(screen.queryByText(name, { selector: "label, h3, [id$=-label]" })).toBeNull();
+    for (const name of ["Hardware decoding", "Tone mapping", "Scaling", "Debanding", "Fit"]) {
+      expect(screen.getByText(name, { selector: "[id$=-label]" })).toBeInTheDocument();
     }
-    expect(screen.queryByRole("switch", { name: "Hardware decoding" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Sound" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Framing" })).not.toBeInTheDocument();
+    for (const name of ["Picture", "Framing", "Sound"]) {
+      expect(screen.getByRole("heading", { name })).toBeInTheDocument();
+    }
+    // The pinch fills the screen, and no key is named to say so.
+    expect(screen.getByText(/Pinch the video to fill the screen/)).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Fill" })).not.toBeInTheDocument();
+  });
+
+  it("leaves the picture controls iOS can't apply out of Playback", async () => {
+    await renderApp("/settings?section=playback");
+
+    await screen.findByRole("switch", { name: "Skip intros automatically" });
+    for (const name of [
+      "Remove black bars",
+      "Sharpening",
+      "Upscaling",
+      "Motion smoothing",
+      "Deinterlacing",
+      "Output",
+      "Volume up to 150 %",
+    ]) {
+      expect(screen.queryByText(name, { selector: "[id$=-label]" })).toBeNull();
+    }
   });
 
   it("leaves torrents and HDR out of Streaming", async () => {

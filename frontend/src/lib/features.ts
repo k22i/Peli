@@ -23,8 +23,19 @@ export type Feature =
   | "plugins"
   | "torrent"
   | "miniPlayer"
-  | "playerPanels" // picture, sound, quality, framing, stats, A–B loop, screenshots
+  | "playerPanels" // stats overlay, A–B loop, screenshots, the chapters menu
   | "hdr"
+  // The picture controls the iOS player can't do. Its sheet and Settings ›
+  // Playback are the same on both platforms; each of these hides one row
+  // there, since the Go side doesn't apply them on iOS.
+  | "framingFlips" // Mirror and Upside down: copies each frame off the GPU
+  | "autoCrop" // "Remove black bars": finds the bars by sampling frames in Go
+  | "fillFit" // the Fill fit mode: on touch the pinch already fills the screen
+  | "renderShaders" // sharpening and the upscalers (FSR, Anime4K)
+  | "motionSmoothing" // blends frames in step with the screen, on a timer
+  | "deinterlace" // the deinterlacer: the player there has none
+  | "audioOutput" // the output devices (Player.AudioDevices) and their row
+  | "volumeBoost" // "Volume up to 150 %": iOS's own volume goes no higher
   | "desktopControls" // fullscreen, the shortcuts list, a volume slider (iOS has the side buttons)
   | "streamSwitcher" // the player's Streams sheet
   | "commandPalette"
@@ -56,6 +67,16 @@ const notOnIOS: ReadonlySet<Feature> = new Set<Feature>([
   // The phone downloads into its own sandbox, where there is no folder to
   // pick and no dialog to pick one: ChooseFolder is ErrUnsupported there.
   "downloadFolder",
+  // The picture controls of the list above: the player and Settings show the
+  // sheet without them.
+  "framingFlips",
+  "autoCrop",
+  "fillFit",
+  "renderShaders",
+  "motionSmoothing",
+  "deinterlace",
+  "audioOutput",
+  "volumeBoost",
 ]);
 
 // The other direction: what only iOS has. Asked before the list of what iOS

@@ -11,6 +11,7 @@ import {
   Toggle,
   type Preview,
 } from "@/components/player/panel-controls";
+import { feature } from "@/lib/features";
 import {
   aspectRatios,
   cropSummary,
@@ -61,6 +62,12 @@ export function FramingTab({
   const shown = draft ?? framing;
   const hidden = previewRow(preview);
   const custom = !aspectRatios.some((each) => each.id === shown.aspect);
+  // The phone can't flip frames or find the bars by sampling them, and its
+  // pinch already fills the screen: those rows are left out there.
+  const flips = feature("framingFlips");
+  const canAutoCrop = feature("autoCrop");
+  const cropping = canAutoCrop && shown.autoCrop;
+  const fits = fitModes.filter((each) => each.id !== "fill" || feature("fillFit"));
   const [naming, setNaming] = useState(custom);
   const [aspectText, setAspectText] = useState(custom ? shown.aspect : "");
 
@@ -110,7 +117,7 @@ export function FramingTab({
             label="Fit"
             value={shown.fit}
             onChange={(fit) => onChange({ ...shown, fit })}
-            options={fitModes.map(({ id, name }) => ({ value: id, name }))}
+            options={fits.map(({ id, name }) => ({ value: id, name }))}
           />
         </Field>
       </div>
@@ -200,21 +207,23 @@ export function FramingTab({
         </>
       )}
 
-      <div className={`-mx-4 ${hidden}`}>
-        <Toggle
-          label="Remove black bars"
-          hint={
-            shown.autoCrop
-              ? found && cropSummary(found)
-                ? `Cutting ${cropSummary(found)}.`
-                : "Looking for bars as it plays…"
-              : "Finds the bars around a film and crops them, so a wide film fills a wide screen."
-          }
-          checked={shown.autoCrop}
-          onChange={(autoCrop) => onChange({ ...shown, autoCrop })}
-        />
-      </div>
-      {!shown.autoCrop &&
+      {canAutoCrop && (
+        <div className={`-mx-4 ${hidden}`}>
+          <Toggle
+            label="Remove black bars"
+            hint={
+              shown.autoCrop
+                ? found && cropSummary(found)
+                  ? `Cutting ${cropSummary(found)}.`
+                  : "Looking for bars as it plays…"
+                : "Finds the bars around a film and crops them, so a wide film fills a wide screen."
+            }
+            checked={shown.autoCrop}
+            onChange={(autoCrop) => onChange({ ...shown, autoCrop })}
+          />
+        </div>
+      )}
+      {!cropping &&
         edges.map(({ key, label }) =>
           slider(
             `crop-${key}`,
@@ -237,19 +246,21 @@ export function FramingTab({
         </Field>
       </div>
 
-      <div className={`-mx-4 flex flex-col ${hidden}`}>
-        <Toggle
-          label="Mirror"
-          hint="Flipping copies each frame off the graphics card, which uses more power."
-          checked={shown.flipH}
-          onChange={(flipH) => onChange({ ...shown, flipH })}
-        />
-        <Toggle
-          label="Upside down"
-          checked={shown.flipV}
-          onChange={(flipV) => onChange({ ...shown, flipV })}
-        />
-      </div>
+      {flips && (
+        <div className={`-mx-4 flex flex-col ${hidden}`}>
+          <Toggle
+            label="Mirror"
+            hint="Flipping copies each frame off the graphics card, which uses more power."
+            checked={shown.flipH}
+            onChange={(flipH) => onChange({ ...shown, flipH })}
+          />
+          <Toggle
+            label="Upside down"
+            checked={shown.flipV}
+            onChange={(flipV) => onChange({ ...shown, flipV })}
+          />
+        </div>
+      )}
     </section>
   );
 }
