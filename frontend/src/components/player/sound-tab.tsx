@@ -10,6 +10,7 @@ import {
   Toggle,
   type Preview,
 } from "@/components/player/panel-controls";
+import { feature } from "@/lib/features";
 import {
   audioDelayStep,
   audioDelayText,
@@ -59,6 +60,9 @@ export function SoundTab({
   preview,
 }: SoundProps & { preview: Preview }) {
   const hidden = previewRow(preview);
+  // The phone has the system's own output (no AudioDevices to pick from) and
+  // its volume stops at 100 %: those two rows are left out there.
+  const output = feature("audioOutput");
   return (
     <div className={`flex flex-col gap-6 px-4 pb-5 ${hidden}`}>
       <section aria-label="Sound" className="flex flex-col gap-5">
@@ -141,7 +145,7 @@ export function SoundTab({
 
       <section aria-label="This device" className="flex flex-col gap-5">
         <SectionHead title="This device" reset={undefined} />
-        {devices.length > 1 && (
+        {output && devices.length > 1 && (
           <Field label="Output">
             <ChipGroup label="Output">
               {devices.map((device) => (
@@ -163,12 +167,14 @@ export function SoundTab({
             checked={audio.stereoDownmix}
             onChange={(stereoDownmix) => onAudioChange({ ...audio, stereoDownmix })}
           />
-          <Toggle
-            label="Volume up to 150 %"
-            hint="For quiet tracks. Above 100 % loud parts can distort."
-            checked={audio.volumeBoost}
-            onChange={(volumeBoost) => onAudioChange({ ...audio, volumeBoost })}
-          />
+          {feature("volumeBoost") && (
+            <Toggle
+              label="Volume up to 150 %"
+              hint="For quiet tracks. Above 100 % loud parts can distort."
+              checked={audio.volumeBoost}
+              onChange={(volumeBoost) => onAudioChange({ ...audio, volumeBoost })}
+            />
+          )}
         </div>
       </section>
     </div>

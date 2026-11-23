@@ -18,6 +18,15 @@ const outOnIOS: Feature[] = [
   "multiSelect",
   "gallery",
   "downloadFolder",
+  // The picture controls the iOS player can't do.
+  "framingFlips",
+  "autoCrop",
+  "fillFit",
+  "renderShaders",
+  "motionSmoothing",
+  "deinterlace",
+  "audioOutput",
+  "volumeBoost",
 ];
 
 describe("feature", () => {

@@ -111,7 +111,10 @@ export function PictureSheet({
         }
       }}
       className={cn(
-        "dark absolute inset-y-3 start-auto end-3 z-20 m-0 flex h-auto w-[min(25rem,calc(100%-1.5rem))] max-w-none flex-col overflow-hidden rounded-[1.75rem] border-0 p-0 text-foreground transition-[background-color,box-shadow,backdrop-filter] duration-200 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-right-6 motion-safe:duration-300",
+        // Off the screen's edges by its safe ones: on an iPhone that keeps the
+        // notch and the home indicator from covering the sheet's top and
+        // bottom (a desktop has no insets, so it stays 12 px in).
+        "dark absolute top-[max(0.75rem,env(safe-area-inset-top))] bottom-[max(0.75rem,env(safe-area-inset-bottom))] start-auto end-[max(0.75rem,env(safe-area-inset-right))] z-20 m-0 flex h-auto w-[min(25rem,calc(100%-1.5rem))] max-w-none flex-col overflow-hidden rounded-[1.75rem] border-0 p-0 text-foreground transition-[background-color,box-shadow,backdrop-filter] duration-200 motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-right-6 motion-safe:duration-300",
         active !== undefined ? "bg-transparent shadow-none ring-0" : sheetSurface,
       )}
     >

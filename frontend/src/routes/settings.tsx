@@ -62,7 +62,7 @@ import { feature } from "@/lib/features";
 import { useCompactShell } from "@/lib/shell-mode";
 import { appBuildQuery, appVersionQuery } from "@/lib/app-info";
 import { contentDisclaimer } from "@/lib/disclaimer";
-import { deviceName as hostName, isIOS } from "@/lib/platform";
+import { deviceName as hostName, isIOS, isTouch } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 import { serverName, serverQuery } from "@/lib/server";
 import {
@@ -438,136 +438,142 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
 
 function PlaybackPane({ title, profileId }: { title: string; profileId: number | undefined }) {
   const compact = useCompactShell();
+  // The phone has no Fill fit: its pinch fills the screen already.
+  const fillFit = feature("fillFit");
+  const fits = fitModes.filter(({ id }) => id !== "fill" || fillFit).map(({ id }) => id);
   return (
     <SettingsPaneView title={title}>
       <WithSettings profileId={profileId}>
         {({ settings, device, setProfile, setDevice }) => (
           <>
-            {/* mpv's picture, sound and HDR controls aren't in the iOS app
-                (ADR-0055). */}
-            {feature("playerPanels") && (
-              <>
-                <SettingsGroup title="Video">
-                  <SettingRow
-                    id="hardware-decoding"
-                    label="Hardware decoding"
-                    description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device, from the next video you play."
-                  >
-                    <Switch
-                      aria-labelledby="hardware-decoding-label"
-                      aria-describedby="hardware-decoding-description"
-                      checked={device.hardwareDecoding}
-                      onCheckedChange={(hardwareDecoding) => setDevice({ hardwareDecoding })}
-                    />
-                  </SettingRow>
-                  <QualityDefaults
-                    quality={device.quality ?? defaultQuality}
-                    setQuality={(changes) =>
-                      setDevice({ quality: { ...(device.quality ?? defaultQuality), ...changes } })
+            {/* The iOS player applies the picture, sound and HDR settings too
+                (the sheet's tabs are the same there); a row for something it
+                can't do is left out where it's written, below. */}
+            <SettingsGroup title="Video">
+              <SettingRow
+                id="hardware-decoding"
+                label="Hardware decoding"
+                description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device, from the next video you play."
+              >
+                <Switch
+                  aria-labelledby="hardware-decoding-label"
+                  aria-describedby="hardware-decoding-description"
+                  checked={device.hardwareDecoding}
+                  onCheckedChange={(hardwareDecoding) => setDevice({ hardwareDecoding })}
+                />
+              </SettingRow>
+              <QualityDefaults
+                quality={device.quality ?? defaultQuality}
+                setQuality={(changes) =>
+                  setDevice({ quality: { ...(device.quality ?? defaultQuality), ...changes } })
+                }
+              />
+            </SettingsGroup>
+            <SettingsGroup title="HDR on a screen without it">
+              <SettingRow
+                id="tone-mapping"
+                label="Tone mapping"
+                description="How HDR video is brought into what this screen shows, when it can't show HDR. Natural keeps it true to the film; Bright lifts it; Filmic is softer at the top. Applies to this device."
+              >
+                <Choice
+                  id="tone-mapping"
+                  value={(device.quality ?? defaultQuality).toneMapping}
+                  options={toneMappingIds}
+                  labels={toneMappingLabels}
+                  onChange={(toneMapping) =>
+                    setDevice({
+                      quality: { ...(device.quality ?? defaultQuality), toneMapping },
+                    })
+                  }
+                />
+              </SettingRow>
+              <SettingRow
+                id="target-peak"
+                label="Screen brightness"
+                description="How bright this screen gets, for tone mapping. Auto lets the player guess; a brighter value keeps more of the highlights."
+              >
+                <Choice
+                  id="target-peak"
+                  value={String((device.quality ?? defaultQuality).targetPeak)}
+                  options={["0", "100", "200", "300", "400", "600"]}
+                  labels={{
+                    "0": "Auto",
+                    "100": "100",
+                    "200": "200",
+                    "300": "300",
+                    "400": "400",
+                    "600": "600 nits",
+                  }}
+                  onChange={(peak) =>
+                    setDevice({
+                      quality: {
+                        ...(device.quality ?? defaultQuality),
+                        targetPeak: Number(peak),
+                      },
+                    })
+                  }
+                />
+              </SettingRow>
+            </SettingsGroup>
+            <PictureDefaults
+              profileId={profileId}
+              settings={settings}
+              setProfile={setProfile}
+            />
+            <SettingsGroup title="Framing">
+              <SettingRow
+                id="framing-fit"
+                label="Fit"
+                description={
+                  isTouch()
+                    ? "How the picture fills the screen: all of it, stretched, or its own size. Pinch the video to fill the screen."
+                    : "How the picture fills the window: all of it, the window filled (the edges cropped), stretched, or its own size. A title can have its own (P, then Framing, or Shift+F)."
+                }
+              >
+                <Choice
+                  id="framing-fit"
+                  value={settings.framing?.fit ?? "fit"}
+                  options={fits}
+                  labels={{
+                    fit: "Fit",
+                    fill: "Fill",
+                    stretch: "Stretch",
+                    original: "Original",
+                  }}
+                  onChange={(fit) =>
+                    setProfile({ framing: { ...(settings.framing ?? defaultFraming), fit } })
+                  }
+                />
+              </SettingRow>
+              {feature("autoCrop") && (
+                <SettingRow
+                  id="auto-crop"
+                  label="Remove black bars"
+                  description="Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture."
+                >
+                  <Switch
+                    aria-labelledby="auto-crop-label"
+                    aria-describedby="auto-crop-description"
+                    checked={settings.framing?.autoCrop ?? false}
+                    onCheckedChange={(autoCrop) =>
+                      setProfile({
+                        framing: { ...(settings.framing ?? defaultFraming), autoCrop },
+                      })
                     }
                   />
-                </SettingsGroup>
-                <SettingsGroup title="HDR on a screen without it">
-                  <SettingRow
-                    id="tone-mapping"
-                    label="Tone mapping"
-                    description="How HDR video is brought into what this screen shows, when it can't show HDR. Natural keeps it true to the film; Bright lifts it; Filmic is softer at the top. Applies to this device."
-                  >
-                    <Choice
-                      id="tone-mapping"
-                      value={(device.quality ?? defaultQuality).toneMapping}
-                      options={toneMappingIds}
-                      labels={toneMappingLabels}
-                      onChange={(toneMapping) =>
-                        setDevice({
-                          quality: { ...(device.quality ?? defaultQuality), toneMapping },
-                        })
-                      }
-                    />
-                  </SettingRow>
-                  <SettingRow
-                    id="target-peak"
-                    label="Screen brightness"
-                    description="How bright this screen gets, for tone mapping. Auto lets the player guess; a brighter value keeps more of the highlights."
-                  >
-                    <Choice
-                      id="target-peak"
-                      value={String((device.quality ?? defaultQuality).targetPeak)}
-                      options={["0", "100", "200", "300", "400", "600"]}
-                      labels={{
-                        "0": "Auto",
-                        "100": "100",
-                        "200": "200",
-                        "300": "300",
-                        "400": "400",
-                        "600": "600 nits",
-                      }}
-                      onChange={(peak) =>
-                        setDevice({
-                          quality: {
-                            ...(device.quality ?? defaultQuality),
-                            targetPeak: Number(peak),
-                          },
-                        })
-                      }
-                    />
-                  </SettingRow>
-                </SettingsGroup>
-                <PictureDefaults
-                  profileId={profileId}
-                  settings={settings}
-                  setProfile={setProfile}
-                />
-                <SettingsGroup title="Framing">
-                  <SettingRow
-                    id="framing-fit"
-                    label="Fit"
-                    description="How the picture fills the window: all of it, the window filled (the edges cropped), stretched, or its own size. A title can have its own (P, then Framing, or Shift+F)."
-                  >
-                    <Choice
-                      id="framing-fit"
-                      value={settings.framing?.fit ?? "fit"}
-                      options={fitModes.map(({ id }) => id)}
-                      labels={{
-                        fit: "Fit",
-                        fill: "Fill",
-                        stretch: "Stretch",
-                        original: "Original",
-                      }}
-                      onChange={(fit) =>
-                        setProfile({ framing: { ...(settings.framing ?? defaultFraming), fit } })
-                      }
-                    />
-                  </SettingRow>
-                  <SettingRow
-                    id="auto-crop"
-                    label="Remove black bars"
-                    description="Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture."
-                  >
-                    <Switch
-                      aria-labelledby="auto-crop-label"
-                      aria-describedby="auto-crop-description"
-                      checked={settings.framing?.autoCrop ?? false}
-                      onCheckedChange={(autoCrop) =>
-                        setProfile({
-                          framing: { ...(settings.framing ?? defaultFraming), autoCrop },
-                        })
-                      }
-                    />
-                  </SettingRow>
-                </SettingsGroup>
-                <SoundDefaults
-                  sound={settings.sound ?? defaultSound}
-                  setSound={(changes) =>
-                    setProfile({ sound: { ...(settings.sound ?? defaultSound), ...changes } })
-                  }
-                  audio={device.audio ?? defaultAudio}
-                  setAudio={(changes) =>
-                    setDevice({ audio: { ...(device.audio ?? defaultAudio), ...changes } })
-                  }
-                />
-              </>
-            )}
+                </SettingRow>
+              )}
+            </SettingsGroup>
+            <SoundDefaults
+              sound={settings.sound ?? defaultSound}
+              setSound={(changes) =>
+                setProfile({ sound: { ...(settings.sound ?? defaultSound), ...changes } })
+              }
+              audio={device.audio ?? defaultAudio}
+              setAudio={(changes) =>
+                setDevice({ audio: { ...(device.audio ?? defaultAudio), ...changes } })
+              }
+            />
             {/* The touch player's gestures (#131), on iOS only. */}
             {isIOS() && (
               <GestureSettings
@@ -745,9 +751,14 @@ function SoundDefaults({
   audio: Audio;
   setAudio: (changes: Partial<Audio>) => void;
 }) {
+  // iOS has the system's own output and AudioDevices isn't bound there, so
+  // the query stays off (and pending) rather than failing: the row that would
+  // show it is left out below.
+  const output = feature("audioOutput");
   const devices = useQuery({
     queryKey: ["player", "audio-devices"],
     queryFn: async () => (await Player.AudioDevices()) ?? [],
+    enabled: output,
   }).data;
   const items = (devices?.length ? devices : [{ name: "auto", description: "" }]).map((each) => ({
     value: each.name,
@@ -759,21 +770,23 @@ function SoundDefaults({
   }
   return (
     <SettingsGroup title="Sound">
-      <SettingRow
-        id="audio-device"
-        label="Output"
-        description={`Where the player's sound goes. System default follows the ${isIOS() ? "device" : "Mac"}'s sound settings. Applies to this device.`}
-      >
-        <ResponsiveSelect
-          items={items}
-          value={audio.device}
-          onValueChange={(next) => next && setAudio({ device: next })}
+      {output && (
+        <SettingRow
+          id="audio-device"
+          label="Output"
+          description={`Where the player's sound goes. System default follows the ${isIOS() ? "device" : "Mac"}'s sound settings. Applies to this device.`}
+        >
+          <ResponsiveSelect
+            items={items}
+            value={audio.device}
+            onValueChange={(next) => next && setAudio({ device: next })}
 
-          aria-labelledby="audio-device-label"
-          aria-describedby="audio-device-description"
-          className="w-56"
-        />
-      </SettingRow>
+            aria-labelledby="audio-device-label"
+            aria-describedby="audio-device-description"
+            className="w-56"
+          />
+        </SettingRow>
+      )}
       <SettingRow
         id="stereo-downmix"
         label="Stereo downmix"
@@ -786,22 +799,28 @@ function SoundDefaults({
           onCheckedChange={(stereoDownmix) => setAudio({ stereoDownmix })}
         />
       </SettingRow>
-      <SettingRow
-        id="volume-boost"
-        label="Volume up to 150 %"
-        description="For quiet tracks. Above 100 % loud parts can distort. Applies to this device."
-      >
-        <Switch
-          aria-labelledby="volume-boost-label"
-          aria-describedby="volume-boost-description"
-          checked={audio.volumeBoost}
-          onCheckedChange={(volumeBoost) => setAudio({ volumeBoost })}
-        />
-      </SettingRow>
+      {feature("volumeBoost") && (
+        <SettingRow
+          id="volume-boost"
+          label="Volume up to 150 %"
+          description="For quiet tracks. Above 100 % loud parts can distort. Applies to this device."
+        >
+          <Switch
+            aria-labelledby="volume-boost-label"
+            aria-describedby="volume-boost-description"
+            checked={audio.volumeBoost}
+            onCheckedChange={(volumeBoost) => setAudio({ volumeBoost })}
+          />
+        </SettingRow>
+      )}
       <SettingRow
         id="dialogue-boost"
         label="Dialogue boost"
-        description="Lifts speech over music and effects in every title, unless one has its own (B in the player). Surround sound comes out of the front while it's on."
+        description={
+          isTouch()
+            ? "Lifts speech over music and effects in every title, unless one has its own. Surround sound comes out of the front while it's on."
+            : "Lifts speech over music and effects in every title, unless one has its own (B in the player). Surround sound comes out of the front while it's on."
+        }
       >
         <Switch
           aria-labelledby="dialogue-boost-label"
@@ -855,6 +874,9 @@ function QualityDefaults({
   quality: Quality;
   setQuality: (changes: Partial<Quality>) => void;
 }) {
+  // The same rows the player's Quality tab leaves out on iOS (Go doesn't
+  // apply them there); scaling and debanding stay.
+  const shaders = feature("renderShaders");
   return (
     <>
       <SettingRow
@@ -881,55 +903,63 @@ function QualityDefaults({
           onChange={(deband) => setQuality({ deband })}
         />
       </SettingRow>
-      <SettingRow
-        id="sharpen"
-        label="Sharpening"
-        description="AMD's contrast-adaptive sharpening: crisper detail without halos."
-      >
-        <Choice
-          id="sharpen"
-          value={String(quality.sharpen)}
-          options={["0", "3", "5", "8"]}
-          labels={{ "0": "Off", "3": "Light", "5": "Medium", "8": "Strong" }}
-          onChange={(sharpen) => setQuality({ sharpen: Number(sharpen) })}
-        />
-      </SettingRow>
-      <SettingRow
-        id="upscaler"
-        label="Upscaling"
-        description={upscalerHint[quality.upscaler] ?? ""}
-      >
-        <Choice
-          id="upscaler"
-          value={quality.upscaler}
-          {...choices(upscalers)}
-          onChange={(upscaler) => setQuality({ upscaler })}
-        />
-      </SettingRow>
-      <SettingRow
-        id="motion-smoothing"
-        label="Motion smoothing"
-        description={`Shows frames in step with the screen and blends between them: smoother pans, but films can look like TV (the soap-opera look). Uses more power. ${heavyWarning({ ...quality, motionSmoothing: true }) ?? ""}`}
-      >
-        <Switch
-          aria-labelledby="motion-smoothing-label"
-          aria-describedby="motion-smoothing-description"
-          checked={quality.motionSmoothing}
-          onCheckedChange={(motionSmoothing) => setQuality({ motionSmoothing })}
-        />
-      </SettingRow>
-      <SettingRow
-        id="deinterlace"
-        label="Deinterlacing"
-        description="For TV recordings and DVDs. Auto only deinterlaces video marked as interlaced."
-      >
-        <Choice
+      {shaders && (
+        <>
+          <SettingRow
+            id="sharpen"
+            label="Sharpening"
+            description="AMD's contrast-adaptive sharpening: crisper detail without halos."
+          >
+            <Choice
+              id="sharpen"
+              value={String(quality.sharpen)}
+              options={["0", "3", "5", "8"]}
+              labels={{ "0": "Off", "3": "Light", "5": "Medium", "8": "Strong" }}
+              onChange={(sharpen) => setQuality({ sharpen: Number(sharpen) })}
+            />
+          </SettingRow>
+          <SettingRow
+            id="upscaler"
+            label="Upscaling"
+            description={upscalerHint[quality.upscaler] ?? ""}
+          >
+            <Choice
+              id="upscaler"
+              value={quality.upscaler}
+              {...choices(upscalers)}
+              onChange={(upscaler) => setQuality({ upscaler })}
+            />
+          </SettingRow>
+        </>
+      )}
+      {feature("motionSmoothing") && (
+        <SettingRow
+          id="motion-smoothing"
+          label="Motion smoothing"
+          description={`Shows frames in step with the screen and blends between them: smoother pans, but films can look like TV (the soap-opera look). Uses more power. ${heavyWarning({ ...quality, motionSmoothing: true }) ?? ""}`}
+        >
+          <Switch
+            aria-labelledby="motion-smoothing-label"
+            aria-describedby="motion-smoothing-description"
+            checked={quality.motionSmoothing}
+            onCheckedChange={(motionSmoothing) => setQuality({ motionSmoothing })}
+          />
+        </SettingRow>
+      )}
+      {feature("deinterlace") && (
+        <SettingRow
           id="deinterlace"
-          value={quality.deinterlace}
-          {...choices(deinterlaceModes)}
-          onChange={(deinterlace) => setQuality({ deinterlace })}
-        />
-      </SettingRow>
+          label="Deinterlacing"
+          description="For TV recordings and DVDs. Auto only deinterlaces video marked as interlaced."
+        >
+          <Choice
+            id="deinterlace"
+            value={quality.deinterlace}
+            {...choices(deinterlaceModes)}
+            onChange={(deinterlace) => setQuality({ deinterlace })}
+          />
+        </SettingRow>
+      )}
     </>
   );
 }

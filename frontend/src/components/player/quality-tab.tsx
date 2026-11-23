@@ -9,6 +9,7 @@ import {
   Toggle,
   type Preview,
 } from "@/components/player/panel-controls";
+import { feature } from "@/lib/features";
 import {
   debandLevels,
   deinterlaceModes,
@@ -56,6 +57,11 @@ export function QualityTab({
   const shown = draft ?? quality;
   const hidden = previewRow(preview);
   const warning = heavyWarning(shown);
+  // The phone's renderer has no shaders for sharpening or an upscaler, no
+  // timer to blend frames on, and no deinterlacer: those rows are left out
+  // there, and scaling and debanding stay.
+  const shaders = feature("renderShaders");
+  const deinterlacing = feature("deinterlace");
 
   // A slider: previews as it moves, keeps the value let go.
   const slider = (
@@ -120,48 +126,58 @@ export function QualityTab({
         {hint("Smooths the steps in skies and dark gradients. High can soften fine texture.", "")}
       </div>
 
-      {slider(
-        "sharpen",
-        "Sharpening",
-        shown.sharpen,
-        shown.sharpen === 0 ? "Off" : `${shown.sharpen * 10} %`,
-        { min: 0, max: 10, step: 1 },
-        (sharpen) => ({ ...shown, sharpen }),
+      {shaders &&
+        slider(
+          "sharpen",
+          "Sharpening",
+          shown.sharpen,
+          shown.sharpen === 0 ? "Off" : `${shown.sharpen * 10} %`,
+          { min: 0, max: 10, step: 1 },
+          (sharpen) => ({ ...shown, sharpen }),
+        )}
+
+      {shaders && (
+        <div className={`flex flex-col gap-2 ${hidden}`}>
+          <Field label="Upscaling">
+            <Segmented
+              label="Upscaling"
+              value={shown.upscaler}
+              onChange={(upscaler) => onChange({ ...shown, upscaler })}
+              options={options(upscalers)}
+            />
+          </Field>
+          {hint(upscalerHint[shown.upscaler], "")}
+        </div>
       )}
 
-      <div className={`flex flex-col gap-2 ${hidden}`}>
-        <Field label="Upscaling">
-          <Segmented
-            label="Upscaling"
-            value={shown.upscaler}
-            onChange={(upscaler) => onChange({ ...shown, upscaler })}
-            options={options(upscalers)}
+      {feature("motionSmoothing") && (
+        <div className={`-mx-4 ${hidden}`}>
+          <Toggle
+            label="Motion smoothing"
+            hint="Shows frames in step with the screen and blends between them: smoother pans, but films can look like TV (the soap-opera look). Uses more power."
+            checked={shown.motionSmoothing}
+            onChange={(motionSmoothing) => onChange({ ...shown, motionSmoothing })}
           />
-        </Field>
-        {hint(upscalerHint[shown.upscaler], "")}
-      </div>
-
-      <div className={`-mx-4 ${hidden}`}>
-        <Toggle
-          label="Motion smoothing"
-          hint="Shows frames in step with the screen and blends between them: smoother pans, but films can look like TV (the soap-opera look). Uses more power."
-          checked={shown.motionSmoothing}
-          onChange={(motionSmoothing) => onChange({ ...shown, motionSmoothing })}
-        />
-      </div>
+        </div>
+      )}
       {hint(warning, hidden)}
 
-      <div className={`flex flex-col gap-2 ${hidden}`}>
-        <Field label="Deinterlacing">
-          <Segmented
-            label="Deinterlacing"
-            value={shown.deinterlace}
-            onChange={(deinterlace) => onChange({ ...shown, deinterlace })}
-            options={options(deinterlaceModes)}
-          />
-        </Field>
-        {hint("For TV recordings and DVDs. Auto only deinterlaces video marked as interlaced.", "")}
-      </div>
+      {deinterlacing && (
+        <div className={`flex flex-col gap-2 ${hidden}`}>
+          <Field label="Deinterlacing">
+            <Segmented
+              label="Deinterlacing"
+              value={shown.deinterlace}
+              onChange={(deinterlace) => onChange({ ...shown, deinterlace })}
+              options={options(deinterlaceModes)}
+            />
+          </Field>
+          {hint(
+            "For TV recordings and DVDs. Auto only deinterlaces video marked as interlaced.",
+            "",
+          )}
+        </div>
+      )}
 
       <div className={`flex flex-col gap-2 ${hidden}`}>
         <Field label="HDR on this screen">

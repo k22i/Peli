@@ -7,6 +7,7 @@ import { presetPicture, standardPicture, type Picture } from "@/lib/picture";
 import { defaultQuality, type Quality } from "@/lib/quality";
 import { defaultAudio, defaultSound, type Audio, type Sound } from "@/lib/sound";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
+import { onIOS } from "@/test/ios";
 
 import { PictureSheet, type PictureSheetTab } from "./picture-sheet";
 
@@ -234,5 +235,42 @@ describe("Sound tab", () => {
   it("says a surround track comes out of the front with dialogue boost", () => {
     renderSheet({ tab: "sound", surround: true });
     expect(screen.getByText(/Surround sound comes out of the front/)).toBeTruthy();
+  });
+});
+
+// The iOS player shows the same sheet, minus the rows Go doesn't apply on iOS
+// (ADR-0055): these are the tabs with one taken out.
+describe("PictureSheet on iOS", () => {
+  it("has no flips, no auto-crop and no Fill on the Framing tab", () => {
+    onIOS();
+    renderSheet({ tab: "framing" });
+    expect(screen.queryByRole("switch", { name: /Mirror/ })).toBeNull();
+    expect(screen.queryByRole("switch", { name: /Upside down/ })).toBeNull();
+    expect(screen.queryByRole("switch", { name: /Remove black bars/ })).toBeNull();
+    // The crop edges stay by hand, since nothing finds the bars here.
+    expect(screen.getByRole("slider", { name: "Crop top" })).toBeTruthy();
+    // The pinch fills the screen, so there is no Fit mode to pick for it.
+    expect(screen.queryByRole("button", { name: "Fill" })).toBeNull();
+    expect(screen.getByRole("button", { name: "Fit" })).toBeTruthy();
+  });
+
+  it("leaves sharpening, upscaling, motion smoothing and deinterlacing out of Quality", () => {
+    onIOS();
+    renderSheet({ tab: "quality" });
+    expect(screen.queryByRole("slider", { name: "Sharpening" })).toBeNull();
+    expect(screen.queryByRole("group", { name: "Upscaling" })).toBeNull();
+    expect(screen.queryByRole("switch", { name: /Motion smoothing/ })).toBeNull();
+    expect(screen.queryByRole("group", { name: "Deinterlacing" })).toBeNull();
+    expect(screen.getByRole("group", { name: "Scaling" })).toBeTruthy();
+    expect(screen.getByRole("group", { name: "Debanding" })).toBeTruthy();
+  });
+
+  it("leaves the output device and the volume boost out of Sound", () => {
+    onIOS();
+    renderSheet({ tab: "sound" });
+    expect(screen.queryByRole("button", { name: "MacBook Pro Speakers" })).toBeNull();
+    expect(screen.queryByRole("switch", { name: /Volume up to 150/ })).toBeNull();
+    expect(screen.getByRole("switch", { name: /Stereo downmix/ })).toBeTruthy();
+    expect(screen.getByRole("switch", { name: /Dialogue boost/ })).toBeTruthy();
   });
 });

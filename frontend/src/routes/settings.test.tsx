@@ -6,6 +6,7 @@ import type { DeviceSettings, Profile, ProfileSettings } from "@bindings/store";
 import type * as PlayerBindings from "@bindings/player";
 import type { Connections } from "@bindings/tracking";
 import { profileSettings } from "@/test/fixtures";
+import { onIOS } from "@/test/ios";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 import { renderApp } from "@/test/render-app";
 
@@ -153,11 +154,13 @@ const store = vi.hoisted(() => ({
 }));
 
 // Settings › Playback lists the audio outputs (#sound): none here.
+const audioDevices = vi.hoisted(() => vi.fn<() => Promise<unknown[]>>(() => Promise.resolve([])));
+
 vi.mock("@bindings/player", async (importOriginal) => {
   const actual = await importOriginal<typeof PlayerBindings>();
   return {
     ...actual,
-    Service: { ...actual.Service, AudioDevices: () => Promise.resolve([]) },
+    Service: { ...actual.Service, AudioDevices: audioDevices },
   };
 });
 
@@ -224,6 +227,7 @@ beforeEach(() => {
   trackers.calls = [];
   trackers.approve = undefined;
   browser.openURL.mockClear();
+  audioDevices.mockClear();
 });
 
 const paneTitles = [
@@ -837,5 +841,32 @@ describe("settings", () => {
     await renderSettings("tracking");
     expect(await screen.findByText("Kids profiles don’t connect to trackers.")).toBeVisible();
     expect(screen.queryByRole("button", { name: "Connect SIMKL" })).not.toBeInTheDocument();
+  });
+});
+
+// The iOS player applies the picture and sound settings too, so Playback is
+// the desktop pane minus the rows Go can't do on iOS (ADR-0055).
+describe("Playback on iOS", () => {
+  it("keeps the rows it applies and leaves the rest out", async () => {
+    onIOS();
+    await renderSettings("playback");
+
+    expect(screen.getByRole("switch", { name: "Hardware decoding" })).toBeInTheDocument();
+    for (const name of ["Scaling", "Debanding", "Tone mapping", "Dialogue boost"]) {
+      expect(screen.getByText(name, { selector: "[id$=-label]" })).toBeInTheDocument();
+    }
+    for (const name of [
+      "Remove black bars",
+      "Sharpening",
+      "Upscaling",
+      "Motion smoothing",
+      "Deinterlacing",
+      "Output",
+      "Volume up to 150 %",
+    ]) {
+      expect(screen.queryByText(name, { selector: "[id$=-label]" })).toBeNull();
+    }
+    // AudioDevices isn't bound on iOS, so the pane never asks for it.
+    expect(audioDevices).not.toHaveBeenCalled();
   });
 });
