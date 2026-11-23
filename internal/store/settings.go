@@ -134,6 +134,14 @@ func DefaultSubtitleStyle() SubtitleStyle {
 // subtitleSizePercent is an older SubtitleSize as a style's Size.
 var subtitleSizePercent = map[string]int{"small": 75, "medium": 100, "large": 135}
 
+// DeviceSubtitles are this device's subtitles, whoever is watching: Always
+// turns them on for every profile, drawn in Style instead of the
+// profile's own.
+type DeviceSubtitles struct {
+	Always bool          `json:"always"`
+	Style  SubtitleStyle `json:"style"`
+}
+
 // DeviceSettings belong to this machine, whoever is watching.
 type DeviceSettings struct {
 	HardwareDecoding bool `json:"hardwareDecoding"`
@@ -169,6 +177,8 @@ type DeviceSettings struct {
 	Quality Quality `json:"quality"`
 	// Audio is this device's output.
 	Audio Audio `json:"audio"`
+	// Subtitles are this device's, over the watching profile's own.
+	Subtitles DeviceSubtitles `json:"subtitles"`
 	// Looking for and downloading updates by itself (#83). On unless the
 	// user turns it off; Peli still asks before it restarts.
 	AutoUpdate bool `json:"autoUpdate"`
@@ -234,6 +244,9 @@ func DefaultDeviceSettings() DeviceSettings {
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 		Audio: DefaultAudio(), StreamSort: "best",
+		// Subtitles stay the profiles' until this device turns them on for
+		// everyone, in the style they start with.
+		Subtitles: DeviceSubtitles{Style: DefaultSubtitleStyle()},
 		// Downloads: the default folder, 50 GB of them, and the phone's data
 		// left alone.
 		DownloadsCapGB: 50, DownloadsWiFiOnly: true,
@@ -352,6 +365,10 @@ func (s *Store) DeviceSettings() (DeviceSettings, error) {
 	err := s.db.View(func(tx *bolt.Tx) error {
 		return decodeOnto(tx.Bucket(bucketSettings).Get(keyDevice), &settings)
 	})
+	if settings.Subtitles.Style.Font == "" {
+		// Saved before device subtitle styles: the default style.
+		settings.Subtitles.Style = DefaultSubtitleStyle()
+	}
 	return settings, err
 }
 
@@ -367,11 +384,18 @@ func (s *Store) SaveDeviceSettings(settings DeviceSettings) error {
 	if settings.StreamSort == "" {
 		settings.StreamSort = "best"
 	}
+	if settings.Subtitles.Style.Font == "" {
+		// A caller from before device subtitle styles: the default style.
+		settings.Subtitles.Style = DefaultSubtitleStyle()
+	}
 	if !slices.Contains(StreamSorts, settings.StreamSort) {
 		return fmt.Errorf("%w: stream sort %q", ErrInvalidSettings, settings.StreamSort)
 	}
 	if !settings.Audio.Valid() {
 		return fmt.Errorf("%w: audio %+v", ErrInvalidSettings, settings.Audio)
+	}
+	if !validSubtitleStyle(settings.Subtitles.Style) {
+		return fmt.Errorf("%w: device subtitle style", ErrInvalidSettings)
 	}
 	if !slices.Contains(TorrentCacheSizes, settings.TorrentCacheGB) {
 		return fmt.Errorf("%w: torrent cache of %d GB", ErrInvalidSettings, settings.TorrentCacheGB)
@@ -409,6 +433,15 @@ func decodeOnto(data []byte, v any) error {
 	return json.Unmarshal(data, v)
 }
 
+// validSubtitleStyle reports whether style is one Settings offers: a font and
+// an edge it lists, a size, backdrop and lift in range, and a hex colour. A
+// profile's style and this device's are checked alike.
+func validSubtitleStyle(style SubtitleStyle) bool {
+	return slices.Contains(SubtitleFonts, style.Font) && style.Size >= 50 && style.Size <= 200 &&
+		hexRGB.MatchString(style.Color) && slices.Contains(SubtitleEdges, style.Edge) &&
+		style.Backdrop >= 0 && style.Backdrop <= 100 && style.Lift >= 0 && style.Lift <= 30
+}
+
 func validateProfileSettings(settings ProfileSettings) error {
 	for _, code := range append([]string{settings.SubtitleLanguage, settings.SecondSubtitleLanguage}, settings.AudioLanguages...) {
 		if code != "" && !languageCode.MatchString(code) {
@@ -429,9 +462,7 @@ func validateProfileSettings(settings ProfileSettings) error {
 		return fmt.Errorf("%w: subtitle size %q", ErrInvalidSettings, settings.SubtitleSize)
 	}
 	style := settings.SubtitleStyle
-	if !slices.Contains(SubtitleFonts, style.Font) || style.Size < 50 || style.Size > 200 ||
-		!hexRGB.MatchString(style.Color) || !slices.Contains(SubtitleEdges, style.Edge) ||
-		style.Backdrop < 0 || style.Backdrop > 100 || style.Lift < 0 || style.Lift > 30 {
+	if !validSubtitleStyle(style) {
 		return fmt.Errorf("%w: subtitle style %+v", ErrInvalidSettings, style)
 	}
 	if !slices.Contains(CaptionsModes, settings.Captions) {

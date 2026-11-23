@@ -30,6 +30,11 @@ var laptop = DeviceSettings{
 	Quality: Quality{Scaling: "high", Deband: "low", Sharpen: 3, Upscaler: "fsr", MotionSmoothing: true,
 		Deinterlace: "on", ToneMapping: "bt.2390", TargetPeak: 250},
 	Audio: Audio{Device: "coreaudio/BuiltInSpeakerDevice", StereoDownmix: true, VolumeBoost: true},
+	// Subtitles for whoever's watching: always on, in a style of the device's
+	// own rather than the profile's.
+	Subtitles: DeviceSubtitles{Always: true, Style: SubtitleStyle{
+		Font: "serif", Size: 115, Color: "#FFE9A8", Edge: "box", Backdrop: 40, Lift: 5,
+	}},
 	// Downloads (#85) in a folder of the user's own, capped at 25 GB, on the
 	// phone's data too.
 	DownloadsDir: filepath.Join(mediaDir, "Downloads"), DownloadsCapGB: 25, DownloadsWiFiOnly: false,
@@ -48,6 +53,9 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 		HardwareDecoding: true, SkipTimesOnline: true, TorrentCacheGB: 5, AutoUpdate: true,
 		MaxResolution: "auto", HDR: "auto", DolbyVision: "auto", Quality: DefaultQuality(),
 		Audio: DefaultAudio(), StreamSort: "best",
+		// Subtitles are the profiles' until the device turns them on for
+		// everyone, in the default style.
+		Subtitles: DeviceSubtitles{Style: DefaultSubtitleStyle()},
 		// Downloads are the default folder, 50 GB, and Wi-Fi only (#85).
 		DownloadsDir: "", DownloadsCapGB: 50, DownloadsWiFiOnly: true,
 	})
@@ -197,6 +205,75 @@ func TestDeviceSettingsDownloadsDecodeOverDefaults(t *testing.T) {
 	equal(t, device.DownloadsDir, "")
 	equal(t, device.DownloadsCapGB, 50)
 	equal(t, device.DownloadsWiFiOnly, true)
+}
+
+// The device's subtitles are the machine's, whoever's watching: off until the
+// device asks for them, and then in a style of the device's own rather than
+// the profile's.
+func TestDeviceSettingsSubtitles(t *testing.T) {
+	s, _ := openTemp(t)
+	if d := DefaultDeviceSettings().Subtitles; d.Always || d.Style != DefaultSubtitleStyle() {
+		t.Fatalf("device subtitles = %+v, want off in the default style", d)
+	}
+
+	// A style outside what Settings offers is refused, as a profile's is.
+	for _, refused := range []struct {
+		name  string
+		apply func(*SubtitleStyle)
+	}{
+		{name: "size of 10", apply: func(style *SubtitleStyle) { style.Size = 10 }},
+		{name: "unknown font", apply: func(style *SubtitleStyle) { style.Font = "comic" }},
+		{name: "colour by name", apply: func(style *SubtitleStyle) { style.Color = "white" }},
+		{name: "no edge", apply: func(style *SubtitleStyle) { style.Edge = "" }},
+		{name: "lift of 40", apply: func(style *SubtitleStyle) { style.Lift = 40 }},
+	} {
+		device := DefaultDeviceSettings()
+		refused.apply(&device.Subtitles.Style)
+		if err := s.SaveDeviceSettings(device); !errors.Is(err, ErrInvalidSettings) {
+			t.Errorf("%s: err = %v, want ErrInvalidSettings", refused.name, err)
+		}
+	}
+
+	// On, in a style of the device's own: it saves, and reads back.
+	device := DefaultDeviceSettings()
+	device.Subtitles = DeviceSubtitles{Always: true, Style: SubtitleStyle{
+		Font: "mono", Size: 135, Color: "#FFD166", Edge: "outline", Backdrop: 25, Lift: 10,
+	}}
+	check(t, s.SaveDeviceSettings(device))
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()), device)
+
+	// A caller from before device styles, leaving none: the default style.
+	device = DefaultDeviceSettings()
+	device.Subtitles = DeviceSubtitles{Always: true}
+	check(t, s.SaveDeviceSettings(device))
+	equal(t, must[DeviceSettings](t)(s.DeviceSettings()).Subtitles,
+		DeviceSubtitles{Always: true, Style: DefaultSubtitleStyle()})
+}
+
+// A device record saved before device subtitles reads as off, in the default
+// style, as one saved before a profile's style does.
+func TestDeviceSubtitlesDecodeOverDefaults(t *testing.T) {
+	s, _ := openTemp(t)
+	check(t, s.SaveDeviceSettings(DefaultDeviceSettings()))
+	check(t, s.db.Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket(bucketSettings)
+		var record map[string]any
+		if err := json.Unmarshal(bucket.Get(keyDevice), &record); err != nil {
+			return err
+		}
+		delete(record, "subtitles")
+		data, err := json.Marshal(record)
+		if err != nil {
+			return err
+		}
+		return bucket.Put(keyDevice, data)
+	}))
+
+	device := must[DeviceSettings](t)(s.DeviceSettings())
+	if device.Subtitles.Always {
+		t.Fatal("subtitles are on in a record from before them")
+	}
+	equal(t, device.Subtitles.Style, DefaultSubtitleStyle())
 }
 
 func TestProfileSettingsValidation(t *testing.T) {
