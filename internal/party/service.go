@@ -31,6 +31,7 @@ func init() {
 	application.RegisterEvent[Notice](EventNotice)
 	application.RegisterEvent[Chat](EventChat)
 	application.RegisterEvent[Reaction](EventReaction)
+	application.RegisterEvent[Activity](EventActivity)
 }
 
 // API is Nuvio's side of a party: backend.Parties in the app.

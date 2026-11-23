@@ -13,6 +13,8 @@ const (
 	EventChat   = "party:chat"
 	// EventReaction carries a Reaction, one per emoji a member sends.
 	EventReaction = "party:reaction"
+	// EventActivity carries the party's whole Activity, on every change.
+	EventActivity = "party:activity"
 )
 
 // Why parties can't be used now, in State.Unavailable.
@@ -215,6 +217,35 @@ type Reaction struct {
 	Name     string `json:"name"`
 	Mine     bool   `json:"mine"`
 	At       int64  `json:"at"`
+}
+
+// Kinds of ActivityEntry.
+const (
+	ActivityJoined  = "joined"
+	ActivityLeft    = "left"
+	ActivityPaused  = "paused"
+	ActivityResumed = "resumed"
+	ActivitySeeked  = "seeked"
+	ActivitySpeed   = "speed"
+	ActivityMedia   = "media"
+)
+
+// ActivityEntry is one line of the party's log: who did what, and when.
+type ActivityEntry struct {
+	ID         string  `json:"id"`
+	Kind       string  `json:"kind"`
+	MemberID   string  `json:"memberId"`
+	Name       string  `json:"name"`
+	PositionMs int64   `json:"positionMs"` // paused/resumed/seeked: where
+	Rate       float64 `json:"rate"`       // speed: the new rate
+	Title      string  `json:"title"`      // media: what the party started
+	At         int64   `json:"at"`         // party clock, Unix ms
+	Mine       bool    `json:"mine"`
+}
+
+// Activity is the party's log, oldest first.
+type Activity struct {
+	Entries []ActivityEntry `json:"entries"`
 }
 
 // presenceState is a "status" broadcast and what presence tracks.
