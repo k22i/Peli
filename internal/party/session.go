@@ -58,6 +58,8 @@ type session struct {
 	chat   chatState
 	// The reaction rate limits.
 	reactions reactionState
+	// What the members did, kept for whoever joins later.
+	activity activityState
 }
 
 func (sess *session) isHost() bool { return sess.memberID == sess.hostID }
@@ -147,6 +149,12 @@ func (s *Service) begin(snap backend.PartySnapshot, me Me, sentAt time.Time, pla
 	go s.loop(sess)
 	s.syncChat(sess, false)
 	s.emitChat(sess)
+	// The log starts with this member coming in; the others send theirs
+	// over on connecting.
+	s.record(sess, ActivityEntry{
+		ID: "joined:" + snap.MemberID, Kind: ActivityJoined, MemberID: snap.MemberID,
+		At: sess.clock.nowMs(),
+	})
 }
 
 // openChannel opens sess's Realtime channel, whose callbacks run for sess
@@ -187,6 +195,9 @@ func (s *Service) stop(sess *session) {
 	}
 	if sess.statusTimer != nil {
 		sess.statusTimer.Stop()
+	}
+	if sess.activity.replyTimer != nil {
+		sess.activity.replyTimer.Stop()
 	}
 	if sess.nudged != 0 && s.player != nil && s.watching != nil {
 		_ = s.player.SetSpeed(rate(orZero(sess.playback)))
@@ -231,6 +242,8 @@ func (s *Service) onConnected(sess *session, on bool) {
 		s.sendStream(sess, sess.shared)
 	}
 	sess.send("state_request", map[string]string{"member_id": sess.memberID})
+	// And for the log the others kept while this member wasn't there.
+	sess.send("activity_request", map[string]string{"member_id": sess.memberID})
 	s.syncChat(sess, true)
 }
 
@@ -319,6 +332,10 @@ func (s *Service) onMessage(sess *session, event string, payload json.RawMessage
 		}
 	case "reaction":
 		s.onReaction(sess, payload)
+	case "activity_request":
+		s.onActivityRequest(sess, payload)
+	case "activity":
+		s.onActivityLog(sess, payload)
 	case "chat":
 		var m backend.PartyMessage
 		if json.Unmarshal(payload, &m) == nil {
@@ -385,6 +402,10 @@ func (s *Service) onMemberLeft(sess *session, memberID, reason, hostID string) {
 	}
 	if name != "" {
 		s.notify(Notice{Kind: NoticeLeft, Name: name})
+		s.record(sess, ActivityEntry{
+			ID: "left:" + memberID, Kind: ActivityLeft, MemberID: memberID, Name: name,
+			At: sess.clock.nowMs(),
+		})
 	}
 }
 
@@ -401,6 +422,10 @@ func (s *Service) refreshMembers(sess *session, announce string) {
 		s.applySnapshot(sess, snap)
 		if m := sess.member(announce); m != nil && announce != sess.memberID && s.cur == sess {
 			s.notify(Notice{Kind: NoticeJoined, Name: m.DisplayName})
+			s.record(sess, ActivityEntry{
+				ID: "joined:" + announce, Kind: ActivityJoined, MemberID: announce, Name: m.DisplayName,
+				At: sess.clock.nowMs(),
+			})
 		}
 	})
 }
@@ -478,6 +503,12 @@ func (s *Service) applyMedia(sess *session, media backend.PartyMedia, playback *
 	sess.waitStarted = time.Time{}
 	view := mediaOf(media)
 	s.notify(Notice{Kind: NoticeMedia, Media: &view})
+	if key := media.Key(); key != "" {
+		s.record(sess, ActivityEntry{
+			ID: "media:" + key, Kind: ActivityMedia, MemberID: sess.hostID, Title: mediaTitle(media),
+			At: sess.clock.nowMs(),
+		})
+	}
 }
 
 // accept takes in a playback another member (or the backend) sent, if it's
@@ -511,6 +542,11 @@ func (s *Service) accept(sess *session, candidate backend.PartyPlayback) {
 		return
 	}
 	s.notify(Notice{Kind: NoticeAction, Name: m.DisplayName, Action: action, PositionMs: candidate.PositionMs, Rate: rate(candidate)})
+	s.record(sess, ActivityEntry{
+		ID: "pb:" + candidate.MemberID + ":" + itoa(candidate.Seq), Kind: action,
+		MemberID: candidate.MemberID, Name: m.DisplayName, PositionMs: candidate.PositionMs,
+		Rate: rate(candidate), At: candidate.At,
+	})
 }
 
 // publish sends a playback of this member's: what they did, or the
@@ -539,7 +575,15 @@ func (s *Service) publish(sess *session, paused bool, positionMs int64, playRate
 	if !waiting {
 		sess.waitStarted = time.Time{}
 	}
+	// What this member did, before the playback that says it is theirs.
+	action := actionOf(current, next)
 	sess.playback = &next
+	if !waiting && action != "" {
+		s.record(sess, ActivityEntry{
+			ID: "pb:" + sess.memberID + ":" + itoa(next.Seq), Kind: action,
+			MemberID: sess.memberID, PositionMs: next.PositionMs, Rate: next.Rate, At: next.At,
+		})
+	}
 	sess.send("state", next)
 	s.schedulePersist(sess)
 }
@@ -576,6 +620,12 @@ func (s *Service) publishMedia(sess *session, media Media, positionMs int64) {
 	}
 	same := wire.Key() == sess.media.Key()
 	sess.media = wire
+	if !same && wire.Key() != "" {
+		s.record(sess, ActivityEntry{
+			ID: "media:" + wire.Key(), Kind: ActivityMedia, MemberID: sess.memberID, Title: mediaTitle(wire),
+			At: sess.clock.nowMs(),
+		})
+	}
 	var playback *backend.PartyPlayback
 	if !same {
 		next := backend.PartyPlayback{
