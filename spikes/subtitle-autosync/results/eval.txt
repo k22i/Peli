@@ -1,0 +1,69 @@
+
+70 releases, 51 with a reference, 568 pairs
+  no reference: dune-2021-6              error: torbox: There was an error processing your request. Please try again later.
+  no reference: dune-2021-13             subtitles not in Cues
+  no reference: thunderbolts-2           no subtitle tracks
+  no reference: interstellar-2           subtitles not in Cues
+  no reference: hunger-games-1           subtitles not in Cues
+  no reference: black-panther-1          no subtitle tracks
+  no reference: black-panther-2          forced tracks only
+  no reference: endgame-1                no subtitle tracks
+  no reference: infinity-war-1           subtitles not in Cues
+  no reference: infinity-war-2           forced tracks only
+  no reference: dark-knight-1            subtitles not in Cues
+  no reference: logan-1                  subtitles not in Cues
+  no reference: men-in-black-1           forced tracks only
+  no reference: burn-after-reading-1     forced tracks only
+  no reference: avatar-aang-2            mp4 (not indexed in the spike): mov_text,ita,mov_text,eng
+  no reference: breaking-bad-1x01-1      no subtitle tracks
+  no reference: breaking-bad-2x01-1      no subtitle tracks
+  no reference: widows-bay-1x01-1        mp4 (not indexed in the spike): mov_text,eng,mov_text,eng,mov_text,spa,mov_text,spa,mov_text,fra,mov_text,fra,mov_text,por,mov_text,por,mov_text,ara,mov_text,bul,mov_text,ces,mov_text,dan,mov_text,deu,mov_text,ell,mov_text,est,mov_text,fin,mov_text,hin,mov_text,hun,mov_text,ind,mov_text,ita,mov_text,jpn,mov_text,kor,mov_text,lit,mov_text,lav,mov_text,msa,mov_text,nld,mov_text,nor,mov_text,pol,mov_text,rus,mov_text,slk,mov_text,slv,mov_text,swe,mov_text,tam,mov_text,tel,mov_text,tha,mov_text,tur,mov_text,ukr,mov_text,vie,mov_text,zho,mov_text,zho
+  no reference: frieren-1x01-2           only short tracks
+
+pairs with truth: 137; worst offset before: ≤0.3 s 48, ≤1 s 20, ≤3 s 4, ≤10 s 36, more 29
+
+policy (score, margin, piecewise) → fixed kept harmed wrong missed
+  0.3 0.03 false →  63  48   0   8  18
+  0.3 0.05 false →  63  48   0   8  18
+  0.3 0.10 false →  63  48   0   6  20
+  0.3 0.15 false →  63  48   0   6  20
+  0.3 0.20 false →  59  48   0   5  25
+  0.4 0.03 false →  58  48   0   4  27
+  0.4 0.05 false →  58  48   0   4  27
+  0.4 0.10 false →  58  48   0   4  27
+  0.4 0.15 false →  58  48   0   4  27
+  0.4 0.20 false →  58  48   0   4  27
+  0.5 0.03 false →  49  48   0   1  39
+  0.5 0.05 false →  49  48   0   1  39
+  0.5 0.10 false →  49  48   0   1  39
+  0.5 0.15 false →  49  48   0   1  39
+  0.5 0.20 false →  49  48   0   1  39
+  0.6 0.03 false →  37  48   0   0  52
+  0.6 0.05 false →  37  48   0   0  52
+  0.6 0.10 false →  37  48   0   0  52
+  0.6 0.15 false →  37  48   0   0  52
+  0.6 0.20 false →  37  48   0   0  52
+  0.3 0.03 true  →  65  48   0   6  18
+  0.3 0.05 true  →  65  48   0   6  18
+  0.3 0.10 true  →  63  48   0   6  20
+  0.3 0.15 true  →  63  48   0   6  20
+  0.3 0.20 true  →  59  48   0   5  25
+  0.4 0.03 true  →  58  48   0   4  27
+  0.4 0.05 true  →  58  48   0   4  27
+  0.4 0.10 true  →  58  48   0   4  27
+  0.4 0.15 true  →  58  48   0   4  27
+  0.4 0.20 true  →  58  48   0   4  27
+  0.5 0.03 true  →  49  48   0   1  39
+  0.5 0.05 true  →  49  48   0   1  39
+  0.5 0.10 true  →  49  48   0   1  39
+  0.5 0.15 true  →  49  48   0   1  39
+  0.5 0.20 true  →  49  48   0   1  39
+  0.6 0.03 true  →  37  48   0   0  52
+  0.6 0.05 true  →  37  48   0   0  52
+  0.6 0.10 true  →  37  48   0   0  52
+  0.6 0.15 true  →  37  48   0   0  52
+  0.6 0.20 true  →  37  48   0   0  52
+
+align time per pair: median 457.4 ms, p95 1552.4 ms, max 1957.3 ms
+
+[exited with code 0]
