@@ -206,6 +206,7 @@ func (s *Service) stop(sess *session) {
 	// s.mu.
 	go sess.channel.Close()
 	s.emit(EventChat, Chat{Messages: []Message{}})
+	s.emit(EventActivity, Activity{Entries: []ActivityEntry{}})
 }
 
 // finish ends the session and says why. s.mu is held.
